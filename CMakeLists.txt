@@ -18,4 +18,5 @@ function(reg_test test_name)
 endfunction(reg_test)
 
 reg_test(TestHeapArray)
+reg_test(TestStackArray)
 reg_test(TestAbstractStringBuffer)
