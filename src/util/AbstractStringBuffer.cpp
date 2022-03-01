@@ -1,5 +1,5 @@
 #include "AbstractStringBuffer.h"
-#include "misc.h"
+#include "Misc.h"
 #include <cstring>
 
 namespace sese {

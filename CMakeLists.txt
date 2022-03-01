@@ -7,9 +7,19 @@ enable_testing()
 
 set(UTIL_SRCS
         src/util/AbstractStringBuffer.cpp
+        src/util/AbstractStringBuffer.h
+        src/util/Array.h
+        src/util/Noncopyable.h
+        src/util/Singleton.h
+        src/util/StringBuilder.h
         )
 
-add_library(sese ${UTIL_SRCS})
+set(ROOT_SRCS
+        src/Misc.cpp
+        src/Misc.h
+        )
+
+add_library(sese ${UTIL_SRCS} ${ROOT_SRCS})
 
 function(reg_test test_name)
     add_executable(${test_name} test/${test_name}/main.cpp)
@@ -19,3 +29,4 @@ endfunction(reg_test)
 
 reg_test(TestArray)
 reg_test(TestAbstractStringBuffer)
+reg_test(TestSingleton)
