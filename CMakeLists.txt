@@ -17,6 +17,5 @@ function(reg_test test_name)
     add_test(NAME ${test_name} COMMAND ${test_name})
 endfunction(reg_test)
 
-reg_test(TestHeapArray)
-reg_test(TestStackArray)
+reg_test(TestArray)
 reg_test(TestAbstractStringBuffer)

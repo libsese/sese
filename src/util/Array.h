@@ -3,7 +3,7 @@
 namespace sese {
 
     template<typename T, int n>
-    class StackArray {
+    class Array {
     private:
         T values[n]{0};
         int len = n;

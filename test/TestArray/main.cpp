@@ -1,8 +1,8 @@
-#include "util/StackArray.h"
+#include "util/Array.h"
 #include <cstdio>
 
 int main() {
-    sese::StackArray<int, 4> array;
+    sese::Array<int, 4> array;
     array[0] = 10;
     array[3] = 5;
 
