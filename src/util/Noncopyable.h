@@ -1,8 +1,9 @@
 #pragma once
+#include "Config.h"
 
 namespace sese {
 
-    class Noncopyable {
+    class API Noncopyable {
     public:
         Noncopyable() = default;
         ~Noncopyable() = default;

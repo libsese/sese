@@ -1,6 +1,11 @@
 #include "AbstractStringBuffer.h"
-#include "Misc.h"
+#include "Util.h"
 #include <cstring>
+
+#ifdef _WIN32
+#pragma warning(disable : 4018)
+#pragma warning(disable : 4273)
+#endif
 
 namespace sese {
 
@@ -14,6 +19,10 @@ namespace sese {
         this->cap = (len / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
         this->buffer = new char[cap];
         memcpy(this->buffer, str, len);
+    }
+
+    AbstractStringBuffer::~AbstractStringBuffer() noexcept {
+        delete[] this->buffer;
     }
 
     void AbstractStringBuffer::append(const char *str) noexcept {
@@ -36,7 +45,10 @@ namespace sese {
     }
 
     std::string AbstractStringBuffer::toString() {
-        return std::string(this->buffer);
+        char *str = (char *) malloc(this->len);
+        memcpy(str, this->buffer, this->len + 1);
+        str[this->len] = '\0';
+        return std::string(str);
     }
 
     void AbstractStringBuffer::clear() noexcept {
@@ -138,7 +150,6 @@ namespace sese {
         }
         memset(&this->buffer[len - w], 0, w + 1);
         this->len -= w;
-        return;
     }
 
 }// namespace sese

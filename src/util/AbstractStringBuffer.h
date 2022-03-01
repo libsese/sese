@@ -1,15 +1,15 @@
 #pragma once
 #include <string>
 #include <vector>
-
-#define STRING_BUFFER_SIZE_FACTOR 1024
+#include "Config.h"
 
 namespace sese {
 
-    class AbstractStringBuffer {
+    class API AbstractStringBuffer {
     public:
         explicit AbstractStringBuffer(size_t cap = STRING_BUFFER_SIZE_FACTOR) noexcept;
         explicit AbstractStringBuffer(const char *str) noexcept;
+        ~AbstractStringBuffer() noexcept;
 
     protected:
         size_t cap{};  // 实际容量
