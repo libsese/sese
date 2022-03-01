@@ -3,7 +3,7 @@
 
 namespace sese {
 
-    template<typename T>
+    template<typename T, class X = void, int N = 0>
     class Singleton {
     public:
         static T *getInstance() {
@@ -12,7 +12,7 @@ namespace sese {
         }
     };
 
-    template<typename T>
+    template<typename T, class X = void, int N = 0>
     class SingletonPtr {
     public:
         static std::shared_ptr<T> getInstance() {

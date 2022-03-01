@@ -1,4 +1,5 @@
 #include "Logger.h"
+#include <cstdio>
 
 namespace sese {
 
@@ -7,7 +8,8 @@ namespace sese {
     }
 
     void Logger::log(const Event::Ptr &event) const noexcept {
-        for (auto &appender : appenders) {
+        for (auto &appender: appenders) {
+            printf("%s ", this->name);
             appender->preDump(event);
         }
     }

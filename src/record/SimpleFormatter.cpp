@@ -1,5 +1,4 @@
 #include "SimpleFormatter.h"
-#include "Util.h"
 #include <sstream>
 
 #ifdef _WIN32
@@ -9,7 +8,22 @@
 
 namespace sese {
 
-    SimpleFormatter::SimpleFormatter(const std::string &pattern) noexcept {
+    extern "C" API const char *getLevelString(Level level) noexcept {
+        switch (level) {
+            case Level::DEBUG:
+                return "DEBUG";
+            case Level::INFO:
+                return "INFO ";
+            case Level::WARN:
+                return "WARN ";
+            case Level::ERR:
+                return "ERROR";
+            default:
+                return "DEBUG ";
+        }
+    }
+
+    SimpleFormatter::SimpleFormatter(const std::string &pattern) noexcept : Formatter() {
         this->pattern = pattern;
     }
 
@@ -28,7 +42,7 @@ namespace sese {
                             auto time = event->getTime();
                             auto info = localtime(reinterpret_cast<const time_t *>(&time));
                             char buffer[64];
-                            strftime(buffer, 64, "%x %X", info);
+                            strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", info);
                             stream << buffer;
                             i += 1;
                             break;

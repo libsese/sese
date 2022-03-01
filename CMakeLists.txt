@@ -3,6 +3,8 @@ project(sese CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 include_directories(./src)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
+set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
 enable_testing()
 
 set(RECORD_SRCS
@@ -71,3 +73,4 @@ endfunction(reg_test)
 reg_test(TestArray)
 reg_test(TestAbstractStringBuffer)
 reg_test(TestSingleton)
+reg_test(TestLogger)

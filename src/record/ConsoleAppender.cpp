@@ -6,6 +6,9 @@
 
 namespace sese {
 
+    ConsoleAppender::ConsoleAppender(const Formatter::Ptr &formatter, Level level) noexcept : AbstractAppender(formatter, level) {
+    }
+
     void ConsoleAppender::dump(const sese::Event::Ptr &event) noexcept {
         setbuf(stdout, nullptr);
         puts(this->formatter->dump(event).c_str());
