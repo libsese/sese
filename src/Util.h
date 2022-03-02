@@ -3,6 +3,8 @@
 #include "record/Logger.h"
 #include "record/SimpleFormatter.h"
 #include "util/Singleton.h"
+#include "util/Test.h"
+#include <cassert>
 
 namespace sese {
 
@@ -21,15 +23,23 @@ namespace sese {
 #define sprintf sprintf_s
 #endif
 
-#define ROOT_LOG(LEVEL, ...)                                                                                                                        \
-    {                                                                                                                                               \
-        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                             \
-        sprintf(buf, __VA_ARGS__);                                                                                                                  \
-        time_t tm;                                                                                                                                  \
-        time(&tm);                                                                                                                                  \
-        sese::Event::Ptr event = std::make_shared<sese::Event>(tm, LEVEL, sese::getThreadName(), sese::getThreadId(), __FILE__, __LINE__, "Hello"); \
-        sese::Logger *logger = sese::getLogger();                                                                                                   \
-        logger->log(event);                                                                                                                         \
+#ifdef __GNUC__
+#define FN __FILE__
+#elif __llvm__
+#define FN __FILE_NAME__
+#elif _MSC_VER
+#define FN __FILE__
+#endif
+
+#define ROOT_LOG(LEVEL, ...)                                                                                                              \
+    {                                                                                                                                     \
+        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                   \
+        sprintf(buf, __VA_ARGS__);                                                                                                        \
+        time_t tm;                                                                                                                        \
+        time(&tm);                                                                                                                        \
+        sese::Event::Ptr event = std::make_shared<sese::Event>(tm, LEVEL, sese::getThreadName(), sese::getThreadId(), FN, __LINE__, buf); \
+        sese::Logger *logger = sese::getLogger();                                                                                         \
+        logger->log(event);                                                                                                               \
     }
 
 #define ROOT_DEBUG(...) \
@@ -43,3 +53,24 @@ namespace sese {
 
 #define ROOT_ERROR(...) \
     ROOT_LOG(sese::Level::ERR, __VA_ARGS__)
+
+#if defined __GNUC__ || __llvm__
+#define LIKELY(x) __builtin_expect(!!(x), 1)
+#define UNLIKELY(x) __builtin_expect(!!(x), 0)
+#else
+#define LIKELY(x) (x)
+#define UNLIKELY(x) (x)
+#endif
+
+#define ASSERT(x)                                                             \
+    if (UNLIKELY(!(x))) {                                                     \
+        ROOT_ERROR("%s", sese::backtrace2String(5, WILL_SKIP, "Backtrace ").c_str()); \
+        assert(x);                                                            \
+    }
+
+#define ASSERTEX(x, ...)                                                      \
+    if (UNLIKELY(!(x))) {                                                     \
+        ROOT_ERROR("%s", sese::backtrace2String(5, WILL_SKIP, "Backtrace ").c_str()); \
+        ROOT_ERROR(__VA_ARGS__)                                                                      \
+        assert(x);                                                            \
+    }

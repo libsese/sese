@@ -27,6 +27,8 @@ set(UTIL_SRCS
         src/util/Noncopyable.h
         src/util/Singleton.h
         src/util/StringBuilder.h
+        src/util/Test.cpp
+        src/util/Test.h
         )
 
 set(ROOT_SRCS
@@ -62,6 +64,8 @@ endif (CMAKE_SYSTEM_NAME MATCHES "Linux")
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
     message(STATUS "Add library : wsock32")
     target_link_libraries(sese wsock32)
+#    message(STATUS "Add library : dbghelp")
+#    target_link_libraries(sese dbghelp)
 endif (CMAKE_SYSTEM_NAME MATCHES "Windows")
 
 function(reg_test test_name)
@@ -74,3 +78,4 @@ reg_test(TestArray)
 reg_test(TestAbstractStringBuffer)
 reg_test(TestSingleton)
 reg_test(TestLogger)
+reg_test(TestDebug)

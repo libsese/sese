@@ -2,8 +2,8 @@
 #include "Config.h"
 
 #ifdef __linux__
-#include <unistd.h>
 #include <sys/syscall.h>
+#include <unistd.h>
 #endif
 
 #ifdef _WIN32
@@ -20,7 +20,10 @@ namespace sese {
             auto appender = std::make_shared<ConsoleAppender>(formatter);
             logger->addAppender(appender);
         }
-        ~InitStruct() = default;
+        ~InitStruct() {
+            // Logger 不需要手动释放
+            // delete sese::Singleton<Logger>::getInstance();
+        }
     } initStruct; /* NOLINT */
 
     Logger *getLogger() noexcept {
