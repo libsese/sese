@@ -8,11 +8,11 @@ namespace sese {
     public:
         typedef std::shared_ptr<DateTime> Ptr;
 
-        static DateTime::Ptr now(int utc = 0) noexcept;
+        static DateTime::Ptr now(int utc = DEFAULT_TIME_ZONE) noexcept;
 
-        explicit DateTime(long timestamp, int utc = 0) noexcept;
+        explicit DateTime(long timestamp, int utc = DEFAULT_TIME_ZONE) noexcept;
 
-        DateTime(long timestamp, int milliseconds, int microseconds, int utc = 0) noexcept;
+        DateTime(long timestamp, int milliseconds, int microseconds, int utc = DEFAULT_TIME_ZONE) noexcept;
 
     public:
         [[nodiscard]] bool isLeapYear() const noexcept { return this->isLeap; }
@@ -21,6 +21,7 @@ namespace sese {
         [[nodiscard]] int getDays() const noexcept { return this->days; }
         [[nodiscard]] int getHours() const noexcept { return this->hours; }
         [[nodiscard]] int getMinutes() const noexcept { return this->minutes; }
+        [[nodiscard]] int getSecond() const noexcept { return this->seconds; }
         [[nodiscard]] int getMilliseconds() const noexcept { return this->milliseconds; }
         [[nodiscard]] int getMicroseconds() const noexcept { return this->microseconds; }
         [[nodiscard]] long getTimestamp() const noexcept { return this->timestamp; }
@@ -40,6 +41,7 @@ namespace sese {
         int days = 1;
         int hours = 0;
         int minutes = 0;
+        int seconds = 0;
         int milliseconds = 0;
         int microseconds = 0;
         long timestamp = 0;

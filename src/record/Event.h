@@ -1,7 +1,11 @@
 #pragma once
-#include <memory>
 #include "Config.h"
+#include "util/DateTime.h"
+#include <memory>
 
+#ifdef _WIN32
+#pragma warning (disable : 4251)
+#endif
 namespace sese {
 
     enum class Level {
@@ -16,8 +20,8 @@ namespace sese {
         typedef std::shared_ptr<Event> Ptr;
 
     public:
-        Event(time_t tm, Level lv, const char *threadName, pid_t id, const char *file, int line, const char *msg) noexcept {
-            this->time = tm;
+        Event(const DateTime::Ptr &dateTime, Level lv, const char *threadName, pid_t id, const char *file, int line, const char *msg) noexcept {
+            this->dateTime = dateTime;
             this->level = lv;
             this->threadName = threadName;
             this->threadId = id;
@@ -26,7 +30,7 @@ namespace sese {
             this->message = msg;
         }
 
-        [[nodiscard]] time_t getTime() const noexcept { return this->time; }
+        [[nodiscard]] DateTime::Ptr getTime() const noexcept { return this->dateTime; }
         [[nodiscard]] Level getLevel() const noexcept { return this->level; }
         [[nodiscard]] pid_t getThreadId() const noexcept { return this->threadId; }
         [[nodiscard]] int getLine() const noexcept { return this->line; }
@@ -35,7 +39,7 @@ namespace sese {
         [[nodiscard]] const char *getThreadName() const noexcept { return this->threadName; }
 
     private:
-        time_t time;
+        DateTime::Ptr dateTime;
         Level level;
         const char *threadName = nullptr;
         pid_t threadId;

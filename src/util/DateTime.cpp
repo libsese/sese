@@ -81,6 +81,7 @@ namespace sese {
 
             this->hours = (int) (tv.tv_sec % (60 * 60 * 24)) / 60 / 60;
             this->minutes = (int) (tv.tv_sec % (60 * 60)) / 60;
+            this->seconds = (int) (tv.tv_sec % 60);
         }
     }
 

@@ -14,6 +14,8 @@
 #define API
 #endif
 
+// 默认时区
+#define DEFAULT_TIME_ZONE 8
 // String Buffer 单元因子
 #define STRING_BUFFER_SIZE_FACTOR 1024
 // 主日志器名称

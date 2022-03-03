@@ -32,15 +32,13 @@ namespace sese {
 #define FN __FILE__
 #endif
 
-#define ROOT_LOG(LEVEL, ...)                                                                                                                     \
-    {                                                                                                                                            \
-        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                          \
-        sprintf(buf, __VA_ARGS__);                                                                                                               \
-        time_t tm;                                                                                                                               \
-        time(&tm);                                                                                                                               \
-        sese::Event::Ptr event = std::make_shared<sese::Event>(tm, LEVEL, sese::getThreadName(), sese::getThreadCurrentId(), FN, __LINE__, buf); \
-        sese::Logger *logger = sese::getLogger();                                                                                                \
-        logger->log(event);                                                                                                                      \
+#define ROOT_LOG(LEVEL, ...)                                                                                                                                        \
+    {                                                                                                                                                               \
+        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                                             \
+        sprintf(buf, __VA_ARGS__);                                                                                                                                  \
+        sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), LEVEL, sese::getThreadName(), sese::getThreadCurrentId(), FN, __LINE__, buf); \
+        sese::Logger *logger = sese::getLogger();                                                                                                                   \
+        logger->log(event);                                                                                                                                         \
     }
 
 #define ROOT_DEBUG(...) \

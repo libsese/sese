@@ -40,9 +40,8 @@ namespace sese {
                             break;
                         case 'c': {
                             auto time = event->getTime();
-                            auto info = localtime(reinterpret_cast<const time_t *>(&time));
                             char buffer[64];
-                            strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", info);
+                            sprintf(buffer, "%04d-%02d-%02d %02d:%02d:%02d.%03d", time->getYears(), time->getMonths(), time->getDays(), time->getHours(), time->getMinutes(), time->getSecond(), time->getMilliseconds());
                             stream << buffer;
                             i += 1;
                             break;
