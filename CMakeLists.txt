@@ -29,6 +29,10 @@ set(UTIL_SRCS
         src/util/StringBuilder.h
         src/util/Test.cpp
         src/util/Test.h
+        src/util/DateTime.cpp
+        src/util/DateTime.h
+        src/util/TimeSpan.cpp
+        src/util/TimeSpan.h
         )
 
 set(ROOT_SRCS
@@ -79,3 +83,4 @@ reg_test(TestAbstractStringBuffer)
 reg_test(TestSingleton)
 reg_test(TestLogger)
 reg_test(TestDebug)
+reg_test(TestDateTime)

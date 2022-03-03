@@ -14,9 +14,10 @@ namespace sese {
 
     extern API const char *getLevelString(Level level) noexcept;
 
-    extern API pid_t getThreadId() noexcept;
+    extern API pid_t getThreadCurrentId() noexcept;
 
     extern API const char *getThreadName() noexcept;
+
 }// namespace sese
 
 #ifdef _WIN32
@@ -31,15 +32,15 @@ namespace sese {
 #define FN __FILE__
 #endif
 
-#define ROOT_LOG(LEVEL, ...)                                                                                                              \
-    {                                                                                                                                     \
-        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                   \
-        sprintf(buf, __VA_ARGS__);                                                                                                        \
-        time_t tm;                                                                                                                        \
-        time(&tm);                                                                                                                        \
-        sese::Event::Ptr event = std::make_shared<sese::Event>(tm, LEVEL, sese::getThreadName(), sese::getThreadId(), FN, __LINE__, buf); \
-        sese::Logger *logger = sese::getLogger();                                                                                         \
-        logger->log(event);                                                                                                               \
+#define ROOT_LOG(LEVEL, ...)                                                                                                                     \
+    {                                                                                                                                            \
+        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                          \
+        sprintf(buf, __VA_ARGS__);                                                                                                               \
+        time_t tm;                                                                                                                               \
+        time(&tm);                                                                                                                               \
+        sese::Event::Ptr event = std::make_shared<sese::Event>(tm, LEVEL, sese::getThreadName(), sese::getThreadCurrentId(), FN, __LINE__, buf); \
+        sese::Logger *logger = sese::getLogger();                                                                                                \
+        logger->log(event);                                                                                                                      \
     }
 
 #define ROOT_DEBUG(...) \
@@ -62,15 +63,15 @@ namespace sese {
 #define UNLIKELY(x) (x)
 #endif
 
-#define ASSERT(x)                                                             \
-    if (UNLIKELY(!(x))) {                                                     \
+#define ASSERT(x)                                                                     \
+    if (UNLIKELY(!(x))) {                                                             \
         ROOT_ERROR("%s", sese::backtrace2String(5, WILL_SKIP, "Backtrace ").c_str()); \
-        assert(x);                                                            \
+        assert(x);                                                                    \
     }
 
-#define ASSERTEX(x, ...)                                                      \
-    if (UNLIKELY(!(x))) {                                                     \
+#define ASSERTEX(x, ...)                                                              \
+    if (UNLIKELY(!(x))) {                                                             \
         ROOT_ERROR("%s", sese::backtrace2String(5, WILL_SKIP, "Backtrace ").c_str()); \
-        ROOT_ERROR(__VA_ARGS__)                                                                      \
-        assert(x);                                                            \
+        ROOT_ERROR(__VA_ARGS__)                                                       \
+        assert(x);                                                                    \
     }

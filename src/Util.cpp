@@ -1,5 +1,6 @@
 #include "Util.h"
 #include "Config.h"
+#include <ctime>
 
 #ifdef __linux__
 #include <sys/syscall.h>
@@ -41,7 +42,7 @@ namespace sese {
         return false;
     }
 
-    pid_t getThreadId() noexcept {
+    pid_t getThreadCurrentId() noexcept {
 #ifdef __linux__
         return syscall(__NR_gettid);
 #endif
@@ -55,4 +56,5 @@ namespace sese {
     const char *getThreadName() noexcept {
         return ThreadName;
     }
+
 }// namespace sese
