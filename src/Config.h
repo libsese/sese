@@ -14,6 +14,11 @@
 #define API
 #endif
 
+// 异常
+#define EXCEPTION_STRING "Exception"
+#define EXCEPTION_HEADER_STRING "Exception: "
+#define INDEX_OUT_OF_BOUNDS_STRING "index out of bounds"
+
 // 默认时区
 #define DEFAULT_TIME_ZONE 8
 // String Buffer 单元因子

@@ -1,4 +1,5 @@
 #include "util/AbstractStringBuffer.h"
+#include "util/IndexOutOfBoundsException.h"
 #include <cstdio>
 
 int main() {
@@ -46,6 +47,13 @@ int main() {
     buffer->trim();
     puts(buffer->toString().c_str());
     buffer->clear();
+
+    try {
+        buffer->setChatAt(100000, 'E');
+    }
+    catch (sese::Exception &exception){
+        puts(exception.what());
+    }
 
     return 0;
 }

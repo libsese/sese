@@ -33,6 +33,8 @@ set(UTIL_SRCS
         src/util/DateTime.h
         src/util/TimeSpan.cpp
         src/util/TimeSpan.h
+        src/util/Exception.h
+        src/util/IndexOutOfBoundsException.h
         )
 
 set(ROOT_SRCS

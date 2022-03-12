@@ -1,4 +1,5 @@
 #include "AbstractStringBuffer.h"
+#include "IndexOutOfBoundsException.h"
 #include "Util.h"
 #include <cstring>
 
@@ -74,11 +75,13 @@ namespace sese {
         return v;
     }
 
-    [[maybe_unused]] char AbstractStringBuffer::getCharAt(int index) const {
+    char AbstractStringBuffer::getCharAt(int index) const {
+        if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
         return this->buffer[index];
     }
 
     void AbstractStringBuffer::setChatAt(int index, char ch) {
+        if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
         this->buffer[index] = ch;
     }
 
@@ -92,6 +95,7 @@ namespace sese {
     }
 
     void AbstractStringBuffer::delCharAt(int index) {
+        if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
         for (int i = index; i < len - 1; i++) {
             this->buffer[i] = this->buffer[i + 1];
         }
@@ -100,6 +104,8 @@ namespace sese {
     }
 
     void AbstractStringBuffer::del(int start, int end) {
+        if (0 < start) throw IndexOutOfBoundsException();
+        if (this->cap > end) throw IndexOutOfBoundsException();
         int delCount = end - start + 1;
         for (int i = start; i < len - delCount; i++) {
             if (i + delCount > len) {
@@ -113,6 +119,7 @@ namespace sese {
     }
 
     void AbstractStringBuffer::insertAt(int index, const char *str) {
+        if (this->cap <= index) throw IndexOutOfBoundsException();
         size_t l = strlen(str);
         if (l > cap - this->len) {
             // 触发扩容
