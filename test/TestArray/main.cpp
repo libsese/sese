@@ -6,8 +6,14 @@ int main() {
     array[0] = 10;
     array[3] = 5;
 
-    for(int i = 0; i < array.length(); i++) {
+    for (int i = 0; i < array.length(); i++) {
         printf("%d\n", array[i]);
+    }
+
+    try {
+        array[4] = 0;
+    } catch (sese::Exception &exception) {
+        puts(exception.what());
     }
 
     return 0;

@@ -1,4 +1,5 @@
 #pragma once
+#include "IndexOutOfBoundsException.h"
 
 namespace sese {
 
@@ -13,10 +14,12 @@ namespace sese {
 
     public:
         T &operator[](int i) {
+            if(len <= i || i < 0) throw IndexOutOfBoundsException();
             return values[i];
         }
 
         const T &operator[](int i) const {
+            if(len <= i || i < 0) throw IndexOutOfBoundsException();
             return values[i];
         }
     };
