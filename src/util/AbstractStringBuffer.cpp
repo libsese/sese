@@ -105,7 +105,7 @@ namespace sese {
 
     void AbstractStringBuffer::del(int start, int end) {
         if (0 < start) throw IndexOutOfBoundsException();
-        if (this->cap > end) throw IndexOutOfBoundsException();
+        if (this->cap < end) throw IndexOutOfBoundsException();
         int delCount = end - start + 1;
         for (int i = start; i < len - delCount; i++) {
             if (i + delCount > len) {
