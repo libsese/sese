@@ -23,10 +23,11 @@ int gettimeofday(struct timeval *tp, void *tzp) {
 #include <sys/time.h>
 #endif
 
+static const int MonDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+static const int MonLeapDays[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
 namespace sese {
 
-    static const int Mon[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    static const int MonLeap[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     DateTime::Ptr DateTime::now(int utc) noexcept {
         timeval tv{};
@@ -46,6 +47,7 @@ namespace sese {
             this->utc = utc;
             tv.tv_sec += utc * 60 * 60;
             int days = (int) (tv.tv_sec / (60 * 60 * 24));
+            this->dayofweek = (days + 4) % 7;
             int fourYears = days / (365 * 4 + 1);
             this->years += fourYears * 4 - 1;
             int remain = days % (365 * 4 + 1);
@@ -64,9 +66,9 @@ namespace sese {
                 days = remain - 365 * 3;
             }
 
-            const int *monList = Mon;
+            const int *monList = MonDays;
             if (this->isLeap) {
-                monList = MonLeap;
+                monList = MonLeapDays;
             }
 
             for (int i = 0; i < 12; i++) {

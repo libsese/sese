@@ -1,12 +1,14 @@
 #pragma once
-#include "StringBuilder.h"
-#include "DateTime.h"
 #include "Config.h"
+#include "DateTime.h"
+#include "StringBuilder.h"
 
 /**
  * 时间格式通配符
  * d    一个月中的某天(1-31)
  * dd   一个月中的某天(01-31)
+ * ddd  一周某天的缩写(MonDays)
+ * dddd 一周某天的全称(Monday)
  * m    分钟(0-59)
  * mm   分钟(00-59)
  * M    月份(1-12)
@@ -33,10 +35,11 @@
  */
 
 namespace sese {
-    class API DateTimeFormatter{
-    public:
-        static std::string format(const DateTime &dateTime ,const std::string &pattern = DEFAULT_TIME_PATTERN);
 
-        static std::string format(const DateTime::Ptr& dateTime, const std::string &pattern = DEFAULT_TIME_PATTERN);
+    class API DateTimeFormatter {
+    public:
+        static std::string format(const DateTime &dateTime, const std::string &pattern = DEFAULT_TIME_PATTERN);
+
+        static std::string format(const DateTime::Ptr &dateTime, const std::string &pattern = DEFAULT_TIME_PATTERN);
     };
-}
+}// namespace sese

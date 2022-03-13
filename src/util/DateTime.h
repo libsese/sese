@@ -26,6 +26,7 @@ namespace sese {
         [[nodiscard]] int getMicroseconds() const noexcept { return this->microseconds; }
         [[nodiscard]] long getTimestamp() const noexcept { return this->timestamp; }
         [[nodiscard]] int getUTC() const noexcept { return this->utc; }
+        [[nodiscard]] int getDayofWeek() const noexcept { return this->dayofweek; }
 
     public:
         TimeSpan operator-(const DateTime &dateTime) const noexcept;
@@ -46,5 +47,6 @@ namespace sese {
         int microseconds = 0;
         long timestamp = 0;
         int utc = 0;
+        int dayofweek = 0;
     };
 }// namespace sese

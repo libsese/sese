@@ -33,31 +33,48 @@ static char *itoa(int num, char *str, int radix = 10) {
 }
 #endif
 
-static const char *Month[] = {"January",
-                              "February",
-                              "March",
-                              "April",
-                              "May",
-                              "June",
-                              "July",
-                              "August",
-                              "September",
-                              "October",
-                              "November",
-                              "December"};
+const char *Month[] = {"January",
+                       "February",
+                       "March",
+                       "April",
+                       "May",
+                       "June",
+                       "July",
+                       "August",
+                       "September",
+                       "October",
+                       "November",
+                       "December"};
 
-static const char *Mon[] = {"Jan.",
-                            "Feb.",
-                            "Mar.",
-                            "Apr.",
-                            "May.",
-                            "Jun.",
-                            "Jul.",
-                            "Aug.",
-                            "Sep.",
-                            "Oct.",
-                            "Nov.",
-                            "Dec."};
+const char *Mon[] = {"Jan",
+                     "Feb",
+                     "Mar",
+                     "Apr",
+                     "May",
+                     "Jun",
+                     "Jul",
+                     "Aug",
+                     "Sep",
+                     "Oct",
+                     "Nov",
+                     "Dec"};
+
+const char *WeekDay[] = {"Sunday",
+                         "Monday",
+                         "Tuesday",
+                         "Wednesday",
+                         "Thursday",
+                         "Friday",
+                         "Saturday"};
+
+const char *WkDay[] = {"Sun",
+                       "MonDays",
+                       "Tue",
+                       "Wed",
+                       "Thu",
+                       "Fri",
+                       "Sat"};
+
 
 static int count(const char &ch, const char *str) {
     for (int i = 0; i < 4; i++) {
@@ -84,6 +101,10 @@ std::string sese::DateTimeFormatter::format(const sese::DateTime &dateTime, cons
                         builder->append('0');
                     }
                     builder->append(buffer);
+                } else if (c == 3) {
+                    builder->append(WkDay[dateTime.getDayofWeek()]);
+                } else if (c == 4) {
+                    builder->append(WeekDay[dateTime.getDayofWeek()]);
                 }
                 i += c;
                 memset(buffer, 0, 4);
