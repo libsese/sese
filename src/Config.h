@@ -27,6 +27,8 @@
 #define MASTER_LOGGER_NAME "ROOT"
 // 日志输出缓存区大小
 #define LOGGER_OUTPUT_BUFFER 2048
+// 时间匹配格式
+#define DEFAULT_TIME_PATTERN "UTCz yyyy-MM-dd HH:mm:ss.ff"
 // 日志格式化器匹配格式
 #define DEFAULT_PATTERN "%c %lv %tn:%th %f:%li> %m"
 // 空格字符

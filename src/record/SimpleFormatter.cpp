@@ -41,7 +41,7 @@ namespace sese {
                         case 'c': {
                             auto time = event->getTime();
                             char buffer[64];
-                            sprintf(buffer, "%04d-%02d-%02d %02d:%02d:%02d.%03d", time->getYears(), time->getMonths(), time->getDays(), time->getHours(), time->getMinutes(), time->getSecond(), time->getMilliseconds());
+                            sprintf(buffer, "%04d-%02d-%02d %02d:%02d:%02d.%03d", time->getYears(), time->getMonths(), time->getDays(), time->getHours(), time->getMinutes(), time->getSeconds(), time->getMilliseconds());
                             stream << buffer;
                             i += 1;
                             break;

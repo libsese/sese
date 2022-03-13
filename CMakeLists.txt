@@ -35,6 +35,8 @@ set(UTIL_SRCS
         src/util/TimeSpan.h
         src/util/Exception.h
         src/util/IndexOutOfBoundsException.h
+        src/util/DateTimeFormatter.cpp
+        src/util/DateTimeFormatter.h
         )
 
 set(ROOT_SRCS
@@ -86,3 +88,4 @@ reg_test(TestSingleton)
 reg_test(TestLogger)
 reg_test(TestDebug)
 reg_test(TestDateTime)
+reg_test(TestDateTimeFormatter)

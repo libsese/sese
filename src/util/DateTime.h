@@ -21,7 +21,7 @@ namespace sese {
         [[nodiscard]] int getDays() const noexcept { return this->days; }
         [[nodiscard]] int getHours() const noexcept { return this->hours; }
         [[nodiscard]] int getMinutes() const noexcept { return this->minutes; }
-        [[nodiscard]] int getSecond() const noexcept { return this->seconds; }
+        [[nodiscard]] int getSeconds() const noexcept { return this->seconds; }
         [[nodiscard]] int getMilliseconds() const noexcept { return this->milliseconds; }
         [[nodiscard]] int getMicroseconds() const noexcept { return this->microseconds; }
         [[nodiscard]] long getTimestamp() const noexcept { return this->timestamp; }

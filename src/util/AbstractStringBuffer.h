@@ -20,6 +20,7 @@ namespace sese {
         void expansion(size_t newSize) noexcept;
 
     public:
+        void append(char ch);
         void append(const char *str) noexcept;
         void append(const std::string &str) noexcept { this->append(str.c_str()); }
         [[nodiscard]] size_t length() const noexcept { return this->len; }
