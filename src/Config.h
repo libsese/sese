@@ -29,8 +29,10 @@
 #define LOGGER_OUTPUT_BUFFER 2048
 // 时间匹配格式
 #define DEFAULT_TIME_PATTERN "UTCz yyyy-MM-dd HH:mm:ss.ff"
+// 日志格式化器时间匹配格式
+#define DEFAULT_RECORD_TIME_PATTERN "yyyy-MM-dd HH:mm:ss.ff"
 // 日志格式化器匹配格式
-#define DEFAULT_PATTERN "%c %lv %tn:%th %f:%li> %m"
+#define DEFAULT_RECORD_TEXT_PATTERN "%c %lv %tn:%th %f:%li> %m"
 // 空格字符
 #define SPACE_CHARS " \n\r\t\v\b"
 // Windows 下需要调试器 - 不需要可关

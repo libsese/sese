@@ -1,4 +1,5 @@
 #include "SimpleFormatter.h"
+#include "util/DateTimeFormatter.h"
 #include <sstream>
 
 #ifdef _WIN32
@@ -23,26 +24,26 @@ namespace sese {
         }
     }
 
-    SimpleFormatter::SimpleFormatter(const std::string &pattern) noexcept : Formatter() {
-        this->pattern = pattern;
+    SimpleFormatter::SimpleFormatter(const std::string &textPattern, const std::string &timePattern) noexcept : Formatter() {
+        this->textPattern = textPattern;
+        this->timePattern = timePattern;
     }
 
     std::string SimpleFormatter::dump(const Event::Ptr &event) noexcept {
         std::stringstream stream;
-        auto len = this->pattern.length();
+        auto len = this->textPattern.length();
         for (auto i = 0; i < len; i++) {
-            if (pattern[i] == '%') {
+            if (textPattern[i] == '%') {
                 if (i <= len - 2) {
-                    switch (pattern[i + 1]) {
+                    switch (textPattern[i + 1]) {
                         case '%':
                             stream << '%';
                             i += 1;
                             break;
                         case 'c': {
                             auto time = event->getTime();
-                            char buffer[64];
-                            sprintf(buffer, "%04d-%02d-%02d %02d:%02d:%02d.%03d", time->getYears(), time->getMonths(), time->getDays(), time->getHours(), time->getMinutes(), time->getSeconds(), time->getMilliseconds());
-                            stream << buffer;
+                            auto rt = DateTimeFormatter::format(time, this->timePattern);
+                            stream << rt;
                             i += 1;
                             break;
                         }
@@ -51,10 +52,10 @@ namespace sese {
                             i += 1;
                             break;
                         case 'l':
-                            if (pattern[i + 2] == 'i') {
+                            if (textPattern[i + 2] == 'i') {
                                 stream << event->getLine();
                                 i += 2;
-                            } else if (pattern[i + 2] == 'v') {
+                            } else if (textPattern[i + 2] == 'v') {
                                 stream << getLevelString(event->getLevel());
                                 i += 2;
                             } else {
@@ -66,10 +67,10 @@ namespace sese {
                             i += 1;
                             break;
                         case 't':
-                            if (pattern[i + 2] == 'h') {
+                            if (textPattern[i + 2] == 'h') {
                                 stream << event->getThreadId();
                                 i += 2;
-                            } else if (pattern[i + 2] == 'n') {
+                            } else if (textPattern[i + 2] == 'n') {
                                 stream << event->getThreadName();
                                 i += 2;
                             } else {
@@ -83,7 +84,7 @@ namespace sese {
                     break;
                 }
             } else {
-                stream << pattern[i];
+                stream << textPattern[i];
             }
         }
         return stream.str();
