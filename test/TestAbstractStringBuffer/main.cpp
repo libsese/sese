@@ -55,5 +55,6 @@ int main() {
         puts(exception.what());
     }
 
+    delete buffer;
     return 0;
 }

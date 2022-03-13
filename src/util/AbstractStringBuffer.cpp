@@ -2,6 +2,7 @@
 #include "IndexOutOfBoundsException.h"
 #include "Util.h"
 #include <cstring>
+#include <memory>
 
 #ifdef _WIN32
 #pragma warning(disable : 4018)
@@ -46,10 +47,10 @@ namespace sese {
     }
 
     std::string AbstractStringBuffer::toString() {
-        char *str = (char *) malloc(this->len);
-        memcpy(str, this->buffer, this->len + 1);
-        str[this->len] = '\0';
-        return std::string(str);
+        std::shared_ptr<char> str(new char[this->len + 1], [](const char *p) { delete[] p; });
+        memcpy(str.get(), this->buffer, this->len + 1);
+        str.get()[this->len] = '\0';
+        return {str.get()};
     }
 
     void AbstractStringBuffer::clear() noexcept {
