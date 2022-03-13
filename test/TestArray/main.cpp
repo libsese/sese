@@ -16,5 +16,11 @@ int main() {
         puts(exception.what());
     }
 
+    sese::Array<int, 5> initArray {12, 11, 11, 23, 32};
+    for (int i = 0; i < initArray.length(); i++) {
+        printf("%d\n", initArray[i]);
+    }
+
+
     return 0;
 }
