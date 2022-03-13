@@ -27,6 +27,8 @@
 #define MASTER_LOGGER_NAME "ROOT"
 // 日志输出缓存区大小
 #define LOGGER_OUTPUT_BUFFER 2048
+// 格林威治时间匹配格式
+#define GREENWICH_MEAN_TIME_PATTERN "ddd, dd MMM yyyy HH:mm:ss %G%M%T"
 // 时间匹配格式
 #define DEFAULT_TIME_PATTERN "UTCz yyyy-MM-dd HH:mm:ss.ff"
 // 日志格式化器时间匹配格式
