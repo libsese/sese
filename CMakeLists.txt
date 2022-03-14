@@ -18,6 +18,8 @@ set(RECORD_SRCS
         src/record/ConsoleAppender.h
         src/record/Logger.cpp
         src/record/Logger.h
+        src/record/FileAppender.cpp
+        src/record/FileAppender.h
         )
 
 set(UTIL_SRCS
@@ -72,8 +74,8 @@ endif (CMAKE_SYSTEM_NAME MATCHES "Linux")
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
     message(STATUS "Add library : wsock32")
     target_link_libraries(sese wsock32)
-#    message(STATUS "Add library : dbghelp")
-#    target_link_libraries(sese dbghelp)
+    #    message(STATUS "Add library : dbghelp")
+    #    target_link_libraries(sese dbghelp)
 endif (CMAKE_SYSTEM_NAME MATCHES "Windows")
 
 function(reg_test test_name)

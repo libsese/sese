@@ -34,7 +34,7 @@
 // 日志格式化器时间匹配格式
 #define DEFAULT_RECORD_TIME_PATTERN "yyyy-MM-dd HH:mm:ss.ff"
 // 日志格式化器匹配格式
-#define DEFAULT_RECORD_TEXT_PATTERN "%c %lv %tn:%th %f:%li> %m"
+#define DEFAULT_RECORD_TEXT_PATTERN "[%ln] %c %lv %tn:%th %f:%li> %m"
 // 空格字符
 #define SPACE_CHARS " \n\r\t\v\b"
 // Windows 下需要调试器 - 不需要可关

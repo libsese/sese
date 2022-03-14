@@ -58,6 +58,9 @@ namespace sese {
                             } else if (textPattern[i + 2] == 'v') {
                                 stream << getLevelString(event->getLevel());
                                 i += 2;
+                            } else if (textPattern[i + 2] == 'n') {
+                                stream << event->getLoggerName();
+                                i += 2;
                             } else {
                                 i += 1;
                             }

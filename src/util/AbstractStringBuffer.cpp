@@ -2,7 +2,6 @@
 #include "IndexOutOfBoundsException.h"
 #include "Util.h"
 #include <cstring>
-#include <memory>
 
 #ifdef _WIN32
 #pragma warning(disable : 4018)

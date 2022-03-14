@@ -4,7 +4,7 @@
 #include <memory>
 
 #ifdef _WIN32
-#pragma warning (disable : 4251)
+#pragma warning(disable : 4251)
 #endif
 namespace sese {
 
@@ -37,6 +37,9 @@ namespace sese {
         [[nodiscard]] const char *getFileName() const noexcept { return this->file; }
         [[nodiscard]] const char *getMessage() const noexcept { return this->message; }
         [[nodiscard]] const char *getThreadName() const noexcept { return this->threadName; }
+        [[nodiscard]] const char *getLoggerName() const noexcept { return this->logName; }
+
+        void setLogName(const char *name) noexcept { this->logName = name; }
 
     private:
         DateTime::Ptr dateTime;
@@ -46,5 +49,6 @@ namespace sese {
         const char *file = nullptr;
         int line;
         const char *message = nullptr;
+        const char *logName = nullptr;
     };
 }// namespace sese

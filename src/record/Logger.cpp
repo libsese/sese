@@ -8,8 +8,8 @@ namespace sese {
     }
 
     void Logger::log(const Event::Ptr &event) const noexcept {
+        event->setLogName(this->name);
         for (auto &appender: appenders) {
-            printf("%s ", this->name);
             appender->preDump(event);
         }
     }
