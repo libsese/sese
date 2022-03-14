@@ -47,10 +47,17 @@ namespace sese {
     }
 
     std::string AbstractStringBuffer::toString() {
-        std::shared_ptr<char> str(new char[this->len + 1], [](const char *p) { delete[] p; });
-        memcpy(str.get(), this->buffer, this->len + 1);
-        str.get()[this->len] = '\0';
-        return {str.get()};
+        //        std::shared_ptr<char> str(new char[this->len + 1], [](const char *p) { delete[] p; });
+        //        memcpy(str.get(), this->buffer, this->len + 1);
+        //        str.get()[this->len] = '\0';
+        //        return {str.get()};
+        if (1 > cap - this->len) {
+            // 触发扩容
+            auto newSize = ((1 + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
+            this->expansion(newSize);
+        }
+        this->buffer[this->len] = '\0';
+        return {this->buffer};
     }
 
     void AbstractStringBuffer::clear() noexcept {
