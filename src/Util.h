@@ -2,6 +2,7 @@
 #include "record/ConsoleAppender.h"
 #include "record/Logger.h"
 #include "record/SimpleFormatter.h"
+#include "thread/Thread.h"
 #include "util/Singleton.h"
 #include "util/Test.h"
 #include <cassert>
@@ -13,10 +14,6 @@ namespace sese {
     extern API bool isSpace(char ch) noexcept;
 
     extern API const char *getLevelString(Level level) noexcept;
-
-    extern API pid_t getThreadCurrentId() noexcept;
-
-    extern API const char *getThreadName() noexcept;
 
 }// namespace sese
 
@@ -32,13 +29,13 @@ namespace sese {
 #define FN __FILE__
 #endif
 
-#define ROOT_LOG(LEVEL, ...)                                                                                                                                        \
-    {                                                                                                                                                               \
-        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                                             \
-        sprintf(buf, __VA_ARGS__);                                                                                                                                  \
-        sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), LEVEL, sese::getThreadName(), sese::getThreadCurrentId(), FN, __LINE__, buf); \
-        sese::Logger *logger = sese::getLogger();                                                                                                                   \
-        logger->log(event);                                                                                                                                         \
+#define ROOT_LOG(LEVEL, ...)                                                                                                                                                                               \
+    {                                                                                                                                                                                                      \
+        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                                                                                    \
+        sprintf(buf, __VA_ARGS__);                                                                                                                                                                         \
+        sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), LEVEL, sese::ThreadInfo::getCurrentThreadName().c_str(), sese::ThreadInfo::getCurrentThreadId(), FN, __LINE__, buf); \
+        sese::Logger *logger = sese::getLogger();                                                                                                                                                          \
+        logger->log(event);                                                                                                                                                                                \
     }
 
 #define ROOT_DEBUG(...) \

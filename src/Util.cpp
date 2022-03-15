@@ -1,15 +1,5 @@
 #include "Util.h"
 #include "Config.h"
-#include <ctime>
-
-#ifdef __linux__
-#include <sys/syscall.h>
-#include <unistd.h>
-#endif
-
-#ifdef _WIN32
-#include <Windows.h>
-#endif
 
 namespace sese {
 
@@ -40,21 +30,6 @@ namespace sese {
             p++;
         }
         return false;
-    }
-
-    pid_t getThreadCurrentId() noexcept {
-#ifdef __linux__
-        return syscall(__NR_gettid);
-#endif
-#ifdef _WIN32
-        return GetCurrentThreadId();
-#endif
-    }
-
-    static thread_local const char *ThreadName = "Main";
-
-    const char *getThreadName() noexcept {
-        return ThreadName;
     }
 
 }// namespace sese

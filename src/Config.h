@@ -11,6 +11,7 @@
 #endif
 
 #ifdef __linux__
+#include <cassert>
 #define API
 #endif
 
@@ -23,6 +24,10 @@
 #define DEFAULT_TIME_ZONE 8
 // String Buffer 单元因子
 #define STRING_BUFFER_SIZE_FACTOR 1024
+// 默认线程名称
+#define DEFAULT_THREAD_NAME "UNKNOWN_THREAD"
+// 主线程名称
+#define MAIN_THREAD_NAME "Main"
 // 主日志器名称
 #define MASTER_LOGGER_NAME "ROOT"
 // 日志输出缓存区大小

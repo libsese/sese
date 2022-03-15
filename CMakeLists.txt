@@ -41,6 +41,11 @@ set(UTIL_SRCS
         src/util/DateTimeFormatter.h
         )
 
+set(THREAD_SRCS
+        src/thread/Thread.h
+        src/thread/Thread.cpp
+        )
+
 set(ROOT_SRCS
         src/Util.cpp
         src/Util.h
@@ -50,6 +55,7 @@ set(ALL_SRCS
         ${UTIL_SRCS}
         ${ROOT_SRCS}
         ${RECORD_SRCS}
+        ${THREAD_SRCS}
         )
 
 function(build type)
@@ -91,3 +97,4 @@ reg_test(TestLogger)
 reg_test(TestDebug)
 reg_test(TestDateTime)
 reg_test(TestDateTimeFormatter)
+reg_test(TestThread)
