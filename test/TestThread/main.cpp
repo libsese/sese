@@ -12,12 +12,20 @@ void proc() {
     auto i = sese::ThreadInfo::getCurrentThread();
     auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
     ROOT_INFO("Current thread is %s", msg)
+
+    auto arg = (int *) i->getArgument();
+    *arg = 1;
 }
 
 int main() {
+    int num = 0;
     sese::Thread thread(proc, "SubThread");
+    thread.setArgument(&num);
     thread.start();
-    thread.join();
+    if (thread.joinable()) {
+        thread.join();
+        ROOT_INFO("num = %d", num);
+    }
 
     ROOT_INFO("Thread's name = %s, pid = %d",
               sese::ThreadInfo::getCurrentThreadName().c_str(),

@@ -56,4 +56,12 @@ namespace sese {
 
         return nullptr;
     }
+
+    bool Thread::joinable() const {
+        return this->th.joinable();
+    }
+
+    void Thread::detach() {
+        this->th.detach();
+    }
 }// namespace sese

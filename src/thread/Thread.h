@@ -1,5 +1,6 @@
 #pragma once
 #include "Config.h"
+#include "util/Noncopyable.h"
 #include <functional>
 #include <thread>
 
@@ -10,28 +11,35 @@
 
 #ifdef _WIN32
 #include <Windows.h>
-#pragma warning (disable : 4251)
+#pragma warning(disable : 4251)
 #endif
 
 namespace sese {
 
-    class API Thread {
+    typedef void *ThreadArgumentPtr;
+
+    class API Thread : Noncopyable {
     public:
         explicit Thread(const std::function<void()> &function, const std::string &name = DEFAULT_THREAD_NAME);
         ~Thread() = default;
 
         void start();
         void join();
+        [[nodiscard]] bool joinable() const;
+        void detach();
         void *run(void *threadSelf);
 
         [[nodiscard]] pid_t getPid() const noexcept { return this->id; }
         [[nodiscard]] const std::string &getThreadName() const noexcept { return this->name; }
+        [[nodiscard]] ThreadArgumentPtr getArgument() const { return this->argument; }
+        void setArgument(ThreadArgumentPtr myArgument) { this->argument = myArgument; }
 
     private:
         std::string name;
         pid_t id = -1;
         std::thread th;
         std::function<void()> function;
+        ThreadArgumentPtr argument = nullptr;
     };
 
     class API ThreadInfo {
