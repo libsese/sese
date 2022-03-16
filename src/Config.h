@@ -18,6 +18,7 @@
 // 异常
 #define EXCEPTION_STRING "Exception"
 #define EXCEPTION_HEADER_STRING "Exception: "
+#define LOGIC_STRING "Logic exception"
 #define INDEX_OUT_OF_BOUNDS_STRING "index out of bounds"
 
 // 默认时区

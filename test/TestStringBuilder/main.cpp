@@ -1,9 +1,9 @@
-#include "util/AbstractStringBuffer.h"
 #include "util/IndexOutOfBoundsException.h"
+#include "util/StringBuilder.h"
 #include <cstdio>
 
 int main() {
-    auto buffer = new sese::AbstractStringBuffer(16);
+    auto buffer = new sese::StringBuilder(16);
     buffer->append("Hello, World. ");
     buffer->append("This test, for the expansion mechanism.");
     puts(buffer->toString().c_str());

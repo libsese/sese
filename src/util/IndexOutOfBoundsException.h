@@ -1,12 +1,12 @@
 #pragma once
-#include "Exception.h"
 #include "Config.h"
+#include "LogicException.h"
 
 namespace sese {
 
-    class IndexOutOfBoundsException : public Exception {
+    class API IndexOutOfBoundsException : public LogicException {
     public:
-        explicit IndexOutOfBoundsException(const std::string &str = INDEX_OUT_OF_BOUNDS_STRING) : Exception(str) {}
+        explicit IndexOutOfBoundsException(const std::string &str = INDEX_OUT_OF_BOUNDS_STRING) : LogicException(str) {}
     };
 
 }// namespace sese

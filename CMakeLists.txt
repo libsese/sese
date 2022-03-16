@@ -1,11 +1,28 @@
-cmake_minimum_required(VERSION 3.0)
-project(sese CXX)
+# 项目信息
+cmake_minimum_required(VERSION 3.12)
+set(SESE_MAJOR_VERSION 0)
+set(SESE_MINOR_VERSION 1)
+project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
 
+# Git 版本信息
+set(SESE_REPO_HASH "")
+set(SESE_REPO_BRANCH "")
+include(Git.cmake)
+get_git_hash(SESE_REPO_HASH)
+get_git_branch(SESE_REPO_BRANCH)
+
+# 项目详情
 set(CMAKE_CXX_STANDARD 20)
 include_directories(./src)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
 enable_testing()
+
+message(STATUS "Project Version : ${CMAKE_PROJECT_VERSION}-${SESE_REPO_BRANCH}.${SESE_REPO_HASH}")
+add_definitions(-DSESE_MAJOR_VERSION=${SESE_MAJOR_VERSION})
+add_definitions(-DSESE_MINOR_VERSION=${SESE_MINOR_VERSION})
+add_definitions(-DSESE_REPO_HASH="${SESE_REPO_HASH}")
+add_definitions(-DSESE_REPO_BRANCH="${SESE_REPO_BRANCH}")
 
 set(RECORD_SRCS
         src/record/AbstractAppender.cpp
@@ -35,10 +52,12 @@ set(UTIL_SRCS
         src/util/DateTime.h
         src/util/TimeSpan.cpp
         src/util/TimeSpan.h
-        src/util/Exception.h
         src/util/IndexOutOfBoundsException.h
         src/util/DateTimeFormatter.cpp
         src/util/DateTimeFormatter.h
+        src/util/Exception.h
+        src/util/LogicException.h
+        src/util/NotInstantiable.h
         )
 
 set(THREAD_SRCS
@@ -47,8 +66,11 @@ set(THREAD_SRCS
         )
 
 set(ROOT_SRCS
+        src/Config.h
         src/Util.cpp
         src/Util.h
+        src/Environment.h
+        src/Environment.cpp
         )
 
 set(ALL_SRCS
@@ -91,10 +113,11 @@ function(reg_test test_name)
 endfunction(reg_test)
 
 reg_test(TestArray)
-reg_test(TestAbstractStringBuffer)
+reg_test(TestStringBuilder)
 reg_test(TestSingleton)
 reg_test(TestLogger)
 reg_test(TestDebug)
 reg_test(TestDateTime)
 reg_test(TestDateTimeFormatter)
 reg_test(TestThread)
+reg_test(TestEnvironment)

@@ -3,8 +3,13 @@
 #include <string>
 #include "Config.h"
 
+#ifdef _WIN32
+#pragma warning (disable : 4275)
+#pragma warning (disable : 4251)
+#endif
+
 namespace sese {
-    class Exception : std::exception {
+    class API Exception : std::exception {
     public:
         Exception() { message = EXCEPTION_STRING; }
 

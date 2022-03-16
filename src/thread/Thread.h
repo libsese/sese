@@ -1,6 +1,7 @@
 #pragma once
 #include "Config.h"
 #include "util/Noncopyable.h"
+#include "util/NotInstantiable.h"
 #include <functional>
 #include <thread>
 
@@ -42,7 +43,7 @@ namespace sese {
         ThreadArgumentPtr argument = nullptr;
     };
 
-    class API ThreadInfo {
+    class API ThreadInfo : NotInstantiable {
     public:
         static pid_t getCurrentThreadId() noexcept;
         static const std::string &getCurrentThreadName() noexcept;
