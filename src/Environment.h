@@ -2,6 +2,10 @@
 #include "Config.h"
 #include "util/NotInstantiable.h"
 
+#ifdef _WIN32
+#pragma warning(disable : 4624)
+#endif
+
 namespace sese {
 
     class API Environment : NotInstantiable {

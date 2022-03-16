@@ -13,6 +13,7 @@
 #ifdef _WIN32
 #include <Windows.h>
 #pragma warning(disable : 4251)
+#pragma warning(disable : 4624)
 #endif
 
 namespace sese {
