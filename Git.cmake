@@ -2,7 +2,7 @@ macro(get_git_hash _git_hash)
     find_package(Git)
     if (GIT_FOUND)
         execute_process(
-                COMMAND ${GIT_EXECUTABLE} log -1 --pretty=format:%h
+                COMMAND ${GIT_EXECUTABLE} --no-pager log -1 --pretty=format:%h
                 OUTPUT_VARIABLE ${_git_hash}
                 OUTPUT_STRIP_TRAILING_WHITESPACE
                 ERROR_QUIET
@@ -16,7 +16,7 @@ macro(get_git_branch _git_branch)
     find_package(Git)
     if (GIT_FOUND)
         execute_process(
-                COMMAND ${GIT_EXECUTABLE} symbolic-ref --short -q HEAD
+                COMMAND ${GIT_EXECUTABLE} --no-pager symbolic-ref --short -q HEAD
                 OUTPUT_VARIABLE ${_git_branch}
                 OUTPUT_STRIP_TRAILING_WHITESPACE
                 ERROR_QUIET
