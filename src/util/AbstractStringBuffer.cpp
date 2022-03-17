@@ -83,12 +83,14 @@ namespace sese {
     }
 
     char AbstractStringBuffer::getCharAt(int index) const {
-        if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
+        // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
+        if (!CheckRange(index, this->cap)) throw IndexOutOfBoundsException();
         return this->buffer[index];
     }
 
     void AbstractStringBuffer::setChatAt(int index, char ch) {
-        if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
+        // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
+        if (!CheckRange(index, this->cap)) throw IndexOutOfBoundsException();
         this->buffer[index] = ch;
     }
 
@@ -102,7 +104,8 @@ namespace sese {
     }
 
     void AbstractStringBuffer::delCharAt(int index) {
-        if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
+        // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
+        if (!CheckRange(index, this->cap))  throw IndexOutOfBoundsException();
         for (int i = index; i < len - 1; i++) {
             this->buffer[i] = this->buffer[i + 1];
         }

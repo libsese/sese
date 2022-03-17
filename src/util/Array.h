@@ -1,5 +1,6 @@
 #pragma once
 #include "IndexOutOfBoundsException.h"
+#include "Util.h"
 
 namespace sese {
 
@@ -15,7 +16,7 @@ namespace sese {
         Array(const std::initializer_list<T> &v) {
             if (v.size() > len) throw IndexOutOfBoundsException();
             int index = 0;
-            for(auto &i : v){
+            for (auto &i: v) {
                 this->values[index] = i;
                 index += 1;
             }
@@ -25,12 +26,14 @@ namespace sese {
 
     public:
         T &operator[](int i) {
-            if (len <= i || i < 0) throw IndexOutOfBoundsException();
+            // if (len <= i || i < 0) throw IndexOutOfBoundsException();
+            if (!CheckRange(i, len)) throw IndexOutOfBoundsException();
             return values[i];
         }
 
         const T &operator[](int i) const {
-            if (len <= i || i < 0) throw IndexOutOfBoundsException();
+            // if (len <= i || i < 0) throw IndexOutOfBoundsException();
+            if (!CheckRange(i, len)) throw IndexOutOfBoundsException();
             return values[i];
         }
     };

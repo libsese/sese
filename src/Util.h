@@ -21,10 +21,10 @@ namespace sese {
 #define sprintf sprintf_s
 #endif
 
-#ifdef __GNUC__
-#define FN __FILE__
-#elif __llvm__
+#ifdef __llvm__
 #define FN __FILE_NAME__
+#elif __GNUC__
+#define FN __FILE__
 #elif _MSC_VER
 #define FN __FILE__
 #endif
@@ -70,3 +70,11 @@ namespace sese {
         ROOT_ERROR(__VA_ARGS__)                                                       \
         assert(x);                                                                    \
     }
+
+// [0, max)
+#define CheckRange(x, max) \
+    ((unsigned int) (x) < (max))
+
+// [min, max]
+#define CheckRangeBetween(x, min, max) \
+    (((x) - (min)) | ((max) - (x)) >= 0)

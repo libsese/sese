@@ -1,5 +1,6 @@
 #include "util/IndexOutOfBoundsException.h"
 #include "util/StringBuilder.h"
+#include "Util.h"
 #include <cstdio>
 
 int main() {
@@ -7,6 +8,7 @@ int main() {
     buffer->append("Hello, World. ");
     buffer->append("This test, for the expansion mechanism.");
     puts(buffer->toString().c_str());
+    ASSERT(buffer->getCharAt(13) == ' ')
 
     buffer->del(0, 13);
     puts(buffer->toString().c_str());
