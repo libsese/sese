@@ -2,6 +2,10 @@
 #include "IndexOutOfBoundsException.h"
 #include "Util.h"
 
+#ifdef _WIN32
+#pragma warning(disable : 4018)
+#endif
+
 namespace sese {
 
     template<typename T, int n>
