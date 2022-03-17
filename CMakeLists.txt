@@ -65,12 +65,17 @@ set(THREAD_SRCS
         src/thread/Thread.cpp
         )
 
+set(SYSTEM_SRCS
+        src/system/Environment.h
+        src/system/Environment.cpp
+        src/system/CpuInfo.h
+        src/system/CpuInfo.cpp
+        )
+
 set(ROOT_SRCS
         src/Config.h
         src/Util.cpp
         src/Util.h
-        src/Environment.h
-        src/Environment.cpp
         )
 
 set(ALL_SRCS
@@ -78,6 +83,7 @@ set(ALL_SRCS
         ${ROOT_SRCS}
         ${RECORD_SRCS}
         ${THREAD_SRCS}
+        ${SYSTEM_SRCS}
         )
 
 function(build type)
@@ -121,3 +127,4 @@ reg_test(TestDateTime)
 reg_test(TestDateTimeFormatter)
 reg_test(TestThread)
 reg_test(TestEnvironment)
+reg_test(TestCpuInfo)
