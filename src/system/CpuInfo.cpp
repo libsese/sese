@@ -2,19 +2,31 @@
 
 #ifdef _WIN32
 #include <intrin.h>
+#define cpuid __cpuid
+#define cpuidex __cpuidex
+#endif
+#ifdef __linux__
+#include <cpuid.h>
+#include <cstring>
+inline void cpuid(int cpuInfo[4], int function_id) {
+    __cpuid(function_id, cpuInfo[0], cpuInfo[1], cpuInfo[2], cpuInfo[3]);
+}
+
+inline void cpuidex(int cpuInfo[4], int function_id, int subfunction_id) {
+    __cpuid_count(function_id, subfunction_id, cpuInfo[0], cpuInfo[1], cpuInfo[2], cpuInfo[3]);
+}
 #endif
 
 namespace sese {
 
     CpuInfo::CpuInfo() {
-#ifdef _WIN32
         Register reg{0, 0, 0, 0};
         // eax 为最高有效函数的 ID 编号
-        __cpuid((int *) &reg, 0);
+        cpuid((int *) &reg, 0);
         int ids = reg.eax;
 
         for (int i = 0; i <= ids; i++) {
-            __cpuidex((int *) &reg, i, 0);
+            cpuidex((int *) &reg, i, 0);
             data.push_back(reg);
         }
 
@@ -41,11 +53,11 @@ namespace sese {
             ECX7 = data[7].ebx;
         }
 
-        __cpuid((int *) &reg, 0x80000000);
+        cpuid((int *) &reg, 0x80000000);
         int exIds = reg.eax;
         char tempBrand[64];
         for (int i = 0x80000000; i < exIds; i++) {
-            __cpuidex((int *) &reg, i, 0);
+            cpuidex((int *) &reg, i, 0);
             exData.push_back(reg);
         }
 
@@ -61,7 +73,6 @@ namespace sese {
             memcpy(tempBrand + 32, (int *) &exData[4], sizeof(Register));
             brand = tempBrand;
         }
-#endif
     }
 
 }// namespace sese
