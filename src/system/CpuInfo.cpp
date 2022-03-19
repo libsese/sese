@@ -1,6 +1,7 @@
 #include "CpuInfo.h"
 
 #ifdef _WIN32
+#pragma warning (disable : 4996)
 #include <intrin.h>
 #define cpuid __cpuid
 #define cpuidex __cpuidex
@@ -73,6 +74,23 @@ namespace sese {
             memcpy(tempBrand + 32, (int *) &exData[4], sizeof(Register));
             brand = tempBrand;
         }
+
+        // 解析 CPU 序列号
+        char tempSerialNumber[17];
+        sprintf(tempSerialNumber, "%08X%08X", data[1].edx, data[1].eax);
+        serialNumber = tempSerialNumber;
+    }
+
+    uint64_t CpuInfo::rdtsc() noexcept {
+#ifdef __linux__
+        unsigned int lo, hi;
+        __asm__ volatile("rdtsc"
+                         : "=a"(lo), "=d"(hi));
+        return ((uint64_t) hi << 32) | lo;
+#endif
+#ifdef _WIN32
+        return __rdtsc();
+#endif
     }
 
 }// namespace sese

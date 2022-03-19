@@ -6,7 +6,7 @@
 using namespace sese;
 
 void isSupport(const std::string &name, bool isSupport) {
-    ROOT_INFO("%s\t%s",
+    ROOT_INFO("%10s %s",
               name.c_str(),
               isSupport ? "Support" : "Not support")
 }
@@ -20,6 +20,8 @@ int main() {
     auto cpuInfo = Singleton<CpuInfo>();
     ROOT_INFO("%s", cpuInfo.getInstance()->getVendor().c_str())
     ROOT_INFO("%s", cpuInfo.getInstance()->getBrand().c_str())
+    ROOT_INFO("%s", cpuInfo.getInstance()->getSerialNumber().c_str())
+
     isSupport("3DNOW", cpuInfo.getInstance()->_3DNOW());
     isSupport("3DNOWEXT", cpuInfo.getInstance()->_3DNOWEXT());
     isSupport("ABM", cpuInfo.getInstance()->ABM());
