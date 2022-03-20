@@ -58,6 +58,8 @@ set(UTIL_SRCS
         src/util/Exception.h
         src/util/LogicException.h
         src/util/NotInstantiable.h
+        src/util/Random.h
+        src/util/Random.cpp
         )
 
 set(THREAD_SRCS
@@ -128,3 +130,4 @@ reg_test(TestDateTimeFormatter)
 reg_test(TestThread)
 reg_test(TestEnvironment)
 reg_test(TestCpuInfo)
+reg_test(TestRandom)
