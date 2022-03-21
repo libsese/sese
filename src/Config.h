@@ -1,4 +1,5 @@
 #pragma once
+#include <stdint.h>
 
 #ifdef _WIN32
 #define pid_t unsigned long

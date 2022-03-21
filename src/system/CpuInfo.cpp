@@ -81,7 +81,7 @@ namespace sese {
         serialNumber = tempSerialNumber;
     }
 
-    uint64_t CpuInfo::rdtsc() noexcept {
+    uint64_t CpuInfo::RDTSC() noexcept {
 #ifdef __linux__
         unsigned int lo, hi;
         __asm__ volatile("rdtsc"

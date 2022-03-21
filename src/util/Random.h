@@ -3,10 +3,13 @@
 
 namespace sese {
     class API Random {
-    public:
-        static int randInt();
-        static int randIntBetween(int min, int max);
+    private:
+        static const uint64_t multiplier;
+        static const uint64_t addend;
+        static const uint64_t mask;
+        static uint64_t seed;
 
-        static double randDouble();
+    public:
+        static uint64_t next();
     };
 }// namespace sese

@@ -1,33 +1,26 @@
 #include "Random.h"
 #include "system/CpuInfo.h"
-#include <limits>
+
+#ifdef _WIN32
+#pragma warning(disable : 4293)
+#endif
 
 namespace sese {
+
+    const uint64_t Random::multiplier = 25214903917L;
+    const uint64_t Random::addend = 11L;
+    const uint64_t Random::mask = (1L << 48) - 1;
+    uint64_t Random::seed = CpuInfo::RDTSC();
 
     struct LongLongSpilter {
         unsigned low;
         [[maybe_unused]] unsigned high;
     };
 
-    int Random::randInt() {
-        auto rdtsc = CpuInfo::rdtsc();
-        auto *reg = (LongLongSpilter *) &rdtsc;
-        srand(reg->low);
-        return rand();
-    }
-
-    int Random::randIntBetween(int min, int max) {
-        auto rdtsc = CpuInfo::rdtsc();
-        auto *reg = (LongLongSpilter *) &rdtsc;
-        srand(reg->low);
-        return min + rand() % (max - min);
-    }
-
-    double Random::randDouble() {
-        auto rdtsc = CpuInfo::rdtsc();
-        auto *reg = (LongLongSpilter *) &rdtsc;
-        srand(reg->low);
-        return (double) rand() / RAND_MAX;
+    uint64_t Random::next() {
+        auto unit = (LongLongSpilter *) &seed;
+        seed = (unit->low * multiplier + addend) & mask;
+        return seed ^ CpuInfo::RDTSC();
     }
 
 }// namespace sese

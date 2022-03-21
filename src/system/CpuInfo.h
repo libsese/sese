@@ -96,7 +96,7 @@ namespace sese {
         [[nodiscard]] bool _3DNOW() const noexcept { return this->isAMD && this->EDX81[31]; }
 
     public:
-        [[nodiscard]] static uint64_t rdtsc() noexcept;
+        [[nodiscard]] static uint64_t RDTSC() noexcept;
 
     private:
         std::bitset<32> ECX1;
