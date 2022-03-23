@@ -1,12 +1,14 @@
 #pragma once
-#include <cstdint>
+#include <cinttypes>
 
 #ifdef _WIN32
+#include <Windows.h>
 #ifdef WINDOWS_DLL
 #define API __declspec(dllexport)
 #else
 #define API
 #endif
+typedef int64_t  pid_t;
 #endif
 
 #ifdef __linux__

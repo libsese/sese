@@ -1,8 +1,7 @@
 #include "DateTime.h"
-#ifdef _WIN32
 
-#include <winsock.h>
-int gettimeofday(struct timeval *tp, void *tzp) {
+#ifdef _WIN32
+int32_t getTimeOfDate(struct timeval *tp, void *tzp) {
     time_t clock;
     struct tm tm {};
     SYSTEMTIME wtm;
@@ -19,8 +18,12 @@ int gettimeofday(struct timeval *tp, void *tzp) {
     tp->tv_usec = wtm.wMilliseconds * 1000;
     return 0;
 }
-#else
+#endif
+#ifdef __linux__
 #include <sys/time.h>
+int32_t getTimeOfDate(struct timeval *tp, void *tzp) {
+    return gettimeofday(tp, tzp);
+}
 #endif
 
 static const int MonDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -30,7 +33,7 @@ namespace sese {
 
     DateTime::Ptr DateTime::now(int32_t utc) noexcept {
         timeval tv{};
-        gettimeofday(&tv, nullptr);
+        getTimeOfDate(&tv, nullptr);
         DateTime::Ptr dateTime = std::make_shared<DateTime>(tv.tv_sec, utc);
 
         dateTime->milliseconds = (int32_t) (tv.tv_usec / 1000);

@@ -18,7 +18,7 @@ namespace sese {
 }// namespace sese
 
 #ifdef _WIN32
-#define sprintf sprintf_s
+#pragma warning(disable : 4996)
 #endif
 
 #ifdef __llvm__

@@ -1,5 +1,4 @@
 #include "Logger.h"
-#include <cstdio>
 
 namespace sese {
 

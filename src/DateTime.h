@@ -3,7 +3,10 @@
 #include "TimeSpan.h"
 #include <memory>
 
+inline int32_t getTimeOfDate(struct timeval *tp, void *tzp);
+
 namespace sese {
+
     class API DateTime {
     public:
         typedef std::shared_ptr<DateTime> Ptr;

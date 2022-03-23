@@ -5,7 +5,7 @@ static const char *TYPE_MAIN_THREAD = "Main Thread";
 static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";
 
 void proc() {
-    ROOT_INFO("Thread's name = %s, pid = %d",
+    ROOT_INFO("Thread's name = %s, pid = %" PRId64,
               sese::Thread::getCurrentThreadName().c_str(),
               sese::Thread::getCurrentThreadId())
 
@@ -27,7 +27,7 @@ int main() {
         ROOT_INFO("num = %d", num);
     }
 
-    ROOT_INFO("Thread's name = %s, pid = %d",
+    ROOT_INFO("Thread's name = %s, pid = %" PRId64,
               sese::Thread::getCurrentThreadName().c_str(),
               sese::Thread::getCurrentThreadId())
 

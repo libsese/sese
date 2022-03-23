@@ -18,6 +18,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
 enable_testing()
 
+# 版本宏
 message(STATUS "Project Version : ${CMAKE_PROJECT_VERSION}-${SESE_REPO_BRANCH}.${SESE_REPO_HASH}")
 add_definitions(-DSESE_MAJOR_VERSION=${SESE_MAJOR_VERSION})
 add_definitions(-DSESE_MINOR_VERSION=${SESE_MINOR_VERSION})
@@ -84,32 +85,28 @@ set(ALL_SRCS
         ${SYSTEM_SRCS}
         )
 
-function(build type)
-    if (${type} MATCHES "shared")
-        add_definitions(-DWINDOWS_DLL)
-        add_library(sese SHARED ${ALL_SRCS})
-    endif (${type} MATCHES "shared")
-    if (${type} MATCHES "static")
-        add_library(sese STATIC ${ALL_SRCS})
-    endif (${type} MATCHES "static")
-endfunction(build)
-
-# build 参数可以是 shared 和 static，代表其生成类型
-build(shared)
-
-if (CMAKE_SYSTEM_NAME MATCHES "Linux")
-    message(STATUS "Add library : thread")
-    find_package(Threads)
-    target_link_libraries(sese ${CMAKE_THREAD_LIBS_INIT})
-endif (CMAKE_SYSTEM_NAME MATCHES "Linux")
+message(STATUS "C Compiler : ${CMAKE_C_COMPILER}")
+message(STATUS "CXX Compiler : ${CMAKE_CXX_COMPILER}")
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    add_definitions(-Dpid_t=uint32_t)
+    set(NATIVE_WINDOWS_SRCS)
+    add_definitions(-DWINDOWS_DLL)
+    add_library(sese SHARED ${ALL_SRCS} ${NATIVE_WINDOWS_SRCS})
+
     message(STATUS "Add library : wsock32")
     target_link_libraries(sese wsock32)
     #    message(STATUS "Add library : dbghelp")
     #    target_link_libraries(sese dbghelp)
-endif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+endif ()
+
+if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+    set(NATIVE_LINUX_SRCS)
+    add_library(sese SHARED ${ALL_SRCS} ${NATIVE_LINUX_SRCS})
+
+    message(STATUS "Add library : thread")
+    find_package(Threads)
+    target_link_libraries(sese ${CMAKE_THREAD_LIBS_INIT})
+endif ()
 
 function(reg_test test_name)
     add_executable(${test_name} test/${test_name}/main.cpp)

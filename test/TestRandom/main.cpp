@@ -6,7 +6,7 @@ using sese::Random;
 
 int main() {
     for (int i = 0; i < 20; i++) {
-        printf("%lld", Random::next());
+        printf("%" PRId64 "\n", Random::next());
     }
     return 0;
 }
