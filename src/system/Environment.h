@@ -1,6 +1,6 @@
 #pragma once
 #include "Config.h"
-#include "util/NotInstantiable.h"
+#include "NotInstantiable.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4624)

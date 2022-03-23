@@ -15,21 +15,17 @@ namespace sese {
     thread_local std::string currentThreadName{MAIN_THREAD_NAME};
     thread_local sese::Thread *currentThread = nullptr;
 
-    pid_t ThreadInfo::getCurrentThreadId() noexcept {
+    pid_t Thread::getCurrentThreadId() noexcept {
         return currentThreadId;
     }
 
-    const std::string &ThreadInfo::getCurrentThreadName() noexcept {
+    const std::string &Thread::getCurrentThreadName() noexcept {
         return currentThreadName;
     }
 
-    sese::Thread *ThreadInfo::getCurrentThread() noexcept {
+    sese::Thread *Thread::getCurrentThread() noexcept {
         return currentThread;
     }
-}// namespace sese
-
-// Thread.class
-namespace sese {
 
     Thread::Thread(const std::function<void()> &function, const std::string &name) {
         this->name = name;

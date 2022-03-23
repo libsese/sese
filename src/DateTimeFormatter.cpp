@@ -102,9 +102,9 @@ std::string sese::DateTimeFormatter::format(const sese::DateTime &dateTime, cons
                     }
                     builder->append(buffer);
                 } else if (c == 3) {
-                    builder->append(WkDay[dateTime.getDayofWeek()]);
+                    builder->append(WkDay[dateTime.getDayOfWeek()]);
                 } else if (c == 4) {
-                    builder->append(WeekDay[dateTime.getDayofWeek()]);
+                    builder->append(WeekDay[dateTime.getDayOfWeek()]);
                 }
                 i += c;
                 memset(buffer, 0, 4);

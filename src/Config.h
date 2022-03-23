@@ -1,9 +1,7 @@
 #pragma once
-#include <stdint.h>
+#include <cstdint>
 
 #ifdef _WIN32
-#define pid_t unsigned long
-
 #ifdef WINDOWS_DLL
 #define API __declspec(dllexport)
 #else

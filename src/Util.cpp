@@ -11,10 +11,7 @@ namespace sese {
             auto appender = std::make_shared<ConsoleAppender>(formatter);
             logger->addAppender(appender);
         }
-        ~InitStruct() {
-            // Logger 不需要手动释放
-            // delete sese::Singleton<Logger>::getInstance();
-        }
+        ~InitStruct() = default;
     } initStruct; /* NOLINT */
 
     Logger *getLogger() noexcept {

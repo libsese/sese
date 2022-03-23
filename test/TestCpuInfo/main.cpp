@@ -1,7 +1,7 @@
 #include "Util.h"
 #include "record/FileAppender.h"
 #include "system/CpuInfo.h"
-#include "util/Singleton.h"
+#include "Singleton.h"
 
 using namespace sese;
 

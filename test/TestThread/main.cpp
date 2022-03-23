@@ -6,10 +6,10 @@ static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";
 
 void proc() {
     ROOT_INFO("Thread's name = %s, pid = %d",
-              sese::ThreadInfo::getCurrentThreadName().c_str(),
-              sese::ThreadInfo::getCurrentThreadId())
+              sese::Thread::getCurrentThreadName().c_str(),
+              sese::Thread::getCurrentThreadId())
 
-    auto i = sese::ThreadInfo::getCurrentThread();
+    auto i = sese::Thread::getCurrentThread();
     auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
     ROOT_INFO("Current thread is %s", msg)
 
@@ -28,10 +28,10 @@ int main() {
     }
 
     ROOT_INFO("Thread's name = %s, pid = %d",
-              sese::ThreadInfo::getCurrentThreadName().c_str(),
-              sese::ThreadInfo::getCurrentThreadId())
+              sese::Thread::getCurrentThreadName().c_str(),
+              sese::Thread::getCurrentThreadId())
 
-    auto i = sese::ThreadInfo::getCurrentThread();
+    auto i = sese::Thread::getCurrentThread();
     auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
     ROOT_INFO("Current thread is %s", msg)
 

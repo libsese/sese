@@ -1,5 +1,5 @@
 #include "SimpleFormatter.h"
-#include "util/DateTimeFormatter.h"
+#include "DateTimeFormatter.h"
 #include <sstream>
 
 #ifdef _WIN32

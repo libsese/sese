@@ -1,5 +1,5 @@
 #include "system/CpuInfo.h"
-#include "util/Random.h"
+#include "Random.h"
 
 using sese::CpuInfo;
 using sese::Random;

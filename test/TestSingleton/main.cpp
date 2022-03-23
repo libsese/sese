@@ -1,4 +1,4 @@
-#include "util/Singleton.h"
+#include "Singleton.h"
 
 int main() {
     auto i = sese::SingletonPtr<int>::getInstance();

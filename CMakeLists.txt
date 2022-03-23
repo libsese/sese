@@ -39,27 +39,30 @@ set(RECORD_SRCS
         src/record/FileAppender.h
         )
 
-set(UTIL_SRCS
-        src/util/AbstractStringBuffer.cpp
-        src/util/AbstractStringBuffer.h
-        src/util/Array.h
-        src/util/Noncopyable.h
-        src/util/Singleton.h
-        src/util/StringBuilder.h
-        src/util/Test.cpp
-        src/util/Test.h
-        src/util/DateTime.cpp
-        src/util/DateTime.h
-        src/util/TimeSpan.cpp
-        src/util/TimeSpan.h
-        src/util/IndexOutOfBoundsException.h
-        src/util/DateTimeFormatter.cpp
-        src/util/DateTimeFormatter.h
-        src/util/Exception.h
-        src/util/LogicException.h
-        src/util/NotInstantiable.h
-        src/util/Random.h
-        src/util/Random.cpp
+set(ROOT_SRCS
+        src/AbstractStringBuffer.cpp
+        src/AbstractStringBuffer.h
+        src/Array.h
+        src/Noncopyable.h
+        src/Singleton.h
+        src/StringBuilder.h
+        src/Test.cpp
+        src/Test.h
+        src/DateTime.cpp
+        src/DateTime.h
+        src/TimeSpan.cpp
+        src/TimeSpan.h
+        src/IndexOutOfBoundsException.h
+        src/DateTimeFormatter.cpp
+        src/DateTimeFormatter.h
+        src/Exception.h
+        src/LogicException.h
+        src/NotInstantiable.h
+        src/Random.h
+        src/Random.cpp
+        src/Config.h
+        src/Util.cpp
+        src/Util.h
         )
 
 set(THREAD_SRCS
@@ -74,14 +77,7 @@ set(SYSTEM_SRCS
         src/system/CpuInfo.cpp
         )
 
-set(ROOT_SRCS
-        src/Config.h
-        src/Util.cpp
-        src/Util.h
-        )
-
 set(ALL_SRCS
-        ${UTIL_SRCS}
         ${ROOT_SRCS}
         ${RECORD_SRCS}
         ${THREAD_SRCS}
@@ -108,6 +104,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
 endif (CMAKE_SYSTEM_NAME MATCHES "Linux")
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+    add_definitions(-Dpid_t=uint32_t)
     message(STATUS "Add library : wsock32")
     target_link_libraries(sese wsock32)
     #    message(STATUS "Add library : dbghelp")
