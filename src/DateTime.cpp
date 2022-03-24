@@ -1,7 +1,7 @@
 #include "DateTime.h"
 
 #ifdef _WIN32
-int32_t getTimeOfDate(struct timeval *tp, void *tzp) {
+int32_t getTimeOfDate(struct timeval *tp) {
     time_t clock;
     struct tm tm {};
     SYSTEMTIME wtm;
@@ -21,8 +21,8 @@ int32_t getTimeOfDate(struct timeval *tp, void *tzp) {
 #endif
 #ifdef __linux__
 #include <sys/time.h>
-int32_t getTimeOfDate(struct timeval *tp, void *tzp) {
-    return gettimeofday(tp, tzp);
+int32_t getTimeOfDate(struct timeval *tp) {
+    return gettimeofday(tp, nullptr);
 }
 #endif
 
@@ -33,7 +33,7 @@ namespace sese {
 
     DateTime::Ptr DateTime::now(int32_t utc) noexcept {
         timeval tv{};
-        getTimeOfDate(&tv, nullptr);
+        getTimeOfDate(&tv);
         DateTime::Ptr dateTime = std::make_shared<DateTime>(tv.tv_sec, utc);
 
         dateTime->milliseconds = (int32_t) (tv.tv_usec / 1000);

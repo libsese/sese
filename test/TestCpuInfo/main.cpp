@@ -3,7 +3,7 @@
 #include "system/CpuInfo.h"
 #include "Singleton.h"
 
-#define FILTER_TEST_CPU_INFO "CPU_INFO"
+#define FILTER_TEST_CPU_INFO "fCPU_INFO"
 
 using namespace sese;
 

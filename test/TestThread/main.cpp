@@ -1,7 +1,7 @@
 #include "Util.h"
 #include "thread/Thread.h"
 
-#define FILTER_TEST_THREAD "THREAD"
+#define FILTER_TEST_THREAD "fTHREAD"
 
 static const char *TYPE_MAIN_THREAD = "Main Thread";
 static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";

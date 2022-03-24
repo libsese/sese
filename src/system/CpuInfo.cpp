@@ -1,4 +1,4 @@
-#include "CpuInfo.h"
+#include "system/CpuInfo.h"
 
 #ifdef _WIN32
 #pragma warning (disable : 4996)

@@ -1,7 +1,7 @@
 #include "Util.h"
 #include "record/FileAppender.h"
 
-#define FILTER_TEST_LOGGER "LOGGER"
+#define FILTER_TEST_LOGGER "fLOGGER"
 
 int main() {
     auto logger = sese::getLogger();

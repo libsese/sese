@@ -1,7 +1,7 @@
 #include "Util.h"
 #include "DateTime.h"
 
-#define FILTER_TEST_DATETIME "DATETIME"
+#define FILTER_TEST_DATETIME "fDATETIME"
 
 int main() {
     auto start = sese::DateTime::now(8);

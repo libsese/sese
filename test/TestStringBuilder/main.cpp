@@ -1,9 +1,9 @@
 #include "IndexOutOfBoundsException.h"
-#include "StringBuilder.h"
+#include "record/StringBuilder.h"
 #include "Util.h"
 #include <cstdio>
 
-#define FILTER_TEST_STRING_BUILDER "STRING_BUILDER"
+#define FILTER_TEST_STRING_BUILDER "fSTRING_BUILDER"
 
 int main() {
     auto buffer = new sese::StringBuilder(16);

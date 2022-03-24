@@ -13,7 +13,7 @@ get_git_branch(SESE_REPO_BRANCH)
 
 # 项目详情
 set(CMAKE_CXX_STANDARD 20)
-include_directories(./src)
+include_directories(${PROJECT_SOURCE_DIR}/include/)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
 enable_testing()
@@ -25,72 +25,29 @@ add_definitions(-DSESE_MINOR_VERSION=${SESE_MINOR_VERSION})
 add_definitions(-DSESE_REPO_HASH="${SESE_REPO_HASH}")
 add_definitions(-DSESE_REPO_BRANCH="${SESE_REPO_BRANCH}")
 
-set(RECORD_SRCS
-        src/record/AbstractAppender.cpp
-        src/record/AbstractAppender.h
-        src/record/Event.h
-        src/record/Formatter.h
-        src/record/SimpleFormatter.cpp
-        src/record/SimpleFormatter.h
-        src/record/ConsoleAppender.cpp
-        src/record/ConsoleAppender.h
-        src/record/Logger.cpp
-        src/record/Logger.h
-        src/record/FileAppender.cpp
-        src/record/FileAppender.h
-        )
-
-set(ROOT_SRCS
-        src/AbstractStringBuffer.cpp
-        src/AbstractStringBuffer.h
-        src/Array.h
-        src/Noncopyable.h
-        src/Singleton.h
-        src/StringBuilder.h
-        src/Test.cpp
-        src/Test.h
-        src/DateTime.cpp
-        src/DateTime.h
-        src/TimeSpan.cpp
-        src/TimeSpan.h
-        src/IndexOutOfBoundsException.h
-        src/DateTimeFormatter.cpp
-        src/DateTimeFormatter.h
-        src/Exception.h
-        src/LogicException.h
-        src/NotInstantiable.h
-        src/Random.h
-        src/Random.cpp
-        src/Config.h
-        src/Util.cpp
-        src/Util.h
-        )
-
-set(THREAD_SRCS
-        src/thread/Thread.h
-        src/thread/Thread.cpp
-        )
-
-set(SYSTEM_SRCS
-        src/system/Environment.h
-        src/system/Environment.cpp
-        src/system/CpuInfo.h
-        src/system/CpuInfo.cpp
-        )
-
 set(ALL_SRCS
-        ${ROOT_SRCS}
-        ${RECORD_SRCS}
-        ${THREAD_SRCS}
-        ${SYSTEM_SRCS}
+        src/record/AbstractAppender.cpp
+        src/record/SimpleFormatter.cpp
+        src/record/ConsoleAppender.cpp
+        src/record/Logger.cpp
+        src/record/FileAppender.cpp
+        src/AbstractStringBuffer.cpp
+        src/Test.cpp
+        src/DateTime.cpp
+        src/TimeSpan.cpp
+        src/DateTimeFormatter.cpp
+        src/Random.cpp
+        src/Util.cpp
+        src/thread/Thread.cpp
+        src/system/Environment.cpp
+        src/system/CpuInfo.cpp
         )
 
 message(STATUS "C Compiler : ${CMAKE_C_COMPILER}")
 message(STATUS "CXX Compiler : ${CMAKE_CXX_COMPILER}")
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    set(NATIVE_WINDOWS_SRCS
-            src/native/win/Config.h)
+    set(NATIVE_WINDOWS_SRCS)
     add_definitions(-DWINDOWS_DLL)
     add_definitions(-DNEED_DBGHELP)
     add_library(sese SHARED ${ALL_SRCS} ${NATIVE_WINDOWS_SRCS})
@@ -102,14 +59,22 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
 endif ()
 
 if (CMAKE_SYSTEM_NAME MATCHES "Linux")
-    set(NATIVE_LINUX_SRCS
-            src/native/linux/Config.h)
+    set(NATIVE_LINUX_SRCS)
     add_library(sese SHARED ${ALL_SRCS} ${NATIVE_LINUX_SRCS})
+    set_target_properties(sese PROPERTIES VERSION ${PROJECT_VERSION})
 
     message(STATUS "Add library : thread")
     find_package(Threads)
     target_link_libraries(sese ${CMAKE_THREAD_LIBS_INIT})
 endif ()
+
+# 安装脚本
+install(TARGETS sese
+        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
+        DESTINATION "include/${PROJECT_NAME}")
 
 function(reg_test test_name)
     add_executable(${test_name} test/${test_name}/main.cpp)

@@ -1,7 +1,7 @@
 #include "system/Environment.h"
 #include "Util.h"
 
-#define FILTER_TEST_ENV "ENV"
+#define FILTER_TEST_ENV "fENV"
 
 using sese::Environment;
 
