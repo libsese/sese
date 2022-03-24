@@ -21,7 +21,7 @@ namespace sese {
 
     class API Thread : Noncopyable {
     public:
-        explicit Thread(const std::function<void()> &function, const std::string &name = DEFAULT_THREAD_NAME);
+        explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);
         ~Thread() = default;
 
         void start();

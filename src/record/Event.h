@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Config.h"
 #include "DateTime.h"
 #include <memory>
@@ -20,7 +21,8 @@ namespace sese {
         typedef std::shared_ptr<Event> Ptr;
 
     public:
-        Event(const DateTime::Ptr &dateTime, Level lv, const char *threadName, pid_t id, const char *file, int line, const char *msg) noexcept {
+        Event(const DateTime::Ptr &dateTime, Level lv, const char *threadName, pid_t id, const char *file, int line,
+              const char *msg, const char *filter = RECORD_DEFAULT_FILTER) noexcept {
             this->dateTime = dateTime;
             this->level = lv;
             this->threadName = threadName;
@@ -28,6 +30,7 @@ namespace sese {
             this->file = file;
             this->line = line;
             this->message = msg;
+            this->filter = filter;
         }
 
         [[nodiscard]] DateTime::Ptr getTime() const noexcept { return this->dateTime; }
@@ -38,6 +41,7 @@ namespace sese {
         [[nodiscard]] const char *getMessage() const noexcept { return this->message; }
         [[nodiscard]] const char *getThreadName() const noexcept { return this->threadName; }
         [[nodiscard]] const char *getLoggerName() const noexcept { return this->logName; }
+        [[nodiscard]] const char *getFilter() const noexcept { return this->filter; }
 
         void setLogName(const char *name) noexcept { this->logName = name; }
 
@@ -50,5 +54,6 @@ namespace sese {
         int line;
         const char *message = nullptr;
         const char *logName = nullptr;
+        const char *filter = nullptr;
     };
 }// namespace sese

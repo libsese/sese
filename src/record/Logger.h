@@ -13,7 +13,7 @@ namespace sese {
     public:
         typedef std::shared_ptr<Logger> Ptr;
 
-        explicit Logger(const char *name = MASTER_LOGGER_NAME) noexcept {
+        explicit Logger(const char *name = RECORD_MASTER_LOGGER_NAME) noexcept {
             this->name = name;
         }
 

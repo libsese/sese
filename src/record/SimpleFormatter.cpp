@@ -24,7 +24,8 @@ namespace sese {
         }
     }
 
-    SimpleFormatter::SimpleFormatter(const std::string &textPattern, const std::string &timePattern) noexcept : Formatter() {
+    SimpleFormatter::SimpleFormatter(const std::string &textPattern, const std::string &timePattern) noexcept
+            : Formatter() {
         this->textPattern = textPattern;
         this->timePattern = timePattern;
     }
@@ -66,8 +67,15 @@ namespace sese {
                             }
                             break;
                         case 'f':
-                            stream << event->getFileName();
-                            i += 1;
+                            if (textPattern[i + 2] == 'i') {
+                                stream << event->getFilter();
+                                i += 2;
+                            } else if (textPattern[i + 2] == 'n') {
+                                stream << event->getFileName();
+                                i += 2;
+                            } else {
+                                i += 1;
+                            }
                             break;
                         case 't':
                             if (textPattern[i + 2] == 'h') {

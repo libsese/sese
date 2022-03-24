@@ -1,6 +1,8 @@
 #include "Util.h"
 
+#define FILTER_TEST_ASSERT "ASSERT"
+
 int main() {
-    ASSERT(true)
-    ASSERTEX(true, "Hello")
+    ASSERT(FILTER_TEST_ASSERT, true)
+    return 0;
 }

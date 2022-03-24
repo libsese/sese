@@ -3,12 +3,14 @@
 #include "Util.h"
 #include <cstdio>
 
+#define FILTER_TEST_STRING_BUILDER "STRING_BUILDER"
+
 int main() {
     auto buffer = new sese::StringBuilder(16);
     buffer->append("Hello, World. ");
     buffer->append("This test, for the expansion mechanism.");
     puts(buffer->toString().c_str());
-    ASSERT(buffer->getCharAt(13) == ' ')
+    ASSERT(FILTER_TEST_STRING_BUILDER, buffer->getCharAt(13) == ' ')
 
     buffer->del(0, 13);
     puts(buffer->toString().c_str());

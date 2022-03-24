@@ -89,8 +89,10 @@ message(STATUS "C Compiler : ${CMAKE_C_COMPILER}")
 message(STATUS "CXX Compiler : ${CMAKE_CXX_COMPILER}")
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    set(NATIVE_WINDOWS_SRCS)
+    set(NATIVE_WINDOWS_SRCS
+            src/native/win/Config.h)
     add_definitions(-DWINDOWS_DLL)
+    add_definitions(-DNEED_DBGHELP)
     add_library(sese SHARED ${ALL_SRCS} ${NATIVE_WINDOWS_SRCS})
 
     message(STATUS "Add library : wsock32")
@@ -100,7 +102,8 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
 endif ()
 
 if (CMAKE_SYSTEM_NAME MATCHES "Linux")
-    set(NATIVE_LINUX_SRCS)
+    set(NATIVE_LINUX_SRCS
+            src/native/linux/Config.h)
     add_library(sese SHARED ${ALL_SRCS} ${NATIVE_LINUX_SRCS})
 
     message(STATUS "Add library : thread")

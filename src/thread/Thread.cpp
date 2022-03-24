@@ -12,7 +12,7 @@ static pid_t getPid() noexcept {
 // ThreadInfo.class
 namespace sese {
     thread_local pid_t currentThreadId = getPid();
-    thread_local std::string currentThreadName{MAIN_THREAD_NAME};
+    thread_local std::string currentThreadName{THREAD_MAIN_NAME};
     thread_local sese::Thread *currentThread = nullptr;
 
     pid_t Thread::getCurrentThreadId() noexcept {

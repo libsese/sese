@@ -5,7 +5,7 @@
 #include "record/Logger.h"
 #include "record/SimpleFormatter.h"
 #include "thread/Thread.h"
-#include <cassert>
+#include "Config.h"
 
 namespace sese {
 
@@ -29,26 +29,26 @@ namespace sese {
 #define FN __FILE__
 #endif
 
-#define ROOT_LOG(LEVEL, ...)                                                                                                                                                                       \
-    {                                                                                                                                                                                              \
-        char buf[LOGGER_OUTPUT_BUFFER];                                                                                                                                                            \
-        sprintf(buf, __VA_ARGS__);                                                                                                                                                                 \
-        sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), LEVEL, sese::Thread::getCurrentThreadName().c_str(), sese::Thread::getCurrentThreadId(), FN, __LINE__, buf); \
-        sese::Logger *logger = sese::getLogger();                                                                                                                                                  \
-        logger->log(event);                                                                                                                                                                        \
+#define ROOT_LOG(LEVEL, FILTER, ...)                                                                                                                                                                       \
+    {                                                                                                                                                                                                      \
+        char buf[RECORD_OUTPUT_BUFFER];                                                                                                                                                                    \
+        sprintf(buf, __VA_ARGS__);                                                                                                                                                                         \
+        sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), LEVEL, sese::Thread::getCurrentThreadName().c_str(), sese::Thread::getCurrentThreadId(), FN, __LINE__, buf, FILTER); \
+        sese::Logger *logger = sese::getLogger();                                                                                                                                                          \
+        logger->log(event);                                                                                                                                                                                \
     }
 
-#define ROOT_DEBUG(...) \
-    ROOT_LOG(sese::Level::DEBUG, __VA_ARGS__)
+#define ROOT_DEBUG(FILTER, ...) \
+    ROOT_LOG(sese::Level::DEBUG, FILTER, __VA_ARGS__)
 
-#define ROOT_INFO(...) \
-    ROOT_LOG(sese::Level::INFO, __VA_ARGS__)
+#define ROOT_INFO(FILTER, ...) \
+    ROOT_LOG(sese::Level::INFO, FILTER, __VA_ARGS__)
 
-#define ROOT_WARN(...) \
-    ROOT_LOG(sese::Level::WARN, __VA_ARGS__)
+#define ROOT_WARN(FILTER, ...) \
+    ROOT_LOG(sese::Level::WARN, FILTER, __VA_ARGS__)
 
-#define ROOT_ERROR(...) \
-    ROOT_LOG(sese::Level::ERR, __VA_ARGS__)
+#define ROOT_ERROR(FILTER, ...) \
+    ROOT_LOG(sese::Level::ERR, FILTER, __VA_ARGS__)
 
 #if defined __GNUC__ || __llvm__
 #define LIKELY(x) __builtin_expect(!!(x), 1)
@@ -58,17 +58,10 @@ namespace sese {
 #define UNLIKELY(x) (x)
 #endif
 
-#define ASSERT(x)                                                                     \
-    if (UNLIKELY(!(x))) {                                                             \
-        ROOT_ERROR("%s", sese::backtrace2String(5, WILL_SKIP, "Backtrace ").c_str()); \
-        assert(x);                                                                    \
-    }
-
-#define ASSERTEX(x, ...)                                                              \
-    if (UNLIKELY(!(x))) {                                                             \
-        ROOT_ERROR("%s", sese::backtrace2String(5, WILL_SKIP, "Backtrace ").c_str()); \
-        ROOT_ERROR(__VA_ARGS__)                                                       \
-        assert(x);                                                                    \
+#define ASSERT(FILTER, x)                                                                     \
+    if (UNLIKELY(!(x))) {                                                                     \
+        ROOT_ERROR(FILTER, "%s", sese::backtrace2String(5, WILL_SKIP, "Backtrace ").c_str()); \
+        assert(x);                                                                            \
     }
 
 // [0, max)

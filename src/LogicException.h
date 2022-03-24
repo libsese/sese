@@ -5,7 +5,7 @@ namespace sese {
 
     class API LogicException : public Exception {
     public:
-        explicit LogicException(const std::string &str = LOGIC_STRING) : Exception(str) {}
+        explicit LogicException(const std::string &str = EXCEPTION_LOGIC_STRING) : Exception(str) {}
     };
 
 }// namespace sese

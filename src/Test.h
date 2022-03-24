@@ -3,9 +3,6 @@
 #include <string>
 
 #ifdef _WIN32
-#if NEED_DBGHELP == 1
-#pragma comment(lib, "DbgHelp.lib")
-#endif
 #define WILL_SKIP 1
 #endif
 

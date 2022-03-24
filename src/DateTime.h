@@ -11,11 +11,11 @@ namespace sese {
     public:
         typedef std::shared_ptr<DateTime> Ptr;
 
-        static DateTime::Ptr now(int32_t utc = DEFAULT_TIME_ZONE) noexcept;
+        static DateTime::Ptr now(int32_t utc = TIME_DEFAULT_ZONE) noexcept;
 
-        explicit DateTime(int64_t timestamp, int32_t utc = DEFAULT_TIME_ZONE) noexcept;
+        explicit DateTime(int64_t timestamp, int32_t utc = TIME_DEFAULT_ZONE) noexcept;
 
-        DateTime(int64_t timestamp, int64_t u_sec, int32_t utc = DEFAULT_TIME_ZONE) noexcept;
+        DateTime(int64_t timestamp, int64_t u_sec, int32_t utc = TIME_DEFAULT_ZONE) noexcept;
 
     public:
         [[nodiscard]] bool isLeapYear() const noexcept { return this->isLeap; }

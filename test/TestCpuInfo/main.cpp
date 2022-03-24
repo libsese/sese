@@ -3,10 +3,13 @@
 #include "system/CpuInfo.h"
 #include "Singleton.h"
 
+#define FILTER_TEST_CPU_INFO "CPU_INFO"
+
 using namespace sese;
 
 void isSupport(const std::string &name, bool isSupport) {
-    ROOT_INFO("%10s %s",
+    ROOT_INFO(FILTER_TEST_CPU_INFO,
+              "%10s %s",
               name.c_str(),
               isSupport ? "Support" : "Not support")
 }
@@ -18,9 +21,9 @@ int main() {
     logger->addAppender(appender);
 
     auto cpuInfo = Singleton<CpuInfo>();
-    ROOT_INFO("%s", cpuInfo.getInstance()->getVendor().c_str())
-    ROOT_INFO("%s", cpuInfo.getInstance()->getBrand().c_str())
-    ROOT_INFO("%s", cpuInfo.getInstance()->getSerialNumber().c_str())
+    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", cpuInfo.getInstance()->getVendor().c_str())
+    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", cpuInfo.getInstance()->getBrand().c_str())
+    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", cpuInfo.getInstance()->getSerialNumber().c_str())
 
     isSupport("3DNOW", cpuInfo.getInstance()->_3DNOW());
     isSupport("3DNOWEXT", cpuInfo.getInstance()->_3DNOWEXT());

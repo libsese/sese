@@ -8,7 +8,6 @@
 
 namespace sese {
 #ifdef __linux__
-
     void backtrace(std::vector<std::string> &bt, int size, int skip) {
         void **array = (void **) malloc(sizeof(void *) * size);
         size_t s = ::backtrace(array, size);
@@ -39,12 +38,11 @@ namespace sese {
 
 #ifdef _WIN32
 #include <Windows.h>
-#if NEED_DBGHELP == 1
+#ifdef NEED_DBGHELP
 #include <DbgHelp.h>
 #endif
-
     std::string backtrace2String(int size, int skip, const std::string &prefix) {
-#if NEED_DBGHELP == 1
+#ifdef NEED_DBGHELP
         void **pStack = (void **) malloc(sizeof(void *) * size);
 
         HANDLE process = GetCurrentProcess();

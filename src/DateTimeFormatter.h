@@ -38,8 +38,8 @@ namespace sese {
 
     class API DateTimeFormatter {
     public:
-        static std::string format(const DateTime &dateTime, const std::string &pattern = DEFAULT_TIME_PATTERN);
+        static std::string format(const DateTime &dateTime, const std::string &pattern = TIME_DEFAULT_PATTERN);
 
-        static std::string format(const DateTime::Ptr &dateTime, const std::string &pattern = DEFAULT_TIME_PATTERN);
+        static std::string format(const DateTime::Ptr &dateTime, const std::string &pattern = TIME_DEFAULT_PATTERN);
     };
 }// namespace sese
