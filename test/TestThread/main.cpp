@@ -8,7 +8,7 @@ static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";
 
 void proc() {
     ROOT_INFO(FILTER_TEST_THREAD,
-              "Thread's name = %s, pid = %" PRId64,
+              "Thread's name = %s, pid = %" PRIdPid,
               sese::Thread::getCurrentThreadName().c_str(),
               sese::Thread::getCurrentThreadId())
 
@@ -35,7 +35,7 @@ int main() {
     }
 
     ROOT_INFO(FILTER_TEST_THREAD,
-              "Thread's name = %s, pid = %" PRId64,
+              "Thread's name = %s, pid = %" PRIdPid,
               sese::Thread::getCurrentThreadName().c_str(),
               sese::Thread::getCurrentThreadId())
 

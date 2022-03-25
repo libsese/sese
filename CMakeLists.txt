@@ -32,6 +32,7 @@ set(ALL_SRCS
         src/record/Logger.cpp
         src/record/FileAppender.cpp
         src/AbstractStringBuffer.cpp
+        src/ArgParser.cpp
         src/Test.cpp
         src/DateTime.cpp
         src/TimeSpan.cpp
@@ -50,46 +51,49 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
     set(NATIVE_WINDOWS_SRCS)
     add_definitions(-DWINDOWS_DLL)
     add_definitions(-DNEED_DBGHELP)
-    add_library(sese SHARED ${ALL_SRCS} ${NATIVE_WINDOWS_SRCS})
+
+    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_WINDOWS_SRCS})
+    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_WINDOWS_SRCS})
 
     message(STATUS "Add library : wsock32")
-    target_link_libraries(sese wsock32)
+    target_link_libraries(SeseSharedLibrary wsock32)
+    target_link_libraries(SeseStaticLibrary wsock32)
     #    message(STATUS "Add library : dbghelp")
     #    target_link_libraries(sese dbghelp)
 endif ()
 
 if (CMAKE_SYSTEM_NAME MATCHES "Linux")
     set(NATIVE_LINUX_SRCS)
-    add_library(sese SHARED ${ALL_SRCS} ${NATIVE_LINUX_SRCS})
-    set_target_properties(sese PROPERTIES VERSION ${PROJECT_VERSION})
+    add_compile_options(-fPIC)
+    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_LINUX_SRCS})
+    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_LINUX_SRCS})
 
     message(STATUS "Add library : thread")
     find_package(Threads)
-    target_link_libraries(sese ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(SeseSharedLibrary ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(SeseStaticLibrary ${CMAKE_THREAD_LIBS_INIT})
 endif ()
 
+set_target_properties(
+        SeseSharedLibrary
+        PROPERTIES
+        OUTPUT_NAME sese
+        VERSION ${PROJECT_VERSION}
+)
+
+set_target_properties(
+        SeseStaticLibrary
+        PROPERTIES
+        OUTPUT_NAME sese
+        VERSION ${PROJECT_VERSION}
+)
+
+include(Test.cmake)
+
 # 安装脚本
-install(TARGETS sese
+install(TARGETS SeseSharedLibrary SeseStaticLibrary
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
         DESTINATION "include/${PROJECT_NAME}")
-
-function(reg_test test_name)
-    add_executable(${test_name} test/${test_name}/main.cpp)
-    target_link_libraries(${test_name} sese)
-    add_test(NAME ${test_name} COMMAND ${test_name})
-endfunction(reg_test)
-
-reg_test(TestArray)
-reg_test(TestStringBuilder)
-reg_test(TestSingleton)
-reg_test(TestLogger)
-reg_test(TestDebug)
-reg_test(TestDateTime)
-reg_test(TestDateTimeFormatter)
-reg_test(TestThread)
-reg_test(TestEnvironment)
-reg_test(TestCpuInfo)
-reg_test(TestRandom)

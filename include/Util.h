@@ -1,19 +1,29 @@
 #pragma once
+#include "Config.h"
 #include "Singleton.h"
 #include "Test.h"
 #include "record/ConsoleAppender.h"
 #include "record/Logger.h"
 #include "record/SimpleFormatter.h"
 #include "thread/Thread.h"
-#include "Config.h"
 
 namespace sese {
+
+    struct StrCmp {
+        bool operator()(char const *lv, char const *rv);
+    };
+
+    struct StrCmpI {
+        bool operator()(char const *lv, char const *rv);
+    };
 
     extern API Logger *getLogger() noexcept;
 
     extern API bool isSpace(char ch) noexcept;
 
     extern API const char *getLevelString(Level level) noexcept;
+
+    extern API int32_t findFirstAt(const char *str, char ch);
 
 }// namespace sese
 

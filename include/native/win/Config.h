@@ -12,4 +12,7 @@
 #pragma comment(lib, "DbgHelp.lib")
 #endif
 
-typedef int64_t pid_t;
+using pid_t = uint32_t;
+#define PRIdPid "u"
+
+#define strcasecmp strcmpi

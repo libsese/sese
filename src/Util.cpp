@@ -1,5 +1,6 @@
 #include "Util.h"
 #include "Config.h"
+#include <cstring>
 
 namespace sese {
 
@@ -27,6 +28,28 @@ namespace sese {
             p++;
         }
         return false;
+    }
+
+    int32_t findFirstAt(const char *str, char ch) {
+        const char *pos = str;
+        int32_t at = 0;
+        while (*pos != '\0') {
+            if (*pos == ch) {
+                return at;
+            } else {
+                pos++;
+                at++;
+            }
+        }
+        return -1;
+    }
+
+    bool StrCmp::operator()(char const *lv, char const *rv) {
+        return strcmp(lv, rv);
+    }
+
+    bool StrCmpI::operator()(char const *lv, char const *rv) {
+        return strcmpi(lv, rv);
     }
 
 }// namespace sese

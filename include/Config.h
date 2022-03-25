@@ -12,7 +12,8 @@
 #define EXCEPTION_STRING  "Exception"
 #define EXCEPTION_HEADER_STRING  "Exception: "
 #define EXCEPTION_LOGIC_STRING  "Logic exception"
-#define EXCEPTION_INDEX_OUT_OF_BOUNDS_STRING  "index out of bounds"
+#define EXCEPTION_INDEX_OUT_OF_BOUNDS_STRING  "Index out of bounds"
+#define EXCEPTION_ILLEGAL_ARGUMENT_STRING "Illegal argument exception"
 #pragma endregion
 
 #pragma region 日期时间配置
