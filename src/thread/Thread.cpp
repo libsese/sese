@@ -16,8 +16,8 @@ static pid_t getPid() noexcept {
 #include <unistd.h>
 static pid_t getPid() noexcept {
     return getpid();
-#endif
 }
+#endif
 
 // ThreadInfo.class
 namespace sese {
