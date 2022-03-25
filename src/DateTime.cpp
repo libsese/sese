@@ -25,6 +25,12 @@ int32_t getTimeOfDate(struct timeval *tp) {
     return gettimeofday(tp, nullptr);
 }
 #endif
+#ifdef __APPLE__
+#include <sys/time.h>
+int32_t getTimeOfDate(struct timeval *tp) {
+    return gettimeofday(tp, nullptr);
+}
+#endif
 
 static const int MonDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 static const int MonLeapDays[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

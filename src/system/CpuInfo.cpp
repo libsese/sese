@@ -5,8 +5,7 @@
 #include <intrin.h>
 #define cpuid __cpuid
 #define cpuidex __cpuidex
-#endif
-#ifdef __linux__
+#else
 #include <cpuid.h>
 #include <cstring>
 inline void cpuid(int cpuInfo[4], int function_id) {
@@ -82,14 +81,13 @@ namespace sese {
     }
 
     uint64_t CpuInfo::RDTSC() noexcept {
-#ifdef __linux__
+#ifdef _WIN32
+        return __rdtsc();
+#else
         unsigned int lo, hi;
         __asm__ volatile("rdtsc"
                          : "=a"(lo), "=d"(hi));
         return ((uint64_t) hi << 32) | lo;
-#endif
-#ifdef _WIN32
-        return __rdtsc();
 #endif
     }
 

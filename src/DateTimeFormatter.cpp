@@ -2,8 +2,7 @@
 #include <cstring>
 #ifdef _WIN32
 #define itoa _itoa_s
-#endif
-#ifdef __linux__
+#else
 static char *itoa(int num, char *str, int radix = 10) {
     char index[] = "0123456789ABCDEF";
     unsigned unum;

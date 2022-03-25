@@ -1,11 +1,21 @@
 #include "thread/Thread.h"
 
-static pid_t getPid() noexcept {
 #ifdef __linux__
+static pid_t getPid() noexcept {
     return syscall(__NR_gettid);
+}
 #endif
+
 #ifdef _WIN32
+static pid_t getPid() noexcept {
     return GetCurrentThreadId();
+}
+#endif
+
+#ifdef __APPLE__
+#include <unistd.h>
+static pid_t getPid() noexcept {
+    return getpid();
 #endif
 }
 

@@ -5,36 +5,12 @@
 #include <execinfo.h>
 #endif
 
+#ifdef __APPLE__
+#include <vector>
+#include <execinfo.h>
+#endif
 
 namespace sese {
-#ifdef __linux__
-    void backtrace(std::vector<std::string> &bt, int size, int skip) {
-        void **array = (void **) malloc(sizeof(void *) * size);
-        size_t s = ::backtrace(array, size);
-
-        char **strings = backtrace_symbols(array, s);
-        if (strings == nullptr) {
-            return;
-        }
-
-        for (int i = skip; i < s; i++) {
-            bt.emplace_back(strings[i]);
-        }
-
-        free(strings);
-        free(array);
-    }
-
-    std::string backtrace2String(int size, int skip, const std::string &prefix) {
-        std::vector<std::string> bt;
-        backtrace(bt, size, skip);
-        std::stringstream stream;
-        for (auto &i: bt) {
-            stream << prefix << i << std::endl;
-        }
-        return stream.str();
-    }
-#endif
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -76,6 +52,33 @@ namespace sese {
 #else
         return "Please set \"NEED_DBGHELP\" to 1 to enable this function";
 #endif
+    }
+#else
+    void backtrace(std::vector<std::string> &bt, int size, int skip) {
+        void **array = (void **) malloc(sizeof(void *) * size);
+        size_t s = ::backtrace(array, size);
+
+        char **strings = backtrace_symbols(array, s);
+        if (strings == nullptr) {
+            return;
+        }
+
+        for (int i = skip; i < s; i++) {
+            bt.emplace_back(strings[i]);
+        }
+
+        free(strings);
+        free(array);
+    }
+
+    std::string backtrace2String(int size, int skip, const std::string &prefix) {
+        std::vector<std::string> bt;
+        backtrace(bt, size, skip);
+        std::stringstream stream;
+        for (auto &i: bt) {
+            stream << prefix << i << std::endl;
+        }
+        return stream.str();
     }
 #endif
 }// namespace sese

@@ -7,6 +7,9 @@
 #ifdef __linux__
 #include "native/linux/Config.h"
 #endif
+#ifdef __APPLE__
+#include "native/darwin/Config.h"
+#endif
 
 #pragma region 异常配置
 #define EXCEPTION_STRING  "Exception"

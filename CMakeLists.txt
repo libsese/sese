@@ -74,6 +74,12 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
     target_link_libraries(SeseStaticLibrary ${CMAKE_THREAD_LIBS_INIT})
 endif ()
 
+if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(NATIVE_DARWIN_SRCS)
+    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_DARWIN_SRCS})
+    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_DARWIN_SRCS})
+endif ()
+
 set_target_properties(
         SeseSharedLibrary
         PROPERTIES
