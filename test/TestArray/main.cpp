@@ -1,4 +1,4 @@
-#include "record/Array.h"
+#include "Array.h"
 #include <cstdio>
 
 int main() {
