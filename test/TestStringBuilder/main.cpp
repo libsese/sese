@@ -1,5 +1,5 @@
 #include "IndexOutOfBoundsException.h"
-#include "record/StringBuilder.h"
+#include "StringBuilder.h"
 #include "Util.h"
 #include <cstdio>
 

@@ -58,3 +58,8 @@ add_executable(TestArgParser test/TestArgParser/main.cpp)
 target_link_libraries(TestArgParser SeseSharedLibrary)
 add_test(NAME TestArgParser0 COMMAND TestArgParser a1=hello a2="a sentence" a3=123)
 add_test(NAME TestArgParser1 COMMAND TestArgParser a1=hello a3=123)
+
+# ByteBuilder
+add_executable(TestByteBuilder test/TestByteBuilder/main.cpp)
+target_link_libraries(TestByteBuilder SeseSharedLibrary)
+add_test(NAME TestByteBuilder COMMAND TestByteBuilder)

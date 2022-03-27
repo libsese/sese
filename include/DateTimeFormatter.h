@@ -1,7 +1,7 @@
 #pragma once
 #include "Config.h"
 #include "DateTime.h"
-#include "record/StringBuilder.h"
+#include "StringBuilder.h"
 
 /**
  * 时间格式通配符

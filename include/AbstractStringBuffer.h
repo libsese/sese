@@ -5,7 +5,7 @@
 
 namespace sese {
 
-    class API AbstractStringBuffer {
+    class AbstractStringBuffer {
     public:
         explicit AbstractStringBuffer(size_t cap = STRING_BUFFER_SIZE_FACTOR) noexcept;
         explicit AbstractStringBuffer(const char *str) noexcept;

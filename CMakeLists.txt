@@ -33,6 +33,7 @@ set(ALL_SRCS
         src/record/FileAppender.cpp
         src/AbstractStringBuffer.cpp
         src/ArgParser.cpp
+        src/AbstractByteBuffer.cpp
         src/Test.cpp
         src/DateTime.cpp
         src/TimeSpan.cpp

@@ -56,3 +56,10 @@
 // 日志格式化器匹配格式
 #define RECORD_DEFAULT_TEXT_PATTERN  "[%ln] %c %lv %fi %tn:%th %fn:%li> %m"
 #pragma endregion
+
+#pragma region Stream 配置
+// 字节流缓冲区初始大小
+#define STREAM_BYTESTREAM_BASE_SIZE 1024
+// 字节流缓冲区单元因子
+#define STREAM_BYTESTREAM_SIZE_FACTOR 1024
+#pragma endregion
