@@ -50,6 +50,8 @@ namespace sese {
             freeCap += toDel->cap;
             delete toDel;
         }
+        length -= freeCap;
+        cap -= freeCap;
         return freeCap;
     }
 
