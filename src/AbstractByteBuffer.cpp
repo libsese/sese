@@ -33,7 +33,7 @@ namespace sese {
         this->currentReadPos = 0;
     }
 
-    size_t AbstractByteBuffer::getLength() {
+    size_t AbstractByteBuffer::getLength() const {
         return this->length + currentWriteNode->length;
     }
 

@@ -1,3 +1,9 @@
+/**
+ * @file Util.h
+ * @brief 工具杂项函数
+ * @author kaoru
+ * @date 2022年3月28日
+ */
 #pragma once
 #include "Config.h"
 #include "Singleton.h"
@@ -9,20 +15,46 @@
 
 namespace sese {
 
+    /**
+     * @brief 字符比较器
+     */
     struct StrCmp {
         bool operator()(char const *lv, char const *rv);
     };
 
+    /**
+     * @brief 字符比较器（忽略大小写）
+     */
     struct StrCmpI {
         bool operator()(char const *lv, char const *rv);
     };
 
+    /**
+     * 获取全局 Logger 指针
+     * @return Logger 指针
+     */
     extern API Logger *getLogger() noexcept;
 
+    /**
+     * 判断字符是否属于空白
+     * @param ch 欲判断的字符
+     * @return 真、假
+     */
     extern API bool isSpace(char ch) noexcept;
 
+    /**
+     * 根据日志等级返回对应的字符串
+     * @param level 日志等级
+     * @return 字符串
+     */
     extern API const char *getLevelString(Level level) noexcept;
 
+    /**
+     * 查找某字符在字符串中第一次出现的位置
+     * @param str 在哪个字符串中
+     * @param ch 欲查找的字符
+     * @return 第一次出现的位置，没有则返回 -1
+     */
     extern API int32_t findFirstAt(const char *str, char ch);
 
 }// namespace sese
@@ -33,9 +65,7 @@ namespace sese {
 
 #ifdef __llvm__
 #define FN __FILE_NAME__
-#elif __GNUC__
-#define FN __FILE__
-#elif _MSC_VER
+#else
 #define FN __FILE__
 #endif
 
@@ -48,15 +78,19 @@ namespace sese {
         logger->log(event);                                                                                                                                                                                \
     }
 
+/// 输出 DEBUG 级别的日志
 #define ROOT_DEBUG(FILTER, ...) \
     ROOT_LOG(sese::Level::DEBUG, FILTER, __VA_ARGS__)
 
+/// 输出 INFO 级别的日志
 #define ROOT_INFO(FILTER, ...) \
     ROOT_LOG(sese::Level::INFO, FILTER, __VA_ARGS__)
 
+/// 输出 WARN 级别的日志
 #define ROOT_WARN(FILTER, ...) \
     ROOT_LOG(sese::Level::WARN, FILTER, __VA_ARGS__)
 
+/// 输出 ERROR 级别的日志
 #define ROOT_ERROR(FILTER, ...) \
     ROOT_LOG(sese::Level::ERR, FILTER, __VA_ARGS__)
 
@@ -74,10 +108,14 @@ namespace sese {
         assert(x);                                                                            \
     }
 
-// [0, max)
+/**
+ * @brief 更快速的边界检查 - [0, max)
+ */
 #define CheckRange(x, max) \
     ((unsigned int) (x) < (max))
 
-// [min, max]
+/**
+ * @brief 更快速的边界检查 - [min, max]
+ */
 #define CheckRangeBetween(x, min, max) \
     (((x) - (min)) | ((max) - (x)) >= 0)

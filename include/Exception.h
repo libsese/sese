@@ -1,3 +1,9 @@
+/**
+ * @file Exception.h
+ * @brief 异常基类
+ * @author kaoru
+ * @date 2022年3月28日
+ */
 #pragma once
 #include <exception>
 #include <string>
@@ -9,6 +15,9 @@
 #endif
 
 namespace sese {
+    /**
+     * @brief 异常基类
+     */
     class API Exception : std::exception {
     public:
         Exception() { message = EXCEPTION_STRING; }

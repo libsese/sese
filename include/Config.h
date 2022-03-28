@@ -1,3 +1,9 @@
+/**
+ * @file Config.h
+ * @brief 通用配置文件
+ * @author kaoru
+ * @date 2022年3月28日
+ */
 #pragma once
 #include <cassert>
 #include <cinttypes>

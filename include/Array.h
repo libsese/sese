@@ -1,3 +1,9 @@
+/**
+ * @file Array.h
+ * @brief 数组模板类
+ * @author kaoru
+ * @date 2022年3月28日
+ */
 #pragma once
 #include "IndexOutOfBoundsException.h"
 #include "Util.h"
@@ -8,6 +14,11 @@
 
 namespace sese {
 
+    /**
+     * @brief 模板数组类
+     * @tparam T 数据类型
+     * @tparam n 数据数量
+     */
     template<typename T, int n>
     class Array {
     private:

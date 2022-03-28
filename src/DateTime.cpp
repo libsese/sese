@@ -1,7 +1,7 @@
 #include "DateTime.h"
 
 #ifdef _WIN32
-int32_t getTimeOfDate(struct timeval *tp) {
+int32_t getTimeOfDate(struct timeval *tp, void *tzp) {
     time_t clock;
     struct tm tm {};
     SYSTEMTIME wtm;

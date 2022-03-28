@@ -1,12 +1,27 @@
+/**
+ * @file DateTime.h
+ * @author kaoru
+ * @brief 日期时间类
+ * @date 2022年03月28日
+ */
 #pragma once
 #include "Config.h"
 #include "TimeSpan.h"
 #include <memory>
 
-inline int32_t getTimeOfDate(struct timeval *tp, void *tzp);
+/**
+ * 通用的时间 API
+ * @param tp timeval 结构体
+ * @param tzp 由于同一平台下的不同发行版有不同的定义，故该参数弃用
+ * @return 成功（0）， 失败（1）
+ */
+inline int32_t getTimeOfDate(struct timeval *tp, void *tzp = nullptr);
 
 namespace sese {
 
+    /**
+     * @brief 日期时间类
+     */
     class API DateTime {
     public:
         typedef std::shared_ptr<DateTime> Ptr;
@@ -36,7 +51,9 @@ namespace sese {
         TimeSpan operator-(const DateTime &dateTime) const noexcept;
         DateTime operator-(const TimeSpan &timeSpan) const noexcept;
         DateTime operator+(const TimeSpan &timeSpan) const noexcept;
+        /// 精细比较
         [[nodiscard]] int32_t compareTo(const DateTime &dateTime) const noexcept;
+        /// 粗略比较
         [[nodiscard]] int32_t unclearCompareTo(const DateTime &dateTime) const noexcept;
 
     private:
