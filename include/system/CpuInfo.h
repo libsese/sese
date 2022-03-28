@@ -1,3 +1,9 @@
+/**
+ * @file CpuInfo.h
+ * @brief Cpu 信息类
+ * @author kaoru
+ * @date 2022年3月28日
+ */
 #pragma once
 #include "Config.h"
 #include <bitset>
@@ -12,13 +18,17 @@
 
 namespace sese {
 
+    /// CPUID 需要用上的 4 个寄存器
     struct Register {
-        int eax;
-        int ebx;
-        int ecx;
-        int edx;
+        int32_t eax;
+        int32_t ebx;
+        int32_t ecx;
+        int32_t edx;
     };
 
+    /**
+     * @brief Cpu 信息类
+     */
     class API CpuInfo {
     public:
         CpuInfo();

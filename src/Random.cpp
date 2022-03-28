@@ -12,9 +12,13 @@ namespace sese {
     const uint64_t Random::mask = (1L << 48) - 1;
     uint64_t Random::seed = CpuInfo::RDTSC();
 
+    /**
+     * @brief 数据分割用结构体
+     * todo 适配大小端
+     */
     struct LongLongSpilter {
-        unsigned low;
-        [[maybe_unused]] unsigned high;
+        uint32_t low;
+        [[maybe_unused]] uint32_t high;
     };
 
     uint64_t Random::next() {

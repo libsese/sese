@@ -1,3 +1,9 @@
+/**
+ * @file Thread.h
+ * @brief 线程类
+ * @author kaoru
+ * @date 2022年3月28日
+ */
 #pragma once
 #include "Config.h"
 #include "Noncopyable.h"
@@ -17,8 +23,14 @@
 
 namespace sese {
 
+    /**
+     * @brief 线程参数指针
+     */
     typedef void *ThreadArgumentPtr;
 
+    /**
+     * @brief 线程类
+     */
     class API Thread : Noncopyable {
     public:
         explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);

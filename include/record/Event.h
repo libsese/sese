@@ -1,3 +1,9 @@
+/**
+ * @file Event.h
+ * @brief 日志事件类
+ * @author kaoru
+ * @date 2022年3月28日
+ */
 #pragma once
 
 #include "Config.h"
@@ -9,13 +15,21 @@
 #endif
 namespace sese {
 
+    /// @brief 日志等级
     enum class Level {
+        /// @brief 调试
         DEBUG = 0,
+        /// @brief 信息
         INFO = 1,
+        /// @brief 警告
         WARN = 2,
+        /// @brief 错误
         ERR = 3
     };
 
+    /**
+     * @brief 日志事件类
+     */
     class API Event {
     public:
         typedef std::shared_ptr<Event> Ptr;

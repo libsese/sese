@@ -6,7 +6,7 @@
 
 namespace sese {
 
-    ConsoleAppender::ConsoleAppender(const Formatter::Ptr &formatter, Level level) noexcept : AbstractAppender(formatter, level) {
+    ConsoleAppender::ConsoleAppender(const AbstractFormatter::Ptr &formatter, Level level) noexcept : AbstractAppender(formatter, level) {
     }
 
     void ConsoleAppender::dump(const sese::Event::Ptr &event) noexcept {

@@ -9,8 +9,10 @@
 #include <Windows.h>
 
 #ifdef WINDOWS_DLL
+/// 可导出类型标识符
 #define API __declspec(dllexport)
 #else
+/// 可导出类型标识符
 #define API
 #endif
 
@@ -19,6 +21,7 @@
 #endif
 
 using pid_t = uint32_t;
+/// pid_t 格式化占位符
 #define PRIdPid "u"
-
+/// 忽略大小写比较
 #define strcasecmp strcmpi

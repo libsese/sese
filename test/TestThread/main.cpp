@@ -18,7 +18,8 @@ void proc() {
               "Current thread is %s",
               msg)
 
-    auto arg = (int *) i->getArgument();
+    ASSERT(FILTER_TEST_THREAD, i != nullptr)
+    auto arg = reinterpret_cast<int *>(i->getArgument());
     *arg = 1;
 }
 

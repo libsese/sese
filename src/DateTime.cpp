@@ -1,7 +1,7 @@
 #include "DateTime.h"
 
 #ifdef _WIN32
-int32_t getTimeOfDate(struct timeval *tp, void *tzp) {
+int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
     time_t clock;
     struct tm tm {};
     SYSTEMTIME wtm;
@@ -21,14 +21,14 @@ int32_t getTimeOfDate(struct timeval *tp, void *tzp) {
 #endif
 #ifdef __linux__
 #include <sys/time.h>
-int32_t getTimeOfDate(struct timeval *tp) {
-    return gettimeofday(tp, nullptr);
+int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
+    return gettimeofday(tp,tzp);
 }
 #endif
 #ifdef __APPLE__
 #include <sys/time.h>
-int32_t getTimeOfDate(struct timeval *tp) {
-    return gettimeofday(tp, nullptr);
+int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
+    return gettimeofday(tp, tzp);
 }
 #endif
 

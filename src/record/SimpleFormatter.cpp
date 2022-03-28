@@ -25,7 +25,7 @@ namespace sese {
     }
 
     SimpleFormatter::SimpleFormatter(const std::string &textPattern, const std::string &timePattern) noexcept
-            : Formatter() {
+            : AbstractFormatter() {
         this->textPattern = textPattern;
         this->timePattern = timePattern;
     }

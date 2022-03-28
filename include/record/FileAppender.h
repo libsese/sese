@@ -1,3 +1,9 @@
+/**
+ * @file FileAppender.h
+ * @author kaoru
+ * @brief 日志文件输出源类
+ * @date 2022年3月28日
+ */
 #pragma once
 #include "AbstractAppender.h"
 #include <cstdlib>
@@ -8,11 +14,14 @@
 
 namespace sese {
 
+    /**
+     * @brief 日志文件输出源类
+     */
     class API FileAppender : public AbstractAppender {
     public:
         typedef std::shared_ptr<FileAppender> Ptr;
 
-        FileAppender(const std::string &fileName, const Formatter::Ptr &formatter, Level level = Level::DEBUG) : AbstractAppender(formatter, level) {
+        FileAppender(const std::string &fileName, const AbstractFormatter::Ptr &formatter, Level level = Level::DEBUG) : AbstractAppender(formatter, level) {
             this->fileName = fileName;
             this->file = fopen(fileName.c_str(), "a+");
         }
