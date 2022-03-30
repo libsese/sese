@@ -8,13 +8,13 @@
 #include <cassert>
 #include <cinttypes>
 #ifdef _WIN32
-#include "native/windows/Config.h"
+#include "native/Windows/Config.h"
 #elif __ANDROID__
-#include "native/android/Config.h"
+#include "native/Android/Config.h"
 #elif __linux__
-#include "native/linux/Config.h"
+#include "native/Linux/Config.h"
 #elif __APPLE__
-#include "native/darwin/Config.h"
+#include "native/Darwin/Config.h"
 #endif
 
 #pragma region 异常配置
