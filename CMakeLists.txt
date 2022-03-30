@@ -14,8 +14,8 @@ get_git_branch(SESE_REPO_BRANCH)
 # 项目详情
 set(CMAKE_CXX_STANDARD 20)
 include_directories(${PROJECT_SOURCE_DIR}/include/)
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
-set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output/${CMAKE_SYSTEM_NAME})
+set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output/${CMAKE_SYSTEM_NAME})
 enable_testing()
 
 # 版本宏
@@ -34,27 +34,31 @@ set(ALL_SRCS
         src/AbstractStringBuffer.cpp
         src/ArgParser.cpp
         src/AbstractByteBuffer.cpp
-        src/Test.cpp
         src/DateTime.cpp
         src/TimeSpan.cpp
         src/DateTimeFormatter.cpp
-        src/Random.cpp
+        # src/Random.cpp
         src/Util.cpp
         src/thread/Thread.cpp
         src/system/Environment.cpp
-        src/system/CpuInfo.cpp
+        # src/system/CpuInfo.cpp
         )
 
+set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
 message(STATUS "C Compiler : ${CMAKE_C_COMPILER}")
 message(STATUS "CXX Compiler : ${CMAKE_CXX_COMPILER}")
+message(STATUS "NATIVE PATH : ${NATIVE_PATH}")
+
+set(NATIVE_SRCS
+        ${NATIVE_PATH}/Test.cpp
+        )
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    set(NATIVE_WINDOWS_SRCS)
     add_definitions(-DWINDOWS_DLL)
     add_definitions(-DNEED_DBGHELP)
 
-    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_WINDOWS_SRCS})
-    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_WINDOWS_SRCS})
+    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
+    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
 
     message(STATUS "Add library : wsock32")
     target_link_libraries(SeseSharedLibrary wsock32)
@@ -64,10 +68,9 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
 endif ()
 
 if (CMAKE_SYSTEM_NAME MATCHES "Linux")
-    set(NATIVE_LINUX_SRCS)
     add_compile_options(-fPIC)
-    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_LINUX_SRCS})
-    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_LINUX_SRCS})
+    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
+    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
 
     message(STATUS "Add library : thread")
     find_package(Threads)
@@ -76,9 +79,13 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
 endif ()
 
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    set(NATIVE_DARWIN_SRCS)
-    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_DARWIN_SRCS})
-    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_DARWIN_SRCS})
+    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
+    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
+endif ()
+
+if (CMAKE_SYSTEM_NAME MATCHES "Android")
+    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
+    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
 endif ()
 
 set_target_properties(

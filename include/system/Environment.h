@@ -6,7 +6,6 @@
  */
 #pragma once
 #include "Config.h"
-#include "NotInstantiable.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4624)
@@ -17,7 +16,7 @@ namespace sese {
     /**
      * @brief 环境信息类
      */
-    class API Environment : NotInstantiable {
+    class API Environment {
     public:
         /**
          * @return 返回仓库哈希码前 6 位
@@ -58,5 +57,10 @@ namespace sese {
          * @return 返回构建的操作系统类型
          */
         static const char *getOperateSystemType() noexcept;
+
+        /**
+         * @return 返回 CPU 的大小端模式
+         */
+        static bool isLittleEndian() noexcept;
     };
 }// namespace sese

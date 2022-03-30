@@ -19,7 +19,6 @@ static pid_t getPid() noexcept {
 }
 #endif
 
-// ThreadInfo.class
 namespace sese {
     thread_local pid_t currentThreadId = getPid();
     thread_local std::string currentThreadName{THREAD_MAIN_NAME};

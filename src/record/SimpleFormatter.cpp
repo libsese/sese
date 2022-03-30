@@ -20,7 +20,7 @@ namespace sese {
             case Level::ERR:
                 return "ERROR";
             default:
-                return "DEBUG ";
+                return "DEBUG";
         }
     }
 

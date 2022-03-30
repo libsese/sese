@@ -8,12 +8,12 @@
 #include <cassert>
 #include <cinttypes>
 #ifdef _WIN32
-#include "native/win/Config.h"
-#endif
-#ifdef __linux__
+#include "native/windows/Config.h"
+#elif __ANDROID__
+#include "native/android/Config.h"
+#elif __linux__
 #include "native/linux/Config.h"
-#endif
-#ifdef __APPLE__
+#elif __APPLE__
 #include "native/darwin/Config.h"
 #endif
 
