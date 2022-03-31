@@ -27,7 +27,7 @@ namespace sese {
                 auto pvr = cpuid >> 4 & 0xFF;
                 char tempBrand[17];
                 sprintf(tempBrand, "%016lX", pvr);
-                brand = pvr;
+                brand = tempBrand;
 
                 char tempSerialNumber[17];
                 sprintf(tempSerialNumber, "%016lX", cpuid);
