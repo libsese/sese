@@ -41,7 +41,6 @@ set(ALL_SRCS
         src/Util.cpp
         src/thread/Thread.cpp
         src/system/Environment.cpp
-        # src/system/CpuInfo.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
@@ -51,6 +50,7 @@ message(STATUS "NATIVE PATH : ${NATIVE_PATH}")
 
 set(NATIVE_SRCS
         ${NATIVE_PATH}/Test.cpp
+        ${NATIVE_PATH}/system/CpuInfo.cpp
         )
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
@@ -100,6 +100,7 @@ set_target_properties(
         PROPERTIES
         OUTPUT_NAME sese
         VERSION ${PROJECT_VERSION}
+        SUFFIX "a"
 )
 
 include(Test.cmake)

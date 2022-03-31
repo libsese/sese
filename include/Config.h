@@ -17,6 +17,11 @@
 #include "native/Darwin/Config.h"
 #endif
 
+#pragma region Cpu 相关配置
+#define VENDOR_INTEL_STRING "GenuineIntel"
+#define VENDOR_AMD_STRING "AuthenticAMD"
+#pragma endregion
+
 #pragma region 异常配置
 #define EXCEPTION_STRING  "Exception"
 #define EXCEPTION_HEADER_STRING  "Exception: "

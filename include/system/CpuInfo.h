@@ -6,11 +6,7 @@
  */
 #pragma once
 #include "Config.h"
-#include <bitset>
-#include <vector>
-
-#define VENDOR_INTEL_STRING "GenuineIntel"
-#define VENDOR_AMD_STRING "AuthenticAMD"
+#include <string>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -18,105 +14,133 @@
 
 namespace sese {
 
-    /// CPUID 需要用上的 4 个寄存器
-    struct Register {
-        int32_t eax;
-        int32_t ebx;
-        int32_t ecx;
-        int32_t edx;
-    };
-
     /**
      * @brief Cpu 信息类
      */
     class API CpuInfo {
     public:
-        CpuInfo();
+        [[nodiscard]] static bool isIntel() noexcept;
+        [[nodiscard]] static bool isAmd() noexcept;
+        [[nodiscard]] static bool isArm() noexcept;
+        [[nodiscard]] static const std::string &getVendor() noexcept;
+        [[nodiscard]] static const std::string &getBrand() noexcept;
+        [[nodiscard]] static const std::string &getSerialNumber() noexcept;
 
-    private:
-        bool isINTEL;
-        bool isAMD;
-        std::string vendor;
-        std::string brand;
-        std::string serialNumber;
+#if defined SESE_ARCH_X64
+#define FUNCTION_X64 noexcept;
+#define FUNCTION_ARM64 { return false; }
+#elif defined SESE_ARCH_ARM64
+#define FUNCTION_X64 { return false; }
+#define FUNCTION_ARM64 noexcept;
+#endif
+
+#pragma region X64专有函数
+    public:
+        [[nodiscard]] static bool SSE3() FUNCTION_X64
+        [[nodiscard]] static bool PCLMULQDQ() FUNCTION_X64
+        [[nodiscard]] static bool MONITOR() FUNCTION_X64
+        [[nodiscard]] static bool SSSE3() FUNCTION_X64
+        [[nodiscard]] static bool FMA() FUNCTION_X64
+        [[nodiscard]] static bool CMPXCHG16B() FUNCTION_X64
+        [[nodiscard]] static bool SSE41() FUNCTION_X64
+        [[nodiscard]] static bool SSE42() FUNCTION_X64
+        [[nodiscard]] static bool MOVBE() FUNCTION_X64
+        [[nodiscard]] static bool POPCNT() FUNCTION_X64
+        [[nodiscard]] static bool XSAVE() FUNCTION_X64
+        [[nodiscard]] static bool OSXSAVE() FUNCTION_X64
+        [[nodiscard]] static bool AVX() FUNCTION_X64
+        [[nodiscard]] static bool F16C() FUNCTION_X64
+        [[nodiscard]] static bool RDRAND() FUNCTION_X64
+
+        [[nodiscard]] static bool MSR() FUNCTION_X64
+        [[nodiscard]] static bool CX8() FUNCTION_X64
+        [[nodiscard]] static bool SEP() FUNCTION_X64
+        [[nodiscard]] static bool CMOV() FUNCTION_X64
+        [[nodiscard]] static bool CLFSH() FUNCTION_X64
+        [[nodiscard]] static bool MMX() FUNCTION_X64
+        [[nodiscard]] static bool FXSR() FUNCTION_X64
+        [[nodiscard]] static bool SSE() FUNCTION_X64
+        [[nodiscard]] static bool SSE2() FUNCTION_X64
+
+        [[nodiscard]] static bool FSGSBASE() FUNCTION_X64
+        [[nodiscard]] static bool BMI1() FUNCTION_X64
+        [[nodiscard]] static bool HLE() FUNCTION_X64
+        [[nodiscard]] static bool AVX2() FUNCTION_X64
+        [[nodiscard]] static bool BMI2() FUNCTION_X64
+        [[nodiscard]] static bool ERMS() FUNCTION_X64
+        [[nodiscard]] static bool INVPCID() FUNCTION_X64
+        [[nodiscard]] static bool RTM() FUNCTION_X64
+        [[nodiscard]] static bool AVX512F() FUNCTION_X64
+        [[nodiscard]] static bool RDSEED() FUNCTION_X64
+        [[nodiscard]] static bool ADX() FUNCTION_X64
+        [[nodiscard]] static bool AVX512PF() FUNCTION_X64
+        [[nodiscard]] static bool AVX512ER() FUNCTION_X64
+        [[nodiscard]] static bool AVX512CD() FUNCTION_X64
+        [[nodiscard]] static bool SHA() FUNCTION_X64
+
+        [[nodiscard]] static bool PREFETCHWT1() FUNCTION_X64
+
+        [[nodiscard]] static bool LAHF() FUNCTION_X64
+        [[nodiscard]] static bool LZCNT() FUNCTION_X64
+        [[nodiscard]] static bool ABM() FUNCTION_X64
+        [[nodiscard]] static bool SSE4a() FUNCTION_X64
+        [[nodiscard]] static bool XOP() FUNCTION_X64
+        [[nodiscard]] static bool TBM() FUNCTION_X64
+
+        [[nodiscard]] static bool SYSCALL() FUNCTION_X64
+        [[nodiscard]] static bool MMXEXT() FUNCTION_X64
+        [[nodiscard]] static bool RDTSCP() FUNCTION_X64
+        [[nodiscard]] static bool _3DNOWEXT() FUNCTION_X64
+        [[nodiscard]] static bool _3DNOW() FUNCTION_X64
+
+        [[nodiscard]] static uint64_t RDTSC() FUNCTION_X64
+#pragma endregion
+
+#pragma region ARM64专有函数
+    public:
+        [[nodiscard]] static bool FP() FUNCTION_ARM64
+        [[nodiscard]] static bool ASIMD() FUNCTION_ARM64
+        [[nodiscard]] static bool EVTSTRM() FUNCTION_ARM64
+        [[nodiscard]] static bool PMULL() FUNCTION_ARM64
+        [[nodiscard]] static bool SHA1() FUNCTION_ARM64
+        [[nodiscard]] static bool SHA2() FUNCTION_ARM64
+        [[nodiscard]] static bool CRC32() FUNCTION_ARM64
+
+        [[nodiscard]] static bool ATOMICS() FUNCTION_ARM64
+        [[nodiscard]] static bool FPHP() FUNCTION_ARM64
+        [[nodiscard]] static bool ASIMDHP() FUNCTION_ARM64
+        [[nodiscard]] static bool CPUID() FUNCTION_ARM64
+        [[nodiscard]] static bool ASIMDRDM() FUNCTION_ARM64
+        [[nodiscard]] static bool JSCVT() FUNCTION_ARM64
+        [[nodiscard]] static bool FCMA() FUNCTION_ARM64
+        [[nodiscard]] static bool LRCPC() FUNCTION_ARM64
+
+        [[nodiscard]] static bool DCPOP() FUNCTION_ARM64
+        [[nodiscard]] static bool SHA3() FUNCTION_ARM64
+        [[nodiscard]] static bool SM3() FUNCTION_ARM64
+        [[nodiscard]] static bool SM4() FUNCTION_ARM64
+        [[nodiscard]] static bool ASIMDDP() FUNCTION_ARM64
+        [[nodiscard]] static bool SHA512() FUNCTION_ARM64
+        [[nodiscard]] static bool SVE() FUNCTION_ARM64
+        [[nodiscard]] static bool ASIMDFHM() FUNCTION_ARM64
+
+        [[nodiscard]] static bool DIT() FUNCTION_ARM64
+        [[nodiscard]] static bool USCAT() FUNCTION_ARM64
+        [[nodiscard]] static bool ILRCPC() FUNCTION_ARM64
+        [[nodiscard]] static bool FLAGM() FUNCTION_ARM64
+        [[nodiscard]] static bool SSBS() FUNCTION_ARM64
+        [[nodiscard]] static bool SB() FUNCTION_ARM64
+        [[nodiscard]] static bool PACA() FUNCTION_ARM64
+        [[nodiscard]] static bool PACG() FUNCTION_ARM64
+#pragma endregion
+
+#if defined(SESE_ARCH_X64) || defined(SESE_ARCH_ARM64)
+#undef FUNCTION_X64
+#undef FUNCTION_ARM64
+#endif
 
     public:
-        [[nodiscard]] bool isIntel() const noexcept { return isINTEL; }
-        [[nodiscard]] bool isAmd() const noexcept { return isAMD; }
-        [[nodiscard]] const std::string &getVendor() const noexcept { return vendor; }
-        [[nodiscard]] const std::string &getBrand() const noexcept { return brand; }
-        [[nodiscard]] const std::string &getSerialNumber() const noexcept { return serialNumber; }
-
-        [[nodiscard]] bool SSE3() const noexcept { return this->ECX1[0]; }
-        [[nodiscard]] bool PCLMULQDQ() const noexcept { return this->ECX1[1]; }
-        [[nodiscard]] bool MONITOR() const noexcept { return this->ECX1[3]; }
-        [[nodiscard]] bool SSSE3() const noexcept { return this->ECX1[9]; }
-        [[nodiscard]] bool FMA() const noexcept { return this->ECX1[12]; }
-        [[nodiscard]] bool CMPXCHG16B() const noexcept { return this->ECX1[13]; }
-        [[nodiscard]] bool SSE41() const noexcept { return this->ECX1[19]; }
-        [[nodiscard]] bool SSE42() const noexcept { return this->ECX1[20]; }
-        [[nodiscard]] bool MOVBE() const noexcept { return this->ECX1[22]; }
-        [[nodiscard]] bool POPCNT() const noexcept { return this->ECX1[23]; }
-        [[nodiscard]] bool AES() const noexcept { return this->ECX1[25]; }
-        [[nodiscard]] bool XSAVE() const noexcept { return this->ECX1[26]; }
-        [[nodiscard]] bool OSXSAVE() const noexcept { return this->ECX1[27]; }
-        [[nodiscard]] bool AVX() const noexcept { return this->ECX1[28]; }
-        [[nodiscard]] bool F16C() const noexcept { return this->ECX1[29]; }
-        [[nodiscard]] bool RDRAND() const noexcept { return this->ECX1[30]; }
-
-        [[nodiscard]] bool MSR() const noexcept { return this->EDX1[5]; }
-        [[nodiscard]] bool CX8() const noexcept { return this->EDX1[8]; }
-        [[nodiscard]] bool SEP() const noexcept { return this->EDX1[11]; }
-        [[nodiscard]] bool CMOV() const noexcept { return this->EDX1[15]; }
-        [[nodiscard]] bool CLFSH() const noexcept { return this->EDX1[19]; }
-        [[nodiscard]] bool MMX() const noexcept { return this->EDX1[23]; }
-        [[nodiscard]] bool FXSR() const noexcept { return this->EDX1[24]; }
-        [[nodiscard]] bool SSE() const noexcept { return this->EDX1[25]; }
-        [[nodiscard]] bool SSE2() const noexcept { return this->EDX1[26]; }
-
-        [[nodiscard]] bool FSGSBASE() const noexcept { return this->EBX7[0]; }
-        [[nodiscard]] bool BMI1() const noexcept { return this->EBX7[3]; }
-        [[nodiscard]] bool HLE() const noexcept { return this->isINTEL && this->EBX7[4]; }
-        [[nodiscard]] bool AVX2() const noexcept { return this->EBX7[5]; }
-        [[nodiscard]] bool BMI2() const noexcept { return this->EBX7[8]; }
-        [[nodiscard]] bool ERMS() const noexcept { return this->EBX7[9]; }
-        [[nodiscard]] bool INVPCID() const noexcept { return this->EBX7[10]; }
-        [[nodiscard]] bool RTM() const noexcept { return this->isINTEL && this->EBX7[11]; }
-        [[nodiscard]] bool AVX512F() const noexcept { return this->EBX7[16]; }
-        [[nodiscard]] bool RDSEED() const noexcept { return this->EBX7[18]; }
-        [[nodiscard]] bool ADX() const noexcept { return this->EBX7[19]; }
-        [[nodiscard]] bool AVX512PF() const noexcept { return this->EBX7[26]; }
-        [[nodiscard]] bool AVX512ER() const noexcept { return this->EBX7[27]; }
-        [[nodiscard]] bool AVX512CD() const noexcept { return this->EBX7[28]; }
-        [[nodiscard]] bool SHA() const noexcept { return this->EBX7[29]; }
-
-        [[nodiscard]] bool PREFETCHWT1() const noexcept { return this->ECX7[0]; }
-
-        [[nodiscard]] bool LAHF() const noexcept { return this->ECX81[0]; }
-        [[nodiscard]] bool LZCNT() const noexcept { return this->isINTEL && this->ECX81[5]; }
-        [[nodiscard]] bool ABM() const noexcept { return this->isAMD && this->ECX81[5]; }
-        [[nodiscard]] bool SSE4a() const noexcept { return this->isAMD && this->ECX81[6]; }
-        [[nodiscard]] bool XOP() const noexcept { return this->isAMD && this->ECX81[11]; }
-        [[nodiscard]] bool TBM() const noexcept { return this->isAMD && this->ECX81[21]; }
-
-        [[nodiscard]] bool SYSCALL() const noexcept { return this->isINTEL && this->EDX81[11]; }
-        [[nodiscard]] bool MMXEXT() const noexcept { return this->isAMD && this->EDX81[22]; }
-        [[nodiscard]] bool RDTSCP() const noexcept { return this->isINTEL && this->EDX81[27]; }
-        [[nodiscard]] bool _3DNOWEXT() const noexcept { return this->isAMD && this->EDX81[30]; }
-        [[nodiscard]] bool _3DNOW() const noexcept { return this->isAMD && this->EDX81[31]; }
-
-    public:
-        [[nodiscard]] static uint64_t RDTSC() noexcept;
-
-    private:
-        std::bitset<32> ECX1;
-        std::bitset<32> EDX1;
-        std::bitset<32> EBX7;
-        std::bitset<32> ECX7;
-        std::bitset<32> ECX81;
-        std::bitset<32> EDX81;
-        std::vector<Register> data;
-        std::vector<Register> exData;
+        [[nodiscard]] static bool AES() noexcept;
     };
 
 }// namespace sese

@@ -4,16 +4,16 @@
 
 namespace sese {
 
-    [[maybe_unused]] static struct InitStruct {
-        InitStruct() {
+    [[maybe_unused]] static struct LoggerInitStruct {
+        LoggerInitStruct() {
             // 初始化 Logger
             auto logger = sese::Singleton<Logger>::getInstance();
             auto formatter = std::make_shared<SimpleFormatter>();
             auto appender = std::make_shared<ConsoleAppender>(formatter);
             logger->addAppender(appender);
         }
-        ~InitStruct() = default;
-    } initStruct; /* NOLINT */
+        ~LoggerInitStruct() = default;
+    } loggerInitStruct; /* NOLINT */
 
     Logger *getLogger() noexcept {
         return sese::Singleton<Logger>::getInstance();

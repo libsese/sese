@@ -4,15 +4,15 @@ namespace sese {
 
     bool _isLittleEndian = true;
 
-    [[maybe_unused]] static struct InitStruct {
-        InitStruct() {
+    [[maybe_unused]] static struct EnvInitStruct {
+        EnvInitStruct() {
             /// 判断大小端
             int32_t i = 0xFF;
             if((char)i == 0){
                 _isLittleEndian = false;
             }
         }
-    } initStruct; /* NOLINT */
+    } envInitStruct; /* NOLINT */
 
     bool Environment::isLittleEndian() noexcept {
         return _isLittleEndian;

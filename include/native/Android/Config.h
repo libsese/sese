@@ -6,6 +6,12 @@
 */
 #pragma once
 
+#if defined(__aarch64__)
+#define SESE_ARCH_ARM64
+#else
+#error only support arm64
+#endif
+
 /// 可导出类型标识符
 #define API
 /// pid_t 格式化占位符

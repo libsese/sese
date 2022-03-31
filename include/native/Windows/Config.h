@@ -8,6 +8,14 @@
 
 #include <Windows.h>
 
+#if defined(_M_X64)
+#define SESE_ARCH_X64
+#elif defined(_M_ARM64)
+#define SESE_ARCH_ARM64
+#else
+#error only support x86_64 & arm64
+#endif
+
 #ifdef WINDOWS_DLL
 /// 可导出类型标识符
 #define API __declspec(dllexport)

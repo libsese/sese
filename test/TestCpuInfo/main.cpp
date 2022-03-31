@@ -1,7 +1,7 @@
+#include "Singleton.h"
 #include "Util.h"
 #include "record/FileAppender.h"
 #include "system/CpuInfo.h"
-#include "Singleton.h"
 
 #define FILTER_TEST_CPU_INFO "fCPU_INFO"
 
@@ -20,63 +20,99 @@ int main() {
     auto appender = std::make_shared<FileAppender>("CpuInfo.log", formatter);
     logger->addAppender(appender);
 
-    auto cpuInfo = Singleton<CpuInfo>();
-    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", cpuInfo.getInstance()->getVendor().c_str())
-    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", cpuInfo.getInstance()->getBrand().c_str())
-    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", cpuInfo.getInstance()->getSerialNumber().c_str())
+    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getVendor().c_str())
+    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getBrand().c_str())
+    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getSerialNumber().c_str())
+    if (CpuInfo::isArm()) {
+        isSupport("FP", CpuInfo::FP());
+        isSupport("ASIMD", CpuInfo::ASIMD());
+        isSupport("EVTSTRM", CpuInfo::EVTSTRM());
+        isSupport("AES", CpuInfo::AES());
+        isSupport("PMULL", CpuInfo::PMULL());
+        isSupport("SHA1", CpuInfo::SHA1());
+        isSupport("SHA2", CpuInfo::SHA2());
+        isSupport("CRC32", CpuInfo::CRC32());
 
-    isSupport("3DNOW", cpuInfo.getInstance()->_3DNOW());
-    isSupport("3DNOWEXT", cpuInfo.getInstance()->_3DNOWEXT());
-    isSupport("ABM", cpuInfo.getInstance()->ABM());
-    isSupport("ADX", cpuInfo.getInstance()->ADX());
-    isSupport("AES", cpuInfo.getInstance()->AES());
-    isSupport("AVX", cpuInfo.getInstance()->AVX());
-    isSupport("AVX2", cpuInfo.getInstance()->AVX2());
-    isSupport("AVX512CD", cpuInfo.getInstance()->AVX512CD());
-    isSupport("AVX512ER", cpuInfo.getInstance()->AVX512ER());
-    isSupport("AVX512F", cpuInfo.getInstance()->AVX512F());
-    isSupport("AVX512PF", cpuInfo.getInstance()->AVX512PF());
-    isSupport("BMI1", cpuInfo.getInstance()->BMI1());
-    isSupport("BMI2", cpuInfo.getInstance()->BMI2());
-    isSupport("CLFSH", cpuInfo.getInstance()->CLFSH());
-    isSupport("CMPXCHG16B", cpuInfo.getInstance()->CMPXCHG16B());
-    isSupport("CX8", cpuInfo.getInstance()->CX8());
-    isSupport("ERMS", cpuInfo.getInstance()->ERMS());
-    isSupport("F16C", cpuInfo.getInstance()->F16C());
-    isSupport("FMA", cpuInfo.getInstance()->FMA());
-    isSupport("FSGSBASE", cpuInfo.getInstance()->FSGSBASE());
-    isSupport("FXSR", cpuInfo.getInstance()->FXSR());
-    isSupport("HLE", cpuInfo.getInstance()->HLE());
-    isSupport("INVPCID", cpuInfo.getInstance()->INVPCID());
-    isSupport("LAHF", cpuInfo.getInstance()->LAHF());
-    isSupport("LZCNT", cpuInfo.getInstance()->LZCNT());
-    isSupport("MMX", cpuInfo.getInstance()->MMX());
-    isSupport("MMXEXT", cpuInfo.getInstance()->MMXEXT());
-    isSupport("MONITOR", cpuInfo.getInstance()->MONITOR());
-    isSupport("MOVBE", cpuInfo.getInstance()->MOVBE());
-    isSupport("MSR", cpuInfo.getInstance()->MSR());
-    isSupport("OSXSAVE", cpuInfo.getInstance()->OSXSAVE());
-    isSupport("PCLMULQDQ", cpuInfo.getInstance()->PCLMULQDQ());
-    isSupport("POPCNT", cpuInfo.getInstance()->POPCNT());
-    isSupport("PREFETCHWT1", cpuInfo.getInstance()->PREFETCHWT1());
-    isSupport("RDRAND", cpuInfo.getInstance()->RDRAND());
-    isSupport("RDSEED", cpuInfo.getInstance()->RDSEED());
-    isSupport("RDTSCP", cpuInfo.getInstance()->RDTSCP());
-    isSupport("RTM", cpuInfo.getInstance()->RTM());
-    isSupport("SEP", cpuInfo.getInstance()->SEP());
-    isSupport("CMOV", cpuInfo.getInstance()->CMOV());
-    isSupport("SHA", cpuInfo.getInstance()->SHA());
-    isSupport("SSE", cpuInfo.getInstance()->SSE());
-    isSupport("SSE2", cpuInfo.getInstance()->SSE2());
-    isSupport("SSE3", cpuInfo.getInstance()->SSE3());
-    isSupport("SSE4.1", cpuInfo.getInstance()->SSE41());
-    isSupport("SSE4.2", cpuInfo.getInstance()->SSE42());
-    isSupport("SSE4a", cpuInfo.getInstance()->SSE4a());
-    isSupport("SSSE3", cpuInfo.getInstance()->SSSE3());
-    isSupport("SYSCALL", cpuInfo.getInstance()->SYSCALL());
-    isSupport("TBM", cpuInfo.getInstance()->TBM());
-    isSupport("XOP", cpuInfo.getInstance()->XOP());
-    isSupport("XSAVE", cpuInfo.getInstance()->XSAVE());
+        isSupport("ATOMICS", CpuInfo::ATOMICS());
+        isSupport("FPHP", CpuInfo::FPHP());
+        isSupport("ASIMDHP", CpuInfo::ASIMDHP());
+        isSupport("CPUID", CpuInfo::CPUID());
+        isSupport("ASIMDRDM", CpuInfo::ASIMDRDM());
+        isSupport("JSCVT", CpuInfo::JSCVT());
+        isSupport("FCMA", CpuInfo::FCMA());
+        isSupport("LRCPC", CpuInfo::LRCPC());
 
+        isSupport("DCPOP", CpuInfo::DCPOP());
+        isSupport("SHA3", CpuInfo::SHA3());
+        isSupport("SM3", CpuInfo::SM3());
+        isSupport("SM4", CpuInfo::SM4());
+        isSupport("ASIMDDP", CpuInfo::ASIMDDP());
+        isSupport("SHA512", CpuInfo::SHA512());
+        isSupport("SVE", CpuInfo::SVE());
+        isSupport("ASIMDFHM", CpuInfo::ASIMDFHM());
+
+        isSupport("DIT", CpuInfo::DIT());
+        isSupport("USCAT", CpuInfo::USCAT());
+        isSupport("ILRCPC", CpuInfo::ILRCPC());
+        isSupport("FLAGM", CpuInfo::FLAGM());
+        isSupport("SSBS", CpuInfo::SSBS());
+        isSupport("SB", CpuInfo::SB());
+        isSupport("PACA", CpuInfo::PACA());
+        isSupport("PACG", CpuInfo::PACG());
+
+    } else {
+        isSupport("3DNOW", CpuInfo::_3DNOW());
+        isSupport("3DNOWEXT", CpuInfo::_3DNOWEXT());
+        isSupport("ABM", CpuInfo::ABM());
+        isSupport("ADX", CpuInfo::ADX());
+        isSupport("AES", CpuInfo::AES());
+        isSupport("AVX", CpuInfo::AVX());
+        isSupport("AVX2", CpuInfo::AVX2());
+        isSupport("AVX512CD", CpuInfo::AVX512CD());
+        isSupport("AVX512ER", CpuInfo::AVX512ER());
+        isSupport("AVX512F", CpuInfo::AVX512F());
+        isSupport("AVX512PF", CpuInfo::AVX512PF());
+        isSupport("BMI1", CpuInfo::BMI1());
+        isSupport("BMI2", CpuInfo::BMI2());
+        isSupport("CLFSH", CpuInfo::CLFSH());
+        isSupport("CMPXCHG16B", CpuInfo::CMPXCHG16B());
+        isSupport("CX8", CpuInfo::CX8());
+        isSupport("ERMS", CpuInfo::ERMS());
+        isSupport("F16C", CpuInfo::F16C());
+        isSupport("FMA", CpuInfo::FMA());
+        isSupport("FSGSBASE", CpuInfo::FSGSBASE());
+        isSupport("FXSR", CpuInfo::FXSR());
+        isSupport("HLE", CpuInfo::HLE());
+        isSupport("INVPCID", CpuInfo::INVPCID());
+        isSupport("LAHF", CpuInfo::LAHF());
+        isSupport("LZCNT", CpuInfo::LZCNT());
+        isSupport("MMX", CpuInfo::MMX());
+        isSupport("MMXEXT", CpuInfo::MMXEXT());
+        isSupport("MONITOR", CpuInfo::MONITOR());
+        isSupport("MOVBE", CpuInfo::MOVBE());
+        isSupport("MSR", CpuInfo::MSR());
+        isSupport("OSXSAVE", CpuInfo::OSXSAVE());
+        isSupport("PCLMULQDQ", CpuInfo::PCLMULQDQ());
+        isSupport("POPCNT", CpuInfo::POPCNT());
+        isSupport("PREFETCHWT1", CpuInfo::PREFETCHWT1());
+        isSupport("RDRAND", CpuInfo::RDRAND());
+        isSupport("RDSEED", CpuInfo::RDSEED());
+        isSupport("RDTSCP", CpuInfo::RDTSCP());
+        isSupport("RTM", CpuInfo::RTM());
+        isSupport("SEP", CpuInfo::SEP());
+        isSupport("CMOV", CpuInfo::CMOV());
+        isSupport("SHA", CpuInfo::SHA());
+        isSupport("SSE", CpuInfo::SSE());
+        isSupport("SSE2", CpuInfo::SSE2());
+        isSupport("SSE3", CpuInfo::SSE3());
+        isSupport("SSE4.1", CpuInfo::SSE41());
+        isSupport("SSE4.2", CpuInfo::SSE42());
+        isSupport("SSE4a", CpuInfo::SSE4a());
+        isSupport("SSSE3", CpuInfo::SSSE3());
+        isSupport("SYSCALL", CpuInfo::SYSCALL());
+        isSupport("TBM", CpuInfo::TBM());
+        isSupport("XOP", CpuInfo::XOP());
+        isSupport("XSAVE", CpuInfo::XSAVE());
+    }
     return 0;
 }
