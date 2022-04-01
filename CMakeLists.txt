@@ -100,7 +100,7 @@ set_target_properties(
         PROPERTIES
         OUTPUT_NAME sese
         VERSION ${PROJECT_VERSION}
-        SUFFIX "a"
+        SUFFIX ".a"
 )
 
 include(Test.cmake)
