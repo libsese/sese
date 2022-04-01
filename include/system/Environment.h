@@ -51,7 +51,7 @@ namespace sese {
         /**
          * @return 返回构建时间的时间戳
          */
-        static const char *getBuildTimestamp() noexcept;
+        static const char *getBuildDateTime() noexcept;
 
         /**
          * @return 返回构建的操作系统类型

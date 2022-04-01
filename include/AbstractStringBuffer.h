@@ -14,7 +14,7 @@ namespace sese {
     /**
      * @brief 字符串缓冲类
      */
-    class AbstractStringBuffer {
+    class API AbstractStringBuffer {
     public:
         /**
          * @param cap 初始容量

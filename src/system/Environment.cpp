@@ -42,7 +42,7 @@ namespace sese {
         return __TIME__;
     }
 
-    const char *Environment::getBuildTimestamp() noexcept {
+    const char *Environment::getBuildDateTime() noexcept {
         return __TIMESTAMP__;
     }
 

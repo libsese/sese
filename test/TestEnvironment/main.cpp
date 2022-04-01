@@ -16,7 +16,7 @@ int main() {
               Environment::getMinorVersion())
 
     ROOT_INFO(FILTER_TEST_ENV,
-              "libsese repo on the %s branch : %s",
+              "libsese repo on the %s branch: %s",
               Environment::getRepoBranch(),
               Environment::getRepoHash())
 
@@ -24,7 +24,11 @@ int main() {
               "libsese build on %s %s - %s",
               Environment::getBuildDate(),
               Environment::getBuildTime(),
-              Environment::getBuildTimestamp())
+              Environment::getBuildDateTime())
+
+    ROOT_INFO(FILTER_TEST_ENV,
+              "system endian: %s",
+              Environment::isLittleEndian() ? "little endian" : "big endian")
 
     return 0;
 }
