@@ -63,3 +63,7 @@ add_test(NAME TestArgParser1 COMMAND TestArgParser a1=hello a3=123)
 add_executable(TestByteBuilder test/TestByteBuilder/main.cpp)
 target_link_libraries(TestByteBuilder SeseSharedLibrary)
 add_test(NAME TestByteBuilder COMMAND TestByteBuilder)
+
+add_executable(TestEndian test/TestEndian/main.cpp)
+target_link_libraries(TestEndian SeseSharedLibrary)
+add_test(NAME TestEndian COMMAND TestEndian)
