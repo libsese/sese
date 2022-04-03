@@ -67,3 +67,7 @@ add_test(NAME TestByteBuilder COMMAND TestByteBuilder)
 add_executable(TestEndian test/TestEndian/main.cpp)
 target_link_libraries(TestEndian SeseSharedLibrary)
 add_test(NAME TestEndian COMMAND TestEndian)
+
+add_executable(TestAddress test/TestAddress/main.cpp)
+target_link_libraries(TestAddress SeseSharedLibrary)
+add_test(NAME TestAddress COMMAND TestAddress)

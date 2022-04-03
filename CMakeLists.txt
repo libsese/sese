@@ -41,6 +41,9 @@ set(ALL_SRCS
         src/Util.cpp
         src/thread/Thread.cpp
         src/system/Environment.cpp
+        src/net/Address.cpp
+        src/net/IPAddress.cpp
+        src/net/IPv4Address.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
@@ -60,9 +63,9 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
     add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
     add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
 
-    message(STATUS "Add library : wsock32")
-    target_link_libraries(SeseSharedLibrary wsock32)
-    target_link_libraries(SeseStaticLibrary wsock32)
+    message(STATUS "Add library : wsock32, ws2_32")
+    target_link_libraries(SeseSharedLibrary wsock32 ws2_32)
+    target_link_libraries(SeseStaticLibrary wsock32 ws2_32)
     #    message(STATUS "Add library : dbghelp")
     #    target_link_libraries(sese dbghelp)
 endif ()

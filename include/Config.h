@@ -65,7 +65,7 @@
 /// 日志格式化器时间匹配格式
 #define RECORD_DEFAULT_TIME_PATTERN  TIME_SHORT_PATTERN
 /// 日志格式化器匹配格式
-#define RECORD_DEFAULT_TEXT_PATTERN  "[%ln] %c %lv %fi %tn:%th %fn:%li> %m"
+#define RECORD_DEFAULT_TEXT_PATTERN  "[%ln] %c %lv %fi %tn:%th> %m"
 #pragma endregion
 
 #pragma region Stream 配置
