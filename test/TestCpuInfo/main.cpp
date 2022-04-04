@@ -23,6 +23,7 @@ int main() {
     ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getVendor().c_str())
     ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getBrand().c_str())
     ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getSerialNumber().c_str())
+    ROOT_INFO(FILTER_TEST_CPU_INFO, "%dt", CpuInfo::getLogicProcessors())
     if (CpuInfo::isArm()) {
         isSupport("FP", CpuInfo::FP());
         isSupport("ASIMD", CpuInfo::ASIMD());

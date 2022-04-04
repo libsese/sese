@@ -25,6 +25,7 @@ namespace sese {
         [[nodiscard]] static const std::string &getVendor() noexcept;
         [[nodiscard]] static const std::string &getBrand() noexcept;
         [[nodiscard]] static const std::string &getSerialNumber() noexcept;
+        [[nodiscard]] static uint32_t getLogicProcessors() noexcept;
 
 #if defined SESE_ARCH_X64
 #define FUNCTION_X64 noexcept;

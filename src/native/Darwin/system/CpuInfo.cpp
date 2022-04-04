@@ -1,5 +1,6 @@
 #include "system/CpuInfo.h"
 #include <cstring>
+#include <thread>
 
 #ifdef __x86_64__
 #include <bitset>
@@ -23,6 +24,7 @@ namespace sese {
     const std::string &CpuInfo::getVendor() noexcept { return vendor; }
     const std::string &CpuInfo::getBrand() noexcept { return brand; }
     const std::string &CpuInfo::getSerialNumber() noexcept { return serialNumber; }
+    uint32_t CpuInfo::getLogicProcessors() noexcept { return std::thread::hardware_concurrency(); }
 
 #ifdef __x86_64__
     namespace _darwin {

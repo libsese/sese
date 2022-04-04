@@ -1,6 +1,7 @@
 #include "system\CpuInfo.h"
 #include <bitset>
 #include <intrin.h>
+#include <thread>
 #include <vector>
 #pragma warning(disable : 4996)
 
@@ -16,6 +17,7 @@ namespace sese {
     static std::string vendor;
     static std::string brand;
     static std::string serialNumber;
+    static uint32_t cores = 0;
 
     bool CpuInfo::isIntel() noexcept { return isINTEL; }
     bool CpuInfo::isAmd() noexcept { return isAMD; }
@@ -23,6 +25,7 @@ namespace sese {
     const std::string &CpuInfo::getVendor() noexcept { return vendor; }
     const std::string &CpuInfo::getBrand() noexcept { return brand; }
     const std::string &CpuInfo::getSerialNumber() noexcept { return serialNumber; }
+    uint32_t CpuInfo::getLogicProcessors() noexcept { return std::thread::hardware_concurrency(); }
 
 #ifdef _M_AMD64
     namespace _windows {
@@ -180,6 +183,6 @@ namespace sese {
                 isARM = true;
             }
         } cpuInitStruct; /* NOLINT */
-    }// namespace _windows
+    }                    // namespace _windows
 #endif
 }// namespace sese

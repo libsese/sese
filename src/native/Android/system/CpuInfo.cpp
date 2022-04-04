@@ -1,6 +1,7 @@
 #include "system/CpuInfo.h"
 #include "native/ARMv8Config.h"
 #include <sys/auxv.h>
+#include <thread>
 
 namespace sese {
     namespace _android {
@@ -43,6 +44,7 @@ namespace sese {
     const std::string &CpuInfo::getVendor() noexcept { return _android::vendor; }
     const std::string &CpuInfo::getBrand() noexcept { return _android::brand; }
     const std::string &CpuInfo::getSerialNumber() noexcept { return _android::serialNumber; }
+    uint32_t CpuInfo::getLogicProcessors() noexcept { return std::thread::hardware_concurrency(); }
 
 #define XX(FLAG_NAME) return _android::hwcaps & (1UL << ARM_v8_FLAG_##FLAG_NAME);
     bool CpuInfo::FP() noexcept { XX(FP) }
