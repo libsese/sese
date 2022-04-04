@@ -1,3 +1,9 @@
+/**
+ * @file Address.h
+ * @author kaoru
+ * @date 2022年4月4日
+ * @brief 地址类
+ */
 #pragma once
 #ifdef _WIN32
 #include <WS2tcpip.h>
@@ -20,6 +26,9 @@ namespace sese {
         return (1 << (sizeof(T) * 8 - bits)) - 1;
     }
 
+    /**
+     * @brief 地址类
+     */
     class API Address {
     public:
         using Ptr = std::shared_ptr<Address>;

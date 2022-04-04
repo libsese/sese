@@ -18,3 +18,67 @@
     (i64 & 0x0000FF0000000000) >> 24 | \
     (i64 & 0x00FF000000000000) >> 40 | \
     (i64 & 0xFF00000000000000) >> 56
+
+extern "C++" {
+#if (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || defined(_WIN32)
+template<typename T>
+inline T ToBigEndian16(T t) {
+    return ByteSwap16(t);
+}
+
+template<typename T>
+inline T ToBigEndian32(T t) {
+    return ByteSwap32(t);
+}
+
+template<typename T>
+inline T ToBigEndian64(T t) {
+    return ByteSwap64(t);
+}
+
+template<typename T>
+inline T ToLittleEndian16(T t) {
+    return t;
+}
+
+template<typename T>
+inline T ToLittleEndian32(T t) {
+    return t;
+}
+
+template<typename T>
+inline T ToLittleEndian64(T t) {
+    return t;
+}
+#else
+template<typename T>
+inline T ToBigEndian16(T t) {
+    return t;
+}
+
+template<typename T>
+inline T ToBigEndian32(T t) {
+    return t;
+}
+
+template<typename T>
+inline T ToBigEndian64(T t) {
+    return t;
+}
+
+template<typename T>
+inline T ToLittleEndian16(T t) {
+    return ByteSwap16(t);
+}
+
+template<typename T>
+inline T ToLittleEndian32(T t) {
+    return ByteSwap32(t);
+}
+
+template<typename T>
+inline T ToLittleEndian64(T t) {
+    return ByteSwap64(t);
+}
+#endif
+}

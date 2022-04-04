@@ -26,11 +26,13 @@ add_definitions(-DSESE_REPO_HASH="${SESE_REPO_HASH}")
 add_definitions(-DSESE_REPO_BRANCH="${SESE_REPO_BRANCH}")
 
 set(ALL_SRCS
+        # 日志
         src/record/AbstractAppender.cpp
         src/record/SimpleFormatter.cpp
         src/record/ConsoleAppender.cpp
         src/record/Logger.cpp
         src/record/FileAppender.cpp
+        # 根目录
         src/AbstractStringBuffer.cpp
         src/ArgParser.cpp
         src/AbstractByteBuffer.cpp
@@ -39,11 +41,15 @@ set(ALL_SRCS
         src/DateTimeFormatter.cpp
         # src/Random.cpp
         src/Util.cpp
+        # 线程
         src/thread/Thread.cpp
+        # 系统
         src/system/Environment.cpp
+        # 网络
         src/net/Address.cpp
         src/net/IPAddress.cpp
         src/net/IPv4Address.cpp
+        src/net/IPv6Address.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")

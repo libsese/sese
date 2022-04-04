@@ -1,7 +1,16 @@
+/**
+ * @file IPAddress.h
+ * @author kaoru
+ * @brief IP 地址类
+ * @date 2022年4月4日
+ */
 #include "Address.h"
 
 namespace sese {
 
+    /**
+     * @brief IP 地址类
+     */
     class API IPAddress : public Address {
     public:
         using Ptr = std::shared_ptr<IPAddress>;

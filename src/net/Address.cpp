@@ -1,5 +1,5 @@
 #include "net/Address.h"
-#include "net/IPv4Address.h"
+#include "net/IPv6Address.h"
 #ifdef _WIN32
 struct NetInitStruct {
     NetInitStruct() {
@@ -15,6 +15,8 @@ struct NetInitStruct {
 sese::Address::Ptr sese::Address::create(const sockaddr *address, socklen_t addressLen) {
     if (address->sa_family == AF_INET) {
         return std::make_shared<IPv4Address>(*(const sockaddr_in *) address);
+    } else if (address->sa_family == AF_INET6) {
+        return std::make_shared<IPv6Address>(*(const sockaddr_in6 *) address);
     } else {
         return nullptr;
     }
