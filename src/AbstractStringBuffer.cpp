@@ -169,7 +169,7 @@ namespace sese {
         this->len -= w;
     }
 
-    void AbstractStringBuffer::append(char ch) {
+    void AbstractStringBuffer::append(char ch) noexcept {
         if (1 > cap - this->len) {
             // 触发扩容
             auto newSize = ((1 + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;

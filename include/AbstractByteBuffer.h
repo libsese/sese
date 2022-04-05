@@ -44,21 +44,21 @@ namespace sese {
         /// 析构
         ~AbstractByteBuffer();
         /// 重置读取位置
-        void resetPos();
+        virtual void resetPos();
         /**
          * @return 所有节点已用内存总数
          */
-        [[nodiscard]] size_t getLength() const;
+        [[nodiscard]] virtual size_t getLength() const;
         /**
          *
          * @return 所有节点容量总数
          */
-        [[nodiscard]] size_t getCapacity() const;
+        [[nodiscard]] virtual size_t getCapacity() const;
         /**
          * 释放 CurrentReadNode 前的所有节点
          * @return 实际释放空间，单位 “字节”
          */
-        size_t freeCapacity();
+        virtual size_t freeCapacity();
 
     public:
         int64_t read(void *buffer, size_t len) override;

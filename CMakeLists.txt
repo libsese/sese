@@ -39,6 +39,8 @@ set(ALL_SRCS
         src/DateTime.cpp
         src/TimeSpan.cpp
         src/DateTimeFormatter.cpp
+        src/StringBuffer.cpp
+        src/ByteBuffer.cpp
         # src/Random.cpp
         src/Util.cpp
         # 线程

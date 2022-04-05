@@ -71,3 +71,7 @@ add_test(NAME TestEndian COMMAND TestEndian)
 add_executable(TestAddress test/TestAddress/main.cpp)
 target_link_libraries(TestAddress SeseSharedLibrary)
 add_test(NAME TestAddress COMMAND TestAddress)
+
+add_executable(TestLocker test/TestLocker/main.cpp)
+target_link_libraries(TestLocker SeseSharedLibrary)
+add_test(NAME TestLocker COMMAND TestLocker)

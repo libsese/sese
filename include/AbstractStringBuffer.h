@@ -5,9 +5,9 @@
  * @date 2022年3月28日
  */
 #pragma once
+#include "Config.h"
 #include <string>
 #include <vector>
-#include "Config.h"
 
 namespace sese {
 
@@ -25,7 +25,7 @@ namespace sese {
          * @param str 字符串
          */
         explicit AbstractStringBuffer(const char *str) noexcept;
-        ~AbstractStringBuffer() noexcept;
+        virtual ~AbstractStringBuffer() noexcept;
 
     protected:
         size_t cap{};  /// 实际容量
@@ -40,24 +40,24 @@ namespace sese {
         void expansion(size_t newSize) noexcept;
 
     public:
-        void append(char ch);
-        void append(const char *str) noexcept;
+        virtual void append(char ch) noexcept;
+        virtual void append(const char *str) noexcept;
         void append(const std::string &str) noexcept { this->append(str.c_str()); }
-        [[nodiscard]] size_t length() const noexcept { return this->len; }
-        [[nodiscard]] size_t size() const noexcept { return this->cap; }
-        [[nodiscard]] bool empty() const noexcept { return 0 == this->len; };
-        void clear() noexcept;
-        void reverse() noexcept;
-        [[nodiscard]] char getCharAt(int index) const;
-        void setChatAt(int index, char ch);
-        void delCharAt(int index);
-        void del(int start, int end);
-        void insertAt(int index, const char *str);
-        void insertAt(int index, const std::string &str) { this->insertAt(index, str.c_str()); };
+        [[nodiscard]] virtual size_t length() const noexcept { return this->len; }
+        [[nodiscard]] virtual size_t size() const noexcept { return this->cap; }
+        [[nodiscard]] virtual bool empty() const noexcept { return 0 == this->len; };
+        virtual void clear() noexcept;
+        virtual void reverse() noexcept;
+        [[nodiscard]] virtual char getCharAt(int index) const;
+        virtual void setChatAt(int index, char ch);
+        virtual void delCharAt(int index);
+        virtual void del(int start, int end);
+        virtual void insertAt(int index, const char *str);
+        virtual void insertAt(int index, const std::string &str) { this->insertAt(index, str.c_str()); };
         /// 去除两端空格
-        void trim() noexcept;
-        [[nodiscard]] std::vector<std::string> split(const std::string &str) const noexcept;
-        std::string toString();
+        virtual void trim() noexcept;
+        [[nodiscard]] virtual std::vector<std::string> split(const std::string &str) const noexcept;
+        virtual std::string toString();
     };
 
 }// namespace sese
