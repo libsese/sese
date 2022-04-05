@@ -8,6 +8,10 @@
 #include "AbstractByteBuffer.h"
 #include <mutex>
 
+#ifdef _WIN32
+#pragma warning(disable : 4251)
+#endif
+
 namespace sese {
 
     /**

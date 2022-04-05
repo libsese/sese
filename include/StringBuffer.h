@@ -11,6 +11,7 @@
 
 #ifdef _WIN32
 #pragma warning(disable : 4275)
+#pragma warning(disable : 4251)
 #endif
 
 namespace sese {
