@@ -22,9 +22,10 @@ Sese 只支持在64位系统下运行，非64位不会进行适配，带来的�
 
 已在以下环境进行测试，仅供参考。
 
-- WSL2-Arch 使用 **Clang 13**、**CMake**。
+- WSL2-ArchLinux 使用 **Clang 13**、**CMake**。
 - WSL2-Ubuntu 使用 **Clang 10**、**CMake**。
-- Ubuntu 使用 **GCC 11.2.0**、**CMake**
+- WSL2-AlmaLinux 使用 **Clang 12**、**CMake**。
+- Ubuntu 使用 **GCC 11.2.0**、**CMake**。
 
 默认自动链接 pthread 库。
 

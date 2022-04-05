@@ -1,5 +1,4 @@
 #include "net/IPv6Address.h"
-#include "Endian.h"
 //#include "system/Environment.h"
 #include <cstring>
 

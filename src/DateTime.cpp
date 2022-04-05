@@ -1,6 +1,7 @@
 #include "DateTime.h"
 
 #ifdef _WIN32
+#include <ctime>
 int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
     time_t clock;
     struct tm tm {};

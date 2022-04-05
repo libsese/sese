@@ -1,6 +1,5 @@
 #include "net/IPv4Address.h"
-#include "Endian.h"
-#include "system/Environment.h"
+//#include "system/Environment.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
