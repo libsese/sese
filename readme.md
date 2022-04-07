@@ -71,6 +71,52 @@ NDK 版本为 24.0.8215888，仅供参考。
   cmake -DGIT_EXECUTABLE="path/to/git"
   ```
 
+## 使用
+
+### Windows
+
+- CMake 编译安装
+
+  ```bash
+  cmake --build /path/to/build --target install
+  ```
+
+  \*\* 注意 \*\*：也许你需要手动指定 CMAKE_PREFIX_PATH 路径，默认值为 C:\Program Files (x86)，建议手动指定。
+
+- Windows 传统 Cpp 配置
+
+  1. 使用 CMake 编译所需的库。
+
+  2. 在新项目设置中手动指定链接库与包含目录。
+
+### 类 Unix
+
+- CMake 编译安装
+
+  1. CMake 直接编译安装后新建项目。
+
+  2. 新项目配置模板。
+
+     ```cmake
+     cmake_minimum_required(VERSION 3.12)
+     project(${PROJECT_NAME})
+     
+     find_package(sese 0.1 REQUIRED)
+     include_directories(${SESE_INCLUDE_DIR})
+     
+     add_executable(Main main.cpp)
+     target_link_libraries(Main sese)
+     ```
+
+  \*\* 注意 \*\*：库默认安装路径为 "/usr/local/lib"，可能需要添加至 **LD_LIBRARY_PATH** 中。
+
+  ```bash
+  # 永久生效请写入配置文件 $Profile("/etc/bashrc"|"~/.bashrc")
+  export LD_LIBRARY_PATH="/usr/local/lib":$LD_LIBRARY_PATH
+  # 刷新配置文件
+  source $Profile
+  ```
+
 ## 其他
 
 <span id="jmp0"/>

@@ -5,8 +5,8 @@ set(SESE_MINOR_VERSION 1)
 project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
 
 # Git 版本信息
-set(SESE_REPO_HASH "")
-set(SESE_REPO_BRANCH "")
+set(SESE_REPO_HASH)
+set(SESE_REPO_BRANCH)
 include(Git.cmake)
 get_git_hash(SESE_REPO_HASH)
 get_git_branch(SESE_REPO_BRANCH)
@@ -117,9 +117,38 @@ set_target_properties(
 include(Test.cmake)
 
 # 安装脚本
+include(CMakePackageConfigHelpers)
+
+write_basic_package_version_file(
+        ${PROJECT_SOURCE_DIR}/output/seseConfigVersion.cmake
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY ExactVersion
+)
+
+configure_package_config_file(
+        seseConfig.cmake.in "${PROJECT_SOURCE_DIR}/output/seseConfig.cmake"
+        INSTALL_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
+)
+
 install(TARGETS SeseSharedLibrary SeseStaticLibrary
-        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+        EXPORT ${PROJECT_NAME}Targets
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin
+        )
+
+install(EXPORT ${PROJECT_NAME}Targets
+        FILE ${PROJECT_NAME}Targets.cmake
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
+        )
+
+install(FILES
+        ${PROJECT_SOURCE_DIR}/output/seseConfig.cmake
+        ${PROJECT_SOURCE_DIR}/output/seseConfigVersion.cmake
+        DESTINATION
+        "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
+        )
+
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
-        DESTINATION "include/${PROJECT_NAME}")
+        DESTINATION "include/${PROJECT_NAME}"
+        )
