@@ -75,3 +75,7 @@ add_test(NAME TestAddress COMMAND TestAddress)
 add_executable(TestLocker test/TestLocker/main.cpp)
 target_link_libraries(TestLocker SeseSharedLibrary)
 add_test(NAME TestLocker COMMAND TestLocker)
+
+add_executable(TestThreadPool test/TestThreadPool/main.cpp)
+target_link_libraries(TestThreadPool SeseSharedLibrary)
+add_test(NAME TestThreadPool COMMAND TestThreadPool)

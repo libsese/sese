@@ -45,6 +45,7 @@ set(ALL_SRCS
         src/Util.cpp
         # 线程
         src/thread/Thread.cpp
+        src/thread/ThreadPool.cpp
         # 系统
         src/system/Environment.cpp
         # 网络
