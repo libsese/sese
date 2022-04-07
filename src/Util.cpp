@@ -1,6 +1,9 @@
 #include "Util.h"
 #include "Config.h"
 #include <cstring>
+#ifndef _WIN32
+#include <unistd.h>
+#endif
 
 namespace sese {
 
@@ -50,6 +53,14 @@ namespace sese {
 
     bool StrCmpI::operator()(char const *lv, char const *rv) {
         return strcmpi(lv, rv);
+    }
+
+    void sleep(uint32_t second) {
+#ifdef _WIN32
+        ::Sleep(second * 1000);
+#else
+        ::sleep(second);
+#endif
     }
 
 }// namespace sese

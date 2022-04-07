@@ -57,6 +57,12 @@ namespace sese {
      */
     extern API int32_t findFirstAt(const char *str, char ch);
 
+    /**
+     * 使当前线程休眠一段时间，NATIVE API 实现
+     * @param second 秒
+     */
+    extern API void sleep(uint32_t second);
+
 }// namespace sese
 
 #ifdef _WIN32
