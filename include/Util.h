@@ -117,11 +117,9 @@ namespace sese {
 /**
  * @brief 更快速的边界检查 - [0, max)
  */
-#define CheckRange(x, max) \
-    ((unsigned int) (x) < (max))
+#define CheckRange(x, max) ((unsigned int) (x) < (max))
 
 /**
  * @brief 更快速的边界检查 - [min, max]
  */
-#define CheckRangeBetween(x, min, max) \
-    (((x) - (min)) | ((max) - (x)) >= 0)
+#define CheckRangeBetween(x, min, max) (((x) - (min)) | ((max) - (x)) >= 0)

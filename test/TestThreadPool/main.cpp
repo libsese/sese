@@ -9,14 +9,13 @@ using namespace sese;
 class MyTask : public Task {
 public:
     int32_t value = 0;
+    double_t rt = 0;
 
     explicit MyTask(int32_t value) : value(value) {}
 
-    [[nodiscard]] std::function<void()> getFunction() const noexcept override {
-        return [v = value] {
-            auto rt = std::tgamma(v);
-            ROOT_INFO(FILTER_THREAD_POOL, "rt: %f", rt)
-        };
+    void content() noexcept override {
+        rt = std::tgamma(value);
+        ROOT_INFO(FILTER_THREAD_POOL, "rt: %f", rt)
     }
 };
 

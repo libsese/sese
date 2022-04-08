@@ -4,10 +4,14 @@
 #include <memory>
 
 namespace sese {
-    class API Task{
+    class API Task {
     public:
         using Ptr = std::shared_ptr<Task>;
 
-        [[nodiscard]] virtual std::function<void()> getFunction() const noexcept = 0;
+        virtual void content() noexcept = 0;
+
+        [[nodiscard]] virtual std::function<void()> getFunction() noexcept {
+            return {[this] { content(); }};
+        }
     };
-}
+}// namespace sese
