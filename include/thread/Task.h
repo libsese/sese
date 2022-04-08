@@ -9,9 +9,5 @@ namespace sese {
         using Ptr = std::shared_ptr<Task>;
 
         virtual void content() noexcept = 0;
-
-        [[nodiscard]] virtual std::function<void()> getFunction() noexcept {
-            return {[this] { content(); }};
-        }
     };
 }// namespace sese

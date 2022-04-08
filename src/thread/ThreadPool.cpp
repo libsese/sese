@@ -19,8 +19,9 @@ namespace sese {
                     auto task = std::move(data->tasks.front());
                     data->tasks.pop();
                     locker.unlock();
-                    if (task)
-                        task->getFunction()();
+                    if (task) {
+                        task->content();
+                    }
                 }
             }
         };
