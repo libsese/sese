@@ -6,7 +6,7 @@
 static const char *TYPE_MAIN_THREAD = "Main Thread";
 static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";
 
-void proc() {
+void IPv4ServerProc() {
     ROOT_INFO(FILTER_TEST_THREAD,
               "Thread's name = %s, pid = %" PRIdPid,
               sese::Thread::getCurrentThreadName().c_str(),
@@ -25,7 +25,7 @@ void proc() {
 
 int main() {
     int num = 0;
-    sese::Thread thread(proc, "SubThread");
+    sese::Thread thread(IPv4ServerProc, "SubThread");
     thread.setArgument(&num);
     thread.start();
     if (thread.joinable()) {

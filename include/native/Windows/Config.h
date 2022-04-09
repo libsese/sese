@@ -28,8 +28,12 @@
 #pragma comment(lib, "DbgHelp.lib")
 #endif
 
-using pid_t = uint32_t;
 /// pid_t 格式化占位符
 #define PRIdPid "u"
 /// 忽略大小写比较
 #define strcasecmp strcmpi
+
+/// 线程 ID 标识符
+using pid_t = uint32_t;
+/// Native Socket 类型
+using socket_t = SOCKET;

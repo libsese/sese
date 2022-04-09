@@ -6,7 +6,7 @@
 
 std::mutex mutex;
 
-void proc() {
+void IPv4ServerProc() {
     auto thread = sese::Thread::getCurrentThread();
     auto *num = static_cast<uint32_t *>(thread->getArgument());
     sese::Locker locker(mutex);
@@ -20,9 +20,9 @@ void proc() {
 
 int main() {
     uint32_t num = 0;
-    sese::Thread thread1(proc, "sub1");
+    sese::Thread thread1(IPv4ServerProc, "sub1");
     thread1.setArgument(&num);
-    sese::Thread thread2(proc, "sub2");
+    sese::Thread thread2(IPv4ServerProc, "sub2");
     thread2.setArgument(&num);
 
     thread1.start();

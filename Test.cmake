@@ -79,3 +79,7 @@ add_test(NAME TestLocker COMMAND TestLocker)
 add_executable(TestThreadPool test/TestThreadPool/main.cpp)
 target_link_libraries(TestThreadPool SeseSharedLibrary)
 add_test(NAME TestThreadPool COMMAND TestThreadPool)
+
+add_executable(TestSocket test/TestSocket/main.cpp)
+target_link_libraries(TestSocket SeseSharedLibrary)
+add_test(NAME TestSocket COMMAND TestSocket)

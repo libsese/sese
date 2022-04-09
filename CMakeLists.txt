@@ -63,6 +63,7 @@ message(STATUS "NATIVE PATH : ${NATIVE_PATH}")
 set(NATIVE_SRCS
         ${NATIVE_PATH}/Test.cpp
         ${NATIVE_PATH}/system/CpuInfo.cpp
+        ${NATIVE_PATH}/net/Socket.cpp
         )
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
