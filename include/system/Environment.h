@@ -39,6 +39,11 @@ namespace sese {
         static int getMinorVersion() noexcept;
 
         /**
+         * @return 返回补丁版本号
+         */
+        static long getPatchVersion() noexcept;
+
+        /**
          * @return 返回构建日期字符串
          */
         static const char *getBuildDate() noexcept;

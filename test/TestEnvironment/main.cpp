@@ -11,9 +11,10 @@ int main() {
               Environment::getOperateSystemType())
 
     ROOT_INFO(FILTER_TEST_ENV,
-              "libsese version: %d.%d",
+              "libsese version: %d.%d.%ld",
               Environment::getMajorVersion(),
-              Environment::getMinorVersion())
+              Environment::getMinorVersion(),
+              Environment::getPatchVersion())
 
     ROOT_INFO(FILTER_TEST_ENV,
               "libsese repo on the %s branch: %s",

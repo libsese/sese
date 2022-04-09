@@ -2,7 +2,8 @@
 cmake_minimum_required(VERSION 3.12)
 set(SESE_MAJOR_VERSION 0)
 set(SESE_MINOR_VERSION 1)
-project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
+string(TIMESTAMP SESE_PATCH_VERSION %s)
+project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}.${SESE_PATCH_VERSION})
 
 # Git 版本信息
 set(SESE_REPO_HASH)
@@ -22,6 +23,7 @@ enable_testing()
 message(STATUS "Project Version : ${CMAKE_PROJECT_VERSION}-${SESE_REPO_BRANCH}.${SESE_REPO_HASH}")
 add_definitions(-DSESE_MAJOR_VERSION=${SESE_MAJOR_VERSION})
 add_definitions(-DSESE_MINOR_VERSION=${SESE_MINOR_VERSION})
+add_definitions(-DSESE_PATCH_VERSION=${SESE_PATCH_VERSION})
 add_definitions(-DSESE_REPO_HASH="${SESE_REPO_HASH}")
 add_definitions(-DSESE_REPO_BRANCH="${SESE_REPO_BRANCH}")
 
@@ -67,10 +69,13 @@ set(NATIVE_SRCS
         )
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+    set(DLL_INFO_RC ${PROJECT_SOURCE_DIR}/output/WindowsDllInfo.rc)
+    configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
+
     add_definitions(-DWINDOWS_DLL)
     add_definitions(-DNEED_DBGHELP)
 
-    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
+    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS} ${DLL_INFO_RC})
     add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
 
     message(STATUS "Add library : wsock32, ws2_32")
@@ -105,14 +110,14 @@ set_target_properties(
         SeseSharedLibrary
         PROPERTIES
         OUTPUT_NAME sese
-        VERSION ${PROJECT_VERSION}
+        VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}
 )
 
 set_target_properties(
         SeseStaticLibrary
         PROPERTIES
         OUTPUT_NAME sese
-        VERSION ${PROJECT_VERSION}
+        VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}
         SUFFIX ".a"
 )
 
