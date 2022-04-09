@@ -9,8 +9,9 @@
 
 sese::IPv6Address::Ptr sese::IPv6Address::create(const char *address, uint16_t port) {
     IPv6Address::Ptr result(new IPv6Address);
+    auto err = inet_pton(AF_INET6, address, &result->address.sin6_addr);
+    result->address.sin6_family = AF_INET6;
     result->address.sin6_port = ToBigEndian16(port);
-    auto err = inet_pton(AF_INET6, address, &result->address);
     if (err <= 0) {
         return nullptr;
     } else {

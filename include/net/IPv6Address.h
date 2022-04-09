@@ -30,6 +30,15 @@ namespace sese {
         [[nodiscard]] IPAddress::Ptr getNetworkAddress(uint32_t prefixLen) const noexcept override;
         [[nodiscard]] IPAddress::Ptr getSubnetMask(uint32_t prefixLen) const noexcept override;
 
+        void setPort(uint16_t port) noexcept override { this->address.sin6_port = ToBigEndian16(port); }
+        [[nodiscard]] uint16_t getPort() const noexcept override {
+#if (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || defined(_WIN32)
+            return ByteSwap16(address.sin6_port);
+#else
+            return address.sin6_port;
+#endif
+        }
+
     private:
         sockaddr_in6 address{0};
     };

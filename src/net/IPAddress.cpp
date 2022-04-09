@@ -12,7 +12,7 @@ sese::IPAddress::Ptr sese::IPAddress::create(const char *address, uint16_t port)
 
     IPAddress::Ptr result = std::dynamic_pointer_cast<IPAddress>(Address::create(res->ai_addr, (socklen_t) res->ai_addrlen));
     if (result) {
-        result->port = port;
+        result->setPort(port);
     } else {
         result = nullptr;
     }

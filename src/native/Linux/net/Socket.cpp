@@ -1,11 +1,12 @@
 #include "net/Socket.h"
+#include <unistd.h>
 
 sese::Socket::Socket(Family family, Type type, int32_t protocol) noexcept {
-    handle = socket((int32_t) family, (int32_t) type, protocol);
+    handle = ::socket((int32_t) family, (int32_t) type, protocol);
 }
 
 sese::Socket::~Socket() noexcept {
-    closesocket(handle);
+    ::close(handle);
 }
 
 int32_t sese::Socket::bind(Address::Ptr addr) noexcept {
@@ -45,24 +46,24 @@ int32_t sese::Socket::shutdown(ShutdownMode mode) const {
 }
 
 int64_t sese::Socket::read(void *buffer, size_t length) {
-    return ::recv(handle, (char *) buffer, (int32_t) length, 0);
+    return ::read(handle, buffer, length);
 }
 
 int64_t sese::Socket::write(void *buffer, size_t length) {
-    return ::send(handle, (char *) buffer, (int32_t) length, 0);
+    return ::write(handle, buffer, length);
 }
 
 int64_t sese::Socket::send(void *buffer, size_t length, const IPAddress::Ptr &to, int32_t flags) const {
-    return sendto(handle, (char *) buffer, (int32_t) length, flags, to->getRawAddress(), to->getRawAddressLength());
+    return ::sendto(handle, buffer, length, flags, to->getRawAddress(), to->getRawAddressLength());
 }
 
 int64_t sese::Socket::recv(void *buffer, size_t length, const IPAddress::Ptr &from, int32_t flags) const {
-    int32_t len = from->getRawAddressLength();
-    return recvfrom(handle, (char *) buffer, (int32_t) length, flags, from->getRawAddress(), &len);
+    auto len = from->getRawAddressLength();
+    return ::recvfrom(handle, buffer, length, flags, from->getRawAddress(), &len);
 }
 
 void sese::Socket::close() {
-    closesocket(handle);
+    ::close(handle);
 }
 
 sese::Socket::Socket(socket_t handle, Address::Ptr address) noexcept {
