@@ -22,7 +22,7 @@ namespace sese {
         explicit IPv6Address(const sockaddr_in6 &address) noexcept;
         explicit IPv6Address(uint8_t *address, uint16_t port = 0);
 
-        [[nodiscard]] const sockaddr *getRawAddress() const noexcept override;
+        [[nodiscard]] sockaddr *getRawAddress() const noexcept override;
         [[nodiscard]] socklen_t getRawAddressLength() const noexcept override;
         [[nodiscard]] std::string getAddress() const noexcept override;
 

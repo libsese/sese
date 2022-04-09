@@ -35,7 +35,7 @@ sese::IPv6Address::IPv6Address(uint8_t *address, uint16_t port) {
     memcpy(&this->address.sin6_addr.s6_addr, address, 16);
 }
 
-const sockaddr *sese::IPv6Address::getRawAddress() const noexcept {
+sockaddr *sese::IPv6Address::getRawAddress() const noexcept {
     return (sockaddr *) &this->address;
 }
 

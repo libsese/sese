@@ -22,7 +22,7 @@ namespace sese {
         explicit IPv4Address(uint32_t address = INADDR_ANY, uint16_t port = 0);
 
     public:
-        [[nodiscard]] const sockaddr *getRawAddress() const noexcept override;
+        [[nodiscard]] sockaddr *getRawAddress() const noexcept override;
         [[nodiscard]] socklen_t getRawAddressLength() const noexcept override;
         [[nodiscard]] std::string getAddress() const noexcept override;
 

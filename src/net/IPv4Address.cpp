@@ -36,7 +36,7 @@ sese::IPv4Address::IPv4Address(uint32_t address, uint16_t port) {
     this->address.sin_addr.s_addr = ToBigEndian32(address);
 }
 
-const sockaddr *sese::IPv4Address::getRawAddress() const noexcept {
+sockaddr *sese::IPv4Address::getRawAddress() const noexcept {
     return (sockaddr *) &address;
 }
 

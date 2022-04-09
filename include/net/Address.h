@@ -41,7 +41,7 @@ namespace sese {
 
     public:
         virtual ~Address() = default;
-        [[nodiscard]] virtual const sockaddr *getRawAddress() const noexcept = 0;
+        [[nodiscard]] virtual sockaddr *getRawAddress() const noexcept = 0;
         [[nodiscard]] virtual socklen_t getRawAddressLength() const noexcept = 0;
         [[nodiscard]] virtual std::string getAddress() const noexcept = 0;
     };
