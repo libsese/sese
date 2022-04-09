@@ -18,3 +18,6 @@
 #define PRIdPid "d"
 /// 忽略大小写比较
 #define strcmpi strcasecmp
+
+/// Native Socket 类型
+using socket_t = int32_t;

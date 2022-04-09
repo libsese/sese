@@ -60,6 +60,7 @@ int main() {
         sese::Thread threadIPv6Server(IPv6ServerProc, "ServerThreadIPv6");
         threadIPv6Server.start();
         sese::sleep(1);
+        ROOT_INFO(FILTER_TEST_SOCKET, "IPv6: Client starting")
         auto client = std::make_shared<Socket>(Socket::Family::IPv6, Socket::Type::TCP);
         auto address = IPv6Address::create("::1", 7891);
         auto i = client->connect(address);

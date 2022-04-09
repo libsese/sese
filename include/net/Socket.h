@@ -45,7 +45,6 @@ namespace sese {
         };
 
     public:
-        Socket(socket_t handle, Address::Ptr address) noexcept;
         Socket(Family family, Type type, int32_t protocol = IPPROTO_IP) noexcept;
         ~Socket();
 
@@ -94,6 +93,9 @@ namespace sese {
 
         [[nodiscard]] const socket_t &getRawSocket() const { return handle; }
         [[nodiscard]] const Address::Ptr &getAddress() const { return address; }
+
+    protected:
+        Socket(socket_t handle, Address::Ptr address) noexcept;
 
     private:
         socket_t handle{};
