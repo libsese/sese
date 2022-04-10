@@ -1,4 +1,4 @@
-#include "system\CpuInfo.h"
+#include "system/CpuInfo.h"
 #include <bitset>
 #include <intrin.h>
 #include <thread>
@@ -27,7 +27,7 @@ namespace sese {
     const std::string &CpuInfo::getSerialNumber() noexcept { return serialNumber; }
     uint32_t CpuInfo::getLogicProcessors() noexcept { return std::thread::hardware_concurrency(); }
 
-#ifdef _M_AMD64
+#ifdef SESE_ARCH_X64
     namespace _windows {
 
         /// CPUID 需要用上的 4 个寄存器
@@ -176,13 +176,13 @@ namespace sese {
 
 #endif
     //todo 完善 Windows 下 Arm 架构的识别
-#ifdef _M_ARM64
+#ifdef SESE_ARCH_ARM64
     namespace _windows {
         static struct CpuInitStruct {
             CpuInitStruct() {
                 isARM = true;
             }
         } cpuInitStruct; /* NOLINT */
-    }                    // namespace _windows
+    } // namespace _windows
 #endif
 }// namespace sese

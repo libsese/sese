@@ -26,7 +26,7 @@ namespace sese {
     const std::string &CpuInfo::getSerialNumber() noexcept { return serialNumber; }
     uint32_t CpuInfo::getLogicProcessors() noexcept { return std::thread::hardware_concurrency(); }
 
-#ifdef __x86_64__
+#ifdef SESE_ARCH_X64
     namespace _darwin {
 
         inline void cpuid(int cpuInfo[4], int function_id) {
@@ -185,7 +185,7 @@ namespace sese {
     }
 #endif
     //todo 完善 Darwin 下 Arm 架构的识别
-#ifdef __aarch64__
+#ifdef SESE_ARCH_ARM64
     namespace _darwin {
         static struct CpuInitStruct {
             CpuInitStruct() {

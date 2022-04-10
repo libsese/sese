@@ -49,9 +49,9 @@ target_link_libraries(TestCpuInfo SeseSharedLibrary)
 add_test(NAME TestCpuInfo COMMAND TestCpuInfo)
 
 # Random
-# add_executable(TestRandom test/TestRandom/main.cpp)
-# target_link_libraries(TestRandom SeseSharedLibrary)
-# add_test(NAME TestRandom COMMAND TestRandom)
+add_executable(TestRandom test/TestRandom/main.cpp)
+target_link_libraries(TestRandom SeseSharedLibrary)
+add_test(NAME TestRandom COMMAND TestRandom)
 
 # ArgParser
 add_executable(TestArgParser test/TestArgParser/main.cpp)

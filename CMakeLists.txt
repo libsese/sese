@@ -43,7 +43,7 @@ set(ALL_SRCS
         src/DateTimeFormatter.cpp
         src/StringBuffer.cpp
         src/ByteBuffer.cpp
-        # src/Random.cpp
+        src/Random.cpp
         src/Util.cpp
         # 线程
         src/thread/Thread.cpp

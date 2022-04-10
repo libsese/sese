@@ -46,7 +46,7 @@ namespace sese {
 
     public:
         Socket(Family family, Type type, int32_t protocol = IPPROTO_IP) noexcept;
-        ~Socket();
+        ~Socket() noexcept;
 
     public:
         int32_t bind(Address::Ptr addr) noexcept;

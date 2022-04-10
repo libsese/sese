@@ -94,7 +94,6 @@ namespace sese {
         [[nodiscard]] static bool _3DNOWEXT() FUNCTION_X64
         [[nodiscard]] static bool _3DNOW() FUNCTION_X64
 
-        [[nodiscard]] static uint64_t RDTSC() FUNCTION_X64
 #pragma endregion
 
 #pragma region ARM64专有函数
@@ -142,6 +141,7 @@ namespace sese {
 
     public:
         [[nodiscard]] static bool AES() noexcept;
+        [[nodiscard]] static uint64_t RDTSC() noexcept;
     };
 
 }// namespace sese

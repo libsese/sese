@@ -82,7 +82,11 @@ namespace sese {
     bool CpuInfo::SB() noexcept { XX(SB) }
     bool CpuInfo::PACA() noexcept { XX(PACA) }
     bool CpuInfo::PACG() noexcept { XX(PACG) }
-
 #undef XX
 
+    uint64_t CpuInfo::RDTSC() noexcept {
+        uint64_t value;
+        __asm__ volatile("mrs %0, cntfrq_el0" : "=r" (value));
+        return value;
+    }
 }// namespace sese
