@@ -70,3 +70,12 @@ sese::Socket::Socket(socket_t handle, Address::Ptr address) noexcept {
     this->handle = handle;
     this->address = std::move(address);
 }
+
+int32_t sese::Socket::setOption(Option option, int32_t &value) const {
+    return ::setsockopt(handle, SOL_SOCKET, (int32_t)option, (const void *)&value, sizeof(value));
+}
+
+int32_t sese::Socket::getOption(Option option, int32_t &value) const {
+    socklen_t size = sizeof(value);
+    return ::getsockopt(handle, SOL_SOCKET, (int32_t)option, (void *)&value, &size);
+}

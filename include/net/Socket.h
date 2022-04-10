@@ -32,7 +32,7 @@ namespace sese {
             IPv6 = AF_INET6
         };
 
-        enum class ShutdownMode{
+        enum class ShutdownMode {
 #ifdef _WIN32
             Read = 0,
             Write = 1,
@@ -44,6 +44,19 @@ namespace sese {
 #endif
         };
 
+        enum class Option{
+            REUSE_ADDRESS = SO_REUSEADDR,
+            LINGER = SO_LINGER,
+            SEND_TIMEOUT = SO_SNDTIMEO,
+            RECV_TIMEOUT = SO_RCVTIMEO,
+            SEND_BUFFER_SIZE = SO_SNDBUF,
+            RECV_BUFFER_SIZE = SO_RCVBUF,
+            KEEPALIVE = SO_KEEPALIVE,
+            OOB_INLINE = SO_OOBINLINE,
+            BROADCAST = SO_BROADCAST,
+            DEBUG = SO_DEBUG
+        };
+
     public:
         Socket(Family family, Type type, int32_t protocol = IPPROTO_IP) noexcept;
         ~Socket() noexcept;
@@ -51,9 +64,9 @@ namespace sese {
     public:
         int32_t bind(Address::Ptr addr) noexcept;
         int32_t connect(Address::Ptr addr) noexcept;
-        [[nodiscard]] int32_t listen(int32_t backlog) const noexcept;
+        int32_t listen(int32_t backlog) const noexcept; /* NOLINT */
         [[nodiscard]] Socket::Ptr accept() const;
-        [[nodiscard]] int32_t shutdown(ShutdownMode mode) const;
+        int32_t shutdown(ShutdownMode mode) const; /* NOLINT */
 
         /**
          * TCP 接收字节
@@ -89,10 +102,38 @@ namespace sese {
          */
         int64_t recv(void *buffer, size_t length, const IPAddress::Ptr &from, int32_t flags) const;
 
+    public:
+#define W(func)          \
+    value = func(value); \
+    return write(&value, sizeof(value));
+
+        int64_t writeInt16(int16_t value) { W(ToBigEndian16) }
+        int64_t writeInt32(int32_t value) { W(ToBigEndian32) }
+        int64_t writeInt64(int64_t value) { W(ToBigEndian64) }
+        int64_t writeUint16(uint16_t value) { W(ToBigEndian16) }
+        int64_t writeUint32(uint32_t value) { W(ToBigEndian32) }
+        int64_t writeUint64(uint64_t value) { W(ToBigEndian64) }
+#undef W
+#define R(func)                             \
+    auto len = read(&value, sizeof(value)); \
+    value = func(value);                    \
+    return len;
+
+        int64_t readInt16(int16_t &value) { R(FromBigEndian16) }
+        int64_t readInt32(int32_t &value) { R(FromBigEndian32) }
+        int64_t readInt64(int64_t &value) { R(FromBigEndian64) }
+        int64_t readUint16(uint16_t &value) { R(FromBigEndian16) }
+        int64_t readUint32(uint32_t &value) { R(FromBigEndian32) }
+        int64_t readUint64(uint64_t &value) { R(FromBigEndian64) }
+#undef R
+
         void close() override;
 
         [[nodiscard]] const socket_t &getRawSocket() const { return handle; }
         [[nodiscard]] const Address::Ptr &getAddress() const { return address; }
+
+        int32_t setOption(Option option, int32_t &value) const;
+        int32_t getOption(Option option, int32_t &value) const;
 
     protected:
         Socket(socket_t handle, Address::Ptr address) noexcept;

@@ -26,15 +26,15 @@ sese::Socket::Ptr sese::Socket::accept() const {
     if (address->getRawAddress()->sa_family == AF_INET) {
         sockaddr addr{0};
         socklen_t addrLen = sizeof(addr);
-        auto clientHandle = ::accept(handle,(sockaddr *)&addr, &addrLen);
-        auto pAddr = Address::create((sockaddr *)&addr, addrLen);
+        auto clientHandle = ::accept(handle, (sockaddr *) &addr, &addrLen);
+        auto pAddr = Address::create((sockaddr *) &addr, addrLen);
         auto pClientSocket = new Socket(clientHandle, pAddr);
         return std::shared_ptr<Socket>(pClientSocket);
     } else {
         sockaddr_in6 addr{0};
         socklen_t addrLen = sizeof(addr);
-        auto clientHandle = ::accept(handle,(sockaddr *)&addr, &addrLen);
-        auto pAddr = Address::create((sockaddr *)&addr, addrLen);
+        auto clientHandle = ::accept(handle, (sockaddr *) &addr, &addrLen);
+        auto pAddr = Address::create((sockaddr *) &addr, addrLen);
         auto pClientSocket = new Socket(clientHandle, pAddr);
         return std::shared_ptr<Socket>(pClientSocket);
     }
@@ -68,4 +68,13 @@ void sese::Socket::close() {
 sese::Socket::Socket(socket_t handle, Address::Ptr address) noexcept {
     this->handle = handle;
     this->address = std::move(address);
+}
+
+int32_t sese::Socket::setOption(Option option, int32_t &value) const {
+    return ::setsockopt(handle, SOL_SOCKET, (int32_t) option, (const char *) &value, sizeof(value));
+}
+
+int32_t sese::Socket::getOption(Option option, int32_t &value) const {
+    int32_t size = sizeof(value);
+    return ::getsockopt(handle, SOL_SOCKET, (int32_t) option, (char *)&value, &size);
 }
