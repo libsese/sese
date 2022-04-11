@@ -32,5 +32,5 @@
 
 <span id="jmp0"/>
 
-时间格式化相关请参看 [DateTimeFormatter 日期时间格式化器](./DateTimeFoematter.md)
+时间格式化相关请参看 [DateTimeFormatter 日期时间格式化器](./DateTimeFormatter.md)
 
