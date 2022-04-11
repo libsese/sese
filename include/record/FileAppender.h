@@ -6,7 +6,7 @@
  */
 #pragma once
 #include "AbstractAppender.h"
-#include <cstdlib>
+#include "FileStream.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
@@ -21,20 +21,15 @@ namespace sese {
     public:
         typedef std::shared_ptr<FileAppender> Ptr;
 
-        FileAppender(const std::string &fileName, const AbstractFormatter::Ptr &formatter, Level level = Level::DEBUG) : AbstractAppender(formatter, level) {
-            this->fileName = fileName;
-            this->file = fopen(fileName.c_str(), "a+");
+        FileAppender(const std::string &fileName, const AbstractFormatter::Ptr &formatter, Level level = Level::DEBUG)
+            : AbstractAppender(formatter, level),
+              fileStream(std::make_shared<FileStream>(fileName, FileStream::Mode::TEXT_WRITE_CREATE_APPEND)){
         }
 
         void dump(const Event::Ptr &event) noexcept override;
 
-        ~FileAppender();
-
-        [[nodiscard]] const std::string &getFileName() const noexcept { return this->fileName; }
-
     private:
-        std::string fileName;
-        FILE *file = nullptr;
+        std::shared_ptr<FileStream> fileStream;
     };
 
 }// namespace sese
