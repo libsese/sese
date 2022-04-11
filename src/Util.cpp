@@ -63,4 +63,14 @@ namespace sese {
 #endif
     }
 
+    std::string getErrorString(int32_t error){
+#ifdef _WIN32
+        char buffer[255];
+        strerror_s(buffer, 255, error);
+        return { buffer };
+#else
+        return strerror(error);
+#endif
+    }
+
 }// namespace sese

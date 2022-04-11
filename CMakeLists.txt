@@ -45,6 +45,7 @@ set(ALL_SRCS
         src/ByteBuffer.cpp
         src/Random.cpp
         src/Util.cpp
+        src/FileStream.cpp
         # 线程
         src/thread/Thread.cpp
         src/thread/ThreadPool.cpp

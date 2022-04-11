@@ -28,6 +28,8 @@
 #define EXCEPTION_LOGIC_STRING  "Logic exception"
 #define EXCEPTION_INDEX_OUT_OF_BOUNDS_STRING  "Index out of bounds"
 #define EXCEPTION_ILLEGAL_ARGUMENT_STRING "Illegal argument exception"
+#define EXCEPTION_IO_STRING "IO exception"
+#define EXCEPTION_FILE "File exception"
 #pragma endregion
 
 #pragma region 日期时间配置

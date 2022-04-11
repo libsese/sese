@@ -63,6 +63,7 @@ namespace sese {
      */
     extern API void sleep(uint32_t second);
 
+    extern API std::string getErrorString(int32_t error = errno);
 }// namespace sese
 
 #ifdef _WIN32
