@@ -70,6 +70,7 @@ set(NATIVE_SRCS
         )
 
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+    set(CMAKE_DEBUG_POSTFIX "d")
     set(DLL_INFO_RC ${PROJECT_SOURCE_DIR}/output/WindowsDllInfo.rc)
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 

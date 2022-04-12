@@ -1,6 +1,6 @@
 /**
  * @file ByteBuffer.h
- * @brief 线程安全的字符串缓冲类
+ * @brief 线程安全的字节缓冲类
  * @author kaoru
  * @date 2022年4月5日
  */
@@ -15,7 +15,7 @@
 namespace sese {
 
     /**
-     * @brief 线程安全的字符串缓存类
+     * @brief 线程安全的字节缓冲类
      */
     class API ByteBuffer : AbstractByteBuffer {
     public:

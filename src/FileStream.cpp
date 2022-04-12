@@ -1,9 +1,9 @@
 #include "FileStream.h"
 #include "FileException.h"
-#include "Util.h"
 
 #ifdef _WIN32
 #define fopen(FILE, FILE_NAME, MODE_STR) fopen_s(&FILE, FILE_NAME, MODE_STR)
+#define fseek _fseeki64
 #else
 #define fopen(FILE, FILE_NAME, MODE_STR) FILE = fopen(FILE_NAME, MODE_STR)
 #endif
