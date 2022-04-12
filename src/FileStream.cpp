@@ -2,15 +2,17 @@
 #include "FileException.h"
 
 #ifdef _WIN32
-#define fopen(FILE, FILE_NAME, MODE_STR) fopen_s(&FILE, FILE_NAME, MODE_STR)
 #define fseek _fseeki64
-#else
-#define fopen(FILE, FILE_NAME, MODE_STR) FILE = fopen(FILE_NAME, MODE_STR)
 #endif
 
 sese::FileStream::FileStream(const std::string &fileName, const char *mode) {
-    fopen(file, fileName.c_str(), mode);
-    if (errno != 0) {
+#ifdef _WIN32
+    auto rt = fopen_s(&file, fileName.c_str(), mode);
+#else
+    file = fopen(fileName.c_str(), mode);
+    auto rt = errno;
+#endif
+    if (rt != 0) {
         file = nullptr;
     }
 }
