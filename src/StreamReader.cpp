@@ -48,7 +48,23 @@ namespace sese {
                 isFirst = false;
             }
         }
+        bufferStream->freeCapacity();
         return string.str();
+    }
+
+    size_t StreamReader::getAheadLength() const {
+        return bufferStream->getLength() - bufferStream->getCurrentReadPos();
+    }
+
+    void *StreamReader::getAheadBuffer() const {
+        auto aheadLength = this->getAheadLength();
+        void *buffer = malloc(aheadLength);
+        bufferStream->read(buffer, aheadLength);
+        return buffer;
+    }
+
+    void StreamReader::freeAheadBuffer(void *buffer) {
+        free(buffer);
     }
 
     int64_t StreamReader::preRead() {
