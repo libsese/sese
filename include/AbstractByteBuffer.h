@@ -60,6 +60,9 @@ namespace sese {
          */
         virtual size_t freeCapacity();
 
+        [[nodiscard]] size_t getCurrentWritePos() const { return currentWritePos; }
+        [[nodiscard]] size_t getCurrentReadPos() const { return currentReadPos; }
+
     public:
         int64_t read(void *buffer, size_t len) override;
         int64_t write(void *buffer, size_t needWrite) override;

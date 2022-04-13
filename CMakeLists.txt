@@ -19,13 +19,14 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output/${CMAKE_SYSTEM_NAME})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output/${CMAKE_SYSTEM_NAME})
 enable_testing()
 
-# 版本宏
+# 编译预设宏
 message(STATUS "Project Version : ${CMAKE_PROJECT_VERSION}-${SESE_REPO_BRANCH}.${SESE_REPO_HASH}")
 add_definitions(-DSESE_MAJOR_VERSION=${SESE_MAJOR_VERSION})
 add_definitions(-DSESE_MINOR_VERSION=${SESE_MINOR_VERSION})
 add_definitions(-DSESE_PATCH_VERSION=${SESE_PATCH_VERSION})
 add_definitions(-DSESE_REPO_HASH="${SESE_REPO_HASH}")
 add_definitions(-DSESE_REPO_BRANCH="${SESE_REPO_BRANCH}")
+add_definitions(-DPROJECT_PATH="${PROJECT_SOURCE_DIR}")
 
 set(ALL_SRCS
         # 日志
@@ -46,6 +47,7 @@ set(ALL_SRCS
         src/Random.cpp
         src/Util.cpp
         src/FileStream.cpp
+        src/StreamReader.cpp
         # 线程
         src/thread/Thread.cpp
         src/thread/ThreadPool.cpp

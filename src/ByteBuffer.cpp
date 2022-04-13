@@ -38,3 +38,13 @@ size_t sese::ByteBuffer::freeCapacity() {
     Locker locker(mutex);
     return AbstractByteBuffer::freeCapacity();
 }
+
+size_t sese::ByteBuffer::getCurrentReadPos() {
+    Locker locker(mutex);
+    return AbstractByteBuffer::getCurrentReadPos();
+}
+
+size_t sese::ByteBuffer::getCurrentWritePos() {
+    Locker locker(mutex);
+    return AbstractByteBuffer::getCurrentWritePos();
+}

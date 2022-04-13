@@ -19,7 +19,7 @@ namespace sese {
      */
     class API ByteBuffer : AbstractByteBuffer {
     public:
-        explicit ByteBuffer(size_t baseSize);
+        explicit ByteBuffer(size_t baseSize = STREAM_BYTESTREAM_BASE_SIZE);
         void resetPos() override;
         [[nodiscard]] size_t getLength();
         [[nodiscard]] size_t getCapacity();
@@ -27,6 +27,8 @@ namespace sese {
         int64_t read(void *buffer, size_t len) override;
         int64_t write(void *buffer, size_t needWrite) override;
         void close() override;
+        [[nodiscard]] size_t getCurrentWritePos();
+        [[nodiscard]] size_t getCurrentReadPos();
 
     private:
         std::mutex mutex;

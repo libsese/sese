@@ -1,5 +1,4 @@
 #include "FileStream.h"
-#include "FileException.h"
 
 #ifdef _WIN32
 #define fseek _fseeki64
@@ -18,11 +17,11 @@ sese::FileStream::FileStream(const std::string &fileName, const char *mode) {
 }
 
 int64_t sese::FileStream::read(void *buffer, size_t length) {
-    return (int64_t) ::fread(buffer, length, 1, file);
+    return (int64_t) ::fread(buffer, 1, length, file);
 }
 
 int64_t sese::FileStream::write(void *buffer, size_t length) {
-    return (int64_t) ::fwrite(buffer, length, 1, file);
+    return (int64_t) ::fwrite(buffer, 1, length, file);
 }
 
 void sese::FileStream::close() {
