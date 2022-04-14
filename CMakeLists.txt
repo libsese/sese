@@ -47,7 +47,6 @@ set(ALL_SRCS
         src/Random.cpp
         src/Util.cpp
         src/FileStream.cpp
-        src/StreamReader.cpp
         # 线程
         src/thread/Thread.cpp
         src/thread/ThreadPool.cpp

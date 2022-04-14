@@ -4,7 +4,7 @@
 
 - 打开模式对照表
 
-  | FileStream::FileStream     | ::fopen |
+  | DEFINE                     | ::fopen |
   | -------------------------- | ------- |
   | BINARY_READ_EXISTED        | rb      |
   | BINARY_WRITE_CREATE_TRUNC  | wb      |
@@ -17,7 +17,10 @@
   | TEXT_BOTH_CREATE_TRUNC     | wt+     |
   | TEXT_BOTH_CREATE_APPEND    | at+     |
 
+  \*\* 注意 \*\*："_W" 后缀表示添加 "ccs=utf-8"。默认 linux 下不需要使用，为 Windows 读取 UTF-8 准备
+
 - 关键字释义
+  
   - READ 只读
   - WRITE 只写
   - BINARY 二进制模式

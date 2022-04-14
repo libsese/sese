@@ -23,7 +23,7 @@ namespace sese {
 
         FileAppender(const std::string &fileName, const AbstractFormatter::Ptr &formatter, Level level = Level::DEBUG)
             : AbstractAppender(formatter, level),
-              fileStream(std::make_shared<FileStream>(fileName, FileStream::Mode::TEXT_WRITE_CREATE_APPEND)){
+              fileStream(std::make_shared<FileStream>(fileName, TEXT_WRITE_CREATE_APPEND)){
         }
 
         void dump(const Event::Ptr &event) noexcept override;
