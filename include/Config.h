@@ -7,6 +7,8 @@
 #pragma once
 #include <cassert>
 #include <cinttypes>
+#include <memory>
+#include <string>
 #ifdef _WIN32
 #include "native/Windows/Config.h"
 #elif __ANDROID__

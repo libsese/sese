@@ -6,7 +6,6 @@
  */
 #pragma once
 #include "Config.h"
-#include <memory>
 
 namespace sese {
 

@@ -7,7 +7,6 @@
 #pragma once
 #include "Stream.h"
 #include "ByteBuilder.h"
-#include <string>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)

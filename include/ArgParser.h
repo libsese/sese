@@ -7,8 +7,6 @@
 #pragma once
 #include "Config.h"
 #include <map>
-#include <string>
-#include <memory>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)

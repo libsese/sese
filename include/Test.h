@@ -6,7 +6,6 @@
  */
 #pragma once
 #include "Config.h"
-#include <string>
 
 #ifdef _WIN32
 #define WILL_SKIP 1

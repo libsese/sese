@@ -5,7 +5,7 @@
  * @date 2022年3月28日
  */
 #pragma once
-#include <memory>
+#include "Config.h"
 
 namespace sese {
 
@@ -16,7 +16,7 @@ namespace sese {
      * @tparam N
      */
     template<typename T, class X = void, int N = 0>
-    class Singleton {
+    class API Singleton {
     public:
         static T *getInstance() {
             static T v;
@@ -31,7 +31,7 @@ namespace sese {
      * @tparam N
      */
     template<typename T, class X = void, int N = 0>
-    class SingletonPtr {
+    class API SingletonPtr {
     public:
         static std::shared_ptr<T> getInstance() {
             static std::shared_ptr<T> v(new T);

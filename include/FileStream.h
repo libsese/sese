@@ -6,7 +6,6 @@
 */
 #pragma once
 #include "Stream.h"
-#include <string>
 
 namespace sese {
 
