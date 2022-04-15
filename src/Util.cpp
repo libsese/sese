@@ -10,6 +10,7 @@ namespace sese {
     [[maybe_unused]] static struct LoggerInitStruct {
         LoggerInitStruct() {
             // 初始化 Logger
+            setlocale(LC_ALL, "");
             auto logger = sese::Singleton<Logger>::getInstance();
             auto formatter = std::make_shared<SimpleFormatter>();
             auto appender = std::make_shared<ConsoleAppender>(formatter);
