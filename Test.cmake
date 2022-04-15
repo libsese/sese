@@ -87,3 +87,7 @@ add_test(NAME TestSocket COMMAND TestSocket)
 add_executable(TestStreamReader test/TestStreamReader/main.cpp)
 target_link_libraries(TestStreamReader SeseSharedLibrary)
 add_test(NAME TestStreamReader COMMAND TestStreamReader)
+
+add_executable(TestUniReader test/TestUniReader/main.cpp)
+target_link_libraries(TestUniReader SeseSharedLibrary)
+add_test(NAME TestUniReader COMMAND TestUniReader)

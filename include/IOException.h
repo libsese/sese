@@ -4,6 +4,7 @@
 * @author kaoru
 * @date 2022年4月11日
 */
+#pragma once
 #include "Config.h"
 #include "Exception.h"
 

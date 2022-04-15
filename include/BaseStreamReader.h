@@ -22,6 +22,9 @@ namespace sese {
     template<typename T = char>
     class API BaseStreamReader {
     public:
+        using Ptr = std::shared_ptr<BaseStreamReader<T>>;
+
+    public:
         /**
          * @brief 构造函数
          * @param source 欲包装流

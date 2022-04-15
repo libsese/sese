@@ -36,6 +36,8 @@ namespace sese {
      */
     class API FileStream : public Stream {
     public:
+        using Ptr = std::shared_ptr<FileStream>;
+
         FileStream(const std::string &fileName, const char *mode);
         ~FileStream() = default;
 

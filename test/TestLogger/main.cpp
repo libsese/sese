@@ -3,6 +3,10 @@
 
 #define FILTER_TEST_LOGGER "fLOGGER"
 
+#ifdef _WIN32
+#pragma warning(disable : 4819)
+#endif
+
 int main() {
     auto logger = sese::getLogger();
     auto formatter = std::make_shared<sese::SimpleFormatter>();

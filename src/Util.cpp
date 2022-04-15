@@ -1,6 +1,8 @@
 #include "Util.h"
 #include "Config.h"
 #include <cstring>
+#include <clocale>
+
 #ifndef _WIN32
 #include <unistd.h>
 #endif
