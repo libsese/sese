@@ -15,6 +15,8 @@ namespace sese {
      */
     class API UniReader {
     public:
+        using Ptr = std::shared_ptr<UniReader>;
+
         /**
          * 初始化读取器
          * @param fileName 读取的文件名称

@@ -64,30 +64,42 @@ add_executable(TestByteBuilder test/TestByteBuilder/main.cpp)
 target_link_libraries(TestByteBuilder SeseSharedLibrary)
 add_test(NAME TestByteBuilder COMMAND TestByteBuilder)
 
+# Endian
 add_executable(TestEndian test/TestEndian/main.cpp)
 target_link_libraries(TestEndian SeseSharedLibrary)
 add_test(NAME TestEndian COMMAND TestEndian)
 
+# Address
 add_executable(TestAddress test/TestAddress/main.cpp)
 target_link_libraries(TestAddress SeseSharedLibrary)
 add_test(NAME TestAddress COMMAND TestAddress)
 
+# Locker
 add_executable(TestLocker test/TestLocker/main.cpp)
 target_link_libraries(TestLocker SeseSharedLibrary)
 add_test(NAME TestLocker COMMAND TestLocker)
 
+# ThreadPool
 add_executable(TestThreadPool test/TestThreadPool/main.cpp)
 target_link_libraries(TestThreadPool SeseSharedLibrary)
 add_test(NAME TestThreadPool COMMAND TestThreadPool)
 
+# Socket
 add_executable(TestSocket test/TestSocket/main.cpp)
 target_link_libraries(TestSocket SeseSharedLibrary)
 add_test(NAME TestSocket COMMAND TestSocket)
 
+# StreamReader
 add_executable(TestStreamReader test/TestStreamReader/main.cpp)
 target_link_libraries(TestStreamReader SeseSharedLibrary)
 add_test(NAME TestStreamReader COMMAND TestStreamReader)
 
+# UniReader
 add_executable(TestUniReader test/TestUniReader/main.cpp)
 target_link_libraries(TestUniReader SeseSharedLibrary)
 add_test(NAME TestUniReader COMMAND TestUniReader)
+
+# ConfigUtil
+add_executable(TestConfigUtil test/TestConfigUtil/main.cpp)
+target_link_libraries(TestConfigUtil SeseSharedLibrary)
+add_test(NAME TestConfigUtil COMMAND TestConfigUtil)

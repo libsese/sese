@@ -58,6 +58,8 @@ set(ALL_SRCS
         src/net/IPAddress.cpp
         src/net/IPv4Address.cpp
         src/net/IPv6Address.cpp
+        # 配置
+        src/config/ConfigUtil.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
@@ -76,6 +78,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
     set(CMAKE_DEBUG_POSTFIX "d")
     set(DLL_INFO_RC ${PROJECT_SOURCE_DIR}/output/WindowsDllInfo.rc)
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
+    add_compile_options("/utf-8")
 
     add_definitions(-DWINDOWS_DLL)
     add_definitions(-DNEED_DBGHELP)
@@ -127,7 +130,6 @@ set_target_properties(
 )
 
 include(Test.cmake)
-
 
 # 安装脚本排除 Android
 if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
