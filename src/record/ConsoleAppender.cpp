@@ -1,5 +1,5 @@
 #include "record/ConsoleAppender.h"
-#include "EncodingConvert.h"
+#include "convert/EncodingConverter.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
@@ -13,7 +13,7 @@ namespace sese {
     void ConsoleAppender::dump(const sese::Event::Ptr &event) noexcept {
         setbuf(stdout, nullptr);
 #ifdef _WIN32
-        _putws(EncodingConvert::toWstring(this->formatter->dump(event)).c_str());
+        _putws(EncodingConverter::toWstring(this->formatter->dump(event)).c_str());
 #else
         puts(this->formatter->dump(event).c_str());
 #endif

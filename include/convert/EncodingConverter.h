@@ -1,5 +1,5 @@
 /**
- * @file EncodingConvert.h
+ * @file EncodingConverter.h
  * @author kaoru
  * @date 2022年4月15日
  * @brief 字符串编码转换
@@ -16,7 +16,7 @@ namespace sese {
     /**
      * @brief 字符串编码转换
      */
-    class API EncodingConvert {
+    class API EncodingConverter {
     public:
         static std::string toString(const std::wstring &wstring) noexcept;
         static std::wstring toWstring(const std::string &string) noexcept;

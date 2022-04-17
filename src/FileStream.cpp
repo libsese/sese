@@ -20,7 +20,7 @@ int64_t sese::FileStream::read(void *buffer, size_t length) {
     return (int64_t) ::fread(buffer, 1, length, file);
 }
 
-int64_t sese::FileStream::write(void *buffer, size_t length) {
+int64_t sese::FileStream::write(const void *buffer, size_t length) {
     return (int64_t) ::fwrite(buffer, 1, length, file);
 }
 

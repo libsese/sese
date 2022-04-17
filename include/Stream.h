@@ -18,7 +18,7 @@ namespace sese {
 
     public:
         virtual int64_t read(void *buffer, size_t length) = 0;
-        virtual int64_t write(void *buffer, size_t length) = 0;
+        virtual int64_t write(const void *buffer, size_t length) = 0;
         virtual void close() = 0;
     };
 

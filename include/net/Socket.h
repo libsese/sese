@@ -81,7 +81,7 @@ namespace sese {
          * @param length 缓存大小
          * @return 实际发送字节数
          */
-        int64_t write(void *buffer, size_t length) override;
+        int64_t write(const void *buffer, size_t length) override;
 
         /**
          * UDP 发送字节

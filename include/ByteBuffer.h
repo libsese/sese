@@ -25,7 +25,7 @@ namespace sese {
         [[nodiscard]] size_t getCapacity();
         size_t freeCapacity() override;
         int64_t read(void *buffer, size_t len) override;
-        int64_t write(void *buffer, size_t needWrite) override;
+        int64_t write(const void *buffer, size_t needWrite) override;
         void close() override;
         [[nodiscard]] size_t getCurrentWritePos();
         [[nodiscard]] size_t getCurrentReadPos();

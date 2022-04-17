@@ -103,3 +103,8 @@ add_test(NAME TestUniReader COMMAND TestUniReader)
 add_executable(TestConfigUtil test/TestConfigUtil/main.cpp)
 target_link_libraries(TestConfigUtil SeseSharedLibrary)
 add_test(NAME TestConfigUtil COMMAND TestConfigUtil)
+
+# Base64Converter
+add_executable(TestBase64Converter test/TestBase64Converter/main.cpp)
+target_link_libraries(TestBase64Converter SeseSharedLibrary)
+add_test(NAME TestBase64Converter COMMAND TestBase64Converter)

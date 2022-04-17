@@ -48,7 +48,9 @@ set(ALL_SRCS
         src/Random.cpp
         src/Util.cpp
         src/FileStream.cpp
-        src/EncodingConvert.cpp
+        # 编码
+        src/convert/EncodingConverter.cpp
+        src/convert/Base64Converter.cpp
         # 线程
         src/thread/Thread.cpp
         src/thread/ThreadPool.cpp

@@ -64,7 +64,7 @@ namespace sese {
 
     public:
         int64_t read(void *buffer, size_t len) override;
-        int64_t write(void *buffer, size_t needWrite) override;
+        int64_t write(const void *buffer, size_t needWrite) override;
         /**
          * @deprecated close 方法在此处是无用的
          */

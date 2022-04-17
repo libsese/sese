@@ -1,6 +1,6 @@
 #include "config/UniReader.h"
 #include "IOException.h"
-#include "EncodingConvert.h"
+#include "convert/EncodingConverter.h"
 
 sese::UniReader::UniReader(const std::string &fileName) {
     fileStream = std::make_shared<FileStream>(fileName, TEXT_READ_EXISTED);

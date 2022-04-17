@@ -6,7 +6,7 @@ int64_t sese::ByteBuffer::read(void *buffer, size_t len) {
     return AbstractByteBuffer::read(buffer, len);
 }
 
-int64_t sese::ByteBuffer::write(void *buffer, size_t needWrite) {
+int64_t sese::ByteBuffer::write(const void *buffer, size_t needWrite) {
     Locker locker(mutex);
     return AbstractByteBuffer::write(buffer, needWrite);
 }

@@ -42,7 +42,7 @@ namespace sese {
         ~FileStream() = default;
 
         int64_t read(void *buffer, size_t length) override;
-        int64_t write(void *buffer, size_t length) override;
+        int64_t write(const void *buffer, size_t length) override;
         void close() override;
 
         [[nodiscard]] bool good() const { return file != nullptr; }

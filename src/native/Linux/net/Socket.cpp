@@ -49,7 +49,7 @@ int64_t sese::Socket::read(void *buffer, size_t length) {
     return ::read(handle, buffer, length);
 }
 
-int64_t sese::Socket::write(void *buffer, size_t length) {
+int64_t sese::Socket::write(const void *buffer, size_t length) {
     return ::write(handle, buffer, length);
 }
 

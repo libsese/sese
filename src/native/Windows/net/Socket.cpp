@@ -58,7 +58,7 @@ int64_t sese::Socket::read(void *buffer, size_t length) {
     return ::recv(handle, (char *) buffer, (int32_t) length, 0);
 }
 
-int64_t sese::Socket::write(void *buffer, size_t length) {
+int64_t sese::Socket::write(const void *buffer, size_t length) {
     return ::send(handle, (char *) buffer, (int32_t) length, 0);
 }
 

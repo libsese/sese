@@ -87,7 +87,7 @@ namespace sese {
         return actualRead;
     }
 
-    int64_t AbstractByteBuffer::write(void *buffer, size_t needWrite) {
+    int64_t AbstractByteBuffer::write(const void *buffer, size_t needWrite) {
         int64_t actualWrite = 0;
         while (true) {
             // 当前单元能提供的剩余写入量

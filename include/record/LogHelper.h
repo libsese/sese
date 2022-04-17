@@ -5,7 +5,6 @@
  * @brief 日志工具类
  */
 #pragma once
-#include "Config.h"
 #include "record/Logger.h"
 
 namespace sese {
@@ -31,7 +30,7 @@ namespace sese {
         void error(const char *format, ...);
 
     private:
-        void log(Level level, const char* format, ...);
+        void log(Level level, const char* format, va_list ap);
 
         const char *filter = nullptr;
         const Logger *logger = nullptr;
