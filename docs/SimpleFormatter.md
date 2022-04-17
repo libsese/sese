@@ -22,8 +22,10 @@
   [%ln] %c %lv %fi %tn:%th> %m
   ```
 
-  输出示例
+  *若要修改默认格式，请在 Config.h 中设置 **RECORD_DEFAULT_TEXT_PATTERN** 的值。*
 
+  输出示例
+  
   ```log
   [ROOT] 2022-04-11T20:27:21.785Z DEBUG fLOGGER Main:5477> Hello
   ```

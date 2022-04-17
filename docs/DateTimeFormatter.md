@@ -40,10 +40,12 @@
   yyyy-MM-dd%THH:mm:ss.ff%Z
   ```
 
-  输出示例
+  *若要修改默认格式，请在 Config.h 中设置 **RECORD_DEFAULT_TIME_PATTERN** 的值。*
 
+  输出示例
+  
   ```
   2022-04-11T20:27:21.785Z
   ```
-
+  
   
