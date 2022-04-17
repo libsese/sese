@@ -34,6 +34,7 @@ set(ALL_SRCS
         src/record/SimpleFormatter.cpp
         src/record/ConsoleAppender.cpp
         src/record/Logger.cpp
+        src/record/LogHelper.cpp
         src/record/FileAppender.cpp
         # 根目录
         src/AbstractStringBuffer.cpp

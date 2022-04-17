@@ -1,20 +1,18 @@
 #include "Util.h"
 #include "record/FileAppender.h"
+#include "record/LogHelper.h"
 
-#define FILTER_TEST_LOGGER "fLOGGER"
-
-#ifdef _WIN32
-#pragma warning(disable : 4819)
-#endif
+sese::LogHelper helper("fLOGGER"); // NOLINT
 
 int main() {
     auto logger = sese::getLogger();
     auto formatter = std::make_shared<sese::SimpleFormatter>();
     auto fileAppender = std::make_shared<sese::FileAppender>("hello.log", formatter);
     logger->addAppender(fileAppender);
-    ROOT_DEBUG(FILTER_TEST_LOGGER, "Hello 你好 こんにちは")
-    ROOT_INFO(FILTER_TEST_LOGGER, "Hello 你好 こんにちは")
-    ROOT_WARN(FILTER_TEST_LOGGER, "Hello 你好 こんにちは")
-    ROOT_ERROR(FILTER_TEST_LOGGER, "Hello 你好 こんにちは")
+
+    helper.debug("Hello 你好 こんにちは");
+    helper.info("Hello 你好 こんにちは");
+    helper.warn("Hello 你好 こんにちは");
+    helper.error("Hello 你好 こんにちは");
     return 0;
 }

@@ -1,16 +1,5 @@
 #include "net/Address.h"
 #include "net/IPv6Address.h"
-#ifdef _WIN32
-struct NetInitStruct {
-    NetInitStruct() {
-        WSADATA wsaData;
-        WSAStartup(MAKEWORD(2, 2), &wsaData);
-    }
-    ~NetInitStruct() {
-        WSACleanup();
-    }
-} netInitStruct; /* NOLINT */
-#endif
 
 sese::Address::Ptr sese::Address::create(const sockaddr *address, socklen_t addressLen) {
     if (address->sa_family == AF_INET) {

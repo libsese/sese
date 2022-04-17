@@ -14,15 +14,14 @@ namespace sese {
 
     /**
      * @brief 数据分割用结构体
-     * todo 适配大小端
      */
-    struct LongLongSpilter {
+    struct LongLongSplitter {
         uint32_t low;
         [[maybe_unused]] uint32_t high;
     };
 
     uint64_t Random::next() {
-        auto unit = (LongLongSpilter *) &seed;
+        auto unit = (LongLongSplitter *) &seed;
         seed = (unit->low * multiplier + addend) & mask;
         return seed ^ CpuInfo::RDTSC();
     }

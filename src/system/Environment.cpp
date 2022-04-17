@@ -2,20 +2,12 @@
 
 namespace sese {
 
-    bool _isLittleEndian = true;
-
-    [[maybe_unused]] static struct EnvInitStruct {
-        EnvInitStruct() {
-            /// 判断大小端
-            int32_t i = 0xFF;
-            if((char)i == 0){
-                _isLittleEndian = false;
-            }
-        }
-    } envInitStruct; /* NOLINT */
-
     bool Environment::isLittleEndian() noexcept {
-        return _isLittleEndian;
+#if (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || defined(_WIN32)
+        return true;
+#else
+        return false;
+#endif
     }
 
     const char *Environment::getRepoHash() noexcept {
