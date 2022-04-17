@@ -4,7 +4,6 @@
 #include <cstring>
 
 using sese::Base64Converter;
-using sese::Base64Converter;
 using sese::ByteBuilder;
 using sese::LogHelper;
 
