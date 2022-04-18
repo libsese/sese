@@ -92,7 +92,7 @@ void Base64Converter::decode(const Stream::Ptr &src, const Stream::Ptr &dest) {
 
                 // 3
                 if(len == 4){
-                    buffer[2] = (buffer[2] & 0x00000011) << 6 | buffer[3];
+                    buffer[2] = (buffer[2] & 0b00000011) << 6 | buffer[3];
                 }
             }
         }
