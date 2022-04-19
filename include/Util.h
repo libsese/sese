@@ -7,11 +7,9 @@
 #pragma once
 #include "Config.h"
 #include "Singleton.h"
-#include "Test.h"
-#include "record/ConsoleAppender.h"
 #include "record/Logger.h"
-#include "record/SimpleFormatter.h"
 #include "thread/Thread.h"
+#include "Test.h"
 
 namespace sese {
 
@@ -85,18 +83,6 @@ namespace sese {
         logger->log(event);                                                                                                                                                                                \
     }
 
-/// 输出 DEBUG 级别的日志
-#define ROOT_DEBUG(FILTER, ...) \
-    ROOT_LOG(sese::Level::DEBUG, FILTER, __VA_ARGS__)
-
-/// 输出 INFO 级别的日志
-#define ROOT_INFO(FILTER, ...) \
-    ROOT_LOG(sese::Level::INFO, FILTER, __VA_ARGS__)
-
-/// 输出 WARN 级别的日志
-#define ROOT_WARN(FILTER, ...) \
-    ROOT_LOG(sese::Level::WARN, FILTER, __VA_ARGS__)
-
 /// 输出 ERROR 级别的日志
 #define ROOT_ERROR(FILTER, ...) \
     ROOT_LOG(sese::Level::ERR, FILTER, __VA_ARGS__)
@@ -111,7 +97,7 @@ namespace sese {
 
 #define ASSERT(FILTER, x)                                                                     \
     if (UNLIKELY(!(x))) {                                                                     \
-        ROOT_ERROR(FILTER, "%s", sese::backtrace2String(5, WILL_SKIP, "Backtrace ").c_str()); \
+        ROOT_ERROR(FILTER, "%s", sese::backtrace2String(5, "Backtrace ").c_str()); \
         assert(x);                                                                            \
     }
 

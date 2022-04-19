@@ -1,7 +1,9 @@
 #include "Util.h"
 #include "Config.h"
-#include <cstring>
+#include "record/ConsoleAppender.h"
+#include "record/SimpleFormatter.h"
 #include <clocale>
+#include <cstring>
 
 #ifndef _WIN32
 #include <unistd.h>

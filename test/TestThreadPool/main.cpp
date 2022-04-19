@@ -1,10 +1,11 @@
 #include "Util.h"
+#include "record/LogHelper.h"
 #include "thread/ThreadPool.h"
 #include <cmath>
 
-#define FILTER_THREAD_POOL "fTHREAD_POOL"
-
 using namespace sese;
+
+LogHelper helper("fTHREAD_POOL"); //NOLINT
 
 class MyTask : public Task {
 public:
@@ -15,7 +16,7 @@ public:
 
     void content() noexcept override {
         rt = std::tgamma(value);
-        ROOT_INFO(FILTER_THREAD_POOL, "rt: %f", rt)
+        helper.info("rt: %f", rt);
     }
 };
 

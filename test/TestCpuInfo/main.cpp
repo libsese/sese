@@ -1,17 +1,17 @@
-#include "Singleton.h"
 #include "Util.h"
 #include "record/FileAppender.h"
+#include "record/LogHelper.h"
+#include "record/SimpleFormatter.h"
 #include "system/CpuInfo.h"
-
-#define FILTER_TEST_CPU_INFO "fCPU_INFO"
 
 using namespace sese;
 
+LogHelper helper("fCPU_INFO");// NOLINT
+
 void isSupport(const std::string &name, bool isSupport) {
-    ROOT_INFO(FILTER_TEST_CPU_INFO,
-              "%10s %s",
-              name.c_str(),
-              isSupport ? "Support" : "Not support")
+    helper.info("%10s %s",
+                name.c_str(),
+                isSupport ? "Support" : "Not support");
 }
 
 int main() {
@@ -20,10 +20,10 @@ int main() {
     auto appender = std::make_shared<FileAppender>("CpuInfo.log", formatter);
     logger->addAppender(appender);
 
-    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getVendor().c_str())
-    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getBrand().c_str())
-    ROOT_INFO(FILTER_TEST_CPU_INFO, "%s", CpuInfo::getSerialNumber().c_str())
-    ROOT_INFO(FILTER_TEST_CPU_INFO, "%dt", CpuInfo::getLogicProcessors())
+    helper.info("%s", CpuInfo::getVendor().c_str());
+    helper.info("%s", CpuInfo::getBrand().c_str());
+    helper.info("%s", CpuInfo::getSerialNumber().c_str());
+    helper.info("%dt", CpuInfo::getLogicProcessors());
     if (CpuInfo::isArm()) {
         isSupport("FP", CpuInfo::FP());
         isSupport("ASIMD", CpuInfo::ASIMD());

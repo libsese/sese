@@ -18,11 +18,6 @@ add_executable(TestLogger test/TestLogger/main.cpp)
 target_link_libraries(TestLogger SeseSharedLibrary)
 add_test(NAME TestLogger COMMAND TestLogger)
 
-# Debug
-add_executable(TestDebug test/TestDebug/main.cpp)
-target_link_libraries(TestDebug SeseSharedLibrary)
-add_test(NAME TestDebug COMMAND TestDebug)
-
 # DateTime
 add_executable(TestDateTime test/TestDateTime/main.cpp)
 target_link_libraries(TestDateTime SeseSharedLibrary)

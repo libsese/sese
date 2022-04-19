@@ -2,42 +2,65 @@
 #include "Util.h"
 #include <cstdarg>
 
-sese::LogHelper::LogHelper(const char *filter) {
+using sese::LogHelper;
+
+LogHelper::LogHelper(const char *filter) {
     this->filter = filter;
     logger = sese::getLogger();
 }
 
-void sese::LogHelper::log(Level level, const char *format, va_list ap) {
+void LogHelper::log(Level level, const char *file, int32_t line, const char *format, va_list ap) {
     char buf[RECORD_OUTPUT_BUFFER]{0};
     vsprintf(buf, format, ap);
-    sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName().c_str(), sese::Thread::getCurrentThreadId(), FN, __LINE__, buf, filter);
+    sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName().c_str(), sese::Thread::getCurrentThreadId(), file, line, buf, filter);
     logger->log(event);
 }
 
-void sese::LogHelper::debug(const char *format, ...) {
+void LogHelper::debug(const char *format, ...) {
     va_list ap;
     va_start(ap, format);
-    log(sese::Level::DEBUG, format, ap);
+    log(sese::Level::DEBUG, __FILE__, __LINE__, format, ap);
     va_end(ap);
 }
 
-void sese::LogHelper::info(const char *format, ...) {
+void LogHelper::info(const char *format, ...) {
     va_list ap;
     va_start(ap, format);
-    log(sese::Level::INFO, format, ap);
+    log(sese::Level::INFO, __FILE__, __LINE__, format, ap);
     va_end(ap);
 }
 
-void sese::LogHelper::warn(const char *format, ...) {
+void LogHelper::warn(const char *format, ...) {
     va_list ap;
     va_start(ap, format);
-    log(sese::Level::WARN, format, ap);
+    log(sese::Level::WARN, __FILE__, __LINE__, format, ap);
     va_end(ap);
 }
 
-void sese::LogHelper::error(const char *format, ...) {
+void LogHelper::error(const char *format, ...) {
     va_list ap;
     va_start(ap, format);
-    log(sese::Level::ERR, format, ap);
+    log(sese::Level::ERR, __FILE__, __LINE__, format, ap);
+    va_end(ap);
+}
+
+void LogHelper::debug(const char *file, int32_t line, const char *format, ...) {
+    va_list ap;
+    va_start(ap, format);
+    log(sese::Level::DEBUG, file, line, format, ap);
+    va_end(ap);
+}
+
+void LogHelper::info(const char *file, int32_t line, const char *format, ...) {
+    va_list ap;
+    va_start(ap, format);
+    log(sese::Level::INFO, file, line, format, ap);
+    va_end(ap);
+}
+
+void LogHelper::warn(const char *file, int32_t line, const char *format, ...) {
+    va_list ap;
+    va_start(ap, format);
+    log(sese::Level::WARN, file, line, format, ap);
     va_end(ap);
 }

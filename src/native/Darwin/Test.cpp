@@ -23,7 +23,7 @@ namespace sese {
         }
     }// namespace _linux
 
-    std::string backtrace2String(int size, int skip, const std::string &prefix) {
+    std::string backtrace2String(int size, const std::string &prefix, int skip) {
         std::vector<std::string> bt;
         _darwin::backtrace(bt, size, skip);
         std::stringstream stream;

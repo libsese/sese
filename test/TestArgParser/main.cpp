@@ -1,16 +1,15 @@
 #include "ArgParser.h"
-#include "Util.h"
+#include "record/LogHelper.h"
 
-#define FILTER_TEST_ARG_PARSER "fARG_PARSER"
+sese::LogHelper helper("fARG_PARSER"); // NOLINT
 
 int main(int32_t argc, char *argv[]) {
     auto args = std::make_unique<sese::ArgParser>(argc, argv);
 
     auto findValue = [&args](const std::string &key, const std::string &defaultValue) {
-        ROOT_INFO(FILTER_TEST_ARG_PARSER,
-                  "%s = %s",
-                  key.c_str(),
-                  args->getValueByKey(key, defaultValue).c_str())
+        helper.info("%s = %s",
+                    key.c_str(),
+                    args->getValueByKey(key, defaultValue).c_str());
     };
 
     findValue("a1", "undef");

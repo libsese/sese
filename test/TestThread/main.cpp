@@ -1,24 +1,21 @@
-#include "Util.h"
+#include "record/LogHelper.h"
 #include "thread/Thread.h"
 
-#define FILTER_TEST_THREAD "fTHREAD"
+sese::LogHelper helper("fTHREAD"); // NOLINT
 
 static const char *TYPE_MAIN_THREAD = "Main Thread";
 static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";
 
 void IPv4ServerProc() {
-    ROOT_INFO(FILTER_TEST_THREAD,
-              "Thread's name = %s, pid = %" PRIdPid,
-              sese::Thread::getCurrentThreadName().c_str(),
-              sese::Thread::getCurrentThreadId())
+    helper.info("Thread's name = %s, pid = %" PRIdPid,
+                sese::Thread::getCurrentThreadName().c_str(),
+                sese::Thread::getCurrentThreadId());
 
     auto i = sese::Thread::getCurrentThread();
     auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
-    ROOT_INFO(FILTER_TEST_THREAD,
-              "Current thread is %s",
-              msg)
+    helper.info("Current thread is %s", msg);
 
-    ASSERT(FILTER_TEST_THREAD, i != nullptr)
+    if (i == nullptr) exit(-1);
     auto arg = reinterpret_cast<int *>(i->getArgument());
     *arg = 1;
 }
@@ -30,21 +27,16 @@ int main() {
     thread.start();
     if (thread.joinable()) {
         thread.join();
-        ROOT_INFO(FILTER_TEST_THREAD,
-                  "num = %d",
-                  num);
+        helper.info("num = %d", num);
     }
 
-    ROOT_INFO(FILTER_TEST_THREAD,
-              "Thread's name = %s, pid = %" PRIdPid,
-              sese::Thread::getCurrentThreadName().c_str(),
-              sese::Thread::getCurrentThreadId())
+    helper.info("Thread's name = %s, pid = %" PRIdPid,
+                sese::Thread::getCurrentThreadName().c_str(),
+                sese::Thread::getCurrentThreadId());
 
     auto i = sese::Thread::getCurrentThread();
     auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
-    ROOT_INFO(FILTER_TEST_THREAD,
-              "Current thread is %s",
-              msg)
+    helper.info("Current thread is %s", msg);
 
     return 0;
 }

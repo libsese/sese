@@ -1,35 +1,31 @@
+#include "record/LogHelper.h"
 #include "system/Environment.h"
-#include "Util.h"
-
-#define FILTER_TEST_ENV "fENV"
 
 using sese::Environment;
+using sese::LogHelper;
+
+LogHelper helper("fENV"); // NOLINT
 
 int main() {
-    ROOT_INFO(FILTER_TEST_ENV,
-              "Your operating system: %s",
-              Environment::getOperateSystemType())
+    helper.info("Your operating system: %s",
+                Environment::getOperateSystemType());
 
-    ROOT_INFO(FILTER_TEST_ENV,
-              "libsese version: %d.%d.%ld",
-              Environment::getMajorVersion(),
-              Environment::getMinorVersion(),
-              Environment::getPatchVersion())
+    helper.info("libsese version: %d.%d.%ld",
+                Environment::getMajorVersion(),
+                Environment::getMinorVersion(),
+                Environment::getPatchVersion());
 
-    ROOT_INFO(FILTER_TEST_ENV,
-              "libsese repo on the %s branch: %s",
-              Environment::getRepoBranch(),
-              Environment::getRepoHash())
+    helper.info("libsese repo on the %s branch: %s",
+                Environment::getRepoBranch(),
+                Environment::getRepoHash());
 
-    ROOT_INFO(FILTER_TEST_ENV,
-              "libsese build on %s %s - %s",
-              Environment::getBuildDate(),
-              Environment::getBuildTime(),
-              Environment::getBuildDateTime())
+    helper.info("libsese build on %s %s - %s",
+                Environment::getBuildDate(),
+                Environment::getBuildTime(),
+                Environment::getBuildDateTime());
 
-    ROOT_INFO(FILTER_TEST_ENV,
-              "system endian: %s",
-              Environment::isLittleEndian() ? "little endian" : "big endian")
+    helper.info("system endian: %s",
+                Environment::isLittleEndian() ? "little endian" : "big endian");
 
     return 0;
 }

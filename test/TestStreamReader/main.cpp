@@ -1,19 +1,20 @@
-#include "FileStream.h"
 #include "BaseStreamReader.h"
-#include "Util.h"
-
-#define FILTER_TEST_STREAM_READER "fSTREAM_READER"
+#include "FileStream.h"
+#include "record/LogHelper.h"
 
 using sese::FileStream;
-using sese::WStreamReader;
+using sese::LogHelper;
 using sese::StreamReader;
+using sese::WStreamReader;
+
+LogHelper helper("fSTREAM_READER");// NOLINT
 
 int main() {
     auto fileStream = std::make_shared<FileStream>(
             PROJECT_PATH "/test/TestStreamReader/data.txt",
             TEXT_READ_EXISTED);
     if (!fileStream->good()) {
-        ROOT_INFO(FILTER_TEST_STREAM_READER, "%s", sese::getErrorString().c_str())
+        helper.info("%s", sese::getErrorString().c_str());
         return 0;
     }
 
@@ -23,7 +24,7 @@ int main() {
         if (line.empty()) {
             break;
         } else {
-            ROOT_INFO(FILTER_TEST_STREAM_READER, "%s", line.c_str())
+            helper.info("%s", line.c_str());
         }
     }
     return 0;

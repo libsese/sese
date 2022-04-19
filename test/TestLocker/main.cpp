@@ -1,8 +1,8 @@
-#include "Util.h"
 #include "thread/Locker.h"
 #include "thread/Thread.h"
+#include "record/LogHelper.h"
 
-#define FILTER_TEST_LOCKER "fLOCKER"
+sese::LogHelper helper("fLOCKER");
 
 std::mutex mutex;
 
@@ -15,7 +15,7 @@ void IPv4ServerProc() {
         (*num)++;
     }
     //    mutex.unlock();
-    ROOT_INFO(FILTER_TEST_LOCKER, "num = %d", *num)
+    helper.info("num = %d", *num);
 }
 
 int main() {
@@ -30,6 +30,6 @@ int main() {
     thread1.join();
     thread2.join();
 
-    ROOT_INFO(FILTER_TEST_LOCKER, "main thread term")
+    helper.info("main thread term");
     return 0;
 }

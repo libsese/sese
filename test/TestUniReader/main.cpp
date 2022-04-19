@@ -1,17 +1,19 @@
 #include "config/UniReader.h"
+#include "record/LogHelper.h"
 
-#define FILTER_TEST_UNI_READER "fUNI_READER"
-
+using sese::LogHelper;
 using sese::UniReader;
+
+LogHelper helper("fUNI_READER");// NOLINT
 
 int main() {
     auto reader = std::make_shared<UniReader>(PROJECT_PATH "/test/TestUniReader/data.txt");
-    while(true){
+    while (true) {
         auto line = reader->readLine();
         if (line.empty()) {
             break;
         } else {
-            ROOT_INFO(FILTER_TEST_UNI_READER, "%s", line.c_str())
+            helper.info("%s", line.c_str());
         }
     }
     return 0;

@@ -1,6 +1,7 @@
 #include "Util.h"
 #include "record/FileAppender.h"
 #include "record/LogHelper.h"
+#include "record/SimpleFormatter.h"
 
 sese::LogHelper helper("fLOGGER"); // NOLINT
 

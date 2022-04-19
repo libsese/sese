@@ -23,9 +23,9 @@ namespace sese {
     /**
      * 回溯程序堆栈保存到字符串
      * @param size 保存个个数
-     * @param skip 跳过个数
      * @param prefix 字符串前缀
+     * @param skip 跳过个数
      * @return 调试信息
      */
-    extern API std::string backtrace2String(int size, int skip, const std::string &prefix);
+    extern API std::string backtrace2String(int size, const std::string &prefix, int skip = WILL_SKIP);
 }

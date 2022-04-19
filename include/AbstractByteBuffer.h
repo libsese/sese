@@ -39,7 +39,7 @@ namespace sese {
         /**
          * @param baseSize 初始节点内存大小
          */
-        explicit AbstractByteBuffer(size_t baseSize = STREAM_BYTESTREAM_BASE_SIZE);
+        explicit AbstractByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
         /// 析构
         ~AbstractByteBuffer();
         /// 重置读取位置

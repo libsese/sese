@@ -17,7 +17,7 @@ namespace sese {
     public:
         using Ptr = std::shared_ptr<ByteBuilder>;
 
-        explicit ByteBuilder(size_t baseSize = STREAM_BYTESTREAM_BASE_SIZE) noexcept : AbstractByteBuffer(baseSize) {
+        explicit ByteBuilder(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR) noexcept : AbstractByteBuffer(baseSize) {
         }
     };
 

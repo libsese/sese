@@ -19,7 +19,7 @@ namespace sese {
      */
     class API ByteBuffer : AbstractByteBuffer {
     public:
-        explicit ByteBuffer(size_t baseSize = STREAM_BYTESTREAM_BASE_SIZE);
+        explicit ByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
         void resetPos() override;
         [[nodiscard]] size_t getLength();
         [[nodiscard]] size_t getCapacity();

@@ -109,7 +109,7 @@ namespace sese {
 
                 // 直接切换至下一个单元
                 currentWritePos = 0;
-                currentWriteNode->next = new Node(STREAM_BYTESTREAM_SIZE_FACTOR);
+                currentWriteNode->next = new Node(STREAM_BYTE_STREAM_SIZE_FACTOR);
                 currentWriteNode = currentWriteNode->next;
                 continue;
             }

@@ -31,7 +31,7 @@ namespace sese::_android {
     }
 }// namespace sese::_android
 
-std::string sese::backtrace2String(int size, int skip, const std::string &prefix) {
+std::string sese::backtrace2String(int size, const std::string &prefix, int skip) {
     void **array = (void **) malloc(sizeof(void *) * size);
     size_t s = _android::captureBacktrace(array, size);
     std::stringstream stream;

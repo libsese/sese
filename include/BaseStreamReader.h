@@ -108,7 +108,7 @@ namespace sese {
 
     private:
         int64_t preRead() {
-            char buffer[STREAM_BYTESTREAM_SIZE_FACTOR];
+            char buffer[STREAM_BYTE_STREAM_SIZE_FACTOR];
             auto len = sourceStream->read(buffer, STRING_BUFFER_SIZE_FACTOR);
             if (0 < len) {
                 bufferStream->write(buffer, len);
