@@ -7,12 +7,12 @@
 
 ## 对比
 
-| LogHelper                             | Marco                   |
-| ------------------------------------- | ----------------------- |
-| debug(const char *format, ...) : void | ROOT_DEBUG(FILTER, ...) |
-| info(const char *format, ...) : void  | ROOT_INFO(FILTER, ...)  |
-| warn(const char *format, ...) : void  | ROOT_WARN(FILTER, ...)  |
-| error(const char *format, ...) : void | ROOT_ERROR(FILTER, ...) |
+| LogHelper                             | ~~Marco~~                   |
+| ------------------------------------- | --------------------------- |
+| debug(const char *format, ...) : void | ~~ROOT_DEBUG(FILTER, ...)~~ |
+| info(const char *format, ...) : void  | ~~ROOT_INFO(FILTER, ...)~~  |
+| warn(const char *format, ...) : void  | ~~ROOT_WARN(FILTER, ...)~~  |
+| error(const char *format, ...) : void | ~~ROOT_ERROR(FILTER, ...)~~ |
 
 我的项目更适用哪种方式来输出日志？
 
