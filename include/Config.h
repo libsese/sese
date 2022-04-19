@@ -11,8 +11,6 @@
 #include <string>
 #ifdef _WIN32
 #include "native/Windows/Config.h"
-#elif __ANDROID__
-#include "native/Android/Config.h"
 #elif __linux__
 #include "native/Linux/Config.h"
 #elif __APPLE__

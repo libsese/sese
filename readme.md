@@ -33,34 +33,6 @@ Sese 只支持在64位系统下运行，非64位不会进行适配，带来的�
 
 使用 **Clang 12**、**CMake**。
 
-### Android
-
-在 Windows 下使用 NDK + CMake 编译
-
-NDK 版本为 24.0.8215888，仅供参考。
-
-在使用 CMake 时需要添加额外参数
-
-```bash
-# 交叉编译必须指定 target 系统名称
--DCMAKE_SYSTEM_NAME=Android
-# 设置 CMake 工具链
--DCMAKE_TOOLCHAIN_FILE="${ANDROID_HOME}/ndk/${NDK_VERSION}/build/cmake/android.toolchain.cmake"
-# 设置 NDK Make 路径
--DCMAKE_MAKE_PROGRAM="${ANDROID_HOME}/ndk/${NDK_VERSION}/prebuilt/windows-x86_64/bin/make.exe"
-# 设置 NDK 编译器路径
--DCMAKE_C_COMPILER="${ANDROID_HOME}/ndk/${NDK_VERSION}/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe"
--DCMAKE_CXX_COMPILER="${ANDROID_HOME}/ndk/${NDK_VERSION}/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
-# 选择生成架构
--DANDROID_ABI=arm64-v8a
-# NDK 工具链选择 Clang
--DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang
-# Environment 相关，见下方注意事项
--DGIT_EXECUTABLE="path/to/git"
-```
-
-### 通用
-
 ** 注意 ** ：为保证 Environment 提供完整信息，还需保证以下两点
 
 - 确保项目以**克隆**方式被保存下来。

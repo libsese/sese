@@ -12,22 +12,18 @@ namespace sese {
 
     static bool isINTEL = false;
     static bool isAMD = false;
-    static bool isARM = false;
 
     static std::string vendor;
     static std::string brand;
     static std::string serialNumber;
-    static uint32_t cores = 0;
 
     bool CpuInfo::isIntel() noexcept { return isINTEL; }
     bool CpuInfo::isAmd() noexcept { return isAMD; }
-    bool CpuInfo::isArm() noexcept { return isARM; }
     const std::string &CpuInfo::getVendor() noexcept { return vendor; }
     const std::string &CpuInfo::getBrand() noexcept { return brand; }
     const std::string &CpuInfo::getSerialNumber() noexcept { return serialNumber; }
     uint32_t CpuInfo::getLogicProcessors() noexcept { return std::thread::hardware_concurrency(); }
 
-#ifdef SESE_ARCH_X64
     namespace _windows {
 
         /// CPUID 需要用上的 4 个寄存器
@@ -174,15 +170,4 @@ namespace sese {
         return __rdtsc();
     }
 
-#endif
-    //todo 完善 Windows 下 Arm 架构的识别
-#ifdef SESE_ARCH_ARM64
-    namespace _windows {
-        static struct CpuInitStruct {
-            CpuInitStruct() {
-                isARM = true;
-            }
-        } cpuInitStruct; /* NOLINT */
-    } // namespace _windows
-#endif
 }// namespace sese

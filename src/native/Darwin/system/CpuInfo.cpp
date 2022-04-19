@@ -1,18 +1,14 @@
 #include "system/CpuInfo.h"
 #include <cstring>
 #include <thread>
-
-#ifdef __x86_64__
 #include <bitset>
 #include <cpuid.h>
 #include <vector>
-#endif
 
 namespace sese {
 
     static bool isINTEL = false;
     static bool isAMD = false;
-    static bool isARM = false;
 
     static std::string vendor;
     static std::string brand;
@@ -20,13 +16,11 @@ namespace sese {
 
     bool CpuInfo::isIntel() noexcept { return isINTEL; }
     bool CpuInfo::isAmd() noexcept { return isAMD; }
-    bool CpuInfo::isArm() noexcept { return isARM; }
     const std::string &CpuInfo::getVendor() noexcept { return vendor; }
     const std::string &CpuInfo::getBrand() noexcept { return brand; }
     const std::string &CpuInfo::getSerialNumber() noexcept { return serialNumber; }
     uint32_t CpuInfo::getLogicProcessors() noexcept { return std::thread::hardware_concurrency(); }
 
-#ifdef SESE_ARCH_X64
     namespace _darwin {
 
         inline void cpuid(int cpuInfo[4], int function_id) {
@@ -183,15 +177,5 @@ namespace sese {
                          : "=a"(lo), "=d"(hi));
         return ((uint64_t) hi << 32) | lo;
     }
-#endif
-    //todo 完善 Darwin 下 Arm 架构的识别
-#ifdef SESE_ARCH_ARM64
-    namespace _darwin {
-        static struct CpuInitStruct {
-            CpuInitStruct() {
-                isARM = true;
-            }
-        } cpuInitStruct; /* NOLINT */
-    }// namespace _darwin
-#endif
+
 }// namespace sese
