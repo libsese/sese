@@ -1,16 +1,17 @@
 #include "IndexOutOfBoundsException.h"
 #include "StringBuilder.h"
-#include "Util.h"
+#include "record/LogHelper.h"
+#include "Test.h"
 #include <cstdio>
 
-#define FILTER_TEST_STRING_BUILDER "fSTRING_BUILDER"
+sese::LogHelper helper("fSTRING_BUILDER");
 
 int main() {
     auto buffer = new sese::StringBuilder(16);
     buffer->append("Hello, World. ");
     buffer->append("This test, for the expansion mechanism.");
     puts(buffer->toString().c_str());
-    ASSERT(FILTER_TEST_STRING_BUILDER, buffer->getCharAt(13) == ' ')
+    sese::Test::assert(helper, buffer->getCharAt(13) == ' ');
 
     buffer->del(0, 13);
     puts(buffer->toString().c_str());
@@ -54,8 +55,7 @@ int main() {
 
     try {
         buffer->setChatAt(100000, 'E');
-    }
-    catch (sese::Exception &exception){
+    } catch (sese::Exception &exception) {
         puts(exception.what());
     }
 

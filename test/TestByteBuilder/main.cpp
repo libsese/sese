@@ -1,7 +1,11 @@
 #include "ByteBuilder.h"
-#include "Util.h"
+#include "record/LogHelper.h"
+#include "Test.h"
 
-#define FILTER_TEST_BYTE_BUILDER "fBYTE_BUILDER"
+using sese::LogHelper;
+using sese::Test;
+
+sese::LogHelper helper("fBYTE_BUILDER"); // NOLINT
 
 struct Data {
     int8_t i8;
@@ -17,13 +21,13 @@ int main() {
 
     auto data2 = Data{0};
     buffer->read(&data2, sizeof(Data));
-    ASSERT(FILTER_TEST_BYTE_BUILDER, data1.i8 == data2.i8)
-    ASSERT(FILTER_TEST_BYTE_BUILDER, data1.i16 == data2.i16)
-    ASSERT(FILTER_TEST_BYTE_BUILDER, data1.i32 == data2.i32)
-    ASSERT(FILTER_TEST_BYTE_BUILDER, data1.i64 == data2.i64)
+    Test::assert(helper, data1.i8 == data2.i8);
+    Test::assert(helper, data1.i16 == data2.i16);
+    Test::assert(helper, data1.i32 == data2.i32);
+    Test::assert(helper, data1.i64 == data2.i64);
 
     buffer->freeCapacity();
-    ASSERT(FILTER_TEST_BYTE_BUILDER, buffer->getCapacity() == 10)
+    Test::assert(helper, buffer->getCapacity() == 10);
 
     delete buffer;
     return 0;

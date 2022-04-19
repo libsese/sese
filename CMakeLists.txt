@@ -48,6 +48,7 @@ set(ALL_SRCS
         src/Random.cpp
         src/Util.cpp
         src/FileStream.cpp
+        src/Test.cpp
         # 编码
         src/convert/EncodingConverter.cpp
         src/convert/Base64Converter.cpp

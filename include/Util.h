@@ -68,39 +68,6 @@ namespace sese {
 #pragma warning(disable : 4996)
 #endif
 
-#ifdef __llvm__
-#define FN __FILE_NAME__
-#else
-#define FN __FILE__
-#endif
-
-#define ROOT_LOG(LEVEL, FILTER, ...)                                                                                                                                                                       \
-    {                                                                                                                                                                                                      \
-        char buf[RECORD_OUTPUT_BUFFER];                                                                                                                                                                    \
-        sprintf(buf, __VA_ARGS__);                                                                                                                                                                         \
-        sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), LEVEL, sese::Thread::getCurrentThreadName().c_str(), sese::Thread::getCurrentThreadId(), FN, __LINE__, buf, FILTER); \
-        sese::Logger *logger = sese::getLogger();                                                                                                                                                          \
-        logger->log(event);                                                                                                                                                                                \
-    }
-
-/// 输出 ERROR 级别的日志
-#define ROOT_ERROR(FILTER, ...) \
-    ROOT_LOG(sese::Level::ERR, FILTER, __VA_ARGS__)
-
-#if defined __GNUC__ || __llvm__
-#define LIKELY(x) __builtin_expect(!!(x), 1)
-#define UNLIKELY(x) __builtin_expect(!!(x), 0)
-#else
-#define LIKELY(x) (x)
-#define UNLIKELY(x) (x)
-#endif
-
-#define ASSERT(FILTER, x)                                                                     \
-    if (UNLIKELY(!(x))) {                                                                     \
-        ROOT_ERROR(FILTER, "%s", sese::backtrace2String(5, "Backtrace ").c_str()); \
-        assert(x);                                                                            \
-    }
-
 /**
  * @brief 更快速的边界检查 - [0, max)
  */
