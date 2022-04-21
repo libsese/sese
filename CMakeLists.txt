@@ -58,6 +58,7 @@ set(ALL_SRCS
         src/thread/ThreadPool.cpp
         # 系统
         src/system/Environment.cpp
+        src/system/CpuInfo.cpp
         # 网络
         src/net/Address.cpp
         src/net/IPAddress.cpp
@@ -74,7 +75,6 @@ message(STATUS "NATIVE PATH : ${NATIVE_PATH}")
 
 set(NATIVE_SRCS
         ${NATIVE_PATH}/Test.cpp
-        ${NATIVE_PATH}/system/CpuInfo.cpp
         ${NATIVE_PATH}/net/Socket.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
         )
@@ -137,40 +137,38 @@ set_target_properties(
 include(Test.cmake)
 
 # 安装脚本排除 Android
-if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Android")
-    include(CMakePackageConfigHelpers)
+include(CMakePackageConfigHelpers)
 
-    write_basic_package_version_file(
-            ${PROJECT_SOURCE_DIR}/output/seseConfigVersion.cmake
-            VERSION ${PROJECT_VERSION}
-            COMPATIBILITY ExactVersion
-    )
+write_basic_package_version_file(
+        ${PROJECT_SOURCE_DIR}/output/seseConfigVersion.cmake
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY ExactVersion
+)
 
-    configure_package_config_file(
-            seseConfig.cmake.in "${PROJECT_SOURCE_DIR}/output/seseConfig.cmake"
-            INSTALL_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
-    )
+configure_package_config_file(
+        seseConfig.cmake.in "${PROJECT_SOURCE_DIR}/output/seseConfig.cmake"
+        INSTALL_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
+)
 
-    install(TARGETS SeseSharedLibrary SeseStaticLibrary
-            EXPORT ${PROJECT_NAME}Targets
-            LIBRARY DESTINATION lib
-            ARCHIVE DESTINATION lib
-            RUNTIME DESTINATION bin
-            )
+install(TARGETS SeseSharedLibrary SeseStaticLibrary
+        EXPORT ${PROJECT_NAME}Targets
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin
+        )
 
-    install(EXPORT ${PROJECT_NAME}Targets
-            FILE ${PROJECT_NAME}Targets.cmake
-            DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
-            )
+install(EXPORT ${PROJECT_NAME}Targets
+        FILE ${PROJECT_NAME}Targets.cmake
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
+        )
 
-    install(FILES
-            ${PROJECT_SOURCE_DIR}/output/seseConfig.cmake
-            ${PROJECT_SOURCE_DIR}/output/seseConfigVersion.cmake
-            DESTINATION
-            "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
-            )
+install(FILES
+        ${PROJECT_SOURCE_DIR}/output/seseConfig.cmake
+        ${PROJECT_SOURCE_DIR}/output/seseConfigVersion.cmake
+        DESTINATION
+        "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
+        )
 
-    install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
-            DESTINATION "include/${PROJECT_NAME}"
-            )
-endif ()
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
+        DESTINATION "include/${PROJECT_NAME}"
+        )
