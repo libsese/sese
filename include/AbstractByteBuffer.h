@@ -40,6 +40,12 @@ namespace sese {
          * @param baseSize 初始节点内存大小
          */
         explicit AbstractByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
+
+        /// 阻止深拷贝
+        AbstractByteBuffer(AbstractByteBuffer &abstractByteBuffer) = delete;
+        /// 移动语义
+        AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer) noexcept;
+
         /// 析构
         ~AbstractByteBuffer();
         /// 重置读取位置

@@ -19,7 +19,7 @@ namespace sese {
     /**
      * @brief 线程安全的字符串缓存类
      */
-    class API StringBuffer : AbstractStringBuffer {
+    class API StringBuffer : public AbstractStringBuffer {
     public:
         explicit StringBuffer(size_t cap = STRING_BUFFER_SIZE_FACTOR) noexcept;
         explicit StringBuffer(const char *str) noexcept;

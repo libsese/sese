@@ -26,10 +26,13 @@ namespace sese {
         explicit AbstractStringBuffer(const char *str) noexcept;
         virtual ~AbstractStringBuffer() noexcept;
 
+        AbstractStringBuffer(AbstractStringBuffer &abstractStringBuffer) noexcept;
+        AbstractStringBuffer(AbstractStringBuffer &&abstractStringBuffer) noexcept;
+
     protected:
-        size_t cap{};  /// 实际容量
-        size_t len = 0;/// 字符串长度
-        char *buffer;  /// 字符串缓存
+        size_t cap{};           /// 实际容量
+        size_t len = 0;         /// 字符串长度
+        char *buffer = nullptr; /// 字符串缓存
 
     protected:
         /**

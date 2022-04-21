@@ -19,6 +19,24 @@ namespace sese {
         this->currentReadNode = root;
     }
 
+    AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer)  noexcept {
+        abstractByteBuffer.root = this->root;
+        abstractByteBuffer.currentWriteNode = this->currentWriteNode;
+        abstractByteBuffer.currentWritePos = this->currentWritePos;
+        abstractByteBuffer.currentReadNode = this->currentReadNode;
+        abstractByteBuffer.currentReadPos = this->currentReadPos;
+        abstractByteBuffer.length = this->length;
+        abstractByteBuffer.cap = this->cap;
+
+        this->root = nullptr;
+        this->currentWriteNode = nullptr;
+        this->currentWritePos = 0;
+        this->currentReadNode = nullptr;
+        this->currentReadPos = 0;
+        this->length = 0;
+        this->cap = 0;
+    }
+
     AbstractByteBuffer::~AbstractByteBuffer() {
         Node *toDel;
         while (root != nullptr) {

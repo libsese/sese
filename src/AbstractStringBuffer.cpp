@@ -23,7 +23,26 @@ namespace sese {
     }
 
     AbstractStringBuffer::~AbstractStringBuffer() noexcept {
-        delete[] this->buffer;
+        if(this->buffer != nullptr) {
+            delete[] this->buffer;
+        }
+    }
+
+    AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &abstractStringBuffer) noexcept {
+        abstractStringBuffer.cap = this->cap;
+        abstractStringBuffer.len = this->len;
+        abstractStringBuffer.buffer = new char[this->cap];
+        memcpy(abstractStringBuffer.buffer, this->buffer, this->len);
+    }
+
+    AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &&abstractStringBuffer) noexcept {
+        abstractStringBuffer.cap = this->cap;
+        abstractStringBuffer.len = this->len;
+        abstractStringBuffer.buffer = this->buffer;
+
+        this->cap = 0;
+        this->len = 0;
+        this->buffer = nullptr;
     }
 
     void AbstractStringBuffer::append(const char *str) noexcept {

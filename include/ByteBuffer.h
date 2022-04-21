@@ -17,7 +17,7 @@ namespace sese {
     /**
      * @brief 线程安全的字节缓冲类
      */
-    class API ByteBuffer : AbstractByteBuffer {
+    class API ByteBuffer : public AbstractByteBuffer {
     public:
         explicit ByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
         void resetPos() override;
