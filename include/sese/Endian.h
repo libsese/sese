@@ -21,6 +21,7 @@
 
 extern "C++" {
 #if (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || defined(_WIN32)
+#define SESE_LITTLE_ENDIAN
 template<typename T>
 inline T ToBigEndian16(T t) {
     return ByteSwap16(t);
@@ -81,6 +82,7 @@ inline T FromLittleEndian64(T t) {
     return t;
 }
 #else
+#define SESE_BIG_ENDIAN
 template<typename T>
 inline T ToBigEndian16(T t) {
     return t;

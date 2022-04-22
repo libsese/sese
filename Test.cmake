@@ -113,3 +113,8 @@ add_test(NAME TestPercentConverter COMMAND TestPercentConverter)
 add_executable(TestLibraryLoader test/TestLibraryLoader/main.cpp)
 target_link_libraries(TestLibraryLoader SeseSharedLibrary)
 add_test(NAME TestLibraryLoader COMMAND TestLibraryLoader)
+
+# MD5Util
+add_executable(TestMD5Util test/TestMD5Util/main.cpp)
+target_link_libraries(TestMD5Util SeseSharedLibrary)
+add_test(NAME TestMD5Util COMMAND TestMD5Util)

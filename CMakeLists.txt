@@ -53,6 +53,7 @@ set(ALL_SRCS
         src/convert/EncodingConverter.cpp
         src/convert/Base64Converter.cpp
         src/convert/PercentConverter.cpp
+        src/convert/MD5Util.cpp
         # 线程
         src/thread/Thread.cpp
         src/thread/ThreadPool.cpp
