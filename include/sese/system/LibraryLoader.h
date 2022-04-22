@@ -32,11 +32,7 @@ namespace sese {
         [[nodiscard]] const void *findFunctionByName(const std::string &name) const;
 
     private:
-#ifdef _WIN32
         Module module;
-#else
-        void *module;
-#endif
     };
 
     /**

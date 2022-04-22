@@ -2,7 +2,7 @@
 
 Sese 是一个跨平台基础库，以**静态链接库**或**动态链接库**方式部署至解决方案中。
 
-Sese 支持**多平台**编译，包括但不限于 Windows、Linux、macOS、Android，可按需要进行移植。
+Sese 支持**多平台**编译，包括但不限于 Windows、Linux、macOS，可按需要进行移植。
 
 Sese 自<kbd>[7da500c](https://github.com/SHIINASAMA/sese/tree/7da500cfba4a7cbbc6071e686c2a6780236f7db3)</kbd>起，所有类均经过 **CTest** 与 **Valgrind**[[0]](#jmp0) 内存分析。
 
