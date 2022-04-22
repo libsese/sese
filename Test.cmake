@@ -108,3 +108,8 @@ add_test(NAME TestBase64Converter COMMAND TestBase64Converter)
 add_executable(TestPercentConverter test/TestPercentConverter/main.cpp)
 target_link_libraries(TestPercentConverter SeseSharedLibrary)
 add_test(NAME TestPercentConverter COMMAND TestPercentConverter)
+
+# LibraryLoader
+add_executable(TestLibraryLoader test/TestLibraryLoader/main.cpp)
+target_link_libraries(TestLibraryLoader SeseSharedLibrary)
+add_test(NAME TestLibraryLoader COMMAND TestLibraryLoader)

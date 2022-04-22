@@ -6,13 +6,14 @@
  */
 #pragma once
 #include "Stream.h"
+#include "NotInstantiable.h"
 
 namespace sese {
 
     /**
      * @brief Base64 转换器
      */
-    class API Base64Converter {
+    class API Base64Converter : NotInstantiable {
     public:
 
         enum class CodePage {

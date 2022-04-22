@@ -59,6 +59,7 @@ set(ALL_SRCS
         # 系统
         src/system/Environment.cpp
         src/system/CpuInfo.cpp
+        src/system/LibraryLoader.cpp
         # 网络
         src/net/Address.cpp
         src/net/IPAddress.cpp
@@ -103,10 +104,10 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
     add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
     add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
 
-    message(STATUS "Add library : thread")
+    message(STATUS "Add library : thread, dl")
     find_package(Threads)
-    target_link_libraries(SeseSharedLibrary ${CMAKE_THREAD_LIBS_INIT})
-    target_link_libraries(SeseStaticLibrary ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(SeseSharedLibrary ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_link_libraries(SeseStaticLibrary ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 endif ()
 
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")

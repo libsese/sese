@@ -6,13 +6,14 @@
  */
 #pragma once
 #include "Stream.h"
+#include "NotInstantiable.h"
 
 namespace sese {
 
     /**
      * @brief 百分号编码转换器
      */
-    class API PercentConverter {
+    class API PercentConverter : public NotInstantiable{
     public:
 
         static void encode(const char *src, const Stream::Ptr &dest);

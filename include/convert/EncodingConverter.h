@@ -6,6 +6,7 @@
  */
 #pragma once
 #include "Config.h"
+#include "NotInstantiable.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
@@ -16,7 +17,7 @@ namespace sese {
     /**
      * @brief 字符串编码转换
      */
-    class API EncodingConverter {
+    class API EncodingConverter : NotInstantiable {
     public:
         static std::string toString(const std::wstring &wstring) noexcept;
         static std::wstring toWstring(const std::string &string) noexcept;
