@@ -1,4 +1,4 @@
-#include "Test.h"
+#include "sese/Test.h"
 #include <execinfo.h>
 #include <sstream>
 #include <vector>
@@ -21,7 +21,7 @@ namespace sese {
             free(strings);
             free(array);
         }
-    }// namespace _linux
+    }
 
     std::string Test::backtrace2String(int size, const std::string &prefix, int skip) {
         std::vector<std::string> bt;

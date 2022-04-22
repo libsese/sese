@@ -5,9 +5,9 @@
  * @date 2022年4月9日
  */
 #pragma once
-#include "IPv6Address.h"
-#include "Config.h"
-#include "Stream.h"
+#include "sese/net/IPv6Address.h"
+#include "sese/Config.h"
+#include "sese/Stream.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)

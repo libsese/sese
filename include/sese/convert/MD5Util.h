@@ -5,8 +5,8 @@
  * @date 2022年4月22日
  */
 #pragma once
-#include "Stream.h"
-#include "Endian.h"
+#include "sese/Stream.h"
+#include "sese/Endian.h"
 
 namespace sese {
 

@@ -5,8 +5,8 @@
  * @brief 调试杂项函数
  */
 #pragma once
-#include "Config.h"
-#include "functional"
+#include "sese/Config.h"
+#include <functional>
 
 #ifdef _WIN32
 #define WILL_SKIP 1

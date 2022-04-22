@@ -1,8 +1,8 @@
-#include <convert/MD5Util.h>
-#include <ByteBuilder.h>
-#include <FileStream.h>
-#include <record/LogHelper.h>
-#include <Test.h>
+#include <sese/convert/MD5Util.h>
+#include <sese/ByteBuilder.h>
+#include <sese/FileStream.h>
+#include <sese/record/LogHelper.h>
+#include <sese/Test.h>
 
 using sese::MD5Util;
 using sese::ByteBuilder;

@@ -1,5 +1,5 @@
-#include "config/ConfigUtil.h"
-#include "record/LogHelper.h"
+#include "sese/config/ConfigUtil.h"
+#include "sese/record/LogHelper.h"
 
 using sese::ConfigUtil;
 using sese::ConfigFile;

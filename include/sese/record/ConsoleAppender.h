@@ -5,7 +5,7 @@
  * @brief 控制台日志输出源类
  */
 #pragma once
-#include "AbstractAppender.h"
+#include "sese/record/AbstractAppender.h"
 
 namespace sese {
     /**

@@ -1,5 +1,5 @@
-#include "Random.h"
-#include "system/CpuInfo.h"
+#include "sese/Random.h"
+#include "sese/system/CpuInfo.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4293)

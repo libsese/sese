@@ -1,6 +1,6 @@
-#include "system/LibraryLoader.h"
-#include "record/LogHelper.h"
-#include "Test.h"
+#include "sese/system/LibraryLoader.h"
+#include "sese/record/LogHelper.h"
+#include "sese/Test.h"
 
 using sese::Test;
 using sese::LibraryLoader;

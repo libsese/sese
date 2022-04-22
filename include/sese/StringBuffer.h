@@ -5,8 +5,8 @@
  * @date 2022年4月5日
  */
 #pragma once
-#include "AbstractStringBuffer.h"
-#include "Config.h"
+#include "sese/AbstractStringBuffer.h"
+#include "sese/Config.h"
 #include <mutex>
 
 #ifdef _WIN32

@@ -5,8 +5,8 @@
  * @date 2022年3月28日
  */
 #pragma once
-#include "AbstractAppender.h"
-#include "FileStream.h"
+#include "sese/record/AbstractAppender.h"
+#include "sese/FileStream.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)

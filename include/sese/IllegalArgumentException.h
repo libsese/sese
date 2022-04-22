@@ -5,8 +5,8 @@
  * @brief 非法参数异常类
  */
 #pragma once
-#include "Config.h"
-#include "LogicException.h"
+#include "sese/Config.h"
+#include "sese/LogicException.h"
 
 namespace sese {
 

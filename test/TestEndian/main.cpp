@@ -1,7 +1,7 @@
-#include "Config.h"
-#include "Endian.h"
-#include "record/LogHelper.h"
-#include "Test.h"
+#include "sese/Config.h"
+#include "sese/Endian.h"
+#include "sese/record/LogHelper.h"
+#include "sese/Test.h"
 
 using sese::LogHelper;
 using sese::Test;

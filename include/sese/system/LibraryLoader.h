@@ -5,8 +5,12 @@
  * @date 2022年4月22日
  */
 #pragma once
-#include "Config.h"
-#include "NotInstantiable.h"
+#include "sese/Config.h"
+#include "sese/NotInstantiable.h"
+
+#ifdef _WIN32
+#pragma warning(disable : 4624)
+#endif
 
 namespace sese {
 

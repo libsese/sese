@@ -1,5 +1,5 @@
-#include "Test.h"
-#include "record/LogHelper.h"
+#include "sese/Test.h"
+#include "sese/record/LogHelper.h"
 
 using sese::Test;
 using sese::LogHelper;

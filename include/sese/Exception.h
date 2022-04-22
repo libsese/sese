@@ -6,7 +6,7 @@
  */
 #pragma once
 #include <exception>
-#include "Config.h"
+#include "sese/Config.h"
 
 #ifdef _WIN32
 #pragma warning (disable : 4275)

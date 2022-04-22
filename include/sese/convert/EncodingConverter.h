@@ -5,11 +5,12 @@
  * @brief 字符串编码转换
  */
 #pragma once
-#include "Config.h"
-#include "NotInstantiable.h"
+#include "sese/Config.h"
+#include "sese/NotInstantiable.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
+#pragma warning(disable : 4624)
 #endif
 
 namespace sese {

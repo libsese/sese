@@ -14,7 +14,7 @@ get_git_branch(SESE_REPO_BRANCH)
 
 # 项目详情
 set(CMAKE_CXX_STANDARD 20)
-include_directories(${PROJECT_SOURCE_DIR}/include/sese/)
+include_directories(${PROJECT_SOURCE_DIR}/include/)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output/${CMAKE_SYSTEM_NAME})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output/${CMAKE_SYSTEM_NAME})
 enable_testing()

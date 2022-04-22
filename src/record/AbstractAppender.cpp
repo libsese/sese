@@ -1,4 +1,4 @@
-#include "record/AbstractAppender.h"
+#include "sese/record/AbstractAppender.h"
 
 namespace sese {
     AbstractAppender::AbstractAppender(AbstractFormatter::Ptr formatter, Level level) noexcept {

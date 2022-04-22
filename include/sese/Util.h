@@ -5,11 +5,11 @@
  * @date 2022年3月28日
  */
 #pragma once
-#include "Config.h"
-#include "Singleton.h"
-#include "record/Logger.h"
-#include "thread/Thread.h"
-#include "Test.h"
+#include "sese/Config.h"
+#include "sese/Singleton.h"
+#include "sese/record/Logger.h"
+#include "sese/thread/Thread.h"
+#include "sese/Test.h"
 
 namespace sese {
 

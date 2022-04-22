@@ -1,5 +1,5 @@
-#include "record/ConsoleAppender.h"
-#include "convert/EncodingConverter.h"
+#include "sese/record/ConsoleAppender.h"
+#include "sese/convert/EncodingConverter.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)

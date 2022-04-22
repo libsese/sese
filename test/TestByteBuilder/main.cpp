@@ -1,6 +1,6 @@
-#include "ByteBuilder.h"
-#include "record/LogHelper.h"
-#include "Test.h"
+#include "sese/ByteBuilder.h"
+#include "sese/record/LogHelper.h"
+#include "sese/Test.h"
 
 using sese::LogHelper;
 using sese::Test;

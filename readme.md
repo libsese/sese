@@ -27,7 +27,7 @@ Sese 只支持在64位系统下运行，非64位不会进行适配，带来的�
 - WSL2-AlmaLinux 使用 **Clang 12**、**CMake**。
 - Ubuntu 使用 **GCC 11.2.0**、**CMake**。
 
-默认自动链接 pthread 库。
+默认自动链接 pthread、dl 库。
 
 ### macOS
 

@@ -5,7 +5,7 @@
  * @brief 逻辑异常类
  */
 #pragma once
-#include "Exception.h"
+#include "sese/Exception.h"
 
 namespace sese {
 

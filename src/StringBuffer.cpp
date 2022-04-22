@@ -1,5 +1,5 @@
-#include "StringBuffer.h"
-#include "thread/Locker.h"
+#include "sese/StringBuffer.h"
+#include "sese/thread/Locker.h"
 
 sese::StringBuffer::StringBuffer(size_t cap) noexcept : AbstractStringBuffer(cap) {
 }

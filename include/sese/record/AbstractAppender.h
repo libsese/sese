@@ -5,8 +5,8 @@
  * @brief 日志输出源基类
  */
 #pragma once
-#include "AbstractFormatter.h"
-#include "Config.h"
+#include "sese/record/AbstractFormatter.h"
+#include "sese/Config.h"
 
 #ifdef _WIN32
 #pragma warning (disable : 4251)

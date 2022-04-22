@@ -5,10 +5,10 @@
  * @author kaoru
  */
 #pragma once
-#include "Config.h"
-#include "Noncopyable.h"
-#include "thread/Task.h"
-#include "thread/Thread.h"
+#include "sese/Config.h"
+#include "sese/Noncopyable.h"
+#include "sese/thread/Task.h"
+#include "sese/thread/Thread.h"
 #include <atomic>
 #include <condition_variable>
 #include <memory>

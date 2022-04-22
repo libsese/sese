@@ -5,7 +5,7 @@
  * @brief 流式接口类
  */
 #pragma once
-#include "Config.h"
+#include "sese/Config.h"
 
 namespace sese {
 

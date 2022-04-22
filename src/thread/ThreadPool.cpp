@@ -1,5 +1,5 @@
-#include "thread/ThreadPool.h"
-#include "thread/Locker.h"
+#include "sese/thread/ThreadPool.h"
+#include "sese/thread/Locker.h"
 
 namespace sese {
     ThreadPool::ThreadPool(std::string threadPoolName, size_t threads)

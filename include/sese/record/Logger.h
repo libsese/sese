@@ -5,8 +5,8 @@
  * @brief 日志输出类
  */
 #pragma once
-#include "AbstractAppender.h"
-#include "Config.h"
+#include "sese/record/AbstractAppender.h"
+#include "sese/Config.h"
 #include <memory>
 #include <vector>
 

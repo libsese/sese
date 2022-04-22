@@ -5,7 +5,7 @@
 * @author kaoru
 */
 #pragma once
-#include "Stream.h"
+#include "sese/Stream.h"
 
 #define BINARY_READ_EXISTED_W "rb,ccs=utf-8"
 #define BINARY_WRITE_CREATE_TRUNC_W "wb,ccs=utf-8"

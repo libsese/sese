@@ -1,5 +1,5 @@
-#include "ByteBuffer.h"
-#include "thread/Locker.h"
+#include "sese/ByteBuffer.h"
+#include "sese/thread/Locker.h"
 
 int64_t sese::ByteBuffer::read(void *buffer, size_t len) {
     Locker locker(mutex);

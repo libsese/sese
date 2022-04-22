@@ -1,6 +1,6 @@
-#include "thread/Locker.h"
-#include "thread/Thread.h"
-#include "record/LogHelper.h"
+#include "sese/thread/Locker.h"
+#include "sese/thread/Thread.h"
+#include "sese/record/LogHelper.h"
 
 sese::LogHelper helper("fLOCKER");
 

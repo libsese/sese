@@ -5,8 +5,8 @@
  * @brief 线程不安全的字符串缓存类
  */
 #pragma once
-#include "AbstractStringBuffer.h"
-#include "Config.h"
+#include "sese/AbstractStringBuffer.h"
+#include "sese/Config.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4275)
