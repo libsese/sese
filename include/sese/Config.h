@@ -73,3 +73,6 @@ constexpr static const char *RECORD_DEFAULT_TEXT_PATTERN = "[%ln] %c %lv %fi %tn
 /// 字节流缓冲区单元因子
 constexpr static const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024;
 #pragma endregion
+
+/// 是否启用调试模式
+constexpr static const bool ENABLE_TEST = true;

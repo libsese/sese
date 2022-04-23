@@ -7,6 +7,7 @@
 #pragma once
 #include "sese/Config.h"
 #include <functional>
+#include <atomic>
 
 #ifdef _WIN32
 #define WILL_SKIP 1
@@ -40,8 +41,8 @@ namespace sese {
          * @brief 替代断言宏方案
          * @param log 日志工具
          * @param expr 条件表达式
-         * @param callback 命中回调函数，默认执行 exit(-1)
+         * @param exitCode 命中时的退出退出码，为零则不退出
          */
-        static void assert(LogHelper log, bool expr, const std::function<void()>& callback = []() { exit(-1); });
+        static void assert(LogHelper log, bool expr, int32_t exitCode = 0);
     };
 }// namespace sese

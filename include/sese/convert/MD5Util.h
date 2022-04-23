@@ -56,11 +56,8 @@ namespace sese {
         static const uint32_t S43 = 15;
         static const uint32_t S44 = 21;
 
-#ifdef SESE_LITTLE_ENDIAN
         constexpr static const unsigned char PADDING[64] = {0x80};
-#else
-        constexpr static const unsigned char PADDING[64] = {0x10000000};
-#endif
+
         static inline uint32_t F(uint32_t x, uint32_t y, uint32_t z) noexcept;
         static inline uint32_t G(uint32_t x, uint32_t y, uint32_t z) noexcept;
         static inline uint32_t H(uint32_t x, uint32_t y, uint32_t z) noexcept;

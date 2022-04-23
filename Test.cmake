@@ -118,3 +118,8 @@ add_test(NAME TestLibraryLoader COMMAND TestLibraryLoader)
 add_executable(TestMD5Util test/TestMD5Util/main.cpp)
 target_link_libraries(TestMD5Util SeseSharedLibrary)
 add_test(NAME TestMD5Util COMMAND TestMD5Util)
+
+# Debug
+add_executable(TestDebug test/TestDebug/main.cpp)
+target_link_libraries(TestDebug SeseSharedLibrary)
+add_test(NAME TestDebug COMMAND TestDebug)
