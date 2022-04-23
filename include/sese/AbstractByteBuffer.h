@@ -41,8 +41,8 @@ namespace sese {
          */
         explicit AbstractByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
 
-        /// 阻止深拷贝
-        AbstractByteBuffer(AbstractByteBuffer &abstractByteBuffer) = delete;
+        /// 拷贝
+        AbstractByteBuffer(AbstractByteBuffer &abstractByteBuffer) noexcept;
         /// 移动语义
         AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer) noexcept;
 

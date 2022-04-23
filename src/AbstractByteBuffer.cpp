@@ -19,22 +19,51 @@ namespace sese {
         this->currentReadNode = root;
     }
 
-    AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer)  noexcept {
-        abstractByteBuffer.root = this->root;
-        abstractByteBuffer.currentWriteNode = this->currentWriteNode;
-        abstractByteBuffer.currentWritePos = this->currentWritePos;
-        abstractByteBuffer.currentReadNode = this->currentReadNode;
-        abstractByteBuffer.currentReadPos = this->currentReadPos;
-        abstractByteBuffer.length = this->length;
-        abstractByteBuffer.cap = this->cap;
-
-        this->root = nullptr;
-        this->currentWriteNode = nullptr;
-        this->currentWritePos = 0;
-        this->currentReadNode = nullptr;
-        this->currentReadPos = 0;
+    AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &abstractByteBuffer) noexcept {
+        this->root = new Node(abstractByteBuffer.cap);
+        this->cap = abstractByteBuffer.cap;
         this->length = 0;
-        this->cap = 0;
+        this->currentWriteNode = root;
+        this->currentWritePos = abstractByteBuffer.length + abstractByteBuffer.currentWritePos;
+        this->currentReadNode = root;
+//        this->currentReadPos = abstractByteBuffer.length + abstractByteBuffer.currentReadPos;
+
+        size_t copyPos = 0;
+        Node *pNode = abstractByteBuffer.root;
+        if (pNode != nullptr) {
+            while (true) {
+                if(pNode == abstractByteBuffer.currentReadNode) {
+                    this->currentReadPos = copyPos + abstractByteBuffer.currentReadPos;
+                }
+
+                memcpy((char *) root->buffer + copyPos, pNode->buffer, pNode->length);
+
+                if (pNode->next == nullptr) {
+                    break;
+                } else {
+                    pNode = pNode->next;
+                    copyPos += pNode->length;
+                }
+            }
+        }
+    }
+
+    AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer) noexcept {
+        this->root = abstractByteBuffer.root;
+        this->currentWriteNode = abstractByteBuffer.currentWriteNode;
+        this->currentWritePos = abstractByteBuffer.currentWritePos;
+        this->currentReadNode = abstractByteBuffer.currentReadNode;
+        this->currentReadPos = abstractByteBuffer.currentReadPos;
+        this->length = abstractByteBuffer.length;
+        this->cap = abstractByteBuffer.cap;
+
+        abstractByteBuffer.root = nullptr;
+        abstractByteBuffer.currentWriteNode = nullptr;
+        abstractByteBuffer.currentWritePos = 0;
+        abstractByteBuffer.currentReadNode = nullptr;
+        abstractByteBuffer.currentReadPos = 0;
+        abstractByteBuffer.length = 0;
+        abstractByteBuffer.cap = 0;
     }
 
     AbstractByteBuffer::~AbstractByteBuffer() {
@@ -62,7 +91,7 @@ namespace sese {
     size_t AbstractByteBuffer::freeCapacity() {
         size_t freeCap = 0;
         Node *toDel;
-        while (root->next != this->currentReadNode && root->next) {
+        while (root != this->currentReadNode && root->next) {
             toDel = root;
             root = toDel->next;
             freeCap += toDel->cap;
@@ -125,6 +154,9 @@ namespace sese {
                 needWrite -= currentWriteNodeRemaining;
                 currentWriteNode->length = currentWriteNode->cap;
 
+                // 更新全局信息
+                length += currentWriteNode->cap;
+                cap += STREAM_BYTE_STREAM_SIZE_FACTOR;
                 // 直接切换至下一个单元
                 currentWritePos = 0;
                 currentWriteNode->next = new Node(STREAM_BYTE_STREAM_SIZE_FACTOR);

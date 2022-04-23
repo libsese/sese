@@ -26,8 +26,8 @@ int main() {
     Test::assert(helper, data1.i32 == data2.i32);
     Test::assert(helper, data1.i64 == data2.i64);
 
-    buffer->freeCapacity();
-    Test::assert(helper, buffer->getCapacity() == 10);
+    Test::assert(helper, buffer->freeCapacity() == 10);
+    Test::assert(helper, buffer->getCapacity() == 1024);
 
     delete buffer;
     return 0;

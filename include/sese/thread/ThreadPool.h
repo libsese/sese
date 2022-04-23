@@ -23,6 +23,8 @@ namespace sese {
      */
     class API ThreadPool : Noncopyable {
     public:
+        using Ptr = std::shared_ptr<ThreadPool>;
+
         /**
          * 初始化线程池
          * @param threadPoolName 线程池名称（影响池内线程名称）

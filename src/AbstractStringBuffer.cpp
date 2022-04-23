@@ -23,26 +23,26 @@ namespace sese {
     }
 
     AbstractStringBuffer::~AbstractStringBuffer() noexcept {
-        if(this->buffer != nullptr) {
+        if (this->buffer != nullptr) {
             delete[] this->buffer;
         }
     }
 
     AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &abstractStringBuffer) noexcept {
-        abstractStringBuffer.cap = this->cap;
-        abstractStringBuffer.len = this->len;
-        abstractStringBuffer.buffer = new char[this->cap];
-        memcpy(abstractStringBuffer.buffer, this->buffer, this->len);
+        this->cap = abstractStringBuffer.cap;
+        this->len = abstractStringBuffer.len;
+        this->buffer = new char[this->cap];
+        memcpy(this->buffer, abstractStringBuffer.buffer, this->len);
     }
 
     AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &&abstractStringBuffer) noexcept {
-        abstractStringBuffer.cap = this->cap;
-        abstractStringBuffer.len = this->len;
-        abstractStringBuffer.buffer = this->buffer;
+        this->cap = abstractStringBuffer.cap;
+        this->len = abstractStringBuffer.len;
+        this->buffer = abstractStringBuffer.buffer;
 
-        this->cap = 0;
-        this->len = 0;
-        this->buffer = nullptr;
+        abstractStringBuffer.cap = 0;
+        abstractStringBuffer.len = 0;
+        abstractStringBuffer.buffer = nullptr;
     }
 
     void AbstractStringBuffer::append(const char *str) noexcept {
@@ -124,7 +124,7 @@ namespace sese {
 
     void AbstractStringBuffer::delCharAt(int index) {
         // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
-        if (!CheckRange(index, this->cap))  throw IndexOutOfBoundsException();
+        if (!CheckRange(index, this->cap)) throw IndexOutOfBoundsException();
         for (int i = index; i < len - 1; i++) {
             this->buffer[i] = this->buffer[i + 1];
         }

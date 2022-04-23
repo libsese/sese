@@ -16,6 +16,11 @@ sese::FileStream::FileStream(const std::string &fileName, const char *mode) {
     }
 }
 
+sese::FileStream::FileStream(FileStream &&fileStream) noexcept {
+    this->file = fileStream.file;
+    fileStream.file = nullptr;
+}
+
 int64_t sese::FileStream::read(void *buffer, size_t length) {
     return (int64_t) ::fread(buffer, 1, length, file);
 }
