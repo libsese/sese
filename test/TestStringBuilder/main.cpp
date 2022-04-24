@@ -4,7 +4,7 @@
 #include "sese/Test.h"
 #include <cstdio>
 
-sese::LogHelper helper("fSTRING_BUILDER");
+sese::LogHelper helper("fSTRING_BUILDER"); // NOLINT
 
 int main() {
     auto buffer = new sese::StringBuilder(16);

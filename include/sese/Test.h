@@ -6,8 +6,9 @@
  */
 #pragma once
 #include "sese/Config.h"
-#include <functional>
+#include "sese/Initializer.h"
 #include <atomic>
+#include <functional>
 
 #ifdef _WIN32
 #define WILL_SKIP 1
@@ -44,5 +45,13 @@ namespace sese {
          * @param exitCode 命中时的退出退出码，为零则不退出
          */
         static void assert(LogHelper log, bool expr, int32_t exitCode = 0);
+    };
+
+    class TestInitiateTask : public InitiateTask {
+    public:
+        TestInitiateTask() : InitiateTask(__FUNCTION__) {}
+
+        int32_t init() noexcept override;
+        int32_t destroy() noexcept override;
     };
 }// namespace sese

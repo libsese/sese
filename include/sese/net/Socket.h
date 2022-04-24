@@ -8,12 +8,23 @@
 #include "sese/net/IPv6Address.h"
 #include "sese/Config.h"
 #include "sese/Stream.h"
+#include "sese/Initializer.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
 #endif
 
 namespace sese {
+
+#ifdef _WIN32
+    class SocketInitiateTask : public InitiateTask{
+    public:
+        SocketInitiateTask() : InitiateTask(__FUNCTION__) {}
+
+        int32_t init() noexcept override;
+        int32_t destroy() noexcept override;
+    };
+#endif
 
     /**
      * @brief Native Socket 类

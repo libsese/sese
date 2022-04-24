@@ -28,12 +28,6 @@ namespace sese {
     };
 
     /**
-     * 获取全局 Logger 指针
-     * @return Logger 指针
-     */
-    extern API Logger *getLogger() noexcept;
-
-    /**
      * 判断字符是否属于空白
      * @param ch 欲判断的字符
      * @return 真、假

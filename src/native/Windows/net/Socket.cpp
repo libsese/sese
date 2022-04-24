@@ -1,14 +1,13 @@
 #include "sese/net/Socket.h"
 
-struct NetInitStruct {
-    NetInitStruct() {
-        WSADATA wsaData;
-        WSAStartup(MAKEWORD(2, 2), &wsaData);
-    }
-    ~NetInitStruct() {
-        WSACleanup();
-    }
-} netInitStruct; /* NOLINT */
+int32_t sese::SocketInitiateTask::init() noexcept {
+    WSADATA wsaData;
+    return WSAStartup(MAKEWORD(2, 2), &wsaData);
+}
+
+int32_t sese::SocketInitiateTask::destroy() noexcept {
+    return WSACleanup();
+}
 
 sese::Socket::Socket(Family family, Type type, int32_t protocol) noexcept {
     handle = socket((int32_t) family, (int32_t) type, protocol);

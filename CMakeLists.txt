@@ -49,6 +49,7 @@ set(ALL_SRCS
         src/Util.cpp
         src/FileStream.cpp
         src/Test.cpp
+        src/Initializer.cpp
         # 编码
         src/convert/EncodingConverter.cpp
         src/convert/Base64Converter.cpp
@@ -112,11 +113,6 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
 endif ()
 
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
-    add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
-endif ()
-
-if (CMAKE_SYSTEM_NAME MATCHES "Android")
     add_library(SeseSharedLibrary SHARED ${ALL_SRCS} ${NATIVE_SRCS})
     add_library(SeseStaticLibrary STATIC ${ALL_SRCS} ${NATIVE_SRCS})
 endif ()

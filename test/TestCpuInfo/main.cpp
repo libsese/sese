@@ -20,9 +20,9 @@ int main() {
     auto appender = std::make_shared<FileAppender>("CpuInfo.log", formatter);
     logger->addAppender(appender);
 
-    helper.info("%s", CpuInfo::getVendor().c_str());
-    helper.info("%s", CpuInfo::getBrand().c_str());
-    helper.info("%s", CpuInfo::getSerialNumber().c_str());
+    helper.info("%s", CpuInfo::getVendor());
+    helper.info("%s", CpuInfo::getBrand());
+    helper.info("%s", CpuInfo::getSerialNumber());
     helper.info("%dt", CpuInfo::getLogicProcessors());
 
     isSupport("3DNOW", CpuInfo::_3DNOW());

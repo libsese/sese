@@ -6,6 +6,7 @@
  */
 #pragma once
 #include "sese/Config.h"
+#include "sese/Initializer.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -20,9 +21,9 @@ namespace sese {
     public:
         [[nodiscard]] static bool isIntel() noexcept;
         [[nodiscard]] static bool isAmd() noexcept;
-        [[nodiscard]] static const std::string &getVendor() noexcept;
-        [[nodiscard]] static const std::string &getBrand() noexcept;
-        [[nodiscard]] static const std::string &getSerialNumber() noexcept;
+        [[nodiscard]] static const char *getVendor() noexcept;
+        [[nodiscard]] static const char *getBrand() noexcept;
+        [[nodiscard]] static const char *getSerialNumber() noexcept;
         [[nodiscard]] static uint32_t getLogicProcessors() noexcept;
 
     public:
@@ -85,6 +86,13 @@ namespace sese {
 
         [[nodiscard]] static bool AES() noexcept;
         [[nodiscard]] static uint64_t RDTSC() noexcept;
+    };
+
+    class CpuInfoInitiateTask : public InitiateTask {
+    public:
+        CpuInfoInitiateTask() : InitiateTask(__FUNCTION__) {}
+
+        int32_t init() noexcept override;
     };
 
 }// namespace sese

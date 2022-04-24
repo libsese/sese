@@ -5,8 +5,9 @@
  * @brief 日志输出类
  */
 #pragma once
-#include "sese/record/AbstractAppender.h"
 #include "sese/Config.h"
+#include "sese/record/AbstractAppender.h"
+#include "sese/Initializer.h"
 #include <memory>
 #include <vector>
 
@@ -15,6 +16,14 @@
 #endif
 
 namespace sese {
+
+    class LoggerInitiateTask : public InitiateTask {
+    public:
+        LoggerInitiateTask() : InitiateTask(__FUNCTION__) {}
+
+        int32_t init() noexcept override;
+    };
+
     /**
      * @brief 日志输出类
      */
@@ -47,4 +56,10 @@ namespace sese {
         const char *name = nullptr;
         std::vector<AbstractAppender::Ptr> appenders;
     };
+
+    /**
+     * 获取全局 Logger 指针
+     * @return Logger 指针
+     */
+    extern API Logger *getLogger() noexcept;
 }// namespace sese
