@@ -1,35 +1,37 @@
 #include "sese/thread/Thread.h"
 
 #ifdef __linux__
-static pid_t getPid() noexcept {
+static pid_t getTid() noexcept {
     return syscall(__NR_gettid);
 }
 #endif
 
 #ifdef _WIN32
-static pid_t getPid() noexcept {
+static tid_t getTid() noexcept {
     return GetCurrentThreadId();
 }
 #endif
 
 #ifdef __APPLE__
 #include <unistd.h>
-static pid_t getPid() noexcept {
-    return getpid();
+#include <pthread/pthread.h>
+static tid_t getTid() noexcept {
+    uint64_t id;
+    pthread_threadid_np(nullptr, &id);
+    return id;
 }
 #endif
 
 namespace sese {
-    thread_local pid_t currentThreadId = getPid();
-    thread_local std::string currentThreadName{THREAD_MAIN_NAME};
+
     thread_local sese::Thread *currentThread = nullptr;
 
-    pid_t Thread::getCurrentThreadId() noexcept {
-        return currentThreadId;
+    tid_t Thread::getCurrentThreadId() noexcept {
+        return currentThread ? currentThread->id : ::getTid();
     }
 
-    const std::string &Thread::getCurrentThreadName() noexcept {
-        return currentThreadName;
+    const char *Thread::getCurrentThreadName() noexcept {
+        return currentThread ? currentThread->name.c_str() : THREAD_MAIN_NAME;
     }
 
     sese::Thread *Thread::getCurrentThread() noexcept {
@@ -42,8 +44,7 @@ namespace sese {
     }
 
     void Thread::start() {
-        std::thread th([this] { run(this); });
-        this->th = std::move(th);
+        this->th = std::move(std::thread([this] { run(this); }));
     }
 
     void Thread::join() {
@@ -52,8 +53,7 @@ namespace sese {
 
     void *Thread::run(void *threadSelf) {
         currentThread = (Thread *) threadSelf;
-        currentThread->id = currentThreadId;
-        currentThreadName = currentThread->name;
+        currentThread->id = ::getTid();
 
         std::function<void()> func;
         func.swap(currentThread->function);
@@ -69,4 +69,5 @@ namespace sese {
     void Thread::detach() {
         this->th.detach();
     }
+
 }// namespace sese

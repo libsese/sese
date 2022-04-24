@@ -65,7 +65,7 @@ namespace sese {
         uint32_t ids = reg.eax;
 
         std::vector<Register> Data;
-        for (int i = 0; i <= ids; i++) {
+        for (uint32_t i = 0; i <= ids; i++) {
             cpuidex((uint32_t *) &reg, i, 0);
             Data.emplace_back(reg);
         }

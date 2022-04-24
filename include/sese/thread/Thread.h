@@ -34,7 +34,6 @@ namespace sese {
     class API Thread : Noncopyable {
     public:
         explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);
-        ~Thread() = default;
 
         void start();
         void join();
@@ -42,21 +41,21 @@ namespace sese {
         void detach();
         void *run(void *threadSelf);
 
-        [[nodiscard]] pid_t getPid() const noexcept { return this->id; }
+        [[nodiscard]] tid_t getTid() const noexcept { return id; }
         [[nodiscard]] const std::string &getThreadName() const noexcept { return this->name; }
         [[nodiscard]] ThreadArgumentPtr getArgument() const { return this->argument; }
         void setArgument(ThreadArgumentPtr myArgument) { this->argument = myArgument; }
 
     private:
         std::string name;
-        pid_t id = -1;
         std::thread th;
+        tid_t id = 0;
         std::function<void()> function;
         ThreadArgumentPtr argument = nullptr;
 
     public:
-        static pid_t getCurrentThreadId() noexcept;
-        static const std::string &getCurrentThreadName() noexcept;
+        static tid_t getCurrentThreadId() noexcept;
+        static const char *getCurrentThreadName() noexcept;
         /**
          * 获取当前线程实例
          * @return 当前线程实例，当前线程为主线程时返回 nullptr

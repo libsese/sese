@@ -17,9 +17,11 @@
 /// 可导出类型标识符
 #define API
 /// pid_t 格式化占位符
-#define PRIdPid "d"
+#define PRIdTid "d"
 /// 忽略大小写比较
 #define strcmpi strcasecmp
 
+///
+using tid_t = uint32_t;
 /// Native Socket 类型
 using socket_t = int32_t;

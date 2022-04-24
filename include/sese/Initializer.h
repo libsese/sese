@@ -1,3 +1,10 @@
+/**
+ * @file Initializer.h
+ * @author kaoru
+ * @date 2022年4月24日
+ * @brief 初始化器
+ */
+
 #pragma once
 #include "sese/Config.h"
 #include <stack>

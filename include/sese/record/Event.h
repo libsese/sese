@@ -35,7 +35,7 @@ namespace sese {
         typedef std::shared_ptr<Event> Ptr;
 
     public:
-        Event(const DateTime::Ptr &dateTime, Level lv, const char *threadName, pid_t id, const char *file, int32_t line,
+        Event(const DateTime::Ptr &dateTime, Level lv, const char *threadName, tid_t id, const char *file, int32_t line,
               const char *msg, const char *filter = RECORD_DEFAULT_FILTER) noexcept {
             this->dateTime = dateTime;
             this->level = lv;
@@ -49,7 +49,7 @@ namespace sese {
 
         [[nodiscard]] DateTime::Ptr getTime() const noexcept { return this->dateTime; }
         [[nodiscard]] Level getLevel() const noexcept { return this->level; }
-        [[nodiscard]] pid_t getThreadId() const noexcept { return this->threadId; }
+        [[nodiscard]] tid_t getThreadId() const noexcept { return this->threadId; }
         [[nodiscard]] int32_t getLine() const noexcept { return this->line; }
         [[nodiscard]] const char *getFileName() const noexcept { return this->file; }
         [[nodiscard]] const char *getMessage() const noexcept { return this->message; }
@@ -63,7 +63,7 @@ namespace sese {
         DateTime::Ptr dateTime;
         Level level;
         const char *threadName = nullptr;
-        pid_t threadId;
+        tid_t threadId;
         const char *file = nullptr;
         int32_t line;
         const char *message = nullptr;

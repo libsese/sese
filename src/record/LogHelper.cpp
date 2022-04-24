@@ -12,7 +12,7 @@ LogHelper::LogHelper(const char *filter) {
 void LogHelper::log(Level level, const char *file, int32_t line, const char *format, va_list ap) {
     char buf[RECORD_OUTPUT_BUFFER]{0};
     vsprintf(buf, format, ap);
-    sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName().c_str(), sese::Thread::getCurrentThreadId(), file, line, buf, filter);
+    sese::Event::Ptr event = std::make_shared<sese::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf, filter);
     logger->log(event);
 }
 

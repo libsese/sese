@@ -5,18 +5,18 @@ using sese::Initializer;
 using sese::InitiateTask;
 using sese::LogHelper;
 
+LogHelper helper("fINIT"); // NOLINT
+
 class Task1 : public InitiateTask {
 public:
     Task1() : InitiateTask(__FUNCTION__) {}
 
     int32_t init() noexcept override {
-        LogHelper helper("fINIT");
         helper.debug("loading %s", this->getName().c_str());
         return 0;
     }
 
     int32_t destroy() noexcept override {
-        LogHelper helper("fINIT");
         helper.debug("unloading %s", this->getName().c_str());
         return 0;
     }
@@ -27,13 +27,11 @@ public:
     Task2() : InitiateTask(__FUNCTION__) {}
 
     int32_t init() noexcept override {
-        LogHelper helper("fINIT");
         helper.debug("loading %s", this->getName().c_str());
         return 0;
     }
 
     int32_t destroy() noexcept override {
-        LogHelper helper("fINIT");
         helper.debug("unloading %s", this->getName().c_str());
         return 0;
     }
