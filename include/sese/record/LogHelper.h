@@ -14,6 +14,8 @@ namespace sese {
      */
     class API LogHelper {
     public:
+        using Ptr = std::shared_ptr<LogHelper>;
+
         /**
          * 初始化日志工具
          * @param filter 指定过滤器名称

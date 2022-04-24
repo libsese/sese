@@ -17,17 +17,24 @@ namespace sese {
         }
     }
 
+    static Logger *logger = nullptr;
+
     Logger *getLogger() noexcept {
-        return sese::Singleton<Logger>::getInstance();
+        return logger;
     }
 
     int32_t LoggerInitiateTask::init() noexcept {
         // 初始化 Logger
         setlocale(LC_ALL, "");
-        auto logger = sese::Singleton<Logger>::getInstance();
+        logger = new Logger();
         auto formatter = std::make_shared<SimpleFormatter>();
         auto appender = std::make_shared<ConsoleAppender>(formatter);
         logger->addAppender(appender);
+        return 0;
+    }
+
+    int32_t LoggerInitiateTask::destroy() noexcept {
+        delete logger;
         return 0;
     }
 }// namespace sese

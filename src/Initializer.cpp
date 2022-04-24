@@ -2,14 +2,17 @@
 #include "sese/Test.h"
 #include "sese/record/Logger.h"
 #include "sese/system/CpuInfo.h"
+#include "sese/Initializer.h"
+#include "sese/convert/EncodingConverter.h"
 
-using sese::CpuInfoInitiateTask;
 using sese::Initializer;
 using sese::InitiateTask;
+using sese::EncodingConverterInitiateTask;
 using sese::LoggerInitiateTask;
 using sese::TestInitiateTask;
+using sese::CpuInfoInitiateTask;
 
-static Initializer Initializer;// NOLINT
+static Initializer initializer; // NOLINT
 
 InitiateTask::InitiateTask(std::string name) : name(std::move(name)) {
 }
@@ -19,6 +22,7 @@ const std::string &sese::InitiateTask::getName() const {
 }
 
 Initializer::Initializer() {
+    loadTask(std::make_shared<EncodingConverterInitiateTask>());
     loadTask(std::make_shared<LoggerInitiateTask>());
     loadTask(std::make_shared<TestInitiateTask>());
     loadTask(std::make_shared<CpuInfoInitiateTask>());
@@ -51,4 +55,8 @@ void Initializer::unloadTask(InitiateTask::Ptr &task) noexcept {
         printf("Unload failed: %32s Exit code %d", task->getName().c_str(), rt);
     }
     tasks.pop();
+}
+
+void Initializer::addTask(InitiateTask::Ptr &&task) noexcept {
+    initializer.loadTask(std::forward<InitiateTask::Ptr>(task));
 }

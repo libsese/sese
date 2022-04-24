@@ -123,3 +123,8 @@ add_test(NAME TestMD5Util COMMAND TestMD5Util)
 add_executable(TestDebug test/TestDebug/main.cpp)
 target_link_libraries(TestDebug SeseSharedLibrary)
 add_test(NAME TestDebug COMMAND TestDebug)
+
+# Initializer
+add_executable(TestInitializer test/TestInitializer/main.cpp)
+target_link_libraries(TestInitializer SeseSharedLibrary)
+add_test(NAME TestInitializer COMMAND TestInitializer)

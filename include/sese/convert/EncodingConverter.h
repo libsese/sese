@@ -7,6 +7,7 @@
 #pragma once
 #include "sese/Config.h"
 #include "sese/NotInstantiable.h"
+#include "sese/Initializer.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
@@ -22,5 +23,13 @@ namespace sese {
     public:
         static std::string toString(const std::wstring &wstring) noexcept;
         static std::wstring toWstring(const std::string &string) noexcept;
+    };
+
+    class EncodingConverterInitiateTask : public InitiateTask {
+    public:
+        EncodingConverterInitiateTask() : InitiateTask(__FUNCTION__) {}
+
+        int32_t init() noexcept override;
+        int32_t destroy() noexcept override;
     };
 }

@@ -22,6 +22,7 @@ namespace sese {
         LoggerInitiateTask() : InitiateTask(__FUNCTION__) {}
 
         int32_t init() noexcept override;
+        int32_t destroy() noexcept override;
     };
 
     /**

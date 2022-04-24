@@ -28,6 +28,8 @@ namespace sese {
         Initializer();
         ~Initializer();
 
+        static void addTask(InitiateTask::Ptr &&task) noexcept;
+
     private:
         void loadTask(InitiateTask::Ptr &&task) noexcept;
         void unloadTask(InitiateTask::Ptr &task) noexcept;
