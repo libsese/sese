@@ -9,4 +9,5 @@
   - [套接字选项 - Socket::Option](Socket.md)
   - [日志客制化格式输出 - SimpleFormatter](SimpleFormatter.md)
   - [时间格式化输出 - DateTimeFormatter](DateTimeFormatter.md)
+  - [保序初始化 - Initializer](Initializer.md)
 
