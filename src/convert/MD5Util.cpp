@@ -10,7 +10,9 @@ bool MD5Util::encode(const sese::Stream::Ptr &input, const sese::Stream::Ptr &ou
     uint32_t result[4]{A, B, C, D};
     unsigned char buffer[64];
     uint64_t length = 0;
-    while (true) {
+
+    bool isBreak = false;
+    while (!isBreak) {
         int64_t len = input->read(buffer, 64);
         if (len == 64) {
             length += len;
@@ -20,12 +22,18 @@ bool MD5Util::encode(const sese::Stream::Ptr &input, const sese::Stream::Ptr &ou
             length *= 8;/// 单位为 位
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
+            isBreak = true;
         } else if (len > 56) {
             length += len;
             memset(&buffer[len], 0, 64 - len);
             input->write(PADDING, 56);
         } else if (len == 0) {
-            break;
+            memcpy(&buffer[len], PADDING, 64 - len - 8);
+            length *= 8;/// 单位为 位
+            length = ToLittleEndian64(length);
+            memcpy(&buffer[56], &length, 8);
+            /// 执行完本次后不再执行
+            isBreak = true;
         } else {
             return false;
         }
