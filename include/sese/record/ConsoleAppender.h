@@ -6,6 +6,7 @@
  */
 #pragma once
 #include "sese/record/AbstractAppender.h"
+#include <mutex>
 
 namespace sese {
     /**
@@ -18,5 +19,14 @@ namespace sese {
         void dump(const Event::Ptr &event) noexcept override;
 
     private:
+        /// 互斥量
+        std::mutex mutex;
+
+    private:
+        static void setDebugColor() noexcept;
+        static void setInfoColor() noexcept;
+        static void setWarnColor() noexcept;
+        static void setErrorColor() noexcept;
+        static void setCleanColor() noexcept;
     };
 }// namespace sese

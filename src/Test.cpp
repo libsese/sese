@@ -19,7 +19,7 @@ int32_t TestInitiateTask::destroy() noexcept {
         printf("Number of all assert: %zu\n", i = times);
         printf("Number of success assert: %zu\n", i = success);
         printf("Number of fail assert: %zu\n", times - success);
-        printf("Success rate of all assert: %.3f%%", ((double) success / (double) times) * 100);
+        printf("Success rate of all assert: %.3f%%\n", ((double) success / (double) times) * 100);
     }
     return 0;
 }
