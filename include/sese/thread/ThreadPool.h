@@ -7,7 +7,6 @@
 #pragma once
 #include "sese/Config.h"
 #include "sese/Noncopyable.h"
-#include "sese/thread/Task.h"
 #include "sese/thread/Thread.h"
 #include <atomic>
 #include <condition_variable>
@@ -38,12 +37,12 @@ namespace sese {
          * 向线程池添加单个任务
          * @param task 欲执行的任务
          */
-        void postTask(const Task::Ptr &task);
+        void postTask(const std::function<void ()> &task);
         /**
          * 向线程池批量添加任务
          * @param tasks 欲执行的任务集合
          */
-        void postTask(const std::vector<Task::Ptr> &tasks);
+        void postTask(const std::vector<std::function<void ()>> &tasks);
         /**
          * @brief 关闭当前线程池并阻塞至子线程退出
          */
@@ -62,7 +61,7 @@ namespace sese {
         struct RuntimeData {
             std::mutex mutex;
             std::condition_variable conditionVariable;
-            std::queue<Task::Ptr> tasks;
+            std::queue<std::function<void ()>> tasks;
             std::atomic<bool> isShutdown{false};
         };
         std::shared_ptr<RuntimeData> data;
