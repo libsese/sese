@@ -53,6 +53,11 @@ int32_t sese::Socket::shutdown(ShutdownMode mode) const {
     return ::shutdown(handle, (int32_t) mode);
 }
 
+bool sese::Socket::setNonblocking(bool enable) const noexcept {
+    unsigned long ul = enable ? 1 : 0;
+    return ioctlsocket(handle, FIONBIO, &ul) == 0;
+}
+
 int64_t sese::Socket::read(void *buffer, size_t length) {
     return ::recv(handle, (char *) buffer, (int32_t) length, 0);
 }

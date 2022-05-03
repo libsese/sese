@@ -134,7 +134,6 @@ set_target_properties(
 
 include(Test.cmake)
 
-# 安装脚本排除 Android
 include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(

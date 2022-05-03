@@ -1,5 +1,6 @@
 #include "sese/net/Socket.h"
 #include <unistd.h>
+#include <fcntl.h>
 
 sese::Socket::Socket(Family family, Type type, int32_t protocol) noexcept {
     handle = ::socket((int32_t) family, (int32_t) type, protocol);
@@ -43,6 +44,12 @@ sese::Socket::Ptr sese::Socket::accept() const {
 
 int32_t sese::Socket::shutdown(ShutdownMode mode) const {
     return ::shutdown(handle, (int32_t) mode);
+}
+
+bool sese::Socket::setNonblocking(bool enable) const noexcept {
+    int32_t opt = fcntl(handle, F_GETFL);
+    if(opt == -1) return false;
+    return fcntl(handle, F_SETFL, opt | O_NONBLOCK) == 0;
 }
 
 int64_t sese::Socket::read(void *buffer, size_t length) {

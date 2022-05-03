@@ -92,19 +92,10 @@ namespace sese {
         [[nodiscard]] size_t getAheadLength() const { return bufferStream->getLength() - bufferStream->getCurrentReadPos(); }
 
         /**
-         * @return 返回超前数据缓存，配合 freeAheadBuffer 使用
+         * 用于缓存超前部分数据
+         * @return 缓存
          */
-        [[nodiscard]] void *getAheadBuffer() const {
-            auto aheadLength = this->getAheadLength();
-            void *buffer = malloc(aheadLength);
-            bufferStream->read(buffer, aheadLength);
-            return buffer;
-        }
-
-        /**
-         * @param buffer 释放缓存
-         */
-        static void freeAheadBuffer(void *buffer) { free(buffer); }
+        const ByteBuilder::Ptr &getBuffer() noexcept { return this->bufferStream; }
 
     private:
         int64_t preRead() {

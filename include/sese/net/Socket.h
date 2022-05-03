@@ -70,15 +70,15 @@ namespace sese {
 
     public:
         Socket(Family family, Type type, int32_t protocol = IPPROTO_IP) noexcept;
+        Socket(socket_t handle, Address::Ptr address) noexcept;
         ~Socket() noexcept;
-
     public:
         int32_t bind(Address::Ptr addr) noexcept;
         int32_t connect(Address::Ptr addr) noexcept;
         int32_t listen(int32_t backlog) const noexcept; /* NOLINT */
         [[nodiscard]] Socket::Ptr accept() const;
         int32_t shutdown(ShutdownMode mode) const; /* NOLINT */
-
+        bool setNonblocking(bool enable) const noexcept;
         /**
          * TCP 接收字节
          * @param buffer 缓存
@@ -93,7 +93,6 @@ namespace sese {
          * @return 实际发送字节数
          */
         int64_t write(const void *buffer, size_t length) override;
-
         /**
          * UDP 发送字节
          * @param buffer 缓存
@@ -112,12 +111,10 @@ namespace sese {
          * @return 实际接收字节数
          */
         int64_t recv(void *buffer, size_t length, const IPAddress::Ptr &from, int32_t flags) const;
-
     public:
 #define W(func)          \
     value = func(value); \
     return write(&value, sizeof(value));
-
         int64_t writeInt16(int16_t value) { W(ToBigEndian16) }
         int64_t writeInt32(int32_t value) { W(ToBigEndian32) }
         int64_t writeInt64(int64_t value) { W(ToBigEndian64) }
@@ -129,7 +126,6 @@ namespace sese {
     auto len = read(&value, sizeof(value)); \
     value = func(value);                    \
     return len;
-
         int64_t readInt16(int16_t &value) { R(FromBigEndian16) }
         int64_t readInt32(int32_t &value) { R(FromBigEndian32) }
         int64_t readInt64(int64_t &value) { R(FromBigEndian64) }
@@ -139,15 +135,10 @@ namespace sese {
 #undef R
 
         void close() override;
-
         [[nodiscard]] const socket_t &getRawSocket() const { return handle; }
         [[nodiscard]] const Address::Ptr &getAddress() const { return address; }
-
         int32_t setOption(Option option, int32_t &value) const;
         int32_t getOption(Option option, int32_t &value) const;
-
-    protected:
-        Socket(socket_t handle, Address::Ptr address) noexcept;
 
     private:
         socket_t handle{};
