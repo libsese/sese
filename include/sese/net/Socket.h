@@ -62,7 +62,7 @@ namespace sese {
             RECV_TIMEOUT = SO_RCVTIMEO,
             SEND_BUFFER_SIZE = SO_SNDBUF,
             RECV_BUFFER_SIZE = SO_RCVBUF,
-            KEEPALIVE = SO_KEEPALIVE,
+            KEEP_ALIVE = SO_KEEPALIVE,
             OOB_INLINE = SO_OOBINLINE,
             BROADCAST = SO_BROADCAST,
             DEBUG = SO_DEBUG
@@ -78,7 +78,7 @@ namespace sese {
         int32_t listen(int32_t backlog) const noexcept; /* NOLINT */
         [[nodiscard]] Socket::Ptr accept() const;
         int32_t shutdown(ShutdownMode mode) const; /* NOLINT */
-        bool setNonblocking(bool enable) const noexcept;
+        bool setNonblocking(bool enable) const noexcept; /* NOLINT */
         /**
          * TCP 接收字节
          * @param buffer 缓存

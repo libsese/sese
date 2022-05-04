@@ -128,3 +128,8 @@ add_test(NAME TestDebug COMMAND TestDebug)
 add_executable(TestInitializer test/TestInitializer/main.cpp)
 target_link_libraries(TestInitializer SeseSharedLibrary)
 add_test(NAME TestInitializer COMMAND TestInitializer)
+
+# TcpServer
+add_executable(TestTcpServer test/TestTcpServer/main.cpp)
+target_link_libraries(TestTcpServer SeseSharedLibrary)
+add_test(NAME TestTcpServer COMMAND TestTcpServer)
