@@ -11,8 +11,6 @@ using sese::Thread;
 IOContext::IOContext() noexcept {
     event = WSACreateEvent();
     overlapped.hEvent = event;
-    wsaBuf.buf = buffer;
-    wsaBuf.len = SERVER_MAX_BUFFER_SIZE;
     operationType = OperationType::Null;
 }
 
@@ -20,13 +18,16 @@ IOContext::~IOContext() noexcept {
     WSACloseEvent(event);
 }
 
-int64_t IOContext::send() noexcept {
-    DWORD nBytes = SERVER_MAX_BUFFER_SIZE;
+int64_t IOContext::send(const void *buffer, size_t size) noexcept {
+    DWORD nBytes = size;
     DWORD dwFlags = 0;
     // 实际传输字节数
     DWORD cbTransfer;
+
+    wsaBuf.buf = (char *) buffer;
+    wsaBuf.len = size;
     operationType = OperationType::Send;
-    int32_t nRet = WSASend(socket,
+    int32_t nRet = WSASend(socket->getRawSocket(),
                            &wsaBuf,
                            1,
                            &nBytes,
@@ -39,19 +40,21 @@ int64_t IOContext::send() noexcept {
     }
 
     WSAWaitForMultipleEvents(1, &event, FALSE, WSA_INFINITE, FALSE);
-    WSAGetOverlappedResult(socket, &overlapped, &cbTransfer, FALSE, &dwFlags);
+    WSAGetOverlappedResult(socket->getRawSocket(), &overlapped, &cbTransfer, FALSE, &dwFlags);
     WSAResetEvent(event);
     return cbTransfer;
 }
 
-int64_t IOContext::recv() noexcept {
-    DWORD nBytes = SERVER_MAX_BUFFER_SIZE;
+int64_t IOContext::recv(void *buffer, size_t size) noexcept {
+    DWORD nBytes = size;
     DWORD dwFlags = 0;
     // 实际传输字节数
     DWORD cbTransfer;
 
+    wsaBuf.buf = (char *) buffer;
+    wsaBuf.len = size;
     operationType = OperationType::Recv;
-    int32_t nRet = WSARecv(socket,
+    int32_t nRet = WSARecv(socket->getRawSocket(),
                            &wsaBuf,
                            1,
                            &nBytes,
@@ -64,13 +67,18 @@ int64_t IOContext::recv() noexcept {
     }
 
     WSAWaitForMultipleEvents(1, &event, FALSE, WSA_INFINITE, FALSE);
-    WSAGetOverlappedResult(socket, &overlapped, &cbTransfer, FALSE, &dwFlags);
+    WSAGetOverlappedResult(socket->getRawSocket(), &overlapped, &cbTransfer, FALSE, &dwFlags);
     WSAResetEvent(event);
     return cbTransfer;
 }
 
-void IOContext::close() noexcept {
-    closesocket(socket);
+void IOContext::close() const noexcept {
+//    closesocket(socket);
+    socket->close();
+}
+
+const IPAddress::Ptr &IOContext::getClientAddress() const noexcept {
+    return reinterpret_cast<const IPAddress::Ptr &>(socket->getAddress());
 }
 
 bool TcpServer::init(const IPAddress::Ptr &ipAddress) noexcept {
@@ -112,32 +120,34 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress) noexcept {
 
 void TcpServer::workerProc4WindowsIOCP() {
     IOContext *ioContext = nullptr;
-    DWORD nBytes = SERVER_MAX_BUFFER_SIZE;
-    DWORD dwFlags = 0;
     DWORD dwContextBufferSize = 0;
-    void *lpCompletionKey = nullptr;
+    void *lpCompletionKey;
     while (!isShutdown) {
-        BOOL nRet = GetQueuedCompletionStatus(
+        BOOL rt = GetQueuedCompletionStatus(
                 iocpHandle,
                 &dwContextBufferSize,
                 (PULONG_PTR) &lpCompletionKey,
                 (LPOVERLAPPED *) &ioContext,
                 INFINITE);
 
-        if (dwContextBufferSize == 0) {
+        if (dwContextBufferSize == -1) {
             break;
         }
 
-        if (!nRet) {
-            closesocket(ioContext->socket);
+        if (!rt) {
+//            closesocket(ioContext->socket);
+            ioContext->socket->close();
             delete ioContext;
             continue;
         }
 
+        int32_t nRet;
+        DWORD nBytes = ioContext->wsaBuf.len;
+        DWORD dwFlags = 0;
         switch (ioContext->operationType) {
             case OperationType::Send:
                 nRet = WSASend(
-                        ioContext->socket,
+                        ioContext->socket->getRawSocket(),
                         &(ioContext->wsaBuf),
                         1,
                         &nBytes,
@@ -145,14 +155,15 @@ void TcpServer::workerProc4WindowsIOCP() {
                         &(ioContext->overlapped),
                         nullptr);
                 if (nRet == SOCKET_ERROR && ERROR_IO_PENDING != WSAGetLastError()) {
-                    closesocket(ioContext->socket);
+//                    closesocket(ioContext->socket);
+                    ioContext->socket->close();
                     delete ioContext;
                     continue;
                 }
                 break;
             case OperationType::Recv:
                 nRet = WSARecv(
-                        ioContext->socket,
+                        ioContext->socket->getRawSocket(),
                         &ioContext->wsaBuf,
                         1,
                         &nBytes,
@@ -160,13 +171,15 @@ void TcpServer::workerProc4WindowsIOCP() {
                         &(ioContext->overlapped),
                         nullptr);
                 if (nRet == SOCKET_ERROR && ERROR_IO_PENDING != WSAGetLastError()) {
-                    closesocket(ioContext->socket);
+//                    closesocket(ioContext->socket);
+                    ioContext->socket->close();
                     delete ioContext;
                     continue;
                 }
                 break;
             case OperationType::Null:
-                closesocket(ioContext->socket);
+//                closesocket(ioContext->socket);
+                ioContext->socket->close();
                 delete ioContext;
                 break;
         }
@@ -176,7 +189,7 @@ void TcpServer::workerProc4WindowsIOCP() {
 void TcpServer::shutdown() {
     isShutdown = true;
     for (int32_t i = 0; i < threadGroup.size(); i++) {
-        PostQueuedCompletionStatus(iocpHandle, 0, (DWORD) 0, nullptr);
+        PostQueuedCompletionStatus(iocpHandle, 0, (DWORD) -1, nullptr);
     }
     for (const auto &th: threadGroup) {
         th->join();
@@ -203,7 +216,7 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
         }
 
         auto data = new IOContext;
-        data->socket = client->getRawSocket();
+        data->socket = client;
         handler(data);
         delete data;
     }

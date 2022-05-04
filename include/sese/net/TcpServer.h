@@ -19,16 +19,15 @@ public:
 
     IOContext() noexcept;
     ~IOContext() noexcept;
-    int64_t recv() noexcept;
-    int64_t send() noexcept;
-    void close() noexcept;
+    int64_t recv(void *buffer, size_t size) noexcept;
+    int64_t send(const void *buffer, size_t size) noexcept;
+    void close() const noexcept;
+    [[nodiscard]] const IPAddress::Ptr &getClientAddress() const noexcept;
 
-public:
-    char buffer[SERVER_MAX_BUFFER_SIZE]{};
-    WSABUF wsaBuf{};
 private:
+    WSABUF wsaBuf{};
     OVERLAPPED overlapped{};
-    SOCKET socket{};
+    Socket::Ptr socket{};
     OperationType operationType{};
     WSAEVENT event{};
 };
@@ -42,9 +41,9 @@ public:
 private:
     void workerProc4WindowsIOCP();
     std::vector<Thread::Ptr> threadGroup;
+    HANDLE iocpHandle = INVALID_HANDLE_VALUE;
 
 protected:
-    HANDLE iocpHandle = INVALID_HANDLE_VALUE;
-    Socket::Ptr socket = nullptr;
+    Socket::Ptr socket{};
     std::atomic_bool isShutdown{false};
 };
