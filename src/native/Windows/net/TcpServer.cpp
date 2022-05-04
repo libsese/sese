@@ -8,10 +8,23 @@ using sese::Socket;
 using sese::TcpServer;
 using sese::Thread;
 
+IOContext::IOContext() noexcept {
+    event = WSACreateEvent();
+    overlapped.hEvent = event;
+    wsaBuf.buf = buffer;
+    wsaBuf.len = SERVER_MAX_BUFFER_SIZE;
+    operationType = OperationType::Null;
+}
+
+IOContext::~IOContext() noexcept {
+    WSACloseEvent(event);
+}
+
 int64_t IOContext::send() noexcept {
     DWORD nBytes = SERVER_MAX_BUFFER_SIZE;
     DWORD dwFlags = 0;
-
+    // 实际传输字节数
+    DWORD cbTransfer;
     operationType = OperationType::Send;
     int32_t nRet = WSASend(socket,
                            &wsaBuf,
@@ -25,12 +38,17 @@ int64_t IOContext::send() noexcept {
         return -1;
     }
 
-    return totalBytes;
+    WSAWaitForMultipleEvents(1, &event, FALSE, WSA_INFINITE, FALSE);
+    WSAGetOverlappedResult(socket, &overlapped, &cbTransfer, FALSE, &dwFlags);
+    WSAResetEvent(event);
+    return cbTransfer;
 }
 
 int64_t IOContext::recv() noexcept {
     DWORD nBytes = SERVER_MAX_BUFFER_SIZE;
     DWORD dwFlags = 0;
+    // 实际传输字节数
+    DWORD cbTransfer;
 
     operationType = OperationType::Recv;
     int32_t nRet = WSARecv(socket,
@@ -45,7 +63,10 @@ int64_t IOContext::recv() noexcept {
         return -1;
     }
 
-    return totalBytes;
+    WSAWaitForMultipleEvents(1, &event, FALSE, WSA_INFINITE, FALSE);
+    WSAGetOverlappedResult(socket, &overlapped, &cbTransfer, FALSE, &dwFlags);
+    WSAResetEvent(event);
+    return cbTransfer;
 }
 
 void IOContext::close() noexcept {
@@ -128,7 +149,6 @@ void TcpServer::workerProc4WindowsIOCP() {
                     delete ioContext;
                     continue;
                 }
-                ioContext->dealBytes = dwContextBufferSize;
                 break;
             case OperationType::Recv:
                 nRet = WSARecv(
@@ -144,8 +164,6 @@ void TcpServer::workerProc4WindowsIOCP() {
                     delete ioContext;
                     continue;
                 }
-                ioContext->totalBytes = dwContextBufferSize;
-                ioContext->dealBytes = dwContextBufferSize;
                 break;
             case OperationType::Null:
                 closesocket(ioContext->socket);

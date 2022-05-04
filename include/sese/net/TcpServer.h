@@ -17,19 +17,20 @@ class sese::IOContext {
 public:
     friend class sese::TcpServer;
 
+    IOContext() noexcept;
+    ~IOContext() noexcept;
     int64_t recv() noexcept;
     int64_t send() noexcept;
     void close() noexcept;
 
 public:
     char buffer[SERVER_MAX_BUFFER_SIZE]{};
+    WSABUF wsaBuf{};
 private:
     OVERLAPPED overlapped{};
-    SOCKET socket = INVALID_SOCKET;
-    WSABUF wsaBuf{SERVER_MAX_BUFFER_SIZE, buffer};
-    DWORD totalBytes = 0;
-    DWORD dealBytes = 0;
-    OperationType operationType = OperationType::Null;
+    SOCKET socket{};
+    OperationType operationType{};
+    WSAEVENT event{};
 };
 
 class sese::TcpServer {
