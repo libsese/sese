@@ -1,6 +1,8 @@
 #include <sese/net/TcpServer.h>
 #include <sese/system/CpuInfo.h>
 
+#pragma warning(disable : 4267)
+
 using sese::CpuInfo;
 using sese::IOContext;
 using sese::IPAddress;
@@ -45,6 +47,10 @@ int64_t IOContext::send(const void *buffer, size_t size) noexcept {
     return cbTransfer;
 }
 
+int32_t IOContext::shutdown(Socket::ShutdownMode mode) const noexcept {
+    return socket->shutdown(mode);
+}
+
 int64_t IOContext::recv(void *buffer, size_t size) noexcept {
     DWORD nBytes = size;
     DWORD dwFlags = 0;
@@ -73,7 +79,6 @@ int64_t IOContext::recv(void *buffer, size_t size) noexcept {
 }
 
 void IOContext::close() const noexcept {
-//    closesocket(socket);
     socket->close();
 }
 
@@ -81,7 +86,7 @@ const IPAddress::Ptr &IOContext::getClientAddress() const noexcept {
     return reinterpret_cast<const IPAddress::Ptr &>(socket->getAddress());
 }
 
-bool TcpServer::init(const IPAddress::Ptr &ipAddress) noexcept {
+bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
     // IOCP 要求使用 WSASocket 创建 Socket 文件描述符
     auto family = ipAddress->getRawAddress()->sa_family;
     SOCKET serverSocket = WSASocketW(family, SOCK_STREAM, 0, nullptr, 0, WSA_FLAG_OVERLAPPED);
@@ -90,6 +95,10 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress) noexcept {
     }
 
     socket = std::make_shared<Socket>(serverSocket, ipAddress);
+    if (!socket->setNonblocking(true)) {
+        return false;
+    }
+
     if (SOCKET_ERROR == socket->bind(ipAddress)) {
         socket->close();
         return false;
@@ -101,20 +110,26 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress) noexcept {
     }
 
     // 创建 IOCP
-    DWORD numberOfThreads = CpuInfo::getLogicProcessors();
-    iocpHandle = CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, numberOfThreads);
+    size_t cores = CpuInfo::getLogicProcessors();
+    if (threads == 0) threads = 1;
+    // 如果选用线程小于等于逻辑核心数，则按一比一分配
+    if (threads <= cores) {
+        cores = threads;
+    }
+    this->threads = cores;
+    iocpHandle = CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, cores);
     if (INVALID_HANDLE_VALUE == iocpHandle) {
         socket->close();
         return false;
     }
 
-    for (int32_t i = 0; i < numberOfThreads; i++) {
-        threadGroup.emplace_back(
-                std::make_shared<Thread>(
-                        [this] { workerProc4WindowsIOCP(); },
-                        "WindowsIOCPWorkerThread" + std::to_string(i)));
+    for (int32_t i = 0; i < cores; i++) {
+        // 这里的线程由 IOCP 负责退出
+        Thread th([this] { workerProc4WindowsIOCP(); },
+                  "WindowsIOCPWorkerThread" + std::to_string(i));
     }
-
+    threadPool = std::make_shared<ThreadPool>("TcpServer", threads);
+    isShutdown = false;
     return true;
 }
 
@@ -122,7 +137,7 @@ void TcpServer::workerProc4WindowsIOCP() {
     IOContext *ioContext = nullptr;
     DWORD dwContextBufferSize = 0;
     void *lpCompletionKey;
-    while (!isShutdown) {
+    while (true) {
         BOOL rt = GetQueuedCompletionStatus(
                 iocpHandle,
                 &dwContextBufferSize,
@@ -135,7 +150,6 @@ void TcpServer::workerProc4WindowsIOCP() {
         }
 
         if (!rt) {
-//            closesocket(ioContext->socket);
             ioContext->socket->close();
             delete ioContext;
             continue;
@@ -155,7 +169,6 @@ void TcpServer::workerProc4WindowsIOCP() {
                         &(ioContext->overlapped),
                         nullptr);
                 if (nRet == SOCKET_ERROR && ERROR_IO_PENDING != WSAGetLastError()) {
-//                    closesocket(ioContext->socket);
                     ioContext->socket->close();
                     delete ioContext;
                     continue;
@@ -171,14 +184,12 @@ void TcpServer::workerProc4WindowsIOCP() {
                         &(ioContext->overlapped),
                         nullptr);
                 if (nRet == SOCKET_ERROR && ERROR_IO_PENDING != WSAGetLastError()) {
-//                    closesocket(ioContext->socket);
                     ioContext->socket->close();
                     delete ioContext;
                     continue;
                 }
                 break;
             case OperationType::Null:
-//                closesocket(ioContext->socket);
                 ioContext->socket->close();
                 delete ioContext;
                 break;
@@ -187,13 +198,17 @@ void TcpServer::workerProc4WindowsIOCP() {
 }
 
 void TcpServer::shutdown() {
+    // 停止 loopWith
     isShutdown = true;
-    for (int32_t i = 0; i < threadGroup.size(); i++) {
+
+    // 停止 WindowsIOCPWorkerThread
+    for (int32_t i = 0; i < threads; i++) {
         PostQueuedCompletionStatus(iocpHandle, 0, (DWORD) -1, nullptr);
     }
-    for (const auto &th: threadGroup) {
-        th->join();
-    }
+
+    // 停止线程池
+    threadPool->shutdown();
+
     CloseHandle(iocpHandle);
     socket->close();
 }
@@ -215,9 +230,11 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
             continue;
         }
 
-        auto data = new IOContext;
-        data->socket = client;
-        handler(data);
-        delete data;
+        auto ioContext = new IOContext;
+        ioContext->socket = client;
+        threadPool->postTask([handler, ioContext]() {
+            handler(ioContext);
+            delete ioContext;
+        });
     }
 }
