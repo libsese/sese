@@ -1,3 +1,4 @@
+#include <fcntl.h>
 #include <sese/net/TcpServer.h>
 
 using sese::IOContext;
@@ -123,8 +124,6 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
 }
 
 void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
-    Socket::Ptr client;
-
     while (!isShutdown) {
         int32_t nfds = epoll_wait(epollFd, events, 64, 1000);
         if (-1 == nfds) {
@@ -133,24 +132,36 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
 
         for (int32_t n = 0; n < nfds; n++) {
             if (events[n].data.fd == socket->getRawSocket()) {
-                client = socket->accept();
-                if (client == nullptr) {
+                socket_t client = accept(socket->getRawSocket(), nullptr, nullptr);
+                if (client == -1) {
                     continue;
                 }
 
-                if (!client->setNonblocking(true)) {
-                    socket->close();
+                int32_t opt = fcntl(client, F_GETFL);
+                if (opt == -1) {
+                    close(client);
+                    continue;
+                }
+                if (fcntl(client, F_SETFL, opt | O_NONBLOCK) != 0) {
+                    close(client);
                     continue;
                 }
 
                 epoll_event event{};
                 event.events = EPOLLIN | EPOLLET;
-                event.data.fd = client->getRawSocket();
-                if (epoll_ctl(epollFd, EPOLL_CTL_ADD, client->getRawSocket(), &event) == -1) {
-                    client->close();
+                event.data.fd = client;
+                if (epoll_ctl(epollFd, EPOLL_CTL_ADD, client, &event) == -1) {
+                    close(client);
                     continue;
                 }
             } else {
+                socket_t fd = events[n].data.fd;
+                sockaddr_storage sockaddrStorage{};
+                socklen_t socklen = sizeof(sockaddrStorage);
+                getpeername(fd, reinterpret_cast<struct sockaddr *>(&sockaddrStorage), &socklen);
+                Address::Ptr address = Address::create(reinterpret_cast<struct sockaddr *>(&sockaddrStorage), socklen);
+
+                Socket::Ptr client = std::make_shared<Socket>(fd, address);
                 auto *ioContext = new IOContext;
                 ioContext->socket = client;
                 threadPool->postTask([handler, ioContext]() {

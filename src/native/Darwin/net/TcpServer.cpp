@@ -1,6 +1,8 @@
-#include <ctime>
 #include <sese/net/TcpServer.h>
+#include <ctime>
 #include <unistd.h>
+#include <fcntl.h>
+#include <sese/record/LogHelper.h>
 
 using sese::IOContext;
 using sese::IPAddress;
@@ -122,8 +124,9 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
     return true;
 }
 
+sese::LogHelper helper("loop"); // NOLINT
+
 void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
-    Socket::Ptr client;
     struct timespec timeout {
         1, 0
     };
@@ -132,23 +135,35 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
         int32_t nev = kevent(kqueueFd, nullptr, 0, events, 64, &timeout);
         for (int32_t n = 0; n < nev; n++) {
             if (events[n].ident == socket->getRawSocket()) {
-                client = socket->accept();
-                if (client == nullptr) {
+                socket_t client = accept(socket->getRawSocket(), nullptr, nullptr);
+                if (client == -1) {
                     continue;
                 }
 
-                if (!client->setNonblocking(true)) {
-                    socket->close();
+                int32_t opt = fcntl(client, F_GETFL);
+                if (opt == -1) {
+                    close(client);
+                    continue;
+                }
+                if (fcntl(client, F_SETFL, opt | O_NONBLOCK) != 0) {
+                    close(client);
                     continue;
                 }
 
                 struct kevent event {};
-                EV_SET(&event, client->getRawSocket(), EVFILT_READ, EV_ADD, 0, 0, nullptr);
+                EV_SET(&event, client, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, nullptr);
                 if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
                     socket->close();
                     continue;
                 }
             } else {
+                auto fd = events[n].ident;
+                sockaddr_storage sockaddrStorage{};
+                socklen_t socklen = sizeof(sockaddrStorage);
+                getpeername(fd, reinterpret_cast<struct sockaddr *>(&sockaddrStorage), &socklen);
+                Address::Ptr address = Address::create(reinterpret_cast<struct sockaddr *>(&sockaddrStorage), socklen);
+
+                Socket::Ptr client = std::make_shared<Socket>(fd, address);
                 auto *ioContext = new IOContext;
                 ioContext->socket = client;
                 threadPool->postTask([handler, ioContext]() {
