@@ -6,6 +6,10 @@
 // Linux Native Only
 #include <sys/epoll.h>
 #endif
+#ifdef __APPLE__
+// Darwin Native Only
+#include <sys/event.h>
+#endif
 
 namespace sese {
     class API IOContext;
@@ -45,6 +49,12 @@ private:
 #endif
 #ifdef __linux__
     // Linux Native Only
+private:
+    Socket::Ptr socket{};
+#endif
+#ifdef __APPLE__
+    // Darwin Native Only
+private:
     Socket::Ptr socket{};
 #endif
 };
@@ -64,8 +74,15 @@ private:
 #endif
 #ifdef __linux__
     // Linux Native Only
+private:
     int32_t epollFd = -1;
     epoll_event events[64];
+#endif
+#ifdef __APPLE__
+    // Darwin Native Only
+private:
+    int32_t kqueueFd = -1;
+    struct kevent events[64];
 #endif
 
 protected:

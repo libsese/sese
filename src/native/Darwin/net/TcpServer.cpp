@@ -1,4 +1,6 @@
+#include <ctime>
 #include <sese/net/TcpServer.h>
+#include <unistd.h>
 
 using sese::IOContext;
 using sese::IPAddress;
@@ -102,17 +104,15 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
         return false;
     }
 
-    epollFd = epoll_create1(0);
-    if (-1 == epollFd) {
+    kqueueFd = kqueue();
+    if (kqueueFd == -1) {
         socket->close();
         return false;
     }
 
-    epoll_event event{};
-    event.data.fd = serverSocket;
-    event.events = EPOLLIN;
-
-    if (-1 == epoll_ctl(epollFd, EPOLL_CTL_ADD, serverSocket, &event)) {
+    struct kevent event {};
+    EV_SET(&event, serverSocket, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
+    if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
         socket->close();
         return false;
     }
@@ -124,15 +124,14 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
 
 void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
     Socket::Ptr client;
+    struct timespec timeout {
+        1, 0
+    };
 
     while (!isShutdown) {
-        int32_t nfds = epoll_wait(epollFd, events, 64, 1000);
-        if (-1 == nfds) {
-            continue;
-        }
-
-        for (int32_t n = 0; n < nfds; n++) {
-            if (events[n].data.fd == socket->getRawSocket()) {
+        int32_t nev = kevent(kqueueFd, nullptr, 0, events, 64, &timeout);
+        for (int32_t n = 0; n < nev; n++) {
+            if (events[n].ident == socket->getRawSocket()) {
                 client = socket->accept();
                 if (client == nullptr) {
                     continue;
@@ -143,11 +142,10 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
                     continue;
                 }
 
-                epoll_event event{};
-                event.events = EPOLLIN | EPOLLET;
-                event.data.fd = client->getRawSocket();
-                if (epoll_ctl(epollFd, EPOLL_CTL_ADD, client->getRawSocket(), &event) == -1) {
-                    client->close();
+                struct kevent event {};
+                EV_SET(&event, client->getRawSocket(), EVFILT_READ, EV_ADD, 0, 0, nullptr);
+                if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
+                    socket->close();
                     continue;
                 }
             } else {
@@ -165,6 +163,6 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
 void TcpServer::shutdown() {
     isShutdown = true;
     threadPool->shutdown();
-    close(epollFd);
+    close(kqueueFd);
     socket->close();
 }
