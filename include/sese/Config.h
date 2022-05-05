@@ -77,5 +77,5 @@ constexpr static const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024;
 /// 是否启用调试模式
 constexpr static const bool ENABLE_TEST = true;
 
-constexpr static const size_t SERVER_MAX_BUFFER_SIZE = 1024 * 4;
+constexpr static const size_t SERVER_DEFAULT_THREADS = 4;
 constexpr static const size_t SERVER_MAX_CONNECTION = 511;

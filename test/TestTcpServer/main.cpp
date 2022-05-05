@@ -1,6 +1,7 @@
 #include <sese/net/TcpServer.h>
 #include <sese/record/LogHelper.h>
 #include <sese/Test.h>
+#include <cstring>
 
 using sese::TcpServer;
 using sese::IOContext;
