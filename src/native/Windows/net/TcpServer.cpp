@@ -1,9 +1,7 @@
 #include <sese/net/TcpServer.h>
-#include <sese/system/CpuInfo.h>
 
 #pragma warning(disable : 4267)
 
-using sese::CpuInfo;
 using sese::IOContext;
 using sese::IPAddress;
 using sese::Socket;
@@ -110,7 +108,7 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
     }
 
     // 创建 IOCP
-    size_t cores = CpuInfo::getLogicProcessors();
+    size_t cores = std::thread::hardware_concurrency();
     if (threads == 0) threads = 1;
     // 如果选用线程小于等于逻辑核心数，则按一比一分配
     if (threads <= cores) {

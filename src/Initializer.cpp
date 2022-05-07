@@ -1,7 +1,6 @@
 #include "sese/net/Socket.h"
 #include "sese/Test.h"
 #include "sese/record/Logger.h"
-#include "sese/system/CpuInfo.h"
 #include "sese/Initializer.h"
 #include "sese/convert/EncodingConverter.h"
 
@@ -10,7 +9,6 @@ using sese::InitiateTask;
 using sese::EncodingConverterInitiateTask;
 using sese::LoggerInitiateTask;
 using sese::TestInitiateTask;
-using sese::CpuInfoInitiateTask;
 
 static Initializer initializer; // NOLINT
 
@@ -25,7 +23,6 @@ Initializer::Initializer() {
     loadTask(std::make_shared<EncodingConverterInitiateTask>());
     loadTask(std::make_shared<LoggerInitiateTask>());
     loadTask(std::make_shared<TestInitiateTask>());
-    loadTask(std::make_shared<CpuInfoInitiateTask>());
 #ifdef _WIN32
     loadTask(std::make_shared<sese::SocketInitiateTask>());
 #endif

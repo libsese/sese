@@ -60,7 +60,6 @@ set(ALL_SRCS
         src/thread/ThreadPool.cpp
         # 系统
         src/system/Environment.cpp
-        src/system/CpuInfo.cpp
         src/system/LibraryLoader.cpp
         # 网络
         src/net/Address.cpp

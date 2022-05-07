@@ -38,11 +38,6 @@ add_executable(TestEnvironment test/TestEnvironment/main.cpp)
 target_link_libraries(TestEnvironment SeseSharedLibrary)
 add_test(NAME TestEnvironment COMMAND TestEnvironment)
 
-# CpuInfo
-add_executable(TestCpuInfo test/TestCpuInfo/main.cpp)
-target_link_libraries(TestCpuInfo SeseSharedLibrary)
-add_test(NAME TestCpuInfo COMMAND TestCpuInfo)
-
 # Random
 add_executable(TestRandom test/TestRandom/main.cpp)
 target_link_libraries(TestRandom SeseSharedLibrary)

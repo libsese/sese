@@ -19,6 +19,9 @@ namespace sese {
         static uint64_t seed;
 
     public:
-        static uint64_t next();
+        static uint64_t next() noexcept;
+
+    private:
+        static uint64_t noise() noexcept;
     };
 }// namespace sese

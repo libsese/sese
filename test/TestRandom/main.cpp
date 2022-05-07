@@ -1,7 +1,5 @@
-#include "sese/system/CpuInfo.h"
 #include "sese/Random.h"
 
-using sese::CpuInfo;
 using sese::Random;
 
 int main() {
