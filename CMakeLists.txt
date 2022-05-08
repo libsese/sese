@@ -49,6 +49,7 @@ set(ALL_SRCS
         src/Util.cpp
         src/FileStream.cpp
         src/Test.cpp
+        src/Timer.cpp
         src/Initializer.cpp
         # 编码
         src/convert/EncodingConverter.cpp

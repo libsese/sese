@@ -128,3 +128,8 @@ add_test(NAME TestInitializer COMMAND TestInitializer)
 add_executable(TestTcpServer test/TestTcpServer/main.cpp)
 target_link_libraries(TestTcpServer SeseSharedLibrary)
 add_test(NAME TestTcpServer COMMAND TestTcpServer)
+
+# Timer
+add_executable(TestTimer test/TestTimer/main.cpp)
+target_link_libraries(TestTimer SeseSharedLibrary)
+add_test(NAME TestTimer COMMAND TestTimer)
