@@ -1,3 +1,9 @@
+/**
+ * @file Timer.h
+ * @brief 低精度计时器类
+ * @author kaoru
+ * @date 2022年5月9日
+ */
 #pragma once
 #include <sese/Config.h>
 #include <sese/thread/Thread.h>
@@ -8,9 +14,12 @@
 
 namespace sese {
 
+    /// @brief 低精度计时器类
     class API Timer {
     public:
-        /// 任务基本数据
+        using Ptr = std::shared_ptr<Timer>;
+
+        /// @brief 任务基本数据
         struct Task {
             // 实际定时时间
             uint8_t hour = 0;
@@ -27,11 +36,11 @@ namespace sese {
         };
 
     public:
-
-
         explicit Timer();
-        void delay(std::function<void()> callback, uint8_t sec, uint8_t min = 0, uint8_t hour = 0, bool isRepeat = false);
+        ~Timer();
+        void delay(std::function<void()> callback, uint8_t sec, uint8_t min = 0, uint8_t hour = 0, bool isRepeat = false) noexcept;
         void shutdown();
+
     protected:
         virtual void execute(const std::function<void()> &taskCallback);
 

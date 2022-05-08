@@ -11,7 +11,13 @@ Timer::Timer() {
     thread->start();
 }
 
-void Timer::delay(std::function<void()> callback, uint8_t sec, uint8_t min, uint8_t hour, bool isRepeat) {
+Timer::~Timer() {
+    if(!isShutdown) {
+        shutdown();
+    }
+}
+
+void Timer::delay(std::function<void()> callback, uint8_t sec, uint8_t min, uint8_t hour, bool isRepeat) noexcept {
     Task task;
     task.sec = sec;
     task.min = min;
@@ -40,7 +46,6 @@ void Timer::makeTask(Task &task, uint8_t sec, uint8_t min, uint8_t hour) {
     task.tSec %= 60;
     task.tMin %= 60;
 }
-
 void Timer::loop() {
     while (!isShutdown) {
         sese::sleep(1);
