@@ -24,11 +24,6 @@
 namespace sese {
 
     /**
-     * @brief 线程参数指针
-     */
-    typedef void *ThreadArgumentPtr;
-
-    /**
      * @brief 线程类
      */
     class API Thread : Noncopyable {
@@ -45,15 +40,12 @@ namespace sese {
 
         [[nodiscard]] tid_t getTid() const noexcept { return id; }
         [[nodiscard]] const std::string &getThreadName() const noexcept { return this->name; }
-        [[nodiscard]] ThreadArgumentPtr getArgument() const { return this->argument; }
-        void setArgument(ThreadArgumentPtr myArgument) { this->argument = myArgument; }
 
     private:
         std::string name;
         std::thread th;
         tid_t id = 0;
         std::function<void()> function;
-        ThreadArgumentPtr argument = nullptr;
 
     public:
         static tid_t getCurrentThreadId() noexcept;
