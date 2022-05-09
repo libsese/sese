@@ -1,7 +1,7 @@
 # 项目信息
 cmake_minimum_required(VERSION 3.12)
 set(SESE_MAJOR_VERSION 0)
-set(SESE_MINOR_VERSION 1)
+set(SESE_MINOR_VERSION 2)
 string(TIMESTAMP SESE_PATCH_VERSION %s)
 project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}.${SESE_PATCH_VERSION})
 
@@ -15,8 +15,6 @@ get_git_branch(SESE_REPO_BRANCH)
 # 项目详情
 set(CMAKE_CXX_STANDARD 20)
 include_directories(${PROJECT_SOURCE_DIR}/include/)
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output/${CMAKE_SYSTEM_NAME})
-set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output/${CMAKE_SYSTEM_NAME})
 enable_testing()
 
 # 编译预设宏
