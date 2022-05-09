@@ -40,7 +40,7 @@ Sese 只支持在64位系统下运行，非64位不会进行适配，带来的�
 - 如果 git 本体不在系统环境变量中时，请手动指定 **-DGIT_EXECUTABLE** 位置。
 
   ``` bash
-  cmake -DGIT_EXECUTABLE="path/to/git"
+  cmake -DGIT_EXECUTABLE="/path/to/git"
   ```
 
 ## 使用
@@ -90,6 +90,8 @@ Sese 只支持在64位系统下运行，非64位不会进行适配，带来的�
   ```
 
 ## 其他
+
+- 示例程序以及一些必要细节请参阅 [Sese's Docs](docs/ReadMe.md) 。
 
 <span id="jmp0"/>
 
