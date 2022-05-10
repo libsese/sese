@@ -1,5 +1,20 @@
 # Sese Library
 
+<div>
+	<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
+	<img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
+	<img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
+ <img src="https://img.shields.io/static/v1?label&message=macOS&color=blue&logo=macos"/>
+ <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B20&color=greed&logo=cplusplus"/>
+ <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=greed&logo=cmake"/>
+</div>
+<div>
+ <a href="mailto://shiina_kaoru@outlook.com">
+  <img src="https://img.shields.io/static/v1?label=email&message=SHIINA_KAORU@Outlook.com&color=skyblue&logo=gmail"/>
+ </a>
+ <img src="https://img.shields.io/static/v1?label=QQ&message=995602964&color=skyblue&logo=tencentqq"/>
+</div>
+
 Sese 是一个跨平台基础库，以**静态链接库**或**动态链接库**方式部署至解决方案中。
 
 Sese 支持**多平台**编译，包括但不限于 Windows、Linux、macOS，可按需要进行移植。
