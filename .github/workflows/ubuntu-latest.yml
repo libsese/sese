@@ -2,9 +2,7 @@ name: Ubuntu
 
 on:
   push:
-    branches: [ main, dev ]
   pull_request:
-    branches: [ main, dev ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
