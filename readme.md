@@ -1,8 +1,10 @@
-<center><h1><i>Sese Library</i></h1></center>
 <div align=center>
-	<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
-	<img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
-	<img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
+ <h1><i>Sese Library</i></h1>	
+</div>
+<div align=center>
+ <img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
+ <img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
+ <img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
  <img src="https://img.shields.io/static/v1?label&message=macOS&color=blue&logo=macos"/>
  <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B20&color=greed&logo=cplusplus"/>
  <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=greed&logo=cmake"/>
