@@ -1,6 +1,5 @@
-# Sese Library
-
-<div>
+<center><h1><i>Sese Library</i></h1></center>
+<div align=center>
 	<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
 	<img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
 	<img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
@@ -8,12 +7,16 @@
  <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B20&color=greed&logo=cplusplus"/>
  <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=greed&logo=cmake"/>
 </div>
-<div>
+<div align=center>
  <a href="mailto://shiina_kaoru@outlook.com">
   <img src="https://img.shields.io/static/v1?label=email&message=SHIINA_KAORU@Outlook.com&color=skyblue&logo=gmail"/>
  </a>
  <img src="https://img.shields.io/static/v1?label=QQ&message=995602964&color=skyblue&logo=tencentqq"/>
 </div>
+<div align=center>
+    <i>When the belly is full,the mind is among the maids. Sese will not requesting anythings.</i>
+</div>
+
 
 Sese 是一个跨平台基础库，以**静态链接库**或**动态链接库**方式部署至解决方案中。
 
@@ -59,6 +62,11 @@ Sese 只支持在64位系统下运行，非64位不会进行适配，带来的�
   ```
 
 ## 使用
+
+### 通用方案
+
+- 作为子模块使用，推荐与 git 同步使用。
+- 详情参考 [docs/ReadMe.md](docs/ReadMe.md) 。
 
 ### Windows
 
