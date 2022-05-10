@@ -19,8 +19,10 @@ int main() {
     Timer timer;
     helper.debug("timer start");
     timer.delay(foo, 2);
-    timer.delay(bar, 1, 0, 0, true);
-    sese::sleep(5);
+    auto task = timer.delay(bar, 1, 0, 0, true);
+    sese::sleep(3);
+    timer.cancel(task);
+    sese::sleep(3);
     helper.debug("timer thread joining");
     timer.shutdown();
     return 0;

@@ -21,6 +21,10 @@ namespace sese {
 
         /// @brief 任务基本数据
         struct Task {
+            friend class Timer;
+            using Ptr = std::shared_ptr<Task>;
+
+        private:
             // 实际定时时间
             uint8_t hour = 0;
             uint8_t min = 0;
@@ -38,14 +42,15 @@ namespace sese {
     public:
         explicit Timer();
         ~Timer();
-        void delay(std::function<void()> callback, uint8_t sec, uint8_t min = 0, uint8_t hour = 0, bool isRepeat = false) noexcept;
+        Task::Ptr delay(std::function<void()> callback, uint8_t sec, uint8_t min = 0, uint8_t hour = 0, bool isRepeat = false) noexcept;
+        bool cancel(const Task::Ptr &task);
         void shutdown();
 
     protected:
         virtual void execute(const std::function<void()> &taskCallback);
 
     private:
-        void makeTask(Task &task, uint8_t sec, uint8_t min, uint8_t hour);
+        void makeTask(const Task::Ptr &task, uint8_t sec, uint8_t min, uint8_t hour);
         void loop();
 
         Thread::Ptr thread = nullptr;
@@ -54,6 +59,6 @@ namespace sese {
         std::atomic<uint8_t> currentHour = 0;
         std::atomic<uint8_t> currentMin = 0;
         std::atomic<uint8_t> currentSec = 0;
-        std::list<Task> timingTasks[60];
+        std::list<Task::Ptr> timingTasks[60];
     };
 }// namespace sese

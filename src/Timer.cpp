@@ -5,6 +5,7 @@
 using sese::Locker;
 using sese::Thread;
 using sese::Timer;
+using Task = sese::Timer::Task;
 
 Timer::Timer() {
     thread = std::make_shared<Thread>([this] { loop(); }, "Timer");
@@ -12,22 +13,28 @@ Timer::Timer() {
 }
 
 Timer::~Timer() {
-    if(!isShutdown) {
+    if (!isShutdown) {
         shutdown();
     }
 }
 
-void Timer::delay(std::function<void()> callback, uint8_t sec, uint8_t min, uint8_t hour, bool isRepeat) noexcept {
-    Task task;
-    task.sec = sec;
-    task.min = min;
-    task.hour = hour;
+Task::Ptr Timer::delay(std::function<void()> callback, uint8_t sec, uint8_t min, uint8_t hour, bool isRepeat) noexcept {
+    auto task = std::make_shared<Task>();
+    task->sec = sec;
+    task->min = min;
+    task->hour = hour;
     makeTask(task, sec, min, hour);
-    task.callback = std::move(callback);
-    task.isRepeat = isRepeat;
+    task->callback = std::move(callback);
+    task->isRepeat = isRepeat;
 
     Locker locker(mutex);
-    timingTasks[task.tSec].emplace_back(task);
+    timingTasks[task->tSec].emplace_back(task);
+    return task;
+}
+
+bool Timer::cancel(const Task::Ptr &task) {
+    Locker locker(mutex);
+    return 0 != std::erase(timingTasks[task->tSec], task);
 }
 
 void Timer::shutdown() {
@@ -39,13 +46,14 @@ void Timer::execute(const std::function<void()> &taskCallback) {
     taskCallback();
 }
 
-void Timer::makeTask(Task &task, uint8_t sec, uint8_t min, uint8_t hour) {
-    task.tSec = sec + currentSec;
-    task.tMin = (min + currentMin) + task.tSec / 60;
-    task.tHour = (hour + currentHour) + task.tMin / 60;
-    task.tSec %= 60;
-    task.tMin %= 60;
+void Timer::makeTask(const Task::Ptr &task, uint8_t sec, uint8_t min, uint8_t hour) {
+    task->tSec = sec + currentSec;
+    task->tMin = (min + currentMin) + task->tSec / 60;
+    task->tHour = (hour + currentHour) + task->tMin / 60;
+    task->tSec %= 60;
+    task->tMin %= 60;
 }
+
 void Timer::loop() {
     while (!isShutdown) {
         sese::sleep(1);
@@ -56,13 +64,13 @@ void Timer::loop() {
         if (!currentTimingTask.empty()) {
             for (auto itor = currentTimingTask.begin();
                  itor != currentTimingTask.end();) {
-                if (itor->tHour == currentHour.load() && itor->tMin == currentMin.load()) {
-                    execute(itor->callback);
-                    if(itor->isRepeat) {
+                auto task = *itor;
+                if (task->tHour == currentHour.load() && task->tMin == currentMin.load()) {
+                    execute(task->callback);
+                    if (task->isRepeat) {
                         // 重复任务再次添加
-                        auto task = *itor;
-                        makeTask(task, task.sec, task.min, task.hour);
-                        timingTasks[task.tSec].emplace_back(task);
+                        makeTask(task, task->sec, task->min, task->hour);
+                        timingTasks[task->tSec].emplace_back(task);
                     }
                     itor = currentTimingTask.erase(itor);
                 }
@@ -72,7 +80,7 @@ void Timer::loop() {
 
         // 更新时间
         currentSec == 59 ? currentSec = 0, currentMin++ : currentSec++;
-        if(currentMin == 59) {
+        if (currentMin == 59) {
             currentMin = 0;
             currentHour++;
         }
