@@ -81,6 +81,59 @@ template<typename T>
 inline T FromLittleEndian64(T t) {
     return t;
 }
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 2, T>::t
+ToBigEndian(T t) {
+    return ByteSwap16(t);
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 4, T>::t
+ToBigEndian(T t) {
+    return ByteSwap32(t);
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 8, T>::t
+ToBigEndian(T t) {
+    return ByteSwap64(t);
+}
+
+template<typename T>
+inline T ToLittleEndian(T t) {
+    return t;
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 2, T>::t
+FromBigEndian(T t) {
+    return ByteSwap16(t);
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 4, T>::t
+FromBigEndian(T t) {
+    return ByteSwap32(t);
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 8, T>::t
+FromBigEndian(T t) {
+    return ByteSwap64(t);
+}
+
+template<typename T>
+inline T FromLittleEndian(T t) {
+    return t;
+}
+
 #else
 #define SESE_BIG_ENDIAN
 template<typename T>
@@ -141,6 +194,59 @@ inline T FromLittleEndian32(T t) {
 template<typename T>
 inline T FromLittleEndian64(T t) {
     return ByteSwap64(t);
+}
+
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 2, T>::t
+ToLittleEndian(T t) {
+    return ByteSwap16(t);
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 4, T>::t
+ToLittleEndian(T t) {
+    return ByteSwap32(t);
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 8, T>::t
+ToLittleEndian(T t) {
+    return ByteSwap64(t);
+}
+
+template<typename T>
+inline T ToBigEndian(T t) {
+    return t;
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 2, T>::t
+FromLittleEndian(T t) {
+    return ByteSwap16(t);
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 4, T>::t
+FromLittleEndian(T t) {
+    return ByteSwap32(t);
+}
+
+template<typename T>
+inline
+typename std::enable_if<sizeof(T) == 8, T>::t
+FromLittleEndian(T t) {
+    return ByteSwap64(t);
+}
+
+template<typename T>
+inline T FromBigEndian(T t) {
+    return t;
 }
 #endif
 }
