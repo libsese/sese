@@ -67,6 +67,7 @@ set(ALL_SRCS
         src/net/IPv6Address.cpp
         # 配置
         src/config/ConfigUtil.cpp
+        src/config/json/JsonTypes.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
