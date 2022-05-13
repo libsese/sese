@@ -48,7 +48,7 @@
     example
     ├── CMakeLists.txt
     ├── lib
-    │   └── sese
+    │   └── sese
     └── src
         └── main.cpp
     ```
