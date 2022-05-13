@@ -47,24 +47,24 @@ char sese::StringBuffer::getCharAt(int index) {
     return AbstractStringBuffer::getCharAt(index);
 }
 
-void sese::StringBuffer::setChatAt(int index, char ch) {
+bool sese::StringBuffer::setChatAt(int index, char ch) {
     Locker locker(mutex);
-    AbstractStringBuffer::setChatAt(index, ch);
+    return AbstractStringBuffer::setChatAt(index, ch);
 }
 
-void sese::StringBuffer::delCharAt(int index) {
+bool sese::StringBuffer::delCharAt(int index) {
     Locker locker(mutex);
-    AbstractStringBuffer::delCharAt(index);
+    return AbstractStringBuffer::delCharAt(index);
 }
 
-void sese::StringBuffer::del(int start, int end) {
+bool sese::StringBuffer::del(int start, int end) {
     Locker locker(mutex);
-    AbstractStringBuffer::del(start, end);
+    return AbstractStringBuffer::del(start, end);
 }
 
-void sese::StringBuffer::insertAt(int index, const char *str) {
+bool sese::StringBuffer::insertAt(int index, const char *str) {
     Locker locker(mutex);
-    AbstractStringBuffer::insertAt(index, str);
+    return AbstractStringBuffer::insertAt(index, str);
 }
 
 void sese::StringBuffer::insertAt(int index, const std::string &str) {

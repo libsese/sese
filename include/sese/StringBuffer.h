@@ -33,10 +33,10 @@ namespace sese {
         void clear() noexcept override;
         void reverse() noexcept override;
         [[nodiscard]] char getCharAt(int index)  ;
-        void setChatAt(int index, char ch) override;
-        void delCharAt(int index) override;
-        void del(int start, int end) override;
-        void insertAt(int index, const char *str) override;
+        bool setChatAt(int index, char ch) override;
+        bool delCharAt(int index) override;
+        bool del(int start, int end) override;
+        bool insertAt(int index, const char *str) override;
         void insertAt(int index, const std::string &str) override;
         void trim() noexcept override;
         [[nodiscard]] std::vector<std::string> split(const std::string &str) noexcept;

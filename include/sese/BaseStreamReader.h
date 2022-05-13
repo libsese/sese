@@ -6,7 +6,6 @@
  */
 #pragma once
 #include "sese/ByteBuilder.h"
-#include "sese/IOException.h"
 #include "sese/Stream.h"
 #include "sese/Util.h"
 #include <sstream>
@@ -47,10 +46,6 @@ namespace sese {
                     /// FileStream 读至文件尾返回值为 0
                     /// 源已被读完
                     return false;
-                } else if (len < 0) {
-                    /// FileStream、Socket 等出错返回 -1
-                    /// 源出错
-                    throw IOException(getErrorString());
                 }
             }
             /// 嘿嘿，读取到一个字符

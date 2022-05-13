@@ -17,13 +17,15 @@ namespace sese {
     public:
         using Ptr = std::shared_ptr<UniReader>;
 
-        /**
-         * 初始化读取器
-         * @param fileName 读取的文件名称
-         * @throw IOException 文件打开失败时被抛出
-         */
-        explicit UniReader(const std::string &fileName);
+        UniReader() = default;
         ~UniReader();
+
+        /**
+         * 打开文件
+         * @param fileName 文件名称
+         * @return 打开是否成功
+         */
+        bool open(const std::string &fileName) noexcept;
 
         /**
          * 读取一行

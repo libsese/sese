@@ -64,16 +64,15 @@ namespace sese {
         /**
          * 读取配置文件
          * @param fileName 文件名称
-         * @return 配置文件类指针
-         * @throw IOException 文件打开失败
+         * @return 配置文件类指针，读取失败返回 nullptr
          */
         static ConfigFile::Ptr readFrom(const std::string &fileName);
         /**
          * 写入配置文件
          * @param configFile 具体的配置
          * @param fileName 欲写入的配置文件名称
-         * @throw IOException 文件打开失败
+         * @return 是否写入成功
          */
-        static void write2(const ConfigFile::Ptr &configFile, const std::string &fileName);
+        static bool write2(const ConfigFile::Ptr &configFile, const std::string &fileName);
     };
 }// namespace sese

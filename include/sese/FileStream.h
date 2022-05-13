@@ -38,10 +38,10 @@ namespace sese {
     public:
         using Ptr = std::shared_ptr<FileStream>;
 
-        FileStream(const std::string &fileName, const char *mode);
-        FileStream(FileStream &fileStream) = delete;
-        FileStream(FileStream &&fileStream) noexcept;
+        FileStream() = default;
         ~FileStream() = default;
+
+        bool open(const std::string &fileName, const char *mode) noexcept;
 
         int64_t read(void *buffer, size_t length) override;
         int64_t write(const void *buffer, size_t length) override;
