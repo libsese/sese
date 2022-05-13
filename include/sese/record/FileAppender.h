@@ -5,6 +5,8 @@
  * @date 2022年3月28日
  */
 #pragma once
+#include <utility>
+
 #include "sese/record/AbstractAppender.h"
 #include "sese/FileStream.h"
 
@@ -21,9 +23,9 @@ namespace sese {
     public:
         typedef std::shared_ptr<FileAppender> Ptr;
 
-        FileAppender(const std::string &fileName, const AbstractFormatter::Ptr &formatter, Level level = Level::DEBUG)
+        explicit FileAppender(FileStream::Ptr fileStream, const AbstractFormatter::Ptr &formatter, Level level = Level::DEBUG)
             : AbstractAppender(formatter, level),
-              fileStream(std::make_shared<FileStream>(fileName, TEXT_WRITE_CREATE_APPEND)){
+              fileStream(std::move(fileStream)) {
         }
 
         void dump(const Event::Ptr &event) noexcept override;

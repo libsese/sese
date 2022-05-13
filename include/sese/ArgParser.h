@@ -22,12 +22,16 @@ namespace sese {
         typedef std::unique_ptr<ArgParser> Ptr;
 
     public:
+        ArgParser() = default;
+
         /**
          * 初始化解析器
          * @param argc 参数个数
          * @param argv 实际参数
+         * @return 解析是否成功
          */
-        ArgParser(int32_t argc, char **argv);
+        bool parse(int32_t argc, char **argv) noexcept;
+
         /**
          * @return 返回整个参数 Map
          */

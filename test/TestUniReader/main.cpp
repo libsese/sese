@@ -1,15 +1,18 @@
 #include "sese/config/UniReader.h"
 #include "sese/record/LogHelper.h"
+#include "sese/Test.h"
 
 using sese::LogHelper;
 using sese::UniReader;
+using sese::Test;
 
 LogHelper helper("fUNI_READER");// NOLINT
 
 int main() {
-    auto reader = std::make_shared<UniReader>(PROJECT_PATH "/test/TestUniReader/data.txt");
+    UniReader reader;
+    Test::assert(helper, reader.open(PROJECT_PATH "/test/TestUniReader/data.txt"), -1);
     while (true) {
-        auto line = reader->readLine();
+        auto line = reader.readLine();
         if (line.empty()) {
             break;
         } else {

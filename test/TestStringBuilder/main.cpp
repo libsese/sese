@@ -1,10 +1,9 @@
-#include "sese/IndexOutOfBoundsException.h"
 #include "sese/StringBuilder.h"
 #include "sese/record/LogHelper.h"
 #include "sese/Test.h"
 #include <cstdio>
 
-sese::LogHelper helper("fSTRING_BUILDER"); // NOLINT
+sese::LogHelper helper("fSTRING_BUILDER");// NOLINT
 
 int main() {
     auto buffer = new sese::StringBuilder(16);
@@ -53,11 +52,7 @@ int main() {
     puts(buffer->toString().c_str());
     buffer->clear();
 
-    try {
-        buffer->setChatAt(100000, 'E');
-    } catch (sese::Exception &exception) {
-        puts(exception.what());
-    }
+    sese::Test::assert(helper, buffer->setChatAt(100000, 'E'));
 
     delete buffer;
     return 0;

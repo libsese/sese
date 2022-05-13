@@ -12,7 +12,7 @@ int main() {
 
     try {
         array[4] = 0;
-    } catch (sese::Exception &exception) {
+    } catch (std::exception &exception) {
         puts(exception.what());
     }
 

@@ -18,7 +18,7 @@
 <div align=center>
     <i>When the belly is full,the mind is among the maids. Sese will not requesting anythings.</i>
 </div>
-
+<br>
 
 Sese 是一个跨平台基础库，以**静态链接库**或**动态链接库**方式部署至解决方案中。
 

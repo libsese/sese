@@ -1,9 +1,8 @@
 #include "sese/ArgParser.h"
-#include "sese/IllegalArgumentException.h"
 #include "sese/Util.h"
 #include <cstring>
 
-sese::ArgParser::ArgParser(int32_t argc, char **argv) {
+bool sese::ArgParser::parse(int32_t argc, char **argv) noexcept {
     if (argc != 1) {
         for (int i = 1; i < argc; i++) {
             auto pos = findFirstAt(argv[i], '=');
@@ -15,10 +14,11 @@ sese::ArgParser::ArgParser(int32_t argc, char **argv) {
                     this->keyValSet.insert(std::pair<std::string, std::string>(argv[i], {&argv[i][pos + 1]}));
                 }
             } else {
-                throw IllegalArgumentException();
+                return false;
             }
         }
     }
+    return true;
 }
 
 const std::map<std::string, std::string> &sese::ArgParser::getKeyValSet() const noexcept {

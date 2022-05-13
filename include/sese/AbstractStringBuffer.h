@@ -51,10 +51,10 @@ namespace sese {
         virtual void clear() noexcept;
         virtual void reverse() noexcept;
         [[nodiscard]] virtual char getCharAt(int index) const;
-        virtual void setChatAt(int index, char ch);
-        virtual void delCharAt(int index);
-        virtual void del(int start, int end);
-        virtual void insertAt(int index, const char *str);
+        virtual bool setChatAt(int index, char ch);
+        virtual bool delCharAt(int index);
+        virtual bool del(int start, int end);
+        virtual bool insertAt(int index, const char *str);
         virtual void insertAt(int index, const std::string &str) { this->insertAt(index, str.c_str()); };
         /// 去除两端空格
         virtual void trim() noexcept;

@@ -1,5 +1,4 @@
 #include "sese/AbstractStringBuffer.h"
-#include "sese/IndexOutOfBoundsException.h"
 #include "sese/Util.h"
 #include <cstring>
 
@@ -103,14 +102,15 @@ namespace sese {
 
     char AbstractStringBuffer::getCharAt(int index) const {
         // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
-        if (!CheckRange(index, this->cap)) throw IndexOutOfBoundsException();
+        if (!CheckRange(index, this->cap)) return 0;
         return this->buffer[index];
     }
 
-    void AbstractStringBuffer::setChatAt(int index, char ch) {
+    bool AbstractStringBuffer::setChatAt(int index, char ch) {
         // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
-        if (!CheckRange(index, this->cap)) throw IndexOutOfBoundsException();
+        if (!CheckRange(index, this->cap)) return false;
         this->buffer[index] = ch;
+        return true;
     }
 
     void AbstractStringBuffer::reverse() noexcept {
@@ -122,19 +122,20 @@ namespace sese {
         }
     }
 
-    void AbstractStringBuffer::delCharAt(int index) {
+    bool AbstractStringBuffer::delCharAt(int index) {
         // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
-        if (!CheckRange(index, this->cap)) throw IndexOutOfBoundsException();
+        if (!CheckRange(index, this->cap)) return false;
         for (int i = index; i < len - 1; i++) {
             this->buffer[i] = this->buffer[i + 1];
         }
         this->buffer[len - 1] = '\0';
         this->len -= 1;
+        return true;
     }
 
-    void AbstractStringBuffer::del(int start, int end) {
-        if (0 < start) throw IndexOutOfBoundsException();
-        if (this->cap < end) throw IndexOutOfBoundsException();
+    bool AbstractStringBuffer::del(int start, int end) {
+        if (0 < start) return false;
+        if (this->cap < end) return false;
         int delCount = end - start + 1;
         for (int i = start; i < len - delCount; i++) {
             if (i + delCount > len) {
@@ -145,10 +146,11 @@ namespace sese {
             }
         }
         this->len -= delCount;
+        return true;
     }
 
-    void AbstractStringBuffer::insertAt(int index, const char *str) {
-        if (this->cap <= index) throw IndexOutOfBoundsException();
+    bool AbstractStringBuffer::insertAt(int index, const char *str) {
+        if (this->cap <= index) return false;
         size_t l = strlen(str);
         if (l > cap - this->len) {
             // 触发扩容
@@ -160,6 +162,7 @@ namespace sese {
             this->buffer[len + l - i] = this->buffer[len - i];
         }
         memcpy(&this->buffer[index], str, l);
+        return true;
     }
 
     void AbstractStringBuffer::trim() noexcept {

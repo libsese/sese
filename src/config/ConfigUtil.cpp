@@ -43,7 +43,8 @@ namespace sese {
 
     ConfigFile::Ptr ConfigUtil::readFrom(const std::string &fileName) {
         ConfigFile::Ptr configFile = std::make_shared<ConfigFile>();
-        UniReader::Ptr reader = std::make_shared<UniReader>(fileName);
+        UniReader::Ptr reader = std::make_shared<UniReader>();
+        if(!reader->open(fileName)) return nullptr;
         ConfigFile::Section::Ptr currentSection = configFile->getDefaultSection();
 
         std::regex commentRegex(R"(\s*\;.*)");
@@ -83,9 +84,9 @@ namespace sese {
         fileStream->write((void *)"\"\n", 2);
     }
 
-    void ConfigUtil::write2(const ConfigFile::Ptr &configFile, const std::string &fileName) {
-        FileStream::Ptr fileStream = std::make_shared<FileStream>(fileName, TEXT_WRITE_CREATE_TRUNC);
-        if(!fileStream->good()) throw IOException(getErrorString());
+    bool ConfigUtil::write2(const ConfigFile::Ptr &configFile, const std::string &fileName) {
+        FileStream::Ptr fileStream = std::make_shared<FileStream>();
+        if(!fileStream->open(fileName, TEXT_WRITE_CREATE_TRUNC)) return false;
 
         for(const auto& itor : configFile->getDefaultSection()->parameter){
             writePair(fileStream, itor);
@@ -101,6 +102,7 @@ namespace sese {
         }
 
         fileStream->close();
+        return true;
     }
 
 }// namespace sese
