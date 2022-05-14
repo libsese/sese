@@ -4,6 +4,26 @@
 
 using namespace sese::json;
 
+ObjectData::Ptr JsonUtil::deserialize(const Stream::Ptr &inputStream, size_t level) noexcept {
+    // 此处懒得处理不合规格的格式，直接 catch
+    try {
+        Tokens tokens;
+        if (!tokenizer(inputStream, tokens)) {
+            return nullptr;
+        }
+
+        // 第一个 token 必是 '{'，直接弹出
+        tokens.pop();
+        return createObject(tokens, level);
+    } catch (...) {
+        return nullptr;
+    }
+}
+
+void JsonUtil::serialize(const ObjectData::Ptr &object, const Stream::Ptr &outputStream) noexcept {
+    serializeObject(object, outputStream);
+}
+
 bool JsonUtil::tokenizer(const Stream::Ptr &inputStream, Tokens &tokens) noexcept {
     char ch;
     StringBuilder builder;
@@ -21,6 +41,7 @@ bool JsonUtil::tokenizer(const Stream::Ptr &inputStream, Tokens &tokens) noexcep
                 tokens.push({ch});
                 break;
             case '\"':
+                builder.append("\"");
                 // 字符串 token，需要处理转义符号
                 while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
                     // 说明是转义字符，需要处理
@@ -54,6 +75,7 @@ bool JsonUtil::tokenizer(const Stream::Ptr &inputStream, Tokens &tokens) noexcep
                                 break;
                         }
                     } else if (ch == '\"') {
+                        builder.append("\"");
                         tokens.push(builder.toString());
                         builder.clear();
                         break;
@@ -86,13 +108,8 @@ bool JsonUtil::tokenizer(const Stream::Ptr &inputStream, Tokens &tokens) noexcep
     return true;
 }
 
-ObjectData::Ptr JsonUtil::parser(Tokens &tokens) noexcept {
-    // 第一个 token 必是 '{'，直接弹出
-    tokens.pop();
-    return createObject(tokens);
-}
-
-ObjectData::Ptr JsonUtil::createObject(Tokens &tokens) noexcept {
+ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
+    if (level == 0) { return nullptr; }
     auto object = std::make_shared<ObjectData>();
     while (!tokens.empty()) {
         auto name = tokens.front();
@@ -103,6 +120,7 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens) noexcept {
             name = tokens.front();
             tokens.pop();
         }
+        name = name.substr(1, name.size() - 2);
 
         // 此处 token 必是 ':'，故直接弹出
         tokens.pop();
@@ -111,22 +129,26 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens) noexcept {
 
         if (value == "{") {
             // 值是一个 ObjectData
-            ObjectData::Ptr subObject = createObject(tokens);
+            level--;
+            ObjectData::Ptr subObject = createObject(tokens, level);
             if (subObject == nullptr) {
                 // 解析错误，直接返回
                 return nullptr;
             } else {
                 object->set(name, subObject);
             }
+            level++;
         } else if (value == "[") {
             // 值是一个 ArrayData
-            ArrayData::Ptr array = createArray(tokens);
+            level--;
+            ArrayData::Ptr array = createArray(tokens, level);
             if (array == nullptr) {
                 // 解析错误，直接返回
                 return nullptr;
             } else {
                 object->set(name, array);
             }
+            level++;
         } else {
             // 值是一个 BasicData
             BasicData::Ptr data;
@@ -141,37 +163,42 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens) noexcept {
     return object;
 }
 
-ArrayData::Ptr JsonUtil::createArray(Tokens &tokens) noexcept {
+ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
+    if (level == 0) { return nullptr; }
     auto array = std::make_shared<ArrayData>();
     while (!tokens.empty()) {
         auto token = tokens.front();
         tokens.pop();
-        if(token == "]") return array;
+        if (token == "]") return array;
         else if (token == ",") {
             // token 为 ',' 说明接下来还有值
             token = tokens.front();
             tokens.pop();
         }
 
-        if(token == "{") {
+        if (token == "{") {
             // 值是一个 ObjectData
-            ObjectData::Ptr subObject = createObject(tokens);
+            level--;
+            ObjectData::Ptr subObject = createObject(tokens, level);
             if (subObject == nullptr) {
                 // 解析错误，直接返回
                 return nullptr;
             } else {
                 array->push(subObject);
             }
-        }else if(token == "[") {
+            level++;
+        } else if (token == "[") {
             // 值是一个 ArrayData
-            ArrayData::Ptr subArray = createArray(tokens);
+            level--;
+            ArrayData::Ptr subArray = createArray(tokens, level);
             if (array == nullptr) {
                 // 解析错误，直接返回
                 return nullptr;
             } else {
                 array->push(subArray);
             }
-        }else {
+            level++;
+        } else {
             // 值是一个 BasicData
             BasicData::Ptr data;
             if (token == "null") {
@@ -182,4 +209,55 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens) noexcept {
             array->push(data);
         }
     }
+    return array;
+}
+
+void JsonUtil::serializeObject(const ObjectData::Ptr &object, const Stream::Ptr &outputStream) noexcept {
+    bool isFirst = true;
+    outputStream->write("{", 1);
+    for (auto iterator = object->begin(); iterator != object->end(); iterator++) {
+        if (isFirst) {
+            isFirst = false;
+        } else {
+            outputStream->write(",", 1);
+        }
+        auto data = iterator->second;
+        auto name = iterator->first;
+        outputStream->write("\"", 1);
+        outputStream->write(name.c_str(), name.length());
+        outputStream->write("\":", 2);
+
+        if (data->getType() == DataType::Object) {
+            serializeObject(std::dynamic_pointer_cast<ObjectData>(data), outputStream);
+        } else if (data->getType() == DataType::Array) {
+            serializeArray(std::dynamic_pointer_cast<ArrayData>(data), outputStream);
+        } else {
+            auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
+            outputStream->write(raw.c_str(), raw.length());
+        }
+    }
+    outputStream->write("}", 1);
+}
+
+void JsonUtil::serializeArray(const ArrayData::Ptr &array, const Stream::Ptr &outputStream) noexcept {
+    bool isFirst = true;
+    outputStream->write("[", 1);
+    for (auto iterator = array->begin(); iterator != array->end(); iterator++) {
+        if (isFirst) {
+            isFirst = false;
+        } else {
+            outputStream->write(",", 1);
+        }
+
+        auto data = *iterator;
+        if (data->getType() == DataType::Object) {
+            serializeObject(std::dynamic_pointer_cast<ObjectData>(data), outputStream);
+        } else if (data->getType() == DataType::Array) {
+            serializeArray(std::dynamic_pointer_cast<ArrayData>(data), outputStream);
+        } else {
+            auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
+            outputStream->write(raw.c_str(), raw.length());
+        }
+    }
+    outputStream->write("]", 1);
 }

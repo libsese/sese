@@ -1,5 +1,5 @@
 {
-    "string": "a\r testing\n text\"",
+    "string": "a testing\n text\"",
     "value": 0,
     "nullable": null,
     "boolean": true,

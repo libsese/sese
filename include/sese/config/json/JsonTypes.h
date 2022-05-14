@@ -5,6 +5,8 @@
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
+#else
+#define _atoi64(val) strtoll(val, nullptr, 10)
 #endif
 
 namespace sese::json {
@@ -53,28 +55,47 @@ public:
 
     explicit BasicData() noexcept;
     explicit BasicData(std::string text) noexcept;
+    [[nodiscard]] const std::string &raw() const noexcept { return data; }
 
     // setter
     void setNull() noexcept;
-    void setNotNull(std::string newData) noexcept;
+    // isString 为 true 会自动处理引号
+    void setNotNull(std::string newData, bool isString = false) noexcept;
+
+    template<typename T>
+    void
+    setDataAs(std::enable_if_t<std::is_same_v<T, bool>, bool> t);
+
+    template<typename T>
+    void
+    setDataAs(std::enable_if_t<std::is_same_v<T, int64_t>, int64_t> t);
+
+    template<typename T>
+    void
+    setDataAs(std::enable_if_t<std::is_same_v<T, std::string>, const std::string &> t);
+
+    template<typename T>
+    void
+    setDataAs(std::enable_if_t<std::is_same_v<T, double>, double> t);
+
     // getter
     [[nodiscard]] bool isNull() const { return _isNull; }
 
     template<typename T>
-    const std::enable_if_t<std::is_same_v<T, std::string>> &
+    const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &
     getDataAs(T &defaultValue);
 
     template<typename T>
-    std::enable_if_t<std::is_same_v<T, int64_t>>
-    getDataAs(T &defaultValue);
+    std::enable_if_t<std::is_same_v<T, int64_t>, int64_t>
+    getDataAs(T defaultValue);
 
     template<typename T>
-    std::enable_if_t<std::is_same_v<T, bool>>
-    getDataAs(T &defaultValue = false);
+    std::enable_if_t<std::is_same_v<T, bool>, bool>
+    getDataAs(T defaultValue = false);
 
     template<typename T>
-    std::enable_if_t<std::is_same_v<T, double>>
-    getDataAs(T &defaultValue);
+    std::enable_if_t<std::is_same_v<T, double>, double>
+    getDataAs(T defaultValue);
 
 protected:
     std::string data;
@@ -82,16 +103,16 @@ protected:
 };
 
 template<typename T>
-const std::enable_if_t<std::is_same_v<T, std::string>> &sese::json::BasicData::getDataAs(T &defaultValue) {
+const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &sese::json::BasicData::getDataAs(T &defaultValue) {
     if (_isNull) {
         return defaultValue;
     } else {
-        return data;
+        return data.substr(1, data.size() - 2);
     }
 }
 
 template<typename T>
-std::enable_if_t<std::is_same_v<T, int64_t>> sese::json::BasicData::getDataAs(T &defaultValue) {
+std::enable_if_t<std::is_same_v<T, int64_t>, int64_t> sese::json::BasicData::getDataAs(T defaultValue) {
     if (_isNull) {
         return defaultValue;
     } else {
@@ -100,9 +121,9 @@ std::enable_if_t<std::is_same_v<T, int64_t>> sese::json::BasicData::getDataAs(T 
 }
 
 template<typename T>
-std::enable_if_t<std::is_same_v<T, bool>> sese::json::BasicData::getDataAs(T &defaultValue) {
+std::enable_if_t<std::is_same_v<T, bool>, bool> sese::json::BasicData::getDataAs(T defaultValue) {
     if (_isNull) return defaultValue;
-    if (strcmp(data.c_str(), "true") == 0) {
+    if (data == "true") {
         return true;
     } else {
         return false;
@@ -110,7 +131,7 @@ std::enable_if_t<std::is_same_v<T, bool>> sese::json::BasicData::getDataAs(T &de
 }
 
 template<typename T>
-std::enable_if_t<std::is_same_v<T, double>> sese::json::BasicData::getDataAs(T &defaultValue) {
+std::enable_if_t<std::is_same_v<T, double>, double> sese::json::BasicData::getDataAs(T defaultValue) {
     if (_isNull) {
         return defaultValue;
     } else {
@@ -124,21 +145,103 @@ std::enable_if_t<std::is_same_v<T, double>> sese::json::BasicData::getDataAs(T &
     }
 }
 
+template<typename T>
+void sese::json::BasicData::setDataAs(std::enable_if_t<std::is_same_v<T, bool>, bool> t) {
+    if (t) {
+        setNotNull("true");
+    } else {
+        setNotNull("false");
+    }
+}
+
+template<typename T>
+void sese::json::BasicData::setDataAs(std::enable_if_t<std::is_same_v<T, double>, double> t) {
+    data = std::to_string(t);
+}
+
+template<typename T>
+void sese::json::BasicData::setDataAs(std::enable_if_t<std::is_same_v<T, int64_t>, int64_t> t) {
+    data = std::to_string(t);
+}
+
+template<typename T>
+void sese::json::BasicData::setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>, const std::string &> t) {
+    data = std::move(t);
+}
+
 class API sese::json::ObjectData : public sese::json::Data {
 public:
+    using Ptr = std::shared_ptr<ObjectData>;
     explicit ObjectData();
 
     [[nodiscard]] inline size_t size() const noexcept { return keyValueSet.size(); }
     [[nodiscard]] inline bool empty() const noexcept { return keyValueSet.empty(); }
-    void set(const std::string& key, const Data::Ptr &data);
+    void set(const std::string &key, const Data::Ptr &data);
     [[nodiscard]] Data::Ptr get(const std::string &key) const noexcept;
+    inline std::map<std::string, Data::Ptr>::iterator begin() noexcept { return keyValueSet.begin(); }
+    inline std::map<std::string, Data::Ptr>::iterator end() noexcept { return keyValueSet.end(); }
+
+    template<typename T>
+    std::shared_ptr<std::enable_if_t<std::is_same_v<sese::json::BasicData, T>, sese::json::BasicData>>
+    getDataAs(const std::string &key);
+
+    template<typename T>
+    std::shared_ptr<std::enable_if_t<std::is_same_v<sese::json::ObjectData, T>, sese::json::ObjectData>>
+    getDataAs(const std::string &key);
+
+    template<typename T>
+    std::shared_ptr<std::enable_if_t<std::is_same_v<sese::json::ArrayData, T>, sese::json::ArrayData>>
+    getDataAs(const std::string &key);
 
 protected:
     std::map<std::string, Data::Ptr> keyValueSet;
 };
 
+template<typename T>
+std::shared_ptr<std::enable_if_t<std::is_same_v<sese::json::BasicData, T>, sese::json::BasicData>> sese::json::ObjectData::getDataAs(const std::string &key) {
+    auto raw = get(key);
+    if (raw == nullptr) {
+        return nullptr;
+    } else {
+        if (raw->getType() == DataType::Basic) {
+            return std::dynamic_pointer_cast<sese::json::BasicData>(raw);
+        } else {
+            return nullptr;
+        }
+    }
+}
+
+template<typename T>
+std::shared_ptr<std::enable_if_t<std::is_same_v<sese::json::ObjectData, T>, sese::json::ObjectData>> sese::json::ObjectData::getDataAs(const std::string &key) {
+    auto raw = get(key);
+    if (raw == nullptr) {
+        return nullptr;
+    } else {
+        if (raw->getType() == DataType::Object) {
+            return std::dynamic_pointer_cast<sese::json::ObjectData>(raw);
+        } else {
+            return nullptr;
+        }
+    }
+}
+
+template<typename T>
+std::shared_ptr<std::enable_if_t<std::is_same_v<sese::json::ArrayData, T>, sese::json::ArrayData>> sese::json::ObjectData::getDataAs(const std::string &key) {
+    auto raw = get(key);
+    if (raw == nullptr) {
+        return nullptr;
+    } else {
+        if (raw->getType() == DataType::Array) {
+            return std::dynamic_pointer_cast<sese::json::ArrayData>(raw);
+        } else {
+            return nullptr;
+        }
+    }
+}
+
 class API sese::json::ArrayData : public sese::json::Data {
 public:
+    using Ptr = std::shared_ptr<ArrayData>;
     explicit ArrayData();
 
     [[nodiscard]] inline size_t size() const noexcept { return valueSet.size(); }

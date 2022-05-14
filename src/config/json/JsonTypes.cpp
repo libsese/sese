@@ -6,7 +6,7 @@ Data::Data(DataType type) : type(type) {}
 
 BasicData::BasicData() noexcept
     : Data(DataType::Basic),
-      _isNull(true) {}
+      _isNull(true), data("null") {}
 
 BasicData::BasicData(std::string text) noexcept
     : Data(DataType::Basic),
@@ -15,10 +15,15 @@ BasicData::BasicData(std::string text) noexcept
 
 void BasicData::setNull() noexcept {
     _isNull = true;
+    data = "null";
 }
 
-void BasicData::setNotNull(std::string newData) noexcept {
-    data = std::move(newData);
+void BasicData::setNotNull(std::string newData, bool isString) noexcept {
+    if (isString) {
+        data = "\"" + newData + "\"";
+    } else {
+        data = std::move(newData);
+    }
     _isNull = false;
 }
 
@@ -30,7 +35,7 @@ void ObjectData::set(const std::string &key, const Data::Ptr &data) {
 
 Data::Ptr ObjectData::get(const std::string &key) const noexcept {
     auto res = keyValueSet.find(key);
-    if(res == keyValueSet.end()) {
+    if (res == keyValueSet.end()) {
         return nullptr;
     } else {
         return res->second;
