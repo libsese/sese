@@ -6,7 +6,6 @@
  */
 #pragma once
 #include <sese/record/Logger.h>
-#include <source_location>
 
 namespace sese {
 
