@@ -1,0 +1,23 @@
+{
+    "string": "a\r testing\n text\"",
+    "value": 0,
+    "nullable": null,
+    "boolean": true,
+    "object": {
+        "object_value1": "value1",
+        "object_value2": "value2"
+    },
+    "mixin_array": [
+        1,
+        2,
+        {
+            "object_value1": "value3",
+            "object_value2": "value4"
+        },
+        3,
+        [
+            4,
+            5
+        ]
+    ]
+}

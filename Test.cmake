@@ -133,3 +133,8 @@ add_test(NAME TestTcpServer COMMAND TestTcpServer)
 add_executable(TestTimer test/TestTimer/main.cpp)
 target_link_libraries(TestTimer SeseSharedLibrary)
 add_test(NAME TestTimer COMMAND TestTimer)
+
+# JsonUtil
+add_executable(TestJsonUtil test/TestJsonUtil/main.cpp)
+target_link_libraries(TestJsonUtil SeseSharedLibrary)
+add_test(NAME TestJsonUtil COMMAND TestJsonUtil)

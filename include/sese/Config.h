@@ -17,16 +17,6 @@
 #include "sese/native/Darwin/Config.h"
 #endif
 
-constexpr static const char *VENDOR_INTEL_STRING = "GenuineIntel";
-constexpr static const char *VENDOR_AMD_STRING = "AuthenticAMD";
-
-constexpr static const char *EXCEPTION_STRING = "Exception";
-constexpr static const char *EXCEPTION_HEADER_STRING = "Exception: ";
-constexpr static const char *EXCEPTION_LOGIC_STRING = "Logic exception";
-constexpr static const char *EXCEPTION_INDEX_OUT_OF_BOUNDS_STRING = "Index out of bounds";
-constexpr static const char *EXCEPTION_ILLEGAL_ARGUMENT_STRING = "Illegal argument exception";
-constexpr static const char *EXCEPTION_IO_STRING = "IO exception";
-
 /// 默认时区
 constexpr static int32_t TIME_DEFAULT_ZONE = 8;
 /// 世界协调时匹配格式
