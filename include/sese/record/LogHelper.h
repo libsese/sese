@@ -5,7 +5,8 @@
  * @brief 日志工具类
  */
 #pragma once
-#include "sese/record/Logger.h"
+#include <sese/record/Logger.h>
+#include <source_location>
 
 namespace sese {
 
@@ -32,13 +33,17 @@ namespace sese {
         void error(const char *format, ...);
 
         /// 输出 DEBUG 级别的日志
-        void debug(const char *file, int32_t line, const char *format, ...);
+        /// @deprecated 已知会和已有函数冲突
+        // void debug(const char *file, int32_t line, const char *format, ...);
         /// 输出 INFO 级别的日志
-        void info(const char *file, int32_t line, const char *format, ...);
+        /// @deprecated 已知会和已有函数冲突
+        // void info(const char *file, int32_t line, const char *format, ...);
         /// 输出 WARN 级别的日志
-        void warn(const char *file, int32_t line, const char *format, ...);
+        /// @deprecated 已知会和已有函数冲突
+        // void warn(const char *file, int32_t line, const char *format, ...);
         /// 输出 ERROR 级别的日志
-        void error(const char *file, int32_t line, const char *format, ...);
+        /// @deprecated 已知会和已有函数冲突
+        // void error(const char *file, int32_t line, const char *format, ...);
 
     private:
         void log(Level level, const char *file, int32_t line, const char *format, va_list ap);

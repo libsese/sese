@@ -44,30 +44,30 @@ void LogHelper::error(const char *format, ...) {
     va_end(ap);
 }
 
-void LogHelper::debug(const char *file, int32_t line, const char *format, ...) {
-    va_list ap;
-    va_start(ap, format);
-    log(sese::Level::DEBUG, file, line, format, ap);
-    va_end(ap);
-}
-
-void LogHelper::info(const char *file, int32_t line, const char *format, ...) {
-    va_list ap;
-    va_start(ap, format);
-    log(sese::Level::INFO, file, line, format, ap);
-    va_end(ap);
-}
-
-void LogHelper::warn(const char *file, int32_t line, const char *format, ...) {
-    va_list ap;
-    va_start(ap, format);
-    log(sese::Level::WARN, file, line, format, ap);
-    va_end(ap);
-}
-
-void sese::LogHelper::error(const char *file, int32_t line, const char *format, ...) {
-    va_list ap;
-    va_start(ap, format);
-    log(sese::Level::ERR, file, line, format, ap);
-    va_end(ap);
-}
+//void LogHelper::debug(const char *file, int32_t line, const char *format, ...) {
+//    va_list ap;
+//    va_start(ap, format);
+//    log(sese::Level::DEBUG, file, line, format, ap);
+//    va_end(ap);
+//}
+//
+//void LogHelper::info(const char *file, int32_t line, const char *format, ...) {
+//    va_list ap;
+//    va_start(ap, format);
+//    log(sese::Level::INFO, file, line, format, ap);
+//    va_end(ap);
+//}
+//
+//void LogHelper::warn(const char *file, int32_t line, const char *format, ...) {
+//    va_list ap;
+//    va_start(ap, format);
+//    log(sese::Level::WARN, file, line, format, ap);
+//    va_end(ap);
+//}
+//
+//void sese::LogHelper::error(const char *file, int32_t line, const char *format, ...) {
+//    va_list ap;
+//    va_start(ap, format);
+//    log(sese::Level::ERR, file, line, format, ap);
+//    va_end(ap);
+//}

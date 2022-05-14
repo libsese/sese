@@ -7,12 +7,17 @@
 #pragma once
 #include <sese/config/json/JsonTypes.h>
 #include <sese/Stream.h>
+#include <sese//NotInstantiable.h>
 #include <queue>
+
+#ifdef _WIN32
+#pragma warning(disable : 4624)
+#endif
 
 namespace sese::json {
 
     /// Json 序列化工具类
-    class API JsonUtil {
+    class API JsonUtil : NotInstantiable {
     public:
         using Tokens = std::queue<std::string>;
 
