@@ -25,7 +25,7 @@ int main() {
         helper.warn("No section named \"client\"");
     }
 
-    ConfigUtil::write2(file, PROJECT_PATH"/output/data.ini");
+    ConfigUtil::write2(file, "data.ini");
 
     return 0;
 }

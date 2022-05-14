@@ -7,10 +7,8 @@
 当前初始化顺序
 
 - Encoding Converter
-
 - Logger
 - Test
-- CPU Info
 - Socket (Windows Only)
 
 销毁顺序与初始化顺序相反

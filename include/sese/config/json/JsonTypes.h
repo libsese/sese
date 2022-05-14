@@ -1,3 +1,9 @@
+/**
+ * @file JsonTypes.h
+ * @brief Json 类型定义
+ * @author kaoru
+ * @date 2022年5月14日
+ */
 #pragma once
 #include <sese/Config.h>
 #include <map>
@@ -37,15 +43,16 @@ class API sese::json::Data {
 public:
     using Ptr = std::shared_ptr<Data>;
 
+    /**
+     * 设置 Data 类型
+     * @param type 类型
+     */
     explicit Data(DataType type);
     virtual ~Data() = default;
 
-    [[nodiscard]] const std::string &getName() const noexcept { return name; }
-    void setName(const std::string &newName) noexcept { this->name = newName; }
     [[nodiscard]] DataType getType() const noexcept { return type; }
 
 protected:
-    std::string name;   // 节点名称
     const DataType type;// 节点的数据类型 - 数据类型是不可变的
 };
 
@@ -57,9 +64,16 @@ public:
     explicit BasicData(std::string text) noexcept;
     [[nodiscard]] const std::string &raw() const noexcept { return data; }
 
-    // setter
+    /**
+     * 设置值为 null
+     */
     void setNull() noexcept;
-    // isString 为 true 会自动处理引号
+    /**
+     * 设置值为非 null
+     * @param newData 新的数据
+     * @param isString 是否为字符串
+     * @warning 最好不要手动调用此函数，考虑使用 setDataAs() 函数
+     */
     void setNotNull(std::string newData, bool isString = false) noexcept;
 
     template<typename T>
@@ -78,7 +92,10 @@ public:
     void
     setDataAs(std::enable_if_t<std::is_same_v<T, double>, double> t);
 
-    // getter
+    /**
+     * 返回一个值，指示该数据是否为 null
+     * @return
+     */
     [[nodiscard]] bool isNull() const { return _isNull; }
 
     template<typename T>

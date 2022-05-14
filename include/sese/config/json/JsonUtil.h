@@ -1,3 +1,9 @@
+/**
+ * @file JsonUtil.h
+ * @brief Json 序列化工具类
+ * @author kaoru
+ * @date 2022年5月14日
+ */
 #pragma once
 #include <sese/config/json/JsonTypes.h>
 #include <sese/Stream.h>
@@ -5,6 +11,7 @@
 
 namespace sese::json {
 
+    /// Json 序列化工具类
     class API JsonUtil {
     public:
         using Tokens = std::queue<std::string>;
