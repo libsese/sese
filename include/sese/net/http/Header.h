@@ -8,13 +8,18 @@
 
 namespace sese::http {
 
+    enum class HttpVersion {
+        VERSION_1_1,
+        VERSION_UNKNOWN
+    };
+
     /**
      * Http 头部键值集合
      */
     class API Header {
     public:
         explicit Header() = default;
-        Header(std::initializer_list<std::pair<const std::string &, const std::string &>> initializerList) noexcept;
+        Header(const std::initializer_list<std::pair<const std::string &, const std::string &>> &initializerList) noexcept;
         virtual ~Header() = default;
 
         void set(const std::string &key, const std::string &value) noexcept;

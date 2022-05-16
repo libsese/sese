@@ -12,6 +12,7 @@ namespace sese {
     AbstractStringBuffer::AbstractStringBuffer(size_t cap) noexcept {
         this->cap = cap;
         this->buffer = new char[cap];
+        memset(this->buffer, 0, cap);
     }
 
     AbstractStringBuffer::AbstractStringBuffer(const char *str) noexcept {
@@ -19,6 +20,7 @@ namespace sese {
         this->cap = (len / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
         this->buffer = new char[cap];
         memcpy(this->buffer, str, len);
+        memset(this->buffer + len, 0, this->cap - len);
     }
 
     AbstractStringBuffer::~AbstractStringBuffer() noexcept {
@@ -32,6 +34,7 @@ namespace sese {
         this->len = abstractStringBuffer.len;
         this->buffer = new char[this->cap];
         memcpy(this->buffer, abstractStringBuffer.buffer, this->len);
+        memset(this->buffer + this->len, 0, this->cap - this->len);
     }
 
     AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &&abstractStringBuffer) noexcept {
@@ -78,7 +81,7 @@ namespace sese {
     }
 
     void AbstractStringBuffer::clear() noexcept {
-        // memset(this->buffer, 0, cap);
+        memset(this->buffer, 0, cap);
         this->len = 0;
     }
 

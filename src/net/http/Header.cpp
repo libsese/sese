@@ -2,7 +2,7 @@
 
 using sese::http::Header;
 
-Header::Header(std::initializer_list<std::pair<const std::string &, const std::string &>> initializerList) noexcept {
+Header::Header(const std::initializer_list<std::pair<const std::string &, const std::string &>> &initializerList) noexcept {
     for (const auto &item: initializerList) {
         headers.insert(item);
     }

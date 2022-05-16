@@ -57,3 +57,6 @@ constexpr static const bool ENABLE_TEST = true;
 constexpr static const size_t SERVER_DEFAULT_THREADS = 4;
 /// TCP Server 默认监听队列大小
 constexpr static const size_t SERVER_MAX_CONNECTION = 511;
+
+/// Http Util 单行最大大小
+constexpr static const size_t HTTP_MAX_SINGLE_LINE = 1023;
