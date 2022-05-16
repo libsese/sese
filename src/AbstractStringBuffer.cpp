@@ -87,18 +87,21 @@ namespace sese {
 
     std::vector<std::string> AbstractStringBuffer::split(const std::string &str) const noexcept {
         std::vector<std::string> v;
-        auto s = std::string(this->buffer);
+//        auto s = std::string(this->buffer);
+        auto s = std::string_view(this->buffer);
         std::string::size_type pos1, pos2;
         pos2 = s.find(str);
         pos1 = 0;
         while (std::string::npos != pos2) {
-            v.push_back(s.substr(pos1, pos2 - pos1));
+//            v.push_back(s.substr(pos1, pos2 - pos1));
+            v.emplace_back(s.data() + pos1, pos2 - pos1);
 
             pos1 = pos2 + str.size();
             pos2 = s.find(str, pos1);
         }
         if (pos1 != s.length()) {
-            v.push_back(s.substr(pos1));
+//            v.push_back(s.substr(pos1));
+            v.emplace_back(s.data() + pos1);
         }
         return v;
     }
