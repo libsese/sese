@@ -65,6 +65,8 @@ set(ALL_SRCS
         src/net/IPAddress.cpp
         src/net/IPv4Address.cpp
         src/net/IPv6Address.cpp
+        src/net/http/Header.cpp
+        src/net/http/QueryString.cpp
         # 配置
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp

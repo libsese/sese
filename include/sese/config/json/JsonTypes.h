@@ -100,7 +100,11 @@ public:
 
     template<typename T>
     const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &
-    getDataAs(T &defaultValue);
+    getDataAs(const T &defaultValue);
+
+    template<typename T>
+    std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view>
+    getDataAs(const T &defaultValue);
 
     template<typename T>
     std::enable_if_t<std::is_same_v<T, int64_t>, int64_t>
@@ -120,11 +124,20 @@ protected:
 };
 
 template<typename T>
-const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &sese::json::BasicData::getDataAs(T &defaultValue) {
+const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &sese::json::BasicData::getDataAs(const T &defaultValue) {
     if (_isNull) {
         return defaultValue;
     } else {
         return data.substr(1, data.size() - 2);
+    }
+}
+
+template<typename T>
+std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view> sese::json::BasicData::getDataAs(const T &defaultValue) {
+    if (_isNull) {
+        return defaultValue;
+    } else {
+        return {data.c_str() + 1, data.size() - 2};
     }
 }
 

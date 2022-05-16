@@ -138,3 +138,8 @@ add_test(NAME TestTimer COMMAND TestTimer)
 add_executable(TestJsonUtil test/TestJsonUtil/main.cpp)
 target_link_libraries(TestJsonUtil SeseSharedLibrary)
 add_test(NAME TestJsonUtil COMMAND TestJsonUtil)
+
+# Http
+add_executable(TestHttp test/TestHttp/main.cpp)
+target_link_libraries(TestHttp SeseSharedLibrary)
+add_test(NAME TestHttp COMMAND TestHttp)

@@ -78,7 +78,7 @@ namespace sese {
     }
 
     void AbstractStringBuffer::clear() noexcept {
-        memset(this->buffer, 0, cap);
+        // memset(this->buffer, 0, cap);
         this->len = 0;
     }
 
