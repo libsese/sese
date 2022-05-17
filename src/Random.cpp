@@ -16,7 +16,7 @@ namespace sese {
      */
     struct LongLongSplitter {
         uint32_t low;
-        [[maybe_unused]] uint32_t high;
+        uint32_t high; // NOLINT
     };
 
     uint64_t Random::next() noexcept {

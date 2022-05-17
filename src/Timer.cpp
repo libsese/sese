@@ -34,7 +34,17 @@ Task::Ptr Timer::delay(std::function<void()> callback, uint8_t sec, uint8_t min,
 
 bool Timer::cancel(const Task::Ptr &task) {
     Locker locker(mutex);
-    return 0 != std::erase(timingTasks[task->tSec], task);
+    // CXX 20 Only
+    // return 0 != std::erase(timingTasks[task->tSec], task);
+    for (auto iterator = timingTasks[task->tSec].begin();
+         iterator != timingTasks[task->tSec].end();
+         iterator++) {
+        if (*iterator == task) {
+            timingTasks[task->tSec].erase(iterator);
+            return true;
+        }
+    }
+    return false;
 }
 
 void Timer::shutdown() {

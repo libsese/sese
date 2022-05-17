@@ -3,8 +3,6 @@ name: Windows
 on:
   push:
   pull_request:
-    branches:
-      - dev
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -27,7 +25,7 @@ jobs:
 
       - name: Build
         # Build your program with the given configuration
-        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} -j 4
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} -j 8
 
       - name: Test
         working-directory: ${{github.workspace}}/build
