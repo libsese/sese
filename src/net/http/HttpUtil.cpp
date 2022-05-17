@@ -86,7 +86,7 @@ bool sese::http::HttpUtil::sendRequest(const sese::Stream::Ptr &dest, const sese
     if (-1 == dest->write(request->getUrl().c_str(), len)) return false;
 
     if (request->getVersion() == HttpVersion::VERSION_1_1) {
-        if (-1 == dest->write(" HTTP/1.1\r\n", 13)) return false;
+        if (-1 == dest->write(" HTTP/1.1\r\n", 11)) return false;
     } else {
         return false;
     }

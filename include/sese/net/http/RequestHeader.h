@@ -19,7 +19,7 @@ namespace sese::http {
 
         RequestHeader() = default;
 
-        RequestHeader(const std::initializer_list<std::pair<const std::string &, const std::string &>> &initializerList)
+        RequestHeader(const std::initializer_list<KeyValueType> &initializerList)
             : Header(initializerList) {}
 
         [[nodiscard]] RequestType getType() const { return type; }

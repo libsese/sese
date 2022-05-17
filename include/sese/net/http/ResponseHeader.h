@@ -12,7 +12,7 @@ namespace sese::http {
 
         ResponseHeader() = default;
 
-        ResponseHeader(const std::initializer_list<std::pair<const std::string &, const std::string &>> &initializerList)
+        ResponseHeader(const std::initializer_list<KeyValueType> &initializerList)
             : Header(initializerList) {}
 
         void setCode(uint16_t responseCode) noexcept { statusCode = responseCode; }
