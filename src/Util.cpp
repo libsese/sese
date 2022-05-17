@@ -59,3 +59,7 @@ namespace sese {
     }
 
 }// namespace sese
+
+const char *getSpecificVersion() {
+    return SESE_MAJOR_VERSION "." SESE_MINOR_VERSION "." SESE_REPO_HASH;
+}

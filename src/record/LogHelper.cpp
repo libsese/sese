@@ -1,4 +1,5 @@
 #include "sese/record/LogHelper.h"
+#include "sese/thread/Thread.h"
 #include "sese/Util.h"
 #include <cstdarg>
 

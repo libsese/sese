@@ -6,12 +6,11 @@
  */
 #pragma once
 #include "sese/Config.h"
-#include "sese/Singleton.h"
-#include "sese/record/Logger.h"
-#include "sese/thread/Thread.h"
-#include "sese/Test.h"
 
 namespace sese {
+
+    // 使用预声明减少头文件引用
+    enum class Level;
 
     /**
      * @brief 字符比较器
@@ -55,8 +54,32 @@ namespace sese {
      */
     extern API void sleep(uint32_t second);
 
+    /**
+     * 获取报错信息
+     * @param error 错误代码
+     * @return 错误描述
+     */
     extern API std::string getErrorString(int32_t error = errno);
+
+    /**
+     * std::make_shared 搭配 std::initializer_list 使用
+     * @tparam ReturnType 预计返回类型的智能指针
+     * @tparam InitType std::initializer_list 模板类型
+     * @param list 初始化列表
+     * @return 智能指针
+     */
+    template<typename ReturnType, typename InitType>
+    std::shared_ptr<ReturnType> make_shared_from_list(std::initializer_list<InitType> list) {
+        return std::make_shared<ReturnType>(std::move(list));
+    }
+
 }// namespace sese
+
+/**
+ * 获取详细的信息(C 接口)
+ * @return 版本信息字符串
+ */
+extern "C" const char *getSpecificVersion();
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)

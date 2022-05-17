@@ -1,9 +1,7 @@
-# 项目信息
+# 项目版本信息
 cmake_minimum_required(VERSION 3.12)
 set(SESE_MAJOR_VERSION 0)
 set(SESE_MINOR_VERSION 2)
-string(TIMESTAMP SESE_PATCH_VERSION %s)
-project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}.${SESE_PATCH_VERSION})
 
 # Git 版本信息
 set(SESE_REPO_HASH)
@@ -12,16 +10,18 @@ include(Git.cmake)
 get_git_hash(SESE_REPO_HASH)
 get_git_branch(SESE_REPO_BRANCH)
 
+project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
+
 # 项目详情
 set(CMAKE_CXX_STANDARD 20)
 include_directories(${PROJECT_SOURCE_DIR}/include/)
 enable_testing()
 
 # 编译预设宏
-message(STATUS "Project Version : ${CMAKE_PROJECT_VERSION}-${SESE_REPO_BRANCH}.${SESE_REPO_HASH}")
-add_definitions(-DSESE_MAJOR_VERSION=${SESE_MAJOR_VERSION})
-add_definitions(-DSESE_MINOR_VERSION=${SESE_MINOR_VERSION})
-add_definitions(-DSESE_PATCH_VERSION=${SESE_PATCH_VERSION})
+message(STATUS "Project Version: ${CMAKE_PROJECT_VERSION}.${SESE_REPO_HASH}")
+message(STATUS "Repo Info: ${SESE_REPO_BRANCH}-${SESE_REPO_HASH}")
+add_definitions(-DSESE_MAJOR_VERSION="${SESE_MAJOR_VERSION}")
+add_definitions(-DSESE_MINOR_VERSION="${SESE_MINOR_VERSION}")
 add_definitions(-DSESE_REPO_HASH="${SESE_REPO_HASH}")
 add_definitions(-DSESE_REPO_BRANCH="${SESE_REPO_BRANCH}")
 add_definitions(-DPROJECT_PATH="${PROJECT_SOURCE_DIR}")
@@ -75,9 +75,9 @@ set(ALL_SRCS
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
-message(STATUS "C Compiler : ${CMAKE_C_COMPILER}")
-message(STATUS "CXX Compiler : ${CMAKE_CXX_COMPILER}")
-message(STATUS "NATIVE PATH : ${NATIVE_PATH}")
+message(STATUS "C Compiler: ${CMAKE_C_COMPILER}")
+message(STATUS "CXX Compiler: ${CMAKE_CXX_COMPILER}")
+message(STATUS "NATIVE PATH: ${NATIVE_PATH}")
 
 set(NATIVE_SRCS
         ${NATIVE_PATH}/Test.cpp
@@ -126,7 +126,7 @@ set_target_properties(
         PROPERTIES
         OUTPUT_NAME sese
         VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}
-)
+        )
 
 set_target_properties(
         SeseStaticLibrary
@@ -134,7 +134,7 @@ set_target_properties(
         OUTPUT_NAME sese
         VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}
         SUFFIX ".a"
-)
+        )
 
 include(Test.cmake)
 
@@ -144,12 +144,12 @@ write_basic_package_version_file(
         ${PROJECT_SOURCE_DIR}/output/seseConfigVersion.cmake
         VERSION ${PROJECT_VERSION}
         COMPATIBILITY ExactVersion
-)
+        )
 
 configure_package_config_file(
         seseConfig.cmake.in "${PROJECT_SOURCE_DIR}/output/seseConfig.cmake"
         INSTALL_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
-)
+        )
 
 install(TARGETS SeseSharedLibrary SeseStaticLibrary
         EXPORT ${PROJECT_NAME}Targets

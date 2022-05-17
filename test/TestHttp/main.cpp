@@ -3,9 +3,11 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/record/LogHelper.h>
 #include <sese/net/Socket.h>
-#include <sese/ByteBuilder.h>
 #include <sese/Test.h>
 #include <sese/thread/Thread.h>
+#include <sese/Util.h>
+
+#define PORT 7892
 
 using sese::IPv4Address;
 using sese::LogHelper;
@@ -18,7 +20,7 @@ using sese::http::RequestHeader;
 using sese::http::RequestType;
 using sese::http::ResponseHeader;
 
-LogHelper helper("fHTTP"); //NOLINT
+LogHelper helper("fHTTP");//NOLINT
 
 void testQueryString() {
     std::string rawUrl = "/index.html?val0=888&val1=&val2=1";
@@ -36,7 +38,7 @@ void testQueryString() {
 }
 
 void testHttpServer() {
-    auto localAddress = IPv4Address::create("127.0.0.1", 7891);
+    auto localAddress = IPv4Address::create("127.0.0.1", PORT);
     auto serverSocket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP);
     Test::assert(helper, 0 == serverSocket->bind(localAddress), -1);
     serverSocket->listen(5);
@@ -50,10 +52,11 @@ void testHttpServer() {
         helper.info("request %s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto responseHeader = std::make_shared<ResponseHeader>();
+    auto responseHeader = sese::make_shared_from_list<ResponseHeader, ResponseHeader::KeyValueType>(
+            {{"Location", "https://github.com/SHIINASAMA/sese"},
+             {"Connection", "close"}}
+    );
     responseHeader->setCode(302);
-    responseHeader->set("Location", "https://github.com/SHIINASAMA/sese");
-    responseHeader->set("Connection", "close");
     HttpUtil::sendResponse(clientSocket, responseHeader);
 
     clientSocket->shutdown(Socket::ShutdownMode::Both);
@@ -62,7 +65,7 @@ void testHttpServer() {
 }
 
 void testHttpClient() {
-    auto remoteAddress = IPv4Address::create("127.0.0.1", 7891);
+    auto remoteAddress = IPv4Address::create("127.0.0.1", PORT);
     auto clientSocket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP);
 
     Test::assert(helper, 0 == clientSocket->connect(remoteAddress), -1);
@@ -88,6 +91,7 @@ int main() {
 
     Thread thread(testHttpServer, "Server Thread");
     thread.start();
+    sese::sleep(1);
     testHttpClient();
     thread.join();
 

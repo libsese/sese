@@ -31,17 +31,12 @@ namespace sese {
         /**
          * @return 返回主要版本号
          */
-        static int getMajorVersion() noexcept;
+        static const char *getMajorVersion() noexcept;
 
         /**
          * @return 返回次要版本号
          */
-        static int getMinorVersion() noexcept;
-
-        /**
-         * @return 返回补丁版本号
-         */
-        static long getPatchVersion() noexcept;
+        static const char *getMinorVersion() noexcept;
 
         /**
          * @return 返回构建日期字符串

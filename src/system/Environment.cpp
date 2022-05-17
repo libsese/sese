@@ -18,16 +18,12 @@ namespace sese {
         return SESE_REPO_BRANCH;
     }
 
-    int Environment::getMajorVersion() noexcept {
+    const char *Environment::getMajorVersion() noexcept {
         return SESE_MAJOR_VERSION;
     }
 
-    int Environment::getMinorVersion() noexcept {
+    const char *Environment::getMinorVersion() noexcept {
         return SESE_MINOR_VERSION;
-    }
-
-    long Environment::getPatchVersion() noexcept {
-        return SESE_PATCH_VERSION;
     }
 
     const char *Environment::getBuildDate() noexcept {

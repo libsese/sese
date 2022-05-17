@@ -10,10 +10,10 @@ int main() {
     helper.info("Your operating system: %s",
                 Environment::getOperateSystemType());
 
-    helper.info("libsese version: %d.%d.%ld",
+    helper.info("libsese version: %d.%d.%s",
                 Environment::getMajorVersion(),
                 Environment::getMinorVersion(),
-                Environment::getPatchVersion());
+                Environment::getRepoHash());
 
     helper.info("libsese repo on the %s branch: %s",
                 Environment::getRepoBranch(),

@@ -26,7 +26,7 @@ namespace sese::http {
     class API Header {
     public:
         using Ptr = std::shared_ptr<Header>;
-        using KeyValueType = std::pair<const std::string &, const std::string &>;
+        using KeyValueType = std::pair<std::string, std::string>;
 
         explicit Header() = default;
         Header(const std::initializer_list<KeyValueType> &initializerList) noexcept;

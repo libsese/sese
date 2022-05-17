@@ -6,6 +6,7 @@
  */
 #pragma once
 #include "sese/Util.h"
+#include <stdexcept>
 
 #ifdef _WIN32
 #pragma warning(disable : 4018)
@@ -28,7 +29,7 @@ namespace sese {
         explicit Array() noexcept = default;
 
         Array(const std::initializer_list<T> &v) {
-            if (v.size() > len) throw std::logic_error("Out of bounds");
+            if (v.size() > len) throw std::out_of_range("Out of bounds");
             int index = 0;
             for (auto &i: v) {
                 this->values[index] = i;
@@ -41,13 +42,13 @@ namespace sese {
     public:
         T &operator[](int i) {
             // if (len <= i || i < 0) throw IndexOutOfBoundsException();
-            if (!CheckRange(i, len)) throw std::logic_error("Out of bounds");
+            if (!CheckRange(i, len)) throw std::out_of_range("Out of bounds");
             return values[i];
         }
 
         const T &operator[](int i) const {
             // if (len <= i || i < 0) throw IndexOutOfBoundsException();
-            if (!CheckRange(i, len)) throw std::logic_error("Out of bounds");
+            if (!CheckRange(i, len)) throw std::out_of_range("Out of bounds");
             return values[i];
         }
     };
