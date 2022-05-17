@@ -1,3 +1,9 @@
+/**
+ * @file QueryString.h
+ * @author kaoru
+ * @brief 查询字符串
+ * @date 2022年05月17日
+ */
 #pragma once
 #include <sese/Config.h>
 #include <map>

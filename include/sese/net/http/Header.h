@@ -1,3 +1,9 @@
+/**
+ * @file Header.h
+ * @author kaoru
+ * @brief Http 头部键值集合
+ * @date 2022年05月17日
+ */
 #pragma once
 #include <sese/Config.h>
 #include <map>
@@ -8,6 +14,7 @@
 
 namespace sese::http {
 
+    /// @brief Http 版本
     enum class HttpVersion {
         VERSION_1_1,
         VERSION_UNKNOWN

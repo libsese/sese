@@ -1,8 +1,15 @@
+/**
+ * @file RequestHeader.h
+ * @author kaoru
+ * @brief 请求头类
+ * @date 2022年05月17日
+ */
 #pragma once
 #include <sese/net/http/Header.h>
 
 namespace sese::http {
 
+    /// @brief 请求类型
     enum class RequestType {
         Get,
         Post,

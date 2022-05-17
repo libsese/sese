@@ -1,3 +1,9 @@
+/**
+ * @file ResponseHeader.h
+ * @author your name (you@domain.com)
+ * @brief 响应头类
+ * @date 2022年05月17日
+ */
 #pragma once
 #include <sese/net/http/Header.h>
 
