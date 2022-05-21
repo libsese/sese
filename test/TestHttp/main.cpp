@@ -23,12 +23,12 @@ using sese::http::ResponseHeader;
 LogHelper helper("fHTTP");//NOLINT
 
 void testQueryString() {
-    std::string rawUrl = "/index.html?val0=888&val1=&val2=1";
-    helper.info("rawUrl: %s", rawUrl.c_str());
+    std::string url = "/index.html?val0=888&val1=&val2=1";
+    helper.info("url: %s", url.c_str());
     auto queryString = QueryString();
-    queryString.parse(rawUrl);
+    queryString.parse(url);
 
-    helper.info("url: %s", queryString.getUrl().c_str());
+    helper.info("uri: %s", queryString.getUri().c_str());
     for (const auto &item: queryString) {
         helper.info("%s: %s", item.first.c_str(), item.second.c_str());
     }

@@ -18,7 +18,7 @@ namespace sese::http {
 
     /**
      * @brief 请求头类
-     * @warning 字段 url 未进行任何处理（URL + QueryString）
+     * @warning 字段 uri 未进行任何处理（URL + QueryString）
      */
     class API RequestHeader : public Header {
     public:

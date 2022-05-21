@@ -17,11 +17,11 @@ void QueryString::set(const std::string &key, const std::string &value) noexcept
     keyValueSet[key] = value;
 }
 
-void QueryString::parse(const std::string &rawUrl) noexcept {
+void QueryString::parse(const std::string &url) noexcept {
     StringBuilder builder;
     bool hasQueryString = false;
     auto start = 0;
-    for (char ch: rawUrl) {
+    for (char ch: url) {
         start++;
         if (ch == '?') {
             hasQueryString = true;
@@ -30,12 +30,12 @@ void QueryString::parse(const std::string &rawUrl) noexcept {
             builder.append(ch);
         }
     }
-    url = builder.toString();
+    uri = builder.toString();
 
     if (hasQueryString) {
         builder.clear();
 
-        std::string_view view{rawUrl.c_str() + start, rawUrl.size() - start};
+        std::string_view view{url.c_str() + start, url.size() - start};
         // 仅有 '?'
         if (view.size() == 1) {
             return;
@@ -74,7 +74,7 @@ void QueryString::parse(const std::string &rawUrl) noexcept {
 
 std::string QueryString::toString() noexcept {
     StringBuilder builder;
-    builder.append(url);
+    builder.append(uri);
     if (!keyValueSet.empty()) {
         builder.append('?');
 

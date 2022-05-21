@@ -19,11 +19,11 @@ namespace sese::http {
      */
     class API QueryString {
     public:
-        void parse(const std::string &rawUrl) noexcept;
+        void parse(const std::string &url) noexcept;
         std::string toString() noexcept;
 
-        [[nodiscard]] const std::string &getUrl() const { return url; }
-        void setUrl(const std::string &newUrl) { this->url = newUrl; }
+        [[nodiscard]] const std::string &getUri() const { return uri; }
+        void setUri(const std::string &newUrl) { this->uri = newUrl; }
 
         void set(const std::string &key, const std::string &value) noexcept;
         const std::string &get(const std::string &key, const std::string &defaultValue) noexcept;
@@ -34,7 +34,7 @@ namespace sese::http {
         inline std::map<std::string, std::string>::iterator end() noexcept { return keyValueSet.end(); }
 
     protected:
-        std::string url;
+        std::string uri;
         std::map<std::string, std::string> keyValueSet;
     };
 }// namespace sese::http

@@ -39,26 +39,26 @@ bool HttpUtil::recvRequest(const Stream::Ptr &source, const RequestHeader::Ptr &
     builder.clear();
 
     // method
-    if (0 == firstLines[0].compare("GET")) {
+    if ("GET" == firstLines[0]) {
         request->setType(RequestType::Get);
-    } else if (0 == firstLines[0].compare("POST")) {
+    } else if ("POST" == firstLines[0]) {
         request->setType(RequestType::Post);
     } else {
         request->setType(RequestType::Another);
     }
 
-    // url
+    // uri
     request->setUrl(firstLines[1]);
 
     // version
-    if (0 == firstLines[2].compare("HTTP/1.1")) {
+    if ("HTTP/1.1" == firstLines[2]) {
         request->setVersion(HttpVersion::VERSION_1_1);
     } else {
         request->setVersion(HttpVersion::VERSION_UNKNOWN);
     }
 
     // keys & values
-    if(!recvHeader(source, builder, request)) return false;
+    if (!recvHeader(source, builder, request)) return false;
 
     return true;
 }
@@ -73,7 +73,7 @@ bool sese::http::HttpUtil::sendRequest(const sese::Stream::Ptr &dest, const sese
         return false;
     }
 
-    // url
+    // uri
     if (-1 == dest->write(request->getUrl().c_str(), request->getUrl().length())) return false;
 
     // version
@@ -85,7 +85,6 @@ bool sese::http::HttpUtil::sendRequest(const sese::Stream::Ptr &dest, const sese
 
     // keys & values
     if (!sendHeader(dest, request)) return false;
-    if (-1 == dest->write("\r\n", 2)) return false;
 
     return true;
 }
@@ -97,14 +96,14 @@ bool HttpUtil::recvResponse(const Stream::Ptr &source, const ResponseHeader::Ptr
     builder.clear();
 
     // version
-    if (0 == firstLines[0].compare("HTTP/1.1")) {
+    if ("HTTP/1.1" == firstLines[0]) {
         response->setVersion(HttpVersion::VERSION_1_1);
     } else {
         response->setVersion(HttpVersion::VERSION_UNKNOWN);
     }
 
     // status code
-    response->setCode((uint16_t)_atoi64(firstLines[1].c_str()));
+    response->setCode((uint16_t) _atoi64(firstLines[1].c_str()));
 
     // keys & values
     if (!recvHeader(source, builder, response)) return false;
@@ -127,7 +126,6 @@ bool HttpUtil::sendResponse(const sese::Stream::Ptr &dest, const sese::http::Res
 
     // keys & values
     if (!sendHeader(dest, response)) return false;
-    if (-1 == dest->write("\r\n", 2)) return false;
 
     return true;
 }
@@ -152,7 +150,7 @@ bool HttpUtil::recvHeader(const Stream::Ptr &source, StringBuilder &builder, con
 
 bool HttpUtil::sendHeader(const Stream::Ptr &dest, const Header::Ptr &header) noexcept {
     size_t len;
-    for (auto pair: *header) {
+    for (const auto &pair: *header) {
         len = pair.first.length();
         if (-1 == dest->write(pair.first.c_str(), len)) return false;
         if (-1 == dest->write(": ", 2)) return false;
@@ -160,7 +158,6 @@ bool HttpUtil::sendHeader(const Stream::Ptr &dest, const Header::Ptr &header) no
         if (-1 == dest->write(pair.second.c_str(), len)) return false;
         if (-1 == dest->write("\r\n", 2)) return false;
     }
-
     if (-1 == dest->write("\r\n", 2)) return false;
     return true;
 }
