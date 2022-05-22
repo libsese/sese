@@ -143,3 +143,8 @@ add_test(NAME TestJsonUtil COMMAND TestJsonUtil)
 add_executable(TestHttp test/TestHttp/main.cpp)
 target_link_libraries(TestHttp SeseSharedLibrary)
 add_test(NAME TestHttp COMMAND TestHttp)
+
+# ObjectPool
+add_executable(TestObjectPool test/TestObjectPool/main.cpp)
+target_link_libraries(TestObjectPool SeseSharedLibrary)
+add_test(NAME TestObjectPool COMMAND TestObjectPool)
