@@ -14,6 +14,7 @@ project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
 
 # 项目详情
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories(${PROJECT_SOURCE_DIR}/include/)
 enable_testing()
 
@@ -38,6 +39,8 @@ set(ALL_SRCS
         src/AbstractStringBuffer.cpp
         src/ArgParser.cpp
         src/AbstractByteBuffer.cpp
+        src/BufferedInputStream.cpp
+        src/BufferedOutputStream.cpp
         src/DateTime.cpp
         src/TimeSpan.cpp
         src/DateTimeFormatter.cpp
