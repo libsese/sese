@@ -1,8 +1,9 @@
 #pragma once
-#include <sese/thread/Locker.h>
 #include <sese/Config.h>
+#include <sese/thread/Locker.h>
+#include <atomic>
 #include <functional>
-#include <queue>
+#include <list>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -10,38 +11,47 @@
 
 namespace sese {
 
-    template<typename T>
-    class API ObjectPool {
+    class API Recycler;
+    class API Recyclable {
     public:
-        using Type = std::shared_ptr<T>;
+        friend class Recycler;
+        explicit Recyclable() noexcept = default;
+        virtual void recycle() noexcept;
 
-        virtual ~ObjectPool() = default;
+        [[nodiscard]] Recycler *getRecycler() const { return recycler; }
 
-        Type borrowObject();
-        void returnObject(const Type &object);
+    private:
+        void setRecycler(Recycler *pRecycler) { this->recycler = pRecycler; }
+        Recycler *recycler = nullptr;
+    };
+
+    class API Recycler {
+    public:
+        using FuncNewObject = std::function<Recyclable *()>;
+        using ObjectStack = std::list<Recyclable *>;
+        using SizeType = size_t;
+        using MutexType = std::mutex;
+
+        explicit Recycler(size_t baseSize, const Recycler::FuncNewObject &funcNewObject) noexcept;
+        ~Recycler() noexcept;
+
+        Recyclable *get() noexcept;
+
+        template<typename T>
+        inline T *getAs() {
+            return dynamic_cast<T *>(get());
+        }
+
+        // todo 彻底释放部分资源
+        void recycle() noexcept;
+
+        void recycle(Recyclable *recyclable) noexcept;
 
     protected:
-        std::mutex mutex;
-        std::queue<Type> objectPool;
+        MutexType mutex;
+        FuncNewObject newObject;
+        SizeType size = 0;
+        SizeType available = 0;
+        ObjectStack stack;
     };
 }// namespace sese
-
-template<typename T>
-typename sese::ObjectPool<T>::Type sese::ObjectPool<T>::borrowObject() {
-    mutex.lock();
-    if(objectPool.empty()) {
-        mutex.unlock();
-        return std::make_shared<T>();
-    } else {
-        auto object = objectPool.front();
-        objectPool.pop();
-        mutex.unlock();
-        return object;
-    }
-}
-
-template<typename T>
-void sese::ObjectPool<T>::returnObject(const Type &object) {
-    Locker locker(mutex);
-    objectPool.emplace(object);
-}
