@@ -148,3 +148,8 @@ add_test(NAME TestHttp COMMAND TestHttp)
 add_executable(TestObjectPool test/TestObjectPool/main.cpp)
 target_link_libraries(TestObjectPool SeseSharedLibrary)
 add_test(NAME TestObjectPool COMMAND TestObjectPool)
+
+# BufferedStream
+add_executable(TestBufferedStream test/TestBufferedStream/main.cpp)
+target_link_libraries(TestBufferedStream SeseSharedLibrary)
+add_test(NAME TestBufferedStream COMMAND TestBufferedStream)

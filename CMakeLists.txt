@@ -39,8 +39,7 @@ set(ALL_SRCS
         src/AbstractStringBuffer.cpp
         src/ArgParser.cpp
         src/AbstractByteBuffer.cpp
-        src/BufferedInputStream.cpp
-        src/BufferedOutputStream.cpp
+        src/BufferedStream.cpp
         src/DateTime.cpp
         src/TimeSpan.cpp
         src/DateTimeFormatter.cpp
