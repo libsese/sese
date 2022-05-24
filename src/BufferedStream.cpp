@@ -1,4 +1,5 @@
 #include <sese/BufferedStream.h>
+#include <cstring>
 
 using sese::BufferedStream;
 
@@ -14,7 +15,7 @@ BufferedStream::~BufferedStream() noexcept {
     free(buffer);
 }
 
-int64_t BufferedStream::preRead() {
+inline int64_t BufferedStream::preRead() {
     // 尝试使用目标流填充缓存
     auto read = source->read(buffer, cap);
     pos = 0;
