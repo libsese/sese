@@ -17,12 +17,11 @@ namespace sese {
         friend class Recycler;
         explicit Recyclable() noexcept = default;
         virtual void recycle() noexcept;
-
-        [[nodiscard]] Recycler *getRecycler() const { return recycler; }
+        [[nodiscard]] bool isRecycled() const noexcept { return _isRecycled; }
 
     private:
-        void setRecycler(Recycler *pRecycler) { this->recycler = pRecycler; }
         Recycler *recycler = nullptr;
+        bool _isRecycled = true;
     };
 
     class API Recycler {
