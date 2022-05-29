@@ -153,3 +153,8 @@ add_test(NAME TestObjectPool COMMAND TestObjectPool)
 add_executable(TestBufferedStream test/TestBufferedStream/main.cpp)
 target_link_libraries(TestBufferedStream SeseSharedLibrary)
 add_test(NAME TestBufferedStream COMMAND TestBufferedStream)
+
+# Concurrent
+add_executable(TestConcurrent test/TestConcurrent/main.cpp)
+target_link_libraries(TestConcurrent SeseSharedLibrary)
+add_test(NAME TestConcurrent COMMAND TestConcurrent)
