@@ -1,3 +1,9 @@
+/**
+ * @file CASDefine.h
+ * @brief 包含并发数据结构所用 API 和 类型
+ * @author kaoru
+ * @date 2022年5月31日
+ */
 #pragma once
 #include <sese/Config.h>
 

@@ -10,6 +10,10 @@
 
 namespace sese::concurrent {
 
+    /**
+     * @brief 非阻塞线程安全队列
+     * @tparam T 数据类型
+     */
     template<typename T>
     class LinkedQueue {
     public:

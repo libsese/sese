@@ -1,8 +1,18 @@
+/**
+ * @file LinkedStack.h
+ * @brief 非阻塞线程安全栈
+ * @author kaoru
+ * @date 2022年5月31日
+ */
 #pragma once
 #include <sese/concurrent/CASDefine.h>
 
 namespace sese::concurrent {
 
+    /**
+     * @brief 非阻塞线程安全栈
+     * @tparam T 数据类型
+     */
     template<typename T>
     class LinkedStack {
     public:
