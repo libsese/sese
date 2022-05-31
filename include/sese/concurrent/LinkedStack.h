@@ -1,14 +1,15 @@
 #pragma once
 #include <sese/concurrent/CASDefine.h>
-#include <atomic>
 
 namespace sese::concurrent {
 
     template<typename T>
     class LinkedStack {
     public:
+        using NodeType = Node<T>;
+
         virtual ~LinkedStack() noexcept {
-            auto toDel = head.load();
+            auto toDel = (NodeType *)head;
             while (toDel != nullptr) {
                 auto next = toDel->next;
                 delete toDel;
@@ -18,7 +19,7 @@ namespace sese::concurrent {
 
         [[nodiscard]] size_t size() const noexcept {
             size_t size = 0;
-            auto p = head.load();
+            auto p = head;
             while (p != nullptr) {
                 size++;
                 p = p->next;
@@ -27,27 +28,32 @@ namespace sese::concurrent {
         }
 
         [[nodiscard]] bool empty() const noexcept {
-            return head.load() == nullptr;
+            return head == nullptr;
         }
 
         void push(const T &value) {
-            auto newNode = new Node<int>;
+            auto newNode = new NodeType;
             newNode->value = value;
-            newNode->next = head.load();
-            while (!head.compare_exchange_weak(newNode->next, newNode)) {}
+            newNode->next = head;
+            while (!compareAndSwapPointer((void *volatile *)&head, newNode->next, newNode)) {
+                newNode->next = head;
+            }
         }
 
         void push(T &&value) noexcept {
-            auto newNode = new Node<int>;
+            auto newNode = new NodeType;
             newNode->value = std::move(value);
-            newNode->next = head.load();
-            while (!head.compare_exchange_weak(newNode->next, newNode)) {}
+            newNode->next = head;
+            while (!compareAndSwapPointer((void *volatile *)&head, newNode->next, newNode)) {
+                newNode->next = head;
+            }
+
         }
 
         T pop(const T &defaultValue) noexcept {
-            auto node = head.load();
+            auto node = head;
             if (node != nullptr) {
-                while (!head.compare_exchange_weak(node, node->next)) {}
+                while (!compareAndSwapPointer((void *volatile *)&head, node->next, node)) {}
                 auto value = node->value;
                 delete node;
                 return value;
@@ -57,9 +63,9 @@ namespace sese::concurrent {
         }
 
         T pop(T &&defaultValue) noexcept {
-            auto node = head.load();
+            auto node = head;
             if (node != nullptr) {
-                while (!head.compare_exchange_weak(node, node->next)) {}
+                while (!compareAndSwapPointer((void *volatile *)&head, node->next, node)) {}
                 auto value = node->value;
                 delete node;
                 return value;
@@ -69,7 +75,7 @@ namespace sese::concurrent {
         }
 
     private:
-        std::atomic<Node<T> *> head = nullptr;
+        NodeType *head = nullptr;
     };
 
 }// namespace sese::concurrent

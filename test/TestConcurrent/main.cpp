@@ -45,10 +45,34 @@ void testLinkedStack() {
     Test::assert(helper, list.size() == 100);
 }
 
+void testLinkedQueue() {
+    LinkedQueue<int> queue;
+    Thread th3([&queue]() {
+        for (int i = 0; i < 1000; i += 2) {
+            queue.push(i);
+        }
+    },
+               "thread3");
+    Thread th4([&queue]() {
+        for (int i = 1; i < 1000; i += 2) {
+            queue.push(i);
+        }
+    },
+               "thread4");
+
+    th3.start();
+    th4.start();
+
+    th3.join();
+    th4.join();
+
+    Test::assert(helper, queue.size() == 1000);
+}
+
 int main() {
     testCompareAndSwap();
     testLinkedStack();
-    // testLinkedQueue();
+    testLinkedQueue();
 
     return 0;
 }
