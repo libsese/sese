@@ -48,14 +48,19 @@ void testLinkedStack() {
 void testLinkedQueue() {
     LinkedQueue<int> queue;
     Thread th3([&queue]() {
-        for (int i = 0; i < 1000; i += 2) {
+        for (int i = 0; i < 1000; i++) {
             queue.push(i);
         }
     },
                "thread3");
     Thread th4([&queue]() {
-        for (int i = 1; i < 1000; i += 2) {
-            queue.push(i);
+        for (int i = 0; i < 1000;) {
+            if(queue.pop(-1) != -1) {
+                i++;
+                helper.info("pop succ");
+            } else {
+                helper.info("pop fail");
+            }
         }
     },
                "thread4");
@@ -65,13 +70,11 @@ void testLinkedQueue() {
 
     th3.join();
     th4.join();
-
-    Test::assert(helper, queue.size() == 1000);
 }
 
 int main() {
-    testCompareAndSwap();
-    testLinkedStack();
+//    testCompareAndSwap();
+//    testLinkedStack();
     testLinkedQueue();
 
     return 0;
