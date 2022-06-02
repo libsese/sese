@@ -51,7 +51,6 @@ set(ALL_SRCS
         src/Test.cpp
         src/Timer.cpp
         src/Initializer.cpp
-        src/ObjectPool.cpp
         # 编码
         src/convert/EncodingConverter.cpp
         src/convert/Base64Converter.cpp
