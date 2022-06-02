@@ -23,7 +23,7 @@ namespace sese {
      */
     class API DateTime {
     public:
-        typedef std::shared_ptr<DateTime> Ptr;
+        using Ptr = std::unique_ptr<DateTime>;
 
         static DateTime::Ptr now(int32_t utc = TIME_DEFAULT_ZONE) noexcept;
 

@@ -14,7 +14,7 @@ namespace sese::http {
      */
     class API ResponseHeader : public Header {
     public:
-        using Ptr = std::shared_ptr<ResponseHeader>;
+        using Ptr = std::unique_ptr<ResponseHeader>;
 
         ResponseHeader() = default;
 

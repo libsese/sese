@@ -30,7 +30,7 @@ namespace sese {
          */
         explicit BaseStreamReader(const Stream::Ptr &source) {
             this->sourceStream = source;
-            this->bufferStream = std::make_shared<ByteBuilder>();
+            this->bufferStream = std::make_unique<ByteBuilder>();
         }
 
         /**

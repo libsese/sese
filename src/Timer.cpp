@@ -8,7 +8,7 @@ using sese::Timer;
 using Task = sese::Timer::Task;
 
 Timer::Timer() {
-    thread = std::make_shared<Thread>([this] { loop(); }, "Timer");
+    thread = std::make_unique<Thread>([this] { loop(); }, "Timer");
     thread->start();
 }
 

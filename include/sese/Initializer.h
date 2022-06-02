@@ -17,9 +17,11 @@ namespace sese {
 
     class API InitiateTask {
     public:
-        using Ptr = std::shared_ptr<InitiateTask>;
+        using Ptr = std::unique_ptr<InitiateTask>;
 
+        InitiateTask(InitiateTask &&initiateTask) = default;
         explicit InitiateTask(std::string name);
+        virtual ~InitiateTask() = default;
 
         virtual int32_t init() noexcept = 0;
         virtual int32_t destroy() noexcept { return 0; };
@@ -30,16 +32,16 @@ namespace sese {
         std::string name;
     };
 
-    class API Initializer {
+    class Initializer {
     public:
         Initializer();
-        ~Initializer();
+        virtual ~Initializer();
 
-        static void addTask(InitiateTask::Ptr &&task) noexcept;
+        API static void addTask(InitiateTask::Ptr task) noexcept;
 
     private:
-        void loadTask(InitiateTask::Ptr &&task) noexcept;
-        void unloadTask(InitiateTask::Ptr &task) noexcept;
+        void buildInLoadTask(InitiateTask::Ptr &&task) noexcept;
+        void buildInUnloadTask(const InitiateTask::Ptr &task) noexcept;
 
         std::stack<InitiateTask::Ptr> tasks;
     };

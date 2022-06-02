@@ -21,6 +21,8 @@ namespace sese {
      */
     class API StringBuffer : public AbstractStringBuffer {
     public:
+        using Ptr = std::unique_ptr<StringBuffer>;
+
         explicit StringBuffer(size_t cap = STRING_BUFFER_SIZE_FACTOR) noexcept;
         explicit StringBuffer(const char *str) noexcept;
 

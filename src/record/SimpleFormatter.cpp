@@ -42,7 +42,7 @@ namespace sese {
                             i += 1;
                             break;
                         case 'c': {
-                            auto time = event->getTime();
+                            decltype(auto) time = event->getTime();
                             auto rt = DateTimeFormatter::format(time, this->timePattern);
                             stream << rt;
                             i += 1;

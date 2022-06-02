@@ -28,7 +28,7 @@ namespace sese {
      */
     class API Thread : Noncopyable {
     public:
-        using Ptr = std::shared_ptr<Thread>;
+        using Ptr = std::unique_ptr<Thread>;
 
         explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);
 

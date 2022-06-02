@@ -22,7 +22,7 @@ namespace sese {
      */
     class API ThreadPool : Noncopyable {
     public:
-        using Ptr = std::shared_ptr<ThreadPool>;
+        using Ptr = std::unique_ptr<ThreadPool>;
 
         /**
          * 初始化线程池

@@ -25,7 +25,7 @@ namespace sese::http {
      */
     class API Header {
     public:
-        using Ptr = std::shared_ptr<Header>;
+        using Ptr = std::unique_ptr<Header>;
         using KeyValueType = std::pair<std::string, std::string>;
 
         explicit Header() = default;
@@ -36,8 +36,8 @@ namespace sese::http {
         const std::string &get(const std::string &key, const std::string &defaultValue) noexcept;
         std::string_view getView(const std::string &key, const std::string &defaultValue) noexcept;
 
-        inline std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
-        inline std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
+        inline const std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
+        inline const std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
 
     protected:
         std::map<std::string, std::string> headers;

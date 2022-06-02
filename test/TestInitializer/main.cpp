@@ -38,7 +38,7 @@ public:
 };
 
 int main() {
-    Initializer::addTask(std::make_shared<Task1>());
-    Initializer::addTask(std::make_shared<Task2>());
+    Initializer::addTask(std::make_unique<Task1>());
+    Initializer::addTask(std::make_unique<Task2>());
     return 0;
 }

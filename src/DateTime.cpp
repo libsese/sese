@@ -41,7 +41,7 @@ namespace sese {
     DateTime::Ptr DateTime::now(int32_t utc) noexcept {
         timeval tv{};
         getTimeOfDate(&tv);
-        DateTime::Ptr dateTime = std::make_shared<DateTime>(tv.tv_sec, utc);
+        DateTime::Ptr dateTime = std::make_unique<DateTime>(tv.tv_sec, utc);
 
         dateTime->milliseconds = (int32_t) (tv.tv_usec / 1000);
         dateTime->microseconds = (int32_t) (tv.tv_usec - dateTime->milliseconds * 1000);

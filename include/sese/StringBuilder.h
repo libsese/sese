@@ -19,6 +19,8 @@ namespace sese {
      */
     class API StringBuilder : public AbstractStringBuffer {
     public:
+        using Ptr = std::unique_ptr<StringBuilder>;
+
         explicit StringBuilder(size_t cap = STRING_BUFFER_SIZE_FACTOR) noexcept : AbstractStringBuffer(cap) {
         }
 

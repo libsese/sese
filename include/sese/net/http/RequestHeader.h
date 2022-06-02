@@ -22,7 +22,7 @@ namespace sese::http {
      */
     class API RequestHeader : public Header {
     public:
-        using Ptr = std::shared_ptr<RequestHeader>;
+        using Ptr = std::unique_ptr<RequestHeader>;
 
         RequestHeader() = default;
 

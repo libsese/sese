@@ -15,7 +15,7 @@ namespace sese {
      */
     class API ByteBuilder : public AbstractByteBuffer {
     public:
-        using Ptr = std::shared_ptr<ByteBuilder>;
+        using Ptr = std::unique_ptr<ByteBuilder>;
 
         explicit ByteBuilder(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR) noexcept : AbstractByteBuffer(baseSize) {
         }

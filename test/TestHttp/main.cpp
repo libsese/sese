@@ -45,14 +45,14 @@ void testHttpServer() {
 
     auto clientSocket = serverSocket->accept();
 
-    auto requestHeader = std::make_shared<RequestHeader>();
+    auto requestHeader = std::make_unique<RequestHeader>();
     HttpUtil::recvRequest(clientSocket, requestHeader);
 
     for (const auto &item: *requestHeader) {
         helper.info("request %s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto responseHeader = sese::make_shared_from_list<ResponseHeader, ResponseHeader::KeyValueType>(
+    auto responseHeader = sese::make_unique_from_list<ResponseHeader, ResponseHeader::KeyValueType>(
             {{"Location", "https://github.com/SHIINASAMA/sese"},
              {"Connection", "close"}}
     );
@@ -69,13 +69,13 @@ void testHttpClient() {
     auto clientSocket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP);
 
     Test::assert(helper, 0 == clientSocket->connect(remoteAddress), -1);
-    auto requestHeader = std::make_shared<RequestHeader>();
+    auto requestHeader = std::make_unique<RequestHeader>();
     requestHeader->setType(RequestType::Get);
     requestHeader->setUrl("/");
     requestHeader->set("Connection", "close");
     HttpUtil::sendRequest(clientSocket, requestHeader);
 
-    auto responseHeader = std::make_shared<ResponseHeader>();
+    auto responseHeader = std::make_unique<ResponseHeader>();
     HttpUtil::recvResponse(clientSocket, responseHeader);
 
     for (const auto &item: *responseHeader) {

@@ -19,6 +19,8 @@ namespace sese::http {
      */
     class API QueryString {
     public:
+        using Ptr = std::unique_ptr<QueryString>;
+
         void parse(const std::string &url) noexcept;
         std::string toString() noexcept;
 

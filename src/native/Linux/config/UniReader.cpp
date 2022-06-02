@@ -18,6 +18,6 @@ std::string sese::UniReader::readLine() {
 bool sese::UniReader::open(const std::string &fileName) noexcept {
     fileStream = std::make_shared<FileStream>();
     if(!fileStream->open(fileName, TEXT_READ_EXISTED)) return false;
-    reader = std::make_shared<StreamReader>(fileStream);
+    reader = std::make_unique<StreamReader>(fileStream);
     return true;
 }

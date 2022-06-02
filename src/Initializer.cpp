@@ -4,13 +4,13 @@
 #include "sese/Initializer.h"
 #include "sese/convert/EncodingConverter.h"
 
+using sese::EncodingConverterInitiateTask;
 using sese::Initializer;
 using sese::InitiateTask;
-using sese::EncodingConverterInitiateTask;
 using sese::LoggerInitiateTask;
 using sese::TestInitiateTask;
 
-static Initializer initializer; // NOLINT
+static Initializer initializer;// NOLINT
 
 InitiateTask::InitiateTask(std::string name) : name(std::move(name)) {
 }
@@ -20,33 +20,33 @@ const std::string &sese::InitiateTask::getName() const {
 }
 
 Initializer::Initializer() {
-    loadTask(std::make_shared<EncodingConverterInitiateTask>());
-    loadTask(std::make_shared<LoggerInitiateTask>());
-    loadTask(std::make_shared<TestInitiateTask>());
+    buildInLoadTask(std::make_unique<EncodingConverterInitiateTask>());
+    buildInLoadTask(std::make_unique<LoggerInitiateTask>());
+    buildInLoadTask(std::make_unique<TestInitiateTask>());
 #ifdef _WIN32
-    loadTask(std::make_shared<sese::SocketInitiateTask>());
+    buildInLoadTask(std::make_unique<sese::SocketInitiateTask>());
 #endif
 }
 
 Initializer::~Initializer() {
     /// 保证初始化器按顺序销毁
-    InitiateTask::Ptr top = nullptr;
+    InitiateTask::Ptr top;
     while (!tasks.empty()) {
-        top = tasks.top();
-        unloadTask(top);
+        top = std::move(tasks.top());
+        buildInUnloadTask(top);
     }
 }
 
-void Initializer::loadTask(InitiateTask::Ptr &&task) noexcept {
+void Initializer::buildInLoadTask(InitiateTask::Ptr &&task) noexcept {
     auto rt = task->init();
     if (rt != 0) {
         printf("Load failed: %32s Exit code %d", task->getName().c_str(), rt);
     } else {
-        tasks.emplace(task);
+        tasks.emplace(std::move(task));
     }
 }
 
-void Initializer::unloadTask(InitiateTask::Ptr &task) noexcept {
+void Initializer::buildInUnloadTask(const InitiateTask::Ptr &task) noexcept {
     auto rt = task->destroy();
     if (rt != 0) {
         printf("Unload failed: %32s Exit code %d", task->getName().c_str(), rt);
@@ -54,6 +54,6 @@ void Initializer::unloadTask(InitiateTask::Ptr &task) noexcept {
     tasks.pop();
 }
 
-void Initializer::addTask(InitiateTask::Ptr &&task) noexcept {
-    initializer.loadTask(std::forward<InitiateTask::Ptr>(task));
+void Initializer::addTask(InitiateTask::Ptr task) noexcept {
+    initializer.buildInLoadTask(std::move(task));
 }

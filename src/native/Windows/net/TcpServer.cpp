@@ -126,7 +126,7 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
         Thread th([this] { workerProc4WindowsIOCP(); },
                   "WindowsIOCPWorkerThread" + std::to_string(i));
     }
-    threadPool = std::make_shared<ThreadPool>("TcpServer", threads);
+    threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
     isShutdown = false;
     return true;
 }
