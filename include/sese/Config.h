@@ -7,8 +7,8 @@
 #pragma once
 #include <cassert>
 #include <cinttypes>
-#include <memory>
 #include <string>
+#include <sese/Memory.h>
 #ifdef _WIN32
 #include "sese/native/Windows/Config.h"
 #elif __linux__

@@ -52,7 +52,7 @@ void testHttpServer() {
         helper.info("request %s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto responseHeader = sese::make_unique_from_list<ResponseHeader, ResponseHeader::KeyValueType>(
+    auto responseHeader = sese::makeUniqueFromList<ResponseHeader, ResponseHeader::KeyValueType>(
             {{"Location", "https://github.com/SHIINASAMA/sese"},
              {"Connection", "close"}}
     );

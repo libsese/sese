@@ -61,30 +61,6 @@ namespace sese {
      */
     extern API std::string getErrorString(int32_t error = errno);
 
-    /**
-     * std::make_shared 搭配 std::initializer_list 使用
-     * @tparam ReturnType 预计返回 std::shared_ptr 的模板类型
-     * @tparam InitType std::initializer_list 模板参数
-     * @param list 初始化列表
-     * @return std::shared_ptr<ReturnType>
-     */
-    template<typename ReturnType, typename InitType>
-    std::shared_ptr<ReturnType> make_shared_from_list(std::initializer_list<InitType> list) {
-        return std::make_shared<ReturnType>(std::move(list));
-    }
-
-    /**
-     * std::make_unique 搭配 std::initializer_list 使用
-     * @tparam ReturnType 预计返回 std::unique_ptr 的模板参数
-     * @tparam InitType std::initializer_list 的模板参数
-     * @param list 初始化列表
-     * @return std::unique_ptr<ReturnType>
-     */
-    template<typename ReturnType, typename InitType>
-    std::unique_ptr<ReturnType> make_unique_from_list(std::initializer_list<InitType> list) {
-        return std::make_unique<ReturnType>(std::move(list));
-    }
-
 }// namespace sese
 
 /**
