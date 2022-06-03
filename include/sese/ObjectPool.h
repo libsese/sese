@@ -3,6 +3,7 @@
  * @author kaoru
  * @date 2022年6月2日
  * @brief 对象池
+ * @version 0.1
  */
 #pragma once
 #include <sese/Config.h>
@@ -38,6 +39,7 @@ namespace sese {
     /**
      * 回收器
      * @tparam T 数据类型
+     * @warning 已知在调用 get() 获取对象后不进行回收，会导致 size 基数不断增大并引发相关问题
      */
     template<typename T>
     class Recycler {
@@ -52,8 +54,7 @@ namespace sese {
          * @param baseSize 基础大小
          */
         explicit Recycler(SizeType baseSize) noexcept {
-            size = baseSize;
-            available = baseSize;
+            this->baseSize = this->size = this->available = baseSize;
             for (SizeType i = 0; i < baseSize; i++) {
                 pool.push(std::make_unique<RecyclableType>());
             }
@@ -79,10 +80,26 @@ namespace sese {
         }
 
         /**
-         * @todo 彻底释放部分资源
-         * @deprecated 暂未实现
+         * @brief 彻底释放部分资源
+         * @verbatim
+         * 可用对象数量大于总数的 1/4，
+         * 则触发回收，回收可用数量的 1/2，
+         * 可用对象总数一定不会小于 baseSize
+         * @endverbatim
          */
         void recycle() noexcept {
+            if (this->available > this->size / 4) {
+                Locker locker(this->mutex);
+                auto toFree = this->available / 2;
+                if (this->size - toFree < this->baseSize) {
+                    toFree = this->size - this->baseSize;
+                }
+                this->available -= toFree;
+                this->size -= toFree;
+                for (size_t i = 0; i < toFree; i++) {
+                    pool.pop();
+                }
+            }
         }
 
         /**
@@ -98,8 +115,9 @@ namespace sese {
 
     private:
         MutexType mutex;
-        SizeType size = 0;
-        SizeType available = 0;
+        SizeType baseSize = 0; // 基础大小，不能小于该值
+        SizeType size = 0;     // 实际大小
+        SizeType available = 0;// 可用大小
         ObjectPool pool;
     };
 }// namespace sese
