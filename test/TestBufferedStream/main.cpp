@@ -18,11 +18,11 @@ int main() {
     char rawBuffer0[5]{};
     auto buffer = BufferedStream(bytes, 4);
     buffer.read(rawBuffer0, 4);
-    Test::assert(helper, 0 == std::string("1234").compare(0, 4, rawBuffer0, 0, 4), -1);
+    assert(helper, 0 == std::string("1234").compare(0, 4, rawBuffer0, 0, 4), -1);
     buffer.read(rawBuffer0, 2);
-    Test::assert(helper, 0 == std::string("56").compare(0, 2, rawBuffer0, 0, 2), -2);
+    assert(helper, 0 == std::string("56").compare(0, 2, rawBuffer0, 0, 2), -2);
     buffer.read(rawBuffer0, 4);
-    Test::assert(helper, 0 == std::string("7890").compare(0, 4, rawBuffer0, 0, 4), -3);
+    assert(helper, 0 == std::string("7890").compare(0, 4, rawBuffer0, 0, 4), -3);
     buffer.clear();
 
     // output 测试
@@ -32,7 +32,7 @@ int main() {
     buffer.flush();
     char rawBuffer1[11]{};
     bytes->read(rawBuffer1, 10);
-    Test::assert(helper, 0 == std::string("ABCDEFGHIJ").compare(0, 10, rawBuffer1, 0, 10), -4);
+    assert(helper, 0 == std::string("ABCDEFGHIJ").compare(0, 10, rawBuffer1, 0, 10), -4);
 
     return 0;
 }

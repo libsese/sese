@@ -30,7 +30,7 @@ namespace sese {
     class API Test {
     public:
         /**
-          * @breif 回溯程序堆栈保存到字符串
+          * @brief 回溯程序堆栈保存到字符串
           * @param size 保存个个数
           * @param prefix 字符串前缀
           * @param skip 跳过个数
@@ -45,7 +45,18 @@ namespace sese {
          * @param exitCode 命中时的退出退出码，为零则不退出
          */
         static void assert(LogHelper log, bool expr, int32_t exitCode = 0);
+
+        /**
+         * @brief 可自定义的断言方案
+         * @ref assertion maroc
+         * @param log 日志工具
+         * @param firstLine 首行消息格式
+         * @param expr 条件表达式
+         * @param exitCode 命中时的退出退出码，为零则不退出
+         */
+        static void assert(sese::LogHelper log, const char *firstLine, bool expr, int32_t exitCode = 0);
     };
+
 
     class TestInitiateTask : public InitiateTask {
     public:
@@ -55,3 +66,12 @@ namespace sese {
         int32_t destroy() noexcept override;
     };
 }// namespace sese
+
+/**
+ * @brief 断言宏
+ * @anchor assertion maroc
+ * @param LogHelper 日志器
+ * @param Expr 条件表达式
+ * @param ExitCode 命中时的退出退出码，为零则不退出
+ */
+#define assert(LogHelper, Expr, ExitCode) sese::Test::assert(LogHelper, "Assertion failed on \"" #Expr "\"\n%s", Expr, ExitCode);

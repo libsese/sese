@@ -11,7 +11,7 @@ int main() {
     auto formatter = std::make_shared<sese::SimpleFormatter>();
     auto fileStream = std::make_shared<sese::FileStream>();
 
-    sese::Test::assert(helper, fileStream->open("hello.log", TEXT_WRITE_CREATE_TRUNC), -1);
+    assert(helper, fileStream->open("hello.log", TEXT_WRITE_CREATE_TRUNC), -1);
     auto fileAppender = std::make_shared<sese::FileAppender>(fileStream, formatter);
     logger->addAppender(fileAppender);
 

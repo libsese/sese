@@ -10,7 +10,7 @@ int main() {
     buffer->append("Hello, World. ");
     buffer->append("This test, for the expansion mechanism.");
     puts(buffer->toString().c_str());
-    sese::Test::assert(helper, buffer->getCharAt(13) == ' ');
+    assert(helper, buffer->getCharAt(13) == ' ', 0);
 
     buffer->del(0, 13);
     puts(buffer->toString().c_str());
@@ -52,7 +52,7 @@ int main() {
     puts(buffer->toString().c_str());
     buffer->clear();
 
-    sese::Test::assert(helper, buffer->setChatAt(100000, 'E'));
+    assert(helper, buffer->setChatAt(100000, 'E'), 0);
 
     delete buffer;
     return 0;

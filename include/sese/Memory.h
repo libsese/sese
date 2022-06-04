@@ -1,3 +1,9 @@
+/**
+ * @file Memory.h
+ * @author kaoru
+ * @brief 内存相关 API 的包装
+ * @date 2022年6月5日
+ */
 #pragma once
 #include <memory>
 

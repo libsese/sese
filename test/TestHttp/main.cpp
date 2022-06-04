@@ -40,7 +40,7 @@ void testQueryString() {
 void testHttpServer() {
     auto localAddress = IPv4Address::create("127.0.0.1", PORT);
     auto serverSocket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP);
-    Test::assert(helper, 0 == serverSocket->bind(localAddress), -1);
+    assert(helper, 0 == serverSocket->bind(localAddress), -1);
     serverSocket->listen(5);
 
     auto clientSocket = serverSocket->accept();
@@ -68,7 +68,7 @@ void testHttpClient() {
     auto remoteAddress = IPv4Address::create("127.0.0.1", PORT);
     auto clientSocket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP);
 
-    Test::assert(helper, 0 == clientSocket->connect(remoteAddress), -1);
+    assert(helper, 0 == clientSocket->connect(remoteAddress), -1);
     auto requestHeader = std::make_unique<RequestHeader>();
     requestHeader->setType(RequestType::Get);
     requestHeader->setUrl("/");

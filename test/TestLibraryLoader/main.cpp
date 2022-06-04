@@ -20,9 +20,9 @@ int main() {
 #endif
     helper.info("loading lib \"%s\"", libName);
     auto object = LibraryLoader::open(libName);
-    Test::assert(helper, object != nullptr);
+    assert(helper, object != nullptr, -1);
     auto sin = (Func *)object->findFunctionByName("sin");
-    Test::assert(helper, sin != nullptr);
+    assert(helper, sin != nullptr, -2);
 
     auto a = sin(1.0f);
     auto b = sin(0.0f);

@@ -21,13 +21,13 @@ int main() {
 
     auto data2 = Data{0};
     buffer->read(&data2, sizeof(Data));
-    Test::assert(helper, data1.i8 == data2.i8);
-    Test::assert(helper, data1.i16 == data2.i16);
-    Test::assert(helper, data1.i32 == data2.i32);
-    Test::assert(helper, data1.i64 == data2.i64);
+    assert(helper, data1.i8 == data2.i8, 0);
+    assert(helper, data1.i16 == data2.i16, 0);
+    assert(helper, data1.i32 == data2.i32, 0);
+    assert(helper, data1.i64 == data2.i64, 0);
 
-    Test::assert(helper, buffer->freeCapacity() == 10);
-    Test::assert(helper, buffer->getCapacity() == 1024);
+    assert(helper, buffer->freeCapacity() == 10, 0);
+    assert(helper, buffer->getCapacity() == 1024, 0);
 
     delete buffer;
     return 0;

@@ -18,7 +18,7 @@ int main() {
 //        helper.info("%s", sese::getErrorString().c_str());
 //        return 0;
 //    }
-    Test::assert(helper, fileStream->open(PROJECT_PATH "/test/TestStreamReader/data.txt",TEXT_READ_EXISTED), -1);
+    assert(helper, fileStream->open(PROJECT_PATH "/test/TestStreamReader/data.txt",TEXT_READ_EXISTED), -1);
 
     auto reader = std::make_shared<StreamReader>(fileStream);
     while (true) {

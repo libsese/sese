@@ -16,8 +16,8 @@ void testCompareAndSwap() {
     int *object = nullptr;
     int *newValue = new int(200);
     auto rt = compareAndSwapPointer((void *volatile *) &object, nullptr, newValue);
-    Test::assert(helper, rt);
-    Test::assert(helper, *object == *newValue);
+    assert(helper, rt, -1);
+    assert(helper, *object == *newValue, -2);
     delete newValue;
 }
 
@@ -42,7 +42,7 @@ void testLinkedStack() {
     th1.join();
     th2.join();
 
-    Test::assert(helper, list.size() == 100);
+    assert(helper, list.size() == 100, -3);
 }
 
 void testLinkedQueue() {

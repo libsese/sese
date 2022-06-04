@@ -18,7 +18,7 @@ int main() {
 
     TcpServer server;
     auto ret = server.init(address);
-    Test::assert(helper, ret, -1);
+    assert(helper, ret, -1);
 
     // 服务器线程
     Thread thread([&server](){
@@ -37,10 +37,10 @@ int main() {
     // 客户端模拟
     char buffer[1024] {"GET / HTTP/1.1\r\n\r\n"};
     Socket socket(Socket::Family::IPv4, Socket::Type::TCP);
-    Test::assert(helper, -1 != socket.connect(address), -2);
-    Test::assert(helper, -1 != socket.write((const void *)buffer, 1024), -3);
+    assert(helper, -1 != socket.connect(address), -2);
+    assert(helper, -1 != socket.write((const void *)buffer, 1024), -3);
     helper.info("request sent");
-    Test::assert(helper, -1 != socket.read(buffer, 1024), -4);
+    assert(helper, -1 != socket.read(buffer, 1024), -4);
     helper.info("response is \'%s\'", buffer);
     socket.close();
 

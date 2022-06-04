@@ -16,7 +16,7 @@ void proc(int &num) {
     auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
     helper.info("Current thread is %s", msg);
 
-    sese::Test::assert(helper, i != nullptr, -1);
+    assert(helper, i != nullptr, -1);
     num = 1;
 }
 

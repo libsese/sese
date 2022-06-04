@@ -1,5 +1,6 @@
 #include "sese/Test.h"
 #include "sese/record/LogHelper.h"
+#undef assert
 
 using sese::LogHelper;
 using sese::Test;
@@ -25,9 +26,21 @@ int32_t TestInitiateTask::destroy() noexcept {
 }
 
 void Test::assert(LogHelper log, bool expr, int32_t exitCode) {
+    // if (!expr) {
+    //     times++;
+    //     log.error("Call assertion!\n%s",backtrace2String(5, "Backtrace ").c_str());
+    //     if (exitCode) exit(exitCode);
+    // } else {
+    //     success++;
+    //     times++;
+    // }
+    assert(log, "Assertion failed!\n%s", expr, exitCode);
+}
+
+void sese::Test::assert(sese::LogHelper log, const char *firstLine, bool expr, int32_t exitCode) {
     if (!expr) {
         times++;
-        log.error("Call assertion!\n%s",backtrace2String(5, "Backtrace ").c_str());
+        log.error(firstLine, sese::Test::backtrace2String(5, "Backtrace ").c_str());
         if (exitCode) exit(exitCode);
     } else {
         success++;

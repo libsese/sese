@@ -19,11 +19,11 @@ int main() {
     auto fileStream = std::make_shared<FileStream>();
     fileStream->open(PROJECT_PATH "/test/TestJsonUtil/data.json", TEXT_READ_EXISTED);
     auto object = JsonUtil::deserialize(fileStream, 3);
-    Test::assert(helper, object != nullptr, -1);
+    assert(helper, object != nullptr, -1);
 
     auto booleanValue = object->getDataAs<BasicData>("boolean");
-    Test::assert(helper, booleanValue != nullptr, -1);
-    Test::assert(helper, booleanValue->getDataAs<bool>(false));
+    assert(helper, booleanValue != nullptr, -1);
+    assert(helper, booleanValue->getDataAs<bool>(false), 0);
     booleanValue->setDataAs<bool>(false);
 
     auto bytes = std::make_shared<ByteBuilder>();
