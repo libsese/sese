@@ -22,8 +22,6 @@
 #define WILL_SKIP 2
 #endif
 
-#undef assert
-
 namespace sese {
 
     class LogHelper;
@@ -75,3 +73,5 @@ namespace sese {
  * @param ExitCode 命中时的退出退出码，为零则不退出
  */
 #define assert(LogHelper, Expr, ExitCode) sese::Test::assert(LogHelper, "Assertion failed on \"" #Expr "\"\n%s", Expr, ExitCode);
+
+#undef WILL_SKIP

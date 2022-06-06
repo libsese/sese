@@ -23,12 +23,10 @@ using sese::http::ResponseHeader;
 LogHelper helper("fHTTP");//NOLINT
 
 void testQueryString() {
-    std::string url = "/index.html?val0=888&val1=&val2=1";
-    helper.info("url: %s", url.c_str());
-    auto queryString = QueryString();
-    queryString.parse(url);
+    std::string query = "?val0=888&val1=&val2=1";
+    helper.info("query: %s", query.c_str());
+    auto queryString = QueryString(query);
 
-    helper.info("uri: %s", queryString.getUri().c_str());
     for (const auto &item: queryString) {
         helper.info("%s: %s", item.first.c_str(), item.second.c_str());
     }
@@ -89,11 +87,11 @@ void testHttpClient() {
 int main() {
     testQueryString();
 
-    Thread thread(testHttpServer, "Server Thread");
-    thread.start();
-    sese::sleep(1);
-    testHttpClient();
-    thread.join();
+//    Thread thread(testHttpServer, "Server Thread");
+//    thread.start();
+//    sese::sleep(1);
+//    testHttpClient();
+//    thread.join();
 
     return 0;
 }

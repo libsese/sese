@@ -158,3 +158,8 @@ add_test(NAME TestBufferedStream COMMAND TestBufferedStream)
 add_executable(TestConcurrent test/TestConcurrent/main.cpp)
 target_link_libraries(TestConcurrent SeseSharedLibrary)
 add_test(NAME TestConcurrent COMMAND TestConcurrent)
+
+# UrlHelper
+add_executable(TestUrlHelper test/TestUrlHelper/main.cpp)
+target_link_libraries(TestUrlHelper SeseSharedLibrary)
+add_test(NAME TestUrlHelper COMMAND TestUrlHelper)

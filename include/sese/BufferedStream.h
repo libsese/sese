@@ -15,7 +15,7 @@
 namespace sese {
 
     /// @brief 流缓存类
-    class API BufferedStream : public Noncopyable, public Stream {
+    class API BufferedStream final : public Noncopyable, public Stream {
     public:
         /**
          * 包装指定流

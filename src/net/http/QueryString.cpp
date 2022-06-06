@@ -17,64 +17,48 @@ void QueryString::set(const std::string &key, const std::string &value) noexcept
     keyValueSet[key] = value;
 }
 
-void QueryString::parse(const std::string &url) noexcept {
+QueryString::QueryString(const std::string &query) noexcept {
     StringBuilder builder;
-    bool hasQueryString = false;
-    auto start = 0;
-    for (char ch: url) {
-        start++;
+
+    // 仅有 '?'
+    if (query.size() == 1) {
+        return;
+    }
+
+    std::string key;
+    std::string value;
+    bool hasKey = false;
+    for (char ch: query) {
         if (ch == '?') {
-            hasQueryString = true;
-            break;
+            continue;
+        } else if (ch == '=') {
+            if (hasKey) {
+                continue;
+            } else {
+                hasKey = true;
+                key = builder.toString();
+                builder.clear();
+            }
+        } else if (ch == '&') {
+            if (hasKey) {
+                value = builder.toString();
+                builder.clear();
+                if (!value.empty()) {
+                    keyValueSet[key] = value;
+                }
+            }
+            hasKey = false;
         } else {
             builder.append(ch);
         }
     }
-    uri = builder.toString();
-
-    if (hasQueryString) {
-        builder.clear();
-
-        std::string_view view{url.c_str() + start, url.size() - start};
-        // 仅有 '?'
-        if (view.size() == 1) {
-            return;
-        }
-
-        std::string key;
-        std::string value;
-        bool hasKey = false;
-        for (char ch: view) {
-            if (ch == '=') {
-                if (hasKey) {
-                    continue;
-                } else {
-                    hasKey = true;
-                    key = builder.toString();
-                    builder.clear();
-                }
-            } else if (ch == '&') {
-                if (hasKey) {
-                    value = builder.toString();
-                    builder.clear();
-                    if (!value.empty()) {
-                        keyValueSet[key] = value;
-                    }
-                }
-                hasKey = false;
-            } else {
-                builder.append(ch);
-            }
-        }
-        if (hasKey && !builder.empty()) {
-            keyValueSet[key] = builder.toString();
-        }
+    if (hasKey && !builder.empty()) {
+        keyValueSet[key] = builder.toString();
     }
 }
 
 std::string QueryString::toString() noexcept {
     StringBuilder builder;
-    builder.append(uri);
     if (!keyValueSet.empty()) {
         builder.append('?');
 

@@ -16,6 +16,7 @@
 #elif __APPLE__
 #include "sese/native/Darwin/Config.h"
 #endif
+#undef assert
 
 /// 默认时区
 constexpr static int32_t TIME_DEFAULT_ZONE = 8;

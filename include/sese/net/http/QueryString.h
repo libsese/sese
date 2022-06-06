@@ -21,11 +21,8 @@ namespace sese::http {
     public:
         using Ptr = std::unique_ptr<QueryString>;
 
-        void parse(const std::string &url) noexcept;
+        explicit QueryString(const std::string &query) noexcept;
         std::string toString() noexcept;
-
-        [[nodiscard]] const std::string &getUri() const { return uri; }
-        void setUri(const std::string &newUrl) { this->uri = newUrl; }
 
         void set(const std::string &key, const std::string &value) noexcept;
         const std::string &get(const std::string &key, const std::string &defaultValue) noexcept;
@@ -36,7 +33,6 @@ namespace sese::http {
         inline std::map<std::string, std::string>::iterator end() noexcept { return keyValueSet.end(); }
 
     protected:
-        std::string uri;
         std::map<std::string, std::string> keyValueSet;
     };
 }// namespace sese::http
