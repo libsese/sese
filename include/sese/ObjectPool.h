@@ -31,7 +31,7 @@ namespace sese {
         /// 在且仅能在堆上创建对象池
         /// \return 对象池智能指针
         static Ptr create() {
-            return std::shared_ptr<ObjectPool<T>>(new ObjectPool<int>);
+            return std::shared_ptr<ObjectPool<T>>(new ObjectPool<T>);
         }
 
         /// 从对象池中获取一个可复用对象
