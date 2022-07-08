@@ -1,16 +1,16 @@
 /**
  * @file ObjectPool.h
  * @author kaoru
- * @date 2022年6月2日
+ * @date 2022年7月8日
  * @brief 对象池
- * @version 0.1
+ * @version 0.2
  */
 #pragma once
+#include <sese/Noncopyable.h>
 #include <sese/Config.h>
-#include <sese/thread/Locker.h>
-#include <atomic>
 #include <functional>
 #include <queue>
+#include <mutex>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -18,106 +18,65 @@
 
 namespace sese {
 
-    /**
-     * 可回收对象
-     * @tparam T 数据类型
-     */
+    /// 对象池
+    /// \tparam T 池中对象类型
     template<typename T>
-    class Recyclable {
+    class ObjectPool : public std::enable_shared_from_this<ObjectPool<T>>, public Noncopyable {
     public:
-        using Ptr = std::unique_ptr<Recyclable>;
+        /// 对象池智能指针
+        using Ptr = std::shared_ptr<ObjectPool<T>>;
+        /// 对象池对象智能指针
+        using ObjectPtr = std::shared_ptr<T>;
 
-        virtual ~Recyclable() noexcept = default;
-
-        T getValue() const noexcept { return value; }
-        void setValue(T v) noexcept { this->value = v; }
-
-    private:
-        T value{};
-    };
-
-    /**
-     * 回收器
-     * @tparam T 数据类型
-     * @warning 已知在调用 get() 获取对象后不进行回收，会导致 size 基数不断增大并引发相关问题
-     */
-    template<typename T>
-    class Recycler {
-    public:
-        using SizeType = size_t;
-        using MutexType = std::mutex;
-        using RecyclableType = Recyclable<T>;
-        using ObjectPool = std::queue<typename Recyclable<T>::Ptr>;
-
-        /**
-         * 初始化一个对象池
-         * @param baseSize 基础大小
-         */
-        explicit Recycler(SizeType baseSize) noexcept {
-            this->baseSize = this->size = this->available = baseSize;
-            for (SizeType i = 0; i < baseSize; i++) {
-                pool.push(std::make_unique<RecyclableType>());
-            }
+        /// 在且仅能在堆上创建对象池
+        /// \return 对象池智能指针
+        static Ptr create() {
+            return std::shared_ptr<ObjectPool<T>>(new ObjectPool<int>);
         }
 
-        /**
-         * 从对象池中获取一个可回收对象
-         * @return 可回收对象
-         */
-        typename Recyclable<T>::Ptr get() noexcept {
+        /// 从对象池中获取一个可复用对象
+        /// \return 对象
+        std::shared_ptr<T> borrow() {
             mutex.lock();
-            if (available == 0) {
-                size++;
+            std::shared_ptr<T> object;
+            if (queue.empty()) {
                 mutex.unlock();
-                return std::make_unique<RecyclableType>();
+                object = std::make_shared<T>();
+                object.reset(object.get(), std::bind(&ObjectPool<T>::recycleCallback, std::weak_ptr<ObjectPool<T>>(this->shared_from_this()), object));
             } else {
-                available--;
-                auto front = std::move(pool.front());
-                pool.pop();
+                ObjectPtr p = queue.front();
+                queue.pop();
                 mutex.unlock();
-                return front;
+                object.reset(p.get(), std::bind(&ObjectPool<T>::recycleCallback, std::weak_ptr<ObjectPool<T>>(this->shared_from_this()), p));
             }
-        }
-
-        /**
-         * @brief 彻底释放部分资源
-         * @verbatim
-         * 可用对象数量大于总数的 1/4，
-         * 则触发回收，回收可用数量的 1/2，
-         * 可用对象总数一定不会小于 baseSize
-         * @endverbatim
-         */
-        void recycle() noexcept {
-            if (this->available > this->size / 4) {
-                Locker locker(this->mutex);
-                auto toFree = this->available / 2;
-                if (this->size - toFree < this->baseSize) {
-                    toFree = this->size - this->baseSize;
-                }
-                this->available -= toFree;
-                this->size -= toFree;
-                for (size_t i = 0; i < toFree; i++) {
-                    pool.pop();
-                }
-            }
-        }
-
-        /**
-         * 回收资源
-         * @param recyclable 可回收对象
-         * @warning 回收后将会置空原先指针(std::move)
-         */
-        void recycle(typename RecyclableType::Ptr &recyclable) noexcept {
-            Locker locker(mutex);
-            available++;
-            pool.push(std::move(recyclable));
+            return object;
         }
 
     private:
-        MutexType mutex;
-        SizeType baseSize = 0; // 基础大小，不能小于该值
-        SizeType size = 0;     // 实际大小
-        SizeType available = 0;// 可用大小
-        ObjectPool pool;
+        /// 私有构造函数
+        ObjectPool() = default;
+
+        /// 回收对象
+        /// \param t
+        void recycle(ObjectPtr t) {
+            mutex.lock();
+            queue.push(t);
+            mutex.unlock();
+        }
+
+        /// 已借出对象的销毁器
+        /// \param wkPool 对象所属对象池的弱指针，用于执行回收逻辑
+        /// \param t 待回收对象
+        static void recycleCallback(const std::weak_ptr<ObjectPool<T>> &wkPool, ObjectPtr t) {
+            std::shared_ptr<ObjectPool<T>> pool(wkPool.lock());
+            if (pool) {
+                pool->recycle(t);
+            } else {
+                // t will be deleted
+            }
+        }
+
+        std::mutex mutex;
+        std::queue<ObjectPtr> queue;
     };
 }// namespace sese
