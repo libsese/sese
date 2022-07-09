@@ -39,7 +39,9 @@ namespace sese::http {
         inline const std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
         inline const std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
 
+        inline void clear() { headers.clear(); }
+
     protected:
         std::map<std::string, std::string> headers;
     };
-}// namespace sese
+}// namespace sese::http

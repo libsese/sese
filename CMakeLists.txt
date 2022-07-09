@@ -71,6 +71,7 @@ set(ALL_SRCS
         src/net/http/QueryString.cpp
         src/net/http/HttpUtil.cpp
         src/net/http/UrlHelper.cpp
+        src/net/http/HttpServer.cpp
         # 配置
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp
