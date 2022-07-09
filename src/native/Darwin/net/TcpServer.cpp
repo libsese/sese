@@ -83,45 +83,46 @@ const IPAddress::Ptr &IOContext::getClientAddress() const noexcept {
     return reinterpret_cast<const IPAddress::Ptr &>(socket->getAddress());
 }
 
-bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
+TcpServer::Ptr TcpServer::create(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
     auto family = ipAddress->getRawAddress()->sa_family;
     socket_t serverSocket = ::socket(family, SOCK_STREAM, IPPROTO_TCP);
     if (serverSocket == -1) {
-        return false;
+        return nullptr;
     }
 
-    socket = std::make_shared<Socket>(serverSocket, ipAddress);
+    auto server = std::unique_ptr<TcpServer>(new TcpServer);
+    server->socket = std::make_shared<Socket>(serverSocket, ipAddress);
 
-    if (!socket->setNonblocking(true)) {
-        return false;
+    if (!server->socket->setNonblocking(true)) {
+        return nullptr;
     }
 
-    if (-1 == socket->bind(ipAddress)) {
-        socket->close();
-        return false;
+    if (-1 == server->socket->bind(ipAddress)) {
+        server->socket->close();
+        return nullptr;
     }
 
-    if (-1 == socket->listen(SERVER_MAX_CONNECTION)) {
-        socket->close();
-        return false;
+    if (-1 == server->socket->listen(SERVER_MAX_CONNECTION)) {
+        server->socket->close();
+        return nullptr;
     }
 
-    kqueueFd = kqueue();
-    if (kqueueFd == -1) {
-        socket->close();
-        return false;
+    server->kqueueFd = kqueue();
+    if (server->kqueueFd == -1) {
+        server->socket->close();
+        return nullptr;
     }
 
     struct kevent event {};
     EV_SET(&event, serverSocket, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
-    if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
-        socket->close();
-        return false;
+    if (-1 == kevent(server->kqueueFd, &event, 1, nullptr, 0, nullptr)) {
+        server->socket->close();
+        return nullptr;
     }
 
-    threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    isShutdown = false;
-    return true;
+    server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
+    server->isShutdown = false;
+    return server;
 }
 
 sese::LogHelper helper("loop"); // NOLINT

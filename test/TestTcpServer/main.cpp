@@ -16,13 +16,12 @@ LogHelper helper("fTCP_SERVER"); // NOLINT
 int main() {
     auto address = IPv4Address::create("127.0.0.1", 8080);
 
-    TcpServer server;
-    auto ret = server.init(address);
-    assert(helper, ret, -1);
+    auto server = TcpServer::create(address);
+    assert(helper, nullptr != server, -1)
 
     // 服务器线程
     Thread thread([&server](){
-        server.loopWith([&helper = helper](IOContext *ioContext) {
+        server->loopWith([&helper = helper](IOContext *ioContext) {
             helper.info("Client address: %s", ioContext->getClientAddress()->getAddress().c_str());
             char buffer[1024]{};
             ioContext->recv(buffer, 1024);
@@ -44,7 +43,7 @@ int main() {
     helper.info("response is \'%s\'", buffer);
     socket.close();
 
-    server.shutdown();
+    server->shutdown();
     thread.join();
     helper.info("server shutdown");
     return 0;

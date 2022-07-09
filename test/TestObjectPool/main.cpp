@@ -65,6 +65,6 @@ void testConcurrent() {
 int main() {
     testRecycle();
     testThreadSafety();
-    testConcurrent();
+//    testConcurrent();
     return 0;
 }

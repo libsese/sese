@@ -84,27 +84,28 @@ const IPAddress::Ptr &IOContext::getClientAddress() const noexcept {
     return reinterpret_cast<const IPAddress::Ptr &>(socket->getAddress());
 }
 
-bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
+TcpServer::Ptr TcpServer::create(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
     // IOCP 要求使用 WSASocket 创建 Socket 文件描述符
     auto family = ipAddress->getRawAddress()->sa_family;
     SOCKET serverSocket = WSASocketW(family, SOCK_STREAM, 0, nullptr, 0, WSA_FLAG_OVERLAPPED);
     if (SOCKET_ERROR == serverSocket) {
-        return false;
+        return nullptr;
     }
 
-    socket = std::make_shared<Socket>(serverSocket, ipAddress);
-    if (!socket->setNonblocking(true)) {
-        return false;
+    auto server = std::unique_ptr<TcpServer>(new TcpServer);
+    server->socket = std::make_shared<Socket>(serverSocket, ipAddress);
+    if (!server->socket->setNonblocking(true)) {
+        return nullptr;
     }
 
-    if (SOCKET_ERROR == socket->bind(ipAddress)) {
-        socket->close();
-        return false;
+    if (SOCKET_ERROR == server->socket->bind(ipAddress)) {
+        server->socket->close();
+        return nullptr;
     }
 
-    if (SOCKET_ERROR == socket->listen(SERVER_MAX_CONNECTION)) {
-        socket->close();
-        return false;
+    if (SOCKET_ERROR == server->socket->listen(SERVER_MAX_CONNECTION)) {
+        server->socket->close();
+        return nullptr;
     }
 
     // 创建 IOCP
@@ -114,21 +115,21 @@ bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
     if (threads <= cores) {
         cores = threads;
     }
-    this->threads = cores;
-    iocpHandle = CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, cores);
-    if (INVALID_HANDLE_VALUE == iocpHandle) {
-        socket->close();
-        return false;
+    server->threads = cores;
+    server->iocpHandle = CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, cores);
+    if (INVALID_HANDLE_VALUE == server->iocpHandle) {
+        server->socket->close();
+        return nullptr;
     }
 
     for (int32_t i = 0; i < cores; i++) {
         // 这里的线程由 IOCP 负责退出
-        Thread th([this] { workerProc4WindowsIOCP(); },
+        Thread th([&server] { server->workerProc4WindowsIOCP(); },
                   "WindowsIOCPWorkerThread" + std::to_string(i));
     }
-    threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    isShutdown = false;
-    return true;
+    server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
+    server->isShutdown = false;
+    return server;
 }
 
 void TcpServer::workerProc4WindowsIOCP() {

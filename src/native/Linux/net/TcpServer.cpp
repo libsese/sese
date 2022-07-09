@@ -80,47 +80,48 @@ const IPAddress::Ptr &IOContext::getClientAddress() const noexcept {
     return reinterpret_cast<const IPAddress::Ptr &>(socket->getAddress());
 }
 
-bool TcpServer::init(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
+TcpServer::Ptr TcpServer::create(const IPAddress::Ptr &ipAddress, size_t threads) noexcept {
     auto family = ipAddress->getRawAddress()->sa_family;
     socket_t serverSocket = ::socket(family, SOCK_STREAM, IPPROTO_TCP);
     if (serverSocket == -1) {
-        return false;
+        return nullptr;
     }
 
-    socket = std::make_shared<Socket>(serverSocket, ipAddress);
+    auto server = std::unique_ptr<TcpServer>(new TcpServer);
+    server->socket = std::make_shared<Socket>(serverSocket, ipAddress);
 
-    if (!socket->setNonblocking(true)) {
-        return false;
+    if (!server->socket->setNonblocking(true)) {
+        return nullptr;
     }
 
-    if (-1 == socket->bind(ipAddress)) {
-        socket->close();
-        return false;
+    if (-1 == server->socket->bind(ipAddress)) {
+        server->socket->close();
+        return nullptr;
     }
 
-    if (-1 == socket->listen(SERVER_MAX_CONNECTION)) {
-        socket->close();
-        return false;
+    if (-1 == server->socket->listen(SERVER_MAX_CONNECTION)) {
+        server->socket->close();
+        return nullptr;
     }
 
-    epollFd = epoll_create1(0);
-    if (-1 == epollFd) {
-        socket->close();
-        return false;
+    server->epollFd = epoll_create1(0);
+    if (-1 == server->epollFd) {
+        server->socket->close();
+        return nullptr;
     }
 
     epoll_event event{};
     event.data.fd = serverSocket;
     event.events = EPOLLIN;
 
-    if (-1 == epoll_ctl(epollFd, EPOLL_CTL_ADD, serverSocket, &event)) {
-        socket->close();
-        return false;
+    if (-1 == epoll_ctl(server->epollFd, EPOLL_CTL_ADD, serverSocket, &event)) {
+        server->socket->close();
+        return nullptr;
     }
 
-    threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    isShutdown = false;
-    return true;
+    server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
+    server->isShutdown = false;
+    return server;
 }
 
 void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {

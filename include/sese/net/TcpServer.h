@@ -7,6 +7,7 @@
 #pragma once
 #include <sese/net/Socket.h>
 #include <sese/thread/ThreadPool.h>
+#include <sese/Noncopyable.h>
 
 #ifdef __linux__
 // Linux Native Only
@@ -91,15 +92,20 @@ private:
 };
 
 /// @brief TCP Server 类
-class sese::TcpServer {
+class sese::TcpServer : public sese::Noncopyable {
+private:
+    TcpServer() = default;
+
 public:
+    using Ptr = std::unique_ptr<TcpServer>;
+
     /**
      * @brief 初始化特定平台相关信息
      * @param ipAddress 待绑定地址
      * @param threads 线程池大小
-     * @return 初始化成功返回 true
+     * @return 初始化成功返回 TcpServer 智能指针，失败返回 nullptr
      */
-    bool init(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS) noexcept;
+    static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS) noexcept;
     /**
      * @brief 阻塞并在需要时调用相关处理函数
      * @param handler 处理函数
