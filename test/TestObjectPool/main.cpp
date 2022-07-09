@@ -1,14 +1,19 @@
+#include <sese/concurrent/ConcurrentObjectPool.h>
 #include <sese/ObjectPool.h>
 #include <sese/record/LogHelper.h>
 #include <sese/Test.h>
+#include <sese/thread/ThreadPool.h>
+#include <sese/Util.h>
 
 using sese::LogHelper;
 using sese::ObjectPool;
 using sese::Test;
+using sese::ThreadPool;
+using sese::concurrent::ConcurrentObjectPool;
 
 LogHelper helper("fOBJECT_POOL");// NOLINT
 
-int main() {
+void testRecycle() {
     ObjectPool<int>::ObjectPtr i0;
     {
         auto pool = ObjectPool<int>::create();
@@ -25,5 +30,41 @@ int main() {
         }
     }
     assert(helper, *i0 == 255, -2)
+}
+
+void testThreadSafety() {
+    ThreadPool threadPool("POOL", 4);
+    ObjectPool<int32_t>::Ptr objectPool = ObjectPool<int32_t>::create();
+
+    for (int i = 0; i < 1000; i++) {
+        threadPool.postTask([&objectPool]() {
+            ObjectPool<int32_t>::ObjectPtr object = objectPool->borrow();
+            *object += 1;
+        });
+    }
+
+    sese::sleep(3);
+    threadPool.shutdown();
+}
+
+void testConcurrent() {
+    ThreadPool threadPool("POOL", 8);
+    ConcurrentObjectPool<int32_t>::Ptr objectPool = ConcurrentObjectPool<int32_t>::create();
+
+    for (int i = 0; i < 500; i++) {
+        threadPool.postTask([&objectPool]() {
+            ObjectPool<int32_t>::ObjectPtr object = objectPool->borrow();
+            *object += 1;
+        });
+    }
+
+    sese::sleep(3);
+    threadPool.shutdown();
+}
+
+int main() {
+    testRecycle();
+    testThreadSafety();
+    testConcurrent();
     return 0;
 }

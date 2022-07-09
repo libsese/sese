@@ -3,6 +3,7 @@
  * @author kaoru
  * @date 2022年5月30日
  * @brief 非阻塞线程安全队列
+ * @bug 队列长度超过10^3时可能产生意想不到的错误，暂时原因不明
  * @ref https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/concurrent/ConcurrentLinkedQueue.java
  */
 #pragma once
@@ -98,6 +99,7 @@ namespace sese::concurrent {
                 return defaultValue;
             } else {
                 NodeType *node = (NodeType *) head;
+                //bug: may be head was nullptr
                 while (!compareAndSwapPointer((void *volatile *) &head, node, node->next)) {
                     node = (NodeType *) head;
                 }
@@ -111,6 +113,7 @@ namespace sese::concurrent {
                 return defaultValue;
             } else {
                 NodeType *node = (NodeType *) head;
+                //bug: may be head was nullptr
                 while (!compareAndSwapPointer((void *volatile *) &head, node, node->next)) {
                     node = (NodeType *) head;
                 }

@@ -36,7 +36,7 @@ namespace sese {
         void join();
         [[nodiscard]] bool joinable() const;
         void detach();
-        void *run(void *threadSelf);
+        static void *run(void *threadSelf);
 
         [[nodiscard]] tid_t getTid() const noexcept { return id; }
         [[nodiscard]] const std::string &getThreadName() const noexcept { return this->name; }

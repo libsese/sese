@@ -1,12 +1,14 @@
 #include <sese/concurrent/LinkedStack.h>
 #include <sese/concurrent/LinkedQueue.h>
-#include <sese/thread/Thread.h>
+#include <sese/thread/ThreadPool.h>
 #include <sese/record/LogHelper.h>
 #include <sese/Test.h>
+#include <sese/Util.h>
 
 using sese::LogHelper;
 using sese::Test;
 using sese::Thread;
+using sese::ThreadPool;
 using sese::concurrent::LinkedQueue;
 using sese::concurrent::LinkedStack;
 
@@ -47,34 +49,26 @@ void testLinkedStack() {
 
 void testLinkedQueue() {
     LinkedQueue<int> queue;
-    Thread th3([&queue]() {
-        for (int i = 0; i < 1000; i++) {
-            queue.push(i);
-        }
-    },
-               "thread3");
-    Thread th4([&queue]() {
-        for (int i = 0; i < 1000;) {
-            if(queue.pop(-1) != -1) {
-                i++;
-                helper.info("pop succ");
-            } else {
-                helper.info("pop fail");
-            }
-        }
-    },
-               "thread4");
-
-    th3.start();
-    th4.start();
-
-    th3.join();
-    th4.join();
+    ThreadPool pool("PUSH", 8);
+    for(int i = 0; i < 200; i++) {
+        pool.postTask([&queue](){
+            queue.push(0);
+        });
+    }
+    for(int i = 0; i < 210; i++) {
+        pool.postTask([&queue](){
+            queue.pop(0);
+        });
+    }
+    sese::sleep(5);
+    pool.shutdown();
+    auto i = queue.size();
+    assert(helper, i == 0, 0)
 }
 
 int main() {
-//    testCompareAndSwap();
-//    testLinkedStack();
+    //    testCompareAndSwap();
+    //    testLinkedStack();
     testLinkedQueue();
 
     return 0;
