@@ -9,18 +9,20 @@
 #include <sese/net/TcpServer.h>
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
+#include <sese/ObjectPool.h>
 
 namespace sese::http {
 
+    using HttpRequest = RequestHeader;
+    using HttpResponse = ResponseHeader;
+
     /// Http 服务上下文
-    class HttpServiceContext {
+    class API HttpServiceContext final {
     public:
         using Ptr = std::shared_ptr<HttpServiceContext>;
-        using HttpRequest = RequestHeader;
-        using HttpResponse = ResponseHeader;
 
         /// 初始化服务上下文
-        HttpServiceContext(IOContext *ioContext) noexcept;
+        HttpServiceContext() noexcept;
         /// 重置服务上下文
         void reset(IOContext *ioContext) noexcept;
 
@@ -41,7 +43,10 @@ namespace sese::http {
         /// \param buffer 正文信息缓存
         /// \param size 长度
         /// \return 已发送的长度
-        int64_t write(void *buffer, size_t size) noexcept;
+        int64_t write(const void *buffer, size_t size) noexcept;
+
+        /// 发送响应头并切换至只写模式
+        bool flush() noexcept;
 
     private:
         /*
@@ -50,20 +55,26 @@ namespace sese::http {
          * isReadOnly 用于指示当前模式是否为只读模式。
          */
         bool isReadOnly = true;
+        // 指示当前服务是否已经发送响应头
+        bool isFlushed = false;
         IOContext *ioContext = nullptr;
         HttpRequest::Ptr request = nullptr;
         HttpResponse::Ptr response = nullptr;
     };
 
     /// Http 服务器
-    class HttpServer : private sese::TcpServer {
+    class API HttpServer final {
     public:
         using Ptr = std::unique_ptr<HttpServer>;
-        Ptr create(const IPAddress::Ptr &ipAddress, size_t threads) noexcept;
-        void loopWith(std::function<void (HttpServiceContext &serviceContext)> proc);
+
+        static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS) noexcept;
+        void loopWith(std::function<void (const HttpServiceContext::Ptr &serviceContext)> handler);
         void shutdown();
 
     private:
-        HttpServer();
+        explicit HttpServer() = default;
+
+        TcpServer::Ptr tcpServer = nullptr;
+        ObjectPool<HttpServiceContext>::Ptr objectPool = nullptr;
     };
 }// namespace sese::http

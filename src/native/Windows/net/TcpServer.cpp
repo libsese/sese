@@ -18,7 +18,7 @@ IOContext::~IOContext() noexcept {
     WSACloseEvent(event);
 }
 
-int64_t IOContext::send(const void *buffer, size_t size) noexcept {
+int64_t IOContext::write(const void *buffer, size_t size) {
     DWORD nBytes = size;
     DWORD dwFlags = 0;
     // 实际传输字节数
@@ -49,7 +49,7 @@ int32_t IOContext::shutdown(Socket::ShutdownMode mode) const noexcept {
     return socket->shutdown(mode);
 }
 
-int64_t IOContext::recv(void *buffer, size_t size) noexcept {
+int64_t IOContext::read(void *buffer, size_t size) {
     DWORD nBytes = size;
     DWORD dwFlags = 0;
     // 实际传输字节数
@@ -76,7 +76,7 @@ int64_t IOContext::recv(void *buffer, size_t size) noexcept {
     return cbTransfer;
 }
 
-void IOContext::close() const noexcept {
+void IOContext::close() {
     socket->close();
 }
 

@@ -34,7 +34,7 @@ enum class OperationType {
 #endif
 
 /// @brief IO上下文类
-class sese::IOContext {
+class sese::IOContext : public sese::Stream {
 public:
     friend class sese::TcpServer;
 
@@ -46,14 +46,14 @@ public:
      * @param size 缓存大小, 类 Unix 理想状态下，该值最大可取 64 * 1024
      * @return 实际接收字节数，失败为 -1
      */
-    int64_t recv(void *buffer, size_t size) noexcept;
+    int64_t read(void *buffer, size_t size) override;
     /**
      * @brief 发送指定字节数
      * @param buffer 缓存
      * @param size 缓存大小, 类 Unix 理想状态下，该值最大可取 64 * 1024
      * @return 实际发送字节数，失败为 -1
      */
-    int64_t send(const void *buffer, size_t size) noexcept;
+    int64_t write(const void *buffer, size_t size) override;
     /**
      * @brief 断开当前连接
      * @param mode 断开的模式
@@ -63,7 +63,7 @@ public:
     /**
      * @brief 彻底关闭当前连接
      */
-    void close() const noexcept;
+    void close() override;
     /**
      * @brief 获取客户端的地址信息
      * @return 客户端地址
@@ -89,13 +89,12 @@ private:
 private:
     Socket::Ptr socket{};
 #endif
+
+private:
 };
 
 /// @brief TCP Server 类
 class sese::TcpServer : public sese::Noncopyable {
-private:
-    TcpServer() = default;
-
 public:
     using Ptr = std::unique_ptr<TcpServer>;
 
@@ -127,16 +126,18 @@ private:
     // Linux Native Only
 private:
     int32_t epollFd = -1;
-    epoll_event events[64];
+    epoll_event events[64]{};
 #endif
 #ifdef __APPLE__
     // Darwin Native Only
 private:
     int32_t kqueueFd = -1;
-    struct kevent events[64];
+    struct kevent events[64]{};
 #endif
 
 protected:
+    TcpServer() = default;
+
     ThreadPool::Ptr threadPool{};
     Socket::Ptr socket{};
     std::atomic_bool isShutdown{true};

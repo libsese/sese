@@ -44,7 +44,7 @@ void testHttpServer() {
     auto clientSocket = serverSocket->accept();
 
     auto requestHeader = std::make_unique<RequestHeader>();
-    HttpUtil::recvRequest(clientSocket, requestHeader);
+    HttpUtil::recvRequest(clientSocket.get(), requestHeader.get());
 
     for (const auto &item: *requestHeader) {
         helper.info("request %s: %s", item.first.c_str(), item.second.c_str());
@@ -55,7 +55,7 @@ void testHttpServer() {
              {"Connection", "close"}}
     );
     responseHeader->setCode(302);
-    HttpUtil::sendResponse(clientSocket, responseHeader);
+    HttpUtil::sendResponse(clientSocket.get(), responseHeader.get());
 
     clientSocket->shutdown(Socket::ShutdownMode::Both);
     clientSocket->close();
@@ -71,10 +71,10 @@ void testHttpClient() {
     requestHeader->setType(RequestType::Get);
     requestHeader->setUrl("/");
     requestHeader->set("Connection", "close");
-    HttpUtil::sendRequest(clientSocket, requestHeader);
+    HttpUtil::sendRequest(clientSocket.get(), requestHeader.get());
 
     auto responseHeader = std::make_unique<ResponseHeader>();
-    HttpUtil::recvResponse(clientSocket, responseHeader);
+    HttpUtil::recvResponse(clientSocket.get(), responseHeader.get());
 
     for (const auto &item: *responseHeader) {
         helper.info("response %s: %s", item.first.c_str(), item.second.c_str());

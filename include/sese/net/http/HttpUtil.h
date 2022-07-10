@@ -23,7 +23,7 @@ namespace sese::http {
          * @return true 接收请求成功
          * @return false 接收请求失败
          */
-        static bool recvRequest(const Stream::Ptr &source, const RequestHeader::Ptr &request) noexcept;
+        static bool recvRequest(Stream *source, RequestHeader *request) noexcept;
         /**
          * @brief 向流中发送一个请求
          * 
@@ -32,8 +32,7 @@ namespace sese::http {
          * @return true 发送请求成功
          * @return false 发送请求失败
          */
-        static bool sendRequest(const Stream::Ptr &dest, const RequestHeader::Ptr &request) noexcept;
-
+        static bool sendRequest(Stream *dest, RequestHeader *request) noexcept;
         /**
          * @brief 从流中接收一个响应
          * 
@@ -42,7 +41,7 @@ namespace sese::http {
          * @return true 接收响应成功
          * @return false 接收响应失败
          */
-        static bool recvResponse(const Stream::Ptr &source, const ResponseHeader::Ptr &response) noexcept;
+        static bool recvResponse(Stream *source, ResponseHeader *response) noexcept;
         /**
          * @brief 向流中发送一个响应
          * 
@@ -51,12 +50,12 @@ namespace sese::http {
          * @return true 发送响应成功
          * @return false 发送响应失败
          */
-        static bool sendResponse(const Stream::Ptr &dest, const ResponseHeader::Ptr &response) noexcept;
+        static bool sendResponse(Stream *dest, ResponseHeader *response) noexcept;
 
     private:
-        static bool getLine(const Stream::Ptr &source, StringBuilder &builder) noexcept;
+        static bool getLine(Stream *source, StringBuilder &builder) noexcept;
 
-        inline static bool recvHeader(const Stream::Ptr &source, StringBuilder &builder, const Header::Ptr &header) noexcept;
-        inline static bool sendHeader(const Stream::Ptr &dest, const Header::Ptr &header) noexcept;
+        inline static bool recvHeader(Stream *source, StringBuilder &builder, Header *header) noexcept;
+        inline static bool sendHeader(Stream *dest, Header *header) noexcept;
     };
 }

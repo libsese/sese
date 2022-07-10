@@ -6,7 +6,7 @@
 
 using sese::http::HttpUtil;
 
-bool HttpUtil::getLine(const Stream::Ptr &source, StringBuilder &builder) noexcept {
+bool HttpUtil::getLine(Stream *source, StringBuilder &builder) noexcept {
     char ch;
     for (size_t i = 0; i < HTTP_MAX_SINGLE_LINE + 1; i++) {
         if (HTTP_MAX_SINGLE_LINE == i) return false;
@@ -30,7 +30,7 @@ bool HttpUtil::getLine(const Stream::Ptr &source, StringBuilder &builder) noexce
     return true;
 }
 
-bool HttpUtil::recvRequest(const Stream::Ptr &source, const RequestHeader::Ptr &request) noexcept {
+bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
     StringBuilder builder;
     if (!getLine(source, builder)) {
         return false;
@@ -58,12 +58,12 @@ bool HttpUtil::recvRequest(const Stream::Ptr &source, const RequestHeader::Ptr &
     }
 
     // keys & values
-    if (!recvHeader(source, builder, (const Header::Ptr &) request)) return false;
+    if (!recvHeader(source, builder, request)) return false;
 
     return true;
 }
 
-bool sese::http::HttpUtil::sendRequest(const sese::Stream::Ptr &dest, const sese::http::RequestHeader::Ptr &request) noexcept {
+bool sese::http::HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noexcept {
     // method
     if (request->getType() == RequestType::Get) {
         if (-1 == dest->write("GET ", 4)) return false;
@@ -84,12 +84,12 @@ bool sese::http::HttpUtil::sendRequest(const sese::Stream::Ptr &dest, const sese
     }
 
     // keys & values
-    if (!sendHeader(dest, (const Header::Ptr &) request)) return false;
+    if (!sendHeader(dest, request)) return false;
 
     return true;
 }
 
-bool HttpUtil::recvResponse(const Stream::Ptr &source, const ResponseHeader::Ptr &response) noexcept {
+bool HttpUtil::recvResponse(Stream *source, ResponseHeader *response) noexcept {
     StringBuilder builder;
     if (!getLine(source, builder)) return false;
     auto firstLines = builder.split(" ");
@@ -106,12 +106,12 @@ bool HttpUtil::recvResponse(const Stream::Ptr &source, const ResponseHeader::Ptr
     response->setCode((uint16_t) _atoi64(firstLines[1].c_str()));
 
     // keys & values
-    if (!recvHeader(source, builder, (const Header::Ptr &) response)) return false;
+    if (!recvHeader(source, builder, response)) return false;
 
     return true;
 }
 
-bool HttpUtil::sendResponse(const sese::Stream::Ptr &dest, const sese::http::ResponseHeader::Ptr &response) noexcept {
+bool HttpUtil::sendResponse(Stream *dest, ResponseHeader *response) noexcept {
     // version
     if (response->getVersion() == HttpVersion::VERSION_1_1) {
         if (-1 == dest->write("HTTP/1.1 ", 9)) return false;
@@ -125,12 +125,12 @@ bool HttpUtil::sendResponse(const sese::Stream::Ptr &dest, const sese::http::Res
     if (-1 == dest->write("\r\n", 2)) return false;
 
     // keys & values
-    if (!sendHeader(dest, (const Header::Ptr &) response)) return false;
+    if (!sendHeader(dest, response)) return false;
 
     return true;
 }
 
-bool HttpUtil::recvHeader(const Stream::Ptr &source, StringBuilder &builder, const Header::Ptr &header) noexcept {
+bool HttpUtil::recvHeader(Stream *source, StringBuilder &builder, Header *header) noexcept {
     while (true) {
         if (!getLine(source, builder)) {
             return false;
@@ -148,9 +148,9 @@ bool HttpUtil::recvHeader(const Stream::Ptr &source, StringBuilder &builder, con
     return true;
 }
 
-bool HttpUtil::sendHeader(const Stream::Ptr &dest, const Header::Ptr &header) noexcept {
+bool HttpUtil::sendHeader(Stream *dest, Header *header) noexcept {
     size_t len;
-    for (const auto &pair : *header) {
+    for (const auto &pair: *header) {
         len = pair.first.length();
         if (-1 == dest->write(pair.first.c_str(), len)) return false;
         if (-1 == dest->write(": ", 2)) return false;

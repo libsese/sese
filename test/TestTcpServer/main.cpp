@@ -24,10 +24,10 @@ int main() {
         server->loopWith([&helper = helper](IOContext *ioContext) {
             helper.info("Client address: %s", ioContext->getClientAddress()->getAddress().c_str());
             char buffer[1024]{};
-            ioContext->recv(buffer, 1024);
+            ioContext->read(buffer, 1024);
             helper.info("request is \'%s\'", buffer);
             memcpy(buffer, "HTTP/1.1 200 OK\r\n\r\n", 19); // NOLINT
-            ioContext->send(buffer, 19);
+            ioContext->write(buffer, 19);
             ioContext->close();
         });
     }, "TcpServer");

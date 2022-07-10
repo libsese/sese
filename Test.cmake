@@ -163,3 +163,8 @@ add_test(NAME TestConcurrent COMMAND TestConcurrent)
 add_executable(TestUrlHelper test/TestUrlHelper/main.cpp)
 target_link_libraries(TestUrlHelper SeseSharedLibrary)
 add_test(NAME TestUrlHelper COMMAND TestUrlHelper)
+
+# Httpd
+add_executable(TestHttpd test/TestHttpd/main.cpp)
+target_link_libraries(TestHttpd SeseSharedLibrary)
+add_test(NAME TestHttpd COMMAND TestHttpd)

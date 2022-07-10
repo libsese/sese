@@ -10,7 +10,7 @@ IOContext::IOContext() noexcept {}
 
 IOContext::~IOContext() noexcept {}
 
-int64_t IOContext::recv(void *buffer, size_t size) noexcept {
+int64_t IOContext::read(void *buffer, size_t size) {
     int32_t count = 0;
     int64_t transfer = 0;
     int64_t len;
@@ -39,7 +39,7 @@ int64_t IOContext::recv(void *buffer, size_t size) noexcept {
     return transfer;
 }
 
-int64_t IOContext::send(const void *buffer, size_t size) noexcept {
+int64_t IOContext::write(const void *buffer, size_t size) {
     int32_t count = 0;
     int64_t transfer = 0;
     int64_t len;
@@ -72,7 +72,7 @@ int32_t IOContext::shutdown(Socket::ShutdownMode mode) const noexcept {
     return socket->shutdown(mode);
 }
 
-void IOContext::close() const noexcept {
+void IOContext::close() {
     socket->close();
 }
 
