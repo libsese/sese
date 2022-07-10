@@ -16,14 +16,14 @@ void bar() {
 }
 
 int main() {
-    Timer timer;
+    auto timer = Timer::create(5);
     helper.debug("timer start");
-    timer.delay(foo, 2);
-    auto task = timer.delay(bar, 1, true);
+    timer->delay(foo, 2);
+    auto task = timer->delay(bar, 1, true);
     sese::sleep(4);
-    timer.cancel(task);
+//    task->cancel();
     sese::sleep(3);
     helper.debug("timer thread joining");
-    timer.shutdown();
+    timer->shutdown();
     return 0;
 }

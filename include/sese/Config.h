@@ -54,6 +54,9 @@ constexpr static const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024;
 /// 是否启用调试模式
 constexpr static const bool ENABLE_TEST = true;
 
+/// 定时器时间轮轮片数
+constexpr static const size_t TIMER_WHEEL_NUMBER = 30;
+
 /// TCP Server 默认线程池大小
 constexpr static const size_t SERVER_DEFAULT_THREADS = 4;
 /// TCP Server 默认监听队列大小
@@ -61,7 +64,6 @@ constexpr static const size_t SERVER_MAX_CONNECTION = 511;
 
 /// Http Util 单行最大大小
 constexpr static const size_t HTTP_MAX_SINGLE_LINE = 1023;
-
 /// Http Server 名称
 constexpr static const char *HTTPD_NAME = "sese::http::HttpServer";
 /// Http Keep-Alive 时长（单位：秒）
