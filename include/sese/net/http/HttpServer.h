@@ -9,7 +9,9 @@
 #include <sese/net/TcpServer.h>
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
-#include <sese/ObjectPool.h>
+#include <sese/concurrent/ConcurrentObjectPool.h>
+#include <sese/Timer.h>
+#include <map>
 
 namespace sese::http {
 
@@ -24,7 +26,7 @@ namespace sese::http {
         /// 初始化服务上下文
         HttpServiceContext() noexcept;
         /// 重置服务上下文
-        void reset(IOContext *ioContext) noexcept;
+        void reset(IOContext *context) noexcept;
 
         /// 获取请求头
         /// \return 请求头信息
@@ -48,15 +50,15 @@ namespace sese::http {
         /// 发送响应头并切换至只写模式
         bool flush() noexcept;
 
+        [[nodiscard]] bool isReadOnly() const noexcept { return _isReadOnly; }
+
     private:
         /*
          * ServiceContext 一次完整的服务包含两个部分，
          * 读取请求信息（只读模式），发送响应信息（只写模式）。
-         * isReadOnly 用于指示当前模式是否为只读模式。
+         * _isReadOnly 用于指示当前模式是否为只读模式。
          */
-        bool isReadOnly = true;
-        // 指示当前服务是否已经发送响应头
-        bool isFlushed = false;
+        bool _isReadOnly = true;
         IOContext *ioContext = nullptr;
         HttpRequest::Ptr request = nullptr;
         HttpResponse::Ptr response = nullptr;
@@ -68,13 +70,19 @@ namespace sese::http {
         using Ptr = std::unique_ptr<HttpServer>;
 
         static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS) noexcept;
-        void loopWith(std::function<void (const HttpServiceContext::Ptr &serviceContext)> handler);
+        void loopWith(std::function<void(const HttpServiceContext::Ptr &serviceContext)> handler);
         void shutdown();
 
     private:
         explicit HttpServer() = default;
 
+        //todo 实现定时器对应回调函数
+        void closeCallback(const Socket::Ptr &socket) noexcept = delete;
+        void cancelCallback(const Socket::Ptr &socket) noexcept = delete;
+
+        Timer::Ptr timer = nullptr;
+        std::map<const Socket::Ptr, Timer::Task::Ptr> taskMap;
         TcpServer::Ptr tcpServer = nullptr;
-        ObjectPool<HttpServiceContext>::Ptr objectPool = nullptr;
+        concurrent::ConcurrentObjectPool<HttpServiceContext>::Ptr objectPool = nullptr;
     };
 }// namespace sese::http

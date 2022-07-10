@@ -59,7 +59,7 @@ public:
      * @param mode 断开的模式
      * @return 操作成功返回 0
      */
-    int32_t shutdown(Socket::ShutdownMode mode) const noexcept; // NOLINT
+    int32_t shutdown(Socket::ShutdownMode mode) const noexcept;// NOLINT
     /**
      * @brief 彻底关闭当前连接
      */
@@ -69,6 +69,11 @@ public:
      * @return 客户端地址
      */
     [[nodiscard]] const IPAddress::Ptr &getClientAddress() const noexcept;
+
+    /// 获取被 IOContext 包装起来的 Socket
+    /// \warning 注意，获取到的 Socket 仅能做标识符用，无法预估直接使用的后果
+    /// \return Socket
+    const Socket::Ptr &getSocket() { return socket; }
 
 #ifdef _WIN32
     // Windows Native Only
@@ -120,7 +125,7 @@ public:
 private:
     void workerProc4WindowsIOCP();
     HANDLE iocpHandle = INVALID_HANDLE_VALUE;
-    size_t threads{}; // Windows 工作线程数
+    size_t threads{};// Windows 工作线程数
 #endif
 #ifdef __linux__
     // Linux Native Only
