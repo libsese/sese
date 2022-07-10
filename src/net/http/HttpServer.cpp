@@ -60,11 +60,10 @@ HttpServer::Ptr HttpServer::create(const IPAddress::Ptr &ipAddress, size_t threa
         return nullptr;
     }
     server->objectPool = concurrent::ConcurrentObjectPool<HttpServiceContext>::create();
-    server->timer = std::make_shared<Timer>();
     return server;
 }
 
-void HttpServer::loopWith(std::function<void(const HttpServiceContext::Ptr &)> handler) {
+void HttpServer::loopWith(const std::function<void(const HttpServiceContext::Ptr &)> &handler) {
     tcpServer->loopWith([&](IOContext *ioContext) {
         concurrent::ConcurrentObjectPool<HttpServiceContext>::ObjectPtr context = objectPool->borrow();
         context->reset(ioContext);
@@ -78,7 +77,6 @@ void HttpServer::loopWith(std::function<void(const HttpServiceContext::Ptr &)> h
             ioContext->close();
             return;
         }
-
         handler(context);
         bool noKeepAlive = 0 == strcasecmp(request->get("Connection", "keep-alive").c_str(), "close");
         if (noKeepAlive) {

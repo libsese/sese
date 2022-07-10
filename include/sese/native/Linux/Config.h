@@ -21,6 +21,8 @@
 /// 忽略大小写比较
 #define strcmpi strcasecmp
 
+#include <cstring>
+
 ///
 using tid_t = uint32_t;
 /// Native Socket 类型

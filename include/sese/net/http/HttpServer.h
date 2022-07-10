@@ -70,18 +70,12 @@ namespace sese::http {
         using Ptr = std::unique_ptr<HttpServer>;
 
         static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS) noexcept;
-        void loopWith(std::function<void(const HttpServiceContext::Ptr &serviceContext)> handler);
+        void loopWith(const std::function<void(const HttpServiceContext::Ptr &serviceContext)> &handler);
         void shutdown();
 
     private:
         explicit HttpServer() = default;
 
-        //todo 实现定时器对应回调函数
-        void closeCallback(const Socket::Ptr &socket) noexcept = delete;
-        void cancelCallback(const Socket::Ptr &socket) noexcept = delete;
-
-        Timer::Ptr timer = nullptr;
-        std::map<const Socket::Ptr, Timer::Task::Ptr> taskMap;
         TcpServer::Ptr tcpServer = nullptr;
         concurrent::ConcurrentObjectPool<HttpServiceContext>::Ptr objectPool = nullptr;
     };
