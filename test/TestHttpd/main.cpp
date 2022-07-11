@@ -12,7 +12,7 @@ using sese::http::HttpServiceContext;
 LogHelper helper("HTTPD");//NOLINT
 
 int main() {
-    auto address = IPv4Address::create("0.0.0.0", 8081);
+    auto address = IPv4Address::create("0.0.0.0", 8080);
     auto server = HttpServer::create(address, 2);
     assert(helper, server != nullptr, -1);
 
@@ -32,7 +32,7 @@ int main() {
     });
 
     serverThread.start();
-    sese::sleep(5);
+    sese::sleep(10);
     server->shutdown();
     serverThread.join();
 

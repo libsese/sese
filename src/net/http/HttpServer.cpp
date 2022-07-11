@@ -2,6 +2,15 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/Util.h>
 
+#define CLOSE(CONTENT)                             \
+    CONTENT->shutdown(Socket::ShutdownMode::Both); \
+    CONTENT->close()
+
+#ifdef _WIN32
+/// \see flush_windows_sock_sending_buffer
+static char SPACE_BUFFER[64]{};
+#endif
+
 using sese::IOContext;
 using sese::TcpServer;
 using sese::http::HttpRequest;
@@ -59,6 +68,7 @@ HttpServer::Ptr HttpServer::create(const IPAddress::Ptr &ipAddress, size_t threa
     if (server->tcpServer == nullptr) {
         return nullptr;
     }
+    server->timer = Timer::create();
     server->objectPool = concurrent::ConcurrentObjectPool<HttpServiceContext>::create();
     return server;
 }
@@ -69,28 +79,70 @@ void HttpServer::loopWith(const std::function<void(const HttpServiceContext::Ptr
         context->reset(ioContext);
 
         decltype(auto) request = context->getRequest();
-        decltype(auto) response = context->getResponse();
-        response->set("Server", HTTPD_NAME);
-
-        if (!HttpUtil::recvRequest(ioContext, request.get())) {
-            ioContext->shutdown(Socket::ShutdownMode::Both);
-            ioContext->close();
-            return;
-        }
-        handler(context);
+        request->set("Server", HTTPD_NAME);
         bool noKeepAlive = 0 == strcasecmp(request->get("Connection", "keep-alive").c_str(), "close");
-        if (noKeepAlive) {
-            // Connection need close
-            ioContext->shutdown(Socket::ShutdownMode::Both);
-            ioContext->close();
-        } else {
+        if (!noKeepAlive) {
             // Connection need keep alive
             // Add to timing task
             // ...
+            auto socket = ioContext->getSocket();
+            auto task = timer->delay(std::bind(&HttpServer::closeCallback, taskMap, socket), HTTPD_KEEP_ALIVE_DURATION, false);
+            mutex.lock();
+            auto iterator = taskMap.find(socket);
+            if (iterator == taskMap.end()) {
+                // It's a new connection,
+                // add to taskMap as TimerTask
+                taskMap[socket] = task;
+            } else {
+                // It's an old connection,
+                // reset TimerTask timing count,
+                auto originalTask = iterator->second;
+                // Cancel the original task from timer,
+                // and set a new task
+                originalTask->cancel();
+                iterator->second = task;
+            }
+            mutex.unlock();
         }
+
+        if (!HttpUtil::recvRequest(ioContext, request.get())) {
+            CLOSE(ioContext);
+            return;
+        }
+        handler(context);
+        if (context->isReadOnly()) {
+            if (!context->flush()) {
+                CLOSE(ioContext);
+                return;
+            }
+        }
+
+        if (noKeepAlive) {
+            // Connection need close
+            CLOSE(ioContext);
+        }
+#ifdef _WIN32
+        else {
+            /// \anchor flush_windows_sock_sending_buffer
+            /// \warning Do not remove this!
+            /// \brief Send 64 bytes blank char to force flash the windows socket sending buffer.
+            ioContext->write(SPACE_BUFFER, 64);
+        }
+#endif
     });
 }
 
 void HttpServer::shutdown() {
     tcpServer->shutdown();
+    timer->shutdown();
+    for (const auto &pair: taskMap) {
+        CLOSE(pair.first);
+    }
 }
+
+void HttpServer::closeCallback(Map &taskMap, const Socket::Ptr &socket) noexcept {
+    taskMap.erase(socket);
+    CLOSE(socket);
+}
+
+#undef CLOSE

@@ -1,9 +1,8 @@
 /// \author kaoru
 /// \file HttpServer.h
 /// \brief 简易的 Http 服务器
-/// \date 2022年7月10日
-/// \version 0.1
-/// \warning 未实现
+/// \date 2022年7月11日
+/// \version 0.2
 
 #pragma once
 #include <sese/net/TcpServer.h>
@@ -52,6 +51,9 @@ namespace sese::http {
 
         [[nodiscard]] bool isReadOnly() const noexcept { return _isReadOnly; }
 
+        // 调试用代码
+        // auto getSocket() { return ioContext->getSocket(); }
+
     private:
         /*
          * ServiceContext 一次完整的服务包含两个部分，
@@ -69,13 +71,29 @@ namespace sese::http {
     public:
         using Ptr = std::unique_ptr<HttpServer>;
 
+        /// 创建一个 Http 服务器
+        /// \param ipAddress 绑定的地址
+        /// \param threads 线程数目
+        /// \return 创建成功返回其指针，失败则为 nullptr
         static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS) noexcept;
         void loopWith(const std::function<void(const HttpServiceContext::Ptr &serviceContext)> &handler);
         void shutdown();
 
     private:
-        explicit HttpServer() = default;
+        struct SocketPtrCmp {
+            bool operator()(const Socket::Ptr& rv, const Socket::Ptr& lv) const {
+                return rv->getRawSocket() < lv->getRawSocket();
+            }
+        };
 
+        using Map = std::map<Socket::Ptr, TimerTask::Ptr, SocketPtrCmp>;
+
+        explicit HttpServer() = default;
+        static void closeCallback(Map &taskMap, const Socket::Ptr& socket) noexcept;
+
+        Map taskMap;
+        std::mutex mutex;
+        Timer::Ptr timer = nullptr;
         TcpServer::Ptr tcpServer = nullptr;
         concurrent::ConcurrentObjectPool<HttpServiceContext>::Ptr objectPool = nullptr;
     };
