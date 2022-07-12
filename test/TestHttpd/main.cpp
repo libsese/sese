@@ -13,7 +13,7 @@ LogHelper helper("HTTPD");//NOLINT
 
 int main() {
     auto address = IPv4Address::create("0.0.0.0", 8080);
-    auto server = HttpServer::create(address, 2);
+    auto server = HttpServer::create(address, 1);
     assert(helper, server != nullptr, -1);
 
     Thread serverThread([&server](){
@@ -32,7 +32,7 @@ int main() {
     });
 
     serverThread.start();
-    sese::sleep(10);
+    sese::sleep(5);
     server->shutdown();
     serverThread.join();
 

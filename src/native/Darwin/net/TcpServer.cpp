@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sese/record/LogHelper.h>
+#include <sese/Util.h>
 
 using sese::IOContext;
 using sese::IPAddress;
@@ -94,6 +95,7 @@ TcpServer::Ptr TcpServer::create(const IPAddress::Ptr &ipAddress, size_t threads
     server->socket = std::make_shared<Socket>(serverSocket, ipAddress);
 
     if (!server->socket->setNonblocking(true)) {
+        server->socket->close();
         return nullptr;
     }
 
@@ -173,6 +175,9 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
                 });
             }
         }
+
+        // 放弃当前时间片
+        sese::sleep(0);
     }
 }
 

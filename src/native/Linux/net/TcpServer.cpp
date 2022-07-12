@@ -1,5 +1,6 @@
 #include <fcntl.h>
 #include <sese/net/TcpServer.h>
+#include <sese/Util.h>
 
 using sese::IOContext;
 using sese::IPAddress;
@@ -91,6 +92,7 @@ TcpServer::Ptr TcpServer::create(const IPAddress::Ptr &ipAddress, size_t threads
     server->socket = std::make_shared<Socket>(serverSocket, ipAddress);
 
     if (!server->socket->setNonblocking(true)) {
+        server->socket->close();
         return nullptr;
     }
 
@@ -137,7 +139,6 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
                 if (client == -1) {
                     continue;
                 }
-
                 int32_t opt = fcntl(client, F_GETFL);
                 if (opt == -1) {
                     close(client);

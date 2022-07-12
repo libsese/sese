@@ -66,5 +66,5 @@ constexpr static const size_t SERVER_MAX_CONNECTION = 511;
 constexpr static const size_t HTTP_MAX_SINGLE_LINE = 1023;
 /// Http Server 名称
 constexpr static const char *HTTPD_NAME = "sese::http::HttpServer";
-/// Http Keep-Alive 时长（单位：秒）
-constexpr static const size_t HTTPD_KEEP_ALIVE_DURATION = 60;
+/// Http Keep-Alive 时长（单位：秒，目前仅在 Linux 下有效且数值不宜过大）
+constexpr static const size_t HTTPD_KEEP_ALIVE_DURATION = 10;

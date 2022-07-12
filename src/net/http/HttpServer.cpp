@@ -6,11 +6,6 @@
     CONTENT->shutdown(Socket::ShutdownMode::Both); \
     CONTENT->close()
 
-#ifdef _WIN32
-/// \see flush_windows_sock_sending_buffer
-static char SPACE_BUFFER[64]{};
-#endif
-
 using sese::IOContext;
 using sese::TcpServer;
 using sese::http::HttpRequest;
@@ -50,11 +45,16 @@ int64_t HttpServiceContext::write(const void *buffer, size_t size) noexcept {
 }
 
 bool HttpServiceContext::flush() noexcept {
+    request->set("Server", HTTPD_NAME);
+#ifdef __linux__
     if (0 == strcasecmp(request->get("Connection", "keep-alive").c_str(), "close")) {
         response->set("Connection", "close");
     } else {
         response->set("Connection", "keep-alive");
     }
+#else
+    response->set("Connection", "close");
+#endif
     auto rt = HttpUtil::sendResponse(ioContext, response.get());
     if (rt) {
         _isReadOnly = false;
@@ -68,7 +68,9 @@ HttpServer::Ptr HttpServer::create(const IPAddress::Ptr &ipAddress, size_t threa
     if (server->tcpServer == nullptr) {
         return nullptr;
     }
+#ifdef __linux__
     server->timer = Timer::create();
+#endif
     server->objectPool = concurrent::ConcurrentObjectPool<HttpServiceContext>::create();
     return server;
 }
@@ -79,7 +81,7 @@ void HttpServer::loopWith(const std::function<void(const HttpServiceContext::Ptr
         context->reset(ioContext);
 
         decltype(auto) request = context->getRequest();
-        request->set("Server", HTTPD_NAME);
+#ifdef __linux__
         bool noKeepAlive = 0 == strcasecmp(request->get("Connection", "keep-alive").c_str(), "close");
         if (!noKeepAlive) {
             // Connection need keep alive
@@ -104,6 +106,7 @@ void HttpServer::loopWith(const std::function<void(const HttpServiceContext::Ptr
             }
             mutex.unlock();
         }
+#endif
 
         if (!HttpUtil::recvRequest(ioContext, request.get())) {
             CLOSE(ioContext);
@@ -117,16 +120,10 @@ void HttpServer::loopWith(const std::function<void(const HttpServiceContext::Ptr
             }
         }
 
+#ifdef __linux__
         if (noKeepAlive) {
             // Connection need close
             CLOSE(ioContext);
-        }
-#ifdef _WIN32
-        else {
-            /// \anchor flush_windows_sock_sending_buffer
-            /// \warning Do not remove this!
-            /// \brief Send 64 bytes blank char to force flash the windows socket sending buffer.
-            ioContext->write(SPACE_BUFFER, 64);
         }
 #endif
     });
@@ -134,15 +131,19 @@ void HttpServer::loopWith(const std::function<void(const HttpServiceContext::Ptr
 
 void HttpServer::shutdown() {
     tcpServer->shutdown();
+#ifdef __linux__
     timer->shutdown();
     for (const auto &pair: taskMap) {
         CLOSE(pair.first);
     }
+#endif
 }
 
+#ifdef __linux__
 void HttpServer::closeCallback(Map &taskMap, const Socket::Ptr &socket) noexcept {
     taskMap.erase(socket);
     CLOSE(socket);
 }
+#endif
 
 #undef CLOSE

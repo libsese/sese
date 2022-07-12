@@ -14,7 +14,6 @@ sese::Socket::Socket(Family family, Type type, int32_t protocol) noexcept {
 }
 
 sese::Socket::~Socket() noexcept {
-    closesocket(handle);
 }
 
 int32_t sese::Socket::bind(Address::Ptr addr) noexcept {

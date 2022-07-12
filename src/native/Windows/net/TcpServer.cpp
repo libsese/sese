@@ -1,4 +1,5 @@
 #include <sese/net/TcpServer.h>
+#include <sese/Util.h>
 
 #pragma warning(disable : 4267)
 
@@ -95,6 +96,7 @@ TcpServer::Ptr TcpServer::create(const IPAddress::Ptr &ipAddress, size_t threads
     auto server = std::unique_ptr<TcpServer>(new TcpServer);
     server->socket = std::make_shared<Socket>(serverSocket, ipAddress);
     if (!server->socket->setNonblocking(true)) {
+        server->socket->close();
         return nullptr;
     }
 
@@ -235,5 +237,8 @@ void TcpServer::loopWith(const std::function<void(IOContext *)> &handler) {
             handler(ioContext);
             delete ioContext;
         });
+
+        // 放弃当前时间片
+        sese::sleep(0);
     }
 }

@@ -3,6 +3,7 @@
 /// \brief 简易的 Http 服务器
 /// \date 2022年7月11日
 /// \version 0.2
+/// \warning 实验性功能，仅在 Linux 下启用长连接
 
 #pragma once
 #include <sese/net/TcpServer.h>
@@ -86,14 +87,16 @@ namespace sese::http {
             }
         };
 
-        using Map = std::map<Socket::Ptr, TimerTask::Ptr, SocketPtrCmp>;
-
         explicit HttpServer() = default;
-        static void closeCallback(Map &taskMap, const Socket::Ptr& socket) noexcept;
+
+#ifdef __linux__
+        using Map = std::map<Socket::Ptr, TimerTask::Ptr, SocketPtrCmp>;
 
         Map taskMap;
         std::mutex mutex;
         Timer::Ptr timer = nullptr;
+        static void closeCallback(Map &taskMap, const Socket::Ptr& socket) noexcept;
+#endif
         TcpServer::Ptr tcpServer = nullptr;
         concurrent::ConcurrentObjectPool<HttpServiceContext>::Ptr objectPool = nullptr;
     };
