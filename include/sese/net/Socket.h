@@ -55,19 +55,6 @@ namespace sese {
 #endif
         };
 
-        enum class Option{
-            REUSE_ADDRESS = SO_REUSEADDR,
-            LINGER = SO_LINGER,
-            SEND_TIMEOUT = SO_SNDTIMEO,
-            RECV_TIMEOUT = SO_RCVTIMEO,
-            SEND_BUFFER_SIZE = SO_SNDBUF,
-            RECV_BUFFER_SIZE = SO_RCVBUF,
-            KEEP_ALIVE = SO_KEEPALIVE,
-            OOB_INLINE = SO_OOBINLINE,
-            BROADCAST = SO_BROADCAST,
-            DEBUG = SO_DEBUG
-        };
-
     public:
         Socket(Family family, Type type, int32_t protocol = IPPROTO_IP) noexcept;
         Socket(socket_t handle, Address::Ptr address) noexcept;
@@ -137,8 +124,6 @@ namespace sese {
         void close() override;
         [[nodiscard]] const socket_t &getRawSocket() const { return handle; }
         [[nodiscard]] const Address::Ptr &getAddress() const { return address; }
-        int32_t setOption(Option option, int32_t &value) const;
-        int32_t getOption(Option option, int32_t &value) const;
 
     private:
         socket_t handle{};
