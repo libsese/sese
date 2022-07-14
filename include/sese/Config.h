@@ -61,10 +61,10 @@ constexpr static const size_t TIMER_WHEEL_NUMBER = 30;
 constexpr static const size_t SERVER_DEFAULT_THREADS = 4;
 /// TCP Server 默认监听队列大小
 constexpr static const size_t SERVER_MAX_CONNECTION = 511;
+/// TCP Server Keep-Alive 时长
+constexpr static const size_t SERVER_KEEP_ALIVE_DURATION = 10;
 
 /// Http Util 单行最大大小
 constexpr static const size_t HTTP_MAX_SINGLE_LINE = 1023;
 /// Http Server 名称
 constexpr static const char *HTTPD_NAME = "sese::http::HttpServer";
-/// Http Keep-Alive 时长（单位：秒，目前仅在 Linux 下有效且数值不宜过大）
-constexpr static const size_t HTTPD_KEEP_ALIVE_DURATION = 10;

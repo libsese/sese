@@ -15,6 +15,7 @@ int64_t sese::IOContext::write(const void *buffer, size_t length) {
 
 void sese::IOContext::close() {
     isClosed = true;
+    shutdown(socket, SHUT_RDWR);
     ::close(socket);
 }
 
@@ -163,4 +164,5 @@ void Server::closeCallback(socket_t socket) noexcept {
     taskMap.erase(socket);
     mutex.unlock();
     ::shutdown(socket, SHUT_RDWR);
+    close(socket);
 }

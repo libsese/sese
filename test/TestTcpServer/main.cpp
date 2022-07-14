@@ -16,7 +16,7 @@ LogHelper helper("fTCP_SERVER");// NOLINT
 int main() {
     auto address = IPv4Address::create("0.0.0.0", 8080);
 
-    auto server = TcpServer::create(address, 4, 30);
+    auto server = TcpServer::create(address, 4, 10);
     assert(helper, nullptr != server, -1);
 
     // 服务器线程
@@ -34,7 +34,8 @@ int main() {
                   "TcpServer");
     thread.start();
     sese::sleep(5);
-    puts("WANT SHUTDOWN");
+//    getchar();
+    helper.info("WANT SHUTDOWN");
     server->shutdown();
     thread.join();
     return 0;
