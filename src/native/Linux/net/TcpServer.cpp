@@ -87,6 +87,18 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                 // 新连接接入
                 clientFd = ::accept(sockFd, nullptr, nullptr);
                 if (-1 == clientFd) continue;
+
+                int32_t opt = fcntl(sockFd, F_GETFL);
+                if (-1 == opt) {
+                    close(clientFd);
+                    continue;
+                }
+
+                if (-1 == fcntl(sockFd, F_SETFL, opt | O_NONBLOCK)) {
+                    close(clientFd);
+                    continue;
+                }
+
                 event.events = EPOLLIN | EPOLLONESHOT;
                 event.data.fd = clientFd;
                 if (-1 == EpollCtl(epollFd, EPOLL_CTL_ADD, clientFd, &event)) {
