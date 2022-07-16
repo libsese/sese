@@ -25,6 +25,9 @@
 #define MaxEvents 64
 using KEvent = struct kevent;
 #endif
+#ifdef _WIN32
+#define MaxEvents WSA_MAXIMUM_WAIT_EVENTS
+#endif
 
 namespace sese {
     class TcpServer;
@@ -72,6 +75,13 @@ namespace sese {
         int32_t kqueueFd = -1;
         socket_t sockFd = -1;
         KEvent events[MaxEvents]{};
+#endif
+#ifdef _WIN32
+    private:
+        SOCKET socks[MaxEvents]{};
+        WSAEVENT events[MaxEvents]{};
+        DWORD eventNum = 0;
+        std::map<SOCKET, bool> sockStatus;
 #endif
     };
 }// namespace sese
