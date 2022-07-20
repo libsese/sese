@@ -25,20 +25,37 @@
 #define MaxEvents 64
 using KEvent = struct kevent;
 #endif
-#ifdef _WIN32
-#define MaxEvents WSA_MAXIMUM_WAIT_EVENTS
-#endif
 
 namespace sese {
+#ifdef _WIN32
+#define MaxBufferSize 1024
+    enum class Operation {
+        Accept = 1,
+        Read = 2,
+        Write = 3,
+        Close = 4,
+        Null = 0
+    };
+#endif
+
     class TcpServer;
     class API IOContext final : public Stream {
     public:
         friend class TcpServer;
+        IOContext() : Stream() {}
         int64_t read(void *buffer, size_t length) override;
         int64_t write(const void *buffer, size_t length) override;
         void close() override;
 
     private:
+#ifdef _WIN32
+        WSABUF wsaBuf {MaxBufferSize, buffer};
+        char useless[13];
+        char buffer[MaxBufferSize]{};
+        OVERLAPPED overlapped{};
+        Operation operation = Operation::Null;
+        DWORD nBytes = 0;
+#endif
         bool isClosed = false;
         socket_t socket = -1;
     };
@@ -78,10 +95,12 @@ namespace sese {
 #endif
 #ifdef _WIN32
     private:
-        SOCKET socks[MaxEvents]{};
-        WSAEVENT events[MaxEvents]{};
-        DWORD eventNum = 0;
-        std::map<SOCKET, bool> sockStatus;
+        void postRecv(SOCKET socket) noexcept;
+        void forwardFunction() noexcept;
+
+        SOCKET listenSock = INVALID_SOCKET;
+        HANDLE hIOCP = INVALID_HANDLE_VALUE;
+        std::vector<Thread::Ptr> threadArray;
 #endif
     };
 }// namespace sese

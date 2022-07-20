@@ -22,7 +22,7 @@ void sese::IOContext::close() {
 
 Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive) noexcept {
     auto family = ipAddress->getRawAddress()->sa_family;
-    socket_t sockFd = ::socket(family, SOCK_STREAM, IPPROTO_TCP);
+    socket_t sockFd = ::WSASocketW(family, SOCK_STREAM, 0, nullptr, 0, WSA_FLAG_OVERLAPPED);
     if (-1 == sockFd) {
         return nullptr;
     }
@@ -32,28 +32,30 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
     return nullptr;
 
     unsigned long ul = 1;
-    if (-1 == ioctlsocket(sockFd, FIONBIO, &ul)) {
+    if (SOCKET_ERROR == ioctlsocket(sockFd, FIONBIO, &ul)) {
         CLEAR
     }
 
-    if (-1 == bind(sockFd, ipAddress->getRawAddress(), ipAddress->getRawAddressLength())) {
+    if (SOCKET_ERROR == bind(sockFd, ipAddress->getRawAddress(), ipAddress->getRawAddressLength())) {
         CLEAR
     }
 
-    if (-1 == listen(sockFd, SERVER_MAX_CONNECTION)) {
+    if (SOCKET_ERROR == listen(sockFd, SERVER_MAX_CONNECTION)) {
         CLEAR
     }
 
-    WSAEVENT listenEvent = WSACreateEvent();
-    if (-1 == WSAEventSelect(sockFd, listenEvent, FD_ACCEPT | FD_CLOSE)) {
-        WSACloseEvent(listenEvent);
+    HANDLE hIOCP = CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, threads);
+    if (INVALID_HANDLE_VALUE == hIOCP) {
         CLEAR
     }
+#undef CLEAR
 
     auto server = new Server;
-    server->socks[0] = sockFd;
-    server->events[0] = listenEvent;
-    server->eventNum++;
+    server->threadArray.emplace_back(std::make_unique<Thread>([server]() { server->forwardFunction(); }, "IOCP0"));
+    server->threadArray.emplace_back(std::make_unique<Thread>([server]() { server->forwardFunction(); }, "IOCP1"));
+
+    server->listenSock = sockFd;
+    server->hIOCP = hIOCP;
     server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
     server->ioContextPool = ObjectPool<IOContext>::create();
     server->timer = Timer::create();
@@ -62,102 +64,38 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
 }
 
 void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept {
+    for(Thread::Ptr &th : threadArray) {
+        th->start();
+    }
+
     while (true) {
         if (isShutdown) break;
 
-        DWORD index = WSAWaitForMultipleEvents(eventNum, events, FALSE, WSA_INFINITE, FALSE);
-        if (index == WSA_WAIT_FAILED) continue;
+        SOCKET client = ::accept(listenSock, nullptr, nullptr);
+        if (SOCKET_ERROR == client) continue;
 
-        index -= WSA_WAIT_EVENT_0;
-        for (DWORD i = index; i < eventNum; i++) {
-            WSANETWORKEVENTS networkEvents;
-            if (SOCKET_ERROR == WSAEnumNetworkEvents(socks[i], events[i], &networkEvents)) continue;
+        unsigned long ul = 1;
+        if (SOCKET_ERROR == ioctlsocket(client, FIONBIO, &ul)) {
+            closesocket(client);
+            continue;
+        }
 
-            if (networkEvents.lNetworkEvents & FD_ACCEPT) {
-                if (0 != networkEvents.iErrorCode[FD_ACCEPT_BIT]) continue;
-                // 新连接接入
-                SOCKET client = accept(socks[0], nullptr, nullptr);
-                if (INVALID_SOCKET == client) continue;
+        if (nullptr == CreateIoCompletionPort((HANDLE) client, hIOCP, 0, 0)) {
+            closesocket(client);
+            continue;
+        }
 
-                // nonblocking
-                unsigned long ul = 1;
-                if (SOCKET_ERROR == ioctlsocket(client, FIONBIO, &ul)) {
-                    closesocket(client);
-                    continue;
-                }
+        // 首次接入
+//        postRecv(client);
 
-                // 注册 WSA EVENT
-                WSAEVENT event = WSACreateEvent();
-                if (SOCKET_ERROR == WSAEventSelect(client, event, FD_READ | FD_CLOSE)) {
-                    WSACloseEvent(event);
-                    closesocket(client);
-                    continue;
-                }
-
-                socks[eventNum] = client;
-                events[eventNum] = event;
-                eventNum++;
-                sockStatus[client] = true;
-
-                if (0 != keepAlive) {
-                    mutex.lock();
-                    taskMap[client] = timer->delay([this, client]() { this->closeCallback(client); }, (int64_t) keepAlive, false);
-                    mutex.unlock();
-                }
-            } else if (networkEvents.lNetworkEvents & FD_READ) {
-                if (0 != networkEvents.iErrorCode[FD_READ_BIT]) continue;
-                if (!sockStatus[socks[i]]) continue;
-
-                auto client = socks[i];
-
-                if (0 != keepAlive) {
-                    mutex.lock();
-                    auto iterator = taskMap.find(client);
-                    // iterator != taskMap.end()
-                    auto task = iterator->second;
-                    taskMap.erase(client);
-                    mutex.unlock();
-                    task->cancel();
-                }
-
-                auto ioContext = ioContextPool->borrow();
-                ioContext->socket = socks[i];
-                threadPool->postTask([handler, ioContext, this]() {
-                    handler(ioContext.get());
-
-                    auto client = ioContext->socket;
-
-                    if (ioContext->isClosed) {
-                        // 不需要保留连接，已主动关闭
-                    } else {
-                        if (0 == keepAlive) {
-                            ::shutdown(ioContext->socket, SD_BOTH);
-                            ::closesocket(ioContext->socket);
-                        } else {
-                            // 需要保留连接，但需要做超时管理
-                            // 重置状态
-                            sockStatus[client] = true;
-
-                            // 继续计时
-                            mutex.lock();
-                            taskMap[client] = timer->delay([this, client]() { this->closeCallback(client); }, (int64_t) keepAlive, false);
-                            mutex.unlock();
-
-                            // 重置标识符
-                            ioContext->isClosed = false;
-                        }
-                    }
-                });
-
-            } else if (networkEvents.lNetworkEvents & FD_CLOSE) {
-                sockStatus.erase(socks[i]);
-                ::closesocket(socks[i]);
-                for (DWORD j = i; j < eventNum - 1; j++) {
-                    socks[j] = socks[j + 1];
-                    events[j] = events[j + 1];
-                }
-                eventNum--;
-            }
+        DWORD dwFlags = 0;
+        DWORD nBytes = MaxBufferSize;
+        auto *ioContext = new IOContext;
+        int32_t nRet = WSARecv(client, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
+        if (nRet == SOCKET_ERROR && (ERROR_IO_PENDING != WSAGetLastError())) {
+            perror("not io pending!!!");
+            delete ioContext;
+            continue;
         }
     }
 }
@@ -178,4 +116,60 @@ void Server::closeCallback(socket_t socket) noexcept {
     mutex.unlock();
     ::shutdown(socket, SD_BOTH);
     closesocket(socket);
+}
+
+void Server::postRecv(SOCKET socket) noexcept {
+    auto ioContext = new IOContext;
+    ioContext->socket = socket;
+    ioContext->operation = Operation::Read;
+
+    DWORD nBytes = MaxBufferSize;
+    DWORD dwFlags = 0;
+    int nRt = WSARecv(socket, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
+    if (SOCKET_ERROR == nRt) {
+        // 读取发生错误
+        if (ERROR_IO_PENDING != WSAGetLastError()) {
+            // ERROR_IO_PENDING 以外的错误统统关闭处理
+            closesocket(ioContext->socket);
+        delete ioContext;
+        }
+    }
+}
+
+void Server::forwardFunction() noexcept {
+    IOContext *ioContext = nullptr;
+    DWORD nBytes = MaxBufferSize;
+    DWORD dwFlags = 0;
+    DWORD dwIoContextSize;
+    void *lpCompletionKey = nullptr;
+    while (true) {
+        GetQueuedCompletionStatus(hIOCP, &dwIoContextSize, (PULONG_PTR) &lpCompletionKey, (LPOVERLAPPED *) &ioContext, INFINITE);
+        if (dwIoContextSize == 0) {
+            closesocket(ioContext->socket);
+            delete ioContext;
+            ioContext = nullptr;
+            continue;
+        }
+
+        // 只处理首次读事件
+        if (ioContext->operation == Operation::Read) {
+            int nRt = WSARecv(ioContext->socket, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &(ioContext->overlapped), nullptr);
+            if (SOCKET_ERROR == nRt) {
+                // 读取发生错误
+                if (ERROR_IO_PENDING != WSAGetLastError()) {
+                    // ERROR_IO_PENDING 以外的错误统统关闭处理
+                    closesocket(ioContext->socket);
+                }
+                delete ioContext;
+                ioContext = nullptr;
+                continue;
+            } else {
+                // 已经读取到数据 - 触发首次事件
+                // ...
+                puts(ioContext->buffer);
+                delete ioContext;
+                ioContext = nullptr;
+            }
+        }
+    }
 }
