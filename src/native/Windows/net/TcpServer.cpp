@@ -7,11 +7,30 @@ using sese::IOContext;
 using Server = sese::TcpServer;
 
 int64_t sese::IOContext::read(void *buffer, size_t length) {
-    return ::recv(socket, (char *) buffer, length, 0);
+    // 缓冲区内有未读字节
+    if (this->nRead < this->nBytes) {
+        // 缓冲区够用
+        if (this->nBytes - this->nRead > length) {
+            memcpy(buffer, this->buffer + this->nRead, length);
+            this->nRead += length;
+            return (int64_t) length;
+        }
+        // 缓冲区不够用
+        // 直接返回当前剩余部分
+        else {
+            memcpy(buffer, this->buffer + this->nRead, this->nBytes - this->nRead);
+            this->nRead = this->nBytes;
+            return this->nBytes - this->nRead;
+        }
+    }
+    // 缓冲区已空
+    else {
+        return ::recv(socket, (char *) buffer, (int32_t) length, 0);
+    }
 }
 
 int64_t sese::IOContext::write(const void *buffer, size_t length) {
-    return ::send(socket, (const char *) buffer, length, 0);
+    return ::send(socket, (const char *) buffer, (int32_t) length, 0);
 }
 
 void sese::IOContext::close() {
@@ -51,20 +70,23 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
 #undef CLEAR
 
     auto server = new Server;
-    server->threadArray.emplace_back(std::make_unique<Thread>([server]() { server->forwardFunction(); }, "IOCP0"));
-    server->threadArray.emplace_back(std::make_unique<Thread>([server]() { server->forwardFunction(); }, "IOCP1"));
+
+    server->threads = threads;
+    for (size_t index = 0; index < threads; index++) {
+        server->threadGroup.emplace_back(std::make_unique<Thread>([server]() { server->WindowsWorkerFunction(); }, "IOCP" + std::to_string(index)));
+    }
 
     server->listenSock = sockFd;
     server->hIOCP = hIOCP;
-    server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    server->ioContextPool = ObjectPool<IOContext>::create();
     server->timer = Timer::create();
     server->keepAlive = keepAlive;
     return std::unique_ptr<Server>(server);
 }
 
 void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept {
-    for(Thread::Ptr &th : threadArray) {
+    this->handler = handler;
+
+    for (Thread::Ptr &th: threadGroup) {
         th->start();
     }
 
@@ -86,31 +108,33 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
         }
 
         // 首次接入
-//        postRecv(client);
-
-        DWORD dwFlags = 0;
-        DWORD nBytes = MaxBufferSize;
-        auto *ioContext = new IOContext;
-        int32_t nRet = WSARecv(client, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
-        if (nRet == SOCKET_ERROR && (ERROR_IO_PENDING != WSAGetLastError())) {
-            perror("not io pending!!!");
-            delete ioContext;
-            continue;
+        if (0 != keepAlive) {
+            mutex.lock();
+            taskMap[client] = timer->delay([this, client]() { this->closeCallback(client); }, (int64_t) keepAlive, false);
+            mutex.unlock();
         }
+        postRecv(client);
     }
 }
 
 void Server::shutdown() noexcept {
+    void *lpCompletionKey = nullptr;
     isShutdown = true;
-    threadPool->shutdown();
+    for (auto i = 0; i < threads; i++) {
+        PostQueuedCompletionStatus(hIOCP, -1, (ULONG_PTR) lpCompletionKey, nullptr);
+    }
     timer->shutdown();
     for (auto &pair: taskMap) {
         ::shutdown(pair.first, SD_BOTH);
         closesocket(pair.first);
     }
+    for (auto &thread: threadGroup) {
+        thread->join();
+    }
 }
 
 void Server::closeCallback(socket_t socket) noexcept {
+    puts("CLOSE");
     mutex.lock();
     taskMap.erase(socket);
     mutex.unlock();
@@ -126,49 +150,95 @@ void Server::postRecv(SOCKET socket) noexcept {
     DWORD nBytes = MaxBufferSize;
     DWORD dwFlags = 0;
     int nRt = WSARecv(socket, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
-    if (SOCKET_ERROR == nRt) {
-        // 读取发生错误
-        if (ERROR_IO_PENDING != WSAGetLastError()) {
-            // ERROR_IO_PENDING 以外的错误统统关闭处理
-            closesocket(ioContext->socket);
+    auto e = WSAGetLastError();
+    if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+        closesocket(ioContext->socket);
         delete ioContext;
-        }
     }
 }
 
-void Server::forwardFunction() noexcept {
+void Server::WindowsWorkerFunction() noexcept {
     IOContext *ioContext = nullptr;
-    DWORD nBytes = MaxBufferSize;
-    DWORD dwFlags = 0;
-    DWORD dwIoContextSize;
+    DWORD lpNumberOfBytesTransferred = 0;
     void *lpCompletionKey = nullptr;
+
+    DWORD dwFlags = 0;
+    DWORD nBytes = MaxBufferSize;
+
     while (true) {
-        GetQueuedCompletionStatus(hIOCP, &dwIoContextSize, (PULONG_PTR) &lpCompletionKey, (LPOVERLAPPED *) &ioContext, INFINITE);
-        if (dwIoContextSize == 0) {
-            closesocket(ioContext->socket);
-            delete ioContext;
+        GetQueuedCompletionStatus(
+                hIOCP,
+                &lpNumberOfBytesTransferred,
+                (PULONG_PTR) &lpCompletionKey,
+                (LPOVERLAPPED *) &ioContext,
+                INFINITE
+        );
+
+        if (lpNumberOfBytesTransferred == -1) break;
+
+        if (lpNumberOfBytesTransferred == 0) {
             ioContext = nullptr;
             continue;
         }
 
+        ioContext->nBytes = lpNumberOfBytesTransferred;
+
         // 只处理首次读事件
         if (ioContext->operation == Operation::Read) {
-            int nRt = WSARecv(ioContext->socket, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &(ioContext->overlapped), nullptr);
-            if (SOCKET_ERROR == nRt) {
+            int nRt = WSARecv(
+                    ioContext->socket,
+                    &ioContext->wsaBuf,
+                    1,
+                    &nBytes,
+                    &dwFlags,
+                    &(ioContext->overlapped),
+                    nullptr
+            );
+            auto e = WSAGetLastError();
+            if (SOCKET_ERROR == nRt && e != WSAGetLastError()) {
                 // 读取发生错误
-                if (ERROR_IO_PENDING != WSAGetLastError()) {
-                    // ERROR_IO_PENDING 以外的错误统统关闭处理
-                    closesocket(ioContext->socket);
-                }
+                closesocket(ioContext->socket);
                 delete ioContext;
                 ioContext = nullptr;
                 continue;
             } else {
                 // 已经读取到数据 - 触发首次事件
                 // ...
-                puts(ioContext->buffer);
+                auto client = ioContext->socket;
+                if (0 != keepAlive) {
+                    mutex.lock();
+                    auto iterator = taskMap.find(client);
+                    // iterator != taskMap.end()
+                    if (iterator != taskMap.end()) {
+                        auto task = iterator->second;
+                        taskMap.erase(client);
+                        mutex.unlock();
+                        task->cancel();
+                    }
+                }
+
+                handler(ioContext);
+
+                if (ioContext->isClosed) {
+                    // 不需要保留连接，已主动关闭
+                } else {
+                    if (0 == keepAlive) {
+                        ::shutdown(ioContext->socket, SD_BOTH);
+                        ::closesocket(ioContext->socket);
+                    } else {
+                        // 继续计时
+                        mutex.lock();
+                        taskMap[client] = timer->delay([this, client]() { this->closeCallback(client); }, (int64_t) keepAlive, false);
+                        mutex.unlock();
+
+                        // failed
+                        postRecv(client);
+                    }
+                }
+
                 delete ioContext;
                 ioContext = nullptr;
+                continue;
             }
         }
     }

@@ -30,31 +30,31 @@ namespace sese {
 #ifdef _WIN32
 #define MaxBufferSize 1024
     enum class Operation {
-        Accept = 1,
-        Read = 2,
-        Write = 3,
-        Close = 4,
-        Null = 0
+        Accept,
+        Read,
+        Write,
+        Close,
+        Null
     };
 #endif
 
     class TcpServer;
-    class API IOContext final : public Stream {
+    struct API IOContext final {
     public:
         friend class TcpServer;
-        IOContext() : Stream() {}
-        int64_t read(void *buffer, size_t length) override;
-        int64_t write(const void *buffer, size_t length) override;
-        void close() override;
+        int64_t read(void *buffer, size_t length) ;
+        int64_t write(const void *buffer, size_t length) ;
+        void close() ;
+        socket_t getSocket() const {return socket;}
 
     private:
 #ifdef _WIN32
+        WSAOVERLAPPED overlapped{};
         WSABUF wsaBuf {MaxBufferSize, buffer};
-        char useless[13];
-        char buffer[MaxBufferSize]{};
-        OVERLAPPED overlapped{};
+        CHAR buffer[MaxBufferSize]{};
         Operation operation = Operation::Null;
         DWORD nBytes = 0;
+        DWORD nRead = 0;
 #endif
         bool isClosed = false;
         socket_t socket = -1;
@@ -74,33 +74,37 @@ namespace sese {
         void closeCallback(socket_t socket) noexcept;
 
         std::atomic_bool isShutdown = false;
-        ThreadPool::Ptr threadPool = nullptr;
         std::mutex mutex;
         Map taskMap;
         size_t keepAlive = 0;
         Timer::Ptr timer = nullptr;
-        ObjectPool<IOContext>::Ptr ioContextPool = nullptr;
 
 #ifdef __linux__
     private:
         int32_t epollFd = -1;
         socket_t sockFd = -1;
         epoll_event events[MaxEvents]{};
+        ThreadPool::Ptr threadPool = nullptr;
+        ObjectPool<IOContext>::Ptr ioContextPool = nullptr;
 #endif
 #ifdef __APPLE__
     private:
         int32_t kqueueFd = -1;
         socket_t sockFd = -1;
         KEvent events[MaxEvents]{};
+        ThreadPool::Ptr threadPool = nullptr;
+        ObjectPool<IOContext>::Ptr ioContextPool = nullptr;
 #endif
 #ifdef _WIN32
     private:
         void postRecv(SOCKET socket) noexcept;
-        void forwardFunction() noexcept;
+        void WindowsWorkerFunction() noexcept;
 
         SOCKET listenSock = INVALID_SOCKET;
         HANDLE hIOCP = INVALID_HANDLE_VALUE;
-        std::vector<Thread::Ptr> threadArray;
+        size_t threads = 0;
+        std::vector<Thread::Ptr> threadGroup;
+        std::function<void(IOContext *)> handler;
 #endif
     };
 }// namespace sese
