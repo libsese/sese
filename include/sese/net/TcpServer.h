@@ -42,15 +42,15 @@ namespace sese {
     struct API IOContext final {
     public:
         friend class TcpServer;
-        int64_t read(void *buffer, size_t length) ;
-        int64_t write(const void *buffer, size_t length) ;
-        void close() ;
-        socket_t getSocket() const {return socket;}
+        int64_t read(void *buffer, size_t length);
+        int64_t write(const void *buffer, size_t length);
+        void close();
+        socket_t getSocket() const { return socket; }
 
     private:
 #ifdef _WIN32
         WSAOVERLAPPED overlapped{};
-        WSABUF wsaBuf {MaxBufferSize, buffer};
+        WSABUF wsaBuf{MaxBufferSize, buffer};
         CHAR buffer[MaxBufferSize]{};
         Operation operation = Operation::Null;
         DWORD nBytes = 0;
@@ -63,7 +63,11 @@ namespace sese {
     class API TcpServer final : public Noncopyable {
     public:
         using Ptr = std::unique_ptr<TcpServer>;
+#ifdef _WIN32
+        using Map = std::map<IOContext *, TimerTask::Ptr>;
+#else
         using Map = std::map<socket_t, TimerTask::Ptr>;
+#endif
 
         static TcpServer::Ptr create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
         void loopWith(const std::function<void(IOContext *)> &handler) noexcept;
@@ -71,7 +75,6 @@ namespace sese {
 
     private:
         TcpServer() noexcept = default;
-        void closeCallback(socket_t socket) noexcept;
 
         std::atomic_bool isShutdown = false;
         std::mutex mutex;
@@ -81,6 +84,8 @@ namespace sese {
 
 #ifdef __linux__
     private:
+        void closeCallback(socket_t socket) noexcept;
+
         int32_t epollFd = -1;
         socket_t sockFd = -1;
         epoll_event events[MaxEvents]{};
@@ -89,6 +94,8 @@ namespace sese {
 #endif
 #ifdef __APPLE__
     private:
+        void closeCallback(socket_t socket) noexcept;
+
         int32_t kqueueFd = -1;
         socket_t sockFd = -1;
         KEvent events[MaxEvents]{};
@@ -97,7 +104,7 @@ namespace sese {
 #endif
 #ifdef _WIN32
     private:
-        void postRecv(SOCKET socket) noexcept;
+        void WindowsCloseCallback(IOContext *ioContext) noexcept;
         void WindowsWorkerFunction() noexcept;
 
         SOCKET listenSock = INVALID_SOCKET;

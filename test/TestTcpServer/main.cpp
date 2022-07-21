@@ -16,13 +16,12 @@ LogHelper helper("fTCP_SERVER");// NOLINT
 int main() {
     auto address = IPv4Address::create("0.0.0.0", 8080);
 
-    auto server = TcpServer::create(address, 2, 10);
+    auto server = TcpServer::create(address, 4, 10);
     assert(helper, nullptr != server, -1);
 
     // 服务器线程
     Thread thread([&server]() {
         server->loopWith([&helper = helper](IOContext *ioContext) {
-            helper.info("Socket: %ld", ioContext->getSocket());
             char buffer[1024]{};
             ioContext->read(buffer, 1024);
             helper.info(buffer);
@@ -34,8 +33,8 @@ int main() {
     },
                   "TcpServer");
     thread.start();
-//    sese::sleep(5);
-    getchar();
+    sese::sleep(5);
+//    getchar();
     helper.info("WANT SHUTDOWN");
     server->shutdown();
     thread.join();

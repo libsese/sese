@@ -2,6 +2,7 @@
 #include <sese/Util.h>
 
 #pragma warning(disable : 4267)
+#define DEBUG
 
 using sese::IOContext;
 using Server = sese::TcpServer;
@@ -108,12 +109,31 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
         }
 
         // 首次接入
+        auto ioContext = new IOContext;
+        ioContext->socket = client;
+        ioContext->operation = Operation::Read;
+#ifdef DEBUG
+        printf("NEW: %p\n", ioContext);
+#endif
+
         if (0 != keepAlive) {
             mutex.lock();
-            taskMap[client] = timer->delay([this, client]() { this->closeCallback(client); }, (int64_t) keepAlive, false);
+            taskMap[ioContext] = timer->delay([this, ioContext]() { this->WindowsCloseCallback(ioContext); }, (int64_t) keepAlive, false);
             mutex.unlock();
         }
-        postRecv(client);
+
+        DWORD nBytes = MaxBufferSize;
+        DWORD dwFlags = 0;
+        int nRt = WSARecv(client, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
+        auto e = WSAGetLastError();
+        if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+            if (keepAlive > 0) {
+                WindowsCloseCallback(ioContext);
+            } else {
+                closesocket(client);
+                delete ioContext;
+            }
+        }
     }
 }
 
@@ -125,36 +145,28 @@ void Server::shutdown() noexcept {
     }
     timer->shutdown();
     for (auto &pair: taskMap) {
-        ::shutdown(pair.first, SD_BOTH);
-        closesocket(pair.first);
+        ::shutdown(pair.first->socket, SD_BOTH);
+        closesocket(pair.first->socket);
+#ifdef DEBUG
+        printf("CLOSE: %p\n", pair.first);
+#endif
+        delete pair.first;
     }
     for (auto &thread: threadGroup) {
         thread->join();
     }
 }
 
-void Server::closeCallback(socket_t socket) noexcept {
-    puts("CLOSE");
+void Server::WindowsCloseCallback(IOContext *ioContext) noexcept {
+#ifdef DEBUG
+    printf("CLOSE: %p\n", ioContext);
+#endif
     mutex.lock();
-    taskMap.erase(socket);
+    taskMap.erase(ioContext);
     mutex.unlock();
-    ::shutdown(socket, SD_BOTH);
-    closesocket(socket);
-}
-
-void Server::postRecv(SOCKET socket) noexcept {
-    auto ioContext = new IOContext;
-    ioContext->socket = socket;
-    ioContext->operation = Operation::Read;
-
-    DWORD nBytes = MaxBufferSize;
-    DWORD dwFlags = 0;
-    int nRt = WSARecv(socket, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
-    auto e = WSAGetLastError();
-    if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-        closesocket(ioContext->socket);
-        delete ioContext;
-    }
+    ::shutdown(ioContext->socket, SD_BOTH);
+    closesocket(ioContext->socket);
+    delete ioContext;
 }
 
 void Server::WindowsWorkerFunction() noexcept {
@@ -166,7 +178,7 @@ void Server::WindowsWorkerFunction() noexcept {
     DWORD nBytes = MaxBufferSize;
 
     while (true) {
-        GetQueuedCompletionStatus(
+        BOOL bRt = GetQueuedCompletionStatus(
                 hIOCP,
                 &lpNumberOfBytesTransferred,
                 (PULONG_PTR) &lpCompletionKey,
@@ -174,12 +186,11 @@ void Server::WindowsWorkerFunction() noexcept {
                 INFINITE
         );
 
+        if (!bRt) continue;
+
         if (lpNumberOfBytesTransferred == -1) break;
 
-        if (lpNumberOfBytesTransferred == 0) {
-            ioContext = nullptr;
-            continue;
-        }
+        if (lpNumberOfBytesTransferred == 0) continue;
 
         ioContext->nBytes = lpNumberOfBytesTransferred;
 
@@ -204,14 +215,17 @@ void Server::WindowsWorkerFunction() noexcept {
             } else {
                 // 已经读取到数据 - 触发首次事件
                 // ...
+#ifdef DEBUG
+                printf("RECV: %p\n", ioContext);
+#endif
                 auto client = ioContext->socket;
                 if (0 != keepAlive) {
                     mutex.lock();
-                    auto iterator = taskMap.find(client);
+                    auto iterator = taskMap.find(ioContext);
                     // iterator != taskMap.end()
                     if (iterator != taskMap.end()) {
                         auto task = iterator->second;
-                        taskMap.erase(client);
+                        taskMap.erase(ioContext);
                         mutex.unlock();
                         task->cancel();
                     }
@@ -225,20 +239,27 @@ void Server::WindowsWorkerFunction() noexcept {
                     if (0 == keepAlive) {
                         ::shutdown(ioContext->socket, SD_BOTH);
                         ::closesocket(ioContext->socket);
+                        delete ioContext;
                     } else {
                         // 继续计时
                         mutex.lock();
-                        taskMap[client] = timer->delay([this, client]() { this->closeCallback(client); }, (int64_t) keepAlive, false);
+                        taskMap[ioContext] = timer->delay([this, ioContext]() { this->WindowsCloseCallback(ioContext); }, (int64_t) keepAlive, false);
                         mutex.unlock();
 
-                        // failed
-                        postRecv(client);
+                        // 再次提交读取
+                        ioContext->nRead = 0;
+                        ioContext->nBytes = 0;
+                        nRt = WSARecv(client, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
+                        e = WSAGetLastError();
+                        if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+                            this->WindowsCloseCallback(ioContext);
+                        } else {
+#ifdef DEBUG
+                            printf("POST: %p\n", ioContext);
+#endif
+                        }
                     }
                 }
-
-                delete ioContext;
-                ioContext = nullptr;
-                continue;
             }
         }
     }
