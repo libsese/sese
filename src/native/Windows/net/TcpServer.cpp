@@ -206,7 +206,7 @@ void Server::WindowsWorkerFunction() noexcept {
                     nullptr
             );
             auto e = WSAGetLastError();
-            if (SOCKET_ERROR == nRt && e != WSAGetLastError()) {
+            if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
                 // 读取发生错误
                 closesocket(ioContext->socket);
                 delete ioContext;
