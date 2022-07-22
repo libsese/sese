@@ -19,11 +19,8 @@ bool HttpUtil::getLine(Stream *source, StringBuilder &builder) noexcept {
         if (ch != '\r') {
             builder.append(ch);
         } else {
-            // 剩下的 '\n'
-            size = source->read(&ch, 1);
-            if (size != 1) {
-                return false;
-            }
+            // 剩下的 '\n'，读取的结果已经不重要
+            source->read(&ch, 1);
             break;
         }
     }

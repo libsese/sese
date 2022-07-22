@@ -1,8 +1,9 @@
 /**
  * @file TcpServer.h
  * @author kaoru
- * @date 2022年5月5日
+ * @date 2022年7月22日
  * @brief TCP Server 类
+ * @version 0.3
  */
 #pragma once
 #include <sese/net/Socket.h>
@@ -45,7 +46,6 @@ namespace sese {
         int64_t read(void *buffer, size_t length);
         int64_t write(const void *buffer, size_t length);
         void close();
-        socket_t getSocket() const { return socket; }
 
     private:
 #ifdef _WIN32
@@ -72,6 +72,7 @@ namespace sese {
         static TcpServer::Ptr create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
         void loopWith(const std::function<void(IOContext *)> &handler) noexcept;
         void shutdown() noexcept;
+        [[nodiscard]] size_t getKeepAlive() const { return keepAlive; }
 
     private:
         TcpServer() noexcept = default;
@@ -104,7 +105,7 @@ namespace sese {
 #endif
 #ifdef _WIN32
     private:
-        void WindowsCloseCallback(IOContext *ioContext) noexcept;
+        void WindowsCloseCallback(IOContext *contextWrapper) noexcept;
         void WindowsWorkerFunction() noexcept;
 
         SOCKET listenSock = INVALID_SOCKET;

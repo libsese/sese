@@ -19,7 +19,7 @@ namespace sese::http {
     using HttpResponse = ResponseHeader;
 
     /// Http 服务上下文
-    class API HttpServiceContext final {
+    class API HttpServiceContext final : public sese::Stream {
     public:
         using Ptr = std::shared_ptr<HttpServiceContext>;
 
@@ -40,20 +40,19 @@ namespace sese::http {
         /// \param buffer 缓存
         /// \param size 长度
         /// \return 读取到的长度
-        int64_t read(void *buffer, size_t size) noexcept;
+        int64_t read(void *buffer, size_t size) noexcept override;
         /// 立即向服务对象发送响应头，并发送正文信息
         /// \param buffer 正文信息缓存
         /// \param size 长度
         /// \return 已发送的长度
-        int64_t write(const void *buffer, size_t size) noexcept;
+        int64_t write(const void *buffer, size_t size) noexcept override;
 
         /// 发送响应头并切换至只写模式
         bool flush() noexcept;
 
-        [[nodiscard]] bool isReadOnly() const noexcept { return _isReadOnly; }
+        void close() override;
 
-        // 调试用代码
-        // auto getSocket() { return ioContext->getSocket(); }
+        [[nodiscard]] bool isReadOnly() const noexcept { return _isReadOnly; }
 
     private:
         /*
@@ -75,28 +74,15 @@ namespace sese::http {
         /// 创建一个 Http 服务器
         /// \param ipAddress 绑定的地址
         /// \param threads 线程数目
+        /// \param keepAlive Keep-Alive 时长
         /// \return 创建成功返回其指针，失败则为 nullptr
-        static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS) noexcept;
+        static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
         void loopWith(const std::function<void(const HttpServiceContext::Ptr &serviceContext)> &handler);
         void shutdown();
 
     private:
-        struct SocketPtrCmp {
-            bool operator()(const Socket::Ptr& rv, const Socket::Ptr& lv) const {
-                return rv->getRawSocket() < lv->getRawSocket();
-            }
-        };
-
         explicit HttpServer() = default;
 
-#ifdef __linux__
-        using Map = std::map<Socket::Ptr, TimerTask::Ptr, SocketPtrCmp>;
-
-        Map taskMap;
-        std::mutex mutex;
-        Timer::Ptr timer = nullptr;
-        static void closeCallback(Map &taskMap, const Socket::Ptr& socket) noexcept;
-#endif
         TcpServer::Ptr tcpServer = nullptr;
         concurrent::ConcurrentObjectPool<HttpServiceContext>::Ptr objectPool = nullptr;
     };
