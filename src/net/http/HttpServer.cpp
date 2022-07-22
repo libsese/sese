@@ -22,11 +22,8 @@ void HttpServiceContext::reset(IOContext *context) noexcept {
 }
 
 int64_t HttpServiceContext::read(void *buffer, size_t size) noexcept {
-    if (_isReadOnly) {
-        return ioContext->read(buffer, size);
-    } else {
-        return -1;
-    }
+    _isReadOnly = true;
+    return ioContext->read(buffer, size);
 }
 
 int64_t HttpServiceContext::write(const void *buffer, size_t size) noexcept {
@@ -40,14 +37,19 @@ int64_t HttpServiceContext::write(const void *buffer, size_t size) noexcept {
 }
 
 bool HttpServiceContext::flush() noexcept {
-    request->set("Server", HTTPD_NAME);
+    response->set("Server", HTTPD_NAME);
     if (0 == strcasecmp(request->get("Connection", "Keep-Alive").c_str(), "Close")) {
         response->set("Connection", "Close");
     } else {
         response->set("Connection", "Keep-Alive");
     }
     _isReadOnly = false;
-    return HttpUtil::sendResponse(this, response.get());
+    if(!HttpUtil::sendResponse(this, response.get())) {
+        _isReadOnly = true;
+        return false;
+    } else {
+        return true;
+    }
 }
 
 void sese::http::HttpServiceContext::close() {
