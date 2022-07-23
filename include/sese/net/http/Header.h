@@ -32,7 +32,7 @@ namespace sese::http {
         Header(const std::initializer_list<KeyValueType> &initializerList) noexcept;
         virtual ~Header() = default;
 
-        void set(const std::string &key, const std::string &value) noexcept;
+        Header *set(const std::string &key, const std::string &value) noexcept;
         const std::string &get(const std::string &key, const std::string &defaultValue) noexcept;
         std::string_view getView(const std::string &key, const std::string &defaultValue) noexcept;
 

@@ -13,6 +13,7 @@ namespace sese::http {
     enum class RequestType {
         Get,
         Post,
+        Options,
         Another
     };
 

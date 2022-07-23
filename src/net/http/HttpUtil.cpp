@@ -40,6 +40,8 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
         request->setType(RequestType::Get);
     } else if ("POST" == firstLines[0]) {
         request->setType(RequestType::Post);
+    } else if ("OPTIONS" == firstLines[0]) {
+        request->setType(RequestType::Options);
     } else {
         request->setType(RequestType::Another);
     }
@@ -66,6 +68,8 @@ bool sese::http::HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noe
         if (-1 == dest->write("GET ", 4)) return false;
     } else if (request->getType() == RequestType::Post) {
         if (-1 == dest->write("POST ", 5)) return false;
+    } else if (request->getType() == RequestType::Options) {
+        if (-1 == dest->write("Options ", 7)) return false;
     } else {
         return false;
     }

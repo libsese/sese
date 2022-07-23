@@ -1,6 +1,6 @@
 # Socket
 
-## Option
+## ~~Option~~（已弃用）
 
 - 选项对照表
 

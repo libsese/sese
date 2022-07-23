@@ -9,8 +9,9 @@ Header::Header(const std::initializer_list<KeyValueType> &initializerList) noexc
 }
 
 
-void Header::set(const std::string &key, const std::string &value) noexcept {
+Header *Header::set(const std::string &key, const std::string &value) noexcept {
     headers[key] = value;
+    return this;
 }
 
 const std::string &Header::get(const std::string &key, const std::string &defaultValue) noexcept {
