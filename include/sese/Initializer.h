@@ -45,4 +45,6 @@ namespace sese {
 
         std::stack<InitiateTask::Ptr> tasks;
     };
+
+    extern "C" void *getInitializer() noexcept;
 }// namespace sese

@@ -12,6 +12,8 @@ using sese::TestInitiateTask;
 
 static Initializer initializer;// NOLINT
 
+void *sese::getInitializer() noexcept { return &initializer; }
+
 InitiateTask::InitiateTask(std::string name) : name(std::move(name)) {
 }
 
