@@ -10,6 +10,7 @@
 #include <string>
 #include <sese/Memory.h>
 #ifdef _WIN32
+#pragma warning(disable : 4819)
 #include "sese/native/Windows/Config.h"
 #elif __linux__
 #include "sese/native/Linux/Config.h"

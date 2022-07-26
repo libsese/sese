@@ -7,6 +7,10 @@
 #pragma once
 #include "sese/Config.h"
 
+#ifdef _WIN32
+#pragma warning(disable : 4819)
+#endif
+
 namespace sese {
     /**
      * @brief 时间间隔类

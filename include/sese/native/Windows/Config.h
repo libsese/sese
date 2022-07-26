@@ -8,6 +8,8 @@
 
 #include <Windows.h>
 
+#pragma warning(disable : 4819)
+
 #if defined(_M_X64)
 #define SESE_ARCH_X64
 #elif defined(_M_ARM64)

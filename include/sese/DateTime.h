@@ -8,6 +8,10 @@
 #include "sese/Config.h"
 #include "sese/TimeSpan.h"
 
+#ifdef _WIN32
+#pragma warning(disable : 4819)
+#endif
+
 /**
  * 通用的时间 API
  * @param tp timeval 结构体

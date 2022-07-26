@@ -7,6 +7,10 @@
 #pragma once
 #include <memory>
 
+#ifdef _WIN32
+#pragma warning(disable : 4819)
+#endif
+
 namespace sese {
 
     template<typename T>
