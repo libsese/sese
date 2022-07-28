@@ -72,6 +72,7 @@ set(ALL_SRCS
         src/net/http/HttpUtil.cpp
         src/net/http/UrlHelper.cpp
         src/net/http/HttpServer.cpp
+        src/net/AddressPool.cpp
         # 配置
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp
@@ -130,7 +131,7 @@ set_target_properties(
         PROPERTIES
         OUTPUT_NAME sese
         VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}
-        )
+)
 
 set_target_properties(
         SeseStaticLibrary
@@ -138,7 +139,7 @@ set_target_properties(
         OUTPUT_NAME sese
         VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION}
         SUFFIX ".a"
-        )
+)
 
 include(Test.cmake)
 
@@ -148,12 +149,12 @@ write_basic_package_version_file(
         ${PROJECT_SOURCE_DIR}/output/seseConfigVersion.cmake
         VERSION ${PROJECT_VERSION}
         COMPATIBILITY ExactVersion
-        )
+)
 
 configure_package_config_file(
         seseConfig.cmake.in "${PROJECT_SOURCE_DIR}/output/seseConfig.cmake"
         INSTALL_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
-        )
+)
 
 install(TARGETS SeseSharedLibrary SeseStaticLibrary
         EXPORT ${PROJECT_NAME}Targets

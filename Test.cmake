@@ -168,3 +168,8 @@ add_test(NAME TestUrlHelper COMMAND TestUrlHelper)
 add_executable(TestHttpd test/TestHttpd/main.cpp)
 target_link_libraries(TestHttpd SeseSharedLibrary)
 add_test(NAME TestHttpd COMMAND TestHttpd)
+
+# AddressPool
+add_executable(TestAddressPool test/TestAddressPool/main.cpp)
+target_link_libraries(TestAddressPool SeseSharedLibrary)
+add_test(NAME TestAddressPool COMMAND TestAddressPool)
