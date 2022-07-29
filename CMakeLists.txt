@@ -67,12 +67,13 @@ set(ALL_SRCS
         src/net/IPAddress.cpp
         src/net/IPv4Address.cpp
         src/net/IPv6Address.cpp
+        src/net/AddressPool.cpp
         src/net/http/Header.cpp
         src/net/http/QueryString.cpp
         src/net/http/HttpUtil.cpp
         src/net/http/UrlHelper.cpp
         src/net/http/HttpServer.cpp
-        src/net/AddressPool.cpp
+        src/net/http/HttpClient.cpp
         # 配置
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp

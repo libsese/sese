@@ -173,3 +173,8 @@ add_test(NAME TestHttpd COMMAND TestHttpd)
 add_executable(TestAddressPool test/TestAddressPool/main.cpp)
 target_link_libraries(TestAddressPool SeseSharedLibrary)
 add_test(NAME TestAddressPool COMMAND TestAddressPool)
+
+# HttpClient
+add_executable(TestHttpClient test/TestHttpClient/main.cpp)
+target_link_libraries(TestHttpClient SeseSharedLibrary)
+add_test(NAME TestHttpClient COMMAND TestHttpClient)
