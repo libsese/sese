@@ -42,6 +42,16 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
         request->setType(RequestType::Post);
     } else if ("OPTIONS" == firstLines[0]) {
         request->setType(RequestType::Options);
+    } else if ("HEAD" == firstLines[0]) {
+        request->setType(RequestType::Head);
+    } else if ("PUT" == firstLines[0]) {
+        request->setType(RequestType::Put);
+    } else if ("DELETE" == firstLines[0]) {
+        request->setType(RequestType::Delete);
+    } else if ("TRACE" == firstLines[0]) {
+        request->setType(RequestType::Trace);
+    } else if ("CONNECT" == firstLines[0]) {
+        request->setType(RequestType::Connect);
     } else {
         request->setType(RequestType::Another);
     }
@@ -64,14 +74,33 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
 
 bool sese::http::HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noexcept {
     // method
-    if (request->getType() == RequestType::Get) {
-        if (-1 == dest->write("GET ", 4)) return false;
-    } else if (request->getType() == RequestType::Post) {
-        if (-1 == dest->write("POST ", 5)) return false;
-    } else if (request->getType() == RequestType::Options) {
-        if (-1 == dest->write("Options ", 7)) return false;
-    } else {
-        return false;
+    switch (request->getType()) {
+        case RequestType::Options:
+            if (-1 == dest->write("OPTIONS ", 8)) return false;
+            break;
+        case RequestType::Get:
+            if (-1 == dest->write("GET ", 4)) return false;
+            break;
+        case RequestType::Post:
+            if (-1 == dest->write("POST ", 5)) return false;
+            break;
+        case RequestType::Head:
+            if (-1 == dest->write("HEAD ", 5)) return false;
+            break;
+        case RequestType::Put:
+            if (-1 == dest->write("PUT ", 4)) return false;
+            break;
+        case RequestType::Delete:
+            if (-1 == dest->write("DELETE ", 7)) return false;
+            break;
+        case RequestType::Trace:
+            if (-1 == dest->write("TRACE ", 6)) return false;
+            break;
+        case RequestType::Connect:
+            if (-1 == dest->write("CONNECT ", 8)) return false;
+            break;
+        case RequestType::Another:
+            break;
     }
 
     // uri

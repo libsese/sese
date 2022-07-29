@@ -11,9 +11,14 @@ namespace sese::http {
 
     /// @brief 请求类型
     enum class RequestType {
+        Options,
         Get,
         Post,
-        Options,
+        Head,
+        Put,
+        Delete,
+        Trace,
+        Connect,
         Another
     };
 
