@@ -9,9 +9,9 @@ sese::LogHelper helper("fLOGGER");// NOLINT
 int main() {
     auto logger = sese::getLogger();
     auto formatter = std::make_shared<sese::SimpleFormatter>();
-    auto fileStream = std::make_shared<sese::FileStream>();
+    auto fileStream = sese::FileStream::create("hello.log", TEXT_WRITE_CREATE_TRUNC);
 
-    assert(helper, fileStream->open("hello.log", TEXT_WRITE_CREATE_TRUNC), -1);
+    assert(helper, nullptr != fileStream, -1);
     auto fileAppender = std::make_shared<sese::FileAppender>(fileStream, formatter);
     logger->addAppender(fileAppender);
 

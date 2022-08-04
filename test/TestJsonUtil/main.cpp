@@ -16,8 +16,7 @@ using sese::json::ObjectData;
 LogHelper helper("fJSON"); // NOLINT
 
 int main() {
-    auto fileStream = std::make_shared<FileStream>();
-    fileStream->open(PROJECT_PATH "/test/TestJsonUtil/data.json", TEXT_READ_EXISTED);
+    auto fileStream = FileStream::create(PROJECT_PATH "/test/TestJsonUtil/data.json", TEXT_READ_EXISTED);
     auto object = JsonUtil::deserialize(fileStream, 3);
     assert(helper, object != nullptr, -1);
 

@@ -85,8 +85,8 @@ namespace sese {
     }
 
     bool ConfigUtil::write2(const ConfigFile::Ptr &configFile, const std::string &fileName) {
-        FileStream::Ptr fileStream = std::make_shared<FileStream>();
-        if(!fileStream->open(fileName, TEXT_WRITE_CREATE_TRUNC)) return false;
+        FileStream::Ptr fileStream = FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
+        if(!fileStream) return false;
 
         for(const auto& itor : configFile->getDefaultSection()->parameter){
             writePair(fileStream, itor);

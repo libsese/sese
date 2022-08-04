@@ -38,10 +38,13 @@ namespace sese {
     public:
         using Ptr = std::shared_ptr<FileStream>;
 
-        FileStream() = default;
+        /// 打开一个文件流
+        /// \param fileName 文件名称
+        /// \param mode 打开模式
+        /// \retval nullptr 打开失败
+        /// \retval 文件流对象
+        static Ptr create(const std::string &fileName, const char *mode) noexcept;
         ~FileStream() = default;
-
-        bool open(const std::string &fileName, const char *mode) noexcept;
 
         int64_t read(void *buffer, size_t length) override;
         int64_t write(const void *buffer, size_t length) override;
@@ -52,6 +55,7 @@ namespace sese {
         int32_t setSeek(int64_t offset, int32_t whence);
 
     private:
+        FileStream() noexcept = default;
         FILE *file = nullptr;
     };
 }// namespace sese

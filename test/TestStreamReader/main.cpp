@@ -12,13 +12,13 @@ using sese::Test;
 LogHelper helper("fSTREAM_READER");// NOLINT
 
 int main() {
-    auto fileStream = std::make_shared<FileStream>();
+    auto fileStream = FileStream::create(PROJECT_PATH "/test/TestStreamReader/data.txt",TEXT_READ_EXISTED);
 //    if (!fileStream->open(PROJECT_PATH "/test/TestStreamReader/data.txt",
 //                          TEXT_READ_EXISTED)) {
 //        helper.info("%s", sese::getErrorString().c_str());
 //        return 0;
 //    }
-    assert(helper, fileStream->open(PROJECT_PATH "/test/TestStreamReader/data.txt",TEXT_READ_EXISTED), -1);
+    assert(helper, nullptr != fileStream , -1);
 
     auto reader = std::make_shared<StreamReader>(fileStream);
     while (true) {
