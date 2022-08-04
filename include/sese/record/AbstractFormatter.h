@@ -7,7 +7,6 @@
 #pragma once
 #include <string>
 #include "sese/record/Event.h"
-#include "Event.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)

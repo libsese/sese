@@ -6,30 +6,24 @@
  */
 #pragma once
 #include "sese/record/AbstractAppender.h"
-#include "AbstractAppender.h"
-#include "AbstractFormatter.h"
-#include "Event.h"
-#include <mutex>
+#include "sese/record/AbstractFormatter.h"
+#include "sese/record/Event.h"
 
-namespace sese {
+namespace sese::record {
     /**
      * @brief 控制台输出源类
      */
-    class API ConsoleAppender : public sese::record::AbstractAppender {
+    class API ConsoleAppender : public AbstractAppender {
     public:
-        explicit ConsoleAppender(const record::AbstractFormatter::Ptr &formatter, record::Level level = record::Level::DEBUG) noexcept;
+        explicit ConsoleAppender(Level level = Level::DEBUG) noexcept;
 
-        void dump(const record::Event::Ptr &event) noexcept override;
+        void dump(const char *buffer, size_t size) noexcept override;
 
-    private:
-        /// 互斥量
-        std::mutex mutex;
-
-    private:
+    public:
         static void setDebugColor() noexcept;
         static void setInfoColor() noexcept;
         static void setWarnColor() noexcept;
         static void setErrorColor() noexcept;
         static void setCleanColor() noexcept;
     };
-}// namespace sese
+}// namespace sese::record

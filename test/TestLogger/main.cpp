@@ -8,11 +8,10 @@ sese::record::LogHelper helper("fLOGGER");// NOLINT
 
 int main() {
     auto logger = sese::record::getLogger();
-    auto formatter = std::make_shared<sese::record::SimpleFormatter>();
     auto fileStream = sese::FileStream::create("hello.log", TEXT_WRITE_CREATE_TRUNC);
 
     assert(helper, nullptr != fileStream, -1);
-    auto fileAppender = std::make_shared<sese::record::FileAppender>(fileStream, formatter);
+    auto fileAppender = std::make_shared<sese::record::FileAppender>(fileStream);
     logger->addAppender(fileAppender);
 
     helper.debug("Hello 你好 こんにちは");

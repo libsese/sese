@@ -23,16 +23,13 @@ namespace sese::record { /**
 
         AbstractAppender() noexcept = default;
 
-        AbstractAppender(AbstractFormatter::Ptr formatter, Level level) noexcept;
+        explicit AbstractAppender(Level level) noexcept;
 
-        /// 用于判断是否满足输出阈值
-        void preDump(const Event::Ptr &event) noexcept;
+        virtual void dump(const char *buffer, size_t size) noexcept = 0;
 
-        virtual void dump(const Event::Ptr &event) noexcept = 0;
+        [[nodiscard]] Level getLevel() const noexcept { return level; }
 
     protected:
-        /// 格式化器
-        AbstractFormatter::Ptr formatter;
         /// 输出阈值
         Level level = Level::DEBUG;
     };

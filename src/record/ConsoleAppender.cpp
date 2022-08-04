@@ -8,9 +8,9 @@
 static HANDLE ConsoleHandle = INVALID_HANDLE_VALUE;
 #endif
 
-using sese::ConsoleAppender;
+using sese::record::ConsoleAppender;
 
-ConsoleAppender::ConsoleAppender(const record::AbstractFormatter::Ptr &formatter, record::Level level) noexcept : record::AbstractAppender(formatter, level) {
+ConsoleAppender::ConsoleAppender(record::Level level) noexcept : record::AbstractAppender(level) {
 #ifdef _WIN32
     if (ConsoleHandle == INVALID_HANDLE_VALUE) {
         ConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -18,30 +18,12 @@ ConsoleAppender::ConsoleAppender(const record::AbstractFormatter::Ptr &formatter
 #endif
 }
 
-void ConsoleAppender::dump(const record::Event::Ptr &event) noexcept {
-    Locker locker(this->mutex);
-    setbuf(stdout, nullptr);
-    switch (event->getLevel()) {
-        case record::Level::DEBUG:
-            setDebugColor();
-            break;
-        case record::Level::INFO:
-            setInfoColor();
-            break;
-        case record::Level::WARN:
-            setWarnColor();
-            break;
-        case record::Level::ERR:
-            setErrorColor();
-            break;
-    }
+void ConsoleAppender::dump(const char *buffer, size_t size) noexcept {
 #ifdef _WIN32
-    _putws(EncodingConverter::toWstring(this->formatter->dump(event)).c_str());
+    _putws(EncodingConverter::toWstring(buffer).c_str());
 #else
     puts(this->formatter->dump(event).c_str());
 #endif
-    setCleanColor();
-    fflush(stdout);
 }
 
 #ifdef _WIN32
