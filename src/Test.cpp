@@ -2,7 +2,6 @@
 #include "sese/record/LogHelper.h"
 #undef assert
 
-using sese::LogHelper;
 using sese::Test;
 using sese::TestInitiateTask;
 
@@ -25,7 +24,7 @@ int32_t TestInitiateTask::destroy() noexcept {
     return 0;
 }
 
-void Test::assert(LogHelper log, bool expr, int32_t exitCode) {
+void Test::assert(record::LogHelper log, bool expr, int32_t exitCode) {
     // if (!expr) {
     //     times++;
     //     log.error("Call assertion!\n%s",backtrace2String(5, "Backtrace ").c_str());
@@ -37,7 +36,7 @@ void Test::assert(LogHelper log, bool expr, int32_t exitCode) {
     assert(log, "Assertion failed!\n%s", expr, exitCode);
 }
 
-void sese::Test::assert(sese::LogHelper log, const char *firstLine, bool expr, int32_t exitCode) {
+void sese::Test::assert(record::LogHelper log, const char *firstLine, bool expr, int32_t exitCode) {
     if (!expr) {
         times++;
         log.error(firstLine, sese::Test::backtrace2String(5, "Backtrace ").c_str());

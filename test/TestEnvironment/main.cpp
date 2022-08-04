@@ -2,7 +2,7 @@
 #include "sese/system/Environment.h"
 
 using sese::Environment;
-using sese::LogHelper;
+using sese::record::LogHelper;
 
 LogHelper helper("fENV"); // NOLINT
 

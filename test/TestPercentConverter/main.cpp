@@ -4,10 +4,10 @@
 #include <cstring>
 
 using sese::ByteBuilder;
-using sese::LogHelper;
 using sese::PercentConverter;
+using sese::record::LogHelper;
 
-LogHelper helper("fPERCENT");// NOLINT
+sese::record::LogHelper helper("fPERCENT");// NOLINT
 
 int main() {
     char buffer[1024]{0};

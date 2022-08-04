@@ -4,10 +4,10 @@
 #include <sese/record/LogHelper.h>
 #include <sese/Test.h>
 
-using sese::ByteBuilder;
+using sese::record::LogHelper;
 using sese::ByteBuilder;
 using sese::FileStream;
-using sese::LogHelper;
+using sese::Test;
 using sese::Test;
 using sese::MD5Util;
 

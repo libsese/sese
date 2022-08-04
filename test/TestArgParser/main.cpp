@@ -2,7 +2,7 @@
 #include "sese/record/LogHelper.h"
 #include "sese/Test.h"
 
-sese::LogHelper helper("fARG_PARSER"); // NOLINT
+sese::record::LogHelper helper("fARG_PARSER"); // NOLINT
 
 int main(int32_t argc, char *argv[]) {
     auto args = std::make_unique<sese::ArgParser>();

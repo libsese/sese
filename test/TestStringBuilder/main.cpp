@@ -3,7 +3,7 @@
 #include "sese/Test.h"
 #include <cstdio>
 
-sese::LogHelper helper("fSTRING_BUILDER");// NOLINT
+sese::record::LogHelper helper("fSTRING_BUILDER");// NOLINT
 
 int main() {
     auto buffer = new sese::StringBuilder(16);

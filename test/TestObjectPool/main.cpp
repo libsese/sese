@@ -5,13 +5,13 @@
 #include <sese/thread/ThreadPool.h>
 #include <sese/Util.h>
 
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::ObjectPool;
 using sese::Test;
 using sese::ThreadPool;
 using sese::concurrent::ConcurrentObjectPool;
 
-LogHelper helper("fOBJECT_POOL");// NOLINT
+sese::record::LogHelper helper("fOBJECT_POOL");// NOLINT
 
 void testRecycle() {
     ObjectPool<int>::ObjectPtr i0;

@@ -3,9 +3,9 @@
 
 using sese::Initializer;
 using sese::InitiateTask;
-using sese::LogHelper;
+using sese::record::LogHelper;
 
-LogHelper helper("fINIT"); // NOLINT
+sese::record::LogHelper helper("fINIT"); // NOLINT
 
 class Task1 : public InitiateTask {
 public:

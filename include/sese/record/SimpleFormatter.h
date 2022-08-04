@@ -6,9 +6,10 @@
  */
 #include "sese/record/AbstractFormatter.h"
 #include "sese/Config.h"
+#include "AbstractFormatter.h"
+#include "Event.h"
 
-namespace sese {
-
+namespace sese::record {
     /**
      * @brief 简单格式化类
      */
@@ -32,8 +33,7 @@ namespace sese {
          @endverbatim
           * @param timePattern 时间格式字符串
           */
-        explicit SimpleFormatter(const std::string &textPattern = RECORD_DEFAULT_TEXT_PATTERN,
-                                 const std::string &timePattern = RECORD_DEFAULT_TIME_PATTERN) noexcept;
+        explicit SimpleFormatter(const std::string &textPattern = RECORD_DEFAULT_TEXT_PATTERN, const std::string &timePattern = RECORD_DEFAULT_TIME_PATTERN) noexcept;
 
         std::string dump(const Event::Ptr &event) noexcept override;
 
@@ -45,4 +45,4 @@ namespace sese {
         std::string textPattern;
         std::string timePattern;
     };
-}// namespace sese
+}// namespace sese::record

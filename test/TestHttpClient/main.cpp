@@ -2,13 +2,13 @@
 #include <sese/record/LogHelper.h>
 #include <sese/Test.h>
 
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::http::HttpClient;
 using sese::http::RequestHeader;
 using sese::http::ResponseHeader;
 
 int main() {
-    LogHelper helper("CLIENT");
+    sese::record::LogHelper helper("CLIENT");
 
     RequestHeader header;
     header.setUrl("/");

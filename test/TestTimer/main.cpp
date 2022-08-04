@@ -2,7 +2,7 @@
 #include <sese/record/LogHelper.h>
 #include <sese/Util.h>
 
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::Timer;
 
 LogHelper helper("fTIMER");// NOLINT

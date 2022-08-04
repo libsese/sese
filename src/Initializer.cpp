@@ -7,7 +7,6 @@
 using sese::EncodingConverterInitiateTask;
 using sese::Initializer;
 using sese::InitiateTask;
-using sese::LoggerInitiateTask;
 using sese::TestInitiateTask;
 
 static Initializer initializer;// NOLINT
@@ -23,7 +22,7 @@ const std::string &sese::InitiateTask::getName() const {
 
 Initializer::Initializer() {
     buildInLoadTask(std::make_unique<EncodingConverterInitiateTask>());
-    buildInLoadTask(std::make_unique<LoggerInitiateTask>());
+    buildInLoadTask(std::make_unique<record::LoggerInitiateTask>());
     buildInLoadTask(std::make_unique<TestInitiateTask>());
 #ifdef _WIN32
     buildInLoadTask(std::make_unique<sese::SocketInitiateTask>());

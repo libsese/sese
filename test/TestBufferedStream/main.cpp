@@ -5,10 +5,9 @@
 
 using sese::BufferedStream;
 using sese::ByteBuilder;
-using sese::LogHelper;
 using sese::Test;
 
-LogHelper helper("fBUFFERED");// NOLINT
+sese::record::LogHelper helper("fBUFFERED");// NOLINT
 
 int main() {
     auto bytes = std::make_shared<ByteBuilder>(8);

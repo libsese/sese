@@ -24,7 +24,10 @@
 
 namespace sese {
 
-    class LogHelper;
+    namespace record {
+        class LogHelper;
+    }
+
     class API Test {
     public:
         /**
@@ -42,7 +45,7 @@ namespace sese {
          * @param expr 条件表达式
          * @param exitCode 命中时的退出退出码，为零则不退出
          */
-        static void assert(LogHelper log, bool expr, int32_t exitCode = 0);
+        static void assert(record::LogHelper log, bool expr, int32_t exitCode = 0);
 
         /**
          * @brief 可自定义的断言方案
@@ -52,7 +55,7 @@ namespace sese {
          * @param expr 条件表达式
          * @param exitCode 命中时的退出退出码，为零则不退出
          */
-        static void assert(sese::LogHelper log, const char *firstLine, bool expr, int32_t exitCode = 0);
+        static void assert(record::LogHelper log, const char *firstLine, bool expr, int32_t exitCode = 0);
     };
 
 

@@ -2,7 +2,7 @@
 #include "sese/thread/Thread.h"
 #include "sese/record/LogHelper.h"
 
-sese::LogHelper helper("fLOCKER");// NOLINT
+sese::record::LogHelper helper("fLOCKER");// NOLINT
 
 std::mutex mutex;
 

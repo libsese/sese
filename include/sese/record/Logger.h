@@ -8,6 +8,8 @@
 #include "sese/Config.h"
 #include "sese/record/AbstractAppender.h"
 #include "sese/Initializer.h"
+#include "AbstractAppender.h"
+#include "Event.h"
 #include <memory>
 #include <vector>
 
@@ -15,7 +17,7 @@
 #pragma warning(disable : 4251)
 #endif
 
-namespace sese {
+namespace sese::record {
 
     class LoggerInitiateTask : public InitiateTask {
     public:
@@ -26,8 +28,8 @@ namespace sese {
     };
 
     /**
-     * @brief 日志输出类
-     */
+      * @brief 日志输出类
+      */
     class API Logger {
     public:
         /// 智能指针
@@ -57,5 +59,5 @@ namespace sese {
      * 获取全局 Logger 指针
      * @return Logger 指针
      */
-    extern API Logger *getLogger() noexcept;
-}// namespace sese
+    extern API record::Logger *getLogger() noexcept;
+}// namespace sese::record

@@ -1,8 +1,7 @@
 #include <sese/Test.h>
 #include <sese/record/LogHelper.h>
 
-using sese::Test;
-using sese::LogHelper;
+using sese::record::LogHelper;
 
 LogHelper helper("fDEBUG"); // NOLINT
 

@@ -1,7 +1,7 @@
 #include "sese/net/IPv6Address.h"
 #include "sese/record/LogHelper.h"
 
-sese::LogHelper helper("fADDRESS"); // NOLINT
+sese::record::LogHelper helper("fADDRESS"); // NOLINT
 
 int main() {
     auto address = sese::Address::lookUpAny("www.baidu.com");

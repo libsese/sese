@@ -3,7 +3,7 @@
 #include <sese/Test.h>
 
 using namespace sese::http;
-using sese::LogHelper;
+using sese::record::LogHelper;
 
 LogHelper helper("fURL");// NOLINT
 

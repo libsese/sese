@@ -3,9 +3,9 @@
 
 using sese::ConfigUtil;
 using sese::ConfigFile;
-using sese::LogHelper;
+using sese::record::LogHelper;
 
- LogHelper helper("fCONFIG_UTIL"); // NOLINT
+LogHelper helper("fCONFIG_UTIL"); // NOLINT
 
 int main() {
     auto file = ConfigUtil::readFrom(PROJECT_PATH"/test/TestConfigUtil/data.ini");

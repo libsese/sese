@@ -9,28 +9,28 @@
 
 namespace sese {
 
-    extern "C" API const char *getLevelString(Level level) noexcept {
+    extern "C" API const char *getLevelString(record::Level level) noexcept {
         switch (level) {
-            case Level::DEBUG:
+            case record::Level::DEBUG:
                 return "DEBUG";
-            case Level::INFO:
+            case record::Level::INFO:
                 return "INFO ";
-            case Level::WARN:
+            case record::Level::WARN:
                 return "WARN ";
-            case Level::ERR:
+            case record::Level::ERR:
                 return "ERROR";
             default:
                 return "DEBUG";
         }
     }
 
-    SimpleFormatter::SimpleFormatter(const std::string &textPattern, const std::string &timePattern) noexcept
+    record::SimpleFormatter::SimpleFormatter(const std::string &textPattern, const std::string &timePattern) noexcept
             : AbstractFormatter() {
         this->textPattern = textPattern;
         this->timePattern = timePattern;
     }
 
-    std::string SimpleFormatter::dump(const Event::Ptr &event) noexcept {
+    std::string record::SimpleFormatter::dump(const Event::Ptr &event) noexcept {
         std::stringstream stream;
         auto len = this->textPattern.length();
         for (auto i = 0; i < len; i++) {

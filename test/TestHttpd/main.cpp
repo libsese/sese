@@ -4,12 +4,12 @@
 #include <sese/Util.h>
 
 using sese::IPv4Address;
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::Thread;
 using sese::http::HttpServer;
 using sese::http::HttpServiceContext;
 
-LogHelper helper("HTTPD");//NOLINT
+sese::record::LogHelper helper("HTTPD");//NOLINT
 
 int main() {
     auto address = IPv4Address::create("0.0.0.0", 8080);

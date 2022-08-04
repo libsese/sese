@@ -4,10 +4,10 @@
 #include "sese/Test.h"
 
 using sese::FileStream;
-using sese::LogHelper;
 using sese::StreamReader;
 using sese::WStreamReader;
 using sese::Test;
+using sese::record::LogHelper;
 
 LogHelper helper("fSTREAM_READER");// NOLINT
 

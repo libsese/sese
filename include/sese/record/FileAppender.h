@@ -14,12 +14,11 @@
 #pragma warning(disable : 4996)
 #endif
 
-namespace sese {
-
+namespace sese::record {
     /**
      * @brief 日志文件输出源类
      */
-    class API FileAppender : public AbstractAppender {
+    class API FileAppender : public sese::record::AbstractAppender {
     public:
         typedef std::shared_ptr<FileAppender> Ptr;
 
@@ -33,5 +32,4 @@ namespace sese {
     private:
         std::shared_ptr<FileStream> fileStream;
     };
-
-}// namespace sese
+}// namespace sese::record

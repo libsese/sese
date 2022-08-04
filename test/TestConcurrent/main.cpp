@@ -5,14 +5,14 @@
 #include <sese/Test.h>
 #include <sese/Util.h>
 
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::Test;
 using sese::Thread;
 using sese::ThreadPool;
 using sese::concurrent::LinkedQueue;
 using sese::concurrent::LinkedStack;
 
-LogHelper helper("fCONCURRENT");// NOLINT
+sese::record::LogHelper helper("fCONCURRENT");// NOLINT
 
 void testCompareAndSwap() {
     int *object = nullptr;

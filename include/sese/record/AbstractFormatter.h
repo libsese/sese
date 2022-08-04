@@ -7,13 +7,13 @@
 #pragma once
 #include <string>
 #include "sese/record/Event.h"
+#include "Event.h"
 
 #ifdef _WIN32
-#pragma warning (disable : 4251)
+#pragma warning(disable : 4251)
 #endif
 
-namespace sese {
-
+namespace sese::record {
     /**
      * @brief 日志格式化类
      */
@@ -23,4 +23,4 @@ namespace sese {
 
         virtual std::string dump(const Event::Ptr &event) noexcept = 0;
     };
-}// namespace sese
+}// namespace sese::record

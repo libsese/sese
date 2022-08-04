@@ -5,7 +5,7 @@
 
 using sese::IOContext;
 using sese::IPv4Address;
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::Socket;
 using sese::TcpServer;
 using sese::Test;

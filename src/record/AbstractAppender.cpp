@@ -1,12 +1,12 @@
 #include "sese/record/AbstractAppender.h"
 
 namespace sese {
-    AbstractAppender::AbstractAppender(AbstractFormatter::Ptr formatter, Level level) noexcept {
+    record::AbstractAppender::AbstractAppender(AbstractFormatter::Ptr formatter, Level level) noexcept {
         this->formatter = std::move(formatter);
         this->level = level;
     }
 
-    void AbstractAppender::preDump(const Event::Ptr &event) noexcept {
+    void record::AbstractAppender::preDump(const Event::Ptr &event) noexcept {
         if (event->getLevel() >= level) {
             dump(event);
         }

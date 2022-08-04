@@ -10,7 +10,7 @@ static HANDLE ConsoleHandle = INVALID_HANDLE_VALUE;
 
 using sese::ConsoleAppender;
 
-ConsoleAppender::ConsoleAppender(const AbstractFormatter::Ptr &formatter, Level level) noexcept : AbstractAppender(formatter, level) {
+ConsoleAppender::ConsoleAppender(const record::AbstractFormatter::Ptr &formatter, record::Level level) noexcept : record::AbstractAppender(formatter, level) {
 #ifdef _WIN32
     if (ConsoleHandle == INVALID_HANDLE_VALUE) {
         ConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -18,20 +18,20 @@ ConsoleAppender::ConsoleAppender(const AbstractFormatter::Ptr &formatter, Level 
 #endif
 }
 
-void ConsoleAppender::dump(const sese::Event::Ptr &event) noexcept {
+void ConsoleAppender::dump(const record::Event::Ptr &event) noexcept {
     Locker locker(this->mutex);
     setbuf(stdout, nullptr);
     switch (event->getLevel()) {
-        case Level::DEBUG:
+        case record::Level::DEBUG:
             setDebugColor();
             break;
-        case Level::INFO:
+        case record::Level::INFO:
             setInfoColor();
             break;
-        case Level::WARN:
+        case record::Level::WARN:
             setWarnColor();
             break;
-        case Level::ERR:
+        case record::Level::ERR:
             setErrorColor();
             break;
     }

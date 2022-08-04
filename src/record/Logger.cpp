@@ -4,9 +4,9 @@
 #include "sese/record/SimpleFormatter.h"
 #include <clocale>
 
-namespace sese {
+namespace sese::record {
 
-    void Logger::addAppender(const sese::AbstractAppender::Ptr &appender) noexcept {
+    void Logger::addAppender(const AbstractAppender::Ptr &appender) noexcept {
         this->appenders.emplace_back(appender);
     }
 
@@ -18,9 +18,7 @@ namespace sese {
 
     static Logger *logger = nullptr;
 
-    Logger *getLogger() noexcept {
-        return logger;
-    }
+    Logger *getLogger() noexcept { return logger; }
 
     int32_t LoggerInitiateTask::init() noexcept {
         // 初始化 Logger
@@ -36,4 +34,4 @@ namespace sese {
         delete logger;
         return 0;
     }
-}// namespace sese
+}// namespace sese::record

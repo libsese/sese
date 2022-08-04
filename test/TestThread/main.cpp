@@ -2,7 +2,7 @@
 #include "sese/thread/Thread.h"
 #include "sese/Test.h"
 
-sese::LogHelper helper("fTHREAD");// NOLINT
+sese::record::LogHelper helper("fTHREAD");// NOLINT
 
 static const char *TYPE_MAIN_THREAD = "Main Thread";
 static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";

@@ -3,7 +3,7 @@
 #include <sese/Test.h>
 
 using sese::IPv4AddressPool;
-using sese::LogHelper;
+using sese::record::LogHelper;
 
 LogHelper helper("AddressPool");// NOLINT
 

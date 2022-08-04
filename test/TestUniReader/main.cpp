@@ -2,7 +2,7 @@
 #include "sese/record/LogHelper.h"
 #include "sese/Test.h"
 
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::UniReader;
 using sese::Test;
 

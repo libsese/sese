@@ -7,13 +7,14 @@
 #pragma once
 #include "sese/record/AbstractFormatter.h"
 #include "sese/Config.h"
+#include "AbstractFormatter.h"
+#include "Event.h"
 
 #ifdef _WIN32
-#pragma warning (disable : 4251)
+#pragma warning(disable : 4251)
 #endif
 
-namespace sese {
-    /**
+namespace sese::record { /**
      * @brief 日志输出源基类
      */
     class API AbstractAppender {
@@ -35,4 +36,4 @@ namespace sese {
         /// 输出阈值
         Level level = Level::DEBUG;
     };
-}// namespace sese
+}// namespace sese::record

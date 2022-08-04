@@ -6,9 +6,10 @@
  */
 #pragma once
 #include <sese/record/Logger.h>
+#include "Logger.h"
+#include "Event.h"
 
-namespace sese {
-
+namespace sese::record {
     /**
      * @brief 日志工具
      */
@@ -18,7 +19,7 @@ namespace sese {
 
         /**
          * 初始化日志工具
-         * @param tag 指定过滤器名称
+         * @param tag 指定标签名称
          */
         explicit LogHelper(const char *tag = RECORD_DEFAULT_TAG);
 
@@ -50,4 +51,4 @@ namespace sese {
         const char *filter = nullptr;
         const Logger *logger = nullptr;
     };
-}// namespace sese
+}// namespace sese::record

@@ -5,7 +5,7 @@
 
 using namespace sese;
 
-LogHelper helper("fTHREAD_POOL"); //NOLINT
+record::LogHelper helper("fTHREAD_POOL"); //NOLINT
 
 int main() {
     auto task = [&helper = helper](int value){

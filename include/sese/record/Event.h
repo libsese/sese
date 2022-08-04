@@ -14,7 +14,7 @@
 #pragma warning(disable : 4251)
 #pragma warning(disable : 4819)
 #endif
-namespace sese {
+namespace sese::record {
 
     /// @brief 日志等级
     enum class Level {
@@ -67,4 +67,4 @@ namespace sese {
         const char *message = nullptr;
         const char *tag = nullptr;
     };
-}// namespace sese
+}// namespace sese::record

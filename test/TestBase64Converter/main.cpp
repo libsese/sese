@@ -6,9 +6,9 @@
 
 using sese::Base64Converter;
 using sese::ByteBuilder;
-using sese::LogHelper;
+using sese::record::LogHelper;
 
-LogHelper helper("fBASE64"); // NOLINT
+sese::record::LogHelper helper("fBASE64"); // NOLINT
 
 int main() {
     std::string str = "Hello 你好";

@@ -6,14 +6,14 @@
 
 using sese::ByteBuilder;
 using sese::FileStream;
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::Test;
 using sese::json::JsonUtil;
 using sese::json::ArrayData;
 using sese::json::BasicData;
 using sese::json::ObjectData;
 
-LogHelper helper("fJSON"); // NOLINT
+sese::record::LogHelper helper("fJSON"); // NOLINT
 
 int main() {
     auto fileStream = FileStream::create(PROJECT_PATH "/test/TestJsonUtil/data.json", TEXT_READ_EXISTED);

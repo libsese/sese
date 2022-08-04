@@ -2,10 +2,10 @@
 #include "sese/record/LogHelper.h"
 #include "sese/Test.h"
 
-using sese::LogHelper;
+using sese::Test;
 using sese::Test;
 
-sese::LogHelper helper("fBYTE_BUILDER"); // NOLINT
+sese::record::LogHelper helper("fBYTE_BUILDER"); // NOLINT
 
 struct Data {
     int8_t i8;

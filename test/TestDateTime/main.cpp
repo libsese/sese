@@ -1,7 +1,7 @@
 #include "sese/DateTime.h"
 #include "sese/record/LogHelper.h"
 
-sese::LogHelper helper("fDATETIME"); // NOLINT
+sese::record::LogHelper helper("fDATETIME"); // NOLINT
 
 int main() {
     auto start = sese::DateTime::now(8);

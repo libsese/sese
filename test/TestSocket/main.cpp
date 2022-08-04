@@ -5,11 +5,11 @@
 
 using sese::IPv4Address;
 using sese::IPv6Address;
-using sese::LogHelper;
+using sese::Socket;
 using sese::Socket;
 using sese::Thread;
 
-LogHelper helper("fSOCKET"); // NOLINT
+sese::record::LogHelper helper("fSOCKET"); // NOLINT
 
 void IPv4ServerProc() {
     helper.info("IPv4: Server starting");

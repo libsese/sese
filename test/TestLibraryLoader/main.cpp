@@ -2,13 +2,12 @@
 #include "sese/record/LogHelper.h"
 #include "sese/Test.h"
 
-using sese::Test;
+using sese::record::LogHelper;
 using sese::LibraryLoader;
 using sese::LibraryObject;
-using sese::LogHelper;
 using Func = double(double);
 
-LogHelper helper("fLIB_LOADER"); // NOLINT
+sese::record::LogHelper helper("fLIB_LOADER"); // NOLINT
 
 int main() {
 #ifdef _WIN32

@@ -10,7 +10,7 @@
 #define PORT 7892
 
 using sese::IPv4Address;
-using sese::LogHelper;
+using sese::record::LogHelper;
 using sese::Socket;
 using sese::Test;
 using sese::Thread;
