@@ -17,6 +17,8 @@ namespace sese {
     /// @brief 流缓存类
     class API BufferedStream final : public Noncopyable, public Stream {
     public:
+        using Ptr = std::shared_ptr<BufferedStream>;
+
         /**
          * 包装指定流
          * @param source 欲包装的流

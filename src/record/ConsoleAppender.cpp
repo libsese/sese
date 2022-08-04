@@ -22,7 +22,7 @@ void ConsoleAppender::dump(const char *buffer, size_t size) noexcept {
 #ifdef _WIN32
     _putws(EncodingConverter::toWstring(buffer).c_str());
 #else
-    puts(this->formatter->dump(event).c_str());
+    puts(buffer);
 #endif
 }
 

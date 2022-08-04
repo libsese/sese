@@ -106,27 +106,20 @@ int64_t BufferedStream::write(const void *buf, size_t length) {
             return (int64_t) total;
         }
     } else {
-        // 处理已有缓存
-        size_t total = flush();
-        if (0 != total) {
-            total = 0;
-            size_t wrote = 0;
-            while(true) {
-                size_t need;
-                if(length - total >= this->cap) {
-                    need = this->cap;
-                }else {
-                    need = length - total;
-                }
-                wrote = source->write((char *)buffer + total, need);
-                total += wrote;
-                if(0 == wrote || total == length) {
-                    // 流已无法继续写入或需求已满足则退出
-                    break;
-                }
-            }
+        // 直接写入
+        if (this->len != this->pos) {
+            // 缓存区有剩余，需要刷新
+            flush();
         }
-        return (int64_t) total;
+
+        int64_t wrote = 0;
+        while (true) {
+            auto rt = source->write((const char *) buf + wrote, length - wrote >= cap ? cap : length - wrote);
+            wrote += rt;
+            if (wrote == length) break;
+        }
+
+        return wrote;
     }
 }
 
