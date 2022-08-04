@@ -33,13 +33,8 @@ namespace sese {
         /// 智能指针
         typedef std::shared_ptr<Logger> Ptr;
 
-        /**
-         * 初始化
-         * @param name 日志器名称
-         */
-        explicit Logger(const char *name = RECORD_MASTER_LOGGER_NAME) noexcept {
-            this->name = name;
-        }
+        /// 初始化
+        Logger() noexcept = default;
 
         /**
          * 添加日志输出源

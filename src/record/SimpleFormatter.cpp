@@ -59,16 +59,13 @@ namespace sese {
                             } else if (textPattern[i + 2] == 'v') {
                                 stream << getLevelString(event->getLevel());
                                 i += 2;
-                            } else if (textPattern[i + 2] == 'n') {
-                                stream << event->getLoggerName();
-                                i += 2;
                             } else {
                                 i += 1;
                             }
                             break;
                         case 'f':
                             if (textPattern[i + 2] == 'i') {
-                                stream << event->getFilter();
+                                stream << event->getTag();
                                 i += 2;
                             } else if (textPattern[i + 2] == 'n') {
                                 stream << event->getFileName();

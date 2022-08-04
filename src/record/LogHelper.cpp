@@ -5,8 +5,8 @@
 
 using sese::LogHelper;
 
-LogHelper::LogHelper(const char *filter) {
-    this->filter = filter;
+LogHelper::LogHelper(const char *tag) {
+    this->filter = tag;
     logger = sese::getLogger();
 }
 

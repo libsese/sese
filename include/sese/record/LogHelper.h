@@ -18,9 +18,9 @@ namespace sese {
 
         /**
          * 初始化日志工具
-         * @param filter 指定过滤器名称
+         * @param tag 指定过滤器名称
          */
-        explicit LogHelper(const char *filter = RECORD_DEFAULT_FILTER);
+        explicit LogHelper(const char *tag = RECORD_DEFAULT_TAG);
 
         /// 输出 DEBUG 级别的日志
         void debug(const char *format, ...);

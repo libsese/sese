@@ -24,7 +24,7 @@ namespace sese {
          %lv  日志等级
          %ln  日志器名称
          %fn  文件名
-         %fi  过滤器名称
+         %fi  标签名称
          %th  线程 ID
          %tn  线程名称
          %c   完整时间
