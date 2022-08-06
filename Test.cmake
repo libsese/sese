@@ -178,3 +178,8 @@ add_test(NAME TestAddressPool COMMAND TestAddressPool)
 add_executable(TestHttpClient test/TestHttpClient/main.cpp)
 target_link_libraries(TestHttpClient SeseSharedLibrary)
 add_test(NAME TestHttpClient COMMAND TestHttpClient)
+
+# BlockAppender
+add_executable(TestBlockAppender test/TestBlockAppender/main.cpp)
+target_link_libraries(TestBlockAppender SeseSharedLibrary)
+add_test(NAME TestBlockAppender COMMAND TestBlockAppender)

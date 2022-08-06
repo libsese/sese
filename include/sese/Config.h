@@ -46,6 +46,8 @@ constexpr static const size_t RECORD_OUTPUT_BUFFER = 2048;
 constexpr static const char *RECORD_DEFAULT_TIME_PATTERN = TIME_SHORT_PATTERN;
 /// 日志格式化器匹配格式
 constexpr static const char *RECORD_DEFAULT_TEXT_PATTERN = "%c %lv %fi %tn:%th> %m";
+///
+constexpr static const char *RECORD_DEFAULT_FILE_TIME_PATTERN = "yyyyMMdd HHmmssff";
 
 /// 字节流缓冲区单元因子
 constexpr static const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024;

@@ -66,6 +66,10 @@ namespace sese {
         /// @deprecated 此操作为空，欲关闭被包装流，请不要使用此方法
         void close() override;
 
+        /// 重置输出源，这会导致原有数据被清除
+        /// \param source
+        void reset(const Stream::Ptr &source) noexcept;
+
         [[nodiscard]] size_t getPos() const { return pos; }
         [[nodiscard]] size_t getLen() const { return len; }
         [[nodiscard]] size_t getCap() const { return cap; }

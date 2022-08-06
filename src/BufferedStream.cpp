@@ -132,3 +132,9 @@ int64_t BufferedStream::flush() noexcept {
 }
 
 void BufferedStream::close() {}
+
+void sese::BufferedStream::reset(const sese::Stream::Ptr &newSource) noexcept {
+    this->source = newSource;
+    pos = 0;
+    len = 0;
+}

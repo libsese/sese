@@ -7,15 +7,17 @@ using namespace sese::record;
 
 inline std::string getDateTimeString() {
     auto dateTime = DateTime::now();
-    return DateTimeFormatter::format(dateTime, RECORD_DEFAULT_TIME_PATTERN);
+    return DateTimeFormatter::format(dateTime, RECORD_DEFAULT_FILE_TIME_PATTERN) + ".log";
 }
 
 BlockAppender::BlockAppender(size_t blockMaxSize, sese::record::Level level)
     : AbstractAppender(level) {
-    maxSize = blockMaxSize;
+#ifndef _DEBUG
+    maxSize = blockMaxSize < 1000 * 1024 ? 1000 * 1024 : blockMaxSize;
+#endif
     auto fileName = getDateTimeString();
     fileStream = FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
-    bufferedStream = std::make_unique<BufferedStream>(fileStream);
+    bufferedStream = std::make_unique<BufferedStream>(fileStream, 4 * 1024);
 }
 
 BlockAppender::~BlockAppender() noexcept {
@@ -31,6 +33,7 @@ void BlockAppender::dump(const char *buffer, size_t i) noexcept {
         fileStream->close();
         auto fileName = getDateTimeString();
         fileStream = FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
+        bufferedStream->reset(fileStream);
         bufferedStream->write((void *) buffer, i);
         bufferedStream->write((void *) "\n", 1);
     } else {
