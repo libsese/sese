@@ -128,28 +128,29 @@ inline char toChar(unsigned char ch, bool isCap) {
     if (ch >= 0 && ch <= 9) {
         return (char) (ch + 48);
     } else {
-        if(isCap) {
+        if (isCap) {
             return (char) (ch + 55);
-        }else{
+        } else {
             return (char) (ch + 87);
         }
     }
 }
 
-std::string MD5Util::encode(const Stream::Ptr &input, bool isCap) noexcept {
+std::unique_ptr<char[]> MD5Util::encode(const Stream::Ptr &input, bool isCap) noexcept {
     auto dest = std::make_shared<ByteBuilder>(16);
     auto success = encode(input, dest);
     if (success) {
         unsigned char buffer[16];
-        char md5String[33]{0};
+        auto rt = std::unique_ptr<char[]>(new char[33]);
         dest->read(buffer, 16);
         for (size_t i = 0; i < 16; i++) {
-            md5String[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
-            md5String[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
+            rt[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
+            rt[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
         }
-        return {md5String};
+        rt[32] = 0;
+         return rt;
     } else {
-        return {};
+        return nullptr;
     }
 }
 

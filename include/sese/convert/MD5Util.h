@@ -27,9 +27,10 @@ namespace sese {
          * @brief 生成 32 位大写 MD5 字符串
          * @param input 摘要来源
          * @param isCap 指示字符串字母是否大写
-         * @return 返回生成的字符串，生成失败 string.empty() 为 true
+         * @return 返回生成的字符串，生成失败则为 nullptr
          */
-        static std::string encode(const Stream::Ptr &input, bool isCap = true) noexcept;
+        static std::unique_ptr<char[]> encode(const Stream::Ptr &input, bool isCap = true) noexcept;
+
     private:
         static const uint32_t A = 0x67452301;
         static const uint32_t B = 0xefcdab89;

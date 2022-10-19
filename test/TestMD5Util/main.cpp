@@ -20,8 +20,8 @@ int main() {
     helper.info("Raw: %s", str);
 
     auto md5String  = MD5Util::encode(src, false);
-    assert(helper, !md5String.empty(), -1);
-    helper.info("MD5 String: %s", md5String.c_str());
+    assert(helper, nullptr != md5String, -1);
+    helper.info("MD5 String: %s", &md5String[0]);
 
     return 0;
 }
