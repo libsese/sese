@@ -1,5 +1,5 @@
 #include "sese/record/SimpleFormatter.h"
-#include "sese/DateTimeFormatter.h"
+#include "sese/text/DateTimeFormatter.h"
 #include <sstream>
 
 #ifdef _WIN32
@@ -43,7 +43,7 @@ namespace sese {
                             break;
                         case 'c': {
                             decltype(auto) time = event->getTime();
-                            auto rt = DateTimeFormatter::format(time, this->timePattern);
+                            auto rt = text::DateTimeFormatter::format(time, this->timePattern);
                             stream << rt;
                             i += 1;
                             break;

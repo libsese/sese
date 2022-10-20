@@ -44,7 +44,6 @@ set(ALL_SRCS
         src/BufferedStream.cpp
         src/DateTime.cpp
         src/TimeSpan.cpp
-        src/DateTimeFormatter.cpp
         src/StringBuffer.cpp
         src/ByteBuffer.cpp
         src/Random.cpp
@@ -85,6 +84,7 @@ set(ALL_SRCS
         libs/SString/src/SStringBuilder.cpp
         libs/SString/src/algorithm.cpp
         # 文本
+        src/text/DateTimeFormatter.cpp
         src/text/TextReader.cpp
         )
 

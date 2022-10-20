@@ -9,7 +9,7 @@
 #include "sese/DateTime.h"
 #include "sese/StringBuilder.h"
 
-namespace sese {
+namespace sese::text {
 
     /**
      * @brief 日期时间格式化类

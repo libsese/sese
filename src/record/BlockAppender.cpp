@@ -1,5 +1,5 @@
 #include <sese/record/BlockAppender.h>
-#include <sese/DateTimeFormatter.h>
+#include "sese/text/DateTimeFormatter.h"
 #include <sese/thread/Locker.h>
 
 using namespace sese;
@@ -7,7 +7,7 @@ using namespace sese::record;
 
 inline std::string getDateTimeString() {
     auto dateTime = DateTime::now();
-    return DateTimeFormatter::format(dateTime, RECORD_DEFAULT_FILE_TIME_PATTERN) + ".log";
+    return text::DateTimeFormatter::format(dateTime, RECORD_DEFAULT_FILE_TIME_PATTERN) + ".log";
 }
 
 BlockAppender::BlockAppender(size_t blockMaxSize, sese::record::Level level)

@@ -1,4 +1,4 @@
-#include "sese/DateTimeFormatter.h"
+#include "sese/text/DateTimeFormatter.h"
 #include <cstring>
 #ifdef _WIN32
 #define itoa _itoa_s
@@ -84,7 +84,7 @@ static int count(const char &ch, const char *str) {
     return 4;
 }
 
-std::string sese::DateTimeFormatter::format(const sese::DateTime &dateTime, const std::string &pattern) {
+std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime, const std::string &pattern) {
     auto builder = std::make_shared<StringBuilder>(128);
     int c;
     char buffer[5];
@@ -292,6 +292,6 @@ std::string sese::DateTimeFormatter::format(const sese::DateTime &dateTime, cons
     return builder->toString();
 }
 
-std::string sese::DateTimeFormatter::format(const sese::DateTime::Ptr &dateTime, const std::string &pattern) {
+std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dateTime, const std::string &pattern) {
     return format(*dateTime.get(), pattern);
 }
