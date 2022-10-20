@@ -1,0 +1,4 @@
+[submodule "libs/SString"]
+	path = libs/SString
+	url = https://github.com/SHIINASAMA/SString.git
+	tag = v0.1.1

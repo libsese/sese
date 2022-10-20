@@ -16,6 +16,7 @@ project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories(${PROJECT_SOURCE_DIR}/include/)
+include_directories(${PROJECT_SOURCE_DIR}/libs/SString/include)
 enable_testing()
 
 # 编译预设宏
@@ -79,6 +80,10 @@ set(ALL_SRCS
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp
         src/config/json/JsonUtil.cpp
+        # SString
+        libs/SString/src/SString.cpp
+        libs/SString/src/SStringBuilder.cpp
+        libs/SString/src/algorithm.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
