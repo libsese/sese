@@ -183,3 +183,8 @@ add_test(NAME TestHttpClient COMMAND TestHttpClient)
 add_executable(TestBlockAppender test/TestBlockAppender/main.cpp)
 target_link_libraries(TestBlockAppender SeseSharedLibrary)
 add_test(NAME TestBlockAppender COMMAND TestBlockAppender)
+
+# TextReader
+add_executable(TestTextReader test/TestTextReader/main.cpp)
+target_link_libraries(TestTextReader SeseSharedLibrary)
+add_test(NAME TestTextReader COMMAND TestTextReader)

@@ -84,6 +84,8 @@ set(ALL_SRCS
         libs/SString/src/SString.cpp
         libs/SString/src/SStringBuilder.cpp
         libs/SString/src/algorithm.cpp
+        # 文本
+        src/text/TextReader.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")

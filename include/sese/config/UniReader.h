@@ -11,7 +11,8 @@
 namespace sese {
 
     /**
-     * @brief 跨平台的文件读取器，主要适配 Windows，支持 UNICODE
+     * @brief 跨平台的文件读取器，主要适配 Windows，支持 UTF-8
+     * @deprecated 请考虑使用 sese::text::TextReader
      */
     class API UniReader {
     public:
