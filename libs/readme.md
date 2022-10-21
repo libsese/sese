@@ -3,7 +3,13 @@
 ## Initialize Script
 
 ```bash
- git submodule update --init --recursive --remote
+ git submodule update --init --recursive
+```
+
+## Update Script
+
+```bash
+ git submodule update --recursive --remote
 ```
 
 ## Deps
