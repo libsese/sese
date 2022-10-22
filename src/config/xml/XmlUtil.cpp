@@ -34,10 +34,25 @@ namespace sese::xml {
                     stringBuilder.clear();
                     tokens.push({ch});
                 } else {
-                    if (!stringBuilder.empty())
+                    if (!stringBuilder.empty()) {
                         tokens.push(stringBuilder.toString());
+                        stringBuilder.clear();
+                    }
                     tokens.push({ch});
-                    stringBuilder.clear();
+                }
+            } else if (ch == '=') {
+                tokens.push(stringBuilder.toString());
+                stringBuilder.clear();
+                tokens.push({ch});
+            } else if (ch == '\"') {
+                while ((len = bufferedStream.read(&ch, 1 * sizeof(char))) != 0) {
+                    if (ch == '\"') {
+                        tokens.push(stringBuilder.toString());
+                        stringBuilder.clear();
+                        break;
+                    } else {
+                        stringBuilder.append(ch);
+                    }
                 }
             } else {
                 stringBuilder.append(ch);
