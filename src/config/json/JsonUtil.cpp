@@ -238,14 +238,36 @@ void JsonUtil::serializeObject(const ObjectData::Ptr &object, const Stream::Ptr 
         } else {
             auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
             if (raw[0] == '\"') {
-                int len = raw.length() - 2;
+                auto len = raw.length() - 2;
                 const char *p = raw.c_str() + 1;
                 outputStream->write("\"", 1);
-                for(int i = 0; i < len; ++i) {
-                    if (p[i] == '\"' || p[i] == '\'') {
-                        outputStream->write("\\", 1);
+                for (int i = 0; i < len; ++i) {
+                    switch (p[i]) {
+                        case '\"':
+                        case '\'':
+                        case '/':
+                            outputStream->write("\\", 1);
+                            outputStream->write(&p[i], 1);
+                            break;
+                        case '\b':
+                            outputStream->write("\\b", 2);
+                            break;
+                        case '\f':
+                            outputStream->write("\\f", 2);
+                            break;
+                        case '\n':
+                            outputStream->write("\\n", 2);
+                            break;
+                        case '\r':
+                            outputStream->write("\\r", 2);
+                            break;
+                        case '\t':
+                            outputStream->write("\\t", 2);
+                            break;
+                        default:
+                            outputStream->write(&p[i], 1);
+                            break;
                     }
-                    outputStream->write(&p[i], 1);
                 }
                 outputStream->write("\"", 1);
             } else {
