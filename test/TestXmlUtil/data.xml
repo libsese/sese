@@ -1,0 +1,13 @@
+<root>
+    <array-list type="list type" count="3">
+        <item>Hello</item>
+        <item>Hi</item>
+        <item></item>
+    </array-list>
+    <info>
+        <name>TestXmlUtil</name>
+        <version>1.0</version>
+    </info>
+    <message>Hello World</message>
+    <null/>
+</root>

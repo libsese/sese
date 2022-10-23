@@ -1,0 +1,182 @@
+#include <sese/config/xml/XmlUtil.h>
+#include <sese/BufferedStream.h>
+#include <sese/StringBuilder.h>
+#include <sese/Util.h>
+
+namespace sese::xml {
+
+    void XmlUtil::tokenizer(const Stream::Ptr &inputStream, sese::xml::XmlUtil::Tokens &tokens) noexcept {
+        BufferedStream bufferedStream(inputStream);
+        StringBuilder stringBuilder;
+        char ch;
+        int64_t len;
+        while ((len = bufferedStream.read(&ch, 1 * sizeof(char))) != 0) {
+            if (sese::isSpace(ch)) {
+                if (stringBuilder.empty()) continue;
+                tokens.push(stringBuilder.toString());
+                stringBuilder.clear();
+            } else if (ch == '>') {
+                if (!stringBuilder.empty())
+                    tokens.push(stringBuilder.toString());
+                tokens.push({ch});
+                stringBuilder.clear();
+            } else if (ch == '<') {
+                if (!stringBuilder.empty()) {
+                    tokens.push(stringBuilder.toString());
+                    stringBuilder.clear();
+                }
+                tokens.push({ch});
+
+            } else if (ch == '/') {
+                if (tokens.front() == "<") {
+                    if (!stringBuilder.empty())
+                        tokens.push(stringBuilder.toString());
+                    stringBuilder.clear();
+                    tokens.push({ch});
+                } else {
+                    if (!stringBuilder.empty()) {
+                        tokens.push(stringBuilder.toString());
+                        stringBuilder.clear();
+                    }
+                    tokens.push({ch});
+                }
+            } else if (ch == '=') {
+                tokens.push(stringBuilder.toString());
+                stringBuilder.clear();
+                tokens.push({ch});
+            } else if (ch == '\"') {
+                while ((len = bufferedStream.read(&ch, 1 * sizeof(char))) != 0) {
+                    if (ch == '\"') {
+                        tokens.push(stringBuilder.toString());
+                        stringBuilder.clear();
+                        break;
+                    } else {
+                        stringBuilder.append(ch);
+                    }
+                }
+            } else {
+                stringBuilder.append(ch);
+            }
+        }
+    }
+
+    Element::Ptr XmlUtil::deserialize(const Stream::Ptr &inputStream, size_t level) noexcept {
+        Tokens tokens;
+        tokenizer(inputStream, tokens);
+        return createElement(tokens, level, false);
+    }
+
+    Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t level, bool isSubElement) noexcept {
+        if (level == 0) { return nullptr; }
+        Element::Ptr element = nullptr;
+        while (!tokens.empty()) {
+            // <name(/,w)>
+            if (!isSubElement) {
+                if (tokens.front() != "<") return nullptr;
+                tokens.pop();
+            }
+            element = std::make_shared<Element>(tokens.front());
+            tokens.pop();
+
+            // attrName=""
+            if (tokens.front() != ">" && tokens.front() != "/") {
+                while (tokens.front() != ">" && tokens.front() != "/") {
+                    std::string attrName = tokens.front();
+                    tokens.pop();// attrName
+                    tokens.pop();// =
+                    element->setAttribute(attrName, tokens.front());
+                    tokens.pop();// attrValue
+                }
+            }
+
+            // <name (attr="")/>
+            if (tokens.front() == "/") {
+                tokens.pop();// '/'
+                tokens.pop();// '>'
+                return element;
+            } else if (tokens.front() == ">") {
+                tokens.pop();// '>'
+                // 子对象
+                if (tokens.front() == "<") {
+                    while (tokens.front() == "<") {
+                        tokens.pop();// '<'
+                        if (tokens.front() == "/") {
+                            // 父对象结尾
+                            tokens.pop();// '/'
+                            tokens.pop();// name
+                            tokens.pop();// '>'
+                            return element;
+                        } else {
+                            level--;
+                            auto object = createElement(tokens, level, true);
+                            level++;
+                            if (object) element->elements.push_back(object);
+                        }
+                    }
+                } else {
+                    std::string value = tokens.front();
+                    tokens.pop();
+                    while (tokens.front() != "<") {
+                        value += " " + tokens.front();
+                        tokens.pop();
+                    }
+                    element->setValue(value);
+
+                    tokens.pop();// '<'
+                    tokens.pop();// '/'
+                    tokens.pop();// name
+                    tokens.pop();// '>'
+                    return element;
+                }
+            }
+        }
+
+        return element;
+    }
+
+    void XmlUtil::serialize(const Element::Ptr &object, sese::Stream &stream) {
+        auto name = object->getName();
+        auto attributes = object->getAttributes();
+        auto value = object->getValue();
+        stream.write("<", 1);
+        stream.write(name.c_str(), name.length());
+
+        if (!attributes.empty()) {
+            for (decltype(auto) attr: attributes) {
+                stream.write(" ", 1);
+                stream.write(attr.first.c_str(), attr.first.length());
+                stream.write("=\"", 2);
+                stream.write(attr.second.c_str(), attr.second.length());
+                stream.write("\"", 1);
+            }
+        }
+
+        if (!object->elements.empty()) {
+            stream.write(">", 1);
+            for( decltype(auto) element : object->elements) {
+                serialize(element, stream);
+            }
+            stream.write("</", 2);
+            stream.write(name.c_str(), name.length());
+            stream.write(">", 1);
+        } else {
+            if (value.length() == 0) {
+                stream.write("/>", 2);
+            } else {
+                stream.write(">", 1);
+                stream.write(value.c_str(), value.length());
+                stream.write("</", 2);
+                stream.write(name.c_str(), name.length());
+                stream.write(">", 1);
+            }
+        }
+
+    }
+
+    void XmlUtil::serialize(const Element::Ptr &object, const Stream::Ptr &outputStream) noexcept {
+        BufferedStream bufferedStream(outputStream);
+        serialize(object, bufferedStream);
+        bufferedStream.flush();
+    }
+
+}// namespace sese::xml
