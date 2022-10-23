@@ -1,3 +1,9 @@
+/**
+* @file XmlTypes.h
+* @brief Xml 类型定义
+* @author kaoru
+* @date 2022年10月23日
+*/
 #pragma once
 #include <sese/Config.h>
 #include <vector>
@@ -5,6 +11,7 @@
 
 namespace sese::xml {
 
+    /// Xml 元素对象
     class API Element {
     public:
         using Ptr = std::shared_ptr<Element>;
