@@ -1,4 +1,5 @@
 #include <sese/config/json/JsonUtil.h>
+#include <sese/BufferedStream.h>
 #include <sese/StringBuilder.h>
 #include <sese/Util.h>
 
@@ -6,6 +7,7 @@ using namespace sese::json;
 
 ObjectData::Ptr JsonUtil::deserialize(const Stream::Ptr &inputStream, size_t level) noexcept {
     // 此处懒得处理不合规格的格式，直接 catch
+    auto bufferedStream = std::make_shared<BufferedStream>(inputStream);
     try {
         Tokens tokens;
         if (!tokenizer(inputStream, tokens)) {
@@ -21,7 +23,9 @@ ObjectData::Ptr JsonUtil::deserialize(const Stream::Ptr &inputStream, size_t lev
 }
 
 void JsonUtil::serialize(const ObjectData::Ptr &object, const Stream::Ptr &outputStream) noexcept {
-    serializeObject(object, outputStream);
+    auto bufferedStream = std::make_shared<BufferedStream>(outputStream);
+    serializeObject(object, bufferedStream);
+    bufferedStream->flush();
 }
 
 bool JsonUtil::tokenizer(const Stream::Ptr &inputStream, Tokens &tokens) noexcept {
@@ -233,7 +237,20 @@ void JsonUtil::serializeObject(const ObjectData::Ptr &object, const Stream::Ptr 
             serializeArray(std::dynamic_pointer_cast<ArrayData>(data), outputStream);
         } else {
             auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
-            outputStream->write(raw.c_str(), raw.length());
+            if (raw[0] == '\"') {
+                int len = raw.length() - 2;
+                const char *p = raw.c_str() + 1;
+                outputStream->write("\"", 1);
+                for(int i = 0; i < len; ++i) {
+                    if (p[i] == '\"' || p[i] == '\'') {
+                        outputStream->write("\\", 1);
+                    }
+                    outputStream->write(&p[i], 1);
+                }
+                outputStream->write("\"", 1);
+            } else {
+                outputStream->write(raw.c_str(), raw.length());
+            }
         }
     }
     outputStream->write("}", 1);
