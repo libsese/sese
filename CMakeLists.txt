@@ -79,6 +79,8 @@ set(ALL_SRCS
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp
         src/config/json/JsonUtil.cpp
+        src/config/xml/XmlTypes.cpp
+        src/config/xml/XmlUtil.cpp
         # SString
         libs/SString/src/SString.cpp
         libs/SString/src/SStringBuilder.cpp

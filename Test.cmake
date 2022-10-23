@@ -188,3 +188,8 @@ add_test(NAME TestBlockAppender COMMAND TestBlockAppender)
 add_executable(TestTextReader test/TestTextReader/main.cpp)
 target_link_libraries(TestTextReader SeseSharedLibrary)
 add_test(NAME TestTextReader COMMAND TestTextReader)
+
+# XmlUtil
+add_executable(TestXmlUtil test/TestXmlUtil/main.cpp)
+target_link_libraries(TestXmlUtil SeseSharedLibrary)
+add_test(NAME TestXmlUtil COMMAND TestXmlUtil)
