@@ -61,9 +61,23 @@ namespace sese::xml {
     }
 
     Element::Ptr XmlUtil::deserialize(const Stream::Ptr &inputStream, size_t level) noexcept {
+        // 此处懒得处理不合规格的格式，直接 catch
         Tokens tokens;
         tokenizer(inputStream, tokens);
-        return createElement(tokens, level, false);
+        try {
+            return createElement(tokens, level, false);
+        } catch (...) {
+            return nullptr;
+        }
+    }
+
+    void XmlUtil::removeComment(sese::xml::XmlUtil::Tokens &tokens) noexcept {
+        tokens.pop(); // "!--"
+        while(tokens.front() != "--") {
+            tokens.pop();
+        }
+        tokens.pop(); // "--"
+        tokens.pop(); // ">"
     }
 
     Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t level, bool isSubElement) noexcept {
@@ -74,7 +88,19 @@ namespace sese::xml {
             if (!isSubElement) {
                 if (tokens.front() != "<") return nullptr;
                 tokens.pop();
+
+                // 根节点注释
+                if (tokens.front() == "!--") {
+                    removeComment(tokens);
+                    continue;
+                }
+            } else {
+                if (tokens.front() == "!--") {
+                    removeComment(tokens);
+                    tokens.pop();// '<'
+                }
             }
+
             element = std::make_shared<Element>(tokens.front());
             tokens.pop();
 
@@ -153,7 +179,7 @@ namespace sese::xml {
 
         if (!object->elements.empty()) {
             stream.write(">", 1);
-            for( decltype(auto) element : object->elements) {
+            for (decltype(auto) element: object->elements) {
                 serialize(element, stream);
             }
             stream.write("</", 2);
@@ -170,7 +196,6 @@ namespace sese::xml {
                 stream.write(">", 1);
             }
         }
-
     }
 
     void XmlUtil::serialize(const Element::Ptr &object, const Stream::Ptr &outputStream) noexcept {

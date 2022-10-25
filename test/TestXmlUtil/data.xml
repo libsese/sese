@@ -1,3 +1,4 @@
+<!-- Root element test comment -->
 <root>
     <array-list type="list type" count="3">
         <item>Hello</item>
@@ -5,6 +6,7 @@
         <item></item>
     </array-list>
     <info>
+		<!-- Sub element test comment -->
         <name>TestXmlUtil</name>
         <version>1.0</version>
     </info>
