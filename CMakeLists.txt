@@ -3,14 +3,14 @@ cmake_minimum_required(VERSION 3.12)
 set(SESE_MAJOR_VERSION 0)
 set(SESE_MINOR_VERSION 3)
 
+project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
+
 # Git 版本信息
 set(SESE_REPO_HASH)
 set(SESE_REPO_BRANCH)
-include(Git.cmake)
+include(${PROJECT_SOURCE_DIR}/Git.cmake)
 get_git_hash(SESE_REPO_HASH)
 get_git_branch(SESE_REPO_BRANCH)
-
-project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
 
 # 项目详情
 set(CMAKE_CXX_STANDARD 20)
