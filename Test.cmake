@@ -193,3 +193,8 @@ add_test(NAME TestTextReader COMMAND TestTextReader)
 add_executable(TestXmlUtil test/TestXmlUtil/main.cpp)
 target_link_libraries(TestXmlUtil SeseSharedLibrary)
 add_test(NAME TestXmlUtil COMMAND TestXmlUtil)
+
+# Rpc
+add_executable(TestRpc test/TestRpc/main.cpp)
+target_link_libraries(TestRpc SeseSharedLibrary)
+add_test(NAME TestRpc COMMAND TestRpc)
