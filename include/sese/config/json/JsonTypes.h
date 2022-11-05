@@ -99,7 +99,7 @@ public:
     [[nodiscard]] bool isNull() const { return _isNull; }
 
     template<typename T>
-    const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &
+    std::enable_if_t<std::is_same_v<T, std::string>, std::string>
     getDataAs(const T &defaultValue);
 
     template<typename T>
@@ -124,7 +124,7 @@ protected:
 };
 
 template<typename T>
-const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &sese::json::BasicData::getDataAs(const T &defaultValue) {
+std::enable_if_t<std::is_same_v<T, std::string>, std::string> sese::json::BasicData::getDataAs(const T &defaultValue) {
     if (_isNull) {
         return defaultValue;
     } else {
