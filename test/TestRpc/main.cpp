@@ -1,9 +1,10 @@
 #include <sese/net/rpc/Server.h>
+#include <sese/thread/Thread.h>
 #define REMOTE_API
 
 REMOTE_API void add(sese::json::ObjectData::Ptr &args, sese::json::ObjectData::Ptr &result) {
-    auto value0 = args->getDataAs<sese::json::BasicData>("value0")->getDataAs<int64_t>(0);
-    auto value1 = args->getDataAs<sese::json::BasicData>("value1")->getDataAs<int64_t>(0);
+    GetInteger(value0, "value0", 0);
+    GetInteger(value1, "value1", 0);
 
     auto temp = std::make_shared<sese::json::BasicData>();
     temp->setDataAs<int64_t>(value0 + value1);
@@ -14,6 +15,13 @@ int main() {
     auto address = sese::IPv4Address::create("0.0.0.0", 8080);
     sese::rpc::Server server;
     server.enroll("add", add);
-    server.serve(address);
+
+    sese::Thread thread([&server, address](){
+        server.serve(address);
+    });
+    thread.start();
+    getchar();
+    server.shutdown();
+    thread.join();
     return 0;
 }

@@ -1,11 +1,19 @@
+/**
+ * \file Server.h
+ * \author kaoru
+ * \brief RPC 服务端
+ * \version 0.1
+ */
 #pragma once
 #include <sese/net/TcpServer.h>
 #include <map>
 #include <functional>
 #include <sese/config/json/JsonTypes.h>
+#include <sese/net/rpc/Marco.h>
 
 namespace sese::rpc {
 
+    /// RPC 服务端
     class API Server final {
     public:
         using Ptr = std::unique_ptr<Server>;

@@ -196,7 +196,7 @@ void sese::json::BasicData::setDataAs(std::enable_if_t<std::is_same_v<T, int64_t
 
 template<typename T>
 void sese::json::BasicData::setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>, const std::string &> t) {
-    data = std::move(t);
+    data = "\"" + t + "\"";
 }
 
 class API sese::json::ObjectData : public sese::json::Data {
