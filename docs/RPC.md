@@ -62,12 +62,12 @@ sese 内置的 Rpc 服务使用 JSON 作为数据传输格式，基于 TCP 进�
 #include <sese/thread/Thread.h>
 
 void add(sese::json::ObjectData::Ptr &args, sese::json::ObjectData::Ptr &result) {
-    GetInteger(value0, "value0", 0);
-    GetInteger(value1, "value1", 0);
+    GetInteger4Server(value0, "value0", 0);
+    GetInteger4Server(value1, "value1", 0);
 
-    auto temp = std::make_shared<sese::json::BasicData>();
-    temp->setDataAs<int64_t>(value0 + value1);
-    result->set("add-result", temp);
+    SetInteger(result, "add-result", value0 + value1);
+    SetBoolean(result, "is-homo", true);
+    SetString(result, "msg", "94A");
 }
 
 int main() {
@@ -87,4 +87,32 @@ int main() {
 ```
 
 ## 客户端示例
+
+```c++
+#include <sese/net/rpc/Server.h>
+
+int main() {
+    int64_t value0 = 114;
+    int64_t value1 = 514;
+
+    sese::rpc::Client client(address);
+    auto args = std::make_shared<sese::json::ObjectData>();
+    SetInteger(args, "value0", value0);
+    SetInteger(args, "value1", value1);
+    auto result = client.call("add", args);
+
+    GetInteger(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
+    if (SESE_RPC_CODE_SUCCEED == code) {
+        GetInteger(add_result, result, "add-result", 0);
+        GetBoolean(is_homo, result, "is-homo", false);
+        GetString(msg, result, "msg", "undef");
+        printf("remote call was succeed, add-result: %d\n", (int)add_result);
+        printf("is-homo: %s\n", is_homo ? "true" : "false");
+        printf("msg: %s\n", msg.c_str());
+    } else {
+        puts("remote call was failed");
+    }
+    return 0;
+}
+```
 

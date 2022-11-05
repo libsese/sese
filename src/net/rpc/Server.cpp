@@ -50,7 +50,7 @@ void rpc::Server::serve(const IPAddress::Ptr &address, size_t threads) noexcept 
 
         // 2.获取并检查远程调用名称
         std::string name;
-        Get(name, object, result, std::string, SESE_RPC_TAG_NAME, SESE_RPC_VALUE_UNDEF);
+        Get4Server(name, object, result, std::string, SESE_RPC_TAG_NAME, SESE_RPC_VALUE_UNDEF);
         if (SESE_RPC_VALUE_UNDEF == name) {
             BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
             JsonUtil::serialize(result, stream);

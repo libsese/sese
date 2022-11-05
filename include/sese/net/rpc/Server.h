@@ -5,11 +5,9 @@
  * \version 0.1
  */
 #pragma once
-#include <sese/net/TcpServer.h>
+#include <sese/net/rpc/Client.h>
 #include <map>
 #include <functional>
-#include <sese/config/json/JsonTypes.h>
-#include <sese/net/rpc/Marco.h>
 
 namespace sese::rpc {
 

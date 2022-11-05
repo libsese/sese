@@ -27,7 +27,7 @@
         _exit->setDataAs<int64_t>(code);                                               \
     }
 
-#define Get(value, args, result, type, name, def)                 \
+#define Get4Server(value, args, result, type, name, def)          \
     {                                                             \
         auto node = args->getDataAs<sese::json::BasicData>(name); \
         if (nullptr != node) {                                    \
@@ -38,18 +38,63 @@
         }                                                         \
     }
 
-#define GetBoolean(value, name, def) \
-    bool value;                      \
-    Get(value, args, result, bool, name, def)
+#define GetBoolean4Server(value, name, def) \
+    bool value;                             \
+    Get4Server(value, args, result, bool, name, def)
 
-#define GetInteger(value, name, def) \
-    int64_t value;                   \
-    Get(value, args, result, int64_t, name, def)
+#define GetInteger4Server(value, name, def) \
+    int64_t value;                          \
+    Get4Server(value, args, result, int64_t, name, def)
 
-#define GetDouble(value, name, def) \
-    double value;                   \
-    Get(value, args, result, double, name, def)
+#define GetDouble4Server(value, name, def) \
+    double value;                          \
+    Get4Server(value, args, result, double, name, def)
 
-#define GetString(value, name, def) \
-    std::string value;              \
-    Get(value, args, result, std::string, name, def)
+#define GetString4Server(value, name, def) \
+    std::string value;                     \
+    Get4Server(value, args, result, std::string, name, def)
+
+#define Set(target, type, name, value)                         \
+    {                                                          \
+        auto node = std::make_shared<sese::json::BasicData>(); \
+        node->setDataAs<type>(value);                          \
+        target->set(name, node);                               \
+    }
+
+#define SetBoolean(target, name, value) \
+    Set(target, bool, name, value)
+
+#define SetInteger(target, name, value) \
+    Set(target, int64_t, name, value)
+
+#define SetDouble(target, name, value) \
+    Set(target, double, name, value)
+
+#define SetString(target, name, value) \
+    Set(target, std::string, name, value)
+
+#define Get(value, target, type, name, def)                         \
+    {                                                               \
+        auto node = target->getDataAs<sese::json::BasicData>(name); \
+        if (nullptr == node) {                                      \
+            value = def;                                            \
+        } else {                                                    \
+            value = node->getDataAs<type>(def);                     \
+        }                                                           \
+    }
+
+#define GetBoolean(value, target, name, def) \
+    bool value;                              \
+    Get(value, target, bool, name, def)
+
+#define GetInteger(value, target, name, def) \
+    int64_t value;                           \
+    Get(value, target, int64_t, name, def)
+
+#define GetDouble(value, target, name, def) \
+    double value;                           \
+    Get(value, target, double, name, def)
+
+#define GetString(value, target, name, def) \
+    std::string value;                      \
+    Get(value, target, std::string, name, def)
