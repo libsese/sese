@@ -102,6 +102,11 @@ bool JsonUtil::tokenizer(const Stream::Ptr &inputStream, Tokens &tokens) noexcep
                         builder.clear();
                         tokens.push(",");
                         break;
+                    } else if (ch == '}' || ch == ']') {
+                        tokens.push(builder.toString());
+                        builder.clear();
+                        tokens.push({ch});
+                        break;
                     }
 
                     builder.append(ch);
