@@ -55,6 +55,28 @@ sese 内置的 Rpc 服务使用 JSON 作为数据传输格式，基于 TCP 进�
 | 3      | 不存在远程调用过程                                 | SESE_RPC_CODE_NO_EXIST_FUNC           |
 | 4      | 远程调用参数错误                                   | SESE_RPC_CODE_ILLEGAL_ARGS            |
 
+## 操作宏
+
+### 一览
+
+| 宏                | 注释                                |
+| ----------------- | ----------------------------------- |
+| SetExitCode       | 用于快速设置 Rpc 退出码             |
+| GetBoolean4Server | 服务端快速获取 bool 类型字段        |
+| GetInteger4Server | 服务端快速获取 int64_t 类型字段     |
+| GetDouble4Server  | 服务端快速获取 double 类型字段      |
+| GetString4Server  | 服务端快速获取 std::string 类型字段 |
+| GetBoolean        | 快速获取 bool 类型字段              |
+| GetInteger        | 快速获取 int64_t 类型字段           |
+| GetDouble         | 快速获取 double 类型字段            |
+| GetString         | 快速获取 std::string 类型字段       |
+
+具体参数请参考代码及其注释
+
+### Get \${Type} 和 Get \${Type} 4Server 的区别
+
+前者仅用于快速获取一个字段，而后者获取字段的同时能快速处理非法的参数，通常用于服务端。
+
 ## 服务端示例
 
 ```c++
@@ -72,15 +94,20 @@ void add(sese::json::ObjectData::Ptr &args, sese::json::ObjectData::Ptr &result)
 
 int main() {
     auto address = sese::IPv4Address::create("0.0.0.0", 8080);
-    sese::rpc::Server server;
-    server.enroll("add", add);
+    auto server = sese::rpc::Server::create(address);
+    if (nullptr == server) {
+        puts("failed to start the rpc service");
+        exit(-1);
+    }
 
-    sese::Thread thread([&server, address](){
-        server.serve(address);
+    server->enroll("add", add);
+
+    sese::Thread thread([&server](){
+        server->serve();
     });
     thread.start();
     getchar();
-    server.shutdown();
+    server->shutdown();
     thread.join();
     return 0;
 }
