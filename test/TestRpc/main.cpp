@@ -14,11 +14,16 @@ REMOTE_API void add(sese::json::ObjectData::Ptr &args, sese::json::ObjectData::P
 
 int main() {
     auto address = sese::IPv4Address::create("127.0.0.1", 8080);
-    sese::rpc::Server server;
-    server.enroll("add", add);
+    auto server = sese::rpc::Server::create(address);
+    if (nullptr == server) {
+        puts("failed to start the rpc service");
+        exit(-1);
+    }
+
+    server->enroll("add", add);
 
     sese::Thread thread([&server, address]() {
-        server.serve(address);
+        server->serve();
     });
     thread.start();
 
@@ -38,14 +43,14 @@ int main() {
         GetInteger(add_result, result, "add-result", 0);
         GetBoolean(is_homo, result, "is-homo", false);
         GetString(msg, result, "msg", "undef");
-        printf("remote call was succeed, add-result: %d\n", (int)add_result);
+        printf("remote call was succeed, add-result: %d\n", (int) add_result);
         printf("is-homo: %s\n", is_homo ? "true" : "false");
         printf("msg: %s\n", msg.c_str());
     } else {
         puts("remote call was failed");
     }
 
-    server.shutdown();
+    server->shutdown();
     thread.join();
     return 0;
 }

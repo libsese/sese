@@ -2,14 +2,21 @@
 #include <sese/config/json/JsonUtil.h>
 #include <sese/Packaged2Stream.h>
 
-#define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
-
 using namespace sese;
 using namespace sese::json;
 
-void rpc::Server::serve(const IPAddress::Ptr &address, size_t threads) noexcept {
-    tcpServer = TcpServer::create(address, threads, 0);
+rpc::Server::Ptr rpc::Server::create(const IPAddress::Ptr &address, size_t threads) noexcept {
+    auto tcp = TcpServer::create(address, threads, 0);
+    if (nullptr == tcp) return nullptr;
 
+    auto server = new Server;
+    server->tcpServer = std::move(tcp);
+    return std::unique_ptr<Server>(server);
+}
+
+#define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
+
+void rpc::Server::serve() noexcept {
     tcpServer->loopWith([this](IOContext *context) {
         auto stream = std::make_shared<ClosablePackagedStream<IOContext>>(context);
         auto object = json::JsonUtil::deserialize(stream, 5);
