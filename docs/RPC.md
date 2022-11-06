@@ -122,6 +122,7 @@ int main() {
     int64_t value0 = 114;
     int64_t value1 = 514;
 
+    auto address = sese::IPv4Address::create("127.0.0.1", 8080);
     sese::rpc::Client client(address);
     auto args = std::make_shared<sese::json::ObjectData>();
     SetInteger(args, "value0", value0);
