@@ -7,5 +7,4 @@ namespace sese::text {
     using Char = sstr::SChar;
     using String = sstr::SString;
     using StringView = sstr::SStringView;
-    using StringIterator = sstr::SStringIterator;
 }
