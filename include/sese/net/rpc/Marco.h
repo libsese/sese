@@ -83,29 +83,25 @@
 /// \param target 父对象
 /// \param name 字段名称
 /// \param value 字段值
-#define SetBoolean(target, name, value) \
-    Set(target, bool, name, value)
+#define SetBoolean(target, name, value) Set(target, bool, name, value)
 
 /// 设置一个 bool 类型的字段
 /// \param target 父对象
 /// \param name 字段名称
 /// \param value 字段值
-#define SetInteger(target, name, value) \
-    Set(target, int64_t, name, value)
+#define SetInteger(target, name, value) Set(target, int64_t, name, value)
 
 /// 设置一个 bool 类型的字段
 /// \param target 父对象
 /// \param name 字段名称
 /// \param value 字段值
-#define SetDouble(target, name, value) \
-    Set(target, double, name, value)
+#define SetDouble(target, name, value) Set(target, double, name, value)
 
 /// 设置一个 bool 类型的字段
 /// \param target 父对象
 /// \param name 字段名称
 /// \param value 字段值
-#define SetString(target, name, value) \
-    Set(target, std::string, name, value)
+#define SetString(target, name, value) Set(target, std::string, name, value)
 
 #define Get(value, target, type, name, def)                         \
     {                                                               \

@@ -9,6 +9,10 @@
 #include <vector>
 #include <map>
 
+#ifdef _WIN32
+#pragma warning(disable : 4251)
+#endif
+
 namespace sese::xml {
 
     /// Xml 元素对象

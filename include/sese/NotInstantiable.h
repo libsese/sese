@@ -15,7 +15,7 @@ namespace sese {
     class API NotInstantiable {
     public:
         NotInstantiable() = delete;
-        ~NotInstantiable() = delete;
+        virtual ~NotInstantiable() = default;
         NotInstantiable(const NotInstantiable &) = delete;
         NotInstantiable &operator=(const NotInstantiable &) = delete;
     };
