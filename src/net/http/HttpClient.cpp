@@ -31,7 +31,6 @@ bool HttpClient::request(RequestHeader *request) noexcept {
         request->set("Client", HTTP_CLIENT_NAME)
                 ->set("Connection", "Keep-Alive");
         return HttpUtil::sendRequest(clientSocket.get(), request);
-        dispose();
     }
     return false;
 }

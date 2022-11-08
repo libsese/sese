@@ -1,6 +1,5 @@
 #include "sese/record/ConsoleAppender.h"
 #include "sese/convert/EncodingConverter.h"
-#include "sese/thread/Locker.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
