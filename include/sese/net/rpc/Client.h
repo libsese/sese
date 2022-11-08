@@ -25,4 +25,9 @@ namespace sese::rpc {
         IPv4Address::Ptr address;
         json::BasicData::Ptr version;
     };
+
+    /// 获取返回码对应的错误信息
+    /// \param code 返回码
+    /// \return 错误信息
+    API const char *getErrorMessage(int64_t code) noexcept;
 }

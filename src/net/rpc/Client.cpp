@@ -29,3 +29,21 @@ json::ObjectData::Ptr Client::call(const std::string &name, json::ObjectData::Pt
     auto result = json::JsonUtil::deserialize(connect, 5);
     return result;
 }
+
+#define RETURN(TYPE)           \
+    case SESE_RPC_CODE_##TYPE: \
+        return SESE_RPC_VALUE_##TYPE;
+
+const char *rpc::getErrorMessage(int64_t code) noexcept {
+    switch (code) {
+        RETURN(SUCCEED);
+        RETURN(NONSUPPORT_VERSION);
+        RETURN(MISSING_REQUIRED_FIELDS);
+        RETURN(NO_EXIST_FUNC);
+        RETURN(ILLEGAL_ARGS);
+        default:
+            return SESE_RPC_VALUE_UNKNOWN;
+    }
+}
+
+#undef RETURN

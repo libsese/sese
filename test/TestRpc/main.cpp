@@ -47,7 +47,7 @@ int main() {
         printf("is-homo: %s\n", is_homo ? "true" : "false");
         printf("msg: %s\n", msg.c_str());
     } else {
-        puts("remote call was failed");
+        puts(sese::rpc::getErrorMessage(code));
     }
 
     server->shutdown();

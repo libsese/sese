@@ -20,6 +20,12 @@
 #define SESE_RPC_CODE_ILLEGAL_ARGS 4
 
 #define SESE_RPC_VALUE_UNDEF "undef"
+#define SESE_RPC_VALUE_UNKNOWN "unknown error"
+#define SESE_RPC_VALUE_SUCCEED "succeed"
+#define SESE_RPC_VALUE_NONSUPPORT_VERSION "nonsupport version"
+#define SESE_RPC_VALUE_MISSING_REQUIRED_FIELDS "missing required fields"
+#define SESE_RPC_VALUE_NO_EXIST_FUNC "not found function"
+#define SESE_RPC_VALUE_ILLEGAL_ARGS "illegal arguments"
 
 /// 服务端设置退出码
 /// \param code 退出码
