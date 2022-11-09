@@ -40,16 +40,16 @@ void sese::IOContext::close() {
     ::closesocket(socket);
 }
 
+#define CLEAR            \
+    closesocket(sockFd); \
+    return nullptr;
+
 Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive) noexcept {
     auto family = ipAddress->getRawAddress()->sa_family;
     socket_t sockFd = ::WSASocketW(family, SOCK_STREAM, 0, nullptr, 0, WSA_FLAG_OVERLAPPED);
     if (-1 == sockFd) {
         return nullptr;
     }
-
-#define CLEAR            \
-    closesocket(sockFd); \
-    return nullptr;
 
     unsigned long ul = 1;
     if (SOCKET_ERROR == ioctlsocket(sockFd, FIONBIO, &ul)) {
@@ -68,7 +68,6 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
     if (INVALID_HANDLE_VALUE == hIOCP) {
         CLEAR
     }
-#undef CLEAR
 
     auto server = new Server;
 
@@ -78,6 +77,28 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
     }
 
     server->listenSock = sockFd;
+    server->hIOCP = hIOCP;
+    server->timer = Timer::create();
+    server->keepAlive = keepAlive;
+    return std::unique_ptr<Server>(server);
+}
+
+#undef CLEAR
+
+Server::Ptr Server::create(const Socket::Ptr &listenSocket, size_t threads, size_t keepAlive) noexcept {
+    HANDLE hIOCP = CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, threads);
+    if (INVALID_HANDLE_VALUE == hIOCP) {
+        return nullptr;
+    }
+
+    auto server = new Server;
+
+    server->threads = threads;
+    for (size_t index = 0; index < threads; index++) {
+        server->threadGroup.emplace_back(std::make_unique<Thread>([server]() { server->WindowsWorkerFunction(); }, "IOCP" + std::to_string(index)));
+    }
+
+    server->listenSock = listenSocket->getRawSocket();
     server->hIOCP = hIOCP;
     server->timer = Timer::create();
     server->keepAlive = keepAlive;

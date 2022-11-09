@@ -19,16 +19,16 @@ void sese::IOContext::close() {
     ::close(socket);
 }
 
+#define CLEAR      \
+    close(sockFd); \
+    return nullptr;
+
 Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive) noexcept {
     auto family = ipAddress->getRawAddress()->sa_family;
     socket_t sockFd = ::socket(family, SOCK_STREAM, IPPROTO_TCP);
     if (-1 == sockFd) {
         return nullptr;
     }
-
-#define CLEAR      \
-    close(sockFd); \
-    return nullptr;
 
     int32_t opt = fcntl(sockFd, F_GETFL);
     if (-1 == opt) {
@@ -52,14 +52,40 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
         CLEAR
     }
 
-#undef CLEAR
-
     EpollEvent event{};
     event.events = EPOLLIN;
     event.data.fd = sockFd;
     if (EpollCtl(epollFd, EPOLL_CTL_ADD, sockFd, &event)) {
         close(epollFd);
         close(sockFd);
+        return nullptr;
+    }
+
+    auto server = new Server;
+    server->sockFd = sockFd;
+    server->epollFd = epollFd;
+    server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
+    server->ioContextPool = ObjectPool<IOContext>::create();
+    server->timer = Timer::create();
+    server->keepAlive = keepAlive;
+    return std::unique_ptr<Server>(server);
+}
+
+#undef CLEAR
+
+Server::Ptr Server::create(const Socket::Ptr &listenSocket, size_t threads, size_t keepAlive) noexcept {
+    auto epollFd = EpollCreate(0);
+    if (-1 == epollFd) {
+        return nullptr;
+    }
+
+    auto sockFd = listenSocket->getRawSocket();
+
+    EpollEvent event{};
+    event.events = EPOLLIN;
+    event.data.fd = sockFd;
+    if (EpollCtl(epollFd, EPOLL_CTL_ADD, sockFd, &event)) {
+        close(epollFd);
         return nullptr;
     }
 

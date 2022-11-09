@@ -21,16 +21,16 @@ void sese::IOContext::close() {
     ::close(socket);
 }
 
+#define CLEAR      \
+    close(sockFd); \
+    return nullptr;
+
 Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive) noexcept {
     auto family = ipAddress->getRawAddress()->sa_family;
     socket_t sockFd = socket(family, SOCK_STREAM, IPPROTO_TCP);
     if (-1 == sockFd) {
         return nullptr;
     }
-
-#define CLEAR      \
-    close(sockFd); \
-    return nullptr;
 
     int32_t opt = fcntl(sockFd, F_GETFL);
     if (-1 == opt) {
@@ -54,8 +54,6 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
         CLEAR
     }
 
-#undef CLEAR
-
     KEvent event{};
     EV_SET(&event, sockFd, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
     if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
@@ -66,6 +64,31 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
 
     auto server = new Server;
     server->sockFd = sockFd;
+    server->kqueueFd = kqueueFd;
+    server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
+    server->ioContextPool = ObjectPool<IOContext>::create();
+    server->timer = Timer::create();
+    server->keepAlive = keepAlive;
+    return std::unique_ptr<Server>(server);
+}
+
+#undef CLEAR
+
+Server::Ptr Server::create(const Socket::Ptr &listenSocket, size_t threads, size_t keepAlive) noexcept {
+    int32_t kqueueFd = kqueue();
+    if (-1 == kqueueFd) {
+        return nullptr;
+    }
+
+    KEvent event{};
+    EV_SET(&event, sockFd, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
+    if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
+        close(kqueueFd);
+        return nullptr;
+    }
+
+    auto server = new Server;
+    server->sockFd = listenSocket->getRawSocket();
     server->kqueueFd = kqueueFd;
     server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
     server->ioContextPool = ObjectPool<IOContext>::create();

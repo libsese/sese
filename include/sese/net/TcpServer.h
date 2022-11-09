@@ -70,6 +70,7 @@ namespace sese {
 #endif
 
         static TcpServer::Ptr create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
+        static TcpServer::Ptr create(const Socket::Ptr &listenSocket, size_t threads, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
         void loopWith(const std::function<void(IOContext *)> &handler) noexcept;
         void shutdown() noexcept;
         [[nodiscard]] size_t getKeepAlive() const { return keepAlive; }

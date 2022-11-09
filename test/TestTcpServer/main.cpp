@@ -15,9 +15,16 @@ LogHelper helper("fTCP_SERVER");// NOLINT
 
 int main() {
     auto address = IPv4Address::create("0.0.0.0", 8080);
-
+#ifndef _WIN32
+    auto socket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP);
+    assert(helper, socket->bind(address) == 0, -1);
+    assert(helper, socket->listen(5) == 0, -1);
+    auto server = TcpServer::create(socket, 4, 10);
+    assert(helper, nullptr != server, -1);
+#else
     auto server = TcpServer::create(address, 4, 10);
     assert(helper, nullptr != server, -1);
+#endif
 
     // 服务器线程
     Thread thread([&server]() {

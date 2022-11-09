@@ -17,7 +17,7 @@
 namespace sese {
 
 #ifdef _WIN32
-    class SocketInitiateTask : public InitiateTask{
+    class SocketInitiateTask : public InitiateTask {
     public:
         SocketInitiateTask() : InitiateTask(__FUNCTION__) {}
 
@@ -60,11 +60,11 @@ namespace sese {
         Socket(socket_t handle, Address::Ptr address) noexcept;
         ~Socket() noexcept;
     public:
-        int32_t bind(Address::Ptr addr) noexcept;
-        int32_t connect(Address::Ptr addr) noexcept;
-        int32_t listen(int32_t backlog) const noexcept; /* NOLINT */
-        [[nodiscard]] Socket::Ptr accept() const;
-        int32_t shutdown(ShutdownMode mode) const; /* NOLINT */
+        virtual int32_t bind(Address::Ptr address) noexcept;
+        virtual int32_t connect(Address::Ptr address) noexcept;
+        virtual int32_t listen(int32_t backlog) const noexcept; /* NOLINT */
+        [[nodiscard]] virtual Socket::Ptr accept() const;
+        virtual int32_t shutdown(ShutdownMode mode) const; /* NOLINT */
         bool setNonblocking(bool enable) const noexcept; /* NOLINT */
         /**
          * TCP 接收字节
