@@ -26,30 +26,32 @@
 using namespace sese;
 
 /// endian 无关的 32 位
-struct Bitset32 {
+struct sese::Bitset32 {
     uint8_t byte0;
     uint8_t byte1;
     uint8_t byte2;
     uint8_t byte3;
 
-    inline void rightShift3() noexcept {
+    inline Bitset32 rightShift3() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   000a'aaaa aaab'bbbb bbbc'cccc cccd'dddd
-        byte3 = (byte2 & 0b0000'0111 << 5) | (byte3 & 0b1111'1000 >> 3);
-        byte2 = (byte1 & 0b0000'0111 << 5) | (byte2 & 0b1111'1000 >> 3);
-        byte1 = (byte0 & 0b0000'0111 << 5) | (byte1 & 0b1111'1000 >> 3);
-        byte0 = 0 | (byte1 & 0b1111'1000 >> 3);
+        uint8_t b0 = 0 | (byte0 & 0b1111'1000) >> 3;
+        uint8_t b1 = (byte0 & 0b0000'0111) << 5 | (byte1 & 0b1111'1000) >> 3;
+        uint8_t b2 = (byte1 & 0b0000'0111) << 5 | (byte2 & 0b1111'1000) >> 3;
+        uint8_t b3 = (byte2 & 0b0000'0111) << 5 | (byte3 & 0b1111'1000) >> 3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightShift10() noexcept {
+    inline Bitset32 rightShift10() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   0000'0000 00aa'aaaa aabb'bbbb bbcc'cccc
-        byte3 = (byte1 & 0b0000'0011 << 6) | (byte2 & 0b1111'1100 >> 2);
-        byte2 = (byte0 & 0b0000'0011 << 6) | (byte1 & 0b1111'1100 >> 2);
-        byte1 = 0 | (byte0 & 0b1111'1100 >> 2);
-        byte0 = 0;
+        uint8_t b3 = (byte1 & 0b0000'0011) << 6 | (byte2 & 0b1111'1100) >> 2;
+        uint8_t b2 = (byte0 & 0b0000'0011) << 6 | (byte1 & 0b1111'1100) >> 2;
+        uint8_t b1 = 0 | (byte0 & 0b1111'1100) >> 2;
+        uint8_t b0 = 0;
+        return {b0, b1, b2, b3};
     }
 
-    inline void rightRotate2() noexcept {
+    inline Bitset32 rightRotate2() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   ddaa'aaaa aabb'bbbb bbcc'cccc ccdd'dddd
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0011) << 6 | (bt2 & 0b1111'1100) >> 2
@@ -58,12 +60,9 @@ struct Bitset32 {
         XX(b2, byte1, byte2);
         XX(b3, byte2, byte3);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate6() noexcept {
+    inline Bitset32 rightRotate6() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   dddd'ddaa aaaa'aabb bbbb'bbcc cccc'ccdd
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0011'1111) << 2 | (bt2 & 0b1100'0000) >> 6
@@ -72,12 +71,9 @@ struct Bitset32 {
         XX(b2, byte1, byte2);
         XX(b3, byte2, byte3);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate7() noexcept {
+    inline Bitset32 rightRotate7() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   dddd'ddda aaaa'aaab bbbb'bbbc cccc'cccd
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0111'1111) << 1 | (bt2 & 0b1000'0000) >> 7
@@ -86,12 +82,9 @@ struct Bitset32 {
         XX(b2, byte1, byte2);
         XX(b3, byte2, byte3);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate11() noexcept {
+    inline Bitset32 rightRotate11() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   cccd'dddd ddda'aaaa aaab'bbbb bbbc'cccc
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0111) << 5 | (bt2 & 0b1111'1000) >> 3
@@ -100,12 +93,9 @@ struct Bitset32 {
         XX(b2, byte0, byte1);
         XX(b3, byte2, byte3);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate13() noexcept {
+    inline Bitset32 rightRotate13() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   cccc'cddd dddd'daaa aaaa'abbb bbbb'bccc
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0001'1111) << 3 | (bt2 & 0b1110'0000) >> 5
@@ -114,12 +104,9 @@ struct Bitset32 {
         XX(b2, byte0, byte1);
         XX(b3, byte1, byte2);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate17() noexcept {
+    inline Bitset32 rightRotate17() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   bccc'cccc cddd'dddd daaa'aaaa abbb'bbbb
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0001) << 7 | (bt2 & 0b1111'1110) >> 1
@@ -128,12 +115,9 @@ struct Bitset32 {
         XX(b2, byte3, byte0);
         XX(b3, byte0, byte1);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate18() noexcept {
+    inline Bitset32 rightRotate18() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   bbcc'cccc ccdd'dddd ddaa'aaaa aabb'bbbb
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0011) << 6 | (bt2 & 0b1111'1100) >> 2
@@ -142,12 +126,9 @@ struct Bitset32 {
         XX(b2, byte3, byte0);
         XX(b3, byte0, byte1);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate19() noexcept {
+    inline Bitset32 rightRotate19() noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   bbbc'cccc cccd'dddd ddda'aaaa aaab'bbbb
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0111) << 5 | (bt2 & 0b1111'1000) >> 3
@@ -156,12 +137,9 @@ struct Bitset32 {
         XX(b2, byte3, byte0);
         XX(b3, byte0, byte1);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate22() noexcept {
+    inline Bitset32 rightRotate22() noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   bbbb'bbcc cccc'ccdd dddd'ddaa aaaa'aabb
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0011'1111) << 2 | (bt2 & 0b1100'0000) >> 6
@@ -170,12 +148,9 @@ struct Bitset32 {
         XX(b2, byte3, byte0);
         XX(b3, byte0, byte1);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
+        return {b0, b1, b2, b3};
     }
-    inline void rightRotate25() noexcept {
+    inline Bitset32 rightRotate25() noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
         // to   abbb bbbb bccc'cccc cddd'dddd daaa'aaaa
 #define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0001) << 7 | (bt2 & 0b1111'1110) >> 1
@@ -188,6 +163,7 @@ struct Bitset32 {
         byte1 = b1;
         byte2 = b2;
         byte3 = b3;
+        return *this;
     }
 
     Bitset32 operator&(const Bitset32 &bit32) const {
@@ -208,10 +184,14 @@ struct Bitset32 {
     }
     Bitset32 operator+(const Bitset32 &bit32) const {
         Bitset32 res{};
-        res.byte0 = byte0 + bit32.byte0;
-        res.byte1 = byte1 + bit32.byte1;
-        res.byte2 = byte2 + bit32.byte2;
-        res.byte3 = byte3 + bit32.byte3;
+//        res.byte0 = byte0 + bit32.byte0;
+//        res.byte1 = byte1 + bit32.byte1;
+//        res.byte2 = byte2 + bit32.byte2;
+//        res.byte3 = byte3 + bit32.byte3;
+        uint32_t *p0 = (uint32_t *)this;
+        uint32_t *p1 = (uint32_t *)&bit32;
+        uint32_t r = ToBigEndian32(FromBigEndian32(*p0) + FromBigEndian32(*p1));
+        memcpy(&res, &r, sizeof(uint32_t));
         return res;
     }
     Bitset32 operator~() const {
@@ -240,7 +220,7 @@ const uint32_t SHA256Util::k[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5db
 
 bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noexcept {
     int64_t size;
-    uint32_t buffer[64];
+    Bitset32 buffer[64];
     auto *block = (uint8_t *) buffer;
     // 最终结果
     uint32_t hash[8]{0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
@@ -256,7 +236,7 @@ bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noe
         uint32_t value[8];
         memcpy(value, hash, sizeof(int32_t) * 8);
         for (auto i = 0; i < 64; ++i) {
-            SHA256Util::encode(hash, value, buffer + i, k[i]);
+            // SHA256Util::encode(hash, value, buffer + i, k[i]);
         }
     }
 
@@ -265,10 +245,10 @@ bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noe
 
     // 填充再处理一遍
     else if (size <= 55 && size >= 0) {
-        memset(block + size + 1, 0, 47 - size);
+        memset(block + size + 1, 0, sizeof(Bitset32) * (47 - size));
         block[size] = ToLittleEndian(0x80);
-        buffer[15] = ToBigEndian32(size * 8);
-
+        uint32_t len = ToBigEndian32(size * 8);
+        memcpy(&buffer[15], &len, sizeof(uint32_t));
 
         for (auto i = 0; i < 48; ++i) {
             SHA256Util::structure(buffer + i);
@@ -277,7 +257,7 @@ bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noe
         uint32_t value[8];
         memcpy(value, hash, sizeof(uint32_t) * 8);
         for (auto i = 0; i < 64; ++i) {
-            SHA256Util::encode(hash, value, buffer + i, k[i]);
+            // SHA256Util::encode(hash, value, buffer + i, k[i]);
         }
     }
 
@@ -294,8 +274,9 @@ bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noe
         }
 
         memset(block, 0, 55);
-        block[size] = 0x80;
-        buffer[63] = ToBigEndian64(size);
+        block[size] = ToLittleEndian(0x80);
+        uint32_t len = ToBigEndian32(size * 8);
+        memcpy(&buffer[15], &len, sizeof(uint32_t));
 
         for (auto i = 0; i < 48; ++i) {
             SHA256Util::structure(buffer + i);
@@ -328,15 +309,15 @@ std::unique_ptr<char[]> SHA256Util::encode(const Stream::Ptr &input, bool isCap)
     }
 }
 
-void SHA256Util::structure(uint32_t *buffer) noexcept {
-    uint32_t *p0 = &buffer[0];
-    uint32_t *p1 = &buffer[1];
-    uint32_t *p2 = &buffer[9];
-    uint32_t *p3 = &buffer[14];
-    uint32_t *p4 = &buffer[16];
+void SHA256Util::structure(Bitset32 *buffer) noexcept {
+    Bitset32 *p0 = &buffer[0];
+    Bitset32 *p1 = &buffer[1];
+    Bitset32 *p2 = &buffer[9];
+    Bitset32 *p3 = &buffer[14];
+    Bitset32 *p4 = &buffer[16];
 
-    uint32_t tmp0 = RightRotate(*p1, 7) ^ RightRotate(*p1, 18) ^ (*p1 >> 3);
-    uint32_t tmp1 = RightRotate(*p3, 17) ^ RightRotate(*p3, 19) ^ (*p3 >> 10);
+    auto tmp0 = p1->rightRotate7() ^ p1->rightRotate18() ^ p1->rightShift3();
+    auto tmp1 = p3->rightRotate17() ^ p3->rightRotate19() ^ p3->rightShift10();
 
     *p4 = *p0 + tmp0 + *p2 + tmp1;
 }
