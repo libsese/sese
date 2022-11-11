@@ -27,34 +27,168 @@ using namespace sese;
 
 /// endian 无关的 32 位
 struct Bitset32 {
-    [[maybe_unused]] uint8_t byte0;
-    [[maybe_unused]] uint8_t byte1;
-    [[maybe_unused]] uint8_t byte2;
-    [[maybe_unused]] uint8_t byte3;
+    uint8_t byte0;
+    uint8_t byte1;
+    uint8_t byte2;
+    uint8_t byte3;
 
     inline void rightShift3() noexcept {
-        uint8_t bitset = 0b00000111;
-        byte0 = byte0 >> 3;
-        byte1 = byte0 & bitset | byte1 >> 3;
-        byte2 = byte1 & bitset | byte2 >> 3;
-        byte3 = byte2 & bitset | byte3 >> 3;
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   000a'aaaa aaab'bbbb bbbc'cccc cccd'dddd
+        byte3 = (byte2 & 0b0000'0111 << 5) | (byte3 & 0b1111'1000 >> 3);
+        byte2 = (byte1 & 0b0000'0111 << 5) | (byte2 & 0b1111'1000 >> 3);
+        byte1 = (byte0 & 0b0000'0111 << 5) | (byte1 & 0b1111'1000 >> 3);
+        byte0 = 0 | (byte1 & 0b1111'1000 >> 3);
     }
     inline void rightShift10() noexcept {
-        byte2 = (byte1 & 0b00000011 << 6) | (byte2 & 0b11111100 >> 2);
-        byte1 = 0 & 0b11000000 | (byte0 & 0b11111100 >> 2);
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   0000'0000 00aa'aaaa aabb'bbbb bbcc'cccc
+        byte3 = (byte1 & 0b0000'0011 << 6) | (byte2 & 0b1111'1100 >> 2);
+        byte2 = (byte0 & 0b0000'0011 << 6) | (byte1 & 0b1111'1100 >> 2);
+        byte1 = 0 | (byte0 & 0b1111'1100 >> 2);
         byte0 = 0;
     }
 
-    inline void rightRotate2() noexcept {}
-    inline void rightRotate6() noexcept {}
-    inline void rightRotate7() noexcept {}
-    inline void rightRotate11() noexcept {}
-    inline void rightRotate13() noexcept {}
-    inline void rightRotate17() noexcept {}
-    inline void rightRotate22() noexcept {}
-    inline void rightRotate18() noexcept {}
-    inline void rightRotate19() noexcept {}
-    inline void rightRotate25() noexcept {}
+    inline void rightRotate2() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   ddaa'aaaa aabb'bbbb bbcc'cccc ccdd'dddd
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0011) << 6 | (bt2 & 0b1111'1100) >> 2
+        XX(b0, byte3, byte0);
+        XX(b1, byte0, byte1);
+        XX(b2, byte1, byte2);
+        XX(b3, byte2, byte3);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate6() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   dddd'ddaa aaaa'aabb bbbb'bbcc cccc'ccdd
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0011'1111) << 2 | (bt2 & 0b1100'0000) >> 6
+        XX(b0, byte3, byte0);
+        XX(b1, byte0, byte1);
+        XX(b2, byte1, byte2);
+        XX(b3, byte2, byte3);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate7() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   dddd'ddda aaaa'aaab bbbb'bbbc cccc'cccd
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0111'1111) << 1 | (bt2 & 0b1000'0000) >> 7
+        XX(b0, byte3, byte0);
+        XX(b1, byte0, byte1);
+        XX(b2, byte1, byte2);
+        XX(b3, byte2, byte3);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate11() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   cccd'dddd ddda'aaaa aaab'bbbb bbbc'cccc
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0111) << 5 | (bt2 & 0b1111'1000) >> 3
+        XX(b0, byte2, byte3);
+        XX(b1, byte3, byte0);
+        XX(b2, byte0, byte1);
+        XX(b3, byte2, byte3);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate13() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   cccc'cddd dddd'daaa aaaa'abbb bbbb'bccc
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0001'1111) << 3 | (bt2 & 0b1110'0000) >> 5
+        XX(b0, byte2, byte3);
+        XX(b1, byte3, byte0);
+        XX(b2, byte0, byte1);
+        XX(b3, byte1, byte2);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate17() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   bccc'cccc cddd'dddd daaa'aaaa abbb'bbbb
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0001) << 7 | (bt2 & 0b1111'1110) >> 1
+        XX(b0, byte1, byte2);
+        XX(b1, byte2, byte3);
+        XX(b2, byte3, byte0);
+        XX(b3, byte0, byte1);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate18() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   bbcc'cccc ccdd'dddd ddaa'aaaa aabb'bbbb
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0011) << 6 | (bt2 & 0b1111'1100) >> 2
+        XX(b0, byte1, byte2);
+        XX(b1, byte2, byte3);
+        XX(b2, byte3, byte0);
+        XX(b3, byte0, byte1);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate19() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   bbbc'cccc cccd'dddd ddda'aaaa aaab'bbbb
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0111) << 5 | (bt2 & 0b1111'1000) >> 3
+        XX(b0, byte1, byte2);
+        XX(b1, byte2, byte3);
+        XX(b2, byte3, byte0);
+        XX(b3, byte0, byte1);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate22() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   bbbb'bbcc cccc'ccdd dddd'ddaa aaaa'aabb
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0011'1111) << 2 | (bt2 & 0b1100'0000) >> 6
+        XX(b0, byte1, byte2);
+        XX(b1, byte2, byte3);
+        XX(b2, byte3, byte0);
+        XX(b3, byte0, byte1);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+    inline void rightRotate25() noexcept {
+        // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
+        // to   abbb bbbb bccc'cccc cddd'dddd daaa'aaaa
+#define XX(value, bt1, bt2) uint8_t value = (bt1 & 0b0000'0001) << 7 | (bt2 & 0b1111'1110) >> 1
+        XX(b0, byte0, byte1);
+        XX(b1, byte1, byte2);
+        XX(b2, byte2, byte3);
+        XX(b3, byte3, byte0);
+#undef XX
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
 
     Bitset32 operator&(const Bitset32 &bit32) const {
         Bitset32 res{};
