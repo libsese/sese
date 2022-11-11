@@ -6,7 +6,6 @@
  */
 #pragma once
 #include "sese/Stream.h"
-#include "sese/Endian.h"
 
 namespace sese {
 

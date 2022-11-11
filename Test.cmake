@@ -198,3 +198,8 @@ add_test(NAME TestXmlUtil COMMAND TestXmlUtil)
 add_executable(TestRpc test/TestRpc/main.cpp)
 target_link_libraries(TestRpc SeseSharedLibrary)
 add_test(NAME TestRpc COMMAND TestRpc)
+
+# SHA256Util
+add_executable(TestSHA256Util test/TestSHA256Util/main.cpp)
+target_link_libraries(TestSHA256Util SeseSharedLibrary)
+add_test(NAME TestSHA256Util COMMAND TestSHA256Util)

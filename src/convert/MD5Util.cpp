@@ -1,5 +1,6 @@
 #include "sese/convert/MD5Util.h"
 #include "sese/ByteBuilder.h"
+#include "sese/Endian.h"
 #include <cmath>
 #include <cstring>
 
@@ -170,34 +171,34 @@ uint32_t MD5Util::I(uint32_t x, uint32_t y, uint32_t z) noexcept {
     return y ^ (x | (~z));
 }
 
-#define ROL(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
+#define LeftRotate(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
 
 uint32_t MD5Util::FF(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t x, uint32_t s, uint32_t t) noexcept {
     a += F(b, c, d) + x + t;
-    a = ROL(a, s);
+    a = LeftRotate(a, s);
     a += b;
     return a;
 }
 
 uint32_t MD5Util::GG(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t x, uint32_t s, uint32_t t) noexcept {
     a += G(b, c, d) + x + t;
-    a = ROL(a, s);
+    a = LeftRotate(a, s);
     a += b;
     return a;
 }
 
 uint32_t MD5Util::HH(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t x, uint32_t s, uint32_t t) noexcept {
     a += H(b, c, d) + x + t;
-    a = ROL(a, s);
+    a = LeftRotate(a, s);
     a += b;
     return a;
 }
 
 uint32_t MD5Util::II(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t x, uint32_t s, uint32_t t) noexcept {
     a += I(b, c, d) + x + t;
-    a = ROL(a, s);
+    a = LeftRotate(a, s);
     a += b;
     return a;
 }
 
-#undef ROL
+#undef LeftRotate
