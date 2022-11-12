@@ -3,34 +3,35 @@
 #include <sese/Endian.h>
 #include <bitset>
 
-#define RightRotate(target, size) ((target >> size) | (target << (32 - size)))
-
-#define h0 hash[0]
-#define h1 hash[1]
-#define h2 hash[2]
-#define h3 hash[3]
-#define h4 hash[4]
-#define h5 hash[5]
-#define h6 hash[6]
-#define h7 hash[7]
-
-#define a value[0]
-#define b value[1]
-#define c value[2]
-#define d value[3]
-#define e value[4]
-#define f value[5]
-#define g value[6]
-#define h value[7]
-
 using namespace sese;
 
 /// endian 无关的 32 位
 struct sese::Bitset32 {
-    uint8_t byte0;
-    uint8_t byte1;
-    uint8_t byte2;
-    uint8_t byte3;
+    uint8_t byte0{};
+    uint8_t byte1{};
+    uint8_t byte2{};
+    uint8_t byte3{};
+
+    Bitset32() = default;
+    Bitset32(uint32_t value) {
+        value = FromBigEndian32(value);
+        memcpy(this, &value, sizeof(value));
+    }
+    Bitset32(uint8_t b0, uint8_t b1, uint8_t b2, uint8_t b3) {
+        byte0 = b0;
+        byte1 = b1;
+        byte2 = b2;
+        byte3 = b3;
+    }
+
+    void set(uint32_t value) {
+        value = ToBigEndian32(value);
+        memcpy(this, &value, sizeof(value));
+    }
+
+    uint32_t get() {
+        return FromBigEndian32(*(uint32_t *) this);
+    }
 
     inline Bitset32 rightShift3() const noexcept {
         // from aaaa'aaaa bbbb'bbbb cccc'cccc dddd'dddd
@@ -91,7 +92,7 @@ struct sese::Bitset32 {
         XX(b0, byte2, byte3);
         XX(b1, byte3, byte0);
         XX(b2, byte0, byte1);
-        XX(b3, byte2, byte3);
+        XX(b3, byte1, byte2);
 #undef XX
         return {b0, b1, b2, b3};
     }
@@ -159,11 +160,7 @@ struct sese::Bitset32 {
         XX(b2, byte2, byte3);
         XX(b3, byte3, byte0);
 #undef XX
-        byte0 = b0;
-        byte1 = b1;
-        byte2 = b2;
-        byte3 = b3;
-        return *this;
+        return {b0, b1, b2, b3};
     }
 
     Bitset32 operator&(const Bitset32 &bit32) const {
@@ -184,12 +181,8 @@ struct sese::Bitset32 {
     }
     Bitset32 operator+(const Bitset32 &bit32) const {
         Bitset32 res{};
-//        res.byte0 = byte0 + bit32.byte0;
-//        res.byte1 = byte1 + bit32.byte1;
-//        res.byte2 = byte2 + bit32.byte2;
-//        res.byte3 = byte3 + bit32.byte3;
-        uint32_t *p0 = (uint32_t *)this;
-        uint32_t *p1 = (uint32_t *)&bit32;
+        uint32_t *p0 = (uint32_t *) this;
+        uint32_t *p1 = (uint32_t *) &bit32;
         uint32_t r = ToBigEndian32(FromBigEndian32(*p0) + FromBigEndian32(*p1));
         memcpy(&res, &r, sizeof(uint32_t));
         return res;
@@ -216,28 +209,38 @@ inline char toChar(unsigned char ch, bool isCap) {
     }
 }
 
-const uint32_t SHA256Util::k[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
+const Bitset32 SHA256Util::k[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
+
+#define XX(i) value[i] = value[i] + h[i]
 
 bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noexcept {
     int64_t size;
+    uint64_t total = 0;
     Bitset32 buffer[64];
     auto *block = (uint8_t *) buffer;
+
     // 最终结果
-    uint32_t hash[8]{0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
+    Bitset32 hash[8] {0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
+    // 中间值
+    Bitset32 value[8];
 
     while ((size = input->read(block, 64)) == 64) {
-        // 构造字
+        total += size;
         for (auto i = 0; i < 48; ++i) {
             SHA256Util::structure(buffer + i);
         }
-
-        // 加密字
-        // 中间结果
-        uint32_t value[8];
-        memcpy(value, hash, sizeof(int32_t) * 8);
+        memcpy(value, hash, sizeof(Bitset32) * 8);
         for (auto i = 0; i < 64; ++i) {
-            // SHA256Util::encode(hash, value, buffer + i, k[i]);
+            SHA256Util::encode(value, buffer + i, k[i]);
         }
+        hash[0] = hash[0] + value[0];
+        hash[1] = hash[1] + value[1];
+        hash[2] = hash[2] + value[2];
+        hash[3] = hash[3] + value[3];
+        hash[4] = hash[4] + value[4];
+        hash[5] = hash[5] + value[5];
+        hash[6] = hash[6] + value[6];
+        hash[7] = hash[7] + value[7];
     }
 
     // 读取中断
@@ -245,52 +248,80 @@ bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noe
 
     // 填充再处理一遍
     else if (size <= 55 && size >= 0) {
+        total += size;
+        total *= 8;
         memset(block + size + 1, 0, sizeof(Bitset32) * (47 - size));
         block[size] = ToLittleEndian(0x80);
-        uint32_t len = ToBigEndian32(size * 8);
-        memcpy(&buffer[15], &len, sizeof(uint32_t));
+        total = ToBigEndian64(total * sizeof(uint8_t));
+        memcpy(&buffer[14], &total, sizeof(uint64_t));
 
         for (auto i = 0; i < 48; ++i) {
             SHA256Util::structure(buffer + i);
         }
 
-        uint32_t value[8];
-        memcpy(value, hash, sizeof(uint32_t) * 8);
+        memcpy(value, hash, sizeof(Bitset32) * 8);
         for (auto i = 0; i < 64; ++i) {
-            // SHA256Util::encode(hash, value, buffer + i, k[i]);
+            SHA256Util::encode(value, buffer + i, k[i]);
         }
+        hash[0] = hash[0] + value[0];
+        hash[1] = hash[1] + value[1];
+        hash[2] = hash[2] + value[2];
+        hash[3] = hash[3] + value[3];
+        hash[4] = hash[4] + value[4];
+        hash[5] = hash[5] + value[5];
+        hash[6] = hash[6] + value[6];
+        hash[7] = hash[7] + value[7];
     }
 
     // 处理倒数第二次，填充并处理最后一次
     else if (size > 55) {
-        for (auto i = 0; i < 48; ++i) {
-            SHA256Util::structure(buffer + i);
-        }
-
-        uint32_t value[8];
-        memcpy(value, hash, sizeof(uint32_t) * 8);
-        for (auto i = 0; i < 64; ++i) {
-            // SHA256Util::encode(hash, value, buffer + i, k[i]);
-        }
-
-        memset(block, 0, 55);
         block[size] = ToLittleEndian(0x80);
-        uint32_t len = ToBigEndian32(size * 8);
-        memcpy(&buffer[15], &len, sizeof(uint32_t));
+        memset(block + size + 1, 0, 63 - size);
+        for (auto i = 0; i < 48; ++i) {
+            SHA256Util::structure(buffer + i);
+        }
+        memcpy(value, hash, sizeof(Bitset32) * 8);
+        for (auto i = 0; i < 64; ++i) {
+            SHA256Util::encode(value, buffer + i, k[i]);
+        }
+        hash[0] = hash[0] + value[0];
+        hash[1] = hash[1] + value[1];
+        hash[2] = hash[2] + value[2];
+        hash[3] = hash[3] + value[3];
+        hash[4] = hash[4] + value[4];
+        hash[5] = hash[5] + value[5];
+        hash[6] = hash[6] + value[6];
+        hash[7] = hash[7] + value[7];
+
+        total += size;
+        total *= 8;
+
+        memset(block, 0, 56);
+        total = ToBigEndian64(total * sizeof(uint8_t));
+        memcpy(&buffer[14], &total, sizeof(uint64_t));
 
         for (auto i = 0; i < 48; ++i) {
             SHA256Util::structure(buffer + i);
         }
-
-        memcpy(value, hash, sizeof(uint32_t) * 8);
+        memcpy(value, hash, sizeof(Bitset32) * 8);
         for (auto i = 0; i < 64; ++i) {
-            // SHA256Util::encode(hash, value, buffer + i, k[i]);
+            SHA256Util::encode(value, buffer + i, k[i]);
         }
+        hash[0] = hash[0] + value[0];
+        hash[1] = hash[1] + value[1];
+        hash[2] = hash[2] + value[2];
+        hash[3] = hash[3] + value[3];
+        hash[4] = hash[4] + value[4];
+        hash[5] = hash[5] + value[5];
+        hash[6] = hash[6] + value[6];
+        hash[7] = hash[7] + value[7];
     }
 
-    output->write(hash, 64);
+    output->write(hash, 32);
     return true;
 }
+
+#undef XX
 
 std::unique_ptr<char[]> SHA256Util::encode(const Stream::Ptr &input, bool isCap) noexcept {
     auto dest = std::make_shared<ByteBuilder>(64);
@@ -303,6 +334,7 @@ std::unique_ptr<char[]> SHA256Util::encode(const Stream::Ptr &input, bool isCap)
             rt[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
             rt[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
         }
+        rt[64] = 0;
         return rt;
     } else {
         return nullptr;
@@ -322,13 +354,22 @@ void SHA256Util::structure(Bitset32 *buffer) noexcept {
     *p4 = *p0 + tmp0 + *p2 + tmp1;
 }
 
-void SHA256Util::encode(uint32_t *hash, uint32_t *value, uint32_t *buffer, uint32_t k) noexcept {
-    uint32_t choice = (e & f) ^ ((~e) & g);
-    uint32_t majority = (a & b) ^ (a & c) ^ (b & c);
-    uint32_t sigma0 = RightRotate(e, 6) ^ RightRotate(e, 11) ^ RightRotate(e, 25);
-    uint32_t sigma1 = RightRotate(a, 2) ^ RightRotate(a, 13) ^ RightRotate(a, 22);
-    uint32_t tmp1 = h + sigma1 + choice + k + *buffer;
-    uint32_t tmp2 = sigma0 + majority;
+#define a value[0]
+#define b value[1]
+#define c value[2]
+#define d value[3]
+#define e value[4]
+#define f value[5]
+#define g value[6]
+#define h value[7]
+
+void SHA256Util::encode(Bitset32 *value, Bitset32 *buffer, Bitset32 k) noexcept {
+    Bitset32 choice = (e & f) ^ ((~e) & g);
+    Bitset32 majority = (a & b) ^ (a & c) ^ (b & c);
+    Bitset32 sigma0 = a.rightRotate2() ^ a.rightRotate13() ^ a.rightRotate22();
+    Bitset32 sigma1 = e.rightRotate6() ^ e.rightRotate11() ^ e.rightRotate25();
+    Bitset32 tmp1 = h + sigma1 + choice + k + *buffer;
+    Bitset32 tmp2 = sigma0 + majority;
 
     h = g;
     g = f;
@@ -338,15 +379,6 @@ void SHA256Util::encode(uint32_t *hash, uint32_t *value, uint32_t *buffer, uint3
     c = b;
     b = a;
     a = tmp1 + tmp2;
-
-    h0 += a;
-    h1 += b;
-    h2 += c;
-    h3 += d;
-    h4 += e;
-    h5 += f;
-    h6 += g;
-    h7 += h;
 }
 
 #undef a
@@ -357,14 +389,3 @@ void SHA256Util::encode(uint32_t *hash, uint32_t *value, uint32_t *buffer, uint3
 #undef f
 #undef g
 #undef h
-
-#undef h0
-#undef h1
-#undef h2
-#undef h3
-#undef h4
-#undef h5
-#undef h6
-#undef h7
-
-#undef RightRotate

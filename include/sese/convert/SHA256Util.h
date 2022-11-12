@@ -13,9 +13,9 @@ namespace sese {
 
     private:
         /// 常数序列
-        static const uint32_t k[64];
+        static const Bitset32 k[64];
 
         static void structure(Bitset32 *block) noexcept;
-        static void encode(uint32_t hash[8], uint32_t value[8], uint32_t *block, uint32_t k) noexcept;
+        static void encode(Bitset32 value[8], Bitset32 *block, Bitset32 k) noexcept;
     };
 }
