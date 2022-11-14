@@ -1,13 +1,13 @@
 #include "sese/convert/PercentConverter.h"
 
-using sese::Stream;
+using sese::OutputStream;
 using sese::PercentConverter;
 
 char inline getEncodeChar(unsigned char ch) {
     return ch + (ch >= 0 && ch <= 9 ? 48 : 55);
 }
 
-void PercentConverter::encode(const char *src, const Stream::Ptr &dest) {
+void PercentConverter::encode(const char *src, const OutputStream::Ptr &dest) {
     unsigned char buffer[3]{'%'};
     auto *p = reinterpret_cast<const unsigned char *>(src);
     while(*p != 0){
@@ -30,7 +30,7 @@ char inline getHexChar (char ch) {
     }
 }
 
-void PercentConverter::decode(const char *src, const Stream::Ptr &dest) {
+void PercentConverter::decode(const char *src, const OutputStream::Ptr &dest) {
     char decodeChar;
     char ch1;
     char ch2;

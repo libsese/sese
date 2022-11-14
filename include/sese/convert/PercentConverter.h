@@ -5,7 +5,7 @@
  * @brief 百分号编码转换器
  */
 #pragma once
-#include "sese/Stream.h"
+#include "sese/OutputStream.h"
 #include "sese/NotInstantiable.h"
 
 #ifdef _WIN32
@@ -20,8 +20,8 @@ namespace sese {
     class API PercentConverter : public NotInstantiable{
     public:
 
-        static void encode(const char *src, const Stream::Ptr &dest);
+        static void encode(const char *src, const OutputStream::Ptr &dest);
 
-        static void decode(const char *src, const Stream::Ptr &dest);
+        static void decode(const char *src, const OutputStream::Ptr &dest);
     };
 }

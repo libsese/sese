@@ -1,24 +1,23 @@
 /**
  * @file Stream.h
- * @date 2022年3月28日
+ * @date 2022年11月14日
  * @author kaoru
  * @brief 流式接口类
+ * @version 0.2
  */
 #pragma once
-#include "sese/Config.h"
+#include <sese/InputStream.h>
+#include <sese/OutputStream.h>
 
 namespace sese {
 
     /**
      * @brief 流式接口类
      */
-    class API Stream {
+    class API Stream : public InputStream, public OutputStream {
     public:
         typedef std::shared_ptr<Stream> Ptr;
-
-    public:
-        virtual int64_t read(void *buffer, size_t length) = 0;
-        virtual int64_t write(const void *buffer, size_t length) = 0;
+        
         virtual void close() = 0;
     };
 
