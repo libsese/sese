@@ -6,6 +6,12 @@
  */
 
 #pragma once
+#include <type_traits>
+
+enum class EndianType {
+    Little,
+    Big
+};
 
 #define ByteSwap16(i16) (i16 & 0x00FF) << 8 | (i16 & 0xFF00) >> 8
 #define ByteSwap32(i32) (i32 & 0x000000FF) << 24 | (i32 & 0x0000FF00) << 8 | (i32 & 0x00FF0000) >> 8 | (i32 & 0xFF000000) >> 24

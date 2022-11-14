@@ -25,8 +25,8 @@ namespace sese {
             BASE62
         };
 
-        static void encode(const Stream::Ptr &src, const Stream::Ptr &dest, CodePage codePage = CodePage::BASE64);
+        static void encode(const InputStream::Ptr &src, const OutputStream::Ptr &dest, CodePage codePage = CodePage::BASE64);
 
-        static void decode(const Stream::Ptr &src, const Stream::Ptr &dest);
+        static void decode(const InputStream::Ptr &src, const OutputStream::Ptr &dest);
     };
 }
