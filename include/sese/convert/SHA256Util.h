@@ -1,15 +1,28 @@
+/**
+ * \file SHA256Util.h
+ * \author kaoru
+ * \date 2020/11/15
+ * \version 0.1
+ * \brief 非硬件指令加速的 SHA256 摘要算法
+ */
+
 #pragma once
 #include <sese/Stream.h>
+
+#ifdef _WIN32
+#pragma warning(disable : 4251)
+#endif
 
 namespace sese {
 
     struct Bitset32;
 
+    /// \brief 非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类
     class API SHA256Util {
     public:
-        static bool encode(const Stream::Ptr &input, const Stream::Ptr &output) noexcept;
+        static bool encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
 
-        static std::unique_ptr<char []> encode(const Stream::Ptr &input, bool isCap = true) noexcept;
+        static std::unique_ptr<char []> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
 
     private:
         /// 常数序列

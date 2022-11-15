@@ -213,7 +213,7 @@ const Bitset32 SHA256Util::k[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5db
 
 #define XX(i) value[i] = value[i] + h[i]
 
-bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noexcept {
+bool SHA256Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
     int64_t size;
     uint64_t total = 0;
     Bitset32 buffer[64];
@@ -323,7 +323,7 @@ bool SHA256Util::encode(const Stream::Ptr &input, const Stream::Ptr &output) noe
 
 #undef XX
 
-std::unique_ptr<char[]> SHA256Util::encode(const Stream::Ptr &input, bool isCap) noexcept {
+std::unique_ptr<char[]> SHA256Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
     auto dest = std::make_shared<ByteBuilder>(64);
     auto success = encode(input, dest);
     if (success) {
