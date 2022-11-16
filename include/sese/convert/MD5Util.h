@@ -1,36 +1,39 @@
 /**
- * @file MD5Util.h
- * @brief MD5 算法类
- * @author kaoru
- * @date 2022年4月22日
- */
+* @file MD5Util.h
+* @brief MD5 算法类
+* @author kaoru
+* @date 2022年4月22日
+*/
 #pragma once
 #include "sese/Stream.h"
 
 namespace sese {
 
     /**
-     * @brief MD5 算法类
-     */
+    * @brief MD5 算法类
+    */
     class API MD5Util {
     public:
         /**
-         * @brief 生成 MD5 信息
-         * @param input 摘要来源
-         * @param output MD5 数据输出
-         * @return 是否生成成功
-         */
-        static bool encode(const Stream::Ptr &input, const Stream::Ptr &output) noexcept;
+        * @brief 生成 MD5 信息
+        * @param input 摘要来源
+        * @param output MD5 数据输出
+        * @return 是否生成成功
+        */
+        static bool encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
 
         /**
-         * @brief 生成 32 位大写 MD5 字符串
-         * @param input 摘要来源
-         * @param isCap 指示字符串字母是否大写
-         * @return 返回生成的字符串，生成失败则为 nullptr
-         */
-        static std::unique_ptr<char[]> encode(const Stream::Ptr &input, bool isCap = true) noexcept;
+        * @brief 生成 32 位大写 MD5 字符串
+        * @param input 摘要来源
+        * @param isCap 指示字符串字母是否大写
+        * @return 返回生成的字符串，生成失败则为 nullptr
+        */
+        static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
 
     private:
+        /// 用于进行变换操作
+        static void transform(uint32_t *res, uint8_t *buffer) noexcept;
+
         static const uint32_t A = 0x67452301;
         static const uint32_t B = 0xefcdab89;
         static const uint32_t C = 0x98badcfe;
