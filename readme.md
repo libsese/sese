@@ -1,5 +1,5 @@
 <div align=center>
- <h1><i>Sese Library</i></h1>	
+ <h1><i>Sese Library</i></h1>
 </div>
 <div align=center>
  <img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
@@ -98,10 +98,10 @@ Sese 只支持在64位系统下运行，非64位不会进行适配，带来的�
      ```cmake
      cmake_minimum_required(VERSION 3.12)
      project(${PROJECT_NAME})
-     
+
      find_package(sese 0.1 REQUIRED)
      include_directories(${SESE_INCLUDE_DIR})
-     
+
      add_executable(Main main.cpp)
      target_link_libraries(Main sese)
      ```
@@ -117,7 +117,7 @@ Sese 只支持在64位系统下运行，非64位不会进行适配，带来的�
 
 ## 其他
 
-- 示例程序以及一些必要细节请参阅 [Sese's Docs](docs/ReadMe.md) 。
+- 示例程序以及一些必要细节请参阅 [Sese's Docs](docs/readme.md) 。
 
 <span id="jmp0"/>
 

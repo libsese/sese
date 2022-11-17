@@ -1,7 +1,7 @@
 # 项目版本信息
 cmake_minimum_required(VERSION 3.12)
 set(SESE_MAJOR_VERSION 0)
-set(SESE_MINOR_VERSION 3)
+set(SESE_MINOR_VERSION 4)
 
 project(sese VERSION ${SESE_MAJOR_VERSION}.${SESE_MINOR_VERSION})
 

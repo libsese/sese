@@ -16,16 +16,16 @@
     # CMakeLists.txt
     cmake_minimum_required(VERSION 3.12)
     project(example)
-    
+
     set(CMAKE_CXX_STANDARD 20)
-    
+
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-    
+
     add_subdirectory(lib/sese)
     include_directories(lib/sese/include)
-    
+
     add_executable(example src/main.cpp)
     target_link_libraries(example SeseSharedLibrary)
     ```
@@ -34,16 +34,16 @@
 
     ```cpp
     // src/main.cpp
-    
+
     #include "sese/record/LogHelper.h"
-    
+
     sese::LogHelper helper("example"); // NOLINT
-    
+
     int main() {
         helper.info("This message sent by sese::LogHelper!");
         return 0;
     }
-    
+
     // tree example -L 2
     example
     ├── CMakeLists.txt
