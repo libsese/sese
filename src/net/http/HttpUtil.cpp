@@ -33,6 +33,7 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
         return false;
     }
     auto firstLines = builder.split(" ");
+    if (firstLines.size() != 3) return false;
     builder.clear();
 
     // method
@@ -171,6 +172,7 @@ bool HttpUtil::recvHeader(Stream *source, StringBuilder &builder, Header *header
             break;
         } else {
             auto pair = builder.split(": ");
+            if (pair.size() != 2) return false;
             builder.clear();
             header->set(pair[0], pair[1]);
         }

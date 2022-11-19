@@ -4,9 +4,11 @@
 #include "sese/record/SimpleFormatter.h"
 #include "sese/Test.h"
 
-sese::record::LogHelper helper("fLOGGER");// NOLINT
 
 int main() {
+    sese::Initializer::getInitializer();
+    sese::record::LogHelper helper("fLOGGER");// NOLINT
+
     auto logger = sese::record::getLogger();
     auto fileStream = sese::FileStream::create("hello.log", TEXT_WRITE_CREATE_TRUNC);
 
@@ -14,9 +16,9 @@ int main() {
     auto fileAppender = std::make_shared<sese::record::FileAppender>(fileStream);
     logger->addAppender(fileAppender);
 
-    helper.debug("Hello 你好 こんにちは");
-    helper.info("Hello 你好 こんにちは");
-    helper.warn("Hello 你好 こんにちは");
-    helper.error("Hello 你好 こんにちは");
+    helper.debug("Hello");
+    helper.info("Hello");
+    helper.warn("Hello");
+    helper.error("Hello");
     return 0;
 }

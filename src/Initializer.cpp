@@ -9,9 +9,9 @@ using sese::Initializer;
 using sese::InitiateTask;
 using sese::TestInitiateTask;
 
-static Initializer initializer;// NOLINT
+static Initializer initializer;
 
-void *sese::getInitializer() noexcept { return &initializer; }
+[[maybe_unused]] void *Initializer::getInitializer() noexcept { return &initializer; }
 
 InitiateTask::InitiateTask(std::string name) : name(std::move(name)) {
 }
@@ -21,21 +21,20 @@ const std::string &sese::InitiateTask::getName() const {
 }
 
 Initializer::Initializer() {
-    buildInLoadTask(std::make_unique<EncodingConverterInitiateTask>());
-    buildInLoadTask(std::make_unique<record::LoggerInitiateTask>());
-    buildInLoadTask(std::make_unique<TestInitiateTask>());
+    buildInLoadTask(std::make_shared<EncodingConverterInitiateTask>());
+    buildInLoadTask(std::make_shared<record::LoggerInitiateTask>());
+    buildInLoadTask(std::make_shared<TestInitiateTask>());
 #ifdef _WIN32
-    buildInLoadTask(std::make_unique<sese::SocketInitiateTask>());
+    buildInLoadTask(std::make_shared<sese::SocketInitiateTask>());
 #endif
 }
 
 Initializer::~Initializer() {
     /// 保证初始化器按顺序销毁
-    InitiateTask::Ptr top;
-    while (!tasks.empty()) {
-        top = std::move(tasks.top());
-        buildInUnloadTask(top);
-    }
+     while (!tasks.empty()) {
+         InitiateTask::Ptr &top = tasks.top();
+         buildInUnloadTask(top);
+     }
 }
 
 void Initializer::buildInLoadTask(InitiateTask::Ptr &&task) noexcept {
@@ -43,7 +42,7 @@ void Initializer::buildInLoadTask(InitiateTask::Ptr &&task) noexcept {
     if (rt != 0) {
         printf("Load failed: %32s Exit code %d", task->getName().c_str(), rt);
     } else {
-        tasks.emplace(std::move(task));
+        tasks.emplace(task);
     }
 }
 

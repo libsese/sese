@@ -6,7 +6,7 @@
  */
 
 #pragma once
-#include "sese/Config.h"
+#include <sese/Config.h>
 #include <stack>
 
 #ifdef _WIN32
@@ -17,9 +17,16 @@ namespace sese {
 
     class API InitiateTask {
     public:
-        using Ptr = std::unique_ptr<InitiateTask>;
+        /**
+         * \brief 初始化任务智能指针
+         * \note
+         * std::stack 使用 std::deque 实现，
+         * 其中 std::deque::top 使用 '=' 运算符，
+         * 与 std::unique_ptr 冲突。
+         * 所以，InitiateTask::Ptr 使用 std::shared_ptr
+         */
+        using Ptr = std::shared_ptr<InitiateTask>;
 
-        InitiateTask(InitiateTask &&initiateTask) = default;
         explicit InitiateTask(std::string name);
         virtual ~InitiateTask() = default;
 
@@ -32,19 +39,26 @@ namespace sese {
         std::string name;
     };
 
-    class Initializer {
+    class API Initializer {
     public:
         Initializer();
         virtual ~Initializer();
-
-        API static void addTask(InitiateTask::Ptr task) noexcept;
 
     private:
         void buildInLoadTask(InitiateTask::Ptr &&task) noexcept;
         void buildInUnloadTask(const InitiateTask::Ptr &task) noexcept;
 
         std::stack<InitiateTask::Ptr> tasks;
+
+        // 用户级方法
+    public:
+        /// 添加任务至初始化器
+        /// \param task 初始化任务
+        static void addTask(InitiateTask::Ptr task) noexcept;
+        /// 获取初始化器指针
+        /// \note 将 sese 作为使用静态链接库使用时，请务必使用该函数手动进行初始化
+        /// \return 初始化指针，此返回值无用
+        [[maybe_unused]] static void *getInitializer() noexcept;
     };
 
-    extern "C" void *getInitializer() noexcept;
 }// namespace sese
