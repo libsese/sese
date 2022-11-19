@@ -1,4 +1,0 @@
-[submodule "libs/SString"]
-	path = libs/SString
-	url = https://github.com/SHIINASAMA/SString.git
-	commits = 836eb203de8c7854a062e56ad3fd8a9507195c7b
