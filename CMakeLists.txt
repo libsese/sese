@@ -8,8 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED on)
 set(SESE_REPO_HASH)
 set(SESE_REPO_BRANCH)
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/Git.cmake)
-get_git_hash(SESE_REPO_HASH)
-get_git_branch(SESE_REPO_BRANCH)
+get_git_hash(SESE_REPO_HASH ${CMAKE_CURRENT_LIST_DIR})
+get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/Dep.cmake)
 
