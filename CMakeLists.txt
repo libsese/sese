@@ -65,12 +65,13 @@ target_sources(sese PRIVATE
 
         src/AbstractStringBuffer.cpp src/ArgParser.cpp
         src/AbstractByteBuffer.cpp src/BufferedStream.cpp
+        src/BufferedOutputStream.cpp src/BufferedInputStream.cpp
         src/DateTime.cpp src/TimeSpan.cpp
         src/StringBuffer.cpp src/ByteBuffer.cpp
         src/Random.cpp src/Util.cpp
         src/FileStream.cpp src/Test.cpp
         src/Timer.cpp src/Initializer.cpp
-        src/MemoryViewer.cpp
+        src/MemoryViewer.cpp src/ConsoleOutputStream.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
@@ -94,10 +95,12 @@ if (WIN32)
     target_compile_definitions(sese PUBLIC -DWINDOWS_DLL)
     target_compile_definitions(sese PUBLIC -DNEED_DBGHELP)
     target_compile_options(sese PRIVATE "/utf-8")
+    target_compile_options(sese PRIVATE "/wd4251")
     target_link_libraries(sese ws2_32)
 
     target_compile_definitions(sese-static PUBLIC -DNEED_DBGHELP)
     target_compile_options(sese-static PRIVATE "/utf-8")
+    target_compile_options(sese-static PRIVATE "/wd4251")
     target_link_libraries(sese-static ws2_32)
 
     message(STATUS "Linked libraries: ws2_32, dbghelp")

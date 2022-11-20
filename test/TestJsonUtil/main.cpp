@@ -1,19 +1,19 @@
 #include <sese/config/json/JsonUtil.h>
 #include <sese/FileStream.h>
-#include <sese/ByteBuilder.h>
+#include <sese/ConsoleOutputStream.h>
 #include <sese/record/LogHelper.h>
 #include <sese/Test.h>
 
-using sese::ByteBuilder;
+using sese::ConsoleOutputStream;
 using sese::FileStream;
-using sese::record::LogHelper;
 using sese::Test;
-using sese::json::JsonUtil;
 using sese::json::ArrayData;
 using sese::json::BasicData;
+using sese::json::JsonUtil;
 using sese::json::ObjectData;
+using sese::record::LogHelper;
 
-sese::record::LogHelper helper("fJSON"); // NOLINT
+sese::record::LogHelper helper("fJSON");// NOLINT
 
 int main() {
     auto fileStream = FileStream::create(PROJECT_PATH "/test/TestJsonUtil/data.json", TEXT_READ_EXISTED);
@@ -25,12 +25,9 @@ int main() {
     assert(helper, booleanValue->getDataAs<bool>(false), 0);
     booleanValue->setDataAs<bool>(false);
 
-    auto bytes = std::make_shared<ByteBuilder>();
-    JsonUtil::serialize(object, bytes);
-
-    char buffer[1024]{};
-    bytes->read(buffer, 1024);
-    helper.info("%s", buffer);
+    auto output = std::make_shared<ConsoleOutputStream>();
+    JsonUtil::serialize(object, output);
+    output->write("\n", 1);
 
     return 0;
 }

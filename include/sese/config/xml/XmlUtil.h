@@ -21,20 +21,19 @@ namespace sese::xml {
         /// \param inputStream 输入流
         /// \param level 反序列化深度
         /// \retval nullptr 反序列化失败，否则为成功
-        static Element::Ptr deserialize(const Stream::Ptr &inputStream, size_t level) noexcept;
+        static Element::Ptr deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept;
 
         /// 向流中序列化一个 Xml 元素对象
         /// \param object 待序列化对象
         /// \param outputStream 待输出流
-        static void serialize(const Element::Ptr &object, const Stream::Ptr &outputStream) noexcept;
+        static void serialize(const Element::Ptr &object, const OutputStream::Ptr &outputStream) noexcept;
 
     private:
-        static void tokenizer(const Stream::Ptr &inputStream, Tokens &tokens) noexcept;
+        static void tokenizer(const InputStream::Ptr &inputStream, Tokens &tokens) noexcept;
 
         static void removeComment(Tokens &tokens) noexcept;
 
         static Element::Ptr createElement(Tokens &tokens, size_t level, bool isSubElement) noexcept;
 
-        static void serialize(const Element::Ptr &object, Stream &stream);
     };
 }// namespace sese::xml

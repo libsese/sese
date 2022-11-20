@@ -1,10 +1,12 @@
 #include <sese/config/xml/XmlUtil.h>
 #include <sese/FileStream.h>
+#include <sese/ConsoleOutputStream.h>
 #include <sese/Test.h>
 #include <sese/record/LogHelper.h>
 
 using sese::record::LogHelper;
 using sese::FileStream;
+using sese::ConsoleOutputStream;
 using sese::xml::XmlUtil;
 
 LogHelper helper("fXML_UTIL"); // NOLINT
@@ -21,5 +23,10 @@ int main() {
     auto saveFileStream = FileStream::create("out.xml", BINARY_WRITE_CREATE_TRUNC);
     assert(helper, saveFileStream->good(), -2);
     XmlUtil::serialize(element, saveFileStream);
+
+    auto output = std::make_shared<ConsoleOutputStream>();
+    XmlUtil::serialize(element, output);
+    output->write("\n", 1);
+
     return 0;
 }

@@ -5,12 +5,11 @@
 
 namespace sese::xml {
 
-    void XmlUtil::tokenizer(const Stream::Ptr &inputStream, sese::xml::XmlUtil::Tokens &tokens) noexcept {
-        BufferedStream bufferedStream(inputStream);
+    void XmlUtil::tokenizer(const InputStream::Ptr &inputStream, sese::xml::XmlUtil::Tokens &tokens) noexcept {
         StringBuilder stringBuilder;
         char ch;
         int64_t len;
-        while ((len = bufferedStream.read(&ch, 1 * sizeof(char))) != 0) {
+        while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
             if (sese::isSpace(ch)) {
                 if (stringBuilder.empty()) continue;
                 tokens.push(stringBuilder.toString());
@@ -45,7 +44,7 @@ namespace sese::xml {
                 stringBuilder.clear();
                 tokens.push({ch});
             } else if (ch == '\"') {
-                while ((len = bufferedStream.read(&ch, 1 * sizeof(char))) != 0) {
+                while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
                     if (ch == '\"') {
                         tokens.push(stringBuilder.toString());
                         stringBuilder.clear();
@@ -60,7 +59,7 @@ namespace sese::xml {
         }
     }
 
-    Element::Ptr XmlUtil::deserialize(const Stream::Ptr &inputStream, size_t level) noexcept {
+    Element::Ptr XmlUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
         // 此处懒得处理不合规格的格式，直接 catch
         Tokens tokens;
         tokenizer(inputStream, tokens);
@@ -160,48 +159,42 @@ namespace sese::xml {
         return element;
     }
 
-    void XmlUtil::serialize(const Element::Ptr &object, sese::Stream &stream) {
+    void XmlUtil::serialize(const Element::Ptr &object, const sese::OutputStream::Ptr &stream) noexcept {
         auto name = object->getName();
         auto attributes = object->getAttributes();
         auto value = object->getValue();
-        stream.write("<", 1);
-        stream.write(name.c_str(), name.length());
+        stream->write("<", 1);
+        stream->write(name.c_str(), name.length());
 
         if (!attributes.empty()) {
             for (decltype(auto) attr: attributes) {
-                stream.write(" ", 1);
-                stream.write(attr.first.c_str(), attr.first.length());
-                stream.write("=\"", 2);
-                stream.write(attr.second.c_str(), attr.second.length());
-                stream.write("\"", 1);
+                stream->write(" ", 1);
+                stream->write(attr.first.c_str(), attr.first.length());
+                stream->write("=\"", 2);
+                stream->write(attr.second.c_str(), attr.second.length());
+                stream->write("\"", 1);
             }
         }
 
         if (!object->elements.empty()) {
-            stream.write(">", 1);
+            stream->write(">", 1);
             for (decltype(auto) element: object->elements) {
                 serialize(element, stream);
             }
-            stream.write("</", 2);
-            stream.write(name.c_str(), name.length());
-            stream.write(">", 1);
+            stream->write("</", 2);
+            stream->write(name.c_str(), name.length());
+            stream->write(">", 1);
         } else {
             if (value.length() == 0) {
-                stream.write("/>", 2);
+                stream->write("/>", 2);
             } else {
-                stream.write(">", 1);
-                stream.write(value.c_str(), value.length());
-                stream.write("</", 2);
-                stream.write(name.c_str(), name.length());
-                stream.write(">", 1);
+                stream->write(">", 1);
+                stream->write(value.c_str(), value.length());
+                stream->write("</", 2);
+                stream->write(name.c_str(), name.length());
+                stream->write(">", 1);
             }
         }
-    }
-
-    void XmlUtil::serialize(const Element::Ptr &object, const Stream::Ptr &outputStream) noexcept {
-        BufferedStream bufferedStream(outputStream);
-        serialize(object, bufferedStream);
-        bufferedStream.flush();
     }
 
 }// namespace sese::xml

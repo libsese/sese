@@ -15,6 +15,7 @@
 namespace sese {
 
     /// @brief 流缓存类
+    /// @deprecated 请考虑使用 BufferedOutputStream 或 BufferedInputStream
     class API BufferedStream final : public Noncopyable, public Stream {
     public:
         using Ptr = std::shared_ptr<BufferedStream>;
