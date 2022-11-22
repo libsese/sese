@@ -32,6 +32,10 @@ if (USE_SQLITE)
     target_include_directories(sqlite PUBLIC ${libsqlite_SOURCE_DIR})
 endif ()
 
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    find_package(Threads REQUIRED)
+endif()
+
 if (BUILD_TEST)
     enable_testing()
 
@@ -45,6 +49,9 @@ if (BUILD_TEST)
         add_executable(TestSqliteDriver)
         target_sources(TestSqliteDriver PRIVATE test/TestSqliteDriver.cpp)
         target_link_libraries(TestSqliteDriver sqlite)
+        if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+            target_link_libraries(TestSqliteDriver ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+        endif()
     endif ()
 
 endif ()
