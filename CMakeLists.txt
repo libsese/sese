@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(sese-db)
+project(sese-db VERSION 0.1)
 
+set(CMAKE_CXX_STANDARD 20)
 include(FetchContent)
 
 option(BUILD_TEST "build unit test targets" off)
@@ -34,7 +35,36 @@ endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
-endif()
+endif ()
+
+add_library(sese-db SHARED)
+add_library(sese-db-static)
+
+target_sources(sese-db PRIVATE src/DriverManager.cpp)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND USE_SQLITE)
+    target_link_libraries(sese-db ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_link_libraries(sese-db-static ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+endif ()
+
+if (USE_MARIADB)
+    target_compile_definitions(sese-db PRIVATE -DHAS_MARIADB)
+    target_compile_definitions(sese-db-static PRIVATE -DHAS_MARIADB)
+endif ()
+
+if (USE_SQLITE)
+    target_sources(sese-db PRIVATE
+            src/impl/SqliteResultSetImpl.cpp
+            src/impl/SqliteDriverInstanceImpl.cpp)
+    target_compile_definitions(sese-db PRIVATE -DHAS_SQLITE)
+    target_compile_definitions(sese-db-static PRIVATE -DHAS_SQLITE)
+    target_link_libraries(sese-db sqlite)
+    target_link_libraries(sese-db-static sqlite)
+endif ()
+
+target_include_directories(sese-db PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
+target_include_directories(sese-db-static PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
+target_sources(sese-db-static PRIVATE $<TARGET_OBJECTS:sese-db>)
 
 if (BUILD_TEST)
     enable_testing()
@@ -51,7 +81,11 @@ if (BUILD_TEST)
         target_link_libraries(TestSqliteDriver sqlite)
         if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
             target_link_libraries(TestSqliteDriver ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
-        endif()
+        endif ()
+
+        add_executable(TestSqliteInstance)
+        target_sources(TestSqliteInstance PRIVATE test/TestSqliteInstance.cpp)
+        target_link_libraries(TestSqliteInstance sese-db)
     endif ()
 
 endif ()
