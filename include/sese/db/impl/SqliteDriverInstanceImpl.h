@@ -11,7 +11,7 @@ namespace sese::db::impl {
         explicit SqliteDriverInstance(sqlite3 *conn) noexcept;
         ~SqliteDriverInstance() noexcept override;
         ResultSet::Ptr executeQuery(const char *sql) const noexcept override;
-        uint64_t executeUpdate(const char *sql) const noexcept override;
+        size_t executeUpdate(const char *sql) const noexcept override;
 
     private:
         sqlite3 *conn = nullptr;

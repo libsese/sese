@@ -20,12 +20,12 @@ ResultSet::Ptr impl::SqliteDriverInstance::executeQuery(const char *sql) const n
     return std::make_unique<SqliteResultSetImpl>(table, (size_t) rows, (size_t) columns, error);
 }
 
-uint64_t impl::SqliteDriverInstance::executeUpdate(const char *sql) const noexcept {
+size_t impl::SqliteDriverInstance::executeUpdate(const char *sql) const noexcept {
     char *error = nullptr;
     auto rt = sqlite3_exec(conn, sql, nullptr, nullptr, &error);
     if (error) sqlite3_free(error);
     if (rt == 0) {
-        return 0;
+        return sqlite3_changes64(conn);
     } else {
         return -1;
     }
