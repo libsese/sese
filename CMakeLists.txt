@@ -40,7 +40,7 @@ endif ()
 add_library(sese-db SHARED)
 add_library(sese-db-static)
 
-target_sources(sese-db PRIVATE src/DriverManager.cpp)
+target_sources(sese-db PRIVATE src/DriverManager.cpp src/Util.cpp)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND USE_SQLITE)
     target_link_libraries(sese-db ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
@@ -48,8 +48,13 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND USE_SQLITE)
 endif ()
 
 if (USE_MARIADB)
+    target_sources(sese-db PRIVATE
+            src/impl/MariaDriverInstanceImpl.cpp
+            src/impl/MariaResultSetImpl.cpp)
     target_compile_definitions(sese-db PRIVATE -DHAS_MARIADB)
     target_compile_definitions(sese-db-static PRIVATE -DHAS_MARIADB)
+    target_link_libraries(sese-db libmariadb)
+    target_link_libraries(sese-db-static libmariadb)
 endif ()
 
 if (USE_SQLITE)
@@ -75,6 +80,10 @@ if (BUILD_TEST)
         add_executable(TestMariaDriver)
         target_sources(TestMariaDriver PRIVATE test/TestMariaDriver.cpp)
         target_link_libraries(TestMariaDriver libmariadb)
+
+        add_executable(TestMariaInstance)
+        target_sources(TestMariaInstance PRIVATE test/TestMariaInstance.cpp)
+        target_link_libraries(TestMariaInstance sese-db)
     endif ()
 
     if (USE_SQLITE)
