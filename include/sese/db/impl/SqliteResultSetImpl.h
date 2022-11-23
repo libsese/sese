@@ -6,8 +6,6 @@ namespace sese::db::impl {
 
     class SESE_DB_API SqliteResultSetImpl : public ResultSet {
     public:
-        using Ptr = std::unique_ptr<SqliteResultSetImpl>;
-
         SqliteResultSetImpl(char **table, size_t r, size_t c, char *error) noexcept;
         ~SqliteResultSetImpl() noexcept override;
 

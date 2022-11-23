@@ -7,9 +7,19 @@ using sese::db::ResultSet;
 
 int main() {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "db_test.db");
-    auto result = instance->executeQuery("select user.id, user.name from tb_user user where id = 1;");
-    printf("id = %s, name = %s\n", result->get(1, 0), result->get(1, 1));
-    auto count = instance->executeUpdate(R"(update tb_user set name = "kaoru" where id = 1;)");
-    printf("update rows: %d\n", (int) count);
+    {
+        auto result = instance->executeQuery("select user.id, user.name from tb_user user where id = 1;");
+        printf("id = %s, name = %s\n", result->get(1, 0), result->get(1, 1));
+        auto count = instance->executeUpdate(R"(update tb_user set name = "kaoru" where id = 1;)");
+        printf("update rows: %d\n", (int) count);
+    }
+
+    {
+        auto stmt = instance->createStatement("update tb_user set name = ? where id = ?;");
+        stmt->setText(1, "mike");
+        stmt->setInteger(2, 2);
+        auto count = stmt->executeUpdate();
+        printf("stmt update rows: %d\n", (int) count);
+    }
     return 0;
 }

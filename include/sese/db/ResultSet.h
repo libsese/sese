@@ -3,6 +3,7 @@
 
 namespace sese::db {
 
+    //todo 此处接口需要重新设计
     class SESE_DB_API ResultSet {
     public:
         using Ptr = std::unique_ptr<ResultSet>;

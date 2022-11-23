@@ -20,7 +20,7 @@ ResultSet::Ptr impl::SqliteDriverInstance::executeQuery(const char *sql) const n
     return std::make_unique<SqliteResultSetImpl>(table, (size_t) rows, (size_t) columns, error);
 }
 
-size_t impl::SqliteDriverInstance::executeUpdate(const char *sql) const noexcept {
+int64_t impl::SqliteDriverInstance::executeUpdate(const char *sql) const noexcept {
     char *error = nullptr;
     auto rt = sqlite3_exec(conn, sql, nullptr, nullptr, &error);
     if (error) sqlite3_free(error);
@@ -28,5 +28,14 @@ size_t impl::SqliteDriverInstance::executeUpdate(const char *sql) const noexcept
         return sqlite3_changes64(conn);
     } else {
         return -1;
+    }
+}
+
+PreparedStatement::Ptr impl::SqliteDriverInstance::createStatement(const char *sql) const noexcept {
+    sqlite3_stmt *stmt;
+    if (SQLITE_OK == sqlite3_prepare_v2(conn, sql, -1, &stmt, nullptr)) {
+        return std::make_unique<impl::SqlitePreparedStatementImpl>(stmt);
+    } else {
+        return nullptr;
     }
 }
