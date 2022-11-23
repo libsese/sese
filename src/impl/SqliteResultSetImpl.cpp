@@ -14,14 +14,27 @@ impl::SqliteResultSetImpl::~SqliteResultSetImpl() noexcept {
     if (this->error) sqlite3_free(error);
 }
 
-size_t impl::SqliteResultSetImpl::getRows() const noexcept {
-    return rows;
+void impl::SqliteResultSetImpl::reset() noexcept {
+    current = 0;
 }
+
+bool impl::SqliteResultSetImpl::next() noexcept {
+    if (current + 1 > rows) {
+        return false;
+    } else {
+        current += 1;
+        return true;
+    }
+}
+
+const char *impl::SqliteResultSetImpl::getColumnByIndex(size_t index) const noexcept {
+    return table[(rows + 1) * current + index];
+}
+
+//const char *impl::SqliteResultSetImpl::get(size_t row, size_t column) const noexcept {
+//    return table[(rows + 1) * row + column];
+//}
 
 size_t impl::SqliteResultSetImpl::getColumns() const noexcept {
     return columns;
-}
-
-const char *impl::SqliteResultSetImpl::get(size_t row, size_t column) const noexcept {
-    return table[(rows + 1) * row + column];
 }

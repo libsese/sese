@@ -1,13 +1,11 @@
-#pragma once
 #include <sese/db/ResultSet.h>
 #include <sqlite3.h>
 
 namespace sese::db::impl {
 
-    class SESE_DB_API SqliteResultSetImpl : public ResultSet {
+    class SESE_DB_API SqliteStmtResultSetImpl : public ResultSet {
     public:
-        SqliteResultSetImpl(char **table, size_t r, size_t c, char *error) noexcept;
-        ~SqliteResultSetImpl() noexcept override;
+        explicit SqliteStmtResultSetImpl(sqlite3_stmt *stmt) noexcept;
 
         void reset() noexcept override;
         [[nodiscard]] bool next() noexcept override;
@@ -15,10 +13,6 @@ namespace sese::db::impl {
         [[nodiscard]] size_t getColumns() const noexcept override;
 
     private:
-        size_t rows;
-        size_t columns;
-        char **table;
-        char *error = nullptr;
-        size_t current = 0;
+        sqlite3_stmt *stmt;
     };
-}// namespace sese::db::impl
+}

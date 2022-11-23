@@ -56,6 +56,7 @@ if (USE_SQLITE)
     target_sources(sese-db PRIVATE
             src/impl/SqliteResultSetImpl.cpp
             src/impl/SqlitePreparedStatementImpl.cpp
+            src/impl/SqliteStmtResultSetImpl.cpp
             src/impl/SqliteDriverInstanceImpl.cpp)
     target_compile_definitions(sese-db PRIVATE -DHAS_SQLITE)
     target_compile_definitions(sese-db-static PRIVATE -DHAS_SQLITE)

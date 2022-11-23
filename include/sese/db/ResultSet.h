@@ -3,16 +3,14 @@
 
 namespace sese::db {
 
-    //todo 此处接口需要重新设计
     class SESE_DB_API ResultSet {
     public:
         using Ptr = std::unique_ptr<ResultSet>;
 
         virtual ~ResultSet() noexcept = default;
-
-        [[nodiscard]] virtual size_t getRows() const noexcept = 0;
+        virtual void reset() noexcept = 0;
+        [[nodiscard]] virtual bool next() noexcept = 0;
+        [[nodiscard]] virtual const char *getColumnByIndex(size_t index) const noexcept = 0;
         [[nodiscard]] virtual size_t getColumns() const noexcept = 0;
-
-        [[nodiscard]] virtual const char *get(size_t row, size_t column) const noexcept = 0;
     };
 }

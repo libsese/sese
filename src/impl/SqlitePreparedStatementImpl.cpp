@@ -10,7 +10,13 @@ impl::SqlitePreparedStatementImpl::~SqlitePreparedStatementImpl() noexcept {
 }
 
 ResultSet::Ptr impl::SqlitePreparedStatementImpl::executeQuery() noexcept {
-    return nullptr;
+    auto rt = sqlite3_step(stmt);
+    if (rt == SQLITE_ROW || rt == SQLITE_DONE) {
+        sqlite3_reset(stmt);
+        return std::make_unique<SqliteStmtResultSetImpl>(stmt);
+    } else {
+        return nullptr;
+    }
 }
 
 int64_t impl::SqlitePreparedStatementImpl::executeUpdate() noexcept {

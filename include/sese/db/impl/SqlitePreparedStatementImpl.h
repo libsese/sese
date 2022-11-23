@@ -1,5 +1,5 @@
 #include <sese/db/PreparedStatement.h>
-#include <sese/db/impl/SqliteResultSetImpl.h>
+#include <sese/db/impl/SqliteStmtResultSetImpl.h>
 
 namespace sese::db::impl {
 
