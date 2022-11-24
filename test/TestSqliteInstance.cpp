@@ -16,9 +16,10 @@ int main() {
     }
 
     {
+        int64_t value = 2;
         auto stmt = instance->createStatement("update tb_user set name = ? where id = ?;");
         stmt->setText(1, "mike");
-        stmt->setInteger(2, 2);
+        stmt->setInteger(2, value);
         auto count = stmt->executeUpdate();
         printf("stmt update rows: %d\n", (int) count);
     }

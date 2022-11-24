@@ -14,11 +14,12 @@ namespace sese::db::impl {
         [[nodiscard]] const char *getColumnByIndex(size_t index) const noexcept override;
         [[nodiscard]] size_t getColumns() const noexcept override;
 
-    private:
+    protected:
         size_t rows;
         size_t columns;
         char **table;
         char *error = nullptr;
         size_t current = 0;
     };
+
 }// namespace sese::db::impl

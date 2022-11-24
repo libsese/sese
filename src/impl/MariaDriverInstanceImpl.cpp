@@ -1,4 +1,5 @@
 #include <sese/db/impl/MariaDriverInstanceImpl.h>
+#include <sese/db/impl/MariaResultSetImpl.h>
 
 using namespace sese::db;
 
@@ -25,7 +26,18 @@ int64_t impl::MariaDriverInstanceImpl::executeUpdate(const char *sql) const noex
     return (int64_t) mysql_affected_rows(conn);
 }
 
-//todo prepared statement
 PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char *sql) const noexcept {
-    return nullptr;
+    MYSQL_STMT *stmt = mysql_stmt_init(conn);
+    if (stmt == nullptr) return nullptr;
+
+    size_t len = strlen(sql);
+    if(mysql_stmt_prepare(stmt, sql, len)) return nullptr;
+
+    // 此处需要手动计算 '?' 个数
+    size_t count = 0;
+    for (size_t i = 0; i < len; ++i) {
+        if (sql[i] == '?') count++;
+    }
+
+    return std::make_unique<impl::MariaPreparedStatementImpl>(stmt, count);
 }

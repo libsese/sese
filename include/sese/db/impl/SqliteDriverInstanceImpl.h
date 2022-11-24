@@ -12,8 +12,8 @@ namespace sese::db::impl {
         int64_t executeUpdate(const char *sql) const noexcept override;
         PreparedStatement::Ptr createStatement(const char *sql) const noexcept override;
 
-    private:
+    protected:
         sqlite3 *conn = nullptr;
     };
 
-}
+}// namespace sese::db::impl

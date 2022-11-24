@@ -50,7 +50,9 @@ endif ()
 if (USE_MARIADB)
     target_sources(sese-db PRIVATE
             src/impl/MariaDriverInstanceImpl.cpp
-            src/impl/MariaResultSetImpl.cpp)
+            src/impl/MariaResultSetImpl.cpp
+            src/impl/MariaStmtResultSetImpl.cpp
+            src/impl/MariaPreparedStatementImpl.cpp)
     target_compile_definitions(sese-db PRIVATE -DHAS_MARIADB)
     target_compile_definitions(sese-db-static PRIVATE -DHAS_MARIADB)
     target_link_libraries(sese-db libmariadb)

@@ -28,11 +28,11 @@ int64_t impl::SqlitePreparedStatementImpl::executeUpdate() noexcept {
     }
 }
 
-int64_t impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, double value) noexcept {
+int64_t impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, double &value) noexcept {
     return sqlite3_bind_double(stmt, (int) index, value);
 }
 
-int64_t impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, int64_t value) noexcept {
+int64_t impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, int64_t &value) noexcept {
     return sqlite3_bind_int64(stmt, (int) index, value);
 }
 

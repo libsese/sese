@@ -1,3 +1,4 @@
+#pragma once
 #include <sese/db/ResultSet.h>
 #include <sqlite3.h>
 
@@ -12,7 +13,8 @@ namespace sese::db::impl {
         [[nodiscard]] const char *getColumnByIndex(size_t index) const noexcept override;
         [[nodiscard]] size_t getColumns() const noexcept override;
 
-    private:
+    protected:
         sqlite3_stmt *stmt;
     };
-}
+
+}// namespace sese::db::impl

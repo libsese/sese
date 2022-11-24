@@ -1,8 +1,6 @@
 #pragma once
 #include <sese/db/DriverInstance.h>
-#include <sese/db/PreparedStatement.h>
-#include <sese/db/impl/MariaResultSetImpl.h>
-#include <mysql.h>
+#include <sese/db/impl/MariaPreparedStatementImpl.h>
 
 namespace sese::db::impl {
 
@@ -15,7 +13,7 @@ namespace sese::db::impl {
         int64_t executeUpdate(const char *sql) const noexcept override;
         PreparedStatement::Ptr createStatement(const char *sql) const noexcept override;
 
-    private:
+    protected:
         MYSQL *conn;
     };
 

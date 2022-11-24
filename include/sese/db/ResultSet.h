@@ -1,5 +1,6 @@
 #pragma once
 #include <sese/db/Config.h>
+#include <string>
 
 namespace sese::db {
 
