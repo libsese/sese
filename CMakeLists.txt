@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 include(FetchContent)
 
 option(BUILD_TEST "build unit test targets" off)
-option(USE_MARIADB "add mariadb any mysql support" off)
+option(USE_MARIADB "add mariadb and mysql support" off)
 option(USE_SQLITE "add sqlite support" on)
 
 if (USE_MARIADB)
