@@ -6,17 +6,23 @@ namespace sese::db::impl {
 
     class SESE_DB_API MariaStmtResultSet : public ResultSet {
     public:
-        explicit MariaStmtResultSet(MYSQL_STMT *stmt) noexcept;
+        explicit MariaStmtResultSet(MYSQL_STMT *stmt, MYSQL_BIND *row, size_t count) noexcept;
+        ~MariaStmtResultSet() noexcept override;
 
         void reset() noexcept override;
         [[nodiscard]]bool next() noexcept override;
-        [[nodiscard]] const char *getColumnByIndex(size_t index) const noexcept override;
         [[nodiscard]] size_t getColumns() const noexcept override;
+
+        [[nodiscard]] int32_t getInteger(size_t index) const noexcept override;
+        int64_t getLong(size_t index) const noexcept override;
+        [[nodiscard]] std::string_view getString(size_t index) const noexcept override;
+        [[nodiscard]] double getDouble(size_t index) const noexcept override;
+        [[nodiscard]] float getFloat(size_t index) const noexcept override;
 
     protected:
         MYSQL_STMT *stmt;
-        size_t columns = 0;
-        MYSQL_BIND *param = nullptr;
+        MYSQL_BIND *row;
+        size_t columns;
     };
 
 }// namespace sese::db::impl

@@ -35,10 +35,10 @@ size_t impl::SqliteResultSetImpl::getColumns() const noexcept {
     return columns;
 }
 
-int64_t impl::SqliteResultSetImpl::getInteger(size_t index) const noexcept {
+int32_t impl::SqliteResultSetImpl::getInteger(size_t index) const noexcept {
     char *p = table[(rows + 1) * current + index];
     char *end;
-    return std::strtoll(p, &end, 10);
+    return std::strtol(p, &end, 10);
 }
 
 std::string_view impl::SqliteResultSetImpl::getString(size_t index) const noexcept {
@@ -56,4 +56,10 @@ float impl::SqliteResultSetImpl::getFloat(size_t index) const noexcept {
     char *p = table[(rows + 1) * current + index];
     char *end;
     return std::strtof(p, &end);
+}
+
+int64_t impl::SqliteResultSetImpl::getLong(size_t index) const noexcept {
+    char *p = table[(rows + 1) * current + index];
+    char *end;
+    return std::strtoll(p, &end, 10);
 }

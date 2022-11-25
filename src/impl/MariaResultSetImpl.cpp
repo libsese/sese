@@ -19,10 +19,33 @@ bool impl::MariaResultSetImpl::next() noexcept {
     return row != nullptr;
 }
 
-const char *impl::MariaResultSetImpl::getColumnByIndex(size_t index) const noexcept {
-    return row[index];
-}
+//const char *impl::MariaResultSetImpl::getColumnByIndex(size_t index) const noexcept {
+//    return row[index];
+//}
 
 size_t impl::MariaResultSetImpl::getColumns() const noexcept {
     return mysql_num_fields(res);
+}
+
+int32_t impl::MariaResultSetImpl::getInteger(size_t index) const noexcept {
+    char *end;
+    return std::strtol(row[index], &end, 10);
+}
+
+int64_t impl::MariaResultSetImpl::getLong(size_t index) const noexcept {
+    char *end;
+    return std::strtoll(row[index], &end, 10);
+}
+
+std::string_view impl::MariaResultSetImpl::getString(size_t index) const noexcept {
+    return {row[index]};
+}
+
+double impl::MariaResultSetImpl::getDouble(size_t index) const noexcept {
+    char *end;
+    return std::strtod(row[index], &end);
+}
+float impl::MariaResultSetImpl::getFloat(size_t index) const noexcept {
+    char *end;
+    return std::strtof(row[index], &end);
 }

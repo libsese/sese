@@ -13,7 +13,8 @@ namespace sese::db::impl {
         [[nodiscard]] bool next() noexcept override;
         [[nodiscard]] size_t getColumns() const noexcept override;
 
-        [[nodiscard]] int64_t getInteger(size_t index) const noexcept override;
+        [[nodiscard]] int32_t getInteger(size_t index) const noexcept override;
+        [[nodiscard]] int64_t getLong(size_t index) const noexcept override;
         [[nodiscard]] std::string_view getString(size_t index) const noexcept override;
         [[nodiscard]] double getDouble(size_t index) const noexcept override;
         [[nodiscard]] float getFloat(size_t index) const noexcept override;

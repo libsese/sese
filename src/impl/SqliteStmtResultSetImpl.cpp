@@ -22,10 +22,10 @@ impl::SqliteStmtResultSetImpl::SqliteStmtResultSetImpl(sqlite3_stmt *stmt) noexc
     this->stmt = stmt;
 }
 
-int64_t impl::SqliteStmtResultSetImpl::getInteger(size_t index) const noexcept {
+int32_t impl::SqliteStmtResultSetImpl::getInteger(size_t index) const noexcept {
     auto p = (const char *) sqlite3_column_text(stmt, (int) index);
     char *end;
-    return std::strtoll(p, &end, 10);
+    return std::strtol(p, &end, 10);
 }
 
 std::string_view impl::SqliteStmtResultSetImpl::getString(size_t index) const noexcept {
@@ -43,4 +43,10 @@ float impl::SqliteStmtResultSetImpl::getFloat(size_t index) const noexcept {
     auto p = (const char *) sqlite3_column_text(stmt, (int) index);
     char *end;
     return std::strtof(p, &end);
+}
+
+int64_t impl::SqliteStmtResultSetImpl::getLong(size_t index) const noexcept {
+    auto p = (const char *) sqlite3_column_text(stmt, (int) index);
+    char *end;
+    return std::strtoll(p, &end, 10);
 }

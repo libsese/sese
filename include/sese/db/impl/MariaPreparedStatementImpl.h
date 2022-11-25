@@ -17,6 +17,9 @@ namespace sese::db::impl {
         int64_t setText(uint32_t index, const char *value) noexcept override;
         int64_t setNull(uint32_t index) noexcept override;
 
+        static bool mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept;
+        static void freeBindStruct(MYSQL_BIND *bind, size_t count) noexcept;
+
     protected:
         MYSQL_STMT *stmt;
         size_t count = 0;

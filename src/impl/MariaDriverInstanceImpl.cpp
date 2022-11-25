@@ -31,7 +31,7 @@ PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char
     if (stmt == nullptr) return nullptr;
 
     size_t len = strlen(sql);
-    if(mysql_stmt_prepare(stmt, sql, len)) return nullptr;
+    if (mysql_stmt_prepare(stmt, sql, (unsigned long) len)) return nullptr;
 
     // 此处需要手动计算 '?' 个数
     size_t count = 0;
