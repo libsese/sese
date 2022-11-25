@@ -10,8 +10,12 @@ namespace sese::db::impl {
 
         void reset() noexcept override;
         [[nodiscard]] bool next() noexcept override;
-        [[nodiscard]] const char *getColumnByIndex(size_t index) const noexcept override;
         [[nodiscard]] size_t getColumns() const noexcept override;
+
+        [[nodiscard]] int64_t getInteger(size_t index) const noexcept override;
+        [[nodiscard]] std::string_view getString(size_t index) const noexcept override;
+        [[nodiscard]] double getDouble(size_t index) const noexcept override;
+        [[nodiscard]] float getFloat(size_t index) const noexcept override;
 
     protected:
         sqlite3_stmt *stmt;

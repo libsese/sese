@@ -27,14 +27,33 @@ bool impl::SqliteResultSetImpl::next() noexcept {
     }
 }
 
-const char *impl::SqliteResultSetImpl::getColumnByIndex(size_t index) const noexcept {
-    return table[(rows + 1) * current + index];
-}
-
-//const char *impl::SqliteResultSetImpl::get(size_t row, size_t column) const noexcept {
-//    return table[(rows + 1) * row + column];
+//const char *impl::SqliteResultSetImpl::getColumnByIndex(size_t index) const noexcept {
+//    return table[(rows + 1) * current + index];
 //}
 
 size_t impl::SqliteResultSetImpl::getColumns() const noexcept {
     return columns;
+}
+
+int64_t impl::SqliteResultSetImpl::getInteger(size_t index) const noexcept {
+    char *p = table[(rows + 1) * current + index];
+    char *end;
+    return std::strtoll(p, &end, 10);
+}
+
+std::string_view impl::SqliteResultSetImpl::getString(size_t index) const noexcept {
+    char *p = table[(rows + 1) * current + index];
+    return {p};
+}
+
+double impl::SqliteResultSetImpl::getDouble(size_t index) const noexcept {
+    char *p = table[(rows + 1) * current + index];
+    char *end;
+    return std::strtod(p, &end);
+}
+
+float impl::SqliteResultSetImpl::getFloat(size_t index) const noexcept {
+    char *p = table[(rows + 1) * current + index];
+    char *end;
+    return std::strtof(p, &end);
 }

@@ -11,7 +11,12 @@ namespace sese::db {
         virtual ~ResultSet() noexcept = default;
         virtual void reset() noexcept = 0;
         [[nodiscard]] virtual bool next() noexcept = 0;
-        [[nodiscard]] virtual const char *getColumnByIndex(size_t index) const noexcept = 0;
+        // [[nodiscard]] virtual const char *getColumnByIndex(size_t index) const noexcept = 0;
         [[nodiscard]] virtual size_t getColumns() const noexcept = 0;
+
+        [[nodiscard]] virtual int64_t getInteger(size_t index) const noexcept = 0;
+        [[nodiscard]] virtual std::string_view getString(size_t index) const noexcept = 0;
+        [[nodiscard]] virtual double getDouble(size_t index) const noexcept = 0;
+        [[nodiscard]] virtual float getFloat(size_t index) const noexcept = 0;
     };
 }
