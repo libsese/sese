@@ -94,32 +94,42 @@ int64_t sese::db::impl::MariaPreparedStatementImpl::executeUpdate() noexcept {
     }
 
     if (mysql_stmt_execute(stmt)) {
-        auto e = mysql_stmt_error(stmt);
         return -1;
     }
     return (int64_t) mysql_stmt_affected_rows(stmt);
 }
 
-int64_t sese::db::impl::MariaPreparedStatementImpl::setDouble(uint32_t index, double &value) noexcept {
+bool sese::db::impl::MariaPreparedStatementImpl::setDouble(uint32_t index, double &value) noexcept {
+    if (index - 1 >= count) return false;
     this->param[index - 1].buffer_type = MYSQL_TYPE_DOUBLE;
     this->param[index - 1].buffer = &value;
-    return 0;
+    return true;
 }
 
-int64_t sese::db::impl::MariaPreparedStatementImpl::setInteger(uint32_t index, int64_t &value) noexcept {
+bool sese::db::impl::MariaPreparedStatementImpl::setInteger(uint32_t index, int32_t &value) noexcept {
+    if (index - 1 >= count) return false;
     this->param[index - 1].buffer_type = MYSQL_TYPE_LONG;
     this->param[index - 1].buffer = &value;
-    return 0;
+    return true;
 }
 
-int64_t sese::db::impl::MariaPreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
+bool sese::db::impl::MariaPreparedStatementImpl::setLong(uint32_t index, int64_t &value) noexcept {
+    if (index - 1 >= count) return false;
+    this->param[index - 1].buffer_type = MYSQL_TYPE_LONGLONG;
+    this->param[index - 1].buffer = &value;
+    return true;
+}
+
+bool sese::db::impl::MariaPreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
+    if (index - 1 >= count) return false;
     this->param[index - 1].buffer_type = MYSQL_TYPE_VAR_STRING;
     this->param[index - 1].buffer = (void *) value;
     this->param[index - 1].buffer_length = strlen(value);
-    return 0;
+    return true;
 }
 
-int64_t sese::db::impl::MariaPreparedStatementImpl::setNull(uint32_t index) noexcept {
+bool sese::db::impl::MariaPreparedStatementImpl::setNull(uint32_t index) noexcept {
+    if (index - 1 >= count) return false;
     this->param[index - 1].buffer_type = MYSQL_TYPE_NULL;
-    return 0;
+    return true;
 }

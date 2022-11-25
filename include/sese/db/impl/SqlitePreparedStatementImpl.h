@@ -11,10 +11,11 @@ namespace sese::db::impl {
 
         ResultSet::Ptr executeQuery() noexcept override;
         int64_t executeUpdate() noexcept override;
-        int64_t setDouble(uint32_t index, double &value) noexcept override;
-        int64_t setInteger(uint32_t index, int64_t &value) noexcept override;
-        int64_t setText(uint32_t index, const char *value) noexcept override;
-        int64_t setNull(uint32_t index) noexcept override;
+        bool setDouble(uint32_t index, double &value) noexcept override;
+        bool setLong(uint32_t index, int64_t &value) noexcept override;
+        bool setInteger(uint32_t index, int32_t &value) noexcept override;
+        bool setText(uint32_t index, const char *value) noexcept override;
+        bool setNull(uint32_t index) noexcept override;
 
     protected:
         sqlite3_stmt *stmt;

@@ -24,7 +24,7 @@ int main() {
     {
         int64_t value = 1;
         auto stmt = instance->createStatement("select * from tb_user where id = ?;");
-        stmt->setInteger(1, value);
+        stmt->setLong(1, value);
         auto result = stmt->executeQuery();
         while (result->next()) {
             printf("id = %d, name = %s\n",(int) result->getInteger(0), result->getString(1).data());
@@ -36,7 +36,7 @@ int main() {
         const char *name = "sese-db";
         auto stmt1 = instance->createStatement("update tb_user set name = ? where id = ?");
         stmt1->setText(1, name);
-        stmt1->setInteger(2, id);
+        stmt1->setLong(2, id);
         auto count = stmt1->executeUpdate();
         printf("stmt update rows: %d\n", (int) count);
     }

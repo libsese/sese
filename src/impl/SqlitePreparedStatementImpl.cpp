@@ -28,17 +28,21 @@ int64_t impl::SqlitePreparedStatementImpl::executeUpdate() noexcept {
     }
 }
 
-int64_t impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, double &value) noexcept {
-    return sqlite3_bind_double(stmt, (int) index, value);
+bool impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, double &value) noexcept {
+    return SQLITE_OK == sqlite3_bind_double(stmt, (int) index, value);
 }
 
-int64_t impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, int64_t &value) noexcept {
-    return sqlite3_bind_int64(stmt, (int) index, value);
+bool impl::SqlitePreparedStatementImpl::setLong(uint32_t index, int64_t &value) noexcept {
+    return SQLITE_OK == sqlite3_bind_int64(stmt, (int) index, value);
 }
 
-int64_t impl::SqlitePreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
-    return sqlite3_bind_text(stmt, (int) index, value, -1, nullptr);
+bool impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, int32_t &value) noexcept {
+    return SQLITE_OK == sqlite3_bind_int(stmt, (int) index, value);
 }
-int64_t impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
-    return sqlite3_bind_null(stmt, (int) index);
+
+bool impl::SqlitePreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
+    return SQLITE_OK == sqlite3_bind_text(stmt, (int) index, value, -1, nullptr);
+}
+bool impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
+    return SQLITE_OK == sqlite3_bind_null(stmt, (int) index);
 }
