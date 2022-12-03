@@ -1,13 +1,15 @@
 #include <sese/config/json/JsonUtil.h>
-#include <sese/BufferedStream.h>
+#include <sese/BufferedOutputStream.h>
+#include <sese/BufferedInputStream.h>
 #include <sese/StringBuilder.h>
 #include <sese/Util.h>
 
 using namespace sese::json;
 
-ObjectData::Ptr JsonUtil::deserialize(const Stream::Ptr &inputStream, size_t level) noexcept {
+ObjectData::Ptr JsonUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
+    // 未知的问题，本机调试去除这里会导致 RPC Server 反序列化读取错误
+    auto bufferedStream = std::make_shared<BufferedInputStream>(inputStream, 0);
     // 此处懒得处理不合规格的格式，直接 catch
-    auto bufferedStream = std::make_shared<BufferedStream>(inputStream);
     try {
         Tokens tokens;
         if (!tokenizer(inputStream, tokens)) {
@@ -22,13 +24,13 @@ ObjectData::Ptr JsonUtil::deserialize(const Stream::Ptr &inputStream, size_t lev
     }
 }
 
-void JsonUtil::serialize(const ObjectData::Ptr &object, const Stream::Ptr &outputStream) noexcept {
-    auto bufferedStream = std::make_shared<BufferedStream>(outputStream);
+void JsonUtil::serialize(const ObjectData::Ptr &object, const OutputStream::Ptr &outputStream) noexcept {
+    auto bufferedStream = std::make_shared<BufferedOutputStream>(outputStream);
     serializeObject(object, bufferedStream);
     bufferedStream->flush();
 }
 
-bool JsonUtil::tokenizer(const Stream::Ptr &inputStream, Tokens &tokens) noexcept {
+bool JsonUtil::tokenizer(const InputStream::Ptr &inputStream, Tokens &tokens) noexcept {
     char ch;
     StringBuilder builder;
 
@@ -221,7 +223,7 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
     return array;
 }
 
-void JsonUtil::serializeObject(const ObjectData::Ptr &object, const Stream::Ptr &outputStream) noexcept {
+void JsonUtil::serializeObject(const ObjectData::Ptr &object, const OutputStream::Ptr &outputStream) noexcept {
     bool isFirst = true;
     outputStream->write("{", 1);
     for (auto iterator = object->begin(); iterator != object->end(); iterator++) {
@@ -283,7 +285,7 @@ void JsonUtil::serializeObject(const ObjectData::Ptr &object, const Stream::Ptr 
     outputStream->write("}", 1);
 }
 
-void JsonUtil::serializeArray(const ArrayData::Ptr &array, const Stream::Ptr &outputStream) noexcept {
+void JsonUtil::serializeArray(const ArrayData::Ptr &array, const OutputStream::Ptr &outputStream) noexcept {
     bool isFirst = true;
     outputStream->write("[", 1);
     for (auto iterator = array->begin(); iterator != array->end(); iterator++) {
