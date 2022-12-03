@@ -123,5 +123,6 @@ message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
 message(STATUS "CXX compile options: ${CMAKE_CXX_FLAGS}")
 
 if (BUILD_TEST)
+    enable_testing()
     include(${CMAKE_CURRENT_LIST_DIR}/cmake/Test.cmake)
 endif ()
