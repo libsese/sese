@@ -96,11 +96,13 @@ if (WIN32)
     target_compile_definitions(sese PUBLIC -DNEED_DBGHELP)
     target_compile_options(sese PRIVATE "/utf-8")
     target_compile_options(sese PRIVATE "/wd4251")
+    target_compile_options(sese PRIVATE "/wd4530")
     target_link_libraries(sese ws2_32)
 
     target_compile_definitions(sese-static PUBLIC -DNEED_DBGHELP)
     target_compile_options(sese-static PRIVATE "/utf-8")
     target_compile_options(sese-static PRIVATE "/wd4251")
+    target_compile_options(sese-static PRIVATE "/wd4530")
     target_link_libraries(sese-static ws2_32)
 
     message(STATUS "Linked libraries: ws2_32, dbghelp")

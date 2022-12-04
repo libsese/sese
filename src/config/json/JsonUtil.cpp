@@ -7,8 +7,6 @@
 using namespace sese::json;
 
 ObjectData::Ptr JsonUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
-    // 未知的问题，本机调试去除这里会导致 RPC Server 反序列化读取错误
-    auto bufferedStream = std::make_shared<BufferedInputStream>(inputStream, 0);
     // 此处懒得处理不合规格的格式，直接 catch
     try {
         Tokens tokens;

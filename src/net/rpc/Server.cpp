@@ -1,6 +1,8 @@
 #include <sese/net/rpc/Server.h>
 #include <sese/config/json/JsonUtil.h>
 #include <sese/Packaged2Stream.h>
+#include <sese/BufferedOutputStream.h>
+#include <sese/BufferedInputStream.h>
 
 using namespace sese;
 using namespace sese::json;
@@ -19,7 +21,14 @@ rpc::Server::Ptr rpc::Server::create(const IPAddress::Ptr &address, size_t threa
 void rpc::Server::serve() noexcept {
     tcpServer->loopWith([this](IOContext *context) {
         auto stream = std::make_shared<ClosablePackagedStream<IOContext>>(context);
+
+#ifdef WIN32
+        // Windows IOContext 自带了缓存
         auto object = json::JsonUtil::deserialize(stream, 5);
+#else
+        auto input = std::make_shared<BufferedInputStream>(stream);
+        auto object = json::JsonUtil::deserialize(input, 5);
+#endif
         if (!object) return;// 序列化请求失败
         auto result = std::make_shared<json::ObjectData>();
 
@@ -32,11 +41,13 @@ void rpc::Server::serve() noexcept {
         result->set(SESE_RPC_TAG_VERSION, version);
 
         // 1.版本确定
+        auto output = std::make_shared<BufferedOutputStream>(stream);
         std::string ver;
         auto verData = object->getDataAs<BasicData>(SESE_RPC_TAG_VERSION);
         if (nullptr == verData) {
             BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-            JsonUtil::serialize(result, stream);
+            JsonUtil::serialize(result, output);
+            output->flush();
             stream->close();
             return;
         } else {
@@ -45,12 +56,14 @@ void rpc::Server::serve() noexcept {
 
         if (SESE_RPC_VALUE_UNDEF == ver) {
             BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-            JsonUtil::serialize(result, stream);
+            JsonUtil::serialize(result, output);
+            output->flush();
             stream->close();
             return;
         } else if (SESE_RPC_VERSION_0_1 != ver) {
             BuiltinSetExitCode(SESE_RPC_CODE_NONSUPPORT_VERSION);
-            JsonUtil::serialize(result, stream);
+            JsonUtil::serialize(result, output);
+            output->flush();
             stream->close();
             return;
         }
@@ -60,7 +73,8 @@ void rpc::Server::serve() noexcept {
         Get4Server(name, object, result, std::string, SESE_RPC_TAG_NAME, SESE_RPC_VALUE_UNDEF);
         if (SESE_RPC_VALUE_UNDEF == name) {
             BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-            JsonUtil::serialize(result, stream);
+            JsonUtil::serialize(result, output);
+            output->flush();
             stream->close();
             return;
         }
@@ -68,7 +82,8 @@ void rpc::Server::serve() noexcept {
         auto iterator = map.find(name);
         if (iterator == map.end()) {
             BuiltinSetExitCode(SESE_RPC_CODE_NO_EXIST_FUNC);
-            JsonUtil::serialize(result, stream);
+            JsonUtil::serialize(result, output);
+            output->flush();
             stream->close();
             return;
         }
@@ -78,7 +93,8 @@ void rpc::Server::serve() noexcept {
         auto args = object->getDataAs<ObjectData>(SESE_RPC_TAG_ARGS);
         if (!args) {
             BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-            JsonUtil::serialize(result, stream);
+            JsonUtil::serialize(result, output);
+            output->flush();
             stream->close();
             return;
         }
@@ -87,7 +103,8 @@ void rpc::Server::serve() noexcept {
         func(args, result);
 
         // 5.序列化
-        JsonUtil::serialize(result, stream);
+        JsonUtil::serialize(result, output);
+        output->flush();
         stream->close();
     });
 }
