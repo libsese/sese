@@ -1,3 +1,7 @@
+/// \file Config.h
+/// \author kaoru
+/// \brief 配置文件
+/// \version 0.1
 #pragma once
 
 #ifdef _WIN32

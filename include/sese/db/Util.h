@@ -1,3 +1,7 @@
+/// \file Util.h
+/// \brief 工具集合
+/// \author kaoru
+/// \version 0.1
 #include <map>
 #include <string>
 
