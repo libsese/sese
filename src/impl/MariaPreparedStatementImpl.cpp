@@ -106,6 +106,13 @@ bool sese::db::impl::MariaPreparedStatementImpl::setDouble(uint32_t index, doubl
     return true;
 }
 
+bool sese::db::impl::MariaPreparedStatementImpl::setFloat(uint32_t index, float &value) noexcept {
+    if (index - 1 >= count) return false;
+    this->param[index - 1].buffer_type = MYSQL_TYPE_FLOAT;
+    this->param[index - 1].buffer = &value;
+    return true;
+}
+
 bool sese::db::impl::MariaPreparedStatementImpl::setInteger(uint32_t index, int32_t &value) noexcept {
     if (index - 1 >= count) return false;
     this->param[index - 1].buffer_type = MYSQL_TYPE_LONG;

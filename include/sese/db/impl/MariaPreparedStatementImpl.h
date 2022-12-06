@@ -13,6 +13,7 @@ namespace sese::db::impl {
         int64_t executeUpdate() noexcept override;
 
         bool setDouble(uint32_t index, double &value) noexcept override;
+        bool setFloat(uint32_t index, float &value) noexcept override;
         bool setInteger(uint32_t index, int32_t &value) noexcept override;
         bool setLong(uint32_t index, int64_t &value) noexcept override;
         bool setText(uint32_t index, const char *value) noexcept override;

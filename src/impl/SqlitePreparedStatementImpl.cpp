@@ -32,6 +32,10 @@ bool impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, double &value)
     return SQLITE_OK == sqlite3_bind_double(stmt, (int) index, value);
 }
 
+bool impl::SqlitePreparedStatementImpl::setFloat(uint32_t index, float &value) noexcept {
+    return SQLITE_OK == sqlite3_bind_double(stmt, (int) index, value);
+}
+
 bool impl::SqlitePreparedStatementImpl::setLong(uint32_t index, int64_t &value) noexcept {
     return SQLITE_OK == sqlite3_bind_int64(stmt, (int) index, value);
 }

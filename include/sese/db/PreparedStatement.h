@@ -29,6 +29,11 @@ namespace sese::db {
         /// \param value 值
         /// \return 是否设置成功
         virtual bool setDouble(uint32_t index, double &value) noexcept = 0;
+        /// \brief 设置单精度浮点值
+        /// \param index 索引
+        /// \param value 值
+        /// \return 是否设置成功
+        virtual bool setFloat(uint32_t index, float &value) noexcept = 0;
         /// \brief 设置整型值
         /// \param index 索引
         /// \param value 值
