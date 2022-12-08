@@ -23,11 +23,11 @@ message(STATUS "Repository hash: ${SESE_REPO_HASH}")
 message(STATUS "C COMPILER PATH: ${CMAKE_C_COMPILER}")
 message(STATUS "CXX COMPILER PATH: ${CMAKE_CXX_COMPILER}")
 
-add_definitions("-DSESE_MAJOR_VERSION=${PROJECT_VERSION_MAJOR}")
-add_definitions("-DSESE_MINOR_VERSION=${PROJECT_VERSION_MINOR}")
-add_definitions("-DSESE_REPO_HASH=${SESE_REPO_HASH}")
-add_definitions("-DSESE_REPO_BRANCH=${SESE_REPO_BRANCH}")
-add_definitions("-DPROJECT_PATH=${CMAKE_CURRENT_LIST_DIR}")
+add_definitions("-DSESE_MAJOR_VERSION=\"${PROJECT_VERSION_MAJOR}\"")
+add_definitions("-DSESE_MINOR_VERSION=\"${PROJECT_VERSION_MINOR}\"")
+add_definitions("-DSESE_REPO_HASH=\"${SESE_REPO_HASH}\"")
+add_definitions("-DSESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
+add_definitions("-DPROJECT_PATH=\"${CMAKE_CURRENT_LIST_DIR}\"")
 
 add_library(sese SHARED)
 add_library(sese-static STATIC)
@@ -80,6 +80,7 @@ target_sources(sese PRIVATE
         ${NATIVE_PATH}/net/Socket.cpp
         ${NATIVE_PATH}/net/TcpServer.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
+        ${NATIVE_PATH}/system/SharedMemory.cpp
         )
 
 target_sources(sese-static PRIVATE $<TARGET_OBJECTS:sese>)
