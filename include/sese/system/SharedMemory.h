@@ -26,6 +26,9 @@ namespace sese {
     private:
 #ifdef WIN32
         HANDLE hMapFile = INVALID_HANDLE_VALUE;
+#else
+        int id{};
+        static key_t name2key(const char *name) noexcept;
 #endif
         void *buffer = nullptr;
         bool isOwner{};
