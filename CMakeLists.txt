@@ -112,8 +112,8 @@ if (WIN32)
             POST_BUILD
             COMMAND
             ${CMAKE_COMMAND} -E copy_if_different
-            ${CMAKE_BINARY_DIR}/${OUTPUT_NAME}
-            ${CMAKE_BINARY_DIR}/test/${OUTPUT_NAME}
+            ${PROJECT_BINARY_DIR}/${OUTPUT_NAME}
+            ${PROJECT_BINARY_DIR}/test/${OUTPUT_NAME}
     )
 
     target_compile_definitions(sese-static PUBLIC -DNEED_DBGHELP)
