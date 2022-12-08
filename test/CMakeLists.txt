@@ -207,3 +207,8 @@ add_test(NAME TestRpc COMMAND TestRpc)
 add_executable(TestSHA256Util ${CMAKE_CURRENT_LIST_DIR}/TestSHA256Util/main.cpp)
 target_link_libraries(TestSHA256Util sese)
 add_test(NAME TestSHA256Util COMMAND TestSHA256Util)
+
+# SharedMemory
+add_executable(TestSharedMemory ${CMAKE_CURRENT_LIST_DIR}/TestSharedMemory/main.cpp)
+target_link_libraries(TestSharedMemory sese)
+add_test(NAME TestSharedMemory COMMAND TestSharedMemory)

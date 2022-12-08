@@ -16,15 +16,15 @@ key_t SharedMemory::name2key(const char *name) noexcept {
             str[5],
             str[7],
             str[11],
-            str[4],
             str[13],
             0};
-    return std::stoi(num);
+    std::size_t size;
+    return std::stoi(num, &size, 16);
 }
 
 SharedMemory::~SharedMemory() noexcept {
     shmdt(buffer);
-    if(isOwner) {
+    if (isOwner) {
         shmctl(id, IPC_RMID, nullptr);
     }
 }

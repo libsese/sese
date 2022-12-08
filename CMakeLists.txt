@@ -100,6 +100,22 @@ if (WIN32)
     target_compile_options(sese PRIVATE "/wd4530")
     target_link_libraries(sese ws2_32)
 
+    set(OUTPUT_NAME string)
+    if (${CMAKE_BUILD_TYPE} MATCHES Debug)
+        set(OUTPUT_NAME "sesed.dll")
+    else ()
+        set(OUTPUT_NAME "sese.dll")
+    endif ()
+    add_custom_command(
+            TARGET
+            sese
+            POST_BUILD
+            COMMAND
+            ${CMAKE_COMMAND} -E copy_if_different
+            ${CMAKE_BINARY_DIR}/${OUTPUT_NAME}
+            ${CMAKE_BINARY_DIR}/test/${OUTPUT_NAME}
+    )
+
     target_compile_definitions(sese-static PUBLIC -DNEED_DBGHELP)
     target_compile_options(sese-static PRIVATE "/utf-8")
     target_compile_options(sese-static PRIVATE "/wd4251")
