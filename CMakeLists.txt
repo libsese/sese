@@ -25,6 +25,7 @@ message(STATUS "CXX COMPILER PATH: ${CMAKE_CXX_COMPILER}")
 
 add_definitions("-DSESE_MAJOR_VERSION=\"${PROJECT_VERSION_MAJOR}\"")
 add_definitions("-DSESE_MINOR_VERSION=\"${PROJECT_VERSION_MINOR}\"")
+add_definitions("-DSESE_PATCH_VERSION=\"${PROJECT_VERSION_PATCH}\"")
 add_definitions("-DSESE_REPO_HASH=\"${SESE_REPO_HASH}\"")
 add_definitions("-DSESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
 add_definitions("-DPROJECT_PATH=\"${CMAKE_CURRENT_LIST_DIR}\"")

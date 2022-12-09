@@ -26,6 +26,10 @@ namespace sese {
         return SESE_MINOR_VERSION;
     }
 
+    const char *Environment::getPatchVersion() noexcept {
+        return SESE_PATCH_VERSION;
+    }
+
     const char *Environment::getBuildDate() noexcept {
         return __DATE__;
     }
