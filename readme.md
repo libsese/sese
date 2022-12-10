@@ -1,12 +1,19 @@
 # Sese Library
 
-<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
-<img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=greed&logo=cplusplus"/>
-<img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=greed&logo=cmake"/>
-<br>
-<img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
-<img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
-<img src="https://img.shields.io/static/v1?label&message=macOS&color=blue&logo=apple"/>
+<div>
+  <img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
+  <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=greed&logo=cplusplus"/>
+  <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=greed&logo=cmake"/>
+  <br>
+  <img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
+  <img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
+  <img src="https://img.shields.io/static/v1?label&message=macOS&color=blue&logo=apple"/>
+  <br>
+  <a href="mailto://shiina_kaoru@outlook.com">
+  <img src="https://img.shields.io/static/v1?label=email&message=SHIINA_KAORU@Outlook.com&color=skyblue&logo=gmail"/>
+  </a>
+  <img src="https://img.shields.io/static/v1?label=QQ&message=995602964&color=skyblue&logo=tencentqq"/>
+</div>
 
 ## 基本信息
 
