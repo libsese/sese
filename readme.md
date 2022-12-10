@@ -1,79 +1,51 @@
-<div align=center>
- <h1><i>Sese Library</i></h1>
-</div>
-<div align=center>
- <img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
- <img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
- <img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
- <img src="https://img.shields.io/static/v1?label&message=macOS&color=blue&logo=macos"/>
- <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B20&color=greed&logo=cplusplus"/>
- <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=greed&logo=cmake"/>
-</div>
-<div align=center>
- <a href="mailto://shiina_kaoru@outlook.com">
-  <img src="https://img.shields.io/static/v1?label=email&message=SHIINA_KAORU@Outlook.com&color=skyblue&logo=gmail"/>
- </a>
- <img src="https://img.shields.io/static/v1?label=QQ&message=995602964&color=skyblue&logo=tencentqq"/>
-</div>
-<div align=center>
-    <i>When the belly is full,the mind is among the maids. Sese will not requesting anythings.</i>
-</div>
+# Sese Library
+
+<img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
+<img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=greed&logo=cplusplus"/>
+<img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=greed&logo=cmake"/>
 <br>
+<img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
+<img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
+<img src="https://img.shields.io/static/v1?label&message=macOS&color=blue&logo=apple"/>
 
-Sese 是一个跨平台基础库，以**静态链接库**或**动态链接库**方式部署至解决方案中。
+## 基本信息
 
-Sese 支持**多平台**编译，包括但不限于 Windows、Linux、macOS，可按需要进行移植。
+Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
+跨平台支持以源码级跨平台的方式提供。<br>
+设计初衷是为了在保持一定的性能、不变更当前技术栈的情况下，<br>
+提供一个开箱即用的 C++ 开发框架。<br>
+支持以静态链接或动态链接的方式部署至解决方案中。
 
-Sese 自<kbd>[7da500c](https://github.com/SHIINASAMA/sese/tree/7da500cfba4a7cbbc6071e686c2a6780236f7db3)</kbd>起，所有类均经过 **CTest** 与 **Valgrind**[[0]](#jmp0) 内存分析。
+注意：框架不支持交叉编译，且仅支持 AMD64 架构的机器。
 
-Sese 只支持在64位系统下运行，非64位不会进行适配，带来的效果与性能均不能保证。
+## 构建
 
- ## 构建
+项目选择了 CMake 作为构建系统，同时还使用了 Git 作为项目的版本控制系统（废话）。<br>
+其中，强烈推荐您使用 CMake 3.14 以上的版本，使用 FetchContent 为您导入项目依赖。
 
-### Windows
+关于依赖，目前项目引入的依赖主要有以下：
 
-使用 **MSVC v143 - VS 2022 C++ AMD64 生成工具** 、**CMake** 。
+| 名称                  | 地址                                       | 描述                                                               | 状态  |
+|---------------------|------------------------------------------|------------------------------------------------------------------|-----|
+| SString             | github.com/shiinasama/SString            | UTF-8 字符串处理                                                      | 已合并 |
+| sese-db             | github.com/shiinasama/sese-db            | sese 统一数据库接口                                                     | 计划内 |
+| sqlite              | www.sqlite.org                           | Sqlite 驱动，sese-db 间接引用                                           | 计划内 |
+| mariadb-connector-c | github.com/shiinasama/mariab-connector-c | fork 自 mariadb-corporation/mariadb-connector-c， 支持了 FetchContent | 计划内 |
 
-默认自动链接 ws2_32 系统网络库 和 dbghelp 调试库，其中后者为非必要项，添加 **-DNEED_DBGHELP** 开关自动链接。
+工具链的选取：
 
-为消除歧义，Windows 下生成的**静态链接库**[[1]](#jmp1)将以 "*.a" 方式命名。
-
-### Linux
-
-已在以下环境进行测试，仅供参考。
-
-- WSL2-ArchLinux 使用 **Clang 13**、**CMake**。
-- WSL2-Ubuntu 使用 **Clang 10**、**CMake**。
-- WSL2-AlmaLinux 使用 **Clang 12**、**CMake**。
-- Ubuntu 使用 **GCC 11.2.0**、**CMake**。
-
-默认自动链接 pthread、dl 库。
-
-### macOS
-
-使用 **Clang 12**、**CMake**。
-
-** 注意 ** ：为保证 Environment 提供完整信息，还需保证以下两点
-
-- 确保项目以**克隆**方式被保存下来。
-
-- 如果 git 本体不在系统环境变量中时，请手动指定 **-DGIT_EXECUTABLE** 位置。
-
-  ``` bash
-  cmake -DGIT_EXECUTABLE="/path/to/git"
-  ```
+- Windows
+  - MSVC v142 - VS 2019 C++ x64/x86 生成工具<br>尽管任然支持这一版本的工具链进行编译，<br>但我们还是建议您使用更高版本的 MSVC v143 - VS 2022 C++ x64/x86 生成工具。
+- Linux
+  - GNU/GCC 9.50 以上，我们同样建议您使用更高的版本。
+  - Clang 我们尚未进行最低版本的测试，推荐您使用 12 及其以上版本。
+- macOS
+  - 通常来说只要您拥有 command-line-tools 即可。
 
 ## 使用
 
-- 使用 [git submodule](docs/readme.md#git%20submodule)
+推荐的使用方式共两种：<br>
+首推使用 CMake FetchContent <br>
+其次才推荐使用 git submodule
 
-- 使用 [CMake FetchContent (New)](docs/readme.md#CMake%20FetchContent)
-
-## 其他
-
-- 示例程序以及一些必要细节请参阅 [Sese's Docs](docs/readme.md) 。
-
-<span id="jmp0"/>
-
-- Valgrind：在 macOS 无法通过 brew 直接安装，使用的是 [LouisBrunner/valgrind-macos](https://github.com/LouisBrunner/valgrind-macos) 编译安装。Windows 上没有相关实现，可以用 Visual Studio 自带的分析。
-
+具体的使用方法请参考 [docs](docs/readme.md) 和 [example](example/CMakeLists.txt)
