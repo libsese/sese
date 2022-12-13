@@ -2,11 +2,6 @@ if(WIN32)
     add_compile_options(/utf-8)
 endif()
 
-# Array
-add_executable(TestArray ${CMAKE_CURRENT_LIST_DIR}/TestArray/main.cpp)
-target_link_libraries(TestArray sese)
-add_test(NAME TestArray COMMAND TestArray)
-
 # StringBuilder
 add_executable(TestStringBuilder ${CMAKE_CURRENT_LIST_DIR}/TestStringBuilder/main.cpp)
 target_link_libraries(TestStringBuilder sese)
