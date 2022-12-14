@@ -207,3 +207,8 @@ add_test(NAME TestSHA256Util COMMAND TestSHA256Util)
 add_executable(TestSharedMemory ${CMAKE_CURRENT_LIST_DIR}/TestSharedMemory/main.cpp)
 target_link_libraries(TestSharedMemory sese)
 add_test(NAME TestSharedMemory COMMAND TestSharedMemory)
+
+# BufferWrapper
+add_executable(TestBufferWrapper ${CMAKE_CURRENT_LIST_DIR}/TestBufferWrapper/main.cpp)
+target_link_libraries(TestBufferWrapper sese)
+add_test(NAME TestBufferWrapper COMMAND TestBufferWrapper)

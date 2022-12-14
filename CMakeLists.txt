@@ -73,6 +73,7 @@ target_sources(sese PRIVATE
         src/FileStream.cpp src/Test.cpp
         src/Timer.cpp src/Initializer.cpp
         src/MemoryViewer.cpp src/ConsoleOutputStream.cpp
+        src/OutputBufferWrapper.cpp src/InputBufferWrapper.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
