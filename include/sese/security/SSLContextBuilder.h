@@ -10,3 +10,5 @@ namespace sese::security {
         static SSLContext::Ptr SSL4Server() noexcept;
     };
 }
+
+#define WIN32_LEAN_AND_MEAN

@@ -212,3 +212,8 @@ add_test(NAME TestSharedMemory COMMAND TestSharedMemory)
 add_executable(TestBufferWrapper ${CMAKE_CURRENT_LIST_DIR}/TestBufferWrapper/main.cpp)
 target_link_libraries(TestBufferWrapper sese)
 add_test(NAME TestBufferWrapper COMMAND TestBufferWrapper)
+
+# SSL
+add_executable(TestSSL ${CMAKE_CURRENT_LIST_DIR}/TestSSL/main.cpp)
+target_link_libraries(TestSSL sese)
+add_test(NAME TestSSL COMMAND TestSSL)

@@ -28,6 +28,11 @@ int32_t sese::security::SecuritySocket::connect(sese::Address::Ptr address) noex
     rt = SSL_set_fd((SSL *) ssl, (int) getRawSocket());
     if (rt != 1) {
         return -1;
+    }
+
+    rt = SSL_connect((SSL *) ssl);
+    if (rt != 1) {
+        return -1;
     } else {
         return 0;
     }
