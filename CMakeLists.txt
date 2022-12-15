@@ -11,10 +11,14 @@ include(${CMAKE_CURRENT_LIST_DIR}/cmake/Git.cmake)
 get_git_hash(SESE_REPO_HASH ${CMAKE_CURRENT_LIST_DIR})
 get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
+
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/Dep.cmake)
 
 option(BUILD_TEST "build unit test targets" OFF)
 
+message(STATUS "==================== SESE ====================")
 message(STATUS "Project version: ${PROJECT_VERSION}")
 message(STATUS "C STANDARD VERSION: ${CMAKE_C_STANDARD}")
 message(STATUS "CXX STANDARD VERSION: ${CMAKE_CXX_STANDARD}")
@@ -74,6 +78,8 @@ target_sources(sese PRIVATE
         src/Timer.cpp src/Initializer.cpp
         src/MemoryViewer.cpp src/ConsoleOutputStream.cpp
         src/OutputBufferWrapper.cpp src/InputBufferWrapper.cpp
+
+        src/security/SecurityConfig.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
@@ -102,22 +108,6 @@ if (WIN32)
     target_compile_options(sese PRIVATE "/wd4530")
     target_link_libraries(sese ws2_32)
 
-    set(OUTPUT_NAME string)
-    if (${CMAKE_BUILD_TYPE} MATCHES Debug)
-        set(OUTPUT_NAME "sesed.dll")
-    else ()
-        set(OUTPUT_NAME "sese.dll")
-    endif ()
-    add_custom_command(
-            TARGET
-            sese
-            POST_BUILD
-            COMMAND
-            ${CMAKE_COMMAND} -E copy_if_different
-            ${PROJECT_BINARY_DIR}/${OUTPUT_NAME}
-            ${PROJECT_BINARY_DIR}/test/${OUTPUT_NAME}
-    )
-
     target_compile_definitions(sese-static PUBLIC -DNEED_DBGHELP)
     target_compile_options(sese-static PRIVATE "/utf-8")
     target_compile_options(sese-static PRIVATE "/wd4251")
@@ -137,8 +127,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     message(STATUS "Linked libraries: pthread, dl")
 endif ()
 
-target_link_libraries(sese SString-static)
-target_link_libraries(sese-static SString-static)
+target_link_libraries(sese SString crypto ssl)
+target_link_libraries(sese-static SString-static crypto ssl)
 
 message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
 message(STATUS "CXX compile options: ${CMAKE_CXX_FLAGS}")
