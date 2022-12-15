@@ -3,6 +3,9 @@ project(example)
 
 set(CMAKE_CXX_STANDARD 20)
 
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
+
 include(FetchContent)
 FetchContent_Declare(sese
         GIT_REPOSITORY https://github.com/SHIINASAMA/sese.git

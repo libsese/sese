@@ -16,6 +16,8 @@ namespace sese::security {
         bool importPrivateKey(const char *file, int type) noexcept;
         bool authPrivateKey() noexcept;
 
+        bool verifyAndLoad(const char *file) noexcept;
+
         Socket::Ptr newSocketPtr(Socket::Family family, int32_t flags);
 
     private:

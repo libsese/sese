@@ -28,6 +28,11 @@ bool security::SSLContext::authPrivateKey() noexcept {
     return 1 == SSL_CTX_check_private_key((SSL_CTX *)context);
 }
 
+bool security::SSLContext::verifyAndLoad(const char *file) noexcept {
+    SSL_CTX_set_verify((SSL_CTX *) context, SSL_VERIFY_PEER, nullptr);
+    return 1 == SSL_CTX_load_verify_locations((SSL_CTX *) context, file, nullptr);
+}
+
 Socket::Ptr security::SSLContext::newSocketPtr(Socket::Family family, int32_t flags) {
     return std::make_shared<SecuritySocket>(shared_from_this(), family, flags);
 }

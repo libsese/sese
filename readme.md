@@ -35,19 +35,28 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 | 名称                  | 地址                                       | 描述                                                               | 状态  |
 |---------------------|------------------------------------------|------------------------------------------------------------------|-----|
 | SString             | github.com/shiinasama/SString            | UTF-8 字符串处理                                                      | 已合并 |
+| LibreSSL            | github.com/PowerShell/LibreSSL           | SSL 支持                                                           | 已合并 |
 | sese-db             | github.com/shiinasama/sese-db            | sese 统一数据库接口                                                     | 计划内 |
 | sqlite              | www.sqlite.org                           | Sqlite 驱动，sese-db 间接引用                                           | 计划内 |
 | mariadb-connector-c | github.com/shiinasama/mariab-connector-c | fork 自 mariadb-corporation/mariadb-connector-c， 支持了 FetchContent | 计划内 |
 
+开放的编译选项：
+
+| 名称              | 描述            | 默认值 |
+|-----------------|---------------|-----|
+| SESE_BUILD_TEST | 构建 sese 的单元测试 | OFF |
+| SESE_USE_SSL    | 添加 SSL 支持     | OFF |
+
 工具链的选取：
 
 - Windows
-  - MSVC v142 - VS 2019 C++ x64/x86 生成工具<br>尽管任然支持这一版本的工具链进行编译，<br>但我们还是建议您使用更高版本的 MSVC v143 - VS 2022 C++ x64/x86 生成工具。
+    - MSVC v142 - VS 2019 C++ x64/x86 生成工具<br>尽管任然支持这一版本的工具链进行编译，<br>但我们还是建议您使用更高版本的
+      MSVC v143 - VS 2022 C++ x64/x86 生成工具。
 - Linux
-  - GNU/GCC 9.50 以上，我们同样建议您使用更高的版本。
-  - Clang 我们尚未进行最低版本的测试，推荐您使用 12 及其以上版本。
+    - GNU/GCC 9.50 以上，我们同样建议您使用更高的版本。
+    - Clang 我们尚未进行最低版本的测试，推荐您使用 12 及其以上版本。
 - macOS
-  - 通常来说只要您拥有 command-line-tools 即可。
+    - 通常来说只要您拥有 command-line-tools 即可。
 
 ## 使用
 

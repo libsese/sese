@@ -2,8 +2,6 @@
 
 #include <sese/security/SSLContext.h>
 
-#include <utility>
-
 sese::security::SecuritySocket::SecuritySocket(std::shared_ptr<SSLContext> context, Socket::Family family, int32_t flags) noexcept
     : Socket(family, Socket::Type::TCP, flags),
       context(std::move(context)) {

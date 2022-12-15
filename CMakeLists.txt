@@ -14,9 +14,9 @@ get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
 
+option(SESE_BUILD_TEST "build unit test targets" OFF)
+option(SESE_USE_SSL "import ssl dependencies" ON)
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/Dep.cmake)
-
-option(BUILD_TEST "build unit test targets" OFF)
 
 message(STATUS "==================== SESE ====================")
 message(STATUS "Project version: ${PROJECT_VERSION}")
@@ -78,10 +78,18 @@ target_sources(sese PRIVATE
         src/Timer.cpp src/Initializer.cpp
         src/MemoryViewer.cpp src/ConsoleOutputStream.cpp
         src/OutputBufferWrapper.cpp src/InputBufferWrapper.cpp
-
-        src/security/SecurityConfig.cpp src/security/SSLContext.cpp
-        src/security/SSLContextBuilder.cpp src/security/SecuritySocket.cpp
         )
+
+if (SESE_USE_SSL)
+    target_compile_definitions(sese PRIVATE -DSESE_USE_SSL)
+    target_compile_definitions(sese-static PRIVATE -DSESE_USE_SSL)
+    target_sources(sese PRIVATE
+            src/security/SecurityConfig.cpp src/security/SSLContext.cpp
+            src/security/SSLContextBuilder.cpp src/security/SecuritySocket.cpp
+            )
+    target_link_libraries(sese crypto ssl)
+    target_link_libraries(sese-static crypto ssl)
+endif ()
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
 target_sources(sese PRIVATE
@@ -128,13 +136,13 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     message(STATUS "Linked libraries: pthread, dl")
 endif ()
 
-target_link_libraries(sese SString crypto ssl)
-target_link_libraries(sese-static SString-static crypto ssl)
+target_link_libraries(sese SString-static)
+target_link_libraries(sese-static SString-static crypto-static ssl-static)
 
 message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
 message(STATUS "CXX compile options: ${CMAKE_CXX_FLAGS}")
 
-if (BUILD_TEST)
+if (SESE_BUILD_TEST)
     enable_testing()
     add_subdirectory(test)
 endif ()
