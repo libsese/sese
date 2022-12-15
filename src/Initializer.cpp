@@ -3,6 +3,7 @@
 #include "sese/record/Logger.h"
 #include "sese/Initializer.h"
 #include "sese/convert/EncodingConverter.h"
+#include "sese/security/SecurityConfig.h"
 
 using sese::EncodingConverterInitiateTask;
 using sese::Initializer;
@@ -27,6 +28,7 @@ Initializer::Initializer() {
 #ifdef _WIN32
     buildInLoadTask(std::make_shared<sese::SocketInitiateTask>());
 #endif
+    buildInLoadTask(std::make_shared<sese::security::SecurityInitTask>());
 }
 
 Initializer::~Initializer() {

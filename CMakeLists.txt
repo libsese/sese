@@ -79,7 +79,8 @@ target_sources(sese PRIVATE
         src/MemoryViewer.cpp src/ConsoleOutputStream.cpp
         src/OutputBufferWrapper.cpp src/InputBufferWrapper.cpp
 
-        src/security/SecurityConfig.cpp
+        src/security/SecurityConfig.cpp src/security/SSLContext.cpp
+        src/security/SSLContextBuilder.cpp src/security/SecuritySocket.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
