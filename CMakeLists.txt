@@ -5,11 +5,11 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS on)
 include(FetchContent)
 
-option(BUILD_TEST "build unit test targets" off)
-option(USE_MARIADB "add mariadb and mysql support" off)
-option(USE_SQLITE "add sqlite support" on)
+option(SESE_DB_BUILD_TEST "build unit test targets" off)
+option(SESE_DB_USE_MARIADB "add mariadb and mysql support" off)
+option(SESE_DB_USE_SQLITE "add sqlite support" on)
 
-if (USE_MARIADB)
+if (SESE_DB_USE_MARIADB)
     # libmariadb version 3.3
     FetchContent_Declare(mariadb-connector-c
             GIT_REPOSITORY https://github.com/shiinasama/mariadb-connector-c.git
@@ -18,7 +18,7 @@ if (USE_MARIADB)
     FetchContent_MakeAvailable(mariadb-connector-c)
 endif ()
 
-if (USE_SQLITE)
+if (SESE_DB_USE_SQLITE)
     # sqlite version 3.40.0
     FetchContent_Declare(libsqlite
             URL https://www.sqlite.org/2022/sqlite-amalgamation-3400000.zip
@@ -46,12 +46,12 @@ add_library(sese-db-static)
 
 target_sources(sese-db PRIVATE src/DriverManager.cpp src/Util.cpp)
 
-if (${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND USE_SQLITE)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND SESE_DB_USE_SQLITE)
     target_link_libraries(sese-db ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
     target_link_libraries(sese-db-static ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 endif ()
 
-if (USE_MARIADB)
+if (SESE_DB_USE_MARIADB)
     target_sources(sese-db PRIVATE
             src/impl/MariaDriverInstanceImpl.cpp
             src/impl/MariaResultSetImpl.cpp
@@ -63,7 +63,7 @@ if (USE_MARIADB)
     target_link_libraries(sese-db-static libmariadb)
 endif ()
 
-if (USE_SQLITE)
+if (SESE_DB_USE_SQLITE)
     target_sources(sese-db PRIVATE
             src/impl/SqliteResultSetImpl.cpp
             src/impl/SqlitePreparedStatementImpl.cpp
@@ -79,10 +79,10 @@ target_include_directories(sese-db PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
 target_include_directories(sese-db-static PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
 target_sources(sese-db-static PRIVATE $<TARGET_OBJECTS:sese-db>)
 
-if (BUILD_TEST)
+if (SESE_DB_BUILD_TEST)
     enable_testing()
 
-    if (USE_MARIADB)
+    if (SESE_DB_USE_MARIADB)
         add_executable(TestMariaDriver)
         target_sources(TestMariaDriver PRIVATE test/TestMariaDriver.cpp)
         target_link_libraries(TestMariaDriver libmariadb)
@@ -92,7 +92,7 @@ if (BUILD_TEST)
         target_link_libraries(TestMariaInstance sese-db)
     endif ()
 
-    if (USE_SQLITE)
+    if (SESE_DB_USE_SQLITE)
         add_executable(TestSqliteDriver)
         target_sources(TestSqliteDriver PRIVATE test/TestSqliteDriver.cpp)
         target_link_libraries(TestSqliteDriver sqlite)
