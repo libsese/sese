@@ -30,7 +30,7 @@ endif ()
 if (SESE_USE_DB)
     FetchContent_Declare(sese-db
             GIT_REPOSITORY https://github.com/shiinasama/sese-db.git
-            GIT_TAG a885c07a24cb7bd2895017ae67456caaa6df0486
+            GIT_TAG v0.1.1
             SOURCE_DIR ${CMAKE_SOURCE_DIR}/lib/sese-db
             )
     FetchContent_GetProperties(sese-db)
