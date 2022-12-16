@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.14)
 project(sese VERSION 0.4.1)
 
 set(CMAKE_C_STANDARD 11)
@@ -15,7 +15,11 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
 
 option(SESE_BUILD_TEST "build unit test targets" OFF)
-option(SESE_USE_SSL "import ssl dependencies" ON)
+option(SESE_USE_SSL "import ssl dependencies" OFF)
+option(SESE_USE_DB "import sese-db dependencies" OFF)
+option(SESE_DB_BUILD_TEST "build unit test targets" OFF)
+option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
+option(SESE_DB_USE_SQLITE "add sqlite support" ON)
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/Dep.cmake)
 
 message(STATUS "==================== SESE ====================")
@@ -91,6 +95,11 @@ if (SESE_USE_SSL)
     target_link_libraries(sese-static crypto ssl)
 endif ()
 
+if (SESE_USE_DB)
+    target_link_libraries(sese sese-db)
+    target_link_libraries(sese-static sese-db)
+endif ()
+
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
 target_sources(sese PRIVATE
         ${NATIVE_PATH}/Test.cpp
@@ -136,8 +145,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     message(STATUS "Linked libraries: pthread, dl")
 endif ()
 
-target_link_libraries(sese SString-static)
-target_link_libraries(sese-static SString-static crypto-static ssl-static)
+target_link_libraries(sese SString)
+target_link_libraries(sese-static SString-static)
 
 message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
 message(STATUS "CXX compile options: ${CMAKE_CXX_FLAGS}")
