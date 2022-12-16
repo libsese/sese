@@ -10,8 +10,12 @@ include(FetchContent)
 FetchContent_Declare(sese
         GIT_REPOSITORY https://github.com/SHIINASAMA/sese.git
         GIT_TAG ${HASH_VALUE_OR_TAG_NAME}
+        SOURCE_DIR ${CMAKE_SOURCE_DIR}/lib/sese
         )
-FetchContent_MakeAvailable(sese)
+FetchContent_GetProperties(sese)
+if(NOT sese_POPULATED)
+    FetchContent_MakeAvailable(sese)
+endif()
 
 add_executable(example src/main.cpp)
 target_link_libraries(example sese)
