@@ -21,8 +21,12 @@ if (SESE_DB_USE_MARIADB)
     FetchContent_Declare(mariadb-connector-c
             GIT_REPOSITORY https://github.com/shiinasama/mariadb-connector-c.git
             GIT_TAG a0ae733ca2d68ba4535254ac85a4114611514053
+            SOURCE_DIR ${CMAKE_SOURCE_DIR}/lib/mariadb-connector-c
             )
-    FetchContent_MakeAvailable(mariadb-connector-c)
+    FetchContent_GetProperties(mariadb-connector-c)
+    if(NOT mariadb-connector-c_POPULATED)
+        FetchContent_MakeAvailable(mariadb-connector-c)
+    endif()
 endif ()
 
 if (SESE_DB_USE_SQLITE)
@@ -30,8 +34,12 @@ if (SESE_DB_USE_SQLITE)
     FetchContent_Declare(libsqlite
             URL https://www.sqlite.org/2022/sqlite-amalgamation-3400000.zip
             URL_HASH SHA3_256=362a64ad2891c6ff7552f039f3f233d49da984446be0862183eb5cef0d665969
+            SOURCE_DIR ${CMAKE_SOURCE_DIR}/lib/libsqlite
             )
-    FetchContent_MakeAvailable(libsqlite)
+    FetchContent_GetProperties(libsqlite)
+    if(NOT libsqlite_POPULATED)
+        FetchContent_MakeAvailable(libsqlite)
+    endif()
 
     add_library(sqlite SHARED)
     target_sources(sqlite PRIVATE
