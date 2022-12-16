@@ -32,20 +32,24 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 
 关于依赖，目前项目引入的依赖主要有以下：
 
-| 名称                  | 地址                                       | 描述                                                               | 状态  |
-|---------------------|------------------------------------------|------------------------------------------------------------------|-----|
-| SString             | github.com/shiinasama/SString            | UTF-8 字符串处理                                                      | 已合并 |
-| LibreSSL            | github.com/PowerShell/LibreSSL           | SSL 支持                                                           | 已合并 |
-| sese-db             | github.com/shiinasama/sese-db            | sese 统一数据库接口                                                     | 计划内 |
-| sqlite              | www.sqlite.org                           | Sqlite 驱动，sese-db 间接引用                                           | 计划内 |
-| mariadb-connector-c | github.com/shiinasama/mariab-connector-c | fork 自 mariadb-corporation/mariadb-connector-c， 支持了 FetchContent | 计划内 |
+| 名称                  | 地址                                       | 描述               | 父项      | 状态  |
+|---------------------|------------------------------------------|------------------|---------|-----|
+| SString             | github.com/shiinasama/SString            | UTF-8 字符串处理      | sese    | V   |
+| LibreSSL            | github.com/PowerShell/LibreSSL           | SSL 支持           | sese    | V   |
+| sese-db             | github.com/shiinasama/sese-db            | sese 统一数据库接口     | sese    | V   |
+| sqlite              | www.sqlite.org                           | SQLite 驱动        | sese-db | V   |
+| mariadb-connector-c | github.com/shiinasama/mariab-connector-c | MariaDB\MySQL 驱动 | sese-db | V   |
 
 开放的编译选项：
 
-| 名称              | 描述            | 默认值 |
-|-----------------|---------------|-----|
-| SESE_BUILD_TEST | 构建 sese 的单元测试 | OFF |
-| SESE_USE_SSL    | 添加 SSL 支持     | OFF |
+| 名称                  | 描述                  | 默认值 |
+|---------------------|---------------------|-----|
+| SESE_BUILD_TEST     | 构建 sese 的单元测试       | OFF |
+| SESE_USE_SSL        | 添加 SSL 支持           | OFF |
+| SESE_USE_DB         | 添加数据库接口支持           | OFF |
+| SESE_DB_BUILD_TEST  | 构建 sese-db 的单元测试    | OFF |
+| SESE_DB_USE_SQLITE  | 添加 SQLite 驱动        | ON  |
+| SESE_DB_USE_MARIADB | 添加 MariaDB\MySQL 驱动 | OFF |
 
 工具链的选取：
 
