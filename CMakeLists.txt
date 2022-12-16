@@ -3,11 +3,18 @@ project(sese-db VERSION 0.1)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS on)
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
 include(FetchContent)
 
 option(SESE_DB_BUILD_TEST "build unit test targets" off)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" off)
 option(SESE_DB_USE_SQLITE "add sqlite support" on)
+
+# Avoid warning about DOWNLOAD_EXTRACT_TIMESTAMP in CMake 3.24:
+if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.24.0")
+    cmake_policy(SET CMP0135 NEW)
+endif()
 
 if (SESE_DB_USE_MARIADB)
     # libmariadb version 3.3
