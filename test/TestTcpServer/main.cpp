@@ -19,10 +19,10 @@ int main() {
     auto socket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP);
     assert(helper, socket->bind(address) == 0, -1);
     assert(helper, socket->listen(5) == 0, -1);
-    auto server = TcpServer::create(socket, 4, 10);
+    auto server = TcpServer::create(socket, 4, 0);
     assert(helper, nullptr != server, -1);
 #else
-    auto server = TcpServer::create(address, 4, 10);
+    auto server = TcpServer::create(address, 4, 0);
     assert(helper, nullptr != server, -1);
 #endif
 

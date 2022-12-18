@@ -81,7 +81,7 @@ Server::Ptr Server::create(const Socket::Ptr &listenSocket, size_t threads, size
     }
 
     KEvent event{};
-    EV_SET(&event, sockFd, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
+    EV_SET(&event, listenSocket->getRawSocket(), EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
     if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
         close(kqueueFd);
         return nullptr;

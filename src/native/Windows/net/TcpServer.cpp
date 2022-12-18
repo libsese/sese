@@ -264,14 +264,19 @@ void Server::WindowsWorkerFunction() noexcept {
 
                 handler(ioContext);
 
-                if (ioContext->isDetach) {
+                if (ioContext->isClosed) {
+                    // 不需要保留连接，已主动关闭
+#ifdef _DEBUG
+                    printf("CLOSE: %p\n", ioContext);
+#endif
+                    delete ioContext;
+                }
+                else if (ioContext->isDetach) {
                     // 分离
 #ifdef _DEBUG
                     printf("DETACH: %p\n", ioContext);
 #endif
                     delete ioContext;
-                } else if (ioContext->isClosed) {
-                    // 不需要保留连接，已主动关闭
                 } else {
                     if (0 == keepAlive) {
 #ifdef _DEBUG

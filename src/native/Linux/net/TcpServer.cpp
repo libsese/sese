@@ -19,6 +19,10 @@ void sese::IOContext::close() {
     ::close(socket);
 }
 
+void sese::IOContext::detach() {
+    isDetach = true;
+}
+
 #define CLEAR      \
     close(sockFd); \
     return nullptr;
@@ -161,7 +165,10 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
 
                     if (ioContext->isClosed) {
                         // 不需要保留连接，已主动关闭
-                    } else {
+                    } else if (ioContext->isDetach) {
+                        // 已分离
+                    }
+                    else {
                         if (0 == keepAlive) {
                             ::shutdown(ioContext->socket, SHUT_RDWR);
                             ::close(ioContext->socket);
