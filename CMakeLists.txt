@@ -66,6 +66,7 @@ target_sources(sese PRIVATE
         src/net/http/Header.cpp src/net/http/QueryString.cpp
         src/net/http/HttpUtil.cpp src/net/http/UrlHelper.cpp
         src/net/http/HttpClient.cpp src/net/http/HttpServer.cpp
+        src/net/http/Cookie.cpp
         src/net/rpc/Server.cpp src/net/rpc/Client.cpp
 
         src/config/ConfigUtil.cpp
