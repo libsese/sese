@@ -124,33 +124,25 @@
 /// \param target 父对象
 /// \param name 字段名称
 /// \param def 默认值
-#define GetBoolean(value, target, name, def) \
-    bool value;                              \
-    Get(value, target, bool, name, def)
+#define GetBoolean(value, target, name, def) bool value; Get(value, target, bool, name, def)
 
 /// 获取 int64_t 类型的字段
 /// \param value 变量名称
 /// \param target 父对象
 /// \param name 字段名称
 /// \param def 默认值
-#define GetInteger(value, target, name, def) \
-    int64_t value;                           \
-    Get(value, target, int64_t, name, def)
+#define GetInteger(value, target, name, def) int64_t value; Get(value, target, int64_t, name, def)
 
 /// 获取 double 类型的字段
 /// \param value 变量名称
 /// \param target 父对象
 /// \param name 字段名称
 /// \param def 默认值
-#define GetDouble(value, target, name, def) \
-    double value;                           \
-    Get(value, target, double, name, def)
+#define GetDouble(value, target, name, def) double value; Get(value, target, double, name, def)
 
 /// 获取 std::string 类型的字段
 /// \param value 变量名称
 /// \param target 父对象
 /// \param name 字段名称
 /// \param def 默认值
-#define GetString(value, target, name, def) \
-    std::string value;                      \
-    Get(value, target, std::string, name, def)
+#define GetString(value, target, name, def) std::string value; Get(value, target, std::string, name, def)
