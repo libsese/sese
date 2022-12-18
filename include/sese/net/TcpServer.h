@@ -46,8 +46,8 @@ namespace sese {
         int64_t read(void *buffer, size_t length);
         int64_t write(const void *buffer, size_t length);
         void close();
+        void detach();
 
-    private:
 #ifdef _WIN32
         WSAOVERLAPPED overlapped{};
         WSABUF wsaBuf{MaxBufferSize, buffer};
@@ -57,6 +57,7 @@ namespace sese {
         DWORD nRead = 0;
 #endif
         bool isClosed = false;
+        bool isDetach = false;
         socket_t socket = -1;
     };
 

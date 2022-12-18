@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
 
-set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
-
 include(FetchContent)
 
 set(FETCHCONTENT_QUIET off)
@@ -22,10 +19,7 @@ macro(requires_from_git name url hash_or_tag)
             ${CMAKE_SOURCE_DIR}/lib/${name}
     )
 
-    FetchContent_GetProperties(${name})
-    if (NOT ${${name}_POPULATED})
-        FetchContent_MakeAvailable(${name})
-    endif ()
+    FetchContent_MakeAvailable(${name})
 endmacro()
 
 macro(requires_from_url name url sha256)
@@ -38,8 +32,5 @@ macro(requires_from_url name url sha256)
             ${CMAKE_SOURCE_DIR}/lib/${name}
     )
 
-    FetchContent_GetProperties(${name})
-    if (NOT ${${name}_POPULATED})
-        FetchContent_MakeAvailable(${name})
-    endif ()
+    FetchContent_MakeAvailable(${name})
 endmacro()

@@ -2,7 +2,6 @@
 #include <sese/Util.h>
 
 #pragma warning(disable : 4267)
-#define DEBUG
 
 using sese::IOContext;
 using Server = sese::TcpServer;
@@ -36,8 +35,12 @@ int64_t sese::IOContext::write(const void *buffer, size_t length) {
 
 void sese::IOContext::close() {
     isClosed = true;
-    shutdown(socket, SD_BOTH);
+    ::shutdown(socket, SD_BOTH);
     ::closesocket(socket);
+}
+
+void sese::IOContext::detach() {
+    isDetach = true;
 }
 
 #define CLEAR            \
@@ -133,7 +136,7 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
         auto ioContext = new IOContext;
         ioContext->socket = client;
         ioContext->operation = Operation::Read;
-#ifdef DEBUG
+#ifdef _DEBUG
         printf("NEW: %p\n", ioContext);
 #endif
 
@@ -151,6 +154,9 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
             if (keepAlive > 0) {
                 WindowsCloseCallback(ioContext);
             } else {
+#ifdef _DEBUG
+                printf("CLOSE: %p\n", ioContext);
+#endif
                 closesocket(client);
                 delete ioContext;
             }
@@ -168,7 +174,7 @@ void Server::shutdown() noexcept {
     for (auto &pair: taskMap) {
         ::shutdown(pair.first->socket, SD_BOTH);
         closesocket(pair.first->socket);
-#ifdef DEBUG
+#ifdef _DEBUG
         printf("CLOSE: %p\n", pair.first);
 #endif
         delete pair.first;
@@ -179,7 +185,7 @@ void Server::shutdown() noexcept {
 }
 
 void Server::WindowsCloseCallback(IOContext *ioContext) noexcept {
-#ifdef DEBUG
+#ifdef _DEBUG
     printf("CLOSE: %p\n", ioContext);
 #endif
     mutex.lock();
@@ -229,6 +235,9 @@ void Server::WindowsWorkerFunction() noexcept {
             auto e = WSAGetLastError();
             if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
                 // 读取发生错误
+#ifdef _DEBUG
+                printf("CLOSE: %p\n", ioContext);
+#endif
                 closesocket(ioContext->socket);
                 delete ioContext;
                 ioContext = nullptr;
@@ -236,28 +245,38 @@ void Server::WindowsWorkerFunction() noexcept {
             } else {
                 // 已经读取到数据 - 触发首次事件
                 // ...
-#ifdef DEBUG
+#ifdef _DEBUG
                 printf("RECV: %p\n", ioContext);
 #endif
                 auto client = ioContext->socket;
                 if (0 != keepAlive) {
                     mutex.lock();
                     auto iterator = taskMap.find(ioContext);
-                    // iterator != taskMap.end()
                     if (iterator != taskMap.end()) {
                         auto task = iterator->second;
                         taskMap.erase(ioContext);
                         mutex.unlock();
                         task->cancel();
+                    } else {
+                        mutex.unlock();
                     }
                 }
 
                 handler(ioContext);
 
-                if (ioContext->isClosed) {
+                if (ioContext->isDetach) {
+                    // 分离
+#ifdef _DEBUG
+                    printf("DETACH: %p\n", ioContext);
+#endif
+                    delete ioContext;
+                } else if (ioContext->isClosed) {
                     // 不需要保留连接，已主动关闭
                 } else {
                     if (0 == keepAlive) {
+#ifdef _DEBUG
+                        printf("CLOSE: %p\n", ioContext);
+#endif
                         ::shutdown(ioContext->socket, SD_BOTH);
                         ::closesocket(ioContext->socket);
                         delete ioContext;
@@ -275,7 +294,7 @@ void Server::WindowsWorkerFunction() noexcept {
                         if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
                             this->WindowsCloseCallback(ioContext);
                         } else {
-#ifdef DEBUG
+#ifdef _DEBUG
                             printf("POST: %p\n", ioContext);
 #endif
                         }
