@@ -40,14 +40,6 @@ void sese::http::Cookie::setExpires(int64_t expires) {
     Cookie::expires = expires;
 }
 
-int64_t sese::http::Cookie::getTimestamp() const {
-    return timestamp;
-}
-
-void sese::http::Cookie::setTimestamp(int64_t timestamp) {
-    Cookie::timestamp = timestamp;
-}
-
 const std::string &sese::http::Cookie::getName() const {
     return name;
 }

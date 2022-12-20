@@ -5,6 +5,8 @@ namespace sese::http {
 
     class API Cookie {
     public:
+        using Ptr = std::shared_ptr<Cookie>;
+
         Cookie(const std::string &name);
         Cookie(const std::string &name, const std::string &value);
         Cookie(const std::string &name, const std::string &value, const std::string &path);
@@ -23,10 +25,7 @@ namespace sese::http {
         void setVersion(int32_t version);
         int64_t getExpires() const;
         void setExpires(int64_t expires);
-        int64_t getTimestamp() const;
-        void setTimestamp(int64_t timestamp);
         const std::string &getName() const;
-        void setName(const std::string &name);
         const std::string &getValue() const;
         void setValue(const std::string &value);
         const std::string &getDomain() const;
@@ -45,7 +44,6 @@ namespace sese::http {
 
         int32_t version = 0;
         int64_t expires = 0;
-        int64_t timestamp = 0;
 
         std::string name;
         std::string value;
