@@ -1,4 +1,5 @@
 #include <sese/net/http/HttpUtil.h>
+#include <sese/text/DateTimeFormatter.h>
 
 #ifndef _WIN32
 #define _atoi64(val) strtoll(val, nullptr, 10)
@@ -156,7 +157,7 @@ bool HttpUtil::sendResponse(Stream *dest, ResponseHeader *response) noexcept {
     if (-1 == dest->write("\r\n", 2)) return false;
 
     // keys & values
-    if (!sendHeader(dest, response)) return false;
+    if (!sendHeader(dest, response, true)) return false;
 
     return true;
 }
@@ -180,16 +181,88 @@ bool HttpUtil::recvHeader(Stream *source, StringBuilder &builder, Header *header
     return true;
 }
 
-bool HttpUtil::sendHeader(Stream *dest, Header *header) noexcept {
+#define WRITE(buffer, size) \
+    if (-1 == dest->write(buffer, size)) return false
+
+bool HttpUtil::sendHeader(Stream *dest, Header *header, bool isResp) noexcept {
     size_t len;
     for (const auto &pair: *header) {
         len = pair.first.length();
-        if (-1 == dest->write(pair.first.c_str(), len)) return false;
-        if (-1 == dest->write(": ", 2)) return false;
+        WRITE(pair.first.c_str(), len);
+        WRITE(": ", 2);
         len = pair.second.length();
-        if (-1 == dest->write(pair.second.c_str(), len)) return false;
-        if (-1 == dest->write("\r\n", 2)) return false;
+        WRITE(pair.second.c_str(), len);
+        WRITE("\r\n", 2);
     }
+
+    auto cookies = header->getCookies();
+    if (cookies != nullptr) {
+        if (isResp) {
+            if (!sendSetCookie(dest, cookies)) return false;
+        } else {
+            if (!sendCookie(dest, cookies)) return false;
+        }
+    }
+
+
     if (-1 == dest->write("\r\n", 2)) return false;
     return true;
 }
+
+bool sese::http::HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
+    for (decltype(auto) cookie: *cookies) {
+        if (-1 == dest->write("Set-Cookie: ", 12)) return false;
+        const std::string &name = cookie.first;
+        const std::string &value = cookie.second->getValue();
+        WRITE(name.c_str(), name.size());
+        WRITE(": ", 2);
+        WRITE(value.c_str(), value.size());
+        WRITE("; ", 2);
+
+        const std::string &path = cookie.second->getPath();
+        WRITE(path.c_str(), path.size());
+        WRITE("; ", 2);
+
+        const std::string &domain = cookie.second->getDomain();
+        WRITE(domain.c_str(), domain.size());
+        WRITE("; ", 2);
+
+        int64_t expires = cookie.second->getExpires();
+        if (expires > 0) {
+            auto date = DateTime(expires, 0);
+            auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
+            WRITE(dateString.c_str(), dateString.size());
+            WRITE("; ", 2);
+        }
+
+        bool secure = cookie.second->isSecure();
+        if (secure) {
+            WRITE("Secure; ", 8);
+        }
+
+        bool httpOnly = cookie.second->isHttpOnly();
+        if (httpOnly) {
+            WRITE("HttpOnly; ", 10);
+        }
+
+        WRITE("\r\n", 2);
+    }
+    return true;
+}
+
+bool sese::http::HttpUtil::sendCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
+    WRITE("Cookie: ", 8);
+
+    for (decltype(auto) cookie: *cookies) {
+        const std::string &name = cookie.first;
+        const std::string &value = cookie.second->getValue();
+        WRITE(name.c_str(), name.size());
+        WRITE("=", 1);
+        WRITE(value.c_str(), value.size());
+        WRITE("; ", 2);
+    }
+
+    return true;
+}
+
+#undef WRITE

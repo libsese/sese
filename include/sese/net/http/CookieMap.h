@@ -25,10 +25,12 @@ namespace sese::http {
         /// \retval nullptr 不存在指定名称的 Cookie
         Cookie::Ptr find(const std::string &name) noexcept;
 
+        [[nodiscard]] bool empty() const { return map.empty(); }
+
         inline Map::iterator begin() noexcept { return map.begin(); }
         inline Map::iterator end() noexcept { return map.end(); }
 
     private:
         Map map;
     };
-}
+}// namespace sese::http

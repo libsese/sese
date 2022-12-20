@@ -7,18 +7,13 @@ namespace sese::http {
     public:
         using Ptr = std::shared_ptr<Cookie>;
 
-        Cookie(const std::string &name);
-        Cookie(const std::string &name, const std::string &value);
-        Cookie(const std::string &name, const std::string &value, const std::string &path);
-        Cookie(const std::string &name, const std::string &value, const std::string &path, const std::string &domain);
+        explicit Cookie(const std::string &name) noexcept;
 
     public:
         bool expired() const;
 
         bool isSecure() const;
         void setSecure(bool secure);
-        bool isDiscard() const;
-        void setDiscard(bool discard);
         bool isHttpOnly() const;
         void setHttpOnly(bool httpOnly);
         int32_t getVersion() const;
@@ -39,7 +34,6 @@ namespace sese::http {
 
     private:
         bool secure = false;
-        bool discard = false;
         bool httpOnly = false;
 
         int32_t version = 0;

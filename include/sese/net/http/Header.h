@@ -5,8 +5,7 @@
  * @date 2022年05月17日
  */
 #pragma once
-#include <sese/Config.h>
-#include <map>
+#include <sese/net/http/CookieMap.h>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -36,12 +35,16 @@ namespace sese::http {
         const std::string &get(const std::string &key, const std::string &defaultValue) noexcept;
         std::string_view getView(const std::string &key, const std::string &defaultValue) noexcept;
 
-        inline const std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
-        inline const std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
+        inline std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
+        inline std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
 
         inline void clear() { headers.clear(); }
 
+        const CookieMap::Ptr &getCookies() const;
+        void setCookies(const CookieMap::Ptr &cookies);
+
     protected:
         std::map<std::string, std::string> headers;
+        CookieMap::Ptr cookies = nullptr;
     };
 }// namespace sese::http

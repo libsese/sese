@@ -31,3 +31,11 @@ std::string_view Header::getView(const std::string &key, const std::string &defa
         return res->second;
     }
 }
+
+const sese::http::CookieMap::Ptr &sese::http::Header::getCookies() const {
+    return cookies;
+}
+
+void sese::http::Header::setCookies(const sese::http::CookieMap::Ptr &cookies) {
+    Header::cookies = cookies;
+}

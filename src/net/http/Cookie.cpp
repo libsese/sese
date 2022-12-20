@@ -1,4 +1,15 @@
 #include <sese/net/http/Cookie.h>
+#include <ctime>
+
+sese::http::Cookie::Cookie(const std::string &name) noexcept {
+    this->name = name;
+}
+
+bool sese::http::Cookie::expired() const {
+    time_t time;
+    std::time(&time);
+    return time > this->expires;
+}
 
 bool sese::http::Cookie::isSecure() const {
     return secure;
@@ -6,14 +17,6 @@ bool sese::http::Cookie::isSecure() const {
 
 void sese::http::Cookie::setSecure(bool secure) {
     Cookie::secure = secure;
-}
-
-bool sese::http::Cookie::isDiscard() const {
-    return discard;
-}
-
-void sese::http::Cookie::setDiscard(bool discard) {
-    Cookie::discard = discard;
 }
 
 bool sese::http::Cookie::isHttpOnly() const {
