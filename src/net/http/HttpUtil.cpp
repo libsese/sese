@@ -240,32 +240,31 @@ bool sese::http::HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &coo
         WRITE(name.c_str(), name.size());
         WRITE(": ", 2);
         WRITE(value.c_str(), value.size());
-        WRITE("; ", 2);
 
+        WRITE("; ", 2);
         const std::string &path = cookie.second->getPath();
         WRITE(path.c_str(), path.size());
-        WRITE("; ", 2);
 
+        WRITE("; ", 2);
         const std::string &domain = cookie.second->getDomain();
         WRITE(domain.c_str(), domain.size());
-        WRITE("; ", 2);
 
         int64_t expires = cookie.second->getExpires();
         if (expires > 0) {
+            WRITE("; ", 2);
             auto date = DateTime(expires, 0);
             auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
             WRITE(dateString.c_str(), dateString.size());
-            WRITE("; ", 2);
         }
 
         bool secure = cookie.second->isSecure();
         if (secure) {
-            WRITE("Secure; ", 8);
+            WRITE("; Secure", 10);
         }
 
         bool httpOnly = cookie.second->isHttpOnly();
         if (httpOnly) {
-            WRITE("HttpOnly; ", 10);
+            WRITE("; HttpOnly", 10);
         }
 
         WRITE("\r\n", 2);
@@ -276,13 +275,18 @@ bool sese::http::HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &coo
 bool sese::http::HttpUtil::sendCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
     WRITE("Cookie: ", 8);
 
+    bool isFirst = true;
     for (decltype(auto) cookie: *cookies) {
+        if (isFirst) {
+            isFirst = false;
+        } else {
+            WRITE("; ", 2);
+        }
         const std::string &name = cookie.first;
         const std::string &value = cookie.second->getValue();
         WRITE(name.c_str(), name.size());
         WRITE("=", 1);
         WRITE(value.c_str(), value.size());
-        WRITE("; ", 2);
     }
 
     return true;
