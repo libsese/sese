@@ -29,6 +29,8 @@ namespace sese {
         AbstractStringBuffer(AbstractStringBuffer &abstractStringBuffer) noexcept;
         AbstractStringBuffer(AbstractStringBuffer &&abstractStringBuffer) noexcept;
 
+        static std::vector<std::string> split(const std::string &text, const std::string &sub) noexcept;
+
     protected:
         size_t cap{};           /// 实际容量
         size_t len = 0;         /// 字符串长度

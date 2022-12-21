@@ -47,6 +47,23 @@ namespace sese {
         abstractStringBuffer.buffer = nullptr;
     }
 
+    std::vector<std::string> AbstractStringBuffer::split(const std::string &text, const std::string &sub) noexcept {
+        std::vector<std::string> v;
+        std::string::size_type pos1, pos2;
+        pos2 = text.find(sub);
+        pos1 = 0;
+        while (std::string::npos != pos2) {
+            v.emplace_back(text.data() + pos1, pos2 - pos1);
+
+            pos1 = pos2 + sub.size();
+            pos2 = text.find(sub, pos1);
+        }
+        if (pos1 != text.length()) {
+            v.emplace_back(text.data() + pos1);
+        }
+        return v;
+    }
+
     void AbstractStringBuffer::append(const char *str) noexcept {
         auto l = strlen(str);
         if (l > cap - this->len) {

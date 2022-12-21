@@ -55,10 +55,13 @@ namespace sese::http {
     private:
         static bool getLine(Stream *source, StringBuilder &builder) noexcept;
 
-        inline static bool recvHeader(Stream *source, StringBuilder &builder, Header *header) noexcept;
+        inline static bool recvHeader(Stream *source, StringBuilder &builder, Header *header, bool isResp = false) noexcept;
         inline static bool sendHeader(Stream *dest, Header *header, bool isResp = false) noexcept;
 
         inline static bool sendSetCookie(Stream *dest, const CookieMap::Ptr & cookies) noexcept;
         inline static bool sendCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept;
+
+        inline static Cookie::Ptr parseFromSetCookie(const std::string &text) noexcept;
+        inline static CookieMap::Ptr parseFromCookie(const std::string &text) noexcept;
     };
 }// namespace sese::http

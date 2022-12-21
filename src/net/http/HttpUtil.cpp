@@ -1,10 +1,12 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/text/DateTimeFormatter.h>
+#include <sese/StringBuilder.h>
 
 #ifndef _WIN32
 #define _atoi64(val) strtoll(val, nullptr, 10)
 #endif
 
+using sese::StringBuilder;
 using sese::http::HttpUtil;
 
 bool HttpUtil::getLine(Stream *source, StringBuilder &builder) noexcept {
@@ -69,7 +71,7 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
     }
 
     // keys & values
-    if (!recvHeader(source, builder, request)) return false;
+    if (!recvHeader(source, builder, request, false)) return false;
 
     return true;
 }
@@ -116,7 +118,7 @@ bool sese::http::HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noe
     }
 
     // keys & values
-    if (!sendHeader(dest, request)) return false;
+    if (!sendHeader(dest, request, false)) return false;
 
     return true;
 }
@@ -138,7 +140,7 @@ bool HttpUtil::recvResponse(Stream *source, ResponseHeader *response) noexcept {
     response->setCode((uint16_t) _atoi64(firstLines[1].c_str()));
 
     // keys & values
-    if (!recvHeader(source, builder, response)) return false;
+    if (!recvHeader(source, builder, response, true)) return false;
 
     return true;
 }
@@ -162,7 +164,12 @@ bool HttpUtil::sendResponse(Stream *dest, ResponseHeader *response) noexcept {
     return true;
 }
 
-bool HttpUtil::recvHeader(Stream *source, StringBuilder &builder, Header *header) noexcept {
+bool HttpUtil::recvHeader(Stream *source, StringBuilder &builder, Header *header, bool isResp) noexcept {
+    CookieMap::Ptr cookies;
+    if (isResp) {
+        cookies = std::make_shared<CookieMap>();
+    }
+
     while (true) {
         if (!getLine(source, builder)) {
             return false;
@@ -175,9 +182,25 @@ bool HttpUtil::recvHeader(Stream *source, StringBuilder &builder, Header *header
             auto pair = builder.split(": ");
             if (pair.size() != 2) return false;
             builder.clear();
-            header->set(pair[0], pair[1]);
+            if (isResp) {
+                if (strcasecmp(pair[0].c_str(), "Set-Cookie") == 0) {
+                    auto cookie = parseFromSetCookie(pair[1]);
+                    if (cookie != nullptr) {
+                        cookies->add(cookie);
+                    }
+                } else {
+                    header->set(pair[0], pair[1]);
+                }
+            } else {
+                if (strcasecmp(pair[0].c_str(), "Cookie") == 0) {
+                    cookies = parseFromCookie(pair[1]);
+                } else {
+                    header->set(pair[0], pair[1]);
+                }
+            }
         }
     }
+    header->setCookies(cookies);
     return true;
 }
 
@@ -266,3 +289,51 @@ bool sese::http::HttpUtil::sendCookie(Stream *dest, const CookieMap::Ptr &cookie
 }
 
 #undef WRITE
+
+#define COMPARE(str1, str2) strcasecmp(str1.c_str(), str2) == 0
+
+sese::http::Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) noexcept {
+    auto result = StringBuilder::split(text, "; ");
+    sese::http::Cookie::Ptr cookie = nullptr;
+    bool isFirst = true;
+    for (decltype(auto) one: result) {
+        auto pair = StringBuilder::split(one, "=");
+        if (isFirst) {
+            if (pair.size() != 2) return nullptr;
+            cookie = std::make_shared<sese::http::Cookie>(pair[0], pair[1]);
+            isFirst = false;
+        } else {
+            if (pair.size() == 2) {
+                // 键值对
+                if (COMPARE(pair[0], "expires")) {
+                } else if (COMPARE(pair[0], "path")) {
+                    cookie->setPath(pair[0]);
+                } else if (COMPARE(pair[0], "domain")) {
+                    cookie->setDomain(pair[0]);
+                }
+            } else if (pair.size() == 1) {
+                // 属性
+                if (COMPARE(one, "secure")) {
+                    cookie->setSecure(true);
+                } else if (COMPARE(one, "httponly")) {
+                    cookie->setHttpOnly(true);
+                }
+            }
+        }
+    }
+
+    return cookie;
+}
+
+#undef COMPARE
+
+sese::http::CookieMap::Ptr HttpUtil::parseFromCookie(const std::string &text) noexcept {
+    auto cookies = std::make_shared<sese::http::CookieMap>();
+    auto result = StringBuilder::split(text, "; ");
+    for (decltype(auto) one: result) {
+        auto pair = StringBuilder::split(one, "=");
+        if (pair.size() != 2) continue;
+        cookies->add(std::make_shared<sese::http::Cookie>(pair[0], pair[1]));
+    }
+    return cookies;
+}
