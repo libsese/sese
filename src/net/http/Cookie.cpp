@@ -32,11 +32,11 @@ void sese::http::Cookie::setHttpOnly(bool httpOnly) {
     Cookie::httpOnly = httpOnly;
 }
 
-int64_t sese::http::Cookie::getExpires() const {
+uint64_t sese::http::Cookie::getExpires() const {
     return expires;
 }
 
-void sese::http::Cookie::setExpires(int64_t expires) {
+void sese::http::Cookie::setExpires(uint64_t expires) {
     Cookie::expires = expires;
 }
 

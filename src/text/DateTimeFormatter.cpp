@@ -1,4 +1,5 @@
 #include "sese/text/DateTimeFormatter.h"
+#include "sese/text/StringBuilder.h"
 #include <cstring>
 #ifdef _WIN32
 #define itoa _itoa_s
@@ -32,47 +33,13 @@ static char *itoa(int num, char *str, int radix = 10) {
 }
 #endif
 
-const char *Month[] = {"January",
-                       "February",
-                       "March",
-                       "April",
-                       "May",
-                       "June",
-                       "July",
-                       "August",
-                       "September",
-                       "October",
-                       "November",
-                       "December"};
+const char *Month[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
-const char *Mon[] = {"Jan",
-                     "Feb",
-                     "Mar",
-                     "Apr",
-                     "May",
-                     "Jun",
-                     "Jul",
-                     "Aug",
-                     "Sep",
-                     "Oct",
-                     "Nov",
-                     "Dec"};
+const char *Mon[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-const char *WeekDay[] = {"Sunday",
-                         "Monday",
-                         "Tuesday",
-                         "Wednesday",
-                         "Thursday",
-                         "Friday",
-                         "Saturday"};
+const char *WeekDay[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
-const char *WkDay[] = {"Sun",
-                       "MonDays",
-                       "Tue",
-                       "Wed",
-                       "Thu",
-                       "Fri",
-                       "Sat"};
+const char *WkDay[] = {"Sun", "MonDays", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
 
 static int count(const char &ch, const char *str) {
@@ -294,4 +261,37 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
 
 std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dateTime, const std::string &pattern) {
     return format(*dateTime.get(), pattern);
+}
+
+inline int mon2number(const char *str) {
+    for (int i = 0; i < 12; i++) {
+        if (strcasecmp(str, Mon[i]) == 0) {
+            return i;
+        }
+    }
+}
+
+// e.x. "Tue, 17 Oct 2023 15:41:22 GMT"
+uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &text) {
+    auto date = StringBuilder::split(text, " ");
+
+    std::tm tm{};
+
+    tm.tm_mday = std::stol(date[1]);
+    tm.tm_mon = mon2number(date[2].c_str());
+    tm.tm_year = std::stol(date[3]) - 1900;
+
+    char _h[3]{0};
+    char _m[3]{0};
+    char _s[3]{0};
+    memcpy(_h, date[4].c_str() + 0, 2);
+    memcpy(_m, date[4].c_str() + 3, 2);
+    memcpy(_s, date[4].c_str() + 6, 2);
+
+    char *end;
+    tm.tm_hour = std::strtol(_h, &end, 10);
+    tm.tm_min = std::strtol(_m, &end, 10);
+    tm.tm_sec = std::strtol(_s, &end, 10);
+
+    return std::mktime(&tm);
 }

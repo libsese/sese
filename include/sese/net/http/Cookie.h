@@ -17,8 +17,8 @@ namespace sese::http {
         void setSecure(bool secure);
         bool isHttpOnly() const;
         void setHttpOnly(bool httpOnly);
-        int64_t getExpires() const;
-        void setExpires(int64_t expires);
+        uint64_t getExpires() const;
+        void setExpires(uint64_t expires);
         const std::string &getName() const;
         const std::string &getValue() const;
         void setValue(const std::string &value);
@@ -31,7 +31,7 @@ namespace sese::http {
         bool secure = false;
         bool httpOnly = false;
 
-        int64_t expires = 0;
+        uint64_t expires = 0;
 
         std::string name;
         std::string value;

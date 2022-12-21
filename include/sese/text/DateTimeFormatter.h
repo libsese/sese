@@ -49,5 +49,7 @@ namespace sese::text {
         static std::string format(const DateTime &dateTime, const std::string &pattern = TIME_DEFAULT_PATTERN);
 
         static std::string format(const DateTime::Ptr &dateTime, const std::string &pattern = TIME_DEFAULT_PATTERN);
+
+        static uint64_t parseFromGreenwich(const std::string &text);
     };
 }// namespace sese

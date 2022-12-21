@@ -313,9 +313,7 @@ sese::http::Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) no
             if (pair.size() == 2) {
                 // 键值对
                 if (COMPARE(pair[0], "expires")) {
-                    // todo 解析时间格式
-                    // e.x. "Tue, 17 Oct 2023 15:41:22 GMT"
-
+                    cookie->setExpires(text::DateTimeFormatter::parseFromGreenwich(pair[1]));
                 } else if (COMPARE(pair[0], "path")) {
                     cookie->setPath(pair[0]);
                 } else if (COMPARE(pair[0], "domain")) {
