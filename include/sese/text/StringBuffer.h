@@ -5,7 +5,7 @@
  * @date 2022年4月5日
  */
 #pragma once
-#include "sese/AbstractStringBuffer.h"
+#include "sese/text/AbstractStringBuffer.h"
 #include "sese/Config.h"
 #include <mutex>
 
@@ -14,7 +14,7 @@
 #pragma warning(disable : 4251)
 #endif
 
-namespace sese {
+namespace sese::text {
 
     /**
      * @brief 线程安全的字符串缓存类

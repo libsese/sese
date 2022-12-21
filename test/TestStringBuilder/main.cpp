@@ -1,4 +1,4 @@
-#include "sese/StringBuilder.h"
+#include "sese/text/StringBuilder.h"
 #include "sese/record/LogHelper.h"
 #include "sese/Test.h"
 #include <cstdio>
@@ -6,7 +6,7 @@
 sese::record::LogHelper helper("fSTRING_BUILDER");// NOLINT
 
 int main() {
-    auto buffer = new sese::StringBuilder(16);
+    auto buffer = new sese::text::StringBuilder(16);
     buffer->append("Hello, World. ");
     buffer->append("This test, for the expansion mechanism.");
     puts(buffer->toString().c_str());

@@ -7,7 +7,7 @@
 #pragma once
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
-#include <sese/StringBuilder.h>
+#include <sese/text/StringBuilder.h>
 #include <sese/Stream.h>
 
 namespace sese::http {
@@ -53,9 +53,9 @@ namespace sese::http {
         static bool sendResponse(Stream *dest, ResponseHeader *response) noexcept;
 
     private:
-        static bool getLine(Stream *source, StringBuilder &builder) noexcept;
+        static bool getLine(Stream *source, text::StringBuilder &builder) noexcept;
 
-        inline static bool recvHeader(Stream *source, StringBuilder &builder, Header *header, bool isResp = false) noexcept;
+        inline static bool recvHeader(Stream *source, text::StringBuilder &builder, Header *header, bool isResp = false) noexcept;
         inline static bool sendHeader(Stream *dest, Header *header, bool isResp = false) noexcept;
 
         inline static bool sendSetCookie(Stream *dest, const CookieMap::Ptr & cookies) noexcept;

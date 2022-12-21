@@ -1,12 +1,12 @@
 #include <sese/config/xml/XmlUtil.h>
 #include <sese/BufferedStream.h>
-#include <sese/StringBuilder.h>
+#include <sese/text/StringBuilder.h>
 #include <sese/Util.h>
 
 namespace sese::xml {
 
     void XmlUtil::tokenizer(const InputStream::Ptr &inputStream, sese::xml::XmlUtil::Tokens &tokens) noexcept {
-        StringBuilder stringBuilder;
+        text::StringBuilder stringBuilder;
         char ch;
         int64_t len;
         while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {

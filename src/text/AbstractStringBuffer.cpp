@@ -1,4 +1,4 @@
-#include "sese/AbstractStringBuffer.h"
+#include "sese/text/AbstractStringBuffer.h"
 #include "sese/Util.h"
 #include <cstring>
 
@@ -7,7 +7,7 @@
 #pragma warning(disable : 4273)
 #endif
 
-namespace sese {
+namespace sese::text {
 
     AbstractStringBuffer::AbstractStringBuffer(size_t cap) noexcept {
         this->cap = cap;

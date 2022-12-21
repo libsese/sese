@@ -8,7 +8,7 @@
 #include "sese/Config.h"
 #include <vector>
 
-namespace sese {
+namespace sese::text {
 
     /**
      * @brief 字符串缓冲类

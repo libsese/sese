@@ -74,8 +74,9 @@ target_sources(sese PRIVATE
         src/config/xml/XmlTypes.cpp src/config/xml/XmlUtil.cpp
 
         src/text/DateTimeFormatter.cpp src/text/TextReader.cpp
+        src/text/AbstractStringBuffer.cpp
 
-        src/AbstractStringBuffer.cpp src/ArgParser.cpp
+        src/ArgParser.cpp
         src/AbstractByteBuffer.cpp src/BufferedStream.cpp
         src/BufferedOutputStream.cpp src/BufferedInputStream.cpp
         src/DateTime.cpp src/TimeSpan.cpp

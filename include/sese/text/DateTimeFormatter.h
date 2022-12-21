@@ -7,7 +7,7 @@
 #pragma once
 #include "sese/Config.h"
 #include "sese/DateTime.h"
-#include "sese/StringBuilder.h"
+#include "sese/text/StringBuilder.h"
 
 namespace sese::text {
 

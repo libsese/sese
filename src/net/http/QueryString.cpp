@@ -1,7 +1,7 @@
 #include <sese/net/http/QueryString.h>
-#include <sese/StringBuilder.h>
+#include <sese/text/StringBuilder.h>
 
-using sese::StringBuilder;
+using sese::text::StringBuilder;
 using sese::http::QueryString;
 
 const std::string &QueryString::get(const std::string &key, const std::string &defaultValue) noexcept {

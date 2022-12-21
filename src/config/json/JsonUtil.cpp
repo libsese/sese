@@ -1,7 +1,7 @@
 #include <sese/config/json/JsonUtil.h>
 #include <sese/BufferedOutputStream.h>
 #include <sese/BufferedInputStream.h>
-#include <sese/StringBuilder.h>
+#include <sese/text/StringBuilder.h>
 #include <sese/Util.h>
 
 using namespace sese::json;
@@ -30,7 +30,7 @@ void JsonUtil::serialize(const ObjectData::Ptr &object, const OutputStream::Ptr 
 
 bool JsonUtil::tokenizer(const InputStream::Ptr &inputStream, Tokens &tokens) noexcept {
     char ch;
-    StringBuilder builder;
+    text::StringBuilder builder;
 
     int64_t len;
     while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {

@@ -1,6 +1,6 @@
-if(WIN32)
+if (WIN32)
     add_compile_options(/utf-8)
-endif()
+endif ()
 
 # StringBuilder
 add_executable(TestStringBuilder ${CMAKE_CURRENT_LIST_DIR}/TestStringBuilder/main.cpp)
@@ -213,10 +213,12 @@ add_executable(TestBufferWrapper ${CMAKE_CURRENT_LIST_DIR}/TestBufferWrapper/mai
 target_link_libraries(TestBufferWrapper sese)
 add_test(NAME TestBufferWrapper COMMAND TestBufferWrapper)
 
-# SSL
-add_executable(TestSSL ${CMAKE_CURRENT_LIST_DIR}/TestSSL/main.cpp)
-target_link_libraries(TestSSL sese)
-add_test(NAME TestSSL COMMAND TestSSL)
+if (SESE_USE_SSL)
+    # SSL
+    add_executable(TestSSL ${CMAKE_CURRENT_LIST_DIR}/TestSSL/main.cpp)
+    target_link_libraries(TestSSL sese)
+    add_test(NAME TestSSL COMMAND TestSSL)
+endif ()
 
 # Cookie
 add_executable(TestCookie ${CMAKE_CURRENT_LIST_DIR}/TestCookie/main.cpp)

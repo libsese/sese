@@ -8,7 +8,7 @@ SharedMemory::Ptr SharedMemory::create(const char *name, size_t size) noexcept {
             nullptr,
             PAGE_READWRITE,
             0,
-            size,
+            (DWORD) size,
             name
     );
 

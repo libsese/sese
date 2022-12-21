@@ -1,12 +1,11 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/text/DateTimeFormatter.h>
-#include <sese/StringBuilder.h>
 
 #ifndef _WIN32
 #define _atoi64(val) strtoll(val, nullptr, 10)
 #endif
 
-using sese::StringBuilder;
+using sese::text::StringBuilder;
 using sese::http::HttpUtil;
 
 bool HttpUtil::getLine(Stream *source, StringBuilder &builder) noexcept {
@@ -314,6 +313,9 @@ sese::http::Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) no
             if (pair.size() == 2) {
                 // 键值对
                 if (COMPARE(pair[0], "expires")) {
+                    // todo 解析时间格式
+                    // e.x. "Tue, 17 Oct 2023 15:41:22 GMT"
+
                 } else if (COMPARE(pair[0], "path")) {
                     cookie->setPath(pair[0]);
                 } else if (COMPARE(pair[0], "domain")) {

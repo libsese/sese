@@ -5,14 +5,14 @@
  * @brief 线程不安全的字符串缓存类
  */
 #pragma once
-#include "sese/AbstractStringBuffer.h"
+#include "sese/text/AbstractStringBuffer.h"
 #include "sese/Config.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4275)
 #endif
 
-namespace sese {
+namespace sese::text {
 
     /**
      * @brief 线程不安全的字符串缓存类
