@@ -217,3 +217,7 @@ add_test(NAME TestBufferWrapper COMMAND TestBufferWrapper)
 add_executable(TestSSL ${CMAKE_CURRENT_LIST_DIR}/TestSSL/main.cpp)
 target_link_libraries(TestSSL sese)
 add_test(NAME TestSSL COMMAND TestSSL)
+
+# Cookie
+add_executable(TestCookie ${CMAKE_CURRENT_LIST_DIR}/TestCookie/main.cpp)
+target_link_libraries(TestCookie sese)

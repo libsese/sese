@@ -238,20 +238,24 @@ bool sese::http::HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &coo
         const std::string &name = cookie.first;
         const std::string &value = cookie.second->getValue();
         WRITE(name.c_str(), name.size());
-        WRITE(": ", 2);
+        WRITE("=", 1);
         WRITE(value.c_str(), value.size());
 
-        WRITE("; ", 2);
         const std::string &path = cookie.second->getPath();
-        WRITE(path.c_str(), path.size());
+        if (!path.empty()) {
+            WRITE("; ", 2);
+            WRITE(path.c_str(), path.size());
+        }
 
-        WRITE("; ", 2);
         const std::string &domain = cookie.second->getDomain();
-        WRITE(domain.c_str(), domain.size());
+        if (!domain.empty()) {
+            WRITE("; ", 2);
+            WRITE(domain.c_str(), domain.size());
+        }
 
         int64_t expires = cookie.second->getExpires();
         if (expires > 0) {
-            WRITE("; ", 2);
+            WRITE("; Expires=", 10);
             auto date = DateTime(expires, 0);
             auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
             WRITE(dateString.c_str(), dateString.size());
@@ -259,7 +263,7 @@ bool sese::http::HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &coo
 
         bool secure = cookie.second->isSecure();
         if (secure) {
-            WRITE("; Secure", 10);
+            WRITE("; Secure", 8);
         }
 
         bool httpOnly = cookie.second->isHttpOnly();
