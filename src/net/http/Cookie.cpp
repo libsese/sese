@@ -13,7 +13,7 @@ sese::http::Cookie::Cookie(const std::string &name, const std::string &value) no
 bool sese::http::Cookie::expired() const {
     time_t time;
     std::time(&time);
-    return time > this->expires;
+    return ((uint64_t)time > this->expires);
 }
 
 bool sese::http::Cookie::isSecure() const {
@@ -30,6 +30,14 @@ bool sese::http::Cookie::isHttpOnly() const {
 
 void sese::http::Cookie::setHttpOnly(bool httpOnly) {
     Cookie::httpOnly = httpOnly;
+}
+
+uint64_t sese::http::Cookie::getMaxAge() const {
+    return maxAge;
+}
+
+void sese::http::Cookie::setMaxAge(uint64_t maxAge) {
+    Cookie::maxAge = maxAge;
 }
 
 uint64_t sese::http::Cookie::getExpires() const {

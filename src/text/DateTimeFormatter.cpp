@@ -269,6 +269,7 @@ inline int mon2number(const char *str) {
             return i;
         }
     }
+    return -1;
 }
 
 // e.x. "Tue, 17 Oct 2023 15:41:22 GMT"

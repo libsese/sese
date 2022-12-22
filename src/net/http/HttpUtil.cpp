@@ -3,10 +3,12 @@
 
 #ifndef _WIN32
 #define _atoi64(val) strtoll(val, nullptr, 10)
+#else
+#pragma warning(disable : 4996)
 #endif
 
-using sese::text::StringBuilder;
 using sese::http::HttpUtil;
+using sese::text::StringBuilder;
 
 bool HttpUtil::getLine(Stream *source, StringBuilder &builder) noexcept {
     char ch;
@@ -252,12 +254,19 @@ bool sese::http::HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &coo
             WRITE(domain.c_str(), domain.size());
         }
 
-        int64_t expires = cookie.second->getExpires();
-        if (expires > 0) {
-            WRITE("; Expires=", 10);
-            auto date = DateTime(expires, 0);
-            auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
-            WRITE(dateString.c_str(), dateString.size());
+        uint64_t maxAge = cookie.second->getMaxAge();
+        if (maxAge > 0) {
+            WRITE("; Max-Age=", 10);
+            auto age = std::to_string(maxAge);
+            WRITE(age.c_str(), age.length());
+        } else {
+            uint64_t expires = cookie.second->getExpires();
+            if (expires > 0) {
+                WRITE("; Expires=", 10);
+                auto date = DateTime(expires, 0);
+                auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
+                WRITE(dateString.c_str(), dateString.size());
+            }
         }
 
         bool secure = cookie.second->isSecure();
@@ -312,7 +321,9 @@ sese::http::Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) no
         } else {
             if (pair.size() == 2) {
                 // 键值对
-                if (COMPARE(pair[0], "expires")) {
+                if (COMPARE(pair[0], "max-age")) {
+                    cookie->setMaxAge(std::stoll(pair[1]));
+                } else if (COMPARE(pair[0], "expires")) {
                     cookie->setExpires(text::DateTimeFormatter::parseFromGreenwich(pair[1]));
                 } else if (COMPARE(pair[0], "path")) {
                     cookie->setPath(pair[0]);
