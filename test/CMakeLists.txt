@@ -223,3 +223,8 @@ endif ()
 # Cookie
 add_executable(TestCookie ${CMAKE_CURRENT_LIST_DIR}/TestCookie/main.cpp)
 target_link_libraries(TestCookie sese)
+
+# UUID
+add_executable(TestUuid ${CMAKE_CURRENT_LIST_DIR}/TestUuid/main.cpp)
+target_link_libraries(TestUuid sese)
+add_test(NAME TestUuid COMMAND TestUuid)

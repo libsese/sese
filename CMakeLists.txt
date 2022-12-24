@@ -76,7 +76,7 @@ target_sources(sese PRIVATE
         src/text/DateTimeFormatter.cpp src/text/TextReader.cpp
         src/text/AbstractStringBuffer.cpp
 
-        src/ArgParser.cpp
+        src/ArgParser.cpp src/UuidBuilder.cpp
         src/AbstractByteBuffer.cpp src/BufferedStream.cpp
         src/BufferedOutputStream.cpp src/BufferedInputStream.cpp
         src/DateTime.cpp src/TimeSpan.cpp

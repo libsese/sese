@@ -39,7 +39,7 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 | sese-db             | github.com/shiinasama/sese-db            | sese 统一数据库接口     | sese    | V   |
 | sqlite              | www.sqlite.org                           | SQLite 驱动        | sese-db | V   |
 | mariadb-connector-c | github.com/shiinasama/mariab-connector-c | MariaDB\MySQL 驱动 | sese-db | V   |
-| SimpleUuid          | github.com/shiinasama/SimpleUuid         | 雪花算法实现           | sese    | -   |
+| SimpleUuid          | github.com/shiinasama/SimpleUuid         | 雪花算法实现           | sese    | V   |
 
 开放的编译选项：
 
