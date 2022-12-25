@@ -12,13 +12,13 @@ namespace sese {
     extern "C" API const char *getLevelString(record::Level level) noexcept {
         switch (level) {
             case record::Level::DEBUG:
-                return "DEBUG";
+                return "D";
             case record::Level::INFO:
-                return "INFO ";
+                return "I";
             case record::Level::WARN:
-                return "WARN ";
+                return "W";
             case record::Level::ERR:
-                return "ERROR";
+                return "E";
             default:
                 return "DEBUG";
         }
