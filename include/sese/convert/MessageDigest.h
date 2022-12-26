@@ -25,5 +25,6 @@ namespace sese {
         /// \retval nullptr 摘要失败
         /// \return 摘要结果
         std::unique_ptr<char[]> static digest(Type type, const InputStream::Ptr &source, bool isCap = false) noexcept;
+        std::unique_ptr<char[]> static digest(Type type, InputStream *source, bool isCap = false) noexcept;
     };
 }// namespace sese
