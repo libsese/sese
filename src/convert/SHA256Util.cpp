@@ -213,7 +213,11 @@ const Bitset32 SHA256Util::k[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5db
 
 #define XX(i) value[i] = value[i] + h[i]
 
-bool SHA256Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
+inline bool SHA256Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
+    return encode(input.get(), output.get());
+}
+
+bool sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept {
     int64_t size;
     uint64_t total = 0;
     Bitset32 buffer[64];
@@ -323,13 +327,17 @@ bool SHA256Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &
 
 #undef XX
 
-std::unique_ptr<char[]> SHA256Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
-    auto dest = std::make_shared<ByteBuilder>(64);
-    auto success = encode(input, dest);
+inline std::unique_ptr<char[]> SHA256Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
+    return encode(input.get(), isCap);
+}
+
+std::unique_ptr<char[]> sese::SHA256Util::encode(InputStream *input, bool isCap) noexcept {
+    ByteBuilder dest(64);
+    auto success = encode(input, &dest);
     if (success) {
         unsigned char buffer[32];
         auto rt = std::unique_ptr<char[]>(new char[65]);
-        dest->read(buffer, 32);
+        dest.read(buffer, 32);
         for (auto i = 0; i < 32; ++i) {
             rt[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
             rt[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
