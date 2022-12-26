@@ -313,24 +313,24 @@ sese::http::Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) no
     sese::http::Cookie::Ptr cookie = nullptr;
     bool isFirst = true;
     for (decltype(auto) one: result) {
-        auto pair = StringBuilder::split(one, "=");
+        auto index = one.find('=');
         if (isFirst) {
-            if (pair.size() != 2) return nullptr;
-            cookie = std::make_shared<sese::http::Cookie>(pair[0], pair[1]);
+            if (index == std::string::npos) return nullptr;
+            cookie = std::make_shared<sese::http::Cookie>(one.substr(0, index), one.substr(index + 1));
             isFirst = false;
         } else {
-            if (pair.size() == 2) {
+            if (index != std::string::npos) {
                 // 键值对
-                if (COMPARE(pair[0], "max-age")) {
-                    cookie->setMaxAge(std::stoll(pair[1]));
-                } else if (COMPARE(pair[0], "expires")) {
-                    cookie->setExpires(text::DateTimeFormatter::parseFromGreenwich(pair[1]));
-                } else if (COMPARE(pair[0], "path")) {
-                    cookie->setPath(pair[0]);
-                } else if (COMPARE(pair[0], "domain")) {
-                    cookie->setDomain(pair[0]);
+                if (COMPARE(one.substr(0, index), "max-age")) {
+                    cookie->setMaxAge(std::stoll(one.substr(index + 1)));
+                } else if (COMPARE(one.substr(0, index), "expires")) {
+                    cookie->setExpires(text::DateTimeFormatter::parseFromGreenwich(one.substr(index + 1)));
+                } else if (COMPARE(one.substr(0, index), "path")) {
+                    cookie->setPath(one.substr(0, index));
+                } else if (COMPARE(one.substr(0, index), "domain")) {
+                    cookie->setDomain(one.substr(0, index));
                 }
-            } else if (pair.size() == 1) {
+            } else {
                 // 属性
                 if (COMPARE(one, "secure")) {
                     cookie->setSecure(true);
