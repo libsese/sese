@@ -228,3 +228,8 @@ target_link_libraries(TestCookie sese)
 add_executable(TestUuid ${CMAKE_CURRENT_LIST_DIR}/TestUuid/main.cpp)
 target_link_libraries(TestUuid sese)
 add_test(NAME TestUuid COMMAND TestUuid)
+
+# SHA1Util
+add_executable(TestSHA1Util ${CMAKE_CURRENT_LIST_DIR}/TestSHA1Util/main.cpp)
+target_link_libraries(TestSHA1Util sese)
+add_test(NAME TestSHA1Util COMMAND TestSHA1Util)
