@@ -55,6 +55,7 @@ target_sources(sese PRIVATE
         src/convert/EncodingConverter.cpp src/convert/Base64Converter.cpp
         src/convert/PercentConverter.cpp src/convert/MD5Util.cpp
         src/convert/SHA256Util.cpp src/convert/SHA1Util.cpp
+        src/convert/MessageDigest.cpp
 
         src/thread/Thread.cpp src/thread/ThreadPool.cpp
 

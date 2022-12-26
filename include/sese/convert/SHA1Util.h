@@ -1,3 +1,11 @@
+/**
+* \file SHA1Util.h
+* \author kaoru
+* \date 2022/12/26
+* \version 0.1
+* \brief 非硬件指令加速的 SHA1 摘要算法
+*/
+
 #pragma once
 #include <sese/Stream.h>
 

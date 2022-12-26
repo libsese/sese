@@ -1,7 +1,7 @@
 /**
  * \file SHA256Util.h
  * \author kaoru
- * \date 2020/11/15
+ * \date 2022/11/15
  * \version 0.1
  * \brief 非硬件指令加速的 SHA256 摘要算法
  */
