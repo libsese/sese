@@ -1,6 +1,9 @@
 #include "sese/text/DateTimeFormatter.h"
 #include "sese/text/StringBuilder.h"
+
 #include <cstring>
+#include <ctime>
+
 #ifdef _WIN32
 #define itoa _itoa_s
 #else
@@ -288,20 +291,20 @@ uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &te
         memcpy(_s, date[2].c_str() + 6, 2);
 
         char *end;
-        tm.tm_hour = std::strtol(_h, &end, 10);
-        tm.tm_min = std::strtol(_m, &end, 10);
-        tm.tm_sec = std::strtol(_s, &end, 10);
+        tm.tm_hour = (int) std::strtol(_h, &end, 10);
+        tm.tm_min = (int) std::strtol(_m, &end, 10);
+        tm.tm_sec = (int) std::strtol(_s, &end, 10);
 
         date = StringBuilder::split(date[1], "-");
-        tm.tm_mday = std::stol(date[0]);
+        tm.tm_mday = std::stoi(date[0]);
         tm.tm_mon = mon2number(date[1].c_str());
-        tm.tm_year = std::stol(date[2]);
+        tm.tm_year = std::stoi(date[2]);
     } else {
         auto date = StringBuilder::split(text, " ");
 
-        tm.tm_mday = std::stol(date[1]);
+        tm.tm_mday = std::stoi(date[1]);
         tm.tm_mon = mon2number(date[2].c_str());
-        tm.tm_year = std::stol(date[3]) - 1900;
+        tm.tm_year = std::stoi(date[3]) - 1900;
 
         char _h[3]{0};
         char _m[3]{0};
@@ -311,9 +314,9 @@ uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &te
         memcpy(_s, date[4].c_str() + 6, 2);
 
         char *end;
-        tm.tm_hour = std::strtol(_h, &end, 10);
-        tm.tm_min = std::strtol(_m, &end, 10);
-        tm.tm_sec = std::strtol(_s, &end, 10);
+        tm.tm_hour = (int) std::strtol(_h, &end, 10);
+        tm.tm_min = (int) std::strtol(_m, &end, 10);
+        tm.tm_sec = (int) std::strtol(_s, &end, 10);
     }
     return std::mktime(&tm);
 }

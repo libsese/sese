@@ -1,5 +1,7 @@
 #include "sese/UuidBuilder.h"
 
+#include <thread>
+
 sese::UuidBuilder::UuidBuilder() noexcept
     : timestampHandler(std::chrono::system_clock::now()) {
 }
