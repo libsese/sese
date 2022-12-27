@@ -213,7 +213,7 @@ const Bitset32 SHA256Util::k[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5db
 
 #define XX(i) value[i] = value[i] + h[i]
 
-inline bool SHA256Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
+bool SHA256Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
     return encode(input.get(), output.get());
 }
 
@@ -327,7 +327,7 @@ bool sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept
 
 #undef XX
 
-inline std::unique_ptr<char[]> SHA256Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
+std::unique_ptr<char[]> SHA256Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
     return encode(input.get(), isCap);
 }
 

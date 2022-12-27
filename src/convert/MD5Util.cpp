@@ -9,7 +9,7 @@ using sese::ByteBuilder;
 using sese::MD5Util;
 using sese::MemoryViewer;
 
-inline bool MD5Util::encode(const sese::InputStream::Ptr &input, const sese::OutputStream::Ptr &output) noexcept {
+bool MD5Util::encode(const sese::InputStream::Ptr &input, const sese::OutputStream::Ptr &output) noexcept {
     return encode(input.get(), output.get());
 }
 
@@ -57,7 +57,7 @@ bool MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
     return true;
 }
 
-inline std::unique_ptr<char[]> MD5Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
+std::unique_ptr<char[]> MD5Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
     return encode(input.get(), isCap);
 }
 

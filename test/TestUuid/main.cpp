@@ -1,5 +1,6 @@
 #include <sese/UuidBuilder.h>
 #include <sese/record/LogHelper.h>
+#include <thread>
 
 static const uint8_t ID = 114;
 

@@ -156,7 +156,7 @@ inline static void buffer_to_block(const uint8_t *buffer, uint32_t block[BLOCK_I
     }
 }
 
-inline bool SHA1Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
+bool SHA1Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
     return encode(input.get(), output.get());
 }
 
@@ -220,7 +220,7 @@ inline char toChar(unsigned char ch, bool isCap) {
     }
 }
 
-inline std::unique_ptr<char[]> SHA1Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
+std::unique_ptr<char[]> SHA1Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
     return encode(input.get(), isCap);
 }
 
