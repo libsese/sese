@@ -1,0 +1,22 @@
+if (SESE_DB_USE_MARIADB)
+    add_executable(TestMariaDriver)
+    target_sources(TestMariaDriver PRIVATE ${CMAKE_CURRENT_LIST_DIR}/TestMariaDriver.cpp)
+    target_link_libraries(TestMariaDriver libmariadb)
+
+    add_executable(TestMariaInstance)
+    target_sources(TestMariaInstance PRIVATE ${CMAKE_CURRENT_LIST_DIR}/TestMariaInstance.cpp)
+    target_link_libraries(TestMariaInstance sese-db)
+endif ()
+
+if (SESE_DB_USE_SQLITE)
+    add_executable(TestSqliteDriver)
+    target_sources(TestSqliteDriver PRIVATE ${CMAKE_CURRENT_LIST_DIR}/TestSqliteDriver.cpp)
+    target_link_libraries(TestSqliteDriver sqlite)
+    if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+        target_link_libraries(TestSqliteDriver ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    endif ()
+
+    add_executable(TestSqliteInstance)
+    target_sources(TestSqliteInstance PRIVATE ${CMAKE_CURRENT_LIST_DIR}/TestSqliteInstance.cpp)
+    target_link_libraries(TestSqliteInstance sese-db)
+endif ()
