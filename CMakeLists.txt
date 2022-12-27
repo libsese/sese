@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(sese VERSION 0.4.1)
+project(sese.core VERSION 0.4.2)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
@@ -18,13 +18,9 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
 
 option(SESE_BUILD_TEST "build unit test targets" OFF)
 option(SESE_USE_SSL "import ssl dependencies" OFF)
-option(SESE_USE_DB "import sese-db dependencies" OFF)
-option(SESE_DB_BUILD_TEST "build unit test targets" OFF)
-option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
-option(SESE_DB_USE_SQLITE "add sqlite support" ON)
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/Dep.cmake)
 
-message(STATUS "==================== SESE ====================")
+message(STATUS "==================== SESE.CORE ====================")
 message(STATUS "Project version: ${PROJECT_VERSION}")
 message(STATUS "C STANDARD VERSION: ${CMAKE_C_STANDARD}")
 message(STATUS "CXX STANDARD VERSION: ${CMAKE_CXX_STANDARD}")
@@ -100,11 +96,6 @@ if (SESE_USE_SSL)
     target_link_libraries(sese-static crypto ssl)
 endif ()
 
-if (SESE_USE_DB)
-    target_link_libraries(sese sese-db)
-    target_link_libraries(sese-static sese-db)
-endif ()
-
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
 target_sources(sese PRIVATE
         ${NATIVE_PATH}/Test.cpp
@@ -120,9 +111,6 @@ if (WIN32)
     set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
     configure_file(${CMAKE_CURRENT_LIST_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
-    set_target_properties(sese sese-static PROPERTIES
-            DEBUG_POSTFIX d
-            )
     target_sources(sese PRIVATE ${DLL_INFO_RC})
     target_compile_definitions(sese PUBLIC -DWINDOWS_DLL)
     target_compile_definitions(sese PUBLIC -DNEED_DBGHELP)
@@ -152,6 +140,8 @@ endif ()
 
 target_link_libraries(sese SString-static uuid-static)
 target_link_libraries(sese-static SString-static uuid-static)
+
+set_target_properties(sese PROPERTIES OUTPUT_NAME "sese.core")
 
 message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
 message(STATUS "CXX compile options: ${CMAKE_CXX_FLAGS}")

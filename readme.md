@@ -36,9 +36,6 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 |---------------------|------------------------------------------|------------------|---------|-----|
 | SString             | github.com/shiinasama/SString            | UTF-8 字符串处理      | sese    | V   |
 | LibreSSL            | github.com/PowerShell/LibreSSL           | SSL 支持           | sese    | V   |
-| sese-db             | github.com/shiinasama/sese-db            | sese 统一数据库接口     | sese    | V   |
-| sqlite              | www.sqlite.org                           | SQLite 驱动        | sese-db | V   |
-| mariadb-connector-c | github.com/shiinasama/mariab-connector-c | MariaDB\MySQL 驱动 | sese-db | V   |
 | SimpleUuid          | github.com/shiinasama/SimpleUuid         | 雪花算法实现           | sese    | V   |
 
 开放的编译选项：
@@ -47,10 +44,6 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 |---------------------|---------------------|-----|
 | SESE_BUILD_TEST     | 构建 sese 的单元测试       | OFF |
 | SESE_USE_SSL        | 添加 SSL 支持           | OFF |
-| SESE_USE_DB         | 添加数据库接口支持           | OFF |
-| SESE_DB_BUILD_TEST  | 构建 sese-db 的单元测试    | OFF |
-| SESE_DB_USE_SQLITE  | 添加 SQLite 驱动        | ON  |
-| SESE_DB_USE_MARIADB | 添加 MariaDB\MySQL 驱动 | OFF |
 
 工具链的选取：
 
