@@ -30,10 +30,19 @@ namespace sese::net::ws {
         /// \return 发送结果
         bool pong() noexcept;
 
+        /// 主动关闭
+        /// \return 发送结果
+        bool closeNoError() noexcept;
         /// 携带错误信息主动关闭
         /// \param error 错误信息，为 nullptr 则不发送
         /// \param length 错误信息大小，为 0 则不发送
         /// \return 发送结果
-        bool closeWithError(void *error, size_t length) noexcept;
+        bool closeWithError(const void *error, size_t length) noexcept;
+        /// 携带错误信息主动关闭
+        /// \param error 错误信息，为 nullptr 则不发送
+        /// \param length 错误信息大小，为 0 则不发送
+        /// \param maskingKey 使用的掩码
+        /// \return 发送结果
+        bool closeWithError(const void *error, size_t length, uint32_t maskingKey) noexcept;
     };
 }

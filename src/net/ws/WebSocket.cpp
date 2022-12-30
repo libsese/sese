@@ -100,7 +100,7 @@ int64_t sese::net::ws::WebSocket::readWithMasking(uint32_t maskingKey, void *buf
 int64_t sese::net::ws::WebSocket::writeWithMasking(uint32_t maskingKey, const void *buffer, size_t len) noexcept {
     uint8_t temp[1024];
     for (int i = 0; i < len; ++i) {
-        temp[i] = ((uint8_t *)buffer)[i] ^ ((const uint8_t *) &maskingKey)[i % 4];
+        temp[i] = ((uint8_t *) buffer)[i] ^ ((const uint8_t *) &maskingKey)[i % 4];
     }
     return this->write(temp, len);
 }
@@ -109,20 +109,56 @@ bool sese::net::ws::WebSocket::ping() noexcept {
     struct FrameHeaderBuffer buffer;
     buffer.FIN = 1;
     buffer.OPCODE = SESE_WS_OPCODE_PING;
-    return this->write(&buffer, sizeof(buffer)) != sizeof(buffer);
+    return this->write(&buffer, sizeof(buffer)) == sizeof(buffer);
 }
 
 bool sese::net::ws::WebSocket::pong() noexcept {
     struct FrameHeaderBuffer buffer;
     buffer.FIN = 1;
     buffer.OPCODE = SESE_WS_OPCODE_PONG;
-    return this->write(&buffer, sizeof(buffer)) != sizeof(buffer);
+    return this->write(&buffer, sizeof(buffer)) == sizeof(buffer);
 }
 
-bool sese::net::ws::WebSocket::closeWithError(void *error, size_t length) noexcept {
+bool sese::net::ws::WebSocket::closeNoError() noexcept {
+    struct FrameHeaderBuffer buffer;
+    buffer.FIN = 1;
+    buffer.OPCODE = SESE_WS_OPCODE_CLOSE;
+    return this->write(&buffer, sizeof(buffer)) == sizeof(buffer);
+}
+
+bool sese::net::ws::WebSocket::closeWithError(const void *error, size_t length) noexcept {
     struct FrameHeaderInfo info;
     info.fin = true;
     info.opCode = SESE_WS_OPCODE_CLOSE;
-    info.length = length;
-    return this->writeInfo(info);
+    if (error && length > 0) {
+        info.length = length;
+        if (!this->writeInfo(info)) {
+            return false;
+        }
+        return this->write(error, length) == length;
+    } else {
+        return this->writeInfo(info);
+    }
+}
+
+bool sese::net::ws::WebSocket::closeWithError(const void *error, size_t length, uint32_t maskingKey) noexcept {
+    struct FrameHeaderInfo info;
+    info.fin = true;
+    info.opCode = SESE_WS_OPCODE_CLOSE;
+    if (error && length > 0) {
+        info.length = length;
+        info.mask = true;
+        info.maskingKey = maskingKey;
+        if (!this->writeInfo(info)) {
+            return false;
+        }
+
+        if (info.mask) {
+            return writeWithMasking(maskingKey, error, length) != length;
+        } else {
+            return this->write(error, length) == length;
+        }
+    } else {
+        return this->writeInfo(info);
+    }
 }
