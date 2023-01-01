@@ -129,7 +129,7 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                     continue;
                 }
 
-                event.events = EPOLLIN | EPOLLONESHOT;
+                event.events = EPOLLIN | EPOLLONESHOT | EPOLLRDHUP;
                 event.data.fd = clientFd;
                 if (-1 == EpollCtl(epollFd, EPOLL_CTL_ADD, clientFd, &event)) {
                     close(clientFd);
@@ -144,8 +144,9 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                 }
             } else if (events[i].events & EPOLLIN) {
                 // 缓冲区可读
-                if (events[i].events & EPOLLHUP) {
+                if (events[i].events & EPOLLRDHUP) {
                     // FIN 标识，断开连接，不做处理
+                    close(events[i].data.fd);
                     continue;
                 }
                 clientFd = events[i].data.fd;
@@ -175,7 +176,7 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                         } else {
                             // 需要保留连接，但需要做超时管理
                             EpollEvent ev{};
-                            ev.events = EPOLLIN | EPOLLONESHOT;
+                            ev.events = EPOLLIN | EPOLLONESHOT | EPOLLRDHUP;
                             ev.data.fd = ioContext->socket;
                             EpollCtl(epollFd, EPOLL_CTL_MOD, ioContext->socket, &ev);
 
@@ -202,6 +203,7 @@ void Server::shutdown() noexcept {
         ::shutdown(pair.first, SHUT_RDWR);
         close(pair.first);
     }
+    close(epollFd);
 }
 
 void Server::closeCallback(socket_t socket) noexcept {

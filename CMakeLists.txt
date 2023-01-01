@@ -65,6 +65,7 @@ target_sources(sese PRIVATE
         src/net/http/HttpClient.cpp src/net/http/HttpServer.cpp
         src/net/http/Cookie.cpp src/net/http/CookieMap.cpp
         src/net/rpc/Server.cpp src/net/rpc/Client.cpp
+        src/net/ws/WebSocket.cpp
 
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp src/config/json/JsonUtil.cpp
@@ -101,6 +102,7 @@ target_sources(sese PRIVATE
         ${NATIVE_PATH}/Test.cpp
         ${NATIVE_PATH}/net/Socket.cpp
         ${NATIVE_PATH}/net/TcpServer.cpp
+        ${NATIVE_PATH}/net/ReadableServer.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
         )
