@@ -1,7 +1,7 @@
 #include <sese/net/TcpServer.h>
 #include <sese/record/LogHelper.h>
-#include <sese/Test.h>
-#include <sese/Util.h>
+#include "sese/util/Test.h"
+#include "sese/util/Util.h"
 
 using sese::IOContext;
 using sese::IPv4Address;

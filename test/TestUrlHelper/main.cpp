@@ -1,6 +1,6 @@
 #include <sese/net/http/UrlHelper.h>
 #include <sese/record/LogHelper.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 
 using namespace sese::http;
 using sese::record::LogHelper;

@@ -1,6 +1,6 @@
 #include "sese/text/StringBuilder.h"
 #include "sese/record/LogHelper.h"
-#include "sese/Test.h"
+#include "sese/util/Test.h"
 #include <cstdio>
 
 sese::record::LogHelper helper("fSTRING_BUILDER");// NOLINT

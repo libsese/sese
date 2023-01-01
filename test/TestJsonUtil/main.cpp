@@ -1,8 +1,8 @@
 #include <sese/config/json/JsonUtil.h>
-#include <sese/FileStream.h>
-#include <sese/ConsoleOutputStream.h>
+#include "sese/util/FileStream.h"
+#include "sese/util/ConsoleOutputStream.h"
 #include <sese/record/LogHelper.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 
 using sese::ConsoleOutputStream;
 using sese::FileStream;

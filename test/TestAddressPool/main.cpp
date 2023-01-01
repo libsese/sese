@@ -1,6 +1,6 @@
 #include <sese/net/AddressPool.h>
 #include <sese/record/LogHelper.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 
 using sese::IPv4AddressPool;
 using sese::record::LogHelper;

@@ -1,7 +1,7 @@
 #include <sese/config/xml/XmlUtil.h>
-#include <sese/FileStream.h>
-#include <sese/ConsoleOutputStream.h>
-#include <sese/Test.h>
+#include "sese/util/FileStream.h"
+#include "sese/util/ConsoleOutputStream.h"
+#include "sese/util/Test.h"
 #include <sese/record/LogHelper.h>
 
 using sese::record::LogHelper;

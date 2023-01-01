@@ -1,6 +1,6 @@
-#include "sese/ArgParser.h"
+#include "sese/util/ArgParser.h"
 #include "sese/record/LogHelper.h"
-#include "sese/Test.h"
+#include "sese/util/Test.h"
 
 sese::record::LogHelper helper("fARG_PARSER"); // NOLINT
 

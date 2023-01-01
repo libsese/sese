@@ -1,6 +1,6 @@
 #include <sese/system/SharedMemory.h>
 #include <sese/record/LogHelper.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 
 #ifdef WIN32
 #include <sese/thread/Thread.h>

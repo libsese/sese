@@ -1,6 +1,6 @@
 #include "sese/record/LogHelper.h"
 #include "sese/thread/Thread.h"
-#include "sese/Test.h"
+#include "sese/util/Test.h"
 
 sese::record::LogHelper helper("fTHREAD");// NOLINT
 

@@ -1,6 +1,6 @@
 #include <sese/text/TextReader.h>
 #include <sese/record/LogHelper.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 
 using sese::Test;
 using sese::record::LogHelper;

@@ -3,9 +3,9 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/record/LogHelper.h>
 #include <sese/net/Socket.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 #include <sese/thread/Thread.h>
-#include <sese/Util.h>
+#include "sese/util/Util.h"
 
 #define PORT 7892
 

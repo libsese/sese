@@ -1,9 +1,9 @@
 #include <sese/concurrent/ConcurrentObjectPool.h>
-#include <sese/ObjectPool.h>
+#include "sese/util/ObjectPool.h"
 #include <sese/record/LogHelper.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 #include <sese/thread/ThreadPool.h>
-#include <sese/Util.h>
+#include "sese/util/Util.h"
 
 using sese::record::LogHelper;
 using sese::ObjectPool;

@@ -1,4 +1,4 @@
-#include "sese/ByteBuilder.h"
+#include "sese/util/ByteBuilder.h"
 #include "sese/convert/Base64Converter.h"
 #include "sese/record/LogHelper.h"
 #include <cstring>

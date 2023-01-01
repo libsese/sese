@@ -1,8 +1,8 @@
-#include "sese/Util.h"
+#include "sese/util/Util.h"
 #include "sese/record/FileAppender.h"
 #include "sese/record/LogHelper.h"
 #include "sese/record/SimpleFormatter.h"
-#include "sese/Test.h"
+#include "sese/util/Test.h"
 
 
 int main() {

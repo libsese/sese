@@ -1,7 +1,7 @@
-#include "sese/BaseStreamReader.h"
-#include "sese/FileStream.h"
+#include "sese/util/BaseStreamReader.h"
+#include "sese/util/FileStream.h"
 #include "sese/record/LogHelper.h"
-#include "sese/Test.h"
+#include "sese/util/Test.h"
 
 using sese::FileStream;
 using sese::StreamReader;

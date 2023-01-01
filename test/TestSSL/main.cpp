@@ -1,7 +1,7 @@
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/record/LogHelper.h>
 #include <sese/net/AddressPool.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 
 using sese::Initializer;
 using sese::record::LogHelper;

@@ -1,7 +1,7 @@
-#include <sese/BufferedStream.h>
+#include "sese/util/BufferedStream.h"
 #include <sese/record/LogHelper.h>
-#include <sese/ByteBuilder.h>
-#include <sese/Test.h>
+#include "sese/util/ByteBuilder.h"
+#include "sese/util/Test.h"
 
 using sese::BufferedStream;
 using sese::ByteBuilder;

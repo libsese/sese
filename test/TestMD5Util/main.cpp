@@ -1,7 +1,7 @@
-#include <sese/InputBufferWrapper.h>
+#include "sese/util/InputBufferWrapper.h"
 #include <sese/convert/MessageDigest.h>
 #include <sese/record/LogHelper.h>
-#include <sese/Test.h>
+#include "sese/util/Test.h"
 
 using sese::InputBufferWrapper;
 using sese::record::LogHelper;

@@ -1,10 +1,10 @@
 #include "sese/Config.h"
-#include "sese/Endian.h"
-#include "sese/OutputStream.h"
+#include "sese/util/Endian.h"
+#include "sese/util/OutputStream.h"
 #include "sese/record/LogHelper.h"
-#include "sese/Test.h"
-#include "sese/MemoryViewer.h"
-#include "sese/ByteBuilder.h"
+#include "sese/util/Test.h"
+#include "sese/util/MemoryViewer.h"
+#include "sese/util/ByteBuilder.h"
 
 using sese::ByteBuilder;
 using sese::MemoryViewer;

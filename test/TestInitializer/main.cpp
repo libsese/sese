@@ -1,4 +1,4 @@
-#include "sese/Initializer.h"
+#include "sese/util/Initializer.h"
 #include "sese/record/LogHelper.h"
 
 using sese::Initializer;
