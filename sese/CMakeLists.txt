@@ -105,4 +105,4 @@ endif ()
 target_link_libraries(sese SString-static uuid-static)
 target_link_libraries(sese-static SString-static uuid-static)
 
-set_target_properties(sese PROPERTIES OUTPUT_NAME "sese.core")
+set_target_properties(sese PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
