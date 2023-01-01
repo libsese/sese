@@ -1,7 +1,7 @@
 #pragma once
 
-#include "sese/net/ws/FrameHeader.h"
 #include "sese/net/Socket.h"
+#include "sese/net/ws/FrameHeader.h"
 
 namespace sese::net::ws {
     /// \brief 普通 Socket 包装的 WebSocket，仅用于处理协议的发送与部分接受处理

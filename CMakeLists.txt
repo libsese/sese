@@ -102,6 +102,7 @@ target_sources(sese PRIVATE
         ${NATIVE_PATH}/Test.cpp
         ${NATIVE_PATH}/net/Socket.cpp
         ${NATIVE_PATH}/net/TcpServer.cpp
+        ${NATIVE_PATH}/net/ReadableServer.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
         )
