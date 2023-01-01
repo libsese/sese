@@ -42,6 +42,15 @@ public:
 private:
     ReadableServer() = default;
     Handler handler;
+#ifdef __linux__
+    void LinuxWorkerFunction() noexcept;
+    std::atomic_bool isShutdown = false;
+    int32_t epollFd = -1;
+    epoll_event events[MaxEvents]{};
+    Thread::Ptr workerThread = nullptr;
+    ThreadPool::Ptr threadPool = nullptr;
+    ObjectPool<IOContext>::Ptr ioContextPool = nullptr;
+#endif
 #ifdef WIN32
     std::mutex mutex;
     std::map<socket_t, IOContext *> map;
