@@ -16,7 +16,7 @@ namespace sese::net {
 
 struct API sese::net::IOContext final {
     int64_t read(void *dst, size_t length);
-    int64_t write(const void *buffer, size_t length) const;
+    int64_t write(const void *src, size_t length) const;
     void close();
 
 #ifdef _WIN32
@@ -42,6 +42,15 @@ public:
 private:
     ReadableServer() = default;
     Handler handler;
+#ifdef __APPLE__
+    void DarwinWorkerFunction() noexcept;
+    std::atomic_bool isShutdown = false;
+    int32_t kqueueFd = -1;
+    KEvent events[MaxEvents]{};
+    Thread::Ptr workerThread = nullptr;
+    ThreadPool::Ptr threadPool = nullptr;
+    ObjectPool<IOContext>::Ptr ioContextPool = nullptr;
+#endif
 #ifdef __linux__
     void LinuxWorkerFunction() noexcept;
     std::atomic_bool isShutdown = false;
