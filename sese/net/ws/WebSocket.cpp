@@ -1,6 +1,20 @@
 #include "sese/net/ws/WebSocket.h"
+#include "sese/util/Endian.h"
 
-sese::net::ws::WebSocket::WebSocket(Socket &socket) noexcept: Socket(socket) {
+sese::net::ws::WebSocket::WebSocket(sese::Stream *stream) noexcept {
+    this->stream = stream;
+}
+
+int64_t sese::net::ws::WebSocket::read(void *buffer, size_t length) {
+    return stream->read(buffer, length);
+}
+
+int64_t sese::net::ws::WebSocket::write(const void *buffer, size_t length) {
+    return stream->write(buffer, length);
+}
+
+void sese::net::ws::WebSocket::close() {
+    stream->close();
 }
 
 bool sese::net::ws::WebSocket::readInfo(FrameHeaderInfo &info) noexcept {
@@ -20,23 +34,24 @@ bool sese::net::ws::WebSocket::readInfo(FrameHeaderInfo &info) noexcept {
         info.length = buffer.PAYLOAD_LEN;
     } else if (buffer.PAYLOAD_LEN == 126) {
         uint16_t len;
-        if (this->readUint16(len) != sizeof(len)) {
+        if (this->read(&len, sizeof(len)) != sizeof(len)) {
             return false;
         }
-        info.length = len;
+        info.length = FromBigEndian16(len);
     } else {
         uint64_t len;
-        if (this->readUint64(len) != sizeof(len)) {
+        if (this->read(&len, sizeof(len)) != sizeof(len)) {
             return false;
         }
-        info.length = len;
+        info.length = FromBigEndian64(len);
     }
 
     if (info.mask) {
-        // todo 验证大小端转换在此处是否是多余的
-        if (this->readUint32(info.maskingKey) != sizeof(info.maskingKey)) {
+        if (this->read(&info.maskingKey, sizeof(info.maskingKey)) != sizeof(info.maskingKey)) {
             return false;
         }
+        // todo 验证大小端转换在此处是否是多余的
+        info.maskingKey = FromBigEndian32(info.maskingKey);
     }
 
     return true;
@@ -62,7 +77,8 @@ bool sese::net::ws::WebSocket::writeInfo(const FrameHeaderInfo &info) noexcept {
         if (this->write(&buffer, sizeof(buffer)) != sizeof(buffer)) {
             return false;
         }
-        if (this->writeUint16(info.length) != sizeof(uint16_t)) {
+        uint16_t len = ToBigEndian16(info.length);
+        if (this->write(&len, sizeof(uint16_t)) != sizeof(uint16_t)) {
             return false;
         }
     } else {
@@ -70,14 +86,16 @@ bool sese::net::ws::WebSocket::writeInfo(const FrameHeaderInfo &info) noexcept {
         if (this->write(&buffer, sizeof(buffer)) != sizeof(buffer)) {
             return false;
         }
-        if (this->writeUint64(info.length) != sizeof(uint64_t)) {
+        uint64_t len = ToBigEndian64(info.length);
+        if (this->write(&len, sizeof(uint64_t)) != sizeof(uint64_t)) {
             return false;
         }
     }
 
     if (info.mask) {
         // todo 验证大小端转换在此处是否是多余的
-        if (this->writeUint32(info.maskingKey) != sizeof(info.maskingKey)) {
+        uint32_t key = ToBigEndian32(info.maskingKey);
+        if (this->write(&key, sizeof(uint32_t)) != sizeof(info.maskingKey)) {
             return false;
         }
     }

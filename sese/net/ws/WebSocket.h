@@ -1,14 +1,20 @@
 #pragma once
 
-#include "sese/net/Socket.h"
 #include "sese/net/ws/FrameHeader.h"
+#include "sese/util/Stream.h"
 
 namespace sese::net::ws {
-    /// \brief 普通 Socket 包装的 WebSocket，仅用于处理协议的发送与部分接受处理
-    class API WebSocket : public Socket {
-    public:
-        explicit WebSocket(Socket &socket) noexcept;
 
+    /// \brief 将普通流装饰为 WebSocket，仅用于处理协议的发送与部分接受处理
+    class API WebSocket : public Stream {
+    public:
+        explicit WebSocket(Stream *stream) noexcept;
+
+        int64_t read(void *buffer, size_t length) override;
+        int64_t write(const void *buffer, size_t length) override;
+        void close() override;
+
+    public:
         bool readInfo(FrameHeaderInfo &info) noexcept;
         bool writeInfo(const FrameHeaderInfo &info) noexcept;
 
@@ -44,5 +50,8 @@ namespace sese::net::ws {
         /// \param maskingKey 使用的掩码
         /// \return 发送结果
         bool closeWithError(const void *error, size_t length, uint32_t maskingKey) noexcept;
+
+    private:
+        Stream *stream = nullptr;
     };
-}
+}// namespace sese::net::ws
