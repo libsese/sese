@@ -6,33 +6,46 @@ sese::net::ws::WebSocketContext::WebSocketContext(sese::Stream *stream) noexcept
 }
 
 int64_t sese::net::ws::WebSocketContext::read(void *buffer, size_t length) {
-    // todo 应当改为使用循环
-    size_t readable;
-    if (length > info.length - readed) {
-        // 当前帧不满足读取
-        readable = info.length;
-        size_t read = autoRead(buffer, readable);
-        readed += read;
+    int64_t total = 0;
+    auto p = (char *) buffer;
+    while (true) {
+        if (length <= info.length - readed) {
+            // 当前帧足够读写
+            auto rt = autoRead(p + total, length);
+            if (rt <= 0) {
+                return -1;
+            }
+            readed += rt;
+            total += rt;
+            return total;
+        } else if (length > info.length - readed) {
+            // 当前帧不足够读写
+            if (info.length - readed > 0) {
+                // 有剩余部分
+                auto rt = autoRead(p + total, info.length - readed);
+                if (rt <= 0) {
+                    return -1;
+                }
+                readed += rt;
+                total += rt;
+                length -= rt;
+            }
 
-        if (info.fin) {
-            // 已经是最后一帧，无法继续读取
-            return (int64_t) read;
-        }
+            if (info.fin) {
+                // 当前已经是最后一帧
+                return total;
+            }
 
-        // 尝试获取下一帧相关信息
-        if (readInfo()) {
-            // 获取到下一帧信息
-            return (int64_t) (read + this->read(((char *) buffer + read), length - read));
-        } else {
-            // 获取下一帧信息失败
-            return (int64_t) read;
+            readed = 0;
+            if (!readInfo()) {
+                return -1;
+            } else {
+                if (info.opCode != SESE_WS_OPCODE_CONT) {
+                    // 通常不应触发
+                    return -1;
+                }
+            }
         }
-    } else {
-        // 当前帧能满足读取
-        readable = length;
-        size_t read = autoRead(buffer, readable);
-        readed += read;
-        return (int64_t) read;
     }
 }
 
@@ -40,10 +53,10 @@ int64_t sese::net::ws::WebSocketContext::write(const void *buffer, size_t length
     int64_t total = 0;
     FrameHeaderInfo header;
     header.opCode = SESE_WS_OPCODE_TEXT;
-    auto p = (const char *)buffer;
-    while(length > 1024) {
+    auto p = (const char *) buffer;
+    while (length > 1024) {
         header.length = 1024;
-        if(!writeInfo(header)) {
+        if (!writeInfo(header)) {
             return -1;
         }
         auto rt = stream->write(p + total, 1024);
@@ -59,7 +72,7 @@ int64_t sese::net::ws::WebSocketContext::write(const void *buffer, size_t length
     if (length == 0) {
         return total;
     }
-    if(!writeInfo(header)) {
+    if (!writeInfo(header)) {
         return -1;
     }
     auto rt = stream->write(p + total, length);
@@ -81,7 +94,7 @@ void sese::net::ws::WebSocketContext::close() {
 
 bool sese::net::ws::WebSocketContext::readInfo() noexcept {
     struct FrameHeaderBuffer buffer;
-    if (this->read(&buffer, sizeof(buffer)) != sizeof(buffer)) {
+    if (stream->read(&buffer, sizeof(buffer)) != sizeof(buffer)) {
         return false;
     }
 
@@ -96,20 +109,20 @@ bool sese::net::ws::WebSocketContext::readInfo() noexcept {
         info.length = buffer.PAYLOAD_LEN;
     } else if (buffer.PAYLOAD_LEN == 126) {
         uint16_t len;
-        if (this->read(&len, sizeof(len)) != sizeof(len)) {
+        if (stream->read(&len, sizeof(len)) != sizeof(len)) {
             return false;
         }
         info.length = FromBigEndian16(len);
     } else {
         uint64_t len;
-        if (this->read(&len, sizeof(len)) != sizeof(len)) {
+        if (stream->read(&len, sizeof(len)) != sizeof(len)) {
             return false;
         }
         info.length = FromBigEndian64(len);
     }
 
     if (info.mask) {
-        if (this->read(&info.maskingKey, sizeof(info.maskingKey)) != sizeof(info.maskingKey)) {
+        if (stream->read(&info.maskingKey, sizeof(info.maskingKey)) != sizeof(info.maskingKey)) {
             return false;
         }
         // todo 验证大小端转换在此处是否是多余的

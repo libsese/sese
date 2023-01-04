@@ -13,7 +13,6 @@ namespace sese::net::ws {
         explicit WebSocketContext(Stream *stream) noexcept;
 
         /// \brief 读取内容
-        /// \warning 此方法使用的递归，请注意 length 大小
         /// \param buffer 缓存
         /// \param length 需要读取的长度
         /// \return 实际读取长度
@@ -68,6 +67,10 @@ namespace sese::net::ws {
         /// \param maskingKey 使用的掩码
         /// \return 发送结果
         bool closeWithError(const void *error, size_t length, uint32_t maskingKey) noexcept;
+
+        /// 获取当前帧信息
+        /// \return 帧头信息
+        [[nodiscard]] const FrameHeaderInfo &getCurrentFremeHeaderInfo() const noexcept { return info; }
 
     private:
         std::function<int64_t(void *, size_t)> autoRead;// 自动处理掩码的读取
