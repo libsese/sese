@@ -57,6 +57,10 @@ namespace sese::http {
         /// \brief 释放资源
         void dispose() noexcept;
 
+        /// \brief 分离 socket
+        /// \return socket
+        socket_t detach() noexcept;
+
         /// \brief 获取响应正文长度
         /// \return 响应正文长度
         [[nodiscard]] int64_t getResponseContentLength() const noexcept { return responseContentLength; }
@@ -69,5 +73,6 @@ namespace sese::http {
         int64_t responseContentLength = 0;
         // 默认启用长连接
         bool isKeepAlive = true;
+        bool isDetach = false;
     };
 }// namespace sese::http

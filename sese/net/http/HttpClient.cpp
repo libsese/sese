@@ -13,6 +13,9 @@ HttpClient::Ptr HttpClient::create(const std::string &domain, uint16_t port) noe
     if (address) {
         address->setPort(port);
         auto clientSocket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP, 0);
+        if (!clientSocket->setNonblocking(true)){
+            return nullptr;
+        }
         if (-1 != clientSocket->connect(address)) {
             auto client = std::unique_ptr<HttpClient>(new HttpClient);
             client->clientSocket = clientSocket;
@@ -86,8 +89,13 @@ bool HttpClient::check() noexcept {
 }
 
 void HttpClient::dispose() noexcept {
-    if (clientSocket) {
+    if (clientSocket && isDetach) {
         clientSocket->shutdown(Socket::ShutdownMode::Both);
         clientSocket->close();
     }
+}
+
+socket_t HttpClient::detach() noexcept {
+    isDetach = true;
+    return clientSocket->getRawSocket();
 }
