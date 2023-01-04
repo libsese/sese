@@ -5,6 +5,11 @@
 
 #include <functional>
 
+#define SESE_WS_ERROR_NONE 0x0
+#define SESE_WS_ERROR_UNREGISTERED_FRAME 0x1
+#define SESE_WS_ERROR_READ_FAILED 0x2
+#define SESE_WS_ERROR_WRITE_FAILED 0x3
+
 namespace sese::net::ws {
 
     /// \brief 将普通流装饰为 WebSocket，仅用于处理协议的发送与部分接受处理
@@ -62,20 +67,24 @@ namespace sese::net::ws {
         /// \return 发送结果
         bool closeWithError(const void *error, size_t length) noexcept;
         /// 携带错误信息主动关闭
-        /// \param error 错误信息，为 nullptr 则不发送
+        /// \param err 错误信息，为 nullptr 则不发送
         /// \param length 错误信息大小，为 0 则不发送
         /// \param maskingKey 使用的掩码
         /// \return 发送结果
-        bool closeWithError(const void *error, size_t length, uint32_t maskingKey) noexcept;
+        bool closeWithError(const void *err, size_t length, uint32_t maskingKey) noexcept;
 
         /// 获取当前帧信息
         /// \return 帧头信息
-        [[nodiscard]] const FrameHeaderInfo &getCurrentFremeHeaderInfo() const noexcept { return info; }
+        [[nodiscard]] const FrameHeaderInfo &getCurrentFrameHeaderInfo() const noexcept { return info; }
+
+        [[nodiscard]] uint32_t getError() const { return error; }
+        void setError(uint32_t e) { WebSocketContext::error = e; }
 
     private:
         std::function<int64_t(void *, size_t)> autoRead;// 自动处理掩码的读取
         Stream *stream = nullptr;                       // 被装饰的流
         FrameHeaderInfo info;                           // 当前读取的帧头
         uint64_t readed = 0;                            // 当前帧已读的长度
+        uint32_t error = SESE_WS_ERROR_NONE;            // 错误码
     };
 }// namespace sese::net::ws
