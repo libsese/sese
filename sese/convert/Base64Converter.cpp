@@ -22,7 +22,7 @@ void inline encode(unsigned char in, unsigned char &out, Base64Converter::CodePa
     }
 }
 
-void Base64Converter::encode(const InputStream::Ptr &src, const OutputStream::Ptr &dest, CodePage codePage) {
+void Base64Converter::encode(InputStream *src, OutputStream *dest, CodePage codePage) {
     unsigned char buffer[4]{0};
 
     int64_t len;
@@ -61,7 +61,11 @@ void Base64Converter::encode(const InputStream::Ptr &src, const OutputStream::Pt
     }
 }
 
-void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Ptr &dest) {
+void Base64Converter::encode(const InputStream::Ptr &src, const OutputStream::Ptr &dest, CodePage codePage) {
+    encode(src.get(), dest.get(), codePage);
+}
+
+void Base64Converter::decode(InputStream *src, OutputStream *dest) {
     unsigned char buffer[4]{0};
 
     int64_t len;
@@ -99,4 +103,8 @@ void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Pt
 
         dest->write(buffer, len - 1);
     }
+}
+
+void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Ptr &dest) {
+    decode(src.get(), dest.get());
 }

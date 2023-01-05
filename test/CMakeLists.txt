@@ -233,3 +233,7 @@ add_test(NAME TestUuid COMMAND TestUuid)
 add_executable(TestSHA1Util ${CMAKE_CURRENT_LIST_DIR}/TestSHA1Util/main.cpp)
 target_link_libraries(TestSHA1Util sese)
 add_test(NAME TestSHA1Util COMMAND TestSHA1Util)
+
+# TestWSAuthenticator
+add_executable(TestWSAuthenticator ${CMAKE_CURRENT_LIST_DIR}/TestWSAuthenticator/main.cpp)
+target_link_libraries(TestWSAuthenticator sese)
