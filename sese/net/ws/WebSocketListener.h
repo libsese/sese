@@ -19,6 +19,7 @@ namespace sese::net::ws {
         using Ptr = std::unique_ptr<WebSocketListener>;
 
         static WebSocketListener::Ptr create(size_t threads, WebSocketHandler &handler) noexcept;
+        bool add(socket_t socket) noexcept;
         void shutdown() noexcept;
 
         void distribute(sese::net::IOContext *context) const noexcept;

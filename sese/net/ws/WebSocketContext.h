@@ -9,6 +9,7 @@
 #define SESE_WS_ERROR_UNREGISTERED_FRAME 0x1
 #define SESE_WS_ERROR_READ_FAILED 0x2
 #define SESE_WS_ERROR_WRITE_FAILED 0x3
+#define SESE_WS_ERROR_ILLEGAL_FRAME 0x4
 
 namespace sese::net::ws {
 

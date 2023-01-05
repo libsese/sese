@@ -3,16 +3,21 @@
 
 sese::net::ws::WebSocketListener::Ptr sese::net::ws::WebSocketListener::create(size_t threads, WebSocketHandler &handler) noexcept {
     auto result = std::unique_ptr<WebSocketListener>(new WebSocketListener);
-    auto server = sese::net::ReadableServer::create([&result](sese::net::IOContext *ctx){
+    auto server = sese::net::ReadableServer::create([&result](sese::net::IOContext *ctx) {
         result->distribute(ctx);
-    }, threads);
-    if(server == nullptr) {
+    },
+                                                    threads);
+    if (server == nullptr) {
         return nullptr;
     } else {
         result->server = std::move(server);
         result->handler = handler;
         return result;
     }
+}
+
+bool sese::net::ws::WebSocketListener::add(socket_t socket) noexcept {
+    return server->add(socket);
 }
 
 void sese::net::ws::WebSocketListener::shutdown() noexcept {
@@ -29,6 +34,7 @@ void sese::net::ws::WebSocketListener::distribute(sese::net::IOContext *context)
     }
 
     decltype(auto) info = ws.getCurrentFrameHeaderInfo();
+redo:
     switch (info.opCode) {
         case SESE_WS_OPCODE_TEXT:
         case SESE_WS_OPCODE_BIN:
@@ -55,7 +61,9 @@ void sese::net::ws::WebSocketListener::distribute(sese::net::IOContext *context)
     }
 
     auto err = ws.getError();
-    if (handler.onError && err) {
+    if (err == SESE_WS_ERROR_ILLEGAL_FRAME) {
+        goto redo;
+    } else if (handler.onError && err) {
         handler.onError(&ws);
     }
 }

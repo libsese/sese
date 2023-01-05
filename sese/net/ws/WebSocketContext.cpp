@@ -45,7 +45,7 @@ int64_t sese::net::ws::WebSocketContext::read(void *buffer, size_t length) {
             } else {
                 if (info.opCode != SESE_WS_OPCODE_CONT) {
                     // 通常不应触发
-                    error = SESE_WS_ERROR_READ_FAILED;
+                    error = SESE_WS_ERROR_ILLEGAL_FRAME;
                     return -1;
                 }
             }
