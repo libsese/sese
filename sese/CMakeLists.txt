@@ -49,16 +49,14 @@ target_sources(sese PRIVATE
         util/OutputBufferWrapper.cpp util/InputBufferWrapper.cpp
         )
 
-if (SESE_USE_SSL)
-    target_compile_definitions(sese PRIVATE -DSESE_USE_SSL)
-    target_compile_definitions(sese-static PRIVATE -DSESE_USE_SSL)
-    target_sources(sese PRIVATE
-            security/SecurityConfig.cpp security/SSLContext.cpp
-            security/SSLContextBuilder.cpp security/SecuritySocket.cpp
-            )
-    target_link_libraries(sese crypto ssl)
-    target_link_libraries(sese-static crypto ssl)
-endif ()
+target_compile_definitions(sese PRIVATE -DSESE_USE_SSL)
+target_compile_definitions(sese-static PRIVATE -DSESE_USE_SSL)
+target_sources(sese PRIVATE
+        security/SecurityConfig.cpp security/SSLContext.cpp
+        security/SSLContextBuilder.cpp security/SecuritySocket.cpp
+        )
+target_link_libraries(sese crypto ssl)
+target_link_libraries(sese-static crypto ssl)
 
 set(NATIVE_PATH "native/${CMAKE_SYSTEM_NAME}")
 target_sources(sese PRIVATE
@@ -66,6 +64,7 @@ target_sources(sese PRIVATE
         ${NATIVE_PATH}/net/Socket.cpp
         ${NATIVE_PATH}/net/TcpServer.cpp
         ${NATIVE_PATH}/net/ReadableServer.cpp
+        ${NATIVE_PATH}/security/SecurityTcpServer.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
         )

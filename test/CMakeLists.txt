@@ -213,12 +213,10 @@ add_executable(TestBufferWrapper ${CMAKE_CURRENT_LIST_DIR}/TestBufferWrapper/mai
 target_link_libraries(TestBufferWrapper sese)
 add_test(NAME TestBufferWrapper COMMAND TestBufferWrapper)
 
-if (SESE_USE_SSL)
-    # SSL
-    add_executable(TestSSL ${CMAKE_CURRENT_LIST_DIR}/TestSSL/main.cpp)
-    target_link_libraries(TestSSL sese)
-    add_test(NAME TestSSL COMMAND TestSSL)
-endif ()
+# SSL
+add_executable(TestSSL ${CMAKE_CURRENT_LIST_DIR}/TestSSL/main.cpp)
+target_link_libraries(TestSSL sese)
+add_test(NAME TestSSL COMMAND TestSSL)
 
 # Cookie
 add_executable(TestCookie ${CMAKE_CURRENT_LIST_DIR}/TestCookie/main.cpp)
@@ -237,3 +235,7 @@ add_test(NAME TestSHA1Util COMMAND TestSHA1Util)
 # TestWSAuthenticator
 add_executable(TestWSAuthenticator ${CMAKE_CURRENT_LIST_DIR}/TestWSAuthenticator/main.cpp)
 target_link_libraries(TestWSAuthenticator sese)
+
+# TestSecTcpServer
+add_executable(TestSecTcpServer ${CMAKE_CURRENT_LIST_DIR}/TestSecTcpServer/main.cpp)
+target_link_libraries(TestSecTcpServer sese)

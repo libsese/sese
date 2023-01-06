@@ -7,13 +7,18 @@ namespace sese::security {
     public:
         using Ptr = std::shared_ptr<SSLContext>;
 
+        enum FileType {
+            ASN1,
+            PEM
+        };
+
         explicit SSLContext(const void *method) noexcept;
         ~SSLContext() noexcept;
 
         [[nodiscard]] void *getContext() const noexcept;
 
-        bool importCertFile(const char *file, int type) noexcept;
-        bool importPrivateKey(const char *file, int type) noexcept;
+        bool importCertFile(const char *file, FileType type = PEM) noexcept;
+        bool importPrivateKey(const char *file, FileType type = PEM) noexcept;
         bool authPrivateKey() noexcept;
 
         bool verifyAndLoad(const char *file) noexcept;

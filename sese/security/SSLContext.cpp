@@ -16,12 +16,16 @@ void *security::SSLContext::getContext() const noexcept {
     return context;
 }
 
-bool security::SSLContext::importCertFile(const char *file, int type) noexcept {
-    return 1 == SSL_CTX_use_certificate_file((SSL_CTX *)context, file, type);
+bool security::SSLContext::importCertFile(const char *file, FileType type) noexcept {
+    int t = SSL_FILETYPE_PEM;
+    if (type == ASN1) t = SSL_FILETYPE_ASN1;
+    return 1 == SSL_CTX_use_certificate_file((SSL_CTX *)context, file, t);
 }
 
-bool security::SSLContext::importPrivateKey(const char *file, int type) noexcept {
-    return 1 == SSL_CTX_use_PrivateKey_file((SSL_CTX *)context, file, type);
+bool security::SSLContext::importPrivateKey(const char *file, FileType type) noexcept {
+    int t = SSL_FILETYPE_PEM;
+    if (type == ASN1) t = SSL_FILETYPE_ASN1;
+    return 1 == SSL_CTX_use_PrivateKey_file((SSL_CTX *)context, file, t);
 }
 
 bool security::SSLContext::authPrivateKey() noexcept {
