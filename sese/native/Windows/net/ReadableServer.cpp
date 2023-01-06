@@ -125,6 +125,15 @@ void sese::net::ReadableServer::WindowsWorkerFunction() noexcept {
         if (!bRt) continue;
         if (lpNumberOfBytesTransferred == -1) break;
         if (lpNumberOfBytesTransferred == 0) continue;
+        if (lpNumberOfBytesTransferred == MaxBufferSize) {
+#ifdef _DEBUG
+            printf("BAD: %p\n", ctx);
+#endif
+            closesocket(ctx->socket);
+            delete ctx;
+            ctx = nullptr;
+            continue;
+        }
         ctx->nBytes = lpNumberOfBytesTransferred;
 
         int nRt = WSARecv(

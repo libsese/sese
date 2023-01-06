@@ -29,14 +29,7 @@ using KEvent = struct kevent;
 
 namespace sese {
 #ifdef _WIN32
-#define MaxBufferSize 1024
-    enum class Operation {
-        Accept,
-        Read,
-        Write,
-        Close,
-        Null
-    };
+#define MaxBufferSize 8192
 #endif
 
     class TcpServer;
@@ -52,7 +45,6 @@ namespace sese {
         WSAOVERLAPPED overlapped{};
         WSABUF wsaBuf{MaxBufferSize, buffer};
         CHAR buffer[MaxBufferSize]{};
-        Operation operation = Operation::Null;
         DWORD nBytes = 0;
         DWORD nRead = 0;
 #endif

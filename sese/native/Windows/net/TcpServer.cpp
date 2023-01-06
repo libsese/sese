@@ -135,7 +135,6 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
         // 首次接入
         auto ioContext = new IOContext;
         ioContext->socket = client;
-        ioContext->operation = Operation::Read;
 #ifdef _DEBUG
         printf("NEW: %p\n", ioContext);
 #endif
@@ -214,95 +213,98 @@ void Server::WindowsWorkerFunction() noexcept {
         );
 
         if (!bRt) continue;
-
         if (lpNumberOfBytesTransferred == -1) break;
-
         if (lpNumberOfBytesTransferred == 0) continue;
-
+        if (lpNumberOfBytesTransferred == MaxBufferSize) {
+#ifdef _DEBUG
+            printf("BAD: %p\n", ioContext);
+#endif
+            closesocket(ioContext->socket);
+            delete ioContext;
+            ioContext = nullptr;
+            continue;
+        }
         ioContext->nBytes = lpNumberOfBytesTransferred;
 
         // 只处理首次读事件
-        if (ioContext->operation == Operation::Read) {
-            int nRt = WSARecv(
-                    ioContext->socket,
-                    &ioContext->wsaBuf,
-                    1,
-                    &nBytes,
-                    &dwFlags,
-                    &(ioContext->overlapped),
-                    nullptr
-            );
-            auto e = WSAGetLastError();
-            if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-                // 读取发生错误
+        int nRt = WSARecv(
+                ioContext->socket,
+                &ioContext->wsaBuf,
+                1,
+                &nBytes,
+                &dwFlags,
+                &(ioContext->overlapped),
+                nullptr
+        );
+        auto e = WSAGetLastError();
+        if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+            // 读取发生错误
+#ifdef _DEBUG
+            printf("CLOSE: %p\n", ioContext);
+#endif
+            closesocket(ioContext->socket);
+            delete ioContext;
+            ioContext = nullptr;
+            continue;
+        } else {
+            // 已经读取到数据 - 触发首次事件
+            // ...
+#ifdef _DEBUG
+            printf("RECV: %p\n", ioContext);
+#endif
+            auto client = ioContext->socket;
+            if (0 != keepAlive) {
+                mutex.lock();
+                auto iterator = taskMap.find(ioContext);
+                if (iterator != taskMap.end()) {
+                    auto task = iterator->second;
+                    taskMap.erase(ioContext);
+                    mutex.unlock();
+                    task->cancel();
+                } else {
+                    mutex.unlock();
+                }
+            }
+
+            handler(ioContext);
+
+            if (ioContext->isClosed) {
+                // 不需要保留连接，已主动关闭
 #ifdef _DEBUG
                 printf("CLOSE: %p\n", ioContext);
 #endif
-                closesocket(ioContext->socket);
                 delete ioContext;
-                ioContext = nullptr;
-                continue;
-            } else {
-                // 已经读取到数据 - 触发首次事件
-                // ...
+            } else if (ioContext->isDetach) {
+                // 分离
 #ifdef _DEBUG
-                printf("RECV: %p\n", ioContext);
+                printf("DETACH: %p\n", ioContext);
 #endif
-                auto client = ioContext->socket;
-                if (0 != keepAlive) {
-                    mutex.lock();
-                    auto iterator = taskMap.find(ioContext);
-                    if (iterator != taskMap.end()) {
-                        auto task = iterator->second;
-                        taskMap.erase(ioContext);
-                        mutex.unlock();
-                        task->cancel();
-                    } else {
-                        mutex.unlock();
-                    }
-                }
-
-                handler(ioContext);
-
-                if (ioContext->isClosed) {
-                    // 不需要保留连接，已主动关闭
+                delete ioContext;
+            } else {
+                if (0 == keepAlive) {
 #ifdef _DEBUG
                     printf("CLOSE: %p\n", ioContext);
 #endif
-                    delete ioContext;
-                }
-                else if (ioContext->isDetach) {
-                    // 分离
-#ifdef _DEBUG
-                    printf("DETACH: %p\n", ioContext);
-#endif
+                    ::shutdown(ioContext->socket, SD_BOTH);
+                    ::closesocket(ioContext->socket);
                     delete ioContext;
                 } else {
-                    if (0 == keepAlive) {
-#ifdef _DEBUG
-                        printf("CLOSE: %p\n", ioContext);
-#endif
-                        ::shutdown(ioContext->socket, SD_BOTH);
-                        ::closesocket(ioContext->socket);
-                        delete ioContext;
-                    } else {
-                        // 继续计时
-                        mutex.lock();
-                        taskMap[ioContext] = timer->delay([this, ioContext]() { this->WindowsCloseCallback(ioContext); }, (int64_t) keepAlive, false);
-                        mutex.unlock();
+                    // 继续计时
+                    mutex.lock();
+                    taskMap[ioContext] = timer->delay([this, ioContext]() { this->WindowsCloseCallback(ioContext); }, (int64_t) keepAlive, false);
+                    mutex.unlock();
 
-                        // 再次提交读取
-                        ioContext->nRead = 0;
-                        ioContext->nBytes = 0;
-                        nRt = WSARecv(client, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
-                        e = WSAGetLastError();
-                        if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-                            this->WindowsCloseCallback(ioContext);
-                        } else {
+                    // 再次提交读取
+                    ioContext->nRead = 0;
+                    ioContext->nBytes = 0;
+                    nRt = WSARecv(client, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
+                    e = WSAGetLastError();
+                    if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+                        this->WindowsCloseCallback(ioContext);
+                    } else {
 #ifdef _DEBUG
-                            printf("POST: %p\n", ioContext);
+                        printf("POST: %p\n", ioContext);
 #endif
-                        }
                     }
                 }
             }
