@@ -78,3 +78,26 @@ bool sese::net::ws::WebSocketAuthenticator::verify(const char *key, const char *
 
     return 0 == strcmp(result, buffer2);
 }
+
+std::unique_ptr<char[]> sese::net::ws::WebSocketAuthenticator::toResult(const char *key) noexcept {
+    // 拼接 key
+    char buffer0[24 + 36];
+    memcpy(buffer0 + 0, key, 24);
+    memcpy(buffer0 + 24, APPEND_STRING, 36);
+
+    char buffer1[20];
+    {
+        auto in = InputBufferWrapper(buffer0, 60);
+        auto out = OutputBufferWrapper(buffer1, 20);
+        SHA1Util::encode(&in, &out);
+    }
+
+    auto res = std::unique_ptr<char []>(new char[29]);
+    res.get()[28] = 0;
+    {
+        auto in = InputBufferWrapper(buffer1, 20);
+        auto out = OutputBufferWrapper(res.get(), 28);
+        Base64Converter::encode(&in, &out);
+    }
+    return std::move(res);
+}

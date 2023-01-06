@@ -54,6 +54,8 @@ namespace sese::http {
 
         [[nodiscard]] bool isReadOnly() const noexcept { return _isReadOnly; }
 
+        socket_t getRawSocket() { return ioContext->socket; }
+
     private:
         /*
          * ServiceContext 一次完整的服务包含两个部分，

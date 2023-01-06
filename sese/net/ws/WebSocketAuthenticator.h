@@ -11,6 +11,8 @@ namespace sese::net::ws {
 
         static bool verify(const char *key, const char *result) noexcept;
 
+        static std::unique_ptr<char []> toResult(const char *key) noexcept;
+
     private:
         static const char *APPEND_STRING;
 

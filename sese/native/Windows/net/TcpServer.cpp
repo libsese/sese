@@ -39,10 +39,6 @@ void sese::IOContext::close() {
     ::closesocket(socket);
 }
 
-void sese::IOContext::detach() {
-    isDetach = true;
-}
-
 #define CLEAR            \
     closesocket(sockFd); \
     return nullptr;
@@ -272,12 +268,6 @@ void Server::WindowsWorkerFunction() noexcept {
                 // 不需要保留连接，已主动关闭
 #ifdef _DEBUG
                 printf("CLOSE: %p\n", ioContext);
-#endif
-                delete ioContext;
-            } else if (ioContext->isDetach) {
-                // 分离
-#ifdef _DEBUG
-                printf("DETACH: %p\n", ioContext);
 #endif
                 delete ioContext;
             } else {

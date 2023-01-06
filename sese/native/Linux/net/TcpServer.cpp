@@ -19,10 +19,6 @@ void sese::IOContext::close() {
     ::close(socket);
 }
 
-void sese::IOContext::detach() {
-    isDetach = true;
-}
-
 #define CLEAR      \
     close(sockFd); \
     return nullptr;
