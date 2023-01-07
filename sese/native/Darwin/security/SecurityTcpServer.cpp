@@ -1,6 +1,13 @@
+//
+// 注意
+//  - 此部分代码未经测试，并计划暂停支持 Darwin 下的相关功能
+//
+
 #include "sese/security/SecurityTcpServer.h"
 #include "openssl/ssl.h"
 
+#include <ctime>
+#include <unistd.h>
 #include <fcntl.h>
 
 int64_t sese::security::IOContext::read(void *buf, size_t length) {
@@ -28,49 +35,48 @@ sese::security::SecurityTcpServer::Ptr sese::security::SecurityTcpServer::create
 
     int32_t opt = fcntl(sockFd, F_GETFL);
     if (-1 == opt) {
-        close(sockFd);
+        ::close(sockFd);
         return nullptr;
     }
 
     if (-1 == fcntl(sockFd, F_SETFL, opt | O_NONBLOCK)) {
-        close(sockFd);
+        ::close(sockFd);
         return nullptr;
     }
 
     if (-1 == ::bind(sockFd, ipAddress->getRawAddress(), ipAddress->getRawAddressLength())) {
-        close(sockFd);
+        ::close(sockFd);
         return nullptr;
     }
 
     if (-1 == ::listen(sockFd, SERVER_MAX_CONNECTION)) {
-        close(sockFd);
-        return nullptr;
-    }
-
-    auto epollFd = EpollCreate(0);
-    if (-1 == epollFd) {
-        close(sockFd);
+        ::close(sockFd);
         return nullptr;
     }
 
     if (!ctx->authPrivateKey()) {
-        close(sockFd);
+        ::close(sockFd);
         return nullptr;
     }
 
-    EpollEvent event{};
-    event.events = EPOLLIN;
-    event.data.fd = sockFd;
-    if (EpollCtl(epollFd, EPOLL_CTL_ADD, sockFd, &event)) {
-        close(epollFd);
+    int32_t kqueueFd = kqueue();
+    if (-1 == kqueueFd) {
+        ::close(sockFd);
+        return nullptr;
+    }
+
+    KEvent event{};
+    EV_SET(&event, sockFd, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
+    if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
         close(sockFd);
+        close(kqueueFd);
         return nullptr;
     }
 
     auto server = new SecurityTcpServer;
     server->ctx = ctx;
     server->sockFd = sockFd;
-    server->epollFd = epollFd;
+    server->kqueueFd = kqueueFd;
     server->threadPool = std::make_unique<ThreadPool>("SecurityTcpServer", threads);
     server->ioContextPool = ObjectPool<IOContext>::create();
     server->timer = Timer::create();
@@ -79,33 +85,37 @@ sese::security::SecurityTcpServer::Ptr sese::security::SecurityTcpServer::create
 }
 
 void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOContext *)> &handler) noexcept {
-    int32_t nfds;
-    socket_t clientFd;
-    EpollEvent event{};
+    struct timespec timeout {
+        1, 0
+    };
+
     while (true) {
         if (isShutdown) break;
 
-        nfds = EpollWait(epollFd, events, MaxEvents, 0);
-        if (-1 == nfds) continue;
-        for (int32_t i = 0; i < nfds; i++) {
-            if (events[i].data.fd == sockFd) {
+        int32_t nev = kevent(kqueueFd, nullptr, 0, events, MaxEvents, &timeout);
+        if (-1 == nev) continue;
+        for (int32_t n = 0; n < nev; n++) {
+            if (events[n].ident == sockFd) {
                 // 新连接接入
-                clientFd = ::accept(sockFd, nullptr, nullptr);
-                if (-1 == clientFd) continue;
-
-                int32_t opt = fcntl(sockFd, F_GETFL);
-                if (-1 == opt) {
-                    close(clientFd);
+                socket_t client = accept(sockFd, nullptr, nullptr);
+                if (-1 == client) {
+                    close(client);
                     continue;
                 }
 
-                if (-1 == fcntl(sockFd, F_SETFL, opt | O_NONBLOCK)) {
-                    close(clientFd);
+                int32_t opt = fcntl(client, F_GETFL);
+                if (-1 == opt) {
+                    close(client);
+                    continue;
+                }
+
+                if (-1 == fcntl(client, F_SETFL, opt | O_NONBLOCK)) {
+                    close(client);
                     continue;
                 }
 
                 auto clientSSL = SSL_new((SSL_CTX *) ctx->getContext());
-                SSL_set_fd(clientSSL, (int) clientFd);
+                SSL_set_fd(clientSSL, (int) client);
                 SSL_set_accept_state(clientSSL);
                 while (true) {
                     auto rt = SSL_do_handshake(clientSSL);
@@ -114,7 +124,7 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                         auto err = SSL_get_error(clientSSL, rt);
                         if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
                             SSL_free(clientSSL);
-                            close(clientFd);
+                            close(client);
                             clientSSL = nullptr;
                             break;
                         }
@@ -126,52 +136,47 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                     continue;
                 }
 
-                event.events = EPOLLIN | EPOLLONESHOT | EPOLLRDHUP;
-                event.data.fd = clientFd;
-                if (-1 == EpollCtl(epollFd, EPOLL_CTL_ADD, clientFd, &event)) {
-                    close(clientFd);
+                KEvent event{};
+                EV_SET(&event, client, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, nullptr);
+                if (-1 == kevent(kqueueFd, &event, 1, nullptr, 0, nullptr)) {
+                    close(client);
                     continue;
                 }
 
                 auto clientCtx = ioContextPool->borrow();
-                clientCtx->socket = clientFd;
+                clientCtx->socket = client;
                 clientCtx->ssl = clientSSL;
 
                 mutex.lock();
-                contextMap[clientFd] = clientCtx;
+                contextMap[client] = clientCtx;
                 // 首次接入，开始计时
                 if (0 != keepAlive) {
-                    clientCtx->task = timer->delay(std::bind(&SecurityTcpServer::closeCallback, this, clientFd), (int64_t) keepAlive, false);
+                    clientCtx->task = timer->delay(std::bind(&SecurityTcpServer::closeCallback, this, client), (int64_t) keepAlive, false);
                 }
                 mutex.unlock();
-            } else if (events[i].events & EPOLLIN) {
-                // 缓冲区可读
-                if (events[i].events & EPOLLRDHUP) {
-                    // FIN 标识
-                    auto iterator = contextMap.find(events[i].data.fd);
+            } else if (events[n].filter == EVFILT_READ) {
+                if (events[n].flags & EV_EOF) {
                     mutex.lock();
+                    auto iterator = contextMap.find(events[n].ident);
                     contextMap.erase(iterator);
                     mutex.unlock();
-                    if (iterator->second->task != nullptr) {
-                        iterator->second->task->cancel();
-                        iterator->second->task = nullptr;
-                    }
-                    SSL_free((SSL *)iterator->second->ssl);
-                    ::shutdown(iterator->second->socket, SHUT_RDWR);
-                    ::close(iterator->second->socket);
+                    iterator.second->close;
                     continue;
                 }
-                clientFd = events[i].data.fd;
+
+                socket_t client = events[n].ident;
                 Map::iterator iterator;
                 if (0 != keepAlive) {
                     mutex.lock();
-                    iterator = contextMap.find(clientFd);
+                    iterator = contextMap.find(client);
                     // iterator != taskMap.end()
+                    contextMap.erase(client);
                     mutex.unlock();
                     iterator->second->task->cancel();
-                    iterator->second->task = nullptr;
                 }
 
+                auto ioContext = ioContextPool->borrow();
+                ioContext->socket = client;
                 threadPool->postTask([handler, iterator, this]() {
                     auto ioContext = iterator->second;
                     handler(ioContext.get());
@@ -180,10 +185,6 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                         // 不需要保留连接，已主动关闭
                         mutex.lock();
                         contextMap.erase(iterator);
-                        if (iterator->second->task != nullptr) {
-                            iterator->second->task->cancel();
-                            iterator->second->task = nullptr;
-                        }
                         mutex.unlock();
                     } else {
                         if (0 == keepAlive) {
@@ -196,10 +197,9 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                             mutex.unlock();
                         } else {
                             // 需要保留连接，但需要做超时管理
-                            EpollEvent ev{};
-                            ev.events = EPOLLIN | EPOLLONESHOT | EPOLLRDHUP;
-                            ev.data.fd = ioContext->socket;
-                            EpollCtl(epollFd, EPOLL_CTL_MOD, ioContext->socket, &ev);
+                            KEvent ev{};
+                            EV_SET(&ev, ioContext->socket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, nullptr);
+                            kevent(kqueueFd, &ev, 1, nullptr, 0, nullptr);
 
                             // 继续计时
                             mutex.lock();
@@ -222,17 +222,13 @@ void sese::security::SecurityTcpServer::shutdown() noexcept {
     timer->shutdown();
     SSL *toFree;
     for (auto &pair: contextMap) {
-        if (pair.second->task != nullptr) {
-            pair.second->task->cancel();
-            pair.second->task = nullptr;
-        }
         toFree = (SSL *) pair.second->ssl;
         SSL_shutdown(toFree);
         SSL_free(toFree);
         ::shutdown(pair.first, SHUT_RDWR);
         close(pair.first);
     }
-    close(epollFd);
+    close(kqueueFd);
 }
 
 void sese::security::SecurityTcpServer::closeCallback(socket_t socket) noexcept {
