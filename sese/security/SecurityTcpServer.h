@@ -11,11 +11,14 @@ namespace sese::security {
         void close();
 
 #ifdef _WIN32
+        IOContext() noexcept;
         WSAOVERLAPPED overlapped{};
         WSABUF wsaBuf{MaxBufferSize, buffer};
         CHAR buffer[MaxBufferSize]{};
         DWORD nBytes = 0;
         DWORD nRead = 0;
+        void *bio = nullptr;
+        void setSSL(void *ssl) noexcept;
 #endif
         bool isClosed = false;
         socket_t socket = -1;

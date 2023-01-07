@@ -1,42 +1,80 @@
 #include "sese/security/SecurityTcpServer.h"
 #include "openssl/ssl.h"
+#include "openssl/err.h"
 
-int64_t sese::security::IOContext::read(void *buf, size_t length) {
-    // 缓冲区内有未读字节
-    if (this->nRead < this->nBytes) {
-        // 缓冲区够用
-        if (this->nBytes - this->nRead > length) {
-            BIO *bio = SSL_get_rbio((SSL *) ssl);
-            BIO_write(bio, this->buffer + this->nBytes, (int) length);
-            SSL_read((SSL *) ssl, buf, (int) length);
-            this->nRead += (DWORD) length;
-            return (int64_t) length;
-        }
-        // 缓冲区不够用
-        // 直接返回当前剩余部分
-        else {
-            BIO *bio = SSL_get_rbio((SSL *) ssl);
-            BIO_write(bio, this->buffer + this->nRead, (int) (this->nBytes - this->nRead));
-            SSL_read((SSL *) ssl, buf, (int) (this->nBytes - this->nRead));
-            this->nRead = this->nBytes;
-            return this->nBytes - this->nRead;
-        }
+static long bio_iocp_ctrl(BIO *bio, int cmd, long num, void *ptr) {
+    int ret = 0;
+    if (cmd == BIO_CTRL_FLUSH) {
+        ret = 1;
     }
-    // 缓冲区已空
-    else {
-        // return ::recv(socket, (char *) buffer, (int32_t) length, 0);
-        return SSL_read((SSL *) ssl, buf, (int) length);
+    return ret;
+}
+
+static int bio_iocp_write(BIO *bio, const char *in, int length) {
+    auto ctx = (sese::security::IOContext *) BIO_get_data(bio);
+    int ret = ::send(ctx->socket, in, length, 0);
+    // BIO_clear_retry_flags(bio);
+    // if (ret <= 0) {
+    //     auto error = GetLastError();
+    //     if (error == WSA_IO_PENDING || error == WSAEWOULDBLOCK) {
+    //         BIO_set_retry_write(bio);
+    //     }
+    // }
+    return ret;
+}
+
+static int bio_iocp_read(BIO *bio, char *out, int length) {
+    auto ctx = (sese::security::IOContext *) BIO_get_data(bio);
+    if (ctx->nRead < ctx->nBytes) {
+        if (ctx->nBytes - ctx->nRead > length) {
+            memcpy(out, ctx->buffer + ctx->nRead, length);
+            ctx->nRead += (DWORD) length;
+            BIO_clear_retry_flags(bio);
+            return (int) length;
+        } else {
+            int rt = ctx->nBytes - ctx->nRead;
+            memcpy(out, ctx->buffer + ctx->nRead, rt);
+            ctx->nRead = ctx->nBytes;
+            BIO_clear_retry_flags(bio);
+            return rt;
+        }
+    } else {
+        auto rt = ::recv(ctx->socket, out, length, 0);
+        BIO_clear_retry_flags(bio);
+        return rt;
     }
 }
 
+sese::security::IOContext::IOContext() noexcept {
+    BIO_METHOD *m = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bio_iocp");
+    BIO_meth_set_ctrl(m, bio_iocp_ctrl);
+    BIO_meth_set_read(m, bio_iocp_read);
+    BIO_meth_set_write(m, bio_iocp_write);
+
+    this->bio = BIO_new(m);
+    BIO_set_data((BIO *) this->bio, this);
+    BIO_set_init((BIO *) this->bio, 1);
+    BIO_set_shutdown((BIO *) this->bio, 0);
+}
+
+void sese::security::IOContext::setSSL(void *ssl) noexcept {
+    this->ssl = ssl;
+    SSL_set_bio((SSL *) this->ssl, (BIO *) this->bio, (BIO *) this->bio);
+}
+
+int64_t sese::security::IOContext::read(void *buf, size_t length) {
+    return SSL_read((SSL *) this->ssl, buf, (int) length);
+}
+
 int64_t sese::security::IOContext::write(const void *buf, size_t length) {
-    return SSL_write((SSL *) ssl, buf, (int) length);
+    return SSL_write((SSL *) this->ssl, buf, length);
 }
 
 void sese::security::IOContext::close() {
     SSL_shutdown((SSL *) ssl);
     SSL_free((SSL *) ssl);
     closesocket(socket);
+    isClosed = true;
 }
 
 sese::security::SecurityTcpServer::Ptr sese::security::SecurityTcpServer::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive, SSLContext::Ptr &ctx) noexcept {
@@ -105,12 +143,23 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
         auto clientSSL = SSL_new((SSL_CTX *) ctx->getContext());
         SSL_set_fd(clientSSL, (int) client);
         SSL_set_accept_state(clientSSL);
-        auto rt = SSL_do_handshake(clientSSL);
-        if (rt <= 0) {
-            //todo err is SSL_ERROR_WANT_READ
-            auto err = SSL_get_error(clientSSL, rt);
-            SSL_free(clientSSL);
-            closesocket(client);
+
+        while (true) {
+            auto rt = SSL_do_handshake(clientSSL);
+            if (rt <= 0) {
+                // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
+                auto err = SSL_get_error(clientSSL, rt);
+                if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                    SSL_free(clientSSL);
+                    closesocket(client);
+                    clientSSL = nullptr;
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+        if (clientSSL == nullptr) {
             continue;
         }
 
@@ -128,7 +177,7 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
         // 首次接入
         auto ioContext = new IOContext;
         ioContext->socket = client;
-        ioContext->ssl = clientSSL;
+        ioContext->setSSL(clientSSL);
 #ifdef _DEBUG
         printf("NEW: %p\n", ioContext);
 #endif
@@ -240,7 +289,7 @@ void sese::security::SecurityTcpServer::WindowsWorkerFunction() noexcept {
 #ifdef _DEBUG
             printf("CLOSE: %p\n", ioContext);
 #endif
-            // SSL_shutdown((SSL *) ioContext->ssl);
+            SSL_shutdown((SSL *) ioContext->ssl);
             SSL_free((SSL *) ioContext->ssl);
             closesocket(ioContext->socket);
             delete ioContext;

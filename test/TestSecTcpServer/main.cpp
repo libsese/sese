@@ -21,6 +21,7 @@ int main() {
             helper.debug("recv request");
             char buffer[1024]{};
             ctx->read(buffer, 1024);
+            puts(buffer);
 
             ctx->write("HTTP/1.1 200 OK\r\n"
                        "Host: www.sese.com:8080\r\n"
