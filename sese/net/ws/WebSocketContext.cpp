@@ -325,4 +325,5 @@ bool sese::net::ws::WebSocketContext::closeWithError(const void *err, size_t len
             return false;
         }
     }
+    return false;
 }

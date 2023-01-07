@@ -19,6 +19,8 @@ namespace sese::security {
         DWORD nRead = 0;
         void *bio = nullptr;
         void setSSL(void *ssl) noexcept;
+#else
+        TimerTask::Ptr task;
 #endif
         bool isClosed = false;
         socket_t socket = -1;
@@ -31,7 +33,7 @@ namespace sese::security {
 #ifdef _WIN32
         using Map = std::map<IOContext *, TimerTask::Ptr>;
 #else
-        using Map = std::map<socket_t, TimerTask::Ptr>;
+        using Map = std::map<socket_t, std::shared_ptr<sese::security::IOContext>>;
 #endif
         static SecurityTcpServer::Ptr create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive, SSLContext::Ptr &ctx) noexcept;
 
@@ -43,10 +45,15 @@ namespace sese::security {
         SecurityTcpServer() noexcept = default;
 
         std::atomic_bool isShutdown = false;
-        std::mutex mutex;
+#ifdef WIN32
         Map taskMap;
+#else
+        Map contextMap;
+#endif
+        std::mutex mutex;
         size_t keepAlive = 0;
         Timer::Ptr timer = nullptr;
+        SSLContext::Ptr ctx;
 
 #ifdef __linux__
     private:
@@ -73,7 +80,6 @@ namespace sese::security {
         void WindowsCloseCallback(IOContext *contextWrapper) noexcept;
         void WindowsWorkerFunction() noexcept;
 
-        SSLContext::Ptr ctx;
         SOCKET listenSock = INVALID_SOCKET;
         HANDLE hIOCP = INVALID_HANDLE_VALUE;
         size_t threads = 0;

@@ -1,29 +1,25 @@
-#include <sese/net/TcpServer.h>
-#include "sese/util/Util.h"
+#include "sese/security/SecurityTcpServer.h"
+#include "openssl/ssl.h"
+
 #include <fcntl.h>
 
-using sese::Socket;
-using Server = sese::TcpServer;
-
-int64_t sese::IOContext::read(void *buffer, size_t length) {
-    return ::read(socket, buffer, length);
+int64_t sese::security::IOContext::read(void *buf, size_t length) {
+    return SSL_read((SSL *) ssl, buf, (int) length);
 }
 
-int64_t sese::IOContext::write(const void *buffer, size_t length) {
-    return ::write(socket, buffer, length);
+int64_t sese::security::IOContext::write(const void *buf, size_t length) {
+    return SSL_write((SSL *) ssl, buf, (int) length);
 }
 
-void sese::IOContext::close() {
-    isClosed = true;
+void sese::security::IOContext::close() {
+    SSL_shutdown((SSL *) ssl);
+    SSL_free((SSL *) ssl);
     shutdown(socket, SHUT_RDWR);
     ::close(socket);
+    isClosed = true;
 }
 
-#define CLEAR      \
-    close(sockFd); \
-    return nullptr;
-
-Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive) noexcept {
+sese::security::SecurityTcpServer::Ptr sese::security::SecurityTcpServer::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive, SSLContext::Ptr &ctx) noexcept {
     auto family = ipAddress->getRawAddress()->sa_family;
     socket_t sockFd = ::socket(family, SOCK_STREAM, IPPROTO_TCP);
     if (-1 == sockFd) {
@@ -32,24 +28,34 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
 
     int32_t opt = fcntl(sockFd, F_GETFL);
     if (-1 == opt) {
-        CLEAR
+        close(sockFd);
+        return nullptr;
     }
 
     if (-1 == fcntl(sockFd, F_SETFL, opt | O_NONBLOCK)) {
-        CLEAR
+        close(sockFd);
+        return nullptr;
     }
 
     if (-1 == ::bind(sockFd, ipAddress->getRawAddress(), ipAddress->getRawAddressLength())) {
-        CLEAR
+        close(sockFd);
+        return nullptr;
     }
 
     if (-1 == ::listen(sockFd, SERVER_MAX_CONNECTION)) {
-        CLEAR
+        close(sockFd);
+        return nullptr;
     }
 
     auto epollFd = EpollCreate(0);
     if (-1 == epollFd) {
-        CLEAR
+        close(sockFd);
+        return nullptr;
+    }
+
+    if (!ctx->authPrivateKey()) {
+        close(sockFd);
+        return nullptr;
     }
 
     EpollEvent event{};
@@ -61,45 +67,18 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
         return nullptr;
     }
 
-    auto server = new Server;
+    auto server = new SecurityTcpServer;
+    server->ctx = ctx;
     server->sockFd = sockFd;
     server->epollFd = epollFd;
-    server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
+    server->threadPool = std::make_unique<ThreadPool>("SecurityTcpServer", threads);
     server->ioContextPool = ObjectPool<IOContext>::create();
     server->timer = Timer::create();
     server->keepAlive = keepAlive;
-    return std::unique_ptr<Server>(server);
+    return std::unique_ptr<SecurityTcpServer>(server);
 }
 
-#undef CLEAR
-
-Server::Ptr Server::create(const Socket::Ptr &listenSocket, size_t threads, size_t keepAlive) noexcept {
-    auto epollFd = EpollCreate(0);
-    if (-1 == epollFd) {
-        return nullptr;
-    }
-
-    auto sockFd = listenSocket->getRawSocket();
-
-    EpollEvent event{};
-    event.events = EPOLLIN;
-    event.data.fd = sockFd;
-    if (EpollCtl(epollFd, EPOLL_CTL_ADD, sockFd, &event)) {
-        close(epollFd);
-        return nullptr;
-    }
-
-    auto server = new Server;
-    server->sockFd = sockFd;
-    server->epollFd = epollFd;
-    server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    server->ioContextPool = ObjectPool<IOContext>::create();
-    server->timer = Timer::create();
-    server->keepAlive = keepAlive;
-    return std::unique_ptr<Server>(server);
-}
-
-void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept {
+void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOContext *)> &handler) noexcept {
     int32_t nfds;
     socket_t clientFd;
     EpollEvent event{};
@@ -125,6 +104,28 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                     continue;
                 }
 
+                auto clientSSL = SSL_new((SSL_CTX *) ctx->getContext());
+                SSL_set_fd(clientSSL, (int) clientFd);
+                SSL_set_accept_state(clientSSL);
+                while (true) {
+                    auto rt = SSL_do_handshake(clientSSL);
+                    if (rt <= 0) {
+                        // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
+                        auto err = SSL_get_error(clientSSL, rt);
+                        if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                            SSL_free(clientSSL);
+                            close(clientFd);
+                            clientSSL = nullptr;
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+                }
+                if (clientSSL == nullptr) {
+                    continue;
+                }
+
                 event.events = EPOLLIN | EPOLLONESHOT | EPOLLRDHUP;
                 event.data.fd = clientFd;
                 if (-1 == EpollCtl(epollFd, EPOLL_CTL_ADD, clientFd, &event)) {
@@ -132,12 +133,17 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                     continue;
                 }
 
+                auto clientCtx = ioContextPool->borrow();
+                clientCtx->socket = clientFd;
+                clientCtx->ssl = clientSSL;
+
+                mutex.lock();
+                contextMap[clientFd] = clientCtx;
                 // 首次接入，开始计时
                 if (0 != keepAlive) {
-                    mutex.lock();
-                    taskMap[clientFd] = timer->delay(std::bind(&Server::closeCallback, this, clientFd), (int64_t) keepAlive, false);
-                    mutex.unlock();
+                    clientCtx->task = timer->delay(std::bind(&SecurityTcpServer::closeCallback, this, clientFd), (int64_t) keepAlive, false);
                 }
+                mutex.unlock();
             } else if (events[i].events & EPOLLIN) {
                 // 缓冲区可读
                 if (events[i].events & EPOLLRDHUP) {
@@ -146,26 +152,33 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                     continue;
                 }
                 clientFd = events[i].data.fd;
+                Map::iterator iterator;
                 if (0 != keepAlive) {
                     mutex.lock();
-                    auto iterator = taskMap.find(clientFd);
+                    iterator = contextMap.find(clientFd);
                     // iterator != taskMap.end()
-                    taskMap.erase(clientFd);
                     mutex.unlock();
-                    iterator->second->cancel();
+                    iterator->second->task->cancel();
                 }
 
-                auto ioContext = ioContextPool->borrow();
-                ioContext->socket = clientFd;
-                threadPool->postTask([handler, ioContext, this]() {
+                threadPool->postTask([handler, iterator, this]() {
+                    auto ioContext = iterator->second;
                     handler(ioContext.get());
 
                     if (ioContext->isClosed) {
                         // 不需要保留连接，已主动关闭
+                        mutex.lock();
+                        contextMap.erase(iterator);
+                        mutex.unlock();
                     } else {
                         if (0 == keepAlive) {
+                            SSL_shutdown((SSL *)ioContext->ssl);
+                            SSL_free((SSL *)ioContext->ssl);
                             ::shutdown(ioContext->socket, SHUT_RDWR);
                             ::close(ioContext->socket);
+                            mutex.lock();
+                            contextMap.erase(iterator);
+                            mutex.unlock();
                         } else {
                             // 需要保留连接，但需要做超时管理
                             EpollEvent ev{};
@@ -175,7 +188,7 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
 
                             // 继续计时
                             mutex.lock();
-                            taskMap[ioContext->socket] = timer->delay(std::bind(&Server::closeCallback, this, ioContext->socket), (int64_t) keepAlive, false);
+                            ioContext->task = timer->delay(std::bind(&SecurityTcpServer::closeCallback, this, ioContext->socket), (int64_t) keepAlive, false);
                             mutex.unlock();
 
                             // 重置标识符
@@ -188,21 +201,30 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
     }
 }
 
-void Server::shutdown() noexcept {
+void sese::security::SecurityTcpServer::shutdown() noexcept {
     isShutdown = true;
     threadPool->shutdown();
     timer->shutdown();
-    for (auto &pair: taskMap) {
+    SSL *toFree;
+    for (auto &pair: contextMap) {
+        toFree = (SSL *) pair.second->ssl;
+        SSL_shutdown(toFree);
+        SSL_free(toFree);
         ::shutdown(pair.first, SHUT_RDWR);
         close(pair.first);
     }
     close(epollFd);
 }
 
-void Server::closeCallback(socket_t socket) noexcept {
+void sese::security::SecurityTcpServer::closeCallback(socket_t socket) noexcept {
+    SSL *toFree;
     mutex.lock();
-    taskMap.erase(socket);
+    auto iterator = contextMap.find(socket);
+    toFree = (SSL *)iterator->second->ssl;
+    contextMap.erase(iterator);
     mutex.unlock();
+    SSL_shutdown(toFree);
+    SSL_free(toFree);
     ::shutdown(socket, SHUT_RDWR);
     close(socket);
 }
