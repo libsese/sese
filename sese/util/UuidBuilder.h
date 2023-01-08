@@ -7,8 +7,8 @@
  */
 #pragma once
 #include "sese/Config.h"
-#include "uuid/TimestampHandler.h"
-#include "uuid/Uuid.h"
+#include "SimpleUuid/TimestampHandler.h"
+#include "SimpleUuid/Uuid.h"
 
 namespace sese {
     class API UuidBuilder;
