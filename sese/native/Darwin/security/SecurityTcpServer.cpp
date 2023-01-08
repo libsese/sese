@@ -160,7 +160,7 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                     auto iterator = contextMap.find(events[n].ident);
                     contextMap.erase(iterator);
                     mutex.unlock();
-                    iterator.second->close;
+                    iterator->second->close();
                     continue;
                 }
 

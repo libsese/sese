@@ -10,4 +10,5 @@ option(LIBRESSL_SKIP_INSTALL "" ON)
 option(BUILD_SHARED_LIBS "" ON)
 requires_from_git(LibreSSL https://github.com/PowerShell/LibreSSL.git V3.6.1.0)
 target_include_directories(ssl PUBLIC ${LibreSSL_SOURCE_DIR}/include)
-target_include_directories(crypto PUBLIC ${LibreSSL_SOURCE_DIR})
+# 此选项会导致在 Darwin 下与同名文件 VSERION 冲突，若有需要请尝试从更高一层的目录进行访问
+# target_include_directories(crypto PUBLIC ${LibreSSL_SOURCE_DIR})
