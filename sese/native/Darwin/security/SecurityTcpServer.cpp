@@ -1,8 +1,3 @@
-//
-// 注意
-//  - 此部分代码未经测试，并计划暂停支持 Darwin 下的相关功能
-//
-
 #include "sese/security/SecurityTcpServer.h"
 #include "openssl/ssl.h"
 
@@ -10,11 +5,11 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int64_t sese::security::IOContext::read(void *buf, size_t length) {
+int64_t sese::security::IOContext::read(void *buf, size_t length) {// NOLINT
     return SSL_read((SSL *) ssl, buf, (int) length);
 }
 
-int64_t sese::security::IOContext::write(const void *buf, size_t length) {
+int64_t sese::security::IOContext::write(const void *buf, size_t length) {// NOLINT
     return SSL_write((SSL *) ssl, buf, (int) length);
 }
 
@@ -79,7 +74,9 @@ sese::security::SecurityTcpServer::Ptr sese::security::SecurityTcpServer::create
     server->kqueueFd = kqueueFd;
     server->threadPool = std::make_unique<ThreadPool>("SecurityTcpServer", threads);
     server->ioContextPool = ObjectPool<IOContext>::create();
-    server->timer = Timer::create();
+    if (keepAlive > 0) {
+        server->timer = Timer::create();
+    }
     server->keepAlive = keepAlive;
     return std::unique_ptr<SecurityTcpServer>(server);
 }
@@ -155,44 +152,59 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                 }
                 mutex.unlock();
             } else if (events[n].filter == EVFILT_READ) {
+                // 缓冲区可读
                 if (events[n].flags & EV_EOF) {
+                    // FIN 标识
                     mutex.lock();
-                    auto iterator = contextMap.find(events[n].ident);
+                    auto iterator = contextMap.find((socket_t) events[n].ident);
+                    // iterator != contextMap.end();
                     contextMap.erase(iterator);
+                    if (iterator->second->task != nullptr) {
+                        iterator->second->task->cancel();
+                        iterator->second->task = nullptr;
+                    }
                     mutex.unlock();
-                    iterator->second->close();
+                    SSL_free((SSL *) iterator->second->ssl);
+                    ::shutdown(iterator->second->socket, SHUT_RDWR);
+                    ::close(iterator->second->socket);
                     continue;
                 }
 
-                socket_t client = events[n].ident;
-                Map::iterator iterator;
+                auto client = (socket_t) events[n].ident;
+                mutex.lock();
+                auto iterator = contextMap.find(client);
                 if (0 != keepAlive) {
-                    mutex.lock();
-                    iterator = contextMap.find(client);
+                    // 取消定时任务
                     // iterator != taskMap.end()
-                    contextMap.erase(client);
-                    mutex.unlock();
                     iterator->second->task->cancel();
+                    iterator->second->task = nullptr;
                 }
+                mutex.unlock();
 
-                auto ioContext = ioContextPool->borrow();
-                ioContext->socket = client;
-                threadPool->postTask([handler, iterator, this]() {
-                    auto ioContext = iterator->second;
+                // 提交任务
+                threadPool->postTask([handler, ioContext = iterator->second, this]() {
                     handler(ioContext.get());
 
                     if (ioContext->isClosed) {
                         // 不需要保留连接，已主动关闭
                         mutex.lock();
-                        contextMap.erase(iterator);
+                        auto iterator = contextMap.find(ioContext->socket);
+                        if (iterator != contextMap.end()) {
+                            if (iterator->second->task != nullptr) {
+                                iterator->second->task->cancel();
+                                iterator->second->task = nullptr;
+                            }
+                            contextMap.erase(iterator);
+                        }
                         mutex.unlock();
                     } else {
                         if (0 == keepAlive) {
-                            SSL_shutdown((SSL *)ioContext->ssl);
-                            SSL_free((SSL *)ioContext->ssl);
+                            SSL_shutdown((SSL *) ioContext->ssl);
+                            SSL_free((SSL *) ioContext->ssl);
                             ::shutdown(ioContext->socket, SHUT_RDWR);
                             ::close(ioContext->socket);
                             mutex.lock();
+                            auto iterator = contextMap.find(ioContext->socket);
                             contextMap.erase(iterator);
                             mutex.unlock();
                         } else {
@@ -201,13 +213,12 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                             EV_SET(&ev, ioContext->socket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, nullptr);
                             kevent(kqueueFd, &ev, 1, nullptr, 0, nullptr);
 
-                            // 继续计时
                             mutex.lock();
+                            // 继续计时
                             ioContext->task = timer->delay(std::bind(&SecurityTcpServer::closeCallback, this, ioContext->socket), (int64_t) keepAlive, false);
-                            mutex.unlock();
-
                             // 重置标识符
                             ioContext->isClosed = false;
+                            mutex.unlock();
                         }
                     }
                 });
@@ -219,7 +230,9 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
 void sese::security::SecurityTcpServer::shutdown() noexcept {
     isShutdown = true;
     threadPool->shutdown();
-    timer->shutdown();
+    if (keepAlive > 0) {
+        timer->shutdown();
+    }
     SSL *toFree;
     for (auto &pair: contextMap) {
         toFree = (SSL *) pair.second->ssl;
@@ -235,7 +248,7 @@ void sese::security::SecurityTcpServer::closeCallback(socket_t socket) noexcept 
     SSL *toFree;
     mutex.lock();
     auto iterator = contextMap.find(socket);
-    toFree = (SSL *)iterator->second->ssl;
+    toFree = (SSL *) iterator->second->ssl;
     contextMap.erase(iterator);
     mutex.unlock();
     SSL_shutdown(toFree);

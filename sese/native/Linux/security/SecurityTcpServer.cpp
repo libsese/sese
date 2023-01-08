@@ -148,29 +148,28 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                 // 缓冲区可读
                 if (events[i].events & EPOLLRDHUP) {
                     // FIN 标识
-                    auto iterator = contextMap.find(events[i].data.fd);
                     mutex.lock();
+                    auto iterator = contextMap.find(events[i].data.fd);
                     contextMap.erase(iterator);
                     mutex.unlock();
                     if (iterator->second->task != nullptr) {
                         iterator->second->task->cancel();
                         iterator->second->task = nullptr;
                     }
-                    SSL_free((SSL *)iterator->second->ssl);
+                    SSL_free((SSL *) iterator->second->ssl);
                     ::shutdown(iterator->second->socket, SHUT_RDWR);
                     ::close(iterator->second->socket);
                     continue;
                 }
                 clientFd = events[i].data.fd;
-                Map::iterator iterator;
+                mutex.lock();
+                auto iterator = contextMap.find(clientFd);
                 if (0 != keepAlive) {
-                    mutex.lock();
-                    iterator = contextMap.find(clientFd);
                     // iterator != taskMap.end()
-                    mutex.unlock();
                     iterator->second->task->cancel();
                     iterator->second->task = nullptr;
                 }
+                mutex.unlock();
 
                 threadPool->postTask([handler, iterator, this]() {
                     auto ioContext = iterator->second;
@@ -187,8 +186,8 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                         mutex.unlock();
                     } else {
                         if (0 == keepAlive) {
-                            SSL_shutdown((SSL *)ioContext->ssl);
-                            SSL_free((SSL *)ioContext->ssl);
+                            SSL_shutdown((SSL *) ioContext->ssl);
+                            SSL_free((SSL *) ioContext->ssl);
                             ::shutdown(ioContext->socket, SHUT_RDWR);
                             ::close(ioContext->socket);
                             mutex.lock();
@@ -239,7 +238,7 @@ void sese::security::SecurityTcpServer::closeCallback(socket_t socket) noexcept 
     SSL *toFree;
     mutex.lock();
     auto iterator = contextMap.find(socket);
-    toFree = (SSL *)iterator->second->ssl;
+    toFree = (SSL *) iterator->second->ssl;
     contextMap.erase(iterator);
     mutex.unlock();
     SSL_shutdown(toFree);

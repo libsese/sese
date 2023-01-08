@@ -3,7 +3,7 @@
 #include "sese/record/LogHelper.h"
 #include "sese/util/Test.h"
 
-int main() {
+int main(int argc, char **argv) {
     sese::record::LogHelper helper("SEC_SERVER");
 
     auto ctx = sese::security::SSLContextBuilder::SSL4Server();
@@ -13,7 +13,7 @@ int main() {
     assert(helper, auth, -1);
 
     auto ip = sese::IPAddress::create("0.0.0.0", 8080);
-    auto server = sese::security::SecurityTcpServer::create(ip, 4, 10, ctx);
+    auto server = sese::security::SecurityTcpServer::create(ip, 4, 0, ctx);
     assert(helper, server != nullptr, -2);
 
     sese::Thread th([&server, &helper](){
