@@ -29,13 +29,20 @@ int main() {
     // 服务器线程
     Thread thread([&server]() {
         server->loopWith([&helper = helper](IOContext *ioContext) {
+            helper.info("recv request");
+            // 此处仅演示可在 Windows 平台下未使用 SSL 的可优化选项
+#ifdef WIN32
+            char *buffer = ioContext->buffer;
+#else
             char buffer[1024]{};
             ioContext->read(buffer, 1024);
-            helper.info(buffer);
+#endif
+            puts(buffer);
             ioContext->write("HTTP/1.1 200 OK\r\n"
                              "Host: www.sese.com:8080\r\n"
                              "Connection: Keep-alive\r\n"
-                             "Content-Length: 0\r\n\r\n", 17 + 25 + 21 + 19 + 5);
+                             "Content-Length: 0\r\n\r\n", 87);
+            ioContext->close();
         });
     },
                   "TcpServer");

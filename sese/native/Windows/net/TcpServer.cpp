@@ -77,8 +77,12 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
 
     server->listenSock = sockFd;
     server->hIOCP = hIOCP;
-    server->timer = Timer::create();
-    server->keepAlive = keepAlive;
+
+    if (keepAlive > 0) {
+        server->timer = Timer::create();
+        server->keepAlive = keepAlive;
+    }
+
     return std::unique_ptr<Server>(server);
 }
 
@@ -99,8 +103,12 @@ Server::Ptr Server::create(const Socket::Ptr &listenSocket, size_t threads, size
 
     server->listenSock = listenSocket->getRawSocket();
     server->hIOCP = hIOCP;
-    server->timer = Timer::create();
-    server->keepAlive = keepAlive;
+
+    if (keepAlive > 0) {
+        server->timer = Timer::create();
+        server->keepAlive = keepAlive;
+    }
+
     return std::unique_ptr<Server>(server);
 }
 
@@ -165,7 +173,9 @@ void Server::shutdown() noexcept {
     for (auto i = 0; i < threads; i++) {
         PostQueuedCompletionStatus(hIOCP, -1, (ULONG_PTR) lpCompletionKey, nullptr);
     }
-    timer->shutdown();
+    if (keepAlive > 0) {
+        timer->shutdown();
+    }
     for (auto &pair: taskMap) {
         ::shutdown(pair.first->socket, SD_BOTH);
         closesocket(pair.first->socket);
