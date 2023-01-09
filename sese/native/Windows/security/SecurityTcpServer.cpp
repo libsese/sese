@@ -45,13 +45,8 @@ static int bio_iocp_read(BIO *bio, char *out, int length) {
     }
 }
 
-sese::security::IOContext::IOContext() noexcept {
-    BIO_METHOD *m = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bio_iocp");
-    BIO_meth_set_ctrl(m, bio_iocp_ctrl);
-    BIO_meth_set_read(m, bio_iocp_read);
-    BIO_meth_set_write(m, bio_iocp_write);
-
-    this->bio = BIO_new(m);
+sese::security::IOContext::IOContext(void *bio_method) noexcept {
+    this->bio = BIO_new((BIO_METHOD *) bio_method);
     BIO_set_data((BIO *) this->bio, this);
     BIO_set_init((BIO *) this->bio, 1);
     BIO_set_shutdown((BIO *) this->bio, 0);
@@ -122,8 +117,18 @@ sese::security::SecurityTcpServer::Ptr sese::security::SecurityTcpServer::create
     server->ctx = ctx;
     server->listenSock = sockFd;
     server->hIOCP = hIOCP;
-    server->timer = Timer::create();
-    server->keepAlive = keepAlive;
+
+    if (keepAlive > 0) {
+        server->timer = Timer::create();
+        server->keepAlive = keepAlive;
+    }
+
+    auto m = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bio_iocp");
+    BIO_meth_set_ctrl(m, bio_iocp_ctrl);
+    BIO_meth_set_read(m, bio_iocp_read);
+    BIO_meth_set_write(m, bio_iocp_write);
+    server->bio_iocp_method = m;
+
     return std::unique_ptr<SecurityTcpServer>(server);
 }
 
@@ -175,7 +180,7 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
         }
 
         // 首次接入
-        auto ioContext = new IOContext;
+        auto ioContext = new IOContext(this->bio_iocp_method);
         ioContext->socket = client;
         ioContext->setSSL(clientSSL);
 #ifdef _DEBUG
@@ -212,7 +217,9 @@ void sese::security::SecurityTcpServer::shutdown() noexcept {
     for (auto i = 0; i < threads; i++) {
         PostQueuedCompletionStatus(hIOCP, -1, (ULONG_PTR) lpCompletionKey, nullptr);
     }
-    timer->shutdown();
+    if (keepAlive > 0) {
+        timer->shutdown();
+    }
     for (auto &pair: taskMap) {
         SSL_shutdown((SSL *) pair.first->ssl);
         SSL_free((SSL *) pair.first->ssl);
@@ -222,6 +229,7 @@ void sese::security::SecurityTcpServer::shutdown() noexcept {
 #endif
         delete pair.first;
     }
+    BIO_meth_free((BIO_METHOD *)this->bio_iocp_method);
     for (auto &thread: threadGroup) {
         thread->join();
     }

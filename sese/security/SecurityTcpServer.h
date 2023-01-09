@@ -11,7 +11,7 @@ namespace sese::security {
         void close();
 
 #ifdef _WIN32
-        IOContext() noexcept;
+        IOContext(void *bio_method) noexcept;
         WSAOVERLAPPED overlapped{};
         WSABUF wsaBuf{MaxBufferSize, buffer};
         CHAR buffer[MaxBufferSize]{};
@@ -85,6 +85,7 @@ namespace sese::security {
         size_t threads = 0;
         std::vector<Thread::Ptr> threadGroup;
         std::function<void(IOContext *)> handler;
+        void *bio_iocp_method = nullptr;
 #endif
     };
 }// namespace sese::security
