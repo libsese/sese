@@ -151,11 +151,11 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                     mutex.lock();
                     auto iterator = contextMap.find(events[i].data.fd);
                     contextMap.erase(iterator);
-                    mutex.unlock();
                     if (iterator->second->task != nullptr) {
                         iterator->second->task->cancel();
                         iterator->second->task = nullptr;
                     }
+                    mutex.unlock();
                     SSL_free((SSL *) iterator->second->ssl);
                     ::shutdown(iterator->second->socket, SHUT_RDWR);
                     ::close(iterator->second->socket);
@@ -171,17 +171,19 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                 }
                 mutex.unlock();
 
-                threadPool->postTask([handler, iterator, this]() {
-                    auto ioContext = iterator->second;
+                threadPool->postTask([handler, ioContext = iterator->second, this]() {
                     handler(ioContext.get());
 
                     if (ioContext->isClosed) {
                         // 不需要保留连接，已主动关闭
                         mutex.lock();
-                        contextMap.erase(iterator);
-                        if (iterator->second->task != nullptr) {
-                            iterator->second->task->cancel();
-                            iterator->second->task = nullptr;
+                        auto iterator = contextMap.find(ioContext->socket);
+                        if (iterator != contextMap.end()) {
+                            if (iterator->second->task != nullptr) {
+                                iterator->second->task->cancel();
+                                iterator->second->task = nullptr;
+                            }
+                            contextMap.erase(iterator);
                         }
                         mutex.unlock();
                     } else {
@@ -191,7 +193,7 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                             ::shutdown(ioContext->socket, SHUT_RDWR);
                             ::close(ioContext->socket);
                             mutex.lock();
-                            contextMap.erase(iterator);
+                            contextMap.erase(ioContext->socket);
                             mutex.unlock();
                         } else {
                             // 需要保留连接，但需要做超时管理
@@ -203,10 +205,9 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                             // 继续计时
                             mutex.lock();
                             ioContext->task = timer->delay(std::bind(&SecurityTcpServer::closeCallback, this, ioContext->socket), (int64_t) keepAlive, false);
-                            mutex.unlock();
-
                             // 重置标识符
                             ioContext->isClosed = false;
+                            mutex.unlock();
                         }
                     }
                 });
