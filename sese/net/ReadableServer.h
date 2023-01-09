@@ -14,7 +14,7 @@ namespace sese::net {
     class API ReadableServer;
 }// namespace sese::net
 
-struct API sese::net::IOContext final {
+struct API [[deprecated("此实现缺少 SSL 支持")]] sese::net::IOContext final {
     int64_t read(void *dst, size_t length);
     int64_t write(const void *src, size_t length) const;
     void close();
@@ -30,7 +30,8 @@ struct API sese::net::IOContext final {
     socket_t socket = -1;
 };
 
-class API sese::net::ReadableServer final : public Noncopyable {
+
+class API [[deprecated("此实现缺少 SSL 支持")]] sese::net::ReadableServer final : public Noncopyable {
 public:
     using Ptr = std::unique_ptr<ReadableServer>;
     using Handler = std::function<void(IOContext *)>;
