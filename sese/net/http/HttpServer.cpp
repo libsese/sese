@@ -16,19 +16,18 @@ HttpServiceContext::HttpServiceContext() noexcept {
 
 void HttpServiceContext::reset(IOContext *context) noexcept {
     ioContext = context;
-    _isReadOnly = true;
+    _isFlushed = false;
     request->clear();
     response->clear();
 }
 
 int64_t HttpServiceContext::read(void *buffer, size_t size) noexcept {
-    _isReadOnly = true;
     return ioContext->read(buffer, size);
 }
 
 int64_t HttpServiceContext::write(const void *buffer, size_t size) noexcept {
-    if (_isReadOnly) {
-        // try switch to write mode
+    if (!_isFlushed) {
+        // try to flush resp
         if (!flush()) {
             return -1;
         }
@@ -43,9 +42,10 @@ bool HttpServiceContext::flush() noexcept {
     } else {
         response->set("Connection", "Keep-Alive");
     }
-    _isReadOnly = false;
+
+    _isFlushed = true;
     if(!HttpUtil::sendResponse(this, response.get())) {
-        _isReadOnly = true;
+        _isFlushed = false;
         return false;
     } else {
         return true;
@@ -85,7 +85,7 @@ void Server::loopWith(const std::function<void(const HttpServiceContext::Ptr &)>
 
         handler(context);
 
-        if (context->isReadOnly()) {
+        if (!context->isFlushed()) {
             if (!context->flush()) {
                 context->close();
                 return;

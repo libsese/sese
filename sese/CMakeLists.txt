@@ -27,8 +27,7 @@ target_sources(sese PRIVATE
         net/http/HttpClient.cpp net/http/HttpServer.cpp
         net/http/Cookie.cpp net/http/CookieMap.cpp
         net/rpc/Server.cpp net/rpc/Client.cpp
-        net/ws/WebSocketContext.cpp net/ws/WebSocketListener.cpp
-        net/ws/WebSocketAuthenticator.cpp
+        net/ws/WebSocketContext.cpp net/ws/WebSocketAuthenticator.cpp
 
         config/ConfigUtil.cpp
         config/json/JsonTypes.cpp config/json/JsonUtil.cpp

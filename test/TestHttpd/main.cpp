@@ -26,15 +26,15 @@ int main() {
             response->setCode(200);
             response->set("Content-length", "17");
             // 此句是可以省略的
-            context->flush();
+            // context->flush();
             context->write("Hello Sese Httpd!", 17);
             return;
         });
     });
 
     serverThread.start();
-    sese::sleep(5);
-//    getchar();
+    // sese::sleep(5);
+    getchar();
     server->shutdown();
     serverThread.join();
 

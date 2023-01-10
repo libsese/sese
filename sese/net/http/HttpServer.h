@@ -52,17 +52,12 @@ namespace sese::http {
 
         void close() override;
 
-        [[nodiscard]] bool isReadOnly() const noexcept { return _isReadOnly; }
+        [[nodiscard]] bool isFlushed() const noexcept { return _isFlushed; }
 
         socket_t getRawSocket() { return ioContext->socket; }
 
     private:
-        /*
-         * ServiceContext 一次完整的服务包含两个部分，
-         * 读取请求信息（只读模式），发送响应信息（只写模式）。
-         * _isReadOnly 用于指示当前模式是否为只读模式。
-         */
-        bool _isReadOnly = true;
+        bool _isFlushed = true;
         IOContext *ioContext = nullptr;
         HttpRequest::Ptr request = nullptr;
         HttpResponse::Ptr response = nullptr;
