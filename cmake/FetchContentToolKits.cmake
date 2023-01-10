@@ -15,8 +15,6 @@ macro(requires_from_git name url hash_or_tag)
             ${url}
             GIT_TAG
             ${hash_or_tag}
-            SOURCE_DIR
-            ${CMAKE_SOURCE_DIR}/lib/${name}
     )
 
     FetchContent_MakeAvailable(${name})
@@ -28,8 +26,6 @@ macro(requires_from_url name url sha256)
             URL
             ${url}
             URL_HASH SHA3_256=${sha256}
-            SOURCE_DIR
-            ${CMAKE_SOURCE_DIR}/lib/${name}
     )
 
     FetchContent_MakeAvailable(${name})
