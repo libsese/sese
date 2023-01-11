@@ -17,14 +17,13 @@ namespace sese {
 
     class API Timer;
     /// 定时任务
-    class API TimerTask final {
+    class API TimerTask final : public std::enable_shared_from_this<TimerTask> {
     public:
         friend class Timer;
         using Ptr = std::shared_ptr<TimerTask>;
 
         /// 取消当前定时任务
         void cancel() noexcept;
-
     private:
         // 私有构造函数
         TimerTask() = default;
@@ -60,11 +59,11 @@ namespace sese {
         /// 结束定时器并终止定时线程
         void shutdown() noexcept;
 
-    private:
+    public:
         /// 私有构造函数
-        explicit Timer(size_t number);
+        Timer() = default;
         void loop() noexcept;
-        static void cancelCallback(const std::weak_ptr<Timer> &weakTimer, TimerTask::Ptr task) noexcept;
+        static void cancelCallback(const std::weak_ptr<Timer> &weakTimer, const std::weak_ptr<TimerTask> &weakTask) noexcept;
 
         size_t number = 0;
         std::mutex mutex{};
