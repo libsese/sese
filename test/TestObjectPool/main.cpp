@@ -47,24 +47,24 @@ void testThreadSafety() {
     threadPool.shutdown();
 }
 
-void testConcurrent() {
-    ThreadPool threadPool("POOL", 8);
-    ConcurrentObjectPool<int32_t>::Ptr objectPool = ConcurrentObjectPool<int32_t>::create();
+// void testConcurrent() {
+//     ThreadPool threadPool("POOL", 8);
+//     ConcurrentObjectPool<int32_t>::Ptr objectPool = ConcurrentObjectPool<int32_t>::create();
 
-    for (int i = 0; i < 500; i++) {
-        threadPool.postTask([&objectPool]() {
-            ObjectPool<int32_t>::ObjectPtr object = objectPool->borrow();
-            *object += 1;
-        });
-    }
+//     for (int i = 0; i < 500; i++) {
+//         threadPool.postTask([&objectPool]() {
+//             ObjectPool<int32_t>::ObjectPtr object = objectPool->borrow();
+//             *object += 1;
+//         });
+//     }
 
-    sese::sleep(3);
-    threadPool.shutdown();
-}
+//     sese::sleep(3);
+//     threadPool.shutdown();
+// }
 
 int main() {
     testRecycle();
     testThreadSafety();
-//    testConcurrent();
+    // testConcurrent();
     return 0;
 }
