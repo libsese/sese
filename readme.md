@@ -25,8 +25,6 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 
 注意：框架不支持交叉编译，且仅支持 AMD64 架构的机器。
 
-**由于设备限制，当前版本暂停支持 Darwin 相关平台**
-
 ## 构建
 
 项目选择了 CMake 作为构建系统，同时还使用了 Git 作为项目的版本控制系统（废话）。<br>
@@ -45,7 +43,6 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 | 名称                  | 描述                  | 默认值 |
 |---------------------|---------------------|-----|
 | SESE_BUILD_TEST     | 构建 sese 的单元测试       | OFF |
-| SESE_USE_SSL        | 添加 SSL 支持           | OFF |
 
 工具链的选取：
 
@@ -65,3 +62,12 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 其次才推荐使用 git submodule
 
 具体的使用方法请参考 [docs](docs/readme.md) 和 [example](example/CMakeLists.txt)
+
+## License & Notice
+
+- LibreSSL/PowerShell
+  - [COPYING](licenses/PowerShell/COPYING)
+  - [NOTICE](licenses/PowerShell/NOTICE)
+- libsese
+  - SimpleUuid/[LICENSE](licenses/libsese/SimpleUuid/LICENSE)
+  - SString/[LICENSE](licenses/libsese/SString/license)
