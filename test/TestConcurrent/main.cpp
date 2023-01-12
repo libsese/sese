@@ -5,12 +5,12 @@
 #include "sese/util/Test.h"
 #include "sese/util/Util.h"
 
-using sese::record::LogHelper;
 using sese::Test;
 using sese::Thread;
 using sese::ThreadPool;
 using sese::concurrent::LinkedQueue;
 using sese::concurrent::LinkedStack;
+using sese::record::LogHelper;
 
 sese::record::LogHelper helper("fCONCURRENT");// NOLINT
 
@@ -50,13 +50,16 @@ void testLinkedStack() {
 void testLinkedQueue() {
     LinkedQueue<int> queue;
     ThreadPool pool("PUSH", 8);
-    for(int i = 0; i < 200; i++) {
-        pool.postTask([&queue](){
+    for (int i = 0; i < 2000; i++) {
+        pool.postTask([&queue]() {
             queue.push(0);
         });
     }
-    for(int i = 0; i < 210; i++) {
-        pool.postTask([&queue](){
+    sese::sleep(5);
+    auto n = queue.size();
+    assert(helper, n == 2000, 0);
+    for (int i = 0; i < 2000; i++) {
+        pool.postTask([&queue]() {
             queue.pop(0);
         });
     }
@@ -67,8 +70,8 @@ void testLinkedQueue() {
 }
 
 int main() {
-    //    testCompareAndSwap();
-    //    testLinkedStack();
+    testCompareAndSwap();
+    testLinkedStack();
     testLinkedQueue();
 
     return 0;

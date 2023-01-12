@@ -103,7 +103,9 @@ namespace sese::concurrent {
                 while (!compareAndSwapPointer((void *volatile *) &head, node, node->next)) {
                     node = (NodeType *) head;
                 }
-                return node->value;
+                T res = node->value;
+                delete node;
+                return res;
             }
         }
 
