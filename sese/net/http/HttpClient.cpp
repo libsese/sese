@@ -13,10 +13,8 @@ HttpClient::Ptr HttpClient::create(const std::string &domain, uint16_t port) noe
     if (address) {
         address->setPort(port);
         auto clientSocket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP, 0);
-        if (!clientSocket->setNonblocking(true)){
-            return nullptr;
-        }
-        if (-1 != clientSocket->connect(address)) {
+        auto rt = clientSocket->connect(address);
+        if (0 == rt) {
             auto client = std::unique_ptr<HttpClient>(new HttpClient);
             client->clientSocket = clientSocket;
             return client;

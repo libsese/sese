@@ -33,8 +33,8 @@ int main() {
     });
 
     serverThread.start();
-    // sese::sleep(5);
-    getchar();
+    sese::sleep(5);
+//    getchar();
     server->shutdown();
     serverThread.join();
 

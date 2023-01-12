@@ -29,7 +29,7 @@ int main() {
     }
 
     auto len = client->getResponseContentLength();
-    printf("\nand %lld bytes of content ...\n", len);
+    printf("\nand %d bytes of content ...\n", (int) len);
 
     return 0;
 }
