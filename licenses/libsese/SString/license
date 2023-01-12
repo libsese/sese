@@ -186,7 +186,7 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright [2022] [Kaoru SHIINA_KAORU@OUTLOOK.COM]
+   Copyright [2022] [kaoru]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -199,21 +199,3 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
------------------------------------------------------------------------------------
-
-Library sese.core includes a number of components and libraries with separate
-copyright notices and license terms.  Your use of those components are
-subject to the terms and conditions of the following licenses:
-
-- PowerShell/LibreSSL
-    Project URL: https://github.com/PowerShell/LibreSSL/
-    License: OpenSSL License, Original SSLeay License
-
-- libsese/SimpleUuid
-    Project URL: https://github.com/libsese/SimpleUuid/
-    License: Apache-2.0 License
-
-- libsese/SString
-    Project URL: https://github.com/libsese/SString/
-    License: Apache-2.0 License

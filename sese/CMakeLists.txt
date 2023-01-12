@@ -54,8 +54,8 @@ target_sources(sese PRIVATE
         security/SecurityConfig.cpp security/SSLContext.cpp
         security/SSLContextBuilder.cpp security/SecuritySocket.cpp
         )
-target_link_libraries(sese crypto ssl)
-target_link_libraries(sese-static crypto ssl)
+target_link_libraries(sese crypto-static ssl-static)
+target_link_libraries(sese-static crypto-static ssl-static)
 
 set(NATIVE_PATH "native/${CMAKE_SYSTEM_NAME}")
 target_sources(sese PRIVATE

@@ -1,0 +1,11 @@
+Library SESE.CORE Distribution
+Copyright 2021-2023 libsese Organization
+
+This software bundles the following NOTICE files from third party library providers:
+LibreSSL/NOTICES
+- Copyright (c) 1998-2011 The OpenSSL Project.
+- Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
+libsese/SString
+- Copyright (c) 2021-2023 SHIINASAMA (SHIINA_KAORU@OUTLOOK.COM)
+libsese/SimpleUuid
+- Copyright (c) 2021-2023 SHIINASAMA (SHIINA_KAORU@OUTLOOK.COM)
