@@ -23,7 +23,7 @@ namespace sese::record {
 
         explicit FileAppender(FileStream::Ptr fileStream, Level level = Level::DEBUG);
 
-        ~FileAppender() noexcept;
+        ~FileAppender() noexcept override;
 
         void dump(const char *buffer, size_t size) noexcept override;
 

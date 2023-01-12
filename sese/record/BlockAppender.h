@@ -20,7 +20,7 @@ namespace sese::record {
         /// \param level 等级阈值
         explicit BlockAppender(size_t blockMaxSize, Level level = Level::DEBUG);
 
-        ~BlockAppender() noexcept;
+        ~BlockAppender() noexcept override;
 
         void dump(const char *buffer, size_t size) noexcept override;
 

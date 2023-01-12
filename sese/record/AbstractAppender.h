@@ -23,6 +23,8 @@ namespace sese::record { /**
 
         AbstractAppender() noexcept = default;
 
+        virtual ~AbstractAppender() noexcept = default;
+
         explicit AbstractAppender(Level level) noexcept;
 
         virtual void dump(const char *buffer, size_t size) noexcept = 0;

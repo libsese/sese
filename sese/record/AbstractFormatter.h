@@ -20,6 +20,8 @@ namespace sese::record {
     public:
         typedef std::shared_ptr<AbstractFormatter> Ptr;
 
+        virtual ~AbstractFormatter() noexcept = default;
+
         virtual std::string dump(const Event::Ptr &event) noexcept = 0;
     };
 }// namespace sese::record
