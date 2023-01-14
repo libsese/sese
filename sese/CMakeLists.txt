@@ -4,6 +4,9 @@ add_library(sese-static STATIC)
 target_include_directories(sese PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(sese-static PUBLIC ${PROJECT_SOURCE_DIR})
 
+target_include_directories(sese PRIVATE ${LibreSSL_SOURCE_DIR}/include)
+target_include_directories(sese-static PRIVATE ${LibreSSL_SOURCE_DIR}/include)
+
 target_sources(sese PRIVATE
         record/AbstractAppender.cpp record/SimpleFormatter.cpp
         record/ConsoleAppender.cpp record/Logger.cpp
@@ -54,8 +57,13 @@ target_sources(sese PRIVATE
         security/SecurityConfig.cpp security/SSLContext.cpp
         security/SSLContextBuilder.cpp security/SecuritySocket.cpp
         )
-target_link_libraries(sese crypto-static ssl-static)
-target_link_libraries(sese-static crypto-static ssl-static)
+if (WIN32)
+    target_link_libraries(sese crypto-static ssl-static)
+    target_link_libraries(sese-static crypto-static ssl-static)
+else()
+    target_link_libraries(sese crypto_obj ssl_obj)
+    target_link_libraries(sese-static crypto_obj ssl_obj)
+endif()
 
 set(NATIVE_PATH "native/${CMAKE_SYSTEM_NAME}")
 target_sources(sese PRIVATE

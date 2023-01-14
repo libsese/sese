@@ -150,9 +150,9 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                     mutex.lock();
                     auto iterator = taskMap.find(clientFd);
                     // iterator != taskMap.end()
-                    taskMap.erase(clientFd);
-                    mutex.unlock();
                     iterator->second->cancel();
+                    taskMap.erase(iterator);
+                    mutex.unlock();
                 }
 
                 auto ioContext = ioContextPool->borrow();

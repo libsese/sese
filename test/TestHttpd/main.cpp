@@ -3,6 +3,8 @@
 #include "sese/util/Test.h"
 #include "sese/util/Util.h"
 
+#include <csignal>
+
 using sese::IPv4Address;
 using sese::record::LogHelper;
 using sese::Thread;
@@ -12,6 +14,10 @@ using sese::http::HttpServiceContext;
 sese::record::LogHelper helper("HTTPD");//NOLINT
 
 int main() {
+#ifndef WIN32
+    signal(SIGPIPE, SIG_IGN);
+#endif
+
     auto address = IPv4Address::create("0.0.0.0", 8080);
     auto server = HttpServer::create(address, 4);
     assert(helper, server != nullptr, -1);
