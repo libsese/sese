@@ -4,6 +4,7 @@
  * @date 2022年5月30日
  * @brief 非阻塞线程安全队列
  * @bug 队列长度超过10^3时可能产生意想不到的错误，暂时原因不明
+ * @bug 已知可并发读、并发写，但无法做到并发读写，尚未有继续研究的计划
  * @ref https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/concurrent/ConcurrentLinkedQueue.java
  */
 #pragma once
@@ -14,9 +15,10 @@ namespace sese::concurrent {
     /**
      * @brief 非阻塞线程安全队列
      * @tparam T 数据类型
+     * @deprecated 弃用原因请查看文件文档
      */
     template<typename T>
-    class LinkedQueue {
+    class [[deprecated("弃用原因请查看文件文档")]] LinkedQueue {
     public:
         using NodeType = Node<T>;
 
@@ -87,9 +89,10 @@ namespace sese::concurrent {
                 // 正常插入，tail 不一定是尾部节点，但一定是最靠近尾部的
                 // 故从 tail 开始查找尾部位置
                 // assert(tail != nullptr)
+                auto oldTail = (NodeType *) tail;
                 auto realTail = findTail((NodeType *) tail);
                 while (!compareAndSwapPointer((void *volatile *) &realTail->next, nullptr, newNode)) {}
-                compareAndSwapPointer((void *volatile *) &tail, realTail, newNode);
+                compareAndSwapPointer((void *volatile *) &tail, (NodeType *) oldTail, newNode);
             }
         }
 
@@ -98,13 +101,14 @@ namespace sese::concurrent {
                 // 队列空，直接返回缺省值
                 return defaultValue;
             } else {
+                NodeType *oldHead = (NodeType *) head;
                 NodeType *node = (NodeType *) head;
                 //bug: may be head was nullptr
                 while (!compareAndSwapPointer((void *volatile *) &head, node, node->next)) {
                     node = (NodeType *) head;
                 }
-                T res = node->value;
-                delete node;
+                T res = oldHead->value;
+                delete oldHead;
                 return res;
             }
         }

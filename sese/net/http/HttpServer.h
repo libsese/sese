@@ -9,8 +9,7 @@
 #include <sese/net/TcpServer.h>
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
-#include <sese/concurrent/ConcurrentObjectPool.h>
-#include "sese/util/Timer.h"
+#include <sese/util/Timer.h>
 #include <map>
 
 namespace sese::http {
@@ -57,7 +56,7 @@ namespace sese::http {
         socket_t getRawSocket() { return ioContext->socket; }
 
     private:
-        bool _isFlushed = true;
+        bool _isFlushed = false;
         IOContext *ioContext = nullptr;
         HttpRequest::Ptr request = nullptr;
         HttpResponse::Ptr response = nullptr;
@@ -74,13 +73,12 @@ namespace sese::http {
         /// \param keepAlive Keep-Alive 时长
         /// \return 创建成功返回其指针，失败则为 nullptr
         static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
-        void loopWith(const std::function<void(const HttpServiceContext::Ptr &serviceContext)> &handler);
+        void loopWith(const std::function<void(HttpServiceContext *serviceContext)> &handler);
         void shutdown();
 
     private:
         explicit HttpServer() = default;
 
         TcpServer::Ptr tcpServer = nullptr;
-        concurrent::ConcurrentObjectPool<HttpServiceContext>::Ptr objectPool = nullptr;
     };
 }// namespace sese::http

@@ -8,6 +8,7 @@
 #pragma once
 
 #include "sese/net/TcpServer.h"
+#include "sese/util/ObjectPool.h"
 
 namespace sese::net {
     struct API IOContext;

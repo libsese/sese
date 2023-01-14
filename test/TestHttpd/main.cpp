@@ -23,7 +23,7 @@ int main() {
     assert(helper, server != nullptr, -1);
 
     Thread serverThread([&server]() {
-        server->loopWith([](const HttpServiceContext::Ptr &context) {
+        server->loopWith([](HttpServiceContext *context) {
             decltype(auto) request = context->getRequest();
             auto url = request->getUrl();
             helper.info("request url: %s", url.c_str());

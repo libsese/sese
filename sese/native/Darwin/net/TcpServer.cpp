@@ -1,6 +1,5 @@
 #include <sese/net/TcpServer.h>
 #include "sese/util/Util.h"
-#include <ctime>
 #include <unistd.h>
 #include <fcntl.h>
 
@@ -66,8 +65,9 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
     server->sockFd = sockFd;
     server->kqueueFd = kqueueFd;
     server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    server->ioContextPool = ObjectPool<IOContext>::create();
-    server->timer = Timer::create();
+    if (keepAlive > 0) {
+        server->timer = Timer::create();
+    }
     server->keepAlive = keepAlive;
     return std::unique_ptr<Server>(server);
 }
@@ -91,8 +91,9 @@ Server::Ptr Server::create(const Socket::Ptr &listenSocket, size_t threads, size
     server->sockFd = listenSocket->getRawSocket();
     server->kqueueFd = kqueueFd;
     server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    server->ioContextPool = ObjectPool<IOContext>::create();
-    server->timer = Timer::create();
+    if (keepAlive > 0) {
+        server->timer = Timer::create();
+    }
     server->keepAlive = keepAlive;
     return std::unique_ptr<Server>(server);
 }
@@ -155,30 +156,27 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                     iterator->second->cancel();
                 }
 
-                auto ioContext = ioContextPool->borrow();
-                ioContext->socket = client;
-                threadPool->postTask([handler, ioContext, this]() {
-                    handler(ioContext.get());
+                threadPool->postTask([handler, client, this]() {
+                    IOContext ioContext;
+                    ioContext.socket = client;
+                    handler(&ioContext);
 
-                    if (ioContext->isClosed) {
+                    if (ioContext.isClosed) {
                         // 不需要保留连接，已主动关闭
                     } else {
                         if (0 == keepAlive) {
-                            ::shutdown(ioContext->socket, SHUT_RDWR);
-                            ::close(ioContext->socket);
+                            ::shutdown(client, SHUT_RDWR);
+                            ::close(client);
                         } else {
                             // 需要保留连接，但需要做超时管理
                             KEvent ev{};
-                            EV_SET(&ev, ioContext->socket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, nullptr);
+                            EV_SET(&ev, client, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, nullptr);
                             kevent(kqueueFd, &ev, 1, nullptr, 0, nullptr);
 
                             // 继续计时
                             mutex.lock();
-                            taskMap[ioContext->socket] = timer->delay(std::bind(&Server::closeCallback, this, ioContext->socket), (int64_t) keepAlive, false);
+                            taskMap[client] = timer->delay(std::bind(&Server::closeCallback, this, client), (int64_t) keepAlive, false);
                             mutex.unlock();
-
-                            // 重置标识符
-                            ioContext->isClosed = false;
                         }
                     }
                 });
@@ -190,7 +188,9 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
 void Server::shutdown() noexcept {
     isShutdown = true;
     threadPool->shutdown();
-    timer->shutdown();
+    if (keepAlive > 0) {
+        timer->shutdown();
+    }
     for (auto &pair: taskMap) {
         ::shutdown(pair.first, SHUT_RDWR);
         close(pair.first);

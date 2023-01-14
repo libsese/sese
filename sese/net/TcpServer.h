@@ -6,11 +6,11 @@
  * @version 0.3
  */
 #pragma once
-#include <sese/net/Socket.h>
-#include <sese/thread/ThreadPool.h>
+#include "sese/net/Socket.h"
+#include "sese/thread/ThreadPool.h"
 #include "sese/util/Noncopyable.h"
 #include "sese/util/Timer.h"
-#include "sese/util/ObjectPool.h"
+
 #include <map>
 
 #ifdef __linux__
@@ -83,7 +83,6 @@ namespace sese {
         socket_t sockFd = -1;
         epoll_event events[MaxEvents]{};
         ThreadPool::Ptr threadPool = nullptr;
-        ObjectPool<IOContext>::Ptr ioContextPool = nullptr;
 #endif
 #ifdef __APPLE__
     private:
@@ -93,7 +92,6 @@ namespace sese {
         socket_t sockFd = -1;
         KEvent events[MaxEvents]{};
         ThreadPool::Ptr threadPool = nullptr;
-        ObjectPool<IOContext>::Ptr ioContextPool = nullptr;
 #endif
 #ifdef _WIN32
     private:

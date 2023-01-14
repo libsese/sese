@@ -2,6 +2,7 @@
 
 #include "sese/net/TcpServer.h"
 #include "sese/security/SSLContext.h"
+#include "sese/util/ObjectPool.h"
 
 namespace sese::security {
 

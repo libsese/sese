@@ -16,9 +16,6 @@ HttpServiceContext::HttpServiceContext() noexcept {
 
 void HttpServiceContext::reset(IOContext *context) noexcept {
     ioContext = context;
-    _isFlushed = false;
-    request->clear();
-    response->clear();
 }
 
 int64_t HttpServiceContext::read(void *buffer, size_t size) noexcept {
@@ -44,7 +41,7 @@ bool HttpServiceContext::flush() noexcept {
     }
 
     _isFlushed = true;
-    if(!HttpUtil::sendResponse(this, response.get())) {
+    if (!HttpUtil::sendResponse(this, response.get())) {
         _isFlushed = false;
         return false;
     } else {
@@ -63,37 +60,36 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
     } else {
         auto server = new Server;
         server->tcpServer = std::move(tcpServer);
-        server->objectPool = concurrent::ConcurrentObjectPool<HttpServiceContext>::create();
         return std::unique_ptr<Server>(server);
     }
 }
 
-void Server::loopWith(const std::function<void(const HttpServiceContext::Ptr &)> &handler) {
+void Server::loopWith(const std::function<void(HttpServiceContext *)> &handler) {
     tcpServer->loopWith([&](IOContext *ioContext) {
-        auto context = this->objectPool->borrow();
-        context->reset(ioContext);
+        HttpServiceContext context;
+        context.reset(ioContext);
 
-        decltype(auto) request = context->getRequest();
-        decltype(auto) response = context->getResponse();
+        decltype(auto) request = context.getRequest();
+        decltype(auto) response = context.getResponse();
 
-        if (!HttpUtil::recvRequest(context.get(), context->getRequest().get())) {
-            context->close();
+        if (!HttpUtil::recvRequest(&context, context.getRequest().get())) {
+            context.close();
             return;
         }
 
         bool isKeepAlive = tcpServer->getKeepAlive() != 0 && 0 == strcasecmp(request->get("Connection", "Keep-Alive").c_str(), "Keep-Alive");
 
-        handler(context);
+        handler(&context);
 
-        if (!context->isFlushed()) {
-            if (!context->flush()) {
-                context->close();
+        if (!context.isFlushed()) {
+            if (!context.flush()) {
+                context.close();
                 return;
             }
         }
 
         if (!isKeepAlive) {
-            context->close();
+            context.close();
             return;
         }
     });

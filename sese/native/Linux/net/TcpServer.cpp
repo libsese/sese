@@ -65,7 +65,6 @@ Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size
     server->sockFd = sockFd;
     server->epollFd = epollFd;
     server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    server->ioContextPool = ObjectPool<IOContext>::create();
     server->timer = Timer::create();
     server->keepAlive = keepAlive;
     return std::unique_ptr<Server>(server);
@@ -93,8 +92,9 @@ Server::Ptr Server::create(const Socket::Ptr &listenSocket, size_t threads, size
     server->sockFd = sockFd;
     server->epollFd = epollFd;
     server->threadPool = std::make_unique<ThreadPool>("TcpServer", threads);
-    server->ioContextPool = ObjectPool<IOContext>::create();
-    server->timer = Timer::create();
+    if (keepAlive > 0) {
+        server->timer = Timer::create();
+    }
     server->keepAlive = keepAlive;
     return std::unique_ptr<Server>(server);
 }
@@ -155,31 +155,28 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                     mutex.unlock();
                 }
 
-                auto ioContext = ioContextPool->borrow();
-                ioContext->socket = clientFd;
-                threadPool->postTask([handler, ioContext, this]() {
-                    handler(ioContext.get());
+                threadPool->postTask([handler, clientFd, this]() {
+                    IOContext ioContext;
+                    ioContext.socket = clientFd;
+                    handler(&ioContext);
 
-                    if (ioContext->isClosed) {
+                    if (ioContext.isClosed) {
                         // 不需要保留连接，已主动关闭
                     } else {
                         if (0 == keepAlive) {
-                            ::shutdown(ioContext->socket, SHUT_RDWR);
-                            ::close(ioContext->socket);
+                            ::shutdown(clientFd, SHUT_RDWR);
+                            ::close(clientFd);
                         } else {
                             // 需要保留连接，但需要做超时管理
                             EpollEvent ev{};
                             ev.events = EPOLLIN | EPOLLONESHOT | EPOLLRDHUP;
-                            ev.data.fd = ioContext->socket;
-                            EpollCtl(epollFd, EPOLL_CTL_MOD, ioContext->socket, &ev);
+                            ev.data.fd = clientFd;
+                            EpollCtl(epollFd, EPOLL_CTL_MOD, clientFd, &ev);
 
                             // 继续计时
                             mutex.lock();
-                            taskMap[ioContext->socket] = timer->delay(std::bind(&Server::closeCallback, this, ioContext->socket), (int64_t) keepAlive, false);
+                            taskMap[clientFd] = timer->delay(std::bind(&Server::closeCallback, this, clientFd), (int64_t) keepAlive, false);
                             mutex.unlock();
-
-                            // 重置标识符
-                            ioContext->isClosed = false;
                         }
                     }
                 });
@@ -191,7 +188,9 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
 void Server::shutdown() noexcept {
     isShutdown = true;
     threadPool->shutdown();
-    timer->shutdown();
+    if (keepAlive > 0) {
+        timer->shutdown();
+    }
     for (auto &pair: taskMap) {
         ::shutdown(pair.first, SHUT_RDWR);
         close(pair.first);
