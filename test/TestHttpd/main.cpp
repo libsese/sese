@@ -23,12 +23,12 @@ int main() {
     assert(helper, server != nullptr, -1);
 
     Thread serverThread([&server]() {
-        server->loopWith([](HttpServiceContext *context) {
-            decltype(auto) request = context->getRequest();
+        server->loopWith([](HttpServer::ServiceContext *context) {
+            auto request = &context->request;
             auto url = request->getUrl();
             helper.info("request url: %s", url.c_str());
 
-            decltype(auto) response = context->getResponse();
+            auto response = &context->response;
             response->setCode(200);
             response->set("Content-length", "17");
             // 此句是可以省略的

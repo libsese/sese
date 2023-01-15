@@ -6,11 +6,16 @@
 /// \warning 实验性功能，仅在 Linux 下启用长连接
 
 #pragma once
-#include <sese/net/TcpServer.h>
+#include <sese/security/SecurityTcpServer.h>
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
+#include <sese/net/http/HttpUtil.h>
 #include <sese/util/Timer.h>
 #include <map>
+
+#ifdef WIN32
+#pragma warning(disable : 4996)
+#endif
 
 namespace sese::http {
 
@@ -18,38 +23,62 @@ namespace sese::http {
     using HttpResponse = ResponseHeader;
 
     /// Http 服务上下文
+    template<typename Context>
     class API HttpServiceContext final : public sese::Stream {
     public:
         using Ptr = std::shared_ptr<HttpServiceContext>;
 
-        /// 初始化服务上下文
-        HttpServiceContext() noexcept;
-        /// 重置服务上下文
-        void reset(IOContext *context) noexcept;
+        HttpRequest request;
+        HttpResponse response;
 
-        /// 获取请求头
-        /// \return 请求头信息
-        [[nodiscard]] const HttpRequest::Ptr &getRequest() const noexcept { return request; }
-        /// 获取响应头信息
-        /// \note 此举会将服务模式变更为只写模式
-        /// \return 响应头信息
-        [[nodiscard]] const HttpResponse::Ptr &getResponse() const noexcept { return response; }
+        /// 重置服务上下文
+        void reset(Context *context) noexcept {
+            ioContext = context;
+        }
 
         /// 读取请求的正文信息
         /// \param buffer 缓存
         /// \param size 长度
         /// \return 读取到的长度
-        int64_t read(void *buffer, size_t size) noexcept override;
+        int64_t read(void *buffer, size_t size) noexcept override {
+            return ioContext->read(buffer, size);
+        }
+
         /// 立即向服务对象发送响应头，并发送正文信息
         /// \param buffer 正文信息缓存
         /// \param size 长度
         /// \return 已发送的长度
-        int64_t write(const void *buffer, size_t size) noexcept override;
+        int64_t write(const void *buffer, size_t size) noexcept override {
+            if (!_isFlushed) {
+                // try to flush resp
+                if (!flush()) {
+                    return -1;
+                }
+            }
+            return ioContext->write(buffer, size);
+        }
 
         /// 发送响应头并切换至只写模式
-        bool flush() noexcept;
+        bool flush() noexcept {
+            response.set("Server", HTTPD_NAME);
+            if (0 == strcasecmp(request.get("Connection", "Keep-Alive").c_str(), "Close")) {
+                response.set("Connection", "Close");
+            } else {
+                response.set("Connection", "Keep-Alive");
+            }
 
-        void close() override;
+            _isFlushed = true;
+            if (!HttpUtil::sendResponse(this, &response)) {
+                _isFlushed = false;
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        void close() override {
+            ioContext->close();
+        }
 
         [[nodiscard]] bool isFlushed() const noexcept { return _isFlushed; }
 
@@ -57,28 +86,54 @@ namespace sese::http {
 
     private:
         bool _isFlushed = false;
-        IOContext *ioContext = nullptr;
-        HttpRequest::Ptr request = nullptr;
-        HttpResponse::Ptr response = nullptr;
+        Context *ioContext = nullptr;
     };
 
     /// Http 服务器
     class API HttpServer final {
     public:
         using Ptr = std::unique_ptr<HttpServer>;
+        using ServiceContext = HttpServiceContext<IOContext>;
+        using PreHandler = std::function<bool(IOContext *)>;
+        using Handler = std::function<void(ServiceContext *)>;
 
         /// 创建一个 Http 服务器
         /// \param ipAddress 绑定的地址
         /// \param threads 线程数目
         /// \param keepAlive Keep-Alive 时长
         /// \return 创建成功返回其指针，失败则为 nullptr
-        static Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
-        void loopWith(const std::function<void(HttpServiceContext *serviceContext)> &handler);
+        static HttpServer::Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
+        void loopWith(const Handler &handler);
         void shutdown();
 
     private:
         explicit HttpServer() = default;
 
         TcpServer::Ptr tcpServer = nullptr;
+    };
+
+    class API HttpsServer {
+    public:
+        using Ptr = std::unique_ptr<HttpsServer>;
+        using ServiceContext = HttpServiceContext<security::IOContext>;
+        using Handler = std::function<void(ServiceContext *)>;
+
+        struct SecurityOptions {
+            const char *CA = nullptr;
+            const char *KEY = nullptr;
+        };
+
+        static HttpsServer::Ptr create(
+                const IPAddress::Ptr &ipAddress,
+                size_t threads,
+                size_t keepAlive,
+                SecurityOptions options
+        ) noexcept;
+        void loopWith(const Handler &handler);
+        void shutdown();
+
+    private:
+        explicit HttpsServer() = default;
+        security::SecurityTcpServer::Ptr tcpServer = nullptr;
     };
 }// namespace sese::http

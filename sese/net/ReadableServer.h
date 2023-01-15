@@ -10,6 +10,10 @@
 #include "sese/net/TcpServer.h"
 #include "sese/util/ObjectPool.h"
 
+#ifdef WIN32
+#pragma warning(disable : 4996)
+#endif
+
 namespace sese::net {
     struct API IOContext;
     class API ReadableServer;

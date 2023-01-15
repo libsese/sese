@@ -1,78 +1,35 @@
 #include <sese/net/http/HttpServer.h>
 #include <sese/net/http/HttpUtil.h>
-#include "sese/util/Util.h"
+#include <sese/security/SSLContextBuilder.h>
+#include <sese/util/Util.h>
 
 using sese::Stream;
 using sese::http::HttpServiceContext;
-using Server = sese::http::HttpServer;
+using sese::http::HttpServer;
+using sese::http::HttpsServer;
 using sese::http::HttpRequest;
 using sese::http::HttpResponse;
 using sese::http::HttpUtil;
 
-HttpServiceContext::HttpServiceContext() noexcept {
-    request = std::make_unique<HttpRequest>();
-    response = std::make_unique<HttpResponse>();
-}
-
-void HttpServiceContext::reset(IOContext *context) noexcept {
-    ioContext = context;
-}
-
-int64_t HttpServiceContext::read(void *buffer, size_t size) noexcept {
-    return ioContext->read(buffer, size);
-}
-
-int64_t HttpServiceContext::write(const void *buffer, size_t size) noexcept {
-    if (!_isFlushed) {
-        // try to flush resp
-        if (!flush()) {
-            return -1;
-        }
-    }
-    return ioContext->write(buffer, size);
-}
-
-bool HttpServiceContext::flush() noexcept {
-    response->set("Server", HTTPD_NAME);
-    if (0 == strcasecmp(request->get("Connection", "Keep-Alive").c_str(), "Close")) {
-        response->set("Connection", "Close");
-    } else {
-        response->set("Connection", "Keep-Alive");
-    }
-
-    _isFlushed = true;
-    if (!HttpUtil::sendResponse(this, response.get())) {
-        _isFlushed = false;
-        return false;
-    } else {
-        return true;
-    }
-}
-
-void sese::http::HttpServiceContext::close() {
-    ioContext->close();
-}
-
-Server::Ptr Server::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive) noexcept {
+HttpServer::Ptr HttpServer::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive) noexcept {
     auto tcpServer = TcpServer::create(ipAddress, threads, keepAlive);
     if (nullptr == tcpServer) {
         return nullptr;
     } else {
-        auto server = new Server;
+        auto server = new HttpServer;
         server->tcpServer = std::move(tcpServer);
-        return std::unique_ptr<Server>(server);
+        return std::unique_ptr<HttpServer>(server);
     }
 }
 
-void Server::loopWith(const std::function<void(HttpServiceContext *)> &handler) {
+void HttpServer::loopWith(const HttpServer::Handler &handler) {
     tcpServer->loopWith([&](IOContext *ioContext) {
-        HttpServiceContext context;
+        ServiceContext context;
         context.reset(ioContext);
 
-        decltype(auto) request = context.getRequest();
-        decltype(auto) response = context.getResponse();
+        auto request = &context.request;
 
-        if (!HttpUtil::recvRequest(&context, context.getRequest().get())) {
+        if (!HttpUtil::recvRequest(&context, &context.request)) {
             context.close();
             return;
         }
@@ -95,6 +52,55 @@ void Server::loopWith(const std::function<void(HttpServiceContext *)> &handler) 
     });
 }
 
-void Server::shutdown() {
+void HttpServer::shutdown() {
+    tcpServer->shutdown();
+}
+
+HttpsServer::Ptr HttpsServer::create(const IPAddress::Ptr &ipAddress, size_t threads, size_t keepAlive, SecurityOptions options) noexcept {
+    auto ctx = security::SSLContextBuilder::SSL4Server();
+    ctx->importCertFile(options.CA);
+    ctx->importPrivateKey(options.KEY);
+
+    auto tcpServer = security::SecurityTcpServer::create(ipAddress, threads, keepAlive, ctx);
+    if (nullptr == tcpServer) {
+        return nullptr;
+    } else {
+        auto server = new HttpsServer;
+        server->tcpServer = std::move(tcpServer);
+        return std::unique_ptr<HttpsServer>(server);
+    }
+}
+
+void HttpsServer::loopWith(const Handler &handler) {
+    tcpServer->loopWith([&](security::IOContext *ioContext) {
+        ServiceContext context;
+        context.reset(ioContext);
+
+        auto request = &context.request;
+
+        if (!HttpUtil::recvRequest(&context, &context.request)) {
+            context.close();
+            return;
+        }
+
+        bool isKeepAlive = tcpServer->getKeepAlive() != 0 && 0 == strcasecmp(request->get("Connection", "Keep-Alive").c_str(), "Keep-Alive");
+
+        handler(&context);
+
+        if (!context.isFlushed()) {
+            if (!context.flush()) {
+                context.close();
+                return;
+            }
+        }
+
+        if (!isKeepAlive) {
+            context.close();
+            return;
+        }
+    });
+}
+
+void HttpsServer::shutdown() {
     tcpServer->shutdown();
 }

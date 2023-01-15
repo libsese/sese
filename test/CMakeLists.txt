@@ -239,3 +239,7 @@ target_link_libraries(TestWSAuthenticator sese)
 # TestSecTcpServer
 add_executable(TestSecTcpServer ${CMAKE_CURRENT_LIST_DIR}/TestSecTcpServer/main.cpp)
 target_link_libraries(TestSecTcpServer sese)
+
+# TestHttpsServer
+add_executable(TestHttpsServer ${CMAKE_CURRENT_LIST_DIR}/TestHttpsd/main.cpp)
+target_link_libraries(TestHttpsServer sese)

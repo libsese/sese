@@ -1,12 +1,16 @@
 #include "sese/net/ReadableServer.h"
 
+#ifdef WIN32
+#pragma warning(disable : 4996)
+#endif
+
 int64_t sese::net::IOContext::read(void *dst, size_t length) {
     // 缓冲区内有未读字节
     if (this->nRead < this->nBytes) {
         // 缓冲区够用
         if (this->nBytes - this->nRead > length) {
             memcpy(dst, this->buffer + this->nRead, length);
-            this->nRead += length;
+            this->nRead += (DWORD) length;
             return (int64_t) length;
         }
         // 缓冲区不够用
@@ -34,7 +38,7 @@ void sese::net::IOContext::close() {
 }
 
 sese::net::ReadableServer::Ptr sese::net::ReadableServer::create(const Handler &handler, size_t threads) noexcept {
-    HANDLE hIOCP = CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, threads);
+    HANDLE hIOCP = CreateIoCompletionPort(INVALID_HANDLE_VALUE, nullptr, 0, (DWORD) threads);
     if (INVALID_HANDLE_VALUE == hIOCP) {
         return nullptr;
     }
