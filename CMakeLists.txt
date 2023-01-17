@@ -43,5 +43,6 @@ add_subdirectory(sese)
 
 if (SESE_BUILD_TEST)
     enable_testing()
-    add_subdirectory(test)
+    # add_subdirectory(test)
+    add_subdirectory(gtest)
 endif ()

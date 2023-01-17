@@ -17,3 +17,11 @@ if (MSVC)
     target_compile_options(crypto_obj PRIVATE /wd4061 /wd4065 /wd4152 /wd4132 /wd4191 /wd4242 /wd4255 /wd4295 /wd4296 /wd4388 /wd4464 /wd4668 /wd4701 /wd4702 /wd4774 /wd4819 /wd4820 /wd5045 /wd5105)
     target_compile_options(ssl_obj PRIVATE /wd4061 /wd4065 /wd4152 /wd4132 /wd4191 /wd4242 /wd4255 /wd4295 /wd4296 /wd4388 /wd4464 /wd4668 /wd4701 /wd4702 /wd4774 /wd4819 /wd4820 /wd5045 /wd5105)
 endif ()
+
+if (SESE_BUILD_TEST)
+    requires_from_git(googletest https://github.com/google/googletest.git release-1.12.1)
+    set_target_properties(gtest gtest_main gmock gmock_main
+            PROPERTIES
+            RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/target"
+            )
+endif ()
