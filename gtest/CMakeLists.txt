@@ -2,20 +2,15 @@ if (WIN32)
     add_compile_options(/utf-8)
 endif ()
 
-add_executable(TestAddress TestAddress.cpp)
-target_link_libraries(TestAddress sese gtest_main)
+macro(sese_test test_name)
+    add_executable(${test_name} ${test_name}.cpp)
+    target_link_libraries(${test_name} sese gtest_main)
+    add_test(NAME ${test_name} COMMAND ${test_name})
+endmacro()
 
-add_executable(TestArgParser TestArgParser.cpp)
-target_link_libraries(TestArgParser sese gtest_main)
-
-add_executable(TestBase64 TestBase64.cpp)
-target_link_libraries(TestBase64 sese gtest_main)
-
-add_executable(TestLogger TestLogger.cpp)
-target_link_libraries(TestLogger sese gtest_main)
-
-add_executable(TestEndian TestEndian.cpp)
-target_link_libraries(TestEndian sese gtest_main)
-
-add_executable(TestJson TestJson.cpp)
-target_link_libraries(TestJson sese gtest_main)
+sese_test(TestAddress)
+sese_test(TestArgParser)
+sese_test(TestBase64)
+sese_test(TestLogger)
+sese_test(TestEndian)
+sese_test(TestJson)
