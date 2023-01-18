@@ -43,7 +43,7 @@ namespace sese {
         /// \param mode 打开模式
         /// \retval nullptr 打开失败
         /// \retval 文件流对象
-        static Ptr create(const std::string &fileName, const char *mode) noexcept;
+        static FileStream::Ptr create(const std::string &fileName, const char *mode) noexcept;
         ~FileStream() = default;
 
         int64_t read(void *buffer, size_t length) override;
