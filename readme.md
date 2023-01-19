@@ -32,17 +32,18 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 
 关于依赖，目前项目引入的依赖主要有以下：
 
-| 名称                  | 地址                                       | 描述               | 父项      | 状态  |
-|---------------------|------------------------------------------|------------------|---------|-----|
-| SString             | github.com/shiinasama/SString            | UTF-8 字符串处理      | sese    | V   |
-| LibreSSL            | github.com/PowerShell/LibreSSL           | SSL 支持           | sese    | V   |
-| SimpleUuid          | github.com/shiinasama/SimpleUuid         | 雪花算法实现           | sese    | V   |
+| 名称         | 地址                               | 描述          |
+|------------|----------------------------------|-------------|
+| SString    | github.com/shiinasama/SString    | UTF-8 字符串处理 |
+| LibreSSL   | github.com/PowerShell/LibreSSL   | SSL 支持      |
+| SimpleUuid | github.com/shiinasama/SimpleUuid | 雪花算法实现      |
+| googletest | github.com/google/googletest     | 用于单元测试      |
 
 开放的编译选项：
 
-| 名称                  | 描述                  | 默认值 |
-|---------------------|---------------------|-----|
-| SESE_BUILD_TEST     | 构建 sese 的单元测试       | OFF |
+| 名称              | 描述            | 默认值 |
+|-----------------|---------------|-----|
+| SESE_BUILD_TEST | 构建 sese 的单元测试 | OFF |
 
 工具链的选取：
 
@@ -66,8 +67,10 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 ## License & Notice
 
 - LibreSSL/PowerShell
-  - [COPYING](licenses/PowerShell/COPYING)
-  - [NOTICE](licenses/PowerShell/NOTICE)
+    - [COPYING](licenses/PowerShell/COPYING)
+    - [NOTICE](licenses/PowerShell/NOTICE)
 - libsese
-  - SimpleUuid/[LICENSE](licenses/libsese/SimpleUuid/LICENSE)
-  - SString/[LICENSE](licenses/libsese/SString/license)
+    - SimpleUuid/[LICENSE](licenses/libsese/SimpleUuid/LICENSE)
+    - SString/[LICENSE](licenses/libsese/SString/license)
+- google
+  - googletest/[LICENSE](licenses/google/googletest/LICENSE)

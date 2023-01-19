@@ -217,3 +217,7 @@ subject to the terms and conditions of the following licenses:
 - libsese/SString
     Project URL: https://github.com/libsese/SString/
     License: Apache-2.0 License
+
+- google/googletest
+    Project URL: https://github.com/google/googletest/
+    License: BSD 3-Clause "New" or "Revised" License
