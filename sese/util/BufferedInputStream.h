@@ -6,6 +6,10 @@
 #pragma once
 #include "InputStream.h"
 
+#ifdef WIN32
+#pragma warning(disable : 4251)
+#endif
+
 namespace sese {
 
     /// 输入流缓存类
@@ -33,4 +37,4 @@ namespace sese {
         size_t len;
         size_t cap;
     };
-}
+}// namespace sese

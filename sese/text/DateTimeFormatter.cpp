@@ -266,6 +266,10 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dat
     return format(*dateTime.get(), pattern);
 }
 
+#ifdef WIN32
+#pragma warning(disable : 4996)
+#endif
+
 inline int mon2number(const char *str) {
     for (int i = 0; i < 12; i++) {
         if (strcasecmp(str, Mon[i]) == 0) {

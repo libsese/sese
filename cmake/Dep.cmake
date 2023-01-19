@@ -13,9 +13,14 @@ requires_from_git(LibreSSL https://github.com/PowerShell/LibreSSL.git V3.6.1.0)
 # 此选项会导致在 Darwin 下与同名文件 VERSION 冲突，若有需要请尝试从更高一层的目录进行访问
 # target_include_directories(crypto PUBLIC ${LibreSSL_SOURCE_DIR})
 if (MSVC)
+    macro(disable_warning name)
+        target_compile_options(${name} PRIVATE /wd4061 /wd4065 /wd4152 /wd4132 /wd4191 /wd4242 /wd4255 /wd4295 /wd4296 /wd4388 /wd4464 /wd4668 /wd4701 /wd4702 /wd4774 /wd4819 /wd4820 /wd5045 /wd5105 /wd4710 /wd4711)
+    endmacro()
     # 屏蔽不需要关注的目标的警告
-    target_compile_options(crypto_obj PRIVATE /wd4061 /wd4065 /wd4152 /wd4132 /wd4191 /wd4242 /wd4255 /wd4295 /wd4296 /wd4388 /wd4464 /wd4668 /wd4701 /wd4702 /wd4774 /wd4819 /wd4820 /wd5045 /wd5105)
-    target_compile_options(ssl_obj PRIVATE /wd4061 /wd4065 /wd4152 /wd4132 /wd4191 /wd4242 /wd4255 /wd4295 /wd4296 /wd4388 /wd4464 /wd4668 /wd4701 /wd4702 /wd4774 /wd4819 /wd4820 /wd5045 /wd5105)
+    disable_warning(crypto_obj)
+    disable_warning(ssl_obj)
+    disable_warning(tls_obj)
+    disable_warning(bs_obj)
 endif ()
 
 if (SESE_BUILD_TEST)

@@ -170,7 +170,7 @@ bool sese::net::ws::WebSocketContext::writeInfo(const FrameHeaderInfo &info) noe
             error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
-        uint16_t len = ToBigEndian16(info.length);
+        uint16_t len = ToBigEndian16((uint16_t)info.length);
         if (stream->write(&len, sizeof(uint16_t)) != sizeof(uint16_t)) {
             error = SESE_WS_ERROR_WRITE_FAILED;
             return false;

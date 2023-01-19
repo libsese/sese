@@ -58,11 +58,11 @@ target_sources(sese PRIVATE
         security/SSLContextBuilder.cpp security/SecuritySocket.cpp
         )
 if (WIN32)
-    target_link_libraries(sese crypto-static ssl-static)
-    target_link_libraries(sese-static crypto-static ssl-static)
+    target_link_libraries(sese crypto-static ssl-static tls-static)
+    target_link_libraries(sese-static crypto-static ssl-static tls-static)
 else()
-    target_link_libraries(sese crypto_obj ssl_obj)
-    target_link_libraries(sese-static crypto_obj ssl_obj)
+    target_link_libraries(sese crypto_obj ssl_obj tls_obj)
+    target_link_libraries(sese-static crypto_obj ssl_obj tls_obj)
 endif()
 
 set(NATIVE_PATH "native/${CMAKE_SYSTEM_NAME}")

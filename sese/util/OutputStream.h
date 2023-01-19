@@ -8,6 +8,10 @@
 #pragma once
 #include "sese/Config.h"
 
+#ifdef WIN32
+#pragma warning(disable : 4251)
+#endif
+
 namespace sese {
 
     /// \brief 流式输出接口类

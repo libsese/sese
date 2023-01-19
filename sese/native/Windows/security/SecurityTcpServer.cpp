@@ -26,7 +26,7 @@ static int bio_iocp_write(BIO *bio, const char *in, int length) {
 static int bio_iocp_read(BIO *bio, char *out, int length) {
     auto ctx = (sese::security::IOContext *) BIO_get_data(bio);
     if (ctx->nRead < ctx->nBytes) {
-        if (ctx->nBytes - ctx->nRead > length) {
+        if ((int) (ctx->nBytes - ctx->nRead) > length) {
             memcpy(out, ctx->buffer + ctx->nRead, length);
             ctx->nRead += (DWORD) length;
             BIO_clear_retry_flags(bio);
@@ -62,7 +62,7 @@ int64_t sese::security::IOContext::read(void *buf, size_t length) {
 }
 
 int64_t sese::security::IOContext::write(const void *buf, size_t length) {
-    return SSL_write((SSL *) this->ssl, buf, length);
+    return SSL_write((SSL *) this->ssl, buf, (int) length);
 }
 
 void sese::security::IOContext::close() {
@@ -229,7 +229,7 @@ void sese::security::SecurityTcpServer::shutdown() noexcept {
 #endif
         delete pair.first;
     }
-    BIO_meth_free((BIO_METHOD *)this->bio_iocp_method);
+    BIO_meth_free((BIO_METHOD *) this->bio_iocp_method);
     for (auto &thread: threadGroup) {
         thread->join();
     }
