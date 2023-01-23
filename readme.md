@@ -35,7 +35,7 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 | 名称         | 地址                               | 描述          |
 |------------|----------------------------------|-------------|
 | SString    | github.com/shiinasama/SString    | UTF-8 字符串处理 |
-| LibreSSL   | github.com/PowerShell/LibreSSL   | SSL 支持      |
+| openssl    | github.com/openssl/openssl       | SSL 支持      |
 | SimpleUuid | github.com/shiinasama/SimpleUuid | 雪花算法实现      |
 | googletest | github.com/google/googletest     | 用于单元测试      |
 
@@ -59,18 +59,8 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 ## 使用
 
 推荐的使用方式共两种：<br>
-首推使用 CMake FetchContent <br>
+~~首推使用 CMake FetchContent <br>~~
+首推使用 vcpkg （待补充）<br>
 其次才推荐使用 git submodule
 
 具体的使用方法请参考 [docs](docs/readme.md) 和 [example](example/CMakeLists.txt)
-
-## License & Notice
-
-- LibreSSL/PowerShell
-    - [COPYING](licenses/PowerShell/COPYING)
-    - [NOTICE](licenses/PowerShell/NOTICE)
-- libsese
-    - SimpleUuid/[LICENSE](licenses/libsese/SimpleUuid/LICENSE)
-    - SString/[LICENSE](licenses/libsese/SString/license)
-- google
-  - googletest/[LICENSE](licenses/google/googletest/LICENSE)

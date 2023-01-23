@@ -1,0 +1,17 @@
+{
+  "name" : "sese-core",
+  "version-string" : "0.4.3",
+  "dependencies" : [ {
+    "name" : "openssl",
+    "version>=" : "3.0.7#2"
+  }, {
+    "name" : "gtest",
+    "version>=": "1.12.1"
+  },{
+    "name" : "simpleuuid",
+    "version>=": "0.1.3"
+  }, {
+    "name" : "sstring",
+    "version>=": "0.1.3"
+  }]
+}

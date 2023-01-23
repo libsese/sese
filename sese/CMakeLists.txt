@@ -1,13 +1,24 @@
-add_library(sese SHARED)
-add_library(sese-static STATIC)
+find_package(OpenSSL REQUIRED)
+find_package(SString CONFIG REQUIRED)
+find_package(SimpleUuid CONFIG REQUIRED)
 
-target_include_directories(sese PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
-target_include_directories(sese-static PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
+add_library(Core SHARED)
+add_library(Core-static STATIC)
 
-target_include_directories(sese PRIVATE ${LibreSSL_SOURCE_DIR}/include)
-target_include_directories(sese-static PRIVATE ${LibreSSL_SOURCE_DIR}/include)
+target_include_directories(
+        Core
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+)
+target_include_directories(
+        Core-static
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+)
 
-target_sources(sese PRIVATE
+target_sources(Core PRIVATE
         src/record/AbstractAppender.cpp src/record/SimpleFormatter.cpp
         src/record/ConsoleAppender.cpp src/record/Logger.cpp
         src/record/LogHelper.cpp src/record/FileAppender.cpp
@@ -51,22 +62,13 @@ target_sources(sese PRIVATE
         src/util/OutputBufferWrapper.cpp src/util/InputBufferWrapper.cpp
         )
 
-target_compile_definitions(sese PRIVATE -DSESE_USE_SSL)
-target_compile_definitions(sese-static PRIVATE -DSESE_USE_SSL)
-target_sources(sese PRIVATE
+target_sources(Core PRIVATE
         src/security/SecurityConfig.cpp src/security/SSLContext.cpp
         src/security/SSLContextBuilder.cpp src/security/SecuritySocket.cpp
         )
-if (WIN32)
-    target_link_libraries(sese crypto-static ssl-static tls-static)
-    target_link_libraries(sese-static crypto-static ssl-static tls-static)
-else()
-    target_link_libraries(sese crypto_obj ssl_obj tls_obj)
-    target_link_libraries(sese-static crypto_obj ssl_obj tls_obj)
-endif()
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
-target_sources(sese PRIVATE
+target_sources(Core PRIVATE
         ${NATIVE_PATH}/Test.cpp
         ${NATIVE_PATH}/net/Socket.cpp
         ${NATIVE_PATH}/net/TcpServer.cpp
@@ -76,25 +78,25 @@ target_sources(sese PRIVATE
         ${NATIVE_PATH}/system/SharedMemory.cpp
         )
 
-target_sources(sese-static PRIVATE $<TARGET_OBJECTS:sese>)
+target_sources(Core-static PRIVATE $<TARGET_OBJECTS:Core>)
 
 if (WIN32)
     set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
-    target_sources(sese PRIVATE ${DLL_INFO_RC})
-    target_compile_definitions(sese PUBLIC -DWINDOWS_DLL)
-    target_compile_definitions(sese PUBLIC -DNEED_DBGHELP)
-    target_compile_options(sese PRIVATE "/utf-8")
-    target_compile_options(sese PRIVATE "/wd4251")
-    target_compile_options(sese PRIVATE "/wd4530")
-    target_link_libraries(sese ws2_32)
+    target_sources(Core PRIVATE ${DLL_INFO_RC})
+    target_compile_definitions(Core PUBLIC -DWINDOWS_DLL)
+    target_compile_definitions(Core PUBLIC -DNEED_DBGHELP)
+    target_compile_options(Core PRIVATE "/utf-8")
+    target_compile_options(Core PRIVATE "/wd4251")
+    target_compile_options(Core PRIVATE "/wd4530")
+    target_link_libraries(Core ws2_32)
 
-    target_compile_definitions(sese-static PUBLIC -DNEED_DBGHELP)
-    target_compile_options(sese-static PRIVATE "/utf-8")
-    target_compile_options(sese-static PRIVATE "/wd4251")
-    target_compile_options(sese-static PRIVATE "/wd4530")
-    target_link_libraries(sese-static ws2_32)
+    target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
+    target_compile_options(Core-static PRIVATE "/utf-8")
+    target_compile_options(Core-static PRIVATE "/wd4251")
+    target_compile_options(Core-static PRIVATE "/wd4530")
+    target_link_libraries(Core-static ws2_32)
 
     message(STATUS "Linked libraries: ws2_32, dbghelp")
 endif ()
@@ -102,14 +104,56 @@ endif ()
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
-    target_compile_options(sese PUBLIC "-fPIC")
-    target_link_libraries(sese ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
-    target_link_libraries(sese-static ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_compile_options(Core PUBLIC "-fPIC")
+    target_link_libraries(Core ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_link_libraries(Core-static ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 
     message(STATUS "Linked libraries: pthread, dl")
 endif ()
 
-target_link_libraries(sese SString-static uuid-static)
-target_link_libraries(sese-static SString-static uuid-static)
+set_target_properties(Core PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
 
-set_target_properties(sese PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
+target_link_libraries(Core SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL)
+target_link_libraries(Core-static SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL)
+
+add_custom_command(
+        TARGET
+        Core
+        POST_BUILD
+        COMMAND
+        ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/gtest
+)
+
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+        ${PROJECT_SOURCE_DIR}/cmake/SeseConfig.cmake.in
+        ${PROJECT_BINARY_DIR}/SeseConfig.cmake
+        INSTALL_DESTINATION lib/cmake/sese.core
+)
+
+install(
+        TARGETS Core Core-static
+        EXPORT SeseTargets
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        PUBLIC_HEADER DESTINATION include
+)
+
+install(
+        DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/include/sese"
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+)
+
+install(
+        FILES "${PROJECT_BINARY_DIR}/SeseConfig.cmake"
+        DESTINATION lib/cmake/sese.core
+)
+
+install(
+        EXPORT SeseTargets
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sese.core
+        NAMESPACE Sese::
+)

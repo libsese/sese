@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(sese.core VERSION 0.4.2)
+project(sese.core VERSION 0.4.3)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
@@ -13,12 +13,8 @@ if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
     get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 endif ()
 
-set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/target)
-
 option(SESE_BUILD_TEST "build unit test targets" OFF)
 option(SESE_USE_SSL "import ssl dependencies" OFF)
-include(${CMAKE_CURRENT_LIST_DIR}/cmake/Dep.cmake)
 
 message(STATUS "==================== SESE.CORE ====================")
 message(STATUS "Project version: ${PROJECT_VERSION}")
