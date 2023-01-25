@@ -60,11 +60,10 @@ target_sources(Core PRIVATE
         src/util/Timer.cpp src/util/Initializer.cpp
         src/util/MemoryViewer.cpp src/util/ConsoleOutputStream.cpp
         src/util/OutputBufferWrapper.cpp src/util/InputBufferWrapper.cpp
-        )
 
-target_sources(Core PRIVATE
         src/security/SecurityConfig.cpp src/security/SSLContext.cpp
         src/security/SSLContextBuilder.cpp src/security/SecuritySocket.cpp
+        src/security/MessageDigest.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
@@ -112,6 +111,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif ()
 
 set_target_properties(Core PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
+set_target_properties(Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 target_link_libraries(Core SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL)
 target_link_libraries(Core-static SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL)
