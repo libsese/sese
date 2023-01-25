@@ -1,4 +1,6 @@
-#include "sese/util/Endian.h"
+#include "sese/record/LogHelper.h"
+#include "sese/util/MemoryViewer.h"
+#include "sese/util/OutputBufferWrapper.h"
 #include "gtest/gtest.h"
 
 TEST(TestEndian, Test16) {
@@ -17,4 +19,16 @@ TEST(TestEndian, Test64) {
     uint64_t i64 = 0x1122334455667788;
     uint64_t ni64 = ByteSwap64(i64);
     EXPECT_TRUE(0x8877665544332211 == ni64);
+}
+
+TEST(TestEndian, MemoryViewer) {
+    sese::record::LogHelper log("MemoryViewer");
+    uint32_t value = 0x12345678;
+    char buffer[128]{};
+    sese::OutputBufferWrapper output0(buffer, 64);
+    sese::OutputBufferWrapper output1(buffer + 64, 64);
+    sese::MemoryViewer::peer32(&output0, &value, EndianType::Big);
+    sese::MemoryViewer::peer32(&output1, &value, EndianType::Little);
+    log.info("value view on big endian   : %s", buffer);
+    log.info("value view on little endian: %s", buffer+64);
 }

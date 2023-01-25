@@ -6,7 +6,7 @@ endif ()
 
 macro(sese_test test_name)
     add_executable(${test_name} ${test_name}.cpp)
-    target_link_libraries(${test_name} Core GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+    target_link_libraries(${test_name} Core GTest::gtest GTest::gtest_main)
     add_test(NAME ${test_name} COMMAND ${test_name})
 endmacro()
 
