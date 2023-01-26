@@ -23,6 +23,14 @@ TEST(TestLogger, Logger) {
     log.error("Hello");
 }
 
+TEST(TestLogger, StaticMethod) {
+    using sese::record::LogHelper;
+    LogHelper::d("Hello");
+    LogHelper::i("Hello");
+    LogHelper::w("Hello");
+    LogHelper::e("Hello");
+}
+
 TEST(TestLogger, FileAppender) {
     sese::record::LogHelper log("FileAppender");
 

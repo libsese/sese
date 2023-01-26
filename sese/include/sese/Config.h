@@ -39,7 +39,7 @@ constexpr static const char *THREAD_DEFAULT_NAME = "UNKNOWN_THREAD";
 constexpr static const char *THREAD_MAIN_NAME = "Main";
 
 /// 默认日志过滤器名称
-constexpr static const char *RECORD_DEFAULT_TAG = "DEFAULT_TAG";
+constexpr static const char *RECORD_DEFAULT_TAG = "DEF";
 /// 日志输出缓存区大小
 constexpr static const size_t RECORD_OUTPUT_BUFFER = 2048;
 /// 日志格式化器时间匹配格式

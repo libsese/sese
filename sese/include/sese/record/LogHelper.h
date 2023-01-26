@@ -6,8 +6,7 @@
  */
 #pragma once
 #include <sese/record/Logger.h>
-#include "Logger.h"
-#include "Event.h"
+#include <sese/record/Event.h>
 
 namespace sese::record {
     /**
@@ -17,6 +16,13 @@ namespace sese::record {
     public:
         using Ptr = std::shared_ptr<LogHelper>;
 
+    public:
+        static void d(const char *format, ...) noexcept;
+        static void i(const char *format, ...) noexcept;
+        static void w(const char *format, ...) noexcept;
+        static void e(const char *format, ...) noexcept;
+
+    public:
         /**
          * 初始化日志工具
          * @param tag 指定标签名称
@@ -46,6 +52,7 @@ namespace sese::record {
         // void error(const char *file, int32_t line, const char *format, ...);
 
     private:
+        static void l(Level level, const char *file, int32_t line, const char *format, va_list ap);
         void log(Level level, const char *file, int32_t line, const char *format, va_list ap);
 
         const char *filter = nullptr;
