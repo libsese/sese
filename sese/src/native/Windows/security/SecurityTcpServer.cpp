@@ -204,7 +204,7 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
 #ifdef _DEBUG
                 printf("CLOSE: %p\n", ioContext);
 #endif
-                closesocket(client);
+                // closesocket(client);
                 delete ioContext;
             }
         }

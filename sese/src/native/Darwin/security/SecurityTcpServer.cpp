@@ -199,10 +199,11 @@ void sese::security::SecurityTcpServer::loopWith(const std::function<void(IOCont
                         mutex.unlock();
                     } else {
                         if (0 == keepAlive) {
-                            SSL_shutdown((SSL *) ioContext->ssl);
-                            SSL_free((SSL *) ioContext->ssl);
-                            ::shutdown(ioContext->socket, SHUT_RDWR);
-                            ::close(ioContext->socket);
+                            // 此处不应默认关闭链接，应由开发人员决定
+                            // SSL_shutdown((SSL *) ioContext->ssl);
+                            // SSL_free((SSL *) ioContext->ssl);
+                            // ::shutdown(ioContext->socket, SHUT_RDWR);
+                            // ::close(ioContext->socket);
                             mutex.lock();
                             auto iterator = contextMap.find(ioContext->socket);
                             contextMap.erase(iterator);

@@ -160,7 +160,8 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
 #ifdef _DEBUG
                 printf("CLOSE: %p\n", ioContext);
 #endif
-                closesocket(client);
+                // 此处不应默认关闭链接，应由开发人员决定
+                // closesocket(client);
                 delete ioContext;
             }
         }

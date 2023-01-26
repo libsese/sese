@@ -165,8 +165,9 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
                         // 不需要保留连接，已主动关闭
                     } else {
                         if (0 == keepAlive) {
-                            ::shutdown(client, SHUT_RDWR);
-                            ::close(client);
+                            // 此处不应默认关闭链接，应由开发人员决定
+                            // ::shutdown(client, SHUT_RDWR);
+                            // ::close(client);
                         } else {
                             // 需要保留连接，但需要做超时管理
                             KEvent ev{};
