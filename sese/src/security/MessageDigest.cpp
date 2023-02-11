@@ -59,9 +59,11 @@ void sese::security::MessageDigest::digestMD4(char *str, InputStream *input, boo
     }
     MD4_Final(result, &ctx);
 
+    std::div_t divRt;
     for (int i = 0; i < 16; ++i) {
-        str[i * 2 + 0] = MemoryViewer::toChar(result[i] / 0x10, isCap);
-        str[i * 2 + 1] = MemoryViewer::toChar(result[i] % 0x10, isCap);
+        divRt = std::div(result[i], 0x10);
+        str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
+        str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
     }
     str[32] = 0;
 }
@@ -77,9 +79,11 @@ void sese::security::MessageDigest::digestMD5(char *str, InputStream *input, boo
     }
     MD5_Final(result, &ctx);
 
+    std::div_t divRt;
     for (int i = 0; i < 16; ++i) {
-        str[i * 2 + 0] = MemoryViewer::toChar(result[i] / 0x10, isCap);
-        str[i * 2 + 1] = MemoryViewer::toChar(result[i] % 0x10, isCap);
+        divRt = std::div(result[i], 0x10);
+        str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
+        str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
     }
     str[32] = 0;
 }
@@ -95,9 +99,11 @@ void sese::security::MessageDigest::digestSH1(char *str, InputStream *input, boo
     }
     SHA1_Final(result, &ctx);
 
+    std::div_t divRt;
     for (int i = 0; i < 20; ++i) {
-        str[i * 2 + 0] = MemoryViewer::toChar(result[i] / 0x10, isCap);
-        str[i * 2 + 1] = MemoryViewer::toChar(result[i] % 0x10, isCap);
+        divRt = std::div(result[i], 0x10);
+        str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
+        str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
     }
     str[40] = 0;
 }
@@ -113,9 +119,11 @@ void sese::security::MessageDigest::digestSHA224(char *str, InputStream *input, 
     }
     SHA224_Final(result, &ctx);
 
+    std::div_t divRt;
     for (int i = 0; i < SHA224_DIGEST_LENGTH; ++i) {
-        str[i * 2 + 0] = MemoryViewer::toChar(result[i] / 0x10, isCap);
-        str[i * 2 + 1] = MemoryViewer::toChar(result[i] % 0x10, isCap);
+        divRt = std::div(result[i], 0x10);
+        str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
+        str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
     }
     str[56] = 0;
 }
@@ -131,9 +139,11 @@ void sese::security::MessageDigest::digestSHA256(char *str, InputStream *input, 
     }
     SHA256_Final(result, &ctx);
 
+    std::div_t divRt;
     for (int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
-        str[i * 2 + 0] = MemoryViewer::toChar(result[i] / 0x10, isCap);
-        str[i * 2 + 1] = MemoryViewer::toChar(result[i] % 0x10, isCap);
+        divRt = std::div(result[i], 0x10);
+        str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
+        str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
     }
     str[64] = 0;
 }
@@ -149,9 +159,11 @@ void sese::security::MessageDigest::digestSHA384(char *str, InputStream *input, 
     }
     SHA384_Final(result, &ctx);
 
+    std::div_t divRt;
     for (int i = 0; i < SHA384_DIGEST_LENGTH; ++i) {
-        str[i * 2 + 0] = MemoryViewer::toChar(result[i] / 0x10, isCap);
-        str[i * 2 + 1] = MemoryViewer::toChar(result[i] % 0x10, isCap);
+        divRt = std::div(result[i], 0x10);
+        str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
+        str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
     }
     str[96] = 0;
 }
@@ -167,9 +179,11 @@ void sese::security::MessageDigest::digestSHA512(char *str, InputStream *input, 
     }
     SHA512_Final(result, &ctx);
 
+    std::div_t divRt;
     for (int i = 0; i < SHA512_DIGEST_LENGTH; ++i) {
-        str[i * 2 + 0] = MemoryViewer::toChar(result[i] / 0x10, isCap);
-        str[i * 2 + 1] = MemoryViewer::toChar(result[i] % 0x10, isCap);
+        divRt = std::div(result[i], 0x10);
+        str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
+        str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
     }
     str[128] = 0;
 }
