@@ -2,10 +2,13 @@
  * @file ArgParser.h
  * @brief 命令行参数解析类
  * @author kaoru
- * @date 2022年3月28日
+ * @date 2023年2月22日
+ * @version 0.2
  */
 #pragma once
+
 #include "sese/Config.h"
+
 #include <map>
 
 #ifdef _WIN32
@@ -44,7 +47,28 @@ namespace sese {
          */
         [[nodiscard]] const std::string &getValueByKey(const std::string &key, const std::string &defaultValue) const noexcept;
 
+        /**
+         * 获取程序工作目录
+         * @return 工作目录字符串，结尾不带目录分割符
+         */
+        [[nodiscard]] const std::string &getCurrentPath() const { return currentPath; }
+
+        /**
+         * 获取程序当前名称
+         * @return 程序当前名称
+         */
+        [[nodiscard]] const std::string &getFileName() const { return fileName; }
+
+        /**
+         * 获取程序当前的绝对路径
+         * @return 程序路径
+         */
+        [[nodiscard]] const std::string &getFullPath() const { return fullPath; }
+
     private:
+        std::string fullPath;
+        std::string currentPath;
+        std::string fileName;
         std::map<std::string, std::string> keyValSet;
     };
 
