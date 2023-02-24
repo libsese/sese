@@ -72,6 +72,7 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/net/Socket.cpp
         ${NATIVE_PATH}/net/TcpServer.cpp
         ${NATIVE_PATH}/net/ReadableServer.cpp
+        ${NATIVE_PATH}/net/V2Server.cpp
         ${NATIVE_PATH}/security/SecurityTcpServer.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
