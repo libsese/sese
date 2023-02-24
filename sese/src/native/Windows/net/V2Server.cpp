@@ -11,8 +11,7 @@ static long bio_iocp_ctrl([[maybe_unused]] BIO *bio, int cmd, [[maybe_unused]] l
 
 static int bio_iocp_write(BIO *bio, const char *in, int length) {
     auto ctx = (sese::net::v2::IOContext *) BIO_get_data(bio);
-    int ret = ::send(ctx->socket, in, length, 0);
-    return ret;
+    return ::send(ctx->socket, in, length, 0);
 }
 
 static int bio_iocp_read(BIO *bio, char *out, int length) {
@@ -237,43 +236,35 @@ void sese::net::v2::Server::loop() noexcept {
 #ifdef _DEBUG
         printf("NEW: %p\n", ctx);
 #endif
+        // 首次投递
         DWORD nBytes = MaxBufferSize;
         DWORD dwFlags = 0;
-        int nRt = WSARecv(
-                client,
-                &ctx->wsaBuf,
-                1,
-                &nBytes,
-                &dwFlags,
-                &(ctx->overlapped),
-                nullptr
-        );
-        auto e = WSAGetLastError();
+        int nRt = WSARecv(client, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
+        int e = WSAGetLastError();
         if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
             ctx->close();
 #ifdef _DEBUG
             printf("BAD: %p\n", ctx);
 #endif
             delete ctx;
-            continue;
-        }
-
-        if (option.isKeepAlive && option.keepAlive > 0) {
-            mutex.lock();
-            taskMap[ctx] = timer->delay(
-                    [this, ctx]() {
+        } else {
+            if (option.isKeepAlive && option.keepAlive > 0) {
+                mutex.lock();
+                taskMap[ctx] = timer->delay(
+                        [this, ctx]() {
 #ifdef _DEBUG
-                        printf("CLOSE: %p\n", ctx);
+                            printf("CLOSE: %p\n", ctx);
 #endif
-                        mutex.lock();
-                        taskMap.erase(ctx);
-                        mutex.unlock();
-                        ctx->close();
-                        delete ctx;
-                    },
-                    option.keepAlive, false
-            );
-            mutex.unlock();
+                            mutex.lock();
+                            taskMap.erase(ctx);
+                            mutex.unlock();
+                            ctx->close();
+                            delete ctx;
+                        },
+                        option.keepAlive, false
+                );
+                mutex.unlock();
+            }
         }
     }
 }
@@ -340,16 +331,9 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
         }
         ctx->nBytes = lpNumberOfBytesTransferred;
 
-        int nRt = WSARecv(
-                ctx->socket,
-                &ctx->wsaBuf,
-                1,
-                &nBytes,
-                &dwFlags,
-                &(ctx->overlapped),
-                nullptr
-        );
-        auto e = WSAGetLastError();
+        // 只处理首次读取事件
+        int nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
+        int e = WSAGetLastError();
         if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
 #ifdef _DEBUG
             printf("BAD: %p\n", ctx);
@@ -361,12 +345,14 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
 #ifdef _DEBUG
             printf("RECV: %p\n", ctx);// NOLINT
 #endif
+            // 触发读事件，先取消原有计时
             if (option.isKeepAlive && option.keepAlive > 0) {
                 mutex.lock();
                 auto iterator = taskMap.find(ctx);
                 if (iterator != taskMap.end()) {
                     auto task = iterator->second;
-                    taskMap.erase(iterator);
+                    // taskMap.erase(iterator);
+                    taskMap.erase(ctx);
                     mutex.unlock();
                     task->cancel();
                 } else {
@@ -374,24 +360,18 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                 }
             }
 
+            // 回调函数调用
             auto isHandle = option.beforeHandle(ctx);
             if (isHandle) {
                 option.onHandle(ctx);
             }
 
+            // 启用长连接并且当前连接尚未关闭，重新计时
             if (option.isKeepAlive && option.keepAlive > 0 && !ctx->isClosed) {
                 // 重新提交
                 ctx->nRead = 0;
                 ctx->nBytes = 0;
-                nRt = WSARecv(
-                        ctx->socket,
-                        &ctx->wsaBuf,
-                        1,
-                        &nBytes,
-                        &dwFlags,
-                        &(ctx->overlapped),
-                        nullptr
-                );
+                nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
                 e = WSAGetLastError();
                 if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
 #ifdef _DEBUG
@@ -400,28 +380,31 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                     ctx->close();
                     delete ctx;
                     continue;
+                } else {
+                    // 提交无误才加入定时器
+                    mutex.lock();
+                    taskMap[ctx] = timer->delay(
+                            [this, ctx]() {
+#ifdef _DEBUG
+                                printf("CLOSE: %p\n", ctx);
+#endif
+                                mutex.lock();
+                                taskMap.erase(ctx);
+                                mutex.unlock();
+                                ctx->close();
+                                delete ctx;
+                            },
+                            option.keepAlive, false
+                    );
+                    mutex.unlock();
+#ifdef _DEBUG
+                    printf("POST: %p\n", ctx);
+#endif
+                    continue;
                 }
-
-                // 提交无误才加入定时器
-                mutex.lock();
-                taskMap[ctx] = timer->delay(
-                        [this, ctx]() {
-#ifdef _DEBUG
-                            printf("CLOSE: %p\n", ctx);
-#endif
-                            mutex.lock();
-                            taskMap.erase(ctx);
-                            mutex.unlock();
-                            ctx->close();
-                            delete ctx;
-                        },
-                        option.keepAlive, false
-                );
-                mutex.unlock();
-#ifdef _DEBUG
-                printf("POST: %p\n", ctx);
-#endif
-            } else if (option.autoClose && !ctx->isClosed) {
+            }
+            // 启用了自动关闭且当前连接尚未关闭
+            else if (option.autoClose && !ctx->isClosed) {
 #ifdef _DEBUG
                 printf("CLOSE: %p\n", ctx);
 #endif
