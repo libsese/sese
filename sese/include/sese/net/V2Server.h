@@ -79,7 +79,7 @@ namespace sese::net::v2 {
         }
     };
 
-    class Server {
+    class API Server {
     public:
         using Ptr = std::unique_ptr<Server>;
         static Server::Ptr create(const ServerOption &option) noexcept;

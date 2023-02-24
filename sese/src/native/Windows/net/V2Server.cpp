@@ -162,7 +162,7 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
     server->socket = sock;
     server->hIOCP = iocp;
 
-    if (opt.isKeepAlive) {
+    if (opt.isKeepAlive && opt.keepAlive > 0) {
         server->timer = Timer::create();
     }
 
@@ -237,6 +237,44 @@ void sese::net::v2::Server::loop() noexcept {
 #ifdef _DEBUG
         printf("NEW: %p\n", ctx);
 #endif
+        DWORD nBytes = MaxBufferSize;
+        DWORD dwFlags = 0;
+        int nRt = WSARecv(
+                client,
+                &ctx->wsaBuf,
+                1,
+                &nBytes,
+                &dwFlags,
+                &(ctx->overlapped),
+                nullptr
+        );
+        auto e = WSAGetLastError();
+        if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+            ctx->close();
+#ifdef _DEBUG
+            printf("BAD: %p\n", ctx);
+#endif
+            delete ctx;
+            continue;
+        }
+
+        if (option.isKeepAlive && option.keepAlive > 0) {
+            mutex.lock();
+            taskMap[ctx] = timer->delay(
+                    [this, ctx]() {
+#ifdef _DEBUG
+                        printf("CLOSE: %p\n", ctx);
+#endif
+                        mutex.lock();
+                        taskMap.erase(ctx);
+                        mutex.unlock();
+                        ctx->close();
+                        delete ctx;
+                    },
+                    option.keepAlive, false
+            );
+            mutex.unlock();
+        }
     }
 }
 
@@ -254,19 +292,17 @@ void sese::net::v2::Server::shutdown() noexcept {
 
     if (option.isKeepAlive && option.keepAlive > 0) {
         timer->shutdown();
-    }
 
-    if (option.isSSL) {
         for (auto &pair: taskMap) {
-            SSL_shutdown((SSL *) pair.first->ssl);
-            SSL_free((SSL *) pair.first->ssl);
-            closesocket(pair.first->socket);
+            pair.first->close();
 #ifdef _DEBUG
             printf("CLOSE: %p\n", pair.first);
 #endif
             delete pair.first;
         }
+    }
 
+    if (option.isSSL) {
         BIO_meth_free((BIO_METHOD *) bioMethod);
     }
 
@@ -300,7 +336,6 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
 #endif
             ctx->close();
             delete ctx;
-            ctx = nullptr;
             continue;
         }
         ctx->nBytes = lpNumberOfBytesTransferred;
@@ -321,9 +356,11 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
 #endif
             ctx->close();
             delete ctx;
-            ctx = nullptr;
             continue;
         } else {
+#ifdef _DEBUG
+            printf("RECV: %p\n", ctx);// NOLINT
+#endif
             if (option.isKeepAlive && option.keepAlive > 0) {
                 mutex.lock();
                 auto iterator = taskMap.find(ctx);
@@ -336,9 +373,6 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                     mutex.unlock();
                 }
             }
-#ifdef _DEBUG
-            printf("RECV: %p\n", ctx);// NOLINT
-#endif
 
             auto isHandle = option.beforeHandle(ctx);
             if (isHandle) {
@@ -365,7 +399,6 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
 #endif
                     ctx->close();
                     delete ctx;
-                    ctx = nullptr;
                     continue;
                 }
 
@@ -373,6 +406,9 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                 mutex.lock();
                 taskMap[ctx] = timer->delay(
                         [this, ctx]() {
+#ifdef _DEBUG
+                            printf("CLOSE: %p\n", ctx);
+#endif
                             mutex.lock();
                             taskMap.erase(ctx);
                             mutex.unlock();
@@ -391,7 +427,7 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
 #endif
                 ctx->close();
                 delete ctx;
-                ctx = nullptr;
+                continue;
             }
         }
     }
