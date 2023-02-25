@@ -83,11 +83,7 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
     epoll_event event{};
     event.events = EPOLLIN;
     event.data.fd = sock;
-    if (-1 == epoll_ctl(epoll, EPOLL_CTL_ADD, sock, &event)) {
-        ::close(epoll);
-        ::close(sock);
-        return nullptr;
-    }
+    epoll_ctl(epoll, EPOLL_CTL_ADD, sock, &event);
 
     auto server = new Server;
     server->option = opt;
@@ -112,31 +108,21 @@ void sese::net::v2::Server::LinuxWorkerFunction(sese::net::v2::IOContext *ctx) n
         option.onHandle(ctx);
     }
 
+    // 启用了长连接
     if (option.isKeepAlive && option.keepAlive > 0) {
+        // 连接已经关闭，清理资源
         if (ctx->isClosed) {
             mutex.lock();
             contextMap.erase(ctx->socket);
-            delete ctx;
             mutex.unlock();
-        } else {
+            delete ctx;
+        }
+        // 连接未关闭，重新提交管理并做超时管理
+        else {
             epoll_event event{};
             event.data.fd = ctx->socket;
             event.events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT;
-            if (-1 == epoll_ctl(epoll, EPOLL_CTL_MOD, ctx->socket, &event)) {
-                mutex.lock();
-                auto iterator = contextMap.find(ctx->socket);
-                if (iterator != contextMap.end()) {
-                    iterator->second->task = nullptr;
-                    printf("连接关闭 %d\n", ctx->socket);
-                    iterator->second->close();
-                    contextMap.erase(iterator);
-                    delete iterator->second;
-                } else {
-                    // Never reach
-                }
-                mutex.unlock();
-                return;
-            }
+            epoll_ctl(epoll, EPOLL_CTL_MOD, ctx->socket, &event);
 
             ctx->task = timer->delay(
                     [this, client = ctx->socket]() {
@@ -144,10 +130,10 @@ void sese::net::v2::Server::LinuxWorkerFunction(sese::net::v2::IOContext *ctx) n
                         auto iterator = contextMap.find(client);
                         if (iterator != contextMap.end()) {
                             iterator->second->task = nullptr;
-                            printf("连接关闭 %d\n", client);
-                            iterator->second->close();
                             contextMap.erase(iterator);
                             mutex.unlock();
+                            printf("连接关闭 %d\n", client);
+                            iterator->second->close();
                             delete iterator->second;
                         } else {
                             // Never reach
@@ -157,13 +143,24 @@ void sese::net::v2::Server::LinuxWorkerFunction(sese::net::v2::IOContext *ctx) n
                     option.keepAlive, false
             );
         }
-    } else if (option.autoClose && !ctx->isClosed) {
-        ctx->close();
-        printf("连接关闭 %d\n", ctx->socket);
-        mutex.lock();
-        contextMap.erase(ctx->socket);
-        mutex.unlock();
-        delete ctx;
+    }
+    // 开启了自动关闭
+    else if (option.autoClose) {
+        // 连接已经关闭
+        if (ctx->isClosed) {
+            printf("连接关闭 %d\n", ctx->socket);
+            mutex.lock();
+            contextMap.erase(ctx->socket);
+            mutex.unlock();
+            delete ctx;
+        } else {
+            printf("连接关闭 %d\n", ctx->socket);
+            ctx->close();
+            mutex.lock();
+            contextMap.erase(ctx->socket);
+            mutex.unlock();
+            delete ctx;
+        }
     }
 }
 
@@ -224,10 +221,14 @@ void sese::net::v2::Server::loop() noexcept {
                     continue;
                 }
 
+                printf("新连接 %d\n", client);
                 auto ctx = new sese::net::v2::IOContext;
                 ctx->socket = client;
                 ctx->ssl = clientSSL;
 
+                mutex.lock();
+                contextMap[client] = ctx;
+                mutex.unlock();
                 if (option.isKeepAlive && option.keepAlive > 0) {
                     ctx->task = timer->delay(
                             [this, client]() {
@@ -248,16 +249,16 @@ void sese::net::v2::Server::loop() noexcept {
                             option.keepAlive, false
                     );
                 }
-                mutex.lock();
-                contextMap[client] = ctx;
-                mutex.unlock();
-                printf("新连接 %d\n", client);
             } else if (events[i].events & EPOLLIN) {
+                // 缓冲区可读
                 socket_t client = events[i].data.fd;
                 if (events[i].events & EPOLLRDHUP) {
+                    // FIN 标识
                     mutex.lock();
                     auto iterator = contextMap.find(client);
                     if (iterator != contextMap.end()) {
+                        contextMap.erase(iterator);
+                        mutex.unlock();
                         if (option.isKeepAlive && option.keepAlive > 0) {
                             iterator->second->task->cancel();
                             iterator->second->task = nullptr;
@@ -265,31 +266,20 @@ void sese::net::v2::Server::loop() noexcept {
                         printf("连接关闭 %d\n", iterator->first);
                         iterator->second->close();
                         delete iterator->second;
-                        contextMap.erase(iterator);
-                        mutex.unlock();
-                    } else {
-                        // Never reach
-                        mutex.unlock();
-                        continue;
                     }
+                    mutex.unlock();
                     continue;
-                } else {
-                    sese::net::v2::IOContext *ctx = nullptr;
+                }
+                // 正常读取
+                else {
                     mutex.lock();
                     auto iterator = contextMap.find(client);
-                    if (iterator != contextMap.end()) {
-                        if (option.isKeepAlive && option.keepAlive > 0 && iterator->second->task) {
-                            iterator->second->task->cancel();
-                            iterator->second->task = nullptr;
-                        }
-                        ctx = iterator->second;
-                        mutex.unlock();
-                    } else {
-                        // Never reach
-                        mutex.unlock();
-                        continue;
+                    if (option.isKeepAlive && option.keepAlive > 0 && iterator->second->task) {
+                        iterator->second->task->cancel();
+                        iterator->second->task = nullptr;
                     }
-
+                    mutex.unlock();
+                    auto *ctx = iterator->second;
                     threads->postTask([this, ctx] { LinuxWorkerFunction(ctx); });
                 }
             }
