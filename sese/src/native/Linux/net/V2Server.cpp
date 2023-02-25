@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <sys/epoll.h>
 #include <sys/socket.h>
+#include <unistd.h>
 
 int64_t sese::net::v2::IOContext::read(void *buffer, size_t length) noexcept {// NOLINT
     if (ssl) {
@@ -24,7 +25,7 @@ int64_t sese::net::v2::IOContext::write(const void *buffer, size_t length) noexc
 void sese::net::v2::IOContext::close() noexcept {
     if (ssl) {
         isClosed = true;
-        SSL_shutdown((SSL *) ssl);
+        // SSL_shutdown((SSL *) ssl);
         SSL_free((SSL *) ssl);
         ::close(socket);
     } else {
@@ -187,18 +188,23 @@ void sese::net::v2::Server::loop() noexcept {
                     clientSSL = SSL_new((SSL_CTX *) option.sslContext->getContext());
                     SSL_set_fd(clientSSL, (int) client);
                     SSL_set_accept_state(clientSSL);
+                    printf("尝试握手\n");
                     while (true) {
                         auto rt = SSL_do_handshake(clientSSL);
                         if (rt <= 0) {
+                            sleep(0);
                             // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
                             auto err = SSL_get_error(clientSSL, rt);
                             if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                                printf("握手失败\n");
                                 SSL_free(clientSSL);
                                 ::close(client);
                                 clientSSL = nullptr;
                                 break;
                             }
+                            printf("重试\n");
                         } else {
+                            printf("握手成功\n");
                             break;
                         }
                     }
@@ -259,7 +265,7 @@ void sese::net::v2::Server::loop() noexcept {
                     if (iterator != contextMap.end()) {
                         contextMap.erase(iterator);
                         mutex.unlock();
-                        if (option.isKeepAlive && option.keepAlive > 0) {
+                        if (option.isKeepAlive && option.keepAlive > 0 && iterator->second->task) {
                             iterator->second->task->cancel();
                             iterator->second->task = nullptr;
                         }
