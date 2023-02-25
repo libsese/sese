@@ -1,0 +1,315 @@
+#include "sese/net/V2Server.h"
+#include "openssl/ssl.h"
+
+#include <fcntl.h>
+#include <sys/epoll.h>
+#include <sys/socket.h>
+
+int64_t sese::net::v2::IOContext::read(void *buffer, size_t length) noexcept {// NOLINT
+    if (ssl) {
+        return SSL_read((SSL *) ssl, buffer, (int) length);
+    } else {
+        return ::read(socket, buffer, (int) length);
+    }
+}
+
+int64_t sese::net::v2::IOContext::write(const void *buffer, size_t length) noexcept {// NOLINT
+    if (ssl) {
+        return SSL_write((SSL *) ssl, buffer, (int) length);
+    } else {
+        return ::write(socket, buffer, length);
+    }
+}
+
+void sese::net::v2::IOContext::close() noexcept {
+    if (ssl) {
+        isClosed = true;
+        SSL_shutdown((SSL *) ssl);
+        SSL_free((SSL *) ssl);
+        ::close(socket);
+    } else {
+        isClosed = true;
+        ::shutdown(socket, SHUT_RDWR);
+        ::close(socket);
+    }
+}
+
+inline static int setNonblocking(socket_t socket) {
+    auto option = fcntl(socket, F_GETFL);
+    if (option != -1) {
+        return fcntl(socket, F_SETFL, option | O_NONBLOCK);
+    } else {
+        return -1;
+    }
+}
+
+sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::ServerOption &opt) noexcept {
+    if (opt.isSSL) {
+        if (opt.sslContext) {
+            if (!opt.sslContext->authPrivateKey()) {
+                return nullptr;
+            }
+        } else {
+            return nullptr;
+        }
+    }
+
+    socket_t sock = ::socket(opt.address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
+    if (-1 == sock) {
+        return nullptr;
+    }
+
+    if (-1 == setNonblocking(sock)) {
+        ::close(sock);
+        return nullptr;
+    }
+
+    if (-1 == bind(sock, opt.address->getRawAddress(), opt.address->getRawAddressLength())) {
+        ::close(sock);
+        return nullptr;
+    }
+
+    if (-1 == listen(sock, SERVER_MAX_CONNECTION)) {
+        ::close(sock);
+        return nullptr;
+    }
+
+    int epoll = epoll_create1(0);
+    if (-1 == epoll) {
+        ::close(sock);
+        return nullptr;
+    }
+
+    epoll_event event{};
+    event.events = EPOLLIN;
+    event.data.fd = sock;
+    if (-1 == epoll_ctl(epoll, EPOLL_CTL_ADD, sock, &event)) {
+        ::close(epoll);
+        ::close(sock);
+        return nullptr;
+    }
+
+    auto server = new Server;
+    server->option = opt;
+    server->socket = sock;
+    server->epoll = epoll;
+
+    if (opt.isKeepAlive && opt.keepAlive > 0) {
+        server->timer = Timer::create();
+    }
+
+    server->threads = std::make_unique<ThreadPool>(
+            "SERV",
+            opt.threads
+    );
+
+    return std::unique_ptr<Server>(server);
+}
+
+void sese::net::v2::Server::LinuxWorkerFunction(sese::net::v2::IOContext *ctx) noexcept {
+    bool isHandle = option.beforeHandle(ctx);
+    if (isHandle) {
+        option.onHandle(ctx);
+    }
+
+    if (option.isKeepAlive && option.keepAlive > 0) {
+        if (ctx->isClosed) {
+            mutex.lock();
+            contextMap.erase(ctx->socket);
+            delete ctx;
+            mutex.unlock();
+        } else {
+            epoll_event event{};
+            event.data.fd = ctx->socket;
+            event.events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT;
+            if (-1 == epoll_ctl(epoll, EPOLL_CTL_MOD, ctx->socket, &event)) {
+                mutex.lock();
+                auto iterator = contextMap.find(ctx->socket);
+                if (iterator != contextMap.end()) {
+                    iterator->second->task = nullptr;
+                    printf("连接关闭 %d\n", ctx->socket);
+                    iterator->second->close();
+                    contextMap.erase(iterator);
+                    delete iterator->second;
+                } else {
+                    // Never reach
+                }
+                mutex.unlock();
+                return;
+            }
+
+            ctx->task = timer->delay(
+                    [this, client = ctx->socket]() {
+                        mutex.lock();
+                        auto iterator = contextMap.find(client);
+                        if (iterator != contextMap.end()) {
+                            iterator->second->task = nullptr;
+                            printf("连接关闭 %d\n", client);
+                            iterator->second->close();
+                            contextMap.erase(iterator);
+                            mutex.unlock();
+                            delete iterator->second;
+                        } else {
+                            // Never reach
+                            mutex.unlock();
+                        }
+                    },
+                    option.keepAlive, false
+            );
+        }
+    } else if (option.autoClose && !ctx->isClosed) {
+        ctx->close();
+        printf("连接关闭 %d\n", ctx->socket);
+        mutex.lock();
+        contextMap.erase(ctx->socket);
+        mutex.unlock();
+        delete ctx;
+    }
+}
+
+void sese::net::v2::Server::loop() noexcept {
+    int numberOfFds;
+    epoll_event event{};
+    while (true) {
+        if (isShutdown) break;
+
+        numberOfFds = epoll_wait(epoll, events, MaxEventSize, 0);
+        if (-1 == numberOfFds) continue;
+        for (int i = 0; i < numberOfFds; ++i) {
+            if (events[i].data.fd == socket) {
+                socket_t client = ::accept(socket, nullptr, nullptr);
+                if (-1 == client) continue;
+
+                if (-1 == setNonblocking(client)) {
+                    ::close(client);
+                    continue;
+                }
+
+                SSL *clientSSL = nullptr;
+                if (option.isSSL) {
+                    clientSSL = SSL_new((SSL_CTX *) option.sslContext->getContext());
+                    SSL_set_fd(clientSSL, (int) client);
+                    SSL_set_accept_state(clientSSL);
+                    while (true) {
+                        auto rt = SSL_do_handshake(clientSSL);
+                        if (rt <= 0) {
+                            // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
+                            auto err = SSL_get_error(clientSSL, rt);
+                            if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                                SSL_free(clientSSL);
+                                ::close(client);
+                                clientSSL = nullptr;
+                                break;
+                            }
+                        } else {
+                            break;
+                        }
+                    }
+                    if (clientSSL == nullptr) {
+                        continue;
+                    }
+                }
+
+                event.events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT;
+                event.data.fd = client;
+                if (-1 == epoll_ctl(epoll, EPOLL_CTL_ADD, client, &event)) {
+                    if (option.isSSL) {
+                        SSL_shutdown(clientSSL);
+                        SSL_free(clientSSL);
+                        ::close(client);
+                    } else {
+                        ::shutdown(client, SHUT_RDWR);
+                        ::close(client);
+                    }
+                    continue;
+                }
+
+                auto ctx = new sese::net::v2::IOContext;
+                ctx->socket = client;
+                ctx->ssl = clientSSL;
+
+                if (option.isKeepAlive && option.keepAlive > 0) {
+                    ctx->task = timer->delay(
+                            [this, client]() {
+                                mutex.lock();
+                                auto iterator = contextMap.find(client);
+                                if (iterator != contextMap.end()) {
+                                    iterator->second->task = nullptr;
+                                    printf("连接关闭 %d\n", client);
+                                    iterator->second->close();
+                                    contextMap.erase(iterator);
+                                    mutex.unlock();
+                                    delete iterator->second;
+                                } else {
+                                    // Never reach
+                                    mutex.unlock();
+                                }
+                            },
+                            option.keepAlive, false
+                    );
+                }
+                mutex.lock();
+                contextMap[client] = ctx;
+                mutex.unlock();
+                printf("新连接 %d\n", client);
+            } else if (events[i].events & EPOLLIN) {
+                socket_t client = events[i].data.fd;
+                if (events[i].events & EPOLLRDHUP) {
+                    mutex.lock();
+                    auto iterator = contextMap.find(client);
+                    if (iterator != contextMap.end()) {
+                        if (option.isKeepAlive && option.keepAlive > 0) {
+                            iterator->second->task->cancel();
+                            iterator->second->task = nullptr;
+                        }
+                        printf("连接关闭 %d\n", iterator->first);
+                        iterator->second->close();
+                        delete iterator->second;
+                        contextMap.erase(iterator);
+                        mutex.unlock();
+                    } else {
+                        // Never reach
+                        mutex.unlock();
+                        continue;
+                    }
+                    continue;
+                } else {
+                    sese::net::v2::IOContext *ctx = nullptr;
+                    mutex.lock();
+                    auto iterator = contextMap.find(client);
+                    if (iterator != contextMap.end()) {
+                        if (option.isKeepAlive && option.keepAlive > 0 && iterator->second->task) {
+                            iterator->second->task->cancel();
+                            iterator->second->task = nullptr;
+                        }
+                        ctx = iterator->second;
+                        mutex.unlock();
+                    } else {
+                        // Never reach
+                        mutex.unlock();
+                        continue;
+                    }
+
+                    threads->postTask([this, ctx] { LinuxWorkerFunction(ctx); });
+                }
+            }
+        }
+    }
+}
+
+void sese::net::v2::Server::shutdown() noexcept {
+    isShutdown = true;
+    threads->shutdown();
+    timer->shutdown();
+    for (auto &pair: contextMap) {
+        if (option.isKeepAlive && option.keepAlive > 0) {
+            pair.second->task->cancel();
+            pair.second->task = nullptr;
+        }
+        printf("连接关闭 %d\n", pair.first);
+        pair.second->close();
+        delete pair.second;
+    }
+    ::close(epoll);
+    ::close(socket);
+}

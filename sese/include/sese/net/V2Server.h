@@ -9,7 +9,12 @@
 #include <memory>
 #include <vector>
 
+#ifdef WIN32
 #define MaxBufferSize 8192
+#elif __linux__
+#define MaxEventSize 64
+#include <sys/epoll.h>
+#endif
 
 namespace sese::net::v2 {
 
@@ -35,6 +40,7 @@ namespace sese::net::v2 {
 
     public:
 #else
+        TimerTask::Ptr task = nullptr;
 #endif
         bool isClosed = false;
         socket_t socket = -1;
@@ -73,10 +79,6 @@ namespace sese::net::v2 {
         static void onHandler(sese::net::v2::IOContext *) noexcept {
             /// 此处一般为业务处理代码，默认实现为空
         }
-
-        static void afterHandler(sese::net::v2::IOContext *) noexcept {
-            /// 默认实现为空
-        }
     };
 
     class API Server {
@@ -100,6 +102,15 @@ namespace sese::net::v2 {
         std::vector<Thread::Ptr> threads;
         void *bioMethod = nullptr;
         std::map<sese::net::v2::IOContext *, sese::TimerTask::Ptr> taskMap;
+#elif __linux__
+    private:
+        void LinuxWorkerFunction(sese::net::v2::IOContext *ctx) noexcept;
+        
+        socket_t socket = -1;
+        int epoll = -1;
+        epoll_event events[MaxEventSize]{};
+        ThreadPool::Ptr threads = nullptr;
+        std::map<socket_t, sese::net::v2::IOContext *> contextMap;
 #endif
 
     private:
