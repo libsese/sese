@@ -111,8 +111,14 @@ void sese::net::v2::IOContext::close() noexcept {
 }
 
 sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::ServerOption &opt) noexcept {
-    if (opt.isSSL && !opt.sslContext->authPrivateKey()) {
-        return nullptr;
+    if (opt.isSSL) {
+        if (opt.sslContext) {
+            if (!opt.sslContext->authPrivateKey()) {
+                return nullptr;
+            }
+        } else {
+            return nullptr;
+        }
     }
 
     auto family = opt.address->getRawAddress()->sa_family;
