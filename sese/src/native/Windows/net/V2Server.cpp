@@ -242,10 +242,10 @@ void sese::net::v2::Server::loop() noexcept {
         int nRt = WSARecv(client, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
         int e = WSAGetLastError();
         if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-            ctx->close();
 #ifdef _DEBUG
             printf("BAD: %p\n", ctx);
 #endif
+            ctx->close();
             delete ctx;
         } else {
             if (option.isKeepAlive && option.keepAlive > 0) {
@@ -281,9 +281,14 @@ void sese::net::v2::Server::shutdown() noexcept {
         );
     }
 
+    for (auto &th: threads) {
+        th->join();
+    }
+
     if (option.isKeepAlive && option.keepAlive > 0) {
         timer->shutdown();
 
+        // mutex.lock();
         for (auto &pair: taskMap) {
             pair.first->close();
 #ifdef _DEBUG
@@ -291,14 +296,12 @@ void sese::net::v2::Server::shutdown() noexcept {
 #endif
             delete pair.first;
         }
+        taskMap.clear();
+        // mutex.unlock();
     }
 
     if (option.isSSL) {
         BIO_meth_free((BIO_METHOD *) bioMethod);
-    }
-
-    for (auto &th: threads) {
-        th->join();
     }
 }
 
@@ -351,8 +354,8 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                 auto iterator = taskMap.find(ctx);
                 if (iterator != taskMap.end()) {
                     auto task = iterator->second;
-                    // taskMap.erase(iterator);
-                    taskMap.erase(ctx);
+                    // taskMap.erase(ctx);
+                    taskMap.erase(iterator);
                     mutex.unlock();
                     task->cancel();
                 } else {
@@ -381,6 +384,9 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                     delete ctx;
                     continue;
                 } else {
+#ifdef _DEBUG
+                    printf("POST: %p\n", ctx);
+#endif
                     // 提交无误才加入定时器
                     mutex.lock();
                     taskMap[ctx] = timer->delay(
@@ -397,9 +403,6 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                             option.keepAlive, false
                     );
                     mutex.unlock();
-#ifdef _DEBUG
-                    printf("POST: %p\n", ctx);
-#endif
                     continue;
                 }
             }

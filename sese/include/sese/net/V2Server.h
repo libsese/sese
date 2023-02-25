@@ -22,7 +22,7 @@ namespace sese::net::v2 {
         IOContext(void *bioMethod, void *ssl) noexcept;
         WSAOVERLAPPED overlapped{};
         WSABUF wsaBuf{MaxBufferSize, buffer};
-        CHAR buffer[MaxBufferSize];
+        CHAR buffer[MaxBufferSize]{};
         DWORD nBytes = 0;
         DWORD nRead = 0;
         void *bio = nullptr;
