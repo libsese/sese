@@ -107,6 +107,9 @@ namespace sese::net::v2 {
         std::map<sese::net::v2::IOContext *, sese::TimerTask::Ptr> taskMap;
 #elif __linux__
     private:
+        void onConnect() noexcept;
+        void onRead(socket_t client) noexcept;
+        void onClose(socket_t client) noexcept;
         void LinuxWorkerFunction(sese::net::v2::IOContext *ctx) noexcept;
 
         socket_t socket = -1;
