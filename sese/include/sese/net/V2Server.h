@@ -7,13 +7,16 @@
 
 #include <map>
 #include <memory>
-#include <vector>
 
 #ifdef WIN32
 #define MaxBufferSize 8192
+#include <vector>
 #elif __linux__
 #define MaxEventSize 64
 #include <sys/epoll.h>
+#elif __APPLE__
+#define MaxEventSize 64
+#include <sys/event.h>
 #endif
 
 namespace sese::net::v2 {
@@ -105,10 +108,22 @@ namespace sese::net::v2 {
 #elif __linux__
     private:
         void LinuxWorkerFunction(sese::net::v2::IOContext *ctx) noexcept;
-        
+
         socket_t socket = -1;
         int epoll = -1;
         epoll_event events[MaxEventSize]{};
+        ThreadPool::Ptr threads = nullptr;
+        std::map<socket_t, sese::net::v2::IOContext *> contextMap;
+#elif __APPLE__
+    private:
+        void onConnect() noexcept;
+        void onRead(socket_t client) noexcept;
+        void onClose(socket_t client) noexcept;
+        void DarwinWorkerFunction(sese::net::v2::IOContext *ctx) noexcept;
+
+        socket_t socket = -1;
+        int kqueue = -1;
+        struct kevent events[MaxEventSize] {};
         ThreadPool::Ptr threads = nullptr;
         std::map<socket_t, sese::net::v2::IOContext *> contextMap;
 #endif
