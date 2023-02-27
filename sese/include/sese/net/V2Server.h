@@ -88,15 +88,12 @@ namespace sese::net::v2 {
         /// 此函数通常在连接和可读后第一时间被调用。
         /// 返回 true 则表明需要下一步的处理，即将进入 onHandle，
         /// 返回 false 则将不会进入 onHandle，可以进行其他处理
-        std::function<bool(sese::net::v2::IOContext *)> beforeHandle = beforeHandler;
-        /// 对连接进行正式处理的函数
-        std::function<void(sese::net::v2::IOContext *)> onHandle = onHandler;
-
-        static bool beforeHandler(sese::net::v2::IOContext *) noexcept {
+        virtual bool beforeHandle(sese::net::v2::IOContext *) noexcept {
             return true;
         }
 
-        static void onHandler(sese::net::v2::IOContext *) noexcept {
+        /// 对连接进行正式处理的函数
+        virtual void onHandle(sese::net::v2::IOContext *) noexcept {
             /// 此处一般为业务处理代码，默认实现为空
         }
     };
@@ -109,7 +106,7 @@ namespace sese::net::v2 {
         /// \param option 服务器选项
         /// \return 实例化的服务器模型
         /// \retval nullptr 创建失败返回空指针
-        static Server::Ptr create(const ServerOption &option) noexcept;
+        static Server::Ptr create(ServerOption *option) noexcept;
 
     private:
         Server() = default;
@@ -156,7 +153,7 @@ namespace sese::net::v2 {
 #endif
 
     private:
-        ServerOption option;
+        ServerOption *option = nullptr;
         std::atomic_bool isShutdown = false;
         std::mutex mutex;
         Timer::Ptr timer = nullptr;

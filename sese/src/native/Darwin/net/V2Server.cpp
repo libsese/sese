@@ -43,10 +43,10 @@ inline static int setNonblocking(socket_t socket) {
     }
 }
 
-sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::ServerOption &opt) noexcept {
-    if (opt.isSSL) {
-        if (opt.sslContext) {
-            if (!opt.sslContext->authPrivateKey()) {
+sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOption *opt) noexcept {
+    if (opt->isSSL) {
+        if (opt->sslContext) {
+            if (!opt->sslContext->authPrivateKey()) {
                 return nullptr;
             }
         } else {
@@ -54,7 +54,7 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
         }
     }
 
-    socket_t sock = ::socket(opt.address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
+    socket_t sock = ::socket(opt->address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
     if (-1 == sock) {
         return nullptr;
     }
@@ -64,7 +64,7 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
         return nullptr;
     }
 
-    if (-1 == ::bind(sock, opt.address->getRawAddress(), opt.address->getRawAddressLength())) {
+    if (-1 == ::bind(sock, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
         ::close(sock);
         return nullptr;
     }
@@ -93,13 +93,13 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
     server->socket = sock;
     server->kqueue = kqueue;
 
-    if (opt.isKeepAlive && opt.keepAlive > 0) {
+    if (opt->isKeepAlive && opt->keepAlive > 0) {
         server->timer = Timer::create();
     }
 
     server->threads = std::make_unique<ThreadPool>(
             "SERV",
-            opt.threads
+            opt->threads
     );
 
     return std::unique_ptr<Server>(server);
@@ -116,8 +116,8 @@ void sese::net::v2::Server::onConnect() noexcept {
     }
 
     SSL *clientSSL = nullptr;
-    if (option.isSSL) {
-        clientSSL = SSL_new((SSL_CTX *) option.sslContext->getContext());
+    if (option->isSSL) {
+        clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
         SSL_set_fd(clientSSL, (int) client);
         SSL_set_accept_state(clientSSL);
         while (true) {
@@ -143,7 +143,7 @@ void sese::net::v2::Server::onConnect() noexcept {
 
     EV_SET(&event, client, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, nullptr);
     if (-1 == ::kevent(kqueue, &event, 1, nullptr, 0, nullptr)) {
-        if (option.isSSL) {
+        if (option->isSSL) {
             SSL_shutdown(clientSSL);
             SSL_free(clientSSL);
             ::close(client);
@@ -160,7 +160,7 @@ void sese::net::v2::Server::onConnect() noexcept {
     mutex.lock();
     contextMap[client] = ctx;
     mutex.unlock();
-    if (option.isKeepAlive && option.keepAlive > 0) {
+    if (option->isKeepAlive && option->keepAlive > 0) {
         ctx->task = timer->delay(
                 [this, client]() {
                     mutex.lock();
@@ -176,7 +176,7 @@ void sese::net::v2::Server::onConnect() noexcept {
                         mutex.unlock();
                     }
                 },
-                option.keepAlive, false
+                option->keepAlive, false
         );
     }
 }
@@ -187,7 +187,7 @@ void sese::net::v2::Server::onClose(socket_t client) noexcept {
     if (iterator != contextMap.end()) {
         contextMap.erase(iterator);
         mutex.unlock();
-        if (option.isKeepAlive && option.keepAlive > 0 && iterator->second->task) {
+        if (option->isKeepAlive && option->keepAlive > 0 && iterator->second->task) {
             iterator->second->task->cancel();
             iterator->second->task = nullptr;
         }
@@ -201,7 +201,7 @@ void sese::net::v2::Server::onClose(socket_t client) noexcept {
 void sese::net::v2::Server::onRead(socket_t client) noexcept {
     mutex.lock();
     auto iterator = contextMap.find(client);
-    if (option.isKeepAlive && option.keepAlive > 0 && iterator->second->task) {
+    if (option->isKeepAlive && option->keepAlive > 0 && iterator->second->task) {
         iterator->second->task->cancel();
         iterator->second->task = nullptr;
     }
@@ -210,13 +210,13 @@ void sese::net::v2::Server::onRead(socket_t client) noexcept {
 }
 
 void sese::net::v2::Server::DarwinWorkerFunction(sese::net::v2::IOContext *ctx) noexcept {
-    bool isHandle = option.beforeHandle(ctx);
+    bool isHandle = option->beforeHandle(ctx);
     if (isHandle) {
-        option.onHandle(ctx);
+        option->onHandle(ctx);
     }
 
     // 启用了长连接
-    if (option.isKeepAlive && option.keepAlive > 0) {
+    if (option->isKeepAlive && option->keepAlive > 0) {
         // 连接已经关闭，清理资源
         if (ctx->isClosed) {
             mutex.lock();
@@ -245,12 +245,12 @@ void sese::net::v2::Server::DarwinWorkerFunction(sese::net::v2::IOContext *ctx) 
                             mutex.unlock();
                         }
                     },
-                    option.keepAlive, false
+                    option->keepAlive, false
             );
         }
     }
     // 开启了自动关闭
-    else if (option.autoClose) {
+    else if (option->autoClose) {
         // 连接已经关闭
         if (ctx->isClosed) {
             mutex.lock();
@@ -297,7 +297,7 @@ void sese::net::v2::Server::shutdown() noexcept {
     threads->shutdown();
     timer->shutdown();
     for (auto &pair: contextMap) {
-        if (option.isKeepAlive && option.keepAlive > 0) {
+        if (option->isKeepAlive && option->keepAlive > 0) {
             pair.second->task->cancel();
             pair.second->task = nullptr;
         }

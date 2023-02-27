@@ -110,10 +110,10 @@ void sese::net::v2::IOContext::close() noexcept {
     }
 }
 
-sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::ServerOption &opt) noexcept {
-    if (opt.isSSL) {
-        if (opt.sslContext) {
-            if (!opt.sslContext->authPrivateKey()) {
+sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOption *opt) noexcept {
+    if (opt->isSSL) {
+        if (opt->sslContext) {
+            if (!opt->sslContext->authPrivateKey()) {
                 return nullptr;
             }
         } else {
@@ -121,7 +121,7 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
         }
     }
 
-    auto family = opt.address->getRawAddress()->sa_family;
+    auto family = opt->address->getRawAddress()->sa_family;
     socket_t sock = ::WSASocketW(
             family,
             SOCK_STREAM,
@@ -141,7 +141,7 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
         return nullptr;
     }
 
-    if (SOCKET_ERROR == bind(sock, opt.address->getRawAddress(), opt.address->getRawAddressLength())) {
+    if (SOCKET_ERROR == bind(sock, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
         ::closesocket(sock);
         return nullptr;
     }
@@ -155,7 +155,7 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
             INVALID_HANDLE_VALUE,
             nullptr,
             0,
-            (DWORD) opt.threads
+            (DWORD) opt->threads
     );
     if (INVALID_HANDLE_VALUE == iocp) {
         ::closesocket(sock);
@@ -167,11 +167,11 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
     server->socket = sock;
     server->hIOCP = iocp;
 
-    if (opt.isKeepAlive && opt.keepAlive > 0) {
+    if (opt->isKeepAlive && opt->keepAlive > 0) {
         server->timer = Timer::create();
     }
 
-    if (opt.isSSL) {
+    if (opt->isSSL) {
         auto method = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bio_iocp");
         BIO_meth_set_ctrl(method, bio_iocp_ctrl);
         BIO_meth_set_read(method, bio_iocp_read);
@@ -179,7 +179,7 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(const sese::net::v2::Se
         server->bioMethod = method;
     }
 
-    for (int index = 0; index < opt.threads; index++) {
+    for (int index = 0; index < opt->threads; index++) {
         server->threads.emplace_back(std::make_unique<Thread>([server]() { server->WindowsWorkerFunction(); }, "SERV" + std::to_string(index)));
     }
 
@@ -201,8 +201,8 @@ void sese::net::v2::Server::loop() noexcept {
 
         // SSL 握手
         ssl_st *clientSSL = nullptr;
-        if (option.isSSL) {
-            clientSSL = SSL_new((SSL_CTX *) option.sslContext->getContext());
+        if (option->isSSL) {
+            clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
             SSL_set_fd(clientSSL, (int) client);
             SSL_set_accept_state(clientSSL);
 
@@ -254,7 +254,7 @@ void sese::net::v2::Server::loop() noexcept {
             ctx->close();
             delete ctx;
         } else {
-            if (option.isKeepAlive && option.keepAlive > 0) {
+            if (option->isKeepAlive && option->keepAlive > 0) {
                 mutex.lock();
                 taskMap[ctx] = timer->delay(
                         [this, ctx]() {
@@ -267,7 +267,7 @@ void sese::net::v2::Server::loop() noexcept {
                             ctx->close();
                             delete ctx;
                         },
-                        option.keepAlive, false
+                        option->keepAlive, false
                 );
                 mutex.unlock();
             }
@@ -278,7 +278,7 @@ void sese::net::v2::Server::loop() noexcept {
 void sese::net::v2::Server::shutdown() noexcept {
     void *lpCompletionKey = nullptr;
     isShutdown = true;
-    for (auto i = 0; i < option.threads; ++i) {
+    for (auto i = 0; i < option->threads; ++i) {
         PostQueuedCompletionStatus(
                 hIOCP,
                 -1,
@@ -291,7 +291,7 @@ void sese::net::v2::Server::shutdown() noexcept {
         th->join();
     }
 
-    if (option.isKeepAlive && option.keepAlive > 0) {
+    if (option->isKeepAlive && option->keepAlive > 0) {
         timer->shutdown();
 
         // mutex.lock();
@@ -306,7 +306,7 @@ void sese::net::v2::Server::shutdown() noexcept {
         // mutex.unlock();
     }
 
-    if (option.isSSL) {
+    if (option->isSSL) {
         BIO_meth_free((BIO_METHOD *) bioMethod);
     }
 }
@@ -355,7 +355,7 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
             printf("RECV: %p\n", ctx);// NOLINT
 #endif
             // 触发读事件，先取消原有计时
-            if (option.isKeepAlive && option.keepAlive > 0) {
+            if (option->isKeepAlive && option->keepAlive > 0) {
                 mutex.lock();
                 auto iterator = taskMap.find(ctx);
                 if (iterator != taskMap.end()) {
@@ -370,13 +370,13 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
             }
 
             // 回调函数调用
-            auto isHandle = option.beforeHandle(ctx);
+            auto isHandle = option->beforeHandle(ctx);
             if (isHandle) {
-                option.onHandle(ctx);
+                option->onHandle(ctx);
             }
 
             // 启用长连接并且当前连接尚未关闭，重新计时
-            if (option.isKeepAlive && option.keepAlive > 0 && !ctx->isClosed) {
+            if (option->isKeepAlive && option->keepAlive > 0 && !ctx->isClosed) {
                 // 重新提交
                 ctx->nRead = 0;
                 ctx->nBytes = 0;
@@ -406,14 +406,14 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                                 ctx->close();
                                 delete ctx;
                             },
-                            option.keepAlive, false
+                            option->keepAlive, false
                     );
                     mutex.unlock();
                     continue;
                 }
             }
             // 启用了自动关闭且当前连接尚未关闭
-            else if (option.autoClose && !ctx->isClosed) {
+            else if (option->autoClose && !ctx->isClosed) {
 #ifdef _DEBUG
                 printf("CLOSE: %p\n", ctx);
 #endif
