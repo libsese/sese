@@ -1,0 +1,10 @@
+{
+    "cmake.configureArgs": [
+        "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
+        "-DSESE_BUILD_TEST=ON",
+        "-DVCPKG_MANIFEST_MODE=ON",
+        "-DVCPKG_MANIFEST_INSTALL=ON",
+        "-DCMAKE_TOOLCHAIN_FILE=/workspaces/vcpkg/scripts/buildsystems/vcpkg.cmake",
+    ],
+    "cmake.generator": "Unix Makefiles"
+}

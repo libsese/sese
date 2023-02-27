@@ -1,9 +1,12 @@
 {
     "name": "dev-default-config",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
-    "features": {
-        "ghcr.io/msclock/features/vcpkg:1": {
-            "version": "1.2.3"
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools-extension-pack"
+            ]
         }
-    }
+    },"postCreateCommand": "git clone https://github.com/microsoft/vcpkg.git /workspaces/vcpkg && sh /workspaces/vcpkg/bootstrap-vcpkg.sh && /workspaces/vcpkg integrate install"
 }
