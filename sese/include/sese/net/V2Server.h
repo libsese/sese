@@ -119,6 +119,7 @@ namespace sese::net::v2 {
 
 #ifdef WIN32
     private:
+        void onConnect() noexcept;
         void WindowsWorkerFunction() noexcept;
 
         SOCKET socket = INVALID_SOCKET;

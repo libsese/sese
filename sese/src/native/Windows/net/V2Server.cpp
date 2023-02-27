@@ -186,6 +186,91 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOp
     return std::unique_ptr<sese::net::v2::Server>(server);
 }
 
+void sese::net::v2::Server::onConnect() noexcept {
+    SOCKET client = ::accept(socket, nullptr, nullptr);
+    if (SOCKET_ERROR == client) {
+        return;
+    }
+
+    // SSL 握手
+    ssl_st *clientSSL = nullptr;
+    if (option->isSSL) {
+        clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
+        SSL_set_fd(clientSSL, (int) client);
+        SSL_set_accept_state(clientSSL);
+
+        while (true) {
+            auto rt = SSL_do_handshake(clientSSL);
+            if (rt <= 0) {
+                // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
+                auto err = SSL_get_error(clientSSL, rt);
+                if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                    SSL_free(clientSSL);
+                    closesocket(client);
+                    clientSSL = nullptr;
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+        if (clientSSL == nullptr) {
+            return;
+        }
+    }
+
+    unsigned long ul = 1;
+    if (SOCKET_ERROR == ioctlsocket(client, FIONBIO, &ul)) {
+        closesocket(client);
+        return;
+    }
+
+    if (nullptr == CreateIoCompletionPort((HANDLE) client, hIOCP, 0, 0)) {
+        closesocket(client);
+        return;
+    }
+
+    auto ctx = new sese::net::v2::IOContext(bioMethod, clientSSL);
+    ctx->socket = client;
+#ifdef _DEBUG
+    printf("NEW: %p\n", ctx);
+#endif
+    // 首次投递
+    DWORD nBytes = MaxBufferSize;
+    DWORD dwFlags = 0;
+    int nRt = WSARecv(client, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
+    int e = WSAGetLastError();
+    if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+#ifdef _DEBUG
+        printf("BAD: %p\n", ctx);
+#endif
+        ctx->close();
+        delete ctx;
+        return;
+    }
+
+    if (option->isKeepAlive && option->keepAlive > 0) {
+        mutex.lock();
+        taskMap[ctx] = timer->delay(
+                [this, ctx]() {
+                    mutex.lock();
+                    auto iterator = taskMap.find(ctx);
+                    if (iterator != taskMap.end()) {
+#ifdef _DEBUG
+                        printf("CLOSE: %p - TIMEOUT\n", ctx);
+#endif
+                        taskMap.erase(iterator);
+                        ctx->close();
+                        delete ctx;
+                    }
+                    mutex.unlock();
+                },
+                option->keepAlive, false
+        );
+        mutex.unlock();
+    }
+}
+
 void sese::net::v2::Server::loop() noexcept {
     for (auto &th: threads) {
         th->start();
@@ -193,85 +278,7 @@ void sese::net::v2::Server::loop() noexcept {
 
     while (true) {
         if (isShutdown) break;
-
-        SOCKET client = ::accept(socket, nullptr, nullptr);
-        if (SOCKET_ERROR == client) {
-            continue;
-        }
-
-        // SSL 握手
-        ssl_st *clientSSL = nullptr;
-        if (option->isSSL) {
-            clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
-            SSL_set_fd(clientSSL, (int) client);
-            SSL_set_accept_state(clientSSL);
-
-            while (true) {
-                auto rt = SSL_do_handshake(clientSSL);
-                if (rt <= 0) {
-                    // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
-                    auto err = SSL_get_error(clientSSL, rt);
-                    if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
-                        SSL_free(clientSSL);
-                        closesocket(client);
-                        clientSSL = nullptr;
-                        break;
-                    }
-                } else {
-                    break;
-                }
-            }
-            if (clientSSL == nullptr) {
-                continue;
-            }
-        }
-
-        unsigned long ul = 1;
-        if (SOCKET_ERROR == ioctlsocket(client, FIONBIO, &ul)) {
-            closesocket(client);
-            continue;
-        }
-
-        if (nullptr == CreateIoCompletionPort((HANDLE) client, hIOCP, 0, 0)) {
-            closesocket(client);
-            continue;
-        }
-
-        auto ctx = new sese::net::v2::IOContext(bioMethod, clientSSL);
-        ctx->socket = client;
-#ifdef _DEBUG
-        printf("NEW: %p\n", ctx);
-#endif
-        // 首次投递
-        DWORD nBytes = MaxBufferSize;
-        DWORD dwFlags = 0;
-        int nRt = WSARecv(client, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
-        int e = WSAGetLastError();
-        if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-#ifdef _DEBUG
-            printf("BAD: %p\n", ctx);
-#endif
-            ctx->close();
-            delete ctx;
-        } else {
-            if (option->isKeepAlive && option->keepAlive > 0) {
-                mutex.lock();
-                taskMap[ctx] = timer->delay(
-                        [this, ctx]() {
-#ifdef _DEBUG
-                            printf("CLOSE: %p\n", ctx);
-#endif
-                            mutex.lock();
-                            taskMap.erase(ctx);
-                            mutex.unlock();
-                            ctx->close();
-                            delete ctx;
-                        },
-                        option->keepAlive, false
-                );
-                mutex.unlock();
-            }
-        }
+        onConnect();
     }
 }
 
@@ -298,7 +305,7 @@ void sese::net::v2::Server::shutdown() noexcept {
         for (auto &pair: taskMap) {
             pair.first->close();
 #ifdef _DEBUG
-            printf("CLOSE: %p\n", pair.first);
+            printf("CLOSE: %p - SHUT\n", pair.first);
 #endif
             delete pair.first;
         }
@@ -334,6 +341,14 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
 #ifdef _DEBUG
             printf("BAD: %p\n", ctx);
 #endif
+            if (option->isKeepAlive && option->keepAlive > 0) {
+                mutex.lock();
+                auto iterator = taskMap.find(ctx);
+                if (iterator != taskMap.end()) {
+                    iterator->second->cancel();
+                }
+                mutex.unlock();
+            }
             ctx->close();
             delete ctx;
             continue;
@@ -350,77 +365,81 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
             ctx->close();
             delete ctx;
             continue;
-        } else {
-#ifdef _DEBUG
-            printf("RECV: %p\n", ctx);// NOLINT
-#endif
-            // 触发读事件，先取消原有计时
-            if (option->isKeepAlive && option->keepAlive > 0) {
-                mutex.lock();
-                auto iterator = taskMap.find(ctx);
-                if (iterator != taskMap.end()) {
-                    auto task = iterator->second;
-                    // taskMap.erase(ctx);
-                    taskMap.erase(iterator);
-                    mutex.unlock();
-                    task->cancel();
-                } else {
-                    mutex.unlock();
-                }
-            }
+        }
 
-            // 回调函数调用
-            auto isHandle = option->beforeHandle(ctx);
-            if (isHandle) {
-                option->onHandle(ctx);
+#ifdef _DEBUG
+        printf("RECV: %p\n", ctx);// NOLINT
+#endif
+        // 触发读事件，先取消原有计时
+        if (option->isKeepAlive && option->keepAlive > 0) {
+            mutex.lock();
+            auto iterator = taskMap.find(ctx);
+            if (iterator != taskMap.end()) {
+                auto task = iterator->second;
+                iterator->second = nullptr;
+                // taskMap.erase(ctx);
+                taskMap.erase(iterator);
+                mutex.unlock();
+                task->cancel();
+            } else {
+                mutex.unlock();
             }
+        }
 
-            // 启用长连接并且当前连接尚未关闭，重新计时
-            if (option->isKeepAlive && option->keepAlive > 0 && !ctx->isClosed) {
-                // 重新提交
-                ctx->nRead = 0;
-                ctx->nBytes = 0;
-                nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
-                e = WSAGetLastError();
-                if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+        // 回调函数调用
+        auto isHandle = option->beforeHandle(ctx);
+        if (isHandle) {
+            option->onHandle(ctx);
+        }
+
+        // 启用长连接并且当前连接尚未关闭，重新计时
+        if (option->isKeepAlive && option->keepAlive > 0 && !ctx->isClosed) {
+            // 重新提交
+            ctx->nRead = 0;
+            ctx->nBytes = 0;
+            nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
+            e = WSAGetLastError();
+            if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
 #ifdef _DEBUG
-                    printf("BAD: %p\n", ctx);
-#endif
-                    ctx->close();
-                    delete ctx;
-                    continue;
-                } else {
-#ifdef _DEBUG
-                    printf("POST: %p\n", ctx);
-#endif
-                    // 提交无误才加入定时器
-                    mutex.lock();
-                    taskMap[ctx] = timer->delay(
-                            [this, ctx]() {
-#ifdef _DEBUG
-                                printf("CLOSE: %p\n", ctx);
-#endif
-                                mutex.lock();
-                                taskMap.erase(ctx);
-                                mutex.unlock();
-                                ctx->close();
-                                delete ctx;
-                            },
-                            option->keepAlive, false
-                    );
-                    mutex.unlock();
-                    continue;
-                }
-            }
-            // 启用了自动关闭且当前连接尚未关闭
-            else if (option->autoClose && !ctx->isClosed) {
-#ifdef _DEBUG
-                printf("CLOSE: %p\n", ctx);
+                printf("BAD: %p\n", ctx);
 #endif
                 ctx->close();
                 delete ctx;
                 continue;
+            } else {
+#ifdef _DEBUG
+                printf("POST: %p\n", ctx);
+#endif
+                // 提交无误才加入定时器
+                mutex.lock();
+                taskMap[ctx] = timer->delay(
+                        [this, ctx]() {
+                            mutex.lock();
+                            auto iterator = taskMap.find(ctx);
+                            if (iterator != taskMap.end()) {
+#ifdef _DEBUG
+                                printf("CLOSE: %p - TIMEOUT(RE)\n", ctx);
+#endif
+                                taskMap.erase(iterator);
+                                ctx->close();
+                                delete ctx;
+                            }
+                            mutex.unlock();
+                        },
+                        option->keepAlive, false
+                );
+                mutex.unlock();
+                continue;
             }
+        }
+        // 启用了自动关闭且当前连接尚未关闭
+        else if (option->autoClose && !ctx->isClosed) {
+#ifdef _DEBUG
+            printf("CLOSE: %p - AUTO\n", ctx);
+#endif
+            ctx->close();
+            delete ctx;
+            continue;
         }
     }
 }
