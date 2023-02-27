@@ -1,3 +1,8 @@
+/// \file V2Server.h
+/// \brief 通用响应式服务器模型
+/// \date 2023.02.27
+/// \author kaoru
+/// \note 先比起原先的服务器提高了可拓展性、可维护性、安全性和性能
 #pragma once
 
 #include "sese/net/Socket.h"
@@ -21,9 +26,19 @@
 
 namespace sese::net::v2 {
 
-    struct IOContext {
+    /// I/O 上下文
+    struct IOContext final {
+        /// 从流中读取数据至缓存
+        /// \param buffer 缓存
+        /// \param length 大小
+        /// \return 操作成功字节数
         int64_t read(void *buffer, size_t length) noexcept;
+        /// 将缓存写入流中
+        /// \param buffer 缓存
+        /// \param length 大小
+        /// \return 操作成功字节数
         int64_t write(const void *buffer, size_t length) noexcept;
+        /// 关闭连接，并标识接下来将进行的收尾工作
         void close() noexcept;
 
 #ifdef WIN32
@@ -50,7 +65,8 @@ namespace sese::net::v2 {
         void *ssl = nullptr;
     };
 
-    struct ServerOption {
+    /// 服务器选项，用于指定功能的可拓展实体
+    struct API ServerOption {
         /// 绑定的地址与端口，必填
         IPAddress::Ptr address = nullptr;
 
@@ -60,6 +76,7 @@ namespace sese::net::v2 {
         /// 此选项用于指示是否使用 SSL，
         /// 开启 SSL 必须设置 sslContext 选项
         bool isSSL = false;
+        /// SSL 上下文
         security::SSLContext::Ptr sslContext = nullptr;
 
         /// 此选项用于指示是否在 onHandle 结束后自动关闭连接，与 isKeepAlive 互斥
@@ -84,16 +101,23 @@ namespace sese::net::v2 {
         }
     };
 
+    /// 服务器模型，处理连接和可读事件的调度器
     class API Server {
     public:
         using Ptr = std::unique_ptr<Server>;
+        /// 根据已有选项构建一个服务器模型实体
+        /// \param option 服务器选项
+        /// \return 实例化的服务器模型
+        /// \retval nullptr 创建失败返回空指针
         static Server::Ptr create(const ServerOption &option) noexcept;
 
     private:
         Server() = default;
 
     public:
+        /// 循环处理连接，阻塞直至服务器退出
         void loop() noexcept;
+        /// 指示服务器退出并清理资源，阻塞至服务器完成退出
         void shutdown() noexcept;
 
 #ifdef WIN32
