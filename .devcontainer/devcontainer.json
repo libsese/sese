@@ -1,0 +1,9 @@
+{
+    "name": "dev-default-config",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "features": {
+        "ghcr.io/msclock/features/vcpkg:1": {
+            "version": "1.2.3"
+        }
+    }
+}
