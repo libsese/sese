@@ -155,6 +155,11 @@ install(
 )
 
 install(
+        FILES "${PROJECT_BINARY_DIR}/SeseConfig.cmake"
+        DESTINATION debug/lib/cmake/sese.core
+)
+
+install(
         EXPORT SeseTargets
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sese.core
         NAMESPACE Sese::
