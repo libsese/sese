@@ -11,9 +11,9 @@
     "version>=": "1.12.1"
   },{
     "name" : "simpleuuid",
-    "version>=": "0.1.3"
+    "version>=": "0.1.4"
   }, {
     "name" : "sstring",
-    "version>=": "0.1.3"
+    "version>=": "0.1.4"
   }]
 }

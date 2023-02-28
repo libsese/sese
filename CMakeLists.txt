@@ -14,7 +14,6 @@ if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
 endif ()
 
 option(SESE_BUILD_TEST "build unit test targets" OFF)
-option(SESE_USE_SSL "import ssl dependencies" OFF)
 
 message(STATUS "==================== SESE.CORE ====================")
 message(STATUS "Project version: ${PROJECT_VERSION}")

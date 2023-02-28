@@ -4,6 +4,8 @@
 #include "sese/util/Util.h"
 #include "gtest/gtest.h"
 
+#include <cmath>
+
 static const char *TYPE_MAIN_THREAD = "Main Thread";
 static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";
 void proc(int &num, sese::record::LogHelper &helper);
