@@ -17,6 +17,7 @@ BufferedInputStream::~BufferedInputStream() noexcept {
 inline int64_t BufferedInputStream::preRead() noexcept {
     // 尝试使用目标流填充缓存
     auto read = source->read(buffer, cap);
+    read = read == -1 ? 0 : read;
     pos = 0;
     len = read;
     return read;

@@ -49,8 +49,9 @@ int64_t sese::net::v2::IOContext::readWithoutSSL(void *buf, size_t length) noexc
         // 直接返回当前剩余部分
         else {
             memcpy(buf, this->buffer + this->nRead, this->nBytes - this->nRead);
+            auto rt = this->nBytes - this->nRead;
             this->nRead = this->nBytes;
-            return this->nBytes - this->nRead;
+            return rt;
         }
     }
     // 缓冲区已空
@@ -393,53 +394,66 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
         }
 
         // 启用长连接并且当前连接尚未关闭，重新计时
-        if (option->isKeepAlive && option->keepAlive > 0 && !ctx->isClosed) {
-            // 重新提交
-            ctx->nRead = 0;
-            ctx->nBytes = 0;
-            nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
-            e = WSAGetLastError();
-            if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+        if (option->isKeepAlive && option->keepAlive > 0) {
+            if (ctx->isClosed) {
 #ifdef _DEBUG
-                printf("BAD: %p\n", ctx);
+                printf("CLOSE: %p - ACTIVE\n", ctx);
+#endif
+            } else {
+
+                // 重新提交
+                ctx->nRead = 0;
+                ctx->nBytes = 0;
+                nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
+                e = WSAGetLastError();
+                if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
+#ifdef _DEBUG
+                    printf("BAD: %p\n", ctx);
+#endif
+                    ctx->close();
+                    delete ctx;
+                    continue;
+                } else {
+#ifdef _DEBUG
+                    printf("POST: %p\n", ctx);
+#endif
+                    // 提交无误才加入定时器
+                    mutex.lock();
+                    taskMap[ctx] = timer->delay(
+                            [this, ctx]() {
+                                mutex.lock();
+                                auto iterator = taskMap.find(ctx);
+                                if (iterator != taskMap.end()) {
+#ifdef _DEBUG
+                                    printf("CLOSE: %p - TIMEOUT(RE)\n", ctx);
+#endif
+                                    taskMap.erase(iterator);
+                                    ctx->close();
+                                    delete ctx;
+                                }
+                                mutex.unlock();
+                            },
+                            option->keepAlive, false
+                    );
+                    mutex.unlock();
+                    continue;
+                }
+            }
+        }
+        // 启用了自动关闭且当前连接尚未关闭
+        else if (option->autoClose) {
+            if (ctx->isClosed) {
+#ifdef _DEBUG
+                printf("CLOSE: %p - ACTIVE\n", ctx);
+#endif
+            } else {
+#ifdef _DEBUG
+                printf("CLOSE: %p - AUTO\n", ctx);
 #endif
                 ctx->close();
                 delete ctx;
                 continue;
-            } else {
-#ifdef _DEBUG
-                printf("POST: %p\n", ctx);
-#endif
-                // 提交无误才加入定时器
-                mutex.lock();
-                taskMap[ctx] = timer->delay(
-                        [this, ctx]() {
-                            mutex.lock();
-                            auto iterator = taskMap.find(ctx);
-                            if (iterator != taskMap.end()) {
-#ifdef _DEBUG
-                                printf("CLOSE: %p - TIMEOUT(RE)\n", ctx);
-#endif
-                                taskMap.erase(iterator);
-                                ctx->close();
-                                delete ctx;
-                            }
-                            mutex.unlock();
-                        },
-                        option->keepAlive, false
-                );
-                mutex.unlock();
-                continue;
             }
-        }
-        // 启用了自动关闭且当前连接尚未关闭
-        else if (option->autoClose && !ctx->isClosed) {
-#ifdef _DEBUG
-            printf("CLOSE: %p - AUTO\n", ctx);
-#endif
-            ctx->close();
-            delete ctx;
-            continue;
         }
     }
 }

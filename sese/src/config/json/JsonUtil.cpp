@@ -14,6 +14,10 @@ ObjectData::Ptr JsonUtil::deserialize(const InputStream::Ptr &inputStream, size_
             return nullptr;
         }
 
+        if (tokens.empty()) {
+            return nullptr;
+        }
+
         // 第一个 token 必是 '{'，直接弹出
         tokens.pop();
         return createObject(tokens, level);
