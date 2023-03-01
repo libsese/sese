@@ -5,7 +5,8 @@
         "vscode": {
             "extensions": [
                 "ms-vscode.cmake-tools",
-                "ms-vscode.cpptools-extension-pack"
+                "ms-vscode.cpptools-extension-pack",
+                "llvm-vs-code-extensions.vscode-clangd"
             ]
         }
     }
