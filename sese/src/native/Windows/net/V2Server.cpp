@@ -1,4 +1,5 @@
 #include "sese/net/V2Server.h"
+#include "sese/util/Util.h"
 #include "openssl/ssl.h"
 
 static long bio_iocp_ctrl([[maybe_unused]] BIO *bio, int cmd, [[maybe_unused]] long num, [[maybe_unused]] void *ptr) {
@@ -190,6 +191,8 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOp
 void sese::net::v2::Server::onConnect() noexcept {
     SOCKET client = ::accept(socket, nullptr, nullptr);
     if (SOCKET_ERROR == client) {
+        // 放弃当前时间片，以免负载过高
+        sese::sleep(0);
         return;
     }
 
