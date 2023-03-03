@@ -38,6 +38,7 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 | openssl    | github.com/openssl/openssl       | SSL 支持      |
 | SimpleUuid | github.com/shiinasama/SimpleUuid | 雪花算法实现      |
 | googletest | github.com/google/googletest     | 用于单元测试      |
+| zlib       | zlib.net                         | 压缩算法        |
 
 开放的编译选项：
 
