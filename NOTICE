@@ -11,3 +11,5 @@ libsese/SimpleUuid
 - Copyright (c) 2021-2023 SHIINASAMA (SHIINA_KAORU@OUTLOOK.COM)
 google/googletest
 - Copyright 2008, Google Inc.
+zlib
+- Copyright (C) 1995-2022 Jean-loup Gailly and Mark Adler

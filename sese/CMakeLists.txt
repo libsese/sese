@@ -1,3 +1,4 @@
+find_package(ZLIB REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(SString CONFIG REQUIRED)
 find_package(SimpleUuid CONFIG REQUIRED)
@@ -115,8 +116,8 @@ endif ()
 set_target_properties(Core PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
 set_target_properties(Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-target_link_libraries(Core SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL)
-target_link_libraries(Core-static SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL)
+target_link_libraries(Core SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL ZLIB::ZLIB)
+target_link_libraries(Core-static SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL ZLIB::ZLIB)
 
 add_custom_command(
         TARGET

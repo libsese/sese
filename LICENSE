@@ -221,3 +221,7 @@ subject to the terms and conditions of the following licenses:
 - google/googletest
     Project URL: https://github.com/google/googletest/
     License: BSD 3-Clause "New" or "Revised" License
+
+- zlib
+    Project URL: https://zlib.net
+    License: zlib License
