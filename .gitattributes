@@ -1,0 +1,11 @@
+*.md    text eol=crlf
+*.txt   text eol=crlf
+*.cmake text eol=crlf
+*.c     text eol=crlf
+*.h     text eol=crlf
+*.cpp   text eol=crlf
+*.hpp   text eol=crlf
+*.json  text eol=crlf
+*.xml   text eol=crlf
+*.yml   text eol=crlf
+*.in    text eol=crlf
