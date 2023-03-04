@@ -1,3 +1,10 @@
+/**
+* \file Compressor.h
+* \brief 压缩器类
+* \version 0.1
+* \date 2023年3月4日
+* \author kaoru
+*/
 #pragma once
 
 #include "sese/convert/ZlibConfig.h"
@@ -29,7 +36,7 @@ namespace sese {
         /// \retval Z_BUF_ERROR(-5) 输出流容量不足
         int deflate(OutputStream *out);
 
-        /// 重制 z_stream 对象
+        /// 重置 z_stream 对象
         /// \return 结果
         int reset();
 
