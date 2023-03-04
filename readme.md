@@ -1,4 +1,4 @@
-# Sese Library
+<h1> <img src="logo.png" alt="logo" style="width: 29px; height: 29px;"> Sese Library </h1>
 
 <div>
   <img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
@@ -28,7 +28,8 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 ## 构建
 
 项目选择了 CMake 作为构建系统，同时还使用了 Git 作为项目的版本控制系统（废话）。<br>
-其中，强烈推荐您使用 CMake 3.14 以上的版本，使用 FetchContent 为您导入项目依赖。
+~~其中，强烈推荐您使用 CMake 3.14 以上的版本，使用 FetchContent 为您导入项目依赖。~~<br>
+现在已改用自建的 vcpkg 仓库，添加新的注册表以使用 sese。
 
 关于依赖，目前项目引入的依赖主要有以下：
 
@@ -57,11 +58,61 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 - macOS
     - 通常来说只要您拥有 command-line-tools 即可。
 
+或者也可以使用 <kbd>github codespaces</kbd> 临时搭建的容器环境进行试用或者开发。<br>
+只需要在创建容器时选择项目提供的默认配置文件即可。
+
 ## 使用
 
 推荐的使用方式共两种：<br>
 ~~首推使用 CMake FetchContent <br>~~
-首推使用 vcpkg （待补充）<br>
+首推使用 vcpkg<br>
 其次才推荐使用 git submodule
+
+在这里假设你了解 vcpkg 如何与 CMake 搭配使用，<br>
+比如，如何设置 vcpkg 工具链和开启清单模式等。<br>
+如果你不了解，请看[这里](https://vcpkg.io/en/getting-started.html#Using%20vcpkg%20with%20CMake)。<br>
+配置示例：
+
+1. 编辑 vcpkg-configuration.json 以添加新的注册表
+
+   ```json
+   {
+       "default-registry": {
+           "kind": "git",
+           "repository": "https://github.com/microsoft/vcpkg.git",
+           "baseline": "the-repository-base-line-what-you-need"
+       },
+       "registries": [
+           {
+               "kind": "git",
+               "repository": "https://github.com/libsese/vcpkg-registry.git",
+               "baseline": "the-repository-base-line-what-you-need",
+               "packages": [
+                   "sese-core"
+               ]
+           }
+       ]
+   }
+   ```
+
+2. 编辑 vcpkg.json 以将 sese.core 添加到依赖项
+
+   ```json
+   {
+    "name": "your-project",
+    "dependencies": [
+        {
+            "name": "sese-core",
+            "version>=": "version-string"
+        }]
+    }
+   ```
+
+3. 在 CMakeLists.text 直接使用
+
+   ```cmake
+   find_package(SeseCore CONFIG REQUIRED)
+   target_link_libraries(main PRIVATE Sese::Core)
+   ```
 
 具体的使用方法请参考 [docs](docs/readme.md) 和 [example](example/CMakeLists.txt)
