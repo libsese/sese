@@ -71,3 +71,6 @@ constexpr static const size_t HTTP_MAX_SINGLE_LINE = 1023;
 constexpr static const char *HTTPD_NAME = "sese::http::HttpServer";
 /// Http Client 名称
 constexpr static const char *HTTP_CLIENT_NAME = "sese::http::HttpClient";
+
+/// Compressor Chunk 默认大小
+constexpr static size_t ZLIB_CHUNK_SIZE = 1024 * 16;
