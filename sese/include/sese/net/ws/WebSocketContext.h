@@ -19,10 +19,6 @@ namespace sese::net::ws {
 
         bool pong();
 
-        std::string readString();
-
-        bool writeString(const std::string &string);
-
         int64_t readBinary(void *buf, size_t len);
 
         int64_t readBinary(void *buf, size_t len, uint32_t maskingKey);

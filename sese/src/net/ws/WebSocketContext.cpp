@@ -1,6 +1,8 @@
 #include "sese/net/ws/WebSocketContext.h"
 #include "sese/util/Endian.h"
 
+#include <sstream>
+
 sese::net::ws::WebSocketContext::WebSocketContext(Stream *stream) {
     WebSocketContext::stream = stream;
 }
