@@ -88,21 +88,21 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
                "repository": "https://github.com/libsese/vcpkg-registry.git",
                "baseline": "the-repository-base-line-what-you-need",
                "packages": [
-                   "sese-core"
+                   "sese"
                ]
            }
        ]
    }
    ```
 
-2. 编辑 vcpkg.json 以将 sese.core 添加到依赖项
+2. 编辑 vcpkg.json 以将 sese 添加到依赖项
 
    ```json
    {
     "name": "your-project",
     "dependencies": [
         {
-            "name": "sese-core",
+            "name": "sese",
             "version>=": "version-string"
         }]
     }
@@ -111,7 +111,7 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 3. 在 CMakeLists.text 直接使用
 
    ```cmake
-   find_package(SeseCore CONFIG REQUIRED)
+   find_package(Sese CONFIG REQUIRED)
    target_link_libraries(main PRIVATE Sese::Core)
    ```
 
