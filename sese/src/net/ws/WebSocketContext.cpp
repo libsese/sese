@@ -1,109 +1,13 @@
 #include "sese/net/ws/WebSocketContext.h"
 #include "sese/util/Endian.h"
 
-sese::net::ws::WebSocketContext::WebSocketContext(sese::Stream *stream) noexcept {
-    this->stream = stream;
+sese::net::ws::WebSocketContext::WebSocketContext(Stream *stream) {
+    WebSocketContext::stream = stream;
 }
 
-int64_t sese::net::ws::WebSocketContext::read(void *buffer, size_t length) {
-    int64_t total = 0;
-    auto p = (char *) buffer;
-    while (true) {
-        if (length <= info.length - readed) {
-            // 当前帧足够读写
-            auto rt = autoRead(p + total, length);
-            if (rt <= 0) {
-                error = SESE_WS_ERROR_READ_FAILED;
-                return -1;
-            }
-            readed += rt;
-            total += rt;
-            return total;
-        } else if (length > info.length - readed) {
-            // 当前帧不足够读写
-            if (info.length - readed > 0) {
-                // 有剩余部分
-                auto rt = autoRead(p + total, info.length - readed);
-                if (rt <= 0) {
-                    error = SESE_WS_ERROR_READ_FAILED;
-                    return -1;
-                }
-                readed += rt;
-                total += rt;
-                length -= rt;
-            }
-
-            if (info.fin) {
-                // 当前已经是最后一帧
-                return total;
-            }
-
-            readed = 0;
-            if (!readInfo()) {
-                error = SESE_WS_ERROR_READ_FAILED;
-                return -1;
-            } else {
-                if (info.opCode != SESE_WS_OPCODE_CONT) {
-                    // 通常不应触发
-                    error = SESE_WS_ERROR_ILLEGAL_FRAME;
-                    return -1;
-                }
-            }
-        }
-    }
-}
-
-int64_t sese::net::ws::WebSocketContext::write(const void *buffer, size_t length) {
-    int64_t total = 0;
-    FrameHeaderInfo header;
-    header.opCode = SESE_WS_OPCODE_TEXT;
-    auto p = (const char *) buffer;
-    while (length > 1024) {
-        header.length = 1024;
-        if (!writeInfo(header)) {
-            error = SESE_WS_ERROR_WRITE_FAILED;
-            return -1;
-        }
-        auto rt = stream->write(p + total, 1024);
-        if (rt <= 0) {
-            error = SESE_WS_ERROR_WRITE_FAILED;
-            return -1;
-        }
-
-        total += rt;
-        length -= rt;
-        header.opCode = SESE_WS_OPCODE_CONT;
-    }
-
-    if (length == 0) {
-        return total;
-    }
-    if (!writeInfo(header)) {
-        error = SESE_WS_ERROR_WRITE_FAILED;
-        return -1;
-    }
-    auto rt = stream->write(p + total, length);
-    if (rt <= 0) {
-        error = SESE_WS_ERROR_WRITE_FAILED;
-        return -1;
-    } else {
-        total += rt;
-        return total;
-    }
-}
-
-int64_t sese::net::ws::WebSocketContext::writeRaw(const void *buffer, size_t length) noexcept {
-    return stream->write(buffer, length);
-}
-
-void sese::net::ws::WebSocketContext::close() {
-    stream->close();
-}
-
-bool sese::net::ws::WebSocketContext::readInfo() noexcept {
+bool sese::net::ws::WebSocketContext::readFrameInfo(FrameHeaderInfo &info) {
     struct FrameHeaderBuffer buffer;
     if (stream->read(&buffer, sizeof(buffer)) != sizeof(buffer)) {
-        error = SESE_WS_ERROR_READ_FAILED;
         return false;
     }
 
@@ -119,14 +23,12 @@ bool sese::net::ws::WebSocketContext::readInfo() noexcept {
     } else if (buffer.PAYLOAD_LEN == 126) {
         uint16_t len;
         if (stream->read(&len, sizeof(len)) != sizeof(len)) {
-            error = SESE_WS_ERROR_READ_FAILED;
             return false;
         }
         info.length = FromBigEndian16(len);
     } else {
         uint64_t len;
         if (stream->read(&len, sizeof(len)) != sizeof(len)) {
-            error = SESE_WS_ERROR_READ_FAILED;
             return false;
         }
         info.length = FromBigEndian64(len);
@@ -134,22 +36,16 @@ bool sese::net::ws::WebSocketContext::readInfo() noexcept {
 
     if (info.mask) {
         if (stream->read(&info.maskingKey, sizeof(info.maskingKey)) != sizeof(info.maskingKey)) {
-            error = SESE_WS_ERROR_READ_FAILED;
             return false;
         }
         // todo 验证大小端转换在此处是否是多余的
         info.maskingKey = FromBigEndian32(info.maskingKey);
-
-        autoRead = [this](void *buf, size_t len) -> int64_t { return this->readWithMasking(info.maskingKey, buf, len); };
-    } else {
-        autoRead = [this](void *buf, size_t len) -> int64_t { return this->read(buf, len); };
     }
-
     return true;
     // Payload data continued
 }
 
-bool sese::net::ws::WebSocketContext::writeInfo(const FrameHeaderInfo &info) noexcept {
+bool sese::net::ws::WebSocketContext::writeFrameInfo(const FrameHeaderInfo &info) {
     struct FrameHeaderBuffer buffer;
     buffer.FIN = info.fin;
     buffer.RSV1 = info.rsv1;
@@ -161,29 +57,24 @@ bool sese::net::ws::WebSocketContext::writeInfo(const FrameHeaderInfo &info) noe
     if (info.length <= 125) {
         buffer.PAYLOAD_LEN = info.length;
         if (stream->write(&buffer, sizeof(buffer)) != sizeof(buffer)) {
-            error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
     } else if (info.length > 125 && info.length <= 0xFFFF) {
         buffer.PAYLOAD_LEN = 126;
         if (stream->write(&buffer, sizeof(buffer)) != sizeof(buffer)) {
-            error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
-        uint16_t len = ToBigEndian16((uint16_t)info.length);
+        uint16_t len = ToBigEndian16((uint16_t) info.length);
         if (stream->write(&len, sizeof(uint16_t)) != sizeof(uint16_t)) {
-            error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
     } else {
         buffer.PAYLOAD_LEN = 127;
         if (stream->write(&buffer, sizeof(buffer)) != sizeof(buffer)) {
-            error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
         uint64_t len = ToBigEndian64(info.length);
         if (stream->write(&len, sizeof(uint64_t)) != sizeof(uint64_t)) {
-            error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
     }
@@ -192,7 +83,6 @@ bool sese::net::ws::WebSocketContext::writeInfo(const FrameHeaderInfo &info) noe
         // todo 验证大小端转换在此处是否是多余的
         uint32_t key = ToBigEndian32(info.maskingKey);
         if (stream->write(&key, sizeof(uint32_t)) != sizeof(info.maskingKey)) {
-            error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
     }
@@ -201,129 +91,124 @@ bool sese::net::ws::WebSocketContext::writeInfo(const FrameHeaderInfo &info) noe
     // Payload data continued
 }
 
-int64_t sese::net::ws::WebSocketContext::readWithMasking(uint32_t maskingKey, void *buffer, size_t len) noexcept {
-    uint8_t temp[1024];
-    auto readLength = stream->read(temp, len);
-    if (readLength > 0) {
-        for (int i = 0; i < readLength; ++i) {
-            ((uint8_t *) buffer)[i] = temp[i] ^ ((const uint8_t *) &maskingKey)[i % 4];
-        }
-    } else {
-        this->error = SESE_WS_ERROR_READ_FAILED;
-        return -1;
-    }
-    return readLength;
-}
-
-int64_t sese::net::ws::WebSocketContext::writeWithMasking(uint32_t maskingKey, const void *buffer, size_t len) noexcept {
-    uint8_t temp[1024];
-    for (int i = 0; i < len; ++i) {
-        temp[i] = ((uint8_t *) buffer)[i] ^ ((const uint8_t *) &maskingKey)[i % 4];
-    }
-    auto rt = stream->write(temp, len);
-    if (rt != len) {
-        this->error = SESE_WS_ERROR_WRITE_FAILED;
-        return -1;
-    } else {
-        return rt;
-    }
-}
-
-bool sese::net::ws::WebSocketContext::ping() noexcept {
+bool sese::net::ws::WebSocketContext::ping() {
     struct FrameHeaderBuffer buffer;
     buffer.FIN = 1;
     buffer.OPCODE = SESE_WS_OPCODE_PING;
     if (stream->write(&buffer, sizeof(buffer)) == sizeof(buffer)) {
         return true;
     } else {
-        error = SESE_WS_ERROR_WRITE_FAILED;
         return false;
     }
 }
 
-bool sese::net::ws::WebSocketContext::pong() noexcept {
+bool sese::net::ws::WebSocketContext::pong() {
     struct FrameHeaderBuffer buffer;
     buffer.FIN = 1;
     buffer.OPCODE = SESE_WS_OPCODE_PONG;
     if (stream->write(&buffer, sizeof(buffer)) == sizeof(buffer)) {
         return true;
     } else {
-        error = SESE_WS_ERROR_WRITE_FAILED;
         return false;
     }
 }
 
-bool sese::net::ws::WebSocketContext::closeNoError() noexcept {
+int64_t sese::net::ws::WebSocketContext::readBinary(void *buf, size_t len) {
+    return stream->read(buf, len);
+}
+
+int64_t sese::net::ws::WebSocketContext::readBinary(void *buf, size_t len, uint32_t maskingKey) {
+    uint8_t temp[1024];
+    auto readLength = stream->read(temp, len);
+    if (readLength > 0) {
+        for (int i = 0; i < readLength; ++i) {
+            ((uint8_t *) buf)[i] = temp[i] ^ ((const uint8_t *) &maskingKey)[i % 4];
+        }
+    } else {
+        return -1;
+    }
+    return readLength;
+}
+
+int64_t sese::net::ws::WebSocketContext::writeBinary(const void *buf, size_t len) {
+    return stream->write(buf, len);
+}
+
+int64_t sese::net::ws::WebSocketContext::writeBinary(const void *buf, size_t len, uint32_t maskingKey) {
+    uint8_t temp[1024];
+    for (int i = 0; i < len; ++i) {
+        temp[i] = ((uint8_t *) buf)[i] ^ ((const uint8_t *) &maskingKey)[i % 4];
+    }
+    auto rt = stream->write(temp, len);
+    if (rt != len) {
+        return -1;
+    } else {
+        return rt;
+    }
+}
+
+bool sese::net::ws::WebSocketContext::closeNoError() {
     struct FrameHeaderBuffer buffer;
     buffer.FIN = 1;
     buffer.OPCODE = SESE_WS_OPCODE_CLOSE;
     if (stream->write(&buffer, sizeof(buffer)) == sizeof(buffer)) {
         return true;
     } else {
-        error = SESE_WS_ERROR_WRITE_FAILED;
         return false;
     }
 }
 
-bool sese::net::ws::WebSocketContext::closeWithError(const void *error, size_t length) noexcept {
+bool sese::net::ws::WebSocketContext::closeWithError(const void *err, size_t len) {
     struct FrameHeaderInfo info;
     info.fin = true;
     info.opCode = SESE_WS_OPCODE_CLOSE;
-    if (error && length > 0) {
-        info.length = length;
-        if (!this->writeInfo(info)) {
-            this->error = SESE_WS_ERROR_WRITE_FAILED;
+    if (err && len > 0) {
+        info.length = len;
+        if (!this->writeFrameInfo(info)) {
             return false;
         }
-        if (stream->write(error, length) == length) {
+        if (stream->write(err, len) == len) {
             return true;
         } else {
-            this->error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
     } else {
-        if (this->writeInfo(info)) {
+        if (this->writeFrameInfo(info)) {
             return true;
         } else {
-            this->error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
     }
 }
 
-bool sese::net::ws::WebSocketContext::closeWithError(const void *err, size_t length, uint32_t maskingKey) noexcept {
+bool sese::net::ws::WebSocketContext::closeWithError(const void *err, size_t len, uint32_t maskingKey) {
     struct FrameHeaderInfo info;
     info.fin = true;
     info.opCode = SESE_WS_OPCODE_CLOSE;
-    if (err && length > 0) {
-        info.length = length;
+    if (err && len > 0) {
+        info.length = len;
         info.mask = true;
         info.maskingKey = maskingKey;
-        if (!this->writeInfo(info)) {
-            this->error = SESE_WS_ERROR_WRITE_FAILED;
+        if (!this->writeFrameInfo(info)) {
             return false;
         }
 
         if (info.mask) {
-            if (writeWithMasking(maskingKey, err, length) != length) {
-                this->error = SESE_WS_ERROR_WRITE_FAILED;
+            if (writeBinary(err, len, maskingKey) != len) {
                 return false;
             }
         } else {
-            if (stream->write(err, length) == length) {
+            if (stream->write(err, len) == len) {
                 return true;
             } else {
-                this->error = SESE_WS_ERROR_WRITE_FAILED;
                 return false;
             }
         }
     } else {
-        if (this->writeInfo(info)) {
+        if (this->writeFrameInfo(info)) {
             return true;
         } else {
-            this->error = SESE_WS_ERROR_WRITE_FAILED;
             return false;
         }
     }
-    return false;
 }
