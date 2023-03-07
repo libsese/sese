@@ -119,16 +119,17 @@ int64_t sese::net::ws::WebSocketContext::readBinary(void *buf, size_t len) {
     return stream->read(buf, len);
 }
 
-int64_t sese::net::ws::WebSocketContext::readBinary(void *buf, size_t len, uint32_t maskingKey) {
+int64_t sese::net::ws::WebSocketContext::readBinary(void *buf, size_t len, uint32_t maskingKey, size_t &offset) {
     uint8_t temp[1024];
     auto readLength = stream->read(temp, len);
     if (readLength > 0) {
         for (int i = 0; i < readLength; ++i) {
-            ((uint8_t *) buf)[i] = temp[i] ^ ((const uint8_t *) &maskingKey)[i % 4];
+            ((uint8_t *) buf)[i] = temp[i] ^ ((const uint8_t *) &maskingKey)[(offset + i) % 4];
         }
     } else {
         return -1;
     }
+    offset += readLength;
     return readLength;
 }
 
@@ -136,15 +137,16 @@ int64_t sese::net::ws::WebSocketContext::writeBinary(const void *buf, size_t len
     return stream->write(buf, len);
 }
 
-int64_t sese::net::ws::WebSocketContext::writeBinary(const void *buf, size_t len, uint32_t maskingKey) {
+int64_t sese::net::ws::WebSocketContext::writeBinary(const void *buf, size_t len, uint32_t maskingKey, size_t &offset) {
     uint8_t temp[1024];
     for (int i = 0; i < len; ++i) {
-        temp[i] = ((uint8_t *) buf)[i] ^ ((const uint8_t *) &maskingKey)[i % 4];
+        temp[i] = ((uint8_t *) buf)[i] ^ ((const uint8_t *) &maskingKey)[(offset + i) % 4];
     }
     auto rt = stream->write(temp, len);
     if (rt != len) {
         return -1;
     } else {
+        offset += rt;
         return rt;
     }
 }
@@ -196,7 +198,8 @@ bool sese::net::ws::WebSocketContext::closeWithError(const void *err, size_t len
         }
 
         if (info.mask) {
-            if (writeBinary(err, len, maskingKey) != len) {
+            size_t offset = 0;
+            if (writeBinary(err, len, maskingKey, offset) != len) {
                 return false;
             }
         } else {
