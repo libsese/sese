@@ -79,6 +79,7 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/security/SecurityTcpServer.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
+        ${NATIVE_PATH}/system/FileNotifier.cpp
         )
 
 target_sources(Core-static PRIVATE $<TARGET_OBJECTS:Core>)
