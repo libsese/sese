@@ -201,6 +201,8 @@ bool sese::net::ws::WebSocketContext::closeWithError(const void *err, size_t len
             size_t offset = 0;
             if (writeBinary(err, len, maskingKey, offset) != len) {
                 return false;
+            } else {
+                return true;
             }
         } else {
             if (stream->write(err, len) == len) {
