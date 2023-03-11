@@ -6,6 +6,8 @@
 #include <atomic>
 #ifdef __APPLE__
 #include <tuple>
+#else
+#include "sese/thread/Thread.h"
 #endif
 
 namespace sese {
@@ -50,11 +52,13 @@ namespace sese {
         void *overlapped = nullptr;
         std::atomic_bool isShutdown = false;
         FileNotifyOption *option = nullptr;
+        Thread::Ptr th = nullptr;
 #elif __linux__
         int inotifyFd = -1;
         int watchFd = -1;
         std::atomic_bool isShutdown = false;
         FileNotifyOption *option = nullptr;
+        Thread::Ptr th = nullptr;
 #elif __APPLE__
         void *stream = nullptr;
         void *queue = nullptr;

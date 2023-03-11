@@ -31,73 +31,79 @@ sese::FileNotifier::Ptr sese::FileNotifier::create(const std::string &path, File
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
-void sese::FileNotifier::loop() noexcept {
-    std::wstring_convert<std::codecvt_utf8<wchar_t>> convert;
-    DWORD read = 0;
-    char buffer[1024];
-    while (!isShutdown) {
-        if (!ReadDirectoryChangesW(
-                    (HANDLE) fileHandle,
-                    buffer,
-                    sizeof(buffer),
-                    false,
-                    FILE_NOTIFY_CHANGE_FILE_NAME | FILE_NOTIFY_CHANGE_DIR_NAME | FILE_NOTIFY_CHANGE_ATTRIBUTES |
-                            FILE_NOTIFY_CHANGE_SIZE | FILE_NOTIFY_CHANGE_LAST_WRITE | FILE_NOTIFY_CHANGE_SECURITY,
-                    (LPDWORD) &read,
-                    (LPOVERLAPPED) overlapped,
-                    nullptr
-            )) {
-            break;
-        }
-        if (WaitForSingleObject(((LPOVERLAPPED) overlapped)->hEvent, INFINITE) == WAIT_OBJECT_0) {
-            if (!isShutdown) {
-                size_t count = 0;
-                auto infoPos = buffer + 0;
-                std::string name0;
-                std::string name1;
-            again:
-                auto info = (FILE_NOTIFY_INFORMATION *) infoPos;
-                if (count % 2) {
-                    name1 = convert.to_bytes(
-                            info->FileName,
-                            (wchar_t *) (((char *) info->FileName) + info->FileNameLength)
-                    );
-                } else {
-                    name0 = convert.to_bytes(
-                            info->FileName,
-                            (wchar_t *) (((char *) info->FileName) + info->FileNameLength)
-                    );
-                }
-
-                switch (info->Action) {
-                    case FILE_ACTION_ADDED:
-                        option->onCreate(name0);
-                        break;
-                    case FILE_ACTION_MODIFIED:
-                        option->onModify(name0);
-                        break;
-                    case FILE_ACTION_REMOVED:
-                        option->onDelete(name0);
-                        break;
-                    case FILE_ACTION_RENAMED_OLD_NAME:
-                        count += 1;
-                        infoPos += info->NextEntryOffset;
-                        goto again;
-                    case FILE_ACTION_RENAMED_NEW_NAME:
-                        count += 1;
-                        option->onMove(name0, name1);
-                        break;
-                }
-            } else {
+void sese::FileNotifier::loopNonblocking() noexcept {
+    auto proc = [this]() {
+        std::wstring_convert<std::codecvt_utf8<wchar_t>> convert;
+        DWORD read = 0;
+        char buffer[1024];
+        while (!isShutdown) {
+            if (!ReadDirectoryChangesW(
+                        (HANDLE) fileHandle,
+                        buffer,
+                        sizeof(buffer),
+                        false,
+                        FILE_NOTIFY_CHANGE_FILE_NAME | FILE_NOTIFY_CHANGE_DIR_NAME | FILE_NOTIFY_CHANGE_ATTRIBUTES |
+                                FILE_NOTIFY_CHANGE_SIZE | FILE_NOTIFY_CHANGE_LAST_WRITE | FILE_NOTIFY_CHANGE_SECURITY,
+                        (LPDWORD) &read,
+                        (LPOVERLAPPED) overlapped,
+                        nullptr
+                )) {
                 break;
             }
+            if (WaitForSingleObject(((LPOVERLAPPED) overlapped)->hEvent, INFINITE) == WAIT_OBJECT_0) {
+                if (!isShutdown) {
+                    size_t count = 0;
+                    auto infoPos = buffer + 0;
+                    std::string name0;
+                    std::string name1;
+                again:
+                    auto info = (FILE_NOTIFY_INFORMATION *) infoPos;
+                    if (count % 2) {
+                        name1 = convert.to_bytes(
+                                info->FileName,
+                                (wchar_t *) (((char *) info->FileName) + info->FileNameLength)
+                        );
+                    } else {
+                        name0 = convert.to_bytes(
+                                info->FileName,
+                                (wchar_t *) (((char *) info->FileName) + info->FileNameLength)
+                        );
+                    }
+
+                    switch (info->Action) {
+                        case FILE_ACTION_ADDED:
+                            option->onCreate(name0);
+                            break;
+                        case FILE_ACTION_MODIFIED:
+                            option->onModify(name0);
+                            break;
+                        case FILE_ACTION_REMOVED:
+                            option->onDelete(name0);
+                            break;
+                        case FILE_ACTION_RENAMED_OLD_NAME:
+                            count += 1;
+                            infoPos += info->NextEntryOffset;
+                            goto again;
+                        case FILE_ACTION_RENAMED_NEW_NAME:
+                            count += 1;
+                            option->onMove(name0, name1);
+                            break;
+                    }
+                } else {
+                    break;
+                }
+            }
         }
-    }
+    };
+    th = std::make_unique<Thread>(proc);
+    th->start();
 }
 
 void sese::FileNotifier::shutdown() noexcept {
     isShutdown = true;
     SetEvent(((LPOVERLAPPED) overlapped)->hEvent);
+    th->join();
+    th = nullptr;
     CloseHandle(fileHandle);
     fileHandle = nullptr;
     delete (LPOVERLAPPED) overlapped;

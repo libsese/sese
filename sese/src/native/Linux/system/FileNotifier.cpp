@@ -35,51 +35,57 @@ sese::FileNotifier::Ptr sese::FileNotifier::create(const std::string &path, File
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
-void sese::FileNotifier::loop() noexcept {
-    fd_set fdSet;
-    struct timeval timeout {
-        1, 0
-    };
-    char buffer[1024];
-    while (!isShutdown) {
-        FD_ZERO(&fdSet);
-        FD_SET(inotifyFd, &fdSet);
-        select(FD_SETSIZE, &fdSet, nullptr, nullptr, &timeout);
-        if (FD_ISSET(inotifyFd, &fdSet)) {
-            auto pEvent = (inotify_event *) &buffer;
-            auto len = read(inotifyFd, buffer, sizeof(buffer));
-            auto times = (len / sizeof(inotify_event)) - 1;
-            char *fromString = nullptr;
-            while (times) {
-                if (pEvent->wd != watchFd) {
-                    pEvent++;
-                    times--;
-                    continue;
-                } else {
-                    if (pEvent->mask & IN_CREATE) {
-                        option->onCreate({pEvent->name});
-                    } else if (pEvent->mask & IN_MODIFY) {
-                        option->onModify({pEvent->name});
-                    } else if (pEvent->mask & IN_DELETE) {
-                        option->onDelete({pEvent->name});
-                    } else if (pEvent->mask & IN_MOVED_FROM) {
-                        fromString = pEvent->name;
-                    } else if (pEvent->mask & IN_MOVED_TO) {
-                        if (fromString) {
-                            option->onMove({fromString}, {pEvent->name});
-                            fromString = nullptr;
+void sese::FileNotifier::loopNonblocking() noexcept {
+    auto proc = [this]() {
+        fd_set fdSet;
+        struct timeval timeout {
+            1, 0
+        };
+        char buffer[1024];
+        while (!isShutdown) {
+            FD_ZERO(&fdSet);
+            FD_SET(inotifyFd, &fdSet);
+            select(FD_SETSIZE, &fdSet, nullptr, nullptr, &timeout);
+            if (FD_ISSET(inotifyFd, &fdSet)) {
+                auto pEvent = (inotify_event *) &buffer;
+                auto len = read(inotifyFd, buffer, sizeof(buffer));
+                auto times = (len / sizeof(inotify_event)) - 1;
+                char *fromString = nullptr;
+                while (times) {
+                    if (pEvent->wd != watchFd) {
+                        pEvent++;
+                        times--;
+                        continue;
+                    } else {
+                        if (pEvent->mask & IN_CREATE) {
+                            option->onCreate({pEvent->name});
+                        } else if (pEvent->mask & IN_MODIFY) {
+                            option->onModify({pEvent->name});
+                        } else if (pEvent->mask & IN_DELETE) {
+                            option->onDelete({pEvent->name});
+                        } else if (pEvent->mask & IN_MOVED_FROM) {
+                            fromString = pEvent->name;
+                        } else if (pEvent->mask & IN_MOVED_TO) {
+                            if (fromString) {
+                                option->onMove({fromString}, {pEvent->name});
+                                fromString = nullptr;
+                            }
                         }
+                        times--;
+                        pEvent++;
                     }
-                    times--;
-                    pEvent++;
                 }
             }
         }
-    }
+    };
+    th = std::make_unique<Thread>(proc);
+    th->start();
 }
 
 void sese::FileNotifier::shutdown() noexcept {
     isShutdown = true;
+    th->join();
+    th = nullptr;
     close(watchFd);
     close(inotifyFd);
 }
