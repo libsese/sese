@@ -115,6 +115,17 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     message(STATUS "Linked libraries: pthread, dl")
 endif ()
 
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    find_library(IOKIT_FRAMEWORK IOKit REQUIRED)
+    find_library(CORESERVICES_FRAMEWORK CoreServices REQUIRED)
+    find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
+
+    target_link_libraries(Core ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
+    target_link_libraries(Core-static ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
+
+    message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
+endif()
+
 set_target_properties(Core PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
 set_target_properties(Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
