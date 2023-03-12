@@ -80,6 +80,7 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
         ${NATIVE_PATH}/system/FileNotifier.cpp
+        ${NATIVE_PATH}/system/Process.cpp
         )
 
 target_sources(Core-static PRIVATE $<TARGET_OBJECTS:Core>)
@@ -124,7 +125,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(Core-static ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
     message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
-endif()
+endif ()
 
 set_target_properties(Core PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
 set_target_properties(Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
