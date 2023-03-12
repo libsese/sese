@@ -4,8 +4,10 @@
 TEST(TestProcess, _0) {
 #ifdef _WIN32
     char cmd[] = {"powershell ls C:/"};
-#else
+#elif __linux__
     char cmd[] = {"ls / -a"};
+#elif __APPLE__
+    char cmd[] = {"ls /"};
 #endif
 
     auto a = sese::Process::create(cmd);

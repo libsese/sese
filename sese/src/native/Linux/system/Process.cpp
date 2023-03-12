@@ -1,5 +1,7 @@
 #include "sese/system/Process.h"
 
+#include <csignal>
+#include <unistd.h>
 #include <sys/wait.h>
 
 sese::Process::Ptr sese::Process::create(char *command) noexcept {

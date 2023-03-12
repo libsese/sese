@@ -24,7 +24,7 @@ namespace sese {
     private:
         void *startupInfo = nullptr;
         void *processInfo = nullptr;
-#elif __linux__
+#else
     private:
         static void exec(char *pCommand) noexcept;
         // 计算字符串中参数的个数
