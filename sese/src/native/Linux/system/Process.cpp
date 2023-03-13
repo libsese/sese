@@ -21,6 +21,10 @@ sese::Process::Ptr sese::Process::create(char *command) noexcept {
     }
 }
 
+pid_t sese::Process::getCurrentProcessId() noexcept {
+    return getpid();
+}
+
 int sese::Process::wait() const noexcept {
     int status;
     ::waitpid(id, &status, 0);
@@ -52,6 +56,10 @@ void sese::Process::exec(char *pCommand) noexcept {
     if (code == -1) {
         exit(errno);
     }
+}
+
+pid_t sese::Process::getProcessId() const noexcept {
+    return id;
 }
 
 bool sese::Process::kill() const noexcept {

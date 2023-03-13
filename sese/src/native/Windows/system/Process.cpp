@@ -31,6 +31,10 @@ sese::Process::Ptr sese::Process::create(char *command) noexcept {
     }
 }
 
+pid_t sese::Process::getCurrentProcessId() noexcept {
+    return GetCurrentProcessId();
+}
+
 sese::Process::~Process() noexcept {
     auto sInfo = (STARTUPINFO *) startupInfo;
     auto pInfo = (PROCESS_INFORMATION *) processInfo;
@@ -54,4 +58,9 @@ bool sese::Process::kill() const noexcept {
     auto pInfo = (PROCESS_INFORMATION *) processInfo;
     if (!pInfo) return false;
     return TerminateProcess(pInfo->hProcess, -1) != 0;
+}
+
+pid_t sese::Process::getProcessId() const noexcept {
+    if (!processInfo) return 0;
+    return GetProcessId(((PROCESS_INFORMATION *) processInfo)->hProcess);
 }

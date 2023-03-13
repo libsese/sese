@@ -35,6 +35,8 @@
 /// 忽略大小写比较
 #define strcasecmp strcmpi
 
+/// 进程 ID 标识符
+using pid_t = DWORD;
 /// 线程 ID 标识符
 using tid_t = uint32_t;
 /// Native Socket 类型
