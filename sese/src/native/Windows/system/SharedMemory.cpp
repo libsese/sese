@@ -1,5 +1,7 @@
 #include <sese/system/SharedMemory.h>
 
+#include <Windows.h>
+
 using namespace sese;
 
 SharedMemory::Ptr SharedMemory::create(const char *name, size_t size) noexcept {
@@ -47,7 +49,7 @@ SharedMemory::Ptr SharedMemory::use(const char *name) noexcept {
     }
 
     auto rt = new SharedMemory;
-    rt ->isOwner = false;
+    rt->isOwner = false;
     rt->hMapFile = mapping;
     rt->buffer = buffer;
     return std::unique_ptr<SharedMemory>(rt);

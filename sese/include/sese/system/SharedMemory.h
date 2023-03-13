@@ -9,8 +9,6 @@
 
 #include <sese/Config.h>
 #ifdef WIN32
-#define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
 #else
 #include <sys/shm.h>
 #endif
@@ -44,7 +42,7 @@ namespace sese {
 
     private:
 #ifdef WIN32
-        HANDLE hMapFile = INVALID_HANDLE_VALUE;
+        void *hMapFile = nullptr;
 #else
         int id{};
         static key_t name2key(const char *name) noexcept;
