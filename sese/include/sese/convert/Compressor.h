@@ -16,7 +16,7 @@ namespace sese {
     class API Compressor {
     public:
         /// 创建一个压缩器
-        /// \param type 压缩格式
+        /// \param type 压缩格式 - 此处不建议使用 GZIP 选项
         /// \param level 压缩等级
         /// \param bufferSize 设置内部缓存大小
         explicit Compressor(CompressionType type, size_t level, size_t bufferSize = ZLIB_CHUNK_SIZE);
