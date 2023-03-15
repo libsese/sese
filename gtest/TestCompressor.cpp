@@ -1,9 +1,12 @@
 #include "sese/convert/Decompressor.h"
 #include "sese/convert/Compressor.h"
+#include "sese/convert/GZipFileOutputStream.h"
+#include "sese/convert/GZipFileInputStream.h"
 #include "sese/record/LogHelper.h"
 #include "sese/util/ByteBuilder.h"
 #include "sese/util/OutputBufferWrapper.h"
 #include "gtest/gtest.h"
+#include "zlib.h"
 
 TEST(TestCompress, ZLIB) {
     sese::Compressor compressor(sese::CompressionType::ZLIB, 9, 8);
@@ -47,4 +50,24 @@ TEST(TestCompress, ZLIB) {
     builder.read(decompressBufferOut, 32);
 
     ASSERT_TRUE(strcmp(decompressBufferOut, compressBufferIn) == 0);
+}
+
+TEST(TestCompress, GZIP) {
+    using sese::GZipFileInputStream;
+    using sese::GZipFileOutputStream;
+
+    auto output = GZipFileOutputStream::create("test.txt.gz", 9);
+    ASSERT_TRUE(output);
+    for (int i = 0; i < 10; ++i) {
+        auto l = output->write("Hello, World\n", 13);
+        continue;
+    }
+    output->close();
+
+    auto input = GZipFileInputStream::create("test.txt.gz");
+    ASSERT_TRUE(input);
+    char buffer[1024]{};
+    input->read(buffer, 1024);
+    input->close();
+    puts(buffer);
 }

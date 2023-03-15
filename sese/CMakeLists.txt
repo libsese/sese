@@ -29,7 +29,8 @@ target_sources(Core PRIVATE
         src/convert/PercentConverter.cpp src/convert/MD5Util.cpp
         src/convert/SHA256Util.cpp src/convert/SHA1Util.cpp
         src/convert/MessageDigest.cpp src/convert/Compressor.cpp
-        src/convert/Decompressor.cpp
+        src/convert/Decompressor.cpp src/convert/GZipFileInputStream.cpp
+        src/convert/GZipFileOutputStream.cpp
 
         src/thread/Thread.cpp src/thread/ThreadPool.cpp
 
