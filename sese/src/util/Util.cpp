@@ -48,13 +48,21 @@ namespace sese {
 #endif
     }
 
-    std::string getErrorString(int32_t error){
+    std::string getErrorString(int32_t error) {
 #ifdef _WIN32
         char buffer[255];
         strerror_s(buffer, 255, error);
-        return { buffer };
+        return {buffer};
 #else
         return strerror(error);
+#endif
+    }
+
+    uint64_t getErrorCode() {
+#ifdef _WIN32
+        return GetLastError();
+#else
+        return errno;
 #endif
     }
 
