@@ -6,7 +6,6 @@
 #include "sese/util/ByteBuilder.h"
 #include "sese/util/OutputBufferWrapper.h"
 #include "gtest/gtest.h"
-#include "zlib.h"
 
 TEST(TestCompress, ZLIB) {
     sese::Compressor compressor(sese::CompressionType::ZLIB, 9, 8);
@@ -59,8 +58,7 @@ TEST(TestCompress, GZIP) {
     auto output = GZipFileOutputStream::create("test.txt.gz", 9);
     ASSERT_TRUE(output);
     for (int i = 0; i < 10; ++i) {
-        auto l = output->write("Hello, World\n", 13);
-        continue;
+        output->write("Hello, World\n", 13);
     }
     output->close();
 
