@@ -96,13 +96,13 @@ if (WIN32)
     target_compile_options(Core PRIVATE "/utf-8")
     target_compile_options(Core PRIVATE "/wd4251")
     target_compile_options(Core PRIVATE "/wd4530")
-    target_link_libraries(Core ws2_32)
+    target_link_libraries(Core PRIVATE ws2_32)
 
     target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
     target_compile_options(Core-static PRIVATE "/utf-8")
     target_compile_options(Core-static PRIVATE "/wd4251")
     target_compile_options(Core-static PRIVATE "/wd4530")
-    target_link_libraries(Core-static ws2_32)
+    target_link_libraries(Core-static PRIVATE ws2_32)
 
     message(STATUS "Linked libraries: ws2_32, dbghelp")
 endif ()
@@ -111,8 +111,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
     target_compile_options(Core PUBLIC "-fPIC")
-    target_link_libraries(Core ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
-    target_link_libraries(Core-static ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_link_libraries(Core-static PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 
     message(STATUS "Linked libraries: pthread, dl")
 endif ()
@@ -122,8 +122,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(CORESERVICES_FRAMEWORK CoreServices REQUIRED)
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
 
-    target_link_libraries(Core ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
-    target_link_libraries(Core-static ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
+    target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
+    target_link_libraries(Core-static PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
     message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
 endif ()
@@ -131,8 +131,8 @@ endif ()
 set_target_properties(Core PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
 set_target_properties(Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-target_link_libraries(Core SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL ZLIB::ZLIB)
-target_link_libraries(Core-static SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL ZLIB::ZLIB)
+target_link_libraries(Core PRIVATE SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL ZLIB::ZLIB)
+target_link_libraries(Core-static PRIVATE SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL ZLIB::ZLIB)
 
 add_custom_command(
         TARGET
