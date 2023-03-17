@@ -279,6 +279,10 @@ inline int mon2number(const char *str) {
     return -1;
 }
 
+#ifdef _timezone
+#define timezone _timezone
+#endif
+
 // e.x. "Tue, 17 Oct 2023 15:41:22 GMT"
 // e.x. "Thu, 31-Dec-37 23:55:55 GMT"
 uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &text) {
@@ -322,5 +326,5 @@ uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &te
         tm.tm_min = (int) std::strtol(_m, &end, 10);
         tm.tm_sec = (int) std::strtol(_s, &end, 10);
     }
-    return std::mktime(&tm);
+    return std::mktime(&tm) - timezone;
 }

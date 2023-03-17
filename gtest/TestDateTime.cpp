@@ -35,7 +35,7 @@ TEST(TestDateTime, Formatter) {
 
     std::string time = "Tue, 17 Oct 2023 15:41:22 GMT";
     auto stamp = sese::text::DateTimeFormatter::parseFromGreenwich(time);
-    EXPECT_TRUE(stamp == 1697528482);
+    EXPECT_TRUE(stamp == 1697557282);
 
     auto time1 = sese::DateTime::now();
     auto str1 = sese::text::DateTimeFormatter::format(time1, "%D%a%t%e ddd dddd UTCz yyyy-MM-dd HH:mm:ss.ff.ffff");
