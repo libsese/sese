@@ -1,5 +1,6 @@
 #include "sese/util/Test.h"
 #include "sese/record/LogHelper.h"
+
 #undef assert
 
 using sese::Test;
@@ -13,7 +14,7 @@ int32_t TestInitiateTask::init() noexcept {
 }
 
 int32_t TestInitiateTask::destroy() noexcept {
-    if (ENABLE_TEST && times != 0) { // NOLINT
+    if (ENABLE_TEST && times != 0) {// NOLINT
         puts("==============TEST==============");
         size_t i;
         printf("Number of all assert: %zu\n", i = times);

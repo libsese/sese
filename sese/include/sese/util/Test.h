@@ -5,10 +5,12 @@
  * @brief 调试杂项函数
  */
 #pragma once
-#include "sese/Config.h"
-#include "Initializer.h"
+#include "sese/util/Initializer.h"
+
 #include <atomic>
 #include <functional>
+
+#undef assert
 
 #ifdef _WIN32
 #define WILL_SKIP 1
