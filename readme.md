@@ -6,8 +6,8 @@
   <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=red&logo=cmake"/>
   <br>
   <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/windows-latest.yml?label=Windows&logo=windows">
-  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/ubuntu-latest.yml?label=Windows&logo=ubuntu">
-  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/macos-latest.yml?label=Windows&logo=apple">
+  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/ubuntu-latest.yml?label=Ubuntu&logo=ubuntu">
+  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/macos-latest.yml?label=macOS&logo=apple">
   <br>
   <a href="mailto://shiina_kaoru@outlook.com">
   <img src="https://img.shields.io/static/v1?label=email&message=SHIINA_KAORU@Outlook.com&color=skyblue&logo=gmail"/>
