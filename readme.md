@@ -1,13 +1,13 @@
-<h1> <img src="logo.png" alt="logo" style="width: 29px; height: 29px;"> Sese Library </h1>
+# Sese Library
 
 <div>
   <img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=red"/>
-  <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=greed&logo=cplusplus"/>
-  <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=greed&logo=cmake"/>
+  <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2020&color=red&logo=cplusplus"/>
+  <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=red&logo=cmake"/>
   <br>
-  <img src="https://img.shields.io/static/v1?label&message=windows&color=blue&logo=windows"/>
-  <img src="https://img.shields.io/static/v1?label&message=linux&color=blue&logo=linux"/>
-  <img src="https://img.shields.io/static/v1?label&message=macOS&color=blue&logo=apple"/>
+  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/windows-latest.yml?label=Windows&logo=windows">
+  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/ubuntu-latest.yml?label=Windows&logo=ubuntu">
+  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/macos-latest.yml?label=Windows&logo=apple">
   <br>
   <a href="mailto://shiina_kaoru@outlook.com">
   <img src="https://img.shields.io/static/v1?label=email&message=SHIINA_KAORU@Outlook.com&color=skyblue&logo=gmail"/>
