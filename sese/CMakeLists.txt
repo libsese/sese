@@ -2,6 +2,7 @@ find_package(ZLIB REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(SString CONFIG REQUIRED)
 find_package(SimpleUuid CONFIG REQUIRED)
+find_package(sese-plugin CONFIG REQUIRED)
 
 add_library(Core SHARED)
 add_library(Core-static STATIC)
@@ -131,17 +132,27 @@ endif ()
 set_target_properties(Core PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
 set_target_properties(Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-target_link_libraries(Core PRIVATE SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL ZLIB::ZLIB)
-target_link_libraries(Core-static PRIVATE SString::SString-static SimpleUuid::uuid-static OpenSSL::Crypto OpenSSL::SSL ZLIB::ZLIB)
+target_link_libraries(Core PRIVATE
+        OpenSSL::Crypto
+        OpenSSL::SSL
+        ZLIB::ZLIB
+        )
+target_link_libraries(Core PUBLIC
+        SString::SString-static
+        SimpleUuid::uuid-static
+        Sese::Plugin
+        )
 
-add_custom_command(
-        TARGET
-        Core
-        POST_BUILD
-        COMMAND
-        ${CMAKE_COMMAND} -E copy_if_different
-        $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/gtest
-)
+target_link_libraries(Core-static PRIVATE
+        OpenSSL::Crypto
+        OpenSSL::SSL
+        ZLIB::ZLIB
+        )
+target_link_libraries(Core-static PUBLIC
+        SString::SString-static
+        SimpleUuid::uuid-static
+        Sese::Plugin
+        )
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)

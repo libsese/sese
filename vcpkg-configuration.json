@@ -1,15 +1,19 @@
 {
-  "default-registry": {
-    "kind": "git",
-    "repository": "https://github.com/microsoft/vcpkg.git",
-    "baseline": "e69dd972ba64840955f46704ecce6241bf607c0f"
-  },
-  "registries": [
-    {
-      "kind": "git",
-      "repository": "https://github.com/libsese/vcpkg-registry.git",
-      "baseline": "70c483547d6b0aabeedd57b452d8244e2983d5de",
-      "packages": ["simpleuuid", "sstring"]
-    }
-  ]
+    "default-registry": {
+        "kind": "git",
+        "repository": "https://github.com/microsoft/vcpkg.git",
+        "baseline": "e69dd972ba64840955f46704ecce6241bf607c0f"
+    },
+    "registries": [
+        {
+            "kind": "git",
+            "repository": "https://github.com/libsese/vcpkg-registry.git",
+            "baseline": "a60cea4580ee48967083b9b7a8b8b8c89a05996e",
+            "packages": [
+                "simpleuuid",
+                "sstring",
+                "sese-plugin"
+            ]
+        }
+    ]
 }

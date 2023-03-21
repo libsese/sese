@@ -33,13 +33,14 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 
 关于依赖，目前项目引入的依赖主要有以下：
 
-| 名称         | 地址                               | 描述          |
-|------------|----------------------------------|-------------|
-| SString    | github.com/shiinasama/SString    | UTF-8 字符串处理 |
-| openssl    | github.com/openssl/openssl       | SSL 支持      |
-| SimpleUuid | github.com/shiinasama/SimpleUuid | 雪花算法实现      |
-| googletest | github.com/google/googletest     | 用于单元测试      |
-| zlib       | zlib.net                         | 压缩算法        |
+| 名称          | 地址                             | 描述          |
+|-------------|--------------------------------|-------------|
+| SString     | github.com/libsese/SString     | UTF-8 字符串处理 |
+| openssl     | github.com/openssl/openssl     | SSL 支持      |
+| SimpleUuid  | github.com/libsese/SimpleUuid  | 雪花算法实现      |
+| googletest  | github.com/google/googletest   | 用于单元测试      |
+| zlib        | zlib.net                       | 压缩算法        |
+| sese.plugin | github.com/libsese/sese.plugin | 本机插件接口      |
 
 开放的编译选项：
 

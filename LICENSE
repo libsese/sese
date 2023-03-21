@@ -225,3 +225,7 @@ subject to the terms and conditions of the following licenses:
 - zlib
     Project URL: https://zlib.net
     License: zlib License
+
+- libsese/sese.plugin
+    Project URL: https://github.com/libsese/sese.plugin
+    License: Apache-2.0 License
