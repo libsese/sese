@@ -69,6 +69,8 @@ target_sources(Core PRIVATE
         src/security/SecurityConfig.cpp src/security/SSLContext.cpp
         src/security/SSLContextBuilder.cpp src/security/SecuritySocket.cpp
         src/security/MessageDigest.cpp
+
+        src/plugin/Module.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
@@ -153,6 +155,15 @@ target_link_libraries(Core-static PUBLIC
         SimpleUuid::uuid-static
         Sese::Plugin
         )
+
+add_custom_command(
+        TARGET
+        Core
+        POST_BUILD
+        COMMAND
+        ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/gtest
+)
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)

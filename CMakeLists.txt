@@ -30,6 +30,7 @@ add_definitions("-DSESE_PATCH_VERSION=\"${PROJECT_VERSION_PATCH}\"")
 add_definitions("-DSESE_REPO_HASH=\"${SESE_REPO_HASH}\"")
 add_definitions("-DSESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
 add_definitions("-DPROJECT_PATH=\"${CMAKE_CURRENT_LIST_DIR}\"")
+add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
 message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
 message(STATUS "CXX compile options: ${CMAKE_CXX_FLAGS}")

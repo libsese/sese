@@ -1,4 +1,5 @@
 find_package(GTest CONFIG REQUIRED)
+find_package(sese-plugin CONFIG REQUIRED)
 
 if (WIN32)
     add_compile_options(/utf-8)
@@ -23,3 +24,14 @@ sese_test(TestThread)
 sese_test(TestMessageDigest)
 sese_test(TestCompressor)
 sese_test(TestProcess)
+
+add_library(Module SHARED Module.cpp)
+target_link_libraries(Module PUBLIC Sese::Plugin)
+set_target_properties(
+        Module PROPERTIES
+        OUTPUT_NAME "Module"
+        PREFIX ""
+        SUFFIX ".m"
+)
+sese_test(TestPlugin)
+add_dependencies(TestPlugin Module)

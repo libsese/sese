@@ -1,11 +1,14 @@
 #include "sese/util/Test.h"
 #include <sstream>
 #include <Windows.h>
+
 #ifdef NEED_DBGHELP
+
 #include <DbgHelp.h>
+
 #endif
 
-std::string sese::Test::backtrace2String(int size, const std::string &prefix, int skip) {
+std::string sese::TestPlugin::backtrace2String(int size, const std::string &prefix, int skip) {
 #ifdef NEED_DBGHELP
     void **pStack = (void **) malloc(sizeof(void *) * size);
 
@@ -29,8 +32,10 @@ std::string sese::Test::backtrace2String(int size, const std::string &prefix, in
         line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
 
         oss << prefix;
-        if (SymFromAddr(process, address, &displacementSym, pSymbol) && SymGetLineFromAddr64(process, address, &displacementLine, &line)) {
-            oss << " " << pSymbol->Name << " at " << line.FileName << ":" << line.LineNumber << "(0x" << std::hex << pSymbol->Address << std::dec << ")" << std::endl;
+        if (SymFromAddr(process, address, &displacementSym, pSymbol) &&
+            SymGetLineFromAddr64(process, address, &displacementLine, &line)) {
+            oss << " " << pSymbol->Name << " at " << line.FileName << ":" << line.LineNumber << "(0x" << std::hex
+                << pSymbol->Address << std::dec << ")" << std::endl;
         } else {
             oss << " error: " << GetLastError() << std::endl;
         }
