@@ -6,7 +6,7 @@
 TEST(TestLogger, BlockAppender) {
     sese::record::LogHelper log("BlockAppender");
 
-    auto appender = std::make_shared<sese::record::BlockAppender>(40000);
+    auto appender = std::make_shared<sese::record::BlockAppender>(1 * 1024 * 1024);
     sese::record::getLogger()->addAppender(appender);
 
     for (auto i = 0; i < 640; i++) {

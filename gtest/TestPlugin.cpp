@@ -1,13 +1,14 @@
 #include "sese/plugin/Module.h"
+#include "gtest/gtest.h"
 
 class Printable : public sese::plugin::BaseClass {
 public:
     virtual void run() = 0;
 };
 
-
-int main() {
+TEST(TestPlugin, _0) {
     auto m = sese::plugin::Module::open(PROJECT_BINARY_PATH"/gtest/Module.m");
+    ASSERT_TRUE(m != nullptr);
     printf("module info:\n"
            "\tname: %s\n"
            "\tversion: %s\n"
