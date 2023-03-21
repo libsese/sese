@@ -15,7 +15,7 @@ TEST(TestPlugin, _0) {
            "\tdescription: %s\n",
            m->getName(),
            m->getVersion(),
-           m->getName());
+           m->getDescription());
 
     auto p1 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Bye");
     auto p2 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Hello");
