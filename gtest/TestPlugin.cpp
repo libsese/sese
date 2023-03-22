@@ -17,6 +17,14 @@ TEST(TestPlugin, _0) {
            m->getVersion(),
            m->getDescription());
 
+    printf("register class:\n");
+    printf("\tid%-28s raw name\n", "");
+    auto infoMap = m->getRegisterClassInfo();
+    for (const auto &info: infoMap) {
+        printf("\t%-28s %s\n", info.first.c_str(), info.second.info->name());
+    }
+
+    printf("execute plugin code:\n");
     auto p1 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Bye");
     auto p2 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Hello");
     p1->run();

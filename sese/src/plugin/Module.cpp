@@ -1,9 +1,11 @@
 #include "sese/plugin/Module.h"
-#include "sese/plugin/ModuleInfo.h"
-#include "sese/plugin/BaseClassFactory.h"
+#include "sese/plugin/Marco.h"
 
 using getModuleInfoFunc = sese::plugin::ModuleInfo *();
-using getFactoryFunc = sese::plugin::BaseClassFactory *();
+using getFactoryFunc = sese::plugin::ClassFactory *();
+
+#define STR1(R) #R
+#define STR2(R) STR1(R)
 
 sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) noexcept {
     auto obj = LibraryLoader::open(path);
@@ -11,8 +13,8 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
         return nullptr;
     }
 
-    auto getModuleInfo = (getModuleInfoFunc *) obj->findFunctionByName("getModuleInfo");
-    auto getFactory = (getFactoryFunc *) obj->findFunctionByName("getFactory");
+    auto getModuleInfo = (getModuleInfoFunc *) obj->findFunctionByName(STR2(GET_MODULE_INFO_FUNC_NAME));
+    auto getFactory = (getFactoryFunc *) obj->findFunctionByName(STR2(GET_CLASS_FACTORY_FUNC_NAME));
     if (!getModuleInfo || !getFactory) {
         return nullptr;
     }
@@ -30,8 +32,11 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
     return std::unique_ptr<Module>(m);
 }
 
+#undef STR2
+#undef STR1
+
 sese::plugin::BaseClass::Ptr sese::plugin::Module::createClassWithId(const std::string &id) noexcept {
-    auto pFactory = (BaseClassFactory *) this->factory;
+    auto pFactory = (ClassFactory *) this->factory;
     return pFactory->createClassWithId(id);
 }
 
@@ -48,4 +53,8 @@ const char *sese::plugin::Module::getVersion() noexcept {
 const char *sese::plugin::Module::getDescription() noexcept {
     auto pInfo = (ModuleInfo *) this->info;
     return pInfo->description;
+}
+
+const sese::plugin::ClassFactory::RegisterInfoMapType &sese::plugin::Module::getRegisterClassInfo() noexcept {
+    return factory->getRegisterClassInfo();
 }

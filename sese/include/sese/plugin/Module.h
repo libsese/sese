@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "sese/plugin/BaseClass.h"
+#include "sese/plugin/Marco.h"
 #include "sese/system/LibraryLoader.h"
 
 #ifdef _WIN32
@@ -56,12 +56,16 @@ namespace sese::plugin {
             }
         }
 
+        /// 获取模块已注册类类型信息
+        /// \return 类型信息
+        const ClassFactory::RegisterInfoMapType &getRegisterClassInfo() noexcept;
+
     private:
         Module() = default;
 
         LibraryObject::Ptr object = nullptr;
 
-        void *info = nullptr;
-        void *factory = nullptr;
+        ModuleInfo *info = nullptr;
+        ClassFactory *factory = nullptr;
     };
 }
