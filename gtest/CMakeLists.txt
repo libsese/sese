@@ -34,4 +34,5 @@ set_target_properties(
         SUFFIX ".m"
 )
 sese_test(TestPlugin)
+target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module>\"")
 add_dependencies(TestPlugin Module)

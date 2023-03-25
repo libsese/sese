@@ -108,6 +108,28 @@ if (WIN32)
     target_link_libraries(Core-static PRIVATE ws2_32)
 
     message(STATUS "Linked libraries: ws2_32, dbghelp")
+
+    if (${CMAKE_GENERATOR} MATCHES "Ninja")
+        # 单配置
+        add_custom_command(
+                TARGET
+                Core
+                POST_BUILD
+                COMMAND
+                ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/gtest
+        )
+    else ()
+        # 多配置
+        add_custom_command(
+                TARGET
+                Core
+                POST_BUILD
+                COMMAND
+                ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/gtest/$<CONFIG>
+        )
+    endif ()
 endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
@@ -155,15 +177,6 @@ target_link_libraries(Core-static PUBLIC
         SimpleUuid::uuid-static
         Sese::Plugin
         )
-
-add_custom_command(
-        TARGET
-        Core
-        POST_BUILD
-        COMMAND
-        ${CMAKE_COMMAND} -E copy_if_different
-        $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/gtest
-)
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)

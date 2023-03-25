@@ -7,7 +7,7 @@ public:
 };
 
 TEST(TestPlugin, _0) {
-    auto m = sese::plugin::Module::open(PROJECT_BINARY_PATH"/gtest/Module.m");
+    auto m = sese::plugin::Module::open(PATH_TO_MODULE);
     ASSERT_TRUE(m != nullptr);
     printf("module info:\n"
            "\tname: %s\n"
