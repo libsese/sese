@@ -4,15 +4,15 @@
 
 using sese::security::MessageDigest;
 
-TEST(TestMessageDigest, MD4) {
-    const char *str0 = "Hello";
-    const char *rt0 = "a58fc871f5f68e4146474ac1e2f07419";
-    {
-        auto input = sese::InputBufferWrapper(str0, 5);
-        auto rt = MessageDigest::digest(MessageDigest::Type::MD4, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
-    }
-}
+// TEST(TestMessageDigest, MD4) {
+//     const char *str0 = "Hello";
+//     const char *rt0 = "a58fc871f5f68e4146474ac1e2f07419";
+//     {
+//         auto input = sese::InputBufferWrapper(str0, 5);
+//         auto rt = MessageDigest::digest(MessageDigest::Type::MD4, &input);
+//         EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+//     }
+// }
 
 TEST(TestMessageDigest, MD5) {
     const char *str0 = "Hello";

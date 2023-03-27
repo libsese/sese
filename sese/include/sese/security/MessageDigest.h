@@ -9,7 +9,7 @@ namespace sese::security {
     class MessageDigest : public NotInstantiable {
     public:
         enum class Type {
-            MD4,
+            // MD4,
             MD5,
             SHA1,
             SHA224,
@@ -21,7 +21,7 @@ namespace sese::security {
         static std::unique_ptr<char[]> digest(Type type, InputStream *input, bool isCap = false) noexcept;
 
     private:
-        static void digestMD4(char *str, InputStream *input, bool isCap) noexcept;
+        // static void digestMD4(char *str, InputStream *input, bool isCap) noexcept;
         static void digestMD5(char *str, InputStream *input, bool isCap) noexcept;
 
         static void digestSH1(char *str, InputStream *input, bool isCap) noexcept;
