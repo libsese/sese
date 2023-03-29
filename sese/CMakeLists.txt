@@ -51,7 +51,7 @@ target_sources(Core PRIVATE
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp src/config/json/JsonUtil.cpp
         src/config/xml/XmlTypes.cpp src/config/xml/XmlUtil.cpp
-        src/config/CSVReader.cpp
+        src/config/CSVReader.cpp src/config/CSVWriter.cpp
 
         src/text/DateTimeFormatter.cpp src/text/TextReader.cpp
         src/text/AbstractStringBuffer.cpp

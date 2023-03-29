@@ -25,6 +25,7 @@ sese_test(TestMessageDigest)
 sese_test(TestCompressor)
 sese_test(TestProcess)
 
+# Test Plugin
 add_library(Module SHARED Module.cpp)
 target_link_libraries(Module PUBLIC Sese::Plugin)
 set_target_properties(
@@ -36,3 +37,5 @@ set_target_properties(
 sese_test(TestPlugin)
 target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module>\"")
 add_dependencies(TestPlugin Module)
+
+sese_test(TestCSVUtil)
