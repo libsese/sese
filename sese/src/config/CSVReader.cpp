@@ -13,9 +13,9 @@ sese::CSVReader::Row sese::CSVReader::read() noexcept {
 
     char ch;
     size_t quot = 0;
-    while (source->read(&ch, 1) != 0) {
+    while ((source->read(&ch, 1)) != 0) {
         // 是否处于字符串内部
-        if (quot % 2 == 0) {
+        if (quot % 2 == 1) {
             if (ch != '\"') {
                 builder << ch;
             } else {
@@ -29,23 +29,27 @@ sese::CSVReader::Row sese::CSVReader::read() noexcept {
             } else if (ch == CSVReader::splitChar) {
                 // 切割元素
                 row.emplace_back(builder.str());
-                builder.clear();
+                builder.str("");
             } else if (ch == '\r') {
                 // 换行 - \r\n
                 if (source->read(&ch, 1) != 0) {
+                    row.emplace_back(builder.str());
+                    builder.str("");
                     return row;
                 }
             } else if (ch == '\n') {
                 // 换行 - \n
+                row.emplace_back(builder.str());
+                builder.str("");
                 return row;
             } else {
                 builder << ch;
             }
         }
     }
-    if (builder.rdbuf()->in_avail() != 0) {
+    if (builder.rdbuf()->in_avail() != 0 || ch == ',') {
         row.emplace_back(builder.str());
-        builder.clear();
+        builder.str("");
     }
     return row;
 }
