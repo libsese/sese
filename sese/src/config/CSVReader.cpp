@@ -11,7 +11,7 @@ sese::CSVReader::Row sese::CSVReader::read() noexcept {
     Row row;
     std::stringstream builder;
 
-    char ch;
+    char ch = 0;
     size_t quot = 0;
     while ((source->read(&ch, 1)) != 0) {
         // 是否处于字符串内部
