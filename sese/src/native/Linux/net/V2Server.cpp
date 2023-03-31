@@ -1,4 +1,5 @@
 #include "sese/net/V2Server.h"
+#include "sese/util/Util.h"
 #include "openssl/ssl.h"
 
 #include <fcntl.h>
@@ -92,7 +93,15 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOp
     server->epoll = epoll;
 
     if (opt->isKeepAlive && opt->keepAlive > 0) {
-        server->timer = Timer::create();
+        // server->timer = Timer::create();
+        server->taskList = new std::list<TimerTask::Ptr>[60];
+        server->timerThread = std::make_unique<sese::Thread>(
+                [server]() {
+                    server->TimerWorkerFunction();
+                },
+                "Timer"
+        );
+        server->timerThread->start();
     }
 
     server->threads = std::make_unique<ThreadPool>(
@@ -158,27 +167,26 @@ void sese::net::v2::Server::onConnect() noexcept {
     ctx->ssl = clientSSL;
 
     mutex.lock();
-    contextMap[client] = ctx;
-    mutex.unlock();
     if (option->isKeepAlive && option->keepAlive > 0) {
-        ctx->task = timer->delay(
+        ctx->task = delay(
                 [this, client]() {
-                    mutex.lock();
+                    // mutex.lock();
                     auto iterator = contextMap.find(client);
                     if (iterator != contextMap.end()) {
                         iterator->second->task = nullptr;
                         iterator->second->close();
                         contextMap.erase(iterator);
-                        mutex.unlock();
+                        // mutex.unlock();
                         delete iterator->second;
                     } else {
                         // Never reach
-                        mutex.unlock();
+                        // mutex.unlock();
                     }
-                },
-                option->keepAlive, false
+                }
         );
     }
+    contextMap[client] = ctx;
+    mutex.unlock();
 }
 
 void sese::net::v2::Server::onClose(socket_t client) noexcept {
@@ -188,7 +196,7 @@ void sese::net::v2::Server::onClose(socket_t client) noexcept {
         contextMap.erase(iterator);
         mutex.unlock();
         if (option->isKeepAlive && option->keepAlive > 0 && iterator->second->task) {
-            iterator->second->task->cancel();
+            cancel(iterator->second->task);
             iterator->second->task = nullptr;
         }
         iterator->second->close();
@@ -202,7 +210,7 @@ void sese::net::v2::Server::onRead(socket_t client) noexcept {
     mutex.lock();
     auto iterator = contextMap.find(client);
     if (option->isKeepAlive && option->keepAlive > 0 && iterator->second->task) {
-        iterator->second->task->cancel();
+        cancel(iterator->second->task);
         iterator->second->task = nullptr;
     }
     mutex.unlock();
@@ -232,22 +240,21 @@ void sese::net::v2::Server::LinuxWorkerFunction(sese::net::v2::IOContext *ctx) n
             event.events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT;
             epoll_ctl(epoll, EPOLL_CTL_MOD, ctx->socket, &event);
 
-            ctx->task = timer->delay(
+            ctx->task = delay(
                     [this, client = ctx->socket]() {
-                        mutex.lock();
+                        // mutex.lock();
                         auto iterator = contextMap.find(client);
                         if (iterator != contextMap.end()) {
                             iterator->second->task = nullptr;
                             contextMap.erase(iterator);
-                            mutex.unlock();
+                            // mutex.unlock();
                             iterator->second->close();
                             delete iterator->second;
                         } else {
                             // Never reach
-                            mutex.unlock();
+                            // mutex.unlock();
                         }
-                    },
-                    option->keepAlive, false
+                    }
             );
         }
     }
@@ -297,15 +304,59 @@ void sese::net::v2::Server::loop() noexcept {
 void sese::net::v2::Server::shutdown() noexcept {
     isShutdown = true;
     threads->shutdown();
-    timer->shutdown();
+
+    if (option->isKeepAlive && option->keepAlive > 0) {
+        timerThread->join();
+        delete[] taskList;
+    }
+
     for (auto &pair: contextMap) {
-        if (option->isKeepAlive && option->keepAlive > 0) {
-            pair.second->task->cancel();
-            pair.second->task = nullptr;
-        }
+        // if (option->isKeepAlive && option->keepAlive > 0) {
+        //    pair.second->task->cancel();
+        //    pair.second->task = nullptr;
+        // }
         pair.second->close();
         delete pair.second;
     }
     ::close(epoll);
     ::close(socket);
+}
+
+void sese::net::v2::Server::TimerWorkerFunction() noexcept {
+    while (!isShutdown) {
+        size_t index = currentTimestamp % 60;
+        mutex.lock();
+        for (auto iterator = taskList[index].begin(); iterator != taskList[index].end();) {
+            TimerTask::Ptr task = *iterator;
+            if (currentTimestamp == task->targetTimestamp) {
+                task->callback();
+                iterator = taskList[index].erase(iterator);
+            }
+        }
+        mutex.unlock();
+
+        sese::sleep(1);
+        currentTimestamp++;
+    }
+}
+
+sese::net::v2::Server::TimerTask::Ptr sese::net::v2::Server::delay(const std::function<void()> &callback) noexcept {
+    // 初始化任务
+    auto task = std::make_shared<TimerTask>();
+    task->callback = callback;
+    task->sleepTimestamp = option->keepAlive;
+    task->targetTimestamp = currentTimestamp + option->keepAlive;
+    task->callback = callback;
+
+    // 添加至对应轮片
+    size_t index = task->targetTimestamp % 60;
+    taskList[index].emplace_back(task);
+    return task;
+}
+
+void sese::net::v2::Server::cancel(const TimerTask::Ptr &task) noexcept {
+    size_t index = task->targetTimestamp % 60;
+    // mutex.lock();
+    taskList[index].remove(task);
+    // mutex.unlock();
 }

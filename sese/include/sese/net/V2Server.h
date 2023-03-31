@@ -18,12 +18,21 @@
 #elif __linux__
 #define MaxEventSize 64
 #include <sys/epoll.h>
+#include <list>
 #elif __APPLE__
 #define MaxEventSize 64
 #include <sys/event.h>
 #endif
 
 namespace sese::net::v2 {
+
+    /// 内建定时器任务
+    struct _TimerTask {
+        using Ptr = std::shared_ptr<_TimerTask>;
+        int64_t sleepTimestamp = 0;
+        int64_t targetTimestamp = 0;
+        std::function<void()> callback;
+    };
 
     /// I/O 上下文
     struct IOContext final {
@@ -57,7 +66,7 @@ namespace sese::net::v2 {
 
     public:
 #else
-        TimerTask::Ptr task = nullptr;
+        _TimerTask::Ptr task = nullptr;
 #endif
         bool isClosed = false;
         socket_t socket = -1;
@@ -102,12 +111,7 @@ namespace sese::net::v2 {
     public:
         using Ptr = std::unique_ptr<Server>;
 
-        struct TimerTask {
-            using Ptr = std::shared_ptr<TimerTask>;
-            int64_t sleepTimestamp = 0;
-            int64_t targetTimestamp = 0;
-            std::function<void()> callback;
-        };
+        using TimerTask = _TimerTask;
 
         /// 内建超时列表工作线程
         void TimerWorkerFunction() noexcept;
