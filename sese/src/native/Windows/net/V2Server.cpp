@@ -1,3 +1,5 @@
+#include <memory>
+
 #include "sese/net/V2Server.h"
 #include "sese/util/Util.h"
 #include "openssl/ssl.h"
@@ -46,8 +48,8 @@ int64_t sese::net::v2::IOContext::readWithoutSSL(void *buf, size_t length) noexc
             this->nRead += (DWORD) length;
             return (int64_t) length;
         }
-        // 缓冲区不够用
-        // 直接返回当前剩余部分
+            // 缓冲区不够用
+            // 直接返回当前剩余部分
         else {
             memcpy(buf, this->buffer + this->nRead, this->nBytes - this->nRead);
             auto rt = this->nBytes - this->nRead;
@@ -55,7 +57,7 @@ int64_t sese::net::v2::IOContext::readWithoutSSL(void *buf, size_t length) noexc
             return rt;
         }
     }
-    // 缓冲区已空
+        // 缓冲区已空
     else {
         return ::recv(socket, (char *) buf, (int32_t) length, 0);
     }
@@ -170,7 +172,15 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOp
     server->hIOCP = iocp;
 
     if (opt->isKeepAlive && opt->keepAlive > 0) {
-        server->timer = Timer::create();
+        // server->timer = Timer::create();
+        server->taskList = new std::list<TimerTask::Ptr>[60];
+        server->timerThread = std::make_unique<sese::Thread>(
+                [server]() {
+                    server->TimerWorkerFunction();
+                },
+                "Timer"
+        );
+        server->timerThread->start();
     }
 
     if (opt->isSSL) {
@@ -182,7 +192,14 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOp
     }
 
     for (int index = 0; index < opt->threads; index++) {
-        server->threads.emplace_back(std::make_unique<Thread>([server]() { server->WindowsWorkerFunction(); }, "SERV" + std::to_string(index)));
+        server->threads.emplace_back(
+                std::make_unique<Thread>(
+                        [server]() {
+                            server->WindowsWorkerFunction();
+                        },
+                        "SERV" + std::to_string(index)
+                )
+        );
     }
 
     return std::unique_ptr<sese::net::v2::Server>(server);
@@ -255,9 +272,9 @@ void sese::net::v2::Server::onConnect() noexcept {
 
     if (option->isKeepAlive && option->keepAlive > 0) {
         mutex.lock();
-        taskMap[ctx] = timer->delay(
+        taskMap[ctx] = delay(
                 [this, ctx]() {
-                    mutex.lock();
+                    // mutex.lock();
                     auto iterator = taskMap.find(ctx);
                     if (iterator != taskMap.end()) {
 #ifdef _DEBUG
@@ -267,9 +284,8 @@ void sese::net::v2::Server::onConnect() noexcept {
                         ctx->close();
                         delete ctx;
                     }
-                    mutex.unlock();
-                },
-                option->keepAlive, false
+                    // mutex.unlock();
+                }
         );
         mutex.unlock();
     }
@@ -298,13 +314,17 @@ void sese::net::v2::Server::shutdown() noexcept {
         );
     }
 
+    if (option->isKeepAlive && option->keepAlive > 0) {
+        timerThread->join();
+        delete[] taskList;
+    }
+
     for (auto &th: threads) {
         th->join();
     }
 
     if (option->isKeepAlive && option->keepAlive > 0) {
-        timer->shutdown();
-
+        // timer->shutdown();
         // mutex.lock();
         for (auto &pair: taskMap) {
             pair.first->close();
@@ -346,12 +366,12 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
             printf("BAD: %p\n", ctx);
 #endif
             if (option->isKeepAlive && option->keepAlive > 0) {
-                mutex.lock();
+                // mutex.lock();
                 auto iterator = taskMap.find(ctx);
                 if (iterator != taskMap.end()) {
-                    iterator->second->cancel();
+                    cancel(iterator->second);
                 }
-                mutex.unlock();
+                // mutex.unlock();
             }
             ctx->close();
             delete ctx;
@@ -384,7 +404,7 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                 // taskMap.erase(ctx);
                 taskMap.erase(iterator);
                 mutex.unlock();
-                task->cancel();
+                cancel(task);
             } else {
                 mutex.unlock();
             }
@@ -422,9 +442,9 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
 #endif
                     // 提交无误才加入定时器
                     mutex.lock();
-                    taskMap[ctx] = timer->delay(
+                    taskMap[ctx] = delay(
                             [this, ctx]() {
-                                mutex.lock();
+                                // mutex.lock();
                                 auto iterator = taskMap.find(ctx);
                                 if (iterator != taskMap.end()) {
 #ifdef _DEBUG
@@ -434,16 +454,15 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                                     ctx->close();
                                     delete ctx;
                                 }
-                                mutex.unlock();
-                            },
-                            option->keepAlive, false
+                                // mutex.unlock();
+                            }
                     );
                     mutex.unlock();
                     continue;
                 }
             }
         }
-        // 启用了自动关闭且当前连接尚未关闭
+            // 启用了自动关闭且当前连接尚未关闭
         else if (option->autoClose) {
             if (ctx->isClosed) {
 #ifdef _DEBUG
@@ -459,4 +478,43 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
             }
         }
     }
+}
+
+void sese::net::v2::Server::TimerWorkerFunction() noexcept {
+    while (!isShutdown) {
+        size_t index = currentTimestamp % 60;
+        mutex.lock();
+        for (auto iterator = taskList[index].begin(); iterator != taskList[index].end();) {
+            TimerTask::Ptr task = *iterator;
+            if (currentTimestamp == task->targetTimestamp) {
+                task->callback();
+                iterator = taskList[index].erase(iterator);
+            }
+        }
+        mutex.unlock();
+
+        sese::sleep(1);
+        currentTimestamp++;
+    }
+}
+
+sese::net::v2::Server::TimerTask::Ptr sese::net::v2::Server::delay(const std::function<void()> &callback) noexcept {
+    // 初始化任务
+    auto task = std::make_shared<TimerTask>();
+    task->callback = callback;
+    task->sleepTimestamp = option->keepAlive;
+    task->targetTimestamp = currentTimestamp + option->keepAlive;
+    task->callback = callback;
+
+    // 添加至对应轮片
+    size_t index = task->targetTimestamp % 60;
+    taskList[index].emplace_back(task);
+    return task;
+}
+
+void sese::net::v2::Server::cancel(const TimerTask::Ptr &task) noexcept {
+    size_t index = task->targetTimestamp % 60;
+    mutex.lock();
+    taskList[index].remove(task);
+    mutex.unlock();
 }

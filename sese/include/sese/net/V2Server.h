@@ -8,7 +8,6 @@
 #include "sese/net/Socket.h"
 #include "sese/security/SSLContext.h"
 #include "sese/thread/ThreadPool.h"
-#include "sese/util/Timer.h"
 
 #include <map>
 #include <memory>
@@ -102,6 +101,17 @@ namespace sese::net::v2 {
     class API Server {
     public:
         using Ptr = std::unique_ptr<Server>;
+
+        struct TimerTask {
+            using Ptr = std::shared_ptr<TimerTask>;
+            int64_t sleepTimestamp = 0;
+            int64_t targetTimestamp = 0;
+            std::function<void()> callback;
+        };
+
+        /// 内建超时列表工作线程
+        void TimerWorkerFunction() noexcept;
+
         /// 根据已有选项构建一个服务器模型实体
         /// \param option 服务器选项
         /// \return 实例化的服务器模型
@@ -126,7 +136,7 @@ namespace sese::net::v2 {
         HANDLE hIOCP = INVALID_HANDLE_VALUE;
         std::vector<Thread::Ptr> threads;
         void *bioMethod = nullptr;
-        std::map<sese::net::v2::IOContext *, sese::TimerTask::Ptr> taskMap;
+        std::map<sese::net::v2::IOContext *, TimerTask::Ptr> taskMap;
 #elif __linux__
     private:
         void onConnect() noexcept;
@@ -155,9 +165,22 @@ namespace sese::net::v2 {
 
     private:
         ServerOption *option = nullptr;
+        // 工作线程 和 超时线程均使用此退出标识符
         std::atomic_bool isShutdown = false;
+
+        // TaskMap、ContextMap 与 TaskList 的操作均使用此互斥量
         std::mutex mutex;
-        Timer::Ptr timer = nullptr;
+        // 改用超时队列
+        // Timer::Ptr timer = nullptr;
+
+        // 新建定时任务
+        TimerTask::Ptr delay(const std::function<void()> &callback) noexcept;
+        // 取消定时任务
+        void cancel(const TimerTask::Ptr &task) noexcept;
+
+        std::atomic<int64_t> currentTimestamp = 0;
+        Thread::Ptr timerThread = nullptr;
+        std::list<TimerTask::Ptr> *taskList = nullptr;
     };
 
 }// namespace sese::net::v2
