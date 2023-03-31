@@ -22,12 +22,13 @@
 #elif __APPLE__
 #define MaxEventSize 64
 #include <sys/event.h>
+#include <list>
 #endif
 
 namespace sese::net::v2 {
 
     /// 内建定时器任务
-    struct _TimerTask {
+    struct _TimerTask { //NOLINT
         using Ptr = std::shared_ptr<_TimerTask>;
         int64_t sleepTimestamp = 0;
         int64_t targetTimestamp = 0;
