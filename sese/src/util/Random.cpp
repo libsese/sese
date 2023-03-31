@@ -27,17 +27,23 @@ namespace sese {
 
     uint64_t Random::noise() noexcept {
 #ifdef SESE_ARCH_X64
-#ifdef _WIN32
+#ifdef SESE_PLATFORM_WINDOWS
+        // CASE: SESE_PLATFORM_WINDOWS && SESE_ARCH_X64
         return __rdtsc();
 #else
+        // CASE: !SESE_PLATFORM_WINDOWS && SESE_ARCH_X64
         uint64_t value;
         __asm__ __volatile__("rdtsc" : "=A"(value));
         return value;
 #endif
 #else
-        uint64_t value;
-        __asm__ volatile("mrs %0, cntfrq_el0" : "=r" (value));
-        return value;
+        // CASE: SESE_ARCH_ARM64
+        // 不再返回 cntfrq_el0 的原因是，此调用在 ARM 会进入内核态
+        // 反复调用可能导致性能下降，x86 则不存在这个问题
+        // uint64_t value;
+        // __asm__ volatile("mrs %0, cntfrq_el0" : "=r" (value));
+        // return value;
+        return 0;
 #endif
     }
 

@@ -11,10 +11,13 @@
 #include "sese/util/Memory.h"
 #ifdef _WIN32
 #pragma warning(disable : 4819)
+#define SESE_PLATFORM_WINDOWS
 #include "sese/native/Windows/Config.h"
 #elif __linux__
+#define SESE_PLATFORM_LINUX
 #include "sese/native/Linux/Config.h"
 #elif __APPLE__
+#define SESE_PLATFORM_APPLE
 #include "sese/native/Darwin/Config.h"
 #endif
 #undef assert
