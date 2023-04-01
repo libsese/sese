@@ -101,6 +101,32 @@ int64_t sese::net::v2::IOContext::write(const void *buf, size_t length) noexcept
     }
 }
 
+int64_t sese::net::v2::IOContext::peek(void *buf, size_t length) noexcept {//NOLINT
+    if (bio) {
+        return (int64_t) SSL_peek((SSL *) ssl, buf, (int) length);
+    } else {
+        // 缓冲区内有未读字节
+        if (this->nRead < this->nBytes) {
+            // 缓冲区够用
+            if (this->nBytes - this->nRead > length) {
+                memcpy(buf, this->buffer + this->nRead, length);
+                return (int64_t) length;
+            }
+            // 缓冲区不够用
+            // 直接返回当前剩余部分
+            else {
+                memcpy(buf, this->buffer + this->nRead, this->nBytes - this->nRead);
+                auto rt = this->nBytes - this->nRead;
+                return rt;
+            }
+        }
+        // 缓冲区已空
+        else {
+            return ::recv(socket, (char *) buf, (int32_t) length, MSG_PEEK);
+        }
+    }
+}
+
 void sese::net::v2::IOContext::close() noexcept {
     if (bio) {
         isClosed = true;

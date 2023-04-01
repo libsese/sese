@@ -47,6 +47,11 @@ namespace sese::net::v2 {
         /// \param length 大小
         /// \return 操作成功字节数
         int64_t write(const void *buffer, size_t length) noexcept;
+        /// 从流中读取数据至缓存，且不改变流的位置
+        /// \param buffer 缓存
+        /// \param length 大小
+        /// \return 操作成功字节数
+        int64_t peek(void *buffer, size_t length) noexcept;
         /// 关闭连接，并标识接下来将进行的收尾工作
         void close() noexcept;
 

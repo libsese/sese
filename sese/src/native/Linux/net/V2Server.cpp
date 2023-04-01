@@ -23,6 +23,14 @@ int64_t sese::net::v2::IOContext::write(const void *buffer, size_t length) noexc
     }
 }
 
+int64_t sese::net::v2::IOContext::peek(void *buffer, size_t length) noexcept {// NOLINT
+    if (ssl) {
+        return SSL_peek((SSL *) ssl, buffer, (int) length);
+    } else {
+        return ::recv(socket, buffer, length, MSG_PEEK);
+    }
+}
+
 void sese::net::v2::IOContext::close() noexcept {
     if (ssl) {
         isClosed = true;
