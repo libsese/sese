@@ -39,3 +39,4 @@ target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:
 add_dependencies(TestPlugin Module)
 
 sese_test(TestCSVUtil)
+sese_test(TestHttp2)
