@@ -1,6 +1,8 @@
 #include "sese/net/http/Huffman.h"
 #include "sese/net/http/HPACK.h"
 
+#include <limits>
+
 sese::http::huffman_node_t::huffman_node_t(
         sese::http::huffman_node_t *l,
         sese::http::huffman_node_t *r,

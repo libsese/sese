@@ -1,6 +1,8 @@
 #include "sese/net/http/DynamicTable.h"
 #include "sese/net/http/HPACK.h"
 
+#include <limits>
+
 sese::http::DynamicTable::DynamicTable(size_t max) noexcept {
     this->max = max;
 }
