@@ -15,3 +15,5 @@ zlib
 - Copyright (C) 1995-2022 Jean-loup Gailly and Mark Adler
 libsese/sese.plugin
 - Copyright (c) 2021-2023 libsese Organization
+jnferguson/hpack-rfc7541
+- Copyright (c) 2016, Justin Ferguson

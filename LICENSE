@@ -229,3 +229,7 @@ subject to the terms and conditions of the following licenses:
 - libsese/sese.plugin
     Project URL: https://github.com/libsese/sese.plugin
     License: Apache-2.0 License
+
+- jnferguson/hpack-rfc7541
+    Project URL: https://github.com/jnferguson/hpack-rfc7541
+    License: BSD 2-Clause "Simplified" License
