@@ -4,15 +4,18 @@
  * @author kaoru
  * @date 2022年3月28日
  */
+
 #pragma once
-#include "Stream.h"
+
+#include "sese/util/Stream.h"
+#include "sese/util/PeekableStream.h"
 
 namespace sese {
 
     /**
      * @brief 字节缓冲区类
      */
-    class API AbstractByteBuffer : public Stream {
+    class API AbstractByteBuffer : public Stream, public PeekableStream {
     private:
         /**
          * @brief 缓冲节点
@@ -70,7 +73,10 @@ namespace sese {
 
     public:
         int64_t read(void *buffer, size_t len) override;
-        int64_t write(const void *buffer, size_t needWrite) override;
+        int64_t write(const void *buffer, size_t len) override;
+
+        int64_t peek(void *buffer, size_t len) override;
+
         /**
          * @deprecated close 方法在此处是无用的
          */

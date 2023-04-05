@@ -11,6 +11,11 @@ int64_t sese::ByteBuffer::write(const void *buffer, size_t needWrite) {
     return AbstractByteBuffer::write(buffer, needWrite);
 }
 
+int64_t sese::ByteBuffer::peek(void *buffer, size_t len) {
+    Locker locker(mutex);
+    return AbstractByteBuffer::peek(buffer, len);
+}
+
 void sese::ByteBuffer::close() {
     Locker locker(mutex);
     AbstractByteBuffer::close();

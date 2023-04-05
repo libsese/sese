@@ -6,16 +6,20 @@
  * \brief 输入缓存包装器
  */
 #pragma once
-#include "InputStream.h"
+
+#include "sese/util/InputStream.h"
+#include "sese/util/PeekableStream.h"
 
 namespace sese {
 
     /// \brief 输入缓存包装器
-    class API InputBufferWrapper : public InputStream {
+    class API InputBufferWrapper : public InputStream, public PeekableStream {
     public:
         InputBufferWrapper(const char *buffer, size_t cap);
 
         int64_t read(void *buffer, size_t length) override;
+
+        int64_t peek(void *buffer, size_t length) override;
 
         void reset() noexcept;
 

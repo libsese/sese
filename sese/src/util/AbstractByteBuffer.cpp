@@ -167,4 +167,40 @@ namespace sese {
         return actualWrite;
     }
 
+    int64_t AbstractByteBuffer::peek(void *buffer, size_t needRead) {
+        auto *_currentReadNode = currentReadNode;
+        auto *_currentWriteNode = currentWriteNode;
+        auto _currentReadPos = currentReadPos;
+
+        int64_t actualRead = 0;
+        while (true) {
+            // 当前单元能提供的剩余读取量
+            size_t currentReadNodeRemaining = _currentReadNode->length - _currentReadPos;
+            // 当前单元能满足读取需求
+            if (needRead <= currentReadNodeRemaining) {
+                memcpy((char *) buffer + actualRead, (char *) _currentReadNode->buffer + _currentReadPos, needRead);
+                actualRead += (int64_t) needRead;
+                _currentReadPos += needRead;
+                break;
+            }
+                // 当前单元不能满足读取需求
+            else {
+                memcpy((char *) buffer + actualRead, (char *) _currentReadNode->buffer + _currentReadPos, currentReadNodeRemaining);
+                actualRead += (int64_t) currentReadNodeRemaining;
+                needRead -= currentReadNodeRemaining;
+                _currentReadPos += currentReadNodeRemaining;
+                if (_currentReadNode == _currentWriteNode) {
+                    // 已经没有剩余节点可供读取
+                    break;
+                } else {
+                    // 切换下一个节点继续读取
+                    _currentReadNode = _currentReadNode->next;
+                    _currentReadPos = 0;
+                    continue;
+                }
+            }
+        }
+        return actualRead;
+    }
+
 }// namespace sese
