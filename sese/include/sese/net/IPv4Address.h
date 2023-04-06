@@ -15,7 +15,9 @@ namespace sese {
     class API IPv4Address : public IPAddress {
     public:
         using Ptr = std::shared_ptr<IPv4Address>;
-        static Ptr create(const char *address, uint16_t port);
+        static IPv4Address::Ptr create(const char *address, uint16_t port);
+        static IPv4Address::Ptr localhost();
+        static IPv4Address::Ptr any();
 
     public:
         explicit IPv4Address(const sockaddr_in &address);

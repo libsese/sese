@@ -21,6 +21,14 @@ sese::IPv4Address::Ptr sese::IPv4Address::create(const char *address, uint16_t p
     }
 }
 
+sese::IPv4Address::Ptr sese::IPv4Address::localhost() {
+    return create("127.0.0.1", 0);
+}
+
+sese::IPv4Address::Ptr sese::IPv4Address::any() {
+    return create("0.0.0.0", 0);
+}
+
 sese::IPv4Address::IPv4Address(const sockaddr_in &address) : address(address) {}
 
 sese::IPv4Address::IPv4Address(uint32_t address, uint16_t port) {

@@ -15,7 +15,9 @@ namespace sese {
     class API IPv6Address : public IPAddress {
     public:
         using Ptr = std::shared_ptr<IPv6Address>;
-        static Ptr create(const char *address, uint16_t port);
+        static IPv6Address::Ptr create(const char *address, uint16_t port);
+        static IPv6Address::Ptr localhost();
+        static IPv6Address::Ptr any();
 
     public:
         explicit IPv6Address() noexcept;

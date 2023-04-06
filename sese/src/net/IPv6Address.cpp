@@ -19,6 +19,14 @@ sese::IPv6Address::Ptr sese::IPv6Address::create(const char *address, uint16_t p
     }
 }
 
+sese::IPv6Address::Ptr sese::IPv6Address::localhost() {
+    return create("::1", 0);
+}
+
+sese::IPv6Address::Ptr sese::IPv6Address::any() {
+    return create("::", 0);
+}
+
 sese::IPv6Address::IPv6Address() noexcept {
     this->address.sin6_family = AF_INET6;
 }
