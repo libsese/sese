@@ -1,4 +1,6 @@
 #include "sese/system/NetworkUtil.h"
+#include "sese/net/IPv6Address.h"
+
 
 #ifdef SESE_PLATFORM_WINDOWS
 
@@ -71,6 +73,105 @@ std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noe
     }
 
     return result;
+}
+
+#endif
+
+#ifdef SESE_PLATFORM_LINUX
+
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <ifaddrs.h>
+#include <sys/socket.h>
+#include <net/if.h>
+#include <unistd.h>
+#include <map>
+
+std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noexcept {
+    std::vector<NetworkInterface> interfaces;
+    std::map<std::string, NetworkInterface> map;
+    struct ifaddrs *address = nullptr;
+
+    // 这些信息仅用于获取网卡名称、 IPv4 和 mac 信息
+    // glib 2.3.3 以下不支持使用其获取 IPv6 相关信息
+    getifaddrs(&address);
+
+    while (address) {
+        if (address->ifa_addr->sa_family == AF_INET) {
+            auto iterator = map.find(address->ifa_name);
+            sockaddr_in addr = *(sockaddr_in *)(address->ifa_addr);
+            if (iterator != map.end()) {
+                iterator->second.ipv4Addresses.emplace_back(std::make_shared<IPv4Address>(addr));
+            } else {
+                auto i = NetworkInterface();
+                i.ipv4Addresses.emplace_back(std::make_shared<IPv4Address>(addr));
+                map[i.name] = i;
+            }
+        } else if (address->ifa_addr->sa_family == AF_PACKET) {
+            auto iterator = map.find(address->ifa_name);
+            if (iterator != map.end()) {
+                iterator->second.name = address->ifa_name;
+                memcpy(iterator->second.mac.data(), address->ifa_addr, 6);
+            } else {
+                auto i = NetworkInterface();
+                i.name = address->ifa_name;
+                memcpy(i.mac.data(), address->ifa_addr, 6);
+                map[i.name] = i;
+            }
+        }
+
+        address = address->ifa_next;
+    }
+
+    freeifaddrs(address);
+
+    // 用于获取 IPv6 信息
+    FILE *f = fopen("/proc/net/if_inet6", "r");
+    if (f != nullptr) {
+        int ret, scope, prefix;
+        unsigned char ipv6[16];
+        char name[IFNAMSIZ];
+        char address[INET6_ADDRSTRLEN];
+        while (19 ==
+               fscanf(f, // NOLINT
+                      " %2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx %*x %x %x %*x %s",
+                      &ipv6[0],
+                      &ipv6[1],
+                      &ipv6[2],
+                      &ipv6[3],
+                      &ipv6[4],
+                      &ipv6[5],
+                      &ipv6[6],
+                      &ipv6[7],
+                      &ipv6[8],
+                      &ipv6[9],
+                      &ipv6[10],
+                      &ipv6[11],
+                      &ipv6[12],
+                      &ipv6[13],
+                      &ipv6[14],
+                      &ipv6[15],
+                      &prefix,
+                      &scope,
+                      name)) {
+            auto iterator = map.find(name);
+            if (iterator != map.end()) {
+                inet_ntop(AF_INET6, ipv6, address, sizeof(address));
+                auto addr = IPv6Address::create(address, 0);
+                iterator->second.ipv6Addresses.emplace_back(addr);
+            }
+        }
+
+        fclose(f);
+    }
+
+    // 整合信息
+    interfaces.reserve(map.size());
+    for(decltype(auto) i : map) {
+        interfaces.emplace_back(i.second);
+    }
+
+    return interfaces;
 }
 
 #endif
