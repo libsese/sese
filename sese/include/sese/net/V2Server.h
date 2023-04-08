@@ -193,7 +193,3 @@ namespace sese::net::v2 {
     };
 
 }// namespace sese::net::v2
-
-#ifdef _WIN32
-#undef MaxBufferSize
-#endif

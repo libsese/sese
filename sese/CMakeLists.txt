@@ -36,6 +36,7 @@ target_sources(Core PRIVATE
         src/thread/Thread.cpp src/thread/ThreadPool.cpp
 
         src/system/Environment.cpp src/system/LibraryLoader.cpp
+        src/system/NetworkUtil.cpp
 
         src/net/Address.cpp src/net/IPAddress.cpp
         src/net/IPv4Address.cpp src/net/IPv6Address.cpp
@@ -101,15 +102,15 @@ if (WIN32)
     target_compile_options(Core PRIVATE "/utf-8")
     target_compile_options(Core PRIVATE "/wd4251")
     target_compile_options(Core PRIVATE "/wd4530")
-    target_link_libraries(Core PRIVATE ws2_32)
+    target_link_libraries(Core PRIVATE ws2_32 iphlpapi)
 
     target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
     target_compile_options(Core-static PRIVATE "/utf-8")
     target_compile_options(Core-static PRIVATE "/wd4251")
     target_compile_options(Core-static PRIVATE "/wd4530")
-    target_link_libraries(Core-static PRIVATE ws2_32)
+    target_link_libraries(Core-static PRIVATE ws2_32 iphlpapi)
 
-    message(STATUS "Linked libraries: ws2_32, dbghelp")
+    message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi")
 
     if (${CMAKE_GENERATOR} MATCHES "Ninja")
         # 单配置

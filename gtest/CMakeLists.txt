@@ -40,3 +40,4 @@ add_dependencies(TestPlugin Module)
 
 sese_test(TestCSVUtil)
 sese_test(TestHttp2)
+sese_test(TestNetworkUtil)
