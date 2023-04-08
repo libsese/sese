@@ -13,7 +13,6 @@
 #include <memory>
 
 #ifdef WIN32
-#define MaxBufferSize 8192
 #include <vector>
 #elif __linux__
 #define MaxEventSize 64
@@ -58,8 +57,8 @@ namespace sese::net::v2 {
 #ifdef WIN32
         IOContext(void *bioMethod, void *ssl) noexcept;
         WSAOVERLAPPED overlapped{};
-        WSABUF wsaBuf{MaxBufferSize, buffer};
-        CHAR buffer[MaxBufferSize]{};
+        WSABUF wsaBuf{IOCP_WSABUF_SIZE, buffer};
+        CHAR buffer[IOCP_WSABUF_SIZE]{};
         DWORD nBytes = 0;
         DWORD nRead = 0;
         void *bio = nullptr;
@@ -194,3 +193,7 @@ namespace sese::net::v2 {
     };
 
 }// namespace sese::net::v2
+
+#ifdef _WIN32
+#undef MaxBufferSize
+#endif

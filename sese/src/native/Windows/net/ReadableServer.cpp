@@ -1,8 +1,6 @@
 #include "sese/net/ReadableServer.h"
 
-#ifdef WIN32
 #pragma warning(disable : 4996)
-#endif
 
 int64_t sese::net::IOContext::read(void *dst, size_t length) {
     // 缓冲区内有未读字节
@@ -73,7 +71,7 @@ bool sese::net::ReadableServer::add(socket_t socket) noexcept {
 #endif
 
     // 首次提交
-    DWORD nBytes = MaxBufferSize;
+    DWORD nBytes = IOCP_WSABUF_SIZE;
     DWORD dwFlags = 0;
     int nRt = WSARecv(socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &ctx->overlapped, nullptr);
     auto e = WSAGetLastError();
@@ -115,7 +113,7 @@ void sese::net::ReadableServer::WindowsWorkerFunction() noexcept {
     void *lpCompletionKey = nullptr;
 
     DWORD dwFlags = 0;
-    DWORD nBytes = MaxBufferSize;
+    DWORD nBytes = IOCP_WSABUF_SIZE;
 
     while (true) {
         BOOL bRt = GetQueuedCompletionStatus(
@@ -129,7 +127,7 @@ void sese::net::ReadableServer::WindowsWorkerFunction() noexcept {
         if (!bRt) continue;
         if (lpNumberOfBytesTransferred == -1) break;
         if (lpNumberOfBytesTransferred == 0) continue;
-        if (lpNumberOfBytesTransferred == MaxBufferSize) {
+        if (lpNumberOfBytesTransferred == IOCP_WSABUF_SIZE) {
 #ifdef _DEBUG
             printf("BAD: %p\n", ctx);
 #endif

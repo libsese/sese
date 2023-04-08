@@ -149,7 +149,7 @@ void Server::loopWith(const std::function<void(IOContext *)> &handler) noexcept 
             mutex.unlock();
         }
 
-        DWORD nBytes = MaxBufferSize;
+        DWORD nBytes = IOCP_WSABUF_SIZE;
         DWORD dwFlags = 0;
         int nRt = WSARecv(client, &ioContext->wsaBuf, 1, &nBytes, &dwFlags, &ioContext->overlapped, nullptr);
         auto e = WSAGetLastError();
@@ -208,7 +208,7 @@ void Server::WindowsWorkerFunction() noexcept {
     void *lpCompletionKey = nullptr;
 
     DWORD dwFlags = 0;
-    DWORD nBytes = MaxBufferSize;
+    DWORD nBytes = IOCP_WSABUF_SIZE;
 
     while (true) {
         BOOL bRt = GetQueuedCompletionStatus(
@@ -222,7 +222,7 @@ void Server::WindowsWorkerFunction() noexcept {
         if (!bRt) continue;
         if (lpNumberOfBytesTransferred == -1) break;
         if (lpNumberOfBytesTransferred == 0) continue;
-        if (lpNumberOfBytesTransferred == MaxBufferSize) {
+        if (lpNumberOfBytesTransferred == IOCP_WSABUF_SIZE) {
 #ifdef _DEBUG
             printf("BAD: %p\n", ioContext);
 #endif

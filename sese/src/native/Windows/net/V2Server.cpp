@@ -279,16 +279,16 @@ void sese::net::v2::Server::onConnect() noexcept {
 
     auto ctx = new sese::net::v2::IOContext(bioMethod, clientSSL);
     ctx->socket = client;
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
     printf("NEW: %p\n", ctx);
 #endif
     // 首次投递
-    DWORD nBytes = MaxBufferSize;
+    DWORD nBytes = IOCP_WSABUF_SIZE;
     DWORD dwFlags = 0;
     int nRt = WSARecv(client, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
     int e = WSAGetLastError();
     if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
         printf("BAD: %p\n", ctx);
 #endif
         ctx->close();
@@ -303,7 +303,7 @@ void sese::net::v2::Server::onConnect() noexcept {
                     // mutex.lock();
                     auto iterator = taskMap.find(ctx);
                     if (iterator != taskMap.end()) {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
                         printf("CLOSE: %p - TIMEOUT\n", ctx);
 #endif
                         taskMap.erase(iterator);
@@ -354,7 +354,7 @@ void sese::net::v2::Server::shutdown() noexcept {
         // mutex.lock();
         for (auto &pair: taskMap) {
             pair.first->close();
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
             printf("CLOSE: %p - SHUT\n", pair.first);
 #endif
             delete pair.first;
@@ -373,7 +373,7 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
     DWORD lpNumberOfBytesTransferred = 0;
     void *lpCompletionKey = nullptr;
     DWORD dwFlags = 0;
-    DWORD nBytes = MaxBufferSize;
+    DWORD nBytes = IOCP_WSABUF_SIZE;
 
     while (true) {
         BOOL bRt = GetQueuedCompletionStatus(
@@ -387,8 +387,8 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
         if (!bRt) continue;
         if (lpNumberOfBytesTransferred == -1) break;
         if (lpNumberOfBytesTransferred == 0) continue;
-        if (lpNumberOfBytesTransferred == MaxBufferSize) {
-#ifdef _DEBUG
+        if (lpNumberOfBytesTransferred == IOCP_WSABUF_SIZE) {
+#ifdef V2SERVER_DEBUG
             printf("BAD: %p\n", ctx);
 #endif
             if (option->isKeepAlive && option->keepAlive > 0) {
@@ -409,7 +409,7 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
         int nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
         int e = WSAGetLastError();
         if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
             printf("BAD: %p\n", ctx);
 #endif
             ctx->close();
@@ -417,7 +417,7 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
             continue;
         }
 
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
         printf("RECV: %p\n", ctx);// NOLINT
 #endif
         // 触发读事件，先取消原有计时
@@ -445,7 +445,7 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
         // 启用长连接并且当前连接尚未关闭，重新计时
         if (option->isKeepAlive && option->keepAlive > 0) {
             if (ctx->isClosed) {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
                 printf("CLOSE: %p - ACTIVE\n", ctx);
 #endif
             } else {
@@ -456,14 +456,14 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                 nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
                 e = WSAGetLastError();
                 if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
                     printf("BAD: %p\n", ctx);
 #endif
                     ctx->close();
                     delete ctx;
                     continue;
                 } else {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
                     printf("POST: %p\n", ctx);
 #endif
                     // 提交无误才加入定时器
@@ -473,7 +473,7 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
                                 // mutex.lock();
                                 auto iterator = taskMap.find(ctx);
                                 if (iterator != taskMap.end()) {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
                                     printf("CLOSE: %p - TIMEOUT(RE)\n", ctx);
 #endif
                                     taskMap.erase(iterator);
@@ -491,11 +491,11 @@ void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
             // 启用了自动关闭且当前连接尚未关闭
         else if (option->autoClose) {
             if (ctx->isClosed) {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
                 printf("CLOSE: %p - ACTIVE\n", ctx);
 #endif
             } else {
-#ifdef _DEBUG
+#ifdef V2SERVER_DEBUG
                 printf("CLOSE: %p - AUTO\n", ctx);
 #endif
                 ctx->close();
