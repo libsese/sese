@@ -9,10 +9,6 @@
             "version>=": "3.0.7#2"
         },
         {
-            "name": "gtest",
-            "version>=": "1.12.1"
-        },
-        {
             "name": "simpleuuid",
             "version>=": "0.1.4"
         },
@@ -28,5 +24,16 @@
             "name": "sese-plugin",
             "version>=": "0.2.1"
         }
-    ]
+    ],
+    "features": {
+        "tests": {
+            "description": "build the unit test",
+            "dependencies": [
+                {
+                    "name": "gtest",
+                    "version>=": "1.12.1"
+                }
+            ]
+        }
+    }
 }
