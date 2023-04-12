@@ -2,13 +2,13 @@
     "default-registry": {
         "kind": "git",
         "repository": "https://github.com/microsoft/vcpkg.git",
-        "baseline": "e69dd972ba64840955f46704ecce6241bf607c0f"
+        "baseline": "203383666e2422ed31e1faebe6efa6e306bd126d"
     },
     "registries": [
         {
             "kind": "git",
             "repository": "https://github.com/libsese/vcpkg-registry.git",
-            "baseline": "788e0947609a05bb4e58d7fa39dfad22a0f82fe0",
+            "baseline": "bcb29e5687be9563d4b058cb0a4fe15eab1504da",
             "packages": [
                 "simpleuuid",
                 "sstring",
