@@ -1,146 +1,50 @@
-#include <memory>
-
 #include "sese/net/V2Server.h"
-#include "sese/util/Util.h"
 #include "openssl/ssl.h"
 
-static long bio_iocp_ctrl([[maybe_unused]] BIO *bio, int cmd, [[maybe_unused]] long num, [[maybe_unused]] void *ptr) {
-    int ret = 0;
-    if (cmd == BIO_CTRL_FLUSH) {
-        ret = 1;
-    }
-    return ret;
+using namespace sese::net::v2;
+
+IOContext::IOContext(socket_t socket, void *ssl) noexcept
+        : socket(socket),
+          ssl(ssl) {
 }
 
-static int bio_iocp_write(BIO *bio, const char *in, int length) {
-    auto ctx = (sese::net::v2::IOContext *) BIO_get_data(bio);
-    return ::send(ctx->socket, in, length, 0);
-}
-
-static int bio_iocp_read(BIO *bio, char *out, int length) {
-    auto ctx = (sese::net::v2::IOContext *) BIO_get_data(bio);
-    if (ctx->nRead < ctx->nBytes) {
-        if ((int) (ctx->nBytes - ctx->nRead) > length) {
-            memcpy(out, ctx->buffer + ctx->nRead, length);
-            ctx->nRead += (DWORD) length;
-            BIO_clear_retry_flags(bio);
-            return (int) length;
-        } else {
-            auto rt = ctx->nBytes - ctx->nRead;
-            memcpy(out, ctx->buffer + ctx->nRead, rt);
-            ctx->nRead = ctx->nBytes;
-            BIO_clear_retry_flags(bio);
-            return (int) rt;
-        }
+int64_t IOContext::peek(void *buf, size_t len) noexcept {
+    if (ssl) {
+        return ::SSL_peek((ssl_st *) ssl, (char *) buf, (int) len);
     } else {
-        auto rt = ::recv(ctx->socket, out, length, 0);
-        BIO_clear_retry_flags(bio);
-        return rt;
+        return ::recv(socket, (char *) buf, (int) len, MSG_PEEK);
     }
 }
 
-int64_t sese::net::v2::IOContext::readWithoutSSL(void *buf, size_t length) noexcept {
-    // 缓冲区内有未读字节
-    if (this->nRead < this->nBytes) {
-        // 缓冲区够用
-        if (this->nBytes - this->nRead > length) {
-            memcpy(buf, this->buffer + this->nRead, length);
-            this->nRead += (DWORD) length;
-            return (int64_t) length;
-        }
-            // 缓冲区不够用
-            // 直接返回当前剩余部分
-        else {
-            memcpy(buf, this->buffer + this->nRead, this->nBytes - this->nRead);
-            auto rt = this->nBytes - this->nRead;
-            this->nRead = this->nBytes;
-            return rt;
-        }
-    }
-        // 缓冲区已空
-    else {
-        return ::recv(socket, (char *) buf, (int32_t) length, 0);
-    }
-}
-
-int64_t sese::net::v2::IOContext::writeWithoutSSL(const void *buf, size_t length) noexcept {// NOLINT
-    return ::send(socket, (const char *) buf, (int32_t) length, 0);
-}
-
-int64_t sese::net::v2::IOContext::readWithSSL(void *buf, size_t length) noexcept {// NOLINT
-    return SSL_read((SSL *) this->ssl, buf, (int) length);
-}
-
-int64_t sese::net::v2::IOContext::writeWithSSL(const void *buf, size_t length) noexcept {// NOLINT
-    return SSL_write((SSL *) this->ssl, buf, (int) length);
-}
-
-sese::net::v2::IOContext::IOContext(void *bioMethod, void *ssl) noexcept {// NOLINT
-    if (bioMethod) {
-        this->ssl = ssl;
-        this->bio = BIO_new((BIO_METHOD *) bioMethod);
-        BIO_set_data((BIO *) this->bio, this);
-        BIO_set_init((BIO *) this->bio, 1);
-        BIO_set_shutdown((BIO *) this->bio, 0);
-    }
-}
-
-int64_t sese::net::v2::IOContext::read(void *buf, size_t length) noexcept {
-    if (bio) {
-        return readWithSSL(buf, length);
+int64_t IOContext::read(void *buf, size_t len) noexcept {
+    if (ssl) {
+        return ::SSL_read((ssl_st *) ssl, (char *) buf, (int) len);
     } else {
-        return readWithoutSSL(buf, length);
+        return ::recv(socket, (char *) buf, (int) len, 0);
     }
 }
 
-int64_t sese::net::v2::IOContext::write(const void *buf, size_t length) noexcept {
-    if (bio) {
-        return writeWithSSL(buf, length);
+int64_t IOContext::write(const void *buf, size_t len) noexcept {
+    if (ssl) {
+        return ::SSL_write((ssl_st *) ssl, (const char *) buf, (int) len);
     } else {
-        return writeWithoutSSL(buf, length);
+        return ::send(socket, (const char *) buf, (int) len, 0);
     }
 }
 
-int64_t sese::net::v2::IOContext::peek(void *buf, size_t length) noexcept {//NOLINT
-    if (bio) {
-        return (int64_t) SSL_peek((SSL *) ssl, buf, (int) length);
+void IOContext::close() noexcept {
+    if (ssl) {
+        ::SSL_shutdown((ssl_st *) ssl);
     } else {
-        // 缓冲区内有未读字节
-        if (this->nRead < this->nBytes) {
-            // 缓冲区够用
-            if (this->nBytes - this->nRead > length) {
-                memcpy(buf, this->buffer + this->nRead, length);
-                return (int64_t) length;
-            }
-            // 缓冲区不够用
-            // 直接返回当前剩余部分
-            else {
-                memcpy(buf, this->buffer + this->nRead, this->nBytes - this->nRead);
-                auto rt = this->nBytes - this->nRead;
-                return rt;
-            }
-        }
-        // 缓冲区已空
-        else {
-            return ::recv(socket, (char *) buf, (int32_t) length, MSG_PEEK);
-        }
-    }
-}
-
-void sese::net::v2::IOContext::close() noexcept {
-    if (bio) {
-        isClosed = true;
-        SSL_shutdown((SSL *) ssl);
-        SSL_free((SSL *) ssl);
-        ::closesocket(socket);
-    } else {
-        isClosed = true;
         ::shutdown(socket, SD_BOTH);
-        ::closesocket(socket);
     }
 }
 
-sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOption *opt) noexcept {
+WindowsService::Ptr sese::net::v2::WindowsService::create(ServerOption *opt) noexcept {
+    if (opt == nullptr) {
+        return nullptr;
+    }
+
     if (opt->isSSL) {
         if (opt->sslContext) {
             if (!opt->sslContext->authPrivateKey()) {
@@ -152,395 +56,155 @@ sese::net::v2::Server::Ptr sese::net::v2::Server::create(sese::net::v2::ServerOp
     }
 
     auto family = opt->address->getRawAddress()->sa_family;
-    socket_t sock = ::WSASocketW(
-            family,
-            SOCK_STREAM,
-            0,
-            nullptr,
-            0,
-            WSA_FLAG_OVERLAPPED
-    );
-
-    if (SOCKET_ERROR == sock) {
+    socket_t listenSocket = ::socket(family, SOCK_STREAM, 0);
+    if (SOCKET_ERROR == listenSocket) {
         return nullptr;
     }
 
     unsigned long ul = 1;
-    if (SOCKET_ERROR == ioctlsocket(sock, FIONBIO, &ul)) {
-        ::closesocket(sock);
+    if (SOCKET_ERROR == ioctlsocket(listenSocket, FIONBIO, &ul)) {
+        ::closesocket(listenSocket);
         return nullptr;
     }
 
-    if (SOCKET_ERROR == bind(sock, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
-        ::closesocket(sock);
+    if (SOCKET_ERROR == ::bind(listenSocket, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
+        ::closesocket(listenSocket);
         return nullptr;
     }
 
-    if (SOCKET_ERROR == listen(sock, SERVER_MAX_CONNECTION)) {
-        ::closesocket(sock);
+    if (SOCKET_ERROR == ::listen(listenSocket, SERVER_MAX_CONNECTION)) {
+        ::closesocket(listenSocket);
         return nullptr;
     }
 
-    auto iocp = CreateIoCompletionPort(
-            INVALID_HANDLE_VALUE,
-            nullptr,
-            0,
-            (DWORD) opt->threads
-    );
-    if (INVALID_HANDLE_VALUE == iocp) {
-        ::closesocket(sock);
+    WSAEVENT event = ::WSACreateEvent();
+    if (WSA_INVALID_EVENT == event) {
+        ::WSACloseEvent(event);
         return nullptr;
     }
 
-    auto server = new Server;
-    server->option = opt;
-    server->socket = sock;
-    server->hIOCP = iocp;
-
-    if (opt->isKeepAlive && opt->keepAlive > 0) {
-        // server->timer = Timer::create();
-        server->taskList = new std::list<TimerTask::Ptr>[60];
-        server->timerThread = std::make_unique<sese::Thread>(
-                [server]() {
-                    server->TimerWorkerFunction();
-                },
-                "Timer"
-        );
-        server->timerThread->start();
+    if (::WSAEventSelect(listenSocket, event, FD_ACCEPT)) {
+        ::WSACloseEvent(event);
+        ::closesocket(listenSocket);
+        return nullptr;
     }
 
-    if (opt->isSSL) {
-        auto method = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bio_iocp");
-        BIO_meth_set_ctrl(method, bio_iocp_ctrl);
-        BIO_meth_set_read(method, bio_iocp_read);
-        BIO_meth_set_write(method, bio_iocp_write);
-        server->bioMethod = method;
-    }
+    auto serv = new WindowsService;
+    serv->option = opt;
+    serv->eventNum = 1;
+    serv->socketSet[0] = listenSocket;
+    serv->hEventSet[0] = event;
 
-    for (int index = 0; index < opt->threads; index++) {
-        server->threads.emplace_back(
-                std::make_unique<Thread>(
-                        [server]() {
-                            server->WindowsWorkerFunction();
-                        },
-                        "SERV" + std::to_string(index)
-                )
-        );
-    }
-
-    return std::unique_ptr<sese::net::v2::Server>(server);
+    return std::unique_ptr<WindowsService>(serv);
 }
 
-void sese::net::v2::Server::onConnect() noexcept {
-    SOCKET client = ::accept(socket, nullptr, nullptr);
-    if (SOCKET_ERROR == client) {
-        // 放弃当前时间片，以免负载过高
-        sese::sleep(0);
-        return;
-    }
-
-    // SSL 握手
-    ssl_st *clientSSL = nullptr;
-    if (option->isSSL) {
-        clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
-        SSL_set_fd(clientSSL, (int) client);
-        SSL_set_accept_state(clientSSL);
-
-        while (true) {
-            auto rt = SSL_do_handshake(clientSSL);
-            if (rt <= 0) {
-                // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
-                auto err = SSL_get_error(clientSSL, rt);
-                if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
-                    SSL_free(clientSSL);
-                    closesocket(client);
-                    clientSSL = nullptr;
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
-        if (clientSSL == nullptr) {
-            return;
-        }
-    }
-
-    unsigned long ul = 1;
-    if (SOCKET_ERROR == ioctlsocket(client, FIONBIO, &ul)) {
-        closesocket(client);
-        return;
-    }
-
-    if (nullptr == CreateIoCompletionPort((HANDLE) client, hIOCP, 0, 0)) {
-        closesocket(client);
-        return;
-    }
-
-    auto ctx = new sese::net::v2::IOContext(bioMethod, clientSSL);
-    ctx->socket = client;
-#ifdef V2SERVER_DEBUG
-    printf("NEW: %p\n", ctx);
-#endif
-    // 首次投递
-    DWORD nBytes = IOCP_WSABUF_SIZE;
-    DWORD dwFlags = 0;
-    int nRt = WSARecv(client, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
-    int e = WSAGetLastError();
-    if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-#ifdef V2SERVER_DEBUG
-        printf("BAD: %p\n", ctx);
-#endif
-        ctx->close();
-        delete ctx;
-        return;
-    }
-
-    if (option->isKeepAlive && option->keepAlive > 0) {
-        mutex.lock();
-        taskMap[ctx] = delay(
-                [this, ctx]() {
-                    // mutex.lock();
-                    auto iterator = taskMap.find(ctx);
-                    if (iterator != taskMap.end()) {
-#ifdef V2SERVER_DEBUG
-                        printf("CLOSE: %p - TIMEOUT\n", ctx);
-#endif
-                        taskMap.erase(iterator);
-                        ctx->close();
-                        delete ctx;
-                    }
-                    // mutex.unlock();
-                }
-        );
-        mutex.unlock();
-    }
-}
-
-void sese::net::v2::Server::loop() noexcept {
-    for (auto &th: threads) {
-        th->start();
-    }
-
+void WindowsService::loop() noexcept {
     while (true) {
-        if (isShutdown) break;
-        onConnect();
-    }
-}
+        if (exit) break;
 
-void sese::net::v2::Server::shutdown() noexcept {
-    void *lpCompletionKey = nullptr;
-    isShutdown = true;
-    for (auto i = 0; i < option->threads; ++i) {
-        PostQueuedCompletionStatus(
-                hIOCP,
-                -1,
-                (ULONG_PTR) lpCompletionKey,
-                nullptr
-        );
-    }
-
-    if (option->isKeepAlive && option->keepAlive > 0) {
-        timerThread->join();
-        delete[] taskList;
-    }
-
-    for (auto &th: threads) {
-        th->join();
-    }
-
-    if (option->isKeepAlive && option->keepAlive > 0) {
-        // timer->shutdown();
-        // mutex.lock();
-        for (auto &pair: taskMap) {
-            pair.first->close();
-#ifdef V2SERVER_DEBUG
-            printf("CLOSE: %p - SHUT\n", pair.first);
-#endif
-            delete pair.first;
-        }
-        taskMap.clear();
-        // mutex.unlock();
-    }
-
-    if (option->isSSL) {
-        BIO_meth_free((BIO_METHOD *) bioMethod);
-    }
-}
-
-void sese::net::v2::Server::WindowsWorkerFunction() noexcept {
-    IOContext *ctx = nullptr;
-    DWORD lpNumberOfBytesTransferred = 0;
-    void *lpCompletionKey = nullptr;
-    DWORD dwFlags = 0;
-    DWORD nBytes = IOCP_WSABUF_SIZE;
-
-    while (true) {
-        BOOL bRt = GetQueuedCompletionStatus(
-                hIOCP,
-                &lpNumberOfBytesTransferred,
-                (PULONG_PTR) &lpCompletionKey,
-                (LPOVERLAPPED *) &ctx,
-                INFINITE
-        );
-
-        if (!bRt) continue;
-        if (lpNumberOfBytesTransferred == -1) break;
-        if (lpNumberOfBytesTransferred == 0) continue;
-        if (lpNumberOfBytesTransferred == IOCP_WSABUF_SIZE) {
-#ifdef V2SERVER_DEBUG
-            printf("BAD: %p\n", ctx);
-#endif
-            if (option->isKeepAlive && option->keepAlive > 0) {
-                // mutex.lock();
-                auto iterator = taskMap.find(ctx);
-                if (iterator != taskMap.end()) {
-                    cancel(iterator->second);
-                }
-                // mutex.unlock();
-            }
-            ctx->close();
-            delete ctx;
-            continue;
-        }
-        ctx->nBytes = lpNumberOfBytesTransferred;
-
-        // 只处理首次读取事件
-        int nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
-        int e = WSAGetLastError();
-        if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-#ifdef V2SERVER_DEBUG
-            printf("BAD: %p\n", ctx);
-#endif
-            ctx->close();
-            delete ctx;
+        DWORD nIndex = ::WSAWaitForMultipleEvents(eventNum, hEventSet, FALSE, 1000, FALSE);
+        if (nIndex == WSA_WAIT_FAILED || nIndex == WSA_WAIT_TIMEOUT) {
             continue;
         }
 
-#ifdef V2SERVER_DEBUG
-        printf("RECV: %p\n", ctx);// NOLINT
-#endif
-        // 触发读事件，先取消原有计时
-        if (option->isKeepAlive && option->keepAlive > 0) {
-            mutex.lock();
-            auto iterator = taskMap.find(ctx);
-            if (iterator != taskMap.end()) {
-                auto task = iterator->second;
-                iterator->second = nullptr;
-                // taskMap.erase(ctx);
-                taskMap.erase(iterator);
-                mutex.unlock();
-                cancel(task);
-            } else {
-                mutex.unlock();
-            }
-        }
-
-        // 回调函数调用
-        auto isHandle = option->beforeHandle(ctx);
-        if (isHandle) {
-            option->onHandle(ctx);
-        }
-
-        // 启用长连接并且当前连接尚未关闭，重新计时
-        if (option->isKeepAlive && option->keepAlive > 0) {
-            if (ctx->isClosed) {
-#ifdef V2SERVER_DEBUG
-                printf("CLOSE: %p - ACTIVE\n", ctx);
-#endif
-            } else {
-
-                // 重新提交
-                ctx->nRead = 0;
-                ctx->nBytes = 0;
-                nRt = WSARecv(ctx->socket, &ctx->wsaBuf, 1, &nBytes, &dwFlags, &(ctx->overlapped), nullptr);
-                e = WSAGetLastError();
-                if (SOCKET_ERROR == nRt && ERROR_IO_PENDING != e) {
-#ifdef V2SERVER_DEBUG
-                    printf("BAD: %p\n", ctx);
-#endif
-                    ctx->close();
-                    delete ctx;
-                    continue;
-                } else {
-#ifdef V2SERVER_DEBUG
-                    printf("POST: %p\n", ctx);
-#endif
-                    // 提交无误才加入定时器
-                    mutex.lock();
-                    taskMap[ctx] = delay(
-                            [this, ctx]() {
-                                // mutex.lock();
-                                auto iterator = taskMap.find(ctx);
-                                if (iterator != taskMap.end()) {
-#ifdef V2SERVER_DEBUG
-                                    printf("CLOSE: %p - TIMEOUT(RE)\n", ctx);
-#endif
-                                    taskMap.erase(iterator);
-                                    ctx->close();
-                                    delete ctx;
-                                }
-                                // mutex.unlock();
-                            }
-                    );
-                    mutex.unlock();
-                    continue;
-                }
-            }
-        }
-            // 启用了自动关闭且当前连接尚未关闭
-        else if (option->autoClose) {
-            if (ctx->isClosed) {
-#ifdef V2SERVER_DEBUG
-                printf("CLOSE: %p - ACTIVE\n", ctx);
-#endif
-            } else {
-#ifdef V2SERVER_DEBUG
-                printf("CLOSE: %p - AUTO\n", ctx);
-#endif
-                ctx->close();
-                delete ctx;
+        nIndex -= WSA_WAIT_EVENT_0;
+        for (DWORD i = nIndex; i < eventNum; ++i) {
+            nIndex = ::WSAWaitForMultipleEvents(1, &hEventSet[i], TRUE, 1000, FALSE);
+            if (nIndex == WSA_WAIT_FAILED || nIndex == WSA_WAIT_TIMEOUT) {
                 continue;
             }
-        }
-    }
-}
 
-void sese::net::v2::Server::TimerWorkerFunction() noexcept {
-    while (!isShutdown) {
-        size_t index = currentTimestamp % 60;
-        mutex.lock();
-        for (auto iterator = taskList[index].begin(); iterator != taskList[index].end();) {
-            TimerTask::Ptr task = *iterator;
-            if (currentTimestamp == task->targetTimestamp) {
-                task->callback();
-                iterator = taskList[index].erase(iterator);
+            WSANETWORKEVENTS enumEvent;
+            ::WSAEnumNetworkEvents(socketSet[i], hEventSet[i], &enumEvent);
+            if (enumEvent.lNetworkEvents & FD_ACCEPT) {
+                if (enumEvent.iErrorCode[FD_ACCEPT_BIT] != 0) {
+                    continue;
+                }
+                if (eventNum > MaxEventSize) {
+                    continue;
+                }
+                SOCKET clientSocket = ::accept(socketSet[i], NULL, NULL);//NOLINT
+
+                if (option->isSSL) {
+                    auto *clientSSL = (ssl_st *) handshake(clientSocket);
+                    if (!clientSSL) {
+                        ::closesocket(clientSocket);
+                        continue;
+                    }
+                    sslSet[eventNum] = clientSSL;
+                }
+
+                WSAEVENT clientEvent = ::WSACreateEvent();
+                if (::WSAEventSelect(clientSocket, clientEvent, FD_READ | FD_CLOSE)) {
+                    ::WSACloseEvent(clientEvent);
+                    ::closesocket(clientSocket);
+                }
+                socketSet[eventNum] = clientSocket;
+                hEventSet[eventNum] = clientEvent;
+                eventNum += 1;
+            } else if (enumEvent.lNetworkEvents & FD_READ) {
+                if (enumEvent.iErrorCode[FD_READ_BIT] != 0) {
+                    continue;
+                }
+                handle({socketSet[i], sslSet[i]});
+            } else if (enumEvent.lNetworkEvents & FD_CLOSE) {
+                // 关闭套接字，并将其从 socket数组 和 事件数组 中移除
+                if (option->isSSL) {
+                    SSL_free((SSL *) sslSet[nIndex]);
+                    memmove(&sslSet[nIndex], &sslSet[nIndex + 1], (eventNum - nIndex - 1) * sizeof(PVOID));
+                }
+                closesocket(socketSet[nIndex]);
+                WSACloseEvent(hEventSet[nIndex]);
+                memmove(&socketSet[nIndex], &socketSet[nIndex + 1], (eventNum - nIndex - 1) * sizeof(SOCKET));
+                memmove(&hEventSet[nIndex], &hEventSet[nIndex + 1], (eventNum - nIndex - 1) * sizeof(HANDLE));
+                eventNum -= 1;
             }
         }
-        mutex.unlock();
-
-        sese::sleep(1);
-        currentTimestamp++;
     }
 }
 
-sese::net::v2::Server::TimerTask::Ptr sese::net::v2::Server::delay(const std::function<void()> &callback) noexcept {
-    // 初始化任务
-    auto task = std::make_shared<TimerTask>();
-    task->callback = callback;
-    task->sleepTimestamp = option->keepAlive;
-    task->targetTimestamp = currentTimestamp + option->keepAlive;
-    task->callback = callback;
+void *WindowsService::handshake(SOCKET client) noexcept {
+    ssl_st *clientSSL = nullptr;
+    clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
+    SSL_set_fd(clientSSL, (int) client);
+    SSL_set_accept_state(clientSSL);
 
-    // 添加至对应轮片
-    size_t index = task->targetTimestamp % 60;
-    taskList[index].emplace_back(task);
-    return task;
+    while (true) {
+        auto rt = SSL_do_handshake(clientSSL);
+        if (rt <= 0) {
+            // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
+            auto err = SSL_get_error(clientSSL, rt);
+            if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                SSL_free(clientSSL);
+                closesocket(client);
+                return nullptr;
+            }
+        } else {
+            break;
+        }
+    }
+
+    return clientSSL;
 }
 
-void sese::net::v2::Server::cancel(const TimerTask::Ptr &task) noexcept {
-    size_t index = task->targetTimestamp % 60;
-    mutex.lock();
-    taskList[index].remove(task);
-    mutex.unlock();
+void WindowsService::handle(IOContext ctx) noexcept {
+    threadPool->postTask([&ctx, this]() {
+        if (option->beforeHandle(ctx)) {
+            option->onHandle(ctx);
+        }
+    });
+}
+
+void WindowsService::start() noexcept {
+    mainThread = std::make_unique<Thread>([this]() { loop(); }, "WIN_MAIN");
+    threadPool = std::make_unique<ThreadPool>("WIN_SERV", option->threads);
+    mainThread->start();
+}
+
+void WindowsService::shutdown() noexcept {
+    if (mainThread != nullptr && mainThread->joinable()) {
+        exit = true;
+        mainThread->join();
+        threadPool->shutdown();
+    }
 }

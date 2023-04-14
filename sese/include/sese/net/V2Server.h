@@ -12,71 +12,64 @@
 #include <map>
 #include <memory>
 
-#ifdef WIN32
-#include <vector>
-#elif __linux__
-#define MaxEventSize 64
-#include <sys/epoll.h>
-#include <list>
-#elif __APPLE__
-#define MaxEventSize 64
-#include <sys/event.h>
-#include <list>
-#endif
-
 namespace sese::net::v2 {
 
-    /// 内建定时器任务
-    struct _TimerTask { //NOLINT
-        using Ptr = std::shared_ptr<_TimerTask>;
-        int64_t sleepTimestamp = 0;
-        int64_t targetTimestamp = 0;
-        std::function<void()> callback;
-    };
+    struct ServerOption;
 
-    /// I/O 上下文
-    struct IOContext final {
-        /// 从流中读取数据至缓存
-        /// \param buffer 缓存
-        /// \param length 大小
-        /// \return 操作成功字节数
-        int64_t read(void *buffer, size_t length) noexcept;
-        /// 将缓存写入流中
-        /// \param buffer 缓存
-        /// \param length 大小
-        /// \return 操作成功字节数
-        int64_t write(const void *buffer, size_t length) noexcept;
-        /// 从流中读取数据至缓存，且不改变流的位置
-        /// \param buffer 缓存
-        /// \param length 大小
-        /// \return 操作成功字节数
-        int64_t peek(void *buffer, size_t length) noexcept;
-        /// 关闭连接，并标识接下来将进行的收尾工作
+    class API IOContext {
+    public:
+        IOContext(socket_t socket, void *ssl) noexcept;
+
+        int64_t peek(void *buf, size_t len) noexcept;
+
+        int64_t read(void *buf, size_t len) noexcept;
+
+        int64_t write(const void *buf, size_t len) noexcept;
+
         void close() noexcept;
 
-#ifdef WIN32
-        IOContext(void *bioMethod, void *ssl) noexcept;
-        WSAOVERLAPPED overlapped{};
-        WSABUF wsaBuf{IOCP_WSABUF_SIZE, buffer};
-        CHAR buffer[IOCP_WSABUF_SIZE]{};
-        DWORD nBytes = 0;
-        DWORD nRead = 0;
-        void *bio = nullptr;
-
-    private:
-        int64_t readWithoutSSL(void *buf, size_t length) noexcept;
-        int64_t readWithSSL(void *buffer, size_t length) noexcept;
-        int64_t writeWithoutSSL(const void *buf, size_t length) noexcept;
-        int64_t writeWithSSL(const void *buffer, size_t length) noexcept;
-
-    public:
-#else
-        _TimerTask::Ptr task = nullptr;
-#endif
-        bool isClosed = false;
-        socket_t socket = -1;
+    protected:
+        socket_t socket;
         void *ssl = nullptr;
     };
+
+#ifdef SESE_PLATFORM_WINDOWS
+
+#define MaxEventSize 64
+
+    class API WindowsService {
+    public:
+        using Ptr = std::unique_ptr<WindowsService>;
+
+        static WindowsService::Ptr create(ServerOption *opt) noexcept;
+
+        void start() noexcept;
+
+        void shutdown() noexcept;
+
+    protected:
+
+        void loop() noexcept;
+
+        void *handshake(SOCKET clientSocket) noexcept;
+
+        void handle(IOContext ctx) noexcept;
+
+    protected:
+        bool exit = false;
+        DWORD eventNum = 0;
+        SOCKET socketSet[MaxEventSize]{};
+        HANDLE hEventSet[MaxEventSize]{};
+        PVOID sslSet[MaxEventSize]{};
+
+        ServerOption *option{nullptr};
+        Thread::Ptr mainThread{nullptr};
+        ThreadPool::Ptr threadPool{nullptr};
+    };
+
+    using Server = WindowsService;
+
+#endif
 
     /// 服务器选项，用于指定功能的可拓展实体
     struct API ServerOption {
@@ -92,104 +85,17 @@ namespace sese::net::v2 {
         /// SSL 上下文
         security::SSLContext::Ptr sslContext = nullptr;
 
-        /// 此选项用于指示是否在 onHandle 结束后自动关闭连接，与 isKeepAlive 互斥
-        bool autoClose = true;
-        /// 此选项用于指示是否在 onHandle 结束后保留连接一段时间，与 autoClose 互斥且优先级更高
-        bool isKeepAlive = false;
-        uint32_t keepAlive = 10;
-
         /// 此函数通常在连接和可读后第一时间被调用。
         /// 返回 true 则表明需要下一步的处理，即将进入 onHandle，
         /// 返回 false 则将不会进入 onHandle，可以进行其他处理
-        virtual bool beforeHandle(sese::net::v2::IOContext *) noexcept {
+        virtual bool beforeHandle(sese::net::v2::IOContext) noexcept {
             return true;
         }
 
         /// 对连接进行正式处理的函数
-        virtual void onHandle(sese::net::v2::IOContext *) noexcept {
+        virtual void onHandle(sese::net::v2::IOContext) noexcept {
             /// 此处一般为业务处理代码，默认实现为空
         }
-    };
-
-    /// 服务器模型，处理连接和可读事件的调度器
-    class API Server {
-    public:
-        using Ptr = std::unique_ptr<Server>;
-
-        using TimerTask = _TimerTask;
-
-        /// 内建超时列表工作线程
-        void TimerWorkerFunction() noexcept;
-
-        /// 根据已有选项构建一个服务器模型实体
-        /// \param option 服务器选项
-        /// \return 实例化的服务器模型
-        /// \retval nullptr 创建失败返回空指针
-        static Server::Ptr create(ServerOption *option) noexcept;
-
-    private:
-        Server() = default;
-
-    public:
-        /// 循环处理连接，阻塞直至服务器退出
-        void loop() noexcept;
-        /// 指示服务器退出并清理资源，阻塞至服务器完成退出
-        void shutdown() noexcept;
-
-#ifdef WIN32
-    private:
-        void onConnect() noexcept;
-        void WindowsWorkerFunction() noexcept;
-
-        SOCKET socket = INVALID_SOCKET;
-        HANDLE hIOCP = INVALID_HANDLE_VALUE;
-        std::vector<Thread::Ptr> threads;
-        void *bioMethod = nullptr;
-        std::map<sese::net::v2::IOContext *, TimerTask::Ptr> taskMap;
-#elif __linux__
-    private:
-        void onConnect() noexcept;
-        void onRead(socket_t client) noexcept;
-        void onClose(socket_t client) noexcept;
-        void LinuxWorkerFunction(sese::net::v2::IOContext *ctx) noexcept;
-
-        socket_t socket = -1;
-        int epoll = -1;
-        epoll_event events[MaxEventSize]{};
-        ThreadPool::Ptr threads = nullptr;
-        std::map<socket_t, sese::net::v2::IOContext *> contextMap;
-#elif __APPLE__
-    private:
-        void onConnect() noexcept;
-        void onRead(socket_t client) noexcept;
-        void onClose(socket_t client) noexcept;
-        void DarwinWorkerFunction(sese::net::v2::IOContext *ctx) noexcept;
-
-        socket_t socket = -1;
-        int kqueue = -1;
-        struct kevent events[MaxEventSize] {};
-        ThreadPool::Ptr threads = nullptr;
-        std::map<socket_t, sese::net::v2::IOContext *> contextMap;
-#endif
-
-    private:
-        ServerOption *option = nullptr;
-        // 工作线程 和 超时线程均使用此退出标识符
-        std::atomic_bool isShutdown = false;
-
-        // TaskMap、ContextMap 与 TaskList 的操作均使用此互斥量
-        std::mutex mutex;
-        // 改用超时队列
-        // Timer::Ptr timer = nullptr;
-
-        // 新建定时任务
-        TimerTask::Ptr delay(const std::function<void()> &callback) noexcept;
-        // 取消定时任务
-        void cancel(const TimerTask::Ptr &task) noexcept;
-
-        std::atomic<int64_t> currentTimestamp = 0;
-        Thread::Ptr timerThread = nullptr;
-        std::list<TimerTask::Ptr> *taskList = nullptr;
     };
 
 }// namespace sese::net::v2
