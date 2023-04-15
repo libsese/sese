@@ -34,7 +34,6 @@ namespace sese::net::v2 {
         void shutdown() noexcept;
 
     protected:
-
         void loop() noexcept;
 
         void *handshake(SOCKET clientSocket) noexcept;
@@ -76,6 +75,67 @@ namespace sese::net::v2 {
 
     using IOContext = WindowsServiceIOContext;
     using Server = WindowsService;
+
+#endif
+
+#ifdef SESE_PLATFORM_LINUX
+
+#include <sys/epoll.h>
+
+#define MaxEventSize 64
+
+    class LinuxServiceIOContext;
+
+    class API LinuxService {
+    public:
+        using Ptr = std::unique_ptr<LinuxService>;
+
+        static LinuxService::Ptr create(ServerOption *opt) noexcept;
+
+        void start() noexcept;
+
+        void shutdown() noexcept;
+
+    protected:
+        void loop() noexcept;
+
+        void *handshake(socket_t client) noexcept;
+
+        void handle(LinuxServiceIOContext ctx) noexcept;
+
+    protected:
+        bool exit = false;
+        int epoll = -1;
+        socket_t socket = -1;
+        epoll_event eventSet[MaxEventSize]{};
+
+        ServerOption *option{nullptr};
+        Thread::Ptr mainThread{nullptr};
+        ThreadPool::Ptr threadPool{nullptr};
+    };
+
+    class API LinuxServiceIOContext {
+        friend class LinuxService;
+
+    public:
+        LinuxServiceIOContext(socket_t socket, void *ssl) noexcept;
+
+        int64_t peek(void *buf, size_t len) noexcept;
+
+        int64_t read(void *buf, size_t len) noexcept;
+
+        int64_t write(const void *buf, size_t len) noexcept;
+
+        void close() noexcept;
+
+    protected:
+        socket_t socket;
+        void *ssl;
+        bool isClosing = false;
+    };
+
+    using IOContext = LinuxServiceIOContext;
+    using Server = LinuxService;
 
 #endif
 
