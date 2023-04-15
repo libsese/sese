@@ -26,7 +26,7 @@ sese_test(TestCompressor)
 sese_test(TestProcess)
 
 # Test Plugin
-add_library(Module SHARED Module.cpp)
+add_library(Module SHARED TestPlugin/Module.cpp)
 target_link_libraries(Module PUBLIC Sese::Plugin)
 set_target_properties(
         Module PROPERTIES
@@ -34,10 +34,13 @@ set_target_properties(
         PREFIX ""
         SUFFIX ".m"
 )
-sese_test(TestPlugin)
+add_executable(TestPlugin TestPlugin/TestPlugin.cpp)
+target_link_libraries(TestPlugin Core GTest::gtest GTest::gtest_main)
+add_test(NAME TestPlugin COMMAND $<TARGET_FILE:TestPlugin>)
 target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module>\"")
 add_dependencies(TestPlugin Module)
 
 sese_test(TestCSVUtil)
 sese_test(TestHttp2)
 sese_test(TestNetworkUtil)
+sese_test(TestServer)

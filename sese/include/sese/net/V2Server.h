@@ -1,8 +1,9 @@
 /// \file V2Server.h
 /// \brief 通用响应式服务器模型
-/// \date 2023.02.27
+/// \date 2023.04.15
 /// \author kaoru
 /// \note 先比起原先的服务器提高了可拓展性、可维护性、安全性和性能
+
 #pragma once
 
 #include "sese/net/Socket.h"
@@ -16,26 +17,11 @@ namespace sese::net::v2 {
 
     struct ServerOption;
 
-    class API IOContext {
-    public:
-        IOContext(socket_t socket, void *ssl) noexcept;
-
-        int64_t peek(void *buf, size_t len) noexcept;
-
-        int64_t read(void *buf, size_t len) noexcept;
-
-        int64_t write(const void *buf, size_t len) noexcept;
-
-        void close() noexcept;
-
-    protected:
-        socket_t socket;
-        void *ssl = nullptr;
-    };
-
 #ifdef SESE_PLATFORM_WINDOWS
 
 #define MaxEventSize 64
+
+    class WindowsServiceIOContext;
 
     class API WindowsService {
     public:
@@ -53,7 +39,7 @@ namespace sese::net::v2 {
 
         void *handshake(SOCKET clientSocket) noexcept;
 
-        void handle(IOContext ctx) noexcept;
+        void handle(WindowsServiceIOContext ctx) noexcept;
 
     protected:
         bool exit = false;
@@ -67,6 +53,28 @@ namespace sese::net::v2 {
         ThreadPool::Ptr threadPool{nullptr};
     };
 
+    class API WindowsServiceIOContext {
+        friend class WindowsService;
+
+    public:
+        WindowsServiceIOContext(socket_t socket, HANDLE event, void *ssl) noexcept;
+
+        int64_t peek(void *buf, size_t len) noexcept;
+
+        int64_t read(void *buf, size_t len) noexcept;
+
+        int64_t write(const void *buf, size_t len) noexcept;
+
+        void close() noexcept;
+
+    protected:
+        socket_t socket;
+        void *ssl = nullptr;
+        bool isClosing = false;
+        HANDLE event;
+    };
+
+    using IOContext = WindowsServiceIOContext;
     using Server = WindowsService;
 
 #endif

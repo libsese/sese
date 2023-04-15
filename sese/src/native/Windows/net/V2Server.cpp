@@ -3,12 +3,13 @@
 
 using namespace sese::net::v2;
 
-IOContext::IOContext(socket_t socket, void *ssl) noexcept
+WindowsServiceIOContext::WindowsServiceIOContext(socket_t socket, HANDLE handle, void *ssl) noexcept
         : socket(socket),
+          event(handle),
           ssl(ssl) {
 }
 
-int64_t IOContext::peek(void *buf, size_t len) noexcept {
+int64_t WindowsServiceIOContext::peek(void *buf, size_t len) noexcept {
     if (ssl) {
         return ::SSL_peek((ssl_st *) ssl, (char *) buf, (int) len);
     } else {
@@ -16,7 +17,7 @@ int64_t IOContext::peek(void *buf, size_t len) noexcept {
     }
 }
 
-int64_t IOContext::read(void *buf, size_t len) noexcept {
+int64_t WindowsServiceIOContext::read(void *buf, size_t len) noexcept {
     if (ssl) {
         return ::SSL_read((ssl_st *) ssl, (char *) buf, (int) len);
     } else {
@@ -24,7 +25,7 @@ int64_t IOContext::read(void *buf, size_t len) noexcept {
     }
 }
 
-int64_t IOContext::write(const void *buf, size_t len) noexcept {
+int64_t WindowsServiceIOContext::write(const void *buf, size_t len) noexcept {
     if (ssl) {
         return ::SSL_write((ssl_st *) ssl, (const char *) buf, (int) len);
     } else {
@@ -32,12 +33,13 @@ int64_t IOContext::write(const void *buf, size_t len) noexcept {
     }
 }
 
-void IOContext::close() noexcept {
+void WindowsServiceIOContext::close() noexcept {
     if (ssl) {
         ::SSL_shutdown((ssl_st *) ssl);
     } else {
         ::shutdown(socket, SD_BOTH);
     }
+    isClosing = true;
 }
 
 WindowsService::Ptr sese::net::v2::WindowsService::create(ServerOption *opt) noexcept {
@@ -125,6 +127,12 @@ void WindowsService::loop() noexcept {
                 }
                 SOCKET clientSocket = ::accept(socketSet[i], NULL, NULL);//NOLINT
 
+                unsigned long ul = 1;
+                if (SOCKET_ERROR == ioctlsocket(clientSocket, FIONBIO, &ul)) {
+                    ::closesocket(clientSocket);
+                    continue;
+                }
+
                 if (option->isSSL) {
                     auto *clientSSL = (ssl_st *) handshake(clientSocket);
                     if (!clientSSL) {
@@ -144,9 +152,14 @@ void WindowsService::loop() noexcept {
                 eventNum += 1;
             } else if (enumEvent.lNetworkEvents & FD_READ) {
                 if (enumEvent.iErrorCode[FD_READ_BIT] != 0) {
+                    if (sslSet[i]) {
+                        SSL_shutdown((ssl_st *) sslSet[i]);
+                    } else {
+                        ::shutdown(socketSet[i], SD_BOTH);
+                    }
                     continue;
                 }
-                handle({socketSet[i], sslSet[i]});
+                handle({socketSet[i], hEventSet[i], sslSet[i]});
             } else if (enumEvent.lNetworkEvents & FD_CLOSE) {
                 // 关闭套接字，并将其从 socket数组 和 事件数组 中移除
                 if (option->isSSL) {
@@ -191,6 +204,9 @@ void WindowsService::handle(IOContext ctx) noexcept {
     threadPool->postTask([&ctx, this]() {
         if (option->beforeHandle(ctx)) {
             option->onHandle(ctx);
+        }
+        if (!ctx.isClosing) {
+            WSAResetEvent(ctx.event);
         }
     });
 }
