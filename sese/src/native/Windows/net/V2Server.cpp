@@ -201,7 +201,7 @@ void *WindowsService::handshake(SOCKET client) noexcept {
 }
 
 void WindowsService::handle(IOContext ctx) noexcept {
-    threadPool->postTask([&ctx, this]() {
+    threadPool->postTask([ctx, this]() {
         if (option->beforeHandle(ctx)) {
             option->onHandle(ctx);
         }

@@ -13,13 +13,21 @@
 #include <map>
 #include <memory>
 
+#if defined(SESE_PLATFORM_WINDOWS)
+#define MaxEventSize 64
+#elif defined(SESE_PLATFORM_LINUX)
+#define MaxEventSize 64
+#include <sys/epoll.h>
+#elif defined(SESE_PLATFORM_APPLE)
+#define MaxEventSize 64
+#include <sys/event.h>
+#endif
+
 namespace sese::net::v2 {
 
     struct ServerOption;
 
 #ifdef SESE_PLATFORM_WINDOWS
-
-#define MaxEventSize 64
 
     class WindowsServiceIOContext;
 
@@ -80,10 +88,6 @@ namespace sese::net::v2 {
 
 #ifdef SESE_PLATFORM_LINUX
 
-#include <sys/epoll.h>
-
-#define MaxEventSize 64
-
     class LinuxServiceIOContext;
 
     class API LinuxService {
@@ -130,7 +134,7 @@ namespace sese::net::v2 {
 
     protected:
         socket_t socket;
-        void *ssl;
+        void *ssl = nullptr;
         bool isClosing = false;
     };
 

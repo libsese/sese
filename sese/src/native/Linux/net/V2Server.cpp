@@ -189,7 +189,7 @@ void *LinuxService::handshake(socket_t client) noexcept {
 }
 
 void LinuxService::handle(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
-    threadPool->postTask([&ctx, this]() {
+    threadPool->postTask([ctx, this]() {
         if (option->beforeHandle(ctx)) {
             option->onHandle(ctx);
         }
