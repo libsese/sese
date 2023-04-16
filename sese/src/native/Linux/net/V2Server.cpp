@@ -49,6 +49,7 @@ int64_t LinuxServiceIOContext::write(const void *buf, size_t len) noexcept {
 void LinuxServiceIOContext::close() noexcept {
     if (ssl) {
         ::SSL_shutdown((ssl_st *) ssl);
+        ::shutdown(socket, SHUT_RDWR);
     } else {
         ::shutdown(socket, SHUT_RDWR);
     }
@@ -128,23 +129,32 @@ void LinuxService::loop() noexcept {
                         continue;
                     }
 
+                    connect({clientSocket, clientSSL});
+
                     epoll_event event{
-                            .events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT,
+                            .events = EPOLLIN | EPOLLRDHUP | EPOLLHUP | EPOLLONESHOT,
                             .data = {.ptr = clientSSL}};
                     epoll_ctl(epoll, EPOLL_CTL_ADD, clientSocket, &event);
                 } else {
+
+                    connect({clientSocket, nullptr});
+
                     epoll_event event{
-                            .events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT,
+                            .events = EPOLLIN | EPOLLRDHUP | EPOLLHUP | EPOLLONESHOT,
                             .data = {.fd = clientSocket}};
                     epoll_ctl(epoll, EPOLL_CTL_ADD, clientSocket, &event);
                 }
             } else if (eventSet[i].events & EPOLLIN) {
-                if (eventSet[i].events & EPOLLRDHUP) {
+                if (eventSet[i].events & EPOLLRDHUP || eventSet[i].events & EPOLLHUP) {
                     socket_t clientSocket;
                     if (option->isSSL) {
                         clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
+
+                        closing({clientSocket, eventSet[i].data.ptr});
                     } else {
                         clientSocket = eventSet[i].data.fd;
+
+                        closing({clientSocket, nullptr});
                     }
                     ::close(clientSocket);
                 } else {
@@ -184,18 +194,30 @@ void *LinuxService::handshake(socket_t client) noexcept {
     return clientSSL;
 }
 
+void LinuxService::connect(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
+    threadPool->postTask([ctx, this]() {
+        auto myCtx = ctx;
+        option->onConnect(myCtx);
+    });
+}
+
 void LinuxService::handle(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        if (option->beforeHandle(myCtx)) {
-            option->onHandle(myCtx);
-        }
+        option->onHandle(myCtx);
         if (!myCtx.isClosing) {
             epoll_event event{
-                    .events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT,
+                    .events = EPOLLIN | EPOLLRDHUP | EPOLLHUP | EPOLLONESHOT,
                     .data = {.ptr = myCtx.ssl}};
             epoll_ctl(epoll, EPOLL_CTL_MOD, myCtx.socket, &event);
         }
+    });
+}
+
+void LinuxService::closing(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
+    threadPool->postTask([ctx, this]() {
+        auto myCtx = ctx;
+        option->onClosing(myCtx);
     });
 }
 

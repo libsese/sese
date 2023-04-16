@@ -2,6 +2,7 @@
 #include "sese/security/SSLContextBuilder.h"
 #include "sese/security/SecuritySocket.h"
 #include "sese/util/Random.h"
+#include "sese/util/Util.h"
 #include "gtest/gtest.h"
 
 auto makeRandomPortAddr() {
@@ -14,6 +15,11 @@ auto makeRandomPortAddr() {
 
 class RawServerOption : public sese::net::v2::ServerOption {
 public:
+    void onConnect(sese::net::v2::IOContext &context) noexcept override {
+        socket_t ident = context.getIdent();
+        printf("connecting %d\n", (int) ident);
+    }
+
     void onHandle(sese::net::v2::IOContext &context) noexcept override {
         char buf[1024]{};
         auto readSize = context.read(buf, 1024);
@@ -21,6 +27,11 @@ public:
         auto writeSize = context.write(buf, readSize);
         EXPECT_TRUE(writeSize == readSize);
         context.close();
+    }
+
+    void onClosing(sese::net::v2::IOContext &context) noexcept override {
+        socket_t ident = context.getIdent();
+        printf("closing %d\n", (int) ident);
     }
 };
 

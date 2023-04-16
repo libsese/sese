@@ -136,7 +136,11 @@ void WindowsService::loop() noexcept {
                         continue;
                     }
                     sslSet[eventNum] = clientSSL;
+                    connect({clientSocket, INVALID_HANDLE_VALUE, clientSSL});
+                } else {
+                    connect({clientSocket, INVALID_HANDLE_VALUE, nullptr});
                 }
+
 
                 WSAEVENT clientEvent = ::WSACreateEvent();
                 if (::WSAEventSelect(clientSocket, clientEvent, FD_READ | FD_CLOSE)) {
@@ -166,6 +170,7 @@ void WindowsService::loop() noexcept {
                 }
                 handle({socketSet[i], hEventSet[i], sslSet[i]});
             } else if (enumEvent.lNetworkEvents & FD_CLOSE) {
+                closing({socketSet[i], nullptr, nullptr});
                 // 关闭套接字，并将其从 socket数组 和 事件数组 中移除
                 if (option->isSSL) {
                     SSL_free((SSL *) sslSet[nIndex]);
@@ -205,15 +210,27 @@ void *WindowsService::handshake(SOCKET client) noexcept {
     return clientSSL;
 }
 
+void WindowsService::connect(IOContext ctx) noexcept {
+    threadPool->postTask([ctx, this](){
+        auto myCtx = ctx;
+        option->onConnect(myCtx);
+    });
+}
+
 void WindowsService::handle(IOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        if (option->beforeHandle(myCtx)) {
-            option->onHandle(myCtx);
-        }
+        option->onHandle(myCtx);
         if (!myCtx.isClosing) {
             WSAResetEvent(myCtx.event);
         }
+    });
+}
+
+void WindowsService::closing(IOContext ctx) noexcept {
+    threadPool->postTask([ctx, this]() {
+       auto myCtx = ctx;
+       option->onClosing(myCtx);
     });
 }
 

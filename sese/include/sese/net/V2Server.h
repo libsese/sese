@@ -43,7 +43,11 @@ namespace sese::net::v2 {
 
         void *handshake(SOCKET clientSocket) noexcept;
 
+        void connect(WindowsServiceIOContext ctx) noexcept;
+
         void handle(WindowsServiceIOContext ctx) noexcept;
+
+        void closing(WindowsServiceIOContext ctx) noexcept;
 
     protected:
         bool exit = false;
@@ -70,6 +74,8 @@ namespace sese::net::v2 {
         int64_t write(const void *buf, size_t len) noexcept;
 
         void close() noexcept;
+
+        [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
 
     protected:
         socket_t socket;
@@ -102,7 +108,11 @@ namespace sese::net::v2 {
 
         void *handshake(socket_t client) noexcept;
 
+        void connect(LinuxServiceIOContext ctx) noexcept;
+
         void handle(LinuxServiceIOContext ctx) noexcept;
+
+        void closing(LinuxServiceIOContext ctx) noexcept;
 
     protected:
         bool exit = false;
@@ -128,6 +138,8 @@ namespace sese::net::v2 {
         int64_t write(const void *buf, size_t len) noexcept;
 
         void close() noexcept;
+
+        [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
 
     protected:
         socket_t socket;
@@ -159,13 +171,17 @@ namespace sese::net::v2 {
 
         void *handshake(socket_t client) noexcept;
 
+        void connect(DarwinServiceIOContext ctx) noexcept;
+
         void handle(DarwinServiceIOContext ctx) noexcept;
+
+        void closing(DarwinServiceIOContext ctx) noexcept;
 
     protected:
         bool exit = false;
         int kqueue = -1;
         socket_t socket = -1;
-        struct kevent eventSet[MaxEventSize]{};
+        struct kevent eventSet[MaxEventSize] {};
 
         ServerOption *option{nullptr};
         Thread::Ptr mainThread{nullptr};
@@ -185,6 +201,8 @@ namespace sese::net::v2 {
         int64_t write(const void *buf, size_t len) noexcept;
 
         void close() noexcept;
+
+        [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
 
     protected:
         socket_t socket;
@@ -211,16 +229,17 @@ namespace sese::net::v2 {
         /// SSL 上下文
         security::SSLContext::Ptr sslContext = nullptr;
 
-        /// 此函数通常在连接和可读后第一时间被调用。
-        /// 返回 true 则表明需要下一步的处理，即将进入 onHandle，
-        /// 返回 false 则将不会进入 onHandle，可以进行其他处理
-        virtual bool beforeHandle(sese::net::v2::IOContext &) noexcept {
-            return true;
+        /// 当连接首次接入时触发
+        virtual void onConnect(sese::net::v2::IOContext &) noexcept {
         }
 
         /// 对连接进行正式处理的函数
         virtual void onHandle(sese::net::v2::IOContext &) noexcept {
             /// 此处一般为业务处理代码，默认实现为空
+        }
+
+        /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
+        virtual void onClosing(sese::net::v2::IOContext &) noexcept {
         }
     };
 
