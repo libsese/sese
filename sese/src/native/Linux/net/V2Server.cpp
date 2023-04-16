@@ -161,13 +161,16 @@ void LinuxService::loop() noexcept {
                     ::close(clientSocket);
                 } else {
                     if (option->isSSL) {
+                        auto clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
+
                         char buf;
                         auto rt = SSL_peek((ssl_st *) eventSet[i].data.ptr, &buf, 1);
                         if (rt <= 0) {
+                            // 通常来说是被动关闭
+                            closing({clientSocket, eventSet[i].data.ptr});
                             continue;
                         }
 
-                        auto clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
                         handle({clientSocket, eventSet[i].data.ptr});
                     } else {
                         handle({eventSet[i].data.fd, nullptr});
