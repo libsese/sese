@@ -10,9 +10,6 @@
 #include "sese/security/SSLContext.h"
 #include "sese/thread/ThreadPool.h"
 
-#include <map>
-#include <memory>
-
 #if defined(SESE_PLATFORM_WINDOWS)
 #define MaxEventSize 64
 #elif defined(SESE_PLATFORM_LINUX)
@@ -140,6 +137,63 @@ namespace sese::net::v2 {
 
     using IOContext = LinuxServiceIOContext;
     using Server = LinuxService;
+
+#endif
+
+#ifdef SESE_PLATFORM_APPLE
+
+    class DarwinServiceIOContext;
+
+    class API DarwinService {
+    public:
+        using Ptr = std::unique_ptr<DarwinService>;
+
+        static DarwinService::Ptr create(ServerOption *opt) noexcept;
+
+        void start() noexcept;
+
+        void shutdown() noexcept;
+
+    protected:
+        void loop() noexcept;
+
+        void *handshake(socket_t client) noexcept;
+
+        void handle(DarwinServiceIOContext ctx) noexcept;
+
+    protected:
+        bool exit = false;
+        int kqueue = -1;
+        socket_t socket = -1;
+        struct kevent eventSet[MaxEventSize]{};
+
+        ServerOption *option{nullptr};
+        Thread::Ptr mainThread{nullptr};
+        ThreadPool::Ptr threadPool{nullptr};
+    };
+
+    class API DarwinServiceIOContext {
+        friend class DarwinService;
+
+    public:
+        DarwinServiceIOContext(socket_t socket, void *ssl) noexcept;
+
+        int64_t peek(void *buf, size_t len) noexcept;
+
+        int64_t read(void *buf, size_t len) noexcept;
+
+        int64_t write(const void *buf, size_t len) noexcept;
+
+        void close() noexcept;
+
+    protected:
+        socket_t socket;
+        void *ssl = nullptr;
+        bool isClosing = false;
+    };
+
+    using IOContext = DarwinServiceIOContext;
+    using Server = DarwinService;
 
 #endif
 
