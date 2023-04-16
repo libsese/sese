@@ -10,7 +10,7 @@ using namespace sese::json;
 
 #define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
 
-void sese::net::v2::rpc::V2RpcServerOption::onHandle(sese::net::v2::IOContext ctx) noexcept {
+void sese::net::v2::rpc::V2RpcServerOption::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     auto stream = std::make_shared<ClosablePackagedStream<IOContext>>(&ctx);
 
     auto input = std::make_shared<BufferedInputStream>(stream);

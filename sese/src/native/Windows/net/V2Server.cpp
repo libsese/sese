@@ -4,9 +4,9 @@
 using namespace sese::net::v2;
 
 WindowsServiceIOContext::WindowsServiceIOContext(socket_t socket, HANDLE handle, void *ssl) noexcept
-        : socket(socket),
-          event(handle),
-          ssl(ssl) {
+    : socket(socket),
+      event(handle),
+      ssl(ssl) {
 }
 
 int64_t WindowsServiceIOContext::peek(void *buf, size_t len) noexcept {
@@ -47,12 +47,8 @@ WindowsService::Ptr sese::net::v2::WindowsService::create(ServerOption *opt) noe
         return nullptr;
     }
 
-    if (opt->isSSL) {
-        if (opt->sslContext) {
-            if (!opt->sslContext->authPrivateKey()) {
-                return nullptr;
-            }
-        } else {
+    if (opt->isSSL && opt->sslContext) {
+        if (!opt->sslContext->authPrivateKey()) {
             return nullptr;
         }
     }
@@ -159,6 +155,15 @@ void WindowsService::loop() noexcept {
                     }
                     continue;
                 }
+
+                /// WSAEventSelect 在对端调用 SSL_shutdown 之后依然会收到一次可读事件
+                if (option->isSSL) {
+                    char buf;
+                    auto rt = SSL_peek((ssl_st *) sslSet[i], &buf, 1);
+                    if (rt <= 0) {
+                        continue;
+                    }
+                }
                 handle({socketSet[i], hEventSet[i], sslSet[i]});
             } else if (enumEvent.lNetworkEvents & FD_CLOSE) {
                 // 关闭套接字，并将其从 socket数组 和 事件数组 中移除
@@ -202,11 +207,12 @@ void *WindowsService::handshake(SOCKET client) noexcept {
 
 void WindowsService::handle(IOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
-        if (option->beforeHandle(ctx)) {
-            option->onHandle(ctx);
+        auto myCtx = ctx;
+        if (option->beforeHandle(myCtx)) {
+            option->onHandle(myCtx);
         }
-        if (!ctx.isClosing) {
-            WSAResetEvent(ctx.event);
+        if (!myCtx.isClosing) {
+            WSAResetEvent(myCtx.event);
         }
     });
 }

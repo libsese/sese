@@ -18,7 +18,7 @@ namespace sese::net::v2::rpc {
         /// 参数与返回值均为 sese::json::ObjectData::Ptr
         using Func = std::function<void(json::ObjectData::Ptr &, json::ObjectData::Ptr &)>;
 
-        void onHandle(sese::net::v2::IOContext ctx) noexcept override;
+        void onHandle(sese::net::v2::IOContext &ctx) noexcept override;
 
         /// 此选项用于注册服务
         std::map<std::string, Func> map;

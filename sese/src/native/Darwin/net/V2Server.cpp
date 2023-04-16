@@ -186,15 +186,17 @@ void *DarwinService::handshake(socket_t client) noexcept {
 
 void DarwinService::handle(DarwinServiceIOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
-        if (option->beforeHandle(ctx)) {
-            option->onHandle(ctx);
+        auto myCtx = ctx;
+
+        if (option->beforeHandle(myCtx)) {
+            option->onHandle(myCtx);
         }
 
-        if (!ctx.isClosing) {
+        if (!myCtx.isClosing) {
             struct kevent event {};
-            EV_SET(&event, ctx.socket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, ctx.ssl);
+            EV_SET(&event, myCtx.socket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, myCtx.ssl);
             ::kevent(kqueue, &event, 1, nullptr, 0, nullptr);
-        } 
+        }
     });
 }
 

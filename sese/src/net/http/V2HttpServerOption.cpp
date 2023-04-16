@@ -2,7 +2,7 @@
 #include "sese/net/V2Server.h"
 #include "sese/net/http/HttpUtil.h"
 
-void sese::net::v2::http::HttpServerOption::onHandle(sese::net::v2::IOContext ctx) noexcept {
+void sese::net::v2::http::HttpServerOption::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     HttpContext httpContext;
     httpContext.reset(&ctx);
     if (!sese::http::HttpUtil::recvRequest(&httpContext, &httpContext.request)) {

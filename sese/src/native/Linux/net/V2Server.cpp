@@ -60,12 +60,8 @@ LinuxService::Ptr LinuxService::create(ServerOption *opt) noexcept {
         return nullptr;
     }
 
-    if (opt->isSSL) {
-        if (opt->sslContext) {
-            if (!opt->sslContext->authPrivateKey()) {
-                return nullptr;
-            }
-        } else {
+    if (opt->isSSL && opt->sslContext) {
+        if (!opt->sslContext->authPrivateKey()) {
             return nullptr;
         }
     }
@@ -190,21 +186,15 @@ void *LinuxService::handshake(socket_t client) noexcept {
 
 void LinuxService::handle(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
-        if (option->beforeHandle(ctx)) {
-            option->onHandle(ctx);
+        auto myCtx = ctx;
+        if (option->beforeHandle(myCtx)) {
+            option->onHandle(myCtx);
         }
-        if (!ctx.isClosing) {
-            if (option->isSSL) {
-                epoll_event event{
-                        .events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT,
-                        .data = {.ptr = ctx.ssl}};
-                epoll_ctl(epoll, EPOLL_CTL_MOD, ctx.socket, &event);
-            } else {
-                epoll_event event{
-                        .events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT,
-                        .data = {.fd = ctx.socket}};
-                epoll_ctl(epoll, EPOLL_CTL_MOD, ctx.socket, &event);
-            }
+        if (!myCtx.isClosing) {
+            epoll_event event{
+                    .events = EPOLLIN | EPOLLRDHUP | EPOLLONESHOT,
+                    .data = {.ptr = myCtx.ssl}};
+            epoll_ctl(epoll, EPOLL_CTL_MOD, myCtx.socket, &event);
         }
     });
 }

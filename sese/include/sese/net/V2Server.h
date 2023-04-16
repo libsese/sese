@@ -214,12 +214,12 @@ namespace sese::net::v2 {
         /// 此函数通常在连接和可读后第一时间被调用。
         /// 返回 true 则表明需要下一步的处理，即将进入 onHandle，
         /// 返回 false 则将不会进入 onHandle，可以进行其他处理
-        virtual bool beforeHandle(sese::net::v2::IOContext) noexcept {
+        virtual bool beforeHandle(sese::net::v2::IOContext &) noexcept {
             return true;
         }
 
         /// 对连接进行正式处理的函数
-        virtual void onHandle(sese::net::v2::IOContext) noexcept {
+        virtual void onHandle(sese::net::v2::IOContext &) noexcept {
             /// 此处一般为业务处理代码，默认实现为空
         }
     };

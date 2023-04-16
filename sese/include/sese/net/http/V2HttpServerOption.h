@@ -15,7 +15,7 @@ namespace sese::net::v2::http {
 
     /// Http 服务选项
     struct HttpServerOption : public ServerOption {
-        void onHandle(sese::net::v2::IOContext ctx) noexcept override;
+        void onHandle(sese::net::v2::IOContext &ctx) noexcept override;
 
         virtual void onRequest(HttpContext *ctx) noexcept;
     };

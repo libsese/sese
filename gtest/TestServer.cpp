@@ -14,7 +14,7 @@ auto makeRandomPortAddr() {
 
 class RawServerOption : public sese::net::v2::ServerOption {
 public:
-    void onHandle(sese::net::v2::IOContext context) noexcept override {
+    void onHandle(sese::net::v2::IOContext &context) noexcept override {
         char buf[1024]{};
         auto readSize = context.read(buf, 1024);
         ASSERT_TRUE(readSize > 0);
