@@ -114,6 +114,7 @@ void LinuxService::loop() noexcept {
         if (-1 == numOfFds) continue;
 
         for (int i = 0; i < numOfFds; ++i) {
+            auto fd = eventSet[i].data.fd;
             if (eventSet[i].data.fd == socket) {
                 socket_t clientSocket = ::accept(socket, nullptr, nullptr);
 
@@ -146,6 +147,7 @@ void LinuxService::loop() noexcept {
                 }
             } else if (eventSet[i].events & EPOLLIN) {
                 if (eventSet[i].events & EPOLLRDHUP || eventSet[i].events & EPOLLHUP) {
+                    // 仅有对端关闭能触发
                     socket_t clientSocket;
                     if (option->isSSL) {
                         clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
@@ -159,6 +161,12 @@ void LinuxService::loop() noexcept {
                     ::close(clientSocket);
                 } else {
                     if (option->isSSL) {
+                        char buf;
+                        auto rt = SSL_peek((ssl_st *) eventSet[i].data.ptr, &buf, 1);
+                        if (rt <= 0) {
+                            continue;
+                        }
+
                         auto clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
                         handle({clientSocket, eventSet[i].data.ptr});
                     } else {
@@ -206,10 +214,20 @@ void LinuxService::handle(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
         auto myCtx = ctx;
         option->onHandle(myCtx);
         if (!myCtx.isClosing) {
-            epoll_event event{
-                    .events = EPOLLIN | EPOLLRDHUP | EPOLLHUP | EPOLLONESHOT,
-                    .data = {.ptr = myCtx.ssl}};
-            epoll_ctl(epoll, EPOLL_CTL_MOD, myCtx.socket, &event);
+            if (option->isSSL) {
+                epoll_event event{
+                        .events = EPOLLIN | EPOLLRDHUP | EPOLLHUP | EPOLLONESHOT,
+                        .data = {.ptr = myCtx.ssl}};
+                epoll_ctl(epoll, EPOLL_CTL_MOD, myCtx.socket, &event);
+            } else {
+                epoll_event event{
+                        .events = EPOLLIN | EPOLLRDHUP | EPOLLHUP | EPOLLONESHOT,
+                        .data = {.fd = myCtx.socket}};
+                epoll_ctl(epoll, EPOLL_CTL_MOD, myCtx.socket, &event);
+            }
+        } else {
+            // 此处为主动关闭触发
+            option->onClosing(myCtx);
         }
     });
 }

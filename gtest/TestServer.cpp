@@ -26,7 +26,7 @@ public:
         ASSERT_TRUE(readSize > 0);
         auto writeSize = context.write(buf, readSize);
         EXPECT_TRUE(writeSize == readSize);
-        context.close();
+        // context.close();
     }
 
     void onClosing(sese::net::v2::IOContext &context) noexcept override {
@@ -71,6 +71,7 @@ TEST(TestServer, RawServer) {
 close:
     client.shutdown(sese::Socket::ShutdownMode::Both);
     client.close();
+    sese::sleep(1);
 shutdown:
     server->shutdown();
 }
@@ -117,6 +118,7 @@ TEST(TestServer, RawSSLServer) {
 close:
     client.shutdown(sese::Socket::ShutdownMode::Both);
     client.close();
+    sese::sleep(1);
 shutdown:
     server->shutdown();
 }
