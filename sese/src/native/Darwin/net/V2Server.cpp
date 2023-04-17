@@ -159,6 +159,21 @@ void DarwinService::loop() noexcept {
                     close((int) eventSet[i].ident);
                     continue;
                 } else {
+                    if (option->isSSL) {
+                        auto clientSocket = (socket_t) eventSet[i].ident;
+
+                        char buf;
+                        auto rt = SSL_peek((ssl_st *) eventSet[i].udata, &buf, 1);
+                        if (rt <= 0) {
+                            closing({clientSocket, eventSet[i].udata});
+
+                            SSL_free((ssl_st *) eventSet[i].udata);
+                            ::close(clientSocket);
+
+                            continue;
+                        }
+                    }
+
                     handle({(socket_t) eventSet[i].ident, eventSet[i].udata});
                     continue;
                 }
