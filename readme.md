@@ -43,11 +43,13 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 | sese.plugin   | github.com/libsese/sese.plugin      | 本机插件接口       |
 | hpack-rfc7541 | github.com/jnferguson/hpack-rfc7541 | HUFFMAN 编码解码 |
 
-开放的编译选项：
+构建单元测试：
 
-| 名称              | 描述            | 默认值 |
-|-----------------|---------------|-----|
-| SESE_BUILD_TEST | 构建 sese 的单元测试 | OFF |
+需要添加如下两个配置选项
+
+> -DSESE_BUILD_TEST=BOOL:TRUE
+>
+> -DVCPKG_MANIFEST_FEATURES=tests
 
 工具链的选取：
 
@@ -90,7 +92,7 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
                "repository": "https://github.com/libsese/vcpkg-registry.git",
                "baseline": "the-repository-base-line-what-you-need",
                "packages": [
-                   "sese"
+                   "sese", "simpleuuid", "sstring", "sese-plugin"
                ]
            }
        ]
@@ -113,6 +115,9 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 3. 在 CMakeLists.text 直接使用
 
    ```cmake
+   find_package(SString REQUIRED)
+   find_package(SimpleUuid REQUIRED)
+   find_package(sese-plugin CONFIG REQUIRED)
    find_package(Sese CONFIG REQUIRED)
    target_link_libraries(main PRIVATE Sese::Core)
    ```
