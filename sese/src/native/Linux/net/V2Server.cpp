@@ -153,12 +153,16 @@ void LinuxService::loop() noexcept {
                         clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
 
                         closing({clientSocket, eventSet[i].data.ptr});
+
+                        SSL_free((ssl_st *) eventSet[i].data.ptr);
                     } else {
                         clientSocket = eventSet[i].data.fd;
 
                         closing({clientSocket, nullptr});
                     }
                     ::close(clientSocket);
+
+                    epoll_ctl(epoll, EPOLL_CTL_DEL, clientSocket, nullptr);
                 } else {
                     if (option->isSSL) {
                         auto clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
@@ -168,6 +172,11 @@ void LinuxService::loop() noexcept {
                         if (rt <= 0) {
                             // 通常来说是被动关闭
                             closing({clientSocket, eventSet[i].data.ptr});
+
+                            SSL_free((ssl_st *) eventSet[i].data.ptr);
+                            ::close(clientSocket);
+
+                            epoll_ctl(epoll, EPOLL_CTL_DEL, clientSocket, nullptr);
                             continue;
                         }
 
@@ -231,6 +240,12 @@ void LinuxService::handle(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
         } else {
             // 此处为主动关闭触发
             option->onClosing(myCtx);
+
+            if (option->isSSL) {
+                SSL_free((ssl_st *) myCtx.ssl);
+                ::close(myCtx.socket);
+            }
+            epoll_ctl(epoll, EPOLL_CTL_DEL, myCtx.socket, nullptr);
         }
     });
 }
