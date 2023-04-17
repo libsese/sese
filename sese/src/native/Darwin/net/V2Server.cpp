@@ -135,10 +135,14 @@ void DarwinService::loop() noexcept {
                         continue;
                     }
 
+                    connect({clientSocket, clientSSL});
+
                     struct kevent event {};
                     EV_SET(&event, clientSocket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, clientSSL);
                     ::kevent(kqueue, &event, 1, nullptr, 0, nullptr);
                 } else {
+                    connect({clientSocket, nullptr});
+
                     struct kevent event {};
                     EV_SET(&event, clientSocket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, nullptr);
                     ::kevent(kqueue, &event, 1, nullptr, 0, nullptr);
@@ -147,7 +151,10 @@ void DarwinService::loop() noexcept {
                 if (eventSet[i].flags & EV_EOF) {
                     if (option->isSSL) {
                         auto *clientSSL = (ssl_st *) eventSet[i].udata;
+                        closing({(socket_t) eventSet[i].ident, clientSSL});
                         SSL_free(clientSSL);
+                    } else {
+                        closing({(socket_t) eventSet[i].ident, nullptr});
                     }
                     close((int) eventSet[i].ident);
                     continue;
@@ -184,22 +191,39 @@ void *DarwinService::handshake(socket_t client) noexcept {
     return clientSSL;
 }
 
+void DarwinService::connect(DarwinServiceIOContext ctx) noexcept {
+    threadPool->postTask([ctx, this](){
+        auto myCtx = ctx;
+        option->onConnect(myCtx);
+    });
+}
+
 void DarwinService::handle(DarwinServiceIOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
 
-        if (option->beforeHandle(myCtx)) {
-            option->onHandle(myCtx);
-        }
+        option->onHandle(myCtx);
 
         if (!myCtx.isClosing) {
             struct kevent event {};
             EV_SET(&event, myCtx.socket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, myCtx.ssl);
             ::kevent(kqueue, &event, 1, nullptr, 0, nullptr);
+        } else {
+            option->onClosing(myCtx);
+            if (option->isSSL) {
+                SSL_free((ssl_st *) myCtx.ssl);
+            }
+            close(myCtx.socket);
         }
     });
 }
 
+void DarwinService::closing(DarwinServiceIOContext ctx) noexcept {
+    threadPool->postTask([ctx, this](){
+        auto myCtx = ctx;
+        option->onClosing(myCtx);
+    });
+}
 
 void DarwinService::start() noexcept {
     mainThread = std::make_unique<Thread>([this]() { loop(); }, "LINUX_MAIN");
