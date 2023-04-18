@@ -1,9 +1,11 @@
-#include "sese/net/V2Server.h"
+#include "gtest/gtest.h"
+#include "sese/net/rpc/Client.h"
+#include "sese/net/rpc/Marco.h"
+#include "sese/net/rpc/V2RpcServerOption.h"
 #include "sese/security/SSLContextBuilder.h"
 #include "sese/security/SecuritySocket.h"
 #include "sese/util/Random.h"
 #include "sese/util/Util.h"
-#include "gtest/gtest.h"
 
 auto makeRandomPortAddr() {
     auto port = (uint16_t) (sese::Random::next() % (65535 - 1024) + 1024);
@@ -120,5 +122,45 @@ close:
     client.close();
     sese::sleep(1);
 shutdown:
+    server->shutdown();
+}
+
+void add(sese::json::ObjectData::Ptr &args, sese::json::ObjectData::Ptr &result) {
+    GetInteger4Server(add0, "add0", 0);
+    GetInteger4Server(add1, "add1", 0);
+
+    auto rt = add0 + add1;
+
+    SetInteger(result, "result", rt);
+}
+
+TEST(TestServer, RPC) {
+    auto addr = makeRandomPortAddr();
+    ASSERT_TRUE(addr != nullptr);
+
+    sese::net::v2::rpc::V2RpcServerOption option;
+    option.address = addr;
+    option.map["add"] = add;
+    auto server = sese::net::v2::Server::create(&option);
+    ASSERT_TRUE(server != nullptr);
+    server->start();
+
+    int value0 = 100;
+    int value1 = 200;
+    sese::rpc::Client client(addr);
+    auto args = std::make_shared<sese::json::ObjectData>();
+    SetInteger(args, "add0", value0);
+    SetInteger(args, "add1", value1);
+    auto result = client.call("add", args);
+
+    GetInteger(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
+    if (SESE_RPC_CODE_SUCCEED == code) {
+        GetInteger(add_result, result, "result", 0);
+        EXPECT_TRUE(add_result == 300);
+    } else {
+        EXPECT_TRUE(SESE_RPC_CODE_SUCCEED == code);
+        puts(sese::rpc::getErrorMessage(code));
+    }
+
     server->shutdown();
 }
