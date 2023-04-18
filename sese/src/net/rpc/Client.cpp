@@ -25,7 +25,6 @@ json::ObjectData::Ptr Client::call(const std::string &name, json::ObjectData::Pt
     auto object = makeTemplateRequest(name);
     object->set(SESE_RPC_TAG_ARGS, args);
     json::JsonUtil::serialize(object, connect);
-    connect->shutdown(Socket::ShutdownMode::Write);
     auto result = json::JsonUtil::deserialize(connect, 5);
     return result;
 }

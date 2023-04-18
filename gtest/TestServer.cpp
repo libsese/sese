@@ -152,6 +152,7 @@ TEST(TestServer, RPC) {
     SetInteger(args, "add0", value0);
     SetInteger(args, "add1", value1);
     auto result = client.call("add", args);
+    ASSERT_TRUE(result != nullptr);
 
     GetInteger(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
     if (SESE_RPC_CODE_SUCCEED == code) {
