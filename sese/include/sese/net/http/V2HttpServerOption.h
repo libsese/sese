@@ -15,8 +15,24 @@ namespace sese::net::v2::http {
 
     /// Http 服务选项
     struct HttpServerOption : public ServerOption {
+
+        explicit HttpServerOption(size_t keepAlive = 0) noexcept;
+
+        ~HttpServerOption() noexcept override;
+
+        void onConnect(IOContext &context) noexcept override;
+
         void onHandle(sese::net::v2::IOContext &ctx) noexcept override;
 
-        virtual void onRequest(HttpContext *ctx) noexcept;
+        void onClosing(IOContext &context) noexcept override;
+
+        virtual void onRequest(HttpContext &ctx) noexcept;
+
+    protected:
+        size_t keepAlive = 0;
+        Timer::Ptr timer;
+
+        std::mutex mutex;
+        std::map<socket_t, TimerTask::Ptr> taskMap;
     };
 }// namespace sese::net::v2::http

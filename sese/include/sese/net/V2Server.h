@@ -217,6 +217,9 @@ namespace sese::net::v2 {
 
     /// 服务器选项，用于指定功能的可拓展实体
     struct API ServerOption {
+
+        virtual ~ServerOption() = default;
+
         /// 绑定的地址与端口，必填
         IPAddress::Ptr address = nullptr;
 

@@ -173,13 +173,13 @@ void WindowsService::loop() noexcept {
                 closing({socketSet[i], nullptr, nullptr});
                 // 关闭套接字，并将其从 socket数组 和 事件数组 中移除
                 if (option->isSSL) {
-                    SSL_free((SSL *) sslSet[nIndex]);
-                    memmove(&sslSet[nIndex], &sslSet[nIndex + 1], (eventNum - nIndex - 1) * sizeof(PVOID));
+                    SSL_free((SSL *) sslSet[i]);
+                    memmove(&sslSet[i], &sslSet[i + 1], (eventNum - i - 1) * sizeof(PVOID));
                 }
-                closesocket(socketSet[nIndex]);
-                WSACloseEvent(hEventSet[nIndex]);
-                memmove(&socketSet[nIndex], &socketSet[nIndex + 1], (eventNum - nIndex - 1) * sizeof(SOCKET));
-                memmove(&hEventSet[nIndex], &hEventSet[nIndex + 1], (eventNum - nIndex - 1) * sizeof(HANDLE));
+                closesocket(socketSet[i]);
+                WSACloseEvent(hEventSet[i]);
+                memmove(&socketSet[i], &socketSet[i + 1], (eventNum - i - 1) * sizeof(SOCKET));
+                memmove(&hEventSet[i], &hEventSet[i + 1], (eventNum - i - 1) * sizeof(HANDLE));
                 eventNum -= 1;
             }
         }
@@ -211,7 +211,7 @@ void *WindowsService::handshake(SOCKET client) noexcept {
 }
 
 void WindowsService::connect(IOContext ctx) noexcept {
-    threadPool->postTask([ctx, this](){
+    threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
         option->onConnect(myCtx);
     });
@@ -229,8 +229,8 @@ void WindowsService::handle(IOContext ctx) noexcept {
 
 void WindowsService::closing(IOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
-       auto myCtx = ctx;
-       option->onClosing(myCtx);
+        auto myCtx = ctx;
+        option->onClosing(myCtx);
     });
 }
 

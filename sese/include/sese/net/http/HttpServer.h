@@ -10,8 +10,8 @@
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
 #include <sese/net/http/HttpUtil.h>
-#include <sese/util/Timer.h>
-#include <map>
+// #include <sese/util/Timer.h>
+// #include <map>
 
 #ifdef WIN32
 #pragma warning(disable : 4996)
@@ -90,50 +90,50 @@ namespace sese::http {
     };
 
     /// Http 服务器
-    class API HttpServer final {
-    public:
-        using Ptr = std::unique_ptr<HttpServer>;
-        using ServiceContext = HttpServiceContext<IOContext>;
-        using PreHandler = std::function<bool(IOContext *)>;
-        using Handler = std::function<void(ServiceContext *)>;
-
-        /// 创建一个 Http 服务器
-        /// \param ipAddress 绑定的地址
-        /// \param threads 线程数目
-        /// \param keepAlive Keep-Alive 时长
-        /// \return 创建成功返回其指针，失败则为 nullptr
-        static HttpServer::Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
-        void loopWith(const Handler &handler);
-        void shutdown();
-
-    private:
-        explicit HttpServer() = default;
-
-        TcpServer::Ptr tcpServer = nullptr;
-    };
-
-    class API HttpsServer {
-    public:
-        using Ptr = std::unique_ptr<HttpsServer>;
-        using ServiceContext = HttpServiceContext<security::IOContext>;
-        using Handler = std::function<void(ServiceContext *)>;
-
-        struct SecurityOptions {
-            const char *CA = nullptr;
-            const char *KEY = nullptr;
-        };
-
-        static HttpsServer::Ptr create(
-                const IPAddress::Ptr &ipAddress,
-                size_t threads,
-                size_t keepAlive,
-                SecurityOptions options
-        ) noexcept;
-        void loopWith(const Handler &handler);
-        void shutdown();
-
-    private:
-        explicit HttpsServer() = default;
-        security::SecurityTcpServer::Ptr tcpServer = nullptr;
-    };
+    //    class API HttpServer final {
+    //    public:
+    //        using Ptr = std::unique_ptr<HttpServer>;
+    //        using ServiceContext = HttpServiceContext<IOContext>;
+    //        using PreHandler = std::function<bool(IOContext *)>;
+    //        using Handler = std::function<void(ServiceContext *)>;
+    //
+    //        /// 创建一个 Http 服务器
+    //        /// \param ipAddress 绑定的地址
+    //        /// \param threads 线程数目
+    //        /// \param keepAlive Keep-Alive 时长
+    //        /// \return 创建成功返回其指针，失败则为 nullptr
+    //        static HttpServer::Ptr create(const IPAddress::Ptr &ipAddress, size_t threads = SERVER_DEFAULT_THREADS, size_t keepAlive = SERVER_KEEP_ALIVE_DURATION) noexcept;
+    //        void loopWith(const Handler &handler);
+    //        void shutdown();
+    //
+    //    private:
+    //        explicit HttpServer() = default;
+    //
+    //        TcpServer::Ptr tcpServer = nullptr;
+    //    };
+    //
+    //    class API HttpsServer {
+    //    public:
+    //        using Ptr = std::unique_ptr<HttpsServer>;
+    //        using ServiceContext = HttpServiceContext<security::IOContext>;
+    //        using Handler = std::function<void(ServiceContext *)>;
+    //
+    //        struct SecurityOptions {
+    //            const char *CA = nullptr;
+    //            const char *KEY = nullptr;
+    //        };
+    //
+    //        static HttpsServer::Ptr create(
+    //                const IPAddress::Ptr &ipAddress,
+    //                size_t threads,
+    //                size_t keepAlive,
+    //                SecurityOptions options
+    //        ) noexcept;
+    //        void loopWith(const Handler &handler);
+    //        void shutdown();
+    //
+    //    private:
+    //        explicit HttpsServer() = default;
+    //        security::SecurityTcpServer::Ptr tcpServer = nullptr;
+    //    };
 }// namespace sese::http
