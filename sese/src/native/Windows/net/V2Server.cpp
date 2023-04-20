@@ -168,6 +168,7 @@ void WindowsService::loop() noexcept {
                         continue;
                     }
                 }
+                WSAEventSelect(socketSet[i], hEventSet[i], FD_CLOSE);
                 handle({socketSet[i], hEventSet[i], sslSet[i]});
             } else if (enumEvent.lNetworkEvents & FD_CLOSE) {
                 closing({socketSet[i], nullptr, nullptr});
@@ -222,7 +223,8 @@ void WindowsService::handle(IOContext ctx) noexcept {
         auto myCtx = ctx;
         option->onHandle(myCtx);
         if (!myCtx.isClosing) {
-            WSAResetEvent(myCtx.event);
+            // WSAResetEvent(myCtx.event);
+            WSAEventSelect(myCtx.socket, myCtx.event, FD_READ | FD_CLOSE);
         }
     });
 }
