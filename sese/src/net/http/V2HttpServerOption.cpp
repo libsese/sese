@@ -69,7 +69,7 @@ sese::net::v2::http::HttpServerOption::~HttpServerOption() noexcept {
 }
 
 void sese::net::v2::http::HttpServerOption::onConnect(sese::net::v2::IOContext &context) noexcept {
-    printf("CONN: %d\n", (int) context.getIdent());
+    // printf("CONN: %d\n", (int) context.getIdent());
     if (keepAlive > 0) {
         auto task = timer->delay(
                 [context]() {
@@ -84,7 +84,7 @@ void sese::net::v2::http::HttpServerOption::onConnect(sese::net::v2::IOContext &
 }
 
 void sese::net::v2::http::HttpServerOption::onClosing(sese::net::v2::IOContext &context) noexcept {
-    printf("CLOSE: %d\n", (int) context.getIdent());
+    // printf("CLOSE: %d\n", (int) context.getIdent());
     if (keepAlive > 0) {
         sese::Locker locker(mutex);
         auto iterator = taskMap.find(context.getIdent());
