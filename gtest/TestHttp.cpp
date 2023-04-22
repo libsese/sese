@@ -10,7 +10,7 @@ using namespace sese;
 auto makeRandomPortAddr() {
     auto port = (uint16_t) (sese::Random::next() % (65535 - 1024) + 1024);
     printf("select port %d\n", port);
-    auto addr = sese::IPv4Address::localhost();
+    auto addr = sese::net::IPv4Address::localhost();
     addr->setPort(port);
     return addr;
 }
@@ -29,7 +29,7 @@ TEST(TestHttp, _0) {
     char buf1[256]{};
     int64_t writeSize;
 
-    sese::Socket client(sese::Socket::Family::IPv4, sese::Socket::Type::TCP);
+    sese::net::Socket client(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
     if (client.connect(addr)) {
         EXPECT_TRUE(false);
         goto shutdown;
@@ -49,7 +49,7 @@ TEST(TestHttp, _0) {
     }
 
 close:
-    client.shutdown(Socket::ShutdownMode::Both);
+    client.shutdown(sese::net::Socket::ShutdownMode::Both);
     client.close();
     std::this_thread::sleep_for(std::chrono::seconds(1));
 shutdown:

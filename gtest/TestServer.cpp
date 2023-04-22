@@ -10,7 +10,7 @@
 auto makeRandomPortAddr() {
     auto port = (uint16_t) (sese::Random::next() % (65535 - 1024) + 1024);
     printf("select port %d\n", port);
-    auto addr = sese::IPv4Address::localhost();
+    auto addr = sese::net::IPv4Address::localhost();
     addr->setPort(port);
     return addr;
 }
@@ -54,7 +54,10 @@ TEST(TestServer, RawServer) {
     char buf1[16]{};
     int64_t writeSize, readSize;
 
-    sese::Socket client(sese::Socket::Family::IPv4, sese::Socket::Type::TCP);
+    sese::net::Socket client(
+            sese::net::Socket::Family::IPv4,
+            sese::net::Socket::Type::TCP
+    );
     if (client.connect(addr)) {
         EXPECT_TRUE(false);
         goto shutdown;
@@ -71,7 +74,7 @@ TEST(TestServer, RawServer) {
     EXPECT_TRUE(0 == strcmp(buf0, buf1));
 
 close:
-    client.shutdown(sese::Socket::ShutdownMode::Both);
+    client.shutdown(sese::net::Socket::ShutdownMode::Both);
     client.close();
     sese::sleep(1);
 shutdown:
@@ -101,7 +104,7 @@ TEST(TestServer, RawSSLServer) {
     int64_t writeSize, readSize;
 
     auto clientCtx = sese::security::SSLContextBuilder::SSL4Client();
-    sese::security::SecuritySocket client(clientCtx, sese::Socket::Family::IPv4, 0);
+    sese::security::SecuritySocket client(clientCtx, sese::net::Socket::Family::IPv4, 0);
     if (client.connect(addr)) {
         EXPECT_TRUE(false);
         goto shutdown;
@@ -118,7 +121,7 @@ TEST(TestServer, RawSSLServer) {
     EXPECT_TRUE(0 == strcmp(buf0, buf1));
 
 close:
-    client.shutdown(sese::Socket::ShutdownMode::Both);
+    client.shutdown(sese::net::Socket::ShutdownMode::Both);
     client.close();
     sese::sleep(1);
 shutdown:
@@ -147,7 +150,7 @@ TEST(TestServer, RPC) {
 
     int value0 = 100;
     int value1 = 200;
-    sese::rpc::Client client(addr);
+    sese::net::rpc::Client client(addr);
     auto args = std::make_shared<sese::json::ObjectData>();
     SetInteger(args, "add0", value0);
     SetInteger(args, "add1", value1);
@@ -160,7 +163,7 @@ TEST(TestServer, RPC) {
         EXPECT_TRUE(add_result == 300);
     } else {
         EXPECT_TRUE(SESE_RPC_CODE_SUCCEED == code);
-        puts(sese::rpc::getErrorMessage(code));
+        puts(sese::net::rpc::getErrorMessage(code));
     }
 
     server->shutdown();

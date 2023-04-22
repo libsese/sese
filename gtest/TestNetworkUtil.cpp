@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 
 TEST(TestNetworkUtil, Interface) {
-    auto interfaces = sese::NetworkUtil::getNetworkInterface();
+    auto interfaces = sese::system::NetworkUtil::getNetworkInterface();
     for (decltype(auto) Interface: interfaces) {
         printf("Name: %s\n", Interface.name.c_str());
         printf("Mac: %02X-%02X-%02X-%02X-%02X-%02X\n",

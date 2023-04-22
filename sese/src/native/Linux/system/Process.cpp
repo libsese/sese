@@ -23,7 +23,7 @@ Process::Ptr Process::create(char *command) noexcept {
     }
 }
 
-pid_t sese::Process::getCurrentProcessId() noexcept {
+pid_t Process::getCurrentProcessId() noexcept {
     return getpid();
 }
 

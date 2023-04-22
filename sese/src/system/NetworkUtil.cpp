@@ -2,12 +2,11 @@
 #include "sese/net/IPv6Address.h"
 #include <vector>
 
+using namespace sese::system;
 
 #ifdef SESE_PLATFORM_WINDOWS
 
 #include <iphlpapi.h>
-
-using namespace sese::system;
 
 std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     ULONG rt = 0;

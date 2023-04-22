@@ -11,7 +11,7 @@ inline std::string getDateTimeString() {
 }
 
 BlockAppender::BlockAppender(size_t blockMaxSize, sese::record::Level level)
-    : AbstractAppender(level) {
+    : AbstractAppender(level), maxSize(blockMaxSize) {
 #ifndef _DEBUG
     maxSize = blockMaxSize < 1000 * 1024 ? 1000 * 1024 : blockMaxSize;
 #endif

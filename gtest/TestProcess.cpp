@@ -10,7 +10,7 @@ TEST(TestProcess, _0) {
     char cmd[] = {"ls /"};
 #endif
 
-    auto a = sese::Process::create(cmd);
+    auto a = sese::system::Process::create(cmd);
     ASSERT_TRUE(a != nullptr);
     auto code = a->wait();
     ASSERT_TRUE(code == 0);
