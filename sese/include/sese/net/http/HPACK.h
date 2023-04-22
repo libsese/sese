@@ -12,7 +12,7 @@
 #include <vector>
 #include <string>
 
-namespace sese::http {
+namespace sese::net::http {
     typedef std::pair< const std::string, const std::string > header_t;
     typedef std::vector< bool > bits_t;
 

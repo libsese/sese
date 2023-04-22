@@ -2,7 +2,7 @@
 #include <sese/text/StringBuilder.h>
 
 using sese::text::StringBuilder;
-using sese::http::QueryString;
+using sese::net::http::QueryString;
 
 const std::string &QueryString::get(const std::string &key, const std::string &defaultValue) noexcept {
     auto iterator = keyValueSet.find(key);

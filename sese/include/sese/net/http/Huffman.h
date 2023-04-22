@@ -15,7 +15,7 @@
 #include <optional>
 #include <vector>
 
-namespace sese::http {
+namespace sese::net::http {
 
     class huffman_node_t {
     protected:

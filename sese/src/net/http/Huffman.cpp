@@ -3,14 +3,16 @@
 
 #include <limits>
 
-sese::http::huffman_node_t::huffman_node_t(
-        sese::http::huffman_node_t *l,
-        sese::http::huffman_node_t *r,
+using namespace sese::net::http;
+
+huffman_node_t::huffman_node_t(
+        huffman_node_t *l,
+        huffman_node_t *r,
         int16_t c) noexcept: m_left(l),
                              m_right(r),
                              m_code(c) {}
 
-sese::http::huffman_tree_t::huffman_tree_t() noexcept: m_root(new huffman_node_t) {
+huffman_tree_t::huffman_tree_t() noexcept: m_root(new huffman_node_t) {
     for (std::size_t idx = 0; idx < huffman_table.size(); idx++) {
         const bits_t &bits = huffman_table.at(idx);
         huffman_node_t *current = m_root;
@@ -33,11 +35,11 @@ sese::http::huffman_tree_t::huffman_tree_t() noexcept: m_root(new huffman_node_t
     }
 }
 
-sese::http::huffman_tree_t::~huffman_tree_t() noexcept {
+huffman_tree_t::~huffman_tree_t() noexcept {
     delete_node(m_root);
 }
 
-void sese::http::huffman_tree_t::delete_node(sese::http::huffman_node_t *n) noexcept {
+void huffman_tree_t::delete_node(huffman_node_t *n) noexcept {
     if (nullptr != n->right())
         delete_node(n->right());
     if (nullptr != n->left())
@@ -49,7 +51,7 @@ void sese::http::huffman_tree_t::delete_node(sese::http::huffman_node_t *n) noex
     }
 }
 
-std::optional<std::string> sese::http::huffman_tree_t::decode(const char *src, size_t len) {
+std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) {
     std::string dst;
     huffman_node_t *current(m_root);
 
@@ -90,9 +92,9 @@ std::optional<std::string> sese::http::huffman_tree_t::decode(const char *src, s
     return dst;
 }
 
-sese::http::huffman_encoder_t::huffman_encoder_t() noexcept: m_byte(0), m_count(8) {}
+huffman_encoder_t::huffman_encoder_t() noexcept: m_byte(0), m_count(8) {}
 
-bool sese::http::huffman_encoder_t::write_bit(uint8_t bit) noexcept {
+bool huffman_encoder_t::write_bit(uint8_t bit) noexcept {
     m_byte |= bit;
     m_count--;
 
@@ -105,7 +107,7 @@ bool sese::http::huffman_encoder_t::write_bit(uint8_t bit) noexcept {
     return false;
 }
 
-std::vector<uint8_t> sese::http::huffman_encoder_t::encode(std::vector<uint8_t> &src) noexcept {
+std::vector<uint8_t> huffman_encoder_t::encode(std::vector<uint8_t> &src) noexcept {
     std::vector<uint8_t> ret(0);
 
     for (auto &byte: src) {
@@ -137,12 +139,12 @@ std::vector<uint8_t> sese::http::huffman_encoder_t::encode(std::vector<uint8_t> 
     return ret;
 }
 
-std::vector<uint8_t> sese::http::huffman_encoder_t::encode(const std::string &src) noexcept {
+std::vector<uint8_t> huffman_encoder_t::encode(const std::string &src) noexcept {
     std::vector<uint8_t> s(src.begin(), src.end());
     return encode(s);
 }
 
-std::vector<uint8_t> sese::http::huffman_encoder_t::encode(const char *ptr) noexcept {
+std::vector<uint8_t> huffman_encoder_t::encode(const char *ptr) noexcept {
     std::string str(ptr);
 
     if (nullptr == ptr) {

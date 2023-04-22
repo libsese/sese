@@ -12,7 +12,7 @@
 #pragma warning(disable : 4251)
 #endif
 
-namespace sese::http {
+namespace sese::net::http {
 
     /**
      * @brief 查询字符串

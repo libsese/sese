@@ -3,11 +3,13 @@
 
 #include <limits>
 
-sese::http::DynamicTable::DynamicTable(size_t max) noexcept {
+using namespace sese::net::http;
+
+DynamicTable::DynamicTable(size_t max) noexcept {
     this->max = max;
 }
 
-void sese::http::DynamicTable::resize(size_t max) noexcept {
+void DynamicTable::resize(size_t max) noexcept {
     while (size >= max) {
         decltype(auto) header = queue.back();
         size -= header.first.size() + header.second.size() + 4;
@@ -17,7 +19,7 @@ void sese::http::DynamicTable::resize(size_t max) noexcept {
 }
 
 
-bool sese::http::DynamicTable::set(const std::string &key, const std::string &value) noexcept {
+bool DynamicTable::set(const std::string &key, const std::string &value) noexcept {
     if (key.size() > std::numeric_limits<size_t>::max() - value.size()) {
         return false;
     }
@@ -35,7 +37,7 @@ bool sese::http::DynamicTable::set(const std::string &key, const std::string &va
     return true;
 }
 
-std::optional<sese::http::DynamicTable::Header> sese::http::DynamicTable::get(size_t index) const noexcept {
+std::optional<DynamicTable::Header> DynamicTable::get(size_t index) const noexcept {
     auto s = predefined_headers.size() + queue.size();
     if (index < predefined_headers.size()) {
         return predefined_headers.at(index);

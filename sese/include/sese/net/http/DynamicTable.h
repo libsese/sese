@@ -4,7 +4,7 @@
 #include <optional>
 #include <string>
 
-namespace sese::http {
+namespace sese::net::http {
 
     class DynamicTable {
     public:

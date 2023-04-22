@@ -7,7 +7,7 @@
 #pragma once
 #include <sese/Config.h>
 
-namespace sese::http {
+namespace sese::net::http {
 
     /// Url 信息
     struct UrlInfo {

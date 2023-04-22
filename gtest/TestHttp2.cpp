@@ -3,7 +3,7 @@
 #include "gtest/gtest.h"
 
 TEST(TestHttp2, DynamicTable_0) {
-    sese::http::DynamicTable table(15);
+    sese::net::http::DynamicTable table(15);
     table.set("k1", "v1");
     table.set("k2", "v2");
     EXPECT_TRUE(table.getCount() == 1);
@@ -16,7 +16,7 @@ TEST(TestHttp2, DynamicTable_0) {
 TEST(TestHttp2, HuffmanEncoder) {
     const char buf[] = "\xdc\x34\xfd\x28\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62\xd1\xbf";
 
-    sese::http::HuffmanEncoder encoder;
+    sese::net::http::HuffmanEncoder encoder;
     auto code = encoder.encode("Sat, 01 Apr 2023 14:57:33 GMT");
     ASSERT_TRUE(!code.empty());
 
@@ -26,7 +26,7 @@ TEST(TestHttp2, HuffmanEncoder) {
 }
 
 TEST(TestHttp2, HuffmanDecoder) {
-    sese::http::HuffmanDecoder decoder;
+    sese::net::http::HuffmanDecoder decoder;
 
     const char buf1[] = "\xdc\x34\xfd\x28\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62\xd1\xbf";
     auto str1 = decoder.decode(buf1, sizeof(buf1) - 1);

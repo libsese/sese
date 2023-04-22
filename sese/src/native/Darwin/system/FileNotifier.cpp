@@ -12,9 +12,9 @@ static void callback(
         const FSEventStreamEventFlags eventFlags[],
         const FSEventStreamEventId eventIds[]
 ) {
-    auto tuple = *(std::tuple<size_t, sese::FileNotifyOption *> *) info;
+    auto tuple = *(std::tuple<size_t, sese::system::FileNotifyOption *> *) info;
     auto len = std::get<0>(tuple) + 1;
-    auto option = (sese::FileNotifyOption *) std::get<1>(tuple);
+    auto option = (sese::system::FileNotifyOption *) std::get<1>(tuple);
     const char *lastSrc = nullptr;
     for (size_t i = 0; i < numEvents; ++i) {
         auto dict = (CFDictionaryRef) CFArrayGetValueAtIndex((CFArrayRef) eventPaths, (CFIndex) i);

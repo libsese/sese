@@ -1,7 +1,7 @@
 #include <sese/net/http/UrlHelper.h>
 
-using sese::http::UrlHelper;
-using sese::http::UrlInfo;
+using sese::net::http::UrlHelper;
+using sese::net::http::UrlInfo;
 
 void UrlHelper::parse(const std::string &url, UrlInfo &info) noexcept {
     // 协议
