@@ -5,11 +5,11 @@
  * \version 0.1
  */
 #pragma once
-#include <sese/net/TcpServer.h>
+#include <sese/net/IPv6Address.h>
 #include <sese/net/rpc/Marco.h>
 #include <sese/config/json/JsonTypes.h>
 
-namespace sese::rpc {
+namespace sese::net::rpc {
 
     /// RPC 客户端
     class API Client final {

@@ -1,7 +1,7 @@
 #pragma once
 #include <sese/Config.h>
 
-namespace sese::http {
+namespace sese::net::http {
 
     class API Cookie {
     public:

@@ -19,6 +19,8 @@ namespace sese::plugin {
     class API Module {
     public:
         using Ptr = std::unique_ptr<Module>;
+        using LibraryObject = sese::system::LibraryObject;
+        using LibraryLoader = sese::system::LibraryLoader;
 
         /// 尝试从动态链接库中加载一个模块
         /// \param path 动态链接库路径

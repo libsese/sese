@@ -4,7 +4,9 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-sese::Process::Ptr sese::Process::create(char *command) noexcept {
+using namespace sese::system;
+
+Process::Ptr Process::create(char *command) noexcept {
     auto pid = fork();
     if (pid > 0) {
         // parent process
@@ -25,7 +27,7 @@ pid_t sese::Process::getCurrentProcessId() noexcept {
     return getpid();
 }
 
-int sese::Process::wait() const noexcept {
+int Process::wait() const noexcept {
     int status;
     ::waitpid(id, &status, 0);
     if (!WIFEXITED(status)) {
@@ -35,7 +37,7 @@ int sese::Process::wait() const noexcept {
     }
 }
 
-void sese::Process::exec(char *pCommand) noexcept {
+void Process::exec(char *pCommand) noexcept {
     auto count = Process::count(pCommand);
     auto args = new char *[count + 2];
     char *p = pCommand;
@@ -58,15 +60,15 @@ void sese::Process::exec(char *pCommand) noexcept {
     }
 }
 
-pid_t sese::Process::getProcessId() const noexcept {
+pid_t Process::getProcessId() const noexcept {
     return id;
 }
 
-bool sese::Process::kill() const noexcept {
+bool Process::kill() const noexcept {
     return ::kill(id, SIGKILL) == 0;
 }
 
-size_t sese::Process::count(const char *pCommand) noexcept {
+size_t Process::count(const char *pCommand) noexcept {
     const char *p = pCommand;
     size_t count = 0;
     size_t spaceCount = 0;
@@ -89,7 +91,7 @@ size_t sese::Process::count(const char *pCommand) noexcept {
     return spaceCount;
 }
 
-char *sese::Process::spilt(char *pCommand) noexcept {
+char *Process::spilt(char *pCommand) noexcept {
     char *p = pCommand;
     int count = 0;
     while (*p != 0) {

@@ -5,8 +5,11 @@ namespace sese::security {
 
     class API SSLContext;
 
-    class API SecuritySocket final : public Socket {
+    class API SecuritySocket final : public sese::net::Socket {
     public:
+        using Socket = sese::net::Socket;
+        using Address = sese::net::Address;
+
         SecuritySocket(std::shared_ptr<SSLContext> context, Socket::Family family, int32_t flags) noexcept;
         SecuritySocket(std::shared_ptr<SSLContext> context, void *ssl, socket_t fd) noexcept;
 

@@ -11,7 +11,7 @@
 #pragma warning(disable : 4624)
 #endif
 
-namespace sese {
+namespace sese::system {
 
     /**
      * @brief 环境信息类

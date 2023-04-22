@@ -2,7 +2,7 @@
 #include "sese/util/ByteBuilder.h"
 #include <sese/convert/MD5Util.h>
 
-using namespace sese;
+using namespace sese::system;
 
 key_t SharedMemory::name2key(const char *name) noexcept {
     auto builder = std::make_shared<ByteBuilder>();

@@ -17,7 +17,7 @@
 #pragma warning(disable : 4996)
 #endif
 
-namespace sese::http {
+namespace sese::net::http {
 
     using HttpRequest = RequestHeader;
     using HttpResponse = ResponseHeader;

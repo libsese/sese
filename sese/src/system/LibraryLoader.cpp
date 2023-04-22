@@ -1,7 +1,7 @@
 #include "sese/system/LibraryLoader.h"
 
-using sese::LibraryLoader;
-using sese::LibraryObject;
+using sese::system::LibraryLoader;
+using sese::system::LibraryObject;
 
 LibraryObject::LibraryObject(Module module) noexcept {
     this->module = module;

@@ -1,6 +1,6 @@
 #include <sese/net/http/Header.h>
 
-using sese::http::Header;
+using namespace sese::net::http;
 
 Header::Header(const std::initializer_list<KeyValueType> &initializerList) noexcept {
     for (const auto &item: initializerList) {
@@ -32,10 +32,10 @@ std::string_view Header::getView(const std::string &key, const std::string &defa
     }
 }
 
-const sese::http::CookieMap::Ptr &sese::http::Header::getCookies() const {
+const CookieMap::Ptr &Header::getCookies() const {
     return cookies;
 }
 
-void sese::http::Header::setCookies(const sese::http::CookieMap::Ptr &cookies) {
+void Header::setCookies(const CookieMap::Ptr &cookies) {
     Header::cookies = cookies;
 }

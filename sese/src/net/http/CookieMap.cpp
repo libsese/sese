@@ -1,6 +1,6 @@
 #include <sese/net/http/CookieMap.h>
 
-using namespace sese::http;
+using namespace sese::net::http;
 
 void CookieMap::add(const Cookie::Ptr &cookie) noexcept {
     map[cookie->getName()] = cookie;

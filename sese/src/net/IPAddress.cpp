@@ -1,6 +1,8 @@
 #include "sese/net/IPAddress.h"
 
-sese::IPAddress::Ptr sese::IPAddress::create(const char *address, uint16_t port) {
+using namespace sese::net;
+
+IPAddress::Ptr IPAddress::create(const char *address, uint16_t port) {
     addrinfo *res, hints{0};
     hints.ai_flags = AI_NUMERICHOST;
     hints.ai_family = AF_UNSPEC;

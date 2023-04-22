@@ -11,7 +11,7 @@
 #pragma warning(disable : 4251)
 #endif
 
-namespace sese {
+namespace sese::net {
 
     /// IPv4 地址池
     class API IPv4AddressPool final {

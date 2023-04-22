@@ -9,7 +9,7 @@
 #include <sese/net/http/ResponseHeader.h>
 #include "sese/util/Noncopyable.h"
 
-namespace sese::http {
+namespace sese::net::http {
 
     /// Http 客户端
     class API HttpClient final : public sese::Noncopyable {

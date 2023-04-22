@@ -1,8 +1,6 @@
 #include <sese/net/AddressPool.h>
 
-using sese::Address;
-using sese::IPv4Address;
-using sese::IPv4AddressPool;
+using namespace sese::net;
 
 IPv4AddressPool IPv4AddressPool::pool;
 

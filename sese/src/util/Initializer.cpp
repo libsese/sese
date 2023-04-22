@@ -26,7 +26,7 @@ Initializer::Initializer() {
     buildInLoadTask(std::make_shared<record::LoggerInitiateTask>());
     buildInLoadTask(std::make_shared<TestInitiateTask>());
 #ifdef _WIN32
-    buildInLoadTask(std::make_shared<sese::SocketInitiateTask>());
+    buildInLoadTask(std::make_shared<sese::net::SocketInitiateTask>());
 #endif
 #ifdef SESE_USE_SSL
     buildInLoadTask(std::make_shared<sese::security::SecurityInitTask>());

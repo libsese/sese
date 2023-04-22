@@ -6,7 +6,9 @@
 
 #pragma warning(disable : 4996)
 
-sese::FileNotifier::Ptr sese::FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
+using namespace sese::system;
+
+FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
     auto fileHandle = CreateFile(
             path.c_str(),
             GENERIC_READ | GENERIC_WRITE | FILE_LIST_DIRECTORY,
@@ -31,7 +33,7 @@ sese::FileNotifier::Ptr sese::FileNotifier::create(const std::string &path, File
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
-void sese::FileNotifier::loopNonblocking() noexcept {
+void FileNotifier::loopNonblocking() noexcept {
     auto proc = [this]() {
         std::wstring_convert<std::codecvt_utf8<wchar_t>> convert;
         DWORD read = 0;
@@ -99,7 +101,7 @@ void sese::FileNotifier::loopNonblocking() noexcept {
     th->start();
 }
 
-void sese::FileNotifier::shutdown() noexcept {
+void FileNotifier::shutdown() noexcept {
     isShutdown = true;
     SetEvent(((LPOVERLAPPED) overlapped)->hEvent);
     th->join();

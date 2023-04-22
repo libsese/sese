@@ -5,7 +5,9 @@
 #pragma warning(disable : 4996)
 #endif
 
-sese::IPv4Address::Ptr sese::IPv4Address::create(const char *address, uint16_t port) {
+using namespace sese::net;
+
+IPv4Address::Ptr IPv4Address::create(const char *address, uint16_t port) {
     IPv4Address::Ptr result(new IPv4Address);
     //    if (Environment::isLittleEndian()) {
     //        result->address.sin_port = ByteSwap16(port);
@@ -21,17 +23,17 @@ sese::IPv4Address::Ptr sese::IPv4Address::create(const char *address, uint16_t p
     }
 }
 
-sese::IPv4Address::Ptr sese::IPv4Address::localhost() {
+IPv4Address::Ptr IPv4Address::localhost() {
     return create("127.0.0.1", 0);
 }
 
-sese::IPv4Address::Ptr sese::IPv4Address::any() {
+IPv4Address::Ptr IPv4Address::any() {
     return create("0.0.0.0", 0);
 }
 
-sese::IPv4Address::IPv4Address(const sockaddr_in &address) : address(address) {}
+IPv4Address::IPv4Address(const sockaddr_in &address) : address(address) {}
 
-sese::IPv4Address::IPv4Address(uint32_t address, uint16_t port) {
+IPv4Address::IPv4Address(uint32_t address, uint16_t port) {
     this->address.sin_family = AF_INET;
     //    if (Environment::isLittleEndian()) {
     //        this->address.sin_port = ByteSwap16(port);
@@ -44,15 +46,15 @@ sese::IPv4Address::IPv4Address(uint32_t address, uint16_t port) {
     this->address.sin_addr.s_addr = ToBigEndian32(address);
 }
 
-sockaddr *sese::IPv4Address::getRawAddress() const noexcept {
+sockaddr *IPv4Address::getRawAddress() const noexcept {
     return (sockaddr *) &address;
 }
 
-socklen_t sese::IPv4Address::getRawAddressLength() const noexcept {
+socklen_t IPv4Address::getRawAddressLength() const noexcept {
     return sizeof(this->address);
 }
 
-std::string sese::IPv4Address::getAddress() const noexcept {
+std::string IPv4Address::getAddress() const noexcept {
     uint32_t addr = this->address.sin_addr.s_addr;
     //    if (!Environment::isLittleEndian()) {
     //        addr = ByteSwap32(addr);
@@ -69,7 +71,7 @@ std::string sese::IPv4Address::getAddress() const noexcept {
     return {temp};
 }
 
-sese::IPAddress::Ptr sese::IPv4Address::getBroadcastAddress(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv4Address::getBroadcastAddress(uint32_t prefixLen) const noexcept {
     if (prefixLen > 32) {
         return nullptr;
     }
@@ -84,7 +86,7 @@ sese::IPAddress::Ptr sese::IPv4Address::getBroadcastAddress(uint32_t prefixLen) 
     return std::make_shared<IPv4Address>(addr);
 }
 
-sese::IPAddress::Ptr sese::IPv4Address::getNetworkAddress(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv4Address::getNetworkAddress(uint32_t prefixLen) const noexcept {
     if (prefixLen > 32) {
         return nullptr;
     }
@@ -99,7 +101,7 @@ sese::IPAddress::Ptr sese::IPv4Address::getNetworkAddress(uint32_t prefixLen) co
     return std::make_shared<IPv4Address>(addr);
 }
 
-sese::IPAddress::Ptr sese::IPv4Address::getSubnetMask(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv4Address::getSubnetMask(uint32_t prefixLen) const noexcept {
     if (prefixLen > 32) {
         return nullptr;
     }

@@ -6,7 +6,7 @@
 
 static void callback(
         ConstFSEventStreamRef stream,
-        void *info, 
+        void *info,
         size_t numEvents,
         void *eventPaths,
         const FSEventStreamEventFlags eventFlags[],
@@ -37,7 +37,9 @@ static void callback(
     }
 }
 
-sese::FileNotifier::Ptr sese::FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
+using namespace sese::system;
+
+FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
     CFStringRef p = CFStringCreateWithCString(
             nullptr,
             path.c_str(),
@@ -80,11 +82,11 @@ sese::FileNotifier::Ptr sese::FileNotifier::create(const std::string &path, File
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
-void sese::FileNotifier::loopNonblocking() noexcept {
+void FileNotifier::loopNonblocking() noexcept {
     FSEventStreamStart((FSEventStreamRef) this->stream);
 }
 
-void sese::FileNotifier::shutdown() noexcept {
+void FileNotifier::shutdown() noexcept {
     FSEventStreamStop((FSEventStreamRef) this->stream);
     FSEventStreamInvalidate((FSEventStreamRef) this->stream);
     FSEventStreamRelease((FSEventStreamRef) this->stream);

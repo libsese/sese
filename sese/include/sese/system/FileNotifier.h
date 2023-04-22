@@ -15,7 +15,7 @@
 #include "sese/thread/Thread.h"
 #endif
 
-namespace sese {
+namespace sese::system {
 
     struct API FileNotifyOption {
         /// 创建文件

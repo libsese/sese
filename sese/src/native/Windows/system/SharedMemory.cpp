@@ -2,7 +2,7 @@
 
 #include <Windows.h>
 
-using namespace sese;
+using namespace sese::system;
 
 SharedMemory::Ptr SharedMemory::create(const char *name, size_t size) noexcept {
     auto mapping = CreateFileMappingA(

@@ -12,7 +12,7 @@ sese::security::SecuritySocket::SecuritySocket(std::shared_ptr<SSLContext> conte
     this->ssl = ssl;
 }
 
-int32_t sese::security::SecuritySocket::connect(sese::Address::Ptr address) noexcept {
+int32_t sese::security::SecuritySocket::connect(Address::Ptr address) noexcept {
     auto rt = Socket::connect(address);
     if (rt != 0) {
         return rt;
@@ -36,7 +36,7 @@ int32_t sese::security::SecuritySocket::connect(sese::Address::Ptr address) noex
     }
 }
 
-sese::Socket::Ptr sese::security::SecuritySocket::accept() const {
+sese::net::Socket::Ptr sese::security::SecuritySocket::accept() const {
     auto socket = Socket::accept();
     if (socket == nullptr) {
         return nullptr;
@@ -70,7 +70,7 @@ sese::Socket::Ptr sese::security::SecuritySocket::accept() const {
     return std::make_shared<SecuritySocket>(context, clientSSL, clientFd);
 }
 
-int32_t sese::security::SecuritySocket::shutdown(sese::Socket::ShutdownMode mode) const {
+int32_t sese::security::SecuritySocket::shutdown(sese::net::Socket::ShutdownMode mode) const {
     return 0;
 }
 

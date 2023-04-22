@@ -7,7 +7,7 @@
 #pragma once
 #include <sese/net/http/Header.h>
 
-namespace sese::http {
+namespace sese::net::http {
 
     /**
      * @brief 响应头类

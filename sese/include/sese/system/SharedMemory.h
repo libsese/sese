@@ -13,7 +13,7 @@
 #include <sys/shm.h>
 #endif
 
-namespace sese {
+namespace sese::system {
 
     /// \brief 共享内存类
     class API SharedMemory final {

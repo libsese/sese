@@ -7,7 +7,7 @@
 #pragma warning(disable : 4996)
 #endif
 
-using sese::http::HttpUtil;
+using namespace sese::net::http;
 using sese::text::StringBuilder;
 
 bool HttpUtil::getLine(Stream *source, StringBuilder &builder) noexcept {
@@ -77,7 +77,7 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
     return true;
 }
 
-bool sese::http::HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noexcept {
+bool HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noexcept {
     // method
     switch (request->getType()) {
         case RequestType::Options:
@@ -233,7 +233,7 @@ bool HttpUtil::sendHeader(Stream *dest, Header *header, bool isResp) noexcept {
     return true;
 }
 
-bool sese::http::HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
+bool HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
     for (decltype(auto) cookie: *cookies) {
         if (-1 == dest->write("Set-Cookie: ", 12)) return false;
         const std::string &name = cookie.first;
@@ -284,7 +284,7 @@ bool sese::http::HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &coo
     return true;
 }
 
-bool sese::http::HttpUtil::sendCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
+bool HttpUtil::sendCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
     WRITE("Cookie: ", 8);
 
     bool isFirst = true;
@@ -308,15 +308,15 @@ bool sese::http::HttpUtil::sendCookie(Stream *dest, const CookieMap::Ptr &cookie
 
 #define COMPARE(str1, str2) strcasecmp(str1.c_str(), str2) == 0
 
-sese::http::Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) noexcept {
+Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) noexcept {
     auto result = StringBuilder::split(text, "; ");
-    sese::http::Cookie::Ptr cookie = nullptr;
+    Cookie::Ptr cookie = nullptr;
     bool isFirst = true;
     for (decltype(auto) one: result) {
         auto index = one.find('=');
         if (isFirst) {
             if (index == std::string::npos) return nullptr;
-            cookie = std::make_shared<sese::http::Cookie>(one.substr(0, index), one.substr(index + 1));
+            cookie = std::make_shared<Cookie>(one.substr(0, index), one.substr(index + 1));
             isFirst = false;
         } else {
             if (index != std::string::npos) {
@@ -346,13 +346,13 @@ sese::http::Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) no
 
 #undef COMPARE
 
-sese::http::CookieMap::Ptr HttpUtil::parseFromCookie(const std::string &text) noexcept {
-    auto cookies = std::make_shared<sese::http::CookieMap>();
+CookieMap::Ptr HttpUtil::parseFromCookie(const std::string &text) noexcept {
+    auto cookies = std::make_shared<CookieMap>();
     auto result = StringBuilder::split(text, "; ");
     for (decltype(auto) one: result) {
         auto pair = StringBuilder::split(one, "=");
         if (pair.size() != 2) continue;
-        cookies->add(std::make_shared<sese::http::Cookie>(pair[0], pair[1]));
+        cookies->add(std::make_shared<Cookie>(pair[0], pair[1]));
     }
     return cookies;
 }

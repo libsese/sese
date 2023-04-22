@@ -2,7 +2,9 @@
 
 #include <Windows.h>
 
-sese::Process::Ptr sese::Process::create(char *command) noexcept {
+using namespace sese::system;
+
+Process::Ptr Process::create(char *command) noexcept {
     auto startupInfo = new STARTUPINFO{};
     auto processInfo = new PROCESS_INFORMATION{};
 
@@ -31,11 +33,11 @@ sese::Process::Ptr sese::Process::create(char *command) noexcept {
     }
 }
 
-pid_t sese::Process::getCurrentProcessId() noexcept {
+pid_t Process::getCurrentProcessId() noexcept {
     return GetCurrentProcessId();
 }
 
-sese::Process::~Process() noexcept {
+Process::~Process() noexcept {
     auto sInfo = (STARTUPINFO *) startupInfo;
     auto pInfo = (PROCESS_INFORMATION *) processInfo;
     delete sInfo;
@@ -44,7 +46,7 @@ sese::Process::~Process() noexcept {
     processInfo = nullptr;
 }
 
-int sese::Process::wait() const noexcept {
+int Process::wait() const noexcept {
     DWORD exitCode;
     auto pInfo = (PROCESS_INFORMATION *) processInfo;
     // pInfo cannot be nullptr
@@ -54,13 +56,13 @@ int sese::Process::wait() const noexcept {
     return (int) exitCode;
 }
 
-bool sese::Process::kill() const noexcept {
+bool Process::kill() const noexcept {
     auto pInfo = (PROCESS_INFORMATION *) processInfo;
     if (!pInfo) return false;
     return TerminateProcess(pInfo->hProcess, -1) != 0;
 }
 
-pid_t sese::Process::getProcessId() const noexcept {
+pid_t Process::getProcessId() const noexcept {
     if (!processInfo) return 0;
     return GetProcessId(((PROCESS_INFORMATION *) processInfo)->hProcess);
 }

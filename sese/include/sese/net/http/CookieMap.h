@@ -9,7 +9,7 @@
 #include <sese/net/http/Cookie.h>
 #include <map>
 
-namespace sese::http {
+namespace sese::net::http {
 
     /// \brief Cookie 映射集合类
     class API CookieMap {

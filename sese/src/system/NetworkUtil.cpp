@@ -7,7 +7,9 @@
 
 #include <iphlpapi.h>
 
-std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noexcept {
+using namespace sese::system;
+
+std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     ULONG rt = 0;
     ULONG size = 0;
     std::unique_ptr<CHAR[]> buffer;
@@ -55,10 +57,10 @@ std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noe
                 auto pSockAddr = (SOCKADDR *) unicastAddress->Address.lpSockaddr;
                 if (pSockAddr->sa_family == AF_INET) {
                     sockaddr_in sockaddrIn = *(sockaddr_in *) unicastAddress->Address.lpSockaddr;
-                    Interface.ipv4Addresses.emplace_back(std::make_shared<IPv4Address>(sockaddrIn));
+                    Interface.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(sockaddrIn));
                 } else if (pSockAddr->sa_family == AF_INET6) {
                     sockaddr_in6 sockaddrIn6 = *(sockaddr_in6 *) unicastAddress->Address.lpSockaddr;
-                    Interface.ipv6Addresses.emplace_back(std::make_shared<IPv6Address>(sockaddrIn6));
+                    Interface.ipv6Addresses.emplace_back(std::make_shared<sese::net::IPv6Address>(sockaddrIn6));
                 }
                 unicastAddress = unicastAddress->Next;
             }
@@ -88,7 +90,7 @@ std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noe
 #include <unistd.h>
 #include <map>
 
-std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noexcept {
+std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     std::vector<NetworkInterface> interfaces;
     std::map<std::string, NetworkInterface> map;
     struct ifaddrs *address = nullptr;
@@ -102,10 +104,10 @@ std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noe
             auto iterator = map.find(address->ifa_name);
             sockaddr_in addr = *(sockaddr_in *) (address->ifa_addr);
             if (iterator != map.end()) {
-                iterator->second.ipv4Addresses.emplace_back(std::make_shared<IPv4Address>(addr));
+                iterator->second.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
             } else {
                 auto i = NetworkInterface();
-                i.ipv4Addresses.emplace_back(std::make_shared<IPv4Address>(addr));
+                i.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
                 map[i.name] = i;
             }
         } else if (address->ifa_addr->sa_family == AF_PACKET) {
@@ -158,7 +160,7 @@ std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noe
             auto iterator = map.find(name);
             if (iterator != map.end()) {
                 inet_ntop(AF_INET6, ipv6, address, sizeof(address));
-                auto addr = IPv6Address::create(address, 0);
+                auto addr = sese::net::IPv6Address::create(address, 0);
                 iterator->second.ipv6Addresses.emplace_back(addr);
             }
         }
@@ -183,7 +185,7 @@ std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noe
 #include <ifaddrs.h>
 #include <net/if_dl.h>
 
-std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noexcept {
+std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     std::vector<NetworkInterface> interfaces;
     std::map<std::string, NetworkInterface> map;
     struct ifaddrs *address = nullptr;
@@ -195,20 +197,20 @@ std::vector<sese::NetworkInterface> sese::NetworkUtil::getNetworkInterface() noe
             auto iterator = map.find(address->ifa_name);
             sockaddr_in addr = *(sockaddr_in *) (address->ifa_addr);
             if (iterator != map.end()) {
-                iterator->second.ipv4Addresses.emplace_back(std::make_shared<IPv4Address>(addr));
+                iterator->second.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
             } else {
                 auto i = NetworkInterface();
-                i.ipv4Addresses.emplace_back(std::make_shared<IPv4Address>(addr));
+                i.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
                 map[i.name] = i;
             }
         } else if (address->ifa_addr->sa_family == AF_INET6) {
             auto iterator = map.find(address->ifa_name);
             sockaddr_in6 addr = *(sockaddr_in6 *) (address->ifa_addr);
             if (iterator != map.end()) {
-                iterator->second.ipv6Addresses.emplace_back(std::make_shared<IPv6Address>(addr));
+                iterator->second.ipv6Addresses.emplace_back(std::make_shared<sese::net::IPv6Address>(addr));
             } else {
                 auto i = NetworkInterface();
-                i.ipv6Addresses.emplace_back(std::make_shared<IPv6Address>(addr));
+                i.ipv6Addresses.emplace_back(std::make_shared<sese::net::IPv6Address>(addr));
                 map[i.name] = i;
             }
         } else if (address->ifa_addr->sa_family == AF_LINK) {

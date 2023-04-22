@@ -4,7 +4,9 @@
 #include <sys/inotify.h>
 #include <sys/fcntl.h>
 
-sese::FileNotifier::Ptr sese::FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
+using namespace sese::system;
+
+FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
     int inotifyFd = inotify_init1(0);
     if (inotifyFd < 0) {
         return nullptr;
@@ -35,7 +37,7 @@ sese::FileNotifier::Ptr sese::FileNotifier::create(const std::string &path, File
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
-void sese::FileNotifier::loopNonblocking() noexcept {
+void FileNotifier::loopNonblocking() noexcept {
     auto proc = [this]() {
         fd_set fdSet;
         struct timeval timeout {
@@ -82,7 +84,7 @@ void sese::FileNotifier::loopNonblocking() noexcept {
     th->start();
 }
 
-void sese::FileNotifier::shutdown() noexcept {
+void FileNotifier::shutdown() noexcept {
     isShutdown = true;
     th->join();
     th = nullptr;

@@ -14,7 +14,7 @@
 #pragma warning(disable : 4251)
 #endif
 
-namespace sese {
+namespace sese::net {
 
 #ifdef _WIN32
     class SocketInitiateTask : public InitiateTask {

@@ -15,7 +15,7 @@ void sese::net::v2::http::HttpServerOption::onHandle(sese::net::v2::IOContext &c
         }
     }
 
-    if (!sese::http::HttpUtil::recvRequest(&httpContext, &httpContext.request)) {
+    if (!sese::net::http::HttpUtil::recvRequest(&httpContext, &httpContext.request)) {
         httpContext.close();
         return;
     }

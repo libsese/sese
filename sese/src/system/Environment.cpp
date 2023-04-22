@@ -1,6 +1,6 @@
 #include "sese/system/Environment.h"
 
-namespace sese {
+namespace sese::system {
 
     bool Environment::isLittleEndian() noexcept {
 #if (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || defined(_WIN32)

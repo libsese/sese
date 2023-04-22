@@ -4,12 +4,12 @@
 
 #include <array>
 
-namespace sese {
+namespace sese::system {
 
     struct NetworkInterface {
         std::string name;
-        std::vector<IPv4Address::Ptr> ipv4Addresses;
-        std::vector<IPv6Address::Ptr> ipv6Addresses;
+        std::vector<sese::net::IPv4Address::Ptr> ipv4Addresses;
+        std::vector<sese::net::IPv6Address::Ptr> ipv6Addresses;
         std::array<unsigned char, 6> mac;
     };
 

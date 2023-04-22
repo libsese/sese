@@ -7,7 +7,7 @@
 #include "sese/net/Address.h"
 #include "sese/util/Endian.h"
 
-namespace sese {
+namespace sese::net {
 
     /**
      * @brief IP 地址类

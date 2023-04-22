@@ -1,7 +1,9 @@
 #include "sese/net/Address.h"
 #include "sese/net/IPv6Address.h"
 
-sese::Address::Ptr sese::Address::create(const sockaddr *address, socklen_t addressLen) {
+using namespace sese::net;
+
+Address::Ptr Address::create(const sockaddr *address, socklen_t addressLen) {
     if (address->sa_family == AF_INET) {
         return std::make_shared<IPv4Address>(*(const sockaddr_in *) address);
     } else if (address->sa_family == AF_INET6) {
@@ -11,7 +13,7 @@ sese::Address::Ptr sese::Address::create(const sockaddr *address, socklen_t addr
     }
 }
 
-bool sese::Address::lookUp(std::vector<Address::Ptr> &result, const std::string &host, int family, int type, int protocol) {
+bool Address::lookUp(std::vector<Address::Ptr> &result, const std::string &host, int family, int type, int protocol) {
     struct addrinfo *res, hints{0};
     hints.ai_flags = 0;
     hints.ai_family = family;
@@ -37,7 +39,7 @@ bool sese::Address::lookUp(std::vector<Address::Ptr> &result, const std::string 
     return true;
 }
 
-sese::Address::Ptr sese::Address::lookUpAny(const std::string &host, int family, int type, int protocol) {
+Address::Ptr Address::lookUpAny(const std::string &host, int family, int type, int protocol) {
     std::vector<Address::Ptr> temp;
     lookUp(temp, host, family, type, protocol);
     if (temp.empty()) {

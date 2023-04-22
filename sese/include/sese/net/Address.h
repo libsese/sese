@@ -18,7 +18,7 @@
 #include <vector>
 
 
-namespace sese {
+namespace sese::net {
 
     template<typename T>
     static T CreateMask(uint32_t bits) {

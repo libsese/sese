@@ -7,7 +7,9 @@
 #pragma warning(disable : 4018)
 #endif
 
-sese::IPv6Address::Ptr sese::IPv6Address::create(const char *address, uint16_t port) {
+using namespace sese::net;
+
+IPv6Address::Ptr IPv6Address::create(const char *address, uint16_t port) {
     IPv6Address::Ptr result(new IPv6Address);
     auto err = inet_pton(AF_INET6, address, &result->address.sin6_addr);
     result->address.sin6_family = AF_INET6;
@@ -19,21 +21,21 @@ sese::IPv6Address::Ptr sese::IPv6Address::create(const char *address, uint16_t p
     }
 }
 
-sese::IPv6Address::Ptr sese::IPv6Address::localhost() {
+IPv6Address::Ptr IPv6Address::localhost() {
     return create("::1", 0);
 }
 
-sese::IPv6Address::Ptr sese::IPv6Address::any() {
+IPv6Address::Ptr IPv6Address::any() {
     return create("::", 0);
 }
 
-sese::IPv6Address::IPv6Address() noexcept {
+IPv6Address::IPv6Address() noexcept {
     this->address.sin6_family = AF_INET6;
 }
 
-sese::IPv6Address::IPv6Address(const sockaddr_in6 &address) noexcept : address(address) {}
+IPv6Address::IPv6Address(const sockaddr_in6 &address) noexcept : address(address) {}
 
-sese::IPv6Address::IPv6Address(uint8_t *address, uint16_t port) {
+IPv6Address::IPv6Address(uint8_t *address, uint16_t port) {
     this->address.sin6_family = AF_INET6;
     //    if (Environment::isLittleEndian()) {
     //        this->address.sin6_port = ByteSwap16(port);
@@ -44,15 +46,15 @@ sese::IPv6Address::IPv6Address(uint8_t *address, uint16_t port) {
     memcpy(&this->address.sin6_addr.s6_addr, address, 16);
 }
 
-sockaddr *sese::IPv6Address::getRawAddress() const noexcept {
+sockaddr *IPv6Address::getRawAddress() const noexcept {
     return (sockaddr *) &this->address;
 }
 
-socklen_t sese::IPv6Address::getRawAddressLength() const noexcept {
+socklen_t IPv6Address::getRawAddressLength() const noexcept {
     return sizeof(this->address);
 }
 
-std::string sese::IPv6Address::getAddress() const noexcept {
+std::string IPv6Address::getAddress() const noexcept {
     auto *addr = (uint16_t *) &this->address.sin6_addr.s6_addr;
     char temp[40];
     sprintf(temp,
@@ -68,7 +70,7 @@ std::string sese::IPv6Address::getAddress() const noexcept {
     return {temp};
 }
 
-sese::IPAddress::Ptr sese::IPv6Address::getBroadcastAddress(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv6Address::getBroadcastAddress(uint32_t prefixLen) const noexcept {
     sockaddr_in6 addr(this->address);
     addr.sin6_addr.s6_addr[prefixLen / 8] |= CreateMask<uint8_t>(prefixLen % 8);
     for (auto i = prefixLen / 8 + 1; i < 16; i++) {
@@ -77,7 +79,7 @@ sese::IPAddress::Ptr sese::IPv6Address::getBroadcastAddress(uint32_t prefixLen) 
     return std::make_shared<IPv6Address>(addr);
 }
 
-sese::IPAddress::Ptr sese::IPv6Address::getNetworkAddress(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv6Address::getNetworkAddress(uint32_t prefixLen) const noexcept {
     sockaddr_in6 addr(this->address);
     addr.sin6_addr.s6_addr[prefixLen / 8] &= CreateMask<uint8_t>(prefixLen % 8);
     for (auto i = prefixLen / 8 + 1; i < 16; ++i) {
@@ -86,7 +88,7 @@ sese::IPAddress::Ptr sese::IPv6Address::getNetworkAddress(uint32_t prefixLen) co
     return std::make_shared<IPv6Address>(addr);
 }
 
-sese::IPAddress::Ptr sese::IPv6Address::getSubnetMask(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv6Address::getSubnetMask(uint32_t prefixLen) const noexcept {
     sockaddr_in6 subnet{0};
     subnet.sin6_family = AF_INET6;
     subnet.sin6_addr.s6_addr[prefixLen / 8] = ~CreateMask<uint8_t>(prefixLen % 8);

@@ -7,7 +7,7 @@
 #pragma once
 #include "sese/net/IPAddress.h"
 
-namespace sese {
+namespace sese::net {
 
     /**
      * @brief IPv4 地址类

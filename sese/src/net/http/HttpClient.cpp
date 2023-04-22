@@ -2,11 +2,11 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/net/AddressPool.h>
 
-using sese::IPv4AddressPool;
-using sese::Socket;
-using sese::http::HttpClient;
-using sese::http::RequestHeader;
-using sese::http::ResponseHeader;
+using sese::net::IPv4AddressPool;
+using sese::net::Socket;
+using sese::net::http::HttpClient;
+using sese::net::http::RequestHeader;
+using sese::net::http::ResponseHeader;
 
 HttpClient::Ptr HttpClient::create(const std::string &domain, uint16_t port) noexcept {
     auto address = IPv4AddressPool::lookup(domain);

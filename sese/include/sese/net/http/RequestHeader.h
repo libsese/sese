@@ -7,7 +7,7 @@
 #pragma once
 #include <sese/net/http/Header.h>
 
-namespace sese::http {
+namespace sese::net::http {
 
     /// @brief 请求类型
     enum class RequestType {

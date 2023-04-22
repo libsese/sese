@@ -10,7 +10,7 @@
 #include <sese/text/StringBuilder.h>
 #include "sese/util/Stream.h"
 
-namespace sese::http {
+namespace sese::net::http {
 
     /// @brief Http 工具类
     class API HttpUtil {

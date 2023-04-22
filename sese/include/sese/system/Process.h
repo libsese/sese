@@ -8,7 +8,7 @@
 
 #include "sese/Config.h"
 
-namespace sese {
+namespace sese::system {
 
     /// 进程类
     class API Process {

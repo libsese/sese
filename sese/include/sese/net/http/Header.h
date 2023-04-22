@@ -11,7 +11,7 @@
 #pragma warning(disable : 4251)
 #endif
 
-namespace sese::http {
+namespace sese::net::http {
 
     /// @brief Http 版本
     enum class HttpVersion {
