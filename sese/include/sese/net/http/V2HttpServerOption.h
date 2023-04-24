@@ -23,7 +23,7 @@ namespace sese::net::v2::http {
 
         void onConnect(IOContext &context) noexcept override;
 
-        void onHandle(sese::net::v2::IOContext &ctx) noexcept override;
+        void onHandle(IOContext &context) noexcept override;
 
         void onClosing(IOContext &context) noexcept override;
 
