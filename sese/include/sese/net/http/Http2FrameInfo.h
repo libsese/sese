@@ -37,6 +37,8 @@ namespace sese::net::http {
     constexpr static uint8_t GOAWAY_INADEQUATE_SECURITY = 0xc;
     constexpr static uint8_t GOAWAY_HTTP_1_1_REQUIRED = 0xd;
 
+    constexpr static std::string_view MAGIC_STRING{"HTTP/2.0\r\n\r\nSM\r\n\r\n"};
+
     struct Http2FrameInfo {
         uint32_t length{0};
         uint8_t type{0};

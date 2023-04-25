@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sese/net/http/Header.h"
 #include "sese/util/ByteBuilder.h"
 
 namespace sese::net::http {
@@ -10,6 +11,13 @@ namespace sese::net::http {
 
         bool willClose = false;
         ByteBuilder buffer;
+
+        /// 流请求头部
+        Header requestHeader;
+        /// 流响应头部 - 非索引的
+        Header responseOnceHeader;
+        /// 流响应头部 - 索引的
+        Header responseIndexedHeader;
 
     public:
         int64_t write(const void *buf, size_t len) override;

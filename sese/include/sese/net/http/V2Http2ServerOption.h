@@ -8,7 +8,7 @@
 
 namespace sese::net::v2::http {
 
-    struct Http2ServerOption : public ServerOption {
+    struct [[deprecated("此实现是不完整的")]] Http2ServerOption : public ServerOption {
         Http2ServerOption() = delete;
         explicit Http2ServerOption(size_t handleThreads = 4) noexcept;
         ~Http2ServerOption() noexcept override;
@@ -25,6 +25,8 @@ namespace sese::net::v2::http {
 
     protected:
         sese::ThreadPool threadPool;
+        // 对 connMap 操加锁
+        std::mutex mutex;
         std::map<socket_t, net::http::Http2Connection::Ptr> connMap;
     };
 

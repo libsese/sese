@@ -1,3 +1,4 @@
+#include "sese/net/http/V2Http2ServerOption.h"
 #include "sese/net/http/DynamicTable.h"
 #include "sese/net/http/Huffman.h"
 #include "gtest/gtest.h"
@@ -37,4 +38,8 @@ TEST(TestHttp2, HuffmanDecoder) {
     auto str2 = decoder.decode(buf2, sizeof(buf2) - 1);
     ASSERT_TRUE(str2 != std::nullopt);
     EXPECT_TRUE(str2.value() == "\"63ea2d3e-18b4\"");
+}
+
+TEST(TestHttp2, Http2ServerOption_0) {
+    sese::net::v2::http::Http2ServerOption option(4);
 }

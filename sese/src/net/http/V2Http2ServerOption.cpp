@@ -1,9 +1,13 @@
 #include "sese/net/http/V2Http2ServerOption.h"
 #include "sese/net/http/Http2FrameInfo.h"
+#include "sese/net/http/HttpUtil.h"
+#include "sese/net/http/HttpServer.h"
 #include "sese/util/Endian.h"
 
 using namespace sese::net::http;
 using namespace sese::net::v2::http;
+
+using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
 
 Http2ServerOption::Http2ServerOption(size_t handleThreads) noexcept
     : ServerOption(), threadPool("Http2Serv", handleThreads) {
@@ -17,18 +21,54 @@ void Http2ServerOption::onConnect(sese::net::v2::IOContext &ctx) noexcept {
 }
 
 void Http2ServerOption::onHandle(sese::net::v2::IOContext &ctx) noexcept {
+    mutex.lock();
     auto connIterator = connMap.find(ctx.getIdent());
     if (connIterator == connMap.end()) {
-        onHttpHandle(ctx);
+        mutex.unlock();
+        char buffer[MAGIC_STRING.length()];
+        ctx.peek(buffer, MAGIC_STRING.length());
+        if (MAGIC_STRING == buffer) {
+            ctx.read(buffer, MAGIC_STRING.length());
+            auto conn = std::make_shared<Http2Connection>();
+            conn->socket = ctx.getIdent();
+            mutex.lock();
+            connMap[conn->socket] = conn;
+            mutex.unlock();
+            onHttp2Handle(ctx, connIterator->second);
+        } else {
+            onHttpHandle(ctx);
+        }
     } else {
         onHttp2Handle(ctx, connIterator->second);
     }
 }
 
 void Http2ServerOption::onClosing(sese::net::v2::IOContext &ctx) noexcept {
+    mutex.lock();
+    auto iterator = connMap.find(ctx.getIdent());
+    if (iterator != connMap.end()) {
+        connMap.erase(iterator);
+    }
+    mutex.unlock();
 }
 
 void Http2ServerOption::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
+    auto httpContext = HttpContext ();
+    httpContext.reset(&ctx);
+
+    if (!sese::net::http::HttpUtil::recvRequest(&httpContext, &httpContext.request)) {
+        httpContext.close();
+        return;
+    }
+
+    // 此处判断升级握手
+
+    if (!httpContext.isFlushed()) {
+        if (!httpContext.flush()) {
+            httpContext.close();
+            return;
+        }
+    }
 }
 
 void Http2ServerOption::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2Connection::Ptr conn) noexcept {
@@ -45,7 +85,9 @@ void Http2ServerOption::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::
                 // 为当前连接更改设置
             } else {
                 // 非法帧
+                conn->mutex.lock();
                 sendGoaway(ctx, frame.ident, GOAWAY_PROTOCOL_ERROR);
+                conn->mutex.unlock();
                 ctx.close();
                 break;
             }
