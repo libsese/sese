@@ -42,63 +42,116 @@ void WindowsServiceIOContext::close() noexcept {
     isClosing = true;
 }
 
-WindowsService::Ptr sese::net::v2::WindowsService::create(ServerOption *opt) noexcept {
-    if (opt == nullptr) {
-        return nullptr;
+//WindowsService::Ptr sese::net::v2::WindowsService::create(ServerOption *opt) noexcept {
+//    if (opt == nullptr) {
+//        return nullptr;
+//    }
+//
+//    if (opt->isSSL && opt->sslContext) {
+//        if (!opt->sslContext->authPrivateKey()) {
+//            return nullptr;
+//        }
+//    }
+//
+//    auto family = opt->address->getRawAddress()->sa_family;
+//    socket_t listenSocket = ::socket(family, SOCK_STREAM, 0);
+//    if (SOCKET_ERROR == listenSocket) {
+//        return nullptr;
+//    }
+//
+//    unsigned long ul = 1;
+//    if (SOCKET_ERROR == ioctlsocket(listenSocket, FIONBIO, &ul)) {
+//        ::closesocket(listenSocket);
+//        return nullptr;
+//    }
+//
+//    if (SOCKET_ERROR == ::bind(listenSocket, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
+//        ::closesocket(listenSocket);
+//        return nullptr;
+//    }
+//
+//    if (SOCKET_ERROR == ::listen(listenSocket, SERVER_MAX_CONNECTION)) {
+//        ::closesocket(listenSocket);
+//        return nullptr;
+//    }
+//
+//    WSAEVENT event = ::WSACreateEvent();
+//    if (WSA_INVALID_EVENT == event) {
+//        ::WSACloseEvent(event);
+//        return nullptr;
+//    }
+//
+//    if (::WSAEventSelect(listenSocket, event, FD_ACCEPT)) {
+//        ::WSACloseEvent(event);
+//        ::closesocket(listenSocket);
+//        return nullptr;
+//    }
+//
+//    auto serv = new WindowsService;
+//    serv->option = opt;
+//    serv->eventNum = 1;
+//    serv->socketSet[0] = listenSocket;
+//    serv->hEventSet[0] = event;
+//
+//    return std::unique_ptr<WindowsService>(serv);
+//}
+
+WindowsService::~WindowsService() noexcept {
+    if (initStatus && !exitStatus && mainThread) {
+        shutdown();
+    }
+}
+
+bool WindowsService::init() noexcept {
+    if (sslContext && !sslContext->authPrivateKey()) {
+        return false;
     }
 
-    if (opt->isSSL && opt->sslContext) {
-        if (!opt->sslContext->authPrivateKey()) {
-            return nullptr;
-        }
+    if (!address) {
+        address = IPv4Address::localhost();
+        address->setPort(8080);
     }
 
-    auto family = opt->address->getRawAddress()->sa_family;
+    auto family = address->getRawAddress()->sa_family;
     socket_t listenSocket = ::socket(family, SOCK_STREAM, 0);
     if (SOCKET_ERROR == listenSocket) {
-        return nullptr;
+        return false;
     }
-
     unsigned long ul = 1;
     if (SOCKET_ERROR == ioctlsocket(listenSocket, FIONBIO, &ul)) {
         ::closesocket(listenSocket);
-        return nullptr;
+        return false;
     }
-
-    if (SOCKET_ERROR == ::bind(listenSocket, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
+    if (SOCKET_ERROR == ::bind(listenSocket, address->getRawAddress(), address->getRawAddressLength())) {
         ::closesocket(listenSocket);
-        return nullptr;
+        return false;
     }
-
     if (SOCKET_ERROR == ::listen(listenSocket, SERVER_MAX_CONNECTION)) {
         ::closesocket(listenSocket);
-        return nullptr;
+        return false;
     }
-
     WSAEVENT event = ::WSACreateEvent();
     if (WSA_INVALID_EVENT == event) {
         ::WSACloseEvent(event);
-        return nullptr;
+        return false;
     }
-
     if (::WSAEventSelect(listenSocket, event, FD_ACCEPT)) {
         ::WSACloseEvent(event);
         ::closesocket(listenSocket);
-        return nullptr;
+        return false;
     }
 
-    auto serv = new WindowsService;
-    serv->option = opt;
-    serv->eventNum = 1;
-    serv->socketSet[0] = listenSocket;
-    serv->hEventSet[0] = event;
+    this->eventNum = 1;
+    this->socketSet[0] = listenSocket;
+    this->hEventSet[0] = event;
 
-    return std::unique_ptr<WindowsService>(serv);
+    initStatus = true;
+    return true;
 }
 
 void WindowsService::loop() noexcept {
     while (true) {
-        if (exit) break;
+        if (exitStatus) break;
 
         DWORD nIndex = ::WSAWaitForMultipleEvents(eventNum, hEventSet, FALSE, 1000, FALSE);
         if (nIndex == WSA_WAIT_FAILED || nIndex == WSA_WAIT_TIMEOUT) {
@@ -129,7 +182,7 @@ void WindowsService::loop() noexcept {
                     continue;
                 }
 
-                if (option->isSSL) {
+                if (sslContext) {
                     auto *clientSSL = (ssl_st *) handshake(clientSocket);
                     if (!clientSSL) {
                         ::closesocket(clientSocket);
@@ -161,7 +214,7 @@ void WindowsService::loop() noexcept {
                 }
 
                 /// WSAEventSelect 在对端调用 SSL_shutdown 之后依然会收到一次可读事件
-                if (option->isSSL) {
+                if (sslContext) {
                     char buf;
                     auto rt = SSL_peek((ssl_st *) sslSet[i], &buf, 1);
                     if (rt <= 0) {
@@ -173,7 +226,7 @@ void WindowsService::loop() noexcept {
             } else if (enumEvent.lNetworkEvents & FD_CLOSE) {
                 closing({socketSet[i], nullptr, nullptr});
                 // 关闭套接字，并将其从 socket数组 和 事件数组 中移除
-                if (option->isSSL) {
+                if (sslContext) {
                     SSL_free((SSL *) sslSet[i]);
                     memmove(&sslSet[i], &sslSet[i + 1], (eventNum - i - 1) * sizeof(PVOID));
                 }
@@ -189,7 +242,7 @@ void WindowsService::loop() noexcept {
 
 void *WindowsService::handshake(SOCKET client) noexcept {
     ssl_st *clientSSL = nullptr;
-    clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
+    clientSSL = SSL_new((SSL_CTX *) sslContext->getContext());
     SSL_set_fd(clientSSL, (int) client);
     SSL_set_accept_state(clientSSL);
 
@@ -214,14 +267,14 @@ void *WindowsService::handshake(SOCKET client) noexcept {
 void WindowsService::connect(IOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        option->onConnect(myCtx);
+        onConnect(myCtx);
     });
 }
 
 void WindowsService::handle(IOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        option->onHandle(myCtx);
+        onHandle(myCtx);
         if (!myCtx.isClosing) {
             // WSAResetEvent(myCtx.event);
             WSAEventSelect(myCtx.socket, myCtx.event, FD_READ | FD_CLOSE);
@@ -232,19 +285,19 @@ void WindowsService::handle(IOContext ctx) noexcept {
 void WindowsService::closing(IOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        option->onClosing(myCtx);
+        onClosing(myCtx);
     });
 }
 
 void WindowsService::start() noexcept {
     mainThread = std::make_unique<Thread>([this]() { loop(); }, "WIN_MAIN");
-    threadPool = std::make_unique<ThreadPool>("WIN_SERV", option->threads);
+    threadPool = std::make_unique<ThreadPool>("WIN_SERV", threads);
     mainThread->start();
 }
 
 void WindowsService::shutdown() noexcept {
     if (mainThread != nullptr && mainThread->joinable()) {
-        exit = true;
+        exitStatus = true;
         mainThread->join();
         threadPool->shutdown();
     }

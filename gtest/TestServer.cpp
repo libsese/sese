@@ -163,3 +163,12 @@ TEST(TestServer, RPC) {
 
     server.shutdown();
 }
+
+TEST(TestServer, AutoShutdown) {
+    auto addr = makeRandomPortAddr();
+    ASSERT_TRUE(addr != nullptr);
+    sese::net::v2::Server server;
+    ASSERT_TRUE(server.init());
+    server.start();
+    // without server.shutdown()
+}
