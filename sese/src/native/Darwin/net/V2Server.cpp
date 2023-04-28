@@ -56,57 +56,106 @@ void DarwinServiceIOContext::close() noexcept {
     isClosing = true;
 }
 
-DarwinService::Ptr DarwinService::create(ServerOption *opt) noexcept {
-    if (opt == nullptr) {
-        return nullptr;
+// DarwinService::Ptr DarwinService::create(ServerOption *opt) noexcept {
+//     if (opt == nullptr) {
+//         return nullptr;
+//     }
+
+//     if (opt->isSSL && opt->sslContext) {
+//         if (!opt->sslContext->authPrivateKey()) {
+//             return nullptr;
+//         }
+//     }
+
+//     socket_t sock = ::socket(opt->address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
+//     if (-1 == sock) {
+//         return nullptr;
+//     }
+
+//     if (-1 == setNonblocking(sock)) {
+//         ::close(sock);
+//         return nullptr;
+//     }
+
+//     if (-1 == ::bind(sock, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
+//         ::close(sock);
+//         return nullptr;
+//     }
+
+//     if (-1 == ::listen(sock, SERVER_MAX_CONNECTION)) {
+//         ::close(sock);
+//         return nullptr;
+//     }
+
+//     auto kqueue = ::kqueue();
+//     if (-1 == kqueue) {
+//         ::close(sock);
+//         return nullptr;
+//     }
+
+//     struct kevent event {};
+//     EV_SET(&event, sock, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
+//     if (-1 == ::kevent(kqueue, &event, 1, nullptr, 0, nullptr)) {
+//         ::close(kqueue);
+//         ::close(sock);
+//         return nullptr;
+//     }
+
+//     auto server = new DarwinService;
+//     server->option = opt;
+//     server->socket = sock;
+//     server->kqueue = kqueue;
+
+//     return std::unique_ptr<DarwinService>(server);
+// }
+
+DarwinService::~DarwinService() noexcept {
+    if (initStatus && !exitStatus && mainThread) {
+        shutdown();
+    }
+}
+
+bool DarwinService::init() noexcept {
+    if (sslContext && !sslContext->authPrivateKey()) {
+        return false;
     }
 
-    if (opt->isSSL && opt->sslContext) {
-        if (!opt->sslContext->authPrivateKey()) {
-            return nullptr;
-        }
+    if (!address) {
+        address = IPv4Address::localhost();
+        address->setPort(8080);
     }
 
-    socket_t sock = ::socket(opt->address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
-    if (-1 == sock) {
-        return nullptr;
+    socket = ::socket(address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
+    if (-1 == socket) {
+        return false;
     }
-
-    if (-1 == setNonblocking(sock)) {
-        ::close(sock);
-        return nullptr;
+    if (-1 == setNonblocking(socket)) {
+        ::close(socket);
+        return false;
     }
-
-    if (-1 == ::bind(sock, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
-        ::close(sock);
-        return nullptr;
+    if (-1 == ::bind(socket, address->getRawAddress(), address->getRawAddressLength())) {
+        ::close(socket);
+        return false;
     }
-
-    if (-1 == ::listen(sock, SERVER_MAX_CONNECTION)) {
-        ::close(sock);
-        return nullptr;
+    if (-1 == ::listen(socket, SERVER_MAX_CONNECTION)) {
+        ::close(socket);
+        return false;
     }
-
-    auto kqueue = ::kqueue();
+    kqueue = ::kqueue();
     if (-1 == kqueue) {
-        ::close(sock);
-        return nullptr;
+        ::close(socket);
+        return false;
     }
-
     struct kevent event {};
-    EV_SET(&event, sock, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
+    EV_SET(&event, socket, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, nullptr);
     if (-1 == ::kevent(kqueue, &event, 1, nullptr, 0, nullptr)) {
         ::close(kqueue);
-        ::close(sock);
-        return nullptr;
+        ::close(socket);
+        return false;
     }
 
-    auto server = new DarwinService;
-    server->option = opt;
-    server->socket = sock;
-    server->kqueue = kqueue;
-
-    return std::unique_ptr<DarwinService>(server);
+    initStatus = true;
+    return true;
 }
 
 void DarwinService::loop() noexcept {
@@ -115,7 +164,7 @@ void DarwinService::loop() noexcept {
         1, 0
     };
     while (true) {
-        if (exit) break;
+        if (exitStatus) break;
 
         numberOfFds = ::kevent(kqueue, nullptr, 0, eventSet, MaxEventSize, &timeout);
         if (-1 == numberOfFds) continue;
@@ -128,7 +177,7 @@ void DarwinService::loop() noexcept {
                     continue;
                 }
 
-                if (option->isSSL) {
+                if (sslContext) {
                     auto *clientSSL = (ssl_st *) handshake(clientSocket);
                     if (clientSSL == nullptr) {
                         ::close(clientSocket);
@@ -149,7 +198,7 @@ void DarwinService::loop() noexcept {
                 }
             } else if (eventSet[i].filter == EVFILT_READ) {
                 if (eventSet[i].flags & EV_EOF) {
-                    if (option->isSSL) {
+                    if (sslContext) {
                         auto *clientSSL = (ssl_st *) eventSet[i].udata;
                         closing({(socket_t) eventSet[i].ident, clientSSL});
                         SSL_free(clientSSL);
@@ -159,7 +208,7 @@ void DarwinService::loop() noexcept {
                     close((int) eventSet[i].ident);
                     continue;
                 } else {
-                    if (option->isSSL) {
+                    if (sslContext) {
                         auto clientSocket = (socket_t) eventSet[i].ident;
 
                         char buf;
@@ -184,7 +233,7 @@ void DarwinService::loop() noexcept {
 
 void *DarwinService::handshake(socket_t client) noexcept {
     ssl_st *clientSSL = nullptr;
-    clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
+    clientSSL = SSL_new((SSL_CTX *) sslContext->getContext());
     SSL_set_fd(clientSSL, (int) client);
     SSL_set_accept_state(clientSSL);
 
@@ -207,9 +256,9 @@ void *DarwinService::handshake(socket_t client) noexcept {
 }
 
 void DarwinService::connect(DarwinServiceIOContext ctx) noexcept {
-    threadPool->postTask([ctx, this](){
+    threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        option->onConnect(myCtx);
+        onConnect(myCtx);
     });
 }
 
@@ -217,15 +266,15 @@ void DarwinService::handle(DarwinServiceIOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
 
-        option->onHandle(myCtx);
+        onHandle(myCtx);
 
         if (!myCtx.isClosing) {
             struct kevent event {};
             EV_SET(&event, myCtx.socket, EVFILT_READ, EV_ADD | EV_ONESHOT, 0, 0, myCtx.ssl);
             ::kevent(kqueue, &event, 1, nullptr, 0, nullptr);
         } else {
-            option->onClosing(myCtx);
-            if (option->isSSL) {
+            onClosing(myCtx);
+            if (sslContext) {
                 SSL_free((ssl_st *) myCtx.ssl);
             }
             close(myCtx.socket);
@@ -234,21 +283,21 @@ void DarwinService::handle(DarwinServiceIOContext ctx) noexcept {
 }
 
 void DarwinService::closing(DarwinServiceIOContext ctx) noexcept {
-    threadPool->postTask([ctx, this](){
+    threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        option->onClosing(myCtx);
+        onClosing(myCtx);
     });
 }
 
 void DarwinService::start() noexcept {
     mainThread = std::make_unique<Thread>([this]() { loop(); }, "LINUX_MAIN");
-    threadPool = std::make_unique<ThreadPool>("LINUX_SERV", option->threads);
+    threadPool = std::make_unique<ThreadPool>("LINUX_SERV", threads);
     mainThread->start();
 }
 
 void DarwinService::shutdown() noexcept {
     if (mainThread != nullptr && mainThread->joinable()) {
-        exit = true;
+        exitStatus = true;
         mainThread->join();
         threadPool->shutdown();
         close(socket);

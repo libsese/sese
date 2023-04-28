@@ -222,9 +222,9 @@ namespace sese::net::v2 {
 
     class API DarwinService {
     public:
-        using Ptr = std::unique_ptr<DarwinService>;
+        virtual ~DarwinService() noexcept;
 
-        static DarwinService::Ptr create(ServerOption *opt) noexcept;
+        virtual bool init() noexcept;
 
         void start() noexcept;
 
@@ -242,14 +242,43 @@ namespace sese::net::v2 {
         void closing(DarwinServiceIOContext ctx) noexcept;
 
     protected:
-        bool exit = false;
+        bool initStatus = false;
+        bool exitStatus = false;
         int kqueue = -1;
         socket_t socket = -1;
         struct kevent eventSet[MaxEventSize] {};
 
-        ServerOption *option{nullptr};
         Thread::Ptr mainThread{nullptr};
         ThreadPool::Ptr threadPool{nullptr};
+        public:
+        /// 当连接首次接入时触发
+        virtual void onConnect(sese::net::v2::DarwinServiceIOContext &) noexcept {
+        }
+
+        /// 对连接进行正式处理的函数
+        virtual void onHandle(sese::net::v2::DarwinServiceIOContext &) noexcept {
+            /// 此处一般为业务处理代码，默认实现为空
+        }
+
+        /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
+        virtual void onClosing(sese::net::v2::DarwinServiceIOContext &) noexcept {
+        }
+
+        /// 设置服务绑定的地址，默认为 localhost:8080
+        /// \param addr IP 地址
+        void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
+
+        /// 设置服务创建的线程池大小，默认为 4
+        /// \param size 线程池大小
+        void setThreadPoolSize(size_t size) noexcept { threads = size; }
+
+        /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
+        /// \param ctx 上下文
+        void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
+    protected:
+        size_t threads = 4;
+        IPAddress::Ptr address = nullptr;
+        security::SSLContext::Ptr sslContext = nullptr;
     };
 
     class API DarwinServiceIOContext {
