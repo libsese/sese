@@ -1,4 +1,4 @@
-#include "sese/net/rpc/V2RpcServerOption.h"
+#include "sese/net/rpc/V2RpcServer.h"
 #include "sese/net/rpc/Marco.h"
 #include "sese/config/json/JsonUtil.h"
 #include "sese/util/Packaged2Stream.h"
@@ -7,10 +7,11 @@
 
 using namespace sese;
 using namespace sese::json;
+using namespace sese::net::v2::rpc;
 
 #define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
 
-void sese::net::v2::rpc::V2RpcServerOption::onHandle(sese::net::v2::IOContext &ctx) noexcept {
+void V2RpcServer::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     auto stream = std::make_shared<ClosablePackagedStream<IOContext>>(&ctx);
 
     auto input = std::make_shared<BufferedInputStream>(stream);
@@ -92,6 +93,10 @@ void sese::net::v2::rpc::V2RpcServerOption::onHandle(sese::net::v2::IOContext &c
     JsonUtil::serialize(result, output);
     output->flush();
     stream->close();
+}
+
+void V2RpcServer::setFunction(const std::string &name, const V2RpcServer::Func &func) noexcept {
+    map[name] = func;
 }
 
 #undef BuiltinSetExitCode

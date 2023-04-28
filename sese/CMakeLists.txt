@@ -46,7 +46,7 @@ target_sources(Core PRIVATE
         src/net/http/HttpClient.cpp src/net/http/HttpServer.cpp
         src/net/http/Cookie.cpp src/net/http/CookieMap.cpp
         src/net/http/DynamicTable.cpp src/net/http/Huffman.cpp
-        src/net/http/V2HttpServerOption.cpp src/net/rpc/V2RpcServerOption.cpp
+        src/net/http/V2HttpServer.cpp src/net/rpc/V2RpcServer.cpp
         src/net/rpc/Server.cpp src/net/rpc/Client.cpp
         src/net/ws/WebSocketContext.cpp src/net/ws/WebSocketAuthenticator.cpp
 

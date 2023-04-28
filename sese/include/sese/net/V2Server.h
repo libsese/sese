@@ -9,6 +9,7 @@
 #include "sese/net/Socket.h"
 #include "sese/security/SSLContext.h"
 #include "sese/thread/ThreadPool.h"
+#include "sese/util/Noncopyable.h"
 
 #if defined(SESE_PLATFORM_WINDOWS)
 #define MaxEventSize 64
@@ -91,13 +92,15 @@ namespace sese::net::v2 {
 
     class LinuxServiceIOContext;
 
-    class API LinuxService {
+    class API LinuxService : public Noncopyable {
     public:
         using Ptr = std::unique_ptr<LinuxService>;
 
         virtual ~LinuxService() noexcept;
 
-        bool init() noexcept;
+        /// 初始化当前服务
+        /// \return 初始化结果
+        virtual bool init() noexcept;
 
         void start() noexcept;
 
