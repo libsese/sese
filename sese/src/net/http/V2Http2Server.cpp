@@ -1,4 +1,4 @@
-#include "sese/net/http/V2Http2ServerOption.h"
+#include "sese/net/http/V2Http2Server.h"
 #include "sese/net/http/Http2FrameInfo.h"
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/HttpServer.h"
@@ -9,18 +9,10 @@ using namespace sese::net::v2::http;
 
 using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
 
-Http2ServerOption::Http2ServerOption(size_t handleThreads) noexcept
-    : ServerOption(), threadPool("Http2Serv", handleThreads) {
+void Http2Server::onConnect(sese::net::v2::IOContext &ctx) noexcept {
 }
 
-Http2ServerOption::~Http2ServerOption() noexcept {
-    threadPool.shutdown();
-}
-
-void Http2ServerOption::onConnect(sese::net::v2::IOContext &ctx) noexcept {
-}
-
-void Http2ServerOption::onHandle(sese::net::v2::IOContext &ctx) noexcept {
+void Http2Server::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     mutex.lock();
     auto connIterator = connMap.find(ctx.getIdent());
     if (connIterator == connMap.end()) {
@@ -43,7 +35,7 @@ void Http2ServerOption::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     }
 }
 
-void Http2ServerOption::onClosing(sese::net::v2::IOContext &ctx) noexcept {
+void Http2Server::onClosing(sese::net::v2::IOContext &ctx) noexcept {
     mutex.lock();
     auto iterator = connMap.find(ctx.getIdent());
     if (iterator != connMap.end()) {
@@ -52,7 +44,7 @@ void Http2ServerOption::onClosing(sese::net::v2::IOContext &ctx) noexcept {
     mutex.unlock();
 }
 
-void Http2ServerOption::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
+void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
     auto httpContext = HttpContext ();
     httpContext.reset(&ctx);
 
@@ -71,7 +63,7 @@ void Http2ServerOption::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
     }
 }
 
-void Http2ServerOption::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2Connection::Ptr conn) noexcept {
+void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2Connection::Ptr conn) noexcept {
     Http2FrameInfo frame{};
     while (true) {
         if (!readFrame(ctx, frame)) {
@@ -145,7 +137,7 @@ void Http2ServerOption::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::
     }
 }
 
-bool Http2ServerOption::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &frame) noexcept {
+bool Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &frame) noexcept {
     uint8_t buffer[9]{};
     auto read = ctx.read(buffer, 9);
     if (read != 9) return false;
@@ -160,7 +152,7 @@ bool Http2ServerOption::readFrame(IOContext &ctx, sese::net::http::Http2FrameInf
     return true;
 }
 
-void Http2ServerOption::sendGoaway(sese::net::v2::IOContext &ctx, uint32_t sid, uint32_t eid) noexcept {
+void Http2Server::sendGoaway(sese::net::v2::IOContext &ctx, uint32_t sid, uint32_t eid) noexcept {
     int32_t buffer[2];
     buffer[0] = ToBigEndian32(sid) >> 1;// NOLINT
     buffer[1] = ToBigEndian32(eid);     // NOLINT

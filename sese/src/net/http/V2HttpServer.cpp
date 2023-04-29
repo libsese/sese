@@ -49,7 +49,7 @@ void sese::net::v2::http::HttpServer::onHandle(sese::net::v2::IOContext &ctx) no
 }
 
 void sese::net::v2::http::HttpServer::onRequest(sese::net::v2::http::HttpContext &ctx) noexcept {
-    const char sendBuffer[] = {"<h1>Default implementation from HttpServerOption</h1>"};
+    const char sendBuffer[] = {"<h1>Default implementation from HttpServer</h1>"};
     ctx.response.set("Content-Length", std::to_string(sizeof(sendBuffer) - 1));
     ctx.flush();
     ctx.write(sendBuffer, sizeof(sendBuffer) - 1);
