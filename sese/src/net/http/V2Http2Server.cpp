@@ -2,8 +2,9 @@
 #include "sese/net/http/Http2FrameInfo.h"
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/HttpServer.h"
-#include "sese/net/http/Huffman.h"
 #include "sese/util/Endian.h"
+
+#include <cmath>
 
 using namespace sese::net::http;
 using namespace sese::net::v2::http;
@@ -250,7 +251,6 @@ std::optional<std::string> Http2Server::decodeString(sese::InputStream *input) n
     }
 
     if (isHuffman) {
-        HuffmanDecoder decoder;
         return decoder.decode(buffer, len);
     }
 

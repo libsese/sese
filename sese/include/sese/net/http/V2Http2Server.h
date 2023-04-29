@@ -3,6 +3,7 @@
 #include "sese/net/V2Server.h"
 #include "sese/net/http/Http2Connection.h"
 #include "sese/net/http/Http2FrameInfo.h"
+#include "sese/net/http/Huffman.h"
 
 #include <map>
 
@@ -25,17 +26,20 @@ namespace sese::net::v2::http {
 
         static void sendGoaway(IOContext &ctx, uint32_t sid, uint32_t eid) noexcept;
 
-        static bool decode(InputStream *input, net::http::DynamicTable &dynamicTable, net::http::Header &header) noexcept;
+        bool decode(InputStream *input, net::http::DynamicTable &dynamicTable, net::http::Header &header) noexcept;
 
     protected:
         static void decodeInteger(uint8_t &buf, InputStream *input, uint32_t &dest, uint8_t n) noexcept;
 
-        static std::optional<std::string> decodeString(InputStream *input) noexcept;
+        std::optional<std::string> decodeString(InputStream *input) noexcept;
 
     protected:
         // 对 connMap 操作加锁
         std::mutex mutex;
         std::map<socket_t, net::http::Http2Connection::Ptr> connMap;
+
+        net::http::HuffmanDecoder decoder;
+        net::http::HuffmanEncoder encoder;
     };
 
 }// namespace sese::net::v2::http

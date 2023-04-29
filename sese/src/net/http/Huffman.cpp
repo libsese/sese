@@ -19,13 +19,14 @@ huffman_tree_t::huffman_tree_t() noexcept: m_root(new huffman_node_t) {
 
         for (const auto &bit: bits) {
             if (bit) {
-                if (nullptr == current->right())
+                if (nullptr == current->right()) {
                     current->right(new huffman_node_t);
-
+                }
                 current = current->right();
             } else {
-                if (nullptr == current->left())
+                if (nullptr == current->left()) {
                     current->left(new huffman_node_t);
+                }
 
                 current = current->left();
             }
@@ -40,15 +41,14 @@ huffman_tree_t::~huffman_tree_t() noexcept {
 }
 
 void huffman_tree_t::delete_node(huffman_node_t *n) noexcept {
-    if (nullptr != n->right())
+    if (nullptr != n->right()) {
         delete_node(n->right());
-    if (nullptr != n->left())
-        delete_node(n->left());
-
-    if (nullptr == n->left() && nullptr == n->right()) {
-        delete n;
-        n = nullptr;
     }
+    if (nullptr != n->left()) {
+        delete_node(n->left());
+    }
+
+    delete n;
 }
 
 std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) {

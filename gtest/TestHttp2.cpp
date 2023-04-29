@@ -16,15 +16,25 @@ TEST(TestHttp2, DynamicTable_0) {
 }
 
 TEST(TestHttp2, HuffmanEncoder) {
-    const char buf[] = "\xdc\x34\xfd\x28\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62\xd1\xbf";
-
     sese::net::http::HuffmanEncoder encoder;
-    auto code = encoder.encode("Sat, 01 Apr 2023 14:57:33 GMT");
-    ASSERT_TRUE(!code.empty());
+    {
+        const char buf[] = "\xdc\x34\xfd\x28\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62\xd1\xbf";
+        auto code = encoder.encode("Sat, 01 Apr 2023 14:57:33 GMT");
+        ASSERT_TRUE(!code.empty());
 
-    std::string_view bufView{buf, sizeof(buf) - 1};
-    std::string_view codeView{(const char *) code.data(), code.size()};
-    EXPECT_TRUE(bufView == codeView);
+        std::string_view bufView{buf, sizeof(buf) - 1};
+        std::string_view codeView{(const char *) code.data(), code.size()};
+        EXPECT_TRUE(bufView == codeView);
+    }
+    {
+        const char buf[] = "\xfe\x5c\x64\xa3\x14\x8c\x95\x60\xbd\x1b\x5f\xcf";
+        auto code = encoder.encode("\"63ea2d3e-18b4\"");
+        ASSERT_TRUE(!code.empty());
+
+        std::string_view bufView{buf, sizeof(buf) - 1};
+        std::string_view codeView{(const char *) code.data(), code.size()};
+        EXPECT_TRUE(bufView == codeView);
+    }
 }
 
 TEST(TestHttp2, HuffmanDecoder) {
@@ -63,15 +73,17 @@ TEST(TestHttp2, DecodeHeader) {
     auto table = sese::net::http::DynamicTable();
     auto header = sese::net::http::Header();
 
-    ASSERT_TRUE(sese::net::v2::http::Http2Server::decode(&input, table, header));
+    sese::net::v2::http::Http2Server server;
+
+    ASSERT_TRUE(server.decode(&input, table, header));
 
     puts("============ Stream Header ============");
-    for (decltype(auto) pair : header) {
+    for (decltype(auto) pair: header) {
         printf("%s: %s\n", pair.first.c_str(), pair.second.c_str());
     }
 
     puts("============ Dynamic Table ============");
-    for (decltype(auto) pair : table) {
+    for (decltype(auto) pair: table) {
         printf("%s: %s\n", pair.first.c_str(), pair.second.c_str());
     }
 }
