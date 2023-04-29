@@ -2,6 +2,7 @@
 #include "sese/net/http/Http2FrameInfo.h"
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/HttpServer.h"
+#include "sese/net/http/Huffman.h"
 #include "sese/util/Endian.h"
 
 using namespace sese::net::http;
@@ -45,7 +46,7 @@ void Http2Server::onClosing(sese::net::v2::IOContext &ctx) noexcept {
 }
 
 void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
-    auto httpContext = HttpContext ();
+    auto httpContext = HttpContext();
     httpContext.reset(&ctx);
 
     if (!sese::net::http::HttpUtil::recvRequest(&httpContext, &httpContext.request)) {
@@ -108,11 +109,18 @@ void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2C
             }
             if (frame.flags == FRAME_FLAG_END_HEADERS) {
                 // 触发头解析
+                if (!decode(stream.get(), conn->dynamicTable4recv, stream->requestHeader)) {
+                    // 解析失败关闭整个连接
+                    ctx.close();
+                    break;
+                }
                 // Content-Length 不为 0 则需要接收 data 帧
-                break;
+                if (stream->requestHeader.get("Content-Length", "undef") == "undef") {
+                    //todo 触发请求解析 - 任务提交
+                }
             }
         }
-        // DATA 帧
+            // DATA 帧
         else if (frame.type == FRAME_TYPE_DATA) {
             char buffer[1024];
             size_t length = 0;
@@ -128,8 +136,7 @@ void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2C
                 }
             }
             if (frame.flags == FRAME_FLAG_END_STREAM) {
-                // 触发请求解析 - 任务提交
-                break;
+                //todo 触发请求解析 - 任务提交
             }
         } else {
             // 不处理
@@ -157,4 +164,95 @@ void Http2Server::sendGoaway(sese::net::v2::IOContext &ctx, uint32_t sid, uint32
     buffer[0] = ToBigEndian32(sid) >> 1;// NOLINT
     buffer[1] = ToBigEndian32(eid);     // NOLINT
     ctx.write(&buffer, 2 * sizeof(uint32_t));
+}
+
+bool Http2Server::decode(sese::InputStream *input, DynamicTable &dynamicTable, Header &header) noexcept {
+    uint8_t buf;
+    int64_t len;
+    while ((len = input->read(&buf, 1)) > 0) {
+        // key & value 均在索引
+        if (buf & 0b1000'0000) {
+            uint32_t index = 0;
+            decodeInteger(buf, input, index, 7);
+            if (index == 0) return false;
+
+            auto pair = dynamicTable.get(index);
+            if (pair == std::nullopt) return false;
+            header.set(pair->first, pair->second);
+        } else {
+            uint32_t index = 0;
+            bool isStore;
+            if (0b0100'0000 == (buf & 0b1100'0000)) {
+                // 添加至动态表
+                decodeInteger(buf, input, index, 6);
+                isStore = true;
+            } else {
+                // 不添加至动态表
+                decodeInteger(buf, input, index, 4);
+                isStore = false;
+            }
+
+            std::string key;
+            if (0 != index) {
+                auto ret = dynamicTable.get(index);
+                if (ret == std::nullopt) {
+                    return false;
+                }
+                key = ret.value().first;
+            } else {
+                auto ret = decodeString(input);
+                if (ret == std::nullopt) {
+                    return false;
+                }
+                key = ret.value();
+            }
+
+            auto ret = decodeString(input);
+            if (ret == std::nullopt) {
+                return false;
+            }
+
+            if (isStore) {
+                dynamicTable.set(key, ret.value());
+            }
+
+            header.set(key, ret.value());
+        }
+    }
+    return true;
+}
+
+void Http2Server::decodeInteger(uint8_t &buf, sese::InputStream *input, uint32_t &dest, uint8_t n) noexcept {
+    const auto two_N = static_cast<uint16_t>(std::pow(2, n) - 1);
+    dest = buf & two_N;
+    if (dest == two_N) {
+        uint64_t M = 0;
+        while ((input->read(&buf, 1)) > 0) {
+            dest += (buf & 0x7F) << M;
+            M += 7;
+
+            if (!(buf & 0x80)) {
+                break;
+            }
+        }
+    }
+}
+
+std::optional<std::string> Http2Server::decodeString(sese::InputStream *input) noexcept {
+    uint8_t buf;
+    input->read(&buf, 1);
+    uint8_t len = (buf & 0x7F);
+    bool isHuffman = (buf & 0x80) == 0x80;
+
+    char buffer[UINT8_MAX]{};
+    if (len != input->read(buffer, len)) {
+        return nullptr;
+    }
+
+    if (isHuffman) {
+        HuffmanDecoder decoder;
+        return decoder.decode(buffer, len);
+    }
+
+    return buffer;
 }

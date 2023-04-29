@@ -26,6 +26,10 @@ namespace sese::net::http {
 
         [[nodiscard]] std::optional<Header> get(size_t index) const noexcept;
 
+        const auto begin() const { return queue.begin(); }
+
+        const auto end() const { return queue.end(); }
+
     protected:
         size_t max;
         size_t size = 0;

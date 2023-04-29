@@ -48,8 +48,8 @@ target_sources(Core PRIVATE
         src/net/http/DynamicTable.cpp src/net/http/Huffman.cpp
         src/net/http/V2HttpServer.cpp src/net/http/V2Http2Server.cpp
         src/net/http/Http2Connection.cpp src/net/http/Http2Stream.cpp
-        src/net/rpc/V2RpcServer.cpp
-        src/net/rpc/Server.cpp src/net/rpc/Client.cpp
+        src/net/rpc/V2RpcServer.cpp src/net/rpc/Server.cpp
+        src/net/rpc/Client.cpp
         src/net/ws/WebSocketContext.cpp src/net/ws/WebSocketAuthenticator.cpp
 
         src/config/ConfigUtil.cpp
