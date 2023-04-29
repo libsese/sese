@@ -56,59 +56,113 @@ void LinuxServiceIOContext::close() noexcept {
     isClosing = true;
 }
 
-LinuxService::Ptr LinuxService::create(ServerOption *opt) noexcept {
-    if (opt == nullptr) {
-        return nullptr;
+//LinuxService::Ptr LinuxService::create(ServerOption *opt) noexcept {
+//    if (opt == nullptr) {
+//        return nullptr;
+//    }
+//
+//    if (opt->isSSL && opt->sslContext) {
+//        if (!opt->sslContext->authPrivateKey()) {
+//            return nullptr;
+//        }
+//    }
+//
+//    socket_t sock = ::socket(opt->address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
+//    if (-1 == sock) {
+//        return nullptr;
+//    }
+//
+//    if (-1 == setNonblocking(sock)) {
+//        ::close(sock);
+//        return nullptr;
+//    }
+//
+//    if (-1 == bind(sock, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
+//        ::close(sock);
+//        return nullptr;
+//    }
+//
+//    if (-1 == listen(sock, SERVER_MAX_CONNECTION)) {
+//        ::close(sock);
+//        return nullptr;
+//    }
+//
+//    int epoll = epoll_create1(0);
+//    if (-1 == epoll) {
+//        ::close(sock);
+//        return nullptr;
+//    }
+//
+//    epoll_event event{};
+//    event.events = EPOLLIN;
+//    event.data.fd = sock;
+//    epoll_ctl(epoll, EPOLL_CTL_ADD, sock, &event);
+//
+//    auto server = new Server;
+//    server->option = opt;
+//    server->socket = sock;
+//    server->epoll = epoll;
+//
+//    return std::unique_ptr<LinuxService>(server);
+//}
+
+LinuxService::~LinuxService() noexcept {
+    // 如果服务已初始化并且处于运行状态下
+    if (initStatus && !exitStatus && mainThread) {
+        shutdown();
+    }
+}
+
+bool LinuxService::init() noexcept {
+    // 证书错误
+    if (sslContext && !sslContext->authPrivateKey()) {
+        return false;
     }
 
-    if (opt->isSSL && opt->sslContext) {
-        if (!opt->sslContext->authPrivateKey()) {
-            return nullptr;
-        }
+    // 未设置 addr 则使用缺省配置
+    if (!address) {
+        address = IPv4Address::localhost();
+        address->setPort(8080);
     }
 
-    socket_t sock = ::socket(opt->address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
-    if (-1 == sock) {
-        return nullptr;
+    socket = ::socket(address->getRawAddress()->sa_family, SOCK_STREAM, IPPROTO_IP);
+    if (-1 == socket) {
+        return false;
     }
 
-    if (-1 == setNonblocking(sock)) {
-        ::close(sock);
-        return nullptr;
+    if (-1 == setNonblocking(socket)) {
+        ::close(socket);
+        return false;
     }
 
-    if (-1 == bind(sock, opt->address->getRawAddress(), opt->address->getRawAddressLength())) {
-        ::close(sock);
-        return nullptr;
+    if (-1 == bind(socket, address->getRawAddress(), address->getRawAddressLength())) {
+        ::close(socket);
+        return false;
     }
 
-    if (-1 == listen(sock, SERVER_MAX_CONNECTION)) {
-        ::close(sock);
-        return nullptr;
+    if (-1 == listen(socket, SERVER_MAX_CONNECTION)) {
+        ::close(socket);
+        return false;
     }
 
-    int epoll = epoll_create1(0);
+    epoll = epoll_create1(0);
     if (-1 == epoll) {
-        ::close(sock);
-        return nullptr;
+        ::close(socket);
+        return false;
     }
 
     epoll_event event{};
     event.events = EPOLLIN;
-    event.data.fd = sock;
-    epoll_ctl(epoll, EPOLL_CTL_ADD, sock, &event);
+    event.data.fd = socket;
+    epoll_ctl(epoll, EPOLL_CTL_ADD, socket, &event);
 
-    auto server = new Server;
-    server->option = opt;
-    server->socket = sock;
-    server->epoll = epoll;
-
-    return std::unique_ptr<LinuxService>(server);
+    initStatus = true;
+    return true;
 }
 
 void LinuxService::loop() noexcept {
     while (true) {
-        if (exit) break;
+        if (exitStatus) break;
 
         int numOfFds = epoll_wait(epoll, eventSet, MaxEventSize, 0);
         if (-1 == numOfFds) continue;
@@ -123,7 +177,7 @@ void LinuxService::loop() noexcept {
                     continue;
                 }
 
-                if (option->isSSL) {
+                if (sslContext) {
                     auto *clientSSL = (ssl_st *) handshake(clientSocket);
                     if (clientSSL == nullptr) {
                         ::close(clientSocket);
@@ -149,7 +203,7 @@ void LinuxService::loop() noexcept {
                 if (eventSet[i].events & EPOLLRDHUP || eventSet[i].events & EPOLLHUP) {
                     // 仅有对端关闭能触发
                     socket_t clientSocket;
-                    if (option->isSSL) {
+                    if (sslContext) {
                         clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
 
                         closing({clientSocket, eventSet[i].data.ptr});
@@ -164,7 +218,7 @@ void LinuxService::loop() noexcept {
 
                     epoll_ctl(epoll, EPOLL_CTL_DEL, clientSocket, nullptr);
                 } else {
-                    if (option->isSSL) {
+                    if (sslContext) {
                         auto clientSocket = SSL_get_fd((ssl_st *) eventSet[i].data.ptr);
 
                         char buf;
@@ -192,7 +246,7 @@ void LinuxService::loop() noexcept {
 
 void *LinuxService::handshake(socket_t client) noexcept {
     ssl_st *clientSSL = nullptr;
-    clientSSL = SSL_new((SSL_CTX *) option->sslContext->getContext());
+    clientSSL = SSL_new((SSL_CTX *) sslContext->getContext());
     SSL_set_fd(clientSSL, (int) client);
     SSL_set_accept_state(clientSSL);
 
@@ -217,16 +271,16 @@ void *LinuxService::handshake(socket_t client) noexcept {
 void LinuxService::connect(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        option->onConnect(myCtx);
+        onConnect(myCtx);
     });
 }
 
 void LinuxService::handle(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        option->onHandle(myCtx);
+        onHandle(myCtx);
         if (!myCtx.isClosing) {
-            if (option->isSSL) {
+            if (sslContext) {
                 epoll_event event{
                         .events = EPOLLIN | EPOLLRDHUP | EPOLLHUP | EPOLLONESHOT,
                         .data = {.ptr = myCtx.ssl}};
@@ -239,9 +293,9 @@ void LinuxService::handle(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
             }
         } else {
             // 此处为主动关闭触发
-            option->onClosing(myCtx);
+            onClosing(myCtx);
 
-            if (option->isSSL) {
+            if (sslContext) {
                 SSL_free((ssl_st *) myCtx.ssl);
                 ::close(myCtx.socket);
             }
@@ -253,19 +307,19 @@ void LinuxService::handle(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
 void LinuxService::closing(sese::net::v2::LinuxServiceIOContext ctx) noexcept {
     threadPool->postTask([ctx, this]() {
         auto myCtx = ctx;
-        option->onClosing(myCtx);
+        onClosing(myCtx);
     });
 }
 
 void LinuxService::start() noexcept {
     mainThread = std::make_unique<Thread>([this]() { loop(); }, "LINUX_MAIN");
-    threadPool = std::make_unique<ThreadPool>("LINUX_SERV", option->threads);
+    threadPool = std::make_unique<ThreadPool>("LINUX_SERV", threads);
     mainThread->start();
 }
 
 void LinuxService::shutdown() noexcept {
     if (mainThread != nullptr && mainThread->joinable()) {
-        exit = true;
+        exitStatus = true;
         mainThread->join();
         threadPool->shutdown();
         close(socket);

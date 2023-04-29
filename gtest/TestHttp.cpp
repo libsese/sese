@@ -1,5 +1,5 @@
 #include "sese/net/Socket.h"
-#include "sese/net/http/V2HttpServerOption.h"
+#include "sese/net/http/V2HttpServer.h"
 #include "sese/util/Random.h"
 #include "gtest/gtest.h"
 
@@ -19,10 +19,11 @@ TEST(TestHttp, _0) {
     auto addr = makeRandomPortAddr();
     ASSERT_TRUE(addr != nullptr);
 
-    net::v2::http::HttpServerOption option(10);
-    option.address = addr;
-    auto serv = net::v2::Server::create(&option);
-    serv->start();
+    net::v2::http::HttpServer serv;
+    serv.setBindAddress(addr);
+    serv.setKeepAlive(10);
+    ASSERT_TRUE(serv.init());
+    serv.start();
 
     char buf0[]{"GET / HTTP/1.1\r\n"
                 "connect: keep-alive\r\n\r\n"};
@@ -53,5 +54,5 @@ close:
     client.close();
     std::this_thread::sleep_for(std::chrono::seconds(1));
 shutdown:
-    serv->shutdown();
+    serv.shutdown();
 }

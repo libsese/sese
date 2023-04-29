@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "sese/net/rpc/Client.h"
 #include "sese/net/rpc/Marco.h"
-#include "sese/net/rpc/V2RpcServerOption.h"
+#include "sese/net/rpc/V2RpcServer.h"
 #include "sese/security/SSLContextBuilder.h"
 #include "sese/security/SecuritySocket.h"
 #include "sese/util/Random.h"
@@ -15,7 +15,7 @@ auto makeRandomPortAddr() {
     return addr;
 }
 
-class RawServerOption : public sese::net::v2::ServerOption {
+class RawServer : public sese::net::v2::Server {
 public:
     void onConnect(sese::net::v2::IOContext &context) noexcept override {
         socket_t ident = context.getIdent();
@@ -41,14 +41,12 @@ TEST(TestServer, RawServer) {
     auto addr = makeRandomPortAddr();
     ASSERT_TRUE(addr != nullptr);
 
-    RawServerOption option;
-    option.address = addr;
-    option.isSSL = false;
-    option.threads = 2;
+    RawServer server;
+    server.setBindAddress(addr);
+    server.setThreadPoolSize(2);
 
-    auto server = sese::net::v2::Server::create(&option);
-    ASSERT_TRUE(server != nullptr);
-    server->start();
+    ASSERT_TRUE(server.init());
+    server.start();
 
     char buf0[]{"Hello!"};
     char buf1[16]{};
@@ -78,7 +76,7 @@ close:
     client.close();
     sese::sleep(1);
 shutdown:
-    server->shutdown();
+    server.shutdown();
 }
 
 TEST(TestServer, RawSSLServer) {
@@ -89,15 +87,13 @@ TEST(TestServer, RawSSLServer) {
     servCtx->importCertFile(PROJECT_PATH "/test/TestSecTcpServer/test-ca.crt");
     servCtx->importPrivateKey(PROJECT_PATH "/test/TestSecTcpServer/test-key.pem");
 
-    RawServerOption option;
-    option.address = addr;
-    option.isSSL = true;
-    option.sslContext = servCtx;
-    option.threads = 2;
+    RawServer server;
+    server.setBindAddress(addr);
+    server.setSSLContext(servCtx);
+    server.setThreadPoolSize(2);
 
-    auto server = sese::net::v2::Server::create(&option);
-    ASSERT_TRUE(server != nullptr);
-    server->start();
+    ASSERT_TRUE(server.init());
+    server.start();
 
     char buf0[]{"Hello!"};
     char buf1[16]{};
@@ -125,7 +121,7 @@ close:
     client.close();
     sese::sleep(1);
 shutdown:
-    server->shutdown();
+    server.shutdown();
 }
 
 void add(sese::json::ObjectData::Ptr &args, sese::json::ObjectData::Ptr &result) {
@@ -141,12 +137,11 @@ TEST(TestServer, RPC) {
     auto addr = makeRandomPortAddr();
     ASSERT_TRUE(addr != nullptr);
 
-    sese::net::v2::rpc::V2RpcServerOption option;
-    option.address = addr;
-    option.map["add"] = add;
-    auto server = sese::net::v2::Server::create(&option);
-    ASSERT_TRUE(server != nullptr);
-    server->start();
+    sese::net::v2::rpc::V2RpcServer server;
+    server.setBindAddress(addr);
+    server.setFunction("add", add);
+    ASSERT_TRUE(server.init());
+    server.start();
 
     int value0 = 100;
     int value1 = 200;
@@ -166,5 +161,14 @@ TEST(TestServer, RPC) {
         puts(sese::net::rpc::getErrorMessage(code));
     }
 
-    server->shutdown();
+    server.shutdown();
+}
+
+TEST(TestServer, AutoShutdown) {
+    auto addr = makeRandomPortAddr();
+    ASSERT_TRUE(addr != nullptr);
+    sese::net::v2::Server server;
+    ASSERT_TRUE(server.init());
+    server.start();
+    // without server.shutdown()
 }

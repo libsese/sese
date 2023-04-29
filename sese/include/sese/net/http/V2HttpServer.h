@@ -1,8 +1,8 @@
-/// \file V2HttpServerOption.h
+/// \file V2HttpServer.h
 /// \author kaoru
 /// \brief Http 服务端选项
 /// \version 0.2
-/// \date 2023.03.01
+/// \date 2023.04.29
 
 #pragma once
 
@@ -15,11 +15,11 @@ namespace sese::net::v2::http {
     using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
 
     /// Http 服务选项
-    struct HttpServerOption : public ServerOption {
+    struct HttpServer : public Server {
 
-        explicit HttpServerOption(size_t keepAlive = 0) noexcept;
+        ~HttpServer() noexcept override;
 
-        ~HttpServerOption() noexcept override;
+        bool init() noexcept override;
 
         void onConnect(IOContext &context) noexcept override;
 
@@ -28,6 +28,8 @@ namespace sese::net::v2::http {
         void onClosing(IOContext &context) noexcept override;
 
         virtual void onRequest(HttpContext &ctx) noexcept;
+
+        void setKeepAlive(size_t seconds) noexcept { keepAlive = seconds; }
 
     protected:
         size_t keepAlive = 0;

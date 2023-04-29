@@ -1,6 +1,6 @@
 /// \file V2Server.h
 /// \brief 通用响应式服务器模型
-/// \date 2023.04.15
+/// \date 2023.04.29
 /// \author kaoru
 /// \note 先比起原先的服务器提高了可拓展性、可维护性、安全性和性能
 
@@ -9,6 +9,7 @@
 #include "sese/net/Socket.h"
 #include "sese/security/SSLContext.h"
 #include "sese/thread/ThreadPool.h"
+#include "sese/util/Noncopyable.h"
 
 #if defined(SESE_PLATFORM_WINDOWS)
 #define MaxEventSize 64
@@ -22,17 +23,17 @@
 
 namespace sese::net::v2 {
 
-    struct ServerOption;
-
 #ifdef SESE_PLATFORM_WINDOWS
 
     class WindowsServiceIOContext;
 
     class API WindowsService {
     public:
-        using Ptr = std::unique_ptr<WindowsService>;
+        virtual ~WindowsService() noexcept;
 
-        static WindowsService::Ptr create(ServerOption *opt) noexcept;
+        /// 初始化当前服务
+        /// \return 初始化结果
+        virtual bool init() noexcept;
 
         void start() noexcept;
 
@@ -50,15 +51,46 @@ namespace sese::net::v2 {
         void closing(WindowsServiceIOContext ctx) noexcept;
 
     protected:
-        bool exit = false;
+        bool initStatus = false;
+        bool exitStatus = false;
         DWORD eventNum = 0;
         SOCKET socketSet[MaxEventSize]{};
         HANDLE hEventSet[MaxEventSize]{};
         PVOID sslSet[MaxEventSize]{};
 
-        ServerOption *option{nullptr};
         Thread::Ptr mainThread{nullptr};
         ThreadPool::Ptr threadPool{nullptr};
+
+    public:
+        /// 当连接首次接入时触发
+        virtual void onConnect(sese::net::v2::WindowsServiceIOContext &) noexcept {
+        }
+
+        /// 对连接进行正式处理的函数
+        virtual void onHandle(sese::net::v2::WindowsServiceIOContext &) noexcept {
+            /// 此处一般为业务处理代码，默认实现为空
+        }
+
+        /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
+        virtual void onClosing(sese::net::v2::WindowsServiceIOContext &) noexcept {
+        }
+
+        /// 设置服务绑定的地址，默认为 localhost:8080
+        /// \param addr IP 地址
+        void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
+
+        /// 设置服务创建的线程池大小，默认为 4
+        /// \param size 线程池大小
+        void setThreadPoolSize(size_t size) noexcept { threads = size; }
+
+        /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
+        /// \param ctx 上下文
+        void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
+
+    protected:
+        size_t threads = 4;
+        IPAddress::Ptr address = nullptr;
+        security::SSLContext::Ptr sslContext = nullptr;
     };
 
     class API WindowsServiceIOContext {
@@ -93,11 +125,13 @@ namespace sese::net::v2 {
 
     class LinuxServiceIOContext;
 
-    class API LinuxService {
+    class API LinuxService : public Noncopyable {
     public:
-        using Ptr = std::unique_ptr<LinuxService>;
+        virtual ~LinuxService() noexcept;
 
-        static LinuxService::Ptr create(ServerOption *opt) noexcept;
+        /// 初始化当前服务
+        /// \return 初始化结果
+        virtual bool init() noexcept;
 
         void start() noexcept;
 
@@ -115,14 +149,44 @@ namespace sese::net::v2 {
         void closing(LinuxServiceIOContext ctx) noexcept;
 
     protected:
-        bool exit = false;
+        bool initStatus = false;
+        bool exitStatus = false;
         int epoll = -1;
         socket_t socket = -1;
         epoll_event eventSet[MaxEventSize]{};
 
-        ServerOption *option{nullptr};
         Thread::Ptr mainThread{nullptr};
         ThreadPool::Ptr threadPool{nullptr};
+
+    public:
+        /// 当连接首次接入时触发
+        virtual void onConnect(sese::net::v2::LinuxServiceIOContext &) noexcept {
+        }
+
+        /// 对连接进行正式处理的函数
+        virtual void onHandle(sese::net::v2::LinuxServiceIOContext &) noexcept {
+            /// 此处一般为业务处理代码，默认实现为空
+        }
+
+        /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
+        virtual void onClosing(sese::net::v2::LinuxServiceIOContext &) noexcept {
+        }
+
+        /// 设置服务绑定的地址，默认为 localhost:8080
+        /// \param addr IP 地址
+        void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
+
+        /// 设置服务创建的线程池大小，默认为 4
+        /// \param size 线程池大小
+        void setThreadPoolSize(size_t size) noexcept { threads = size; }
+
+        /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
+        /// \param ctx 上下文
+        void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
+    protected:
+        size_t threads = 4;
+        IPAddress::Ptr address = nullptr;
+        security::SSLContext::Ptr sslContext = nullptr;
     };
 
     class API LinuxServiceIOContext {
@@ -214,36 +278,5 @@ namespace sese::net::v2 {
     using Server = DarwinService;
 
 #endif
-
-    /// 服务器选项，用于指定功能的可拓展实体
-    struct API ServerOption {
-
-        virtual ~ServerOption() = default;
-
-        /// 绑定的地址与端口，必填
-        IPAddress::Ptr address = nullptr;
-
-        /// 使用线程池大小
-        size_t threads = 4;
-
-        /// 此选项用于指示是否使用 SSL，
-        /// 开启 SSL 必须设置 sslContext 选项
-        bool isSSL = false;
-        /// SSL 上下文
-        security::SSLContext::Ptr sslContext = nullptr;
-
-        /// 当连接首次接入时触发
-        virtual void onConnect(sese::net::v2::IOContext &) noexcept {
-        }
-
-        /// 对连接进行正式处理的函数
-        virtual void onHandle(sese::net::v2::IOContext &) noexcept {
-            /// 此处一般为业务处理代码，默认实现为空
-        }
-
-        /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
-        virtual void onClosing(sese::net::v2::IOContext &) noexcept {
-        }
-    };
 
 }// namespace sese::net::v2
