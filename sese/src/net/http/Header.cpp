@@ -1,5 +1,8 @@
 #include <sese/net/http/Header.h>
 
+#include <cctype>
+#include <algorithm>
+
 using namespace sese::net::http;
 
 Header::Header(const std::initializer_list<KeyValueType> &initializerList) noexcept {
@@ -10,12 +13,16 @@ Header::Header(const std::initializer_list<KeyValueType> &initializerList) noexc
 
 
 Header *Header::set(const std::string &key, const std::string &value) noexcept {
-    headers[key] = value;
+    auto temp = key;
+    std::transform(temp.begin(), temp.end(), temp.begin() ,std::tolower);
+    headers[temp] = value;
     return this;
 }
 
 const std::string &Header::get(const std::string &key, const std::string &defaultValue) noexcept {
-    auto res = headers.find(key);
+    auto temp = key;
+    std::transform(temp.begin(), temp.end(), temp.begin() ,std::tolower);
+    auto res = headers.find(temp);
     if (res == headers.end()) {
         return defaultValue;
     } else {

@@ -26,6 +26,8 @@ namespace sese::net::v2::http {
 
         static void sendGoaway(IOContext &ctx, uint32_t sid, uint32_t eid) noexcept;
 
+        static void sendACK(IOContext &ctx) noexcept;
+
         bool decode(InputStream *input, net::http::DynamicTable &dynamicTable, net::http::Header &header) noexcept;
 
     protected:

@@ -3,6 +3,9 @@
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/HttpServer.h"
 #include "sese/util/Endian.h"
+#include "sese/util/InputBufferWrapper.h"
+#include "sese/text/StringBuilder.h"
+#include "sese/convert/Base64Converter.h"
 
 #include <cmath>
 
@@ -19,20 +22,9 @@ void Http2Server::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     auto connIterator = connMap.find(ctx.getIdent());
     if (connIterator == connMap.end()) {
         mutex.unlock();
-        char buffer[MAGIC_STRING.length()];
-        ctx.peek(buffer, MAGIC_STRING.length());
-        if (MAGIC_STRING == buffer) {
-            ctx.read(buffer, MAGIC_STRING.length());
-            auto conn = std::make_shared<Http2Connection>();
-            conn->socket = ctx.getIdent();
-            mutex.lock();
-            connMap[conn->socket] = conn;
-            mutex.unlock();
-            onHttp2Handle(ctx, connIterator->second);
-        } else {
-            onHttpHandle(ctx);
-        }
+        onHttpHandle(ctx);
     } else {
+        mutex.unlock();
         onHttp2Handle(ctx, connIterator->second);
     }
 }
@@ -55,17 +47,117 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
         return;
     }
 
-    // 此处判断升级握手
-
-    if (!httpContext.isFlushed()) {
-        if (!httpContext.flush()) {
-            httpContext.close();
-            return;
+    // 比较常量
+    const char *SSL = "h2";
+    const char *NoSSL = "h2c";
+    const char *UPGRADE_CMP_STR = SSL;
+    if (!sslContext) {
+        UPGRADE_CMP_STR = NoSSL;
+    }
+    // 状态变量
+    bool upgrade = false;
+    bool http2 = false;
+    bool settings = false;
+    // 确认状态
+    auto connectString = httpContext.request.get("Connection", "undef");
+    auto upgradeString = httpContext.request.get("Upgrade", "undef");
+    if (connectString != "undef") {
+        auto connectVector = text::StringBuilder::split(connectString, ", ");
+        for (decltype(auto) str: connectVector) {
+            if (strcasecmp(str.c_str(), "Upgrade") == 0) {
+                upgrade = true;
+            } else if (strcasecmp(str.c_str(), "Http2-Settings") == 0) {
+                settings = true;
+            }
         }
+    }
+    if (upgradeString != "undef") {
+        if (strcasecmp(upgradeString.c_str(), UPGRADE_CMP_STR) == 0) {
+            http2 = true;
+        }
+    }
+
+    // 对状态反应
+    auto ok = false;
+    if (upgrade && http2) {
+        // 确定升级至 HTTP2
+        if (settings) {
+            // 确定存在 HTTP2-Settings 字段
+            auto settingsStr = httpContext.request.get("Http2-Settings", "undef");
+            if (settingsStr != "undef") {
+                auto conn = std::make_shared<Http2Connection>();
+                conn->socket = ctx.getIdent();
+                conn->hasMagic = false;
+                mutex.lock();
+                connMap[conn->socket] = conn;
+                mutex.unlock();
+
+                char buffer[6];
+                auto ident = (uint16_t *) &buffer[0];
+                auto value = (uint32_t *) &buffer[2];
+
+                auto input = sese::InputBufferWrapper(settingsStr.c_str(), settingsStr.size());
+                auto output = sese::ByteBuilder(1024);
+                sese::Base64Converter::decode(&input, &output);
+                int64_t len = 0;
+                while ((len = output.read(buffer, 6)) == 6) {
+                    *ident = FromBigEndian16(*ident);
+                    *value = FromBigEndian32(*value);
+
+                    switch (*ident) {
+                        case SETTINGS_HEADER_TABLE_SIZE:
+                            conn->dynamicTable4recv.resize(*value);
+                            break;
+                        case SETTINGS_MAX_CONCURRENT_STREAMS:
+                        case SETTINGS_MAX_FRAME_SIZE:
+                        case SETTINGS_ENABLE_PUSH:
+                        case SETTINGS_MAX_HEADER_LIST_SIZE:
+                        case SETTINGS_INITIAL_WINDOW_SIZE:
+                        default:
+                            // 暂不处理
+                            break;
+                    }
+                }
+                if (len == 0) {
+                    ok = true;
+                } else {
+                    // 不完整 - 暂不处理
+                    ok = false;
+                }
+            }
+        } else {
+            ok = true;
+        }
+    }
+    // 发送回报
+    if (ok) {
+        // Switching Protocols
+        httpContext.response.setCode(101);
+        httpContext.response.set("Connection", "Upgrade");
+        httpContext.response.set("Upgrade", UPGRADE_CMP_STR);
+        httpContext.flush();
+    } else {
+        char resp[] = {"Only support Http/2"};
+        httpContext.response.setCode(404);
+        httpContext.response.set("Content-Length", std::to_string(sizeof(resp) - 1));
+        httpContext.response.set("Connection", "Close");
+        httpContext.flush();
+        httpContext.write(resp, sizeof(resp) - 1);
+        httpContext.close();
     }
 }
 
 void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2Connection::Ptr conn) noexcept {
+    if (!conn->hasMagic) {
+        char buffer[MAGIC_STRING.length() + 1]{};
+        ctx.read(buffer, MAGIC_STRING.length());
+        if (MAGIC_STRING != buffer) {
+            ctx.close();
+        } else {
+            conn->hasMagic = true;
+        }
+    }
+
     Http2FrameInfo frame{};
     while (true) {
         if (!readFrame(ctx, frame)) {
@@ -77,6 +169,50 @@ void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2C
         if (frame.ident == 0) {
             if (frame.type == FRAME_TYPE_SETTINGS) {
                 // 为当前连接更改设置
+                ByteBuilder builder;
+                char buf[1024];
+                size_t length = 0;
+                while (length < frame.length) {
+                    auto need = frame.length - length > 1024 ? 1024 : frame.length - length;
+                    auto l = ctx.read(buf, need);
+                    if (l > 0) {
+                        builder.write(buf, l);
+                        length += l;
+                    } else {
+                        ctx.close();
+                        break;
+                    }
+                }
+
+                char buffer[6];
+                auto ident = (uint16_t *) &buffer[0];
+                auto value = (uint32_t *) &buffer[2];
+
+                int64_t len = 0;
+                while ((len = builder.read(buffer, 6)) == 6) {
+                    *ident = FromBigEndian16(*ident);
+                    *value = FromBigEndian32(*value);
+
+                    switch (*ident) {
+                        case SETTINGS_HEADER_TABLE_SIZE:
+                            conn->dynamicTable4recv.resize(*value);
+                            break;
+                        case SETTINGS_MAX_CONCURRENT_STREAMS:
+                        case SETTINGS_MAX_FRAME_SIZE:
+                        case SETTINGS_ENABLE_PUSH:
+                        case SETTINGS_MAX_HEADER_LIST_SIZE:
+                        case SETTINGS_INITIAL_WINDOW_SIZE:
+                        default:
+                            // 暂不处理
+                            break;
+                    }
+                }
+                continue;
+            } else if (frame.type == FRAME_TYPE_WINDOW_UPDATE){
+                // 暂不处理
+                char buf[1024];
+                ctx.read(buf, frame.length);
+                continue;
             } else {
                 // 非法帧
                 conn->mutex.lock();
@@ -150,7 +286,8 @@ bool Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &fra
     auto read = ctx.read(buffer, 9);
     if (read != 9) return false;
 
-    memcpy(&frame.length, buffer + 0, 3);
+    memset(&frame,0 ,sizeof(frame));
+    memcpy(((char *) &frame.length) + 1, buffer + 0, 3);
     memcpy(&frame.type, buffer + 3, 1);
     memcpy(&frame.flags, buffer + 4, 1);
     memcpy(&frame.ident, buffer + 5, 4);
@@ -165,6 +302,11 @@ void Http2Server::sendGoaway(sese::net::v2::IOContext &ctx, uint32_t sid, uint32
     buffer[0] = ToBigEndian32(sid) >> 1;// NOLINT
     buffer[1] = ToBigEndian32(eid);     // NOLINT
     ctx.write(&buffer, 2 * sizeof(uint32_t));
+}
+
+void Http2Server::sendACK(sese::net::v2::IOContext &ctx) noexcept {
+    uint8_t buffer[]{0x0, 0x0, 0x0, 0x4, 0x1, 0x0, 0x0, 0x0, 0x0};
+    ctx.write(buffer, 9);
 }
 
 bool Http2Server::decode(sese::InputStream *input, DynamicTable &dynamicTable, Header &header) noexcept {

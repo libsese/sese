@@ -17,7 +17,7 @@ namespace sese {
     /**
      * @brief Base64 转换器
      */
-    class API Base64Converter : NotInstantiable {
+    class API Base64Converter : public NotInstantiable {
     public:
 
         enum class CodePage {

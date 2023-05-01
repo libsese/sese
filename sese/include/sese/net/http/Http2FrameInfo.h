@@ -37,13 +37,20 @@ namespace sese::net::http {
     constexpr static uint8_t GOAWAY_INADEQUATE_SECURITY = 0xc;
     constexpr static uint8_t GOAWAY_HTTP_1_1_REQUIRED = 0xd;
 
-    constexpr static std::string_view MAGIC_STRING{"HTTP/2.0\r\n\r\nSM\r\n\r\n"};
+    constexpr static uint16_t SETTINGS_HEADER_TABLE_SIZE = 0x1;
+    constexpr static uint16_t SETTINGS_ENABLE_PUSH = 0x2;
+    constexpr static uint16_t SETTINGS_MAX_CONCURRENT_STREAMS = 0x3;
+    constexpr static uint16_t SETTINGS_INITIAL_WINDOW_SIZE = 0x4;
+    constexpr static uint16_t SETTINGS_MAX_FRAME_SIZE = 0x5;
+    constexpr static uint16_t SETTINGS_MAX_HEADER_LIST_SIZE = 0x6;
+
+    constexpr static std::string_view MAGIC_STRING{"PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n"};
 
     struct Http2FrameInfo {
-        uint32_t length{0};
-        uint8_t type{0};
-        uint8_t flags{0};
-        uint32_t ident{0};
+        uint32_t length;
+        uint8_t type;
+        uint8_t flags;
+        uint32_t ident;
     };
 
 }// namespace sese::net::http

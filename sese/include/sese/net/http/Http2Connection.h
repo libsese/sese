@@ -15,8 +15,9 @@ namespace sese::net::http {
         void addStream(uint32_t sid, const Http2Stream::Ptr &stream) noexcept;
         Http2Stream::Ptr find(uint32_t sid);
 
-        /// 此互斥量用于同步发送进度
+        bool hasMagic = true;
         socket_t socket;
+        /// 此互斥量用于同步发送进度
         std::mutex mutex;
         std::map<uint8_t, Http2Stream::Ptr> streamMap;
         DynamicTable dynamicTable4recv;
