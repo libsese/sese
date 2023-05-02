@@ -88,13 +88,13 @@ TEST(TestHttp2, DecodeHeader) {
     }
 }
 
-TEST(TestHttp2, Server) {
-    sese::net::v2::http::Http2Server server;
-    auto addr = sese::net::IPv4Address::any();
-    addr->setPort(8090);
-    server.setBindAddress(addr);
-    ASSERT_TRUE(server.init());
-    server.start();
-    getchar();
-    server.shutdown();
-}
+// TEST(TestHttp2, Server) {
+//     sese::net::v2::http::Http2Server server;
+//     auto addr = sese::net::IPv4Address::any();
+//     addr->setPort(8090);
+//     server.setBindAddress(addr);
+//     ASSERT_TRUE(server.init());
+//     server.start();
+//     getchar();
+//     server.shutdown();
+// }

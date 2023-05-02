@@ -1,3 +1,8 @@
+/// \file V2Http2Server.h
+/// \brief 实验性的 Http2 服务（请勿使用）
+/// \author kaoru
+/// \date 12点21分
+
 #pragma once
 
 #include "sese/net/V2Server.h"
@@ -9,7 +14,7 @@
 
 namespace sese::net::v2::http {
 
-    class API [[deprecated("此实现是不完整的")]] Http2Server : public Server {
+    class API [[deprecated("此实现是实验性且不完整的")]] Http2Server : public Server {
     public:
         void onConnect(IOContext &ctx) noexcept override;
 
@@ -19,7 +24,9 @@ namespace sese::net::v2::http {
 
         void onHttpHandle(IOContext &ctx) noexcept;
 
-        void onHttp2Handle(IOContext &ctx, net::http::Http2Connection::Ptr conn) noexcept;
+        void onHttp2Handle(IOContext &ctx, const net::http::Http2Connection::Ptr& conn, bool first) noexcept;
+
+        virtual void onHttp2Request(const net::http::Http2Stream::Ptr &stream) noexcept;
 
     public:
         static bool readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &info) noexcept;

@@ -25,7 +25,7 @@ void Http2Server::onHandle(sese::net::v2::IOContext &ctx) noexcept {
         onHttpHandle(ctx);
     } else {
         mutex.unlock();
-        onHttp2Handle(ctx, connIterator->second);
+        onHttp2Handle(ctx, connIterator->second, false);
     }
 }
 
@@ -77,6 +77,8 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
         }
     }
 
+    Http2Connection::Ptr conn;
+    Http2Stream::Ptr stream;
     // 对状态反应
     auto ok = false;
     if (upgrade && http2) {
@@ -85,12 +87,18 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
             // 确定存在 HTTP2-Settings 字段
             auto settingsStr = httpContext.request.get("Http2-Settings", "undef");
             if (settingsStr != "undef") {
-                auto conn = std::make_shared<Http2Connection>();
+                conn = std::make_shared<Http2Connection>();
                 conn->socket = ctx.getIdent();
-                conn->hasMagic = false;
+
                 mutex.lock();
                 connMap[conn->socket] = conn;
                 mutex.unlock();
+
+                stream = std::make_shared<Http2Stream>();
+                stream->requestHeader = httpContext.request;
+                // 此处做转换
+                stream->requestHeader.set(":path", httpContext.request.getUrl());
+                conn->streamMap[1] = stream;
 
                 char buffer[6];
                 auto ident = (uint16_t *) &buffer[0];
@@ -136,6 +144,7 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
         httpContext.response.set("Connection", "Upgrade");
         httpContext.response.set("Upgrade", UPGRADE_CMP_STR);
         httpContext.flush();
+        onHttp2Handle(ctx, conn, true);
     } else {
         char resp[] = {"Only support Http/2"};
         httpContext.response.setCode(404);
@@ -147,14 +156,27 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
     }
 }
 
-void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2Connection::Ptr conn) noexcept {
-    if (!conn->hasMagic) {
+void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, const net::http::Http2Connection::Ptr &conn,
+                                bool first) noexcept {
+    if (first) {
         char buffer[MAGIC_STRING.length() + 1]{};
         ctx.read(buffer, MAGIC_STRING.length());
         if (MAGIC_STRING != buffer) {
             ctx.close();
+            return;
         } else {
-            conn->hasMagic = true;
+            auto stream = conn->streamMap[1];
+            threadPool->postTask([this, conn, stream]() {
+                onHttp2Request(stream);
+                // 封装成帧并发送
+                // conn->mutex.lock();
+                // char buffer[4096];
+                // int64_t len = 0;
+                // while ((len = stream->buffer.read(buffer, 4096)) > 0) {
+                //
+                // }
+                // conn->mutex.unlock();
+            });
         }
     }
 
@@ -208,7 +230,7 @@ void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2C
                     }
                 }
                 continue;
-            } else if (frame.type == FRAME_TYPE_WINDOW_UPDATE){
+            } else if (frame.type == FRAME_TYPE_WINDOW_UPDATE) {
                 // 暂不处理
                 char buf[1024];
                 ctx.read(buf, frame.length);
@@ -281,12 +303,16 @@ void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, net::http::Http2C
     }
 }
 
+void Http2Server::onHttp2Request(const net::http::Http2Stream::Ptr &stream) noexcept {
+
+}
+
 bool Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &frame) noexcept {
     uint8_t buffer[9]{};
     auto read = ctx.read(buffer, 9);
     if (read != 9) return false;
 
-    memset(&frame,0 ,sizeof(frame));
+    memset(&frame, 0, sizeof(frame));
     memcpy(((char *) &frame.length) + 1, buffer + 0, 3);
     memcpy(&frame.type, buffer + 3, 1);
     memcpy(&frame.flags, buffer + 4, 1);
