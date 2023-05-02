@@ -12,16 +12,22 @@ Header::Header(const std::initializer_list<KeyValueType> &initializerList) noexc
 }
 
 
+#if defined (SESE_PLATFORM_WINDOWS)
+#define XX std::tolower
+#else
+#define XX ::tolower
+#endif
+
 Header *Header::set(const std::string &key, const std::string &value) noexcept {
     auto temp = key;
-    std::transform(temp.begin(), temp.end(), temp.begin() ,std::tolower);
+    std::transform(temp.begin(), temp.end(), temp.begin() , XX);
     headers[temp] = value;
     return this;
 }
 
 const std::string &Header::get(const std::string &key, const std::string &defaultValue) noexcept {
     auto temp = key;
-    std::transform(temp.begin(), temp.end(), temp.begin() ,std::tolower);
+    std::transform(temp.begin(), temp.end(), temp.begin() , XX);
     auto res = headers.find(temp);
     if (res == headers.end()) {
         return defaultValue;
@@ -29,6 +35,8 @@ const std::string &Header::get(const std::string &key, const std::string &defaul
         return res->second;
     }
 }
+
+#undef XX
 
 std::string_view Header::getView(const std::string &key, const std::string &defaultValue) noexcept {
     auto res = headers.find(key);
