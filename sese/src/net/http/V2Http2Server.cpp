@@ -1,7 +1,6 @@
 #include "sese/net/http/V2Http2Server.h"
 #include "sese/net/http/Http2FrameInfo.h"
 #include "sese/net/http/HttpUtil.h"
-#include "sese/net/http/HttpServer.h"
 #include "sese/util/Endian.h"
 #include "sese/util/InputBufferWrapper.h"
 #include "sese/text/StringBuilder.h"
@@ -12,11 +11,6 @@
 using namespace sese::net::http;
 using namespace sese::net::v2::http;
 
-using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
-
-void Http2Server::onConnect(sese::net::v2::IOContext &ctx) noexcept {
-}
-
 void Http2Server::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     mutex.lock();
     auto connIterator = connMap.find(ctx.getIdent());
@@ -25,7 +19,7 @@ void Http2Server::onHandle(sese::net::v2::IOContext &ctx) noexcept {
         onHttpHandle(ctx);
     } else {
         mutex.unlock();
-        onHttp2Handle(ctx, connIterator->second, false);
+        onHttp2Handle(connIterator->second, false);
     }
 }
 
@@ -87,17 +81,14 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
             // 确定存在 HTTP2-Settings 字段
             auto settingsStr = httpContext.request.get("Http2-Settings", "undef");
             if (settingsStr != "undef") {
-                conn = std::make_shared<Http2Connection>();
-                conn->socket = ctx.getIdent();
+                conn = std::make_shared<Http2Connection>(ctx);
 
                 mutex.lock();
-                connMap[conn->socket] = conn;
+                connMap[ctx.getIdent()] = conn;
                 mutex.unlock();
 
                 stream = std::make_shared<Http2Stream>();
-                stream->requestHeader = httpContext.request;
-                // 此处做转换
-                stream->requestHeader.set(":path", httpContext.request.getUrl());
+                header2Http2(httpContext, stream->requestHeader);
                 conn->streamMap[1] = stream;
 
                 char buffer[6];
@@ -144,7 +135,7 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
         httpContext.response.set("Connection", "Upgrade");
         httpContext.response.set("Upgrade", UPGRADE_CMP_STR);
         httpContext.flush();
-        onHttp2Handle(ctx, conn, true);
+        onHttp2Handle(conn, true);
     } else {
         char resp[] = {"Only support Http/2"};
         httpContext.response.setCode(404);
@@ -156,8 +147,10 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
     }
 }
 
-void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, const net::http::Http2Connection::Ptr &conn,
+void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
                                 bool first) noexcept {
+    IOContext &ctx = conn->context;
+
     if (first) {
         char buffer[MAGIC_STRING.length() + 1]{};
         ctx.read(buffer, MAGIC_STRING.length());
@@ -182,123 +175,48 @@ void Http2Server::onHttp2Handle(sese::net::v2::IOContext &ctx, const net::http::
 
     Http2FrameInfo frame{};
     while (true) {
-        if (!readFrame(ctx, frame)) {
+        auto ret = readFrame(ctx, frame);
+        if (-1 == ret) {
             ctx.close();
+            return;
+        } else if (ret == 0) {
             return;
         }
 
-        // SETTINGS 帧
-        if (frame.ident == 0) {
-            if (frame.type == FRAME_TYPE_SETTINGS) {
-                // 为当前连接更改设置
-                ByteBuilder builder;
-                char buf[1024];
-                size_t length = 0;
-                while (length < frame.length) {
-                    auto need = frame.length - length > 1024 ? 1024 : frame.length - length;
-                    auto l = ctx.read(buf, need);
-                    if (l > 0) {
-                        builder.write(buf, l);
-                        length += l;
-                    } else {
-                        ctx.close();
-                        break;
-                    }
-                }
-
-                char buffer[6];
-                auto ident = (uint16_t *) &buffer[0];
-                auto value = (uint32_t *) &buffer[2];
-
-                int64_t len = 0;
-                while ((len = builder.read(buffer, 6)) == 6) {
-                    *ident = FromBigEndian16(*ident);
-                    *value = FromBigEndian32(*value);
-
-                    switch (*ident) {
-                        case SETTINGS_HEADER_TABLE_SIZE:
-                            conn->dynamicTable4recv.resize(*value);
-                            break;
-                        case SETTINGS_MAX_CONCURRENT_STREAMS:
-                        case SETTINGS_MAX_FRAME_SIZE:
-                        case SETTINGS_ENABLE_PUSH:
-                        case SETTINGS_MAX_HEADER_LIST_SIZE:
-                        case SETTINGS_INITIAL_WINDOW_SIZE:
-                        default:
-                            // 暂不处理
-                            break;
-                    }
-                }
-                continue;
-            } else if (frame.type == FRAME_TYPE_WINDOW_UPDATE) {
-                // 暂不处理
-                char buf[1024];
-                ctx.read(buf, frame.length);
-                continue;
-            } else {
-                // 非法帧
-                conn->mutex.lock();
-                sendGoaway(ctx, frame.ident, GOAWAY_PROTOCOL_ERROR);
-                conn->mutex.unlock();
+        if (frame.type == FRAME_TYPE_SETTINGS) {
+            // SETTINGS 帧
+            if (frame.ident == 0) {
+                sendGoaway(conn, 0, GOAWAY_PROTOCOL_ERROR);
                 ctx.close();
                 break;
             }
-        }
-
-        auto stream = conn->find(frame.ident);
-        if (!stream) {
-            stream = std::make_shared<Http2Stream>();
-            conn->addStream(frame.ident, stream);
-        }
-
-        // HEADER 帧
-        if (frame.type == FRAME_TYPE_HEADERS) {
-            char buffer[1024];
-            size_t length = 0;
-            while (length < frame.length) {
-                auto need = frame.length - length > 1024 ? 1024 : frame.length - length;
-                auto l = ctx.read(buffer, need);
-                if (l > 0) {
-                    stream->buffer.write(buffer, l);
-                    length += l;
-                } else {
-                    ctx.close();
-                    break;
-                }
-            }
-            if (frame.flags == FRAME_FLAG_END_HEADERS) {
-                // 触发头解析
-                if (!decode(stream.get(), conn->dynamicTable4recv, stream->requestHeader)) {
-                    // 解析失败关闭整个连接
-                    ctx.close();
-                    break;
-                }
-                // Content-Length 不为 0 则需要接收 data 帧
-                if (stream->requestHeader.get("Content-Length", "undef") == "undef") {
-                    //todo 触发请求解析 - 任务提交
-                }
-            }
-        }
+            onSettingsFrame(frame, conn);
+            continue;
+        } else if (frame.type == FRAME_TYPE_WINDOW_UPDATE) {
+            // WINDOW_UPDATE 帧
+            onWindowUpdateFrame(frame, conn);
+            continue;
+        } else if (frame.type == FRAME_TYPE_HEADERS) {
+            // HEADER 帧
+            onHeadersFrame(frame, conn);
+            continue;
+        } else if (frame.type == FRAME_TYPE_CONTINUATION) {
+            // HEADER 帧
+            onHeadersFrame(frame, conn);
+            continue;
+        } else if (frame.type == FRAME_TYPE_DATA) {
             // DATA 帧
-        else if (frame.type == FRAME_TYPE_DATA) {
-            char buffer[1024];
-            size_t length = 0;
-            while (length < frame.length) {
-                auto need = frame.length - length > 1024 ? 1024 : frame.length - length;
-                auto l = ctx.read(buffer, need);
-                if (l > 0) {
-                    stream->buffer.write(buffer, l);
-                    length += l;
-                } else {
-                    ctx.close();
-                    break;
-                }
-            }
-            if (frame.flags == FRAME_FLAG_END_STREAM) {
-                //todo 触发请求解析 - 任务提交
-            }
+            onDataFrame(frame, conn);
+            continue;
+        } else if (frame.type == FRAME_TYPE_RST_STREAM) {
+            // RST_STREAM 帧
+            continue;
         } else {
-            // 不处理
+            // FRAME_TYPE_PRIORITY 帧，不处理
+            // 不处理的帧或者非法帧
+            sendGoaway(conn, frame.ident, GOAWAY_PROTOCOL_ERROR);
+            ctx.close();
+            break;
         }
     }
 }
@@ -307,10 +225,14 @@ void Http2Server::onHttp2Request(const net::http::Http2Stream::Ptr &stream) noex
 
 }
 
-bool Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &frame) noexcept {
+int64_t Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &frame) noexcept {
     uint8_t buffer[9]{};
     auto read = ctx.read(buffer, 9);
-    if (read != 9) return false;
+    if (read == 0) {
+        return 0;
+    } else if (read != 9) {
+        return -1;
+    }
 
     memset(&frame, 0, sizeof(frame));
     memcpy(((char *) &frame.length) + 1, buffer + 0, 3);
@@ -320,19 +242,23 @@ bool Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &fra
 
     frame.length = FromBigEndian32(frame.length);
     frame.ident = FromBigEndian32(frame.ident);
-    return true;
+    return 1;
 }
 
-void Http2Server::sendGoaway(sese::net::v2::IOContext &ctx, uint32_t sid, uint32_t eid) noexcept {
+void Http2Server::sendGoaway(const Http2Connection::Ptr &conn, uint32_t sid, uint32_t eid) noexcept {
+    conn->mutex.lock();
     int32_t buffer[2];
     buffer[0] = ToBigEndian32(sid) >> 1;// NOLINT
     buffer[1] = ToBigEndian32(eid);     // NOLINT
-    ctx.write(&buffer, 2 * sizeof(uint32_t));
+    conn->context.write(&buffer, 2 * sizeof(uint32_t));
+    conn->mutex.unlock();
 }
 
-void Http2Server::sendACK(sese::net::v2::IOContext &ctx) noexcept {
+void Http2Server::sendACK(const Http2Connection::Ptr &conn) noexcept {
+    conn->mutex.lock();
     uint8_t buffer[]{0x0, 0x0, 0x0, 0x4, 0x1, 0x0, 0x0, 0x0, 0x0};
-    ctx.write(buffer, 9);
+    conn->context.write(buffer, 9);
+    conn->mutex.unlock();
 }
 
 bool Http2Server::decode(sese::InputStream *input, DynamicTable &dynamicTable, Header &header) noexcept {
@@ -423,4 +349,144 @@ std::optional<std::string> Http2Server::decodeString(sese::InputStream *input) n
     }
 
     return buffer;
+}
+
+void Http2Server::header2Http2(HttpContext &ctx, Header &header) noexcept {
+    header = ctx.request;
+    // 此处做转换
+#define STR(str) #str
+#define XX(type) \
+    case RequestType::type: \
+        header.set(":method", STR(type)); \
+        break
+
+    switch (ctx.request.getType()) {
+        XX(Options);
+        XX(Get);
+        XX(Post);
+        XX(Head);
+        XX(Put);
+        XX(Delete);
+        XX(Trace);
+        XX(Connect);
+        XX(Another);
+    }
+#undef XX
+#undef STR
+    header.set(":path", ctx.request.getUrl());
+}
+
+
+void Http2Server::onSettingsFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame,
+                                  const Http2Connection::Ptr &conn) noexcept {
+    IOContext &ctx = conn->context;
+    // 为当前连接更改设置
+    ByteBuilder builder;
+    char buf[1024];
+    size_t length = 0;
+    while (length < frame.length) {
+        auto need = frame.length - length > 1024 ? 1024 : frame.length - length;
+        auto l = ctx.read(buf, need);
+        if (l > 0) {
+            builder.write(buf, l);
+            length += l;
+        } else {
+            ctx.close();
+            break;
+        }
+    }
+
+    char buffer[6];
+    auto ident = (uint16_t *) &buffer[0];
+    auto value = (uint32_t *) &buffer[2];
+
+    int64_t len = 0;
+    while ((len = builder.read(buffer, 6)) == 6) {
+        *ident = FromBigEndian16(*ident);
+        *value = FromBigEndian32(*value);
+
+        switch (*ident) {
+            case SETTINGS_HEADER_TABLE_SIZE:
+                conn->dynamicTable4recv.resize(*value);
+                break;
+            case SETTINGS_MAX_CONCURRENT_STREAMS:
+            case SETTINGS_MAX_FRAME_SIZE:
+            case SETTINGS_ENABLE_PUSH:
+            case SETTINGS_MAX_HEADER_LIST_SIZE:
+            case SETTINGS_INITIAL_WINDOW_SIZE:
+            default:
+                // 按照标准忽略该设置
+                break;
+        }
+    }
+}
+
+void Http2Server::onWindowUpdateFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &info,
+                                      const Http2Connection::Ptr &conn) noexcept {
+    // 不做控制 - 读取负载
+    uint32_t data;
+    conn->context.read(&data, sizeof(data));
+}
+
+void Http2Server::onHeadersFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame,
+                                 const Http2Connection::Ptr &conn) noexcept {
+    auto stream = conn->find(frame.ident);
+    if (!stream) {
+        stream = std::make_shared<Http2Stream>();
+        conn->addStream(frame.ident, stream);
+    }
+
+    IOContext &ctx = conn->context;
+    char buffer[1024];
+    size_t length = 0;
+    while (length < frame.length) {
+        auto need = frame.length - length > 1024 ? 1024 : frame.length - length;
+        auto l = ctx.read(buffer, need);
+        if (l > 0) {
+            stream->buffer.write(buffer, l);
+            length += l;
+        } else {
+            ctx.close();
+            break;
+        }
+    }
+    if (frame.flags == FRAME_FLAG_END_HEADERS) {
+        // 触发头解析
+        if (!decode(stream.get(), conn->dynamicTable4recv, stream->requestHeader)) {
+            // 解析失败关闭整个连接
+            ctx.close();
+        }
+        // Content-Length 不为 0 则需要接收 data 帧
+        if (stream->requestHeader.get("Content-Length", "undef") == "undef") {
+            //todo 触发请求解析 - 任务提交
+        }
+    }
+}
+
+void Http2Server::onDataFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame,
+                              const Http2Connection::Ptr &conn) noexcept {
+    auto stream = conn->find(frame.ident);
+    if (!stream) {
+        stream = std::make_shared<Http2Stream>();
+        conn->addStream(frame.ident, stream);
+    }
+
+    IOContext &ctx = conn->context;
+
+    char buffer[1024];
+    size_t length = 0;
+    while (length < frame.length) {
+        auto need = frame.length - length > 1024 ? 1024 : frame.length - length;
+        auto l = ctx.read(buffer, need);
+        if (l > 0) {
+            stream->buffer.write(buffer, l);
+            length += l;
+        } else {
+            ctx.close();
+            break;
+        }
+    }
+    if (frame.flags == FRAME_FLAG_END_STREAM) {
+        //todo 触发请求解析 - 任务提交
+    }
 }
