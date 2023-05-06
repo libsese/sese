@@ -20,6 +20,8 @@ namespace sese::net::http {
         Header responseIndexedHeader;
 
     public:
+        uint32_t sid = 0;
+
         int64_t write(const void *buf, size_t len) override;
 
         int64_t read(void *buf, size_t len) override;

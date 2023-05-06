@@ -7,16 +7,76 @@
 #include "sese/convert/Base64Converter.h"
 
 #include <cmath>
+#include <chrono>
 
 using namespace sese::net::http;
 using namespace sese::net::v2::http;
+
+Http2Context::Http2Context(const net::http::Http2Stream::Ptr &stream) noexcept: stream(stream) {}
+
+int64_t Http2Context::write(const void *buffer, size_t length) {
+    data += length;
+    return stream->buffer.write(buffer, length);
+}
+
+int64_t Http2Context::read(void *buffer, size_t length) {
+    return stream->buffer.read(buffer, length);
+}
+
+void Http2Context::set(const std::string &key, const std::string &value) noexcept {
+    uint8_t len = 0;
+    stream->buffer.write(&len, 1);
+    header += 1;
+
+    encodeString(key);
+    encodeString(value);
+}
+
+void Http2Context::encodeString(const std::string &str) noexcept {
+    uint8_t len;
+    auto strLen = str.length();
+    if (strLen >= 128) {
+        len = 128;
+        stream->buffer.write(&len, 1);
+        len = strLen % 128;
+        stream->buffer.write(&len, 1);
+        len = strLen / 128;
+        stream->buffer.write(&len, 1);
+        header += 3;
+    } else {
+        len = (uint8_t) strLen;
+        stream->buffer.write(&len, 1);
+        header += 1;
+    }
+    stream->buffer.write(str.c_str(), strLen);
+    header += strLen;
+}
+
+void Http2Context::get(const std::string &key, const std::string &def) noexcept {
+    stream->requestHeader.get(key, def);
+}
 
 void Http2Server::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     mutex.lock();
     auto connIterator = connMap.find(ctx.getIdent());
     if (connIterator == connMap.end()) {
         mutex.unlock();
-        onHttpHandle(ctx);
+
+        char buffer[32]{};
+        ctx.peek(buffer, 31);
+        std::string_view view{buffer, 31};
+        if (view.find("HTTP/1.1") == std::string::npos) {
+            auto conn = std::make_shared<Http2Connection>(ctx);
+
+            mutex.lock();
+            connMap[ctx.getIdent()] = conn;
+            mutex.unlock();
+
+            onHttp2Handle(conn, false);
+        } else {
+            onHttpHandle(ctx);
+        }
+
     } else {
         mutex.unlock();
         onHttp2Handle(connIterator->second, false);
@@ -88,6 +148,7 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
                 mutex.unlock();
 
                 stream = std::make_shared<Http2Stream>();
+                stream->sid = 1;
                 header2Http2(httpContext, stream->requestHeader);
                 conn->streamMap[1] = stream;
 
@@ -106,12 +167,38 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
                     switch (*ident) {
                         case SETTINGS_HEADER_TABLE_SIZE:
                             conn->dynamicTable4recv.resize(*value);
+                            conn->headerTableSize = *value;
                             break;
                         case SETTINGS_MAX_CONCURRENT_STREAMS:
+                            conn->maxConcurrentStream = (*value == 0 ? 100 : *value);
+                            break;
                         case SETTINGS_MAX_FRAME_SIZE:
+                            if (*value > 16777215) {
+                                sendGoaway(conn, 0, GOAWAY_PROTOCOL_ERROR);
+                                conn->context.close();
+                            } else {
+                                conn->maxFrameSize = *value;
+                            }
+                            break;
                         case SETTINGS_ENABLE_PUSH:
+                            if (*value <= 1) {
+                                conn->enablePush = *value;
+                            } else {
+                                sendGoaway(conn, 0, GOAWAY_PROTOCOL_ERROR);
+                                conn->context.close();
+                            }
+                            break;
                         case SETTINGS_MAX_HEADER_LIST_SIZE:
+                            conn->maxHeaderListSize = *value;
+                            break;
                         case SETTINGS_INITIAL_WINDOW_SIZE:
+                            if (*value > 2147483647) {
+                                sendGoaway(conn, 0, GOAWAY_FLOW_CONTROL_ERROR);
+                                conn->context.close();
+                            } else {
+                                conn->windowSize = *value;
+                            }
+                            break;
                         default:
                             // 暂不处理
                             break;
@@ -135,6 +222,8 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
         httpContext.response.set("Connection", "Upgrade");
         httpContext.response.set("Upgrade", UPGRADE_CMP_STR);
         httpContext.flush();
+        // 放弃当前时间片
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         onHttp2Handle(conn, true);
     } else {
         char resp[] = {"Only support Http/2"};
@@ -150,6 +239,9 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
 void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
                                 bool first) noexcept {
     IOContext &ctx = conn->context;
+    Http2FrameInfo frame{};
+    frame.type = FRAME_TYPE_SETTINGS;
+    writeFrame(conn, frame);
 
     if (first) {
         char buffer[MAGIC_STRING.length() + 1]{};
@@ -158,22 +250,12 @@ void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
             ctx.close();
             return;
         } else {
-            auto stream = conn->streamMap[1];
-            threadPool->postTask([this, conn, stream]() {
-                onHttp2Request(stream);
-                // 封装成帧并发送
-                // conn->mutex.lock();
-                // char buffer[4096];
-                // int64_t len = 0;
-                // while ((len = stream->buffer.read(buffer, 4096)) > 0) {
-                //
-                // }
-                // conn->mutex.unlock();
+            threadPool->postTask([this, conn, stream = conn->streamMap[1]]() {
+                this->onResponseAndSend(conn, stream);
             });
         }
     }
 
-    Http2FrameInfo frame{};
     while (true) {
         auto ret = readFrame(ctx, frame);
         if (-1 == ret) {
@@ -185,12 +267,13 @@ void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
 
         if (frame.type == FRAME_TYPE_SETTINGS) {
             // SETTINGS 帧
-            if (frame.ident == 0) {
+            if (frame.ident != 0) {
                 sendGoaway(conn, 0, GOAWAY_PROTOCOL_ERROR);
                 ctx.close();
                 break;
             }
             onSettingsFrame(frame, conn);
+            sendACK(conn);
             continue;
         } else if (frame.type == FRAME_TYPE_WINDOW_UPDATE) {
             // WINDOW_UPDATE 帧
@@ -221,8 +304,14 @@ void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
     }
 }
 
-void Http2Server::onHttp2Request(const net::http::Http2Stream::Ptr &stream) noexcept {
+void Http2Server::onHttp2Request(Http2Context &h2Ctx) noexcept {
+    const std::string content = "<h1>Default implementation from Http2Server</h1>";
 
+    h2Ctx.set(":status", "200");
+    h2Ctx.set("server", "sese::net::v2::http::Http2Server");
+    h2Ctx.set("content-length", std::to_string(content.length()));
+
+    h2Ctx.write(content.c_str(), content.length());
 }
 
 int64_t Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &frame) noexcept {
@@ -231,7 +320,11 @@ int64_t Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &
     if (read == 0) {
         return 0;
     } else if (read != 9) {
-        return -1;
+        if (errno == 0) {
+            return 0;
+        } else {
+            return -1;
+        }
     }
 
     memset(&frame, 0, sizeof(frame));
@@ -243,6 +336,20 @@ int64_t Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &
     frame.length = FromBigEndian32(frame.length);
     frame.ident = FromBigEndian32(frame.ident);
     return 1;
+}
+
+int64_t Http2Server::writeFrame(const Http2Connection::Ptr &conn,
+                                sese::net::v2::http::Http2Server::Http2FrameInfo &info) noexcept {
+    auto len = ToBigEndian32(info.length);
+    auto ident = ToBigEndian32(info.ident);
+
+    char buffer[9];
+    memcpy(buffer + 0, ((const char *) &len) + 1, 3);
+    memcpy(buffer + 3, &info.type, 1);
+    memcpy(buffer + 4, &info.flags, 1);
+    memcpy(buffer + 5, &ident, 4);
+
+    return conn->context.write(buffer, 9);
 }
 
 void Http2Server::sendGoaway(const Http2Connection::Ptr &conn, uint32_t sid, uint32_t eid) noexcept {
@@ -433,6 +540,7 @@ void Http2Server::onHeadersFrame(sese::net::v2::http::Http2Server::Http2FrameInf
     auto stream = conn->find(frame.ident);
     if (!stream) {
         stream = std::make_shared<Http2Stream>();
+        stream->sid = frame.ident;
         conn->addStream(frame.ident, stream);
     }
 
@@ -458,7 +566,9 @@ void Http2Server::onHeadersFrame(sese::net::v2::http::Http2Server::Http2FrameInf
         }
         // Content-Length 不为 0 则需要接收 data 帧
         if (stream->requestHeader.get("Content-Length", "undef") == "undef") {
-            //todo 触发请求解析 - 任务提交
+            threadPool->postTask([this, conn, stream]() {
+                onResponseAndSend(conn, stream);
+            });
         }
     }
 }
@@ -468,6 +578,7 @@ void Http2Server::onDataFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &
     auto stream = conn->find(frame.ident);
     if (!stream) {
         stream = std::make_shared<Http2Stream>();
+        stream->sid = frame.ident;
         conn->addStream(frame.ident, stream);
     }
 
@@ -487,6 +598,89 @@ void Http2Server::onDataFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &
         }
     }
     if (frame.flags == FRAME_FLAG_END_STREAM) {
-        //todo 触发请求解析 - 任务提交
+        threadPool->postTask([this, conn, stream]() {
+            onResponseAndSend(conn, stream);
+        });
+    }
+}
+
+void Http2Server::onResponseAndSend(const Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept {
+    Http2Context ctx(stream);
+    onHttp2Request(ctx);
+
+    // 发送 Header 帧
+    conn->mutex.lock();
+    sendHeader(ctx, conn, stream);
+    if (ctx.data > 0) {
+        sendData(ctx, conn, stream);
+    }
+    conn->mutex.unlock();
+}
+
+void Http2Server::sendHeader(Http2Context &ctx,
+                             const sese::net::v2::http::Http2Server::Http2Connection::Ptr &conn,
+                             const Http2Stream::Ptr &stream) noexcept {
+    bool first = true;
+    size_t headerSize = ctx.header;
+    ByteBuilder &builder = ctx.stream->buffer;
+
+    char buffer[1024];
+    Http2FrameInfo info{};
+    info.ident = stream->sid;
+
+    while (true) {
+        auto req = headerSize >= 1024 ? 1024 : headerSize;
+        headerSize -= req;
+        builder.read(buffer, req);
+
+        if (first) {
+            info.type = FRAME_TYPE_HEADERS;
+            first = false;
+        } else {
+            info.type = FRAME_TYPE_CONTINUATION;
+        }
+
+        if (headerSize == 0) {
+            info.flags = FRAME_FLAG_END_HEADERS;
+        }
+
+        info.length = req;
+        writeFrame(conn, info);
+        conn->context.write(buffer, req);
+
+        if (headerSize == 0) {
+            break;
+        }
+    }
+}
+
+void Http2Server::sendData(sese::net::v2::http::Http2Context &ctx,
+                           const Http2Connection::Ptr &conn,
+                           const Http2Stream::Ptr &stream) noexcept {
+    size_t dataSize = ctx.data;
+    ByteBuilder &builder = ctx.stream->buffer;
+
+    char buffer[1024];
+    Http2FrameInfo info{};
+    info.type = FRAME_TYPE_DATA;
+    info.ident = stream->sid;
+
+    while (true) {
+        auto req = dataSize >= 1024 ? 1024 : dataSize;
+        dataSize -= req;
+        builder.read(buffer, req);
+
+        if (dataSize == 0) {
+            info.flags = FRAME_FLAG_END_STREAM;
+        }
+
+        info.length = req;
+        writeFrame(conn, info);
+        conn->context.write(buffer, req);
+
+
+        if (dataSize == 0) {
+            break;
+        }
     }
 }

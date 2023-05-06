@@ -12,6 +12,32 @@
 
 namespace sese::net::v2::http {
 
+    class Http2Server;
+
+    class API Http2Context : public InputStream, public OutputStream {
+        friend class Http2Server;
+    public:
+        explicit Http2Context(const net::http::Http2Stream::Ptr &stream) noexcept;
+
+        int64_t read(void *buffer, size_t length) override;
+
+        int64_t write(const void *buffer, size_t length) override;
+
+        void set(const std::string &key, const std::string &value) noexcept;
+
+        void get(const std::string &key, const std::string &def) noexcept;
+
+    protected:
+        void encodeString(const std::string &str) noexcept;
+
+    protected:
+        /// 标识 HEADER 负载大小
+        size_t header = 0;
+        /// 标识 DATA 负载大小
+        size_t data = 0;
+        const net::http::Http2Stream::Ptr &stream;
+    };
+
     class API [[deprecated("此实现是实验性且不完整的")]] Http2Server : public Server {
         using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
         using Http2Connection = sese::net::http::Http2Connection;
@@ -39,7 +65,7 @@ namespace sese::net::v2::http {
         /// \param first 指示连接是否需要直接处理
         void onHttp2Handle(const Http2Connection::Ptr &conn, bool first) noexcept;
 
-        virtual void onHttp2Request(const Http2Stream::Ptr &stream) noexcept;
+        virtual void onHttp2Request(Http2Context &ctx) noexcept;
 
     public:
         /// 尝试读取一帧
@@ -49,6 +75,12 @@ namespace sese::net::v2::http {
         /// \retval 1 读取成功
         /// \retval -1 读取失败（不完整或者其它原因）
         static int64_t readFrame(IOContext &ctx, Http2FrameInfo &info) noexcept;
+
+        /// 发送一帧
+        /// \param conn 目的连接
+        /// \param info 帧信息
+        /// \return 发送字节数
+        static int64_t writeFrame(const Http2Connection::Ptr &conn, Http2FrameInfo &info) noexcept;
 
         /// 发送 GOAWAY 帧
         /// \param conn 帧目的地
@@ -84,10 +116,19 @@ namespace sese::net::v2::http {
         static void onWindowUpdateFrame(Http2FrameInfo &info, const Http2Connection::Ptr &conn) noexcept;
 
         // Data 帧
-        static void onDataFrame(Http2FrameInfo &info, const Http2Connection::Ptr &conn) noexcept;
+        void onDataFrame(Http2FrameInfo &info, const Http2Connection::Ptr &conn) noexcept;
 
         // Header 帧
         void onHeadersFrame(Http2FrameInfo &info, const Http2Connection::Ptr &conn) noexcept;
+
+        // 用于组装并发送帧
+        void onResponseAndSend(const Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept;
+
+        // 发送 Header 帧(s)
+        static void sendHeader(Http2Context &ctx, const Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept;
+
+        // 发送 Data 帧(s)
+        static void sendData(Http2Context &ctx, const Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept;
 
     protected:
         // 对 connMap 操作加锁
