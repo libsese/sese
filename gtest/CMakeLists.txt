@@ -1,5 +1,6 @@
 find_package(GTest CONFIG REQUIRED)
 find_package(sese-plugin CONFIG REQUIRED)
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 if (WIN32)
     add_compile_options(/utf-8)
@@ -41,7 +42,10 @@ target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:
 add_dependencies(TestPlugin Module)
 
 sese_test(TestCSVUtil)
+
 sese_test(TestHttp2)
+target_compile_definitions(TestHttp2 PRIVATE "-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
+
 sese_test(TestNetworkUtil)
 sese_test(TestServer)
 sese_test(TestHttp)

@@ -137,16 +137,16 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
     auto ok = false;
     if (upgrade && http2) {
         // 确定升级至 HTTP2
+        conn = std::make_shared<Http2Connection>(ctx);
         if (settings) {
             // 确定存在 HTTP2-Settings 字段
+
+            mutex.lock();
+            connMap[ctx.getIdent()] = conn;
+            mutex.unlock();
+
             auto settingsStr = httpContext.request.get("Http2-Settings", "undef");
             if (settingsStr != "undef") {
-                conn = std::make_shared<Http2Connection>(ctx);
-
-                mutex.lock();
-                connMap[ctx.getIdent()] = conn;
-                mutex.unlock();
-
                 stream = std::make_shared<Http2Stream>();
                 stream->sid = 1;
                 header2Http2(httpContext, stream->requestHeader);
@@ -677,7 +677,6 @@ void Http2Server::sendData(sese::net::v2::http::Http2Context &ctx,
         info.length = req;
         writeFrame(conn, info);
         conn->context.write(buffer, req);
-
 
         if (dataSize == 0) {
             break;

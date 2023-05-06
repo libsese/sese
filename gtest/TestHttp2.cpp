@@ -1,8 +1,18 @@
 #include "sese/net/http/V2Http2Server.h"
 #include "sese/net/http/DynamicTable.h"
 #include "sese/net/http/Huffman.h"
+#include "sese/system/Process.h"
 #include "sese/util/InputBufferWrapper.h"
+#include "sese/util/Random.h"
 #include "gtest/gtest.h"
+
+auto makeRandomPortAddr() {
+    auto port = (uint16_t) (sese::Random::next() % (65535 - 1024) + 1024);
+    printf("select port %d\n", port);
+    auto addr = sese::net::IPv4Address::localhost();
+    addr->setPort(port);
+    return addr;
+}
 
 TEST(TestHttp2, DynamicTable_0) {
     sese::net::http::DynamicTable table(15);
@@ -88,13 +98,19 @@ TEST(TestHttp2, DecodeHeader) {
     }
 }
 
-// TEST(TestHttp2, Server) {
-//     sese::net::v2::http::Http2Server server;
-//     auto addr = sese::net::IPv4Address::any();
-//     addr->setPort(8090);
-//     server.setBindAddress(addr);
-//     ASSERT_TRUE(server.init());
-//     server.start();
-//     getchar();
-//     server.shutdown();
-// }
+TEST(TestHttp2, Server) {
+    auto addr = makeRandomPortAddr();
+    ASSERT_TRUE(addr != nullptr);
+
+    sese::net::v2::http::Http2Server server;
+    server.setBindAddress(addr);
+    ASSERT_TRUE(server.init());
+    server.start();
+
+    auto cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_http2_request.py " + std::to_string(addr->getPort());
+    auto process = sese::system::Process::create(cmd.c_str());
+    process->wait();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    server.shutdown();
+}
