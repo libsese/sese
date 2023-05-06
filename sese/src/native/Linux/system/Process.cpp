@@ -6,7 +6,7 @@
 
 using namespace sese::system;
 
-Process::Ptr Process::create(char *command) noexcept {
+Process::Ptr Process::create(const char *command) noexcept {
     auto pid = fork();
     if (pid > 0) {
         // parent process
@@ -15,7 +15,9 @@ Process::Ptr Process::create(char *command) noexcept {
         return std::unique_ptr<Process>(proc);
     } else if (pid == 0) {
         // client process
-        exec(command);
+        char pCommand[1024];
+        std::strcpy(pCommand, command);
+        exec(pCommand);
         exit(0);
     } else {
         // failed to create

@@ -18,7 +18,7 @@ namespace sese::system {
         /// 创建一个新的进程对象
         /// \param command 命令
         /// \retval nullptr 创建失败
-        static Process::Ptr create(char *command) noexcept;
+        static Process::Ptr create(const char *command) noexcept;
 
         /// 获取当前进程 ID
         [[nodiscard]] static pid_t getCurrentProcessId() noexcept;

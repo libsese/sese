@@ -4,13 +4,16 @@
 
 using namespace sese::system;
 
-Process::Ptr Process::create(char *command) noexcept {
+Process::Ptr Process::create(const char *command) noexcept {
     auto startupInfo = new STARTUPINFO{};
     auto processInfo = new PROCESS_INFORMATION{};
 
+    char buffer[1024]{};
+    strcpy_s(buffer, command);
+
     bool rt = CreateProcessA(
             nullptr,
-            command,
+            buffer,
             nullptr,
             nullptr,
             false,
