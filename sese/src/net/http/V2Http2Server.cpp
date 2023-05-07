@@ -320,7 +320,7 @@ int64_t Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &
     if (read == 0) {
         return 0;
     } else if (read != 9) {
-        if (errno == 0) {
+        if (errno == 0 || errno == EAGAIN || errno == EWOULDBLOCK) {
             return 0;
         } else {
             return -1;

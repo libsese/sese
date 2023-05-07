@@ -107,9 +107,9 @@ TEST(TestHttp2, Server) {
     ASSERT_TRUE(server.init());
     server.start();
 
-    auto cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_http2_request.py " + std::to_string(addr->getPort());
-    auto process = sese::system::Process::create(cmd.c_str());
-    process->wait();
+     auto cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_http2_request.py " + std::to_string(addr->getPort());
+     auto process = sese::system::Process::create(cmd.c_str());
+     process->wait();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     server.shutdown();
