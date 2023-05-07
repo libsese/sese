@@ -227,7 +227,7 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
         onHttp2Handle(conn, true);
     } else {
         char resp[] = {"Only support Http/2"};
-        httpContext.response.setCode(404);
+        httpContext.response.setCode(403);
         httpContext.response.set("Content-Length", std::to_string(sizeof(resp) - 1));
         httpContext.response.set("Connection", "Close");
         httpContext.flush();
@@ -297,9 +297,9 @@ void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
         } else {
             // FRAME_TYPE_PRIORITY 帧，不处理
             // 不处理的帧或者非法帧
-            sendGoaway(conn, frame.ident, GOAWAY_PROTOCOL_ERROR);
-            ctx.close();
-            break;
+            // sendGoaway(conn, frame.ident, GOAWAY_PROTOCOL_ERROR);
+            // ctx.close();
+            continue;
         }
     }
 }
