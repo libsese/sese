@@ -8,7 +8,7 @@
 #include "sese/net/http/Http2Connection.h"
 #include "sese/net/http/Http2FrameInfo.h"
 #include "sese/net/http/HttpServer.h"
-#include "sese/net/http/Huffman.h"
+#include "sese/net/http/HPackUtil.h"
 
 namespace sese::net::v2::http {
 
@@ -47,6 +47,7 @@ namespace sese::net::v2::http {
         using HuffmanEncoder = sese::net::http::HuffmanEncoder;
         using HuffmanDecoder = sese::net::http::HuffmanDecoder;
         using Header = sese::net::http::Header;
+        using HPackUtil = sese::net::http::HPackUtil;
     public:
         /// 连接可读时对连接进行分发
         /// \param ctx 连接来源
@@ -92,20 +93,7 @@ namespace sese::net::v2::http {
         /// \param conn 帧目的地
         static void sendACK(const Http2Connection::Ptr &conn) noexcept;
 
-        /// 解码 Header 帧负载
-        /// \param input 来源
-        /// \param dynamicTable 动态表
-        /// \param header 输出头部
-        /// \return 解码是否成功
-        bool decode(InputStream *input, DynamicTable &dynamicTable, Header &header) noexcept;
-
     protected:
-        // 解码整型数字
-        static void decodeInteger(uint8_t &buf, InputStream *input, uint32_t &dest, uint8_t n) noexcept;
-
-        // 解码字符串
-        std::optional<std::string> decodeString(InputStream *input) noexcept;
-
         // 将 http 的部分字段转换成 http2 的形式
         static void header2Http2(HttpContext &ctx, Header &header) noexcept;
 
@@ -131,12 +119,10 @@ namespace sese::net::v2::http {
         static void sendData(Http2Context &ctx, const Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept;
 
     protected:
+        HPackUtil util;
         // 对 connMap 操作加锁
         std::mutex mutex;
         std::map<socket_t, net::http::Http2Connection::Ptr> connMap;
-
-        HuffmanDecoder decoder;
-        HuffmanEncoder encoder;
     };
 
 }// namespace sese::net::v2::http

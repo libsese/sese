@@ -1,10 +1,12 @@
 #include "sese/net/http/V2Http2Server.h"
 #include "sese/net/http/Http2FrameInfo.h"
 #include "sese/net/http/HttpUtil.h"
+#include "sese/net/http/HPackUtil.h"
 #include "sese/util/Endian.h"
 #include "sese/util/InputBufferWrapper.h"
 #include "sese/text/StringBuilder.h"
 #include "sese/convert/Base64Converter.h"
+
 
 #include <cmath>
 #include <chrono>
@@ -38,9 +40,9 @@ void Http2Context::encodeString(const std::string &str) noexcept {
     if (strLen >= 128) {
         len = 128;
         stream->buffer.write(&len, 1);
-        len = strLen % 128;
+        len = (uint8_t) strLen % 128;
         stream->buffer.write(&len, 1);
-        len = strLen / 128;
+        len = (uint8_t) strLen / 128;
         stream->buffer.write(&len, 1);
         header += 3;
     } else {
@@ -368,96 +370,6 @@ void Http2Server::sendACK(const Http2Connection::Ptr &conn) noexcept {
     conn->mutex.unlock();
 }
 
-bool Http2Server::decode(sese::InputStream *input, DynamicTable &dynamicTable, Header &header) noexcept {
-    uint8_t buf;
-    int64_t len;
-    while ((len = input->read(&buf, 1)) > 0) {
-        // key & value 均在索引
-        if (buf & 0b1000'0000) {
-            uint32_t index = 0;
-            decodeInteger(buf, input, index, 7);
-            if (index == 0) return false;
-
-            auto pair = dynamicTable.get(index);
-            if (pair == std::nullopt) return false;
-            header.set(pair->first, pair->second);
-        } else {
-            uint32_t index = 0;
-            bool isStore;
-            if (0b0100'0000 == (buf & 0b1100'0000)) {
-                // 添加至动态表
-                decodeInteger(buf, input, index, 6);
-                isStore = true;
-            } else {
-                // 不添加至动态表
-                decodeInteger(buf, input, index, 4);
-                isStore = false;
-            }
-
-            std::string key;
-            if (0 != index) {
-                auto ret = dynamicTable.get(index);
-                if (ret == std::nullopt) {
-                    return false;
-                }
-                key = ret.value().first;
-            } else {
-                auto ret = decodeString(input);
-                if (ret == std::nullopt) {
-                    return false;
-                }
-                key = ret.value();
-            }
-
-            auto ret = decodeString(input);
-            if (ret == std::nullopt) {
-                return false;
-            }
-
-            if (isStore) {
-                dynamicTable.set(key, ret.value());
-            }
-
-            header.set(key, ret.value());
-        }
-    }
-    return true;
-}
-
-void Http2Server::decodeInteger(uint8_t &buf, sese::InputStream *input, uint32_t &dest, uint8_t n) noexcept {
-    const auto two_N = static_cast<uint16_t>(std::pow(2, n) - 1);
-    dest = buf & two_N;
-    if (dest == two_N) {
-        uint64_t M = 0;
-        while ((input->read(&buf, 1)) > 0) {
-            dest += (buf & 0x7F) << M;
-            M += 7;
-
-            if (!(buf & 0x80)) {
-                break;
-            }
-        }
-    }
-}
-
-std::optional<std::string> Http2Server::decodeString(sese::InputStream *input) noexcept {
-    uint8_t buf;
-    input->read(&buf, 1);
-    uint8_t len = (buf & 0x7F);
-    bool isHuffman = (buf & 0x80) == 0x80;
-
-    char buffer[UINT8_MAX]{};
-    if (len != input->read(buffer, len)) {
-        return nullptr;
-    }
-
-    if (isHuffman) {
-        return decoder.decode(buffer, len);
-    }
-
-    return buffer;
-}
-
 void Http2Server::header2Http2(HttpContext &ctx, Header &header) noexcept {
     header = ctx.request;
     // 此处做转换
@@ -560,7 +472,7 @@ void Http2Server::onHeadersFrame(sese::net::v2::http::Http2Server::Http2FrameInf
     }
     if (frame.flags == FRAME_FLAG_END_HEADERS) {
         // 触发头解析
-        if (!decode(stream.get(), conn->dynamicTable4recv, stream->requestHeader)) {
+        if (!util.decode(stream.get(), frame.length, conn->dynamicTable4recv, stream->requestHeader)) {
             // 解析失败关闭整个连接
             ctx.close();
         }
@@ -674,7 +586,7 @@ void Http2Server::sendData(sese::net::v2::http::Http2Context &ctx,
             info.flags = FRAME_FLAG_END_STREAM;
         }
 
-        info.length = req;
+        info.length = (uint32_t) req;
         writeFrame(conn, info);
         conn->context.write(buffer, req);
 
