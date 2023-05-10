@@ -17,15 +17,30 @@ namespace sese::net::v2::http {
     class API Http2Context : public InputStream, public OutputStream {
         friend class Http2Server;
     public:
-        explicit Http2Context(const net::http::Http2Stream::Ptr &stream) noexcept;
+        explicit Http2Context(const net::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept;
 
         int64_t read(void *buffer, size_t length) override;
 
         int64_t write(const void *buffer, size_t length) override;
 
-        void set(const std::string &key, const std::string &value) noexcept;
+        /// 设置响应 HEADER（一次性的）
+        /// \param key 键
+        /// \param value 值
+        void setOnce(const std::string &key, const std::string &value) noexcept;
 
+        /// 设置响应 HEADER（加入索引的）
+        /// \param key 键
+        /// \param value 值
+        void setIndexed(const std::string &key, const std::string &value) noexcept;
+
+        /// 获取请求 HEADER
+        /// \param key 键
+        /// \param def 默认值
         void get(const std::string &key, const std::string &def) noexcept;
+
+        /// 头部压缩并写入 buffer
+        /// \return 头部压缩后大小
+        size_t flushHeader() noexcept;
 
     protected:
         void encodeString(const std::string &str) noexcept;
@@ -35,6 +50,8 @@ namespace sese::net::v2::http {
         size_t header = 0;
         /// 标识 DATA 负载大小
         size_t data = 0;
+
+        net::http::DynamicTable &table;
         const net::http::Http2Stream::Ptr &stream;
     };
 
@@ -43,7 +60,6 @@ namespace sese::net::v2::http {
         using Http2Connection = sese::net::http::Http2Connection;
         using Http2Stream = sese::net::http::Http2Stream;
         using Http2FrameInfo = sese::net::http::Http2FrameInfo;
-        using DynamicTable = sese::net::http::DynamicTable;
         using HuffmanEncoder = sese::net::http::HuffmanEncoder;
         using HuffmanDecoder = sese::net::http::HuffmanDecoder;
         using Header = sese::net::http::Header;
@@ -119,7 +135,6 @@ namespace sese::net::v2::http {
         static void sendData(Http2Context &ctx, const Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept;
 
     protected:
-        HPackUtil util;
         // 对 connMap 操作加锁
         std::mutex mutex;
         std::map<socket_t, net::http::Http2Connection::Ptr> connMap;

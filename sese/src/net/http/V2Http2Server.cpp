@@ -1,22 +1,23 @@
 #include "sese/net/http/V2Http2Server.h"
 #include "sese/net/http/Http2FrameInfo.h"
 #include "sese/net/http/HttpUtil.h"
-#include "sese/net/http/HPackUtil.h"
 #include "sese/util/Endian.h"
 #include "sese/util/InputBufferWrapper.h"
 #include "sese/text/StringBuilder.h"
 #include "sese/convert/Base64Converter.h"
 
-
-#include <cmath>
 #include <chrono>
 
 using namespace sese::net::http;
 using namespace sese::net::v2::http;
 
-Http2Context::Http2Context(const net::http::Http2Stream::Ptr &stream) noexcept: stream(stream) {}
+Http2Context::Http2Context(const net::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept: stream(stream), table(table) {}
 
 int64_t Http2Context::write(const void *buffer, size_t length) {
+    if (0 == data) {
+        // 需要先压缩头部
+        header = this->flushHeader();
+    }
     data += length;
     return stream->buffer.write(buffer, length);
 }
@@ -25,37 +26,20 @@ int64_t Http2Context::read(void *buffer, size_t length) {
     return stream->buffer.read(buffer, length);
 }
 
-void Http2Context::set(const std::string &key, const std::string &value) noexcept {
-    uint8_t len = 0;
-    stream->buffer.write(&len, 1);
-    header += 1;
-
-    encodeString(key);
-    encodeString(value);
+void Http2Context::setOnce(const std::string &key, const std::string &value) noexcept {
+    this->stream->responseOnceHeader.set(key, value);
 }
 
-void Http2Context::encodeString(const std::string &str) noexcept {
-    uint8_t len;
-    auto strLen = str.length();
-    if (strLen >= 128) {
-        len = 128;
-        stream->buffer.write(&len, 1);
-        len = (uint8_t) strLen % 128;
-        stream->buffer.write(&len, 1);
-        len = (uint8_t) strLen / 128;
-        stream->buffer.write(&len, 1);
-        header += 3;
-    } else {
-        len = (uint8_t) strLen;
-        stream->buffer.write(&len, 1);
-        header += 1;
-    }
-    stream->buffer.write(str.c_str(), strLen);
-    header += strLen;
+void Http2Context::setIndexed(const std::string &key, const std::string &value) noexcept {
+    this->stream->responseIndexedHeader.set(key, value);
 }
 
 void Http2Context::get(const std::string &key, const std::string &def) noexcept {
     stream->requestHeader.get(key, def);
+}
+
+size_t Http2Context::flushHeader() noexcept {
+    return HPackUtil::encode(stream.get(), table, stream->responseOnceHeader, stream->responseIndexedHeader);
 }
 
 void Http2Server::onHandle(sese::net::v2::IOContext &ctx) noexcept {
@@ -309,9 +293,9 @@ void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
 void Http2Server::onHttp2Request(Http2Context &h2Ctx) noexcept {
     const std::string content = "<h1>Default implementation from Http2Server</h1>";
 
-    h2Ctx.set(":status", "200");
-    h2Ctx.set("server", "sese::net::v2::http::Http2Server");
-    h2Ctx.set("content-length", std::to_string(content.length()));
+    h2Ctx.setOnce(":status", "200");
+    h2Ctx.setOnce("server", "sese::net::v2::http::Http2Server");
+    h2Ctx.setOnce("content-length", std::to_string(content.length()));
 
     h2Ctx.write(content.c_str(), content.length());
 }
@@ -472,7 +456,7 @@ void Http2Server::onHeadersFrame(sese::net::v2::http::Http2Server::Http2FrameInf
     }
     if (frame.flags == FRAME_FLAG_END_HEADERS) {
         // 触发头解析
-        if (!util.decode(stream.get(), frame.length, conn->dynamicTable4recv, stream->requestHeader)) {
+        if (!HPackUtil::decode(stream.get(), frame.length, conn->dynamicTable4recv, stream->requestHeader)) {
             // 解析失败关闭整个连接
             ctx.close();
         }
@@ -517,7 +501,7 @@ void Http2Server::onDataFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &
 }
 
 void Http2Server::onResponseAndSend(const Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept {
-    Http2Context ctx(stream);
+    Http2Context ctx(stream, conn->dynamicTable4recv);
     onHttp2Request(ctx);
 
     // 发送 Header 帧
