@@ -293,8 +293,8 @@ void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
 void Http2Server::onHttp2Request(Http2Context &h2Ctx) noexcept {
     const std::string content = "<h1>Default implementation from Http2Server</h1>";
 
+    h2Ctx.setIndexed("server", "sese::net::v2::http::Http2Server");
     h2Ctx.setOnce(":status", "200");
-    h2Ctx.setOnce("server", "sese::net::v2::http::Http2Server");
     h2Ctx.setOnce("content-length", std::to_string(content.length()));
 
     h2Ctx.write(content.c_str(), content.length());
