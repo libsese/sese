@@ -15,15 +15,17 @@
 
 #include "sese/net/http/HPackUtil.h"
 #include "sese/net/http/HPACK.h"
-#include "sese/net/http/Huffman.h"
 
 #include <cmath>
 
 using namespace sese::net::http;
 
+HuffmanDecoder HPackUtil::decoder{};
+HuffmanEncoder HPackUtil::encoder{};
+
 bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &table, Header &header) noexcept {
     uint8_t buf;
-    int64_t len = 0;
+    size_t len = 0;
     while (len < contentLength) {
         src->read(&buf, 1);
         len += 1;
@@ -99,13 +101,44 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
         auto isHit = [item](const std::pair<std::string, std::string> &pair) -> bool {
             return pair.first == item.first;
         };
+        // 动态表查询
+        {
+            auto iterator = std::find_if(table.begin(), table.end(), isHit);
+            if (iterator != table.end()) {
+                if (iterator->second == item.second) {
+                    /// 第 0 种情况
+                    size += encodeIndexCase0(dest, iterator - table.begin() + 62);
+                    continue;
+                } else {
+                    /// 第 2 种情况
+                    size += encodeIndexCase2(dest, iterator - table.begin() + 62);
+                    size += encodeString(dest, item.second);
+                    continue;
+                }
+            }
+        }
         // 静态表查询
         {
+            auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
+            if (iterator != predefined_headers.end()) {
+                if (iterator->second == item.second) {
+                    /// 第 0 种情况
+                    size += encodeIndexCase0(dest, iterator - predefined_headers.begin());
+                    continue;
+                } else {
+                    /// 第 2 种情况
+                    size += encodeIndexCase2(dest, iterator - predefined_headers.begin());
+                    size += encodeString(dest, item.second);
+                    continue;
+                }
+            }
         }
-        // 动态表查询
-        {}
         // 无任何索引数据
         {
+            size += encodeIndexCase2(dest, 0);
+            size += encodeString(dest, item.first);
+            size += encodeString(dest, item.second);
+            continue;
         }
     }
 
@@ -115,31 +148,12 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
         auto isHit = [item](const std::pair<std::string, std::string> &pair) -> bool {
             return pair.first == item.first;
         };
-        // 静态表查询
-        {
-            auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
-            if (iterator != predefined_headers.end()) {
-                uint8_t index = iterator - predefined_headers.begin();
-                if (iterator->second == item.second) {
-                    /// 对应第 0 种情况
-                    size += encodeIndexCase0(dest, index);
-                    continue;
-                } else {
-                    /// 对应第 1 种情况
-                    size += encodeIndexCase1(dest, index);
-                    size += encodeString(dest, item.second);
-                    /// 添加动态表
-                    continue;
-                }
-            }
-        }
-
         // 动态表查询
         {
             auto iterator = std::find_if(table.begin(), table.end(), isHit);
             // 存在动态表中
             if (iterator != table.end()) {
-                uint8_t index = table.begin() - iterator + 62;
+                size_t index = table.begin() - iterator + 62;
                 if (iterator->second == item.second) {
                     /// 对应第 0 种情况
                     size += encodeIndexCase0(dest, index);
@@ -149,12 +163,38 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
                     size += encodeIndexCase1(dest, index);
                     size += encodeString(dest, item.second);
                     /// 添加动态表
+                    table.set(item.first, item.second);
                     continue;
                 }
             }
         }
+        // 静态表查询
+        {
+            auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
+            if (iterator != predefined_headers.end()) {
+                size_t index = iterator - predefined_headers.begin();
+                if (iterator->second == item.second) {
+                    /// 对应第 0 种情况
+                    size += encodeIndexCase0(dest, index);
+                    continue;
+                } else {
+                    /// 对应第 1 种情况
+                    size += encodeIndexCase1(dest, index);
+                    size += encodeString(dest, item.second);
+                    /// 添加动态表
+                    table.set(item.first, item.second);
+                    continue;
+                }
+            }
+        }
+
         /// 添加动态表
         {
+            size += encodeIndexCase1(dest, 0);
+            size += encodeString(dest, item.first);
+            size += encodeString(dest, item.second);
+            table.set(item.first, item.second);
+            continue;
         }
     }
     return size;
@@ -207,7 +247,7 @@ size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
     const auto prefix = static_cast<uint8_t>(std::pow(2, 7) - 1);
     uint8_t buf;
     if (index < prefix) {
-        buf = 0b1000'0000 | (((uint8_t) index) | 0b0111'1111);
+        buf = 0b1000'0000 | (((uint8_t) index) & 0b0111'1111);
         dest->write(&buf, 1);
         return 1;
     } else {
@@ -229,7 +269,7 @@ size_t HPackUtil::encodeIndexCase1(OutputStream *dest, size_t index) noexcept {
     const auto prefix = static_cast<uint8_t>(std::pow(2, 6) - 1);
     uint8_t buf;
     if (index < prefix) {
-        buf = 0b0100'0000 | (((uint8_t) index) | 0b0011'1111);
+        buf = 0b0100'0000 | (((uint8_t) index) & 0b0011'1111);
         dest->write(&buf, 1);
         return 1;
     } else {
@@ -243,7 +283,7 @@ size_t HPackUtil::encodeIndexCase1(OutputStream *dest, size_t index) noexcept {
             index = index / 128;
             size += 1;
         }
-        buf = index;
+        buf = (uint8_t) index;
         dest->write(&buf, 1);
         size += 1;
         return size;
@@ -254,7 +294,7 @@ size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
     const auto prefix = static_cast<uint8_t>(std::pow(2, 4) - 1);
     uint8_t buf;
     if (index < prefix) {
-        buf = 0b0000'0000 | (((uint8_t) index) | 0b0000'1111);
+        buf = 0b0000'0000 | (((uint8_t) index) & 0b0000'1111);
         dest->write(&buf, 1);
         return 1;
     } else {
@@ -268,7 +308,7 @@ size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
             index = index / 128;
             size += 1;
         }
-        buf = index;
+        buf = (uint8_t) index;
         dest->write(&buf, 1);
         size += 1;
         return size;
@@ -299,7 +339,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
                 i = i / 128;
                 size += 1;
             }
-            buf = i;
+            buf = (uint8_t) i;
             dest->write(&buf, 1);
             size += 1;
             dest->write(code.data(), code.size());
@@ -325,7 +365,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
                 i = i / 128;
                 size += 1;
             }
-            buf = i;
+            buf = (uint8_t) i;
             dest->write(&buf, 1);
             size += 1;
             dest->write(str.data(), str.size());

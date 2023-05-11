@@ -4,8 +4,8 @@
 #include "sese/util/OutputStream.h"
 #include "sese/util/NotInstantiable.h"
 #include "sese/net/http/Header.h"
-#include "sese/net/http/Huffman.h"
 #include "sese/net/http/DynamicTable.h"
+#include "sese/net/http/Huffman.h"
 
 namespace sese::net::http {
     class API HPackUtil : public NotInstantiable {
