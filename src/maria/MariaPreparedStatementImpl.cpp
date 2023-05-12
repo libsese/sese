@@ -1,10 +1,10 @@
-#include <sese/db/impl/MariaPreparedStatementImpl.h>
+#include <maria/MariaPreparedStatementImpl.h>
 
 sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(MYSQL_STMT *stmt, size_t count) noexcept {
     this->stmt = stmt;
     this->count = count;
     this->param = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * count);
-    memset(this->param, 0, sizeof(MYSQL_BIND) * count);
+    memset(this->param, 0, sizeof(MYSQL_BIND) * count);  //char型初始化函数；将s中的前n个字节用ch替换并且返回s
 }
 
 sese::db::impl::MariaPreparedStatementImpl::~MariaPreparedStatementImpl() noexcept {
@@ -12,6 +12,8 @@ sese::db::impl::MariaPreparedStatementImpl::~MariaPreparedStatementImpl() noexce
     free(param);
 }
 
+
+//为可能的数据类型分配内存
 bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept {
     *bind = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * res->field_count);
     memset(*bind, 0, sizeof(MYSQL_BIND) * res->field_count);
@@ -24,7 +26,7 @@ bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *res
             case MYSQL_TYPE_STRING:
             case MYSQL_TYPE_VARCHAR:
             case MYSQL_TYPE_VAR_STRING:
-                *p = malloc(res->fields[i].length / 4);
+                *p = malloc(res->fields[i].length);
                 (*bind)[i].buffer_length = res->fields[i].length;
                 break;
             case MYSQL_TYPE_TINY:
@@ -71,11 +73,12 @@ sese::db::ResultSet::Ptr sese::db::impl::MariaPreparedStatementImpl::executeQuer
     // 通过 res 信息构建 MYSQL_BIND
     auto res = mysql_stmt_result_metadata(stmt);
     MYSQL_BIND *result;
+    //，释放内存
     if(!mallocBindStruct(res, &result)) {
         freeBindStruct(result, res->field_count);
         return nullptr;
     }
-
+    //
     if (mysql_stmt_bind_result(stmt, result)) {
         return nullptr;
     }

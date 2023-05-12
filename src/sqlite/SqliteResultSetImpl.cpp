@@ -1,4 +1,4 @@
-#include <sese/db/impl/SqliteResultSetImpl.h>
+#include <sqlite/SqliteResultSetImpl.h>
 
 using namespace sese::db;
 
@@ -33,30 +33,30 @@ size_t impl::SqliteResultSetImpl::getColumns() const noexcept {
 }
 
 int32_t impl::SqliteResultSetImpl::getInteger(size_t index) const noexcept {
-    char *p = table[(columns) * current + index];
+    char *p = table[(columns) *current + index];
     char *end;
     return std::strtol(p, &end, 10);
 }
 
 std::string_view impl::SqliteResultSetImpl::getString(size_t index) const noexcept {
-    char *p = table[(columns) * current + index];
+    char *p = table[(columns) *current + index];
     return {p};
 }
 
 double impl::SqliteResultSetImpl::getDouble(size_t index) const noexcept {
-    char *p = table[(columns) * current + index];
+    char *p = table[(columns) *current + index];
     char *end;
     return std::strtod(p, &end);
 }
 
 float impl::SqliteResultSetImpl::getFloat(size_t index) const noexcept {
-    char *p = table[(columns) * current + index];
+    char *p = table[(columns) *current + index];
     char *end;
     return std::strtof(p, &end);
 }
 
 int64_t impl::SqliteResultSetImpl::getLong(size_t index) const noexcept {
-    char *p = table[(columns) * current + index];
+    char *p = table[(columns) *current + index];
     char *end;
     return std::strtoll(p, &end, 10);
 }

@@ -2,11 +2,11 @@
 #include <sese/db/Util.h>
 
 #ifdef HAS_MARIADB
-#include <sese/db/impl/MariaDriverInstanceImpl.h>
+#include <maria/MariaDriverInstanceImpl.h>
 #endif
 
 #ifdef HAS_SQLITE
-#include <sese/db/impl/SqliteDriverInstanceImpl.h>
+#include <sqlite/SqliteDriverInstanceImpl.h>
 #endif
 
 using namespace sese::db;

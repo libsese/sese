@@ -1,6 +1,6 @@
 #pragma once
 #include <sese/db/PreparedStatement.h>
-#include <sese/db/impl/SqliteStmtResultSetImpl.h>
+#include <sqlite/SqliteStmtResultSetImpl.h>
 
 namespace sese::db::impl {
 

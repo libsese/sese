@@ -1,4 +1,4 @@
-#include <sese/db/impl/MariaResultSetImpl.h>
+#include <maria/MariaResultSetImpl.h>
 
 using namespace sese::db;
 
