@@ -11,24 +11,24 @@ sese::FixedBuffer::~FixedBuffer() noexcept {
     }
 }
 
-sese::FixedBuffer::FixedBuffer(sese::FixedBuffer &buffer) noexcept {
-    buffer.size = size;
-    buffer.readSize = readSize;
-    buffer.writeSize = writeSize;
-    buffer.buffer = new char[size];
-    memcpy(buffer.buffer, this->buffer, size);
+sese::FixedBuffer::FixedBuffer(const sese::FixedBuffer &buffer) noexcept {
+    size = buffer.size;
+    readSize = buffer.readSize;
+    writeSize = buffer.writeSize;
+    this->buffer = new char[size];
+    memcpy(this->buffer, buffer.buffer, size);
 }
 
 sese::FixedBuffer::FixedBuffer(sese::FixedBuffer &&buffer) noexcept {
-    buffer.size = size;
-    buffer.readSize = readSize;
-    buffer.writeSize = writeSize;
-    buffer.buffer = this->buffer;
+    this->size = buffer.size;
+    this->readSize = buffer.readSize;
+    this->writeSize = buffer.writeSize;
+    this->buffer = buffer.buffer;
 
-    this->size = 0;
-    this->readSize = 0;
-    this->writeSize = 0;
-    this->buffer = nullptr;
+    buffer.size = 0;
+    buffer.readSize = 0;
+    buffer.writeSize = 0;
+    buffer.buffer = nullptr;
 }
 
 int64_t sese::FixedBuffer::read(void *buf, size_t length) {

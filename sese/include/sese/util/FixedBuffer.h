@@ -14,7 +14,7 @@ namespace sese {
         explicit FixedBuffer(size_t size) noexcept;
         virtual ~FixedBuffer() noexcept;
         // copy
-        FixedBuffer(FixedBuffer &buffer) noexcept;
+        FixedBuffer(const FixedBuffer &buffer) noexcept;
         // move
         FixedBuffer(FixedBuffer &&buffer) noexcept;
 
@@ -25,14 +25,16 @@ namespace sese {
 
         [[nodiscard]] const char *data() const { return buffer; }
         [[nodiscard]] size_t getSize() const noexcept { return size; }
+        [[nodiscard]] size_t getReadSize() const noexcept { return readSize; }
+        [[nodiscard]] size_t getWriteSize() const noexcept { return writeSize; }
         [[nodiscard]] size_t getReadableSize() const noexcept { return writeSize - readSize; }
         [[nodiscard]] size_t getWriteableSize() const noexcept { return size - writeSize; }
 
     protected:
-        size_t size;
+        size_t size{};
         size_t readSize{};
         size_t writeSize{};
-        char *buffer;
+        char *buffer{};
     };
 
 }// namespace sese
