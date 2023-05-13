@@ -1,9 +1,11 @@
 #ifdef _WIN32
 #define _CRT_SECURE_NO_WARNINGS
 #endif
+
 #include "sese/record/Logger.h"
 #include "sese/record/ConsoleAppender.h"
 #include "sese/record/SimpleFormatter.h"
+
 #include <clocale>
 
 namespace sese::record {
@@ -17,8 +19,7 @@ namespace sese::record {
         this->appenderVector.emplace_back(appender);
     }
 
-    void Logger::log(const Event::Ptr &event) const noexcept {
-        //todo 改为异步输出
+    void Logger::log(const Event::Ptr &event) noexcept {
         std::string content = formatter->dump(event);
         if (builtInAppender->getLevel() <= event->getLevel()) {
             setbuf(stdout, nullptr);

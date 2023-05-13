@@ -24,7 +24,7 @@ target_sources(Core PRIVATE
         src/record/AbstractAppender.cpp src/record/SimpleFormatter.cpp
         src/record/ConsoleAppender.cpp src/record/Logger.cpp
         src/record/LogHelper.cpp src/record/FileAppender.cpp
-        src/record/BlockAppender.cpp
+        src/record/BlockAppender.cpp src/record/AsyncLogger.cpp
 
         src/convert/EncodingConverter.cpp src/convert/Base64Converter.cpp
         src/convert/PercentConverter.cpp src/convert/MD5Util.cpp

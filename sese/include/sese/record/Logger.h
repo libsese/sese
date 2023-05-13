@@ -5,6 +5,7 @@
  * @brief 日志输出类
  */
 #pragma once
+
 #include "sese/Config.h"
 #include "sese/record/AbstractAppender.h"
 #include "sese/record/AbstractFormatter.h"
@@ -40,6 +41,8 @@ namespace sese::record {
         /// 初始化
         Logger() noexcept;
 
+        virtual ~Logger() noexcept = default;
+
         /**
          * 添加日志输出源
          * @param appender 日志输出源
@@ -50,9 +53,9 @@ namespace sese::record {
          * 输出日志
          * @param event 日志事件
          */
-        void log(const Event::Ptr &event) const noexcept;
+        virtual void log(const Event::Ptr &event) noexcept;
 
-    private:
+    protected:
         std::shared_ptr<AbstractFormatter> formatter;
         std::shared_ptr<ConsoleAppender> builtInAppender;
         std::vector<AbstractAppender::Ptr> appenderVector;
