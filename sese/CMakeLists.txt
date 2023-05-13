@@ -71,6 +71,7 @@ target_sources(Core PRIVATE
         src/util/Timer.cpp src/util/Initializer.cpp
         src/util/MemoryViewer.cpp src/util/ConsoleOutputStream.cpp
         src/util/OutputBufferWrapper.cpp src/util/InputBufferWrapper.cpp
+        src/util/FixedBuffer.cpp
 
         src/security/SecurityConfig.cpp src/security/SSLContext.cpp
         src/security/SSLContextBuilder.cpp src/security/SecuritySocket.cpp

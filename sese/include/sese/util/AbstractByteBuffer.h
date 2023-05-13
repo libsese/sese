@@ -50,7 +50,7 @@ namespace sese {
         AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer) noexcept;
 
         /// 析构
-        ~AbstractByteBuffer();
+        virtual ~AbstractByteBuffer();
         /// 重置读取位置
         virtual void resetPos();
         /**
