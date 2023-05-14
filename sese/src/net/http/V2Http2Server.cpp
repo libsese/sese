@@ -540,7 +540,7 @@ void Http2Server::sendHeader(Http2Context &ctx,
             info.flags = FRAME_FLAG_END_HEADERS;
         }
 
-        info.length = req;
+        info.length = (uint32_t) req;
         writeFrame(conn, info);
         conn->context.write(buffer, req);
 

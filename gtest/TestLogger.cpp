@@ -1,7 +1,11 @@
 #include "sese/record/LogHelper.h"
 #include "sese/record/BlockAppender.h"
 #include "sese/record/FileAppender.h"
+
 #include "gtest/gtest.h"
+#include "chrono"
+
+using namespace std::chrono_literals;
 
 TEST(TestLogger, BlockAppender) {
     sese::record::LogHelper log("BlockAppender");

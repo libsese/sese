@@ -1,14 +1,12 @@
 #pragma once
 
 #include <sese/record/Logger.h>
-#include <sese/util/Timer.h>
+#include <sese/thread/Thread.h>
+#include <sese/util/FixedBuffer.h>
+
+#include <mutex>
 
 namespace sese::record {
-
-    struct Buffer {
-        uint8_t raw[RECORD_BUFFER_SIZE]{};
-        size_t len = 0;
-    };
 
     class API AsyncLogger : public Logger {
     public:
@@ -21,11 +19,14 @@ namespace sese::record {
         void loop() noexcept;
 
     protected:
-        Buffer *currentBuffer;
-        Buffer *nextBuffer;
+        FixedBuffer *currentBuffer;
+        FixedBuffer *nextBuffer;
+        // 此队列存放准备提交的 buffer
+        std::vector<FixedBuffer *> buffer2Ready;
+
         std::mutex mutex;
         std::condition_variable conditionVariable;
+        std::atomic_bool isShutdown;
         sese::Thread::Ptr thread;
-        std::vector<Buffer *> buffers;
     };
 }// namespace sese::record

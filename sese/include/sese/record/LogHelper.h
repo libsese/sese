@@ -56,6 +56,6 @@ namespace sese::record {
         void log(Level level, const char *file, int32_t line, const char *format, va_list ap);
 
         const char *filter = nullptr;
-        const Logger *logger = nullptr;
+        Logger *logger = nullptr;
     };
 }// namespace sese::record

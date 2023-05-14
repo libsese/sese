@@ -2,7 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#include "sese/record/Logger.h"
+#include "sese/record/AsyncLogger.h"
 #include "sese/record/ConsoleAppender.h"
 #include "sese/record/SimpleFormatter.h"
 
@@ -22,24 +22,29 @@ namespace sese::record {
     void Logger::log(const Event::Ptr &event) noexcept {
         std::string content = formatter->dump(event);
         if (builtInAppender->getLevel() <= event->getLevel()) {
-            setbuf(stdout, nullptr);
-            switch (event->getLevel()) {
-                case Level::DEBUG:
-                    ConsoleAppender::setDebugColor();
-                    break;
-                case Level::INFO:
-                    ConsoleAppender::setInfoColor();
-                    break;
-                case Level::WARN:
-                    ConsoleAppender::setWarnColor();
-                    break;
-                case Level::ERR:
-                    ConsoleAppender::setErrorColor();
-                    break;
+            if (!RECORD_USE_ASYNC_LOGGER) {
+                setbuf(stdout, nullptr);
+                switch (event->getLevel()) {
+                    case Level::DEBUG:
+                        ConsoleAppender::setDebugColor();
+                        break;
+                    case Level::INFO:
+                        ConsoleAppender::setInfoColor();
+                        break;
+                    case Level::WARN:
+                        ConsoleAppender::setWarnColor();
+                        break;
+                    case Level::ERR:
+                        ConsoleAppender::setErrorColor();
+                        break;
+                }
             }
-            builtInAppender->dump(content.c_str(), 0);
-            ConsoleAppender::setCleanColor();
-            fflush(stdout);
+            builtInAppender->dump(content.c_str(), content.length());
+            builtInAppender->dump("\n", 1);
+            if (!RECORD_USE_ASYNC_LOGGER) {
+                ConsoleAppender::setCleanColor();
+                fflush(stdout);
+            }
         }
 
         for (auto &appender: appenderVector) {
@@ -56,7 +61,11 @@ namespace sese::record {
     int32_t LoggerInitiateTask::init() noexcept {
         // 初始化 Logger
         setlocale(LC_ALL, "");
-        logger = new Logger();
+        if (RECORD_USE_ASYNC_LOGGER) {
+            logger = new AsyncLogger();
+        } else {
+            logger = new Logger();
+        }
         return 0;
     }
 

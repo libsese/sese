@@ -1,6 +1,8 @@
 #include "sese/record/ConsoleAppender.h"
 #include "sese/convert/EncodingConverter.h"
 
+#include <cstdio>
+
 #ifdef _WIN32
 #pragma warning(disable : 4996)
 /// 控制台句柄由 Windows 负责自动关闭，程序不管理其生命周期
@@ -18,11 +20,8 @@ ConsoleAppender::ConsoleAppender(record::Level level) noexcept : record::Abstrac
 }
 
 void ConsoleAppender::dump(const char *buffer, size_t size) noexcept {
-#ifdef _WIN32
-    _putws(EncodingConverter::toWstring(buffer).c_str());
-#else
-    puts(buffer);
-#endif
+    //_putws(EncodingConverter::toWstring(buffer).c_str());
+    fwrite(buffer, 1, size, stdout);
 }
 
 #ifdef _WIN32
