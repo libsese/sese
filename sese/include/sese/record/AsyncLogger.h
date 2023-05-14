@@ -5,6 +5,7 @@
 #include <sese/util/FixedBuffer.h>
 
 #include <mutex>
+#include <condition_variable>
 
 namespace sese::record {
 
