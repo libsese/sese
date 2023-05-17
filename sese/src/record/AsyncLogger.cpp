@@ -78,6 +78,11 @@ void AsyncLogger::loop() noexcept {
         for (const auto &buffer: buffer2Write) {
             builtInAppender->dump(buffer->data(), buffer->getReadableSize());
         }
+        for (auto &appender: appenderVector) {
+            for (const auto &buffer: buffer2Write) {
+                appender->dump(buffer->data(), buffer->getReadableSize());
+            }
+        }
         if (buffer2Write.size() > 2) {
             // 移除过多的缓冲区，避免堆积过多
             std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuffer *buffer) {
@@ -100,6 +105,16 @@ void AsyncLogger::loop() noexcept {
         }
 
         buffer2Write.clear();
+    }
+
+    // 此处需要输出剩余的 buffer
+    for (const auto &buffer: buffer2Ready) {
+        builtInAppender->dump(buffer->data(), buffer->getReadableSize());
+    }
+    for (auto &appender: appenderVector) {
+        for (const auto &buffer: buffer2Ready) {
+            appender->dump(buffer->data(), buffer->getReadableSize());
+        }
     }
 
     delete buffer1;
