@@ -5,7 +5,7 @@ find_package(SimpleUuid CONFIG REQUIRED)
 find_package(sese-plugin CONFIG REQUIRED)
 
 add_library(Core SHARED)
-add_library(Core-static STATIC)
+# add_library(Core-static STATIC)
 
 target_include_directories(
         Core
@@ -13,12 +13,12 @@ target_include_directories(
         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
-target_include_directories(
-        Core-static
-        PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-)
+# target_include_directories(
+#         Core-static
+#         PUBLIC
+#         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+#         $<INSTALL_INTERFACE:include>
+# )
 
 target_sources(Core PRIVATE
         src/record/AbstractAppender.cpp src/record/SimpleFormatter.cpp
@@ -51,7 +51,7 @@ target_sources(Core PRIVATE
         src/net/http/HPackUtil.cpp
         src/net/rpc/V2RpcServer.cpp src/net/rpc/Server.cpp
         src/net/rpc/Client.cpp
-        src/net/ws/WebSocketContext.cpp src/net/ws/WebSocketAuthenticator.cpp
+        src/net/ws/WebSocketAuthenticator.cpp
 
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp src/config/json/JsonUtil.cpp
@@ -94,7 +94,7 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/system/Process.cpp
         )
 
-target_sources(Core-static PRIVATE $<TARGET_OBJECTS:Core>)
+# target_sources(Core-static PRIVATE $<TARGET_OBJECTS:Core>)
 
 if (WIN32)
     set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
@@ -108,11 +108,11 @@ if (WIN32)
     target_compile_options(Core PRIVATE "/wd4530")
     target_link_libraries(Core PRIVATE ws2_32 iphlpapi)
 
-    target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
-    target_compile_options(Core-static PRIVATE "/utf-8")
-    target_compile_options(Core-static PRIVATE "/wd4251")
-    target_compile_options(Core-static PRIVATE "/wd4530")
-    target_link_libraries(Core-static PRIVATE ws2_32 iphlpapi)
+    # target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
+    # target_compile_options(Core-static PRIVATE "/utf-8")
+    # target_compile_options(Core-static PRIVATE "/wd4251")
+    # target_compile_options(Core-static PRIVATE "/wd4530")
+    # target_link_libraries(Core-static PRIVATE ws2_32 iphlpapi)
 
     message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi")
 
@@ -144,7 +144,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
     target_compile_options(Core PUBLIC "-fPIC")
     target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
-    target_link_libraries(Core-static PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    # target_link_libraries(Core-static PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 
     message(STATUS "Linked libraries: pthread, dl")
 endif ()
@@ -155,7 +155,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
 
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
-    target_link_libraries(Core-static PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
+    # target_link_libraries(Core-static PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
     message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
 endif ()
@@ -174,16 +174,16 @@ target_link_libraries(Core PUBLIC
         Sese::Plugin
         )
 
-target_link_libraries(Core-static PRIVATE
-        OpenSSL::Crypto
-        OpenSSL::SSL
-        ZLIB::ZLIB
-        )
-target_link_libraries(Core-static PUBLIC
-        SString::SString-static
-        SimpleUuid::uuid-static
-        Sese::Plugin
-        )
+# target_link_libraries(Core-static PRIVATE
+#         OpenSSL::Crypto
+#         OpenSSL::SSL
+#         ZLIB::ZLIB
+#         )
+# target_link_libraries(Core-static PUBLIC
+#         SString::SString-static
+#         SimpleUuid::uuid-static
+#         Sese::Plugin
+#         )
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
@@ -194,7 +194,7 @@ configure_package_config_file(
 )
 
 install(
-        TARGETS Core Core-static
+        TARGETS Core # Core-static
         EXPORT SeseTargets
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib

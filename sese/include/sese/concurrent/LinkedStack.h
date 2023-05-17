@@ -14,7 +14,7 @@ namespace sese::concurrent {
      * @tparam T 数据类型
      */
     template<typename T>
-    class LinkedStack {
+    class [[deprecated("已弃用")]] LinkedStack {
     public:
         using NodeType = Node<T>;
 
