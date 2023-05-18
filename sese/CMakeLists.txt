@@ -7,6 +7,11 @@ find_package(sese-plugin CONFIG REQUIRED)
 add_library(Core SHARED)
 # add_library(Core-static STATIC)
 
+option(USE_ASYNC_LOGGER "use async logger" OFF)
+if (USE_ASYNC_LOGGER)
+    target_compile_definitions(Core PRIVATE -DUSE_ASYNC_LOGGER)
+endif ()
+
 target_include_directories(
         Core
         PUBLIC

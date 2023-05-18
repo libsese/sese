@@ -51,8 +51,6 @@ constexpr static const char *RECORD_DEFAULT_TIME_PATTERN = TIME_SHORT_PATTERN;
 constexpr static const char *RECORD_DEFAULT_TEXT_PATTERN = "%c %lv %fi %tn:%th> %m";
 /// 日志输出文件名称匹配模式
 constexpr static const char *RECORD_DEFAULT_FILE_TIME_PATTERN = "yyyyMMdd HHmmssff";
-/// 异步日志器启用
-constexpr static const bool RECORD_USE_ASYNC_LOGGER = false;
 /// 异步日志器缓冲区大小
 constexpr static const size_t RECORD_BUFFER_SIZE = 4096;
 

@@ -22,29 +22,29 @@ namespace sese::record {
     void Logger::log(const Event::Ptr &event) noexcept {
         std::string content = formatter->dump(event);
         if (builtInAppender->getLevel() <= event->getLevel()) {
-            if (!RECORD_USE_ASYNC_LOGGER) {
-                setbuf(stdout, nullptr);
-                switch (event->getLevel()) {
-                    case Level::DEBUG:
-                        ConsoleAppender::setDebugColor();
-                        break;
-                    case Level::INFO:
-                        ConsoleAppender::setInfoColor();
-                        break;
-                    case Level::WARN:
-                        ConsoleAppender::setWarnColor();
-                        break;
-                    case Level::ERR:
-                        ConsoleAppender::setErrorColor();
-                        break;
-                }
+#ifdef USE_ASYNC_LOGGER
+            setbuf(stdout, nullptr);
+            switch (event->getLevel()) {
+                case Level::DEBUG:
+                    ConsoleAppender::setDebugColor();
+                    break;
+                case Level::INFO:
+                    ConsoleAppender::setInfoColor();
+                    break;
+                case Level::WARN:
+                    ConsoleAppender::setWarnColor();
+                    break;
+                case Level::ERR:
+                    ConsoleAppender::setErrorColor();
+                    break;
             }
+#endif
             builtInAppender->dump(content.c_str(), content.length());
             builtInAppender->dump("\n", 1);
-            if (!RECORD_USE_ASYNC_LOGGER) {
-                ConsoleAppender::setCleanColor();
-                fflush(stdout);
-            }
+#ifdef USE_ASYNC_LOGGER
+            ConsoleAppender::setCleanColor();
+            fflush(stdout);
+#endif
         }
 
         for (auto &appender: appenderVector) {
@@ -61,11 +61,11 @@ namespace sese::record {
     int32_t LoggerInitiateTask::init() noexcept {
         // 初始化 Logger
         setlocale(LC_ALL, "");
-        if (RECORD_USE_ASYNC_LOGGER) {
-            logger = new AsyncLogger();
-        } else {
-            logger = new Logger();
-        }
+#ifdef USE_ASYNC_LOGGER
+        logger = new AsyncLogger();
+#else
+        logger = new Logger();
+#endif
         return 0;
     }
 
