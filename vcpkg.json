@@ -8,6 +8,10 @@
     {
       "name": "sqlite3",
       "version>=": "3.39.2"
+    },
+    {
+      "name": "gtest",
+      "version>=": "1.12.1"
     }
   ],
   "version-string": "1.1.2",

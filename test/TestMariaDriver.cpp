@@ -1,4 +1,4 @@
-#include <mysql.h>
+#include <mysql/mysql.h>
 #include <cstdio>
 
 int main() {
@@ -8,7 +8,7 @@ int main() {
             conn,
             "127.0.0.1",
             "root",
-            "2001",
+            "qiuchenli",
             "db_test",
             3306,
             nullptr,
