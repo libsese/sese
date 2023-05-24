@@ -2,7 +2,7 @@
 
 using namespace sese::db;
 
-impl::MariaResultSetImpl::MariaResultSetImpl(MYSQL_RES *res) noexcept {
+impl::MariaResultSetImpl::MariaResultSetImpl(MYSQL_RES *res) noexcept : ResultSet() {
     this->res = res;
 }
 

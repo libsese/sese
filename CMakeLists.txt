@@ -6,7 +6,7 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 option(SESE_DB_BUILD_TEST "build unit test targets" ON)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" ON)
-option(SESE_DB_USE_SQLITE "add sqlite support" OFF)
+option(SESE_DB_USE_SQLITE "add sqlite support" ON)
 
 add_library(DB SHARED)
 
