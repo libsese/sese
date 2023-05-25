@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mariadb:
+    build:
+      context: ..
+      dockerfile: docker/mariadb.dockerfile
+    restart: on-failure
+    ports:
+      - '127.0.0.1:18806:3306'
+  sqlite:
+    build:
+      context: ..
+      dockerfile: docker/sqlite.dockerfile
+    command:
+      - '/root/docker-entrypoint.sh'
+    volumes:
+      - './tmp:/tmp'
