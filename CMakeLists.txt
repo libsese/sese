@@ -68,7 +68,7 @@ if (WIN32)
     target_compile_options(DB PRIVATE /utf-8)
 else ()
     find_package(Threads REQUIRED)
-    target_link_libraries(DB ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_link_libraries(DB PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 endif ()
 
 target_sources(DB PRIVATE src/DriverManager.cpp src/Util.cpp)
