@@ -1,8 +1,8 @@
-#include <sese/db/impl/MariaResultSetImpl.h>
+#include <maria/MariaResultSetImpl.h>
 
 using namespace sese::db;
 
-impl::MariaResultSetImpl::MariaResultSetImpl(MYSQL_RES *res) noexcept {
+impl::MariaResultSetImpl::MariaResultSetImpl(MYSQL_RES *res) noexcept : ResultSet() {
     this->res = res;
 }
 

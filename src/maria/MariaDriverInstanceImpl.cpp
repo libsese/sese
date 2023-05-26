@@ -1,5 +1,5 @@
-#include <sese/db/impl/MariaDriverInstanceImpl.h>
-#include <sese/db/impl/MariaResultSetImpl.h>
+#include <maria/MariaDriverInstanceImpl.h>
+#include <maria/MariaResultSetImpl.h>
 
 using namespace sese::db;
 

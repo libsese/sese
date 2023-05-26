@@ -1,0 +1,19 @@
+{
+  "name": "sese-db",
+  "dependencies": [
+    {
+      "name": "libmariadb",
+      "version>=": "3.3.1"
+    },
+    {
+      "name": "sqlite3",
+      "version>=": "3.39.2"
+    },
+    {
+      "name": "gtest",
+      "version>=": "1.12.1"
+    }
+  ],
+  "version-string": "1.1.2",
+  "builtin-baseline": "ed8fb07a8bd19568c8594c6f1a04955242f82d35"
+}

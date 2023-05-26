@@ -12,7 +12,7 @@ namespace sese::db {
     public:
         using Ptr = std::unique_ptr<PreparedStatement>;
 
-        /// \brief 虚构函数
+        /// \brief 析构函数
         virtual ~PreparedStatement() noexcept = default;
 
         /// \brief 执行查询

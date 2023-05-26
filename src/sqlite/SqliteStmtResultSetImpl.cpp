@@ -1,4 +1,4 @@
-#include <sese/db/impl/SqliteStmtResultSetImpl.h>
+#include <sqlite/SqliteStmtResultSetImpl.h>
 
 using namespace sese::db;
 

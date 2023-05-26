@@ -8,7 +8,7 @@
 
 namespace sese::db {
 
-    /// \brief 数据库驱动示例类
+    /// \brief 数据库驱动实例类
     class SESE_DB_API DriverInstance {
     public:
         using Ptr = std::unique_ptr<DriverInstance>;

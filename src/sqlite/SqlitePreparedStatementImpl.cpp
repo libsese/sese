@@ -1,4 +1,4 @@
-#include <sese/db/impl/SqlitePreparedStatementImpl.h>
+#include <sqlite/SqlitePreparedStatementImpl.h>
 
 using namespace sese::db;
 
