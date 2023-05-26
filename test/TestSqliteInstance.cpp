@@ -8,7 +8,7 @@ using sese::db::ResultSet;
 
 // query
 TEST(TestDriverInstance, TestQueryData) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "/root/db_test.db");
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
     auto result = instance->executeQuery("select * from tb_query where id = 1;");
@@ -20,7 +20,7 @@ TEST(TestDriverInstance, TestQueryData) {
 
 // update
 TEST(TestDriverInstance, TestUpdateData) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "/root/db_test.db");
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
     auto result = instance->executeQuery("select * from tb_update where id = 1;");
@@ -41,7 +41,7 @@ TEST(TestDriverInstance, TestUpdateData) {
 
 // delete
 TEST(TestDriverInstance, TestDeleteData) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "/root/db_test.db");
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
     auto result = instance->executeQuery("select * from tb_delete;");
@@ -62,7 +62,7 @@ TEST(TestDriverInstance, TestDeleteData) {
 
 // insert
 TEST(TestDriverInstance, TestInsertData) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "/root/db_test.db");
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
     auto result = instance->executeQuery("select * from tb_delete;");
@@ -83,7 +83,7 @@ TEST(TestDriverInstance, TestInsertData) {
 
 // create update_stmt
 TEST(TestDriverInstance, TestUpdatestmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "/root/db_test.db");
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
     auto result = instance->executeQuery("select * from tb_stmt_update where id = 1;");
@@ -112,11 +112,11 @@ TEST(TestDriverInstance, TestUpdatestmt) {
 
 // create select_stmt
 TEST(TestDriverInstance, TestSelectstmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "/root/db_test.db");
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
     int64_t id = 1;
-    auto stmt = instance->createStatement("select * from tb_stmt_select where id = ?;");
+    auto stmt = instance->createStatement("select * from tb_stmt_query where id = ?;");
     ASSERT_NE(nullptr, stmt) << "Failed to create a query preprocessing statement";
 
     EXPECT_EQ(true, stmt->setLong(1, id)) << "Failed to fill in the Long value parameter";
@@ -130,7 +130,7 @@ TEST(TestDriverInstance, TestSelectstmt) {
 
 // create delete_stmt
 TEST(TestDriverInstance, TestDeletestmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "/root/db_test.db");
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
     auto result = instance->executeQuery("select * from tb_stmt_delete;");
@@ -140,7 +140,7 @@ TEST(TestDriverInstance, TestDeletestmt) {
     }
 
     int64_t id = 1;
-    auto stmt = instance->createStatement("delete * from tb_stmt_delete where id = ?;");
+    auto stmt = instance->createStatement("delete from tb_stmt_delete where id = ?;");
     ASSERT_NE(nullptr, stmt) << "Failed to create delete a preprocessed statement";
 
     EXPECT_EQ(true, stmt->setLong(1, id)) << "Failed to fill in the Long value parameter";
@@ -157,7 +157,7 @@ TEST(TestDriverInstance, TestDeletestmt) {
 
 // create insert_stmt
 TEST(TestDriverInstance, TestInsertstmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, "/root/db_test.db");
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
     auto result = instance->executeQuery("select * from tb_stmt_insert;");

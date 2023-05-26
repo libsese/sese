@@ -34,5 +34,7 @@ if (SESE_DB_USE_SQLITE)
 #        target_link_libraries(TestSqliteDriver ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 #    endif ()
 
+    target_compile_definitions(TestSqliteInstance PRIVATE -DPATH_TO_DB=\"${PROJECT_SOURCE_DIR}/docker/tmp/db_test.db\")
+
     add_test(NAME TestSqliteInstance COMMAND $<TARGET_FILE:TestSqliteInstance>)
 endif ()
