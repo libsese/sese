@@ -7,11 +7,11 @@ using sese::db::DriverManager;
 using sese::db::ResultSet;
 
 
-// 查某行数据
+// query
 TEST(TestDriverInstance, TestQueryData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=3306;"
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
@@ -22,19 +22,19 @@ TEST(TestDriverInstance, TestQueryData) {
     }
 }
 
-// 改
+// update
 TEST(TestDriverInstance, TestModifyData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=3306;"
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
-    auto result = instance->executeQuery("update * from tb_update where id = 1;");
+    auto result = instance->executeQuery("select * from tb_update where id = 1;");
     EXPECT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
-    };
+    }
 
     auto count = instance->executeUpdate("update tb_update set name = 'bar' where id = 1;");
     EXPECT_NE(-1, count) << "Update failure";
@@ -46,11 +46,11 @@ TEST(TestDriverInstance, TestModifyData) {
     }
 }
 
-// 增
+// insert
 TEST(TestDriverInstance, TestInsertData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=3306;"
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
@@ -70,11 +70,11 @@ TEST(TestDriverInstance, TestInsertData) {
     }
 }
 
-// 删
+// delete
 TEST(TestDriverInstance, TestDeleteData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=3306;"
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
@@ -94,11 +94,11 @@ TEST(TestDriverInstance, TestDeleteData) {
     }
 }
 
-// 创建查询的预处理语句
+// create select_stmt
 TEST(TestCreateStmt, TestQueryStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=3306;"
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
@@ -115,11 +115,11 @@ TEST(TestCreateStmt, TestQueryStmt) {
     }
 }
 
-// 创建更新的预处理语句
+// create update_stmt
 TEST(TestCreateStmt, TestUpdateStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=3306;"
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
@@ -147,11 +147,11 @@ TEST(TestCreateStmt, TestUpdateStmt) {
     }
 }
 
-// 创建删除的预处理语句
+// create delete_stmt
 TEST(TestCreateStmt, TestdeleteStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=3306;"
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
 
@@ -162,7 +162,7 @@ TEST(TestCreateStmt, TestdeleteStmt) {
     }
 
     int64_t id = 1;
-    auto stmt = instance->createStatement("delete tb_stmt_delete where id = ?;");
+    auto stmt = instance->createStatement("delete from tb_stmt_delete where id = ?;");
     ASSERT_NE(nullptr, stmt) << "Failed to create delete a preprocessed statement";
 
     EXPECT_EQ(true, stmt->setLong(1, id)) << "Failed to fill in the Long value parameter";
@@ -177,11 +177,11 @@ TEST(TestCreateStmt, TestdeleteStmt) {
     }
 }
 
-// 创建插入的预处理语句
+// create insert_stmt
 TEST(TestCreateStmt, TestinsertStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=3306;"
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
 
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
@@ -194,11 +194,11 @@ TEST(TestCreateStmt, TestinsertStmt) {
 
     int64_t id = 3;
     const char *name = "mike";
-    auto stmt = instance->createStatement("insert into tb_stmt_insert (id, values) values (?, ?);");
+    auto stmt = instance->createStatement("insert into tb_stmt_insert (id, name) values (?, ?);");
     ASSERT_NE(nullptr, stmt) << "Failed to create insert a preprocessed statement";
 
     EXPECT_EQ(true, stmt->setLong(1, id)) << "Failed to fill in the Long value parameter";
-    EXPECT_EQ(true, stmt->setText(1, name)) << "Failed to fill in the Test value parameter";
+    EXPECT_EQ(true, stmt->setText(2, name)) << "Failed to fill in the Test value parameter";
 
     auto count = stmt->executeUpdate();
     EXPECT_NE(-1, count) << "Failed to use the insert prepared statement";
