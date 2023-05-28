@@ -3,6 +3,7 @@ find_package(OpenSSL REQUIRED)
 find_package(SString CONFIG REQUIRED)
 find_package(SimpleUuid CONFIG REQUIRED)
 find_package(sese-plugin CONFIG REQUIRED)
+find_package(sese-event CONFIG REQUIRED)
 
 add_library(Core SHARED)
 # add_library(Core-static STATIC)
@@ -177,6 +178,7 @@ target_link_libraries(Core PUBLIC
         SString::SString-static
         SimpleUuid::uuid-static
         Sese::Plugin
+        Sese::Event
         )
 
 # target_link_libraries(Core-static PRIVATE

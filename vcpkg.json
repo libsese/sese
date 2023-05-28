@@ -23,6 +23,10 @@
         {
             "name": "sese-plugin",
             "version>=": "0.2.1"
+        },
+        {
+            "name": "sese-event",
+            "version>=": "0.1.0"
         }
     ],
     "features": {

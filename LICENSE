@@ -233,3 +233,7 @@ subject to the terms and conditions of the following licenses:
 - jnferguson/hpack-rfc7541
     Project URL: https://github.com/jnferguson/hpack-rfc7541
     License: BSD 2-Clause "Simplified" License
+
+- libsese/sese.event
+    Project URL: https://github.com/libsese/sese.event
+    License: Apache-2.0 License
