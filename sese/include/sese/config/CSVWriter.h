@@ -19,11 +19,12 @@ namespace sese {
         using Row = std::vector<std::string>;
 
         static const char *CRLF;
+        static const char *LF;
 
         /// 构造函数
         /// \param dest 目的流
         /// \param split 分割字符
-        explicit CSVWriter(OutputStream *dest, char splitChar = ',') noexcept;
+        explicit CSVWriter(OutputStream *dest, char splitChar = ',', bool crlf = true) noexcept;
 
         /// 写入流
         /// \param row 待写入行
@@ -31,6 +32,7 @@ namespace sese {
 
     protected:
         char splitChar;
+        bool isCRLF;
         OutputStream *dest = nullptr;
     };
 }

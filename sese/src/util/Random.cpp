@@ -48,3 +48,25 @@ namespace sese {
     }
 
 }// namespace sese
+
+sese::Random::Random(const std::string &token) {
+    this->_seed = Random::noise();
+}
+
+uint64_t sese::Random::min() {
+    return 0;
+}
+
+uint64_t sese::Random::max() {
+    return UINT64_MAX;
+}
+
+double sese::Random::entropy() const { // NOLINT
+    return 64;
+}
+
+uint64_t sese::Random::operator()() {
+    auto unit = (LongLongSplitter *) &_seed;
+    _seed = (unit->low * multiplier + addend) & mask;
+    return _seed ^ Random::noise();
+}

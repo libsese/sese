@@ -49,3 +49,4 @@ target_compile_definitions(TestHttp2 PRIVATE "-DPY_EXECUTABLE=\"${Python3_EXECUT
 sese_test(TestNetworkUtil)
 sese_test(TestServer)
 sese_test(TestHttp)
+sese_test(TestRandom)

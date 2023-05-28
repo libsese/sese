@@ -1,10 +1,12 @@
 #include "sese/config/CSVWriter.h"
 
 const char *sese::CSVWriter::CRLF = "\r\n";
+const char *sese::CSVWriter::LF = "\n";
 
-sese::CSVWriter::CSVWriter(sese::OutputStream *dest, char splitChar) noexcept {
+sese::CSVWriter::CSVWriter(sese::OutputStream *dest, char splitChar, bool crlf) noexcept {
     CSVWriter::dest = dest;
     CSVWriter::splitChar = splitChar;
+    CSVWriter::isCRLF = crlf;
 }
 
 void sese::CSVWriter::write(const sese::CSVWriter::Row &row) noexcept {
@@ -18,5 +20,9 @@ void sese::CSVWriter::write(const sese::CSVWriter::Row &row) noexcept {
             dest->write(col.c_str(), col.size());
         }
     }
-    dest->write(CRLF, 2);
+    if (isCRLF) {
+        dest->write(CRLF, 2);
+    } else {
+        dest->write(LF, 1);
+    }
 }
