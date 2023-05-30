@@ -44,6 +44,6 @@ namespace sese {
         uint64_t operator()();
 
     private:
-        uint32_t _seed;
+        uint64_t _seed;
     };
 }// namespace sese
