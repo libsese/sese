@@ -50,3 +50,6 @@ sese_test(TestNetworkUtil)
 sese_test(TestServer)
 sese_test(TestHttp)
 sese_test(TestRandom)
+
+sese_test(TestFileNotifier)
+target_compile_definitions(TestFileNotifier PRIVATE "-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")

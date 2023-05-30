@@ -18,20 +18,23 @@
 namespace sese::system {
 
     struct API FileNotifyOption {
+        virtual ~FileNotifyOption() = default;
+
         /// 创建文件
-        virtual void onCreate(std::string_view path){};
+        virtual void onCreate(std::string_view name){};
 
         /// 移动文件
-        virtual void onMove(std::string_view srcPath, std::string_view dstPath){};
+        virtual void onMove(std::string_view srcName, std::string_view dstName){};
 
         /// 修改文件
-        virtual void onModify(std::string_view path){};
+        virtual void onModify(std::string_view name){};
 
         /// 删除文件
-        virtual void onDelete(std::string_view path){};
+        virtual void onDelete(std::string_view name){};
     };
 
-    /// 文件变更监视器，此实现在不同平台下行为细节不一致，过于复杂的应用请不要优先考虑使用此工具类
+    /// 文件变更监视器，此实现 Darwin 事件顺序与 Windows 和 Linux 不一致。
+    /// Darwin 优先触发同一文件多个事件，Windows 和 Linux 按时间顺序触发。
     class API FileNotifier {
     public:
         using Ptr = std::unique_ptr<FileNotifier>;
@@ -66,7 +69,6 @@ namespace sese::system {
 #elif __APPLE__
         void *stream = nullptr;
         void *queue = nullptr;
-        std::tuple<size_t, FileNotifyOption *> lenAndOption;
 #endif
     };
 }// namespace sese

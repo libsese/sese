@@ -12,27 +12,34 @@ static void callback(
         const FSEventStreamEventFlags eventFlags[],
         const FSEventStreamEventId eventIds[]
 ) {
-    auto tuple = *(std::tuple<size_t, sese::system::FileNotifyOption *> *) info;
-    auto len = std::get<0>(tuple) + 1;
-    auto option = (sese::system::FileNotifyOption *) std::get<1>(tuple);
+    auto option = (sese::system::FileNotifyOption *) info;
     const char *lastSrc = nullptr;
     for (size_t i = 0; i < numEvents; ++i) {
         auto dict = (CFDictionaryRef) CFArrayGetValueAtIndex((CFArrayRef) eventPaths, (CFIndex) i);
         auto path = (CFStringRef) CFDictionaryGetValue(dict, kFSEventStreamEventExtendedDataPathKey);
         auto src = CFStringGetCStringPtr(path, kCFStringEncodingUTF8);
-        if (eventFlags[i] & kFSEventStreamEventFlagItemRemoved) {
-            option->onDelete(src + len);
-        } else if (eventFlags[i] & kFSEventStreamEventFlagItemCreated) {
+
+        if (eventFlags[i] & kFSEventStreamEventFlagItemCreated) {
+            auto len = std::string_view(src).find_last_of('/') + 1;
             option->onCreate(src + len);
-        } else if (eventFlags[i] & kFSEventStreamEventFlagItemModified) {
+        }
+        if (eventFlags[i] & kFSEventStreamEventFlagItemModified) {
+            auto len = std::string_view(src).find_last_of('/') + 1;
             option->onModify(src + len);
-        } else if (eventFlags[i] & kFSEventStreamEventFlagItemRenamed) {
+        }
+        if (eventFlags[i] & kFSEventStreamEventFlagItemRenamed) {
             if (lastSrc) {
-                option->onMove(lastSrc + len, src + len);
+                auto len0 = std::string_view(lastSrc).find_last_of('/') + 1;
+                auto len1 = std::string_view(src).find_last_of('/') + 1;
+                option->onMove(lastSrc + len0, src + len1);
                 lastSrc = nullptr;
             } else {
                 lastSrc = src;
             }
+        }
+        if (eventFlags[i] & kFSEventStreamEventFlagItemRemoved) {
+            auto len = std::string_view(src).find_last_of('/') + 1;
+            option->onDelete(src + len);
         }
     }
 }
@@ -54,11 +61,10 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
     );
 
     auto notifier = new FileNotifier;
-    notifier->lenAndOption = std::tuple<size_t, FileNotifyOption *>(path.length(), option);
 
     FSEventStreamContext context;
     context.version = 0;
-    context.info = &notifier->lenAndOption;
+    context.info = option;
     context.retain = nullptr;
     context.release = nullptr;
     context.copyDescription = nullptr;
