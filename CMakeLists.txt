@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(sese.core VERSION 0.5.3)
+project(sese-core VERSION 0.5.3)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
@@ -15,7 +15,7 @@ endif ()
 
 option(SESE_BUILD_TEST "build unit test targets" OFF)
 
-message(STATUS "==================== SESE.CORE ====================")
+message(STATUS "==================== SESE-CORE ====================")
 message(STATUS "Project version: ${PROJECT_VERSION}")
 message(STATUS "C STANDARD VERSION: ${CMAKE_C_STANDARD}")
 message(STATUS "CXX STANDARD VERSION: ${CMAKE_CXX_STANDARD}")

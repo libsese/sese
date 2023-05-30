@@ -27,4 +27,4 @@ Sese 是一个支持 Windows、Linux 和 macOS 的跨平台基础库，<br>
 
 ## 更多
 
-需要更多信息，请移步 [documents](https://libsese.github.io/sese.docs/#/)。
+需要更多信息，请移步 [documents](https://libsese.github.io/sese-docs/#/)。
