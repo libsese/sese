@@ -17,6 +17,7 @@
 #include "sese/net/http/HPACK.h"
 
 #include <cmath>
+#include <algorithm>
 
 using namespace sese::net::http;
 
