@@ -1,3 +1,14 @@
+#ifdef _WIN32
+#pragma warning(disable: 4996)
+#elif __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
+
 #include "sese/net/http/V2HttpServer.h"
 #include "sese/net/V2Server.h"
 #include "sese/net/http/HttpUtil.h"
@@ -100,3 +111,9 @@ void sese::net::v2::http::HttpServer::onClosing(sese::net::v2::IOContext &contex
         }
     }
 }
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#elif __GNUC__
+#pragma GCC diagnostic pop
+#endif

@@ -1,3 +1,13 @@
+#ifdef _WIN32
+#pragma warning(disable: 4996)
+#elif __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #include "sese/net/rpc/V2RpcServer.h"
 #include "sese/net/rpc/Marco.h"
 #include "sese/config/json/JsonUtil.h"
@@ -100,3 +110,9 @@ void V2RpcServer::setFunction(const std::string &name, const V2RpcServer::Func &
 }
 
 #undef BuiltinSetExitCode
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#elif __GNUC__
+#pragma GCC diagnostic pop
+#endif

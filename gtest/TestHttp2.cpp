@@ -1,3 +1,13 @@
+#ifdef _WIN32
+#pragma warning(disable: 4996)
+#elif __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #include "sese/net/http/V2Http2Server.h"
 #include "sese/net/http/DynamicTable.h"
 #include "sese/net/http/Huffman.h"
@@ -207,3 +217,9 @@ TEST(TestHttp2, Server) {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     server.shutdown();
 }
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#elif __GNUC__
+#pragma GCC diagnostic pop
+#endif

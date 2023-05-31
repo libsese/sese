@@ -1,3 +1,13 @@
+#ifdef _WIN32
+#pragma warning(disable: 4996)
+#elif __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #include "gtest/gtest.h"
 #include "sese/net/rpc/Client.h"
 #include "sese/net/rpc/Marco.h"
@@ -172,3 +182,9 @@ TEST(TestServer, AutoShutdown) {
     server.start();
     // without server.shutdown()
 }
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#elif __GNUC__
+#pragma GCC diagnostic pop
+#endif

@@ -6,13 +6,23 @@
 
 #pragma once
 
+//#ifdef _WIN32
+//#pragma warning(disable: 4996)
+//#elif __clang__
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+//#elif __GNUC__
+//#pragma GCC diagnostic push
+//#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+//#endif
+
 #include "sese/net/V2Server.h"
 #include "sese/config/json/JsonTypes.h"
 
 namespace sese::net::v2::rpc {
 
     /// Rpc 服务选项
-    class API V2RpcServer : public Server {
+    class API [[deprecated]] V2RpcServer : public Server {
     public:
         /// 服务子程序
         /// 参数与返回值均为 sese::json::ObjectData::Ptr
@@ -26,3 +36,9 @@ namespace sese::net::v2::rpc {
         std::map<std::string, Func> map;
     };
 }// namespace sese::net::v2::rpc
+
+//#ifdef __clang__
+//#pragma clang diagnostic pop
+//#elif __GNUC__
+//#pragma GCC diagnostic pop
+//#endif

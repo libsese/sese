@@ -1,3 +1,13 @@
+#ifdef _WIN32
+#pragma warning(disable: 4996)
+#elif __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #include "sese/net/http/Http2Connection.h"
 
 using namespace sese::net::http;
@@ -16,3 +26,9 @@ Http2Stream::Ptr Http2Connection::find(uint32_t sid) {
         return nullptr;
     }
 }
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#elif __GNUC__
+#pragma GCC diagnostic pop
+#endif

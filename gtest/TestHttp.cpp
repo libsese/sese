@@ -1,3 +1,13 @@
+#ifdef _WIN32
+#pragma warning(disable: 4996)
+#elif __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #include "sese/net/Socket.h"
 #include "sese/net/http/V2HttpServer.h"
 #include "sese/util/Random.h"
@@ -56,3 +66,9 @@ close:
 shutdown:
     serv.shutdown();
 }
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#elif __GNUC__
+#pragma GCC diagnostic pop
+#endif

@@ -25,9 +25,9 @@ namespace sese::net::v2 {
 
 #ifdef SESE_PLATFORM_WINDOWS
 
-    class WindowsServiceIOContext;
+    class [[deprecated]] WindowsServiceIOContext;
 
-    class API WindowsService {
+    class API [[deprecated]] WindowsService {
     public:
         virtual ~WindowsService() noexcept;
 
@@ -93,7 +93,7 @@ namespace sese::net::v2 {
         security::SSLContext::Ptr sslContext = nullptr;
     };
 
-    class API WindowsServiceIOContext {
+    class API [[deprecated]] WindowsServiceIOContext {
         friend class WindowsService;
 
     public:
@@ -123,9 +123,9 @@ namespace sese::net::v2 {
 
 #ifdef SESE_PLATFORM_LINUX
 
-    class LinuxServiceIOContext;
+    class [[deprecated]] LinuxServiceIOContext;
 
-    class API LinuxService : public Noncopyable {
+    class API [[deprecated]] LinuxService : public Noncopyable {
     public:
         virtual ~LinuxService() noexcept;
 
@@ -189,7 +189,7 @@ namespace sese::net::v2 {
         security::SSLContext::Ptr sslContext = nullptr;
     };
 
-    class API LinuxServiceIOContext {
+    class API [[deprecated]] LinuxServiceIOContext {
         friend class LinuxService;
 
     public:
@@ -218,9 +218,9 @@ namespace sese::net::v2 {
 
 #ifdef SESE_PLATFORM_APPLE
 
-    class DarwinServiceIOContext;
+    class [[deprecated]] DarwinServiceIOContext;
 
-    class API DarwinService {
+    class API [[deprecated]] DarwinService {
     public:
         virtual ~DarwinService() noexcept;
 
