@@ -52,6 +52,10 @@ namespace sese::net::http {
          */
         static bool sendResponse(Stream *dest, ResponseHeader *response) noexcept;
 
+        static Cookie::Ptr parseFromSetCookie(const std::string &text) noexcept;
+
+        static CookieMap::Ptr parseFromCookie(const std::string &text) noexcept;
+
     private:
         static bool getLine(Stream *source, text::StringBuilder &builder) noexcept;
 
@@ -60,8 +64,5 @@ namespace sese::net::http {
 
         inline static bool sendSetCookie(Stream *dest, const CookieMap::Ptr & cookies) noexcept;
         inline static bool sendCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept;
-
-        inline static Cookie::Ptr parseFromSetCookie(const std::string &text) noexcept;
-        inline static CookieMap::Ptr parseFromCookie(const std::string &text) noexcept;
     };
 }// namespace sese::http

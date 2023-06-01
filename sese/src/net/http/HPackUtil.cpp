@@ -13,11 +13,18 @@
  *          0001 + 0     -> 编码 key + 编码 value
  */
 
+#include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/HPackUtil.h"
 #include "sese/net/http/HPACK.h"
+#include "sese/text/DateTimeFormatter.h"
 
 #include <cmath>
 #include <algorithm>
+#include <sstream>
+
+#ifdef _WIN32
+#pragma warning(disable : 4996)
+#endif
 
 using namespace sese::net::http;
 
@@ -40,7 +47,12 @@ bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &tab
 
             auto pair = table.get(index);
             if (pair == std::nullopt) return false;
-            header.set(pair->first, pair->second);
+            if (strcasecmp(pair->first.c_str(), "Cookie") == 0) {
+                auto cookies = HttpUtil::parseFromCookie(pair->second);
+                header.setCookies(cookies);
+            } else {
+                header.set(pair->first, pair->second);
+            }
         } else {
             uint32_t index = 0;
             bool isStore;
@@ -89,7 +101,12 @@ bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &tab
                 table.set(key, value);
             }
 
-            header.set(key, value);
+            if (strcasecmp(key.c_str(), "Cookie") == 0) {
+                auto cookies = HttpUtil::parseFromCookie(value);
+                header.setCookies(cookies);
+            } else {
+                header.set(key, value);
+            }
         }
     }
     return true;
@@ -198,6 +215,27 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
             continue;
         }
     }
+
+    /// 此处未对 Cookies 进行压缩
+    auto onceCookies = onceHeader.getCookies();
+    auto indexedCookies = indexedHeader.getCookies();
+    if (onceCookies) {
+        for (const auto &cookie: *onceCookies) {
+            auto str = buildCookieString(cookie.second);
+            size += encodeIndexCase2(dest, 0);
+            size += encodeString(dest, "Set-Cookie");
+            size += encodeString(dest, str);
+        }
+    }
+    if (indexedCookies) {
+        for (const auto &cookie: *indexedCookies) {
+            auto str = buildCookieString(cookie.second);
+            size += encodeIndexCase2(dest, 0);
+            size += encodeString(dest, "Set-Cookie");
+            size += encodeString(dest, str);
+        }
+    }
+
     return size;
 }
 
@@ -373,4 +411,45 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
             return size + str.size();
         }
     }
+}
+
+std::string HPackUtil::buildCookieString(const Cookie::Ptr &cookie) noexcept {
+    std::stringstream stream;
+    const std::string &name = cookie->getName();
+    const std::string &value = cookie->getValue();
+    stream << name << "=" << value;
+
+    const std::string &path = cookie->getPath();
+    if (!path.empty()) {
+        stream << "; " << path;
+    }
+
+    const std::string &domain = cookie->getDomain();
+    if (!domain.empty()) {
+        stream << "; " << domain;
+    }
+
+    uint64_t maxAge = cookie->getMaxAge();
+    if (maxAge > 0) {
+        stream << "; Max-Age=" << maxAge;
+    } else {
+        uint64_t expires = cookie->getExpires();
+        if (expires > 0) {
+            auto date = DateTime(expires, 0);
+            auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
+            stream << "; Expires=" << dateString;
+        }
+    }
+
+    bool secure = cookie->isSecure();
+    if (secure) {
+        stream << "; Secure";
+    }
+
+    bool httpOnly = cookie->isHttpOnly();
+    if (httpOnly) {
+        stream << "; HttpOnly";
+    }
+
+    return stream.str();
 }

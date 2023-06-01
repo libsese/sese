@@ -39,6 +39,8 @@ namespace sese::net::http {
 
         static size_t encodeString(OutputStream *dest, const std::string &str) noexcept;
 
+        static std::string buildCookieString(const Cookie::Ptr& cookie) noexcept;
+
         static HuffmanDecoder decoder;
         static HuffmanEncoder encoder;
     };
