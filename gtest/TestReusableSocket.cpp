@@ -6,15 +6,12 @@
 #include <atomic>
 #include <random>
 
-#pragma comment(lib, "Ws2_32.lib")
-
 using namespace std::chrono_literals;
 
 class MyEvent : public sese::event::EventLoop {
 public:
     void onAccept(int fd) override {
         num++;
-        std::this_thread::sleep_for(100ms);
     }
 
     void start() {
@@ -61,8 +58,8 @@ TEST(TestReusableSocket, LoadBalancing) {
     ASSERT_EQ(sese::net::Socket::setNonblocking(sock1), 0);
     ASSERT_EQ(sese::net::Socket::setNonblocking(sock2), 0);
 
-    listen(sock1, 15);
-    listen(sock2, 15);
+    sese::net::Socket::listen(sock1, 15);
+    sese::net::Socket::listen(sock2, 15);
 
     MyEvent event1;
     event1.setListenFd((int) sock1);
@@ -84,7 +81,7 @@ TEST(TestReusableSocket, LoadBalancing) {
     for (decltype(auto) s: socketVector) {
         s.connect(addr);
     }
-    std::this_thread::sleep_for(20s);
+    std::this_thread::sleep_for(500ms);
     for (decltype(auto) s: socketVector) {
         s.close();
     }
@@ -92,8 +89,8 @@ TEST(TestReusableSocket, LoadBalancing) {
     event1.stop();
     event2.stop();
 
-    closesocket(sock1);
-    closesocket(sock2);
+    sese::net::Socket::close(sock1);
+    sese::net::Socket::close(sock2);
 
     printf("Socket1: %d\nSocket2: %d\n", event1.getNum(), event2.getNum());
 }

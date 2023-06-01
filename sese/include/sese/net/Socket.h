@@ -129,11 +129,12 @@ namespace sese::net {
         socket_t handle{};
         Address::Ptr address;
 
-
     public:
+        static int listen(socket_t socket, int backlog) noexcept;
+
         static int setNonblocking(socket_t socket) noexcept;
 
-        static void closeSocket(socket_t socket) noexcept;
+        static void close(socket_t socket) noexcept;
     };
 
 }// namespace sese

@@ -1,5 +1,9 @@
 #include <sese/net/Socket.h>
 
+int sese::net::Socket::listen(socket_t socket, int backlog) noexcept {
+    return ::listen(socket, backlog);
+}
+
 #ifdef SESE_PLATFORM_WINDOWS
 
 int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
@@ -7,7 +11,7 @@ int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
     return ioctlsocket(socket, FIONBIO, &ul);
 }
 
-void sese::net::Socket::closeSocket(socket_t socket) noexcept {
+void sese::net::Socket::close(socket_t socket) noexcept {
     closesocket(socket);
 }
 
@@ -25,7 +29,7 @@ int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
     }
 }
 
-void sese::net::Socket::closeSocket(socket_t socket) noexcept {
+void sese::net::Socket::close(socket_t socket) noexcept {
     ::close(socket);
 }
 
