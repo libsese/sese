@@ -46,7 +46,8 @@ target_sources(Core PRIVATE
 
         src/net/Address.cpp src/net/IPAddress.cpp
         src/net/IPv4Address.cpp src/net/IPv6Address.cpp
-        src/net/AddressPool.cpp
+        src/net/AddressPool.cpp src/net/ReusableSocket.cpp
+        src/net/Socket.cpp
         src/net/http/Header.cpp src/net/http/QueryString.cpp
         src/net/http/HttpUtil.cpp src/net/http/UrlHelper.cpp
         src/net/http/HttpClient.cpp src/net/http/HttpServer.cpp

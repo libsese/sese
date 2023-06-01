@@ -128,6 +128,12 @@ namespace sese::net {
     private:
         socket_t handle{};
         Address::Ptr address;
+
+
+    public:
+        static int setNonblocking(socket_t socket) noexcept;
+
+        static void closeSocket(socket_t socket) noexcept;
     };
 
 }// namespace sese

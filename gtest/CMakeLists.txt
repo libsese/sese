@@ -53,3 +53,5 @@ sese_test(TestRandom)
 
 sese_test(TestFileNotifier)
 target_compile_definitions(TestFileNotifier PRIVATE "-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
+
+sese_test(TestReusableSocket)
