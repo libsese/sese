@@ -21,9 +21,9 @@ void sese::net::Socket::close(socket_t socket) noexcept {
 #include <fcntl.h>
 
 int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
-    auto option = fcntl(fd, F_GETFL);
+    auto option = fcntl(socket, F_GETFL);
     if (option != -1) {
-        return fcntl(fd, F_SETFL, option | O_NONBLOCK);
+        return fcntl(socket, F_SETFL, option | O_NONBLOCK);
     } else {
         return -1;
     }

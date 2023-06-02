@@ -25,6 +25,25 @@ std::optional<Socket> ReusableSocket::builtinMakeSocket() noexcept {
 
     return socket;
 #else
+    auto socket = Socket(
+            addr->getRawAddress()->sa_family == AF_INET ? Socket::Family::IPv4 : Socket::Family::IPv6,
+            type, IPPROTO_IP
+    );
+
+    int opt = 1;
+    if (0 != setsockopt(socket.getRawSocket(), SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt))) {
+        return std::nullopt;
+    }
+
+    if (0 != setsockopt(socket.getRawSocket(), SOL_SOCKET, SO_REUSEPORT, &opt, sizeof(opt))) {
+        return std::nullopt;
+    }
+
+    if (0 != socket.bind(addr)) {
+        return std::nullopt;
+    }
+
+    return socket;
 #endif
 }
 
