@@ -61,7 +61,8 @@ if (SESE_DB_USE_POSTGRES)
     find_package(PostgreSQL REQUIRED)
     target_link_libraries(DB PRIVATE PostgreSQL::PostgreSQL)
     target_sources(DB PRIVATE
-            src/pgsql/PostgresDriverInstanceImlp.cpp)
+            src/pgsql/PostgresDriverInstanceImlp.cpp
+            src/pgsql/PostgresResultSetImlp.cpp)
     target_compile_definitions(DB PRIVATE -DHAS_POSTGRES)
 endif ()
 

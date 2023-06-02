@@ -74,8 +74,8 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
 
             auto hostIterator = config.find("host");
             auto userIterator = config.find("user");
-            auto pwdIterator = config.find("pwd");
-            auto dbIterator = config.find("db");
+            auto pwdIterator = config.find("password");
+            auto dbIterator = config.find("dbname");
             auto portIterator = config.find("port");
             if (hostIterator == config.end() ||
                 userIterator == config.end() ||
@@ -86,20 +86,24 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
                 return nullptr;
             }
             const char *keywords[] = {
-                    {hostIterator->first.c_str()},
-                    {userIterator->first.c_str()},
-                    {pwdIterator->first.c_str()},
-                    {dbIterator->first.c_str()},
-                    {portIterator->first.c_str()}};
+                    hostIterator->first.c_str(),
+                    userIterator->first.c_str(),
+                    pwdIterator->first.c_str(),
+                    dbIterator->first.c_str(),
+                    portIterator->first.c_str(),
+                    nullptr};
             const char *values[] = {
-                    {hostIterator->second.c_str()},
-                    {userIterator->second.c_str()},
-                    {pwdIterator->second.c_str()},
-                    {dbIterator->second.c_str()},
-                    {portIterator->second.c_str()}
-            };
+                    hostIterator->second.c_str(),
+                    userIterator->second.c_str(),
+                    pwdIterator->second.c_str(),
+                    dbIterator->second.c_str(),
+                    portIterator->second.c_str(),
+                    nullptr};
 
             PGconn *conn = PQconnectdbParams(keywords, values, 0);
+            if (PQstatus(conn) != CONNECTION_OK) {
+                fprintf(stderr, "Connection to database failed: %s", PQerrorMessage(conn));
+            }
             return std::make_unique<impl::PostgresDriverInstanceImpl>(conn);
         }
 #endif

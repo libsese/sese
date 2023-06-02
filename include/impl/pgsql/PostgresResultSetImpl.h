@@ -20,5 +20,6 @@ namespace sese::db::impl {
 
     protected:
         PGresult *res;
+        int row = 0;
     };
 }// namespace sese::db::impl
