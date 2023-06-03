@@ -21,12 +21,12 @@ IPv6Address::Ptr IPv6Address::create(const char *address, uint16_t port) {
     }
 }
 
-IPv6Address::Ptr IPv6Address::localhost() {
-    return create("::1", 0);
+IPv6Address::Ptr IPv6Address::localhost(uint16_t port) {
+    return create("::1", port);
 }
 
-IPv6Address::Ptr IPv6Address::any() {
-    return create("::", 0);
+IPv6Address::Ptr IPv6Address::any(uint16_t port) {
+    return create("::", port);
 }
 
 IPv6Address::IPv6Address() noexcept {

@@ -16,8 +16,8 @@ namespace sese::net {
     public:
         using Ptr = std::shared_ptr<IPv4Address>;
         static IPv4Address::Ptr create(const char *address, uint16_t port);
-        static IPv4Address::Ptr localhost();
-        static IPv4Address::Ptr any();
+        static IPv4Address::Ptr localhost(uint16_t port = 0);
+        static IPv4Address::Ptr any(uint16_t port = 0);
 
     public:
         explicit IPv4Address(const sockaddr_in &address);

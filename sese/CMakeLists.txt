@@ -85,6 +85,8 @@ target_sources(Core PRIVATE
         src/security/MessageDigest.cpp
 
         src/plugin/Module.cpp
+
+        src/service/SystemLBEService.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")

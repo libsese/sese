@@ -23,12 +23,12 @@ IPv4Address::Ptr IPv4Address::create(const char *address, uint16_t port) {
     }
 }
 
-IPv4Address::Ptr IPv4Address::localhost() {
-    return create("127.0.0.1", 0);
+IPv4Address::Ptr IPv4Address::localhost(uint16_t port) {
+    return create("127.0.0.1", port);
 }
 
-IPv4Address::Ptr IPv4Address::any() {
-    return create("0.0.0.0", 0);
+IPv4Address::Ptr IPv4Address::any(uint16_t port) {
+    return create("0.0.0.0", port);
 }
 
 IPv4Address::IPv4Address(const sockaddr_in &address) : address(address) {}

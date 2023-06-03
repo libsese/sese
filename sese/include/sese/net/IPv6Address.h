@@ -16,8 +16,8 @@ namespace sese::net {
     public:
         using Ptr = std::shared_ptr<IPv6Address>;
         static IPv6Address::Ptr create(const char *address, uint16_t port);
-        static IPv6Address::Ptr localhost();
-        static IPv6Address::Ptr any();
+        static IPv6Address::Ptr localhost(uint16_t port = 0);
+        static IPv6Address::Ptr any(uint16_t port = 0);
 
     public:
         explicit IPv6Address() noexcept;
