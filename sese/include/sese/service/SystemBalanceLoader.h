@@ -1,3 +1,9 @@
+/// \file SystemBalanceLoader.h
+/// \brief 系统均衡负载器
+/// \author kaoru
+/// \version 0.1
+/// \date 2023年6月3日
+
 #pragma once
 
 #include "sese/event/Event.h"
@@ -8,23 +14,35 @@ namespace sese::service {
     class SystemBalanceLoader;
 }
 
+/// 系统均衡负载器（无用户调度的负载器）
+/// \warning 此负载器仅在 Linux 上生效
+/// \see sese::service::BalanceLoader
 class sese::service::SystemBalanceLoader {
 public:
-    using CreateEventLoopFunc = event::EventLoop *();
-
     virtual ~SystemBalanceLoader() noexcept;
 
+    /// 设置负载器使用线程数量
+    /// \param th 线程数量
     void setThreads(size_t th) noexcept;
 
+    /// 设置服务启动地址
+    /// \param addr IP Address
     void setAddress(const net::IPAddress::Ptr &addr) { SystemBalanceLoader::address = addr; }
 
+    /// 获取当前负载器状态
+    /// \return 负载器状态状态
     [[nodiscard]] bool isStart() const { return _isStart; }
 
+    /// 初始化负载器资源
+    /// \tparam Service 需要启动的服务
+    /// \return 是否初始化成功
     template<class Service>
     bool init() noexcept;
 
+    /// 启动当前负载器和服务
     void start() noexcept;
 
+    /// 关闭当前负载器并卸载服务
     void stop() noexcept;
 
 protected:

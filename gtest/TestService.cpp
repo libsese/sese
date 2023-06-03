@@ -8,7 +8,7 @@ using namespace std::chrono_literals;
 class MyService final : public sese::service::Service {
 public:
     ~MyService() override {
-        printf("total socket in: %d\n", num);
+        printf("total socket into: %d\n", num);
     }
 
     void onAccept(int fd) override {
