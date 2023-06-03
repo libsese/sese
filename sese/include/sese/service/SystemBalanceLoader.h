@@ -5,20 +5,22 @@
 #include "sese/thread/Thread.h"
 
 namespace sese::service {
-    class SystemLBEService;
+    class SystemBalanceLoader;
 }
 
-class sese::service::SystemLBEService {
+class sese::service::SystemBalanceLoader {
 public:
     using CreateEventLoopFunc = event::EventLoop *();
 
-    virtual ~SystemLBEService() noexcept;
+    virtual ~SystemBalanceLoader() noexcept;
 
     void setThreads(size_t th) noexcept;
 
-    bool isStart() const { return _isStart; }
+    void setAddress(const net::IPAddress::Ptr &addr) { SystemBalanceLoader::address = addr; }
 
-    template<class SubEvent = event::EventLoop>
+    [[nodiscard]] bool isStart() const { return _isStart; }
+
+    template<class Service>
     bool init() noexcept;
 
     void start() noexcept;
@@ -36,8 +38,8 @@ protected:
     sese::net::IPAddress::Ptr address = sese::net::IPv4Address::localhost(8080);
 };
 
-template<class SubEvent>
-bool sese::service::SystemLBEService::init() noexcept {
+template<class Service>
+bool sese::service::SystemBalanceLoader::init() noexcept {
     if (address == nullptr) return false;
 
     sese::net::ReusableSocket reusableSocket(address);
@@ -45,17 +47,24 @@ bool sese::service::SystemLBEService::init() noexcept {
         auto subSocket = reusableSocket.makeRawSocket();
         if (subSocket == -1) {
             goto free_socket;
+        } else {
+            sese::net::Socket::listen(subSocket, 32);
+            socketVector.emplace_back(subSocket);
         }
     }
 
     for (size_t i = 0; i < threads; ++i) {
-        auto event = new SubEvent;
+        auto event = new Service;
         event->setListenFd((int) socketVector[i]);
         if (!event->init()) {
             delete event;
             goto free_event;
+        } else {
+            eventLoopVector.emplace_back(event);
         }
     }
+
+    return true;
 
 free_event:
     for (decltype(auto) eventLoop: eventLoopVector) {

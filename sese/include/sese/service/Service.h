@@ -1,9 +1,14 @@
+#pragma once
+
+#include "sese/Config.h"
+
 #ifdef SESE_PLATFORM_LINUX
 
-#include "sese/service/SystemLBEService.h"
+#include "sese/service/SystemBalanceLoader.h"
 
 namespace sese::service {
-    using LBEService = SystemLBEService;
+    using BalanceLoader = SystemBalanceLoader;
+    using Service = sese::event::EventLoop;
 }
 
 #endif

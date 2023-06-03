@@ -1,18 +1,18 @@
-#include "sese/service/SystemLBEService.h"
+#include "sese/service/SystemBalanceLoader.h"
 
 #include <algorithm>
 
-sese::service::SystemLBEService::~SystemLBEService() noexcept {
+sese::service::SystemBalanceLoader::~SystemBalanceLoader() noexcept {
     if (_isStart && !_isStop) {
         stop();
     }
 }
 
-void sese::service::SystemLBEService::setThreads(size_t th) noexcept {
-    threads = std::max<size_t>(th, 2);
+void sese::service::SystemBalanceLoader::setThreads(size_t th) noexcept {
+    threads = std::max<size_t>(th, 1);
 }
 
-void sese::service::SystemLBEService::start() noexcept {
+void sese::service::SystemBalanceLoader::start() noexcept {
     if (eventLoopVector.empty()) return;
 
     for (size_t i = 0; i < threads; ++i) {
@@ -21,7 +21,7 @@ void sese::service::SystemLBEService::start() noexcept {
                 eventLoop->dispatch(100);
             }
         },
-                                                     "SystemLBThread_" + std::to_string(i));
+                                                     "SystemBalanceLoader_" + std::to_string(i));
         thread->start();
         threadVector.emplace_back(std::move(thread));
     }
@@ -29,7 +29,7 @@ void sese::service::SystemLBEService::start() noexcept {
     _isStart = true;
 }
 
-void sese::service::SystemLBEService::stop() noexcept {
+void sese::service::SystemBalanceLoader::stop() noexcept {
     if (_isStart) {
         _isStop = true;
 

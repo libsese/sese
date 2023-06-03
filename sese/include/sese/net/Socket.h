@@ -130,6 +130,12 @@ namespace sese::net {
         Address::Ptr address;
 
     public:
+        static socket_t socket(int family, int type, int protocol) noexcept;
+
+        static size_t write(socket_t socket, const void *buffer, size_t len, int flags) noexcept;
+
+        static size_t read(socket_t socket, void *buffer, size_t len, int flags) noexcept;
+
         static int listen(socket_t socket, int backlog) noexcept;
 
         static int setNonblocking(socket_t socket) noexcept;
