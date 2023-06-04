@@ -6,6 +6,20 @@ sese::service::SystemBalanceLoader::~SystemBalanceLoader() noexcept {
     if (_isStart && !_isStop) {
         stop();
     }
+
+    if (!eventLoopVector.empty()) {
+        for (decltype(auto) eventLoop: eventLoopVector) {
+            delete eventLoop;
+        }
+        eventLoopVector.clear();
+    }
+
+    if (!socketVector.empty()) {
+        for (decltype(auto) subSocket: socketVector) {
+            sese::net::Socket::close(subSocket);
+        }
+        socketVector.clear();
+    }
 }
 
 void sese::service::SystemBalanceLoader::setThreads(size_t th) noexcept {

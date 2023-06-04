@@ -6,6 +6,34 @@ sese::service::UserBalanceLoader::~UserBalanceLoader() noexcept {
     if (_isStart && !_isStop) {
         stop();
     }
+
+    if (masterSocketQueueArray) {
+        delete[] masterSocketQueueArray;
+        masterSocketQueueArray = nullptr;
+    }
+
+    if (slaveSocketQueueArray) {
+        delete[] slaveSocketQueueArray;
+        slaveSocketQueueArray = nullptr;
+    }
+
+    if (!eventLoopVector.empty()) {
+        for (decltype(auto) eventLoop: eventLoopVector) {
+            delete eventLoop;
+        }
+        eventLoopVector.clear();
+    }
+
+    if (masterEventLoop) {
+        delete masterEventLoop;
+        masterEventLoop = nullptr;
+    }
+
+    if (socket) {
+        socket->close();
+        delete socket;
+        socket = nullptr;
+    }
 }
 
 void sese::service::UserBalanceLoader::setThreads(size_t th) noexcept {
@@ -43,6 +71,7 @@ void sese::service::UserBalanceLoader::stop() noexcept {
         _isStop = true;
 
         masterThread->join();
+        masterThread = nullptr;
 
         for (decltype(auto) th: threadVector) {
             th->join();
