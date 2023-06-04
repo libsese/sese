@@ -1,11 +1,13 @@
-#include "sese/service/Service.h"
+// #include "sese/service/Service.h"
+#include "sese/service/SystemBalanceLoader.h"
+#include "sese/service/UserBalanceLoader.h"
 #include "gtest/gtest.h"
 
 #include <random>
 
 using namespace std::chrono_literals;
 
-class MyService final : public sese::service::Service {
+class MyService final : public sese::event::EventLoop {
 public:
     ~MyService() override {
         printf("total socket into: %d\n", num);
@@ -38,7 +40,36 @@ TEST(TestService, SystemBalanceLoader) {
     ASSERT_TRUE(service.init<MyService>());
 
     service.start();
-    ASSERT_TRUE(service.isStart());
+    ASSERT_TRUE(service.isStarted());
+
+    std::vector<sese::net::Socket> socketVector;
+    for (int i = 0; i < 20; ++i) {
+        auto s = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
+        s.setNonblocking(true);
+        socketVector.emplace_back(s);
+    }
+    for (decltype(auto) s: socketVector) {
+        s.connect(addr);
+    }
+    std::this_thread::sleep_for(500ms);
+    for (decltype(auto) s: socketVector) {
+        s.close();
+    }
+
+    std::this_thread::sleep_for(300ms);
+    service.stop();
+}
+
+TEST(TestService, UserBalanceLoader) {
+    auto addr = createAddress();
+
+    sese::service::UserBalanceLoader service;
+    service.setThreads(3);
+    service.setAddress(addr);
+    ASSERT_TRUE(service.init<MyService>());
+
+    service.start();
+    ASSERT_TRUE(service.isStarted());
 
     std::vector<sese::net::Socket> socketVector;
     for (int i = 0; i < 20; ++i) {

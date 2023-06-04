@@ -9,7 +9,9 @@ sese::service::SystemBalanceLoader::~SystemBalanceLoader() noexcept {
 }
 
 void sese::service::SystemBalanceLoader::setThreads(size_t th) noexcept {
-    threads = std::max<size_t>(th, 1);
+    if (!_isStart) {
+        threads = std::max<size_t>(th, 1);
+    }
 }
 
 void sese::service::SystemBalanceLoader::start() noexcept {

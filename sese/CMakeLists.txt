@@ -86,7 +86,7 @@ target_sources(Core PRIVATE
 
         src/plugin/Module.cpp
 
-        src/service/SystemBalanceLoader.cpp
+        src/service/SystemBalanceLoader.cpp src/service/UserBalanceLoader.cpp
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")

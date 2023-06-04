@@ -11,4 +11,13 @@ namespace sese::service {
     using Service = sese::event::EventLoop;
 }
 
+#else
+
+#include "sese/service/UserBalanceLoader.h"
+
+namespace sese::service {
+    using BalanceLoader = UserBalanceLoader;
+    using Service = sese::event::EventLoop;
+}
+
 #endif

@@ -17,9 +17,9 @@ namespace sese::service {
 /// 系统均衡负载器（无用户调度的负载器）
 /// \warning 此负载器仅在 Linux 上生效
 /// \see sese::service::BalanceLoader
-class sese::service::SystemBalanceLoader {
+class API sese::service::SystemBalanceLoader final {
 public:
-    virtual ~SystemBalanceLoader() noexcept;
+    ~SystemBalanceLoader() noexcept;
 
     /// 设置负载器使用线程数量
     /// \param th 线程数量
@@ -31,7 +31,7 @@ public:
 
     /// 获取当前负载器状态
     /// \return 负载器状态状态
-    [[nodiscard]] bool isStart() const { return _isStart; }
+    [[nodiscard]] bool isStarted() const { return _isStart; }
 
     /// 初始化负载器资源
     /// \tparam Service 需要启动的服务
@@ -65,10 +65,15 @@ bool sese::service::SystemBalanceLoader::init() noexcept {
         auto subSocket = reusableSocket.makeRawSocket();
         if (subSocket == -1) {
             goto free_socket;
-        } else {
-            sese::net::Socket::listen(subSocket, 32);
-            socketVector.emplace_back(subSocket);
         }
+        if (0 != sese::net::Socket::setNonblocking(subSocket)) {
+            goto free_socket;
+        }
+        if (0 != sese::net::Socket::listen(subSocket, 32)) {
+            goto free_socket;
+        }
+        socketVector.emplace_back(subSocket);
+
     }
 
     for (size_t i = 0; i < threads; ++i) {
