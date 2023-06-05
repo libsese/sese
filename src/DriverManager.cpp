@@ -51,6 +51,7 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
 
             if (!status) {
                 // 连接数据库失败
+                mysql_close(conn);
                 return nullptr;
             }
 
@@ -61,7 +62,12 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
         case DatabaseType::Sqlite: {
             sqlite3 *conn;
             int rt = sqlite3_open_v2(connectionString, &conn, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nullptr);
-            if (rt != 0) return nullptr;
+            if (rt != 0) {
+                if (conn) {
+                    sqlite3_close_v2(conn);
+                }
+                return nullptr;
+            }
             return std::make_unique<impl::SqliteDriverInstanceImpl>(conn);
         }
 #endif
