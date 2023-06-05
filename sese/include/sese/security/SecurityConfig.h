@@ -2,7 +2,7 @@
 #include "sese/util/Initializer.h"
 
 namespace sese::security {
-    class API SecurityInitTask : public InitiateTask {
+    class API SecurityInitTask final : public InitiateTask {
     public:
         SecurityInitTask() : InitiateTask(__FUNCTION__) {}
 

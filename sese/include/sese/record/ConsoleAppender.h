@@ -5,6 +5,7 @@
  * @brief 控制台日志输出源类
  */
 #pragma once
+
 #include "sese/record/AbstractAppender.h"
 #include "sese/record/AbstractFormatter.h"
 #include "sese/record/Event.h"
@@ -13,7 +14,7 @@ namespace sese::record {
     /**
      * @brief 控制台输出源类
      */
-    class API ConsoleAppender : public AbstractAppender {
+    class API ConsoleAppender final : public AbstractAppender {
     public:
         explicit ConsoleAppender(Level level = Level::DEBUG) noexcept;
 

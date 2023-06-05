@@ -5,6 +5,7 @@
  * @date 2022年4月4日
  */
 #pragma once
+
 #include "sese/net/IPAddress.h"
 
 namespace sese::net {
@@ -12,7 +13,7 @@ namespace sese::net {
     /**
      * @brief IPv4 地址类
      */
-    class API IPv4Address : public IPAddress {
+    class API IPv4Address final : public IPAddress {
     public:
         using Ptr = std::shared_ptr<IPv4Address>;
         static IPv4Address::Ptr create(const char *address, uint16_t port);

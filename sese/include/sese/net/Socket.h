@@ -5,6 +5,7 @@
  * @date 2022年4月9日
  */
 #pragma once
+
 #include "sese/net/IPv6Address.h"
 #include "sese/Config.h"
 #include "sese/util/Stream.h"
@@ -17,7 +18,7 @@
 namespace sese::net {
 
 #ifdef _WIN32
-    class SocketInitiateTask : public InitiateTask {
+    class SocketInitiateTask final : public InitiateTask {
     public:
         SocketInitiateTask() : InitiateTask(__FUNCTION__) {}
 

@@ -5,15 +5,17 @@
 /// \version 0.1
 
 #pragma once
-#include <sese/record/AbstractAppender.h>
+
+#include "sese/record/AbstractAppender.h"
 #include "sese/util/FileStream.h"
 #include "sese/util/BufferedStream.h"
+
 #include <mutex>
 
 namespace sese::record {
 
     /// 分块文件日志输出源类
-    class API BlockAppender : public AbstractAppender {
+    class API BlockAppender final : public AbstractAppender {
     public:
         /// 初始化分块参数
         /// \param blockMaxSize 分块的预定大小，此参数在非 DEBUG 模式下具有最小值限制，至少为 1000 * 1024，即 1MB

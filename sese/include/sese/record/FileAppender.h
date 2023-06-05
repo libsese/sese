@@ -5,6 +5,7 @@
  * @date 2022年3月28日
  */
 #pragma once
+
 #include "sese/record/AbstractAppender.h"
 #include "sese/util/FileStream.h"
 #include "sese/util/BufferedStream.h"
@@ -17,7 +18,7 @@ namespace sese::record {
     /**
      * @brief 日志文件输出源类
      */
-    class API FileAppender : public sese::record::AbstractAppender {
+    class API FileAppender final : public sese::record::AbstractAppender {
     public:
         typedef std::shared_ptr<FileAppender> Ptr;
 

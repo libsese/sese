@@ -61,7 +61,7 @@ namespace sese {
     };
 
 
-    class TestInitiateTask : public InitiateTask {
+    class TestInitiateTask final : public InitiateTask {
     public:
         TestInitiateTask() : InitiateTask(__FUNCTION__) {}
 

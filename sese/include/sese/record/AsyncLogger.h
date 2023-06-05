@@ -9,7 +9,7 @@
 
 namespace sese::record {
 
-    class API AsyncLogger : public Logger {
+    class API AsyncLogger final : public Logger {
     public:
         AsyncLogger();
 

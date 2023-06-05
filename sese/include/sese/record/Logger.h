@@ -20,7 +20,7 @@
 
 namespace sese::record {
 
-    class LoggerInitiateTask : public InitiateTask {
+    class LoggerInitiateTask final : public InitiateTask {
     public:
         LoggerInitiateTask() : InitiateTask(__FUNCTION__) {}
 
