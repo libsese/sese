@@ -4,7 +4,7 @@
 
 namespace sese::db::impl {
 
-    class SESE_DB_API SqliteResultSetImpl : public ResultSet {
+    class SESE_DB_API SqliteResultSetImpl final : public ResultSet {
     public:
         SqliteResultSetImpl(char **table, size_t r, size_t c, char *error) noexcept;
         ~SqliteResultSetImpl() noexcept override;

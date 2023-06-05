@@ -1,10 +1,11 @@
 #pragma once
+
 #include <sese/db/ResultSet.h>
 #include <mysql.h>
 
 namespace sese::db::impl {
 
-    class SESE_DB_API MariaStmtResultSet : public ResultSet {
+    class SESE_DB_API MariaStmtResultSet final : public ResultSet {
     public:
         explicit MariaStmtResultSet(MYSQL_STMT *stmt, MYSQL_BIND *row, size_t count) noexcept;
         ~MariaStmtResultSet() noexcept override;
@@ -14,7 +15,7 @@ namespace sese::db::impl {
         [[nodiscard]] size_t getColumns() const noexcept override;
 
         [[nodiscard]] int32_t getInteger(size_t index) const noexcept override;
-        int64_t getLong(size_t index) const noexcept override;
+        [[nodiscard]] int64_t getLong(size_t index) const noexcept override;
         [[nodiscard]] std::string_view getString(size_t index) const noexcept override;
         [[nodiscard]] double getDouble(size_t index) const noexcept override;
         [[nodiscard]] float getFloat(size_t index) const noexcept override;

@@ -1,10 +1,11 @@
 #pragma once
+
 #include <sese/db/DriverInstance.h>
 #include <maria/MariaPreparedStatementImpl.h>
 
 namespace sese::db::impl {
 
-    class SESE_DB_API MariaDriverInstanceImpl : public DriverInstance {
+    class SESE_DB_API MariaDriverInstanceImpl final : public DriverInstance {
     public:
         explicit MariaDriverInstanceImpl(MYSQL *conn) noexcept;
         ~MariaDriverInstanceImpl() noexcept override;

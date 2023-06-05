@@ -34,6 +34,7 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
 
             MYSQL *conn = mysql_init(nullptr);
             if (conn == nullptr) {
+                // 此处通常是不可恢复错误触发，例如内存不足
                 return nullptr;
             }
 
