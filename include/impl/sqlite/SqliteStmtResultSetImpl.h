@@ -4,7 +4,7 @@
 
 namespace sese::db::impl {
 
-    class SESE_DB_API SqliteStmtResultSetImpl : public ResultSet {
+    class SESE_DB_API SqliteStmtResultSetImpl final : public ResultSet {
     public:
         explicit SqliteStmtResultSetImpl(sqlite3_stmt *stmt) noexcept;
 

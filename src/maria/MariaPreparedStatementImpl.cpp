@@ -12,12 +12,11 @@ sese::db::impl::MariaPreparedStatementImpl::~MariaPreparedStatementImpl() noexce
     free(param);
 }
 
-
 //为可能的数据类型分配内存
 bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept {
     *bind = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * res->field_count);
     memset(*bind, 0, sizeof(MYSQL_BIND) * res->field_count);
-    for (auto i = 0; i < res->field_count; i++) {
+    for (unsigned int i = 0; i < res->field_count; i++) {
         // 非定长数据
         void **p = &((*bind)[i].buffer);
         switch (res->fields[i].type) {
@@ -78,7 +77,6 @@ sese::db::ResultSet::Ptr sese::db::impl::MariaPreparedStatementImpl::executeQuer
         freeBindStruct(result, res->field_count);
         return nullptr;
     }
-    //
     if (mysql_stmt_bind_result(stmt, result)) {
         return nullptr;
     }
@@ -134,7 +132,7 @@ bool sese::db::impl::MariaPreparedStatementImpl::setText(uint32_t index, const c
     if (index - 1 >= count) return false;
     this->param[index - 1].buffer_type = MYSQL_TYPE_VAR_STRING;
     this->param[index - 1].buffer = (void *) value;
-    this->param[index - 1].buffer_length = strlen(value);
+    this->param[index - 1].buffer_length = (unsigned long) strlen(value);
     return true;
 }
 

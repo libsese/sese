@@ -1,10 +1,11 @@
 #pragma once
+
 #include <sese/db/PreparedStatement.h>
 #include <maria/MariaStmtResultSetImpl.h>
 
 namespace sese::db::impl {
 
-    class SESE_DB_API MariaPreparedStatementImpl : public PreparedStatement {
+    class SESE_DB_API MariaPreparedStatementImpl final : public PreparedStatement {
     public:
         explicit MariaPreparedStatementImpl(MYSQL_STMT *stmt, size_t count) noexcept;
         ~MariaPreparedStatementImpl() noexcept override;
