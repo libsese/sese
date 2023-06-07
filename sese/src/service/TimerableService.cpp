@@ -1,7 +1,9 @@
 #include "sese/service/TimerableService.h"
+#include "sese/event/Event.h"
 
 #include <algorithm>
 #include <chrono>
+#include <vector>
 
 sese::service::TimerableService::~TimerableService() {
     if (!timeoutMap.empty()) {
@@ -70,40 +72,32 @@ void sese::service::TimerableService::cancelTimeoutEvent(sese::service::TimeoutE
 }
 
 void sese::service::TimerableService::freeTimeoutEvent(sese::service::TimeoutEvent *timeoutEvent) {
-    // 原先存在事件，先取消
-    {
-        auto &table = timeoutTable[timeoutEvent->exceptTimestamp - startTimestamp];
-        auto iterator = std::find_if(table.begin(), table.end(), [&](TimeoutEvent *event) -> bool {
-            return timeoutEvent->fd == event->fd;
-        });
-        if (iterator != table.end()) {
-            table.erase(iterator);
-        }
-    }
-
-    // 释放事件
-    {
-        auto iterator = timeoutMap.find(timeoutEvent->fd);
-        if(iterator != timeoutMap.end()) {
-            delete iterator->second;
-            timeoutMap.erase(iterator);
-        }
+    auto iterator = timeoutMap.find(timeoutEvent->fd);
+    if (iterator != timeoutMap.end()) {
+        delete iterator->second;
+        timeoutMap.erase(iterator);
     }
 }
+
 
 void sese::service::TimerableService::dispatch(uint32_t timeout) {
     auto now = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count();
     auto index = now - startTimestamp;
     auto &table = timeoutTable[index];
 
-    auto iteratorList = std::remove_if(table.begin(), table.end(), [now, this](TimeoutEvent *event) -> bool {
-        if (event->exceptTimestamp <= now) {
-            onTimeout(event);
-            return true;
+    for (auto iterator = table.begin(); iterator != table.end();) {
+        if ((*iterator)->exceptTimestamp <= now) {
+            onTimeout(*iterator);
+            table.erase(iterator++);
+        } else {
+            iterator++;
         }
-    });
-
-    table.erase(iteratorList);
+    }
 
     event::EventLoop::dispatch(timeout);
+}
+
+bool sese::service::TimerableService::init() {
+    startTimestamp = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+    return event::EventLoop::init();
 }

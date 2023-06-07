@@ -22,6 +22,8 @@ namespace sese::service {
     public:
         ~TimerableService() override;
 
+        bool init() override;
+
         void dispatch(uint32_t timeout) override;
 
     public:
@@ -58,7 +60,7 @@ namespace sese::service {
         /// \param timeoutEvent 超时事件结构
         void cancelTimeoutEvent(TimeoutEvent *timeoutEvent);
 
-        /// 释放当前的超时事件结构，与之相关联的事件将会取消
+        /// 释放当前的超时事件结构
         /// \param timeoutEvent 超时事件结构
         void freeTimeoutEvent(TimeoutEvent *timeoutEvent);
 
