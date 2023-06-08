@@ -13,6 +13,13 @@ if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
     get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 endif ()
 
+if (UNIX)
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+        # for valgrind
+        set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-gdwarf-4")
+    endif ()
+endif ()
+
 option(SESE_BUILD_TEST "build unit test targets" OFF)
 
 message(STATUS "==================== SESE-CORE ====================")

@@ -73,6 +73,9 @@ void sese::service::UserBalanceLoader::stop() noexcept {
         masterThread->join();
         masterThread = nullptr;
 
+        delete[] mutexArray;
+        mutexArray = nullptr;
+
         for (decltype(auto) th: threadVector) {
             th->join();
         }

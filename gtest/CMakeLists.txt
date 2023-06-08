@@ -4,6 +4,8 @@ find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 if (WIN32)
     add_compile_options(/utf-8)
+elseif (UNIX)
+    set(CMAKE_EXE_LINKER_FLAGS "-Wl,-copy-dt-needed-entries")
 endif ()
 
 add_definitions("-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")

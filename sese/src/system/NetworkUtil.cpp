@@ -98,10 +98,11 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     // glib 2.3.3 以下不支持使用其获取 IPv6 相关信息
     getifaddrs(&address);
 
-    while (address) {
-        if (address->ifa_addr->sa_family == AF_INET) {
-            auto iterator = map.find(address->ifa_name);
-            sockaddr_in addr = *(sockaddr_in *) (address->ifa_addr);
+    auto pAddress = address;
+    while (pAddress) {
+        if (pAddress->ifa_addr->sa_family == AF_INET) {
+            auto iterator = map.find(pAddress->ifa_name);
+            sockaddr_in addr = *(sockaddr_in *) (pAddress->ifa_addr);
             if (iterator != map.end()) {
                 iterator->second.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
             } else {
@@ -109,20 +110,20 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
                 i.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
                 map[i.name] = i;
             }
-        } else if (address->ifa_addr->sa_family == AF_PACKET) {
-            auto iterator = map.find(address->ifa_name);
+        } else if (pAddress->ifa_addr->sa_family == AF_PACKET) {
+            auto iterator = map.find(pAddress->ifa_name);
             if (iterator != map.end()) {
-                iterator->second.name = address->ifa_name;
-                memcpy(iterator->second.mac.data(), address->ifa_addr, 6);
+                iterator->second.name = pAddress->ifa_name;
+                memcpy(iterator->second.mac.data(), pAddress->ifa_addr, 6);
             } else {
                 auto i = NetworkInterface();
-                i.name = address->ifa_name;
-                memcpy(i.mac.data(), address->ifa_addr, 6);
+                i.name = pAddress->ifa_name;
+                memcpy(i.mac.data(), pAddress->ifa_addr, 6);
                 map[i.name] = i;
             }
         }
 
-        address = address->ifa_next;
+        pAddress = pAddress->ifa_next;
     }
 
     freeifaddrs(address);
