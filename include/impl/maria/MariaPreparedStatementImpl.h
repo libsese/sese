@@ -7,7 +7,7 @@ namespace sese::db::impl {
 
     class SESE_DB_API MariaPreparedStatementImpl final : public PreparedStatement {
     public:
-        explicit MariaPreparedStatementImpl(MYSQL_STMT *stmt, size_t count) noexcept;
+        explicit MariaPreparedStatementImpl(MYSQL_STMT *stmt, MYSQL_RES *meta, size_t count) noexcept;
         ~MariaPreparedStatementImpl() noexcept override;
 
         ResultSet::Ptr executeQuery() noexcept override;
@@ -18,7 +18,7 @@ namespace sese::db::impl {
         bool setInteger(uint32_t index, int32_t &value) noexcept override;
         bool setLong(uint32_t index, int64_t &value) noexcept override;
         bool setText(uint32_t index, const char *value) noexcept override;
-        bool setNull(uint32_t index) noexcept override;     //设置空
+        bool setNull(uint32_t index) noexcept override;
 
         static bool mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept;
         static void freeBindStruct(MYSQL_BIND *bind, size_t count) noexcept;
@@ -27,6 +27,7 @@ namespace sese::db::impl {
         MYSQL_STMT *stmt;
         size_t count = 0;
         MYSQL_BIND *param;
+        MYSQL_RES *meta;
     };
 
 }// namespace sese::db
