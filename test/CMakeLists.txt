@@ -50,5 +50,9 @@ if (SESE_DB_USE_POSTGRES)
 
     target_link_libraries(TestPostgresInstance GTest::gtest GTest::gtest_main)
 
+    if (WIN32)
+        target_compile_options(TestPostgresInstance PRIVATE /utf-8)
+    endif ()
+
     add_test(NAME TestPostgresInstance COMMAND $<TARGET_FILE:TestPostgresInstance>)
 endif ()

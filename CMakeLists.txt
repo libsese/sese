@@ -62,7 +62,9 @@ if (SESE_DB_USE_POSTGRES)
     target_link_libraries(DB PRIVATE PostgreSQL::PostgreSQL)
     target_sources(DB PRIVATE
             src/pgsql/PostgresDriverInstanceImlp.cpp
-            src/pgsql/PostgresResultSetImlp.cpp)
+            src/pgsql/PostgresResultSetImlp.cpp
+            src/pgsql/PostgresPreparedStatementImpl.cpp
+            src/pgsql/PostgresStmtResultSetImpl.cpp)
     target_compile_definitions(DB PRIVATE -DHAS_POSTGRES)
 endif ()
 

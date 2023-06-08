@@ -1,11 +1,11 @@
 #include <pgsql/PostgresDriverInstanceImpl.h>
 #include <pgsql/PostgresResultSetImpl.h>
+#include <sstream>
 
 using namespace sese::db;
 
 impl::PostgresDriverInstanceImpl::PostgresDriverInstanceImpl(PGconn *conn) noexcept {
     this->conn = conn;
-    PQsetNoticeProcessor(conn, nullptr, nullptr);
 }
 
 impl::PostgresDriverInstanceImpl::~PostgresDriverInstanceImpl() noexcept {
@@ -26,5 +26,18 @@ int64_t impl::PostgresDriverInstanceImpl::executeUpdate(const char *sql) const n
 }
 
 PreparedStatement::Ptr impl::PostgresDriverInstanceImpl::createStatement(const char *sql) const noexcept {
-    return nullptr;
+    int count = 0;
+    std::stringstream stringBuilder;
+    for (size_t i = 0; i < strlen(sql); ++i) {
+        if (sql[i] == '?') {
+            count++;
+            stringBuilder << '$' << count;
+        } else {
+            stringBuilder << sql[i];
+        }
+    }
+    std::string str = stringBuilder.str();
+    str.erase(std::remove(str.begin(), str.end(), '\0'), str.end());
+
+    return std::make_unique<impl::PostgresPreparedStatementImpl>(str, count, conn);
 }

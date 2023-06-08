@@ -86,3 +86,25 @@ TEST(TestDriverInstance, TestInsertData) {
     }
 }
 
+// create select_stmt
+TEST(TestDriverInstance, TestQueryStmt) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Postgres,
+            "host=127.0.0.1;user=postgres;password=qiuchenli;dbname=db_test;port=5432;"
+    );
+    ASSERT_NE(nullptr, instance);
+
+    int64_t id = 1;
+    auto stmt = instance->createStatement("select * from tb_insert where id = ?;");
+    ASSERT_NE(nullptr, stmt);
+
+    ASSERT_EQ(true, stmt->setLong(1, id));
+
+    auto results = stmt->executeQuery();
+    ASSERT_NE(nullptr, results);
+    while (results->next()) {
+        printf("id = %d, name = %s\n", (int) results->getInteger(0), results->getString(1).data());
+    }
+
+}
+
