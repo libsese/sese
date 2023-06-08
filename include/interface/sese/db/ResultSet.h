@@ -4,7 +4,9 @@
 /// \author kaoru
 #pragma once
 #include <sese/db/Config.h>
+
 #include <string>
+#include <cstring>
 
 namespace sese::db {
 

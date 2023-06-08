@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sese/db/ResultSet.h>
+
 #include <mysql.h>
 
 namespace sese::db::impl {
