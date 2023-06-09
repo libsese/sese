@@ -32,13 +32,20 @@ public:
 
     /// 获取当前负载器状态
     /// \return 负载器状态
-    bool isStarted() const { return _isStart; }
+    [[nodiscard]] bool isStarted() const { return _isStart; }
 
     /// 初始化负载器资源
     /// \tparam Service 需要启动的服务
     /// \return 是否初始化成功
     template<class Service>
     bool init() noexcept;
+
+    /// 初始化均衡器资源
+    /// \tparam Service 需要启动的服务
+    /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
+    /// \return 是否初始化成功
+    template<class Service>
+    bool init(std::function<Service *()> creator) noexcept;
 
     /// 启动当前负载器和服务
     void start() noexcept;
@@ -83,6 +90,11 @@ public:
 
 template<class Service>
 bool sese::service::UserBalanceLoader::init() noexcept {
+    return sese::service::UserBalanceLoader::init<Service>([]() -> Service * { return new Service; });
+}
+
+template<class Service>
+bool sese::service::UserBalanceLoader::init(std::function<Service *()> creator) noexcept {
     if (address == nullptr) return false;
 
     socket = new net::Socket(
@@ -94,28 +106,31 @@ bool sese::service::UserBalanceLoader::init() noexcept {
     }
 
     if (!socket->setNonblocking(true)) {
-        goto free_socket;
+        goto freeSocket;
     }
 
     if (0 != socket->bind(address)) {
-        goto free_socket;
+        goto freeSocket;
     }
 
     if (0 != socket->listen(32)) {
-        goto free_socket;
+        goto freeSocket;
     }
 
     masterEventLoop = new MasterEventLoop;
     masterEventLoop->setListenFd((int) socket->getRawSocket());
     if (!masterEventLoop->init()) {
-        goto free_master;
+        goto freeMaster;
     }
 
     for (size_t i = 0; i < threads; ++i) {
-        auto event = new Service;
+        auto event = creator();
+        if (event == nullptr) {
+            goto freeEvent;
+        }
         if (!event->init()) {
             delete event;
-            goto free_event;
+            goto freeEvent;
         } else {
             eventLoopVector.emplace_back(event);
         }
@@ -128,17 +143,17 @@ bool sese::service::UserBalanceLoader::init() noexcept {
 
     return true;
 
-free_event:
+freeEvent:
     for (decltype(auto) eventLoop: eventLoopVector) {
         delete eventLoop;
     }
     eventLoopVector.clear();
 
-free_master:
+freeMaster:
     delete masterEventLoop;
     masterEventLoop = nullptr;
 
-free_socket:
+freeSocket:
     socket->close();
     delete socket;
     socket = nullptr;

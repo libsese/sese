@@ -79,9 +79,8 @@ void sese::service::TimerableService::freeTimeoutEvent(sese::service::TimeoutEve
     }
 }
 
-
 void sese::service::TimerableService::dispatch(uint32_t timeout) {
-    auto now = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+    auto now = (uint64_t) std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count();
     auto index = now - startTimestamp;
     auto &table = timeoutTable[index];
 

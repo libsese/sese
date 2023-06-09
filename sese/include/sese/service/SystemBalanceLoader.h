@@ -10,6 +10,8 @@
 #include "sese/net/ReusableSocket.h"
 #include "sese/thread/Thread.h"
 
+#include <functional>
+
 namespace sese::service {
     class SystemBalanceLoader;
 }
@@ -39,6 +41,13 @@ public:
     template<class Service>
     bool init() noexcept;
 
+    /// 初始化均衡器资源
+    /// \tparam Service 需要启动的服务
+    /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
+    /// \return 是否初始化成功
+    template<class Service>
+    bool init(std::function<Service *()> creator) noexcept;
+
     /// 启动当前负载器和服务
     void start() noexcept;
 
@@ -58,30 +67,38 @@ protected:
 
 template<class Service>
 bool sese::service::SystemBalanceLoader::init() noexcept {
+    return sese::service::SystemBalanceLoader::init<Service>([]() -> Service * { return new Service; });
+}
+
+template<class Service>
+bool sese::service::SystemBalanceLoader::init(std::function<Service *()> creator) noexcept {
     if (address == nullptr) return false;
 
     sese::net::ReusableSocket reusableSocket(address);
     for (size_t i = 0; i < threads; ++i) {
         auto subSocket = reusableSocket.makeRawSocket();
         if (subSocket == -1) {
-            goto free_socket;
+            goto freeSocket;
         }
         if (0 != sese::net::Socket::setNonblocking(subSocket)) {
-            goto free_socket;
+            goto freeSocket;
         }
         if (0 != sese::net::Socket::listen(subSocket, 32)) {
-            goto free_socket;
+            goto freeSocket;
         }
         socketVector.emplace_back(subSocket);
 
     }
 
     for (size_t i = 0; i < threads; ++i) {
-        auto event = new Service;
+        auto event = creator();
+        if (event == nullptr) {
+            goto freeEvent;
+        }
         event->setListenFd((int) socketVector[i]);
         if (!event->init()) {
             delete event;
-            goto free_event;
+            goto freeEvent;
         } else {
             eventLoopVector.emplace_back(event);
         }
@@ -89,13 +106,13 @@ bool sese::service::SystemBalanceLoader::init() noexcept {
 
     return true;
 
-free_event:
+freeEvent:
     for (decltype(auto) eventLoop: eventLoopVector) {
         delete eventLoop;
     }
     eventLoopVector.clear();
 
-free_socket:
+freeSocket:
     for (decltype(auto) subSocket: socketVector) {
         sese::net::Socket::close(subSocket);
     }

@@ -1,3 +1,8 @@
+/// \file BalanceLoader.h
+/// \author kaoru
+/// \data 2023年6月9日
+/// \brief 均衡加载器
+
 #pragma once
 
 #include "sese/Config.h"

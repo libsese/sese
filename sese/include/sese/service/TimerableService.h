@@ -1,3 +1,9 @@
+/// \file TimerableService.h
+/// \author kaoru
+/// \date 2023年6月9日
+/// \brief 可定时服务
+/// \version 0.1.0
+
 #pragma once
 
 #include "sese/event/Event.h"
