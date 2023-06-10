@@ -52,7 +52,7 @@ namespace sese::net::v2 {
 
     protected:
         bool initStatus = false;
-        bool exitStatus = false;
+        std::atomic_bool exitStatus{false};
         DWORD eventNum = 0;
         SOCKET socketSet[MaxEventSize]{};
         HANDLE hEventSet[MaxEventSize]{};
@@ -150,7 +150,7 @@ namespace sese::net::v2 {
 
     protected:
         bool initStatus = false;
-        bool exitStatus = false;
+        std::atomic_bool exitStatus{false};
         int epoll = -1;
         socket_t socket = -1;
         epoll_event eventSet[MaxEventSize]{};
@@ -243,7 +243,7 @@ namespace sese::net::v2 {
 
     protected:
         bool initStatus = false;
-        bool exitStatus = false;
+        std::atomic_bool exitStatus{false};
         int kqueue = -1;
         socket_t socket = -1;
         struct kevent eventSet[MaxEventSize] {};
