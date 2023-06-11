@@ -94,11 +94,11 @@ TEST(TestDriverInstance, TestQueryStmt) {
     );
     ASSERT_NE(nullptr, instance);
 
-    int64_t id = 1;
+    int32_t id = 1;
     auto stmt = instance->createStatement("select * from tb_insert where id = ?;");
     ASSERT_NE(nullptr, stmt);
 
-    ASSERT_EQ(true, stmt->setLong(1, id));
+    ASSERT_EQ(true, stmt->setInteger(1, id));
 
     auto results = stmt->executeQuery();
     ASSERT_NE(nullptr, results);

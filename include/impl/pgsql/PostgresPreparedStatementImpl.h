@@ -25,7 +25,8 @@ namespace sese::db::impl {
         std::string stmt;
         int count = 0;
         Oid *paramTypes;
-        char *paramValues;
+        const char **paramValues;
+        std::string *strings;
     };
 
 }// namespace sese::db::impl

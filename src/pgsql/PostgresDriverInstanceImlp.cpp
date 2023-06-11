@@ -37,7 +37,6 @@ PreparedStatement::Ptr impl::PostgresDriverInstanceImpl::createStatement(const c
         }
     }
     std::string str = stringBuilder.str();
-    str.erase(std::remove(str.begin(), str.end(), '\0'), str.end());
 
     return std::make_unique<impl::PostgresPreparedStatementImpl>(str, count, conn);
 }

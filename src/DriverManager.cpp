@@ -106,6 +106,7 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
             }
             if (PQstatus(conn) != CONNECTION_OK) {
                 PQfinish(conn);
+                return nullptr;
             }
             return std::make_unique<impl::PostgresDriverInstanceImpl>(conn);
         }
