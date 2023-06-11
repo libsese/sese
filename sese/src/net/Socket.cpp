@@ -32,11 +32,11 @@ void sese::net::Socket::close(socket_t socket) noexcept {
 #include <unistd.h>
 #include <fcntl.h>
 
-size_t sese::net::Socket::write(socket_t socket, const void *buffer, size_t len, int flags) noexcept {
+int64_t sese::net::Socket::write(socket_t socket, const void *buffer, size_t len, int flags) noexcept {
     return ::send(socket, buffer, len, flags);
 }
 
-size_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int flags) noexcept {
+int64_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int flags) noexcept {
     return ::recv(socket, buffer, len, flags);
 }
 
