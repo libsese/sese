@@ -94,13 +94,13 @@ int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept 
     PGresult *resPrepare = PQprepare(conn, stringStream.str().c_str(), stmt.c_str(), count, containerType);
     if (PQresultStatus(resPrepare) != PGRES_COMMAND_OK) {
         fprintf(stderr, "%s\n", PQerrorMessage(conn));
-        return 0;
+        return -1;
     }
 
     PGresult *resExec = PQexecPrepared(conn, stringStream.str().c_str(), count, paramValues, nullptr, nullptr, 0);
-    if (PQresultStatus(resExec) != PGRES_TUPLES_OK) {
+    if (PQresultStatus(resExec) != PGRES_COMMAND_OK) {
         fprintf(stderr, "%s\n", PQerrorMessage(conn));
-        return 0;
+        return -1;
     }
     return (int64_t) PQcmdTuples(resExec);
 }
