@@ -1,40 +1,38 @@
+/// \file FixedBuffer.h
+/// \brief 线程安全的固定大小缓存
+/// \author kaoru
+/// \version 0.1.0
+/// \date 2023年6月11日
+
 #pragma once
 
-#include <sese/util/InputStream.h>
-#include <sese/util/OutputStream.h>
-#include <sese/util/PeekableStream.h>
+#include "sese/util/AbstractFixedBuffer.h"
+
+#include <mutex>
 
 namespace sese {
 
-    class API FixedBuffer
-        : public InputStream,
-          public OutputStream,
-          public PeekableStream {
+    /// 线程安全的固定大小缓存
+    class API FixedBuffer final : public AbstractFixedBuffer {
     public:
         explicit FixedBuffer(size_t size) noexcept;
-        virtual ~FixedBuffer() noexcept;
-        // copy
-        FixedBuffer(const FixedBuffer &buffer) noexcept;
-        // move
-        FixedBuffer(FixedBuffer &&buffer) noexcept;
 
         int64_t read(void *buffer, size_t length) override;
+
         int64_t write(const void *buffer, size_t length) override;
+
         int64_t peek(void *buffer, size_t length) override;
-        void reset() noexcept;
 
-        [[nodiscard]] const char *data() const { return buffer; }
-        [[nodiscard]] size_t getSize() const noexcept { return size; }
-        [[nodiscard]] size_t getReadSize() const noexcept { return readSize; }
-        [[nodiscard]] size_t getWriteSize() const noexcept { return writeSize; }
-        [[nodiscard]] size_t getReadableSize() const noexcept { return writeSize - readSize; }
-        [[nodiscard]] size_t getWriteableSize() const noexcept { return size - writeSize; }
+        int64_t trunc(size_t length) override;
 
-    protected:
-        size_t size{};
-        size_t readSize{};
-        size_t writeSize{};
-        char *buffer{};
+        void reset() noexcept override;
+
+        size_t getReadableSize() noexcept;
+
+        [[nodiscard]] size_t getWriteableSize() noexcept;
+
+    private:
+        std::mutex mutex;
     };
 
 }// namespace sese

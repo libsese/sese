@@ -84,3 +84,11 @@ Socket::Socket(socket_t handle, Address::Ptr address) noexcept {
     this->handle = handle;
     this->address = std::move(address);
 }
+
+int64_t Socket::peek(void *buffer, size_t length) {
+    return ::recv(handle, (char *) buffer, (int) length, MSG_PEEK);
+}
+
+int64_t Socket::trunc(size_t length) {
+    return ::recv(handle, nullptr, (int) length, MSG_TRUNC);
+}

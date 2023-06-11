@@ -1,75 +1,39 @@
 #include "sese/util/FixedBuffer.h"
+#include "sese/thread/Locker.h"
 
-sese::FixedBuffer::FixedBuffer(size_t size) noexcept
-    : size(size),
-      buffer(new char[size]) {
+sese::FixedBuffer::FixedBuffer(size_t size) noexcept : AbstractFixedBuffer(size) {}
+
+int64_t sese::FixedBuffer::read(void *buffer, size_t length) {
+    Locker locker(mutex);
+    return AbstractFixedBuffer::read(buffer, length);
 }
 
-sese::FixedBuffer::~FixedBuffer() noexcept {
-    if (buffer) {
-        delete[] buffer;
-    }
+int64_t sese::FixedBuffer::write(const void *buffer, size_t length) {
+    Locker locker(mutex);
+    return AbstractFixedBuffer::write(buffer, length);
 }
 
-sese::FixedBuffer::FixedBuffer(const sese::FixedBuffer &buffer) noexcept {
-    size = buffer.size;
-    readSize = buffer.readSize;
-    writeSize = buffer.writeSize;
-    this->buffer = new char[size];
-    memcpy(this->buffer, buffer.buffer, size);
+int64_t sese::FixedBuffer::peek(void *buffer, size_t length) {
+    Locker locker(mutex);
+    return AbstractFixedBuffer::peek(buffer, length);
 }
 
-sese::FixedBuffer::FixedBuffer(sese::FixedBuffer &&buffer) noexcept {
-    this->size = buffer.size;
-    this->readSize = buffer.readSize;
-    this->writeSize = buffer.writeSize;
-    this->buffer = buffer.buffer;
-
-    buffer.size = 0;
-    buffer.readSize = 0;
-    buffer.writeSize = 0;
-    buffer.buffer = nullptr;
-}
-
-int64_t sese::FixedBuffer::read(void *buf, size_t length) {
-    if (writeSize - readSize >= length ) {
-        memcpy(buf, buffer + readSize, length);
-        readSize += length;
-        return (int64_t) length;
-    } else {
-        auto read = writeSize - readSize;
-        memcpy(buf, buffer + readSize, read);
-        readSize += read;
-        return (int64_t) read;
-    }
-}
-
-int64_t sese::FixedBuffer::write(const void *buf, size_t length) {
-    if (size - writeSize >= length) {
-        memcpy(buffer + writeSize, buf, length);
-        writeSize += length;
-        return (int64_t) length;
-    } else {
-        auto write = size - writeSize;
-        memcpy(buffer + writeSize, buf, write);
-        writeSize += write;
-        return (int64_t) write;
-    }
-}
-
-int64_t sese::FixedBuffer::peek(void *buf, size_t length) {
-    if (writeSize - readSize >= length ) {
-        memcpy(buf, buffer + readSize, length);
-        // readSize += length;
-        return (int64_t) length;
-    } else {
-        auto read = writeSize - readSize;
-        memcpy(buf, buffer + readSize, read);
-        // readSize += read;
-        return (int64_t) read;
-    }
+int64_t sese::FixedBuffer::trunc(size_t length) {
+    Locker locker(mutex);
+    return AbstractFixedBuffer::trunc(length);
 }
 
 void sese::FixedBuffer::reset() noexcept {
-    readSize = writeSize = 0;
+    Locker locker(mutex);
+    AbstractFixedBuffer::reset();
+}
+
+size_t sese::FixedBuffer::getReadableSize() noexcept {
+    Locker locker(mutex);
+    return AbstractFixedBuffer::getReadableSize();
+}
+
+size_t sese::FixedBuffer::getWriteableSize() noexcept {
+    Locker locker(mutex);
+    return AbstractFixedBuffer::getWriteableSize();
 }

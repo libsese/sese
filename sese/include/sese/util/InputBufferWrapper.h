@@ -21,6 +21,8 @@ namespace sese {
 
         int64_t peek(void *buffer, size_t length) override;
 
+        int64_t trunc(size_t length) override;
+
         void reset() noexcept;
 
         [[nodiscard]] const char *getBuffer() const;

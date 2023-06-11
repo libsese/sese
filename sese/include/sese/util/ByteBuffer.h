@@ -17,7 +17,7 @@ namespace sese {
     /**
      * @brief 线程安全的字节缓冲类
      */
-    class API ByteBuffer : public AbstractByteBuffer {
+    class API ByteBuffer final : public AbstractByteBuffer {
     public:
         using Ptr = std::unique_ptr<ByteBuffer>;
 
@@ -29,6 +29,7 @@ namespace sese {
         int64_t read(void *buffer, size_t len) override;
         int64_t write(const void *buffer, size_t len) override;
         int64_t peek(void *buffer, size_t len) override;
+        int64_t trunc(size_t needRead) override;
         void close() override;
         [[nodiscard]] size_t getCurrentWritePos();
         [[nodiscard]] size_t getCurrentReadPos();
@@ -36,4 +37,4 @@ namespace sese {
     private:
         std::mutex mutex;
     };
-}// namespace sese
+} // namespace sese

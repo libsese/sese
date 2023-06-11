@@ -203,4 +203,36 @@ namespace sese {
         return actualRead;
     }
 
+    int64_t AbstractByteBuffer::trunc(size_t needRead) {
+        int64_t actualRead = 0;
+        while (true) {
+            // 当前单元能提供的剩余读取量
+            size_t currentReadNodeRemaining = currentReadNode->length - currentReadPos;
+            // 当前单元能满足读取需求
+            if (needRead <= currentReadNodeRemaining) {
+                // memcpy((char *) buffer + actualRead, (char *) currentReadNode->buffer + currentReadPos, length);
+                actualRead += (int64_t) needRead;
+                currentReadPos += needRead;
+                break;
+            }
+            // 当前单元不能满足读取需求
+            else {
+                // memcpy((char *) buffer + actualRead, (char *) currentReadNode->buffer + currentReadPos, currentReadNodeRemaining);
+                actualRead += (int64_t) currentReadNodeRemaining;
+                needRead -= currentReadNodeRemaining;
+                currentReadPos += currentReadNodeRemaining;
+                if (currentReadNode == currentWriteNode) {
+                    // 已经没有剩余节点可供读取
+                    break;
+                } else {
+                    // 切换下一个节点继续读取
+                    currentReadNode = currentReadNode->next;
+                    currentReadPos = 0;
+                    continue;
+                }
+            }
+        }
+        return actualRead;
+    }
+
 }// namespace sese

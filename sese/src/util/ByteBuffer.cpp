@@ -53,3 +53,8 @@ size_t sese::ByteBuffer::getCurrentWritePos() {
     Locker locker(mutex);
     return AbstractByteBuffer::getCurrentWritePos();
 }
+
+int64_t sese::ByteBuffer::trunc(size_t needRead) {
+    Locker locker(mutex);
+    return AbstractByteBuffer::trunc(needRead);
+}

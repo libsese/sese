@@ -76,6 +76,7 @@ namespace sese {
         int64_t write(const void *buffer, size_t len) override;
 
         int64_t peek(void *buffer, size_t len) override;
+        int64_t trunc(size_t needRead) override;
 
         /**
          * @deprecated close 方法在此处是无用的

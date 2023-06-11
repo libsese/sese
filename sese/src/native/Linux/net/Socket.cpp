@@ -1,4 +1,5 @@
 #include "sese/net/Socket.h"
+#include <sys/socket.h>
 #include <unistd.h>
 #include <fcntl.h>
 
@@ -8,7 +9,7 @@ Socket::Socket(Family family, Type type, int32_t protocol) noexcept {
     handle = ::socket((int32_t) family, (int32_t) type, protocol);
 }
 
-Socket::~Socket() noexcept {
+Socket::~Socket() noexcept { // NOLINT
 }
 
 int32_t Socket::bind(Address::Ptr addr) noexcept {
@@ -29,15 +30,15 @@ Socket::Ptr Socket::accept() const {
     if (address->getRawAddress()->sa_family == AF_INET) {
         sockaddr addr{0};
         socklen_t addrLen = sizeof(addr);
-        auto clientHandle = ::accept(handle,(sockaddr *)&addr, &addrLen);
-        auto pAddr = Address::create((sockaddr *)&addr, addrLen);
+        auto clientHandle = ::accept(handle, (sockaddr *) &addr, &addrLen);
+        auto pAddr = Address::create((sockaddr *) &addr, addrLen);
         auto pClientSocket = new Socket(clientHandle, pAddr);
         return std::shared_ptr<Socket>(pClientSocket);
     } else {
         sockaddr_in6 addr{0};
         socklen_t addrLen = sizeof(addr);
-        auto clientHandle = ::accept(handle,(sockaddr *)&addr, &addrLen);
-        auto pAddr = Address::create((sockaddr *)&addr, addrLen);
+        auto clientHandle = ::accept(handle, (sockaddr *) &addr, &addrLen);
+        auto pAddr = Address::create((sockaddr *) &addr, addrLen);
         auto pClientSocket = new Socket(clientHandle, pAddr);
         return std::shared_ptr<Socket>(pClientSocket);
     }
@@ -49,7 +50,7 @@ int32_t Socket::shutdown(ShutdownMode mode) const {
 
 bool Socket::setNonblocking(bool enable) const noexcept {
     int32_t opt = fcntl(handle, F_GETFL);
-    if(opt == -1) return false;
+    if (opt == -1) return false;
     return fcntl(handle, F_SETFL, opt | O_NONBLOCK) == 0;
 }
 
@@ -77,4 +78,12 @@ void Socket::close() {
 Socket::Socket(socket_t handle, Address::Ptr address) noexcept {
     this->handle = handle;
     this->address = std::move(address);
+}
+
+int64_t Socket::peek(void *buffer, size_t length) {
+    return ::recv(handle, buffer, length, MSG_PEEK);
+}
+
+int64_t Socket::trunc(size_t length) {
+    return ::recv(handle, nullptr, length, MSG_TRUNC);
 }

@@ -13,7 +13,7 @@ namespace sese {
     /**
      * @brief 线程不安全的字节缓冲类
      */
-    class API ByteBuilder : public AbstractByteBuffer {
+    class API ByteBuilder final : public AbstractByteBuffer {
     public:
         using Ptr = std::unique_ptr<ByteBuilder>;
 

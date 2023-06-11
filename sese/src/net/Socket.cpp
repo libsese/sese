@@ -10,11 +10,11 @@ int sese::net::Socket::listen(socket_t socket, int backlog) noexcept {
 
 #ifdef SESE_PLATFORM_WINDOWS
 
-size_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int flags) noexcept {
+int64_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int flags) noexcept {
     return ::recv(socket, (char *) buffer, (int) len, flags);
 }
 
-size_t sese::net::Socket::write(socket_t socket, const void *buffer, size_t len, int flags) noexcept {
+int64_t sese::net::Socket::write(socket_t socket, const void *buffer, size_t len, int flags) noexcept {
     return ::send(socket, (const char *) buffer, (int)len, flags);
 }
 

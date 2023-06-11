@@ -4,11 +4,13 @@
  * @brief Native Socket 类
  * @date 2022年4月9日
  */
+
 #pragma once
 
 #include "sese/net/IPv6Address.h"
 #include "sese/Config.h"
 #include "sese/util/Stream.h"
+#include "sese/util/PeekableStream.h"
 #include "sese/util/Initializer.h"
 
 #ifdef _WIN32
@@ -30,7 +32,7 @@ namespace sese::net {
     /**
      * @brief Native Socket 类
      */
-    class API Socket : public Stream {
+    class API Socket : public Stream, public PeekableStream {
     public:
         using Ptr = std::shared_ptr<Socket>;
 
@@ -99,6 +101,12 @@ namespace sese::net {
          * @return 实际接收字节数
          */
         int64_t recv(void *buffer, size_t length, const IPAddress::Ptr &from, int32_t flags) const;
+
+    public:
+        int64_t peek(void *buffer, size_t length) override;
+
+        int64_t trunc(size_t length) override;
+
     public:
 #define W(func)          \
     value = func(value); \
@@ -133,9 +141,9 @@ namespace sese::net {
     public:
         static socket_t socket(int family, int type, int protocol) noexcept;
 
-        static size_t write(socket_t socket, const void *buffer, size_t len, int flags) noexcept;
+        static int64_t write(socket_t socket, const void *buffer, size_t len, int flags) noexcept;
 
-        static size_t read(socket_t socket, void *buffer, size_t len, int flags) noexcept;
+        static int64_t read(socket_t socket, void *buffer, size_t len, int flags) noexcept;
 
         static int listen(socket_t socket, int backlog) noexcept;
 

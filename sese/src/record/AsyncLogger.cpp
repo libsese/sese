@@ -7,8 +7,8 @@ using namespace sese::record;
 using namespace std::chrono_literals;
 
 AsyncLogger::AsyncLogger() : Logger() {
-    currentBuffer = new FixedBuffer(RECORD_BUFFER_SIZE);
-    nextBuffer = new FixedBuffer(RECORD_BUFFER_SIZE);
+    currentBuffer = new FixedBuilder(RECORD_BUFFER_SIZE);
+    nextBuffer = new FixedBuilder(RECORD_BUFFER_SIZE);
 
     thread = std::make_unique<Thread>([this] { loop(); }, "AsyncLogger");
     isShutdown = false;
@@ -37,7 +37,7 @@ void AsyncLogger::log(const Event::Ptr &event) noexcept {
                 currentBuffer = nextBuffer;
                 nextBuffer = nullptr;
             } else {
-                currentBuffer = new FixedBuffer(RECORD_BUFFER_SIZE);
+                currentBuffer = new FixedBuilder(RECORD_BUFFER_SIZE);
             }
             currentBuffer->write(content.data(), content.length());
             currentBuffer->write("\n", 1);
@@ -47,9 +47,9 @@ void AsyncLogger::log(const Event::Ptr &event) noexcept {
 }
 
 void AsyncLogger::loop() noexcept {
-    auto buffer1 = new FixedBuffer(RECORD_BUFFER_SIZE);
-    auto buffer2 = new FixedBuffer(RECORD_BUFFER_SIZE);
-    std::vector<FixedBuffer *> buffer2Write;
+    auto buffer1 = new FixedBuilder(RECORD_BUFFER_SIZE);
+    auto buffer2 = new FixedBuilder(RECORD_BUFFER_SIZE);
+    std::vector<FixedBuilder *> buffer2Write;
 
     while (true) {
         if (isShutdown) break;
@@ -70,7 +70,7 @@ void AsyncLogger::loop() noexcept {
 
         if (buffer2Write.size() > 25) {
             // buffer 过多
-            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuffer *buffer) {
+            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuilder *buffer) {
                 delete buffer;
             });
             buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());
@@ -85,20 +85,20 @@ void AsyncLogger::loop() noexcept {
         }
         if (buffer2Write.size() > 2) {
             // 移除过多的缓冲区，避免堆积过多
-            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuffer *buffer) {
+            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuilder *buffer) {
                 delete buffer;
             });
             buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());
             buffer2Write.resize(2);
         }
 
-        if (!buffer1) {
+        if (!buffer1) { // NOLINT
             buffer1 = buffer2Write.back();
             buffer2Write.pop_back();
             buffer1->reset();
         }
 
-        if (!buffer2) {
+        if (!buffer2) { // NOLINT
             buffer2 = buffer2Write.back();
             buffer2Write.pop_back();
             buffer2->reset();
