@@ -29,7 +29,7 @@ size_t impl::MariaResultSetImpl::getColumns() const noexcept {
 
 int32_t impl::MariaResultSetImpl::getInteger(size_t index) const noexcept {
     char *end;
-    return std::strtol(row[index], &end, 10);
+    return (int32_t) std::strtol(row[index], &end, 10);
 }
 
 int64_t impl::MariaResultSetImpl::getLong(size_t index) const noexcept {

@@ -4,7 +4,7 @@
 
 namespace sese::db::impl {
 
-    class SESE_DB_API SqlitePreparedStatementImpl : public PreparedStatement {
+    class SESE_DB_API SqlitePreparedStatementImpl final : public PreparedStatement {
     public:
         explicit SqlitePreparedStatementImpl(sqlite3_stmt *stmt) noexcept;
         ~SqlitePreparedStatementImpl() noexcept override;

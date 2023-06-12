@@ -1,23 +1,29 @@
 #include <maria/MariaPreparedStatementImpl.h>
 
-sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(MYSQL_STMT *stmt, size_t count) noexcept {
+sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(
+        MYSQL_STMT *stmt,
+        MYSQL_RES *meta,
+        size_t count) noexcept {
     this->stmt = stmt;
+    this->meta = meta;
     this->count = count;
     this->param = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * count);
-    memset(this->param, 0, sizeof(MYSQL_BIND) * count);  //char型初始化函数；将s中的前n个字节用ch替换并且返回s
+    memset(this->param, 0, sizeof(MYSQL_BIND) * count);
 }
 
 sese::db::impl::MariaPreparedStatementImpl::~MariaPreparedStatementImpl() noexcept {
     mysql_stmt_close(stmt);
     free(param);
+    if (meta) {
+        mysql_free_result(meta);
+    }
 }
-
 
 //为可能的数据类型分配内存
 bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept {
     *bind = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * res->field_count);
     memset(*bind, 0, sizeof(MYSQL_BIND) * res->field_count);
-    for (auto i = 0; i < res->field_count; i++) {
+    for (unsigned int i = 0; i < res->field_count; i++) {
         // 非定长数据
         void **p = &((*bind)[i].buffer);
         switch (res->fields[i].type) {
@@ -64,31 +70,33 @@ void sese::db::impl::MariaPreparedStatementImpl::freeBindStruct(MYSQL_BIND *bind
     for (auto i = 0; i < count; ++i) {
         if (bind[i].buffer != nullptr) free(bind[i].buffer);
     }
+    free(bind);
 }
 
 sese::db::ResultSet::Ptr sese::db::impl::MariaPreparedStatementImpl::executeQuery() noexcept {
+    if (!meta) return nullptr;
+
     if (mysql_stmt_bind_param(stmt, this->param)) {
         return nullptr;
     }
-    // 通过 res 信息构建 MYSQL_BIND
-    auto res = mysql_stmt_result_metadata(stmt);
     MYSQL_BIND *result;
-    //，释放内存
-    if(!mallocBindStruct(res, &result)) {
-        freeBindStruct(result, res->field_count);
-        return nullptr;
+    if (!mallocBindStruct(meta, &result)) {
+        goto freeResult;
     }
-    //
     if (mysql_stmt_bind_result(stmt, result)) {
-        return nullptr;
+        goto freeResult;
     }
     if (mysql_stmt_execute(stmt)) {
-        return nullptr;
+        goto freeResult;
     }
     if (mysql_stmt_store_result(stmt)) {
-        return nullptr;
+        goto freeResult;
     }
-    return std::make_unique<impl::MariaStmtResultSet>(stmt, result, res->field_count);
+    return std::make_unique<impl::MariaStmtResultSet>(stmt, result, meta->field_count);
+
+    freeResult:
+    freeBindStruct(result, meta->field_count);
+    return nullptr;
 }
 
 int64_t sese::db::impl::MariaPreparedStatementImpl::executeUpdate() noexcept {
@@ -134,7 +142,7 @@ bool sese::db::impl::MariaPreparedStatementImpl::setText(uint32_t index, const c
     if (index - 1 >= count) return false;
     this->param[index - 1].buffer_type = MYSQL_TYPE_VAR_STRING;
     this->param[index - 1].buffer = (void *) value;
-    this->param[index - 1].buffer_length = strlen(value);
+    this->param[index - 1].buffer_length = (unsigned long) strlen(value);
     return true;
 }
 

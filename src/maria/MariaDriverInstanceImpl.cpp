@@ -39,5 +39,8 @@ PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char
         if (sql[i] == '?') count++;
     }
 
-    return std::make_unique<impl::MariaPreparedStatementImpl>(stmt, count);
+    // 获取结果集元数据，对于非 DQL 而言这可能是 nullptr，不应作为错误处理
+    auto meta = mysql_stmt_result_metadata(stmt);
+
+    return std::make_unique<impl::MariaPreparedStatementImpl>(stmt, meta, count);
 }
