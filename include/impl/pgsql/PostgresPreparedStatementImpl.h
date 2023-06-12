@@ -2,6 +2,8 @@
 
 #include <sese/db/PreparedStatement.h>
 #include <pgsql/PostgresStmtResultSetImpl.h>
+#include <sstream>
+#include <random>
 
 namespace sese::db::impl {
 
@@ -27,6 +29,7 @@ namespace sese::db::impl {
         Oid *paramTypes;
         const char **paramValues;
         std::string *strings;
+        std::string stmtName;
     };
 
 }// namespace sese::db::impl

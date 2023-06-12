@@ -1,16 +1,20 @@
 #include <pgsql/PostgresPreparedStatementImpl.h>
 #include <catalog/pg_type_d.h>
 #include <sstream>
-#include <random>
+
 
 sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(const std::string &stmt, int count, PGconn *conn) noexcept {
     this->stmt = stmt;
     this->count = count;
     this->conn = conn;
+
     this->paramTypes = (Oid *) malloc(sizeof(Oid) * count);
     memset(this->paramTypes, 0, sizeof(Oid) * count);
     this->paramValues = (const char **) malloc(sizeof(const char *) * count);
     this->strings = new std::string[count];
+
+    std::random_device rand;
+    this->stmtName = "sese_stmt_" + std::to_string(rand());
 }
 
 sese::db::impl::PostgresPreparedStatementImpl::~PostgresPreparedStatementImpl() noexcept {
@@ -66,18 +70,14 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setNull(uint32_t index) noex
 
 sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQuery() noexcept {
     const Oid *containerType = paramTypes;
-    std::stringstream stringStream;
-    std::random_device rand;
-    stringStream << "sese_stmt_" << rand();
 
-
-    PGresult *resPrepare = PQprepare(conn, stringStream.str().c_str(), stmt.c_str(), count, containerType);
+    PGresult *resPrepare = PQprepare(conn, stmtName.c_str(), stmt.c_str(), count, containerType);
     if (PQresultStatus(resPrepare) != PGRES_COMMAND_OK) {
         fprintf(stderr, "%s\n", PQerrorMessage(conn));
         return nullptr;
     }
 
-    PGresult *resExec = PQexecPrepared(conn, stringStream.str().c_str(), count, paramValues, nullptr, nullptr, 0);
+    PGresult *resExec = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
     if (PQresultStatus(resExec) != PGRES_TUPLES_OK) {
         fprintf(stderr, "%s\n", PQerrorMessage(conn));
         return nullptr;
@@ -87,17 +87,14 @@ sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQ
 
 int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept {
     const Oid *containerType = paramTypes;
-    std::stringstream stringStream;
-    std::random_device rand;
-    stringStream << "sese_stmt_" << rand();
 
-    PGresult *resPrepare = PQprepare(conn, stringStream.str().c_str(), stmt.c_str(), count, containerType);
+    PGresult *resPrepare = PQprepare(conn, stmtName.c_str(), stmt.c_str(), count, containerType);
     if (PQresultStatus(resPrepare) != PGRES_COMMAND_OK) {
         fprintf(stderr, "%s\n", PQerrorMessage(conn));
         return -1;
     }
 
-    PGresult *resExec = PQexecPrepared(conn, stringStream.str().c_str(), count, paramValues, nullptr, nullptr, 0);
+    PGresult *resExec = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
     if (PQresultStatus(resExec) != PGRES_COMMAND_OK) {
         fprintf(stderr, "%s\n", PQerrorMessage(conn));
         return -1;
