@@ -4,6 +4,8 @@ using namespace sese::db;
 
 impl::PostgresResultSetImpl::PostgresResultSetImpl(PGresult *res) noexcept {
     this->res = res;
+    this->row = 0;
+    this->totalRow = PQntuples(res);
 }
 
 impl::PostgresResultSetImpl::~PostgresResultSetImpl() noexcept {
@@ -15,11 +17,14 @@ void impl::PostgresResultSetImpl::reset() noexcept {
 }
 
 bool impl::PostgresResultSetImpl::next() noexcept {
-    if (1 == PQgetisnull(res, row, 0)) {
+    if (totalRow <= 0) return false;
+
+    if (row + 1 <= totalRow) {
+        row += 1;
+        return true;
+    } else {
         return false;
     }
-    row = row + 1;
-    return true;
 }
 
 size_t impl::PostgresResultSetImpl::getColumns() const noexcept {
@@ -28,7 +33,7 @@ size_t impl::PostgresResultSetImpl::getColumns() const noexcept {
 
 int32_t impl::PostgresResultSetImpl::getInteger(size_t index) const noexcept {
     char *end;
-    return std::strtol(PQgetvalue(res, row - 1, (int) index), &end, 10);
+    return (int32_t) std::strtol(PQgetvalue(res, row - 1, (int) index), &end, 10);
 }
 
 int64_t impl::PostgresResultSetImpl::getLong(size_t index) const noexcept {

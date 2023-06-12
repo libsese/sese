@@ -1,5 +1,11 @@
 find_package(GTest CONFIG REQUIRED)
 
+if (WIN32)
+    add_compile_options(/utf-8)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    set(CMAKE_EXE_LINKER_FLAGS "-Wl,-copy-dt-needed-entries")
+endif ()
+
 # mariadb
 if (SESE_DB_USE_MARIADB)
     # 添加可执行文件

@@ -53,5 +53,13 @@ namespace sese::db {
         /// \param index 索引
         /// \return 是否设置成功
         virtual bool setNull(uint32_t index) noexcept = 0;
+
+        /// 获取实例对应驱动的错误码
+        /// \return 错误码
+        [[nodiscard]] virtual int getLastError() const noexcept = 0;
+
+        /// 获取实例对应驱动的错误信息，需要判空
+        /// \return 错误信息
+        [[nodiscard]] virtual const char *getLastErrorMessage() const noexcept = 0;
     };
 }// namespace sese::db

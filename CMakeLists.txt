@@ -9,6 +9,15 @@ option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
 option(SESE_DB_USE_SQLITE "add sqlite support" OFF)
 option(SESE_DB_USE_POSTGRES "add postgresql support" ON)
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    if (UNIX)
+        # for valgrind
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-4")
+        # for sanitizer
+        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=leak")
+    endif ()
+endif ()
+
 add_library(DB SHARED)
 
 if (${CMAKE_GENERATOR} MATCHES "Ninja")

@@ -2,7 +2,6 @@
 #include <catalog/pg_type_d.h>
 #include <sstream>
 
-
 sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(const std::string &stmt, int count, PGconn *conn) noexcept {
     this->stmt = stmt;
     this->count = count;
@@ -15,9 +14,15 @@ sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(con
 
     std::random_device rand;
     this->stmtName = "sese_stmt_" + std::to_string(rand());
+
+    this->result = nullptr;
 }
 
 sese::db::impl::PostgresPreparedStatementImpl::~PostgresPreparedStatementImpl() noexcept {
+    if (result) {
+        PQclear(result);
+        result = nullptr;
+    }
     free(paramTypes);
     free(paramValues);
     delete[] this->strings;
@@ -64,40 +69,101 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setText(uint32_t index, cons
 
 bool sese::db::impl::PostgresPreparedStatementImpl::setNull(uint32_t index) noexcept {
     if (index - 1 >= count) return false;
-    this->paramTypes[index - 1] = NULL;
+    this->paramTypes[index - 1] = 0;
     return true;
 }
 
 sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQuery() noexcept {
     const Oid *containerType = paramTypes;
 
-    PGresult *resPrepare = PQprepare(conn, stmtName.c_str(), stmt.c_str(), count, containerType);
-    if (PQresultStatus(resPrepare) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "%s\n", PQerrorMessage(conn));
+    if (result) {
+        PQclear(result);
+        result = nullptr;
+    }
+    result = PQprepare(conn, stmtName.c_str(), stmt.c_str(), count, containerType);
+    if (result == nullptr) {
+        error = (int) PQstatus(conn);
+        return nullptr;
+    }
+    auto status = PQresultStatus(result);
+    if (status != PGRES_COMMAND_OK) {
+        // fprintf(stderr, "%s\n", PQerrorMessage(conn));
+        error = (int) status;
         return nullptr;
     }
 
-    PGresult *resExec = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
-    if (PQresultStatus(resExec) != PGRES_TUPLES_OK) {
-        fprintf(stderr, "%s\n", PQerrorMessage(conn));
+    if (result) {
+        PQclear(result);
+        result = nullptr;
+    }
+    result = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
+    if (result == nullptr) {
+        error = (int) PQstatus(conn);
         return nullptr;
     }
-    return std::make_unique<impl::PostgresStmtResultSet>(resExec);
+    status = PQresultStatus(result);
+    if (status != PGRES_TUPLES_OK) {
+        // fprintf(stderr, "%s\n", PQerrorMessage(conn));
+        error = (int) status;
+        return nullptr;
+    }
+
+    auto rt = std::make_unique<impl::PostgresResultSetImpl>(result);
+    error = 0;
+    result = nullptr;
+    return rt;
 }
 
 int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept {
     const Oid *containerType = paramTypes;
 
-    PGresult *resPrepare = PQprepare(conn, stmtName.c_str(), stmt.c_str(), count, containerType);
-    if (PQresultStatus(resPrepare) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "%s\n", PQerrorMessage(conn));
+    if (result) {
+        PQclear(result);
+        result = nullptr;
+    }
+    result = PQprepare(conn, stmtName.c_str(), stmt.c_str(), count, containerType);
+    if (result == nullptr) {
+        error = (int) PQstatus(conn);
+        return -1;
+    }
+    auto status = PQresultStatus(result);
+    if (status != PGRES_COMMAND_OK) {
+        // fprintf(stderr, "%s\n", PQerrorMessage(conn));
+        error = (int) status;
         return -1;
     }
 
-    PGresult *resExec = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
-    if (PQresultStatus(resExec) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "%s\n", PQerrorMessage(conn));
+    if (result) {
+        PQclear(result);
+        result = nullptr;
+    }
+    result = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
+    if (result == nullptr) {
+        error = (int) PQstatus(conn);
         return -1;
     }
-    return (int64_t) PQcmdTuples(resExec);
+    status = PQresultStatus(result);
+    if (status != PGRES_COMMAND_OK) {
+        // fprintf(stderr, "%s\n", PQerrorMessage(conn));
+        error = (int) status;
+        return -1;
+    }
+
+    auto rt = (int64_t) PQcmdTuples(result);
+    PQclear(result);
+    result = nullptr;
+    error = 0;
+    return rt;
+}
+
+int sese::db::impl::PostgresPreparedStatementImpl::getLastError() const noexcept {
+    return error;
+}
+
+const char *sese::db::impl::PostgresPreparedStatementImpl::getLastErrorMessage() const noexcept {
+    if (result) {
+        return PQresultErrorMessage(result);
+    } else {
+        return PQerrorMessage(conn);
+    }
 }

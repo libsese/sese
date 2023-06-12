@@ -13,6 +13,7 @@ TEST(TestDriverInstance, TestQueryData) {
             "host=127.0.0.1;user=postgres;password=libsese;dbname=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
     auto results = instance->executeQuery("select * from tb_query;");
     ASSERT_NE(nullptr, results);
     while (results->next()) {
@@ -27,6 +28,7 @@ TEST(TestDriverInstance, TestUpdateData) {
             "host=127.0.0.1;user=postgres;password=libsese;dbname=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
 
     auto results = instance->executeQuery("select * from tb_update;");
     while (results->next()) {
@@ -49,6 +51,7 @@ TEST(TestDriverInstance, TestDeleteData) {
             "host=127.0.0.1;user=postgres;password=libsese;dbname=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
 
     auto results = instance->executeQuery("select * from tb_delete;");
     while (results->next()) {
@@ -71,6 +74,7 @@ TEST(TestDriverInstance, TestInsertData) {
             "host=127.0.0.1;user=postgres;password=libsese;dbname=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
 
     auto results = instance->executeQuery("select * from tb_insert;");
     while (results->next()) {
@@ -93,6 +97,7 @@ TEST(TestDriverInstance, TestQueryStmt) {
             "host=127.0.0.1;user=postgres;password=libsese;dbname=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
 
     int32_t id = 1;
     auto stmt = instance->createStatement("select * from tb_stmt_query where id = ?;");
@@ -115,6 +120,8 @@ TEST(TestDriverInstance, TestUpdateStmt) {
             "host=127.0.0.1;user=postgres;password=libsese;dbname=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
     auto results = instance->executeQuery("select * from tb_stmt_update;");
     ASSERT_NE(nullptr, results);
     while (results->next()) {
@@ -146,6 +153,8 @@ TEST(TestDriverInstance, TestDeleteStmt) {
             "host=127.0.0.1;user=postgres;password=libsese;dbname=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
     auto results = instance->executeQuery("select * from tb_stmt_delete;");
     ASSERT_NE(nullptr, results);
     while (results->next()) {
@@ -175,6 +184,8 @@ TEST(TestDriverInstance, TestInsertStmt) {
             "host=127.0.0.1;user=postgres;password=libsese;dbname=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
     auto results = instance->executeQuery("select * from tb_stmt_insert;");
     ASSERT_NE(nullptr, results);
     while (results->next()) {
