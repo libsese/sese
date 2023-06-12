@@ -15,3 +15,10 @@ services:
       - '/root/docker-entrypoint.sh'
     volumes:
       - './tmp:/tmp'
+  postgresql:
+    build:
+        context: ..
+        dockerfile: docker/postgresql.dockerfile
+    restart: on-failure
+    ports:
+      - '127.0.0.1:18080:5432'

@@ -39,9 +39,13 @@ std::string_view sese::db::impl::MariaStmtResultSet::getString(size_t index) con
 }
 
 double sese::db::impl::MariaStmtResultSet::getDouble(size_t index) const noexcept {
-    return 0;
+    double value;
+    value = *(double *)row[index].buffer;
+    return value;
 }
 
 float sese::db::impl::MariaStmtResultSet::getFloat(size_t index) const noexcept {
-    return 0;
+    float value;
+    value = *(float *)row[index].buffer;
+    return value;
 }

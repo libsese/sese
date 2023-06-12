@@ -10,7 +10,8 @@ namespace sese::db {
     enum class DatabaseType {
         MySql,
         Maria,
-        Sqlite
+        Sqlite,
+        Postgres
     };
 
     /// \brief 数据库驱动实例管理器

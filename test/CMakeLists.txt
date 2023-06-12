@@ -38,3 +38,21 @@ if (SESE_DB_USE_SQLITE)
 
     add_test(NAME TestSqliteInstance COMMAND $<TARGET_FILE:TestSqliteInstance>)
 endif ()
+
+# postgresql
+if (SESE_DB_USE_POSTGRES)
+
+    add_executable(TestPostgresInstance TestPostgresInstance.cpp)
+
+    target_sources(TestPostgresInstance PRIVATE ${CMAKE_CURRENT_LIST_DIR}/TestPostgresInstance.cpp)
+
+    target_link_libraries(TestPostgresInstance DB)
+
+    target_link_libraries(TestPostgresInstance GTest::gtest GTest::gtest_main)
+
+    if (WIN32)
+        target_compile_options(TestPostgresInstance PRIVATE /utf-8)
+    endif ()
+
+    add_test(NAME TestPostgresInstance COMMAND $<TARGET_FILE:TestPostgresInstance>)
+endif ()

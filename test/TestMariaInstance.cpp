@@ -60,7 +60,7 @@ TEST(TestDriverInstance, TestInsertData) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
-    auto count = instance->executeUpdate("insert into tb_insert (id, name) values(3, 'mike');");
+    auto count = instance->executeUpdate("insert into tb_insert (id, name) values (3, 'mike');");
     EXPECT_NE(-1, count) << "Insertion failure";
 
     auto result1 = instance->executeQuery("select * from tb_insert;");
