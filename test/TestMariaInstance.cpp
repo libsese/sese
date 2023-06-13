@@ -17,7 +17,7 @@ TEST(TestDriverInstance, TestQueryData) {
     ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_query where id = 1");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result id = %d name = %s\n", result->getInteger(0), result->getString(1).data());
     }
@@ -33,7 +33,7 @@ TEST(TestDriverInstance, TestModifyData) {
     ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_update where id = 1;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -42,7 +42,7 @@ TEST(TestDriverInstance, TestModifyData) {
     EXPECT_NE(-1, count) << "Update failure";
 
     auto result1 = instance->executeQuery("select * from tb_update where id = 1;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -58,7 +58,7 @@ TEST(TestDriverInstance, TestInsertData) {
     ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_insert;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -67,7 +67,7 @@ TEST(TestDriverInstance, TestInsertData) {
     EXPECT_NE(-1, count) << "Insertion failure";
 
     auto result1 = instance->executeQuery("select * from tb_insert;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -83,7 +83,7 @@ TEST(TestDriverInstance, TestDeleteData) {
     ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_delete;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -92,7 +92,7 @@ TEST(TestDriverInstance, TestDeleteData) {
     EXPECT_NE(-1, count) << "Deletion failure";
 
     auto result1 = instance->executeQuery("select * from tb_delete;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -114,7 +114,7 @@ TEST(TestCreateStmt, TestQueryStmt) {
     EXPECT_EQ(true, stmt->setLong(1, id)) << "Failed to fill in the Long value parameter";
 
     auto result = stmt->executeQuery();
-    EXPECT_NE(nullptr, result) << "Failed to use the query prepared statement";
+    ASSERT_NE(nullptr, result) << "Failed to use the query prepared statement";
     while (result->next()) {
         printf("result: id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -130,7 +130,7 @@ TEST(TestCreateStmt, TestUpdateStmt) {
     ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_update where id = 1;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -147,7 +147,7 @@ TEST(TestCreateStmt, TestUpdateStmt) {
     EXPECT_NE(-1, count) << "Failed to use the updated prepared statement";
 
     auto result1 = instance->executeQuery("select * from tb_stmt_update where id = 1;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -163,7 +163,7 @@ TEST(TestCreateStmt, TestdeleteStmt) {
     ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_delete;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -178,7 +178,7 @@ TEST(TestCreateStmt, TestdeleteStmt) {
     EXPECT_NE(-1, count) << "Failed to use the delete prepared statement";
 
     auto result1 = instance->executeQuery("select * from tb_stmt_delete;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -195,7 +195,7 @@ TEST(TestCreateStmt, TestinsertStmt) {
     ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_insert;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -212,7 +212,7 @@ TEST(TestCreateStmt, TestinsertStmt) {
     EXPECT_NE(-1, count) << "Failed to use the insert prepared statement";
 
     auto result1 = instance->executeQuery("select * from tb_stmt_insert;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }

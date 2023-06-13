@@ -62,6 +62,7 @@ TEST(TestDriverInstance, TestDeleteData) {
     ASSERT_NE(0, count);
 
     auto results1 = instance->executeQuery("select * from tb_delete;");
+    ASSERT_NE(nullptr, results1);
     while (results1->next()) {
         printf("id = %d, name = %s\n", (int) results1->getInteger(0), results1->getString(1).data());
     }
@@ -77,6 +78,7 @@ TEST(TestDriverInstance, TestInsertData) {
     ASSERT_EQ(instance->getLastError(), 0);
 
     auto results = instance->executeQuery("select * from tb_insert;");
+    ASSERT_NE(nullptr, results);
     while (results->next()) {
         printf("id = %d, name = %s\n", (int) results->getInteger(0), results->getString(1).data());
     }
@@ -85,6 +87,7 @@ TEST(TestDriverInstance, TestInsertData) {
     ASSERT_NE(0, count);
 
     auto results1 = instance->executeQuery("select * from tb_insert;");
+    ASSERT_NE(nullptr, results1);
     while (results1->next()) {
         printf("id = %d, name = %s\n", (int) results1->getInteger(0), results1->getString(1).data());
     }
