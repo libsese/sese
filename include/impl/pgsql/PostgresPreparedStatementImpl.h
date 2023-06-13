@@ -1,7 +1,7 @@
 #pragma once
 
 #include <sese/db/PreparedStatement.h>
-#include <pgsql/PostgresStmtResultSetImpl.h>
+#include <pgsql/PostgresResultSetImpl.h>
 #include <sstream>
 #include <random>
 
@@ -20,7 +20,10 @@ namespace sese::db::impl {
         bool setInteger(uint32_t index, int32_t &value) noexcept override;
         bool setLong(uint32_t index, int64_t &value) noexcept override;
         bool setText(uint32_t index, const char *value) noexcept override;
-        bool setNull(uint32_t index) noexcept override;     //设置空
+        bool setNull(uint32_t index) noexcept override;
+
+        [[nodiscard]] int getLastError() const noexcept override;
+        [[nodiscard]] const char *getLastErrorMessage() const noexcept override;
 
     protected:
         PGconn *conn;
@@ -30,6 +33,9 @@ namespace sese::db::impl {
         const char **paramValues;
         std::string *strings;
         std::string stmtName;
+
+        int error = 0;
+        PGresult *result;
     };
 
 }// namespace sese::db::impl

@@ -10,9 +10,10 @@ using sese::db::ResultSet;
 TEST(TestDriverInstance, TestQueryData) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_query where id = 1;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -22,9 +23,10 @@ TEST(TestDriverInstance, TestQueryData) {
 TEST(TestDriverInstance, TestUpdateData) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_update where id = 1;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -33,7 +35,7 @@ TEST(TestDriverInstance, TestUpdateData) {
     EXPECT_NE(-1, count) << "Update failure";
 
     auto result1 = instance->executeQuery("select * from tb_update where id = 1;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1 id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -43,9 +45,10 @@ TEST(TestDriverInstance, TestUpdateData) {
 TEST(TestDriverInstance, TestDeleteData) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_delete;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -54,7 +57,7 @@ TEST(TestDriverInstance, TestDeleteData) {
     EXPECT_NE(-1, count) << "Delete failure";
 
     auto result1 = instance->executeQuery("select * from tb_delete;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1 id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -64,9 +67,10 @@ TEST(TestDriverInstance, TestDeleteData) {
 TEST(TestDriverInstance, TestInsertData) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_delete;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -75,7 +79,7 @@ TEST(TestDriverInstance, TestInsertData) {
     EXPECT_NE(-1, count) << "Insertion failure";
 
     auto result1 = instance->executeQuery("select * from tb_delete;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1 id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -85,9 +89,10 @@ TEST(TestDriverInstance, TestInsertData) {
 TEST(TestDriverInstance, TestUpdatestmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_update where id = 1;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("result id = %d, name = %s\n", (int) result->getInteger(0), result->getString(0).data());
     }
@@ -104,7 +109,7 @@ TEST(TestDriverInstance, TestUpdatestmt) {
     EXPECT_NE(-1, count) << "Failed to use the updated prepared statement";
 
     auto result1 = instance->executeQuery("select * from tb_stmt_update where id = 1;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("result1 id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(0).data());
     }
@@ -114,6 +119,7 @@ TEST(TestDriverInstance, TestUpdatestmt) {
 TEST(TestDriverInstance, TestSelectstmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     int64_t id = 1;
     auto stmt = instance->createStatement("select * from tb_stmt_query where id = ?;");
@@ -122,7 +128,7 @@ TEST(TestDriverInstance, TestSelectstmt) {
     EXPECT_EQ(true, stmt->setLong(1, id)) << "Failed to fill in the Long value parameter";
 
     auto result = stmt->executeQuery();
-    EXPECT_NE(nullptr, result) << "Failed to use the query prepared statement";
+    ASSERT_NE(nullptr, result) << "Failed to use the query prepared statement";
     while (result->next()) {
         printf("stmt result: id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -132,9 +138,10 @@ TEST(TestDriverInstance, TestSelectstmt) {
 TEST(TestDriverInstance, TestDeletestmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_delete;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("stmt result: id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -149,7 +156,7 @@ TEST(TestDriverInstance, TestDeletestmt) {
     EXPECT_NE(-1, count) << "Failed to use the delete prepared statement";
 
     auto result1 = instance->executeQuery("select * from tb_stmt_delete;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("stmt result1: id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
@@ -159,9 +166,10 @@ TEST(TestDriverInstance, TestDeletestmt) {
 TEST(TestDriverInstance, TestInsertstmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_insert;");
-    EXPECT_NE(nullptr, result) << "Query failure";
+    ASSERT_NE(nullptr, result) << "Query failure";
     while (result->next()) {
         printf("stmt result: id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -178,7 +186,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
     EXPECT_NE(-1, count) << "Failed to use the insert prepared statement";
 
     auto result1 = instance->executeQuery("select * from tb_stmt_insert;");
-    EXPECT_NE(nullptr, result1) << "Query failure";
+    ASSERT_NE(nullptr, result1) << "Query failure";
     while (result1->next()) {
         printf("stmt result1: id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
