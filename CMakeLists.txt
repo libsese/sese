@@ -7,7 +7,7 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 option(SESE_DB_BUILD_TEST "build unit test targets" ON)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
 option(SESE_DB_USE_SQLITE "add sqlite support" OFF)
-option(SESE_DB_USE_POSTGRES "add postgresql support" ON)
+option(SESE_DB_USE_POSTGRES "add postgresql support" OFF)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (UNIX)
@@ -70,10 +70,10 @@ if (SESE_DB_USE_POSTGRES)
     find_package(PostgreSQL REQUIRED)
     target_link_libraries(DB PRIVATE PostgreSQL::PostgreSQL)
     target_sources(DB PRIVATE
-            src/pgsql/PostgresDriverInstanceImlp.cpp
-            src/pgsql/PostgresResultSetImlp.cpp
+            src/pgsql/PostgresDriverInstanceImpl.cpp
+            src/pgsql/PostgresResultSetImpl.cpp
             src/pgsql/PostgresPreparedStatementImpl.cpp
-            src/pgsql/PostgresStmtResultSetImpl.cpp)
+            )
     target_compile_definitions(DB PRIVATE -DHAS_POSTGRES)
 endif ()
 

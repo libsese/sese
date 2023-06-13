@@ -11,7 +11,7 @@ impl::MariaDriverInstanceImpl::~MariaDriverInstanceImpl() noexcept {
     mysql_close(conn);
 }
 
-ResultSet::Ptr impl::MariaDriverInstanceImpl::executeQuery(const char *sql) const noexcept {
+ResultSet::Ptr impl::MariaDriverInstanceImpl::executeQuery(const char *sql) noexcept {
     if (0 != mysql_query(conn, sql)) {
         return nullptr;
     }
@@ -19,14 +19,14 @@ ResultSet::Ptr impl::MariaDriverInstanceImpl::executeQuery(const char *sql) cons
     return std::make_unique<MariaResultSetImpl>(result);
 }
 
-int64_t impl::MariaDriverInstanceImpl::executeUpdate(const char *sql) const noexcept {
+int64_t impl::MariaDriverInstanceImpl::executeUpdate(const char *sql) noexcept {
     if (0 != mysql_query(conn, sql)) {
         return -1;
     }
     return (int64_t) mysql_affected_rows(conn);
 }
 
-PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char *sql) const noexcept {
+PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char *sql) noexcept {
     MYSQL_STMT *stmt = mysql_stmt_init(conn);
     if (stmt == nullptr) return nullptr;
 
@@ -43,4 +43,12 @@ PreparedStatement::Ptr impl::MariaDriverInstanceImpl::createStatement(const char
     auto meta = mysql_stmt_result_metadata(stmt);
 
     return std::make_unique<impl::MariaPreparedStatementImpl>(stmt, meta, count);
+}
+
+int impl::MariaDriverInstanceImpl::getLastError() const noexcept {
+    return (int) mysql_errno(conn);
+}
+
+const char *impl::MariaDriverInstanceImpl::getLastErrorMessage() const noexcept {
+    return mysql_error(conn);
 }

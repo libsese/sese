@@ -2,7 +2,8 @@
 
 using namespace sese::db;
 
-impl::SqlitePreparedStatementImpl::SqlitePreparedStatementImpl(sqlite3_stmt *stmt) noexcept : stmt(stmt) {
+impl::SqlitePreparedStatementImpl::SqlitePreparedStatementImpl(sqlite3_stmt *stmt) noexcept
+        : stmt(stmt) {
 }
 
 impl::SqlitePreparedStatementImpl::~SqlitePreparedStatementImpl() noexcept {
@@ -47,6 +48,25 @@ bool impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, int32_t &valu
 bool impl::SqlitePreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
     return SQLITE_OK == sqlite3_bind_text(stmt, (int) index, value, -1, nullptr);
 }
+
 bool impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
     return SQLITE_OK == sqlite3_bind_null(stmt, (int) index);
+}
+
+int impl::SqlitePreparedStatementImpl::getLastError() const noexcept {
+    auto conn = sqlite3_db_handle(stmt);
+    if (conn) {
+        return sqlite3_errcode(conn);
+    } else {
+        return SQLITE_MISUSE;
+    }
+}
+
+const char *impl::SqlitePreparedStatementImpl::getLastErrorMessage() const noexcept {
+    auto conn = sqlite3_db_handle(stmt);
+    if (conn) {
+        return sqlite3_errmsg(conn);
+    } else {
+        return nullptr;
+    }
 }

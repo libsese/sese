@@ -151,3 +151,11 @@ bool sese::db::impl::MariaPreparedStatementImpl::setNull(uint32_t index) noexcep
     this->param[index - 1].buffer_type = MYSQL_TYPE_NULL;
     return true;
 }
+
+int sese::db::impl::MariaPreparedStatementImpl::getLastError() const noexcept {
+    return (int) mysql_stmt_errno(stmt);
+}
+
+const char *sese::db::impl::MariaPreparedStatementImpl::getLastErrorMessage() const noexcept {
+    return mysql_stmt_error(stmt);
+}

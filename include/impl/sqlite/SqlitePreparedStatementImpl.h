@@ -18,6 +18,9 @@ namespace sese::db::impl {
         bool setText(uint32_t index, const char *value) noexcept override;
         bool setNull(uint32_t index) noexcept override;
 
+        [[nodiscard]] int getLastError() const noexcept override;
+        [[nodiscard]] const char *getLastErrorMessage() const noexcept override;
+
     protected:
         sqlite3_stmt *stmt;
     };

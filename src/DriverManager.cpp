@@ -42,7 +42,7 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
                 return nullptr;
             }
 
-            st_mysql *status = mysql_real_connect(
+            mysql_real_connect(
                     conn,
                     hostIterator->second.c_str(),
                     userIterator->second.c_str(),
@@ -53,25 +53,13 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
                     0
             );
 
-            if (!status) {
-                // 连接数据库失败
-                mysql_close(conn);
-                return nullptr;
-            }
-
             return std::make_unique<impl::MariaDriverInstanceImpl>(conn);
         }
 #endif
 #ifdef HAS_SQLITE
         case DatabaseType::Sqlite: {
             sqlite3 *conn;
-            int rt = sqlite3_open_v2(connectionString, &conn, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nullptr);
-            if (rt != 0) {
-                if (conn) {
-                    sqlite3_close_v2(conn);
-                }
-                return nullptr;
-            }
+            sqlite3_open_v2(connectionString, &conn, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nullptr);
             return std::make_unique<impl::SqliteDriverInstanceImpl>(conn);
         }
 #endif

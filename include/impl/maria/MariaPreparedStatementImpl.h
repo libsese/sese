@@ -20,6 +20,9 @@ namespace sese::db::impl {
         bool setText(uint32_t index, const char *value) noexcept override;
         bool setNull(uint32_t index) noexcept override;
 
+        [[nodiscard]] int getLastError() const noexcept override;
+        [[nodiscard]] const char *getLastErrorMessage() const noexcept override;
+
         static bool mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept;
         static void freeBindStruct(MYSQL_BIND *bind, size_t count) noexcept;
 

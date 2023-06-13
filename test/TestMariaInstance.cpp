@@ -14,6 +14,7 @@ TEST(TestDriverInstance, TestQueryData) {
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_query where id = 1");
     EXPECT_NE(nullptr, result) << "Query failure";
@@ -29,6 +30,7 @@ TEST(TestDriverInstance, TestModifyData) {
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_update where id = 1;");
     EXPECT_NE(nullptr, result) << "Query failure";
@@ -53,6 +55,7 @@ TEST(TestDriverInstance, TestInsertData) {
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_insert;");
     EXPECT_NE(nullptr, result) << "Query failure";
@@ -77,6 +80,7 @@ TEST(TestDriverInstance, TestDeleteData) {
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_delete;");
     EXPECT_NE(nullptr, result) << "Query failure";
@@ -101,6 +105,7 @@ TEST(TestCreateStmt, TestQueryStmt) {
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     int64_t id = 1;
     auto stmt = instance->createStatement("select * from tb_stmt_query where id = ?;");
@@ -122,6 +127,7 @@ TEST(TestCreateStmt, TestUpdateStmt) {
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_update where id = 1;");
     EXPECT_NE(nullptr, result) << "Query failure";
@@ -154,6 +160,7 @@ TEST(TestCreateStmt, TestdeleteStmt) {
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_delete;");
     EXPECT_NE(nullptr, result) << "Query failure";
@@ -185,6 +192,7 @@ TEST(TestCreateStmt, TestinsertStmt) {
 
     );
     ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
 
     auto result = instance->executeQuery("select * from tb_stmt_insert;");
     EXPECT_NE(nullptr, result) << "Query failure";
