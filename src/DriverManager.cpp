@@ -69,8 +69,8 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
 
             auto hostIterator = config.find("host");
             auto userIterator = config.find("user");
-            auto pwdIterator = config.find("password");
-            auto dbIterator = config.find("dbname");
+            auto pwdIterator = config.find("pwd");
+            auto dbIterator = config.find("db");
             auto portIterator = config.find("port");
             if (hostIterator == config.end() ||
                 userIterator == config.end() ||
