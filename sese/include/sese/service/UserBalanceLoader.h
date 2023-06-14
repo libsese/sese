@@ -28,7 +28,15 @@ public:
 
     /// 设置服务启动地址
     /// \param addr IP Address
-    void setAddress(const net::IPAddress::Ptr &addr) { UserBalanceLoader::address = addr; }
+    void setAddress(const net::IPAddress::Ptr &addr) noexcept { UserBalanceLoader::address = addr; }
+
+    /// 设置主监听线程超时时间
+    /// \param to 超时时间，单位毫秒
+    void setAcceptTimeout(uint32_t to) noexcept { UserBalanceLoader::acceptTimeout = to; }
+
+    /// 设置从线程派遣超时时间
+    /// \param to 超时时间，单位毫秒
+    void setDispatchTimeout(uint32_t to) noexcept { UserBalanceLoader::dispatchTimeout = to; }
 
     /// 获取当前负载器状态
     /// \return 负载器状态
@@ -67,6 +75,8 @@ protected:
     std::atomic_bool _isStart{false};
     std::atomic_bool _isStop{false};
 
+    uint32_t acceptTimeout = 100;
+    uint32_t dispatchTimeout = 100;
     size_t threads{2};
     std::vector<sese::event::EventLoop *> eventLoopVector;
     std::vector<sese::Thread::Ptr> threadVector;

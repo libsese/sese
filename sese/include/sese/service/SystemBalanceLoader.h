@@ -29,7 +29,15 @@ public:
 
     /// 设置服务启动地址
     /// \param addr IP Address
-    void setAddress(const net::IPAddress::Ptr &addr) { SystemBalanceLoader::address = addr; }
+    void setAddress(const net::IPAddress::Ptr &addr) noexcept { SystemBalanceLoader::address = addr; }
+
+    /// 设置从线程派遣超时时间
+    /// \param to 超时时间，单位毫秒
+    void setAcceptTimeout(uint32_t to) noexcept { SystemBalanceLoader::timeout = to; }
+
+    /// 设置从线程派遣超时时间
+    /// \param to 超时时间，单位毫秒
+    void setDispatchTimeout(uint32_t to) noexcept { SystemBalanceLoader::timeout = to; }
 
     /// 获取当前负载器状态
     /// \return 负载器状态状态
@@ -58,6 +66,7 @@ protected:
     std::atomic_bool _isStart{false};
     std::atomic_bool _isStop{false};
 
+    uint32_t timeout = 100;
     size_t threads{2};
     std::vector<socket_t> socketVector;
     std::vector<event::EventLoop *> eventLoopVector;

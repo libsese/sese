@@ -129,6 +129,8 @@ TEST(TestService, TimerableServer) {
     sese::service::UserBalanceLoader service;
     service.setThreads(3);
     service.setAddress(addr);
+    service.setAcceptTimeout(500);
+    service.setDispatchTimeout(500);
     ASSERT_TRUE(service.init<MyTimerableService>());
 
     service.start();

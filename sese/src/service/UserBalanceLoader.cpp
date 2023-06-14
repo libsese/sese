@@ -114,7 +114,7 @@ void sese::service::UserBalanceLoader::stop() noexcept {
 
 void sese::service::UserBalanceLoader::master() noexcept {
     while (!_isStop) {
-        masterEventLoop->dispatch(100);
+        masterEventLoop->dispatch(acceptTimeout);
 
 #ifdef WIN32
         socket_t last = 0;
@@ -161,7 +161,7 @@ void sese::service::UserBalanceLoader::slave(sese::event::EventLoop *eventLoop, 
         } else {
             mutex->unlock();
         }
-        eventLoop->dispatch(100);
+        eventLoop->dispatch(dispatchTimeout);
     }
 }
 
