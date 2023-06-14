@@ -1,14 +1,15 @@
 #include "sese/thread/Thread.h"
+#include "sese/Config.h"
 
 #ifdef __linux__
 static pid_t getTid() noexcept {
-    return syscall(__NR_gettid);
+    return syscall(__NR_gettid); // NOLINT
 }
 #endif
 
 #ifdef _WIN32
 static tid_t getTid() noexcept {
-    return GetCurrentThreadId();
+    return GetCurrentThreadId(); // NOLINT
 }
 #endif
 
@@ -26,12 +27,35 @@ namespace sese {
 
     thread_local sese::Thread *currentThread = nullptr;
 
+    tid_t Thread::mainId = 0;
+
+    int32_t ThreadInitiateTask::init() noexcept {
+        Thread::setCurrentThreadAsMain();
+        return 0;
+    }
+
+    int32_t ThreadInitiateTask::destroy() noexcept {
+        return 0;
+    }
+
     tid_t Thread::getCurrentThreadId() noexcept {
         return currentThread ? currentThread->id : ::getTid();
     }
 
     const char *Thread::getCurrentThreadName() noexcept {
-        return currentThread ? currentThread->name.c_str() : THREAD_MAIN_NAME;
+        auto tid = ::getTid();
+        if (tid == Thread::mainId) return THREAD_MAIN_NAME;
+        return currentThread ? currentThread->name.c_str() : THREAD_DEFAULT_NAME;
+    }
+
+    void Thread::setCurrentThreadAsMain() noexcept {
+        if (Thread::mainId == 0) {
+            Thread::mainId = ::getTid();
+        }
+    }
+
+    tid_t Thread::getMainThreadId() noexcept {
+        return Thread::mainId;
     }
 
     sese::Thread *Thread::getCurrentThread() noexcept {

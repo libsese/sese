@@ -42,7 +42,7 @@ TEST(TestThread, ThreadPool) {
     sese::record::LogHelper log("ThreadPool");
 
     auto task = [&log = log](int value){
-        log.info("rt: %f", std::tgamma(value));
+        log.info("rt: %d", (uint64_t) std::tgamma(value) % 65535);
     };
 
     std::vector<std::function<void ()> > tasks(80);
@@ -56,4 +56,16 @@ TEST(TestThread, ThreadPool) {
 
     sese::sleep(2);
     pool.shutdown();
+}
+
+TEST(TestThread, MainThread) {
+    sese::record::LogHelper::i("Message from main thread.");
+    auto th1 = sese::Thread([]{sese::record::LogHelper::i("Message from MyThread.");}, "MyThread");
+    auto th2 = sese::Thread([]{sese::record::LogHelper::i("Message from nameless Thread.");});
+    auto th3 = std::thread([]{sese::record::LogHelper::i("Message from std::thread.");});
+    th1.start();
+    th2.start();
+    th1.join();
+    th2.join();
+    th3.join();
 }

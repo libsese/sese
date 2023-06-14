@@ -1,5 +1,6 @@
 #include "sese/record/SimpleFormatter.h"
 #include "sese/text/DateTimeFormatter.h"
+
 #include <sstream>
 
 #ifdef _WIN32

@@ -5,6 +5,7 @@
 #include "sese/record/AsyncLogger.h"
 #include "sese/record/ConsoleAppender.h"
 #include "sese/record/SimpleFormatter.h"
+#include "sese/thread/Thread.h"
 
 #include <clocale>
 

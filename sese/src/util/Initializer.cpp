@@ -4,6 +4,9 @@
 #include "sese/util/Initializer.h"
 #include "sese/convert/EncodingConverter.h"
 #include "sese/security/SecurityConfig.h"
+#include "sese/thread/Thread.h"
+
+#include <memory>
 
 using sese::EncodingConverterInitiateTask;
 using sese::Initializer;
@@ -22,6 +25,7 @@ const std::string &sese::InitiateTask::getName() const {
 }
 
 Initializer::Initializer() {
+    buildInLoadTask(std::make_shared<ThreadInitiateTask>());
     buildInLoadTask(std::make_shared<EncodingConverterInitiateTask>());
     buildInLoadTask(std::make_shared<record::LoggerInitiateTask>());
     buildInLoadTask(std::make_shared<TestInitiateTask>());
