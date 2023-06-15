@@ -7,6 +7,14 @@
 using namespace sese::json;
 
 ObjectData::Ptr JsonUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
+    return deserialize(inputStream.get(), level);
+}
+
+void JsonUtil::serialize(const ObjectData::Ptr &object, const OutputStream::Ptr &outputStream) noexcept {
+    serializeObject(object.get(), outputStream.get());
+}
+
+ObjectData::Ptr JsonUtil::deserialize(InputStream *inputStream, size_t level) noexcept {
     // 此处懒得处理不合规格的格式，直接 catch
     try {
         Tokens tokens;
@@ -26,13 +34,11 @@ ObjectData::Ptr JsonUtil::deserialize(const InputStream::Ptr &inputStream, size_
     }
 }
 
-void JsonUtil::serialize(const ObjectData::Ptr &object, const OutputStream::Ptr &outputStream) noexcept {
-    auto bufferedStream = std::make_shared<BufferedOutputStream>(outputStream);
-    serializeObject(object, bufferedStream);
-    bufferedStream->flush();
+void JsonUtil::serialize(ObjectData *object, OutputStream *outputStream) noexcept {
+    serializeObject(object, outputStream);
 }
 
-bool JsonUtil::tokenizer(const InputStream::Ptr &inputStream, Tokens &tokens) noexcept {
+bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
     char ch;
     text::StringBuilder builder;
 
@@ -225,7 +231,7 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
     return array;
 }
 
-void JsonUtil::serializeObject(const ObjectData::Ptr &object, const OutputStream::Ptr &outputStream) noexcept {
+void JsonUtil::serializeObject(ObjectData *object, OutputStream *outputStream) noexcept {
     bool isFirst = true;
     outputStream->write("{", 1);
     for (auto iterator = object->begin(); iterator != object->end(); iterator++) {
@@ -241,9 +247,9 @@ void JsonUtil::serializeObject(const ObjectData::Ptr &object, const OutputStream
         outputStream->write("\":", 2);
 
         if (data->getType() == DataType::Object) {
-            serializeObject(std::dynamic_pointer_cast<ObjectData>(data), outputStream);
+            serializeObject(dynamic_cast<ObjectData *>(data.get()), outputStream);
         } else if (data->getType() == DataType::Array) {
-            serializeArray(std::dynamic_pointer_cast<ArrayData>(data), outputStream);
+            serializeArray(dynamic_cast<ArrayData *>(data.get()), outputStream);
         } else {
             auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
             if (raw[0] == '\"') {
@@ -287,7 +293,7 @@ void JsonUtil::serializeObject(const ObjectData::Ptr &object, const OutputStream
     outputStream->write("}", 1);
 }
 
-void JsonUtil::serializeArray(const ArrayData::Ptr &array, const OutputStream::Ptr &outputStream) noexcept {
+void JsonUtil::serializeArray(ArrayData *array, OutputStream *outputStream) noexcept {
     bool isFirst = true;
     outputStream->write("[", 1);
     for (auto iterator = array->begin(); iterator != array->end(); iterator++) {
@@ -299,9 +305,9 @@ void JsonUtil::serializeArray(const ArrayData::Ptr &array, const OutputStream::P
 
         auto data = *iterator;
         if (data->getType() == DataType::Object) {
-            serializeObject(std::dynamic_pointer_cast<ObjectData>(data), outputStream);
+            serializeObject(dynamic_cast<ObjectData *>(data.get()), outputStream);
         } else if (data->getType() == DataType::Array) {
-            serializeArray(std::dynamic_pointer_cast<ArrayData>(data), outputStream);
+            serializeArray(dynamic_cast<ArrayData *>(data.get()), outputStream);
         } else {
             auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
             outputStream->write(raw.c_str(), raw.length());

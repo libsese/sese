@@ -1,6 +1,6 @@
 /**
  * \file Marco.h
- * \version 0.1
+ * \version 0.2
  * \author kaoru
  * \brief RPC 服务相关宏定义
  */
@@ -27,6 +27,8 @@
 #define SESE_RPC_VALUE_NO_EXIST_FUNC "not found function"
 #define SESE_RPC_VALUE_ILLEGAL_ARGS "illegal arguments"
 
+#define SESE_MARCO_END switch (0) case 0: default: break
+
 /// 服务端设置退出码
 /// \param code 退出码
 #define SetExitCode(code)                                                              \
@@ -52,7 +54,7 @@
 /// \param def 默认值
 #define GetBoolean4Server(value, name, def) \
     bool value;                             \
-    Get4Server(value, args, result, bool, name, def)
+    Get4Server(value, args, result, bool, name, def) SESE_MARCO_END
 
 /// 获取 int64_t 类型的字段（服务端用）
 /// \param value 变量名称
@@ -60,7 +62,7 @@
 /// \param def 默认值
 #define GetInteger4Server(value, name, def) \
     int64_t value;                          \
-    Get4Server(value, args, result, int64_t, name, def)
+    Get4Server(value, args, result, int64_t, name, def) SESE_MARCO_END
 
 /// 获取 double 类型的字段（服务端用）
 /// \param value 变量名称
@@ -68,7 +70,7 @@
 /// \param def 默认值
 #define GetDouble4Server(value, name, def) \
     double value;                          \
-    Get4Server(value, args, result, double, name, def)
+    Get4Server(value, args, result, double, name, def) SESE_MARCO_END
 
 /// 获取 std::string 类型的字段（服务端用）
 /// \param value 变量名称
@@ -76,7 +78,7 @@
 /// \param def 默认值
 #define GetString4Server(value, name, def) \
     std::string value;                     \
-    Get4Server(value, args, result, std::string, name, def)
+    Get4Server(value, args, result, std::string, name, def) SESE_MARCO_END
 
 #define Set(target, type, name, value)                         \
     {                                                          \
@@ -89,25 +91,25 @@
 /// \param target 父对象
 /// \param name 字段名称
 /// \param value 字段值
-#define SetBoolean(target, name, value) Set(target, bool, name, value)
+#define SetBoolean(target, name, value) Set(target, bool, name, value) SESE_MARCO_END
 
 /// 设置一个 bool 类型的字段
 /// \param target 父对象
 /// \param name 字段名称
 /// \param value 字段值
-#define SetInteger(target, name, value) Set(target, int64_t, name, value)
+#define SetInteger(target, name, value) Set(target, int64_t, name, value) SESE_MARCO_END
 
 /// 设置一个 bool 类型的字段
 /// \param target 父对象
 /// \param name 字段名称
 /// \param value 字段值
-#define SetDouble(target, name, value) Set(target, double, name, value)
+#define SetDouble(target, name, value) Set(target, double, name, value) SESE_MARCO_END
 
 /// 设置一个 bool 类型的字段
 /// \param target 父对象
 /// \param name 字段名称
 /// \param value 字段值
-#define SetString(target, name, value) Set(target, std::string, name, value)
+#define SetString(target, name, value) Set(target, std::string, name, value) SESE_MARCO_END
 
 #define Get(value, target, type, name, def)                         \
     {                                                               \
@@ -124,25 +126,37 @@
 /// \param target 父对象
 /// \param name 字段名称
 /// \param def 默认值
-#define GetBoolean(value, target, name, def) bool value; Get(value, target, bool, name, def)
+#define GetBoolean(value, target, name, def) \
+    bool value;                              \
+    Get(value, target, bool, name, def)      \
+    SESE_MARCO_END
 
 /// 获取 int64_t 类型的字段
 /// \param value 变量名称
 /// \param target 父对象
 /// \param name 字段名称
 /// \param def 默认值
-#define GetInteger(value, target, name, def) int64_t value; Get(value, target, int64_t, name, def)
+#define GetInteger(value, target, name, def) \
+    int64_t value;                           \
+    Get(value, target, int64_t, name, def)   \
+    SESE_MARCO_END
 
 /// 获取 double 类型的字段
 /// \param value 变量名称
 /// \param target 父对象
 /// \param name 字段名称
 /// \param def 默认值
-#define GetDouble(value, target, name, def) double value; Get(value, target, double, name, def)
+#define GetDouble(value, target, name, def) \
+    double value;                           \
+    Get(value, target, double, name, def)   \
+    SESE_MARCO_END
 
 /// 获取 std::string 类型的字段
 /// \param value 变量名称
 /// \param target 父对象
 /// \param name 字段名称
 /// \param def 默认值
-#define GetString(value, target, name, def) std::string value; Get(value, target, std::string, name, def)
+#define GetString(value, target, name, def)    \
+    std::string value;                         \
+    Get(value, target, std::string, name, def) \
+    SESE_MARCO_END

@@ -31,7 +31,7 @@ json::ObjectData::Ptr Client::call(const std::string &name, json::ObjectData::Pt
 
 #define RETURN(TYPE)           \
     case SESE_RPC_CODE_##TYPE: \
-        return SESE_RPC_VALUE_##TYPE;
+        return SESE_RPC_VALUE_##TYPE
 
 const char *sese::net::rpc::getErrorMessage(int64_t code) noexcept {
     switch (code) {
