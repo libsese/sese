@@ -1,0 +1,47 @@
+name: Bug Feedback
+description: 此模板用于报告不符合预期的问题
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        在描述你的问题之前请先尝试自己解决或者查找相似的 issue。
+  - type: checkboxes
+    id: checkbox
+    attributes:
+      label: check
+      options:
+        - label: 我已尝试自己去解决这个问题，但不在我的能力或者职责范围之内
+          required: true
+  - type: input
+    id: description
+    attributes:
+      label: 问题描述
+  - type: textarea
+    id: platform
+    attributes:
+      label: 平台
+      description: 请输入程序所运行的平台
+    validations:
+      required: true
+  - type: dropdown
+    id: driver-type
+    attributes:
+      label: 驱动类型 e.g. interface,sqlite,mariadb,mysql,postgres
+      description: 请选择需要报告的驱动类型
+      options:
+        - interface
+        - sqlite
+        - mariadb
+        - mysql
+        - postgres
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 程序版本
+      description: 请输入你使用的程序版本
+    validations:
+      required: true
