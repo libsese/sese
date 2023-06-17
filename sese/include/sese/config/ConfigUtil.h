@@ -2,10 +2,15 @@
  * @file ConfigUtil.h
  * @brief 传统配置文件解析工具
  * @author kaoru
- * @date 2022年4月17日
+ * @date 2023年6月17日
+ * @version 0.1.0
  */
+
 #pragma once
-#include "sese/Config.h"
+
+#include "sese/util/InputStream.h"
+#include "sese/util/OutputStream.h"
+
 #include <map>
 
 #ifdef _WIN32
@@ -17,9 +22,9 @@ namespace sese {
     /**
      * @brief 传统配置文件类
      */
-    class API ConfigFile {
+    class API ConfigObject {
     public:
-        using Ptr = std::shared_ptr<ConfigFile>;
+        using Ptr = std::shared_ptr<ConfigObject>;
 
         /// 节
         struct API Section {
@@ -40,7 +45,7 @@ namespace sese {
         };
 
     public:
-        ConfigFile();
+        ConfigObject();
         [[nodiscard]] Section::Ptr getDefaultSection() const noexcept { return this->defaultSection; }
         /**
          * 根据节名称获取节
@@ -66,13 +71,16 @@ namespace sese {
          * @param fileName 文件名称
          * @return 配置文件类指针，读取失败返回 nullptr
          */
-        static ConfigFile::Ptr readFrom(const std::string &fileName);
+        static ConfigObject::Ptr readFrom(sese::InputStream *input);
         /**
          * 写入配置文件
          * @param configFile 具体的配置
          * @param fileName 欲写入的配置文件名称
          * @return 是否写入成功
          */
-        static bool write2(const ConfigFile::Ptr &configFile, const std::string &fileName);
+        static bool write2(const ConfigObject::Ptr &configFile, sese::OutputStream *output);
+
+    private:
+        static std::string readLine(sese::InputStream *input);
     };
 }// namespace sese
