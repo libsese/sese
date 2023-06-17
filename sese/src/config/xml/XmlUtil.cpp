@@ -5,7 +5,15 @@
 
 namespace sese::xml {
 
-    void XmlUtil::tokenizer(const InputStream::Ptr &inputStream, sese::xml::XmlUtil::Tokens &tokens) noexcept {
+    Element::Ptr XmlUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
+        return deserialize(inputStream.get(), level);
+    }
+
+    void XmlUtil::serialize(const Element::Ptr &object, const OutputStream::Ptr &outputStream) noexcept {
+        serialize(object, outputStream.get());
+    }
+
+    void XmlUtil::tokenizer(InputStream *inputStream, sese::xml::XmlUtil::Tokens &tokens) noexcept {
         text::StringBuilder stringBuilder;
         char ch;
         int64_t len;
@@ -59,7 +67,7 @@ namespace sese::xml {
         }
     }
 
-    Element::Ptr XmlUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
+    Element::Ptr XmlUtil::deserialize(InputStream *inputStream, size_t level) noexcept {
         // 此处懒得处理不合规格的格式，直接 catch
         Tokens tokens;
         tokenizer(inputStream, tokens);
@@ -71,12 +79,12 @@ namespace sese::xml {
     }
 
     void XmlUtil::removeComment(sese::xml::XmlUtil::Tokens &tokens) noexcept {
-        tokens.pop(); // "!--"
-        while(tokens.front() != "--") {
+        tokens.pop();// "!--"
+        while (tokens.front() != "--") {
             tokens.pop();
         }
-        tokens.pop(); // "--"
-        tokens.pop(); // ">"
+        tokens.pop();// "--"
+        tokens.pop();// ">"
     }
 
     Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t level, bool isSubElement) noexcept {
@@ -159,7 +167,7 @@ namespace sese::xml {
         return element;
     }
 
-    void XmlUtil::serialize(const Element::Ptr &object, const sese::OutputStream::Ptr &stream) noexcept {
+    void XmlUtil::serialize(const Element::Ptr &object, sese::OutputStream *stream) noexcept {
         auto name = object->getName();
         auto attributes = object->getAttributes();
         auto value = object->getValue();
