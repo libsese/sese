@@ -1,0 +1,30 @@
+name: New Feature
+description: 此模板用于请求添加新的功能
+labels: ["feature"]
+assignees:
+  - DreamerQcl
+title: "[feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        在描述你的问题之前请先尝试自己解决或者查找相似的 issue。
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 确认清单
+      options:
+        - label: 我已尝试自己去解决这个问题，但不在我的能力或者职责范围之内。
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 请在这里描述你的需求
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: 此功能为项目或功能带来的影响（好的或者坏的）
+    validations:
+      required: true
