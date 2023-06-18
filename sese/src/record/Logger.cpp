@@ -20,6 +20,15 @@ namespace sese::record {
         this->appenderVector.emplace_back(appender);
     }
 
+    void Logger::removeAppender(const AbstractAppender::Ptr &appender) noexcept {
+        for(auto iterator = appenderVector.begin(); iterator < appenderVector.end(); iterator++) {
+            if (*iterator == appender) {
+                this->appenderVector.erase(iterator);
+                return;
+            }
+        }
+    }
+
     void Logger::log(const Event::Ptr &event) noexcept {
         std::string content = formatter->dump(event);
         if (builtInAppender->getLevel() <= event->getLevel()) {
@@ -56,6 +65,14 @@ namespace sese::record {
     }
 
     static Logger *logger = nullptr;
+
+    void Logger::addGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept {
+        logger->addAppender(appender); // NOLINT
+    }
+
+    void Logger::removeGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept {
+        logger->removeAppender(appender); // NOLINT
+    }
 
     Logger *getLogger() noexcept { return logger; }
 

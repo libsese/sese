@@ -9,23 +9,24 @@
 TEST(TestConfig, Config) {
     sese::record::LogHelper log("Config");
 
-    auto file = sese::ConfigUtil::readFrom(PROJECT_PATH "/test/TestConfigUtil/data.ini");
+    auto file = sese::FileStream::create(PROJECT_PATH "/test/TestConfigUtil/data.ini", TEXT_READ_EXISTED);
     ASSERT_TRUE(file != nullptr);
 
-    auto defaultSection = file->getDefaultSection();
+    auto config = sese::ConfigUtil::readFrom(file.get());
+    ASSERT_TRUE(config != nullptr);
+
+    auto defaultSection = config->getDefaultSection();
     ASSERT_TRUE(defaultSection != nullptr);
     auto defaultName = defaultSection->getValueByKey("name", "unknown");
     log.info("[default] name = %s", defaultName.c_str());
 
-    auto serverSection = file->getSectionByName("server");
+    auto serverSection = config->getSectionByName("server");
     ASSERT_TRUE(serverSection != nullptr);
     log.info("[server] address = %s", serverSection->getValueByKey("address", "192.168.1.1").c_str());
     log.info("[server] port = %s", serverSection->getValueByKey("port", "8080").c_str());
 
-    auto clientSection = file->getSectionByName("client");
+    auto clientSection = config->getSectionByName("client");
     ASSERT_TRUE(clientSection == nullptr);
-
-    EXPECT_TRUE(sese::ConfigUtil::write2(file, "data.ini"));
 }
 
 TEST(TestConfig, Json) {

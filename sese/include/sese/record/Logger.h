@@ -50,6 +50,12 @@ namespace sese::record {
         void addAppender(const AbstractAppender::Ptr &appender) noexcept;
 
         /**
+         * 移除日志输出源
+         * @param appender 日志输出源
+         */
+        void removeAppender(const AbstractAppender::Ptr &appender) noexcept;
+
+        /**
          * 输出日志
          * @param event 日志事件
          */
@@ -59,6 +65,15 @@ namespace sese::record {
         std::shared_ptr<AbstractFormatter> formatter;
         std::shared_ptr<ConsoleAppender> builtInAppender;
         std::vector<AbstractAppender::Ptr> appenderVector;
+
+    public:
+        /// 为全局日志器添加日志输出源
+        /// \param appender 日志输出源
+        static void addGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept;
+
+        /// 为全局日志器移除日志输出源
+        /// \param appender 日志输出源
+        static void removeGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept;
     };
 
     /**

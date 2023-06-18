@@ -22,7 +22,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         # for valgrind
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-4")
         # for sanitizer
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
     endif ()
 endif ()
 
