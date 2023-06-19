@@ -38,5 +38,26 @@ namespace sese::db {
         /// 获取实例对应驱动的错误信息，需要判空
         /// \return 错误信息
         [[nodiscard]] virtual const char *getLastErrorMessage() const noexcept = 0;
+        /// 设置事务自动提交
+        /// \param enable 设置自动提交
+        /// \retval false 设置失败
+        [[nodiscard]] virtual bool setAutoCommit(bool enable) noexcept = 0;
+
+        /// 查看自动提交是否打开
+        /// \retval false 关闭
+        [[nodiscard]] virtual bool getAutoCommit() const noexcept = 0;
+
+        /// 事务回滚
+        /// \retval false 回滚失败
+        [[nodiscard]] virtual bool rollback() noexcept = 0;
+
+        /// 事务提交
+        /// \retval false 提交失败
+        [[nodiscard]] virtual bool commit() noexcept = 0;
+
+        /// 获取自增后的id
+        /// \retval false 获取失败
+        [[nodiscard]] virtual bool getInsertId(int64_t &id) const noexcept = 0;
+
     };
 }// namespace sese::db

@@ -57,7 +57,7 @@ int64_t impl::PostgresDriverInstanceImpl::executeUpdate(const char *sql) noexcep
         return -1;
     }
     auto status = PQresultStatus(result);
-    if (status != PGRES_TUPLES_OK) {
+    if (status != PGRES_COMMAND_OK) {
         error = (int) status;
         return -1;
     } else {
