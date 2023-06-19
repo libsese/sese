@@ -26,24 +26,37 @@ target_include_directories(
 #         $<INSTALL_INTERFACE:include>
 # )
 
-target_sources(Core PRIVATE
+set(
+        RECORD_SRC
         src/record/AbstractAppender.cpp src/record/SimpleFormatter.cpp
         src/record/ConsoleAppender.cpp src/record/Logger.cpp
         src/record/LogHelper.cpp src/record/FileAppender.cpp
         src/record/BlockAppender.cpp src/record/AsyncLogger.cpp
+)
 
+set(
+        CONVERT_SRC
         src/convert/EncodingConverter.cpp src/convert/Base64Converter.cpp
         src/convert/PercentConverter.cpp src/convert/MD5Util.cpp
         src/convert/SHA256Util.cpp src/convert/SHA1Util.cpp
         src/convert/MessageDigest.cpp src/convert/Compressor.cpp
         src/convert/Decompressor.cpp src/convert/GZipFileInputStream.cpp
         src/convert/GZipFileOutputStream.cpp
+)
 
+set(
+        THREAD_SRC
         src/thread/Thread.cpp src/thread/ThreadPool.cpp
+)
 
+set(
+        SYSTEM_SRC
         src/system/Environment.cpp src/system/LibraryLoader.cpp
         src/system/NetworkUtil.cpp
+)
 
+set(
+        NET_SRC
         src/net/Address.cpp src/net/IPAddress.cpp
         src/net/IPv4Address.cpp src/net/IPv6Address.cpp
         src/net/AddressPool.cpp src/net/ReusableSocket.cpp
@@ -59,15 +72,25 @@ target_sources(Core PRIVATE
         src/net/rpc/V2RpcServer.cpp src/net/rpc/Server.cpp
         src/net/rpc/Client.cpp
         src/net/ws/WebSocketAuthenticator.cpp
+)
 
+set(
+        CONFIG_SRC
         src/config/ConfigUtil.cpp
         src/config/json/JsonTypes.cpp src/config/json/JsonUtil.cpp
         src/config/xml/XmlTypes.cpp src/config/xml/XmlUtil.cpp
         src/config/CSVReader.cpp src/config/CSVWriter.cpp
+        src/config/yaml/YamlTypes.cpp
+)
 
+set(
+        TEXT_SRC
         src/text/DateTimeFormatter.cpp src/text/TextReader.cpp
         src/text/AbstractStringBuffer.cpp
+)
 
+set(
+        UTIL_SRC
         src/util/ArgParser.cpp src/util/UuidBuilder.cpp
         src/util/AbstractByteBuffer.cpp src/util/BufferedStream.cpp
         src/util/BufferedOutputStream.cpp src/util/BufferedInputStream.cpp
@@ -79,15 +102,38 @@ target_sources(Core PRIVATE
         src/util/MemoryViewer.cpp src/util/ConsoleOutputStream.cpp
         src/util/OutputBufferWrapper.cpp src/util/InputBufferWrapper.cpp
         src/util/AbstractFixedBuffer.cpp src/util/FixedBuffer.cpp
+)
 
+set(
+        SECURITY_SRC
         src/security/SecurityConfig.cpp src/security/SSLContext.cpp
         src/security/SSLContextBuilder.cpp src/security/SecuritySocket.cpp
         src/security/MessageDigest.cpp
+)
 
+set(
+        PLUGIN_SRC
         src/plugin/Module.cpp
+)
 
+set(
+        SERVICE_SRC
         src/service/SystemBalanceLoader.cpp src/service/UserBalanceLoader.cpp
         src/service/TimerableService.cpp
+)
+
+target_sources(Core PRIVATE
+        ${RECORD_SRC}
+        ${CONVERT_SRC}
+        ${THREAD_SRC}
+        ${SYSTEM_SRC}
+        ${NET_SRC}
+        ${CONFIG_SRC}
+        ${TEXT_SRC}
+        ${UTIL_SRC}
+        ${SECURITY_SRC}
+        ${PLUGIN_SRC}
+        ${SERVICE_SRC}
         )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
