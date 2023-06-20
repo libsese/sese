@@ -64,7 +64,90 @@ namespace sese::yaml {
 
         explicit BasicData() noexcept;
 
+        template<class T>
+        std::enable_if_t<std::is_same_v<T, std::string>>
+        getDataAs(const T &def) const noexcept {
+            if (_isNull) {
+                return def;
+            } else {
+                return data;
+            }
+        }
+
+        template<class T>
+        std::enable_if_t<std::is_same_v<T, std::string_view>>
+        getDataAs(const T &def) const noexcept {
+            if (_isNull) {
+                return def;
+            } else {
+                return data;
+            }
+        }
+
+        template<class T>
+        std::enable_if_t<std::is_same_v<T, bool>>
+        getDataAs(T def) const noexcept {
+            if (_isNull) {
+                return def;
+            } else {
+                if (0 == strcasecmp(data.c_str(), "yes") || 0 == strcasecmp(data.c_str(), "true")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        template<class T>
+        std::enable_if_t<std::is_same_v<T, int64_t>>
+        getDataAs(T def) const noexcept;
+
+        template<class T>
+        std::enable_if_t<std::is_same_v<T, double>>
+        getDataAs(T def) const noexcept;
+
+        [[nodiscard]] int64_t getDataAsTimestamp(int64_t def) const noexcept;
+
+        [[nodiscard]] bool isNull() const noexcept { return _isNull; }
+
+        template<class T>
+        void
+        setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>> &value) noexcept {
+            this->data = value;
+        }
+
+        template<class T>
+        void
+        setDataAs(const std::enable_if_t<std::is_same_v<T, std::string_view>> &value) noexcept {
+            this->data = value;
+        }
+
+        template<class T>
+        void
+        setDataAs(std::enable_if_t<std::is_same_v<T, bool>> value) noexcept {
+            this->data = value ? "true" : "false";
+        }
+
+        template<class T>
+        void
+        setDataAs(std::enable_if_t<std::is_same_v<T, int64_t>> value) noexcept {
+            this->data = std::to_string(value);
+        }
+
+        template<class T>
+        void
+        setDataAs(std::enable_if_t<std::is_same_v<T, double>> value) noexcept {
+            this->data = std::to_string(value);
+        }
+
+        void setNull(bool null) noexcept {
+            this->_isNull = null;
+        }
+
+        void setDataAsTimestamp(int64_t value) noexcept;
+
     protected:
         std::string data;
+        bool _isNull = false;
     };
 }// namespace sese::yaml

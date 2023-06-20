@@ -13,9 +13,11 @@ BasicData::BasicData(std::string text) noexcept
       data(std::move(text)),
       _isNull(false) {}
 
-void BasicData::setNull() noexcept {
-    _isNull = true;
-    data = "null";
+void BasicData::setNull(bool null) noexcept {
+    _isNull = null;
+    if (null) {
+        data = "null";
+    }
 }
 
 void BasicData::setNotNull(std::string newData, bool isString) noexcept {
