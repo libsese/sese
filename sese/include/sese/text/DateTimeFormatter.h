@@ -50,6 +50,23 @@ namespace sese::text {
 
         static std::string format(const DateTime::Ptr &dateTime, const std::string &pattern = TIME_DEFAULT_PATTERN);
 
+        /// 将格林威治时间转换为时间戳
+        /// \param text 格林威治时间文本
+        /// \example 支持且仅支持以下格式
+        /// \example "Tue, 17 Oct 2023 15:41:22 GMT"
+        /// \example "Thu, 31-Dec-37 23:55:55 GMT"
+        /// \return 时间戳
         static uint64_t parseFromGreenwich(const std::string &text);
+
+        /// 将 ISO 8601 时间转换为时间戳
+        /// \param text ISO 8601 时间文本
+        /// \example 支持且仅支持以下格式
+        /// \example "2023-06-20"
+        /// \example "2023-06-20 16:46:55"
+        /// \example "2023-06-20T16:46:55Z"
+        /// \example "2023-06-20 16:46:55 +8"
+        /// \example "2023-06-20T16:46:55+00:00"
+        /// \return 时间戳
+        static uint64_t parseFromISO8601(const std::string &text);
     };
 }// namespace sese

@@ -283,8 +283,6 @@ inline int mon2number(const char *str) {
 #define timezone _timezone
 #endif
 
-// e.x. "Tue, 17 Oct 2023 15:41:22 GMT"
-// e.x. "Thu, 31-Dec-37 23:55:55 GMT"
 uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &text) {
     std::tm tm{};
     if (text[7] == '-') {
@@ -327,4 +325,116 @@ uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &te
         tm.tm_sec = (int) std::strtol(_s, &end, 10);
     }
     return std::mktime(&tm) - timezone;
+}
+
+uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text) {
+    std::tm tm{};
+    if (text.length() == 10) {
+        auto date = StringBuilder::split(text, "-");
+        if (date.size() == 3) {
+            tm.tm_year = (int) (std::stoi(date[0]) - 1900);
+            tm.tm_mon = (int) (std::stoi(date[1]) - 1);
+            tm.tm_mday = (int) std::stoi(date[2]);
+            return std::mktime(&tm) - timezone;
+        } else {
+            return UINT64_MAX;
+        }
+    } else if (text.length() == 19) {
+        auto dateTime = StringBuilder::split(text, " ");
+        if (dateTime.size() != 2) return UINT64_MAX;
+
+        auto date = StringBuilder::split(dateTime[0], "-");
+        if (date.size() == 3) {
+            tm.tm_year = (int) (std::stoi(date[0]) - 1900);
+            tm.tm_mon = (int) (std::stoi(date[1]) - 1);
+            tm.tm_mday = (int) (std::stoi(date[2]));
+        } else {
+            return UINT64_MAX;
+        }
+
+        auto time = StringBuilder::split(dateTime[1], ":");
+        if (time.size() == 3) {
+            tm.tm_hour = (int) std::stoi(time[0]);
+            tm.tm_min = (int) std::stoi(time[1]);
+            tm.tm_sec = (int) std::stoi(time[2]);
+            return std::mktime(&tm) - timezone;
+        } else {
+            return UINT64_MAX;
+        }
+    } else if (text.length() == 20) {
+        auto dateTime = StringBuilder::split(text, "T");
+        if (dateTime.size() != 2) return UINT64_MAX;
+
+        auto date = StringBuilder::split(dateTime[0], "-");
+        if (date.size() == 3) {
+            tm.tm_year = (int) (std::stoi(date[0]) - 1900);
+            tm.tm_mon = (int) (std::stoi(date[1]) - 1);
+            tm.tm_mday = (int) (std::stoi(date[2]));
+        } else {
+            return UINT64_MAX;
+        }
+
+        auto time = StringBuilder::split(dateTime[1], ":");
+        if (time.size() == 3) {
+            tm.tm_hour = (int) std::stoi(time[0]);
+            tm.tm_min = (int) std::stoi(time[1]);
+            tm.tm_sec = (int) std::stoi(time[2]);
+            return std::mktime(&tm) - timezone;
+        } else {
+            return UINT64_MAX;
+        }
+    } else if (text.length() == 22) {
+        auto dateTimeZone = StringBuilder::split(text, " ");
+        if (dateTimeZone.size() != 3) return UINT64_MAX;
+
+        auto date = StringBuilder::split(dateTimeZone[0], "-");
+        if (date.size() == 3) {
+            tm.tm_year = (int) (std::stoi(date[0]) - 1900);
+            tm.tm_mon = (int) (std::stoi(date[1]) - 1);
+            tm.tm_mday = (int) (std::stoi(date[2]));
+        } else {
+            return UINT64_MAX;
+        }
+
+        auto time = StringBuilder::split(dateTimeZone[1], ":");
+        if (time.size() == 3) {
+            tm.tm_hour = (int) std::stoi(time[0]);
+            tm.tm_min = (int) std::stoi(time[1]);
+            tm.tm_sec = (int) std::stoi(time[2]);
+            return std::mktime(&tm) - std::stoi(dateTimeZone[2]) * 60 * 60 - timezone;
+        } else {
+            return UINT64_MAX;
+        }
+    } else if (text.length() == 25) {
+        auto dateTimeZone = StringBuilder::split(text, "T");
+        if (dateTimeZone.size() != 2) return UINT64_MAX;
+
+        auto date = StringBuilder::split(dateTimeZone[0], "-");
+        if (date.size() == 3) {
+            tm.tm_year = (int) (std::stoi(date[0]) - 1900);
+            tm.tm_mon = (int) (std::stoi(date[1]) - 1);
+            tm.tm_mday = (int) (std::stoi(date[2]));
+        } else {
+            return UINT64_MAX;
+        }
+
+        auto time = StringBuilder::split(dateTimeZone[1], ":");
+        if (time.size() == 4) {
+            tm.tm_hour = (int) std::stoi(time[0]);
+            tm.tm_min = (int) std::stoi(time[1]);
+            tm.tm_sec = (int) std::stoi(time[2]);
+        } else {
+            return UINT64_MAX;
+        }
+
+        auto timeZone = StringBuilder::split(text, "+");
+        if (timeZone.size() != 2) return UINT64_MAX;
+        auto zone = StringBuilder::split(timeZone[1], ":");
+        if (zone.size() != 2) return UINT64_MAX;
+        auto hour = std::stoi(zone[0]);
+        auto min = std::stoi(zone[1]);
+        return std::mktime(&tm) - (((hour * 60) + min) * 60) - timezone;
+    } else {
+        return UINT64_MAX;
+    }
 }
