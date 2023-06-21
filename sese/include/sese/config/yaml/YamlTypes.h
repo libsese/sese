@@ -106,8 +106,6 @@ namespace sese::yaml {
         std::enable_if_t<std::is_same_v<T, double>>
         getDataAs(T def) const noexcept;
 
-        [[nodiscard]] int64_t getDataAsTimestamp(int64_t def) const noexcept;
-
         [[nodiscard]] bool isNull() const noexcept { return _isNull; }
 
         template<class T>
@@ -143,8 +141,6 @@ namespace sese::yaml {
         void setNull(bool null) noexcept {
             this->_isNull = null;
         }
-
-        void setDataAsTimestamp(int64_t value) noexcept;
 
     protected:
         std::string data;

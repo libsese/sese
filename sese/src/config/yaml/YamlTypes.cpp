@@ -28,9 +28,3 @@ sese::yaml::Data::Ptr sese::yaml::ObjectData::get(const std::string &key) noexce
         return res->second;
     }
 }
-
-int64_t sese::yaml::BasicData::getDataAsTimestamp(int64_t value) const noexcept {
-    return value;
-}
-
-void sese::yaml::BasicData::setDataAsTimestamp(int64_t value) noexcept {}
