@@ -216,8 +216,13 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
 endif ()
 
-set_target_properties(Core PROPERTIES OUTPUT_NAME "sese.core" PREFIX "")
-set_target_properties(Core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
+set_target_properties(Core
+        PROPERTIES
+        CXX_STANDARD 17
+        OUTPUT_NAME "sese.core"
+        PREFIX ""
+        WINDOWS_EXPORT_ALL_SYMBOLS ON
+)
 
 target_link_libraries(Core PRIVATE
         OpenSSL::Crypto

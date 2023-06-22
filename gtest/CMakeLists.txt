@@ -2,6 +2,8 @@ find_package(GTest CONFIG REQUIRED)
 find_package(sese-plugin CONFIG REQUIRED)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
+set(CMAKE_CXX_STANDARD 20)
+
 if (WIN32)
     add_compile_options(/utf-8)
 elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
