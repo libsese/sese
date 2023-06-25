@@ -80,7 +80,7 @@ set(
         src/config/json/JsonTypes.cpp src/config/json/JsonUtil.cpp
         src/config/xml/XmlTypes.cpp src/config/xml/XmlUtil.cpp
         src/config/CSVReader.cpp src/config/CSVWriter.cpp
-        src/config/yaml/YamlTypes.cpp
+        src/config/yaml/YamlTypes.cpp src/config/yaml/YamlUtil.cpp
 )
 
 set(
