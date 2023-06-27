@@ -26,7 +26,7 @@ namespace sese::yaml {
         const DataType type;
     };
 
-    class ObjectData final : public Data {
+    class API ObjectData final : public Data {
     public:
         using Ptr = std::shared_ptr<ObjectData>;
 
@@ -43,7 +43,7 @@ namespace sese::yaml {
         std::map<std::string, Data::Ptr> keyValueSet;
     };
 
-    class ArrayData final : public Data {
+    class API ArrayData final : public Data {
     public:
         using Ptr = std::shared_ptr<ArrayData>;
 
@@ -58,14 +58,14 @@ namespace sese::yaml {
         std::list<Data::Ptr> valueSet;
     };
 
-    class BasicData final : public Data {
+    class API BasicData final : public Data {
     public:
         using Ptr = std::shared_ptr<BasicData>;
 
         explicit BasicData() noexcept;
 
         template<class T>
-        std::enable_if_t<std::is_same_v<T, std::string>>
+        std::enable_if_t<std::is_same_v<T, std::string>, std::string>
         getDataAs(const T &def) const noexcept {
             if (_isNull) {
                 return def;
@@ -75,7 +75,7 @@ namespace sese::yaml {
         }
 
         template<class T>
-        std::enable_if_t<std::is_same_v<T, std::string_view>>
+        std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view>
         getDataAs(const T &def) const noexcept {
             if (_isNull) {
                 return def;
@@ -85,7 +85,7 @@ namespace sese::yaml {
         }
 
         template<class T>
-        std::enable_if_t<std::is_same_v<T, bool>>
+        std::enable_if_t<std::is_same_v<T, bool>, bool>
         getDataAs(T def) const noexcept {
             if (_isNull) {
                 return def;
@@ -99,42 +99,42 @@ namespace sese::yaml {
         }
 
         template<class T>
-        std::enable_if_t<std::is_same_v<T, int64_t>>
+        std::enable_if_t<std::is_same_v<T, int64_t>, int64_t>
         getDataAs(T def) const noexcept;
 
         template<class T>
-        std::enable_if_t<std::is_same_v<T, double>>
+        std::enable_if_t<std::is_same_v<T, double>, double>
         getDataAs(T def) const noexcept;
 
         [[nodiscard]] bool isNull() const noexcept { return _isNull; }
 
         template<class T>
         void
-        setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>> &value) noexcept {
+        setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &value) noexcept {
             this->data = value;
         }
 
         template<class T>
         void
-        setDataAs(const std::enable_if_t<std::is_same_v<T, std::string_view>> &value) noexcept {
+        setDataAs(const std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view> &value) noexcept {
             this->data = value;
         }
 
         template<class T>
         void
-        setDataAs(std::enable_if_t<std::is_same_v<T, bool>> value) noexcept {
+        setDataAs(std::enable_if_t<std::is_same_v<T, bool>, bool> value) noexcept {
             this->data = value ? "true" : "false";
         }
 
         template<class T>
         void
-        setDataAs(std::enable_if_t<std::is_same_v<T, int64_t>> value) noexcept {
+        setDataAs(std::enable_if_t<std::is_same_v<T, int64_t>, int64_t> value) noexcept {
             this->data = std::to_string(value);
         }
 
         template<class T>
         void
-        setDataAs(std::enable_if_t<std::is_same_v<T, double>> value) noexcept {
+        setDataAs(std::enable_if_t<std::is_same_v<T, double>, double> value) noexcept {
             this->data = std::to_string(value);
         }
 

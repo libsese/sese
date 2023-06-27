@@ -24,7 +24,8 @@ const char str1[]{
         "  sequence:\n"
         "    - element1\n"
         "    - element2\n"
-        "    - element3\n"
+        "    -\n"
+        "    - ~\n"
         "    - mapping1:\n"
         "      bool1: false\n"
         "      bool2: no\n"
@@ -55,4 +56,10 @@ TEST(TestYaml, Tokenizer_0) {
         }
         printf("]\n");
     }
+}
+
+TEST(TestYaml, Deserialize_0) {
+    auto input = sese::InputBufferWrapper(str1, sizeof(str1) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
 }

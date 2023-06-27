@@ -13,6 +13,10 @@ if (USE_ASYNC_LOGGER)
     target_compile_definitions(Core PRIVATE -DUSE_ASYNC_LOGGER)
 endif ()
 
+if (SESE_BUILD_TEST)
+    target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
+endif ()
+
 target_include_directories(
         Core
         PUBLIC
