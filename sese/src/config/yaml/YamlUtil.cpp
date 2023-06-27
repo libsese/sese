@@ -2,6 +2,10 @@
 
 #include <sstream>
 
+#ifdef WIN32
+#pragma warning(disable: 4996)
+#endif
+
 sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(sese::InputStream *input, size_t level) noexcept {
     TokensQueue tokensQueue;
     while (true) {

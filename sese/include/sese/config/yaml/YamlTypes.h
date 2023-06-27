@@ -5,6 +5,10 @@
 #include <map>
 #include <list>
 
+#ifdef WIN32
+#pragma warning(disable: 4996)
+#endif
+
 namespace sese::yaml {
 
     enum class DataType {
@@ -100,11 +104,25 @@ namespace sese::yaml {
 
         template<class T>
         std::enable_if_t<std::is_same_v<T, int64_t>, int64_t>
-        getDataAs(T def) const noexcept;
+        getDataAs(T def) const noexcept {
+            if (_isNull) {
+                return def;
+            } else {
+                char *end;
+                return std::strtol(data.c_str(), &end, 10);
+            }
+        }
 
         template<class T>
         std::enable_if_t<std::is_same_v<T, double>, double>
-        getDataAs(T def) const noexcept;
+        getDataAs(T def) const noexcept {
+            if (_isNull) {
+                return def;
+            } else {
+                char *end;
+                return std::strtod(data.c_str(), &end);
+            }
+        }
 
         [[nodiscard]] bool isNull() const noexcept { return _isNull; }
 

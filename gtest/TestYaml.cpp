@@ -62,4 +62,25 @@ TEST(TestYaml, Deserialize_0) {
     auto input = sese::InputBufferWrapper(str1, sizeof(str1) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
+    auto obj = std::dynamic_pointer_cast<sese::yaml::ObjectData>(object);
+
+    auto subObj = std::dynamic_pointer_cast<sese::yaml::ObjectData>(obj->get("sub"));
+    auto str5Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(subObj->get("str5"));
+    EXPECT_EQ(str5Obj->getDataAs<std::string>("undef"), "Hello str5");
+
+    auto rootObj = std::dynamic_pointer_cast<sese::yaml::ObjectData>(obj->get("root"));
+    auto mappingObj = std::dynamic_pointer_cast<sese::yaml::ObjectData>(rootObj->get("mapping"));
+
+    auto str2Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(mappingObj->get("str'2"));
+    EXPECT_EQ(str2Obj->getDataAs<std::string>("undef"), "Hello str2");
+
+    auto bool2Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(mappingObj->get("bool2"));
+    EXPECT_EQ(bool2Obj->getDataAs<bool>(false), true);
+
+    auto float2Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(mappingObj->get("float2"));
+    EXPECT_EQ(float2Obj->getDataAs<double>(0.0), 3.14e5);
+
+    auto arrayObj = std::dynamic_pointer_cast<sese::yaml::ArrayData>(rootObj->get("sequence"));
+    auto element1Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(*arrayObj->begin());
+    EXPECT_EQ(element1Obj->getDataAs<std::string>("undef"), "element1");
 }
