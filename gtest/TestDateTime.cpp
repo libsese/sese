@@ -33,10 +33,6 @@ TEST(TestDateTime, UnclearCompare) {
 TEST(TestDateTime, Formatter) {
     sese::record::LogHelper log("Formatter");
 
-    std::string time = "Tue, 17 Oct 2023 15:41:22 GMT";
-    auto stamp = sese::text::DateTimeFormatter::parseFromGreenwich(time);
-    EXPECT_TRUE(stamp == 1697557282);
-
     auto time1 = sese::DateTime::now();
     auto str1 = sese::text::DateTimeFormatter::format(time1, "%D%a%t%e ddd dddd UTCz yyyy-MM-dd HH:mm:ss.ff.ffff");
     EXPECT_TRUE(!str1.empty());
@@ -45,4 +41,38 @@ TEST(TestDateTime, Formatter) {
     auto str2 = sese::text::DateTimeFormatter::format(time2, TIME_GREENWICH_MEAN_PATTERN);
     EXPECT_TRUE(!str2.empty());
     log.info(str2.c_str());
+}
+
+TEST(TestDateTime, Parse) {
+    using sese::text::DateTimeFormatter;
+
+    EXPECT_EQ(
+            DateTimeFormatter::parseFromGreenwich("Tue, 17 Oct 2023 15:41:22 GMT"),
+            1697557282
+    );
+
+    EXPECT_EQ(
+            DateTimeFormatter::parseFromISO8601("2023-06-20"),
+            1687219200
+    );
+
+    EXPECT_EQ(
+            DateTimeFormatter::parseFromISO8601("2023-06-20 16:46:55"),
+            1687279615
+    );
+
+    EXPECT_EQ(
+            DateTimeFormatter::parseFromISO8601("2023-06-20T16:46:55Z"),
+            1687279615
+    );
+
+    EXPECT_EQ(
+            DateTimeFormatter::parseFromISO8601("2023-06-20 16:46:55 +8"),
+            1687250815
+    );
+
+    EXPECT_EQ(
+            DateTimeFormatter::parseFromISO8601("2023-06-20T16:46:55+00:00"),
+            1687279615
+    );
 }

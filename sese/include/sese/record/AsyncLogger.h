@@ -10,6 +10,7 @@
 #include <sese/thread/Thread.h>
 #include <sese/util/FixedBuilder.h>
 
+#include <atomic>
 #include <mutex>
 #include <condition_variable>
 

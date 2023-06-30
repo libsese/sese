@@ -67,7 +67,7 @@ public:
     /**
      * 设置值为 null
      */
-    void setNull() noexcept;
+    void setNull(bool null) noexcept;
     /**
      * 设置值为非 null
      * @param newData 新的数据

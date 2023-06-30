@@ -2,6 +2,7 @@
 #include <sese/record/ConsoleAppender.h>
 
 #include <chrono>
+#include <algorithm>
 
 using namespace sese::record;
 using namespace std::chrono_literals;

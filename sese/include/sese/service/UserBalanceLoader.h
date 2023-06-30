@@ -10,7 +10,9 @@
 #include "sese/net/Socket.h"
 #include "sese/thread/Thread.h"
 
+#include <atomic>
 #include <queue>
+#include <mutex>
 
 namespace sese::service {
     class UserBalanceLoader;
