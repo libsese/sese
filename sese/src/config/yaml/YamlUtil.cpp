@@ -1,9 +1,10 @@
 #include "sese/config/yaml/YamlUtil.h"
 
 #include <sstream>
+#include <array>
 
 #ifdef WIN32
-#pragma warning(disable: 4996)
+#pragma warning(disable : 4996)
 #endif
 
 sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(sese::InputStream *input, size_t level) noexcept {
@@ -26,6 +27,16 @@ sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(sese::InputStream *input
     } else {
         // 根元素是对象
         return createObject(tokensQueue, level);
+    }
+}
+
+void sese::yaml::YamlUtil::serialize(const Data::Ptr &data, sese::OutputStream *output) noexcept {
+    if (data->getType() == DataType::ObjectData) {
+        auto sub = dynamic_cast<ObjectData *>(data.get());
+        serializeObject(sub, output, 0);
+    } else if (data->getType() == DataType::ArrayData) {
+        auto sub = dynamic_cast<ArrayData *>(data.get());
+        serializeArray(sub, output, 0);
     }
 }
 
@@ -307,4 +318,84 @@ sese::yaml::YamlUtil::createArray(
         }
     }
     return result;
+}
+
+constexpr auto getSpaceArray = []() {
+    std::array<char, 1024> array{};
+    for (decltype(auto) item :array) {
+        item = ' ';
+    }
+    return array;
+};
+
+void sese::yaml::YamlUtil::writeSpace(size_t count, sese::OutputStream *output) noexcept {
+    auto buffer = getSpaceArray();
+    auto size = std::min<size_t>(1024, count);
+    output->write(buffer.data(), size);
+}
+
+void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, sese::OutputStream *output, size_t level) noexcept {
+    for (decltype(auto) item: *objectData) {
+        if (item.second->getType() == DataType::ObjectData) {
+            auto sub = dynamic_cast<ObjectData *>(item.second.get());
+            if (!sub->empty()) {
+                writeSpace(level * 2, output);
+                output->write(item.first.c_str(), item.first.length());
+                output->write(": \n", 3);
+                serializeObject(sub, output, level + 1);
+            }
+        } else if (item.second->getType() == DataType::ArrayData) {
+            auto sub = dynamic_cast<ArrayData *>(item.second.get());
+            if (!sub->empty()) {
+                writeSpace(level * 2, output);
+                output->write(item.first.c_str(), item.first.length());
+                output->write(": \n", 3);
+                serializeArray(sub, output, level + 1);
+            }
+        } else {
+            auto sub = dynamic_cast<BasicData *>(item.second.get());
+            auto data = sub->getDataAs<std::string>("");
+            writeSpace(level * 2, output);
+            output->write(item.first.c_str(), item.first.length());
+            output->write(": ", 2);
+            output->write(data.c_str(), data.length());
+            output->write("\n", 1);
+        }
+    }
+}
+
+void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, sese::OutputStream *output, size_t level) noexcept {
+    auto count = 0;
+    for (decltype(auto) item: *arrayData) {
+        if (item->getType() == DataType::ObjectData) {
+            auto sub = dynamic_cast<ObjectData *>(item.get());
+            if (!sub->empty()) {
+                auto name = "element_" + std::to_string(count);
+                count += 1;
+                writeSpace(level * 2, output);
+                output->write("- ", 2);
+                output->write(name.c_str(), name.length());
+                output->write(": \n", 3);
+                serializeObject(sub, output, level + 1);
+            }
+        } else if (item->getType() == DataType::ArrayData) {
+            auto sub = dynamic_cast<ArrayData *>(item.get());
+            if (!sub->empty()) {
+                auto name = "element_" + std::to_string(count);
+                count += 1;
+                writeSpace(level * 2, output);
+                output->write("- ", 2);
+                output->write(name.c_str(), name.length());
+                output->write(": \n", 3);
+                serializeArray(sub, output, level + 1);
+            }
+        } else {
+            auto sub = dynamic_cast<BasicData *>(item.get());
+            auto data = sub->getDataAs<std::string>("");
+            writeSpace(level * 2, output);
+            output->write("- ", 2);
+            output->write(data.c_str(), data.length());
+            output->write("\n", 1);
+        }
+    }
 }

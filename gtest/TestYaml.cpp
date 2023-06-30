@@ -1,5 +1,6 @@
 #include "sese/config/yaml/YamlUtil.h"
 #include "sese/util/InputBufferWrapper.h"
+#include "sese/util/ConsoleOutputStream.h"
 
 #include "gtest/gtest.h"
 
@@ -83,4 +84,39 @@ TEST(TestYaml, Deserialize_0) {
     auto arrayObj = std::dynamic_pointer_cast<sese::yaml::ArrayData>(rootObj->get("sequence"));
     auto element1Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(*arrayObj->begin());
     EXPECT_EQ(element1Obj->getDataAs<std::string>("undef"), "element1");
+}
+
+TEST(TestYaml, Serialize_0) {
+    sese::ConsoleOutputStream output;
+
+    auto root = std::make_shared<sese::yaml::ObjectData>();
+
+    auto object = std::make_shared<sese::yaml::ObjectData>();
+    root->set("object", object);
+    auto name = std::make_shared<sese::yaml::BasicData>();
+    name->setDataAs<std::string>("sese-core");
+    object->set("name", name);
+    auto version = std::make_shared<sese::yaml::BasicData>();
+    version->setDataAs<std::string>("0.6.3");
+    object->set("version", version);
+
+    auto array = std::make_shared<sese::yaml::ArrayData>();
+    root->set("array", array);
+    auto element0 = std::make_shared<sese::yaml::BasicData>();
+    element0->setDataAs<int64_t>(1919810);
+    array->push(element0);
+    auto element1 = std::make_shared<sese::yaml::BasicData>();
+    element1->setDataAs<double>(3.1415926);
+    array->push(element1);
+
+    auto complex = std::make_shared<sese::yaml::ObjectData>();
+    array->push(complex);
+    auto real = std::make_shared<sese::yaml::BasicData>();
+    real->setDataAs<int64_t>(1);
+    complex->set("real", real);
+    auto image = std::make_shared<sese::yaml::BasicData>();
+    image->setDataAs<int64_t>(-3);
+    complex->set("image", image);
+
+    sese::yaml::YamlUtil::serialize(root, &output);
 }

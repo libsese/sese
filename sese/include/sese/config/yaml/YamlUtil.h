@@ -19,7 +19,7 @@ namespace sese::yaml {
 
         static Data::Ptr deserialize(InputStream *input, size_t level) noexcept;
 
-        // static void serialize(const Data::Ptr &data, OutputStream *output) noexcept;
+        static void serialize(const Data::Ptr &data, OutputStream *output) noexcept;
 
 #ifdef SESE_BUILD_TEST
     public:
@@ -35,5 +35,11 @@ namespace sese::yaml {
         static ObjectData::Ptr createObject(TokensQueue &tokensQueue, size_t level) noexcept;
 
         static ArrayData::Ptr createArray(TokensQueue &tokensQueue, size_t level) noexcept;
+
+        static void writeSpace(size_t count, OutputStream *output) noexcept;
+
+        static void serializeObject(ObjectData *objectData, OutputStream *output, size_t level) noexcept;
+
+        static void serializeArray(ArrayData *arrayData, OutputStream *output, size_t level) noexcept;
     };
 }// namespace sese::yaml
