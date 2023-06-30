@@ -1,3 +1,9 @@
+/// \file YamlTypes.h
+/// \brief 描述 yaml 基本类型
+/// \author kaoru
+/// \version 0.1
+/// \date 2023年6月30日
+
 #pragma once
 
 #include "sese/Config.h"
@@ -11,12 +17,14 @@
 
 namespace sese::yaml {
 
+    /// 类型枚举
     enum class DataType {
         ObjectData,
         ArrayData,
         BasicData
     };
 
+    /// 类型基类
     class API Data {
     public:
         using Ptr = std::shared_ptr<Data>;
@@ -30,6 +38,7 @@ namespace sese::yaml {
         const DataType type;
     };
 
+    /// 对象类型
     class API ObjectData final : public Data {
     public:
         using Ptr = std::shared_ptr<ObjectData>;
@@ -47,6 +56,7 @@ namespace sese::yaml {
         std::map<std::string, Data::Ptr> keyValueSet;
     };
 
+    /// 数组类型
     class API ArrayData final : public Data {
     public:
         using Ptr = std::shared_ptr<ArrayData>;
@@ -62,12 +72,17 @@ namespace sese::yaml {
         std::list<Data::Ptr> valueSet;
     };
 
+    /// 基本数据类
     class API BasicData final : public Data {
     public:
         using Ptr = std::shared_ptr<BasicData>;
 
         explicit BasicData() noexcept;
 
+        /// 将数据作为 std::string 类型获取
+        /// \tparam T std::string
+        /// \param def 该值不存在时返回的默认值
+        /// \return 结果
         template<class T>
         std::enable_if_t<std::is_same_v<T, std::string>, std::string>
         getDataAs(const T &def) const noexcept {
@@ -78,6 +93,10 @@ namespace sese::yaml {
             }
         }
 
+        /// 将数据作为 std::string_view 类型获取
+        /// \tparam T std::string_view
+        /// \param def 该值不存在时返回的默认值
+        /// \return 结果
         template<class T>
         std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view>
         getDataAs(const T &def) const noexcept {
@@ -88,6 +107,10 @@ namespace sese::yaml {
             }
         }
 
+        /// 将数据作为 bool 类型获取
+        /// \tparam T bool
+        /// \param def 该值不存在时返回的默认值
+        /// \return 结果
         template<class T>
         std::enable_if_t<std::is_same_v<T, bool>, bool>
         getDataAs(T def) const noexcept {
@@ -102,6 +125,10 @@ namespace sese::yaml {
             }
         }
 
+        /// 将数据作为整型获取
+        /// \tparam T int64_t
+        /// \param def 该值不存在时返回的默认值
+        /// \return 结果
         template<class T>
         std::enable_if_t<std::is_same_v<T, int64_t>, int64_t>
         getDataAs(T def) const noexcept {
@@ -113,6 +140,10 @@ namespace sese::yaml {
             }
         }
 
+        /// 将数据作为浮点型获取
+        /// \tparam T double
+        /// \param def 该值不存在时返回的默认值
+        /// \return 结果
         template<class T>
         std::enable_if_t<std::is_same_v<T, double>, double>
         getDataAs(T def) const noexcept {
@@ -124,38 +155,56 @@ namespace sese::yaml {
             }
         }
 
+        /// \return 当前值是否为空
         [[nodiscard]] bool isNull() const noexcept { return _isNull; }
 
+        /// 将值作为 std::string 填入
+        /// \tparam T std::string
+        /// \param value 值
         template<class T>
         void
         setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>, std::string> &value) noexcept {
             this->data = value;
         }
 
+        /// 将值作为 std::string_view 填入
+        /// \tparam T std::string_view
+        /// \param value 值
         template<class T>
         void
         setDataAs(const std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view> &value) noexcept {
             this->data = value;
         }
 
+        /// 将值作为 bool 类型填入
+        /// \tparam T bool
+        /// \param value 值
         template<class T>
         void
         setDataAs(std::enable_if_t<std::is_same_v<T, bool>, bool> value) noexcept {
             this->data = value ? "true" : "false";
         }
 
+        /// 将当前值作为整型填入
+        /// \tparam T int64_t
+        /// \param value 值
         template<class T>
         void
         setDataAs(std::enable_if_t<std::is_same_v<T, int64_t>, int64_t> value) noexcept {
             this->data = std::to_string(value);
         }
 
+        /// 将当前值作为浮点型填入
+        /// \tparam T double
+        /// \param value 值
         template<class T>
         void
         setDataAs(std::enable_if_t<std::is_same_v<T, double>, double> value) noexcept {
             this->data = std::to_string(value);
         }
 
+        /// 设置当前值是否为空
+        /// \param null 是否为空
         void setNull(bool null) noexcept {
             this->_isNull = null;
         }

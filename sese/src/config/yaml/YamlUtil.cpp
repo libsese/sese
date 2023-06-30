@@ -322,7 +322,7 @@ sese::yaml::YamlUtil::createArray(
 
 constexpr auto getSpaceArray = []() {
     std::array<char, 1024> array{};
-    for (decltype(auto) item :array) {
+    for (decltype(auto) item: array) {
         item = ' ';
     }
     return array;
@@ -341,7 +341,7 @@ void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, sese::OutputS
             if (!sub->empty()) {
                 writeSpace(level * 2, output);
                 output->write(item.first.c_str(), item.first.length());
-                output->write(": \n", 3);
+                output->write(":\n", 2);
                 serializeObject(sub, output, level + 1);
             }
         } else if (item.second->getType() == DataType::ArrayData) {
@@ -349,7 +349,7 @@ void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, sese::OutputS
             if (!sub->empty()) {
                 writeSpace(level * 2, output);
                 output->write(item.first.c_str(), item.first.length());
-                output->write(": \n", 3);
+                output->write(":\n", 2);
                 serializeArray(sub, output, level + 1);
             }
         } else {
@@ -358,7 +358,11 @@ void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, sese::OutputS
             writeSpace(level * 2, output);
             output->write(item.first.c_str(), item.first.length());
             output->write(": ", 2);
-            output->write(data.c_str(), data.length());
+            if (sub->isNull()) {
+                output->write("~", 1);
+            } else {
+                output->write(data.c_str(), data.length());
+            }
             output->write("\n", 1);
         }
     }
@@ -375,7 +379,7 @@ void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, sese::OutputStre
                 writeSpace(level * 2, output);
                 output->write("- ", 2);
                 output->write(name.c_str(), name.length());
-                output->write(": \n", 3);
+                output->write(":\n", 2);
                 serializeObject(sub, output, level + 1);
             }
         } else if (item->getType() == DataType::ArrayData) {
@@ -386,7 +390,7 @@ void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, sese::OutputStre
                 writeSpace(level * 2, output);
                 output->write("- ", 2);
                 output->write(name.c_str(), name.length());
-                output->write(": \n", 3);
+                output->write(":\n", 2);
                 serializeArray(sub, output, level + 1);
             }
         } else {
@@ -394,7 +398,11 @@ void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, sese::OutputStre
             auto data = sub->getDataAs<std::string>("");
             writeSpace(level * 2, output);
             output->write("- ", 2);
-            output->write(data.c_str(), data.length());
+            if (sub->isNull()) {
+                output->write("~", 1);
+            } else {
+                output->write(data.c_str(), data.length());
+            }
             output->write("\n", 1);
         }
     }
