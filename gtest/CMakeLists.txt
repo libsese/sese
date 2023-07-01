@@ -33,6 +33,20 @@ add_test(NAME TestPlugin COMMAND $<TARGET_FILE:TestPlugin>)
 target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module>\"")
 add_dependencies(TestPlugin Module)
 
+# TestSharedMemory
+add_executable(Memory.d TestSharedMemory/Memory.d.cpp)
+target_link_libraries(Memory.d Core)
+set_target_properties(
+        Memory.d PROPERTIES
+        OUTPUT_NAME "Memory.d"
+        PREFIX ""
+)
+add_executable(TestSharedMemory TestSharedMemory/TestSharedMemory.cpp)
+target_link_libraries(TestSharedMemory Core GTest::gtest GTest::gtest_main)
+target_compile_definitions(TestSharedMemory PRIVATE "-DPATH_TO_MEM_D=\"$<TARGET_FILE:Memory.d>\"")
+add_test(NAME TestSharedMemory COMMAND TestSharedMemory)
+add_dependencies(TestSharedMemory Memory.d)
+
 sese_test(TestAddress)
 sese_test(TestArgParser)
 sese_test(TestBase64)
