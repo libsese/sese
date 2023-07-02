@@ -22,8 +22,9 @@
 #define strcmpi strcasecmp
 
 #include <cstring>
+#include <memory>
+#include <thread>
 
-///
-using tid_t = uint32_t;
 /// Native Socket 类型
 using socket_t = int32_t;
+using tid_t = uint32_t;
