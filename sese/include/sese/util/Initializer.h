@@ -55,6 +55,12 @@ namespace sese {
         /// 添加任务至初始化器
         /// \param task 初始化任务
         static void addTask(InitiateTask::Ptr task) noexcept;
+
+        template<class T>
+        static void addTask() noexcept {
+            Initializer::addTask(std::make_unique<T>());
+        }
+
         /// 获取初始化器指针
         /// \note 将 sese 作为使用静态链接库使用时，请务必使用该函数手动进行初始化
         /// \return 初始化指针，此返回值无用

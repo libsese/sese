@@ -4,8 +4,11 @@
  * @author kaoru
  * @date 2022年3月28日
  */
+
 #pragma once
+
 #include "sese/Config.h"
+#include "sese/util/NotInstantiable.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4624)
@@ -16,7 +19,7 @@ namespace sese::system {
     /**
      * @brief 环境信息类
      */
-    class API Environment {
+    class API Environment final : public NotInstantiable {
     public:
         /**
          * @return 返回仓库哈希码前 6 位
@@ -68,4 +71,4 @@ namespace sese::system {
          */
         static bool isLittleEndian() noexcept;
     };
-}// namespace sese
+}// namespace sese::system

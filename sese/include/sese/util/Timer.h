@@ -6,8 +6,10 @@
  * @version 0.3
  */
 #pragma once
+
 #include "sese/Config.h"
 #include "sese/thread/Thread.h"
+
 #include <atomic>
 #include <functional>
 #include <list>

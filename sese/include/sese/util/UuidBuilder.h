@@ -5,7 +5,9 @@
  * \version 0.1
  * \brief UUID 生成相关
  */
+
 #pragma once
+
 #include "sese/Config.h"
 #include "SimpleUuid/TimestampHandler.h"
 #include "SimpleUuid/Uuid.h"

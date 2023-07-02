@@ -41,7 +41,7 @@ TEST(TestFileNotifier, _0) {
         FAIL() << "failed to create process";
     }
 
-    process->wait();
+    EXPECT_EQ(process->wait(), 0);
     std::this_thread::sleep_for(3s);
     notifier->shutdown();
     SUCCEED() << "OK";

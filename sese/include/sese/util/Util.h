@@ -4,7 +4,9 @@
  * @author kaoru
  * @date 2022年3月28日
  */
+
 #pragma once
+
 #include "sese/Config.h"
 
 namespace sese {

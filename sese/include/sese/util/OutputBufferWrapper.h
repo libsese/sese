@@ -5,13 +5,15 @@
 * \version 0.1
 * \brief 输出缓存包装器
 */
+
 #pragma once
-#include "OutputStream.h"
+
+#include "sese/util/OutputStream.h"
 
 namespace sese {
 
     /// \brief 输出缓存包装器
-    class API OutputBufferWrapper : public OutputStream {
+    class API OutputBufferWrapper final : public OutputStream {
     public:
         OutputBufferWrapper(char *buffer, size_t cap);
 
