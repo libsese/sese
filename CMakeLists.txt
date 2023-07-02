@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(sese-core VERSION 0.6.3)
+project(sese-core VERSION 0.7.4)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -23,6 +23,8 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-4")
         # for sanitizer
         # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+        # for coverage
+        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
     endif ()
 endif ()
 
