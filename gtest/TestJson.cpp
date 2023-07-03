@@ -102,9 +102,20 @@ TEST(TestJson, Setter) {
     SESE_JSON_SET_BOOLEAN(object, "t2", false);
     SESE_JSON_SET_NULL(object, "nullable");
 
-    auto node = std::make_shared<sese::json::BasicData>();
-    node->setNotNull("Hello", true);
-    object->set("str2", node);
+    auto data = std::make_shared<sese::json::BasicData>();
+    data->setNotNull("Hello", true);
+    object->set("str2", data);
+
+    // 测试数组宏
+    auto array = std::make_shared<sese::json::ArrayData>();
+    object->set("array", array);
+    SESE_JSON_PUT_STRING(array, "Hello");
+    SESE_JSON_PUT_STRING(array, "World");
+    SESE_JSON_PUT_BOOLEAN(array, true);
+    SESE_JSON_PUT_BOOLEAN(array, false);
+    SESE_JSON_PUT_INTEGER(array, 0);
+    SESE_JSON_PUT_DOUBLE(array, 0.0);
+    SESE_JSON_PUT_NULL(array);
 
     sese::ConsoleOutputStream console;
     sese::json::JsonUtil::serialize(object.get(), &console);

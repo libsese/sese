@@ -12,7 +12,7 @@
 #include <list>
 
 #ifdef WIN32
-#pragma warning(disable: 4996)
+#pragma warning(disable : 4996)
 #endif
 
 namespace sese::yaml {
@@ -23,6 +23,10 @@ namespace sese::yaml {
         ArrayData,
         BasicData
     };
+
+    class ObjectData;
+    class ArrayData;
+    class BasicData;
 
     /// 类型基类
     class API Data {
@@ -51,6 +55,18 @@ namespace sese::yaml {
         [[nodiscard]] Data::Ptr get(const std::string &key) noexcept;
         inline std::map<std::string, Data::Ptr>::iterator begin() noexcept { return keyValueSet.begin(); }
         inline std::map<std::string, Data::Ptr>::iterator end() noexcept { return keyValueSet.end(); }
+
+        template<class T>
+        std::enable_if_t<std::is_same_v<T, ObjectData>, std::shared_ptr<sese::yaml::ObjectData>>
+        getDataAs(const std::string &key) noexcept;
+
+        template<class T>
+        std::enable_if_t<std::is_same_v<T, ArrayData>, std::shared_ptr<sese::yaml::ArrayData>>
+        getDataAs(const std::string &key) noexcept;
+
+        template<class T>
+        std::enable_if_t<std::is_same_v<T, BasicData>, std::shared_ptr<sese::yaml::BasicData>>
+        getDataAs(const std::string &key) noexcept;
 
     protected:
         std::map<std::string, Data::Ptr> keyValueSet;
@@ -214,3 +230,33 @@ namespace sese::yaml {
         bool _isNull = false;
     };
 }// namespace sese::yaml
+
+template<class T>
+std::enable_if_t<std::is_same_v<T, sese::yaml::ObjectData>, std::shared_ptr<sese::yaml::ObjectData>> sese::yaml::ObjectData::getDataAs(const std::string &key) noexcept {
+    auto p = get(key);
+    if (p != nullptr && p->getType() == DataType::ObjectData) {
+        return std::dynamic_pointer_cast<ObjectData>(p);
+    } else {
+        return nullptr;
+    }
+}
+
+template<class T>
+std::enable_if_t<std::is_same_v<T, sese::yaml::ArrayData>, std::shared_ptr<sese::yaml::ArrayData>> sese::yaml::ObjectData::getDataAs(const std::string &key) noexcept {
+    auto p = get(key);
+    if (p != nullptr && p->getType() == DataType::ArrayData) {
+        return std::dynamic_pointer_cast<ArrayData>(p);
+    } else {
+        return nullptr;
+    }
+}
+
+template<class T>
+std::enable_if_t<std::is_same_v<T, sese::yaml::BasicData>, std::shared_ptr<sese::yaml::BasicData>> sese::yaml::ObjectData::getDataAs(const std::string &key) noexcept {
+    auto p = get(key);
+    if (p != nullptr && p->getType() == DataType::BasicData) {
+        return std::dynamic_pointer_cast<BasicData>(p);
+    } else {
+        return nullptr;
+    }
+}

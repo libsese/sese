@@ -15,6 +15,7 @@ const char str1[]{
         "    str5: Hello str5\n"
         "    bool1: true\n"
         "    bool2: yes\n"
+        "    bool3: or\n"
         "    int1: 114514\n"
         "    float1: 3.14\n"
         "    float2: 3.14e+5\n"
@@ -79,12 +80,46 @@ TEST(TestYaml, Deserialize_0) {
     auto bool2Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(mappingObj->get("bool2"));
     EXPECT_EQ(bool2Obj->getDataAs<bool>(false), true);
 
+    auto bool3Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(mappingObj->get("bool3"));
+    EXPECT_EQ(bool3Obj->getDataAs<bool>(true), false);
+
     auto float2Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(mappingObj->get("float2"));
     EXPECT_EQ(float2Obj->getDataAs<double>(0.0), 3.14e5);
+
+    auto int2Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(mappingObj->get("int1"));
+    EXPECT_EQ(int2Obj->getDataAs<int64_t>(0), 114514);
 
     auto arrayObj = std::dynamic_pointer_cast<sese::yaml::ArrayData>(rootObj->get("sequence"));
     auto element1Obj = std::dynamic_pointer_cast<sese::yaml::BasicData>(*arrayObj->begin());
     EXPECT_EQ(element1Obj->getDataAs<std::string>("undef"), "element1");
+
+    /// 数据为 null
+    SESE_YAML_GET_STRING(s0, mappingObj, "null1", "undef");
+    EXPECT_EQ(s0, "undef");
+    SESE_YAML_GET_BOOLEAN(b0, mappingObj, "null1", false);
+    EXPECT_EQ(b0, false);
+    SESE_YAML_GET_DOUBLE(d0, mappingObj, "null1", 0.0);
+    EXPECT_EQ(d0, 0.0);
+    SESE_YAML_GET_INTEGER(i0, mappingObj, "null1", 0);
+    EXPECT_EQ(i0, 0);
+
+    /// 数据不存在
+    SESE_YAML_GET_STRING(s1, mappingObj, "A", "undef");
+    EXPECT_EQ(s1, "undef");
+    SESE_YAML_GET_BOOLEAN(b1, mappingObj, "A", false);
+    EXPECT_EQ(b1, false);
+    SESE_YAML_GET_DOUBLE(d1, mappingObj, "A", 0.0);
+    EXPECT_EQ(d1, 0.0);
+    SESE_YAML_GET_INTEGER(i1, mappingObj, "A", 0);
+    EXPECT_EQ(i1, 0);
+}
+
+/// 字符串转义
+TEST(TestYaml, Deserialize_1) {
+    const char str[]{R"(str: "\n\r\'\"\a")"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
 }
 
 TEST(TestYaml, Serialize_0) {
@@ -146,4 +181,14 @@ TEST(TestYaml, Serialize_1) {
     SESE_YAML_PUT_NULL(array);
 
     sese::yaml::YamlUtil::serialize(array, &output);
+}
+
+TEST(TestYaml, Serialize_2) {
+    const char str[]{"- Hello\n"
+                     "- World\n"
+                     "- null\n"
+                     "- ~"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
 }

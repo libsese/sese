@@ -106,10 +106,8 @@ std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line
                     case '"':
                     case '\'':
                     case '\\':
-                        stream << ch;
-                        break;
                     default:
-                        stream << '\0';
+                        stream << ch;
                         break;
                 }
                 tran = false;
@@ -237,7 +235,7 @@ sese::yaml::YamlUtil::createObject(
             // 当前对象结束
             return result;
         } else {
-            // 错误
+            // 错误 - 这几乎不可能发生
             tokensQueue.pop();
             continue;
         }
@@ -311,7 +309,7 @@ sese::yaml::YamlUtil::createArray(
             // 当前数组结束
             return result;
         } else {
-            // 错误
+            // 错误 - 这几乎不会发生
             tokensQueue.pop();
             continue;
         }
