@@ -91,4 +91,35 @@
         auto node = std::make_shared<sese::json::BasicData>(); \
         node->setNull(true);                                   \
         target->set(name, node);                               \
-    } SESE_MARCO_END
+    }                                                          \
+    SESE_MARCO_END
+
+#define SESE_JSON_PUT(target, type, value)                     \
+    {                                                          \
+        auto node = std::make_shared<sese::json::BasicData>(); \
+        node->setDataAs<type>(value);                          \
+        target->push(node);                                    \
+    }
+
+#define SESE_JSON_PUT_STRING(target, value)   \
+    SESE_JSON_PUT(target, std::string, value) \
+    SESE_MARCO_END
+
+#define SESE_JSON_PUT_BOOLEAN(target, value) \
+    SESE_JSON_PUT(target, bool, value)       \
+    SESE_MARCO_END
+
+#define SESE_JSON_PUT_INTEGER(target, value) \
+    SESE_JSON_PUT(target, int64_t, value)    \
+    SESE_MARCO_END
+
+#define SESE_JSON_PUT_DOUBLE(target, value) \
+    SESE_JSON_PUT(target, double, value)    \
+    SESE_MARCO_END
+
+#define SESE_JSON_PUT_NULL(target)                             \
+    {                                                          \
+        auto node = std::make_shared<sese::json::BasicData>(); \
+        node->setNull(true);                                   \
+        target->push(node);                                    \
+    }

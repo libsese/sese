@@ -1,4 +1,5 @@
 #include "sese/config/yaml/YamlUtil.h"
+#include "sese/config/yaml/Marco.h"
 #include "sese/util/InputBufferWrapper.h"
 #include "sese/util/ConsoleOutputStream.h"
 
@@ -93,30 +94,56 @@ TEST(TestYaml, Serialize_0) {
 
     auto object = std::make_shared<sese::yaml::ObjectData>();
     root->set("object", object);
-    auto name = std::make_shared<sese::yaml::BasicData>();
-    name->setDataAs<std::string>("sese-core");
-    object->set("name", name);
-    auto version = std::make_shared<sese::yaml::BasicData>();
-    version->setDataAs<std::string>("0.6.3");
-    object->set("version", version);
+    // auto name = std::make_shared<sese::yaml::BasicData>();
+    // name->setDataAs<std::string>("sese-core");
+    // object->set("name", name);
+    // auto version = std::make_shared<sese::yaml::BasicData>();
+    // version->setDataAs<std::string>("0.6.3");
+    // object->set("version", version);
+    SESE_YAML_SET_STRING(object, "name", "sese-core");
+    SESE_YAML_SET_STRING(object, "version", "0.6.3");
+    SESE_YAML_SET_BOOLEAN(object, "bool1", false);
+    SESE_YAML_SET_BOOLEAN(object, "bool2", true);
+    SESE_YAML_SET_DOUBLE(object, "double", 3.14);
+    SESE_YAML_SET_NULL(object, "nullable");
 
     auto array = std::make_shared<sese::yaml::ArrayData>();
     root->set("array", array);
-    auto element0 = std::make_shared<sese::yaml::BasicData>();
-    element0->setDataAs<int64_t>(1919810);
-    array->push(element0);
-    auto element1 = std::make_shared<sese::yaml::BasicData>();
-    element1->setDataAs<double>(3.1415926);
-    array->push(element1);
+    // auto element0 = std::make_shared<sese::yaml::BasicData>();
+    // element0->setDataAs<int64_t>(1919810);
+    // array->push(element0);
+    // auto element1 = std::make_shared<sese::yaml::BasicData>();
+    // element1->setDataAs<double>(3.1415926);
+    // array->push(element1);
+    SESE_YAML_PUT_INTEGER(array, 1919810);
+    SESE_YAML_PUT_DOUBLE(array, 3.1415926);
 
     auto complex = std::make_shared<sese::yaml::ObjectData>();
     array->push(complex);
-    auto real = std::make_shared<sese::yaml::BasicData>();
-    real->setDataAs<int64_t>(1);
-    complex->set("real", real);
-    auto image = std::make_shared<sese::yaml::BasicData>();
-    image->setDataAs<int64_t>(-3);
-    complex->set("image", image);
+    // auto real = std::make_shared<sese::yaml::BasicData>();
+    // real->setDataAs<int64_t>(1);
+    // complex->set("real", real);
+    // auto image = std::make_shared<sese::yaml::BasicData>();
+    // image->setDataAs<int64_t>(-3);
+    // complex->set("image", image);
+    SESE_YAML_SET_INTEGER(complex, "real", 1);
+    SESE_YAML_SET_INTEGER(complex, "image", -3);
 
     sese::yaml::YamlUtil::serialize(root, &output);
+}
+
+TEST(TestYaml, Serialize_1) {
+    sese::ConsoleOutputStream output;
+
+    auto array = std::make_shared<sese::yaml::ArrayData>();
+    SESE_YAML_PUT_STRING(array, "value0");
+    SESE_YAML_PUT_BOOLEAN(array, true);
+    SESE_YAML_PUT_BOOLEAN(array, false);
+    SESE_YAML_PUT_INTEGER(array, 114514);
+    SESE_YAML_PUT_INTEGER(array, 1919810);
+    SESE_YAML_PUT_DOUBLE(array, 3.14);
+    SESE_YAML_PUT_DOUBLE(array, 0.15926e-2);
+    SESE_YAML_PUT_NULL(array);
+
+    sese::yaml::YamlUtil::serialize(array, &output);
 }

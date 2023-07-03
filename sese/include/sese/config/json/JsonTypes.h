@@ -56,7 +56,7 @@ protected:
     const DataType type;// 节点的数据类型 - 数据类型是不可变的
 };
 
-class API sese::json::BasicData : public sese::json::Data {
+class API sese::json::BasicData final : public sese::json::Data {
 public:
     using Ptr = std::shared_ptr<BasicData>;
 
@@ -195,7 +195,7 @@ void sese::json::BasicData::setDataAs(const std::enable_if_t<std::is_same_v<T, s
     data = "\"" + t + "\"";
 }
 
-class API sese::json::ObjectData : public sese::json::Data {
+class API sese::json::ObjectData final : public sese::json::Data {
 public:
     using Ptr = std::shared_ptr<ObjectData>;
     explicit ObjectData();
@@ -265,7 +265,7 @@ std::shared_ptr<std::enable_if_t<std::is_same_v<sese::json::ArrayData, T>, sese:
     }
 }
 
-class API sese::json::ArrayData : public sese::json::Data {
+class API sese::json::ArrayData final : public sese::json::Data {
 public:
     using Ptr = std::shared_ptr<ArrayData>;
     explicit ArrayData();

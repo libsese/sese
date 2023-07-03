@@ -142,8 +142,6 @@ std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line
             vector.emplace_back(":");
         } else if (ch == '-') {
             vector.emplace_back("-");
-        } else if (ch == '|') {
-            vector.emplace_back("|");
         } else if (ch == ' ') {
             continue;
         } else {
@@ -178,6 +176,7 @@ sese::yaml::YamlUtil::createObject(
 
         if (count == currentCount) {
             if (currentTokens.size() == 3) {
+                if (currentTokens[1] != ":") return nullptr;
                 // 普通键值对
                 std::string key = currentTokens[0];
                 std::string value = currentTokens[2];
@@ -291,7 +290,7 @@ sese::yaml::YamlUtil::createArray(
                     auto nextCount = std::get<0>(nextCountAndTokens);
                     auto nextTokens = std::get<1>(nextCountAndTokens);
                     if (nextCount > count) {
-                        if (nextTokens[0] == "=") {
+                        if (nextTokens[0] == "-") {
                             auto valueObject = createArray(tokensQueue, level - 1);
                             if (valueObject) {
                                 result->push(valueObject);
