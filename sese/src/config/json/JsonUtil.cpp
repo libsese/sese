@@ -1,8 +1,8 @@
 #include <sese/config/json/JsonUtil.h>
-#include "sese/util/BufferedOutputStream.h"
-#include "sese/util/BufferedInputStream.h"
+#include <sese/util/BufferedOutputStream.h>
+#include <sese/util/BufferedInputStream.h>
 #include <sese/text/StringBuilder.h>
-#include "sese/util/Util.h"
+#include <sese/util/Util.h>
 
 using namespace sese::json;
 
@@ -15,23 +15,19 @@ void JsonUtil::serialize(const ObjectData::Ptr &object, const OutputStream::Ptr 
 }
 
 ObjectData::Ptr JsonUtil::deserialize(InputStream *inputStream, size_t level) noexcept {
-    // 此处懒得处理不合规格的格式，直接 catch
-    try {
-        Tokens tokens;
-        if (!tokenizer(inputStream, tokens)) {
-            return nullptr;
-        }
-
-        if (tokens.empty()) {
-            return nullptr;
-        }
-
-        // 第一个 token 必是 '{'，直接弹出
-        tokens.pop();
-        return createObject(tokens, level);
-    } catch (...) {
+    Tokens tokens;
+    if (!tokenizer(inputStream, tokens)) {
         return nullptr;
     }
+
+    if (tokens.empty()) {
+        return nullptr;
+    }
+
+    // 第一个 token 必是 '{'，直接弹出
+    if (tokens.front() != "{") return nullptr;
+    tokens.pop();
+    return createObject(tokens, level);
 }
 
 void JsonUtil::serialize(ObjectData *object, OutputStream *outputStream) noexcept {
@@ -110,7 +106,7 @@ bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
                     } else if (ch == ',') {
                         tokens.push(builder.toString());
                         builder.clear();
-                        tokens.push(",");
+                        tokens.emplace(",");
                         break;
                     } else if (ch == '}' || ch == ']') {
                         tokens.push(builder.toString());
@@ -136,13 +132,18 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
         if (name == "}") return object;
         else if (name == ",") {
             // token 为 ',' 说明接下来还有键值对
+            if (tokens.empty()) return nullptr;
             name = tokens.front();
             tokens.pop();
         }
         name = name.substr(1, name.size() - 2);
 
-        // 此处 token 必是 ':'，故直接弹出
+        if (tokens.empty()) return nullptr;
+        // 此处 token 必是 ":"
+        if (tokens.front() != ":") return nullptr;
         tokens.pop();
+
+        if (tokens.empty()) return nullptr;
         auto value = tokens.front();
         tokens.pop();
 
@@ -191,6 +192,7 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
         if (token == "]") return array;
         else if (token == ",") {
             // token 为 ',' 说明接下来还有值
+            if (tokens.empty()) return nullptr;
             token = tokens.front();
             tokens.pop();
         }

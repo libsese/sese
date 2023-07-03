@@ -166,12 +166,8 @@ std::enable_if_t<std::is_same_v<T, double>, double> sese::json::BasicData::getDa
         return defaultValue;
     } else {
         char *pEnd = nullptr;
-        auto res = strtod(data.c_str(), &pEnd);
-        if (pEnd != nullptr) {
-            return defaultValue;
-        } else {
-            return res;
-        }
+        auto res = std::strtod(data.c_str(), &pEnd);
+        return res;
     }
 }
 

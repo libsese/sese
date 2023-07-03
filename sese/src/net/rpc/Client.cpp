@@ -15,7 +15,7 @@ Client::Client(const IPv4Address::Ptr &address, const std::string &version) noex
 json::ObjectData::Ptr Client::makeTemplateRequest(const std::string &name) {
     auto object = std::make_shared<json::ObjectData>();
     object->set(SESE_RPC_TAG_VERSION, version);
-    Set(object, std::string, SESE_RPC_TAG_NAME, name);
+    SESE_JSON_SET(object, std::string, SESE_RPC_TAG_NAME, name);
     return object;
 }
 

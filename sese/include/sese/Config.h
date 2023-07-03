@@ -22,6 +22,8 @@
 #endif
 #undef assert
 
+#define SESE_MARCO_END switch (0) case 0: default: break
+
 /// 默认时区
 constexpr static int32_t TIME_DEFAULT_ZONE = 8;
 /// 世界协调时匹配格式
