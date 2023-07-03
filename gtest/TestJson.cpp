@@ -42,6 +42,8 @@ TEST(TestJson, Getter) {
                        "  \"bool2\": false,\n"
                        "  \"int\": 1,\n"
                        "  \"double\": 3.14\n"
+                       "  \"nullable\": null\n"
+                       "  \"object\": {} \n"
                        "}";
     auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
@@ -60,18 +62,35 @@ TEST(TestJson, Getter) {
     SESE_JSON_GET_DOUBLE(double1, object, "double", 0.0);
     EXPECT_EQ(double1, 3.14);
 
-    SESE_JSON_GET_STRING(str0, object,"A", "undef");
+    // 测试不存在的基本数据
+    SESE_JSON_GET_STRING(str0, object, "A", "undef");
     EXPECT_EQ(str0, "undef");
-    SESE_JSON_GET_BOOLEAN(bool0, object, "A",  true);
+    SESE_JSON_GET_BOOLEAN(bool0, object, "A", true);
     EXPECT_EQ(bool0, true);
     SESE_JSON_GET_DOUBLE(double0, object, "A", 0.0);
     EXPECT_EQ(double0, 0);
     SESE_JSON_GET_INTEGER(int0, object, "A", 0);
     EXPECT_EQ(int0, 0);
 
+    // 测试不存在的对象
     EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("A"), nullptr);
     EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("A"), nullptr);
     EXPECT_EQ(object->getDataAs<sese::json::BasicData>("A"), nullptr);
+
+    // 测试 null 元素
+    SESE_JSON_GET_BOOLEAN(b, object, "nullable", false);
+    EXPECT_EQ(b, false);
+    SESE_JSON_GET_STRING(s, object, "nullable", "undef");
+    EXPECT_EQ(s, "undef");
+    SESE_JSON_GET_INTEGER(i, object, "nullable", 0);
+    EXPECT_EQ(i, 0);
+    SESE_JSON_GET_DOUBLE(d, object, "nullable", 0);
+    EXPECT_EQ(d, 0);
+
+    // 测试不匹配的数据类型
+    EXPECT_EQ(object->getDataAs<sese::json::ObjectData>("str1"), nullptr);
+    EXPECT_EQ(object->getDataAs<sese::json::ArrayData>("str1"), nullptr);
+    EXPECT_EQ(object->getDataAs<sese::json::BasicData>("object"), nullptr);
 }
 
 TEST(TestJson, Setter) {
@@ -82,6 +101,10 @@ TEST(TestJson, Setter) {
     SESE_JSON_SET_BOOLEAN(object, "t1", true);
     SESE_JSON_SET_BOOLEAN(object, "t2", false);
     SESE_JSON_SET_NULL(object, "nullable");
+
+    auto node = std::make_shared<sese::json::BasicData>();
+    node->setNotNull("Hello", true);
+    object->set("str2", node);
 
     sese::ConsoleOutputStream console;
     sese::json::JsonUtil::serialize(object.get(), &console);
@@ -128,6 +151,51 @@ TEST(TestJson, Error_3) {
 /// tokens 为空
 TEST(TestJson, Error_4) {
     const char str[] = "";
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::json::JsonUtil::deserialize(&input, 5);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 子数组错误
+TEST(TestJson, Error_5) {
+    const char str[] = "{\n"
+                       "  \"str1\": [\n"
+                       "    \"Hello\": \"World\"\n"
+                       "  ]\n"
+                       "}";
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::json::JsonUtil::deserialize(&input, 5);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 子对象错误
+TEST(TestJson, Error_6) {
+    const char str[] = "{\n"
+                       "  \"str1\": {\n"
+                       "    \"Hello\": ,\n"
+                       "    \"World\": 1\n"
+                       "  }\n"
+                       "}";
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::json::JsonUtil::deserialize(&input, 5);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 不完整对象
+TEST(TestJson, Error_7) {
+    const char str[] = "{\n"
+                       "  \"str1\": {\n"
+                       "}";
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::json::JsonUtil::deserialize(&input, 5);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 不完整数组
+TEST(TestJson, Error_8) {
+    const char str[] = "{\n"
+                       "  \"str1\": [\n"
+                       "}";
     auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);

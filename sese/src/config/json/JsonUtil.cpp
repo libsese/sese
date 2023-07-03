@@ -108,13 +108,7 @@ bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
                         builder.clear();
                         tokens.emplace(",");
                         break;
-                    } else if (ch == '}' || ch == ']') {
-                        tokens.push(builder.toString());
-                        builder.clear();
-                        tokens.push({ch});
-                        break;
                     }
-
                     builder.append(ch);
                 }
                 break;
@@ -123,14 +117,28 @@ bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
     return true;
 }
 
+/// 判断一个 token 是否为 json 关键字
+/// \param str token
+/// \return 结果
+inline bool isKeyword(const std::string &str) {
+    if (str == "}" || str == "]" || str == ":" || str == ",") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
+    bool hasEnd = false;
     if (level == 0) { return nullptr; }
     auto object = std::make_shared<ObjectData>();
     while (!tokens.empty()) {
         auto name = tokens.front();
         tokens.pop();
-        if (name == "}") return object;
-        else if (name == ",") {
+        if (name == "}") {
+            hasEnd = true;
+            break;
+        } else if (name == ",") {
             // token 为 ',' 说明接下来还有键值对
             if (tokens.empty()) return nullptr;
             name = tokens.front();
@@ -170,6 +178,8 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
             }
             level++;
         } else {
+            // 本应存在值的地方实际上是关键字
+            if (isKeyword(value)) return nullptr;
             // 值是一个 BasicData
             BasicData::Ptr data;
             if (value == "null") {
@@ -180,17 +190,25 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
             object->set(name, data);
         }
     }
-    return object;
+
+    if (hasEnd) {
+        return object;
+    } else {
+        return nullptr;
+    }
 }
 
 ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
+    bool hasEnd = false;
     if (level == 0) { return nullptr; }
     auto array = std::make_shared<ArrayData>();
     while (!tokens.empty()) {
         auto token = tokens.front();
         tokens.pop();
-        if (token == "]") return array;
-        else if (token == ",") {
+        if (token == "]") {
+            hasEnd = true;
+            break;
+        } else if (token == ",") {
             // token 为 ',' 说明接下来还有值
             if (tokens.empty()) return nullptr;
             token = tokens.front();
@@ -220,6 +238,8 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
             }
             level++;
         } else {
+            // 本应存在值的地方实际上是关键字
+            if (isKeyword(token)) return nullptr;
             // 值是一个 BasicData
             BasicData::Ptr data;
             if (token == "null") {
@@ -230,7 +250,12 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
             array->push(data);
         }
     }
-    return array;
+
+    if (hasEnd) {
+        return array;
+    } else {
+        return nullptr;
+    }
 }
 
 void JsonUtil::serializeObject(ObjectData *object, OutputStream *outputStream) noexcept {
