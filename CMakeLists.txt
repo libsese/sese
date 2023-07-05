@@ -1,4 +1,19 @@
 cmake_minimum_required(VERSION 3.10)
+
+option(SESE_BUILD_TEST "build unit test targets" OFF)
+if (SESE_BUILD_TEST)
+    if (NOT DEFINED VCPKG_MANIFEST_FEATURES)
+        message(STATUS "Auto append features: tests")
+        set(VCPKG_MANIFEST_FEATURES "tests")
+    else ()
+        list(FIND VCPKG_MANIFEST_FEATURES "tests" index)
+        if (index EQUAL -1)
+            message(STATUS "Auto append features: tests")
+            list(APPEND VCPKG_MANIFEST_FEATURES "tests")
+        endif ()
+    endif ()
+endif ()
+
 project(sese-core VERSION 0.7.4)
 
 set(CMAKE_C_STANDARD 11)
@@ -27,8 +42,6 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
     endif ()
 endif ()
-
-option(SESE_BUILD_TEST "build unit test targets" OFF)
 
 message(STATUS "==================== SESE-CORE ====================")
 message(STATUS "Project version: ${PROJECT_VERSION}")
