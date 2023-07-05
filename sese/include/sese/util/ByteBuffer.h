@@ -30,7 +30,6 @@ namespace sese {
         int64_t write(const void *buffer, size_t len) override;
         int64_t peek(void *buffer, size_t len) override;
         int64_t trunc(size_t needRead) override;
-        void close() override;
         [[nodiscard]] size_t getCurrentWritePos();
         [[nodiscard]] size_t getCurrentReadPos();
 

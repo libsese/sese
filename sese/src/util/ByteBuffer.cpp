@@ -16,11 +16,6 @@ int64_t sese::ByteBuffer::peek(void *buffer, size_t len) {
     return AbstractByteBuffer::peek(buffer, len);
 }
 
-void sese::ByteBuffer::close() {
-    Locker locker(mutex);
-    AbstractByteBuffer::close();
-}
-
 sese::ByteBuffer::ByteBuffer(size_t baseSize) : AbstractByteBuffer(baseSize) {
 }
 

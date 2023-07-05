@@ -78,11 +78,6 @@ namespace sese {
         int64_t peek(void *buffer, size_t len) override;
         int64_t trunc(size_t needRead) override;
 
-        /**
-         * @deprecated close 方法在此处是无用的
-         */
-        void close() override {}
-
     private:
         Node *root = nullptr;
         Node *currentWriteNode = nullptr;

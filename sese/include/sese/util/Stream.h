@@ -5,6 +5,7 @@
  * @brief 流式接口类
  * @version 0.2
  */
+
 #pragma once
 #include "InputStream.h"
 #include "OutputStream.h"
@@ -17,8 +18,6 @@ namespace sese {
     class API Stream : public InputStream, public OutputStream {
     public:
         typedef std::shared_ptr<Stream> Ptr;
-
-        virtual void close() = 0;
     };
 
 }// namespace sese

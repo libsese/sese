@@ -1,11 +1,13 @@
 #pragma once
+
 #include "sese/Config.h"
-#include "Stream.h"
+#include "sese/util/Closeable.h"
+#include "sese/util/Stream.h"
 
 namespace sese {
 
     template<typename T>
-    class PackagedStream : public Stream {
+    class PackagedStream : public Stream, public Closeable {
     public:
         explicit PackagedStream(T *t) : t(t) {}
 

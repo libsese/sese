@@ -1,11 +1,12 @@
 #pragma once
 
 #include "sese/net/http/Header.h"
+#include "sese/util/Closeable.h"
 #include "sese/util/ByteBuilder.h"
 
 namespace sese::net::http {
 
-    class Http2Stream : public Stream {
+    class Http2Stream : public Stream, public Closeable {
     public:
         using Ptr = std::shared_ptr<Http2Stream>;
 

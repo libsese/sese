@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sese/util/Stream.h"
+#include "sese/util/Closeable.h"
 
 #define BINARY_READ_EXISTED_W "rb,ccs=utf-8"
 #define BINARY_WRITE_CREATE_TRUNC_W "wb,ccs=utf-8"
@@ -35,7 +36,7 @@ namespace sese {
     /**
      * @brief 文件流类
      */
-    class API FileStream : public Stream {
+    class API FileStream final : public Stream, public Closeable {
     public:
         using Ptr = std::shared_ptr<FileStream>;
 
@@ -49,6 +50,7 @@ namespace sese {
 
         int64_t read(void *buffer, size_t length) override;
         int64_t write(const void *buffer, size_t length) override;
+
         void close() override;
 
         [[nodiscard]] bool good() const { return file != nullptr; }
