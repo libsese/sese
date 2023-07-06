@@ -6,9 +6,9 @@ public:
     virtual void run() = 0;
 };
 
-TEST(TestPlugin, _0) {
+TEST(TestPlugin, SUCCESS) {
     auto m = sese::plugin::Module::open(PATH_TO_MODULE);
-    ASSERT_TRUE(m != nullptr);
+    ASSERT_NE(m, nullptr);
     printf("module info:\n"
            "\tname: %s\n"
            "\tversion: %s\n"
@@ -29,4 +29,16 @@ TEST(TestPlugin, _0) {
     auto p2 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Hello");
     p1->run();
     p2->run();
+}
+
+// 文件不存在
+TEST(TestPlugin, Error_0) {
+    auto m = sese::plugin::Module::open("NullModule");
+    ASSERT_EQ(m, nullptr);
+}
+
+// 文件存在但不包含模块信息
+TEST(TestPlugin, Error_1) {
+    auto m = sese::plugin::Module::open(PATH_TO_CORE);
+    ASSERT_EQ(m, nullptr);
 }

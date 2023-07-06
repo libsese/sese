@@ -21,9 +21,10 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
 
     auto info = getModuleInfo();
     auto factory = getFactory();
-    if (!info || !factory) {
-        return nullptr;
-    }
+    // 按照标准，此步不应该出错
+    // if (!info || !factory) {
+    //    return nullptr;
+    // }
 
     auto m = new Module;
     m->object = obj;

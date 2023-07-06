@@ -31,6 +31,7 @@ add_executable(TestPlugin TestPlugin/TestPlugin.cpp)
 target_link_libraries(TestPlugin Core GTest::gtest GTest::gtest_main)
 add_test(NAME TestPlugin COMMAND $<TARGET_FILE:TestPlugin>)
 target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module>\"")
+target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_CORE=\"$<TARGET_FILE:Core>\"")
 add_dependencies(TestPlugin Module)
 
 # TestSharedMemory

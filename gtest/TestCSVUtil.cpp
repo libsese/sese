@@ -7,7 +7,7 @@
 TEST(TestCSVUtil, Reader) {
     const char buffer[] = "A1,B1,C1,D1,E1,\r\n"
                           "A2,B2,C2,D2,E2,F2\r\n"
-                          "A3,,C3,D3,,\n"
+                          "A3,,C3,\"D3\",,\n"
                           "A4,B4,C4,D4,E4,";
     auto in = sese::InputBufferWrapper(buffer, sizeof(buffer) - 1);
     sese::CSVReader reader(&in);
@@ -30,8 +30,13 @@ TEST(TestCSVUtil, Reader) {
 
 TEST(TestCSVUtil, Writer) {
     sese::ConsoleOutputStream console;
-    sese::CSVWriter writer(&console, '|');
-    writer.write({"A1", "B1", "C1", ""});
-    writer.write({"A2", "B2", "C2"});
-    writer.write({"A3", "", "C3"});
+    sese::CSVWriter writer1(&console, '|');
+    writer1.write({"A1", "B1", "C1", ""});
+    writer1.write({"A2", "B2", "C2"});
+    writer1.write({"A3", "", "C3"});
+
+    sese::CSVWriter writer2(&console, '^', false);
+    writer2.write({"A1", "B1", "C1", ""});
+    writer2.write({"A2", "B2", "C2"});
+    writer2.write({"A3", "", "C3"});
 }
