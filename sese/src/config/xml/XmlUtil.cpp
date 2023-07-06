@@ -1,7 +1,7 @@
 #include <sese/config/xml/XmlUtil.h>
-#include "sese/util/BufferedStream.h"
+#include <sese/util/BufferedStream.h>
 #include <sese/text/StringBuilder.h>
-#include "sese/util/Util.h"
+#include <sese/util/Util.h>
 
 namespace sese::xml {
 
@@ -35,18 +35,24 @@ namespace sese::xml {
                 tokens.push({ch});
 
             } else if (ch == '/') {
-                if (tokens.front() == "<") {
-                    if (!stringBuilder.empty())
-                        tokens.push(stringBuilder.toString());
+                // if (tokens.front() == "<") {
+                //     if (!stringBuilder.empty()) {
+                //         tokens.push(stringBuilder.toString());
+                //         stringBuilder.clear();
+                //     }
+                //     tokens.push({ch});
+                // } else {
+                //     if (!stringBuilder.empty()) {
+                //         tokens.push(stringBuilder.toString());
+                //         stringBuilder.clear();
+                //     }
+                //     tokens.push({ch});
+                // }
+                if (!stringBuilder.empty()) {
+                    tokens.push(stringBuilder.toString());
                     stringBuilder.clear();
-                    tokens.push({ch});
-                } else {
-                    if (!stringBuilder.empty()) {
-                        tokens.push(stringBuilder.toString());
-                        stringBuilder.clear();
-                    }
-                    tokens.push({ch});
                 }
+                tokens.push({ch});
             } else if (ch == '=') {
                 tokens.push(stringBuilder.toString());
                 stringBuilder.clear();
@@ -68,27 +74,35 @@ namespace sese::xml {
     }
 
     Element::Ptr XmlUtil::deserialize(InputStream *inputStream, size_t level) noexcept {
-        // 此处懒得处理不合规格的格式，直接 catch
         Tokens tokens;
         tokenizer(inputStream, tokens);
-        try {
-            return createElement(tokens, level, false);
-        } catch (...) {
-            return nullptr;
-        }
+        return createElement(tokens, level, false);
     }
 
-    void XmlUtil::removeComment(sese::xml::XmlUtil::Tokens &tokens) noexcept {
+    bool XmlUtil::removeComment(sese::xml::XmlUtil::Tokens &tokens) noexcept {
         tokens.pop();// "!--"
-        while (tokens.front() != "--") {
-            tokens.pop();
+        while (!tokens.empty()) {
+            if (tokens.front() == "--") {
+                break;
+            } else {
+                tokens.pop();
+            }
         }
+        if (tokens.empty()) return false;
+        if (tokens.front() != "--") return false;
         tokens.pop();// "--"
+        if (tokens.empty()) return false;
+        if (tokens.front() != ">") return false;
         tokens.pop();// ">"
+        return true;
     }
+
+#define CHECK(word)                     \
+    if (tokens.empty()) return nullptr; \
+    if (tokens.front() != word) return nullptr
 
     Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t level, bool isSubElement) noexcept {
-        if (level == 0) { return nullptr; }
+        if (level == 0) return nullptr;
         Element::Ptr element = nullptr;
         while (!tokens.empty()) {
             // <name(/,w)>
@@ -96,39 +110,54 @@ namespace sese::xml {
                 if (tokens.front() != "<") return nullptr;
                 tokens.pop();
 
+                if (tokens.empty()) return nullptr;
                 // 根节点注释
                 if (tokens.front() == "!--") {
-                    removeComment(tokens);
-                    continue;
+                    if (!removeComment(tokens)) {
+                        return nullptr;
+                    } else {
+                        continue;
+                    }
                 }
             } else {
                 if (tokens.front() == "!--") {
-                    removeComment(tokens);
-                    tokens.pop();// '<'
+                    if (!removeComment(tokens)) {
+                        return nullptr;
+                    } else {
+                        tokens.pop();// '<'
+                    }
                 }
             }
 
             element = std::make_shared<Element>(tokens.front());
             tokens.pop();
 
+            if (tokens.empty()) return nullptr;
             // attrName=""
-            if (tokens.front() != ">" && tokens.front() != "/") {
-                while (tokens.front() != ">" && tokens.front() != "/") {
-                    std::string attrName = tokens.front();
-                    tokens.pop();// attrName
-                    tokens.pop();// =
-                    element->setAttribute(attrName, tokens.front());
-                    tokens.pop();// attrValue
-                }
+            while (tokens.front() != ">" && tokens.front() != "/") {
+                std::string attrName = tokens.front();
+                tokens.pop();// attrName
+                // if (tokens.empty()) return nullptr;
+                // if (tokens.front() != "=") return nullptr;
+                CHECK("=");
+                tokens.pop();// =
+                if (tokens.empty()) return nullptr;
+                element->setAttribute(attrName, tokens.front());
+                tokens.pop();// attrValue
             }
 
+            if (tokens.empty()) return nullptr;
             // <name (attr="")/>
             if (tokens.front() == "/") {
                 tokens.pop();// '/'
+                // if (tokens.empty()) return nullptr;
+                // if (tokens.front() != ">") return nullptr;
+                CHECK(">");
                 tokens.pop();// '>'
                 return element;
             } else if (tokens.front() == ">") {
                 tokens.pop();// '>'
+                if (tokens.empty()) return nullptr;
                 // 子对象
                 if (tokens.front() == "<") {
                     while (tokens.front() == "<") {
@@ -136,28 +165,51 @@ namespace sese::xml {
                         if (tokens.front() == "/") {
                             // 父对象结尾
                             tokens.pop();// '/'
+                            // if (tokens.empty()) return nullptr;
+                            // if (tokens.front() != element->getName()) return nullptr;
+                            CHECK(element->getName());
                             tokens.pop();// name
+                            // if (tokens.empty()) return nullptr;
+                            // if (tokens.front() != ">") return nullptr;
+                            CHECK(">");
                             tokens.pop();// '>'
                             return element;
                         } else {
                             level--;
                             auto object = createElement(tokens, level, true);
                             level++;
-                            if (object) element->elements.push_back(object);
+                            if (object) {
+                                element->elements.push_back(object);
+                            } else {
+                                return nullptr;
+                            }
                         }
                     }
                 } else {
-                    std::string value = tokens.front();
-                    tokens.pop();
-                    while (tokens.front() != "<") {
-                        value += " " + tokens.front();
-                        tokens.pop();
+                    bool first = true;
+                    text::StringBuilder stringBuilder;
+                    while (!tokens.empty()) {
+                        if (tokens.front() == "<") {
+                            break;
+                        } else {
+                            if (first) {
+                                first = false;
+                            } else {
+                                stringBuilder.append(" ");
+                            }
+                            stringBuilder.append(tokens.front());
+                            tokens.pop();
+                        }
                     }
-                    element->setValue(value);
+                    element->setValue(stringBuilder.toString());
 
+                    CHECK("<");
                     tokens.pop();// '<'
+                    CHECK("/");
                     tokens.pop();// '/'
+                    CHECK(element->getName());
                     tokens.pop();// name
+                    CHECK(">");
                     tokens.pop();// '>'
                     return element;
                 }

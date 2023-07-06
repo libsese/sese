@@ -46,7 +46,7 @@ namespace sese::xml {
     private:
         static void tokenizer(InputStream *inputStream, Tokens &tokens) noexcept;
 
-        static void removeComment(Tokens &tokens) noexcept;
+        static bool removeComment(Tokens &tokens) noexcept;
 
         static Element::Ptr createElement(Tokens &tokens, size_t level, bool isSubElement) noexcept;
     };

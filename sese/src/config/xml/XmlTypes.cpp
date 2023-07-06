@@ -44,7 +44,7 @@ namespace sese::xml {
     }
 
     void Element::removeAttribute(const std::string &nameStr) {
-        attributes.erase(name);
+        attributes.erase(nameStr);
     }
 
 }// namespace sese::xml
