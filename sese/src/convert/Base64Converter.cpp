@@ -1,29 +1,26 @@
 #include "sese/convert/Base64Converter.h"
 
+#include <cmath>
+#include <cstring>
+#include <string.h>
+#include <vector>
+#include <algorithm>
+
 using sese::Base64Converter;
 using sese::Stream;
 
 /// 标准 BASE64 码表
-constexpr static const unsigned char Base64CodePage[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const unsigned char sese::Base64Converter::Base64CodePage[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-void inline encode(unsigned char in, unsigned char &out, Base64Converter::CodePage codePage) {
-    if (in < 62) {
-        out = Base64CodePage[in];
-    } else {
-        if (codePage == Base64Converter::CodePage::BASE62) {
-            if (in == 62) out = '-';
-            else
-                out = '_';
-        } else {
-            if (in == 62) out = '+';
-            else
-                out = '/';
-        }
-    }
+const unsigned char sese::Base64Converter::Base62CodePage[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+void inline encode(unsigned char in, unsigned char &out) {
+    out = sese::Base64Converter::Base64CodePage[in];
 }
 
-void Base64Converter::encode(InputStream *src, OutputStream *dest, CodePage codePage) {
-    unsigned char buffer[4]{0};
+void Base64Converter::encode(InputStream *src, OutputStream *dest) {
+    unsigned char buffer[3]{0};
+    unsigned char result[4]{0};
 
     int64_t len;
     while ((len = src->read(buffer, 3)) != 0) {
@@ -35,34 +32,30 @@ void Base64Converter::encode(InputStream *src, OutputStream *dest, CodePage code
         }
 
         unsigned char bits = 0b00000000;
-        unsigned char preBits = 0b00000000;
         // 1
         bits = (buffer[0] & 0b11111100) >> 2;
-        preBits = buffer[0];
-        ::encode(bits, buffer[0], codePage);
+        ::encode(bits, result[0]);
         // 2
-        bits = (preBits & 0b00000011) << 4 | (buffer[1] & 0b11110000) >> 4;
-        preBits = buffer[1];
-        ::encode(bits, buffer[1], codePage);
+        bits = (buffer[0] & 0b00000011) << 4 | (buffer[1] & 0b11110000) >> 4;
+        ::encode(bits, result[1]);
         // 3
-        if(len >= 2) {
-            bits = (preBits & 0b00001111) << 2 | (buffer[2] & 0b11000000) >> 6;
-            preBits = buffer[2];
-            ::encode(bits, buffer[2], codePage);
+        if (len >= 2) {
+            bits = (buffer[1] & 0b00001111) << 2 | (buffer[2] & 0b11000000) >> 6;
+            ::encode(bits, result[2]);
 
             // 4
-            if (len == 3 ) {
-                bits = (preBits & 0b00111111);
-                ::encode(bits, buffer[3], codePage);
+            if (len == 3) {
+                bits = (buffer[2] & 0b00111111);
+                ::encode(bits, result[3]);
             }
         }
-        dest->write(buffer, len + 1);
+        dest->write(result, len + 1);
         if (len != 3) dest->write("==", len == 1 ? 2 : 1);
     }
 }
 
-void Base64Converter::encode(const InputStream::Ptr &src, const OutputStream::Ptr &dest, CodePage codePage) {
-    encode(src.get(), dest.get(), codePage);
+void Base64Converter::encode(const InputStream::Ptr &src, const OutputStream::Ptr &dest) {
+    encode(src.get(), dest.get());
 }
 
 void Base64Converter::decode(InputStream *src, OutputStream *dest) {
@@ -70,16 +63,16 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
 
     int64_t len;
     while ((len = src->read(buffer, 4)) != 0) {
-        for(auto i = 0; i < len; i++){
-            if(buffer[i] >= 'A' && buffer[i] <= 'Z') {
+        for (auto i = 0; i < len; i++) {
+            if (buffer[i] >= 'A' && buffer[i] <= 'Z') {
                 buffer[i] -= 65;
-            } else if(buffer[i] >= 'a' && buffer[i] <= 'z') {
+            } else if (buffer[i] >= 'a' && buffer[i] <= 'z') {
                 buffer[i] -= 71;
-            } else if(buffer[i] >= '0' && buffer[i] <= '9') {
+            } else if (buffer[i] >= '0' && buffer[i] <= '9') {
                 buffer[i] += 4;
-            } else if(buffer[i] == '+' || buffer[i] == '-') {
+            } else if (buffer[i] == '+' || buffer[i] == '-') {
                 buffer[i] = 62;
-            } else if(buffer[i] == '/' || buffer[i] == '_') {
+            } else if (buffer[i] == '/' || buffer[i] == '_') {
                 buffer[i] = 63;
             } else {
                 buffer[i] = 0;
@@ -87,15 +80,15 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
         }
 
         // 1
-        if(len >= 2) {
+        if (len >= 2) {
             buffer[0] = (buffer[0] << 2) | (buffer[1] & 0b00110000) >> 4;
 
             // 2
-            if(len >= 3) {
+            if (len >= 3) {
                 buffer[1] = (buffer[1] & 0b00001111) << 4 | (buffer[2] & 0b00111100) >> 2;
 
                 // 3
-                if(len == 4){
+                if (len == 4) {
                     buffer[2] = (buffer[2] & 0b00000011) << 6 | buffer[3];
                 }
             }
@@ -107,4 +100,35 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
 
 void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Ptr &dest) {
     decode(src.get(), dest.get());
+}
+
+void Base64Converter::encodeInteger(size_t num, sese::OutputStream *output, sese::Base64Converter::CodePage codePage) noexcept {
+    if (num == 0) {
+        output->write(&codePage[0], 1);
+        return;
+    }
+
+    std::vector<unsigned char> vector;
+    auto base = strlen((const char *) codePage);
+    while (num > 0) {
+        std::div_t res = div((int) num, (int) base);
+        num = res.quot;
+        vector.push_back(codePage[res.rem]);
+    }
+
+    std::reverse(vector.begin(), vector.end());
+    output->write(vector.data(), vector.size());
+}
+
+int64_t Base64Converter::decodeBuffer(const unsigned char *buffer, size_t size, sese::Base64Converter::CodePage codePage) noexcept {
+    auto base = strlen((const char *) codePage);
+    auto page = std::string_view((const char *) codePage, base);
+    int64_t num = 0;
+    for (auto idx = 0; idx < size; ++idx) {
+        auto power = (size - (idx + 1));
+        auto i = page.find((char) (buffer[idx]));
+        if (i == std::string::npos) return -1;
+        num += i * static_cast<int64_t>(std::pow(base, power));
+    }
+    return num;
 }
