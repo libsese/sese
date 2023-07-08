@@ -31,15 +31,25 @@ namespace sese {
         static const unsigned char Base64CodePage[];
         static const unsigned char Base62CodePage[];
 
-        static bool encode(const InputStream *input, OutputStream *output, CodePage page) noexcept;
-        static bool decode(const InputStream *input, OutputStream *output, CodePage page) noexcept;
+        /// 按照 Base62 码表编码
+        /// \warning 注意此函数的编码方式类似于 Base64，并不是标准的 Base62编码
+        /// \param input 输入流
+        /// \param output 输出流
+        /// \return 编码结果
+        static bool encodeBase62(InputStream *input, OutputStream *output) noexcept;
+        /// 按照 Base62 码表解码
+        /// \warning 注意此函数的解码方式类似于 Base64，并不是标准的 Base62解码
+        /// \param input 输入流
+        /// \param output 输出流
+        /// \return 编码结果
+        static bool decodeBase62(InputStream *input, OutputStream *output) noexcept;
 
 #ifdef SESE_BUILD_TEST
     public:
 #else
     private:
 #endif
-        static void encodeInteger(size_t num, OutputStream *output, CodePage codePage) noexcept;
+        static bool encodeInteger(size_t num, OutputStream *output, CodePage codePage) noexcept;
         static int64_t decodeBuffer(const unsigned char *buffer, size_t size, CodePage codePage) noexcept;
     };
 }// namespace sese

@@ -1,8 +1,8 @@
 #include "sese/convert/Base64Converter.h"
+#include "sese/util/Endian.h"
 
 #include <cmath>
 #include <cstring>
-#include <string.h>
 #include <vector>
 #include <algorithm>
 
@@ -102,10 +102,10 @@ void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Pt
     decode(src.get(), dest.get());
 }
 
-void Base64Converter::encodeInteger(size_t num, sese::OutputStream *output, sese::Base64Converter::CodePage codePage) noexcept {
+bool Base64Converter::encodeInteger(size_t num, sese::OutputStream *output, sese::Base64Converter::CodePage codePage) noexcept {
     if (num == 0) {
         output->write(&codePage[0], 1);
-        return;
+        return true;
     }
 
     std::vector<unsigned char> vector;
@@ -117,7 +117,7 @@ void Base64Converter::encodeInteger(size_t num, sese::OutputStream *output, sese
     }
 
     std::reverse(vector.begin(), vector.end());
-    output->write(vector.data(), vector.size());
+    return output->write(vector.data(), vector.size()) == vector.size();
 }
 
 int64_t Base64Converter::decodeBuffer(const unsigned char *buffer, size_t size, sese::Base64Converter::CodePage codePage) noexcept {
@@ -128,7 +128,65 @@ int64_t Base64Converter::decodeBuffer(const unsigned char *buffer, size_t size, 
         auto power = (size - (idx + 1));
         auto i = page.find((char) (buffer[idx]));
         if (i == std::string::npos) return -1;
-        num += i * static_cast<int64_t>(std::pow(base, power));
+        num += i * static_cast<int64_t>(std::pow(base, power));// NOLINT
     }
     return num;
+}
+
+bool Base64Converter::encodeBase62(InputStream *input, OutputStream *output) noexcept {
+    unsigned char buffer[4]{};
+
+    int64_t len;
+    while ((len = input->read(buffer + 1, 3)) != 0) {
+        if (len == 2) {
+            buffer[3] = buffer[2];
+            buffer[2] = buffer[1];
+            buffer[1] = 0;
+        } else if (len == 1) {
+            buffer[3] = buffer[1];
+            buffer[2] = 0;
+            buffer[1] = 0;
+        }
+        // buffer[0] always be zero
+        auto num = *(uint32_t *) &buffer;
+        num = FromBigEndian32(num);
+        if (!encodeInteger(num, output, Base62CodePage)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool Base64Converter::decodeBase62(InputStream *input, OutputStream *output) noexcept {
+    unsigned char buffer[4]{};
+
+    int64_t len;
+    while ((len = input->read(buffer, 4)) != 0) {
+        auto num = decodeBuffer(buffer, len, Base62CodePage);
+        if (num == -1) {
+            return false;
+        }
+
+        num = ToBigEndian32(num);
+        if (len == 4) {
+            if (3 != output->write(((char *) &num) + 1, 3)) {
+                return false;
+            }
+        } else if (len == 3) {
+            if (2 != output->write(((char *) &num) + 2, 2)) {
+                return false;
+            }
+        } else if (len == 2) {
+            if (1 != output->write(((char *) &num) + 3, 1)) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        memset(buffer, 0, 4);
+    }
+
+    return true;
 }
