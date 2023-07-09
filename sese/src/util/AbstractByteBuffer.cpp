@@ -1,4 +1,5 @@
 #include "sese/util/AbstractByteBuffer.h"
+
 #include <cstring>
 
 namespace sese {
@@ -19,33 +20,62 @@ namespace sese {
         this->currentReadNode = root;
     }
 
-    AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &abstractByteBuffer) noexcept {
-        this->root = new Node(abstractByteBuffer.cap);
-        this->cap = abstractByteBuffer.cap;
-        this->length = 0;
-        this->currentWriteNode = root;
-        this->currentWritePos = abstractByteBuffer.length + abstractByteBuffer.currentWritePos;
-        this->currentReadNode = root;
-//        this->currentReadPos = abstractByteBuffer.length + abstractByteBuffer.currentReadPos;
+    AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &src) noexcept {
+        // this->root = new Node(abstractByteBuffer.cap);
+        // this->cap = abstractByteBuffer.cap;
+        // this->length = 0;
+        // this->currentWriteNode = root;
+        // this->currentWritePos = abstractByteBuffer.length + abstractByteBuffer.currentWritePos;
+        // this->currentReadNode = root;
+        // this->currentReadPos = abstractByteBuffer.length + abstractByteBuffer.currentReadPos;
+        // size_t copyPos = 0;
+        // Node *pNode = abstractByteBuffer.root;
+        // if (pNode != nullptr) {
+        //     while (true) {
+        //         if(pNode == abstractByteBuffer.currentReadNode) {
+        //             this->currentReadPos = copyPos + abstractByteBuffer.currentReadPos;
+        //         }
+        //         memcpy((char *) root->buffer + copyPos, pNode->buffer, pNode->length);
+        //         if (pNode->next == nullptr) {
+        //             break;
+        //         } else {
+        //             pNode = pNode->next;
+        //             copyPos += pNode->length;
+        //         }
+        //     }
+        // }
+        /// 根节点属性
+        this->root = new Node(src.root->cap);
+        this->root->length = src.root->length;
+        memcpy(this->root->buffer, src.root->buffer, src.root->length);
+        this->currentWriteNode = this->root;
+        this->currentReadNode = this->root;
 
-        size_t copyPos = 0;
-        Node *pNode = abstractByteBuffer.root;
-        if (pNode != nullptr) {
-            while (true) {
-                if(pNode == abstractByteBuffer.currentReadNode) {
-                    this->currentReadPos = copyPos + abstractByteBuffer.currentReadPos;
-                }
+        /// 拷贝子节点
+        Node *pLastNode = this->root;
+        Node *pNode = src.root->next;
+        while (pNode) {
+            auto sub = new Node(pNode->cap);
+            sub->length = pNode->length;
+            memcpy(sub->buffer, pNode->buffer, pNode->length);
 
-                memcpy((char *) root->buffer + copyPos, pNode->buffer, pNode->length);
-
-                if (pNode->next == nullptr) {
-                    break;
-                } else {
-                    pNode = pNode->next;
-                    copyPos += pNode->length;
-                }
+            if (pNode == src.currentWriteNode) {
+                this->currentWriteNode = sub;
+            } else if (pNode == src.currentReadNode) {
+                this->currentReadNode = sub;
             }
+
+            pLastNode->next = sub;
+            pLastNode = sub;
+
+            pNode = pNode->next;
         }
+
+        /// 拷贝全局属性
+        this->cap = src.cap;
+        this->length = src.length;
+        this->currentReadPos = src.currentReadPos;
+        this->currentWritePos = src.currentWritePos;
     }
 
     AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer) noexcept {
@@ -183,7 +213,7 @@ namespace sese {
                 _currentReadPos += needRead;
                 break;
             }
-                // 当前单元不能满足读取需求
+            // 当前单元不能满足读取需求
             else {
                 memcpy((char *) buffer + actualRead, (char *) _currentReadNode->buffer + _currentReadPos, currentReadNodeRemaining);
                 actualRead += (int64_t) currentReadNodeRemaining;
