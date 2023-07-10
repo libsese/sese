@@ -14,6 +14,8 @@
 #error only support x86_64 & arm64
 #endif
 
+/// C++ 版本标识符
+#define SESE__CXX_STANDARD __cplusplus
 /// 可导出类型标识符
 #define API
 /// pid_t 格式化占位符

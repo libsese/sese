@@ -1,3 +1,4 @@
+#include <sese/util/OutputUtil.h>
 #include <sese/util/FixedBuffer.h>
 #include <sese/util/FixedBuilder.h>
 
@@ -9,11 +10,13 @@ TEST(TestFixedBuffer, Write) {
 
     int64_t len;
     std::string data0 = "1234567890";
-    len = buffer.write(data0.data(), data0.length());
+    // len = buffer.write(data0.data(), data0.length());
+    len = buffer << data0;
     ASSERT_EQ(len, data0.length());
 
     std::string data1 = "ABCDEFGHIJK";
-    len = buffer.write(data1.c_str(), data1.length());
+    // len = buffer.write(data1.c_str(), data1.length());
+    len = buffer << data1;
     ASSERT_EQ(len, size - data0.length());
 }
 
@@ -34,7 +37,7 @@ TEST(TestFixedBuffer, Read) {
 TEST(TestFixedBuffer, Peek) {
     auto size = 16;
     auto buffer = sese::FixedBuffer(16);
-    ASSERT_EQ(buffer.write("ABCDEFGHIJKLMNOP", 16), 16);
+    ASSERT_EQ(buffer << "ABCDEFGHIJKLMNOP", 16);
     
     int64_t len;
     char buf[9];

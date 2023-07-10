@@ -18,6 +18,9 @@
 #error only support x86_64 & arm64
 #endif
 
+/// C++ 版本标识符
+#define SESE__CXX_STANDARD _MSVC_LANG
+
 #ifdef WINDOWS_DLL
 /// 可导出类型标识符
 #define API __declspec(dllexport)
