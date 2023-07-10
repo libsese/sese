@@ -8,6 +8,7 @@
 #pragma once
 
 #include "sese/util/InputStream.h"
+#include "sese/util/OutputStream.h"
 #include "sese/util/PeekableStream.h"
 
 namespace sese {
@@ -34,5 +35,8 @@ namespace sese {
         size_t pos = 0;
         size_t cap = 0;
     };
+}// namespace sese
 
-}
+int64_t operator<<(sese::OutputStream &out, sese::InputBufferWrapper &input) noexcept;
+
+int64_t operator<<(sese::OutputStream *out, sese::InputBufferWrapper &input) noexcept;

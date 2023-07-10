@@ -1,4 +1,5 @@
 #include "sese/util/InputBufferWrapper.h"
+#include "sese/util/OutputStream.h"
 
 sese::InputBufferWrapper::InputBufferWrapper(const char *buffer, size_t cap) {
     this->buffer = buffer;
@@ -62,4 +63,16 @@ int64_t sese::InputBufferWrapper::trunc(size_t length) {
         pos = cap;
         return (int64_t) (remain);
     }
+}
+
+int64_t operator<<(sese::OutputStream &out, sese::InputBufferWrapper &input) noexcept {
+    auto len = out.write(input.getBuffer() + input.getLen(), input.getCap() - input.getLen());
+    input.trunc(len);
+    return len;
+}
+
+int64_t operator<<(sese::OutputStream *out, sese::InputBufferWrapper &input) noexcept {
+    auto len = out->write(input.getBuffer() + input.getLen(), input.getCap() - input.getLen());
+    input.trunc(len);
+    return len;
 }
