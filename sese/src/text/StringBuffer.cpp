@@ -1,4 +1,5 @@
 #include "sese/text/StringBuffer.h"
+#include "sese/text/AbstractStringBuffer.h"
 #include "sese/thread/Locker.h"
 
 sese::text::StringBuffer::StringBuffer(size_t cap) noexcept : AbstractStringBuffer(cap) {
@@ -13,6 +14,16 @@ void sese::text::StringBuffer::append(char ch) noexcept {
 }
 
 void sese::text::StringBuffer::append(const char *str) noexcept {
+    Locker locker(mutex);
+    AbstractStringBuffer::append(str);
+}
+
+void sese::text::StringBuffer::append(const std::string &str) noexcept {
+    Locker locker(mutex);
+    AbstractStringBuffer::append(str);
+}
+
+void sese::text::StringBuffer::append(const std::string_view &str) noexcept {
     Locker locker(mutex);
     AbstractStringBuffer::append(str);
 }
@@ -67,9 +78,14 @@ bool sese::text::StringBuffer::insertAt(int index, const char *str) {
     return AbstractStringBuffer::insertAt(index, str);
 }
 
-void sese::text::StringBuffer::insertAt(int index, const std::string &str) {
+bool sese::text::StringBuffer::insertAt(int index, const std::string &str) {
     Locker locker(mutex);
-    AbstractStringBuffer::insertAt(index, str);
+    return AbstractStringBuffer::insertAt(index, str);
+}
+
+bool sese::text::StringBuffer::insertAt(int index, const std::string_view &str) {
+    Locker locker(mutex);
+    return AbstractStringBuffer::insertAt(index, str);
 }
 
 void sese::text::StringBuffer::trim() noexcept {

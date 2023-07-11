@@ -90,7 +90,7 @@ set(
 set(
         TEXT_SRC
         src/text/DateTimeFormatter.cpp src/text/TextReader.cpp
-        src/text/AbstractStringBuffer.cpp
+        src/text/AbstractStringBuffer.cpp src/text/StringBuffer.cpp
 )
 
 set(
@@ -99,15 +99,15 @@ set(
         src/util/AbstractByteBuffer.cpp src/util/BufferedStream.cpp
         src/util/BufferedOutputStream.cpp src/util/BufferedInputStream.cpp
         src/util/DateTime.cpp src/util/TimeSpan.cpp
-        src/util/StringBuffer.cpp src/util/ByteBuffer.cpp
         src/util/Random.cpp src/util/Util.cpp
         src/util/FileStream.cpp src/util/Test.cpp
         src/util/Timer.cpp src/util/Initializer.cpp
         src/util/MemoryViewer.cpp src/util/ConsoleOutputStream.cpp
         src/util/OutputBufferWrapper.cpp src/util/InputBufferWrapper.cpp
         src/util/AbstractFixedBuffer.cpp src/util/FixedBuffer.cpp
-)
-
+        src/util/ByteBuffer.cpp
+        )
+        
 set(
         SECURITY_SRC
         src/security/SecurityConfig.cpp src/security/SSLContext.cpp

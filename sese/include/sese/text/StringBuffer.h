@@ -29,6 +29,8 @@ namespace sese::text {
     public:
         void append(char ch) noexcept override;
         void append(const char *str) noexcept override;
+        void append(const std::string &str) noexcept override;
+        void append(const std::string_view &str) noexcept override;
         [[nodiscard]] size_t length() noexcept;
         [[nodiscard]] size_t size() noexcept;
         [[nodiscard]] bool empty() noexcept;
@@ -39,7 +41,8 @@ namespace sese::text {
         bool delCharAt(int index) override;
         bool del(int start, int end) override;
         bool insertAt(int index, const char *str) override;
-        void insertAt(int index, const std::string &str) override;
+        bool insertAt(int index, const std::string &str) override;
+        bool insertAt(int index, const std::string_view &str) override;
         void trim() noexcept override;
         [[nodiscard]] std::vector<std::string> split(const std::string &str) noexcept;
         std::string toString() override;

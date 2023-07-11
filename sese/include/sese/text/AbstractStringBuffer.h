@@ -5,7 +5,9 @@
  * @date 2022年3月28日
  */
 #pragma once
+
 #include "sese/Config.h"
+
 #include <vector>
 
 namespace sese::text {
@@ -32,9 +34,9 @@ namespace sese::text {
         static std::vector<std::string> split(const std::string &text, const std::string &sub) noexcept;
 
     protected:
-        size_t cap{};           /// 实际容量
-        size_t len = 0;         /// 字符串长度
-        char *buffer = nullptr; /// 字符串缓存
+        size_t cap{};          /// 实际容量
+        size_t len = 0;        /// 字符串长度
+        char *buffer = nullptr;/// 字符串缓存
 
     protected:
         /**
@@ -43,10 +45,15 @@ namespace sese::text {
          */
         void expansion(size_t newSize) noexcept;
 
+        void append(const char *data, size_t len);
+
+        bool insertAt(int index, const char *data, size_t len);
+
     public:
         virtual void append(char ch) noexcept;
         virtual void append(const char *str) noexcept;
-        void append(const std::string &str) noexcept { this->append(str.c_str()); }
+        virtual void append(const std::string &str) noexcept;
+        virtual void append(const std::string_view &str) noexcept;
         [[nodiscard]] virtual size_t length() const noexcept { return this->len; }
         [[nodiscard]] virtual size_t size() const noexcept { return this->cap; }
         [[nodiscard]] virtual bool empty() const noexcept { return 0 == this->len; };
@@ -57,11 +64,18 @@ namespace sese::text {
         virtual bool delCharAt(int index);
         virtual bool del(int start, int end);
         virtual bool insertAt(int index, const char *str);
-        virtual void insertAt(int index, const std::string &str) { this->insertAt(index, str.c_str()); };
+        virtual bool insertAt(int index, const std::string &str);
+        virtual bool insertAt(int index, const std::string_view &str);
         /// 去除两端空格
         virtual void trim() noexcept;
         [[nodiscard]] virtual std::vector<std::string> split(const std::string &str) const noexcept;
         virtual std::string toString();
+
+    public:
+        void operator<<(char ch) noexcept { this->append(ch); }
+        void operator<<(const char *str) noexcept { this->append(str); }
+        void operator<<(const std::string &str) noexcept { this->append(str); }
+        void operator<<(const std::string_view &str) noexcept { this->append(str); }
     };
 
-}// namespace sese
+}// namespace sese::text

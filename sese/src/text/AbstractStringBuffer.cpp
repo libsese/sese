@@ -64,15 +64,27 @@ namespace sese::text {
         return v;
     }
 
-    void AbstractStringBuffer::append(const char *str) noexcept {
-        auto l = strlen(str);
+    void AbstractStringBuffer::append(const char *data, size_t l) {
         if (l > cap - this->len) {
             // 触发扩容
             auto newSize = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
             this->expansion(newSize);
         }
-        memcpy(&this->buffer[this->len], str, l);
+        memcpy(&this->buffer[this->len], data, l);
         this->len += l;
+    }
+
+    void AbstractStringBuffer::append(const char *str) noexcept {
+        auto l = strlen(str);
+        append(str, l);
+    }
+
+    void AbstractStringBuffer::append(const std::string &str) noexcept {
+        append(str.data(), str.length());
+    }
+
+    void AbstractStringBuffer::append(const std::string_view &str) noexcept {
+        append(str.data(), str.length());
     }
 
     void AbstractStringBuffer::expansion(size_t newSize) noexcept {
@@ -84,40 +96,31 @@ namespace sese::text {
     }
 
     std::string AbstractStringBuffer::toString() {
-        //        std::shared_ptr<char> str(new char[this->len + 1], [](const char *p) { delete[] p; });
-        //        memcpy(str.get(), this->buffer, this->len + 1);
-        //        str.get()[this->len] = '\0';
-        //        return {str.get()};
-        if (1 > cap - this->len) {
-            // 触发扩容
-            auto newSize = ((1 + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
-            this->expansion(newSize);
-        }
-        this->buffer[this->len] = '\0';
-        return {this->buffer};
+        auto view = std::string_view(this->buffer, this->len);
+        return {view.begin(), view.end()};
     }
 
     void AbstractStringBuffer::clear() noexcept {
-        memset(this->buffer, 0, cap);
+        // memset(this->buffer, 0, cap);
         this->len = 0;
     }
 
     std::vector<std::string> AbstractStringBuffer::split(const std::string &str) const noexcept {
         std::vector<std::string> v;
-//        auto s = std::string(this->buffer);
+        //        auto s = std::string(this->buffer);
         auto s = std::string_view(this->buffer);
         std::string::size_type pos1, pos2;
         pos2 = s.find(str);
         pos1 = 0;
         while (std::string::npos != pos2) {
-//            v.push_back(s.substr(pos1, pos2 - pos1));
+            //            v.push_back(s.substr(pos1, pos2 - pos1));
             v.emplace_back(s.data() + pos1, pos2 - pos1);
 
             pos1 = pos2 + str.size();
             pos2 = s.find(str, pos1);
         }
         if (pos1 != s.length()) {
-//            v.push_back(s.substr(pos1));
+            //            v.push_back(s.substr(pos1));
             v.emplace_back(s.data() + pos1);
         }
         return v;
@@ -147,7 +150,7 @@ namespace sese::text {
 
     bool AbstractStringBuffer::delCharAt(int index) {
         // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
-        if (!CheckRange(index, this->cap)) return false;
+        if (!CheckRange(index, this->len)) return false;
         for (int i = index; i < len - 1; i++) {
             this->buffer[i] = this->buffer[i + 1];
         }
@@ -158,7 +161,7 @@ namespace sese::text {
 
     bool AbstractStringBuffer::del(int start, int end) {
         if (0 < start) return false;
-        if (this->cap < end) return false;
+        if (this->len < end) return false;
         int delCount = end - start + 1;
         for (int i = start; i < len - delCount; i++) {
             if (i + delCount > len) {
@@ -172,20 +175,30 @@ namespace sese::text {
         return true;
     }
 
-    bool AbstractStringBuffer::insertAt(int index, const char *str) {
+    bool AbstractStringBuffer::insertAt(int index, const char *data, size_t l) {
         if (this->cap <= index) return false;
-        size_t l = strlen(str);
         if (l > cap - this->len) {
             // 触发扩容
             auto newSize = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
             this->expansion(newSize);
         }
-
-        for (size_t i = 0; i < len - index + 1; i++) {
-            this->buffer[len + l - i] = this->buffer[len - i];
-        }
-        memcpy(&this->buffer[index], str, l);
+        memmove(&this->buffer[len + index - 1], &this->buffer[index], len);
+        memcpy(&this->buffer[index], data, l);
+        this->len += l;
         return true;
+    }
+
+    bool AbstractStringBuffer::insertAt(int index, const char *str) {
+        auto l = strlen(str);
+        return insertAt(index, str, l);
+    }
+
+    bool AbstractStringBuffer::insertAt(int index, const std::string &str) {
+        return insertAt(index, str.data(), str.length());
+    }
+
+    bool AbstractStringBuffer::insertAt(int index, const std::string_view &str) {
+        return insertAt(index, str.data(), str.length());
     }
 
     void AbstractStringBuffer::trim() noexcept {
@@ -224,4 +237,4 @@ namespace sese::text {
         this->len += 1;
     }
 
-}// namespace sese
+}// namespace sese::text
