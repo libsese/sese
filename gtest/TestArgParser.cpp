@@ -2,15 +2,15 @@
 #include "sese/record/LogHelper.h"
 #include "gtest/gtest.h"
 
-TEST(TestArgParser, _0) {
+TEST(TestArgParser, Parse_0) {
     sese::record::LogHelper log("ARGS");
 
     int argc = 4;
-    char arg0[32] {R"(D:\Users\sese\TestArgParser)"};
+    char arg0[32]{R"(D:\Users\sese\TestArgParser)"};
     // char arg0[32] {"/home/sese/TestArgParser"};
-    char arg1[16] {"a1=hello"};
-    char arg2[16] {"a2=\"a sentence\""};
-    char arg3[16] {"a3=123"};
+    char arg1[16]{"a1=hello"};
+    char arg2[16]{"a2=\"a sentence\""};
+    char arg3[16]{"a3=123"};
     char *argv[] = {arg0, arg1, arg2, arg3};
 
     auto args = std::make_unique<sese::ArgParser>();
@@ -27,4 +27,20 @@ TEST(TestArgParser, _0) {
     findValue("a1", "undef");
     findValue("a2", "undef");
     findValue("a3", "undef");
+    findValue("a4", "undef");
+
+    auto set = args->getKeyValSet();
+    for (auto &item : set) {
+        log.info("%s: %s", item.first.c_str(), item.second.c_str());
+    }
+}
+
+TEST(TestArgParser, Parse_1) {
+    int argc = 2;
+    char arg0[32]{R"(D:\Users\sese\TestArgParser)"};
+    char arg1[16]{"--enable-xxx"};
+    char *argv[] = {arg0, arg1};
+
+    auto args = std::make_unique<sese::ArgParser>();
+    EXPECT_FALSE(args->parse(argc, argv));
 }
