@@ -50,7 +50,7 @@ TEST(TestFixedBuffer, Peek) {
     ASSERT_EQ(buffer.trunc(9), 7);
 }
 
-TEST(TestFixedBuffer, Misc) {
+TEST(TestFixedBuffer, Misc_0) {
     auto buffer = sese::FixedBuilder(10);
     buffer.write("Hello", 5);
 
@@ -61,4 +61,14 @@ TEST(TestFixedBuffer, Misc) {
     ASSERT_EQ(buffer.getWriteableSize(), 0);
     k.reset();
     ASSERT_EQ(k.getWriteableSize(), 10);
+}
+
+TEST(TestFixedBuffer, Misc_1) {
+    auto buffer = sese::FixedBuffer(10);
+    buffer.write("Hello", 5);
+    ASSERT_EQ(buffer.getReadableSize(), 5);
+    ASSERT_EQ(buffer.getWriteableSize(), 5);
+    buffer.reset();
+    ASSERT_EQ(buffer.getReadableSize(), 0);
+    ASSERT_EQ(buffer.getWriteableSize(), 10);
 }

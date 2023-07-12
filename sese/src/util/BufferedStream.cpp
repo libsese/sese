@@ -66,14 +66,14 @@ int64_t BufferedStream::read(void *buf, size_t length) {
         // 先处理已有缓存
         size_t total = this->len - this->pos;
         memcpy(buf, this->buffer, total);
-        this->cap = 0;
         this->len = 0;
+        this->pos = 0;
         // 操作裸流
         size_t read;
         while (true) {
-            read = source->read((char *) buf + total, this->cap);
+            read = source->read((char *) buf + total, (length - total) >= 1024 ? 1024 : length - total);
             total += (int64_t) read;
-            if (read != this->cap || total == length) {
+            if (read == 0 || total == length) {
                 // 流已读尽或者需求已满足则退出
                 break;
             }
