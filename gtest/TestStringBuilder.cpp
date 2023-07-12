@@ -13,6 +13,13 @@ TEST(TestStringBuilder, Construct_0) {
     auto string0 = builder0.toString();
     auto string1 = builder1.toString();
     ASSERT_EQ(string0, string1);
+    builder0.clear();
+    builder1.clear();
+    builder3.clear();
+
+    ASSERT_TRUE(builder0.empty());
+    ASSERT_EQ(builder0.length(), 0);
+    ASSERT_NE(builder0.size(), 0);
 }
 
 TEST(TestStringBuilder, Construct_1) {
@@ -41,10 +48,11 @@ TEST(TestStringBuilder, Append) {
     builder << "H";
     builder << std::string("e");
     builder << std::string_view("l");
-    builder << 'l';
-    builder << 'o';
+    builder << sese::text::String((const char *) "l", 1);
+    builder << sese::text::StringView("o");
+    builder << '!';
     auto string = builder.toString();
-    ASSERT_EQ(string, std::string_view("Hello"));
+    ASSERT_EQ(string, std::string_view("Hello!"));
 }
 
 TEST(TestStringBuilder, Expansion) {
@@ -99,12 +107,19 @@ TEST(TestStringBuilder, Misc_0) {
     ASSERT_FALSE(builder.del(12, 2));
     ASSERT_FALSE(builder.del(2, 12));
 
-    ASSERT_TRUE(builder.insertAt(0, "Hi, "));
+    ASSERT_TRUE(builder.insertAt(0, " "));
+    ASSERT_TRUE(builder.insertAt(0, std::string(",")));
+    ASSERT_TRUE(builder.insertAt(0, std::string_view(" ")));
+    ASSERT_TRUE(builder.insertAt(0, sese::text::String("i", 1)));
+    ASSERT_TRUE(builder.insertAt(0, sese::text::StringView("H")));
 
     auto string = builder.toString();
-    ASSERT_EQ(string, std::string_view("Hi, World"));
+    ASSERT_EQ(string, std::string_view("Hi , World"));
 
-    builder.insertAt(9, ", 你好");
+    builder.insertAt(10, ", 你好");
     string = builder.toString();
-    ASSERT_EQ(string, std::string_view("Hi, World, 你好"));
+    ASSERT_EQ(string, std::string_view("Hi , World, 你好"));
+
+    auto sstring = builder.toSString();
+    ASSERT_EQ(sstring, sese::text::StringView("Hi , World, 你好"));
 }

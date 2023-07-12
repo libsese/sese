@@ -28,6 +28,16 @@ void sese::text::StringBuffer::append(const std::string_view &str) noexcept {
     AbstractStringBuffer::append(str);
 }
 
+void sese::text::StringBuffer::append(const String &str) noexcept {
+    Locker locker(mutex);
+    AbstractStringBuffer::append(str);
+}
+
+void sese::text::StringBuffer::append(const StringView &str) noexcept {
+    Locker locker(mutex);
+    AbstractStringBuffer::append(str);
+}
+
 void sese::text::StringBuffer::clear() noexcept {
     Locker locker(mutex);
     AbstractStringBuffer::clear();
@@ -88,6 +98,17 @@ bool sese::text::StringBuffer::insertAt(int index, const std::string_view &str) 
     return AbstractStringBuffer::insertAt(index, str);
 }
 
+bool sese::text::StringBuffer::insertAt(int index, const String &str) {
+    Locker locker(mutex);
+    return AbstractStringBuffer::insertAt(index, str);
+}
+
+bool sese::text::StringBuffer::insertAt(int index, const StringView &str) {
+    Locker locker(mutex);
+    return AbstractStringBuffer::insertAt(index, str);
+}
+
+
 void sese::text::StringBuffer::trim() noexcept {
     Locker locker(mutex);
     AbstractStringBuffer::trim();
@@ -101,4 +122,9 @@ std::vector<std::string> sese::text::StringBuffer::split(const std::string &str)
 std::string sese::text::StringBuffer::toString() {
     Locker locker(mutex);
     return AbstractStringBuffer::toString();
+}
+
+sese::text::String sese::text::StringBuffer::toSString() {
+    Locker locker(mutex);
+    return AbstractStringBuffer::toSString();
 }

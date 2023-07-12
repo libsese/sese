@@ -72,3 +72,8 @@ int64_t operator<<(sese::OutputStream *output , std::array<T, N> data) {
 #include <span>
 SESE_OUT_DEF_TEMPLATE_ALL(data, data.data(), sizeof(T) * data.size(), std::span<T>, class T)
 #endif
+
+#include "sese/text/String.h"
+
+SESE_OUT_DEF_ALL(const sese::text::StringView &, data, data.data(), data.len())
+SESE_OUT_DEF_ALL(const sese::text::String &, data, ((sese::text::StringView *) &data)->data(), data.len())

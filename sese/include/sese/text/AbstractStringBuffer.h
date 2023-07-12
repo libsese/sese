@@ -3,10 +3,12 @@
  * @brief 字符串缓冲类
  * @author kaoru
  * @date 2022年3月28日
+ * @version 0.2
  */
 #pragma once
 
 #include "sese/Config.h"
+#include "sese/text/String.h"
 
 #include <vector>
 
@@ -54,6 +56,8 @@ namespace sese::text {
         virtual void append(const char *str) noexcept;
         virtual void append(const std::string &str) noexcept;
         virtual void append(const std::string_view &str) noexcept;
+        virtual void append(const String &str) noexcept;
+        virtual void append(const StringView &view) noexcept;
         [[nodiscard]] virtual size_t length() const noexcept { return this->len; }
         [[nodiscard]] virtual size_t size() const noexcept { return this->cap; }
         [[nodiscard]] virtual bool empty() const noexcept { return 0 == this->len; };
@@ -66,16 +70,21 @@ namespace sese::text {
         virtual bool insertAt(int index, const char *str);
         virtual bool insertAt(int index, const std::string &str);
         virtual bool insertAt(int index, const std::string_view &str);
+        virtual bool insertAt(int index, const String &str);
+        virtual bool insertAt(int index, const StringView &view);
         /// 去除两端空格
         virtual void trim() noexcept;
         [[nodiscard]] virtual std::vector<std::string> split(const std::string &str) const noexcept;
         virtual std::string toString();
+        virtual String toSString();
 
     public:
         void operator<<(char ch) noexcept { this->append(ch); }
         void operator<<(const char *str) noexcept { this->append(str); }
         void operator<<(const std::string &str) noexcept { this->append(str); }
         void operator<<(const std::string_view &str) noexcept { this->append(str); }
+        void operator<<(const String &str) noexcept { this->append(str); }
+        void operator<<(const StringView &str) noexcept { this->append(str); }
     };
 
 }// namespace sese::text
