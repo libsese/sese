@@ -5,27 +5,27 @@
 
 TEST(TestDateTime, Info) {
     sese::record::LogHelper log("Info");
-    auto time = sese::DateTime::now(8);
-    log.info("is leap year: %s", time.isLeapYear() ? "True" : "False");
-    log.info("timestamp: %lld", time.getTimestamp());
+    auto time = sese::DateTime::nowPtr(8);
+    log.info("is leap year: %s", time->isLeapYear() ? "True" : "False");
+    log.info("timestamp: %lld", time->getTimestamp());
     log.info(
-            "date: %d-%d-%d %d:%d:%d", 
-            time.getYears(), 
-            time.getMonths(), 
-            time.getDays(),
-            time.getHours(),
-            time.getMinutes(),
-            time.getSeconds()
+            "date: %d-%d-%d %d:%d:%d",
+            time->getYears(),
+            time->getMonths(),
+            time->getDays(),
+            time->getHours(),
+            time->getMinutes(),
+            time->getSeconds()
     );
-    log.info("day of year: %d", time.getDayOfYear());
-    log.info("day of week: %d", time.getDayOfWeek());
+    log.info("day of year: %d", time->getDayOfYear());
+    log.info("day of week: %d", time->getDayOfWeek());
 }
 
 TEST(TestDateTime, Compare) {
     // 2022-03-03 00:00:00
-    auto time1 = sese::DateTime(1646265600);
+    auto time1 = sese::DateTime(1646265600000000);
     // 2022-03-01 00:00:00
-    auto time2 = sese::DateTime(1646092800);
+    auto time2 = sese::DateTime(1646092800000000);
 
     EXPECT_EQ(time1.compareTo(time2), 1);
     EXPECT_EQ(time2.compareTo(time1), -1);
@@ -48,6 +48,22 @@ TEST(TestDateTime, Formatter) {
     auto str2 = sese::text::DateTimeFormatter::format(time2, TIME_GREENWICH_MEAN_PATTERN);
     EXPECT_TRUE(!str2.empty());
     log.info(str2.c_str());
+}
+
+TEST(TestDateTime, Operator) {
+    // 2022-03-03 00:00:00
+    auto time1 = sese::DateTime(1646236800000000);
+    // 2022-03-01 00:00:00
+    auto time2 = sese::DateTime(1646064000000000);
+
+    auto span1 = time1 - time2;
+    EXPECT_EQ(span1.getDays(), 2);
+
+    // 2022-03-05 00:00:00
+    auto time3 = sese::DateTime(1646409600000000);
+    EXPECT_EQ(time3.compareTo(time1 + span1), 0);
+
+    EXPECT_EQ(time2.compareTo(time1 - span1), 0);
 }
 
 TEST(TestDateTime, Parse) {

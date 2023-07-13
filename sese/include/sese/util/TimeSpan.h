@@ -85,6 +85,6 @@ namespace sese {
 
         /// 核心数据
         /// 以微秒为单位的时间戳
-        int64_t timestamp = 0;
+        uint64_t timestamp = 0;
     };
 }// namespace sese

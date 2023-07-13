@@ -37,6 +37,8 @@ sese::TimeSpan::TimeSpan(uint64_t timestamp) noexcept {
     // seconds = (int32_t) (stamp % 60);
     // this->milliseconds = (int32_t) (u_sec / 1000);
     // this->microseconds = (int32_t) (u_sec - this->milliseconds * 1000);
+    this->timestamp = timestamp;
+
     days = (int32_t) (timestamp / 1000 / 1000 / 60 / 60 / 24);
     hours = (int32_t) (timestamp / 1000 / 1000 / 60 / 60 % 24);
     minutes = (int32_t) (timestamp / 1000 / 1000 / 60 % 60);

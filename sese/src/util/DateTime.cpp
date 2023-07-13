@@ -2,44 +2,42 @@
 #include "sese/util/TimeSpan.h"
 
 #include <chrono>
-#include <cstdlib>
-#include <memory>
 
-#ifdef _WIN32
-#include <ctime>
-int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
-    time_t clock;
-    struct tm tm {};
-    SYSTEMTIME wtm;
-    GetLocalTime(&wtm);
-    tm.tm_year = wtm.wYear - 1900;
-    tm.tm_mon = wtm.wMonth - 1;
-    tm.tm_mday = wtm.wDay;
-    tm.tm_hour = wtm.wHour;
-    tm.tm_min = wtm.wMinute;
-    tm.tm_sec = wtm.wSecond;
-    tm.tm_isdst = -1;
-    clock = mktime(&tm);
-    tp->tv_sec = (long) clock;
-    tp->tv_usec = wtm.wMilliseconds * 1000;
-    return 0;
-}
-#endif
-#ifdef __linux__
-#include <sys/time.h>
-int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
-    return gettimeofday(tp, tzp);
-}
-#endif
-#ifdef __APPLE__
-#include <sys/time.h>
-int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
-    return gettimeofday(tp, tzp);
-}
-#endif
+// #ifdef _WIN32
+// #include <ctime>
+// int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
+//     time_t clock;
+//     struct tm tm {};
+//     SYSTEMTIME wtm;
+//     GetLocalTime(&wtm);
+//     tm.tm_year = wtm.wYear - 1900;
+//     tm.tm_mon = wtm.wMonth - 1;
+//     tm.tm_mday = wtm.wDay;
+//     tm.tm_hour = wtm.wHour;
+//     tm.tm_min = wtm.wMinute;
+//     tm.tm_sec = wtm.wSecond;
+//     tm.tm_isdst = -1;
+//     clock = mktime(&tm);
+//     tp->tv_sec = (long) clock;
+//     tp->tv_usec = wtm.wMilliseconds * 1000;
+//     return 0;
+// }
+// #endif
+// #ifdef __linux__
+// #include <sys/time.h>
+// int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
+//     return gettimeofday(tp, tzp);
+// }
+// #endif
+// #ifdef __APPLE__
+// #include <sys/time.h>
+// int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {
+//     return gettimeofday(tp, tzp);
+// }
+// #endif
 
-static const int MonDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-static const int MonLeapDays[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+// static const int MonDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+// static const int MonLeapDays[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 namespace sese {
 

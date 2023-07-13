@@ -13,13 +13,13 @@
 #pragma warning(disable : 4819)
 #endif
 
-/**
- * 通用的时间 API
- * @param tp timeval 结构体
- * @param tzp timezone 结构体
- * @return 成功（0）， 失败（-1）
- */
-inline int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp = nullptr);
+// /**
+//  * 通用的时间 API
+//  * @param tp timeval 结构体
+//  * @param tzp timezone 结构体
+//  * @return 成功（0）， 失败（-1）
+//  */
+// inline int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp = nullptr);
 
 namespace sese {
 
