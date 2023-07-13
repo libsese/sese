@@ -1,6 +1,7 @@
 #include "sese/record/LogHelper.h"
 #include "sese/thread/Thread.h"
 #include "sese/util/Util.h"
+
 #include <cstdarg>
 
 using sese::record::LogHelper;

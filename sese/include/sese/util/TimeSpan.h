@@ -26,7 +26,7 @@ namespace sese {
 
     public:
         TimeSpan(int32_t days, int32_t hours, int32_t minutes, int32_t seconds, int32_t milliseconds, int32_t microseconds) noexcept;
-        TimeSpan(int64_t timestamp, int64_t u_sec) noexcept;
+        explicit TimeSpan(uint64_t timestamp) noexcept;
 
         [[nodiscard]] int32_t getDays() const noexcept {
             return days;
@@ -61,22 +61,15 @@ namespace sese {
         }
 
         /**
-         * 获取以秒为时间单位的时间戳
+         * 获取以微妙为时间单位的时间戳
          * @return 时间戳
          */
-        [[nodiscard]] int64_t getTimestamp() const noexcept {
+        [[nodiscard]] uint64_t getTimestamp() const noexcept {
             return timestamp;
         }
 
-        /**
-         * 获取以微秒为单位的时间戳
-         * @return 时间戳
-         */
-        [[nodiscard]] int64_t getUSecond() const noexcept {
-            return u_sec;
-        }
-
     private:
+        /// 计算数据
         /// 天
         int32_t days = 0;
         /// 时
@@ -89,9 +82,9 @@ namespace sese {
         int32_t milliseconds = 0;
         /// 微秒
         int32_t microseconds = 0;
-        /// 以秒为单位的时间戳
-        int64_t timestamp = 0;
+
+        /// 核心数据
         /// 以微秒为单位的时间戳
-        int64_t u_sec = 0;
+        int64_t timestamp = 0;
     };
 }// namespace sese

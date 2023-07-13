@@ -36,9 +36,9 @@ namespace sese::record {
         typedef std::shared_ptr<Event> Ptr;
 
     public:
-        Event(DateTime::Ptr dateTime, Level lv, const char *threadName, tid_t id, const char *file, int32_t line,
+        Event(DateTime dateTime, Level lv, const char *threadName, tid_t id, const char *file, int32_t line,
               const char *msg, const char *tag = RECORD_DEFAULT_TAG) noexcept {
-            this->dateTime = std::move(dateTime);
+            this->dateTime = dateTime;
             this->level = lv;
             this->threadName = threadName;
             this->threadId = id;
@@ -48,7 +48,7 @@ namespace sese::record {
             this->tag = tag;
         }
 
-        [[nodiscard]] const DateTime::Ptr &getTime() const noexcept { return this->dateTime; }
+        [[nodiscard]] const DateTime &getTime() const noexcept { return this->dateTime; }
         [[nodiscard]] Level getLevel() const noexcept { return this->level; }
         [[nodiscard]] tid_t getThreadId() const noexcept { return this->threadId; }
         [[nodiscard]] int32_t getLine() const noexcept { return this->line; }
@@ -58,7 +58,7 @@ namespace sese::record {
         [[nodiscard]] const char *getTag() const noexcept { return this->tag; }
 
     private:
-        DateTime::Ptr dateTime;
+        DateTime dateTime;
         Level level;
         const char *threadName = nullptr;
         tid_t threadId;

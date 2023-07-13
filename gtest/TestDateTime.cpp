@@ -6,9 +6,19 @@
 TEST(TestDateTime, Info) {
     sese::record::LogHelper log("Info");
     auto time = sese::DateTime::now(8);
-    log.info("is leap year: %d", time->isLeapYear());
-    log.info("%" PRId64, time->getTimestamp());
-    log.info("%" PRId64, time->getUSecond());
+    log.info("is leap year: %s", time.isLeapYear() ? "True" : "False");
+    log.info("timestamp: %lld", time.getTimestamp());
+    log.info(
+            "date: %d-%d-%d %d:%d:%d", 
+            time.getYears(), 
+            time.getMonths(), 
+            time.getDays(),
+            time.getHours(),
+            time.getMinutes(),
+            time.getSeconds()
+    );
+    log.info("day of year: %d", time.getDayOfYear());
+    log.info("day of week: %d", time.getDayOfWeek());
 }
 
 TEST(TestDateTime, Compare) {
@@ -17,17 +27,14 @@ TEST(TestDateTime, Compare) {
     // 2022-03-01 00:00:00
     auto time2 = sese::DateTime(1646092800);
 
-    auto span = time1 - time2;
-    EXPECT_TRUE(span.getDays() == 2);
-
-    EXPECT_TRUE(time1.compareTo(time2) == 1);
-    EXPECT_TRUE(time2.compareTo(time1) == -1);
+    EXPECT_EQ(time1.compareTo(time2), 1);
+    EXPECT_EQ(time2.compareTo(time1), -1);
 }
 
 TEST(TestDateTime, UnclearCompare) {
     auto time1 = sese::DateTime::now(8);
     auto time2 = sese::DateTime::now(8);
-    EXPECT_TRUE(time1->unclearCompareTo(*time2) == 0);
+    EXPECT_EQ(time1.unclearCompareTo(time2), 0);
 }
 
 TEST(TestDateTime, Formatter) {

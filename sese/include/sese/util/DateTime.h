@@ -5,8 +5,9 @@
  * @date 2022年03月28日
  */
 #pragma once
+
 #include "sese/Config.h"
-#include "TimeSpan.h"
+#include "sese/util/TimeSpan.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4819)
@@ -29,11 +30,15 @@ namespace sese {
     public:
         using Ptr = std::unique_ptr<DateTime>;
 
-        static DateTime::Ptr now(int32_t utc = TIME_DEFAULT_ZONE) noexcept;
+        static DateTime now(int32_t utc = TIME_DEFAULT_ZONE) noexcept;
 
-        explicit DateTime(int64_t timestamp, int32_t utc = TIME_DEFAULT_ZONE) noexcept;
+        static DateTime::Ptr nowPtr(int32_t utc = TIME_DEFAULT_ZONE) noexcept;
 
-        DateTime(int64_t timestamp, int64_t u_sec, int32_t utc = TIME_DEFAULT_ZONE) noexcept;
+        explicit DateTime() noexcept = default;
+
+        explicit DateTime(uint64_t timestamp, int32_t utc = TIME_DEFAULT_ZONE) noexcept;
+
+        // DateTime(int64_t timestamp, int64_t u_sec, int32_t utc = TIME_DEFAULT_ZONE) noexcept;
 
     public:
         [[nodiscard]] bool isLeapYear() const noexcept { return this->isLeap; }
@@ -47,8 +52,8 @@ namespace sese {
         [[nodiscard]] int32_t getMicroseconds() const noexcept { return this->microseconds; }
         [[nodiscard]] int32_t getUTC() const noexcept { return this->utc; }
         [[nodiscard]] int32_t getDayOfWeek() const noexcept { return this->dayofweek; }
-        [[nodiscard]] int64_t getTimestamp() const noexcept { return this->timestamp; }
-        [[nodiscard]] int64_t getUSecond() const noexcept { return this->u_sec; }
+        [[nodiscard]] int32_t getDayOfYear() const noexcept { return this->dayofyear; }
+        [[nodiscard]] uint64_t getTimestamp() const noexcept { return this->timestamp; }
 
     public:
         TimeSpan operator-(const DateTime &dateTime) const noexcept;
@@ -60,18 +65,22 @@ namespace sese {
         [[nodiscard]] int32_t unclearCompareTo(const DateTime &dateTime) const noexcept;
 
     private:
-        bool isLeap = false;
+        // 初次计算的数据
         int32_t years = 1970;
         int32_t months = 1;
         int32_t days = 1;
         int32_t hours = 0;
         int32_t minutes = 0;
         int32_t seconds = 0;
+        int32_t dayofweek = 0;
+        int32_t dayofyear = 0;
+
+        bool isLeap = false;
         int32_t milliseconds = 0;
         int32_t microseconds = 0;
+
+        // 核心数据
         int32_t utc = 0;
-        int32_t dayofweek = 0;
-        int64_t timestamp = 0;
-        int64_t u_sec = 0;
+        uint64_t timestamp = 0;
     };
 }// namespace sese
