@@ -53,9 +53,10 @@ namespace sese {
 
         void close() override;
 
-        [[nodiscard]] bool good() const { return file != nullptr; }
         int64_t getSeek();
         int32_t setSeek(int64_t offset, int32_t whence);
+
+        int32_t flush();
 
     private:
         FileStream() noexcept = default;

@@ -41,6 +41,10 @@ int32_t FileStream::setSeek(int64_t offset, int32_t whence) {
     return ::fseek(file, offset, whence);
 }
 
+int32_t FileStream::flush() {
+    return fflush(file);
+}
+
 //bool sese::FileStream::open(const std::string &fileName, const char *mode) noexcept {
 //#ifdef _WIN32
 //    auto rt = fopen_s(&file, fileName.c_str(), mode);
