@@ -4,13 +4,13 @@ import sys
 
 def main():
     if len(sys.argv) != 2:
-        print('参数不足')
+        print('Missing parameter... ERROR')
         sys.exit(-1)
 
     build_dir = sys.argv[1]
 
     if not os.path.exists('{}/{}'.format(os.getcwd(), build_dir)):
-        print('指定路径不存在')
+        print('Path is not exists... ERROR')
         sys.exit(-1)
 
     cov_dir = '{}/coverage'.format(os.getcwd());
