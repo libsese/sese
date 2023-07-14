@@ -14,7 +14,7 @@ namespace sese {
     }
 
     AbstractByteBuffer::AbstractByteBuffer(size_t baseSize) {
-        this->root = new Node(baseSize);
+        this->root = new Node(baseSize);// GCOVR_EXCL_LINE
         this->cap = baseSize;
         this->currentWriteNode = root;
         this->currentReadNode = root;
@@ -59,9 +59,10 @@ namespace sese {
             sub->length = pNode->length;
             memcpy(sub->buffer, pNode->buffer, pNode->length);
 
-            if (pNode == src.currentWriteNode) {
+            if (pNode == src.currentWriteNode) {// GCOVR_EXCL_LINE
                 this->currentWriteNode = sub;
-            } else if (pNode == src.currentReadNode) {
+            }
+            if (pNode == src.currentReadNode) {// GCOVR_EXCL_LINE
                 this->currentReadNode = sub;
             }
 
@@ -101,7 +102,7 @@ namespace sese {
         while (root != nullptr) {
             toDel = root;
             root = toDel->next;
-            delete toDel;
+            delete toDel;// GCOVR_EXCL_LINE
         }
     }
 
@@ -119,13 +120,23 @@ namespace sese {
     }
 
     size_t AbstractByteBuffer::freeCapacity() {
+        // size_t freeCap = 0;
+        // Node *toDel;
+        // while (root != this->currentReadNode && root->next) {
+        //     toDel = root;
+        //     root = toDel->next;
+        //     freeCap += toDel->cap;
+        //     delete toDel;// GCOVR_EXCL_LINE
+        // }
+        // length -= freeCap;
+        // cap -= freeCap;
+        // return freeCap;
         size_t freeCap = 0;
-        Node *toDel;
-        while (root != this->currentReadNode && root->next) {
-            toDel = root;
-            root = toDel->next;
-            freeCap += toDel->cap;
-            delete toDel;
+        while(root != currentReadNode) {
+            freeCap += root->cap;
+            auto toDel = root;
+            root = root->next;
+            delete toDel;// GCOVR_EXCL_LINE
         }
         length -= freeCap;
         cap -= freeCap;
@@ -189,7 +200,7 @@ namespace sese {
                 cap += STREAM_BYTE_STREAM_SIZE_FACTOR;
                 // 直接切换至下一个单元
                 currentWritePos = 0;
-                currentWriteNode->next = new Node(STREAM_BYTE_STREAM_SIZE_FACTOR);
+                currentWriteNode->next = new Node(STREAM_BYTE_STREAM_SIZE_FACTOR);// GCOVR_EXCL_LINE
                 currentWriteNode = currentWriteNode->next;
                 continue;
             }

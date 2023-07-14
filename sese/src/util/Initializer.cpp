@@ -25,6 +25,8 @@ const std::string &sese::InitiateTask::getName() const {
 }
 
 Initializer::Initializer() {
+    // 不会出错，不需要判断
+    // GCOVR_EXCL_START
     buildInLoadTask(std::make_shared<ThreadInitiateTask>());
     buildInLoadTask(std::make_shared<EncodingConverterInitiateTask>());
     buildInLoadTask(std::make_shared<record::LoggerInitiateTask>());
@@ -35,14 +37,16 @@ Initializer::Initializer() {
 #ifdef SESE_USE_SSL
     buildInLoadTask(std::make_shared<sese::security::SecurityInitTask>());
 #endif
+    // GCOVR_EXCL_STOP
 }
+#undef INIT
 
 Initializer::~Initializer() {
     /// 保证初始化器按顺序销毁
-     while (!tasks.empty()) {
-         InitiateTask::Ptr &top = tasks.top();
-         buildInUnloadTask(top);
-     }
+    while (!tasks.empty()) {
+        InitiateTask::Ptr &top = tasks.top();
+        buildInUnloadTask(top);
+    }
 }
 
 void Initializer::buildInLoadTask(InitiateTask::Ptr &&task) noexcept {

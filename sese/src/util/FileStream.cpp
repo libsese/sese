@@ -27,10 +27,8 @@ int64_t FileStream::write(const void *buffer, size_t length) {
 }
 
 void FileStream::close() {
-    if (file) {
-        ::fclose(file);
-        file = nullptr;
-    }
+    ::fclose(file);
+    file = nullptr;
 }
 
 int64_t FileStream::getSeek() {

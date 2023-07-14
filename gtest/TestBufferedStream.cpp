@@ -4,6 +4,7 @@
 #include "sese/util/InputBufferWrapper.h"
 #include "sese/util/OutputBufferWrapper.h"
 #include "sese/util/ByteBuilder.h"
+#include "sese/util/FixedBuilder.h"
 
 #include "gtest/gtest.h"
 
@@ -55,7 +56,7 @@ TEST(TestBufferedStream, TestBufferedStream_1) {
     buffered.reset(bytes1);
 }
 
-TEST(TestBufferedStream, Output) {
+TEST(TestBufferedStream, Output_0) {
     using sese::ByteBuilder;
     using sese::BufferedOutputStream;
 
@@ -71,7 +72,50 @@ TEST(TestBufferedStream, Output) {
     ASSERT_EQ(bytes->getLength(), 37);
 }
 
-TEST(TestBufferedStream, Input) {
+TEST(TestBufferedStream, Output_1) {
+    using sese::FixedBuilder;
+    using sese::BufferedOutputStream;
+
+    auto bytes = std::make_shared<FixedBuilder>(4);
+    auto buffered = BufferedOutputStream(bytes, 6);
+
+    ASSERT_EQ(buffered.write("ABCDE", 5), 5);
+
+    ASSERT_EQ(buffered.write("ABCDE", 5), -1);
+}
+
+TEST(TestBufferedStream, Output_2) {
+    using sese::FixedBuilder;
+    using sese::BufferedOutputStream;
+
+    auto bytes = std::make_shared<FixedBuilder>(4);
+    auto buffered = BufferedOutputStream(bytes, 6);
+
+    ASSERT_EQ(buffered.write("ABCDE", 5), 5);
+    ASSERT_EQ(buffered.write("ABCDEFG", 7), -1);
+}
+
+TEST(TestBufferedStream, Output_3) {
+    using sese::FixedBuilder;
+    using sese::BufferedOutputStream;
+
+    auto bytes = std::make_shared<FixedBuilder>(4);
+    auto buffered = BufferedOutputStream(bytes, 6);
+
+    ASSERT_EQ(buffered.write("ABC", 3), 3);
+    ASSERT_EQ(buffered.write("ABCDEFG", 7), -1);
+}
+
+TEST(TestBufferedStream, Output_4) {
+    using sese::ByteBuilder;
+    using sese::BufferedOutputStream;
+
+    auto bytes = std::make_shared<ByteBuilder>(1024);
+    auto buffered = BufferedOutputStream(bytes, 4);
+    ASSERT_EQ(buffered.write("ABCDE", 5), 5);
+}
+
+TEST(TestBufferedStream, Input_0) {
     using sese::ByteBuilder;
     using sese::BufferedInputStream;
 
@@ -97,4 +141,20 @@ TEST(TestBufferedStream, Input) {
     buffered.read(buffer, 3);
     buffer[2] = 0;
     ASSERT_EQ(std::string_view(buffer), std::string_view("ld"));
+
+    auto len = buffered.read(buffer, 6);
+    ASSERT_EQ(len, 0);
+}
+
+TEST(TestBufferedStream, Input_1) {
+    using sese::ByteBuilder;
+    using sese::BufferedInputStream;
+
+    auto bytes = std::make_shared<ByteBuilder>(1024);
+    bytes->write("Hello, World", 12);
+    auto buffered = BufferedInputStream(bytes, 8);
+
+    char buffer[1024]{};
+    ASSERT_EQ(buffered.read(buffer, 4), 4);
+    ASSERT_EQ(buffered.read(buffer, 12), 8);
 }

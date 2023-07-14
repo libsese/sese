@@ -17,7 +17,8 @@ BufferedInputStream::~BufferedInputStream() noexcept {
 inline int64_t BufferedInputStream::preRead() noexcept {
     // 尝试使用目标流填充缓存
     auto read = source->read(buffer, cap);
-    read = read == -1 ? 0 : read;
+    // 此处用于修正一些输入源可能读取返回负值的情况
+    read = read < 0 ? 0 : read;// GCOVR_EXCL_LINE
     pos = 0;
     len = read;
     return read;
@@ -67,10 +68,10 @@ int64_t BufferedInputStream::read(void *buf, size_t length) {
         while (true) {
             read = source->read((char *) buf + total, (length - total) >= 1024 ? 1024 : length - total);
             total += (int64_t) read;
-            if (read == 0 || total == length) {
-                // 流已读尽或者需求已满足则退出
-                break;
-            }
+            // 无可再读
+            if (read == 0) break;
+            // 完成目标
+            if (total == length) break;
         }
         return (int64_t) total;
     }

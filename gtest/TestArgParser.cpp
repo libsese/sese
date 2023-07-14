@@ -44,3 +44,12 @@ TEST(TestArgParser, Parse_1) {
     auto args = std::make_unique<sese::ArgParser>();
     EXPECT_FALSE(args->parse(argc, argv));
 }
+
+TEST(TestArgParser, Parse_3) {
+    int argc = 1;
+    char arg0[32]{R"(D:\Users\sese\TestArgParser)"};
+    char *argv[] = {arg0};
+
+    auto args = std::make_unique<sese::ArgParser>();
+    EXPECT_TRUE(args->parse(argc, argv));
+}

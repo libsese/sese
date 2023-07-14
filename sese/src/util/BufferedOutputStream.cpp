@@ -29,24 +29,36 @@ int64_t BufferedOutputStream::write(const void *buf, size_t length) {
             return (int64_t) length;
         } else {
             // 字节数不足 - 需要刷新
-            size_t total = flush();
-            if (0 != total) {
+            size_t expect = len - pos;
+            if (expect == flush()) {
                 memcpy(this->buffer, (char *) buf, length);
                 this->len = length;
-                total = length;
+                expect = length;
+                return (int64_t) expect;
+            } else {
+                // flush 失败
+                return -1;
             }
-            return (int64_t) total;
         }
     } else {
         // 直接写入
         if (this->len != this->pos) {
             // 缓存区有剩余，需要刷新
-            flush();
+            size_t expect = len - pos;
+            if (expect != flush()) {
+                // flush 失败
+                return -1;
+            }
         }
 
         int64_t wrote = 0;
         while (true) {
             auto rt = source->write((const char *) buf + wrote, length - wrote >= cap ? cap : length - wrote);
+            if (rt == 0) {
+                return -1;
+            } else {
+
+            }
             wrote += rt;
             if (wrote == length) break;
         }

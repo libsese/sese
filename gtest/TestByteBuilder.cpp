@@ -143,3 +143,13 @@ TEST(TestByteBuilder, Misc_1) {
     // builder will be unusable
     ASSERT_EQ(k.trunc(12), 12);
 }
+
+TEST(TestByteBuilder, Misc_2) {
+    auto builder = sese::ByteBuilder(6);
+    builder.write("Hello, World", 12);
+    builder.trunc(7);
+
+    auto i = builder;
+    ASSERT_EQ(i.getCurrentReadPos(), 1);
+    ASSERT_EQ(i.trunc(32), 5);
+}

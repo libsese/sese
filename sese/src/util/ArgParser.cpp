@@ -1,5 +1,6 @@
 #include "sese/util/ArgParser.h"
 #include "sese/util/Util.h"
+#include "sese/text/StringBuilder.h"
 
 #include <cstring>
 
@@ -19,17 +20,20 @@ bool sese::ArgParser::parse(int32_t argc, char **argv) noexcept {
 
     if (argc != 1) {
         for (int i = 1; i < argc; i++) {
-            auto pos = findFirstAt(argv[i], '=');
-            if (pos > 0) {
-                if (strlen(argv[i]) - 1 == pos) {
-                    continue;
-                } else {
-                    argv[i][pos] = '\0';
-                    this->keyValSet.insert(std::pair<std::string, std::string>(argv[i], {&argv[i][pos + 1]}));
-                }
-            } else {
-                return false;
-            }
+            // auto pos = findFirstAt(argv[i], '=');
+            // if (pos > 0) {
+            //     if (strlen(argv[i]) - 1 == pos) {
+            //         continue;
+            //     } else {
+            //         argv[i][pos] = '\0';
+            //         this->keyValSet.insert(std::pair<std::string, std::string>(argv[i], {&argv[i][pos + 1]}));
+            //     }
+            // } else {
+            //     return false;
+            // }
+            auto res = sese::text::StringBuilder::split(argv[i], "=");
+            if (res.size() != 2) return false;
+            this->keyValSet.insert(std::pair<std::string, std::string>(res[0], res[1]));
         }
     }
     return true;

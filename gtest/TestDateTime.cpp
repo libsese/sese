@@ -3,6 +3,8 @@
 #include "sese/text/DateTimeFormatter.h"
 #include "gtest/gtest.h"
 
+using namespace std::chrono_literals;
+
 TEST(TestDateTime, Info) {
     sese::record::LogHelper log("Info");
     auto time = sese::DateTime::nowPtr(8);
@@ -23,18 +25,28 @@ TEST(TestDateTime, Info) {
 
 TEST(TestDateTime, Compare) {
     // 2022-03-03 00:00:00
-    auto time1 = sese::DateTime(1646265600000000);
+    auto time1 = sese::DateTime(1646265600000000, 0);
     // 2022-03-01 00:00:00
-    auto time2 = sese::DateTime(1646092800000000);
+    auto time2 = sese::DateTime(1646092800000000, 0);
 
     EXPECT_EQ(time1.compareTo(time2), 1);
     EXPECT_EQ(time2.compareTo(time1), -1);
 }
 
 TEST(TestDateTime, UnclearCompare) {
-    auto time1 = sese::DateTime::now(8);
-    auto time2 = sese::DateTime::now(8);
-    EXPECT_EQ(time1.unclearCompareTo(time2), 0);
+    {
+        auto time1 = sese::DateTime::now(8);
+        auto time2 = sese::DateTime::now(8);
+        EXPECT_EQ(time1.unclearCompareTo(time2), 0);
+    }
+
+    {
+        auto time1 = sese::DateTime::now(8);
+        std::this_thread::sleep_for(1s);
+        auto time2 = sese::DateTime::now(8);
+        EXPECT_EQ(time1.unclearCompareTo(time2), -1);
+        EXPECT_EQ(time2.unclearCompareTo(time1), 1);
+    }
 }
 
 TEST(TestDateTime, Formatter) {
@@ -51,19 +63,30 @@ TEST(TestDateTime, Formatter) {
 }
 
 TEST(TestDateTime, Operator) {
-    // 2022-03-03 00:00:00
-    auto time1 = sese::DateTime(1646236800000000);
-    // 2022-03-01 00:00:00
-    auto time2 = sese::DateTime(1646064000000000);
+    // 2022-03-03 00:00:00 UTC+8
+    auto time1 = sese::DateTime(1646236800000000, 0);
+    // 2022-03-01 00:00:00 UTC+8
+    auto time2 = sese::DateTime(1646064000000000, 0);
 
     auto span1 = time1 - time2;
     EXPECT_EQ(span1.getDays(), 2);
 
-    // 2022-03-05 00:00:00
-    auto time3 = sese::DateTime(1646409600000000);
+    // 2022-03-05 00:00:00 UTC+8
+    auto time3 = sese::DateTime(1646409600000000, 0);
     EXPECT_EQ(time3.compareTo(time1 + span1), 0);
 
     EXPECT_EQ(time2.compareTo(time1 - span1), 0);
+}
+
+TEST(TestDateTime, Leap) {
+    auto time1 = sese::DateTime(1072915200000000, 0);
+    EXPECT_EQ(time1.isLeapYear(), true);
+
+    auto time2 = sese::DateTime(946684800000000, 0);
+    EXPECT_EQ(time2.isLeapYear(), true);
+
+    auto time3 = sese::DateTime(978307200000000, 0);
+    EXPECT_EQ(time3.isLeapYear(), false);
 }
 
 TEST(TestDateTime, Parse) {

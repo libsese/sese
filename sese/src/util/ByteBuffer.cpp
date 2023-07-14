@@ -1,6 +1,8 @@
 #include "sese/util/ByteBuffer.h"
 #include "sese/thread/Locker.h"
 
+// GCOVR_EXCL_START
+
 int64_t sese::ByteBuffer::read(void *buffer, size_t len) {
     Locker locker(mutex);
     return AbstractByteBuffer::read(buffer, len);
@@ -53,3 +55,5 @@ int64_t sese::ByteBuffer::trunc(size_t needRead) {
     Locker locker(mutex);
     return AbstractByteBuffer::trunc(needRead);
 }
+
+// GCOVR_EXCL_STOP

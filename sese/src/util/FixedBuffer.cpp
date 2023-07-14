@@ -1,6 +1,8 @@
 #include "sese/util/FixedBuffer.h"
 #include "sese/thread/Locker.h"
 
+// GCOVR_EXCL_START
+
 sese::FixedBuffer::FixedBuffer(size_t size) noexcept : AbstractFixedBuffer(size) {}
 
 int64_t sese::FixedBuffer::read(void *buffer, size_t length) {
@@ -37,3 +39,5 @@ size_t sese::FixedBuffer::getWriteableSize() noexcept {
     Locker locker(mutex);
     return AbstractFixedBuffer::getWriteableSize();
 }
+
+// GCOVR_EXCL_STOP

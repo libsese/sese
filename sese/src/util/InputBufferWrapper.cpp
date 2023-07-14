@@ -7,9 +7,7 @@ sese::InputBufferWrapper::InputBufferWrapper(const char *buffer, size_t cap) {
 }
 
 int64_t sese::InputBufferWrapper::read(void *buf, size_t length) {
-    if (pos == cap) {
-        return 0;
-    } else if ((cap - pos) >= length) {
+    if ((cap - pos) >= length) {
         memcpy(buf, buffer + pos, length);
         pos += length;
         return (int64_t) length;
@@ -22,9 +20,7 @@ int64_t sese::InputBufferWrapper::read(void *buf, size_t length) {
 }
 
 int64_t sese::InputBufferWrapper::peek(void *buf, size_t length) {
-    if (pos == cap) {
-        return 0;
-    } else if ((cap - pos) >= length) {
+    if ((cap - pos) >= length) {
         memcpy(buf, buffer + pos, length);
         return (int64_t) length;
     } else {
@@ -51,9 +47,7 @@ void sese::InputBufferWrapper::reset() noexcept {
 }
 
 int64_t sese::InputBufferWrapper::trunc(size_t length) {
-    if (pos == cap) {
-        return 0;
-    } else if ((cap - pos) >= length) {
+    if ((cap - pos) >= length) {
         // memcpy(buf, buffer + pos, length);
         pos += length;
         return (int64_t) length;

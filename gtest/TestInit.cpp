@@ -14,7 +14,7 @@ public:
 
     int32_t destroy() noexcept override {
         sese::record::LogHelper::d("unloading %s", this->getName().c_str());
-        return 0;
+        return -1;
     }
 };
 
@@ -24,7 +24,7 @@ public:
 
     int32_t init() noexcept override {
         sese::record::LogHelper::d("loading %s", this->getName().c_str());
-        return 0;
+        return -1;
     }
 
     int32_t destroy() noexcept override {
@@ -34,6 +34,7 @@ public:
 };
 
 TEST(TestInit, _0) {
+    sese::Initializer::getInitializer();
     sese::Initializer::addTask<Task1>();
     sese::Initializer::addTask(std::make_unique<Task2>());
 }

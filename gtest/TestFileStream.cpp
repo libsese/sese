@@ -22,4 +22,5 @@ TEST(TestFileStream, Seek) {
     ASSERT_EQ(file->getSeek(), 0);
     ASSERT_EQ(file->read(buffer, 16), 12);
     ASSERT_EQ(std::string_view(buffer), std::string_view("Hello, World"));
+    file->close();
 }
