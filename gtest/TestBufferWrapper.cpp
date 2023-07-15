@@ -24,10 +24,15 @@ TEST(TestBufferWrapper, Peek) {
 
     char buffer1[16] {};
     auto len = input.peek(buffer1, 16);
-    ASSERT_EQ(len , 11);
-    input.peek(buffer1, len);
     len = input.trunc(16);
+    ASSERT_EQ(len , 11);
+    input.reset();
+    len = input.peek(buffer1, len);
+    len = input.trunc(len);
     ASSERT_EQ(len, 11);
+    len = input.peek(buffer1, 0);
+    len = input.trunc(0);
+    ASSERT_EQ(len, 0);
 }
 
 TEST(TestBufferWrapper, Read) {

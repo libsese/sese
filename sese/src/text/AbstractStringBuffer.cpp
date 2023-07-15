@@ -25,7 +25,7 @@ namespace sese::text {
 
     AbstractStringBuffer::~AbstractStringBuffer() noexcept {
         if (this->buffer != nullptr) {// NOLINT
-            delete[] this->buffer;
+            delete[] this->buffer;    // GCOVR_EXCL_LINE
         }
     }
 
@@ -88,7 +88,7 @@ namespace sese::text {
     }
 
     void AbstractStringBuffer::append(const String &str) noexcept {
-        append(((StringView*) &str)->data(), str.len());
+        append(((StringView *) &str)->data(), str.len());
     }
 
     void AbstractStringBuffer::append(const StringView &view) noexcept {
@@ -98,14 +98,14 @@ namespace sese::text {
     void AbstractStringBuffer::expansion(size_t newSize) noexcept {
         char *newBuffer = new char[newSize];
         memcpy(newBuffer, this->buffer, len);
-        delete[] this->buffer;
+        delete[] this->buffer;// GCOVR_EXCL_LINE
         this->buffer = newBuffer;
         this->cap = newSize;
     }
 
     std::string AbstractStringBuffer::toString() {
         auto view = std::string_view(this->buffer, this->len);
-        return {view.begin(), view.end()};
+        return {view.begin(), view.end()};// GCOVR_EXCL_LINE
     }
 
     String AbstractStringBuffer::toSString() {
@@ -171,24 +171,23 @@ namespace sese::text {
         return true;
     }
 
-    bool AbstractStringBuffer::del(int start, int end) {
-        if (0 < start) return false;
-        if (this->len < end) return false;
-        int delCount = end - start + 1;
-        for (int i = start; i < len - delCount; i++) {
-            if (i + delCount > len) {
-                this->buffer[i] = '\0';
-            } else {
-                this->buffer[i] = this->buffer[i + delCount];
-                this->buffer[i + delCount] = '\0';
-            }
+    bool AbstractStringBuffer::del(int start, int l) {
+        if (0 > start) {
+            return false;
         }
-        this->len -= delCount;
+        if (this->len < start + l) {
+            return false;
+        }
+        memmove(&this->buffer[start], &this->buffer[start + l], this->len - start - l);
+        this->len -= l;
+        this->buffer[this->len] = '\0';
         return true;
     }
 
     bool AbstractStringBuffer::insertAt(int index, const char *data, size_t l) {
-        if (this->cap <= index) return false;
+        if (this->cap <= index) {
+            return false;
+        }
         if (l > cap - this->len) {
             // 触发扩容
             auto newSize = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
@@ -214,7 +213,7 @@ namespace sese::text {
     }
 
     bool AbstractStringBuffer::insertAt(int index, const String &str) {
-        return insertAt(index, ((StringView*) &str)->data(), str.len());
+        return insertAt(index, ((StringView *) &str)->data(), str.len());
     }
 
     bool AbstractStringBuffer::insertAt(int index, const StringView &view) {
@@ -227,8 +226,8 @@ namespace sese::text {
         for (size_t i = 0; i < len; i++) {
             if (isSpace(this->buffer[len - 1 - i])) {
                 this->buffer[len - 1 - i] = '\0';
+                w += 1;
             } else {
-                w = i;
                 break;
             }
         }

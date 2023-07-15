@@ -78,17 +78,34 @@ TEST(TestStringBuilder, Trim) {
     builder.trim();
     auto string = builder.toString();
     ASSERT_EQ(string, std::string_view("Hello"));
+
+    builder.trim();
+    string = builder.toString();
+    ASSERT_EQ(string, std::string_view("Hello"));
+
+    builder.clear();
+    builder << "    ";
+    builder.trim();
+    string = builder.toString();
+    ASSERT_EQ(string, std::string_view(""));
 }
 
 TEST(TestStringBuilder, Split) {
-    auto builder = sese::text::StringBuffer("Hello,World");
+    auto builder = sese::text::StringBuffer("Hello,World,");
     auto res = builder.split(",");
     ASSERT_EQ(res[0], std::string_view("Hello"));
     ASSERT_EQ(res[1], std::string_view("World"));
 
-    res = sese::text::StringBuilder::split("Hello,World", ",");
+    res = sese::text::StringBuilder::split("Hello,World,", ",");
     ASSERT_EQ(res[0], std::string_view("Hello"));
     ASSERT_EQ(res[1], std::string_view("World"));
+}
+
+TEST(TestStringBuilder, Del) {
+    auto buffer = sese::text::StringBuilder();
+    buffer << "Hello, World";
+    buffer.del(5, 7);
+    ASSERT_EQ(buffer.toString(), std::string_view("Hello"));
 }
 
 TEST(TestStringBuilder, Misc_0) {
@@ -103,15 +120,17 @@ TEST(TestStringBuilder, Misc_0) {
     ASSERT_TRUE(builder.delCharAt(6));
     ASSERT_FALSE(builder.delCharAt(12));
 
-    ASSERT_TRUE(builder.del(0, 5));
+    ASSERT_TRUE(builder.del(0, 6));
     ASSERT_FALSE(builder.del(12, 2));
-    ASSERT_FALSE(builder.del(2, 12));
+    ASSERT_FALSE(builder.del(2, 99));
+    ASSERT_FALSE(builder.del(-1, 12));
 
     ASSERT_TRUE(builder.insertAt(0, " "));
     ASSERT_TRUE(builder.insertAt(0, std::string(",")));
     ASSERT_TRUE(builder.insertAt(0, std::string_view(" ")));
     ASSERT_TRUE(builder.insertAt(0, sese::text::String("i", 1)));
     ASSERT_TRUE(builder.insertAt(0, sese::text::StringView("H")));
+    ASSERT_FALSE(builder.insertAt(100, ""));
 
     auto string = builder.toString();
     ASSERT_EQ(string, std::string_view("Hi , World"));

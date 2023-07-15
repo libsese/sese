@@ -43,7 +43,7 @@ namespace sese::text {
         [[nodiscard]] char getCharAt(int index);
         bool setChatAt(int index, char ch) override;
         bool delCharAt(int index) override;
-        bool del(int start, int end) override;
+        bool del(int start, int len) override;
         bool insertAt(int index, const char *str) override;
         bool insertAt(int index, const std::string &str) override;
         bool insertAt(int index, const std::string_view &str) override;

@@ -66,7 +66,7 @@ namespace sese::text {
         [[nodiscard]] virtual char getCharAt(int index) const;
         virtual bool setChatAt(int index, char ch);
         virtual bool delCharAt(int index);
-        virtual bool del(int start, int end);
+        virtual bool del(int start, int l);
         virtual bool insertAt(int index, const char *str);
         virtual bool insertAt(int index, const std::string &str);
         virtual bool insertAt(int index, const std::string_view &str);

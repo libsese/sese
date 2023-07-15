@@ -2,6 +2,8 @@
 #include "sese/text/AbstractStringBuffer.h"
 #include "sese/thread/Locker.h"
 
+// GCOVR_EXCL_START
+
 sese::text::StringBuffer::StringBuffer(size_t cap) noexcept : AbstractStringBuffer(cap) {
 }
 
@@ -78,9 +80,9 @@ bool sese::text::StringBuffer::delCharAt(int index) {
     return AbstractStringBuffer::delCharAt(index);
 }
 
-bool sese::text::StringBuffer::del(int start, int end) {
+bool sese::text::StringBuffer::del(int start, int len) {
     Locker locker(mutex);
-    return AbstractStringBuffer::del(start, end);
+    return AbstractStringBuffer::del(start, len);
 }
 
 bool sese::text::StringBuffer::insertAt(int index, const char *str) {
@@ -128,3 +130,5 @@ sese::text::String sese::text::StringBuffer::toSString() {
     Locker locker(mutex);
     return AbstractStringBuffer::toSString();
 }
+
+// GCOVR_EXCL_STOP
