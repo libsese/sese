@@ -7,6 +7,7 @@
 
 TEST(TestRandom, STD) {
     sese::Random device;
+    ASSERT_EQ(device.entropy(), 64);
     std::uniform_int_distribution<int> distribution(-150000, 150000);
 
     auto file = sese::FileStream::create("random.csv", "wt");
@@ -17,4 +18,9 @@ TEST(TestRandom, STD) {
         writer.write({std::to_string(i), std::to_string(distribution(engine))});
     }
     file->close();
+}
+
+TEST(TestRandom, Misc) {
+    ASSERT_EQ(sese::Random::max(), UINT64_MAX);
+    ASSERT_EQ(sese::Random::min(), 0);
 }

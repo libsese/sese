@@ -54,7 +54,7 @@ namespace sese {
         strerror_s(buffer, 255, error);
         return {buffer};
 #else
-        return strerror(error);
+        return strerror(error); // GCOVR_EXCL_LINE
 #endif
     }
 

@@ -54,11 +54,7 @@ int64_t BufferedOutputStream::write(const void *buf, size_t length) {
         int64_t wrote = 0;
         while (true) {
             auto rt = source->write((const char *) buf + wrote, length - wrote >= cap ? cap : length - wrote);
-            if (rt == 0) {
-                return -1;
-            } else {
-
-            }
+            if (rt <= 0) return -1;
             wrote += rt;
             if (wrote == length) break;
         }

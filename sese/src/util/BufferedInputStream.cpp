@@ -69,7 +69,7 @@ int64_t BufferedInputStream::read(void *buf, size_t length) {
             read = source->read((char *) buf + total, (length - total) >= 1024 ? 1024 : length - total);
             total += (int64_t) read;
             // 无可再读
-            if (read == 0) break;
+            if (read <= 0) break;
             // 完成目标
             if (total == length) break;
         }

@@ -6,6 +6,8 @@ sese::UuidBuilder::UuidBuilder() noexcept
     : timestampHandler(std::chrono::system_clock::now()) {
 }
 
+// 按照 SimpleUuid 提供的接口处理时钟回拨问题，此处逻辑不需要在此论证
+// GCOVR_EXCL_START
 bool sese::UuidBuilder::generate(uuid::Uuid &dest) noexcept {
     auto timestamp = timestampHandler.tryGetCurrentTimestamp();
     if (timestamp == 0) {
@@ -29,3 +31,4 @@ bool sese::UuidBuilder::generate(uuid::Uuid &dest) noexcept {
         return true;
     }
 }
+// GCOVR_EXCL_STOP

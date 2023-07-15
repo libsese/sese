@@ -5,12 +5,13 @@
  * @brief 调试杂项函数
  */
 #pragma once
+
 #include "sese/util/Initializer.h"
 
 #include <atomic>
 #include <functional>
 
-#undef assert
+// #undef assert
 
 #ifdef _WIN32
 #define WILL_SKIP 1
@@ -46,8 +47,9 @@ namespace sese {
          * @param log 日志工具
          * @param expr 条件表达式
          * @param exitCode 命中时的退出退出码，为零则不退出
+         * @deprecated 已弃用
          */
-        static void assert(record::LogHelper log, bool expr, int32_t exitCode = 0);
+        // static void assert(record::LogHelper log, bool expr, int32_t exitCode = 0);
 
         /**
          * @brief 可自定义的断言方案
@@ -56,18 +58,18 @@ namespace sese {
          * @param firstLine 首行消息格式
          * @param expr 条件表达式
          * @param exitCode 命中时的退出退出码，为零则不退出
+         * @deprecated 已弃用
          */
-        static void assert(record::LogHelper log, const char *firstLine, bool expr, int32_t exitCode = 0);
+        // static void assert(record::LogHelper log, const char *firstLine, bool expr, int32_t exitCode = 0);
     };
 
 
-    class TestInitiateTask final : public InitiateTask {
-    public:
-        TestInitiateTask() : InitiateTask(__FUNCTION__) {}
-
-        int32_t init() noexcept override;
-        int32_t destroy() noexcept override;
-    };
+    // class TestInitiateTask final : public InitiateTask {
+    // public:
+    //     TestInitiateTask() : InitiateTask(__FUNCTION__) {}
+    //     int32_t init() noexcept override;
+    //     int32_t destroy() noexcept override;
+    // };
 }// namespace sese
 
 /**
@@ -76,7 +78,8 @@ namespace sese {
  * @param LogHelper 日志器
  * @param Expr 条件表达式
  * @param ExitCode 命中时的退出退出码，为零则不退出
+ * @deprecated 已弃用
  */
-#define assert(LogHelper, Expr, ExitCode) sese::Test::assert(LogHelper, "Assertion failed on \"" #Expr "\"\n%s", Expr, ExitCode);
+// #define assert(LogHelper, Expr, ExitCode) sese::Test::assert(LogHelper, "Assertion failed on \"" #Expr "\"\n%s", Expr, ExitCode);
 
 #undef WILL_SKIP

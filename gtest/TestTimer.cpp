@@ -12,8 +12,8 @@ void bar() {
     sese::record::LogHelper::d("bar time up");
 }
 
-TEST(TestTimer, _0) {
-    auto timer = sese::Timer::create(5);
+TEST(TestTimer, Normal) {
+    auto timer = sese::Timer::create(0);
     sese::record::LogHelper::d("timer start");
     timer->delay(foo, 2);
     auto task = timer->delay(bar, 1, true);
@@ -21,5 +21,4 @@ TEST(TestTimer, _0) {
     task->cancel();
     sese::sleep(3);
     sese::record::LogHelper::d("timer thread joining");
-    timer->shutdown();
 }

@@ -2,6 +2,8 @@
 #include "sese/util/Util.h"
 #include "sese/thread/Locker.h"
 
+#include <algorithm>
+
 using sese::Locker;
 using sese::Thread;
 using sese::Timer;
@@ -13,9 +15,9 @@ void TimerTask::cancel() noexcept {
 
 Timer::Ptr Timer::create(size_t number) noexcept {
     auto timer = new sese::Timer;
-    // number 至少为 1
-    timer->number = number == 0 ? 1 : number;
-    timer->timerTasks = new std::list<TimerTask::Ptr>[number];
+    // number 至少为 2
+    timer->number = std::max<size_t>(2, number);
+    timer->timerTasks = new std::list<TimerTask::Ptr>[timer->number];// GCOVR_EXCL_LINE
     // 启动线程
     timer->thread = std::make_unique<Thread>([timer] { timer->loop(); }, "Timer");
     timer->thread->start();
@@ -26,7 +28,7 @@ Timer::~Timer() noexcept {
     if (!isShutdown) {
         shutdown();
     }
-    delete[] timerTasks;
+    delete[] timerTasks;// GCOVR_EXCL_LINE
 }
 
 TimerTask::Ptr Timer::delay(const std::function<void()> &callback, int64_t relativeTimestamp, bool isRepeat) noexcept {
@@ -57,7 +59,8 @@ void Timer::loop() noexcept {
         mutex.lock();
         for (auto iterator = timerTasks[index].begin(); iterator != timerTasks[index].end();) {
             TimerTask::Ptr task = *iterator;
-            if (currentTimestamp == task->targetTimestamp) {
+            // 此处条件需要长时间测试才能检测
+            if (currentTimestamp == task->targetTimestamp) { // GCOVR_EXCL_LINE
                 task->callback();
                 iterator = timerTasks[index].erase(iterator);
                 if (task->isRepeat) {
@@ -77,7 +80,8 @@ void Timer::loop() noexcept {
 void Timer::cancelCallback(const std::weak_ptr<Timer> &weakTimer, const std::weak_ptr<TimerTask> &weakTask) noexcept {
     auto timer = weakTimer.lock();
     auto task = weakTask.lock();
-    if (timer && task) {
+    // 此处条件为了预防万一而设，通常不会失败
+    if (timer && task) { // GCOVR_EXCL_LINE
         size_t index = task->targetTimestamp % timer->number;
         timer->mutex.lock();
         timer->timerTasks[index].remove(task);

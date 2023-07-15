@@ -11,7 +11,7 @@
 using sese::EncodingConverterInitiateTask;
 using sese::Initializer;
 using sese::InitiateTask;
-using sese::TestInitiateTask;
+// using sese::TestInitiateTask;
 
 static Initializer initializer;
 
@@ -30,7 +30,8 @@ Initializer::Initializer() {
     buildInLoadTask(std::make_shared<ThreadInitiateTask>());
     buildInLoadTask(std::make_shared<EncodingConverterInitiateTask>());
     buildInLoadTask(std::make_shared<record::LoggerInitiateTask>());
-    buildInLoadTask(std::make_shared<TestInitiateTask>());
+    // 弃用
+    // buildInLoadTask(std::make_shared<TestInitiateTask>());
 #ifdef _WIN32
     buildInLoadTask(std::make_shared<sese::net::SocketInitiateTask>());
 #endif

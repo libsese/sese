@@ -18,6 +18,8 @@ BufferedStream::~BufferedStream() noexcept {
 inline int64_t BufferedStream::preRead() {
     // 尝试使用目标流填充缓存
     auto read = source->read(buffer, cap);
+    // 此处用于修正一些输入源可能读取返回负值的情况
+    read = read < 0 ? 0 : read;// GCOVR_EXCL_LINE
     pos = 0;
     len = read;
     return read;
@@ -73,10 +75,10 @@ int64_t BufferedStream::read(void *buf, size_t length) {
         while (true) {
             read = source->read((char *) buf + total, (length - total) >= 1024 ? 1024 : length - total);
             total += (int64_t) read;
-            if (read == 0 || total == length) {
-                // 流已读尽或者需求已满足则退出
-                break;
-            }
+            // 无可再读
+            if (read <= 0) break;
+            // 完成目标
+            if (total == length) break;
         }
         return (int64_t) total;
     }
@@ -97,24 +99,32 @@ int64_t BufferedStream::write(const void *buf, size_t length) {
             return (int64_t) length;
         } else {
             // 字节数不足 - 需要刷新
-            size_t total = flush();
-            if (0 != total) {
+            size_t expect = len - pos;
+            if (expect == flush()) {
                 memcpy(this->buffer, (char *) buf, length);
                 this->len = length;
-                total = length;
+                expect = length;
+                return (int64_t) expect;
+            } else {
+                // flush 失败
+                return -1;
             }
-            return (int64_t) total;
         }
     } else {
         // 直接写入
         if (this->len != this->pos) {
             // 缓存区有剩余，需要刷新
-            flush();
+            size_t expect = len - pos;
+            if (expect != flush()) {
+                // flush 失败
+                return -1;
+            }
         }
 
         int64_t wrote = 0;
         while (true) {
             auto rt = source->write((const char *) buf + wrote, length - wrote >= cap ? cap : length - wrote);
+            if (rt <= 0) return -1;
             wrote += rt;
             if (wrote == length) break;
         }

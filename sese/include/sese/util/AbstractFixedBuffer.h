@@ -1,15 +1,11 @@
 #pragma once
 
-#include <sese/util/InputStream.h>
-#include <sese/util/OutputStream.h>
+#include <sese/util/Stream.h>
 #include <sese/util/PeekableStream.h>
 
 namespace sese {
 
-    class API AbstractFixedBuffer
-        : public InputStream,
-          public OutputStream,
-          public PeekableStream {
+    class API AbstractFixedBuffer : public Stream, public PeekableStream {
     public:
         explicit AbstractFixedBuffer(size_t size) noexcept;
         virtual ~AbstractFixedBuffer() noexcept;
