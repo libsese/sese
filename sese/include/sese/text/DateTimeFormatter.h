@@ -68,5 +68,11 @@ namespace sese::text {
         /// \example "2023-06-20T16:46:55+00:00"
         /// \return 时间戳
         static uint64_t parseFromISO8601(const std::string &text);
+
+    public:
+        static const char *Mon[12];
+        static const char *Month[12];
+        static const char *WkDay[7];
+        static const char *WeekDay[7];
     };
 }// namespace sese

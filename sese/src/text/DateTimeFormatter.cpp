@@ -1,48 +1,49 @@
 #include "sese/text/DateTimeFormatter.h"
 #include "sese/text/StringBuilder.h"
+#include "sese/util/InputBufferWrapper.h"
 
 #include <cstring>
 #include <ctime>
 
-#ifdef _WIN32
-#define itoa _itoa_s
-#else
-static char *itoa(int num, char *str, int radix = 10) {
-    char index[] = "0123456789ABCDEF";
-    unsigned unum;
-    int i = 0, j, k;
-    if (radix == 10 && num < 0) {
-        unum = (unsigned) -num;
-        str[i++] = '-';
-    } else
-        unum = (unsigned) num;
-    do {
-        str[i++] = index[unum % (unsigned) radix];
-        unum /= radix;
-    } while (unum);
-    str[i] = '\0';
-    if (str[0] == '-')
-        k = 1;
-    else
-        k = 0;
+//#ifdef _WIN32
+//#define itoa _itoa_s
+//#else
+//static char *itoa(int num, char *str, int radix = 10) {
+//    char index[] = "0123456789ABCDEF";
+//    unsigned unum;
+//    int i = 0, j, k;
+//    if (radix == 10 && num < 0) {
+//        unum = (unsigned) -num;
+//        str[i++] = '-';
+//    } else
+//        unum = (unsigned) num;
+//    do {
+//        str[i++] = index[unum % (unsigned) radix];
+//        unum /= radix;
+//    } while (unum);
+//    str[i] = '\0';
+//    if (str[0] == '-')
+//        k = 1;
+//    else
+//        k = 0;
+//
+//    for (j = k; j <= (i - 1) / 2; j++) {
+//        char temp;
+//        temp = str[j];
+//        str[j] = str[i - 1 + k - j];
+//        str[i - 1 + k - j] = temp;
+//    }
+//    return str;
+//}
+//#endif
 
-    for (j = k; j <= (i - 1) / 2; j++) {
-        char temp;
-        temp = str[j];
-        str[j] = str[i - 1 + k - j];
-        str[i - 1 + k - j] = temp;
-    }
-    return str;
-}
-#endif
+const char *sese::text::DateTimeFormatter::Month[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
-const char *Month[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+const char *sese::text::DateTimeFormatter::Mon[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-const char *Mon[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+const char *sese::text::DateTimeFormatter::WeekDay[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
-const char *WeekDay[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-
-const char *WkDay[] = {"Sun", "MonDays", "Tue", "Wed", "Thu", "Fri", "Sat"};
+const char *sese::text::DateTimeFormatter::WkDay[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
 
 static int count(const char &ch, const char *str) {
@@ -55,211 +56,179 @@ static int count(const char &ch, const char *str) {
 }
 
 std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime, const std::string &pattern) {
-    auto builder = std::make_shared<StringBuilder>(128);
-    int c;
-    char buffer[5];
-    for (int i = 0; i < pattern.length();) {
-        switch (pattern[i]) {
-            case 'd': {
-                c = count('d', &pattern[i]);
-                itoa(dateTime.getDays(), buffer, 10);
-                if (c == 1) {
-                    builder->append(buffer);
-                } else if (c == 2) {
-                    if (dateTime.getDays() < 10) {
-                        builder->append('0');
-                    }
-                    builder->append(buffer);
-                } else if (c == 3) {
-                    builder->append(WkDay[dateTime.getDayOfWeek()]);
-                } else if (c == 4) {
-                    builder->append(WeekDay[dateTime.getDayOfWeek()]);
+    auto builder = StringBuilder(128);
+    auto input = sese::InputBufferWrapper(pattern.c_str(), pattern.length());// GCOVR_EXCL_LINE
+
+    while (true) {
+        char buffer[5]{};
+        auto len = input.peek(buffer, 4);// GCOVR_EXCL_LINE
+        if (len < 1) break;
+
+        if (buffer[0] == 'd') {
+            auto count = ::count('d', buffer);
+            if (count == 1) {
+                builder.append(std::to_string(dateTime.getDays()));// GCOVR_EXCL_LINE
+            } else if (count == 2) {
+                if (dateTime.getDays() < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
                 }
-                i += c;
-                memset(buffer, 0, 4);
-                break;
+                builder.append(std::to_string(dateTime.getDays()));// GCOVR_EXCL_LINE
+            } else if (count == 3) {
+                builder.append(WkDay[dateTime.getDayOfWeek()]);// GCOVR_EXCL_LINE
+            } else {
+                builder.append(WeekDay[dateTime.getDayOfWeek()]);// GCOVR_EXCL_LINE
             }
-            case 'm': {
-                c = count('m', &pattern[i]);
-                itoa(dateTime.getMinutes(), buffer, 10);
-                if (c == 1) {
-                    builder->append(buffer);
-                } else if (c == 2) {
-                    if (dateTime.getMinutes() < 10) {
-                        builder->append('0');
-                    }
-                    builder->append(buffer);
+            input.trunc(count);// GCOVR_EXCL_LINE
+        } else if (buffer[0] == 'm') {
+            auto count = ::count('m', buffer);
+            if (count == 1) {
+                builder.append(std::to_string(dateTime.getMinutes()));// GCOVR_EXCL_LINE
+                input.trunc(1);                                       // GCOVR_EXCL_LINE
+            } else if (count > 1) {
+                if (dateTime.getMinutes() < 10) {
+                    builder.append('0');
                 }
-                i += c;
-                memset(buffer, 0, 4);
-                break;
+                builder.append(std::to_string(dateTime.getMinutes()));// GCOVR_EXCL_LINE
+                input.trunc(2);                                       // GCOVR_EXCL_LINE
             }
-            case 'M': {
-                c = count('M', &pattern[i]);
-                itoa(dateTime.getMonths(), buffer, 10);
-                if (c == 1) {
-                    builder->append(buffer);
-                } else if (c == 2) {
-                    if (dateTime.getMonths() < 10) {
-                        builder->append('0');
-                    }
-                    builder->append(buffer);
-                } else if (c == 3) {
-                    builder->append(Mon[dateTime.getMonths()]);
-                } else {
-                    builder->append(Month[dateTime.getMonths()]);
+        } else if (buffer[0] == 'M') {
+            auto count = ::count('M', buffer);
+            if (count == 1) {
+                builder.append(std::to_string(dateTime.getMonths() + 1));// GCOVR_EXCL_LINE
+            } else if (count == 2) {
+                if (dateTime.getMinutes() < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
                 }
-                i += c;
-                memset(buffer, 0, 4);
-                break;
+                builder.append(std::to_string(dateTime.getMonths() + 1));// GCOVR_EXCL_LINE
+            } else if (count == 3) {
+                builder.append(Mon[dateTime.getMonths()]);// GCOVR_EXCL_LINE
+            } else {
+                builder.append(Month[dateTime.getMonths()]);// GCOVR_EXCL_LINE
             }
-            case 'y': {
-                c = count('y', &pattern[i]);
-                if (c == 1) {
-                    itoa(dateTime.getYears() % 100, buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 2) {
-                    if (dateTime.getYears() < 10) {
-                        builder->append('0');
-                    }
-                    itoa(dateTime.getYears() % 100, buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 3) {
-                    if (dateTime.getYears() < 10) {
-                        builder->append("00");
-                    } else if (dateTime.getYears() < 100) {
-                        builder->append('0');
-                    }
-                    itoa(dateTime.getYears() % 1000, buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 4) {
-                    if (dateTime.getYears() < 10) {
-                        builder->append("000");
-                    } else if (dateTime.getYears() < 100) {
-                        builder->append("00");
-                    } else if (dateTime.getYears() < 1000) {
-                        builder->append('0');
-                    }
-                    itoa(dateTime.getYears(), buffer, 10);
-                    builder->append(buffer);
+            input.trunc(count);// GCOVR_EXCL_LINE
+        } else if (buffer[0] == 'y') {
+            auto count = ::count('y', buffer);
+            if (count == 1) {
+                builder.append(std::to_string(dateTime.getYears() % 100));// GCOVR_EXCL_LINE
+            } else if (count == 2) {
+                auto year = dateTime.getYears() % 100;
+                if (year < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
                 }
-                i += c;
-                memset(buffer, 0, 4);
-                break;
-            }
-            case 'z': {
-                if (dateTime.getUTC() >= 0) {
-                    builder->append('+');
+                builder.append(std::to_string(year));// GCOVR_EXCL_LINE
+            } else if (count == 3) {
+                auto year = dateTime.getYears() % 1000;
+                if (year < 100) {
+                    builder.append('0');// GCOVR_EXCL_LINE
                 }
-                itoa(dateTime.getUTC(), buffer, 10);
-                builder->append(buffer);
-                memset(buffer, 0, 4);
-                i += 1;
-                break;
-            }
-            case 'h': {
-                c = count('h', &pattern[i]);
-                if (c == 1) {
-                    itoa(dateTime.getHours() % 12, buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 2) {
-                    if (dateTime.getHours() % 12 < 10) {
-                        builder->append('0');
-                    }
-                    itoa(dateTime.getHours() % 12, buffer, 10);
-                    builder->append(buffer);
+                if (year < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
                 }
-                memset(buffer, 0, 4);
-                i += 1;
-                break;
-            }
-            case 'H': {
-                c = count('H', &pattern[i]);
-                if (c == 1) {
-                    itoa(dateTime.getHours(), buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 2) {
-                    if (dateTime.getHours() < 10) {
-                        builder->append('0');
-                    }
-                    itoa(dateTime.getHours(), buffer, 10);
-                    builder->append(buffer);
+                builder.append(std::to_string(year));// GCOVR_EXCL_LINE
+            } else {
+                // 此处时间通常不会小于 10，因为 DateTime 时间戳默认是无符号整数
+                // GCOVR_EXCL_START
+                auto year = dateTime.getYears() % 10000;
+                if (year < 1000) {
+                    builder.append('0');
                 }
-                memset(buffer, 0, 4);
-                i += c;
-                break;
-            }
-            case 's': {
-                c = count('s', &pattern[i]);
-                if (c == 1) {
-                    itoa(dateTime.getSeconds(), buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 2) {
-                    if (dateTime.getSeconds() < 10) {
-                        builder->append('0');
-                    }
-                    itoa(dateTime.getSeconds(), buffer, 10);
-                    builder->append(buffer);
+                if (year < 100) {
+                    builder.append('0');
                 }
-                memset(buffer, 0, 4);
-                i += c;
-                break;
-            }
-            case 'f': {
-                c = count('f', &pattern[i]);
-                if (c == 1) {
-                    itoa(dateTime.getMilliseconds(), buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 2) {
-                    if (dateTime.getMilliseconds() < 10) {
-                        builder->append("00");
-                    } else if (dateTime.getMilliseconds() < 100) {
-                        builder->append('0');
-                    }
-                    itoa(dateTime.getMilliseconds(), buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 3) {
-                    itoa(dateTime.getMicroseconds(), buffer, 10);
-                    builder->append(buffer);
-                } else if (c == 4) {
-                    if (dateTime.getMicroseconds() < 10) {
-                        builder->append("00");
-                    } else if (dateTime.getMicroseconds() < 100) {
-                        builder->append('0');
-                    }
-                    itoa(dateTime.getMicroseconds(), buffer, 10);
-                    builder->append(buffer);
+                if (year < 10) {
+                    builder.append('0');
                 }
-                i += c;
-                memset(buffer, 0, 4);
-                break;
+                // GCOVR_EXCL_STOP
+                builder.append(std::to_string(year));// GCOVR_EXCL_LINE
             }
-            case 't': {
-                if (dateTime.getHours() / 12 == 0) {
-                    builder->append("AM");
-                } else {
-                    builder->append("PM");
+            input.trunc(count);// GCOVR_EXCL_LINE
+        } else if (buffer[0] == 'z') {
+            if (dateTime.getUTC() >= 0) {
+                builder.append('+');// GCOVR_EXCL_LINE
+            }
+            builder.append(std::to_string(dateTime.getUTC()));// GCOVR_EXCL_LINE
+            input.trunc(1);                                   // GCOVR_EXCL_LINE
+        } else if (buffer[0] == 'h') {
+            auto count = ::count('h', buffer);
+            auto hour = dateTime.getHours();
+            hour = hour % 12 == 0 ? 12 : hour % 12;
+            if (count == 1) {
+                builder.append(std::to_string(hour));// GCOVR_EXCL_LINE
+                input.trunc(1);                      // GCOVR_EXCL_LINE
+            } else if (count > 1) {
+                if (hour < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
                 }
-                i += 1;
+                builder.append(std::to_string(hour));// GCOVR_EXCL_LINE
+                input.trunc(2);                      // GCOVR_EXCL_LINE
             }
-            case '%': {
-                if (pattern.length() - 1 >= i) {
-                    builder->append(pattern[i + 1]);
-                    i += 2;
-                } else {
-                    builder->append('%');
-                    i += 1;
+        } else if (buffer[0] == 'H') {
+            auto count = ::count('H', buffer);
+            if (count == 1) {
+                builder.append(std::to_string(dateTime.getHours()));// GCOVR_EXCL_LINE
+                input.trunc(1);                                     // GCOVR_EXCL_LINE
+            } else if (count > 1) {
+                if (dateTime.getHours() < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
                 }
-                break;
+                builder.append(std::to_string(dateTime.getHours()));// GCOVR_EXCL_LINE
+                input.trunc(2);                                     // GCOVR_EXCL_LINE
             }
-            default: {
-                builder->append(pattern[i]);
-                i += 1;
-                break;
+        } else if (buffer[0] == 't') {
+            builder.append(dateTime.getHours() < 12 ? "AM" : "PM");// GCOVR_EXCL_LINE
+            input.trunc(1);                                        // GCOVR_EXCL_LINE
+        } else if (buffer[0] == 's') {
+            auto count = ::count('s', buffer);
+            if (count == 1) {
+                builder.append(std::to_string(dateTime.getSeconds()));// GCOVR_EXCL_LINE
+                input.trunc(1);                                       // GCOVR_EXCL_LINE
+            } else if (count > 1) {
+                if (dateTime.getSeconds() < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
+                }
+                builder.append(std::to_string(dateTime.getSeconds()));// GCOVR_EXCL_LINE
+                input.trunc(2);                                       // GCOVR_EXCL_LINE
             }
+        } else if (buffer[0] == 'f') {
+            auto count = ::count('f', buffer);
+            if (count == 1) {
+                builder.append(std::to_string(dateTime.getMilliseconds()));// GCOVR_EXCL_LINE
+            } else if (count == 2) {
+                auto num = dateTime.getMilliseconds();
+                if (num < 100) {
+                    builder.append('0');// GCOVR_EXCL_LINE
+                }
+                if (num < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
+                }
+                builder.append(std::to_string(num));// GCOVR_EXCL_LINE
+            } else if (count == 3) {
+                builder.append(std::to_string(dateTime.getMicroseconds()));// GCOVR_EXCL_LINE
+            } else {
+                auto num = dateTime.getMicroseconds();
+                if (num < 100) {
+                    builder.append('0');// GCOVR_EXCL_LINE
+                }
+                if (num < 10) {
+                    builder.append('0');// GCOVR_EXCL_LINE
+                }
+                builder.append(std::to_string(num));// GCOVR_EXCL_LINE
+            }
+            input.trunc(count);// GCOVR_EXCL_LINE
+        } else if (buffer[0] == '%') {
+            if (len > 1) {
+                builder.append(buffer[1]);// GCOVR_EXCL_LINE
+                input.trunc(2);           // GCOVR_EXCL_LINE
+            } else {
+                input.trunc(1);// GCOVR_EXCL_LINE
+            }
+        } else {
+            builder.append(buffer[0]);// GCOVR_EXCL_LINE
+            input.trunc(1);           // GCOVR_EXCL_LINE
         }
     }
-    return builder->toString();
+
+    return builder.toString();// GCOVR_EXCL_LINE
 }
 
 std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dateTime, const std::string &pattern) {
@@ -272,7 +241,7 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dat
 
 inline int mon2number(const char *str) {
     for (int i = 0; i < 12; i++) {
-        if (strcasecmp(str, Mon[i]) == 0) {
+        if (strcasecmp(str, sese::text::DateTimeFormatter::Mon[i]) == 0) {
             return i;
         }
     }
@@ -282,6 +251,9 @@ inline int mon2number(const char *str) {
 #ifdef _timezone
 #define timezone _timezone
 #endif
+
+// 此处不处理错误的格式
+// GCOVR_EXCL_START
 
 uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &text) {
     std::tm tm{};
@@ -438,3 +410,5 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
         return UINT64_MAX;
     }
 }
+
+// GCOVR_EXCL_STOP

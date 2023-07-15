@@ -49,19 +49,6 @@ TEST(TestDateTime, UnclearCompare) {
     }
 }
 
-TEST(TestDateTime, Formatter) {
-    sese::record::LogHelper log("Formatter");
-
-    auto time1 = sese::DateTime::now();
-    auto str1 = sese::text::DateTimeFormatter::format(time1, "%D%a%t%e ddd dddd UTCz yyyy-MM-dd HH:mm:ss.ff.ffff");
-    EXPECT_TRUE(!str1.empty());
-    log.info(str1.c_str());
-    auto time2 = sese::DateTime::now(0);
-    auto str2 = sese::text::DateTimeFormatter::format(time2, TIME_GREENWICH_MEAN_PATTERN);
-    EXPECT_TRUE(!str2.empty());
-    log.info(str2.c_str());
-}
-
 TEST(TestDateTime, Operator) {
     // 2022-03-03 00:00:00 UTC+8
     auto time1 = sese::DateTime(1646236800000000, 0);
@@ -121,4 +108,68 @@ TEST(TestDateTime, Parse) {
             DateTimeFormatter::parseFromISO8601("2023-06-20T16:46:55+00:00"),
             1687279615
     );
+}
+
+TEST(TestDateTime, Format_0) {
+    auto time = sese::DateTime(978307261001001, 0);
+
+    auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
+    sese::record::LogHelper::i(str1.c_str());
+
+    auto str2 = sese::text::DateTimeFormatter::format(time, "yy-MM-dd hh:mm:ss.ff.ffff t z");
+    sese::record::LogHelper::i(str2.c_str());
+
+    auto str3 = sese::text::DateTimeFormatter::format(time, "yyy-MMM-dd ddd H:mm:s");
+    sese::record::LogHelper::i(str3.c_str());
+
+    auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss");
+    sese::record::LogHelper::i(str4.c_str());
+}
+
+TEST(TestDateTime, Format_1) {
+    auto time = sese::DateTime(61653571010010, -1);
+
+    auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
+    sese::record::LogHelper::i(str1.c_str());
+
+    auto str2 = sese::text::DateTimeFormatter::format(time, "yy-MM-dd hh:mm:ss.ff.ffff t z");
+    sese::record::LogHelper::i(str2.c_str());
+
+    auto str3 = sese::text::DateTimeFormatter::format(time, "yyy-MMM-dd ddd H:mm:s");
+    sese::record::LogHelper::i(str3.c_str());
+
+    auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss");
+    sese::record::LogHelper::i(str4.c_str());
+}
+
+TEST(TestDateTime, Format_2) {
+    auto time = sese::DateTime(61613971114514,0);
+
+    auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
+    sese::record::LogHelper::i(str1.c_str());
+
+    auto str2 = sese::text::DateTimeFormatter::format(time, "yy-MM-dd hh:mm:ss.ff.ffff t z");
+    sese::record::LogHelper::i(str2.c_str());
+
+    auto str3 = sese::text::DateTimeFormatter::format(time, "yyy-MMM-dd ddd H:mm:s");
+    sese::record::LogHelper::i(str3.c_str());
+
+    auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss %");
+    sese::record::LogHelper::i(str4.c_str());
+}
+
+TEST(TestDateTime, Format_3) {
+    auto time = sese::DateTime::nowPtr(0);
+
+    auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
+    sese::record::LogHelper::i(str1.c_str());
+
+    auto str2 = sese::text::DateTimeFormatter::format(time, "yy-MM-dd hhh:mmm:sss.ff.ffff t z");
+    sese::record::LogHelper::i(str2.c_str());
+
+    auto str3 = sese::text::DateTimeFormatter::format(time, "yyy-MMM-dd ddd H:mm:s");
+    sese::record::LogHelper::i(str3.c_str());
+
+    auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss %");
+    sese::record::LogHelper::i(str4.c_str());
 }

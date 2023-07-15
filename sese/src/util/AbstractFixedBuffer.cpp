@@ -2,7 +2,7 @@
 
 sese::AbstractFixedBuffer::AbstractFixedBuffer(size_t size) noexcept
     : size(size),
-      buffer(new char[size]) {
+      buffer(new char[size]) {// GCOVR_EXCL_LINE
 }
 
 sese::AbstractFixedBuffer::~AbstractFixedBuffer() noexcept {
