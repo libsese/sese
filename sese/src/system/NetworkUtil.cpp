@@ -92,46 +92,41 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
 std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     std::vector<NetworkInterface> interfaces;
     std::map<std::string, NetworkInterface> map;
-    struct ifaddrs *address = nullptr;
+    struct ifaddrs *pIfAddress = nullptr;
 
     // 这些信息仅用于获取网卡名称、 IPv4 和 mac 信息
     // glib 2.3.3 以下不支持使用其获取 IPv6 相关信息
-    getifaddrs(&address);
+    getifaddrs(&pIfAddress);
 
-    auto pAddress = address;
+    auto pAddress = pIfAddress;
     while (pAddress) {
-        if (pAddress->ifa_addr->sa_family == AF_INET) {
+        if (pAddress->ifa_addr->sa_family == AF_INET ||
+            pAddress->ifa_addr->sa_family == AF_PACKET) {
+
             auto iterator = map.find(pAddress->ifa_name);
-            sockaddr_in addr = *(sockaddr_in *) (pAddress->ifa_addr);
-            if (iterator != map.end()) {
-                iterator->second.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
-            } else {
+            if (iterator == map.end()) {
                 auto i = NetworkInterface();
-                i.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
-                map[i.name] = i;
+                iterator = map.insert({pAddress->ifa_name, i}).first;
             }
-        } else if (pAddress->ifa_addr->sa_family == AF_PACKET) {
-            auto iterator = map.find(pAddress->ifa_name);
-            if (iterator != map.end()) {
+            if (pAddress->ifa_addr->sa_family == AF_INET) {
+                sockaddr_in addr = *(sockaddr_in *) (pAddress->ifa_addr);
+                iterator->second.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
+            } else if (pAddress->ifa_addr->sa_family == AF_PACKET) {
                 iterator->second.name = pAddress->ifa_name;
                 memcpy(iterator->second.mac.data(), pAddress->ifa_addr, 6);
-            } else {
-                auto i = NetworkInterface();
-                i.name = pAddress->ifa_name;
-                memcpy(i.mac.data(), pAddress->ifa_addr, 6);
-                map[i.name] = i;
             }
         }
 
         pAddress = pAddress->ifa_next;
     }
 
-    freeifaddrs(address);
+    freeifaddrs(pIfAddress);
 
     // 用于获取 IPv6 信息
     FILE *f = fopen("/proc/net/if_inet6", "r");
-    if (f != nullptr) {
-        int ret, scope, prefix;
+    // 此处为假则表示不存在该配置文件，取消获取 IPv6 信息
+    if (f != nullptr) {// GCOVR_EXCL_LINE
+        int scope, prefix;
         unsigned char ipv6[16];
         char name[IFNAMSIZ];
         char address[INET6_ADDRSTRLEN];
@@ -158,11 +153,12 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
                       &scope,
                       name)) {
             auto iterator = map.find(name);
-            if (iterator != map.end()) {
-                inet_ntop(AF_INET6, ipv6, address, sizeof(address));
-                auto addr = sese::net::IPv6Address::create(address, 0);
-                iterator->second.ipv6Addresses.emplace_back(addr);
-            }
+            // 此处不可能为假，因为一定会存在 mac 地址信息
+            // if (iterator != map.end()) {
+            inet_ntop(AF_INET6, ipv6, address, sizeof(address));
+            auto addr = sese::net::IPv6Address::create(address, 0);
+            iterator->second.ipv6Addresses.emplace_back(addr);
+            // }
         }
 
         fclose(f);
@@ -193,38 +189,22 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     getifaddrs(&address);
 
     while (address) {
+        auto iterator = map.find(address->ifa_name);
+        if (iterator == map.end()) {
+            auto i = NetworkInterface();
+            iterator = map.insert({address->ifa_name, i}).first;
+        }
         if (address->ifa_addr->sa_family == AF_INET) {
             auto iterator = map.find(address->ifa_name);
             sockaddr_in addr = *(sockaddr_in *) (address->ifa_addr);
-            if (iterator != map.end()) {
-                iterator->second.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
-            } else {
-                auto i = NetworkInterface();
-                i.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
-                map[i.name] = i;
-            }
+            iterator->second.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
         } else if (address->ifa_addr->sa_family == AF_INET6) {
-            auto iterator = map.find(address->ifa_name);
             sockaddr_in6 addr = *(sockaddr_in6 *) (address->ifa_addr);
-            if (iterator != map.end()) {
-                iterator->second.ipv6Addresses.emplace_back(std::make_shared<sese::net::IPv6Address>(addr));
-            } else {
-                auto i = NetworkInterface();
-                i.ipv6Addresses.emplace_back(std::make_shared<sese::net::IPv6Address>(addr));
-                map[i.name] = i;
-            }
+            iterator->second.ipv6Addresses.emplace_back(std::make_shared<sese::net::IPv6Address>(addr));
         } else if (address->ifa_addr->sa_family == AF_LINK) {
-            auto iterator = map.find(address->ifa_name);
-            auto ptr = (unsigned char *)LLADDR((struct sockaddr_dl *)(address)->ifa_addr);
-            if (iterator != map.end()) {
-                iterator->second.name = address->ifa_name;
-                memcpy(iterator->second.mac.data(), ptr, 6);
-            } else {
-                auto i = NetworkInterface();
-                i.name = address->ifa_name;
-                memcpy(i.mac.data(), ptr, 6);
-                map[i.name] = i;
-            }
+            auto ptr = (unsigned char *) LLADDR((struct sockaddr_dl *) (address)->ifa_addr);
+            iterator->second.name = address->ifa_name;
+            memcpy(iterator->second.mac.data(), ptr, 6);
         }
 
         address = address->ifa_next;

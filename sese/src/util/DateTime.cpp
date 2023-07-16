@@ -116,7 +116,11 @@ namespace sese {
         totalSeconds += utc * 60 * 60;
 
         {
+#ifndef SESE_PLATFORM_APPLE
             auto time = static_cast<int64_t>(totalSeconds);
+#else
+            auto time = static_cast<time_t>(totalSeconds);
+#endif
             auto tm = gmtime(&time);
             this->years = tm->tm_year + 1900;
             this->months = tm->tm_mon;
