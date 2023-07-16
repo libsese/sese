@@ -39,9 +39,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         # for sanitizer
         # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
         # for coverage
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage -fprofile-update=atomic")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
-        endif ()
+        # disable exceptions
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+    endif ()
 endif ()
 
 message(STATUS "==================== SESE-CORE ====================")
@@ -61,7 +62,7 @@ add_definitions("-DSESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
 add_definitions("-DPROJECT_PATH=\"${CMAKE_CURRENT_LIST_DIR}\"")
 add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
-message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
+# message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
 message(STATUS "CXX compile options: ${CMAKE_CXX_FLAGS}")
 
 add_subdirectory(sese)

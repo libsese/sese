@@ -27,3 +27,10 @@ TEST(TestUtil, Misc) {
     auto str = sese::getErrorString(err);
     puts(str.c_str());
 }
+
+#include <sese/util/Test.h>
+
+TEST(TestUtil, Backtrace) {
+    auto backtrace = sese::Test::backtrace2String(3, "");
+    puts(backtrace.c_str());
+}

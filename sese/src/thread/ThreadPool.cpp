@@ -1,10 +1,12 @@
 #include "sese/thread/ThreadPool.h"
 #include "sese/thread/Locker.h"
 
+#include <algorithm>
+
 namespace sese {
     ThreadPool::ThreadPool(std::string threadPoolName, size_t threads)
         : name(std::move(threadPoolName)),
-          threads(threads),
+          threads(std::max<size_t>(2, threads)),
           data(std::make_shared<RuntimeData>()) {
 
         auto proc = [data = data] {
@@ -19,7 +21,7 @@ namespace sese {
                     auto task = std::move(data->tasks.front());
                     data->tasks.pop();
                     locker.unlock();
-                    if(task != nullptr) {
+                    if (task != nullptr) {
                         task();
                     }
                 }
@@ -39,7 +41,7 @@ namespace sese {
         }
     }
 
-    void ThreadPool::postTask(const std::function<void ()> &task) {
+    void ThreadPool::postTask(const std::function<void()> &task) {
         {
             Locker locker(data->mutex);
             data->tasks.emplace(task);
@@ -47,7 +49,7 @@ namespace sese {
         data->conditionVariable.notify_one();
     }
 
-    void ThreadPool::postTask(const std::vector<std::function<void ()>> &tasks) {
+    void ThreadPool::postTask(const std::vector<std::function<void()>> &tasks) {
         {
             Locker locker(data->mutex);
             for (const auto &task: tasks) {
@@ -61,10 +63,10 @@ namespace sese {
         data->isShutdown = true;
         data->conditionVariable.notify_all();
         for (auto pthread: threadGroup) {
-            if (pthread->joinable()) {
-                pthread->join();
-                delete pthread;
-            }
+            // if (pthread->joinable()) {
+            pthread->join();
+            delete pthread;// GCOVR_EXCL_LINE
+            // }
         }
     }
 

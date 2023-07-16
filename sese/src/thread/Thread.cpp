@@ -3,13 +3,13 @@
 
 #ifdef __linux__
 static pid_t getTid() noexcept {
-    return syscall(__NR_gettid); // NOLINT
+    return syscall(__NR_gettid);// NOLINT
 }
 #endif
 
 #ifdef _WIN32
 static tid_t getTid() noexcept {
-    return GetCurrentThreadId(); // NOLINT
+    return GetCurrentThreadId();// NOLINT
 }
 #endif
 
@@ -63,12 +63,12 @@ namespace sese {
     }
 
     Thread::Thread(const std::function<void()> &function, const std::string &name) {
-        this->name = name;
-        this->function = function;
+        this->name = name;        // GCOVR_EXCL_LINE
+        this->function = function;// GCOVR_EXCL_LINE
     }
 
     void Thread::start() {
-        this->th = std::move(std::thread([this] { run(this); }));
+        this->th = std::move(std::thread([this] { run(this); }));// GCOVR_EXCL_LINE
     }
 
     void Thread::join() {
@@ -81,7 +81,7 @@ namespace sese {
 
         std::function<void()> func;
         func.swap(currentThread->function);
-        func();
+        func(); // GCOVR_EXCL_LINE
 
         return nullptr;
     }
