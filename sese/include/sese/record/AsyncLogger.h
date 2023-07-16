@@ -34,7 +34,7 @@ namespace sese::record {
 
         std::mutex mutex;
         std::condition_variable conditionVariable;
-        std::atomic_bool isShutdown;
+        std::atomic_bool isShutdown{};
         sese::Thread::Ptr thread;
     };
 }// namespace sese::record

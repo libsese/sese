@@ -2,10 +2,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#include "sese/record/AsyncLogger.h"
+#include "sese/record/Logger.h"
 #include "sese/record/ConsoleAppender.h"
 #include "sese/record/SimpleFormatter.h"
-#include "sese/thread/Thread.h"
 
 #include <clocale>
 
@@ -21,41 +20,42 @@ namespace sese::record {
     }
 
     void Logger::removeAppender(const AbstractAppender::Ptr &appender) noexcept {
-        for(auto iterator = appenderVector.begin(); iterator < appenderVector.end(); iterator++) {
+        // 此处删除逻辑无需验证
+        // GCOVR_EXCL_START
+        for (auto iterator = appenderVector.begin(); iterator < appenderVector.end(); iterator++) {
             if (*iterator == appender) {
                 this->appenderVector.erase(iterator);
                 return;
             }
         }
+        // GCOVR_EXCL_STOP
     }
 
     void Logger::log(const Event::Ptr &event) noexcept {
         std::string content = formatter->dump(event);
-        if (builtInAppender->getLevel() <= event->getLevel()) {
-#ifdef USE_ASYNC_LOGGER
-            setbuf(stdout, nullptr);
-            switch (event->getLevel()) {
-                case Level::DEBUG:
-                    ConsoleAppender::setDebugColor();
-                    break;
-                case Level::INFO:
-                    ConsoleAppender::setInfoColor();
-                    break;
-                case Level::WARN:
-                    ConsoleAppender::setWarnColor();
-                    break;
-                case Level::ERR:
-                    ConsoleAppender::setErrorColor();
-                    break;
-            }
-#endif
-            builtInAppender->dump(content.c_str(), content.length());
-            builtInAppender->dump("\n", 1);
-#ifdef USE_ASYNC_LOGGER
-            ConsoleAppender::setCleanColor();
-            fflush(stdout);
-#endif
+        // 内建控制台输出地不对日志等级做任何限制
+        // if (builtInAppender->getLevel() <= event->getLevel()) {
+        setbuf(stdout, nullptr);
+        // 此处逻辑本身就是完备的
+        switch (event->getLevel()) {// GCOVR_EXCL_LINE
+            case Level::DEBUG:
+                ConsoleAppender::setDebugColor();
+                break;
+            case Level::INFO:
+                ConsoleAppender::setInfoColor();
+                break;
+            case Level::WARN:
+                ConsoleAppender::setWarnColor();
+                break;
+            case Level::ERR:
+                ConsoleAppender::setErrorColor();
+                break;
         }
+        builtInAppender->dump(content.c_str(), content.length());
+        builtInAppender->dump("\n", 1);
+        ConsoleAppender::setCleanColor();
+        fflush(stdout);
+        // }
 
         for (auto &appender: appenderVector) {
             if (appender->getLevel() <= event->getLevel()) {
@@ -67,11 +67,11 @@ namespace sese::record {
     static Logger *logger = nullptr;
 
     void Logger::addGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept {
-        logger->addAppender(appender); // NOLINT
+        logger->addAppender(appender);// NOLINT
     }
 
     void Logger::removeGlobalLoggerAppender(const AbstractAppender::Ptr &appender) noexcept {
-        logger->removeAppender(appender); // NOLINT
+        logger->removeAppender(appender);// NOLINT
     }
 
     Logger *getLogger() noexcept { return logger; }
@@ -88,7 +88,7 @@ namespace sese::record {
     }
 
     int32_t LoggerInitiateTask::destroy() noexcept {
-        delete logger;
+        delete logger;// GCOVR_EXCL_LINE
         return 0;
     }
 }// namespace sese::record

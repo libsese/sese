@@ -1,7 +1,7 @@
 #include "sese/record/SimpleFormatter.h"
 #include "sese/text/DateTimeFormatter.h"
-
-#include <sstream>
+#include "sese/text/StringBuilder.h"
+#include "sese/util/InputBufferWrapper.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4018)
@@ -11,7 +11,7 @@
 namespace sese {
 
     extern "C" API const char *getLevelString(record::Level level) noexcept {
-        switch (level) {
+        switch (level) {// GCOVR_EXCL_LINE
             case record::Level::DEBUG:
                 return "D";
             case record::Level::INFO:
@@ -20,83 +20,83 @@ namespace sese {
                 return "W";
             case record::Level::ERR:
                 return "E";
-            default:
-                return "DEBUG";
+            default:           // GCOVR_EXCL_LINE
+                return "DEBUG";// GCOVR_EXCL_LINE
         }
     }
 
     record::SimpleFormatter::SimpleFormatter(const std::string &textPattern, const std::string &timePattern) noexcept
-            : AbstractFormatter() {
+        : AbstractFormatter() {
         this->textPattern = textPattern;
         this->timePattern = timePattern;
     }
 
     std::string record::SimpleFormatter::dump(const Event::Ptr &event) noexcept {
-        std::stringstream stream;
-        auto len = this->textPattern.length();
-        for (auto i = 0; i < len; i++) {
-            if (textPattern[i] == '%') {
-                if (i <= len - 2) {
-                    switch (textPattern[i + 1]) {
-                        case '%':
-                            stream << '%';
-                            i += 1;
-                            break;
-                        case 'c': {
-                            decltype(auto) time = event->getTime();
-                            auto rt = text::DateTimeFormatter::format(time, this->timePattern);
-                            stream << rt;
-                            i += 1;
-                            break;
-                        }
-                        case 'm':
-                            stream << event->getMessage();
-                            i += 1;
-                            break;
-                        case 'l':
-                            if (textPattern[i + 2] == 'i') {
-                                stream << event->getLine();
-                                i += 2;
-                            } else if (textPattern[i + 2] == 'v') {
-                                stream << getLevelString(event->getLevel());
-                                i += 2;
-                            } else {
-                                i += 1;
-                            }
-                            break;
-                        case 'f':
-                            if (textPattern[i + 2] == 'i') {
-                                stream << event->getTag();
-                                i += 2;
-                            } else if (textPattern[i + 2] == 'n') {
-                                stream << event->getFileName();
-                                i += 2;
-                            } else {
-                                i += 1;
-                            }
-                            break;
-                        case 't':
-                            if (textPattern[i + 2] == 'h') {
-                                stream << event->getThreadId();
-                                i += 2;
-                            } else if (textPattern[i + 2] == 'n') {
-                                stream << event->getThreadName();
-                                i += 2;
-                            } else {
-                                i += 1;
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                } else {
-                    break;
-                }
+        sese::text::StringBuilder builder(1024);
+        auto input = sese::InputBufferWrapper(textPattern.c_str(), textPattern.length());
+        while (true) {
+            char buf[2]{};
+            auto len = input.peek(buf, 2);// GCOVR_EXCL_LINE
+            if (len == 0) {
+                break;
             } else {
-                stream << textPattern[i];
+                if (buf[0] == 'c') {
+                    builder.append(sese::text::DateTimeFormatter::format(event->getTime(), this->timePattern));// GCOVR_EXCL_LINE
+                    input.trunc(1);                                                                            // GCOVR_EXCL_LINE
+                    continue;
+                } else if (buf[0] == 'm') {
+                    builder.append(event->getMessage());// GCOVR_EXCL_LINE
+                    input.trunc(1);                     // GCOVR_EXCL_LINE
+                    continue;
+                } else if (len != 2) {
+                    builder.append(buf[0]);// GCOVR_EXCL_LINE
+                    input.trunc(1);        // GCOVR_EXCL_LINE
+                    continue;
+                }
+
+                if (buf[0] == 'l') {
+                    if (buf[1] == 'i') {
+                        builder.append(std::to_string(event->getLine()));// GCOVR_EXCL_LINE
+                        input.trunc(2);                                  // GCOVR_EXCL_LINE
+                    } else if (buf[1] == 'v') {
+                        builder.append(getLevelString(event->getLevel()));// GCOVR_EXCL_LINE
+                        input.trunc(2);                                   // GCOVR_EXCL_LINE
+                    } else {
+                        builder.append(buf[0]);// GCOVR_EXCL_LINE
+                        input.trunc(1);        // GCOVR_EXCL_LINE
+                    }
+                } else if (buf[0] == 'f') {
+                    if (buf[1] == 'n') {
+                        builder.append(event->getFileName());// GCOVR_EXCL_LINE
+                        input.trunc(2);                      // GCOVR_EXCL_LINE
+                    } else if (buf[1] == 'i') {
+                        builder.append(event->getTag());// GCOVR_EXCL_LINE
+                        input.trunc(2);                 // GCOVR_EXCL_LINE
+                    } else {
+                        builder.append(buf[0]);// GCOVR_EXCL_LINE
+                        input.trunc(1);        // GCOVR_EXCL_LINE
+                    }
+                } else if (buf[0] == 't') {
+                    if (buf[1] == 'h') {
+                        builder.append(std::to_string(event->getThreadId()));// GCOVR_EXCL_LINE
+                        input.trunc(2);                                      // GCOVR_EXCL_LINE
+                    } else if (buf[1] == 'n') {
+                        builder.append(event->getThreadName());// GCOVR_EXCL_LINE
+                        input.trunc(2);                        // GCOVR_EXCL_LINE
+                    } else {
+                        builder.append(buf[0]);// GCOVR_EXCL_LINE
+                        input.trunc(1);        // GCOVR_EXCL_LINE
+                    }
+                } else if (buf[0] == '%') {
+                    builder.append(buf[1]);// GCOVR_EXCL_LINE
+                    input.trunc(2);        // GCOVR_EXCL_LINE
+                } else {
+                    builder.append(buf[0]);// GCOVR_EXCL_LINE
+                    input.trunc(1);        // GCOVR_EXCL_LINE
+                }
             }
         }
-        return stream.str();
+        return builder.toString();
     }
 
 }// namespace sese

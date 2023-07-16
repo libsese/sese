@@ -5,6 +5,7 @@
   <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2017&color=red&logo=cplusplus"/>
   <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=red&logo=cmake"/>
   <br>
+  <img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese-core/badge"/>
   <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/windows-latest.yml?label=Windows&logo=windows">
   <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/ubuntu-latest.yml?label=Ubuntu&logo=ubuntu">
   <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese.core/macos-latest.yml?label=macOS&logo=apple">
