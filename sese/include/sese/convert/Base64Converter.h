@@ -28,9 +28,6 @@ namespace sese {
     public:
         using CodePage = const unsigned char *;
 
-        static const unsigned char Base64CodePage[];
-        static const unsigned char Base62CodePage[];
-
         /// 按照 Base62 码表编码
         /// \warning 注意此函数的编码方式类似于 Base64，并不是标准的 Base62编码
         /// \param input 输入流
@@ -49,7 +46,7 @@ namespace sese {
 #else
     private:
 #endif
-        static bool encodeInteger(size_t num, OutputStream *output, CodePage codePage) noexcept;
-        static int64_t decodeBuffer(const unsigned char *buffer, size_t size, CodePage codePage) noexcept;
+        static bool encodeInteger(size_t num, OutputStream *output) noexcept;
+        static int64_t decodeBuffer(const unsigned char *buffer, size_t size) noexcept;
     };
 }// namespace sese

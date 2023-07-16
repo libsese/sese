@@ -42,25 +42,25 @@ TEST(TestBase64, Base64Decode_1) {
 TEST(TestBase62, EncodeInteger_0) {
     char buffer[32]{};
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
-    sese::Base64Converter::encodeInteger(7562611, &output, sese::Base64Converter::Base62CodePage);
+    sese::Base64Converter::encodeInteger(7562611, &output);
     ASSERT_EQ(std::string_view(buffer), std::string_view("ftXl"));
 }
 
 TEST(TestBase62, EncodeInteger_1) {
     char buffer[32]{};
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
-    ASSERT_TRUE(sese::Base64Converter::encodeInteger(0, &output, sese::Base64Converter::Base62CodePage));
+    ASSERT_TRUE(sese::Base64Converter::encodeInteger(0, &output));
 }
 
 TEST(TestBase62, DecodeBuffer_0) {
     const char *code = "ftXl";
-    auto num = sese::Base64Converter::decodeBuffer((const unsigned char *) code, 4, sese::Base64Converter::Base62CodePage);
+    auto num = sese::Base64Converter::decodeBuffer((const unsigned char *) code, 4);
     ASSERT_EQ(num, 7562611);
 }
 
 TEST(TestBase62, DecodeBuffer_1) {
     const char *code = "ftX-";
-    auto num = sese::Base64Converter::decodeBuffer((const unsigned char *) code, 4, sese::Base64Converter::Base62CodePage);
+    auto num = sese::Base64Converter::decodeBuffer((const unsigned char *) code, 4);
     ASSERT_EQ(num, -1);
 }
 

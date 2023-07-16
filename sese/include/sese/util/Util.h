@@ -61,13 +61,13 @@ namespace sese {
      * @param error 错误代码
      * @return 错误描述
      */
-    extern API std::string getErrorString(int32_t error = errno);
+    extern API std::string getErrorString(int64_t error = errno);
 
     /**
      * 获取 error 代码
      * @return error 代码
      */
-    extern API uint64_t getErrorCode();
+    extern API int64_t getErrorCode();
 
 }// namespace sese
 

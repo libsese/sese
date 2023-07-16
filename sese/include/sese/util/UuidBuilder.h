@@ -8,6 +8,10 @@
 
 #pragma once
 
+#ifdef WIN32
+#pragma warning(disable : 4251)
+#endif
+
 #include "sese/Config.h"
 #include "SimpleUuid/TimestampHandler.h"
 #include "SimpleUuid/Uuid.h"

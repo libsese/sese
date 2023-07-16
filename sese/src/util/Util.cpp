@@ -48,7 +48,7 @@ namespace sese {
 #endif
     }
 
-    std::string getErrorString(int32_t error) {
+    std::string getErrorString(int64_t error) {
 #ifdef _WIN32
         char buffer[255];
         strerror_s(buffer, 255, error);
@@ -58,7 +58,7 @@ namespace sese {
 #endif
     }
 
-    uint64_t getErrorCode() {
+    int64_t getErrorCode() {
 #ifdef _WIN32
         return GetLastError();
 #else

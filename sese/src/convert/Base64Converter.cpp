@@ -10,12 +10,12 @@ using sese::Base64Converter;
 using sese::Stream;
 
 /// 标准 BASE64 码表
-const unsigned char sese::Base64Converter::Base64CodePage[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+sese::Base64Converter::CodePage Base64CodePage = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-const unsigned char sese::Base64Converter::Base62CodePage[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+sese::Base64Converter::CodePage Base62CodePage = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 void inline encode(unsigned char in, unsigned char &out) {
-    out = sese::Base64Converter::Base64CodePage[in];
+    out = Base64CodePage[in];
 }
 
 void Base64Converter::encode(InputStream *src, OutputStream *dest) {
@@ -102,27 +102,27 @@ void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Pt
     decode(src.get(), dest.get());
 }
 
-bool Base64Converter::encodeInteger(size_t num, sese::OutputStream *output, sese::Base64Converter::CodePage codePage) noexcept {
+bool Base64Converter::encodeInteger(size_t num, sese::OutputStream *output) noexcept {
     if (num == 0) {
-        output->write(&codePage[0], 1);
+        output->write(&Base62CodePage[0], 1);
         return true;
     }
 
     std::vector<unsigned char> vector;
-    auto base = strlen((const char *) codePage);
+    auto base = strlen((const char *) Base62CodePage);
     while (num > 0) {
         std::div_t res = div((int) num, (int) base);
         num = res.quot;
-        vector.push_back(codePage[res.rem]);
+        vector.push_back(Base62CodePage[res.rem]);
     }
 
     std::reverse(vector.begin(), vector.end());
     return output->write(vector.data(), vector.size()) == vector.size();
 }
 
-int64_t Base64Converter::decodeBuffer(const unsigned char *buffer, size_t size, sese::Base64Converter::CodePage codePage) noexcept {
-    auto base = strlen((const char *) codePage);
-    auto page = std::string_view((const char *) codePage, base);
+int64_t Base64Converter::decodeBuffer(const unsigned char *buffer, size_t size) noexcept {
+    auto base = strlen((const char *) Base62CodePage);
+    auto page = std::string_view((const char *) Base62CodePage, base);
     int64_t num = 0;
     for (auto idx = 0; idx < size; ++idx) {
         auto power = (size - (idx + 1));
@@ -150,7 +150,7 @@ bool Base64Converter::encodeBase62(InputStream *input, OutputStream *output) noe
         // buffer[0] always be zero
         auto num = *(uint32_t *) &buffer;
         num = FromBigEndian32(num);
-        if (!encodeInteger(num, output, Base62CodePage)) {
+        if (!encodeInteger(num, output)) {
             return false;
         }
     }
@@ -163,7 +163,7 @@ bool Base64Converter::decodeBase62(InputStream *input, OutputStream *output) noe
 
     int64_t len;
     while ((len = input->read(buffer, 4)) != 0) {
-        auto num = decodeBuffer(buffer, len, Base62CodePage);
+        auto num = decodeBuffer(buffer, len);
         if (num == -1) {
             return false;
         }
