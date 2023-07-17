@@ -8,7 +8,7 @@
 
 
 /// 从文件解析 Json 格式
-TEST(TestJson, Json) {
+TEST(TestJson, FromFile) {
     auto fileStream = sese::FileStream::create(PROJECT_PATH "/test/TestJsonUtil/data.json", TEXT_READ_EXISTED);
     auto object = sese::json::JsonUtil::deserialize(fileStream, 3);
     ASSERT_TRUE(object != nullptr);
@@ -36,7 +36,7 @@ TEST(TestJson, Json) {
 
 TEST(TestJson, Getter) {
     const char str[] = "{\n"
-                       "  \"str1\": \"\\b\\f\\t\\n\\r/\",\n"
+                       "  \"str1\": \"\\b\\f\\t\\n\\r/\\K\",\n"
                        "  \"str2\": \"Hello\",\n"
                        "  \"bool1\": true,\n"
                        "  \"bool2\": false,\n"
@@ -50,7 +50,7 @@ TEST(TestJson, Getter) {
     ASSERT_NE(object, nullptr);
 
     SESE_JSON_GET_STRING(str1, object, "str1", "undef");
-    EXPECT_EQ(str1, "\b\f\t\n\r/");
+    EXPECT_EQ(str1, "\\b\\f\\t\\n\\r/\\K");
     SESE_JSON_GET_STRING(str2, object, "str2", "undef");
     EXPECT_EQ(str2, "Hello");
     SESE_JSON_GET_BOOLEAN(bool1, object, "bool1", false);
@@ -95,7 +95,7 @@ TEST(TestJson, Getter) {
 
 TEST(TestJson, Setter) {
     auto object = std::make_shared<sese::json::ObjectData>();
-    SESE_JSON_SET_STRING(object, "str1", "\b\f\t\n\r/");
+    SESE_JSON_SET_STRING(object, "str1", "\\b\\f\\t\\n\\r/");
     SESE_JSON_SET_INTEGER(object, "int", 10);
     SESE_JSON_SET_DOUBLE(object, "pi", 3.14);
     SESE_JSON_SET_BOOLEAN(object, "t1", true);
@@ -103,6 +103,7 @@ TEST(TestJson, Setter) {
     SESE_JSON_SET_NULL(object, "nullable");
 
     auto data = std::make_shared<sese::json::BasicData>();
+    data->setNull(false);
     data->setNotNull("Hello", true);
     object->set("str2", data);
 
@@ -209,5 +210,45 @@ TEST(TestJson, Error_8) {
                        "}";
     auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 构造对象时，子数组深度超过限制
+TEST(TestJson, Error_9) {
+    const char str[] = "{\n"
+                       "  \"arr\": []\n"
+                       "}";
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::json::JsonUtil::deserialize(&input, 1);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 构造对象时，子对象深度超过限制
+TEST(TestJson, Error_10) {
+    const char str[] = "{\n"
+                       "  \"obj\": {}\n"
+                       "}";
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::json::JsonUtil::deserialize(&input, 1);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 构造数组时，子数组深度超过限制
+TEST(TestJson, Error_11) {
+    const char str[] = "{\n"
+                       "  \"arr\": [[]]\n"
+                       "}";
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::json::JsonUtil::deserialize(&input, 2);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 构造数组时，子对象深度超过限制
+TEST(TestJson, Error_12) {
+    const char str[] = "{\n"
+                       "  \"arr\": [{}]\n"
+                       "}";
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::json::JsonUtil::deserialize(&input, 2);
     ASSERT_EQ(object, nullptr);
 }
