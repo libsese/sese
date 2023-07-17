@@ -29,7 +29,7 @@ TEST(TestStringBuilder, Construct_1) {
     ASSERT_EQ(builder0.length(), builder1.length());
 
     auto builder2 = std::move(builder0);
-    ASSERT_EQ(builder0.length(), 0);
+    ASSERT_EQ(builder0.length(), 0);// NOLINT
     ASSERT_EQ(builder2.length(), builder1.length());
     builder2.clear();
     ASSERT_EQ(builder2.length(), 0);

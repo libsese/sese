@@ -11,7 +11,7 @@
 #include "sese/net/rpc/V2RpcServer.h"
 #include "sese/net/rpc/Marco.h"
 #include "sese/config/json/JsonUtil.h"
-#include "sese/util/Packaged2Stream.h"
+#include "sese/util/FakeStream.h"
 #include "sese/util/BufferedInputStream.h"
 #include "sese/util/BufferedOutputStream.h"
 
@@ -22,7 +22,7 @@ using namespace sese::net::v2::rpc;
 #define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
 
 void V2RpcServer::onHandle(sese::net::v2::IOContext &ctx) noexcept {
-    auto stream = std::make_shared<ClosablePackagedStream<IOContext>>(&ctx);
+    auto stream = std::make_shared<ClosableFakeStream<IOContext>>(&ctx);
 
     auto input = std::make_shared<BufferedInputStream>(stream);
     auto object = json::JsonUtil::deserialize(input, 5);

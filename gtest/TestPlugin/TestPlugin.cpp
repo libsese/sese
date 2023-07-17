@@ -27,8 +27,10 @@ TEST(TestPlugin, SUCCESS) {
     printf("execute plugin code:\n");
     auto p1 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Bye");
     auto p2 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Hello");
+    auto p3 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Undef");
     p1->run();
     p2->run();
+    ASSERT_EQ(p3, nullptr);
 }
 
 // 文件不存在

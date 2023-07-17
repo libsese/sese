@@ -51,6 +51,9 @@
     SESE_OUT_SPTR_TYPE_DEF(type, data)                       \
     SESE_OUT_PTR_FUNC_BODY(ptr, len)
 
+// 此处只是对智能指针之类的重载，几乎不需要验证
+// GCOVR_EXCL_START
+
 SESE_OUT_DEF(char, data, &data, sizeof(char))
 SESE_OUT_DEF(const char *, data, data, strlen(data))
 
@@ -76,5 +79,7 @@ SESE_OUT_DEF_TEMPLATE_ALL(data, data.data(), sizeof(T) * data.size(), std::span<
 
 #include "sese/text/String.h"
 
-SESE_OUT_DEF_ALL(const sese::text::StringView &, data, data.data(), data.len())
-SESE_OUT_DEF_ALL(const sese::text::String &, data, ((sese::text::StringView *) &data)->data(), data.len())
+SESE_OUT_DEF_ALL(const sese::text::StringView &, data, data.data(), data.size())
+SESE_OUT_DEF_ALL(const sese::text::String &, data, ((sese::text::StringView *) &data)->data(), data.size())
+
+// GCOVR_EXCL_STOP

@@ -1,9 +1,10 @@
 #include <sese/util/Util.h>
+
 #include <map>
 
 #include <gtest/gtest.h>
 
-TEST(TestUtil, Find){
+TEST(TestUtil, Find) {
     const char *str = "1234567890";
     auto i = sese::findFirstAt(str, '3');
     ASSERT_EQ(i, 2);
@@ -13,7 +14,7 @@ TEST(TestUtil, Find){
 }
 
 TEST(TestUtil, Operator) {
-    auto i = sese::StrCmpI()("ABC","abc");
+    auto i = sese::StrCmpI()("ABC", "abc");
     ASSERT_EQ(i, 0);
 
     auto j = sese::StrCmp()("ABC", "abc");
@@ -33,4 +34,27 @@ TEST(TestUtil, Misc) {
 TEST(TestUtil, Backtrace) {
     auto backtrace = sese::Test::backtrace2String(3, "");
     puts(backtrace.c_str());
+}
+
+#include <sese/util/OutputBufferWrapper.h>
+#include <sese/util/OutputUtil.h>
+#include <sese/text/String.h>
+
+TEST(TestUtil, OutputUtil) {
+    char buf0;
+    auto output0 = sese::OutputBufferWrapper(&buf0, 1);
+    output0 << 'A';
+    EXPECT_EQ(buf0, 'A');
+
+    char buf1[16]{};
+    auto output1 = sese::OutputBufferWrapper(buf1, sizeof(buf1));
+    auto str = sese::text::String::fromUTF8("你好");
+    output1 << str;
+    EXPECT_EQ(str, sese::text::StringView(buf1));
+
+    char buf2[16]{};
+    auto output2 = sese::OutputBufferWrapper(buf2, sizeof(buf2));
+    auto view = sese::text::StringView("こんにちは");
+    output2 << view;
+    EXPECT_EQ(view, sese::text::StringView(buf2));
 }

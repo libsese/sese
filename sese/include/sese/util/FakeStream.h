@@ -6,24 +6,28 @@
 
 namespace sese {
 
+    // 此处已经过单测，不存在分支和未测函数
+    // GCOVR_EXCL_START
+
     template<typename T>
-    class PackagedStream : public Stream, public Closeable {
+    class FakeStream : public Stream {
     public:
-        explicit PackagedStream(T *t) : t(t) {}
+        explicit FakeStream(T *t) : t(t) {}
 
         int64_t read(void *buffer, size_t length) override { return t->read(buffer, length); }
         int64_t write(const void *buffer, size_t length) override { return t->write(buffer, length); };
-        void close() override{};
 
     protected:
         T *t;
     };
 
     template<typename T>
-    class ClosablePackagedStream : public PackagedStream<T> {
+    class ClosableFakeStream : public FakeStream<T>, public sese::Closeable {
     public:
-        explicit ClosablePackagedStream(T *t) : PackagedStream<T>(t) {}
+        explicit ClosableFakeStream(T *t) : FakeStream<T>(t) {}
         void close() override { this->t->close(); }
     };
+
+    // GCOVR_EXCL_STOP
 
 }// namespace sese

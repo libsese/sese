@@ -31,7 +31,7 @@ namespace sese {
         virtual ~InitiateTask() = default;
 
         virtual int32_t init() noexcept = 0;
-        virtual int32_t destroy() noexcept { return 0; };
+        virtual int32_t destroy() noexcept = 0;
 
         [[nodiscard]] const std::string &getName() const;
 
