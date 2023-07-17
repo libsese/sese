@@ -95,3 +95,24 @@ TEST(TestXML, Error_5) {
     auto element = sese::xml::XmlUtil::deserialize(&input, 5);
     ASSERT_EQ(element, nullptr);
 }
+
+/// 根节点注释错误
+TEST(TestXML, Error_6) {
+    const char str[] = {"<!-- CM ->\n"
+                        "<root>\n"
+                        "</root>"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto element = sese::xml::XmlUtil::deserialize(&input, 5);
+    ASSERT_EQ(element, nullptr);
+}
+
+/// 节点深度超过限制
+TEST(TestXML, Error_7) {
+    const char str[] = {"<root>\n"
+                        "    <object>\n"
+                        "    </object>\n"
+                        "</root>"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto element = sese::xml::XmlUtil::deserialize(&input, 1);
+    ASSERT_EQ(element, nullptr);
+}

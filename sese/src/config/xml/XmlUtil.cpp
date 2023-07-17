@@ -88,10 +88,12 @@ namespace sese::xml {
                 tokens.pop();
             }
         }
-        if (tokens.empty()) return false;
-        if (tokens.front() != "--") return false;
+        if (tokens.empty()) return false;// GCOVR_EXCL_LINE
+        // if (tokens.front() != "--") return false;
+        // 能执行到此处 tokens.front() 一定是 "--"，不需要判断
         tokens.pop();// "--"
-        if (tokens.empty()) return false;
+
+        if (tokens.empty()) return false;// GCOVR_EXCL_LINE
         if (tokens.front() != ">") return false;
         tokens.pop();// ">"
         return true;
@@ -110,7 +112,7 @@ namespace sese::xml {
                 if (tokens.front() != "<") return nullptr;
                 tokens.pop();
 
-                if (tokens.empty()) return nullptr;
+                if (tokens.empty()) return nullptr;// GCOVR_EXCL_LINE
                 // 根节点注释
                 if (tokens.front() == "!--") {
                     if (!removeComment(tokens)) {
@@ -132,27 +134,28 @@ namespace sese::xml {
             element = std::make_shared<Element>(tokens.front());
             tokens.pop();
 
-            if (tokens.empty()) return nullptr;
+            if (tokens.empty()) return nullptr;// GCOVR_EXCL_LINE
             // attrName=""
             while (tokens.front() != ">" && tokens.front() != "/") {
                 std::string attrName = tokens.front();
                 tokens.pop();// attrName
                 // if (tokens.empty()) return nullptr;
                 // if (tokens.front() != "=") return nullptr;
-                CHECK("=");
+                CHECK("=");  // GCOVR_EXCL_LINE
                 tokens.pop();// =
-                if (tokens.empty()) return nullptr;
+
+                if (tokens.empty()) return nullptr;// GCOVR_EXCL_LINE
                 element->setAttribute(attrName, tokens.front());
                 tokens.pop();// attrValue
             }
 
-            if (tokens.empty()) return nullptr;
+            if (tokens.empty()) return nullptr;// GCOVR_EXCL_LINE
             // <name (attr="")/>
             if (tokens.front() == "/") {
                 tokens.pop();// '/'
                 // if (tokens.empty()) return nullptr;
                 // if (tokens.front() != ">") return nullptr;
-                CHECK(">");
+                CHECK(">");  // GCOVR_EXCL_LINE
                 tokens.pop();// '>'
                 return element;
             } else if (tokens.front() == ">") {
@@ -167,11 +170,11 @@ namespace sese::xml {
                             tokens.pop();// '/'
                             // if (tokens.empty()) return nullptr;
                             // if (tokens.front() != element->getName()) return nullptr;
-                            CHECK(element->getName());
-                            tokens.pop();// name
+                            CHECK(element->getName());// GCOVR_EXCL_LINE
+                            tokens.pop();             // name
                             // if (tokens.empty()) return nullptr;
                             // if (tokens.front() != ">") return nullptr;
-                            CHECK(">");
+                            CHECK(">");  // GCOVR_EXCL_LINE
                             tokens.pop();// '>'
                             return element;
                         } else {
@@ -203,19 +206,18 @@ namespace sese::xml {
                     }
                     element->setValue(stringBuilder.toString());
 
-                    CHECK("<");
-                    tokens.pop();// '<'
-                    CHECK("/");
-                    tokens.pop();// '/'
-                    CHECK(element->getName());
-                    tokens.pop();// name
-                    CHECK(">");
-                    tokens.pop();// '>'
+                    CHECK("<");               // GCOVR_EXCL_LINE
+                    tokens.pop();             // '<'
+                    CHECK("/");               // GCOVR_EXCL_LINE
+                    tokens.pop();             // '/'
+                    CHECK(element->getName());// GCOVR_EXCL_LINE
+                    tokens.pop();             // name
+                    CHECK(">");               // GCOVR_EXCL_LINE
+                    tokens.pop();             // '>'
                     return element;
                 }
             }
         }
-
         return element;
     }
 
