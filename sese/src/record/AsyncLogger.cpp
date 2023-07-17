@@ -20,31 +20,32 @@ AsyncLogger::~AsyncLogger() noexcept {
     isShutdown = true;
     conditionVariable.notify_one();
     thread->join();
-    delete currentBuffer;
-    delete nextBuffer;
+    delete currentBuffer;// GCOVR_EXCL_LINE
+    delete nextBuffer;   // GCOVR_EXCL_LINE
 }
 
 void AsyncLogger::log(const Event::Ptr &event) noexcept {
     std::unique_lock locker(mutex);
-    if (builtInAppender->getLevel() <= event->getLevel()) {
-        std::string content = formatter->dump(event);
-        if (currentBuffer->getWriteableSize() > content.length() + 1) {
-            currentBuffer->write(content.data(), content.length());
-            currentBuffer->write("\n", 1);
-        } else {
-            buffer2Ready.push_back(currentBuffer);
+    // 内建控制台输出地不对日志等级做任何限制
+    // if (builtInAppender->getLevel() <= event->getLevel()) {
+    std::string content = formatter->dump(event);
+    if (currentBuffer->getWriteableSize() > content.length() + 1) {
+        currentBuffer->write(content.data(), content.length());
+        currentBuffer->write("\n", 1);
+    } else {
+        buffer2Ready.push_back(currentBuffer);
 
-            if (nextBuffer) {
-                currentBuffer = nextBuffer;
-                nextBuffer = nullptr;
-            } else {
-                currentBuffer = new FixedBuilder(RECORD_BUFFER_SIZE);
-            }
-            currentBuffer->write(content.data(), content.length());
-            currentBuffer->write("\n", 1);
-            conditionVariable.notify_one();
+        if (nextBuffer) {
+            currentBuffer = nextBuffer;
+            nextBuffer = nullptr;
+        } else {
+            currentBuffer = new FixedBuilder(RECORD_BUFFER_SIZE);
         }
+        currentBuffer->write(content.data(), content.length());
+        currentBuffer->write("\n", 1);
+        conditionVariable.notify_one();
     }
+    // }
 }
 
 void AsyncLogger::loop() noexcept {
@@ -68,14 +69,16 @@ void AsyncLogger::loop() noexcept {
                 buffer2 = nullptr;
             }
         }
-
+        // buffer 过多，触发几率极小
+        // GCOVR_EXCL_START
         if (buffer2Write.size() > 25) {
-            // buffer 过多
             std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuilder *buffer) {
                 delete buffer;
             });
             buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());
         }
+        // GCOVR_EXCL_STOP
+
         for (const auto &buffer: buffer2Write) {
             builtInAppender->dump(buffer->data(), buffer->getReadableSize());
         }
@@ -84,22 +87,23 @@ void AsyncLogger::loop() noexcept {
                 appender->dump(buffer->data(), buffer->getReadableSize());
             }
         }
+
+        // 移除过多的缓冲区，避免堆积过多
         if (buffer2Write.size() > 2) {
-            // 移除过多的缓冲区，避免堆积过多
             std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuilder *buffer) {
-                delete buffer;
+                delete buffer;// GCOVR_EXCL_LINE
             });
             buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());
             buffer2Write.resize(2);
         }
 
-        if (!buffer1) { // NOLINT
+        if (!buffer1) {// NOLINT
             buffer1 = buffer2Write.back();
             buffer2Write.pop_back();
             buffer1->reset();
         }
 
-        if (!buffer2) { // NOLINT
+        if (!buffer2) {// NOLINT
             buffer2 = buffer2Write.back();
             buffer2Write.pop_back();
             buffer2->reset();
@@ -108,7 +112,8 @@ void AsyncLogger::loop() noexcept {
         buffer2Write.clear();
     }
 
-    // 此处需要输出剩余的 buffer
+    // 此处需要输出剩余的 buffer，触发几率较小
+    // GCOVR_EXCL_START
     for (const auto &buffer: buffer2Ready) {
         builtInAppender->dump(buffer->data(), buffer->getReadableSize());
     }
@@ -117,7 +122,8 @@ void AsyncLogger::loop() noexcept {
             appender->dump(buffer->data(), buffer->getReadableSize());
         }
     }
+    // GCOVR_EXCL_STOP
 
-    delete buffer1;
-    delete buffer2;
+    delete buffer1;// GCOVR_EXCL_LINE
+    delete buffer2;// GCOVR_EXCL_LINE
 }
