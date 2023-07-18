@@ -94,8 +94,8 @@ TEST(TestServer, RawSSLServer) {
     ASSERT_TRUE(addr != nullptr);
 
     auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
-    servCtx->importCertFile(PROJECT_PATH "/test/TestSecTcpServer/test-ca.crt");
-    servCtx->importPrivateKey(PROJECT_PATH "/test/TestSecTcpServer/test-key.pem");
+    servCtx->importCertFile(PROJECT_PATH "/gtest/Data/test-ca.crt");
+    servCtx->importPrivateKey(PROJECT_PATH "/gtest/Data/test-key.pem");
 
     RawServer server;
     server.setBindAddress(addr);

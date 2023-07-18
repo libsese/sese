@@ -7,7 +7,7 @@
 #include <gtest/gtest.h>
 
 TEST(TestXML, File) {
-    auto fileSteam = sese::FileStream::create(PROJECT_PATH "/test/TestXmlUtil/data.xml", BINARY_READ_EXISTED);
+    auto fileSteam = sese::FileStream::create(PROJECT_PATH "/gtest/Data/data.xml", BINARY_READ_EXISTED);
     auto element = sese::xml::XmlUtil::deserialize(fileSteam, 5);
     ASSERT_NE(element, nullptr);
 

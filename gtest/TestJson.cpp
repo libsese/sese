@@ -9,7 +9,7 @@
 
 /// 从文件解析 Json 格式
 TEST(TestJson, FromFile) {
-    auto fileStream = sese::FileStream::create(PROJECT_PATH "/test/TestJsonUtil/data.json", TEXT_READ_EXISTED);
+    auto fileStream = sese::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
     auto object = sese::json::JsonUtil::deserialize(fileStream, 3);
     ASSERT_TRUE(object != nullptr);
 
