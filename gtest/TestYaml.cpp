@@ -122,6 +122,65 @@ TEST(TestYaml, Deserialize_1) {
     ASSERT_NE(object, nullptr);
 }
 
+/// createObject
+/// 不存在下一行且当前元素为 null
+TEST(TestYaml, Deserialize_2) {
+    const char str[]{"root:\n"
+                     "  null: "};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
+}
+
+/// createObject
+/// 当前行元素是 null，下一个元素依然是本对象所属
+TEST(TestYaml, Deserialize_3) {
+    const char str[]{"root:\n"
+                     "  a:\n"
+                     "  b: str"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
+}
+
+/// createArray
+/// 不存在下一行，跳过该对象
+TEST(TestYaml, Deserialize_4) {
+    const char str[]{"root:\n"
+                     "  - ele:"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
+}
+
+/// createArray
+/// 数组嵌套数组
+TEST(TestYaml, Deserialize_5) {
+    const char str[]{"- root:\n"
+                     "  - ele:"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
+}
+
+TEST(TestYaml, Deserialize_6) {
+    const char str[]{"- Hello\n"
+                     "- World\n"
+                     "- null\n"
+                     "- ~"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
+}
+
+/// 对象无子元素
+TEST(TestYaml, Deserialize_7) {
+    const char str[]{"root:"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
+    ASSERT_NE(object, nullptr);
+}
+
 TEST(TestYaml, Serialize_0) {
     sese::ConsoleOutputStream output;
 
@@ -184,11 +243,70 @@ TEST(TestYaml, Serialize_1) {
 }
 
 TEST(TestYaml, Serialize_2) {
-    const char str[]{"- Hello\n"
-                     "- World\n"
-                     "- null\n"
-                     "- ~"};
+    sese::ConsoleOutputStream output;
+    auto array = std::make_shared<sese::yaml::ArrayData>();
+    auto subarray = std::make_shared<sese::yaml::ArrayData>();
+    array->push(subarray);
+
+    SESE_YAML_PUT_STRING(subarray, "value0");
+    SESE_YAML_PUT_BOOLEAN(subarray, true);
+    SESE_YAML_PUT_BOOLEAN(subarray, false);
+    SESE_YAML_PUT_INTEGER(subarray, 114514);
+    SESE_YAML_PUT_INTEGER(subarray, 1919810);
+    SESE_YAML_PUT_DOUBLE(subarray, 3.14);
+    SESE_YAML_PUT_DOUBLE(subarray, 0.15926e-2);
+    SESE_YAML_PUT_NULL(subarray);
+
+    sese::yaml::YamlUtil::serialize(array, &output);
+}
+
+TEST(TestYaml, Serialize_3) {
+    sese::ConsoleOutputStream output;
+    auto data = std::make_shared<sese::yaml::BasicData>();
+    data->setDataAs<std::string>("data");
+    sese::yaml::YamlUtil::serialize(data, &output);
+}
+
+/// 数组嵌套数组超出深度限制
+TEST(TestYaml, Error_0) {
+    const char str[]{"- root:\n"
+                     "    - ele:"};
     auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
-    auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
-    ASSERT_NE(object, nullptr);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 数组嵌套对象超出深度限制
+TEST(TestYaml, Error_1) {
+    const char str[]{"- root:\n"
+                     "    ele:"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 对象嵌套数组超出深度限制
+TEST(TestYaml, Error_3) {
+    const char str[]{"root:\n"
+                     "  - ele:"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
+    ASSERT_EQ(object, nullptr);
+}
+
+/// 对象嵌套对象超出深度限制
+TEST(TestYaml, Error_4) {
+    const char str[]{"root:\n"
+                     "   ele:"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
+    ASSERT_EQ(object, nullptr);
+}
+
+TEST(TestYaml, Error_5) {
+    const char str[]{"root1:\n"
+                     ":root2:"};
+    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
+    ASSERT_EQ(object, nullptr);
 }
