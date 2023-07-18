@@ -3,6 +3,10 @@
 
 #include <chrono>
 
+#ifdef WIN32
+#pragma warning(disable : 4996)
+#endif
+
 // #ifdef _WIN32
 // #include <ctime>
 // int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp) {

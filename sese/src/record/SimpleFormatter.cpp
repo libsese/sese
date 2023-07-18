@@ -69,9 +69,6 @@ namespace sese {
                     if (buf[1] == 'n') {
                         builder.append(event->getFileName());// GCOVR_EXCL_LINE
                         input.trunc(2);                      // GCOVR_EXCL_LINE
-                    } else if (buf[1] == 'i') {
-                        builder.append(event->getTag());// GCOVR_EXCL_LINE
-                        input.trunc(2);                 // GCOVR_EXCL_LINE
                     } else {
                         builder.append(buf[0]);// GCOVR_EXCL_LINE
                         input.trunc(1);        // GCOVR_EXCL_LINE

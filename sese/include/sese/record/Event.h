@@ -37,7 +37,7 @@ namespace sese::record {
 
     public:
         Event(DateTime dateTime, Level lv, const char *threadName, tid_t id, const char *file, int32_t line,
-              const char *msg, const char *tag = RECORD_DEFAULT_TAG) noexcept {
+              const char *msg) noexcept {
             this->dateTime = dateTime;
             this->level = lv;
             this->threadName = threadName;
@@ -45,7 +45,6 @@ namespace sese::record {
             this->file = file;
             this->line = line;
             this->message = msg;
-            this->tag = tag;
         }
 
         [[nodiscard]] const DateTime &getTime() const noexcept { return this->dateTime; }
@@ -55,7 +54,6 @@ namespace sese::record {
         [[nodiscard]] const char *getFileName() const noexcept { return this->file; }
         [[nodiscard]] const char *getMessage() const noexcept { return this->message; }
         [[nodiscard]] const char *getThreadName() const noexcept { return this->threadName; }
-        [[nodiscard]] const char *getTag() const noexcept { return this->tag; }
 
     private:
         DateTime dateTime;
@@ -65,6 +63,5 @@ namespace sese::record {
         const char *file = nullptr;
         int32_t line;
         const char *message = nullptr;
-        const char *tag = nullptr;
     };
 }// namespace sese::record

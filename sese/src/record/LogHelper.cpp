@@ -9,35 +9,35 @@ using sese::record::LogHelper;
 void LogHelper::d(const char *format, ...) noexcept {
     va_list ap;
     va_start(ap, format);
-    l(record::Level::DEBUG, __FILE__, __LINE__, format, ap);
+    l(record::Level::DEBUG, SESE_FILENAME, __LINE__, format, ap);
     va_end(ap);
 }
 
 void LogHelper::i(const char *format, ...) noexcept {
     va_list ap;
     va_start(ap, format);
-    l(record::Level::INFO, __FILE__, __LINE__, format, ap);
+    l(record::Level::INFO, SESE_FILENAME, __LINE__, format, ap);
     va_end(ap);
 }
 
 void LogHelper::w(const char *format, ...) noexcept {
     va_list ap;
     va_start(ap, format);
-    l(record::Level::WARN, __FILE__, __LINE__, format, ap);
+    l(record::Level::WARN, SESE_FILENAME, __LINE__, format, ap);
     va_end(ap);
 }
 
 void LogHelper::e(const char *format, ...) noexcept {
     va_list ap;
     va_start(ap, format);
-    l(record::Level::ERR, __FILE__, __LINE__, format, ap);
+    l(record::Level::ERR, SESE_FILENAME, __LINE__, format, ap);
     va_end(ap);
 }
 
 void LogHelper::l(Level level, const char *file, int32_t line, const char *format, va_list ap) {
     char buf[RECORD_OUTPUT_BUFFER]{0};
     vsprintf(buf, format, ap);
-    record::Event::Ptr event = std::make_shared<record::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf, RECORD_DEFAULT_TAG);
+    record::Event::Ptr event = std::make_shared<record::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf);
     getLogger()->log(event);
 }
 
@@ -49,35 +49,35 @@ LogHelper::LogHelper(const char *tag) {
 void LogHelper::log(record::Level level, const char *file, int32_t line, const char *format, va_list ap) {
     char buf[RECORD_OUTPUT_BUFFER]{0};
     vsprintf(buf, format, ap);
-    record::Event::Ptr event = std::make_shared<record::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf, filter);
+    record::Event::Ptr event = std::make_shared<record::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf);
     logger->log(event);
 }
 
 void LogHelper::debug(const char *format, ...) {
     va_list ap;
     va_start(ap, format);
-    log(record::Level::DEBUG, __FILE__, __LINE__, format, ap);
+    log(record::Level::DEBUG, SESE_FILENAME, __LINE__, format, ap);
     va_end(ap);
 }
 
 void LogHelper::info(const char *format, ...) {
     va_list ap;
     va_start(ap, format);
-    log(record::Level::INFO, __FILE__, __LINE__, format, ap);
+    log(record::Level::INFO, SESE_FILENAME, __LINE__, format, ap);
     va_end(ap);
 }
 
 void LogHelper::warn(const char *format, ...) {
     va_list ap;
     va_start(ap, format);
-    log(record::Level::WARN, __FILE__, __LINE__, format, ap);
+    log(record::Level::WARN, SESE_FILENAME, __LINE__, format, ap);
     va_end(ap);
 }
 
 void LogHelper::error(const char *format, ...) {
     va_list ap;
     va_start(ap, format);
-    log(record::Level::ERR, __FILE__, __LINE__, format, ap);
+    log(record::Level::ERR, SESE_FILENAME, __LINE__, format, ap);
     va_end(ap);
 }
 

@@ -51,7 +51,7 @@ namespace sese {
     std::string getErrorString(int64_t error) {
 #ifdef _WIN32
         char buffer[255];
-        strerror_s(buffer, 255, error);
+        strerror_s(buffer, 255, (int) error); // NOLINT
         return {buffer};
 #else
         return strerror(error); // GCOVR_EXCL_LINE

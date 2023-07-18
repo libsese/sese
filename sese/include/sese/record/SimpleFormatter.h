@@ -24,7 +24,6 @@ namespace sese::record {
            li  行号
            lv  日志等级
            fn  文件名
-           fi  标签名称
            th  线程 ID
            tn  线程名称
            c   完整时间

@@ -1,5 +1,6 @@
 #include "sese/record/AsyncLogger.h"
 #include "sese/record/BlockAppender.h"
+#include "sese/record/Marco.h"
 #include "sese/util/Util.h"
 
 #include "gtest/gtest.h"
@@ -10,7 +11,7 @@ auto makeEvent(sese::record::Level level) {
             level,
             "ThreadName",
             0,
-            __FILE__,
+            SESE_FILENAME,
             __LINE__,
             "Hello"
     );
@@ -22,10 +23,11 @@ TEST(TestAsyncLogger, Appender) {
     auto logger = sese::record::AsyncLogger();
     logger.addAppender(appender);
 
-    logger.log(makeEvent(sese::record::Level::DEBUG));
-    logger.log(makeEvent(sese::record::Level::INFO));
-    logger.log(makeEvent(sese::record::Level::WARN));
-    logger.log(makeEvent(sese::record::Level::ERR));
+    __SESE_DEBUG((&logger), "Hello");
+    __SESE_INFO((&logger), "Hello");
+    __SESE_WARN((&logger), "Hello");
+    __SESE_ERROR((&logger), "Hello");
+
     sese::sleep(0);
 }
 

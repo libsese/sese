@@ -38,6 +38,8 @@
 /// 忽略大小写比较
 #define strcasecmp strcmpi
 
+#define SESE_FILENAME (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
+
 /// 进程 ID 标识符
 using pid_t = DWORD;
 /// 线程 ID 标识符

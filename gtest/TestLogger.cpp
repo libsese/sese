@@ -1,3 +1,4 @@
+#include "sese/record/Marco.h"
 #include "sese/record/LogHelper.h"
 #include "sese/record/BlockAppender.h"
 #include "sese/record/FileAppender.h"
@@ -60,7 +61,7 @@ TEST(TestLogger, SimpleFormat) {
             sese::record::Level::INFO,
             "ThreadName",
             0,
-            __FILE__,
+            SESE_FILENAME,
             __LINE__,
             "Hello"
     );
@@ -80,4 +81,11 @@ TEST(TestLogger, SimpleFormat) {
 
     auto format5 = sese::record::SimpleFormatter("%m");
     sese::record::LogHelper::d(format5.dump(event).c_str());
+}
+
+TEST(TestLogger, Macro) {
+    SESE_DEBUG("Hello");
+    SESE_INFO("Hello");
+    SESE_WARN("Hello");
+    SESE_ERROR("Hello");
 }
