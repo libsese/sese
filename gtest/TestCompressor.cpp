@@ -68,4 +68,7 @@ TEST(TestCompress, GZIP) {
     input->read(buffer, 1024);
     input->close();
     puts(buffer);
+
+    ASSERT_EQ(GZipFileOutputStream::create("./undef/undef.gz", 9), nullptr);
+    ASSERT_EQ(GZipFileInputStream::create("./undef/undef.gz"), nullptr);
 }

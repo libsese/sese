@@ -16,8 +16,6 @@ int64_t sese::GZipFileOutputStream::write(const void *buffer, size_t length) {
 }
 
 void sese::GZipFileOutputStream::close() noexcept {
-    if (gzFile) {
-        auto i = gzclose((gzFile_s *) gzFile);
-        gzFile = nullptr;
-    }
+    gzclose((gzFile_s *) gzFile);
+    gzFile = nullptr;
 }

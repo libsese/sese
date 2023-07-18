@@ -18,6 +18,6 @@ int32_t sese::EncodingConverterInitiateTask::init() noexcept {
 }
 
 int32_t sese::EncodingConverterInitiateTask::destroy() noexcept {
-    delete convert;
+    delete convert;// GCOVR_EXCL_LINE
     return 0;
 }

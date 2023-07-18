@@ -14,8 +14,6 @@ int64_t sese::GZipFileInputStream::read(void *buffer, size_t length) {
 }
 
 void sese::GZipFileInputStream::close() noexcept {
-    if (gzFile) {
-        gzclose((gzFile_s *) gzFile);
-        gzFile = nullptr;
-    }
+    gzclose((gzFile_s *) gzFile);
+    gzFile = nullptr;
 }

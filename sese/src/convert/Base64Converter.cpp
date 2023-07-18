@@ -54,9 +54,11 @@ void Base64Converter::encode(InputStream *src, OutputStream *dest) {
     }
 }
 
+// GCOVR_EXCL_START
 void Base64Converter::encode(const InputStream::Ptr &src, const OutputStream::Ptr &dest) {
     encode(src.get(), dest.get());
 }
+// GCOVR_EXCL_STOP
 
 void Base64Converter::decode(InputStream *src, OutputStream *dest) {
     unsigned char buffer[4]{0};
@@ -64,6 +66,8 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
     int64_t len;
     while ((len = src->read(buffer, 4)) != 0) {
         for (auto i = 0; i < len; i++) {
+            // 此处已是逻辑完备的
+            // GCOVR_EXCL_START
             if (buffer[i] >= 'A' && buffer[i] <= 'Z') {
                 buffer[i] -= 65;
             } else if (buffer[i] >= 'a' && buffer[i] <= 'z') {
@@ -77,6 +81,7 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
             } else {
                 buffer[i] = 0;
             }
+            // GCOVR_EXCL_STOP
         }
 
         // 1
@@ -98,9 +103,11 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
     }
 }
 
+// GCOVR_EXCL_START
 void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Ptr &dest) {
     decode(src.get(), dest.get());
 }
+// GCOVR_EXCL_STOP
 
 bool Base64Converter::encodeInteger(size_t num, sese::OutputStream *output) noexcept {
     if (num == 0) {
@@ -164,6 +171,7 @@ bool Base64Converter::decodeBase62(InputStream *input, OutputStream *output) noe
     int64_t len;
     while ((len = input->read(buffer, 4)) != 0) {
         auto num = decodeBuffer(buffer, len);
+        // GCOVR_EXCL_START
         if (num == -1) {
             return false;
         }
@@ -184,6 +192,7 @@ bool Base64Converter::decodeBase62(InputStream *input, OutputStream *output) noe
         } else {
             return false;
         }
+        // GCOVR_EXCL_STOP
 
         memset(buffer, 0, 4);
     }

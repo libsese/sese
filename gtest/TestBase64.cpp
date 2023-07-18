@@ -21,6 +21,24 @@ TEST(TestBase64, Base64Encode_1) {
     ASSERT_EQ(std::string_view(buffer), std::string_view("c2VzZS1jb3JlLQ=="));
 }
 
+TEST(TestBase64, Base64Encode_2) {
+    char buffer[32]{};
+    std::string str = "Ciallo Wor";
+    auto input = sese::InputBufferWrapper(str.c_str(), str.length());
+    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    sese::Base64Converter::encode(&input, &output);
+    ASSERT_EQ(std::string_view(buffer), std::string_view("Q2lhbGxvIFdvcg=="));
+}
+
+TEST(TestBase64, Base64Encode_3) {
+    char buffer[32]{};
+    std::string str = "Ciallo Worl";
+    auto input = sese::InputBufferWrapper(str.c_str(), str.length());
+    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    sese::Base64Converter::encode(&input, &output);
+    ASSERT_EQ(std::string_view(buffer), std::string_view("Q2lhbGxvIFdvcmw="));
+}
+
 TEST(TestBase64, Base64Decode_0) {
     char buffer[32]{};
     std::string code = "5L2g5aW9";
@@ -37,6 +55,24 @@ TEST(TestBase64, Base64Decode_1) {
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
     sese::Base64Converter::decode(&input, &output);
     ASSERT_EQ(std::string_view("sese-core-"), std::string_view(buffer));
+}
+
+TEST(TestBase64, Base64Decode_2) {
+    char buffer[32]{};
+    std::string code = "Q2lhbGxvIFdvcg==";
+    auto input = sese::InputBufferWrapper(code.c_str(), code.length());
+    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    sese::Base64Converter::decode(&input, &output);
+    ASSERT_EQ(std::string_view("Ciallo Wor"), std::string_view(buffer));
+}
+
+TEST(TestBase64, Base64Decode_3) {
+    char buffer[32]{};
+    std::string code = "Q2lhbGxvIFdvcmw=";
+    auto input = sese::InputBufferWrapper(code.c_str(), code.length());
+    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    sese::Base64Converter::decode(&input, &output);
+    ASSERT_EQ(std::string_view("Ciallo Worl"), std::string_view(buffer));
 }
 
 TEST(TestBase62, EncodeInteger_0) {
