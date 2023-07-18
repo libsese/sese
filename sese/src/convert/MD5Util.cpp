@@ -1,17 +1,19 @@
 #include "sese/util/MemoryViewer.h"
-#include <sese/convert/MD5Util.h>
+#include "sese/convert/MD5Util.h"
 #include "sese/util/ByteBuilder.h"
 #include "sese/util/Endian.h"
-#include <cmath>
+
 #include <cstring>
 
 using sese::ByteBuilder;
 using sese::MD5Util;
 using sese::MemoryViewer;
 
+// GCOVR_EXCL_START
 bool MD5Util::encode(const sese::InputStream::Ptr &input, const sese::OutputStream::Ptr &output) noexcept {
     return encode(input.get(), output.get());
 }
+// GCOVR_EXCL_STOP
 
 bool MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
     uint32_t result[4]{A, B, C, D};
@@ -23,22 +25,6 @@ bool MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
         int64_t len = input->read(buffer, 64);
         if (len == 64) {
             length += len;
-        } else if (len > 0 && len <= 56) {
-            length += len;
-            memcpy(&buffer[len], PADDING, 64 - len - 8);
-            length *= 8;/// 单位为 位
-            length = ToLittleEndian64(length);
-            memcpy(&buffer[56], &length, 8);
-            isBreak = true;
-        } else if (len > 56) {
-            length += len;
-            memset(&buffer[len], 0, 64 - len);
-            // 倒数第二次变换
-            MD5Util::transform(result, buffer);
-            memcpy(buffer, PADDING, 56);
-            length *= 8;/// 单位为 位
-            length = ToLittleEndian64(length);
-            isBreak = true;
         } else if (len == 0) {
             memcpy(&buffer[len], PADDING, 64 - len - 8);
             length *= 8;/// 单位为 位
@@ -46,8 +32,23 @@ bool MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
             memcpy(&buffer[56], &length, 8);
             /// 执行完本次后不再执行
             isBreak = true;
+        } else if (len < 56) {
+            length += len;
+            memcpy(&buffer[len], PADDING, 64 - len - 8);
+            length *= 8;/// 单位为 位
+            length = ToLittleEndian64(length);
+            memcpy(&buffer[56], &length, 8);
+            isBreak = true;
         } else {
-            return false;
+            length += len;
+            memcpy(&buffer[len], PADDING, 64 - len);
+            // 倒数第二次变换
+            MD5Util::transform(result, buffer);
+            memset(buffer, 0, 56);
+            length *= 8;/// 单位为 位
+            length = ToLittleEndian64(length);
+            memcpy(&buffer[56], &length, 8);
+            isBreak = true;
         }
 
         MD5Util::transform(result, buffer);
@@ -57,16 +58,18 @@ bool MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
     return true;
 }
 
+// GCOVR_EXCL_START
 std::unique_ptr<char[]> MD5Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
     return encode(input.get(), isCap);
 }
+// GCOVR_EXCL_STOP
 
 std::unique_ptr<char[]> MD5Util::encode(InputStream *input, bool isCap) noexcept {
     ByteBuilder dest(16);
     auto success = encode(input, &dest);
     if (success) {
         unsigned char buffer[16];
-        auto rt = std::unique_ptr<char[]>(new char[33]);
+        auto rt = std::unique_ptr<char[]>(new char[33]); // GCOVR_EXCL_LINE
         dest.read(buffer, 16);
         for (size_t i = 0; i < 16; i++) {
             rt[i * 2 + 1] = MemoryViewer::toChar(buffer[i] % 0x10, isCap);
