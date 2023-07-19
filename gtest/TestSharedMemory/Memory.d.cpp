@@ -8,7 +8,7 @@
 using namespace std::chrono_literals;
 
 int main() {
-    sese::record::LogHelper helper("MEM.D");
+    sese::record::LogHelper helper;
     auto mem = sese::system::SharedMemory::create("SharedMemoryForSese", sizeof(int64_t));
     if (mem == nullptr) {
         helper.error("failed to create shared memory: errno %d", errno);

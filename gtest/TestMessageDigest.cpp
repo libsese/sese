@@ -1,5 +1,7 @@
+#include "sese/convert/MessageDigest.h"
 #include "sese/security/MessageDigest.h"
 #include "sese/util/InputBufferWrapper.h"
+#include "sese/util/FileStream.h"
 #include "gtest/gtest.h"
 
 using sese::security::MessageDigest;
@@ -86,6 +88,99 @@ TEST(TestMessageDigest, SHA512) {
     {
         auto input = sese::InputBufferWrapper(str0, 5);
         auto rt = MessageDigest::digest(MessageDigest::Type::SHA512, &input);
+        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+    }
+}
+
+using OldMessageDigest = sese::MessageDigest;
+
+TEST(TestOldMessageDigest, MD5) {
+    const char *str0 = "Hello";
+    const char *rt0 = "8b1a9953c4611296a827abf8c47804d7";
+    {
+        auto input = sese::InputBufferWrapper(str0, 5);
+        auto rt = OldMessageDigest::digest(OldMessageDigest::Type::MD5, &input);
+        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+    }
+
+    const char *str1 = "\x34\x35\x22\x23\xAF\x44\xE4";
+    const char *rt1 = "d331385d2ce8241759a328d111f82894";
+    {
+        auto input = sese::InputBufferWrapper(str1, 7);
+        auto rt = OldMessageDigest::digest(OldMessageDigest::Type::MD5, &input);
+        EXPECT_TRUE(strcmp(rt.get(), rt1) == 0);
+    }
+}
+
+TEST(TestOldMessageDigest, MD5File_0) {
+    auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-112.txt", "rb");
+    ASSERT_NE(file, nullptr);
+
+    const char *expect = "05055d054939c7b713f9fefec599daa5";
+    auto rt = OldMessageDigest::digest(OldMessageDigest::MD5, file);
+    EXPECT_TRUE(strcmp(rt.get(), expect) == 0);
+}
+
+TEST(TestOldMessageDigest, MD5File_1) {
+    auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-122.txt", "rb");
+    ASSERT_NE(file, nullptr);
+
+    const char *expect = "c13edc8b492731630ad0a983ef66f292";
+    auto rt = OldMessageDigest::digest(OldMessageDigest::MD5, file);
+    EXPECT_TRUE(strcmp(rt.get(), expect) == 0);
+}
+
+TEST(TestOldMessageDigest, MD5File_2) {
+    auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-128.txt", "rb");
+    ASSERT_NE(file, nullptr);
+
+    const char *expect = "382b83364eaaebb4770851d9b704457b";
+    auto rt = OldMessageDigest::digest(OldMessageDigest::MD5, file);
+    EXPECT_TRUE(strcmp(rt.get(), expect) == 0);
+}
+
+TEST(TestOldMessageDigest, SHA1File) {
+    auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-122.txt", "rb");
+    ASSERT_NE(file, nullptr);
+
+    const char *expect = "632baa1212f10189290a79dd109219d501d36aec";
+    auto rt = OldMessageDigest::digest(OldMessageDigest::SHA1, file);
+    EXPECT_TRUE(strcmp(rt.get(), expect) == 0);
+}
+
+TEST(TestOldMessageDigest, SHA256File) {
+    auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-122.txt", "rb");
+    ASSERT_NE(file, nullptr);
+
+    const char *expect = "82bbdd6fdd8a848f703ad941ca491938ada0d98c97b45a76162436b04f95a840";
+    auto rt = OldMessageDigest::digest(OldMessageDigest::SHA256, file);
+    EXPECT_TRUE(strcmp(rt.get(), expect) == 0);
+}
+
+TEST(TestOldMessageDigest, SHA1) {
+    const char *str0 = "Hello";
+    const char *rt0 = "f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0";
+    {
+        auto input = sese::InputBufferWrapper(str0, 5);
+        auto rt = OldMessageDigest::digest(OldMessageDigest::Type::SHA1, &input);
+        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+    }
+
+    const char *str1 = "Hello, World";
+    const char *rt1 = "907d14fb3af2b0d4f18c2d46abe8aedce17367bd";
+    {
+        auto input = sese::InputBufferWrapper(str1, 12);
+        auto rt = OldMessageDigest::digest(OldMessageDigest::Type::SHA1, &input);
+        EXPECT_TRUE(strcmp(rt.get(), rt1) == 0);
+    }
+}
+
+TEST(TestOldMessageDigest, SHA256) {
+    const char *str0 = "Hello";
+    const char *rt0 = "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969";
+    {
+        auto input = sese::InputBufferWrapper(str0, 5);
+        auto rt = OldMessageDigest::digest(OldMessageDigest::Type::SHA256, &input);
         EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
     }
 }

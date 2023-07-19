@@ -20,8 +20,8 @@ namespace sese {
     /// \brief 非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类
     class API SHA256Util {
     public:
-        static bool encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
-        static bool encode(InputStream *input, OutputStream *output) noexcept;
+        static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
+        static void encode(InputStream *input, OutputStream *output) noexcept;
 
         static std::unique_ptr<char []> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
         static std::unique_ptr<char []> encode(InputStream *input, bool isCap = true) noexcept;

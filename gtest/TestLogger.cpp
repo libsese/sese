@@ -9,7 +9,7 @@
 using namespace std::chrono_literals;
 
 TEST(TestLogger, BlockAppender) {
-    sese::record::LogHelper log("BlockAppender");
+    sese::record::LogHelper log;
 
     auto appender = std::make_shared<sese::record::BlockAppender>(1 * 1024 * 20, sese::record::Level::INFO);
     sese::record::Logger::addGlobalLoggerAppender(appender);
@@ -24,7 +24,7 @@ TEST(TestLogger, BlockAppender) {
 }
 
 TEST(TestLogger, Logger) {
-    sese::record::LogHelper log("Logger");
+    sese::record::LogHelper log;
 
     log.debug("Hello");
     log.info("Hello");
@@ -41,7 +41,7 @@ TEST(TestLogger, StaticMethod) {
 }
 
 TEST(TestLogger, FileAppender) {
-    sese::record::LogHelper log("FileAppender");
+    sese::record::LogHelper log;
 
     auto logger = sese::record::getLogger();
     auto fileStream = sese::FileStream::create("hello.log", TEXT_WRITE_CREATE_TRUNC);

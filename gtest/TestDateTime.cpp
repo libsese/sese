@@ -6,7 +6,7 @@
 using namespace std::chrono_literals;
 
 TEST(TestDateTime, Info) {
-    sese::record::LogHelper log("Info");
+    sese::record::LogHelper log;
     auto time = sese::DateTime::nowPtr(8);
     log.info("is leap year: %s", time->isLeapYear() ? "True" : "False");
     log.info("timestamp: %lld", time->getTimestamp());

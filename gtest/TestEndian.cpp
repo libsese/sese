@@ -22,7 +22,7 @@ TEST(TestEndian, Test64) {
 }
 
 TEST(TestEndian, MemoryViewer) {
-    sese::record::LogHelper log("MemoryViewer");
+    sese::record::LogHelper log;
     uint32_t value = 0x12345678;
     char buffer[128]{};
     sese::OutputBufferWrapper output0(buffer, 64);

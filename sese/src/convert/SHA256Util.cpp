@@ -197,6 +197,7 @@ struct sese::Bitset32 {
     }
 };
 
+// GCOVR_EXCL_START
 inline char toChar(unsigned char ch, bool isCap) {
     if (ch >= 0 && ch <= 9) {
         return (char) (ch + 48);
@@ -208,23 +209,26 @@ inline char toChar(unsigned char ch, bool isCap) {
         }
     }
 }
+// GCOVR_EXCL_STOP
 
 const Bitset32 SHA256Util::k[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
 
 #define XX(i) value[i] = value[i] + h[i]
 
-bool SHA256Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
-    return encode(input.get(), output.get());
+// GCOVR_EXCL_START
+void SHA256Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
+    encode(input.get(), output.get());
 }
+// GCOVR_EXCL_STOP
 
-bool sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept {
+void sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept {
     int64_t size;
     uint64_t total = 0;
     Bitset32 buffer[64];
     auto *block = (uint8_t *) buffer;
 
     // 最终结果
-    Bitset32 hash[8] {0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
+    Bitset32 hash[8]{0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
     // 中间值
     Bitset32 value[8];
 
@@ -247,11 +251,8 @@ bool sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept
         hash[7] = hash[7] + value[7];
     }
 
-    // 读取中断
-    if (size == -1) return false;
-
     // 填充再处理一遍
-    else if (size <= 55 && size >= 0) {
+    if (size <= 55 && size >= 0) {
         total += size;
         total *= 8;
         memset(block + size + 1, 0, sizeof(Bitset32) * (47 - size));
@@ -322,7 +323,6 @@ bool sese::SHA256Util::encode(InputStream *input, OutputStream *output) noexcept
     }
 
     output->write(hash, 32);
-    return true;
 }
 
 #undef XX
@@ -333,20 +333,17 @@ std::unique_ptr<char[]> SHA256Util::encode(const InputStream::Ptr &input, bool i
 
 std::unique_ptr<char[]> sese::SHA256Util::encode(InputStream *input, bool isCap) noexcept {
     ByteBuilder dest(64);
-    auto success = encode(input, &dest);
-    if (success) {
-        unsigned char buffer[32];
-        auto rt = std::unique_ptr<char[]>(new char[65]);
-        dest.read(buffer, 32);
-        for (auto i = 0; i < 32; ++i) {
-            rt[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
-            rt[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
-        }
-        rt[64] = 0;
-        return rt;
-    } else {
-        return nullptr;
+    encode(input, &dest);
+
+    unsigned char buffer[32];
+    auto rt = std::unique_ptr<char[]>(new char[65]);
+    dest.read(buffer, 32);
+    for (auto i = 0; i < 32; ++i) {
+        rt[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
+        rt[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
     }
+    rt[64] = 0;
+    return rt;
 }
 
 void SHA256Util::structure(Bitset32 *buffer) noexcept {

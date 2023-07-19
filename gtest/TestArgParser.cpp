@@ -1,10 +1,8 @@
 #include "sese/util/ArgParser.h"
-#include "sese/record/LogHelper.h"
+#include "sese/record/Marco.h"
 #include "gtest/gtest.h"
 
 TEST(TestArgParser, Parse_0) {
-    sese::record::LogHelper log("ARGS");
-
     int argc = 4;
     char arg0[32]{R"(D:\Users\sese\TestArgParser)"};
     // char arg0[32] {"/home/sese/TestArgParser"};
@@ -16,12 +14,12 @@ TEST(TestArgParser, Parse_0) {
     auto args = std::make_unique<sese::ArgParser>();
     EXPECT_TRUE(args->parse(argc, argv));
 
-    sese::record::LogHelper::i("full path: %s", args->getFullPath().c_str());
-    sese::record::LogHelper::i("current path: %s", args->getCurrentPath().c_str());
-    sese::record::LogHelper::i("exec file name: %s", args->getFileName().c_str());
+    SESE_INFO("full path: %s", args->getFullPath().c_str());
+    SESE_INFO("current path: %s", args->getCurrentPath().c_str());
+    SESE_INFO("exec file name: %s", args->getFileName().c_str());
 
-    auto findValue = [&args, &log](const std::string &key, const std::string &defaultValue) {
-        log.info("%s = %s", key.c_str(), args->getValueByKey(key, defaultValue).c_str());
+    auto findValue = [&args](const std::string &key, const std::string &defaultValue) {
+        SESE_INFO("%s = %s", key.c_str(), args->getValueByKey(key, defaultValue).c_str());
     };
 
     findValue("a1", "undef");
@@ -31,7 +29,7 @@ TEST(TestArgParser, Parse_0) {
 
     auto set = args->getKeyValSet();
     for (auto &item : set) {
-        log.info("%s: %s", item.first.c_str(), item.second.c_str());
+        SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 }
 

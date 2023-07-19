@@ -3,14 +3,14 @@
 #include "gtest/gtest.h"
 
 TEST(TestAddress, AddressLookUp) {
-    sese::record::LogHelper log("AddressLookUp");
+    sese::record::LogHelper log;
     auto address = sese::net::Address::lookUpAny("www.baidu.com");
     ASSERT_TRUE(address != nullptr);
     log.info("www.baidu.com: %s", address->getAddress().c_str());
 }
 
 TEST(TestAddress, IPv6) {
-    sese::record::LogHelper log("IPv6");
+    sese::record::LogHelper log;
     auto address6 = sese::net::IPv6Address::create("fe80::ce6:3cc:f93a:4203", 0);
     ASSERT_TRUE(address6 != nullptr);
     log.info("%s", address6->getAddress().c_str());

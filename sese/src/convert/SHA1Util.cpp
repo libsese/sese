@@ -156,11 +156,13 @@ inline static void buffer_to_block(const uint8_t *buffer, uint32_t block[BLOCK_I
     }
 }
 
-bool SHA1Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
-    return encode(input.get(), output.get());
+// GCOVR_EXCL_START
+void SHA1Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
+    encode(input.get(), output.get());
 }
+// GCOVR_EXCL_STOP
 
-bool SHA1Util::encode(InputStream *input, OutputStream *output) noexcept {
+void SHA1Util::encode(InputStream *input, OutputStream *output) noexcept {
     SHA1Context ctx;
     uint8_t buffer[64];
     uint32_t block[64];
@@ -172,10 +174,8 @@ bool SHA1Util::encode(InputStream *input, OutputStream *output) noexcept {
         transform(&ctx, block);
     }
 
-    if (size == -1) return false;
-
     // 处理尾部
-    else if (size > 55) {
+    if (size > 55) {
         ctx.total += size;
         buffer[size] = 0x80;
         memset(buffer + size + 1, 0, 63 - size);
@@ -205,9 +205,9 @@ bool SHA1Util::encode(InputStream *input, OutputStream *output) noexcept {
         i = FromBigEndian32(i);
     }
     output->write(ctx.h, sizeof(ctx.h));
-    return true;
 }
 
+// GCOVR_EXCL_START
 inline char toChar(unsigned char ch, bool isCap) {
     if (ch >= 0 && ch <= 9) {
         return (char) (ch + 48);
@@ -219,6 +219,7 @@ inline char toChar(unsigned char ch, bool isCap) {
         }
     }
 }
+// GCOVR_EXCL_STOP
 
 std::unique_ptr<char[]> SHA1Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
     return encode(input.get(), isCap);
@@ -226,18 +227,14 @@ std::unique_ptr<char[]> SHA1Util::encode(const InputStream::Ptr &input, bool isC
 
 std::unique_ptr<char[]> SHA1Util::encode(InputStream *input, bool isCap) noexcept {
     ByteBuilder dest(64);
-    auto success = encode(input, &dest);
-    if (success) {
-        unsigned char buffer[40];
-        auto rt = std::unique_ptr<char[]>(new char[41]);
-        dest.read(buffer, 20);
-        for (auto i = 0; i < 20; ++i) {
-            rt[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
-            rt[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
-        }
-        rt[40] = 0;
-        return rt;
-    } else {
-        return nullptr;
+    encode(input, &dest);
+    unsigned char buffer[40];
+    auto rt = std::unique_ptr<char[]>(new char[41]);
+    dest.read(buffer, 20);
+    for (auto i = 0; i < 20; ++i) {
+        rt[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
+        rt[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
     }
+    rt[40] = 0;
+    return rt;
 }

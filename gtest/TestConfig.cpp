@@ -7,7 +7,7 @@
 #include "gtest/gtest.h"
 
 TEST(TestConfig, Config) {
-    sese::record::LogHelper log("Config");
+    sese::record::LogHelper log;
 
     auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/data.ini", TEXT_READ_EXISTED);
     ASSERT_TRUE(file != nullptr);

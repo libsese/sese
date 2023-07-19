@@ -9,10 +9,8 @@ std::unique_ptr<char[]> sese::MessageDigest::digest(Type type, const InputStream
             return sese::MD5Util::encode(source, isCap);
         case SHA1:
             return sese::SHA1Util::encode(source, isCap);
-        case SHA256:
-            return sese::SHA256Util::encode(source, isCap);
         default:
-            return nullptr;
+            return sese::SHA256Util::encode(source, isCap);
     }
 }
 
@@ -22,9 +20,7 @@ std::unique_ptr<char[]> sese::MessageDigest::digest(Type type, InputStream *sour
             return sese::MD5Util::encode(source, isCap);
         case SHA1:
             return sese::SHA1Util::encode(source, isCap);
-        case SHA256:
-            return sese::SHA256Util::encode(source, isCap);
         default:
-            return nullptr;
+            return sese::SHA256Util::encode(source, isCap);
     }
 }

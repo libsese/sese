@@ -10,12 +10,12 @@ using sese::MD5Util;
 using sese::MemoryViewer;
 
 // GCOVR_EXCL_START
-bool MD5Util::encode(const sese::InputStream::Ptr &input, const sese::OutputStream::Ptr &output) noexcept {
-    return encode(input.get(), output.get());
+void MD5Util::encode(const sese::InputStream::Ptr &input, const sese::OutputStream::Ptr &output) noexcept {
+    encode(input.get(), output.get());
 }
 // GCOVR_EXCL_STOP
 
-bool MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
+void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
     uint32_t result[4]{A, B, C, D};
     unsigned char buffer[64];
     uint64_t length = 0;
@@ -55,7 +55,6 @@ bool MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
     }
 
     output->write(result, 16);
-    return true;
 }
 
 // GCOVR_EXCL_START
@@ -66,20 +65,16 @@ std::unique_ptr<char[]> MD5Util::encode(const InputStream::Ptr &input, bool isCa
 
 std::unique_ptr<char[]> MD5Util::encode(InputStream *input, bool isCap) noexcept {
     ByteBuilder dest(16);
-    auto success = encode(input, &dest);
-    if (success) {
-        unsigned char buffer[16];
-        auto rt = std::unique_ptr<char[]>(new char[33]); // GCOVR_EXCL_LINE
-        dest.read(buffer, 16);
-        for (size_t i = 0; i < 16; i++) {
-            rt[i * 2 + 1] = MemoryViewer::toChar(buffer[i] % 0x10, isCap);
-            rt[i * 2 + 0] = MemoryViewer::toChar(buffer[i] / 0x10, isCap);
-        }
-        rt[32] = 0;
-        return rt;
-    } else {
-        return nullptr;
+    encode(input, &dest);
+    unsigned char buffer[16];
+    auto rt = std::unique_ptr<char[]>(new char[33]);// GCOVR_EXCL_LINE
+    dest.read(buffer, 16);
+    for (size_t i = 0; i < 16; i++) {
+        rt[i * 2 + 1] = MemoryViewer::toChar(buffer[i] % 0x10, isCap);
+        rt[i * 2 + 0] = MemoryViewer::toChar(buffer[i] / 0x10, isCap);
     }
+    rt[32] = 0;
+    return rt;
 }
 
 void MD5Util::transform(uint32_t *result, uint8_t *buffer) noexcept {

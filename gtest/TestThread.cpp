@@ -13,7 +13,7 @@ static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";
 void proc(int &num, sese::record::LogHelper &helper);
 
 TEST(TestThread, Thread) {
-    sese::record::LogHelper log("Thread");
+    sese::record::LogHelper log;
     int num = 0;
     sese::Thread thread([&num, &log]() { proc(num, log); }, "SubThread");
     thread.start();
@@ -41,7 +41,7 @@ void proc(int &num, sese::record::LogHelper &helper) {
 }
 
 TEST(TestThread, ThreadPool) {
-    sese::record::LogHelper log("ThreadPool");
+    sese::record::LogHelper log;
 
     std::vector<std::function<void()>> tasks(80);
     for (int32_t i = 20; i < 100; i++) {

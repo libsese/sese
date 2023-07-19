@@ -20,8 +20,8 @@ namespace sese {
         * @param output MD5 数据输出
         * @return 是否生成成功
         */
-        static bool encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
-        static bool encode(InputStream *input, OutputStream *output) noexcept;
+        static void encode(const sese::InputStream::Ptr &input, const sese::OutputStream::Ptr &output) noexcept;
+        static void encode(InputStream *input, OutputStream *output) noexcept;
 
         /**
         * @brief 生成 32 位大写 MD5 字符串

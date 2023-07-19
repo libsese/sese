@@ -17,8 +17,8 @@ namespace sese {
 
     class API SHA1Util {
     public:
-        static bool encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
-        static bool encode(InputStream *input, OutputStream *output) noexcept;
+        static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
+        static void encode(InputStream *input, OutputStream *output) noexcept;
 
         static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
         static std::unique_ptr<char[]> encode(InputStream *input, bool isCap = true) noexcept;

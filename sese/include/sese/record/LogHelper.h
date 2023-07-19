@@ -25,9 +25,8 @@ namespace sese::record {
     public:
         /**
          * 初始化日志工具
-         * @param tag 指定标签名称
          */
-        explicit LogHelper(const char *tag = RECORD_DEFAULT_TAG);
+        explicit LogHelper();
 
         /// 输出 DEBUG 级别的日志
         void debug(const char *format, ...);
@@ -55,7 +54,6 @@ namespace sese::record {
         static void l(Level level, const char *file, int32_t line, const char *format, va_list ap);
         void log(Level level, const char *file, int32_t line, const char *format, va_list ap);
 
-        const char *filter = nullptr;
         Logger *logger = nullptr;
     };
 }// namespace sese::record
