@@ -10,7 +10,7 @@ char inline getEncodeChar(unsigned char ch) {
 void PercentConverter::encode(const char *src, const OutputStream::Ptr &dest) {
     unsigned char buffer[3]{'%'};
     auto *p = reinterpret_cast<const unsigned char *>(src);
-    while(*p != 0){
+    while (*p != 0) {
         buffer[1] = getEncodeChar(*p / 0x10);
         buffer[2] = getEncodeChar(*p % 0x10);
         dest->write(buffer, 3);
@@ -18,11 +18,11 @@ void PercentConverter::encode(const char *src, const OutputStream::Ptr &dest) {
     }
 }
 
-char inline getHexChar (char ch) {
-    if (ch >= 'A' && ch <= 'Z'){
+char inline getHexChar(char ch) {
+    if (ch >= 'A' && ch <= 'F') {
         return ch - 55;
-    } else if (ch >= 'a' && ch <= 'z') {
-        return ch -87;
+    } else if (ch >= 'a' && ch <= 'f') {
+        return ch - 87;
     } else if (ch >= '0' && ch <= '9') {
         return ch - 48;
     } else {
@@ -30,23 +30,28 @@ char inline getHexChar (char ch) {
     }
 }
 
-void PercentConverter::decode(const char *src, const OutputStream::Ptr &dest) {
+bool PercentConverter::decode(const char *src, const OutputStream::Ptr &dest) {
     char decodeChar;
     char ch1;
     char ch2;
 
     auto *p = reinterpret_cast<const unsigned char *>(src);
-    while(*p != 0){
-        if(*p == '%') {
+    while (*p != 0) {
+        if (*p == '%') {
             ch1 = getHexChar(p[1]);
-            if(ch1 == -1) break;
+            if (ch1 == -1) {
+                return false;
+            }
             ch2 = getHexChar(p[2]);
-            if(ch2 == -1) break;
-
+            if (ch2 == -1) {
+                return false;
+            }
             decodeChar = ch1 * 0x10 + ch2;
-            dest->write((const void *)&decodeChar, 1);
-
+            dest->write((const void *) &decodeChar, 1);
             p += 3;
+        } else {
+            return false;
         }
     }
+    return true;
 }

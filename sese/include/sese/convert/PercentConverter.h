@@ -22,6 +22,6 @@ namespace sese {
 
         static void encode(const char *src, const OutputStream::Ptr &dest);
 
-        static void decode(const char *src, const OutputStream::Ptr &dest);
+        static bool decode(const char *src, const OutputStream::Ptr &dest);
     };
 }
