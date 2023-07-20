@@ -18,7 +18,7 @@ int main() {
     const char *libName = "libstdc++.6.dylib";
 #endif
     helper.info("loading lib \"%s\"", libName);
-    auto object = LibraryLoader::open(libName);
+    auto object = LibraryLoader::create(libName);
     assert(helper, object != nullptr, -1);
     auto sin = (Func *)object->findFunctionByName("sin");
     assert(helper, sin != nullptr, -2);

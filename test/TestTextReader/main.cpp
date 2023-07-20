@@ -10,7 +10,7 @@ LogHelper helper("fTEXT_READER");// NOLINT
 
 int main() {
     TextReader reader;
-    assert(helper, reader.open(PROJECT_PATH "/test/TestUniReader/data.txt"), -1);
+    assert(helper, reader.create(PROJECT_PATH "/test/TestUniReader/data.txt"), -1);
     while (true) {
         auto line = reader.readLine();
         if (line.null()) {

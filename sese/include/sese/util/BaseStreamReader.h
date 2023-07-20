@@ -66,14 +66,16 @@ namespace sese {
             if (canReadSize > 0) {
                 /// 有东西可读
                 T ch;
-                bool isFirst = true;
                 while (read(ch)) {
                     if (ch == '\r' || ch == '\n') {
-                        if (isFirst) continue;
-                        break;
+                        auto empty = string.rdbuf()->in_avail() == 0;
+                        if (!empty) {
+                            break;
+                        } else {
+                            continue;
+                        }
                     }
                     string << ch;
-                    isFirst = false;
                 }
             }
             bufferStream->freeCapacity();

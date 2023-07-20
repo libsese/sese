@@ -14,19 +14,18 @@ namespace sese {
      * @brief 跨平台的文件读取器，主要适配 Windows，支持 UTF-8
      * @deprecated 请考虑使用 sese::text::TextReader
      */
-    class API UniReader {
+    class API UniReader final {
     public:
         using Ptr = std::shared_ptr<UniReader>;
 
-        UniReader() = default;
         ~UniReader();
 
         /**
          * 打开文件
          * @param fileName 文件名称
-         * @return 打开是否成功
+         * @retval nullptr 打开失败
          */
-        bool open(const std::string &fileName) noexcept;
+        static std::shared_ptr<UniReader> create(const std::string &fileName) noexcept;
 
         /**
          * 读取一行
@@ -35,6 +34,8 @@ namespace sese {
         std::string readLine();
 
     private:
+        UniReader() = default;
+
         FileStream::Ptr fileStream;
 #ifdef _WIN32
         WStreamReader::Ptr reader;

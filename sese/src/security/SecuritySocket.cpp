@@ -1,5 +1,4 @@
 #include <openssl/ssl.h>
-#include <openssl/err.h>
 
 #include <sese/security/SSLContext.h>
 #include <sese/record/Marco.h>
@@ -16,15 +15,18 @@ sese::security::SecuritySocket::SecuritySocket(std::shared_ptr<SSLContext> conte
 
 int32_t sese::security::SecuritySocket::connect(Address::Ptr address) noexcept {
     auto rt = Socket::connect(address);
+    // GCOVR_EXCL_START
     if (rt != 0) {
         return rt;
     }
+    // GCOVR_EXCL_STOP
 
     ssl = SSL_new((SSL_CTX *) context->getContext());
     auto clientFd = this->getRawSocket();
 
     SSL_set_fd((SSL *) ssl, (int) clientFd);
     SSL_set_connect_state((SSL *) ssl);
+    // GCOVR_EXCL_START
     while (true) {
         rt = SSL_do_handshake((SSL *) ssl);
         if (rt <= 0) {
@@ -39,19 +41,23 @@ int32_t sese::security::SecuritySocket::connect(Address::Ptr address) noexcept {
             break;
         }
     }
+    // GCOVR_EXCL_STOP
 
     return 0;
 }
 
 sese::net::Socket::Ptr sese::security::SecuritySocket::accept() const {
     auto clientFd = ::accept(this->getRawSocket(), nullptr, nullptr);
+    // GCOVR_EXCL_START
     if (clientFd == -1) {
         return nullptr;
     }
+    // GCOVR_EXCL_STOP
 
     auto clientSSL = SSL_new((SSL_CTX *) context->getContext());
     SSL_set_fd(clientSSL, (int) clientFd);
     SSL_set_accept_state(clientSSL);
+    // GCOVR_EXCL_START
     while (true) {
         auto rt = SSL_do_handshake(clientSSL);
         if (rt <= 0) {
@@ -66,6 +72,7 @@ sese::net::Socket::Ptr sese::security::SecuritySocket::accept() const {
             break;
         }
     }
+    // GCOVR_EXCL_STOP
 
     return std::make_shared<SecuritySocket>(context, clientSSL, clientFd);
 }

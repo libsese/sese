@@ -6,16 +6,17 @@
 
 namespace sese::text {
 
-    class API TextReader {
+    class API TextReader final {
     public:
         using Ptr = std::shared_ptr<TextReader>;
 
-        TextReader() = default;
         ~TextReader() noexcept;
-        bool open(const char *u8str) noexcept;
+        static std::shared_ptr<sese::text::TextReader> create(const char *u8str) noexcept;
         String readLine();
 
     private:
+        TextReader() = default;
+
         FileStream::Ptr fileStream;
         BufferedStream::Ptr bufferedStream;
     };

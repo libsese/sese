@@ -16,9 +16,14 @@ std::string sese::UniReader::readLine() {
     return sese::EncodingConverter::toString(str);
 }
 
-bool sese::UniReader::open(const std::string &fileName) noexcept {
-    fileStream = FileStream::create(fileName, TEXT_READ_EXISTED_W);
-    if(!fileStream) return false;
-    reader = std::make_unique<WStreamReader>(fileStream);
-    return true;
+std::shared_ptr<sese::UniReader> sese::UniReader::create(const std::string &fileName) noexcept {
+    auto fileStream = FileStream::create(fileName, TEXT_READ_EXISTED_W);
+    if (!fileStream) {
+        return nullptr;
+    }
+    auto reader = std::make_shared<WStreamReader>(fileStream);
+    auto uniReader = new UniReader();
+    uniReader->fileStream = fileStream;
+    uniReader->reader = reader;
+    return std::shared_ptr<sese::UniReader>(uniReader);
 }

@@ -6,10 +6,17 @@ namespace sese::text {
         fileStream->close();
     }
 
-    bool TextReader::open(const char *u8str) noexcept {
-        fileStream = FileStream::create(u8str, BINARY_READ_EXISTED);
-        bufferedStream = std::make_shared<BufferedStream>(fileStream);
-        return nullptr != fileStream;
+    std::shared_ptr<sese::text::TextReader> TextReader::create(const char *u8str) noexcept {
+        auto fileStream = FileStream::create(u8str, BINARY_READ_EXISTED);
+        if (fileStream == nullptr) {
+            return nullptr;
+        }
+
+        auto bufferedStream = std::make_shared<BufferedStream>(fileStream);
+        auto reader = new TextReader;
+        reader->fileStream = fileStream;
+        reader->bufferedStream = bufferedStream;
+        return std::shared_ptr<sese::text::TextReader>(reader);
     }
 
     String TextReader::readLine() {
