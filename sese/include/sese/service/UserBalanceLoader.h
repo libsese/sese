@@ -117,7 +117,7 @@ bool sese::service::UserBalanceLoader::init(std::function<Service *()> creator) 
         return false;
     }
 
-    if (!socket->setNonblocking(true)) {
+    if (!socket->setNonblocking()) {
         goto freeSocket;
     }
 

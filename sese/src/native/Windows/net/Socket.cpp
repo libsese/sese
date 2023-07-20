@@ -54,8 +54,8 @@ int32_t Socket::shutdown(ShutdownMode mode) const {
     return ::shutdown(handle, (int32_t) mode);
 }
 
-bool Socket::setNonblocking(bool enable) const noexcept {
-    unsigned long ul = enable ? 1 : 0;
+bool Socket::setNonblocking() const noexcept {
+    unsigned long ul = 1;
     return ioctlsocket(handle, FIONBIO, &ul) == 0;
 }
 
@@ -67,11 +67,11 @@ int64_t Socket::write(const void *buffer, size_t length) {
     return ::send(handle, (char *) buffer, (int32_t) length, 0);
 }
 
-int64_t Socket::send(void *buffer, size_t length, const IPAddress::Ptr &to, int32_t flags) const {
+int64_t Socket::send(void *buffer, size_t length, IPAddress::Ptr to, int32_t flags) const {
     return sendto(handle, (char *) buffer, (int32_t) length, flags, to->getRawAddress(), to->getRawAddressLength());
 }
 
-int64_t Socket::recv(void *buffer, size_t length, const IPAddress::Ptr &from, int32_t flags) const {
+int64_t Socket::recv(void *buffer, size_t length, IPAddress::Ptr from, int32_t flags) const {
     int32_t len = from->getRawAddressLength();
     return recvfrom(handle, (char *) buffer, (int32_t) length, flags, from->getRawAddress(), &len);
 }

@@ -48,7 +48,7 @@ int32_t Socket::shutdown(ShutdownMode mode) const {
     return ::shutdown(handle, (int32_t) mode);
 }
 
-bool Socket::setNonblocking(bool enable) const noexcept {
+bool Socket::setNonblocking() const noexcept {
     int32_t opt = fcntl(handle, F_GETFL);
     if (opt == -1) return false;
     return fcntl(handle, F_SETFL, opt | O_NONBLOCK) == 0;
@@ -62,11 +62,11 @@ int64_t Socket::write(const void *buffer, size_t length) {
     return ::write(handle, buffer, length);
 }
 
-int64_t Socket::send(void *buffer, size_t length, const IPAddress::Ptr &to, int32_t flags) const {
+int64_t Socket::send(void *buffer, size_t length, IPAddress::Ptr to, int32_t flags) const {
     return ::sendto(handle, buffer, length, flags, to->getRawAddress(), to->getRawAddressLength());
 }
 
-int64_t Socket::recv(void *buffer, size_t length, const IPAddress::Ptr &from, int32_t flags) const {
+int64_t Socket::recv(void *buffer, size_t length, IPAddress::Ptr from, int32_t flags) const {
     auto len = from->getRawAddressLength();
     return ::recvfrom(handle, buffer, length, flags, from->getRawAddress(), &len);
 }
