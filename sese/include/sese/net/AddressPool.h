@@ -34,25 +34,27 @@ namespace sese::net {
         std::map<std::string, std::shared_ptr<Address>> addressMap;
     };
 
+    template<class Address>
+    AddressPool<Address> AddressPool<Address>::pool;
+
     using IPv4AddressPool = AddressPool<sese::net::IPv4Address>;
     using IPv6AddressPool = AddressPool<sese::net::IPv6Address>;
-}// namespace sese
+}// namespace sese::net
 
-template<class Address>
-sese::net::AddressPool<Address> sese::net::AddressPool<Address>::pool;
 
 template<class Address>
 std::shared_ptr<Address> sese::net::AddressPool<Address>::lookup(const std::string &domain) noexcept {
     auto iterator = pool.addressMap.find(domain);
+    auto inet = std::is_same<Address, sese::net::IPv4Address>::value ? AF_INET : AF_INET6;
     if (iterator == pool.addressMap.end()) {
-        auto address = Address::lookUpAny(domain);
+        auto address = Address::lookUpAny(domain, inet, IPPROTO_IP);
         if (nullptr == address) {
             // 未命中缓存且查找失败
             return nullptr;
         } else {
-            auto ipv4 = dynamicPointerCast<Address>(address);
-            pool.addressMap[domain] = ipv4;
-            return ipv4;
+            auto ip = dynamicPointerCast<Address>(address);
+            pool.addressMap[domain] = ip;
+            return ip;
         }
     } else {
         return iterator->second;

@@ -1,6 +1,8 @@
 #include <openssl/ssl.h>
+#include <openssl/err.h>
 
 #include <sese/security/SSLContext.h>
+#include <sese/record/Marco.h>
 
 sese::security::SecuritySocket::SecuritySocket(std::shared_ptr<SSLContext> context, Socket::Family family, int32_t flags) noexcept
     : Socket(family, Socket::Type::TCP, flags),
@@ -37,33 +39,20 @@ int32_t sese::security::SecuritySocket::connect(Address::Ptr address) noexcept {
 }
 
 sese::net::Socket::Ptr sese::security::SecuritySocket::accept() const {
-    auto socket = Socket::accept();
-    if (socket == nullptr) {
+    auto clientFd = ::accept(this->getRawSocket(), nullptr, nullptr);
+    if (clientFd == -1) {
         return nullptr;
     }
-
-    auto clientFd = socket->getRawSocket();
 
     auto clientSSL = SSL_new((SSL_CTX *) context->getContext());
-    if (ssl == nullptr) {
-        socket->shutdown(Socket::ShutdownMode::Both);
-        socket->close();
-        return nullptr;
-    }
-
-    auto rt = SSL_set_fd((SSL *) clientSSL, (int) clientFd);
+    SSL_set_fd(clientSSL, (int) clientFd);
+    auto rt = SSL_accept(clientSSL);
     if (rt != 1) {
-        socket->shutdown(Socket::ShutdownMode::Both);
-        socket->close();
-        return nullptr;
-    }
-
-    rt = SSL_accept((SSL *) ssl);
-    if (rt != 1) {
-        SSL_shutdown(clientSSL);
+        char msg[1024];
+        ERR_error_string_n(ERR_get_error(), msg, sizeof(msg));
+        SESE_ERROR("%s", msg);
         SSL_free(clientSSL);
-        socket->shutdown(Socket::ShutdownMode::Both);
-        socket->close();
+        Socket::close(clientFd);
         return nullptr;
     }
 

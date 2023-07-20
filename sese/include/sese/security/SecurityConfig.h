@@ -1,4 +1,5 @@
 #pragma once
+
 #include "sese/util/Initializer.h"
 
 namespace sese::security {
@@ -7,5 +8,7 @@ namespace sese::security {
         SecurityInitTask() : InitiateTask(__FUNCTION__) {}
 
         int32_t init() noexcept override;
+
+        int32_t destroy() noexcept override;
     };
 }

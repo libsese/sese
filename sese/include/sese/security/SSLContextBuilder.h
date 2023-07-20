@@ -1,6 +1,7 @@
 #pragma once
+
 #include <sese/security/SSLContext.h>
-#include "sese/util/NotInstantiable.h"
+#include <sese/util/NotInstantiable.h>
 
 namespace sese::security {
 
