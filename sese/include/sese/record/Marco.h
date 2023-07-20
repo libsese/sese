@@ -3,6 +3,10 @@
 #include <sese/record/Logger.h>
 #include <sese/thread/Thread.h>
 
+#ifdef WIN32
+#define sprintf sprintf_s
+#endif
+
 #define __SESE_LOG(point_to_logger, level, format, ...)     \
     {                                                       \
         char buf[RECORD_OUTPUT_BUFFER]{0};                  \

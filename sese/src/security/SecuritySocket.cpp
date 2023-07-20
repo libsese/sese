@@ -21,21 +21,26 @@ int32_t sese::security::SecuritySocket::connect(Address::Ptr address) noexcept {
     }
 
     ssl = SSL_new((SSL_CTX *) context->getContext());
-    if (ssl == nullptr) {
-        return -1;
+    auto clientFd = this->getRawSocket();
+
+    SSL_set_fd((SSL *) ssl, (int) clientFd);
+    SSL_set_connect_state((SSL *) ssl);
+    while (true) {
+        rt = SSL_do_handshake((SSL *) ssl);
+        if (rt <= 0) {
+            // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
+            auto err = SSL_get_error((SSL *) ssl, rt);
+            if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                SSL_free((SSL *) ssl);
+                Socket::close();
+                return -1;
+            }
+        } else {
+            break;
+        }
     }
 
-    rt = SSL_set_fd((SSL *) ssl, (int) getRawSocket());
-    if (rt != 1) {
-        return -1;
-    }
-
-    rt = SSL_connect((SSL *) ssl);
-    if (rt != 1) {
-        return -1;
-    } else {
-        return 0;
-    }
+    return 0;
 }
 
 sese::net::Socket::Ptr sese::security::SecuritySocket::accept() const {
@@ -46,14 +51,20 @@ sese::net::Socket::Ptr sese::security::SecuritySocket::accept() const {
 
     auto clientSSL = SSL_new((SSL_CTX *) context->getContext());
     SSL_set_fd(clientSSL, (int) clientFd);
-    auto rt = SSL_accept(clientSSL);
-    if (rt != 1) {
-        char msg[1024];
-        ERR_error_string_n(ERR_get_error(), msg, sizeof(msg));
-        SESE_ERROR("%s", msg);
-        SSL_free(clientSSL);
-        Socket::close(clientFd);
-        return nullptr;
+    SSL_set_accept_state(clientSSL);
+    while (true) {
+        auto rt = SSL_do_handshake(clientSSL);
+        if (rt <= 0) {
+            // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
+            auto err = SSL_get_error(clientSSL, rt);
+            if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                SSL_free(clientSSL);
+                Socket::close(clientFd);
+                return nullptr;
+            }
+        } else {
+            break;
+        }
     }
 
     return std::make_shared<SecuritySocket>(context, clientSSL, clientFd);
@@ -72,7 +83,9 @@ int64_t sese::security::SecuritySocket::write(const void *buffer, size_t length)
 }
 
 void sese::security::SecuritySocket::close() {
-    SSL_shutdown((SSL *) ssl);
-    SSL_free((SSL *) ssl);
+    if (ssl) {
+        SSL_shutdown((SSL *) ssl);
+        SSL_free((SSL *) ssl);
+    }
     Socket::close();
 }

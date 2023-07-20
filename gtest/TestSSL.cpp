@@ -7,6 +7,8 @@
 
 #include <gtest/gtest.h>
 
+using namespace std::chrono_literals;
+
 TEST(TestSSL, Auth) {
     auto context = sese::security::SSLContextBuilder::SSL4Server();
     ASSERT_NE(context, nullptr);
@@ -39,9 +41,9 @@ TEST(TestSSL, Client) {
 }
 
 TEST(TestSSL, Server) {
-    auto port = (sese::Random::next() % (65535 + 1024)) - 1024;
-    auto address = sese::net::IPv4Address::any(port);
-    auto servCtx = sese::security::SSLContextBuilder::SSL4Client();
+    auto port = (sese::Random::next() % (65535 - 1024)) + 1024;
+    auto address = sese::net::IPv4Address::localhost((uint16_t)port);
+    auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
     servCtx->importCertFile(PROJECT_PATH "/gtest/Data/test-ca.crt");
     servCtx->importPrivateKeyFile(PROJECT_PATH "/gtest/Data/test-key.pem");
     ASSERT_TRUE(servCtx->authPrivateKey());
@@ -52,7 +54,7 @@ TEST(TestSSL, Server) {
 
     auto th = sese::Thread(
             [&server] {
-                SESE_INFO("waiting connect");
+                SESE_INFO("waiting accept");
                 auto socket = server.accept();
                 if (socket == nullptr) {
                     SESE_ERROR("failed to accept");
@@ -74,7 +76,7 @@ TEST(TestSSL, Server) {
         FAIL();
     }
     SESE_INFO("connected");
-    char buffer[1024]{};
+    char buffer[32]{};
     client.read(buffer, sizeof(buffer));
     client.close();
     SESE_INFO("Recv Message: %s", buffer);
