@@ -142,6 +142,12 @@ namespace sese::net {
     public:
         static socket_t socket(int family, int type, int protocol) noexcept;
 
+        static int bind(socket_t socket, const sockaddr *addr, socklen_t addrLen) noexcept;
+
+        static socket_t accept(socket_t socket, sockaddr * addr = nullptr, socklen_t *len = nullptr) noexcept;
+
+        static int connect(socket_t socket, const sockaddr *addr, socklen_t addrLen) noexcept;
+
         static int64_t write(socket_t socket, const void *buffer, size_t len, int flags) noexcept;
 
         static int64_t read(socket_t socket, void *buffer, size_t len, int flags) noexcept;

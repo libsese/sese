@@ -23,5 +23,5 @@ TEST(TestAddress, AddressPool) {
     auto address1 = sese::net::IPv4AddressPool::lookup("www.baidu.com");
     ASSERT_TRUE(address0.get() == address1.get());
 
-    ASSERT_EQ(sese::net::IPv4AddressPool::lookup(""), nullptr);
+    ASSERT_EQ(sese::net::IPv4AddressPool::lookup(".com"), nullptr);
 }

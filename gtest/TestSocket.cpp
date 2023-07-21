@@ -132,3 +132,44 @@ GTEST_TEST(TestSocket, Server_UDP) {
     th.join();
     server.close();
 }
+
+GTEST_TEST(TestSocket, NativeAPI) {
+    auto port = (uint16_t) (sese::Random::next() % (65535 - 1024)) + 1024;
+
+    sockaddr_in address{};
+    address.sin_family = AF_INET;
+    address.sin_port = ToBigEndian16(port);
+    address.sin_addr.s_addr = ToBigEndian32(0x7f000001);
+
+    auto socket = sese::net::Socket::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
+    GTEST_ASSERT_NE(socket, -1);
+    GTEST_ASSERT_EQ(sese::net::Socket::bind(socket, (const sockaddr *) &address, sizeof(address)), 0);
+    GTEST_ASSERT_EQ(sese::net::Socket::listen(socket, SERVER_MAX_CONNECTION), 0);
+
+    auto th = sese::Thread(
+            [socket] {
+                SESE_INFO("waiting accept");
+                auto client = sese::net::Socket::accept(socket);
+                SESE_INFO("accepted");
+                sese::net::Socket::write(client, "Hello", 5, 0);
+                sese::net::Socket::close(client);
+                SESE_INFO("closed");
+            },
+            "Server_NativeAPI"
+    );
+    th.start();
+
+    auto client = sese::net::Socket::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
+    GTEST_ASSERT_NE(client, -1);
+    SESE_INFO("connecting");
+    GTEST_ASSERT_EQ(sese::net::Socket::connect(client, (const sockaddr *) &address, sizeof(address)), 0);
+    SESE_INFO("connected");
+
+    char buffer[32]{};
+    sese::net::Socket::read(client, buffer, sizeof(buffer), 0);
+    sese::net::Socket::close(client);
+    SESE_INFO("Recv Message: %s", buffer);
+
+    th.join();
+    sese::net::Socket::close(socket);
+}

@@ -4,8 +4,20 @@ socket_t sese::net::Socket::socket(int family, int type, int protocol) noexcept 
     return ::socket(family, type, protocol);
 }
 
+socket_t sese::net::Socket::accept(socket_t socket, sockaddr *addr, socklen_t *len) noexcept {
+    return ::accept(socket, addr, len);
+}
+
 int sese::net::Socket::listen(socket_t socket, int backlog) noexcept {
     return ::listen(socket, backlog);
+}
+
+int sese::net::Socket::bind(socket_t socket, const sockaddr *addr, socklen_t addrLen) noexcept {
+    return ::bind(socket, addr, addrLen);
+}
+
+int sese::net::Socket::connect(socket_t socket, const sockaddr *addr, socklen_t addrLen) noexcept {
+    return ::connect(socket, addr, addrLen);
 }
 
 #ifdef SESE_PLATFORM_WINDOWS
@@ -15,7 +27,7 @@ int64_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int f
 }
 
 int64_t sese::net::Socket::write(socket_t socket, const void *buffer, size_t len, int flags) noexcept {
-    return ::send(socket, (const char *) buffer, (int)len, flags);
+    return ::send(socket, (const char *) buffer, (int) len, flags);
 }
 
 int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
@@ -40,6 +52,8 @@ int64_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int f
     return ::recv(socket, buffer, len, flags);
 }
 
+// 一般不会发生错误
+// GCOVR_EXCL_START
 int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
     auto option = fcntl(socket, F_GETFL);
     if (option != -1) {
@@ -48,6 +62,7 @@ int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
         return -1;
     }
 }
+// GCOVR_EXCL_STOP
 
 void sese::net::Socket::close(socket_t socket) noexcept {
     ::close(socket);
