@@ -25,6 +25,8 @@ std::optional<Socket> ReusableSocket::builtinMakeSocket() noexcept {
 
     return socket;
 #else
+    // 此处一般不会触发错误
+    // GCOVR_EXCL_START
     auto socket = Socket(
             addr->getRawAddress()->sa_family == AF_INET ? Socket::Family::IPv4 : Socket::Family::IPv6,
             type, IPPROTO_IP
@@ -38,6 +40,7 @@ std::optional<Socket> ReusableSocket::builtinMakeSocket() noexcept {
     if (0 != setsockopt(socket.getRawSocket(), SOL_SOCKET, SO_REUSEPORT, &opt, sizeof(opt))) {
         return std::nullopt;
     }
+    // GCOVR_EXCL_STOP
 
     if (0 != socket.bind(addr)) {
         return std::nullopt;

@@ -15,7 +15,9 @@ IPAddress::Ptr IPAddress::create(const char *address, uint16_t port) {
     IPAddress::Ptr result = std::dynamic_pointer_cast<IPAddress>(Address::create(res->ai_addr, (socklen_t) res->ai_addrlen));
     if (result) {
         result->setPort(port);
-    } else {
+    }
+    // 此处暂时没有很好的办法触发
+    else {
         result = nullptr;
     }
     freeaddrinfo(res);

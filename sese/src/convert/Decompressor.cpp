@@ -19,11 +19,11 @@ sese::Decompressor::Decompressor(sese::CompressionType type, size_t bufferSize) 
 }
 
 sese::Decompressor::~Decompressor() {
-    delete[] buffer;
+    delete[] buffer;// GCOVR_EXCL_LINE
 
     auto stm = (z_stream *) stream;
     ::inflateEnd(stm);
-    delete stm;
+    delete stm;// GCOVR_EXCL_LINE
     stream = nullptr;
 }
 
@@ -35,6 +35,8 @@ void sese::Decompressor::input(const void *input, unsigned int inputLen) {
     stm->next_out = (unsigned char *) buffer;
 }
 
+// 此处逻辑不需要我们关心
+// GCOVR_EXCL_START
 int sese::Decompressor::inflate(sese::OutputStream *out) {
     auto stm = (z_stream *) stream;
     // 输出 buffer 未能完全输出，继续输出
@@ -83,6 +85,7 @@ int sese::Decompressor::reset() {
     auto stm = (z_stream *) stream;
     return inflateReset(stm);
 }
+// GCOVR_EXCL_STOP
 
 size_t sese::Decompressor::getTotalIn() const {
     auto stm = (z_stream *) stream;

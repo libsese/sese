@@ -1,5 +1,6 @@
 #include "sese/net/ReusableSocket.h"
 #include "sese/event/Event.h"
+#include "sese/record/Marco.h"
 #include "sese/thread/Thread.h"
 #include "gtest/gtest.h"
 
@@ -41,7 +42,7 @@ sese::net::IPAddress::Ptr createAddress() {
     auto engine = std::default_random_engine(device());
     std::uniform_int_distribution<uint16_t> dis(1025, 65535);
     auto port = dis(engine);
-    printf("select port %d\n", (int) port);
+    SESE_INFO("select port %d\n", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
 
@@ -51,9 +52,11 @@ TEST(TestReusableSocket, LoadBalancing) {
 
     auto sock1 = reusableSocket.makeRawSocket();
     auto sock2 = reusableSocket.makeRawSocket();
+    auto sock3 = reusableSocket.makeSocket();
 
     ASSERT_NE(sock1, -1);
     ASSERT_NE(sock2, -1);
+    ASSERT_NE(sock3, std::nullopt);
 
     ASSERT_EQ(sese::net::Socket::setNonblocking(sock1), 0);
     ASSERT_EQ(sese::net::Socket::setNonblocking(sock2), 0);
@@ -92,5 +95,15 @@ TEST(TestReusableSocket, LoadBalancing) {
     sese::net::Socket::close(sock1);
     sese::net::Socket::close(sock2);
 
-    printf("Socket1: %d\nSocket2: %d\n", event1.getNum(), event2.getNum());
+    SESE_INFO("Socket1: %d\nSocket2: %d\n", event1.getNum(), event2.getNum());
+}
+
+TEST(TestReusableSocket, Error) {
+    auto addr = sese::net::IPv4Address::create("0.0.0.1", 0);
+    sese::net::ReusableSocket reusableSocket(addr);
+
+    auto sock1 = reusableSocket.makeRawSocket();
+    auto sock2 = reusableSocket.makeSocket();
+    ASSERT_EQ(sock1, -1);
+    ASSERT_EQ(sock2, std::nullopt);
 }

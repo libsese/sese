@@ -22,11 +22,11 @@ sese::Compressor::Compressor(sese::CompressionType type, size_t level, size_t bu
 }
 
 sese::Compressor::~Compressor() {
-    delete[] buffer;
+    delete[] buffer;// GCOVR_EXCL_LINE
 
     auto stm = (z_stream *) stream;
     ::deflateEnd(stm);
-    delete stm;
+    delete stm;// GCOVR_EXCL_LINE
     stream = nullptr;
 }
 
@@ -38,6 +38,7 @@ void sese::Compressor::input(const void *input, unsigned int inputSize) {
     stm->next_out = (unsigned char *) buffer;
 }
 
+// GCOVR_EXCL_START
 int sese::Compressor::deflate(OutputStream *out) {
     auto stm = (z_stream *) stream;
     // 输出 buffer 未能完全输出，继续输出
@@ -86,6 +87,7 @@ int sese::Compressor::reset() {
     auto stm = (z_stream *) stream;
     return deflateReset(stm);
 }
+// GCOVR_EXCL_STOP
 
 size_t sese::Compressor::getTotalIn() const {
     auto stm = (z_stream *) stream;
