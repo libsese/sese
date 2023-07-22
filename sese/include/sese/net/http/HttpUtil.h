@@ -23,7 +23,7 @@ namespace sese::net::http {
          * @return true 接收请求成功
          * @return false 接收请求失败
          */
-        static bool recvRequest(Stream *source, RequestHeader *request) noexcept;
+        static bool recvRequest(InputStream *source, RequestHeader *request) noexcept;
         /**
          * @brief 向流中发送一个请求
          *
@@ -32,7 +32,7 @@ namespace sese::net::http {
          * @return true 发送请求成功
          * @return false 发送请求失败
          */
-        static bool sendRequest(Stream *dest, RequestHeader *request) noexcept;
+        static bool sendRequest(OutputStream *dest, RequestHeader *request) noexcept;
         /**
          * @brief 从流中接收一个响应
          *
@@ -41,7 +41,7 @@ namespace sese::net::http {
          * @return true 接收响应成功
          * @return false 接收响应失败
          */
-        static bool recvResponse(Stream *source, ResponseHeader *response) noexcept;
+        static bool recvResponse(InputStream *source, ResponseHeader *response) noexcept;
         /**
          * @brief 向流中发送一个响应
          *
@@ -50,19 +50,19 @@ namespace sese::net::http {
          * @return true 发送响应成功
          * @return false 发送响应失败
          */
-        static bool sendResponse(Stream *dest, ResponseHeader *response) noexcept;
+        static bool sendResponse(OutputStream *dest, ResponseHeader *response) noexcept;
 
         static Cookie::Ptr parseFromSetCookie(const std::string &text) noexcept;
 
         static CookieMap::Ptr parseFromCookie(const std::string &text) noexcept;
 
     private:
-        static bool getLine(Stream *source, text::StringBuilder &builder) noexcept;
+        static bool getLine(InputStream *source, text::StringBuilder &builder) noexcept;
 
-        inline static bool recvHeader(Stream *source, text::StringBuilder &builder, Header *header, bool isResp = false) noexcept;
-        inline static bool sendHeader(Stream *dest, Header *header, bool isResp = false) noexcept;
+        inline static bool recvHeader(InputStream *source, text::StringBuilder &builder, Header *header, bool isResp = false) noexcept;
+        inline static bool sendHeader(OutputStream *dest, Header *header, bool isResp = false) noexcept;
 
-        inline static bool sendSetCookie(Stream *dest, const CookieMap::Ptr & cookies) noexcept;
-        inline static bool sendCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept;
+        inline static bool sendSetCookie(OutputStream *dest, const CookieMap::Ptr & cookies) noexcept;
+        inline static bool sendCookie(OutputStream *dest, const CookieMap::Ptr &cookies) noexcept;
     };
 }// namespace sese::http

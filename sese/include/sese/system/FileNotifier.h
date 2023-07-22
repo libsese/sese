@@ -21,16 +21,16 @@ namespace sese::system {
         virtual ~FileNotifyOption() = default;
 
         /// 创建文件
-        virtual void onCreate(std::string_view name){};
+        virtual void onCreate(std::string_view name) = 0;
 
         /// 移动文件
-        virtual void onMove(std::string_view srcName, std::string_view dstName){};
+        virtual void onMove(std::string_view srcName, std::string_view dstName) = 0;
 
         /// 修改文件
-        virtual void onModify(std::string_view name){};
+        virtual void onModify(std::string_view name) = 0;
 
         /// 删除文件
-        virtual void onDelete(std::string_view name){};
+        virtual void onDelete(std::string_view name) = 0;
     };
 
     /// 文件变更监视器，此实现 Darwin 事件顺序与 Windows 和 Linux 不一致。

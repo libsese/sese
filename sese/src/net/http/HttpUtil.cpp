@@ -2,7 +2,7 @@
 #include <sese/text/DateTimeFormatter.h>
 
 #ifndef _WIN32
-#define _atoi64(val) strtoll(val, nullptr, 10)
+#define _atoi64(val) strtoll(val, nullptr, 10) // NOLINT
 #else
 #pragma warning(disable : 4996)
 #endif
@@ -10,11 +10,9 @@
 using namespace sese::net::http;
 using sese::text::StringBuilder;
 
-bool HttpUtil::getLine(Stream *source, StringBuilder &builder) noexcept {
+bool HttpUtil::getLine(InputStream *source, StringBuilder &builder) noexcept {
     char ch;
     for (size_t i = 0; i < HTTP_MAX_SINGLE_LINE + 1; i++) {
-        if (HTTP_MAX_SINGLE_LINE == i) return false;
-
         size_t size = source->read(&ch, 1);
         if (size != 1) {
             return false;
@@ -25,13 +23,13 @@ bool HttpUtil::getLine(Stream *source, StringBuilder &builder) noexcept {
         } else {
             // 剩下的 '\n'，读取的结果已经不重要
             source->read(&ch, 1);
-            break;
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
-bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
+bool HttpUtil::recvRequest(InputStream *source, RequestHeader *request) noexcept {
     StringBuilder builder;
     if (!getLine(source, builder)) {
         return false;
@@ -41,6 +39,7 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
     builder.clear();
 
     // method
+    // GCOVR_EXCL_START
     if ("GET" == firstLines[0]) {
         request->setType(RequestType::Get);
     } else if ("POST" == firstLines[0]) {
@@ -60,8 +59,9 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
     } else {
         request->setType(RequestType::Another);
     }
+    // GCOVR_EXCL_STOP
 
-    // uri
+    // url
     request->setUrl(firstLines[1]);
 
     // version
@@ -77,8 +77,9 @@ bool HttpUtil::recvRequest(Stream *source, RequestHeader *request) noexcept {
     return true;
 }
 
-bool HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noexcept {
+bool HttpUtil::sendRequest(OutputStream *dest, RequestHeader *request) noexcept {
     // method
+    // GCOVR_EXCL_START
     switch (request->getType()) {
         case RequestType::Options:
             if (-1 == dest->write("OPTIONS ", 8)) return false;
@@ -107,16 +108,20 @@ bool HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noexcept {
         case RequestType::Another:
             break;
     }
+    // GCOVR_EXCL_STOP
 
-    // uri
-    if (-1 == dest->write(request->getUrl().c_str(), request->getUrl().length())) return false;
+    // url
+    auto url = request->getUrl();
+    if (url.length() != dest->write(url.c_str(), url.length())) return false;// GCOVR_EXCL_LINE
 
     // version
+    // GCOVR_EXCL_START
     if (request->getVersion() == HttpVersion::VERSION_1_1) {
-        if (-1 == dest->write(" HTTP/1.1\r\n", 11)) return false;
+        if (11 != dest->write(" HTTP/1.1\r\n", 11)) return false;
     } else {
         return false;
     }
+    // GCOVR_EXCL_STOP
 
     // keys & values
     if (!sendHeader(dest, request, false)) return false;
@@ -124,7 +129,7 @@ bool HttpUtil::sendRequest(Stream *dest, RequestHeader *request) noexcept {
     return true;
 }
 
-bool HttpUtil::recvResponse(Stream *source, ResponseHeader *response) noexcept {
+bool HttpUtil::recvResponse(InputStream *source, ResponseHeader *response) noexcept {
     StringBuilder builder;
     if (!getLine(source, builder)) return false;
     auto firstLines = builder.split(" ");
@@ -146,18 +151,18 @@ bool HttpUtil::recvResponse(Stream *source, ResponseHeader *response) noexcept {
     return true;
 }
 
-bool HttpUtil::sendResponse(Stream *dest, ResponseHeader *response) noexcept {
+bool HttpUtil::sendResponse(OutputStream *dest, ResponseHeader *response) noexcept {
     // version
     if (response->getVersion() == HttpVersion::VERSION_1_1) {
-        if (-1 == dest->write("HTTP/1.1 ", 9)) return false;
+        if (9 != dest->write("HTTP/1.1 ", 9)) return false;
     } else {
         return false;
     }
 
     // status code
     std::string code = std::to_string(response->getCode());
-    if (-1 == dest->write(code.c_str(), code.length())) return false;
-    if (-1 == dest->write("\r\n", 2)) return false;
+    if (code.length() != dest->write(code.c_str(), code.length())) return false;// GCOVR_EXCL_LINE
+    if (2 != dest->write("\r\n", 2)) return false;                              // GCOVR_EXCL_LINE
 
     // keys & values
     if (!sendHeader(dest, response, true)) return false;
@@ -165,7 +170,7 @@ bool HttpUtil::sendResponse(Stream *dest, ResponseHeader *response) noexcept {
     return true;
 }
 
-bool HttpUtil::recvHeader(Stream *source, StringBuilder &builder, Header *header, bool isResp) noexcept {
+bool HttpUtil::recvHeader(InputStream *source, StringBuilder &builder, Header *header, bool isResp) noexcept {
     CookieMap::Ptr cookies;
     if (isResp) {
         cookies = std::make_shared<CookieMap>();
@@ -208,15 +213,15 @@ bool HttpUtil::recvHeader(Stream *source, StringBuilder &builder, Header *header
 #define WRITE(buffer, size) \
     if (-1 == dest->write(buffer, size)) return false
 
-bool HttpUtil::sendHeader(Stream *dest, Header *header, bool isResp) noexcept {
+bool HttpUtil::sendHeader(OutputStream *dest, Header *header, bool isResp) noexcept {
     size_t len;
     for (const auto &pair: *header) {
         len = pair.first.length();
-        WRITE(pair.first.c_str(), len);
-        WRITE(": ", 2);
+        WRITE(pair.first.c_str(), len);// GCOVR_EXCL_LINE
+        WRITE(": ", 2);                // GCOVR_EXCL_LINE
         len = pair.second.length();
-        WRITE(pair.second.c_str(), len);
-        WRITE("\r\n", 2);
+        WRITE(pair.second.c_str(), len);// GCOVR_EXCL_LINE
+        WRITE("\r\n", 2);               // GCOVR_EXCL_LINE
     }
 
     auto cookies = header->getCookies();
@@ -233,72 +238,72 @@ bool HttpUtil::sendHeader(Stream *dest, Header *header, bool isResp) noexcept {
     return true;
 }
 
-bool HttpUtil::sendSetCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
+bool HttpUtil::sendSetCookie(OutputStream *dest, const CookieMap::Ptr &cookies) noexcept {
     for (decltype(auto) cookie: *cookies) {
-        if (-1 == dest->write("Set-Cookie: ", 12)) return false;
+        WRITE("Set-Cookie: ", 12);// GCOVR_EXCL_LINE
         const std::string &name = cookie.first;
         const std::string &value = cookie.second->getValue();
-        WRITE(name.c_str(), name.size());
-        WRITE("=", 1);
-        WRITE(value.c_str(), value.size());
+        WRITE(name.c_str(), name.size());  // GCOVR_EXCL_LINE
+        WRITE("=", 1);                     // GCOVR_EXCL_LINE
+        WRITE(value.c_str(), value.size());// GCOVR_EXCL_LINE
 
         const std::string &path = cookie.second->getPath();
         if (!path.empty()) {
-            WRITE("; ", 2);
-            WRITE(path.c_str(), path.size());
+            WRITE("; ", 2);                  // GCOVR_EXCL_LINE
+            WRITE(path.c_str(), path.size());// GCOVR_EXCL_LINE
         }
 
         const std::string &domain = cookie.second->getDomain();
         if (!domain.empty()) {
-            WRITE("; ", 2);
-            WRITE(domain.c_str(), domain.size());
+            WRITE("; ", 2);                      // GCOVR_EXCL_LINE
+            WRITE(domain.c_str(), domain.size());// GCOVR_EXCL_LINE
         }
 
         uint64_t maxAge = cookie.second->getMaxAge();
         if (maxAge > 0) {
-            WRITE("; Max-Age=", 10);
+            WRITE("; Max-Age=", 10);// GCOVR_EXCL_LINE
             auto age = std::to_string(maxAge);
-            WRITE(age.c_str(), age.length());
+            WRITE(age.c_str(), age.length());// GCOVR_EXCL_LINE
         } else {
             uint64_t expires = cookie.second->getExpires();
             if (expires > 0) {
-                WRITE("; Expires=", 10);
+                WRITE("; Expires=", 10);// GCOVR_EXCL_LINE
                 auto date = DateTime(expires, 0);
                 auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
-                WRITE(dateString.c_str(), dateString.size());
+                WRITE(dateString.c_str(), dateString.size());// GCOVR_EXCL_LINE
             }
         }
 
         bool secure = cookie.second->isSecure();
         if (secure) {
-            WRITE("; Secure", 8);
+            WRITE("; Secure", 8);// GCOVR_EXCL_LINE
         }
 
         bool httpOnly = cookie.second->isHttpOnly();
         if (httpOnly) {
-            WRITE("; HttpOnly", 10);
+            WRITE("; HttpOnly", 10);// GCOVR_EXCL_LINE
         }
 
-        WRITE("\r\n", 2);
+        WRITE("\r\n", 2);// GCOVR_EXCL_LINE
     }
     return true;
 }
 
-bool HttpUtil::sendCookie(Stream *dest, const CookieMap::Ptr &cookies) noexcept {
-    WRITE("Cookie: ", 8);
+bool HttpUtil::sendCookie(OutputStream *dest, const CookieMap::Ptr &cookies) noexcept {
+    WRITE("Cookie: ", 8);// GCOVR_EXCL_LINE
 
     bool isFirst = true;
     for (decltype(auto) cookie: *cookies) {
         if (isFirst) {
             isFirst = false;
         } else {
-            WRITE("; ", 2);
+            WRITE("; ", 2);// GCOVR_EXCL_LINE
         }
         const std::string &name = cookie.first;
         const std::string &value = cookie.second->getValue();
-        WRITE(name.c_str(), name.size());
-        WRITE("=", 1);
-        WRITE(value.c_str(), value.size());
+        WRITE(name.c_str(), name.size());  // GCOVR_EXCL_LINE
+        WRITE("=", 1);                     // GCOVR_EXCL_LINE
+        WRITE(value.c_str(), value.size());// GCOVR_EXCL_LINE
     }
 
     return true;

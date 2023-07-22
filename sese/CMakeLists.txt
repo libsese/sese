@@ -108,8 +108,8 @@ set(
         src/util/OutputBufferWrapper.cpp src/util/InputBufferWrapper.cpp
         src/util/AbstractFixedBuffer.cpp src/util/FixedBuffer.cpp
         src/util/ByteBuffer.cpp
-        )
-        
+)
+
 set(
         SECURITY_SRC
         src/security/SecurityConfig.cpp src/security/SSLContext.cpp
@@ -140,7 +140,7 @@ target_sources(Core PRIVATE
         ${SECURITY_SRC}
         ${PLUGIN_SRC}
         ${SERVICE_SRC}
-        )
+)
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
 target_sources(Core PRIVATE
@@ -154,7 +154,7 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/system/SharedMemory.cpp
         ${NATIVE_PATH}/system/FileNotifier.cpp
         ${NATIVE_PATH}/system/Process.cpp
-        )
+)
 
 # target_sources(Core-static PRIVATE $<TARGET_OBJECTS:Core>)
 
@@ -165,9 +165,11 @@ if (WIN32)
     target_sources(Core PRIVATE ${DLL_INFO_RC})
     target_compile_definitions(Core PUBLIC -DWINDOWS_DLL)
     target_compile_definitions(Core PUBLIC -DNEED_DBGHELP)
-    target_compile_options(Core PRIVATE "/utf-8")
-    target_compile_options(Core PRIVATE "/wd4251")
-    target_compile_options(Core PRIVATE "/wd4530")
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+        target_compile_options(Core PRIVATE "/utf-8")
+        target_compile_options(Core PRIVATE "/wd4251")
+        target_compile_options(Core PRIVATE "/wd4530")
+    endif ()
     target_link_libraries(Core PRIVATE ws2_32 iphlpapi)
 
     # target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
@@ -234,13 +236,13 @@ target_link_libraries(Core PRIVATE
         OpenSSL::Crypto
         OpenSSL::SSL
         ZLIB::ZLIB
-        )
+)
 target_link_libraries(Core PUBLIC
         SString::SString-static
         SimpleUuid::uuid-static
         Sese::Plugin
         Sese::Event
-        )
+)
 
 # target_link_libraries(Core-static PRIVATE
 #         OpenSSL::Crypto

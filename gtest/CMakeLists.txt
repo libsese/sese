@@ -4,9 +4,11 @@ find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 
-if (WIN32)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     add_compile_options(/utf-8)
-elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+endif ()
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb")
     set(CMAKE_EXE_LINKER_FLAGS "-Wl,-copy-dt-needed-entries")
 endif ()

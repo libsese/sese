@@ -19,9 +19,9 @@
 #endif
 
 /// C++ 版本标识符
-#define SESE__CXX_STANDARD _MSVC_LANG
+#define SESE_CXX_STANDARD _MSVC_LANG
 
-#ifdef WINDOWS_DLL
+#if defined(WINDOWS_DLL) && !defined(__clang__)
 /// 可导出类型标识符
 #define API __declspec(dllexport)
 #else
@@ -38,7 +38,11 @@
 /// 忽略大小写比较
 #define strcasecmp strcmpi
 
+#ifdef __clang__
+#define SESE_FILENAME (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+#else
 #define SESE_FILENAME (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
+#endif
 
 /// 进程 ID 标识符
 using pid_t = DWORD;

@@ -15,7 +15,7 @@
 #endif
 
 /// C++ 版本标识符
-#define SESE__CXX_STANDARD __cplusplus
+#define SESE_CXX_STANDARD __cplusplus
 /// 可导出类型标识符
 #define API
 /// pid_t 格式化占位符
