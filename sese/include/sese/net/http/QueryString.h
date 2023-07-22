@@ -21,6 +21,7 @@ namespace sese::net::http {
     public:
         using Ptr = std::unique_ptr<QueryString>;
 
+        explicit QueryString() noexcept = default;
         explicit QueryString(const std::string &query) noexcept;
         std::string toString() noexcept;
 

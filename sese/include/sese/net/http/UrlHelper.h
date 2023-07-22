@@ -4,26 +4,42 @@
  * @author kaoru
  * @brief Url 解析器
  */
+
 #pragma once
+
 #include <sese/Config.h>
 
 namespace sese::net::http {
 
-    /// Url 信息
-    struct UrlInfo {
-        /// 协议
-        std::string_view protocol;
-        /// 域名
-        std::string_view host;
-        /// 资源
-        std::string_view uri;
-        /// 查询
-        std::string_view query;
-    };
-
     /// Url 解析器
-    class API UrlHelper final {
+    class API Url final {
     public:
-        static void parse(const std::string &url, UrlInfo &info) noexcept;
+        explicit Url(const std::string &url) noexcept;
+
+        [[nodiscard]] const std::string &getProtocol() const {
+            return protocol;
+        }
+
+        [[nodiscard]] const std::string &getHost() const {
+            return host;
+        }
+
+        [[nodiscard]] const std::string &getUrl() const {
+            return url;
+        }
+
+        [[nodiscard]] const std::string &getQuery() const {
+            return query;
+        }
+
+    private:
+        /// 协议
+        std::string protocol;
+        /// 域名
+        std::string host;
+        /// 资源
+        std::string url;
+        /// 查询
+        std::string query;
     };
-}
+}// namespace sese::net::http

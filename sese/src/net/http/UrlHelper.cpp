@@ -1,30 +1,33 @@
 #include <sese/net/http/UrlHelper.h>
 
-using sese::net::http::UrlHelper;
-using sese::net::http::UrlInfo;
+using sese::net::http::Url;
 
-void UrlHelper::parse(const std::string &url, UrlInfo &info) noexcept {
+Url::Url(const std::string &url) noexcept {
     // 协议
     auto protocolEnd = url.find("://", 0);
     if (protocolEnd != std::string::npos) {
-        info.protocol = std::string_view(url.data(), protocolEnd);
+        protocol = std::string_view(url.data(), protocolEnd);
         protocolEnd += 3;
+    } else {
+        protocolEnd = 0;
     }
 
     // 域名
     auto hostEnd = url.find('/', protocolEnd);
     if (hostEnd != std::string::npos) {
-        info.host = std::string_view(url.data() + protocolEnd, hostEnd - protocolEnd);
+        host = std::string_view(url.data() + protocolEnd, hostEnd - protocolEnd);
+    } else {
+        hostEnd = protocolEnd;
     }
 
     // 资源 & 查询字符串
     auto uriEnd = url.find('?', hostEnd);
     if (uriEnd == std::string::npos) {
         // 无查询字符串
-        info.uri = std::string_view(url.data() + hostEnd);
+        this->url = std::string_view(url.data() + hostEnd);
     } else {
         // 有查询字符串
-        info.uri = std::string_view(url.data() + hostEnd, uriEnd - hostEnd);
-        info.query = std::string_view(url.data() + uriEnd);
+        this->url = std::string_view(url.data() + hostEnd, uriEnd - hostEnd);
+        query = std::string_view(url.data() + uriEnd);
     }
 }
