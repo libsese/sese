@@ -46,6 +46,9 @@ sese::net::IPAddress::Ptr createAddress() {
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
 
+// 此测试应当只针对 Linux
+#ifdef SESE_PLATFORM_LINUX
+
 TEST(TestReusableSocket, LoadBalancing) {
     auto addr = createAddress();
     sese::net::ReusableSocket reusableSocket(addr);
@@ -97,6 +100,8 @@ TEST(TestReusableSocket, LoadBalancing) {
 
     SESE_INFO("Socket1: %d\nSocket2: %d\n", event1.getNum(), event2.getNum());
 }
+
+#endif
 
 TEST(TestReusableSocket, Error) {
     auto addr = sese::net::IPv4Address::create("0.0.0.1", 0);
