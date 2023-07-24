@@ -25,6 +25,7 @@ namespace sese::net::http {
         /// \retval nullptr 不存在指定名称的 Cookie
         Cookie::Ptr find(const std::string &name) noexcept;
 
+        [[nodiscard]] size_t size() const { return map.size(); }
         [[nodiscard]] bool empty() const { return map.empty(); }
 
         inline Map::iterator begin() noexcept { return map.begin(); }

@@ -2,7 +2,7 @@
 #include <sese/text/DateTimeFormatter.h>
 
 #ifndef _WIN32
-#define _atoi64(val) strtoll(val, nullptr, 10) // NOLINT
+#define _atoi64(val) strtoll(val, nullptr, 10)// NOLINT
 #else
 #pragma warning(disable : 4996)
 #endif
@@ -82,28 +82,28 @@ bool HttpUtil::sendRequest(OutputStream *dest, RequestHeader *request) noexcept 
     // GCOVR_EXCL_START
     switch (request->getType()) {
         case RequestType::Options:
-            if (-1 == dest->write("OPTIONS ", 8)) return false;
+            if (8 != dest->write("OPTIONS ", 8)) return false;
             break;
         case RequestType::Get:
-            if (-1 == dest->write("GET ", 4)) return false;
+            if (4 != dest->write("GET ", 4)) return false;
             break;
         case RequestType::Post:
-            if (-1 == dest->write("POST ", 5)) return false;
+            if (5 != dest->write("POST ", 5)) return false;
             break;
         case RequestType::Head:
-            if (-1 == dest->write("HEAD ", 5)) return false;
+            if (5 != dest->write("HEAD ", 5)) return false;
             break;
         case RequestType::Put:
-            if (-1 == dest->write("PUT ", 4)) return false;
+            if (4 != dest->write("PUT ", 4)) return false;
             break;
         case RequestType::Delete:
-            if (-1 == dest->write("DELETE ", 7)) return false;
+            if (7 != dest->write("DELETE ", 7)) return false;
             break;
         case RequestType::Trace:
-            if (-1 == dest->write("TRACE ", 6)) return false;
+            if (6 != dest->write("TRACE ", 6)) return false;
             break;
         case RequestType::Connect:
-            if (-1 == dest->write("CONNECT ", 8)) return false;
+            if (8 != dest->write("CONNECT ", 8)) return false;
             break;
         case RequestType::Another:
             break;
@@ -211,7 +211,7 @@ bool HttpUtil::recvHeader(InputStream *source, StringBuilder &builder, Header *h
 }
 
 #define WRITE(buffer, size) \
-    if (-1 == dest->write(buffer, size)) return false
+    if (size != dest->write(buffer, size)) return false
 
 bool HttpUtil::sendHeader(OutputStream *dest, Header *header, bool isResp) noexcept {
     size_t len;
@@ -234,7 +234,7 @@ bool HttpUtil::sendHeader(OutputStream *dest, Header *header, bool isResp) noexc
     }
 
 
-    if (-1 == dest->write("\r\n", 2)) return false;
+    if (-1 == dest->write("\r\n", 2)) return false;// GCOVR_EXCL_LINE
     return true;
 }
 
@@ -249,13 +249,13 @@ bool HttpUtil::sendSetCookie(OutputStream *dest, const CookieMap::Ptr &cookies) 
 
         const std::string &path = cookie.second->getPath();
         if (!path.empty()) {
-            WRITE("; ", 2);                  // GCOVR_EXCL_LINE
+            WRITE("; Path=", 7);             // GCOVR_EXCL_LINE
             WRITE(path.c_str(), path.size());// GCOVR_EXCL_LINE
         }
 
         const std::string &domain = cookie.second->getDomain();
         if (!domain.empty()) {
-            WRITE("; ", 2);                      // GCOVR_EXCL_LINE
+            WRITE("; Domain=", 9);               // GCOVR_EXCL_LINE
             WRITE(domain.c_str(), domain.size());// GCOVR_EXCL_LINE
         }
 
@@ -268,7 +268,7 @@ bool HttpUtil::sendSetCookie(OutputStream *dest, const CookieMap::Ptr &cookies) 
             uint64_t expires = cookie.second->getExpires();
             if (expires > 0) {
                 WRITE("; Expires=", 10);// GCOVR_EXCL_LINE
-                auto date = DateTime(expires, 0);
+                auto date = DateTime(expires * 1000000, 0);
                 auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
                 WRITE(dateString.c_str(), dateString.size());// GCOVR_EXCL_LINE
             }
@@ -305,6 +305,8 @@ bool HttpUtil::sendCookie(OutputStream *dest, const CookieMap::Ptr &cookies) noe
         WRITE("=", 1);                     // GCOVR_EXCL_LINE
         WRITE(value.c_str(), value.size());// GCOVR_EXCL_LINE
     }
+
+    WRITE("\r\n", 2);// GCOVR_EXCL_LINE;
 
     return true;
 }
