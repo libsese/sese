@@ -1,13 +1,17 @@
 /// \file HttpClient.h
 /// \author kaoru
-/// \date 2022/07/29
-/// \version 0.1
+/// \date 2023/07/24
+/// \version 0.2
 /// \brief Http 客户端
+
 #pragma once
+
 #include <sese/net/Socket.h>
+#include <sese/security/SSLContext.h>
+#include <sese/security/SecuritySocket.h>
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
-#include "sese/util/Noncopyable.h"
+#include <sese/util/Noncopyable.h>
 
 namespace sese::net::http {
 
@@ -16,27 +20,17 @@ namespace sese::net::http {
     public:
         using Ptr = std::unique_ptr<HttpClient>;
 
-        /// \brief 发起 Http 请求连接
-        /// \param domain 连接域名
-        /// \param port 连接端口
-        /// \retval 连接成功返回客户端对象
-        /// \retval nullptr 创建失败
-        static HttpClient::Ptr create(const std::string &domain, uint16_t port = 80) noexcept;
-
     public:
-        /// \brief 释放 Http 连接
+        /// \brief 解析 URL 并创建 Http 客户端
+        /// \param url URL 链接
+        /// \param keepAlive 是否启用长连接（需要服务器支持）
+        /// \retval nullptr 创建客户端失败
+        /// \example https://www.example.com/index.html?val=123
+        /// \example http://localhost:8080/
+        /// \example http://127.0.0.1:8080/index.html
+        static HttpClient::Ptr create(const std::string &url, bool keepAlive = false) noexcept;
+
         ~HttpClient() noexcept;
-
-        /// \brief 发送一次请求
-        /// \param request 请求头
-        /// \retval true 发送成功
-        /// \retval false 发送失败
-        bool request(RequestHeader *request) noexcept;
-
-        /// \brief 获取一次响应
-        /// \retval 获取成功返回响应头
-        /// \retval nullptr 获取失败
-        ResponseHeader::Ptr response() noexcept;
 
         /// \brief 从 Http 流中读取字节
         /// \param buffer 缓存
@@ -50,29 +44,36 @@ namespace sese::net::http {
         /// \return 实际写入的字节
         int64_t write(const void *buffer, size_t len) noexcept;
 
-        /// \brief 检查当前连接的可用性（在复用连接前用其判断连接是否存在）
-        /// \return 是否可用
-        bool check() noexcept;
+        bool doRequest() noexcept;
 
-        /// \brief 释放资源
-        void dispose() noexcept;
+        bool doResponse() noexcept;
 
-        /// \brief 分离 socket
-        /// \return socket
-        socket_t detach() noexcept;
+        RequestHeader &getRequest() { return req; }
+
+        ResponseHeader &getResponse() { return resp; }
 
         /// \brief 获取响应正文长度
         /// \return 响应正文长度
         [[nodiscard]] int64_t getResponseContentLength() const noexcept { return responseContentLength; }
 
     private:
-        /// \brief 私有构造函数
         HttpClient() = default;
-        Socket::Ptr clientSocket;
+
+        static IPv4Address::Ptr parseAddress(const std::string &host) noexcept;
+
+        bool reconnect() noexcept;
+
+        Socket::Ptr socket;
+        IPv4Address::Ptr address;
+        // 如果是 https 协议需要 SSL 上下文
+        security::SSLContext::Ptr sslContext;
+
+        RequestHeader req;
+        ResponseHeader resp;
+
         // 该字段在获取响应后可用
         int64_t responseContentLength = 0;
         // 默认启用长连接
         bool isKeepAlive = true;
-        bool isDetach = false;
     };
-}// namespace sese::http
+}// namespace sese::net::http
