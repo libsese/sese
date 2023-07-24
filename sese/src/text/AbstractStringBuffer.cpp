@@ -120,7 +120,7 @@ namespace sese::text {
     std::vector<std::string> AbstractStringBuffer::split(const std::string &str) const noexcept {
         std::vector<std::string> v;
         //        auto s = std::string(this->buffer);
-        auto s = std::string_view(this->buffer);
+        auto s = std::string_view(this->buffer, this->len);
         std::string::size_type pos1, pos2;
         pos2 = s.find(str);
         pos1 = 0;
@@ -133,7 +133,7 @@ namespace sese::text {
         }
         if (pos1 != s.length()) {
             //            v.push_back(s.substr(pos1));
-            v.emplace_back(s.data() + pos1);
+            v.emplace_back(s.data() + pos1, this->len - pos1);
         }
         return v;
     }
