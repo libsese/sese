@@ -55,8 +55,10 @@ namespace sese::net::http {
         /// \brief 获取响应正文长度
         /// \return 响应正文长度
         [[nodiscard]] int64_t getResponseContentLength() const noexcept { return responseContentLength; }
-
     private:
+#ifdef SESE_BUILD_TEST
+    public:
+#endif
         HttpClient() = default;
 
         static IPv4Address::Ptr parseAddress(const std::string &host) noexcept;

@@ -32,8 +32,11 @@ HttpClient::Ptr HttpClient::create(const std::string &url, bool keepAlive) noexc
         auto result = StringBuilder::split(info.getHost(), ":");
         if (result.size() == 2) {
             char *endPtr;
-            addr = parseAddress(result[0]);
             port = (uint16_t) std::strtol(result[1].c_str(), &endPtr, 10);
+            if (*endPtr != 0) {
+                return nullptr;
+            }
+            addr = parseAddress(result[0]);
         } else {
             return nullptr;
         }
@@ -57,6 +60,11 @@ HttpClient::Ptr HttpClient::create(const std::string &url, bool keepAlive) noexc
 }
 
 bool HttpClient::doRequest() noexcept {
+    if (!isKeepAlive && !reconnect()) {
+        // 非长连接并且无法重新建立连接
+        return false;
+    }
+
     if (!socket && !reconnect()) {
         // socket 未建立连接并且也无法连接
         return false;
@@ -71,15 +79,11 @@ bool HttpClient::doRequest() noexcept {
 
 bool HttpClient::doResponse() noexcept {
     if (socket) {
+        resp.clear();
+        char *endPtr;
         auto rt = sese::net::http::HttpUtil::recvResponse(socket.get(), &resp);
-        if (rt && isKeepAlive && sese::StrCmpI()(resp.get("Connection", "Close").c_str(), "Keep-Alive") == 0) {
-            return rt;
-        } else {
-            socket->shutdown(Socket::ShutdownMode::Both);
-            socket->close();
-            socket = nullptr;
-            return rt;
-        }
+        responseContentLength = std::strtol(resp.get("Content-Length", "0").c_str(), &endPtr, 10);
+        return rt;
     }
     return false;
 }
@@ -97,6 +101,9 @@ IPv4Address::Ptr HttpClient::parseAddress(const std::string &host) noexcept {
         for (decltype(auto) item: result) {
             char *endPtr;
             auto bit = std::strtol(item.c_str(), &endPtr, 10);
+            if (*endPtr != 0) {
+                goto lookup;
+            }
             if (bit < 0 || bit > 255) {
                 goto lookup;
             }
