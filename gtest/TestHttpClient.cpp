@@ -105,6 +105,10 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
     for (decltype(auto) item: resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
+
+    for (decltype(auto) cookie: *resp.getCookies()) {
+        SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
+    }
 }
 
 TEST(TestHttpClient, NO_SSL_NO_KEEPALIVE) {
@@ -138,6 +142,9 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
     for (decltype(auto) item: resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
+    for (decltype(auto) cookie: *resp.getCookies()) {
+        SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
+    }
 
     auto len = client->getResponseContentLength();
     char buffer[1024];
@@ -162,5 +169,8 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
     SESE_INFO("2rd status code %d", resp.getCode());
     for (decltype(auto) item: resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
+    }
+    for (decltype(auto) cookie: *resp.getCookies()) {
+        SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
     }
 }

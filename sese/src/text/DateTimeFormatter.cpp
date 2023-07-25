@@ -276,7 +276,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &te
         date = StringBuilder::split(date[1], "-");
         tm.tm_mday = std::stoi(date[0]);
         tm.tm_mon = mon2number(date[1].c_str());
-        tm.tm_year = std::stoi(date[2]);
+        tm.tm_year = std::stoi(date[2]) + 100;
     } else {
         auto date = StringBuilder::split(text, " ");
 

@@ -1,8 +1,8 @@
-#ifdef _WIN32
-#pragma warning(disable: 4996)
-#elif __clang__
+#ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif _WIN32
+#pragma warning(disable: 4996)
 #elif __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
