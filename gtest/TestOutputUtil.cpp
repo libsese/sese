@@ -49,6 +49,8 @@ TEST(TestOutputUtil, Bitset) {
     ASSERT_EQ(std::string_view(buffer), std::string_view("11111111"));
 }
 
+#if SESE_CXX_STANDARD > 201709L
+
 TEST(TestOutputUtil, Span) {
     char buffer[16]{};
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer) - 1);
@@ -57,3 +59,5 @@ TEST(TestOutputUtil, Span) {
     std::span<const char> span(str);
     ASSERT_EQ(output << span, sizeof(str));
 }
+
+#endif

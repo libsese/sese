@@ -85,16 +85,18 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
     }
 
     auto len = client->getResponseContentLength();
-    char buffer[1024];
-    while (true) {
-        auto read = client->read(buffer, 1024);
-        if (read > 0) {
-            len -= read;
-            if (len == 0) {
-                break;
+    if (len != 0) {
+        char buffer[1024];
+        while (true) {
+            auto read = client->read(buffer, 1024);
+            if (read > 0) {
+                len -= read;
+                if (len == 0) {
+                    break;
+                }
+            } else {
+                FAIL();
             }
-        } else {
-            FAIL();
         }
     }
 
@@ -147,16 +149,18 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
     }
 
     auto len = client->getResponseContentLength();
-    char buffer[1024];
-    while (true) {
-        auto read = client->read(buffer, 1024);
-        if (read > 0) {
-            len -= read;
-            if (len == 0) {
-                break;
+    if (len != 0) {
+        char buffer[1024];
+        while (true) {
+            auto read = client->read(buffer, 1024);
+            if (read > 0) {
+                len -= read;
+                if (len == 0) {
+                    break;
+                }
+            } else {
+                FAIL();
             }
-        } else {
-            FAIL();
         }
     }
 
