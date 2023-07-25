@@ -1,3 +1,9 @@
+/// \file MessageDigest.h
+/// \brief 基于 OPENSSL::CRYPTO 的信息摘要接口
+/// \author kaoru
+/// \version 0.1
+/// \date 2023年7月25日
+
 #pragma once
 
 #include "sese/util/NotInstantiable.h"

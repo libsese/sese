@@ -1,10 +1,18 @@
+/// \file SecuritySocket.h
+/// \brief 安全套接字类
+/// \author kaoru
+/// \version 0.2
+/// \date 2023年7月25日
+
 #pragma once
+
 #include <sese/net/Socket.h>
 
 namespace sese::security {
 
     class API SSLContext;
 
+    /// 安全套接字
     class API SecuritySocket final : public sese::net::Socket {
     public:
         using Socket = sese::net::Socket;

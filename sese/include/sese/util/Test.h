@@ -3,6 +3,7 @@
  * @author kaoru
  * @date 2022年3月28日
  * @brief 调试杂项函数
+ * @deprecated 此文件已基本弃用
  */
 #pragma once
 
