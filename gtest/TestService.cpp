@@ -123,7 +123,7 @@ public:
     }
 };
 
-TEST(TestService, TimerableServer) {
+TEST(TestService, TimerableService) {
     auto addr = createAddress();
 
     sese::service::UserBalanceLoader service;
