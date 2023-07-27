@@ -4,6 +4,17 @@
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Util.h>
 
+/// 判断一个 token 是否为 json 关键字
+/// \param str token
+/// \return 结果
+inline bool isKeyword(const char *str) {
+    if (str[0] == '}' || str[0] == ']' || str[0] == ':' || str[0] == ',') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 using namespace sese::json;
 
 ObjectData::Ptr JsonUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
@@ -77,7 +88,13 @@ bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
                 if (sese::isSpace(ch)) break;
                 builder.append(ch);
                 while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
-                    if (sese::isSpace(ch)) {
+                    //fix: 此处多加关键字判断
+                    if (isKeyword(&ch)) {
+                        tokens.push(builder.toString());
+                        builder.clear();
+                        tokens.push({ch});
+                        break;
+                    } else if (sese::isSpace(ch)) {
                         tokens.push(builder.toString());
                         builder.clear();
                         break;
@@ -93,17 +110,6 @@ bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
         }
     }
     return true;
-}
-
-/// 判断一个 token 是否为 json 关键字
-/// \param str token
-/// \return 结果
-inline bool isKeyword(const std::string &str) {
-    if (str == "}" || str == "]" || str == ":" || str == ",") {
-        return true;
-    } else {
-        return false;
-    }
 }
 
 ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
@@ -157,7 +163,7 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
             level++;
         } else {
             // 本应存在值的地方实际上是关键字
-            if (isKeyword(value)) return nullptr;
+            if (isKeyword(value.c_str())) return nullptr;
             // 值是一个 BasicData
             BasicData::Ptr data;
             if (value == "null") {
@@ -218,7 +224,7 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
             level++;
         } else {
             // 本应存在值的地方实际上是关键字
-            if (isKeyword(token)) return nullptr;
+            if (isKeyword(token.c_str())) return nullptr;
             // 值是一个 BasicData
             BasicData::Ptr data;
             if (token == "null") {
