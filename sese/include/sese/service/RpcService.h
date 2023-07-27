@@ -1,9 +1,9 @@
 #pragma one
 
+#include <sese/security/SecuritySocket.h>
 #include <sese/Config.h>
 #include <sese/config/json/JsonTypes.h>
 #include <sese/security/SSLContext.h>
-#include <sese/security/SecuritySocket.h>
 #include <sese/service/TimerableService.h>
 #include <sese/util/ByteBuilder.h>
 
@@ -12,11 +12,13 @@
 
 namespace sese::service {
 
-    class API RpcService final : public TimerableService {
+    class API RpcService final : public sese::event::EventLoop {
     public:
         using Func = std::function<void(json::ObjectData::Ptr &, json::ObjectData::Ptr &)>;
 
-        explicit RpcService(security::SSLContext::Ptr context, uint64_t timeout) noexcept;
+        explicit RpcService(const security::SSLContext::Ptr &context) noexcept;
+
+        ~RpcService() noexcept;
 
         void setFunction(const std::string &name, const Func &func) noexcept;
 
@@ -28,8 +30,6 @@ namespace sese::service {
 
         void onClose(event::BaseEvent *event) override;
 
-        void onTimeout(TimeoutEvent *timeoutEvent) override;
-
     private:
         static int64_t read(int fd, void *buffer, size_t len, void *ssl) noexcept;
 
@@ -38,7 +38,6 @@ namespace sese::service {
         bool onHandle(ByteBuilder *builder);
 
         security::SSLContext::Ptr context;
-        uint64_t timeout;
 
         std::map<int, ByteBuilder *> buffers;
         std::map<std::string, Func> funcs;
