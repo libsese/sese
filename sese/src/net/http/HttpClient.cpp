@@ -116,6 +116,10 @@ lookup:
 }
 
 bool HttpClient::reconnect() noexcept {
+    if (socket) {
+        socket->close();
+    }
+
     if (this->sslContext) {
         this->socket = this->sslContext->newSocketPtr(Socket::Family::IPv4, IPPROTO_IP);
     } else {
