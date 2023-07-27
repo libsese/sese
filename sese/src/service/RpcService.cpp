@@ -57,6 +57,7 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
                 buffers.erase(event->fd);
                 delete buffer;
                 sese::net::Socket::close(event->fd);
+                SSL_free((SSL *) event->data);
                 this->freeEvent(event);
                 break;
             } else if (errno == EWOULDBLOCK || errno == EAGAIN) {
@@ -72,6 +73,7 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
                     buffers.erase(event->fd);
                     delete buffer;
                     sese::net::Socket::close(event->fd);
+                    SSL_free((SSL *) event->data);
                     this->freeEvent(event);
                     break;
                 }
@@ -103,6 +105,7 @@ void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
                 buffers.erase(event->fd);
                 delete buffer;
                 sese::net::Socket::close(event->fd);
+                SSL_free((SSL *) event->data);
                 this->freeEvent(event);
                 break;
             } else if (errno == EWOULDBLOCK || errno == EAGAIN) {
@@ -127,6 +130,12 @@ void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
 }
 
 void sese::service::RpcService::onClose(sese::event::BaseEvent *event) {
+    auto buffer = buffers[event->fd];
+    buffers.erase(event->fd);
+    delete buffer;
+    sese::net::Socket::close(event->fd);
+    SSL_free((SSL *) event->data);
+    this->freeEvent(event);
 }
 
 void sese::service::RpcService::onTimeout(sese::service::TimeoutEvent *timeoutEvent) {
