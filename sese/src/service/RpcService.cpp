@@ -4,17 +4,22 @@
 
 #include <openssl/ssl.h>
 
-sese::service::RpcService::RpcService(security::SSLContext::Ptr context, uint64_t timeout) noexcept {
+sese::service::RpcService::RpcService(const security::SSLContext::Ptr &context) noexcept {
     this->context = context;
-    this->timeout = timeout;
 }
 
 void sese::service::RpcService::setFunction(const std::string &name, const sese::service::RpcService::Func &func) noexcept {
     this->funcs[name] = func;
 }
 
+sese::service::RpcService::~RpcService() noexcept {
+    for (decltype(auto) item : buffers) {
+        delete item.second;
+    }
+}
+
 void sese::service::RpcService::onAccept(int fd) {
-    SSL *clientSSL;
+    SSL *clientSSL = nullptr;
 
     if (sese::net::Socket::setNonblocking(fd)) {
         sese::net::Socket::close(fd);
@@ -47,6 +52,9 @@ void sese::service::RpcService::onAccept(int fd) {
 }
 
 void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
+    // todo: 将 sese-event 更新至 0.1.4 可删除该判断
+    if (event->fd == listenFd) return;
+
     auto buffer = this->buffers[event->fd];
     char buf[1024];
     while (true) {
@@ -54,13 +62,15 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
         if (l <= 0) {
             if (errno == ENOTCONN) {
                 // 断开连接
+                if (context) {
+                    SSL_free((SSL *) event->data);
+                }
                 buffers.erase(event->fd);
                 delete buffer;
                 sese::net::Socket::close(event->fd);
-                SSL_free((SSL *) event->data);
                 this->freeEvent(event);
                 break;
-            } else if (errno == EWOULDBLOCK || errno == EAGAIN) {
+            } else {
                 // 无数据可读，触发子函数处理
                 if (onHandle(buffer)) {
                     // 准备进入写模式，返回响应
@@ -71,15 +81,14 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
                 } else {
                     // 处理错误，断开连接
                     buffers.erase(event->fd);
+                    if (context) {
+                        SSL_free((SSL *) event->data);
+                    }
                     delete buffer;
                     sese::net::Socket::close(event->fd);
-                    SSL_free((SSL *) event->data);
                     this->freeEvent(event);
                     break;
                 }
-            } else if (errno == EINTR) {
-                // 重试
-                continue;
             }
         } else {
             buffer->write(buf, l);
@@ -88,6 +97,9 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
 }
 
 void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
+    // todo: 将 sese-event 更新至 0.1.4 可删除该判断
+    if (event->fd == listenFd) return;
+
     bool finsh = false;
     auto buffer = buffers[event->fd];
     char buf[1024];
@@ -102,10 +114,12 @@ void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
         if (l <= 0) {
             if (errno == ENOTCONN) {
                 // 断开连接
+                if (context) {
+                    SSL_free((SSL *) event->data);
+                }
                 buffers.erase(event->fd);
                 delete buffer;
                 sese::net::Socket::close(event->fd);
-                SSL_free((SSL *) event->data);
                 this->freeEvent(event);
                 break;
             } else if (errno == EWOULDBLOCK || errno == EAGAIN) {
@@ -122,24 +136,23 @@ void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
     }
 
     if (finsh) {
-        // 准备进入读模式，读取下一次请求
-        event->events |= EVENT_READ;  // 添加读事件
-        event->events &= ~EVENT_WRITE;// 删除写事件
-        this->setEvent(event);
+        if (context) {
+            SSL_free((SSL *) event->data);
+        }
+        sese::net::Socket::close(event->fd);
+        this->freeEvent(event);
     }
 }
 
 void sese::service::RpcService::onClose(sese::event::BaseEvent *event) {
+    if (context) {
+        SSL_free((SSL *) event->data);
+    }
     auto buffer = buffers[event->fd];
     buffers.erase(event->fd);
     delete buffer;
     sese::net::Socket::close(event->fd);
-    SSL_free((SSL *) event->data);
     this->freeEvent(event);
-}
-
-void sese::service::RpcService::onTimeout(sese::service::TimeoutEvent *timeoutEvent) {
-    TimerableService::onTimeout(timeoutEvent);
 }
 
 #define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
@@ -183,13 +196,13 @@ bool sese::service::RpcService::onHandle(sese::ByteBuilder *builder) {
 
     // 2.获取并检查远程调用名称
     std::string name;
-    auto nameData = object->getDataAs<json::BasicData>(SESE_RPC_TAG_VERSION);
+    auto nameData = object->getDataAs<json::BasicData>(SESE_RPC_TAG_NAME);
     if (nullptr == nameData) {
         BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
         json::JsonUtil::serialize(result.get(), builder);
         return true;
     } else {
-        name = verData->getDataAs<std::string>(SESE_RPC_VALUE_UNDEF);
+        name = nameData->getDataAs<std::string>(SESE_RPC_VALUE_UNDEF);
     }
 
     if (SESE_RPC_VALUE_UNDEF == name) {

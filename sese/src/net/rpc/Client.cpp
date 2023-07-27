@@ -9,13 +9,11 @@ using namespace sese::json;
 using namespace sese::security;
 using namespace sese::net::rpc;
 
-Client::Client(const IPv4Address::Ptr &address, const std::string &version, bool ssl, bool keepalive) noexcept {
+Client::Client(const IPv4Address::Ptr &address, bool ssl, const std::string &version) noexcept {
     if (ssl) {
         this->sslContext = SSLContextBuilder::SSL4Client();
     }
-
     this->address = address;
-    this->isKeepAlive = keepalive;
     this->version = std::make_shared<json::BasicData>();
     this->version->setDataAs<std::string>(version);
 }
@@ -41,11 +39,6 @@ json::ObjectData::Ptr Client::makeTemplateRequest(const std::string &name) {
 }
 
 json::ObjectData::Ptr Client::call(const std::string &name, json::ObjectData::Ptr &args) noexcept {
-    if (!isKeepAlive && !reconnect()) {
-        // 非长连接并且无法重新建立连接
-        return nullptr;
-    }
-
     if (!socket && !reconnect()) {
         // socket 未建立连接并且也无法连接
         return nullptr;
@@ -53,8 +46,15 @@ json::ObjectData::Ptr Client::call(const std::string &name, json::ObjectData::Pt
 
     auto object = makeTemplateRequest(name);
     object->set(SESE_RPC_TAG_ARGS, args);
-    json::JsonUtil::serialize(object.get(), socket.get());
+
+    json::JsonUtil::serialize(object.get(), &buffer);
+    socket->write(buffer.data(), buffer.getReadableSize());
+
+    buffer.reset();
+
     auto result = json::JsonUtil::deserialize(socket.get(), 5);
+    socket->close();
+    socket = nullptr;
     return result;
 }
 

@@ -12,6 +12,7 @@
 #include <sese/security/SecuritySocket.h>
 #include <sese/security/SSLContext.h>
 #include <sese/util/Noncopyable.h>
+#include <sese/util/FixedBuilder.h>
 
 namespace sese::net::rpc {
 
@@ -20,7 +21,7 @@ namespace sese::net::rpc {
     public:
         using Ptr = std::unique_ptr<Client>;
 
-        explicit Client(const IPv4Address::Ptr &address, const std::string &version = SESE_RPC_VERSION_0_1, bool ssl = false, bool keepalive = false) noexcept;
+        explicit Client(const IPv4Address::Ptr &address, bool ssl = false, const std::string &version = SESE_RPC_VERSION_0_1) noexcept;
 
         ~Client() noexcept;
 
@@ -37,6 +38,7 @@ namespace sese::net::rpc {
         // 如果启用 ssl 则需要 SSL 上下文
         security::SSLContext::Ptr sslContext;
 
+        FixedBuilder buffer{8192};
         json::BasicData::Ptr version;
         // 默认启用长连接
         bool isKeepAlive = true;
@@ -46,4 +48,4 @@ namespace sese::net::rpc {
     /// \param code 返回码
     /// \return 错误信息
     API const char *getErrorMessage(int64_t code) noexcept;
-}
+}// namespace sese::net::rpc
