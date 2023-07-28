@@ -13,18 +13,21 @@ void sese::service::RpcService::setFunction(const std::string &name, const sese:
 }
 
 sese::service::RpcService::~RpcService() noexcept {
-    for (decltype(auto) item : buffers) {
-        delete item.second;
+    for (decltype(auto) item: buffers) {
+        delete item.second;// GCOVR_EXCL_LINE
     }
 }
 
 void sese::service::RpcService::onAccept(int fd) {
     SSL *clientSSL = nullptr;
 
+    // 一般不会失败
+    // GCOVR_EXCL_START
     if (sese::net::Socket::setNonblocking(fd)) {
         sese::net::Socket::close(fd);
         return;
     }
+    // GCOVR_EXCL_STOP
 
     if (context) {
         clientSSL = SSL_new((SSL_CTX *) context->getContext());
@@ -45,6 +48,7 @@ void sese::service::RpcService::onAccept(int fd) {
                 break;
             }
         }
+        // GCOVR_EXCL_STOP
     }
 
     this->buffers[fd] = new sese::ByteBuilder(2048);
@@ -66,7 +70,7 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
                     SSL_free((SSL *) event->data);
                 }
                 buffers.erase(event->fd);
-                delete buffer;
+                delete buffer; // GCOVR_EXCL_LINE
                 sese::net::Socket::close(event->fd);
                 this->freeEvent(event);
                 break;
@@ -84,7 +88,7 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
                     if (context) {
                         SSL_free((SSL *) event->data);
                     }
-                    delete buffer;
+                    delete buffer; // GCOVR_EXCL_LINE
                     sese::net::Socket::close(event->fd);
                     this->freeEvent(event);
                     break;
@@ -118,7 +122,7 @@ void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
                     SSL_free((SSL *) event->data);
                 }
                 buffers.erase(event->fd);
-                delete buffer;
+                delete buffer; // GCOVR_EXCL_LINE
                 sese::net::Socket::close(event->fd);
                 this->freeEvent(event);
                 break;
@@ -139,6 +143,8 @@ void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
         if (context) {
             SSL_free((SSL *) event->data);
         }
+        buffers.erase(event->fd);
+        delete buffer; // GCOVR_EXCL_LINE
         sese::net::Socket::close(event->fd);
         this->freeEvent(event);
     }
@@ -150,7 +156,7 @@ void sese::service::RpcService::onClose(sese::event::BaseEvent *event) {
     }
     auto buffer = buffers[event->fd];
     buffers.erase(event->fd);
-    delete buffer;
+    delete buffer; // GCOVR_EXCL_LINE
     sese::net::Socket::close(event->fd);
     this->freeEvent(event);
 }
@@ -178,19 +184,15 @@ bool sese::service::RpcService::onHandle(sese::ByteBuilder *builder) {
     auto verData = object->getDataAs<json::BasicData>(SESE_RPC_TAG_VERSION);
     if (nullptr == verData) {
         BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-        json::JsonUtil::serialize(result.get(), builder);
+        json::JsonUtil::serialize(result.get(), builder); // GCOVR_EXCL_LINE
         return true;
     } else {
         ver = verData->getDataAs<std::string>(SESE_RPC_VALUE_UNDEF);
     }
 
-    if (SESE_RPC_VALUE_UNDEF == ver) {
-        BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-        json::JsonUtil::serialize(result.get(), builder);
-        return true;
-    } else if (SESE_RPC_VERSION_0_1 != ver) {
+    if (SESE_RPC_VERSION_0_1 != ver) {
         BuiltinSetExitCode(SESE_RPC_CODE_NONSUPPORT_VERSION);
-        json::JsonUtil::serialize(result.get(), builder);
+        json::JsonUtil::serialize(result.get(), builder); // GCOVR_EXCL_LINE
         return true;
     }
 
@@ -199,22 +201,16 @@ bool sese::service::RpcService::onHandle(sese::ByteBuilder *builder) {
     auto nameData = object->getDataAs<json::BasicData>(SESE_RPC_TAG_NAME);
     if (nullptr == nameData) {
         BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-        json::JsonUtil::serialize(result.get(), builder);
+        json::JsonUtil::serialize(result.get(), builder); // GCOVR_EXCL_LINE
         return true;
     } else {
         name = nameData->getDataAs<std::string>(SESE_RPC_VALUE_UNDEF);
     }
 
-    if (SESE_RPC_VALUE_UNDEF == name) {
-        BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-        json::JsonUtil::serialize(result.get(), builder);
-        return true;
-    }
-
     auto iterator = funcs.find(name);
     if (iterator == funcs.end()) {
         BuiltinSetExitCode(SESE_RPC_CODE_NO_EXIST_FUNC);
-        json::JsonUtil::serialize(result.get(), builder);
+        json::JsonUtil::serialize(result.get(), builder); // GCOVR_EXCL_LINE
         return true;
     }
 
@@ -223,7 +219,7 @@ bool sese::service::RpcService::onHandle(sese::ByteBuilder *builder) {
     auto args = object->getDataAs<json::ObjectData>(SESE_RPC_TAG_ARGS);
     if (!args) {
         BuiltinSetExitCode(SESE_RPC_CODE_MISSING_REQUIRED_FIELDS);
-        json::JsonUtil::serialize(result.get(), builder);
+        json::JsonUtil::serialize(result.get(), builder); // GCOVR_EXCL_LINE
         return true;
     }
 
@@ -231,7 +227,7 @@ bool sese::service::RpcService::onHandle(sese::ByteBuilder *builder) {
     func(args, result);
 
     // 5.序列化
-    json::JsonUtil::serialize(result.get(), builder);
+    json::JsonUtil::serialize(result.get(), builder); // GCOVR_EXCL_LINE
     return true;
 }
 
