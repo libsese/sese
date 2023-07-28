@@ -39,7 +39,7 @@ auto create(const sese::security::SSLContext::Ptr &context) {
 }
 
 TEST(TestRpc, WithSSL) {
-#ifdef unix
+#if defined(__linux__) or defined(__APPLE__)
     signal(SIGPIPE, SIG_IGN);
 #endif
 
@@ -189,7 +189,7 @@ TEST(TestRpc, WithSSL) {
 }
 
 TEST(TestRpc, NoSSL) {
-#ifdef unix
+#if defined(__linux__) or defined(__APPLE__)
     signal(SIGPIPE, SIG_IGN);
 #endif
 

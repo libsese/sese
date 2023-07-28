@@ -3,6 +3,7 @@
 /// \date 2023年6月11日
 /// \brief 异步日志器
 /// \version 0.1.0
+/// \note 此处使用 valgrind 测试必定产生内存泄漏，使用 -fsanitize=leak 选项进行测试则一切正常
 
 #pragma once
 
