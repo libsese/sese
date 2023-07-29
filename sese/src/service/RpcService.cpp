@@ -56,8 +56,8 @@ void sese::service::RpcService::onAccept(int fd) {
 }
 
 void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
-    // todo: 将 sese-event 更新至 0.1.4 可删除该判断
-    if (event->fd == listenFd) return;
+    // done: 将 sese-event 更新至 0.1.4 可删除该判断
+    // if (event->fd == listenFd) return;
 
     auto buffer = this->buffers[event->fd];
     char buf[1024];
@@ -101,8 +101,8 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
 }
 
 void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
-    // todo: 将 sese-event 更新至 0.1.4 可删除该判断
-    if (event->fd == listenFd) return;
+    // done: 将 sese-event 更新至 0.1.4 可删除该判断
+    // if (event->fd == listenFd) return;
 
     bool finsh = false;
     auto buffer = buffers[event->fd];

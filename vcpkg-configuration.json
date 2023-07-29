@@ -8,7 +8,7 @@
         {
             "kind": "git",
             "repository": "https://github.com/libsese/vcpkg-registry.git",
-            "baseline": "ca541214912c22c57c4726a1b3f1b131d537eade",
+            "baseline": "6564a1963e1a1d4e7ef5bbe9b66582178aa85963",
             "packages": [
                 "simpleuuid",
                 "sstring",
