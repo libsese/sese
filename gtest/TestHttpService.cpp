@@ -29,34 +29,36 @@ TEST(TestHttpService, _0) {
     sese::service::HttpConfig config;
     config.servName = "Server for Test";
     config.servCtx = servCtx;
+    config.keepalive = 0;
 
-    config.controller1Map["/index.html"] =
+    config.setController(
+            "/index.html",
             [](sese::net::http::RequestHeader &req,
                sese::net::http::ResponseHeader &resp) -> bool {
-        SESE_INFO("req GET: %s", req.getUrl().c_str());
-        resp.setCode(404);
-        return true;
-    };
+                SESE_INFO("req GET: %s", req.getUrl().c_str());
+                resp.setCode(404);
+                return true;
+            }
+    );
 
-    config.controller2Map["/post"] =
-            [](sese::net::http::RequestHeader &req,
-               sese::net::http::ResponseHeader &resp,
-               sese::ByteBuilder *buffer) -> bool {
-        auto contentLength = req.get("Content-Length", "0");
-        if (contentLength != "0") {
-            char *end;
-            auto len = std::strtol(contentLength.c_str(), &end, 0);
-            char b[1024]{};
-            buffer->read(b, len);
-            SESE_INFO("req POST: %s\n%s", req.getUrl().c_str(), b);
-        } else {
-            SESE_INFO("req POST: %s", req.getUrl().c_str());
-        }
+    config.setController(
+            "/post",
+            [](sese::service::HttpConnection *conn)  {
+                char *end;
+                auto len = std::strtol(conn->req.get("Content-Length", "0").c_str(), &end, 0);
+                if (len != 0) {
+                    char b[1024]{};
+                    conn->read(b, len);
+                    SESE_INFO("req POST: %s\n%s", conn->req.getUrl().c_str(), b);
+                } else {
+                    SESE_INFO("req POST: %s", conn->req.getUrl().c_str());
+                }
 
-        resp.setCode(200);
-        sese::net::http::HttpUtil::sendResponse(buffer, &resp);
-        return true;
-    };
+                conn->resp.setCode(200);
+                conn->doResponse();
+                conn->status = sese::service::HttpHandleStatus::OK;
+            }
+    );
 
     sese::service::BalanceLoader service;
     service.setThreads(2);
