@@ -18,7 +18,7 @@ namespace sese::service {
 
         explicit RpcService(const security::SSLContext::Ptr &context) noexcept;
 
-        ~RpcService() noexcept;
+        ~RpcService() noexcept override;
 
         void setFunction(const std::string &name, const Func &func) noexcept;
 
