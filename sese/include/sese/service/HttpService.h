@@ -7,6 +7,7 @@
 #include <sese/security/SSLContext.h>
 #include <sese/service/TimerableService.h>
 #include <sese/util/ByteBuilder.h>
+#include <sese/util/FileStream.h>
 
 #include <map>
 #include <functional>
@@ -29,9 +30,15 @@ namespace sese::service {
         net::http::RequestHeader req;
         net::http::ResponseHeader resp;
 
-        ByteBuilder buffer{4096};
-        uint64_t requestSize = 0;     // 请求大小
-        uint64_t responseBodySize = 0;// 响应 body 部分大小
+        FileStream::Ptr file;
+
+        ByteBuilder buffer1{4096};         // 请求缓冲区
+        ByteBuilder buffer2{4096};         // 响应缓冲区
+        uint64_t requestSize = 0;          // 请求大小
+        uint64_t responseBodySize = 0;     // 响应 body 大小 - 仅在 status 为 FILE 时使用
+        uint64_t responseBodyWroteSize = 0;// 响应 Body 已处理的大小
+
+        ~HttpConnection() noexcept;
 
         void doResponse() noexcept;
 

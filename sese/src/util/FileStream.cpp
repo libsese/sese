@@ -84,3 +84,13 @@ FileStream::Ptr sese::FileStream::create(const std::string &fileName, const char
     }
 #endif
 }
+
+int64_t sese::FileStream::peek(void *buffer, size_t length) {
+    auto len = this->read(buffer, length);
+    this->setSeek(-len, SEEK_CUR);
+    return len;
+}
+
+int64_t sese::FileStream::trunc(size_t length) {
+    return this->setSeek((int) length, SEEK_CUR);
+}
