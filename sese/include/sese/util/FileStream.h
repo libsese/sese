@@ -8,6 +8,7 @@
 
 #include "sese/util/Stream.h"
 #include "sese/util/Closeable.h"
+#include "sese/util/PeekableStream.h"
 
 #define BINARY_READ_EXISTED_W "rb,ccs=utf-8"
 #define BINARY_WRITE_CREATE_TRUNC_W "wb,ccs=utf-8"
@@ -36,7 +37,7 @@ namespace sese {
     /**
      * @brief 文件流类
      */
-    class API FileStream final : public Stream, public Closeable {
+    class API FileStream final : public Stream, public Closeable, public PeekableStream {
     public:
         using Ptr = std::shared_ptr<FileStream>;
 
@@ -52,6 +53,9 @@ namespace sese {
         int64_t write(const void *buffer, size_t length) override;
 
         void close() override;
+
+        int64_t peek(void *buffer, size_t length) override;
+        int64_t trunc(size_t length) override;
 
         int64_t getSeek();
         int32_t setSeek(int64_t offset, int32_t whence);

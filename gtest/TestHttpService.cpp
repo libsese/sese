@@ -29,14 +29,16 @@ TEST(TestHttpService, _0) {
     sese::service::HttpConfig config;
     config.servName = "Server for Test";
     config.servCtx = servCtx;
+    config.workDir = PROJECT_PATH "/coverage";
     config.keepalive = 0;
 
     config.setController(
-            "/index.html",
+            "/",
             [](sese::net::http::RequestHeader &req,
                sese::net::http::ResponseHeader &resp) -> bool {
                 SESE_INFO("req GET: %s", req.getUrl().c_str());
-                resp.setCode(404);
+                resp.setCode(301);
+                resp.set("Location", "/index.html");
                 return true;
             }
     );
