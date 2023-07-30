@@ -119,7 +119,6 @@ public:
         sese::net::Socket::close(timeoutEvent->fd);
         auto event = (sese::event::Event *)timeoutEvent->data;
         freeEvent(event);
-        freeTimeoutEvent(timeoutEvent);
     }
 };
 
