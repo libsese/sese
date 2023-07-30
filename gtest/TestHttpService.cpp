@@ -30,7 +30,7 @@ TEST(TestHttpService, _0) {
     config.servName = "Server for Test";
     config.servCtx = servCtx;
     config.workDir = PROJECT_PATH "/coverage";
-    config.keepalive = 0;
+    config.keepalive = 10;
 
     config.setController(
             "/",
