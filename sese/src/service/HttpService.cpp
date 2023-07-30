@@ -1,6 +1,7 @@
 #include "sese/service/HttpService.h"
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/UrlHelper.h"
+#include "sese/util/Util.h"
 
 #include "openssl/ssl.h"
 
@@ -87,27 +88,32 @@ void service::HttpService::onAccept(int fd) {
     }
 
     auto conn = new HttpConnection();
+    conn->fd = fd;
     conn->ssl = clientSSL;
     conn->status = HttpHandleStatus::HANDING;
 
-    this->createEvent(fd, EVENT_READ, conn);
+    if (config.keepalive) {
+        conn->timeoutEvent = TimerableService::createTimeoutEvent(fd, conn, config.keepalive);
+        conn->timeoutEvent->data = conn;
+    }
+
+    conn->event = this->createEvent(fd, EVENT_READ, conn);
 }
 
 void service::HttpService::onRead(event::BaseEvent *event) {
     auto conn = (HttpConnection *) event->data;
+
+    if (conn->keepalive) {
+        TimerableService::cancelTimeoutEvent(conn->timeoutEvent);
+    }
+
     char buf[1024];
     while (true) {
         auto l = read(event->fd, buf, 1024, conn->ssl);
         if (l <= 0) {
             if (errno == ENOTCONN) {
                 // 断开连接
-                if (config.servCtx) {
-                    SSL_free((SSL *) conn->ssl);
-                }
-                sese::net::Socket::close(event->fd);
-                delete conn;
-                this->freeEvent(event);
-                break;
+                goto free;
             } else {
                 // 无数据可读，触发子函数处理
                 onHandle(conn);
@@ -120,13 +126,7 @@ void service::HttpService::onRead(event::BaseEvent *event) {
                     break;
                 } else {
                     // 处理错误，断开连接
-                    if (config.servCtx) {
-                        SSL_free((SSL *) conn->ssl);
-                    }
-                    sese::net::Socket::close(event->fd);
-                    delete conn;
-                    this->freeEvent(event);
-                    break;
+                    goto free;
                 }
             }
         } else {
@@ -134,113 +134,29 @@ void service::HttpService::onRead(event::BaseEvent *event) {
             conn->requestSize += l;
         }
     }
+
+    return;
+free:
+    if (conn->keepalive) {
+        TimerableService::freeTimeoutEvent(conn->timeoutEvent);
+    }
+    if (config.servCtx) {
+        SSL_free((SSL *) conn->ssl);
+    }
+    sese::net::Socket::close(event->fd);
+    delete conn;
+    this->freeEvent(event);
 }
 
 void service::HttpService::onWrite(sese::event::BaseEvent *event) {
     auto conn = (HttpConnection *) event->data;
+    // 普通控制器处理
     if (conn->status == HttpHandleStatus::OK) {
-        bool finsh = false;
-        char buf[1024]{};
-        while (true) {
-            auto len = conn->buffer2.peek(buf, 1024);
-            if (len == 0) {
-                finsh = true;
-                break;
-            }
-            auto l = write(event->fd, buf, len, conn->ssl);
-            if (l <= 0) {
-                if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
-                    // 不能继续写入，等待下一次触发可写事件
-                    this->setEvent(event);
-                    break;
-                } else {
-                    // 断开连接...等
-                    if (config.servCtx) {
-                        SSL_free((SSL *) conn->ssl);
-                    }
-                    delete conn;// GCOVR_EXCL_LINE
-                    sese::net::Socket::close(event->fd);
-                    this->freeEvent(event);
-                    break;
-                }
-            } else {
-                conn->buffer2.trunc(l);
-            }
-        }
-        if (finsh) {
-            if (config.servCtx) {
-                SSL_free((SSL *) conn->ssl);
-            }
-            delete conn;// GCOVR_EXCL_LINE
-            sese::net::Socket::close(event->fd);
-            this->freeEvent(event);
-        }
-    } else if (conn->status == HttpHandleStatus::FILE) {
-        bool finsh = false;
-        char buf[1024]{};
-        // 先发送头部
-        while (true) {
-            auto len = conn->buffer2.peek(buf, 1024);
-            if (len == 0) {
-                break;
-            }
-            auto l = write(event->fd, buf, len, conn->ssl);
-            if (l <= 0) {
-                if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
-                    // 不能继续写入，等待下一次触发可写事件
-                    this->setEvent(event);
-                    break;
-                } else {
-                    // 断开连接...等
-                    if (config.servCtx) {
-                        SSL_free((SSL *) conn->ssl);
-                    }
-                    delete conn;// GCOVR_EXCL_LINE
-                    sese::net::Socket::close(event->fd);
-                    this->freeEvent(event);
-                    return;
-                }
-            } else {
-                conn->buffer2.trunc(l);
-            }
-        }
-        while (true) {
-            auto need = conn->responseBodySize - conn->responseBodyWroteSize;
-            need = need >= 1024 ? 1024 : need % 1024;
-            auto len = conn->file->peek(buf, need);
-            if(len == 0) {
-                finsh = true;
-                break;
-            }
-            auto l = write(event->fd, buf, len, conn->ssl);
-            if (l <= 0) {
-                if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
-                    // 不能继续写入，等待下一次触发可写事件
-                    this->setEvent(event);
-                    break;
-                } else {
-                    // 断开连接...等
-                    if (config.servCtx) {
-                        SSL_free((SSL *) conn->ssl);
-                    }
-                    delete conn;// GCOVR_EXCL_LINE
-                    sese::net::Socket::close(event->fd);
-                    this->freeEvent(event);
-                    return;
-                }
-            } else {
-                conn->file->trunc(l);
-                conn->responseBodyWroteSize += l;
-            }
-        }
-        if (finsh) {
-            if (config.servCtx) {
-                SSL_free((SSL *) conn->ssl);
-            }
-            delete conn;// GCOVR_EXCL_LINE
-            sese::net::Socket::close(event->fd);
-            this->freeEvent(event);
-        }
+        onControllerWrite(event);
+    }
+    // 文件处理
+    else if (conn->status == HttpHandleStatus::FILE) {
+        onFileWrite(event);
     }
 }
 
@@ -252,6 +168,12 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
     if (!rt) {
         conn->status = HttpHandleStatus::FAIL;
         return;
+    }
+
+    if (config.keepalive) {
+        conn->keepalive = sese::StrCmpI()(conn->req.get("Connection", "close").c_str(), "keep-alive") == 0;
+        conn->resp.set("Connection", "keep-alive");
+        conn->resp.set("Keep-Alive", "timeout=" + std::to_string(config.keepalive) + " ,max = 0");
     }
 
     auto url = net::http::Url(conn->req.getUrl());
@@ -294,6 +216,124 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
     config.otherController(conn);
 }
 
+void service::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
+    auto conn = (HttpConnection *) event->data;
+    char buf[1024]{};
+    while (true) {
+        auto len = conn->buffer2.peek(buf, 1024);
+        if (len == 0) {
+            break;
+        }
+        auto l = write(event->fd, buf, len, conn->ssl);
+        if (l <= 0) {
+            if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
+                // 不能继续写入，等待下一次触发可写事件
+                this->setEvent(event);
+                return;
+            } else {
+                // 断开连接...等
+                goto free;
+            }
+        } else {
+            conn->buffer2.trunc(l);
+        }
+    }
+    if (conn->keepalive) {
+        this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);
+        // 进入下一次请求
+        conn->event->events &= ~EVENT_WRITE;
+        conn->event->events |= EVENT_READ;
+        this->setEvent(conn->event);
+        return;
+    } else {
+        goto free;
+    }
+
+free:
+    if (conn->keepalive) {
+        this->freeTimeoutEvent(conn->timeoutEvent);
+    }
+    if (config.servCtx) {
+        SSL_free((SSL *) conn->ssl);
+    }
+    sese::net::Socket::close(event->fd);
+    delete conn;
+    this->freeEvent(event);
+}
+
+void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
+    auto conn = (HttpConnection *) event->data;
+    char buf[1024]{};
+    // 先发送头部
+    while (true) {
+        auto len = conn->buffer2.peek(buf, 1024);
+        if (len == 0) {
+            break;
+        }
+        auto l = write(event->fd, buf, len, conn->ssl);
+        if (l <= 0) {
+            if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
+                // 不能继续写入，等待下一次触发可写事件
+                this->setEvent(event);
+                break;
+            } else {
+                // 断开连接...等
+                goto free;
+            }
+        } else {
+            conn->buffer2.trunc(l);
+        }
+    }
+    // 发送内容
+    while (true) {
+        auto need = conn->responseBodySize - conn->responseBodyWroteSize;
+        need = need >= 1024 ? 1024 : need % 1024;
+        if (need == 0) {
+            break;
+        }
+        auto len = conn->file->peek(buf, need);
+        auto l = write(event->fd, buf, len, conn->ssl);
+        if (l <= 0) {
+            if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
+                // 不能继续写入，等待下一次触发可写事件
+                this->setEvent(event);
+                return;
+            } else {
+                // 断开连接...等
+                goto free;
+            }
+        } else {
+            conn->file->trunc(l);
+            conn->responseBodyWroteSize += l;
+        }
+    }
+    if (conn->responseBodySize == conn->responseBodyWroteSize) {
+        if (conn->keepalive) {
+            conn->responseBodySize = 0;
+            conn->responseBodyWroteSize = 0;
+            this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);
+            // 进入下一次请求
+            conn->event->events &= ~EVENT_WRITE;
+            conn->event->events |= EVENT_READ;
+            this->setEvent(conn->event);
+            return;
+        } else {
+            goto free;
+        }
+    }
+
+free:
+    if (conn->keepalive) {
+        this->freeTimeoutEvent(conn->timeoutEvent);
+    }
+    if (config.servCtx) {
+        SSL_free((SSL *) conn->ssl);
+    }
+    sese::net::Socket::close(event->fd);
+    delete conn;
+    this->freeEvent(event);
+}
+
 int64_t service::HttpService::read(int fd, void *buffer, size_t len, void *ssl) noexcept {
     if (ssl) {
         return SSL_read((SSL *) ssl, buffer, (int) len);
@@ -308,4 +348,14 @@ int64_t service::HttpService::write(int fd, const void *buffer, size_t len, void
     } else {
         return sese::net::Socket::write(fd, buffer, len, 0);
     }
+}
+
+void service::HttpService::onTimeout(service::TimeoutEvent *timeoutEvent) {
+    auto conn = (HttpConnection *) timeoutEvent->data;
+    if (config.servCtx) {
+        SSL_free((SSL *) conn->ssl);
+    }
+    sese::net::Socket::close(conn->fd);
+    this->freeEvent(conn->event);
+    delete conn;
 }

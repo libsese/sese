@@ -7,21 +7,21 @@
 #define sprintf sprintf_s
 #endif
 
-#define __SESE_LOG(point_to_logger, level, format, ...)     \
-    {                                                       \
-        char buf[RECORD_OUTPUT_BUFFER]{0};                  \
-        sprintf(buf, format, ##__VA_ARGS__);                \
-        auto time = sese::DateTime::now();                  \
-        auto event = std::make_shared<sese::record::Event>( \
-                time,                                       \
-                level,                                      \
-                sese::Thread::getCurrentThreadName(),       \
-                sese::Thread::getCurrentThreadId(),         \
-                SESE_FILENAME,                              \
-                __LINE__,                                   \
-                buf                                         \
-        );                                                  \
-        point_to_logger->log(event);                        \
+#define __SESE_LOG(point_to_logger, level, format, ...)       \
+    {                                                         \
+        char __buf[RECORD_OUTPUT_BUFFER]{0};                  \
+        sprintf(__buf, format, ##__VA_ARGS__);                \
+        auto __time = sese::DateTime::now();                  \
+        auto __event = std::make_shared<sese::record::Event>( \
+                __time,                                       \
+                level,                                        \
+                sese::Thread::getCurrentThreadName(),         \
+                sese::Thread::getCurrentThreadId(),           \
+                SESE_FILENAME,                                \
+                __LINE__,                                     \
+                __buf                                         \
+        );                                                    \
+        point_to_logger->log(__event);                        \
     }
 
 #define __SESE_DEBUG(logger, format, ...)                                 \

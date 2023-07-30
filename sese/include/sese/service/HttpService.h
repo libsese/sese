@@ -23,6 +23,7 @@ namespace sese::service {
     };
 
     struct HttpConnection : public sese::Stream {
+        int fd = 0;
         void *ssl = nullptr;
         bool keepalive = false;
 
@@ -37,6 +38,9 @@ namespace sese::service {
         uint64_t requestSize = 0;          // 请求大小
         uint64_t responseBodySize = 0;     // 响应 body 大小 - 仅在 status 为 FILE 时使用
         uint64_t responseBodyWroteSize = 0;// 响应 Body 已处理的大小
+
+        event::BaseEvent *event = nullptr;
+        TimeoutEvent *timeoutEvent = nullptr;
 
         ~HttpConnection() noexcept;
 
@@ -79,20 +83,27 @@ namespace sese::service {
         std::map<std::string, Controller2> controller2Map;
     };
 
-    // class API HttpService final : public sese::service::TimerableService {
-    class API HttpService final : public sese::event::EventLoop {
+    // class API HttpService final : public sese::event::EventLoop {
+    class API HttpService final : public sese::service::TimerableService {
     public:
         explicit HttpService(const HttpConfig &config) noexcept;
 
+    private:
         void onAccept(int fd) override;
 
         void onRead(event::BaseEvent *event) override;
 
         void onWrite(event::BaseEvent *event) override;
 
-    private:
         void onHandle(HttpConnection *conn) noexcept;
 
+        void onTimeout(TimeoutEvent *timeoutEvent) override;
+
+        void onControllerWrite(event::BaseEvent *event) noexcept;
+
+        void onFileWrite(event::BaseEvent *event) noexcept;
+
+    private:
         static int64_t read(int fd, void *buffer, size_t len, void *ssl) noexcept;
 
         static int64_t write(int fd, const void *buffer, size_t len, void *ssl) noexcept;

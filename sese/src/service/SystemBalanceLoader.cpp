@@ -32,12 +32,14 @@ void sese::service::SystemBalanceLoader::start() noexcept {
     if (eventLoopVector.empty()) return;
 
     for (size_t i = 0; i < threads; ++i) {
-        auto thread = std::make_unique<sese::Thread>([this, eventLoop = this->eventLoopVector[i]]() {
-            while (!_isStop) {
-                eventLoop->dispatch(100);
-            }
-        },
-                                                     "SystemBalanceLoader_" + std::to_string(i));
+        auto thread = std::make_unique<sese::Thread>(
+                [this, eventLoop = this->eventLoopVector[i]]() {
+                    while (!_isStop) {
+                        eventLoop->dispatch(100);
+                    }
+                },
+                "SBL_" + std::to_string(i)
+        );
         thread->start();
         threadVector.emplace_back(std::move(thread));
     }
