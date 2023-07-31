@@ -26,7 +26,6 @@ namespace sese::service {
     struct HttpConnection : public sese::Stream {
         int fd = 0;
         void *ssl = nullptr;
-        bool keepalive = false;
 
         HttpHandleStatus status = HttpHandleStatus::HANDING;
         net::http::RequestHeader req;
@@ -116,7 +115,6 @@ namespace sese::service {
         static int64_t read(int fd, void *buffer, size_t len, void *ssl) noexcept;
 
         static int64_t write(int fd, const void *buffer, size_t len, void *ssl) noexcept;
-
 
         HttpConfig config;
     };
