@@ -104,7 +104,22 @@ void service::HttpService::onAccept(int fd) {
 void service::HttpService::onRead(event::BaseEvent *event) {
     auto conn = (HttpConnection *) event->data;
 
-    if (conn->keepalive) {
+    // 如果服务器启用长连接，对端启用长连接，且是首次连接，则定时器存在
+    // config.keepalive == true
+    // conn->keepalive == false // 因为首次连接还没有经过 onHandle 处理
+    // conn->timeoutEvent != nullptr
+
+    // 如果服务器启用长连接，对端启用长连接，且不是首次连接，则定时器存在
+    // config.keepalive == true
+    // conn->keepalive == true // 已经经过 onHandle 处理
+    // conn->timeoutEvent != nullptr
+
+    // 如果服务器启用长连接，对端不启用长连接，且是首次连接，则定时存在
+    // config.keepalive == true
+    // conn->keepalive == false
+    // conn->timeoutEvent != nullptr
+
+    if (config.keepalive) {
         TimerableService::cancelTimeoutEvent(conn->timeoutEvent);
     }
 
@@ -138,7 +153,7 @@ void service::HttpService::onRead(event::BaseEvent *event) {
 
     return;
 free:
-    if (conn->keepalive) {
+    if (conn->timeoutEvent) {
         TimerableService::freeTimeoutEvent(conn->timeoutEvent);
     }
     if (config.servCtx) {
@@ -162,7 +177,6 @@ void service::HttpService::onWrite(sese::event::BaseEvent *event) {
 }
 
 void service::HttpService::onClose(sese::event::BaseEvent *event) {
-    EpollEventLoop::onClose(event);
 }
 
 void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcept {
@@ -176,17 +190,18 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
     }
 
     if (config.keepalive) {
-        conn->keepalive = sese::StrCmpI()(conn->req.get("Connection", "close").c_str(), "keep-alive") == 0;
-        if (conn->keepalive) {
-            conn->resp.set("Connection", "keep-alive");
-            conn->resp.set("Keep-Alive", "timeout=" + std::to_string(config.keepalive) + " ,max = 0");
+        auto keepalive = sese::StrCmpI()(conn->req.get("Connection", "close").c_str(), "keep-alive") == 0;
+        if (keepalive) {
+            conn->resp.set("connection", "keep-alive");
+            conn->resp.set("keep-alive", "timeout=" + std::to_string(config.keepalive) + " ,max=0");
         } else {
-            cancelTimeoutEvent(conn->timeoutEvent);
+            this->freeTimeoutEvent(conn->timeoutEvent);
+            conn->timeoutEvent = nullptr;
         }
     }
 
-    conn->resp.set("Accept-Ranges", "bytes");
-    conn->resp.set("Date", sese::text::DateTimeFormatter::format(sese::DateTime::now(0), TIME_GREENWICH_MEAN_PATTERN));
+    conn->resp.set("accept-ranges", "bytes");
+    conn->resp.set("date", sese::text::DateTimeFormatter::format(sese::DateTime::now(0), TIME_GREENWICH_MEAN_PATTERN));
 
     auto url = net::http::Url(conn->req.getUrl());
 
@@ -223,14 +238,15 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
                         conn->contentType = iterator->second;
                     }
                 }
-                conn->resp.set("Content-Type", conn->contentType);
+                conn->resp.set("content-type", conn->contentType);
 
                 conn->fileSize = std::filesystem::file_size(file);
                 conn->ranges = sese::net::http::Range::parse(conn->req.get("Range", ""), conn->fileSize);
                 // 完整文件
                 if (conn->ranges.empty()) {
                     conn->ranges.emplace_back(0, conn->fileSize);
-                    conn->resp.set("Content-Length", std::to_string(conn->fileSize));
+                    conn->rangeIterator = conn->ranges.begin();
+                    conn->resp.set("content-length", std::to_string(conn->fileSize));
                     conn->doResponse();
                     conn->status = HttpHandleStatus::FILE;
                     return;
@@ -242,38 +258,38 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
                     if (conn->ranges.size() > 1) {
                         size_t len = 0;
                         for (auto item: conn->ranges) {
-                            len += 4; // \r\n--
+                            len += 4;// \r\n--
                             len += strlen(HTTPD_BOUNDARY);
-                            len += 2; // \r\n
+                            len += 2;// \r\n
                             len += strlen("Content-Type: ");
                             len += conn->contentType.length();
-                            len += 2; // \r\n
+                            len += 2;// \r\n
                             len += strlen("Content-Range: ");
                             len += item.toString(conn->fileSize).length();
-                            len += 4; // \r\n\r\n
+                            len += 4;// \r\n\r\n
                             len += item.len;
                         }
-                        len += 4; // \r\n--
+                        len += 4;// \r\n--
                         len += strlen(HTTPD_BOUNDARY);
-                        len += 4; // --\r\n
-                        len -= 2; // 抵消首次区块的 \r\n
+                        len += 4;// --\r\n
+                        len -= 2;// 抵消首次区块的 \r\n
 
-                        conn->resp.set("Content-Length", std::to_string(len));
-                        conn->resp.set("Content-Type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
+                        conn->resp.set("content-length", std::to_string(len));
+                        conn->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
                         conn->doResponse();
 
                         conn->buffer2 << "--";
                         conn->buffer2 << HTTPD_BOUNDARY;
-                        conn->buffer2 << "\r\nContent-Type: ";
+                        conn->buffer2 << "\r\ncontent-type: ";
                         conn->buffer2 << conn->contentType;
-                        conn->buffer2 << "\r\nContent-Range: ";
+                        conn->buffer2 << "\r\ncontent-range: ";
                         conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
                         conn->buffer2 << "\r\n\r\n";
                         conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
                     } else {
                         conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
-                        conn->resp.set("Content-Length", std::to_string(conn->rangeIterator->len));
-                        conn->resp.set("Content-Range", conn->rangeIterator->toString(conn->fileSize));
+                        conn->resp.set("content-length", std::to_string(conn->rangeIterator->len));
+                        conn->resp.set("content-range", conn->rangeIterator->toString(conn->fileSize));
                         conn->doResponse();
                     }
                     conn->status = HttpHandleStatus::FILE;
@@ -308,7 +324,7 @@ void service::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
             conn->buffer2.trunc(l);
         }
     }
-    if (conn->keepalive) {
+    if (conn->timeoutEvent) {
         this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);
         // 进入下一次请求
         conn->event->events &= ~EVENT_WRITE;
@@ -320,7 +336,7 @@ void service::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
     }
 
 free:
-    if (conn->keepalive) {
+    if (conn->timeoutEvent) {
         this->freeTimeoutEvent(conn->timeoutEvent);
     }
     if (config.servCtx) {
@@ -345,9 +361,10 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
             if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
                 // 不能继续写入，等待下一次触发可写事件
                 this->setEvent(event);
-                break;
+                return;
             } else {
                 // 断开连接...等
+                // auto err = WSAGetLastError();
                 goto free;
             }
         } else {
@@ -370,6 +387,7 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
                 this->setEvent(event);
                 return;
             } else {
+                // auto err = WSAGetLastError();
                 // 断开连接...等
                 goto free;
             }
@@ -399,33 +417,39 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
             return;
         }
         // 已是最后一个区间
+        // else {
         else {
-            char buffer[1024]{};
-            auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+            if (conn->ranges.size() > 1) {
+                char buffer[1024]{};
+                auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
 
-            output << "\r\n--";
-            output << HTTPD_BOUNDARY;
-            output << "--\r\n";
+                output << "\r\n--";
+                output << HTTPD_BOUNDARY;
+                output << "--\r\n";
 
-            write(event->fd, buffer, output.getLen(), conn->ssl);
+                write(event->fd, buffer, output.getLen(), conn->ssl);
+            } else {
+            }
         }
-
         // 进入下一次请求
-        if (conn->keepalive) {
+        if (conn->timeoutEvent) {
+            conn->file->close();
+            conn->file = nullptr;
             this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);
             conn->event->events &= ~EVENT_WRITE;
             conn->event->events |= EVENT_READ;
             this->setEvent(conn->event);
-            return;
         }
         // 断开连接
         else {
+            // auto err = WSAGetLastError();
             goto free;
         }
     }
 
+    return;
 free:
-    if (conn->keepalive) {
+    if (conn->timeoutEvent) {
         this->freeTimeoutEvent(conn->timeoutEvent);
     }
     if (config.servCtx) {
