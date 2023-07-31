@@ -76,6 +76,8 @@ constexpr static const size_t SERVER_KEEP_ALIVE_DURATION = 10;
 constexpr static const size_t HTTP_MAX_SINGLE_LINE = 1023;
 /// Http Server 名称
 constexpr static const char *HTTPD_NAME = "sese::net::http::HttpServer";
+/// Http 多段请求 boundary
+constexpr static const char *HTTPD_BOUNDARY= "000000SESE0BOUNDARY000000";
 /// Http Client 名称
 constexpr static const char *HTTP_CLIENT_NAME = "sese::net::http::HttpClient";
 

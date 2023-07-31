@@ -1,4 +1,5 @@
 #include <sese/net/http/HttpUtil.h>
+#include <sese/net/http/Range.h>
 #include <sese/util/InputBufferWrapper.h>
 #include <sese/util/OutputBufferWrapper.h>
 #include <sese/record/Marco.h>
@@ -251,4 +252,50 @@ GTEST_TEST(TestHttpCookie, SendResponseCookie) {
     resp.setCookies(cookieMap);
 
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::sendResponse(&output, &resp));
+}
+
+GTEST_TEST(TestHttpRange, Parse_0) {
+    auto ranges = sese::net::http::Range::parse("bytes=200-1000, 2000-6576, 19000-", 20000);
+    GTEST_ASSERT_EQ(ranges.size(), 3);
+
+    EXPECT_EQ(ranges[0].begin, 200);
+    EXPECT_EQ(ranges[0].len, 801);
+
+
+    EXPECT_EQ(ranges[1].begin, 2000);
+    EXPECT_EQ(ranges[1].len, 4577);
+
+
+    EXPECT_EQ(ranges[2].begin, 19000);
+    EXPECT_EQ(ranges[2].len, 1000);
+}
+
+GTEST_TEST(TestHttpRange, Parse_1) {
+    auto ranges = sese::net::http::Range::parse("bytes=", 20000);
+    GTEST_EXPECT_TRUE(ranges.empty());
+}
+
+GTEST_TEST(TestHttpRange, Parse_2) {
+    auto ranges = sese::net::http::Range::parse("block=1200-", 20000);
+    GTEST_EXPECT_TRUE(ranges.empty());
+}
+
+GTEST_TEST(TestHttpRange, Parse_3) {
+    auto ranges = sese::net::http::Range::parse("bytes=1200-2000-3000", 20000);
+    GTEST_EXPECT_TRUE(ranges.empty());
+}
+
+GTEST_TEST(TestHttpRange, Parse_4) {
+    auto ranges = sese::net::http::Range::parse("bytes=1200-3000", 100);
+    GTEST_EXPECT_TRUE(ranges.empty());
+}
+
+GTEST_TEST(TestHttpRange, Parse_5) {
+    auto ranges = sese::net::http::Range::parse("bytes=1-3000", 100);
+    GTEST_EXPECT_TRUE(ranges.empty());
+}
+
+GTEST_TEST(TestHttpRange, Parse_6) {
+    auto ranges = sese::net::http::Range::parse("bytes=99-1", 100);
+    GTEST_EXPECT_TRUE(ranges.empty());
 }

@@ -35,7 +35,7 @@ sese::service::TimeoutEvent *sese::service::TimerableService::createTimeoutEvent
 void sese::service::TimerableService::setTimeoutEvent(sese::service::TimeoutEvent *timeoutEvent, uint64_t seconds) {
     // 原先存在事件，先取消
     auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
-    auto &table = timeoutTable[timeoutEvent->exceptTimestamp - startTimestamp];
+    auto &table = timeoutTable[index];
     table.remove(timeoutEvent);
     // auto iterator = std::find_if(table.begin(), table.end(), [&](TimeoutEvent *event) -> bool {
     //     return timeoutEvent->fd == event->fd;

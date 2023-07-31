@@ -1,6 +1,9 @@
 #include "sese/service/HttpService.h"
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/UrlHelper.h"
+#include "sese/text/DateTimeFormatter.h"
+#include "sese/util/OutputUtil.h"
+#include "sese/util/OutputBufferWrapper.h"
 #include "sese/util/Util.h"
 
 #include "openssl/ssl.h"
@@ -25,9 +28,7 @@ int64_t service::HttpConnection::read(void *buf, size_t len) {
 }
 
 int64_t service::HttpConnection::write(const void *buf, size_t len) {
-    auto rt = this->buffer2.write(buf, len);
-    responseBodySize += rt;
-    return rt;
+    return this->buffer2.write(buf, len);
 }
 
 service::HttpConfig::HttpConfig() noexcept {
@@ -160,6 +161,10 @@ void service::HttpService::onWrite(sese::event::BaseEvent *event) {
     }
 }
 
+void service::HttpService::onClose(sese::event::BaseEvent *event) {
+    EpollEventLoop::onClose(event);
+}
+
 void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcept {
     bool rt;
     conn->resp.set("Server", config.servName);
@@ -172,9 +177,16 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
 
     if (config.keepalive) {
         conn->keepalive = sese::StrCmpI()(conn->req.get("Connection", "close").c_str(), "keep-alive") == 0;
-        conn->resp.set("Connection", "keep-alive");
-        conn->resp.set("Keep-Alive", "timeout=" + std::to_string(config.keepalive) + " ,max = 0");
+        if (conn->keepalive) {
+            conn->resp.set("Connection", "keep-alive");
+            conn->resp.set("Keep-Alive", "timeout=" + std::to_string(config.keepalive) + " ,max = 0");
+        } else {
+            cancelTimeoutEvent(conn->timeoutEvent);
+        }
     }
+
+    conn->resp.set("Accept-Ranges", "bytes");
+    conn->resp.set("Date", sese::text::DateTimeFormatter::format(sese::DateTime::now(0), TIME_GREENWICH_MEAN_PATTERN));
 
     auto url = net::http::Url(conn->req.getUrl());
 
@@ -203,12 +215,70 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
         if (std::filesystem::is_regular_file(file)) {
             conn->file = FileStream::create(file, "rb");
             if (conn->file != nullptr) {
-                auto len = std::filesystem::file_size(file);
-                conn->responseBodySize = len;
-                conn->resp.set("Content-Length", std::to_string(len));
-                conn->doResponse();
-                conn->status = HttpHandleStatus::FILE;
-                return;
+                auto pos = url.getUrl().find_last_of('.');
+                if (pos != std::string::npos) {
+                    auto rawType = url.getUrl().substr(pos + 1);
+                    auto iterator = contentTypeMap.find(rawType);
+                    if (iterator != contentTypeMap.end()) {
+                        conn->contentType = iterator->second;
+                    }
+                }
+                conn->resp.set("Content-Type", conn->contentType);
+
+                conn->fileSize = std::filesystem::file_size(file);
+                conn->ranges = sese::net::http::Range::parse(conn->req.get("Range", ""), conn->fileSize);
+                // 完整文件
+                if (conn->ranges.empty()) {
+                    conn->ranges.emplace_back(0, conn->fileSize);
+                    conn->resp.set("Content-Length", std::to_string(conn->fileSize));
+                    conn->doResponse();
+                    conn->status = HttpHandleStatus::FILE;
+                    return;
+                }
+                // 分块请求
+                else {
+                    conn->resp.setCode(206);
+                    conn->rangeIterator = conn->ranges.begin();
+                    if (conn->ranges.size() > 1) {
+                        size_t len = 0;
+                        for (auto item: conn->ranges) {
+                            len += 4; // \r\n--
+                            len += strlen(HTTPD_BOUNDARY);
+                            len += 2; // \r\n
+                            len += strlen("Content-Type: ");
+                            len += conn->contentType.length();
+                            len += 2; // \r\n
+                            len += strlen("Content-Range: ");
+                            len += item.toString(conn->fileSize).length();
+                            len += 4; // \r\n\r\n
+                            len += item.len;
+                        }
+                        len += 4; // \r\n--
+                        len += strlen(HTTPD_BOUNDARY);
+                        len += 4; // --\r\n
+                        len -= 2; // 抵消首次区块的 \r\n
+
+                        conn->resp.set("Content-Length", std::to_string(len));
+                        conn->resp.set("Content-Type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
+                        conn->doResponse();
+
+                        conn->buffer2 << "--";
+                        conn->buffer2 << HTTPD_BOUNDARY;
+                        conn->buffer2 << "\r\nContent-Type: ";
+                        conn->buffer2 << conn->contentType;
+                        conn->buffer2 << "\r\nContent-Range: ";
+                        conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
+                        conn->buffer2 << "\r\n\r\n";
+                        conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
+                    } else {
+                        conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
+                        conn->resp.set("Content-Length", std::to_string(conn->rangeIterator->len));
+                        conn->resp.set("Content-Range", conn->rangeIterator->toString(conn->fileSize));
+                        conn->doResponse();
+                    }
+                    conn->status = HttpHandleStatus::FILE;
+                    return;
+                }
             }
         }
     }
@@ -286,7 +356,8 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
     }
     // 发送内容
     while (true) {
-        auto need = conn->responseBodySize - conn->responseBodyWroteSize;
+        // auto need = conn->responseBodySize - conn->responseBodyWroteSize;
+        auto need = conn->rangeIterator->len - conn->rangeIterator->cur;
         need = need >= 1024 ? 1024 : need % 1024;
         if (need == 0) {
             break;
@@ -304,20 +375,51 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
             }
         } else {
             conn->file->trunc(l);
-            conn->responseBodyWroteSize += l;
+            // conn->responseBodyWroteSize += l;
+            conn->rangeIterator->cur += l;
         }
     }
-    if (conn->responseBodySize == conn->responseBodyWroteSize) {
+    // if (conn->responseBodySize == conn->responseBodyWroteSize) {
+    if (conn->rangeIterator->len == conn->rangeIterator->cur) {
+        // 处理下一个区间
+        if (conn->rangeIterator + 1 != conn->ranges.end()) {
+            conn->rangeIterator++;
+
+            conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
+
+            conn->buffer2 << "\r\n--";
+            conn->buffer2 << HTTPD_BOUNDARY;
+            conn->buffer2 << "\r\nContent-Type: ";
+            conn->buffer2 << conn->contentType;
+            conn->buffer2 << "\r\nContent-Range: ";
+            conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
+            conn->buffer2 << "\r\n\r\n";
+
+            this->setEvent(conn->event);
+            return;
+        }
+        // 已是最后一个区间
+        else {
+            char buffer[1024]{};
+            auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+
+            output << "\r\n--";
+            output << HTTPD_BOUNDARY;
+            output << "--\r\n";
+
+            write(event->fd, buffer, output.getLen(), conn->ssl);
+        }
+
+        // 进入下一次请求
         if (conn->keepalive) {
-            conn->responseBodySize = 0;
-            conn->responseBodyWroteSize = 0;
             this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);
-            // 进入下一次请求
             conn->event->events &= ~EVENT_WRITE;
             conn->event->events |= EVENT_READ;
             this->setEvent(conn->event);
             return;
-        } else {
+        }
+        // 断开连接
+        else {
             goto free;
         }
     }
