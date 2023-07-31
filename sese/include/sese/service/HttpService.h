@@ -4,6 +4,7 @@
 #include <sese/Config.h>
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
+#include <sese/net/http/Range.h>
 #include <sese/security/SSLContext.h>
 #include <sese/service/TimerableService.h>
 #include <sese/util/ByteBuilder.h>
@@ -32,12 +33,15 @@ namespace sese::service {
         net::http::ResponseHeader resp;
 
         FileStream::Ptr file;
+        size_t fileSize = 0;
 
-        ByteBuilder buffer1{4096};         // 请求缓冲区
-        ByteBuilder buffer2{4096};         // 响应缓冲区
-        uint64_t requestSize = 0;          // 请求大小
-        uint64_t responseBodySize = 0;     // 响应 body 大小 - 仅在 status 为 FILE 时使用
-        uint64_t responseBodyWroteSize = 0;// 响应 Body 已处理的大小
+        ByteBuilder buffer1{4096};// 请求缓冲区
+        ByteBuilder buffer2{4096};// 响应缓冲区
+        uint64_t requestSize = 0; // 请求大小
+
+        std::string contentType = "application/x-";           // 默认响应内容类型 - 仅在 status 为 FILE 且 存在多段 Range 时使用
+        std::vector<net::http::Range> ranges;                 // 响应区间集合 - 仅在 status 为 FILE 时使用
+        std::vector<net::http::Range>::iterator rangeIterator;// 指示当前响应区间迭代器
 
         event::BaseEvent *event = nullptr;
         TimeoutEvent *timeoutEvent = nullptr;
@@ -95,6 +99,9 @@ namespace sese::service {
 
         void onWrite(event::BaseEvent *event) override;
 
+        void onClose(event::BaseEvent *event) override;
+
+    private:
         void onHandle(HttpConnection *conn) noexcept;
 
         void onTimeout(TimeoutEvent *timeoutEvent) override;
@@ -103,10 +110,13 @@ namespace sese::service {
 
         void onFileWrite(event::BaseEvent *event) noexcept;
 
+        static std::map<std::string, std::string> contentTypeMap;
+
     private:
         static int64_t read(int fd, void *buffer, size_t len, void *ssl) noexcept;
 
         static int64_t write(int fd, const void *buffer, size_t len, void *ssl) noexcept;
+
 
         HttpConfig config;
     };
