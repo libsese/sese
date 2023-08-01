@@ -12,6 +12,16 @@
 
 using namespace sese;
 
+/// https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
+template <typename TP>
+std::time_t to_time_t(TP tp)
+{
+    using namespace std::chrono;
+    auto sctp = time_point_cast<system_clock::duration>(tp - TP::clock::now()
+                                                        + system_clock::now());
+    return system_clock::to_time_t(sctp);
+}
+
 service::HttpConnection::~HttpConnection() noexcept {
     if (file) {
         file->close();
@@ -123,11 +133,12 @@ void service::HttpService::onRead(event::BaseEvent *event) {
         TimerableService::cancelTimeoutEvent(conn->timeoutEvent);
     }
 
-    char buf[1024];
+    char buf[MTU_VALUE];
     while (true) {
-        auto l = read(event->fd, buf, 1024, conn->ssl);
+        auto l = read(event->fd, buf, MTU_VALUE, conn->ssl);
         if (l <= 0) {
-            if (errno == ENOTCONN) {
+            auto err = sese::net::getNetworkError();
+            if (err == ENOTCONN) {
                 // 断开连接
                 goto free;
             } else {
@@ -136,9 +147,11 @@ void service::HttpService::onRead(event::BaseEvent *event) {
                 if (conn->status == HttpHandleStatus::OK ||
                     conn->status == HttpHandleStatus::FILE) {
                     // 准备进入写模式，返回响应
-                    event->events &= ~EVENT_READ;// 删除读事件
-                    event->events |= EVENT_WRITE;// 添加写事件
-                    this->setEvent(event);
+                    // event->events &= ~EVENT_READ;// 删除读事件
+                    // event->events |= EVENT_WRITE;// 添加写事件
+                    // this->setEvent(event);
+                    // 此处应该手动触发而不是等待事件通知
+                    onWrite(event);
                     break;
                 } else {
                     // 处理错误，断开连接
@@ -225,95 +238,113 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
         return;
     }
 
-    if (!config.workDir.empty()) {
+    if (!config.workDir.empty() && conn->req.getType() == net::http::RequestType::Get) {
         auto file = config.workDir + url.getUrl();
-        if (std::filesystem::is_regular_file(file)) {
-            conn->file = FileStream::create(file, "rb");
-            if (conn->file != nullptr) {
-                auto pos = url.getUrl().find_last_of('.');
-                if (pos != std::string::npos) {
-                    auto rawType = url.getUrl().substr(pos + 1);
-                    auto iterator = contentTypeMap.find(rawType);
-                    if (iterator != contentTypeMap.end()) {
-                        conn->contentType = iterator->second;
-                    }
-                }
-                conn->resp.set("content-type", conn->contentType);
+        onHandleFile(conn, file);
+    }
 
-                conn->fileSize = std::filesystem::file_size(file);
-                conn->ranges = sese::net::http::Range::parse(conn->req.get("Range", ""), conn->fileSize);
-                // 完整文件
-                if (conn->ranges.empty()) {
-                    conn->ranges.emplace_back(0, conn->fileSize);
-                    conn->rangeIterator = conn->ranges.begin();
-                    conn->resp.set("content-length", std::to_string(conn->fileSize));
-                    conn->doResponse();
-                    conn->status = HttpHandleStatus::FILE;
-                    return;
+    if (conn->status == HttpHandleStatus::HANDING) {
+        config.otherController(conn);
+    }
+}
+
+void service::HttpService::onHandleFile(sese::service::HttpConnection *conn, const std::string &path) noexcept { // NOLINT
+    if (std::filesystem::is_regular_file(path)) {
+        conn->file = FileStream::create(path, "rb");
+        if (conn->file != nullptr) {
+            /// content-type 确定
+            auto pos = path.find_last_of('.');
+            if (pos != std::string::npos) {
+                auto rawType = path.substr(pos + 1);
+                auto iterator = contentTypeMap.find(rawType);
+                if (iterator != contentTypeMap.end()) {
+                    conn->contentType = iterator->second;
                 }
-                // 分块请求
-                else {
-                    conn->resp.setCode(206);
-                    conn->rangeIterator = conn->ranges.begin();
-                    if (conn->ranges.size() > 1) {
-                        size_t len = 0;
-                        for (auto item: conn->ranges) {
-                            len += 4;// \r\n--
-                            len += strlen(HTTPD_BOUNDARY);
-                            len += 2;// \r\n
-                            len += strlen("Content-Type: ");
-                            len += conn->contentType.length();
-                            len += 2;// \r\n
-                            len += strlen("Content-Range: ");
-                            len += item.toString(conn->fileSize).length();
-                            len += 4;// \r\n\r\n
-                            len += item.len;
-                        }
+            }
+            conn->resp.set("content-type", conn->contentType);
+
+            /// last-modified
+            auto lastModified = std::filesystem::last_write_time(path);
+            uint64_t time = to_time_t(lastModified) * 1000 * 1000;
+            conn->resp.set("last-modified", sese::text::DateTimeFormatter::format(sese::DateTime(time, 0), TIME_GREENWICH_MEAN_PATTERN));
+
+            conn->fileSize = std::filesystem::file_size(path);
+            conn->ranges = sese::net::http::Range::parse(conn->req.get("Range", ""), conn->fileSize);
+            // 完整文件
+            if (conn->ranges.empty()) {
+                conn->ranges.emplace_back(0, conn->fileSize);
+                conn->rangeIterator = conn->ranges.begin();
+                conn->resp.set("content-length", std::to_string(conn->fileSize));
+                conn->doResponse();
+                conn->status = HttpHandleStatus::FILE;
+                return;
+            }
+            // 分块请求
+            else {
+                conn->resp.setCode(206);
+                conn->rangeIterator = conn->ranges.begin();
+                if (conn->ranges.size() > 1) {
+                    size_t len = 0;
+                    for (auto item: conn->ranges) {
                         len += 4;// \r\n--
                         len += strlen(HTTPD_BOUNDARY);
-                        len += 4;// --\r\n
-                        len -= 2;// 抵消首次区块的 \r\n
-
-                        conn->resp.set("content-length", std::to_string(len));
-                        conn->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
-                        conn->doResponse();
-
-                        conn->buffer2 << "--";
-                        conn->buffer2 << HTTPD_BOUNDARY;
-                        conn->buffer2 << "\r\ncontent-type: ";
-                        conn->buffer2 << conn->contentType;
-                        conn->buffer2 << "\r\ncontent-range: ";
-                        conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
-                        conn->buffer2 << "\r\n\r\n";
-                        conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
-                    } else {
-                        conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
-                        conn->resp.set("content-length", std::to_string(conn->rangeIterator->len));
-                        conn->resp.set("content-range", conn->rangeIterator->toString(conn->fileSize));
-                        conn->doResponse();
+                        len += 2;// \r\n
+                        len += strlen("Content-Type: ");
+                        len += conn->contentType.length();
+                        len += 2;// \r\n
+                        len += strlen("Content-Range: ");
+                        len += item.toString(conn->fileSize).length();
+                        len += 4;// \r\n\r\n
+                        len += item.len;
                     }
-                    conn->status = HttpHandleStatus::FILE;
-                    return;
+                    len += 4;// \r\n--
+                    len += strlen(HTTPD_BOUNDARY);
+                    len += 4;// --\r\n
+                    len -= 2;// 抵消首次区块的 \r\n
+
+                    conn->resp.set("content-length", std::to_string(len));
+                    conn->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
+                    conn->doResponse();
+
+                    conn->buffer2 << "--";
+                    conn->buffer2 << HTTPD_BOUNDARY;
+                    conn->buffer2 << "\r\ncontent-type: ";
+                    conn->buffer2 << conn->contentType;
+                    conn->buffer2 << "\r\ncontent-range: ";
+                    conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
+                    conn->buffer2 << "\r\n\r\n";
+                    conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
+                } else {
+                    conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
+                    conn->resp.set("content-length", std::to_string(conn->rangeIterator->len));
+                    conn->resp.set("content-range", conn->rangeIterator->toString(conn->fileSize));
+                    conn->doResponse();
                 }
+                conn->status = HttpHandleStatus::FILE;
+                return;
             }
         }
     }
-
-    config.otherController(conn);
+    // 文件若是非常规文件或是无法打开文件
+    // 此处不会改变状态，留给 otherController 处理
+    conn->status = HttpHandleStatus::HANDING;
 }
 
 void service::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
     auto conn = (HttpConnection *) event->data;
-    char buf[1024]{};
+    char buf[MTU_VALUE]{};
     while (true) {
-        auto len = conn->buffer2.peek(buf, 1024);
+        auto len = conn->buffer2.peek(buf, MTU_VALUE);
         if (len == 0) {
             break;
         }
         auto l = write(event->fd, buf, len, conn->ssl);
         if (l <= 0) {
-            if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
+            auto err = sese::net::getNetworkError();
+            if (err == EWOULDBLOCK || err == EINTR || err == ECONNABORTED) {
                 // 不能继续写入，等待下一次触发可写事件
+                conn->event->events &= ~EVENT_READ;
+                conn->event->events |= EVENT_WRITE;
                 this->setEvent(event);
                 return;
             } else {
@@ -349,22 +380,24 @@ free:
 
 void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
     auto conn = (HttpConnection *) event->data;
-    char buf[1024]{};
+    char buf[MTU_VALUE]{};
     // 先发送头部
     while (true) {
-        auto len = conn->buffer2.peek(buf, 1024);
+        auto len = conn->buffer2.peek(buf, MTU_VALUE);
         if (len == 0) {
             break;
         }
         auto l = write(event->fd, buf, len, conn->ssl);
         if (l <= 0) {
-            if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
+            auto err = sese::net::getNetworkError();
+            if (err == EWOULDBLOCK || err == EINTR || err == ECONNABORTED) {
                 // 不能继续写入，等待下一次触发可写事件
+                conn->event->events &= ~EVENT_READ;
+                conn->event->events |= EVENT_WRITE;
                 this->setEvent(event);
                 return;
             } else {
                 // 断开连接...等
-                // auto err = WSAGetLastError();
                 goto free;
             }
         } else {
@@ -375,19 +408,21 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
     while (true) {
         // auto need = conn->responseBodySize - conn->responseBodyWroteSize;
         auto need = conn->rangeIterator->len - conn->rangeIterator->cur;
-        need = need >= 1024 ? 1024 : need % 1024;
+        need = need >= MTU_VALUE ? MTU_VALUE : need % MTU_VALUE;
         if (need == 0) {
             break;
         }
         auto len = conn->file->peek(buf, need);
         auto l = write(event->fd, buf, len, conn->ssl);
         if (l <= 0) {
-            if (errno == EWOULDBLOCK || errno == EAGAIN || errno == EINTR) {
+            auto err = sese::net::getNetworkError();
+            if (err == EWOULDBLOCK || err == EINTR || err == ECONNABORTED) {
                 // 不能继续写入，等待下一次触发可写事件
+                conn->event->events &= ~EVENT_READ;
+                conn->event->events |= EVENT_WRITE;
                 this->setEvent(event);
                 return;
             } else {
-                // auto err = WSAGetLastError();
                 // 断开连接...等
                 goto free;
             }
@@ -420,7 +455,7 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
         // else {
         else {
             if (conn->ranges.size() > 1) {
-                char buffer[1024]{};
+                char buffer[MTU_VALUE]{};
                 auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
 
                 output << "\r\n--";
@@ -442,7 +477,6 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
         }
         // 断开连接
         else {
-            // auto err = WSAGetLastError();
             goto free;
         }
     }

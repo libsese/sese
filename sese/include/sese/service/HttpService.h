@@ -103,6 +103,8 @@ namespace sese::service {
     private:
         void onHandle(HttpConnection *conn) noexcept;
 
+        void onHandleFile(sese::service::HttpConnection *conn, const std::string &path) noexcept;
+
         void onTimeout(TimeoutEvent *timeoutEvent) override;
 
         void onControllerWrite(event::BaseEvent *event) noexcept;

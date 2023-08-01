@@ -86,3 +86,6 @@ constexpr static size_t ZLIB_CHUNK_SIZE = 1024 * 16;
 
 /// IOCP 投递的 Recv 事件时携带的 WSABUF 大小
 constexpr static size_t IOCP_WSABUF_SIZE = 65535;
+
+/// 框架默认 MTU 值
+constexpr static size_t MTU_VALUE = 1472;
