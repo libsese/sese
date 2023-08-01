@@ -1,4 +1,3 @@
-#include <csignal>
 #include <sese/service/HttpService.h>
 #include <sese/service/BalanceLoader.h>
 #include <sese/security/SSLContextBuilder.h>
@@ -8,7 +7,8 @@
 #include <random>
 
 #include <gtest/gtest.h>
-#include <sys/signal.h>
+
+using namespace std::chrono_literals;
 
 sese::net::IPv4Address::Ptr createAddress() {
     std::random_device device;
@@ -76,7 +76,7 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    auto client = sese::net::http::HttpClient::create("https://localhost:" + std::to_string(addr->getPort()) + "/");
+    auto client = sese::net::http::HttpClient::create("https://localhost:" + std::to_string(addr->getPort()) + "/", true);
     ASSERT_TRUE(client->doRequest());
     ASSERT_TRUE(client->doResponse());
     for (decltype(auto) item: client->resp) {
@@ -121,7 +121,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    auto client = sese::net::http::HttpClient::create("http://localhost:" + std::to_string(addr->getPort()) + "/");
+    auto client = sese::net::http::HttpClient::create("http://localhost:" + std::to_string(addr->getPort()) + "/", true);
     ASSERT_TRUE(client->doRequest());
     ASSERT_TRUE(client->doResponse());
     for (decltype(auto) item: client->resp) {
