@@ -1,3 +1,4 @@
+#include <csignal>
 #include <sese/service/HttpService.h>
 #include <sese/service/BalanceLoader.h>
 #include <sese/security/SSLContextBuilder.h>
@@ -7,6 +8,7 @@
 #include <random>
 
 #include <gtest/gtest.h>
+#include <sys/signal.h>
 
 sese::net::IPv4Address::Ptr createAddress() {
     std::random_device device;
@@ -68,7 +70,7 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     sese::service::BalanceLoader service;
     service.setThreads(4);
     service.setAddress(addr);
-    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto {
+    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto{
         return new sese::service::HttpService(config);
     }));
     service.start();
@@ -113,7 +115,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     sese::service::BalanceLoader service;
     service.setThreads(4);
     service.setAddress(addr);
-    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto {
+    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto{
         return new sese::service::HttpService(config);
     }));
     service.start();
@@ -142,4 +144,12 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     SESE_INFO("content: %s", buffer);
 
     service.stop();
+}
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+#if defined(__linux__) || defined(__APPLE__)
+    sigignore(SIGPIPE);
+#endif
+    return RUN_ALL_TESTS();
 }
