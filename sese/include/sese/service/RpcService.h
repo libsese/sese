@@ -1,4 +1,4 @@
-#pragma one
+#pragma once
 
 #include <sese/security/SecuritySocket.h>
 #include <sese/Config.h>
@@ -9,6 +9,10 @@
 
 #include <map>
 #include <functional>
+
+#ifdef _WIN32
+#pragma warning(disable : 4275)
+#endif
 
 namespace sese::service {
 
