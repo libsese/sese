@@ -8,7 +8,7 @@ namespace sese {
 
     const uint64_t Random::multiplier = 25214903917L;
     const uint64_t Random::addend = 11L;
-    const uint64_t Random::mask = (1L << 48) - 1;
+    const uint64_t Random::mask = (1LL << 48) - 1;
     uint64_t Random::seed = Random::noise();
 
     /**

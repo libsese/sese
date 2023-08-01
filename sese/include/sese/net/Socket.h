@@ -159,4 +159,10 @@ namespace sese::net {
         static void close(socket_t socket) noexcept;
     };
 
+    /**
+     * @brief 获取网络相关 error 代码
+     * @return error 代码
+     */
+    extern int getNetworkError() noexcept;
+
 }// namespace sese

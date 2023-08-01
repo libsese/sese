@@ -39,6 +39,10 @@ void sese::net::Socket::close(socket_t socket) noexcept {
     closesocket(socket);
 }
 
+int sese::net::getNetworkError() noexcept {
+    return WSAGetLastError();
+}
+
 #else
 
 #include <unistd.h>
@@ -66,6 +70,10 @@ int sese::net::Socket::setNonblocking(socket_t socket) noexcept {
 
 void sese::net::Socket::close(socket_t socket) noexcept {
     ::close(socket);
+}
+
+int sese::net::getNetworkError() noexcept {
+    return errno;
 }
 
 #endif
