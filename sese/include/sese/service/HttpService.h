@@ -13,6 +13,10 @@
 #include <map>
 #include <functional>
 
+#ifdef _WIN32
+#pragma warning(disable : 4275)
+#endif
+
 namespace sese::service {
 
     /// 指示 Http 处理状态
@@ -23,7 +27,7 @@ namespace sese::service {
         FILE    /// 指示当前请求是一个下载文件的请求，需要在 onWrite 时读取文件
     };
 
-    struct HttpConnection : public sese::Stream {
+    struct API HttpConnection final : public sese::Stream {
         int fd = 0;
         void *ssl = nullptr;
 
@@ -54,7 +58,7 @@ namespace sese::service {
         int64_t write(const void *buf, size_t len) override;
     };
 
-    struct HttpConfig {
+    struct API HttpConfig {
         using Controller1 = std::function<
                 bool(
                         net::http::RequestHeader &req,
