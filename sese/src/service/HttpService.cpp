@@ -75,6 +75,7 @@ void service::HttpService::onAccept(int fd) {
         sese::net::Socket::close(fd);
         return;
     }
+    // GCOVR_EXCL_STOP
 
     if (config.servCtx) {
         clientSSL = SSL_new((SSL_CTX *) config.servCtx->getContext());

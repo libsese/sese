@@ -12,6 +12,7 @@
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
 #include <sese/util/Noncopyable.h>
+#include <sese/util/ByteBuilder.h>
 
 namespace sese::net::http {
 
@@ -44,6 +45,8 @@ namespace sese::net::http {
         /// \return 实际写入的字节
         int64_t write(const void *buffer, size_t len) noexcept;
 
+        void makeRequest() noexcept;
+
         bool doRequest() noexcept;
 
         bool doResponse() noexcept;
@@ -55,6 +58,7 @@ namespace sese::net::http {
         /// \brief 获取响应正文长度
         /// \return 响应正文长度
         [[nodiscard]] int64_t getResponseContentLength() const noexcept { return responseContentLength; }
+
     private:
 #ifdef SESE_BUILD_TEST
     public:
@@ -77,5 +81,8 @@ namespace sese::net::http {
         int64_t responseContentLength = 0;
         // 默认启用长连接
         bool isKeepAlive = true;
+
+        ByteBuilder buffer1{4096};
+        ByteBuilder buffer2{4096};
     };
 }// namespace sese::net::http

@@ -3,6 +3,7 @@
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/net/http/HttpClient.h>
 #include <sese/record/Marco.h>
+#include <sese/util/Util.h>
 
 #include <random>
 
@@ -62,7 +63,7 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     config.servName = "Server for Test";
     config.servCtx = servCtx;
     config.workDir = PROJECT_PATH;
-    config.keepalive = 10;
+    config.keepalive = 30;
 
     config.setController("/", redirect);
     config.setController("/post", post);
@@ -77,8 +78,10 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     ASSERT_TRUE(service.isStarted());
 
     auto client = sese::net::http::HttpClient::create("https://localhost:" + std::to_string(addr->getPort()) + "/", true);
-    ASSERT_TRUE(client->doRequest());
-    ASSERT_TRUE(client->doResponse());
+    client->makeRequest();
+    ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
+    sese::sleep(1);
+    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
@@ -87,9 +90,11 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     client->req.setUrl("/post");
     client->req.setType(sese::net::http::RequestType::Post);
     client->req.set("Content-Length", std::to_string(content.length()));
-    ASSERT_TRUE(client->doRequest());
+    client->makeRequest();
     client->write(content.c_str(), content.length());
-    ASSERT_TRUE(client->doResponse());
+    ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
+    sese::sleep(1);
+    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
@@ -107,7 +112,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     sese::service::HttpConfig config;
     config.servName = "Server for Test";
     config.workDir = PROJECT_PATH;
-    config.keepalive = 10;
+    config.keepalive = 30;
 
     config.setController("/", redirect);
     config.setController("/post", post);
@@ -122,8 +127,10 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     ASSERT_TRUE(service.isStarted());
 
     auto client = sese::net::http::HttpClient::create("http://localhost:" + std::to_string(addr->getPort()) + "/", true);
-    ASSERT_TRUE(client->doRequest());
-    ASSERT_TRUE(client->doResponse());
+    client->makeRequest();
+    ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
+    sese::sleep(1);
+    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
@@ -132,9 +139,11 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     client->req.setUrl("/post");
     client->req.setType(sese::net::http::RequestType::Post);
     client->req.set("Content-Length", std::to_string(content.length()));
-    ASSERT_TRUE(client->doRequest());
+    client->makeRequest();
     client->write(content.c_str(), content.length());
-    ASSERT_TRUE(client->doResponse());
+    ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
+    sese::sleep(1);
+    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }

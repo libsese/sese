@@ -1,4 +1,5 @@
 #include "sese/net/Socket.h"
+#include "sese/util/Util.h"
 
 using namespace sese::net;
 
@@ -15,7 +16,7 @@ Socket::Socket(Family family, Type type, int32_t protocol) noexcept {
     handle = socket((int32_t) family, (int32_t) type, protocol);
 }
 
-Socket::~Socket() noexcept {
+Socket::~Socket() noexcept { // NOLINT
 }
 
 int32_t Socket::bind(Address::Ptr addr) noexcept {
@@ -25,7 +26,20 @@ int32_t Socket::bind(Address::Ptr addr) noexcept {
 
 int32_t Socket::connect(Address::Ptr addr) noexcept {
     address = std::move(addr);
-    return ::connect(handle, address->getRawAddress(), address->getRawAddressLength());
+    while(true) {
+        auto rt = ::connect(handle, address->getRawAddress(), address->getRawAddressLength());
+        if (rt != 0) {
+            auto err = sese::net::getNetworkError();
+            if (err == EWOULDBLOCK || err == EALREADY || err == EINPROGRESS) {
+                sese::sleep(0);
+                continue;
+            } else if (err == EISCONN) {
+                return 0;
+            } else {
+                return rt;
+            }
+        }
+    }
 }
 
 int32_t Socket::listen(int32_t backlog) const noexcept {

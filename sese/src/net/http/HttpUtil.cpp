@@ -185,23 +185,30 @@ bool HttpUtil::recvHeader(InputStream *source, StringBuilder &builder, Header *h
         if (builder.empty()) {
             break;
         } else {
-            auto pair = builder.split(": ");
-            if (pair.size() != 2) return false;
+            // auto pair = builder.split(": ");
+            // if (pair.size() != 2) return false;
+            auto line = builder.toString();
             builder.clear();
+            auto pos = line.find_first_of(": ");
+            if (pos == std::string::npos) {
+                return false;
+            }
+            auto key = line.substr(0, pos);
+            auto value = line.substr(pos + 2);
             if (isResp) {
-                if (strcasecmp(pair[0].c_str(), "Set-Cookie") == 0) {
-                    auto cookie = parseFromSetCookie(pair[1]);
+                if (strcasecmp(key.c_str(), "Set-Cookie") == 0) {
+                    auto cookie = parseFromSetCookie(value);
                     if (cookie != nullptr) {
                         cookies->add(cookie);
                     }
                 } else {
-                    header->set(pair[0], pair[1]);
+                    header->set(key, value);
                 }
             } else {
-                if (strcasecmp(pair[0].c_str(), "Cookie") == 0) {
-                    cookies = parseFromCookie(pair[1]);
+                if (strcasecmp(key.c_str(), "Cookie") == 0) {
+                    cookies = parseFromCookie(value);
                 } else {
-                    header->set(pair[0], pair[1]);
+                    header->set(key, value);
                 }
             }
         }

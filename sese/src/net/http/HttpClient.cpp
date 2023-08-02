@@ -5,6 +5,7 @@
 #include <sese/text/StringBuilder.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/util/Util.h>
+#include <sese/util/FixedBuilder.h>
 
 using sese::net::IPv4Address;
 using sese::net::IPv4AddressPool;
@@ -52,11 +53,22 @@ HttpClient::Ptr HttpClient::create(const std::string &url, bool keepAlive) noexc
     ptr->isKeepAlive = keepAlive;
     ptr->address = std::move(addr);
     ptr->req.setUrl(info.getUrl() + info.getQuery());
+    ptr->req.set("host", info.getHost());
     if (ssl) {
         ptr->sslContext = security::SSLContextBuilder::SSL4Client();
     }
 
     return std::unique_ptr<HttpClient>(ptr);
+}
+
+void HttpClient::makeRequest() noexcept {
+    buffer1.freeCapacity();
+
+    if (isKeepAlive) {
+        req.set("Connection", "Keep-Alive");
+    }
+
+    sese::net::http::HttpUtil::sendRequest(&buffer1, &req);
 }
 
 bool HttpClient::doRequest() noexcept {
@@ -70,18 +82,51 @@ bool HttpClient::doRequest() noexcept {
         return false;
     }
 
-    if (isKeepAlive) {
-        req.set("Connection", "Keep-Alive");
+    char buf[MTU_VALUE];
+    while (true) {
+        auto len = buffer1.peek(buf, MTU_VALUE);
+        if (len == 0) {
+            return true;
+        }
+        auto l = socket->write(buf, len);
+        if (l <= 0) {
+            auto err = sese::net::getNetworkError();
+            if (err == EWOULDBLOCK || err == EINTR || err == ECONNABORTED || err == 0) {
+                sese::sleep(0);
+                continue;
+            } else {
+                // 断开连接...等
+                return false;
+            }
+        } else {
+            buffer1.trunc(l);
+        }
     }
-
-    return sese::net::http::HttpUtil::sendRequest(socket.get(), &req);
 }
 
 bool HttpClient::doResponse() noexcept {
+    int time = 0;
     if (socket) {
+        buffer2.freeCapacity();
+        char buf[MTU_VALUE];
+        while (true) {
+            auto l = socket->read(buf, MTU_VALUE);
+            if (l <= 0) {
+                auto err = sese::net::getNetworkError();
+                if (err == ENOTCONN) {
+                    // 断开连接
+                    return false;
+                } else {
+                    break;
+                }
+            } else {
+                buffer2.write(buf, l);
+            }
+        }
+
         resp.clear();
         char *endPtr;
-        auto rt = sese::net::http::HttpUtil::recvResponse(socket.get(), &resp);
+        auto rt = sese::net::http::HttpUtil::recvResponse(&buffer2, &resp);
         responseContentLength = std::strtol(resp.get("Content-Length", "0").c_str(), &endPtr, 10);
         return rt;
     }
@@ -126,6 +171,8 @@ bool HttpClient::reconnect() noexcept {
         this->socket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP, IPPROTO_IP);
     }
 
+    this->socket->setNonblocking();
+
     if (0 != this->socket->connect(this->address)) {
         this->socket = nullptr;
         return false;
@@ -136,14 +183,14 @@ bool HttpClient::reconnect() noexcept {
 
 int64_t HttpClient::read(void *buffer, size_t len) noexcept {
     if (socket) {
-        return socket->read(buffer, len);
+        return buffer2.read(buffer, len);
     }
     return -1;
 }
 
 int64_t HttpClient::write(const void *buffer, size_t len) noexcept {
     if (socket) {
-        return socket->write(buffer, len);
+        return buffer1.write(buffer, len);
     }
     return -1;
 }

@@ -140,6 +140,11 @@ namespace sese {
         }
         length -= freeCap;
         cap -= freeCap;
+
+        currentReadPos = 0;
+        currentWritePos = 0;
+        root->length = 0;
+
         return freeCap;
     }
 
@@ -209,8 +214,8 @@ namespace sese {
     }
 
     int64_t AbstractByteBuffer::peek(void *buffer, size_t needRead) {
-        auto *_currentReadNode = currentReadNode;
-        auto *_currentWriteNode = currentWriteNode;
+        const Node *_currentReadNode = currentReadNode;
+        const Node *_currentWriteNode = currentWriteNode;
         auto _currentReadPos = currentReadPos;
 
         int64_t actualRead = 0;
