@@ -158,7 +158,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
 #if defined(__linux__) || defined(__APPLE__)
-    sigignore(SIGPIPE);
+    signal(SIGPIPE, SIG_IGN);
 #endif
     return RUN_ALL_TESTS();
 }

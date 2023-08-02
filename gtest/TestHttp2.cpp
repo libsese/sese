@@ -218,6 +218,14 @@ TEST(TestHttp2, Server) {
     server.shutdown();
 }
 
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+#if defined(__linux__) || defined(__APPLE__)
+    signal(SIGPIPE, SIG_IGN);
+#endif
+    return RUN_ALL_TESTS();
+}
+
 #ifdef __clang__
 #pragma clang diagnostic pop
 #elif __GNUC__
