@@ -36,7 +36,7 @@ jobs:
 
       - name: Test
         working-directory: ${{github.workspace}}/build
-        run: ctest -C ${{env.BUILD_TYPE}} --extra-verbose
+        run: ctest -C ${{env.RELEASE_BUILD_TYPE}} --extra-verbose
 
   test_coverage_job:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
 
       - name: Test
         working-directory: ${{github.workspace}}/build
-        run: ctest -C ${{env.BUILD_TYPE}} --extra-verbose
+        run: ctest -C ${{env.COVERAGE_BUILD_TYPE}} --extra-verbose
 
       - name: Set up Python
         uses: actions/setup-python@v4
