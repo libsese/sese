@@ -3,6 +3,7 @@
 #include <sese/text/StringBuilder.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/config/json/JsonUtil.h>
+#include <sese/util/Util.h>
 
 using namespace sese;
 using namespace sese::json;
@@ -38,26 +39,6 @@ json::ObjectData::Ptr Client::makeTemplateRequest(const std::string &name) {
     return object;
 }
 
-json::ObjectData::Ptr Client::call(const std::string &name, json::ObjectData::Ptr &args) noexcept {
-    if (!socket && !reconnect()) {
-        // socket 未建立连接并且也无法连接
-        return nullptr;
-    }
-
-    auto object = makeTemplateRequest(name);
-    object->set(SESE_RPC_TAG_ARGS, args);
-
-    json::JsonUtil::serialize(object.get(), &buffer);
-    socket->write(buffer.data(), buffer.getReadableSize());
-
-    buffer.reset();
-
-    auto result = json::JsonUtil::deserialize(socket.get(), 5);
-    socket->close();
-    socket = nullptr;
-    return result;
-}
-
 bool Client::reconnect() noexcept {
     if (socket) {
         socket->close();
@@ -69,12 +50,70 @@ bool Client::reconnect() noexcept {
         this->socket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP, IPPROTO_IP);
     }
 
+    this->socket->setNonblocking();
+
     if (0 != this->socket->connect(this->address)) {
         this->socket = nullptr;
         return false;
     } else {
         return true;
     }
+}
+
+bool Client::doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept {
+    auto object = makeTemplateRequest(name);
+    object->set(SESE_RPC_TAG_ARGS, args);
+    buffer.freeCapacity();
+    json::JsonUtil::serialize(object.get(), &buffer);
+
+    if (!reconnect()) {
+        return false;
+    }
+
+    char buf[MTU_VALUE];
+    while (true) {
+        auto len = buffer.peek(buf, MTU_VALUE);
+        if (len == 0) {
+            return true;
+        }
+        auto l = socket->write(buf, len);
+        if (l <= 0) {
+            auto err = sese::net::getNetworkError();
+            if (err == EWOULDBLOCK || err == EINTR || err == ECONNABORTED || err == 0) {
+                sese::sleep(0);
+                continue;
+            } else {
+                // 断开连接...等
+                return false;
+            }
+        } else {
+            buffer.trunc(l);
+        }
+    }
+}
+
+json::ObjectData::Ptr Client::doResponse() noexcept {
+    if (socket) {
+        buffer.freeCapacity();
+        char buf[MTU_VALUE];
+        while (true) {
+            auto l = socket->read(buf, MTU_VALUE);
+            if (l <= 0) {
+                auto err = sese::net::getNetworkError();
+                if (err == ENOTCONN) {
+                    // 断开连接
+                    return nullptr;
+                } else {
+                    break;
+                }
+            } else {
+                buffer.write(buf, l);
+            }
+        }
+        auto result = json::JsonUtil::deserialize(&buffer, 5);
+        return result;
+    }
+    return nullptr;
 }
 
 #define RETURN(TYPE)           \

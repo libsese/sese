@@ -12,7 +12,7 @@
 #include <sese/security/SecuritySocket.h>
 #include <sese/security/SSLContext.h>
 #include <sese/util/Noncopyable.h>
-#include <sese/util/FixedBuilder.h>
+#include <sese/util/ByteBuilder.h>
 
 namespace sese::net::rpc {
 
@@ -25,7 +25,9 @@ namespace sese::net::rpc {
 
         ~Client() noexcept;
 
-        json::ObjectData::Ptr call(const std::string &name, json::ObjectData::Ptr &args) noexcept;
+        bool doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept;
+
+        json::ObjectData::Ptr doResponse() noexcept;
 
     private:
         json::ObjectData::Ptr makeTemplateRequest(const std::string &name);
@@ -38,10 +40,8 @@ namespace sese::net::rpc {
         // 如果启用 ssl 则需要 SSL 上下文
         security::SSLContext::Ptr sslContext;
 
-        FixedBuilder buffer{8192};
+        ByteBuilder buffer{};
         json::BasicData::Ptr version;
-        // 默认启用长连接
-        bool isKeepAlive = true;
     };
 
     /// 获取返回码对应的错误信息

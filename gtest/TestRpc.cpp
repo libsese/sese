@@ -5,6 +5,8 @@
 #include <sese/record/Marco.h>
 #include <sese/config/json/JsonUtil.h>
 #include <sese/util/OutputUtil.h>
+#include <sese/util/Util.h>
+
 #define REMOTE_API
 
 #include <gtest/gtest.h>
@@ -67,8 +69,10 @@ TEST(TestRpc, WithSSL) {
         int64_t value1 = 2;
         SESE_JSON_SET_INTEGER(args, "value0", value0);
         SESE_JSON_SET_INTEGER(args, "value1", value1);
-        result = client.call("add", args);
+        ASSERT_TRUE(client.doRequest("add", args));
+        sese::sleep(1);
 
+        result = client.doResponse();
         ASSERT_NE(result, nullptr);
         SESE_JSON_GET_INTEGER(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
         ASSERT_EQ(SESE_RPC_CODE_SUCCEED, code) << sese::net::rpc::getErrorMessage(code);
@@ -88,8 +92,10 @@ TEST(TestRpc, WithSSL) {
 
     {
         args = std::make_shared<sese::json::ObjectData>();
-        result = client.call("dev-0", args);
+        ASSERT_TRUE(client.doRequest("dev-0", args));
+        sese::sleep(1);
 
+        result = client.doResponse();
         ASSERT_NE(result, nullptr);
         SESE_JSON_GET_INTEGER(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
         ASSERT_EQ(SESE_RPC_CODE_NO_EXIST_FUNC, code) << sese::net::rpc::getErrorMessage(code);
@@ -98,8 +104,10 @@ TEST(TestRpc, WithSSL) {
     {
         args = std::make_shared<sese::json::ObjectData>();
         SESE_JSON_SET_STRING(args, "str", "\"");
-        result = client.call("dev-1", args);
+        ASSERT_TRUE(client.doRequest("dev-1", args));
+        sese::sleep(1);
 
+        result = client.doResponse();
         ASSERT_EQ(result, nullptr);
     }
 
@@ -107,7 +115,10 @@ TEST(TestRpc, WithSSL) {
         auto client_0 = sese::net::rpc::Client(addr, true, "0");
         args = std::make_shared<sese::json::ObjectData>();
 
-        result = client_0.call("dev-2", args);
+        ASSERT_TRUE(client_0.doRequest("dev-2", args));
+        sese::sleep(1);
+
+        result = client_0.doResponse();
         ASSERT_NE(result, nullptr);
         SESE_JSON_GET_INTEGER(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
         ASSERT_EQ(SESE_RPC_CODE_NONSUPPORT_VERSION, code) << sese::net::rpc::getErrorMessage(code);
@@ -123,12 +134,12 @@ TEST(TestRpc, WithSSL) {
 
     {
         const char *buffer = {"{\n"
-                         "  \"rpc-args\": {\n"
-                         "    \"value0\": 1,\n"
-                         "    \"value1\": 2\n"
-                         "  },\n"
-                         "  \"rpc-name\": \"add\"\n"
-                         "}"};
+                              "  \"rpc-args\": {\n"
+                              "    \"value0\": 1,\n"
+                              "    \"value1\": 2\n"
+                              "  },\n"
+                              "  \"rpc-name\": \"add\"\n"
+                              "}"};
         auto clientCtx = sese::security::SSLContextBuilder::SSL4Client();
         auto socket = clientCtx->newSocketPtr(sese::net::Socket::Family::IPv4, 0);
         socket->connect(addr);
@@ -210,8 +221,11 @@ TEST(TestRpc, NoSSL) {
     auto args = std::make_shared<sese::json::ObjectData>();
     SESE_JSON_SET_INTEGER(args, "value0", value0);
     SESE_JSON_SET_INTEGER(args, "value1", value1);
-    auto result = client.call("add", args);
+    ASSERT_TRUE(client.doRequest("add", args));
+    sese::sleep(1);
 
+    auto result = client.doResponse();
+    ASSERT_NE(result, nullptr);
     SESE_JSON_GET_INTEGER(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
     ASSERT_EQ(SESE_RPC_CODE_SUCCEED, code) << sese::net::rpc::getErrorMessage(code);
 

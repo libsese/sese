@@ -105,7 +105,6 @@ bool HttpClient::doRequest() noexcept {
 }
 
 bool HttpClient::doResponse() noexcept {
-    int time = 0;
     if (socket) {
         buffer2.freeCapacity();
         char buf[MTU_VALUE];
