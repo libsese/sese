@@ -34,6 +34,8 @@ namespace sese::service {
     public:
         explicit HttpService(const HttpConfig &config) noexcept;
 
+        ~HttpService() noexcept override;
+
     private:
         void onAccept(int fd) override;
 
@@ -42,6 +44,11 @@ namespace sese::service {
         void onWrite(event::BaseEvent *event) override;
 
         void onClose(event::BaseEvent *event) override;
+
+    private:
+        event::BaseEvent *createEventEx(int fd, unsigned int events, void *data) noexcept;
+
+        void freeEventEx(event::BaseEvent *event) noexcept;
 
     private:
         void onHandle(net::http::HttpConnection *conn) noexcept;
@@ -62,5 +69,6 @@ namespace sese::service {
         static int64_t write(int fd, const void *buffer, size_t len, void *ssl) noexcept;
 
         HttpConfig config;
+        std::map<int, event::BaseEvent *> eventMap;
     };
 }// namespace sese::service

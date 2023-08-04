@@ -66,6 +66,23 @@ service::HttpService::HttpService(const HttpConfig &config) noexcept {
     this->config = config;
 }
 
+service::HttpService::~HttpService() noexcept {
+    for (auto &item : eventMap) {
+        auto event = item.second;
+        auto conn = (HttpConnection *) event->data;
+        if (conn->timeoutEvent) {
+            this->freeTimeoutEvent(conn->timeoutEvent);
+        }
+        if (config.servCtx) {
+            SSL_free((SSL *) conn->ssl);
+        }
+        sese::net::Socket::close(event->fd);
+        delete conn;
+        this->freeEvent(event);
+    }
+    eventMap.clear();
+}
+
 void service::HttpService::onAccept(int fd) {
     SSL *clientSSL = nullptr;
 
@@ -109,7 +126,7 @@ void service::HttpService::onAccept(int fd) {
         conn->timeoutEvent->data = conn;
     }
 
-    conn->event = this->createEvent(fd, EVENT_READ, conn);
+    conn->event = this->createEventEx(fd, EVENT_READ, conn);
 }
 
 void service::HttpService::onRead(event::BaseEvent *event) {
@@ -175,7 +192,7 @@ free:
     }
     sese::net::Socket::close(event->fd);
     delete conn;
-    this->freeEvent(event);
+    this->freeEventEx(event);
 }
 
 void service::HttpService::onWrite(sese::event::BaseEvent *event) {
@@ -191,6 +208,29 @@ void service::HttpService::onWrite(sese::event::BaseEvent *event) {
 }
 
 void service::HttpService::onClose(sese::event::BaseEvent *event) {
+    auto conn = (HttpConnection *) event->data;
+    if (conn->timeoutEvent) {
+        this->freeTimeoutEvent(conn->timeoutEvent);
+    }
+    if (config.servCtx) {
+        SSL_free((SSL *) conn->ssl);
+    }
+    sese::net::Socket::close(event->fd);
+    delete conn;
+    this->freeEventEx(event);
+}
+
+sese::event::BaseEvent *sese::service::HttpService::createEventEx(int fd, unsigned int events, void *data) noexcept {
+    auto rt = this->createEvent(fd, events, data);
+    if (rt) {
+        this->eventMap[fd] = rt;
+    }
+    return rt;
+}
+
+void sese::service::HttpService::freeEventEx(sese::event::BaseEvent *event) noexcept {
+    this->eventMap.erase(event->fd);
+    this->freeEvent(event);
 }
 
 void service::HttpService::onHandle(HttpConnection *conn) noexcept {
@@ -362,7 +402,7 @@ free:
     }
     sese::net::Socket::close(event->fd);
     delete conn;
-    this->freeEvent(event);
+    this->freeEventEx(event);
 }
 
 void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
@@ -478,7 +518,7 @@ free:
     }
     sese::net::Socket::close(event->fd);
     delete conn;
-    this->freeEvent(event);
+    this->freeEventEx(event);
 }
 
 int64_t service::HttpService::read(int fd, void *buffer, size_t len, void *ssl) noexcept {
@@ -503,6 +543,6 @@ void service::HttpService::onTimeout(service::TimeoutEvent *timeoutEvent) {
         SSL_free((SSL *) conn->ssl);
     }
     sese::net::Socket::close(conn->fd);
-    this->freeEvent(conn->event);
+    this->freeEventEx(conn->event);
     delete conn;
 }
