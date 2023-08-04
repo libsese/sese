@@ -120,30 +120,22 @@ namespace sese {
     }
 
     size_t AbstractByteBuffer::freeCapacity() {
-        // size_t freeCap = 0;
-        // Node *toDel;
-        // while (root != this->currentReadNode && root->next) {
-        //     toDel = root;
-        //     root = toDel->next;
-        //     freeCap += toDel->cap;
-        //     delete toDel;// GCOVR_EXCL_LINE
-        // }
-        // length -= freeCap;
-        // cap -= freeCap;
-        // return freeCap;
+        // 还原 root，删除 root 之后的节点
         size_t freeCap = 0;
-        while(root != currentReadNode) {
-            freeCap += root->cap;
-            auto toDel = root;
-            root = root->next;
-            delete toDel;// GCOVR_EXCL_LINE
+        auto pNode = root->next;
+        while (pNode) {
+            auto toDel = pNode;
+            freeCap += toDel->cap;
+            pNode = pNode->next;
+            delete toDel;
         }
-        length -= freeCap;
-        cap -= freeCap;
 
-        currentReadPos = 0;
-        currentWritePos = 0;
-        root->length = 0;
+        this->root->length = 0;
+        this->root->next = nullptr;
+        this->currentWriteNode = this->root;
+        this->currentReadNode = this->root;
+        this->currentWritePos = 0;
+        this->currentReadPos = 0;
 
         return freeCap;
     }
