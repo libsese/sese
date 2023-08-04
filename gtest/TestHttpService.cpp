@@ -32,7 +32,7 @@ bool redirect(
 }
 
 // post 测试
-void post(sese::service::HttpConnection *conn) noexcept {
+void post(sese::net::http::HttpConnection *conn) noexcept {
     char *end;
     auto len = std::strtol(conn->req.get("Content-Length", "0").c_str(), &end, 0);
     if (len != 0) {
@@ -48,7 +48,7 @@ void post(sese::service::HttpConnection *conn) noexcept {
     conn->resp.set("Content-Length", std::to_string(content.length()));
     conn->doResponse();
     conn->write(content.c_str(), content.length());
-    conn->status = sese::service::HttpHandleStatus::OK;
+    conn->status = sese::net::http::HttpHandleStatus::OK;
 }
 
 TEST(TestHttpService, SSL_KEEPALIVE) {
@@ -109,13 +109,16 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
 TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     auto addr = createAddress();
 
+
+    auto group = sese::net::http::ControllerGroup("/my_group");
+    group.setController("/", redirect);
+    group.setController("/post", post);
+
     sese::service::HttpConfig config;
     config.servName = "Server for Test";
     config.workDir = PROJECT_PATH;
     config.keepalive = 30;
-
-    config.setController("/", redirect);
-    config.setController("/post", post);
+    config.setController(group);
 
     sese::service::BalanceLoader service;
     service.setThreads(4);
@@ -126,7 +129,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    auto client = sese::net::http::HttpClient::create("http://localhost:" + std::to_string(addr->getPort()) + "/", true);
+    auto client = sese::net::http::HttpClient::create("http://localhost:" + std::to_string(addr->getPort()) + "/my_group/", true);
     client->makeRequest();
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
     sese::sleep(1);
@@ -136,7 +139,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     }
 
     std::string content = "Hello Server";
-    client->req.setUrl("/post");
+    client->req.setUrl("/my_group/post");
     client->req.setType(sese::net::http::RequestType::Post);
     client->req.set("Content-Length", std::to_string(content.length()));
     client->makeRequest();

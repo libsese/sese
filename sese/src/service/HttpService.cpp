@@ -12,33 +12,17 @@
 
 using namespace sese;
 
+using sese::net::http::HttpConnection;
+using sese::net::http::HttpHandleStatus;
+using sese::net::http::SimpleController;
+using sese::net::http::Controller;
+
 /// https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
-template <typename TP>
-std::time_t to_time_t(TP tp)
-{
+template<typename TP>
+std::time_t to_time_t(TP tp) {
     using namespace std::chrono;
-    auto sctp = time_point_cast<system_clock::duration>(tp - TP::clock::now()
-                                                        + system_clock::now());
+    auto sctp = time_point_cast<system_clock::duration>(tp - TP::clock::now() + system_clock::now());
     return system_clock::to_time_t(sctp);
-}
-
-service::HttpConnection::~HttpConnection() noexcept {
-    if (file) {
-        file->close();
-        file = nullptr;
-    }
-}
-
-void service::HttpConnection::doResponse() noexcept {
-    net::http::HttpUtil::sendResponse(&buffer2, &resp);
-}
-
-int64_t service::HttpConnection::read(void *buf, size_t len) {
-    return this->buffer1.read(buf, len);
-}
-
-int64_t service::HttpConnection::write(const void *buf, size_t len) {
-    return this->buffer2.write(buf, len);
 }
 
 service::HttpConfig::HttpConfig() noexcept {
@@ -60,6 +44,22 @@ service::HttpConfig::HttpConfig() noexcept {
 
                 conn->status = HttpHandleStatus::OK;
             }};
+}
+
+void service::HttpConfig::setController(const std::string &path, const SimpleController &controller) noexcept {
+    this->controllerMap[path] = sese::net::http::toController(controller);
+}
+
+void service::HttpConfig::setController(const std::string &path, const Controller &controller) noexcept {
+    this->controllerMap[path] = controller;
+}
+
+void service::HttpConfig::setController(const net::http::ControllerGroup &group) noexcept {
+    auto &name = group.getName();
+    auto &map = group.getControllerMap();
+    for (auto &item :map) {
+        this->controllerMap[name + item.first] = item.second;
+    }
 }
 
 service::HttpService::HttpService(const HttpConfig &config) noexcept {
@@ -193,7 +193,7 @@ void service::HttpService::onWrite(sese::event::BaseEvent *event) {
 void service::HttpService::onClose(sese::event::BaseEvent *event) {
 }
 
-void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcept {
+void service::HttpService::onHandle(HttpConnection *conn) noexcept {
     bool rt;
     conn->resp.set("Server", config.servName);
 
@@ -219,23 +219,9 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
 
     auto url = net::http::Url(conn->req.getUrl());
 
-    auto iterator1 = config.controller1Map.find(url.getUrl());
-    if (iterator1 != config.controller1Map.end()) {
-        rt = iterator1->second(conn->req, conn->resp);
-        if (!rt) {
-            conn->status = HttpHandleStatus::FAIL;
-            return;
-        }
-
-        // 此处是向 buffer 中直接写入，故不需要判断是否成功
-        net::http::HttpUtil::sendResponse(&conn->buffer2, &conn->resp);
-        conn->status = HttpHandleStatus::OK;
-        return;
-    }
-
-    auto iterator2 = config.controller2Map.find(url.getUrl());
-    if (iterator2 != config.controller2Map.end()) {
-        iterator2->second(conn);
+    auto iterator = config.controllerMap.find(url.getUrl());
+    if (iterator != config.controllerMap.end()) {
+        iterator->second(conn);
         return;
     }
 
@@ -249,7 +235,7 @@ void service::HttpService::onHandle(sese::service::HttpConnection *conn) noexcep
     }
 }
 
-void service::HttpService::onHandleFile(sese::service::HttpConnection *conn, const std::string &path) noexcept { // NOLINT
+void service::HttpService::onHandleFile(HttpConnection *conn, const std::string &path) noexcept {// NOLINT
     if (std::filesystem::is_regular_file(path)) {
         conn->file = FileStream::create(path, "rb");
         if (conn->file != nullptr) {
