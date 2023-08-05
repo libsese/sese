@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
+cmake_policy(SET CMP0048 NEW)
+
 option(SESE_BUILD_TEST "build unit test targets" OFF)
 if (SESE_BUILD_TEST)
     if (NOT DEFINED VCPKG_MANIFEST_FEATURES)
