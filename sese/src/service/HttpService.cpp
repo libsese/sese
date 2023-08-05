@@ -57,7 +57,7 @@ void service::HttpConfig::setController(const std::string &path, const Controlle
 void service::HttpConfig::setController(const net::http::ControllerGroup &group) noexcept {
     auto &name = group.getName();
     auto &map = group.getControllerMap();
-    for (auto &item :map) {
+    for (auto &item: map) {
         this->controllerMap[name + item.first] = item.second;
     }
 }
@@ -67,7 +67,7 @@ service::HttpService::HttpService(const HttpConfig &config) noexcept {
 }
 
 service::HttpService::~HttpService() noexcept {
-    for (auto &item : eventMap) {
+    for (auto &item: eventMap) {
         auto event = item.second;
         auto conn = (HttpConnection *) event->data;
         if (conn->timeoutEvent) {
@@ -265,7 +265,7 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
         return;
     }
 
-    if (!config.workDir.empty() && conn->req.getType() == net::http::RequestType::Get) {
+    if (!config.workDir.empty()) {
         auto file = config.workDir + url.getUrl();
         onHandleFile(conn, file);
     }
@@ -277,26 +277,32 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
 
 void service::HttpService::onHandleFile(HttpConnection *conn, const std::string &path) noexcept {// NOLINT
     if (std::filesystem::is_regular_file(path)) {
-        conn->file = FileStream::create(path, "rb");
-        if (conn->file != nullptr) {
-            /// content-type 确定
-            auto pos = path.find_last_of('.');
-            if (pos != std::string::npos) {
-                auto rawType = path.substr(pos + 1);
-                auto iterator = contentTypeMap.find(rawType);
-                if (iterator != contentTypeMap.end()) {
-                    conn->contentType = iterator->second;
-                }
+        /// content-type 确定
+        auto pos = path.find_last_of('.');
+        if (pos != std::string::npos) {
+            auto rawType = path.substr(pos + 1);
+            auto iterator = contentTypeMap.find(rawType);
+            if (iterator != contentTypeMap.end()) {
+                conn->contentType = iterator->second;
             }
-            conn->resp.set("content-type", conn->contentType);
+        }
+        conn->resp.set("content-type", conn->contentType);
 
-            /// last-modified
-            auto lastModified = std::filesystem::last_write_time(path);
-            uint64_t time = to_time_t(lastModified) * 1000 * 1000;
-            conn->resp.set("last-modified", sese::text::DateTimeFormatter::format(sese::DateTime(time, 0), TIME_GREENWICH_MEAN_PATTERN));
+        /// last-modified
+        auto lastModified = std::filesystem::last_write_time(path);
+        uint64_t time = to_time_t(lastModified) * 1000 * 1000;
+        conn->resp.set("last-modified", sese::text::DateTimeFormatter::format(sese::DateTime(time, 0), TIME_GREENWICH_MEAN_PATTERN));
 
-            conn->fileSize = std::filesystem::file_size(path);
-            conn->ranges = sese::net::http::Range::parse(conn->req.get("Range", ""), conn->fileSize);
+        conn->fileSize = std::filesystem::file_size(path);
+        conn->ranges = sese::net::http::Range::parse(conn->req.get("Range", ""), conn->fileSize);
+        if (conn->req.getType() == net::http::RequestType::Get) {
+            conn->file = FileStream::create(path, "rb");
+            if (conn->file == nullptr) {
+                conn->resp.setCode(500);
+                conn->doResponse();
+                conn->status = net::http::HttpHandleStatus::OK;
+                return;
+            }
             // 完整文件
             if (conn->ranges.empty()) {
                 conn->ranges.emplace_back(0, conn->fileSize);
@@ -307,49 +313,54 @@ void service::HttpService::onHandleFile(HttpConnection *conn, const std::string 
                 return;
             }
             // 分块请求
-            else {
-                conn->resp.setCode(206);
-                conn->rangeIterator = conn->ranges.begin();
-                if (conn->ranges.size() > 1) {
-                    size_t len = 0;
-                    for (auto item: conn->ranges) {
-                        len += 4;// \r\n--
-                        len += strlen(HTTPD_BOUNDARY);
-                        len += 2;// \r\n
-                        len += strlen("Content-Type: ");
-                        len += conn->contentType.length();
-                        len += 2;// \r\n
-                        len += strlen("Content-Range: ");
-                        len += item.toString(conn->fileSize).length();
-                        len += 4;// \r\n\r\n
-                        len += item.len;
-                    }
+            conn->resp.setCode(206);
+            conn->rangeIterator = conn->ranges.begin();
+            if (conn->ranges.size() > 1) {
+                size_t len = 0;
+                for (auto item: conn->ranges) {
                     len += 4;// \r\n--
                     len += strlen(HTTPD_BOUNDARY);
-                    len += 4;// --\r\n
-                    len -= 2;// 抵消首次区块的 \r\n
-
-                    conn->resp.set("content-length", std::to_string(len));
-                    conn->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
-                    conn->doResponse();
-
-                    conn->buffer2 << "--";
-                    conn->buffer2 << HTTPD_BOUNDARY;
-                    conn->buffer2 << "\r\ncontent-type: ";
-                    conn->buffer2 << conn->contentType;
-                    conn->buffer2 << "\r\ncontent-range: ";
-                    conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
-                    conn->buffer2 << "\r\n\r\n";
-                    conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
-                } else {
-                    conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
-                    conn->resp.set("content-length", std::to_string(conn->rangeIterator->len));
-                    conn->resp.set("content-range", conn->rangeIterator->toString(conn->fileSize));
-                    conn->doResponse();
+                    len += 2;// \r\n
+                    len += strlen("Content-Type: ");
+                    len += conn->contentType.length();
+                    len += 2;// \r\n
+                    len += strlen("Content-Range: ");
+                    len += item.toString(conn->fileSize).length();
+                    len += 4;// \r\n\r\n
+                    len += item.len;
                 }
-                conn->status = HttpHandleStatus::FILE;
-                return;
+                len += 4;// \r\n--
+                len += strlen(HTTPD_BOUNDARY);
+                len += 4;// --\r\n
+                len -= 2;// 抵消首次区块的 \r\n
+
+                conn->resp.set("content-length", std::to_string(len));
+                conn->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
+                conn->doResponse();
+
+                conn->buffer2 << "--";
+                conn->buffer2 << HTTPD_BOUNDARY;
+                conn->buffer2 << "\r\ncontent-type: ";
+                conn->buffer2 << conn->contentType;
+                conn->buffer2 << "\r\ncontent-range: ";
+                conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
+                conn->buffer2 << "\r\n\r\n";
+                conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
+            } else {
+                conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
+                conn->resp.set("content-length", std::to_string(conn->rangeIterator->len));
+                conn->resp.set("content-range", conn->rangeIterator->toString(conn->fileSize));
+                conn->doResponse();
             }
+
+            conn->status = HttpHandleStatus::FILE;
+            return;
+        } else if (conn->req.getType() == net::http::RequestType::Head) {
+            conn->resp.setCode(200);
+            conn->resp.set("content-length", std::to_string(conn->fileSize));
+            conn->doResponse();
+            conn->status = HttpHandleStatus::OK;
+            return;
         }
     }
     // 文件若是非常规文件或是无法打开文件
