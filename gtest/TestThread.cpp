@@ -1,5 +1,4 @@
-#include "sese/thread/Thread.h"
-#include "sese/thread/ThreadPool.h"
+#include "sese/thread/Async.h"
 #include "sese/record/LogHelper.h"
 #include "sese/record/Marco.h"
 #include "sese/util/Util.h"
@@ -97,7 +96,7 @@ TEST(TestThread, ThreadPool_Future) {
 
     {
         int i = 1, j = 1;
-        auto packagedTask = pool.postTask<int>([&]() {
+        auto packagedTask = sese::async<int>(pool, [&]() {
             std::this_thread::sleep_for(1500ms);
             return i + j;
         });
@@ -114,7 +113,7 @@ TEST(TestThread, ThreadPool_Future) {
 
     {
         std::string i = "114", j = "514";
-        auto packagedTask = pool.postTask<std::string>([&]() {
+        auto packagedTask = sese::async<std::string>(pool, [&]() {
             std::this_thread::sleep_for(1500ms);
             return i + j;
         });
@@ -127,5 +126,25 @@ TEST(TestThread, ThreadPool_Future) {
         auto rt = future.get();
         SESE_INFO("Getvalue %s", rt.c_str());
         EXPECT_EQ(rt, "114514");
+    }
+}
+
+TEST(TestThread, Thread_Future) {
+    {
+        int i = 1, j = 1;
+        auto packagedTask = sese::async<int>([&]() {
+            std::this_thread::sleep_for(1500ms);
+            SESE_INFO("Hello");
+            return i + j;
+        });
+        auto future = packagedTask.get_future();
+        std::future_status status{};
+        do {
+            status = future.wait_for(0.5s);
+            SESE_INFO("NoReady");
+        } while (status != std::future_status::ready);
+        auto rt = future.get();
+        SESE_INFO("Getvalue %d", rt);
+        EXPECT_EQ(rt, 2);
     }
 }
