@@ -1,7 +1,9 @@
 #include "sese/thread/Thread.h"
 #include "sese/thread/ThreadPool.h"
 #include "sese/record/LogHelper.h"
+#include "sese/record/Marco.h"
 #include "sese/util/Util.h"
+
 #include "gtest/gtest.h"
 
 #include <cmath>
@@ -88,4 +90,42 @@ TEST(TestThread, MainThread) {
     );
     th4.start();
     th4.join();
+}
+
+TEST(TestThread, ThreadPool_Future) {
+    auto pool = sese::ThreadPool("future", 2);
+
+    {
+        int i = 1, j = 1;
+        auto packagedTask = pool.postTask<int>([&]() {
+            std::this_thread::sleep_for(1500ms);
+            return i + j;
+        });
+        auto future = packagedTask.get_future();
+        std::future_status status{};
+        do {
+            status = future.wait_for(0.5s);
+            SESE_INFO("NoReady");
+        } while (status != std::future_status::ready);
+        auto rt = future.get();
+        SESE_INFO("Getvalue %d", rt);
+        EXPECT_EQ(rt, 2);
+    }
+
+    {
+        std::string i = "114", j = "514";
+        auto packagedTask = pool.postTask<std::string>([&]() {
+            std::this_thread::sleep_for(1500ms);
+            return i + j;
+        });
+        auto future = packagedTask.get_future();
+        std::future_status status{};
+        do {
+            status = future.wait_for(0.5s);
+            SESE_INFO("NoReady");
+        } while (status != std::future_status::ready);
+        auto rt = future.get();
+        SESE_INFO("Getvalue %s", rt.c_str());
+        EXPECT_EQ(rt, "114514");
+    }
 }
