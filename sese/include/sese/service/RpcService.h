@@ -1,3 +1,8 @@
+/// \file RpcService.h
+/// \brief Rpc 服务
+/// \date 2023年8月5日
+/// \author kaoru
+
 #pragma once
 
 #include <sese/security/SecuritySocket.h>
