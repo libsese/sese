@@ -25,7 +25,7 @@ static tid_t getTid() noexcept {
 
 namespace sese {
 
-    thread_local sese::Thread *currentThread = nullptr;
+    thread_local std::shared_ptr<sese::Thread::RuntimeData> currentData = nullptr;
 
     tid_t Thread::mainId = 0;
 
@@ -39,13 +39,13 @@ namespace sese {
     }
 
     tid_t Thread::getCurrentThreadId() noexcept {
-        return currentThread ? currentThread->id : ::getTid();
+        return currentData ? currentData->id : ::getTid();
     }
 
     const char *Thread::getCurrentThreadName() noexcept {
         auto tid = ::getTid();
         if (tid == Thread::mainId) return THREAD_MAIN_NAME;
-        return currentThread ? currentThread->name.c_str() : THREAD_DEFAULT_NAME;
+        return currentData ? currentData->name.c_str() : THREAD_DEFAULT_NAME;
     }
 
     void Thread::setCurrentThreadAsMain() noexcept {
@@ -58,40 +58,37 @@ namespace sese {
         return Thread::mainId;
     }
 
-    sese::Thread *Thread::getCurrentThread() noexcept {
-        return currentThread;
+    Thread::RuntimeData *Thread::getCurrentThreadData() noexcept {
+        return currentData.get();
     }
 
     Thread::Thread(const std::function<void()> &function, const std::string &name) {
-        this->name = name;        // GCOVR_EXCL_LINE
-        this->function = function;// GCOVR_EXCL_LINE
+        this->data = std::make_shared<Thread::RuntimeData>();// GCOVR_EXCL_LINE
+        this->data->name = name;                             // GCOVR_EXCL_LINE
+        this->data->function = function;                     // GCOVR_EXCL_LINE
     }
 
     void Thread::start() {
-        this->th = std::move(std::thread([this] { run(this); }));// GCOVR_EXCL_LINE
+        this->data->th = std::move(std::thread([this] { run(this->data); }));// GCOVR_EXCL_LINE
     }
 
     void Thread::join() {
-        this->th.join();
+        this->data->th.join();
     }
 
-    void *Thread::run(void *threadSelf) {
-        currentThread = (Thread *) threadSelf;
-        currentThread->id = ::getTid();
+    void Thread::run(std::shared_ptr<RuntimeData> data) {
+        currentData = data;
+        currentData->id = ::getTid();
 
-        std::function<void()> func;
-        func.swap(currentThread->function);
-        func(); // GCOVR_EXCL_LINE
-
-        return nullptr;
+        currentData->function();
     }
 
     bool Thread::joinable() const {
-        return this->th.joinable();
+        return this->data->th.joinable();
     }
 
     void Thread::detach() {
-        this->th.detach();
+        this->data->th.detach();
     }
 
 }// namespace sese

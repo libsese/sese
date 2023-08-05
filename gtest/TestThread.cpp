@@ -25,7 +25,7 @@ TEST(TestThread, Thread) {
 
     log.info("Thread's name = %s, tid = %" PRIdTid, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
 
-    auto i = sese::Thread::getCurrentThread();
+    auto i = sese::Thread::getCurrentThreadData();
     auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
     log.info("Current thread is %s", msg);
 }
@@ -33,7 +33,7 @@ TEST(TestThread, Thread) {
 void proc(int &num, sese::record::LogHelper &helper) {
     helper.info("Thread's name = %s, tid = %" PRIdTid, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
 
-    auto i = sese::Thread::getCurrentThread();
+    auto i = sese::Thread::getCurrentThreadData();
     auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
     helper.info("Current thread is %s", msg);
 
@@ -89,15 +89,18 @@ TEST(TestThread, MainThread) {
     );
     th4.start();
     th4.join();
+
+    std::this_thread::sleep_for(500ms);
 }
 
 TEST(TestThread, ThreadPool_Future) {
-    auto pool = sese::ThreadPool("future", 2);
+    auto pool = sese::ThreadPool("Future", 2);
 
     {
         int i = 1, j = 1;
         auto packagedTask = sese::async<int>(pool, [&]() {
             std::this_thread::sleep_for(1500ms);
+            SESE_INFO("SetValue");
             return i + j;
         });
         auto future = packagedTask.get_future();
@@ -134,7 +137,7 @@ TEST(TestThread, Thread_Future) {
         int i = 1, j = 1;
         auto packagedTask = sese::async<int>([&]() {
             std::this_thread::sleep_for(1500ms);
-            SESE_INFO("Hello");
+            SESE_INFO("SetValue");
             return i + j;
         });
         auto future = packagedTask.get_future();
