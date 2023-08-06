@@ -50,13 +50,28 @@ namespace sese {
         void postTask(const std::vector<std::function<void()>> &tasks);
 
         /**
+         * 向线程池添加任务并绑定参数
+         * @tparam Function 函数模板
+         * @tparam Args 参数模板
+         * @param f 函数
+         * @param args 参数
+         */
+        template<typename Function, typename... Args>
+        void postTaskEx(Function &&f, Args &&...args) {
+            auto boundFunction = [func = std::forward<Function>(f), args = std::make_tuple(std::forward<Args>(args)...)]() mutable {
+                std::apply(std::move(func), std::move(args));
+            };
+            this->postTask(std::move(boundFunction));
+        }
+
+        /**
          * 向线程池添加有返回值的任务
          * \tparam ReturnType 返回值类型
          * \param tasks 欲执行的任务
-         * \return std::packaged_task 对象
+         * \return std::shared_future 对象
          */
         template<class ReturnType>
-        std::packaged_task<ReturnType()> postTask(const std::function<ReturnType()> &tasks);
+        std::shared_future<ReturnType> postTask(const std::function<ReturnType()> &tasks);
 
         /**
          * @brief 关闭当前线程池并阻塞至子线程退出
@@ -85,8 +100,20 @@ namespace sese {
 }// namespace sese
 
 template<class ReturnType>
-std::packaged_task<ReturnType()> sese::ThreadPool::postTask(const std::function<ReturnType()> &task) {
-    std::packaged_task<ReturnType()> packagedTask(task);
-    this->postTask([&]() { packagedTask(); });
-    return packagedTask;
+std::shared_future<ReturnType> sese::ThreadPool::postTask(const std::function<ReturnType()> &task) {
+    /**
+     * 注意：
+     * 由于 std::packaged_task 属于不可拷贝对象，
+     * 并且 std::function 会对参数类型进行擦除，导致 std::move 也无法作用于不可拷贝对象，
+     * 所以此处选择了使用 std::shared_ptr 对 std::packaged_task 进行封装
+     */
+    using TaskPtr = std::shared_ptr<std::packaged_task<ReturnType()>>;
+    TaskPtr packagedTask = std::make_shared<std::packaged_task<ReturnType()>>(task);
+    std::shared_future<ReturnType> future(packagedTask->get_future());
+
+    this->postTask([task = std::move(packagedTask)]() mutable {
+        (*task)();
+    });
+
+    return future;
 }
