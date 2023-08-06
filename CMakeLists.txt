@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 
+# CMP0048
+# 用于允许在 Project 字段前添加 SET、OPTION 等字段
+# https://cmake.org/cmake/help/latest/policy/CMP0048.html
 cmake_policy(SET CMP0048 NEW)
 
 option(SESE_BUILD_TEST "build unit test targets" OFF)
@@ -39,7 +42,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         # for valgrind
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-4")
         # for sanitizer
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
         # for coverage
         # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
         # disable exceptions
