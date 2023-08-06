@@ -157,6 +157,7 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/system/SharedMemory.cpp
         ${NATIVE_PATH}/system/FileNotifier.cpp
         ${NATIVE_PATH}/system/Process.cpp
+        ${NATIVE_PATH}/thread/GlobalThreadPool.cpp
 )
 
 # target_sources(Core-static PRIVATE $<TARGET_OBJECTS:Core>)

@@ -39,7 +39,7 @@ constexpr static const size_t STRING_BUFFER_SIZE_FACTOR = 1024;
 constexpr static const char *SPACE_CHARS = " \n\r\t\v\b";
 
 /// 默认线程名称
-constexpr static const char *THREAD_DEFAULT_NAME = "UNKNOWN_THREAD";
+constexpr static const char *THREAD_DEFAULT_NAME = "UNKNOWN";
 /// 主线程名称
 constexpr static const char *THREAD_MAIN_NAME = "Main";
 

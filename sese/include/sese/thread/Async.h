@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include <sese/thread/ThreadPool.h>
+#include <sese/thread/GlobalThreadPool.h>
 
 namespace sese {
 
@@ -24,6 +24,13 @@ namespace sese {
     template<class ReturnType>
     std::shared_future<ReturnType> async(ThreadPool &pool, const std::function<ReturnType()> &task) noexcept;
 
+    /// 将任务提交到全局线程池当中
+    /// \tparam ReturnType 返回值类型
+    /// \param task 任务
+    /// \return std::shared_future 对象
+    template<class ReturnType>
+    std::shared_future<ReturnType> asyncWithGlobalPool(const std::function<ReturnType()> &task) noexcept;
+
 }// namespace sese
 
 template<class ReturnType>
@@ -32,7 +39,7 @@ std::shared_future<ReturnType> sese::async(const std::function<ReturnType()> &ta
     std::shared_future<ReturnType> future(packagedTask.get_future());
 
     std::thread([&](std::packaged_task<ReturnType()> task) {
-        task(); // 执行任务
+        task();
     }, std::move(packagedTask)).detach();
 
     return future;
@@ -41,4 +48,9 @@ std::shared_future<ReturnType> sese::async(const std::function<ReturnType()> &ta
 template<class ReturnType>
 std::shared_future<ReturnType> sese::async(ThreadPool &pool, const std::function<ReturnType()> &task) noexcept {
     return pool.postTask<ReturnType>(task);
+}
+
+template<class ReturnType>
+std::shared_future<ReturnType> sese::asyncWithGlobalPool(const std::function<ReturnType()> &task) noexcept {
+    return sese::GlobalThreadPool::postTask<ReturnType>(task);
 }

@@ -175,3 +175,26 @@ TEST(TestThread, Thread_Future) {
         EXPECT_EQ(rt, 2);
     }
 }
+
+#include <sese/thread/GlobalThreadPool.h>
+
+TEST(TestThread, GlobalThreadPool) {
+    sese::GlobalThreadPool::postTask([] {
+        SESE_INFO("Hello World");
+    });
+
+    int i = 1, j = 2;
+    auto future = sese::asyncWithGlobalPool<int>([&]() -> int {
+        std::this_thread::sleep_for(1500ms);
+        SESE_INFO("SetValue");
+        return i + j;
+    });
+    std::future_status status{};
+    do {
+        status = future.wait_for(0.5s);
+        SESE_INFO("NoReady");
+    } while (status != std::future_status::ready);
+    auto rt = future.get();
+    SESE_INFO("Getvalue %d", rt);
+    EXPECT_EQ(rt, 3);
+}
