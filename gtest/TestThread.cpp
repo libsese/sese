@@ -58,6 +58,12 @@ TEST(TestThread, ThreadPool) {
     ASSERT_EQ(pool.getThreads(), 4);
     pool.postTask([&log]() { log.info("start!"); });
     pool.postTask(tasks);
+    pool.postTaskEx(
+            [](int i, int j) {
+                printf("%d\n", i + j);
+            },
+            10, 11
+    );
     EXPECT_GT(pool.size(), 0);
 
     sese::sleep(2);
@@ -93,17 +99,35 @@ TEST(TestThread, MainThread) {
     std::this_thread::sleep_for(500ms);
 }
 
+void func(std::packaged_task<int()> task) {
+    task();
+}
+
+template<class ReturnType>
+std::shared_future<ReturnType> postTask(sese::ThreadPool &pool, const std::function<ReturnType()> &task) {
+    using TaskPtr = std::shared_ptr<std::packaged_task<ReturnType()>>;
+    TaskPtr packagedTask = std::make_shared<std::packaged_task<ReturnType()>>(task);
+    std::shared_future<ReturnType> future(packagedTask->get_future());
+
+    pool.postTask([task = std::move(packagedTask)]() mutable {
+        (*task)();
+    });
+
+    return future;
+}
+
 TEST(TestThread, ThreadPool_Future) {
     auto pool = sese::ThreadPool("Future", 2);
 
     {
         int i = 1, j = 1;
-        auto packagedTask = sese::async<int>(pool, [&]() {
+        auto future = sese::async<int>(pool, [&]() {
+            // auto future = sese::async<int>(pool, [&]() {
             std::this_thread::sleep_for(1500ms);
             SESE_INFO("SetValue");
             return i + j;
         });
-        auto future = packagedTask.get_future();
+        // auto future = packagedTask.get_future();
         std::future_status status{};
         do {
             status = future.wait_for(0.5s);
@@ -116,11 +140,11 @@ TEST(TestThread, ThreadPool_Future) {
 
     {
         std::string i = "114", j = "514";
-        auto packagedTask = sese::async<std::string>(pool, [&]() {
+        auto future = sese::async<std::string>(pool, [&]() {
             std::this_thread::sleep_for(1500ms);
             return i + j;
         });
-        auto future = packagedTask.get_future();
+        // auto future = packagedTask.get_future();
         std::future_status status{};
         do {
             status = future.wait_for(0.5s);
@@ -135,12 +159,12 @@ TEST(TestThread, ThreadPool_Future) {
 TEST(TestThread, Thread_Future) {
     {
         int i = 1, j = 1;
-        auto packagedTask = sese::async<int>([&]() {
+        auto future = sese::async<int>([&]() {
             std::this_thread::sleep_for(1500ms);
             SESE_INFO("SetValue");
             return i + j;
         });
-        auto future = packagedTask.get_future();
+        // auto future = packagedTask.get_future();
         std::future_status status{};
         do {
             status = future.wait_for(0.5s);
