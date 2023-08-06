@@ -33,7 +33,7 @@ namespace sese {
          * @param threadPoolName 线程池名称（影响池内线程名称）
          * @param threads 线程数量
          */
-        ThreadPool(std::string threadPoolName, size_t threads);
+        explicit ThreadPool(std::string threadPoolName = THREAD_DEFAULT_NAME, size_t threads = 4);
         ~ThreadPool();
 
     public:
