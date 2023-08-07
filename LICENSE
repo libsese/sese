@@ -202,7 +202,7 @@
 
 -----------------------------------------------------------------------------------
 
-Library sese.core includes a number of components and libraries with separate
+Library sese-core includes a number of components and libraries with separate
 copyright notices and license terms.  Your use of those components are
 subject to the terms and conditions of the following licenses:
 
@@ -226,14 +226,14 @@ subject to the terms and conditions of the following licenses:
     Project URL: https://zlib.net
     License: zlib License
 
-- libsese/sese.plugin
-    Project URL: https://github.com/libsese/sese.plugin
+- libsese/sese-plugin
+    Project URL: https://github.com/libsese/sese-plugin
     License: Apache-2.0 License
 
 - jnferguson/hpack-rfc7541
     Project URL: https://github.com/jnferguson/hpack-rfc7541
     License: BSD 2-Clause "Simplified" License
 
-- libsese/sese.event
-    Project URL: https://github.com/libsese/sese.event
+- libsese/sese-event
+    Project URL: https://github.com/libsese/sese-event
     License: Apache-2.0 License
