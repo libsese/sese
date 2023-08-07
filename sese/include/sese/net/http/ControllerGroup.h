@@ -6,10 +6,7 @@
 
 namespace sese::net::http {
 
-    using SimpleController = std::function<bool(RequestHeader &req, ResponseHeader &resp)>;
-    using Controller = std::function<void(HttpConnection *conn)>;
-
-    API Controller toController(const SimpleController &controller);
+    using Controller = std::function<void(Request &req, Response &resp)>;
 
     class API ControllerGroup {
     public:
@@ -24,8 +21,6 @@ namespace sese::net::http {
         [[nodiscard]] const std::map<std::string, Controller> &getControllerMap() const { return controllerMap; }
 
         void setController(const std::string &path, const Controller &controller) noexcept;
-
-        void setController(const std::string &path, const SimpleController &controller) noexcept;
 
     protected:
         std::string name;

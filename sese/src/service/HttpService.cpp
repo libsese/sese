@@ -12,10 +12,11 @@
 
 using namespace sese;
 
+using sese::net::http::Controller;
 using sese::net::http::HttpConnection;
 using sese::net::http::HttpHandleStatus;
-using sese::net::http::SimpleController;
-using sese::net::http::Controller;
+using sese::net::http::Request;
+using sese::net::http::Response;
 
 /// https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
 template<typename TP>
@@ -27,27 +28,15 @@ std::time_t to_time_t(TP tp) {
 
 service::HttpConfig::HttpConfig() noexcept {
     this->otherController = {
-            [](HttpConnection *conn) {
-                auto url = net::http::Url(conn->req.getUrl());
-
-                // 忽略传输的内容
-                // char *end;
-                // auto len = std::strtol(conn->req.get("Content-Length", "0").data(), &end, 10);
-                // conn->buffer1.trunc(len);
+            [](Request &req, Response &resp) {
+                auto url = net::http::Url(req.getUrl());
 
                 // 404
+                resp.setCode(404);
                 std::string content = "The controller or file named \"" + url.getUrl() + "\" could not be found.";
-                conn->resp.setCode(404);
-                conn->resp.set("Content-Length", std::to_string(content.length()));
-                conn->doResponse();
-                conn->write(content.c_str(), content.length());
-
-                conn->status = HttpHandleStatus::OK;
+                req.getBody().write(content.c_str(), content.length());
+                return true;
             }};
-}
-
-void service::HttpConfig::setController(const std::string &path, const SimpleController &controller) noexcept {
-    this->controllerMap[path] = sese::net::http::toController(controller);
 }
 
 void service::HttpConfig::setController(const std::string &path, const Controller &controller) noexcept {
@@ -177,7 +166,7 @@ void service::HttpService::onRead(event::BaseEvent *event) {
                 }
             }
         } else {
-            conn->buffer1.write(buf, l);
+            conn->req.getBody().write(buf, l);
             conn->requestSize += l;
         }
     }
@@ -237,7 +226,7 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
     bool rt;
     conn->resp.set("Server", config.servName);
 
-    rt = net::http::HttpUtil::recvRequest(&conn->buffer1, &conn->req);
+    rt = net::http::HttpUtil::recvRequest(&conn->req.getBody(), &conn->req);
     if (!rt) {
         conn->status = HttpHandleStatus::FAIL;
         return;
@@ -261,7 +250,10 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
 
     auto iterator = config.controllerMap.find(url.getUrl());
     if (iterator != config.controllerMap.end()) {
-        iterator->second(conn);
+        iterator->second(conn->req, conn->resp);
+        conn->status = net::http::HttpHandleStatus::OK;
+        conn->resp.set("content-length", std::to_string(conn->resp.getBody().getLength()));
+        net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
         return;
     }
 
@@ -271,7 +263,10 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
     }
 
     if (conn->status == HttpHandleStatus::HANDING) {
-        config.otherController(conn);
+        config.otherController(conn->req, conn->resp);
+        conn->status = net::http::HttpHandleStatus::OK;
+        conn->req.set("content-length", std::to_string(conn->resp.getBody().getLength()));
+        net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
     }
 }
 
@@ -298,9 +293,9 @@ void service::HttpService::onHandleFile(HttpConnection *conn, const std::string 
         if (conn->req.getType() == net::http::RequestType::Get) {
             conn->file = FileStream::create(path, "rb");
             if (conn->file == nullptr) {
-                conn->resp.setCode(500);
-                conn->doResponse();
                 conn->status = net::http::HttpHandleStatus::OK;
+                conn->resp.setCode(500);
+                net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
                 return;
             }
             // 完整文件
@@ -308,7 +303,7 @@ void service::HttpService::onHandleFile(HttpConnection *conn, const std::string 
                 conn->ranges.emplace_back(0, conn->fileSize);
                 conn->rangeIterator = conn->ranges.begin();
                 conn->resp.set("content-length", std::to_string(conn->fileSize));
-                conn->doResponse();
+                net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
                 conn->status = HttpHandleStatus::FILE;
                 return;
             }
@@ -336,21 +331,21 @@ void service::HttpService::onHandleFile(HttpConnection *conn, const std::string 
 
                 conn->resp.set("content-length", std::to_string(len));
                 conn->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
-                conn->doResponse();
+                net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
 
-                conn->buffer2 << "--";
-                conn->buffer2 << HTTPD_BOUNDARY;
-                conn->buffer2 << "\r\ncontent-type: ";
-                conn->buffer2 << conn->contentType;
-                conn->buffer2 << "\r\ncontent-range: ";
-                conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
-                conn->buffer2 << "\r\n\r\n";
+                conn->buffer << "--";
+                conn->buffer << HTTPD_BOUNDARY;
+                conn->buffer << "\r\ncontent-type: ";
+                conn->buffer << conn->contentType;
+                conn->buffer << "\r\ncontent-range: ";
+                conn->buffer << conn->rangeIterator->toString(conn->fileSize);
+                conn->buffer << "\r\n\r\n";
                 conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
             } else {
                 conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
                 conn->resp.set("content-length", std::to_string(conn->rangeIterator->len));
                 conn->resp.set("content-range", conn->rangeIterator->toString(conn->fileSize));
-                conn->doResponse();
+                net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
             }
 
             conn->status = HttpHandleStatus::FILE;
@@ -358,7 +353,7 @@ void service::HttpService::onHandleFile(HttpConnection *conn, const std::string 
         } else if (conn->req.getType() == net::http::RequestType::Head) {
             conn->resp.setCode(200);
             conn->resp.set("content-length", std::to_string(conn->fileSize));
-            conn->doResponse();
+            net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
             conn->status = HttpHandleStatus::OK;
             return;
         }
@@ -371,8 +366,9 @@ void service::HttpService::onHandleFile(HttpConnection *conn, const std::string 
 void service::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
     auto conn = (HttpConnection *) event->data;
     char buf[MTU_VALUE]{};
+    // 先发送头部
     while (true) {
-        auto len = conn->buffer2.peek(buf, MTU_VALUE);
+        auto len = conn->buffer.peek(buf, MTU_VALUE);
         if (len == 0) {
             break;
         }
@@ -390,10 +386,35 @@ void service::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
                 goto free;
             }
         } else {
-            conn->buffer2.trunc(l);
+            conn->buffer.trunc(l);
+        }
+    }
+    // 发送内容
+    while (true) {
+        decltype(auto) body = conn->resp.getBody();
+        auto len = body.peek(buf, MTU_VALUE);
+        if (len == 0) {
+            break;
+        }
+        auto l = write(event->fd, buf, len, conn->ssl);
+        if (l <= 0) {
+            auto err = sese::net::getNetworkError();
+            if (err == EWOULDBLOCK || err == EINTR || err == ECONNABORTED) {
+                // 不能继续写入，等待下一次触发可写事件
+                conn->event->events &= ~EVENT_READ;
+                conn->event->events |= EVENT_WRITE;
+                this->setEvent(event);
+                return;
+            } else {
+                // 断开连接...等
+                goto free;
+            }
+        } else {
+            body.trunc(l);
         }
     }
     if (conn->timeoutEvent) {
+        conn->buffer.freeCapacity();
         this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);
         // 进入下一次请求
         conn->event->events &= ~EVENT_WRITE;
@@ -421,7 +442,7 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
     char buf[MTU_VALUE]{};
     // 先发送头部
     while (true) {
-        auto len = conn->buffer2.peek(buf, MTU_VALUE);
+        auto len = conn->buffer.peek(buf, MTU_VALUE);
         if (len == 0) {
             break;
         }
@@ -439,7 +460,7 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
                 goto free;
             }
         } else {
-            conn->buffer2.trunc(l);
+            conn->buffer.trunc(l);
         }
     }
     // 发送内容
@@ -478,13 +499,13 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
 
             conn->file->setSeek((int64_t) conn->rangeIterator->begin, SEEK_SET);
 
-            conn->buffer2 << "\r\n--";
-            conn->buffer2 << HTTPD_BOUNDARY;
-            conn->buffer2 << "\r\nContent-Type: ";
-            conn->buffer2 << conn->contentType;
-            conn->buffer2 << "\r\nContent-Range: ";
-            conn->buffer2 << conn->rangeIterator->toString(conn->fileSize);
-            conn->buffer2 << "\r\n\r\n";
+            conn->buffer << "\r\n--";
+            conn->buffer << HTTPD_BOUNDARY;
+            conn->buffer << "\r\nContent-Type: ";
+            conn->buffer << conn->contentType;
+            conn->buffer << "\r\nContent-Range: ";
+            conn->buffer << conn->rangeIterator->toString(conn->fileSize);
+            conn->buffer << "\r\n\r\n";
 
             this->setEvent(conn->event);
             return;
@@ -506,6 +527,7 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
         }
         // 进入下一次请求
         if (conn->timeoutEvent) {
+            conn->buffer.freeCapacity();
             conn->file->close();
             conn->file = nullptr;
             this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);

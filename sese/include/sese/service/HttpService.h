@@ -21,11 +21,6 @@ namespace sese::service {
     struct API HttpConfig {
         HttpConfig() noexcept;
 
-        /// 为当前配置添加简单控制器
-        /// \param path 注册路径
-        /// \param controller1 控制器
-        void setController(const std::string &path, const net::http::SimpleController &controller1) noexcept;
-
         /// 为当前配置添加通用控制器
         /// \param path 注册路径
         /// \param controller2 控制器

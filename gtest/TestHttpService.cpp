@@ -21,34 +21,33 @@ sese::net::IPv4Address::Ptr createAddress() {
 }
 
 // 重定向
-bool redirect(
-        sese::net::http::RequestHeader &req,
-        sese::net::http::ResponseHeader &resp
+void redirect(
+        sese::net::http::Request &req,
+        sese::net::http::Response &resp
 ) noexcept {
     SESE_INFO("req GET: %s", req.getUrl().c_str());
     resp.setCode(301);
     resp.set("Location", "/LICENSE");
-    return true;
 }
 
 // post 测试
-void post(sese::net::http::HttpConnection *conn) noexcept {
+void post(
+        sese::net::http::Request &req,
+        sese::net::http::Response &resp
+) noexcept {
     char *end;
-    auto len = std::strtol(conn->req.get("Content-Length", "0").c_str(), &end, 0);
+    auto len = std::strtol(req.get("Content-Length", "0").c_str(), &end, 0);
     if (len != 0) {
         char b[1024]{};
-        conn->read(b, len);
-        SESE_INFO("req POST: %s\n%s", conn->req.getUrl().c_str(), b);
+        req.getBody().read(b, len);
+        SESE_INFO("req POST: %s\n%s", req.getUrl().c_str(), b);
     } else {
-        SESE_INFO("req POST: %s", conn->req.getUrl().c_str());
+        SESE_INFO("req POST: %s", req.getUrl().c_str());
     }
 
     std::string content = "Hello Client";
-    conn->resp.setCode(200);
-    conn->resp.set("Content-Length", std::to_string(content.length()));
-    conn->doResponse();
-    conn->write(content.c_str(), content.length());
-    conn->status = sese::net::http::HttpHandleStatus::OK;
+    resp.setCode(200);
+    resp.getBody().write(content.c_str(), content.length());
 }
 
 TEST(TestHttpService, SSL_KEEPALIVE) {
@@ -71,7 +70,7 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     sese::service::BalanceLoader service;
     service.setThreads(4);
     service.setAddress(addr);
-    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto{
+    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto {
         return new sese::service::HttpService(config);
     }));
     service.start();
@@ -123,7 +122,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     sese::service::BalanceLoader service;
     service.setThreads(4);
     service.setAddress(addr);
-    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto{
+    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto {
         return new sese::service::HttpService(config);
     }));
     service.start();
