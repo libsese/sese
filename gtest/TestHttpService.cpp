@@ -4,6 +4,7 @@
 #include <sese/net/http/HttpClient.h>
 #include <sese/record/Marco.h>
 #include <sese/util/Util.h>
+#include <sese/thread/Async.h>
 
 #include <random>
 
@@ -135,7 +136,17 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     client->req.setType(sese::net::http::RequestType::Post);
     client->req.getBody().write(content.c_str(), content.length());
 
-    ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
+    auto future = sese::async<bool>([&](){
+        return client->doRequest();
+    });
+
+    std::future_status status;
+    do {
+        SESE_INFO("no ready");
+        status = future.wait_for(100ms);
+    } while (status != std::future_status::ready);
+
+    ASSERT_TRUE(future.get()) << sese::net::getNetworkError();
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }

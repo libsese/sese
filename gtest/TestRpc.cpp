@@ -6,6 +6,7 @@
 #include <sese/config/json/JsonUtil.h>
 #include <sese/util/OutputUtil.h>
 #include <sese/util/Util.h>
+#include <sese/thread/Async.h>
 
 #define REMOTE_API
 
@@ -213,7 +214,18 @@ TEST(TestRpc, NoSSL) {
     auto args = std::make_shared<sese::json::ObjectData>();
     SESE_JSON_SET_INTEGER(args, "value0", value0);
     SESE_JSON_SET_INTEGER(args, "value1", value1);
-    auto result = client.doRequest("add", args);
+
+    auto future = sese::async<sese::json::ObjectData::Ptr>([&]() {
+        return client.doRequest("add", args);
+    });
+
+    std::future_status status{};
+    do {
+        SESE_INFO("no ready");
+        status = future.wait_for(100ms);
+    } while (status != std::future_status::ready);
+
+    auto result = future.get();
     ASSERT_NE(result, nullptr);
 
     SESE_JSON_GET_INTEGER(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
