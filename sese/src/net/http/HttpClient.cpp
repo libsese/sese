@@ -5,7 +5,6 @@
 #include <sese/text/StringBuilder.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/util/Util.h>
-#include <sese/util/FixedBuilder.h>
 
 using sese::net::IPv4Address;
 using sese::net::IPv4AddressPool;
@@ -61,77 +60,6 @@ HttpClient::Ptr HttpClient::create(const std::string &url, bool keepAlive) noexc
     return std::unique_ptr<HttpClient>(ptr);
 }
 
-void HttpClient::makeRequest() noexcept {
-    buffer1.freeCapacity();
-
-    if (isKeepAlive) {
-        req.set("Connection", "Keep-Alive");
-    }
-
-    sese::net::http::HttpUtil::sendRequest(&buffer1, &req);
-}
-
-bool HttpClient::doRequest() noexcept {
-    if (!isKeepAlive && !reconnect()) {
-        // 非长连接并且无法重新建立连接
-        return false;
-    }
-
-    if (!socket && !reconnect()) {
-        // socket 未建立连接并且也无法连接
-        return false;
-    }
-
-    char buf[MTU_VALUE];
-    while (true) {
-        auto len = buffer1.peek(buf, MTU_VALUE);
-        if (len == 0) {
-            return true;
-        }
-        auto l = socket->write(buf, len);
-        if (l <= 0) {
-            auto err = sese::net::getNetworkError();
-            if (err == EWOULDBLOCK || err == EINTR || err == ECONNABORTED || err == 0) {
-                sese::sleep(0);
-                continue;
-            } else {
-                // 断开连接...等
-                return false;
-            }
-        } else {
-            buffer1.trunc(l);
-        }
-    }
-}
-
-bool HttpClient::doResponse() noexcept {
-    if (socket) {
-        buffer2.freeCapacity();
-        char buf[MTU_VALUE];
-        while (true) {
-            auto l = socket->read(buf, MTU_VALUE);
-            if (l <= 0) {
-                auto err = sese::net::getNetworkError();
-                if (err == ENOTCONN) {
-                    // 断开连接
-                    return false;
-                } else {
-                    break;
-                }
-            } else {
-                buffer2.write(buf, l);
-            }
-        }
-
-        resp.clear();
-        char *endPtr;
-        auto rt = sese::net::http::HttpUtil::recvResponse(&buffer2, &resp);
-        responseContentLength = std::strtol(resp.get("Content-Length", "0").c_str(), &endPtr, 10);
-        return rt;
-    }
-    return false;
-}
-
 HttpClient::~HttpClient() noexcept {
     if (socket) {
         socket->close();
@@ -170,8 +98,6 @@ bool HttpClient::reconnect() noexcept {
         this->socket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP, IPPROTO_IP);
     }
 
-    this->socket->setNonblocking();
-
     if (0 != this->socket->connect(this->address)) {
         this->socket = nullptr;
         return false;
@@ -180,16 +106,85 @@ bool HttpClient::reconnect() noexcept {
     }
 }
 
-int64_t HttpClient::read(void *buffer, size_t len) noexcept {
-    if (socket) {
-        return buffer2.read(buffer, len);
+bool HttpClient::doRequest() noexcept {
+    if (!isKeepAlive && !reconnect()) {
+        // 非长连接并且无法重新建立连接
+        return false;
     }
-    return -1;
-}
 
-int64_t HttpClient::write(const void *buffer, size_t len) noexcept {
-    if (socket) {
-        return buffer1.write(buffer, len);
+    if (!socket && !reconnect()) {
+        // socket 未建立连接并且也无法连接
+        return false;
     }
-    return -1;
+
+    if (isKeepAlive) {
+        req.set("connection", "keep-alive");
+    }
+
+    req.set("content-length", std::to_string(req.getBody().getLength()));
+    HttpUtil::sendRequest(&buffer, &req);
+
+    // 发送头部
+    while (true) {
+        char buf[MTU_VALUE];
+        auto len = buffer.peek(buf, MTU_VALUE);
+        if (len == 0) {
+            break;
+        }
+        auto l = socket->write(buf, len);
+        if (l > 0) {
+            buffer.trunc(l);
+        } else {
+            return false;
+        }
+    }
+
+    // 发送 body
+    while (true) {
+        char buf[MTU_VALUE];
+        auto len = req.getBody().peek(buf, MTU_VALUE);
+        if (len == 0) {
+            break;
+        }
+        auto l = socket->write(buf, len);
+        if (l > 0) {
+            req.getBody().trunc(l);
+        } else {
+            return false;
+        }
+    }
+
+    req.getBody().freeCapacity();
+
+    resp.clear();
+    resp.getBody().freeCapacity();
+
+    // 解析响应头部
+    auto rt = HttpUtil::recvResponse(socket.get(), &resp);
+    if (!rt) {
+        return false;
+    }
+
+    char *end;
+    auto len = std::strtol(resp.get("content-length", "0").c_str(), &end, 10);
+    if (len == 0) {
+        return true;
+    }
+
+    // 读取响应 body
+    while (true) {
+        char buf[MTU_VALUE];
+        auto need = len >= MTU_VALUE ? MTU_VALUE : len;
+        if (len == 0) {
+            break;
+        }
+        auto l = socket->read(buf, need);
+        if (l > 0) {
+            resp.getBody().write(buf, l);
+            len -= l;
+        } else {
+            return false;
+        }
+    }
+    return true;
 }

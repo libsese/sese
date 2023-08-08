@@ -13,11 +13,6 @@ TEST(TestHttpClient, UrlParser_0) {
 
     ASSERT_EQ(client->address->getPort(), 8090);
     ASSERT_EQ(req.getUrl(), "/home.html");
-
-    ASSERT_EQ(client->write(nullptr, 0), -1);
-    ASSERT_EQ(client->read(nullptr, 0), -1);
-
-    ASSERT_FALSE(client->doResponse());
 }
 
 TEST(TestHttpClient, UrlParser_1) {
@@ -59,10 +54,7 @@ TEST(TestHttpClient, UrlParser_5) {
 
 TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
     auto client = sese::net::http::HttpClient::create("https://bing.com/index.html");
-    client->makeRequest();
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();
     SESE_INFO("status code %d", resp.getCode());
@@ -70,20 +62,17 @@ TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto len = client->getResponseContentLength();
+    auto len = std::atol(client->resp.get("content-length", "0").c_str());
     char buffer[1024]{};
     if (len) {
-        ASSERT_EQ(client->read(buffer, len), len);
+        ASSERT_EQ(client->getResponse().getBody().read(buffer, len), len);
         SESE_INFO("content:\n%s", buffer);
     }
 }
 
 TEST(TestHttpClient, SSL_KEEPALIVE) {
     auto client = sese::net::http::HttpClient::create("https://www.baidu.com/index.html", true);
-    client->makeRequest();
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();
     SESE_INFO("1st status code %d", resp.getCode());
@@ -91,11 +80,11 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto len = client->getResponseContentLength();
+    auto len = std::atol(client->resp.get("content-length", "0").c_str());
     if (len != 0) {
         char buffer[1024];
         while (true) {
-            auto read = client->read(buffer, 1024);
+            auto read = client->getResponse().getBody().read(buffer, 1024);
             if (read > 0) {
                 len -= read;
                 if (len == 0) {
@@ -107,11 +96,7 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
         }
     }
 
-    // decltype(auto) req = client->getRequest();
-    client->makeRequest();
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
     SESE_INFO("2rd status code %d", resp.getCode());
     for (decltype(auto) item: resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
@@ -129,30 +114,24 @@ TEST(TestHttpClient, NO_SSL_NO_KEEPALIVE) {
 
     req.setType(sese::net::http::RequestType::Options);
 
-    client->makeRequest();
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
 
     SESE_INFO("status code %d", resp.getCode());
     for (decltype(auto) item: resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto len = client->getResponseContentLength();
+    auto len = std::atol(client->resp.get("content-length", "0").c_str());
     char buffer[1024]{};
     if (len) {
-        ASSERT_EQ(client->read(buffer, len), len);
+        client->getResponse().getBody().read(buffer, len);
         SESE_INFO("content:\n%s", buffer);
     }
 }
 
 TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
     auto client = sese::net::http::HttpClient::create("http://www.baidu.com/index.html", true);
-    client->makeRequest();
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();
     SESE_INFO("1st status code %d", resp.getCode());
@@ -163,11 +142,11 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
         SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
     }
 
-    auto len = client->getResponseContentLength();
+    auto len = std::atol(client->resp.get("content-length", "0").c_str());
     if (len != 0) {
         char buffer[1024];
         while (true) {
-            auto read = client->read(buffer, 1024);
+            auto read = client->getResponse().getBody().read(buffer, 1024);
             if (read > 0) {
                 len -= read;
                 if (len == 0) {
@@ -181,12 +160,9 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
 
     decltype(auto) req = client->getRequest();
     req.setType(sese::net::http::RequestType::Put);
-    req.set("Content-Length", "5");
-    client->makeRequest();
-    ASSERT_EQ(client->write("Hello", 5), 5);
+    client->getRequest().getBody().write("Hello", 5);
+
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
     SESE_INFO("2rd status code %d", resp.getCode());
     for (decltype(auto) item: resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());

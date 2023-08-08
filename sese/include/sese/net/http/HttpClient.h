@@ -9,8 +9,8 @@
 #include <sese/net/Socket.h>
 #include <sese/security/SSLContext.h>
 #include <sese/security/SecuritySocket.h>
-#include <sese/net/http/RequestHeader.h>
-#include <sese/net/http/ResponseHeader.h>
+#include <sese/net/http/Request.h>
+#include <sese/net/http/Response.h>
 #include <sese/util/Noncopyable.h>
 #include <sese/util/ByteBuilder.h>
 
@@ -33,31 +33,11 @@ namespace sese::net::http {
 
         ~HttpClient() noexcept;
 
-        /// \brief 从 Http 流中读取字节
-        /// \param buffer 缓存
-        /// \param len 缓存大小
-        /// \return 实际读取到的字节
-        int64_t read(void *buffer, size_t len) noexcept;
-
-        /// \brief 向 Http 流中写入字节
-        /// \param buffer 缓存
-        /// \param len 缓存大小
-        /// \return 实际写入的字节
-        int64_t write(const void *buffer, size_t len) noexcept;
-
-        void makeRequest() noexcept;
-
         bool doRequest() noexcept;
 
-        bool doResponse() noexcept;
+        Request &getRequest() { return req; }
 
-        RequestHeader &getRequest() { return req; }
-
-        ResponseHeader &getResponse() { return resp; }
-
-        /// \brief 获取响应正文长度
-        /// \return 响应正文长度
-        [[nodiscard]] int64_t getResponseContentLength() const noexcept { return responseContentLength; }
+        Response &getResponse() { return resp; }
 
     private:
 #ifdef SESE_BUILD_TEST
@@ -74,15 +54,12 @@ namespace sese::net::http {
         // 如果是 https 协议需要 SSL 上下文
         security::SSLContext::Ptr sslContext;
 
-        RequestHeader req;
-        ResponseHeader resp;
+        Request req;
+        Response resp;
 
-        // 该字段在获取响应后可用
-        int64_t responseContentLength = 0;
         // 默认启用长连接
         bool isKeepAlive = true;
 
-        ByteBuilder buffer1{4096};
-        ByteBuilder buffer2{4096};
+        ByteBuilder buffer{4096};
     };
 }// namespace sese::net::http

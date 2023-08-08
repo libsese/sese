@@ -77,10 +77,7 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     ASSERT_TRUE(service.isStarted());
 
     auto client = sese::net::http::HttpClient::create("https://localhost:" + std::to_string(addr->getPort()) + "/", true);
-    client->makeRequest();
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
@@ -88,18 +85,16 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     std::string content = "Hello Server";
     client->req.setUrl("/post");
     client->req.setType(sese::net::http::RequestType::Post);
-    client->req.set("Content-Length", std::to_string(content.length()));
-    client->makeRequest();
-    client->write(content.c_str(), content.length());
+    client->req.getBody().write(content.c_str(), content.length());
+
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
+
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
     auto len = std::atol(client->resp.get("content-length", "0").c_str());
     char buffer[MTU_VALUE]{};
-    client->read(buffer, len);
+    client->resp.getBody().read(buffer, len);
     SESE_INFO("content: %s", buffer);
 
     service.stop();
@@ -129,10 +124,8 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     ASSERT_TRUE(service.isStarted());
 
     auto client = sese::net::http::HttpClient::create("http://localhost:" + std::to_string(addr->getPort()) + "/my_group/", true);
-    client->makeRequest();
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
+
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
@@ -140,18 +133,15 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     std::string content = "Hello Server";
     client->req.setUrl("/my_group/post");
     client->req.setType(sese::net::http::RequestType::Post);
-    client->req.set("Content-Length", std::to_string(content.length()));
-    client->makeRequest();
-    client->write(content.c_str(), content.length());
+    client->req.getBody().write(content.c_str(), content.length());
+
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    sese::sleep(1);
-    ASSERT_TRUE(client->doResponse()) << sese::net::getNetworkError();
     for (decltype(auto) item: client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
     auto len = std::atol(client->resp.get("content-length", "0").c_str());
     char buffer[MTU_VALUE]{};
-    client->read(buffer, len);
+    client->resp.getBody().read(buffer, len);
     SESE_INFO("content: %s", buffer);
 
     service.stop();
