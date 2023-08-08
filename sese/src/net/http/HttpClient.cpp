@@ -181,7 +181,7 @@ bool HttpClient::doRequest() noexcept {
         auto l = socket->read(buf, need);
         if (l > 0) {
             resp.getBody().write(buf, l);
-            len -= l;
+            len -= (int) l;
         } else {
             return false;
         }

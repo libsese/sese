@@ -1,5 +1,10 @@
 #pragma once
+
 #include <sese/Config.h>
+
+#ifdef SESE_PLATFORM_WINDOWS
+#pragma warning(disable : 4251)
+#endif
 
 namespace sese::net::http {
 

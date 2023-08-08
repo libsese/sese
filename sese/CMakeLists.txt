@@ -174,7 +174,8 @@ if (WIN32)
         target_compile_options(Core PRIVATE "/wd4251")
         target_compile_options(Core PRIVATE "/wd4530")
     endif ()
-    target_link_libraries(Core PRIVATE ws2_32 iphlpapi)
+    target_link_libraries(Core PUBLIC ws2_32) # Sese::Event-static required
+    target_link_libraries(Core PRIVATE iphlpapi)
 
     # target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
     # target_compile_options(Core-static PRIVATE "/utf-8")
@@ -244,8 +245,8 @@ target_link_libraries(Core PRIVATE
 target_link_libraries(Core PUBLIC
         SString::SString-static
         SimpleUuid::uuid-static
+        Sese::Event-static
         Sese::Plugin
-        Sese::Event
 )
 
 # target_link_libraries(Core-static PRIVATE

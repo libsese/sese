@@ -86,7 +86,7 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
         while (true) {
             auto read = client->getResponse().getBody().read(buffer, 1024);
             if (read > 0) {
-                len -= read;
+                len -= (int) read;
                 if (len == 0) {
                     break;
                 }
@@ -148,7 +148,7 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
         while (true) {
             auto read = client->getResponse().getBody().read(buffer, 1024);
             if (read > 0) {
-                len -= read;
+                len -= (int) read;
                 if (len == 0) {
                     break;
                 }
