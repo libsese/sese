@@ -25,9 +25,7 @@ namespace sese::net::rpc {
 
         ~Client() noexcept;
 
-        bool doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept;
-
-        json::ObjectData::Ptr doResponse() noexcept;
+        json::ObjectData::Ptr doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept;
 
     private:
         json::ObjectData::Ptr makeTemplateRequest(const std::string &name);
@@ -40,7 +38,7 @@ namespace sese::net::rpc {
         // 如果启用 ssl 则需要 SSL 上下文
         security::SSLContext::Ptr sslContext;
 
-        ByteBuilder buffer{};
+        ByteBuilder buffer{4096};
         json::BasicData::Ptr version;
     };
 
