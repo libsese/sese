@@ -56,7 +56,6 @@ namespace sese::service {
         /// 析构
         ~HttpService() noexcept override;
 
-    protected:
         /// 连接接入时触发
         /// \param fd 套接字文件描述符
         void onAccept(int fd) override;
@@ -74,6 +73,7 @@ namespace sese::service {
         /// \param event 事件
         void onClose(event::BaseEvent *event) override;
 
+    protected:
         /// 新建并保存事件
         /// \param fd 套接字文件描述符
         /// \param events 事件组合
@@ -89,6 +89,8 @@ namespace sese::service {
         /// \param conn Http 连接
         virtual void onHandle(net::http::HttpConnection *conn) noexcept;
 
+        /// 协议升级处理
+        /// \param conn Http 连接
         virtual void onHandleUpgrade(net::http::HttpConnection *conn) noexcept;
 
         /// 文件处理

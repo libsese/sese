@@ -128,7 +128,7 @@ set(
         SERVICE_SRC
         src/service/SystemBalanceLoader.cpp src/service/UserBalanceLoader.cpp
         src/service/TimerableService.cpp src/service/RpcService.cpp
-        src/service/HttpService.cpp
+        src/service/HttpService.cpp src/service/WebsocketService.cpp
 )
 
 target_sources(Core PRIVATE

@@ -5,7 +5,7 @@
 #include <utility>
 
 namespace sese::net::ws {
-    class API WebSocketAuthenticator : public NotInstantiable {
+    class API WebsocketAuthenticator : public NotInstantiable {
     public:
         static std::pair<std::unique_ptr<char []>, std::unique_ptr<char []>> generateKeyPair() noexcept;
 

@@ -1,13 +1,13 @@
-#include "sese/net/ws/WebSocketAuthenticator.h"
+#include "sese/net/ws/WebsocketAuthenticator.h"
 #include "sese/util/Random.h"
 #include "sese/util/InputBufferWrapper.h"
 #include "sese/util/OutputBufferWrapper.h"
 #include "sese/convert/Base64Converter.h"
 #include "sese/convert/SHA1Util.h"
 
-const char *sese::net::ws::WebSocketAuthenticator::APPEND_STRING = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+const char *sese::net::ws::WebsocketAuthenticator::APPEND_STRING = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 
-void sese::net::ws::WebSocketAuthenticator::generateKey(uint8_t *key) {
+void sese::net::ws::WebsocketAuthenticator::generateKey(uint8_t *key) {
     uint64_t r = sese::Random::next();
     auto p = (uint8_t *) &r;
     for (int i = 0; i < 8; ++i) {
@@ -19,7 +19,7 @@ void sese::net::ws::WebSocketAuthenticator::generateKey(uint8_t *key) {
     }
 }
 
-std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> sese::net::ws::WebSocketAuthenticator::generateKeyPair() noexcept {
+std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> sese::net::ws::WebsocketAuthenticator::generateKeyPair() noexcept {
     // 生成二进制 key
     uint8_t buffer[16];
     generateKey(buffer);
@@ -55,7 +55,7 @@ std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> sese::net::ws::WebSo
     return {std::move(keyString), std::move(resultString)};
 }
 
-bool sese::net::ws::WebSocketAuthenticator::verify(const char *key, const char *result) noexcept {
+bool sese::net::ws::WebsocketAuthenticator::verify(const char *key, const char *result) noexcept {
     // 拼接 key
     char buffer0[24 + 36];
     memcpy(buffer0 + 0, key, 24);
@@ -79,7 +79,7 @@ bool sese::net::ws::WebSocketAuthenticator::verify(const char *key, const char *
     return 0 == strcmp(result, buffer2);
 }
 
-std::unique_ptr<char[]> sese::net::ws::WebSocketAuthenticator::toResult(const char *key) noexcept {
+std::unique_ptr<char[]> sese::net::ws::WebsocketAuthenticator::toResult(const char *key) noexcept {
     // 拼接 key
     char buffer0[24 + 36];
     memcpy(buffer0 + 0, key, 24);
