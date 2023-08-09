@@ -47,16 +47,16 @@ namespace sese::service {
 
     /// @brief Http 服务，支持长连接、文件下载、断点续传等
     // class API HttpService final : public sese::event::EventLoop {
-    class API HttpService final : public sese::service::TimerableService {
+    class API HttpService : public sese::service::TimerableService {
     public:
         /// 通过配置构造 Http 服务
         /// \param config
-        explicit HttpService(const HttpConfig &config) noexcept;
+        explicit HttpService(HttpConfig *config) noexcept;
 
         /// 析构
         ~HttpService() noexcept override;
 
-    private:
+    protected:
         /// 连接接入时触发
         /// \param fd 套接字文件描述符
         void onAccept(int fd) override;
@@ -74,7 +74,6 @@ namespace sese::service {
         /// \param event 事件
         void onClose(event::BaseEvent *event) override;
 
-    private:
         /// 新建并保存事件
         /// \param fd 套接字文件描述符
         /// \param events 事件组合
@@ -86,10 +85,11 @@ namespace sese::service {
         /// \param event 事件指针
         void freeEventEx(event::BaseEvent *event) noexcept;
 
-    private:
         /// 普通控制器处理
         /// \param conn Http 连接
-        void onHandle(net::http::HttpConnection *conn) noexcept;
+        virtual void onHandle(net::http::HttpConnection *conn) noexcept;
+
+        virtual void onHandleUpgrade(net::http::HttpConnection *conn) noexcept;
 
         /// 文件处理
         /// \param conn Http 连接
@@ -111,7 +111,6 @@ namespace sese::service {
         /// content-type 拓展名映射
         static std::map<std::string, std::string> contentTypeMap;
 
-    private:
         /// 从连接中读取内容，自动选择是否为 ssl 连接
         /// \param fd 套接字文件描述符
         /// \param buffer 缓存
@@ -128,7 +127,7 @@ namespace sese::service {
         /// \return 写入字节总数
         static int64_t write(int fd, const void *buffer, size_t len, void *ssl) noexcept;
 
-        HttpConfig config;
+        HttpConfig *config;
         std::map<int, event::BaseEvent *> eventMap;
     };
 }// namespace sese::service

@@ -120,6 +120,7 @@ bool HttpClient::doRequest() noexcept {
     if (isKeepAlive) {
         req.set("connection", "keep-alive");
     }
+    req.set("client", HTTP_CLIENT_NAME);
 
     req.set("content-length", std::to_string(req.getBody().getLength()));
     HttpUtil::sendRequest(&buffer, &req);

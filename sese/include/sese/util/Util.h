@@ -29,6 +29,22 @@ namespace sese {
     };
 
     /**
+     * 比较两个字符串是否相同
+     * \param lv 字符串1
+     * \param rv 字符串2
+     * \return 比较结果
+     */
+    extern API bool strcmp(char const *lv, char const *rv) noexcept;
+
+    /**
+     * 比较两个字符串是否相同（忽略大小写）
+     * \param lv 字符串1
+     * \param rv 字符串2
+     * \return 比较结果
+     */
+    extern API bool strcmpDoNotCase(char const *lv, char const *rv) noexcept;
+
+    /**
      * 判断字符是否属于空白
      * @param ch 欲判断的字符
      * @return 真、假

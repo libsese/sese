@@ -51,7 +51,7 @@ void service::HttpConfig::setController(const net::http::ControllerGroup &group)
     }
 }
 
-service::HttpService::HttpService(const HttpConfig &config) noexcept {
+service::HttpService::HttpService(HttpConfig *config) noexcept {
     this->config = config;
 }
 
@@ -62,7 +62,7 @@ service::HttpService::~HttpService() noexcept {
         if (conn->timeoutEvent) {
             this->freeTimeoutEvent(conn->timeoutEvent);
         }
-        if (config.servCtx) {
+        if (config->servCtx) {
             SSL_free((SSL *) conn->ssl);
         }
         sese::net::Socket::close(event->fd);
@@ -83,8 +83,8 @@ void service::HttpService::onAccept(int fd) {
     }
     // GCOVR_EXCL_STOP
 
-    if (config.servCtx) {
-        clientSSL = SSL_new((SSL_CTX *) config.servCtx->getContext());
+    if (config->servCtx) {
+        clientSSL = SSL_new((SSL_CTX *) config->servCtx->getContext());
         SSL_set_fd(clientSSL, (int) fd);
         SSL_set_accept_state(clientSSL);
         // GCOVR_EXCL_START
@@ -110,8 +110,8 @@ void service::HttpService::onAccept(int fd) {
     conn->ssl = clientSSL;
     conn->status = HttpHandleStatus::HANDING;
 
-    if (config.keepalive) {
-        conn->timeoutEvent = TimerableService::createTimeoutEvent(fd, conn, config.keepalive);
+    if (config->keepalive) {
+        conn->timeoutEvent = TimerableService::createTimeoutEvent(fd, conn, config->keepalive);
         conn->timeoutEvent->data = conn;
     }
 
@@ -122,21 +122,21 @@ void service::HttpService::onRead(event::BaseEvent *event) {
     auto conn = (HttpConnection *) event->data;
 
     // 如果服务器启用长连接，对端启用长连接，且是首次连接，则定时器存在
-    // config.keepalive == true
+    // config->keepalive == true
     // conn->keepalive == false // 因为首次连接还没有经过 onHandle 处理
     // conn->timeoutEvent != nullptr
 
     // 如果服务器启用长连接，对端启用长连接，且不是首次连接，则定时器存在
-    // config.keepalive == true
+    // config->keepalive == true
     // conn->keepalive == true // 已经经过 onHandle 处理
     // conn->timeoutEvent != nullptr
 
     // 如果服务器启用长连接，对端不启用长连接，且是首次连接，则定时存在
-    // config.keepalive == true
+    // config->keepalive == true
     // conn->keepalive == false
     // conn->timeoutEvent != nullptr
 
-    if (config.keepalive) {
+    if (config->keepalive) {
         TimerableService::cancelTimeoutEvent(conn->timeoutEvent);
     }
 
@@ -176,7 +176,7 @@ free:
     if (conn->timeoutEvent) {
         TimerableService::freeTimeoutEvent(conn->timeoutEvent);
     }
-    if (config.servCtx) {
+    if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
     }
     sese::net::Socket::close(event->fd);
@@ -201,7 +201,7 @@ void service::HttpService::onClose(sese::event::BaseEvent *event) {
     if (conn->timeoutEvent) {
         this->freeTimeoutEvent(conn->timeoutEvent);
     }
-    if (config.servCtx) {
+    if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
     }
     sese::net::Socket::close(event->fd);
@@ -224,7 +224,7 @@ void sese::service::HttpService::freeEventEx(sese::event::BaseEvent *event) noex
 
 void service::HttpService::onHandle(HttpConnection *conn) noexcept {
     bool rt;
-    conn->resp.set("Server", config.servName);
+    conn->resp.set("Server", config->servName);
 
     rt = net::http::HttpUtil::recvRequest(&conn->req.getBody(), &conn->req);
     if (!rt) {
@@ -232,11 +232,20 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
         return;
     }
 
-    if (config.keepalive) {
-        auto keepalive = sese::StrCmpI()(conn->req.get("Connection", "close").c_str(), "keep-alive") == 0;
+    auto connectString = conn->req.get("Connection", "close");
+
+    if (sese::strcmpDoNotCase(connectString.c_str(), "upgrade")) {
+        onHandleUpgrade(conn);
+        conn->status = net::http::HttpHandleStatus::OK;
+        net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
+        return;
+    }
+
+    if (config->keepalive) {
+        auto keepalive = sese::strcmpDoNotCase(connectString.c_str(), "keep-alive");
         if (keepalive) {
             conn->resp.set("connection", "keep-alive");
-            conn->resp.set("keep-alive", "timeout=" + std::to_string(config.keepalive) + " ,max=0");
+            conn->resp.set("keep-alive", "timeout=" + std::to_string(config->keepalive) + " ,max=0");
         } else {
             this->freeTimeoutEvent(conn->timeoutEvent);
             conn->timeoutEvent = nullptr;
@@ -248,8 +257,8 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
 
     auto url = net::http::Url(conn->req.getUrl());
 
-    auto iterator = config.controllerMap.find(url.getUrl());
-    if (iterator != config.controllerMap.end()) {
+    auto iterator = config->controllerMap.find(url.getUrl());
+    if (iterator != config->controllerMap.end()) {
         iterator->second(conn->req, conn->resp);
         conn->status = net::http::HttpHandleStatus::OK;
         conn->resp.set("content-length", std::to_string(conn->resp.getBody().getLength()));
@@ -257,17 +266,21 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
         return;
     }
 
-    if (!config.workDir.empty()) {
-        auto file = config.workDir + url.getUrl();
+    if (!config->workDir.empty()) {
+        auto file = config->workDir + url.getUrl();
         onHandleFile(conn, file);
     }
 
     if (conn->status == HttpHandleStatus::HANDING) {
-        config.otherController(conn->req, conn->resp);
+        config->otherController(conn->req, conn->resp);
         conn->status = net::http::HttpHandleStatus::OK;
         conn->req.set("content-length", std::to_string(conn->resp.getBody().getLength()));
         net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
     }
+}
+
+void service::HttpService::onHandleUpgrade(net::http::HttpConnection *conn) noexcept {
+    conn->resp.setCode(200);
 }
 
 void service::HttpService::onHandleFile(HttpConnection *conn, const std::string &path) noexcept {// NOLINT
@@ -415,7 +428,7 @@ void service::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
     }
     if (conn->timeoutEvent) {
         conn->buffer.freeCapacity();
-        this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);
+        this->setTimeoutEvent(conn->timeoutEvent, config->keepalive);
         // 进入下一次请求
         conn->event->events &= ~EVENT_WRITE;
         conn->event->events |= EVENT_READ;
@@ -429,7 +442,7 @@ free:
     if (conn->timeoutEvent) {
         this->freeTimeoutEvent(conn->timeoutEvent);
     }
-    if (config.servCtx) {
+    if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
     }
     sese::net::Socket::close(event->fd);
@@ -530,7 +543,7 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
             conn->buffer.freeCapacity();
             conn->file->close();
             conn->file = nullptr;
-            this->setTimeoutEvent(conn->timeoutEvent, config.keepalive);
+            this->setTimeoutEvent(conn->timeoutEvent, config->keepalive);
             conn->event->events &= ~EVENT_WRITE;
             conn->event->events |= EVENT_READ;
             this->setEvent(conn->event);
@@ -546,7 +559,7 @@ free:
     if (conn->timeoutEvent) {
         this->freeTimeoutEvent(conn->timeoutEvent);
     }
-    if (config.servCtx) {
+    if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
     }
     sese::net::Socket::close(event->fd);
@@ -572,7 +585,7 @@ int64_t service::HttpService::write(int fd, const void *buffer, size_t len, void
 
 void service::HttpService::onTimeout(service::TimeoutEvent *timeoutEvent) {
     auto conn = (HttpConnection *) timeoutEvent->data;
-    if (config.servCtx) {
+    if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
     }
     sese::net::Socket::close(conn->fd);

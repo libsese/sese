@@ -72,7 +72,7 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     service.setThreads(4);
     service.setAddress(addr);
     ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto {
-        return new sese::service::HttpService(config);
+        return new sese::service::HttpService(&config);
     }));
     service.start();
     ASSERT_TRUE(service.isStarted());
@@ -119,7 +119,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     service.setThreads(4);
     service.setAddress(addr);
     ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto {
-        return new sese::service::HttpService(config);
+        return new sese::service::HttpService(&config);
     }));
     service.start();
     ASSERT_TRUE(service.isStarted());

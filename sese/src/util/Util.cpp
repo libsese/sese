@@ -33,11 +33,19 @@ namespace sese {
     }
 
     bool StrCmp::operator()(char const *lv, char const *rv) {
-        return strcmp(lv, rv);
+        return ::strcmp(lv, rv);
     }
 
     bool StrCmpI::operator()(char const *lv, char const *rv) {
         return strcmpi(lv, rv);
+    }
+
+    bool strcmp(const char *lv, const char *rv) noexcept {
+        return ::strcmp(lv, rv) == 0;
+    }
+
+    bool strcmpDoNotCase(const char *lv, const char *rv) noexcept {
+        return strcmpi(lv, rv) == 0;
     }
 
     void sleep(uint32_t second) {
