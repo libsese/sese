@@ -2,7 +2,6 @@
 #include "sese/Config.h"
 
 namespace sese::net::ws {
-    struct FrameHeaderBuffer;
     struct FrameHeaderInfo;
 }
 
@@ -12,16 +11,6 @@ namespace sese::net::ws {
 #define SESE_WS_OPCODE_CLOSE 0x8
 #define SESE_WS_OPCODE_PING 0x9
 #define SESE_WS_OPCODE_PONG 0xa
-
-struct sese::net::ws::FrameHeaderBuffer {
-    uint8_t FIN : 1 = 0;
-    uint8_t RSV1 : 1 = 0;
-    uint8_t RSV2 : 1 = 0;
-    uint8_t RSV3 : 1 = 0;
-    uint8_t OPCODE : 4 = 0;
-    uint8_t MASK : 1 = 0;
-    uint8_t PAYLOAD_LEN : 7 = 0;
-};
 
 struct API sese::net::ws::FrameHeaderInfo {
     bool fin = false;

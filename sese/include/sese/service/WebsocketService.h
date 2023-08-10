@@ -1,7 +1,8 @@
 #pragma once
 
 #include <sese/service/HttpService.h>
-#include <sese/net/ws/WebsocketSession.h>
+#include <sese/net/ws/FrameHeader.h>
+#include <sese/net/ws/WebsocketEvent.h>
 
 #ifdef _WIN32
 #pragma warning(disable : 4275)
@@ -15,28 +16,31 @@ namespace sese::service {
 
     class API WebsocketService : public HttpService {
     public:
-        explicit WebsocketService(WebsocketConfig *config) noexcept;
+        explicit WebsocketService(WebsocketConfig *config, net::ws::WebsocketEvent *event) noexcept;
 
         ~WebsocketService() noexcept override;
 
+        void doWriteMessage(net::ws::WebsocketSession *session) noexcept;
+
+        void doWriteBinary(net::ws::WebsocketSession *session) noexcept;
+
     protected:
         void onHandle(net::http::HttpConnection *conn) noexcept override;
+
         void onHandleUpgrade(net::http::HttpConnection *conn) noexcept override;
 
-        void onWrite(event::BaseEvent *event) override;
         void onClose(event::BaseEvent *event) override;
 
         void onTimeout(TimeoutEvent *timeoutEvent) override;
 
     private:
+        void doPong(net::http::HttpConnection *conn, net::ws::FrameHeaderInfo &info, net::ws::WebsocketSession *session) noexcept;
+
         /// 解析 websocket 帧并构建消息
         /// \param conn Http 连接
         void onHandleWebsocket(net::http::HttpConnection *conn) noexcept;
-        /// 发送 websocket 组装完成的帧缓存
-        /// \param event
-        /// \param session
-        void onWebSocketWrite(event::BaseEvent *event, net::ws::WebsocketSession *session) noexcept;
 
         std::map<net::http::HttpConnection *, net::ws::WebsocketSession *> sessionMap;
+        net::ws::WebsocketEvent *event = nullptr;
     };
 }// namespace sese::service

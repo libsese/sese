@@ -1,5 +1,7 @@
 #include <sese/service/WebsocketService.h>
 #include <sese/service/BalanceLoader.h>
+#include <sese/record/Marco.h>
+#include <sese/util/OutputUtil.h>
 
 #include <random>
 
@@ -12,19 +14,42 @@ sese::net::IPv4Address::Ptr createAddress() {
     return sese::net::IPv4Address::create("0.0.0.0", 8080);
 }
 
+class MyEvent : public sese::net::ws::WebsocketEvent {
+public:
+    void onMessage(sese::service::WebsocketService *service, sese::net::ws::WebsocketSession *session) noexcept override {
+        char buffer[1024]{};
+        auto len = session->buffer.read(buffer, 1024);
+        SESE_INFO("recv message from client %d: %s", session->fd, buffer);
+
+        session->buffer.freeCapacity();
+        session->buffer << "recv your message: ";
+        session->buffer.write(buffer, len);
+        service->doWriteMessage(session);
+    }
+    void onBinary(sese::service::WebsocketService *service, sese::net::ws::WebsocketSession *session) noexcept override {
+        SESE_INFO("recv binary from client %d", session->fd);
+    }
+    void onClose(sese::service::WebsocketService *service, sese::net::ws::WebsocketSession *session) noexcept override {
+        SESE_INFO("client %d do close", session->fd);
+    }
+    void onTimeout(sese::service::WebsocketService *service, sese::net::ws::WebsocketSession *session) noexcept override {
+        SESE_INFO("client %d has timed out", session->fd);
+    }
+};
+
 int main() {
     sese::service::WebsocketConfig config;
     config.servName = "Server for Test";
-    config.upgradePath = "/chat";
-    config.workDir = PROJECT_PATH;
+    config.upgradePath = "/";
     config.keepalive = 30;
 
+    MyEvent event;
 
     sese::service::BalanceLoader service;
     service.setThreads(4);
     service.setAddress(createAddress());
-    service.init<sese::service::WebsocketService>([&config]() -> auto {
-        return new sese::service::WebsocketService(&config);
+    service.init<sese::service::WebsocketService>([&]() -> auto {
+        return new sese::service::WebsocketService(&config, &event);
     });
     service.start();
     getchar();
