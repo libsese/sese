@@ -1,6 +1,8 @@
 #include "sese/service/TimerableService.h"
 #include "sese/event/Event.h"
 
+// #include "sese/record/Marco.h"
+
 #include <algorithm>
 #include <chrono>
 #include <vector>
@@ -26,6 +28,7 @@ sese::service::TimeoutEvent *sese::service::TimerableService::createTimeoutEvent
     event->exceptTimestamp = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count() + seconds;
 
     auto index = (event->exceptTimestamp - startTimestamp) % 60;
+    // SESE_INFO("create event at %d", (int) index);
     auto &table = timeoutTable[index];
     table.emplace_back(event);
 
@@ -34,9 +37,12 @@ sese::service::TimeoutEvent *sese::service::TimerableService::createTimeoutEvent
 
 void sese::service::TimerableService::setTimeoutEvent(sese::service::TimeoutEvent *timeoutEvent, uint64_t seconds) {
     // 原先存在事件，先取消
-    auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
-    auto &table = timeoutTable[index];
-    table.remove(timeoutEvent);
+    {
+        auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
+        // SESE_INFO("cancel event at %d", (int) index);
+        auto &table = timeoutTable[index];
+        table.remove(timeoutEvent);
+    }
     // auto iterator = std::find_if(table.begin(), table.end(), [&](TimeoutEvent *event) -> bool {
     //     return timeoutEvent->fd == event->fd;
     // });
@@ -45,10 +51,14 @@ void sese::service::TimerableService::setTimeoutEvent(sese::service::TimeoutEven
     // }
 
     // 设置新事件
-    timeoutEvent->exceptTimestamp = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count() + seconds;
-    index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
-    table = timeoutTable[index];
-    table.emplace_back(timeoutEvent);
+    {
+
+        timeoutEvent->exceptTimestamp = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count() + seconds;
+        auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
+        auto &table = timeoutTable[index];
+        // SESE_INFO("new event at %d", (int) index);
+        table.emplace_back(timeoutEvent);
+    }
 }
 
 sese::service::TimeoutEvent *sese::service::TimerableService::getTimeoutEventByFd(int fd) {
@@ -63,6 +73,7 @@ sese::service::TimeoutEvent *sese::service::TimerableService::getTimeoutEventByF
 void sese::service::TimerableService::cancelTimeoutEvent(sese::service::TimeoutEvent *timeoutEvent) {
     // 原先存在事件，先取消
     auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
+    // SESE_INFO("cancel event at %d", (int) index);
     auto &table = timeoutTable[index];
 
     table.remove(timeoutEvent);
@@ -77,6 +88,7 @@ void sese::service::TimerableService::cancelTimeoutEvent(sese::service::TimeoutE
 void sese::service::TimerableService::freeTimeoutEvent(sese::service::TimeoutEvent *timeoutEvent) {
     auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
     auto &table = timeoutTable[index];
+    // SESE_INFO("free %d at %d", timeoutEvent->fd, (int) index);
     table.remove(timeoutEvent);
 
     auto iterator = timeoutMap.find(timeoutEvent->fd);
