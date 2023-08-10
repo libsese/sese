@@ -3,8 +3,6 @@
 #include <sese/util/Endian.h>
 #include <sese/util/Util.h>
 
-#include <sese/record/Marco.h>
-
 #define CONFIG ((sese::service::WebsocketConfig *) this->config)
 #define RECV_BUFFER (conn->req.getBody())
 #define SEND_BUFFER (conn->buffer)
@@ -16,6 +14,10 @@ sese::service::WebsocketService::WebsocketService(sese::service::WebsocketConfig
 }
 
 sese::service::WebsocketService::~WebsocketService() noexcept {
+    for (decltype(auto) item : sessionMap) {
+        delete item.second;
+    }
+    sessionMap.clear();
 }
 
 void sese::service::WebsocketService::onHandleUpgrade(sese::net::http::HttpConnection *conn) noexcept {
@@ -127,6 +129,7 @@ void sese::service::WebsocketService::onHandleWebsocket(net::http::HttpConnectio
         event->onBinary(this, session);
     } else if (info.opCode == SESE_WS_OPCODE_CLOSE) {
         event->onClose(this, session);
+        doClose(conn, session);
     } else {
         doPong(conn, info, session);
     }
@@ -159,6 +162,7 @@ void sese::service::WebsocketService::onTimeout(sese::service::TimeoutEvent *tim
     auto iterator = sessionMap.find(conn);
     if (iterator != sessionMap.end()) {
         event->onTimeout(this, iterator->second);
+        // doClose(conn, iterator->second);
         delete iterator->second;
         sessionMap.erase(iterator);
     }
@@ -178,13 +182,13 @@ void buildWebsocketFrame(
         buffer[1] = 0b0111'1111 & info.length;
         SEND_BUFFER.write(buffer, 2);
     } else if (info.length <= UINT16_MAX && info.length >= 126) {
-        buffer[1] = 0b0111'1111 & 126ui8;
+        buffer[1] = 0b0111'1111 & 126;
         SEND_BUFFER.write(buffer, 2);
         uint16_t value = ToBigEndian16((uint16_t) info.length);
         SEND_BUFFER.write(&value, sizeof(value));
     } else {
         /// 最大帧长度 UINT64_MAX
-        buffer[1] = 0b0111'1111 & 127ui8;
+        buffer[1] = 0b0111'1111 & 127;
         SEND_BUFFER.write(buffer, 2);
         uint64_t value = ToBigEndian64(info.length);
         SEND_BUFFER.write(&value, sizeof(value));
@@ -229,5 +233,18 @@ void sese::service::WebsocketService::doWriteBinary(net::ws::WebsocketSession *s
 
 void sese::service::WebsocketService::doPong(net::http::HttpConnection *conn, net::ws::FrameHeaderInfo &info, net::ws::WebsocketSession *session) noexcept {
     buildWebsocketFrame(conn, info, session, SESE_WS_OPCODE_PONG);
+    HttpService::onControllerWrite(conn->event);
+}
+
+void sese::service::WebsocketService::doClose(net::http::HttpConnection *conn, net::ws::WebsocketSession *session) noexcept {
+    auto info = sese::net::ws::FrameHeaderInfo{};
+    info.fin = true;
+    info.rsv1 = false;
+    info.rsv2 = false;
+    info.rsv3 = false;
+    info.mask = false;
+    info.length = 0;
+
+    buildWebsocketFrame(conn, info, session, SESE_WS_OPCODE_CLOSE);
     HttpService::onControllerWrite(conn->event);
 }

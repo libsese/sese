@@ -40,13 +40,13 @@ public:
 int main() {
     sese::service::WebsocketConfig config;
     config.servName = "Server for Test";
-    config.upgradePath = "/";
+    config.upgradePath = "/chat";
     config.keepalive = 30;
 
     MyEvent event;
 
     sese::service::BalanceLoader service;
-    service.setThreads(4);
+    service.setThreads(1);
     service.setAddress(createAddress());
     service.init<sese::service::WebsocketService>([&]() -> auto {
         return new sese::service::WebsocketService(&config, &event);

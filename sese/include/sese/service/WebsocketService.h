@@ -36,6 +36,8 @@ namespace sese::service {
     private:
         void doPong(net::http::HttpConnection *conn, net::ws::FrameHeaderInfo &info, net::ws::WebsocketSession *session) noexcept;
 
+        void doClose(net::http::HttpConnection *conn, net::ws::WebsocketSession *session) noexcept;
+
         /// 解析 websocket 帧并构建消息
         /// \param conn Http 连接
         void onHandleWebsocket(net::http::HttpConnection *conn) noexcept;
