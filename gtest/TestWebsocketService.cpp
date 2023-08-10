@@ -1,9 +1,12 @@
 #include <sese/service/WebsocketService.h>
 #include <sese/service/BalanceLoader.h>
+#include <sese/system/Process.h>
 #include <sese/record/Marco.h>
 #include <sese/util/OutputUtil.h>
 
 #include <random>
+
+#include <gtest/gtest.h>
 
 sese::net::IPv4Address::Ptr createAddress() {
     std::random_device device;
@@ -11,7 +14,7 @@ sese::net::IPv4Address::Ptr createAddress() {
     std::uniform_int_distribution<uint16_t> dis(1025, 65535);
     auto port = dis(engine);
     printf("select port %d\n", (int) port);
-    return sese::net::IPv4Address::create("0.0.0.0", 8080);
+    return sese::net::IPv4Address::create("127.0.0.1", port);
 }
 
 class MyEvent : public sese::net::ws::WebsocketEvent {
@@ -37,7 +40,9 @@ public:
     }
 };
 
-int main() {
+GTEST_TEST(TestWebsocketService, _0) {
+    auto addr = createAddress();
+
     sese::service::WebsocketConfig config;
     config.servName = "Server for Test";
     config.upgradePath = "/chat";
@@ -46,11 +51,23 @@ int main() {
     MyEvent event;
 
     sese::service::BalanceLoader service;
-    service.setThreads(1);
-    service.setAddress(createAddress());
+    service.setThreads(2);
+    service.setAddress(addr);
     service.init<sese::service::WebsocketService>([&]() -> auto {
         return new sese::service::WebsocketService(&config, &event);
     });
     service.start();
-    getchar();
+    ASSERT_TRUE(service.isStarted());
+
+    std::string cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_websocket.py ";
+    cmd.append(std::to_string(addr->getPort()));
+    auto process = sese::system::Process::create(cmd.c_str());
+    if (process == nullptr) {
+        service.stop();
+        FAIL() << "failed to create process";
+    }
+
+    EXPECT_EQ(process->wait(), 0);
+    SUCCEED();
+    service.stop();
 }

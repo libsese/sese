@@ -1,7 +1,15 @@
+/// \file FrameHeader.h
+/// \author kaoru
+/// \date 日期
+/// \brief Websocket 帧定义
+/// \version 0.1
+
 #pragma once
+
 #include "sese/Config.h"
 
 namespace sese::net::ws {
+    /// Websocket 帧信息
     struct FrameHeaderInfo;
 }
 
