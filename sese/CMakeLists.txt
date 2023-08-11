@@ -80,6 +80,7 @@ set(
         src/net/rpc/V2RpcServer.cpp src/net/rpc/Server.cpp
         src/net/rpc/Client.cpp
         src/net/ws/WebSocketAuthenticator.cpp
+        src/net/dns/DNSUtil.cpp
 )
 
 set(
