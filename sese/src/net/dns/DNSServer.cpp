@@ -82,14 +82,31 @@ void sese::net::dns::DNSServer::loop() noexcept {
         info.flags.RD = 0;
         info.flags.QR = 1;
         for (auto &q: session.getQueries()) {
-            auto iterator = hostMap.find(q.getName());
-            if (iterator == hostMap.end()) {
-                info.flags.rcode = SESE_DNS_RCODE_NAME_ERROR;
-                session.getAnswers().emplace_back(false, q.getName(), 1, 1, 00, 0, nullptr);
+            if (q.getType() == SESE_DNS_QR_TYPE_A) {
+                auto iterator = hostMap.find(q.getName());
+                if (iterator == hostMap.end()) {
+                    info.flags.rcode = SESE_DNS_RCODE_NAME_ERROR;
+                    continue;
+                } else {
+                    uint16_t offset = q.getOffset();
+                    offset |= 0b1100'0000'0000'0000;
+                    offset = ToBigEndian16(offset);
+                    std::string name = {(const char *) &offset, 4};
+                    session.getAnswers().emplace_back(
+                            true,
+                            name,
+                            SESE_DNS_QR_TYPE_A,
+                            SESE_DNS_QR_CLASS_IN,
+                            600,
+                            4,
+                            (const uint8_t *) iterator->second.c_str()
+                    );
+                }
+                info.answerPrs += 1;
             } else {
-                session.getAnswers().emplace_back(false, q.getName(), 1, 1, 600, 4, (const uint8_t *) iterator->second.c_str());
+                info.flags.rcode = SESE_DNS_RCODE_NOT_IMPLEMENTED;
+                continue;
             }
-            info.answerPrs += 1;
         }
 
         DNSUtil::encodeFrameHeaderInfo(buffer, info);
