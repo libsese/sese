@@ -81,6 +81,7 @@ set(
         src/net/rpc/Client.cpp
         src/net/ws/WebSocketAuthenticator.cpp
         src/net/dns/DNSUtil.cpp src/net/dns/DNSServer.cpp
+        src/net/dns/Client.cpp
 )
 
 set(

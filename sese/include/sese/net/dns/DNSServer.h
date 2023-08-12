@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sese/net/IPv6Address.h>
 #include <sese/net/Socket.h>
+#include <sese/net/dns/Client.h>
 #include <sese/net/dns/DNSSession.h>
 #include <sese/thread/Thread.h>
 
@@ -12,7 +12,8 @@ namespace sese::net::dns {
 
     struct API DNSConfig {
         IPAddress::Ptr address;
-        std::map<std::string, std::string> hostMap;
+        std::map<std::string, std::string> hostIPv4Map;
+        std::map<std::string, std::string> hostIPv6Map;
     };
 
     class API DNSServer {
@@ -35,6 +36,7 @@ namespace sese::net::dns {
         std::atomic_bool isShutdown{false};
         Socket::Ptr socket = nullptr;
         Thread::Ptr thread = nullptr;
-        std::map<std::string, std::string> hostMap;
+        std::map<std::string, std::string> hostIPv4Map;
+        std::map<std::string, std::string> hostIPv6Map;
     };
 }

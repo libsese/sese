@@ -1,6 +1,7 @@
 #include <sese/net/dns/DNSUtil.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Endian.h>
+#include <sese/util/InputBufferWrapper.h>
 
 void sese::net::dns::DNSUtil::decodeFrameHeaderInfo(const uint8_t buf[12], sese::net::dns::FrameHeaderInfo &info) noexcept {
     info.transactionId = buf[0] * 0x100 + buf[1];
@@ -98,8 +99,8 @@ bool sese::net::dns::DNSUtil::decodeQueries(size_t qcount, sese::InputStream *in
     return true;
 }
 
-void sese::net::dns::DNSUtil::encodeQueries(sese::OutputStream *output, std::vector<Query> &map) noexcept {
-    for (auto &item: map) {
+void sese::net::dns::DNSUtil::encodeQueries(sese::OutputStream *output, std::vector<Query> &vector) noexcept {
+    for (auto &item: vector) {
         auto v = text::StringBuilder::split(item.getName(), ".");
         for (auto &i: v) {
             auto l = (uint8_t) i.length();
@@ -118,7 +119,7 @@ void sese::net::dns::DNSUtil::encodeQueries(sese::OutputStream *output, std::vec
 }
 
 void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<Answer> &vector) noexcept {
-    for (auto &item : vector) {
+    for (auto &item: vector) {
         if (item.isRef()) {
             output->write(item.getName().c_str(), 2);
         } else {
@@ -147,6 +148,104 @@ void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<An
         v16 = ToBigEndian16(v16);
         output->write(&v16, sizeof(v16));
 
-        output->write(item.getAddress(), item.getLength());
+        output->write(item.getAddress().c_str(), item.getLength());
     }
+}
+
+bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string &domain) noexcept {
+    std::string result;
+    bool first = true;
+    uint8_t l;
+    uint32_t size = 12;
+    char buf[128];
+    while (true) {
+        ASSERT_READ(&l, 1);
+        // input->read(&l, 1);
+        if (l == 0) {
+            break;
+        }
+        ASSERT_READ(buf, l);
+        // input->read(buf, l);
+        if (first) {
+            buf[l] = 0;
+            result += buf;
+            first = false;
+        } else {
+            buf[l] = 0;
+            result += '.';
+            result += buf;
+        }
+    }
+    domain = result;
+    return true;
+}
+
+bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, sese::InputStream *input, std::vector<Answer> &vector) noexcept {
+    while (acount) {
+        std::string result;
+        bool isRef = false;
+        bool first = true;
+        uint8_t l;
+        uint32_t offset = 12;
+        uint32_t size = 12;
+        char buf[128];
+        while (true) {
+            ASSERT_READ(&l, 1);
+            // input->read(&l, 1);
+
+            if (l == 0) {
+                break;
+            }
+
+            if (((l & 0b1100'0000) >> 6) == 3) {
+                // 使用索引
+                uint8_t tmp[2];
+                tmp[0] = l & 0b0011'1111;
+                ASSERT_READ(&tmp[1], 1);
+                result = {(const char *) tmp, 2};
+                isRef = true;
+                break;
+            }
+
+            ASSERT_READ(buf, l);
+            // input->read(buf, l);
+            if (first) {
+                buf[l] = 0;
+                result += buf;
+                first = false;
+            } else {
+                buf[l] = 0;
+                result += '.';
+                result += buf;
+            }
+        }
+
+        uint16_t type;
+        ASSERT_READ(&type, sizeof(type));
+        // input->read(&type, 2);
+        type = FromBigEndian16(type);
+        uint16_t class_;
+        ASSERT_READ(&class_, sizeof(class_));
+        // input->read(&class_, 2);
+        class_ = FromBigEndian16(class_);
+
+        uint32_t time;
+        ASSERT_READ(&time, sizeof(time));
+        time = FromBigEndian32(time);
+
+        uint16_t length;
+        ASSERT_READ(&length, sizeof(length));
+        length = FromBigEndian16(length);
+
+        uint8_t data[16];
+        ASSERT_READ(data, length);
+
+        auto str = std::string((const char *) data, length);
+        vector.emplace_back(isRef, result, type, class_, time, length, str);
+        offset += size;
+
+        acount -= 1;
+    }
+
+    return true;
 }

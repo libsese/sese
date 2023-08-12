@@ -7,6 +7,10 @@
 
 #include <sese/Config.h>
 
+#ifdef _WIN32
+#pragma warning(disable : 4251)
+#endif
+
 namespace sese::net::dns {
 
     /// 帧标识信息
@@ -44,6 +48,7 @@ namespace sese::net::dns {
 #define SESE_DNS_QR_TYPE_PTR 12
 #define SESE_DNS_QR_TYPE_HINFO 13
 #define SESE_DNS_QR_TYPE_MX 15
+#define SESE_DNS_QR_TYPE_AAAA 28
 #define SESE_DNS_QR_TYPE_AXFR 252
 #define SESE_DNS_QR_TYPE_ANY 255
 

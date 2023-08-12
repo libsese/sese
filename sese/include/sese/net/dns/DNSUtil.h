@@ -13,6 +13,10 @@
 
 #include <vector>
 
+#ifdef _WIN32
+#pragma warning(disable : 4251)
+#endif
+
 namespace sese::net::dns {
     /// DNS 帧编码解码工具
     class API DNSUtil {
@@ -32,17 +36,31 @@ namespace sese::net::dns {
         /// \param input 来源
         /// \param vector 输出
         /// \return 成功与否
-        static bool decodeQueries(size_t qcount, InputStream *input, std::vector<Query> &map) noexcept;
+        static bool decodeQueries(size_t qcount, InputStream *input, std::vector<Query> &vector) noexcept;
+
+        /// 将一个或多个 Answer 解析成 sese::net::dns::Answer
+        /// \param acount 数量
+        /// \param raw 原始数据
+        /// \param input 来源
+        /// \param vector 输出
+        /// \return 成功与否
+        static bool decodeAnswers(size_t acount, sese::InputStream *input, std::vector<Answer> &vector) noexcept;
 
         /// 编码一个或多个 Query
         /// \param output 输出
-        /// \param map 来源
-        static void encodeQueries(OutputStream *output, std::vector<Query> &map) noexcept;
+        /// \param vector 来源
+        static void encodeQueries(OutputStream *output, std::vector<Query> &vector) noexcept;
 
         /// 编码一个或多个 Answers
         /// \param output 输出
         /// \param vector 来源
         static void encodeAnswers(OutputStream *output, std::vector<Answer> &vector) noexcept;
+
+        /// 从二进制流中解析域名
+        /// \param input 输入
+        /// \param domain 域名
+        /// \return 成功与否
+        static bool decodeDomain(InputStream *input, std::string &domain) noexcept;
 
     private:
         static void decodeFrameFlagsInfo(const uint8_t buf[2], sese::net::dns::FrameFlagsInfo &info) noexcept;

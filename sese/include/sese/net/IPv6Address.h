@@ -43,7 +43,14 @@ namespace sese::net {
             return FromBigEndian16(address.sin6_port);
         }
 
+        void setFamily(int64_t family) noexcept override {
+            address.sin6_family = family;
+        }
+        int64_t getFamily() noexcept override {
+            return address.sin6_family;
+        }
+
     private:
         sockaddr_in6 address{0};
     };
-}// namespace sese
+}// namespace sese::net

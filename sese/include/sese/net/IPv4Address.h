@@ -43,6 +43,13 @@ namespace sese::net {
             return FromBigEndian16(address.sin_port);
         }
 
+        void setFamily(int64_t family) noexcept override {
+            address.sin_family = family;
+        }
+        int64_t getFamily() noexcept override {
+            return address.sin_family;
+        }
+
     private:
         sockaddr_in address{0};
     };
