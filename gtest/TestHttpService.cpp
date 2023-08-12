@@ -10,6 +10,8 @@
 
 #include <gtest/gtest.h>
 
+#define printf SESE_INFO
+
 using namespace std::chrono_literals;
 
 sese::net::IPv4Address::Ptr createAddress() {

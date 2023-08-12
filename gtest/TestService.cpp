@@ -3,9 +3,12 @@
 #include "sese/service/SystemBalanceLoader.h"
 #include "sese/service/UserBalanceLoader.h"
 #include "sese/service/TimerableService.h"
+#include "sese/record/Marco.h"
 #include "gtest/gtest.h"
 
 #include <random>
+
+#define printf SESE_INFO
 
 using namespace std::chrono_literals;
 
