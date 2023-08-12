@@ -43,10 +43,10 @@ namespace sese::net {
             return FromBigEndian16(address.sin6_port);
         }
 
-        void setFamily(int64_t family) noexcept override {
+        void setFamily(uint16_t family) noexcept override {
             address.sin6_family = family;
         }
-        int64_t getFamily() noexcept override {
+        uint16_t getFamily() noexcept override {
             return address.sin6_family;
         }
 

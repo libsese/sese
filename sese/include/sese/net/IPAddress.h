@@ -24,8 +24,8 @@ namespace sese::net {
         [[nodiscard]] virtual Ptr getSubnetMask(uint32_t prefixLen) const noexcept = 0;
         virtual void setPort(uint16_t port) noexcept = 0;
         [[nodiscard]] virtual uint16_t getPort() const noexcept = 0;
-        virtual void setFamily(int64_t family) noexcept = 0;
-        [[nodiscard]] virtual int64_t getFamily() noexcept = 0;
+        virtual void setFamily(uint16_t family) noexcept = 0;
+        [[nodiscard]] virtual uint16_t getFamily() noexcept = 0;
     };
 
 }// namespace sese

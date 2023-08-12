@@ -49,7 +49,7 @@ namespace sese::net::dns {
         /// \retval nullptr 查找失败
         static Address::Ptr resolveAuto(
                 const std::string &domain,
-                IPAddress::Ptr server,
+                const IPAddress::Ptr& server,
                 int family = AF_INET,
                 int type = 0,
                 int protocol = 0

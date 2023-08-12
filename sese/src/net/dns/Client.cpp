@@ -18,7 +18,7 @@ sese::net::Address::Ptr sese::net::dns::Client::resolveCustom(const std::string 
     auto expectType = family == AF_INET ? SESE_DNS_QR_TYPE_A : SESE_DNS_QR_TYPE_AAAA;
 
     sese::Random device;
-    auto engine = std::default_random_engine(device());
+    auto engine = std::default_random_engine((uint32_t) device());
     std::uniform_int_distribution<uint16_t> dis(1, UINT16_MAX);
 
     auto id = dis(engine);
@@ -84,7 +84,7 @@ sese::net::Address::Ptr sese::net::dns::Client::resolveCustom(const std::string 
     return nullptr;
 }
 
-sese::net::Address::Ptr sese::net::dns::Client::resolveAuto(const std::string &domain, IPAddress::Ptr server, int family, int type, int protocol) noexcept {
+sese::net::Address::Ptr sese::net::dns::Client::resolveAuto(const std::string &domain, const IPAddress::Ptr &server, int family, int type, int protocol) noexcept {
     auto result = resolveCustom(domain, server, family, type, protocol);
     if (result) {
         return result;
