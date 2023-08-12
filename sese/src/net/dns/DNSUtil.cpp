@@ -1,4 +1,6 @@
 #include <sese/net/dns/DNSUtil.h>
+#include <sese/text/StringBuilder.h>
+#include <sese/util/Endian.h>
 
 void sese::net::dns::DNSUtil::decodeFrameHeaderInfo(const uint8_t buf[12], sese::net::dns::FrameHeaderInfo &info) noexcept {
     info.transactionId = buf[0] * 0x100 + buf[1];
@@ -44,4 +46,107 @@ void sese::net::dns::DNSUtil::encodeFrameFlagsInfo(uint8_t buf[2], const FrameFl
     buf[1] = info.RA << 7;
     buf[1] |= info.z << 4;
     buf[1] |= info.rcode;
+}
+
+#define ASSERT_READ(buf, s)         \
+    if (input->read(buf, s) == s) { \
+        size += s;                  \
+    } else {                        \
+        return false;               \
+    }                               \
+    SESE_MARCO_END
+
+bool sese::net::dns::DNSUtil::decodeQueries(size_t qcount, sese::InputStream *input, std::vector<Query> &vector) noexcept {
+    while (qcount) {
+        std::string result;
+        bool first = true;
+        uint8_t l;
+        uint32_t offset = 12;
+        uint32_t size = 12;
+        char buf[128];
+        while (true) {
+            ASSERT_READ(&l, 1);
+            // input->read(&l, 1);
+            if (l == 0) {
+                break;
+            }
+            ASSERT_READ(buf, l);
+            // input->read(buf, l);
+            if (first) {
+                buf[l] = 0;
+                result += buf;
+                first = false;
+            } else {
+                buf[l] = 0;
+                result += '.';
+                result += buf;
+            }
+        }
+        uint16_t type;
+        ASSERT_READ(&type, sizeof(type));
+        // input->read(&type, 2);
+        type = FromBigEndian16(type);
+        uint16_t class_;
+        ASSERT_READ(&class_, sizeof(class_));
+        // input->read(&class_, 2);
+        class_ = FromBigEndian16(class_);
+
+        vector.emplace_back(result, type, class_, offset);
+        offset += size;
+        qcount -= 1;
+    }
+    return true;
+}
+
+void sese::net::dns::DNSUtil::encodeQueries(sese::OutputStream *output, std::vector<Query> &map) noexcept {
+    for (auto &item: map) {
+        auto v = text::StringBuilder::split(item.getName(), ".");
+        for (auto &i: v) {
+            auto l = (uint8_t) i.length();
+            output->write(&l, 1);
+            output->write(i.c_str(), i.length());
+        }
+        output->write("\0", 1);
+
+        uint16_t value = item.getType();
+        value = ToBigEndian16(value);
+        output->write(&value, sizeof(value));
+        value = item.getClass();
+        value = ToBigEndian16(value);
+        output->write(&value, sizeof(value));
+    }
+}
+
+void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<Answer> &vector) noexcept {
+    for (auto &item : vector) {
+        if (item.isRef()) {
+            output->write(item.getName().c_str(), 2);
+        } else {
+            auto v = text::StringBuilder::split(item.getName(), ".");
+            for (auto &i: v) {
+                auto l = (uint8_t) i.length();
+                output->write(&l, 1);
+                output->write(i.c_str(), i.length());
+            }
+            output->write("\0", 1);
+        }
+
+        uint16_t v16 = item.getType();
+        v16 = ToBigEndian16(v16);
+        output->write(&v16, sizeof(v16));
+
+        v16 = item.getClass();
+        v16 = ToBigEndian16(v16);
+        output->write(&v16, sizeof(v16));
+
+        uint32_t v32 = item.getLiveTime();
+        v32 = ToBigEndian32(v32);
+        output->write(&v32, sizeof(v32));
+
+        v16 = item.getLength();
+        v16 = ToBigEndian16(v16);
+        output->write(&v16, sizeof(v16));
+
+        output->write(item.getAddress(), item.getLength());
+    }
 }

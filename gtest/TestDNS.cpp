@@ -1,4 +1,7 @@
+#include <sese/net/dns/DNSServer.h>
 #include <sese/net/dns/DNSUtil.h>
+
+#include <random>
 
 #include <gtest/gtest.h>
 
@@ -88,4 +91,29 @@ TEST(TestDNS, Encode_1) {
 
     sese::net::dns::DNSUtil::encodeFrameHeaderInfo(result, info);
     EXPECT_EQ(memcmp(expect, result, 12), 0);
+}
+
+sese::net::IPv4Address::Ptr createAddress() {
+    std::random_device device;
+    auto engine = std::default_random_engine(device());
+    std::uniform_int_distribution<uint16_t> dis(1025, 65535);
+    auto port = dis(engine);
+    printf("select port %d\n", (int) port);
+    return sese::net::IPv4Address::create("127.0.0.1", 53);
+}
+
+TEST(TestDNS, Server_0) {
+    auto ip = createAddress();
+
+    sese::net::dns::DNSConfig config;
+    config.address = ip;
+    config.hostMap["www.example.com"] = "127.0.0.1";
+    config.hostMap["www.kaoru.com"] = "192.168.3.230";
+
+    auto server = sese::net::dns::DNSServer::create(&config);
+    ASSERT_NE(server, nullptr);
+
+    server->start();
+    getchar();
+    server->shutdown();
 }
