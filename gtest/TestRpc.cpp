@@ -9,6 +9,7 @@
 #include <sese/thread/Async.h>
 
 #define REMOTE_API
+#define printf SESE_INFO
 
 #include <gtest/gtest.h>
 

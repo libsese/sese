@@ -45,10 +45,16 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
         # for coverage
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
-        # disable exceptions
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
     endif ()
 endif ()
+
+# disable exceptions
+if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  /D_HAS_EXCEPTIONS=0")
+else ()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+endif ()
+
 
 message(STATUS "==================== SESE-CORE ====================")
 message(STATUS "Project version: ${PROJECT_VERSION}")

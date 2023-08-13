@@ -46,6 +46,9 @@ def main():
     # path = 'C:/temp/'
     # path = '/tmp/'
     path = sys.argv[1]
+    if not os.path.exists(path):
+        print('creating test dir')
+        os.mkdir(path)
     print('changing files')
     test_root_path(path)
     test_sub_path(path)

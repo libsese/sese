@@ -8,6 +8,8 @@
 
 #include <gtest/gtest.h>
 
+#define printf SESE_INFO
+
 sese::net::IPv4Address::Ptr createAddress() {
     std::random_device device;
     auto engine = std::default_random_engine(device());

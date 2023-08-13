@@ -14,7 +14,10 @@
 #include "sese/system/Process.h"
 #include "sese/util/InputBufferWrapper.h"
 #include "sese/util/Random.h"
+#include "sese/record/Marco.h"
 #include "gtest/gtest.h"
+
+#define printf SESE_INFO
 
 auto makeRandomPortAddr() {
     auto port = (uint16_t) (sese::Random::next() % (65535 - 1024) + 1024);

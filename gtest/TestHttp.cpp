@@ -11,9 +11,13 @@
 #include "sese/net/Socket.h"
 #include "sese/net/http/V2HttpServer.h"
 #include "sese/util/Random.h"
+#include "sese/record/Marco.h"
+
 #include "gtest/gtest.h"
 
 #include <chrono>
+
+#define printf SESE_INFO
 
 using namespace sese;
 
