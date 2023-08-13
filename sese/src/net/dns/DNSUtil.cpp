@@ -148,7 +148,7 @@ void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<An
         v16 = ToBigEndian16(v16);
         output->write(&v16, sizeof(v16));
 
-        output->write(item.getAddress().c_str(), item.getLength());
+        output->write(item.getData().c_str(), item.getLength());
     }
 }
 

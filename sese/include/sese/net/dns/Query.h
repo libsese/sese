@@ -1,3 +1,9 @@
+/// \file Query.h
+/// \author kaoru
+/// \brief DNS 查询类
+/// \version 0.1
+/// \date 2023年8月13日
+
 #pragma once
 
 #include <sese/Config.h>

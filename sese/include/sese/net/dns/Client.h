@@ -1,3 +1,10 @@
+/// \file Client.h
+/// \author kaoru
+/// \brief DNS 客户端类
+/// \version 0.1
+/// \date 2023年8月13日
+/// \see sese::net::dns::DNSServer
+
 #pragma once
 
 #include <sese/net/IPv6Address.h>

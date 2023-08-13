@@ -1,13 +1,20 @@
+/// \file Answer.h
+/// \author kaoru
+/// \brief DNS 应答类
+/// \version 0.1
+/// \date 2023年8月13日
+
 #pragma once
 
 #include <sese/Config.h>
 
 namespace sese::net::dns {
 
+    /// DNS 应答类
     class API Answer {
     public:
-        Answer(bool ref, std::string name, uint16_t type, uint16_t class_, uint32_t time, uint16_t len, std::string addr) noexcept
-            : ref(ref), name(std::move(name)), type(type), class_(class_), liveTime(time), length(len), addr(std::move(addr)) {}
+        Answer(bool ref, std::string name, uint16_t type, uint16_t class_, uint32_t time, uint16_t len, std::string data) noexcept
+            : ref(ref), name(std::move(name)), type(type), class_(class_), liveTime(time), length(len), data(std::move(data)) {}
 
         [[nodiscard]] const std::string &getName() const { return name; }
 
@@ -19,7 +26,7 @@ namespace sese::net::dns {
 
         [[nodiscard]] uint16_t getLength() const { return length; }
 
-        [[nodiscard]] const std::string &getAddress() const { return addr; }
+        [[nodiscard]] const std::string &getData() const { return data; }
 
         [[nodiscard]] bool isRef() const { return ref; }
 
@@ -30,7 +37,7 @@ namespace sese::net::dns {
         uint16_t class_;
         uint32_t liveTime;
         uint16_t length;
-        std::string addr;
+        std::string data;
     };
 
 }// namespace sese::net::dns

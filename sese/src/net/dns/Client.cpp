@@ -71,11 +71,11 @@ sese::net::Address::Ptr sese::net::dns::Client::resolveCustom(const std::string 
         }
         if (expectType == item.getType()) {
             if (family == AF_INET) {
-                auto data = (const uint32_t *) item.getAddress().c_str();
+                auto data = (const uint32_t *) item.getData().c_str();
                 uint32_t addr = FromBigEndian32(*data);
                 return std::make_shared<sese::net::IPv4Address>(addr, 0);
             } else {
-                auto data = (uint8_t *) item.getAddress().c_str();
+                auto data = (uint8_t *) item.getData().c_str();
                 return std::make_shared<sese::net::IPv6Address>(data, 0);
             }
         }
