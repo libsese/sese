@@ -60,6 +60,16 @@ HttpClient::Ptr HttpClient::create(const std::string &url, bool keepAlive) noexc
     return std::unique_ptr<HttpClient>(ptr);
 }
 
+HttpClient::Ptr sese::net::http::HttpClient::create(const IPv4Address::Ptr &address, bool ssl, bool keepAlive) noexcept {
+    auto ptr = new HttpClient;
+    ptr->isKeepAlive = keepAlive;
+    ptr->address = address;
+    if (ssl) {
+        ptr->sslContext = security::SSLContextBuilder::SSL4Client();
+    }
+    return sese::net::http::HttpClient::Ptr(ptr);
+}
+
 HttpClient::~HttpClient() noexcept {
     if (socket) {
         socket->close();
@@ -105,7 +115,6 @@ bool HttpClient::reconnect() noexcept {
         return true;
     }
 }
-
 bool HttpClient::doRequest() noexcept {
     if (!isKeepAlive && !reconnect()) {
         // 非长连接并且无法重新建立连接

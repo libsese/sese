@@ -31,6 +31,13 @@ namespace sese::net::http {
         /// \example http://127.0.0.1:8080/index.html
         static HttpClient::Ptr create(const std::string &url, bool keepAlive = false) noexcept;
 
+        /// 创建指定 IP 地址的 Http 客户端
+        /// \param address IP 地址
+        /// \param ssl 是否启用 ssl
+        /// \param keepAlive 是否启用长连接（需要服务器支持）
+        /// \retval nullptr 创建客户端失败
+        static HttpClient::Ptr create(const IPv4Address::Ptr &address, bool ssl = false, bool keepAlive = false) noexcept;
+
         ~HttpClient() noexcept;
 
         bool doRequest() noexcept;
