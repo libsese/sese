@@ -18,7 +18,7 @@ namespace sese::security {
             // MD4,
             MD5,
             SHA1,
-            SHA224,
+            // SHA224,
             SHA256,
             SHA384,
             SHA512
@@ -31,7 +31,7 @@ namespace sese::security {
         static void digestMD5(char *str, InputStream *input, bool isCap) noexcept;
 
         static void digestSH1(char *str, InputStream *input, bool isCap) noexcept;
-        static void digestSHA224(char *str, InputStream *input, bool isCap) noexcept;
+        // static void digestSHA224(char *str, InputStream *input, bool isCap) noexcept;
         static void digestSHA256(char *str, InputStream *input, bool isCap) noexcept;
         static void digestSHA384(char *str, InputStream *input, bool isCap) noexcept;
         static void digestSHA512(char *str, InputStream *input, bool isCap) noexcept;

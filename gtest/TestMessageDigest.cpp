@@ -52,15 +52,15 @@ TEST(TestMessageDigest, SHA1) {
     }
 }
 
-TEST(TestMessageDigest, SHA224) {
-    const char *str0 = "Hello";
-    const char *rt0 = "4149da18aa8bfc2b1e382c6c26556d01a92c261b6436dad5e3be3fcc";
-    {
-        auto input = sese::InputBufferWrapper(str0, 5);
-        auto rt = MessageDigest::digest(MessageDigest::Type::SHA224, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
-    }
-}
+// TEST(TestMessageDigest, SHA224) {
+//     const char *str0 = "Hello";
+//     const char *rt0 = "4149da18aa8bfc2b1e382c6c26556d01a92c261b6436dad5e3be3fcc";
+//     {
+//         auto input = sese::InputBufferWrapper(str0, 5);
+//         auto rt = MessageDigest::digest(MessageDigest::Type::SHA224, &input);
+//         EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+//     }
+// }
 
 TEST(TestMessageDigest, SHA256) {
     const char *str0 = "Hello";

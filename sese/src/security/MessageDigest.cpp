@@ -1,10 +1,10 @@
 #include "sese/security/MessageDigest.h"
 #include "sese/security/evp/MD5Context.h"
 #include "sese/security/evp/SHA1Context.h"
+#include "sese/security/evp/SHA256Context.h"
+#include "sese/security/evp/SHA384Context.h"
+#include "sese/security/evp/SHA512Context.h"
 #include "sese/util/MemoryViewer.h"
-
-#include "openssl/sha.h"
-#include <openssl/evp.h>
 
 std::unique_ptr<char[]> sese::security::MessageDigest::digest(sese::security::MessageDigest::Type type, InputStream *input, bool isCap) noexcept {
     switch (type) {
@@ -19,27 +19,27 @@ std::unique_ptr<char[]> sese::security::MessageDigest::digest(sese::security::Me
             return str;
         }
         case Type::SHA1: {
-            auto str = std::unique_ptr<char[]>(new char[SHA_DIGEST_LENGTH * 2 + 1]);
+            auto str = std::unique_ptr<char[]>(new char[20 * 2 + 1]);
             digestSH1(str.get(), input, isCap);
             return str;
         }
-        case Type::SHA224: {
-            auto str = std::unique_ptr<char[]>(new char[SHA224_DIGEST_LENGTH * 2 + 1]);
-            digestSHA224(str.get(), input, isCap);
-            return str;
-        }
+        // case Type::SHA224: {
+        //     auto str = std::unique_ptr<char[]>(new char[SHA224_DIGEST_LENGTH * 2 + 1]);
+        //     digestSHA224(str.get(), input, isCap);
+        //     return str;
+        // }
         case Type::SHA256: {
-            auto str = std::unique_ptr<char[]>(new char[SHA256_DIGEST_LENGTH * 2 + 1]);
+            auto str = std::unique_ptr<char[]>(new char[32 * 2 + 1]);
             digestSHA256(str.get(), input, isCap);
             return str;
         }
         case Type::SHA384: {
-            auto str = std::unique_ptr<char[]>(new char[SHA384_DIGEST_LENGTH * 2 + 1]);
+            auto str = std::unique_ptr<char[]>(new char[48 * 2 + 1]);
             digestSHA384(str.get(), input, isCap);
             return str;
         }
         case Type::SHA512: {
-            auto str = std::unique_ptr<char[]>(new char[SHA512_DIGEST_LENGTH * 2 + 1]);
+            auto str = std::unique_ptr<char[]>(new char[64 * 2 + 1]);
             digestSHA512(str.get(), input, isCap);
             return str;
         }
@@ -107,57 +107,47 @@ void sese::security::MessageDigest::digestSH1(char *str, InputStream *input, boo
     str[40] = 0;
 }
 
-void sese::security::MessageDigest::digestSHA224(char *str, InputStream *input, bool isCap) noexcept {
-    uint8_t result[SHA224_DIGEST_LENGTH]{0};
-    char buffer[1024];
-    // SHA256_CTX ctx;
-    // SHA224_Init(&ctx);
-    // size_t len;
-    // while ((len = input->read(buffer, 1024)) > 0) {
-    //     SHA224_Update(&ctx, buffer, len);
-    // }
-    // SHA224_Final(result, &ctx);
-
-    auto ctx = EVP_MD_CTX_new();
-    EVP_DigestInit(ctx, EVP_sha224());
-    size_t len;
-    while ((len = input->read(buffer, 1024)) > 0) {
-        EVP_DigestUpdate(ctx, buffer, len);
-    }
-    EVP_DigestFinal(ctx, result, nullptr);
-    EVP_MD_CTX_free(ctx);
-
-    std::div_t divRt;
-    for (int i = 0; i < SHA224_DIGEST_LENGTH; ++i) {
-        divRt = std::div(result[i], 0x10);
-        str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
-        str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
-    }
-    str[56] = 0;
-}
+// void sese::security::MessageDigest::digestSHA224(char *str, InputStream *input, bool isCap) noexcept {
+//     uint8_t result[SHA224_DIGEST_LENGTH]{0};
+//     char buffer[1024];
+//     // SHA256_CTX ctx;
+//     // SHA224_Init(&ctx);
+//     // size_t len;
+//     // while ((len = input->read(buffer, 1024)) > 0) {
+//     //     SHA224_Update(&ctx, buffer, len);
+//     // }
+//     // SHA224_Final(result, &ctx);
+//
+//     auto ctx = EVP_MD_CTX_new();
+//     EVP_DigestInit(ctx, EVP_sha224());
+//     size_t len;
+//     while ((len = input->read(buffer, 1024)) > 0) {
+//         EVP_DigestUpdate(ctx, buffer, len);
+//     }
+//     EVP_DigestFinal(ctx, result, nullptr);
+//     EVP_MD_CTX_free(ctx);
+//
+//     std::div_t divRt;
+//     for (int i = 0; i < SHA224_DIGEST_LENGTH; ++i) {
+//         divRt = std::div(result[i], 0x10);
+//         str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
+//         str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
+//     }
+//     str[56] = 0;
+// }
 
 void sese::security::MessageDigest::digestSHA256(char *str, InputStream *input, bool isCap) noexcept {
-    uint8_t result[SHA256_DIGEST_LENGTH]{0};
-    char buffer[1024];
-    // SHA256_CTX ctx;
-    // SHA256_Init(&ctx);
-    // size_t len;
-    // while ((len = input->read(buffer, 1024)) > 0) {
-    //     SHA256_Update(&ctx, buffer, len);
-    // }
-    // SHA256_Final(result, &ctx);
-
-    auto ctx = EVP_MD_CTX_new();
-    EVP_DigestInit(ctx, EVP_sha256());
+    evp::SHA256Context context;
     size_t len;
+    char buffer[1024];
     while ((len = input->read(buffer, 1024)) > 0) {
-        EVP_DigestUpdate(ctx, buffer, len);
+        context.update(buffer, len);
     }
-    EVP_DigestFinal(ctx, result, nullptr);
-    EVP_MD_CTX_free(ctx);
+    context.final();
 
+    auto result = (uint8_t *) context.getResult();
     std::div_t divRt;
-    for (int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
+    for (int i = 0; i < context.getLength(); ++i) {
         divRt = std::div(result[i], 0x10);
         str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
         str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
@@ -166,27 +156,17 @@ void sese::security::MessageDigest::digestSHA256(char *str, InputStream *input, 
 }
 
 void sese::security::MessageDigest::digestSHA384(char *str, InputStream *input, bool isCap) noexcept {
-    uint8_t result[SHA384_DIGEST_LENGTH]{0};
-    char buffer[1024];
-    // SHA512_CTX ctx;
-    // SHA384_Init(&ctx);
-    // size_t len;
-    // while ((len = input->read(buffer, 1024)) > 0) {
-    //     SHA384_Update(&ctx, buffer, len);
-    // }
-    // SHA384_Final(result, &ctx);
-
-    auto ctx = EVP_MD_CTX_new();
-    EVP_DigestInit(ctx, EVP_sha384());
+    evp::SHA384Context context;
     size_t len;
+    char buffer[1024];
     while ((len = input->read(buffer, 1024)) > 0) {
-        EVP_DigestUpdate(ctx, buffer, len);
+        context.update(buffer, len);
     }
-    EVP_DigestFinal(ctx, result, nullptr);
-    EVP_MD_CTX_free(ctx);
+    context.final();
 
+    auto result = (uint8_t *) context.getResult();
     std::div_t divRt;
-    for (int i = 0; i < SHA384_DIGEST_LENGTH; ++i) {
+    for (int i = 0; i < context.getLength(); ++i) {
         divRt = std::div(result[i], 0x10);
         str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
         str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
@@ -195,27 +175,17 @@ void sese::security::MessageDigest::digestSHA384(char *str, InputStream *input, 
 }
 
 void sese::security::MessageDigest::digestSHA512(char *str, InputStream *input, bool isCap) noexcept {
-    uint8_t result[SHA512_DIGEST_LENGTH]{0};
-    char buffer[1024];
-    // SHA512_CTX ctx;
-    // SHA512_Init(&ctx);
-    // size_t len;
-    // while ((len = input->read(buffer, 1024)) > 0) {
-    //     SHA512_Update(&ctx, buffer, len);
-    // }
-    // SHA512_Final(result, &ctx);
-
-    auto ctx = EVP_MD_CTX_new();
-    EVP_DigestInit(ctx, EVP_sha512());
+    evp::SHA512Context context;
     size_t len;
+    char buffer[1024];
     while ((len = input->read(buffer, 1024)) > 0) {
-        EVP_DigestUpdate(ctx, buffer, len);
+        context.update(buffer, len);
     }
-    EVP_DigestFinal(ctx, result, nullptr);
-    EVP_MD_CTX_free(ctx);
+    context.final();
 
+    auto result = (uint8_t *) context.getResult();
     std::div_t divRt;
-    for (int i = 0; i < SHA512_DIGEST_LENGTH; ++i) {
+    for (int i = 0; i < context.getLength(); ++i) {
         divRt = std::div(result[i], 0x10);
         str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
         str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);

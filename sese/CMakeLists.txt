@@ -157,6 +157,9 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/security/SecurityTcpServer.cpp
         ${NATIVE_PATH}/security/evp/MD5Context.cpp
         ${NATIVE_PATH}/security/evp/SHA1Context.cpp
+        ${NATIVE_PATH}/security/evp/SHA256Context.cpp
+        ${NATIVE_PATH}/security/evp/SHA384Context.cpp
+        ${NATIVE_PATH}/security/evp/SHA512Context.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
         ${NATIVE_PATH}/system/FileNotifier.cpp
