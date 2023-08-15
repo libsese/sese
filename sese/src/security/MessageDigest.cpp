@@ -1,11 +1,10 @@
 #include "sese/security/MessageDigest.h"
+#include "sese/security/evp/MD5Context.h"
+#include "sese/security/evp/SHA1Context.h"
 #include "sese/util/MemoryViewer.h"
 
-#include "openssl/md4.h"
-#include "openssl/md5.h"
 #include "openssl/sha.h"
 #include <openssl/evp.h>
-#include <openssl/types.h>
 
 std::unique_ptr<char[]> sese::security::MessageDigest::digest(sese::security::MessageDigest::Type type, InputStream *input, bool isCap) noexcept {
     switch (type) {
@@ -15,7 +14,7 @@ std::unique_ptr<char[]> sese::security::MessageDigest::digest(sese::security::Me
         //     return str;
         // }
         case Type::MD5: {
-            auto str = std::unique_ptr<char[]>(new char[MD5_DIGEST_LENGTH * 2 + 1]);
+            auto str = std::unique_ptr<char[]>(new char[16 * 2 + 1]);
             digestMD5(str.get(), input, isCap);
             return str;
         }
@@ -71,27 +70,17 @@ std::unique_ptr<char[]> sese::security::MessageDigest::digest(sese::security::Me
 // }
 
 void sese::security::MessageDigest::digestMD5(char *str, InputStream *input, bool isCap) noexcept {
-    uint8_t result[MD5_DIGEST_LENGTH]{0};
-    char buffer[1024];
-    // MD5_CTX ctx;
-    // MD5_Init(&ctx);
-    // size_t len;
-    // while ((len = input->read(buffer, 1024)) > 0) {
-    //     MD5_Update(&ctx, buffer, len);
-    // }
-    // MD5_Final(result, &ctx);
-
-    auto ctx = EVP_MD_CTX_new();
-    EVP_DigestInit(ctx, EVP_md5());
+    evp::MD5Context context;
     size_t len;
+    char buffer[1024];
     while ((len = input->read(buffer, 1024)) > 0) {
-        EVP_DigestUpdate(ctx, buffer, len);
+        context.update(buffer, len);
     }
-    EVP_DigestFinal(ctx, result, nullptr);
-    EVP_MD_CTX_free(ctx);
+    context.final();
 
+    auto result = (uint8_t *) context.getResult();
     std::div_t divRt;
-    for (int i = 0; i < 16; ++i) {
+    for (int i = 0; i < context.getLength(); ++i) {
         divRt = std::div(result[i], 0x10);
         str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
         str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);
@@ -100,27 +89,17 @@ void sese::security::MessageDigest::digestMD5(char *str, InputStream *input, boo
 }
 
 void sese::security::MessageDigest::digestSH1(char *str, InputStream *input, bool isCap) noexcept {
-    uint8_t result[SHA_DIGEST_LENGTH]{0};
-    char buffer[1024];
-    // SHA_CTX ctx;
-    // SHA1_Init(&ctx);
-    // size_t len;
-    // while ((len = input->read(buffer, 1024)) > 0) {
-    //     SHA1_Update(&ctx, buffer, len);
-    // }
-    // SHA1_Final(result, &ctx);
-
-    auto ctx = EVP_MD_CTX_new();
-    EVP_DigestInit(ctx, EVP_sha1());
+    evp::SHA1Context context;
     size_t len;
+    char buffer[1024];
     while ((len = input->read(buffer, 1024)) > 0) {
-        EVP_DigestUpdate(ctx, buffer, len);
+        context.update(buffer, len);
     }
-    EVP_DigestFinal(ctx, result, nullptr);
-    EVP_MD_CTX_free(ctx);
+    context.final();
 
+    auto result = (uint8_t *) context.getResult();
     std::div_t divRt;
-    for (int i = 0; i < 20; ++i) {
+    for (int i = 0; i < context.getLength(); ++i) {
         divRt = std::div(result[i], 0x10);
         str[i * 2 + 0] = MemoryViewer::toChar(divRt.quot, isCap);
         str[i * 2 + 1] = MemoryViewer::toChar(divRt.rem, isCap);

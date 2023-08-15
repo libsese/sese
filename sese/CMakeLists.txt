@@ -155,6 +155,8 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/net/ReadableServer.cpp
         ${NATIVE_PATH}/net/V2Server.cpp
         ${NATIVE_PATH}/security/SecurityTcpServer.cpp
+        ${NATIVE_PATH}/security/evp/MD5Context.cpp
+        ${NATIVE_PATH}/security/evp/SHA1Context.cpp
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
         ${NATIVE_PATH}/system/FileNotifier.cpp
@@ -177,7 +179,7 @@ if (WIN32)
         target_compile_options(Core PRIVATE "/wd4530")
     endif ()
     target_link_libraries(Core PUBLIC ws2_32) # Sese::Event-static required
-    target_link_libraries(Core PRIVATE iphlpapi)
+    target_link_libraries(Core PRIVATE iphlpapi advapi32 secur32)
 
     # target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
     # target_compile_options(Core-static PRIVATE "/utf-8")
@@ -185,7 +187,7 @@ if (WIN32)
     # target_compile_options(Core-static PRIVATE "/wd4530")
     # target_link_libraries(Core-static PRIVATE ws2_32 iphlpapi)
 
-    message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi")
+    message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi, advapi32, secur32")
 
     if (${CMAKE_GENERATOR} MATCHES "Ninja")
         # 单配置
