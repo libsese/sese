@@ -16,7 +16,7 @@ sese::security::evp::MD5Context::~MD5Context() noexcept {
 }
 
 void sese::security::evp::MD5Context::update(const void *buffer, size_t len) noexcept {
-    CryptHashData(this->hHash, (const BYTE *) buffer, len, 0);
+    CryptHashData(this->hHash, (const BYTE *) buffer, (DWORD) len, 0);
 }
 
 void sese::security::evp::MD5Context::final() noexcept {

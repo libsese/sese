@@ -16,7 +16,7 @@ sese::security::evp::SHA256Context::~SHA256Context() noexcept {
 }
 
 void sese::security::evp::SHA256Context::update(const void *buffer, size_t len) noexcept {
-    CryptHashData(this->hHash, (const BYTE *) buffer, len, 0);
+    CryptHashData(this->hHash, (const BYTE *) buffer, (DWORD) len, 0);
 }
 
 void sese::security::evp::SHA256Context::final() noexcept {
