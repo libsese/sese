@@ -92,7 +92,7 @@ namespace sese::net {
          * @param flags 标志
          * @return 实际发送字节数
          */
-        int64_t send(void *buffer, size_t length, IPAddress::Ptr to, int32_t flags) const;
+        int64_t send(void *buffer, size_t length, const IPAddress::Ptr& to, int32_t flags) const;
         /**
          * UDP 接收字节
          * @param buffer 缓存
@@ -101,7 +101,7 @@ namespace sese::net {
          * @param flags 标志
          * @return 实际接收字节数
          */
-        int64_t recv(void *buffer, size_t length, IPAddress::Ptr from, int32_t flags) const;
+        int64_t recv(void *buffer, size_t length, const IPAddress::Ptr& from, int32_t flags) const;
 
     public:
         int64_t peek(void *buffer, size_t length) override;

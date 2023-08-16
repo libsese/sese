@@ -11,7 +11,7 @@ Socket::Socket(Family family, Type type, int32_t protocol) noexcept {
     handle = ::socket((int32_t) family, (int32_t) type, protocol);
 }
 
-Socket::~Socket() noexcept { // NOLINT
+Socket::~Socket() noexcept {// NOLINT
 }
 
 int32_t Socket::bind(Address::Ptr addr) noexcept {
@@ -21,7 +21,7 @@ int32_t Socket::bind(Address::Ptr addr) noexcept {
 
 int32_t Socket::connect(Address::Ptr addr) noexcept {
     address = std::move(addr);
-    while(true) {
+    while (true) {
         auto rt = ::connect(handle, address->getRawAddress(), address->getRawAddressLength());
         if (rt != 0) {
             auto err = sese::net::getNetworkError();
@@ -77,13 +77,18 @@ int64_t Socket::write(const void *buffer, size_t length) {
     return ::write(handle, buffer, length);
 }
 
-int64_t Socket::send(void *buffer, size_t length, IPAddress::Ptr to, int32_t flags) const {
+int64_t Socket::send(void *buffer, size_t length, const IPAddress::Ptr &to, int32_t flags) const {
     return ::sendto(handle, buffer, length, flags, to->getRawAddress(), to->getRawAddressLength());
 }
 
-int64_t Socket::recv(void *buffer, size_t length, IPAddress::Ptr from, int32_t flags) const {
-    auto len = from->getRawAddressLength();
-    return ::recvfrom(handle, buffer, length, flags, from->getRawAddress(), &len);
+int64_t Socket::recv(void *buffer, size_t length, const IPAddress::Ptr &from, int32_t flags) const {
+    sockaddr *addr = nullptr;
+    socklen_t len = 0;
+    if (from) {
+        len = from->getRawAddressLength();
+        addr = from->getRawAddress();
+    }
+    return ::recvfrom(handle, buffer, length, flags, addr, &len);
 }
 
 void Socket::close() {

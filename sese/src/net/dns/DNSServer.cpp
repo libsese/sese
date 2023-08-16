@@ -103,7 +103,7 @@ void sese::net::dns::DNSServer::loop() noexcept {
                     uint16_t offset = q.getOffset();
                     offset |= 0b1100'0000'0000'0000;
                     offset = ToBigEndian16(offset);
-                    std::string name = {(const char *) &offset, 4};
+                    std::string name = {(const char *) &offset, 2};
                     session.getAnswers().emplace_back(
                             true,
                             name,
@@ -124,7 +124,7 @@ void sese::net::dns::DNSServer::loop() noexcept {
                     uint16_t offset = q.getOffset();
                     offset |= 0b1100'0000'0000'0000;
                     offset = ToBigEndian16(offset);
-                    std::string name = {(const char *) &offset, 4};
+                    std::string name = {(const char *) &offset, 2};
                     session.getAnswers().emplace_back(
                             true,
                             name,

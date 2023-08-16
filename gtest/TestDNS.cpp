@@ -8,6 +8,8 @@
 
 #define printf SESE_INFO
 
+using namespace std::chrono_literals;
+
 TEST(TestDNS, Decode_0) {
     const uint8_t buffer[12] = {0xc1, 0xa8, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
@@ -102,7 +104,7 @@ sese::net::IPv4Address::Ptr createAddress() {
     std::uniform_int_distribution<uint16_t> dis(1025, 65535);
     auto port = dis(engine);
     printf("select port %d\n", (int) port);
-    return sese::net::IPv4Address::create("127.0.0.1", port);
+    return sese::net::IPv4Address::localhost(port);
 }
 
 TEST(TestDNS, Client) {
