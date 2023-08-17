@@ -1,4 +1,5 @@
 #include <sese/net/Socket.h>
+#include <sese/util/Util.h>
 
 socket_t sese::net::Socket::socket(int family, int type, int protocol) noexcept {
     return ::socket(family, type, protocol);
@@ -43,6 +44,19 @@ int sese::net::getNetworkError() noexcept {
     return WSAGetLastError();
 }
 
+std::string sese::net::getNetworkErrorString(int error) noexcept {
+    char *msg = nullptr;
+    FormatMessage(
+            FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+            nullptr,
+            error,
+            MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US),
+            (LPTSTR) &msg,
+            0,
+            nullptr
+    );
+    return msg;
+}
 #else
 
 #include <unistd.h>
@@ -74,6 +88,10 @@ void sese::net::Socket::close(socket_t socket) noexcept {
 
 int sese::net::getNetworkError() noexcept {
     return errno;
+}
+
+std::string sese::net::getNetworkErrorString(int error) noexcept {
+    return sese::getErrorString(error);
 }
 
 #endif

@@ -165,4 +165,11 @@ namespace sese::net {
      */
     extern int getNetworkError() noexcept;
 
+    /**
+     * @brief 获取网络相关错误描述
+     * @param error 代码
+     * @return 错误描述
+     */
+    std::string getNetworkErrorString(int error = getNetworkError()) noexcept;
+
 }// namespace sese
