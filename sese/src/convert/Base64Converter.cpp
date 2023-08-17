@@ -65,6 +65,7 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
 
     int64_t len;
     while ((len = src->read(buffer, 4)) != 0) {
+        int offset = 0;
         for (auto i = 0; i < len; i++) {
             // 此处已是逻辑完备的
             // GCOVR_EXCL_START
@@ -80,10 +81,12 @@ void Base64Converter::decode(InputStream *src, OutputStream *dest) {
                 buffer[i] = 63;
             } else {
                 buffer[i] = 0;
+                offset -= 1;
             }
             // GCOVR_EXCL_STOP
         }
 
+        len += offset;
         // 1
         if (len >= 2) {
             buffer[0] = (buffer[0] << 2) | (buffer[1] & 0b00110000) >> 4;
