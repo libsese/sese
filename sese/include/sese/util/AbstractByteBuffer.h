@@ -63,13 +63,19 @@ namespace sese {
          */
         [[nodiscard]] virtual size_t getCapacity() const;
         /**
+         *
+         * @return 可读字节总数
+         */
+        [[nodiscard]] virtual size_t getReadableSize() const;
+
+        /**
          * 释放 CurrentReadNode 前的所有节点
          * @return 实际释放空间，单位 “字节”
          */
         virtual size_t freeCapacity();
 
-        [[nodiscard]] size_t getCurrentWritePos() const { return currentWritePos; }
-        [[nodiscard]] size_t getCurrentReadPos() const { return currentReadPos; }
+        // [[nodiscard]] size_t getCurrentWritePos() const { return currentWritePos; }
+        // [[nodiscard]] size_t getCurrentReadPos() const { return currentReadPos; }
 
     public:
         int64_t read(void *buffer, size_t len) override;

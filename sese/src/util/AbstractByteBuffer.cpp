@@ -119,6 +119,20 @@ namespace sese {
         return this->cap;
     }
 
+    size_t AbstractByteBuffer::getReadableSize() const {
+        size_t size = currentReadNode->length - currentReadPos;
+        auto pNode = currentReadNode->next;
+        while (pNode) {
+            if (pNode == currentWriteNode) {
+                size += currentWritePos;
+            } else {
+                size += pNode->cap;
+            }
+            pNode = pNode->next;
+        }
+        return size;
+    }
+
     size_t AbstractByteBuffer::freeCapacity() {
         // 还原 root，删除 root 之后的节点
         size_t freeCap = 0;

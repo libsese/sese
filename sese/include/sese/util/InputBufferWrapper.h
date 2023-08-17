@@ -27,8 +27,8 @@ namespace sese {
         void reset() noexcept;
 
         [[nodiscard]] const char *getBuffer() const;
-        [[nodiscard]] size_t getLen() const;
-        [[nodiscard]] size_t getCap() const;
+        [[nodiscard]] size_t getLength() const;
+        [[nodiscard]] size_t getCapacity() const;
 
     protected:
         const char *buffer = nullptr;

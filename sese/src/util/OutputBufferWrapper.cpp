@@ -4,11 +4,11 @@ const char *sese::OutputBufferWrapper::getBuffer() const {
     return buffer;
 }
 
-size_t sese::OutputBufferWrapper::getLen() const {
+size_t sese::OutputBufferWrapper::getLength() const {
     return len;
 }
 
-size_t sese::OutputBufferWrapper::getCap() const {
+size_t sese::OutputBufferWrapper::getCapacity() const {
     return cap;
 }
 

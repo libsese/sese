@@ -534,7 +534,7 @@ void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
                 output << HTTPD_BOUNDARY;
                 output << "--\r\n";
 
-                write(event->fd, buffer, output.getLen(), conn->ssl);
+                write(event->fd, buffer, output.getLength(), conn->ssl);
             } else {
             }
         }

@@ -68,9 +68,9 @@ namespace sese {
         /// \param source
         void reset(const Stream::Ptr &source) noexcept;
 
-        [[nodiscard]] size_t getPos() const { return pos; }
-        [[nodiscard]] size_t getLen() const { return len; }
-        [[nodiscard]] size_t getCap() const { return cap; }
+        [[nodiscard]] size_t getPosition() const { return pos; }
+        [[nodiscard]] size_t getLength() const { return len; }
+        [[nodiscard]] size_t getCapacity() const { return cap; }
 
     private:
         inline int64_t preRead();

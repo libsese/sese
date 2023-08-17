@@ -5,33 +5,6 @@ find_package(SimpleUuid CONFIG REQUIRED)
 find_package(sese-plugin CONFIG REQUIRED)
 find_package(sese-event CONFIG REQUIRED)
 
-add_library(Core SHARED)
-# add_library(Core-static STATIC)
-
-option(USE_ASYNC_LOGGER "use async logger" OFF)
-if (USE_ASYNC_LOGGER)
-    target_compile_definitions(Core PRIVATE -DUSE_ASYNC_LOGGER)
-endif ()
-
-if (SESE_BUILD_TEST)
-    target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
-endif ()
-
-target_compile_definitions(Core PUBLIC -DSESE_USE_SSL)
-
-target_include_directories(
-        Core
-        PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-)
-# target_include_directories(
-#         Core-static
-#         PUBLIC
-#         $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
-#         $<INSTALL_INTERFACE:include>
-# )
-
 set(
         RECORD_SRC
         src/record/AbstractAppender.cpp src/record/SimpleFormatter.cpp
@@ -133,7 +106,7 @@ set(
         src/service/HttpService.cpp src/service/WebsocketService.cpp
 )
 
-target_sources(Core PRIVATE
+add_library(Core SHARED
         ${RECORD_SRC}
         ${CONVERT_SRC}
         ${THREAD_SRC}
@@ -145,6 +118,25 @@ target_sources(Core PRIVATE
         ${SECURITY_SRC}
         ${PLUGIN_SRC}
         ${SERVICE_SRC}
+)
+# add_library(Core-static STATIC)
+
+option(USE_ASYNC_LOGGER "use async logger" OFF)
+if (USE_ASYNC_LOGGER)
+    target_compile_definitions(Core PRIVATE -DUSE_ASYNC_LOGGER)
+endif ()
+
+if (SESE_BUILD_TEST)
+    target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
+endif ()
+
+target_compile_definitions(Core PUBLIC -DSESE_USE_SSL)
+
+target_include_directories(
+        Core
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+        $<INSTALL_INTERFACE:include>
 )
 
 set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")

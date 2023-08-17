@@ -53,6 +53,6 @@ TEST(TestBufferWrapper, Misc) {
     char buffer[8] {};
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
     ASSERT_EQ(output.getBuffer(), buffer);
-    ASSERT_EQ(output.getCap(), 8);
-    ASSERT_EQ(output.getLen(), 0);
+    ASSERT_EQ(output.getCapacity(), 8);
+    ASSERT_EQ(output.getLength(), 0);
 }

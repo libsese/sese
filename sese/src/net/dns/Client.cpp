@@ -43,7 +43,7 @@ sese::net::Address::Ptr sese::net::dns::Client::resolveCustom(const std::string 
     DNSUtil::encodeFrameHeaderInfo(buffer, info);
     DNSUtil::encodeQueries(&output, session.getQueries());
 
-    socket.send(buffer, 12 + output.getLen(), server, 0);
+    socket.send(buffer, 12 + output.getLength(), server, 0);
 
     auto len = socket.recv(buffer, sizeof(buffer), server, 0);
     auto input = sese::InputBufferWrapper((const char *) buffer + 12, len - 12);

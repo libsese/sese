@@ -46,7 +46,7 @@ TEST(TestBase64, Base64Decode_0) {
     auto input = sese::InputBufferWrapper(code.c_str(), code.length());
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
     sese::Base64Converter::decode(&input, &output);
-    ASSERT_EQ(output.getLen(), 6);
+    ASSERT_EQ(output.getLength(), 6);
     ASSERT_EQ(std::string_view("你好"), std::string_view(buffer));
 }
 
@@ -56,7 +56,7 @@ TEST(TestBase64, Base64Decode_1) {
     auto input = sese::InputBufferWrapper(code.c_str(), code.length());
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
     sese::Base64Converter::decode(&input, &output);
-    ASSERT_EQ(output.getLen(), 10);
+    ASSERT_EQ(output.getLength(), 10);
     ASSERT_EQ(std::string_view("sese-core-"), std::string_view(buffer));
 }
 
@@ -66,7 +66,7 @@ TEST(TestBase64, Base64Decode_2) {
     auto input = sese::InputBufferWrapper(code.c_str(), code.length());
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
     sese::Base64Converter::decode(&input, &output);
-    ASSERT_EQ(output.getLen(), 10);
+    ASSERT_EQ(output.getLength(), 10);
     ASSERT_EQ(std::string_view("Ciallo Wor"), std::string_view(buffer));
 }
 
@@ -76,7 +76,7 @@ TEST(TestBase64, Base64Decode_3) {
     auto input = sese::InputBufferWrapper(code.c_str(), code.length());
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
     sese::Base64Converter::decode(&input, &output);
-    ASSERT_EQ(output.getLen(), 11);
+    ASSERT_EQ(output.getLength(), 11);
     ASSERT_EQ(std::string_view("Ciallo Worl"), std::string_view(buffer));
 }
 

@@ -14,13 +14,13 @@ TEST(TestBufferedStream, Output_0) {
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     auto buffered = BufferedOutputStream(bytes, 16);
-    ASSERT_EQ(buffered.getCap(), 16);
+    ASSERT_EQ(buffered.getCapacity(), 16);
     buffered.write("Hello, World", 12);
-    ASSERT_EQ(buffered.getLen(), 12);
+    ASSERT_EQ(buffered.getLength(), 12);
     ASSERT_EQ(bytes->getLength(), 0);
     buffered.write("World", 5);
     buffered.write("HelloHelloHelloHello", 20);
-    ASSERT_EQ(buffered.getLen(), 0);
+    ASSERT_EQ(buffered.getLength(), 0);
     ASSERT_EQ(bytes->getLength(), 37);
 }
 
@@ -78,13 +78,13 @@ TEST(TestBufferedStream, Input_0) {
     char buffer[1024]{};
 
     buffered.read(buffer, 1);
-    ASSERT_EQ(buffered.getLen(), 8);
-    ASSERT_EQ(buffered.getPos(), 1);
+    ASSERT_EQ(buffered.getLength(), 8);
+    ASSERT_EQ(buffered.getPosition(), 1);
     ASSERT_EQ(buffer[0], 'H');
 
     buffered.read(buffer, 7);
-    ASSERT_EQ(buffered.getLen(), 8);
-    ASSERT_EQ(buffered.getPos(), 8);
+    ASSERT_EQ(buffered.getLength(), 8);
+    ASSERT_EQ(buffered.getPosition(), 8);
     ASSERT_EQ(std::string_view(buffer), std::string_view("ello, W"));
 
     buffered.read(buffer, 30);
@@ -117,13 +117,13 @@ TEST(TestBufferedStream, BufferedStream_0) {
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     auto buffered = BufferedStream(bytes, 16);
-    ASSERT_EQ(buffered.getCap(), 16);
+    ASSERT_EQ(buffered.getCapacity(), 16);
     buffered.write("Hello, World", 12);
-    ASSERT_EQ(buffered.getLen(), 12);
+    ASSERT_EQ(buffered.getLength(), 12);
     ASSERT_EQ(bytes->getLength(), 0);
     buffered.write("World", 5);
     buffered.write("HelloHelloHelloHello", 20);
-    ASSERT_EQ(buffered.getLen(), 0);
+    ASSERT_EQ(buffered.getLength(), 0);
     ASSERT_EQ(bytes->getLength(), 37);
     buffered.clear();
 }
@@ -182,13 +182,13 @@ TEST(TestBufferedStream, BufferedStream_5) {
     char buffer[1024]{};
 
     buffered.read(buffer, 1);
-    ASSERT_EQ(buffered.getLen(), 8);
-    ASSERT_EQ(buffered.getPos(), 1);
+    ASSERT_EQ(buffered.getLength(), 8);
+    ASSERT_EQ(buffered.getPosition(), 1);
     ASSERT_EQ(buffer[0], 'H');
 
     buffered.read(buffer, 7);
-    ASSERT_EQ(buffered.getLen(), 8);
-    ASSERT_EQ(buffered.getPos(), 8);
+    ASSERT_EQ(buffered.getLength(), 8);
+    ASSERT_EQ(buffered.getPosition(), 8);
     ASSERT_EQ(std::string_view(buffer), std::string_view("ello, W"));
 
     buffered.read(buffer, 30);

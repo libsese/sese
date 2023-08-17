@@ -145,6 +145,6 @@ void sese::net::dns::DNSServer::loop() noexcept {
         DNSUtil::encodeFrameHeaderInfo(buffer, info);
         DNSUtil::encodeQueries(&output, session.getQueries());
         DNSUtil::encodeAnswers(&output, session.getAnswers());
-        socket->send(buffer, 12 + output.getLen(), clientAddress, 0);
+        socket->send(buffer, 12 + output.getLength(), clientAddress, 0);
     }
 }

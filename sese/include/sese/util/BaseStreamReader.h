@@ -58,7 +58,8 @@ namespace sese {
          */
         std::basic_string<T> readLine() {
             std::basic_stringstream<T> string;
-            auto canReadSize = bufferStream->getLength() - bufferStream->getCurrentReadPos();
+            // auto canReadSize = bufferStream->getLength() - bufferStream->getCurrentReadPos();
+            auto canReadSize = bufferStream->getReadableSize();
             if (canReadSize == 0) {
                 canReadSize += preRead();
             }
@@ -86,7 +87,7 @@ namespace sese {
          *  @brief 由于 BaseStreamReader 的缓存机制，导致缓存尾部数据可能丢失，该函数返回超前未被读取部分数据长度
          * @return 超前数据长度
          */
-        [[nodiscard]] size_t getAheadLength() const { return bufferStream->getLength() - bufferStream->getCurrentReadPos(); }
+        // [[nodiscard]] size_t getAheadLength() const { return bufferStream->getLength() - bufferStream->getCurrentReadPos(); }
 
         /**
          * 用于缓存超前部分数据

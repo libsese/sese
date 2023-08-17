@@ -34,11 +34,11 @@ const char *sese::InputBufferWrapper::getBuffer() const {
     return buffer;
 }
 
-size_t sese::InputBufferWrapper::getLen() const {
+size_t sese::InputBufferWrapper::getLength() const {
     return pos;
 }
 
-size_t sese::InputBufferWrapper::getCap() const {
+size_t sese::InputBufferWrapper::getCapacity() const {
     return cap;
 }
 
@@ -60,13 +60,13 @@ int64_t sese::InputBufferWrapper::trunc(size_t length) {
 }
 
 int64_t operator<<(sese::OutputStream &out, sese::InputBufferWrapper &input) noexcept {
-    auto len = out.write(input.getBuffer() + input.getLen(), input.getCap() - input.getLen());
+    auto len = out.write(input.getBuffer() + input.getLength(), input.getCapacity() - input.getLength());
     input.trunc(len);
     return len;
 }
 
 int64_t operator<<(sese::OutputStream *out, sese::InputBufferWrapper &input) noexcept {
-    auto len = out->write(input.getBuffer() + input.getLen(), input.getCap() - input.getLen());
+    auto len = out->write(input.getBuffer() + input.getLength(), input.getCapacity() - input.getLength());
     input.trunc(len);
     return len;
 }
