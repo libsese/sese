@@ -71,7 +71,7 @@ TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
 }
 
 TEST(TestHttpClient, SSL_KEEPALIVE) {
-    auto client = sese::net::http::HttpClient::create("https://www.baidu.com/index.html", true);
+    auto client = sese::net::http::HttpClient::create("https://microsoft.com/", true);
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();
@@ -130,7 +130,7 @@ TEST(TestHttpClient, NO_SSL_NO_KEEPALIVE) {
 }
 
 TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
-    auto client = sese::net::http::HttpClient::create("http://www.baidu.com/index.html", true);
+    auto client = sese::net::http::HttpClient::create("http://microsoft.com/", true);
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();

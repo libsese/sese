@@ -3,8 +3,6 @@
 sese::security::evp::SHA384Context::SHA384Context() noexcept : Context() {
     CryptAcquireContext(&this->hProv, nullptr, nullptr, PROV_RSA_AES, CRYPT_VERIFYCONTEXT);
     CryptCreateHash(this->hProv, CALG_SHA_384, 0, 0, &this->hHash);
-    auto e = GetLastError();
-    printf("%d", e);
 }
 
 sese::security::evp::SHA384Context::~SHA384Context() noexcept {
