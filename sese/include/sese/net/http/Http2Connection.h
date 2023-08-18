@@ -7,7 +7,7 @@
 #include <map>
 #include <mutex>
 
-namespace sese::net::http {
+namespace sese::net::v2::http {
 
     class Http2Connection {
     public:
@@ -22,8 +22,8 @@ namespace sese::net::http {
         /// 此互斥量用于同步发送进度
         std::mutex mutex;
         std::map<uint8_t, Http2Stream::Ptr> streamMap;
-        DynamicTable dynamicTable4recv;
-        DynamicTable dynamicTable4send;
+        net::http::DynamicTable dynamicTable4recv;
+        net::http::DynamicTable dynamicTable4send;
 
         // settings
         uint32_t headerTableSize =  4096;

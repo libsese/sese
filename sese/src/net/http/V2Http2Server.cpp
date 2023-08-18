@@ -21,7 +21,7 @@
 using namespace sese::net::http;
 using namespace sese::net::v2::http;
 
-Http2Context::Http2Context(const net::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept: stream(stream), table(table) {}
+Http2Context::Http2Context(const net::v2::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept: stream(stream), table(table) {}
 
 int64_t Http2Context::write(const void *buffer, size_t length) {
     if (0 == data) {
@@ -232,7 +232,7 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
     }
 }
 
-void Http2Server::onHttp2Handle(const net::http::Http2Connection::Ptr &conn,
+void Http2Server::onHttp2Handle(const net::v2::http::Http2Connection::Ptr &conn,
                                 bool first) noexcept {
     IOContext &ctx = conn->context;
     Http2FrameInfo frame{};

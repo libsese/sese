@@ -10,7 +10,7 @@
 
 #include "sese/net/http/Http2Connection.h"
 
-using namespace sese::net::http;
+using namespace sese::net::v2::http;
 
 Http2Connection::Http2Connection(v2::IOContext ctx) noexcept : context(ctx) {}
 

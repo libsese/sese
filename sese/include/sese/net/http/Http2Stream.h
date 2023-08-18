@@ -4,7 +4,7 @@
 #include "sese/util/Closeable.h"
 #include "sese/util/ByteBuilder.h"
 
-namespace sese::net::http {
+namespace sese::net::v2::http {
 
     class Http2Stream : public Stream, public Closeable {
     public:
@@ -14,11 +14,11 @@ namespace sese::net::http {
         ByteBuilder buffer;
 
         /// 流请求头部
-        Header requestHeader;
+        net::http::Header requestHeader;
         /// 流响应头部 - 非索引的
-        Header responseOnceHeader;
+        net::http::Header responseOnceHeader;
         /// 流响应头部 - 索引的
-        Header responseIndexedHeader;
+        net::http::Header responseIndexedHeader;
 
     public:
         uint32_t sid = 0;

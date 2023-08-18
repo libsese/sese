@@ -17,7 +17,7 @@ namespace sese::net::v2::http {
     class API [[deprecated]] Http2Context : public InputStream, public OutputStream {
         friend class Http2Server;
     public:
-        explicit Http2Context(const net::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept;
+        explicit Http2Context(const net::v2::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept;
 
         int64_t read(void *buffer, size_t length) override;
 
@@ -52,13 +52,13 @@ namespace sese::net::v2::http {
         size_t data = 0;
 
         net::http::DynamicTable &table;
-        const net::http::Http2Stream::Ptr &stream;
+        const net::v2::http::Http2Stream::Ptr &stream;
     };
 
     class API [[deprecated("此实现是实验性且不完整的")]] Http2Server : public Server {
         using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
-        using Http2Connection = sese::net::http::Http2Connection;
-        using Http2Stream = sese::net::http::Http2Stream;
+        using Http2Connection = sese::net::v2::http::Http2Connection;
+        using Http2Stream = sese::net::v2::http::Http2Stream;
         using Http2FrameInfo = sese::net::http::Http2FrameInfo;
         using HuffmanEncoder = sese::net::http::HuffmanEncoder;
         using HuffmanDecoder = sese::net::http::HuffmanDecoder;
@@ -80,7 +80,7 @@ namespace sese::net::v2::http {
         /// Http2 处理
         /// \param conn 连接
         /// \param first 指示连接是否需要直接处理
-        void onHttp2Handle(const Http2Connection::Ptr &conn, bool first) noexcept;
+        void onHttp2Handle(const net::v2::http::Http2Connection::Ptr &conn, bool first) noexcept;
 
         virtual void onHttp2Request(Http2Context &ctx) noexcept;
 
@@ -137,7 +137,7 @@ namespace sese::net::v2::http {
     protected:
         // 对 connMap 操作加锁
         std::mutex mutex;
-        std::map<socket_t, net::http::Http2Connection::Ptr> connMap;
+        std::map<socket_t, net::v2::http::Http2Connection::Ptr> connMap;
     };
 
 }// namespace sese::net::v2::http
