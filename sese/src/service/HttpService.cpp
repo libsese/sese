@@ -234,7 +234,17 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
 
     auto connectString = conn->req.get("Connection", "close");
 
-    if (sese::strcmpDoNotCase(connectString.c_str(), "upgrade")) {
+    auto connectOptions = text::StringBuilder::split(connectString, ", ");
+
+    bool upgrade = false;
+    for (auto &item : connectOptions) {
+        if (sese::strcmpDoNotCase(item.c_str(), "upgrade")) {
+            upgrade = true;
+            break;
+        }
+    }
+
+    if (upgrade) {
         onHandleUpgrade(conn);
         conn->status = net::http::HttpHandleStatus::OK;
         net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);

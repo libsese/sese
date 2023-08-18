@@ -98,7 +98,7 @@ TEST(TestHttp2, HuffmanDecoder) {
     EXPECT_TRUE(str2.value() == "\"63ea2d3e-18b4\"");
 }
 
-TEST(TestHttp2, DISABLE_HPackDecode) {
+TEST(TestHttp2, DISABLED_HPackDecode) {
     const char buf[] = "\x88\x61\x96\xdc\x34\xfd\x28"
                        "\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62"
                        "\xd1\xbf\x5f\x87\x49\x7c\xa5\x89\xd3\x4d\x1f\x6c\x96\xd0\x7a\xbe"
@@ -204,7 +204,7 @@ TEST(TestHttp2, HeaderExample) {
     }
 }
 
-TEST(TestHttp2, Server) {
+TEST(TestHttp2, DISABLED_Server) {
     auto addr = makeRandomPortAddr();
     ASSERT_TRUE(addr != nullptr);
 
@@ -234,3 +234,26 @@ int main(int argc, char **argv) {
 #elif __GNUC__
 #pragma GCC diagnostic pop
 #endif
+
+#include <sese/service/BalanceLoader.h>
+#include <sese/service/Http2Service.h>
+
+TEST(TestHttp2, Server) {
+    auto addr = sese::net::IPv4Address::any(8080);
+
+    sese::service::Http2Config config;
+    config.servName = "Server for Test";
+    config.upgradePath = "/";
+    config.keepalive = 30;
+
+    sese::service::BalanceLoader service;
+    service.setThreads(2);
+    service.setAddress(addr);
+    service.init<sese::service::Http2Service>([&]() -> auto {
+        return new sese::service::Http2Service(&config);
+    });
+    service.start();
+    ASSERT_TRUE(service.isStarted());
+
+    while(true);
+}

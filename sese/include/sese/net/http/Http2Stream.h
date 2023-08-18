@@ -1,12 +1,13 @@
 #pragma once
 
-#include "sese/net/http/Header.h"
+#include "sese/net/http/Request.h"
+#include "sese/net/http/Response.h"
 #include "sese/util/Closeable.h"
 #include "sese/util/ByteBuilder.h"
 
 namespace sese::net::v2::http {
 
-    class Http2Stream : public Stream, public Closeable {
+    class [[deprecated]] Http2Stream : public Stream, public Closeable {
     public:
         using Ptr = std::shared_ptr<Http2Stream>;
 
@@ -30,4 +31,16 @@ namespace sese::net::v2::http {
         void close() override;
     };
 
+}// namespace sese::net::v2::http
+
+namespace sese::net::http {
+    struct API Http2Stream {
+        using Ptr = std::shared_ptr<Http2Stream>;
+
+        uint32_t id = 0;
+        size_t headerSize = 0;
+
+        Request req;
+        Response resp;
+    };
 }// namespace sese::net::http

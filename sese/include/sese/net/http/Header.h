@@ -16,6 +16,7 @@ namespace sese::net::http {
     /// @brief Http 版本
     enum class HttpVersion {
         VERSION_1_1,
+        VERSION_2,
         VERSION_UNKNOWN
     };
 
