@@ -2,6 +2,7 @@
 #include <sese/net/http/HPackUtil.h>
 #include <sese/net/http/UrlHelper.h>
 #include <sese/text/StringBuilder.h>
+#include <sese/text/DateTimeFormatter.h>
 #include <sese/util/Util.h>
 
 #define CONFIG ((sese::service::Http2Config *) this->config)
@@ -21,6 +22,41 @@ sese::service::Http2Service::~Http2Service() noexcept {
 
 void sese::service::Http2Service::onClose(sese::event::BaseEvent *event) {
     HttpService::onClose(event);
+}
+
+void sese::service::Http2Service::dispatch(net::http::Http2Connection *conn2, net::http::Request &req, const net::http::Http2Stream::Ptr &stream) noexcept {
+    auto conn = (sese::net::http::HttpConnection *) conn2->data;
+
+    stream->resp.set("accept-ranges", "bytes");
+    stream->resp.set("date", sese::text::DateTimeFormatter::format(sese::DateTime::now(0), TIME_GREENWICH_MEAN_PATTERN));
+
+    auto url = net::http::Url(req.getUrl());
+
+    auto iterator = config->controllerMap.find(url.getUrl());
+    if (iterator != config->controllerMap.end()) {
+        iterator->second(req, stream->resp);
+        conn->status = net::http::HttpHandleStatus::OK;
+
+        auto len = stream->resp.getBody().getLength();
+        stream->resp.set("content-length", std::to_string(len));
+        responseToHttp2(stream->resp);
+        writeHeader(conn2, stream);
+        if (len) {
+            writeData(conn, stream);
+        }
+    }
+    if (conn->status == net::http::HttpHandleStatus::HANDING) {
+        config->otherController(req, stream->resp);
+        conn->status = net::http::HttpHandleStatus::OK;
+
+        auto len = stream->resp.getBody().getLength();
+        stream->resp.set("content-length", std::to_string(len));
+        responseToHttp2(stream->resp);
+        writeHeader(conn2, stream);
+        if (len) {
+            writeData(conn, stream);
+        }
+    }
 }
 
 void sese::service::Http2Service::onHandle(sese::net::http::HttpConnection *conn) noexcept {
@@ -111,23 +147,19 @@ void sese::service::Http2Service::onHandleHttp2(net::http::HttpConnection *conn)
         conn2->first = false;
         RECV_BUFFER.trunc(24);
 
-        // frame.type = net::http::FRAME_TYPE_SETTINGS;
-        // writeFrame(conn, frame);
-        // writeAck(conn);
+        frame.type = net::http::FRAME_TYPE_SETTINGS;
+        writeFrame(conn, frame);
 
         auto stream = std::make_shared<net::http::Http2Stream>();
         stream->id = 1;
         conn2->streamMap[stream->id] = stream;
 
         // 处理首次请求
-        // todo 验证此处是否可用回调函数实现不同 header 的格式化
+        // warning: 验证此处是否可用回调函数实现不同 header 的格式化
         // onHandleController(conn, conn->req, stream->resp);
-        // 响应转换为 http2 格式
-        responseToHttp2(stream->resp);
-        // 写入头帧
-        writeHeader(conn2, stream);
-        // 写入数据帧
-        writeData(conn, stream);
+        // 不可以简单粗暴将http1.1中的断点续传功能搬到http2实现当中，
+        // 因为一个链接有多个流多个文件的可能，故此处仅处理控制器请求
+        dispatch(conn2, conn->req, stream);
     }
 
     while (true) {
@@ -247,11 +279,11 @@ void sese::service::Http2Service::writeData(net::http::HttpConnection *conn, con
     info.ident = stream->id;
 
     auto bodySize = stream->resp.getBody().getReadableSize();
-    ;
 
     char buffer[MTU_VALUE]{};
     while (true) {
         auto len = bodySize >= MTU_VALUE ? MTU_VALUE : bodySize;
+        stream->resp.getBody().read(buffer, len);
         if (len == 0) {
             break;
         } else if (len != MTU_VALUE) {
@@ -376,7 +408,7 @@ void sese::service::Http2Service::onHeadersFrame(sese::net::http::Http2Connectio
     auto contentLength = stream->req.get("content-length", "0");
     if (contentLength == "0") {
         requestFromHttp2(stream->req);
-        // todo 选择控制器
+        dispatch(conn2, stream->req, stream);
     }
 }
 
@@ -410,6 +442,6 @@ void sese::service::Http2Service::onDataFrame(net::http::Http2Connection *conn2,
 
 
     if (info.flags == net::http::FRAME_FLAG_END_STREAM) {
-        // todo 选择控制器
+        dispatch(conn2, stream->req, stream);
     }
 }

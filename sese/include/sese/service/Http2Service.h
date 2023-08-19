@@ -30,6 +30,8 @@ namespace sese::service {
         void onTimeout(TimeoutEvent *timeoutEvent) override;
 
     private:
+        void dispatch(net::http::Http2Connection *conn2, net::http::Request &req,  const net::http::Http2Stream::Ptr &stream) noexcept;
+
         static void requestFromHttp2(net::http::Request &request) noexcept;
 
         static void responseToHttp2(net::http::Response &response) noexcept;
@@ -48,9 +50,9 @@ namespace sese::service {
 
         static void onWindowUpdateFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
 
-        static void onHeadersFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
+        void onHeadersFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
 
-        static void onDataFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
+        void onDataFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
 
         void onHandleHttp2(net::http::HttpConnection *conn) noexcept;
 

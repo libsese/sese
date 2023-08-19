@@ -25,7 +25,7 @@ namespace sese::net::v2 {
 
 #ifdef SESE_PLATFORM_WINDOWS
 
-    class [[deprecated]] WindowsServiceIOContext;
+    class WindowsServiceIOContext;
 
     class API [[deprecated]] WindowsService {
     public:
@@ -116,14 +116,28 @@ namespace sese::net::v2 {
         HANDLE event;
     };
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif _WIN32
+#pragma warning(disable : 4996)
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
     using IOContext = WindowsServiceIOContext;
     using Server = WindowsService;
+#ifdef __clang__
+#pragma clang diagnostic pop
+#elif __GNUC__
+#pragma GCC diagnostic pop
+#endif
 
 #endif
 
 #ifdef SESE_PLATFORM_LINUX
 
-    class [[deprecated]] LinuxServiceIOContext;
+    class LinuxServiceIOContext;
 
     class API [[deprecated]] LinuxService : public Noncopyable {
     public:
@@ -211,14 +225,32 @@ namespace sese::net::v2 {
         bool isClosing = false;
     };
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif _WIN32
+#pragma warning(disable : 4996)
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
     using IOContext = LinuxServiceIOContext;
     using Server = LinuxService;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif _WIN32
+#pragma warning(disable : 4996)
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
 
 #endif
 
 #ifdef SESE_PLATFORM_APPLE
 
-    class [[deprecated]] DarwinServiceIOContext;
+    class DarwinServiceIOContext;
 
     class API [[deprecated]] DarwinService {
     public:
@@ -303,8 +335,22 @@ namespace sese::net::v2 {
         bool isClosing = false;
     };
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif _WIN32
+#pragma warning(disable : 4996)
+#elif __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
     using IOContext = DarwinServiceIOContext;
     using Server = DarwinService;
+#ifdef __clang__
+#pragma clang diagnostic pop
+#elif __GNUC__
+#pragma GCC diagnostic pop
+#endif
 
 #endif
 

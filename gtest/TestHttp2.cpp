@@ -98,7 +98,7 @@ TEST(TestHttp2, HuffmanDecoder) {
     EXPECT_TRUE(str2.value() == "\"63ea2d3e-18b4\"");
 }
 
-TEST(TestHttp2, DISABLED_HPackDecode) {
+TEST(TestHttp2, HPackDecode) {
     const char buf[] = "\x88\x61\x96\xdc\x34\xfd\x28"
                        "\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62"
                        "\xd1\xbf\x5f\x87\x49\x7c\xa5\x89\xd3\x4d\x1f\x6c\x96\xd0\x7a\xbe"
@@ -238,6 +238,13 @@ int main(int argc, char **argv) {
 #include <sese/service/BalanceLoader.h>
 #include <sese/service/Http2Service.h>
 
+bool index(sese::net::http::Request &req, sese::net::http::Response &resp) noexcept {
+    resp.setCode(200);
+    resp.set("message", "hello");
+    resp.getBody().write("this is content\n", 16);
+    return true;
+}
+
 TEST(TestHttp2, Server) {
     auto addr = sese::net::IPv4Address::any(8080);
 
@@ -245,6 +252,7 @@ TEST(TestHttp2, Server) {
     config.servName = "Server for Test";
     config.upgradePath = "/";
     config.keepalive = 30;
+    config.controllerMap["/"] = index;
 
     sese::service::BalanceLoader service;
     service.setThreads(2);
@@ -255,5 +263,10 @@ TEST(TestHttp2, Server) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    while(true);
+    auto cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_http2_request.py " + std::to_string(addr->getPort());
+    auto process = sese::system::Process::create(cmd.c_str());
+    EXPECT_EQ(process->wait(), 0);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    service.stop();
 }

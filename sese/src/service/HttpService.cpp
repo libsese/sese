@@ -284,7 +284,7 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
     if (conn->status == HttpHandleStatus::HANDING) {
         config->otherController(conn->req, conn->resp);
         conn->status = net::http::HttpHandleStatus::OK;
-        conn->req.set("content-length", std::to_string(conn->resp.getBody().getLength()));
+        conn->resp.set("content-length", std::to_string(conn->resp.getBody().getLength()));
         net::http::HttpUtil::sendResponse(&conn->buffer, &conn->resp);
     }
 }
