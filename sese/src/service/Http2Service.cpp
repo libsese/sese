@@ -1,5 +1,6 @@
 #include <sese/service/Http2Service.h>
 #include <sese/net/http/HPackUtil.h>
+#include <sese/net/http/UrlHelper.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Util.h>
 
@@ -110,18 +111,34 @@ void sese::service::Http2Service::onHandleHttp2(net::http::HttpConnection *conn)
         conn2->first = false;
         RECV_BUFFER.trunc(24);
 
-        frame.type = net::http::FRAME_TYPE_SETTINGS;
-        writeFrame(conn, frame);
+        // frame.type = net::http::FRAME_TYPE_SETTINGS;
+        // writeFrame(conn, frame);
+        // writeAck(conn);
+
+        auto stream = std::make_shared<net::http::Http2Stream>();
+        stream->id = 1;
+        conn2->streamMap[stream->id] = stream;
+
+        // 处理首次请求
+        // todo 验证此处是否可用回调函数实现不同 header 的格式化
+        // onHandleController(conn, conn->req, stream->resp);
+        // 响应转换为 http2 格式
+        responseToHttp2(stream->resp);
+        // 写入头帧
+        writeHeader(conn2, stream);
+        // 写入数据帧
+        writeData(conn, stream);
     }
 
     while (true) {
         auto ret = readFrame(conn, frame);
         if (!ret) {
-            return;
+            break;
         }
 
         if (frame.type == net::http::FRAME_TYPE_SETTINGS) {
             onSettingsFrame(conn2, frame);
+            writeAck(conn);
             continue;
         } else if (frame.type == net::http::FRAME_TYPE_WINDOW_UPDATE) {
             onWindowUpdateFrame(conn2, frame);
@@ -130,6 +147,7 @@ void sese::service::Http2Service::onHandleHttp2(net::http::HttpConnection *conn)
             onHeadersFrame(conn2, frame);
             continue;
         } else if (frame.type == net::http::FRAME_TYPE_DATA) {
+            onDataFrame(conn2, frame);
             continue;
         } else {
             continue;
@@ -166,6 +184,10 @@ void sese::service::Http2Service::requestFromHttp2(net::http::Request &request) 
     }
 }
 
+void sese::service::Http2Service::responseToHttp2(net::http::Response &response) noexcept {
+    response.set(":status", std::to_string(response.getCode()));
+}
+
 void sese::service::Http2Service::writeFrame(net::http::HttpConnection *conn, const net::http::Http2FrameInfo &info) noexcept {
     auto len = ToBigEndian32(info.length);
     auto ident = ToBigEndian32(info.ident);
@@ -179,9 +201,73 @@ void sese::service::Http2Service::writeFrame(net::http::HttpConnection *conn, co
     SEND_BUFFER.write(buffer, 9);
 }
 
+void sese::service::Http2Service::writeAck(net::http::HttpConnection *conn) noexcept {
+    uint8_t buffer[]{0x0, 0x0, 0x0, 0x4, 0x1, 0x0, 0x0, 0x0, 0x0};
+    TEMP_BUFFER.write(buffer, 9);
+}
+
+void sese::service::Http2Service::writeHeader(net::http::Http2Connection *conn2, const net::http::Http2Stream::Ptr &stream) noexcept {
+    auto conn = (net::http::HttpConnection *) conn2->data;
+
+    ByteBuilder temp(4096);
+    auto headerSize = net::http::HPackUtil::encode(&temp, conn2->dynamicTable2, stream->resp, stream->req);
+
+    net::http::Http2FrameInfo info{};
+    info.ident = stream->id;
+
+    bool first = true;
+    char buffer[MTU_VALUE]{};
+    while (true) {
+        auto len = headerSize >= MTU_VALUE ? MTU_VALUE : headerSize;
+        if (len == 0) {
+            break;
+        } else if (len != MTU_VALUE) {
+            info.flags = net::http::FRAME_FLAG_END_HEADERS;
+        }
+
+        if (first) {
+            info.type = net::http::FRAME_TYPE_HEADERS;
+            first = false;
+        } else {
+            info.type = net::http::FRAME_TYPE_CONTINUATION;
+        }
+        auto l = temp.peek(buffer, len);
+        info.length = (uint32_t) l;
+        writeFrame(conn, info);
+
+        SEND_BUFFER.write(buffer, l);
+        temp.trunc(l);
+        headerSize -= l;
+    }
+}
+
+void sese::service::Http2Service::writeData(net::http::HttpConnection *conn, const net::http::Http2Stream::Ptr &stream) noexcept {
+    net::http::Http2FrameInfo info{};
+    info.type = net::http::FRAME_TYPE_DATA;
+    info.ident = stream->id;
+
+    auto bodySize = stream->resp.getBody().getReadableSize();
+    ;
+
+    char buffer[MTU_VALUE]{};
+    while (true) {
+        auto len = bodySize >= MTU_VALUE ? MTU_VALUE : bodySize;
+        if (len == 0) {
+            break;
+        } else if (len != MTU_VALUE) {
+            info.flags = net::http::FRAME_FLAG_END_STREAM;
+        }
+
+        info.length = (uint32_t) len;
+        writeFrame(conn, info);
+
+        SEND_BUFFER.write(buffer, len);
+        bodySize -= len;
+    }
+}
+
 #define ASSERT_READ(buf, len)                \
     if (RECV_BUFFER.read(buf, len) != len) { \
-        printf("%d\n", len);                 \
         return false;                        \
     }                                        \
     SESE_MARCO_END

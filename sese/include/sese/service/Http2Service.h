@@ -32,7 +32,15 @@ namespace sese::service {
     private:
         static void requestFromHttp2(net::http::Request &request) noexcept;
 
+        static void responseToHttp2(net::http::Response &response) noexcept;
+
         static void writeFrame(net::http::HttpConnection *conn, const net::http::Http2FrameInfo &info) noexcept;
+
+        static void writeAck(net::http::HttpConnection *conn) noexcept;
+
+        static void writeHeader(net::http::Http2Connection *conn2, const net::http::Http2Stream::Ptr &stream) noexcept;
+
+        static void writeData(net::http::HttpConnection *conn, const net::http::Http2Stream::Ptr &stream) noexcept;
 
         static bool readFrame(net::http::HttpConnection *conn, net::http::Http2FrameInfo &info) noexcept;
 
