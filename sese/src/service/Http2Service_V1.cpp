@@ -1,30 +1,30 @@
-#include <sese/service/Http2Service.h>
+#include <sese/service/Http2Service_V1.h>
 #include <sese/net/http/HPackUtil.h>
 #include <sese/net/http/UrlHelper.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/text/DateTimeFormatter.h>
 #include <sese/util/Util.h>
 
-#define CONFIG ((sese::service::Http2Config *) this->config)
+#define CONFIG ((sese::service::v1::Http2Config *) this->config)
 #define RECV_BUFFER (conn->req.getBody())
 #define SEND_BUFFER (conn->buffer)
 #define TEMP_BUFFER (conn->resp.getBody())
 
-sese::service::Http2Service::Http2Service(sese::service::Http2Config *config) : HttpService(config) {
+sese::service::v1::Http2Service::Http2Service(sese::service::v1::Http2Config *config) : HttpService(config) {
 }
 
-sese::service::Http2Service::~Http2Service() noexcept {
+sese::service::v1::Http2Service::~Http2Service() noexcept {
     for (decltype(auto) item: conn2Map) {
         delete item.second;
     }
     conn2Map.clear();
 }
 
-void sese::service::Http2Service::onClose(sese::event::BaseEvent *event) {
+void sese::service::v1::Http2Service::onClose(sese::event::BaseEvent *event) {
     HttpService::onClose(event);
 }
 
-void sese::service::Http2Service::dispatch(net::http::Http2Connection *conn2, net::http::Request &req, const net::http::Http2Stream::Ptr &stream) noexcept {
+void sese::service::v1::Http2Service::dispatch(net::http::Http2Connection *conn2, net::http::Request &req, const net::http::Http2Stream::Ptr &stream) noexcept {
     auto conn = (sese::net::http::HttpConnection *) conn2->data;
 
     stream->resp.set("accept-ranges", "bytes");
@@ -59,7 +59,7 @@ void sese::service::Http2Service::dispatch(net::http::Http2Connection *conn2, ne
     }
 }
 
-void sese::service::Http2Service::onHandle(sese::net::http::HttpConnection *conn) noexcept {
+void sese::service::v1::Http2Service::onHandle(sese::net::http::HttpConnection *conn) noexcept {
     auto iterator = conn2Map.find(conn);
     if (iterator == conn2Map.end()) {
         HttpService::onHandle(conn);
@@ -69,7 +69,7 @@ void sese::service::Http2Service::onHandle(sese::net::http::HttpConnection *conn
     onHandleHttp2(conn);
 }
 
-void sese::service::Http2Service::onHandleUpgrade(sese::net::http::HttpConnection *conn) noexcept {
+void sese::service::v1::Http2Service::onHandleUpgrade(sese::net::http::HttpConnection *conn) noexcept {
     auto &req = conn->req;
     auto &resp = conn->resp;
     auto fail = [&]() {
@@ -139,7 +139,7 @@ void sese::service::Http2Service::onHandleUpgrade(sese::net::http::HttpConnectio
     conn2Map[conn] = conn2;
 }
 
-void sese::service::Http2Service::onHandleHttp2(net::http::HttpConnection *conn) noexcept {
+void sese::service::v1::Http2Service::onHandleHttp2(net::http::HttpConnection *conn) noexcept {
     net::http::Http2FrameInfo frame{};
 
     auto conn2 = conn2Map[conn];
@@ -187,11 +187,11 @@ void sese::service::Http2Service::onHandleHttp2(net::http::HttpConnection *conn)
     }
 }
 
-void sese::service::Http2Service::onTimeout(sese::service::TimeoutEvent *timeoutEvent) {
+void sese::service::v1::Http2Service::onTimeout(sese::service::TimeoutEvent *timeoutEvent) {
     HttpService::onTimeout(timeoutEvent);
 }
 
-void sese::service::Http2Service::requestFromHttp2(net::http::Request &request) noexcept {
+void sese::service::v1::Http2Service::requestFromHttp2(net::http::Request &request) noexcept {
     request.setVersion(net::http::HttpVersion::VERSION_2);
     request.setUrl(request.get(":path", "/"));
     auto method = request.get(":method", "get");
@@ -216,11 +216,11 @@ void sese::service::Http2Service::requestFromHttp2(net::http::Request &request) 
     }
 }
 
-void sese::service::Http2Service::responseToHttp2(net::http::Response &response) noexcept {
+void sese::service::v1::Http2Service::responseToHttp2(net::http::Response &response) noexcept {
     response.set(":status", std::to_string(response.getCode()));
 }
 
-void sese::service::Http2Service::writeFrame(net::http::HttpConnection *conn, const net::http::Http2FrameInfo &info) noexcept {
+void sese::service::v1::Http2Service::writeFrame(net::http::HttpConnection *conn, const net::http::Http2FrameInfo &info) noexcept {
     auto len = ToBigEndian32(info.length);
     auto ident = ToBigEndian32(info.ident);
 
@@ -233,12 +233,12 @@ void sese::service::Http2Service::writeFrame(net::http::HttpConnection *conn, co
     SEND_BUFFER.write(buffer, 9);
 }
 
-void sese::service::Http2Service::writeAck(net::http::HttpConnection *conn) noexcept {
+void sese::service::v1::Http2Service::writeAck(net::http::HttpConnection *conn) noexcept {
     uint8_t buffer[]{0x0, 0x0, 0x0, 0x4, 0x1, 0x0, 0x0, 0x0, 0x0};
     TEMP_BUFFER.write(buffer, 9);
 }
 
-void sese::service::Http2Service::writeHeader(net::http::Http2Connection *conn2, const net::http::Http2Stream::Ptr &stream) noexcept {
+void sese::service::v1::Http2Service::writeHeader(net::http::Http2Connection *conn2, const net::http::Http2Stream::Ptr &stream) noexcept {
     auto conn = (net::http::HttpConnection *) conn2->data;
 
     ByteBuilder temp(4096);
@@ -273,7 +273,7 @@ void sese::service::Http2Service::writeHeader(net::http::Http2Connection *conn2,
     }
 }
 
-void sese::service::Http2Service::writeData(net::http::HttpConnection *conn, const net::http::Http2Stream::Ptr &stream) noexcept {
+void sese::service::v1::Http2Service::writeData(net::http::HttpConnection *conn, const net::http::Http2Stream::Ptr &stream) noexcept {
     net::http::Http2FrameInfo info{};
     info.type = net::http::FRAME_TYPE_DATA;
     info.ident = stream->id;
@@ -304,7 +304,7 @@ void sese::service::Http2Service::writeData(net::http::HttpConnection *conn, con
     }                                        \
     SESE_MARCO_END
 
-bool sese::service::Http2Service::readFrame(sese::net::http::HttpConnection *conn, sese::net::http::Http2FrameInfo &info) noexcept {
+bool sese::service::v1::Http2Service::readFrame(sese::net::http::HttpConnection *conn, sese::net::http::Http2FrameInfo &info) noexcept {
     uint8_t buffer[9]{};
     ASSERT_READ(buffer, 9);
 
@@ -320,7 +320,7 @@ bool sese::service::Http2Service::readFrame(sese::net::http::HttpConnection *con
 }
 
 
-void sese::service::Http2Service::onSettingsFrame(net::http::Http2Connection *conn2, sese::net::http::Http2FrameInfo &info) noexcept {
+void sese::service::v1::Http2Service::onSettingsFrame(net::http::Http2Connection *conn2, sese::net::http::Http2FrameInfo &info) noexcept {
     auto conn = (net::http::HttpConnection *) conn2->data;
 
     char buffer[6];
@@ -362,14 +362,14 @@ void sese::service::Http2Service::onSettingsFrame(net::http::Http2Connection *co
     }
 }
 
-void sese::service::Http2Service::onWindowUpdateFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept {
+void sese::service::v1::Http2Service::onWindowUpdateFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept {
     auto conn = (net::http::HttpConnection *) conn2->data;
     // 不做控制，读取负载
     uint32_t data;
     RECV_BUFFER.read(&data, sizeof(data));
 }
 
-void sese::service::Http2Service::onHeadersFrame(sese::net::http::Http2Connection *conn2, sese::net::http::Http2FrameInfo &info) noexcept {
+void sese::service::v1::Http2Service::onHeadersFrame(sese::net::http::Http2Connection *conn2, sese::net::http::Http2FrameInfo &info) noexcept {
     net::http::Http2Stream::Ptr stream;
     auto conn = (net::http::HttpConnection *) conn2->data;
     auto iterator = conn2->streamMap.find(info.ident);
@@ -412,7 +412,7 @@ void sese::service::Http2Service::onHeadersFrame(sese::net::http::Http2Connectio
     }
 }
 
-void sese::service::Http2Service::onDataFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept {
+void sese::service::v1::Http2Service::onDataFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept {
     net::http::Http2Stream::Ptr stream;
     auto conn = (net::http::HttpConnection *) conn2->data;
     auto iterator = conn2->streamMap.find(info.ident);

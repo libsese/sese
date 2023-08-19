@@ -104,7 +104,7 @@ set(
         src/service/SystemBalanceLoader.cpp src/service/UserBalanceLoader.cpp
         src/service/TimerableService.cpp src/service/RpcService.cpp
         src/service/HttpService.cpp src/service/WebsocketService.cpp
-        src/service/Http2Service.cpp
+        src/service/Http2Service_V1.cpp
 )
 
 add_library(Core SHARED
