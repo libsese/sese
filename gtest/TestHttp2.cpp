@@ -238,11 +238,10 @@ int main(int argc, char **argv) {
 #include <sese/service/BalanceLoader.h>
 #include <sese/service/Http2Service.h>
 
-bool index(sese::net::http::Request &req, sese::net::http::Response &resp) noexcept {
+void ControllerIndex(sese::net::http::Request &req, sese::net::http::Response &resp) noexcept {
     resp.setCode(200);
     resp.set("message", "hello");
     resp.getBody().write("this is content\n", 16);
-    return true;
 }
 
 TEST(TestHttp2, Server) {
@@ -252,7 +251,7 @@ TEST(TestHttp2, Server) {
     config.servName = "Server for Test";
     config.upgradePath = "/";
     config.keepalive = 30;
-    config.controllerMap["/"] = index;
+    config.controllerMap["/"] = ControllerIndex;
 
     sese::service::BalanceLoader service;
     service.setThreads(2);
