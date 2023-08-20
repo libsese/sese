@@ -6,6 +6,8 @@
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/util/Util.h>
 
+#include <openssl/ssl.h>
+
 using sese::net::IPv4Address;
 using sese::net::IPv4AddressPool;
 using sese::net::Socket;
@@ -112,6 +114,7 @@ bool HttpClient::reconnect() noexcept {
         this->socket = nullptr;
         return false;
     } else {
+        SSL_set_mode((SSL *) std::dynamic_pointer_cast<security::SecuritySocket>(this->socket)->getSSL(), SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
         return true;
     }
 }

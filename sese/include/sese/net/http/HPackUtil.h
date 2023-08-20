@@ -37,6 +37,8 @@ namespace sese::net::http {
 
         static size_t encodeIndexCase2(OutputStream *dest, size_t index) noexcept;
 
+        static size_t encodeIndexCase3(OutputStream *dest, size_t index) noexcept;
+
         static size_t encodeString(OutputStream *dest, const std::string &str) noexcept;
 
         static std::string buildCookieString(const Cookie::Ptr& cookie) noexcept;

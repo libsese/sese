@@ -9,8 +9,10 @@ namespace sese::net::http {
     public:
         ByteBuilder &getBody() { return body; }
 
+        void swap(Request &another) noexcept;
+
     private:
-        ByteBuilder body;
+        ByteBuilder body{8192};
     };
 
 }// namespace sese::net::http

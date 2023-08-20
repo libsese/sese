@@ -56,6 +56,9 @@ namespace sese::net::http {
 
         static CookieMap::Ptr parseFromCookie(const std::string &text) noexcept;
 
+        /// content-type 拓展名映射
+        static std::map<std::string, std::string> contentTypeMap;
+
     private:
         static bool getLine(InputStream *source, text::StringBuilder &builder) noexcept;
 

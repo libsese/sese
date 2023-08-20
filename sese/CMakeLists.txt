@@ -55,6 +55,7 @@ set(
         src/net/ws/WebSocketAuthenticator.cpp
         src/net/dns/DNSUtil.cpp src/net/dns/DNSServer.cpp
         src/net/dns/Client.cpp
+        src/net/http/Request.cpp src/net/http/Response.cpp
 )
 
 set(
@@ -103,8 +104,9 @@ set(
         SERVICE_SRC
         src/service/SystemBalanceLoader.cpp src/service/UserBalanceLoader.cpp
         src/service/TimerableService.cpp src/service/RpcService.cpp
-        src/service/HttpService.cpp src/service/WebsocketService.cpp
-        src/service/Http2Service_V1.cpp
+        src/service/HttpService_V1.cpp src/service/WebsocketService.cpp
+        src/service/Http2Service_V1.cpp src/service/TcpTransporter.cpp
+        src/service/HttpService_V2.cpp src/service/HttpConnection_V2.cpp
 )
 
 add_library(Core SHARED

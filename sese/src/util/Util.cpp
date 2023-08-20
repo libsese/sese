@@ -1,4 +1,5 @@
 #include "sese/util/Util.h"
+
 #include <cstring>
 
 #ifndef _WIN32
@@ -59,10 +60,10 @@ namespace sese {
     std::string getErrorString(int64_t error) {
 #ifdef _WIN32
         char buffer[255];
-        strerror_s(buffer, 255, (int) error); // NOLINT
+        strerror_s(buffer, 255, (int) error);// NOLINT
         return {buffer};
 #else
-        return strerror(error); // GCOVR_EXCL_LINE
+        return strerror(error);// GCOVR_EXCL_LINE
 #endif
     }
 
@@ -72,6 +73,21 @@ namespace sese {
 #else
         return errno;
 #endif
+    }
+
+    size_t streamMove(sese::OutputStream *out, sese::InputStream *in, size_t size) noexcept {
+        char buffer[4096];
+        auto expect = size;
+        while (size) {
+            auto need = size >= 4096 ? 4096 : size;
+            auto len = in->read(buffer, need);
+            out->write(buffer, len);
+            size -= len;
+            if (len != need) {
+                return expect - size;
+            }
+        }
+        return expect;
     }
 
 }// namespace sese

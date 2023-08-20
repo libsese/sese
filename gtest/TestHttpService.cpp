@@ -1,4 +1,4 @@
-#include <sese/service/HttpService.h>
+#include <sese/service/HttpService_V1.h>
 #include <sese/service/BalanceLoader.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/net/http/HttpClient.h>
@@ -61,7 +61,7 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
 
     auto addr = createAddress();
 
-    sese::service::HttpConfig config;
+    sese::service::v1::HttpConfig config;
     config.servName = "Server for Test";
     config.servCtx = servCtx;
     config.workDir = PROJECT_PATH;
@@ -73,8 +73,8 @@ TEST(TestHttpService, SSL_KEEPALIVE) {
     sese::service::BalanceLoader service;
     service.setThreads(4);
     service.setAddress(addr);
-    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto {
-        return new sese::service::HttpService(&config);
+    ASSERT_TRUE(service.init<sese::service::v1::HttpService>([&config]() -> auto {
+        return new sese::service::v1::HttpService(&config);
     }));
     service.start();
     ASSERT_TRUE(service.isStarted());
@@ -111,7 +111,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     group.setController("/", redirect);
     group.setController("/post", post);
 
-    sese::service::HttpConfig config;
+    sese::service::v1::HttpConfig config;
     config.servName = "Server for Test";
     config.workDir = PROJECT_PATH;
     config.keepalive = 30;
@@ -120,8 +120,8 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     sese::service::BalanceLoader service;
     service.setThreads(4);
     service.setAddress(addr);
-    ASSERT_TRUE(service.init<sese::service::HttpService>([&config]() -> auto {
-        return new sese::service::HttpService(&config);
+    ASSERT_TRUE(service.init<sese::service::v1::HttpService>([&config]() -> auto {
+        return new sese::service::v1::HttpService(&config);
     }));
     service.start();
     ASSERT_TRUE(service.isStarted());

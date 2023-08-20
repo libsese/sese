@@ -28,6 +28,8 @@ namespace sese::security {
         int64_t write(const void *buffer, size_t length) override;
         void close() override;
 
+        [[nodiscard]] void *getSSL() const { return ssl; }
+
     private:
         std::shared_ptr<SSLContext> context;
         void *ssl = nullptr;

@@ -8,6 +8,10 @@
 #pragma once
 
 #include "sese/Config.h"
+#include "sese/util/InputStream.h"
+#include "sese/util/OutputStream.h"
+
+#include <chrono>
 
 namespace sese {
 
@@ -85,7 +89,17 @@ namespace sese {
      */
     extern API int64_t getErrorCode();
 
+    size_t streamMove(sese::OutputStream *out, sese::InputStream *in, size_t size) noexcept;
+
 }// namespace sese
+
+/// https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
+template<typename TP>
+std::time_t to_time_t(TP tp) {
+    using namespace std::chrono;
+    auto sctp = time_point_cast<system_clock::duration>(tp - TP::clock::now() + system_clock::now());
+    return system_clock::to_time_t(sctp);
+}
 
 /**
  * 获取详细的信息(C 接口)

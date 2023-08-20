@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include <sese/service/HttpService.h>
+#include <sese/service/HttpService_V1.h>
 #include <sese/net/http/Http2Connection.h>
 #include <sese/net/http/Http2FrameInfo.h>
 
@@ -15,7 +15,7 @@
 
 namespace sese::service::v1 {
 
-    struct API Http2Config : public  HttpConfig {
+    struct API Http2Config : public HttpConfig {
         std::string upgradePath = "/";
     };
 

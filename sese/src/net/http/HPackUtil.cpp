@@ -114,95 +114,73 @@ bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &tab
 
 size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHeader, Header &indexedHeader) noexcept {
     size_t size = 0;
-    // 处理一次性 HEADERS
-    for (const auto &item: onceHeader) {
-        auto isHit = [item](const std::pair<std::string, std::string> &pair) -> bool {
-            return pair.first == item.first;
-        };
-        // 动态表查询
-        {
-            auto iterator = std::find_if(table.begin(), table.end(), isHit);
-            if (iterator != table.end()) {
-                if (iterator->second == item.second) {
-                    /// 第 0 种情况
-                    size += encodeIndexCase0(dest, iterator - table.begin() + 62);
-                    continue;
-                } else {
-                    /// 第 2 种情况
-                    size += encodeIndexCase2(dest, iterator - table.begin() + 62);
-                    size += encodeString(dest, item.second);
-                    continue;
-                }
-            }
-        }
-        // 静态表查询
-        {
-            auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
-            if (iterator != predefined_headers.end()) {
-                if (iterator->second == item.second) {
-                    /// 第 0 种情况
-                    size += encodeIndexCase0(dest, iterator - predefined_headers.begin());
-                    continue;
-                } else {
-                    /// 第 2 种情况
-                    size += encodeIndexCase2(dest, iterator - predefined_headers.begin());
-                    size += encodeString(dest, item.second);
-                    continue;
-                }
-            }
-        }
-        // 无任何索引数据
-        {
-            size += encodeIndexCase2(dest, 0);
-            size += encodeString(dest, item.first);
-            size += encodeString(dest, item.second);
-            continue;
-        }
-    }
-
-
     // 处理索引的 HEADERS
     for (const auto &item: indexedHeader) {
-        auto isHit = [item](const std::pair<std::string, std::string> &pair) -> bool {
-            return pair.first == item.first;
-        };
         // 动态表查询
         {
-            auto iterator = std::find_if(table.begin(), table.end(), isHit);
-            // 存在动态表中
-            if (iterator != table.end()) {
-                size_t index = table.begin() - iterator + 62;
-                if (iterator->second == item.second) {
-                    /// 对应第 0 种情况
-                    size += encodeIndexCase0(dest, index);
-                    continue;
-                } else {
-                    /// 对应第 1 种情况
-                    size += encodeIndexCase1(dest, index);
-                    size += encodeString(dest, item.second);
-                    /// 添加动态表
-                    table.set(item.first, item.second);
-                    continue;
+            auto iteratorKey = table.end();
+            auto iteratorAll = table.end();
+            for (auto header = table.begin(); header != table.end(); ++header) {
+                if (header->first == item.first) {
+                    iteratorKey = header;
+                    if (header->second == item.second) {
+                        iteratorAll = header;
+                        break;
+                    }
                 }
+            }
+
+            // auto iterator = std::find_if(table.begin(), table.end(), isHitAll);
+            if (iteratorAll != table.end()) {
+                /// 对应第 0 种情况
+                size_t index = table.begin() - iteratorAll + 62;
+                size += encodeIndexCase0(dest, index);
+                continue;
+            }
+
+            // iterator = std::find_if(table.begin(), table.end(), isHit);
+            // 存在动态表中
+            if (iteratorKey != table.end()) {
+                size_t index = table.begin() - iteratorKey + 62;
+                /// 对应第 1 种情况
+                size += encodeIndexCase1(dest, index);
+                size += encodeString(dest, item.second);
+                /// 添加动态表
+                table.set(item.first, item.second);
+                continue;
             }
         }
         // 静态表查询
         {
-            auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
-            if (iterator != predefined_headers.end()) {
-                size_t index = iterator - predefined_headers.begin();
-                if (iterator->second == item.second) {
-                    /// 对应第 0 种情况
-                    size += encodeIndexCase0(dest, index);
-                    continue;
-                } else {
-                    /// 对应第 1 种情况
-                    size += encodeIndexCase1(dest, index);
-                    size += encodeString(dest, item.second);
-                    /// 添加动态表
-                    table.set(item.first, item.second);
-                    continue;
+            auto iteratorKey = predefined_headers.end();
+            auto iteratorAll = predefined_headers.end();
+            for (auto header = predefined_headers.begin(); header != predefined_headers.end(); ++header) {
+                if (header->first == item.first) {
+                    iteratorKey = header;
+                    if (header->second == item.second) {
+                        iteratorAll = header;
+                        break;
+                    }
                 }
+            }
+
+            // auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHitAll);
+            if (iteratorAll != predefined_headers.end()) {
+                /// 对应第 0 种情况
+                size_t index = iteratorAll - predefined_headers.begin();
+                size += encodeIndexCase0(dest, index);
+                continue;
+            }
+
+            // iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
+            if (iteratorKey != predefined_headers.end()) {
+                size_t index = iteratorKey - predefined_headers.begin();
+                /// 对应第 1 种情况
+                size += encodeIndexCase1(dest, index);
+                size += encodeString(dest, item.second);
+                /// 添加动态表
+                table.set(item.first, item.second);
+                continue;
             }
         }
 
@@ -212,6 +190,74 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
             size += encodeString(dest, item.first);
             size += encodeString(dest, item.second);
             table.set(item.first, item.second);
+            continue;
+        }
+    }
+
+    // 处理一次性 HEADERS
+    for (const auto &item: onceHeader) {
+        // 动态表查询
+        {
+            auto iteratorKey = table.end();
+            auto iteratorAll = table.end();
+            for (auto header = table.begin(); header != table.end(); ++header) {
+                if (header->first == item.first) {
+                    iteratorKey = header;
+                    if (header->second == item.second) {
+                        iteratorAll = header;
+                        break;
+                    }
+                }
+            }
+
+            // auto iterator = std::find_if(table.begin(), table.end(), isHit);
+            if (iteratorAll != table.end()) {
+                /// 第 0 种情况
+                size += encodeIndexCase0(dest, iteratorAll - table.begin() + 62);
+                continue;
+            }
+
+            if (iteratorKey != table.end()) {
+                /// 第 2 种情况
+                size += encodeIndexCase2(dest, iteratorKey - table.begin() + 62);
+                size += encodeString(dest, item.second);
+                continue;
+            }
+        }
+
+        // 静态表查询
+        {
+            auto iteratorKey = predefined_headers.end();
+            auto iteratorAll = predefined_headers.end();
+            for (auto header = predefined_headers.begin(); header != predefined_headers.end(); ++header) {
+                if (header->first == item.first) {
+                    iteratorKey = header;
+                    if (header->second == item.second) {
+                        iteratorAll = header;
+                        break;
+                    }
+                }
+            }
+
+            // auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
+            if (iteratorAll != predefined_headers.end()) {
+                /// 第 0 种情况
+                size += encodeIndexCase0(dest, iteratorAll - predefined_headers.begin());
+                continue;
+            }
+            if (iteratorKey != predefined_headers.end()) {
+                /// 第 2 种情况
+                size += encodeIndexCase2(dest, iteratorKey - predefined_headers.begin());
+                size += encodeString(dest, item.second);
+                continue;
+            }
+        }
+
+        // 无任何索引数据
+        {
+            size += encodeIndexCase3(dest, 0);
+            size += encodeString(dest, item.first);
+            size += encodeString(dest, item.second);
             continue;
         }
     }
@@ -338,6 +384,31 @@ size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
         return 1;
     } else {
         buf = 0b0000'0000 | 0b0000'1111;
+        dest->write(&buf, 1);
+        size_t size = 1;
+        index -= prefix;
+        while (index >= 128) {
+            buf = index % 128 + 128;
+            dest->write(&buf, 1);
+            index = index / 128;
+            size += 1;
+        }
+        buf = (uint8_t) index;
+        dest->write(&buf, 1);
+        size += 1;
+        return size;
+    }
+}
+
+size_t HPackUtil::encodeIndexCase3(sese::OutputStream *dest, size_t index) noexcept {
+    const auto prefix = static_cast<uint8_t>(std::pow(2, 4) - 1);
+    uint8_t buf;
+    if (index < prefix) {
+        buf = 0b0001'0000 | (((uint8_t) index) & 0b0000'1111);
+        dest->write(&buf, 1);
+        return 1;
+    } else {
+        buf = 0b0001'0000 | 0b0000'1111;
         dest->write(&buf, 1);
         size_t size = 1;
         index -= prefix;

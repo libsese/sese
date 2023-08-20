@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <sese/service/HttpService.h>
+#include <sese/service/HttpService_V1.h>
 #include <sese/net/ws/FrameHeader.h>
 #include <sese/net/ws/WebsocketEvent.h>
 
@@ -17,12 +17,12 @@
 namespace sese::service {
 
     /// Websocket 配置
-    struct API WebsocketConfig : public HttpConfig {
+    struct API WebsocketConfig : public v1::HttpConfig {
         std::string upgradePath = "/";
     };
 
     /// Websocket 服务
-    class API WebsocketService : public HttpService {
+    class API WebsocketService : public v1::HttpService {
     public:
         /// 实例化 Websocket 服务
         /// \param config 配置

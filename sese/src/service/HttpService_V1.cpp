@@ -1,4 +1,4 @@
-#include "sese/service/HttpService.h"
+#include "sese/service/HttpService_V1.h"
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/UrlHelper.h"
 #include "sese/text/DateTimeFormatter.h"
@@ -18,15 +18,7 @@ using sese::net::http::HttpHandleStatus;
 using sese::net::http::Request;
 using sese::net::http::Response;
 
-/// https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
-template<typename TP>
-std::time_t to_time_t(TP tp) {
-    using namespace std::chrono;
-    auto sctp = time_point_cast<system_clock::duration>(tp - TP::clock::now() + system_clock::now());
-    return system_clock::to_time_t(sctp);
-}
-
-service::HttpConfig::HttpConfig() noexcept {
+service::v1::HttpConfig::HttpConfig() noexcept {
     this->otherController = {
             [](Request &req, Response &resp) {
                 auto url = net::http::Url(req.getUrl());
@@ -34,16 +26,16 @@ service::HttpConfig::HttpConfig() noexcept {
                 // 404
                 resp.setCode(404);
                 std::string content = "The controller or file named \"" + url.getUrl() + "\" could not be found.";
-                req.getBody().write(content.c_str(), content.length());
+                resp.getBody().write(content.c_str(), content.length());
                 return true;
             }};
 }
 
-void service::HttpConfig::setController(const std::string &path, const Controller &controller) noexcept {
+void service::v1::HttpConfig::setController(const std::string &path, const Controller &controller) noexcept {
     this->controllerMap[path] = controller;
 }
 
-void service::HttpConfig::setController(const net::http::ControllerGroup &group) noexcept {
+void service::v1::HttpConfig::setController(const net::http::ControllerGroup &group) noexcept {
     auto &name = group.getName();
     auto &map = group.getControllerMap();
     for (auto &item: map) {
@@ -51,11 +43,11 @@ void service::HttpConfig::setController(const net::http::ControllerGroup &group)
     }
 }
 
-service::HttpService::HttpService(HttpConfig *config) noexcept {
+service::v1::HttpService::HttpService(HttpConfig *config) noexcept {
     this->config = config;
 }
 
-service::HttpService::~HttpService() noexcept {
+service::v1::HttpService::~HttpService() noexcept {
     for (auto &item: eventMap) {
         auto event = item.second;
         auto conn = (HttpConnection *) event->data;
@@ -72,7 +64,7 @@ service::HttpService::~HttpService() noexcept {
     eventMap.clear();
 }
 
-void service::HttpService::onAccept(int fd) {
+void service::v1::HttpService::onAccept(int fd) {
     SSL *clientSSL = nullptr;
 
     // 一般不会失败
@@ -99,6 +91,7 @@ void service::HttpService::onAccept(int fd) {
                     return;
                 }
             } else {
+                SSL_set_mode(clientSSL, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
                 break;
             }
         }
@@ -118,7 +111,7 @@ void service::HttpService::onAccept(int fd) {
     conn->event = this->createEventEx(fd, EVENT_READ, conn);
 }
 
-void service::HttpService::onRead(event::BaseEvent *event) {
+void service::v1::HttpService::onRead(event::BaseEvent *event) {
     auto conn = (HttpConnection *) event->data;
 
     // 如果服务器启用长连接，对端启用长连接，且是首次连接，则定时器存在
@@ -185,7 +178,7 @@ free:
     this->freeEventEx(event);
 }
 
-void service::HttpService::onWrite(sese::event::BaseEvent *event) {
+void service::v1::HttpService::onWrite(sese::event::BaseEvent *event) {
     auto conn = (HttpConnection *) event->data;
     // 普通控制器处理
     if (conn->status == HttpHandleStatus::OK) {
@@ -197,7 +190,7 @@ void service::HttpService::onWrite(sese::event::BaseEvent *event) {
     }
 }
 
-void service::HttpService::onClose(sese::event::BaseEvent *event) {
+void service::v1::HttpService::onClose(sese::event::BaseEvent *event) {
     auto conn = (HttpConnection *) event->data;
     if (conn->timeoutEvent) {
         this->freeTimeoutEvent(conn->timeoutEvent);
@@ -210,7 +203,7 @@ void service::HttpService::onClose(sese::event::BaseEvent *event) {
     this->freeEventEx(event);
 }
 
-sese::event::BaseEvent *sese::service::HttpService::createEventEx(int fd, unsigned int events, void *data) noexcept {
+sese::event::BaseEvent *sese::service::v1::HttpService::createEventEx(int fd, unsigned int events, void *data) noexcept {
     auto rt = this->createEvent(fd, events, data);
     if (rt) {
         this->eventMap[fd] = rt;
@@ -218,12 +211,12 @@ sese::event::BaseEvent *sese::service::HttpService::createEventEx(int fd, unsign
     return rt;
 }
 
-void sese::service::HttpService::freeEventEx(sese::event::BaseEvent *event) noexcept {
+void sese::service::v1::HttpService::freeEventEx(sese::event::BaseEvent *event) noexcept {
     this->eventMap.erase(event->fd);
     this->freeEvent(event);
 }
 
-void service::HttpService::onHandle(HttpConnection *conn) noexcept {
+void service::v1::HttpService::onHandle(HttpConnection *conn) noexcept {
     bool rt;
     conn->resp.set("Server", config->servName);
 
@@ -290,18 +283,18 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
     }
 }
 
-void service::HttpService::onHandleUpgrade(net::http::HttpConnection *conn) noexcept {
+void service::v1::HttpService::onHandleUpgrade(net::http::HttpConnection *conn) noexcept {
     conn->resp.setCode(200);
 }
 
-void service::HttpService::onHandleFile(HttpConnection *conn, const std::string &path) noexcept {// NOLINT
+void service::v1::HttpService::onHandleFile(HttpConnection *conn, const std::string &path) noexcept {// NOLINT
     if (std::filesystem::is_regular_file(path)) {
         /// content-type 确定
         auto pos = path.find_last_of('.');
         if (pos != std::string::npos) {
             auto rawType = path.substr(pos + 1);
-            auto iterator = contentTypeMap.find(rawType);
-            if (iterator != contentTypeMap.end()) {
+            auto iterator = net::http::HttpUtil::contentTypeMap.find(rawType);
+            if (iterator != net::http::HttpUtil::contentTypeMap.end()) {
                 conn->contentType = iterator->second;
             }
         }
@@ -387,7 +380,7 @@ void service::HttpService::onHandleFile(HttpConnection *conn, const std::string 
     conn->status = HttpHandleStatus::HANDING;
 }
 
-void service::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
+void service::v1::HttpService::onControllerWrite(event::BaseEvent *event) noexcept {
     auto conn = (HttpConnection *) event->data;
     char buf[MTU_VALUE]{};
     // 先发送头部
@@ -462,7 +455,7 @@ free:
     this->freeEventEx(event);
 }
 
-void service::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
+void service::v1::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
     auto conn = (HttpConnection *) event->data;
     char buf[MTU_VALUE]{};
     // 先发送头部
@@ -580,10 +573,10 @@ free:
     this->freeEventEx(event);
 }
 
-void service::HttpService::onProcClose(event::BaseEvent *event) noexcept {
+void service::v1::HttpService::onProcClose(event::BaseEvent *event) noexcept {
 }
 
-int64_t service::HttpService::read(int fd, void *buffer, size_t len, void *ssl) noexcept {
+int64_t service::v1::HttpService::read(int fd, void *buffer, size_t len, void *ssl) noexcept {
     if (ssl) {
         return SSL_read((SSL *) ssl, buffer, (int) len);
     } else {
@@ -591,7 +584,7 @@ int64_t service::HttpService::read(int fd, void *buffer, size_t len, void *ssl) 
     }
 }
 
-int64_t service::HttpService::write(int fd, const void *buffer, size_t len, void *ssl) noexcept {
+int64_t service::v1::HttpService::write(int fd, const void *buffer, size_t len, void *ssl) noexcept {
     if (ssl) {
         return SSL_write((SSL *) ssl, buffer, (int) len);
     } else {
@@ -599,7 +592,7 @@ int64_t service::HttpService::write(int fd, const void *buffer, size_t len, void
     }
 }
 
-void service::HttpService::onTimeout(service::TimeoutEvent *timeoutEvent) {
+void service::v1::HttpService::onTimeout(service::TimeoutEvent *timeoutEvent) {
     auto conn = (HttpConnection *) timeoutEvent->data;
     if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
