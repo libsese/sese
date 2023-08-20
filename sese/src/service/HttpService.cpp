@@ -176,6 +176,7 @@ free:
     if (conn->timeoutEvent) {
         TimerableService::freeTimeoutEvent(conn->timeoutEvent);
     }
+    onProcClose(event);
     if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
     }
@@ -237,7 +238,7 @@ void service::HttpService::onHandle(HttpConnection *conn) noexcept {
     auto connectOptions = text::StringBuilder::split(connectString, ", ");
 
     bool upgrade = false;
-    for (auto &item : connectOptions) {
+    for (auto &item: connectOptions) {
         if (sese::strcmpDoNotCase(item.c_str(), "upgrade")) {
             upgrade = true;
             break;
@@ -452,6 +453,7 @@ free:
     if (conn->timeoutEvent) {
         this->freeTimeoutEvent(conn->timeoutEvent);
     }
+    onProcClose(event);
     if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
     }
@@ -569,12 +571,16 @@ free:
     if (conn->timeoutEvent) {
         this->freeTimeoutEvent(conn->timeoutEvent);
     }
+    onProcClose(event);
     if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
     }
     sese::net::Socket::close(event->fd);
     delete conn;
     this->freeEventEx(event);
+}
+
+void service::HttpService::onProcClose(event::BaseEvent *event) noexcept {
 }
 
 int64_t service::HttpService::read(int fd, void *buffer, size_t len, void *ssl) noexcept {

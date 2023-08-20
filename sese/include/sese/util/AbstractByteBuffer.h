@@ -74,6 +74,8 @@ namespace sese {
          */
         virtual size_t freeCapacity();
 
+        virtual void swap(AbstractByteBuffer &other) noexcept;
+
         // [[nodiscard]] size_t getCurrentWritePos() const { return currentWritePos; }
         // [[nodiscard]] size_t getCurrentReadPos() const { return currentReadPos; }
 

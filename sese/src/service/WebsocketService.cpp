@@ -248,3 +248,13 @@ void sese::service::WebsocketService::doClose(net::http::HttpConnection *conn, n
     buildWebsocketFrame(conn, info, session, SESE_WS_OPCODE_CLOSE);
     HttpService::onControllerWrite(conn->event);
 }
+
+void sese::service::WebsocketService::onProcClose(sese::event::BaseEvent *event) noexcept {
+    auto conn = (sese::net::http::HttpConnection *) event->data;
+    auto iterator = sessionMap.find(conn);
+    if (iterator != sessionMap.end()) {
+        delete iterator->second;
+        sessionMap.erase(iterator);
+    }
+    HttpService::onProcClose(event);
+}

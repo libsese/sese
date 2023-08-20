@@ -50,6 +50,8 @@ namespace sese::service {
 
         void onTimeout(TimeoutEvent *timeoutEvent) override;
 
+        void onProcClose(event::BaseEvent *event) noexcept override;
+
     private:
         /// 响应 pong 帧
         /// \param conn 连接

@@ -154,6 +154,16 @@ namespace sese {
         return freeCap;
     }
 
+    void AbstractByteBuffer::swap(sese::AbstractByteBuffer &other) noexcept {
+        std::swap(this->root, other.root);
+        std::swap(this->currentWriteNode, other.currentWriteNode);
+        std::swap(this->currentWritePos, other.currentWritePos);
+        std::swap(this->currentReadNode, other.currentReadNode);
+        std::swap(this->currentReadPos, other.currentReadPos);
+        std::swap(this->length, other.length);
+        std::swap(this->cap, other.cap);
+    }
+
     int64_t AbstractByteBuffer::read(void *buffer, size_t needRead) {
         int64_t actualRead = 0;
         while (true) {

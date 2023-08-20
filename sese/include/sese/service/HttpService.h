@@ -110,6 +110,10 @@ namespace sese::service {
         /// \param event 事件
         void onFileWrite(event::BaseEvent *event) noexcept;
 
+        /// 在接收或发送过程中的以外故障导致的关闭时间
+        /// \param event 事件
+        virtual void onProcClose(event::BaseEvent *event) noexcept;
+
         /// content-type 拓展名映射
         static std::map<std::string, std::string> contentTypeMap;
 
