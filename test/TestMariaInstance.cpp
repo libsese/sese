@@ -217,3 +217,134 @@ TEST(TestCreateStmt, TestinsertStmt) {
         printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
 }
+
+// set autocommit
+TEST(TestTransaction, TestSetAutoCommit) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+
+    );
+    ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto results = instance->executeQuery("show variables like 'autocommit';");
+    while (results->next()) {
+        printf("autocommit = %s\n", results->getString(1).data());
+    }
+
+    ASSERT_EQ(true, instance->setAutoCommit(false));
+
+    auto results1 = instance->executeQuery("show variables like 'autocommit';");
+    while (results1->next()) {
+        printf("autocommit = %s\n", results1->getString(1).data());
+    }
+
+    ASSERT_EQ(true, instance->setAutoCommit(true));
+
+    auto results2 = instance->executeQuery("show variables like 'autocommit';");
+    while (results2->next()) {
+        printf("autocommit = %s\n", results2->getString(1).data());
+    }
+}
+
+// get autocommit
+TEST(TestTransaction, TestGetAutoCommit) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+
+    );
+    ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
+
+    ASSERT_EQ(true, instance->getAutoCommit());
+}
+
+// commit
+TEST(TestTransaction, TestCommit) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+
+    );
+    ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
+
+    ASSERT_EQ(true, instance->setAutoCommit(false));
+
+    ASSERT_EQ(true, instance->getAutoCommit());
+
+    auto results = instance->executeQuery("select * from tb_commit;");
+    while (results->next()) {
+        printf("id = %d, name = %s\n", results->getInteger(0), results->getString(1).data());
+    }
+
+    auto count = instance->executeUpdate("insert into tb_commit (id, name) values (3, 'mike')");
+    ASSERT_NE(0, count);
+
+    ASSERT_EQ(true, instance->commit());
+
+    auto results1 = instance->executeQuery("select * from tb_commit;");
+    while (results1->next()) {
+        printf("id = %d, name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    }
+}
+
+// rollback
+TEST(TestTransaction, TestRollBack) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+
+    );
+    ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
+
+    ASSERT_EQ(true, instance->setAutoCommit(false));
+
+    auto results = instance->executeQuery("select * from tb_rollBack;");
+    while (results->next()) {
+        printf("id = %d, name = %s\n", results->getInteger(0), results->getString(1).data());
+    }
+
+    auto count = instance->executeUpdate("insert into tb_rollBack (id, name) values (3, 'mike');");
+    ASSERT_NE(0, count);
+
+    ASSERT_EQ(true, instance->rollback());
+
+    auto results1 = instance->executeQuery("select * from tb_rollBack;");
+    while (results1->next()) {
+        printf("id = %d, name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    }
+}
+
+// getInsertId
+TEST(TestTransaction, TestGetInserId) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+
+    );
+    ASSERT_NE(nullptr, instance) << "Failed to create the database object instance";
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto results = instance->executeQuery("select * from tb_getInsertId;");
+    ASSERT_NE(nullptr, results);
+    while (results->next()) {
+        printf("id = %d, name = %s\n", (int) results->getInteger(0), results->getString(1).data());
+    }
+
+    auto count = instance->executeUpdate("insert into tb_getInsertId (name) values ('mike');");
+    ASSERT_NE(0, count);
+
+    int64_t id = 0;
+    ASSERT_EQ(true, instance->getInsertId(id));
+    printf("insertId = %lld\n", id);
+
+    auto results1 = instance->executeQuery("select * from tb_getInsertId;");
+    ASSERT_NE(nullptr, results1);
+    while (results1->next()) {
+        printf("id = %d, name = %s\n", (int) results1->getInteger(0), results1->getString(1).data());
+    }
+}

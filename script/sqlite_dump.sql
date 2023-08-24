@@ -56,4 +56,29 @@ CREATE TABLE tb_update
 );
 INSERT INTO tb_update VALUES(1,'foo');
 INSERT INTO tb_update VALUES(2,'bar');
+CREATE TABLE tb_commit
+(
+    id   integer     not null,
+    name varchar(32) not null
+);
+INSERT INTO tb_commit VALUES(1,'foo');
+INSERT INTO tb_commit VALUES(2,'bar');
+CREATE TABLE tb_rollBack
+(
+    id   integer     not null,
+    name varchar(32) not null
+);
+INSERT INTO tb_rollBack VALUES(1,'foo');
+INSERT INTO tb_rollBack VALUES(2,'bar');
+CREATE TABLE IF NOT EXISTS "tb_getInsertId"
+(
+    id   integer     not null
+        constraint tb_getInsertId_pk
+            primary key autoincrement,
+    name varchar(32) not null
+);
+INSERT INTO tb_getInsertId VALUES(1,'foo');
+INSERT INTO tb_getInsertId VALUES(2,'bar');
+DELETE FROM sqlite_sequence;
+INSERT INTO sqlite_sequence VALUES('tb_getInsertId',2);
 COMMIT;

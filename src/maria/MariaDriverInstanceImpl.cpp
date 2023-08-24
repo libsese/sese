@@ -52,3 +52,48 @@ int impl::MariaDriverInstanceImpl::getLastError() const noexcept {
 const char *impl::MariaDriverInstanceImpl::getLastErrorMessage() const noexcept {
     return mysql_error(conn);
 }
+
+bool impl::MariaDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
+    int temp;
+    if (enable) {
+        temp = (unsigned char) mysql_autocommit(conn, 1);
+    } else {
+        temp = (unsigned char) mysql_autocommit(conn, 0);
+    }
+
+    if (temp == 0) {
+        return true;
+    } else return false;
+}
+
+bool impl::MariaDriverInstanceImpl::getAutoCommit() noexcept {
+    auto rt = executeQuery("show variables like 'autocommit';");
+    if (rt) {
+        while (rt->next()){
+            printf("autocommit = %s\n", rt->getString(1).data());
+        }
+        return true;
+    } else return false;
+}
+
+bool impl::MariaDriverInstanceImpl::commit() noexcept {
+    int comm = (unsigned char) mysql_commit(conn);
+    if (comm == 0) {
+        return true;
+    } else return false;
+}
+
+bool impl::MariaDriverInstanceImpl::rollback() noexcept {
+    int back = (unsigned char) mysql_rollback(conn);
+    if (back == 0) {
+        return true;
+    } else return false;
+}
+
+bool impl::MariaDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
+    id = (int64_t) mysql_insert_id(conn);
+    if (id) {
+        return true;
+    } else return false;
+}
+

@@ -45,7 +45,7 @@ namespace sese::db {
 
         /// 查看自动提交是否打开
         /// \retval false 关闭
-        [[nodiscard]] virtual bool getAutoCommit() const noexcept = 0;
+        [[nodiscard]] virtual bool getAutoCommit() noexcept = 0;
 
         /// 事务回滚
         /// \retval false 回滚失败

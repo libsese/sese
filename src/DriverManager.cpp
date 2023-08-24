@@ -80,13 +80,7 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
                 // 缺少必要字段
                 return nullptr;
             }
-            const char *keywords[] = {
-                    hostIterator->first.c_str(),
-                    userIterator->first.c_str(),
-                    pwdIterator->first.c_str(),
-                    dbIterator->first.c_str(),
-                    portIterator->first.c_str(),
-                    nullptr};
+            const char *keywords[] = {"host", "user", "password", "dbname", "port", nullptr};
             const char *values[] = {
                     hostIterator->second.c_str(),
                     userIterator->second.c_str(),
