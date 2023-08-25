@@ -106,16 +106,23 @@ bool HttpClient::reconnect() noexcept {
 
     if (this->sslContext) {
         this->socket = this->sslContext->newSocketPtr(Socket::Family::IPv4, IPPROTO_IP);
+
+        if (0 != this->socket->connect(this->address)) {
+            this->socket = nullptr;
+            return false;
+        } else {
+            SSL_set_mode((SSL *) std::dynamic_pointer_cast<security::SecuritySocket>(this->socket)->getSSL(), SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
+            return true;
+        }
     } else {
         this->socket = std::make_shared<Socket>(Socket::Family::IPv4, Socket::Type::TCP, IPPROTO_IP);
-    }
 
-    if (0 != this->socket->connect(this->address)) {
-        this->socket = nullptr;
-        return false;
-    } else {
-        SSL_set_mode((SSL *) std::dynamic_pointer_cast<security::SecuritySocket>(this->socket)->getSSL(), SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
-        return true;
+        if (0 != this->socket->connect(this->address)) {
+            this->socket = nullptr;
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 bool HttpClient::doRequest() noexcept {
