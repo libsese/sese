@@ -23,7 +23,7 @@ namespace sese::service::v2 {
         TcpConnection *createConnection() override;
 
         std::string workDir = {};
-        std::string servProtos = "\x08http/1.1\x02h2";
+        std::string servProtos = "\x02h2\x08http/1.1";
         std::string servName = HTTPD_NAME;
 
         /// 用于匹配 Http 键值是否排除索引
@@ -87,5 +87,6 @@ namespace sese::service::v2 {
         void onWindowUpdate(TcpConnection *conn, const net::http::Http2FrameInfo &frame) noexcept;
         void onHeaderFrame(TcpConnection *conn, const net::http::Http2FrameInfo &frame) noexcept;
         void onDataFrame(TcpConnection *conn, const net::http::Http2FrameInfo &frame) noexcept;
+        void onResetFrame(TcpConnection *conn, const net::http::Http2FrameInfo &frame) noexcept;
     };
 }// namespace sese::service::v2

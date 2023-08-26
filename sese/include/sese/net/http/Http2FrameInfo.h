@@ -44,6 +44,8 @@ namespace sese::net::http {
     constexpr static uint16_t SETTINGS_MAX_FRAME_SIZE = 0x5;
     constexpr static uint16_t SETTINGS_MAX_HEADER_LIST_SIZE = 0x6;
 
+    constexpr static uint8_t SETTINGS_FLAGS_ACK = 0x1;
+
     constexpr static std::string_view MAGIC_STRING{"PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n"};
 
     struct Http2FrameInfo {

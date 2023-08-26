@@ -38,6 +38,21 @@ void sese::service::v2::HttpConnectionWrapper::writeAck() noexcept {
     buffer2write.write(buffer, 9);
 }
 
+void sese::service::v2::HttpConnectionWrapper::writeRST(uint32_t id) noexcept {
+#pragma pack(push, 1)
+    struct Buffer {
+        uint8_t _0 = 0;
+        uint8_t _1 = 0;
+        uint8_t _2 = 0;
+        uint8_t _3 = 3;
+        uint8_t _4 = 0;
+        uint32_t _id = 0;
+    } buffer;
+    buffer._id = ToBigEndian32(id);
+    buffer2write.write(&buffer, sizeof(buffer));
+#pragma pack(pop)
+}
+
 int sese::service::v2::Http2Connection::decodeHttp2Settings(const std::string &settings) noexcept {
     char buffer[6];
     auto ident = (uint16_t *) &buffer[0];

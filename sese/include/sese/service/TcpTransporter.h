@@ -27,7 +27,7 @@ namespace sese::service {
         /// 遇到对端关闭事件（onClose）时，不进行资源释放处理，
         /// 释放操作至少会延迟至写入事件或读取事件（onWrite、onRead）时检测到连接断开处理，
         /// 异步操作结束时，应当重新将此标志设置为 false
-        std::atomic_bool isAsync = false;
+        [[maybe_unused]] std::atomic_bool isAsync = false;
         void *ssl = nullptr;
         event::BaseEvent *event = nullptr;
         service::TimeoutEvent *timeoutEvent = nullptr;

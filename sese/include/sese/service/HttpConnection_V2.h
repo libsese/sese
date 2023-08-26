@@ -52,6 +52,8 @@ namespace sese::service::v2 {
 
         /// 流 ID
         uint32_t id;
+        /// 如果一个流被 rst_stream，那么将会在最近一次操作该流时移除该流
+        bool reset = false;
 
         size_t headerSize = 0;
         net::http::HttpHandleStatus status = net::http::HttpHandleStatus::HANDING;
@@ -63,6 +65,10 @@ namespace sese::service::v2 {
         /// 剩余内容长度
         /// 在多分段请求的情况下，contentLength 一定大于 fileSize
         size_t contentLength = 0;
+        /// 当前帧已处理大小
+        size_t currentFramePos = 0;
+        /// 当前帧的总大小
+        size_t currentFrameSize = 0;
         std::string contentType = "application/x-";
         std::vector<net::http::Range> ranges;
         std::vector<net::http::Range>::iterator rangeIterator;
@@ -79,6 +85,8 @@ namespace sese::service::v2 {
         net::http::DynamicTable dynamicTable1;
         net::http::DynamicTable dynamicTable2;
 
+        bool first = true;
+
         uint32_t headerTableSize = 4096;
         uint32_t enablePush = 1;
         uint32_t maxConcurrentStream = 0;
@@ -90,8 +98,21 @@ namespace sese::service::v2 {
     struct HttpConnectionWrapper : public TcpConnection {
         std::shared_ptr<HttpConnection> conn;
 
+        /// \brief 从连接中读取一帧的帧头
+        /// \note Http2 连接的专有方法
+        /// \param frame 帧
+        /// \return 是否读取成功
         bool readFrame(net::http::Http2FrameInfo &frame) noexcept;
+        /// \brief 向连接中写入一帧的帧头
+        /// \note Http2 连接的专有方法
+        /// \param frame 帧
         void writeFrame(const net::http::Http2FrameInfo &frame) noexcept;
+        /// \brief 向连接中写入 Ack 帧
+        /// \note Http2 连接的专有方法
         void writeAck() noexcept;
+        /// \brief 向连接中写入 RST 帧
+        /// \note Http2 连接的专有方法
+        /// \param id 流 ID
+        void writeRST(uint32_t id) noexcept;
     };
 }// namespace sese::service::v2

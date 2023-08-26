@@ -11,6 +11,7 @@
 
 #include <openssl/ssl.h>
 
+#include <algorithm>
 #include <filesystem>
 
 #define CONFIG ((sese::service::v2::HttpConfig *) this->config)
@@ -53,6 +54,7 @@ void sese::service::v2::HttpService::onProcAlpnGet(sese::service::TcpConnection 
     std::string proto{(const char *) in, inLength};
     if (proto == "h2") {
         // http 2
+        wrapper->conn = std::make_shared<Http2Connection>();
     } else {
         // http 1.1
         wrapper->conn = std::make_shared<Http1_1Connection>();
@@ -443,6 +445,94 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
     auto wrapper = (HttpConnectionWrapper *) event->data;
     auto httpConn = std::dynamic_pointer_cast<Http2Connection>(wrapper->conn);
     TcpTransporter::onWrite(event);
+
+    for (auto iterator = httpConn->streamMap.begin(); iterator != httpConn->streamMap.end();) {
+        auto &stream = iterator->second;
+        // 该流被重置，直接移除
+        if (stream->reset) {
+            httpConn->streamMap.erase(iterator++);
+            continue;
+        }
+        // 该流是文件流，需要特殊处理
+        // 在此实现中，为了方便处理，发送的文件流中区间和帧的关系是 1 : N
+        // 也就是说一个区间至少占用一个帧
+        // 单区间文件
+        if (stream->status == net::http::HttpHandleStatus::FILE && stream->ranges.size() == 1) {
+            size_t offset = 0;
+            char buffer[MTU_VALUE];
+            // 说明是一个帧的帧头
+            if (stream->currentFramePos == 0) {
+                stream->currentFrameSize = std::min<size_t>(stream->contentLength, httpConn->maxFrameSize);
+                offset = 9;
+                net::http::Http2FrameInfo frame{};
+                frame.ident = stream->id;
+                frame.type = net::http::FRAME_TYPE_DATA;
+                frame.flags = stream->currentFrameSize == stream->contentLength ? net::http::FRAME_FLAG_END_STREAM : 0;
+                frame.length = stream->currentFrameSize;
+                writeFrame((uint8_t *) buffer, frame);
+            }
+            while (true) {
+                auto need = std::min<size_t>(stream->contentLength, MTU_VALUE - offset);
+                need = std::min<size_t>(need, stream->currentFrameSize - stream->currentFramePos);
+                // auto need = stream->contentLength >= MTU_VALUE - offset ? MTU_VALUE - offset : stream->contentLength;
+                auto len = stream->file->read(buffer + offset, need);
+                auto l = write(wrapper->event->fd, buffer, len + offset, wrapper->ssl);
+                if (l < 0) {
+                    auto err = sese::net::getNetworkError();
+                    if (err == EWOULDBLOCK || err == EINTR) {
+                        stream->file->setSeek((int64_t) (0 - need), SEEK_CUR);
+                        event->events = EVENT_WRITE;
+                        setEvent(event);
+                        return;
+                    } else {
+                        // todo: free current connection
+                    }
+                } else {
+                    // warning: 此处不考虑帧头发送一半的可能性
+                    if (l < offset) {
+                        // 几乎不可能发生
+                        // todo: free current connection
+                    } else {
+                        // 内容不完全
+                        if (l < len + offset) {
+                            auto rollback = (l - offset) - len;
+                            stream->file->setSeek((int64_t) rollback, SEEK_CUR);
+                        }
+                        stream->currentFramePos += l - offset;
+                        stream->rangeIterator->cur += l - offset;
+                        stream->contentLength -= l - offset;
+                        offset = 0;
+                    }
+                }
+                if (stream->contentLength == 0) {
+                    // 内容发送完成
+                    // 已无可发送区间
+                    // 移除当前流
+                    httpConn->streamMap.erase(iterator++);
+                    break;
+                } else if (stream->currentFramePos == stream->currentFrameSize) {
+                    // 重置状态，组织新帧
+                    stream->currentFramePos = 0;
+                    stream->currentFrameSize = 0;
+                    event->events |= EVENT_WRITE;
+                    setEvent(event);
+                    break;
+                }
+            }
+        }
+        // 多区间文件
+        else if (stream->status == net::http::HttpHandleStatus::FILE && stream->ranges.size() > 1) {
+            // todo 多区间处理
+        }
+        // 可能是其他未处理完成并未被重置的流
+        else {
+            iterator++;
+        }
+    }
+
+    event->events &= ~EVENT_WRITE;
+    event->events |= EVENT_READ;
+    setEvent(event);
 }
 
 bool sese::service::v2::HttpService::onProcUpgrade2(sese::service::TcpConnection *conn) noexcept {
@@ -508,15 +598,17 @@ void sese::service::v2::HttpService::onProcHandle2(TcpConnection *conn) noexcept
     auto wrapper = (HttpConnectionWrapper *) conn;
     auto httpConn = std::dynamic_pointer_cast<Http2Connection>(wrapper->conn);
     net::http::Http2FrameInfo frame{};
+    if (httpConn->first) {
+        // 此链接为首次连接，需要处理 MAGIC STRING
+        httpConn->first = false;
+        char buffer[25]{};
+        conn->buffer2read.read(buffer, 24);
+        frame.type = net::http::FRAME_TYPE_SETTINGS;
+        wrapper->writeFrame(frame);
+    }
     if (httpConn->upgrade) {
         // 此连接由 http/1.1 升级而来
         httpConn->upgrade = false;
-        char buffer[25]{};
-        conn->buffer2read.read(buffer, 24);
-
-        frame.type = net::http::FRAME_TYPE_SETTINGS;
-        wrapper->writeFrame(frame);
-
         auto stream = httpConn->streamMap[1];
         onProcDispatch2(conn, stream);
     }
@@ -524,7 +616,9 @@ void sese::service::v2::HttpService::onProcHandle2(TcpConnection *conn) noexcept
     while (wrapper->readFrame(frame)) {
         if (frame.type == net::http::FRAME_TYPE_SETTINGS) {
             onSettingsFrame(conn, frame);
-            wrapper->writeAck();
+            if (frame.flags != net::http::SETTINGS_FLAGS_ACK) {
+                wrapper->writeAck();
+            }
             continue;
         } else if (frame.type == net::http::FRAME_TYPE_WINDOW_UPDATE) {
             onWindowUpdate(conn, frame);
@@ -568,13 +662,13 @@ void sese::service::v2::HttpService::onProcDispatch2(sese::service::TcpConnectio
     }
 
     // 文件处理
-    // if (stream->status == net::http::HttpHandleStatus::HANDING && !CONFIG->workDir.empty()) {
-    //     auto file = CONFIG->workDir + url.getUrl();
-    //     if (std::filesystem::is_regular_file(file)) {
-    //         printf("file %s", file.c_str());
-    //         onProcHandleFile2(file, conn, stream);
-    //     }
-    // }
+    if (stream->status == net::http::HttpHandleStatus::HANDING && !CONFIG->workDir.empty()) {
+        auto file = CONFIG->workDir + url.getUrl();
+        if (std::filesystem::is_regular_file(file)) {
+            printf("file %s", file.c_str());
+            onProcHandleFile2(file, conn, stream);
+        }
+    }
 
     // http2 默认控制器
     if (stream->status == net::http::HttpHandleStatus::HANDING) {
@@ -817,6 +911,7 @@ void sese::service::v2::HttpService::onHeaderFrame(sese::service::TcpConnection 
     auto iterator = httpConn->streamMap.find(frame.ident);
     if (iterator == httpConn->streamMap.end()) {
         stream = std::make_shared<Http2Stream>();
+        stream->id = frame.ident;
         stream->req.setVersion(net::http::HttpVersion::VERSION_2);
         stream->resp.setVersion(net::http::HttpVersion::VERSION_2);
         httpConn->streamMap[frame.ident] = stream;
@@ -847,6 +942,7 @@ void sese::service::v2::HttpService::onDataFrame(sese::service::TcpConnection *c
     auto iterator = httpConn->streamMap.find(frame.ident);
     if (iterator == httpConn->streamMap.end()) {
         stream = std::make_shared<Http2Stream>();
+        stream->id = frame.ident;
         stream->req.setVersion(net::http::HttpVersion::VERSION_2);
         stream->resp.setVersion(net::http::HttpVersion::VERSION_2);
         httpConn->streamMap[frame.ident] = stream;
