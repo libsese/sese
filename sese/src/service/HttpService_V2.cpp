@@ -65,8 +65,10 @@ void sese::service::v2::HttpService::onProcHandle(sese::service::TcpConnection *
     auto wrapper = (HttpConnectionWrapper *) conn;
     if (!wrapper->conn) {
         // 说明没有经过 ALPN 协商
-        wrapper->conn = std::make_shared<Http1_1Connection>();
-        onProcHandle1_1(conn);
+        // wrapper->conn = std::make_shared<Http1_1Connection>();
+        // onProcHandle1_1(conn);
+        wrapper->conn = std::make_shared<Http2Connection>();
+        onProcHandle2(conn);
     } else if (wrapper->conn->upgrade) {
         // http 2
         onProcHandle2(conn);
@@ -472,16 +474,14 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                 writeFrame((uint8_t *) buffer, frame);
             }
             while (true) {
-                auto need = std::min<size_t>(stream->contentLength, MTU_VALUE - offset);
-                need = std::min<size_t>(need, stream->currentFrameSize - stream->currentFramePos);
-                // auto need = stream->contentLength >= MTU_VALUE - offset ? MTU_VALUE - offset : stream->contentLength;
+                auto need = std::min<size_t>({stream->contentLength, MTU_VALUE - offset, stream->currentFrameSize - stream->currentFramePos});
                 auto len = stream->file->read(buffer + offset, need);
                 auto l = write(wrapper->event->fd, buffer, len + offset, wrapper->ssl);
                 if (l < 0) {
                     auto err = sese::net::getNetworkError();
                     if (err == EWOULDBLOCK || err == EINTR) {
                         stream->file->setSeek((int64_t) (0 - need), SEEK_CUR);
-                        event->events = EVENT_WRITE;
+                        event->events |= EVENT_WRITE;
                         setEvent(event);
                         return;
                     } else {
@@ -508,6 +508,8 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                     // 内容发送完成
                     // 已无可发送区间
                     // 移除当前流
+                    stream->file->close();
+                    stream->file = nullptr;
                     httpConn->streamMap.erase(iterator++);
                     break;
                 } else if (stream->currentFramePos == stream->currentFrameSize) {
@@ -522,7 +524,105 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
         }
         // 多区间文件
         else if (stream->status == net::http::HttpHandleStatus::FILE && stream->ranges.size() > 1) {
-            // todo 多区间处理
+            // 此偏移不计入 content 总长度
+            size_t offset0 = 0;
+            // 此偏移计入 content 总长度
+            size_t offset1 = 0;
+            char buffer[MTU_VALUE];
+            // 说明是一个帧的帧头
+            if (stream->currentFramePos == 0) {
+                // 说明本帧是分段的起始帧，需要添加额外信息
+                if (stream->rangeIterator->cur == 0) {
+                    auto output = sese::OutputBufferWrapper(buffer + 9, MTU_VALUE - 9);
+                    output.write("\r\n--", 4);
+                    output.write(HTTPD_BOUNDARY, strlen(HTTPD_BOUNDARY));
+                    output.write("\r\ncontent-type: ", 16);
+                    output.write(stream->contentType.c_str(), stream->contentType.length());
+                    output.write("\r\ncontent-range: ", 17);
+                    auto contentRange = stream->rangeIterator->toString(stream->fileSize);
+                    output.write(contentRange.c_str(), contentRange.length());
+                    output.write("\r\n\r\n", 4);
+                    stream->file->setSeek((int64_t) stream->rangeIterator->begin, SEEK_SET);
+                    offset1 = output.getLength();
+                }
+
+                stream->currentFrameSize = std::min<size_t>({stream->contentLength, httpConn->maxFrameSize, stream->rangeIterator->len - stream->rangeIterator->cur + offset1});
+                offset0 = 9;
+                net::http::Http2FrameInfo frame{};
+                frame.ident = stream->id;
+                frame.type = net::http::FRAME_TYPE_DATA;
+                frame.length = stream->currentFrameSize;
+                writeFrame((uint8_t *) buffer, frame);
+            }
+            while (true) {
+                auto need = std::min<size_t>({stream->contentLength, MTU_VALUE - offset0 - offset1, stream->currentFrameSize - stream->currentFramePos - offset1});
+                // 此块内容是最后一帧的最后一部分内容，需要进行修正
+                if (need + offset1 == stream->contentLength) {
+                    need -= 8 + strlen(HTTPD_BOUNDARY);
+                }
+                auto len = stream->file->read(buffer + offset0 + offset1, need);
+                auto l = write(wrapper->event->fd, buffer, len + offset0 + offset1, wrapper->ssl);
+                if (l < 0) {
+                    auto err = sese::net::getNetworkError();
+                    if (err == EWOULDBLOCK || err == EINTR) {
+                        stream->file->setSeek((int64_t) (0 - need), SEEK_CUR);
+                        event->events |= EVENT_WRITE;
+                        setEvent(event);
+                        return;
+                    } else {
+                        // todo: free current connection
+                    }
+                } else {
+                    if (l < offset0 + offset1) {
+                        // 几乎不可能发生
+                        // todo: free current connection
+                    } else {
+                        // 内容不完全
+                        if (l < len + offset0 + offset1) {
+                            auto rollback = (l - offset0 - offset1) - len;
+                            stream->file->setSeek((int64_t) rollback, SEEK_CUR);
+                        }
+                        stream->currentFramePos += l - offset0;
+                        stream->rangeIterator->cur += l - offset0 - offset1;
+                        stream->contentLength -= l - offset0;
+                        offset0 = 0;
+                        offset1 = 0;
+                    }
+                }
+
+                // 正常帧结束
+                if (stream->rangeIterator->cur == stream->rangeIterator->len) {
+                    break;
+                }
+            }
+
+            // 此处判断是否为最后一帧预备结束
+            if (stream->rangeIterator + 1 != stream->ranges.end()) {
+                // 不是最后一帧预备结束
+                // 重置状态，组织新帧
+                stream->rangeIterator++;
+                stream->currentFramePos = 0;
+                stream->currentFrameSize = 0;
+                event->events |= EVENT_WRITE;
+                setEvent(event);
+                break;
+            } else {
+                // 最后一帧，发送尾部 BOUNDARY 并移除当前流
+                net::http::Http2FrameInfo frame{};
+                frame.ident = stream->id;
+                frame.length = 8 + strlen(HTTPD_BOUNDARY);
+                frame.type = net::http::FRAME_TYPE_DATA;
+                frame.flags = net::http::FRAME_FLAG_END_STREAM;
+                wrapper->writeFrame(frame);
+                wrapper->buffer2write.write("\r\n--",4);
+                wrapper->buffer2write.write(HTTPD_BOUNDARY, strlen(HTTPD_BOUNDARY));
+                wrapper->buffer2write.write("--\r\n",4);
+                stream->file->close();
+                stream->file = nullptr;
+                httpConn->streamMap.erase(iterator++);
+                TcpTransporter::onWrite(event);
+                break;
+            }
         }
         // 可能是其他未处理完成并未被重置的流
         else {
@@ -533,6 +633,9 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
     event->events &= ~EVENT_WRITE;
     event->events |= EVENT_READ;
     setEvent(event);
+    return;
+free:
+    return;
 }
 
 bool sese::service::v2::HttpService::onProcUpgrade2(sese::service::TcpConnection *conn) noexcept {
@@ -736,6 +839,30 @@ void sese::service::v2::HttpService::onProcHandleFile2(const std::string &path, 
         writeHeader(conn, stream);
         stream->status = net::http::HttpHandleStatus::FILE;
         return;
+    }
+
+    // 多区块传输
+    stream->resp.setCode(206);
+    stream->rangeIterator = stream->ranges.begin();
+    if (stream->ranges.size() > 1) {
+        for (auto &item: stream->ranges) {
+            stream->contentLength += 12 +
+                                     strlen(HTTPD_BOUNDARY) +
+                                     strlen("content-type: ") +
+                                     stream->contentType.length() +
+                                     strlen("content-range: ") +
+                                     item.toString(stream->fileSize).length() +
+                                     item.len;
+        }
+        stream->contentLength += 8 + strlen(HTTPD_BOUNDARY);
+
+        stream->resp.set("content-length", std::to_string(stream->contentLength));
+        stream->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
+        writeHeader(conn, stream);
+        stream->status = net::http::HttpHandleStatus::FILE;
+    }
+    // 单区块传输
+    else {
     }
 }
 
