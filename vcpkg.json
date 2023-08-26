@@ -1,6 +1,6 @@
 {
     "name": "sese-core",
-    "version-string": "0.7.6",
+    "version-string": "0.8.2",
     "supports": "x64",
     "license": "Apache-2.0",
     "dependencies": [
