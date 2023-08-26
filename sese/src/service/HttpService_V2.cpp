@@ -624,17 +624,24 @@ void sese::service::v2::HttpService::onProcHandle2(TcpConnection *conn) noexcept
             onWindowUpdate(conn, frame);
             continue;
         } else if (frame.type == net::http::FRAME_TYPE_HEADERS || frame.type == net::http::FRAME_TYPE_CONTINUATION) {
+            if (frame.flags & net::http::FRAME_FLAG_PRIORITY) {
+                conn->buffer2read.trunc(5);
+            }
             onHeaderFrame(conn, frame);
             continue;
         } else if (frame.type == net::http::FRAME_TYPE_DATA) {
             onDataFrame(conn, frame);
             continue;
-        } else {
+        } else if (frame.type == net::http::FRAME_TYPE_RST_STREAM) {
+            onResetFrame(conn, frame);
             continue;
         }
     }
 
-    postWrite(conn);
+    wrapper->event->events |= EVENT_READ;
+    // wrapper->event->events |= EVENT_WRITE;
+    setEvent(wrapper->event);
+    onWrite2(wrapper->event);
 }
 
 void sese::service::v2::HttpService::onProcDispatch2(sese::service::TcpConnection *conn, const sese::service::v2::Http2Stream::Ptr &stream) noexcept {
@@ -900,8 +907,7 @@ void sese::service::v2::HttpService::onWindowUpdate(sese::service::TcpConnection
     auto wrapper = (HttpConnectionWrapper *) conn;
     auto httpConn = std::dynamic_pointer_cast<Http2Connection>(wrapper->conn);
     // 不做控制，读取负载
-    uint32_t data;
-    wrapper->buffer2read.read(&data, sizeof(data));
+    wrapper->buffer2read.trunc(4);
 }
 
 void sese::service::v2::HttpService::onHeaderFrame(sese::service::TcpConnection *conn, const net::http::Http2FrameInfo &frame) noexcept {
@@ -922,16 +928,15 @@ void sese::service::v2::HttpService::onHeaderFrame(sese::service::TcpConnection 
     stream->headerSize += frame.length;
     streamMove(&stream->req.getBody(), &wrapper->buffer2read, frame.length);
 
-    if (frame.flags == net::http::FRAME_FLAG_END_HEADERS) {
+    if (frame.flags & net::http::FRAME_FLAG_END_HEADERS) {
         net::http::HPackUtil::decode(&stream->req.getBody(), stream->headerSize, httpConn->dynamicTable1, stream->req);
         requestFromHttp2(stream->req);
         stream->headerSize = 0;
         stream->req.getBody().freeCapacity();
-    }
-
-    auto contentLength = stream->req.get("content-length", "0");
-    if (contentLength == "0") {
-        onProcDispatch2(conn, stream);
+        auto contentLength = stream->req.get("content-length", "0");
+        if (contentLength == "0") {
+            onProcDispatch2(conn, stream);
+        }
     }
 }
 
@@ -952,7 +957,19 @@ void sese::service::v2::HttpService::onDataFrame(sese::service::TcpConnection *c
 
     streamMove(&stream->req.getBody(), &wrapper->buffer2read, frame.length);
 
-    if (frame.flags == net::http::FRAME_FLAG_END_STREAM) {
+    if (frame.flags & net::http::FRAME_FLAG_END_STREAM) {
         onProcDispatch2(conn, stream);
+    }
+}
+
+void sese::service::v2::HttpService::onResetFrame(sese::service::TcpConnection *conn, const net::http::Http2FrameInfo &frame) noexcept {
+    auto wrapper = (HttpConnectionWrapper *) conn;
+    auto httpConn = std::dynamic_pointer_cast<Http2Connection>(wrapper->conn);
+
+    auto len = frame.length;
+    conn->buffer2read.trunc(len);
+    auto iterator = httpConn->streamMap.find(frame.ident);
+    if (iterator != httpConn->streamMap.end()) {
+        iterator->second->reset = true;
     }
 }
