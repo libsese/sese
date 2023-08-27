@@ -1,5 +1,6 @@
 /// \file HttpService_V2.h
 /// \brief Http 服务，支持 Http/1.1 Http2
+/// \note 本实现暂时缺少流量控制
 /// \date 2023年8月24日
 /// \author kaoru
 /// \version 0.1
