@@ -33,6 +33,8 @@ namespace sese::service::v2 {
 
         Http1_1Connection() : HttpConnection(net::http::HttpVersion::VERSION_1_1) {}
 
+        ~Http1_1Connection() noexcept override;
+
         uint32_t expect = 0;
         uint32_t real = 0;
 
@@ -49,6 +51,8 @@ namespace sese::service::v2 {
 
     struct Http2Stream {
         using Ptr = std::shared_ptr<Http2Stream>;
+
+        ~Http2Stream() noexcept;
 
         /// 流 ID
         uint32_t id;

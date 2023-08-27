@@ -1,6 +1,5 @@
 /// \file HttpService_V2.h
 /// \brief Http 服务，支持 Http/1.1 Http2
-/// \note 以 Transporter 的模型不足以完全支持全双工通信，故不支持 Http2 文件传输这种占用大量带宽的功能
 /// \date 2023年8月24日
 /// \author kaoru
 /// \version 0.1

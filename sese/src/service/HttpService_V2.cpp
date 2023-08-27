@@ -65,13 +65,8 @@ void sese::service::v2::HttpService::onProcHandle(sese::service::TcpConnection *
     auto wrapper = (HttpConnectionWrapper *) conn;
     if (!wrapper->conn) {
         // 说明没有经过 ALPN 协商
-        // wrapper->conn = std::make_shared<Http1_1Connection>();
-        // onProcHandle1_1(conn);
-        wrapper->conn = std::make_shared<Http2Connection>();
-        onProcHandle2(conn);
-    } else if (wrapper->conn->upgrade) {
-        // http 2
-        onProcHandle2(conn);
+        wrapper->conn = std::make_shared<Http1_1Connection>();
+        onProcHandle1_1(conn);
     } else if (wrapper->conn->version == net::http::HttpVersion::VERSION_1_1) {
         // http/1.1
         onProcHandle1_1(conn);
@@ -82,6 +77,7 @@ void sese::service::v2::HttpService::onProcHandle(sese::service::TcpConnection *
 }
 
 void sese::service::v2::HttpService::onProcClose(sese::service::TcpConnection *conn) {
+    // printf("on close %d", sese::net::getNetworkError());
 }
 
 void sese::service::v2::HttpService::onWrite(sese::event::BaseEvent *event) {
@@ -213,8 +209,6 @@ void sese::service::v2::HttpService::onWriteFile1_1(event::BaseEvent *event) noe
     // printf("finsh %s", httpConn->contentType.c_str());
     if (wrapper->timeoutEvent) {
         wrapper->buffer2write.freeCapacity();
-        httpConn->file->close();
-        httpConn->file = nullptr;
         this->setTimeoutEvent(wrapper->timeoutEvent, config->keepalive);
         wrapper->event->events &= ~EVENT_WRITE;
         wrapper->event->events |= EVENT_READ;
@@ -233,10 +227,6 @@ free:
         SSL_free((SSL *) wrapper->ssl);
     }
     sese::net::Socket::close(wrapper->event->fd);
-    if (httpConn->file) {
-        httpConn->file->close();
-        httpConn->file = nullptr;
-    }
     CONFIG->freeConnection(wrapper);
     freeEventEx(event);
 }
@@ -446,7 +436,31 @@ void sese::service::v2::HttpService::onProcHandleFile1_1(const std::string &path
 void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept {
     auto wrapper = (HttpConnectionWrapper *) event->data;
     auto httpConn = std::dynamic_pointer_cast<Http2Connection>(wrapper->conn);
-    TcpTransporter::onWrite(event);
+    // TcpTransporter::onWrite(event);
+    {
+        char buf[MTU_VALUE];
+        while (true) {
+            auto len = wrapper->buffer2write.peek(buf, MTU_VALUE);
+            if (len == 0) {
+                wrapper->buffer2write.freeCapacity();
+                break;
+            }
+            auto l = write(event->fd, buf, len, wrapper->ssl);
+            if (l <= 0) {
+                auto err = sese::net::getNetworkError();
+                if (err == EWOULDBLOCK || err == EINTR) {
+                    wrapper->event->events &= ~EVENT_READ;
+                    wrapper->event->events |= EVENT_WRITE;
+                    this->setEvent(event);
+                    break;
+                } else {
+                    goto free;
+                }
+            } else {
+                wrapper->buffer2write.trunc(l);
+            }
+        }
+    }
 
     for (auto iterator = httpConn->streamMap.begin(); iterator != httpConn->streamMap.end();) {
         auto &stream = iterator->second;
@@ -470,8 +484,12 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                 frame.ident = stream->id;
                 frame.type = net::http::FRAME_TYPE_DATA;
                 frame.flags = stream->currentFrameSize == stream->contentLength ? net::http::FRAME_FLAG_END_STREAM : 0;
-                frame.length = stream->currentFrameSize;
+                frame.length = (uint32_t) stream->currentFrameSize;
                 writeFrame((uint8_t *) buffer, frame);
+
+                if (stream->rangeIterator->cur == 0) {
+                    stream->file->setSeek((int64_t) stream->rangeIterator->begin, SEEK_SET);
+                }
             }
             while (true) {
                 auto need = std::min<size_t>({stream->contentLength, MTU_VALUE - offset, stream->currentFrameSize - stream->currentFramePos});
@@ -485,20 +503,20 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                         setEvent(event);
                         return;
                     } else {
-                        // todo: free current connection
+                        goto free;
                     }
                 } else {
                     // warning: 此处不考虑帧头发送一半的可能性
-                    if (l < offset) {
+                    if (l < (int) offset) {
                         // 几乎不可能发生
-                        // todo: free current connection
+                        goto free;
                     } else {
                         // 内容不完全
-                        if (l < len + offset) {
+                        if (l < (int) (len + offset)) {
                             auto rollback = (l - offset) - len;
                             stream->file->setSeek((int64_t) rollback, SEEK_CUR);
                         }
-                        stream->currentFramePos += l - offset;
+                        stream->currentFramePos += (uint32_t) (l - offset);
                         stream->rangeIterator->cur += l - offset;
                         stream->contentLength -= l - offset;
                         offset = 0;
@@ -508,8 +526,6 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                     // 内容发送完成
                     // 已无可发送区间
                     // 移除当前流
-                    stream->file->close();
-                    stream->file = nullptr;
                     httpConn->streamMap.erase(iterator++);
                     break;
                 } else if (stream->currentFramePos == stream->currentFrameSize) {
@@ -551,7 +567,7 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                 net::http::Http2FrameInfo frame{};
                 frame.ident = stream->id;
                 frame.type = net::http::FRAME_TYPE_DATA;
-                frame.length = stream->currentFrameSize;
+                frame.length = (uint32_t) stream->currentFrameSize;
                 writeFrame((uint8_t *) buffer, frame);
             }
             while (true) {
@@ -570,15 +586,15 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                         setEvent(event);
                         return;
                     } else {
-                        // todo: free current connection
+                        goto free;
                     }
                 } else {
-                    if (l < offset0 + offset1) {
+                    if (l < (int) (offset0 + offset1)) {
                         // 几乎不可能发生
-                        // todo: free current connection
+                        goto free;
                     } else {
                         // 内容不完全
-                        if (l < len + offset0 + offset1) {
+                        if (l < (int) (len + offset0 + offset1)) {
                             auto rollback = (l - offset0 - offset1) - len;
                             stream->file->setSeek((int64_t) rollback, SEEK_CUR);
                         }
@@ -610,15 +626,13 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                 // 最后一帧，发送尾部 BOUNDARY 并移除当前流
                 net::http::Http2FrameInfo frame{};
                 frame.ident = stream->id;
-                frame.length = 8 + strlen(HTTPD_BOUNDARY);
+                frame.length = (uint32_t) (8 + strlen(HTTPD_BOUNDARY));
                 frame.type = net::http::FRAME_TYPE_DATA;
                 frame.flags = net::http::FRAME_FLAG_END_STREAM;
                 wrapper->writeFrame(frame);
-                wrapper->buffer2write.write("\r\n--",4);
+                wrapper->buffer2write.write("\r\n--", 4);
                 wrapper->buffer2write.write(HTTPD_BOUNDARY, strlen(HTTPD_BOUNDARY));
-                wrapper->buffer2write.write("--\r\n",4);
-                stream->file->close();
-                stream->file = nullptr;
+                wrapper->buffer2write.write("--\r\n", 4);
                 httpConn->streamMap.erase(iterator++);
                 TcpTransporter::onWrite(event);
                 break;
@@ -630,12 +644,24 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
         }
     }
 
-    event->events &= ~EVENT_WRITE;
-    event->events |= EVENT_READ;
-    setEvent(event);
+    if (wrapper->timeoutEvent) {
+        this->setTimeoutEvent(wrapper->timeoutEvent, config->keepalive);
+        event->events &= ~EVENT_WRITE;
+        event->events |= EVENT_READ;
+        setEvent(event);
+    }
     return;
 free:
-    return;
+    if (wrapper->timeoutEvent) {
+        this->freeTimeoutEvent(wrapper->timeoutEvent);
+    }
+    onProcClose(wrapper);
+    if (CONFIG->servCtx) {
+        SSL_free((SSL *) wrapper->ssl);
+    }
+    sese::net::Socket::close(wrapper->event->fd);
+    CONFIG->freeConnection(wrapper);
+    freeEventEx(event);
 }
 
 bool sese::service::v2::HttpService::onProcUpgrade2(sese::service::TcpConnection *conn) noexcept {
@@ -863,6 +889,11 @@ void sese::service::v2::HttpService::onProcHandleFile2(const std::string &path, 
     }
     // 单区块传输
     else {
+        stream->contentLength = stream->rangeIterator->len;
+        stream->resp.set("content-length", std::to_string(stream->rangeIterator->len));
+        stream->resp.set("content-range", stream->rangeIterator->toString(stream->fileSize));
+        writeHeader(conn, stream);
+        stream->status = net::http::HttpHandleStatus::FILE;
     }
 }
 

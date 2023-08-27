@@ -20,7 +20,7 @@ sese::net::IPv4Address::Ptr createAddress() {
     std::uniform_int_distribution<uint16_t> dis(1025, 65535);
     auto port = dis(engine);
     printf("select port %d", (int) port);
-    return sese::net::IPv4Address::create("127.0.0.1", 9956);
+    return sese::net::IPv4Address::create("0.0.0.0", 443);
 }
 
 void ControllerIndex(
@@ -51,11 +51,11 @@ TEST(TestService, SSL_KEEPALIVE_V2) {
     auto addr = createAddress();
 
     sese::service::v2::HttpConfig config;
-    config.setServProtos("\x8http/1.1");
     config.setServCtx(servCtx);
     config.setServName("my service");
     config.setKeepAlive(30);
     config.addExcludeIndexedHeader("message");
+    config.setWorkDir("C:/Users/kaoru/Desktop/www");
     config.setController("/", ControllerIndex);
     config.setController("/post", ControllerPost);
 

@@ -3,6 +3,20 @@
 #include <sese/convert/Base64Converter.h>
 #include <sese/net/http/Http2FrameInfo.h>
 
+sese::service::v2::Http1_1Connection::~Http1_1Connection() noexcept {
+    if (file) {
+        file->close();
+        file = nullptr;
+    }
+}
+
+sese::service::v2::Http2Stream::~Http2Stream() noexcept {
+    if (file) {
+        file->close();
+        file = nullptr;
+    }
+}
+
 bool sese::service::v2::HttpConnectionWrapper::readFrame(net::http::Http2FrameInfo &frame) noexcept {
     uint8_t buffer[9]{};
     if (buffer2read.read(buffer, sizeof(buffer)) != sizeof(buffer)) {
