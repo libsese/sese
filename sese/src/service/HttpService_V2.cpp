@@ -752,6 +752,9 @@ void sese::service::v2::HttpService::onProcHandle2(TcpConnection *conn) noexcept
         } else if (frame.type == net::http::FRAME_TYPE_WINDOW_UPDATE) {
             onWindowUpdate(conn, frame);
             continue;
+        } else if (frame.type == net::http::FRAME_TYPE_PRIORITY) {
+            conn->buffer2read.trunc(5);
+            continue;
         } else if (frame.type == net::http::FRAME_TYPE_HEADERS || frame.type == net::http::FRAME_TYPE_CONTINUATION) {
             if (frame.flags & net::http::FRAME_FLAG_PRIORITY) {
                 conn->buffer2read.trunc(5);
