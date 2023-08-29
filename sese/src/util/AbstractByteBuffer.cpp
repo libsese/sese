@@ -13,11 +13,12 @@ namespace sese {
         free(this->buffer);
     }
 
-    AbstractByteBuffer::AbstractByteBuffer(size_t baseSize) {
+    AbstractByteBuffer::AbstractByteBuffer(size_t baseSize, size_t factor) {
         this->root = new Node(baseSize);// GCOVR_EXCL_LINE
         this->cap = baseSize;
         this->currentWriteNode = root;
         this->currentReadNode = root;
+        this->factor = factor;
     }
 
     AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &src) noexcept {
@@ -77,6 +78,7 @@ namespace sese {
         this->length = src.length;
         this->currentReadPos = src.currentReadPos;
         this->currentWritePos = src.currentWritePos;
+        this->factor = src.factor;
     }
 
     AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer) noexcept {
@@ -87,6 +89,7 @@ namespace sese {
         this->currentReadPos = abstractByteBuffer.currentReadPos;
         this->length = abstractByteBuffer.length;
         this->cap = abstractByteBuffer.cap;
+        this->factor = abstractByteBuffer.factor;
 
         abstractByteBuffer.root = nullptr;
         abstractByteBuffer.currentWriteNode = nullptr;
@@ -95,6 +98,7 @@ namespace sese {
         abstractByteBuffer.currentReadPos = 0;
         abstractByteBuffer.length = 0;
         abstractByteBuffer.cap = 0;
+        abstractByteBuffer.factor = 0;
     }
 
     AbstractByteBuffer::~AbstractByteBuffer() {
@@ -218,10 +222,10 @@ namespace sese {
 
                 // 更新全局信息
                 length += currentWriteNode->cap;
-                cap += STREAM_BYTE_STREAM_SIZE_FACTOR;
+                cap += factor;
                 // 直接切换至下一个单元
                 currentWritePos = 0;
-                currentWriteNode->next = new Node(STREAM_BYTE_STREAM_SIZE_FACTOR);// GCOVR_EXCL_LINE
+                currentWriteNode->next = new Node(factor);// GCOVR_EXCL_LINE
                 currentWriteNode = currentWriteNode->next;
                 continue;
             }

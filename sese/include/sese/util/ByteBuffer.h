@@ -21,7 +21,7 @@ namespace sese {
     public:
         using Ptr = std::unique_ptr<ByteBuffer>;
 
-        explicit ByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
+        explicit ByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
         void resetPos() override;
         [[nodiscard]] size_t getLength();
         [[nodiscard]] size_t getCapacity();

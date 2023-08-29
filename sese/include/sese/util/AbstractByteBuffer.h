@@ -42,7 +42,7 @@ namespace sese {
         /**
          * @param baseSize 初始节点内存大小
          */
-        explicit AbstractByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
+        explicit AbstractByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
 
         /// 拷贝
         AbstractByteBuffer(AbstractByteBuffer &abstractByteBuffer) noexcept;
@@ -87,6 +87,8 @@ namespace sese {
         int64_t trunc(size_t needRead) override;
 
     private:
+        size_t factor = 0;
+
         Node *root = nullptr;
         Node *currentWriteNode = nullptr;
         size_t currentWritePos = 0;

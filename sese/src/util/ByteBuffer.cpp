@@ -18,7 +18,7 @@ int64_t sese::ByteBuffer::peek(void *buffer, size_t len) {
     return AbstractByteBuffer::peek(buffer, len);
 }
 
-sese::ByteBuffer::ByteBuffer(size_t baseSize) : AbstractByteBuffer(baseSize) {
+sese::ByteBuffer::ByteBuffer(size_t baseSize, size_t factor) : AbstractByteBuffer(baseSize, factor) {
 }
 
 void sese::ByteBuffer::resetPos() {
