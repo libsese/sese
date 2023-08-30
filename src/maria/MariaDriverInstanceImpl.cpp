@@ -63,37 +63,50 @@ bool impl::MariaDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
 
     if (temp == 0) {
         return true;
-    } else return false;
+    } else
+        return false;
 }
 
 bool impl::MariaDriverInstanceImpl::getAutoCommit() noexcept {
     auto rt = executeQuery("show variables like 'autocommit';");
     if (rt) {
-        while (rt->next()){
-            printf("autocommit = %s\n", rt->getString(1).data());
+        while (rt->next()) {
+            printf("autoCommit = %s\n", rt->getString(1).data());
         }
         return true;
-    } else return false;
+    } else
+        return false;
 }
 
 bool impl::MariaDriverInstanceImpl::commit() noexcept {
     int comm = (unsigned char) mysql_commit(conn);
     if (comm == 0) {
         return true;
-    } else return false;
+    } else
+        return false;
 }
 
 bool impl::MariaDriverInstanceImpl::rollback() noexcept {
     int back = (unsigned char) mysql_rollback(conn);
     if (back == 0) {
         return true;
-    } else return false;
+    } else
+        return false;
 }
 
 bool impl::MariaDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
     id = (int64_t) mysql_insert_id(conn);
     if (id) {
         return true;
-    } else return false;
+    } else {
+        return false;
+    }
 }
 
+bool impl::MariaDriverInstanceImpl::begin() noexcept {
+    if (0 != mysql_query(conn, "BEGIN;")) {
+        return false;
+    } else {
+        return true;
+    }
+}

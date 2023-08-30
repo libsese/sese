@@ -19,6 +19,7 @@ namespace sese::db::impl {
 
         [[nodiscard]] bool setAutoCommit(bool enable) noexcept override;
         [[nodiscard]] bool getAutoCommit() noexcept  override;
+        [[nodiscard]] bool begin() noexcept override;
         [[nodiscard]] bool commit() noexcept override;
         [[nodiscard]] bool rollback() noexcept override;
 

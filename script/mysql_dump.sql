@@ -20,6 +20,27 @@ CREATE DATABASE db_test;
 USE db_test;
 
 --
+-- Table structure for table `tb_begin`
+--
+
+DROP TABLE IF EXISTS `tb_begin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_begin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于begin测试';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_begin`
+--
+
+LOCK TABLES `tb_begin` WRITE;
+INSERT INTO `tb_begin` VALUES (1,'foo'),(2,'bar');
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_commit`
 --
 
@@ -260,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-23 11:25:40
+-- Dump completed on 2023-08-29 16:24:45

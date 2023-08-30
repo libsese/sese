@@ -16,6 +16,14 @@ namespace sese::db::impl {
         [[nodiscard]] int getLastError() const noexcept override;
         [[nodiscard]] const char *getLastErrorMessage() const noexcept override;
 
+        [[nodiscard]] bool setAutoCommit(bool enable) noexcept override;
+        [[nodiscard]] bool getAutoCommit() noexcept override;
+        [[nodiscard]] bool begin() noexcept override;
+        [[nodiscard]] bool commit() noexcept override;
+        [[nodiscard]] bool rollback() noexcept override;
+
+        [[nodiscard]] bool getInsertId(int64_t &id) const noexcept override;
+
     protected:
         sqlite3 *conn = nullptr;
     };
