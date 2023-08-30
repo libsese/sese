@@ -1,0 +1,27 @@
+name: 问题反馈
+description: 此模板用于反馈通用问题
+assignees:
+  - SHIINASAMA
+
+title: "[general]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        在描述你的问题之前请先尝试自己解决或者查找相似的 issue
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      value: |
+        出现该问题的具体版本
+  - type: textarea
+    id: record
+    attributes:
+      label: 描述复现步骤（如果有）
+      value: |
+        在这里编写步骤
