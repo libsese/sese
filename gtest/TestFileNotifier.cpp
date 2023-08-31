@@ -46,3 +46,11 @@ TEST(TestFileNotifier, _0) {
     notifier->shutdown();
     SUCCEED() << "OK";
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

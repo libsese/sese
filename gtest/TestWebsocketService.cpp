@@ -28,6 +28,7 @@ public:
 
         session->buffer.freeCapacity();
         session->buffer << "recv your message: ";
+        // session->buffer.write("recv your message: ", 19);
         session->buffer.write(buffer, len);
         service->doWriteMessage(session);
     }
@@ -72,4 +73,12 @@ GTEST_TEST(TestWebsocketService, _0) {
     EXPECT_EQ(process->wait(), 0);
     SUCCEED();
     service.stop();
+}
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
 }

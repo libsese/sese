@@ -53,7 +53,7 @@ TEST(TestHttpClient, UrlParser_5) {
 }
 
 TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
-    auto client = sese::net::http::HttpClient::create("https://bing.com/index.html");
+    auto client = sese::net::http::HttpClient::create("https://microsoft.com/index.html");
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();
@@ -63,7 +63,7 @@ TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
     }
 
     auto len = std::atol(client->resp.get("content-length", "0").c_str());
-    char buffer[1024]{};
+    char buffer[10240]{};
     if (len) {
         ASSERT_EQ(client->getResponse().getBody().read(buffer, len), len);
         SESE_INFO("content:\n%s", buffer);
@@ -108,7 +108,7 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
 }
 
 TEST(TestHttpClient, NO_SSL_NO_KEEPALIVE) {
-    auto client = sese::net::http::HttpClient::create("http://bing.com/index.html");
+    auto client = sese::net::http::HttpClient::create("http://microsoft.com/index.html");
     decltype(auto) req = client->getRequest();
     decltype(auto) resp = client->getResponse();
 
@@ -170,4 +170,10 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
     for (decltype(auto) cookie: *resp.getCookies()) {
         SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
     }
+}
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
 }

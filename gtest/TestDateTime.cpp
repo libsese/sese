@@ -173,3 +173,9 @@ TEST(TestDateTime, Format_3) {
     auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss %");
     sese::record::LogHelper::i(str4.c_str());
 }
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

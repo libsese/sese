@@ -72,3 +72,9 @@ TEST(TestCompress, GZIP) {
     ASSERT_EQ(GZipFileOutputStream::create("./undef/undef.gz", 9), nullptr);
     ASSERT_EQ(GZipFileInputStream::create("./undef/undef.gz"), nullptr);
 }
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

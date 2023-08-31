@@ -20,7 +20,7 @@ TEST(TestSSL, Auth) {
 }
 
 TEST(TestSSL, Client) {
-    auto address = sese::net::IPv4AddressPool::lookup("bing.com");
+    auto address = sese::net::IPv4AddressPool::lookup("microsoft.com");
     ASSERT_NE(address, nullptr);
     address->setPort(443);
 
@@ -83,4 +83,12 @@ TEST(TestSSL, Server) {
 
     th.join();
     server.close();
+}
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
 }

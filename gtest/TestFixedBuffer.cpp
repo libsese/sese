@@ -24,7 +24,7 @@ TEST(TestFixedBuffer, Read) {
     auto size = 16;
     auto buffer = sese::FixedBuffer(16);
     ASSERT_EQ(buffer.write("ABCDEFGHIJKLMNOP", 16), 16);
-    
+
     int64_t len;
     char buf[9];
     len = buffer.read(buf, 9);
@@ -38,7 +38,7 @@ TEST(TestFixedBuffer, Peek) {
     auto size = 16;
     auto buffer = sese::FixedBuffer(16);
     ASSERT_EQ(buffer << "ABCDEFGHIJKLMNOP", 16);
-    
+
     int64_t len;
     char buf[9];
     len = buffer.peek(buf, 9);
@@ -71,4 +71,12 @@ TEST(TestFixedBuffer, Misc_1) {
     buffer.reset();
     ASSERT_EQ(buffer.getReadableSize(), 0);
     ASSERT_EQ(buffer.getWriteableSize(), 10);
+}
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
 }

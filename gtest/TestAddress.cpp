@@ -93,3 +93,9 @@ TEST(TestAddress, IPv6Address) {
     ASSERT_NE(address3, nullptr);
     SESE_INFO("local subnet mask: %s", address3->getAddress().c_str());
 }
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

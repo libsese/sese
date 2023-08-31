@@ -112,3 +112,11 @@ TEST(TestReusableSocket, Error) {
     ASSERT_EQ(sock1, -1);
     ASSERT_EQ(sock2, std::nullopt);
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

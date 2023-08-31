@@ -109,7 +109,7 @@ set(
         src/service/HttpService_V2.cpp src/service/HttpConnection_V2.cpp
 )
 
-add_library(Core SHARED
+add_library(Core
         ${RECORD_SRC}
         ${CONVERT_SRC}
         ${THREAD_SRC}

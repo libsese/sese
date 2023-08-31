@@ -252,3 +252,11 @@ TEST(TestJson, Error_12) {
     auto object = sese::json::JsonUtil::deserialize(&input, 2);
     ASSERT_EQ(object, nullptr);
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

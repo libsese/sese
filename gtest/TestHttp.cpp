@@ -168,3 +168,9 @@ TEST(TestHttp, QueryString_4) {
     sese::net::http::QueryString q("?&");
     ASSERT_TRUE(q.empty());
 }
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

@@ -299,3 +299,9 @@ GTEST_TEST(TestHttpRange, Parse_6) {
     auto ranges = sese::net::http::Range::parse("bytes=99-1", 100);
     GTEST_EXPECT_TRUE(ranges.empty());
 }
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

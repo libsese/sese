@@ -116,3 +116,11 @@ TEST(TestXML, Error_7) {
     auto element = sese::xml::XmlUtil::deserialize(&input, 1);
     ASSERT_EQ(element, nullptr);
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

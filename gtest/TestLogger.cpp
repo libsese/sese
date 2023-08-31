@@ -89,3 +89,11 @@ TEST(TestLogger, Macro) {
     SESE_WARN("Hello");
     SESE_ERROR("Hello");
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}
