@@ -72,7 +72,7 @@ ALTER TABLE public.tb_delete OWNER TO postgres;
 --
 
 CREATE TABLE public.tb_getInsertId (
-    id integer NOT NULL,
+    id bigserial,
     name character varying(32) NOT NULL
 );
 
@@ -202,8 +202,8 @@ INSERT INTO public.tb_delete VALUES (2, 'bar');
 -- Data for Name: tb_getInsertId; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tb_getInsertId VALUES (1, 'foo');
-INSERT INTO public.tb_getInsertId VALUES (2, 'bar');
+INSERT INTO public.tb_getInsertId (name) VALUES ('foo');
+INSERT INTO public.tb_getInsertId (name) VALUES ('bar');
 
 
 --
