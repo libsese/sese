@@ -47,6 +47,8 @@ TEST(TestFileNotifier, _0) {
     SUCCEED() << "OK";
 }
 
+#include <sese/util/Initializer.h>
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     sese::Initializer::getInitializer();
