@@ -28,6 +28,7 @@ public:
 
         session->buffer.freeCapacity();
         session->buffer << "recv your message: ";
+        // session->buffer.write("recv your message: ", 19);
         session->buffer.write(buffer, len);
         service->doWriteMessage(session);
     }

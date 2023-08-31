@@ -7,10 +7,10 @@
 #include <string>
 #include <vector>
 
-#define SESE_OUT_TYPE_DEF(type, data) int64_t operator<<(sese::OutputStream &out, type data)
-#define SESE_OUT_PTR_TYPE_DEF(type, data) int64_t operator<<(sese::OutputStream *out, type data)
-#define SESE_OUT_UPTR_TYPE_DEF(type, data) int64_t operator<<(const std::unique_ptr<sese::OutputStream> &out, type data)
-#define SESE_OUT_SPTR_TYPE_DEF(type, data) int64_t operator<<(const std::shared_ptr<sese::OutputStream> &out, type data)
+#define SESE_OUT_TYPE_DEF(type, data) inline int64_t operator<<(sese::OutputStream &out, type data)
+#define SESE_OUT_PTR_TYPE_DEF(type, data) inline int64_t operator<<(sese::OutputStream *out, type data)
+#define SESE_OUT_UPTR_TYPE_DEF(type, data) inline int64_t operator<<(const std::unique_ptr<sese::OutputStream> &out, type data)
+#define SESE_OUT_SPTR_TYPE_DEF(type, data) inline int64_t operator<<(const std::shared_ptr<sese::OutputStream> &out, type data)
 
 #define SESE_OUT_FUNC_BODY(ptr, len) \
     { return out.write(ptr, len); }
@@ -40,14 +40,11 @@
 #define SESE_OUT_DEF_TEMPLATE_ALL(data, ptr, len, type, ...) \
     template<__VA_ARGS__>                                    \
     SESE_OUT_TYPE_DEF(type, data)                            \
-    SESE_OUT_FUNC_BODY(ptr, len)                             \
-    template<__VA_ARGS__>                                    \
+    SESE_OUT_FUNC_BODY(ptr, len) template<__VA_ARGS__>       \
     SESE_OUT_PTR_TYPE_DEF(type, data)                        \
-    SESE_OUT_PTR_FUNC_BODY(ptr, len)                         \
-    template<__VA_ARGS__>                                    \
+    SESE_OUT_PTR_FUNC_BODY(ptr, len) template<__VA_ARGS__>   \
     SESE_OUT_UPTR_TYPE_DEF(type, data)                       \
-    SESE_OUT_PTR_FUNC_BODY(ptr, len)                         \
-    template<__VA_ARGS__>                                    \
+    SESE_OUT_PTR_FUNC_BODY(ptr, len) template<__VA_ARGS__>   \
     SESE_OUT_SPTR_TYPE_DEF(type, data)                       \
     SESE_OUT_PTR_FUNC_BODY(ptr, len)
 
