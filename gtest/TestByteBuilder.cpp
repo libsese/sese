@@ -153,3 +153,9 @@ TEST(TestByteBuilder, Misc_2) {
     // ASSERT_EQ(i.getCurrentReadPos(), 1);
     ASSERT_EQ(i.trunc(32), 5);
 }
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

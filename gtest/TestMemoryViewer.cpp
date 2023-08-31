@@ -34,3 +34,11 @@ TEST(TestMemoryViewer, _0) {
     sese::MemoryViewer::peer64(&output, &i64,EndianType::Little, true);
     output << "\n";
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

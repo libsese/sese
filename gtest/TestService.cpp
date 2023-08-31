@@ -156,3 +156,11 @@ TEST(TestService, TimerableService) {
     std::this_thread::sleep_for(300ms);
     service.stop();
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

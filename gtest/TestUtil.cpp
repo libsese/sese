@@ -58,3 +58,11 @@ TEST(TestUtil, OutputUtil) {
     output2 << view;
     EXPECT_EQ(view, sese::text::StringView(buf2));
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

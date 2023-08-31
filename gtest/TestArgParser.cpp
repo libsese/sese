@@ -51,3 +51,9 @@ TEST(TestArgParser, Parse_3) {
     auto args = std::make_unique<sese::ArgParser>();
     EXPECT_TRUE(args->parse(argc, argv));
 }
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

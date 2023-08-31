@@ -7,7 +7,7 @@
 #include <gtest/gtest.h>
 
 GTEST_TEST(TestSocket, Client) {
-    auto address = sese::net::IPv4AddressPool::lookup("bing.com");
+    auto address = sese::net::IPv4AddressPool::lookup("microsoft.com");
     GTEST_ASSERT_NE(address, nullptr);
     address->setPort(80);
 
@@ -172,4 +172,12 @@ GTEST_TEST(TestSocket, NativeAPI) {
 
     th.join();
     sese::net::Socket::close(socket);
+}
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
 }

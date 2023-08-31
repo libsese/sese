@@ -198,3 +198,11 @@ TEST(TestThread, GlobalThreadPool) {
     SESE_INFO("Getvalue %d", rt);
     EXPECT_EQ(rt, 3);
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

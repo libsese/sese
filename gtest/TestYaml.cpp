@@ -310,3 +310,11 @@ TEST(TestYaml, Error_5) {
     auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
     ASSERT_EQ(object, nullptr);
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}

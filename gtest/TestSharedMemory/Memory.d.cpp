@@ -7,7 +7,10 @@
 
 using namespace std::chrono_literals;
 
+#include <sese/util/Initializer.h>
+
 int main() {
+    sese::Initializer::getInitializer();
     sese::record::LogHelper helper;
     auto mem = sese::system::SharedMemory::create("SharedMemoryForSese", sizeof(int64_t));
     if (mem == nullptr) {

@@ -83,3 +83,11 @@ TEST(TestStream, TextReader_0) {
 TEST(TestStream, TextReader_1) {
     ASSERT_FALSE(sese::text::TextReader::create("undef.txt"));
 }
+
+#include <sese/util/Initializer.h>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::Initializer::getInitializer();
+    return RUN_ALL_TESTS();
+}
