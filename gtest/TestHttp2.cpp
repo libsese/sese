@@ -21,7 +21,7 @@
 
 auto makeRandomPortAddr() {
     auto port = (uint16_t) (sese::Random::next() % (65535 - 1024) + 1024);
-    printf("select port %d\n", port);
+    printf("select port %d", port);
     auto addr = sese::net::IPv4Address::localhost();
     addr->setPort(port);
     return addr;
@@ -30,24 +30,24 @@ auto makeRandomPortAddr() {
 void showStreamHeader(auto &header) noexcept {
     puts("============ Stream Header ============");
     for (decltype(auto) pair: header) {
-        printf("%s: %s\n", pair.first.c_str(), pair.second.c_str());
+        printf("%s: %s", pair.first.c_str(), pair.second.c_str());
     }
 }
 
 void showStreamHeader(auto &onceHeader, auto &indexedHeader) noexcept {
     puts("============ Stream Header ============");
     for (decltype(auto) pair: onceHeader) {
-        printf("%s: %s\n", pair.first.c_str(), pair.second.c_str());
+        printf("%s: %s", pair.first.c_str(), pair.second.c_str());
     }
     for (decltype(auto) pair: indexedHeader) {
-        printf("%s: %s\n", pair.first.c_str(), pair.second.c_str());
+        printf("%s: %s", pair.first.c_str(), pair.second.c_str());
     }
 }
 
 void showDynamicTable(const auto &table) noexcept {
     puts("============ Dynamic Table ============");
     for (decltype(auto) pair: table) {
-        printf("%s: %s\n", pair.first.c_str(), pair.second.c_str());
+        printf("%s: %s", pair.first.c_str(), pair.second.c_str());
     }
 }
 

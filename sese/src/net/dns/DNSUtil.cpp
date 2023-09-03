@@ -148,7 +148,7 @@ void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<An
     }
 }
 
-bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string &domain, const char *buffer, bool &finsh) noexcept {
+bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept {
     bool first = true;
     uint8_t l;
     uint32_t size = 12;
@@ -168,7 +168,10 @@ bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string
             index = FromBigEndian16(index);
             auto indexInput = sese::InputBufferWrapper(buffer + index, DNS_PACKAGE_SIZE - index);
             std::string result;
-            if (!sese::net::dns::DNSUtil::decodeDomain(&indexInput, result, buffer, finsh)) {
+            if (level == 0) {
+                return false;
+            }
+            if (!sese::net::dns::DNSUtil::decodeDomain(&indexInput, result, buffer, level - 1, finsh)) {
                 return false;
             }
             if (first) {
@@ -204,7 +207,7 @@ bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, sese::InputStream *in
 
         bool finsh = false;
         std::string domain;
-        decodeDomain(input, domain, buffer, finsh);
+        decodeDomain(input, domain, buffer, 3, finsh);
 
         uint16_t type;
         ASSERT_READ(&type, sizeof(type));

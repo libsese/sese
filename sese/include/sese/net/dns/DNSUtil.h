@@ -61,8 +61,10 @@ namespace sese::net::dns {
         /// \param input 输入
         /// \param domain 域名
         /// \param buffer 原始缓存，用于解压索引
+        /// \param level 指示函数允许的递归深度
+        /// \param finsh 该参数用于函数上下文中
         /// \return 成功与否
-        static bool decodeDomain(sese::InputStream *input, std::string &domain, const char *buffer, bool &finsh) noexcept;
+        static bool decodeDomain(sese::InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept;
     private:
 
         static void decodeFrameFlagsInfo(const uint8_t buf[2], sese::net::dns::FrameFlagsInfo &info) noexcept;

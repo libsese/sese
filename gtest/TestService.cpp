@@ -118,7 +118,7 @@ public:
     }
 
     void onTimeout(sese::service::TimeoutEvent *timeoutEvent) override {
-        printf("fd %d close\n", timeoutEvent->fd);
+        printf("fd %d close", timeoutEvent->fd);
         sese::net::Socket::close(timeoutEvent->fd);
         auto event = (sese::event::Event *)timeoutEvent->data;
         freeEvent(event);
