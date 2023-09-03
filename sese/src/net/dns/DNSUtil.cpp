@@ -120,17 +120,13 @@ void sese::net::dns::DNSUtil::encodeQueries(sese::OutputStream *output, std::vec
 
 void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<Answer> &vector) noexcept {
     for (auto &item: vector) {
-        if (item.isRef()) {
-            output->write(item.getName().c_str(), 2);
-        } else {
-            auto v = text::StringBuilder::split(item.getName(), ".");
-            for (auto &i: v) {
-                auto l = (uint8_t) i.length();
-                output->write(&l, 1);
-                output->write(i.c_str(), i.length());
-            }
-            output->write("\0", 1);
+        auto v = text::StringBuilder::split(item.getName(), ".");
+        for (auto &i: v) {
+            auto l = (uint8_t) i.length();
+            output->write(&l, 1);
+            output->write(i.c_str(), i.length());
         }
+        output->write("\0", 1);
 
         uint16_t v16 = item.getType();
         v16 = ToBigEndian16(v16);
@@ -152,81 +148,73 @@ void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<An
     }
 }
 
-bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string &domain) noexcept {
-    std::string result;
+bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept {
     bool first = true;
     uint8_t l;
     uint32_t size = 12;
     char buf[128];
     while (true) {
         ASSERT_READ(&l, 1);
-        // input->read(&l, 1);
         if (l == 0) {
+            finsh = true;
             break;
-        }
-        ASSERT_READ(buf, l);
-        // input->read(buf, l);
-        if (first) {
-            buf[l] = 0;
-            result += buf;
-            first = false;
-        } else {
-            buf[l] = 0;
-            result += '.';
-            result += buf;
-        }
-    }
-    domain = result;
-    return true;
-}
-
-bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, sese::InputStream *input, std::vector<Answer> &vector) noexcept {
-    while (acount) {
-        std::string result;
-        bool isRef = false;
-        bool first = true;
-        uint8_t l;
-        uint32_t offset = 12;
-        uint32_t size = 12;
-        char buf[128];
-        while (true) {
+        } else if (((l & 0b1100'0000) >> 6) == 3) {
+            // 当前分段使用压缩
+            uint16_t index;
+            auto pIndex = (uint8_t *) &index;
+            pIndex[0] = (0b0011'1111 & l);
             ASSERT_READ(&l, 1);
-            // input->read(&l, 1);
-
-            if (l == 0) {
+            pIndex[1] = l;
+            index = FromBigEndian16(index);
+            auto indexInput = sese::InputBufferWrapper(buffer + index, DNS_PACKAGE_SIZE - index);
+            std::string result;
+            if (level == 0) {
+                return false;
+            }
+            if (!sese::net::dns::DNSUtil::decodeDomain(&indexInput, result, buffer, level - 1, finsh)) {
+                return false;
+            }
+            if (first) {
+                domain += result;
+                first = false;
+            } else {
+                domain += '.';
+                domain += result;
+            }
+            if (finsh) {
                 break;
             }
-
-            if (((l & 0b1100'0000) >> 6) == 3) {
-                // 使用索引
-                uint8_t tmp[2];
-                tmp[0] = l & 0b0011'1111;
-                ASSERT_READ(&tmp[1], 1);
-                result = {(const char *) tmp, 2};
-                isRef = true;
-                break;
-            }
-
+        } else {
+            // 当前分段未使用压缩
             ASSERT_READ(buf, l);
-            // input->read(buf, l);
             if (first) {
                 buf[l] = 0;
-                result += buf;
+                domain += buf;
                 first = false;
             } else {
                 buf[l] = 0;
-                result += '.';
-                result += buf;
+                domain += '.';
+                domain += buf;
             }
         }
+    }
+    return true;
+}
+
+bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, sese::InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept {
+    while (acount) {
+        uint32_t size = 12;
+
+        bool finsh = false;
+        std::string domain;
+        decodeDomain(input, domain, buffer, 3, finsh);
 
         uint16_t type;
         ASSERT_READ(&type, sizeof(type));
-        // input->read(&type, 2);
         type = FromBigEndian16(type);
+
         uint16_t class_;
         ASSERT_READ(&class_, sizeof(class_));
-        // input->read(&class_, 2);
         class_ = FromBigEndian16(class_);
 
         uint32_t time;
@@ -237,12 +225,10 @@ bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, sese::InputStream *in
         ASSERT_READ(&length, sizeof(length));
         length = FromBigEndian16(length);
 
-        uint8_t data[16];
+        uint8_t data[128];
         ASSERT_READ(data, length);
-
         auto str = std::string((const char *) data, length);
-        vector.emplace_back(isRef, result, type, class_, time, length, str);
-        offset += size;
+        vector.emplace_back(domain, type, class_, time, length, str);
 
         acount -= 1;
     }

@@ -103,7 +103,7 @@ sese::net::IPv4Address::Ptr createAddress() {
     auto engine = std::default_random_engine(device());
     std::uniform_int_distribution<uint16_t> dis(1025, 65535);
     auto port = dis(engine);
-    printf("select port %d\n", (int) port);
+    printf("select port %d", (int) port);
     return sese::net::IPv4Address::localhost(port);
 }
 

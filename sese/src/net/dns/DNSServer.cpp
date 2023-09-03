@@ -75,7 +75,7 @@ void sese::net::dns::DNSServer::loop() noexcept {
             break;
         }
 
-        uint8_t buffer[512];
+        uint8_t buffer[DNS_PACKAGE_SIZE];
         auto len = socket->recv(buffer, sizeof(buffer), clientAddress, 0);
         if (len <= 0) {
             sese::sleep(0);
@@ -105,7 +105,6 @@ void sese::net::dns::DNSServer::loop() noexcept {
                     offset = ToBigEndian16(offset);
                     std::string name = {(const char *) &offset, 2};
                     session.getAnswers().emplace_back(
-                            true,
                             name,
                             SESE_DNS_QR_TYPE_A,
                             SESE_DNS_QR_CLASS_IN,
@@ -126,7 +125,6 @@ void sese::net::dns::DNSServer::loop() noexcept {
                     offset = ToBigEndian16(offset);
                     std::string name = {(const char *) &offset, 2};
                     session.getAnswers().emplace_back(
-                            true,
                             name,
                             SESE_DNS_QR_TYPE_AAAA,
                             SESE_DNS_QR_CLASS_IN,

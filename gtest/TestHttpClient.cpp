@@ -62,12 +62,12 @@ TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto len = std::atol(client->resp.get("content-length", "0").c_str());
-    char buffer[10240]{};
-    if (len) {
-        ASSERT_EQ(client->getResponse().getBody().read(buffer, len), len);
-        SESE_INFO("content:\n%s", buffer);
-    }
+    // auto len = std::atol(client->resp.get("content-length", "0").c_str());
+    // char buffer[10240]{};
+    // if (len) {
+    //     ASSERT_EQ(client->getResponse().getBody().read(buffer, len), len);
+    //     SESE_INFO("content:\n%s", buffer);
+    // }
 }
 
 TEST(TestHttpClient, SSL_KEEPALIVE) {

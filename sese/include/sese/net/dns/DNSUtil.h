@@ -43,8 +43,9 @@ namespace sese::net::dns {
         /// \param raw 原始数据
         /// \param input 来源
         /// \param vector 输出
+        /// \param buffer 原始缓存，用于解压索引
         /// \return 成功与否
-        static bool decodeAnswers(size_t acount, sese::InputStream *input, std::vector<Answer> &vector) noexcept;
+        static bool decodeAnswers(size_t acount, sese::InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept;
 
         /// 编码一个或多个 Query
         /// \param output 输出
@@ -59,10 +60,13 @@ namespace sese::net::dns {
         /// 从二进制流中解析域名
         /// \param input 输入
         /// \param domain 域名
+        /// \param buffer 原始缓存，用于解压索引
+        /// \param level 指示函数允许的递归深度
+        /// \param finsh 该参数用于函数上下文中
         /// \return 成功与否
-        static bool decodeDomain(InputStream *input, std::string &domain) noexcept;
-
+        static bool decodeDomain(sese::InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept;
     private:
+
         static void decodeFrameFlagsInfo(const uint8_t buf[2], sese::net::dns::FrameFlagsInfo &info) noexcept;
         static void encodeFrameFlagsInfo(uint8_t buf[2], const FrameFlagsInfo &info) noexcept;
     };

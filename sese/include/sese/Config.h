@@ -89,3 +89,5 @@ constexpr static size_t IOCP_WSABUF_SIZE = 65535;
 
 /// 框架默认 MTU 值
 constexpr static size_t MTU_VALUE = 1472;
+/// 框架 DNS 数据包大小
+constexpr static size_t DNS_PACKAGE_SIZE = 512;
