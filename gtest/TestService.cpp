@@ -15,7 +15,7 @@ using namespace std::chrono_literals;
 class MyService final : public sese::event::EventLoop {
 public:
     ~MyService() override {
-        printf("total socket into: %d\n", num);
+        printf("total socket into: %d", num);
     }
 
     void onAccept(int fd) override {
@@ -32,7 +32,7 @@ sese::net::IPAddress::Ptr createAddress() {
     auto engine = std::default_random_engine(device());
     std::uniform_int_distribution<uint16_t> dis(1025, 65535);
     auto port = dis(engine);
-    printf("select port %d\n", (int) port);
+    printf("select port %d", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
 
@@ -97,7 +97,7 @@ TEST(TestService, UserBalanceLoader) {
 class MyTimerableService : public sese::service::TimerableService {
 public:
     void onAccept(int fd) override {
-        printf("fd %d connect\n", fd);
+        printf("fd %d connect", fd);
         if (0 == sese::net::Socket::setNonblocking((socket_t) fd)) {
             auto event = createEvent(fd, EVENT_READ, nullptr);
             createTimeoutEvent(fd, event, 3);

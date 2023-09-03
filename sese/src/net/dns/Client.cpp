@@ -37,7 +37,7 @@ sese::net::Address::Ptr sese::net::dns::Client::resolveCustom(const std::string 
     DNSSession session;
     session.getQueries().emplace_back(domain, expectType, SESE_DNS_QR_CLASS_IN, 0);
 
-    uint8_t buffer[512];
+    uint8_t buffer[DNS_PACKAGE_SIZE];
     auto output = sese::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
 
     DNSUtil::encodeFrameHeaderInfo(buffer, info);
@@ -56,19 +56,9 @@ sese::net::Address::Ptr sese::net::dns::Client::resolveCustom(const std::string 
     }
 
     DNSUtil::decodeQueries(info.questions, &input, session.getQueries());
-    DNSUtil::decodeAnswers(info.answerPrs, &input, session.getAnswers());
+    DNSUtil::decodeAnswers(info.answerPrs, &input, session.getAnswers(), (const char *) buffer);
 
     for (auto &item: session.getAnswers()) {
-        std::string name;
-        if (item.isRef()) {
-            uint16_t index;
-            memcpy(&index, item.getName().c_str(), 2);
-            index = FromBigEndian16(index);
-            auto in = sese::InputBufferWrapper((const char *) buffer + index, sizeof(buffer) - index);
-            DNSUtil::decodeDomain(&in, name);
-        } else {
-            name = item.getName();
-        }
         if (expectType == item.getType()) {
             if (family == AF_INET) {
                 auto data = (const uint32_t *) item.getData().c_str();
