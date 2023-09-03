@@ -1,8 +1,9 @@
+#include <sese/convert/PercentConverter.h>
 #include <sese/net/http/QueryString.h>
 #include <sese/text/StringBuilder.h>
 
-using sese::text::StringBuilder;
 using sese::net::http::QueryString;
+using sese::text::StringBuilder;
 
 const std::string &QueryString::get(const std::string &key, const std::string &defaultValue) noexcept {
     auto iterator = keyValueSet.find(key);
@@ -44,7 +45,11 @@ QueryString::QueryString(const std::string &query) noexcept {
                 value = builder.toString();
                 builder.clear();
                 if (!value.empty()) {
-                    keyValueSet[key] = value;
+                    auto decodeKey = PercentConverter::decode(key.c_str());
+                    auto decodeValue = PercentConverter::decode(value.c_str());
+                    if (!decodeKey.empty() && !decodeValue.empty()) {
+                        keyValueSet[decodeKey] = decodeValue;
+                    }
                 }
             }
             hasKey = false;
@@ -53,7 +58,13 @@ QueryString::QueryString(const std::string &query) noexcept {
         }
     }
     if (hasKey && !builder.empty()) {
-        keyValueSet[key] = builder.toString();
+        value = builder.toString();
+        auto decodeKey = PercentConverter::decode(key.c_str());
+        auto decodeValue = PercentConverter::decode(value.c_str());
+        if (decodeKey.empty() || decodeValue.empty()) {
+            return;
+        }
+        keyValueSet[decodeKey] = decodeValue;
     }
 }
 
@@ -69,9 +80,9 @@ std::string QueryString::toString() noexcept {
             } else {
                 builder.append('&');
             }
-            builder.append(item.first);
+            builder.append(PercentConverter::encode(item.first.c_str()));
             builder.append('=');
-            builder.append(item.second);
+            builder.append(PercentConverter::encode(item.second.c_str()));
         }
     }
     return builder.toString();

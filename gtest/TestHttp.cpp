@@ -135,14 +135,16 @@ TEST(TestHttp, QueryString_toString_1) {
 }
 
 TEST(TestHttp, QueryString_0) {
-    sese::net::http::QueryString q("?ssl=enable&token=123456&");
+    sese::net::http::QueryString q("?ssl=enable&token=123456&uni=ABC%e4%bd%a0%e5%a5%bd%26%3d%2d&");
     auto enable = q.get("ssl", "disable");
     auto token = q.get("token", "undef");
     auto mode = q.get("mode", "undef");
+    auto uni = q.get("uni", "undef");
     ASSERT_EQ(enable, "enable");
     ASSERT_EQ(token, "123456");
     ASSERT_EQ(mode, "undef");
-    ASSERT_EQ(q.size(), 2);
+    ASSERT_EQ(uni, "ABC你好&=-");
+    ASSERT_EQ(q.size(), 3);
 
     for (decltype(auto) item: q) {
         SESE_INFO("%s:%s", item.first.c_str(), item.second.c_str());
