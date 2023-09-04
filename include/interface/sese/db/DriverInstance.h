@@ -39,15 +39,15 @@ namespace sese::db {
         /// \return 错误信息
         [[nodiscard]] virtual const char *getLastErrorMessage() const noexcept = 0;
         /// 设置事务自动提交
+        /// \warning 因官方不支持 libpq 设置 autocommit，且 autoCommit 属性为全局级，在使用 postgresql 时建议使用 begin() 开启事务
+        /// \warning 因官方不支持 sqlite3 设置 autocommit，在使用 sqlite 时建议使用 begin() 开启事务
         /// \param enable 设置自动提交
         /// \retval false 设置失败
-        /// 因官方不支持libpq设置autocommit，且autoCommit属性为全局级，在使用postgresql时建议使用begin()开始事务
-        /// 因官方不支持sqlite3设置autocommit，在使用sqlite时建议使用begin()开始事务
         [[nodiscard]] virtual bool setAutoCommit(bool enable) noexcept = 0;
 
         /// 查看自动提交是否打开
+        /// \warning 因官方不支持 libpq 获取 autoCommit,在使用 postgresql 时建议使用命令行获取该值
         /// \retval false 关闭
-        /// 因官方不支持libpq获取autoCommit,在使用postgresql时建议使用命令行获取该值
         [[nodiscard]] virtual bool getAutoCommit() noexcept = 0;
 
         /// 事务回滚
@@ -59,6 +59,7 @@ namespace sese::db {
         [[nodiscard]] virtual bool commit() noexcept = 0;
 
         /// 获取自增后的id
+        /// \warning 因官方不支持 libpq 获取自增 Id，在使用 postgresql 时建议通过命令行使用 SELECT currval(pg_get_serial_sequence('tabName', 'colName')) 进行自增 Id 的获取;
         /// \retval false 获取失败
         [[nodiscard]] virtual bool getInsertId(int64_t &id) const noexcept = 0;
 

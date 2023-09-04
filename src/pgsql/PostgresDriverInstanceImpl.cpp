@@ -7,7 +7,9 @@ using namespace sese::db;
 impl::PostgresDriverInstanceImpl::PostgresDriverInstanceImpl(PGconn *conn) noexcept {
     PQsetNoticeProcessor(conn, nullptr, nullptr);
 
+
     this->conn = conn;
+    this->commitStatus = true;
     auto status = PQstatus(conn);
     if (status != CONNECTION_OK) {
         error = (int) status;
@@ -94,5 +96,86 @@ const char *impl::PostgresDriverInstanceImpl::getLastErrorMessage() const noexce
         return PQresultErrorMessage(result);
     } else {
         return PQerrorMessage(conn);
+    }
+}
+
+bool impl::PostgresDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
+    return true;
+}
+
+bool impl::PostgresDriverInstanceImpl::getAutoCommit() noexcept {
+    return true;
+}
+
+bool impl::PostgresDriverInstanceImpl::commit() noexcept {
+    if (result) {
+        PQclear(result);
+        result = nullptr;
+    }
+
+    result = PQexec(conn, "COMMIT;");
+    if (result == nullptr) {
+        return -1;
+    }
+
+    auto status = PQresultStatus(result);
+    if (status != PGRES_COMMAND_OK) {
+        error = (int) status;
+        return false;
+    } else {
+        error = 0;
+        PQclear(result);
+        result = nullptr;
+        return true;
+    }
+}
+
+
+bool impl::PostgresDriverInstanceImpl::rollback() noexcept {
+    if (result) {
+        PQclear(result);
+        result = nullptr;
+    }
+
+    result = PQexec(conn, "rollback;");
+    if (result == nullptr) {
+        return -1;
+    }
+
+    auto status = PQresultStatus(result);
+    if (status != PGRES_COMMAND_OK) {
+        error = (int) status;
+        return false;
+    } else {
+        error = 0;
+        PQclear(result);
+        result = nullptr;
+        return true;
+    }
+}
+
+
+bool impl::PostgresDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
+    return true;
+}
+
+bool impl::PostgresDriverInstanceImpl::begin() noexcept {
+    if (result) {
+        PQclear(result);
+        result = nullptr;
+    }
+
+    result = PQexec(conn, "BEGIN;");
+
+    auto status = PQresultStatus(result);
+
+    if (status != PGRES_COMMAND_OK) {
+        error = (int) status;
+        return false;
+    } else {
+        error = 0;
+        PQclear(result);
+        result = nullptr;
+        return true;
     }
 }

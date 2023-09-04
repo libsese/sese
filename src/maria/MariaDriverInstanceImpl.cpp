@@ -60,11 +60,7 @@ bool impl::MariaDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
     } else {
         temp = (unsigned char) mysql_autocommit(conn, 0);
     }
-
-    if (temp == 0) {
-        return true;
-    } else
-        return false;
+    return temp == 0;
 }
 
 bool impl::MariaDriverInstanceImpl::getAutoCommit() noexcept {
@@ -80,18 +76,12 @@ bool impl::MariaDriverInstanceImpl::getAutoCommit() noexcept {
 
 bool impl::MariaDriverInstanceImpl::commit() noexcept {
     int comm = (unsigned char) mysql_commit(conn);
-    if (comm == 0) {
-        return true;
-    } else
-        return false;
+    return comm == 0;
 }
 
 bool impl::MariaDriverInstanceImpl::rollback() noexcept {
     int back = (unsigned char) mysql_rollback(conn);
-    if (back == 0) {
-        return true;
-    } else
-        return false;
+    return back == 0;
 }
 
 bool impl::MariaDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
@@ -104,9 +94,5 @@ bool impl::MariaDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
 }
 
 bool impl::MariaDriverInstanceImpl::begin() noexcept {
-    if (0 != mysql_query(conn, "BEGIN;")) {
-        return false;
-    } else {
-        return true;
-    }
+    return mysql_query(conn, "BEGIN;") == 0;
 }

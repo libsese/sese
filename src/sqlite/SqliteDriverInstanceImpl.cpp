@@ -50,19 +50,6 @@ const char *impl::SqliteDriverInstanceImpl::getLastErrorMessage() const noexcept
 }
 
 bool impl::SqliteDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
-//    char *error = nullptr;
-//    int rt;
-//    if (enable) {
-//        rt = sqlite3_exec(conn, "COMMIT;", nullptr, nullptr, &error);
-//    } else {
-//        rt = sqlite3_exec(conn, "BEGIN;", nullptr, nullptr, &error);
-//    }
-//    if (error) sqlite3_free(error);
-//    if (rt == 0) {
-//        return true;
-//    } else {
-//        return false;
-//    }
     return true;
 }
 
@@ -80,22 +67,14 @@ bool impl::SqliteDriverInstanceImpl::commit() noexcept {
     char *error = nullptr;
     auto rt = sqlite3_exec(conn, "COMMIT;", nullptr, nullptr, &error);
     if (error) sqlite3_free(error);
-    if (rt == 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return rt == 0;
 }
 
 bool impl::SqliteDriverInstanceImpl::rollback() noexcept {
     char *error = nullptr;
     auto rt = sqlite3_exec(conn, "ROLLBACK;", nullptr, nullptr, &error);
     if (error) sqlite3_free(error);
-    if (rt == 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return rt == 0;
 }
 
 bool impl::SqliteDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
@@ -111,9 +90,5 @@ bool impl::SqliteDriverInstanceImpl::begin() noexcept {
     char *error = nullptr;
     auto rt = sqlite3_exec(conn, "BEGIN;", nullptr, nullptr, &error);
     if (error) sqlite3_free(error);
-    if (rt == 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return rt == 0;
 }
