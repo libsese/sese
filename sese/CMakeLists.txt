@@ -245,9 +245,9 @@ target_link_libraries(Core PRIVATE
         ZLIB::ZLIB
 )
 target_link_libraries(Core PUBLIC
-        SString::SString-static
-        SimpleUuid::uuid-static
-        Sese::Event-static
+        Sese::SString
+        Sese::Uuid
+        Sese::Event
         Sese::Plugin
 )
 

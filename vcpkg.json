@@ -10,11 +10,11 @@
         },
         {
             "name": "simpleuuid",
-            "version>=": "0.1.4"
+            "version>=": "0.1.5"
         },
         {
             "name": "sstring",
-            "version>=": "0.1.5"
+            "version>=": "0.1.6"
         },
         {
             "name": "zlib",
@@ -22,11 +22,11 @@
         },
         {
             "name": "sese-plugin",
-            "version>=": "0.2.2"
+            "version>=": "0.2.3"
         },
         {
             "name": "sese-event",
-            "version>=": "0.1.4"
+            "version>=": "0.1.5"
         }
     ],
     "features": {
