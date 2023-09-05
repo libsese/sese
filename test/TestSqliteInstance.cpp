@@ -198,7 +198,9 @@ TEST(TestTransaction, TestGetAutoCommit) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    ASSERT_EQ(true, instance->getAutoCommit());
+    std::string status;
+    ASSERT_EQ(true, instance->getAutoCommit(status));
+    printf("autoCommit = %s\n", status.c_str());
 }
 
 // begin
@@ -255,8 +257,10 @@ TEST(TestTransaction, TestCommit) {
         printf("id = %d, name = %s\n", results->getInteger(0), results->getString(1).data());
     }
 
+    std::string status;
     ASSERT_EQ(true, instance->begin());
-    ASSERT_EQ(true, instance->getAutoCommit());
+    ASSERT_EQ(true, instance->getAutoCommit(status));
+    printf("autoCommit = %s\n", status.c_str());
 
     auto count = instance->executeUpdate("insert into tb_commit (id, name) values (3, 'mike')");
     ASSERT_NE(0, count);
@@ -280,8 +284,10 @@ TEST(TestTransaction, TestRollBack) {
         printf("id = %d, name = %s\n", results->getInteger(0), results->getString(1).data());
     }
 
+    std::string status;
     ASSERT_EQ(true, instance->setAutoCommit(false));
-    ASSERT_EQ(true, instance->getAutoCommit());
+    ASSERT_EQ(true, instance->getAutoCommit(status));
+    printf("autoCommit = %s\n", status.c_str());
 
     auto count = instance->executeUpdate("insert into tb_rollBack (id, name) values (3, 'mike');");
     ASSERT_NE(0, count);

@@ -47,8 +47,8 @@ namespace sese::db {
 
         /// 查看自动提交是否打开
         /// \warning 因官方不支持 libpq 获取 autoCommit,在使用 postgresql 时建议使用命令行获取该值
-        /// \retval false 关闭
-        [[nodiscard]] virtual bool getAutoCommit() noexcept = 0;
+        /// \retval false 查看失败
+        [[nodiscard]] virtual bool getAutoCommit(std::string &status) noexcept = 0;
 
         /// 事务回滚
         /// \retval false 回滚失败

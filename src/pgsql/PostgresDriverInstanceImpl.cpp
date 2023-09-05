@@ -103,7 +103,7 @@ bool impl::PostgresDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
     return true;
 }
 
-bool impl::PostgresDriverInstanceImpl::getAutoCommit() noexcept {
+bool impl::PostgresDriverInstanceImpl::getAutoCommit(std::string &status) noexcept {
     return true;
 }
 
