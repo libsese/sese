@@ -17,7 +17,7 @@ namespace sese::concurrent {
     /// 并发对象池
     /// \tparam T 池中对象类型
     template<typename T>
-    class [[deprecated("已弃用")]] ConcurrentObjectPool : public std::enable_shared_from_this<ConcurrentObjectPool<T>>, public Noncopyable {
+    class SESE_DEPRECATED_WITH("已弃用") ConcurrentObjectPool : public std::enable_shared_from_this<ConcurrentObjectPool<T>>, public Noncopyable {
     public:
         /// 对象池智能指针
         using Ptr = std::shared_ptr<ConcurrentObjectPool<T>>;

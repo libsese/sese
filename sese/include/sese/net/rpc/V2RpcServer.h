@@ -22,7 +22,7 @@
 namespace sese::net::v2::rpc {
 
     /// Rpc 服务选项
-    class API [[deprecated]] V2RpcServer : public Server {
+    class API SESE_DEPRECATED V2RpcServer : public Server {
     public:
         /// 服务子程序
         /// 参数与返回值均为 sese::json::ObjectData::Ptr

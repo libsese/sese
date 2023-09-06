@@ -9,7 +9,7 @@
 
 namespace sese::net::v2::http {
 
-    class [[deprecated]] Http2Connection {
+    class SESE_DEPRECATED Http2Connection {
     public:
         using Ptr = std::shared_ptr<Http2Connection>;
 

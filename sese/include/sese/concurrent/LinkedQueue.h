@@ -18,7 +18,7 @@ namespace sese::concurrent {
      * @deprecated 弃用原因请查看文件文档
      */
     template<typename T>
-    class [[deprecated("已弃用")]] LinkedQueue {
+    class SESE_DEPRECATED_WITH("已弃用") LinkedQueue {
     public:
         using NodeType = Node<T>;
 

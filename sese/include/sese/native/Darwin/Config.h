@@ -33,4 +33,5 @@ namespace sese {
     /// Native Socket 类型
     using socket_t = int32_t;
     using tid_t = uint32_t;
+    using pid_t = ::pid_t;
 }// namespace sese
