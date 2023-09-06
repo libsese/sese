@@ -31,16 +31,16 @@ jobs:
       - name: Cache Vcpkg Dependencies
         uses: actions/cache@v3
         with:
-          path: ${{github.workspace}}/build/vcpkg_installed
+          path: ${{ github.workspace }}/build/vcpkg_installed
           key: ${{ runner.os }}-mingw64-vcpkg-${{ hashFiles('**/vcpkg.json') }}
 
       - name: Update Env
         run: |
-          $env:PATH = "C:/msys64/bin;$env:PATH"
+          $env:PATH = "C:/msys64/usr/bin;$env:PATH"
           echo $env:PATH
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DSESE_BUILD_TEST=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-mingw-dynamic -DCMAKE_C_COMPILER=C:/msys64/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/msys64/bin/g++.exe
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DSESE_BUILD_TEST=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-mingw-dynamic -DCMAKE_C_COMPILER=C:/msys64/usr/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/msys64/usr/bin/g++.exe
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} -j 8
