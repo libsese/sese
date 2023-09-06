@@ -6,7 +6,15 @@
  */
 #pragma once
 
-#include <Windows.h>
+#if !defined(_WIN32_WINNET) || _WIN32_WINNI < 0x0602
+#define _WIN32_WINNNT 0x0602
+#endif
+
+#ifndef WINVER
+#define WINVER 0x0602
+#endif
+
+#include <windows.h>
 
 #pragma warning(disable : 4819)
 
@@ -21,22 +29,20 @@
 /// C++ 版本标识符
 #define SESE_CXX_STANDARD _MSVC_LANG
 
-#if defined(WINDOWS_DLL) && !defined(__clang__)
+#if defined(_MSC_VER)
 /// 可导出类型标识符
 #define API __declspec(dllexport)
 #else
-/// 可导出类型标识符
 #define API
-#endif
-
-#ifdef NEED_DBGHELP
-#pragma comment(lib, "DbgHelp.lib")
 #endif
 
 /// pid_t 格式化占位符
 #define PRIdTid "u"
+
+#ifndef __MINGW32__
 /// 忽略大小写比较
 #define strcasecmp strcmpi
+#endif
 
 #ifdef __clang__
 #define SESE_FILENAME (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
@@ -44,12 +50,14 @@
 #define SESE_FILENAME (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
 #endif
 
-/// 进程 ID 标识符
-using pid_t = DWORD;
-/// 线程 ID 标识符
-using tid_t = uint32_t;
-/// Native Socket 类型
-using socket_t = SOCKET;
+namespace sese {
+    /// 进程 ID 标识符
+    using pid_t = DWORD;
+    /// 线程 ID 标识符
+    using tid_t = uint32_t;
+    /// Native Socket 类型
+    using socket_t = SOCKET;
+}// namespace sese
 
 /// WSA 错误映射
 

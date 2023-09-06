@@ -24,6 +24,14 @@
 
 #define SESE_MARCO_END switch (0) case 0: default: break
 
+#if defined(__MINGW32__) || defined(__GNUC__)
+#define SESE_DEPRECATED __attribute__((deprecated))
+#define SESE_DEPRECATED_WITH(x) SESE_DEPRECATED
+#else
+#define SESE_DEPRECATED [[deprecated]]
+#define SESE_DEPRECATED_WITH(x) [[deprecated(x)]]
+#endif /* __MINGW32__ */
+
 /// 默认时区
 constexpr static int32_t TIME_DEFAULT_ZONE = 8;
 /// 世界协调时匹配格式

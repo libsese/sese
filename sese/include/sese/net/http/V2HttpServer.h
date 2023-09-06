@@ -15,7 +15,7 @@ namespace sese::net::v2::http {
     using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
 
     /// Http 服务选项
-    struct [[deprecated]] HttpServer : public Server {
+    struct SESE_DEPRECATED HttpServer : public Server {
 
         ~HttpServer() noexcept override;
 

@@ -1,11 +1,11 @@
 #include <sese/net/Socket.h>
 #include <sese/util/Util.h>
 
-socket_t sese::net::Socket::socket(int family, int type, int protocol) noexcept {
+sese::socket_t sese::net::Socket::socket(int family, int type, int protocol) noexcept {
     return ::socket(family, type, protocol);
 }
 
-socket_t sese::net::Socket::accept(socket_t socket, sockaddr *addr, socklen_t *len) noexcept {
+sese::socket_t sese::net::Socket::accept(socket_t socket, sockaddr *addr, socklen_t *len) noexcept {
     return ::accept(socket, addr, len);
 }
 

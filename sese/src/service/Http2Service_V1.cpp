@@ -1,3 +1,13 @@
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #include <sese/service/Http2Service_V1.h>
 #include <sese/net/http/HPackUtil.h>
 #include <sese/net/http/UrlHelper.h>
@@ -445,3 +455,9 @@ void sese::service::v1::Http2Service::onDataFrame(net::http::Http2Connection *co
         dispatch(conn2, stream->req, stream);
     }
 }
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif

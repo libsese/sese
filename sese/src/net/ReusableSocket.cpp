@@ -50,7 +50,7 @@ std::optional<Socket> ReusableSocket::builtinMakeSocket() noexcept {
 #endif
 }
 
-socket_t ReusableSocket::makeRawSocket() noexcept {
+sese::socket_t ReusableSocket::makeRawSocket() noexcept {
     auto socket = ReusableSocket::builtinMakeSocket();
     if (socket == std::nullopt) {
         return -1;

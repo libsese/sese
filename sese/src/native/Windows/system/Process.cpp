@@ -1,6 +1,6 @@
 #include "sese/system/Process.h"
 
-#include <Windows.h>
+#include <windows.h>
 
 using namespace sese::system;
 
@@ -36,7 +36,7 @@ Process::Ptr Process::create(const char *command) noexcept {
     }
 }
 
-pid_t Process::getCurrentProcessId() noexcept {
+sese::pid_t Process::getCurrentProcessId() noexcept {
     return GetCurrentProcessId();
 }
 
@@ -65,7 +65,7 @@ bool Process::kill() const noexcept {
     return TerminateProcess(pInfo->hProcess, -1) != 0;
 }
 
-pid_t Process::getProcessId() const noexcept {
+sese::pid_t Process::getProcessId() const noexcept {
     if (!processInfo) return 0;
     return GetProcessId(((PROCESS_INFORMATION *) processInfo)->hProcess);
 }

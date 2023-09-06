@@ -1,6 +1,10 @@
 #include "sese/net/Socket.h"
 #include "sese/util/Util.h"
 
+#ifdef __MINGW32__
+#include <mswsock.h>
+#endif
+
 using namespace sese::net;
 
 int32_t SocketInitiateTask::init() noexcept {

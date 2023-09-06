@@ -21,7 +21,7 @@
 #endif
 
 #ifdef _WIN32
-#include <Windows.h>
+#include <windows.h>
 #pragma warning(disable : 4251)
 #pragma warning(disable : 4624)
 #endif

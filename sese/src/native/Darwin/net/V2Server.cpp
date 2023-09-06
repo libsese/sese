@@ -1,9 +1,9 @@
-#ifdef _WIN32
+#if defined(_MSC_VER)
 #pragma warning(disable: 4996)
-#elif __clang__
+#elif defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif __GNUC__
+#elif defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
@@ -19,7 +19,7 @@
 
 using namespace sese::net::v2;
 
-inline static int setNonblocking(socket_t socket) {
+inline static int setNonblocking(sese::socket_t socket) {
     auto option = fcntl(socket, F_GETFL);
     if (-1 != option) {
         return fcntl(socket, F_SETFL, option | O_NONBLOCK);
@@ -241,7 +241,7 @@ void DarwinService::loop() noexcept {
     }
 }
 
-void *DarwinService::handshake(socket_t client) noexcept {
+void *DarwinService::handshake(sese::socket_t client) noexcept {
     ssl_st *clientSSL = nullptr;
     clientSSL = SSL_new((SSL_CTX *) sslContext->getContext());
     SSL_set_fd(clientSSL, (int) client);
@@ -315,8 +315,8 @@ void DarwinService::shutdown() noexcept {
     }
 }
 
-#ifdef __clang__
+#if defined(__clang__)
 #pragma clang diagnostic pop
-#elif __GNUC__
+#elif defined(__GNUC__)
 #pragma GCC diagnostic pop
 #endif

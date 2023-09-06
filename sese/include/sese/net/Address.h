@@ -4,14 +4,20 @@
  * @date 2022年4月4日
  * @brief 地址类
  */
+
 #pragma once
+
 #ifdef _WIN32
-#include <WS2tcpip.h>
+#ifdef __MINGW32__
+#define _WIN32_WINNET 0x602
+#endif
+#include <ws2tcpip.h>
 #else
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #endif
+
 #include "sese/Config.h"
 #include <memory>
 #include <string>
@@ -45,4 +51,6 @@ namespace sese::net {
         [[nodiscard]] virtual socklen_t getRawAddressLength() const noexcept = 0;
         [[nodiscard]] virtual std::string getAddress() const noexcept = 0;
     };
+
+    extern "C" int inetPton(int af, const char *src, void *dst) noexcept;
 }// namespace sese

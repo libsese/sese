@@ -48,3 +48,28 @@ Address::Ptr Address::lookUpAny(const std::string &host, int family, int type, i
         return temp[0];
     }
 }
+
+int sese::net::inetPton(int af, const char *src, void *dst) noexcept {
+#if defined(__MINGW32__) && !defined(InetPtonA)
+    char ipaddr[64];
+    int addr_size = -1;
+    if (af == AF_INET) {
+        struct sockaddr_in ip4 {};
+        addr_size = sizeof(SOCKADDR_IN);
+        WSAStringToAddress((LPSTR) ipaddr, af, nullptr, (LPSOCKADDR) &ip4, &addr_size);
+        memcpy(dst, &(ip4.sin_addr), 4);
+        return 1;
+    } else if (af == AF_INET6) {
+        struct sockaddr_in6 ip6 {};
+        addr_size = sizeof(SOCKADDR_IN6);
+        WSAStringToAddress((LPSTR) ipaddr, af, nullptr, (LPSOCKADDR) &ip6, &addr_size);
+        memcpy(dst, &(ip6.sin6_addr), 16);
+        return 1;
+    }
+    return 0;
+#elif defined(__MINGW32__)
+    return InetPtonA(af, src, dst);
+#else
+    return ::inet_pton(af, src, dst);
+#endif
+}

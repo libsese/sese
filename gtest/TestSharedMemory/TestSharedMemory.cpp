@@ -4,6 +4,7 @@
 #include <sese/util/Util.h>
 
 #include <chrono>
+#include <thread>
 #include <gtest/gtest.h>
 
 using sese::record::LogHelper;

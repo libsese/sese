@@ -1,9 +1,9 @@
-#ifdef __clang__
+#if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif _WIN32
+#elif defined(_MSC_VER)
 #pragma warning(disable : 4996)
-#elif __GNUC__
+#elif defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
@@ -251,7 +251,7 @@ void WindowsService::loop() noexcept {
 }
 
 void *WindowsService::handshake(SOCKET client) noexcept {
-    ssl_st *clientSSL = nullptr;
+    ssl_st *clientSSL;
     clientSSL = SSL_new((SSL_CTX *) sslContext->getContext());
     SSL_set_fd(clientSSL, (int) client);
     SSL_set_accept_state(clientSSL);
@@ -313,8 +313,8 @@ void WindowsService::shutdown() noexcept {
     }
 }
 
-#ifdef __clang__
+#if defined(__clang__)
 #pragma clang diagnostic pop
-#elif __GNUC__
+#elif defined(__GNUC__)
 #pragma GCC diagnostic pop
 #endif

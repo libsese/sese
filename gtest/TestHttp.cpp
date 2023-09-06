@@ -1,9 +1,9 @@
-#ifdef __clang__
+#if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif _WIN32
+#elif defined(_MSC_VER)
 #pragma warning(disable : 4996)
-#elif __GNUC__
+#elif defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
@@ -176,3 +176,9 @@ int main(int argc, char **argv) {
     sese::Initializer::getInitializer();
     return RUN_ALL_TESTS();
 }
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif

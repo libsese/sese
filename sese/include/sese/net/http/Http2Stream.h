@@ -7,7 +7,7 @@
 
 namespace sese::net::v2::http {
 
-    class [[deprecated]] Http2Stream : public Stream, public Closeable {
+    class SESE_DEPRECATED Http2Stream : public Stream, public Closeable {
     public:
         using Ptr = std::shared_ptr<Http2Stream>;
 

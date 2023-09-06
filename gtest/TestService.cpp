@@ -98,7 +98,7 @@ class MyTimerableService : public sese::service::TimerableService {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
-        if (0 == sese::net::Socket::setNonblocking((socket_t) fd)) {
+        if (0 == sese::net::Socket::setNonblocking((sese::socket_t) fd)) {
             auto event = createEvent(fd, EVENT_READ, nullptr);
             createTimeoutEvent(fd, event, 3);
         } else {
