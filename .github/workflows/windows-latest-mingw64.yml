@@ -26,7 +26,7 @@ jobs:
           python-version: '3.11.4'
 
       - name: Install Dependencies(pip)
-        run: pip install -r ${{github.workspace}}/scripts/requirements.txt
+        run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
 
       - name: Cache Vcpkg Dependencies
         uses: actions/cache@v3
@@ -34,13 +34,22 @@ jobs:
           path: ${{ github.workspace }}/build/vcpkg_installed
           key: ${{ runner.os }}-mingw64-vcpkg-${{ hashFiles('**/vcpkg.json') }}
 
+      - name: Setup MinGW64
+        run: |
+          set MSYSTEM=MINGW64&& C:\\msys64\\usr\\bin\\bash.exe --login -c "pacman -S --noconfirm mingw-w64-x86_64-toolchain"
+
+      - name: Setup Ninja
+        uses: ashutoshvarma/setup-ninja@master
+        with:
+          version: 1.10.0
+
       - name: Update Env
         run: |
-          $env:PATH = "C:/msys64/usr/bin;$env:PATH"
+          $env:PATH = "C:/msys64/mingw64/bin;$env:PATH"
           echo $env:PATH
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DSESE_BUILD_TEST=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-mingw-dynamic -DCMAKE_C_COMPILER=C:/msys64/usr/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/msys64/usr/bin/g++.exe
+        run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DSESE_BUILD_TEST=ON -DVCPKG_TARGET_TRIPLET=x64-mingw-dynamic -G Ninja -DCMAKE_C_COMPILER=C:/msys64/mingw64/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/msys64/mingw64/bin/g++.exe -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} -j 8
