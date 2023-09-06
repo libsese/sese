@@ -162,30 +162,19 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/thread/GlobalThreadPool.cpp
 )
 
-# target_sources(Core-static PRIVATE $<TARGET_OBJECTS:Core>)
-
-if (WIN32)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
     target_sources(Core PRIVATE ${DLL_INFO_RC})
-    target_compile_definitions(Core PUBLIC -DWINDOWS_DLL)
-    target_compile_definitions(Core PUBLIC -DNEED_DBGHELP)
-    if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    if (${MSVC})
         target_compile_options(Core PRIVATE "/utf-8")
-        target_compile_options(Core PRIVATE "/wd4251")
-        target_compile_options(Core PRIVATE "/wd4530")
     endif ()
-    target_link_libraries(Core PUBLIC ws2_32) # Sese::Event-static required
-    target_link_libraries(Core PRIVATE iphlpapi advapi32 secur32)
+    target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
+    message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi, advapi32, crypt32, secur32")
 
-    # target_compile_definitions(Core-static PUBLIC -DNEED_DBGHELP)
-    # target_compile_options(Core-static PRIVATE "/utf-8")
-    # target_compile_options(Core-static PRIVATE "/wd4251")
-    # target_compile_options(Core-static PRIVATE "/wd4530")
-    # target_link_libraries(Core-static PRIVATE ws2_32 iphlpapi)
-
-    message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi, advapi32, secur32")
+    if (${MINGW})
+    endif ()
 
     if (${CMAKE_GENERATOR} MATCHES "Ninja")
         # 单配置
@@ -215,7 +204,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
     target_compile_options(Core PUBLIC "-fPIC")
     target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
-    # target_link_libraries(Core-static PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 
     message(STATUS "Linked libraries: pthread, dl")
 endif ()
@@ -226,7 +214,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
 
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
-    # target_link_libraries(Core-static PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
     message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
 endif ()
@@ -239,7 +226,7 @@ set_target_properties(Core
         WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
 
-target_link_libraries(Core PRIVATE
+target_link_libraries(Core PUBLIC
         OpenSSL::Crypto
         OpenSSL::SSL
         ZLIB::ZLIB
@@ -250,17 +237,6 @@ target_link_libraries(Core PUBLIC
         Sese::Event
         Sese::Plugin
 )
-
-# target_link_libraries(Core-static PRIVATE
-#         OpenSSL::Crypto
-#         OpenSSL::SSL
-#         ZLIB::ZLIB
-#         )
-# target_link_libraries(Core-static PUBLIC
-#         SString::SString-static
-#         SimpleUuid::uuid-static
-#         Sese::Plugin
-#         )
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)

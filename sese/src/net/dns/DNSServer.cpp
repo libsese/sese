@@ -26,13 +26,13 @@ sese::net::dns::DNSServer::Ptr sese::net::dns::DNSServer::create(const sese::net
         //     buffer[i] = (uint8_t) std::strtol(v[i].c_str(), &end, 10);
         // }
         uint8_t buffer[4];
-        inet_pton(AF_INET, item.second.c_str(), buffer);
+        sese::net::inetPton(AF_INET, item.second.c_str(), buffer);
         ptr->hostIPv4Map[item.first] = std::string((const char *) buffer, 4);
     }
 
     for (auto &item: config->hostIPv6Map) {
         uint8_t buffer[16];
-        inet_pton(AF_INET6, item.second.c_str(), buffer);
+        sese::net::inetPton(AF_INET6, item.second.c_str(), buffer);
         ptr->hostIPv6Map[item.first] = std::string((const char *) buffer, 16);
     }
 

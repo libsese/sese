@@ -1,5 +1,4 @@
 #include "sese/net/IPv4Address.h"
-//#include "system/Environment.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
@@ -14,7 +13,7 @@ IPv4Address::Ptr IPv4Address::create(const char *address, uint16_t port) {
     //    } else {
     //        result->address.sin_port = port;
     //    }
-    int err = inet_pton(AF_INET, address, &result->address.sin_addr);
+    int err = sese::net::inetPton(AF_INET, address, &result->address.sin_addr);
     result->address.sin_port = ToBigEndian16(port);
     if (err <= 0) {
         return nullptr;

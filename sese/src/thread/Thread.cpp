@@ -2,13 +2,13 @@
 #include "sese/Config.h"
 
 #ifdef __linux__
-static pid_t getTid() noexcept {
+static sese::pid_t getTid() noexcept {
     return syscall(__NR_gettid);// NOLINT
 }
 #endif
 
 #ifdef _WIN32
-static tid_t getTid() noexcept {
+static sese::tid_t getTid() noexcept {
     return GetCurrentThreadId();// NOLINT
 }
 #endif
@@ -16,7 +16,7 @@ static tid_t getTid() noexcept {
 #ifdef __APPLE__
 #include <unistd.h>
 #include <pthread/pthread.h>
-static tid_t getTid() noexcept {
+static sese::tid_t getTid() noexcept {
     uint64_t id;
     pthread_threadid_np(nullptr, &id);
     return id;

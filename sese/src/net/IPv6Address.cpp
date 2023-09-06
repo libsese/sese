@@ -11,7 +11,7 @@ using namespace sese::net;
 
 IPv6Address::Ptr IPv6Address::create(const char *address, uint16_t port) {
     IPv6Address::Ptr result(new IPv6Address);
-    auto err = inet_pton(AF_INET6, address, &result->address.sin6_addr);
+    auto err = sese::net::inetPton(AF_INET6, address, &result->address.sin6_addr);
     result->address.sin6_family = AF_INET6;
     result->address.sin6_port = ToBigEndian16(port);
     if (err <= 0) {

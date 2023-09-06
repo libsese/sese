@@ -32,7 +32,7 @@ TEST(TestUtil, Misc) {
 #include <sese/util/Test.h>
 
 TEST(TestUtil, Backtrace) {
-    auto backtrace = sese::Test::backtrace2String(3, "");
+    auto backtrace = sese::Test::backtrace2String(2, "");
     puts(backtrace.c_str());
 }
 

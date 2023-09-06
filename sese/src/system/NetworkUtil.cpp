@@ -46,7 +46,7 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     }
 
     NetworkInterface Interface;
-    PIP_ADAPTER_UNICAST_ADDRESS_LH unicastAddress;
+    decltype(pAddresses->FirstUnicastAddress) unicastAddress;
     while (pAddresses) {
         if (pAddresses->IfType == IF_TYPE_ETHERNET_CSMACD) {
             Interface.name = pAddresses->AdapterName;

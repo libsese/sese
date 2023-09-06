@@ -1,15 +1,10 @@
 #include "sese/util/Test.h"
+
 #include <sstream>
-#include <Windows.h>
-
-#ifdef NEED_DBGHELP
-
-#include <DbgHelp.h>
-
-#endif
+#include <windows.h>
+#include <dbghelp.h>
 
 std::string sese::Test::backtrace2String(int size, const std::string &prefix, int skip) {
-#ifdef NEED_DBGHELP
     void **pStack = (void **) malloc(sizeof(void *) * size);
 
     HANDLE process = GetCurrentProcess();
@@ -42,7 +37,4 @@ std::string sese::Test::backtrace2String(int size, const std::string &prefix, in
     }
     free(pStack);
     return oss.str();
-#else
-    return "Please set \"NEED_DBGHELP\" to 1 to enable this function";
-#endif
 }

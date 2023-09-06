@@ -1,9 +1,9 @@
-#ifdef __clang__
+#if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif _WIN32
+#elif defined(_MSC_VER)
 #pragma warning(disable : 4996)
-#elif __GNUC__
+#elif defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
@@ -112,8 +112,8 @@ void sese::net::v2::http::HttpServer::onClosing(sese::net::v2::IOContext &contex
     }
 }
 
-#ifdef __clang__
+#if defined(__clang__)
 #pragma clang diagnostic pop
-#elif __GNUC__
+#elif defined(__GNUC__)
 #pragma GCC diagnostic pop
 #endif

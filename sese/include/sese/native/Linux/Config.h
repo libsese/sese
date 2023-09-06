@@ -29,6 +29,8 @@
 
 #define SESE_FILENAME (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 
-/// Native Socket 类型
-using socket_t = int32_t;
-using tid_t = uint32_t;
+namespace sese {
+    /// Native Socket 类型
+    using socket_t = int32_t;
+    using tid_t = uint32_t;
+}// namespace sese

@@ -3,6 +3,8 @@
 #include "sese/text/DateTimeFormatter.h"
 #include "gtest/gtest.h"
 
+#include <thread>
+
 using namespace std::chrono_literals;
 
 TEST(TestDateTime, Info) {

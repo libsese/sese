@@ -25,7 +25,7 @@ Process::Ptr Process::create(const char *command) noexcept {
     }
 }
 
-pid_t Process::getCurrentProcessId() noexcept {
+sese::pid_t Process::getCurrentProcessId() noexcept {
     return getpid();
 }
 
@@ -62,7 +62,7 @@ void Process::exec(char *pCommand) noexcept {
     }
 }
 
-pid_t Process::getProcessId() const noexcept {
+sese::pid_t Process::getProcessId() const noexcept {
     return id;
 }
 
