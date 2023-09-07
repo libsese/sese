@@ -115,7 +115,7 @@ bool impl::PostgresDriverInstanceImpl::commit() noexcept {
 
     result = PQexec(conn, "COMMIT;");
     if (result == nullptr) {
-        return -1;
+        return false;
     }
 
     auto status = PQresultStatus(result);
@@ -139,7 +139,7 @@ bool impl::PostgresDriverInstanceImpl::rollback() noexcept {
 
     result = PQexec(conn, "rollback;");
     if (result == nullptr) {
-        return -1;
+        return false;
     }
 
     auto status = PQresultStatus(result);

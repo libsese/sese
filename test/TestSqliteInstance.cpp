@@ -285,7 +285,7 @@ TEST(TestTransaction, TestRollBack) {
     }
 
     std::string status;
-    ASSERT_EQ(true, instance->setAutoCommit(false));
+    ASSERT_EQ(true, instance->begin());
     ASSERT_EQ(true, instance->getAutoCommit(status));
     printf("autoCommit = %s\n", status.c_str());
 

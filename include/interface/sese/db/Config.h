@@ -10,5 +10,9 @@
 #define SESE_DB_API
 #endif
 
+#ifdef _MSC_VER
+#pragma warning(disable : 4251)
+#endif
+
 #include <cstdint>
 #include <memory>
