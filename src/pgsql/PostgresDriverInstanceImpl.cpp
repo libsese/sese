@@ -9,7 +9,6 @@ impl::PostgresDriverInstanceImpl::PostgresDriverInstanceImpl(PGconn *conn) noexc
 
 
     this->conn = conn;
-    this->commitStatus = true;
     auto status = PQstatus(conn);
     if (status != CONNECTION_OK) {
         error = (int) status;
@@ -103,7 +102,7 @@ bool impl::PostgresDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
     return true;
 }
 
-bool impl::PostgresDriverInstanceImpl::getAutoCommit(std::string &status) noexcept {
+bool impl::PostgresDriverInstanceImpl::getAutoCommit(bool &status) noexcept {
     return true;
 }
 

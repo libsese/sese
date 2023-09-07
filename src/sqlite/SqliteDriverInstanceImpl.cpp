@@ -53,8 +53,12 @@ bool impl::SqliteDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
     return true;
 }
 
-bool impl::SqliteDriverInstanceImpl::getAutoCommit(std::string &status) noexcept {
-    status = std::to_string(sqlite3_get_autocommit(conn));
+bool impl::SqliteDriverInstanceImpl::getAutoCommit(bool &status) noexcept {
+    if (sqlite3_get_autocommit(conn) == 0) {
+        status = false;
+    } else {
+        status = true;
+    }
     return true;
 }
 

@@ -228,9 +228,9 @@ TEST(TestTransaction, TestGetAutoCommit) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    std::string status;
+    bool status;
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    printf("autoCommit = %s\n", status.c_str());
+    printf("autoCommit = %d\n", status);
 }
 
 // set autoCommit
@@ -243,16 +243,17 @@ TEST(TestTransaction, TestSetAutoCommit) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    std::string status;
+    bool status;
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    printf("autoCommit = %s\n", status.c_str());
+    printf("autoCommit = %d\n", status);
     ASSERT_EQ(true, instance->setAutoCommit(false));
 
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    printf("autoCommit = %s\n", status.c_str());
+    printf("autoCommit = %d\n", status);
 
     ASSERT_EQ(true, instance->setAutoCommit(true));
     ASSERT_EQ(true, instance->getAutoCommit(status));
+    printf("autoCommit = %d\n", status);
 }
 
 // commit
@@ -270,10 +271,10 @@ TEST(TestTransaction, TestCommit) {
         printf("id = %d, name = %s\n", results->getInteger(0), results->getString(1).data());
     }
 
-    std::string status;
+    bool status;
     ASSERT_EQ(true, instance->setAutoCommit(false));
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    printf("autoCommit = %s\n", status.c_str());
+    printf("autoCommit = %d\n", status);
 
     auto count = instance->executeUpdate("insert into tb_commit (id, name) values (3, 'mike')");
     ASSERT_NE(0, count);
@@ -296,10 +297,10 @@ TEST(TestTransaction, TestRollBack) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    std::string status;
+    bool status;
     ASSERT_EQ(true, instance->setAutoCommit(false));
     ASSERT_EQ(true, instance->getAutoCommit(status));
-    printf("autoCommit = %s\n", status.c_str());
+    printf("autoCommit = %d\n", status);
 
     auto results = instance->executeQuery("select * from tb_rollBack;");
     while (results->next()) {

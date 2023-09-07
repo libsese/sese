@@ -63,15 +63,20 @@ bool impl::MariaDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
     return temp == 0;
 }
 
-bool impl::MariaDriverInstanceImpl::getAutoCommit(std::string &status) noexcept {
+bool impl::MariaDriverInstanceImpl::getAutoCommit(bool &status) noexcept {
     auto rt = executeQuery("show variables like 'autocommit';");
     if (rt) {
         while (rt->next()) {
-            status = rt->getString(1).data();
+            if (0 == strcmp(rt->getString(1).data(), "ON")) {
+                status = true;
+            } else {
+                status = false;
+            }
         }
         return true;
-    } else
+    } else {
         return false;
+    }
 }
 
 bool impl::MariaDriverInstanceImpl::commit() noexcept {

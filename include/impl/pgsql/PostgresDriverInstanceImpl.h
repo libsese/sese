@@ -17,7 +17,7 @@ namespace sese::db::impl {
         [[nodiscard]] const char *getLastErrorMessage() const noexcept override;
 
         [[nodiscard]] bool setAutoCommit(bool enable) noexcept override;
-        [[nodiscard]] bool getAutoCommit(std::string &status) noexcept override;
+        [[nodiscard]] bool getAutoCommit(bool &status) noexcept override;
         [[nodiscard]] bool begin() noexcept override;
         [[nodiscard]] bool commit() noexcept override;
         [[nodiscard]] bool rollback() noexcept override;
@@ -28,6 +28,5 @@ namespace sese::db::impl {
         PGconn *conn;
         PGresult *result;
         int error = 0;
-        bool commitStatus;
     };
 }// namespace sese::db
