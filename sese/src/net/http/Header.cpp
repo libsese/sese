@@ -12,7 +12,7 @@ Header::Header(const std::initializer_list<KeyValueType> &initializerList) noexc
 }
 
 
-#if defined (SESE_PLATFORM_WINDOWS) and !defined(__MINGW32__)
+#if defined (SESE_PLATFORM_WINDOWS) && !defined(__MINGW32__)
 #define XX std::tolower
 #else
 #define XX ::tolower

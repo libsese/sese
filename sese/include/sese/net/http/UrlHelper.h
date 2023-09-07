@@ -7,6 +7,10 @@
 
 #pragma once
 
+#if defined(_MSC_VER)
+#pragma warning(disable : 4251)
+#endif
+
 #include <sese/Config.h>
 
 namespace sese::net::http {

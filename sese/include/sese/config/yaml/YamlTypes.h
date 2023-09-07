@@ -11,8 +11,9 @@
 #include <map>
 #include <list>
 
-#ifdef WIN32
+#if defined(_MSC_VER)
 #pragma warning(disable : 4996)
+#pragma warning(disable : 4251)
 #endif
 
 namespace sese::yaml {
