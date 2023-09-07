@@ -27,12 +27,6 @@ Http2Stream::Ptr Http2Connection::find(uint32_t sid) {
     }
 }
 
-#ifdef __clang__
-#pragma clang diagnostic pop
-#elif __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
 #include <sese/convert/Base64Converter.h>
 #include <sese/util/InputBufferWrapper.h>
 #include <sese/util/ByteBuilder.h>

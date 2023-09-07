@@ -71,12 +71,6 @@ shutdown:
     serv.shutdown();
 }
 
-#ifdef __clang__
-#pragma clang diagnostic pop
-#elif __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
 #include <sese/record/Marco.h>
 #include <sese/net/http/UrlHelper.h>
 #include <sese/net/http/QueryString.h>

@@ -230,12 +230,6 @@ int main(int argc, char **argv) {
     return RUN_ALL_TESTS();
 }
 
-#ifdef __clang__
-#pragma clang diagnostic pop
-#elif __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
 #include <sese/service/BalanceLoader.h>
 #include <sese/service/Http2Service.h>
 

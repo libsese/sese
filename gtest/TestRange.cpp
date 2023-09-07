@@ -4,53 +4,55 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
+
 TEST(TestRange, ForEach_1) {
-    for (auto &&item: sese::Range(5)) {
-        SESE_INFO("item: %ld", item);
+    for (auto &&item: sese::Range<int64_t>(5)) {
+        SESE_INFO("item: %" PRId64, item);
     }
 }
 
 TEST(TestRange, ForEach_2) {
-    sese::Range range(5);
+    sese::Range<int32_t> range(5);
     auto iterator = range.begin();
     for (; iterator != range.end(); ++iterator) {
-        SESE_INFO("iter: %ld", *iterator);
+        SESE_INFO("iter: %" PRId32, *iterator);
     }
 }
 
 TEST(TestRange, ReverseForEach_1) {
-    sese::Range range(-3, 4);
+    sese::Range<int64_t> range(-3, 4);
     auto iterator = range.rbegin();
     for (; iterator != range.rend(); ++iterator) {
-        SESE_INFO("iter: %ld", *iterator);
+        SESE_INFO("iter: %" PRId64, *iterator);
     }
 }
 
 TEST(TestRange, ReverseForEach_2) {
-    sese::Range range(-12, -7);
-    std::for_each(range.rbegin(), range.rend(), [](decltype(range)::ReverseIterator::reference number){
-        SESE_INFO("iter: %ld", number);
+    sese::Range<int64_t> range(-12, -7);
+    std::for_each(range.rbegin(), range.rend(), [](const int64_t &number) {
+        SESE_INFO("iter: %" PRId64, number);
     });
 }
 
 TEST(TestRange, Construct_1) {
-    sese::Range range(10);
+    sese::Range<int64_t> range(10);
     for (auto &&item: range) {
-        SESE_INFO("item: %ld", item);
+        SESE_INFO("item: %" PRId64, item);
     }
 }
 
 TEST(TestRange, Construct_2) {
-    sese::Range range(20, 27);
+    sese::Range<int64_t> range(20, 27);
     for (auto &&item: range) {
-        SESE_INFO("item: %ld", item);
+        SESE_INFO("item: %" PRId64, item);
     }
 }
 
 TEST(TestRange, Construct_3) {
-    sese::Range range(19, 16);
+    sese::Range<size_t> range(19, 16);
     for (auto &&item: range) {
-        SESE_INFO("item: %ld", item);
+        SESE_INFO("item: %zu", item);
     }
 }
 

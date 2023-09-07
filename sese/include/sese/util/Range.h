@@ -12,7 +12,7 @@ namespace sese {
 
     /// 区间类
     /// \tparam Type 值类型
-    template<class Type = int64_t>
+    template<class Type>
     class Range {
     public:
         /// 该构造函数只能用于正数且递增的区间
@@ -51,7 +51,7 @@ namespace sese {
                 return *this;
             }
 
-            Iterator operator++(Type) {// NOLINT
+            Iterator operator++(int) {// NOLINT
                 Iterator iterator = *this;
                 iterator.curNumber += 1;
                 return iterator;
@@ -88,7 +88,7 @@ namespace sese {
                 return *this;
             }
 
-            ReverseIterator operator++(Type) {// NOLINT
+            ReverseIterator operator++(int) {// NOLINT
                 Iterator iterator = *this;
                 iterator.curNumber -= 1;
                 return iterator;
