@@ -158,6 +158,7 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
         ${NATIVE_PATH}/system/FileNotifier.cpp
+        ${NATIVE_PATH}/system/StackInfo.cpp
         ${NATIVE_PATH}/system/Process.cpp
         ${NATIVE_PATH}/thread/GlobalThreadPool.cpp
 )
@@ -203,6 +204,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
     target_compile_options(Core PUBLIC "-fPIC")
+    target_compile_options(Core PUBLIC "-rdynamic")
     target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
 
     message(STATUS "Linked libraries: pthread, dl")

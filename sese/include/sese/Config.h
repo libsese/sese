@@ -22,7 +22,14 @@
 #endif
 #undef assert
 
-#define SESE_MARCO_END switch (0) case 0: default: break
+#define SESE_MARCO_END \
+    switch (0)         \
+    case 0:            \
+    default:           \
+        break
+
+#define SESE_STD_WRAPPER(name, member) \
+    [[nodiscard]] auto name() const { return member.name(); }
 
 #if defined(__MINGW32__) || defined(__GNUC__)
 #define SESE_DEPRECATED __attribute__((deprecated))
@@ -85,7 +92,7 @@ constexpr static const size_t HTTP_MAX_SINGLE_LINE = 1023;
 /// Http Server 名称
 constexpr static const char *HTTPD_NAME = "sese::service::HttpServer";
 /// Http 多段请求 boundary
-constexpr static const char *HTTPD_BOUNDARY= "000000SESE0BOUNDARY000000";
+constexpr static const char *HTTPD_BOUNDARY = "000000SESE0BOUNDARY000000";
 /// Http Client 名称
 constexpr static const char *HTTP_CLIENT_NAME = "sese::net::http::HttpClient";
 
