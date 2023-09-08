@@ -8,7 +8,6 @@ void function1() {
     sese::system::StackInfo stacks(3, 1);
     for (auto &&item : stacks) {
         SESE_INFO("%s at %" PRId64, item.func.c_str(), item.address);
-        // SESE_INFO("\t%s:%" PRId64, item.file.c_str(), item.line);
     }
     SESE_DEBUG("end;");
 }
@@ -17,7 +16,6 @@ extern "C" void function2() {
     sese::system::StackInfo stacks(5);
     for (auto &&item : stacks) {
         SESE_INFO("%s at %" PRId64, item.func.c_str(), item.address);
-        // SESE_INFO("\t%s:%" PRId64, item.file.c_str(), item.line);
     }
     SESE_DEBUG("end;");
 }

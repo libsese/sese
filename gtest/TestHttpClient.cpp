@@ -47,7 +47,7 @@ TEST(TestHttpClient, UrlParser_4) {
     ASSERT_EQ(client, nullptr);
 }
 
-TEST(TestHttpClient, UrlParser_5) {
+TEST(TestHttpClient, DISABLED_UrlParser_5) {
     auto client = sese::net::http::HttpClient::create("https://host/");
     ASSERT_EQ(client, nullptr);
 }

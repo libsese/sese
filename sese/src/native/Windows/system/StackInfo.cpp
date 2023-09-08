@@ -28,8 +28,17 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
             continue;
         }
 
-        stacks.emplace_back(SubStackInfo{pSymbol->Address, pSymbol->Name});
+        stacks.emplace_back(SubStackInfo{pSymbol->Address, decodeSymbolName(pSymbol->Name)});
     }
 
     free(pStack);
+}
+
+std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept {
+    auto pos = str.find_first_of("<");
+    if (pos == std::string::npos) {
+        return str;
+    } else {
+        return str.substr(0, pos);
+    }
 }
