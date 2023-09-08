@@ -56,11 +56,3 @@ TEST(TestBufferWrapper, Misc) {
     ASSERT_EQ(output.getCapacity(), 8);
     ASSERT_EQ(output.getLength(), 0);
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

@@ -48,11 +48,3 @@ TEST(TestPercentConverter, Error_2) {
     auto dest = std::make_shared<sese::OutputBufferWrapper>(buffer, sizeof(buffer));
     ASSERT_FALSE(sese::PercentConverter::decode(string, dest));
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

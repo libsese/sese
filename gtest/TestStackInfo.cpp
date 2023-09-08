@@ -24,9 +24,3 @@ TEST(TestStackInfo, _0) {
     function1();
     function2();
 }
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

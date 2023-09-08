@@ -40,11 +40,3 @@ TEST(TestCSVUtil, Writer) {
     writer2.write({"A2", "B2", "C2"});
     writer2.write({"A3", "", "C3"});
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

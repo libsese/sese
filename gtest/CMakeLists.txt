@@ -15,11 +15,70 @@ endif ()
 
 add_definitions("-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
 
-macro(sese_test test_name)
-    add_executable(${test_name} ${test_name}.cpp)
-    target_link_libraries(${test_name} Core GTest::gtest GTest::gtest_main)
-    add_test(NAME ${test_name} COMMAND ${test_name})
-endmacro()
+add_executable(
+        AllTestInMain
+        AllTest.cpp
+        TestPlugin/TestPlugin.cpp
+        TestSharedMemory/TestSharedMemory.cpp
+        TestAddress.cpp
+        TestArgParser.cpp
+        TestBase64.cpp
+        TestLogger.cpp
+        TestEndian.cpp
+        TestJson.cpp
+        TestXML.cpp
+        TestIni.cpp
+        TestYaml.cpp
+        TestStream.cpp
+        TestConfig.cpp
+        TestDateTime.cpp
+        TestThread.cpp
+        TestMessageDigest.cpp
+        TestCompressor.cpp
+        TestProcess.cpp
+        TestCSVUtil.cpp
+        TestHttp2.cpp
+        TestNetworkUtil.cpp
+        # TestServer.cpp
+        TestHttp.cpp
+        TestRandom.cpp
+        TestFileNotifier.cpp
+        TestReusableSocket.cpp
+        TestService.cpp
+        TestEnv.cpp
+        TestInit.cpp
+        TestLibraryLoader.cpp
+        TestTimer.cpp
+        TestByteBuilder.cpp
+        TestFixedBuffer.cpp
+        TestOutputUtil.cpp
+        TestBufferWrapper.cpp
+        TestStringBuilder.cpp
+        TestBufferedStream.cpp
+        TestFileStream.cpp
+        TestMemoryViewer.cpp
+        TestUtil.cpp
+        TestUuidBuilder.cpp
+        TestAsyncLogger.cpp
+        TestFakeStream.cpp
+        TestEncodingConverter.cpp
+        TestPercentConverter.cpp
+        TestSSL.cpp
+        TestUniReader.cpp
+        TestSocket.cpp
+        TestHttpUtil.cpp
+        TestHttpClient.cpp
+        TestRpc.cpp
+        TestHttpService.cpp
+        TestHttpService_V2.cpp
+        TestWebsocketService.cpp
+        TestDNS.cpp
+        TestRange.cpp
+        TestStackInfo.cpp
+)
+
+target_link_libraries(AllTestInMain Core GTest::gtest GTest::gtest_main)
+add_test(NAME AllTestInMain COMMAND AllTestInMain)
 
 # Test Plugin
 add_library(Module SHARED TestPlugin/Module.cpp)
@@ -30,12 +89,9 @@ set_target_properties(
         PREFIX ""
         SUFFIX ".m"
 )
-add_executable(TestPlugin TestPlugin/TestPlugin.cpp)
-target_link_libraries(TestPlugin Core GTest::gtest GTest::gtest_main)
-add_test(NAME TestPlugin COMMAND $<TARGET_FILE:TestPlugin>)
-target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module>\"")
-target_compile_definitions(TestPlugin PRIVATE "-DPATH_TO_CORE=\"$<TARGET_FILE:Core>\"")
-add_dependencies(TestPlugin Module)
+target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module>\"")
+target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_CORE=\"$<TARGET_FILE:Core>\"")
+add_dependencies(AllTestInMain Module)
 
 # TestSharedMemory
 add_executable(Memory.d TestSharedMemory/Memory.d.cpp)
@@ -45,64 +101,5 @@ set_target_properties(
         OUTPUT_NAME "Memory.d"
         PREFIX ""
 )
-add_executable(TestSharedMemory TestSharedMemory/TestSharedMemory.cpp)
-target_link_libraries(TestSharedMemory Core GTest::gtest GTest::gtest_main)
-target_compile_definitions(TestSharedMemory PRIVATE "-DPATH_TO_MEM_D=\"$<TARGET_FILE:Memory.d>\"")
-add_test(NAME TestSharedMemory COMMAND TestSharedMemory)
-add_dependencies(TestSharedMemory Memory.d)
-
-sese_test(TestAddress)
-sese_test(TestArgParser)
-sese_test(TestBase64)
-sese_test(TestLogger)
-sese_test(TestEndian)
-sese_test(TestJson)
-sese_test(TestXML)
-sese_test(TestIni)
-sese_test(TestYaml)
-sese_test(TestStream)
-sese_test(TestConfig)
-sese_test(TestDateTime)
-sese_test(TestThread)
-sese_test(TestMessageDigest)
-sese_test(TestCompressor)
-sese_test(TestProcess)
-sese_test(TestCSVUtil)
-sese_test(TestHttp2)
-sese_test(TestNetworkUtil)
-# sese_test(TestServer)
-sese_test(TestHttp)
-sese_test(TestRandom)
-sese_test(TestFileNotifier)
-sese_test(TestReusableSocket)
-sese_test(TestService)
-sese_test(TestEnv)
-sese_test(TestInit)
-sese_test(TestLibraryLoader)
-sese_test(TestTimer)
-sese_test(TestByteBuilder)
-sese_test(TestFixedBuffer)
-sese_test(TestOutputUtil)
-sese_test(TestBufferWrapper)
-sese_test(TestStringBuilder)
-sese_test(TestBufferedStream)
-sese_test(TestFileStream)
-sese_test(TestMemoryViewer)
-sese_test(TestUtil)
-sese_test(TestUuidBuilder)
-sese_test(TestAsyncLogger)
-sese_test(TestFakeStream)
-sese_test(TestEncodingConverter)
-sese_test(TestPercentConverter)
-sese_test(TestSSL)
-sese_test(TestUniReader)
-sese_test(TestSocket)
-sese_test(TestHttpUtil)
-sese_test(TestHttpClient)
-sese_test(TestRpc)
-sese_test(TestHttpService)
-sese_test(TestHttpService_V2)
-sese_test(TestWebsocketService)
-sese_test(TestDNS)
-sese_test(TestRange)
-sese_test(TestStackInfo)
+target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_MEM_D=\"$<TARGET_FILE:Memory.d>\"")
+add_dependencies(AllTestInMain Memory.d)

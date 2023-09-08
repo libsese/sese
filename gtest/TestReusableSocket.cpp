@@ -37,11 +37,8 @@ private:
     sese::Thread::Ptr th{nullptr};
 };
 
-sese::net::IPAddress::Ptr createAddress() {
-    std::random_device device;
-    auto engine = std::default_random_engine(device());
-    std::uniform_int_distribution<uint16_t> dis(1025, 65535);
-    auto port = dis(engine);
+static sese::net::IPAddress::Ptr createAddress() {
+    auto port = sese::net::createRandomPort();
     SESE_INFO("select port %d\n", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
@@ -87,7 +84,7 @@ TEST(TestReusableSocket, LoadBalancing) {
     for (decltype(auto) s: socketVector) {
         s.connect(addr);
     }
-    std::this_thread::sleep_for(500ms);
+    std::this_thread::sleep_for(300ms);
     for (decltype(auto) s: socketVector) {
         s.close();
     }
@@ -111,12 +108,4 @@ TEST(TestReusableSocket, Error) {
     auto sock2 = reusableSocket.makeSocket();
     ASSERT_EQ(sock1, -1);
     ASSERT_EQ(sock2, std::nullopt);
-}
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }

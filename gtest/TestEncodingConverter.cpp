@@ -14,9 +14,3 @@ TEST(TestEncoding, WString2String) {
 
     ASSERT_EQ(sese::EncodingConverter::toString(wstr), str);
 }
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

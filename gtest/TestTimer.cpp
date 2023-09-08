@@ -22,11 +22,3 @@ TEST(TestTimer, Normal) {
     sese::sleep(3);
     sese::record::LogHelper::d("timer thread joining");
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

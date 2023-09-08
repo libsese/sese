@@ -77,9 +77,3 @@ TEST(TestRange, Exist_1) {
     EXPECT_FALSE(range3.exist(1));
     EXPECT_FALSE(range3.exist(-8));
 }
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

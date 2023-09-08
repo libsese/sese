@@ -10,11 +10,8 @@
 
 #define printf SESE_INFO
 
-sese::net::IPv4Address::Ptr createAddress() {
-    std::random_device device;
-    auto engine = std::default_random_engine(device());
-    std::uniform_int_distribution<uint16_t> dis(1025, 65535);
-    auto port = dis(engine);
+static sese::net::IPv4Address::Ptr createAddress() {
+    auto port = sese::net::createRandomPort();
     printf("select port %d", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
@@ -73,12 +70,4 @@ GTEST_TEST(TestWebsocketService, _0) {
     EXPECT_EQ(process->wait(), 0);
     SUCCEED();
     service.stop();
-}
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }

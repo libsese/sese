@@ -61,9 +61,3 @@ TEST(TestConfig, Xml) {
     sese::xml::XmlUtil::serialize(element, out);
     out->write("\n", 1);
 }
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

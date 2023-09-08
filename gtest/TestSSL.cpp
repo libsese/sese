@@ -84,11 +84,3 @@ TEST(TestSSL, Server) {
     th.join();
     server.close();
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

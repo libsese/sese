@@ -15,11 +15,3 @@ TEST(TestProcess, _0) {
     auto code = a->wait();
     ASSERT_TRUE(code == 0);
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

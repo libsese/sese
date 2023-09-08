@@ -72,11 +72,3 @@ TEST(TestFixedBuffer, Misc_1) {
     ASSERT_EQ(buffer.getReadableSize(), 0);
     ASSERT_EQ(buffer.getWriteableSize(), 10);
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

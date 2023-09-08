@@ -59,9 +59,3 @@ TEST(TestAsyncLogger, MuiltThread) {
     th2.join();
     th3.join();
 }
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

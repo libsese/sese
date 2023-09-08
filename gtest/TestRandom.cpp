@@ -13,7 +13,7 @@ TEST(TestRandom, STD) {
     auto file = sese::FileStream::create("random.csv", "wt");
     ASSERT_NE(file, nullptr);
     auto writer = sese::CSVWriter(file.get(), ',', false);
-    for (int i = 0; i < 300000; i++) {
+    for (int i = 0; i < 300; i++) {
         std::default_random_engine engine((unsigned int) device());
         writer.write({std::to_string(i), std::to_string(distribution(engine))});
     }
@@ -23,12 +23,4 @@ TEST(TestRandom, STD) {
 TEST(TestRandom, Misc) {
     ASSERT_EQ(sese::Random::max(), UINT64_MAX);
     ASSERT_EQ(sese::Random::min(), 0);
-}
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }

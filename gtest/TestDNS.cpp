@@ -98,11 +98,8 @@ TEST(TestDNS, Encode_1) {
     EXPECT_EQ(memcmp(expect, result, 12), 0);
 }
 
-sese::net::IPv4Address::Ptr createAddress() {
-    std::random_device device;
-    auto engine = std::default_random_engine(device());
-    std::uniform_int_distribution<uint16_t> dis(1025, 65535);
-    auto port = dis(engine);
+static sese::net::IPv4Address::Ptr createAddress() {
+    auto port = sese::net::createRandomPort();
     printf("select port %d", (int) port);
     return sese::net::IPv4Address::localhost(port);
 }
@@ -137,10 +134,4 @@ TEST(TestDNS, Server) {
     SESE_INFO("www.kaoru.com -> %s", ipv6->getAddress().c_str());
 
     server->shutdown();
-}
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }

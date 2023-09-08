@@ -214,11 +214,3 @@ TEST(TestBufferedStream, BufferedStream_6) {
     ASSERT_EQ(buffered.read(buffer, 4), 4);
     ASSERT_EQ(buffered.read(buffer, 12), 8);
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

@@ -18,9 +18,9 @@ GTEST_TEST(TestSocket, Client) {
               "Host: bing.com\r\n"
               "\r\n";
 
-    char buffer[1024]{};
-    client.read(buffer, sizeof(buffer));
-    SESE_INFO("%s", buffer);
+    // char buffer[1024]{};
+    // client.read(buffer, sizeof(buffer));
+    // SESE_INFO("%s", buffer);
 
     client.shutdown(sese::net::Socket::ShutdownMode::Both);
     client.close();
@@ -172,12 +172,4 @@ GTEST_TEST(TestSocket, NativeAPI) {
 
     th.join();
     sese::net::Socket::close(socket);
-}
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }

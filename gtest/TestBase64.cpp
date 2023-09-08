@@ -199,11 +199,3 @@ TEST(TestBase62, Error) {
     auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
     ASSERT_FALSE(sese::Base64Converter::decodeBase62(&input, &output));
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

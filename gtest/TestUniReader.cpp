@@ -16,11 +16,3 @@ TEST(TestUniReader, Open_0) {
 TEST(TestUniReader, Open_1) {
     GTEST_ASSERT_EQ(sese::UniReader::create("undef.txt"), nullptr);
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

@@ -21,8 +21,8 @@
 
 using namespace sese;
 
-auto makeRandomPortAddr() {
-    auto port = (uint16_t) (sese::Random::next() % (65535 - 1024) + 1024);
+static auto makeRandomPortAddr() {
+    auto port = sese::net::createRandomPort();
     printf("select port %d\n", port);
     auto addr = sese::net::IPv4Address::localhost();
     addr->setPort(port);
@@ -163,12 +163,6 @@ TEST(TestHttp, QueryString_3) {
 TEST(TestHttp, QueryString_4) {
     sese::net::http::QueryString q("?&");
     ASSERT_TRUE(q.empty());
-}
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }
 
 #if defined(__clang__)

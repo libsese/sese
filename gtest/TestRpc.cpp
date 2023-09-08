@@ -17,15 +17,11 @@
 
 using namespace std::chrono_literals;
 
-sese::net::IPv4Address::Ptr createAddress() {
-    std::random_device device;
-    auto engine = std::default_random_engine(device());
-    std::uniform_int_distribution<uint16_t> dis(1025, 65535);
-    auto port = dis(engine);
+static sese::net::IPv4Address::Ptr createAddress() {
+    auto port = sese::net::createRandomPort();
     printf("select port %d\n", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
-
 
 REMOTE_API void add(sese::json::ObjectData::Ptr &args, sese::json::ObjectData::Ptr &result) {
     GetInteger4Server(value0, "value0", 0);
@@ -43,10 +39,6 @@ auto create(const sese::security::SSLContext::Ptr &context) {
 }
 
 TEST(TestRpc, WithSSL) {
-#if defined(__linux__) or defined(__APPLE__)
-    signal(SIGPIPE, SIG_IGN);
-#endif
-
     auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
     servCtx->importCertFile(PROJECT_PATH "/gtest/Data/test-ca.crt");
     servCtx->importPrivateKeyFile(PROJECT_PATH "/gtest/Data/test-key.pem");
@@ -194,10 +186,6 @@ TEST(TestRpc, WithSSL) {
 }
 
 TEST(TestRpc, NoSSL) {
-#if defined(__linux__) or defined(__APPLE__)
-    signal(SIGPIPE, SIG_IGN);
-#endif
-
     auto addr = createAddress();
 
     sese::service::BalanceLoader service;
@@ -249,14 +237,6 @@ TEST(TestRpc, NoSSL) {
     socket.shutdown(sese::net::Socket::ShutdownMode::Both);
     socket.close();
 
-    std::this_thread::sleep_for(300ms);
+    std::this_thread::sleep_for(100ms);
     service.stop();
-}
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }

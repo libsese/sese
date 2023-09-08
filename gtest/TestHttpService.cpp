@@ -14,11 +14,8 @@
 
 using namespace std::chrono_literals;
 
-sese::net::IPv4Address::Ptr createAddress() {
-    std::random_device device;
-    auto engine = std::default_random_engine(device());
-    std::uniform_int_distribution<uint16_t> dis(1025, 65535);
-    auto port = dis(engine);
+static sese::net::IPv4Address::Ptr createAddress() {
+    auto port = sese::net::createRandomPort();
     printf("select port %d\n", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
@@ -158,13 +155,4 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     SESE_INFO("content: %s", buffer);
 
     service.stop();
-}
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-#if defined(__linux__) || defined(__APPLE__)
-    signal(SIGPIPE, SIG_IGN);
-#endif
-    return RUN_ALL_TESTS();
 }

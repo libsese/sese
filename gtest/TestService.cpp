@@ -27,11 +27,8 @@ protected:
     int num = 0;
 };
 
-sese::net::IPAddress::Ptr createAddress() {
-    std::random_device device;
-    auto engine = std::default_random_engine(device());
-    std::uniform_int_distribution<uint16_t> dis(1025, 65535);
-    auto port = dis(engine);
+static sese::net::IPAddress::Ptr createAddress() {
+    auto port = sese::net::createRandomPort();
     printf("select port %d", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
@@ -56,7 +53,7 @@ TEST(TestService, SystemBalanceLoader) {
     for (decltype(auto) s: socketVector) {
         s.connect(addr);
     }
-    std::this_thread::sleep_for(500ms);
+    std::this_thread::sleep_for(300ms);
     for (decltype(auto) s: socketVector) {
         s.close();
     }
@@ -155,12 +152,4 @@ TEST(TestService, TimerableService) {
 
     std::this_thread::sleep_for(300ms);
     service.stop();
-}
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }

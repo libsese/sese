@@ -24,11 +24,3 @@ TEST(TestFileStream, Seek) {
     ASSERT_EQ(std::string_view(buffer), std::string_view("Hello, World"));
     file->close();
 }
-
-#include <sese/util/Initializer.h>
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
-}

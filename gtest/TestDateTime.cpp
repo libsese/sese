@@ -44,8 +44,8 @@ TEST(TestDateTime, UnclearCompare) {
 
     {
         auto time1 = sese::DateTime::now(8);
-        std::this_thread::sleep_for(1s);
-        auto time2 = sese::DateTime::now(8);
+        // std::this_thread::sleep_for(1s);
+        auto time2 = sese::DateTime(time1.getTimestamp() + 1002'333);
         EXPECT_EQ(time1.unclearCompareTo(time2), -1);
         EXPECT_EQ(time2.unclearCompareTo(time1), 1);
     }
@@ -174,10 +174,4 @@ TEST(TestDateTime, Format_3) {
 
     auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss %");
     sese::record::LogHelper::i(str4.c_str());
-}
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-    return RUN_ALL_TESTS();
 }

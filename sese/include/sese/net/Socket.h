@@ -160,6 +160,12 @@ namespace sese::net {
     };
 
     /**
+     * 随机在 (1024, 65535) 范围内选择一个断端口
+     * @return 随机端口
+     */
+    uint16_t createRandomPort() noexcept;
+
+    /**
      * @brief 获取网络相关 error 代码
      * @return error 代码
      */

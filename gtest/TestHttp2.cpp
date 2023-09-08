@@ -19,8 +19,8 @@
 
 #define printf SESE_INFO
 
-auto makeRandomPortAddr() {
-    auto port = (uint16_t) (sese::Random::next() % (65535 - 1024) + 1024);
+static auto makeRandomPortAddr() {
+    auto port = sese::net::createRandomPort();
     printf("select port %d", port);
     auto addr = sese::net::IPv4Address::localhost();
     addr->setPort(port);
@@ -221,26 +221,17 @@ TEST(TestHttp2, DISABLED_Server) {
     server.shutdown();
 }
 
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    sese::Initializer::getInitializer();
-#if defined(__linux__) || defined(__APPLE__)
-    signal(SIGPIPE, SIG_IGN);
-#endif
-    return RUN_ALL_TESTS();
-}
-
 #include <sese/service/BalanceLoader.h>
 #include <sese/service/Http2Service.h>
 
-void ControllerIndex(sese::net::http::Request &req, sese::net::http::Response &resp) noexcept {
+static void ControllerIndex(sese::net::http::Request &req, sese::net::http::Response &resp) noexcept {
     resp.setCode(200);
     resp.set("message", "hello");
     resp.getBody().write("this is content\n", 16);
 }
 
 TEST(TestHttp2, Server) {
-    auto addr = sese::net::IPv4Address::any(8080);
+    auto addr = makeRandomPortAddr();
 
     sese::service::Http2Config config;
     config.servName = "Server for Test";
