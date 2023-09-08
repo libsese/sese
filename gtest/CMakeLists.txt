@@ -10,7 +10,7 @@ endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb")
-    set(CMAKE_EXE_LINKER_FLAGS "-Wl,-copy-dt-needed-entries")
+    set(CMAKE_EXE_LINKER_FLAGS "-Wl,-copy-dt-needed-entries,--export-dynamic")
 endif ()
 
 add_definitions("-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
@@ -105,3 +105,4 @@ sese_test(TestHttpService_V2)
 sese_test(TestWebsocketService)
 sese_test(TestDNS)
 sese_test(TestRange)
+sese_test(TestStackInfo)
