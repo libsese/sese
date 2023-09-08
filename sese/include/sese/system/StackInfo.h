@@ -27,9 +27,7 @@ namespace sese::system {
         static int WILL_SKIP;
 
     protected:
-#if defined(SESE_PLATFORM_LINUX) || defined(SESE_PLATFORM_APPLE)
         static std::string decodeSymbolName(const std::string &str) noexcept;
-#endif
 
         std::vector<SubStackInfo> stacks;
     };

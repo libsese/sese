@@ -1,4 +1,3 @@
-#include <malloc/_malloc.h>
 #include <sese/system/StackInfo.h>
 #include <sese/util/Range.h>
 #include <sese/util/OutputBufferWrapper.h>
