@@ -21,23 +21,14 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
         pSymbol->SizeOfStruct = sizeof(SYMBOL_INFO);
         pSymbol->MaxNameLen = MAX_SYM_NAME;
 
-        DWORD displacementLine = 0;
-        IMAGEHLP_LINE64 line;
-        line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
-
         BOOL rt = TRUE;
         rt = SymFromAddr(process, address, &displacementSym, pSymbol);
         if (!rt) {
             stacks.emplace_back(SubStackInfo{});
             continue;
         }
-        rt = SymGetLineFromAddr64(process, address, &displacementLine, &line);
-        if (!rt) {
-            stacks.emplace_back(SubStackInfo{});
-            continue;
-        }
 
-        stacks.emplace_back(SubStackInfo{pSymbol->Address, pSymbol->Name, line.LineNumber, line.FileName});
+        stacks.emplace_back(SubStackInfo{pSymbol->Address, pSymbol->Name});
     }
 
     free(pStack);
