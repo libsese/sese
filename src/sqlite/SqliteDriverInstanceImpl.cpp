@@ -54,11 +54,7 @@ bool impl::SqliteDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
 }
 
 bool impl::SqliteDriverInstanceImpl::getAutoCommit(bool &status) noexcept {
-    if (sqlite3_get_autocommit(conn) == 0) {
-        status = false;
-    } else {
-        status = true;
-    }
+    status = sqlite3_get_autocommit(conn) != 0;
     return true;
 }
 
