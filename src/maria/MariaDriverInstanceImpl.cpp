@@ -52,3 +52,48 @@ int impl::MariaDriverInstanceImpl::getLastError() const noexcept {
 const char *impl::MariaDriverInstanceImpl::getLastErrorMessage() const noexcept {
     return mysql_error(conn);
 }
+
+bool impl::MariaDriverInstanceImpl::setAutoCommit(bool enable) noexcept {
+    int temp;
+    if (enable) {
+        temp = (unsigned char) mysql_autocommit(conn, 1);
+    } else {
+        temp = (unsigned char) mysql_autocommit(conn, 0);
+    }
+    return temp == 0;
+}
+
+bool impl::MariaDriverInstanceImpl::getAutoCommit(bool &status) noexcept {
+    auto rt = executeQuery("show variables like 'autocommit';");
+    if (rt) {
+        while (rt->next()) {
+            status = strcmp(rt->getString(1).data(), "ON") == 0;
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool impl::MariaDriverInstanceImpl::commit() noexcept {
+    int comm = (unsigned char) mysql_commit(conn);
+    return comm == 0;
+}
+
+bool impl::MariaDriverInstanceImpl::rollback() noexcept {
+    int back = (unsigned char) mysql_rollback(conn);
+    return back == 0;
+}
+
+bool impl::MariaDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
+    id = (int64_t) mysql_insert_id(conn);
+    if (id) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool impl::MariaDriverInstanceImpl::begin() noexcept {
+    return mysql_query(conn, "BEGIN;") == 0;
+}

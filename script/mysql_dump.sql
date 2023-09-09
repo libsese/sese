@@ -1,8 +1,8 @@
--- MariaDB dump 10.19-11.1.0-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.6.12-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: db_test
 -- ------------------------------------------------------
--- Server version	11.1.0-MariaDB
+-- Server version	10.6.12-MariaDB-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,6 +18,48 @@
 CREATE DATABASE db_test;
 
 USE db_test;
+
+--
+-- Table structure for table `tb_begin`
+--
+
+DROP TABLE IF EXISTS `tb_begin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_begin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于begin测试';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_begin`
+--
+
+LOCK TABLES `tb_begin` WRITE;
+INSERT INTO `tb_begin` VALUES (1,'foo'),(2,'bar');
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_commit`
+--
+
+DROP TABLE IF EXISTS `tb_commit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_commit` (
+  `id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于提交测试';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_commit`
+--
+
+LOCK TABLES `tb_commit` WRITE;
+INSERT INTO `tb_commit` VALUES (1,'foo'),(2,'bar');
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tb_delete`
@@ -37,11 +79,29 @@ CREATE TABLE `tb_delete` (
 --
 
 LOCK TABLES `tb_delete` WRITE;
-/*!40000 ALTER TABLE `tb_delete` DISABLE KEYS */;
-INSERT INTO `tb_delete` VALUES
-(1,'foo'),
-(2,'bar');
-/*!40000 ALTER TABLE `tb_delete` ENABLE KEYS */;
+INSERT INTO `tb_delete` VALUES (1,'foo'),(2,'bar');
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_getInsertId`
+--
+
+DROP TABLE IF EXISTS `tb_getInsertId`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_getInsertId` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于获取自增id测试';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_getInsertId`
+--
+
+LOCK TABLES `tb_getInsertId` WRITE;
+INSERT INTO `tb_getInsertId` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
@@ -62,11 +122,7 @@ CREATE TABLE `tb_insert` (
 --
 
 LOCK TABLES `tb_insert` WRITE;
-/*!40000 ALTER TABLE `tb_insert` DISABLE KEYS */;
-INSERT INTO `tb_insert` VALUES
-(1,'foo'),
-(2,'bar');
-/*!40000 ALTER TABLE `tb_insert` ENABLE KEYS */;
+INSERT INTO `tb_insert` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
@@ -79,7 +135,7 @@ DROP TABLE IF EXISTS `tb_query`;
 CREATE TABLE `tb_query` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='此表用于查询';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于查询测试';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,11 +143,28 @@ CREATE TABLE `tb_query` (
 --
 
 LOCK TABLES `tb_query` WRITE;
-/*!40000 ALTER TABLE `tb_query` DISABLE KEYS */;
-INSERT INTO `tb_query` VALUES
-(1,'foo'),
-(2,'bar');
-/*!40000 ALTER TABLE `tb_query` ENABLE KEYS */;
+INSERT INTO `tb_query` VALUES (1,'foo'),(2,'bar');
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_rollBack`
+--
+
+DROP TABLE IF EXISTS `tb_rollBack`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_rollBack` (
+  `id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于回滚测试';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_rollBack`
+--
+
+LOCK TABLES `tb_rollBack` WRITE;
+INSERT INTO `tb_rollBack` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
@@ -112,11 +185,7 @@ CREATE TABLE `tb_stmt_delete` (
 --
 
 LOCK TABLES `tb_stmt_delete` WRITE;
-/*!40000 ALTER TABLE `tb_stmt_delete` DISABLE KEYS */;
-INSERT INTO `tb_stmt_delete` VALUES
-(1,'foo'),
-(2,'bar');
-/*!40000 ALTER TABLE `tb_stmt_delete` ENABLE KEYS */;
+INSERT INTO `tb_stmt_delete` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
@@ -137,11 +206,7 @@ CREATE TABLE `tb_stmt_insert` (
 --
 
 LOCK TABLES `tb_stmt_insert` WRITE;
-/*!40000 ALTER TABLE `tb_stmt_insert` DISABLE KEYS */;
-INSERT INTO `tb_stmt_insert` VALUES
-(1,'foo'),
-(2,'bar');
-/*!40000 ALTER TABLE `tb_stmt_insert` ENABLE KEYS */;
+INSERT INTO `tb_stmt_insert` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
@@ -162,11 +227,7 @@ CREATE TABLE `tb_stmt_query` (
 --
 
 LOCK TABLES `tb_stmt_query` WRITE;
-/*!40000 ALTER TABLE `tb_stmt_query` DISABLE KEYS */;
-INSERT INTO `tb_stmt_query` VALUES
-(1,'foo'),
-(2,'bar');
-/*!40000 ALTER TABLE `tb_stmt_query` ENABLE KEYS */;
+INSERT INTO `tb_stmt_query` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
@@ -187,11 +248,7 @@ CREATE TABLE `tb_stmt_update` (
 --
 
 LOCK TABLES `tb_stmt_update` WRITE;
-/*!40000 ALTER TABLE `tb_stmt_update` DISABLE KEYS */;
-INSERT INTO `tb_stmt_update` VALUES
-(1,'foo'),
-(2,'bar');
-/*!40000 ALTER TABLE `tb_stmt_update` ENABLE KEYS */;
+INSERT INTO `tb_stmt_update` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
@@ -212,11 +269,7 @@ CREATE TABLE `tb_update` (
 --
 
 LOCK TABLES `tb_update` WRITE;
-/*!40000 ALTER TABLE `tb_update` DISABLE KEYS */;
-INSERT INTO `tb_update` VALUES
-(1,'foo'),
-(2,'bar');
-/*!40000 ALTER TABLE `tb_update` ENABLE KEYS */;
+INSERT INTO `tb_update` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -228,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-23 21:14:59
+-- Dump completed on 2023-08-29 16:24:45

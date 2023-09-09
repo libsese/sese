@@ -2,7 +2,7 @@
 #include <catalog/pg_type_d.h>
 #include <sstream>
 
-sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(const std::string &stmt, int count, PGconn *conn) noexcept {
+sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(const std::string &stmt, uint32_t count, PGconn *conn) noexcept {
     this->stmt = stmt;
     this->count = count;
     this->conn = conn;

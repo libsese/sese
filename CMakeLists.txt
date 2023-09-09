@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(sese.db VERSION 1.1.2)
+project(sese-db VERSION 1.1.2)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
