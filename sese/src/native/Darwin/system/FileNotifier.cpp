@@ -88,6 +88,12 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
+FileNotifier::~FileNotifier() noexcept {
+    if (this->th) {
+        shutdown();
+    }
+}
+
 void FileNotifier::loopNonblocking() noexcept {
     FSEventStreamStart((FSEventStreamRef) this->stream);
 }

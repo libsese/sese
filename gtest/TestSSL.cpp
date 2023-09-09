@@ -29,12 +29,12 @@ TEST(TestSSL, Client) {
     ASSERT_EQ(client->connect(address), 0);
 
     *client << "GET / HTTP/1.1\r\n"
-               "Host: bing.com\r\n"
+               "Host: microsoft.com\r\n"
                "\r\n";
 
     char buffer[1024]{};
     client->read(buffer, sizeof(buffer));
-    SESE_INFO("%s", buffer);
+    // SESE_INFO("%s", buffer);
 
     client->shutdown(sese::net::Socket::ShutdownMode::Both);
     client->close();

@@ -19,7 +19,7 @@ namespace sese::service::v1 {
         std::string upgradePath = "/";
     };
 
-    class API Http2Service : public HttpService {
+    class API SESE_DEPRECATED_WITH("此实现已弃用") Http2Service : public HttpService {
     public:
         explicit Http2Service(Http2Config *config);
 

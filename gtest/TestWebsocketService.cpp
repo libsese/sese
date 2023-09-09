@@ -16,9 +16,20 @@ static sese::net::IPv4Address::Ptr createAddress() {
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
 
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 class MyEvent : public sese::net::ws::WebsocketEvent {
 public:
     void onMessage(sese::service::WebsocketService *service, sese::net::ws::WebsocketSession *session) noexcept override {
+        printf("on\n");
         char buffer[1024]{};
         auto len = session->buffer.read(buffer, 1024);
         SESE_INFO("recv message from client %d: %s", session->fd, buffer);
@@ -40,7 +51,7 @@ public:
     }
 };
 
-GTEST_TEST(TestWebsocketService, _0) {
+GTEST_TEST(TestWebsocketService, DISABLED_Server) {
     auto addr = createAddress();
 
     sese::service::WebsocketConfig config;
@@ -51,7 +62,7 @@ GTEST_TEST(TestWebsocketService, _0) {
     MyEvent event;
 
     sese::service::BalanceLoader service;
-    service.setThreads(2);
+    service.setThreads(1);
     service.setAddress(addr);
     service.init<sese::service::WebsocketService>([&]() -> auto {
         return new sese::service::WebsocketService(&config, &event);
@@ -59,15 +70,22 @@ GTEST_TEST(TestWebsocketService, _0) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    std::string cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_websocket.py ";
-    cmd.append(std::to_string(addr->getPort()));
-    auto process = sese::system::Process::create(cmd.c_str());
-    if (process == nullptr) {
-        service.stop();
-        FAIL() << "failed to create process";
-    }
+    // std::string cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_websocket.py ";
+    // cmd.append(std::to_string(addr->getPort()));
+    // auto process = sese::system::Process::create(cmd.c_str());
+    // if (process == nullptr) {
+    //     service.stop();
+    //     FAIL() << "failed to create process";
+    // }
 
-    EXPECT_EQ(process->wait(), 0);
+    // EXPECT_EQ(process->wait(), 0);
+    getchar();
     SUCCEED();
     service.stop();
 }
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif

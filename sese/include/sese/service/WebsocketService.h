@@ -22,7 +22,7 @@ namespace sese::service {
     };
 
     /// Websocket 服务
-    class API WebsocketService : public v1::HttpService {
+    class API SESE_DEPRECATED_WITH("此实现已弃用") WebsocketService : public v1::HttpService {
     public:
         /// 实例化 Websocket 服务
         /// \param config 配置

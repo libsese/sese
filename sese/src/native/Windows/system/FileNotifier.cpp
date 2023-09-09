@@ -33,6 +33,12 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
+FileNotifier::~FileNotifier() noexcept {
+    if (this->th) {
+        shutdown();
+    }
+}
+
 void FileNotifier::loopNonblocking() noexcept {
     auto proc = [this]() {
         std::wstring_convert<std::codecvt_utf8<wchar_t>> convert;

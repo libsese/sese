@@ -45,6 +45,8 @@ namespace sese::system {
         /// \retval nullptr 创建失败
         static FileNotifier::Ptr create(const std::string &path, FileNotifyOption *option) noexcept;
 
+        virtual ~FileNotifier() noexcept;
+
         /// 启动线程，开始处理变更事件
         void loopNonblocking() noexcept;
 

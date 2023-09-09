@@ -11,7 +11,7 @@ int system::StackInfo::WILL_SKIP = 1;
 system::StackInfo::StackInfo(int limit, int skip) noexcept {
     void **array = (void **) malloc(sizeof(void *) * limit);
     int frames = ::backtrace(array, limit);
-    char **strings = backtrace_symbols(array, limit);
+    char **strings = ::backtrace_symbols(array, limit);
     for (auto &&i: sese::Range<int>(skip, frames - 1)) {
         /* /tmp/tmp.zC0rrpZiXB/cmake-build-debug-ubuntu/gtest/TestStackInfo(function2+0x3c) [0x5599188f060d]
          *                                                                 ^         ^      ^              ^
@@ -27,6 +27,7 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
         stacks.emplace_back(SubStackInfo{symAddress, decodeSymbolName(symName)});
     }
 
+    free(strings);
     free(array);
 }
 

@@ -37,6 +37,12 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
+FileNotifier::~FileNotifier() noexcept {
+    if (this->th) {
+        shutdown();
+    }
+}
+
 void FileNotifier::loopNonblocking() noexcept {
     auto proc = [this]() {
         fd_set fdSet;
@@ -48,6 +54,9 @@ void FileNotifier::loopNonblocking() noexcept {
             FD_ZERO(&fdSet);
             FD_SET(inotifyFd, &fdSet);
             select(FD_SETSIZE, &fdSet, nullptr, nullptr, &timeout);
+            if (!isShutdown) {
+                break;
+            }
             if (FD_ISSET(inotifyFd, &fdSet)) {
                 auto pEvent = (inotify_event *) &buffer;
                 auto len = read(inotifyFd, buffer, sizeof(buffer));
@@ -88,6 +97,5 @@ void FileNotifier::shutdown() noexcept {
     isShutdown = true;
     th->join();
     th = nullptr;
-    close(watchFd);
     close(inotifyFd);
 }

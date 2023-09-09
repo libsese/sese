@@ -44,6 +44,7 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
         stacks.emplace_back(SubStackInfo{symAddress, decodeSymbolName(symName)});
     }
 
+    free(strings);
     free(array);
 }
 
