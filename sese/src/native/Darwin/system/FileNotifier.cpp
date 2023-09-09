@@ -89,7 +89,7 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
 }
 
 FileNotifier::~FileNotifier() noexcept {
-    if (this->th) {
+    if (this->stream) {
         shutdown();
     }
 }

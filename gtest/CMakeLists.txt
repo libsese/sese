@@ -18,12 +18,13 @@ add_definitions("-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
 add_executable(
         AllTestInMain
         AllTest.cpp
+        TestLogger.cpp
+        TestAsyncLogger.cpp
         TestPlugin/TestPlugin.cpp
         TestSharedMemory/TestSharedMemory.cpp
         TestAddress.cpp
         TestArgParser.cpp
         TestBase64.cpp
-        TestLogger.cpp
         TestEndian.cpp
         TestJson.cpp
         TestXML.cpp
@@ -59,7 +60,6 @@ add_executable(
         TestMemoryViewer.cpp
         TestUtil.cpp
         TestUuidBuilder.cpp
-        TestAsyncLogger.cpp
         TestFakeStream.cpp
         TestEncodingConverter.cpp
         TestPercentConverter.cpp
