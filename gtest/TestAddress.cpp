@@ -100,6 +100,6 @@ TEST(TestAddress, Family) {
     EXPECT_EQ(ip->getFamily(), 123);
 
     auto ipv6 = sese::net::IPv6Address::localhost();
-    ipv6->setFamily(456);
-    EXPECT_EQ(ipv6->getFamily(), 456);
+    ipv6->setFamily(96);
+    EXPECT_EQ(ipv6->getFamily(), 96);
 }
