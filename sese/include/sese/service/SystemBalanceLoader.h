@@ -81,6 +81,9 @@ bool sese::service::SystemBalanceLoader::init() noexcept {
     return sese::service::SystemBalanceLoader::init<Service>([]() -> Service * { return new Service; });
 }
 
+// 此处测试代码不便于模拟
+// GCOVR_EXCL_START
+
 template<class Service>
 bool sese::service::SystemBalanceLoader::init(std::function<Service *()> creator) noexcept {
     if (address == nullptr) return false;
@@ -130,3 +133,5 @@ freeSocket:
     socketVector.clear();
     return false;
 }
+
+// GCOVR_EXCL_STOP

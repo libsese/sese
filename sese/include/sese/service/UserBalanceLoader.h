@@ -100,6 +100,9 @@ public:
     std::queue<socket_t> socketQueue;
 };
 
+// 此处测试代码不便于模拟
+// GCOVR_EXCL_START
+
 template<class Service>
 bool sese::service::UserBalanceLoader::init() noexcept {
     return sese::service::UserBalanceLoader::init<Service>([]() -> Service * { return new Service; });
@@ -171,3 +174,5 @@ freeSocket:
     socket = nullptr;
     return false;
 }
+
+// GCOVR_EXCL_STOP

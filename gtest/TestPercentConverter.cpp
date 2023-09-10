@@ -28,6 +28,16 @@ TEST(TestPercentConverter, Normal_2) {
     ASSERT_EQ(std::string_view(buffer),  std::string_view("where%3Danywhere%26%E8%BF%99%E6%98%AF%3D%E6%B5%8B%E8%AF%95"));
 }
 
+TEST(TestPercentConverter, StringAPI_0) {
+    auto str = sese::PercentConverter::encode("你He好llo");
+    EXPECT_EQ(str, "%E4%BD%A0He%E5%A5%BDllo");
+}
+
+TEST(TestPercentConverter, StringAPI_1) {
+    auto result = sese::PercentConverter::encode("where=anywhere&这是=测试", sese::PercentConverter::urlExcludeChars);
+    EXPECT_EQ(result, "where%3Danywhere%26%E8%BF%99%E6%98%AF%3D%E6%B5%8B%E8%AF%95");
+}
+
 TEST(TestPercentConverter, Error_0) {
     char buffer[1024]{0};
     const char *string = "|50%RA";

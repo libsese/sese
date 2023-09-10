@@ -34,9 +34,6 @@ namespace sese {
         // [[nodiscard]] size_t getCurrentReadPos();
 
     private:
-        void swap(AbstractByteBuffer &other) noexcept override{};
-
-    private:
         std::mutex mutex;
     };
 } // namespace sese

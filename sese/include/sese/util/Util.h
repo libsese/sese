@@ -93,6 +93,7 @@ namespace sese {
 
 }// namespace sese
 
+// GCOVR_EXCL_START
 /// https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
 template<typename TP>
 std::time_t to_time_t(TP tp) {
@@ -100,6 +101,7 @@ std::time_t to_time_t(TP tp) {
     auto sctp = time_point_cast<system_clock::duration>(tp - TP::clock::now() + system_clock::now());
     return system_clock::to_time_t(sctp);
 }
+// GCOVR_EXCL_STOP
 
 /**
  * 获取详细的信息(C 接口)

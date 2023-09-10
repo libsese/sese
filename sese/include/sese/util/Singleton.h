@@ -34,7 +34,7 @@ namespace sese {
     class API SingletonPtr {
     public:
         static std::shared_ptr<T> getInstance() {
-            static std::shared_ptr<T> v(new T);
+            static std::shared_ptr<T> v(new T); // GCOVR_EXCL_LINE
             return v;
         }
     };

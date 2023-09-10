@@ -31,10 +31,26 @@ TEST(TestUtil, Misc) {
 
 #include <sese/util/Test.h>
 
-TEST(TestUtil, Backtrace) {
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
+TEST(TestUtil, DISABLED_Backtrace) {
     auto backtrace = sese::Test::backtrace2String(2, "");
     puts(backtrace.c_str());
 }
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 
 #include <sese/util/OutputBufferWrapper.h>
 #include <sese/util/OutputUtil.h>

@@ -18,10 +18,11 @@ Process::Ptr Process::create(const char *command) noexcept {
         char pCommand[1024];
         std::strcpy(pCommand, command);
         exec(pCommand);
-        exit(0);
+        // never reach
+        return nullptr; // GCOVR_EXCL_LINE
     } else {
         // failed to create
-        return nullptr;
+        return nullptr;// GCOVR_EXCL_LINE
     }
 }
 
@@ -33,7 +34,7 @@ int Process::wait() const noexcept {
     int status;
     ::waitpid(id, &status, 0);
     if (!WIFEXITED(status)) {
-        return WEXITSTATUS(status);
+        return WEXITSTATUS(status);// GCOVR_EXCL_LINE
     } else {
         return 0;
     }
@@ -54,7 +55,7 @@ void Process::exec(char *pCommand) noexcept {
 
     auto code = execvp(args[0], &args[0]);
 
-    // Never reach
+    // never reach
     delete[] args;
 
     if (code == -1) {

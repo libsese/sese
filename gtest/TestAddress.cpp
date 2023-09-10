@@ -93,3 +93,13 @@ TEST(TestAddress, IPv6Address) {
     ASSERT_NE(address3, nullptr);
     SESE_INFO("local subnet mask: %s", address3->getAddress().c_str());
 }
+
+TEST(TestAddress, Family) {
+    auto ip = sese::net::IPv4Address::localhost();
+    ip->setFamily(123);
+    EXPECT_EQ(ip->getFamily(), 123);
+
+    auto ipv6 = sese::net::IPv6Address::localhost();
+    ipv6->setFamily(456);
+    EXPECT_EQ(ipv6->getFamily(), 456);
+}

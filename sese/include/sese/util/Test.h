@@ -41,7 +41,7 @@ namespace sese {
           * @param skip 跳过个数
           * @return 调试信息
           */
-        static std::string backtrace2String(int size, const std::string &prefix, int skip = WILL_SKIP);
+        SESE_DEPRECATED static std::string backtrace2String(int size, const std::string &prefix, int skip = WILL_SKIP);
 
         /**
          * @brief 替代断言宏方案

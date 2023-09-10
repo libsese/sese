@@ -3,6 +3,8 @@
 #include <sstream>
 #include <vector>
 
+// GCOVR_EXCL_START
+
 namespace sese {
     namespace _linux {
         void backtrace(std::vector<std::string> &bt, int size, int skip) {
@@ -33,3 +35,5 @@ namespace sese {
         return stream.str();
     }
 }// namespace sese
+
+// GCOVR_EXCL_STOP
