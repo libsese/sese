@@ -5,7 +5,8 @@
  * @brief Base64 转换器
  */
 #pragma once
-#include "sese/util/Stream.h"
+
+#include "sese/io/Stream.h"
 #include "sese/util/NotInstantiable.h"
 
 #ifdef _WIN32
@@ -19,6 +20,9 @@ namespace sese {
      */
     class API Base64Converter final : public NotInstantiable {
     public:
+        using OutputStream = sese::io::OutputStream;
+        using InputStream = sese::io::InputStream;
+
         static void encode(const InputStream::Ptr &src, const OutputStream::Ptr &dest);
         static void encode(InputStream *src, OutputStream *dest);
 

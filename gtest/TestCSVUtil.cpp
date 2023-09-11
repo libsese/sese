@@ -1,7 +1,7 @@
 #include "sese/config/CSVReader.h"
 #include "sese/config/CSVWriter.h"
-#include "sese/util/InputBufferWrapper.h"
-#include "sese/util/ConsoleOutputStream.h"
+#include "sese/io/InputBufferWrapper.h"
+#include "sese/io/ConsoleOutputStream.h"
 #include "gtest/gtest.h"
 
 TEST(TestCSVUtil, Reader) {
@@ -9,7 +9,7 @@ TEST(TestCSVUtil, Reader) {
                           "A2,B2,C2,D2,E2,F2\r\n"
                           "A3,,C3,\"D3\",,\n"
                           "A4,B4,C4,D4,E4,";
-    auto in = sese::InputBufferWrapper(buffer, sizeof(buffer) - 1);
+    auto in = sese::io::InputBufferWrapper(buffer, sizeof(buffer) - 1);
     sese::CSVReader reader(&in);
     sese::CSVReader::Row row;
     do {
@@ -29,7 +29,7 @@ TEST(TestCSVUtil, Reader) {
 }
 
 TEST(TestCSVUtil, Writer) {
-    sese::ConsoleOutputStream console;
+    sese::io::ConsoleOutputStream console;
     sese::CSVWriter writer1(&console, '|');
     writer1.write({"A1", "B1", "C1", ""});
     writer1.write({"A2", "B2", "C2"});

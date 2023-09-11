@@ -8,7 +8,7 @@
 #pragma once
 
 #include "sese/config/json/JsonTypes.h"
-#include "sese/util/Stream.h"
+#include "sese/io/Stream.h"
 #include "sese/util/NotInstantiable.h"
 
 #include <queue>
@@ -22,9 +22,10 @@ namespace sese::json {
     /// Json 序列化工具类
     class API JsonUtil : NotInstantiable {
     public:
+        using InputStream = io::InputStream;
+        using OutputStream = io::OutputStream;
         using Tokens = std::queue<std::string>;
 
-    public:
         /**
          * 从流中反序列化 Json 对象
          * @param inputStream 输入流

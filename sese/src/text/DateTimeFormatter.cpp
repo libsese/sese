@@ -1,6 +1,6 @@
 #include "sese/text/DateTimeFormatter.h"
 #include "sese/text/StringBuilder.h"
-#include "sese/util/InputBufferWrapper.h"
+#include "sese/io/InputBufferWrapper.h"
 
 #include <cstring>
 #include <ctime>
@@ -57,7 +57,7 @@ static int count(const char &ch, const char *str) {
 
 std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime, const std::string &pattern) {
     auto builder = StringBuilder(128);
-    auto input = sese::InputBufferWrapper(pattern.c_str(), pattern.length());// GCOVR_EXCL_LINE
+    auto input = sese::io::InputBufferWrapper(pattern.c_str(), pattern.length());// GCOVR_EXCL_LINE
 
     while (true) {
         char buffer[5]{};

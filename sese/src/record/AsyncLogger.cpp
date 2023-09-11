@@ -8,8 +8,8 @@ using namespace sese::record;
 using namespace std::chrono_literals;
 
 AsyncLogger::AsyncLogger() : Logger() {
-    currentBuffer = new FixedBuilder(RECORD_BUFFER_SIZE);
-    nextBuffer = new FixedBuilder(RECORD_BUFFER_SIZE);
+    currentBuffer = new io::FixedBuilder(RECORD_BUFFER_SIZE);
+    nextBuffer = new io::FixedBuilder(RECORD_BUFFER_SIZE);
 
     thread = std::make_unique<Thread>([this] { loop(); }, "AsyncLogger");
     isShutdown = false;
@@ -39,7 +39,7 @@ void AsyncLogger::log(const Event::Ptr &event) noexcept {
             currentBuffer = nextBuffer;
             nextBuffer = nullptr;
         } else {
-            currentBuffer = new FixedBuilder(RECORD_BUFFER_SIZE);
+            currentBuffer = new io::FixedBuilder(RECORD_BUFFER_SIZE);
         }
         currentBuffer->write(content.data(), content.length());
         currentBuffer->write("\n", 1);
@@ -49,9 +49,9 @@ void AsyncLogger::log(const Event::Ptr &event) noexcept {
 }
 
 void AsyncLogger::loop() noexcept {
-    auto buffer1 = new FixedBuilder(RECORD_BUFFER_SIZE);
-    auto buffer2 = new FixedBuilder(RECORD_BUFFER_SIZE);
-    std::vector<FixedBuilder *> buffer2Write;
+    auto buffer1 = new io::FixedBuilder(RECORD_BUFFER_SIZE);
+    auto buffer2 = new io::FixedBuilder(RECORD_BUFFER_SIZE);
+    std::vector<io::FixedBuilder *> buffer2Write;
 
     while (true) {
         if (isShutdown) break;
@@ -72,7 +72,7 @@ void AsyncLogger::loop() noexcept {
         // buffer 过多，触发几率极小
         // GCOVR_EXCL_START
         if (buffer2Write.size() > 25) {
-            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuilder *buffer) {
+            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](io::FixedBuilder *buffer) {
                 delete buffer;
             });
             buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());
@@ -90,7 +90,7 @@ void AsyncLogger::loop() noexcept {
 
         // 移除过多的缓冲区，避免堆积过多
         if (buffer2Write.size() > 2) {
-            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](FixedBuilder *buffer) {
+            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](io::FixedBuilder *buffer) {
                 delete buffer;// GCOVR_EXCL_LINE
             });
             buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());

@@ -1,7 +1,7 @@
 #include "sese/convert/PercentConverter.h"
 #include "sese/text/StringBuilder.h"
 
-using sese::OutputStream;
+using sese::io::OutputStream;
 using sese::PercentConverter;
 
 std::set<char> sese::PercentConverter::urlExcludeChars{
@@ -12,7 +12,7 @@ char inline getEncodeChar(unsigned char ch) {
     return ch + (ch >= 0 && ch <= 9 ? 48 : 55);
 }
 
-void PercentConverter::encode(const char *src, sese::OutputStream *dest) {
+void PercentConverter::encode(const char *src, OutputStream *dest) {
     unsigned char buffer[3]{'%'};
     auto *p = reinterpret_cast<const unsigned char *>(src);
     while (*p != 0) {
@@ -36,7 +36,7 @@ void PercentConverter::encode(const char *src, const OutputStream::Ptr &dest, st
     encode(src, dest.get(), excludeChars);
 }
 
-void PercentConverter::encode(const char *src, sese::OutputStream *dest, std::set<char> &excludeChars) {
+void PercentConverter::encode(const char *src, OutputStream *dest, std::set<char> &excludeChars) {
     unsigned char buffer[3]{'%'};
     auto *p = reinterpret_cast<const unsigned char *>(src);
     while (*p != 0) {
@@ -75,7 +75,7 @@ bool PercentConverter::decode(const char *src, const OutputStream::Ptr &dest) {
     return decode(src, dest.get());
 }
 
-bool PercentConverter::decode(const char *src, sese::OutputStream *dest) {
+bool PercentConverter::decode(const char *src, OutputStream *dest) {
     char decodeChar;
     char ch1;
     char ch2;

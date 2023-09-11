@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "sese/util/OutputStream.h"
+#include "sese/io/OutputStream.h"
 
 #include <vector>
 #include <string>
@@ -16,6 +16,7 @@ namespace sese {
     /// CSV 流写入器
     class API CSVWriter {
     public:
+        using OutputStream = io::OutputStream;
         using Row = std::vector<std::string>;
 
         static const char *CRLF;

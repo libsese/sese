@@ -1,12 +1,12 @@
-#include <sese/util/OutputUtil.h>
-#include <sese/util/FixedBuffer.h>
-#include <sese/util/FixedBuilder.h>
+#include "sese/io/OutputUtil.h"
+#include "sese/io/FixedBuffer.h"
+#include "sese/io/FixedBuilder.h"
 
 #include <gtest/gtest.h>
 
 TEST(TestFixedBuffer, Write) {
     auto size = 16;
-    auto buffer = sese::FixedBuffer(size);
+    auto buffer = sese::io::FixedBuffer(size);
 
     int64_t len;
     std::string data0 = "1234567890";
@@ -22,7 +22,7 @@ TEST(TestFixedBuffer, Write) {
 
 TEST(TestFixedBuffer, Read) {
     auto size = 16;
-    auto buffer = sese::FixedBuffer(16);
+    auto buffer = sese::io::FixedBuffer(16);
     ASSERT_EQ(buffer.write("ABCDEFGHIJKLMNOP", 16), 16);
 
     int64_t len;
@@ -36,7 +36,7 @@ TEST(TestFixedBuffer, Read) {
 
 TEST(TestFixedBuffer, Peek) {
     auto size = 16;
-    auto buffer = sese::FixedBuffer(16);
+    auto buffer = sese::io::FixedBuffer(16);
     ASSERT_EQ(buffer << "ABCDEFGHIJKLMNOP", 16);
 
     int64_t len;
@@ -51,7 +51,7 @@ TEST(TestFixedBuffer, Peek) {
 }
 
 TEST(TestFixedBuffer, Misc_0) {
-    auto buffer = sese::FixedBuilder(10);
+    auto buffer = sese::io::FixedBuilder(10);
     buffer.write("Hello", 5);
 
     auto i = buffer;
@@ -64,7 +64,7 @@ TEST(TestFixedBuffer, Misc_0) {
 }
 
 TEST(TestFixedBuffer, Misc_1) {
-    auto buffer = sese::FixedBuffer(10);
+    auto buffer = sese::io::FixedBuffer(10);
     buffer.write("Hello", 5);
     ASSERT_EQ(buffer.getReadableSize(), 5);
     ASSERT_EQ(buffer.getWriteableSize(), 5);

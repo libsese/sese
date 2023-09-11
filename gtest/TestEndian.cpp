@@ -1,6 +1,6 @@
 #include "sese/record/LogHelper.h"
 #include "sese/util/MemoryViewer.h"
-#include "sese/util/OutputBufferWrapper.h"
+#include "sese/io/OutputBufferWrapper.h"
 #include "gtest/gtest.h"
 
 TEST(TestEndian, Test16) {
@@ -25,8 +25,8 @@ TEST(TestEndian, MemoryViewer) {
     sese::record::LogHelper log;
     uint32_t value = 0x12345678;
     char buffer[128]{};
-    sese::OutputBufferWrapper output0(buffer, 64);
-    sese::OutputBufferWrapper output1(buffer + 64, 64);
+    sese::io::OutputBufferWrapper output0(buffer, 64);
+    sese::io::OutputBufferWrapper output1(buffer + 64, 64);
     sese::MemoryViewer::peer32(&output0, &value, EndianType::Big);
     sese::MemoryViewer::peer32(&output1, &value, EndianType::Little);
     log.info("value view on big endian   : %s", buffer);

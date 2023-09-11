@@ -6,12 +6,12 @@
 
 #pragma once
 
-#include "sese/util/OutputStream.h"
+#include "sese/io/OutputStream.h"
 
 namespace sese {
 
     /// GZip 文件输出流（压缩）
-    class API GZipFileOutputStream : public OutputStream {
+    class API GZipFileOutputStream : public io::OutputStream {
     public:
         using Ptr = std::unique_ptr<GZipFileOutputStream>;
 

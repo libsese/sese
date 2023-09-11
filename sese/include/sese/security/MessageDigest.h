@@ -7,13 +7,15 @@
 #pragma once
 
 #include "sese/util/NotInstantiable.h"
-#include "sese/util/InputStream.h"
+#include "sese/io/InputStream.h"
 
 #include <memory>
 
 namespace sese::security {
     class MessageDigest : public NotInstantiable {
     public:
+        using InputStream = io::InputStream;
+
         enum class Type {
             // MD4,
             MD5,

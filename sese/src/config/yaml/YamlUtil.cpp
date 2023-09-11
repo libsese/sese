@@ -7,7 +7,7 @@
 #pragma warning(disable : 4996)
 #endif
 
-sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(sese::InputStream *input, size_t level) noexcept {
+sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(InputStream *input, size_t level) noexcept {
     TokensQueue tokensQueue;
     while (true) {
         decltype(auto) line = sese::yaml::YamlUtil::getLine(input);
@@ -30,7 +30,7 @@ sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(sese::InputStream *input
     }
 }
 
-void sese::yaml::YamlUtil::serialize(const Data::Ptr &data, sese::OutputStream *output) noexcept {
+void sese::yaml::YamlUtil::serialize(const Data::Ptr &data, OutputStream *output) noexcept {
     if (data->getType() == DataType::ObjectData) {
         auto sub = dynamic_cast<ObjectData *>(data.get());// GCOVR_EXCL_LINE
         serializeObject(sub, output, 0);
@@ -55,7 +55,7 @@ int sese::yaml::YamlUtil::getSpaceCount(const std::string &line) noexcept {
     return value;
 }
 
-std::tuple<int, std::string> sese::yaml::YamlUtil::getLine(sese::InputStream *input) noexcept {
+std::tuple<int, std::string> sese::yaml::YamlUtil::getLine(InputStream *input) noexcept {
     sese::text::StringBuilder builder(1024);
     char ch;
     while (true) {
@@ -351,13 +351,13 @@ constexpr auto getSpaceArray = []() {
     return array;
 };
 
-void sese::yaml::YamlUtil::writeSpace(size_t count, sese::OutputStream *output) noexcept {
+void sese::yaml::YamlUtil::writeSpace(size_t count, OutputStream *output) noexcept {
     auto buffer = getSpaceArray();
     auto size = std::min<size_t>(1024, count);
     output->write(buffer.data(), size);
 }
 
-void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, sese::OutputStream *output, size_t level) noexcept {
+void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, OutputStream *output, size_t level) noexcept {
     for (decltype(auto) item: *objectData) {
         if (item.second->getType() == DataType::ObjectData) {
             auto sub = dynamic_cast<ObjectData *>(item.second.get());// GCOVR_EXCL_LINE
@@ -391,7 +391,7 @@ void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, sese::OutputS
     }
 }
 
-void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, sese::OutputStream *output, size_t level) noexcept {
+void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, OutputStream *output, size_t level) noexcept {
     auto count = 0;
     for (decltype(auto) item: *arrayData) {
         if (item->getType() == DataType::ObjectData) {

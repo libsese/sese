@@ -5,7 +5,7 @@
  * @brief 百分号编码转换器
  */
 #pragma once
-#include "sese/util/OutputStream.h"
+#include "sese/io/OutputStream.h"
 #include "sese/util/NotInstantiable.h"
 
 #include <set>
@@ -21,6 +21,7 @@ namespace sese {
      */
     class API PercentConverter : public NotInstantiable {
     public:
+        using OutputStream = io::OutputStream;
 
         static void encode(const char *src, const OutputStream::Ptr &dest);
 

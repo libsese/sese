@@ -1,12 +1,15 @@
 #pragma once
-#include "Endian.h"
-#include "OutputStream.h"
-#include "NotInstantiable.h"
+
+#include "sese/util/Endian.h"
+#include "sese/util/NotInstantiable.h"
+#include "sese/io/OutputStream.h"
 
 namespace sese {
 
     class API MemoryViewer : public NotInstantiable {
     public:
+        using OutputStream = sese::io::OutputStream;
+
         /// \brief 获取内存视图
         /// \param output 输出流
         /// \param position 内存地址

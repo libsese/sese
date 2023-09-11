@@ -8,8 +8,8 @@
 #pragma once
 
 #include "sese/Config.h"
-#include "sese/util/InputStream.h"
-#include "sese/util/OutputStream.h"
+#include "sese/io/InputStream.h"
+#include "sese/io/OutputStream.h"
 
 #include <chrono>
 
@@ -89,7 +89,7 @@ namespace sese {
      */
     extern API int64_t getErrorCode();
 
-    size_t streamMove(sese::OutputStream *out, sese::InputStream *in, size_t size) noexcept;
+    size_t streamMove(sese::io::OutputStream *out, sese::io::InputStream *in, size_t size) noexcept;
 
 }// namespace sese
 

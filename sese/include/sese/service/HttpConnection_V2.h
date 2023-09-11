@@ -42,7 +42,7 @@ namespace sese::service::v2 {
         net::http::Request req;
         net::http::Response resp;
 
-        FileStream::Ptr file;
+        io::FileStream::Ptr file;
         size_t fileSize = 0;
         std::string contentType = "application/x-";
         std::vector<net::http::Range> ranges;
@@ -64,7 +64,7 @@ namespace sese::service::v2 {
         net::http::Request req;
         net::http::Response resp;
 
-        FileStream::Ptr file;
+        io::FileStream::Ptr file;
         size_t fileSize = 0;
         /// 剩余内容长度
         /// 在多分段请求的情况下，contentLength 一定大于 fileSize

@@ -8,8 +8,8 @@
 #include <sese/net/dns/FrameHeader.h>
 #include <sese/net/dns/Query.h>
 #include <sese/net/dns/Answer.h>
-#include <sese/util/InputStream.h>
-#include <sese/util/OutputStream.h>
+#include <sese/io/InputStream.h>
+#include <sese/io/OutputStream.h>
 
 #include <vector>
 
@@ -21,6 +21,9 @@ namespace sese::net::dns {
     /// DNS 帧编码解码工具
     class API DNSUtil {
     public:
+        using InputStream = io::InputStream;
+        using OutputStream = io::OutputStream;
+
         /// 从 12 字节缓存中读取帧头信息
         /// \param buf 12 字节缓存
         /// \param info 帧头信息存放
@@ -45,7 +48,7 @@ namespace sese::net::dns {
         /// \param vector 输出
         /// \param buffer 原始缓存，用于解压索引
         /// \return 成功与否
-        static bool decodeAnswers(size_t acount, sese::InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept;
+        static bool decodeAnswers(size_t acount, InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept;
 
         /// 编码一个或多个 Query
         /// \param output 输出
@@ -64,7 +67,7 @@ namespace sese::net::dns {
         /// \param level 指示函数允许的递归深度
         /// \param finsh 该参数用于函数上下文中
         /// \return 成功与否
-        static bool decodeDomain(sese::InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept;
+        static bool decodeDomain(InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept;
     private:
 
         static void decodeFrameFlagsInfo(const uint8_t buf[2], sese::net::dns::FrameFlagsInfo &info) noexcept;

@@ -1,6 +1,6 @@
 #include "sese/config/ConfigUtil.h"
-#include "sese/util/InputBufferWrapper.h"
-#include "sese/util/ConsoleOutputStream.h"
+#include "sese/io/InputBufferWrapper.h"
+#include "sese/io/ConsoleOutputStream.h"
 
 #include "gtest/gtest.h"
 
@@ -14,7 +14,7 @@ TEST(TestIni, Read) {
         "height = 1080"
     };
 
-    auto input = sese::InputBufferWrapper(ini, sizeof(ini) - 1);
+    auto input = sese::io::InputBufferWrapper(ini, sizeof(ini) - 1);
     auto config = sese::ConfigUtil::readFrom(&input);
     ASSERT_NE(config, nullptr);
 
@@ -43,6 +43,6 @@ TEST(TestIni, Write) {
     section->setKeyValue("args", "*");
     config->setSection(section);
 
-    auto output = sese::ConsoleOutputStream();
+    auto output = sese::io::ConsoleOutputStream();
     sese::ConfigUtil::write2(config, &output);
 }

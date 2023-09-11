@@ -8,13 +8,15 @@
 #pragma once
 
 #include "sese/convert/ZlibConfig.h"
-#include "sese/util/OutputStream.h"
+#include "sese/io/OutputStream.h"
 
 namespace sese {
 
     /// 解压器
     class API Decompressor {
     public:
+        using OutputStream = sese::io::OutputStream;
+
         /// 创建一个解压器
         /// \param type 压缩格式
         /// \param bufferSize 设置内部缓存大小

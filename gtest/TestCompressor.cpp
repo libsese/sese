@@ -3,16 +3,16 @@
 #include "sese/convert/GZipFileOutputStream.h"
 #include "sese/convert/GZipFileInputStream.h"
 #include "sese/record/LogHelper.h"
-#include "sese/util/ByteBuilder.h"
-#include "sese/util/OutputBufferWrapper.h"
+#include "sese/io/ByteBuilder.h"
+#include "sese/io/OutputBufferWrapper.h"
 #include "gtest/gtest.h"
 
 TEST(TestCompress, ZLIB) {
     sese::Compressor compressor(sese::CompressionType::ZLIB, 9, 8);
-    sese::ByteBuilder builder(512);
+    sese::io::ByteBuilder builder(512);
 
     char temp[8];
-    sese::OutputBufferWrapper out(temp, 8);
+    sese::io::OutputBufferWrapper out(temp, 8);
 
     char compressBufferIn[] = {"using zlib with cpp"};
     compressor.input(compressBufferIn, sizeof(compressBufferIn));

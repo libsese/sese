@@ -3,7 +3,7 @@
 const char *sese::CSVWriter::CRLF = "\r\n";
 const char *sese::CSVWriter::LF = "\n";
 
-sese::CSVWriter::CSVWriter(sese::OutputStream *dest, char splitChar, bool crlf) noexcept {
+sese::CSVWriter::CSVWriter(OutputStream *dest, char splitChar, bool crlf) noexcept {
     CSVWriter::dest = dest;
     CSVWriter::splitChar = splitChar;
     CSVWriter::isCRLF = crlf;

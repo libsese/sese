@@ -8,13 +8,15 @@
 #pragma once
 
 #include "sese/convert/ZlibConfig.h"
-#include "sese/util/OutputStream.h"
+#include "sese/io/OutputStream.h"
 
 namespace sese {
 
     /// 压缩器
     class API Compressor {
     public:
+        using OutputStream = sese::io::OutputStream;
+
         /// 创建一个压缩器
         /// \param type 压缩格式 - 此处不建议使用 GZIP 选项
         /// \param level 压缩等级

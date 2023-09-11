@@ -251,7 +251,7 @@ void sese::service::v1::Http2Service::writeAck(net::http::HttpConnection *conn) 
 void sese::service::v1::Http2Service::writeHeader(net::http::Http2Connection *conn2, const net::http::Http2Stream::Ptr &stream) noexcept {
     auto conn = (net::http::HttpConnection *) conn2->data;
 
-    ByteBuilder temp(4096);
+    io::ByteBuilder temp(4096);
     auto headerSize = net::http::HPackUtil::encode(&temp, conn2->dynamicTable2, stream->resp, stream->req);
 
     net::http::Http2FrameInfo info{};

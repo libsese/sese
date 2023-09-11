@@ -1,5 +1,5 @@
 #include <sese/config/xml/XmlUtil.h>
-#include <sese/util/BufferedStream.h>
+#include <sese/io/BufferedStream.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Util.h>
 
@@ -221,7 +221,7 @@ namespace sese::xml {
         return element;
     }
 
-    void XmlUtil::serialize(const Element::Ptr &object, sese::OutputStream *stream) noexcept {
+    void XmlUtil::serialize(const Element::Ptr &object, OutputStream *stream) noexcept {
         auto name = object->getName();
         auto attributes = object->getAttributes();
         auto value = object->getValue();

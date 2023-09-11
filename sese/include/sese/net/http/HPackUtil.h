@@ -1,7 +1,7 @@
 #pragma once
 
-#include "sese/util/InputStream.h"
-#include "sese/util/OutputStream.h"
+#include "sese/io/InputStream.h"
+#include "sese/io/OutputStream.h"
 #include "sese/util/NotInstantiable.h"
 #include "sese/net/http/Header.h"
 #include "sese/net/http/DynamicTable.h"
@@ -10,6 +10,9 @@
 namespace sese::net::http {
     class API HPackUtil : public NotInstantiable {
     public:
+        using InputStream = io::InputStream;
+        using OutputStream = io::OutputStream;
+
         /// 尝试从流中解析 HPACK 压缩后的 HEADERS
         /// \param src 流来源
         /// \param contentLength 需要解析的内容长度

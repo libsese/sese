@@ -16,11 +16,11 @@ std::string sese::UniReader::readLine() {
 }
 
 std::shared_ptr<sese::UniReader> sese::UniReader::create(const std::string &fileName) noexcept {
-    auto fileStream = FileStream::create(fileName, TEXT_READ_EXISTED);
+    auto fileStream = sese::io::FileStream::create(fileName, TEXT_READ_EXISTED);
     if (!fileStream) {
         return nullptr;
     }
-    auto reader = std::make_shared<StreamReader>(fileStream);
+    auto reader = std::make_shared<sese::io::StreamReader>(fileStream);
     auto uniReader = new UniReader();
     uniReader->fileStream = fileStream;
     uniReader->reader = reader;

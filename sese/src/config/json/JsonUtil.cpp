@@ -1,6 +1,6 @@
 #include <sese/config/json/JsonUtil.h>
-#include <sese/util/BufferedOutputStream.h>
-#include <sese/util/BufferedInputStream.h>
+#include "sese/io/BufferedOutputStream.h"
+#include "sese/io/BufferedInputStream.h"
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Util.h>
 

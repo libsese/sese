@@ -3,8 +3,8 @@
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
 #include <sese/net/http/Range.h>
-#include <sese/util/ByteBuilder.h>
-#include <sese/util/FileStream.h>
+#include <sese/io/ByteBuilder.h>
+#include <sese/io/FileStream.h>
 #include <sese/service/TimerableService.h>
 
 namespace sese::net::http {
@@ -25,10 +25,10 @@ namespace sese::net::http {
         net::http::Request req;
         net::http::Response resp;
 
-        FileStream::Ptr file;
+        io::FileStream::Ptr file;
         size_t fileSize = 0;
 
-        ByteBuilder buffer{4096};// 响应 Header 缓冲区
+        io::ByteBuilder buffer{4096};// 响应 Header 缓冲区
         uint64_t requestSize = 0; // 请求大小
 
         std::string contentType = "application/x-";           // 默认响应内容类型 - 仅在 status 为 FILE 且 存在多段 Range 时使用

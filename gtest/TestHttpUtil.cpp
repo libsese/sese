@@ -1,7 +1,7 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/net/http/Range.h>
-#include <sese/util/InputBufferWrapper.h>
-#include <sese/util/OutputBufferWrapper.h>
+#include <sese/io/InputBufferWrapper.h>
+#include <sese/io/OutputBufferWrapper.h>
 #include <sese/record/Marco.h>
 
 #include <gtest/gtest.h>
@@ -9,7 +9,7 @@
 /// 非法的 HTTP 头部结尾
 GTEST_TEST(TestHttpUtil, GetLine_0) {
     auto str = "GET / HTTP/1.1";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::RequestHeader req;
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::recvRequest(&input, &req));
@@ -18,7 +18,7 @@ GTEST_TEST(TestHttpUtil, GetLine_0) {
 /// 超过单行长度限制的 HTTP 头部
 GTEST_TEST(TestHttpUtil, GetLine_1) {
     char buffer[HTTP_MAX_SINGLE_LINE + 1]{};
-    auto input = sese::InputBufferWrapper(buffer, sizeof(buffer));
+    auto input = sese::io::InputBufferWrapper(buffer, sizeof(buffer));
 
     sese::net::http::RequestHeader req;
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::recvRequest(&input, &req));
@@ -27,7 +27,7 @@ GTEST_TEST(TestHttpUtil, GetLine_1) {
 /// 非法的 FirstLine
 GTEST_TEST(TestHttpUtil, RecvRequest_0) {
     auto str = "GET / HTTP/1.1 Hello\r\n";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::RequestHeader req;
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::recvRequest(&input, &req));
@@ -36,7 +36,7 @@ GTEST_TEST(TestHttpUtil, RecvRequest_0) {
 /// 非法的 HTTP 版本
 GTEST_TEST(TestHttpUtil, RecvRequest_1) {
     auto str = "GET / HTTP/0.9\r\n\r\n";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::RequestHeader req;
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::recvRequest(&input, &req));
@@ -47,7 +47,7 @@ GTEST_TEST(TestHttpUtil, RecvRequest_1) {
 GTEST_TEST(TestHttpUtil, RecvRequest_2) {
     auto str = "GET / HTTP/1.1\r\n"
                "Version: 0.0.1";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::RequestHeader req;
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::recvRequest(&input, &req));
@@ -57,7 +57,7 @@ GTEST_TEST(TestHttpUtil, RecvRequest_3) {
     auto str = "GET / HTTP/1.1\r\n"
                "Version: 0.0.1\r\n"
                "\r\n";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::RequestHeader req;
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::recvRequest(&input, &req));
@@ -66,7 +66,7 @@ GTEST_TEST(TestHttpUtil, RecvRequest_3) {
 
 GTEST_TEST(TestHttpUtil, SendRequest_0) {
     char buffer[1024]{};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
     sese::net::http::RequestHeader req{
             {"Host", "www.example.com"},
@@ -77,7 +77,7 @@ GTEST_TEST(TestHttpUtil, SendRequest_0) {
 /// 发送字段失败
 GTEST_TEST(TestHttpUtil, SendRequest_1) {
     char buffer[18]{};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
     sese::net::http::RequestHeader req{
             {"Host", "www.example.com"},
@@ -88,7 +88,7 @@ GTEST_TEST(TestHttpUtil, SendRequest_1) {
 /// 非法的 HTTP 头部结尾
 GTEST_TEST(TestHttpUtil, RecvResponse_0) {
     auto str = "HTTP/1.1 200";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::ResponseHeader resp;
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::recvResponse(&input, &resp));
@@ -97,7 +97,7 @@ GTEST_TEST(TestHttpUtil, RecvResponse_0) {
 /// 非法的 HTTP 版本
 GTEST_TEST(TestHttpUtil, RecvResponse_1) {
     auto str = "HTTP/0.1 200\r\n\r\n";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::ResponseHeader resp;
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::recvResponse(&input, &resp));
@@ -108,7 +108,7 @@ GTEST_TEST(TestHttpUtil, RecvResponse_1) {
 GTEST_TEST(TestHttpUtil, RecvResponse_2) {
     auto str = "HTTP/1.1 200\r\n"
                "Version: 0.0.1";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::ResponseHeader resp;
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::recvResponse(&input, &resp));
@@ -118,7 +118,7 @@ GTEST_TEST(TestHttpUtil, RecvResponse_3) {
     auto str = "HTTP/1.1 200\r\n"
                "Version: 0.0.1\r\n"
                "\r\n";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::ResponseHeader resp;
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::recvResponse(&input, &resp));
@@ -128,7 +128,7 @@ GTEST_TEST(TestHttpUtil, RecvResponse_3) {
 /// 非法的 HTTP 版本
 GTEST_TEST(TestHttpUtil, SendResponse_0) {
     char buffer[1024]{};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
     sese::net::http::ResponseHeader resp{};
     resp.setVersion(sese::net::http::HttpVersion::VERSION_UNKNOWN);
@@ -138,7 +138,7 @@ GTEST_TEST(TestHttpUtil, SendResponse_0) {
 /// 发送字段失败
 GTEST_TEST(TestHttpUtil, SendResponse_1) {
     char buffer[18]{};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
     sese::net::http::ResponseHeader resp{
             {"Host", "www.example.com"},
@@ -149,7 +149,7 @@ GTEST_TEST(TestHttpUtil, SendResponse_1) {
 /// 发送版本失败
 GTEST_TEST(TestHttpUtil, SendResponse_2) {
     char buffer[5]{};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
     sese::net::http::ResponseHeader resp{};
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::sendResponse(&output, &resp));
@@ -157,7 +157,7 @@ GTEST_TEST(TestHttpUtil, SendResponse_2) {
 
 GTEST_TEST(TestHttpUtil, SendResponse_3) {
     char buffer[1024]{};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
     sese::net::http::ResponseHeader resp{
             {"Host", "www.example.com"},
@@ -169,7 +169,7 @@ GTEST_TEST(TestHttpCookie, RecvRequestCookie) {
     auto str = "GET / HTTP/1.1\r\n"
                "Cookie: id=123; name=hello=xxx; user=foo\r\n"
                "\r\n";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
     sese::net::http::RequestHeader req;
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::recvRequest(&input, &req));
 
@@ -193,7 +193,7 @@ GTEST_TEST(TestHttpCookie, RecvResponseCookie) {
                "undef=undef; "
                "max-age=114514\r\n"
                "\r\n";
-    auto input = sese::InputBufferWrapper(str, strlen(str));
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
 
     sese::net::http::ResponseHeader resp;
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::recvResponse(&input, &resp));
@@ -206,7 +206,7 @@ GTEST_TEST(TestHttpCookie, RecvResponseCookie) {
 
 GTEST_TEST(TestHttpCookie, SendRequestCookie) {
     char buffer[1024]{};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
     auto cookieMap = std::make_shared<sese::net::http::CookieMap>();
     {
@@ -228,7 +228,7 @@ GTEST_TEST(TestHttpCookie, SendRequestCookie) {
 
 GTEST_TEST(TestHttpCookie, SendResponseCookie) {
     char buffer[1024]{};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
     auto cookieMap = std::make_shared<sese::net::http::CookieMap>();
     {

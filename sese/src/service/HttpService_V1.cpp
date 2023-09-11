@@ -2,8 +2,8 @@
 #include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/UrlHelper.h"
 #include "sese/text/DateTimeFormatter.h"
-#include "sese/util/OutputUtil.h"
-#include "sese/util/OutputBufferWrapper.h"
+#include "sese/io/OutputUtil.h"
+#include "sese/io/OutputBufferWrapper.h"
 #include "sese/util/Util.h"
 
 #include "openssl/ssl.h"
@@ -308,7 +308,7 @@ void service::v1::HttpService::onHandleFile(HttpConnection *conn, const std::str
         conn->fileSize = std::filesystem::file_size(path);
         conn->ranges = sese::net::http::Range::parse(conn->req.get("Range", ""), conn->fileSize);
         if (conn->req.getType() == net::http::RequestType::Get) {
-            conn->file = FileStream::create(path, "rb");
+            conn->file = io::FileStream::create(path, "rb");
             if (conn->file == nullptr) {
                 conn->status = net::http::HttpHandleStatus::OK;
                 conn->resp.setCode(500);
@@ -533,7 +533,7 @@ void service::v1::HttpService::onFileWrite(event::BaseEvent *event) noexcept {
         else {
             if (conn->ranges.size() > 1) {
                 char buffer[MTU_VALUE]{};
-                auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+                auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
                 output << "\r\n--";
                 output << HTTPD_BOUNDARY;

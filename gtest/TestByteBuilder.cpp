@@ -1,11 +1,11 @@
-#include <sese/util/ByteBuffer.h>
-#include <sese/util/ByteBuilder.h>
+#include "sese/io/ByteBuffer.h"
+#include "sese/io/ByteBuilder.h"
 #include <sese/record/LogHelper.h>
 
 #include <gtest/gtest.h>
 
 TEST(TestByteBuilder, Read) {
-    auto builder = sese::ByteBuffer(16);
+    auto builder = sese::io::ByteBuffer(16);
     ASSERT_EQ(builder.getCapacity(), 16);
 
     {
@@ -54,7 +54,7 @@ TEST(TestByteBuilder, Read) {
 }
 
 TEST(TestByteBuilder, Peek) {
-    auto builder = sese::ByteBuffer(16);
+    auto builder = sese::io::ByteBuffer(16);
     ASSERT_EQ(builder.getCapacity(), 16);
 
     {
@@ -106,7 +106,7 @@ TEST(TestByteBuilder, Peek) {
 }
 
 TEST(TestByteBuilder, Misc_0) {
-    auto builder = sese::ByteBuffer();
+    auto builder = sese::io::ByteBuffer();
     builder.write("Hello, World", 12);
 
     ASSERT_EQ(builder.getCapacity(), 1024);
@@ -128,7 +128,7 @@ TEST(TestByteBuilder, Misc_0) {
 }
 
 TEST(TestByteBuilder, Misc_1) {
-    auto builder = sese::ByteBuilder(6);
+    auto builder = sese::io::ByteBuilder(6);
     builder.write("Hello, World", 12);
 
     // deep copy
@@ -145,7 +145,7 @@ TEST(TestByteBuilder, Misc_1) {
 }
 
 TEST(TestByteBuilder, Misc_2) {
-    auto builder = sese::ByteBuilder(6);
+    auto builder = sese::io::ByteBuilder(6);
     builder.write("Hello, World", 12);
     builder.trunc(7);
 

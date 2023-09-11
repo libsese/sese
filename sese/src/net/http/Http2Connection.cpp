@@ -28,16 +28,16 @@ Http2Stream::Ptr Http2Connection::find(uint32_t sid) {
 }
 
 #include <sese/convert/Base64Converter.h>
-#include <sese/util/InputBufferWrapper.h>
-#include <sese/util/ByteBuilder.h>
+#include <sese/io/InputBufferWrapper.h>
+#include <sese/io/ByteBuilder.h>
 #include <sese/net/http/Http2FrameInfo.h>
 
 void sese::net::http::Http2Connection::decodeHttp2Settings(const std::string &settings) noexcept {
     char buffer[6];
     auto ident = (uint16_t *) &buffer[0];
     auto value = (uint32_t *) &buffer[2];
-    auto input = sese::InputBufferWrapper(settings.c_str(), settings.length());
-    auto output = sese::ByteBuilder(1024);
+    auto input = sese::io::InputBufferWrapper(settings.c_str(), settings.length());
+    auto output = sese::io::ByteBuilder(1024);
     sese::Base64Converter::decode(&input, &output);
 
     int64_t len = 0;

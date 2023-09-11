@@ -1,15 +1,14 @@
 #include "gtest/gtest.h"
 
 #include "sese/config/json/JsonUtil.h"
-#include "sese/util/ConsoleOutputStream.h"
-#include "sese/util/FileStream.h"
-#include "sese/util/InputBufferWrapper.h"
+#include "sese/io/ConsoleOutputStream.h"
+#include "sese/io/FileStream.h"
+#include "sese/io/InputBufferWrapper.h"
 #include "sese/net/rpc/Marco.h"
-
 
 /// 从文件解析 Json 格式
 TEST(TestJson, FromFile) {
-    auto fileStream = sese::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
+    auto fileStream = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
     auto object = sese::json::JsonUtil::deserialize(fileStream, 3);
     ASSERT_TRUE(object != nullptr);
 
@@ -29,7 +28,7 @@ TEST(TestJson, FromFile) {
     ASSERT_TRUE(booleanValue->getDataAs<bool>(false));
     booleanValue->setDataAs<bool>(false);
 
-    auto output = std::make_shared<sese::ConsoleOutputStream>();
+    auto output = std::make_shared<sese::io::ConsoleOutputStream>();
     sese::json::JsonUtil::serialize(object, output);
     output->write("\n", 1);
 }
@@ -45,7 +44,7 @@ TEST(TestJson, Getter) {
                        "  \"nullable\": null\n"
                        "  \"object\": {} \n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
 
@@ -118,7 +117,7 @@ TEST(TestJson, Setter) {
     SESE_JSON_PUT_DOUBLE(array, 0.0);
     SESE_JSON_PUT_NULL(array);
 
-    sese::ConsoleOutputStream console;
+    sese::io::ConsoleOutputStream console;
     sese::json::JsonUtil::serialize(object.get(), &console);
 }
 
@@ -127,7 +126,7 @@ TEST(TestJson, Error_0) {
     const char str[] = "{\n"
                        "  \"Hello\", \"World\"\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -136,7 +135,7 @@ TEST(TestJson, Error_0) {
 TEST(TestJson, Error_1) {
     const char str[] = "  \"Hello\": \"World\"\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -146,7 +145,7 @@ TEST(TestJson, Error_2) {
     const char str[] = "{\n"
                        "  \"Hello\": \"World\",\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -155,7 +154,7 @@ TEST(TestJson, Error_2) {
 TEST(TestJson, Error_3) {
     const char str[] = "{\n"
                        "  \"Hello\": \"\\";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -163,7 +162,7 @@ TEST(TestJson, Error_3) {
 /// tokens 为空
 TEST(TestJson, Error_4) {
     const char str[] = "";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -175,7 +174,7 @@ TEST(TestJson, Error_5) {
                        "    \"Hello\": \"World\"\n"
                        "  ]\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -188,7 +187,7 @@ TEST(TestJson, Error_6) {
                        "    \"World\": 1\n"
                        "  }\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -198,7 +197,7 @@ TEST(TestJson, Error_7) {
     const char str[] = "{\n"
                        "  \"str1\": {\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -208,7 +207,7 @@ TEST(TestJson, Error_8) {
     const char str[] = "{\n"
                        "  \"str1\": [\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 5);
     ASSERT_EQ(object, nullptr);
 }
@@ -218,7 +217,7 @@ TEST(TestJson, Error_9) {
     const char str[] = "{\n"
                        "  \"arr\": []\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 1);
     ASSERT_EQ(object, nullptr);
 }
@@ -228,7 +227,7 @@ TEST(TestJson, Error_10) {
     const char str[] = "{\n"
                        "  \"obj\": {}\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 1);
     ASSERT_EQ(object, nullptr);
 }
@@ -238,7 +237,7 @@ TEST(TestJson, Error_11) {
     const char str[] = "{\n"
                        "  \"arr\": [[]]\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 2);
     ASSERT_EQ(object, nullptr);
 }
@@ -248,7 +247,7 @@ TEST(TestJson, Error_12) {
     const char str[] = "{\n"
                        "  \"arr\": [{}]\n"
                        "}";
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::json::JsonUtil::deserialize(&input, 2);
     ASSERT_EQ(object, nullptr);
 }

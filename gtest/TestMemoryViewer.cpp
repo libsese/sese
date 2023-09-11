@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
 #include <sese/util/MemoryViewer.h>
-#include <sese/util/ConsoleOutputStream.h>
-#include <sese/util/OutputUtil.h>
+#include "sese/io/ConsoleOutputStream.h"
+#include "sese/io/OutputUtil.h"
 
 TEST(TestMemoryViewer, _0) {
     int8_t i8 = 20;
@@ -10,7 +10,7 @@ TEST(TestMemoryViewer, _0) {
     int32_t i32 = 90;
     int64_t i64 = 120;
 
-    sese::ConsoleOutputStream output;
+    sese::io::ConsoleOutputStream output;
 
     sese::MemoryViewer::peer8(&output, &i8, true);
     output << "\n";

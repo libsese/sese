@@ -1,7 +1,7 @@
 #include <sese/net/dns/DNSUtil.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Endian.h>
-#include <sese/util/InputBufferWrapper.h>
+#include <sese/io/InputBufferWrapper.h>
 
 void sese::net::dns::DNSUtil::decodeFrameHeaderInfo(const uint8_t buf[12], sese::net::dns::FrameHeaderInfo &info) noexcept {
     info.transactionId = buf[0] * 0x100 + buf[1];
@@ -57,7 +57,7 @@ void sese::net::dns::DNSUtil::encodeFrameFlagsInfo(uint8_t buf[2], const FrameFl
     }                               \
     SESE_MARCO_END
 
-bool sese::net::dns::DNSUtil::decodeQueries(size_t qcount, sese::InputStream *input, std::vector<Query> &vector) noexcept {
+bool sese::net::dns::DNSUtil::decodeQueries(size_t qcount, InputStream *input, std::vector<Query> &vector) noexcept {
     while (qcount) {
         std::string result;
         bool first = true;
@@ -99,7 +99,7 @@ bool sese::net::dns::DNSUtil::decodeQueries(size_t qcount, sese::InputStream *in
     return true;
 }
 
-void sese::net::dns::DNSUtil::encodeQueries(sese::OutputStream *output, std::vector<Query> &vector) noexcept {
+void sese::net::dns::DNSUtil::encodeQueries(OutputStream *output, std::vector<Query> &vector) noexcept {
     for (auto &item: vector) {
         auto v = text::StringBuilder::split(item.getName(), ".");
         for (auto &i: v) {
@@ -148,7 +148,7 @@ void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<An
     }
 }
 
-bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept {
+bool sese::net::dns::DNSUtil::decodeDomain(InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept {
     bool first = true;
     uint8_t l;
     uint32_t size = 12;
@@ -166,7 +166,7 @@ bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string
             ASSERT_READ(&l, 1);
             pIndex[1] = l;
             index = FromBigEndian16(index);
-            auto indexInput = sese::InputBufferWrapper(buffer + index, DNS_PACKAGE_SIZE - index);
+            auto indexInput = sese::io::InputBufferWrapper(buffer + index, DNS_PACKAGE_SIZE - index);
             std::string result;
             if (level == 0) {
                 return false;
@@ -201,7 +201,7 @@ bool sese::net::dns::DNSUtil::decodeDomain(sese::InputStream *input, std::string
     return true;
 }
 
-bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, sese::InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept {
+bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept {
     while (acount) {
         uint32_t size = 12;
 

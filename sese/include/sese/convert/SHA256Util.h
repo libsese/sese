@@ -7,7 +7,7 @@
  */
 
 #pragma once
-#include "sese/util/Stream.h"
+#include "sese/io/Stream.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -20,6 +20,9 @@ namespace sese {
     /// \brief 非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类
     class API SHA256Util {
     public:
+        using OutputStream = sese::io::OutputStream;
+        using InputStream = sese::io::InputStream;
+
         static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
         static void encode(InputStream *input, OutputStream *output) noexcept;
 

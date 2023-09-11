@@ -1,5 +1,5 @@
-#include <sese/util/InputBufferWrapper.h>
-#include <sese/util/OutputBufferWrapper.h>
+#include "sese/io/InputBufferWrapper.h"
+#include "sese/io/OutputBufferWrapper.h"
 
 #include <gtest/gtest.h>
 
@@ -7,8 +7,8 @@ TEST(TestBufferWrapper, Operator) {
     char buffer0[] {"Hello world"};
     char buffer1[8] {};
 
-    auto input = sese::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
-    auto output = sese::OutputBufferWrapper(buffer1, sizeof(buffer1));
+    auto input = sese::io::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
+    auto output = sese::io::OutputBufferWrapper(buffer1, sizeof(buffer1));
 
     auto len = output << input;
     ASSERT_EQ(len, 8);
@@ -20,7 +20,7 @@ TEST(TestBufferWrapper, Operator) {
 
 TEST(TestBufferWrapper, Peek) {
     char buffer0[] {"Hello World"};
-    auto input = sese::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
+    auto input = sese::io::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
 
     char buffer1[16] {};
     auto len = input.peek(buffer1, 16);
@@ -37,7 +37,7 @@ TEST(TestBufferWrapper, Peek) {
 
 TEST(TestBufferWrapper, Read) {
     char buffer0[] {"Hello World"};
-    auto input = sese::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
+    auto input = sese::io::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
 
     char buffer1[16] {};
     auto len = input.read(buffer1, 16);
@@ -51,7 +51,7 @@ TEST(TestBufferWrapper, Read) {
 
 TEST(TestBufferWrapper, Misc) {
     char buffer[8] {};
-    auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+    auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
     ASSERT_EQ(output.getBuffer(), buffer);
     ASSERT_EQ(output.getCapacity(), 8);
     ASSERT_EQ(output.getLength(), 0);

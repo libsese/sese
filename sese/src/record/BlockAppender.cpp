@@ -19,8 +19,8 @@ BlockAppender::BlockAppender(size_t blockMaxSize, sese::record::Level level)
     // #endif
     maxSize = std::min<decltype(maxSize)>(1024, maxSize);
     auto fileName = getDateTimeString();
-    fileStream = FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
-    bufferedStream = std::make_unique<BufferedStream>(fileStream, 4 * 1024);
+    fileStream = io::FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
+    bufferedStream = std::make_unique<io::BufferedStream>(fileStream, 4 * 1024);
 }
 
 BlockAppender::~BlockAppender() noexcept {
@@ -35,7 +35,7 @@ void BlockAppender::dump(const char *buffer, size_t i) noexcept {
         bufferedStream->flush();
         fileStream->close();
         auto fileName = getDateTimeString();
-        fileStream = FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
+        fileStream = io::FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
         bufferedStream->reset(fileStream);
         bufferedStream->write((void *) buffer, i);
         bufferedStream->write((void *) "\n", 1);

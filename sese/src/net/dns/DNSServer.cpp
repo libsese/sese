@@ -1,7 +1,7 @@
 #include <sese/net/dns/DNSServer.h>
 #include <sese/net/dns/DNSUtil.h>
-#include <sese/util/InputBufferWrapper.h>
-#include <sese/util/OutputBufferWrapper.h>
+#include <sese/io/InputBufferWrapper.h>
+#include <sese/io/OutputBufferWrapper.h>
 #include <sese/util/Util.h>
 
 sese::net::dns::DNSServer::Ptr sese::net::dns::DNSServer::create(const sese::net::dns::DNSConfig *config) noexcept {
@@ -82,8 +82,8 @@ void sese::net::dns::DNSServer::loop() noexcept {
             continue;
         }
 
-        auto input = sese::InputBufferWrapper((const char *) buffer + 12, len - 12);
-        auto output = sese::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
+        auto input = sese::io::InputBufferWrapper((const char *) buffer + 12, len - 12);
+        auto output = sese::io::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
 
         FrameHeaderInfo info;
         DNSSession session;

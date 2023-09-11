@@ -24,7 +24,7 @@ namespace sese::net::http {
 
     /// Http 服务上下文
     template<typename Context>
-    class API HttpServiceContext final : public sese::Stream, public Closeable {
+    class API HttpServiceContext final : public sese::io::Stream, public sese::io::Closeable {
     public:
         using Ptr = std::shared_ptr<HttpServiceContext>;
 

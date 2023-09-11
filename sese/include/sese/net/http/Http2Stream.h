@@ -2,17 +2,17 @@
 
 #include "sese/net/http/Request.h"
 #include "sese/net/http/Response.h"
-#include "sese/util/Closeable.h"
-#include "sese/util/ByteBuilder.h"
+#include "sese/io/Closeable.h"
+#include "sese/io/ByteBuilder.h"
 
 namespace sese::net::v2::http {
 
-    class SESE_DEPRECATED Http2Stream : public Stream, public Closeable {
+    class SESE_DEPRECATED Http2Stream : public io::Stream, public io::Closeable {
     public:
         using Ptr = std::shared_ptr<Http2Stream>;
 
         bool willClose = false;
-        ByteBuilder buffer;
+        io::ByteBuilder buffer;
 
         /// 流请求头部
         net::http::Header requestHeader;

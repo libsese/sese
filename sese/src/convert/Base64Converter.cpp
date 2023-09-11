@@ -7,7 +7,7 @@
 #include <algorithm>
 
 using sese::Base64Converter;
-using sese::Stream;
+using sese::io::Stream;
 
 /// 标准 BASE64 码表
 sese::Base64Converter::CodePage Base64CodePage = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -112,7 +112,7 @@ void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Pt
 }
 // GCOVR_EXCL_STOP
 
-bool Base64Converter::encodeInteger(size_t num, sese::OutputStream *output) noexcept {
+bool Base64Converter::encodeInteger(size_t num, OutputStream *output) noexcept {
     if (num == 0) {
         output->write(&Base62CodePage[0], 1);
         return true;

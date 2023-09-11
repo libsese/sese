@@ -1,7 +1,7 @@
 #include "sese/config/yaml/YamlUtil.h"
 #include "sese/config/yaml/Marco.h"
-#include "sese/util/InputBufferWrapper.h"
-#include "sese/util/ConsoleOutputStream.h"
+#include "sese/io/InputBufferWrapper.h"
+#include "sese/io/ConsoleOutputStream.h"
 
 #include "gtest/gtest.h"
 
@@ -39,7 +39,7 @@ const char str1[]{
         "  str5: 'Hello str5'"};
 
 TEST(TestYaml, Tokenizer_0) {
-    auto input = sese::InputBufferWrapper(str1, sizeof(str1) - 1);
+    auto input = sese::io::InputBufferWrapper(str1, sizeof(str1) - 1);
 
     while (true) {
         decltype(auto) tuple = sese::yaml::YamlUtil::getLine(&input);
@@ -62,7 +62,7 @@ TEST(TestYaml, Tokenizer_0) {
 }
 
 TEST(TestYaml, Deserialize_0) {
-    auto input = sese::InputBufferWrapper(str1, sizeof(str1) - 1);
+    auto input = sese::io::InputBufferWrapper(str1, sizeof(str1) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
     auto obj = std::dynamic_pointer_cast<sese::yaml::ObjectData>(object);
@@ -117,7 +117,7 @@ TEST(TestYaml, Deserialize_0) {
 /// 字符串转义
 TEST(TestYaml, Deserialize_1) {
     const char str[]{R"(str: "\n\r\'\"\a")"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
 }
@@ -127,7 +127,7 @@ TEST(TestYaml, Deserialize_1) {
 TEST(TestYaml, Deserialize_2) {
     const char str[]{"root:\n"
                      "  null: "};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
 }
@@ -138,7 +138,7 @@ TEST(TestYaml, Deserialize_3) {
     const char str[]{"root:\n"
                      "  a:\n"
                      "  b: str"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
 }
@@ -148,7 +148,7 @@ TEST(TestYaml, Deserialize_3) {
 TEST(TestYaml, Deserialize_4) {
     const char str[]{"root:\n"
                      "  - ele:"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
 }
@@ -158,7 +158,7 @@ TEST(TestYaml, Deserialize_4) {
 TEST(TestYaml, Deserialize_5) {
     const char str[]{"- root:\n"
                      "  - ele:"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
 }
@@ -168,7 +168,7 @@ TEST(TestYaml, Deserialize_6) {
                      "- World\n"
                      "- null\n"
                      "- ~"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
 }
@@ -176,13 +176,13 @@ TEST(TestYaml, Deserialize_6) {
 /// 对象无子元素
 TEST(TestYaml, Deserialize_7) {
     const char str[]{"root:"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 5);
     ASSERT_NE(object, nullptr);
 }
 
 TEST(TestYaml, Serialize_0) {
-    sese::ConsoleOutputStream output;
+    sese::io::ConsoleOutputStream output;
 
     auto root = std::make_shared<sese::yaml::ObjectData>();
 
@@ -227,7 +227,7 @@ TEST(TestYaml, Serialize_0) {
 }
 
 TEST(TestYaml, Serialize_1) {
-    sese::ConsoleOutputStream output;
+    sese::io::ConsoleOutputStream output;
 
     auto array = std::make_shared<sese::yaml::ArrayData>();
     SESE_YAML_PUT_STRING(array, "value0");
@@ -243,7 +243,7 @@ TEST(TestYaml, Serialize_1) {
 }
 
 TEST(TestYaml, Serialize_2) {
-    sese::ConsoleOutputStream output;
+    sese::io::ConsoleOutputStream output;
     auto array = std::make_shared<sese::yaml::ArrayData>();
     auto subarray = std::make_shared<sese::yaml::ArrayData>();
     array->push(subarray);
@@ -261,7 +261,7 @@ TEST(TestYaml, Serialize_2) {
 }
 
 TEST(TestYaml, Serialize_3) {
-    sese::ConsoleOutputStream output;
+    sese::io::ConsoleOutputStream output;
     auto data = std::make_shared<sese::yaml::BasicData>();
     data->setDataAs<std::string>("data");
     sese::yaml::YamlUtil::serialize(data, &output);
@@ -271,7 +271,7 @@ TEST(TestYaml, Serialize_3) {
 TEST(TestYaml, Error_0) {
     const char str[]{"- root:\n"
                      "    - ele:"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
     ASSERT_EQ(object, nullptr);
 }
@@ -280,7 +280,7 @@ TEST(TestYaml, Error_0) {
 TEST(TestYaml, Error_1) {
     const char str[]{"- root:\n"
                      "    ele:"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
     ASSERT_EQ(object, nullptr);
 }
@@ -289,7 +289,7 @@ TEST(TestYaml, Error_1) {
 TEST(TestYaml, Error_3) {
     const char str[]{"root:\n"
                      "  - ele:"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
     ASSERT_EQ(object, nullptr);
 }
@@ -298,7 +298,7 @@ TEST(TestYaml, Error_3) {
 TEST(TestYaml, Error_4) {
     const char str[]{"root:\n"
                      "   ele:"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
     ASSERT_EQ(object, nullptr);
 }
@@ -306,7 +306,7 @@ TEST(TestYaml, Error_4) {
 TEST(TestYaml, Error_5) {
     const char str[]{"root1:\n"
                      ":root2:"};
-    auto input = sese::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
     auto object = sese::yaml::YamlUtil::deserialize(&input, 1);
     ASSERT_EQ(object, nullptr);
 }

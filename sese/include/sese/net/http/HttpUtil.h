@@ -4,17 +4,22 @@
  * @author kaoru
  * @date 2022年5月17日
  */
+
 #pragma once
+
 #include <sese/net/http/RequestHeader.h>
 #include <sese/net/http/ResponseHeader.h>
 #include <sese/text/StringBuilder.h>
-#include "sese/util/Stream.h"
+#include <sese/io/Stream.h>
 
 namespace sese::net::http {
 
     /// @brief Http 工具类
     class API HttpUtil {
     public:
+        using InputStream = io::InputStream;
+        using OutputStream = io::OutputStream;
+
         /**
          * @brief 从流中接收一个请求
          *

@@ -1,9 +1,10 @@
 #include <sese/convert/SHA1Util.h>
-#include "sese/util/Endian.h"
-#include "sese/util/ByteBuilder.h"
+#include <sese/util/Endian.h>
+#include <sese/io/ByteBuilder.h>
 
 using sese::SHA1Context;
 using sese::SHA1Util;
+using sese::io::ByteBuilder;
 
 // 声明：
 // 此文件实现参考 https://github.com/vog/sha1

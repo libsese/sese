@@ -75,7 +75,7 @@ namespace sese {
 #endif
     }
 
-    size_t streamMove(sese::OutputStream *out, sese::InputStream *in, size_t size) noexcept {
+    size_t streamMove(sese::io::OutputStream *out, sese::io::InputStream *in, size_t size) noexcept {
         char buffer[4096];
         auto expect = size;
         while (size) {

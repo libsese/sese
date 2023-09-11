@@ -51,7 +51,7 @@ void sese::service::RpcService::onAccept(int fd) {
         // GCOVR_EXCL_STOP
     }
 
-    this->buffers[fd] = new sese::ByteBuilder(2048);
+    this->buffers[fd] = new sese::io::ByteBuilder(2048);
     this->createEvent(fd, EVENT_READ, clientSSL);
 }
 
@@ -163,7 +163,7 @@ void sese::service::RpcService::onClose(sese::event::BaseEvent *event) {
 
 #define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
 
-bool sese::service::RpcService::onHandle(sese::ByteBuilder *builder) {
+bool sese::service::RpcService::onHandle(sese::io::ByteBuilder *builder) {
     auto object = json::JsonUtil::deserialize(builder, 5);
     if (object == nullptr) {
         return false;

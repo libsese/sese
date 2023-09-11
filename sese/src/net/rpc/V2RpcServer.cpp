@@ -11,9 +11,9 @@
 #include "sese/net/rpc/V2RpcServer.h"
 #include "sese/net/rpc/Marco.h"
 #include "sese/config/json/JsonUtil.h"
-#include "sese/util/FakeStream.h"
-#include "sese/util/BufferedInputStream.h"
-#include "sese/util/BufferedOutputStream.h"
+#include "sese/io/FakeStream.h"
+#include "sese/io/BufferedInputStream.h"
+#include "sese/io/BufferedOutputStream.h"
 
 using namespace sese;
 using namespace sese::json;
@@ -22,9 +22,9 @@ using namespace sese::net::v2::rpc;
 #define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
 
 void V2RpcServer::onHandle(sese::net::v2::IOContext &ctx) noexcept {
-    auto stream = std::make_shared<ClosableFakeStream<IOContext>>(&ctx);
+    auto stream = std::make_shared<io::ClosableFakeStream<IOContext>>(&ctx);
 
-    auto input = std::make_shared<BufferedInputStream>(stream);
+    auto input = std::make_shared<io::BufferedInputStream>(stream);
     auto object = json::JsonUtil::deserialize(input, 5);
     if (!object) return;// 序列化请求失败
     auto result = std::make_shared<json::ObjectData>();
@@ -38,7 +38,7 @@ void V2RpcServer::onHandle(sese::net::v2::IOContext &ctx) noexcept {
     result->set(SESE_RPC_TAG_VERSION, version);
 
     // 1.版本确定
-    auto output = std::make_shared<BufferedOutputStream>(stream);
+    auto output = std::make_shared<io::BufferedOutputStream>(stream);
     std::string ver;
     auto verData = object->getDataAs<BasicData>(SESE_RPC_TAG_VERSION);
     if (nullptr == verData) {

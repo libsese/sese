@@ -3,7 +3,7 @@
 #include <sese/net/http/UrlHelper.h>
 #include <sese/net/http/HPackUtil.h>
 #include <sese/text/DateTimeFormatter.h>
-#include <sese/util/OutputBufferWrapper.h>
+#include <sese/io/OutputBufferWrapper.h>
 #include <sese/util/Util.h>
 
 #include <sese/record/Marco.h>
@@ -197,7 +197,7 @@ void sese::service::v2::HttpService::onWriteFile1_1(event::BaseEvent *event) noe
     } else {
         // 已是最后一个区间且存在多个区间
         if (httpConn->ranges.size() > 1) {
-            auto output = sese::OutputBufferWrapper(buffer, sizeof(buffer));
+            auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
             output.write("\r\n--", 4);
             output.write(HTTPD_BOUNDARY, strlen(HTTPD_BOUNDARY));
             output.write("--\r\n", 4);
@@ -376,7 +376,7 @@ void sese::service::v2::HttpService::onProcHandleFile1_1(const std::string &path
     httpConn->fileSize = std::filesystem::file_size(path);
     httpConn->ranges = sese::net::http::Range::parse(httpConn->req.get("Range", ""), httpConn->fileSize);
 
-    httpConn->file = FileStream::create(path, "rb");
+    httpConn->file = io::FileStream::create(path, "rb");
     if (httpConn->file == nullptr) {
         httpConn->status = net::http::HttpHandleStatus::OK;
         httpConn->resp.setCode(500);
@@ -549,7 +549,7 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
             if (stream->currentFramePos == 0) {
                 // 说明本帧是分段的起始帧，需要添加额外信息
                 if (stream->rangeIterator->cur == 0) {
-                    auto output = sese::OutputBufferWrapper(buffer + 9, MTU_VALUE - 9);
+                    auto output = sese::io::OutputBufferWrapper(buffer + 9, MTU_VALUE - 9);
                     output.write("\r\n--", 4);
                     output.write(HTTPD_BOUNDARY, strlen(HTTPD_BOUNDARY));
                     output.write("\r\ncontent-type: ", 16);
@@ -850,7 +850,7 @@ void sese::service::v2::HttpService::onProcHandleFile2(const std::string &path, 
     stream->fileSize = std::filesystem::file_size(path);
     stream->ranges = net::http::Range::parse(stream->req.get("Range", ""), stream->fileSize);
 
-    stream->file = FileStream::create(path, "rb");
+    stream->file = io::FileStream::create(path, "rb");
     if (stream->file == nullptr) {
         stream->resp.setCode(500);
         writeHeader(conn, stream);
@@ -959,7 +959,7 @@ void sese::service::v2::HttpService::writeHeader(sese::service::TcpConnection *c
     }
 
     // 此处为了确保 :status 留在首行，否则一些客户端将会视为错误
-    ByteBuilder headerBuffer;
+    io::ByteBuilder headerBuffer;
     auto headerSize = net::http::HPackUtil::encode(
             &headerBuffer,
             httpConn->dynamicTable2,

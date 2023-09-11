@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "sese/util/InputStream.h"
-#include "sese/util/OutputStream.h"
+#include "sese/io/InputStream.h"
+#include "sese/io/OutputStream.h"
 
 #include <map>
 
@@ -66,21 +66,24 @@ namespace sese {
      */
     class API ConfigUtil {
     public:
+        using InputStream = io::InputStream;
+        using OutputStream = io::OutputStream;
+
         /**
          * 读取配置文件
          * @param fileName 文件名称
          * @return 配置文件类指针，读取失败返回 nullptr
          */
-        static ConfigObject::Ptr readFrom(sese::InputStream *input);
+        static ConfigObject::Ptr readFrom(InputStream *input);
         /**
          * 写入配置文件
          * @param configFile 具体的配置
          * @param fileName 欲写入的配置文件名称
          * @return 是否写入成功
          */
-        static bool write2(const ConfigObject::Ptr &configFile, sese::OutputStream *output);
+        static bool write2(const ConfigObject::Ptr &configFile, OutputStream *output);
 
     private:
-        static std::string readLine(sese::InputStream *input);
+        static std::string readLine(InputStream *input);
     };
 }// namespace sese

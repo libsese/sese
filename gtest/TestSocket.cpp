@@ -2,7 +2,7 @@
 #include <sese/net/AddressPool.h>
 #include <sese/record/Marco.h>
 #include <sese/util/Random.h>
-#include <sese/util/OutputUtil.h>
+#include "sese/io/OutputUtil.h"
 
 #include <gtest/gtest.h>
 

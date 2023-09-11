@@ -1,7 +1,7 @@
 #include "sese/record/SimpleFormatter.h"
 #include "sese/text/DateTimeFormatter.h"
 #include "sese/text/StringBuilder.h"
-#include "sese/util/InputBufferWrapper.h"
+#include "sese/io/InputBufferWrapper.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4018)
@@ -33,7 +33,7 @@ namespace sese {
 
     std::string record::SimpleFormatter::dump(const Event::Ptr &event) noexcept {
         sese::text::StringBuilder builder(1024);
-        auto input = sese::InputBufferWrapper(textPattern.c_str(), textPattern.length());
+        auto input = sese::io::InputBufferWrapper(textPattern.c_str(), textPattern.length());
         while (true) {
             char buf[2]{};
             auto len = input.peek(buf, 2);// GCOVR_EXCL_LINE

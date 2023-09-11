@@ -7,7 +7,7 @@
 */
 
 #pragma once
-#include "sese/util/Stream.h"
+#include "sese/io/Stream.h"
 
 namespace sese {
     struct SHA1Context {
@@ -17,6 +17,9 @@ namespace sese {
 
     class API SHA1Util {
     public:
+        using OutputStream = sese::io::OutputStream;
+        using InputStream = sese::io::InputStream;
+
         static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
         static void encode(InputStream *input, OutputStream *output) noexcept;
 

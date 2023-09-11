@@ -42,7 +42,7 @@ namespace sese {
         return sections;
     }
 
-    ConfigObject::Ptr ConfigUtil::readFrom(sese::InputStream *input) {
+    ConfigObject::Ptr ConfigUtil::readFrom(InputStream *input) {
         ConfigObject::Ptr configFile = std::make_shared<ConfigObject>();
         ConfigObject::Section::Ptr currentSection = configFile->getDefaultSection();
 
@@ -76,14 +76,14 @@ namespace sese {
         return configFile;
     }
 
-    inline void writePair(sese::OutputStream *output, const std::pair<const std::string, std::string> &pair) {
+    inline void writePair(io::OutputStream *output, const std::pair<const std::string, std::string> &pair) {
         output->write((void *) pair.first.c_str(), pair.first.length());
         output->write((void *) "=\"", 2);
         output->write((void *) pair.second.c_str(), pair.second.length());
         output->write((void *) "\"\n", 2);
     }
 
-    bool ConfigUtil::write2(const ConfigObject::Ptr &configFile, sese::OutputStream *output) {
+    bool ConfigUtil::write2(const ConfigObject::Ptr &configFile, io::OutputStream *output) {
         for (const auto &iterator: configFile->getDefaultSection()->parameter) {
             writePair(output, iterator);
         }
@@ -100,7 +100,7 @@ namespace sese {
         return true;
     }
 
-    std::string ConfigUtil::readLine(sese::InputStream *input) {
+    std::string ConfigUtil::readLine(io::InputStream *input) {
         size_t count = 0;
         char ch;
         std::stringstream stream;

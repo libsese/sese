@@ -12,7 +12,7 @@
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
 #include <sese/util/Noncopyable.h>
-#include <sese/util/ByteBuilder.h>
+#include "sese/io/ByteBuilder.h"
 
 namespace sese::net::http {
 
@@ -67,6 +67,6 @@ namespace sese::net::http {
         // 默认启用长连接
         bool isKeepAlive = true;
 
-        ByteBuilder buffer{4096};
+        io::ByteBuilder buffer{4096};
     };
 }// namespace sese::net::http

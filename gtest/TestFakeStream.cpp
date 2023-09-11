@@ -1,5 +1,5 @@
-#include "sese/util/FakeStream.h"
-#include "sese/util/Closeable.h"
+#include "sese/io/FakeStream.h"
+#include "sese/io/Closeable.h"
 
 #include "gtest/gtest.h"
 
@@ -18,8 +18,8 @@ public:
 
 TEST(TestFakeStream, FakeStream) {
     MyFakeStream myFakeStream;
-    auto fakeStream = new sese::FakeStream<MyFakeStream>(&myFakeStream);
-    sese::Stream *stream = fakeStream;
+    auto fakeStream = new sese::io::FakeStream<MyFakeStream>(&myFakeStream);
+    sese::io::Stream *stream = fakeStream;
     ASSERT_EQ(stream->read(nullptr, 0), 114);
     ASSERT_EQ(stream->write(nullptr, 0), 514);
     delete fakeStream;
@@ -27,12 +27,12 @@ TEST(TestFakeStream, FakeStream) {
 
 TEST(TestFakeStream, ClosableFakeStream) {
     MyFakeStream myFakeStream;
-    auto fakeStream = new sese::ClosableFakeStream<MyFakeStream>(&myFakeStream);
-    sese::Stream *stream = fakeStream;
+    auto fakeStream = new sese::io::ClosableFakeStream<MyFakeStream>(&myFakeStream);
+    sese::io::Stream *stream = fakeStream;
     ASSERT_EQ(stream->read(nullptr, 0), 114);
     ASSERT_EQ(stream->write(nullptr, 0), 514);
 
-    sese::Closeable *closeable = fakeStream;
+    sese::io::Closeable *closeable = fakeStream;
     closeable->close();
 
     delete fakeStream;

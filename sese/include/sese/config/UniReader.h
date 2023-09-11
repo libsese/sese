@@ -4,9 +4,10 @@
  * @author kaoru
  * @date 2022年4月15日
  */
+
 #pragma once
-#include "sese/util/BaseStreamReader.h"
-#include "sese/util/FileStream.h"
+#include "sese/io/BaseStreamReader.h"
+#include "sese/io/FileStream.h"
 
 namespace sese {
 
@@ -36,11 +37,11 @@ namespace sese {
     private:
         UniReader() = default;
 
-        FileStream::Ptr fileStream;
+        io::FileStream::Ptr fileStream;
 #ifdef _WIN32
-        WStreamReader::Ptr reader;
+        io::WStreamReader::Ptr reader;
 #else
-        StreamReader::Ptr reader;
+        io::StreamReader::Ptr reader;
 #endif
     };
 }

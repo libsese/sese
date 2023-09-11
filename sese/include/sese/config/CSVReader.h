@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "sese/util/InputStream.h"
+#include "sese/io/InputStream.h"
 
 #include <vector>
 #include <string>
@@ -16,6 +16,7 @@ namespace sese {
     /// CSV 流读取器
     class API CSVReader {
     public:
+        using InputStream = io::InputStream;
         using Row = std::vector<std::string>;
 
         /// 构造函数

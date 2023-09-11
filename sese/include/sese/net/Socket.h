@@ -9,9 +9,9 @@
 
 #include "sese/net/IPv6Address.h"
 #include "sese/Config.h"
-#include "sese/util/Closeable.h"
-#include "sese/util/Stream.h"
-#include "sese/util/PeekableStream.h"
+#include "sese/io/Closeable.h"
+#include "sese/io/Stream.h"
+#include "sese/io/PeekableStream.h"
 #include "sese/util/Initializer.h"
 
 #ifdef _WIN32
@@ -33,7 +33,7 @@ namespace sese::net {
     /**
      * @brief Native Socket 类
      */
-    class API Socket : public Stream, public PeekableStream, public Closeable {
+    class API Socket : public io::Stream, public PeekableStream, public io::Closeable {
     public:
         using Ptr = std::shared_ptr<Socket>;
 

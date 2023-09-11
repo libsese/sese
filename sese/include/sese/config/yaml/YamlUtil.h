@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "sese/util/InputStream.h"
-#include "sese/util/OutputStream.h"
+#include "sese/io/InputStream.h"
+#include "sese/io/OutputStream.h"
 #include "sese/util/NotInstantiable.h"
 #include "sese/config/yaml/YamlTypes.h"
 
@@ -19,6 +19,8 @@ namespace sese::yaml {
 
     class API YamlUtil final : public NotInstantiable {
     public:
+        using InputStream = io::InputStream;
+        using OutputStream = io::OutputStream;
         using Line = std::tuple<int, std::string>;
         using Tokens = std::vector<std::string>;
         using TokensQueue = std::queue<std::tuple<int, Tokens>>;

@@ -1,16 +1,16 @@
 #include "sese/util/MemoryViewer.h"
 #include "sese/convert/MD5Util.h"
-#include "sese/util/ByteBuilder.h"
+#include "sese/io/ByteBuilder.h"
 #include "sese/util/Endian.h"
 
 #include <cstring>
 
-using sese::ByteBuilder;
+using sese::io::ByteBuilder;
 using sese::MD5Util;
 using sese::MemoryViewer;
 
 // GCOVR_EXCL_START
-void MD5Util::encode(const sese::InputStream::Ptr &input, const sese::OutputStream::Ptr &output) noexcept {
+void MD5Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
     encode(input.get(), output.get());
 }
 // GCOVR_EXCL_STOP

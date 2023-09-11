@@ -9,7 +9,7 @@
 
 #include <sese/record/Logger.h>
 #include <sese/thread/Thread.h>
-#include <sese/util/FixedBuilder.h>
+#include <sese/io/FixedBuilder.h>
 
 #include <atomic>
 #include <mutex>
@@ -28,10 +28,10 @@ namespace sese::record {
         void loop() noexcept;
 
     protected:
-        FixedBuilder *currentBuffer;
-        FixedBuilder *nextBuffer;
+        io::FixedBuilder *currentBuffer;
+        io::FixedBuilder *nextBuffer;
         // 此队列存放准备提交的 buffer
-        std::vector<FixedBuilder *> buffer2Ready;
+        std::vector<io::FixedBuilder *> buffer2Ready;
 
         std::mutex mutex;
         std::condition_variable conditionVariable;

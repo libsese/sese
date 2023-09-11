@@ -37,7 +37,7 @@ void sese::Decompressor::input(const void *input, unsigned int inputLen) {
 
 // 此处逻辑不需要我们关心
 // GCOVR_EXCL_START
-int sese::Decompressor::inflate(sese::OutputStream *out) {
+int sese::Decompressor::inflate(OutputStream *out) {
     auto stm = (z_stream *) stream;
     // 输出 buffer 未能完全输出，继续输出
     if (length != 0) {

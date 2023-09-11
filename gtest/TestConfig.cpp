@@ -2,14 +2,14 @@
 #include "sese/config/ConfigUtil.h"
 #include "sese/config/xml/XmlUtil.h"
 #include "sese/config/json/JsonUtil.h"
-#include "sese/util/ConsoleOutputStream.h"
-#include "sese/util/FileStream.h"
+#include "sese/io/ConsoleOutputStream.h"
+#include "sese/io/FileStream.h"
 #include "gtest/gtest.h"
 
 TEST(TestConfig, Config) {
     sese::record::LogHelper log;
 
-    auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/data.ini", TEXT_READ_EXISTED);
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.ini", TEXT_READ_EXISTED);
     ASSERT_TRUE(file != nullptr);
 
     auto config = sese::ConfigUtil::readFrom(file.get());
@@ -30,7 +30,7 @@ TEST(TestConfig, Config) {
 }
 
 TEST(TestConfig, Json) {
-    auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
     ASSERT_TRUE(file != nullptr);
     auto object = sese::json::JsonUtil::deserialize(file, 3);
     ASSERT_TRUE(object != nullptr);
@@ -40,13 +40,13 @@ TEST(TestConfig, Json) {
     ASSERT_TRUE(booleanValue->getDataAs<bool>(false));
     booleanValue->setDataAs<bool>(false);
 
-    auto out = std::make_shared<sese::ConsoleOutputStream>();
+    auto out = std::make_shared<sese::io::ConsoleOutputStream>();
     sese::json::JsonUtil::serialize(object, out);
     out->write("\n", 1);
 }
 
 TEST(TestConfig, Xml) {
-    auto file = sese::FileStream::create(PROJECT_PATH "/gtest/Data/data.xml", BINARY_READ_EXISTED);
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.xml", BINARY_READ_EXISTED);
     ASSERT_TRUE(file != nullptr);
     auto element = sese::xml::XmlUtil::deserialize(file, 5);
     ASSERT_TRUE(element != nullptr);
@@ -57,7 +57,7 @@ TEST(TestConfig, Xml) {
 
     // auto saveFile = sese::FileStream::create("out.xml", BINARY_WRITE_CREATE_TRUNC);
     // ASSERT_TRUE(saveFile != nullptr);
-    auto out = std::make_shared<sese::ConsoleOutputStream>();
+    auto out = std::make_shared<sese::io::ConsoleOutputStream>();
     sese::xml::XmlUtil::serialize(element, out);
     out->write("\n", 1);
 }

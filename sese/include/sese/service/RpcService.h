@@ -10,7 +10,7 @@
 #include <sese/config/json/JsonTypes.h>
 #include <sese/security/SSLContext.h>
 #include <sese/service/TimerableService.h>
-#include <sese/util/ByteBuilder.h>
+#include "sese/io/ByteBuilder.h"
 
 #include <map>
 #include <functional>
@@ -44,11 +44,11 @@ namespace sese::service {
 
         static int64_t write(int fd, const void *buffer, size_t len, void *ssl) noexcept;
 
-        bool onHandle(ByteBuilder *builder);
+        bool onHandle(io::ByteBuilder *builder);
 
         security::SSLContext::Ptr context;
 
-        std::map<int, ByteBuilder *> buffers;
+        std::map<int, io::ByteBuilder *> buffers;
         std::map<std::string, Func> funcs;
     };
 }// namespace sese::service

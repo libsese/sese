@@ -1,7 +1,7 @@
 #include <sese/system/StackInfo.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Range.h>
-#include <sese/util/OutputBufferWrapper.h>
+#include <sese/io/OutputBufferWrapper.h>
 
 #include <execinfo.h>
 
@@ -50,7 +50,7 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
 
 std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept {
     char buffer[2000]{};
-    sese::OutputBufferWrapper output(buffer, sizeof(buffer));
+    sese::io::OutputBufferWrapper output(buffer, sizeof(buffer));
 
     if (!std::equal(str.begin(), str.begin() + 2, "_Z")) {
         return str;

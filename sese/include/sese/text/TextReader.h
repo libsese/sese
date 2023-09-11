@@ -1,7 +1,7 @@
 #pragma once
 #include <sese/Config.h>
-#include "sese/util/FileStream.h"
-#include "sese/util/BufferedStream.h"
+#include "sese/io/FileStream.h"
+#include "sese/io/BufferedStream.h"
 #include <sese/text/String.h>
 
 namespace sese::text {
@@ -17,7 +17,7 @@ namespace sese::text {
     private:
         TextReader() = default;
 
-        FileStream::Ptr fileStream;
-        BufferedStream::Ptr bufferedStream;
+        io::FileStream::Ptr fileStream;
+        io::BufferedStream::Ptr bufferedStream;
     };
 }

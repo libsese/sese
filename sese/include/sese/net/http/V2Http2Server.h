@@ -14,7 +14,7 @@ namespace sese::net::v2::http {
 
     class Http2Server;
 
-    class API SESE_DEPRECATED Http2Context : public InputStream, public OutputStream {
+    class API SESE_DEPRECATED Http2Context : public io::InputStream, public io::OutputStream {
         friend class Http2Server;
     public:
         explicit Http2Context(const net::v2::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept;

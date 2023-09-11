@@ -12,7 +12,7 @@
 #include "sese/net/http/DynamicTable.h"
 #include "sese/net/http/Huffman.h"
 #include "sese/system/Process.h"
-#include "sese/util/InputBufferWrapper.h"
+#include "sese/io/InputBufferWrapper.h"
 #include "sese/util/Random.h"
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"
@@ -116,7 +116,7 @@ TEST(TestHttp2, HPackDecode) {
                        "\x40\x90\xf2\xb1\x0f\x52\x4b\x52\x56\x4f\xaa\xca\xb1\xeb\x49\x8f"
                        "\x52\x3f\x85\xa8\xe8\xa8\xd2\xcb";
 
-    auto input = sese::InputBufferWrapper(buf, sizeof(buf) - 1);
+    auto input = sese::io::InputBufferWrapper(buf, sizeof(buf) - 1);
     auto table = sese::net::http::DynamicTable();
     auto header = sese::net::http::Header();
 
@@ -127,7 +127,7 @@ TEST(TestHttp2, HPackDecode) {
 }
 
 TEST(TestHttp2, HeaderExample) {
-    auto buffer = sese::ByteBuilder();
+    auto buffer = sese::io::ByteBuilder();
     auto reqTable = sese::net::http::DynamicTable();
     auto respTable = sese::net::http::DynamicTable();
     size_t size;

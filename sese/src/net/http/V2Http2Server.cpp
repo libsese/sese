@@ -12,7 +12,7 @@
 #include "sese/net/http/Http2FrameInfo.h"
 #include "sese/net/http/HttpUtil.h"
 #include "sese/util/Endian.h"
-#include "sese/util/InputBufferWrapper.h"
+#include "sese/io/InputBufferWrapper.h"
 #include "sese/text/StringBuilder.h"
 #include "sese/convert/Base64Converter.h"
 
@@ -152,8 +152,8 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
                 auto ident = (uint16_t *) &buffer[0];
                 auto value = (uint32_t *) &buffer[2];
 
-                auto input = sese::InputBufferWrapper(settingsStr.c_str(), settingsStr.size());
-                auto output = sese::ByteBuilder(1024);
+                auto input = sese::io::InputBufferWrapper(settingsStr.c_str(), settingsStr.size());
+                auto output = sese::io::ByteBuilder(1024);
                 sese::Base64Converter::decode(&input, &output);
                 int64_t len = 0;
                 while ((len = output.read(buffer, 6)) == 6) {
@@ -394,7 +394,7 @@ void Http2Server::onSettingsFrame(sese::net::v2::http::Http2Server::Http2FrameIn
                                   const Http2Connection::Ptr &conn) noexcept {
     IOContext &ctx = conn->context;
     // 为当前连接更改设置
-    ByteBuilder builder;
+    io::ByteBuilder builder;
     char buf[1024];
     size_t length = 0;
     while (length < frame.length) {
@@ -528,7 +528,7 @@ void Http2Server::sendHeader(Http2Context &ctx,
                              const Http2Stream::Ptr &stream) noexcept {
     bool first = true;
     size_t headerSize = ctx.header;
-    ByteBuilder &builder = ctx.stream->buffer;
+    io::ByteBuilder &builder = ctx.stream->buffer;
 
     char buffer[1024];
     Http2FrameInfo info{};
@@ -564,7 +564,7 @@ void Http2Server::sendData(sese::net::v2::http::Http2Context &ctx,
                            const Http2Connection::Ptr &conn,
                            const Http2Stream::Ptr &stream) noexcept {
     size_t dataSize = ctx.data;
-    ByteBuilder &builder = ctx.stream->buffer;
+    io::ByteBuilder &builder = ctx.stream->buffer;
 
     char buffer[1024];
     Http2FrameInfo info{};

@@ -7,8 +7,8 @@
 #pragma once
 
 #include "sese/record/AbstractAppender.h"
-#include "sese/util/FileStream.h"
-#include "sese/util/BufferedStream.h"
+#include "sese/io/FileStream.h"
+#include "sese/io/BufferedStream.h"
 
 #include <mutex>
 
@@ -30,8 +30,8 @@ namespace sese::record {
         size_t size = 0;
         std::mutex mutex;
         size_t maxSize = 0;
-        BufferedStream::Ptr bufferedStream;
-        FileStream::Ptr fileStream;
+        io::BufferedStream::Ptr bufferedStream;
+        io::FileStream::Ptr fileStream;
     };
 
 }// namespace sese::record

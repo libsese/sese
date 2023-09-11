@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <sese/util/ByteBuilder.h>
+#include "sese/io/ByteBuilder.h"
 
 namespace sese::net::ws {
     /// Websocket 会话类
@@ -14,7 +14,7 @@ namespace sese::net::ws {
         /// Websocket 会话文件描述符，通常是负数
         int fd = 0;
         /// 缓存
-        ByteBuilder buffer{4096};
+        io::ByteBuilder buffer{4096};
         /// 额外数据指针
         void *data = nullptr;
     };

@@ -7,12 +7,12 @@ namespace sese::text {
     }
 
     std::shared_ptr<sese::text::TextReader> TextReader::create(const char *u8str) noexcept {
-        auto fileStream = FileStream::create(u8str, BINARY_READ_EXISTED);
+        auto fileStream = io::FileStream::create(u8str, BINARY_READ_EXISTED);
         if (fileStream == nullptr) {
             return nullptr;
         }
 
-        auto bufferedStream = std::make_shared<BufferedStream>(fileStream);
+        auto bufferedStream = std::make_shared<io::BufferedStream>(fileStream);
         auto reader = new TextReader;
         reader->fileStream = fileStream;
         reader->bufferedStream = bufferedStream;

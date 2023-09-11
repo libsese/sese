@@ -1,9 +1,11 @@
 #include <sese/convert/SHA256Util.h>
-#include "sese/util/ByteBuilder.h"
-#include "sese/util/Endian.h"
+#include <sese/io/ByteBuilder.h>
+#include <sese/util/Endian.h>
+
 #include <bitset>
 
 using namespace sese;
+using sese::io::ByteBuilder;
 
 /// endian 无关的 32 位
 struct sese::Bitset32 {

@@ -122,4 +122,6 @@
         auto node = std::make_shared<sese::json::BasicData>(); \
         node->setNull(true);                                   \
         target->push(node);                                    \
-    }
+    }                                                          \
+    SESE_MARCO_END
+

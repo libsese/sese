@@ -9,7 +9,7 @@
 #pragma once
 
 #include "sese/config/xml/XmlTypes.h"
-#include "sese/util/Stream.h"
+#include "sese/io/Stream.h"
 #include "sese/util/NotInstantiable.h"
 
 #include <queue>
@@ -19,6 +19,8 @@ namespace sese::xml {
     /// Xml 序列化工具类
     class API XmlUtil : public NotInstantiable {
     public:
+        using InputStream = io::InputStream;
+        using OutputStream = io::OutputStream;
         using Tokens = std::queue<std::string>;
 
         /// 从流中反序列化一个 Xml 元素对象

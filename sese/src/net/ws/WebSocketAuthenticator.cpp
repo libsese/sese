@@ -1,9 +1,12 @@
 #include "sese/net/ws/WebsocketAuthenticator.h"
 #include "sese/util/Random.h"
-#include "sese/util/InputBufferWrapper.h"
-#include "sese/util/OutputBufferWrapper.h"
+#include "sese/io/InputBufferWrapper.h"
+#include "sese/io/OutputBufferWrapper.h"
 #include "sese/convert/Base64Converter.h"
 #include "sese/convert/SHA1Util.h"
+
+using sese::io::OutputBufferWrapper;
+using sese::io::InputBufferWrapper;
 
 const char *sese::net::ws::WebsocketAuthenticator::APPEND_STRING = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 

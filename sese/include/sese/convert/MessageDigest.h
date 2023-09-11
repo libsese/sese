@@ -6,12 +6,15 @@
  * \date 2022.12.26
  */
 #pragma once
-#include "sese/util/InputStream.h"
+
+#include "sese/io/InputStream.h"
 
 namespace sese {
     /// 信息摘要工具类
     class API MessageDigest {
     public:
+        using InputStream = sese::io::InputStream;
+
         enum Type {
             MD5,
             SHA1,

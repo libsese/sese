@@ -400,7 +400,7 @@ size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
     }
 }
 
-size_t HPackUtil::encodeIndexCase3(sese::OutputStream *dest, size_t index) noexcept {
+size_t HPackUtil::encodeIndexCase3(OutputStream *dest, size_t index) noexcept {
     const auto prefix = static_cast<uint8_t>(std::pow(2, 4) - 1);
     uint8_t buf;
     if (index < prefix) {

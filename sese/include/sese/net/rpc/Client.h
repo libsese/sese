@@ -12,7 +12,7 @@
 #include <sese/security/SecuritySocket.h>
 #include <sese/security/SSLContext.h>
 #include <sese/util/Noncopyable.h>
-#include <sese/util/ByteBuilder.h>
+#include "sese/io/ByteBuilder.h"
 
 namespace sese::net::rpc {
 
@@ -38,7 +38,7 @@ namespace sese::net::rpc {
         // 如果启用 ssl 则需要 SSL 上下文
         security::SSLContext::Ptr sslContext;
 
-        ByteBuilder buffer{4096};
+        io::ByteBuilder buffer{4096};
         json::BasicData::Ptr version;
     };
 

@@ -8,7 +8,7 @@
 
 #include <sese/service/TimerableService.h>
 #include <sese/security/SSLContext.h>
-#include <sese/util/ByteBuilder.h>
+#include "sese/io/ByteBuilder.h"
 
 #include <atomic>
 
@@ -32,8 +32,8 @@ namespace sese::service {
         void *ssl = nullptr;
         event::BaseEvent *event = nullptr;
         service::TimeoutEvent *timeoutEvent = nullptr;
-        ByteBuilder buffer2read{8192};
-        ByteBuilder buffer2write{8192};
+        io::ByteBuilder buffer2read{8192};
+        io::ByteBuilder buffer2write{8192};
     };
 
     struct API TcpTransporterConfig {
