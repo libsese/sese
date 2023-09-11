@@ -66,4 +66,6 @@ namespace sese::io {
         FileStream() noexcept = default;
         FILE *file = nullptr;
     };
+
+    using File = FileStream;
 }// namespace sese

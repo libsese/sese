@@ -5,6 +5,7 @@
 #include "sese/io/ByteBuilder.h"
 #include "sese/io/FileStream.h"
 #include "sese/io/BaseStreamReader.h"
+#include "sese/io/InputStreamReader.h"
 #include "sese/text/TextReader.h"
 #include "gtest/gtest.h"
 
@@ -82,4 +83,27 @@ TEST(TestStream, TextReader_0) {
 
 TEST(TestStream, TextReader_1) {
     ASSERT_FALSE(sese::text::TextReader::create("undef.txt"));
+}
+
+TEST(TestStream, InputStreamReader) {
+    auto buffer = "Line1\r\n"
+                  "\n"
+                  "Line2\r"
+                  "\r"
+                  "Line3\n"
+                  "";
+    auto input = sese::io::InputBufferWrapper(buffer, strlen(buffer));
+    auto reader = sese::io::InputStreamReader(&input);
+
+    int count = 0;
+    while (true) {
+        std::string line = reader.readLine();
+        if (line.empty()) {
+            break;
+        } else {
+            count += 1;
+            puts(line.c_str());
+        }
+    }
+    EXPECT_EQ(count, 3);
 }
