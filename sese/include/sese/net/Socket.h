@@ -33,7 +33,7 @@ namespace sese::net {
     /**
      * @brief Native Socket 类
      */
-    class API Socket : public io::Stream, public PeekableStream, public io::Closeable {
+    class API Socket : public io::Stream, public io::PeekableStream, public io::Closeable {
     public:
         using Ptr = std::shared_ptr<Socket>;
 

@@ -1,18 +1,28 @@
 #include "sese/config/ConfigUtil.h"
+#include "sese/config/ini/IniUtil.h"
 #include "sese/io/InputBufferWrapper.h"
 #include "sese/io/ConsoleOutputStream.h"
 
 #include "gtest/gtest.h"
 
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 TEST(TestIni, Read) {
-    const char ini[] {
-        "server_address=192.168.3.1\n"
-        "server_port=8080\n"
-        "\n"
-        "[video]\n"
-        "width = 1920\n"
-        "height = 1080"
-    };
+    const char ini[]{
+            "server_address=192.168.3.1\n"
+            "server_port=8080\n"
+            "\n"
+            "[video]\n"
+            "width = 1920\n"
+            "height = 1080"};
 
     auto input = sese::io::InputBufferWrapper(ini, sizeof(ini) - 1);
     auto config = sese::ConfigUtil::readFrom(&input);
@@ -45,4 +55,46 @@ TEST(TestIni, Write) {
 
     auto output = sese::io::ConsoleOutputStream();
     sese::ConfigUtil::write2(config, &output);
+}
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
+
+TEST(TestIniConfig, Parse) {
+    auto str = "TestMessage=Hello World\n"
+               "# Default Section End\n"
+               "\n"
+               "[Second Section]\n"
+               "Test Message=This is the second section";
+    auto input = sese::io::InputBufferWrapper(str, strlen(str));
+    auto config = sese::config::ini::IniUtil::parse(&input);
+    // ASSERT_NE(config, nullptr);
+
+    std::string str1 = config->defSection["TestMessage"];
+    EXPECT_EQ(str1, "Hello World");
+
+    auto secondSection = config->sectionMap["Second Section"];
+    EXPECT_EQ(secondSection["Test Message"], "This is the second section");
+}
+
+TEST(TestIniConfig, Unparse) {
+    auto config = std::make_unique<sese::config::ini::IniConfig>();
+    config->defSection["Line1"] = "Content1";
+    config->defSection["Line2"] = "Content2";
+
+    auto section2 = sese::config::ini::IniConfig::Section();
+    section2["Line3"] = "Content3";
+    section2["Line4"] = "Content4";
+    config->sectionMap["Section 2"] = section2;
+
+    auto section3 = sese::config::ini::IniConfig::Section();
+    section3["Line5"] = "Content3";
+    section3["Line6"] = "Content4";
+    config->sectionMap["Section 3"] = section3;
+
+    sese::io::ConsoleOutputStream output;
+    ASSERT_TRUE(sese::config::ini::IniUtil::unparse(config, &output));
 }

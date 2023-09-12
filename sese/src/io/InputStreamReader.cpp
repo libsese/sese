@@ -1,6 +1,6 @@
 #include <sese/io/InputStreamReader.h>
 
-sese::io::InputStreamReader::InputStreamReader(sese::PeekableStream *input) noexcept : input(input), builder(2048) {
+sese::io::InputStreamReader::InputStreamReader(sese::io::PeekableStream *input) noexcept : input(input), builder(2048) {
 }
 
 std::string sese::io::InputStreamReader::readLine() noexcept {

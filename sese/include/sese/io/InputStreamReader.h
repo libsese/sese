@@ -13,7 +13,7 @@ namespace sese::io {
     /// 可读流读取器
     class API InputStreamReader {
     public:
-        explicit InputStreamReader(PeekableStream *input) noexcept;
+        explicit InputStreamReader(io::PeekableStream *input) noexcept;
 
         /// 读取一行
         /// \note 支持 CR、LF、CRLF 换行分隔符

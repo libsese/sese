@@ -64,7 +64,7 @@ namespace sese {
     /**
      * @brief 传统配置文件工具
      */
-    class API ConfigUtil {
+    class API SESE_DEPRECATED ConfigUtil {
     public:
         using InputStream = io::InputStream;
         using OutputStream = io::OutputStream;

@@ -6,6 +6,16 @@
 #include "sese/io/FileStream.h"
 #include "gtest/gtest.h"
 
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 TEST(TestConfig, Config) {
     sese::record::LogHelper log;
 
@@ -28,6 +38,12 @@ TEST(TestConfig, Config) {
     auto clientSection = config->getSectionByName("client");
     ASSERT_TRUE(clientSection == nullptr);
 }
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 
 TEST(TestConfig, Json) {
     auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
