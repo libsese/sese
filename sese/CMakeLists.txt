@@ -105,6 +105,7 @@ set(
         src/config/ConfigUtil.cpp
         src/config/CSVReader.cpp
         src/config/CSVWriter.cpp
+        src/config/ini/IniUtil.cpp
         src/config/json/JsonTypes.cpp
         src/config/json/JsonUtil.cpp
         src/config/xml/XmlTypes.cpp

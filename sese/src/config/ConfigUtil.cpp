@@ -42,7 +42,7 @@ namespace sese {
         return sections;
     }
 
-    ConfigObject::Ptr ConfigUtil::readFrom(InputStream *input) {
+    ConfigObject::Ptr ConfigUtil::readFrom(io::InputStream *input) {
         ConfigObject::Ptr configFile = std::make_shared<ConfigObject>();
         ConfigObject::Section::Ptr currentSection = configFile->getDefaultSection();
 
