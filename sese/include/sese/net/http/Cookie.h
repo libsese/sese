@@ -1,3 +1,11 @@
+/**
+ * @file Cookie.h
+ * @author kaoru
+ * @brief Cookie 类
+ * @date 2023年9月13日
+ * @version 0.1
+ */
+
 #pragma once
 
 #include <sese/Config.h>
@@ -8,6 +16,7 @@
 
 namespace sese::net::http {
 
+    /// Cookie 类
     class API Cookie {
     public:
         using Ptr = std::shared_ptr<Cookie>;

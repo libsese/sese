@@ -1,3 +1,11 @@
+/**
+* @file HttpConnection.h
+* @author kaoru
+* @version 0.1
+* @brief HTTP1.1 连接类
+* @date 2023年9月13日
+*/
+
 #pragma once
 
 #include <sese/net/http/Request.h>
@@ -17,6 +25,7 @@ namespace sese::net::http {
         FILE    /// 指示当前请求是一个下载文件的请求，需要在 onWrite 时读取文件
     };
 
+    /// @brief HTTP1.1 连接类
     struct API HttpConnection final {
         int fd = 0;
         void *ssl = nullptr;

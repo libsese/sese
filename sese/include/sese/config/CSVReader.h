@@ -16,7 +16,9 @@ namespace sese {
     /// CSV 流读取器
     class API CSVReader {
     public:
+        /// 工具支持的输入流
         using InputStream = io::InputStream;
+        /// 行
         using Row = std::vector<std::string>;
 
         /// 构造函数

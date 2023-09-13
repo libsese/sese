@@ -1,7 +1,7 @@
 #include <sese/config/ini/IniUtil.h>
 #include <sese/io/InputStreamReader.h>
 
-using namespace sese::config::ini;
+using namespace sese::ini;
 
 IniUtil::IniConfigObject IniUtil::parse(IniUtil::InputStream *input) noexcept {
     auto reader = io::InputStreamReader(input);

@@ -1,3 +1,11 @@
+/**
+ * @file DynamicTable.h
+ * @author kaoru
+ * @version 0.2
+ * @brief HTTP 2 动态表
+ * @date 2023年9月13日
+ */
+
 #pragma once
 
 #include <deque>
@@ -6,6 +14,7 @@
 
 namespace sese::net::http {
 
+    /// HTTP2 动态表
     class DynamicTable {
     public:
         using Header = std::pair<std::string, std::string>;

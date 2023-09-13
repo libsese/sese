@@ -1,3 +1,10 @@
+/**
+ * @file AbstractFixedBuffer.h
+ * @brief 固定大小的字节缓冲区类
+ * @author kaoru
+ * @date 2023年9月13日
+ */
+
 #pragma once
 
 #include "sese/io/Stream.h"
@@ -5,6 +12,7 @@
 
 namespace sese::io {
 
+    /// 固定大小的字节缓冲区类
     class API AbstractFixedBuffer : public Stream, public PeekableStream {
     public:
         explicit AbstractFixedBuffer(size_t size) noexcept;

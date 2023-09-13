@@ -1,5 +1,5 @@
 /// \file Http2Service_V1.h
-/// \brief Http2 服务初步实现，http2 下只能做控制器响应
+/// \brief HTTP2 服务初步实现，HTTP2 下只能做控制器响应
 /// \author kaoru
 /// \date 2023年8月20日
 
@@ -15,10 +15,12 @@
 
 namespace sese::service::v1 {
 
+    /// HTTP2 选项
     struct API Http2Config : public HttpConfig {
         std::string upgradePath = "/";
     };
 
+    /// HTTP2 服务
     class API SESE_DEPRECATED_WITH("此实现已弃用") Http2Service : public HttpService {
     public:
         explicit Http2Service(Http2Config *config);

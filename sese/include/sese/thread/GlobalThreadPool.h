@@ -11,7 +11,7 @@
 
 namespace sese {
 
-    /// \note 全局线程池，在 Windows 上使用系统线程池，而在 UNIX 平台上则使用懒汉单例模式的线程池
+    /// 全局线程池，在 Windows 上使用系统线程池，而在 UNIX 平台上则使用懒汉单例模式的线程池
     class API GlobalThreadPool {
     public:
         static void postTask(const std::function<void()> &func);

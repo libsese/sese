@@ -32,6 +32,7 @@ namespace sese {
         class LogHelper;
     }
 
+    /// 测试用工具，已经弃用
     class API Test {
     public:
         /**

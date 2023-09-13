@@ -15,90 +15,91 @@
 #include <mutex>
 
 namespace sese::service {
-    class UserBalanceLoader;
+
     class MasterEventLoop;
+
+    /// 用户均衡负载器，此负载器适用于全部平台
+    class API UserBalanceLoader {
+    public:
+        ~UserBalanceLoader() noexcept;
+
+        /// 设置负载器使用线程数量
+        /// \param th 线程数量
+        void setThreads(size_t th) noexcept;
+
+        /// 设置服务启动地址
+        /// \param addr IP Address
+        void setAddress(const net::IPAddress::Ptr &addr) noexcept { UserBalanceLoader::address = addr; }
+
+        /// 设置主监听线程超时时间
+        /// \param to 超时时间，单位毫秒
+        void setAcceptTimeout(uint32_t to) noexcept { UserBalanceLoader::acceptTimeout = to; }
+
+        /// 设置从线程派遣超时时间
+        /// \param to 超时时间，单位毫秒
+        void setDispatchTimeout(uint32_t to) noexcept { UserBalanceLoader::dispatchTimeout = to; }
+
+        /// 获取当前负载器状态
+        /// \return 负载器状态
+        [[nodiscard]] bool isStarted() const { return _isStart; }
+
+        /// 初始化负载器资源
+        /// \tparam Service 需要启动的服务
+        /// \return 是否初始化成功
+        template<class Service>
+        bool init() noexcept;
+
+        /// 初始化均衡器资源
+        /// \tparam Service 需要启动的服务
+        /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
+        /// \return 是否初始化成功
+        template<class Service>
+        bool init(std::function<Service *()> creator) noexcept;
+
+        /// 启动当前负载器和服务
+        void start() noexcept;
+
+        /// 关闭当前负载器并卸载服务
+        void stop() noexcept;
+
+    protected:
+        void master() noexcept;
+
+        void slave(
+                sese::event::EventLoop *eventLoop,
+                std::queue<socket_t> *masterQueue,
+                std::queue<socket_t> *slaveQueue,
+                std::mutex *mutex
+        ) noexcept;
+
+    protected:
+        std::atomic_bool _isStart{false};
+        std::atomic_bool _isStop{false};
+
+        uint32_t acceptTimeout = 100;
+        uint32_t dispatchTimeout = 100;
+        size_t threads{2};
+        std::vector<sese::event::EventLoop *> eventLoopVector;
+        std::vector<sese::Thread::Ptr> threadVector;
+        sese::net::IPAddress::Ptr address = sese::net::IPv4Address::localhost(8080);
+
+        sese::net::Socket *socket{nullptr};
+        sese::service::MasterEventLoop *masterEventLoop{nullptr};
+        sese::Thread::Ptr masterThread{nullptr};
+        /// socket_t 交换队列
+        std::queue<socket_t> *masterSocketQueueArray{nullptr};
+        std::queue<socket_t> *slaveSocketQueueArray{nullptr};
+        std::mutex *mutexArray{nullptr};
+    };
+
+    /// 用户均衡负载器主线程
+    class MasterEventLoop final : public sese::event::EventLoop {
+    public:
+        void onAccept(int fd) override;
+
+        std::queue<socket_t> socketQueue;
+    };
 }// namespace sese::service
-
-/// 用户均衡负载器，此负载器适用于全部平台
-class API sese::service::UserBalanceLoader {
-public:
-    ~UserBalanceLoader() noexcept;
-
-    /// 设置负载器使用线程数量
-    /// \param th 线程数量
-    void setThreads(size_t th) noexcept;
-
-    /// 设置服务启动地址
-    /// \param addr IP Address
-    void setAddress(const net::IPAddress::Ptr &addr) noexcept { UserBalanceLoader::address = addr; }
-
-    /// 设置主监听线程超时时间
-    /// \param to 超时时间，单位毫秒
-    void setAcceptTimeout(uint32_t to) noexcept { UserBalanceLoader::acceptTimeout = to; }
-
-    /// 设置从线程派遣超时时间
-    /// \param to 超时时间，单位毫秒
-    void setDispatchTimeout(uint32_t to) noexcept { UserBalanceLoader::dispatchTimeout = to; }
-
-    /// 获取当前负载器状态
-    /// \return 负载器状态
-    [[nodiscard]] bool isStarted() const { return _isStart; }
-
-    /// 初始化负载器资源
-    /// \tparam Service 需要启动的服务
-    /// \return 是否初始化成功
-    template<class Service>
-    bool init() noexcept;
-
-    /// 初始化均衡器资源
-    /// \tparam Service 需要启动的服务
-    /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
-    /// \return 是否初始化成功
-    template<class Service>
-    bool init(std::function<Service *()> creator) noexcept;
-
-    /// 启动当前负载器和服务
-    void start() noexcept;
-
-    /// 关闭当前负载器并卸载服务
-    void stop() noexcept;
-
-protected:
-    void master() noexcept;
-
-    void slave(
-            sese::event::EventLoop *eventLoop,
-            std::queue<socket_t> *masterQueue,
-            std::queue<socket_t> *slaveQueue,
-            std::mutex *mutex
-    ) noexcept;
-
-protected:
-    std::atomic_bool _isStart{false};
-    std::atomic_bool _isStop{false};
-
-    uint32_t acceptTimeout = 100;
-    uint32_t dispatchTimeout = 100;
-    size_t threads{2};
-    std::vector<sese::event::EventLoop *> eventLoopVector;
-    std::vector<sese::Thread::Ptr> threadVector;
-    sese::net::IPAddress::Ptr address = sese::net::IPv4Address::localhost(8080);
-
-    sese::net::Socket *socket{nullptr};
-    sese::service::MasterEventLoop *masterEventLoop{nullptr};
-    sese::Thread::Ptr masterThread{nullptr};
-    /// socket_t 交换队列
-    std::queue<socket_t> *masterSocketQueueArray{nullptr};
-    std::queue<socket_t> *slaveSocketQueueArray{nullptr};
-    std::mutex *mutexArray{nullptr};
-};
-
-class sese::service::MasterEventLoop final : public sese::event::EventLoop {
-public:
-    void onAccept(int fd) override;
-
-    std::queue<socket_t> socketQueue;
-};
 
 // 此处测试代码不便于模拟
 // GCOVR_EXCL_START

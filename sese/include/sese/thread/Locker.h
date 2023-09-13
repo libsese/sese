@@ -1,7 +1,7 @@
 /**
  * @file Locker.h
  * @author kaoru
- * @brief std::mutex 包装器
+ * @brief 自定义的 std::mutex 包装器
  * @date 2022年4月5日
  */
 #pragma once

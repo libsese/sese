@@ -1,5 +1,5 @@
 /// \file TcpTransporter.h
-/// \brief Tcp 传输器
+/// \brief TCP 传输器
 /// \author kaoru
 /// \version 0.1
 /// \date 日期
@@ -18,6 +18,7 @@
 
 namespace sese::service {
 
+    /// TCP 连接
     struct TcpConnection {
         virtual ~TcpConnection() = default;
 
@@ -36,6 +37,7 @@ namespace sese::service {
         io::ByteBuilder buffer2write{8192};
     };
 
+    /// TCP 传输器配置
     struct API TcpTransporterConfig {
         uint32_t keepalive = 30;
         security::SSLContext::Ptr servCtx = nullptr;
@@ -44,6 +46,7 @@ namespace sese::service {
         virtual void freeConnection(TcpConnection *conn);
     };
 
+    /// TCP 传输器
     class API TcpTransporter : public TimerableService {
     public:
         explicit TcpTransporter(TcpTransporterConfig *transporterConfig) noexcept;

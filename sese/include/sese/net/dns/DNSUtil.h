@@ -43,7 +43,6 @@ namespace sese::net::dns {
 
         /// 将一个或多个 Answer 解析成 sese::net::dns::Answer
         /// \param acount 数量
-        /// \param raw 原始数据
         /// \param input 来源
         /// \param vector 输出
         /// \param buffer 原始缓存，用于解压索引

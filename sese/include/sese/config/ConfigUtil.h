@@ -71,14 +71,14 @@ namespace sese {
 
         /**
          * 读取配置文件
-         * @param fileName 文件名称
+         * @param input 配置文件输入流
          * @return 配置文件类指针，读取失败返回 nullptr
          */
         static ConfigObject::Ptr readFrom(InputStream *input);
         /**
          * 写入配置文件
          * @param configFile 具体的配置
-         * @param fileName 欲写入的配置文件名称
+         * @param output 欲写入的配置文件的流
          * @return 是否写入成功
          */
         static bool write2(const ConfigObject::Ptr &configFile, OutputStream *output);

@@ -1,3 +1,11 @@
+/**
+* @file Http2FrameInfo.h
+* @author kaoru
+* @version 0.1
+* @brief HTTP 2 帧信息
+* @date 2023年9月13日
+*/
+
 #pragma once
 
 #include <cstdint>
@@ -48,6 +56,7 @@ namespace sese::net::http {
 
     constexpr static std::string_view MAGIC_STRING{"PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n"};
 
+    /// HTTP 2 帧信息
     struct Http2FrameInfo {
         uint32_t length;
         uint8_t type;

@@ -41,6 +41,7 @@ namespace sese::io {
     public:
         /**
          * @param baseSize 初始节点内存大小
+         * @param factor 追加内存节点大小
          */
         explicit AbstractByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
 

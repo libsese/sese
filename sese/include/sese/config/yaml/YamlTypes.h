@@ -1,5 +1,5 @@
 /// \file YamlTypes.h
-/// \brief 描述 yaml 基本类型
+/// \brief 描述 YAML 基本类型
 /// \author kaoru
 /// \version 0.1
 /// \date 2023年6月30日

@@ -5,7 +5,9 @@
  * @brief 对象池
  * @version 0.2
  */
+
 #pragma once
+
 #include "Noncopyable.h"
 #include "sese/Config.h"
 
@@ -20,6 +22,8 @@
 
 namespace sese {
 
+    /// \brief 对象池
+    /// \tparam T 复用对象
     template<typename T>
     class ObjectPool
         : public std::enable_shared_from_this<ObjectPool<T>>,

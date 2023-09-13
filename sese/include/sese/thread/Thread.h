@@ -28,6 +28,7 @@
 
 namespace sese {
 
+    /// 内建线程类的初始化任务
     class ThreadInitiateTask final : public InitiateTask {
     public:
         ThreadInitiateTask() : InitiateTask(__FUNCTION__){};
@@ -59,6 +60,7 @@ namespace sese {
         [[nodiscard]] const std::string &getThreadName() const noexcept { return this->data->name; }
 
     public:
+        /// 线程运行数据
         struct RuntimeData {
             tid_t id = 0;
 

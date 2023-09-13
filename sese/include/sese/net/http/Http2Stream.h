@@ -1,3 +1,11 @@
+/**
+* @file Http2Stream.h
+* @author kaoru
+* @version 0.1
+* @brief HTTP2 流
+* @date 2023年9月13日
+*/
+
 #pragma once
 
 #include "sese/net/http/Request.h"
@@ -7,6 +15,7 @@
 
 namespace sese::net::v2::http {
 
+    /// @brief HTTP2 流
     class SESE_DEPRECATED Http2Stream : public io::Stream, public io::Closeable {
     public:
         using Ptr = std::shared_ptr<Http2Stream>;
@@ -34,6 +43,8 @@ namespace sese::net::v2::http {
 }// namespace sese::net::v2::http
 
 namespace sese::net::http {
+
+    /// @brief HTTP2 流
     struct API Http2Stream {
         using Ptr = std::shared_ptr<Http2Stream>;
 

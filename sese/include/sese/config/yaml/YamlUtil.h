@@ -1,7 +1,7 @@
 /// \file YamlUtil.h
 /// \author kaoru
 /// \date 2023年6月30日
-/// \brief yaml 工具类
+/// \brief YAML 工具类
 /// \version 0.1
 
 #pragma once
@@ -17,6 +17,7 @@
 
 namespace sese::yaml {
 
+    /// YAML 工具类
     class API YamlUtil final : public NotInstantiable {
     public:
         using InputStream = io::InputStream;

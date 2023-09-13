@@ -1,6 +1,6 @@
 /**
 * @file XmlTypes.h
-* @brief Xml 类型定义
+* @brief XML 类型定义
 * @author kaoru
 * @date 2022年10月23日
 */
@@ -15,7 +15,7 @@
 
 namespace sese::xml {
 
-    /// Xml 元素对象
+    /// XML 元素对象
     class API Element {
     public:
         using Ptr = std::shared_ptr<Element>;

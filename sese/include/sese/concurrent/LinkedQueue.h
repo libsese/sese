@@ -5,7 +5,7 @@
  * @brief 非阻塞线程安全队列
  * @bug 队列长度超过10^3时可能产生意想不到的错误，暂时原因不明
  * @bug 已知可并发读、并发写，但无法做到并发读写，尚未有继续研究的计划
- * @ref https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/concurrent/ConcurrentLinkedQueue.java
+ * @see https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/concurrent/ConcurrentLinkedQueue.java
  */
 #pragma once
 #include <sese/concurrent/CASDefine.h>

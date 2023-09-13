@@ -1,6 +1,6 @@
 /// \file V2HttpServer.h
 /// \author kaoru
-/// \brief Http 服务端选项
+/// \brief HTTP 服务端选项
 /// \version 0.2
 /// \date 2023.04.29
 
@@ -14,7 +14,7 @@ namespace sese::net::v2::http {
 
     using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
 
-    /// Http 服务选项
+    /// HTTP 服务器
     struct SESE_DEPRECATED HttpServer : public Server {
 
         ~HttpServer() noexcept override;

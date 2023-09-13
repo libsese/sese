@@ -10,7 +10,7 @@
 
 namespace sese {
 
-    /// 区间类
+    /// \brief 区间类
     /// \tparam Type 值类型
     template<class Type>
     class Range {
@@ -36,6 +36,7 @@ namespace sese {
             this->endNumber = end;
         }
 
+        /// 迭代器
         class Iterator {
         public:
             using difference_type = int64_t;
@@ -73,6 +74,7 @@ namespace sese {
             Type curNumber = 0;
         };
 
+        /// 反向迭代器
         class ReverseIterator {
         public:
             using difference_type = int64_t;

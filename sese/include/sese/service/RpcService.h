@@ -1,5 +1,5 @@
 /// \file RpcService.h
-/// \brief Rpc 服务
+/// \brief RPC 服务
 /// \date 2023年8月5日
 /// \author kaoru
 
@@ -21,6 +21,7 @@
 
 namespace sese::service {
 
+    /// RPC 服务
     class API RpcService final : public sese::event::EventLoop {
     public:
         using Func = std::function<void(json::ObjectData::Ptr &, json::ObjectData::Ptr &)>;

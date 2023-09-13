@@ -20,6 +20,7 @@
 
 namespace sese::record {
 
+    /// 日志器初始化任务
     class LoggerInitiateTask final : public InitiateTask {
     public:
         LoggerInitiateTask() : InitiateTask(__FUNCTION__) {}

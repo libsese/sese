@@ -1,6 +1,18 @@
+/**
+* @file SHA256Context.h
+* @author kaoru
+* @version 0.1
+* @brief EVP SHA256 算法上下文
+* @date 2023年9月13日
+*/
+
+#pragma once
+
 #include <sese/security/evp/Context.h>
 
 namespace sese::security::evp {
+
+    /// EVP SHA256 算法上下文
     class API SHA256Context : public Context {
     public:
         SHA256Context() noexcept;

@@ -1,7 +1,7 @@
 /**
  * @file Header.h
  * @author kaoru
- * @brief Http 头部键值集合
+ * @brief HTTP 头部键值集合
  * @date 2022年05月17日
  */
 #pragma once
@@ -13,7 +13,7 @@
 
 namespace sese::net::http {
 
-    /// @brief Http 版本
+    /// @brief HTTP 版本
     enum class HttpVersion {
         VERSION_1_1,
         VERSION_2,
@@ -21,7 +21,7 @@ namespace sese::net::http {
     };
 
     /**
-     * Http 头部键值集合
+     * @brief HTTP 头部键值集合
      */
     class API Header {
     public:

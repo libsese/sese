@@ -1,4 +1,4 @@
-/// \file CSVReader.h
+/// \file CSVWriter.h
 /// \brief CSV 流写入器
 /// \author kaoru
 /// \version 0.1
@@ -16,7 +16,9 @@ namespace sese {
     /// CSV 流写入器
     class API CSVWriter {
     public:
+        /// 工具支持的输出流
         using OutputStream = io::OutputStream;
+        /// 行
         using Row = std::vector<std::string>;
 
         static const char *CRLF;
@@ -24,7 +26,8 @@ namespace sese {
 
         /// 构造函数
         /// \param dest 目的流
-        /// \param split 分割字符
+        /// \param splitChar 分割字符
+        /// \param crlf 是否使用 CRLF 作为行分隔符
         explicit CSVWriter(OutputStream *dest, char splitChar = ',', bool crlf = true) noexcept;
 
         /// 写入流

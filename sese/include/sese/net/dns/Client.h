@@ -14,6 +14,8 @@
 #endif
 
 namespace sese::net::dns {
+
+    /// DNS 客户端
     class API Client {
     public:
         /// 使用系统的域名解析器

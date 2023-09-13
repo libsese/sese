@@ -1,9 +1,11 @@
 /**
- * HTTP2 静态数据
- *
- * 此文件来源于
- * https://github.com/jnferguson/hpack-rfc7541.git
- * 部分
+ * @file HPACK.h
+ * @brief HTTP2 静态数据
+   @verbatim
+   此文件来源于
+   https://github.com/jnferguson/hpack-rfc7541.git
+   部分
+   @endverbatim
  */
 
 #pragma once

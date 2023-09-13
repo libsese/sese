@@ -5,6 +5,7 @@
 * @date 2022年4月22日
 */
 #pragma once
+
 #include "sese/io/Stream.h"
 
 namespace sese {
@@ -14,16 +15,22 @@ namespace sese {
     */
     class API MD5Util {
     public:
+        /// 工具所用输出流
         using OutputStream = sese::io::OutputStream;
+        /// 工具所用输入流
         using InputStream = sese::io::InputStream;
 
         /**
         * @brief 生成 MD5 信息
         * @param input 摘要来源
         * @param output MD5 数据输出
-        * @return 是否生成成功
         */
         static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
+        /**
+        * @brief 生成 MD5 信息
+        * @param input 摘要来源
+        * @param output MD5 数据输出
+        */
         static void encode(InputStream *input, OutputStream *output) noexcept;
 
         /**
@@ -33,6 +40,12 @@ namespace sese {
         * @return 返回生成的字符串，生成失败则为 nullptr
         */
         static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
+        /**
+        * @brief 生成 32 位大写 MD5 字符串
+        * @param input 摘要来源
+        * @param isCap 指示字符串字母是否大写
+        * @return 返回生成的字符串，生成失败则为 nullptr
+        */
         static std::unique_ptr<char[]> encode(InputStream *input, bool isCap = true) noexcept;
 
     private:

@@ -1,10 +1,10 @@
-///**
-// * \file ReadableServer.h
-// * \author kaoru
-// * \date 2023.01.01
-// * \version 0.1
-// * \brief 可读处理器，实现与 TcpServer 基本相同，少了 accept 和定时相关操作
-// */
+/**
+ * \file ReadableServer.h
+ * \author kaoru
+ * \date 2023.01.01
+ * \version 0.1
+ * \brief 可读处理器，实现与 TcpServer 基本相同，少了 accept 和定时相关操作
+ */
 //#pragma once
 //
 //#include "sese/net/TcpServer.h"

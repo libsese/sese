@@ -1,3 +1,11 @@
+/**
+* @file HPackUtil.h
+* @author kaoru
+* @version 0.2
+* @brief HTTP HPACK 算法类
+* @date 2023年9月13日
+*/
+
 #pragma once
 
 #include "sese/io/InputStream.h"
@@ -8,9 +16,13 @@
 #include "sese/net/http/Huffman.h"
 
 namespace sese::net::http {
+
+    /// HPACK 解压缩工具类
     class API HPackUtil : public NotInstantiable {
     public:
+        /// 工具指定输入流
         using InputStream = io::InputStream;
+        /// 工具指定输出流
         using OutputStream = io::OutputStream;
 
         /// 尝试从流中解析 HPACK 压缩后的 HEADERS

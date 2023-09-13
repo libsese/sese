@@ -15,6 +15,7 @@
 
 namespace sese {
 
+    /// 初始化任务基类
     class API InitiateTask {
     public:
         /**
@@ -39,6 +40,7 @@ namespace sese {
         std::string name;
     };
 
+    /// 初始化器
     class API Initializer {
     public:
         Initializer();

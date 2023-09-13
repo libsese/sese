@@ -1,6 +1,18 @@
+/**
+* @file SHA384Context.h
+* @author kaoru
+* @version 0.1
+* @brief EVP SHA384 算法上下文
+* @date 2023年9月13日
+*/
+
+#pragma once
+
 #include <sese/security/evp/Context.h>
 
 namespace sese::security::evp {
+
+    /// EVP SHA384 算法上下文
     class API SHA384Context : public Context {
     public:
         SHA384Context() noexcept;

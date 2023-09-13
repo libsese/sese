@@ -1,3 +1,11 @@
+/**
+ * @file FakeStream.h
+ * @author kaoru
+ * @brief 伪装流模板
+ * @version 0.1
+ * @date 2023年9月13日
+ */
+
 #pragma once
 
 #include "sese/Config.h"
@@ -9,6 +17,8 @@ namespace sese::io {
     // 此处已经过单测，不存在分支和未测函数
     // GCOVR_EXCL_START
 
+    /// \brief 伪装流
+    /// \tparam T 包装类型
     template<typename T>
     class FakeStream : public Stream {
     public:
@@ -21,6 +31,8 @@ namespace sese::io {
         T *t;
     };
 
+    /// \brief 可关闭的伪装流
+    /// \tparam T 包装类型
     template<typename T>
     class ClosableFakeStream : public FakeStream<T>, public sese::io::Closeable {
     public:

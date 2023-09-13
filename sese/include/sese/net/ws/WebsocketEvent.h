@@ -1,3 +1,11 @@
+/**
+* @file WebsocketEvent.h
+* @author kaoru
+* @version 0.1
+* @brief Websocket 事件类
+* @date 2023年9月13日
+*/
+
 #pragma once
 
 #include <sese/Config.h>
@@ -8,6 +16,8 @@ namespace sese::service {
 }
 
 namespace sese::net::ws {
+
+    /// Websocket 事件
     class API WebsocketEvent {
     public:
         virtual void onMessage(service::WebsocketService* service, WebsocketSession *session) noexcept = 0;

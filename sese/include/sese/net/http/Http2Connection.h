@@ -1,3 +1,11 @@
+/**
+* @file Http2Connection.h
+* @author kaoru
+* @version 0.1
+* @brief HTTP2 连接类
+* @date 2023年9月13日
+*/
+
 #pragma once
 
 #include "sese/net/V2Server.h"
@@ -9,6 +17,7 @@
 
 namespace sese::net::v2::http {
 
+    /// HTTP2 连接
     class SESE_DEPRECATED Http2Connection {
     public:
         using Ptr = std::shared_ptr<Http2Connection>;
@@ -37,6 +46,8 @@ namespace sese::net::v2::http {
 }// namespace sese::net::v2::http
 
 namespace sese::net::http {
+
+    /// HTTP2 连接
     struct API Http2Connection {
         using Ptr = std::shared_ptr<Http2Connection>;
 

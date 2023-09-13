@@ -1,6 +1,6 @@
 /**
 * @file XmlUtil.h
-* @brief Xml 序列化工具类
+* @brief XML 序列化工具类
 * @author kaoru
 * @date 2022年10月23日
 * @version 0.2
@@ -16,7 +16,7 @@
 
 namespace sese::xml {
 
-    /// Xml 序列化工具类
+    /// XML 序列化工具类
     class API XmlUtil : public NotInstantiable {
     public:
         using InputStream = io::InputStream;

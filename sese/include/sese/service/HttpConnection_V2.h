@@ -1,5 +1,5 @@
 /// \file HttpConnection_V2.h
-/// \brief Http 连接结构
+/// \brief HTTP 连接结构
 /// \author kaoru
 /// \version 0.1
 /// \date 日期
@@ -15,6 +15,7 @@
 
 namespace sese::service::v2 {
 
+    /// HTTP 连接基类
     struct HttpConnection {
         using Ptr = std::shared_ptr<HttpConnection>;
 
@@ -28,6 +29,7 @@ namespace sese::service::v2 {
         bool upgrade = false;
     };
 
+    /// HTTP 1.1 连接
     struct Http1_1Connection : public HttpConnection {
         using Ptr = std::shared_ptr<Http1_1Connection>;
 
@@ -49,6 +51,7 @@ namespace sese::service::v2 {
         std::vector<net::http::Range>::iterator rangeIterator;
     };
 
+    /// HTTP2 流
     struct Http2Stream {
         using Ptr = std::shared_ptr<Http2Stream>;
 
@@ -78,6 +81,7 @@ namespace sese::service::v2 {
         std::vector<net::http::Range>::iterator rangeIterator;
     };
 
+    /// HTTP2 连接
     struct Http2Connection : public HttpConnection {
         using Ptr = std::shared_ptr<Http2Connection>;
 
@@ -99,6 +103,7 @@ namespace sese::service::v2 {
         uint32_t maxHeaderListSize = 0;
     };
 
+    /// HTTP 连接包装器
     struct HttpConnectionWrapper : public TcpConnection {
         std::shared_ptr<HttpConnection> conn;
 

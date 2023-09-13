@@ -2,7 +2,7 @@
 /// \author kaoru
 /// \date 2023年3月21日
 /// \version 0.1.0
-/// \brief 插件模块对象，适配 sese.plugin 相关接口
+/// \brief 插件模块对象，适配 sese-plugin 相关接口
 
 #pragma once
 

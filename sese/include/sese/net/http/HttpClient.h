@@ -2,7 +2,7 @@
 /// \author kaoru
 /// \date 2023/07/24
 /// \version 0.2
-/// \brief Http 客户端
+/// \brief HTTP 客户端
 
 #pragma once
 
@@ -16,19 +16,23 @@
 
 namespace sese::net::http {
 
-    /// Http 客户端
+    /// HTTP 客户端
     class API HttpClient final : public sese::Noncopyable {
     public:
+        /// 客户端智能指针对象
         using Ptr = std::unique_ptr<HttpClient>;
 
     public:
-        /// \brief 解析 URL 并创建 Http 客户端
-        /// \param url URL 链接
-        /// \param keepAlive 是否启用长连接（需要服务器支持）
-        /// \retval nullptr 创建客户端失败
-        /// \example https://www.example.com/index.html?val=123
-        /// \example http://localhost:8080/
-        /// \example http://127.0.0.1:8080/index.html
+        /** \brief 解析 URL 并创建 Http 客户端
+         *  \param url URL 链接
+         *  \verbatim
+            https://www.example.com/index.html?val=123
+            http://localhost:8080/
+            http://127.0.0.1:8080/index.html
+            \endverbatim
+         *  \param keepAlive 是否启用长连接（需要服务器支持）
+         *  \retval nullptr 创建客户端失败
+         **/
         static HttpClient::Ptr create(const std::string &url, bool keepAlive = false) noexcept;
 
         /// 创建指定 IP 地址的 Http 客户端

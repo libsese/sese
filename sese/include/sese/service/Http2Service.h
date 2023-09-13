@@ -1,6 +1,6 @@
 /// \file Http2Service.h
 /// \author kaoru
-/// \brief Http2 服务
+/// \brief HTTP2 服务
 /// \date 2023年8月20日
 
 #pragma once

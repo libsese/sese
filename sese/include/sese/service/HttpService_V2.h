@@ -1,5 +1,5 @@
 /// \file HttpService_V2.h
-/// \brief Http 服务，支持 Http/1.1 Http2
+/// \brief HTTP 服务，支持 HTTP/1.1 HTTP2
 /// \note 本实现暂时缺少流量控制
 /// \date 2023年8月24日
 /// \author kaoru
@@ -17,7 +17,7 @@ namespace sese::service::v2 {
 
     class HttpService;
 
-    /// \brief Http 配置
+    /// \brief HTTP 配置
     class API HttpConfig : public TcpTransporterConfig {
         friend class HttpService;
         TcpConnection *createConnection() override;
@@ -48,7 +48,7 @@ namespace sese::service::v2 {
         void addExcludeIndexedHeader(const std::string &name) { excludeIndexedHeader.emplace(name); }
     };
 
-    /// \brief Http 服务
+    /// \brief HTTP 服务
     class API HttpService : public TcpTransporter {
     public:
         explicit HttpService(TcpTransporterConfig *transporterConfig);

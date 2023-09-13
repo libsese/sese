@@ -1,3 +1,10 @@
+/**
+* @file SecurityTcpServer.h
+* @author kaoru
+* @version 0.1
+* @brief SSL 服务器
+* @date 2023年9月13日
+*/
 //#pragma once
 //
 //#include "sese/net/TcpServer.h"

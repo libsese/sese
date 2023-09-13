@@ -10,6 +10,7 @@
 
 namespace sese::net::dns {
 
+    /// DNS 查询类
     class API Query {
     public:
         Query(std::string name, uint16_t type, uint16_t class_, uint16_t offset) noexcept

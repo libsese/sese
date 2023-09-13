@@ -1,5 +1,5 @@
-/// @file HttpService.h
-/// @brief Http 服务
+/// @file HttpService_V1.h
+/// @brief HTTP 服务
 /// @version 0.1
 /// @author kaoru
 /// @date 2023年8月4日
@@ -17,7 +17,7 @@
 
 namespace sese::service::v1 {
 
-    /// Http 服务配置
+    /// HTTP 服务配置
     struct API HttpConfig {
         HttpConfig() noexcept;
 
@@ -45,7 +45,7 @@ namespace sese::service::v1 {
         std::map<std::string, net::http::Controller> controllerMap;
     };
 
-    /// @brief Http 服务，支持长连接、文件下载、断点续传等
+    /// @brief HTTP 服务，支持长连接、文件下载、断点续传等
     // class API HttpService final : public sese::event::EventLoop {
     class API HttpService : public sese::service::TimerableService {
     public:

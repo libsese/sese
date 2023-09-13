@@ -10,11 +10,14 @@
 #include "sese/io/Stream.h"
 
 namespace sese {
+
+    /// SHA1 上下文
     struct SHA1Context {
         uint32_t h[5]{0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0};
         uint64_t total = 0;
     };
 
+    /// SHA1 算法工具
     class API SHA1Util {
     public:
         using OutputStream = sese::io::OutputStream;

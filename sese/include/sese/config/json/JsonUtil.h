@@ -1,6 +1,6 @@
 /**
  * @file JsonUtil.h
- * @brief Json 序列化工具类
+ * @brief JSON 序列化工具类
  * @author kaoru
  * @date 2022年5月14日
  * @version 0.2
@@ -19,8 +19,8 @@
 
 namespace sese::json {
 
-    /// Json 序列化工具类
-    class API JsonUtil : NotInstantiable {
+    /// JSON 序列化工具类
+    class API JsonUtil : public NotInstantiable {
     public:
         using InputStream = io::InputStream;
         using OutputStream = io::OutputStream;

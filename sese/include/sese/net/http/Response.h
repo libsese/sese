@@ -1,3 +1,11 @@
+/**
+* @file Response.h
+* @author kaoru
+* @version 0.1
+* @brief HTTP 响应类
+* @date 2023年9月13日
+*/
+
 #pragma once
 
 #include <sese/net/http/ResponseHeader.h>
@@ -5,6 +13,7 @@
 
 namespace sese::net::http {
 
+    /// HTTP 响应类
     class Response final : public ResponseHeader {
     public:
         io::ByteBuilder &getBody() { return body; }

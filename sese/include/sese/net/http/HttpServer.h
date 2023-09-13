@@ -22,7 +22,7 @@ namespace sese::net::http {
     using HttpRequest = RequestHeader;
     using HttpResponse = ResponseHeader;
 
-    /// Http 服务上下文
+    /// HTTP 服务上下文
     template<typename Context>
     class API HttpServiceContext final : public sese::io::Stream, public sese::io::Closeable {
     public:

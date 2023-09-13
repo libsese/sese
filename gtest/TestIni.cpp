@@ -70,7 +70,7 @@ TEST(TestIniConfig, Parse) {
                "[Second Section]\n"
                "Test Message=This is the second section";
     auto input = sese::io::InputBufferWrapper(str, strlen(str));
-    auto config = sese::config::ini::IniUtil::parse(&input);
+    auto config = sese::ini::IniUtil::parse(&input);
     // ASSERT_NE(config, nullptr);
 
     std::string str1 = config->defSection["TestMessage"];
@@ -81,20 +81,20 @@ TEST(TestIniConfig, Parse) {
 }
 
 TEST(TestIniConfig, Unparse) {
-    auto config = std::make_unique<sese::config::ini::IniConfig>();
+    auto config = std::make_unique<sese::ini::IniConfig>();
     config->defSection["Line1"] = "Content1";
     config->defSection["Line2"] = "Content2";
 
-    auto section2 = sese::config::ini::IniConfig::Section();
+    auto section2 = sese::ini::IniConfig::Section();
     section2["Line3"] = "Content3";
     section2["Line4"] = "Content4";
     config->sectionMap["Section 2"] = section2;
 
-    auto section3 = sese::config::ini::IniConfig::Section();
+    auto section3 = sese::ini::IniConfig::Section();
     section3["Line5"] = "Content3";
     section3["Line6"] = "Content4";
     config->sectionMap["Section 3"] = section3;
 
     sese::io::ConsoleOutputStream output;
-    ASSERT_TRUE(sese::config::ini::IniUtil::unparse(config, &output));
+    ASSERT_TRUE(sese::ini::IniUtil::unparse(config, &output));
 }

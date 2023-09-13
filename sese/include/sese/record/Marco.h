@@ -1,3 +1,11 @@
+/**
+* @file Marco.h
+* @author kaoru
+* @version 0.1
+* @brief 日志宏
+* @date 2023年9月13日
+*/
+
 #pragma once
 
 #include <sese/record/Logger.h>

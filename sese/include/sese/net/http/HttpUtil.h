@@ -1,6 +1,6 @@
 /**
  * @file HttpUtil.h
- * @brief Http 工具类
+ * @brief HTTP 工具类
  * @author kaoru
  * @date 2022年5月17日
  */
@@ -14,7 +14,7 @@
 
 namespace sese::net::http {
 
-    /// @brief Http 工具类
+    /// @brief HTTP 工具类
     class API HttpUtil {
     public:
         using InputStream = io::InputStream;

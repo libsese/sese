@@ -1,5 +1,5 @@
 /// \file V2Http2Server.h
-/// \brief 实验性的 Http2 服务（请勿使用）
+/// \brief 实验性的 HTTP2 服务（请勿使用）
 /// \author kaoru
 /// \date 2023年5月5日
 
@@ -14,6 +14,7 @@ namespace sese::net::v2::http {
 
     class Http2Server;
 
+    /// HTTP2 上下文
     class API SESE_DEPRECATED Http2Context : public io::InputStream, public io::OutputStream {
         friend class Http2Server;
     public:
@@ -52,6 +53,7 @@ namespace sese::net::v2::http {
         const net::v2::http::Http2Stream::Ptr &stream;
     };
 
+    /// HTTP2 实验性服务器
     class API SESE_DEPRECATED_WITH("此实现是实验性且不完整的") Http2Server : public Server {
         using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
         using Http2Connection = sese::net::v2::http::Http2Connection;

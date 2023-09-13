@@ -25,6 +25,7 @@ namespace sese {
         static std::wstring toWstring(const std::string &string) noexcept;
     };
 
+    /// 编码转换器初始化任务
     class EncodingConverterInitiateTask final : public InitiateTask {
     public:
         EncodingConverterInitiateTask() : InitiateTask(__FUNCTION__) {}

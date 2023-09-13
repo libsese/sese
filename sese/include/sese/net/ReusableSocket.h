@@ -14,7 +14,7 @@
 
 namespace sese::net {
 
-    /// 可重用地址和端口的套接字构建器
+    /// \brief 可重用地址和端口的套接字构建器
     /// \warning 用此构建器构建出来的 Socket 在不同平台上行为不一致 <p>
     /// Linux: 内核会负责负载均衡，多个 Socket 都能接收到连接 <p>
     /// Darwin: 无负载均衡，只有最后一个 Socket 能接收到连接 <p>

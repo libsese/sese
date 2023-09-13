@@ -2,7 +2,7 @@
  * @file Base64Converter.h
  * @author kaoru
  * @date 2022年4月18日
- * @brief Base64 转换器
+ * @brief BASE64 转换器
  */
 #pragma once
 
@@ -16,7 +16,7 @@
 namespace sese {
 
     /**
-     * @brief Base64 转换器
+     * @brief BASE64 转换器
      */
     class API Base64Converter final : public NotInstantiable {
     public:
