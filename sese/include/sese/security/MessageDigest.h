@@ -26,7 +26,7 @@ namespace sese::security {
             SHA512
         };
 
-        static std::unique_ptr<char[]> digest(Type type, InputStream *input, bool isCap = false) noexcept;
+        static std::string digest(Type type, InputStream *input, bool isCap = false) noexcept;
 
     private:
         // static void digestMD4(char *str, InputStream *input, bool isCap) noexcept;

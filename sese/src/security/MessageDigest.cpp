@@ -6,7 +6,7 @@
 #include "sese/security/evp/SHA512Context.h"
 #include "sese/util/MemoryViewer.h"
 
-std::unique_ptr<char[]> sese::security::MessageDigest::digest(sese::security::MessageDigest::Type type, InputStream *input, bool isCap) noexcept {
+std::string sese::security::MessageDigest::digest(sese::security::MessageDigest::Type type, InputStream *input, bool isCap) noexcept {
     switch (type) {
         // case Type::MD4: {
         //     auto str = std::unique_ptr<char[]>(new char[MD4_DIGEST_LENGTH * 2 + 1]);
@@ -14,14 +14,14 @@ std::unique_ptr<char[]> sese::security::MessageDigest::digest(sese::security::Me
         //     return str;
         // }
         case Type::MD5: {
-            auto str = std::unique_ptr<char[]>(new char[16 * 2 + 1]);
-            digestMD5(str.get(), input, isCap);
-            return str;
+            char str[16 * 2 + 1]{};
+            digestMD5(str, input, isCap);
+            return {str, 16 * 2};
         }
         case Type::SHA1: {
-            auto str = std::unique_ptr<char[]>(new char[20 * 2 + 1]);
-            digestSH1(str.get(), input, isCap);
-            return str;
+            char str[20 * 2 + 1]{};
+            digestSH1(str, input, isCap);
+            return {str, 20 * 2};
         }
         // case Type::SHA224: {
         //     auto str = std::unique_ptr<char[]>(new char[SHA224_DIGEST_LENGTH * 2 + 1]);
@@ -29,23 +29,23 @@ std::unique_ptr<char[]> sese::security::MessageDigest::digest(sese::security::Me
         //     return str;
         // }
         case Type::SHA256: {
-            auto str = std::unique_ptr<char[]>(new char[32 * 2 + 1]);
-            digestSHA256(str.get(), input, isCap);
-            return str;
+            char str[32 * 2 + 1]{};
+            digestSHA256(str, input, isCap);
+            return {str, 32 * 2};
         }
         case Type::SHA384: {
-            auto str = std::unique_ptr<char[]>(new char[48 * 2 + 1]);
-            digestSHA384(str.get(), input, isCap);
-            return str;
+            char str[48 * 2 + 1]{};
+            digestSHA384(str, input, isCap);
+            return {str, 48 * 2};
         }
         case Type::SHA512: {
-            auto str = std::unique_ptr<char[]>(new char[64 * 2 + 1]);
-            digestSHA512(str.get(), input, isCap);
-            return str;
+            char str[64 * 2 + 1];
+            digestSHA512(str, input, isCap);
+            return {str, 64 * 2};
         }
         default:
             // Never reach
-            return nullptr;
+            return {};
     }
 }
 

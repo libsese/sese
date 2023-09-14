@@ -22,7 +22,7 @@ TEST(TestMessageDigest, MD5) {
     {
         auto input = sese::io::InputBufferWrapper(str0, 5);
         auto rt = MessageDigest::digest(MessageDigest::Type::MD5, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+        EXPECT_EQ(rt, rt0);
     }
 
     const char *str1 = "\x34\x35\x22\x23\xAF\x44\xE4";
@@ -30,7 +30,7 @@ TEST(TestMessageDigest, MD5) {
     {
         auto input = sese::io::InputBufferWrapper(str1, 7);
         auto rt = MessageDigest::digest(MessageDigest::Type::MD5, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt1) == 0);
+        EXPECT_EQ(rt, rt1);
     }
 }
 
@@ -40,7 +40,7 @@ TEST(TestMessageDigest, SHA1) {
     {
         auto input = sese::io::InputBufferWrapper(str0, 5);
         auto rt = MessageDigest::digest(MessageDigest::Type::SHA1, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+        EXPECT_EQ(rt, rt0);
     }
 
     const char *str1 = "Hello, World";
@@ -48,7 +48,7 @@ TEST(TestMessageDigest, SHA1) {
     {
         auto input = sese::io::InputBufferWrapper(str1, 12);
         auto rt = MessageDigest::digest(MessageDigest::Type::SHA1, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt1) == 0);
+        EXPECT_EQ(rt, rt1);
     }
 }
 
@@ -68,7 +68,7 @@ TEST(TestMessageDigest, SHA256) {
     {
         auto input = sese::io::InputBufferWrapper(str0, 5);
         auto rt = MessageDigest::digest(MessageDigest::Type::SHA256, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+        EXPECT_EQ(rt, rt0);
     }
 }
 
@@ -78,7 +78,7 @@ TEST(TestMessageDigest, SHA384) {
     {
         auto input = sese::io::InputBufferWrapper(str0, 5);
         auto rt = MessageDigest::digest(MessageDigest::Type::SHA384, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+        EXPECT_EQ(rt, rt0);
     }
 }
 
@@ -88,7 +88,7 @@ TEST(TestMessageDigest, SHA512) {
     {
         auto input = sese::io::InputBufferWrapper(str0, 5);
         auto rt = MessageDigest::digest(MessageDigest::Type::SHA512, &input);
-        EXPECT_TRUE(strcmp(rt.get(), rt0) == 0);
+        EXPECT_EQ(rt, rt0);
     }
 }
 
