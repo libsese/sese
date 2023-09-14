@@ -20,6 +20,8 @@ namespace sese::io {
     public:
         typedef std::shared_ptr<OutputStream> Ptr;
 
+        virtual ~OutputStream() noexcept = default;
+
         virtual int64_t write(const void *buffer, size_t length) = 0;
     };
 

@@ -6,7 +6,7 @@ sese::GZipFileInputStream::Ptr sese::GZipFileInputStream::create(const char *fil
     if (!gzFile) return nullptr;
     auto pStream = new GZipFileInputStream;
     pStream->gzFile = gzFile;
-    return std::unique_ptr<GZipFileInputStream>(pStream);
+    return {pStream, deleter};
 }
 
 int64_t sese::GZipFileInputStream::read(void *buffer, size_t length) {
@@ -16,4 +16,8 @@ int64_t sese::GZipFileInputStream::read(void *buffer, size_t length) {
 void sese::GZipFileInputStream::close() noexcept {
     gzclose((gzFile_s *) gzFile);
     gzFile = nullptr;
+}
+
+void sese::GZipFileInputStream::deleter(sese::GZipFileInputStream *data) noexcept {
+    delete data;
 }

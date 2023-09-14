@@ -8,7 +8,7 @@ sese::GZipFileOutputStream::Ptr sese::GZipFileOutputStream::create(const char *f
     gzsetparams(gzFile, l, Z_DEFAULT_STRATEGY);
     auto pStream = new GZipFileOutputStream;
     pStream->gzFile = gzFile;
-    return std::unique_ptr<GZipFileOutputStream>(pStream);
+    return {pStream, deleter};
 }
 
 int64_t sese::GZipFileOutputStream::write(const void *buffer, size_t length) {
@@ -18,4 +18,8 @@ int64_t sese::GZipFileOutputStream::write(const void *buffer, size_t length) {
 void sese::GZipFileOutputStream::close() noexcept {
     gzclose((gzFile_s *) gzFile);
     gzFile = nullptr;
+}
+
+void sese::GZipFileOutputStream::deleter(sese::GZipFileOutputStream *data) noexcept {
+    delete data;
 }

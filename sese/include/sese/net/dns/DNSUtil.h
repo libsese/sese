@@ -27,12 +27,12 @@ namespace sese::net::dns {
         /// 从 12 字节缓存中读取帧头信息
         /// \param buf 12 字节缓存
         /// \param info 帧头信息存放
-        static void decodeFrameHeaderInfo(const uint8_t buf[12], sese::net::dns::FrameHeaderInfo &info) noexcept;
+        static void decodeFrameHeaderInfo(const uint8_t *buf, sese::net::dns::FrameHeaderInfo &info) noexcept;
 
         /// 写缓存中写入 12 字节的帧头信息
         /// \param buf 12 字节缓存
         /// \param info 帧头信息来源
-        static void encodeFrameHeaderInfo(uint8_t buf[12], const FrameHeaderInfo &info) noexcept;
+        static void encodeFrameHeaderInfo(uint8_t *buf, const FrameHeaderInfo &info) noexcept;
 
         /// 将一个或多个 Query 解析成 sese::net::dns::Query
         /// \param qcount 数量
@@ -69,7 +69,7 @@ namespace sese::net::dns {
         static bool decodeDomain(InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept;
     private:
 
-        static void decodeFrameFlagsInfo(const uint8_t buf[2], sese::net::dns::FrameFlagsInfo &info) noexcept;
-        static void encodeFrameFlagsInfo(uint8_t buf[2], const FrameFlagsInfo &info) noexcept;
+        static void decodeFrameFlagsInfo(const uint8_t *buf, sese::net::dns::FrameFlagsInfo &info) noexcept;
+        static void encodeFrameFlagsInfo(uint8_t *buf, const FrameFlagsInfo &info) noexcept;
     };
 }// namespace sese::net::dns

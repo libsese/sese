@@ -18,7 +18,7 @@ namespace sese::io {
     /**
      * @brief 线程安全的字节缓冲类
      */
-    class API ByteBuffer final : public AbstractByteBuffer {
+    class API ByteBuffer final : AbstractByteBuffer {
     public:
         using Ptr = std::unique_ptr<ByteBuffer>;
 

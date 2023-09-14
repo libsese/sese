@@ -178,7 +178,6 @@ add_library(Core
         ${PLUGIN_SRC}
         ${SERVICE_SRC}
 )
-# add_library(Core-static STATIC)
 
 option(USE_ASYNC_LOGGER "use async logger" OFF)
 if (USE_ASYNC_LOGGER)
@@ -228,9 +227,12 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
         target_compile_options(Core PRIVATE "/utf-8")
     endif ()
     target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
-    message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi, advapi32, crypt32, secur32")
+    # message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi, advapi32, crypt32, secur32")
 
     if (${MINGW})
+        target_compile_options(Core PRIVATE "-fno-exceptions")
+    else()
+        target_compile_options(Core PRIVATE "/D_HAS_EXCEPTIONS=0")
     endif ()
 
     if (${CMAKE_GENERATOR} MATCHES "Ninja")
@@ -260,10 +262,11 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
     target_compile_options(Core PUBLIC "-fPIC")
-    target_compile_options(Core PUBLIC "-rdynamic")
-    target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_link_options(Core PUBLIC "-rdynamic")
 
-    message(STATUS "Linked libraries: pthread, dl")
+    target_compile_options(Core PRIVATE "-fno-exceptions")
+    target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    # message(STATUS "Linked libraries: pthread, dl")
 endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -272,8 +275,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
 
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
-
-    message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
+    # message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
 endif ()
 
 set_target_properties(Core

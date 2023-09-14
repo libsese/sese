@@ -44,7 +44,7 @@
 #define strcasecmp strcmpi
 #endif
 
-#if defined(__clang__) || defined(__MINGW32__)
+#if defined(__MINGW32__)
 #define SESE_FILENAME (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 #else
 #define SESE_FILENAME (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)

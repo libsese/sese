@@ -9,7 +9,7 @@ TEST(TestHttpClient, UrlParser_0) {
     ASSERT_NE(client, nullptr);
 
     decltype(auto) req = client->getRequest();
-    decltype(auto) resp = client->getResponse();
+    // decltype(auto) resp = client->getResponse();
 
     ASSERT_EQ(client->address->getPort(), 8090);
     ASSERT_EQ(req.getUrl(), "/home.html");
@@ -20,7 +20,7 @@ TEST(TestHttpClient, UrlParser_1) {
     ASSERT_NE(client, nullptr);
 
     decltype(auto) req = client->getRequest();
-    decltype(auto) resp = client->getResponse();
+    // decltype(auto) resp = client->getResponse();
 
     ASSERT_EQ(client->address->getPort(), 8000);
     ASSERT_EQ(req.getUrl(), "/index.html?user=foo");
@@ -31,7 +31,7 @@ TEST(TestHttpClient, UrlParser_2) {
     ASSERT_NE(client, nullptr);
 
     decltype(auto) req = client->getRequest();
-    decltype(auto) resp = client->getResponse();
+    // decltype(auto) resp = client->getResponse();
 
     ASSERT_EQ(client->address->getPort(), 443);
     ASSERT_EQ(req.getUrl(), "/");

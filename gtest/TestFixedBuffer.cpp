@@ -21,7 +21,6 @@ TEST(TestFixedBuffer, Write) {
 }
 
 TEST(TestFixedBuffer, Read) {
-    auto size = 16;
     auto buffer = sese::io::FixedBuffer(16);
     ASSERT_EQ(buffer.write("ABCDEFGHIJKLMNOP", 16), 16);
 
@@ -35,7 +34,6 @@ TEST(TestFixedBuffer, Read) {
 }
 
 TEST(TestFixedBuffer, Peek) {
-    auto size = 16;
     auto buffer = sese::io::FixedBuffer(16);
     ASSERT_EQ(buffer << "ABCDEFGHIJKLMNOP", 16);
 

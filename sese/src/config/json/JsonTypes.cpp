@@ -6,7 +6,7 @@ Data::Data(DataType type) : type(type) {}
 
 BasicData::BasicData() noexcept
     : Data(DataType::Basic),
-      _isNull(true), data("null") {}
+      data("null"), _isNull(true) {}
 
 BasicData::BasicData(std::string text) noexcept
     : Data(DataType::Basic),

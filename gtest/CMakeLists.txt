@@ -18,63 +18,62 @@ add_definitions("-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
 add_executable(
         AllTestInMain
         AllTest.cpp
-        TestLogger.cpp
-        TestAsyncLogger.cpp
-        TestPlugin/TestPlugin.cpp
-        TestSharedMemory/TestSharedMemory.cpp
         TestAddress.cpp
         TestArgParser.cpp
+        TestAsyncLogger.cpp
         TestBase64.cpp
-        TestEndian.cpp
-        TestJson.cpp
-        TestXML.cpp
-        TestIni.cpp
-        TestYaml.cpp
-        TestStream.cpp
-        TestConfig.cpp
-        TestDateTime.cpp
-        TestThread.cpp
-        TestMessageDigest.cpp
-        TestCompressor.cpp
-        TestProcess.cpp
-        TestCSVUtil.cpp
-        TestHttp2.cpp
-        TestNetworkUtil.cpp
-        # TestServer.cpp
-        TestHttp.cpp
-        TestRandom.cpp
-        TestFileNotifier.cpp
-        TestReusableSocket.cpp
-        TestService.cpp
-        TestEnv.cpp
-        TestInit.cpp
-        TestLibraryLoader.cpp
-        TestTimer.cpp
-        TestByteBuilder.cpp
-        TestFixedBuffer.cpp
-        TestOutputUtil.cpp
-        TestBufferWrapper.cpp
-        TestStringBuilder.cpp
         TestBufferedStream.cpp
-        TestFileStream.cpp
-        TestMemoryViewer.cpp
-        TestUtil.cpp
-        TestUuidBuilder.cpp
-        TestFakeStream.cpp
+        TestBufferWrapper.cpp
+        TestByteBuilder.cpp
+        TestCompressor.cpp
+        TestConfig.cpp
+        TestCSVUtil.cpp
+        TestDateTime.cpp
+        TestDNS.cpp
         TestEncodingConverter.cpp
-        TestPercentConverter.cpp
-        TestSSL.cpp
-        TestUniReader.cpp
-        TestSocket.cpp
-        TestHttpUtil.cpp
+        TestEndian.cpp
+        TestEnv.cpp
+        TestFakeStream.cpp
+        TestFileNotifier.cpp
+        TestFileStream.cpp
+        TestFixedBuffer.cpp
+        TestHttp.cpp
+        TestHttp2.cpp
         TestHttpClient.cpp
-        TestRpc.cpp
         TestHttpService.cpp
         TestHttpService_V2.cpp
-        TestWebsocketService.cpp
-        TestDNS.cpp
+        TestHttpUtil.cpp
+        TestIni.cpp
+        TestInit.cpp
+        TestJson.cpp
+        TestLibraryLoader.cpp
+        TestLogger.cpp
+        TestMemoryViewer.cpp
+        TestMessageDigest.cpp
+        TestNetworkUtil.cpp
+        TestOutputUtil.cpp
+        TestPercentConverter.cpp
+        TestPlugin/TestPlugin.cpp
+        TestProcess.cpp
+        TestRandom.cpp
         TestRange.cpp
+        TestReusableSocket.cpp
+        TestRpc.cpp
+        TestService.cpp
+        TestSharedMemory/TestSharedMemory.cpp
+        TestSocket.cpp
+        TestSSL.cpp
         TestStackInfo.cpp
+        TestStream.cpp
+        TestStringBuilder.cpp
+        TestThread.cpp
+        TestTimer.cpp
+        TestUniReader.cpp
+        TestUtil.cpp
+        TestUuidBuilder.cpp
+        TestWebsocketService.cpp
+        TestXML.cpp
+        TestYaml.cpp
 )
 
 target_link_libraries(AllTestInMain Core GTest::gtest GTest::gtest_main)

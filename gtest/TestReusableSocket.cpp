@@ -37,14 +37,14 @@ private:
     sese::Thread::Ptr th{nullptr};
 };
 
+// 此测试应当只针对 Linux
+#ifdef SESE_PLATFORM_LINUX
+
 static sese::net::IPAddress::Ptr createAddress() {
     auto port = sese::net::createRandomPort();
     SESE_INFO("select port %d\n", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
-
-// 此测试应当只针对 Linux
-#ifdef SESE_PLATFORM_LINUX
 
 TEST(TestReusableSocket, LoadBalancing) {
     auto addr = createAddress();

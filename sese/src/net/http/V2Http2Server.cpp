@@ -21,7 +21,7 @@
 using namespace sese::net::http;
 using namespace sese::net::v2::http;
 
-Http2Context::Http2Context(const net::v2::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept: stream(stream), table(table) {}
+Http2Context::Http2Context(const net::v2::http::Http2Stream::Ptr &stream, net::http::DynamicTable &table) noexcept : table(table), stream(stream) {}
 
 int64_t Http2Context::write(const void *buffer, size_t length) {
     if (0 == data) {
@@ -232,8 +232,7 @@ void Http2Server::onHttpHandle(sese::net::v2::IOContext &ctx) noexcept {
     }
 }
 
-void Http2Server::onHttp2Handle(const net::v2::http::Http2Connection::Ptr &conn,
-                                bool first) noexcept {
+void Http2Server::onHttp2Handle(const net::v2::http::Http2Connection::Ptr &conn, bool first) noexcept {
     IOContext &ctx = conn->context;
     Http2FrameInfo frame{};
     frame.type = FRAME_TYPE_SETTINGS;
@@ -334,8 +333,7 @@ int64_t Http2Server::readFrame(IOContext &ctx, sese::net::http::Http2FrameInfo &
     return 1;
 }
 
-int64_t Http2Server::writeFrame(const Http2Connection::Ptr &conn,
-                                sese::net::v2::http::Http2Server::Http2FrameInfo &info) noexcept {
+int64_t Http2Server::writeFrame(const Http2Connection::Ptr &conn, sese::net::v2::http::Http2Server::Http2FrameInfo &info) noexcept {
     auto len = ToBigEndian32(info.length);
     auto ident = ToBigEndian32(info.ident);
 
@@ -368,8 +366,8 @@ void Http2Server::header2Http2(HttpContext &ctx, Header &header) noexcept {
     header = ctx.request;
     // 此处做转换
 #define STR(str) #str
-#define XX(type) \
-    case RequestType::type: \
+#define XX(type)                          \
+    case RequestType::type:               \
         header.set(":method", STR(type)); \
         break
 
@@ -390,8 +388,7 @@ void Http2Server::header2Http2(HttpContext &ctx, Header &header) noexcept {
 }
 
 
-void Http2Server::onSettingsFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame,
-                                  const Http2Connection::Ptr &conn) noexcept {
+void Http2Server::onSettingsFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame, const Http2Connection::Ptr &conn) noexcept {
     IOContext &ctx = conn->context;
     // 为当前连接更改设置
     io::ByteBuilder builder;
@@ -434,15 +431,13 @@ void Http2Server::onSettingsFrame(sese::net::v2::http::Http2Server::Http2FrameIn
     }
 }
 
-void Http2Server::onWindowUpdateFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &info,
-                                      const Http2Connection::Ptr &conn) noexcept {
+void Http2Server::onWindowUpdateFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &info, const Http2Connection::Ptr &conn) noexcept {
     // 不做控制 - 读取负载
     uint32_t data;
     conn->context.read(&data, sizeof(data));
 }
 
-void Http2Server::onHeadersFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame,
-                                 const Http2Connection::Ptr &conn) noexcept {
+void Http2Server::onHeadersFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame, const Http2Connection::Ptr &conn) noexcept {
     auto stream = conn->find(frame.ident);
     if (!stream) {
         stream = std::make_shared<Http2Stream>();
@@ -479,8 +474,7 @@ void Http2Server::onHeadersFrame(sese::net::v2::http::Http2Server::Http2FrameInf
     }
 }
 
-void Http2Server::onDataFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame,
-                              const Http2Connection::Ptr &conn) noexcept {
+void Http2Server::onDataFrame(sese::net::v2::http::Http2Server::Http2FrameInfo &frame, const Http2Connection::Ptr &conn) noexcept {
     auto stream = conn->find(frame.ident);
     if (!stream) {
         stream = std::make_shared<Http2Stream>();
@@ -523,9 +517,7 @@ void Http2Server::onResponseAndSend(const Http2Connection::Ptr &conn, const Http
     conn->mutex.unlock();
 }
 
-void Http2Server::sendHeader(Http2Context &ctx,
-                             const sese::net::v2::http::Http2Server::Http2Connection::Ptr &conn,
-                             const Http2Stream::Ptr &stream) noexcept {
+void Http2Server::sendHeader(Http2Context &ctx, const sese::net::v2::http::Http2Server::Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept {
     bool first = true;
     size_t headerSize = ctx.header;
     io::ByteBuilder &builder = ctx.stream->buffer;
@@ -560,9 +552,7 @@ void Http2Server::sendHeader(Http2Context &ctx,
     }
 }
 
-void Http2Server::sendData(sese::net::v2::http::Http2Context &ctx,
-                           const Http2Connection::Ptr &conn,
-                           const Http2Stream::Ptr &stream) noexcept {
+void Http2Server::sendData(sese::net::v2::http::Http2Context &ctx, const Http2Connection::Ptr &conn, const Http2Stream::Ptr &stream) noexcept {
     size_t dataSize = ctx.data;
     io::ByteBuilder &builder = ctx.stream->buffer;
 

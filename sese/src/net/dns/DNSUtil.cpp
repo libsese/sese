@@ -3,7 +3,7 @@
 #include <sese/util/Endian.h>
 #include <sese/io/InputBufferWrapper.h>
 
-void sese::net::dns::DNSUtil::decodeFrameHeaderInfo(const uint8_t buf[12], sese::net::dns::FrameHeaderInfo &info) noexcept {
+void sese::net::dns::DNSUtil::decodeFrameHeaderInfo(const uint8_t *buf, sese::net::dns::FrameHeaderInfo &info) noexcept {
     info.transactionId = buf[0] * 0x100 + buf[1];
     decodeFrameFlagsInfo(&buf[2], info.flags);
     info.questions = buf[4] * 0x100 + buf[5];
@@ -12,7 +12,7 @@ void sese::net::dns::DNSUtil::decodeFrameHeaderInfo(const uint8_t buf[12], sese:
     info.additionalPrs = buf[10] * 0x100 + buf[11];
 }
 
-void sese::net::dns::DNSUtil::decodeFrameFlagsInfo(const uint8_t buf[2], sese::net::dns::FrameFlagsInfo &info) noexcept {
+void sese::net::dns::DNSUtil::decodeFrameFlagsInfo(const uint8_t *buf, sese::net::dns::FrameFlagsInfo &info) noexcept {
     info.QR = (buf[0] & 0b1000'0000) >> 7;
     info.opcode = (buf[0] & 0b0111'1000) >> 3;
     info.AA = (buf[0] & 0b0000'0100) >> 2;
@@ -23,7 +23,7 @@ void sese::net::dns::DNSUtil::decodeFrameFlagsInfo(const uint8_t buf[2], sese::n
     info.rcode = (buf[1] & 0b0000'1111);
 }
 
-void sese::net::dns::DNSUtil::encodeFrameHeaderInfo(uint8_t buf[2], const sese::net::dns::FrameHeaderInfo &info) noexcept {
+void sese::net::dns::DNSUtil::encodeFrameHeaderInfo(uint8_t *buf, const sese::net::dns::FrameHeaderInfo &info) noexcept {
     buf[0] = info.transactionId / 0x100;
     buf[1] = info.transactionId % 0x100;
     encodeFrameFlagsInfo(&buf[2], info.flags);
@@ -37,7 +37,7 @@ void sese::net::dns::DNSUtil::encodeFrameHeaderInfo(uint8_t buf[2], const sese::
     buf[11] = info.additionalPrs % 0x100;
 }
 
-void sese::net::dns::DNSUtil::encodeFrameFlagsInfo(uint8_t buf[2], const FrameFlagsInfo &info) noexcept {
+void sese::net::dns::DNSUtil::encodeFrameFlagsInfo(uint8_t *buf, const FrameFlagsInfo &info) noexcept {
     buf[0] = info.QR << 7;
     buf[0] |= info.opcode << 3;
     buf[0] |= info.AA << 2;
@@ -151,7 +151,7 @@ void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<An
 bool sese::net::dns::DNSUtil::decodeDomain(InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept {
     bool first = true;
     uint8_t l;
-    uint32_t size = 12;
+    [[maybe_unused]] uint32_t size = 12;
     char buf[128];
     while (true) {
         ASSERT_READ(&l, 1);
@@ -203,7 +203,7 @@ bool sese::net::dns::DNSUtil::decodeDomain(InputStream *input, std::string &doma
 
 bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept {
     while (acount) {
-        uint32_t size = 12;
+        [[maybe_unused]] uint32_t size = 12;
 
         bool finsh = false;
         std::string domain;

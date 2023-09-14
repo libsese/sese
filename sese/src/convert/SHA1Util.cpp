@@ -10,7 +10,7 @@ using sese::io::ByteBuilder;
 // 此文件实现参考 https://github.com/vog/sha1
 
 static const size_t BLOCK_INTS = 16; /* number of 32bit integers per SHA1 block */
-static const size_t BLOCK_BYTES = BLOCK_INTS * 4;
+// static const size_t BLOCK_BYTES = BLOCK_INTS * 4;
 
 inline static uint32_t rol(const uint32_t value, const size_t bits) {
     return (value << bits) | (value >> (32 - bits));

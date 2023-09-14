@@ -69,7 +69,7 @@ namespace sese {
     }
 
     void Thread::start() {
-        this->data->th = std::move(std::thread([this] { run(this->data); }));// GCOVR_EXCL_LINE
+        this->data->th = std::thread([this] { run(this->data); });// GCOVR_EXCL_LINE
     }
 
     void Thread::join() {

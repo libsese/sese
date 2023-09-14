@@ -15,8 +15,8 @@ using namespace sese::net::v2;
 
 WindowsServiceIOContext::WindowsServiceIOContext(socket_t socket, HANDLE handle, void *ssl) noexcept
     : socket(socket),
-      event(handle),
-      ssl(ssl) {
+      ssl(ssl),
+      event(handle) {
 }
 
 int64_t WindowsServiceIOContext::peek(void *buf, size_t len) noexcept {

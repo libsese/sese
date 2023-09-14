@@ -13,7 +13,9 @@ namespace sese {
     /// GZip 文件输出流（压缩）
     class API GZipFileOutputStream : public io::OutputStream {
     public:
-        using Ptr = std::unique_ptr<GZipFileOutputStream>;
+        static void deleter(GZipFileOutputStream *data) noexcept;
+
+        using Ptr = std::shared_ptr<GZipFileOutputStream>;
 
         /// 创建文件输出流对象
         /// \param file 文件的相对或者绝对路径
