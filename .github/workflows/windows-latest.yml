@@ -20,11 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11.4'
-
       - name: Install Dependencies(pip)
         run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
 
@@ -37,7 +32,7 @@ jobs:
       - name: Setup Ninja
         uses: ashutoshvarma/setup-ninja@master
         with:
-          version: 1.10.0
+          version: 1.11.1
 
       - name: Requiring CL
         uses: ilammy/msvc-dev-cmd@v1.12.1
