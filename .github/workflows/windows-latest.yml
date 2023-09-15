@@ -26,21 +26,26 @@ jobs:
           python-version: '3.11.4'
 
       - name: Install Dependencies(pip)
-        run: pip install -r ${{github.workspace}}/scripts/requirements.txt
+        run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
 
       - name: Cache Vcpkg Dependencies
         uses: actions/cache@v3
         with:
-          path: ${{github.workspace}}/build/vcpkg_installed
+          path: ${{ github.workspace }}/build/vcpkg_installed
           key: ${{ runner.os }}-vcpkg-${{ hashFiles('**/vcpkg.json') }}
 
+      - name: Setup Ninja
+        uses: ashutoshvarma/setup-ninja@master
+        with:
+          version: 1.10.0
+
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DSESE_BUILD_TEST=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+        run: cmake -G Ninja -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DSESE_BUILD_TEST=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 
       - name: Build
-        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} -j 8
+        run: cmake --build ${{ github.workspace }}/build --config ${{ env.BUILD_TYPE }} -j 8
 
       - name: Test
-        working-directory: ${{github.workspace}}/build
-        run: ctest -C ${{env.BUILD_TYPE}} --extra-verbose
+        working-directory: ${{ github.workspace }}/build
+        run: ctest -C ${{ env.BUILD_TYPE }} --extra-verbose
 
