@@ -39,6 +39,9 @@ jobs:
         with:
           version: 1.10.0
 
+      - name: Requiring CL
+        uses: ilammy/msvc-dev-cmd@v1.12.1
+
       - name: Configure CMake
         run: cmake -G Ninja -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DSESE_BUILD_TEST=ON -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 
