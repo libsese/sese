@@ -1,24 +1,51 @@
 #include <sese/record/LogHelper.h>
+#include <sese/record/Marco.h>
+#include <sese/thread/Thread.h>
 #include <sese/util/Timer.h>
+#include <sese/util/TimeWheel.h>
 #include <sese/util/Util.h>
 
 #include <gtest/gtest.h>
 
 void foo() {
-    sese::record::LogHelper::d("foo time up");
+    SESE_DEBUG("foo time up");
 }
 
 void bar() {
-    sese::record::LogHelper::d("bar time up");
+    SESE_DEBUG("bar time up");
 }
 
-TEST(TestTimer, Normal) {
+void TestTimer() {
     auto timer = sese::Timer::create(0);
-    sese::record::LogHelper::d("timer start");
+    SESE_DEBUG("timer start");
     timer->delay(foo, 2);
     auto task = timer->delay(bar, 1, true);
     sese::sleep(4);
     task->cancel();
     sese::sleep(3);
-    sese::record::LogHelper::d("timer thread joining");
+    SESE_DEBUG("timer thread joining");
+}
+
+void TestTimeWheel() {
+    sese::TimeWheel timer;
+    timer.delay(foo, 2);
+    auto task = timer.delay(bar, 1, true);
+    sese::sleep(3);
+    SESE_DEBUG("checking");
+    timer.check();
+    sese::sleep(3);
+    SESE_DEBUG("checking");
+    timer.check();
+    timer.cancel(task);
+}
+
+TEST(TestTimer, Launcher) {
+    sese::Thread th1(TestTimer, "TestTimer");
+    sese::Thread th2(TestTimeWheel, "TestTimeWheel");
+    th1.start();
+    th2.start();
+    SESE_INFO("waiting task done");
+    th1.join();
+    th2.join();
+    SESE_INFO("all task done");
 }

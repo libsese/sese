@@ -132,6 +132,7 @@ set(
         src/util/Test.cpp
         src/util/Timer.cpp
         src/util/TimeSpan.cpp
+        src/util/TimeWheel.cpp
         src/util/Util.cpp
         src/util/UuidBuilder.cpp
 )
@@ -227,7 +228,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
         target_compile_options(Core PRIVATE "/utf-8")
     endif ()
     target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
-    # message(STATUS "Linked libraries: ws2_32, dbghelp, iphlpapi, advapi32, crypt32, secur32")
 
     if (${MINGW})
         target_compile_options(Core PRIVATE "-fno-exceptions")
@@ -266,7 +266,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
     target_compile_options(Core PRIVATE "-fno-exceptions")
     target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
-    # message(STATUS "Linked libraries: pthread, dl")
 endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -275,7 +274,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
 
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
-    # message(STATUS "Linked framework: IOKit, CoreServices, CoreFoundation")
 endif ()
 
 set_target_properties(Core
