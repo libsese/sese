@@ -2,7 +2,7 @@
 #include "sese/net/Socket.h"
 #include "sese/service/SystemBalanceLoader.h"
 #include "sese/service/UserBalanceLoader.h"
-#include "sese/service/TimerableService.h"
+#include "sese/service/TimerableService_V1.h"
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"
 
@@ -91,7 +91,7 @@ TEST(TestService, UserBalanceLoader) {
     service.stop();
 }
 
-class MyTimerableService : public sese::service::TimerableService {
+class MyTimerableService : public sese::service::TimerableService_V1 {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
@@ -114,7 +114,7 @@ public:
         setTimeoutEvent(timeoutEvent, 3);
     }
 
-    void onTimeout(sese::service::TimeoutEvent *timeoutEvent) override {
+    void onTimeout(sese::service::TimeoutEvent_V1 *timeoutEvent) override {
         printf("fd %d close", timeoutEvent->fd);
         sese::net::Socket::close(timeoutEvent->fd);
         auto event = (sese::event::Event *)timeoutEvent->data;

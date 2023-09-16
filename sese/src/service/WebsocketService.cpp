@@ -157,7 +157,7 @@ void sese::service::WebsocketService::onClose(sese::event::BaseEvent *event) {
     HttpService::onClose(event);
 }
 
-void sese::service::WebsocketService::onTimeout(sese::service::TimeoutEvent *timeoutEvent) {
+void sese::service::WebsocketService::onTimeout(sese::service::TimeoutEvent_V1 *timeoutEvent) {
     auto conn = (sese::net::http::HttpConnection *) timeoutEvent->data;
     auto iterator = sessionMap.find(conn);
     if (iterator != sessionMap.end()) {

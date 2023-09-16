@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <sese/service/TimerableService.h>
+#include <sese/service/TimerableService_V1.h>
 #include <sese/security/SSLContext.h>
 #include "sese/io/ByteBuilder.h"
 
@@ -32,7 +32,7 @@ namespace sese::service {
 
         void *ssl = nullptr;
         event::BaseEvent *event = nullptr;
-        service::TimeoutEvent *timeoutEvent = nullptr;
+        service::TimeoutEvent_V1 *timeoutEvent = nullptr;
         io::ByteBuilder buffer2read{8192};
         io::ByteBuilder buffer2write{8192};
     };
@@ -47,7 +47,7 @@ namespace sese::service {
     };
 
     /// TCP 传输器
-    class API TcpTransporter : public TimerableService {
+    class API TcpTransporter : public TimerableService_V1 {
     public:
         explicit TcpTransporter(TcpTransporterConfig *transporterConfig) noexcept;
         ~TcpTransporter() override;
@@ -57,7 +57,7 @@ namespace sese::service {
         void onRead(event::BaseEvent *event) override;
         void onWrite(event::BaseEvent *event) override;
         void onClose(event::BaseEvent *event) override;
-        void onTimeout(TimeoutEvent *timeoutEvent) override;
+        void onTimeout(TimeoutEvent_V1 *timeoutEvent) override;
 
     protected:
         virtual void postRead(TcpConnection *conn);

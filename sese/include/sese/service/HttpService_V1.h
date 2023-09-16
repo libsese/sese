@@ -47,7 +47,7 @@ namespace sese::service::v1 {
 
     /// @brief HTTP 服务，支持长连接、文件下载、断点续传等
     // class API HttpService final : public sese::event::EventLoop {
-    class API HttpService : public sese::service::TimerableService {
+    class API HttpService : public sese::service::TimerableService_V1 {
     public:
         /// 通过配置构造 Http 服务
         /// \param config
@@ -100,7 +100,7 @@ namespace sese::service::v1 {
 
         /// 连接超时时处理
         /// \param timeoutEvent 超时事件
-        void onTimeout(TimeoutEvent *timeoutEvent) override;
+        void onTimeout(TimeoutEvent_V1 *timeoutEvent) override;
 
         /// 发送控制器数据处理
         /// \param event 事件

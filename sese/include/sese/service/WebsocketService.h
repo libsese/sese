@@ -48,7 +48,7 @@ namespace sese::service {
 
         void onClose(event::BaseEvent *event) override;
 
-        void onTimeout(TimeoutEvent *timeoutEvent) override;
+        void onTimeout(TimeoutEvent_V1 *timeoutEvent) override;
 
         void onProcClose(event::BaseEvent *event) noexcept override;
 

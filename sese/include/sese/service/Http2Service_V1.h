@@ -34,7 +34,7 @@ namespace sese::service::v1 {
 
         void onHandleUpgrade(net::http::HttpConnection *conn) noexcept override;
 
-        void onTimeout(TimeoutEvent *timeoutEvent) override;
+        void onTimeout(TimeoutEvent_V1 *timeoutEvent) override;
 
     private:
         void dispatch(net::http::Http2Connection *conn2, net::http::Request &req,  const net::http::Http2Stream::Ptr &stream) noexcept;

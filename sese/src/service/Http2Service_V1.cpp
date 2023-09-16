@@ -197,7 +197,7 @@ void sese::service::v1::Http2Service::onHandleHttp2(net::http::HttpConnection *c
     }
 }
 
-void sese::service::v1::Http2Service::onTimeout(sese::service::TimeoutEvent *timeoutEvent) {
+void sese::service::v1::Http2Service::onTimeout(sese::service::TimeoutEvent_V1 *timeoutEvent) {
     HttpService::onTimeout(timeoutEvent);
 }
 

@@ -9,7 +9,7 @@
 #include <sese/Config.h>
 #include <sese/config/json/JsonTypes.h>
 #include <sese/security/SSLContext.h>
-#include <sese/service/TimerableService.h>
+#include <sese/service/TimerableService_V1.h>
 #include "sese/io/ByteBuilder.h"
 
 #include <map>

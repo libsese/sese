@@ -13,7 +13,7 @@
 #include <sese/net/http/Range.h>
 #include <sese/io/ByteBuilder.h>
 #include <sese/io/FileStream.h>
-#include <sese/service/TimerableService.h>
+#include <sese/service/TimerableService_V1.h>
 
 namespace sese::net::http {
 
@@ -45,7 +45,7 @@ namespace sese::net::http {
         std::vector<net::http::Range>::iterator rangeIterator;// 指示当前响应区间迭代器
 
         event::BaseEvent *event = nullptr;
-        service::TimeoutEvent *timeoutEvent = nullptr;
+        service::TimeoutEvent_V1 *timeoutEvent = nullptr;
 
         ~HttpConnection() noexcept;
     };

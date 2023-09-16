@@ -160,7 +160,7 @@ set(
         src/service/RpcService.cpp
         src/service/SystemBalanceLoader.cpp
         src/service/TcpTransporter.cpp
-        src/service/TimerableService.cpp
+        src/service/TimerableService_V1.cpp
         src/service/UserBalanceLoader.cpp
         src/service/WebsocketService.cpp
 )

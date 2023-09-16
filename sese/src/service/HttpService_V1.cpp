@@ -104,7 +104,7 @@ void service::v1::HttpService::onAccept(int fd) {
     conn->status = HttpHandleStatus::HANDING;
 
     if (config->keepalive) {
-        conn->timeoutEvent = TimerableService::createTimeoutEvent(fd, conn, config->keepalive);
+        conn->timeoutEvent = TimerableService_V1::createTimeoutEvent(fd, conn, config->keepalive);
         conn->timeoutEvent->data = conn;
     }
 
@@ -130,7 +130,7 @@ void service::v1::HttpService::onRead(event::BaseEvent *event) {
     // conn->timeoutEvent != nullptr
 
     if (config->keepalive) {
-        TimerableService::cancelTimeoutEvent(conn->timeoutEvent);
+        TimerableService_V1::cancelTimeoutEvent(conn->timeoutEvent);
     }
 
     char buf[MTU_VALUE];
@@ -167,7 +167,7 @@ void service::v1::HttpService::onRead(event::BaseEvent *event) {
     return;
 free:
     if (conn->timeoutEvent) {
-        TimerableService::freeTimeoutEvent(conn->timeoutEvent);
+        TimerableService_V1::freeTimeoutEvent(conn->timeoutEvent);
     }
     onProcClose(event);
     if (config->servCtx) {
@@ -592,7 +592,7 @@ int64_t service::v1::HttpService::write(int fd, const void *buffer, size_t len, 
     }
 }
 
-void service::v1::HttpService::onTimeout(service::TimeoutEvent *timeoutEvent) {
+void service::v1::HttpService::onTimeout(service::TimeoutEvent_V1 *timeoutEvent) {
     auto conn = (HttpConnection *) timeoutEvent->data;
     if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);

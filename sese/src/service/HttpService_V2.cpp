@@ -93,7 +93,7 @@ void sese::service::v2::HttpService::onWrite(sese::event::BaseEvent *event) {
         } else if (httpConn->status == net::http::HttpHandleStatus::FAIL) {
             // close
             if (wrapper->timeoutEvent) {
-                TimerableService::freeTimeoutEvent(wrapper->timeoutEvent);
+                TimerableService_V1::freeTimeoutEvent(wrapper->timeoutEvent);
             }
             onProcClose(wrapper);
             if (config->servCtx) {
