@@ -1,2 +1,1 @@
-#include "sese/system/Process.h"
-#include "../src/native/Linux/system/Process.cpp"
+#include "sese/native/Linux/system/Process.cpp"
