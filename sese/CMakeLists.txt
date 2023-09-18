@@ -7,162 +7,162 @@ find_package(sese-event CONFIG REQUIRED)
 
 set(
         RECORD_SRC
-        src/record/AbstractAppender.cpp
-        src/record/AsyncLogger.cpp
-        src/record/BlockAppender.cpp
-        src/record/ConsoleAppender.cpp
-        src/record/FileAppender.cpp
-        src/record/Logger.cpp
-        src/record/LogHelper.cpp
-        src/record/SimpleFormatter.cpp
+        record/AbstractAppender.cpp
+        record/AsyncLogger.cpp
+        record/BlockAppender.cpp
+        record/ConsoleAppender.cpp
+        record/FileAppender.cpp
+        record/Logger.cpp
+        record/LogHelper.cpp
+        record/SimpleFormatter.cpp
 )
 
 set(
         CONVERT_SRC
-        src/convert/Base64Converter.cpp
-        src/convert/Compressor.cpp
-        src/convert/Decompressor.cpp
-        src/convert/EncodingConverter.cpp
-        src/convert/GZipFileInputStream.cpp
-        src/convert/GZipFileOutputStream.cpp
-        src/convert/MD5Util.cpp
-        src/convert/MessageDigest.cpp
-        src/convert/PercentConverter.cpp
-        src/convert/SHA1Util.cpp
-        src/convert/SHA256Util.cpp
+        convert/Base64Converter.cpp
+        convert/Compressor.cpp
+        convert/Decompressor.cpp
+        convert/EncodingConverter.cpp
+        convert/GZipFileInputStream.cpp
+        convert/GZipFileOutputStream.cpp
+        convert/MD5Util.cpp
+        convert/MessageDigest.cpp
+        convert/PercentConverter.cpp
+        convert/SHA1Util.cpp
+        convert/SHA256Util.cpp
 )
 
 set(
         IO_SRC
-        src/io/AbstractByteBuffer.cpp
-        src/io/AbstractFixedBuffer.cpp
-        src/io/BufferedInputStream.cpp
-        src/io/BufferedOutputStream.cpp
-        src/io/BufferedStream.cpp
-        src/io/ByteBuffer.cpp
-        src/io/ConsoleOutputStream.cpp
-        src/io/FileStream.cpp
-        src/io/FixedBuffer.cpp
-        src/io/InputBufferWrapper.cpp
-        src/io/InputStreamReader.cpp
-        src/io/OutputBufferWrapper.cpp
+        io/AbstractByteBuffer.cpp
+        io/AbstractFixedBuffer.cpp
+        io/BufferedInputStream.cpp
+        io/BufferedOutputStream.cpp
+        io/BufferedStream.cpp
+        io/ByteBuffer.cpp
+        io/ConsoleOutputStream.cpp
+        io/FileStream.cpp
+        io/FixedBuffer.cpp
+        io/InputBufferWrapper.cpp
+        io/InputStreamReader.cpp
+        io/OutputBufferWrapper.cpp
 )
 
 set(
         THREAD_SRC
-        src/thread/Thread.cpp
-        src/thread/ThreadPool.cpp
+        thread/Thread.cpp
+        thread/ThreadPool.cpp
 )
 
 set(
         SYSTEM_SRC
-        src/system/Environment.cpp
-        src/system/LibraryLoader.cpp
-        src/system/NetworkUtil.cpp
+        system/Environment.cpp
+        system/LibraryLoader.cpp
+        system/NetworkUtil.cpp
 )
 
 set(
         NET_SRC
-        src/net/Address.cpp
-        src/net/AddressPool.cpp
-        src/net/dns/Client.cpp
-        src/net/dns/DNSServer.cpp
-        src/net/dns/DNSUtil.cpp
-        src/net/http/ContentTypeMap.cpp
-        src/net/http/ControllerGroup.cpp
-        src/net/http/Cookie.cpp
-        src/net/http/CookieMap.cpp
-        src/net/http/DynamicTable.cpp
-        src/net/http/Header.cpp
-        src/net/http/HPackUtil.cpp
-        src/net/http/Http2Connection.cpp
-        src/net/http/Http2Stream.cpp
-        src/net/http/HttpClient.cpp
-        src/net/http/HttpConnection.cpp
-        src/net/http/HttpServer.cpp
-        src/net/http/HttpUtil.cpp
-        src/net/http/Huffman.cpp
-        src/net/http/QueryString.cpp
-        src/net/http/Range.cpp
-        src/net/http/Request.cpp
-        src/net/http/Response.cpp
-        src/net/http/UrlHelper.cpp
-        src/net/http/V2Http2Server.cpp
-        src/net/http/V2HttpServer.cpp
-        src/net/IPAddress.cpp
-        src/net/IPv4Address.cpp
-        src/net/IPv6Address.cpp
-        src/net/ReusableSocket.cpp
-        src/net/rpc/Client.cpp
-        src/net/rpc/Server.cpp
-        src/net/rpc/V2RpcServer.cpp
-        src/net/Socket.cpp
-        src/net/ws/WebSocketAuthenticator.cpp
+        net/Address.cpp
+        net/AddressPool.cpp
+        net/dns/Client.cpp
+        net/dns/DNSServer.cpp
+        net/dns/DNSUtil.cpp
+        net/http/ContentTypeMap.cpp
+        net/http/ControllerGroup.cpp
+        net/http/Cookie.cpp
+        net/http/CookieMap.cpp
+        net/http/DynamicTable.cpp
+        net/http/Header.cpp
+        net/http/HPackUtil.cpp
+        net/http/Http2Connection.cpp
+        net/http/Http2Stream.cpp
+        net/http/HttpClient.cpp
+        net/http/HttpConnection.cpp
+        net/http/HttpServer.cpp
+        net/http/HttpUtil.cpp
+        net/http/Huffman.cpp
+        net/http/QueryString.cpp
+        net/http/Range.cpp
+        net/http/Request.cpp
+        net/http/Response.cpp
+        net/http/UrlHelper.cpp
+        net/http/V2Http2Server.cpp
+        net/http/V2HttpServer.cpp
+        net/IPAddress.cpp
+        net/IPv4Address.cpp
+        net/IPv6Address.cpp
+        net/ReusableSocket.cpp
+        net/rpc/Client.cpp
+        net/rpc/Server.cpp
+        net/rpc/V2RpcServer.cpp
+        net/Socket.cpp
+        net/ws/WebSocketAuthenticator.cpp
 )
 
 set(
         CONFIG_SRC
-        src/config/ConfigUtil.cpp
-        src/config/CSVReader.cpp
-        src/config/CSVWriter.cpp
-        src/config/ini/IniUtil.cpp
-        src/config/json/JsonTypes.cpp
-        src/config/json/JsonUtil.cpp
-        src/config/xml/XmlTypes.cpp
-        src/config/xml/XmlUtil.cpp
-        src/config/yaml/YamlTypes.cpp
-        src/config/yaml/YamlUtil.cpp
+        config/ConfigUtil.cpp
+        config/CSVReader.cpp
+        config/CSVWriter.cpp
+        config/ini/IniUtil.cpp
+        config/json/JsonTypes.cpp
+        config/json/JsonUtil.cpp
+        config/xml/XmlTypes.cpp
+        config/xml/XmlUtil.cpp
+        config/yaml/YamlTypes.cpp
+        config/yaml/YamlUtil.cpp
 )
 
 set(
         TEXT_SRC
-        src/text/AbstractStringBuffer.cpp
-        src/text/DateTimeFormatter.cpp
-        src/text/StringBuffer.cpp
-        src/text/TextReader.cpp
+        text/AbstractStringBuffer.cpp
+        text/DateTimeFormatter.cpp
+        text/StringBuffer.cpp
+        text/TextReader.cpp
 )
 
 set(
         UTIL_SRC
-        src/util/ArgParser.cpp
-        src/util/DateTime.cpp
-        src/util/Initializer.cpp
-        src/util/MemoryViewer.cpp
-        src/util/Random.cpp
-        src/util/Test.cpp
-        src/util/Timer.cpp
-        src/util/TimeSpan.cpp
-        src/util/TimeWheel.cpp
-        src/util/Util.cpp
-        src/util/UuidBuilder.cpp
+        util/ArgParser.cpp
+        util/DateTime.cpp
+        util/Initializer.cpp
+        util/MemoryViewer.cpp
+        util/Random.cpp
+        util/Test.cpp
+        util/Timer.cpp
+        util/TimeSpan.cpp
+        util/TimeWheel.cpp
+        util/Util.cpp
+        util/UuidBuilder.cpp
 )
 
 set(
         SECURITY_SRC
-        src/security/MessageDigest.cpp
-        src/security/SecurityConfig.cpp
-        src/security/SecuritySocket.cpp
-        src/security/SSLContext.cpp
-        src/security/SSLContextBuilder.cpp
+        security/MessageDigest.cpp
+        security/SecurityConfig.cpp
+        security/SecuritySocket.cpp
+        security/SSLContext.cpp
+        security/SSLContextBuilder.cpp
 )
 
 set(
         PLUGIN_SRC
-        src/plugin/Module.cpp
+        plugin/Module.cpp
 )
 
 set(
         SERVICE_SRC
-        src/service/Http2Service_V1.cpp
-        src/service/HttpConnection_V2.cpp
-        src/service/HttpService_V1.cpp
-        src/service/HttpService_V2.cpp
-        src/service/RpcService.cpp
-        src/service/SystemBalanceLoader.cpp
-        src/service/TcpTransporter.cpp
-        src/service/TimerableService_V1.cpp
-        src/service/UserBalanceLoader.cpp
-        src/service/WebsocketService.cpp
+        service/Http2Service_V1.cpp
+        service/HttpConnection_V2.cpp
+        service/HttpService_V1.cpp
+        service/HttpService_V2.cpp
+        service/RpcService.cpp
+        service/SystemBalanceLoader.cpp
+        service/TcpTransporter.cpp
+        service/TimerableService_V1.cpp
+        service/UserBalanceLoader.cpp
+        service/WebsocketService.cpp
 )
 
 add_library(Core
@@ -194,11 +194,11 @@ target_compile_definitions(Core PUBLIC -DSESE_USE_SSL)
 target_include_directories(
         Core
         PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
         $<INSTALL_INTERFACE:include>
 )
 
-set(NATIVE_PATH "src/native/${CMAKE_SYSTEM_NAME}")
+set(NATIVE_PATH "native/${CMAKE_SYSTEM_NAME}")
 target_sources(Core PRIVATE
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/net/ReadableServer.cpp
@@ -314,8 +314,10 @@ install(
 )
 
 install(
-        DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/include/sese"
+        DIRECTORY "${PROJECT_SOURCE_DIR}/sese"
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+        FILES_MATCHING
+        PATTERN "*.h"
 )
 
 install(

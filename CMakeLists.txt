@@ -19,7 +19,7 @@ if (SESE_BUILD_TEST)
     endif ()
 endif ()
 
-project(sese-core VERSION 1.2.0)
+project(sese-core VERSION 1.2.1)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -65,13 +65,9 @@ add_definitions("-DSESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
 add_definitions("-DPROJECT_PATH=\"${CMAKE_CURRENT_LIST_DIR}\"")
 add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
-# message(STATUS "C compile option: ${CMAKE_C_FLAGS}")
-# message(STATUS "CXX compile options: ${CMAKE_CXX_FLAGS}")
-
 add_subdirectory(sese)
 
 if (SESE_BUILD_TEST)
     enable_testing()
-    # add_subdirectory(test)
     add_subdirectory(gtest)
 endif ()
