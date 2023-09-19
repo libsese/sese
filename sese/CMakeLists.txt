@@ -161,6 +161,7 @@ set(
         service/SystemBalanceLoader.cpp
         service/TcpTransporter.cpp
         service/TimerableService_V1.cpp
+        service/TimerableService_V2.cpp
         service/UserBalanceLoader.cpp
         service/WebsocketService.cpp
 )
