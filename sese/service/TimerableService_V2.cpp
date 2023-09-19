@@ -14,7 +14,7 @@ void TimerableService_V2::onTimeout(TimeoutEvent_V2 *event) {
 TimeoutEvent_V2 *TimerableService_V2::setTimeoutEvent(int64_t seconds, void *data) {
     auto event = new TimeoutEvent_V2;
     event->event = timeWheel.delay(
-            [&]() {
+            [this, event]() {
                 this->onTimeout(event);
             },
             seconds,

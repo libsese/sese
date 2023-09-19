@@ -3,6 +3,7 @@
 #include "sese/service/SystemBalanceLoader.h"
 #include "sese/service/UserBalanceLoader.h"
 #include "sese/service/TimerableService_V1.h"
+#include "sese/service/TimerableService_V2.h"
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"
 
@@ -91,7 +92,7 @@ TEST(TestService, UserBalanceLoader) {
     service.stop();
 }
 
-class MyTimerableService : public sese::service::TimerableService_V1 {
+class MyTimerableService_V1 : public sese::service::TimerableService_V1 {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
@@ -122,7 +123,7 @@ public:
     }
 };
 
-TEST(TestService, TimerableService) {
+TEST(TestService, TimerableService_V1) {
     auto addr = createAddress();
 
     sese::service::UserBalanceLoader service;
@@ -130,7 +131,7 @@ TEST(TestService, TimerableService) {
     service.setAddress(addr);
     service.setAcceptTimeout(500);
     service.setDispatchTimeout(500);
-    ASSERT_TRUE(service.init<MyTimerableService>());
+    ASSERT_TRUE(service.init<MyTimerableService_V1>());
 
     service.start();
     ASSERT_TRUE(service.isStarted());
@@ -152,4 +153,73 @@ TEST(TestService, TimerableService) {
 
     std::this_thread::sleep_for(300ms);
     service.stop();
+}
+
+class MyTimerableService_V2 : public sese::service::TimerableService_V2 {
+public:
+    void onAccept(int fd) override {
+        printf("fd %d connect", fd);
+        if (0 == sese::net::Socket::setNonblocking((sese::socket_t) fd)) {
+            auto event = createEvent(fd, EVENT_READ, nullptr);
+            auto timeout = setTimeoutEvent(3, nullptr);
+            timeout->data = event;
+            event->data = timeout;
+        } else {
+            sese::net::Socket::close(fd);
+        }
+    }
+
+    void onRead(sese::event::BaseEvent *event) override {
+        auto timeoutEvent = (sese::service::TimeoutEvent_V2 *)(event->data);
+        // timeoutEvent will not be nullptr
+        cancelTimeoutEvent(timeoutEvent);
+        timeoutEvent = nullptr;
+        // timeoutEvent has been delete
+        char buffer[1024]{};
+        sese::net::Socket::read(event->fd, buffer, 1024, 0);
+        puts(buffer);
+
+        timeoutEvent = setTimeoutEvent(3, nullptr);
+        setEvent(event);
+        event->data = timeoutEvent;
+        timeoutEvent->data = event;
+    }
+
+    void onTimeout(sese::service::TimeoutEvent_V2 *timeoutEvent) override {
+        auto event = (sese::event::Event *)timeoutEvent->data;
+        printf("fd %d close", event->fd);
+        sese::net::Socket::close(event->fd);
+        freeEvent(event);
+    }
+};
+
+TEST(TestService, TimerableService_V2) {
+    auto addr = createAddress();
+
+    sese::service::UserBalanceLoader service;
+    service.setThreads(3);
+    service.setAddress(addr);
+    service.setAcceptTimeout(500);
+    service.setDispatchTimeout(500);
+    ASSERT_TRUE(service.init<MyTimerableService_V2>());
+
+    service.start();
+    ASSERT_TRUE(service.isStarted());
+
+    std::vector<sese::net::Socket> socketVector;
+    for (int i = 0; i < 20; ++i) {
+        auto s = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
+        s.setNonblocking(true);
+        socketVector.emplace_back(s);
+    }
+    for (decltype(auto) s: socketVector) {
+        s.connect(addr);
+    }
+    socketVector[4].write("Hello", 5);
+    std::this_thread::sleep_for(5s);
+    for (decltype(auto) s: socketVector) {
+        s.close();
+    }
+
+    std::this_thread::sleep_for(300ms);
 }
