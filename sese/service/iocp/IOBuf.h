@@ -49,7 +49,7 @@ namespace sese::iocp {
     };
 
     /// 用于 IOCP 的链式缓存
-    class IOBuf : public io::InputStream {
+    class IOBuf : public io::InputStream, public io::PeekableStream {
     public:
         /// 节点类型
         using Node = IOBufNode;
@@ -67,11 +67,25 @@ namespace sese::iocp {
         /// 获取当前可读大小
         [[nodiscard]] size_t getReadableSize() const noexcept;
 
+        /// 获取当前所有节点内容大小
+        [[nodiscard]] size_t getTotalSize() const noexcept;
+
         /// 从一个或多个节点读取内容
         /// \param buffer 缓存
         /// \param length 缓存大小
         /// \return 实际获取大小
         int64_t read(void *buffer, size_t length) override;
+
+        /// 从一个或多个节点窥视内容
+        /// \param buffer 缓存
+        /// \param length 缓存大小
+        /// \return 实际获取大小
+        int64_t peek(void *buffer, size_t length) override;
+
+        /// 从一个或多个节点步进内容
+        /// \param length 步进大小
+        /// \return 实际步进大小
+        int64_t trunc(size_t length) override;
 
     private:
         Node *root = nullptr;
