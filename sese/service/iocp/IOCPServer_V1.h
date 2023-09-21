@@ -41,18 +41,15 @@ namespace sese::iocp {
         void setAcceptTimeout(uint32_t seconds) { balanceLoader.setAcceptTimeout(seconds); }
         void setDispatchTimeout(uint32_t seconds) { balanceLoader.setDispatchTimeout(seconds); }
         void setAddress(const net::IPAddress::Ptr &addr) { balanceLoader.setAddress(addr); }
-        void setKeepalive(uint32_t seconds) { IOCPServer_V1::keepalive = seconds; }
         void setThreads(size_t threads) { balanceLoader.setThreads(threads); }
         void setServCtx(const security::SSLContext::Ptr &ctx) { IOCPServer_V1::sslCtx = ctx; }
         void setServProtos(const std::string &protos) { IOCPServer_V1::servProtos = protos; }
         void setDeleteContextCallback(const DeleteContextCallback &callback) { IOCPServer_V1::deleteContextCallback = callback; }
 
-        [[nodiscard]] uint32_t getKeepalive() const { return IOCPServer_V1::keepalive; }
         [[nodiscard]] const security::SSLContext::Ptr &getServCtx() const { return IOCPServer_V1::sslCtx; }
         [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return IOCPServer_V1::deleteContextCallback; };
 
     protected:
-        uint32_t keepalive{};
         DeleteContextCallback deleteContextCallback = onDeleteContext;
         security::SSLContext::Ptr sslCtx{};
         std::string servProtos{};

@@ -22,8 +22,11 @@ IOCPService_V1::IOCPService_V1(IOCPServer_V1 *master)
 }
 
 IOCPService_V1::~IOCPService_V1() {
-    for (auto &&item :eventSet) {
+    for (auto &&item: eventSet) {
+        auto ctx = (Context *) item->data;
         event::EventLoop::freeEvent(item);
+        ctx->self->getDeleteContextCallback()(ctx);
+        delete ctx;
     }
 }
 
@@ -156,6 +159,7 @@ void IOCPService_V1::onWrite(sese::event::BaseEvent *event) {
             auto err = sese::net::getNetworkError();
             if (err == EWOULDBLOCK || err == EINTR) {
                 postWrite(ctx);
+                printf("again\n");
                 break;
             } else {
                 ctx->self->getDeleteContextCallback()(ctx);

@@ -158,7 +158,7 @@ set(
         service/HttpService_V1.cpp
         service/HttpService_V2.cpp
         service/iocp/IOBuf.cpp
-        service/iocp/IOBuf.h
+        service/iocp/IOCPServer_V1.cpp
         service/RpcService.cpp
         service/SystemBalanceLoader.cpp
         service/TcpTransporter.cpp

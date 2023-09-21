@@ -46,6 +46,7 @@ add_executable(
         TestIni.cpp
         TestInit.cpp
         TestIOBuf.cpp
+        TestIOCP.cpp
         TestJson.cpp
         TestLibraryLoader.cpp
         TestLogger.cpp
