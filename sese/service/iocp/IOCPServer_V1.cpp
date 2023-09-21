@@ -32,6 +32,7 @@ IOCPService_V1::~IOCPService_V1() {
 
 void IOCPService_V1::postRead(IOCPService_V1::Context *ctx) {
     if (ctx->event) {
+        ctx->event->events &= ~EVENT_WRITE;
         ctx->event->events |= EVENT_READ;
         IOCPService_V1::setEvent(ctx->event);
     } else {
@@ -42,6 +43,7 @@ void IOCPService_V1::postRead(IOCPService_V1::Context *ctx) {
 
 void IOCPService_V1::postWrite(IOCPService_V1::Context *ctx) {
     if (ctx->event) {
+        ctx->event->events &= ~EVENT_READ;
         ctx->event->events |= EVENT_WRITE;
         IOCPService_V1::setEvent(ctx->event);
     } else {
