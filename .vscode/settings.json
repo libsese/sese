@@ -2,7 +2,6 @@
     "cmake.configureArgs": [
         "-DSESE_BUILD_TEST=ON",
         "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
-        "-DVCPKG_TARGET_TRIPLET=x64-linux-dynamic",
         "-DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake"
     ],
     "cmake.generator": "CodeBlocks - Unix Makefiles"

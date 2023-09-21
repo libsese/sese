@@ -12,8 +12,7 @@
             "packages": [
                 "simpleuuid",
                 "sstring",
-                "sese-plugin",
-                "sese-event"
+                "sese-plugin"
             ]
         }
     ]
