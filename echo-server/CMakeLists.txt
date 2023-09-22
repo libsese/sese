@@ -1,2 +1,2 @@
-add_executable(echo-server server.cpp)
-target_link_libraries(echo-server PRIVATE Core)
+add_executable(EchoServer server.cpp)
+target_link_libraries(EchoServer PRIVATE Core)

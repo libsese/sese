@@ -158,6 +158,10 @@ void sese::service::TcpTransporter::onWrite(sese::event::BaseEvent *event) {
             conn->buffer2write.trunc(l);
         }
     }
+
+    conn->event->events |= EVENT_READ;
+    conn->event->events &= ~EVENT_WRITE;
+    this->setEvent(event);
 }
 
 void sese::service::TcpTransporter::onClose(sese::event::BaseEvent *event) {
@@ -225,6 +229,8 @@ void sese::service::TcpTransporter::postRead(TcpConnection *conn) {
 }
 
 void sese::service::TcpTransporter::postWrite(TcpConnection *conn) {
+    conn->event->events |= EVENT_WRITE;
+    conn->event->events &= ~EVENT_READ;
     onWrite(conn->event);
 }
 

@@ -5,14 +5,12 @@
 #define EVENT_WRITE 0x2u
 #define EVENT_ERROR 0x4u
 
-namespace sese {
-    namespace event {
-        struct BaseEvent {
-            virtual ~BaseEvent() = default;
+namespace sese::event {
+    struct BaseEvent {
+        virtual ~BaseEvent() = default;
 
-            int fd{EVENT_NULL};
-            unsigned int events{0};
-            void *data{nullptr};
-        };
-    }
-}
+        int fd{EVENT_NULL};
+        unsigned int events{0};
+        void *data{nullptr};
+    };
+}// namespace sese::event

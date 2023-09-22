@@ -226,7 +226,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
     target_sources(Core PRIVATE ${DLL_INFO_RC})
-    target_sources(Core PRIVATE event/WSAEventLoop.cpp event/WSAEventConvert.cpp)
+    target_sources(Core PRIVATE ${NATIVE_PATH}/event/WSAEventLoop.cpp ${NATIVE_PATH}/event/WSAEventConvert.cpp)
 
     if (${MSVC})
         target_compile_options(Core PRIVATE "/utf-8")
@@ -265,7 +265,7 @@ endif ()
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
-    target_sources(Core PRIVATE event/EpollEventLoop.cpp event/EpollEventConvert.cpp)
+    target_sources(Core PRIVATE ${NATIVE_PATH}/event/EpollEventLoop.cpp ${NATIVE_PATH}/event/EpollEventConvert.cpp)
 
     target_compile_options(Core PUBLIC "-fPIC")
     target_link_options(Core PUBLIC "-rdynamic")
@@ -279,7 +279,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(CORESERVICES_FRAMEWORK CoreServices REQUIRED)
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
 
-    target_sources(Core PRIVATE event/KqueueEventLoop.cpp)
+    target_sources(Core PRIVATE ${NATIVE_PATH}/event/KqueueEventLoop.cpp)
 
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 endif ()

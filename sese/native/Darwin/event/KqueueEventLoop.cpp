@@ -1,4 +1,4 @@
-#include "sese/event/KqueueEventLoop.h"
+#include <sese/native/Darwin/event/KqueueEventLoop.h>
 
 #include <unistd.h>
 #include <sys/event.h>
@@ -46,7 +46,7 @@ sese::event::KqueueEventLoop::~KqueueEventLoop() {
 }
 
 void sese::event::KqueueEventLoop::dispatch(uint32_t time) {
-    struct kevent events[MAX_EVENT_SIZE]{};
+    struct kevent events[MAX_EVENT_SIZE] {};
     auto div = ldiv(time, 1000);
     struct timespec timeout {
         div.quot, div.rem * 1000000
@@ -103,23 +103,23 @@ void sese::event::KqueueEventLoop::onError(sese::event::BaseEvent *event) {
 void sese::event::KqueueEventLoop::onClose(sese::event::BaseEvent *event) {
 }
 
-bool sese::event::KqueueEventLoop::addNativeEvent(int fd, uint32_t ev, void *data) const {
-    struct kevent kevent {};
-    EV_SET(&kevent, fd, ev, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, data);
-    return 0 == ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr);
-}
-
-bool sese::event::KqueueEventLoop::delNativeEvent(int fd, uint32_t ev, void *data) const {
-    struct kevent kevent {};
-    EV_SET(&kevent, fd, ev, EV_DELETE, 0, 0, data);
-    return 0 == ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr);
-}
+// bool sese::event::KqueueEventLoop::addNativeEvent(int fd, uint32_t ev, void *data) const {
+//     struct kevent kevent {};
+//     EV_SET(&kevent, fd, ev, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, data);
+//     return 0 == ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr);
+// }
+//
+// bool sese::event::KqueueEventLoop::delNativeEvent(int fd, uint32_t ev, void *data) const {
+//     struct kevent kevent {};
+//     EV_SET(&kevent, fd, ev, EV_DELETE, 0, 0, data);
+//     return 0 == ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr);
+// }
 
 sese::event::BaseEvent *sese::event::KqueueEventLoop::createEvent(int fd, unsigned int events, void *data) {
     auto event = new KqueueEvent;
     event->fd = fd;
     event->events = events;
-    event->oldEvents = events;
+    // event->oldEvents = events;
     event->data = data;
 
     // if (events & EVENT_READ) {
@@ -129,42 +129,51 @@ sese::event::BaseEvent *sese::event::KqueueEventLoop::createEvent(int fd, unsign
     //         return nullptr;
     //     }
     // }
-    if (!addNativeEvent(fd, EVFILT_READ, event)) {
-        // 通常不会出错
-        delete event;
-        return nullptr;
-    }
 
+    // if (!addNativeEvent(fd, EVFILT_READ, event)) {
+    //     // 通常不会出错
+    //     delete event;
+    //     return nullptr;
+    // }
+    // if (events & EVENT_WRITE) {
+    //     if (!addNativeEvent(fd, EVFILT_WRITE, event)) {
+    //         // 通常不会出错
+    //         delete event;
+    //         return nullptr;
+    //     }
+    // }
+    struct kevent kevent {};
+    if (events & EVENT_READ) {
+        EV_SET(&kevent, event->fd, EVFILT_READ, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);
+        ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr);
+    }
     if (events & EVENT_WRITE) {
-        if (!addNativeEvent(fd, EVFILT_WRITE, event)) {
-            // 通常不会出错
-            delete event;
-            return nullptr;
-        }
+        EV_SET(&kevent, event->fd, EVFILT_WRITE, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);
+        ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr);
     }
 
     return event;
 }
 
 void sese::event::KqueueEventLoop::freeEvent(sese::event::BaseEvent *event) {
-    auto fd = event->fd;
-    auto events = event->events;
+    // auto fd = event->fd;
+    // auto events = event->events;
     // if (events & EVENT_READ) {
     //    delNativeEvent(fd, EVFILT_READ, event);
     // }
-    delNativeEvent(fd, EVFILT_READ, event);
-
-    if (events & EVENT_WRITE) {
-        delNativeEvent(fd, EVFILT_WRITE, event);
-    }
+    // delNativeEvent(fd, EVFILT_READ, event);
+    // if (events & EVENT_WRITE) {
+    //     delNativeEvent(fd, EVFILT_WRITE, event);
+    // }
 
     delete event;
 }
 
 bool sese::event::KqueueEventLoop::setEvent(sese::event::BaseEvent *event) {
     auto e = reinterpret_cast<KqueueEvent *>(event);
-    bool rt1 = true;
-    bool rt2 = true;
+    auto events = e->events;
+    // bool rt1 = true;
+    // bool rt2 = true;
 
     // if (e->oldEvents & EVENT_READ && !(e->events & EVENT_READ)) {
     //     // 原先存在的事件，现在需要删除
@@ -175,15 +184,27 @@ bool sese::event::KqueueEventLoop::setEvent(sese::event::BaseEvent *event) {
     //     rt1 = addNativeEvent(e->fd, EVFILT_READ, event);
     // }
 
-    if (e->oldEvents & EVENT_WRITE && !(e->events & EVENT_WRITE)) {
-        // 原先存在的事件，现在需要删除
-        rt2 = delNativeEvent(e->fd, EVFILT_WRITE, event);
-    } else if (e->events & EVENT_WRITE) {
-        // 原先存在的事件，需要重新启用
-        // 原先不存在的事件，需要添加
-        rt2 = addNativeEvent(e->fd, EVFILT_WRITE, event);
+    // if (e->oldEvents & EVENT_WRITE && !(e->events & EVENT_WRITE)) {
+    //     // 原先存在的事件，现在需要删除
+    //     rt2 = delNativeEvent(e->fd, EVFILT_WRITE, event);
+    // } else if (e->events & EVENT_WRITE) {
+    //     // 原先存在的事件，需要重新启用
+    //     // 原先不存在的事件，需要添加
+    //     rt2 = addNativeEvent(e->fd, EVFILT_WRITE, event);
+    // }
+
+    // e->oldEvents = e->events;
+    // return rt1 && rt2;
+
+    struct kevent kevent {};
+    if (events & EVENT_READ) {
+        EV_SET(&kevent, event->fd, EVFILT_READ, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);
+        ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr);
+    }
+    if (events & EVENT_WRITE) {
+        EV_SET(&kevent, event->fd, EVFILT_WRITE, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);
+        ::kevent(kqueue, &kevent, 1, nullptr, 0, nullptr);
     }
 
-    e->oldEvents = e->events;
-    return rt1 && rt2;
+    return event;
 }
