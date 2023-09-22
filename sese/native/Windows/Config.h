@@ -14,6 +14,7 @@
 #define WINVER 0x0602
 #endif
 
+#include <winsock2.h>
 #include <windows.h>
 
 #pragma warning(disable : 4819)

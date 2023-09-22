@@ -36,7 +36,7 @@ void IOCPService_V1::postRead(IOCPService_V1::Context *ctx) {
         ctx->event->events |= EVENT_READ;
         IOCPService_V1::setEvent(ctx->event);
     } else {
-        ctx->event = createEventEx(ctx->fd, EVENT_READ, ctx);
+        ctx->event = createEventEx((int) ctx->fd, EVENT_READ, ctx);
         ctx->event->data = ctx;
     }
 }
@@ -47,7 +47,7 @@ void IOCPService_V1::postWrite(IOCPService_V1::Context *ctx) {
         ctx->event->events |= EVENT_WRITE;
         IOCPService_V1::setEvent(ctx->event);
     } else {
-        ctx->event = createEventEx(ctx->fd, EVENT_WRITE, ctx);
+        ctx->event = createEventEx((int) ctx->fd, EVENT_WRITE, ctx);
         ctx->event->data = ctx;
     }
 }
@@ -125,7 +125,7 @@ void IOCPService_V1::onRead(sese::event::BaseEvent *event) {
 
     char buf[MTU_VALUE];
     while (true) {
-        auto l = read(ctx->fd, buf, MTU_VALUE, ctx->ssl);
+        auto l = read((int) ctx->fd, buf, MTU_VALUE, ctx->ssl);
         if (l <= 0) {
             auto err = sese::net::getNetworkError();
             if (err == ENOTCONN) {
@@ -156,7 +156,7 @@ void IOCPService_V1::onWrite(sese::event::BaseEvent *event) {
             onWriteCompleted(ctx);
             break;
         }
-        auto l = write(ctx->fd, buf, len, ctx->ssl);
+        auto l = write((int) ctx->fd, buf, len, ctx->ssl);
         if (l <= 0) {
             auto err = sese::net::getNetworkError();
             if (err == EWOULDBLOCK || err == EINTR) {
@@ -257,7 +257,7 @@ void IOCPServer_V1::cancelTimeout(IOCPServer_V1::Context *ctx) {
 }
 
 int IOCPServer_V1::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
-    if (SSL_select_next_proto((unsigned char **) out, outLength, (const uint8_t *) servProtos.c_str(), servProtos.length(), in, inLength) != OPENSSL_NPN_NEGOTIATED) {
+    if (SSL_select_next_proto((unsigned char **) out, outLength, (const uint8_t *) servProtos.c_str(), (int) servProtos.length(), in, inLength) != OPENSSL_NPN_NEGOTIATED) {
         return SSL_TLSEXT_ERR_NOACK;
     }
     return SSL_TLSEXT_ERR_OK;

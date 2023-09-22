@@ -226,7 +226,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
     target_sources(Core PRIVATE ${DLL_INFO_RC})
-    target_sources(Core PRIVATE ${NATIVE_PATH}/event/WSAEventLoop.cpp ${NATIVE_PATH}/event/WSAEventConvert.cpp)
+    target_sources(Core PRIVATE ${NATIVE_PATH}/event/WSAEventLoop.cpp ${NATIVE_PATH}/event/WSAEventConvert.cpp ${NATIVE_PATH}/service/iocp/IOCPServer_V1.cpp)
 
     if (${MSVC})
         target_compile_options(Core PRIVATE "/utf-8")

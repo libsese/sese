@@ -1,9 +1,8 @@
 #pragma once
 
-#include <sese/Config.h>
-#include <sese/service/BalanceLoader.h>
-#include <sese/service/TimerableService_V2.h>
 #include <sese/security/SSLContext.h>
+#include <sese/service/TimerableService_V2.h>
+#include <sese/service/BalanceLoader.h>
 #include <sese/io/ByteBuilder.h>
 
 #include <set>
@@ -27,7 +26,7 @@ namespace sese::iocp {
         static void cancelTimeout(Context *ctx);
         static void onDeleteContext(Context *) {}
         virtual void onAcceptCompleted(Context *ctx){};
-        virtual void onPreRead(Context *ctx){}
+        virtual void onPreRead(Context *ctx) {}
         virtual void onReadCompleted(Context *ctx){};
         virtual void onWriteCompleted(Context *ctx){};
         virtual void onTimeout(Context *ctx){};
@@ -38,8 +37,6 @@ namespace sese::iocp {
         );
 
     public:
-        void setAcceptTimeout(uint32_t seconds) { balanceLoader.setAcceptTimeout(seconds); }
-        void setDispatchTimeout(uint32_t seconds) { balanceLoader.setDispatchTimeout(seconds); }
         void setAddress(const net::IPAddress::Ptr &addr) { balanceLoader.setAddress(addr); }
         void setThreads(size_t threads) { balanceLoader.setThreads(threads); }
         void setServCtx(const security::SSLContext::Ptr &ctx) { IOCPServer_V1::sslCtx = ctx; }
@@ -48,6 +45,10 @@ namespace sese::iocp {
 
         [[nodiscard]] const security::SSLContext::Ptr &getServCtx() const { return IOCPServer_V1::sslCtx; }
         [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return IOCPServer_V1::deleteContextCallback; };
+
+    public:
+        void setAcceptTimeout(uint32_t seconds) { balanceLoader.setAcceptTimeout(seconds); }
+        void setDispatchTimeout(uint32_t seconds) { balanceLoader.setDispatchTimeout(seconds); }
 
     protected:
         DeleteContextCallback deleteContextCallback = onDeleteContext;

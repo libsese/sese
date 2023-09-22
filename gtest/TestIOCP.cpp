@@ -3,6 +3,7 @@
 #include <sese/service/iocp/IOCPServer.h>
 #include <sese/record/Marco.h>
 #include <sese/io/OutputUtil.h>
+#include <sese/util/Util.h>
 
 class MyIOCPServer : public sese::iocp::IOCPServer {
 public:
@@ -21,7 +22,8 @@ public:
 
     void onReadCompleted(Context *ctx) override {
         SESE_INFO("onReadCompleted %d", ctx->fd);
-        ctx->recv.swap(ctx->send);
+        // ctx->recv.swap(ctx->send);
+        sese::streamMove(&ctx->send, &ctx->recv, IOCP_WSABUF_SIZE);
         postWrite(ctx);
     }
 

@@ -6,7 +6,7 @@
 #include "sese/native/Linux/event/EpollEventLoop.h"
 #include "sese/native/Linux/event/EpollEventConvert.h"
 
-namespace sese {
+namespace sese::event {
     using Event = BaseEvent;
     using EventLoop = EpollEventLoop;
     using EventConvert = EpollEventConvert;
