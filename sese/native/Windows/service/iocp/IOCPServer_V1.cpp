@@ -12,6 +12,25 @@ Context_V1::Context_V1(OverlappedWrapper *pWrapper) : pWrapper(pWrapper) {
 
 Context_V1::~Context_V1() {
     free(wsabufWrite.buf);
+    if (bio) {
+        BIO_free((BIO *) bio);
+    }
+}
+
+int64_t Context_V1::read(void *buffer, size_t length) {
+    if (ssl) {
+        return SSL_read((SSL *) ssl, buffer, (int) length);
+    } else {
+        return recv.read(buffer, length);
+    }
+}
+
+int64_t Context_V1::write(const void *buffer, size_t length) {
+    if (ssl) {
+        return SSL_write((SSL *) ssl, buffer, (int) length);
+    } else {
+        return send.write(buffer, length);
+    }
 }
 
 OverlappedWrapper::OverlappedWrapper() : ctx(this) {
@@ -68,6 +87,12 @@ bool IOCPServer_V1::init() {
         );
     }
 
+    auto method = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bioIOCP");
+    BIO_meth_set_ctrl(method, (long (*)(BIO *, int, long, void *)) & IOCPServer_V1::bioCtrl);
+    BIO_meth_set_read(method, (int (*)(BIO *, char *, int)) & IOCPServer_V1::bioRead);
+    BIO_meth_set_write(method, (int (*)(BIO *, const char *, int)) & IOCPServer_V1::bioWrite);
+    this->bioMethod = method;
+
     return true;
 }
 
@@ -89,6 +114,11 @@ void IOCPServer_V1::shutdown() {
         delete item;
     }
     wrapperSet.clear();
+
+    if (bioMethod) {
+        BIO_meth_free((BIO_METHOD *) bioMethod);
+        bioMethod = nullptr;
+    }
 }
 
 void IOCPServer_V1::postRead(IOCPServer_V1::Context *ctx) {
@@ -209,6 +239,11 @@ void IOCPServer_V1::acceptThreadProc() {
                         uint32_t dataLength;
                         SSL_get0_alpn_selected(clientSSL, &data, &dataLength);
                         onAlpnGet(&pWrapper->ctx, data, dataLength);
+                        pWrapper->ctx.bio = BIO_new((BIO_METHOD *) bioMethod);
+                        BIO_set_data((BIO *) pWrapper->ctx.bio, &pWrapper->ctx);
+                        BIO_set_init((BIO *) pWrapper->ctx.bio, 1);
+                        BIO_set_shutdown((BIO *) pWrapper->ctx.bio, 0);
+                        SSL_set_bio((SSL *) pWrapper->ctx.ssl, (BIO *) pWrapper->ctx.bio, (BIO *) pWrapper->ctx.bio);
                         break;
                     }
                 }
@@ -307,6 +342,24 @@ int IOCPServer_V1::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const u
 
 int IOCPServer_V1::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, IOCPServer_V1 *server) {
     return server->onAlpnSelect(out, outLength, in, inLength);
+}
+
+long IOCPServer_V1::bioCtrl(void *bio, int cmd, long num, void *ptr) {
+    int ret = 0;
+    if (cmd == BIO_CTRL_FLUSH) {
+        ret = 1;
+    }
+    return ret;
+}
+
+int IOCPServer_V1::bioWrite(void *bio, const char *in, int length) {
+    auto ctx = (Context_V1 *) BIO_get_data((BIO *) bio);
+    return (int) ctx->send.write(in, length);
+}
+
+int IOCPServer_V1::bioRead(void *bio, char *out, int length) {
+    auto ctx = (Context_V1 *) BIO_get_data((BIO *) bio);
+    return (int) ctx->recv.read(out, length);
 }
 
 void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {

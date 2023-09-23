@@ -12,27 +12,26 @@ public:
     }
 
     void onAcceptCompleted(Context *ctx) override {
-        SESE_INFO("onAcceptCompleted %d", ctx->fd);
+        SESE_INFO("onAcceptCompleted %d", ctx->getFd());
         postRead(ctx);
     }
 
     void onPreRead(Context *ctx) override {
-        SESE_INFO("onRreRead %d", ctx->fd);
+        SESE_INFO("onRreRead %d", ctx->getFd());
     }
 
     void onReadCompleted(Context *ctx) override {
-        SESE_INFO("onReadCompleted %d", ctx->fd);
-        // ctx->recv.swap(ctx->send);
-        sese::streamMove(&ctx->send, &ctx->recv, IOCP_WSABUF_SIZE);
+        SESE_INFO("onReadCompleted %d", ctx->getFd());
+        sese::streamMove(ctx, ctx, IOCP_WSABUF_SIZE);
         postWrite(ctx);
     }
 
     void onWriteCompleted(Context *ctx) override {
-        SESE_INFO("onWriteCompleted %d", ctx->fd);
+        SESE_INFO("onWriteCompleted %d", ctx->getFd());
     }
 
     static void myDeleter(Context *ctx) {
-        SESE_INFO("onDeleteCallback %d", ctx->fd);
+        SESE_INFO("onDeleteCallback %d", ctx->getFd());
     }
 };
 

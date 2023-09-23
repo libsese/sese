@@ -10,30 +10,30 @@ public:
     }
 
     void onAcceptCompleted(Context *ctx) override {
-        SESE_INFO("onAcceptCompleted %d", (int) ctx->fd);
+        SESE_INFO("onAcceptCompleted %d", ctx->getFd());
         postRead(ctx);
         setTimeout(ctx, 10);
     }
 
     void onPreRead(Context *ctx) override {
         cancelTimeout(ctx);
-        SESE_INFO("onPreRead %d", (int) ctx->fd);
+        SESE_INFO("onPreRead %d", ctx->getFd());
     }
 
     void onReadCompleted(Context *ctx) override {
-        SESE_INFO("onReadCompleted %d", (int) ctx->fd);
-        sese::streamMove(&ctx->send, &ctx->recv, IOCP_WSABUF_SIZE);
+        SESE_INFO("onReadCompleted %d", ctx->getFd());
+        sese::streamMove(ctx, ctx, IOCP_WSABUF_SIZE);
         postWrite(ctx);
     }
 
     void onWriteCompleted(Context *ctx) override {
-        SESE_INFO("onWriteCompleted %d", (int) ctx->fd);
+        SESE_INFO("onWriteCompleted %d", ctx->getFd());
         postRead(ctx);
         setTimeout(ctx, 10);
     }
 
     static void myDeleter(Context *ctx) {
-        SESE_INFO("onDeleteCallback %d", (int) ctx->fd);
+        SESE_INFO("onDeleteCallback %d", ctx->getFd());
     }
 };
 

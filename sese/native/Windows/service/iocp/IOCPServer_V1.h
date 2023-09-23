@@ -16,7 +16,8 @@ namespace sese::_windows::iocp {
     class IOCPServer_V1;
     struct OverlappedWrapper;
 
-    struct Context_V1 {
+    class Context_V1 final : public io::InputStream, public io::OutputStream {
+        friend class IOCPServer_V1;
         using IOBuf = sese::iocp::IOBuf;
         using Node = sese::iocp::IOBufNode;
 
@@ -25,9 +26,6 @@ namespace sese::_windows::iocp {
             Write
         };
 
-        explicit Context_V1(OverlappedWrapper *pWrapper);
-        ~Context_V1();
-
         OverlappedWrapper *pWrapper{};
         WSABUF wsabufRead{};
         WSABUF wsabufWrite{};
@@ -35,14 +33,26 @@ namespace sese::_windows::iocp {
         SOCKET fd{INVALID_SOCKET};
         IOCPServer_V1 *self{};
         TimeoutEvent *timeoutEvent{};
-        void *ssl{nullptr};
+        void *ssl{};
+        void *bio{};
         Node *readNode{};
         IOBuf recv{};
         io::ByteBuilder send{IOCP_WSABUF_SIZE, IOCP_WSABUF_SIZE};
-        void *data{nullptr};
+        void *data{};
+
+    public:
+        explicit Context_V1(OverlappedWrapper *pWrapper);
+        ~Context_V1() override;
+
+        int64_t read(void *buffer, size_t length) override;
+        int64_t write(const void *buffer, size_t length) override;
+
+        [[nodiscard]] int32_t getFd() const { return (int32_t) Context_V1::fd; }
+        [[nodiscard]] void *getData() const { return Context_V1::data; }
+        void setData(void *pData) { Context_V1::data = pData; }
     };
 
-    struct OverlappedWrapper {
+    struct OverlappedWrapper final {
         OVERLAPPED overlapped{};
         Context_V1 ctx;
 
@@ -93,6 +103,10 @@ namespace sese::_windows::iocp {
                 IOCPServer_V1 *server
         );
 
+        static long bioCtrl(void *bio, int cmd, long num, void *ptr);
+        static int bioWrite(void *bio, const char *in, int length);
+        static int bioRead(void *bio, char * out, int length);
+
         std::atomic_bool isShutdown{false};
         HANDLE iocpFd{INVALID_HANDLE_VALUE};
         SOCKET listenFd{INVALID_SOCKET};
@@ -107,6 +121,7 @@ namespace sese::_windows::iocp {
         std::vector<Thread::Ptr> eventThreadGroup{};
         DeleteContextCallback deleteContextCallback = onDeleteContext;
         security::SSLContext::Ptr sslCtx{};
+        void *bioMethod{};
         std::string servProtos{};
     };
 

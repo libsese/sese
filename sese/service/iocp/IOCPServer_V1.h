@@ -9,7 +9,7 @@
 
 namespace sese::iocp {
 
-    struct Context_V1;
+    class Context_V1;
     class IOCPServer_V1;
     class IOCPService_V1;
 
@@ -56,7 +56,9 @@ namespace sese::iocp {
         service::BalanceLoader balanceLoader;
     };
 
-    struct Context_V1 {
+    class Context_V1 final : public io::InputStream, public  io::OutputStream {
+        friend class IOCPServer_V1;
+        friend class IOCPService_V1;
         IOCPServer_V1 *self{};
         IOCPService_V1 *client{};
         socket_t fd{0};
@@ -66,6 +68,14 @@ namespace sese::iocp {
         io::ByteBuilder send{8192, 8192};
         io::ByteBuilder recv{8192, 8192};
         void *data{};
+
+    public:
+        int64_t read(void *buffer, size_t length) override;
+        int64_t write(const void *buffer, size_t length) override;
+
+        [[nodiscard]] int32_t getFd() const { return (int32_t) Context_V1::fd; }
+        [[nodiscard]] void *getData() const { return Context_V1::data; }
+        void setData(void *pData) { Context_V1::data = pData; }
     };
 
     class IOCPService_V1 final : public service::TimerableService_V2 {

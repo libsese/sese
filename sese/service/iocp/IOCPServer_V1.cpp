@@ -5,6 +5,17 @@
 using namespace sese::iocp;
 using namespace sese::service;
 
+#pragma region Context
+
+int64_t Context_V1::read(void *buffer, size_t length) {
+    return recv.read(buffer, length);
+}
+int64_t Context_V1::write(const void *buffer, size_t length) {
+    return send.write(buffer, length);
+}
+
+#pragma endregion Context
+
 #pragma region Service
 
 IOCPService_V1::IOCPService_V1(IOCPServer_V1 *master)
