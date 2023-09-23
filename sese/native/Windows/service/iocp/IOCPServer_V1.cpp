@@ -6,12 +6,15 @@ using namespace sese::net;
 using namespace sese::iocp;
 using namespace sese::_windows::iocp;
 
-Context_V1::Context_V1() {
+Context_V1::Context_V1(OverlappedWrapper *pWrapper) : pWrapper(pWrapper) {
     wsabufWrite.buf = (CHAR *) malloc(IOCP_WSABUF_SIZE);
 }
 
 Context_V1::~Context_V1() {
     free(wsabufWrite.buf);
+}
+
+OverlappedWrapper::OverlappedWrapper() : ctx(this) {
 }
 
 bool IOCPServer_V1::init() {
@@ -48,14 +51,13 @@ bool IOCPServer_V1::init() {
     }
 
     for (int i = 0; i < threads; ++i) {
-        auto th = std::make_unique<Thread>([this] { eventThreadProc(); }, "IOCP_" + std::to_string(i + 1));
+        auto th = std::make_unique<Thread>([this] { eventThreadProc(); }, "IOCP_" + std::to_string(i + 2));
         th->start();
         eventThreadGroup.emplace_back(std::move(th));
     }
-    if (address) {
-        acceptThread = std::make_unique<Thread>([this] { acceptThreadProc(); }, "IOCP_0");
-        acceptThread->start();
-    }
+
+    acceptThread = std::make_unique<Thread>([this] { acceptThreadProc(); }, "IOCP_0");
+    acceptThread->start();
 
     if (sslCtx) {
         auto serverSSL = (SSL_CTX *) sslCtx->getContext();
@@ -81,9 +83,16 @@ void IOCPServer_V1::shutdown() {
     eventThreadGroup.clear();
     acceptThread->join();
     acceptThread = nullptr;
+
+    for (auto &&item: wrapperSet) {
+        deleteContextCallback(&item->ctx);
+        delete item;
+    }
+    wrapperSet.clear();
 }
 
 void IOCPServer_V1::postRead(IOCPServer_V1::Context *ctx) {
+    auto pWrapper = ctx->pWrapper;
     ctx->type = Context_V1::Type::Read;
     ctx->readNode = new IOBufNode(IOCP_WSABUF_SIZE);
     ctx->wsabufRead.buf = (CHAR *) ctx->readNode->buffer;
@@ -95,19 +104,26 @@ void IOCPServer_V1::postRead(IOCPServer_V1::Context *ctx) {
             1,
             &nBytes,
             &dwFlags,
-            &(ctx->overlapped),
+            &(ctx->pWrapper->overlapped),
             nullptr
     );
     auto e = getNetworkError();
     if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
+        wrapperSetMutex.lock();
         Socket::close(ctx->fd);
         ctx->self->getDeleteContextCallback()(ctx);
-        puts(getNetworkErrorString(e).c_str());
-        delete ctx;
+        wrapperSet.erase(pWrapper);
+        if (pWrapper->ctx.timeoutEvent) {
+            wheel.cancel(pWrapper->ctx.timeoutEvent);
+            pWrapper->ctx.timeoutEvent = nullptr;
+        }
+        wrapperSetMutex.unlock();
+        delete pWrapper;
     }
 }
 
 void IOCPServer_V1::postWrite(IOCPServer_V1::Context *ctx) {
+    auto pWrapper = ctx->pWrapper;
     auto len = ctx->send.peek(ctx->wsabufWrite.buf, IOCP_WSABUF_SIZE);
     if (len == 0) {
         return;
@@ -121,69 +137,102 @@ void IOCPServer_V1::postWrite(IOCPServer_V1::Context *ctx) {
             1,
             &nBytes,
             dwFlags,
-            &(ctx->overlapped),
+            &(ctx->pWrapper->overlapped),
             nullptr
     );
     auto e = getNetworkError();
     if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
+        wrapperSetMutex.lock();
         Socket::close(ctx->fd);
         ctx->self->getDeleteContextCallback()(ctx);
-        delete ctx;
+        wrapperSet.erase(pWrapper);
+        if (pWrapper->ctx.timeoutEvent) {
+            wheel.cancel(pWrapper->ctx.timeoutEvent);
+            pWrapper->ctx.timeoutEvent = nullptr;
+        }
+        wrapperSetMutex.unlock();
+        delete pWrapper;
     }
 }
 
 void IOCPServer_V1::acceptThreadProc() {
+    using namespace std::chrono_literals;
+
     while (!isShutdown) {
-        auto clientSocket = accept(listenFd, nullptr, nullptr);
-        if (clientSocket == INVALID_SOCKET) {
-            continue;
-        }
 
-        if (SOCKET_ERROR == Socket::setNonblocking(clientSocket)) {
-            Socket::close(clientSocket);
-            continue;
-        }
+        if (listenFd != INVALID_SOCKET) {
+            auto clientSocket = accept(listenFd, nullptr, nullptr);
+            if (clientSocket == INVALID_SOCKET) {
+                // std::this_thread::sleep_for(500ms);
+                wrapperSetMutex.lock();
+                wheel.check();
+                wrapperSetMutex.unlock();
+                continue;
+            }
 
-        auto ctx = new Context;
-        ctx->fd = clientSocket;
-        ctx->self = this;
+            if (SOCKET_ERROR == Socket::setNonblocking(clientSocket)) {
+                Socket::close(clientSocket);
+                // std::this_thread::sleep_for(500ms);
+                wrapperSetMutex.lock();
+                wheel.check();
+                wrapperSetMutex.unlock();
+                continue;
+            }
 
-        if (sslCtx) {
-            auto serverSSL = (SSL_CTX *) sslCtx->getContext();
-            auto clientSSL = SSL_new(serverSSL);
-            SSL_set_fd(clientSSL, (int) clientSocket);
-            SSL_set_accept_state(clientSSL);
+            auto pWrapper = new OverlappedWrapper;
+            pWrapper->ctx.fd = clientSocket;
+            pWrapper->ctx.self = this;
 
-            while (true) {
-                auto rt = SSL_do_handshake(clientSSL);
-                if (rt <= 0) {
-                    auto err = SSL_get_error(clientSSL, rt);
-                    if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
-                        SSL_free(clientSSL);
-                        sese::net::Socket::close(clientSocket);
-                        delete ctx;
-                        return;
+            if (sslCtx) {
+                auto serverSSL = (SSL_CTX *) sslCtx->getContext();
+                auto clientSSL = SSL_new(serverSSL);
+                SSL_set_fd(clientSSL, (int) clientSocket);
+                SSL_set_accept_state(clientSSL);
+
+                while (true) {
+                    auto rt = SSL_do_handshake(clientSSL);
+                    if (rt <= 0) {
+                        auto err = SSL_get_error(clientSSL, rt);
+                        if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                            SSL_free(clientSSL);
+                            sese::net::Socket::close(clientSocket);
+                            delete pWrapper;
+                            wrapperSetMutex.lock();
+                            wheel.check();
+                            wrapperSetMutex.unlock();
+                            return;
+                        }
+                    } else {
+                        pWrapper->ctx.ssl = clientSSL;
+                        SSL_set_mode(clientSSL, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
+                        const uint8_t *data = nullptr;
+                        uint32_t dataLength;
+                        SSL_get0_alpn_selected(clientSSL, &data, &dataLength);
+                        onAlpnGet(&pWrapper->ctx, data, dataLength);
+                        break;
                     }
-                } else {
-                    ctx->ssl = clientSSL;
-                    SSL_set_mode(clientSSL, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
-                    const uint8_t *data = nullptr;
-                    uint32_t dataLength;
-                    SSL_get0_alpn_selected(clientSSL, &data, &dataLength);
-                    onAlpnGet(ctx, data, dataLength);
-                    break;
                 }
             }
+
+            CreateIoCompletionPort((HANDLE) pWrapper->ctx.fd, iocpFd, 0, 0);
+
+            wrapperSetMutex.lock();
+            wrapperSet.emplace(pWrapper);
+            wheel.check();
+            wrapperSetMutex.unlock();
+
+            onAcceptCompleted(&pWrapper->ctx);
+        } else {
+            std::this_thread::sleep_for(500ms);
+            wrapperSetMutex.lock();
+            wheel.check();
+            wrapperSetMutex.unlock();
         }
-
-        CreateIoCompletionPort((HANDLE)ctx->fd, iocpFd, 0, 0);
-
-        onAcceptCompleted(ctx);
     }
 }
 
 void IOCPServer_V1::eventThreadProc() {
-    Context *ctx = nullptr;
+    OverlappedWrapper *pWrapper{};
     DWORD lpNumberOfBytesTransferred = 0;
     void *lpCompletionKey = nullptr;
 
@@ -192,7 +241,7 @@ void IOCPServer_V1::eventThreadProc() {
                 iocpFd,
                 &lpNumberOfBytesTransferred,
                 (PULONG_PTR) &lpCompletionKey,
-                (LPOVERLAPPED *) &ctx,
+                (LPOVERLAPPED *) &pWrapper,
                 INFINITE
         );
         if (!bRt || lpNumberOfBytesTransferred == 0) {
@@ -201,41 +250,48 @@ void IOCPServer_V1::eventThreadProc() {
             break;
         }
 
-        if (ctx->type == Context_V1::Type::Read) {
-            onPreRead(ctx);
-            ctx->readNode->size = lpNumberOfBytesTransferred;
-            ctx->recv.push(ctx->readNode);
-            ctx->readNode = nullptr;
-            ctx->wsabufRead.buf = nullptr;
-            ctx->wsabufRead.len = 0;
+        if (pWrapper->ctx.type == Context_V1::Type::Read) {
+            onPreRead(&pWrapper->ctx);
+            pWrapper->ctx.readNode->size = lpNumberOfBytesTransferred;
+            pWrapper->ctx.recv.push(pWrapper->ctx.readNode);
+            pWrapper->ctx.readNode = nullptr;
+            pWrapper->ctx.wsabufRead.buf = nullptr;
+            pWrapper->ctx.wsabufRead.len = 0;
             if (lpNumberOfBytesTransferred == IOCP_WSABUF_SIZE) {
-                postRead(ctx);
+                postRead(&pWrapper->ctx);
             } else {
-                onReadCompleted(ctx);
+                onReadCompleted(&pWrapper->ctx);
             }
         } else {
-            ctx->send.trunc(lpNumberOfBytesTransferred);
-            auto len = ctx->send.peek(ctx->wsabufWrite.buf, IOCP_WSABUF_SIZE);
+            pWrapper->ctx.send.trunc(lpNumberOfBytesTransferred);
+            auto len = pWrapper->ctx.send.peek(pWrapper->ctx.wsabufWrite.buf, IOCP_WSABUF_SIZE);
             if (len == 0) {
-                onWriteCompleted(ctx);
+                onWriteCompleted(&pWrapper->ctx);
             } else {
-                ctx->type = Context_V1::Type::Write;
-                ctx->wsabufWrite.len = (ULONG) len;
+                pWrapper->ctx.type = Context_V1::Type::Write;
+                pWrapper->ctx.wsabufWrite.len = (ULONG) len;
                 DWORD nBytes, dwFlags = 0;
                 int nRt = WSASend(
-                        ctx->fd,
-                        &ctx->wsabufWrite,
+                        pWrapper->ctx.fd,
+                        &pWrapper->ctx.wsabufWrite,
                         1,
                         &nBytes,
                         dwFlags,
-                        &(ctx->overlapped),
+                        &(pWrapper->overlapped),
                         nullptr
                 );
                 auto e = getNetworkError();
                 if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
-                    Socket::close(ctx->fd);
-                    ctx->self->getDeleteContextCallback()(ctx);
-                    delete ctx;
+                    wrapperSetMutex.lock();
+                    Socket::close(pWrapper->ctx.fd);
+                    pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+                    wrapperSet.erase(pWrapper);
+                    if (pWrapper->ctx.timeoutEvent) {
+                        wheel.cancel(pWrapper->ctx.timeoutEvent);
+                        pWrapper->ctx.timeoutEvent = nullptr;
+                    }
+                    wrapperSetMutex.unlock();
+                    delete pWrapper;
                 }
             }
         }
@@ -253,6 +309,26 @@ int IOCPServer_V1::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_
     return server->onAlpnSelect(out, outLength, in, inLength);
 }
 
-void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {}
+void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {
+    wrapperSetMutex.lock();
+    ctx->timeoutEvent = wheel.delay(
+            [this, ctx]() {
+                auto pWrapper = ctx->pWrapper;
+                Socket::close(pWrapper->ctx.fd);
+                pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+                wrapperSet.erase(pWrapper);
+                delete ctx->pWrapper;
+            },
+            seconds, false
+    );
+    wrapperSetMutex.unlock();
+}
 
-void IOCPServer_V1::cancelTimeout(IOCPServer_V1::Context *ctx) {}
+void IOCPServer_V1::cancelTimeout(IOCPServer_V1::Context *ctx) {
+    if (ctx->timeoutEvent) {
+        wrapperSetMutex.lock();
+        wheel.cancel(ctx->timeoutEvent);
+        ctx->timeoutEvent = nullptr;
+        wrapperSetMutex.unlock();
+    }
+}

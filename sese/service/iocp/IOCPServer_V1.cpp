@@ -25,6 +25,9 @@ IOCPService_V1::~IOCPService_V1() {
     for (auto &&item: eventSet) {
         auto ctx = (Context *) item->data;
         event::EventLoop::freeEvent(item);
+        if (ctx->timeoutEvent) {
+            cancelTimeoutEvent(ctx->timeoutEvent);
+        }
         ctx->self->getDeleteContextCallback()(ctx);
         delete ctx;
     }
@@ -69,7 +72,13 @@ void IOCPService_V1::onWriteCompleted(IOCPService_V1::Context *ctx) {
 }
 
 void IOCPService_V1::onTimeout(IOCPService_V1::Context *ctx) {
-    ctx->self->onTimeout(ctx);
+    ctx->self->getDeleteContextCallback()(ctx);
+    if (ctx->ssl) {
+        SSL_free((SSL *) ctx->ssl);
+    }
+    sese::net::Socket::close(ctx->fd);
+    ctx->client->freeEventEx(ctx->event);
+    delete ctx;
 }
 
 void IOCPService_V1::onAlpnGet(IOCPService_V1::Context *ctx, const uint8_t *in, uint32_t inLength) {
@@ -161,7 +170,6 @@ void IOCPService_V1::onWrite(sese::event::BaseEvent *event) {
             auto err = sese::net::getNetworkError();
             if (err == EWOULDBLOCK || err == EINTR) {
                 postWrite(ctx);
-                printf("again\n");
                 break;
             } else {
                 ctx->self->getDeleteContextCallback()(ctx);
@@ -244,6 +252,7 @@ void IOCPServer_V1::postWrite(IOCPService_V1::Context *ctx) {
 void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {
     if (ctx->timeoutEvent) {
         ctx->client->cancelTimeoutEvent(ctx->timeoutEvent);
+        ctx->timeoutEvent = nullptr;
     }
     ctx->timeoutEvent = ctx->client->setTimeoutEvent(seconds, ctx);
     ctx->timeoutEvent->data = ctx;

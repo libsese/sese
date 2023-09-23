@@ -16,6 +16,7 @@ TimeoutEvent_V2 *TimerableService_V2::setTimeoutEvent(int64_t seconds, void *dat
     event->event = timeWheel.delay(
             [this, event]() {
                 this->onTimeout(event);
+                delete event;
             },
             seconds,
             false
@@ -24,7 +25,7 @@ TimeoutEvent_V2 *TimerableService_V2::setTimeoutEvent(int64_t seconds, void *dat
     return event;
 }
 
-void TimerableService_V2::cancelTimeoutEvent(sese::service::TimeoutEvent_V2 *event) {
+void TimerableService_V2::cancelTimeoutEvent(TimeoutEvent_V2 *event) {
     timeWheel.cancel(event->event);
     delete event;
 }

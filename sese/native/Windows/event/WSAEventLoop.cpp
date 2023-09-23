@@ -136,8 +136,6 @@ sese::event::BaseEvent *sese::event::WSAEventLoop::createEvent(int fd, unsigned 
 }
 
 void sese::event::WSAEventLoop::freeEvent(sese::event::BaseEvent *event) {
-    auto ev = reinterpret_cast<WSAEvent *> (event);
-
     bool found = false;
     unsigned long i = 0;
     for (; i < numbers; ++i) {

@@ -20,16 +20,15 @@ namespace sese::iocp {
 
         bool init();
         void shutdown();
-        static void postRead(Context *ctx);
-        static void postWrite(Context *ctx);
-        static void setTimeout(Context *ctx, int64_t seconds);
-        static void cancelTimeout(Context *ctx);
+        void postRead(Context *ctx);
+        void postWrite(Context *ctx);
+        void setTimeout(Context *ctx, int64_t seconds);
+        void cancelTimeout(Context *ctx);
         static void onDeleteContext(Context *) {}
         virtual void onAcceptCompleted(Context *ctx){};
         virtual void onPreRead(Context *ctx) {}
         virtual void onReadCompleted(Context *ctx){};
         virtual void onWriteCompleted(Context *ctx){};
-        virtual void onTimeout(Context *ctx){};
         virtual void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t inLength){};
         int onAlpnSelect(
                 const uint8_t **out, uint8_t *outLength,

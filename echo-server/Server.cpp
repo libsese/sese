@@ -12,15 +12,16 @@ public:
     void onAcceptCompleted(Context *ctx) override {
         SESE_INFO("onAcceptCompleted %d", (int) ctx->fd);
         postRead(ctx);
+        setTimeout(ctx, 10);
     }
 
     void onPreRead(Context *ctx) override {
-        SESE_INFO("onRreRead %d", (int) ctx->fd);
+        cancelTimeout(ctx);
+        SESE_INFO("onPreRead %d", (int) ctx->fd);
     }
 
     void onReadCompleted(Context *ctx) override {
         SESE_INFO("onReadCompleted %d", (int) ctx->fd);
-        // ctx->recv.swap(ctx->send);
         sese::streamMove(&ctx->send, &ctx->recv, IOCP_WSABUF_SIZE);
         postWrite(ctx);
     }
@@ -28,6 +29,7 @@ public:
     void onWriteCompleted(Context *ctx) override {
         SESE_INFO("onWriteCompleted %d", (int) ctx->fd);
         postRead(ctx);
+        setTimeout(ctx, 10);
     }
 
     static void myDeleter(Context *ctx) {
