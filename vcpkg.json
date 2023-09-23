@@ -1,23 +1,49 @@
 {
-  "name": "sese-db",
-  "dependencies": [
-    {
-      "name": "libmariadb",
-      "version>=": "3.3.1"
+    "name": "sese-db",
+    "dependencies": [
+        {
+            "name": "gtest",
+            "version>=": "1.13.0"
+        }
+    ],
+    "features": {
+        "mysql": {
+            "description": "add mysql and mariadb support",
+            "dependencies": [
+                {
+                    "name": "libmariadb",
+                    "version>=": "3.3.1"
+                }
+            ]
+        },
+        "sqlite3": {
+            "description": "add sqlite3 support",
+            "dependencies": [
+                {
+                    "name": "sqlite3",
+                    "version>=": "3.42.0"
+                }
+            ]
+        },
+        "psql": {
+            "description": "add postgresql support",
+            "dependencies": [
+                {
+                    "name": "libpq",
+                    "version>=": "15.3"
+                }
+            ]
+        },
+        "tests": {
+            "description": "build db unit test",
+            "dependencies": [
+                {
+                    "name": "gtest",
+                    "version>=": "1.13.0"
+                }
+            ]
+        }
     },
-    {
-      "name": "sqlite3",
-      "version>=": "3.39.2"
-    },
-    {
-      "name": "libpq",
-      "version>=": "14.4"
-    },
-    {
-      "name": "gtest",
-      "version>=": "1.12.1"
-    }
-  ],
-  "version-string": "1.1.2",
-  "builtin-baseline": "ed8fb07a8bd19568c8594c6f1a04955242f82d35"
+    "version-string": "1.1.3",
+    "builtin-baseline": "9edb1b8e590cc086563301d735cae4b6e732d2d2"
 }

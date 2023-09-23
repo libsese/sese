@@ -1,20 +1,43 @@
 cmake_minimum_required(VERSION 3.14)
-project(sese-db VERSION 1.1.2)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+cmake_policy(SET CMP0048 NEW)
+
+macro(auto_enable_feature opt_name feature_name)
+    if(${opt_name})
+        if(NOT DEFINED VCPKG_MANIFEST_FEATURES)
+            message(STATUS "Auto append features: ${feature_name}")
+            set(VCPKG_MANIFEST_FEATURES ${feature_name})
+        else ()
+            list(FIND VCPKG_MANIFEST_FEATURES ${opt_name} index)
+            if (index EQUAL -1)
+                message(STATUS "Auto append features: ${feature_name}")
+                list(APPEND VCPKG_MANIFEST_FEATURES ${feature_name})
+            endif ()
+        endif ()
+    endif ()
+endmacro()
 
 option(SESE_DB_BUILD_TEST "build unit test targets" ON)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
 option(SESE_DB_USE_SQLITE "add sqlite support" OFF)
 option(SESE_DB_USE_POSTGRES "add postgresql support" OFF)
 
+auto_enable_feature(SESE_DB_BUILD_TEST "tests")
+auto_enable_feature(SESE_DB_USE_MARIADB "mysql")
+auto_enable_feature(SESE_DB_USE_SQLITE "sqlite3")
+auto_enable_feature(SESE_DB_USE_POSTGRES "psql")
+
+project(sese-db VERSION 1.1.3)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (UNIX)
         # for valgrind
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-4")
         # for sanitizer
-        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=leak")
+        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
     endif ()
 endif ()
 
