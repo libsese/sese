@@ -15,6 +15,9 @@ Context_V1::~Context_V1() {
     if (bio) {
         BIO_free((BIO *) bio);
     }
+    if (readNode) {
+        delete readNode;
+    }
 }
 
 int64_t Context_V1::read(void *buffer, size_t length) {
@@ -70,7 +73,7 @@ bool IOCPServer_V1::init() {
     }
 
     for (int i = 0; i < threads; ++i) {
-        auto th = std::make_unique<Thread>([this] { eventThreadProc(); }, "IOCP_" + std::to_string(i + 2));
+        auto th = std::make_unique<Thread>([this] { eventThreadProc(); }, "IOCP_" + std::to_string(i + 1));
         th->start();
         eventThreadGroup.emplace_back(std::move(th));
     }
@@ -110,6 +113,7 @@ void IOCPServer_V1::shutdown() {
     acceptThread = nullptr;
 
     for (auto &&item: wrapperSet) {
+        Socket::close(item->ctx.fd);
         deleteContextCallback(&item->ctx);
         delete item;
     }
