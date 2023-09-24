@@ -35,9 +35,7 @@ Initializer::Initializer() {
 #ifdef _WIN32
     buildInLoadTask(std::make_shared<sese::net::SocketInitiateTask>());
 #endif
-#ifdef SESE_USE_SSL
     buildInLoadTask(std::make_shared<sese::security::SecurityInitTask>());
-#endif
     // GCOVR_EXCL_STOP
 }
 #undef INIT

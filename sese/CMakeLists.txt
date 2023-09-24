@@ -191,8 +191,6 @@ if (SESE_BUILD_TEST)
     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
 endif ()
 
-target_compile_definitions(Core PUBLIC -DSESE_USE_SSL)
-
 target_include_directories(
         Core
         PUBLIC
@@ -281,6 +279,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
     target_sources(Core PRIVATE ${NATIVE_PATH}/event/KqueueEventLoop.cpp)
 
+    target_compile_options(Core PRIVATE "-fno-exceptions")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 endif ()
 
