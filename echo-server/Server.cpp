@@ -32,6 +32,11 @@ public:
         setTimeout(ctx, 10);
     }
 
+    void onTimeout(Context *ctx) override {
+        SESE_INFO("onTimeout %d", ctx->getFd());
+        postClose(ctx);
+    }
+
     static void myDeleter(Context *ctx) {
         SESE_INFO("onDeleteCallback %d", ctx->getFd());
     }
@@ -52,4 +57,5 @@ int main() {
     SESE_INFO("server listening on %d", address->getPort());
     getchar();
     server.shutdown();
+    return 0;
 }

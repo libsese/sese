@@ -66,6 +66,19 @@ void IOCPService_V1::postWrite(IOCPService_V1::Context *ctx) {
     }
 }
 
+void IOCPService_V1::postClose(IOCPService_V1::Context *ctx) {
+    ctx->self->getDeleteContextCallback()(ctx);
+    if (ctx->ssl) {
+        SSL_free((SSL *) ctx->ssl);
+    }
+    if (ctx->timeoutEvent) {
+        cancelTimeoutEvent(ctx->timeoutEvent);
+    }
+    sese::net::Socket::close(ctx->fd);
+    ctx->client->freeEventEx(ctx->event);
+    delete ctx;
+}
+
 void IOCPService_V1::onAcceptCompleted(IOCPService_V1::Context *ctx) {
     ctx->self->onAcceptCompleted(ctx);
 }
@@ -83,13 +96,8 @@ void IOCPService_V1::onWriteCompleted(IOCPService_V1::Context *ctx) {
 }
 
 void IOCPService_V1::onTimeout(IOCPService_V1::Context *ctx) {
-    ctx->self->getDeleteContextCallback()(ctx);
-    if (ctx->ssl) {
-        SSL_free((SSL *) ctx->ssl);
-    }
-    sese::net::Socket::close(ctx->fd);
-    ctx->client->freeEventEx(ctx->event);
-    delete ctx;
+    ctx->timeoutEvent = nullptr;
+    ctx->self->onTimeout(ctx);
 }
 
 void IOCPService_V1::onAlpnGet(IOCPService_V1::Context *ctx, const uint8_t *in, uint32_t inLength) {
@@ -197,6 +205,20 @@ void IOCPService_V1::onWrite(sese::event::BaseEvent *event) {
     }
 }
 
+void IOCPService_V1::onClose(sese::event::BaseEvent *event) {
+    auto ctx = (Context *) event->data;
+    ctx->self->getDeleteContextCallback()(ctx);
+    if (ctx->ssl) {
+        SSL_free((SSL *) ctx->ssl);
+    }
+    if (ctx->timeoutEvent) {
+        cancelTimeoutEvent(ctx->timeoutEvent);
+    }
+    sese::net::Socket::close(ctx->fd);
+    ctx->client->freeEventEx(ctx->event);
+    delete ctx;
+}
+
 void IOCPService_V1::onTimeout(TimeoutEvent_V2 *event) {
     auto ctx = (Context *) event->data;
     IOCPService_V1::onTimeout(ctx);
@@ -258,6 +280,10 @@ void IOCPServer_V1::postRead(IOCPServer_V1::Context *ctx) {
 
 void IOCPServer_V1::postWrite(IOCPService_V1::Context *ctx) {
     ctx->client->postWrite(ctx);
+}
+
+void IOCPServer_V1::postClose(IOCPServer_V1::Context *ctx) {
+    ctx->client->postClose(ctx);
 }
 
 void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {

@@ -70,13 +70,15 @@ namespace sese::_windows::iocp {
         void shutdown();
         void postRead(Context *ctx);
         void postWrite(Context *ctx);
+        void postClose(Context *ctx);
         void setTimeout(Context *ctx, int64_t seconds);
         void cancelTimeout(Context *ctx);
         static void onDeleteContext(Context *) {}
-        virtual void onAcceptCompleted(Context *ctx){};
+        virtual void onAcceptCompleted(Context *ctx) {}
         virtual void onPreRead(Context *ctx) {}
-        virtual void onReadCompleted(Context *ctx){};
-        virtual void onWriteCompleted(Context *ctx){};
+        virtual void onReadCompleted(Context *ctx) {}
+        virtual void onWriteCompleted(Context *ctx) {}
+        virtual void onTimeout(Context *ctx) {}
         virtual void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t inLength){};
         int onAlpnSelect(
                 const uint8_t **out, uint8_t *outLength,
@@ -105,7 +107,7 @@ namespace sese::_windows::iocp {
 
         static long bioCtrl(void *bio, int cmd, long num, void *ptr);
         static int bioWrite(void *bio, const char *in, int length);
-        static int bioRead(void *bio, char * out, int length);
+        static int bioRead(void *bio, char *out, int length);
 
         std::atomic_bool isShutdown{false};
         HANDLE iocpFd{INVALID_HANDLE_VALUE};

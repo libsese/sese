@@ -22,14 +22,16 @@ namespace sese::iocp {
         void shutdown();
         void postRead(Context *ctx);
         void postWrite(Context *ctx);
+        void postClose(Context *ctx);
         void setTimeout(Context *ctx, int64_t seconds);
         void cancelTimeout(Context *ctx);
         static void onDeleteContext(Context *) {}
-        virtual void onAcceptCompleted(Context *ctx){};
+        virtual void onAcceptCompleted(Context *ctx){}
         virtual void onPreRead(Context *ctx) {}
-        virtual void onReadCompleted(Context *ctx){};
-        virtual void onWriteCompleted(Context *ctx){};
-        virtual void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t inLength){};
+        virtual void onReadCompleted(Context *ctx){}
+        virtual void onWriteCompleted(Context *ctx){}
+        virtual void onTimeout(Context *ctx) {}
+        virtual void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t inLength){}
         int onAlpnSelect(
                 const uint8_t **out, uint8_t *outLength,
                 const uint8_t *in, uint32_t inLength
@@ -46,8 +48,8 @@ namespace sese::iocp {
         [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return IOCPServer_V1::deleteContextCallback; };
 
     public:
-        void setAcceptTimeout(uint32_t seconds) { balanceLoader.setAcceptTimeout(seconds); }
-        void setDispatchTimeout(uint32_t seconds) { balanceLoader.setDispatchTimeout(seconds); }
+        [[maybe_unused]] void setAcceptTimeout(uint32_t seconds) { balanceLoader.setAcceptTimeout(seconds); }
+        [[maybe_unused]] void setDispatchTimeout(uint32_t seconds) { balanceLoader.setDispatchTimeout(seconds); }
 
     protected:
         DeleteContextCallback deleteContextCallback = onDeleteContext;
@@ -75,7 +77,7 @@ namespace sese::iocp {
 
         [[nodiscard]] int32_t getFd() const { return (int32_t) Context_V1::fd; }
         [[nodiscard]] void *getData() const { return Context_V1::data; }
-        void setData(void *pData) { Context_V1::data = pData; }
+        [[maybe_unused]] void setData(void *pData) { Context_V1::data = pData; }
     };
 
     class IOCPService_V1 final : public service::TimerableService_V2 {
@@ -87,6 +89,7 @@ namespace sese::iocp {
 
         void postRead(Context *ctx);
         void postWrite(Context *ctx);
+        void postClose(Context *ctx);
         static void onAcceptCompleted(Context *ctx);
         static void onPreRead(Context *ctx);
         static void onReadCompleted(Context *ctx);
@@ -103,6 +106,7 @@ namespace sese::iocp {
         void onAccept(int fd) override;
         void onRead(event::BaseEvent *event) override;
         void onWrite(event::BaseEvent *event) override;
+        void onClose(event::BaseEvent *event) override;
         void onTimeout(service::TimeoutEvent_V2 *event) override;
 
         event::BaseEvent *createEventEx(int fd, unsigned int events, void *data);

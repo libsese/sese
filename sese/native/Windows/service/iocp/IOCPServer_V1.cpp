@@ -185,6 +185,11 @@ void IOCPServer_V1::postWrite(IOCPServer_V1::Context *ctx) {
     }
 }
 
+void IOCPServer_V1::postClose(IOCPServer_V1::Context *ctx) {
+    void *lpCompletionKey = nullptr;
+    PostQueuedCompletionStatus(iocpFd, 0, (ULONG_PTR) lpCompletionKey, (LPOVERLAPPED) ctx->pWrapper);
+}
+
 void IOCPServer_V1::acceptThreadProc() {
     using namespace std::chrono_literals;
 
@@ -279,7 +284,19 @@ void IOCPServer_V1::eventThreadProc() {
                 (LPOVERLAPPED *) &pWrapper,
                 INFINITE
         );
-        if (!bRt || lpNumberOfBytesTransferred == 0) {
+        if (!bRt) {
+            continue;
+        } else if (lpNumberOfBytesTransferred == 0) {
+            wrapperSetMutex.lock();
+            Socket::close(pWrapper->ctx.fd);
+            pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+            wrapperSet.erase(pWrapper);
+            if (pWrapper->ctx.timeoutEvent) {
+                wheel.cancel(pWrapper->ctx.timeoutEvent);
+                pWrapper->ctx.timeoutEvent = nullptr;
+            }
+            wrapperSetMutex.unlock();
+            delete pWrapper;
             continue;
         } else if (lpNumberOfBytesTransferred == -1) {
             break;
@@ -366,11 +383,13 @@ void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {
     wrapperSetMutex.lock();
     ctx->timeoutEvent = wheel.delay(
             [this, ctx]() {
-                auto pWrapper = ctx->pWrapper;
-                Socket::close(pWrapper->ctx.fd);
-                pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
-                wrapperSet.erase(pWrapper);
-                delete ctx->pWrapper;
+                // auto pWrapper = ctx->pWrapper;
+                // Socket::close(pWrapper->ctx.fd);
+                // pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+                // wrapperSet.erase(pWrapper);
+                // delete ctx->pWrapper;
+                ctx->timeoutEvent = nullptr;
+                this->onTimeout(ctx);
             },
             seconds, false
     );
