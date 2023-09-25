@@ -65,6 +65,7 @@ add_executable(
         TestSharedMemory/TestSharedMemory.cpp
         TestSocket.cpp
         TestSSL.cpp
+        TestSString.cpp
         TestStackInfo.cpp
         TestStream.cpp
         TestStringBuilder.cpp
