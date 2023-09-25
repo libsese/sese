@@ -12,6 +12,7 @@
 #include <memory>
 
 namespace sese::security {
+    /// 基于 OPENSSL::CRYPTO 的信息摘要接口
     class MessageDigest : public NotInstantiable {
     public:
         using InputStream = io::InputStream;

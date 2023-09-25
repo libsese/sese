@@ -1,4 +1,4 @@
-#include <sese/native/Windows/service/iocp/IOCPServer_V1.h>
+#include <sese/native/Windows/service/iocp/NativeIOCPServer_V1.h>
 
 #include <openssl/ssl.h>
 
@@ -6,11 +6,11 @@ using namespace sese::net;
 using namespace sese::iocp;
 using namespace sese::_windows::iocp;
 
-Context_V1::Context_V1(OverlappedWrapper *pWrapper) : pWrapper(pWrapper) {
+NativeContext_V1::NativeContext_V1(OverlappedWrapper *pWrapper) : pWrapper(pWrapper) {
     wsabufWrite.buf = (CHAR *) malloc(IOCP_WSABUF_SIZE);
 }
 
-Context_V1::~Context_V1() {
+NativeContext_V1::~NativeContext_V1() {
     free(wsabufWrite.buf);
     if (bio) {
         BIO_free((BIO *) bio);
@@ -20,7 +20,7 @@ Context_V1::~Context_V1() {
     }
 }
 
-int64_t Context_V1::read(void *buffer, size_t length) {
+int64_t NativeContext_V1::read(void *buffer, size_t length) {
     if (ssl) {
         return SSL_read((SSL *) ssl, buffer, (int) length);
     } else {
@@ -28,7 +28,7 @@ int64_t Context_V1::read(void *buffer, size_t length) {
     }
 }
 
-int64_t Context_V1::write(const void *buffer, size_t length) {
+int64_t NativeContext_V1::write(const void *buffer, size_t length) {
     if (ssl) {
         return SSL_write((SSL *) ssl, buffer, (int) length);
     } else {
@@ -39,7 +39,7 @@ int64_t Context_V1::write(const void *buffer, size_t length) {
 OverlappedWrapper::OverlappedWrapper() : ctx(this) {
 }
 
-bool IOCPServer_V1::init() {
+bool NativeIOCPServer_V1::init() {
     if (address) {
         listenFd = WSASocketW(
                 address->getFamily(),
@@ -91,15 +91,15 @@ bool IOCPServer_V1::init() {
     }
 
     auto method = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bioIOCP");
-    BIO_meth_set_ctrl(method, (long (*)(BIO *, int, long, void *)) & IOCPServer_V1::bioCtrl);
-    BIO_meth_set_read(method, (int (*)(BIO *, char *, int)) & IOCPServer_V1::bioRead);
-    BIO_meth_set_write(method, (int (*)(BIO *, const char *, int)) & IOCPServer_V1::bioWrite);
+    BIO_meth_set_ctrl(method, (long (*)(BIO *, int, long, void *)) & NativeIOCPServer_V1::bioCtrl);
+    BIO_meth_set_read(method, (int (*)(BIO *, char *, int)) & NativeIOCPServer_V1::bioRead);
+    BIO_meth_set_write(method, (int (*)(BIO *, const char *, int)) & NativeIOCPServer_V1::bioWrite);
     this->bioMethod = method;
 
     return true;
 }
 
-void IOCPServer_V1::shutdown() {
+void NativeIOCPServer_V1::shutdown() {
     void *lpCompletionKey = nullptr;
     isShutdown = true;
     for (int i = 0; i < threads; ++i) {
@@ -125,9 +125,9 @@ void IOCPServer_V1::shutdown() {
     }
 }
 
-void IOCPServer_V1::postRead(IOCPServer_V1::Context *ctx) {
+void NativeIOCPServer_V1::postRead(NativeIOCPServer_V1::Context *ctx) {
     auto pWrapper = ctx->pWrapper;
-    ctx->type = Context_V1::Type::Read;
+    ctx->type = NativeContext_V1::Type::Read;
     ctx->readNode = new IOBufNode(IOCP_WSABUF_SIZE);
     ctx->wsabufRead.buf = (CHAR *) ctx->readNode->buffer;
     ctx->wsabufRead.len = (ULONG) ctx->readNode->capacity;
@@ -156,13 +156,13 @@ void IOCPServer_V1::postRead(IOCPServer_V1::Context *ctx) {
     }
 }
 
-void IOCPServer_V1::postWrite(IOCPServer_V1::Context *ctx) {
+void NativeIOCPServer_V1::postWrite(NativeIOCPServer_V1::Context *ctx) {
     auto pWrapper = ctx->pWrapper;
     auto len = ctx->send.peek(ctx->wsabufWrite.buf, IOCP_WSABUF_SIZE);
     if (len == 0) {
         return;
     }
-    ctx->type = Context_V1::Type::Write;
+    ctx->type = NativeContext_V1::Type::Write;
     ctx->wsabufWrite.len = (ULONG) len;
     DWORD nBytes, dwFlags = 0;
     int nRt = WSASend(
@@ -189,12 +189,12 @@ void IOCPServer_V1::postWrite(IOCPServer_V1::Context *ctx) {
     }
 }
 
-void IOCPServer_V1::postClose(IOCPServer_V1::Context *ctx) {
+void NativeIOCPServer_V1::postClose(NativeIOCPServer_V1::Context *ctx) {
     void *lpCompletionKey = nullptr;
     PostQueuedCompletionStatus(iocpFd, 0, (ULONG_PTR) lpCompletionKey, (LPOVERLAPPED) ctx->pWrapper);
 }
 
-void IOCPServer_V1::acceptThreadProc() {
+void NativeIOCPServer_V1::acceptThreadProc() {
     using namespace std::chrono_literals;
 
     while (!isShutdown) {
@@ -275,7 +275,7 @@ void IOCPServer_V1::acceptThreadProc() {
     }
 }
 
-void IOCPServer_V1::eventThreadProc() {
+void NativeIOCPServer_V1::eventThreadProc() {
     OverlappedWrapper *pWrapper{};
     DWORD lpNumberOfBytesTransferred = 0;
     void *lpCompletionKey = nullptr;
@@ -306,7 +306,7 @@ void IOCPServer_V1::eventThreadProc() {
             break;
         }
 
-        if (pWrapper->ctx.type == Context_V1::Type::Read) {
+        if (pWrapper->ctx.type == NativeContext_V1::Type::Read) {
             onPreRead(&pWrapper->ctx);
             pWrapper->ctx.readNode->size = lpNumberOfBytesTransferred;
             pWrapper->ctx.recv.push(pWrapper->ctx.readNode);
@@ -324,7 +324,7 @@ void IOCPServer_V1::eventThreadProc() {
             if (len == 0) {
                 onWriteCompleted(&pWrapper->ctx);
             } else {
-                pWrapper->ctx.type = Context_V1::Type::Write;
+                pWrapper->ctx.type = NativeContext_V1::Type::Write;
                 pWrapper->ctx.wsabufWrite.len = (ULONG) len;
                 DWORD nBytes, dwFlags = 0;
                 int nRt = WSASend(
@@ -354,18 +354,18 @@ void IOCPServer_V1::eventThreadProc() {
     }
 }
 
-int IOCPServer_V1::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
+int NativeIOCPServer_V1::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
     if (SSL_select_next_proto((unsigned char **) out, outLength, (const uint8_t *) servProtos.c_str(), (int) servProtos.length(), in, inLength) != OPENSSL_NPN_NEGOTIATED) {
         return SSL_TLSEXT_ERR_NOACK;
     }
     return SSL_TLSEXT_ERR_OK;
 }
 
-int IOCPServer_V1::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, IOCPServer_V1 *server) {
+int NativeIOCPServer_V1::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, NativeIOCPServer_V1 *server) {
     return server->onAlpnSelect(out, outLength, in, inLength);
 }
 
-long IOCPServer_V1::bioCtrl(void *bio, int cmd, long num, void *ptr) {
+long NativeIOCPServer_V1::bioCtrl(void *bio, int cmd, long num, void *ptr) {
     int ret = 0;
     if (cmd == BIO_CTRL_FLUSH) {
         ret = 1;
@@ -373,17 +373,17 @@ long IOCPServer_V1::bioCtrl(void *bio, int cmd, long num, void *ptr) {
     return ret;
 }
 
-int IOCPServer_V1::bioWrite(void *bio, const char *in, int length) {
-    auto ctx = (Context_V1 *) BIO_get_data((BIO *) bio);
+int NativeIOCPServer_V1::bioWrite(void *bio, const char *in, int length) {
+    auto ctx = (NativeContext_V1 *) BIO_get_data((BIO *) bio);
     return (int) ctx->send.write(in, length);
 }
 
-int IOCPServer_V1::bioRead(void *bio, char *out, int length) {
-    auto ctx = (Context_V1 *) BIO_get_data((BIO *) bio);
+int NativeIOCPServer_V1::bioRead(void *bio, char *out, int length) {
+    auto ctx = (NativeContext_V1 *) BIO_get_data((BIO *) bio);
     return (int) ctx->recv.read(out, length);
 }
 
-void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {
+void NativeIOCPServer_V1::setTimeout(NativeIOCPServer_V1::Context *ctx, int64_t seconds) {
     wrapperSetMutex.lock();
     ctx->timeoutEvent = wheel.delay(
             [this, ctx]() {
@@ -400,7 +400,7 @@ void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {
     wrapperSetMutex.unlock();
 }
 
-void IOCPServer_V1::cancelTimeout(IOCPServer_V1::Context *ctx) {
+void NativeIOCPServer_V1::cancelTimeout(NativeIOCPServer_V1::Context *ctx) {
     if (ctx->timeoutEvent) {
         wrapperSetMutex.lock();
         wheel.cancel(ctx->timeoutEvent);
