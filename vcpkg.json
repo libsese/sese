@@ -1,16 +1,12 @@
 {
     "name": "sese-core",
-    "version-string": "1.2.2",
+    "version-string": "1.2.3",
     "supports": "x64",
     "license": "Apache-2.0",
     "dependencies": [
         {
             "name": "openssl",
             "version>=": "3.1.2"
-        },
-        {
-            "name": "simpleuuid",
-            "version>=": "0.1.5"
         },
         {
             "name": "zlib",

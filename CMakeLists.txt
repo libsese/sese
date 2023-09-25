@@ -19,7 +19,7 @@ if (SESE_BUILD_TEST)
     endif ()
 endif ()
 
-project(sese-core VERSION 1.2.2)
+project(sese-core VERSION 1.2.3)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -54,8 +54,6 @@ message(STATUS "C STANDARD VERSION: ${CMAKE_C_STANDARD}")
 message(STATUS "CXX STANDARD VERSION: ${CMAKE_CXX_STANDARD}")
 message(STATUS "Repository branch: ${SESE_REPO_BRANCH}")
 message(STATUS "Repository hash: ${SESE_REPO_HASH}")
-message(STATUS "C COMPILER PATH: ${CMAKE_C_COMPILER}")
-message(STATUS "CXX COMPILER PATH: ${CMAKE_CXX_COMPILER}")
 
 add_definitions("-DSESE_MAJOR_VERSION=\"${PROJECT_VERSION_MAJOR}\"")
 add_definitions("-DSESE_MINOR_VERSION=\"${PROJECT_VERSION_MINOR}\"")

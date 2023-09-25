@@ -1,6 +1,5 @@
 find_package(ZLIB REQUIRED)
 find_package(OpenSSL REQUIRED)
-find_package(SimpleUuid CONFIG REQUIRED)
 find_package(sese-plugin CONFIG REQUIRED)
 
 set(
@@ -133,8 +132,10 @@ set(
         util/Test.cpp
         util/Timer.cpp
         util/TimeSpan.cpp
+        util/TimestampHandler.cpp
         util/TimeWheel.cpp
         util/Util.cpp
+        util/Uuid.cpp
         util/UuidBuilder.cpp
 )
 
@@ -299,7 +300,6 @@ target_link_libraries(Core PUBLIC
         ZLIB::ZLIB
 )
 target_link_libraries(Core PUBLIC
-        Sese::Uuid
         Sese::Plugin
 )
 

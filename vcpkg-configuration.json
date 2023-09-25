@@ -10,7 +10,6 @@
             "repository": "https://github.com/libsese/vcpkg-registry.git",
             "baseline": "a5d998813e6906083793f755258aa6f96a48843c",
             "packages": [
-                "simpleuuid",
                 "sese-plugin"
             ]
         }

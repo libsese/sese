@@ -8,7 +8,7 @@ sese::UuidBuilder::UuidBuilder() noexcept
 
 // 按照 SimpleUuid 提供的接口处理时钟回拨问题，此处逻辑不需要在此论证
 // GCOVR_EXCL_START
-bool sese::UuidBuilder::generate(uuid::Uuid &dest) noexcept {
+bool sese::UuidBuilder::generate(sese::Uuid &dest) noexcept {
     auto timestamp = timestampHandler.tryGetCurrentTimestamp();
     if (timestamp == 0) {
         for (int i = 0; i < 5; i++) {

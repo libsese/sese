@@ -73,7 +73,7 @@ add_executable(
         TestTimer.cpp
         TestUniReader.cpp
         TestUtil.cpp
-        TestUuidBuilder.cpp
+        TestUuid.cpp
         TestWebsocketService.cpp
         TestXML.cpp
         TestYaml.cpp

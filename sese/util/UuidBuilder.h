@@ -13,24 +13,22 @@
 #endif
 
 #include "sese/Config.h"
-#include "SimpleUuid/TimestampHandler.h"
-#include "SimpleUuid/Uuid.h"
+#include "sese/util/TimestampHandler.h"
+#include "sese/util/Uuid.h"
 
 namespace sese {
-    class API UuidBuilder;
+    /// Uuid 生成器
+    class UuidBuilder {
+    public:
+        /// 构造函数
+        explicit UuidBuilder() noexcept;
+
+        /// 生成 UUID
+        /// \param dest 存放结果的 UUID
+        /// \return 是否生成成功
+        bool generate(sese::Uuid &dest) noexcept;
+
+    protected:
+        sese::TimestampHandler timestampHandler;
+    };
 }// namespace sese
-
-/// Uuid 生成器
-class sese::UuidBuilder {
-public:
-    /// 构造函数
-    explicit UuidBuilder() noexcept;
-
-    /// 生成 UUID
-    /// \param dest 存放结果的 UUID
-    /// \return 是否生成成功
-    bool generate(uuid::Uuid &dest) noexcept;
-
-protected:
-    uuid::TimestampHandler timestampHandler;
-};
