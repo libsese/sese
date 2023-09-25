@@ -19,7 +19,7 @@ using namespace std::chrono_literals;
 
 static sese::net::IPv4Address::Ptr createAddress() {
     auto port = sese::net::createRandomPort();
-    printf("select port %d\n", (int) port);
+    printf("select port %d", (int) port);
     return sese::net::IPv4Address::create("127.0.0.1", port);
 }
 

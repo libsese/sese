@@ -19,7 +19,7 @@ if (SESE_BUILD_TEST)
     endif ()
 endif ()
 
-project(sese-core VERSION 1.2.1)
+project(sese-core VERSION 1.2.2)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -42,7 +42,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         # for valgrind
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-4")
         # for sanitizer
-        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
         # for coverage
         # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
     endif ()
@@ -70,4 +70,5 @@ add_subdirectory(sese)
 if (SESE_BUILD_TEST)
     enable_testing()
     add_subdirectory(gtest)
+    add_subdirectory(echo-server)
 endif ()

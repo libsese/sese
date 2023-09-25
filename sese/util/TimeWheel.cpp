@@ -49,6 +49,7 @@ TimeoutEvent *TimeWheel::delay(const TimeoutEvent::Callback &callback, int64_t s
 void TimeWheel::cancel(TimeoutEvent *event) {
     auto index = (event->target - startTime) % 60;
     slots[index].events.remove(event);
+    delete event;
 }
 
 void TimeWheel::check() {

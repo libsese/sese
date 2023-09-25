@@ -35,6 +35,9 @@ namespace sese::io {
         // [[nodiscard]] size_t getCurrentReadPos();
 
     private:
+        using AbstractByteBuffer::getLength;
+        using AbstractByteBuffer::getCapacity;
+
         std::mutex mutex;
     };
 } // namespace sese

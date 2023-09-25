@@ -499,6 +499,7 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                     auto err = sese::net::getNetworkError();
                     if (err == EWOULDBLOCK || err == EINTR) {
                         stream->file->setSeek((int64_t) (0 - need), SEEK_CUR);
+                        event->events &= ~EVENT_READ;
                         event->events |= EVENT_WRITE;
                         setEvent(event);
                         return;
@@ -532,6 +533,7 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                     // 重置状态，组织新帧
                     stream->currentFramePos = 0;
                     stream->currentFrameSize = 0;
+                    event->events &= EVENT_READ;
                     event->events |= EVENT_WRITE;
                     setEvent(event);
                     break;
@@ -582,6 +584,7 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                     auto err = sese::net::getNetworkError();
                     if (err == EWOULDBLOCK || err == EINTR) {
                         stream->file->setSeek((int64_t) (0 - need), SEEK_CUR);
+                        event->events &= ~EVENT_READ;
                         event->events |= EVENT_WRITE;
                         setEvent(event);
                         return;
@@ -619,6 +622,7 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
                 stream->rangeIterator++;
                 stream->currentFramePos = 0;
                 stream->currentFrameSize = 0;
+                event->events &= ~EVENT_READ;
                 event->events |= EVENT_WRITE;
                 setEvent(event);
                 break;
@@ -771,7 +775,7 @@ void sese::service::v2::HttpService::onProcHandle2(TcpConnection *conn) noexcept
     }
 
     wrapper->event->events |= EVENT_READ;
-    // wrapper->event->events |= EVENT_WRITE;
+    wrapper->event->events |= EVENT_WRITE;
     setEvent(wrapper->event);
     onWrite2(wrapper->event);
 }

@@ -63,6 +63,12 @@ namespace sese::text {
         void operator<<(const StringView &str) noexcept { this->append(str); }
 
     private:
+        using AbstractStringBuffer::length;
+        using AbstractStringBuffer::size;
+        using AbstractStringBuffer::empty;
+        using AbstractStringBuffer::getCharAt;
+        using AbstractStringBuffer::split;
+
         std::mutex mutex;
     };
 }// namespace sese::text

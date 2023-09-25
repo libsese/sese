@@ -8,12 +8,11 @@
         {
             "kind": "git",
             "repository": "https://github.com/libsese/vcpkg-registry.git",
-            "baseline": "8fab008c20efb39ac5eddd4e721ab90b7491a9eb",
+            "baseline": "a5d998813e6906083793f755258aa6f96a48843c",
             "packages": [
                 "simpleuuid",
                 "sstring",
-                "sese-plugin",
-                "sese-event"
+                "sese-plugin"
             ]
         }
     ]

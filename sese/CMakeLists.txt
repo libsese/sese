@@ -3,7 +3,6 @@ find_package(OpenSSL REQUIRED)
 find_package(SString CONFIG REQUIRED)
 find_package(SimpleUuid CONFIG REQUIRED)
 find_package(sese-plugin CONFIG REQUIRED)
-find_package(sese-event CONFIG REQUIRED)
 
 set(
         RECORD_SRC
@@ -157,10 +156,13 @@ set(
         service/HttpConnection_V2.cpp
         service/HttpService_V1.cpp
         service/HttpService_V2.cpp
+        service/iocp/IOBuf.cpp
+        service/iocp/IOCPServer_V1.cpp
         service/RpcService.cpp
         service/SystemBalanceLoader.cpp
         service/TcpTransporter.cpp
         service/TimerableService_V1.cpp
+        service/TimerableService_V2.cpp
         service/UserBalanceLoader.cpp
         service/WebsocketService.cpp
 )
@@ -188,8 +190,6 @@ endif ()
 if (SESE_BUILD_TEST)
     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
 endif ()
-
-target_compile_definitions(Core PUBLIC -DSESE_USE_SSL)
 
 target_include_directories(
         Core
@@ -224,6 +224,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
     target_sources(Core PRIVATE ${DLL_INFO_RC})
+    target_sources(Core PRIVATE ${NATIVE_PATH}/event/WSAEventLoop.cpp ${NATIVE_PATH}/event/WSAEventConvert.cpp ${NATIVE_PATH}/service/iocp/NativeIOCPServer_V1.cpp)
+
     if (${MSVC})
         target_compile_options(Core PRIVATE "/utf-8")
     endif ()
@@ -261,6 +263,8 @@ endif ()
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
+    target_sources(Core PRIVATE ${NATIVE_PATH}/event/EpollEventLoop.cpp ${NATIVE_PATH}/event/EpollEventConvert.cpp)
+
     target_compile_options(Core PUBLIC "-fPIC")
     target_link_options(Core PUBLIC "-rdynamic")
 
@@ -273,6 +277,9 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(CORESERVICES_FRAMEWORK CoreServices REQUIRED)
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
 
+    target_sources(Core PRIVATE ${NATIVE_PATH}/event/KqueueEventLoop.cpp)
+
+    target_compile_options(Core PRIVATE "-fno-exceptions")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 endif ()
 
@@ -292,7 +299,6 @@ target_link_libraries(Core PUBLIC
 target_link_libraries(Core PUBLIC
         Sese::SString
         Sese::Uuid
-        Sese::Event
         Sese::Plugin
 )
 

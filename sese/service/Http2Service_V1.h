@@ -63,6 +63,9 @@ namespace sese::service::v1 {
 
         void onHandleHttp2(net::http::HttpConnection *conn) noexcept;
 
+    private:
+        using HttpService::dispatch;
+
         std::map<net::http::HttpConnection *, net::http::Http2Connection *> conn2Map;
     };
 }// namespace sese::service

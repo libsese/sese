@@ -122,6 +122,10 @@ void AsyncLogger::loop() noexcept {
             appender->dump(buffer->data(), buffer->getReadableSize());
         }
     }
+    for (auto &&buffer: buffer2Ready) {
+        delete buffer;
+    }
+    buffer2Ready.clear();
     // GCOVR_EXCL_STOP
 
     delete buffer1;// GCOVR_EXCL_LINE

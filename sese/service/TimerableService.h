@@ -7,11 +7,12 @@
 #pragma once
 
 #include <sese/service/TimerableService_V1.h>
+#include <sese/service/TimerableService_V2.h>
 
 namespace sese::service {
     /// 超时事件结构体
-    typedef TimeoutEvent_V1 TimeoutEvent;
+    typedef TimeoutEvent_V2 TimeoutEvent;
 
     /// 可定时服务
-    typedef TimerableService_V1 TimerableService;
+    typedef TimerableService_V2 TimerableService;
 }
