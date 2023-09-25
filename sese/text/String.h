@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include <SString/SString.h>
-#include <SString/SStringBuilder.h>
+#include <sese/text/SString.h>
+#include <sese/text/SStringBuilder.h>
 
 namespace sese::text {
     using Char = sstr::SChar;

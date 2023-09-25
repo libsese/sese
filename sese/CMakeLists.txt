@@ -1,6 +1,5 @@
 find_package(ZLIB REQUIRED)
 find_package(OpenSSL REQUIRED)
-find_package(SString CONFIG REQUIRED)
 find_package(SimpleUuid CONFIG REQUIRED)
 find_package(sese-plugin CONFIG REQUIRED)
 
@@ -116,7 +115,10 @@ set(
 set(
         TEXT_SRC
         text/AbstractStringBuffer.cpp
+        text/Algorithm.cpp
         text/DateTimeFormatter.cpp
+        text/SString.cpp
+        text/SStringBuilder.cpp
         text/StringBuffer.cpp
         text/TextReader.cpp
 )
@@ -297,7 +299,6 @@ target_link_libraries(Core PUBLIC
         ZLIB::ZLIB
 )
 target_link_libraries(Core PUBLIC
-        Sese::SString
         Sese::Uuid
         Sese::Plugin
 )
