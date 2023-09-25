@@ -38,11 +38,9 @@ void BlockAppender::dump(const char *buffer, size_t i) noexcept {
         fileStream = io::FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
         bufferedStream->reset(fileStream);
         bufferedStream->write((void *) buffer, i);
-        bufferedStream->write((void *) "\n", 1);
     } else {
         Locker locker(this->mutex);
         this->size += i;
         bufferedStream->write((void *) buffer, i);
-        bufferedStream->write((void *) "\n", 1);
     }
 }

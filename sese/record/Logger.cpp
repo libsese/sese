@@ -52,7 +52,6 @@ namespace sese::record {
                 break;
         }
         builtInAppender->dump(content.c_str(), content.length());
-        builtInAppender->dump("\n", 1);
         ConsoleAppender::setCleanColor();
         fflush(stdout);
         // }

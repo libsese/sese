@@ -13,5 +13,4 @@ sese::record::FileAppender::~FileAppender() noexcept {
 
 void sese::record::FileAppender::dump(const char *buffer, size_t size) noexcept {
     bufferedStream->write((void *) buffer, size);
-    bufferedStream->write((void *) "\n", 1);
 }

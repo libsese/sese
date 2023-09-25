@@ -50,7 +50,7 @@ void ConsoleAppender::setDebugColor() noexcept {
 }
 
 void ConsoleAppender::setInfoColor() noexcept {
-    fputs("\033[0;37m", stdout);
+    fputs("\033[0m", stdout);
 }
 
 void ConsoleAppender::setWarnColor() noexcept {

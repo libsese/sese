@@ -31,7 +31,6 @@ void AsyncLogger::log(const Event::Ptr &event) noexcept {
     std::string content = formatter->dump(event);
     if (currentBuffer->getWriteableSize() > content.length() + 1) {
         currentBuffer->write(content.data(), content.length());
-        currentBuffer->write("\n", 1);
     } else {
         buffer2Ready.push_back(currentBuffer);
 
@@ -42,7 +41,6 @@ void AsyncLogger::log(const Event::Ptr &event) noexcept {
             currentBuffer = new io::FixedBuilder(RECORD_BUFFER_SIZE);
         }
         currentBuffer->write(content.data(), content.length());
-        currentBuffer->write("\n", 1);
         conditionVariable.notify_one();
     }
     // }

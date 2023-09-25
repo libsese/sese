@@ -53,9 +53,9 @@ TEST(TestThread, ThreadPool) {
         tasks.emplace_back(t);
     }
 
-    sese::ThreadPool pool("threadPool", 4);
-    ASSERT_EQ(pool.getName(), std::string_view("threadPool"));
-    ASSERT_EQ(pool.getThreads(), 4);
+    sese::ThreadPool pool("ThreadPool", 4);
+    EXPECT_EQ(pool.getName(), std::string_view("ThreadPool"));
+    EXPECT_EQ(pool.getThreads(), 4);
     pool.postTask([&log]() { log.info("start!"); });
     pool.postTask(tasks);
     pool.postTaskEx(

@@ -58,14 +58,12 @@ constexpr static const char *THREAD_DEFAULT_NAME = "UNKNOWN";
 /// 主线程名称
 constexpr static const char *THREAD_MAIN_NAME = "Main";
 
-/// 默认日志过滤器名称
-constexpr static const char *RECORD_DEFAULT_TAG = "DEF";
 /// 日志输出缓存区大小
-constexpr static const size_t RECORD_OUTPUT_BUFFER = 2048;
+constexpr static const size_t RECORD_OUTPUT_BUFFER = 4096;
 /// 日志格式化器时间匹配格式
 constexpr static const char *RECORD_DEFAULT_TIME_PATTERN = TIME_SHORT_PATTERN;
 /// 日志格式化器匹配格式
-constexpr static const char *RECORD_DEFAULT_TEXT_PATTERN = "c lv fn:li tn:th> m";
+constexpr static const char *RECORD_DEFAULT_TEXT_PATTERN = "c lv fn:li tn:th> m\n";
 /// 日志输出文件名称匹配模式
 constexpr static const char *RECORD_DEFAULT_FILE_TIME_PATTERN = "yyyyMMdd HHmmssff";
 /// 异步日志器缓冲区大小
