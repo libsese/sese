@@ -33,6 +33,7 @@ add_executable(
         TestEncodingConverter.cpp
         TestEndian.cpp
         TestEnv.cpp
+        TestException.cpp
         TestFakeStream.cpp
         TestFileNotifier.cpp
         TestFileStream.cpp

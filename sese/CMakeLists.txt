@@ -126,6 +126,7 @@ set(
         UTIL_SRC
         util/ArgParser.cpp
         util/DateTime.cpp
+        util/Exception.cpp
         util/Initializer.cpp
         util/MemoryViewer.cpp
         util/Random.cpp

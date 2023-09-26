@@ -40,6 +40,9 @@
     point_to_logger->dump(buffer, length);          \
     SESE_MARCO_END
 
+#define __SESE_EXCEPT(point_to_logger, e) \
+    e.printStacktrace(point_to_logger)
+
 #define __SESE_DEBUG(sese_tmp_logger, format, ...)                                 \
     __SESE_LOG(sese_tmp_logger, sese::record::Level::DEBUG, format, ##__VA_ARGS__) \
     SESE_MARCO_END
@@ -58,6 +61,8 @@
 
 #define SESE_RAW(buffer, length) \
     __SESE_RAW(sese::record::getLogger(), buffer, length)
+
+#define SESE_EXCEPT(e) __SESE_EXCEPT(sese::record::getLogger(), e)
 
 #define SESE_DEBUG(sese_tmp_format, ...)                                                              \
     __SESE_LOG(sese::record::getLogger(), sese::record::Level::DEBUG, sese_tmp_format, ##__VA_ARGS__) \

@@ -31,6 +31,8 @@ namespace sese::system {
 
         SESE_STD_WRAPPER(begin, stacks)
         SESE_STD_WRAPPER(end, stacks)
+        SESE_STD_WRAPPER(rbegin, stacks)
+        SESE_STD_WRAPPER(rend, stacks)
         SESE_STD_WRAPPER(empty, stacks)
         SESE_STD_WRAPPER(size, stacks)
 
