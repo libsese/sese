@@ -1,3 +1,9 @@
+/**
+ * @file Event.h
+ * @brief 网络事件结构关联
+ * @author kaoru
+ */
+
 #pragma once
 
 #if defined(__linux__)

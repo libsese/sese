@@ -1,3 +1,9 @@
+/**
+*  @file EpollEventLoop.h
+*  @brief epoll 事件循环
+*  @author kaoru
+*/
+
 #pragma once
 
 #include "sese/event/BaseEvent.h"
@@ -6,7 +12,7 @@
 #include "sese/native/Linux/event/EpollEventConvert.h"
 
 namespace sese::event {
-
+    /// epoll 事件循环
     class EpollEventLoop : public sese::event::BaseEventLoop {
     public:
         bool init() override;

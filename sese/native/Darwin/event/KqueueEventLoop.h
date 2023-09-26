@@ -1,3 +1,9 @@
+/**
+ * @file KqueueEventLoop.h
+ * @brief kqueue 事件循环
+ * @author kaoru
+ */
+
 #pragma once
 
 #include <sese/event/BaseEventLoop.h>
@@ -6,7 +12,7 @@
 #include <atomic>
 
 namespace sese::event {
-
+    /// kqueue 事件循环
     class KqueueEventLoop : public BaseEventLoop {
     public:
         bool init() override;

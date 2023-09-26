@@ -1,3 +1,9 @@
+/**
+ * @file WSAEventLoop.h
+ * @brief WSAEventSelect 事件循环
+ * @author kaoru
+ */
+
 #pragma once
 
 #include <sese/native/Windows/event/WSAEvent.h>
@@ -5,10 +11,11 @@
 #include <sese/event/BaseEventLoop.h>
 
 #include <atomic>
+
 #define MAX_EVENT_SIZE 64
 
 namespace sese::event {
-
+    /// WSAEventSelect 事件循环
     class WSAEventLoop : public BaseEventLoop {
     public:
         ~WSAEventLoop() override;
