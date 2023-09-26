@@ -20,8 +20,30 @@
 
 namespace sese {
 
+#if defined(SESE_PLATFORM_WINDOWS)
+    using NativeException = std::exception;
+#else
+    /// Unix 异常包装类
+    class UnixException : public std::exception {
+    public:
+        UnixException() = default;
+
+        explicit UnixException(const char *message) : std::exception(), msg(message) {
+        }
+
+        [[nodiscard]] const char *what() const noexcept override {
+            return msg;
+        }
+
+    private:
+        const char *msg{};
+    };
+
+    using NativeException = UnixException;
+#endif
+
     /// 异常类
-    class API Exception : std::exception {
+    class API Exception : public NativeException {
     public:
         Exception();
 
@@ -41,6 +63,8 @@ namespace sese {
         void printStacktrace(sese::io::OutputStream *output);
 
     protected:
+        static int WILL_SKIP_OFFSET;
+
         virtual std::string buildStacktrace();
 
         sese::system::StackInfo *stackInfo{};
