@@ -73,6 +73,13 @@ namespace sese::record {
         logger->removeAppender(appender);// NOLINT
     }
 
+    void Logger::dump(const void *buffer, size_t length) noexcept {
+        builtInAppender->dump((const char *)buffer, length);
+        for (auto &appender: appenderVector) {
+            appender->dump((const char *)buffer, length);
+        }
+    }
+
     Logger *getLogger() noexcept { return logger; }
 
     int32_t LoggerInitiateTask::init() noexcept {

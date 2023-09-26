@@ -36,6 +36,10 @@
         point_to_logger->log(sese_tmp_event);                        \
     }
 
+#define __SESE_RAW(point_to_logger, buffer, length) \
+    point_to_logger->dump(buffer, length);          \
+    SESE_MARCO_END
+
 #define __SESE_DEBUG(sese_tmp_logger, format, ...)                                 \
     __SESE_LOG(sese_tmp_logger, sese::record::Level::DEBUG, format, ##__VA_ARGS__) \
     SESE_MARCO_END
@@ -51,6 +55,9 @@
 #define __SESE_ERROR(sese_tmp_logger, format, ...)                               \
     __SESE_LOG(sese_tmp_logger, sese::record::Level::ERR, format, ##__VA_ARGS__) \
     SESE_MARCO_END
+
+#define SESE_RAW(buffer, length) \
+    __SESE_RAW(sese::record::getLogger(), buffer, length)
 
 #define SESE_DEBUG(sese_tmp_format, ...)                                                              \
     __SESE_LOG(sese::record::getLogger(), sese::record::Level::DEBUG, sese_tmp_format, ##__VA_ARGS__) \

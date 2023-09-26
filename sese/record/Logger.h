@@ -62,6 +62,13 @@ namespace sese::record {
          */
         virtual void log(const Event::Ptr &event) noexcept;
 
+        /**
+         * 输出原始内容
+         * @param buffer
+         * @param length
+         */
+        virtual void dump(const void *buffer, size_t length) noexcept;
+
     protected:
         std::shared_ptr<AbstractFormatter> formatter;
         std::shared_ptr<ConsoleAppender> builtInAppender;
