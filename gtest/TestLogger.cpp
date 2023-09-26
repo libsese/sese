@@ -88,4 +88,5 @@ TEST(TestLogger, Macro) {
     SESE_INFO("Hello");
     SESE_WARN("Hello");
     SESE_ERROR("Hello");
+    SESE_RAW("Hello\n", 6);
 }

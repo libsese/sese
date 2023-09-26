@@ -26,6 +26,8 @@ namespace sese::record {
 
         void log(const Event::Ptr &event) noexcept override;
 
+        void dump(const void *buffer, size_t length) noexcept override;
+
         void loop() noexcept;
 
     protected:
