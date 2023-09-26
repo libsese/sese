@@ -3,14 +3,20 @@
 
 #include <algorithm>
 
+#if defined(SESE_PLATFORM_WINDOWS)
+int sese::Exception::WILL_SKIP_OFFSET = 1;
+#else
+int sese::Exception::WILL_SKIP_OFFSET = 2;
+#endif
+
 sese::Exception::Exception()
-    : exception() {
-    stackInfo = new system::StackInfo(8, sese::system::StackInfo::WILL_SKIP + 1);
+    : NativeException() {
+    stackInfo = new system::StackInfo(8, sese::system::StackInfo::WILL_SKIP + WILL_SKIP_OFFSET);
 }
 
-sese::Exception::Exception(const char *message)
-    : std::exception(message) {
-    stackInfo = new system::StackInfo(8, sese::system::StackInfo::WILL_SKIP + 1);
+sese::Exception::Exception(const char * message)
+    : NativeException(message) {
+    stackInfo = new system::StackInfo(8, sese::system::StackInfo::WILL_SKIP + WILL_SKIP_OFFSET);
 }
 
 sese::Exception::~Exception() {
