@@ -1,3 +1,9 @@
+/**
+ * @file BaseEventLoop.h
+ * @brief 基础网络事件循环接口
+ * @author kaoru
+ */
+
 #pragma once
 
 #include <sese/event/BaseEvent.h>
@@ -6,6 +12,7 @@
 
 namespace sese::event {
 
+    /// 基础网络事件循环接口
     class BaseEventLoop {
     public:
         virtual bool init() = 0;
