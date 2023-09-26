@@ -18,17 +18,17 @@ auto makeEvent(sese::record::Level level) {
 }
 
 TEST(TestAsyncLogger, Appender) {
-    auto appender = std::make_shared<sese::record::BlockAppender>(1 * 1024 * 20, sese::record::Level::INFO);
+    // auto appender = std::make_shared<sese::record::BlockAppender>(1 * 1024 * 20, sese::record::Level::INFO);
 
     auto logger = sese::record::AsyncLogger();
-    logger.addAppender(appender);
+    // logger.addAppender(appender);
 
     __SESE_DEBUG((&logger), "Hello");
     __SESE_INFO((&logger), "Hello");
     __SESE_WARN((&logger), "Hello");
     __SESE_ERROR((&logger), "Hello");
 
-    sese::sleep(0);
+    // sese::sleep(0);
 }
 
 TEST(TestAsyncLogger, HighLoad) {

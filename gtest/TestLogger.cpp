@@ -53,6 +53,8 @@ TEST(TestLogger, FileAppender) {
     log.info("Hello");
     log.warn("Hello");
     log.error("Hello");
+
+    logger->removeAppender(fileAppender);
 }
 
 TEST(TestLogger, SimpleFormat) {
