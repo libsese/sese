@@ -84,7 +84,7 @@ add_test(NAME AllTestInMain COMMAND AllTestInMain)
 
 # Test Plugin
 add_library(Module SHARED TestPlugin/Module.cpp)
-target_link_libraries(Module PUBLIC Plugin)
+target_link_libraries(Module PUBLIC Core)
 set_target_properties(
         Module PROPERTIES
         OUTPUT_NAME "Module"

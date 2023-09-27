@@ -323,7 +323,6 @@ set(
         security/SSLContext.h
         security/SSLContextBuilder.cpp
         security/SSLContextBuilder.h
-
 )
 
 set(
@@ -474,6 +473,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
     target_sources(Core PRIVATE ${NATIVE_PATH}/event/EpollEventLoop.cpp ${NATIVE_PATH}/event/EpollEventConvert.cpp)
 
+    target_compile_options(Plugin PUBLIC "-fPIC")
+
     target_compile_options(Core PUBLIC "-fPIC")
     target_link_options(Core PUBLIC "-rdynamic")
 
@@ -485,6 +486,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(IOKIT_FRAMEWORK IOKit REQUIRED)
     find_library(CORESERVICES_FRAMEWORK CoreServices REQUIRED)
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
+
+    target_compile_options(Plugin PUBLIC "-fPIC")
 
     target_sources(Core PRIVATE ${NATIVE_PATH}/event/KqueueEventLoop.cpp)
 
