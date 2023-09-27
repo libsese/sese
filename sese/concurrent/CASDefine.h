@@ -8,7 +8,8 @@
 #include <sese/Config.h>
 
 namespace sese::concurrent {
-
+    /// \brief 节点
+    /// \tparam T 数据类型
     template<typename T>
     struct Node {
         T value{};
@@ -17,8 +18,8 @@ namespace sese::concurrent {
 }// namespace sese::concurrent
 
 /**
+ * @brief 比较并交换两个指针
  * @verbatim
- * 比较并交换两个指针
  * if( *object == oldValue ) {
  *   *object = newValue;
  *   return true;

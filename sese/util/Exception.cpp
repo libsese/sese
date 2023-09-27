@@ -30,7 +30,7 @@ std::string sese::Exception::buildStacktrace() {
     builder.append("\n");
     std::for_each(stackInfo->rbegin(), stackInfo->rend(), [&builder](const sese::system::SubStackInfo &info) {
         char address[16]{};
-        std::snprintf(address, sizeof(address), "0x%llX", info.address);
+        std::snprintf(address, sizeof(address), "0x%" PRIx64, info.address);
 
         builder.append("\tat ");
         builder.append(info.func);

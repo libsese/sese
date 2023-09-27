@@ -1,177 +1,374 @@
 find_package(ZLIB REQUIRED)
 find_package(OpenSSL REQUIRED)
-find_package(sese-plugin CONFIG REQUIRED)
+
+add_library(Plugin STATIC
+        plugin/BaseClass.h
+        plugin/ClassFactory.cpp
+        plugin/ClassFactory.h
+        plugin/Marco.h
+        plugin/ModuleInfo.h
+)
+
+set(CONCURRENT_SRC
+        concurrent/CASDefine.h
+        concurrent/ConcurrentObjectPool.h
+        concurrent/LinkedQueue.h
+        concurrent/LinkedStack.h
+)
 
 set(
         RECORD_SRC
         record/AbstractAppender.cpp
+        record/AbstractAppender.h
+        record/AbstractFormatter.h
         record/AsyncLogger.cpp
+        record/AsyncLogger.h
         record/BlockAppender.cpp
+        record/BlockAppender.h
         record/ConsoleAppender.cpp
+        record/ConsoleAppender.h
         record/FileAppender.cpp
+        record/Event.h
         record/Logger.cpp
+        record/Logger.h
         record/LogHelper.cpp
+        record/LogHelper.h
         record/SimpleFormatter.cpp
+        record/SimpleFormatter.h
 )
 
 set(
         CONVERT_SRC
         convert/Base64Converter.cpp
+        convert/Base64Converter.h
         convert/Compressor.cpp
+        convert/Compressor.h
         convert/Decompressor.cpp
+        convert/Decompressor.h
         convert/EncodingConverter.cpp
+        convert/EncodingConverter.h
         convert/GZipFileInputStream.cpp
+        convert/GZipFileInputStream.h
         convert/GZipFileOutputStream.cpp
+        convert/GZipFileOutputStream.h
         convert/MD5Util.cpp
+        convert/MD5Util.h
         convert/MessageDigest.cpp
+        convert/MessageDigest.h
         convert/PercentConverter.cpp
+        convert/PercentConverter.h
         convert/SHA1Util.cpp
+        convert/SHA1Util.h
         convert/SHA256Util.cpp
+        convert/SHA256Util.h
+        convert/ZlibConfig.h
 )
 
 set(
         IO_SRC
-        io/AbstractByteBuffer.cpp
+        io/AbstractByteBuffer.h
         io/AbstractFixedBuffer.cpp
+        io/AbstractFixedBuffer.h
+        io/BaseStreamReader.h
         io/BufferedInputStream.cpp
+        io/BufferedInputStream.h
         io/BufferedOutputStream.cpp
+        io/BufferedOutputStream.h
         io/BufferedStream.cpp
+        io/BufferedStream.h
         io/ByteBuffer.cpp
+        io/ByteBuffer.h
+        io/ByteBuilder.h
+        io/Closeable.h
         io/ConsoleOutputStream.cpp
+        io/ConsoleOutputStream.h
+        io/FakeStream.h
+        io/File.h
         io/FileStream.cpp
+        io/FileStream.h
         io/FixedBuffer.cpp
+        io/FixedBuffer.h
+        io/FixedBuilder.h
         io/InputBufferWrapper.cpp
+        io/InputBufferWrapper.h
+        io/InputStream.h
         io/InputStreamReader.cpp
+        io/InputStreamReader.h
         io/OutputBufferWrapper.cpp
+        io/OutputBufferWrapper.h
+        io/OutputStream.h
+        io/OutputUtil.cpp
+        io/OutputUtil.h
+        io/PeekableStream.h
+        io/Stream.h
 )
 
 set(
         THREAD_SRC
+        thread/Async.h
+        thread/GlobalThreadPool.h
+        thread/Locker.h
         thread/Thread.cpp
+        thread/Thread.h
         thread/ThreadPool.cpp
+        thread/ThreadPool.h
 )
 
 set(
         SYSTEM_SRC
         system/Environment.cpp
+        system/Environment.h
+        system/FileNotifier.h
         system/LibraryLoader.cpp
+        system/LibraryLoader.h
         system/NetworkUtil.cpp
+        system/NetworkUtil.h
+        system/Process.h
+        system/SharedMemory.h
+        system/StackInfo.h
 )
 
 set(
         NET_SRC
         net/Address.cpp
+        net/Address.h
         net/AddressPool.cpp
+        net/AddressPool.h
+        net/dns/Answer.h
         net/dns/Client.cpp
+        net/dns/Client.h
         net/dns/DNSServer.cpp
+        net/dns/DNSServer.h
+        net/dns/DNSSession.h
         net/dns/DNSUtil.cpp
+        net/dns/DNSUtil.h
+        net/dns/FrameHeader.h
+        net/dns/Query.h
         net/http/ContentTypeMap.cpp
         net/http/ControllerGroup.cpp
+        net/http/ControllerGroup.h
         net/http/Cookie.cpp
+        net/http/Cookie.h
         net/http/CookieMap.cpp
+        net/http/CookieMap.h
         net/http/DynamicTable.cpp
+        net/http/DynamicTable.h
         net/http/Header.cpp
+        net/http/Header.h
+        net/http/HPACK.h
         net/http/HPackUtil.cpp
+        net/http/HPackUtil.h
         net/http/Http2Connection.cpp
+        net/http/Http2Connection.h
+        net/http/Http2FrameInfo.h
         net/http/Http2Stream.cpp
+        net/http/Http2Stream.h
         net/http/HttpClient.cpp
+        net/http/HttpClient.h
         net/http/HttpConnection.cpp
+        net/http/HttpConnection.h
         net/http/HttpServer.cpp
+        net/http/HttpServer.h
         net/http/HttpUtil.cpp
+        net/http/HttpUtil.h
         net/http/Huffman.cpp
+        net/http/Huffman.h
         net/http/QueryString.cpp
+        net/http/QueryString.h
         net/http/Range.cpp
+        net/http/Range.h
         net/http/Request.cpp
+        net/http/Request.h
+        net/http/RequestHeader.h
         net/http/Response.cpp
+        net/http/Response.h
+        net/http/ResponseHeader.h
         net/http/UrlHelper.cpp
+        net/http/UrlHelper.h
         net/http/V2Http2Server.cpp
+        net/http/V2Http2Server.h
         net/http/V2HttpServer.cpp
+        net/http/V2HttpServer.h
         net/IPAddress.cpp
+        net/IPAddress.h
         net/IPv4Address.cpp
+        net/IPv4Address.h
         net/IPv6Address.cpp
+        net/IPv6Address.h
+        net/ReadableServer.h
         net/ReusableSocket.cpp
+        net/ReusableSocket.h
         net/rpc/Client.cpp
+        net/rpc/Client.h
+        net/rpc/Marco.h
         net/rpc/Server.cpp
+        net/rpc/Server.h
         net/rpc/V2RpcServer.cpp
+        net/rpc/V2RpcServer.h
         net/Socket.cpp
+        net/Socket.h
+        net/TcpServer.h
+        net/V2Server.h
+        net/ws/FrameHeader.h
         net/ws/WebSocketAuthenticator.cpp
+        net/ws/WebsocketAuthenticator.h
+        net/ws/WebsocketEvent.h
+        net/ws/WebsocketSession.h
 )
 
 set(
         CONFIG_SRC
         config/ConfigUtil.cpp
+        config/ConfigUtil.h
         config/CSVReader.cpp
+        config/CSVReader.h
         config/CSVWriter.cpp
+        config/CSVWriter.h
+        config/ini/IniConfig.h
         config/ini/IniUtil.cpp
+        config/ini/IniUtil.h
         config/json/JsonTypes.cpp
+        config/json/JsonTypes.h
         config/json/JsonUtil.cpp
+        config/json/JsonUtil.h
+        config/json/Marco.h
+        config/UniReader.h
         config/xml/XmlTypes.cpp
+        config/xml/XmlTypes.h
         config/xml/XmlUtil.cpp
+        config/xml/XmlUtil.h
+        config/yaml/Marco.h
         config/yaml/YamlTypes.cpp
+        config/yaml/YamlTypes.h
         config/yaml/YamlUtil.cpp
+        config/yaml/YamlUtil.h
 )
 
 set(
         TEXT_SRC
         text/AbstractStringBuffer.cpp
+        text/AbstractStringBuffer.h
         text/Algorithm.cpp
+        text/Algorithm.h
         text/DateTimeFormatter.cpp
+        text/DateTimeFormatter.h
         text/SString.cpp
+        text/SString.h
         text/SStringBuilder.cpp
+        text/SStringBuilder.h
+        text/String.h
         text/StringBuffer.cpp
+        text/StringBuffer.h
+        text/StringBuilder.h
         text/TextReader.cpp
+        text/TextReader.h
 )
 
 set(
         UTIL_SRC
         util/ArgParser.cpp
+        util/ArgParser.h
         util/DateTime.cpp
+        util/DateTime.h
+        util/Endian.h
         util/Exception.cpp
+        util/Exception.h
         util/Initializer.cpp
+        util/Initializer.h
+        util/Memory.h
         util/MemoryViewer.cpp
+        util/MemoryViewer.h
+        util/Noncopyable.h
+        util/NotInstantiable.h
+        util/ObjectPool.h
         util/Random.cpp
+        util/Random.h
+        util/Range.h
+        util/Singleton.h
         util/Test.cpp
+        util/Test.h
         util/Timer.cpp
+        util/Timer.h
         util/TimeSpan.cpp
+        util/TimeSpan.h
         util/TimestampHandler.cpp
+        util/TimestampHandler.h
         util/TimeWheel.cpp
+        util/TimeWheel.h
         util/Util.cpp
+        util/Util.h
         util/Uuid.cpp
+        util/Uuid.h
         util/UuidBuilder.cpp
+        util/UuidBuilder.h
+
 )
 
 set(
         SECURITY_SRC
+        security/evp/Context.h
+        security/evp/MD5Context.h
+        security/evp/SHA1Context.h
+        security/evp/SHA256Context.h
+        security/evp/SHA384Context.h
+        security/evp/SHA512Context.h
         security/MessageDigest.cpp
+        security/MessageDigest.h
         security/SecurityConfig.cpp
+        security/SecurityConfig.h
         security/SecuritySocket.cpp
+        security/SecuritySocket.h
+        security/SecurityTcpServer.h
         security/SSLContext.cpp
+        security/SSLContext.h
         security/SSLContextBuilder.cpp
+        security/SSLContextBuilder.h
+
 )
 
 set(
         PLUGIN_SRC
         plugin/Module.cpp
+        plugin/Module.h
 )
 
 set(
         SERVICE_SRC
+        service/BalanceLoader.h
+        service/Http2Service.h
         service/Http2Service_V1.cpp
+        service/Http2Service_V1.h
         service/HttpConnection_V2.cpp
+        service/HttpConnection_V2.h
+        service/HttpService.h
         service/HttpService_V1.cpp
+        service/HttpService_V1.h
         service/HttpService_V2.cpp
+        service/HttpService_V2.h
         service/iocp/IOBuf.cpp
+        service/iocp/IOBuf.h
+        service/iocp/IOCPServer.h
         service/iocp/IOCPServer_V1.cpp
+        service/iocp/IOCPServer_V1.h
         service/RpcService.cpp
+        service/RpcService.h
         service/SystemBalanceLoader.cpp
+        service/SystemBalanceLoader.h
         service/TcpTransporter.cpp
+        service/TcpTransporter.h
+        service/TimerableService.h
         service/TimerableService_V1.cpp
+        service/TimerableService_V1.h
         service/TimerableService_V2.cpp
+        service/TimerableService_V2.h
         service/UserBalanceLoader.cpp
+        service/UserBalanceLoader.h
         service/WebsocketService.cpp
+        service/WebsocketService.h
 )
 
 add_library(Core
+        ${CONCURRENT_SRC}
         ${RECORD_SRC}
         ${CONVERT_SRC}
         ${IO_SRC}
@@ -184,6 +381,7 @@ add_library(Core
         ${SECURITY_SRC}
         ${PLUGIN_SRC}
         ${SERVICE_SRC}
+        Config.h
 )
 
 option(USE_ASYNC_LOGGER "use async logger" OFF)
@@ -197,6 +395,13 @@ endif ()
 
 target_include_directories(
         Core
+        PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:include>
+)
+
+target_include_directories(
+        Plugin
         PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
         $<INSTALL_INTERFACE:include>
@@ -237,7 +442,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
     if (${MINGW})
         target_compile_options(Core PRIVATE "-fno-exceptions")
-    else()
+    else ()
         target_compile_options(Core PRIVATE "/D_HAS_EXCEPTIONS=0")
     endif ()
 
@@ -299,9 +504,7 @@ target_link_libraries(Core PUBLIC
         OpenSSL::Crypto
         OpenSSL::SSL
         ZLIB::ZLIB
-)
-target_link_libraries(Core PUBLIC
-        Sese::Plugin
+        Plugin
 )
 
 include(GNUInstallDirs)
@@ -313,7 +516,7 @@ configure_package_config_file(
 )
 
 install(
-        TARGETS Core # Core-static
+        TARGETS Core Plugin
         EXPORT SeseTargets
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib

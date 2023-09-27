@@ -1,5 +1,4 @@
 find_package(GTest CONFIG REQUIRED)
-find_package(sese-plugin CONFIG REQUIRED)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -85,7 +84,7 @@ add_test(NAME AllTestInMain COMMAND AllTestInMain)
 
 # Test Plugin
 add_library(Module SHARED TestPlugin/Module.cpp)
-target_link_libraries(Module PUBLIC Sese::Plugin)
+target_link_libraries(Module PUBLIC Plugin)
 set_target_properties(
         Module PROPERTIES
         OUTPUT_NAME "Module"
