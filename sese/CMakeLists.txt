@@ -66,6 +66,7 @@ set(
 
 set(
         IO_SRC
+        io/AbstractByteBuffer.cpp
         io/AbstractByteBuffer.h
         io/AbstractFixedBuffer.cpp
         io/AbstractFixedBuffer.h
@@ -97,7 +98,6 @@ set(
         io/OutputBufferWrapper.cpp
         io/OutputBufferWrapper.h
         io/OutputStream.h
-        io/OutputUtil.cpp
         io/OutputUtil.h
         io/PeekableStream.h
         io/Stream.h
