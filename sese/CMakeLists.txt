@@ -16,6 +16,13 @@ set(CONCURRENT_SRC
         concurrent/LinkedStack.h
 )
 
+set(EVENT_SRC
+        event/BaseEvent.h
+        event/BaseEventConvert.h
+        event/BaseEventLoop.h
+        event/Event.h
+)
+
 set(
         RECORD_SRC
         record/AbstractAppender.cpp
@@ -28,11 +35,13 @@ set(
         record/ConsoleAppender.cpp
         record/ConsoleAppender.h
         record/FileAppender.cpp
+        record/FileAppender.h
         record/Event.h
         record/Logger.cpp
         record/Logger.h
         record/LogHelper.cpp
         record/LogHelper.h
+        record/Marco.h
         record/SimpleFormatter.cpp
         record/SimpleFormatter.h
 )
@@ -368,8 +377,9 @@ set(
 
 add_library(Core
         ${CONCURRENT_SRC}
-        ${RECORD_SRC}
         ${CONVERT_SRC}
+        ${EVENT_SRC}
+        ${RECORD_SRC}
         ${IO_SRC}
         ${THREAD_SRC}
         ${SYSTEM_SRC}
@@ -408,6 +418,7 @@ target_include_directories(
 
 set(NATIVE_PATH "native/${CMAKE_SYSTEM_NAME}")
 target_sources(Core PRIVATE
+        ${NATIVE_PATH}/Config.h
         ${NATIVE_PATH}/config/UniReader.cpp
         ${NATIVE_PATH}/net/ReadableServer.cpp
         ${NATIVE_PATH}/net/Socket.cpp
@@ -432,7 +443,15 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
     target_sources(Core PRIVATE ${DLL_INFO_RC})
-    target_sources(Core PRIVATE ${NATIVE_PATH}/event/WSAEventLoop.cpp ${NATIVE_PATH}/event/WSAEventConvert.cpp ${NATIVE_PATH}/service/iocp/NativeIOCPServer_V1.cpp)
+    target_sources(Core PRIVATE
+            ${NATIVE_PATH}/event/WSAEvent.h
+            ${NATIVE_PATH}/event/WSAEventLoop.cpp
+            ${NATIVE_PATH}/event/WSAEventLoop.h
+            ${NATIVE_PATH}/event/WSAEventConvert.cpp
+            ${NATIVE_PATH}/event/WSAEventConvert.h
+            ${NATIVE_PATH}/service/iocp/NativeIOCPServer_V1.cpp
+            ${NATIVE_PATH}/service/iocp/NativeIOCPServer_V1.h
+    )
 
     if (${MSVC})
         target_compile_options(Core PRIVATE "/utf-8")
@@ -471,7 +490,13 @@ endif ()
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
-    target_sources(Core PRIVATE ${NATIVE_PATH}/event/EpollEventLoop.cpp ${NATIVE_PATH}/event/EpollEventConvert.cpp)
+    target_sources(Core PRIVATE
+            ${NATIVE_PATH}/event/EpollEvent.h
+            ${NATIVE_PATH}/event/EpollEventLoop.cpp
+            ${NATIVE_PATH}/event/EpollEventLoop.h
+            ${NATIVE_PATH}/event/EpollEventConvert.cpp
+            ${NATIVE_PATH}/event/EpollEventConvert.h
+    )
 
     target_compile_options(Plugin PUBLIC "-fPIC")
 
@@ -489,7 +514,11 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
     target_compile_options(Plugin PUBLIC "-fPIC")
 
-    target_sources(Core PRIVATE ${NATIVE_PATH}/event/KqueueEventLoop.cpp)
+    target_sources(Core PRIVATE
+            ${NATIVE_PATH}/event/KqueueEvent.h
+            ${NATIVE_PATH}/event/KqueueEventLoop.cpp
+            ${NATIVE_PATH}/event/KqueueEventLoop.h
+    )
 
     target_compile_options(Core PRIVATE "-fno-exceptions")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
