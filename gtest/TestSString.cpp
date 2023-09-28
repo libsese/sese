@@ -1,3 +1,4 @@
+#include "sese/text/SString.h"
 #include <sese/text/Algorithm.h>
 #include <sese/text/String.h>
 
@@ -137,6 +138,8 @@ TEST(TestSString, WString) {
     auto string = sese::text::String::fromUTF8("你好 こんにちは Hello");
     auto wstring = sese::text::String::fromUCS2LE(L"你好 こんにちは Hello");
     EXPECT_EQ(wstring, string);
+    auto wstr = string.toCWString();
+    EXPECT_EQ(wcscmp(wstr.get(), L"你好 こんにちは Hello"), 0);
 
     auto substr0 = wstring.substring(3);
     auto substr1 = wstring.substring(3, 5);
@@ -179,4 +182,11 @@ TEST(TestSString, Misc) {
     upper.toLower();
     // printf("upper.toLower = %s\n", upper.data());
     EXPECT_EQ(upper, "你好 hello");
+
+    auto oldStr = sese::text::String::fromUTF8("hello");
+    auto chars = oldStr.toChars();
+    auto newStr = sese::text::String::fromSChars(chars.data(), chars.size());
+    newStr.toUpper();
+    EXPECT_TRUE(oldStr.isLower());
+    EXPECT_FALSE(newStr.isLower());
 }

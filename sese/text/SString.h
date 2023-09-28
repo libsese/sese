@@ -107,29 +107,29 @@ namespace sstr {
         /// data 是否为 nullptr
         /// \retval true
         /// \retval false
-        bool null() const;
+        [[nodiscard]] bool null() const;
 
         /// 字符串是否为空
         /// \retval true 字符串为空
         /// \retval false 字符串不为空
-        bool empty() const;
+        [[nodiscard]] bool empty() const;
 
         /// 获取字符串中字符个数
         /// \return 字符个数
-        size_t len() const;
+        [[nodiscard]] size_t len() const;
 
-        virtual/// 获取字符串字节数
+        /// 获取字符串字节数
         /// \return 字符串字节数
-        size_t size() const;
+        [[nodiscard]] virtual size_t size() const;
 
         /// 获取缓冲区指针
         /// \return 缓冲区指针
-        const char *data() const;
+        [[nodiscard]] const char *data() const;
 
         /// 查找字符串，索引单位是字数
         /// \param str 子串
         /// \return 子串位置
-        int32_t find(const SStringView &str) const;
+        [[nodiscard]] int32_t find(const SStringView &str) const;
 
         /// 查找字符串，索引单位是字数
         /// \param u8str 子串
@@ -144,16 +144,16 @@ namespace sstr {
         /// 除去字符串两端空格
         /// \note 注意是空格
         /// \return 处理后对象
-        SString trim() const;
+        [[nodiscard]] SString trim() const;
 
         /// 反转字符串
         /// \return 反转后对象
-        SString reverse() const;
+        [[nodiscard]] SString reverse() const;
 
         /// 尾加字符串
         /// \param str 待尾加字符串
         /// \return 尾加结果字符串
-        SString append(const SStringView &str) const;
+        [[nodiscard]] SString append(const SStringView &str) const;
 
         /// 尾加字符串
         /// \param u8str 待尾加字符串
@@ -163,7 +163,7 @@ namespace sstr {
         /// 切割字符串
         /// \param str 切割标识符
         /// \return 切割结果
-        std::vector<SString> split(const SStringView &str) const;
+        [[nodiscard]] std::vector<SString> split(const SStringView &str) const;
 
         /// 切割字符串
         /// \deprecated 尾加对象的字符串编码必须也是 UTF-8，否则不建议使用
@@ -171,33 +171,33 @@ namespace sstr {
         /// \return 切割结果
         std::vector<SString> split(const char *str) const;
 
-        SString substring(size_t begin) const;
+        [[nodiscard]] SString substring(size_t begin) const;
         /// \brief 截取子串 [begin, begin + len - 1]
         /// \param begin 起始字符索引
         /// \param len 截取长度
         /// \return 子串
-        SString substring(size_t begin, size_t len) const;
+        [[nodiscard]] SString substring(size_t begin, size_t len) const;
 
         /// \brief 字符串是否以某个子串结尾
         /// \param str 匹配子串
         /// \return 结果
-        bool endsWith(const SStringView &str) const;
+        [[nodiscard]] bool endsWith(const SStringView &str) const;
 
         /// 字母是否为全小写
-        bool isLower() const;
+        [[nodiscard]] bool isLower() const;
         /// 字母是否为全大写
-        bool isUpper() const;
+        [[nodiscard]] bool isUpper() const;
 
         /// 创建字母转为全小写的副本
-        SString toLower() const;
+        [[nodiscard]] SString toLower() const;
         /// 创建字母转为全大写的副本
-        SString toUpper() const;
+        [[nodiscard]] SString toUpper() const;
 
-        SChar at(size_t index) const;
-        std::vector<SChar> toChars() const;
-        std::string toString() const;
-        std::wstring toWString() const;
-        std::unique_ptr<wchar_t[]> toCWString() const;
+        [[nodiscard]] SChar at(size_t index) const;
+        [[nodiscard]] std::vector<SChar> toChars() const;
+        [[nodiscard]] std::string toString() const;
+        [[nodiscard]] std::wstring toWString() const;
+        [[nodiscard]] std::unique_ptr<wchar_t[]> toCWString() const;
 
     public:
         SChar operator[](size_t index) const;
@@ -232,10 +232,10 @@ namespace sstr {
     public:
         /// 获取缓存区容量
         /// \return 缓冲区容量
-        size_t cap() const;
+        [[nodiscard]] size_t cap() const;
         /// 获取缓冲区已用大小
         /// \return 缓冲区已用大小
-        size_t size() const override;
+        [[nodiscard]] size_t size() const override;
 
         /// 将字符串转换为全小写的形式
         void toLower();
@@ -245,9 +245,6 @@ namespace sstr {
         /// \brief 获取 data 指针
         /// \deprecated 通常不应该使用该函数
         char *data();
-        /// \brief 更新 size 属性
-        /// \deprecated 通常不应该使用该函数
-        void update();
 
     public:
         void operator+=(const SStringView &str);

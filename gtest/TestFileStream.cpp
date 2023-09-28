@@ -24,3 +24,14 @@ TEST(TestFileStream, Seek) {
     ASSERT_EQ(std::string_view(buffer), std::string_view("Hello, World"));
     file->close();
 }
+
+TEST(TestFileStream, Peek) {
+    std::string expect = "Hello";
+    auto file = sese::io::File::create(PROJECT_PATH "/gtest/Data/data-0.txt", TEXT_READ_EXISTED);
+    ASSERT_NE(file, nullptr);
+    char buffer[6]{};
+    file->peek(buffer, 5);
+    EXPECT_EQ(buffer, expect);
+    auto l = file->trunc(5);
+    EXPECT_EQ(l, 5);
+}

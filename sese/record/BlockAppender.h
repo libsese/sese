@@ -26,7 +26,11 @@ namespace sese::record {
 
         void dump(const char *buffer, size_t size) noexcept override;
 
+#if defined(SESE_BUILD_TEST)
+    public:
+#else
     private:
+#endif
         size_t size = 0;
         std::mutex mutex;
         size_t maxSize = 0;

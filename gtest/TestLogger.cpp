@@ -12,11 +12,14 @@ TEST(TestLogger, BlockAppender) {
     sese::record::LogHelper log;
 
     auto appender = std::make_shared<sese::record::BlockAppender>(1 * 1024 * 20, sese::record::Level::INFO);
+    appender->size = appender->maxSize - 128;
     sese::record::Logger::addGlobalLoggerAppender(appender);
 
     log.debug("no display");
+    log.info("No.%d log message", 0);
+    std::this_thread::sleep_for(100ms);
 
-    for (auto i = 0; i < 640; i++) {
+    for (auto i = 1; i < 640; i++) {
         log.info("No.%d log message", i);
     }
 

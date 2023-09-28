@@ -96,7 +96,7 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
             if (count == 1) {
                 builder.append(std::to_string(dateTime.getMonths() + 1));// GCOVR_EXCL_LINE
             } else if (count == 2) {
-                if (dateTime.getMinutes() < 10) {
+                if (dateTime.getMonths() < 10) {
                     builder.append('0');// GCOVR_EXCL_LINE
                 }
                 builder.append(std::to_string(dateTime.getMonths() + 1));// GCOVR_EXCL_LINE

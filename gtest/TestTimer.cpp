@@ -29,6 +29,7 @@ void TestTimer() {
 void TestTimeWheel() {
     sese::TimeWheel timer;
     timer.delay(foo, 2);
+    timer.delay(foo, 10);
     auto task = timer.delay(bar, 1, true);
     sese::sleep(3);
     SESE_DEBUG("checking");

@@ -5,12 +5,14 @@
 /// \brief 包含 SStringBuilder
 
 #pragma once
+
+#include <sese/Config.h>
 #include <sese/text/SString.h>
 
 namespace sstr {
 
     /// SString 构造器
-    class API SStringBuilder final {
+    class API SESE_DEPRECATED_WITH("please use sese::text::StringBuilder") SStringBuilder final {
         // 构造相关
     public:
         SStringBuilder(const SStringBuilder &builder);
@@ -20,12 +22,12 @@ namespace sstr {
 
         // 基础功能
     public:
-        const uint32_t *data() const;
-        size_t size() const;
-        size_t cap() const;
+        [[nodiscard]] const uint32_t *data() const;
+        [[nodiscard]] size_t size() const;
+        [[nodiscard]] size_t cap() const;
 
-        bool null() const;
-        bool emtpy() const;
+        [[nodiscard]] bool null() const;
+        [[nodiscard]] bool emtpy() const;
         /// 扩容
         /// \param size 扩容大小，单位为 4 bytes
         /// \return 操作是否成功
@@ -33,7 +35,7 @@ namespace sstr {
         void trim();
         void reverse();
         int32_t find(const char *str) const;
-        int32_t find(const SStringView &str) const;
+        [[nodiscard]] int32_t find(const SStringView &str) const;
         void append(const char *str);
         void append(const SStringView &str);
         
@@ -43,7 +45,7 @@ namespace sstr {
 
         void clear();
 
-        SChar at(size_t index) const;
+        [[nodiscard]] SChar at(size_t index) const;
         void set(size_t index, SChar ch);
         void remove(size_t index);
         void remove(size_t begin, size_t len);
@@ -55,7 +57,7 @@ namespace sstr {
         void replace(size_t begin, size_t len, const char *str);
         void replace(size_t begin, size_t len, const SStringView &str);
     
-        SString toString() const;
+        [[nodiscard]] SString toString() const;
 
     private:
         /// 数据指针

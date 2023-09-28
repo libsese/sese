@@ -42,6 +42,9 @@ TEST(TestUuid, UUID) {
     sese::TimestampHandler timestampHandler(std::chrono::system_clock::now());
 
     auto uuid0 = sese::Uuid(selfId, timestampHandler.getCurrentTimestamp(), 0x45);
+    uuid0.setSelfId(selfId);
+    uuid0.setR(0x45);
+
     auto number = uuid0.toNumber();
 
     auto uuid1 = sese::Uuid();

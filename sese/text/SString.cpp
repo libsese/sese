@@ -225,10 +225,6 @@ char *sstr::SString::data() {
     return _data;
 }
 
-void sstr::SString::update() {
-    _size = strlen(_data);
-}
-
 sstr::SString::~SString() noexcept {
     if (_data) {
         free(_data);

@@ -99,6 +99,8 @@ namespace sese {
 
 }// namespace sese
 
+// GCOVR_EXCL_START
+
 template<class ReturnType>
 std::shared_future<ReturnType> sese::ThreadPool::postTask(const std::function<ReturnType()> &task) {
     /**
@@ -117,3 +119,5 @@ std::shared_future<ReturnType> sese::ThreadPool::postTask(const std::function<Re
 
     return future;
 }
+
+// GCOVR_EXCL_STOP

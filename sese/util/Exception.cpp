@@ -9,18 +9,13 @@ int sese::Exception::WILL_SKIP_OFFSET = 1;
 int sese::Exception::WILL_SKIP_OFFSET = 2;
 #endif
 
-sese::Exception::Exception()
-    : NativeException() {
-    stackInfo = new system::StackInfo(8, sese::system::StackInfo::WILL_SKIP + WILL_SKIP_OFFSET);
-}
-
-sese::Exception::Exception(const char * message)
+sese::Exception::Exception(const char *message)
     : NativeException(message) {
     stackInfo = new system::StackInfo(8, sese::system::StackInfo::WILL_SKIP + WILL_SKIP_OFFSET);
 }
 
 sese::Exception::~Exception() {
-    delete stackInfo;
+    delete stackInfo;// GCOVR_EXCL_LINE
 }
 
 std::string sese::Exception::buildStacktrace() {

@@ -8,6 +8,8 @@ using sstr::SChar;
 using sstr::SString;
 using sstr::SStringBuilder;
 
+// GCOVR_EXCL_START
+
 SStringBuilder::SStringBuilder(const SStringBuilder &builder) {
     _cap = builder._cap;
     _size = builder._size;
@@ -321,3 +323,5 @@ void SStringBuilder::replace(size_t begin, size_t len, const SStringView &str) {
     }
     _size = newSize;
 }
+
+// GCOVR_EXCL_STOP

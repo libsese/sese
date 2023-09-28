@@ -26,8 +26,6 @@ namespace sese {
     /// Unix 异常包装类
     class UnixException : public std::exception {
     public:
-        UnixException() = default;
-
         explicit UnixException(const char *message) : std::exception(), msg(message) {
         }
 
@@ -45,8 +43,6 @@ namespace sese {
     /// 异常类
     class API Exception : public NativeException {
     public:
-        Exception();
-
         explicit Exception(const char *message);
 
         ~Exception() override;

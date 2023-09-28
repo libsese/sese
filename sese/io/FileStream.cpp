@@ -1,4 +1,5 @@
 #include "sese/io/FileStream.h"
+#include <cstdio>
 
 #ifdef _WIN32
 #define fseek _fseeki64
@@ -92,5 +93,7 @@ int64_t FileStream::peek(void *buffer, size_t length) {
 }
 
 int64_t FileStream::trunc(size_t length) {
-    return this->setSeek((int) length, SEEK_CUR);
+    auto oldPos = ::ftello64(file);
+    this->setSeek((int) length, SEEK_CUR);
+    return ::ftello64(file) - oldPos;
 }
