@@ -1,8 +1,13 @@
 #include "sese/io/FileStream.h"
 #include <cstdio>
 
-#ifdef _WIN32
+#if defined(SESE_PLATFORM_WINDOWS)
 #define fseek _fseeki64
+#define ftell _ftelli64
+#elif defined(SESE_PLATFORM_LINUX)
+#define ftell ftello64
+#elif defined(SESE_PLATFORM_APPLE)
+#define ftell ftello
 #endif
 
 using sese::io::FileStream;
@@ -33,11 +38,11 @@ void FileStream::close() {
 }
 
 int64_t FileStream::getSeek() {
-    return ::ftell(file);
+    return ftell(file);
 }
 
 int32_t FileStream::setSeek(int64_t offset, int32_t whence) {
-    return ::fseek(file, offset, whence);
+    return fseek(file, offset, whence);
 }
 
 int32_t FileStream::flush() {
@@ -93,7 +98,7 @@ int64_t FileStream::peek(void *buffer, size_t length) {
 }
 
 int64_t FileStream::trunc(size_t length) {
-    auto oldPos = ::ftello64(file);
+    auto oldPos = ftell(file);
     this->setSeek((int) length, SEEK_CUR);
-    return ::ftello64(file) - oldPos;
+    return ftell(file) - oldPos;
 }
