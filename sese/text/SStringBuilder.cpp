@@ -1,3 +1,13 @@
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #include <sese/text/SStringBuilder.h>
 #include <sese/text/Algorithm.h>
 #include <cstring>
@@ -325,3 +335,9 @@ void SStringBuilder::replace(size_t begin, size_t len, const SStringView &str) {
 }
 
 // GCOVR_EXCL_STOP
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif

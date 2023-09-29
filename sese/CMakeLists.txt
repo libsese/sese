@@ -294,6 +294,8 @@ set(
         util/Random.h
         util/Range.h
         util/Singleton.h
+        util/StopWatch.cpp
+        util/StopWatch.h
         util/Test.cpp
         util/Test.h
         util/Timer.cpp
@@ -455,6 +457,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
     if (${MSVC})
         target_compile_options(Core PRIVATE "/utf-8")
+        target_compile_options(Plugin PRIVATE "/utf-8")
     endif ()
     target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
 

@@ -30,15 +30,23 @@ namespace sese {
     public:
         using Ptr = std::unique_ptr<DateTime>;
 
-        static DateTime now(int32_t utc = TIME_DEFAULT_ZONE) noexcept;
+        /**
+         * @brief 日期创建策略
+         */
+        enum class Policy {
+            /// 仅仅创建时间戳而不解析为人类可阅读的时间格式
+            ONLY_CREATE,
+            /// 创建时间戳的同时解析成可阅读的格式
+            FORMAT
+        };
 
-        static DateTime::Ptr nowPtr(int32_t utc = TIME_DEFAULT_ZONE) noexcept;
+        static DateTime now(int32_t utc = TIME_DEFAULT_ZONE, Policy policy = Policy::FORMAT) noexcept;
+
+        static DateTime::Ptr nowPtr(int32_t utc = TIME_DEFAULT_ZONE, Policy policy = Policy::FORMAT) noexcept;
 
         explicit DateTime() noexcept = default;
 
-        explicit DateTime(uint64_t timestamp, int32_t utc = TIME_DEFAULT_ZONE) noexcept;
-
-        // DateTime(int64_t timestamp, int64_t u_sec, int32_t utc = TIME_DEFAULT_ZONE) noexcept;
+        explicit DateTime(uint64_t timestamp, int32_t utc = TIME_DEFAULT_ZONE, Policy policy = Policy::FORMAT) noexcept;
 
     public:
         [[nodiscard]] bool isLeapYear() const noexcept { return this->isLeap; }
