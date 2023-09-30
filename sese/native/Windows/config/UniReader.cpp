@@ -13,7 +13,8 @@ sese::UniReader::~UniReader() {
 
 std::string sese::UniReader::readLine() {
     std::wstring str = reader->readLine();
-    return sese::EncodingConverter::toString(str);
+    // return sese::EncodingConverter::toString(str);
+    return convert.to_bytes(str);
 }
 
 std::shared_ptr<sese::UniReader> sese::UniReader::create(const std::string &fileName) noexcept {

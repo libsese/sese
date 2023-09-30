@@ -4,7 +4,9 @@
  * @date 2022年4月15日
  * @brief 字符串编码转换
  */
+
 #pragma once
+
 #include "sese/Config.h"
 #include "sese/util/NotInstantiable.h"
 #include "sese/util/Initializer.h"
@@ -19,7 +21,7 @@ namespace sese {
     /**
      * @brief 字符串编码转换
      */
-    class API EncodingConverter : NotInstantiable {
+    class API SESE_DEPRECATED EncodingConverter : public NotInstantiable {
     public:
         static std::string toString(const std::wstring &wstring) noexcept;
         static std::wstring toWstring(const std::string &string) noexcept;

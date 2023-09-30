@@ -6,8 +6,13 @@
  */
 
 #pragma once
+
 #include "sese/io/BaseStreamReader.h"
 #include "sese/io/FileStream.h"
+
+#ifdef SESE_PLATFORM_WINDOWS
+#include <codecvt>
+#endif
 
 namespace sese {
 
@@ -38,7 +43,8 @@ namespace sese {
         UniReader() = default;
 
         io::FileStream::Ptr fileStream;
-#ifdef _WIN32
+#ifdef SESE_PLATFORM_WINDOWS
+        std::wstring_convert<std::codecvt_utf8<wchar_t>> convert;
         io::WStreamReader::Ptr reader;
 #else
         io::StreamReader::Ptr reader;
