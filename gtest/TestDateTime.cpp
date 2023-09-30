@@ -1,5 +1,6 @@
 #include "sese/util/DateTime.h"
 #include "sese/record/LogHelper.h"
+#include "sese/record/Marco.h"
 #include "sese/text/DateTimeFormatter.h"
 #include "gtest/gtest.h"
 
@@ -145,7 +146,7 @@ TEST(TestDateTime, Format_1) {
 }
 
 TEST(TestDateTime, Format_2) {
-    auto time = sese::DateTime(61613971114514,0);
+    auto time = sese::DateTime(61613971114514, 0);
 
     auto str1 = sese::text::DateTimeFormatter::format(time, "y-M-d h:m:s.f.fff t z");
     sese::record::LogHelper::i(str1.c_str());
@@ -174,4 +175,24 @@ TEST(TestDateTime, Format_3) {
 
     auto str4 = sese::text::DateTimeFormatter::format(time, "yyyy-MMMM-dd dddd HH:mm:ss %");
     sese::record::LogHelper::i(str4.c_str());
+}
+
+TEST(TestTimeSpan, Total) {
+    auto time = sese::TimeSpan(1, 16, 30, 5, 100, 300);
+    SESE_INFO("total days %f", time.getTotalDays());
+    SESE_INFO("total hours %f", time.getTotalHours());
+    SESE_INFO("total minutes %f", time.getTotalMinutes());
+    SESE_INFO("total seconds %f", time.getTotalSeconds());
+    SESE_INFO("total milliseconds %f", time.getTotalMilliseconds());
+    SESE_INFO("total microseconds %" PRIu64, time.getTotalMicroseconds());
+}
+
+TEST(TestTimeSpan, Part) {
+    auto time = sese::TimeSpan(1, 25, 30, 5, 10010, 3005);
+    SESE_INFO("days %" PRId32, time.getDays());
+    SESE_INFO("hours %" PRId32, time.getHours());
+    SESE_INFO("minutes %" PRId32, time.getMinutes());
+    SESE_INFO("seconds %" PRId32, time.getSeconds());
+    SESE_INFO("milliseconds %" PRId32, time.getMilliseconds());
+    SESE_INFO("microseconds %" PRId32, time.getMicroseconds());
 }
