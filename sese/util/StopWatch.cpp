@@ -10,3 +10,7 @@ sese::TimeSpan sese::StopWatch::stop() {
     lastStopTime = now;
     return result;
 }
+
+void sese::StopWatch::reset() {
+    lastStopTime = sese::DateTime::now(0, DateTime::Policy::ONLY_CREATE);
+}

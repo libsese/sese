@@ -23,6 +23,11 @@ namespace sese {
          */
         TimeSpan stop();
 
+        /**
+         * 重置停表
+         */
+        void reset();
+
     protected:
         DateTime lastStopTime;
     };

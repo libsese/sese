@@ -67,6 +67,7 @@ add_executable(
         TestSSL.cpp
         TestSString.cpp
         TestStackInfo.cpp
+        TestStopWatch.cpp
         TestStream.cpp
         TestStringBuilder.cpp
         TestThread.cpp
