@@ -1,13 +1,15 @@
 #include <sese/text/Algorithm.h>
 #include <sese/text/SString.h>
+
 #include <cstring>
 #include <vector>
+
 #ifdef _WIN32
 #pragma warning(disable : 4267)
 #endif
 
 static std::vector<int> getNext(const char *str) {
-    auto len = strlen(str);
+    auto len = std::strlen(str);
     std::vector<int> next(len, 0);
     for (int i = 1; i < len; i++) {
         int k = next[i - 1];
@@ -27,14 +29,14 @@ int sstr::KMP(const char *str, const char *sub) {
 
     int k = 0;
     int res = -1;
-    for (int i = 0; i < (int) strlen(str); i++) {
+    for (int i = 0; i < (int) std::strlen(str); i++) {
         while (k > 0 && str[i] != sub[k]) {
             k = next[k - 1];
         }
         if (str[i] == sub[k]) {
             k++;
         }
-        if (k == (int) strlen(sub)) {
+        if (k == (int) std::strlen(sub)) {
             res = i - k + 1;
             k = next[k - 1];
         }
@@ -43,7 +45,7 @@ int sstr::KMP(const char *str, const char *sub) {
 }
 
 static int dist(const char *t, char ch) {
-    auto len = strlen(t);
+    auto len = std::strlen(t);
     int i = len - 1;
     if (ch == t[i])
         return len;
@@ -59,8 +61,8 @@ static int dist(const char *t, char ch) {
 
 
 int sstr::BM(const char *str, const char *sub) {
-    auto n = strlen(str);
-    auto m = strlen(sub);
+    auto n = std::strlen(str);
+    auto m = std::strlen(sub);
     int i = m - 1;
     int j = m - 1;
     while (j >= 0 && i < n) {
@@ -78,20 +80,20 @@ int sstr::BM(const char *str, const char *sub) {
     return -1;
 }
 
-size_t strlen(const uint32_t *str) {    
-    const uint32_t *p = str;
-    size_t size = 0;
-    while(true) {
-        if (0 != *p) {
-            size++;
-            p++;
-        } else {
-            break;
-        }
-    }
-
-    return size;
-}
+// size_t strlen(const uint32_t *str) {
+//     const uint32_t *p = str;
+//     size_t size = 0;
+//     while(true) {
+//         if (0 != *p) {
+//             size++;
+//             p++;
+//         } else {
+//             break;
+//         }
+//     }
+//
+//     return size;
+// }
 
 static int dist(std::vector<sstr::SChar> &t, uint32_t ch) {
     auto len = t.size();

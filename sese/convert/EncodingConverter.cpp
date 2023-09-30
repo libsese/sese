@@ -2,6 +2,8 @@
 #include <codecvt>
 #include <locale>
 
+// GCOVR_EXCL_START
+
 static std::wstring_convert<std::codecvt_utf8<wchar_t>> *convert; /* NOLINT */
 
 std::string sese::EncodingConverter::toString(const std::wstring &wstring) noexcept {
@@ -18,6 +20,8 @@ int32_t sese::EncodingConverterInitiateTask::init() noexcept {
 }
 
 int32_t sese::EncodingConverterInitiateTask::destroy() noexcept {
-    delete convert;// GCOVR_EXCL_LINE
+    delete convert;
     return 0;
 }
+
+// GCOVR_EXCL_STOP

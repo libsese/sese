@@ -26,6 +26,7 @@ add_executable(
         TestByteBuilder.cpp
         TestCompressor.cpp
         TestConfig.cpp
+        TestCookies.cpp
         TestCSVUtil.cpp
         TestDateTime.cpp
         TestDNS.cpp

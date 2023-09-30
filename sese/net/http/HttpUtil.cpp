@@ -340,9 +340,9 @@ Cookie::Ptr HttpUtil::parseFromSetCookie(const std::string &text) noexcept {
                 } else if (COMPARE(one.substr(0, index), "expires")) {
                     cookie->setExpires(text::DateTimeFormatter::parseFromGreenwich(one.substr(index + 1)));
                 } else if (COMPARE(one.substr(0, index), "path")) {
-                    cookie->setPath(one.substr(0, index));
+                    cookie->setPath(one.substr(index + 1));
                 } else if (COMPARE(one.substr(0, index), "domain")) {
-                    cookie->setDomain(one.substr(0, index));
+                    cookie->setDomain(one.substr(index + 1));
                 }
             } else {
                 // 属性

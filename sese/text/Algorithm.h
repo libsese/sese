@@ -23,6 +23,8 @@ namespace sstr {
 
     extern int NORMAL(const char *str, const char *sub);
 
+    // GCOVR_EXCL_START
+
     /// 对目标缓存的元素左移
     /// \warning 使用时务必判断数组是否可能越界
     /// \tparam T 元素类型
@@ -50,5 +52,7 @@ namespace sstr {
             header[len - 1 + count - i] = header[len - 1 - i];
         }
     }
+
+    // GCOVR_EXCL_STOP
 
 }// namespace sstr
