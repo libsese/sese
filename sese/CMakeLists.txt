@@ -292,6 +292,8 @@ set(
         util/ObjectPool.h
         util/Random.cpp
         util/Random.h
+        util/RandomUtil.cpp
+        util/RandomUtil.h
         util/Range.h
         util/Singleton.h
         util/StopWatch.cpp

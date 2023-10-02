@@ -42,7 +42,7 @@ namespace sese {
 
 }// namespace sese
 
-sese::Random::Random(const std::string &token) {
+sese::Random::Random([[maybe_unused]] const std::string &token) {
     this->_seed = Random::noise();
 }
 
@@ -54,7 +54,7 @@ sese::Random::ResultType sese::Random::max() {
     return UINT64_MAX;
 }
 
-double sese::Random::entropy() const { // NOLINT
+double sese::Random::entropy() const {// NOLINT
     return 64;
 }
 
