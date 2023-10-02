@@ -35,23 +35,26 @@ ReturnValue sese::RandomUtil::next() {
 template<class ReturnValue>
 ReturnValue sese::RandomUtil::next(ReturnValue min, ReturnValue max) {
     auto _min = std::min<ReturnValue>(min, max);
-    auto range = std::abs(max - min);
-    auto tmp = static_cast<ReturnValue>(dev());
-    return (tmp % range) + _min;
+    auto _max = std::max<ReturnValue>(min, max);
+    auto range = _max - _min;
+    auto tmp = dev();
+    return static_cast<ReturnValue>(tmp % range) + _min;
 }
 
 template<>
-float sese::RandomUtil::next() {
-    return static_cast<float>(dev()) / static_cast<float>(sese::Random::max());
+inline float sese::RandomUtil::next() {
+    auto pos = next<uint32_t>(0, UINT32_MAX);
+    return static_cast<float>(pos) / static_cast<float>(UINT32_MAX);
 }
 
 template<>
-double sese::RandomUtil::next() {
-    return static_cast<double>(dev()) / static_cast<double>(sese::Random::max());
+inline double sese::RandomUtil::next() {
+    auto pos = next<uint32_t>(0, UINT32_MAX);
+    return static_cast<double>(pos) / static_cast<double>(UINT32_MAX);
 }
 
 template<>
-float sese::RandomUtil::next(float min, float max) {
+inline float sese::RandomUtil::next(float min, float max) {
     auto _min = std::min<float>(min, max);
     auto range = std::abs(max - min);
     auto tmp = next<float>();
@@ -59,7 +62,7 @@ float sese::RandomUtil::next(float min, float max) {
 }
 
 template<>
-double sese::RandomUtil::next(double min, double max) {
+inline double sese::RandomUtil::next(double min, double max) {
     auto _min = std::min<double>(min, max);
     auto range = std::abs(max - min);
     auto tmp = next<double>();
