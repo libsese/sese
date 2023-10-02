@@ -11,12 +11,12 @@ using sese::io::InputBufferWrapper;
 const char *sese::net::ws::WebsocketAuthenticator::APPEND_STRING = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 
 void sese::net::ws::WebsocketAuthenticator::generateKey(uint8_t *key) {
-    uint64_t r = sese::Random::next();
+    uint64_t r = static_cast<decltype(r)>(sese::Random()());
     auto p = (uint8_t *) &r;
     for (int i = 0; i < 8; ++i) {
         key[i] = *(p + i);
     }
-    r = sese::Random::next();
+    r = static_cast<decltype(r)>(sese::Random()());
     for (int i = 0; i < 8; ++i) {
         key[i + 8] = *(p + i);
     }

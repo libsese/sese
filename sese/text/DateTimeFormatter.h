@@ -17,7 +17,7 @@ namespace sese::text {
      时间格式通配符
      d    一个月中的某天(1-31)
      dd   一个月中的某天(01-31)
-     ddd  一周某天的缩写(MonDays)
+     ddd  一周某天的缩写(Mon)
      dddd 一周某天的全称(Monday)
      m    分钟(0-59)
      mm   分钟(00-59)

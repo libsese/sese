@@ -21,7 +21,7 @@ int main() {
         helper.info("create success");
     }
 
-    auto random = (int64_t) sese::Random::next();
+    auto random = (int64_t) sese::Random()();
     helper.info("select random number: %lld", random);
     auto buffer = mem->getBuffer();
     auto pInt = (int64_t *) buffer;

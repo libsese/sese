@@ -41,7 +41,7 @@ TEST(TestSSL, Client) {
 }
 
 TEST(TestSSL, Server) {
-    auto port = (sese::Random::next() % (65535 - 1024)) + 1024;
+    auto port = sese::net::createRandomPort();
     auto address = sese::net::IPv4Address::localhost((uint16_t)port);
     auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
     servCtx->importCertFile(PROJECT_PATH "/gtest/Data/test-ca.crt");

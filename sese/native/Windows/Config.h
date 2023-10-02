@@ -14,8 +14,15 @@
 #define WINVER 0x0602
 #endif
 
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 #include <winsock2.h>
 #include <windows.h>
+
+#undef min
+#undef max
 
 #pragma warning(disable : 4819)
 

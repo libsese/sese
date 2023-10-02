@@ -27,7 +27,7 @@ GTEST_TEST(TestSocket, Client) {
 }
 
 GTEST_TEST(TestSocket, Server) {
-    auto port = (sese::Random::next() % (65535 - 1024)) + 1024;
+    auto port = sese::net::createRandomPort();
     auto address = sese::net::IPv4Address::localhost((uint16_t) port);
     auto server = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP, IPPROTO_IP);
     ASSERT_EQ(server.bind(address), 0);
@@ -66,7 +66,7 @@ GTEST_TEST(TestSocket, Server) {
 }
 
 GTEST_TEST(TestSocket, Server_IPv6) {
-    auto port = (sese::Random::next() % (65535 - 1024)) + 1024;
+    auto port = sese::net::createRandomPort();
     auto address = sese::net::IPv6Address::localhost((uint16_t) port);
     auto server = sese::net::Socket(sese::net::Socket::Family::IPv6, sese::net::Socket::Type::TCP, IPPROTO_IP);
     ASSERT_EQ(server.bind(address), 0);
@@ -106,7 +106,7 @@ GTEST_TEST(TestSocket, Server_IPv6) {
 }
 
 GTEST_TEST(TestSocket, Server_UDP) {
-    auto port = (sese::Random::next() % (65535 - 1024)) + 1024;
+    auto port = sese::net::createRandomPort();
     auto address = sese::net::IPv4Address::localhost((uint16_t) port);
     auto server = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::UDP, IPPROTO_IP);
     ASSERT_EQ(server.bind(address), 0);
@@ -134,7 +134,7 @@ GTEST_TEST(TestSocket, Server_UDP) {
 }
 
 GTEST_TEST(TestSocket, NativeAPI) {
-    auto port = (uint16_t) (sese::Random::next() % (65535 - 1024)) + 1024;
+    auto port = sese::net::createRandomPort();
 
     sockaddr_in address{};
     address.sin_family = AF_INET;

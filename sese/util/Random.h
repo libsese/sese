@@ -9,41 +9,31 @@
 #include "sese/Config.h"
 #include "sese/util/Noncopyable.h"
 
-#ifdef WIN32
-#undef max
-#undef min
-#endif
-
 namespace sese {
     /**
      * @brief 基于线性同余发生器的随机类
      */
     class API Random : public Noncopyable {
-    private:
-        static const uint64_t multiplier;
-        static const uint64_t addend;
-        static const uint64_t mask;
-        static uint64_t seed;
-
-    public:
-        static uint64_t next() noexcept;
-
-    private:
-        static uint64_t noise() noexcept;
-
         // for std::random_device
     public:
+        using ResultType = uint64_t;
+
         explicit Random(const std::string &token = "");
 
         // properties
-        static uint64_t min();
-        static uint64_t max();
+        static ResultType min();
+        static ResultType max();
         [[nodiscard]] double entropy() const;
 
         // generate
-        uint64_t operator()();
+        ResultType operator()();
 
     private:
-        uint64_t _seed;
+        ResultType _seed;
+
+        static const ResultType multiplier;
+        static const ResultType addend;
+        static const ResultType mask;
+        static ResultType noise() noexcept;
     };
 }// namespace sese

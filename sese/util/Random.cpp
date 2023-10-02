@@ -6,24 +6,17 @@
 
 namespace sese {
 
-    const uint64_t Random::multiplier = 25214903917L;
-    const uint64_t Random::addend = 11L;
-    const uint64_t Random::mask = (1LL << 48) - 1;
-    uint64_t Random::seed = Random::noise();
+    const Random::ResultType Random::multiplier = 25214903917L;
+    const Random::ResultType Random::addend = 11L;
+    const Random::ResultType Random::mask = (1LL << 48) - 1;
 
     /**
      * @brief 数据分割用结构体
      */
     struct LongLongSplitter {
         uint32_t low;
-        uint32_t high; // NOLINT
+        [[maybe_unused]] uint32_t high;
     };
-
-    uint64_t Random::next() noexcept {
-        auto unit = (LongLongSplitter *) &seed;
-        seed = (unit->low * multiplier + addend) & mask;
-        return seed ^ Random::noise();
-    }
 
     uint64_t Random::noise() noexcept {
 #ifdef SESE_ARCH_X64
@@ -53,11 +46,11 @@ sese::Random::Random(const std::string &token) {
     this->_seed = Random::noise();
 }
 
-uint64_t sese::Random::min() {
+sese::Random::ResultType sese::Random::min() {
     return 0;
 }
 
-uint64_t sese::Random::max() {
+sese::Random::ResultType sese::Random::max() {
     return UINT64_MAX;
 }
 
@@ -65,7 +58,7 @@ double sese::Random::entropy() const { // NOLINT
     return 64;
 }
 
-uint64_t sese::Random::operator()() {
+sese::Random::ResultType sese::Random::operator()() {
     auto unit = (LongLongSplitter *) &_seed;
     _seed = (unit->low * multiplier + addend) & mask;
     return _seed ^ Random::noise();
