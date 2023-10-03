@@ -16,13 +16,27 @@ namespace sese {
     /// 随机工具类
     class RandomUtil {
     public:
+        static const int REQUIRED_UPPER_LETTER = 1;
+        static const int REQUIRED_LOWER_LETTER = 2;
+        static const int REQUIRED_DIGIT = 4;
+        static const int REQUIRED_SYMBOL = 8;
+
+        static std::string UPPER_LETTER_LIST;
+        static std::string LOWER_LETTER_LIST;
+        static std::string DIGIT_LIST;
+        static std::string SYMBOL_LIST;
+
         template<class ReturnValue>
         static ReturnValue next();
 
         template<class ReturnValue>
         static ReturnValue next(ReturnValue min, ReturnValue max);
 
+        static std::string nextString(size_t length, int required);
+
     private:
+        static std::string nextString(size_t length, bool upper, bool lower, bool digit, bool symbol);
+
         static Random dev;
     };
 }// namespace sese

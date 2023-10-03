@@ -62,3 +62,34 @@ TEST(TestRandomUtil, Double) {
     SESE_INFO("random double: %f", d2);
     EXPECT_TRUE(d2 >= 114.514f && d2 <= 191.810f);
 }
+
+TEST(TestRandomUtil, String_1) {
+    using sese::RandomUtil;
+    size_t len = 11;
+    auto str = sese::RandomUtil::nextString(len, RandomUtil::REQUIRED_DIGIT | RandomUtil::REQUIRED_LOWER_LETTER);
+    SESE_INFO("random string: %s", str.c_str());
+    EXPECT_EQ(str.length(), len);
+}
+
+TEST(TestRandomUtil, String_2) {
+    using sese::RandomUtil;
+    size_t len = 17;
+    auto str = sese::RandomUtil::nextString(len, RandomUtil::REQUIRED_DIGIT | RandomUtil::REQUIRED_UPPER_LETTER | RandomUtil::REQUIRED_SYMBOL);
+    SESE_INFO("random string: %s", str.c_str());
+    EXPECT_EQ(str.length(), len);
+}
+
+TEST(TestRandomUtil, String_3) {
+    using sese::RandomUtil;
+    size_t len = 23;
+    auto str = sese::RandomUtil::nextString(len, RandomUtil::REQUIRED_DIGIT | RandomUtil::REQUIRED_UPPER_LETTER | RandomUtil::REQUIRED_LOWER_LETTER | RandomUtil::REQUIRED_SYMBOL);
+    SESE_INFO("random string: %s", str.c_str());
+    EXPECT_EQ(str.length(), len);
+}
+
+TEST(TestRandomUtil, String_Empty) {
+    using sese::RandomUtil;
+    size_t len = 23;
+    auto str = sese::RandomUtil::nextString(len, 0);
+    EXPECT_TRUE(str.empty());
+}
