@@ -96,12 +96,8 @@ std::string sese::net::getNetworkErrorString(int error) noexcept {
 
 #endif
 
-#include <sese/util/Random.h>
-#include <random>
+#include <sese/util/RandomUtil.h>
 
 uint16_t sese::net::createRandomPort() noexcept {
-    sese::Random dev;
-    auto engine = std::default_random_engine(static_cast<unsigned int>(dev()));
-    std::uniform_int_distribution<uint16_t> dis(1025, 65535);
-    return dis(engine);
+    return sese::RandomUtil::next<uint16_t>(1025, 65535);
 }

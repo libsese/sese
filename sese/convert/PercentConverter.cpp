@@ -67,7 +67,7 @@ char inline getHexChar(char ch) {
     } else if (ch >= '0' && ch <= '9') {
         return ch - 48;
     } else {
-        return -1;
+        return static_cast<char>(-1);
     }
 }
 
@@ -84,11 +84,11 @@ bool PercentConverter::decode(const char *src, OutputStream *dest) {
     while (*p != 0) {
         if (*p == '%') {
             ch1 = getHexChar(p[1]);
-            if (ch1 == -1) {
+            if (ch1 == static_cast<char>(-1)) {
                 return false;
             }
             ch2 = getHexChar(p[2]);
-            if (ch2 == -1) {
+            if (ch2 == static_cast<char>(-1)) {
                 return false;
             }
             decodeChar = ch1 * 0x10 + ch2;
