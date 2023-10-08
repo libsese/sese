@@ -4,6 +4,7 @@
 #if defined(SESE_PLATFORM_WINDOWS)
 #define fseek _fseeki64
 #define ftell _ftelli64
+#define fileno _fileno
 #elif defined(SESE_PLATFORM_LINUX)
 #define ftell ftello64
 #elif defined(SESE_PLATFORM_APPLE)
@@ -101,4 +102,8 @@ int64_t FileStream::trunc(size_t length) {
     auto oldPos = ftell(file);
     this->setSeek((int) length, SEEK_CUR);
     return ftell(file) - oldPos;
+}
+
+int32_t FileStream::getFd() const {
+    return fileno(file);
 }

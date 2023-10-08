@@ -47,7 +47,7 @@ namespace sese::io {
         /// \retval nullptr 打开失败
         /// \retval 文件流对象
         static FileStream::Ptr create(const std::string &fileName, const char *mode) noexcept;
-        ~FileStream() = default;
+        ~FileStream() override = default;
 
         int64_t read(void *buffer, size_t length) override;
         int64_t write(const void *buffer, size_t length) override;
@@ -61,6 +61,8 @@ namespace sese::io {
         int32_t setSeek(int64_t offset, int32_t whence);
 
         int32_t flush();
+
+        [[nodiscard]] int32_t getFd() const;
 
     private:
         FileStream() noexcept = default;

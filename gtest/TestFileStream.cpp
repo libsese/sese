@@ -29,6 +29,8 @@ TEST(TestFileStream, Peek) {
     std::string expect = "Hello";
     auto file = sese::io::File::create(PROJECT_PATH "/gtest/Data/data-0.txt", TEXT_READ_EXISTED);
     ASSERT_NE(file, nullptr);
+    auto fd = file->getFd();
+    EXPECT_NE(fd, 0);
     char buffer[6]{};
     file->peek(buffer, 5);
     EXPECT_EQ(buffer, expect);
