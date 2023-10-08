@@ -127,6 +127,7 @@ set(
         SYSTEM_SRC
         system/Environment.cpp
         system/Environment.h
+        system/FileLocker.h
         system/FileNotifier.h
         system/LibraryLoader.cpp
         system/LibraryLoader.h
@@ -434,6 +435,7 @@ target_sources(Core PRIVATE
         ${NATIVE_PATH}/security/evp/SHA384Context.cpp
         ${NATIVE_PATH}/security/evp/SHA512Context.cpp
         ${NATIVE_PATH}/security/SecurityTcpServer.cpp
+        ${NATIVE_PATH}/system/FileLocker.cpp
         ${NATIVE_PATH}/system/FileNotifier.cpp
         ${NATIVE_PATH}/system/Process.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
