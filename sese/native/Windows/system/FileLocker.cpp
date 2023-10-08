@@ -2,15 +2,15 @@
 
 #include <io.h>
 
-bool sese::system::FileLocker::lockWrite(int64_t start, int64_t len) {
+bool sese::system::FileLocker::lockWrite(int64_t start, int64_t len) const {
     return lock(start, len);
 }
 
-bool sese::system::FileLocker::lockRead(int64_t start, int64_t len) {
+bool sese::system::FileLocker::lockRead(int64_t start, int64_t len) const {
     return lock(start, len);
 }
 
-bool sese::system::FileLocker::lock(int64_t start, int64_t len) {
+bool sese::system::FileLocker::lock(int64_t start, int64_t len) const {
     auto handle = (HANDLE) _get_osfhandle(fd);
     auto pStart = (int32_t *) &start;
     auto pLen = (int32_t *) &len;
@@ -23,7 +23,7 @@ bool sese::system::FileLocker::lock(int64_t start, int64_t len) {
                    );
 }
 
-bool sese::system::FileLocker::unlock() {
+bool sese::system::FileLocker::unlock() const {
     auto handle = (HANDLE) _get_osfhandle(fd);
     return TRUE == UnlockFile(handle, 0, 0, MAXDWORD, MAXDWORD);
 }
