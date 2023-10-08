@@ -10,7 +10,6 @@ namespace sese::system {
 
         bool lockWrite(int64_t start, int64_t len);
         bool lockRead(int64_t start, int64_t len);
-        bool lockReadWrite(int64_t start, int64_t len);
         bool lock(int64_t start, int64_t len);
         bool unlock();
 
