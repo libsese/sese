@@ -36,6 +36,7 @@ add_executable(
         TestException.cpp
         TestFakeStream.cpp
         TestFileNotifier.cpp
+        TestFileLocker.cpp
         TestFileStream.cpp
         TestFixedBuffer.cpp
         TestHttp.cpp
