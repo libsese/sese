@@ -193,6 +193,7 @@ TEST(TestThread, GlobalThreadPool) {
     do {
         status = future.wait_for(0.1s);
         SESE_INFO("NoReady");
+
     } while (status != std::future_status::ready);
     auto rt = future.get();
     SESE_INFO("Getvalue %d", rt);
