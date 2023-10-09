@@ -3,6 +3,8 @@
 
 #include <gtest/gtest.h>
 
+#include <filesystem>
+
 TEST(TestFileStream, Open) {
     ASSERT_EQ(sese::io::FileStream::create("undef.txt", TEXT_READ_EXISTED), nullptr);
 }
@@ -23,6 +25,8 @@ TEST(TestFileStream, Seek) {
     ASSERT_EQ(file->read(buffer, 16), 12);
     ASSERT_EQ(std::string_view(buffer), std::string_view("Hello, World"));
     file->close();
+
+    std::filesystem::remove("temp1.txt");
 }
 
 TEST(TestFileStream, Peek) {

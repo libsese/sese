@@ -6,6 +6,8 @@
 
 #include <gtest/gtest.h>
 
+#include <filesystem>
+
 TEST(TestXML, File) {
     auto fileSteam = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.xml", BINARY_READ_EXISTED);
     auto element = sese::xml::XmlUtil::deserialize(fileSteam, 5);
@@ -26,10 +28,13 @@ TEST(TestXML, File) {
     auto saveFileStream = sese::io::FileStream::create("out.xml", BINARY_WRITE_CREATE_TRUNC);
     ASSERT_NE(saveFileStream, nullptr);
     sese::xml::XmlUtil::serialize(element, saveFileStream);
+    saveFileStream->close();
+    std::filesystem::remove("out.xml");
 
     auto output = std::make_shared<sese::io::ConsoleOutputStream>();
     sese::xml::XmlUtil::serialize(element, output);
     output->write("\n", 1);
+
 }
 
 /// 不合法的元素结尾

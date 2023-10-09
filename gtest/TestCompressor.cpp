@@ -5,7 +5,10 @@
 #include "sese/record/LogHelper.h"
 #include "sese/io/ByteBuilder.h"
 #include "sese/io/OutputBufferWrapper.h"
+
 #include "gtest/gtest.h"
+
+#include <filesystem>
 
 TEST(TestCompress, ZLIB) {
     sese::Compressor compressor(sese::CompressionType::ZLIB, 9, 8);
@@ -68,6 +71,8 @@ TEST(TestCompress, GZIP) {
     input->read(buffer, 1024);
     input->close();
     puts(buffer);
+
+    std::filesystem::remove("test.txt.gz");
 
     ASSERT_EQ(GZipFileOutputStream::create("./undef/undef.gz", 9), nullptr);
     ASSERT_EQ(GZipFileInputStream::create("./undef/undef.gz"), nullptr);

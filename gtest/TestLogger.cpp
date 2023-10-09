@@ -6,6 +6,8 @@
 
 #include "gtest/gtest.h"
 
+#include <filesystem>
+
 using namespace std::chrono_literals;
 
 TEST(TestLogger, BlockAppender) {
@@ -44,20 +46,23 @@ TEST(TestLogger, StaticMethod) {
 }
 
 TEST(TestLogger, FileAppender) {
-    sese::record::LogHelper log;
+    {
+        sese::record::LogHelper log;
 
-    auto logger = sese::record::getLogger();
-    auto fileStream = sese::io::FileStream::create("hello.log", TEXT_WRITE_CREATE_TRUNC);
-    ASSERT_TRUE(fileStream != nullptr);
-    auto fileAppender = std::make_shared<sese::record::FileAppender>(fileStream);
-    logger->addAppender(fileAppender);
+        auto logger = sese::record::getLogger();
+        auto fileStream = sese::io::FileStream::create("hello.log", TEXT_WRITE_CREATE_TRUNC);
+        ASSERT_TRUE(fileStream != nullptr);
+        auto fileAppender = std::make_shared<sese::record::FileAppender>(fileStream);
+        logger->addAppender(fileAppender);
 
-    log.debug("Hello");
-    log.info("Hello");
-    log.warn("Hello");
-    log.error("Hello");
+        log.debug("Hello");
+        log.info("Hello");
+        log.warn("Hello");
+        log.error("Hello");
 
-    logger->removeAppender(fileAppender);
+        logger->removeAppender(fileAppender);
+    }
+    std::filesystem::remove("hello.log");
 }
 
 TEST(TestLogger, SimpleFormat) {
