@@ -138,7 +138,7 @@ int64_t Base64Converter::decodeBuffer(const unsigned char *buffer, size_t size) 
         auto power = (size - (idx + 1));
         auto i = page.find((char) (buffer[idx]));
         if (i == std::string::npos) return -1;
-        num += i * static_cast<int64_t>(std::pow(base, power));// NOLINT
+        num += i * static_cast<int64_t>(std::pow(base, power)); // NOLINT
     }
     return num;
 }

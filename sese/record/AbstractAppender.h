@@ -4,35 +4,40 @@
  * @date 2022年3月28日
  * @brief 日志输出源基类
  */
+
 #pragma once
-#include "sese/record/AbstractFormatter.h"
+
 #include "sese/Config.h"
-#include "AbstractFormatter.h"
-#include "Event.h"
+#include "sese/record/AbstractFormatter.h"
+#include "sese/record/AbstractFormatter.h"
+#include "sese/record/Event.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
 #endif
 
-namespace sese::record { /**
-     * @brief 日志输出源基类
-     */
-    class API AbstractAppender {
-    public:
-        typedef std::shared_ptr<AbstractAppender> Ptr;
+namespace sese::record {
 
-        AbstractAppender() noexcept = default;
+/**
+ * @brief 日志输出源基类
+ */
+class API AbstractAppender {
+public:
+    typedef std::shared_ptr<AbstractAppender> Ptr;
 
-        virtual ~AbstractAppender() noexcept = default;
+    AbstractAppender() noexcept = default;
 
-        explicit AbstractAppender(Level level) noexcept;
+    virtual ~AbstractAppender() noexcept = default;
 
-        virtual void dump(const char *buffer, size_t size) noexcept = 0;
+    explicit AbstractAppender(Level level) noexcept;
 
-        [[nodiscard]] Level getLevel() const noexcept { return level; }
+    virtual void dump(const char *buffer, size_t size) noexcept = 0;
 
-    protected:
-        /// 输出阈值
-        Level level = Level::DEBUG;
-    };
-}// namespace sese::record
+    [[nodiscard]] Level getLevel() const noexcept { return level; }
+
+protected:
+    /// 输出阈值
+    Level level = Level::DEBUG;
+};
+
+} // namespace sese::record

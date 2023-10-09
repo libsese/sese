@@ -8,6 +8,6 @@
 #include <sese/service/Http2Service_V1.h>
 
 namespace sese::service {
-    using Http2Config = v1::Http2Config;
-    using Http2Service = v1::Http2Service;
-}
+using Http2Config = v1::Http2Config;
+using Http2Service = v1::Http2Service;
+} // namespace sese::service

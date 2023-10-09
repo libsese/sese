@@ -9,34 +9,34 @@
 
 namespace sese {
 
-    /**
-     * @brief 裸指针单例模板类
-     * @tparam T
-     * @tparam X
-     * @tparam N
-     */
-    template<typename T, class X = void, int N = 0>
-    class API Singleton {
-    public:
-        static T *getInstance() {
-            static T v;
-            return &v;
-        }
-    };
+/**
+ * @brief 裸指针单例模板类
+ * @tparam T
+ * @tparam X
+ * @tparam N
+ */
+template<typename T, class X = void, int N = 0>
+class API Singleton {
+public:
+    static T *getInstance() {
+        static T v;
+        return &v;
+    }
+};
 
-    /**
-     * @brief 智能指针单例模板类
-     * @tparam T
-     * @tparam X
-     * @tparam N
-     */
-    template<typename T, class X = void, int N = 0>
-    class API SingletonPtr {
-    public:
-        static std::shared_ptr<T> getInstance() {
-            static std::shared_ptr<T> v(new T); // GCOVR_EXCL_LINE
-            return v;
-        }
-    };
+/**
+ * @brief 智能指针单例模板类
+ * @tparam T
+ * @tparam X
+ * @tparam N
+ */
+template<typename T, class X = void, int N = 0>
+class API SingletonPtr {
+public:
+    static std::shared_ptr<T> getInstance() {
+        static std::shared_ptr<T> v(new T); // GCOVR_EXCL_LINE
+        return v;
+    }
+};
 
-}// namespace sese
+} // namespace sese

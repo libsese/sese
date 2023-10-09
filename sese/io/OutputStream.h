@@ -15,14 +15,14 @@
 
 namespace sese::io {
 
-    /// \brief 流式输出接口类
-    class API OutputStream {
-    public:
-        typedef std::shared_ptr<OutputStream> Ptr;
+/// \brief 流式输出接口类
+class API OutputStream {
+public:
+    typedef std::shared_ptr<OutputStream> Ptr;
 
-        virtual ~OutputStream() noexcept = default;
+    virtual ~OutputStream() noexcept = default;
 
-        virtual int64_t write(const void *buffer, size_t length) = 0;
-    };
+    virtual int64_t write(const void *buffer, size_t length) = 0;
+};
 
-}// namespace sese
+} // namespace sese::io

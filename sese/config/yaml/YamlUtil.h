@@ -17,46 +17,46 @@
 
 namespace sese::yaml {
 
-    /// YAML 工具类
-    class API YamlUtil final : public NotInstantiable {
-    public:
-        using InputStream = io::InputStream;
-        using OutputStream = io::OutputStream;
-        using Line = std::tuple<int, std::string>;
-        using Tokens = std::vector<std::string>;
-        using TokensQueue = std::queue<std::tuple<int, Tokens>>;
+/// YAML 工具类
+class API YamlUtil final : public NotInstantiable {
+public:
+    using InputStream = io::InputStream;
+    using OutputStream = io::OutputStream;
+    using Line = std::tuple<int, std::string>;
+    using Tokens = std::vector<std::string>;
+    using TokensQueue = std::queue<std::tuple<int, Tokens>>;
 
-        /// 从流中反序列化 yaml 对象
-        /// \param input 输入流
-        /// \param level 解析深度
-        /// \retval nullptr 反序列化错误
-        /// \return yaml 对象
-        static Data::Ptr deserialize(InputStream *input, size_t level) noexcept;
+    /// 从流中反序列化 yaml 对象
+    /// \param input 输入流
+    /// \param level 解析深度
+    /// \retval nullptr 反序列化错误
+    /// \return yaml 对象
+    static Data::Ptr deserialize(InputStream *input, size_t level) noexcept;
 
-        /// 向流中序列化 yaml 对象
-        /// \param data yaml 对象
-        /// \param output 输出流
-        static void serialize(const Data::Ptr &data, OutputStream *output) noexcept;
+    /// 向流中序列化 yaml 对象
+    /// \param data yaml 对象
+    /// \param output 输出流
+    static void serialize(const Data::Ptr &data, OutputStream *output) noexcept;
 
 #ifdef SESE_BUILD_TEST
-    public:
+public:
 #else
-    private:
+private:
 #endif
-        static int getSpaceCount(const std::string &line) noexcept;
+    static int getSpaceCount(const std::string &line) noexcept;
 
-        static Line getLine(InputStream *input) noexcept;
+    static Line getLine(InputStream *input) noexcept;
 
-        static Tokens tokenizer(const std::string &line) noexcept;
+    static Tokens tokenizer(const std::string &line) noexcept;
 
-        static ObjectData::Ptr createObject(TokensQueue &tokensQueue, size_t level) noexcept;
+    static ObjectData::Ptr createObject(TokensQueue &tokensQueue, size_t level) noexcept;
 
-        static ArrayData::Ptr createArray(TokensQueue &tokensQueue, size_t level) noexcept;
+    static ArrayData::Ptr createArray(TokensQueue &tokensQueue, size_t level) noexcept;
 
-        static void writeSpace(size_t count, OutputStream *output) noexcept;
+    static void writeSpace(size_t count, OutputStream *output) noexcept;
 
-        static void serializeObject(ObjectData *objectData, OutputStream *output, size_t level) noexcept;
+    static void serializeObject(ObjectData *objectData, OutputStream *output, size_t level) noexcept;
 
-        static void serializeArray(ArrayData *arrayData, OutputStream *output, size_t level) noexcept;
-    };
-}// namespace sese::yaml
+    static void serializeArray(ArrayData *arrayData, OutputStream *output, size_t level) noexcept;
+};
+} // namespace sese::yaml

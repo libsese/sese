@@ -17,7 +17,7 @@ Timer::Ptr Timer::create(size_t number) noexcept {
     auto timer = new sese::Timer;
     // number 至少为 2
     timer->number = std::max<size_t>(5, number);
-    timer->timerTasks = new std::list<TimerTask::Ptr>[timer->number];// GCOVR_EXCL_LINE
+    timer->timerTasks = new std::list<TimerTask::Ptr>[timer->number]; // GCOVR_EXCL_LINE
     // 启动线程
     timer->thread = std::make_unique<Thread>([timer] { timer->loop(); }, "Timer");
     timer->thread->start();
@@ -28,7 +28,7 @@ Timer::~Timer() noexcept {
     if (!isShutdown) {
         shutdown();
     }
-    delete[] timerTasks;// GCOVR_EXCL_LINE
+    delete[] timerTasks; // GCOVR_EXCL_LINE
 }
 
 TimerTask::Ptr Timer::delay(const std::function<void()> &callback, int64_t relativeTimestamp, bool isRepeat) noexcept {

@@ -22,7 +22,7 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
         auto pos2 = str.find_first_of('+', pos1);
         auto pos3 = str.find_first_of('[', pos2);
         std::string symName = str.substr(pos1 + 1, pos2 - pos1 - 1);
-        char *end;// pos4
+        char *end; // pos4
         uint64_t symAddress = std::strtoll(strings[i] + pos3 + 1, &end, 16);
         stacks.emplace_back(SubStackInfo{symAddress, decodeSymbolName(symName)});
     }

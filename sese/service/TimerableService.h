@@ -10,9 +10,9 @@
 #include <sese/service/TimerableService_V2.h>
 
 namespace sese::service {
-    /// 超时事件结构体
-    typedef TimeoutEvent_V2 TimeoutEvent;
+/// 超时事件结构体
+typedef TimeoutEvent_V2 TimeoutEvent;
 
-    /// 可定时服务
-    typedef TimerableService_V2 TimerableService;
-}
+/// 可定时服务
+typedef TimerableService_V2 TimerableService;
+} // namespace sese::service

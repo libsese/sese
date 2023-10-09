@@ -19,7 +19,7 @@ inline int64_t BufferedStream::preRead() {
     // 尝试使用目标流填充缓存
     auto read = source->read(buffer, cap);
     // 此处用于修正一些输入源可能读取返回负值的情况
-    read = read < 0 ? 0 : read;// GCOVR_EXCL_LINE
+    read = read < 0 ? 0 : read; // GCOVR_EXCL_LINE
     pos = 0;
     len = read;
     return read;

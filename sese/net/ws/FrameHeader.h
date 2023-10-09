@@ -17,15 +17,15 @@ namespace sese::net::ws {
 #define SESE_WS_OPCODE_PING 0x9
 #define SESE_WS_OPCODE_PONG 0xa
 
-    /// Websocket 帧信息
-    struct API FrameHeaderInfo {
-        bool fin = false;
-        bool rsv1 = false;
-        bool rsv2 = false;
-        bool rsv3 = false;
-        uint8_t opCode = 0;
-        bool mask = false;
-        uint64_t length = 0;
-        uint32_t maskingKey = 0;
-    };
-}// namespace sese::net::ws
+/// Websocket 帧信息
+struct API FrameHeaderInfo {
+    bool fin = false;
+    bool rsv1 = false;
+    bool rsv2 = false;
+    bool rsv3 = false;
+    uint8_t opCode = 0;
+    bool mask = false;
+    uint64_t length = 0;
+    uint32_t maskingKey = 0;
+};
+} // namespace sese::net::ws

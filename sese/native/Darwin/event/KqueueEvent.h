@@ -9,7 +9,7 @@
 #include "sese/event/BaseEvent.h"
 
 namespace sese::event {
-    /// kqueue 事件
-    class KqueueEvent : public BaseEvent {
-    };
-}// namespace sese::event
+/// kqueue 事件
+class KqueueEvent : public BaseEvent {
+};
+} // namespace sese::event

@@ -287,7 +287,7 @@ void service::v1::HttpService::onHandleUpgrade(net::http::HttpConnection *conn) 
     conn->resp.setCode(200);
 }
 
-void service::v1::HttpService::onHandleFile(HttpConnection *conn, const std::string &path) noexcept {// NOLINT
+void service::v1::HttpService::onHandleFile(HttpConnection *conn, const std::string &path) noexcept { // NOLINT
     if (std::filesystem::is_regular_file(path)) {
         /// content-type 确定
         auto pos = path.find_last_of('.');
@@ -330,21 +330,21 @@ void service::v1::HttpService::onHandleFile(HttpConnection *conn, const std::str
             if (conn->ranges.size() > 1) {
                 size_t len = 0;
                 for (auto item: conn->ranges) {
-                    len += 4;// \r\n--
+                    len += 4; // \r\n--
                     len += strlen(HTTPD_BOUNDARY);
-                    len += 2;// \r\n
+                    len += 2; // \r\n
                     len += strlen("Content-Type: ");
                     len += conn->contentType.length();
-                    len += 2;// \r\n
+                    len += 2; // \r\n
                     len += strlen("Content-Range: ");
                     len += item.toString(conn->fileSize).length();
-                    len += 4;// \r\n\r\n
+                    len += 4; // \r\n\r\n
                     len += item.len;
                 }
-                len += 4;// \r\n--
+                len += 4; // \r\n--
                 len += strlen(HTTPD_BOUNDARY);
-                len += 4;// --\r\n
-                len -= 2;// 抵消首次区块的 \r\n
+                len += 4; // --\r\n
+                len -= 2; // 抵消首次区块的 \r\n
 
                 conn->resp.set("content-length", std::to_string(len));
                 conn->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);

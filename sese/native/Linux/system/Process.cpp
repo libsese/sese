@@ -22,7 +22,7 @@ Process::Ptr Process::create(const char *command) noexcept {
         return nullptr; // GCOVR_EXCL_LINE
     } else {
         // failed to create
-        return nullptr;// GCOVR_EXCL_LINE
+        return nullptr; // GCOVR_EXCL_LINE
     }
 }
 
@@ -34,7 +34,7 @@ int Process::wait() const noexcept {
     int status;
     ::waitpid(id, &status, 0);
     if (!WIFEXITED(status)) {
-        return WEXITSTATUS(status);// GCOVR_EXCL_LINE
+        return WEXITSTATUS(status); // GCOVR_EXCL_LINE
     } else {
         return 0;
     }

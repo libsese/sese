@@ -5,9 +5,9 @@
 
 #include <cstring>
 
-using sese::io::ByteBuilder;
 using sese::MD5Util;
 using sese::MemoryViewer;
+using sese::io::ByteBuilder;
 
 // GCOVR_EXCL_START
 void MD5Util::encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept {
@@ -27,7 +27,7 @@ void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
             length += len;
         } else if (len == 0) {
             memcpy(&buffer[len], PADDING, 64 - len - 8);
-            length *= 8;/// 单位为 位
+            length *= 8; /// 单位为 位
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
             /// 执行完本次后不再执行
@@ -35,7 +35,7 @@ void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
         } else if (len < 56) {
             length += len;
             memcpy(&buffer[len], PADDING, 64 - len - 8);
-            length *= 8;/// 单位为 位
+            length *= 8; /// 单位为 位
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
             isBreak = true;
@@ -45,7 +45,7 @@ void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
             // 倒数第二次变换
             MD5Util::transform(result, buffer);
             memset(buffer, 0, 56);
-            length *= 8;/// 单位为 位
+            length *= 8; /// 单位为 位
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
             isBreak = true;
@@ -67,7 +67,7 @@ std::unique_ptr<char[]> MD5Util::encode(InputStream *input, bool isCap) noexcept
     ByteBuilder dest(16);
     encode(input, &dest);
     unsigned char buffer[16];
-    auto rt = std::unique_ptr<char[]>(new char[33]);// GCOVR_EXCL_LINE
+    auto rt = std::unique_ptr<char[]>(new char[33]); // GCOVR_EXCL_LINE
     dest.read(buffer, 16);
     for (size_t i = 0; i < 16; i++) {
         rt[i * 2 + 1] = MemoryViewer::toChar(buffer[i] % 0x10, isCap);

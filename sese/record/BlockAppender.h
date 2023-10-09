@@ -14,28 +14,28 @@
 
 namespace sese::record {
 
-    /// 分块文件日志输出源类
-    class API BlockAppender final : public AbstractAppender {
-    public:
-        /// 初始化分块参数
-        /// \param blockMaxSize 分块的预定大小，此参数在非 DEBUG 模式下具有最小值限制，至少为 1000 * 1024，即 1MB
-        /// \param level 等级阈值
-        explicit BlockAppender(size_t blockMaxSize, Level level = Level::DEBUG);
+/// 分块文件日志输出源类
+class API BlockAppender final : public AbstractAppender {
+public:
+    /// 初始化分块参数
+    /// \param blockMaxSize 分块的预定大小，此参数在非 DEBUG 模式下具有最小值限制，至少为 1000 * 1024，即 1MB
+    /// \param level 等级阈值
+    explicit BlockAppender(size_t blockMaxSize, Level level = Level::DEBUG);
 
-        ~BlockAppender() noexcept override;
+    ~BlockAppender() noexcept override;
 
-        void dump(const char *buffer, size_t size) noexcept override;
+    void dump(const char *buffer, size_t size) noexcept override;
 
 #if defined(SESE_BUILD_TEST)
-    public:
+public:
 #else
-    private:
+private:
 #endif
-        size_t size = 0;
-        std::mutex mutex;
-        size_t maxSize = 0;
-        io::BufferedStream::Ptr bufferedStream;
-        io::FileStream::Ptr fileStream;
-    };
+    size_t size = 0;
+    std::mutex mutex;
+    size_t maxSize = 0;
+    io::BufferedStream::Ptr bufferedStream;
+    io::FileStream::Ptr fileStream;
+};
 
-}// namespace sese::record
+} // namespace sese::record

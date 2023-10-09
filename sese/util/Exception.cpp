@@ -15,7 +15,7 @@ sese::Exception::Exception(const char *message)
 }
 
 sese::Exception::~Exception() {
-    delete stackInfo;// GCOVR_EXCL_LINE
+    delete stackInfo; // GCOVR_EXCL_LINE
 }
 
 std::string sese::Exception::buildStacktrace() {

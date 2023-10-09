@@ -15,14 +15,14 @@
 
 namespace sese::io {
 
-    /// \brief 流式输入接口类
-    class API InputStream {
-    public:
-        typedef std::shared_ptr<InputStream> Ptr;
+/// \brief 流式输入接口类
+class API InputStream {
+public:
+    typedef std::shared_ptr<InputStream> Ptr;
 
-        virtual ~InputStream() noexcept = default;
+    virtual ~InputStream() noexcept = default;
 
-        virtual int64_t read(void *buffer, size_t length) = 0;
-    };
+    virtual int64_t read(void *buffer, size_t length) = 0;
+};
 
-}// namespace sese
+} // namespace sese::io

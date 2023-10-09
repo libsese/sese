@@ -349,8 +349,8 @@ int64_t Http2Server::writeFrame(const Http2Connection::Ptr &conn, sese::net::v2:
 void Http2Server::sendGoaway(const Http2Connection::Ptr &conn, uint32_t sid, uint32_t eid) noexcept {
     conn->mutex.lock();
     int32_t buffer[2];
-    buffer[0] = ToBigEndian32(sid) >> 1;// NOLINT
-    buffer[1] = ToBigEndian32(eid);     // NOLINT
+    buffer[0] = ToBigEndian32(sid) >> 1; // NOLINT
+    buffer[1] = ToBigEndian32(eid);      // NOLINT
     conn->context.write(&buffer, 2 * sizeof(uint32_t));
     conn->mutex.unlock();
 }

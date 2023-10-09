@@ -28,61 +28,61 @@
 
 namespace sese {
 
-    /// 内建线程类的初始化任务
-    class ThreadInitiateTask final : public InitiateTask {
-    public:
-        ThreadInitiateTask() : InitiateTask(__FUNCTION__){};
+/// 内建线程类的初始化任务
+class ThreadInitiateTask final : public InitiateTask {
+public:
+    ThreadInitiateTask() : InitiateTask(__FUNCTION__){};
 
-        int32_t init() noexcept override;
+    int32_t init() noexcept override;
 
-        int32_t destroy() noexcept override;
+    int32_t destroy() noexcept override;
+};
+
+/**
+ * @brief 线程类
+ */
+class API Thread : Noncopyable {
+public:
+    using Ptr = std::unique_ptr<Thread>;
+
+    struct RuntimeData;
+
+    explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);
+
+    void start();
+    void join();
+    void detach();
+    [[nodiscard]] bool joinable() const;
+
+    static void run(std::shared_ptr<RuntimeData> data);
+
+    [[nodiscard]] tid_t getTid() const noexcept { return data->id; }
+    [[nodiscard]] const std::string &getThreadName() const noexcept { return this->data->name; }
+
+public:
+    /// 线程运行数据
+    struct RuntimeData {
+        tid_t id = 0;
+
+        std::string name;
+        std::thread th;
+        std::function<void()> function;
     };
+
+    static tid_t getCurrentThreadId() noexcept;
+    static const char *getCurrentThreadName() noexcept;
+    static void setCurrentThreadAsMain() noexcept;
+    static tid_t getMainThreadId() noexcept;
 
     /**
-     * @brief 线程类
+     * 获取当前线程实例
+     * @return 当前线程实例，当前线程为主线程时返回 nullptr
      */
-    class API Thread : Noncopyable {
-    public:
-        using Ptr = std::unique_ptr<Thread>;
+    static Thread::RuntimeData *getCurrentThreadData() noexcept;
 
-        struct RuntimeData;
+private:
+    static tid_t mainId;
+    std::shared_ptr<RuntimeData> data = nullptr;
+};
 
-        explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);
-
-        void start();
-        void join();
-        void detach();
-        [[nodiscard]] bool joinable() const;
-
-        static void run(std::shared_ptr<RuntimeData> data);
-
-        [[nodiscard]] tid_t getTid() const noexcept { return data->id; }
-        [[nodiscard]] const std::string &getThreadName() const noexcept { return this->data->name; }
-
-    public:
-        /// 线程运行数据
-        struct RuntimeData {
-            tid_t id = 0;
-
-            std::string name;
-            std::thread th;
-            std::function<void()> function;
-        };
-
-        static tid_t getCurrentThreadId() noexcept;
-        static const char *getCurrentThreadName() noexcept;
-        static void setCurrentThreadAsMain() noexcept;
-        static tid_t getMainThreadId() noexcept;
-
-        /**
-         * 获取当前线程实例
-         * @return 当前线程实例，当前线程为主线程时返回 nullptr
-         */
-        static Thread::RuntimeData *getCurrentThreadData() noexcept;
-
-    private:
-        static tid_t mainId;
-        std::shared_ptr<RuntimeData> data = nullptr;
-    };
-
-}// namespace sese
+} // namespace sese

@@ -8,14 +8,14 @@
 #include <sese/Config.h>
 
 namespace sese::concurrent {
-    /// \brief 节点
-    /// \tparam T 数据类型
-    template<typename T>
-    struct Node {
-        T value{};
-        Node *next{nullptr};
-    };
-}// namespace sese::concurrent
+/// \brief 节点
+/// \tparam T 数据类型
+template<typename T>
+struct Node {
+    T value{};
+    Node *next{nullptr};
+};
+} // namespace sese::concurrent
 
 /**
  * @brief 比较并交换两个指针

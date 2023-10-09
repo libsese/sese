@@ -118,7 +118,7 @@ public:
     void onTimeout(sese::service::TimeoutEvent_V1 *timeoutEvent) override {
         printf("fd %d close", timeoutEvent->fd);
         sese::net::Socket::close(timeoutEvent->fd);
-        auto event = (sese::event::Event *)timeoutEvent->data;
+        auto event = (sese::event::Event *) timeoutEvent->data;
         freeEvent(event);
     }
 };
@@ -170,7 +170,7 @@ public:
     }
 
     void onRead(sese::event::BaseEvent *event) override {
-        auto timeoutEvent = (sese::service::TimeoutEvent_V2 *)(event->data);
+        auto timeoutEvent = (sese::service::TimeoutEvent_V2 *) (event->data);
         // timeoutEvent will not be nullptr
         cancelTimeoutEvent(timeoutEvent);
         timeoutEvent = nullptr;
@@ -186,7 +186,7 @@ public:
     }
 
     void onTimeout(sese::service::TimeoutEvent_V2 *timeoutEvent) override {
-        auto event = (sese::event::Event *)timeoutEvent->data;
+        auto event = (sese::event::Event *) timeoutEvent->data;
         printf("fd %d close", event->fd);
         sese::net::Socket::close(event->fd);
         freeEvent(event);

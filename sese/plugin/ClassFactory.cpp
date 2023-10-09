@@ -1,7 +1,7 @@
 #include "sese/plugin/ClassFactory.h"
 
 sese::plugin::ClassFactory::ClassFactory(const sese::plugin::ClassFactory::ParamListType &initializerList) noexcept {
-    for (decltype(auto) pair : initializerList) {
+    for (decltype(auto) pair: initializerList) {
         infoMap[pair.first] = pair.second;
     }
 }

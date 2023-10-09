@@ -93,23 +93,18 @@ void sese::event::WSAEventLoop::dispatch(uint32_t timeout) {
 }
 
 void sese::event::WSAEventLoop::onAccept(int fd) {
-
 }
 
 void sese::event::WSAEventLoop::onRead(sese::event::BaseEvent *event) {
-
 }
 
 void sese::event::WSAEventLoop::onWrite(sese::event::BaseEvent *event) {
-
 }
 
 void sese::event::WSAEventLoop::onError(sese::event::BaseEvent *event) {
-
 }
 
 void sese::event::WSAEventLoop::onClose(sese::event::BaseEvent *event) {
-
 }
 
 sese::event::BaseEvent *sese::event::WSAEventLoop::createEvent(int fd, unsigned int events, void *data) {

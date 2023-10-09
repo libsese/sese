@@ -16,64 +16,64 @@
 
 namespace sese::service {
 
-    /// \brief 系统均衡负载器（无用户调度的负载器）
-    /// \warning 此负载器仅在 Linux 上生效
-    /// \see sese::service::BalanceLoader
-    class API SystemBalanceLoader final {
-    public:
-        ~SystemBalanceLoader() noexcept;
+/// \brief 系统均衡负载器（无用户调度的负载器）
+/// \warning 此负载器仅在 Linux 上生效
+/// \see sese::service::BalanceLoader
+class API SystemBalanceLoader final {
+public:
+    ~SystemBalanceLoader() noexcept;
 
-        /// 设置负载器使用线程数量
-        /// \param th 线程数量
-        void setThreads(size_t th) noexcept;
+    /// 设置负载器使用线程数量
+    /// \param th 线程数量
+    void setThreads(size_t th) noexcept;
 
-        /// 设置服务启动地址
-        /// \param addr IP Address
-        void setAddress(const net::IPAddress::Ptr &addr) noexcept { SystemBalanceLoader::address = addr; }
+    /// 设置服务启动地址
+    /// \param addr IP Address
+    void setAddress(const net::IPAddress::Ptr &addr) noexcept { SystemBalanceLoader::address = addr; }
 
-        /// 设置从线程派遣超时时间
-        /// \param to 超时时间，单位毫秒
-        void setAcceptTimeout(uint32_t to) noexcept { SystemBalanceLoader::timeout = to; }
+    /// 设置从线程派遣超时时间
+    /// \param to 超时时间，单位毫秒
+    void setAcceptTimeout(uint32_t to) noexcept { SystemBalanceLoader::timeout = to; }
 
-        /// 设置从线程派遣超时时间
-        /// \param to 超时时间，单位毫秒
-        void setDispatchTimeout(uint32_t to) noexcept { SystemBalanceLoader::timeout = to; }
+    /// 设置从线程派遣超时时间
+    /// \param to 超时时间，单位毫秒
+    void setDispatchTimeout(uint32_t to) noexcept { SystemBalanceLoader::timeout = to; }
 
-        /// 获取当前负载器状态
-        /// \return 负载器状态状态
-        [[nodiscard]] bool isStarted() const { return _isStart; }
+    /// 获取当前负载器状态
+    /// \return 负载器状态状态
+    [[nodiscard]] bool isStarted() const { return _isStart; }
 
-        /// 初始化负载器资源
-        /// \tparam Service 需要启动的服务
-        /// \return 是否初始化成功
-        template<class Service>
-        bool init() noexcept;
+    /// 初始化负载器资源
+    /// \tparam Service 需要启动的服务
+    /// \return 是否初始化成功
+    template<class Service>
+    bool init() noexcept;
 
-        /// 初始化均衡器资源
-        /// \tparam Service 需要启动的服务
-        /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
-        /// \return 是否初始化成功
-        template<class Service>
-        bool init(std::function<Service *()> creator) noexcept;
+    /// 初始化均衡器资源
+    /// \tparam Service 需要启动的服务
+    /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
+    /// \return 是否初始化成功
+    template<class Service>
+    bool init(std::function<Service *()> creator) noexcept;
 
-        /// 启动当前负载器和服务
-        void start() noexcept;
+    /// 启动当前负载器和服务
+    void start() noexcept;
 
-        /// 关闭当前负载器并卸载服务
-        void stop() noexcept;
+    /// 关闭当前负载器并卸载服务
+    void stop() noexcept;
 
-    protected:
-        std::atomic_bool _isStart{false};
-        std::atomic_bool _isStop{false};
+protected:
+    std::atomic_bool _isStart{false};
+    std::atomic_bool _isStop{false};
 
-        uint32_t timeout = 100;
-        size_t threads{2};
-        std::vector<socket_t> socketVector;
-        std::vector<event::EventLoop *> eventLoopVector;
-        std::vector<sese::Thread::Ptr> threadVector;
-        sese::net::IPAddress::Ptr address = sese::net::IPv4Address::localhost(8080);
-    };
-}// namespace sese::service
+    uint32_t timeout = 100;
+    size_t threads{2};
+    std::vector<socket_t> socketVector;
+    std::vector<event::EventLoop *> eventLoopVector;
+    std::vector<sese::Thread::Ptr> threadVector;
+    sese::net::IPAddress::Ptr address = sese::net::IPv4Address::localhost(8080);
+};
+} // namespace sese::service
 
 template<class Service>
 bool sese::service::SystemBalanceLoader::init() noexcept {

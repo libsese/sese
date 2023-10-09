@@ -18,21 +18,21 @@
 
 namespace sese {
 
-    /**
-     * @brief 字符串编码转换
-     */
-    class API SESE_DEPRECATED EncodingConverter : public NotInstantiable {
-    public:
-        [[maybe_unused]] static std::string toString(const std::wstring &wstring) noexcept;
-        [[maybe_unused]] static std::wstring toWstring(const std::string &string) noexcept;
-    };
+/**
+ * @brief 字符串编码转换
+ */
+class API SESE_DEPRECATED EncodingConverter : public NotInstantiable {
+public:
+    [[maybe_unused]] static std::string toString(const std::wstring &wstring) noexcept;
+    [[maybe_unused]] static std::wstring toWstring(const std::string &string) noexcept;
+};
 
-    /// 编码转换器初始化任务
-    class EncodingConverterInitiateTask final : public InitiateTask {
-    public:
-        EncodingConverterInitiateTask() : InitiateTask(__FUNCTION__) {}
+/// 编码转换器初始化任务
+class EncodingConverterInitiateTask final : public InitiateTask {
+public:
+    EncodingConverterInitiateTask() : InitiateTask(__FUNCTION__) {}
 
-        int32_t init() noexcept override;
-        int32_t destroy() noexcept override;
-    };
-}// namespace sese
+    int32_t init() noexcept override;
+    int32_t destroy() noexcept override;
+};
+} // namespace sese

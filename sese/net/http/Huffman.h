@@ -18,71 +18,72 @@
 
 namespace sese::net::http {
 
-    /// Huffman 解码节点
-    class huffman_node_t {
-    protected:
-        huffman_node_t *m_left;
-        huffman_node_t *m_right;
-        int16_t m_code;
-    public:
-        explicit huffman_node_t(huffman_node_t *l = nullptr, huffman_node_t *r = nullptr, int16_t c = -1) noexcept;
+/// Huffman 解码节点
+class huffman_node_t {
+protected:
+    huffman_node_t *m_left;
+    huffman_node_t *m_right;
+    int16_t m_code;
 
-        virtual ~huffman_node_t() {
-            m_left = nullptr;
-            m_right = nullptr;
-            m_code = 0;
-        }
+public:
+    explicit huffman_node_t(huffman_node_t *l = nullptr, huffman_node_t *r = nullptr, int16_t c = -1) noexcept;
 
-        [[nodiscard]] int16_t code() const { return m_code; }
+    virtual ~huffman_node_t() {
+        m_left = nullptr;
+        m_right = nullptr;
+        m_code = 0;
+    }
 
-        void code(int16_t c) { m_code = c; }
+    [[nodiscard]] int16_t code() const { return m_code; }
 
-        huffman_node_t *left() { return m_left; }
+    void code(int16_t c) { m_code = c; }
 
-        void left(huffman_node_t *l) { m_left = l; }
+    huffman_node_t *left() { return m_left; }
 
-        huffman_node_t *right() { return m_right; }
+    void left(huffman_node_t *l) { m_left = l; }
 
-        void right(huffman_node_t *r) { m_right = r; }
-    };
+    huffman_node_t *right() { return m_right; }
 
-    /// Huffman 树
-    class huffman_tree_t {
-    protected:
-        huffman_node_t *m_root;
+    void right(huffman_node_t *r) { m_right = r; }
+};
 
-        void delete_node(huffman_node_t *n) noexcept;
+/// Huffman 树
+class huffman_tree_t {
+protected:
+    huffman_node_t *m_root;
 
-    public:
-        huffman_tree_t() noexcept;
+    void delete_node(huffman_node_t *n) noexcept;
 
-        virtual ~huffman_tree_t() noexcept;
+public:
+    huffman_tree_t() noexcept;
 
-        std::optional<std::string> decode(const char *src, size_t len);
-    };
+    virtual ~huffman_tree_t() noexcept;
 
-    /// Huffman 编码器
-    class huffman_encoder_t {
-    private:
-        uint8_t m_byte;
-        uint8_t m_count;
+    std::optional<std::string> decode(const char *src, size_t len);
+};
 
-    protected:
-        inline bool write_bit(uint8_t bit) noexcept;
+/// Huffman 编码器
+class huffman_encoder_t {
+private:
+    uint8_t m_byte;
+    uint8_t m_count;
 
-    public:
-        huffman_encoder_t() noexcept;
+protected:
+    inline bool write_bit(uint8_t bit) noexcept;
 
-        virtual ~huffman_encoder_t() noexcept = default;
+public:
+    huffman_encoder_t() noexcept;
 
-        std::vector<uint8_t> encode(std::vector<uint8_t> &src) noexcept;
+    virtual ~huffman_encoder_t() noexcept = default;
 
-        std::vector<uint8_t> encode(const std::string &src) noexcept;
+    std::vector<uint8_t> encode(std::vector<uint8_t> &src) noexcept;
 
-        std::vector<uint8_t> encode(const char *ptr) noexcept;
-    };
+    std::vector<uint8_t> encode(const std::string &src) noexcept;
 
-    using HuffmanEncoder = huffman_encoder_t;
-    using HuffmanDecoder = huffman_tree_t;
+    std::vector<uint8_t> encode(const char *ptr) noexcept;
+};
 
-}
+using HuffmanEncoder = huffman_encoder_t;
+using HuffmanDecoder = huffman_tree_t;
+
+} // namespace sese::net::http

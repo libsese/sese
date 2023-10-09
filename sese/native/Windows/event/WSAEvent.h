@@ -9,9 +9,9 @@
 #include "sese/event/BaseEvent.h"
 
 namespace sese::event {
-    /// WSAEventSelect 事件
-    class WSAEvent : public BaseEvent {
-    public:
-        void *wsaEvent{nullptr};
-    };
-}// namespace sese::event
+/// WSAEventSelect 事件
+class WSAEvent : public BaseEvent {
+public:
+    void *wsaEvent{nullptr};
+};
+} // namespace sese::event

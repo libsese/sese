@@ -46,7 +46,7 @@ sese::event::KqueueEventLoop::~KqueueEventLoop() {
 }
 
 void sese::event::KqueueEventLoop::dispatch(uint32_t time) {
-    struct kevent events[MAX_EVENT_SIZE] {};
+    struct kevent events[MAX_EVENT_SIZE]{};
     auto div = ldiv(time, 1000);
     struct timespec timeout {
         div.quot, div.rem * 1000000

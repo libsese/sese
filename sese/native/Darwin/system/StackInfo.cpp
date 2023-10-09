@@ -36,7 +36,7 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
         auto pos1 = str.find_last_of('+');
         auto pos2 = findPos2(str.c_str() + pos1, pos1);
 
-        char *end;// pos3
+        char *end; // pos3
         uint64_t symAddress = std::strtoll(str.c_str() + pos2 + 1, &end, 16);
 
         auto pos3 = end - str.c_str();

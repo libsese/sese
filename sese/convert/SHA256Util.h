@@ -15,25 +15,25 @@
 
 namespace sese {
 
-    struct Bitset32;
+struct Bitset32;
 
-    /// \brief 非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类
-    class API SHA256Util {
-    public:
-        using OutputStream = sese::io::OutputStream;
-        using InputStream = sese::io::InputStream;
+/// \brief 非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类
+class API SHA256Util {
+public:
+    using OutputStream = sese::io::OutputStream;
+    using InputStream = sese::io::InputStream;
 
-        static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
-        static void encode(InputStream *input, OutputStream *output) noexcept;
+    static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
+    static void encode(InputStream *input, OutputStream *output) noexcept;
 
-        static std::unique_ptr<char []> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
-        static std::unique_ptr<char []> encode(InputStream *input, bool isCap = true) noexcept;
+    static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
+    static std::unique_ptr<char[]> encode(InputStream *input, bool isCap = true) noexcept;
 
-    private:
-        /// 常数序列
-        static const Bitset32 k[64];
+private:
+    /// 常数序列
+    static const Bitset32 k[64];
 
-        static void structure(Bitset32 *block) noexcept;
-        static void encode(Bitset32 value[8], Bitset32 *block, Bitset32 k) noexcept;
-    };
-}
+    static void structure(Bitset32 *block) noexcept;
+    static void encode(Bitset32 value[8], Bitset32 *block, Bitset32 k) noexcept;
+};
+} // namespace sese

@@ -15,35 +15,35 @@
 
 namespace sese::net::http {
 
-    /// Url 解析器
-    class API Url final {
-    public:
-        explicit Url(const std::string &url) noexcept;
+/// Url 解析器
+class API Url final {
+public:
+    explicit Url(const std::string &url) noexcept;
 
-        [[nodiscard]] const std::string &getProtocol() const {
-            return protocol;
-        }
+    [[nodiscard]] const std::string &getProtocol() const {
+        return protocol;
+    }
 
-        [[nodiscard]] const std::string &getHost() const {
-            return host;
-        }
+    [[nodiscard]] const std::string &getHost() const {
+        return host;
+    }
 
-        [[nodiscard]] const std::string &getUrl() const {
-            return url;
-        }
+    [[nodiscard]] const std::string &getUrl() const {
+        return url;
+    }
 
-        [[nodiscard]] const std::string &getQuery() const {
-            return query;
-        }
+    [[nodiscard]] const std::string &getQuery() const {
+        return query;
+    }
 
-    private:
-        /// 协议
-        std::string protocol;
-        /// 域名
-        std::string host;
-        /// 资源
-        std::string url;
-        /// 查询
-        std::string query;
-    };
-}// namespace sese::net::http
+private:
+    /// 协议
+    std::string protocol;
+    /// 域名
+    std::string host;
+    /// 资源
+    std::string url;
+    /// 查询
+    std::string query;
+};
+} // namespace sese::net::http

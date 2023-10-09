@@ -14,32 +14,32 @@
 
 namespace sese::io {
 
-    // 此处已经过单测，不存在分支和未测函数
-    // GCOVR_EXCL_START
+// 此处已经过单测，不存在分支和未测函数
+// GCOVR_EXCL_START
 
-    /// \brief 伪装流
-    /// \tparam T 包装类型
-    template<typename T>
-    class FakeStream : public Stream {
-    public:
-        explicit FakeStream(T *t) : t(t) {}
+/// \brief 伪装流
+/// \tparam T 包装类型
+template<typename T>
+class FakeStream : public Stream {
+public:
+    explicit FakeStream(T *t) : t(t) {}
 
-        int64_t read(void *buffer, size_t length) override { return t->read(buffer, length); }
-        int64_t write(const void *buffer, size_t length) override { return t->write(buffer, length); };
+    int64_t read(void *buffer, size_t length) override { return t->read(buffer, length); }
+    int64_t write(const void *buffer, size_t length) override { return t->write(buffer, length); };
 
-    protected:
-        T *t;
-    };
+protected:
+    T *t;
+};
 
-    /// \brief 可关闭的伪装流
-    /// \tparam T 包装类型
-    template<typename T>
-    class ClosableFakeStream : public FakeStream<T>, public sese::io::Closeable {
-    public:
-        explicit ClosableFakeStream(T *t) : FakeStream<T>(t) {}
-        void close() override { this->t->close(); }
-    };
+/// \brief 可关闭的伪装流
+/// \tparam T 包装类型
+template<typename T>
+class ClosableFakeStream : public FakeStream<T>, public sese::io::Closeable {
+public:
+    explicit ClosableFakeStream(T *t) : FakeStream<T>(t) {}
+    void close() override { this->t->close(); }
+};
 
-    // GCOVR_EXCL_STOP
+// GCOVR_EXCL_STOP
 
-}// namespace sese
+} // namespace sese::io

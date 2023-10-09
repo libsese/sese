@@ -13,10 +13,10 @@
 #include "sese/native/Linux/event/EpollEventConvert.h"
 
 namespace sese::event {
-    using Event = BaseEvent;
-    using EventLoop = EpollEventLoop;
-    using EventConvert = EpollEventConvert;
-}// namespace sese::event
+using Event = BaseEvent;
+using EventLoop = EpollEventLoop;
+using EventConvert = EpollEventConvert;
+} // namespace sese::event
 
 #endif
 
@@ -27,10 +27,10 @@ namespace sese::event {
 #include "sese/native/Windows/event/WSAEventConvert.h"
 
 namespace sese::event {
-    using Event = BaseEvent;
-    using EventLoop = WSAEventLoop;
-    using EventConvert = WSAEventConvert;
-}// namespace sese::event
+using Event = BaseEvent;
+using EventLoop = WSAEventLoop;
+using EventConvert = WSAEventConvert;
+} // namespace sese::event
 
 #endif
 
@@ -40,8 +40,8 @@ namespace sese::event {
 #include "sese/native/Darwin/event/KqueueEventLoop.h"
 
 namespace sese::event {
-    using Event = BaseEvent;
-    using EventLoop = KqueueEventLoop;
-}// namespace sese::event
+using Event = BaseEvent;
+using EventLoop = KqueueEventLoop;
+} // namespace sese::event
 
 #endif

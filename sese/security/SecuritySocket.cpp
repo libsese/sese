@@ -24,8 +24,7 @@ int32_t sese::security::SecuritySocket::connect(Address::Ptr address) noexcept {
                 continue;
             } else if (err == EISCONN) {
                 break;
-            }
-            else {
+            } else {
                 return rt;
             }
         } else {

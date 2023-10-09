@@ -9,7 +9,7 @@
 #include "sese/event/BaseEvent.h"
 
 namespace sese::event {
-    /// epoll 事件
-    class EpollEvent : public BaseEvent {
-    };
-}// namespace sese::event
+/// epoll 事件
+class EpollEvent : public BaseEvent {
+};
+} // namespace sese::event

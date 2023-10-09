@@ -14,7 +14,7 @@ void sese::service::RpcService::setFunction(const std::string &name, const sese:
 
 sese::service::RpcService::~RpcService() noexcept {
     for (decltype(auto) item: buffers) {
-        delete item.second;// GCOVR_EXCL_LINE
+        delete item.second; // GCOVR_EXCL_LINE
     }
 }
 
@@ -78,8 +78,8 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
                 // 无数据可读，触发子函数处理
                 if (onHandle(buffer)) {
                     // 准备进入写模式，返回响应
-                    event->events &= ~EVENT_READ;// 删除读事件
-                    event->events |= EVENT_WRITE;// 添加写事件
+                    event->events &= ~EVENT_READ; // 删除读事件
+                    event->events |= EVENT_WRITE; // 添加写事件
                     this->setEvent(event);
                     break;
                 } else {

@@ -28,7 +28,7 @@ TEST(TestArgParser, Parse_0) {
     findValue("a4", "undef");
 
     auto set = args->getKeyValSet();
-    for (auto &item : set) {
+    for (auto &item: set) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 }

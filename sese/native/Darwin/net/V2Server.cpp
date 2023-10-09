@@ -1,5 +1,5 @@
 #if defined(_MSC_VER)
-#pragma warning(disable: 4996)
+#pragma warning(disable : 4996)
 #elif defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"

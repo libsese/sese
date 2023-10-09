@@ -21,7 +21,6 @@ TEST(TestCSVUtil, Reader) {
                 printf("%s", col.empty() ? "Null" : col.c_str());
             } else {
                 printf(",%s", col.empty() ? "Null" : col.c_str());
-
             }
         }
         puts("");

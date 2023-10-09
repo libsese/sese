@@ -15,21 +15,21 @@
 #endif
 
 namespace sese::record {
-    /**
-     * @brief 日志文件输出源类
-     */
-    class API FileAppender final : public sese::record::AbstractAppender {
-    public:
-        typedef std::shared_ptr<FileAppender> Ptr;
+/**
+ * @brief 日志文件输出源类
+ */
+class API FileAppender final : public sese::record::AbstractAppender {
+public:
+    typedef std::shared_ptr<FileAppender> Ptr;
 
-        explicit FileAppender(io::FileStream::Ptr fileStream, Level level = Level::DEBUG);
+    explicit FileAppender(io::FileStream::Ptr fileStream, Level level = Level::DEBUG);
 
-        ~FileAppender() noexcept override;
+    ~FileAppender() noexcept override;
 
-        void dump(const char *buffer, size_t size) noexcept override;
+    void dump(const char *buffer, size_t size) noexcept override;
 
-    private:
-        io::BufferedStream::Ptr bufferedStream;
-        io::FileStream::Ptr fileStream;
-    };
-}// namespace sese::record
+private:
+    io::BufferedStream::Ptr bufferedStream;
+    io::FileStream::Ptr fileStream;
+};
+} // namespace sese::record

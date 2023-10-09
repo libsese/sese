@@ -10,27 +10,27 @@
 
 namespace sese {
 
-    /// GZip 文件输出流（压缩）
-    class API GZipFileOutputStream : public io::OutputStream {
-    public:
-        static void deleter(GZipFileOutputStream *data) noexcept;
+/// GZip 文件输出流（压缩）
+class API GZipFileOutputStream : public io::OutputStream {
+public:
+    static void deleter(GZipFileOutputStream *data) noexcept;
 
-        using Ptr = std::shared_ptr<GZipFileOutputStream>;
+    using Ptr = std::shared_ptr<GZipFileOutputStream>;
 
-        /// 创建文件输出流对象
-        /// \param file 文件的相对或者绝对路径
-        /// \param level 压缩等级(取值范围为0~9，自动处理数值区间)
-        /// \retval nullptr 打开文件失败
-        static GZipFileOutputStream::Ptr create(const char *file, size_t level) noexcept;
+    /// 创建文件输出流对象
+    /// \param file 文件的相对或者绝对路径
+    /// \param level 压缩等级(取值范围为0~9，自动处理数值区间)
+    /// \retval nullptr 打开文件失败
+    static GZipFileOutputStream::Ptr create(const char *file, size_t level) noexcept;
 
-        int64_t write(const void *buffer, size_t length) override;
+    int64_t write(const void *buffer, size_t length) override;
 
-        void close() noexcept;
+    void close() noexcept;
 
-    private:
-        GZipFileOutputStream() = default;
+private:
+    GZipFileOutputStream() = default;
 
-        void *gzFile = nullptr;
-    };
+    void *gzFile = nullptr;
+};
 
-}// namespace sese
+} // namespace sese

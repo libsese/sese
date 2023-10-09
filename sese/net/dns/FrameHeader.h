@@ -13,28 +13,28 @@
 
 namespace sese::net::dns {
 
-    /// 帧标识信息
-    struct FrameFlagsInfo {
-        uint8_t QR = 0;
-        uint8_t opcode = 0;
-        uint8_t AA = 0;
-        uint8_t TC = 0;
-        uint8_t RD = 0;
-        uint8_t RA = 0;
-        uint8_t z = 0;
-        uint8_t rcode = 0;
-    };
+/// 帧标识信息
+struct FrameFlagsInfo {
+    uint8_t QR = 0;
+    uint8_t opcode = 0;
+    uint8_t AA = 0;
+    uint8_t TC = 0;
+    uint8_t RD = 0;
+    uint8_t RA = 0;
+    uint8_t z = 0;
+    uint8_t rcode = 0;
+};
 
-    /// 帧头信息
-    struct FrameHeaderInfo {
-        uint16_t transactionId = 0;
-        FrameFlagsInfo flags{};
-        uint16_t questions = 0;
-        uint16_t answerPrs = 0;
-        uint16_t authorityPrs = 0;
-        uint16_t additionalPrs = 0;
-    };
-}// namespace sese::net::dns
+/// 帧头信息
+struct FrameHeaderInfo {
+    uint16_t transactionId = 0;
+    FrameFlagsInfo flags{};
+    uint16_t questions = 0;
+    uint16_t answerPrs = 0;
+    uint16_t authorityPrs = 0;
+    uint16_t additionalPrs = 0;
+};
+} // namespace sese::net::dns
 
 #define SESE_DNS_RCODE_NO_ERROR 0
 #define SESE_DNS_RCODE_FORMAT_ERROR 1

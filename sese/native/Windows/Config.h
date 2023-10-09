@@ -59,13 +59,13 @@
 #endif
 
 namespace sese {
-    /// 进程 ID 标识符
-    using pid_t = DWORD;
-    /// 线程 ID 标识符
-    using tid_t = uint32_t;
-    /// Native Socket 类型
-    using socket_t = SOCKET;
-}// namespace sese
+/// 进程 ID 标识符
+using pid_t = DWORD;
+/// 线程 ID 标识符
+using tid_t = uint32_t;
+/// Native Socket 类型
+using socket_t = SOCKET;
+} // namespace sese
 
 /// WSA 错误映射
 

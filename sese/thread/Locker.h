@@ -11,22 +11,22 @@
 
 namespace sese {
 
-    /**
-     * @brief std::mutex 包装器
-     * @tparam T std::mutex
-     */
-    template<typename T = std::mutex>
-    class API Locker {
-    public:
-        explicit Locker(T &t) : mutex(t) {
-            mutex.lock();
-        }
-        ~Locker() {
-            mutex.unlock();
-        }
+/**
+ * @brief std::mutex 包装器
+ * @tparam T std::mutex
+ */
+template<typename T = std::mutex>
+class API Locker {
+public:
+    explicit Locker(T &t) : mutex(t) {
+        mutex.lock();
+    }
+    ~Locker() {
+        mutex.unlock();
+    }
 
-    private:
-        T &mutex;
-    };
+private:
+    T &mutex;
+};
 
-}// namespace sese
+} // namespace sese

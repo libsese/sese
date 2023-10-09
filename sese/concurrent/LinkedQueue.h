@@ -12,133 +12,133 @@
 
 namespace sese::concurrent {
 
-    /**
-     * @brief 非阻塞线程安全队列
-     * @tparam T 数据类型
-     * @deprecated 弃用原因请查看文件文档
-     */
-    template<typename T>
-    class SESE_DEPRECATED_WITH("已弃用") LinkedQueue {
-    public:
-        using NodeType = Node<T>;
+/**
+ * @brief 非阻塞线程安全队列
+ * @tparam T 数据类型
+ * @deprecated 弃用原因请查看文件文档
+ */
+template<typename T>
+class SESE_DEPRECATED_WITH("已弃用") LinkedQueue {
+public:
+    using NodeType = Node<T>;
 
-        virtual ~LinkedQueue() {
-            auto toDel = (NodeType *)head;
-            while (toDel != nullptr) {
-                auto next = toDel->next;
-                delete toDel;
-                toDel = next;
-            }
+    virtual ~LinkedQueue() {
+        auto toDel = (NodeType *) head;
+        while (toDel != nullptr) {
+            auto next = toDel->next;
+            delete toDel;
+            toDel = next;
         }
+    }
 
-        [[nodiscard]] bool empty() const { return head == nullptr; }
+    [[nodiscard]] bool empty() const { return head == nullptr; }
 
-        [[nodiscard]] size_t size() const {
-            size_t size = 0;
-            auto p = (NodeType *) head;
-            while (p != nullptr) {
-                size++;
-                p = p->next;
-            }
-            return size;
+    [[nodiscard]] size_t size() const {
+        size_t size = 0;
+        auto p = (NodeType *) head;
+        while (p != nullptr) {
+            size++;
+            p = p->next;
         }
+        return size;
+    }
 
-        void push(T &&value) {
-            auto newNode = new NodeType;
-            newNode->value = value;
+    void push(T &&value) {
+        auto newNode = new NodeType;
+        newNode->value = value;
 
-            if (head == nullptr) {
-                // 队列空
-                // 优先更新 head 节点
-                while (!compareAndSwapPointer((void *volatile *) &head, nullptr, newNode)) {}
-                compareAndSwapPointer((void *volatile *) &tail, nullptr, newNode);
-            } else if (tail == nullptr) {
-                // 可能 tail 没能更新成功导致仍为 nullptr
-                // 故从 head 开始查找尾部位置
-                // assert(head != nullptr)
-                auto realTail = findTail((NodeType *) head);
-                while (!compareAndSwapPointer((void *volatile *) &realTail, nullptr, newNode)) {}
-                compareAndSwapPointer((void *volatile *) &tail, nullptr, newNode);
-            } else {
-                // 正常插入，tail 不一定是尾部节点，但一定是最靠近尾部的
-                // 故从 tail 开始查找尾部位置
-                // assert(tail != nullptr)
-                auto realTail = findTail((NodeType *) tail);
-                while (!compareAndSwapPointer((void *volatile *) &realTail->next, nullptr, newNode)) {}
-                compareAndSwapPointer((void *volatile *) &tail, realTail, newNode);
-            }
+        if (head == nullptr) {
+            // 队列空
+            // 优先更新 head 节点
+            while (!compareAndSwapPointer((void *volatile *) &head, nullptr, newNode)) {}
+            compareAndSwapPointer((void *volatile *) &tail, nullptr, newNode);
+        } else if (tail == nullptr) {
+            // 可能 tail 没能更新成功导致仍为 nullptr
+            // 故从 head 开始查找尾部位置
+            // assert(head != nullptr)
+            auto realTail = findTail((NodeType *) head);
+            while (!compareAndSwapPointer((void *volatile *) &realTail, nullptr, newNode)) {}
+            compareAndSwapPointer((void *volatile *) &tail, nullptr, newNode);
+        } else {
+            // 正常插入，tail 不一定是尾部节点，但一定是最靠近尾部的
+            // 故从 tail 开始查找尾部位置
+            // assert(tail != nullptr)
+            auto realTail = findTail((NodeType *) tail);
+            while (!compareAndSwapPointer((void *volatile *) &realTail->next, nullptr, newNode)) {}
+            compareAndSwapPointer((void *volatile *) &tail, realTail, newNode);
         }
+    }
 
-        void push(const T &value) {
-            auto newNode = new NodeType;
-            newNode->value = value;
+    void push(const T &value) {
+        auto newNode = new NodeType;
+        newNode->value = value;
 
-            if (head == nullptr) {
-                // 队列空
-                // 优先更新 head 节点
-                while (!compareAndSwapPointer((void *volatile *) &head, nullptr, newNode)) {}
-                compareAndSwapPointer((void *volatile *) &tail, nullptr, newNode);
-            } else if (tail == nullptr) {
-                // 可能 tail 没能更新成功导致仍为 nullptr
-                // 故从 head 开始查找尾部位置
-                // assert(head != nullptr)
-                auto realTail = findTail((NodeType *) head);
-                while (!compareAndSwapPointer((void *volatile *) &realTail, nullptr, newNode)) {}
-                compareAndSwapPointer((void *volatile *) &tail, nullptr, newNode);
-            } else {
-                // 正常插入，tail 不一定是尾部节点，但一定是最靠近尾部的
-                // 故从 tail 开始查找尾部位置
-                // assert(tail != nullptr)
-                auto oldTail = (NodeType *) tail;
-                auto realTail = findTail((NodeType *) tail);
-                while (!compareAndSwapPointer((void *volatile *) &realTail->next, nullptr, newNode)) {}
-                compareAndSwapPointer((void *volatile *) &tail, (NodeType *) oldTail, newNode);
-            }
+        if (head == nullptr) {
+            // 队列空
+            // 优先更新 head 节点
+            while (!compareAndSwapPointer((void *volatile *) &head, nullptr, newNode)) {}
+            compareAndSwapPointer((void *volatile *) &tail, nullptr, newNode);
+        } else if (tail == nullptr) {
+            // 可能 tail 没能更新成功导致仍为 nullptr
+            // 故从 head 开始查找尾部位置
+            // assert(head != nullptr)
+            auto realTail = findTail((NodeType *) head);
+            while (!compareAndSwapPointer((void *volatile *) &realTail, nullptr, newNode)) {}
+            compareAndSwapPointer((void *volatile *) &tail, nullptr, newNode);
+        } else {
+            // 正常插入，tail 不一定是尾部节点，但一定是最靠近尾部的
+            // 故从 tail 开始查找尾部位置
+            // assert(tail != nullptr)
+            auto oldTail = (NodeType *) tail;
+            auto realTail = findTail((NodeType *) tail);
+            while (!compareAndSwapPointer((void *volatile *) &realTail->next, nullptr, newNode)) {}
+            compareAndSwapPointer((void *volatile *) &tail, (NodeType *) oldTail, newNode);
         }
+    }
 
-        T pop(T &&defaultValue) {
-            if (head == nullptr) {
-                // 队列空，直接返回缺省值
-                return defaultValue;
-            } else {
-                NodeType *oldHead = (NodeType *) head;
-                NodeType *node = (NodeType *) head;
-                //bug: may be head was nullptr
-                while (!compareAndSwapPointer((void *volatile *) &head, node, node->next)) {
-                    node = (NodeType *) head;
-                }
-                T res = oldHead->value;
-                delete oldHead;
-                return res;
+    T pop(T &&defaultValue) {
+        if (head == nullptr) {
+            // 队列空，直接返回缺省值
+            return defaultValue;
+        } else {
+            NodeType *oldHead = (NodeType *) head;
+            NodeType *node = (NodeType *) head;
+            //bug: may be head was nullptr
+            while (!compareAndSwapPointer((void *volatile *) &head, node, node->next)) {
+                node = (NodeType *) head;
             }
+            T res = oldHead->value;
+            delete oldHead;
+            return res;
         }
+    }
 
-        T pop(const T &defaultValue) {
-            if (head == nullptr) {
-                // 队列空，直接返回缺省值
-                return defaultValue;
-            } else {
-                NodeType *node = (NodeType *) head;
-                //bug: may be head was nullptr
-                while (!compareAndSwapPointer((void *volatile *) &head, node, node->next)) {
-                    node = (NodeType *) head;
-                }
-                return node->value;
+    T pop(const T &defaultValue) {
+        if (head == nullptr) {
+            // 队列空，直接返回缺省值
+            return defaultValue;
+        } else {
+            NodeType *node = (NodeType *) head;
+            //bug: may be head was nullptr
+            while (!compareAndSwapPointer((void *volatile *) &head, node, node->next)) {
+                node = (NodeType *) head;
             }
+            return node->value;
         }
+    }
 
-    private:
-        NodeType *findTail(NodeType *from) {
-            if (from == nullptr) {
-                return (NodeType *) head;
-            }
-            while (from->next != nullptr) {
-                from = from->next;
-            }
-            return from;
+private:
+    NodeType *findTail(NodeType *from) {
+        if (from == nullptr) {
+            return (NodeType *) head;
         }
+        while (from->next != nullptr) {
+            from = from->next;
+        }
+        return from;
+    }
 
-        volatile NodeType *head = nullptr;
-        volatile NodeType *tail = nullptr;
-    };
-}// namespace sese::concurrent
+    volatile NodeType *head = nullptr;
+    volatile NodeType *tail = nullptr;
+};
+} // namespace sese::concurrent

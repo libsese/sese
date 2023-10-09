@@ -17,41 +17,41 @@
 
 namespace sese::net::dns {
 
-    /// DNS 配置
-    struct API DNSConfig {
-        IPAddress::Ptr address;
-        std::map<std::string, std::string> hostIPv4Map;
-        std::map<std::string, std::string> hostIPv6Map;
-    };
+/// DNS 配置
+struct API DNSConfig {
+    IPAddress::Ptr address;
+    std::map<std::string, std::string> hostIPv4Map;
+    std::map<std::string, std::string> hostIPv6Map;
+};
 
-    /// DNS 服务器
-    class API DNSServer {
-    public:
-        using Ptr = std::unique_ptr<DNSServer>;
+/// DNS 服务器
+class API DNSServer {
+public:
+    using Ptr = std::unique_ptr<DNSServer>;
 
-        /// 使用配置创建 DNS 服务器
-        /// \param config 配置
-        /// \return 服务器实例
-        /// \retval nullptr 创建失败
-        static DNSServer::Ptr create(const DNSConfig *config) noexcept;
+    /// 使用配置创建 DNS 服务器
+    /// \param config 配置
+    /// \return 服务器实例
+    /// \retval nullptr 创建失败
+    static DNSServer::Ptr create(const DNSConfig *config) noexcept;
 
-        ~DNSServer() noexcept;
+    ~DNSServer() noexcept;
 
-        /// 启动实例
-        void start() noexcept;
+    /// 启动实例
+    void start() noexcept;
 
-        /// 关闭实例
-        void shutdown() noexcept;
+    /// 关闭实例
+    void shutdown() noexcept;
 
-    private:
-        DNSServer() = default;
+private:
+    DNSServer() = default;
 
-        void loop() noexcept;
+    void loop() noexcept;
 
-        std::atomic_bool isShutdown{false};
-        Socket::Ptr socket = nullptr;
-        Thread::Ptr thread = nullptr;
-        std::map<std::string, std::string> hostIPv4Map;
-        std::map<std::string, std::string> hostIPv6Map;
-    };
-}
+    std::atomic_bool isShutdown{false};
+    Socket::Ptr socket = nullptr;
+    Thread::Ptr thread = nullptr;
+    std::map<std::string, std::string> hostIPv4Map;
+    std::map<std::string, std::string> hostIPv6Map;
+};
+} // namespace sese::net::dns

@@ -20,7 +20,8 @@ public:
             while (run) {
                 dispatch(100);
             }
-        }, "MyEventThread");
+        },
+                                            "MyEventThread");
         th->start();
     }
 

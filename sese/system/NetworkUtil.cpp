@@ -125,13 +125,13 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     // 用于获取 IPv6 信息
     FILE *f = fopen("/proc/net/if_inet6", "r");
     // 此处为假则表示不存在该配置文件，取消获取 IPv6 信息
-    if (f != nullptr) {// GCOVR_EXCL_LINE
+    if (f != nullptr) { // GCOVR_EXCL_LINE
         int scope, prefix;
         unsigned char ipv6[16];
         char name[IFNAMSIZ];
         char address[INET6_ADDRSTRLEN];
         while (19 ==
-               fscanf(f,// NOLINT
+               fscanf(f, // NOLINT
                       " %2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx %*x %x %x %*x %s",
                       &ipv6[0],
                       &ipv6[1],

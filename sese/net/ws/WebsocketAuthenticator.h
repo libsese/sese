@@ -12,28 +12,28 @@
 
 namespace sese::net::ws {
 
-    /// Websocket 验证器
-    class API WebsocketAuthenticator : public NotInstantiable {
-    public:
-        /// 生成密钥对
-        /// \return 密钥对
-        static std::pair<std::unique_ptr<char []>, std::unique_ptr<char []>> generateKeyPair() noexcept;
+/// Websocket 验证器
+class API WebsocketAuthenticator : public NotInstantiable {
+public:
+    /// 生成密钥对
+    /// \return 密钥对
+    static std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> generateKeyPair() noexcept;
 
-        /// 验证密钥对
-        /// \param key 密钥
-        /// \param result 结果
-        /// \return 验证结果
-        static bool verify(const char *key, const char *result) noexcept;
+    /// 验证密钥对
+    /// \param key 密钥
+    /// \param result 结果
+    /// \return 验证结果
+    static bool verify(const char *key, const char *result) noexcept;
 
-        /// 由密钥生成结果
-        /// \param key 密钥
-        /// \return 结果
-        static std::unique_ptr<char []> toResult(const char *key) noexcept;
+    /// 由密钥生成结果
+    /// \param key 密钥
+    /// \return 结果
+    static std::unique_ptr<char[]> toResult(const char *key) noexcept;
 
-    private:
-        static const char *APPEND_STRING;
+private:
+    static const char *APPEND_STRING;
 
-        /// 生成二进制 key
-        static void generateKey(uint8_t key[16]);
-    };
-}
+    /// 生成二进制 key
+    static void generateKey(uint8_t key[16]);
+};
+} // namespace sese::net::ws

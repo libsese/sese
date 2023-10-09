@@ -30,7 +30,7 @@ int32_t Socket::bind(Address::Ptr addr) noexcept {
 
 int32_t Socket::connect(Address::Ptr addr) noexcept {
     address = std::move(addr);
-    while(true) {
+    while (true) {
         auto rt = ::connect(handle, address->getRawAddress(), address->getRawAddressLength());
         if (rt != 0) {
             auto err = sese::net::getNetworkError();

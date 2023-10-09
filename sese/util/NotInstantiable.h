@@ -9,14 +9,14 @@
 
 namespace sese {
 
-    /**
-     * @brief 不可实例化类
-     */
-    class API NotInstantiable {
-    public:
-        NotInstantiable() = delete;
-        virtual ~NotInstantiable() = default;
-        NotInstantiable(const NotInstantiable &) = delete;
-        NotInstantiable &operator=(const NotInstantiable &) = delete;
-    };
-}// namespace sese
+/**
+ * @brief 不可实例化类
+ */
+class API NotInstantiable {
+public:
+    NotInstantiable() = delete;
+    virtual ~NotInstantiable() = default;
+    NotInstantiable(const NotInstantiable &) = delete;
+    NotInstantiable &operator=(const NotInstantiable &) = delete;
+};
+} // namespace sese

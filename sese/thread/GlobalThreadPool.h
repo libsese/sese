@@ -11,35 +11,35 @@
 
 namespace sese {
 
-    /// 全局线程池，在 Windows 上使用系统线程池，而在 UNIX 平台上则使用懒汉单例模式的线程池
-    class API GlobalThreadPool {
-    public:
-        static void postTask(const std::function<void()> &func);
+/// 全局线程池，在 Windows 上使用系统线程池，而在 UNIX 平台上则使用懒汉单例模式的线程池
+class API GlobalThreadPool {
+public:
+    static void postTask(const std::function<void()> &func);
 
-        template<class ReturnType>
-        static std::shared_future<ReturnType> postTask(const std::function<ReturnType()> &func);
+    template<class ReturnType>
+    static std::shared_future<ReturnType> postTask(const std::function<ReturnType()> &func);
 
 #ifdef SESE_PLATFORM_WINDOWS
-    private:
-        struct Task1 {
-            std::function<void()> function;
-        };
-
-        template<class ReturnType>
-        struct Task2 {
-            std::packaged_task<ReturnType()> packagedTask;
-        };
-
-        static DWORD WINAPI taskRunner1(LPVOID lpParam);
-
-        template<class ReturnType>
-        static DWORD WINAPI taskRunner2(LPVOID lpParma);
-#else
-    private:
-        static SingletonPtr<ThreadPool> globalThreadPool;
-#endif
+private:
+    struct Task1 {
+        std::function<void()> function;
     };
-}// namespace sese
+
+    template<class ReturnType>
+    struct Task2 {
+        std::packaged_task<ReturnType()> packagedTask;
+    };
+
+    static DWORD WINAPI taskRunner1(LPVOID lpParam);
+
+    template<class ReturnType>
+    static DWORD WINAPI taskRunner2(LPVOID lpParma);
+#else
+private:
+    static SingletonPtr<ThreadPool> globalThreadPool;
+#endif
+};
+} // namespace sese
 
 #ifdef SESE_PLATFORM_WINDOWS
 

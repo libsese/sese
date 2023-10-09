@@ -12,7 +12,7 @@
 #include <sese/text/SStringBuilder.h>
 
 namespace sese::text {
-    using Char = sstr::SChar;
-    using String = sstr::SString;
-    using StringView = sstr::SStringView;
-}
+using Char = sstr::SChar;
+using String = sstr::SString;
+using StringView = sstr::SStringView;
+} // namespace sese::text

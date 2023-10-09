@@ -135,7 +135,7 @@ TEST(TestHttpService, NO_SSL_KEEPALIVE) {
     client->req.setType(sese::net::http::RequestType::Post);
     client->req.getBody().write(content.c_str(), content.length());
 
-    auto future = sese::async<bool>([&](){
+    auto future = sese::async<bool>([&]() {
         return client->doRequest();
     });
 

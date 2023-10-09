@@ -16,38 +16,38 @@
 
 namespace sese {
 
+/**
+ * @brief 跨平台的文件读取器，主要适配 Windows，支持 UTF-8
+ * @deprecated 请考虑使用 sese::text::TextReader
+ */
+class API UniReader final {
+public:
+    using Ptr = std::shared_ptr<UniReader>;
+
+    ~UniReader();
+
     /**
-     * @brief 跨平台的文件读取器，主要适配 Windows，支持 UTF-8
-     * @deprecated 请考虑使用 sese::text::TextReader
+     * 打开文件
+     * @param fileName 文件名称
+     * @retval nullptr 打开失败
      */
-    class API UniReader final {
-    public:
-        using Ptr = std::shared_ptr<UniReader>;
+    static std::shared_ptr<UniReader> create(const std::string &fileName) noexcept;
 
-        ~UniReader();
+    /**
+     * 读取一行
+     * @return 读取到的文本，当 string.empty() 为 true 时表示没有内容可供再读取
+     */
+    std::string readLine();
 
-        /**
-         * 打开文件
-         * @param fileName 文件名称
-         * @retval nullptr 打开失败
-         */
-        static std::shared_ptr<UniReader> create(const std::string &fileName) noexcept;
+private:
+    UniReader() = default;
 
-        /**
-         * 读取一行
-         * @return 读取到的文本，当 string.empty() 为 true 时表示没有内容可供再读取
-         */
-        std::string readLine();
-
-    private:
-        UniReader() = default;
-
-        io::FileStream::Ptr fileStream;
+    io::FileStream::Ptr fileStream;
 #ifdef SESE_PLATFORM_WINDOWS
-        std::wstring_convert<std::codecvt_utf8<wchar_t>> convert;
-        io::WStreamReader::Ptr reader;
+    std::wstring_convert<std::codecvt_utf8<wchar_t>> convert;
+    io::WStreamReader::Ptr reader;
 #else
-        io::StreamReader::Ptr reader;
+    io::StreamReader::Ptr reader;
 #endif
-    };
-}
+};
+} // namespace sese

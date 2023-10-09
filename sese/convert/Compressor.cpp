@@ -22,11 +22,11 @@ sese::Compressor::Compressor(sese::CompressionType type, size_t level, size_t bu
 }
 
 sese::Compressor::~Compressor() {
-    delete[] buffer;// GCOVR_EXCL_LINE
+    delete[] buffer; // GCOVR_EXCL_LINE
 
     auto stm = (z_stream *) stream;
     ::deflateEnd(stm);
-    delete stm;// GCOVR_EXCL_LINE
+    delete stm; // GCOVR_EXCL_LINE
     stream = nullptr;
 }
 

@@ -20,8 +20,8 @@ AsyncLogger::~AsyncLogger() noexcept {
     isShutdown = true;
     conditionVariable.notify_one();
     thread->join();
-    delete currentBuffer;// GCOVR_EXCL_LINE
-    delete nextBuffer;   // GCOVR_EXCL_LINE
+    delete currentBuffer; // GCOVR_EXCL_LINE
+    delete nextBuffer;    // GCOVR_EXCL_LINE
 }
 
 void AsyncLogger::log(const Event::Ptr &event) noexcept {
@@ -110,19 +110,19 @@ void AsyncLogger::loop() noexcept {
         // 移除过多的缓冲区，避免堆积过多
         if (buffer2Write.size() > 2) {
             std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](io::FixedBuilder *buffer) {
-                delete buffer;// GCOVR_EXCL_LINE
+                delete buffer; // GCOVR_EXCL_LINE
             });
             buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());
             buffer2Write.resize(2);
         }
 
-        if (!buffer1) {// NOLINT
+        if (!buffer1) { // NOLINT
             buffer1 = buffer2Write.back();
             buffer2Write.pop_back();
             buffer1->reset();
         }
 
-        if (!buffer2) {// NOLINT
+        if (!buffer2) { // NOLINT
             buffer2 = buffer2Write.back();
             buffer2Write.pop_back();
             buffer2->reset();
@@ -147,6 +147,6 @@ void AsyncLogger::loop() noexcept {
     buffer2Ready.clear();
     // GCOVR_EXCL_STOP
 
-    delete buffer1;// GCOVR_EXCL_LINE
-    delete buffer2;// GCOVR_EXCL_LINE
+    delete buffer1; // GCOVR_EXCL_LINE
+    delete buffer2; // GCOVR_EXCL_LINE
 }

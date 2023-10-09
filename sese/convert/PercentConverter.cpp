@@ -1,8 +1,8 @@
 #include "sese/convert/PercentConverter.h"
 #include "sese/text/StringBuilder.h"
 
-using sese::io::OutputStream;
 using sese::PercentConverter;
+using sese::io::OutputStream;
 
 std::set<char> sese::PercentConverter::urlExcludeChars{
         '!', '*', '\"', '\'', '(', ')', ';', ':', '@', '&',

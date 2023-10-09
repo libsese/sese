@@ -133,7 +133,7 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
             // auto iterator = std::find_if(table.begin(), table.end(), isHitAll);
             if (iteratorAll != table.end()) {
                 /// 对应第 0 种情况
-                size_t index = iteratorAll - table.begin()  + 62;
+                size_t index = iteratorAll - table.begin() + 62;
                 size += encodeIndexCase0(dest, index);
                 continue;
             }

@@ -42,7 +42,7 @@ TEST(TestSSL, Client) {
 
 TEST(TestSSL, Server) {
     auto port = sese::net::createRandomPort();
-    auto address = sese::net::IPv4Address::localhost((uint16_t)port);
+    auto address = sese::net::IPv4Address::localhost((uint16_t) port);
     auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
     servCtx->importCertFile(PROJECT_PATH "/gtest/Data/test-ca.crt");
     servCtx->importPrivateKeyFile(PROJECT_PATH "/gtest/Data/test-key.pem");

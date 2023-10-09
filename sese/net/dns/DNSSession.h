@@ -13,14 +13,14 @@
 
 namespace sese::net::dns {
 
-    /// DNS 会话类
-    class API DNSSession {
-    public:
-        [[nodiscard]] auto &getQueries() { return queries; }
-        [[nodiscard]] auto &getAnswers() { return answers; }
+/// DNS 会话类
+class API DNSSession {
+public:
+    [[nodiscard]] auto &getQueries() { return queries; }
+    [[nodiscard]] auto &getAnswers() { return answers; }
 
-    protected:
-        std::vector<Query> queries;
-        std::vector<Answer> answers;
-    };
-}// namespace sese::net::dns
+protected:
+    std::vector<Query> queries;
+    std::vector<Answer> answers;
+};
+} // namespace sese::net::dns

@@ -9,8 +9,8 @@
 #include "gtest/gtest.h"
 
 TEST(TestBufferedStream, Output_0) {
-    using sese::io::ByteBuilder;
     using sese::io::BufferedOutputStream;
+    using sese::io::ByteBuilder;
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     auto buffered = BufferedOutputStream(bytes, 16);
@@ -25,8 +25,8 @@ TEST(TestBufferedStream, Output_0) {
 }
 
 TEST(TestBufferedStream, Output_1) {
-    using sese::io::FixedBuilder;
     using sese::io::BufferedOutputStream;
+    using sese::io::FixedBuilder;
 
     auto bytes = std::make_shared<FixedBuilder>(4);
     auto buffered = BufferedOutputStream(bytes, 6);
@@ -37,8 +37,8 @@ TEST(TestBufferedStream, Output_1) {
 }
 
 TEST(TestBufferedStream, Output_2) {
-    using sese::io::FixedBuilder;
     using sese::io::BufferedOutputStream;
+    using sese::io::FixedBuilder;
 
     auto bytes = std::make_shared<FixedBuilder>(4);
     auto buffered = BufferedOutputStream(bytes, 6);
@@ -48,8 +48,8 @@ TEST(TestBufferedStream, Output_2) {
 }
 
 TEST(TestBufferedStream, Output_3) {
-    using sese::io::FixedBuilder;
     using sese::io::BufferedOutputStream;
+    using sese::io::FixedBuilder;
 
     auto bytes = std::make_shared<FixedBuilder>(4);
     auto buffered = BufferedOutputStream(bytes, 6);
@@ -59,8 +59,8 @@ TEST(TestBufferedStream, Output_3) {
 }
 
 TEST(TestBufferedStream, Output_4) {
-    using sese::io::ByteBuilder;
     using sese::io::BufferedOutputStream;
+    using sese::io::ByteBuilder;
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     auto buffered = BufferedOutputStream(bytes, 4);
@@ -68,8 +68,8 @@ TEST(TestBufferedStream, Output_4) {
 }
 
 TEST(TestBufferedStream, Input_0) {
-    using sese::io::ByteBuilder;
     using sese::io::BufferedInputStream;
+    using sese::io::ByteBuilder;
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     bytes->write("Hello, World, Hello, World, Hello, World", 40);
@@ -99,8 +99,8 @@ TEST(TestBufferedStream, Input_0) {
 }
 
 TEST(TestBufferedStream, Input_1) {
-    using sese::io::ByteBuilder;
     using sese::io::BufferedInputStream;
+    using sese::io::ByteBuilder;
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     bytes->write("Hello, World", 12);
@@ -112,8 +112,8 @@ TEST(TestBufferedStream, Input_1) {
 }
 
 TEST(TestBufferedStream, BufferedStream_0) {
-    using sese::io::ByteBuilder;
     using sese::io::BufferedStream;
+    using sese::io::ByteBuilder;
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     auto buffered = BufferedStream(bytes, 16);
@@ -129,8 +129,8 @@ TEST(TestBufferedStream, BufferedStream_0) {
 }
 
 TEST(TestBufferedStream, BufferedStream_1) {
-    using sese::io::FixedBuilder;
     using sese::io::BufferedStream;
+    using sese::io::FixedBuilder;
 
     auto bytes = std::make_shared<FixedBuilder>(4);
     auto buffered = BufferedStream(bytes, 6);
@@ -141,8 +141,8 @@ TEST(TestBufferedStream, BufferedStream_1) {
 }
 
 TEST(TestBufferedStream, BufferedStream_2) {
-    using sese::io::FixedBuilder;
     using sese::io::BufferedStream;
+    using sese::io::FixedBuilder;
 
     auto bytes = std::make_shared<FixedBuilder>(4);
     auto buffered = BufferedStream(bytes, 6);
@@ -152,8 +152,8 @@ TEST(TestBufferedStream, BufferedStream_2) {
 }
 
 TEST(TestBufferedStream, BufferedStream_3) {
-    using sese::io::FixedBuilder;
     using sese::io::BufferedStream;
+    using sese::io::FixedBuilder;
 
     auto bytes = std::make_shared<FixedBuilder>(4);
     auto buffered = BufferedStream(bytes, 4);
@@ -163,8 +163,8 @@ TEST(TestBufferedStream, BufferedStream_3) {
 }
 
 TEST(TestBufferedStream, BufferedStream_4) {
-    using sese::io::ByteBuilder;
     using sese::io::BufferedStream;
+    using sese::io::ByteBuilder;
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     auto buffered = BufferedStream(bytes, 4);
@@ -172,8 +172,8 @@ TEST(TestBufferedStream, BufferedStream_4) {
 }
 
 TEST(TestBufferedStream, BufferedStream_5) {
-    using sese::io::ByteBuilder;
     using sese::io::BufferedStream;
+    using sese::io::ByteBuilder;
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     bytes->write("Hello, World, Hello, World, Hello, World", 40);
@@ -203,8 +203,8 @@ TEST(TestBufferedStream, BufferedStream_5) {
 }
 
 TEST(TestBufferedStream, BufferedStream_6) {
-    using sese::io::ByteBuilder;
     using sese::io::BufferedStream;
+    using sese::io::ByteBuilder;
 
     auto bytes = std::make_shared<ByteBuilder>(1024);
     bytes->write("Hello, World", 12);

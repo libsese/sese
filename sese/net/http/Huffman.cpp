@@ -8,11 +8,12 @@ using namespace sese::net::http;
 huffman_node_t::huffman_node_t(
         huffman_node_t *l,
         huffman_node_t *r,
-        int16_t c) noexcept: m_left(l),
-                             m_right(r),
-                             m_code(c) {}
+        int16_t c
+) noexcept : m_left(l),
+             m_right(r),
+             m_code(c) {}
 
-huffman_tree_t::huffman_tree_t() noexcept: m_root(new huffman_node_t) {
+huffman_tree_t::huffman_tree_t() noexcept : m_root(new huffman_node_t) {
     for (std::size_t idx = 0; idx < huffman_table.size(); idx++) {
         const bits_t &bits = huffman_table.at(idx);
         huffman_node_t *current = m_root;
@@ -32,7 +33,7 @@ huffman_tree_t::huffman_tree_t() noexcept: m_root(new huffman_node_t) {
             }
         }
 
-        current->code(static_cast< int16_t >( idx ));
+        current->code(static_cast<int16_t>(idx));
     }
 }
 
@@ -92,7 +93,7 @@ std::optional<std::string> huffman_tree_t::decode(const char *src, size_t len) {
     return dst;
 }
 
-huffman_encoder_t::huffman_encoder_t() noexcept: m_byte(0), m_count(8) {}
+huffman_encoder_t::huffman_encoder_t() noexcept : m_byte(0), m_count(8) {}
 
 bool huffman_encoder_t::write_bit(uint8_t bit) noexcept {
     m_byte |= bit;
@@ -119,7 +120,6 @@ std::vector<uint8_t> huffman_encoder_t::encode(std::vector<uint8_t> &src) noexce
                 m_byte = 0;
                 m_count = 8;
             }
-
         }
     }
 

@@ -15,57 +15,57 @@
 
 namespace sese::service::v1 {
 
-    /// HTTP2 选项
-    struct API Http2Config : public HttpConfig {
-        std::string upgradePath = "/";
-    };
+/// HTTP2 选项
+struct API Http2Config : public HttpConfig {
+    std::string upgradePath = "/";
+};
 
-    /// HTTP2 服务
-    class API SESE_DEPRECATED_WITH("此实现已弃用") Http2Service : public HttpService {
-    public:
-        explicit Http2Service(Http2Config *config);
+/// HTTP2 服务
+class API SESE_DEPRECATED_WITH("此实现已弃用") Http2Service : public HttpService {
+public:
+    explicit Http2Service(Http2Config *config);
 
-        ~Http2Service() noexcept override;
+    ~Http2Service() noexcept override;
 
-    protected:
-        void onClose(event::BaseEvent *event) override;
+protected:
+    void onClose(event::BaseEvent *event) override;
 
-        void onHandle(net::http::HttpConnection *conn) noexcept override;
+    void onHandle(net::http::HttpConnection *conn) noexcept override;
 
-        void onHandleUpgrade(net::http::HttpConnection *conn) noexcept override;
+    void onHandleUpgrade(net::http::HttpConnection *conn) noexcept override;
 
-        void onTimeout(TimeoutEvent_V1 *timeoutEvent) override;
+    void onTimeout(TimeoutEvent_V1 *timeoutEvent) override;
 
-    private:
-        void dispatch(net::http::Http2Connection *conn2, net::http::Request &req,  const net::http::Http2Stream::Ptr &stream) noexcept;
+private:
+    void dispatch(net::http::Http2Connection *conn2, net::http::Request &req, const net::http::Http2Stream::Ptr &stream) noexcept;
 
-        static void requestFromHttp2(net::http::Request &request) noexcept;
+    static void requestFromHttp2(net::http::Request &request) noexcept;
 
-        static void responseToHttp2(net::http::Response &response) noexcept;
+    static void responseToHttp2(net::http::Response &response) noexcept;
 
-        static void writeFrame(net::http::HttpConnection *conn, const net::http::Http2FrameInfo &info) noexcept;
+    static void writeFrame(net::http::HttpConnection *conn, const net::http::Http2FrameInfo &info) noexcept;
 
-        static void writeAck(net::http::HttpConnection *conn) noexcept;
+    static void writeAck(net::http::HttpConnection *conn) noexcept;
 
-        static void writeHeader(net::http::Http2Connection *conn2, const net::http::Http2Stream::Ptr &stream) noexcept;
+    static void writeHeader(net::http::Http2Connection *conn2, const net::http::Http2Stream::Ptr &stream) noexcept;
 
-        static void writeData(net::http::HttpConnection *conn, const net::http::Http2Stream::Ptr &stream) noexcept;
+    static void writeData(net::http::HttpConnection *conn, const net::http::Http2Stream::Ptr &stream) noexcept;
 
-        static bool readFrame(net::http::HttpConnection *conn, net::http::Http2FrameInfo &info) noexcept;
+    static bool readFrame(net::http::HttpConnection *conn, net::http::Http2FrameInfo &info) noexcept;
 
-        static void onSettingsFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
+    static void onSettingsFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
 
-        static void onWindowUpdateFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
+    static void onWindowUpdateFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
 
-        void onHeadersFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
+    void onHeadersFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
 
-        void onDataFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
+    void onDataFrame(net::http::Http2Connection *conn2, net::http::Http2FrameInfo &info) noexcept;
 
-        void onHandleHttp2(net::http::HttpConnection *conn) noexcept;
+    void onHandleHttp2(net::http::HttpConnection *conn) noexcept;
 
-    private:
-        using HttpService::dispatch;
+private:
+    using HttpService::dispatch;
 
-        std::map<net::http::HttpConnection *, net::http::Http2Connection *> conn2Map;
-    };
-}// namespace sese::service
+    std::map<net::http::HttpConnection *, net::http::Http2Connection *> conn2Map;
+};
+} // namespace sese::service::v1

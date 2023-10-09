@@ -45,12 +45,12 @@ void sese::service::UserBalanceLoader::setThreads(size_t th) noexcept {
 void sese::service::UserBalanceLoader::start() noexcept {
     if (eventLoopVector.empty()) return;
 
-    masterThread = std::make_unique<sese::Thread>(std::bind(&UserBalanceLoader::master, this), "UBL_0");// NOLINT
+    masterThread = std::make_unique<sese::Thread>(std::bind(&UserBalanceLoader::master, this), "UBL_0"); // NOLINT
     masterThread->start();
 
     for (size_t i = 0; i < threads; ++i) {
         auto thread = std::make_unique<sese::Thread>(
-                std::bind(// NOLINT
+                std::bind( // NOLINT
                         &UserBalanceLoader::slave,
                         this, eventLoopVector[i],
                         &masterSocketQueueArray[i],

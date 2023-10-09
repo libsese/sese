@@ -20,9 +20,9 @@ public:
 };
 
 DEFINE_MODULE_INFO(
-        .moduleName = "MyModule",
-        .versionString = "0.1.0",
-        .description = "The module for test."
+                .moduleName = "MyModule",
+                .versionString = "0.1.0",
+                .description = "The module for test."
 )
 
 DEFINE_CLASS_FACTORY(

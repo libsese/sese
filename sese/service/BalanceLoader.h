@@ -12,17 +12,17 @@
 #include "sese/service/SystemBalanceLoader.h"
 
 namespace sese::service {
-    using BalanceLoader = SystemBalanceLoader;
-    using Service = sese::event::EventLoop;
-}
+using BalanceLoader = SystemBalanceLoader;
+using Service = sese::event::EventLoop;
+} // namespace sese::service
 
 #else
 
 #include "sese/service/UserBalanceLoader.h"
 
 namespace sese::service {
-    using BalanceLoader = UserBalanceLoader;
-    using Service = sese::event::EventLoop;
-}
+using BalanceLoader = UserBalanceLoader;
+using Service = sese::event::EventLoop;
+} // namespace sese::service
 
 #endif

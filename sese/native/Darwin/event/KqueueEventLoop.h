@@ -12,42 +12,42 @@
 #include <atomic>
 
 namespace sese::event {
-    /// kqueue 事件循环
-    class KqueueEventLoop : public BaseEventLoop {
-    public:
-        bool init() override;
+/// kqueue 事件循环
+class KqueueEventLoop : public BaseEventLoop {
+public:
+    bool init() override;
 
-        ~KqueueEventLoop() override;
+    ~KqueueEventLoop() override;
 
-        void dispatch(uint32_t timeout) override;
+    void dispatch(uint32_t timeout) override;
 
-        void onAccept(int fd) override;
+    void onAccept(int fd) override;
 
-        void onRead(BaseEvent *event) override;
+    void onRead(BaseEvent *event) override;
 
-        void onWrite(BaseEvent *event) override;
+    void onWrite(BaseEvent *event) override;
 
-        void onError(BaseEvent *event) override;
+    void onError(BaseEvent *event) override;
 
-        void onClose(BaseEvent *event) override;
+    void onClose(BaseEvent *event) override;
 
-        BaseEvent *createEvent(int fd, unsigned int events, void *data) override;
+    BaseEvent *createEvent(int fd, unsigned int events, void *data) override;
 
-        void freeEvent(BaseEvent *event) override;
+    void freeEvent(BaseEvent *event) override;
 
-        bool setEvent(BaseEvent *event) override;
+    bool setEvent(BaseEvent *event) override;
 
-        void setListenFd(int fd) override { listenFd = fd; }
+    void setListenFd(int fd) override { listenFd = fd; }
 
-        //protected:
-        //    bool addNativeEvent(int fd, uint32_t ev, void *data) const;
-        //
-        //    bool delNativeEvent(int fd, uint32_t ev, void *data) const;
+    //protected:
+    //    bool addNativeEvent(int fd, uint32_t ev, void *data) const;
+    //
+    //    bool delNativeEvent(int fd, uint32_t ev, void *data) const;
 
-    protected:
-        int listenFd{-1};
-        BaseEvent *listenEvent{nullptr};
-        int kqueue{-1};
-    };
+protected:
+    int listenFd{-1};
+    BaseEvent *listenEvent{nullptr};
+    int kqueue{-1};
+};
 
-}// namespace sese::event
+} // namespace sese::event

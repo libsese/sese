@@ -15,20 +15,20 @@
 
 namespace sese::text {
 
-    /// 文本读取类
-    class API TextReader final {
-    public:
-        /// 文本读取类智能指针
-        using Ptr = std::shared_ptr<TextReader>;
+/// 文本读取类
+class API TextReader final {
+public:
+    /// 文本读取类智能指针
+    using Ptr = std::shared_ptr<TextReader>;
 
-        ~TextReader() noexcept;
-        static std::shared_ptr<sese::text::TextReader> create(const char *u8str) noexcept;
-        String readLine();
+    ~TextReader() noexcept;
+    static std::shared_ptr<sese::text::TextReader> create(const char *u8str) noexcept;
+    String readLine();
 
-    private:
-        TextReader() = default;
+private:
+    TextReader() = default;
 
-        io::FileStream::Ptr fileStream;
-        io::BufferedStream::Ptr bufferedStream;
-    };
-}
+    io::FileStream::Ptr fileStream;
+    io::BufferedStream::Ptr bufferedStream;
+};
+} // namespace sese::text

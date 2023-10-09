@@ -10,28 +10,28 @@
 
 namespace sese {
 
-    /// GZip 文件输入流（解压）
-    class API GZipFileInputStream : public io::InputStream {
-    public:
-        static void deleter(GZipFileInputStream *data) noexcept;
+/// GZip 文件输入流（解压）
+class API GZipFileInputStream : public io::InputStream {
+public:
+    static void deleter(GZipFileInputStream *data) noexcept;
 
-        using Ptr = std::shared_ptr<GZipFileInputStream>;
+    using Ptr = std::shared_ptr<GZipFileInputStream>;
 
-        /// 创建文件输入流对象
-        /// \param file 文件的相对或者绝对路径
-        /// \retval nullptr 打开文件失败
-        static GZipFileInputStream::Ptr create(const char *file) noexcept;
+    /// 创建文件输入流对象
+    /// \param file 文件的相对或者绝对路径
+    /// \retval nullptr 打开文件失败
+    static GZipFileInputStream::Ptr create(const char *file) noexcept;
 
-        ~GZipFileInputStream() override = default;
+    ~GZipFileInputStream() override = default;
 
-        int64_t read(void *buffer, size_t length) override;
+    int64_t read(void *buffer, size_t length) override;
 
-        void close() noexcept;
+    void close() noexcept;
 
-    private:
-        GZipFileInputStream() = default;
+private:
+    GZipFileInputStream() = default;
 
-        void *gzFile = nullptr;
-    };
+    void *gzFile = nullptr;
+};
 
-}// namespace sese
+} // namespace sese

@@ -6,7 +6,7 @@
 
 bool sese::ArgParser::parse(int32_t argc, char **argv) noexcept {
     char *p = argv[0];
-    while(*p != 0) {
+    while (*p != 0) {
         if (*p == '\\') {
             *p = '/';
         }

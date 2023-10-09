@@ -363,5 +363,4 @@ std::map<std::string, std::string> sese::net::http::HttpUtil::contentTypeMap{
         {"top", "drawing/x-top"},
         {"class", "java/*"},
         {"java", "java/*"},
-        {"dwf", "Model/vnd.dwf"}
-};
+        {"dwf", "Model/vnd.dwf"}};

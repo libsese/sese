@@ -16,7 +16,7 @@ TEST(TestLibraryLoader, _0) {
     sese::record::LogHelper::i("loading lib \"%s\"", libName);
     auto object = sese::system::LibraryLoader::open(libName);
     ASSERT_NE(object, nullptr);
-    auto sin = (Func *)object->findFunctionByName("sin");
+    auto sin = (Func *) object->findFunctionByName("sin");
     ASSERT_NE(sin, nullptr);
 
     auto a = sin(1.0f);

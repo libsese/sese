@@ -1,5 +1,5 @@
 #ifdef _WIN32
-#pragma warning(disable: 4996)
+#pragma warning(disable : 4996)
 #elif __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"

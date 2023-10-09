@@ -184,7 +184,7 @@ void WindowsService::loop() noexcept {
                 if (eventNum > MaxEventSize) {
                     continue;
                 }
-                SOCKET clientSocket = ::accept(socketSet[i], NULL, NULL);//NOLINT
+                SOCKET clientSocket = ::accept(socketSet[i], NULL, NULL); //NOLINT
 
                 unsigned long ul = 1;
                 if (SOCKET_ERROR == ioctlsocket(clientSocket, FIONBIO, &ul)) {

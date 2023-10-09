@@ -13,12 +13,12 @@
 
 namespace sese::io {
 
-    /**
-     * @brief 流式接口类
-     */
-    class API Stream : public InputStream, public OutputStream {
-    public:
-        typedef std::shared_ptr<Stream> Ptr;
-    };
+/**
+ * @brief 流式接口类
+ */
+class API Stream : public InputStream, public OutputStream {
+public:
+    typedef std::shared_ptr<Stream> Ptr;
+};
 
-}// namespace sese
+} // namespace sese::io

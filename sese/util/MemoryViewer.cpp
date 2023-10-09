@@ -45,7 +45,7 @@ void MemoryViewer::peer64(OutputStream *output, void *position, bool isCap) noex
 }
 
 void MemoryViewer::peer16(OutputStream *output, void *position, EndianType type, bool isCap) noexcept {
-    uint16_t data = *(uint16_t *)position;
+    uint16_t data = *(uint16_t *) position;
     if (type == EndianType::Big) {
         data = ToBigEndian16(data);
     } else {
@@ -55,7 +55,7 @@ void MemoryViewer::peer16(OutputStream *output, void *position, EndianType type,
 }
 
 void MemoryViewer::peer32(OutputStream *output, void *position, EndianType type, bool isCap) noexcept {
-    uint32_t data = *(uint32_t *)position;
+    uint32_t data = *(uint32_t *) position;
     if (type == EndianType::Big) {
         data = ToBigEndian32(data);
     } else {
@@ -65,7 +65,7 @@ void MemoryViewer::peer32(OutputStream *output, void *position, EndianType type,
 }
 
 void MemoryViewer::peer64(OutputStream *output, void *position, EndianType type, bool isCap) noexcept {
-    uint64_t data = *(uint64_t *)position;
+    uint64_t data = *(uint64_t *) position;
     if (type == EndianType::Big) {
         data = ToBigEndian64(data);
     } else {

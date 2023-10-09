@@ -3,8 +3,8 @@
 
 #include <gtest/gtest.h>
 
-using sese::system::Environment;
 using sese::record::LogHelper;
+using sese::system::Environment;
 
 TEST(TestEnv, _0) {
     LogHelper::i("build date: %s", Environment::getBuildDate());

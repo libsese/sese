@@ -25,14 +25,15 @@
         return &info;                                                     \
     }
 
-#define REGISTER_CLASS(id, class)                                       \
-    std::pair<std::string, sese::plugin::ClassFactory::RegisterInfo > { \
-        id,                                                             \
-        sese::plugin::ClassFactory::RegisterInfo {                      \
-            &typeid(class),                                             \
-            []() -> sese::plugin::BaseClass::Ptr {                      \
-                return std::make_shared<class>();                       \
-            } }                                                         \
+#define REGISTER_CLASS(id, class)                                      \
+    std::pair<std::string, sese::plugin::ClassFactory::RegisterInfo> { \
+        id,                                                            \
+                sese::plugin::ClassFactory::RegisterInfo {             \
+            &typeid(class),                                            \
+                    []() -> sese::plugin::BaseClass::Ptr {             \
+                        return std::make_shared<class>();              \
+                    }                                                  \
+        }                                                              \
     }
 
 #define DEFINE_CLASS_FACTORY(...)                                           \

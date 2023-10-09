@@ -14,7 +14,7 @@ sese::service::WebsocketService::WebsocketService(sese::service::WebsocketConfig
 }
 
 sese::service::WebsocketService::~WebsocketService() noexcept {
-    for (decltype(auto) item : sessionMap) {
+    for (decltype(auto) item: sessionMap) {
         delete item.second;
     }
     sessionMap.clear();

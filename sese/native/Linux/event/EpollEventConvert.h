@@ -9,11 +9,11 @@
 #include "sese/event/BaseEventConvert.h"
 
 namespace sese::event {
-    /// epoll 事件转换器
-    class EpollEventConvert : public BaseEventConvert {
-    public:
-        unsigned int fromNativeEvent(int event) override;
+/// epoll 事件转换器
+class EpollEventConvert : public BaseEventConvert {
+public:
+    unsigned int fromNativeEvent(int event) override;
 
-        int toNativeEvent(unsigned int event) override;
-    };
-}// namespace sese::event
+    int toNativeEvent(unsigned int event) override;
+};
+} // namespace sese::event

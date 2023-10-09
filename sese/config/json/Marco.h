@@ -1,10 +1,10 @@
 /**
-* @file Marco.h
-* @author kaoru
-* @version 0.1
-* @brief JSON 操作宏
-* @date 2023年9月13日
-*/
+ * @file Marco.h
+ * @author kaoru
+ * @version 0.1
+ * @brief JSON 操作宏
+ * @date 2023年9月13日
+ */
 
 #pragma once
 
@@ -132,4 +132,3 @@
         target->push(node);                                    \
     }                                                          \
     SESE_MARCO_END
-

@@ -13,30 +13,30 @@
 
 namespace sese {
 
-    /// CSV 流写入器
-    class API CSVWriter {
-    public:
-        /// 工具支持的输出流
-        using OutputStream = io::OutputStream;
-        /// 行
-        using Row = std::vector<std::string>;
+/// CSV 流写入器
+class API CSVWriter {
+public:
+    /// 工具支持的输出流
+    using OutputStream = io::OutputStream;
+    /// 行
+    using Row = std::vector<std::string>;
 
-        static const char *CRLF;
-        static const char *LF;
+    static const char *CRLF;
+    static const char *LF;
 
-        /// 构造函数
-        /// \param dest 目的流
-        /// \param splitChar 分割字符
-        /// \param crlf 是否使用 CRLF 作为行分隔符
-        explicit CSVWriter(OutputStream *dest, char splitChar = ',', bool crlf = true) noexcept;
+    /// 构造函数
+    /// \param dest 目的流
+    /// \param splitChar 分割字符
+    /// \param crlf 是否使用 CRLF 作为行分隔符
+    explicit CSVWriter(OutputStream *dest, char splitChar = ',', bool crlf = true) noexcept;
 
-        /// 写入流
-        /// \param row 待写入行
-        void write(const Row &row) noexcept;
+    /// 写入流
+    /// \param row 待写入行
+    void write(const Row &row) noexcept;
 
-    protected:
-        char splitChar;
-        bool isCRLF;
-        OutputStream *dest = nullptr;
-    };
-}
+protected:
+    char splitChar;
+    bool isCRLF;
+    OutputStream *dest = nullptr;
+};
+} // namespace sese

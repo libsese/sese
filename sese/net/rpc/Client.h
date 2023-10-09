@@ -16,34 +16,34 @@
 
 namespace sese::net::rpc {
 
-    /// RPC 客户端
-    class API Client final : public Noncopyable {
-    public:
-        using Ptr = std::unique_ptr<Client>;
+/// RPC 客户端
+class API Client final : public Noncopyable {
+public:
+    using Ptr = std::unique_ptr<Client>;
 
-        explicit Client(const IPv4Address::Ptr &address, bool ssl = false, const std::string &version = SESE_RPC_VERSION_0_1) noexcept;
+    explicit Client(const IPv4Address::Ptr &address, bool ssl = false, const std::string &version = SESE_RPC_VERSION_0_1) noexcept;
 
-        ~Client() noexcept;
+    ~Client() noexcept;
 
-        json::ObjectData::Ptr doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept;
+    json::ObjectData::Ptr doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept;
 
-    private:
-        json::ObjectData::Ptr makeTemplateRequest(const std::string &name);
+private:
+    json::ObjectData::Ptr makeTemplateRequest(const std::string &name);
 
-        bool reconnect() noexcept;
+    bool reconnect() noexcept;
 
-    private:
-        Socket::Ptr socket;
-        IPv4Address::Ptr address;
-        // 如果启用 ssl 则需要 SSL 上下文
-        security::SSLContext::Ptr sslContext;
+private:
+    Socket::Ptr socket;
+    IPv4Address::Ptr address;
+    // 如果启用 ssl 则需要 SSL 上下文
+    security::SSLContext::Ptr sslContext;
 
-        io::ByteBuilder buffer{4096};
-        json::BasicData::Ptr version;
-    };
+    io::ByteBuilder buffer{4096};
+    json::BasicData::Ptr version;
+};
 
-    /// 获取返回码对应的错误信息
-    /// \param code 返回码
-    /// \return 错误信息
-    API const char *getErrorMessage(int64_t code) noexcept;
-}// namespace sese::net::rpc
+/// 获取返回码对应的错误信息
+/// \param code 返回码
+/// \return 错误信息
+API const char *getErrorMessage(int64_t code) noexcept;
+} // namespace sese::net::rpc

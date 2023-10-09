@@ -4,8 +4,8 @@
 #include <gtest/gtest.h>
 
 TEST(TestBufferWrapper, Operator) {
-    char buffer0[] {"Hello world"};
-    char buffer1[8] {};
+    char buffer0[]{"Hello world"};
+    char buffer1[8]{};
 
     auto input = sese::io::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
     auto output = sese::io::OutputBufferWrapper(buffer1, sizeof(buffer1));
@@ -19,13 +19,13 @@ TEST(TestBufferWrapper, Operator) {
 }
 
 TEST(TestBufferWrapper, Peek) {
-    char buffer0[] {"Hello World"};
+    char buffer0[]{"Hello World"};
     auto input = sese::io::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
 
-    char buffer1[16] {};
+    char buffer1[16]{};
     auto len = input.peek(buffer1, 16);
     len = input.trunc(16);
-    ASSERT_EQ(len , 11);
+    ASSERT_EQ(len, 11);
     input.reset();
     len = input.peek(buffer1, len);
     len = input.trunc(len);
@@ -36,12 +36,12 @@ TEST(TestBufferWrapper, Peek) {
 }
 
 TEST(TestBufferWrapper, Read) {
-    char buffer0[] {"Hello World"};
+    char buffer0[]{"Hello World"};
     auto input = sese::io::InputBufferWrapper(buffer0, sizeof(buffer0) - 1);
 
-    char buffer1[16] {};
+    char buffer1[16]{};
     auto len = input.read(buffer1, 16);
-    ASSERT_EQ(len , 11);
+    ASSERT_EQ(len, 11);
     input.reset();
     len = input.read(buffer1, len);
     ASSERT_EQ(len, 11);
@@ -50,7 +50,7 @@ TEST(TestBufferWrapper, Read) {
 }
 
 TEST(TestBufferWrapper, Misc) {
-    char buffer[8] {};
+    char buffer[8]{};
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
     ASSERT_EQ(output.getBuffer(), buffer);
     ASSERT_EQ(output.getCapacity(), 8);

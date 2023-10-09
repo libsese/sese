@@ -124,18 +124,18 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
             break;
         } else if (name == ",") {
             // token 为 ',' 说明接下来还有键值对
-            if (tokens.empty()) return nullptr;// GCOVR_EXCL_LINE
+            if (tokens.empty()) return nullptr; // GCOVR_EXCL_LINE
             name = tokens.front();
             tokens.pop();
         }
         name = name.substr(1, name.size() - 2);
 
-        if (tokens.empty()) return nullptr;// GCOVR_EXCL_LINE
+        if (tokens.empty()) return nullptr; // GCOVR_EXCL_LINE
         // 此处 token 必是 ":"
         if (tokens.front() != ":") return nullptr;
         tokens.pop();
 
-        if (tokens.empty()) return nullptr;// GCOVR_EXCL_LINE
+        if (tokens.empty()) return nullptr; // GCOVR_EXCL_LINE
         auto value = tokens.front();
         tokens.pop();
 
@@ -195,7 +195,7 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
             break;
         } else if (token == ",") {
             // token 为 ',' 说明接下来还有值
-            if (tokens.empty()) return nullptr;// GCOVR_EXCL_LINE
+            if (tokens.empty()) return nullptr; // GCOVR_EXCL_LINE
             token = tokens.front();
             tokens.pop();
         }
@@ -259,9 +259,9 @@ void JsonUtil::serializeObject(ObjectData *object, OutputStream *outputStream) n
         outputStream->write("\":", 2);
 
         if (data->getType() == DataType::Object) {
-            serializeObject(dynamic_cast<ObjectData *>(data.get()), outputStream);// GCOVR_EXCL_LINE
+            serializeObject(dynamic_cast<ObjectData *>(data.get()), outputStream); // GCOVR_EXCL_LINE
         } else if (data->getType() == DataType::Array) {
-            serializeArray(dynamic_cast<ArrayData *>(data.get()), outputStream);// GCOVR_EXCL_LINE
+            serializeArray(dynamic_cast<ArrayData *>(data.get()), outputStream); // GCOVR_EXCL_LINE
         } else {
             auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
             // if (raw[0] == '\"') {
@@ -317,9 +317,9 @@ void JsonUtil::serializeArray(ArrayData *array, OutputStream *outputStream) noex
 
         auto data = *iterator;
         if (data->getType() == DataType::Object) {
-            serializeObject(dynamic_cast<ObjectData *>(data.get()), outputStream);// GCOVR_EXCL_LINE
+            serializeObject(dynamic_cast<ObjectData *>(data.get()), outputStream); // GCOVR_EXCL_LINE
         } else if (data->getType() == DataType::Array) {
-            serializeArray(dynamic_cast<ArrayData *>(data.get()), outputStream);// GCOVR_EXCL_LINE
+            serializeArray(dynamic_cast<ArrayData *>(data.get()), outputStream); // GCOVR_EXCL_LINE
         } else {
             auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
             outputStream->write(raw.c_str(), raw.length());

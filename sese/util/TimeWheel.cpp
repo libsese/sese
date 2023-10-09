@@ -20,7 +20,7 @@ TimeWheel::TimeWheel() {
 TimeWheel::~TimeWheel() {
     for (TimeoutEventSlot &slot: slots) {
         for (TimeoutEvent *event: slot.events) {
-            delete event;// GCOVR_EXCL_LINE
+            delete event; // GCOVR_EXCL_LINE
         }
         slot.events.clear();
     }
@@ -49,7 +49,7 @@ TimeoutEvent *TimeWheel::delay(const TimeoutEvent::Callback &callback, int64_t s
 void TimeWheel::cancel(TimeoutEvent *event) {
     auto index = (event->target - startTime) % 60;
     slots[index].events.remove(event);
-    delete event;// GCOVR_EXCL_LINE
+    delete event; // GCOVR_EXCL_LINE
 }
 
 void TimeWheel::check() {
@@ -71,7 +71,7 @@ void TimeWheel::check() {
                     auto newIndex = (EVENT->target - startTime) % 60;
                     slots[newIndex].events.emplace_back(EVENT);
                 } else {
-                    delete EVENT;// GCOVR_EXCL_LINE
+                    delete EVENT; // GCOVR_EXCL_LINE
                 }
                 pSlot->events.erase(iterator++);
             }

@@ -27,7 +27,7 @@ SStringBuilder::SStringBuilder(const SStringBuilder &builder) {
     memcpy(_data, builder._data, (_size + 1) * sizeof(uint32_t));
 }
 
-SStringBuilder::SStringBuilder(SStringBuilder &&builder)  noexcept {
+SStringBuilder::SStringBuilder(SStringBuilder &&builder) noexcept {
     _data = builder._data;
     _size = builder._size;
     _cap = builder._cap;
@@ -122,8 +122,8 @@ bool SStringBuilder::reserve(size_t size) {
 }
 
 void SStringBuilder::trim() {
-    size_t i = 0;// 头部空格数
-    size_t j = 0;// 尾部空格数
+    size_t i = 0; // 头部空格数
+    size_t j = 0; // 尾部空格数
     bool flag = true;
     for (auto n = 0; n < _size; n++) {
         if (flag && ' ' == _data[n]) {

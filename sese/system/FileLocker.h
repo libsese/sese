@@ -10,20 +10,20 @@
 
 namespace sese::system {
 
-    /**
-     * 文件锁
-     */
-    class API FileLocker {
-    public:
-        explicit FileLocker(int32_t fd) : fd(fd) {}
+/**
+ * 文件锁
+ */
+class API FileLocker {
+public:
+    explicit FileLocker(int32_t fd) : fd(fd) {}
 
-        bool lockWrite(int64_t start, int64_t len) const;
-        bool lockRead(int64_t start, int64_t len) const;
-        bool lock(int64_t start, int64_t len) const;
-        bool unlock() const;
+    bool lockWrite(int64_t start, int64_t len) const;
+    bool lockRead(int64_t start, int64_t len) const;
+    bool lock(int64_t start, int64_t len) const;
+    bool unlock() const;
 
-    private:
-        int32_t fd{};
-    };
+private:
+    int32_t fd{};
+};
 
-}// namespace sese
+} // namespace sese::system

@@ -21,16 +21,16 @@ TEST(TestMemoryViewer, _0) {
     sese::MemoryViewer::peer64(&output, &i64, true);
     output << "\n";
 
-    sese::MemoryViewer::peer16(&output, &i16,EndianType::Big, true);
+    sese::MemoryViewer::peer16(&output, &i16, EndianType::Big, true);
     output << "\n";
-    sese::MemoryViewer::peer16(&output, &i16,EndianType::Little, true);
+    sese::MemoryViewer::peer16(&output, &i16, EndianType::Little, true);
     output << "\n";
-    sese::MemoryViewer::peer32(&output, &i32,EndianType::Big, true);
+    sese::MemoryViewer::peer32(&output, &i32, EndianType::Big, true);
     output << "\n";
-    sese::MemoryViewer::peer32(&output, &i32,EndianType::Little, true);
+    sese::MemoryViewer::peer32(&output, &i32, EndianType::Little, true);
     output << "\n";
-    sese::MemoryViewer::peer64(&output, &i64,EndianType::Big, true);
+    sese::MemoryViewer::peer64(&output, &i64, EndianType::Big, true);
     output << "\n";
-    sese::MemoryViewer::peer64(&output, &i64,EndianType::Little, true);
+    sese::MemoryViewer::peer64(&output, &i64, EndianType::Little, true);
     output << "\n";
 }

@@ -11,16 +11,16 @@
 
 namespace sese::security {
 
-    /// SSL 上下文构建器
-    class API SSLContextBuilder : public NotInstantiable {
-    public:
-        /// @brief 为客户端构建 SSL 上下文
-        /// @return 客户端 SSL 上下文
-        static SSLContext::Ptr SSL4Client() noexcept;
-        /// @brief 为服务端构建 SSL 上下文
-        /// @return 服务的 SSL 上下文
-        static SSLContext::Ptr SSL4Server() noexcept;
-    };
-}
+/// SSL 上下文构建器
+class API SSLContextBuilder : public NotInstantiable {
+public:
+    /// @brief 为客户端构建 SSL 上下文
+    /// @return 客户端 SSL 上下文
+    static SSLContext::Ptr SSL4Client() noexcept;
+    /// @brief 为服务端构建 SSL 上下文
+    /// @return 服务的 SSL 上下文
+    static SSLContext::Ptr SSL4Server() noexcept;
+};
+} // namespace sese::security
 
 #define WIN32_LEAN_AND_MEAN

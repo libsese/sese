@@ -12,30 +12,30 @@
 
 namespace sese::net::v2::http {
 
-    using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
+using HttpContext = sese::net::http::HttpServiceContext<sese::net::v2::IOContext>;
 
-    /// HTTP 服务器
-    struct SESE_DEPRECATED HttpServer : public Server {
+/// HTTP 服务器
+struct SESE_DEPRECATED HttpServer : public Server {
 
-        ~HttpServer() noexcept override;
+    ~HttpServer() noexcept override;
 
-        bool init() noexcept override;
+    bool init() noexcept override;
 
-        void onConnect(IOContext &context) noexcept override;
+    void onConnect(IOContext &context) noexcept override;
 
-        void onHandle(IOContext &context) noexcept override;
+    void onHandle(IOContext &context) noexcept override;
 
-        void onClosing(IOContext &context) noexcept override;
+    void onClosing(IOContext &context) noexcept override;
 
-        virtual void onRequest(HttpContext &ctx) noexcept;
+    virtual void onRequest(HttpContext &ctx) noexcept;
 
-        void setKeepAlive(size_t seconds) noexcept { keepAlive = seconds; }
+    void setKeepAlive(size_t seconds) noexcept { keepAlive = seconds; }
 
-    protected:
-        size_t keepAlive = 0;
-        Timer::Ptr timer;
+protected:
+    size_t keepAlive = 0;
+    Timer::Ptr timer;
 
-        std::mutex mutex;
-        std::map<socket_t, TimerTask::Ptr> taskMap;
-    };
-}// namespace sese::net::v2::http
+    std::mutex mutex;
+    std::map<socket_t, TimerTask::Ptr> taskMap;
+};
+} // namespace sese::net::v2::http

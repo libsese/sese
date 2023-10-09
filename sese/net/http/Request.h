@@ -13,15 +13,15 @@
 
 namespace sese::net::http {
 
-    /// HTTP 请求类
-    class Request final : public RequestHeader {
-    public:
-        io::ByteBuilder &getBody() { return body; }
+/// HTTP 请求类
+class Request final : public RequestHeader {
+public:
+    io::ByteBuilder &getBody() { return body; }
 
-        void swap(Request &another) noexcept;
+    void swap(Request &another) noexcept;
 
-    private:
-        io::ByteBuilder body{8192};
-    };
+private:
+    io::ByteBuilder body{8192};
+};
 
-}// namespace sese::net::http
+} // namespace sese::net::http

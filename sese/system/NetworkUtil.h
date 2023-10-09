@@ -14,17 +14,17 @@
 
 namespace sese::system {
 
-    /// 网络接口信息
-    struct NetworkInterface {
-        std::string name;
-        std::vector<sese::net::IPv4Address::Ptr> ipv4Addresses;
-        std::vector<sese::net::IPv6Address::Ptr> ipv6Addresses;
-        std::array<unsigned char, 6> mac;
-    };
+/// 网络接口信息
+struct NetworkInterface {
+    std::string name;
+    std::vector<sese::net::IPv4Address::Ptr> ipv4Addresses;
+    std::vector<sese::net::IPv6Address::Ptr> ipv6Addresses;
+    std::array<unsigned char, 6> mac;
+};
 
-    /// 网络工具类
-    class NetworkUtil {
-    public:
-        static std::vector<NetworkInterface> getNetworkInterface() noexcept;
-    };
-}
+/// 网络工具类
+class NetworkUtil {
+public:
+    static std::vector<NetworkInterface> getNetworkInterface() noexcept;
+};
+} // namespace sese::system

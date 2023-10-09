@@ -26,7 +26,7 @@ void ConsoleAppender::dump(const char *buffer, size_t size) noexcept {
 
 #ifdef _WIN32
 void ConsoleAppender::setDebugColor() noexcept {
-    SetConsoleTextAttribute(ConsoleHandle ,0x02);
+    SetConsoleTextAttribute(ConsoleHandle, 0x02);
 }
 
 void ConsoleAppender::setInfoColor() noexcept {

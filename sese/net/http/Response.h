@@ -13,15 +13,15 @@
 
 namespace sese::net::http {
 
-    /// HTTP 响应类
-    class Response final : public ResponseHeader {
-    public:
-        io::ByteBuilder &getBody() { return body; }
+/// HTTP 响应类
+class Response final : public ResponseHeader {
+public:
+    io::ByteBuilder &getBody() { return body; }
 
-        void swap(Response &another) noexcept;
+    void swap(Response &another) noexcept;
 
-    private:
-        io::ByteBuilder body{8192};
-    };
+private:
+    io::ByteBuilder body{8192};
+};
 
-}// namespace sese::net::http
+} // namespace sese::net::http

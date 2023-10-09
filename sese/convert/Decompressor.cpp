@@ -19,11 +19,11 @@ sese::Decompressor::Decompressor(sese::CompressionType type, size_t bufferSize) 
 }
 
 sese::Decompressor::~Decompressor() {
-    delete[] buffer;// GCOVR_EXCL_LINE
+    delete[] buffer; // GCOVR_EXCL_LINE
 
     auto stm = (z_stream *) stream;
     ::inflateEnd(stm);
-    delete stm;// GCOVR_EXCL_LINE
+    delete stm; // GCOVR_EXCL_LINE
     stream = nullptr;
 }
 

@@ -16,7 +16,7 @@ TEST(TestSharedMemory, MEM_D) {
 
     std::this_thread::sleep_for(500ms);
     auto mem = sese::system::SharedMemory::use("SharedMemoryForSese");
-    if(mem == nullptr) {
+    if (mem == nullptr) {
         EXPECT_TRUE(process->kill());
     }
     ASSERT_NE(mem, nullptr) << "failed to use shared memory: errno" << sese::getErrorString();

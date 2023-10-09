@@ -21,48 +21,48 @@
 namespace sese {
 
 #if defined(SESE_PLATFORM_WINDOWS)
-    using NativeException = std::exception;
+using NativeException = std::exception;
 #else
-    /// Unix 异常包装类
-    class UnixException : public std::exception {
-    public:
-        explicit UnixException(const char *message) : std::exception(), msg(message) {
-        }
+/// Unix 异常包装类
+class UnixException : public std::exception {
+public:
+    explicit UnixException(const char *message) : std::exception(), msg(message) {
+    }
 
-        [[nodiscard]] const char *what() const noexcept override {
-            return msg;
-        }
+    [[nodiscard]] const char *what() const noexcept override {
+        return msg;
+    }
 
-    private:
-        const char *msg{};
-    };
+private:
+    const char *msg{};
+};
 
-    using NativeException = UnixException;
+using NativeException = UnixException;
 #endif
 
-    /// 异常类
-    class API Exception : public NativeException {
-    public:
-        explicit Exception(const char *message);
+/// 异常类
+class API Exception : public NativeException {
+public:
+    explicit Exception(const char *message);
 
-        ~Exception() override;
+    ~Exception() override;
 
-        /// 向标准输出打印堆栈跟踪
-        void printStacktrace();
+    /// 向标准输出打印堆栈跟踪
+    void printStacktrace();
 
-        /// 向日志器打印堆栈跟踪
-        /// \param logger 日志器
-        void printStacktrace(sese::record::Logger *logger);
+    /// 向日志器打印堆栈跟踪
+    /// \param logger 日志器
+    void printStacktrace(sese::record::Logger *logger);
 
-        /// 向输出流打印堆栈跟踪
-        /// \param output 输出流
-        void printStacktrace(sese::io::OutputStream *output);
+    /// 向输出流打印堆栈跟踪
+    /// \param output 输出流
+    void printStacktrace(sese::io::OutputStream *output);
 
-    protected:
-        static int WILL_SKIP_OFFSET;
+protected:
+    static int WILL_SKIP_OFFSET;
 
-        virtual std::string buildStacktrace();
+    virtual std::string buildStacktrace();
 
-        sese::system::StackInfo *stackInfo{};
-    };
-}// namespace sese
+    sese::system::StackInfo *stackInfo{};
+};
+} // namespace sese

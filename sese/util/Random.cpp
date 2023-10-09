@@ -6,41 +6,42 @@
 
 namespace sese {
 
-    const Random::ResultType Random::multiplier = 25214903917L;
-    const Random::ResultType Random::addend = 11L;
-    const Random::ResultType Random::mask = (1LL << 48) - 1;
+const Random::ResultType Random::multiplier = 25214903917L;
+const Random::ResultType Random::addend = 11L;
+const Random::ResultType Random::mask = (1LL << 48) - 1;
 
-    /**
+/**
      * @brief 数据分割用结构体
      */
-    struct LongLongSplitter {
-        uint32_t low;
-        [[maybe_unused]] uint32_t high;
-    };
+struct LongLongSplitter {
+    uint32_t low;
+    [[maybe_unused]] uint32_t high;
+};
 
-    uint64_t Random::noise() noexcept {
+uint64_t Random::noise() noexcept {
 #ifdef SESE_ARCH_X64
 #ifdef SESE_PLATFORM_WINDOWS
-        // CASE: SESE_PLATFORM_WINDOWS && SESE_ARCH_X64
-        return __rdtsc();
+    // CASE: SESE_PLATFORM_WINDOWS && SESE_ARCH_X64
+    return __rdtsc();
 #else
-        // CASE: !SESE_PLATFORM_WINDOWS && SESE_ARCH_X64
-        uint64_t value;
-        __asm__ __volatile__("rdtsc" : "=A"(value));
-        return value;
+    // CASE: !SESE_PLATFORM_WINDOWS && SESE_ARCH_X64
+    uint64_t value;
+    __asm__ __volatile__("rdtsc"
+                         : "=A"(value));
+    return value;
 #endif
 #else
-        // CASE: SESE_ARCH_ARM64
-        // 不再返回 cntfrq_el0 的原因是，此调用在 ARM 会进入内核态
-        // 反复调用可能导致性能下降，x86 则不存在这个问题
-        // uint64_t value;
-        // __asm__ volatile("mrs %0, cntfrq_el0" : "=r" (value));
-        // return value;
-        return 0;
+    // CASE: SESE_ARCH_ARM64
+    // 不再返回 cntfrq_el0 的原因是，此调用在 ARM 会进入内核态
+    // 反复调用可能导致性能下降，x86 则不存在这个问题
+    // uint64_t value;
+    // __asm__ volatile("mrs %0, cntfrq_el0" : "=r" (value));
+    // return value;
+    return 0;
 #endif
-    }
+}
 
-}// namespace sese
+} // namespace sese
 
 sese::Random::Random([[maybe_unused]] const std::string &token) {
     this->_seed = Random::noise();
@@ -54,7 +55,7 @@ sese::Random::ResultType sese::Random::max() {
     return UINT64_MAX;
 }
 
-double sese::Random::entropy() const {// NOLINT
+double sese::Random::entropy() const { // NOLINT
     return 64;
 }
 

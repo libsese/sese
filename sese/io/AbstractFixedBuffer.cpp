@@ -2,7 +2,7 @@
 
 sese::io::AbstractFixedBuffer::AbstractFixedBuffer(size_t size) noexcept
     : size(size),
-      buffer(new char[size]) {// GCOVR_EXCL_LINE
+      buffer(new char[size]) { // GCOVR_EXCL_LINE
 }
 
 sese::io::AbstractFixedBuffer::~AbstractFixedBuffer() noexcept {
@@ -32,7 +32,7 @@ sese::io::AbstractFixedBuffer::AbstractFixedBuffer(sese::io::AbstractFixedBuffer
 }
 
 int64_t sese::io::AbstractFixedBuffer::read(void *buf, size_t length) {
-    if (writeSize - readSize >= length ) {
+    if (writeSize - readSize >= length) {
         memcpy(buf, buffer + readSize, length);
         readSize += length;
         return (int64_t) length;
@@ -58,7 +58,7 @@ int64_t sese::io::AbstractFixedBuffer::write(const void *buf, size_t length) {
 }
 
 int64_t sese::io::AbstractFixedBuffer::peek(void *buf, size_t length) {
-    if (writeSize - readSize >= length ) {
+    if (writeSize - readSize >= length) {
         memcpy(buf, buffer + readSize, length);
         // readSize += length;
         return (int64_t) length;
@@ -75,7 +75,7 @@ void sese::io::AbstractFixedBuffer::reset() noexcept {
 }
 
 int64_t sese::io::AbstractFixedBuffer::trunc(size_t length) {
-    if (writeSize - readSize >= length ) {
+    if (writeSize - readSize >= length) {
         // memcpy(buf, buffer + readSize, length);
         readSize += length;
         return (int64_t) length;

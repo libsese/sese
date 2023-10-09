@@ -21,21 +21,22 @@
 
 namespace sese::net::v2::rpc {
 
-    /// RPC 服务选项
-    class API SESE_DEPRECATED V2RpcServer : public Server {
-    public:
-        /// 服务子程序
-        /// 参数与返回值均为 sese::json::ObjectData::Ptr
-        using Func = std::function<void(json::ObjectData::Ptr &, json::ObjectData::Ptr &)>;
+/// RPC 服务选项
+class API SESE_DEPRECATED V2RpcServer : public Server {
+public:
+    /// 服务子程序
+    /// 参数与返回值均为 sese::json::ObjectData::Ptr
+    using Func = std::function<void(json::ObjectData::Ptr &, json::ObjectData::Ptr &)>;
 
-        void onHandle(sese::net::v2::IOContext &ctx) noexcept override;
+    void onHandle(sese::net::v2::IOContext &ctx) noexcept override;
 
-        void setFunction(const std::string &name, const Func &func) noexcept;
-    protected:
-        /// 此选项用于注册服务
-        std::map<std::string, Func> map;
-    };
-}// namespace sese::net::v2::rpc
+    void setFunction(const std::string &name, const Func &func) noexcept;
+
+protected:
+    /// 此选项用于注册服务
+    std::map<std::string, Func> map;
+};
+} // namespace sese::net::v2::rpc
 
 //#ifdef __clang__
 //#pragma clang diagnostic pop

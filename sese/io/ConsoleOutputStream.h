@@ -10,9 +10,9 @@
 
 namespace sese::io {
 
-    /// 控制台输出流类 - 仅用于测试
-    class API ConsoleOutputStream final : public OutputStream {
-    public:
-        int64_t write(const void *buffer, size_t length) override;
-    };
-}
+/// 控制台输出流类 - 仅用于测试
+class API ConsoleOutputStream final : public OutputStream {
+public:
+    int64_t write(const void *buffer, size_t length) override;
+};
+} // namespace sese::io

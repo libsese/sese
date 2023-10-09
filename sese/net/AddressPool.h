@@ -16,30 +16,30 @@
 
 namespace sese::net {
 
-    /// IP 地址池
-    template<class Address>
-    class API AddressPool final {
-    public:
-        /// 获取域名与 IP 地址的映射关系
-        /// \param domain 域名
-        /// \retval nullptr 未命中缓存且查找失败
-        /// \retval other 查找到地址
-        static std::shared_ptr<Address> lookup(const std::string &domain) noexcept;
+/// IP 地址池
+template<class Address>
+class API AddressPool final {
+public:
+    /// 获取域名与 IP 地址的映射关系
+    /// \param domain 域名
+    /// \retval nullptr 未命中缓存且查找失败
+    /// \retval other 查找到地址
+    static std::shared_ptr<Address> lookup(const std::string &domain) noexcept;
 
-    private:
-        AddressPool() = default;
+private:
+    AddressPool() = default;
 
-        static AddressPool pool;
+    static AddressPool pool;
 
-        std::map<std::string, std::shared_ptr<Address>> addressMap;
-    };
+    std::map<std::string, std::shared_ptr<Address>> addressMap;
+};
 
-    template<class Address>
-    AddressPool<Address> AddressPool<Address>::pool;
+template<class Address>
+AddressPool<Address> AddressPool<Address>::pool;
 
-    using IPv4AddressPool = AddressPool<sese::net::IPv4Address>;
-    using IPv6AddressPool = AddressPool<sese::net::IPv6Address>;
-}// namespace sese::net
+using IPv4AddressPool = AddressPool<sese::net::IPv4Address>;
+using IPv6AddressPool = AddressPool<sese::net::IPv6Address>;
+} // namespace sese::net
 
 
 template<class Address>

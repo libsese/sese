@@ -57,74 +57,74 @@ static int count(const char &ch, const char *str) {
 
 std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime, const std::string &pattern) {
     auto builder = StringBuilder(128);
-    auto input = sese::io::InputBufferWrapper(pattern.c_str(), pattern.length());// GCOVR_EXCL_LINE
+    auto input = sese::io::InputBufferWrapper(pattern.c_str(), pattern.length()); // GCOVR_EXCL_LINE
 
     while (true) {
         char buffer[5]{};
-        auto len = input.peek(buffer, 4);// GCOVR_EXCL_LINE
+        auto len = input.peek(buffer, 4); // GCOVR_EXCL_LINE
         if (len < 1) break;
 
         if (buffer[0] == 'd') {
             auto count = ::count('d', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getDays()));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getDays())); // GCOVR_EXCL_LINE
             } else if (count == 2) {
                 if (dateTime.getDays() < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(dateTime.getDays()));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getDays())); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(WkDay[dateTime.getDayOfWeek()]);// GCOVR_EXCL_LINE
+                builder.append(WkDay[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
             } else {
-                builder.append(WeekDay[dateTime.getDayOfWeek()]);// GCOVR_EXCL_LINE
+                builder.append(WeekDay[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
             }
-            input.trunc(count);// GCOVR_EXCL_LINE
+            input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'm') {
             auto count = ::count('m', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getMinutes()));// GCOVR_EXCL_LINE
-                input.trunc(1);                                       // GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getMinutes())); // GCOVR_EXCL_LINE
+                input.trunc(1);                                        // GCOVR_EXCL_LINE
             } else if (count > 1) {
                 if (dateTime.getMinutes() < 10) {
                     builder.append('0');
                 }
-                builder.append(std::to_string(dateTime.getMinutes()));// GCOVR_EXCL_LINE
-                input.trunc(2);                                       // GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getMinutes())); // GCOVR_EXCL_LINE
+                input.trunc(2);                                        // GCOVR_EXCL_LINE
             }
         } else if (buffer[0] == 'M') {
             auto count = ::count('M', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getMonths() + 1));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getMonths() + 1)); // GCOVR_EXCL_LINE
             } else if (count == 2) {
                 if (dateTime.getMonths() < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(dateTime.getMonths() + 1));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getMonths() + 1)); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(Mon[dateTime.getMonths()]);// GCOVR_EXCL_LINE
+                builder.append(Mon[dateTime.getMonths()]); // GCOVR_EXCL_LINE
             } else {
-                builder.append(Month[dateTime.getMonths()]);// GCOVR_EXCL_LINE
+                builder.append(Month[dateTime.getMonths()]); // GCOVR_EXCL_LINE
             }
-            input.trunc(count);// GCOVR_EXCL_LINE
+            input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'y') {
             auto count = ::count('y', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getYears() % 100));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getYears() % 100)); // GCOVR_EXCL_LINE
             } else if (count == 2) {
                 auto year = dateTime.getYears() % 100;
                 if (year < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(year));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(year)); // GCOVR_EXCL_LINE
             } else if (count == 3) {
                 auto year = dateTime.getYears() % 1000;
                 if (year < 100) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
                 if (year < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(year));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(year)); // GCOVR_EXCL_LINE
             } else {
                 // 此处时间通常不会小于 10，因为 DateTime 时间戳默认是无符号整数
                 // GCOVR_EXCL_START
@@ -139,96 +139,96 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
                     builder.append('0');
                 }
                 // GCOVR_EXCL_STOP
-                builder.append(std::to_string(year));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(year)); // GCOVR_EXCL_LINE
             }
-            input.trunc(count);// GCOVR_EXCL_LINE
+            input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'z') {
             if (dateTime.getUTC() >= 0) {
-                builder.append('+');// GCOVR_EXCL_LINE
+                builder.append('+'); // GCOVR_EXCL_LINE
             }
-            builder.append(std::to_string(dateTime.getUTC()));// GCOVR_EXCL_LINE
-            input.trunc(1);                                   // GCOVR_EXCL_LINE
+            builder.append(std::to_string(dateTime.getUTC())); // GCOVR_EXCL_LINE
+            input.trunc(1);                                    // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'h') {
             auto count = ::count('h', buffer);
             auto hour = dateTime.getHours();
             hour = hour % 12 == 0 ? 12 : hour % 12;
             if (count == 1) {
-                builder.append(std::to_string(hour));// GCOVR_EXCL_LINE
-                input.trunc(1);                      // GCOVR_EXCL_LINE
+                builder.append(std::to_string(hour)); // GCOVR_EXCL_LINE
+                input.trunc(1);                       // GCOVR_EXCL_LINE
             } else if (count > 1) {
                 if (hour < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(hour));// GCOVR_EXCL_LINE
-                input.trunc(2);                      // GCOVR_EXCL_LINE
+                builder.append(std::to_string(hour)); // GCOVR_EXCL_LINE
+                input.trunc(2);                       // GCOVR_EXCL_LINE
             }
         } else if (buffer[0] == 'H') {
             auto count = ::count('H', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getHours()));// GCOVR_EXCL_LINE
-                input.trunc(1);                                     // GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getHours())); // GCOVR_EXCL_LINE
+                input.trunc(1);                                      // GCOVR_EXCL_LINE
             } else if (count > 1) {
                 if (dateTime.getHours() < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(dateTime.getHours()));// GCOVR_EXCL_LINE
-                input.trunc(2);                                     // GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getHours())); // GCOVR_EXCL_LINE
+                input.trunc(2);                                      // GCOVR_EXCL_LINE
             }
         } else if (buffer[0] == 't') {
-            builder.append(dateTime.getHours() < 12 ? "AM" : "PM");// GCOVR_EXCL_LINE
-            input.trunc(1);                                        // GCOVR_EXCL_LINE
+            builder.append(dateTime.getHours() < 12 ? "AM" : "PM"); // GCOVR_EXCL_LINE
+            input.trunc(1);                                         // GCOVR_EXCL_LINE
         } else if (buffer[0] == 's') {
             auto count = ::count('s', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getSeconds()));// GCOVR_EXCL_LINE
-                input.trunc(1);                                       // GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getSeconds())); // GCOVR_EXCL_LINE
+                input.trunc(1);                                        // GCOVR_EXCL_LINE
             } else if (count > 1) {
                 if (dateTime.getSeconds() < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(dateTime.getSeconds()));// GCOVR_EXCL_LINE
-                input.trunc(2);                                       // GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getSeconds())); // GCOVR_EXCL_LINE
+                input.trunc(2);                                        // GCOVR_EXCL_LINE
             }
         } else if (buffer[0] == 'f') {
             auto count = ::count('f', buffer);
             if (count == 1) {
-                builder.append(std::to_string(dateTime.getMilliseconds()));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getMilliseconds())); // GCOVR_EXCL_LINE
             } else if (count == 2) {
                 auto num = dateTime.getMilliseconds();
                 if (num < 100) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
                 if (num < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(num));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(num)); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(std::to_string(dateTime.getMicroseconds()));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(dateTime.getMicroseconds())); // GCOVR_EXCL_LINE
             } else {
                 auto num = dateTime.getMicroseconds();
                 if (num < 100) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
                 if (num < 10) {
-                    builder.append('0');// GCOVR_EXCL_LINE
+                    builder.append('0'); // GCOVR_EXCL_LINE
                 }
-                builder.append(std::to_string(num));// GCOVR_EXCL_LINE
+                builder.append(std::to_string(num)); // GCOVR_EXCL_LINE
             }
-            input.trunc(count);// GCOVR_EXCL_LINE
+            input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == '%') {
             if (len > 1) {
-                builder.append(buffer[1]);// GCOVR_EXCL_LINE
-                input.trunc(2);           // GCOVR_EXCL_LINE
+                builder.append(buffer[1]); // GCOVR_EXCL_LINE
+                input.trunc(2);            // GCOVR_EXCL_LINE
             } else {
-                input.trunc(1);// GCOVR_EXCL_LINE
+                input.trunc(1); // GCOVR_EXCL_LINE
             }
         } else {
-            builder.append(buffer[0]);// GCOVR_EXCL_LINE
-            input.trunc(1);           // GCOVR_EXCL_LINE
+            builder.append(buffer[0]); // GCOVR_EXCL_LINE
+            input.trunc(1);            // GCOVR_EXCL_LINE
         }
     }
 
-    return builder.toString();// GCOVR_EXCL_LINE
+    return builder.toString(); // GCOVR_EXCL_LINE
 }
 
 std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dateTime, const std::string &pattern) {

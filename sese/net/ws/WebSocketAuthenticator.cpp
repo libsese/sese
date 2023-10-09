@@ -5,8 +5,8 @@
 #include "sese/convert/Base64Converter.h"
 #include "sese/convert/SHA1Util.h"
 
-using sese::io::OutputBufferWrapper;
 using sese::io::InputBufferWrapper;
+using sese::io::OutputBufferWrapper;
 
 const char *sese::net::ws::WebsocketAuthenticator::APPEND_STRING = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 
@@ -95,7 +95,7 @@ std::unique_ptr<char[]> sese::net::ws::WebsocketAuthenticator::toResult(const ch
         SHA1Util::encode(&in, &out);
     }
 
-    auto res = std::unique_ptr<char []>(new char[29]);
+    auto res = std::unique_ptr<char[]>(new char[29]);
     res.get()[28] = 0;
     {
         auto in = InputBufferWrapper(buffer1, 20);

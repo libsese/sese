@@ -34,40 +34,40 @@
 
 namespace sese::io {
 
-    /**
-     * @brief 文件流类
-     */
-    class API FileStream final : public Stream, public Closeable, public PeekableStream {
-    public:
-        using Ptr = std::shared_ptr<FileStream>;
+/**
+ * @brief 文件流类
+ */
+class API FileStream final : public Stream, public Closeable, public PeekableStream {
+public:
+    using Ptr = std::shared_ptr<FileStream>;
 
-        /// 打开一个文件流
-        /// \param fileName 文件名称
-        /// \param mode 打开模式
-        /// \retval nullptr 打开失败
-        /// \retval 文件流对象
-        static FileStream::Ptr create(const std::string &fileName, const char *mode) noexcept;
-        ~FileStream() override = default;
+    /// 打开一个文件流
+    /// \param fileName 文件名称
+    /// \param mode 打开模式
+    /// \retval nullptr 打开失败
+    /// \retval 文件流对象
+    static FileStream::Ptr create(const std::string &fileName, const char *mode) noexcept;
+    ~FileStream() override = default;
 
-        int64_t read(void *buffer, size_t length) override;
-        int64_t write(const void *buffer, size_t length) override;
+    int64_t read(void *buffer, size_t length) override;
+    int64_t write(const void *buffer, size_t length) override;
 
-        void close() override;
+    void close() override;
 
-        int64_t peek(void *buffer, size_t length) override;
-        int64_t trunc(size_t length) override;
+    int64_t peek(void *buffer, size_t length) override;
+    int64_t trunc(size_t length) override;
 
-        int64_t getSeek();
-        int32_t setSeek(int64_t offset, int32_t whence);
+    int64_t getSeek();
+    int32_t setSeek(int64_t offset, int32_t whence);
 
-        int32_t flush();
+    int32_t flush();
 
-        [[nodiscard]] int32_t getFd() const;
+    [[nodiscard]] int32_t getFd() const;
 
-    private:
-        FileStream() noexcept = default;
-        FILE *file = nullptr;
-    };
+private:
+    FileStream() noexcept = default;
+    FILE *file = nullptr;
+};
 
-    using File = FileStream;
-}// namespace sese
+using File = FileStream;
+} // namespace sese::io

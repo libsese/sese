@@ -2,7 +2,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 #elif defined(_MSC_VER)
-#pragma warning(disable: 4996)
+#pragma warning(disable : 4996)
 #elif defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -26,7 +26,7 @@ void V2RpcServer::onHandle(sese::net::v2::IOContext &ctx) noexcept {
 
     auto input = std::make_shared<io::BufferedInputStream>(stream);
     auto object = json::JsonUtil::deserialize(input, 5);
-    if (!object) return;// 序列化请求失败
+    if (!object) return; // 序列化请求失败
     auto result = std::make_shared<json::ObjectData>();
 
     auto exit = std::make_shared<json::BasicData>();

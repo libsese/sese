@@ -13,15 +13,15 @@
 #endif
 
 namespace sese::record {
-    /**
-     * @brief 日志格式化类
-     */
-    class API AbstractFormatter {
-    public:
-        typedef std::shared_ptr<AbstractFormatter> Ptr;
+/**
+ * @brief 日志格式化类
+ */
+class API AbstractFormatter {
+public:
+    typedef std::shared_ptr<AbstractFormatter> Ptr;
 
-        virtual ~AbstractFormatter() noexcept = default;
+    virtual ~AbstractFormatter() noexcept = default;
 
-        virtual std::string dump(const Event::Ptr &event) noexcept = 0;
-    };
-}// namespace sese::record
+    virtual std::string dump(const Event::Ptr &event) noexcept = 0;
+};
+} // namespace sese::record

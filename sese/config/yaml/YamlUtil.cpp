@@ -20,7 +20,7 @@ sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(InputStream *input, size
 
     decltype(auto) top = tokensQueue.front();
     decltype(auto) topTokens = std::get<1>(top);
-    if (topTokens.empty()) return nullptr;// GCOVR_EXCL_LINE
+    if (topTokens.empty()) return nullptr; // GCOVR_EXCL_LINE
     if (topTokens[0] == "-") {
         // 根元素是数组
         return createArray(tokensQueue, level);
@@ -32,10 +32,10 @@ sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(InputStream *input, size
 
 void sese::yaml::YamlUtil::serialize(const Data::Ptr &data, OutputStream *output) noexcept {
     if (data->getType() == DataType::ObjectData) {
-        auto sub = dynamic_cast<ObjectData *>(data.get());// GCOVR_EXCL_LINE
+        auto sub = dynamic_cast<ObjectData *>(data.get()); // GCOVR_EXCL_LINE
         serializeObject(sub, output, 0);
     } else if (data->getType() == DataType::ArrayData) {
-        auto sub = dynamic_cast<ArrayData *>(data.get());// GCOVR_EXCL_LINE
+        auto sub = dynamic_cast<ArrayData *>(data.get()); // GCOVR_EXCL_LINE
         serializeArray(sub, output, 0);
     } else {
         // BasicData
@@ -83,10 +83,10 @@ ret:
 std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line) noexcept {
     std::vector<std::string> vector;
     sese::text::StringBuilder builder(1024);
-    bool isStr = false;// 是否是字符串
-    bool quot1 = false;// 单引号 - 不转义
-    bool quot2 = false;// 双引号 - 转义
-    bool tran = false; // 是否转义
+    bool isStr = false; // 是否是字符串
+    bool quot1 = false; // 单引号 - 不转义
+    bool quot2 = false; // 双引号 - 转义
+    bool tran = false;  // 是否转义
     for (decltype(auto) ch: line) {
         if (quot1) {
             if (ch == '\'') {
@@ -170,7 +170,7 @@ sese::yaml::YamlUtil::createObject(
 
     auto result = std::make_shared<ObjectData>();
     // 对象无子元素
-    if (tokensQueue.empty()) return result;// GCOVR_EXCL_LINE
+    if (tokensQueue.empty()) return result; // GCOVR_EXCL_LINE
     int count = std::get<0>(tokensQueue.front());
 
     while (!tokensQueue.empty()) {
@@ -180,7 +180,7 @@ sese::yaml::YamlUtil::createObject(
 
         if (count == currentCount) {
             if (currentTokens.size() == 3) {
-                if (currentTokens[1] != ":")  {
+                if (currentTokens[1] != ":") {
                     return nullptr;
                 }
                 // 普通键值对
@@ -360,7 +360,7 @@ void sese::yaml::YamlUtil::writeSpace(size_t count, OutputStream *output) noexce
 void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, OutputStream *output, size_t level) noexcept {
     for (decltype(auto) item: *objectData) {
         if (item.second->getType() == DataType::ObjectData) {
-            auto sub = dynamic_cast<ObjectData *>(item.second.get());// GCOVR_EXCL_LINE
+            auto sub = dynamic_cast<ObjectData *>(item.second.get()); // GCOVR_EXCL_LINE
             if (!sub->empty()) {
                 writeSpace(level * 2, output);
                 output->write(item.first.c_str(), item.first.length());
@@ -368,7 +368,7 @@ void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, OutputStream 
                 serializeObject(sub, output, level + 1);
             }
         } else if (item.second->getType() == DataType::ArrayData) {
-            auto sub = dynamic_cast<ArrayData *>(item.second.get());// GCOVR_EXCL_LINE
+            auto sub = dynamic_cast<ArrayData *>(item.second.get()); // GCOVR_EXCL_LINE
             if (!sub->empty()) {
                 writeSpace(level * 2, output);
                 output->write(item.first.c_str(), item.first.length());
@@ -376,7 +376,7 @@ void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, OutputStream 
                 serializeArray(sub, output, level + 1);
             }
         } else {
-            auto sub = dynamic_cast<BasicData *>(item.second.get());// GCOVR_EXCL_LINE
+            auto sub = dynamic_cast<BasicData *>(item.second.get()); // GCOVR_EXCL_LINE
             auto data = sub->getDataAs<std::string>("");
             writeSpace(level * 2, output);
             output->write(item.first.c_str(), item.first.length());
@@ -395,8 +395,8 @@ void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, OutputStream *ou
     auto count = 0;
     for (decltype(auto) item: *arrayData) {
         if (item->getType() == DataType::ObjectData) {
-            auto sub = dynamic_cast<ObjectData *>(item.get());// GCOVR_EXCL_LINE
-            if (!sub->empty()) {                              // GCOVR_EXCL_LINE
+            auto sub = dynamic_cast<ObjectData *>(item.get()); // GCOVR_EXCL_LINE
+            if (!sub->empty()) {                               // GCOVR_EXCL_LINE
                 auto name = "element_" + std::to_string(count);
                 count += 1;
                 writeSpace(level * 2, output);
@@ -406,8 +406,8 @@ void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, OutputStream *ou
                 serializeObject(sub, output, level + 1);
             }
         } else if (item->getType() == DataType::ArrayData) {
-            auto sub = dynamic_cast<ArrayData *>(item.get());// GCOVR_EXCL_LINE
-            if (!sub->empty()) {                             // GCOVR_EXCL_LINE
+            auto sub = dynamic_cast<ArrayData *>(item.get()); // GCOVR_EXCL_LINE
+            if (!sub->empty()) {                              // GCOVR_EXCL_LINE
                 auto name = "element_" + std::to_string(count);
                 count += 1;
                 writeSpace(level * 2, output);
@@ -417,7 +417,7 @@ void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, OutputStream *ou
                 serializeArray(sub, output, level + 1);
             }
         } else {
-            auto sub = dynamic_cast<BasicData *>(item.get());// GCOVR_EXCL_LINE
+            auto sub = dynamic_cast<BasicData *>(item.get()); // GCOVR_EXCL_LINE
             auto data = sub->getDataAs<std::string>("");
             writeSpace(level * 2, output);
             output->write("- ", 2);

@@ -15,113 +15,113 @@
 
 namespace sese::service::v2 {
 
-    /// HTTP 连接基类
-    struct HttpConnection {
-        using Ptr = std::shared_ptr<HttpConnection>;
+/// HTTP 连接基类
+struct HttpConnection {
+    using Ptr = std::shared_ptr<HttpConnection>;
 
-        explicit HttpConnection(net::http::HttpVersion ver) : version(ver) {}
-        virtual ~HttpConnection() = default;
+    explicit HttpConnection(net::http::HttpVersion ver) : version(ver) {}
+    virtual ~HttpConnection() = default;
 
-        const net::http::HttpVersion version;
+    const net::http::HttpVersion version;
 
-        /// 对于 http/1.1 而言，此字段代表着将进行最后一次 http/1.1 的响应
-        /// 对于 http2 而言，此字段代表当前连接由 http/1.1 升级而来，需要进行特殊处理
-        bool upgrade = false;
-    };
+    /// 对于 http/1.1 而言，此字段代表着将进行最后一次 http/1.1 的响应
+    /// 对于 http2 而言，此字段代表当前连接由 http/1.1 升级而来，需要进行特殊处理
+    bool upgrade = false;
+};
 
-    /// HTTP 1.1 连接
-    struct Http1_1Connection : public HttpConnection {
-        using Ptr = std::shared_ptr<Http1_1Connection>;
+/// HTTP 1.1 连接
+struct Http1_1Connection : public HttpConnection {
+    using Ptr = std::shared_ptr<Http1_1Connection>;
 
-        Http1_1Connection() : HttpConnection(net::http::HttpVersion::VERSION_1_1) {}
+    Http1_1Connection() : HttpConnection(net::http::HttpVersion::VERSION_1_1) {}
 
-        ~Http1_1Connection() noexcept override;
+    ~Http1_1Connection() noexcept override;
 
-        uint32_t expect = 0;
-        uint32_t real = 0;
+    uint32_t expect = 0;
+    uint32_t real = 0;
 
-        net::http::HttpHandleStatus status = net::http::HttpHandleStatus::HANDING;
-        net::http::Request req;
-        net::http::Response resp;
+    net::http::HttpHandleStatus status = net::http::HttpHandleStatus::HANDING;
+    net::http::Request req;
+    net::http::Response resp;
 
-        io::FileStream::Ptr file;
-        size_t fileSize = 0;
-        std::string contentType = "application/x-";
-        std::vector<net::http::Range> ranges;
-        std::vector<net::http::Range>::iterator rangeIterator;
-    };
+    io::FileStream::Ptr file;
+    size_t fileSize = 0;
+    std::string contentType = "application/x-";
+    std::vector<net::http::Range> ranges;
+    std::vector<net::http::Range>::iterator rangeIterator;
+};
 
-    /// HTTP2 流
-    struct Http2Stream {
-        using Ptr = std::shared_ptr<Http2Stream>;
+/// HTTP2 流
+struct Http2Stream {
+    using Ptr = std::shared_ptr<Http2Stream>;
 
-        ~Http2Stream() noexcept;
+    ~Http2Stream() noexcept;
 
-        /// 流 ID
-        uint32_t id;
-        /// 如果一个流被 rst_stream，那么将会在最近一次操作该流时移除该流
-        bool reset = false;
+    /// 流 ID
+    uint32_t id;
+    /// 如果一个流被 rst_stream，那么将会在最近一次操作该流时移除该流
+    bool reset = false;
 
-        size_t headerSize = 0;
-        net::http::HttpHandleStatus status = net::http::HttpHandleStatus::HANDING;
-        net::http::Request req;
-        net::http::Response resp;
+    size_t headerSize = 0;
+    net::http::HttpHandleStatus status = net::http::HttpHandleStatus::HANDING;
+    net::http::Request req;
+    net::http::Response resp;
 
-        io::FileStream::Ptr file;
-        size_t fileSize = 0;
-        /// 剩余内容长度
-        /// 在多分段请求的情况下，contentLength 一定大于 fileSize
-        size_t contentLength = 0;
-        /// 当前帧已处理大小
-        size_t currentFramePos = 0;
-        /// 当前帧的总大小
-        size_t currentFrameSize = 0;
-        std::string contentType = "application/x-";
-        std::vector<net::http::Range> ranges;
-        std::vector<net::http::Range>::iterator rangeIterator;
-    };
+    io::FileStream::Ptr file;
+    size_t fileSize = 0;
+    /// 剩余内容长度
+    /// 在多分段请求的情况下，contentLength 一定大于 fileSize
+    size_t contentLength = 0;
+    /// 当前帧已处理大小
+    size_t currentFramePos = 0;
+    /// 当前帧的总大小
+    size_t currentFrameSize = 0;
+    std::string contentType = "application/x-";
+    std::vector<net::http::Range> ranges;
+    std::vector<net::http::Range>::iterator rangeIterator;
+};
 
-    /// HTTP2 连接
-    struct Http2Connection : public HttpConnection {
-        using Ptr = std::shared_ptr<Http2Connection>;
+/// HTTP2 连接
+struct Http2Connection : public HttpConnection {
+    using Ptr = std::shared_ptr<Http2Connection>;
 
-        Http2Connection() : HttpConnection(net::http::HttpVersion::VERSION_2) {}
+    Http2Connection() : HttpConnection(net::http::HttpVersion::VERSION_2) {}
 
-        int decodeHttp2Settings(const std::string &settings) noexcept;
+    int decodeHttp2Settings(const std::string &settings) noexcept;
 
-        std::map<uint32_t, Http2Stream::Ptr> streamMap;
-        net::http::DynamicTable dynamicTable1;
-        net::http::DynamicTable dynamicTable2;
+    std::map<uint32_t, Http2Stream::Ptr> streamMap;
+    net::http::DynamicTable dynamicTable1;
+    net::http::DynamicTable dynamicTable2;
 
-        bool first = true;
+    bool first = true;
 
-        uint32_t headerTableSize = 4096;
-        uint32_t enablePush = 1;
-        uint32_t maxConcurrentStream = 0;
-        uint32_t windowSize = 65535;
-        uint32_t maxFrameSize = 16384;
-        uint32_t maxHeaderListSize = 0;
-    };
+    uint32_t headerTableSize = 4096;
+    uint32_t enablePush = 1;
+    uint32_t maxConcurrentStream = 0;
+    uint32_t windowSize = 65535;
+    uint32_t maxFrameSize = 16384;
+    uint32_t maxHeaderListSize = 0;
+};
 
-    /// HTTP 连接包装器
-    struct HttpConnectionWrapper : public TcpConnection {
-        std::shared_ptr<HttpConnection> conn;
+/// HTTP 连接包装器
+struct HttpConnectionWrapper : public TcpConnection {
+    std::shared_ptr<HttpConnection> conn;
 
-        /// \brief 从连接中读取一帧的帧头
-        /// \note Http2 连接的专有方法
-        /// \param frame 帧
-        /// \return 是否读取成功
-        bool readFrame(net::http::Http2FrameInfo &frame) noexcept;
-        /// \brief 向连接中写入一帧的帧头
-        /// \note Http2 连接的专有方法
-        /// \param frame 帧
-        void writeFrame(const net::http::Http2FrameInfo &frame) noexcept;
-        /// \brief 向连接中写入 Ack 帧
-        /// \note Http2 连接的专有方法
-        void writeAck() noexcept;
-        /// \brief 向连接中写入 RST 帧
-        /// \note Http2 连接的专有方法
-        /// \param id 流 ID
-        void writeRST(uint32_t id) noexcept;
-    };
-}// namespace sese::service::v2
+    /// \brief 从连接中读取一帧的帧头
+    /// \note Http2 连接的专有方法
+    /// \param frame 帧
+    /// \return 是否读取成功
+    bool readFrame(net::http::Http2FrameInfo &frame) noexcept;
+    /// \brief 向连接中写入一帧的帧头
+    /// \note Http2 连接的专有方法
+    /// \param frame 帧
+    void writeFrame(const net::http::Http2FrameInfo &frame) noexcept;
+    /// \brief 向连接中写入 Ack 帧
+    /// \note Http2 连接的专有方法
+    void writeAck() noexcept;
+    /// \brief 向连接中写入 RST 帧
+    /// \note Http2 连接的专有方法
+    /// \param id 流 ID
+    void writeRST(uint32_t id) noexcept;
+};
+} // namespace sese::service::v2

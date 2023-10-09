@@ -11,7 +11,7 @@ Socket::Socket(Family family, Type type, int32_t protocol) noexcept {
     handle = ::socket((int32_t) family, (int32_t) type, protocol);
 }
 
-Socket::~Socket() noexcept {// NOLINT
+Socket::~Socket() noexcept { // NOLINT
 }
 
 int32_t Socket::bind(Address::Ptr addr) noexcept {

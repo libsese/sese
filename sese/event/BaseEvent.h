@@ -12,12 +12,12 @@
 #define EVENT_ERROR 0x4u
 
 namespace sese::event {
-    /// 网络事件基类
-    struct BaseEvent {
-        virtual ~BaseEvent() = default;
+/// 网络事件基类
+struct BaseEvent {
+    virtual ~BaseEvent() = default;
 
-        int fd{0};
-        unsigned int events{EVENT_NULL};
-        void *data{nullptr};
-    };
-}// namespace sese::event
+    int fd{0};
+    unsigned int events{EVENT_NULL};
+    void *data{nullptr};
+};
+} // namespace sese::event

@@ -17,18 +17,18 @@
 
 namespace sese::ini {
 
-    /// INI 配置类
-    struct API IniConfig {
-    public:
-        /// INI SECTION
-        using Section = std::map<std::string, std::string>;
-        /// INI SECTION MAPPING
-        using SectionMap = std::map<std::string, Section>;
+/// INI 配置类
+struct API IniConfig {
+public:
+    /// INI SECTION
+    using Section = std::map<std::string, std::string>;
+    /// INI SECTION MAPPING
+    using SectionMap = std::map<std::string, Section>;
 
-        /// 默认节
-        Section defSection;
-        /// 节映射
-        SectionMap sectionMap;
-    };
+    /// 默认节
+    Section defSection;
+    /// 节映射
+    SectionMap sectionMap;
+};
 
-}// namespace sese::config::ini
+} // namespace sese::ini

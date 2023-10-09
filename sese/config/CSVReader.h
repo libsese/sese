@@ -13,25 +13,25 @@
 
 namespace sese {
 
-    /// CSV 流读取器
-    class API CSVReader {
-    public:
-        /// 工具支持的输入流
-        using InputStream = io::InputStream;
-        /// 行
-        using Row = std::vector<std::string>;
+/// CSV 流读取器
+class API CSVReader {
+public:
+    /// 工具支持的输入流
+    using InputStream = io::InputStream;
+    /// 行
+    using Row = std::vector<std::string>;
 
-        /// 构造函数
-        /// \param source 读取的流
-        /// \param splitChar 分割字符
-        explicit CSVReader(InputStream *source, char splitChar = ',') noexcept;
+    /// 构造函数
+    /// \param source 读取的流
+    /// \param splitChar 分割字符
+    explicit CSVReader(InputStream *source, char splitChar = ',') noexcept;
 
-        /// 从流中读取一行
-        /// \return 返回包含一行内所有元素的 vector 容器
-        Row read() noexcept;
+    /// 从流中读取一行
+    /// \return 返回包含一行内所有元素的 vector 容器
+    Row read() noexcept;
 
-    protected:
-        char splitChar;
-        InputStream *source = nullptr;
-    };
-}
+protected:
+    char splitChar;
+    InputStream *source = nullptr;
+};
+} // namespace sese

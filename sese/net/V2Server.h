@@ -25,96 +25,96 @@ namespace sese::net::v2 {
 
 #ifdef SESE_PLATFORM_WINDOWS
 
-    class WindowsServiceIOContext;
+class WindowsServiceIOContext;
 
-    class API SESE_DEPRECATED WindowsService {
-    public:
-        virtual ~WindowsService() noexcept;
+class API SESE_DEPRECATED WindowsService {
+public:
+    virtual ~WindowsService() noexcept;
 
-        /// 初始化当前服务
-        /// \return 初始化结果
-        virtual bool init() noexcept;
+    /// 初始化当前服务
+    /// \return 初始化结果
+    virtual bool init() noexcept;
 
-        void start() noexcept;
+    void start() noexcept;
 
-        void shutdown() noexcept;
+    void shutdown() noexcept;
 
-    protected:
-        void loop() noexcept;
+protected:
+    void loop() noexcept;
 
-        void *handshake(SOCKET clientSocket) noexcept;
+    void *handshake(SOCKET clientSocket) noexcept;
 
-        void connect(WindowsServiceIOContext ctx) noexcept;
+    void connect(WindowsServiceIOContext ctx) noexcept;
 
-        void handle(WindowsServiceIOContext ctx) noexcept;
+    void handle(WindowsServiceIOContext ctx) noexcept;
 
-        void closing(WindowsServiceIOContext ctx) noexcept;
+    void closing(WindowsServiceIOContext ctx) noexcept;
 
-    protected:
-        bool initStatus = false;
-        std::atomic_bool exitStatus{false};
-        DWORD eventNum = 0;
-        SOCKET socketSet[MaxEventSize]{};
-        HANDLE hEventSet[MaxEventSize]{};
-        PVOID sslSet[MaxEventSize]{};
+protected:
+    bool initStatus = false;
+    std::atomic_bool exitStatus{false};
+    DWORD eventNum = 0;
+    SOCKET socketSet[MaxEventSize]{};
+    HANDLE hEventSet[MaxEventSize]{};
+    PVOID sslSet[MaxEventSize]{};
 
-        Thread::Ptr mainThread{nullptr};
-        ThreadPool::Ptr threadPool{nullptr};
+    Thread::Ptr mainThread{nullptr};
+    ThreadPool::Ptr threadPool{nullptr};
 
-    public:
-        /// 当连接首次接入时触发
-        virtual void onConnect(sese::net::v2::WindowsServiceIOContext &) noexcept {
-        }
+public:
+    /// 当连接首次接入时触发
+    virtual void onConnect(sese::net::v2::WindowsServiceIOContext &) noexcept {
+    }
 
-        /// 对连接进行正式处理的函数
-        virtual void onHandle(sese::net::v2::WindowsServiceIOContext &) noexcept {
-            /// 此处一般为业务处理代码，默认实现为空
-        }
+    /// 对连接进行正式处理的函数
+    virtual void onHandle(sese::net::v2::WindowsServiceIOContext &) noexcept {
+        /// 此处一般为业务处理代码，默认实现为空
+    }
 
-        /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
-        virtual void onClosing(sese::net::v2::WindowsServiceIOContext &) noexcept {
-        }
+    /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
+    virtual void onClosing(sese::net::v2::WindowsServiceIOContext &) noexcept {
+    }
 
-        /// 设置服务绑定的地址，默认为 localhost:8080
-        /// \param addr IP 地址
-        void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
+    /// 设置服务绑定的地址，默认为 localhost:8080
+    /// \param addr IP 地址
+    void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
 
-        /// 设置服务创建的线程池大小，默认为 4
-        /// \param size 线程池大小
-        void setThreadPoolSize(size_t size) noexcept { threads = size; }
+    /// 设置服务创建的线程池大小，默认为 4
+    /// \param size 线程池大小
+    void setThreadPoolSize(size_t size) noexcept { threads = size; }
 
-        /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
-        /// \param ctx 上下文
-        void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
+    /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
+    /// \param ctx 上下文
+    void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
 
-    protected:
-        size_t threads = 4;
-        IPAddress::Ptr address = nullptr;
-        security::SSLContext::Ptr sslContext = nullptr;
-    };
+protected:
+    size_t threads = 4;
+    IPAddress::Ptr address = nullptr;
+    security::SSLContext::Ptr sslContext = nullptr;
+};
 
-    class API SESE_DEPRECATED WindowsServiceIOContext {
-        friend class WindowsService;
+class API SESE_DEPRECATED WindowsServiceIOContext {
+    friend class WindowsService;
 
-    public:
-        WindowsServiceIOContext(socket_t socket, HANDLE event, void *ssl) noexcept;
+public:
+    WindowsServiceIOContext(socket_t socket, HANDLE event, void *ssl) noexcept;
 
-        int64_t peek(void *buf, size_t len) noexcept;
+    int64_t peek(void *buf, size_t len) noexcept;
 
-        int64_t read(void *buf, size_t len) noexcept;
+    int64_t read(void *buf, size_t len) noexcept;
 
-        int64_t write(const void *buf, size_t len) noexcept;
+    int64_t write(const void *buf, size_t len) noexcept;
 
-        void close() noexcept;
+    void close() noexcept;
 
-        [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
+    [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
 
-    protected:
-        socket_t socket;
-        void *ssl = nullptr;
-        bool isClosing = false;
-        HANDLE event;
-    };
+protected:
+    socket_t socket;
+    void *ssl = nullptr;
+    bool isClosing = false;
+    HANDLE event;
+};
 
 #if defined(__clang__)
 #pragma clang diagnostic push
@@ -125,8 +125,8 @@ namespace sese::net::v2 {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
-    using IOContext = WindowsServiceIOContext;
-    using Server = WindowsService;
+using IOContext = WindowsServiceIOContext;
+using Server = WindowsService;
 #if defined(__clang__)
 #pragma clang diagnostic pop
 #elif defined(__GNUC__)
@@ -137,93 +137,94 @@ namespace sese::net::v2 {
 
 #ifdef SESE_PLATFORM_LINUX
 
-    class LinuxServiceIOContext;
+class LinuxServiceIOContext;
 
-    class API SESE_DEPRECATED LinuxService : public Noncopyable {
-    public:
-        virtual ~LinuxService() noexcept;
+class API SESE_DEPRECATED LinuxService : public Noncopyable {
+public:
+    virtual ~LinuxService() noexcept;
 
-        /// 初始化当前服务
-        /// \return 初始化结果
-        virtual bool init() noexcept;
+    /// 初始化当前服务
+    /// \return 初始化结果
+    virtual bool init() noexcept;
 
-        void start() noexcept;
+    void start() noexcept;
 
-        void shutdown() noexcept;
+    void shutdown() noexcept;
 
-    protected:
-        void loop() noexcept;
+protected:
+    void loop() noexcept;
 
-        void *handshake(socket_t client) noexcept;
+    void *handshake(socket_t client) noexcept;
 
-        void connect(LinuxServiceIOContext ctx) noexcept;
+    void connect(LinuxServiceIOContext ctx) noexcept;
 
-        void handle(LinuxServiceIOContext ctx) noexcept;
+    void handle(LinuxServiceIOContext ctx) noexcept;
 
-        void closing(LinuxServiceIOContext ctx) noexcept;
+    void closing(LinuxServiceIOContext ctx) noexcept;
 
-    protected:
-        bool initStatus = false;
-        std::atomic_bool exitStatus{false};
-        int epoll = -1;
-        socket_t socket = -1;
-        epoll_event eventSet[MaxEventSize]{};
+protected:
+    bool initStatus = false;
+    std::atomic_bool exitStatus{false};
+    int epoll = -1;
+    socket_t socket = -1;
+    epoll_event eventSet[MaxEventSize]{};
 
-        Thread::Ptr mainThread{nullptr};
-        ThreadPool::Ptr threadPool{nullptr};
+    Thread::Ptr mainThread{nullptr};
+    ThreadPool::Ptr threadPool{nullptr};
 
-    public:
-        /// 当连接首次接入时触发
-        virtual void onConnect(sese::net::v2::LinuxServiceIOContext &) noexcept {
-        }
+public:
+    /// 当连接首次接入时触发
+    virtual void onConnect(sese::net::v2::LinuxServiceIOContext &) noexcept {
+    }
 
-        /// 对连接进行正式处理的函数
-        virtual void onHandle(sese::net::v2::LinuxServiceIOContext &) noexcept {
-            /// 此处一般为业务处理代码，默认实现为空
-        }
+    /// 对连接进行正式处理的函数
+    virtual void onHandle(sese::net::v2::LinuxServiceIOContext &) noexcept {
+        /// 此处一般为业务处理代码，默认实现为空
+    }
 
-        /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
-        virtual void onClosing(sese::net::v2::LinuxServiceIOContext &) noexcept {
-        }
+    /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
+    virtual void onClosing(sese::net::v2::LinuxServiceIOContext &) noexcept {
+    }
 
-        /// 设置服务绑定的地址，默认为 localhost:8080
-        /// \param addr IP 地址
-        void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
+    /// 设置服务绑定的地址，默认为 localhost:8080
+    /// \param addr IP 地址
+    void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
 
-        /// 设置服务创建的线程池大小，默认为 4
-        /// \param size 线程池大小
-        void setThreadPoolSize(size_t size) noexcept { threads = size; }
+    /// 设置服务创建的线程池大小，默认为 4
+    /// \param size 线程池大小
+    void setThreadPoolSize(size_t size) noexcept { threads = size; }
 
-        /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
-        /// \param ctx 上下文
-        void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
-    protected:
-        size_t threads = 4;
-        IPAddress::Ptr address = nullptr;
-        security::SSLContext::Ptr sslContext = nullptr;
-    };
+    /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
+    /// \param ctx 上下文
+    void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
 
-    class API SESE_DEPRECATED LinuxServiceIOContext {
-        friend class LinuxService;
+protected:
+    size_t threads = 4;
+    IPAddress::Ptr address = nullptr;
+    security::SSLContext::Ptr sslContext = nullptr;
+};
 
-    public:
-        LinuxServiceIOContext(socket_t socket, void *ssl) noexcept;
+class API SESE_DEPRECATED LinuxServiceIOContext {
+    friend class LinuxService;
 
-        int64_t peek(void *buf, size_t len) noexcept;
+public:
+    LinuxServiceIOContext(socket_t socket, void *ssl) noexcept;
 
-        int64_t read(void *buf, size_t len) noexcept;
+    int64_t peek(void *buf, size_t len) noexcept;
 
-        int64_t write(const void *buf, size_t len) noexcept;
+    int64_t read(void *buf, size_t len) noexcept;
 
-        void close() noexcept;
+    int64_t write(const void *buf, size_t len) noexcept;
 
-        [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
+    void close() noexcept;
 
-    protected:
-        socket_t socket;
-        void *ssl = nullptr;
-        bool isClosing = false;
-    };
+    [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
+
+protected:
+    socket_t socket;
+    void *ssl = nullptr;
+    bool isClosing = false;
+};
 
 #if defined(__clang__)
 #pragma clang diagnostic push
@@ -234,8 +235,8 @@ namespace sese::net::v2 {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
-    using IOContext = LinuxServiceIOContext;
-    using Server = LinuxService;
+using IOContext = LinuxServiceIOContext;
+using Server = LinuxService;
 #if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -250,90 +251,92 @@ namespace sese::net::v2 {
 
 #ifdef SESE_PLATFORM_APPLE
 
-    class DarwinServiceIOContext;
+class DarwinServiceIOContext;
 
-    class API SESE_DEPRECATED DarwinService {
-    public:
-        virtual ~DarwinService() noexcept;
+class API SESE_DEPRECATED DarwinService {
+public:
+    virtual ~DarwinService() noexcept;
 
-        virtual bool init() noexcept;
+    virtual bool init() noexcept;
 
-        void start() noexcept;
+    void start() noexcept;
 
-        void shutdown() noexcept;
+    void shutdown() noexcept;
 
-    protected:
-        void loop() noexcept;
+protected:
+    void loop() noexcept;
 
-        void *handshake(socket_t client) noexcept;
+    void *handshake(socket_t client) noexcept;
 
-        void connect(DarwinServiceIOContext ctx) noexcept;
+    void connect(DarwinServiceIOContext ctx) noexcept;
 
-        void handle(DarwinServiceIOContext ctx) noexcept;
+    void handle(DarwinServiceIOContext ctx) noexcept;
 
-        void closing(DarwinServiceIOContext ctx) noexcept;
+    void closing(DarwinServiceIOContext ctx) noexcept;
 
-    protected:
-        bool initStatus = false;
-        std::atomic_bool exitStatus{false};
-        int kqueue = -1;
-        socket_t socket = -1;
-        struct kevent eventSet[MaxEventSize] {};
+protected:
+    bool initStatus = false;
+    std::atomic_bool exitStatus{false};
+    int kqueue = -1;
+    socket_t socket = -1;
+    struct kevent eventSet[MaxEventSize]{};
 
-        Thread::Ptr mainThread{nullptr};
-        ThreadPool::Ptr threadPool{nullptr};
-        public:
-        /// 当连接首次接入时触发
-        virtual void onConnect(sese::net::v2::DarwinServiceIOContext &) noexcept {
-        }
+    Thread::Ptr mainThread{nullptr};
+    ThreadPool::Ptr threadPool{nullptr};
 
-        /// 对连接进行正式处理的函数
-        virtual void onHandle(sese::net::v2::DarwinServiceIOContext &) noexcept {
-            /// 此处一般为业务处理代码，默认实现为空
-        }
+public:
+    /// 当连接首次接入时触发
+    virtual void onConnect(sese::net::v2::DarwinServiceIOContext &) noexcept {
+    }
 
-        /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
-        virtual void onClosing(sese::net::v2::DarwinServiceIOContext &) noexcept {
-        }
+    /// 对连接进行正式处理的函数
+    virtual void onHandle(sese::net::v2::DarwinServiceIOContext &) noexcept {
+        /// 此处一般为业务处理代码，默认实现为空
+    }
 
-        /// 设置服务绑定的地址，默认为 localhost:8080
-        /// \param addr IP 地址
-        void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
+    /// 当对端关闭或者主动 shutdown 时触发，此时连接可能已断开
+    virtual void onClosing(sese::net::v2::DarwinServiceIOContext &) noexcept {
+    }
 
-        /// 设置服务创建的线程池大小，默认为 4
-        /// \param size 线程池大小
-        void setThreadPoolSize(size_t size) noexcept { threads = size; }
+    /// 设置服务绑定的地址，默认为 localhost:8080
+    /// \param addr IP 地址
+    void setBindAddress(const IPAddress::Ptr &addr) noexcept { address = addr; }
 
-        /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
-        /// \param ctx 上下文
-        void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
-    protected:
-        size_t threads = 4;
-        IPAddress::Ptr address = nullptr;
-        security::SSLContext::Ptr sslContext = nullptr;
-    };
+    /// 设置服务创建的线程池大小，默认为 4
+    /// \param size 线程池大小
+    void setThreadPoolSize(size_t size) noexcept { threads = size; }
 
-    class API DarwinServiceIOContext {
-        friend class DarwinService;
+    /// 设置SSL上下文，使用此选项将启用SSL，默认为 nullptr
+    /// \param ctx 上下文
+    void setSSLContext(const security::SSLContext::Ptr &ctx) noexcept { sslContext = ctx; }
 
-    public:
-        DarwinServiceIOContext(socket_t socket, void *ssl) noexcept;
+protected:
+    size_t threads = 4;
+    IPAddress::Ptr address = nullptr;
+    security::SSLContext::Ptr sslContext = nullptr;
+};
 
-        int64_t peek(void *buf, size_t len) noexcept;
+class API DarwinServiceIOContext {
+    friend class DarwinService;
 
-        int64_t read(void *buf, size_t len) noexcept;
+public:
+    DarwinServiceIOContext(socket_t socket, void *ssl) noexcept;
 
-        int64_t write(const void *buf, size_t len) noexcept;
+    int64_t peek(void *buf, size_t len) noexcept;
 
-        void close() noexcept;
+    int64_t read(void *buf, size_t len) noexcept;
 
-        [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
+    int64_t write(const void *buf, size_t len) noexcept;
 
-    protected:
-        socket_t socket;
-        void *ssl = nullptr;
-        bool isClosing = false;
-    };
+    void close() noexcept;
+
+    [[nodiscard]] socket_t getIdent() const noexcept { return socket; }
+
+protected:
+    socket_t socket;
+    void *ssl = nullptr;
+    bool isClosing = false;
+};
 
 #if defined(__clang__)
 #pragma clang diagnostic push
@@ -344,8 +347,8 @@ namespace sese::net::v2 {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
-    using IOContext = DarwinServiceIOContext;
-    using Server = DarwinService;
+using IOContext = DarwinServiceIOContext;
+using Server = DarwinService;
 #if defined(__clang__)
 #pragma clang diagnostic pop
 #elif defined(__GNUC__)
@@ -354,4 +357,4 @@ namespace sese::net::v2 {
 
 #endif
 
-}// namespace sese::net::v2
+} // namespace sese::net::v2

@@ -34,7 +34,6 @@ TEST(TestXML, File) {
     auto output = std::make_shared<sese::io::ConsoleOutputStream>();
     sese::xml::XmlUtil::serialize(element, output);
     output->write("\n", 1);
-
 }
 
 /// 不合法的元素结尾
