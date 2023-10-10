@@ -31,6 +31,10 @@ public:
         SESE_INFO("onWriteCompleted %d", ctx->getFd());
     }
 
+    void onConnected(Context *ctx) override {
+        SESE_INFO("onConnected %d", ctx->getFd());
+    }
+
     static void myDeleter(Context *ctx) {
         SESE_INFO("onDeleteCallback %d", ctx->getFd());
     }
