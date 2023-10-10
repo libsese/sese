@@ -32,7 +32,8 @@ class NativeContext_V1 final : public io::InputStream, public io::OutputStream {
 
     enum class Type {
         Read,
-        Write
+        Write,
+        Connect
     };
 
     OverlappedWrapper *pWrapper{};
@@ -131,6 +132,12 @@ public:
      */
     void postClose(Context *ctx);
     /**
+     * 投递连接事件
+     * @param sock 套接字
+     * @param to 连接地址
+     */
+    void postConnect(socket_t sock, const net::IPAddress::Ptr &to);
+    /**
      * 设置超时事件
      * @param ctx 操作上下文
      * @param seconds 超时时间
@@ -170,6 +177,8 @@ public:
      * @param ctx 操作上下文
      */
     virtual void onTimeout(Context *ctx) {}
+
+    virtual void onConnected(Context *ctx) {};
     /**
      * ALPN 协议协商完成回调函数
      * @param ctx 上下文
@@ -236,6 +245,18 @@ protected:
             const uint8_t **out, uint8_t *outLength,
             const uint8_t *in, uint32_t inLength,
             NativeIOCPServer_V1 *server
+    );
+
+    void *connectEx{};
+    bool initConnectEx();
+    static BOOL connectedCallbackFunction(
+            socket_t sock,
+            const sockaddr *name,
+            int nameLen,
+            PVOID lpSendBuffer,
+            DWORD dwSendDataLength,
+            LPDWORD lpdwBytesSent,
+            LPOVERLAPPED lpOverlapped
     );
 
     static long bioCtrl(void *bio, int cmd, long num, void *ptr);

@@ -1,6 +1,9 @@
 #include <sese/native/Windows/service/iocp/NativeIOCPServer_V1.h>
+#include <sese/record/Marco.h>
 
 #include <openssl/ssl.h>
+
+#include <mswsock.h>
 
 using namespace sese::net;
 using namespace sese::iocp;
@@ -40,6 +43,10 @@ OverlappedWrapper::OverlappedWrapper() : ctx(this) {
 }
 
 bool NativeIOCPServer_V1::init() {
+    if (!initConnectEx()) {
+        return false;
+    }
+
     if (address) {
         listenFd = WSASocketW(
                 address->getFamily(),
@@ -194,6 +201,43 @@ void NativeIOCPServer_V1::postClose(NativeIOCPServer_V1::Context *ctx) {
     PostQueuedCompletionStatus(iocpFd, 0, (ULONG_PTR) lpCompletionKey, (LPOVERLAPPED) ctx->pWrapper);
 }
 
+#define ConnectEx ((LPFN_CONNECTEX) connectEx)
+
+void NativeIOCPServer_V1::postConnect(sese::socket_t sock, const net::IPAddress::Ptr &to) {
+    if (to->getFamily() == AF_INET) {
+        auto from = sese::net::IPv4Address::any();
+        sese::net::Socket::bind(sock, from->getRawAddress(), from->getRawAddressLength());
+    } else {
+        auto from = sese::net::IPv6Address::any();
+        sese::net::Socket::bind(sock, from->getRawAddress(), from->getRawAddressLength());
+    }
+
+    sese::net::Socket::setNonblocking(sock);
+
+    auto pWrapper = new OverlappedWrapper();
+    pWrapper->ctx.fd = sock;
+    pWrapper->ctx.self = this;
+    pWrapper->ctx.type = NativeContext_V1::Type::Connect;
+    auto addr = to->getRawAddress();
+    auto len = to->getRawAddressLength();
+
+    CreateIoCompletionPort((HANDLE) pWrapper->ctx.fd, iocpFd, 0, 0);
+    BOOL nRt = ConnectEx(sock, addr, len, nullptr, 0, nullptr, (LPOVERLAPPED) pWrapper);
+    auto e = getNetworkError();
+    if (nRt == FALSE && e != ERROR_IO_PENDING) {
+        auto str = sese::net::getNetworkErrorString();
+        Socket::close(pWrapper->ctx.fd);
+        deleteContextCallback(&pWrapper->ctx);
+        delete pWrapper;
+    } else {
+        wrapperSetMutex.lock();
+        wrapperSet.emplace(pWrapper);
+        wrapperSetMutex.unlock();
+    }
+}
+
+#undef ConnectEx
+
 void NativeIOCPServer_V1::acceptThreadProc() {
     using namespace std::chrono_literals;
 
@@ -290,7 +334,7 @@ void NativeIOCPServer_V1::eventThreadProc() {
         );
         if (!bRt) {
             continue;
-        } else if (lpNumberOfBytesTransferred == 0) {
+        } else if (lpNumberOfBytesTransferred == 0 && pWrapper->ctx.type != NativeContext_V1::Type::Connect) {
             wrapperSetMutex.lock();
             Socket::close(pWrapper->ctx.fd);
             pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
@@ -318,7 +362,7 @@ void NativeIOCPServer_V1::eventThreadProc() {
             } else {
                 onReadCompleted(&pWrapper->ctx);
             }
-        } else {
+        } else if (pWrapper->ctx.type == NativeContext_V1::Type::Write) {
             pWrapper->ctx.send.trunc(lpNumberOfBytesTransferred);
             auto len = pWrapper->ctx.send.peek(pWrapper->ctx.wsabufWrite.buf, IOCP_WSABUF_SIZE);
             if (len == 0) {
@@ -350,6 +394,8 @@ void NativeIOCPServer_V1::eventThreadProc() {
                     delete pWrapper;
                 }
             }
+        } else {
+            pWrapper->ctx.self->onConnected(&pWrapper->ctx);
         }
     }
 }
@@ -363,6 +409,20 @@ int NativeIOCPServer_V1::onAlpnSelect(const uint8_t **out, uint8_t *outLength, c
 
 int NativeIOCPServer_V1::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, NativeIOCPServer_V1 *server) {
     return server->onAlpnSelect(out, outLength, in, inLength);
+}
+
+bool NativeIOCPServer_V1::initConnectEx() {
+    auto sock = ::socket(AF_INET, SOCK_STREAM, 0);
+    DWORD dwBytes;
+    GUID guid = WSAID_CONNECTEX;
+    auto rc = WSAIoctl(
+            sock, SIO_GET_EXTENSION_FUNCTION_POINTER,
+            &guid, sizeof(guid),
+            &connectEx, sizeof(connectEx),
+            &dwBytes, nullptr, nullptr
+    );
+    ::closesocket(sock);
+    return rc == 0;
 }
 
 long NativeIOCPServer_V1::bioCtrl(void *bio, int cmd, long num, void *ptr) {
