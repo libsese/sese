@@ -135,8 +135,9 @@ public:
      * 投递连接事件
      * @param sock 套接字
      * @param to 连接地址
+     * @return 操作上下文
      */
-    void postConnect(socket_t sock, const net::IPAddress::Ptr &to);
+    Context *postConnect(socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx);
     /**
      * 设置超时事件
      * @param ctx 操作上下文
@@ -249,15 +250,6 @@ protected:
 
     void *connectEx{};
     bool initConnectEx();
-    static BOOL connectedCallbackFunction(
-            socket_t sock,
-            const sockaddr *name,
-            int nameLen,
-            PVOID lpSendBuffer,
-            DWORD dwSendDataLength,
-            LPDWORD lpdwBytesSent,
-            LPOVERLAPPED lpOverlapped
-    );
 
     static long bioCtrl(void *bio, int cmd, long num, void *ptr);
     static int bioWrite(void *bio, const char *in, int length);

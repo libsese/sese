@@ -203,7 +203,7 @@ void NativeIOCPServer_V1::postClose(NativeIOCPServer_V1::Context *ctx) {
 
 #define ConnectEx ((LPFN_CONNECTEX) connectEx)
 
-void NativeIOCPServer_V1::postConnect(sese::socket_t sock, const net::IPAddress::Ptr &to) {
+NativeIOCPServer_V1::Context *NativeIOCPServer_V1::postConnect(sese::socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx) {
     if (to->getFamily() == AF_INET) {
         auto from = sese::net::IPv4Address::any();
         sese::net::Socket::bind(sock, from->getRawAddress(), from->getRawAddressLength());
@@ -218,6 +218,15 @@ void NativeIOCPServer_V1::postConnect(sese::socket_t sock, const net::IPAddress:
     pWrapper->ctx.fd = sock;
     pWrapper->ctx.self = this;
     pWrapper->ctx.type = NativeContext_V1::Type::Connect;
+    if (cliCtx) {
+        pWrapper->ctx.ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
+        SSL_set_fd((SSL *) pWrapper->ctx.ssl, (int) sock);
+        SSL_CTX_set_alpn_select_cb(
+                (SSL_CTX *) cliCtx.get(),
+                (SSL_CTX_alpn_select_cb_func) &alpnCallbackFunction,
+                this
+        );
+    }
     auto addr = to->getRawAddress();
     auto len = to->getRawAddressLength();
 
@@ -225,14 +234,18 @@ void NativeIOCPServer_V1::postConnect(sese::socket_t sock, const net::IPAddress:
     BOOL nRt = ConnectEx(sock, addr, len, nullptr, 0, nullptr, (LPOVERLAPPED) pWrapper);
     auto e = getNetworkError();
     if (nRt == FALSE && e != ERROR_IO_PENDING) {
-        auto str = sese::net::getNetworkErrorString();
         Socket::close(pWrapper->ctx.fd);
+        if (cliCtx) {
+            SSL_free((SSL *) pWrapper->ctx.ssl);
+        }
         deleteContextCallback(&pWrapper->ctx);
         delete pWrapper;
+        return nullptr;
     } else {
         wrapperSetMutex.lock();
         wrapperSet.emplace(pWrapper);
         wrapperSetMutex.unlock();
+        return &pWrapper->ctx;
     }
 }
 
@@ -395,6 +408,52 @@ void NativeIOCPServer_V1::eventThreadProc() {
                 }
             }
         } else {
+            auto ssl = (SSL *) pWrapper->ctx.ssl;
+            if (ssl) {
+                SSL_set_connect_state(ssl);
+                // GCOVR_EXCL_START
+                while (true) {
+                    auto rt = SSL_do_handshake((SSL *) ssl);
+                    if (rt <= 0) {
+                        // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
+                        auto err = SSL_get_error((SSL *) ssl, rt);
+                        if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
+                            SSL_free((SSL *) ssl);
+                            // Socket::close();
+                            // return -1;
+                            ssl = nullptr;
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+                }
+                // GCOVR_EXCL_STOP
+                if (ssl == nullptr) {
+                    sese::net::Socket::close(pWrapper->ctx.fd);
+                    deleteContextCallback(&pWrapper->ctx);
+                    wrapperSetMutex.lock();
+                    wrapperSet.erase(pWrapper);
+                    if (pWrapper->ctx.timeoutEvent) {
+                        wheel.cancel(pWrapper->ctx.timeoutEvent);
+                        pWrapper->ctx.timeoutEvent = nullptr;
+                    }
+                    wrapperSetMutex.unlock();
+                    delete pWrapper;
+                    continue;
+                } else {
+                    SSL_set_mode(ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
+                    const uint8_t *data = nullptr;
+                    uint32_t dataLength;
+                    SSL_get0_alpn_selected(ssl, &data, &dataLength);
+                    onAlpnGet(&pWrapper->ctx, data, dataLength);
+                    pWrapper->ctx.bio = BIO_new((BIO_METHOD *) bioMethod);
+                    BIO_set_data((BIO *) pWrapper->ctx.bio, &pWrapper->ctx);
+                    BIO_set_init((BIO *) pWrapper->ctx.bio, 1);
+                    BIO_set_shutdown((BIO *) pWrapper->ctx.bio, 0);
+                    SSL_set_bio((SSL *) pWrapper->ctx.ssl, (BIO *) pWrapper->ctx.bio, (BIO *) pWrapper->ctx.bio);
+                }
+            }
             pWrapper->ctx.self->onConnected(&pWrapper->ctx);
         }
     }
