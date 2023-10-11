@@ -120,8 +120,8 @@ void NativeIOCPServer_V1::shutdown() {
     acceptThread = nullptr;
 
     for (auto &&item: wrapperSet) {
-        Socket::close(item->ctx.fd);
         deleteContextCallback(&item->ctx);
+        Socket::close(item->ctx.fd);
         delete item;
     }
     wrapperSet.clear();
@@ -151,8 +151,8 @@ void NativeIOCPServer_V1::postRead(NativeIOCPServer_V1::Context *ctx) {
     auto e = getNetworkError();
     if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
         wrapperSetMutex.lock();
-        Socket::close(ctx->fd);
         ctx->self->getDeleteContextCallback()(ctx);
+        Socket::close(ctx->fd);
         wrapperSet.erase(pWrapper);
         if (pWrapper->ctx.timeoutEvent) {
             wheel.cancel(pWrapper->ctx.timeoutEvent);
@@ -184,8 +184,8 @@ void NativeIOCPServer_V1::postWrite(NativeIOCPServer_V1::Context *ctx) {
     auto e = getNetworkError();
     if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
         wrapperSetMutex.lock();
-        Socket::close(ctx->fd);
         ctx->self->getDeleteContextCallback()(ctx);
+        Socket::close(ctx->fd);
         wrapperSet.erase(pWrapper);
         if (pWrapper->ctx.timeoutEvent) {
             wheel.cancel(pWrapper->ctx.timeoutEvent);
@@ -198,6 +198,7 @@ void NativeIOCPServer_V1::postWrite(NativeIOCPServer_V1::Context *ctx) {
 
 void NativeIOCPServer_V1::postClose(NativeIOCPServer_V1::Context *ctx) {
     void *lpCompletionKey = nullptr;
+    ctx->type = Context::Type::Close;
     PostQueuedCompletionStatus(iocpFd, 0, (ULONG_PTR) lpCompletionKey, (LPOVERLAPPED) ctx->pWrapper);
 }
 
@@ -234,11 +235,11 @@ NativeIOCPServer_V1::Context *NativeIOCPServer_V1::postConnect(sese::socket_t so
     BOOL nRt = ConnectEx(sock, addr, len, nullptr, 0, nullptr, (LPOVERLAPPED) pWrapper);
     auto e = getNetworkError();
     if (nRt == FALSE && e != ERROR_IO_PENDING) {
+        deleteContextCallback(&pWrapper->ctx);
         Socket::close(pWrapper->ctx.fd);
         if (cliCtx) {
             SSL_free((SSL *) pWrapper->ctx.ssl);
         }
-        deleteContextCallback(&pWrapper->ctx);
         delete pWrapper;
         return nullptr;
     } else {
@@ -349,8 +350,8 @@ void NativeIOCPServer_V1::eventThreadProc() {
             continue;
         } else if (lpNumberOfBytesTransferred == 0 && pWrapper->ctx.type != NativeContext_V1::Type::Connect) {
             wrapperSetMutex.lock();
-            Socket::close(pWrapper->ctx.fd);
             pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+            Socket::close(pWrapper->ctx.fd);
             wrapperSet.erase(pWrapper);
             if (pWrapper->ctx.timeoutEvent) {
                 wheel.cancel(pWrapper->ctx.timeoutEvent);
@@ -396,8 +397,8 @@ void NativeIOCPServer_V1::eventThreadProc() {
                 auto e = getNetworkError();
                 if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
                     wrapperSetMutex.lock();
-                    Socket::close(pWrapper->ctx.fd);
                     pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+                    Socket::close(pWrapper->ctx.fd);
                     wrapperSet.erase(pWrapper);
                     if (pWrapper->ctx.timeoutEvent) {
                         wheel.cancel(pWrapper->ctx.timeoutEvent);
@@ -430,9 +431,9 @@ void NativeIOCPServer_V1::eventThreadProc() {
                 }
                 // GCOVR_EXCL_STOP
                 if (ssl == nullptr) {
-                    sese::net::Socket::close(pWrapper->ctx.fd);
-                    deleteContextCallback(&pWrapper->ctx);
                     wrapperSetMutex.lock();
+                    pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+                    Socket::close(pWrapper->ctx.fd);
                     wrapperSet.erase(pWrapper);
                     if (pWrapper->ctx.timeoutEvent) {
                         wheel.cancel(pWrapper->ctx.timeoutEvent);

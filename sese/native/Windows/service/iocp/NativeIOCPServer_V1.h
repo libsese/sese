@@ -33,7 +33,8 @@ class NativeContext_V1 final : public io::InputStream, public io::OutputStream {
     enum class Type {
         Read,
         Write,
-        Connect
+        Connect,
+        Close
     };
 
     OverlappedWrapper *pWrapper{};
