@@ -136,9 +136,8 @@ public:
      * 投递连接事件
      * @param sock 套接字
      * @param to 连接地址
-     * @return 操作上下文
      */
-    Context *postConnect(socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx);
+    void postConnect(socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx);
     /**
      * 设置超时事件
      * @param ctx 操作上下文
@@ -179,7 +178,15 @@ public:
      * @param ctx 操作上下文
      */
     virtual void onTimeout(Context *ctx) {}
-
+    /**
+     * 连接前事件回调函数
+     * @param ctx 操作上下文
+     */
+    virtual void onPreConnect(Context *ctx) {}
+    /**
+     * 连接事件回调函数
+     * @param ctx 操作上下文
+     */
     virtual void onConnected(Context *ctx) {};
     /**
      * ALPN 协议协商完成回调函数
