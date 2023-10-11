@@ -90,3 +90,68 @@ TEST(TestIOCP, Server_1) {
 
     server.shutdown();
 }
+
+class MyIOCPClient : public sese::iocp::IOCPServer {
+public:
+    void onPreRead(Context *ctx) override {
+        SESE_INFO("onRreRead %d", ctx->getFd());
+    }
+
+    void onReadCompleted(Context *ctx) override {
+        SESE_INFO("onReadCompleted %d", ctx->getFd());
+        char buffer[1024] {};
+        int64_t len = ctx->read(buffer, sizeof(buffer));
+        if (len == 0) {
+            postRead(ctx);
+            return;
+        } else {
+            SESE_RAW(buffer, len - 1);
+        }
+
+        while ((len = ctx->read(buffer, sizeof(buffer))) > 0) {
+            SESE_RAW(buffer, len - 1);
+        }
+        postClose(ctx);
+    }
+
+    void onWriteCompleted(Context *ctx) override {
+        SESE_INFO("onWriteCompleted %d", ctx->getFd());
+        postRead(ctx);
+    }
+
+    void onConnected(Context *ctx) override {
+        SESE_INFO("onConnected %d", ctx->getFd());
+        auto buffer = "HTTP/1.1 / GET\r\n"
+                      "Host: microsoft.com\r\n"
+                      "\r\n";
+        ctx->write(buffer, strlen(buffer));
+        postWrite(ctx);
+    }
+};
+
+TEST(TestIOCP, Client_0) {
+    auto clientCtx = sese::security::SSLContextBuilder::SSL4Client();
+    MyIOCPClient client;
+    client.setThreads(2);
+    ASSERT_TRUE(client.init());
+
+    {
+        auto address = sese::net::IPv4Address::lookUpAny("microsoft.com");
+        auto ipAddress = std::reinterpret_pointer_cast<sese::net::IPv4Address>(address);
+        auto sock1 = sese::net::Socket::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
+        ipAddress->setPort(80);
+        client.postConnect(sock1, ipAddress, nullptr);
+    }
+
+    {
+        auto address = sese::net::IPv4Address::lookUpAny("microsoft.com");
+        auto ipAddress = std::reinterpret_pointer_cast<sese::net::IPv4Address>(address);
+        auto sock2 = sese::net::Socket::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
+        ipAddress->setPort(443);
+        client.postConnect(sock2, ipAddress, clientCtx);
+    }
+
+    using namespace std::chrono_literals;
+    std::this_thread::sleep_for(3s);
+    client.shutdown();
+}
