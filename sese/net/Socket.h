@@ -150,6 +150,8 @@ public:
     static int setNonblocking(socket_t socket) noexcept;
 
     static void close(socket_t socket) noexcept;
+
+    static int shutdown(socket_t socket, ShutdownMode mode) noexcept;
 };
 
 /**

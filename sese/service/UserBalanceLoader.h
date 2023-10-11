@@ -62,13 +62,22 @@ public:
     /// 关闭当前负载器并卸载服务
     void stop() noexcept;
 
+    void dispatchSocket(socket_t sock, void *data);
+
+    void setOnDispatchedCallbackFunction(const std::function<void(int, sese::event::EventLoop *, void *)> &cb) { UserBalanceLoader::onDispatchedCallbackFunction = cb; }
+
 protected:
+    struct SocketStatus {
+        socket_t fd{};
+        void *data{};
+    };
+
     void master() noexcept;
 
     void slave(
             sese::event::EventLoop *eventLoop,
-            std::queue<socket_t> *masterQueue,
-            std::queue<socket_t> *slaveQueue,
+            std::queue<SocketStatus> *masterQueue,
+            std::queue<SocketStatus> *slaveQueue,
             std::mutex *mutex
     ) noexcept;
 
@@ -87,9 +96,11 @@ protected:
     sese::service::MasterEventLoop *masterEventLoop{nullptr};
     sese::Thread::Ptr masterThread{nullptr};
     /// socket_t 交换队列
-    std::queue<socket_t> *masterSocketQueueArray{nullptr};
-    std::queue<socket_t> *slaveSocketQueueArray{nullptr};
+    std::queue<SocketStatus> *masterSocketQueueArray{nullptr};
+    std::queue<SocketStatus> *slaveSocketQueueArray{nullptr};
     std::mutex *mutexArray{nullptr};
+
+    std::function<void(int, sese::event::EventLoop *eventLoop, void *)> onDispatchedCallbackFunction;
 };
 
 /// 用户均衡负载器主线程
@@ -153,8 +164,8 @@ bool sese::service::UserBalanceLoader::init(std::function<Service *()> creator) 
     }
 
     // 初始化交换队列
-    masterSocketQueueArray = new std::queue<socket_t>[threads];
-    slaveSocketQueueArray = new std::queue<socket_t>[threads];
+    masterSocketQueueArray = new std::queue<SocketStatus>[threads];
+    slaveSocketQueueArray = new std::queue<SocketStatus>[threads];
     mutexArray = new std::mutex[threads];
 
     return true;

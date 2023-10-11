@@ -21,6 +21,13 @@ int sese::net::Socket::connect(socket_t socket, const sockaddr *addr, socklen_t 
     return ::connect(socket, addr, addrLen);
 }
 
+#include <cassert>
+
+int sese::net::Socket::shutdown(sese::socket_t socket, sese::net::Socket::ShutdownMode mode) noexcept {
+    auto how = (int) mode;
+    return ::shutdown(socket, how);
+}
+
 #ifdef SESE_PLATFORM_WINDOWS
 
 int64_t sese::net::Socket::read(socket_t socket, void *buffer, size_t len, int flags) noexcept {

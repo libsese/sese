@@ -93,6 +93,10 @@ TEST(TestIOCP, Server_1) {
 
 class MyIOCPClient : public sese::iocp::IOCPServer {
 public:
+    MyIOCPClient() {
+        setDeleteContextCallback(myDeleter);
+    }
+
     void onPreRead(Context *ctx) override {
         SESE_INFO("onRreRead %d", ctx->getFd());
     }
@@ -119,6 +123,10 @@ public:
         postRead(ctx);
     }
 
+    void onPreConnect(Context *ctx) override {
+        SESE_INFO("onPreConnect %d", ctx->getFd());
+    }
+
     void onConnected(Context *ctx) override {
         SESE_INFO("onConnected %d", ctx->getFd());
         auto buffer = "HTTP/1.1 / GET\r\n"
@@ -126,6 +134,10 @@ public:
                       "\r\n";
         ctx->write(buffer, strlen(buffer));
         postWrite(ctx);
+    }
+
+    static void myDeleter(Context *ctx) {
+        SESE_INFO("onDeleteCallback %d", ctx->getFd());
     }
 };
 
@@ -154,4 +166,5 @@ TEST(TestIOCP, Client_0) {
     using namespace std::chrono_literals;
     std::this_thread::sleep_for(3s);
     client.shutdown();
+    SESE_INFO("shutdown");
 }

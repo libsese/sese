@@ -92,12 +92,12 @@ void sese::service::UserBalanceLoader::stop() noexcept {
             while (!masterQueue.empty()) {
                 auto client = masterQueue.front();
                 masterQueue.pop();
-                sese::net::Socket::close(client);
+                sese::net::Socket::close(client.fd);
             }
             while (!slaveQueue.empty()) {
                 auto client = slaveQueue.front();
                 slaveQueue.pop();
-                sese::net::Socket::close(client);
+                sese::net::Socket::close(client.fd);
             }
         }
 
@@ -112,6 +112,13 @@ void sese::service::UserBalanceLoader::stop() noexcept {
     }
 }
 
+void sese::service::UserBalanceLoader::dispatchSocket(sese::socket_t sock, void *data) {
+    auto index = sock % threads;
+    mutexArray[index].lock();
+    masterSocketQueueArray[index].push({sock, data});
+    mutexArray[index].unlock();
+}
+
 void sese::service::UserBalanceLoader::master() noexcept {
     while (!_isStop) {
         masterEventLoop->dispatch(acceptTimeout);
@@ -120,18 +127,18 @@ void sese::service::UserBalanceLoader::master() noexcept {
         socket_t last = 0;
 #endif
         while (!masterEventLoop->socketQueue.empty()) {
-            auto client = masterEventLoop->socketQueue.front();
+            auto fd = masterEventLoop->socketQueue.front();
             masterEventLoop->socketQueue.pop();
 #ifdef WIN32
             // Windows Socket 值普遍重复利用且是 4 的整数倍
             int factor = 7;
-            if (last == client) {
+            if (last == fd) {
                 factor = 3;
             }
-            auto index = (client / factor) % threads;
-            last = client;
+            auto index = (fd / factor) % threads;
+            last = fd;
 #else
-            auto index = client % threads;
+            auto index = fd % threads;
 #endif
 
             // size_t index;
@@ -140,13 +147,13 @@ void sese::service::UserBalanceLoader::master() noexcept {
             // }
 
             mutexArray[index].lock();
-            masterSocketQueueArray[index].push(client);
+            masterSocketQueueArray[index].push({fd, nullptr});
             mutexArray[index].unlock();
         }
     }
 }
 
-void sese::service::UserBalanceLoader::slave(sese::event::EventLoop *eventLoop, std::queue<socket_t> *masterQueue, std::queue<socket_t> *slaveQueue, std::mutex *mutex) noexcept {
+void sese::service::UserBalanceLoader::slave(sese::event::EventLoop *eventLoop, std::queue<SocketStatus> *masterQueue, std::queue<SocketStatus> *slaveQueue, std::mutex *mutex) noexcept {
     while (!_isStop) {
         mutex->lock();
         if (!masterQueue->empty()) {
@@ -155,8 +162,12 @@ void sese::service::UserBalanceLoader::slave(sese::event::EventLoop *eventLoop, 
             while (!slaveQueue->empty()) {
                 auto client = slaveQueue->front();
                 slaveQueue->pop();
-                // 此处假装是某一种实现提供的接入客户端
-                eventLoop->onAccept((int) client);
+                if (client.data == nullptr) {
+                    // 此处假装是某一种实现提供的接入客户端
+                    eventLoop->onAccept((int) client.fd);
+                } else if (onDispatchedCallbackFunction) {
+                    onDispatchedCallbackFunction(static_cast<int>(client.fd), eventLoop, client.data);
+                }
             }
         } else {
             mutex->unlock();

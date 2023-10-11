@@ -10,7 +10,7 @@
 
 #include <sese/security/SSLContext.h>
 #include <sese/service/TimerableService_V2.h>
-#include <sese/service/BalanceLoader.h>
+#include <sese/service/UserBalanceLoader.h>
 #include <sese/io/ByteBuilder.h>
 
 #include <set>
@@ -26,6 +26,8 @@ class IOCPServer_V1 {
 public:
     using Context = Context_V1;
     using DeleteContextCallback = std::function<void(Context *data)>;
+
+    IOCPServer_V1();
 
     /**
      * 初始化并启动服务器
@@ -51,6 +53,12 @@ public:
      * @param ctx 操作上下文
      */
     void postClose(Context *ctx);
+    /**
+     * 投递连接事件
+     * @param sock 套接字
+     * @param to 连接地址
+     */
+    void postConnect(socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx);
     /**
      * 设置超时事件
      * @param ctx 操作上下文
@@ -91,6 +99,16 @@ public:
      * @param ctx 操作上下文
      */
     virtual void onTimeout(Context *ctx) {}
+    /**
+     * 连接前事件回调函数
+     * @param ctx 操作上下文
+     */
+    virtual void onPreConnect(Context *ctx) {}
+    /**
+     * 连接事件回调函数
+     * @param ctx 操作上下文
+     */
+    virtual void onConnected(Context *ctx) {}
     /**
      * ALPN 协议协商完成回调函数
      * @param ctx 上下文
@@ -162,10 +180,12 @@ public:
     [[maybe_unused]] void setDispatchTimeout(uint32_t seconds) { balanceLoader.setDispatchTimeout(seconds); }
 
 protected:
+    void preConnectCallback(int fd, sese::event::EventLoop *eventLoop, Context *ctx);
+
     DeleteContextCallback deleteContextCallback = onDeleteContext;
     security::SSLContext::Ptr sslCtx{};
     std::string servProtos{};
-    service::BalanceLoader balanceLoader;
+    service::UserBalanceLoader balanceLoader;
 };
 
 /// 基于 sese-event 的完成端口操作上下文
@@ -176,6 +196,7 @@ class Context_V1 final : public io::InputStream, public io::OutputStream {
     IOCPService_V1 *client{};
     socket_t fd{0};
     void *ssl{};
+    bool isConn{false};
     event::BaseEvent *event{};
     service::TimeoutEvent_V2 *timeoutEvent{};
     io::ByteBuilder send{8192, 8192};
@@ -267,6 +288,11 @@ public:
      * @param ctx 操作上下文
      */
     static void onTimeout(Context *ctx);
+    /**
+     * 连接事件回调函数
+     * @param ctx 操作上下文
+     */
+    static void onConnected(Context *ctx);
     /**
      * ALPN 协商完成回调函数
      * @param ctx 操作上下文
