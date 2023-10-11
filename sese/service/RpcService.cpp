@@ -1,3 +1,4 @@
+#include "sese/net/Socket.h"
 #include <sese/service/RpcService.h>
 #include <sese/config/json/JsonUtil.h>
 #include <sese/net/rpc/Marco.h>
@@ -59,6 +60,7 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
     // done: 将 sese-event 更新至 0.1.4 可删除该判断
     // if (event->fd == listenFd) return;
 
+    int64_t len = 0;
     auto buffer = this->buffers[event->fd];
     char buf[1024];
     while (true) {
@@ -76,7 +78,7 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
                 break;
             } else {
                 // 无数据可读，触发子函数处理
-                if (onHandle(buffer)) {
+                if (len && onHandle(buffer)) {
                     // 准备进入写模式，返回响应
                     event->events &= ~EVENT_READ; // 删除读事件
                     event->events |= EVENT_WRITE; // 添加写事件
@@ -95,6 +97,7 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
                 }
             }
         } else {
+            len += l;
             buffer->write(buf, l);
         }
     }
@@ -151,14 +154,14 @@ void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
 }
 
 void sese::service::RpcService::onClose(sese::event::BaseEvent *event) {
-    if (context) {
-        SSL_free((SSL *) event->data);
-    }
-    auto buffer = buffers[event->fd];
-    buffers.erase(event->fd);
-    delete buffer; // GCOVR_EXCL_LINE
-    sese::net::Socket::close(event->fd);
-    this->freeEvent(event);
+    // if (context) {
+    //     SSL_free((SSL *) event->data);
+    // }
+    // auto buffer = buffers[event->fd];
+    // buffers.erase(event->fd);
+    // delete buffer; // GCOVR_EXCL_LINE
+    // sese::net::Socket::close(event->fd);
+    // this->freeEvent(event);
 }
 
 #define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)

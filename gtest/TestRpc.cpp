@@ -214,7 +214,7 @@ TEST(TestRpc, NoSSL) {
         status = future.wait_for(100ms);
     } while (status != std::future_status::ready);
 
-    auto result = future.get();
+    const auto &result = future.get();
     ASSERT_NE(result, nullptr);
 
     SESE_JSON_GET_INTEGER(code, result, SESE_RPC_TAG_EXIT_CODE, 0);
