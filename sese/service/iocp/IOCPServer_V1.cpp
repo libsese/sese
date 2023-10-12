@@ -10,8 +10,17 @@ using namespace sese::service;
 int64_t Context_V1::read(void *buffer, size_t length) {
     return recv.read(buffer, length);
 }
+
 int64_t Context_V1::write(const void *buffer, size_t length) {
     return send.write(buffer, length);
+}
+
+int64_t Context_V1::peek(void *buffer, size_t length) {
+    return recv.peek(buffer, length);
+}
+
+int64_t Context_V1::trunc(size_t length) {
+    return recv.trunc(length);
 }
 
 #pragma endregion Context

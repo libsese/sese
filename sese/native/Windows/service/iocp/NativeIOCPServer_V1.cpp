@@ -39,6 +39,36 @@ int64_t NativeContext_V1::write(const void *buffer, size_t length) {
     }
 }
 
+int64_t NativeContext_V1::peek(void *buffer, size_t length) {
+    if (ssl) {
+        return SSL_peek((SSL *) ssl, buffer, (int) length);
+    } else {
+        return recv.peek(buffer, length);
+    }
+}
+
+int64_t NativeContext_V1::trunc(size_t length) {
+    if (ssl) {
+        char buffer[1024]{};
+        int64_t real = 0;
+        while (true) {
+            auto need = std::min<int>(static_cast<int>(length - real), sizeof(buffer));
+            int l = SSL_read((SSL *) ssl, buffer, need);
+            if (l > 0) {
+                real += l;
+            } else {
+                break;
+            }
+            if (real == length) {
+                break;
+            }
+        }
+        return real;
+    } else {
+        return recv.trunc(length);
+    }
+}
+
 OverlappedWrapper::OverlappedWrapper() : ctx(this) {
 }
 

@@ -189,7 +189,7 @@ protected:
 };
 
 /// 基于 sese-event 的完成端口操作上下文
-class Context_V1 final : public io::InputStream, public io::OutputStream {
+class Context_V1 final : public io::InputStream, public io::OutputStream, public io::PeekableStream {
     friend class IOCPServer_V1;
     friend class IOCPService_V1;
     IOCPServer_V1 *self{};
@@ -218,7 +218,19 @@ public:
      * @return 实际写入大小
      */
     int64_t write(const void *buffer, size_t length) override;
-
+    /**
+     * 从当前连接中读取内容，但不步进
+     * @param buffer 缓存
+     * @param length 缓存大小
+     * @return 实际读取大小
+     */
+    int64_t peek(void *buffer, size_t length) override;
+    /**
+     * 在当前连接中步进，不读取内容
+     * @param length 步进大小
+     * @return 实际步进大小
+     */
+    int64_t trunc(size_t length) override;
     /**
      * 获取当前上下文连接文件描述符
      * @return 文件描述符

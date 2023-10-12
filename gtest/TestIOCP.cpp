@@ -104,12 +104,10 @@ public:
     void onReadCompleted(Context *ctx) override {
         SESE_INFO("onReadCompleted %d", ctx->getFd());
         char buffer[1024] {};
-        int64_t len = ctx->read(buffer, sizeof(buffer));
+        int64_t len = ctx->peek(buffer, 1);
         if (len == 0) {
             postRead(ctx);
             return;
-        } else {
-            SESE_RAW(buffer, len - 1);
         }
 
         while ((len = ctx->read(buffer, sizeof(buffer))) > 0) {

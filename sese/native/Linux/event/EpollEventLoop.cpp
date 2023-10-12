@@ -51,6 +51,9 @@ void sese::event::EpollEventLoop::dispatch(uint32_t timeout) {
                 continue;
             }
         } else {
+            if (events[i].events & EPOLLERR) {
+                onError((BaseEvent *) events[i].data.ptr);
+            }
             if (events[i].events & EPOLLIN) {
                 if (event->events & EVENT_READ) {
                     onRead((BaseEvent *) events[i].data.ptr);
@@ -61,16 +64,13 @@ void sese::event::EpollEventLoop::dispatch(uint32_t timeout) {
                 }
             }
             if (events[i].events & EPOLLOUT) {
-                if (event->events & EVENT_WRITE) {
-                    onWrite((BaseEvent *) events[i].data.ptr);
-                }
                 if (events[i].events & EPOLLRDHUP) {
                     onClose((BaseEvent *) events[i].data.ptr);
                     continue;
                 }
-            }
-            if (events[i].events & EPOLLERR) {
-                onError((BaseEvent *) events[i].data.ptr);
+                if (event->events & EVENT_WRITE) {
+                    onWrite((BaseEvent *) events[i].data.ptr);
+                }
             }
         }
     }

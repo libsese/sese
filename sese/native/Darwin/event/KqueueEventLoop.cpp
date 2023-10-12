@@ -62,6 +62,9 @@ void sese::event::KqueueEventLoop::dispatch(uint32_t time) {
             onAccept(client);
             continue;
         } else {
+            if (events[i].flags & EV_ERROR && event->events & EVENT_ERROR) {
+                onError(event);
+            }
             if (events[i].filter == EVFILT_READ) {
                 if (event->events & EVENT_READ) {
                     onRead(event);
@@ -72,17 +75,14 @@ void sese::event::KqueueEventLoop::dispatch(uint32_t time) {
                     continue;
                 }
             } else if (events[i].filter == EVFILT_WRITE) {
-                if (event->events & EVENT_WRITE) {
-                    onWrite(reinterpret_cast<BaseEvent *>(events[i].udata));
-                }
-
                 if (events[i].flags & EV_EOF) {
                     onClose(event);
                     continue;
                 }
-            }
-            if (events[i].flags & EV_ERROR && event->events & EVENT_ERROR) {
-                onError(event);
+
+                if (event->events & EVENT_WRITE) {
+                    onWrite(reinterpret_cast<BaseEvent *>(events[i].udata));
+                }
             }
         }
     }
