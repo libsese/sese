@@ -199,3 +199,55 @@ TEST(TestThread, GlobalThreadPool) {
     SESE_INFO("Getvalue %d", rt);
     // EXPECT_EQ(rt, 3);
 }
+
+#include <sese/thread/SpinLock.h>
+#include <sese/thread/Locker.h>
+#include <sese/util/StopWatch.h>
+
+TEST(TestThread, SpinLock) {
+    int i = 0;
+    sese::SpinLock spinLock;
+    auto proc = [&i, &spinLock]() {
+        for (int n = 0; n < 10000; ++n) {
+            sese::Locker locker(spinLock);
+            i += 1;
+        }
+    };
+
+    sese::StopWatch stopWatch;
+    auto f1 = sese::async<void>(proc);
+    auto f2 = sese::async<void>(proc);
+    auto f3 = sese::async<void>(proc);
+    auto f4 = sese::async<void>(proc);
+    f1.get();
+    f2.get();
+    f3.get();
+    f4.get();
+    auto span = stopWatch.stop();
+    SESE_DEBUG("cost time %" PRIu64 "us", span.getTotalMicroseconds());
+    EXPECT_EQ(i, 40000);
+}
+
+TEST(TestThread, Mutex) {
+    int i = 0;
+    std::mutex mutex;
+    auto proc = [&i, &mutex]() {
+        for (int n = 0; n < 10000; ++n) {
+            sese::Locker locker(mutex);
+            i += 1;
+        }
+    };
+
+    sese::StopWatch stopWatch;
+    auto f1 = sese::async<void>(proc);
+    auto f2 = sese::async<void>(proc);
+    auto f3 = sese::async<void>(proc);
+    auto f4 = sese::async<void>(proc);
+    f1.get();
+    f2.get();
+    f3.get();
+    f4.get();
+    auto span = stopWatch.stop();
+    SESE_DEBUG("cost time %" PRIu64 "us", span.getTotalMicroseconds());
+    EXPECT_EQ(i, 40000);
+}

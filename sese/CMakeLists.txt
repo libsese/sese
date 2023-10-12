@@ -121,6 +121,8 @@ set(
         thread/Async.h
         thread/GlobalThreadPool.h
         thread/Locker.h
+        thread/SpinLock.cpp
+        thread/SpinLock.h
         thread/Thread.cpp
         thread/Thread.h
         thread/ThreadPool.cpp
