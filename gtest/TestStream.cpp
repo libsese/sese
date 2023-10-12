@@ -107,3 +107,19 @@ TEST(TestStream, InputStreamReader) {
     }
     EXPECT_EQ(count, 3);
 }
+
+#include <sese/io/NullOutputStream.h>
+
+TEST(TestStream, NullOutputStream) {
+    auto str = "Null";
+    auto null = sese::io::NullOutputStream();
+    EXPECT_EQ(null.write(str, strlen(str)), strlen(str));
+}
+
+#include <sese/io/RandomInputStream.h>
+
+TEST(TestStream, RandomInputStream) {
+    char buffer[32]{};
+    auto rand = sese::io::RandomInputStream();
+    EXPECT_EQ(rand.read(buffer, sizeof(buffer) - 1), sizeof(buffer) - 1);
+}

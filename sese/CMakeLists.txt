@@ -104,11 +104,15 @@ set(
         io/InputStream.h
         io/InputStreamReader.cpp
         io/InputStreamReader.h
+        io/NullOutputStream.cpp
+        io/NullOutputStream.h
         io/OutputBufferWrapper.cpp
         io/OutputBufferWrapper.h
         io/OutputStream.h
         io/OutputUtil.h
         io/PeekableStream.h
+        io/RandomInputStream.cpp
+        io/RandomInputStream.h
         io/Stream.h
 )
 
