@@ -64,6 +64,7 @@ void sese::event::KqueueEventLoop::dispatch(uint32_t time) {
         } else {
             if (events[i].flags & EV_ERROR && event->events & EVENT_ERROR) {
                 onError(event);
+                continue;
             }
             if (events[i].filter == EVFILT_READ) {
                 if (event->events & EVENT_READ) {

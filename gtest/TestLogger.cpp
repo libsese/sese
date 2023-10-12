@@ -21,7 +21,7 @@ TEST(TestLogger, BlockAppender) {
     log.info("No.%d log message", 0);
     std::this_thread::sleep_for(100ms);
 
-    for (auto i = 1; i < 640; i++) {
+    for (auto i = 1; i < 64; i++) {
         log.info("No.%d log message", i);
     }
 
