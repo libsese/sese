@@ -13,11 +13,11 @@ TEST(TestFileLocker, Lock_1) {
     auto func = [file]() {
         auto fd = file->getFd();
         sese::system::FileLocker locker(fd);
-        locker.lockWrite(0, 1024);
+        EXPECT_TRUE(locker.lockWrite(0, 1024));
         file->write("Hello ", 6);
         file->write("World\n", 6);
-        locker.unlock();
         file->flush();
+        EXPECT_TRUE(locker.unlock());
     };
 
     auto future = sese::async<void>(func);
@@ -40,11 +40,11 @@ TEST(TestFileLocker, Lock_2) {
     auto func = [file]() {
         auto fd = file->getFd();
         sese::system::FileLocker locker(fd);
-        locker.lock(0, 1024);
+        EXPECT_TRUE(locker.lock(0, 1024));
         file->write("Hello ", 6);
         file->write("World\n", 6);
-        locker.unlock();
         file->flush();
+        EXPECT_TRUE(locker.unlock());
     };
 
     auto future = sese::async<void>(func);
@@ -53,11 +53,12 @@ TEST(TestFileLocker, Lock_2) {
 
     auto fd = file->getFd();
     sese::system::FileLocker locker(fd);
-    locker.lockRead(0, 1024);
+    EXPECT_TRUE(locker.lockRead(0, 1024));
     char buffer[1024]{};
     file->setSeek(0, SEEK_SET);
     file->read(buffer, 1024);
-    locker.unlock();
+    file->flush();
+    EXPECT_TRUE(locker.unlock());
     EXPECT_EQ(std::string("Hello World\nHello World\n"), buffer);
     file->close();
 
