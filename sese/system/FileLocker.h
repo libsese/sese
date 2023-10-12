@@ -43,8 +43,10 @@ public:
 
 private:
     int32_t fd{};
+#ifdef SESE_PLATFORM_WINDOWS
     int64_t offset{};
     int64_t size{};
+#endif
 };
 
 } // namespace sese::system
