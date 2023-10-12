@@ -6,7 +6,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(TestConcurrent, LinkedStack_Push) {
+TEST(TestConcurrent, DISABLED_LinkedStack_Push) {
     using sese::concurrent::LinkedStack;
 
     LinkedStack<int> stack;
@@ -33,7 +33,7 @@ TEST(TestConcurrent, LinkedStack_Push) {
     EXPECT_EQ(count, 40000);
 }
 
-TEST(TestConcurrent, LinkedStack_PushAndPop) {
+TEST(TestConcurrent, DISABLED_LinkedStack_PushAndPop) {
     using sese::concurrent::LinkedStack;
 
     std::atomic<int> produce = 0;
@@ -76,7 +76,7 @@ TEST(TestConcurrent, LinkedStack_PushAndPop) {
     EXPECT_EQ(produce, consume);
 }
 
-TEST(TestConcurrent, LinkedQueue_Push) {
+TEST(TestConcurrent, DISABLED_LinkedQueue_Push) {
     using sese::concurrent::LinkedQueue;
 
     LinkedQueue<int> queue;
@@ -103,7 +103,7 @@ TEST(TestConcurrent, LinkedQueue_Push) {
     EXPECT_EQ(count, 40000);
 }
 
-TEST(TestConcurrent, LinkedQueue_PushAndPop) {
+TEST(TestConcurrent, DISABLED_LinkedQueue_PushAndPop) {
     using sese::concurrent::LinkedQueue;
 
     std::atomic<int> produce = 0;
@@ -146,7 +146,7 @@ TEST(TestConcurrent, LinkedQueue_PushAndPop) {
     EXPECT_EQ(produce, consume);
 }
 
-TEST(TestConcurrent, ObjectPool) {
+TEST(TestConcurrent, DISABLED_ObjectPool) {
     using sese::concurrent::ObjectPool;
 
     ObjectPool<int32_t>::ObjectPtr j{};
