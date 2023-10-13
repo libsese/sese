@@ -47,11 +47,6 @@ TEST(TestHttpClient, UrlParser_4) {
     ASSERT_EQ(client, nullptr);
 }
 
-TEST(TestHttpClient, DISABLED_UrlParser_5) {
-    auto client = sese::net::http::HttpClient::create("https://host/");
-    ASSERT_EQ(client, nullptr);
-}
-
 TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
     auto client = sese::net::http::HttpClient::create("https://microsoft.com/index.html");
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();

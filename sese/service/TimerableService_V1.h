@@ -11,10 +11,10 @@
 #include <list>
 #include <map>
 
-namespace sese::service {
+namespace sese::service::v1 {
 
 /// 超时事件结构
-struct TimeoutEvent_V1 {
+struct TimeoutEvent {
     /// 文件描述符
     int fd{0};
     /// 预期的时间戳
@@ -24,9 +24,9 @@ struct TimeoutEvent_V1 {
 };
 
 /// 可定时服务
-class TimerableService_V1 : public event::EventLoop {
+class TimerableService : public event::EventLoop {
 public:
-    ~TimerableService_V1() override;
+    ~TimerableService() override;
 
     bool init() override;
 
@@ -35,7 +35,7 @@ public:
 public:
     /// 当超时事件发生时触发
     /// \param timeoutEvent
-    virtual void onTimeout(TimeoutEvent_V1 *timeoutEvent);
+    virtual void onTimeout(TimeoutEvent *timeoutEvent);
 
     /// 新建一个超时事件
     /// \note 每一个文件描述符只能对应一个超时事件，<p>
@@ -48,33 +48,33 @@ public:
     /// \param data 额外数据
     /// \param seconds 超时时间，单位是秒
     /// \return 超时事件结构
-    TimeoutEvent_V1 *createTimeoutEvent(int fd, void *data, uint64_t seconds);
+    TimeoutEvent *createTimeoutEvent(int fd, void *data, uint64_t seconds);
 
     /// 重设当前的超时事件，原本的事件将被取消并覆盖
     /// \see createTimoutEvent
     /// \param timeoutEvent 超时事件结构
     /// \param seconds 超时时间，单位是秒
-    void setTimeoutEvent(TimeoutEvent_V1 *timeoutEvent, uint64_t seconds);
+    void setTimeoutEvent(TimeoutEvent *timeoutEvent, uint64_t seconds);
 
     /// 通过文件描述符获取超时事件结构
     /// \param fd 文件描述符
     /// \retval nullptr 对应的超时事件不存在
     /// \return 对应的超时事件结构
-    TimeoutEvent_V1 *getTimeoutEventByFd(int fd);
+    TimeoutEvent *getTimeoutEventByFd(int fd);
 
     /// 取消当前的超时事件
     /// \param timeoutEvent 超时事件结构
-    void cancelTimeoutEvent(TimeoutEvent_V1 *timeoutEvent);
+    void cancelTimeoutEvent(TimeoutEvent *timeoutEvent);
 
     /// 释放当前的超时事件结构
     /// \param timeoutEvent 超时事件结构
-    void freeTimeoutEvent(TimeoutEvent_V1 *timeoutEvent);
+    void freeTimeoutEvent(TimeoutEvent *timeoutEvent);
 
 private:
     uint64_t startTimestamp{0};
 
-    std::map<int, TimeoutEvent_V1 *> timeoutMap;
-    std::list<TimeoutEvent_V1 *> timeoutTable[60]{};
+    std::map<int, TimeoutEvent *> timeoutMap;
+    std::list<TimeoutEvent *> timeoutTable[60]{};
 };
 
 } // namespace sese::service

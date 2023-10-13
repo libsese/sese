@@ -1,26 +1,26 @@
 #include "sese/service/TimerableService_V1.h"
 #include "sese/event/Event.h"
 
-// #include "sese/record/Marco.h"
-
 #include <algorithm>
 #include <chrono>
-#include <vector>
 
-sese::service::TimerableService_V1::~TimerableService_V1() {
+using sese::service::v1::TimerableService;
+using sese::service::v1::TimeoutEvent;
+
+TimerableService::~TimerableService() {
     if (!timeoutMap.empty()) {
-        std::for_each(timeoutMap.begin(), timeoutMap.end(), [](std::pair<const int, TimeoutEvent_V1 *> pair) -> void {
+        std::for_each(timeoutMap.begin(), timeoutMap.end(), [](std::pair<const int, TimeoutEvent *> pair) -> void {
             delete pair.second;
         });
         timeoutMap.clear();
     }
 }
 
-void sese::service::TimerableService_V1::onTimeout(sese::service::TimeoutEvent_V1 *timeoutEvent) {
+void TimerableService::onTimeout(TimeoutEvent *timeoutEvent) {
 }
 
-sese::service::TimeoutEvent_V1 *sese::service::TimerableService_V1::createTimeoutEvent(int fd, void *data, uint64_t seconds) {
-    auto event = new TimeoutEvent_V1;
+TimeoutEvent *TimerableService::createTimeoutEvent(int fd, void *data, uint64_t seconds) {
+    auto event = new TimeoutEvent;
     timeoutMap[fd] = event;
 
     event->fd = fd;
@@ -35,7 +35,7 @@ sese::service::TimeoutEvent_V1 *sese::service::TimerableService_V1::createTimeou
     return event;
 }
 
-void sese::service::TimerableService_V1::setTimeoutEvent(sese::service::TimeoutEvent_V1 *timeoutEvent, uint64_t seconds) {
+void TimerableService::setTimeoutEvent(TimeoutEvent *timeoutEvent, uint64_t seconds) {
     // 原先存在事件，先取消
     {
         auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
@@ -61,7 +61,7 @@ void sese::service::TimerableService_V1::setTimeoutEvent(sese::service::TimeoutE
     }
 }
 
-sese::service::TimeoutEvent_V1 *sese::service::TimerableService_V1::getTimeoutEventByFd(int fd) {
+TimeoutEvent *TimerableService::getTimeoutEventByFd(int fd) {
     auto iterator = timeoutMap.find(fd);
     if (iterator == timeoutMap.end()) {
         return nullptr;
@@ -70,7 +70,7 @@ sese::service::TimeoutEvent_V1 *sese::service::TimerableService_V1::getTimeoutEv
     }
 }
 
-void sese::service::TimerableService_V1::cancelTimeoutEvent(sese::service::TimeoutEvent_V1 *timeoutEvent) {
+void TimerableService::cancelTimeoutEvent(TimeoutEvent *timeoutEvent) {
     // 原先存在事件，先取消
     auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
     // SESE_INFO("cancel event at %d", (int) index);
@@ -85,7 +85,7 @@ void sese::service::TimerableService_V1::cancelTimeoutEvent(sese::service::Timeo
     // }
 }
 
-void sese::service::TimerableService_V1::freeTimeoutEvent(sese::service::TimeoutEvent_V1 *timeoutEvent) {
+void TimerableService::freeTimeoutEvent(TimeoutEvent *timeoutEvent) {
     auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
     auto &table = timeoutTable[index];
     // SESE_INFO("free %d at %d", timeoutEvent->fd, (int) index);
@@ -98,7 +98,7 @@ void sese::service::TimerableService_V1::freeTimeoutEvent(sese::service::Timeout
     }
 }
 
-void sese::service::TimerableService_V1::dispatch(uint32_t timeout) {
+void TimerableService::dispatch(uint32_t timeout) {
     auto now = (uint64_t) std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count();
     auto index = (now - startTimestamp) % 60;
     auto &table = timeoutTable[index];
@@ -117,7 +117,7 @@ void sese::service::TimerableService_V1::dispatch(uint32_t timeout) {
     event::EventLoop::dispatch(timeout);
 }
 
-bool sese::service::TimerableService_V1::init() {
+bool TimerableService::init() {
     startTimestamp = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count();
     return event::EventLoop::init();
 }

@@ -7,13 +7,13 @@
 
 using namespace sese::net;
 using namespace sese::iocp;
-using namespace sese::_windows::iocp;
+using namespace sese::_windows::iocp::v1;
 
-NativeContext_V1::NativeContext_V1(OverlappedWrapper *pWrapper) : pWrapper(pWrapper) {
+NativeContext::NativeContext(OverlappedWrapper *pWrapper) : pWrapper(pWrapper) {
     wsabufWrite.buf = (CHAR *) malloc(IOCP_WSABUF_SIZE);
 }
 
-NativeContext_V1::~NativeContext_V1() {
+NativeContext::~NativeContext() {
     free(wsabufWrite.buf);
     if (bio) {
         BIO_free((BIO *) bio);
@@ -23,7 +23,7 @@ NativeContext_V1::~NativeContext_V1() {
     }
 }
 
-int64_t NativeContext_V1::read(void *buffer, size_t length) {
+int64_t NativeContext::read(void *buffer, size_t length) {
     if (ssl) {
         return SSL_read((SSL *) ssl, buffer, (int) length);
     } else {
@@ -31,7 +31,7 @@ int64_t NativeContext_V1::read(void *buffer, size_t length) {
     }
 }
 
-int64_t NativeContext_V1::write(const void *buffer, size_t length) {
+int64_t NativeContext::write(const void *buffer, size_t length) {
     if (ssl) {
         return SSL_write((SSL *) ssl, buffer, (int) length);
     } else {
@@ -39,7 +39,7 @@ int64_t NativeContext_V1::write(const void *buffer, size_t length) {
     }
 }
 
-int64_t NativeContext_V1::peek(void *buffer, size_t length) {
+int64_t NativeContext::peek(void *buffer, size_t length) {
     if (ssl) {
         return SSL_peek((SSL *) ssl, buffer, (int) length);
     } else {
@@ -47,7 +47,7 @@ int64_t NativeContext_V1::peek(void *buffer, size_t length) {
     }
 }
 
-int64_t NativeContext_V1::trunc(size_t length) {
+int64_t NativeContext::trunc(size_t length) {
     if (ssl) {
         char buffer[1024]{};
         int64_t real = 0;
@@ -72,7 +72,7 @@ int64_t NativeContext_V1::trunc(size_t length) {
 OverlappedWrapper::OverlappedWrapper() : ctx(this) {
 }
 
-bool NativeIOCPServer_V1::init() {
+bool NativeIOCPServer::init() {
     if (!initConnectEx()) {
         return false;
     }
@@ -128,15 +128,15 @@ bool NativeIOCPServer_V1::init() {
     }
 
     auto method = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bioIOCP");
-    BIO_meth_set_ctrl(method, (long (*)(BIO *, int, long, void *)) & NativeIOCPServer_V1::bioCtrl);
-    BIO_meth_set_read(method, (int (*)(BIO *, char *, int)) & NativeIOCPServer_V1::bioRead);
-    BIO_meth_set_write(method, (int (*)(BIO *, const char *, int)) & NativeIOCPServer_V1::bioWrite);
+    BIO_meth_set_ctrl(method, (long (*)(BIO *, int, long, void *)) & NativeIOCPServer::bioCtrl);
+    BIO_meth_set_read(method, (int (*)(BIO *, char *, int)) & NativeIOCPServer::bioRead);
+    BIO_meth_set_write(method, (int (*)(BIO *, const char *, int)) & NativeIOCPServer::bioWrite);
     this->bioMethod = method;
 
     return true;
 }
 
-void NativeIOCPServer_V1::shutdown() {
+void NativeIOCPServer::shutdown() {
     void *lpCompletionKey = nullptr;
     isShutdown = true;
     for (int i = 0; i < threads; ++i) {
@@ -162,9 +162,9 @@ void NativeIOCPServer_V1::shutdown() {
     }
 }
 
-void NativeIOCPServer_V1::postRead(NativeIOCPServer_V1::Context *ctx) {
+void NativeIOCPServer::postRead(NativeIOCPServer::Context *ctx) {
     auto pWrapper = ctx->pWrapper;
-    ctx->type = NativeContext_V1::Type::Read;
+    ctx->type = NativeContext::Type::Read;
     ctx->readNode = new IOBufNode(IOCP_WSABUF_SIZE);
     ctx->wsabufRead.buf = (CHAR *) ctx->readNode->buffer;
     ctx->wsabufRead.len = (ULONG) ctx->readNode->capacity;
@@ -193,13 +193,13 @@ void NativeIOCPServer_V1::postRead(NativeIOCPServer_V1::Context *ctx) {
     }
 }
 
-void NativeIOCPServer_V1::postWrite(NativeIOCPServer_V1::Context *ctx) {
+void NativeIOCPServer::postWrite(NativeIOCPServer::Context *ctx) {
     auto pWrapper = ctx->pWrapper;
     auto len = ctx->send.peek(ctx->wsabufWrite.buf, IOCP_WSABUF_SIZE);
     if (len == 0) {
         return;
     }
-    ctx->type = NativeContext_V1::Type::Write;
+    ctx->type = NativeContext::Type::Write;
     ctx->wsabufWrite.len = (ULONG) len;
     DWORD nBytes, dwFlags = 0;
     int nRt = WSASend(
@@ -226,7 +226,7 @@ void NativeIOCPServer_V1::postWrite(NativeIOCPServer_V1::Context *ctx) {
     }
 }
 
-void NativeIOCPServer_V1::postClose(NativeIOCPServer_V1::Context *ctx) {
+void NativeIOCPServer::postClose(NativeIOCPServer::Context *ctx) {
     void *lpCompletionKey = nullptr;
     ctx->type = Context::Type::Close;
     PostQueuedCompletionStatus(iocpFd, 0, (ULONG_PTR) lpCompletionKey, (LPOVERLAPPED) ctx->pWrapper);
@@ -234,7 +234,7 @@ void NativeIOCPServer_V1::postClose(NativeIOCPServer_V1::Context *ctx) {
 
 #define ConnectEx ((LPFN_CONNECTEX) connectEx)
 
-void NativeIOCPServer_V1::postConnect(sese::socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx) {
+void NativeIOCPServer::postConnect(sese::socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx) {
     if (to->getFamily() == AF_INET) {
         auto from = sese::net::IPv4Address::any();
         sese::net::Socket::bind(sock, from->getRawAddress(), from->getRawAddressLength());
@@ -248,7 +248,7 @@ void NativeIOCPServer_V1::postConnect(sese::socket_t sock, const net::IPAddress:
     auto pWrapper = new OverlappedWrapper();
     pWrapper->ctx.fd = sock;
     pWrapper->ctx.self = this;
-    pWrapper->ctx.type = NativeContext_V1::Type::Connect;
+    pWrapper->ctx.type = NativeContext::Type::Connect;
     if (cliCtx) {
         pWrapper->ctx.ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
         SSL_set_fd((SSL *) pWrapper->ctx.ssl, (int) sock);
@@ -281,7 +281,7 @@ void NativeIOCPServer_V1::postConnect(sese::socket_t sock, const net::IPAddress:
 
 #undef ConnectEx
 
-void NativeIOCPServer_V1::acceptThreadProc() {
+void NativeIOCPServer::acceptThreadProc() {
     using namespace std::chrono_literals;
 
     while (!isShutdown) {
@@ -362,7 +362,7 @@ void NativeIOCPServer_V1::acceptThreadProc() {
     }
 }
 
-void NativeIOCPServer_V1::eventThreadProc() {
+void NativeIOCPServer::eventThreadProc() {
     OverlappedWrapper *pWrapper{};
     DWORD lpNumberOfBytesTransferred = 0;
     void *lpCompletionKey = nullptr;
@@ -377,7 +377,7 @@ void NativeIOCPServer_V1::eventThreadProc() {
         );
         if (!bRt) {
             continue;
-        } else if (lpNumberOfBytesTransferred == 0 && pWrapper->ctx.type != NativeContext_V1::Type::Connect) {
+        } else if (lpNumberOfBytesTransferred == 0 && pWrapper->ctx.type != NativeContext::Type::Connect) {
             wrapperSetMutex.lock();
             pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
             Socket::close(pWrapper->ctx.fd);
@@ -393,7 +393,7 @@ void NativeIOCPServer_V1::eventThreadProc() {
             break;
         }
 
-        if (pWrapper->ctx.type == NativeContext_V1::Type::Read) {
+        if (pWrapper->ctx.type == NativeContext::Type::Read) {
             onPreRead(&pWrapper->ctx);
             pWrapper->ctx.readNode->size = lpNumberOfBytesTransferred;
             pWrapper->ctx.recv.push(pWrapper->ctx.readNode);
@@ -405,13 +405,13 @@ void NativeIOCPServer_V1::eventThreadProc() {
             } else {
                 onReadCompleted(&pWrapper->ctx);
             }
-        } else if (pWrapper->ctx.type == NativeContext_V1::Type::Write) {
+        } else if (pWrapper->ctx.type == NativeContext::Type::Write) {
             pWrapper->ctx.send.trunc(lpNumberOfBytesTransferred);
             auto len = pWrapper->ctx.send.peek(pWrapper->ctx.wsabufWrite.buf, IOCP_WSABUF_SIZE);
             if (len == 0) {
                 onWriteCompleted(&pWrapper->ctx);
             } else {
-                pWrapper->ctx.type = NativeContext_V1::Type::Write;
+                pWrapper->ctx.type = NativeContext::Type::Write;
                 pWrapper->ctx.wsabufWrite.len = (ULONG) len;
                 DWORD nBytes, dwFlags = 0;
                 int nRt = WSASend(
@@ -489,18 +489,18 @@ void NativeIOCPServer_V1::eventThreadProc() {
     }
 }
 
-int NativeIOCPServer_V1::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
+int NativeIOCPServer::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
     if (SSL_select_next_proto((unsigned char **) out, outLength, (const uint8_t *) servProtos.c_str(), (int) servProtos.length(), in, inLength) != OPENSSL_NPN_NEGOTIATED) {
         return SSL_TLSEXT_ERR_NOACK;
     }
     return SSL_TLSEXT_ERR_OK;
 }
 
-int NativeIOCPServer_V1::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, NativeIOCPServer_V1 *server) {
+int NativeIOCPServer::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, NativeIOCPServer *server) {
     return server->onAlpnSelect(out, outLength, in, inLength);
 }
 
-bool NativeIOCPServer_V1::initConnectEx() {
+bool NativeIOCPServer::initConnectEx() {
     auto sock = ::socket(AF_INET, SOCK_STREAM, 0);
     DWORD dwBytes;
     GUID guid = WSAID_CONNECTEX;
@@ -514,7 +514,7 @@ bool NativeIOCPServer_V1::initConnectEx() {
     return rc == 0;
 }
 
-long NativeIOCPServer_V1::bioCtrl(void *bio, int cmd, long num, void *ptr) {
+long NativeIOCPServer::bioCtrl(void *bio, int cmd, long num, void *ptr) {
     int ret = 0;
     if (cmd == BIO_CTRL_FLUSH) {
         ret = 1;
@@ -522,17 +522,17 @@ long NativeIOCPServer_V1::bioCtrl(void *bio, int cmd, long num, void *ptr) {
     return ret;
 }
 
-int NativeIOCPServer_V1::bioWrite(void *bio, const char *in, int length) {
-    auto ctx = (NativeContext_V1 *) BIO_get_data((BIO *) bio);
+int NativeIOCPServer::bioWrite(void *bio, const char *in, int length) {
+    auto ctx = (NativeContext *) BIO_get_data((BIO *) bio);
     return (int) ctx->send.write(in, length);
 }
 
-int NativeIOCPServer_V1::bioRead(void *bio, char *out, int length) {
-    auto ctx = (NativeContext_V1 *) BIO_get_data((BIO *) bio);
+int NativeIOCPServer::bioRead(void *bio, char *out, int length) {
+    auto ctx = (NativeContext *) BIO_get_data((BIO *) bio);
     return (int) ctx->recv.read(out, length);
 }
 
-void NativeIOCPServer_V1::setTimeout(NativeIOCPServer_V1::Context *ctx, int64_t seconds) {
+void NativeIOCPServer::setTimeout(NativeIOCPServer::Context *ctx, int64_t seconds) {
     wrapperSetMutex.lock();
     ctx->timeoutEvent = wheel.delay(
             [this, ctx]() {
@@ -549,7 +549,7 @@ void NativeIOCPServer_V1::setTimeout(NativeIOCPServer_V1::Context *ctx, int64_t 
     wrapperSetMutex.unlock();
 }
 
-void NativeIOCPServer_V1::cancelTimeout(NativeIOCPServer_V1::Context *ctx) {
+void NativeIOCPServer::cancelTimeout(NativeIOCPServer::Context *ctx) {
     if (ctx->timeoutEvent) {
         wrapperSetMutex.lock();
         wheel.cancel(ctx->timeoutEvent);

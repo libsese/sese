@@ -8,7 +8,8 @@
 
 #pragma once
 
-#include <sese/net/http/HttpConnection.h>
+#include <sese/net/http/Request.h>
+#include <sese/net/http/Response.h>
 
 #include <functional>
 

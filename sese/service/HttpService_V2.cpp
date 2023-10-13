@@ -84,16 +84,16 @@ void sese::service::v2::HttpService::onWrite(sese::event::BaseEvent *event) {
     auto wrapper = (HttpConnectionWrapper *) event->data;
     if (wrapper->conn->version == net::http::HttpVersion::VERSION_1_1) {
         auto httpConn = std::dynamic_pointer_cast<Http1_1Connection>(wrapper->conn);
-        if (httpConn->status == net::http::HttpHandleStatus::OK) {
+        if (httpConn->status == HttpHandleStatus::OK) {
             // controller
             TcpTransporter::onWrite(event);
-        } else if (httpConn->status == net::http::HttpHandleStatus::FILE) {
+        } else if (httpConn->status == HttpHandleStatus::FILE) {
             // file
             onWriteFile1_1(event);
-        } else if (httpConn->status == net::http::HttpHandleStatus::FAIL) {
+        } else if (httpConn->status == HttpHandleStatus::FAIL) {
             // close
             if (wrapper->timeoutEvent) {
-                TimerableService_V1::freeTimeoutEvent(wrapper->timeoutEvent);
+                TimerableService::freeTimeoutEvent(wrapper->timeoutEvent);
             }
             onProcClose(wrapper);
             if (config->servCtx) {
@@ -236,13 +236,13 @@ void sese::service::v2::HttpService::onProcHandle1_1(sese::service::TcpConnectio
     auto httpConn = std::dynamic_pointer_cast<Http1_1Connection>(wrapper->conn);
 
     // 重置状态
-    httpConn->status = net::http::HttpHandleStatus::HANDING;
+    httpConn->status = HttpHandleStatus::HANDING;
 
     // 预期值为 0 代表是请求头
     if (httpConn->expect == 0) {
         auto rt = net::http::HttpUtil::recvRequest(&conn->buffer2read, &httpConn->req);
         if (!rt) {
-            httpConn->status = net::http::HttpHandleStatus::FAIL;
+            httpConn->status = HttpHandleStatus::FAIL;
             postWrite(conn);
             return;
         }
@@ -314,7 +314,7 @@ void sese::service::v2::HttpService::onProcHandle1_1(sese::service::TcpConnectio
         if (contentLength != 0) {
             streamMove(&conn->buffer2write, &httpConn->resp.getBody(), contentLength);
         }
-        httpConn->status = net::http::HttpHandleStatus::OK;
+        httpConn->status = HttpHandleStatus::OK;
 
         httpConn->req.clear();
         httpConn->resp.getBody().freeCapacity();
@@ -323,7 +323,7 @@ void sese::service::v2::HttpService::onProcHandle1_1(sese::service::TcpConnectio
     }
 
     /// http 1.1 文件传输
-    if (httpConn->status == net::http::HttpHandleStatus::HANDING && !CONFIG->workDir.empty()) {
+    if (httpConn->status == HttpHandleStatus::HANDING && !CONFIG->workDir.empty()) {
         auto file = CONFIG->workDir + url.getUrl();
         if (std::filesystem::is_regular_file(file)) {
             // printf("file %s", file.c_str());
@@ -332,7 +332,7 @@ void sese::service::v2::HttpService::onProcHandle1_1(sese::service::TcpConnectio
     }
 
     /// http 1.1 默认控制器
-    if (httpConn->status == net::http::HttpHandleStatus::HANDING) {
+    if (httpConn->status == HttpHandleStatus::HANDING) {
         CONFIG->otherController(httpConn->req, httpConn->resp);
         auto contentLength = httpConn->resp.getBody().getReadableSize();
         httpConn->resp.set("content-length", std::to_string(contentLength));
@@ -340,7 +340,7 @@ void sese::service::v2::HttpService::onProcHandle1_1(sese::service::TcpConnectio
         if (contentLength != 0) {
             streamMove(&conn->buffer2write, &httpConn->resp.getBody(), contentLength);
         }
-        httpConn->status = net::http::HttpHandleStatus::OK;
+        httpConn->status = HttpHandleStatus::OK;
 
         httpConn->req.clear();
         httpConn->resp.getBody().freeCapacity();
@@ -356,7 +356,7 @@ void sese::service::v2::HttpService::onProcHandleFile1_1(const std::string &path
     auto httpConn = std::dynamic_pointer_cast<Http1_1Connection>(wrapper->conn);
 
     if (httpConn->req.getType() != net::http::RequestType::Get) {
-        httpConn->status = net::http::HttpHandleStatus::HANDING;
+        httpConn->status = HttpHandleStatus::HANDING;
         return;
     }
 
@@ -378,13 +378,13 @@ void sese::service::v2::HttpService::onProcHandleFile1_1(const std::string &path
 
     httpConn->file = io::FileStream::create(path, "rb");
     if (httpConn->file == nullptr) {
-        httpConn->status = net::http::HttpHandleStatus::OK;
+        httpConn->status = HttpHandleStatus::OK;
         httpConn->resp.setCode(500);
         net::http::HttpUtil::sendResponse(&conn->buffer2write, &httpConn->resp);
         return;
     }
     if (httpConn->ranges.empty()) {
-        httpConn->status = net::http::HttpHandleStatus::FILE;
+        httpConn->status = HttpHandleStatus::FILE;
         httpConn->ranges.emplace_back(0, httpConn->fileSize);
         httpConn->rangeIterator = httpConn->ranges.begin();
         httpConn->resp.setCode(200);
@@ -421,14 +421,14 @@ void sese::service::v2::HttpService::onProcHandleFile1_1(const std::string &path
         conn->buffer2write.write(contentRange.c_str(), contentRange.length());
         conn->buffer2write.write("\r\n\r\n", 4);
         httpConn->file->setSeek((int64_t) httpConn->rangeIterator->begin, SEEK_SET);
-        httpConn->status = net::http::HttpHandleStatus::FILE;
+        httpConn->status = HttpHandleStatus::FILE;
         return;
     } else {
         httpConn->file->setSeek((int64_t) httpConn->rangeIterator->begin, SEEK_SET);
         httpConn->resp.set("content-length", std::to_string(httpConn->rangeIterator->len));
         httpConn->resp.set("content-range", httpConn->rangeIterator->toString(httpConn->fileSize));
         net::http::HttpUtil::sendResponse(&conn->buffer2write, &httpConn->resp);
-        httpConn->status = net::http::HttpHandleStatus::FILE;
+        httpConn->status = HttpHandleStatus::FILE;
         return;
     }
 }
@@ -473,7 +473,7 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
         // 在此实现中，为了方便处理，发送的文件流中区间和帧的关系是 1 : N
         // 也就是说一个区间至少占用一个帧
         // 单区间文件
-        if (stream->status == net::http::HttpHandleStatus::FILE && stream->ranges.size() == 1) {
+        if (stream->status == HttpHandleStatus::FILE && stream->ranges.size() == 1) {
             size_t offset = 0;
             char buffer[MTU_VALUE];
             // 说明是一个帧的帧头
@@ -541,7 +541,7 @@ void sese::service::v2::HttpService::onWrite2(event::BaseEvent *event) noexcept 
             }
         }
         // 多区间文件
-        else if (stream->status == net::http::HttpHandleStatus::FILE && stream->ranges.size() > 1) {
+        else if (stream->status == HttpHandleStatus::FILE && stream->ranges.size() > 1) {
             // 此偏移不计入 content 总长度
             size_t offset0 = 0;
             // 此偏移计入 content 总长度
@@ -799,13 +799,13 @@ void sese::service::v2::HttpService::onProcDispatch2(sese::service::TcpConnectio
         if (len) {
             writeData(conn, stream);
         }
-        stream->status = net::http::HttpHandleStatus::OK;
+        stream->status = HttpHandleStatus::OK;
         // 流生存周期结束
         httpConn->streamMap.erase(stream->id);
     }
 
     // 文件处理
-    if (stream->status == net::http::HttpHandleStatus::HANDING && !CONFIG->workDir.empty()) {
+    if (stream->status == HttpHandleStatus::HANDING && !CONFIG->workDir.empty()) {
         auto file = CONFIG->workDir + url.getUrl();
         if (std::filesystem::is_regular_file(file)) {
             printf("file %s", file.c_str());
@@ -814,7 +814,7 @@ void sese::service::v2::HttpService::onProcDispatch2(sese::service::TcpConnectio
     }
 
     // http2 默认控制器
-    if (stream->status == net::http::HttpHandleStatus::HANDING) {
+    if (stream->status == HttpHandleStatus::HANDING) {
         CONFIG->otherController(stream->req, stream->resp);
         auto len = stream->resp.getBody().getReadableSize();
         stream->resp.set("content-length", std::to_string(len));
@@ -823,7 +823,7 @@ void sese::service::v2::HttpService::onProcDispatch2(sese::service::TcpConnectio
         if (len) {
             writeData(conn, stream);
         }
-        stream->status = net::http::HttpHandleStatus::OK;
+        stream->status = HttpHandleStatus::OK;
         // 流生存周期结束
         httpConn->streamMap.erase(stream->id);
     }
@@ -834,7 +834,7 @@ void sese::service::v2::HttpService::onProcHandleFile2(const std::string &path, 
     auto httpConn = std::dynamic_pointer_cast<Http2Connection>(wrapper->conn);
 
     if (stream->req.getType() != net::http::RequestType::Get) {
-        stream->status = net::http::HttpHandleStatus::HANDING;
+        stream->status = HttpHandleStatus::HANDING;
         return;
     }
 
@@ -858,7 +858,7 @@ void sese::service::v2::HttpService::onProcHandleFile2(const std::string &path, 
     if (stream->file == nullptr) {
         stream->resp.setCode(500);
         writeHeader(conn, stream);
-        stream->status = net::http::HttpHandleStatus::OK;
+        stream->status = HttpHandleStatus::OK;
         httpConn->streamMap.erase(stream->id);
         return;
     }
@@ -870,7 +870,7 @@ void sese::service::v2::HttpService::onProcHandleFile2(const std::string &path, 
         stream->resp.setCode(200);
         stream->resp.set("content-length", std::to_string(stream->contentLength));
         writeHeader(conn, stream);
-        stream->status = net::http::HttpHandleStatus::FILE;
+        stream->status = HttpHandleStatus::FILE;
         return;
     }
 
@@ -892,7 +892,7 @@ void sese::service::v2::HttpService::onProcHandleFile2(const std::string &path, 
         stream->resp.set("content-length", std::to_string(stream->contentLength));
         stream->resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
         writeHeader(conn, stream);
-        stream->status = net::http::HttpHandleStatus::FILE;
+        stream->status = HttpHandleStatus::FILE;
     }
     // 单区块传输
     else {
@@ -900,7 +900,7 @@ void sese::service::v2::HttpService::onProcHandleFile2(const std::string &path, 
         stream->resp.set("content-length", std::to_string(stream->rangeIterator->len));
         stream->resp.set("content-range", stream->rangeIterator->toString(stream->fileSize));
         writeHeader(conn, stream);
-        stream->status = net::http::HttpHandleStatus::FILE;
+        stream->status = HttpHandleStatus::FILE;
     }
 }
 

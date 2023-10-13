@@ -11,8 +11,8 @@
 
 namespace sese::service {
 /// 超时事件结构体
-typedef TimeoutEvent_V2 TimeoutEvent;
+typedef v2::TimeoutEvent TimeoutEvent;
 
 /// 可定时服务
-typedef TimerableService_V2 TimerableService;
+typedef v2::TimerableService TimerableService;
 } // namespace sese::service

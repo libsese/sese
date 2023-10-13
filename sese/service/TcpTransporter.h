@@ -32,7 +32,7 @@ struct TcpConnection {
 
     void *ssl = nullptr;
     event::BaseEvent *event = nullptr;
-    service::TimeoutEvent_V1 *timeoutEvent = nullptr;
+    service::v1::TimeoutEvent *timeoutEvent = nullptr;
     io::ByteBuilder buffer2read{8192};
     io::ByteBuilder buffer2write{8192};
 };
@@ -47,7 +47,7 @@ struct API TcpTransporterConfig {
 };
 
 /// TCP 传输器
-class API TcpTransporter : public TimerableService_V1 {
+class API TcpTransporter : public v1::TimerableService {
 public:
     explicit TcpTransporter(TcpTransporterConfig *transporterConfig) noexcept;
     ~TcpTransporter() override;
@@ -57,7 +57,7 @@ protected:
     void onRead(event::BaseEvent *event) override;
     void onWrite(event::BaseEvent *event) override;
     void onClose(event::BaseEvent *event) override;
-    void onTimeout(TimeoutEvent_V1 *timeoutEvent) override;
+    void onTimeout(v1::TimeoutEvent *timeoutEvent) override;
 
 protected:
     virtual void postRead(TcpConnection *conn);

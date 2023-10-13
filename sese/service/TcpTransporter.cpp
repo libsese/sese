@@ -102,7 +102,7 @@ void sese::service::TcpTransporter::onRead(sese::event::BaseEvent *event) {
             auto err = sese::net::getNetworkError();
             if (err == ENOTCONN) {
                 if (conn->timeoutEvent) {
-                    TimerableService_V1::freeTimeoutEvent(conn->timeoutEvent);
+                    TimerableService::freeTimeoutEvent(conn->timeoutEvent);
                 }
                 onProcClose(conn);
                 if (config->servCtx) {
@@ -142,7 +142,7 @@ void sese::service::TcpTransporter::onWrite(sese::event::BaseEvent *event) {
                 break;
             } else {
                 if (conn->timeoutEvent) {
-                    TimerableService_V1::freeTimeoutEvent(conn->timeoutEvent);
+                    TimerableService::freeTimeoutEvent(conn->timeoutEvent);
                 }
                 onProcClose(conn);
                 if (config->servCtx) {
@@ -170,7 +170,7 @@ void sese::service::TcpTransporter::onClose(sese::event::BaseEvent *event) {
     /// \see tcp_connection_delay_close_by_async
     if (!conn->isAsync) {
         if (conn->timeoutEvent) {
-            TimerableService_V1::freeTimeoutEvent(conn->timeoutEvent);
+            TimerableService::freeTimeoutEvent(conn->timeoutEvent);
         }
         onProcClose(conn);
         if (config->servCtx) {
@@ -210,7 +210,7 @@ int64_t sese::service::TcpTransporter::write(int fd, const void *buffer, size_t 
     }
 }
 
-void sese::service::TcpTransporter::onTimeout(sese::service::TimeoutEvent_V1 *timeoutEvent) {
+void sese::service::TcpTransporter::onTimeout(sese::service::v1::TimeoutEvent *timeoutEvent) {
     auto conn = (TcpConnection *) timeoutEvent->data;
     onProcClose(conn);
     if (config->servCtx) {

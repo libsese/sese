@@ -92,7 +92,7 @@ TEST(TestService, UserBalanceLoader) {
     service.stop();
 }
 
-class MyTimerableService_V1 : public sese::service::TimerableService_V1 {
+class MyTimerableService_V1 : public sese::service::v1::TimerableService {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
@@ -115,7 +115,7 @@ public:
         setTimeoutEvent(timeoutEvent, 3);
     }
 
-    void onTimeout(sese::service::TimeoutEvent_V1 *timeoutEvent) override {
+    void onTimeout(sese::service::v1::TimeoutEvent *timeoutEvent) override {
         printf("fd %d close", timeoutEvent->fd);
         sese::net::Socket::close(timeoutEvent->fd);
         auto event = (sese::event::Event *) timeoutEvent->data;
@@ -123,7 +123,7 @@ public:
     }
 };
 
-TEST(TestService, TimerableService_V1) {
+TEST(TestService, TimerableService) {
     auto addr = createAddress();
 
     sese::service::UserBalanceLoader service;
@@ -155,7 +155,7 @@ TEST(TestService, TimerableService_V1) {
     service.stop();
 }
 
-class MyTimerableService_V2 : public sese::service::TimerableService_V2 {
+class MyTimerableService_V2 : public sese::service::v2::TimerableService {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
@@ -170,7 +170,7 @@ public:
     }
 
     void onRead(sese::event::BaseEvent *event) override {
-        auto timeoutEvent = (sese::service::TimeoutEvent_V2 *) (event->data);
+        auto timeoutEvent = (sese::service::v2::TimeoutEvent *) (event->data);
         // timeoutEvent will not be nullptr
         cancelTimeoutEvent(timeoutEvent);
         timeoutEvent = nullptr;
@@ -185,7 +185,7 @@ public:
         timeoutEvent->data = event;
     }
 
-    void onTimeout(sese::service::TimeoutEvent_V2 *timeoutEvent) override {
+    void onTimeout(sese::service::v2::TimeoutEvent *timeoutEvent) override {
         auto event = (sese::event::Event *) timeoutEvent->data;
         printf("fd %d close", event->fd);
         sese::net::Socket::close(event->fd);

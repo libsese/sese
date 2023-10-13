@@ -15,19 +15,18 @@
 
 #include <set>
 
-namespace sese::iocp {
+namespace sese::iocp::v1 {
 
-class Context_V1;
-class IOCPServer_V1;
-class IOCPService_V1;
+class Context;
+class IOCPServer;
+class IOCPService;
 
 /// 基于 sese-event 的完成端口服务器
-class IOCPServer_V1 {
+class IOCPServer {
 public:
-    using Context = Context_V1;
     using DeleteContextCallback = std::function<void(Context *data)>;
 
-    IOCPServer_V1();
+    IOCPServer();
 
     /**
      * 初始化并启动服务器
@@ -144,28 +143,28 @@ public:
      * 设置服务器监听所使用的 SSL 上下文
      * @param ctx SSL 上下文
      */
-    void setServCtx(const security::SSLContext::Ptr &ctx) { IOCPServer_V1::sslCtx = ctx; }
+    void setServCtx(const security::SSLContext::Ptr &ctx) { IOCPServer::sslCtx = ctx; }
     /**
      * 设置服务器 ALPN 协商内容
      * @param protos 协议协商内容
      */
-    void setServProtos(const std::string &protos) { IOCPServer_V1::servProtos = protos; }
+    void setServProtos(const std::string &protos) { IOCPServer::servProtos = protos; }
     /**
      * 设置服务器操作上下文销毁回调函数
      * @param callback 回调函数
      */
-    void setDeleteContextCallback(const DeleteContextCallback &callback) { IOCPServer_V1::deleteContextCallback = callback; }
+    void setDeleteContextCallback(const DeleteContextCallback &callback) { IOCPServer::deleteContextCallback = callback; }
 
     /**
      * 获取当前服务器监听 SSL 上下文
      * @return SSL 上下文
      */
-    [[nodiscard]] const security::SSLContext::Ptr &getServCtx() const { return IOCPServer_V1::sslCtx; }
+    [[nodiscard]] const security::SSLContext::Ptr &getServCtx() const { return IOCPServer::sslCtx; }
     /**
      * 获取当前服务的操作上下文销毁回调函数
      * @return 回调函数
      */
-    [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return IOCPServer_V1::deleteContextCallback; };
+    [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return IOCPServer::deleteContextCallback; };
 
 public:
     /**
@@ -189,16 +188,16 @@ protected:
 };
 
 /// 基于 sese-event 的完成端口操作上下文
-class Context_V1 final : public io::InputStream, public io::OutputStream, public io::PeekableStream {
-    friend class IOCPServer_V1;
-    friend class IOCPService_V1;
-    IOCPServer_V1 *self{};
-    IOCPService_V1 *client{};
+class Context final : public io::InputStream, public io::OutputStream, public io::PeekableStream {
+    friend class IOCPServer;
+    friend class IOCPService;
+    IOCPServer *self{};
+    IOCPService *client{};
     socket_t fd{0};
     void *ssl{};
     bool isConn{false};
     event::BaseEvent *event{};
-    service::TimeoutEvent_V2 *timeoutEvent{};
+    service::v2::TimeoutEvent *timeoutEvent{};
     io::ByteBuilder send{8192, 8192};
     io::ByteBuilder recv{8192, 8192};
     void *data{};
@@ -235,30 +234,27 @@ public:
      * 获取当前上下文连接文件描述符
      * @return 文件描述符
      */
-    [[nodiscard]] int32_t getFd() const { return (int32_t) Context_V1::fd; }
+    [[nodiscard]] int32_t getFd() const { return (int32_t) Context::fd; }
     /**
      * 获取当前上下文额外数据
      * @return 额外数据
      */
-    [[nodiscard]] void *getData() const { return Context_V1::data; }
+    [[nodiscard]] void *getData() const { return Context::data; }
     /**
      * 设置当前上下文额外数据
      * @param pData 额外数据
      */
-    [[maybe_unused]] void setData(void *pData) { Context_V1::data = pData; }
+    [[maybe_unused]] void setData(void *pData) { Context::data = pData; }
 };
 
 /// 基于 sese-event 的完成端口子服务
-class IOCPService_V1 final : public service::TimerableService_V2 {
+class IOCPService final : public service::v2::TimerableService {
 public:
-    /// 子服务操作上下文
-    using Context = Context_V1;
-
     /// 初始化子服务
     /// \param master 主服务器
-    explicit IOCPService_V1(IOCPServer_V1 *master);
+    explicit IOCPService(IOCPServer *master);
     /// 析构函数
-    ~IOCPService_V1() override;
+    ~IOCPService() override;
 
     /**
      * 向主服务器投递读事件
@@ -326,7 +322,7 @@ public:
             void *ssl,
             const uint8_t **out, uint8_t *outLength,
             const uint8_t *in, uint32_t inLength,
-            IOCPService_V1 *service
+            IOCPService *service
     );
 
 private:
@@ -334,7 +330,7 @@ private:
     void onRead(event::BaseEvent *event) override;
     void onWrite(event::BaseEvent *event) override;
     void onClose(event::BaseEvent *event) override;
-    void onTimeout(service::TimeoutEvent_V2 *event) override;
+    void onTimeout(service::v2::TimeoutEvent *event) override;
 
     event::BaseEvent *createEventEx(int fd, unsigned int events, void *data);
     void freeEventEx(sese::event::BaseEvent *event);
@@ -342,7 +338,7 @@ private:
     static int64_t read(int fd, void *buffer, size_t len, void *ssl);
     static int64_t write(int fd, const void *buffer, size_t len, void *ssl);
 
-    IOCPServer_V1 *master{};
+    IOCPServer *master{};
     std::set<event::BaseEvent *> eventSet;
 };
 

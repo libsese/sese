@@ -174,17 +174,9 @@ set(
         net/http/HPACK.h
         net/http/HPackUtil.cpp
         net/http/HPackUtil.h
-        net/http/Http2Connection.cpp
-        net/http/Http2Connection.h
         net/http/Http2FrameInfo.h
-        net/http/Http2Stream.cpp
-        net/http/Http2Stream.h
         net/http/HttpClient.cpp
         net/http/HttpClient.h
-        net/http/HttpConnection.cpp
-        net/http/HttpConnection.h
-        net/http/HttpServer.cpp
-        net/http/HttpServer.h
         net/http/HttpUtil.cpp
         net/http/HttpUtil.h
         net/http/Huffman.cpp
@@ -201,10 +193,6 @@ set(
         net/http/ResponseHeader.h
         net/http/UrlHelper.cpp
         net/http/UrlHelper.h
-        net/http/V2Http2Server.cpp
-        net/http/V2Http2Server.h
-        net/http/V2HttpServer.cpp
-        net/http/V2HttpServer.h
         net/IPAddress.cpp
         net/IPAddress.h
         net/IPv4Address.cpp
@@ -219,12 +207,8 @@ set(
         net/rpc/Marco.h
         net/rpc/Server.cpp
         net/rpc/Server.h
-        net/rpc/V2RpcServer.cpp
-        net/rpc/V2RpcServer.h
         net/Socket.cpp
         net/Socket.h
-        net/TcpServer.h
-        net/V2Server.h
         net/ws/FrameHeader.h
         net/ws/WebSocketAuthenticator.cpp
         net/ws/WebsocketAuthenticator.h
@@ -305,8 +289,6 @@ set(
         util/Singleton.h
         util/StopWatch.cpp
         util/StopWatch.h
-        util/Test.cpp
-        util/Test.h
         util/Timer.cpp
         util/Timer.h
         util/TimeSpan.cpp
@@ -321,7 +303,6 @@ set(
         util/Uuid.h
         util/UuidBuilder.cpp
         util/UuidBuilder.h
-
 )
 
 set(
@@ -338,7 +319,6 @@ set(
         security/SecurityConfig.h
         security/SecuritySocket.cpp
         security/SecuritySocket.h
-        security/SecurityTcpServer.h
         security/SSLContext.cpp
         security/SSLContext.h
         security/SSLContextBuilder.cpp
@@ -354,14 +334,9 @@ set(
 set(
         SERVICE_SRC
         service/BalanceLoader.h
-        service/Http2Service.h
-        service/Http2Service_V1.cpp
-        service/Http2Service_V1.h
         service/HttpConnection_V2.cpp
         service/HttpConnection_V2.h
         service/HttpService.h
-        service/HttpService_V1.cpp
-        service/HttpService_V1.h
         service/HttpService_V2.cpp
         service/HttpService_V2.h
         service/iocp/IOBuf.cpp
@@ -382,8 +357,6 @@ set(
         service/TimerableService_V2.h
         service/UserBalanceLoader.cpp
         service/UserBalanceLoader.h
-        service/WebsocketService.cpp
-        service/WebsocketService.h
 )
 
 add_library(Core
@@ -431,22 +404,17 @@ set(NATIVE_PATH "native/${CMAKE_SYSTEM_NAME}")
 target_sources(Core PRIVATE
         ${NATIVE_PATH}/Config.h
         ${NATIVE_PATH}/config/UniReader.cpp
-        ${NATIVE_PATH}/net/ReadableServer.cpp
         ${NATIVE_PATH}/net/Socket.cpp
-        ${NATIVE_PATH}/net/TcpServer.cpp
-        ${NATIVE_PATH}/net/V2Server.cpp
         ${NATIVE_PATH}/security/evp/MD5Context.cpp
         ${NATIVE_PATH}/security/evp/SHA1Context.cpp
         ${NATIVE_PATH}/security/evp/SHA256Context.cpp
         ${NATIVE_PATH}/security/evp/SHA384Context.cpp
         ${NATIVE_PATH}/security/evp/SHA512Context.cpp
-        ${NATIVE_PATH}/security/SecurityTcpServer.cpp
         ${NATIVE_PATH}/system/FileLocker.cpp
         ${NATIVE_PATH}/system/FileNotifier.cpp
         ${NATIVE_PATH}/system/Process.cpp
         ${NATIVE_PATH}/system/SharedMemory.cpp
         ${NATIVE_PATH}/system/StackInfo.cpp
-        ${NATIVE_PATH}/Test.cpp
         ${NATIVE_PATH}/thread/GlobalThreadPool.cpp
 )
 

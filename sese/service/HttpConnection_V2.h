@@ -9,9 +9,10 @@
 #include <sese/service/TcpTransporter.h>
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
-#include <sese/net/http/HttpConnection.h>
+#include <sese/net/http/Range.h>
 #include <sese/net/http/DynamicTable.h>
 #include <sese/net/http/Http2FrameInfo.h>
+#include <sese/io/File.h>
 
 namespace sese::service::v2 {
 
@@ -29,6 +30,14 @@ struct HttpConnection {
     bool upgrade = false;
 };
 
+/// 指示 Http 处理状态
+enum class HttpHandleStatus {
+    HANDING, /// 指示当前请求即将进入处理状态
+    FAIL,    /// 指示当前请求处理失败，已无法返回任何报文
+    OK,      /// 指示当前请求处理完成，需要返回报文
+    FILE     /// 指示当前请求是一个下载文件的请求，需要在 onWrite 时读取文件
+};
+
 /// HTTP 1.1 连接
 struct Http1_1Connection : public HttpConnection {
     using Ptr = std::shared_ptr<Http1_1Connection>;
@@ -40,7 +49,7 @@ struct Http1_1Connection : public HttpConnection {
     uint32_t expect = 0;
     uint32_t real = 0;
 
-    net::http::HttpHandleStatus status = net::http::HttpHandleStatus::HANDING;
+    HttpHandleStatus status = HttpHandleStatus::HANDING;
     net::http::Request req;
     net::http::Response resp;
 
@@ -63,7 +72,7 @@ struct Http2Stream {
     bool reset = false;
 
     size_t headerSize = 0;
-    net::http::HttpHandleStatus status = net::http::HttpHandleStatus::HANDING;
+    HttpHandleStatus status = HttpHandleStatus::HANDING;
     net::http::Request req;
     net::http::Response resp;
 

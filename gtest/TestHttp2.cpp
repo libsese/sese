@@ -1,20 +1,12 @@
-#if defined(__clang__)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#elif defined(_MSC_VER)
-#pragma warning(disable : 4996)
-#elif defined(__GNUC__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-#include "sese/net/http/V2Http2Server.h"
-#include "sese/net/http/DynamicTable.h"
-#include "sese/net/http/Huffman.h"
-#include "sese/system/Process.h"
+#include "sese/io/ByteBuilder.h"
 #include "sese/io/InputBufferWrapper.h"
-#include "sese/util/Random.h"
+#include "sese/net/http/DynamicTable.h"
+#include "sese/net/http/HPackUtil.h"
+#include "sese/net/http/Huffman.h"
 #include "sese/record/Marco.h"
+#include "sese/service/BalanceLoader.h"
+#include "sese/system/Process.h"
+
 #include "gtest/gtest.h"
 
 #define printf SESE_INFO
@@ -203,61 +195,3 @@ TEST(TestHttp2, HeaderExample) {
         showDynamicTable(respTable);
     }
 }
-
-TEST(TestHttp2, DISABLED_Server) {
-    auto addr = makeRandomPortAddr();
-    ASSERT_TRUE(addr != nullptr);
-
-    sese::net::v2::http::Http2Server server;
-    server.setBindAddress(addr);
-    ASSERT_TRUE(server.init());
-    server.start();
-
-    auto cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_http2_request.py " + std::to_string(addr->getPort());
-    auto process = sese::system::Process::create(cmd.c_str());
-    EXPECT_EQ(process->wait(), 0);
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    server.shutdown();
-}
-
-#include <sese/service/BalanceLoader.h>
-#include <sese/service/Http2Service.h>
-
-static void ControllerIndex(sese::net::http::Request &req, sese::net::http::Response &resp) noexcept {
-    resp.setCode(200);
-    resp.set("message", "hello");
-    resp.getBody().write("this is content\n", 16);
-}
-
-TEST(TestHttp2, Server) {
-    auto addr = makeRandomPortAddr();
-
-    sese::service::Http2Config config;
-    config.servName = "Server for Test";
-    config.upgradePath = "/";
-    config.keepalive = 30;
-    config.controllerMap["/"] = ControllerIndex;
-
-    sese::service::BalanceLoader service;
-    service.setThreads(2);
-    service.setAddress(addr);
-    service.init<sese::service::Http2Service>([&]() -> auto {
-        return new sese::service::Http2Service(&config);
-    });
-    service.start();
-    ASSERT_TRUE(service.isStarted());
-
-    auto cmd = PY_EXECUTABLE " " PROJECT_PATH "/scripts/do_http2_request.py " + std::to_string(addr->getPort());
-    auto process = sese::system::Process::create(cmd.c_str());
-    EXPECT_EQ(process->wait(), 0);
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    service.stop();
-}
-
-#if defined(__clang__)
-#pragma clang diagnostic pop
-#elif defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif

@@ -2,24 +2,24 @@
 
 #include <openssl/ssl.h>
 
-using namespace sese::iocp;
+using namespace sese::iocp::v1;
 using namespace sese::service;
 
 #pragma region Context
 
-int64_t Context_V1::read(void *buffer, size_t length) {
+int64_t Context::read(void *buffer, size_t length) {
     return recv.read(buffer, length);
 }
 
-int64_t Context_V1::write(const void *buffer, size_t length) {
+int64_t Context::write(const void *buffer, size_t length) {
     return send.write(buffer, length);
 }
 
-int64_t Context_V1::peek(void *buffer, size_t length) {
+int64_t Context::peek(void *buffer, size_t length) {
     return recv.peek(buffer, length);
 }
 
-int64_t Context_V1::trunc(size_t length) {
+int64_t Context::trunc(size_t length) {
     return recv.trunc(length);
 }
 
@@ -27,9 +27,9 @@ int64_t Context_V1::trunc(size_t length) {
 
 #pragma region Service
 
-IOCPService_V1::IOCPService_V1(IOCPServer_V1 *master)
-    : TimerableService_V2() {
-    IOCPService_V1::master = master;
+IOCPService::IOCPService(IOCPServer *master)
+    : TimerableService() {
+    IOCPService::master = master;
 
     if (master->getServCtx()) {
         auto serverSSL = (SSL_CTX *) master->getServCtx()->getContext();
@@ -41,7 +41,7 @@ IOCPService_V1::IOCPService_V1(IOCPServer_V1 *master)
     }
 }
 
-IOCPService_V1::~IOCPService_V1() {
+IOCPService::~IOCPService() {
     for (auto &&item: eventSet) {
         auto ctx = (Context *) item->data;
         event::EventLoop::freeEvent(item);
@@ -53,29 +53,29 @@ IOCPService_V1::~IOCPService_V1() {
     }
 }
 
-void IOCPService_V1::postRead(IOCPService_V1::Context *ctx) {
+void IOCPService::postRead(Context *ctx) {
     if (ctx->event) {
         ctx->event->events &= ~EVENT_WRITE;
         ctx->event->events |= EVENT_READ;
-        IOCPService_V1::setEvent(ctx->event);
+        IOCPService::setEvent(ctx->event);
     } else {
         ctx->event = createEventEx((int) ctx->fd, EVENT_READ, ctx);
         ctx->event->data = ctx;
     }
 }
 
-void IOCPService_V1::postWrite(IOCPService_V1::Context *ctx) {
+void IOCPService::postWrite(Context *ctx) {
     if (ctx->event) {
         ctx->event->events &= ~EVENT_READ;
         ctx->event->events |= EVENT_WRITE;
-        IOCPService_V1::setEvent(ctx->event);
+        IOCPService::setEvent(ctx->event);
     } else {
         ctx->event = createEventEx((int) ctx->fd, EVENT_WRITE, ctx);
         ctx->event->data = ctx;
     }
 }
 
-void IOCPService_V1::postClose(IOCPService_V1::Context *ctx) {
+void IOCPService::postClose(Context *ctx) {
     // ctx->self->getDeleteContextCallback()(ctx);
     // if (ctx->ssl) {
     //     SSL_free((SSL *) ctx->ssl);
@@ -90,36 +90,36 @@ void IOCPService_V1::postClose(IOCPService_V1::Context *ctx) {
     Socket::shutdown(ctx->fd, Socket::ShutdownMode::Both);
 }
 
-void IOCPService_V1::onAcceptCompleted(IOCPService_V1::Context *ctx) {
+void IOCPService::onAcceptCompleted(Context *ctx) {
     ctx->self->onAcceptCompleted(ctx);
 }
 
-void IOCPService_V1::onPreRead(IOCPService_V1::Context *ctx) {
+void IOCPService::onPreRead(Context *ctx) {
     ctx->self->onPreRead(ctx);
 }
 
-void IOCPService_V1::onReadCompleted(IOCPService_V1::Context *ctx) {
+void IOCPService::onReadCompleted(Context *ctx) {
     ctx->self->onReadCompleted(ctx);
 }
 
-void IOCPService_V1::onWriteCompleted(IOCPService_V1::Context *ctx) {
+void IOCPService::onWriteCompleted(Context *ctx) {
     ctx->self->onWriteCompleted(ctx);
 }
 
-void IOCPService_V1::onTimeout(IOCPService_V1::Context *ctx) {
+void IOCPService::onTimeout(Context *ctx) {
     ctx->timeoutEvent = nullptr;
     ctx->self->onTimeout(ctx);
 }
 
-void IOCPService_V1::onConnected(IOCPService_V1::Context *ctx) {
+void IOCPService::onConnected(Context *ctx) {
     ctx->self->onConnected(ctx);
 }
 
-void IOCPService_V1::onAlpnGet(IOCPService_V1::Context *ctx, const uint8_t *in, uint32_t inLength) {
+void IOCPService::onAlpnGet(Context *ctx, const uint8_t *in, uint32_t inLength) {
     ctx->self->onAlpnGet(ctx, in, inLength);
 }
 
-void IOCPService_V1::onAccept(int fd) {
+void IOCPService::onAccept(int fd) {
     SSL *clientSSL;
     if (sese::net::Socket::setNonblocking(fd)) {
         sese::net::Socket::close(fd);
@@ -161,7 +161,7 @@ void IOCPService_V1::onAccept(int fd) {
     onAcceptCompleted(ctx);
 }
 
-void IOCPService_V1::onRead(sese::event::BaseEvent *event) {
+void IOCPService::onRead(sese::event::BaseEvent *event) {
     auto ctx = (Context *) event->data;
 
     onPreRead(ctx);
@@ -189,7 +189,7 @@ void IOCPService_V1::onRead(sese::event::BaseEvent *event) {
     }
 }
 
-void IOCPService_V1::onWrite(sese::event::BaseEvent *event) {
+void IOCPService::onWrite(sese::event::BaseEvent *event) {
     auto ctx = (Context *) event->data;
     if (ctx->isConn) {
         ctx->isConn = false;
@@ -266,7 +266,7 @@ void IOCPService_V1::onWrite(sese::event::BaseEvent *event) {
     }
 }
 
-void IOCPService_V1::onClose(sese::event::BaseEvent *event) {
+void IOCPService::onClose(sese::event::BaseEvent *event) {
     auto ctx = (Context *) event->data;
     ctx->self->getDeleteContextCallback()(ctx);
     if (ctx->ssl) {
@@ -280,27 +280,27 @@ void IOCPService_V1::onClose(sese::event::BaseEvent *event) {
     delete ctx;
 }
 
-void IOCPService_V1::onTimeout(TimeoutEvent_V2 *event) {
+void IOCPService::onTimeout(v2::TimeoutEvent *event) {
     auto ctx = (Context *) event->data;
-    IOCPService_V1::onTimeout(ctx);
+    IOCPService::onTimeout(ctx);
 }
 
-int IOCPService_V1::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, IOCPService_V1 *service) {
+int IOCPService::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, IOCPService *service) {
     return service->master->onAlpnSelect(out, outLength, in, inLength);
 }
 
-sese::event::BaseEvent *IOCPService_V1::createEventEx(int fd, unsigned int events, void *data) {
+sese::event::BaseEvent *IOCPService::createEventEx(int fd, unsigned int events, void *data) {
     auto event = createEvent(fd, events, data);
     eventSet.emplace(event);
     return event;
 }
 
-void IOCPService_V1::freeEventEx(sese::event::BaseEvent *event) {
+void IOCPService::freeEventEx(sese::event::BaseEvent *event) {
     eventSet.erase(event);
     freeEvent(event);
 }
 
-int64_t IOCPService_V1::read(int fd, void *buffer, size_t len, void *ssl) {
+int64_t IOCPService::read(int fd, void *buffer, size_t len, void *ssl) {
     if (ssl) {
         return SSL_read((SSL *) ssl, buffer, (int) len);
     } else {
@@ -308,7 +308,7 @@ int64_t IOCPService_V1::read(int fd, void *buffer, size_t len, void *ssl) {
     }
 }
 
-int64_t IOCPService_V1::write(int fd, const void *buffer, size_t len, void *ssl) {
+int64_t IOCPService::write(int fd, const void *buffer, size_t len, void *ssl) {
     if (ssl) {
         return SSL_write((SSL *) ssl, buffer, (int) len);
     } else {
@@ -320,7 +320,7 @@ int64_t IOCPService_V1::write(int fd, const void *buffer, size_t len, void *ssl)
 
 #pragma region Server
 
-IOCPServer_V1::IOCPServer_V1() {
+IOCPServer::IOCPServer() {
     this->balanceLoader.setOnDispatchedCallbackFunction(
             [&](int fd, sese::event::EventLoop *eventLoop, void *data) {
                 this->preConnectCallback(fd, eventLoop, (Context *) data);
@@ -328,9 +328,9 @@ IOCPServer_V1::IOCPServer_V1() {
     );
 }
 
-bool IOCPServer_V1::init() {
-    auto rt = balanceLoader.init<IOCPService_V1>([this]() -> auto {
-        return new IOCPService_V1(this);
+bool IOCPServer::init() {
+    auto rt = balanceLoader.init<IOCPService>([this]() -> auto {
+        return new IOCPService(this);
     });
     if (rt) {
         balanceLoader.start();
@@ -339,23 +339,23 @@ bool IOCPServer_V1::init() {
     return false;
 }
 
-void IOCPServer_V1::shutdown() {
+void IOCPServer::shutdown() {
     balanceLoader.stop();
 }
 
-void IOCPServer_V1::postRead(IOCPServer_V1::Context *ctx) {
+void IOCPServer::postRead(Context *ctx) {
     ctx->client->postRead(ctx);
 }
 
-void IOCPServer_V1::postWrite(IOCPService_V1::Context *ctx) {
+void IOCPServer::postWrite(Context *ctx) {
     ctx->client->postWrite(ctx);
 }
 
-void IOCPServer_V1::postClose(IOCPServer_V1::Context *ctx) {
+void IOCPServer::postClose(Context *ctx) {
     ctx->client->postClose(ctx);
 }
 
-void IOCPServer_V1::postConnect(socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx) {
+void IOCPServer::postConnect(socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx) {
     sese::net::Socket::setNonblocking(sock);
 
     auto rt = connect(sock, to->getRawAddress(), to->getRawAddressLength());
@@ -378,7 +378,7 @@ void IOCPServer_V1::postConnect(socket_t sock, const net::IPAddress::Ptr &to, co
     balanceLoader.dispatchSocket(sock, ctx);
 }
 
-void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {
+void IOCPServer::setTimeout(Context *ctx, int64_t seconds) {
     if (ctx->timeoutEvent) {
         ctx->client->cancelTimeoutEvent(ctx->timeoutEvent);
         ctx->timeoutEvent = nullptr;
@@ -387,23 +387,23 @@ void IOCPServer_V1::setTimeout(IOCPServer_V1::Context *ctx, int64_t seconds) {
     ctx->timeoutEvent->data = ctx;
 }
 
-void IOCPServer_V1::cancelTimeout(IOCPServer_V1::Context *ctx) {
+void IOCPServer::cancelTimeout(Context *ctx) {
     if (ctx->timeoutEvent) {
         ctx->client->cancelTimeoutEvent(ctx->timeoutEvent);
         ctx->timeoutEvent = nullptr;
     }
 }
 
-int IOCPServer_V1::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
+int IOCPServer::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
     if (SSL_select_next_proto((unsigned char **) out, outLength, (const uint8_t *) servProtos.c_str(), (int) servProtos.length(), in, inLength) != OPENSSL_NPN_NEGOTIATED) {
         return SSL_TLSEXT_ERR_NOACK;
     }
     return SSL_TLSEXT_ERR_OK;
 }
 
-void IOCPServer_V1::preConnectCallback([[maybe_unused]] int fd, sese::event::EventLoop *eventLoop, sese::iocp::IOCPServer_V1::Context *ctx) {
+void IOCPServer::preConnectCallback([[maybe_unused]] int fd, sese::event::EventLoop *eventLoop, Context *ctx) {
     if (ctx) {
-        ctx->client = reinterpret_cast<IOCPService_V1 *>(eventLoop);
+        ctx->client = reinterpret_cast<IOCPService *>(eventLoop);
         onPreConnect(ctx);
         postWrite(ctx);
     }

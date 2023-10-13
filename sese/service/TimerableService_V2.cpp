@@ -1,18 +1,18 @@
 #include <sese/service/TimerableService_V2.h>
 
 using namespace sese::event;
-using namespace sese::service;
+using namespace sese::service::v2;
 
-void TimerableService_V2::dispatch(uint32_t timeout) {
+void TimerableService::dispatch(uint32_t timeout) {
     timeWheel.check();
     EventLoop::dispatch(timeout);
 }
 
-void TimerableService_V2::onTimeout(TimeoutEvent_V2 *event) {
+void TimerableService::onTimeout(v2::TimeoutEvent *event) {
 }
 
-TimeoutEvent_V2 *TimerableService_V2::setTimeoutEvent(int64_t seconds, void *data) {
-    auto event = new TimeoutEvent_V2;
+TimeoutEvent *TimerableService::setTimeoutEvent(int64_t seconds, void *data) {
+    auto event = new v2::TimeoutEvent;
     event->event = timeWheel.delay(
             [this, event]() {
                 this->onTimeout(event);
@@ -25,7 +25,7 @@ TimeoutEvent_V2 *TimerableService_V2::setTimeoutEvent(int64_t seconds, void *dat
     return event;
 }
 
-void TimerableService_V2::cancelTimeoutEvent(TimeoutEvent_V2 *event) {
+void TimerableService::cancelTimeoutEvent(v2::TimeoutEvent *event) {
     timeWheel.cancel(event->event);
     delete event;
 }

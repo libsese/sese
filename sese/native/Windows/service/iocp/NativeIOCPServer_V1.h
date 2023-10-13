@@ -19,14 +19,14 @@
 #include <set>
 #include <mutex>
 
-namespace sese::_windows::iocp {
+namespace sese::_windows::iocp::v1 {
 
-class NativeIOCPServer_V1;
+class NativeIOCPServer;
 struct OverlappedWrapper;
 
 /// 原生 IOCP 操作上下文
-class NativeContext_V1 final : public io::InputStream, public io::OutputStream, public io::PeekableStream {
-    friend class NativeIOCPServer_V1;
+class NativeContext final : public io::InputStream, public io::OutputStream, public io::PeekableStream {
+    friend class NativeIOCPServer;
     using IOBuf = sese::iocp::IOBuf;
     using Node = sese::iocp::IOBufNode;
 
@@ -42,7 +42,7 @@ class NativeContext_V1 final : public io::InputStream, public io::OutputStream, 
     WSABUF wsabufWrite{};
     Type type{Type::Read};
     SOCKET fd{INVALID_SOCKET};
-    NativeIOCPServer_V1 *self{};
+    NativeIOCPServer *self{};
     TimeoutEvent *timeoutEvent{};
     void *ssl{};
     void *bio{};
@@ -56,9 +56,9 @@ public:
      * 上下文初始化
      * @param pWrapper Overlapped 包装器
      */
-    explicit NativeContext_V1(OverlappedWrapper *pWrapper);
+    explicit NativeContext(OverlappedWrapper *pWrapper);
     /// 析构函数
-    ~NativeContext_V1() override;
+    ~NativeContext() override;
     /**
      * 从当前连接中读取内容
      * @param buffer 缓存
@@ -90,35 +90,35 @@ public:
      * 获取当前上下文连接文件描述符
      * @return 文件描述符
      */
-    [[nodiscard]] int32_t getFd() const { return (int32_t) NativeContext_V1::fd; }
+    [[nodiscard]] int32_t getFd() const { return (int32_t) NativeContext::fd; }
     /**
      * 获取当前上下文额外数据
      * @return 额外数据
      */
-    [[nodiscard]] void *getData() const { return NativeContext_V1::data; }
+    [[nodiscard]] void *getData() const { return NativeContext::data; }
     /**
      * 设置当前上下文额外数据
      * @param pData 额外数据
      */
-    void setData(void *pData) { NativeContext_V1::data = pData; }
+    void setData(void *pData) { NativeContext::data = pData; }
 };
 
 /// Overlapped 包装器
 struct OverlappedWrapper final {
     OVERLAPPED overlapped{};
-    NativeContext_V1 ctx;
+    NativeContext ctx;
 
     OverlappedWrapper();
 };
 
 /// Windows 原生 IOCP 服务器
-class NativeIOCPServer_V1 {
+class NativeIOCPServer {
 public:
-    using Context = NativeContext_V1;
+    using Context = NativeContext;
     using DeleteContextCallback = std::function<void(Context *data)>;
 
     /// 析构函数
-    virtual ~NativeIOCPServer_V1() = default;
+    virtual ~NativeIOCPServer() = default;
 
     /**
      * 初始化并启动服务器
@@ -225,38 +225,38 @@ public:
      * 设置当前服务绑定的 IP 地址，设置此选项服务器将会自动监听对应地址的端口
      * @param addr 目标 IP
      */
-    void setAddress(const net::IPAddress::Ptr &addr) { NativeIOCPServer_V1::address = addr; }
+    void setAddress(const net::IPAddress::Ptr &addr) { NativeIOCPServer::address = addr; }
     /**
      * 设置服务期望线程数量
      * @param numberOfThreads 线程数量
      */
-    void setThreads(size_t numberOfThreads) { NativeIOCPServer_V1::threads = numberOfThreads; }
+    void setThreads(size_t numberOfThreads) { NativeIOCPServer::threads = numberOfThreads; }
     /**
      * 设置服务器监听所使用的 SSL 上下文
      * @param ctx SSL 上下文
      */
-    void setServCtx(const security::SSLContext::Ptr &ctx) { NativeIOCPServer_V1::sslCtx = ctx; }
+    void setServCtx(const security::SSLContext::Ptr &ctx) { NativeIOCPServer::sslCtx = ctx; }
     /**
      * 设置服务器 ALPN 协商内容
      * @param protos 协议协商内容
      */
-    void setServProtos(const std::string &protos) { NativeIOCPServer_V1::servProtos = protos; }
+    void setServProtos(const std::string &protos) { NativeIOCPServer::servProtos = protos; }
     /**
      * 设置服务器操作上下文销毁回调函数
      * @param callback 回调函数
      */
-    void setDeleteContextCallback(const DeleteContextCallback &callback) { NativeIOCPServer_V1::deleteContextCallback = callback; }
+    void setDeleteContextCallback(const DeleteContextCallback &callback) { NativeIOCPServer::deleteContextCallback = callback; }
 
     /**
      * 获取当前服务器监听 SSL 上下文
      * @return SSL 上下文
      */
-    [[nodiscard]] const security::SSLContext::Ptr &getServCtx() const { return NativeIOCPServer_V1::sslCtx; }
+    [[nodiscard]] const security::SSLContext::Ptr &getServCtx() const { return NativeIOCPServer::sslCtx; }
     /**
      * 获取当前服务的操作上下文销毁回调函数
      * @return 回调函数
      */
-    [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return NativeIOCPServer_V1::deleteContextCallback; };
+    [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return NativeIOCPServer::deleteContextCallback; };
 
 protected:
     void acceptThreadProc();
@@ -265,7 +265,7 @@ protected:
             void *ssl,
             const uint8_t **out, uint8_t *outLength,
             const uint8_t *in, uint32_t inLength,
-            NativeIOCPServer_V1 *server
+            NativeIOCPServer *server
     );
 
     void *connectEx{};

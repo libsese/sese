@@ -19,7 +19,7 @@ if (SESE_BUILD_TEST)
     endif ()
 endif ()
 
-project(sese-core VERSION 1.2.5)
+project(sese-core VERSION 1.3.0)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
