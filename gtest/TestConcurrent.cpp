@@ -1,5 +1,6 @@
 #include <sese/concurrent/LinkedStack.h>
 #include <sese/concurrent/LinkedQueue.h>
+#include <sese/concurrent/ObjectPool.h>
 #include <sese/thread/Async.h>
 #include <sese/record/Marco.h>
 
@@ -143,4 +144,17 @@ TEST(TestConcurrent, LinkedQueue_PushAndPop) {
     c2.get();
 
     EXPECT_EQ(produce, consume);
+}
+
+TEST(TestConcurrent, ObjectPool) {
+    using sese::concurrent::ObjectPool;
+
+    ObjectPool<int32_t>::ObjectPtr j{};
+    {
+        auto pool = ObjectPool<int32_t>::create();
+        auto i = pool->borrow();
+        *i = 10;
+        j = pool->borrow();
+        *j = 10;
+    }
 }

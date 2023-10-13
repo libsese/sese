@@ -11,7 +11,7 @@ add_library(Plugin STATIC
 
 set(CONCURRENT_SRC
         concurrent/CASDefine.h
-        concurrent/ConcurrentObjectPool.h
+        concurrent/ObjectPool.h
         concurrent/LinkedQueue.h
         concurrent/LinkedStack.h
 )

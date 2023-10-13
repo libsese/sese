@@ -3,6 +3,7 @@
  * @author kaoru
  * @date 2022年5月30日
  * @brief 非阻塞线程安全队列
+ * @version 0.2
  * @see https://dl.acm.org/doi/pdf/10.1145/248052.248106
  */
 #pragma once
@@ -11,6 +12,8 @@
 
 namespace sese::concurrent {
 
+/// 非阻塞线程安全队列
+/// \tparam T 模板类型
 template<class T>
 class LinkedQueue {
     struct Node {
@@ -83,6 +86,10 @@ public:
         }
         delete head;
         return true;
+    }
+
+    bool empty() {
+        return head == tail;
     }
 };
 
