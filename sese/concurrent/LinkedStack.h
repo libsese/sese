@@ -3,88 +3,71 @@
  * @brief 非阻塞线程安全栈
  * @author kaoru
  * @date 2022年5月31日
+ * @version 0.2
  */
+
 #pragma once
-#include <sese/concurrent/CASDefine.h>
+
+#include <atomic>
 
 namespace sese::concurrent {
 
-/**
- * @brief 非阻塞线程安全栈
- * @tparam T 数据类型
- */
-template<typename T>
-class SESE_DEPRECATED_WITH("已弃用") LinkedStack {
+/// 非阻塞线程安全栈
+/// \tparam T 模板类型
+template<class T>
+class LinkedStack {
+    struct Node {
+        T value;
+        std::atomic<Node *> next{nullptr};
+    };
+
+    std::atomic<Node *> root{nullptr};
+
 public:
-    using NodeType = Node<T>;
-
-    virtual ~LinkedStack() noexcept {
-        auto toDel = (NodeType *) head;
-        while (toDel != nullptr) {
-            auto next = toDel->next;
-            delete toDel;
-            toDel = next;
+    ~LinkedStack() {
+        auto pNode = root.load();
+        while (pNode) {
+            auto pNext = pNode->next.load();
+            delete pNode;
+            pNode = pNext;
         }
-    }
-
-    [[nodiscard]] size_t size() const noexcept {
-        size_t size = 0;
-        auto p = head;
-        while (p != nullptr) {
-            size++;
-            p = p->next;
-        }
-        return size;
-    }
-
-    [[nodiscard]] bool empty() const noexcept {
-        return head == nullptr;
     }
 
     void push(const T &value) {
-        auto newNode = new NodeType;
+        auto newNode = new Node;
         newNode->value = value;
-        newNode->next = head;
-        while (!compareAndSwapPointer((void *volatile *) &head, newNode->next, newNode)) {
-            newNode->next = head;
+
+        Node *currentRoot;
+        while (true) {
+            currentRoot = root.load();
+            newNode->next.store(currentRoot);
+            if (root.compare_exchange_weak(currentRoot, newNode)) {
+                break;
+            }
         }
     }
 
-    void push(T &&value) noexcept {
-        auto newNode = new NodeType;
-        newNode->value = std::move(value);
-        newNode->next = head;
-        while (!compareAndSwapPointer((void *volatile *) &head, newNode->next, newNode)) {
-            newNode->next = head;
+    bool pop(T &value) {
+        Node *oldRoot;
+        Node *newRoot;
+        while (true) {
+            oldRoot = root.load();
+            if (oldRoot == nullptr) {
+                return false;
+            }
+            newRoot = oldRoot->next.load();
+            if (root.compare_exchange_weak(oldRoot, newRoot)) {
+                break;
+            }
         }
+        value = oldRoot->value;
+        delete oldRoot;
+        return true;
     }
 
-    T pop(const T &defaultValue) noexcept {
-        auto node = head;
-        if (node != nullptr) {
-            while (!compareAndSwapPointer((void *volatile *) &head, node->next, node)) {}
-            auto value = node->value;
-            delete node;
-            return value;
-        } else {
-            return defaultValue;
-        }
+    bool empty() {
+        return root.load() == nullptr;
     }
-
-    T pop(T &&defaultValue) noexcept {
-        auto node = head;
-        if (node != nullptr) {
-            while (!compareAndSwapPointer((void *volatile *) &head, node->next, node)) {}
-            auto value = node->value;
-            delete node;
-            return value;
-        } else {
-            return defaultValue;
-        }
-    }
-
-private:
-    NodeType *head = nullptr;
 };
 
 } // namespace sese::concurrent

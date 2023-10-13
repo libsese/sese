@@ -25,6 +25,7 @@ add_executable(
         TestBufferWrapper.cpp
         TestByteBuilder.cpp
         TestCompressor.cpp
+        TestConcurrent.cpp
         TestConfig.cpp
         TestCookies.cpp
         TestCSVUtil.cpp
