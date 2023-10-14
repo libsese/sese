@@ -1,4 +1,4 @@
-#include <sese/service/HttpConnection_V2.h>
+#include <sese/service/http/HttpConnection_V2.h>
 #include <sese/io/InputBufferWrapper.h>
 #include <sese/convert/Base64Converter.h>
 #include <sese/net/http/Http2FrameInfo.h>

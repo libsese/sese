@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <sese/service/HttpConnection_V2.h>
+#include <sese/service/http/HttpConnection_V2.h>
 #include <sese/net/http/ControllerGroup.h>
 #include <sese/net/http/Http2FrameInfo.h>
 

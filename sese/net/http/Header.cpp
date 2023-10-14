@@ -38,6 +38,8 @@ const std::string &Header::get(const std::string &key, const std::string &defaul
 
 #undef XX
 
+#if SESE_CXX_STANDARD > 201700L
+
 std::string_view Header::getView(const std::string &key, const std::string &defaultValue) noexcept {
     auto res = headers.find(key);
     if (res == headers.end()) {
@@ -47,10 +49,26 @@ std::string_view Header::getView(const std::string &key, const std::string &defa
     }
 }
 
+#endif
+
 const CookieMap::Ptr &Header::getCookies() const {
     return cookies;
 }
 
 void Header::setCookies(const CookieMap::Ptr &cookies) {
     Header::cookies = cookies;
+}
+
+Cookie::Ptr Header::getCookie(const std::string &name) const {
+    if (Header::cookies) {
+        return Header::cookies->find(name);
+    }
+    return nullptr;
+}
+
+void Header::setCookie(const Cookie::Ptr &cookie) {
+    if (!Header::cookies) {
+        Header::cookies = std::make_shared<CookieMap>();
+    }
+    Header::cookies->add(cookie);
 }
