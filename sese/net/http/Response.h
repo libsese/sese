@@ -16,6 +16,8 @@ namespace sese::net::http {
 /// HTTP 响应类
 class Response final : public ResponseHeader {
 public:
+    using Ptr = std::unique_ptr<Response>;
+
     io::ByteBuilder &getBody() { return body; }
 
     void swap(Response &another) noexcept;

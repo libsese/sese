@@ -24,15 +24,15 @@ public:
 
 public:
     /** \brief 解析 URL 并创建 Http 客户端
-         *  \param url URL 链接
-         *  \verbatim
-            https://www.example.com/index.html?val=123
-            http://localhost:8080/
-            http://127.0.0.1:8080/index.html
-            \endverbatim
-         *  \param keepAlive 是否启用长连接（需要服务器支持）
-         *  \retval nullptr 创建客户端失败
-         **/
+     *  \param url URL 链接
+     *  \verbatim
+        https://www.example.com/index.html?val=123
+        http://localhost:8080/
+        http://127.0.0.1:8080/index.html
+        \endverbatim
+     *  \param keepAlive 是否启用长连接（需要服务器支持）
+     *  \retval nullptr 创建客户端失败
+     **/
     static HttpClient::Ptr create(const std::string &url, bool keepAlive = false) noexcept;
 
     /// 创建指定 IP 地址的 Http 客户端
@@ -46,17 +46,15 @@ public:
 
     bool doRequest() noexcept;
 
-    Request &getRequest() { return req; }
+    Request::Ptr &getRequest() { return req; }
 
-    Response &getResponse() { return resp; }
+    Response::Ptr &getResponse() { return resp; }
 
 private:
 #ifdef SESE_BUILD_TEST
 public:
 #endif
     HttpClient() = default;
-
-    static IPv4Address::Ptr parseAddress(const std::string &host) noexcept;
 
     bool reconnect() noexcept;
 
@@ -65,8 +63,8 @@ public:
     // 如果是 https 协议需要 SSL 上下文
     security::SSLContext::Ptr sslContext;
 
-    Request req;
-    Response resp;
+    Request::Ptr req;
+    Response::Ptr resp;
 
     // 默认启用长连接
     bool isKeepAlive = true;

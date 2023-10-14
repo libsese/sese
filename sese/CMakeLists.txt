@@ -188,6 +188,8 @@ set(
         net/http/Request.cpp
         net/http/Request.h
         net/http/RequestHeader.h
+        net/http/RequestParser.cpp
+        net/http/RequestParser.h
         net/http/Response.cpp
         net/http/Response.h
         net/http/ResponseHeader.h

@@ -12,7 +12,7 @@ TEST(TestHttpClient, UrlParser_0) {
     // decltype(auto) resp = client->getResponse();
 
     ASSERT_EQ(client->address->getPort(), 8090);
-    ASSERT_EQ(req.getUrl(), "/home.html");
+    ASSERT_EQ(req->getUrl(), "/home.html");
 }
 
 TEST(TestHttpClient, UrlParser_1) {
@@ -23,7 +23,7 @@ TEST(TestHttpClient, UrlParser_1) {
     // decltype(auto) resp = client->getResponse();
 
     ASSERT_EQ(client->address->getPort(), 8000);
-    ASSERT_EQ(req.getUrl(), "/index.html?user=foo");
+    ASSERT_EQ(req->getUrl(), "/index.html?user=foo");
 }
 
 TEST(TestHttpClient, UrlParser_2) {
@@ -34,7 +34,7 @@ TEST(TestHttpClient, UrlParser_2) {
     // decltype(auto) resp = client->getResponse();
 
     ASSERT_EQ(client->address->getPort(), 443);
-    ASSERT_EQ(req.getUrl(), "/");
+    ASSERT_EQ(req->getUrl(), "/");
 }
 
 TEST(TestHttpClient, UrlParser_3) {
@@ -52,8 +52,8 @@ TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();
-    SESE_INFO("status code %d", resp.getCode());
-    for (decltype(auto) item: resp) {
+    SESE_INFO("status code %d", resp->getCode());
+    for (decltype(auto) item: *resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
@@ -70,16 +70,16 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();
-    SESE_INFO("1st status code %d", resp.getCode());
-    for (decltype(auto) item: resp) {
+    SESE_INFO("1st status code %d", resp->getCode());
+    for (decltype(auto) item: *resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto len = std::atol(client->resp.get("content-length", "0").c_str());
+    auto len = std::atol(client->resp->get("content-length", "0").c_str());
     if (len != 0) {
         char buffer[1024];
         while (true) {
-            auto read = client->getResponse().getBody().read(buffer, 1024);
+            auto read = client->getResponse()->getBody().read(buffer, 1024);
             if (read > 0) {
                 len -= (int) read;
                 if (len == 0) {
@@ -92,12 +92,12 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
     }
 
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    SESE_INFO("2rd status code %d", resp.getCode());
-    for (decltype(auto) item: resp) {
+    SESE_INFO("2rd status code %d", resp->getCode());
+    for (decltype(auto) item: *resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    for (decltype(auto) cookie: *resp.getCookies()) {
+    for (decltype(auto) cookie: *resp->getCookies()) {
         SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
     }
 }
@@ -107,19 +107,19 @@ TEST(TestHttpClient, NO_SSL_NO_KEEPALIVE) {
     decltype(auto) req = client->getRequest();
     decltype(auto) resp = client->getResponse();
 
-    req.setType(sese::net::http::RequestType::Options);
+    req->setType(sese::net::http::RequestType::Options);
 
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
-    SESE_INFO("status code %d", resp.getCode());
-    for (decltype(auto) item: resp) {
+    SESE_INFO("status code %d", resp->getCode());
+    for (decltype(auto) item: *resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
-    auto len = std::atol(client->resp.get("content-length", "0").c_str());
+    auto len = std::atol(client->resp->get("content-length", "0").c_str());
     char buffer[1024]{};
     if (len) {
-        client->getResponse().getBody().read(buffer, len);
+        client->getResponse()->getBody().read(buffer, len);
         SESE_INFO("content:\n%s", buffer);
     }
 }
@@ -129,19 +129,19 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
     decltype(auto) resp = client->getResponse();
-    SESE_INFO("1st status code %d", resp.getCode());
-    for (decltype(auto) item: resp) {
+    SESE_INFO("1st status code %d", resp->getCode());
+    for (decltype(auto) item: *resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
-    for (decltype(auto) cookie: *resp.getCookies()) {
+    for (decltype(auto) cookie: *resp->getCookies()) {
         SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
     }
 
-    auto len = std::atol(client->resp.get("content-length", "0").c_str());
+    auto len = std::atol(client->resp->get("content-length", "0").c_str());
     if (len != 0) {
         char buffer[1024];
         while (true) {
-            auto read = client->getResponse().getBody().read(buffer, 1024);
+            auto read = client->getResponse()->getBody().read(buffer, 1024);
             if (read > 0) {
                 len -= (int) read;
                 if (len == 0) {
@@ -154,15 +154,15 @@ TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
     }
 
     decltype(auto) req = client->getRequest();
-    req.setType(sese::net::http::RequestType::Put);
-    client->getRequest().getBody().write("Hello", 5);
+    req->setType(sese::net::http::RequestType::Put);
+    client->getRequest()->getBody().write("Hello", 5);
 
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    SESE_INFO("2rd status code %d", resp.getCode());
-    for (decltype(auto) item: resp) {
+    SESE_INFO("2rd status code %d", resp->getCode());
+    for (decltype(auto) item: *resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
-    for (decltype(auto) cookie: *resp.getCookies()) {
+    for (decltype(auto) cookie: *resp->getCookies()) {
         SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
     }
 }

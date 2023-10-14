@@ -68,23 +68,23 @@ TEST(TestService, SSL_KEEPALIVE_V2) {
 
     auto client = sese::net::http::HttpClient::create("https://localhost:" + std::to_string(addr->getPort()) + "/", true);
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
-    for (decltype(auto) item: client->resp) {
+    for (decltype(auto) item: *client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
 
     std::string content = "Hello Server V2";
-    client->req.setUrl("/post");
-    client->req.setType(sese::net::http::RequestType::Post);
-    client->req.getBody().write(content.c_str(), content.length());
+    client->req->setUrl("/post");
+    client->req->setType(sese::net::http::RequestType::Post);
+    client->req->getBody().write(content.c_str(), content.length());
 
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
-    for (decltype(auto) item: client->resp) {
+    for (decltype(auto) item: *client->resp) {
         SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
     }
-    auto len = std::atol(client->resp.get("content-length", "0").c_str());
+    auto len = std::atol(client->resp->get("content-length", "0").c_str());
     char buffer[MTU_VALUE]{};
-    client->resp.getBody().read(buffer, len);
+    client->resp->getBody().read(buffer, len);
     SESE_INFO("content: %s", buffer);
 
     service.stop();

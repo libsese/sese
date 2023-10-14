@@ -1,60 +1,39 @@
 #include <sese/net/http/HttpClient.h>
 #include <sese/net/http/HttpUtil.h>
-#include <sese/net/http/UrlHelper.h>
-#include <sese/net/AddressPool.h>
-#include <sese/text/StringBuilder.h>
+#include <sese/net/http/RequestParser.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/util/Util.h>
 
 #include <openssl/ssl.h>
 
 using sese::net::IPv4Address;
-using sese::net::IPv4AddressPool;
 using sese::net::Socket;
 using sese::net::http::HttpClient;
 using sese::net::http::RequestHeader;
 using sese::net::http::ResponseHeader;
 using sese::net::http::Url;
-using sese::text::StringBuilder;
 
 HttpClient::Ptr HttpClient::create(const std::string &url, bool keepAlive) noexcept {
-    auto info = Url(url);
+    auto result = RequestParser::parse(url);
 
-    uint16_t port = 80;
     bool ssl = false;
-    if (sese::StrCmpI()(info.getProtocol().c_str(), "Https") == 0) {
-        port = 443;
+    if (sese::StrCmpI()(result.url.getProtocol().c_str(), "Https") == 0) {
         ssl = true;
     }
 
-    IPv4Address::Ptr addr;
-    if (info.getHost().find(':') == std::string::npos) {
-        addr = parseAddress(info.getHost());
-    } else {
-        auto result = StringBuilder::split(info.getHost(), ":");
-        if (result.size() == 2) {
-            char *endPtr;
-            port = (uint16_t) std::strtol(result[1].c_str(), &endPtr, 10);
-            if (*endPtr != 0) {
-                return nullptr;
-            }
-            addr = parseAddress(result[0]);
-        } else {
-            return nullptr;
-        }
-    }
-
-    if (!addr) {
+    if (!result.address) {
         return nullptr;
     }
 
-    addr->setPort(port);
-
     auto ptr = new HttpClient;
     ptr->isKeepAlive = keepAlive;
-    ptr->address = std::move(addr);
-    ptr->req.setUrl(info.getUrl() + info.getQuery());
-    ptr->req.set("host", info.getHost());
+    ptr->req = std::move(result.request);
+    ptr->resp = std::make_unique<Response>();
+    if (result.address->getFamily() == AF_INET) {
+        ptr->address = std::dynamic_pointer_cast<IPv4Address>(result.address);
+    } else {
+        return nullptr;
+    }
     if (ssl) {
         ptr->sslContext = security::SSLContextBuilder::SSL4Client();
     }
@@ -77,26 +56,6 @@ HttpClient::~HttpClient() noexcept {
         socket->close();
         socket = nullptr;
     }
-}
-
-IPv4Address::Ptr HttpClient::parseAddress(const std::string &host) noexcept {
-    auto result = StringBuilder::split(host, ".");
-    if (result.size() == 4) {
-        for (decltype(auto) item: result) {
-            char *endPtr;
-            auto bit = std::strtol(item.c_str(), &endPtr, 10);
-            if (*endPtr != 0) {
-                goto lookup;
-            }
-            if (bit < 0 || bit > 255) {
-                goto lookup;
-            }
-        }
-        return IPv4Address::create(host.c_str(), 0);
-    }
-
-lookup:
-    return IPv4AddressPool::lookup(host);
 }
 
 bool HttpClient::reconnect() noexcept {
@@ -137,12 +96,12 @@ bool HttpClient::doRequest() noexcept {
     }
 
     if (isKeepAlive) {
-        req.set("connection", "keep-alive");
+        req->set("connection", "keep-alive");
     }
-    req.set("client", HTTP_CLIENT_NAME);
+    req->set("client", HTTP_CLIENT_NAME);
 
-    req.set("content-length", std::to_string(req.getBody().getLength()));
-    HttpUtil::sendRequest(&buffer, &req);
+    req->set("content-length", std::to_string(req->getBody().getLength()));
+    HttpUtil::sendRequest(&buffer, req.get());
 
     // 发送头部
     while (true) {
@@ -162,31 +121,31 @@ bool HttpClient::doRequest() noexcept {
     // 发送 body
     while (true) {
         char buf[MTU_VALUE];
-        auto len = req.getBody().peek(buf, MTU_VALUE);
+        auto len = req->getBody().peek(buf, MTU_VALUE);
         if (len == 0) {
             break;
         }
         auto l = socket->write(buf, len);
         if (l > 0) {
-            req.getBody().trunc(l);
+            req->getBody().trunc(l);
         } else {
             return false;
         }
     }
 
-    req.getBody().freeCapacity();
+    req->getBody().freeCapacity();
 
-    resp.clear();
-    resp.getBody().freeCapacity();
+    resp->clear();
+    resp->getBody().freeCapacity();
 
     // 解析响应头部
-    auto rt = HttpUtil::recvResponse(socket.get(), &resp);
+    auto rt = HttpUtil::recvResponse(socket.get(), resp.get());
     if (!rt) {
         return false;
     }
 
     char *end;
-    auto len = std::strtol(resp.get("content-length", "0").c_str(), &end, 10);
+    auto len = std::strtol(resp->get("content-length", "0").c_str(), &end, 10);
     if (len == 0) {
         return true;
     }
@@ -200,7 +159,7 @@ bool HttpClient::doRequest() noexcept {
         }
         auto l = socket->read(buf, need);
         if (l > 0) {
-            resp.getBody().write(buf, l);
+            resp->getBody().write(buf, l);
             len -= (int) l;
         } else {
             return false;
