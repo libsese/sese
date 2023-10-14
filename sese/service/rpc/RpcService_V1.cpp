@@ -1,25 +1,25 @@
 #include "sese/net/Socket.h"
-#include <sese/service/RpcService.h>
-#include <sese/config/json/JsonUtil.h>
-#include <sese/net/rpc/Marco.h>
+#include "RpcService_V1.h"
+#include "sese/config/json/JsonUtil.h"
+#include "sese/net/rpc/Marco.h"
 
-#include <openssl/ssl.h>
+#include "cmake-build-debug-visual-studio/vcpkg_installed/x64-windows/include/openssl/ssl.h"
 
-sese::service::RpcService::RpcService(const security::SSLContext::Ptr &context) noexcept {
+sese::service::v1::RpcService::RpcService(const security::SSLContext::Ptr &context) noexcept {
     this->context = context;
 }
 
-void sese::service::RpcService::setFunction(const std::string &name, const sese::service::RpcService::Func &func) noexcept {
+void sese::service::v1::RpcService::setFunction(const std::string &name, const sese::service::v1::RpcService::Func &func) noexcept {
     this->funcs[name] = func;
 }
 
-sese::service::RpcService::~RpcService() noexcept {
+sese::service::v1::RpcService::~RpcService() noexcept {
     for (decltype(auto) item: buffers) {
         delete item.second; // GCOVR_EXCL_LINE
     }
 }
 
-void sese::service::RpcService::onAccept(int fd) {
+void sese::service::v1::RpcService::onAccept(int fd) {
     SSL *clientSSL = nullptr;
 
     // 一般不会失败
@@ -56,7 +56,7 @@ void sese::service::RpcService::onAccept(int fd) {
     this->createEvent(fd, EVENT_READ, clientSSL);
 }
 
-void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
+void sese::service::v1::RpcService::onRead(sese::event::BaseEvent *event) {
     // done: 将 sese-event 更新至 0.1.4 可删除该判断
     // if (event->fd == listenFd) return;
 
@@ -103,7 +103,7 @@ void sese::service::RpcService::onRead(sese::event::BaseEvent *event) {
     }
 }
 
-void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
+void sese::service::v1::RpcService::onWrite(sese::event::BaseEvent *event) {
     // done: 将 sese-event 更新至 0.1.4 可删除该判断
     // if (event->fd == listenFd) return;
 
@@ -153,7 +153,7 @@ void sese::service::RpcService::onWrite(sese::event::BaseEvent *event) {
     }
 }
 
-void sese::service::RpcService::onClose(sese::event::BaseEvent *event) {
+void sese::service::v1::RpcService::onClose(sese::event::BaseEvent *event) {
     // if (context) {
     //     SSL_free((SSL *) event->data);
     // }
@@ -166,7 +166,7 @@ void sese::service::RpcService::onClose(sese::event::BaseEvent *event) {
 
 #define BuiltinSetExitCode(code) exit->setDataAs<int64_t>(code)
 
-bool sese::service::RpcService::onHandle(sese::io::ByteBuilder *builder) {
+bool sese::service::v1::RpcService::onHandle(sese::io::ByteBuilder *builder) {
     auto object = json::JsonUtil::deserialize(builder, 5);
     if (object == nullptr) {
         return false;
@@ -234,7 +234,7 @@ bool sese::service::RpcService::onHandle(sese::io::ByteBuilder *builder) {
     return true;
 }
 
-int64_t sese::service::RpcService::read(int fd, void *buffer, size_t len, void *ssl) noexcept {
+int64_t sese::service::v1::RpcService::read(int fd, void *buffer, size_t len, void *ssl) noexcept {
     if (ssl) {
         return SSL_read((SSL *) ssl, buffer, (int) len);
     } else {
@@ -242,7 +242,7 @@ int64_t sese::service::RpcService::read(int fd, void *buffer, size_t len, void *
     }
 }
 
-int64_t sese::service::RpcService::write(int fd, const void *buffer, size_t len, void *ssl) noexcept {
+int64_t sese::service::v1::RpcService::write(int fd, const void *buffer, size_t len, void *ssl) noexcept {
     if (ssl) {
         return SSL_write((SSL *) ssl, buffer, (int) len);
     } else {

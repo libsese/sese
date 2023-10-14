@@ -336,18 +336,19 @@ set(
 set(
         SERVICE_SRC
         service/BalanceLoader.h
-        service/HttpConnection_V2.cpp
-        service/HttpConnection_V2.h
-        service/HttpService.h
-        service/HttpService_V2.cpp
-        service/HttpService_V2.h
+        service/http/HttpConnection_V2.cpp
+        service/http/HttpConnection_V2.h
+        service/http/HttpService.h
+        service/http/HttpService_V2.cpp
+        service/http/HttpService_V2.h
         service/iocp/IOBuf.cpp
         service/iocp/IOBuf.h
         service/iocp/IOCPServer.h
         service/iocp/IOCPServer_V1.cpp
         service/iocp/IOCPServer_V1.h
-        service/RpcService.cpp
-        service/RpcService.h
+        service/rpc/RpcService.h
+        service/rpc/RpcService_V1.cpp
+        service/rpc/RpcService_V1.h
         service/SystemBalanceLoader.cpp
         service/SystemBalanceLoader.h
         service/TcpTransporter.cpp

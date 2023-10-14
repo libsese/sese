@@ -1,10 +1,10 @@
-#include <sese/service/RpcService.h>
+#include <sese/service/rpc/RpcService_V1.h>
 #include <sese/net/rpc/Client.h>
 #include <sese/service/BalanceLoader.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/record/Marco.h>
 #include <sese/config/json/JsonUtil.h>
-#include "sese/io/OutputUtil.h"
+#include <sese/io/OutputUtil.h>
 #include <sese/util/Util.h>
 #include <sese/thread/Async.h>
 
@@ -33,7 +33,7 @@ REMOTE_API void add(sese::json::ObjectData::Ptr &args, sese::json::ObjectData::P
 }
 
 auto create(const sese::security::SSLContext::Ptr &context) {
-    auto serv = new sese::service::RpcService(context);
+    auto serv = new sese::service::v1::RpcService(context);
     serv->setFunction("add", add);
     return serv;
 }
@@ -49,7 +49,7 @@ TEST(TestRpc, WithSSL) {
     sese::service::BalanceLoader service;
     service.setThreads(2);
     service.setAddress(addr);
-    ASSERT_TRUE(service.init<sese::service::RpcService>(std::bind(&create, servCtx)));
+    ASSERT_TRUE(service.init<sese::service::v1::RpcService>(std::bind(&create, servCtx)));
 
     service.start();
     ASSERT_TRUE(service.isStarted());
@@ -191,7 +191,7 @@ TEST(TestRpc, NoSSL) {
     sese::service::BalanceLoader service;
     service.setThreads(2);
     service.setAddress(addr);
-    ASSERT_TRUE(service.init<sese::service::RpcService>(std::bind(&create, nullptr)));
+    ASSERT_TRUE(service.init<sese::service::v1::RpcService>(std::bind(&create, nullptr)));
 
     service.start();
     ASSERT_TRUE(service.isStarted());
