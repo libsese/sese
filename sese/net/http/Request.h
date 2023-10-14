@@ -16,6 +16,8 @@ namespace sese::net::http {
 /// HTTP 请求类
 class Request final : public RequestHeader {
 public:
+    using Ptr = std::unique_ptr<Request>;
+
     io::ByteBuilder &getBody() { return body; }
 
     void swap(Request &another) noexcept;

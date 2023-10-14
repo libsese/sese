@@ -18,6 +18,8 @@ namespace sese::net::http {
 /// Url 解析器
 class API Url final {
 public:
+    Url() = default;
+
     explicit Url(const std::string &url) noexcept;
 
     [[nodiscard]] const std::string &getProtocol() const {

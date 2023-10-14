@@ -15,6 +15,7 @@ IPv4Address::Ptr IPv4Address::create(const char *address, uint16_t port) {
     //    }
     int err = sese::net::inetPton(AF_INET, address, &result->address.sin_addr);
     result->address.sin_port = ToBigEndian16(port);
+    result->setFamily(AF_INET);
     if (err <= 0) {
         return nullptr;
     } else {
