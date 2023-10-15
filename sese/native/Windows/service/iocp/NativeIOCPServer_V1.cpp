@@ -18,7 +18,7 @@ NativeContext::~NativeContext() {
     if (bio) {
         BIO_free((BIO *) bio);
     }
-    if (readNode) {
+    if (readNode) { // NOLINT
         delete readNode;
     }
 }
@@ -374,14 +374,14 @@ void NativeIOCPServer::eventThreadProc() {
     void *lpCompletionKey = nullptr;
 
     while (!isShutdown) {
-        BOOL bRt = GetQueuedCompletionStatus(
+        GetQueuedCompletionStatus(
                 iocpFd,
                 &lpNumberOfBytesTransferred,
                 (PULONG_PTR) &lpCompletionKey,
                 (LPOVERLAPPED *) &pWrapper,
                 INFINITE
         );
-        if (!bRt) {
+        if (pWrapper == nullptr) {
             continue;
         } else if (lpNumberOfBytesTransferred == 0 && pWrapper->ctx.type != NativeContext::Type::Connect) {
             wrapperSetMutex.lock();
@@ -452,6 +452,21 @@ void NativeIOCPServer::eventThreadProc() {
                 }
             }
         } else {
+            auto connectStatus = GetOverlappedResult((HANDLE) pWrapper->ctx.fd, (LPOVERLAPPED) pWrapper, &lpNumberOfBytesTransferred, TRUE);
+            if (connectStatus == FALSE) {
+                wrapperSetMutex.lock();
+                pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+                Socket::close(pWrapper->ctx.fd);
+                wrapperSet.erase(pWrapper);
+                if (pWrapper->ctx.timeoutEvent) {
+                    wheel.cancel(pWrapper->ctx.timeoutEvent);
+                    pWrapper->ctx.timeoutEvent = nullptr;
+                }
+                wrapperSetMutex.unlock();
+                delete pWrapper;
+                continue;
+            }
+
             auto ssl = (SSL *) pWrapper->ctx.ssl;
             if (ssl) {
                 SSL_set_connect_state(ssl);
@@ -528,7 +543,7 @@ bool NativeIOCPServer::initConnectEx() {
     return rc == 0;
 }
 
-long NativeIOCPServer::bioCtrl(void *bio, int cmd, long num, void *ptr) {
+long NativeIOCPServer::bioCtrl([[maybe_unused]] void *bio, int cmd, [[maybe_unused]] long num, [[maybe_unused]] void *ptr) {
     int ret = 0;
     if (cmd == BIO_CTRL_FLUSH) {
         ret = 1;

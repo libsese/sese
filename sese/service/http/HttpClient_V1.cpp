@@ -26,12 +26,14 @@ void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
     auto handle = data->handle;
     if (handle->requestStatus == HttpClientHandle::RequestStatus::Connecting) {
         handle->requestStatus = HttpClientHandle::RequestStatus::ConnectFailed;
+        handle->conditionVariable.notify_all();
     } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Requesting) {
         handle->requestStatus = HttpClientHandle::RequestStatus::RequestFailed;
+        handle->conditionVariable.notify_all();
     } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Responding) {
         handle->requestStatus = HttpClientHandle::RequestStatus::ResponseFailed;
+        handle->conditionVariable.notify_all();
     }
-    handle->conditionVariable.notify_all();
     delete data;
 }
 
