@@ -336,6 +336,11 @@ set(
 set(
         SERVICE_SRC
         service/BalanceLoader.h
+        service/http/HttpClient.h
+        service/http/HttpClient_V1.cpp
+        service/http/HttpClient_V1.h
+        service/http/HttpClientHandle_V1.cpp
+        service/http/HttpClientHandle_V1.h
         service/http/HttpConnection_V2.cpp
         service/http/HttpConnection_V2.h
         service/http/HttpService.h
