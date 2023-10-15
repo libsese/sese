@@ -47,7 +47,7 @@ TEST(TestHttpClient, UrlParser_4) {
     ASSERT_EQ(client, nullptr);
 }
 
-TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
+TEST(TestHttpClient, BLOCKING_SSL_NO_KEEPALIVE) {
     auto client = sese::net::http::HttpClient::create("https://microsoft.com/index.html");
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
@@ -65,7 +65,7 @@ TEST(TestHttpClient, SSL_NO_KEEPALIVE) {
     // }
 }
 
-TEST(TestHttpClient, SSL_KEEPALIVE) {
+TEST(TestHttpClient, BLOCKING_SSL_KEEPALIVE) {
     auto client = sese::net::http::HttpClient::create("https://microsoft.com/", true);
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 
@@ -102,7 +102,7 @@ TEST(TestHttpClient, SSL_KEEPALIVE) {
     }
 }
 
-TEST(TestHttpClient, NO_SSL_NO_KEEPALIVE) {
+TEST(TestHttpClient, BLOCKING_NO_SSL_NO_KEEPALIVE) {
     auto client = sese::net::http::HttpClient::create("http://microsoft.com/index.html");
     decltype(auto) req = client->getRequest();
     decltype(auto) resp = client->getResponse();
@@ -124,7 +124,7 @@ TEST(TestHttpClient, NO_SSL_NO_KEEPALIVE) {
     }
 }
 
-TEST(TestHttpClient, NO_SSL_KEEPALIVE) {
+TEST(TestHttpClient, BLOCKING_NO_SSL_KEEPALIVE) {
     auto client = sese::net::http::HttpClient::create("http://microsoft.com/", true);
     ASSERT_TRUE(client->doRequest()) << sese::net::getNetworkError();
 

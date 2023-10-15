@@ -13,8 +13,10 @@ Url::Url(const std::string &url) noexcept {
     }
 
     // 域名
+    bool foundHost = false;
     auto hostEnd = url.find('/', protocolEnd);
     if (hostEnd != std::string::npos) {
+        foundHost = true;
         host = std::string_view(url.data() + protocolEnd, hostEnd - protocolEnd);
     } else {
         hostEnd = protocolEnd;
@@ -24,10 +26,20 @@ Url::Url(const std::string &url) noexcept {
     auto uriEnd = url.find('?', hostEnd);
     if (uriEnd == std::string::npos) {
         // 无查询字符串
-        this->url = std::string_view(url.data() + hostEnd);
+        if (!foundHost) {
+            host = std::string_view(url.data() + hostEnd);
+            this->url = "/";
+        } else {
+            this->url = std::string_view(url.data() + hostEnd);
+        }
     } else {
         // 有查询字符串
-        this->url = std::string_view(url.data() + hostEnd, uriEnd - hostEnd);
+        if (!foundHost) {
+            host = std::string_view(url.data() + hostEnd, uriEnd - hostEnd);
+            this->url = "/";
+        } else {
+            this->url = std::string_view(url.data() + hostEnd, uriEnd - hostEnd);
+        }
         query = std::string_view(url.data() + uriEnd);
     }
 }

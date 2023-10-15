@@ -22,42 +22,42 @@ static auto makeRandomPortAddr() {
 
 TEST(TestHttp, UrlHelper_0) {
     sese::net::http::Url info("file:///C:/vcpkg/vcpkg.exe?ssl=enable&token=123456&");
-    ASSERT_EQ(info.getProtocol(), "file");
-    ASSERT_EQ(info.getHost(), "");
-    ASSERT_EQ(info.getUrl(), "/C:/vcpkg/vcpkg.exe");
-    ASSERT_EQ(info.getQuery(), "?ssl=enable&token=123456&");
+    EXPECT_EQ(info.getProtocol(), "file");
+    EXPECT_EQ(info.getHost(), "");
+    EXPECT_EQ(info.getUrl(), "/C:/vcpkg/vcpkg.exe");
+    EXPECT_EQ(info.getQuery(), "?ssl=enable&token=123456&");
 }
 
 TEST(TestHttp, UrlHelper_1) {
     sese::net::http::Url info("https://www.example.com/index.html?");
-    ASSERT_EQ(info.getProtocol(), "https");
-    ASSERT_EQ(info.getHost(), "www.example.com");
-    ASSERT_EQ(info.getUrl(), "/index.html");
-    ASSERT_EQ(info.getQuery(), "?");
+    EXPECT_EQ(info.getProtocol(), "https");
+    EXPECT_EQ(info.getHost(), "www.example.com");
+    EXPECT_EQ(info.getUrl(), "/index.html");
+    EXPECT_EQ(info.getQuery(), "?");
 }
 
 TEST(TestHttp, UrlHelper_2) {
     sese::net::http::Url info("https://www.example.com/index.html");
-    ASSERT_EQ(info.getProtocol(), "https");
-    ASSERT_EQ(info.getHost(), "www.example.com");
-    ASSERT_EQ(info.getUrl(), "/index.html");
-    ASSERT_EQ(info.getQuery(), "");
+    EXPECT_EQ(info.getProtocol(), "https");
+    EXPECT_EQ(info.getHost(), "www.example.com");
+    EXPECT_EQ(info.getUrl(), "/index.html");
+    EXPECT_EQ(info.getQuery(), "");
 }
 
 TEST(TestHttp, UrlHelper_3) {
-    sese::net::http::Url info("/index.html");
-    ASSERT_EQ(info.getProtocol(), "");
-    ASSERT_EQ(info.getHost(), "");
-    ASSERT_EQ(info.getUrl(), "/index.html");
-    ASSERT_EQ(info.getQuery(), "");
+    sese::net::http::Url info("https://localhost:8080");
+    EXPECT_EQ(info.getProtocol(), "https");
+    EXPECT_EQ(info.getHost(), "localhost:8080");
+    EXPECT_EQ(info.getUrl(), "/");
+    EXPECT_EQ(info.getQuery(), "");
 }
 
 TEST(TestHttp, UrlHelper_4) {
-    sese::net::http::Url info("index.html");
-    ASSERT_EQ(info.getProtocol(), "");
-    ASSERT_EQ(info.getHost(), "");
-    ASSERT_EQ(info.getUrl(), "index.html");
-    ASSERT_EQ(info.getQuery(), "");
+    sese::net::http::Url info("https://localhost:8080?a=b");
+    EXPECT_EQ(info.getProtocol(), "https");
+    EXPECT_EQ(info.getHost(), "localhost:8080");
+    EXPECT_EQ(info.getUrl(), "/");
+    EXPECT_EQ(info.getQuery(), "?a=b");
 }
 
 TEST(TestHttp, QueryString_toString_0) {
