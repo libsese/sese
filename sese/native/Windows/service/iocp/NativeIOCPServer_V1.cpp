@@ -234,7 +234,8 @@ void NativeIOCPServer::postClose(NativeIOCPServer::Context *ctx) {
 
 #define ConnectEx ((LPFN_CONNECTEX) connectEx)
 
-void NativeIOCPServer::postConnect(sese::socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx) {
+void NativeIOCPServer::postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx, void *data) {
+    auto sock = sese::net::Socket::socket(to->getFamily(), SOCK_STREAM, IPPROTO_IP);
     if (to->getFamily() == AF_INET) {
         auto from = sese::net::IPv4Address::any();
         sese::net::Socket::bind(sock, from->getRawAddress(), from->getRawAddressLength());
@@ -249,6 +250,7 @@ void NativeIOCPServer::postConnect(sese::socket_t sock, const net::IPAddress::Pt
     pWrapper->ctx.fd = sock;
     pWrapper->ctx.self = this;
     pWrapper->ctx.type = NativeContext::Type::Connect;
+    pWrapper->ctx.data = data;
     if (cliCtx) {
         pWrapper->ctx.ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
         SSL_set_fd((SSL *) pWrapper->ctx.ssl, (int) sock);

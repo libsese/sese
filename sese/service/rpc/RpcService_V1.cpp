@@ -3,7 +3,7 @@
 #include "sese/config/json/JsonUtil.h"
 #include "sese/net/rpc/Marco.h"
 
-#include "cmake-build-debug-visual-studio/vcpkg_installed/x64-windows/include/openssl/ssl.h"
+#include "openssl/ssl.h"
 
 sese::service::v1::RpcService::RpcService(const security::SSLContext::Ptr &context) noexcept {
     this->context = context;

@@ -355,7 +355,8 @@ void IOCPServer::postClose(Context *ctx) {
     ctx->client->postClose(ctx);
 }
 
-void IOCPServer::postConnect(socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx) {
+void IOCPServer::postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx, void *data) {
+    auto sock = sese::net::Socket::socket(to->getFamily(), SOCK_STREAM, IPPROTO_IP);
     sese::net::Socket::setNonblocking(sock);
 
     auto rt = connect(sock, to->getRawAddress(), to->getRawAddressLength());
@@ -370,6 +371,7 @@ void IOCPServer::postConnect(socket_t sock, const net::IPAddress::Ptr &to, const
     ctx->fd = sock;
     ctx->self = this;
     ctx->isConn = true;
+    ctx->data = data;
     if (cliCtx) {
         ctx->ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
         SSL_set_fd((SSL *) ctx->ssl, (int) sock);
