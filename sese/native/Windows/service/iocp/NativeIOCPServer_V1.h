@@ -146,10 +146,11 @@ public:
     void postClose(Context *ctx);
     /**
      * 投递连接事件
-     * @param sock 套接字
      * @param to 连接地址
+     * @param cliCtx ssl 客户端上下文
+     * @param data 额外数据
      */
-    void postConnect(socket_t sock, const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx);
+    void postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx, void *data = nullptr);
     /**
      * 设置超时事件
      * @param ctx 操作上下文

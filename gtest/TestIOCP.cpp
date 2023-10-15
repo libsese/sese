@@ -103,7 +103,7 @@ public:
 
     void onReadCompleted(sese::iocp::Context *ctx) override {
         SESE_INFO("onReadCompleted %d", ctx->getFd());
-        char buffer[1024] {};
+        char buffer[1024]{};
         int64_t len = ctx->peek(buffer, 1);
         if (len == 0) {
             postRead(ctx);
@@ -148,17 +148,15 @@ TEST(TestIOCP, Client_0) {
     {
         auto address = sese::net::IPv4Address::lookUpAny("microsoft.com");
         auto ipAddress = std::reinterpret_pointer_cast<sese::net::IPv4Address>(address);
-        auto sock1 = sese::net::Socket::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
         ipAddress->setPort(80);
-        client.postConnect(sock1, ipAddress, nullptr);
+        client.postConnect(ipAddress, nullptr, nullptr);
     }
 
     {
         auto address = sese::net::IPv4Address::lookUpAny("microsoft.com");
         auto ipAddress = std::reinterpret_pointer_cast<sese::net::IPv4Address>(address);
-        auto sock2 = sese::net::Socket::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
         ipAddress->setPort(443);
-        client.postConnect(sock2, ipAddress, clientCtx);
+        client.postConnect(ipAddress, clientCtx, nullptr);
     }
 
     using namespace std::chrono_literals;
