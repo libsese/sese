@@ -15,7 +15,7 @@ int main() {
 
     auto handle = sese::service::v1::HttpClientHandle::create("https://localhost/");
     handle->getReq()->set("key", "value");
-    handle->setConnectTimeout(5);
+    handle->setConnectTimeout(30);
 
     client.post(handle);
     SESE_INFO("The request has been submitted.");
