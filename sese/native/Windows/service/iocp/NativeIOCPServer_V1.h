@@ -243,6 +243,11 @@ public:
      */
     void setServProtos(const std::string &protos) { NativeIOCPServer::servProtos = protos; }
     /**
+     * 设置客户端 ALPN 协商内容
+     * @param protos 协议协商内容
+     */
+    void setClientProtos(const std::string &protos) { NativeIOCPServer::clientProtos = protos; }
+    /**
      * 设置服务器操作上下文销毁回调函数
      * @param callback 回调函数
      */
@@ -292,6 +297,7 @@ protected:
     security::SSLContext::Ptr sslCtx{};
     void *bioMethod{};
     std::string servProtos{};
+    std::string clientProtos{};
 };
 
 } // namespace sese::_windows::iocp

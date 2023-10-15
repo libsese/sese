@@ -9,5 +9,7 @@ int32_t sese::security::SecurityInitTask::init() noexcept {
 }
 
 int32_t sese::security::SecurityInitTask::destroy() noexcept {
+    OPENSSL_thread_stop();
+    OPENSSL_cleanup();
     return 0;
 }

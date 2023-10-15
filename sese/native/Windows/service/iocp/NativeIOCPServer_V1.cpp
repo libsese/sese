@@ -188,6 +188,10 @@ void NativeIOCPServer::postRead(NativeIOCPServer::Context *ctx) {
             wheel.cancel(pWrapper->ctx.timeoutEvent);
             pWrapper->ctx.timeoutEvent = nullptr;
         }
+        if (pWrapper->ctx.ssl) {
+            SSL_free((SSL *) pWrapper->ctx.ssl);
+            pWrapper->ctx.ssl = nullptr;
+        }
         wrapperSetMutex.unlock();
         delete pWrapper;
     }
@@ -220,6 +224,10 @@ void NativeIOCPServer::postWrite(NativeIOCPServer::Context *ctx) {
         if (pWrapper->ctx.timeoutEvent) {
             wheel.cancel(pWrapper->ctx.timeoutEvent);
             pWrapper->ctx.timeoutEvent = nullptr;
+        }
+        if (pWrapper->ctx.ssl) {
+            SSL_free((SSL *) pWrapper->ctx.ssl);
+            pWrapper->ctx.ssl = nullptr;
         }
         wrapperSetMutex.unlock();
         delete pWrapper;
@@ -254,11 +262,7 @@ void NativeIOCPServer::postConnect(const net::IPAddress::Ptr &to, const security
     if (cliCtx) {
         pWrapper->ctx.ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
         SSL_set_fd((SSL *) pWrapper->ctx.ssl, (int) sock);
-        SSL_CTX_set_alpn_select_cb(
-                (SSL_CTX *) cliCtx.get(),
-                (SSL_CTX_alpn_select_cb_func) &alpnCallbackFunction,
-                this
-        );
+        SSL_set_alpn_protos((SSL *) pWrapper->ctx.ssl, (const unsigned char *) clientProtos.c_str(), (unsigned) clientProtos.length());
     }
     auto addr = to->getRawAddress();
     auto len = to->getRawAddressLength();
@@ -388,6 +392,10 @@ void NativeIOCPServer::eventThreadProc() {
                 wheel.cancel(pWrapper->ctx.timeoutEvent);
                 pWrapper->ctx.timeoutEvent = nullptr;
             }
+            if (pWrapper->ctx.ssl) {
+                SSL_free((SSL *) pWrapper->ctx.ssl);
+                pWrapper->ctx.ssl = nullptr;
+            }
             wrapperSetMutex.unlock();
             delete pWrapper;
             continue;
@@ -434,6 +442,10 @@ void NativeIOCPServer::eventThreadProc() {
                     if (pWrapper->ctx.timeoutEvent) {
                         wheel.cancel(pWrapper->ctx.timeoutEvent);
                         pWrapper->ctx.timeoutEvent = nullptr;
+                    }
+                    if (pWrapper->ctx.ssl) {
+                        SSL_free((SSL *) pWrapper->ctx.ssl);
+                        pWrapper->ctx.ssl = nullptr;
                     }
                     wrapperSetMutex.unlock();
                     delete pWrapper;

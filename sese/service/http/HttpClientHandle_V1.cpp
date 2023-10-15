@@ -1,6 +1,5 @@
 #include <sese/service/http/HttpClientHandle_V1.h>
 #include <sese/security/SSLContextBuilder.h>
-#include <sese/thread/Locker.h>
 #include <sese/net/http/RequestParser.h>
 #include <sese/util/Util.h>
 
@@ -12,7 +11,7 @@ sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::cr
 
     auto handle = std::shared_ptr<HttpClientHandle>(new HttpClientHandle);
     handle->ssl = sese::strcmpDoNotCase("https", result.url.getProtocol().c_str());
-    handle->address = result.address;
+    handle->address = std::move(result.address);
     handle->req = std::move(result.request);
     handle->resp = std::make_unique<Resp>();
 
@@ -36,5 +35,6 @@ const sese::net::http::Response::Ptr &sese::service::v1::HttpClientHandle::getRe
 sese::service::v1::HttpClientHandle::RequestStatus sese::service::v1::HttpClientHandle::wait() {
     std::unique_lock lock(mutex);
     conditionVariable.wait(lock);
+    lock.unlock();
     return requestStatus;
 }

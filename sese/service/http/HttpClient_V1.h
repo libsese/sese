@@ -41,6 +41,7 @@ private:
     using Supper::postRead;
     using Supper::postWrite;
     using Supper::setAddress;
+    using Supper::setClientProtos;
     using Supper::setDeleteContextCallback;
     using Supper::setServCtx;
     using Supper::setServProtos;

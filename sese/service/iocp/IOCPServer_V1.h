@@ -151,6 +151,11 @@ public:
      */
     void setServProtos(const std::string &protos) { IOCPServer::servProtos = protos; }
     /**
+     * 设置客户端 ALPN 协商内容
+     * @param protos 协议协商内容
+     */
+    void setClientProtos(const std::string &protos) { IOCPServer::clientProtos = protos; }
+    /**
      * 设置服务器操作上下文销毁回调函数
      * @param callback 回调函数
      */
@@ -185,6 +190,7 @@ protected:
     DeleteContextCallback deleteContextCallback = onDeleteContext;
     security::SSLContext::Ptr sslCtx{};
     std::string servProtos{};
+    std::string clientProtos{};
     service::UserBalanceLoader balanceLoader;
 };
 
@@ -343,4 +349,4 @@ private:
     std::set<event::BaseEvent *> eventSet;
 };
 
-} // namespace sese::iocp
+} // namespace sese::iocp::v1
