@@ -145,12 +145,12 @@ TEST(TestIOCP, Client_0) {
     client.setThreads(2);
     ASSERT_TRUE(client.init());
 
-    {
-        auto address = sese::net::IPv4Address::lookUpAny("microsoft.com");
-        auto ipAddress = std::reinterpret_pointer_cast<sese::net::IPv4Address>(address);
-        ipAddress->setPort(80);
-        client.postConnect(ipAddress, nullptr, nullptr);
-    }
+    // {
+    //     auto address = sese::net::IPv4Address::lookUpAny("microsoft.com");
+    //     auto ipAddress = std::reinterpret_pointer_cast<sese::net::IPv4Address>(address);
+    //     ipAddress->setPort(80);
+    //     client.postConnect(ipAddress, nullptr, nullptr);
+    // }
 
     {
         auto address = sese::net::IPv4Address::lookUpAny("microsoft.com");

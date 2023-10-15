@@ -286,7 +286,7 @@ protected:
     std::set<OverlappedWrapper *> wrapperSet{};
     std::mutex wrapperSetMutex{};
 
-    size_t threads{};
+    size_t threads{2};
     std::vector<Thread::Ptr> eventThreadGroup{};
     DeleteContextCallback deleteContextCallback = onDeleteContext;
     security::SSLContext::Ptr sslCtx{};
