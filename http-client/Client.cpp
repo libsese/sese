@@ -6,15 +6,16 @@ int main() {
     sese::Initializer::getInitializer();
 
     sese::service::v1::HttpClient client;
-    client.setThreads(2);
+    client.setThreads(1);
     if (client.init()) {
         SESE_INFO("Client initialization succeeded.");
     } else {
         SESE_ERROR("Client initialization failed.");
     }
 
-    auto handle = sese::service::v1::HttpClientHandle::create("https://bing.com");
+    auto handle = sese::service::v1::HttpClientHandle::create("https://localhost/");
     handle->getReq()->set("key", "value");
+    handle->setConnectTimeout(5);
 
     client.post(handle);
     SESE_INFO("The request has been submitted.");

@@ -57,11 +57,15 @@ public:
 
     // static HttpClientHandle::Ptr create(const IPAddress::Ptr address, bool ssl = false);
 
-    const net::http::Request::Ptr &getReq() const;
-    const net::http::Response::Ptr &getResp() const;
+    [[nodiscard]] const net::http::Request::Ptr &getReq() const;
+    [[nodiscard]] const net::http::Response::Ptr &getResp() const;
 
-    RequestStatus getStatus() const { return requestStatus; }
+    [[nodiscard]] RequestStatus getStatus() const { return requestStatus; }
     RequestStatus wait();
+
+    void setConnectTimeout(size_t timeout) { HttpClientHandle::connectTimeout = timeout; }
+    void setRequestTimeout(size_t timeout) { HttpClientHandle::requestTimeout = timeout; }
+    void setResponseTimeout(size_t timeout) { HttpClientHandle::responseTimeout = timeout; }
 
 private:
     HttpClientHandle() = default;

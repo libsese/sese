@@ -4,6 +4,7 @@
 
 sese::service::v1::HttpClient::HttpClient() {
     setDeleteContextCallback(deleter);
+    Supper::clientProtos = "\x8http/1.1";
 }
 
 void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
@@ -22,6 +23,15 @@ void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
 
 void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
     auto data = static_cast<struct Data *>(ctx->getData());
+    auto handle = data->handle;
+    if (handle->requestStatus == HttpClientHandle::RequestStatus::Connecting) {
+        handle->requestStatus = HttpClientHandle::RequestStatus::ConnectFailed;
+    } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Requesting) {
+        handle->requestStatus = HttpClientHandle::RequestStatus::RequestFailed;
+    } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Responding) {
+        handle->requestStatus = HttpClientHandle::RequestStatus::ResponseFailed;
+    }
+    handle->conditionVariable.notify_all();
     delete data;
 }
 

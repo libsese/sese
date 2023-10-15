@@ -375,6 +375,7 @@ void IOCPServer::postConnect(const net::IPAddress::Ptr &to, const security::SSLC
     if (cliCtx) {
         ctx->ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
         SSL_set_fd((SSL *) ctx->ssl, (int) sock);
+        SSL_set_alpn_protos((SSL *) ctx->ssl, (const unsigned char *) clientProtos.c_str(), (unsigned) clientProtos.length());
     }
 
     balanceLoader.dispatchSocket(sock, ctx);
