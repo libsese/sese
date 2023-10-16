@@ -14,6 +14,8 @@ void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
     auto timeString = text::DateTimeFormatter::format(time, TIME_GREENWICH_MEAN_PATTERN);
     handle->req->set("date", timeString);
 
+    handle->responseBodySize = 0;
+    handle->responseBodyHandled = 0;
     handle->resp->clear();
     handle->cookies->expired(time.getTimestamp() / 1000 / 1000);
 
@@ -25,15 +27,19 @@ void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
     }
     handle->req->set("content-length", std::to_string(handle->requestBodySize));
 
-
-    auto data = new Data;
-    data->handle = handle;
-    Supper::postConnect(handle->address, handle->clientCtx, data);
+    if (handle->context == nullptr) {
+        auto data = new Data;
+        data->handle = handle;
+        Supper::postConnect(handle->address, handle->clientCtx, data);
+    } else {
+        onConnected(handle->context);
+    }
 }
 
 void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
     auto data = static_cast<struct Data *>(ctx->getData());
     auto handle = data->handle;
+    handle->context = nullptr;
     if (handle->requestStatus != HttpClientHandle::RequestStatus::Succeeded) {
         if (handle->requestStatus == HttpClientHandle::RequestStatus::Connecting) {
             handle->requestStatus = HttpClientHandle::RequestStatus::ConnectFailed;
@@ -111,6 +117,10 @@ void sese::service::v1::HttpClient::onReadCompleted(Context *ctx) {
         handle->requestDoneCallback(handle);
     }
     handle->conditionVariable.notify_all();
+    auto keepalive = sese::strcmpDoNotCase(handle->resp->get("connection", "").c_str(), "keep-alive");
+    if (!keepalive) {
+        postClose(ctx);
+    }
 }
 
 void sese::service::v1::HttpClient::onWriteCompleted(Context *ctx) {
@@ -137,6 +147,9 @@ void sese::service::v1::HttpClient::onWriteCompleted(Context *ctx) {
 }
 
 void sese::service::v1::HttpClient::onTimeout(Context *ctx) {
+    auto data = static_cast<struct Data *>(ctx->getData());
+    auto handle = data->handle;
+    handle->context = nullptr;
     postClose(ctx);
 }
 
@@ -151,6 +164,7 @@ void sese::service::v1::HttpClient::onConnected(Context *ctx) {
     cancelTimeout(ctx);
     auto data = static_cast<struct Data *>(ctx->getData());
     auto handle = data->handle;
+    handle->context = ctx;
     handle->requestStatus = HttpClientHandle::RequestStatus::Requesting;
     net::http::HttpUtil::sendRequest(ctx, handle->req.get());
     setTimeout(ctx, static_cast<int64_t>(handle->requestTimeout));

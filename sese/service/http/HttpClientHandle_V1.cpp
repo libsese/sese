@@ -20,6 +20,7 @@ sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::cr
     handle->cookies = std::make_shared<net::http::CookieMap>();
     handle->req->setCookies(handle->cookies);
     handle->req->set("client", "sese::service::v1::HttpClient");
+    handle->req->set("connect", "keep-alive");
 
     if (handle->ssl) {
         handle->clientCtx = security::SSLContextBuilder::SSL4Client();
@@ -64,7 +65,7 @@ void sese::service::v1::HttpClientHandle::responseForEach(const HeaderForEachFun
     }
 }
 
-void sese::service::v1::HttpClientHandle::cookieFroEach(const CookieForEachFunction &func) const {
+void sese::service::v1::HttpClientHandle::cookieForEach(const CookieForEachFunction &func) const {
     for (decltype(auto) iterator = cookies->begin(); iterator != cookies->end(); ++iterator) {
         func(iterator->second);
     }

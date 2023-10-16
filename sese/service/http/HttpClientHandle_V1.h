@@ -70,7 +70,7 @@ public:
     void setContentLength(size_t length) { requestBodySize = length; }
     uint16_t getStatusCode() const { return resp->getCode(); }
     int64_t writeBody(const void *buffer, size_t length) { return req->getBody().write(buffer, length); }
-    int64_t readBody(void *buffer, size_t length)  { return resp->getBody().read(buffer, length); }
+    int64_t readBody(void *buffer, size_t length) { return resp->getBody().read(buffer, length); }
 
     [[nodiscard]] RequestStatus getStatus() const { return requestStatus; }
     RequestStatus wait();
@@ -85,7 +85,7 @@ public:
 
     void requestForEach(const HeaderForEachFunction &func) const;
     void responseForEach(const HeaderForEachFunction &func) const;
-    void cookieFroEach(const CookieForEachFunction &func) const;
+    void cookieForEach(const CookieForEachFunction &func) const;
 
 private:
     HttpClientHandle() = default;
@@ -104,6 +104,7 @@ private:
     size_t responseBodyHandled = 0;
 
     std::atomic<RequestStatus> requestStatus{RequestStatus::Ready};
+    std::atomic<iocp::v1::Context *> context{};
 
     Req::Ptr req;
     Resp::Ptr resp;
