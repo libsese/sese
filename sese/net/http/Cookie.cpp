@@ -1,5 +1,5 @@
 #include <sese/net/http/Cookie.h>
-#include <ctime>
+#include <sese/util/DateTime.h>
 
 using namespace sese::net::http;
 
@@ -12,10 +12,8 @@ Cookie::Cookie(const std::string &name, const std::string &value) noexcept {
     this->value = value;
 }
 
-bool Cookie::expired() const {
-    time_t time;
-    std::time(&time);
-    return ((uint64_t) time > this->expires);
+bool Cookie::expired(const uint64_t now) const {
+    return now > this->expires;
 }
 
 bool Cookie::isSecure() const {
@@ -40,6 +38,7 @@ uint64_t Cookie::getMaxAge() const {
 
 void Cookie::setMaxAge(uint64_t maxAge) {
     Cookie::maxAge = maxAge;
+    // Cookie::expires = now + maxAge;
 }
 
 uint64_t Cookie::getExpires() const {
@@ -76,4 +75,10 @@ const std::string &Cookie::getPath() const {
 
 void Cookie::setPath(const std::string &path) {
     Cookie::path = path;
+}
+
+void Cookie::update(uint64_t now) {
+    if (Cookie::expires == 0 && Cookie::maxAge != 0) {
+        Cookie::expires = now + Cookie::maxAge;
+    }
 }
