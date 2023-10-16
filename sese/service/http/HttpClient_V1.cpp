@@ -2,6 +2,8 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/util/Util.h>
 
+#include <sese/text/DateTimeFormatter.h>
+
 sese::service::v1::HttpClient::HttpClient() {
     setDeleteContextCallback(deleter);
     Supper::clientProtos = "\x8http/1.1";
@@ -9,12 +11,16 @@ sese::service::v1::HttpClient::HttpClient() {
 
 void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
     if (handle->writeRequestBodyCallback) {
-        char *endPtr;
-        handle->requestBodySize = std::strtoul(handle->req->get("content-length", "0").c_str(), &endPtr, 10);
+        // char *endPtr;
+        // handle->requestBodySize = std::strtoul(handle->req->get("content-length", "0").c_str(), &endPtr, 10);
     } else {
         handle->requestBodySize = handle->req->getBody().getReadableSize();
-        handle->req->set("content-length", std::to_string(handle->requestBodySize));
     }
+    handle->req->set("content-length", std::to_string(handle->requestBodySize));
+
+    auto time = DateTime::now(0);
+    auto timeString = text::DateTimeFormatter::format(time, TIME_GREENWICH_MEAN_PATTERN);
+    handle->req->set("date", timeString);
 
     auto data = new Data;
     data->handle = handle;
@@ -24,14 +30,17 @@ void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
 void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
     auto data = static_cast<struct Data *>(ctx->getData());
     auto handle = data->handle;
-    if (handle->requestStatus == HttpClientHandle::RequestStatus::Connecting) {
-        handle->requestStatus = HttpClientHandle::RequestStatus::ConnectFailed;
-        handle->conditionVariable.notify_all();
-    } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Requesting) {
-        handle->requestStatus = HttpClientHandle::RequestStatus::RequestFailed;
-        handle->conditionVariable.notify_all();
-    } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Responding) {
-        handle->requestStatus = HttpClientHandle::RequestStatus::ResponseFailed;
+    if (handle->requestStatus != HttpClientHandle::RequestStatus::Succeeded) {
+        if (handle->requestStatus == HttpClientHandle::RequestStatus::Connecting) {
+            handle->requestStatus = HttpClientHandle::RequestStatus::ConnectFailed;
+        } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Requesting) {
+            handle->requestStatus = HttpClientHandle::RequestStatus::RequestFailed;
+        } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Responding) {
+            handle->requestStatus = HttpClientHandle::RequestStatus::ResponseFailed;
+        }
+        if (handle->requestDoneCallback) {
+            handle->requestDoneCallback(handle);
+        }
         handle->conditionVariable.notify_all();
     }
     delete data;
@@ -79,6 +88,10 @@ void sese::service::v1::HttpClient::onReadCompleted(Context *ctx) {
                 return;
             }
         }
+    }
+    auto newCookies = handle->resp->getCookies();
+    for (decltype(auto) iterator = newCookies->begin(); iterator != newCookies->end(); ++iterator) {
+        handle->cookies->add(iterator->second);
     }
     handle->requestStatus = HttpClientHandle::RequestStatus::Succeeded;
     if (handle->requestDoneCallback) {

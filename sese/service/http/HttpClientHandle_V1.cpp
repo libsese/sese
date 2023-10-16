@@ -3,6 +3,8 @@
 #include <sese/net/http/RequestParser.h>
 #include <sese/util/Util.h>
 
+#include <cassert>
+
 sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::create(const std::string &url) {
     auto result = sese::net::http::RequestParser::parse(url);
     if (result.address == nullptr) {
@@ -15,6 +17,8 @@ sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::cr
     handle->req = std::move(result.request);
     handle->resp = std::make_unique<Resp>();
 
+    handle->cookies = std::make_shared<net::http::CookieMap>();
+    handle->req->setCookies(handle->cookies);
     handle->req->set("client", "sese::service::v1::HttpClient");
 
     if (handle->ssl) {
@@ -24,12 +28,21 @@ sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::cr
     return handle;
 }
 
-const sese::net::http::Request::Ptr &sese::service::v1::HttpClientHandle::getReq() const {
-    return req;
-}
+sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::create(const IPAddress::Ptr &address, const security::SSLContext::Ptr &ctx) {
+    assert(address != nullptr);
+    auto handle = std::shared_ptr<HttpClientHandle>(new HttpClientHandle);
+    handle->ssl = ctx != nullptr;
+    handle->address = address;
+    handle->req = std::make_unique<Req>();
+    handle->resp = std::make_unique<Resp>();
 
-const sese::net::http::Response::Ptr &sese::service::v1::HttpClientHandle::getResp() const {
-    return resp;
+    handle->cookies = std::make_shared<net::http::CookieMap>();
+    handle->req->setCookies(handle->cookies);
+    handle->req->set("client", "sese::service::v1::HttpClient");
+
+    handle->clientCtx = ctx;
+
+    return handle;
 }
 
 sese::service::v1::HttpClientHandle::RequestStatus sese::service::v1::HttpClientHandle::wait() {
@@ -37,4 +50,22 @@ sese::service::v1::HttpClientHandle::RequestStatus sese::service::v1::HttpClient
     conditionVariable.wait(lock);
     lock.unlock();
     return requestStatus;
+}
+
+void sese::service::v1::HttpClientHandle::requestForEach(const HeaderForEachFunction &func) const {
+    for (decltype(auto) iterator = req->begin(); iterator != req->end(); ++iterator) {
+        func(*iterator);
+    }
+}
+
+void sese::service::v1::HttpClientHandle::responseForEach(const HeaderForEachFunction &func) const {
+    for (decltype(auto) iterator = resp->begin(); iterator != resp->end(); ++iterator) {
+        func(*iterator);
+    }
+}
+
+void sese::service::v1::HttpClientHandle::cookieFroEach(const CookieForEachFunction &func) const {
+    for (decltype(auto) iterator = cookies->begin(); iterator != cookies->end(); ++iterator) {
+        func(iterator->second);
+    }
 }

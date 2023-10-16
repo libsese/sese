@@ -297,7 +297,9 @@ bool HttpUtil::sendSetCookie(OutputStream *dest, const CookieMap::Ptr &cookies) 
 }
 
 bool HttpUtil::sendCookie(OutputStream *dest, const CookieMap::Ptr &cookies) noexcept {
-    WRITE("Cookie: ", 8); // GCOVR_EXCL_LINE
+    if (!cookies->empty()) {
+        WRITE("Cookie: ", 8); // GCOVR_EXCL_LINE
+    }
 
     bool isFirst = true;
     for (decltype(auto) cookie: *cookies) {
@@ -313,7 +315,9 @@ bool HttpUtil::sendCookie(OutputStream *dest, const CookieMap::Ptr &cookies) noe
         WRITE(value.c_str(), value.size()); // GCOVR_EXCL_LINE
     }
 
-    WRITE("\r\n", 2); // GCOVR_EXCL_LINE;
+    if (!cookies->empty()) {
+        WRITE("\r\n", 2); // GCOVR_EXCL_LINE;
+    }
 
     return true;
 }
