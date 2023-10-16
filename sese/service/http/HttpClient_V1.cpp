@@ -1,8 +1,8 @@
 #include <sese/service/http/HttpClient_V1.h>
+#include <sese/text/DateTimeFormatter.h>
 #include <sese/net/http/HttpUtil.h>
 #include <sese/util/Util.h>
 
-#include <sese/text/DateTimeFormatter.h>
 
 sese::service::v1::HttpClient::HttpClient() {
     setDeleteContextCallback(deleter);
@@ -10,6 +10,13 @@ sese::service::v1::HttpClient::HttpClient() {
 }
 
 void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
+    auto time = DateTime::now(0);
+    auto timeString = text::DateTimeFormatter::format(time, TIME_GREENWICH_MEAN_PATTERN);
+    handle->req->set("date", timeString);
+
+    handle->resp->clear();
+    handle->cookies->expired(time.getTimestamp() / 1000 / 1000);
+
     if (handle->writeRequestBodyCallback) {
         // char *endPtr;
         // handle->requestBodySize = std::strtoul(handle->req->get("content-length", "0").c_str(), &endPtr, 10);
@@ -18,9 +25,6 @@ void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
     }
     handle->req->set("content-length", std::to_string(handle->requestBodySize));
 
-    auto time = DateTime::now(0);
-    auto timeString = text::DateTimeFormatter::format(time, TIME_GREENWICH_MEAN_PATTERN);
-    handle->req->set("date", timeString);
 
     auto data = new Data;
     data->handle = handle;
@@ -90,8 +94,17 @@ void sese::service::v1::HttpClient::onReadCompleted(Context *ctx) {
         }
     }
     auto newCookies = handle->resp->getCookies();
-    for (decltype(auto) iterator = newCookies->begin(); iterator != newCookies->end(); ++iterator) {
-        handle->cookies->add(iterator->second);
+    if (newCookies && !newCookies->empty()) {
+        auto dateString = handle->resp->get("date", {});
+        if (!dateString.empty()) {
+            auto date = text::DateTimeFormatter::parseFromGreenwich(dateString);
+            if (date) {
+                for (decltype(auto) iterator = newCookies->begin(); iterator != newCookies->end(); ++iterator) {
+                    iterator->second->update(date);
+                    handle->cookies->add(iterator->second);
+                }
+            }
+        }
     }
     handle->requestStatus = HttpClientHandle::RequestStatus::Succeeded;
     if (handle->requestDoneCallback) {

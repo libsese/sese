@@ -25,7 +25,7 @@ public:
     Cookie(const std::string &name, const std::string &value) noexcept;
 
 public:
-    [[nodiscard]] bool expired() const;
+    [[nodiscard]] bool expired(uint64_t now) const;
 
     [[nodiscard]] bool isSecure() const;
     void setSecure(bool secure);
@@ -42,6 +42,8 @@ public:
     void setDomain(const std::string &domain);
     [[nodiscard]] const std::string &getPath() const;
     void setPath(const std::string &path);
+
+    void update(uint64_t now);
 
 private:
     bool secure = false;

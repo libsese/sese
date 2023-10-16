@@ -30,6 +30,14 @@ public:
     /// \retval nullptr 不存在指定名称的 Cookie
     Cookie::Ptr find(const std::string &name) noexcept;
 
+    /// 检查并移除过期的 Cookie
+    /// \param now 单位秒
+    void expired(uint64_t now);
+
+    /// 将集合中 max age 字段转换成 expires
+    /// \param offset 单位秒
+    void update(uint64_t offset);
+
     [[nodiscard]] size_t size() const { return map.size(); }
     [[nodiscard]] bool empty() const { return map.empty(); }
 
