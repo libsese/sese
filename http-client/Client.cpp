@@ -31,7 +31,23 @@ int main() {
         handle->responseForEach([](const sese::service::v1::HttpClientHandle::HeaderForEachFunctionArgs &pair) {
             SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
         });
-        handle->cookieFroEach([](const sese::net::http::Cookie::Ptr &cookie){
+        handle->cookieForEach([](const sese::net::http::Cookie::Ptr &cookie) {
+            SESE_INFO("store cookie: %s", cookie->getName().c_str());
+        });
+    } else {
+        SESE_WARN("The request failed.");
+    }
+
+    handle->setUrl("/index.html");
+    client.post(handle);
+    SESE_INFO("The request has been submitted.");
+    status = handle->wait();
+    if (status == sese::service::v1::HttpClientHandle::RequestStatus::Succeeded) {
+        SESE_INFO("The request succeeded with %d.", handle->getStatusCode());
+        handle->responseForEach([](const sese::service::v1::HttpClientHandle::HeaderForEachFunctionArgs &pair) {
+            SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
+        });
+        handle->cookieForEach([](const sese::net::http::Cookie::Ptr &cookie) {
             SESE_INFO("store cookie: %s", cookie->getName().c_str());
         });
     } else {

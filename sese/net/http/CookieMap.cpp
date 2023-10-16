@@ -23,6 +23,8 @@ void CookieMap::expired(uint64_t now) {
             } else {
                 iterator++;
             }
+        } else {
+            iterator++;
         }
     }
 }
