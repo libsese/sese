@@ -32,7 +32,10 @@ public:
     using WriteRequestBodyCallback = std::function<void(io::OutputStream *output, size_t *length)>;
     using ReadResponseBodyCallback = std::function<void(void *input, size_t length)>;
     using RequestDoneCallback = std::function<void(const HttpClientHandle::Ptr &handle)>;
-    using RequestRetryCallback = std::function<void(const HttpClientHandle::Ptr &handle)>;
+
+    using HeaderForEachFunctionArgs = std::pair<std::string, const std::string>;
+    using HeaderForEachFunction = std::function<void(const HeaderForEachFunctionArgs &)>;
+    using CookieForEachFunction = std::function<void(const net::http::Cookie::Ptr &)>;
 
     enum class RequestStatus {
         /// 请求已经就绪，客户端可以进行连接
@@ -54,11 +57,20 @@ public:
     };
 
     static HttpClientHandle::Ptr create(const std::string &url);
+    static HttpClientHandle::Ptr create(const IPAddress::Ptr &address, const security::SSLContext::Ptr &ctx);
 
-    // static HttpClientHandle::Ptr create(const IPAddress::Ptr address, bool ssl = false);
+    [[nodiscard]] const net::http::Request::Ptr &getReq() const { return req; };
+    [[nodiscard]] const net::http::Response::Ptr &getResp() const { return resp; };
+    [[nodiscard]] const net::http::CookieMap::Ptr &getCookies() const { return cookies; };
 
-    [[nodiscard]] const net::http::Request::Ptr &getReq() const;
-    [[nodiscard]] const net::http::Response::Ptr &getResp() const;
+    const std::string &get(const std::string &name, const std::string &def) const { return resp->get(name, def); }
+    void set(const std::string &name, const std::string &value) { req->set(name, value); }
+    void setUrl(const std::string &url) { req->setUrl(url); }
+    void setType(net::http::RequestType type) { req->setType(type); }
+    void setContentLength(size_t length) { requestBodySize = length; }
+    uint16_t getStatusCode() const { return resp->getCode(); }
+    int64_t writeBody(const void *buffer, size_t length) { return req->getBody().write(buffer, length); }
+    int64_t readBody(void *buffer, size_t length)  { return resp->getBody().read(buffer, length); }
 
     [[nodiscard]] RequestStatus getStatus() const { return requestStatus; }
     RequestStatus wait();
@@ -67,14 +79,19 @@ public:
     void setRequestTimeout(size_t timeout) { HttpClientHandle::requestTimeout = timeout; }
     void setResponseTimeout(size_t timeout) { HttpClientHandle::responseTimeout = timeout; }
 
+    void setWriteRequestBodyCallback(const WriteRequestBodyCallback &callback) { HttpClientHandle::writeRequestBodyCallback = callback; }
+    void setReadResponseBodyCallback(const ReadResponseBodyCallback &callback) { HttpClientHandle::readResponseBodyCallback = callback; }
+    void setRequestDoneCallback(const RequestDoneCallback &callback) { HttpClientHandle::requestDoneCallback = callback; }
+
+    void requestForEach(const HeaderForEachFunction &func) const;
+    void responseForEach(const HeaderForEachFunction &func) const;
+    void cookieFroEach(const CookieForEachFunction &func) const;
+
 private:
     HttpClientHandle() = default;
 
     bool ssl = false;
     security::SSLContext::Ptr clientCtx{};
-
-    size_t retryTimes = 3;
-    size_t triedTimes = 0;
 
     size_t connectTimeout = 30;
     size_t requestTimeout = 30;
@@ -99,7 +116,6 @@ private:
     WriteRequestBodyCallback writeRequestBodyCallback;
     ReadResponseBodyCallback readResponseBodyCallback;
     RequestDoneCallback requestDoneCallback;
-    RequestRetryCallback requestRetryCallback;
 };
 
 } // namespace sese::service::v1
