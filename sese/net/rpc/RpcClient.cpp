@@ -1,4 +1,4 @@
-#include <sese/net/rpc/Client.h>
+#include <sese/net/rpc/RpcClient.h>
 #include <sese/net/AddressPool.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/security/SSLContextBuilder.h>
@@ -10,7 +10,7 @@ using namespace sese::json;
 using namespace sese::security;
 using namespace sese::net::rpc;
 
-Client::Client(const IPv4Address::Ptr &address, bool ssl, const std::string &version) noexcept {
+RpcClient::RpcClient(const IPv4Address::Ptr &address, bool ssl, const std::string &version) noexcept {
     if (ssl) {
         this->sslContext = SSLContextBuilder::SSL4Client();
     }
@@ -25,21 +25,21 @@ Client::Client(const IPv4Address::Ptr &address, bool ssl, const std::string &ver
 //     this->version->setDataAs<std::string>(version);
 // }
 
-Client::~Client() noexcept {
+RpcClient::~RpcClient() noexcept {
     if (socket) {
         socket->close();
         socket = nullptr;
     }
 }
 
-json::ObjectData::Ptr Client::makeTemplateRequest(const std::string &name) {
+json::ObjectData::Ptr RpcClient::makeTemplateRequest(const std::string &name) {
     auto object = std::make_shared<json::ObjectData>();
     object->set(SESE_RPC_TAG_VERSION, version);
     SESE_JSON_SET(object, std::string, SESE_RPC_TAG_NAME, name);
     return object;
 }
 
-bool Client::reconnect() noexcept {
+bool RpcClient::reconnect() noexcept {
     if (socket) {
         socket->close();
     }
@@ -58,7 +58,7 @@ bool Client::reconnect() noexcept {
     }
 }
 
-json::ObjectData::Ptr Client::doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept {
+json::ObjectData::Ptr RpcClient::doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept {
     auto object = makeTemplateRequest(name);
     object->set(SESE_RPC_TAG_ARGS, args);
     buffer.freeCapacity();

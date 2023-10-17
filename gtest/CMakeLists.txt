@@ -63,7 +63,7 @@ add_executable(
         TestRandom.cpp
         TestRange.cpp
         TestReusableSocket.cpp
-        TestRpc.cpp
+        TestRPC.cpp
         TestService.cpp
         TestSharedMemory/TestSharedMemory.cpp
         TestSocket.cpp

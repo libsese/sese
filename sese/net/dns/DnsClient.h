@@ -16,7 +16,7 @@
 namespace sese::net::dns {
 
 /// DNS 客户端
-class API Client {
+class API DnsClient {
 public:
     /// 使用系统的域名解析器
     /// \param domain 域名

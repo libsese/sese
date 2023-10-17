@@ -17,13 +17,13 @@
 namespace sese::net::rpc {
 
 /// RPC 客户端
-class API Client final : public Noncopyable {
+class API RpcClient final : public Noncopyable {
 public:
-    using Ptr = std::unique_ptr<Client>;
+    using Ptr = std::unique_ptr<RpcClient>;
 
-    explicit Client(const IPv4Address::Ptr &address, bool ssl = false, const std::string &version = SESE_RPC_VERSION_0_1) noexcept;
+    explicit RpcClient(const IPv4Address::Ptr &address, bool ssl = false, const std::string &version = SESE_RPC_VERSION_0_1) noexcept;
 
-    ~Client() noexcept;
+    ~RpcClient() noexcept;
 
     json::ObjectData::Ptr doRequest(const std::string &name, json::ObjectData::Ptr &args) noexcept;
 

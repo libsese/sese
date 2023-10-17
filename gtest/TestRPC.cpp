@@ -1,5 +1,5 @@
 #include <sese/service/rpc/RpcService_V1.h>
-#include <sese/net/rpc/Client.h>
+#include <sese/net/rpc/RpcClient.h>
 #include <sese/service/BalanceLoader.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/record/Marco.h>
@@ -54,7 +54,7 @@ TEST(TestRpc, WithSSL) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    auto client = sese::net::rpc::Client(addr, true);
+    auto client = sese::net::rpc::RpcClient(addr, true);
     sese::json::ObjectData::Ptr args;
     sese::json::ObjectData::Ptr result;
     {
@@ -100,7 +100,7 @@ TEST(TestRpc, WithSSL) {
     }
 
     {
-        auto client_0 = sese::net::rpc::Client(addr, true, "0");
+        auto client_0 = sese::net::rpc::RpcClient(addr, true, "0");
         args = std::make_shared<sese::json::ObjectData>();
 
         result = client_0.doRequest("dev-2", args);
@@ -196,7 +196,7 @@ TEST(TestRpc, NoSSL) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    auto client = sese::net::rpc::Client(addr);
+    auto client = sese::net::rpc::RpcClient(addr);
 
     int64_t value0 = 7;
     int64_t value1 = 8;

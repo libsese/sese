@@ -1,4 +1,4 @@
-#include <sese/net/dns/Client.h>
+#include <sese/net/dns/DnsClient.h>
 #include <sese/net/Socket.h>
 #include <sese/net/dns/DNSUtil.h>
 #include <sese/net/dns/DNSSession.h>
@@ -8,11 +8,11 @@
 
 #include <random>
 
-sese::net::Address::Ptr sese::net::dns::Client::resolveSystem(const std::string &domain, int family, int type, int protocol) noexcept {
+sese::net::Address::Ptr sese::net::dns::DnsClient::resolveSystem(const std::string &domain, int family, int type, int protocol) noexcept {
     return Address::lookUpAny(domain, family, type, protocol);
 }
 
-sese::net::Address::Ptr sese::net::dns::Client::resolveCustom(const std::string &domain, const IPAddress::Ptr &server, int family, int type, int protocol) noexcept {
+sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::string &domain, const IPAddress::Ptr &server, int family, int type, int protocol) noexcept {
     auto sock = sese::net::Socket::socket(server->getFamily(), SOCK_DGRAM, IPPROTO_IP);
     auto socket = sese::net::Socket(sock, nullptr);
     auto expectType = family == AF_INET ? SESE_DNS_QR_TYPE_A : SESE_DNS_QR_TYPE_AAAA;
@@ -74,7 +74,7 @@ sese::net::Address::Ptr sese::net::dns::Client::resolveCustom(const std::string 
     return nullptr;
 }
 
-sese::net::Address::Ptr sese::net::dns::Client::resolveAuto(const std::string &domain, const IPAddress::Ptr &server, int family, int type, int protocol) noexcept {
+sese::net::Address::Ptr sese::net::dns::DnsClient::resolveAuto(const std::string &domain, const IPAddress::Ptr &server, int family, int type, int protocol) noexcept {
     auto result = resolveCustom(domain, server, family, type, protocol);
     if (result) {
         return result;
