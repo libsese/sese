@@ -1,10 +1,10 @@
-#include <sese/net/dns/DNSServer.h>
+#include <sese/net/dns/DnsServer.h>
 #include <sese/net/dns/DNSUtil.h>
 #include <sese/io/InputBufferWrapper.h>
 #include <sese/io/OutputBufferWrapper.h>
 #include <sese/util/Util.h>
 
-sese::net::dns::DNSServer::Ptr sese::net::dns::DNSServer::create(const sese::net::dns::DNSConfig *config) noexcept {
+sese::net::dns::DnsServer::Ptr sese::net::dns::DnsServer::create(const sese::net::dns::DNSConfig *config) noexcept {
     auto socket = std::make_shared<sese::net::Socket>(Socket::Family::IPv4, Socket::Type::UDP, IPPROTO_IP);
     if (socket->bind(config->address)) {
         return nullptr;
@@ -12,7 +12,7 @@ sese::net::dns::DNSServer::Ptr sese::net::dns::DNSServer::create(const sese::net
 
     socket->setNonblocking();
 
-    auto ptr = new DNSServer;
+    auto ptr = new DnsServer;
     ptr->socket = socket;
 
     for (auto &item: config->hostIPv4Map) {
@@ -36,10 +36,10 @@ sese::net::dns::DNSServer::Ptr sese::net::dns::DNSServer::create(const sese::net
         ptr->hostIPv6Map[item.first] = std::string((const char *) buffer, 16);
     }
 
-    return std::unique_ptr<DNSServer>(ptr);
+    return std::unique_ptr<DnsServer>(ptr);
 }
 
-sese::net::dns::DNSServer::~DNSServer() noexcept {
+sese::net::dns::DnsServer::~DnsServer() noexcept {
     if (thread && !isShutdown) {
         shutdown();
         thread = nullptr;
@@ -51,12 +51,12 @@ sese::net::dns::DNSServer::~DNSServer() noexcept {
     }
 }
 
-void sese::net::dns::DNSServer::start() noexcept {
+void sese::net::dns::DnsServer::start() noexcept {
     this->thread = std::make_unique<Thread>([this] { this->loop(); }, "DNS");
     this->thread->start();
 }
 
-void sese::net::dns::DNSServer::shutdown() noexcept {
+void sese::net::dns::DnsServer::shutdown() noexcept {
     if (thread) {
         isShutdown = true;
 
@@ -68,7 +68,7 @@ void sese::net::dns::DNSServer::shutdown() noexcept {
     }
 }
 
-void sese::net::dns::DNSServer::loop() noexcept {
+void sese::net::dns::DnsServer::loop() noexcept {
     auto clientAddress = std::make_shared<sese::net::IPv4Address>();
     while (true) {
         if (isShutdown) {

@@ -1,4 +1,4 @@
-#include <sese/net/dns/DNSServer.h>
+#include <sese/net/dns/DnsServer.h>
 #include <sese/net/dns/DNSUtil.h>
 #include <sese/record/Marco.h>
 
@@ -104,9 +104,9 @@ static sese::net::IPv4Address::Ptr createAddress() {
     return sese::net::IPv4Address::localhost(port);
 }
 
-TEST(TestDNS, Client) {
+TEST(TestDNS, DnsClient) {
     auto server = sese::net::IPv4Address::create("114.114.114.114", 53);
-    auto ip = sese::net::dns::Client::resolveAuto("www.bing.com", server);
+    auto ip = sese::net::dns::DnsClient::resolveAuto("www.bing.com", server);
     ASSERT_NE(ip, nullptr);
     SESE_INFO("www.bing.com -> %s", ip->getAddress().c_str());
 }
@@ -120,16 +120,16 @@ TEST(TestDNS, Server) {
     config.hostIPv4Map["www.kaoru.com"] = "192.168.3.230";
     config.hostIPv6Map["www.kaoru.com"] = "::1";
 
-    auto server = sese::net::dns::DNSServer::create(&config);
+    auto server = sese::net::dns::DnsServer::create(&config);
     ASSERT_NE(server, nullptr);
 
     server->start();
 
-    auto ipv4 = sese::net::dns::Client::resolveAuto("www.kaoru.com", addr);
+    auto ipv4 = sese::net::dns::DnsClient::resolveAuto("www.kaoru.com", addr);
     ASSERT_NE(ipv4, nullptr);
     SESE_INFO("www.kaoru.com -> %s", ipv4->getAddress().c_str());
 
-    auto ipv6 = sese::net::dns::Client::resolveAuto("www.kaoru.com", addr, AF_INET6);
+    auto ipv6 = sese::net::dns::DnsClient::resolveAuto("www.kaoru.com", addr, AF_INET6);
     ASSERT_NE(ipv6, nullptr);
     SESE_INFO("www.kaoru.com -> %s", ipv6->getAddress().c_str());
 

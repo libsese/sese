@@ -8,7 +8,7 @@
 #pragma once
 
 #include <sese/net/Socket.h>
-#include <sese/net/dns/Client.h>
+#include <sese/net/dns/DnsClient.h>
 #include <sese/net/dns/DNSSession.h>
 #include <sese/thread/Thread.h>
 
@@ -25,17 +25,17 @@ struct API DNSConfig {
 };
 
 /// DNS 服务器
-class API DNSServer {
+class API DnsServer {
 public:
-    using Ptr = std::unique_ptr<DNSServer>;
+    using Ptr = std::unique_ptr<DnsServer>;
 
     /// 使用配置创建 DNS 服务器
     /// \param config 配置
     /// \return 服务器实例
     /// \retval nullptr 创建失败
-    static DNSServer::Ptr create(const DNSConfig *config) noexcept;
+    static DnsServer::Ptr create(const DNSConfig *config) noexcept;
 
-    ~DNSServer() noexcept;
+    ~DnsServer() noexcept;
 
     /// 启动实例
     void start() noexcept;
@@ -44,7 +44,7 @@ public:
     void shutdown() noexcept;
 
 private:
-    DNSServer() = default;
+    DnsServer() = default;
 
     void loop() noexcept;
 

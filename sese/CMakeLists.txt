@@ -151,10 +151,10 @@ set(
         net/AddressPool.cpp
         net/AddressPool.h
         net/dns/Answer.h
-        net/dns/Client.cpp
-        net/dns/Client.h
-        net/dns/DNSServer.cpp
-        net/dns/DNSServer.h
+        net/dns/DnsClient.cpp
+        net/dns/DnsClient.h
+        net/dns/DnsServer.cpp
+        net/dns/DnsServer.h
         net/dns/DNSSession.h
         net/dns/DNSUtil.cpp
         net/dns/DNSUtil.h
@@ -204,8 +204,8 @@ set(
         net/ReadableServer.h
         net/ReusableSocket.cpp
         net/ReusableSocket.h
-        net/rpc/Client.cpp
-        net/rpc/Client.h
+        net/rpc/RpcClient.cpp
+        net/rpc/RpcClient.h
         net/rpc/Marco.h
         net/rpc/Server.cpp
         net/rpc/Server.h
