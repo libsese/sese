@@ -15,9 +15,6 @@ NativeContext::NativeContext(OverlappedWrapper *pWrapper) : pWrapper(pWrapper) {
 
 NativeContext::~NativeContext() {
     free(wsabufWrite.buf);
-    if (bio) {
-        BIO_free((BIO *) bio);
-    }
     if (readNode) { // NOLINT
         delete readNode;
     }
@@ -275,6 +272,7 @@ void NativeIOCPServer::postConnect(const net::IPAddress::Ptr &to, const security
         Socket::close(pWrapper->ctx.fd);
         if (cliCtx) {
             SSL_free((SSL *) pWrapper->ctx.ssl);
+            pWrapper->ctx.ssl = nullptr;
         }
         delete pWrapper;
     } else {
