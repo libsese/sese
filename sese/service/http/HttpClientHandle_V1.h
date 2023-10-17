@@ -8,7 +8,7 @@
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
 
-#include <condition_variable>
+#include <future>
 #include <functional>
 
 namespace sese::service::v1 {
@@ -72,7 +72,6 @@ public:
     int64_t readBody(void *buffer, size_t length) { return resp->getBody().read(buffer, length); }
 
     [[nodiscard]] RequestStatus getStatus() const { return requestStatus; }
-    RequestStatus wait();
 
     void setConnectTimeout(size_t timeout) { HttpClientHandle::connectTimeout = timeout; }
     void setRequestTimeout(size_t timeout) { HttpClientHandle::requestTimeout = timeout; }
@@ -102,7 +101,8 @@ private:
     size_t responseBodySize = 0;
     size_t responseBodyHandled = 0;
 
-    std::atomic<RequestStatus> requestStatus{RequestStatus::Ready};
+    std::promise<RequestStatus> promise;
+    RequestStatus requestStatus{RequestStatus::Ready};
     iocp::v1::Context *context{};
 
     Req::Ptr req;
@@ -111,8 +111,6 @@ private:
     HttpVersion version{HttpVersion::VERSION_1_1};
     IPAddress::Ptr address;
 
-    std::mutex mutex;
-    std::condition_variable conditionVariable;
     WriteRequestBodyCallback writeRequestBodyCallback;
     ReadResponseBodyCallback readResponseBodyCallback;
     RequestDoneCallback requestDoneCallback;

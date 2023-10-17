@@ -10,7 +10,7 @@ sese::service::v1::HttpClient::HttpClient() {
     Supper::clientProtos = "\x8http/1.1";
 }
 
-void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
+std::shared_future<sese::service::v1::HttpClientHandle::RequestStatus> sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
     auto time = DateTime::now(0);
     auto timeString = text::DateTimeFormatter::format(time, TIME_GREENWICH_MEAN_PATTERN);
     handle->req->set("date", timeString);
@@ -36,6 +36,8 @@ void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
     } else {
         onConnected(handle->context);
     }
+    handle->promise = std::promise<HttpClientHandle::RequestStatus>();
+    return handle->promise.get_future();
 }
 
 void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
@@ -53,7 +55,7 @@ void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
         if (handle->requestDoneCallback) {
             handle->requestDoneCallback(handle);
         }
-        handle->conditionVariable.notify_all();
+        handle->promise.set_value(handle->requestStatus);
     }
     delete data;
 }
@@ -118,9 +120,9 @@ void sese::service::v1::HttpClient::onReadCompleted(Context *ctx) {
     if (handle->requestDoneCallback) {
         handle->requestDoneCallback(handle);
     }
-    handle->conditionVariable.notify_all();
-    auto keepalive = sese::strcmpDoNotCase(handle->resp->get("connection", "").c_str(), "keep-alive");
-    if (!keepalive) {
+    handle->promise.set_value(handle->requestStatus);
+    auto close = sese::strcmpDoNotCase(handle->resp->get("connection", "").c_str(), "close");
+    if (close) {
         postClose(ctx);
     }
 }

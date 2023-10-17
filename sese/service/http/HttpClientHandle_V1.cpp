@@ -47,13 +47,6 @@ sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::cr
     return handle;
 }
 
-sese::service::v1::HttpClientHandle::RequestStatus sese::service::v1::HttpClientHandle::wait() {
-    std::unique_lock lock(mutex);
-    conditionVariable.wait(lock);
-    lock.unlock();
-    return requestStatus;
-}
-
 void sese::service::v1::HttpClientHandle::requestForEach(const HeaderForEachFunction &func) const {
     for (auto &iterator: *req) {
         func(iterator);
