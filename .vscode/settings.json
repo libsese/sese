@@ -4,7 +4,6 @@
         "-DCMAKE_MAKE_PROGRAM=/usr/bin/make",
         "-DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake"
     ],
-    "cmake.generator": "CodeBlocks - Unix Makefiles",
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,

@@ -14,7 +14,7 @@ public:
 
     HttpClient();
 
-    void post(const HttpClientHandle::Ptr &handle);
+    std::shared_future<HttpClientHandle::RequestStatus> post(const HttpClientHandle::Ptr &handle);
 
 private:
     struct Data {
