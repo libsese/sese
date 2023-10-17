@@ -27,9 +27,10 @@ int64_t Context::trunc(size_t length) {
 
 #pragma region Service
 
-IOCPService::IOCPService(IOCPServer *master)
+IOCPService::IOCPService(IOCPServer *master, bool activeReleaseMode)
     : TimerableService() {
     IOCPService::master = master;
+    IOCPService::handleClose = activeReleaseMode;
 
     if (master->getServCtx()) {
         auto serverSSL = (SSL_CTX *) master->getServCtx()->getContext();
@@ -76,18 +77,12 @@ void IOCPService::postWrite(Context *ctx) {
 }
 
 void IOCPService::postClose(Context *ctx) {
-    // ctx->self->getDeleteContextCallback()(ctx);
-    // if (ctx->ssl) {
-    //     SSL_free((SSL *) ctx->ssl);
-    // }
-    // if (ctx->timeoutEvent) {
-    //     cancelTimeoutEvent(ctx->timeoutEvent);
-    // }
-    // sese::net::Socket::close(ctx->fd);
-    // ctx->client->freeEventEx(ctx->event);
-    // delete ctx;
-    using namespace sese::net;
-    Socket::shutdown(ctx->fd, Socket::ShutdownMode::Both);
+    if (handleClose) {
+        using namespace sese::net;
+        Socket::shutdown(ctx->fd, Socket::ShutdownMode::Both);
+    } else {
+        releaseContext(ctx);
+    }
 }
 
 void IOCPService::onAcceptCompleted(Context *ctx) {
@@ -166,18 +161,13 @@ void IOCPService::onRead(sese::event::BaseEvent *event) {
 
     onPreRead(ctx);
 
+    size_t len = 0;
     char buf[MTU_VALUE];
     while (true) {
         auto l = read((int) ctx->fd, buf, MTU_VALUE, ctx->ssl);
         if (l <= 0) {
-            auto err = sese::net::getNetworkError();
-            if (err == ENOTCONN) {
-                ctx->self->getDeleteContextCallback()(ctx);
-                if (ctx->ssl) {
-                    SSL_free((SSL *) ctx->ssl);
-                }
-                sese::net::Socket::close(ctx->fd);
-                freeEventEx(ctx->event);
+            if (l == 0 && len == 0) {
+                releaseContext(ctx);
                 break;
             } else {
                 onReadCompleted(ctx);
@@ -185,6 +175,7 @@ void IOCPService::onRead(sese::event::BaseEvent *event) {
             }
         } else {
             ctx->recv.write(buf, l);
+            len += static_cast<size_t>(l);
         }
     }
 }
@@ -204,6 +195,7 @@ void IOCPService::onWrite(sese::event::BaseEvent *event) {
                     auto err = SSL_get_error((SSL *) ssl, rt);
                     if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
                         SSL_free((SSL *) ssl);
+                        ctx->ssl = nullptr;
                         // Socket::close();
                         // return -1;
                         ssl = nullptr;
@@ -215,16 +207,7 @@ void IOCPService::onWrite(sese::event::BaseEvent *event) {
             }
             // GCOVR_EXCL_STOP
             if (ssl == nullptr) {
-                ctx->self->getDeleteContextCallback()(ctx);
-                if (ctx->ssl) {
-                    SSL_free((SSL *) ctx->ssl);
-                }
-                if (ctx->timeoutEvent) {
-                    cancelTimeoutEvent(ctx->timeoutEvent);
-                    ctx->timeoutEvent = nullptr;
-                }
-                sese::net::Socket::close(ctx->fd);
-                freeEventEx(event);
+                releaseContext(ctx);
                 return;
             } else {
                 SSL_set_mode(ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
@@ -251,12 +234,7 @@ void IOCPService::onWrite(sese::event::BaseEvent *event) {
                     postWrite(ctx);
                     break;
                 } else {
-                    ctx->self->getDeleteContextCallback()(ctx);
-                    if (ctx->ssl) {
-                        SSL_free((SSL *) ctx->ssl);
-                    }
-                    sese::net::Socket::close(ctx->fd);
-                    freeEventEx(ctx->event);
+                    releaseContext(ctx);
                     break;
                 }
             } else {
@@ -268,16 +246,11 @@ void IOCPService::onWrite(sese::event::BaseEvent *event) {
 
 void IOCPService::onClose(sese::event::BaseEvent *event) {
     auto ctx = (Context *) event->data;
-    ctx->self->getDeleteContextCallback()(ctx);
-    if (ctx->ssl) {
-        SSL_free((SSL *) ctx->ssl);
-    }
-    if (ctx->timeoutEvent) {
-        cancelTimeoutEvent(ctx->timeoutEvent);
-    }
-    sese::net::Socket::close(ctx->fd);
-    ctx->client->freeEventEx(ctx->event);
-    delete ctx;
+    // if (ctx->isCloseAndNotify) {
+    releaseContext(ctx);
+    // } else {
+    //    sese::net::Socket::shutdown(event->fd, sese::net::Socket::ShutdownMode::Both);
+    // }
 }
 
 void IOCPService::onTimeout(v2::TimeoutEvent *event) {
@@ -298,6 +271,20 @@ sese::event::BaseEvent *IOCPService::createEventEx(int fd, unsigned int events, 
 void IOCPService::freeEventEx(sese::event::BaseEvent *event) {
     eventSet.erase(event);
     freeEvent(event);
+}
+
+void IOCPService::releaseContext(Context *ctx) {
+    ctx->self->getDeleteContextCallback()(ctx);
+    if (ctx->ssl) {
+        SSL_free((SSL *) ctx->ssl);
+        ctx->ssl = nullptr;
+    }
+    if (ctx->timeoutEvent) {
+        cancelTimeoutEvent(ctx->timeoutEvent);
+    }
+    sese::net::Socket::close(ctx->fd);
+    ctx->client->freeEventEx(ctx->event);
+    delete ctx;
 }
 
 int64_t IOCPService::read(int fd, void *buffer, size_t len, void *ssl) {
@@ -330,7 +317,7 @@ IOCPServer::IOCPServer() {
 
 bool IOCPServer::init() {
     auto rt = balanceLoader.init<IOCPService>([this]() -> auto {
-        return new IOCPService(this);
+        return new IOCPService(this, this->activeReleaseMode);
     });
     if (rt) {
         balanceLoader.start();
@@ -412,4 +399,4 @@ void IOCPServer::preConnectCallback([[maybe_unused]] int fd, sese::event::EventL
     }
 }
 
-#pragma endregion Service
+#pragma endregion Server

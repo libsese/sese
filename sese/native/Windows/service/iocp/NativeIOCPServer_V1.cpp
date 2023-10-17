@@ -160,7 +160,6 @@ void NativeIOCPServer::shutdown() {
 }
 
 void NativeIOCPServer::postRead(NativeIOCPServer::Context *ctx) {
-    auto pWrapper = ctx->pWrapper;
     ctx->type = NativeContext::Type::Read;
     ctx->readNode = new IOBufNode(IOCP_WSABUF_SIZE);
     ctx->wsabufRead.buf = (CHAR *) ctx->readNode->buffer;
@@ -177,25 +176,11 @@ void NativeIOCPServer::postRead(NativeIOCPServer::Context *ctx) {
     );
     auto e = getNetworkError();
     if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
-        wrapperSetMutex.lock();
-        ctx->self->getDeleteContextCallback()(ctx);
-        Socket::close(ctx->fd);
-        wrapperSet.erase(pWrapper);
-        if (pWrapper->ctx.timeoutEvent) {
-            wheel.cancel(pWrapper->ctx.timeoutEvent);
-            pWrapper->ctx.timeoutEvent = nullptr;
-        }
-        if (pWrapper->ctx.ssl) {
-            SSL_free((SSL *) pWrapper->ctx.ssl);
-            pWrapper->ctx.ssl = nullptr;
-        }
-        wrapperSetMutex.unlock();
-        delete pWrapper;
+        releaseContext(ctx);
     }
 }
 
 void NativeIOCPServer::postWrite(NativeIOCPServer::Context *ctx) {
-    auto pWrapper = ctx->pWrapper;
     auto len = ctx->send.peek(ctx->wsabufWrite.buf, IOCP_WSABUF_SIZE);
     if (len == 0) {
         return;
@@ -214,27 +199,18 @@ void NativeIOCPServer::postWrite(NativeIOCPServer::Context *ctx) {
     );
     auto e = getNetworkError();
     if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
-        wrapperSetMutex.lock();
-        ctx->self->getDeleteContextCallback()(ctx);
-        Socket::close(ctx->fd);
-        wrapperSet.erase(pWrapper);
-        if (pWrapper->ctx.timeoutEvent) {
-            wheel.cancel(pWrapper->ctx.timeoutEvent);
-            pWrapper->ctx.timeoutEvent = nullptr;
-        }
-        if (pWrapper->ctx.ssl) {
-            SSL_free((SSL *) pWrapper->ctx.ssl);
-            pWrapper->ctx.ssl = nullptr;
-        }
-        wrapperSetMutex.unlock();
-        delete pWrapper;
+        releaseContext(ctx);
     }
 }
 
 void NativeIOCPServer::postClose(NativeIOCPServer::Context *ctx) {
-    void *lpCompletionKey = nullptr;
-    ctx->type = Context::Type::Close;
-    PostQueuedCompletionStatus(iocpFd, 0, (ULONG_PTR) lpCompletionKey, (LPOVERLAPPED) ctx->pWrapper);
+    if (activeReleaseMode) {
+        void *lpCompletionKey = nullptr;
+        ctx->type = Context::Type::Close;
+        PostQueuedCompletionStatus(iocpFd, 0, (ULONG_PTR) lpCompletionKey, (LPOVERLAPPED) ctx->pWrapper);
+    } else {
+        releaseContext(ctx);
+    }
 }
 
 #define ConnectEx ((LPFN_CONNECTEX) connectEx)
@@ -268,13 +244,7 @@ void NativeIOCPServer::postConnect(const net::IPAddress::Ptr &to, const security
     BOOL nRt = ConnectEx(sock, addr, len, nullptr, 0, nullptr, (LPOVERLAPPED) pWrapper);
     auto e = getNetworkError();
     if (nRt == FALSE && e != ERROR_IO_PENDING) {
-        deleteContextCallback(&pWrapper->ctx);
-        Socket::close(pWrapper->ctx.fd);
-        if (cliCtx) {
-            SSL_free((SSL *) pWrapper->ctx.ssl);
-            pWrapper->ctx.ssl = nullptr;
-        }
-        delete pWrapper;
+        releaseContext(&pWrapper->ctx);
     } else {
         wrapperSetMutex.lock();
         wrapperSet.emplace(pWrapper);
@@ -325,7 +295,7 @@ void NativeIOCPServer::acceptThreadProc() {
                         auto err = SSL_get_error(clientSSL, rt);
                         if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
                             SSL_free(clientSSL);
-                            sese::net::Socket::close(clientSocket);
+                            Socket::close(clientSocket);
                             delete pWrapper;
                             wrapperSetMutex.lock();
                             wheel.check();
@@ -382,20 +352,11 @@ void NativeIOCPServer::eventThreadProc() {
         if (pWrapper == nullptr) {
             continue;
         } else if (lpNumberOfBytesTransferred == 0 && pWrapper->ctx.type != NativeContext::Type::Connect) {
-            wrapperSetMutex.lock();
-            pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
-            Socket::close(pWrapper->ctx.fd);
-            wrapperSet.erase(pWrapper);
-            if (pWrapper->ctx.timeoutEvent) {
-                wheel.cancel(pWrapper->ctx.timeoutEvent);
-                pWrapper->ctx.timeoutEvent = nullptr;
+            // 主动释放模式对端关闭
+            // 任何模式下的非主动关闭
+            if (activeReleaseMode || pWrapper->ctx.type != NativeContext::Type::Close) {
+                releaseContext(&pWrapper->ctx);
             }
-            if (pWrapper->ctx.ssl) {
-                SSL_free((SSL *) pWrapper->ctx.ssl);
-                pWrapper->ctx.ssl = nullptr;
-            }
-            wrapperSetMutex.unlock();
-            delete pWrapper;
             continue;
         } else if (lpNumberOfBytesTransferred == -1) {
             break;
@@ -433,35 +394,13 @@ void NativeIOCPServer::eventThreadProc() {
                 );
                 auto e = getNetworkError();
                 if (nRt == SOCKET_ERROR && e != ERROR_IO_PENDING) {
-                    wrapperSetMutex.lock();
-                    pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
-                    Socket::close(pWrapper->ctx.fd);
-                    wrapperSet.erase(pWrapper);
-                    if (pWrapper->ctx.timeoutEvent) {
-                        wheel.cancel(pWrapper->ctx.timeoutEvent);
-                        pWrapper->ctx.timeoutEvent = nullptr;
-                    }
-                    if (pWrapper->ctx.ssl) {
-                        SSL_free((SSL *) pWrapper->ctx.ssl);
-                        pWrapper->ctx.ssl = nullptr;
-                    }
-                    wrapperSetMutex.unlock();
-                    delete pWrapper;
+                    releaseContext(&pWrapper->ctx);
                 }
             }
         } else {
             auto connectStatus = GetOverlappedResult((HANDLE) pWrapper->ctx.fd, (LPOVERLAPPED) pWrapper, &lpNumberOfBytesTransferred, TRUE);
             if (connectStatus == FALSE) {
-                wrapperSetMutex.lock();
-                pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
-                Socket::close(pWrapper->ctx.fd);
-                wrapperSet.erase(pWrapper);
-                if (pWrapper->ctx.timeoutEvent) {
-                    wheel.cancel(pWrapper->ctx.timeoutEvent);
-                    pWrapper->ctx.timeoutEvent = nullptr;
-                }
-                wrapperSetMutex.unlock();
-                delete pWrapper;
+                releaseContext(&pWrapper->ctx);
                 continue;
             }
 
@@ -487,16 +426,7 @@ void NativeIOCPServer::eventThreadProc() {
                 }
                 // GCOVR_EXCL_STOP
                 if (ssl == nullptr) {
-                    wrapperSetMutex.lock();
-                    pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
-                    Socket::close(pWrapper->ctx.fd);
-                    wrapperSet.erase(pWrapper);
-                    if (pWrapper->ctx.timeoutEvent) {
-                        wheel.cancel(pWrapper->ctx.timeoutEvent);
-                        pWrapper->ctx.timeoutEvent = nullptr;
-                    }
-                    wrapperSetMutex.unlock();
-                    delete pWrapper;
+                    releaseContext(&pWrapper->ctx);
                     continue;
                 } else {
                     SSL_set_mode(ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
@@ -511,6 +441,7 @@ void NativeIOCPServer::eventThreadProc() {
                     SSL_set_bio((SSL *) pWrapper->ctx.ssl, (BIO *) pWrapper->ctx.bio, (BIO *) pWrapper->ctx.bio);
                 }
             }
+            pWrapper->ctx.type = Context::Type::Ready;
             pWrapper->ctx.self->onConnected(&pWrapper->ctx);
         }
     }
@@ -537,7 +468,7 @@ bool NativeIOCPServer::initConnectEx() {
             &connectEx, sizeof(connectEx),
             &dwBytes, nullptr, nullptr
     );
-    ::closesocket(sock);
+    Socket::close(sock);
     return rc == 0;
 }
 
@@ -583,4 +514,22 @@ void NativeIOCPServer::cancelTimeout(NativeIOCPServer::Context *ctx) {
         ctx->timeoutEvent = nullptr;
         wrapperSetMutex.unlock();
     }
+}
+
+void NativeIOCPServer::releaseContext(Context *ctx) {
+    wrapperSetMutex.lock();
+    auto pWrapper = ctx->pWrapper;
+    pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
+    Socket::close(pWrapper->ctx.fd);
+    wrapperSet.erase(pWrapper);
+    if (pWrapper->ctx.timeoutEvent) {
+        wheel.cancel(pWrapper->ctx.timeoutEvent);
+        pWrapper->ctx.timeoutEvent = nullptr;
+    }
+    if (pWrapper->ctx.ssl) {
+        SSL_free((SSL *) pWrapper->ctx.ssl);
+        pWrapper->ctx.ssl = nullptr;
+    }
+    delete pWrapper;
+    wrapperSetMutex.unlock();
 }

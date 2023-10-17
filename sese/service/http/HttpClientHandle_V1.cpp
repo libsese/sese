@@ -20,7 +20,7 @@ sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::cr
     handle->cookies = std::make_shared<net::http::CookieMap>();
     handle->req->setCookies(handle->cookies);
     handle->req->set("client", "sese::service::v1::HttpClient");
-    handle->req->set("connect", "keep-alive");
+    handle->req->set("connection", "keep-alive");
 
     if (handle->ssl) {
         handle->clientCtx = security::SSLContextBuilder::SSL4Client();
@@ -40,6 +40,7 @@ sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::cr
     handle->cookies = std::make_shared<net::http::CookieMap>();
     handle->req->setCookies(handle->cookies);
     handle->req->set("client", "sese::service::v1::HttpClient");
+    handle->req->set("connection", "keep-alive");
 
     handle->clientCtx = ctx;
 
@@ -54,19 +55,19 @@ sese::service::v1::HttpClientHandle::RequestStatus sese::service::v1::HttpClient
 }
 
 void sese::service::v1::HttpClientHandle::requestForEach(const HeaderForEachFunction &func) const {
-    for (decltype(auto) iterator = req->begin(); iterator != req->end(); ++iterator) {
-        func(*iterator);
+    for (auto &iterator: *req) {
+        func(iterator);
     }
 }
 
 void sese::service::v1::HttpClientHandle::responseForEach(const HeaderForEachFunction &func) const {
-    for (decltype(auto) iterator = resp->begin(); iterator != resp->end(); ++iterator) {
-        func(*iterator);
+    for (auto &iterator: *resp) {
+        func(iterator);
     }
 }
 
 void sese::service::v1::HttpClientHandle::cookieForEach(const CookieForEachFunction &func) const {
-    for (decltype(auto) iterator = cookies->begin(); iterator != cookies->end(); ++iterator) {
-        func(iterator->second);
+    for (auto &iterator: *cookies) {
+        func(iterator.second);
     }
 }

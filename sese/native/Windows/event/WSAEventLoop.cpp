@@ -59,7 +59,7 @@ void sese::event::WSAEventLoop::dispatch(uint32_t timeout) {
                 onError(events[i]);
             }
         }
-        if (enumEvent.lNetworkEvents & FD_CLOSE) {
+        if ((enumEvent.lNetworkEvents & FD_CLOSE) && handleClose) {
             // mutex.lock();
             // WSACloseEvent(wsaEvents[i]);
             // memmove(&sockets[i], &sockets[i], (numbers - i - 1) * sizeof(SOCKET));

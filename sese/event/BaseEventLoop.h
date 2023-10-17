@@ -38,6 +38,10 @@ public:
     virtual bool setEvent(BaseEvent *event) = 0;
 
     virtual void setListenFd(int fd) = 0;
+
+protected:
+    /// 指示当前循环是否处理关闭事件
+    bool handleClose = true;
 };
 
 } // namespace sese::event

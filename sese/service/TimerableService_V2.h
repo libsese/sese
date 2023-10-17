@@ -43,7 +43,7 @@ public:
     /// \param event 超时事件
     void cancelTimeoutEvent(v2::TimeoutEvent *event);
 
-protected:
+private:
     /// 时间轮
     TimeWheel timeWheel{};
 };
