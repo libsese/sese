@@ -2,10 +2,11 @@
 #include <sese/text/DateTimeFormatter.h>
 #include <sese/net/http/HttpUtil.h>
 #include <sese/util/Util.h>
-
+#include <sese/record/Marco.h>
 
 sese::service::v1::HttpClient::HttpClient() {
-    setDeleteContextCallback(deleter);
+    Supper::setDeleteContextCallback(deleter);
+    Supper::setActiveReleaseMode(false);
     Supper::clientProtos = "\x8http/1.1";
 }
 
@@ -27,6 +28,7 @@ void sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
     }
     handle->req->set("content-length", std::to_string(handle->requestBodySize));
 
+    handle->requestStatus = HttpClientHandle::RequestStatus::Ready;
     if (handle->context == nullptr) {
         auto data = new Data;
         data->handle = handle;

@@ -34,6 +34,7 @@ class NativeContext final : public io::InputStream, public io::OutputStream, pub
         Read,
         Write,
         Connect,
+        Ready,
         Close
     };
 
@@ -200,7 +201,7 @@ public:
      * 连接事件回调函数
      * @param ctx 操作上下文
      */
-    virtual void onConnected(Context *ctx) {};
+    virtual void onConnected(Context *ctx){};
     /**
      * ALPN 协议协商完成回调函数
      * @param ctx 上下文
@@ -252,7 +253,6 @@ public:
      * @param callback 回调函数
      */
     void setDeleteContextCallback(const DeleteContextCallback &callback) { NativeIOCPServer::deleteContextCallback = callback; }
-
     /**
      * 获取当前服务器监听 SSL 上下文
      * @return SSL 上下文
@@ -263,8 +263,24 @@ public:
      * @return 回调函数
      */
     [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return NativeIOCPServer::deleteContextCallback; };
+    /**
+     * 获取主动释放模式状态
+     * @return 主动释放模式状态
+     */
+    bool isActiveReleaseMode() const { return NativeIOCPServer::activeReleaseMode; }
 
 protected:
+    /**
+     * 设置主动释放模式
+     * @param enable 是否启用
+     */
+    void setActiveReleaseMode(bool enable) { NativeIOCPServer::activeReleaseMode = enable; }
+    /**
+     * 释放操作上下文
+     * @param ctx 欲释放操作上下文
+     */
+    void releaseContext(Context *ctx);
+
     void acceptThreadProc();
     void eventThreadProc();
     static int alpnCallbackFunction(
@@ -298,6 +314,9 @@ protected:
     void *bioMethod{};
     std::string servProtos{};
     std::string clientProtos{};
+
+private:
+    bool activeReleaseMode = true;
 };
 
-} // namespace sese::_windows::iocp
+} // namespace sese::_windows::iocp::v1

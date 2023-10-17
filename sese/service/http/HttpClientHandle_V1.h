@@ -8,7 +8,6 @@
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
 
-#include <atomic>
 #include <condition_variable>
 #include <functional>
 
@@ -63,12 +62,12 @@ public:
     [[nodiscard]] const net::http::Response::Ptr &getResp() const { return resp; };
     [[nodiscard]] const net::http::CookieMap::Ptr &getCookies() const { return cookies; };
 
-    const std::string &get(const std::string &name, const std::string &def) const { return resp->get(name, def); }
+    [[nodiscard]] const std::string &get(const std::string &name, const std::string &def) const { return resp->get(name, def); }
     void set(const std::string &name, const std::string &value) { req->set(name, value); }
     void setUrl(const std::string &url) { req->setUrl(url); }
     void setType(net::http::RequestType type) { req->setType(type); }
     void setContentLength(size_t length) { requestBodySize = length; }
-    uint16_t getStatusCode() const { return resp->getCode(); }
+    [[nodiscard]] uint16_t getStatusCode() const { return resp->getCode(); }
     int64_t writeBody(const void *buffer, size_t length) { return req->getBody().write(buffer, length); }
     int64_t readBody(void *buffer, size_t length) { return resp->getBody().read(buffer, length); }
 
@@ -104,7 +103,7 @@ private:
     size_t responseBodyHandled = 0;
 
     std::atomic<RequestStatus> requestStatus{RequestStatus::Ready};
-    std::atomic<iocp::v1::Context *> context{};
+    iocp::v1::Context *context{};
 
     Req::Ptr req;
     Resp::Ptr resp;

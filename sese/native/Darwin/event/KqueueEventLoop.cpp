@@ -71,12 +71,12 @@ void sese::event::KqueueEventLoop::dispatch(uint32_t time) {
                     onRead(event);
                 }
 
-                if (events[i].flags & EV_EOF) {
+                if ((events[i].flags & EV_EOF) && handleClose) {
                     onClose(event);
                     continue;
                 }
             } else if (events[i].filter == EVFILT_WRITE) {
-                if (events[i].flags & EV_EOF) {
+                if ((events[i].flags & EV_EOF) && handleClose) {
                     onClose(event);
                     continue;
                 }

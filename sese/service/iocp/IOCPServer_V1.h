@@ -172,6 +172,12 @@ public:
      */
     [[nodiscard]] const DeleteContextCallback &getDeleteContextCallback() const { return IOCPServer::deleteContextCallback; };
 
+    /**
+     * 获取主动释放模式状态
+     * @return 主动释放模式状态
+     */
+    [[nodiscard]] bool isActiveReleaseMode() const { return activeReleaseMode; }
+
 public:
     /**
      * 设置连接接入超时时间，此函数仅用户基于 sese-event 的 IOCP 实现
@@ -187,11 +193,20 @@ public:
 protected:
     void preConnectCallback(int fd, sese::event::EventLoop *eventLoop, Context *ctx);
 
+    /**
+     * 设置主动释放模式
+     * @param enable 是否启用
+     */
+    void setActiveReleaseMode(bool enable) { activeReleaseMode = enable; }
+
     DeleteContextCallback deleteContextCallback = onDeleteContext;
     security::SSLContext::Ptr sslCtx{};
     std::string servProtos{};
     std::string clientProtos{};
     service::UserBalanceLoader balanceLoader;
+
+private:
+    bool activeReleaseMode = true;
 };
 
 /// 基于 sese-event 的完成端口操作上下文
@@ -259,7 +274,8 @@ class IOCPService final : public service::v2::TimerableService {
 public:
     /// 初始化子服务
     /// \param master 主服务器
-    explicit IOCPService(IOCPServer *master);
+    /// \param activeReleaseMode 主动释放模式
+    explicit IOCPService(IOCPServer *master, bool activeReleaseMode);
     /// 析构函数
     ~IOCPService() override;
 
@@ -341,6 +357,8 @@ private:
 
     event::BaseEvent *createEventEx(int fd, unsigned int events, void *data);
     void freeEventEx(sese::event::BaseEvent *event);
+
+    void releaseContext(Context *ctx);
 
     static int64_t read(int fd, void *buffer, size_t len, void *ssl);
     static int64_t write(int fd, const void *buffer, size_t len, void *ssl);
