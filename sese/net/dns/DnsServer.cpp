@@ -1,5 +1,5 @@
 #include <sese/net/dns/DnsServer.h>
-#include <sese/net/dns/DNSUtil.h>
+#include <sese/net/dns/DnsUtil.h>
 #include <sese/io/InputBufferWrapper.h>
 #include <sese/io/OutputBufferWrapper.h>
 #include <sese/util/Util.h>
@@ -86,9 +86,9 @@ void sese::net::dns::DnsServer::loop() noexcept {
         auto output = sese::io::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
 
         FrameHeaderInfo info;
-        DNSSession session;
-        DNSUtil::decodeFrameHeaderInfo(buffer, info);
-        DNSUtil::decodeQueries(info.questions, &input, session.getQueries());
+        DndSession session;
+        DnsUtil::decodeFrameHeaderInfo(buffer, info);
+        DnsUtil::decodeQueries(info.questions, &input, session.getQueries());
 
         info.flags.rcode = SESE_DNS_RCODE_NO_ERROR;
         info.flags.RD = 0;
@@ -140,9 +140,9 @@ void sese::net::dns::DnsServer::loop() noexcept {
             }
         }
 
-        DNSUtil::encodeFrameHeaderInfo(buffer, info);
-        DNSUtil::encodeQueries(&output, session.getQueries());
-        DNSUtil::encodeAnswers(&output, session.getAnswers());
+        DnsUtil::encodeFrameHeaderInfo(buffer, info);
+        DnsUtil::encodeQueries(&output, session.getQueries());
+        DnsUtil::encodeAnswers(&output, session.getAnswers());
         socket->send(buffer, 12 + output.getLength(), clientAddress, 0);
     }
 }
