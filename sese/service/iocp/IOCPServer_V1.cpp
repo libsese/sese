@@ -196,8 +196,6 @@ void IOCPService::onWrite(sese::event::BaseEvent *event) {
                     if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
                         SSL_free((SSL *) ssl);
                         ctx->ssl = nullptr;
-                        // Socket::close();
-                        // return -1;
                         ssl = nullptr;
                         break;
                     }

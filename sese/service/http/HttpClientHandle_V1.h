@@ -103,7 +103,7 @@ private:
 
     uint8_t triedTimes = 0;
 
-    std::promise<RequestStatus> promise;
+    std::unique_ptr<std::promise<RequestStatus>> promise{};
     RequestStatus requestStatus{RequestStatus::Ready};
     iocp::v1::Context *context{};
 
