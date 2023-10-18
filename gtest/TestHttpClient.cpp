@@ -166,3 +166,101 @@ TEST(TestHttpClient, BLOCKING_NO_SSL_KEEPALIVE) {
         SESE_DEBUG("Cookie %s:%s", cookie.second->getName().c_str(), cookie.second->getValue().c_str());
     }
 }
+
+#include <sese/service/http/HttpClient_V1.h>
+
+class TestAsyncHttpClient : public testing::Test {
+public:
+    using Client = sese::service::v1::HttpClient;
+    using Handle = sese::service::v1::HttpClientHandle;
+
+protected:
+    static Client client;
+
+    static void SetUpTestSuite() {
+        client.setThreads(2);
+        ASSERT_TRUE(client.init());
+    }
+
+    static void TearDownTestSuite() {
+        client.shutdown();
+    }
+};
+
+TestAsyncHttpClient::Client TestAsyncHttpClient::client;
+
+TEST_F(TestAsyncHttpClient, Once) {
+    auto handle = Handle::create("https://microsoft.com");
+    handle->writeBody("Hello", 5);
+    auto future = client.post(handle);
+    auto status = future.get();
+    if (status == Handle::RequestStatus::Succeeded) {
+        SESE_INFO("The request succeeded with %d.", handle->getStatusCode());
+        handle->responseForEach([](const sese::service::v1::HttpClientHandle::HeaderForEachFunctionArgs &pair) {
+            SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
+        });
+    } else {
+        FAIL();
+    }
+}
+
+#include <sese/security/SSLContextBuilder.h>
+
+TEST_F(TestAsyncHttpClient, Multi) {
+    // auto address = sese::net::IPv4Address::create("110.242.68.66", 80);
+    auto address = std::dynamic_pointer_cast<sese::net::IPv4Address>(sese::net::IPv4Address::lookUpAny("microsoft.com"));
+    address->setPort(443);
+    auto context = sese::security::SSLContextBuilder::SSL4Client();
+
+    auto handle1 = Handle::create("https://bing.com");
+    auto handle2 = Handle::create(address, context);
+
+    auto f1 = client.post(handle1);
+    auto f2 = client.post(handle2);
+    auto s1 = f1.get();
+    auto s2 = f2.get();
+
+    if (s1 == Handle::RequestStatus::Succeeded) {
+        SESE_INFO("The handle1 succeeded with %d.", handle1->getStatusCode());
+        handle1->responseForEach([](const sese::service::v1::HttpClientHandle::HeaderForEachFunctionArgs &pair) {
+            SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
+        });
+    } else {
+        FAIL();
+    }
+
+    if (s2 == Handle::RequestStatus::Succeeded) {
+        SESE_INFO("The handle2 succeeded with %d.", handle2->getStatusCode());
+        handle2->responseForEach([](const sese::service::v1::HttpClientHandle::HeaderForEachFunctionArgs &pair) {
+            SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
+        });
+    } else {
+        FAIL();
+    }
+}
+
+TEST_F(TestAsyncHttpClient, KeepAlive) {
+    auto handle = Handle::create("http://bing.com");
+    auto future = client.post(handle);
+    auto status = future.get();
+    if (status == Handle::RequestStatus::Succeeded) {
+        SESE_INFO("The request succeeded with %d.", handle->getStatusCode());
+        handle->responseForEach([](const sese::service::v1::HttpClientHandle::HeaderForEachFunctionArgs &pair) {
+            SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
+        });
+    } else {
+        FAIL();
+    }
+
+    handle->setUrl("/index.html");
+    future = client.post(handle);
+    status = future.get();
+    if (status == Handle::RequestStatus::Succeeded) {
+        SESE_INFO("The request succeeded with %d.", handle->getStatusCode());
+        handle->responseForEach([](const sese::service::v1::HttpClientHandle::HeaderForEachFunctionArgs &pair) {
+            SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
+        });
+    } else {
+        FAIL();
+    }
+}

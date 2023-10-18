@@ -415,8 +415,7 @@ void NativeIOCPServer::eventThreadProc() {
                         auto err = SSL_get_error((SSL *) ssl, rt);
                         if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
                             SSL_free((SSL *) ssl);
-                            // Socket::close();
-                            // return -1;
+                            pWrapper->ctx.ssl = nullptr;
                             ssl = nullptr;
                             break;
                         }

@@ -31,6 +31,7 @@ sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::cr
 
 sese::service::v1::HttpClientHandle::Ptr sese::service::v1::HttpClientHandle::create(const IPAddress::Ptr &address, const security::SSLContext::Ptr &ctx) {
     assert(address != nullptr);
+    assert(address->getPort() != 0);
     auto handle = std::shared_ptr<HttpClientHandle>(new HttpClientHandle);
     handle->ssl = ctx != nullptr;
     handle->address = address;

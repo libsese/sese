@@ -12,6 +12,7 @@ sese::service::v1::HttpClient::HttpClient() {
 
 std::shared_future<sese::service::v1::HttpClientHandle::RequestStatus> sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
     preprocess(handle);
+    handle->promise = std::make_unique<std::promise<HttpClientHandle::RequestStatus>>();
     if (handle->context == nullptr) {
         auto data = new Data;
         data->handle = handle;
@@ -19,8 +20,7 @@ std::shared_future<sese::service::v1::HttpClientHandle::RequestStatus> sese::ser
     } else {
         onConnected(handle->context);
     }
-    handle->promise = std::promise<HttpClientHandle::RequestStatus>();
-    return handle->promise.get_future();
+    return handle->promise->get_future();
 }
 
 void sese::service::v1::HttpClient::preprocess(const HttpClientHandle::Ptr &handle) {
@@ -45,11 +45,12 @@ void sese::service::v1::HttpClient::preprocess(const HttpClientHandle::Ptr &hand
 }
 
 void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
+    // SESE_DEBUG("delete");
     auto data = static_cast<struct Data *>(ctx->getData());
     auto handle = data->handle;
     handle->context = nullptr;
     if (handle->requestStatus != HttpClientHandle::RequestStatus::Succeeded) {
-        if (handle->requestStatus == HttpClientHandle::RequestStatus::Connecting) {
+        if (handle->requestStatus == HttpClientHandle::RequestStatus::Connecting || handle->requestStatus == HttpClientHandle::RequestStatus::Ready) {
             handle->requestStatus = HttpClientHandle::RequestStatus::ConnectFailed;
         } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Requesting) {
             handle->requestStatus = HttpClientHandle::RequestStatus::RequestFailed;
@@ -69,7 +70,7 @@ void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
             if (handle->requestDoneCallback) {
                 handle->requestDoneCallback(handle);
             }
-            handle->promise.set_value(handle->requestStatus);
+            handle->promise->set_value(handle->requestStatus);
             delete data;
         }
     } else {
@@ -91,6 +92,7 @@ void sese::service::v1::HttpClient::onReadCompleted(Context *ctx) {
         return;
     }
 
+    // SESE_DEBUG("read completed");
     if (handle->responseBodySize == 0) {
         auto parseRt = net::http::HttpUtil::recvResponse(ctx, handle->resp.get());
         if (!parseRt) {
@@ -138,7 +140,7 @@ void sese::service::v1::HttpClient::onReadCompleted(Context *ctx) {
     if (handle->requestDoneCallback) {
         handle->requestDoneCallback(handle);
     }
-    handle->promise.set_value(handle->requestStatus);
+    handle->promise->set_value(handle->requestStatus);
     auto close = sese::strcmpDoNotCase(handle->resp->get("connection", "").c_str(), "close");
     if (close) {
         postClose(ctx);
@@ -146,18 +148,20 @@ void sese::service::v1::HttpClient::onReadCompleted(Context *ctx) {
 }
 
 void sese::service::v1::HttpClient::onWriteCompleted(Context *ctx) {
+    // SESE_DEBUG("write completed");
     cancelTimeout(ctx);
     auto data = static_cast<struct Data *>(ctx->getData());
     auto handle = data->handle;
-    if (handle->requestBodySize - handle->requestBodyHandled > 0) {
+    auto remainder = handle->requestBodySize - handle->requestBodyHandled;
+    if (remainder > 0) {
         if (handle->writeRequestBodyCallback) {
             size_t size;
             handle->writeRequestBodyCallback(ctx, &size);
-            handle->requestBodyHandled -= std::min<size_t>(size, handle->requestBodyHandled);
+            handle->requestBodyHandled += std::min<size_t>(size, remainder);
         } else {
             auto &&body = handle->req->getBody();
             auto size = sese::streamMove(ctx, &body, MTU_VALUE);
-            handle->requestBodyHandled -= std::min<size_t>(size, handle->requestBodyHandled);
+            handle->requestBodyHandled += std::min<size_t>(size, remainder);
         }
         setTimeout(ctx, static_cast<int64_t>(handle->requestTimeout));
         postWrite(ctx);
@@ -183,6 +187,7 @@ void sese::service::v1::HttpClient::onPreConnect(Context *ctx) {
 }
 
 void sese::service::v1::HttpClient::onConnected(Context *ctx) {
+    // SESE_DEBUG("connected");
     cancelTimeout(ctx);
     auto data = static_cast<struct Data *>(ctx->getData());
     auto handle = data->handle;

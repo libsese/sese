@@ -35,7 +35,9 @@ private:
     using Supper::cancelTimeout;
     using Supper::getDeleteContextCallback;
     using Supper::getServCtx;
+    using Supper::isActiveReleaseMode;
     using Supper::onAcceptCompleted;
+    using Supper::onAlpnGet;
     using Supper::onAlpnSelect;
     using Supper::onDeleteContext;
     using Supper::postClose;
