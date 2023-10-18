@@ -246,11 +246,7 @@ void IOCPService::onWrite(sese::event::BaseEvent *event) {
 
 void IOCPService::onClose(sese::event::BaseEvent *event) {
     auto ctx = (Context *) event->data;
-    // if (ctx->isCloseAndNotify) {
     releaseContext(ctx);
-    // } else {
-    //    sese::net::Socket::shutdown(event->fd, sese::net::Socket::ShutdownMode::Both);
-    // }
 }
 
 void IOCPService::onTimeout(v2::TimeoutEvent *event) {
@@ -274,7 +270,6 @@ void IOCPService::freeEventEx(sese::event::BaseEvent *event) {
 }
 
 void IOCPService::releaseContext(Context *ctx) {
-    ctx->self->getDeleteContextCallback()(ctx);
     if (ctx->ssl) {
         SSL_free((SSL *) ctx->ssl);
         ctx->ssl = nullptr;
@@ -284,6 +279,7 @@ void IOCPService::releaseContext(Context *ctx) {
     }
     sese::net::Socket::close(ctx->fd);
     ctx->client->freeEventEx(ctx->event);
+    ctx->self->getDeleteContextCallback()(ctx);
     delete ctx;
 }
 

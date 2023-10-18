@@ -21,7 +21,9 @@ private:
         HttpClientHandle::Ptr handle{};
     };
 
-    static void deleter(sese::iocp::Context *ctx);
+    static void preprocess(const HttpClientHandle::Ptr &handle);
+
+    void deleter(sese::iocp::Context *ctx);
 
     void onPreRead(Context *ctx) override;
     void onReadCompleted(Context *ctx) override;

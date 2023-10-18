@@ -101,6 +101,8 @@ private:
     size_t responseBodySize = 0;
     size_t responseBodyHandled = 0;
 
+    uint8_t triedTimes = 0;
+
     std::promise<RequestStatus> promise;
     RequestStatus requestStatus{RequestStatus::Ready};
     iocp::v1::Context *context{};
