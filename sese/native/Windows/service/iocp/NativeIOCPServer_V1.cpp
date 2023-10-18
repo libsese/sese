@@ -519,17 +519,17 @@ void NativeIOCPServer::cancelTimeout(NativeIOCPServer::Context *ctx) {
 void NativeIOCPServer::releaseContext(Context *ctx) {
     wrapperSetMutex.lock();
     auto pWrapper = ctx->pWrapper;
-    pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
-    Socket::close(pWrapper->ctx.fd);
     wrapperSet.erase(pWrapper);
     if (pWrapper->ctx.timeoutEvent) {
         wheel.cancel(pWrapper->ctx.timeoutEvent);
         pWrapper->ctx.timeoutEvent = nullptr;
     }
+    wrapperSetMutex.unlock();
+    Socket::close(pWrapper->ctx.fd);
     if (pWrapper->ctx.ssl) {
         SSL_free((SSL *) pWrapper->ctx.ssl);
         pWrapper->ctx.ssl = nullptr;
     }
+    pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);
     delete pWrapper;
-    wrapperSetMutex.unlock();
 }

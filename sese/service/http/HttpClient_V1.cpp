@@ -5,12 +5,25 @@
 #include <sese/record/Marco.h>
 
 sese::service::v1::HttpClient::HttpClient() {
-    Supper::setDeleteContextCallback(deleter);
+    Supper::setDeleteContextCallback([this](sese::iocp::Context *ctx) { this->deleter(ctx); });
     Supper::setActiveReleaseMode(false);
     Supper::clientProtos = "\x8http/1.1";
 }
 
 std::shared_future<sese::service::v1::HttpClientHandle::RequestStatus> sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
+    preprocess(handle);
+    if (handle->context == nullptr) {
+        auto data = new Data;
+        data->handle = handle;
+        Supper::postConnect(handle->address, handle->clientCtx, data);
+    } else {
+        onConnected(handle->context);
+    }
+    handle->promise = std::promise<HttpClientHandle::RequestStatus>();
+    return handle->promise.get_future();
+}
+
+void sese::service::v1::HttpClient::preprocess(const HttpClientHandle::Ptr &handle) {
     auto time = DateTime::now(0);
     auto timeString = text::DateTimeFormatter::format(time, TIME_GREENWICH_MEAN_PATTERN);
     handle->req->set("date", timeString);
@@ -29,15 +42,6 @@ std::shared_future<sese::service::v1::HttpClientHandle::RequestStatus> sese::ser
     handle->req->set("content-length", std::to_string(handle->requestBodySize));
 
     handle->requestStatus = HttpClientHandle::RequestStatus::Ready;
-    if (handle->context == nullptr) {
-        auto data = new Data;
-        data->handle = handle;
-        Supper::postConnect(handle->address, handle->clientCtx, data);
-    } else {
-        onConnected(handle->context);
-    }
-    handle->promise = std::promise<HttpClientHandle::RequestStatus>();
-    return handle->promise.get_future();
 }
 
 void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
@@ -52,12 +56,25 @@ void sese::service::v1::HttpClient::deleter(sese::iocp::Context *ctx) {
         } else if (handle->requestStatus == HttpClientHandle::RequestStatus::Responding) {
             handle->requestStatus = HttpClientHandle::RequestStatus::ResponseFailed;
         }
-        if (handle->requestDoneCallback) {
-            handle->requestDoneCallback(handle);
+
+        if (handle->triedTimes == 0 && handle->requestStatus != HttpClientHandle::RequestStatus::ConnectFailed) {
+            handle->triedTimes++;
+            preprocess(handle);
+            delete data;
+            data = new Data;
+            data->handle = handle;
+            Supper::postConnect(handle->address, handle->clientCtx, data);
+            return;
+        } else {
+            if (handle->requestDoneCallback) {
+                handle->requestDoneCallback(handle);
+            }
+            handle->promise.set_value(handle->requestStatus);
+            delete data;
         }
-        handle->promise.set_value(handle->requestStatus);
+    } else {
+        delete data;
     }
-    delete data;
 }
 
 void sese::service::v1::HttpClient::onPreRead(Context *ctx) {
@@ -116,6 +133,7 @@ void sese::service::v1::HttpClient::onReadCompleted(Context *ctx) {
             }
         }
     }
+    handle->triedTimes = 0;
     handle->requestStatus = HttpClientHandle::RequestStatus::Succeeded;
     if (handle->requestDoneCallback) {
         handle->requestDoneCallback(handle);
