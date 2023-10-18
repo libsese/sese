@@ -1,9 +1,9 @@
-#include <sese/net/dns/DNSUtil.h>
+#include <sese/net/dns/DnsUtil.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Endian.h>
 #include <sese/io/InputBufferWrapper.h>
 
-void sese::net::dns::DNSUtil::decodeFrameHeaderInfo(const uint8_t *buf, sese::net::dns::FrameHeaderInfo &info) noexcept {
+void sese::net::dns::DnsUtil::decodeFrameHeaderInfo(const uint8_t *buf, sese::net::dns::FrameHeaderInfo &info) noexcept {
     info.transactionId = buf[0] * 0x100 + buf[1];
     decodeFrameFlagsInfo(&buf[2], info.flags);
     info.questions = buf[4] * 0x100 + buf[5];
@@ -12,7 +12,7 @@ void sese::net::dns::DNSUtil::decodeFrameHeaderInfo(const uint8_t *buf, sese::ne
     info.additionalPrs = buf[10] * 0x100 + buf[11];
 }
 
-void sese::net::dns::DNSUtil::decodeFrameFlagsInfo(const uint8_t *buf, sese::net::dns::FrameFlagsInfo &info) noexcept {
+void sese::net::dns::DnsUtil::decodeFrameFlagsInfo(const uint8_t *buf, sese::net::dns::FrameFlagsInfo &info) noexcept {
     info.QR = (buf[0] & 0b1000'0000) >> 7;
     info.opcode = (buf[0] & 0b0111'1000) >> 3;
     info.AA = (buf[0] & 0b0000'0100) >> 2;
@@ -23,7 +23,7 @@ void sese::net::dns::DNSUtil::decodeFrameFlagsInfo(const uint8_t *buf, sese::net
     info.rcode = (buf[1] & 0b0000'1111);
 }
 
-void sese::net::dns::DNSUtil::encodeFrameHeaderInfo(uint8_t *buf, const sese::net::dns::FrameHeaderInfo &info) noexcept {
+void sese::net::dns::DnsUtil::encodeFrameHeaderInfo(uint8_t *buf, const sese::net::dns::FrameHeaderInfo &info) noexcept {
     buf[0] = info.transactionId / 0x100;
     buf[1] = info.transactionId % 0x100;
     encodeFrameFlagsInfo(&buf[2], info.flags);
@@ -37,7 +37,7 @@ void sese::net::dns::DNSUtil::encodeFrameHeaderInfo(uint8_t *buf, const sese::ne
     buf[11] = info.additionalPrs % 0x100;
 }
 
-void sese::net::dns::DNSUtil::encodeFrameFlagsInfo(uint8_t *buf, const FrameFlagsInfo &info) noexcept {
+void sese::net::dns::DnsUtil::encodeFrameFlagsInfo(uint8_t *buf, const FrameFlagsInfo &info) noexcept {
     buf[0] = info.QR << 7;
     buf[0] |= info.opcode << 3;
     buf[0] |= info.AA << 2;
@@ -57,7 +57,7 @@ void sese::net::dns::DNSUtil::encodeFrameFlagsInfo(uint8_t *buf, const FrameFlag
     }                               \
     SESE_MARCO_END
 
-bool sese::net::dns::DNSUtil::decodeQueries(size_t qcount, InputStream *input, std::vector<Query> &vector) noexcept {
+bool sese::net::dns::DnsUtil::decodeQueries(size_t qcount, InputStream *input, std::vector<Query> &vector) noexcept {
     while (qcount) {
         std::string result;
         bool first = true;
@@ -99,7 +99,7 @@ bool sese::net::dns::DNSUtil::decodeQueries(size_t qcount, InputStream *input, s
     return true;
 }
 
-void sese::net::dns::DNSUtil::encodeQueries(OutputStream *output, std::vector<Query> &vector) noexcept {
+void sese::net::dns::DnsUtil::encodeQueries(OutputStream *output, std::vector<Query> &vector) noexcept {
     for (auto &item: vector) {
         auto v = text::StringBuilder::split(item.getName(), ".");
         for (auto &i: v) {
@@ -118,7 +118,7 @@ void sese::net::dns::DNSUtil::encodeQueries(OutputStream *output, std::vector<Qu
     }
 }
 
-void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<Answer> &vector) noexcept {
+void sese::net::dns::DnsUtil::encodeAnswers(OutputStream *output, std::vector<Answer> &vector) noexcept {
     for (auto &item: vector) {
         auto v = text::StringBuilder::split(item.getName(), ".");
         for (auto &i: v) {
@@ -148,7 +148,7 @@ void sese::net::dns::DNSUtil::encodeAnswers(OutputStream *output, std::vector<An
     }
 }
 
-bool sese::net::dns::DNSUtil::decodeDomain(InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept {
+bool sese::net::dns::DnsUtil::decodeDomain(InputStream *input, std::string &domain, const char *buffer, size_t level, bool &finsh) noexcept {
     bool first = true;
     uint8_t l;
     [[maybe_unused]] uint32_t size = 12;
@@ -171,7 +171,7 @@ bool sese::net::dns::DNSUtil::decodeDomain(InputStream *input, std::string &doma
             if (level == 0) {
                 return false;
             }
-            if (!sese::net::dns::DNSUtil::decodeDomain(&indexInput, result, buffer, level - 1, finsh)) {
+            if (!sese::net::dns::DnsUtil::decodeDomain(&indexInput, result, buffer, level - 1, finsh)) {
                 return false;
             }
             if (first) {
@@ -201,7 +201,7 @@ bool sese::net::dns::DNSUtil::decodeDomain(InputStream *input, std::string &doma
     return true;
 }
 
-bool sese::net::dns::DNSUtil::decodeAnswers(size_t acount, InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept {
+bool sese::net::dns::DnsUtil::decodeAnswers(size_t acount, InputStream *input, std::vector<Answer> &vector, const char *buffer) noexcept {
     while (acount) {
         [[maybe_unused]] uint32_t size = 12;
 

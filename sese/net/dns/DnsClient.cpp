@@ -1,7 +1,7 @@
 #include <sese/net/dns/DnsClient.h>
 #include <sese/net/Socket.h>
-#include <sese/net/dns/DNSUtil.h>
-#include <sese/net/dns/DNSSession.h>
+#include <sese/net/dns/DnsUtil.h>
+#include <sese/net/dns/DndSession.h>
 #include <sese/io/InputBufferWrapper.h>
 #include <sese/io/OutputBufferWrapper.h>
 #include <sese/util/Random.h>
@@ -34,14 +34,14 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     info.flags.AA = 0;
     info.questions = 1;
 
-    DNSSession session;
+    DndSession session;
     session.getQueries().emplace_back(domain, expectType, SESE_DNS_QR_CLASS_IN, 0);
 
     uint8_t buffer[DNS_PACKAGE_SIZE];
     auto output = sese::io::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
 
-    DNSUtil::encodeFrameHeaderInfo(buffer, info);
-    DNSUtil::encodeQueries(&output, session.getQueries());
+    DnsUtil::encodeFrameHeaderInfo(buffer, info);
+    DnsUtil::encodeQueries(&output, session.getQueries());
 
     socket.send(buffer, 12 + output.getLength(), server, 0);
 
@@ -49,14 +49,14 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     auto input = sese::io::InputBufferWrapper((const char *) buffer + 12, len - 12);
 
     session.getQueries().clear();
-    DNSUtil::decodeFrameHeaderInfo(buffer, info);
+    DnsUtil::decodeFrameHeaderInfo(buffer, info);
 
     if (info.flags.rcode != SESE_DNS_RCODE_NO_ERROR) {
         return nullptr;
     }
 
-    DNSUtil::decodeQueries(info.questions, &input, session.getQueries());
-    DNSUtil::decodeAnswers(info.answerPrs, &input, session.getAnswers(), (const char *) buffer);
+    DnsUtil::decodeQueries(info.questions, &input, session.getQueries());
+    DnsUtil::decodeAnswers(info.answerPrs, &input, session.getAnswers(), (const char *) buffer);
 
     for (auto &item: session.getAnswers()) {
         if (expectType == item.getType()) {

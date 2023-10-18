@@ -1,5 +1,5 @@
 #include <sese/net/dns/DnsServer.h>
-#include <sese/net/dns/DNSUtil.h>
+#include <sese/net/dns/DnsUtil.h>
 #include <sese/record/Marco.h>
 
 #include <random>
@@ -14,7 +14,7 @@ TEST(TestDNS, Decode_0) {
     const uint8_t buffer[12] = {0xc1, 0xa8, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
     sese::net::dns::FrameHeaderInfo info{};
-    sese::net::dns::DNSUtil::decodeFrameHeaderInfo(buffer, info);
+    sese::net::dns::DnsUtil::decodeFrameHeaderInfo(buffer, info);
 
     EXPECT_EQ(info.transactionId, 0xc1a8);
 
@@ -34,7 +34,7 @@ TEST(TestDNS, Decode_1) {
     const uint8_t buffer[12] = {0xc1, 0xa8, 0x81, 0x83, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00};
 
     sese::net::dns::FrameHeaderInfo info{};
-    sese::net::dns::DNSUtil::decodeFrameHeaderInfo(buffer, info);
+    sese::net::dns::DnsUtil::decodeFrameHeaderInfo(buffer, info);
 
     EXPECT_EQ(info.transactionId, 0xc1a8);
 
@@ -70,7 +70,7 @@ TEST(TestDNS, Encode_0) {
     info.authorityPrs = 0;
     info.additionalPrs = 0;
 
-    sese::net::dns::DNSUtil::encodeFrameHeaderInfo(result, info);
+    sese::net::dns::DnsUtil::encodeFrameHeaderInfo(result, info);
     EXPECT_EQ(memcmp(expect, result, 12), 0);
 }
 
@@ -94,7 +94,7 @@ TEST(TestDNS, Encode_1) {
     info.authorityPrs = 1;
     info.additionalPrs = 0;
 
-    sese::net::dns::DNSUtil::encodeFrameHeaderInfo(result, info);
+    sese::net::dns::DnsUtil::encodeFrameHeaderInfo(result, info);
     EXPECT_EQ(memcmp(expect, result, 12), 0);
 }
 

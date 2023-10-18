@@ -155,9 +155,9 @@ set(
         net/dns/DnsClient.h
         net/dns/DnsServer.cpp
         net/dns/DnsServer.h
-        net/dns/DNSSession.h
-        net/dns/DNSUtil.cpp
-        net/dns/DNSUtil.h
+        net/dns/DndSession.h
+        net/dns/DnsUtil.cpp
+        net/dns/DnsUtil.h
         net/dns/FrameHeader.h
         net/dns/Query.h
         net/http/ContentTypeMap.cpp
