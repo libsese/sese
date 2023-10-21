@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.14)
 cmake_policy(SET CMP0048 NEW)
 
 macro(auto_enable_feature opt_name feature_name)
-    if(${opt_name})
-        if(NOT DEFINED VCPKG_MANIFEST_FEATURES)
+    if (${opt_name})
+        if (NOT DEFINED VCPKG_MANIFEST_FEATURES)
             message(STATUS "Auto append features: ${feature_name}")
             set(VCPKG_MANIFEST_FEATURES ${feature_name})
         else ()
@@ -17,7 +17,7 @@ macro(auto_enable_feature opt_name feature_name)
     endif ()
 endmacro()
 
-option(SESE_DB_BUILD_TEST "build unit test targets" ON)
+option(SESE_DB_BUILD_TEST "build unit test targets" OFF)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
 option(SESE_DB_USE_SQLITE "add sqlite support" OFF)
 option(SESE_DB_USE_POSTGRES "add postgresql support" OFF)
@@ -41,7 +41,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     endif ()
 endif ()
 
-add_library(DB SHARED)
+add_library(DB)
 
 if (${CMAKE_GENERATOR} MATCHES "Ninja")
     # 单配置
@@ -73,8 +73,8 @@ if (SESE_DB_USE_MARIADB)
             src/maria/MariaPreparedStatementImpl.cpp
             src/maria/MariaResultSetImpl.cpp
             src/maria/MariaStmtResultSetImpl.cpp
-            )
-    target_compile_definitions(DB PRIVATE -DHAS_MARIADB)
+    )
+    add_definitions(-DHAS_MARIADB)
 endif ()
 
 if (SESE_DB_USE_SQLITE)
@@ -85,8 +85,8 @@ if (SESE_DB_USE_SQLITE)
             src/sqlite/SqlitePreparedStatementImpl.cpp
             src/sqlite/SqliteResultSetImpl.cpp
             src/sqlite/SqliteStmtResultSetImpl.cpp
-            )
-    target_compile_definitions(DB PRIVATE -DHAS_SQLITE)
+    )
+    add_definitions(-DHAS_SQLITE)
 endif ()
 
 if (SESE_DB_USE_POSTGRES)
@@ -96,16 +96,21 @@ if (SESE_DB_USE_POSTGRES)
             src/pgsql/PostgresDriverInstanceImpl.cpp
             src/pgsql/PostgresResultSetImpl.cpp
             src/pgsql/PostgresPreparedStatementImpl.cpp
-            )
-    target_compile_definitions(DB PRIVATE -DHAS_POSTGRES)
+    )
+    add_definitions(-DHAS_POSTGRES)
 endif ()
 
-target_include_directories(DB PUBLIC include/impl)
+target_include_directories(
+        DB
+        PRIVATE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/impl>
+        $<INSTALL_INTERFACE:include>
+)
 target_include_directories(
         DB
         PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/interface>
-        $<INSTALL_INTERFACE:include/interface>
+        $<INSTALL_INTERFACE:include>
 )
 
 if (WIN32)
@@ -127,4 +132,42 @@ set_target_properties(
 if (SESE_DB_BUILD_TEST)
     enable_testing()
     add_subdirectory(test)
-endif()
+endif ()
+
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+        ${PROJECT_SOURCE_DIR}/cmake/sese-db-config.cmake.in
+        ${PROJECT_BINARY_DIR}/sese-db-config.cmake
+        INSTALL_DESTINATION lib/cmake/sese-db
+)
+
+install(
+        TARGETS DB
+        EXPORT SeseDbTargets
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        PUBLIC_HEADER DESTINATION include
+)
+
+install(
+        DIRECTORY "${PROJECT_SOURCE_DIR}/include/interface/sese"
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+)
+
+install(
+        FILES "${PROJECT_BINARY_DIR}/sese-db-config.cmake"
+        DESTINATION lib/cmake/sese-db
+)
+
+install(
+        FILES "${PROJECT_BINARY_DIR}/sese-db-config.cmake"
+        DESTINATION debug/lib/cmake/sese-db
+)
+
+install(
+        EXPORT SeseDbTargets
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sese-db
+        NAMESPACE Sese::
+)

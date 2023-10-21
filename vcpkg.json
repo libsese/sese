@@ -1,11 +1,5 @@
 {
     "name": "sese-db",
-    "dependencies": [
-        {
-            "name": "gtest",
-            "version>=": "1.13.0"
-        }
-    ],
     "features": {
         "mysql": {
             "description": "add mysql and mariadb support",
