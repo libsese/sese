@@ -1,8 +1,12 @@
 import os
-import sys
+from ci.config import BuildType
 
 
-def main():
+def test_with(type):
+    os.system('ctest -C {} --extra-verbose'.format(BuildType.to_string(type)))
+
+
+def make_coverage_report():
     cov_dir = '{}/coverage'.format(os.getcwd())
     print('checking directory... {}'.format(cov_dir))
     if not os.path.exists(cov_dir):
@@ -10,8 +14,4 @@ def main():
         os.mkdir(cov_dir)
 
     print('process is running... gcovr')
-    sys.exit(os.system('gcovr'))
-
-
-if __name__ == '__main__':
-    main()
+    os.system('gcovr')
