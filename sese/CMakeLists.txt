@@ -522,18 +522,21 @@ set_target_properties(Core
 )
 
 target_link_libraries(Core PUBLIC
+        Plugin
+)
+
+target_link_libraries(Core PRIVATE
         OpenSSL::Crypto
         OpenSSL::SSL
         ZLIB::ZLIB
-        Plugin
 )
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
-        ${PROJECT_SOURCE_DIR}/cmake/SeseConfig.cmake.in
-        ${PROJECT_BINARY_DIR}/SeseConfig.cmake
-        INSTALL_DESTINATION lib/cmake/sese.core
+        ${PROJECT_SOURCE_DIR}/cmake/sese-config.cmake.in
+        ${PROJECT_BINARY_DIR}/sese-config.cmake
+        INSTALL_DESTINATION lib/cmake/sese-core
 )
 
 install(
@@ -553,17 +556,17 @@ install(
 )
 
 install(
-        FILES "${PROJECT_BINARY_DIR}/SeseConfig.cmake"
-        DESTINATION lib/cmake/sese
+        FILES "${PROJECT_BINARY_DIR}/sese-config.cmake"
+        DESTINATION lib/cmake/sese-core
 )
 
 install(
-        FILES "${PROJECT_BINARY_DIR}/SeseConfig.cmake"
-        DESTINATION debug/lib/cmake/sese
+        FILES "${PROJECT_BINARY_DIR}/sese-config.cmake"
+        DESTINATION debug/lib/cmake/sese-core
 )
 
 install(
         EXPORT SeseTargets
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sese
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sese-core
         NAMESPACE Sese::
 )
