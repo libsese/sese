@@ -4,42 +4,48 @@ on:
   push:
     branches:
       - main
-      - stable
   pull_request:
     branches:
       - main
   workflow_dispatch:
 
-env:
-  BUILD_TYPE: Release
-
 jobs:
-  build:
+  test:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
-      - name: Install Dependencies(pip)
-        run: pip install -r ${{github.workspace}}/scripts/requirements.txt
+      - name: Install Dependencies(pip-ci)
+        run: pip install -r ${{ github.workspace }}/ci/requirements.txt
+
+      - name: Install Dependencies(pip-scripts)
+        run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
+
+      - name: Check deps
+        working-directory: ${{ github.workspace }}
+        run: python3 -m ci.unix_check
 
       - name: Cache Vcpkg Dependencies
         uses: actions/cache@v3
         with:
-          path: ${{github.workspace}}/build/vcpkg_installed
+          path: ${{ github.workspace }}/build/vcpkg_installed
           key: ${{ runner.os }}-vcpkg-${{ hashFiles('**/vcpkg.json') }}
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DSESE_BUILD_TEST=ON -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake
+        working-directory: ${{ github.workspace }}
+        run: python3 -m ci.unix_config
 
       - name: Build
-        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} -- -j 4
+        working-directory: ${{ github.workspace }}
+        run: python3 -m ci.unix_build
 
       - name: Test
-        working-directory: ${{github.workspace}}/build
-        run: ctest -C ${{env.BUILD_TYPE}} --extra-verbose
+        working-directory: ${{ github.workspace }}
+        run: python3 -m ci.unix_test
