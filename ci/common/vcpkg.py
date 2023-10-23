@@ -8,6 +8,7 @@ vcpkg_windows_path = [
 ]
 
 vcpkg_unix_path = [
+    '/usr/local/share/vcpkg',
     '/usr/local/vcpkg',
     '/src/vcpkg'
 ]
