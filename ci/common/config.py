@@ -59,5 +59,5 @@ def config_with_coverage(build_type: BuildType, build_dir: str):
         -DCMAKE_BUILD_TYPE={} \
         -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic" \
         -DSESE_BUILD_TEST=ON \
-        -Bbuild'
+        -B{}'
         .format(path_to_vcpkg, BuildType.to_string(build_type), build_dir))
