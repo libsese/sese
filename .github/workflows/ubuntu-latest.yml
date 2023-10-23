@@ -35,7 +35,7 @@ jobs:
         run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
 
       - name: Check deps
-        working-directory: ${{ github.workspace }}/build
+        working-directory: ${{ github.workspace }}
         run: python3 -m ci.unix_check
 
 
@@ -46,15 +46,15 @@ jobs:
           key: ${{ runner.os }}-vcpkg-${{ hashFiles('**/vcpkg.json') }}
 
       - name: Configure CMake
-        working-directory: ${{ github.workspace }}/build
+        working-directory: ${{ github.workspace }}
         run: python3 -m ci.unix_config
 
       - name: Build
-        working-directory: ${{ github.workspace }}/build
+        working-directory: ${{ github.workspace }}
         run: python3 -m ci.unix_build
 
       - name: Test
-        working-directory: ${{ github.workspace }}/build
+        working-directory: ${{ github.workspace }}
         run: python3 -m ci.unix_test
 
   test-with-coverage:
