@@ -1,6 +1,5 @@
 import os.path
 
-
 vcpkg_windows_path = [
     'C:/vcpkg',
     'C:/src/vcpkg',

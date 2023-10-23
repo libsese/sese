@@ -1,5 +1,7 @@
 import os
-from vcpkg import find_vcpkg
+
+from ci.common.vcpkg import find_vcpkg
+
 
 def check_cmake():
     return os.system("cmake --version") == 0
@@ -11,6 +13,7 @@ def check_ctest():
 
 def check_gcov():
     return os.system("gcov --version") == 0
+
 
 def check_vcpkg():
     return find_vcpkg() != ''
