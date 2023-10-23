@@ -1,9 +1,10 @@
 import os
-from ci.config import BuildType
+
+from ci.common.config import BuildType
 
 
-def test_with(type):
-    os.system('ctest -C {} --extra-verbose'.format(BuildType.to_string(type)))
+def test_with(build_dir: str, build_type: BuildType):
+    os.system('cd {} && ctest -C {} --extra-verbose'.format(build_dir, BuildType.to_string(build_type)))
 
 
 def make_coverage_report():
