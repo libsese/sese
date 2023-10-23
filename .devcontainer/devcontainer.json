@@ -6,7 +6,10 @@
             "extensions": [
                 "ms-vscode.cmake-tools",
                 "ms-vscode.cpptools-extension-pack",
-                "llvm-vs-code-extensions.vscode-clangd"
+                "llvm-vs-code-extensions.vscode-clangd",
+                "matepek.vscode-catch2-test-adapter",
+                "ms-python.vscode-pylance",
+                "ms-python.python"
             ]
         }
     }

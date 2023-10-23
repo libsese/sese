@@ -4,6 +4,8 @@ lib
 output
 coverage
 CMakeSettings.json
+build
+build-*
 
 
 ### C++ template
