@@ -1,9 +1,15 @@
 # sese-db
-本项目为 [sese](https://github.com/shiinasama/sese) 的子项目（待整合）
 
-目前支持的数据库有 Sqlite、MariaDB、Mysql。
+This project is a part of [sese-core](https://github.com/libsese/sese-core) for now.
 
-## example
+## support database
+
+- ✅SQLite
+- ✅MySQL
+- ✅MariaDB
+- ✅PostgreSQL
+
+## example:
 
 ```c++
 #include <sese/db/DriverManager.h>
@@ -35,6 +41,12 @@ int main () {
 }
 ```
 
-如上所示 DriverInstance::getInstance 的第二个参数为数据库连接字符串。使用不同的数据库驱动时有不同的写法。
+## connection string
 
-其中 MySql 和 MariaDB 的连接字符串形式与上面一致。Sqlite 的连接字符串为文件的相对或绝对位置。
+- SQLite
+
+  > "${path to database file}"
+
+- MySQL、MariaDB、PostgreSQL
+
+  > "host={ host };port={ port };user={ user };pwd={ password };db={ database name || schema name };"
