@@ -39,13 +39,13 @@ for Windows:
 #ifdef SESE_PLATFORM_WINDOWS
     const std::string &getNativePath() const { return nativePath; }
 #else
-    const std::string &getNativePath() const { return unixPath; }
+    [[nodiscard]] const std::string &getNativePath() const { return unixPath; }
 #endif
 
-    const std::string &getUnixPath() const { return unixPath; }
+    [[nodiscard]] const std::string &getUnixPath() const { return unixPath; }
 
     /// \return 当前路径是否有效
-    bool isValid() const { return valid; }
+    [[nodiscard]] bool isValid() const { return valid; }
 
 protected:
 #ifdef SESE_PLATFORM_WINDOWS

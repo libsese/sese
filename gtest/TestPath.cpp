@@ -52,5 +52,20 @@ TEST(TestPath, WindowsParseUnixPath) {
 
 #else
 
+TEST(TestPath, UnixConstruct) {
+    using namespace sese::system;
+    auto path = Path("/usr/bin/ls");
+    EXPECT_TRUE(path.isValid());
+    EXPECT_EQ(path.getUnixPath(), "/usr/bin/ls");
+    EXPECT_EQ(path.getNativePath(), "/usr/bin/ls");
+}
+
+TEST(TestPath, UnixParse) {
+    using namespace sese::system;
+    auto path = Path::fromNativePath("/usr/bin/ls");
+    EXPECT_TRUE(path.isValid());
+    EXPECT_EQ(path.getUnixPath(), "/usr/bin/ls");
+    EXPECT_EQ(path.getNativePath(), "/usr/bin/ls");
+}
 
 #endif
