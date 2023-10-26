@@ -131,6 +131,8 @@ set(
 
 set(
         SYSTEM_SRC
+        system/CommandLine.cpp
+        system/CommandLine.h
         system/Environment.cpp
         system/Environment.h
         system/FileLocker.h

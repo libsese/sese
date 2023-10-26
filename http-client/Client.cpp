@@ -4,8 +4,8 @@
 #include <sese/io/File.h>
 #include <sese/util/Util.h>
 
-int main() {
-    sese::Initializer::getInitializer();
+int main(int argc, char **argv) {
+    sese::initCore(argc, argv);
 
     sese::service::v1::HttpClient client;
     client.setThreads(1);

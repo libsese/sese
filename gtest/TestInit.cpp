@@ -34,7 +34,7 @@ public:
 };
 
 TEST(TestInit, _0) {
-    sese::Initializer::getInitializer();
+    // sese::Initializer::getInitializer();
     sese::Initializer::addTask<Task1>();
     sese::Initializer::addTask(std::make_unique<Task2>());
 }

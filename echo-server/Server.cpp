@@ -44,8 +44,8 @@ public:
 
 MyIOCPServer server;
 
-int main() {
-    sese::Initializer::getInitializer();
+int main(int argc, char **argv) {
+    sese::initCore(argc, argv);
     auto address = sese::net::IPv4Address::any(8080);
     server.setThreads(2);
     server.setAddress(address);
