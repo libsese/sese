@@ -8,9 +8,9 @@
 
 #if defined(__linux__)
 
-#include "sese/native/Linux/event/EpollEvent.h"
-#include "sese/native/Linux/event/EpollEventLoop.h"
-#include "sese/native/Linux/event/EpollEventConvert.h"
+#include "sese/native/linux/event/EpollEvent.h"
+#include "sese/native/linux/event/EpollEventLoop.h"
+#include "sese/native/linux/event/EpollEventConvert.h"
 
 namespace sese::event {
 using Event = BaseEvent;
@@ -22,9 +22,9 @@ using EventConvert = EpollEventConvert;
 
 #if defined(_WIN32)
 
-#include "sese/native/Windows/event/WSAEvent.h"
-#include "sese/native/Windows/event/WSAEventLoop.h"
-#include "sese/native/Windows/event/WSAEventConvert.h"
+#include "sese/native/win/event/WSAEvent.h"
+#include "sese/native/win/event/WSAEventLoop.h"
+#include "sese/native/win/event/WSAEventConvert.h"
 
 namespace sese::event {
 using Event = BaseEvent;
@@ -36,8 +36,8 @@ using EventConvert = WSAEventConvert;
 
 #if defined(__APPLE__)
 
-#include "sese/native/Darwin/event/KqueueEvent.h"
-#include "sese/native/Darwin/event/KqueueEventLoop.h"
+#include "sese/native/darwin/event/KqueueEvent.h"
+#include "sese/native/darwin/event/KqueueEventLoop.h"
 
 namespace sese::event {
 using Event = BaseEvent;

@@ -7,7 +7,7 @@
 #pragma once
 
 #include <sese/event/BaseEventLoop.h>
-#include <sese/native/Darwin/event/KqueueEvent.h>
+#include <sese/native/darwin/event/KqueueEvent.h>
 
 #include <atomic>
 

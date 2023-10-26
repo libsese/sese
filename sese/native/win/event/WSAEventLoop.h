@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include <sese/native/Windows/event/WSAEvent.h>
-#include <sese/native/Windows/event/WSAEventConvert.h>
+#include <sese/native/win/event/WSAEvent.h>
+#include <sese/native/win/event/WSAEventConvert.h>
 #include <sese/event/BaseEventLoop.h>
 
 #include <atomic>

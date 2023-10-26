@@ -9,7 +9,7 @@
 #include <sese/Config.h>
 
 #if defined(SESE_PLATFORM_WINDOWS)
-#include <sese/native/Windows/service/iocp/NativeIOCPServer_V1.h>
+#include <sese/native/win/service/iocp/NativeIOCPServer_V1.h>
 #else
 #include <sese/service/iocp/IOCPServer_V1.h>
 #endif

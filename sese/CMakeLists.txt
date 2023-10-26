@@ -367,6 +367,21 @@ set(
         service/UserBalanceLoader.h
 )
 
+set(
+        UNIX_SRC
+        native/unix/config/UniReader.cpp
+        native/unix/net/Socket.cpp
+        native/unix/security/evp/MD5Context.cpp
+        native/unix/security/evp/SHA1Context.cpp
+        native/unix/security/evp/SHA256Context.cpp
+        native/unix/security/evp/SHA384Context.cpp
+        native/unix/security/evp/SHA512Context.cpp
+        native/unix/system/FileLocker.cpp
+        native/unix/system/Process.cpp
+        native/unix/system/SharedMemory.cpp
+        native/unix/thread/GlobalThreadPool.cpp
+)
+
 add_library(Core
         ${CONCURRENT_SRC}
         ${CONVERT_SRC}
@@ -408,37 +423,35 @@ target_include_directories(
         $<INSTALL_INTERFACE:include>
 )
 
-set(NATIVE_PATH "native/${CMAKE_SYSTEM_NAME}")
-target_sources(Core PRIVATE
-        ${NATIVE_PATH}/Config.h
-        ${NATIVE_PATH}/config/UniReader.cpp
-        ${NATIVE_PATH}/net/Socket.cpp
-        ${NATIVE_PATH}/security/evp/MD5Context.cpp
-        ${NATIVE_PATH}/security/evp/SHA1Context.cpp
-        ${NATIVE_PATH}/security/evp/SHA256Context.cpp
-        ${NATIVE_PATH}/security/evp/SHA384Context.cpp
-        ${NATIVE_PATH}/security/evp/SHA512Context.cpp
-        ${NATIVE_PATH}/system/FileLocker.cpp
-        ${NATIVE_PATH}/system/FileNotifier.cpp
-        ${NATIVE_PATH}/system/Process.cpp
-        ${NATIVE_PATH}/system/SharedMemory.cpp
-        ${NATIVE_PATH}/system/StackInfo.cpp
-        ${NATIVE_PATH}/thread/GlobalThreadPool.cpp
-)
-
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
     configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
 
     target_sources(Core PRIVATE ${DLL_INFO_RC})
     target_sources(Core PRIVATE
-            ${NATIVE_PATH}/event/WSAEvent.h
-            ${NATIVE_PATH}/event/WSAEventLoop.cpp
-            ${NATIVE_PATH}/event/WSAEventLoop.h
-            ${NATIVE_PATH}/event/WSAEventConvert.cpp
-            ${NATIVE_PATH}/event/WSAEventConvert.h
-            ${NATIVE_PATH}/service/iocp/NativeIOCPServer_V1.cpp
-            ${NATIVE_PATH}/service/iocp/NativeIOCPServer_V1.h
+            native/win/event/WSAEvent.h
+            native/win/event/WSAEventLoop.cpp
+            native/win/event/WSAEventLoop.h
+            native/win/event/WSAEventConvert.cpp
+            native/win/event/WSAEventConvert.h
+            native/win/service/iocp/NativeIOCPServer_V1.cpp
+            native/win/service/iocp/NativeIOCPServer_V1.h
+            native/win/system/FileNotifier.cpp
+            native/win/system/StackInfo.cpp
+    )
+    target_sources(Core PRIVATE
+            native/win/Config.h
+            native/win/config/UniReader.cpp
+            native/win/net/Socket.cpp
+            native/win/security/evp/MD5Context.cpp
+            native/win/security/evp/SHA1Context.cpp
+            native/win/security/evp/SHA256Context.cpp
+            native/win/security/evp/SHA384Context.cpp
+            native/win/security/evp/SHA512Context.cpp
+            native/win/system/FileLocker.cpp
+            native/win/system/Process.cpp
+            native/win/system/SharedMemory.cpp
+            native/win/thread/GlobalThreadPool.cpp
     )
 
     if (${MSVC})
@@ -480,11 +493,17 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
     target_sources(Core PRIVATE
-            ${NATIVE_PATH}/event/EpollEvent.h
-            ${NATIVE_PATH}/event/EpollEventLoop.cpp
-            ${NATIVE_PATH}/event/EpollEventLoop.h
-            ${NATIVE_PATH}/event/EpollEventConvert.cpp
-            ${NATIVE_PATH}/event/EpollEventConvert.h
+            native/linux/event/EpollEvent.h
+            native/linux/event/EpollEventLoop.cpp
+            native/linux/event/EpollEventLoop.h
+            native/linux/event/EpollEventConvert.cpp
+            native/linux/event/EpollEventConvert.h
+    )
+    target_sources(Core PRIVATE ${UNIX_SRC})
+    target_sources(Core PRIVATE
+            native/linux/Config.h
+            native/linux/system/FileNotifier.cpp
+            native/linux/system/StackInfo.cpp
     )
 
     target_compile_options(Plugin PUBLIC "-fPIC")
@@ -504,9 +523,15 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_compile_options(Plugin PUBLIC "-fPIC")
 
     target_sources(Core PRIVATE
-            ${NATIVE_PATH}/event/KqueueEvent.h
-            ${NATIVE_PATH}/event/KqueueEventLoop.cpp
-            ${NATIVE_PATH}/event/KqueueEventLoop.h
+            native/darwin/event/KqueueEvent.h
+            native/darwin/event/KqueueEventLoop.cpp
+            native/darwin/event/KqueueEventLoop.h
+    )
+    target_sources(Core PRIVATE ${UNIX_SRC})
+    target_sources(Core PRIVATE
+            native/darwin/Config.h
+            native/darwin/system/FileNotifier.cpp
+            native/darwin/system/StackInfo.cpp
     )
 
     target_compile_options(Core PRIVATE "-fno-exceptions")

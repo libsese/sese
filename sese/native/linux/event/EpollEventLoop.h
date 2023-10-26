@@ -8,8 +8,8 @@
 
 #include "sese/event/BaseEvent.h"
 #include "sese/event/BaseEventLoop.h"
-#include "sese/native/Linux/event/EpollEvent.h"
-#include "sese/native/Linux/event/EpollEventConvert.h"
+#include "sese/native/linux/event/EpollEvent.h"
+#include "sese/native/linux/event/EpollEventConvert.h"
 
 namespace sese::event {
 /// epoll 事件循环
