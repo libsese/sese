@@ -380,6 +380,7 @@ set(
         native/unix/security/evp/SHA384Context.cpp
         native/unix/security/evp/SHA512Context.cpp
         native/unix/system/FileLocker.cpp
+        native/unix/system/Path.cpp
         native/unix/system/Process.cpp
         native/unix/system/SharedMemory.cpp
         native/unix/thread/GlobalThreadPool.cpp
