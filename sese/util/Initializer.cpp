@@ -2,6 +2,7 @@
 #include "sese/record/Logger.h"
 #include "sese/util/Initializer.h"
 #include "sese/security/SecurityConfig.h"
+#include "sese/system/CommandLine.h"
 #include "sese/thread/Thread.h"
 
 #include <memory>
@@ -10,59 +11,60 @@
 using sese::Initializer;
 using sese::InitiateTask;
 // using sese::TestInitiateTask;
+using sese::system::CommandLineInitiateTask;
 
-static Initializer initializer;
+static Initializer gInitializer;
 
-[[maybe_unused]] void *Initializer::getInitializer() noexcept { return &initializer; }
+[[maybe_unused]] void *Initializer::getInitializer() noexcept {
+    // 不会出错，不需要判断
+    // GCOVR_EXCL_START
+    addTask(std::make_shared<ThreadInitiateTask>());
+    addTask(std::make_shared<record::LoggerInitiateTask>());
+#ifdef _WIN32
+    addTask(std::make_shared<net::SocketInitiateTask>());
+#endif
+    addTask(std::make_shared<security::SecurityInitTask>());
+    // GCOVR_EXCL_STOP
+    return &gInitializer;
+}
 
-InitiateTask::InitiateTask(std::string name) : name(std::move(name)) {
+InitiateTask::InitiateTask(const std::string &name) : name(name) {
 }
 
 const std::string &sese::InitiateTask::getName() const {
     return name;
 }
 
-Initializer::Initializer() {
-    // 不会出错，不需要判断
-    // GCOVR_EXCL_START
-    buildInLoadTask(std::make_shared<ThreadInitiateTask>());
-    buildInLoadTask(std::make_shared<record::LoggerInitiateTask>());
-    // 弃用
-    // buildInLoadTask(std::make_shared<EncodingConverterInitiateTask>());
-    // buildInLoadTask(std::make_shared<TestInitiateTask>());
-#ifdef _WIN32
-    buildInLoadTask(std::make_shared<sese::net::SocketInitiateTask>());
-#endif
-    buildInLoadTask(std::make_shared<sese::security::SecurityInitTask>());
-    // GCOVR_EXCL_STOP
-}
-#undef INIT
-
 Initializer::~Initializer() {
     /// 保证初始化器按顺序销毁
     while (!tasks.empty()) {
-        InitiateTask::Ptr &top = tasks.top();
-        buildInUnloadTask(top);
+        auto &&top = tasks.top();
+        auto rt = top->destroy();
+        if (rt != 0) {
+            printf("Unload failed: %32s Exit code %d", top->getName().c_str(), rt);
+        }
+        tasks.pop();
     }
 }
 
-void Initializer::buildInLoadTask(InitiateTask::Ptr &&task) noexcept {
+void Initializer::addTask(const InitiateTask::Ptr &task) noexcept {
     auto rt = task->init();
     if (rt != 0) {
         printf("Load failed: %32s Exit code %d", task->getName().c_str(), rt);
     } else {
-        tasks.emplace(task);
+        gInitializer.tasks.emplace(task);
     }
 }
 
-void Initializer::buildInUnloadTask(const InitiateTask::Ptr &task) noexcept {
-    auto rt = task->destroy();
-    if (rt != 0) {
-        printf("Unload failed: %32s Exit code %d", task->getName().c_str(), rt);
-    }
-    tasks.pop();
-}
-
-void Initializer::addTask(InitiateTask::Ptr task) noexcept {
-    initializer.buildInLoadTask(std::move(task));
+void sese::initCore(const int argc, const char *const *argv) noexcept {
+    // 不会出错，不需要判断
+    // GCOVR_EXCL_START
+    Initializer::addTask(std::make_shared<system::CommandLineInitiateTask>(argc, argv));
+    Initializer::addTask(std::make_shared<ThreadInitiateTask>());
+    Initializer::addTask(std::make_shared<record::LoggerInitiateTask>());
+#ifdef _WIN32
+    Initializer::addTask(std::make_shared<net::SocketInitiateTask>());
+#endif
+    Initializer::addTask(std::make_shared<security::SecurityInitTask>());
+    // GCOVR_EXCL_STOP
 }

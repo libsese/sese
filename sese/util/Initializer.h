@@ -28,7 +28,7 @@ public:
      */
     using Ptr = std::shared_ptr<InitiateTask>;
 
-    explicit InitiateTask(std::string name);
+    explicit InitiateTask(const std::string &name);
     virtual ~InitiateTask() = default;
 
     virtual int32_t init() noexcept = 0;
@@ -43,20 +43,15 @@ private:
 /// 初始化器
 class API Initializer {
 public:
-    Initializer();
     virtual ~Initializer();
 
 private:
-    void buildInLoadTask(InitiateTask::Ptr &&task) noexcept;
-    void buildInUnloadTask(const InitiateTask::Ptr &task) noexcept;
-
     std::stack<InitiateTask::Ptr> tasks;
 
-    // 用户级方法
 public:
     /// 添加任务至初始化器
     /// \param task 初始化任务
-    static void addTask(InitiateTask::Ptr task) noexcept;
+    static void addTask(const InitiateTask::Ptr &task) noexcept;
 
     template<class T>
     static void addTask() noexcept {
@@ -66,7 +61,12 @@ public:
     /// 获取初始化器指针
     /// \note 将 sese 作为使用静态链接库使用时，请务必使用该函数手动进行初始化
     /// \return 初始化指针，此返回值无用
-    [[maybe_unused]] static void *getInitializer() noexcept;
+    [[maybe_unused]] SESE_DEPRECATED static void *getInitializer() noexcept;
 };
+
+/// 初始化 sese-core
+/// \param argc 参数个数
+/// \param argv 参数数组
+[[maybe_unused]] void initCore(const int argc, const char *const *argv) noexcept;
 
 } // namespace sese
