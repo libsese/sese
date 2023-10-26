@@ -57,6 +57,7 @@ add_executable(
         TestMessageDigest.cpp
         TestNetworkUtil.cpp
         TestOutputUtil.cpp
+        TestPath.cpp
         TestPercentConverter.cpp
         TestPlugin/TestPlugin.cpp
         TestProcess.cpp

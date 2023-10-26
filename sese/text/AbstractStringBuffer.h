@@ -47,7 +47,6 @@ protected:
      */
     void expansion(size_t newSize) noexcept;
 
-    void append(const char *data, size_t len);
 
     bool insertAt(int index, const char *data, size_t len);
 
@@ -58,6 +57,7 @@ public:
     virtual void append(const std::string_view &str) noexcept;
     virtual void append(const String &str) noexcept;
     virtual void append(const StringView &view) noexcept;
+    virtual void append(const char *data, size_t len) noexcept;
     [[nodiscard]] virtual size_t length() const noexcept { return this->len; }
     [[nodiscard]] virtual size_t size() const noexcept { return this->cap; }
     [[nodiscard]] virtual bool empty() const noexcept { return 0 == this->len; };

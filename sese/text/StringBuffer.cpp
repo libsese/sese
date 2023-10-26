@@ -40,6 +40,11 @@ void sese::text::StringBuffer::append(const StringView &str) noexcept {
     AbstractStringBuffer::append(str);
 }
 
+void sese::text::StringBuffer::append(const char *data, size_t length) noexcept {
+    Locker locker(mutex);
+    AbstractStringBuffer::append(data, length);
+}
+
 void sese::text::StringBuffer::clear() noexcept {
     Locker locker(mutex);
     AbstractStringBuffer::clear();

@@ -141,6 +141,7 @@ set(
         system/LibraryLoader.h
         system/NetworkUtil.cpp
         system/NetworkUtil.h
+        system/Path.h
         system/Process.h
         system/SharedMemory.h
         system/StackInfo.h
@@ -451,6 +452,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
             native/win/security/evp/SHA384Context.cpp
             native/win/security/evp/SHA512Context.cpp
             native/win/system/FileLocker.cpp
+            native/win/system/Path.cpp
             native/win/system/Process.cpp
             native/win/system/SharedMemory.cpp
             native/win/thread/GlobalThreadPool.cpp
