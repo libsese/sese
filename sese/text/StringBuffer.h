@@ -35,6 +35,7 @@ public:
     void append(const std::string_view &str) noexcept override;
     void append(const String &str) noexcept override;
     void append(const StringView &str) noexcept override;
+    void append(const char *data, size_t length) noexcept override;
     [[nodiscard]] size_t length() noexcept;
     [[nodiscard]] size_t size() noexcept;
     [[nodiscard]] bool empty() noexcept;

@@ -65,7 +65,7 @@ std::vector<std::string> AbstractStringBuffer::split(const std::string &text, co
     return v;
 }
 
-void AbstractStringBuffer::append(const char *data, size_t l) {
+void AbstractStringBuffer::append(const char *data, size_t l) noexcept {
     if (l > cap - this->len) {
         // 触发扩容
         auto newSize = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
