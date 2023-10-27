@@ -5,12 +5,12 @@
 
 using namespace sese::system;
 
-Path::Path(const std::string &unixPath) noexcept {
+Path::Path(const std::string_view &unixPath) noexcept {
     Path::unixPath = unixPath;
 
     // 带盘符的绝对路径
     if (!Path::unixPath.empty() && Path::unixPath.at(0) == '/') {
-        auto pos = unixPath.find('/', 1);
+        auto pos = Path::unixPath.find('/', 1);
         if (pos == std::string::npos) {
             valid = false;
             return;
@@ -28,6 +28,9 @@ Path::Path(const std::string &unixPath) noexcept {
         nativePath = unixPath;
         valid = true;
     }
+}
+
+Path::Path(const char *unixPath) noexcept : Path(std::string_view(unixPath)) {
 }
 
 Path Path::fromNativePath(const std::string &nativePath) noexcept {

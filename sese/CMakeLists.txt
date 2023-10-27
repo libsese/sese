@@ -137,7 +137,6 @@ set(
         system/Environment.h
         system/FileLocker.h
         system/FileNotifier.h
-        system/LibraryLoader.cpp
         system/LibraryLoader.h
         system/NetworkUtil.cpp
         system/NetworkUtil.h
@@ -380,6 +379,7 @@ set(
         native/unix/security/evp/SHA384Context.cpp
         native/unix/security/evp/SHA512Context.cpp
         native/unix/system/FileLocker.cpp
+        native/unix/system/LibraryLoader.cpp
         native/unix/system/Path.cpp
         native/unix/system/Process.cpp
         native/unix/system/SharedMemory.cpp
@@ -453,6 +453,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
             native/win/security/evp/SHA384Context.cpp
             native/win/security/evp/SHA512Context.cpp
             native/win/system/FileLocker.cpp
+            native/win/system/LibraryLoader.cpp
             native/win/system/Path.cpp
             native/win/system/Process.cpp
             native/win/system/SharedMemory.cpp

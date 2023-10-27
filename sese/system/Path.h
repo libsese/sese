@@ -26,7 +26,9 @@ for Windows:
      *  \endverbatim
      *  \param unixPath UNIX-LIKE 格式路径
      */
-    Path(const std::string &unixPath) noexcept;
+    Path(const char *unixPath) noexcept;
+
+    explicit Path(const std::string_view &unixPath) noexcept;
 
     Path() = default;
 

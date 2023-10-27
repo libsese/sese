@@ -50,29 +50,10 @@ int32_t FileStream::flush() {
     return fflush(file);
 }
 
-//bool sese::FileStream::open(const std::string &fileName, const char *mode) noexcept {
-//#ifdef _WIN32
-//    auto rt = fopen_s(&file, fileName.c_str(), mode);
-//    if (rt != 0) {
-//        file = nullptr;
-//        return false;
-//    } else {
-//        return true;
-//    }
-//#else
-//    file = fopen(fileName.c_str(), mode);
-//    if (file) {
-//        return true;
-//    } else {
-//        return false;
-//    }
-//#endif
-//}
-
-FileStream::Ptr FileStream::create(const std::string &fileName, const char *mode) noexcept {
+FileStream::Ptr FileStream::create(const std::string &filePath, const char *mode) noexcept {
 #ifdef _WIN32
     FILE *file = nullptr;
-    if (fopen_s(&file, fileName.c_str(), mode) != 0) {
+    if (fopen_s(&file, filePath.c_str(), mode) != 0) {
         return nullptr;
     } else {
         auto stream = new FileStream;
@@ -81,7 +62,7 @@ FileStream::Ptr FileStream::create(const std::string &fileName, const char *mode
     }
 #else
     FILE *file = nullptr;
-    file = fopen(fileName.c_str(), mode);
+    file = fopen(filePath.c_str(), mode);
     if (file) {
         auto stream = new FileStream();
         stream->file = file;
@@ -90,6 +71,10 @@ FileStream::Ptr FileStream::create(const std::string &fileName, const char *mode
         return nullptr;
     }
 #endif
+}
+
+FileStream::Ptr FileStream::createWithPath(const system::Path &path, const char *mode) noexcept {
+    return FileStream::create(path.getNativePath(), mode);
 }
 
 int64_t FileStream::peek(void *buffer, size_t length) {
