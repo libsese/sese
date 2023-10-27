@@ -8,7 +8,7 @@ using getFactoryFunc = sese::plugin::ClassFactory *();
 #define STR2(R) STR1(R)
 
 sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) noexcept {
-    auto obj = LibraryLoader::open(path);
+    auto obj = LibraryObject::create(path);
     if (!obj) {
         return nullptr;
     }
@@ -35,6 +35,10 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
 
 #undef STR2
 #undef STR1
+
+sese::plugin::Module::Ptr sese::plugin::Module::openWithPath(const system::Path &path) noexcept {
+    return sese::plugin::Module::open(path.getNativePath());
+}
 
 sese::plugin::BaseClass::Ptr sese::plugin::Module::createClassWithId(const std::string &id) noexcept {
     auto pFactory = (ClassFactory *) this->factory;

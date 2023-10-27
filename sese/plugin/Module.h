@@ -20,12 +20,16 @@ class API Module {
 public:
     using Ptr = std::unique_ptr<Module>;
     using LibraryObject = sese::system::LibraryObject;
-    using LibraryLoader = sese::system::LibraryLoader;
 
     /// 尝试从动态链接库中加载一个模块
     /// \param path 动态链接库路径
     /// \retval nullptr 加载错误
     static Module::Ptr open(const std::string &path) noexcept;
+
+    /// 尝试从动态链接库中加载一个模块
+    /// \param path 动态链接库路径
+    /// \retval nullptr 加载错误
+    static Module::Ptr openWithPath(const system::Path &path) noexcept;
 
     /// 获取模块名称
     /// \return 模块名称

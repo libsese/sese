@@ -9,6 +9,7 @@
 #include "sese/io/Stream.h"
 #include "sese/io/Closeable.h"
 #include "sese/io/PeekableStream.h"
+#include "sese/system/Path.h"
 
 #define BINARY_READ_EXISTED_W "rb,ccs=utf-8"
 #define BINARY_WRITE_CREATE_TRUNC_W "wb,ccs=utf-8"
@@ -42,11 +43,18 @@ public:
     using Ptr = std::shared_ptr<FileStream>;
 
     /// 打开一个文件流
-    /// \param fileName 文件名称
+    /// \param filePath 文件路径
     /// \param mode 打开模式
     /// \retval nullptr 打开失败
     /// \retval 文件流对象
-    static FileStream::Ptr create(const std::string &fileName, const char *mode) noexcept;
+    static FileStream::Ptr create(const std::string &filePath, const char *mode) noexcept;
+
+    /// 以 UNIX-LIKE 风格打开一个文件
+    /// \param path UNIX-LIKE 路径
+    /// \param mode 打开模式
+    /// \retval nullptr 打开失败
+    static FileStream::Ptr createWithPath(const system::Path &path, const char *mode) noexcept;
+
     ~FileStream() override = default;
 
     int64_t read(void *buffer, size_t length) override;

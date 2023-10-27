@@ -14,7 +14,7 @@ TEST(TestLibraryLoader, _0) {
     const char *libName = "libstdc++.6.dylib";
 #endif
     sese::record::LogHelper::i("loading lib \"%s\"", libName);
-    auto object = sese::system::LibraryLoader::open(libName);
+    auto object = sese::system::LibraryObject::create(libName);
     ASSERT_NE(object, nullptr);
     auto sin = (Func *) object->findFunctionByName("sin");
     ASSERT_NE(sin, nullptr);

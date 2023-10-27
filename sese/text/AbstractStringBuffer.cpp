@@ -77,23 +77,23 @@ void AbstractStringBuffer::append(const char *data, size_t l) noexcept {
 
 void AbstractStringBuffer::append(const char *str) noexcept {
     auto l = strlen(str);
-    append(str, l);
+    AbstractStringBuffer::append(str, l);
 }
 
 void AbstractStringBuffer::append(const std::string &str) noexcept {
-    append(str.data(), str.length());
+    AbstractStringBuffer::append(str.data(), str.length());
 }
 
 void AbstractStringBuffer::append(const std::string_view &str) noexcept {
-    append(str.data(), str.length());
+    AbstractStringBuffer::append(str.data(), str.length());
 }
 
 void AbstractStringBuffer::append(const String &str) noexcept {
-    append(((StringView *) &str)->data(), str.len());
+    AbstractStringBuffer::append(((StringView *) &str)->data(), str.len());
 }
 
 void AbstractStringBuffer::append(const StringView &view) noexcept {
-    append(view.data(), view.len());
+    AbstractStringBuffer::append(view.data(), view.len());
 }
 
 void AbstractStringBuffer::expansion(size_t newSize) noexcept {
@@ -249,7 +249,7 @@ void AbstractStringBuffer::trim() noexcept {
 }
 
 void AbstractStringBuffer::append(char ch) noexcept {
-    append(&ch, 1);
+    AbstractStringBuffer::append(&ch, 1);
 }
 
 } // namespace sese::text
