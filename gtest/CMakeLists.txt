@@ -79,6 +79,7 @@ add_executable(
         TestUniReader.cpp
         TestUtil.cpp
         TestUuid.cpp
+        TestVersion.cpp
         TestWebsocketService.cpp
         TestXML.cpp
         TestYaml.cpp

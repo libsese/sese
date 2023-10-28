@@ -307,6 +307,8 @@ set(
         util/Uuid.h
         util/UuidBuilder.cpp
         util/UuidBuilder.h
+        util/Version.cpp
+        util/Version.h
 )
 
 set(
