@@ -32,7 +32,7 @@ public:
     Header(const std::initializer_list<KeyValueType> &initializerList) noexcept;
     virtual ~Header() = default;
 
-    Header *set(const std::string &key, const std::string &value) noexcept;
+    void set(const std::string &key, const std::string &value) noexcept;
     const std::string &get(const std::string &key, const std::string &defaultValue) noexcept;
 #if SESE_CXX_STANDARD > 201700L
     std::string_view getView(const std::string &key, const std::string &defaultValue) noexcept;
