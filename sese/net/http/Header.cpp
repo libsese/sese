@@ -18,11 +18,10 @@ Header::Header(const std::initializer_list<KeyValueType> &initializerList) noexc
 #define XX ::tolower
 #endif
 
-Header *Header::set(const std::string &key, const std::string &value) noexcept {
+void Header::set(const std::string &key, const std::string &value) noexcept {
     auto temp = key;
     std::transform(temp.begin(), temp.end(), temp.begin(), XX);
     headers[temp] = value;
-    return this;
 }
 
 const std::string &Header::get(const std::string &key, const std::string &defaultValue) noexcept {
