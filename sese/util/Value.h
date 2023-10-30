@@ -113,7 +113,14 @@ public:
         using ReverseIterator = Raw::reverse_iterator;
         using ConstReverseIterator = Raw::const_reverse_iterator;
 
+        Dict() = default;
         ~Dict();
+        // move constructor
+        Dict(Dict &&other) noexcept;
+        Dict &operator=(Dict &&other) noexcept;
+        // copy constructor
+        Dict(const Dict &other) = delete;
+        Dict &operator=(const Dict &other) = delete;
 
         [[nodiscard]] bool empty() const;
         [[nodiscard]] size_t size() const;
@@ -169,14 +176,23 @@ public:
 
     Value() = default;
     explicit Value(Type type);
+    /// bool
     explicit Value(bool value);
+    /// int
     explicit Value(int value);
+    /// double
     explicit Value(double value);
+    /// string
     explicit Value(const char *value);
+    /// blob
     explicit Value(const char *bytes, size_t length);
+    /// string
     explicit Value(String &&value) noexcept;
+    /// blob
     explicit Value(Blob &&value);
+    /// list
     explicit Value(List &&value);
+    /// dict
     explicit Value(Dict &&value);
 
     static Value list();
