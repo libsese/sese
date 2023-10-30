@@ -41,16 +41,16 @@ Value::Value(bool value) : data(value) {}
 Value::Value(int value) : data(value) {}
 Value::Value(double value) : data(value) {}
 Value::Value(const char *value) : Value(std::string(value)) {}
-Value::Value(const String &value) : data(value) {}
-Value::Value(const Blob &value) : data(value) {}
-Value::Value(const char *value, size_t length) {
+Value::Value(const char *bytes, size_t length) {
     auto vector = std::vector<uint8_t>();
     vector.reserve(length);
-    vector.insert(vector.end(), value, value + length);
+    vector.insert(vector.end(), bytes, bytes + length);
     data.emplace<Blob>(std::move(vector));
 }
-Value::Value(List &&value) : data(value) {}
-Value::Value(Dict &&value) : data(value) {}
+Value::Value(String &&value) noexcept : data(std::move(value)) {}
+Value::Value(Blob &&value) : data(std::move(value)) {}
+Value::Value(List &&value) : data(std::move(value)) {}
+Value::Value(Dict &&value) : data(std::move(value)) {}
 
 Value Value::list() {
     return Value(Type::List);
@@ -103,16 +103,6 @@ std::optional<bool> Value::getIfBool() const {
         return std::get<int>(data) != 0;
     } else if (isDouble()) {
         return std::get<double>(data) != 0.0;
-    } else if (isString()) {
-        auto t = sese::strcmpDoNotCase(std::get<String>(data).c_str(), "true") == 0;
-        if (t) {
-            return t;
-        }
-        auto f = sese::strcmpDoNotCase(std::get<String>(data).c_str(), "false") == 0;
-        if (f) {
-            return f;
-        }
-        return std::nullopt;
     }
     return std::nullopt;
 }
@@ -186,6 +176,27 @@ const Value::Blob &Value::getBlob() const {
     return std::get<Blob>(data);
 }
 
+const Value::List &Value::getList() const {
+    assert(isList());
+    return std::get<List>(data);
+}
+
+Value::List &Value::getList() {
+    assert(isList());
+    return std::get<List>(data);
+}
+
+
+const Value::Dict &Value::getDict() const {
+    assert(isDict());
+    return std::get<Dict>(data);
+}
+
+Value::Dict &Value::getDict() {
+    assert(isDict());
+    return std::get<Dict>(data);
+}
+
 bool Value::operator==(const sese::Value &rhs) const {
     if (getType() != rhs.getType()) {
         return false;
@@ -250,16 +261,16 @@ size_t List::erase(const sese::Value &value) {
     return count;
 }
 
-List::Iterator List::erase(Iterator it) { return vector.erase(std::move(it)); }
+List::Iterator List::erase(Iterator it) { return vector.erase(it); }
 
-List::ConstIterator List::erase(ConstIterator it) { return vector.erase(std::move(it)); }
+List::ConstIterator List::erase(ConstIterator it) { return vector.erase(it); }
 
 List::Iterator List::erase(Iterator first, Iterator last) {
-    return vector.erase(std::move(first), std::move(last));
+    return vector.erase(first, last);
 }
 
 List::ConstIterator List::erase(ConstIterator first, ConstIterator last) {
-    return vector.erase(std::move(first), std::move(last));
+    return vector.erase(first, last);
 }
 
 List::Iterator List::begin() { return vector.begin(); }
@@ -302,7 +313,7 @@ Value &List::back() {
     return vector.back();
 }
 
-void List::append(Value &&value) & { vector.push_back(value); }
+void List::append(Value &&value) & { vector.emplace_back(std::move(value)); }
 
 void List::append(bool value) & { vector.emplace_back(value); }
 
@@ -312,11 +323,11 @@ void List::append(double value) & { vector.emplace_back(value); }
 
 void List::append(const char *value) & { vector.emplace_back(value); }
 
-void List::append(const String &value) & { vector.emplace_back(value); }
+void List::append(String &&value) & { vector.emplace_back(std::move(value)); }
 
-void List::append(const Blob &value) & { vector.emplace_back(value); }
+void List::append(const char *bytes, size_t length) & { vector.emplace_back(bytes, length); }
 
-void List::append(const char *value, size_t length) & { vector.emplace_back(value, length); }
+void List::append(Blob &&value) & { vector.emplace_back(std::move(value)); }
 
 void List::append(List &&value) & { vector.emplace_back(std::move(value)); }
 
@@ -347,18 +358,18 @@ List &&List::append(const char *value) && {
     return std::move(*this);
 }
 
-List &&List::append(const String &value) && {
-    vector.emplace_back(value);
+List &&List::append(String &&value) && {
+    vector.emplace_back(std::move(value));
     return std::move(*this);
 }
 
-List &&List::append(const Blob &value) && {
-    vector.emplace_back(value);
+List &&List::append(Blob &&value) && {
+    vector.emplace_back(std::move(value));
     return std::move(*this);
 }
 
-List &&List::append(const char *value, size_t length) && {
-    vector.emplace_back(value, length);
+List &&List::append(const char *bytes, size_t length) && {
+    vector.emplace_back(bytes, length);
     return std::move(*this);
 }
 
@@ -373,7 +384,11 @@ List &&List::append(Dict &&value) && {
 }
 
 List::Iterator List::insert(sese::Value::List::Iterator it, sese::Value &&value) {
-    return vector.insert(std::move(it), std::move(value));
+    return vector.insert(it, std::move(value));
+}
+
+Dict::~Dict() {
+    clear();
 }
 
 bool Dict::empty() const {
@@ -385,6 +400,9 @@ size_t Dict::size() const {
 }
 
 void Dict::clear() {
+    for (auto &it: map) {
+        delete it.second;
+    }
     map.clear();
 }
 
@@ -413,11 +431,13 @@ Dict::ReverseIterator Dict::rend() { return map.rend(); }
 Dict::ConstReverseIterator Dict::rend() const { return map.rend(); }
 
 Dict::Iterator Dict::erase(Dict::Iterator it) {
-    return map.erase(std::move(it));
+    delete it->second;
+    return map.erase(it);
 }
 
 Dict::Iterator Dict::erase(Dict::ConstIterator it) {
-    return map.erase(std::move(it));
+    delete it->second;
+    return map.erase(it);
 }
 
 Value *Dict::find(const Value::String &key) {
@@ -425,7 +445,7 @@ Value *Dict::find(const Value::String &key) {
     if (it == map.end()) {
         return nullptr;
     }
-    return it->second.get();
+    return it->second;
 }
 
 const Value *Dict::find(const Value::String &key) const {
@@ -433,96 +453,96 @@ const Value *Dict::find(const Value::String &key) const {
     if (it == map.end()) {
         return nullptr;
     }
-    return it->second.get();
+    return it->second;
 }
 
 void Dict::set(const Value::String &key, Value &&value) & {
-    //map[key] = std::make_unique<Value>(std::move(value));
+    map[key] = new Value(std::move(value));
 }
 
 void Dict::set(const Value::String &key, bool value) & {
-    //map[key] = std::make_unique<Value>(value);
+    map[key] = new Value(value);
 }
 
 void Dict::set(const Value::String &key, int value) & {
-    //map[key] = std::make_unique<Value>(value);
+    map[key] = new Value(value);
 }
 
 void Dict::set(const Value::String &key, double value) & {
-    //map[key] = std::make_unique<Value>(value);
+    map[key] = new Value(value);
 }
 
 void Dict::set(const Value::String &key, const char *value) & {
-    //map[key] = std::make_unique<Value>(value);
+    map[key] = new Value(value);
 }
 
-void Dict::set(const Value::String &key, const String &value) & {
-    //map[key] = std::make_unique<Value>(value);
+void Dict::set(const Value::String &key, String &&value) & {
+    map[key] = new Value(std::move(value));
 }
 
-void Dict::set(const Value::String &key, const Blob &value) & {
-    //map[key] = std::make_unique<Value>(value);
+void Dict::set(const Value::String &key, Blob &&value) & {
+    map[key] = new Value(std::move(value));
 }
 
 void Dict::set(const Value::String &key, const char *value, size_t length) & {
-    //map[key] = std::make_unique<Value>(value, length);
+    map[key] = new Value(value, length);
 }
 
 void Dict::set(const Value::String &key, List &&value) & {
-    //map[key] = std::make_unique<Value>(std::move(value));
+    map[key] = new Value(std::move(value));
 }
 
 void Dict::set(const Value::String &key, Dict &&value) & {
-    //map[key] = std::make_unique<Value>(std::move(value));
+    map[key] = new Value(std::move(value));
 }
 
 Dict &&Dict::set(const Value::String &key, Value &&value) && {
-    //map[key] = std::make_unique<Value>(std::move(value));
+    map[key] = new Value(std::move(value));
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, bool value) && {
-    //map[key] = std::make_unique<Value>(value);
+    map[key] = new Value(value);
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, int value) && {
-    //map[key] = std::make_unique<Value>(value);
+    map[key] = new Value(value);
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, double value) && {
-    //map[key] = std::make_unique<Value>(value);
+    map[key] = new Value(value);
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, const char *value) && {
-    //map[key] = std::make_unique<Value>(value);
+    map[key] = new Value(value);
     return std::move(*this);
 }
 
-Dict &&Dict::set(const Value::String &key, const String &value) && {
-    //map[key] = std::make_unique<Value>(value);
+Dict &&Dict::set(const Value::String &key, String &&value) && {
+    map[key] = new Value(std::move(value));
     return std::move(*this);
 }
 
-Dict &&Dict::set(const Value::String &key, const Blob &value) && {
-    //map[key] = std::make_unique<Value>(value);
+Dict &&Dict::set(const Value::String &key, Blob &&value) && {
+    map[key] = new Value(std::move(value));
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, const char *value, size_t length) && {
-    //map[key] = std::make_unique<Value>(value, length);
-    return std::move(*this);
+     map[key] = new Value(value, length);
+     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, List &&value) && {
-    //map[key] = std::make_unique<Value>(std::move(value));
+    map[key] = new Value(std::move(value));
     return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, Dict &&value) && {
-    //map[key] = std::make_unique<Value>(std::move(value));
+    map[key] = new Value(std::move(value));
     return std::move(*this);
 }
 

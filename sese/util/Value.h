@@ -6,6 +6,7 @@
 #pragma once
 
 #include <map>
+#include <span>
 #include <variant>
 #include <vector>
 #include <optional>
@@ -81,9 +82,9 @@ public:
         void append(int value) &;
         void append(double value) &;
         void append(const char *value) &;
-        void append(const String &value) &;
-        void append(const Blob &value) &;
-        void append(const char *value, size_t length) &;
+        void append(String &&value) &;
+        void append(Blob &&value) &;
+        void append(const char *bytes, size_t length) &;
         void append(List &&value) &;
         void append(Dict &&value) &;
 
@@ -92,9 +93,9 @@ public:
         List &&append(int value) &&;
         List &&append(double value) &&;
         List &&append(const char *value) &&;
-        List &&append(const String &value) &&;
-        List &&append(const Blob &value) &&;
-        List &&append(const char *value, size_t length) &&;
+        List &&append(String &&value) &&;
+        List &&append(const char *bytes, size_t length) &&;
+        List &&append(Blob &&value) &&;
         List &&append(List &&value) &&;
         List &&append(Dict &&value) &&;
 
@@ -106,11 +107,13 @@ public:
 
     class Dict {
     public:
-        using Raw = std::map<String, std::unique_ptr<Value>>;
+        using Raw = std::map<String, Value *>;
         using Iterator = Raw::iterator;
         using ConstIterator = Raw::const_iterator;
         using ReverseIterator = Raw::reverse_iterator;
         using ConstReverseIterator = Raw::const_reverse_iterator;
+
+        ~Dict();
 
         [[nodiscard]] bool empty() const;
         [[nodiscard]] size_t size() const;
@@ -141,9 +144,9 @@ public:
         void set(const String &key, int value) &;
         void set(const String &key, double value) &;
         void set(const String &key, const char *value) &;
-        void set(const String &key, const String &value) &;
-        void set(const String &key, const Blob &value) &;
         void set(const String &key, const char *value, size_t length) &;
+        void set(const String &key, String &&value) &;
+        void set(const String &key, Blob &&value) &;
         void set(const String &key, List &&value) &;
         void set(const String &key, Dict &&value) &;
 
@@ -152,16 +155,16 @@ public:
         Dict &&set(const String &key, int value) &&;
         Dict &&set(const String &key, double value) &&;
         Dict &&set(const String &key, const char *value) &&;
-        Dict &&set(const String &key, const String &value) &&;
-        Dict &&set(const String &key, const Blob &value) &&;
         Dict &&set(const String &key, const char *value, size_t length) &&;
+        Dict &&set(const String &key, String &&value) &&;
+        Dict &&set(const String &key, Blob &&value) &&;
         Dict &&set(const String &key, List &&value) &&;
         Dict &&set(const String &key, Dict &&value) &&;
 
         bool remove(const String &key);
 
     private:
-        std::map<String, std::unique_ptr<Value>> map;
+        Raw map;
     };
 
     Value() = default;
@@ -170,9 +173,9 @@ public:
     explicit Value(int value);
     explicit Value(double value);
     explicit Value(const char *value);
-    explicit Value(const String &value);
-    explicit Value(const Blob &value);
-    explicit Value(const char *value, size_t length);
+    explicit Value(const char *bytes, size_t length);
+    explicit Value(String &&value) noexcept;
+    explicit Value(Blob &&value);
     explicit Value(List &&value);
     explicit Value(Dict &&value);
 
@@ -211,6 +214,10 @@ public:
     [[nodiscard]] String &getString();
     [[nodiscard]] const Blob &getBlob() const;
     [[nodiscard]] Blob &getBlob();
+    [[nodiscard]] const List &getList() const;
+    [[nodiscard]] List &getList();
+    [[nodiscard]] const Dict &getDict() const;
+    [[nodiscard]] Dict &getDict();
 
     bool operator==(const Value &rhs) const;
     bool operator!=(const Value &rhs) const;
