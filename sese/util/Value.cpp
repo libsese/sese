@@ -1,5 +1,5 @@
 #include <sese/util/Value.h>
-#include <sese/util/Util.h>
+#include <sese/record/Marco.h>
 
 #include <algorithm>
 #include <cassert>
@@ -197,6 +197,8 @@ Value::Dict &Value::getDict() {
     return std::get<Dict>(data);
 }
 
+// GCOVR_EXCL_START
+
 bool Value::operator==(const sese::Value &rhs) const {
     if (getType() != rhs.getType()) {
         return false;
@@ -226,6 +228,8 @@ bool Value::operator==(const sese::Value &rhs) const {
 bool Value::operator!=(const sese::Value &rhs) const {
     return !(*this == rhs);
 }
+
+// GCOVR_EXCL_STOP
 
 size_t List::empty() const { return vector.empty(); }
 
@@ -391,6 +395,15 @@ Dict::~Dict() {
     clear();
 }
 
+Dict::Dict(sese::Value::Dict &&other) noexcept {
+    std::swap(this->map, other.map);
+}
+
+Dict &Dict::operator=(sese::Value::Dict &&other) noexcept {
+    std::swap(this->map, other.map);
+    return *this;
+}
+
 bool Dict::empty() const {
     return map.empty();
 }
@@ -532,8 +545,8 @@ Dict &&Dict::set(const Value::String &key, Blob &&value) && {
 }
 
 Dict &&Dict::set(const Value::String &key, const char *value, size_t length) && {
-     map[key] = new Value(value, length);
-     return std::move(*this);
+    map[key] = new Value(value, length);
+    return std::move(*this);
 }
 
 Dict &&Dict::set(const Value::String &key, List &&value) && {
