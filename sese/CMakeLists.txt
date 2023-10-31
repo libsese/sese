@@ -173,6 +173,8 @@ set(
         net/http/DynamicTable.h
         net/http/Header.cpp
         net/http/Header.h
+        net/http/HeaderBuilder.cpp
+        net/http/HeaderBuilder.h
         net/http/HPACK.h
         net/http/HPackUtil.cpp
         net/http/HPackUtil.h
