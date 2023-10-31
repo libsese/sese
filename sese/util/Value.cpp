@@ -231,6 +231,88 @@ bool Value::operator!=(const sese::Value &rhs) const {
 
 // GCOVR_EXCL_STOP
 
+std::string Value::toString(size_t level) const noexcept {
+    level = std::max<size_t>(level, 1);
+    text::StringBuilder stringBuilder(4096);
+    toString(stringBuilder, level);
+    return stringBuilder.toString();
+}
+
+void Value::toString(text::StringBuilder &stringBuilder, size_t level) const noexcept {
+    level -= 1;
+    switch (getType()) {
+        case Type::Null:
+            stringBuilder << "<NULL>";
+            break;
+        case Type::Bool:
+            stringBuilder << (std::get<bool>(data) ? "<TRUE>" : "<FALSE>");
+            break;
+        case Type::Int:
+            stringBuilder << std::to_string(std::get<int>(data));
+            break;
+        case Type::Double:
+            stringBuilder << std::to_string(std::get<double>(data));
+            break;
+        case Type::String:
+            stringBuilder << '"';
+            stringBuilder << std::get<String>(data);
+            stringBuilder << '"';
+            break;
+        case Type::Blob: {
+            auto blob = std::get_if<Blob>(&data);
+            char hexBuf[16]{};
+            snprintf(hexBuf, 16, "0x%p", blob->data());
+            stringBuilder << "<p:";
+            stringBuilder.append(hexBuf, 15);
+            stringBuilder << " l:";
+            stringBuilder << std::to_string(blob->size());
+            stringBuilder << ">";
+            break;
+        }
+        case Type::List: {
+            auto list = std::get_if<List>(&data);
+            auto first = true;
+            stringBuilder << '[';
+            if (level) {
+                for (auto &&item: *list) {
+                    if (first) {
+                        first = false;
+                    } else {
+                        stringBuilder << ',';
+                    }
+                    item.toString(stringBuilder, level);
+                }
+            } else {
+                stringBuilder << "...";
+            }
+            stringBuilder << ']';
+            break;
+        }
+        case Type::Dict: {
+            auto list = std::get_if<Dict>(&data);
+            auto first = true;
+            stringBuilder << '{';
+            if (level) {
+                for (auto &&item: *list) {
+                    if (first) {
+                        first = false;
+                    } else {
+                        stringBuilder << ',';
+                    }
+                    stringBuilder << '"';
+                    stringBuilder << item.first;
+                    stringBuilder << "\":";
+                    item.second->toString(stringBuilder, level);
+                }
+            } else {
+                stringBuilder << "...";
+            }
+            stringBuilder << '}';
+            break;
+        }
+    }
+}
+
 size_t List::empty() const { return vector.empty(); }
 
 size_t List::size() const { return vector.size(); }

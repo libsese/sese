@@ -12,6 +12,8 @@
 #include <optional>
 
 #include <sese/Config.h>
+#include <sese/io/InputStream.h>
+#include <sese/text/StringBuilder.h>
 
 namespace sese {
 
@@ -235,10 +237,14 @@ public:
     [[nodiscard]] const Dict &getDict() const;
     [[nodiscard]] Dict &getDict();
 
+    [[nodiscard]] std::string toString(size_t level = 4) const noexcept;
+
     bool operator==(const Value &rhs) const;
     bool operator!=(const Value &rhs) const;
 
 private:
+    void toString(text::StringBuilder &stringBuilder, size_t level) const noexcept;
+
     std::variant<Null, bool, int, double, String, Blob, List, Dict> data;
 };
 

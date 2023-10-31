@@ -127,7 +127,7 @@ TEST(TestValue, CompareBool) {
     EXPECT_NE(value1, value3);
 }
 
-TEST(TestValue,CompareInt) {
+TEST(TestValue, CompareInt) {
     Value value1(1);
     Value value2(1);
     EXPECT_EQ(value1, value2);
@@ -161,4 +161,27 @@ TEST(TestValue, CompareDict) {
     Value value1(Value::Dict().set("a", 1).set("b", 2));
     Value value2(Value::Dict().set("a", 1).set("b", 2));
     EXPECT_NE(value1, value2);
+}
+
+TEST(TestValue, ToString) {
+    Value value(Value::Dict()
+                        .set("list", Value(Value::List()
+                                                   .append("Hello")
+                                                   .append(Value())
+                                                   .append(true)
+                                                   .append(false)
+                                                   .append(114514)
+                                                   .append("Blob", 4)
+                                                   .append(Value::Dict())
+                                     )
+                        )
+                        .set("int", 1919810)
+                        .set("double", 3.14)
+                        .set("dict", Value::Dict()
+                                             .set("string", "World")
+                                             .set("int", 123456)
+                        )
+    );
+    auto str = value.toString(3);
+    puts(str.c_str());
 }
