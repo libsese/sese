@@ -109,3 +109,19 @@ TEST(TestHttp, QueryString_4) {
     sese::net::http::QueryString q("?&");
     ASSERT_TRUE(q.empty());
 }
+
+#include <sese/net/http/HeaderBuilder.h>
+
+TEST(TestHttp, HeaderBuilder) {
+    using namespace sese::net::http;
+
+    Header header;
+    HeaderBuilder(header)
+            .set("Key-A", "Value-A")
+            .set("Key-B", "Value-B")
+            .set("Key-C", "Value-C");
+
+    for (auto &&item: header) {
+        SESE_INFO("%s: %s", item.first.c_str(), item.second.c_str());
+    }
+}
