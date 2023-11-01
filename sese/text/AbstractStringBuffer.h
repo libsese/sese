@@ -77,14 +77,6 @@ public:
     [[nodiscard]] virtual std::vector<std::string> split(const std::string &str) const noexcept;
     virtual std::string toString();
     virtual String toSString();
-
-public:
-    void operator<<(char ch) noexcept { this->append(ch); }
-    void operator<<(const char *str) noexcept { this->append(str); }
-    void operator<<(const std::string &str) noexcept { this->append(str); }
-    void operator<<(const std::string_view &str) noexcept { this->append(str); }
-    void operator<<(const String &str) noexcept { this->append(str); }
-    void operator<<(const StringView &str) noexcept { this->append(str); }
 };
 
 } // namespace sese::text

@@ -267,6 +267,7 @@ set(
         text/String.h
         text/StringBuffer.cpp
         text/StringBuffer.h
+        text/StringBuilder.cpp
         text/StringBuilder.h
         text/TextReader.cpp
         text/TextReader.h
