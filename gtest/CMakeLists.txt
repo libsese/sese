@@ -56,6 +56,7 @@ add_executable(
         TestMemoryViewer.cpp
         TestMessageDigest.cpp
         TestNetworkUtil.cpp
+        TestNumber.cpp
         TestOutputUtil.cpp
         TestPath.cpp
         TestPercentConverter.cpp
