@@ -21,10 +21,20 @@ class API StringBuilder final : public AbstractStringBuffer {
 public:
     using Ptr = std::unique_ptr<StringBuilder>;
 
-    explicit StringBuilder(size_t cap = STRING_BUFFER_SIZE_FACTOR) noexcept : AbstractStringBuffer(cap) {
-    }
+    explicit StringBuilder(size_t cap = STRING_BUFFER_SIZE_FACTOR) noexcept : AbstractStringBuffer(cap) {}
 
-    explicit StringBuilder(const char *str) noexcept : AbstractStringBuffer(str) {
-    }
+    explicit StringBuilder(const char *str) noexcept : AbstractStringBuffer(str) {}
 };
 } // namespace sese::text
+
+sese::text::StringBuilder &operator<<(sese::text::StringBuilder &stream, char ch) noexcept;
+
+sese::text::StringBuilder &operator<<(sese::text::StringBuilder &stream, const char *str) noexcept;
+
+sese::text::StringBuilder &operator<<(sese::text::StringBuilder &stream, const std::string &str) noexcept;
+
+sese::text::StringBuilder &operator<<(sese::text::StringBuilder &stream, const std::string_view &str) noexcept;
+
+sese::text::StringBuilder &operator<<(sese::text::StringBuilder &stream, const sese::text::String &str) noexcept;
+
+sese::text::StringBuilder &operator<<(sese::text::StringBuilder &stream, const sese::text::StringView &str) noexcept;

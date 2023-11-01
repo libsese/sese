@@ -1,4 +1,5 @@
 #include <sese/util/Value.h>
+#include <sese/text/Number.h>
 #include <sese/record/Marco.h>
 
 #include <algorithm>
@@ -38,18 +39,26 @@ Value::Value(Type type) {
 }
 
 Value::Value(bool value) : data(value) {}
+
 Value::Value(int value) : data(value) {}
+
 Value::Value(double value) : data(value) {}
+
 Value::Value(const char *value) : Value(std::string(value)) {}
+
 Value::Value(const char *bytes, size_t length) {
     auto vector = std::vector<uint8_t>();
     vector.reserve(length);
     vector.insert(vector.end(), bytes, bytes + length);
     data.emplace<Blob>(std::move(vector));
 }
+
 Value::Value(String &&value) noexcept : data(std::move(value)) {}
+
 Value::Value(Blob &&value) : data(std::move(value)) {}
+
 Value::Value(List &&value) : data(std::move(value)) {}
+
 Value::Value(Dict &&value) : data(std::move(value)) {}
 
 Value Value::list() {
@@ -254,19 +263,12 @@ void Value::toString(text::StringBuilder &stringBuilder, size_t level) const noe
             stringBuilder << std::to_string(std::get<double>(data));
             break;
         case Type::String:
-            stringBuilder << '"';
-            stringBuilder << std::get<String>(data);
-            stringBuilder << '"';
+            stringBuilder << '"' << std::get<String>(data) << '"';
             break;
         case Type::Blob: {
             auto blob = std::get_if<Blob>(&data);
-            char hexBuf[16]{};
-            snprintf(hexBuf, 16, "0x%p", blob->data());
-            stringBuilder << "<p:";
-            stringBuilder.append(hexBuf, 15);
-            stringBuilder << " l:";
-            stringBuilder << std::to_string(blob->size());
-            stringBuilder << ">";
+            auto number = text::Number::toHex(reinterpret_cast<uint64_t>(blob->data()));
+            stringBuilder << "<p:0x" << number << " l:" << std::to_string(blob->size()) << ">";
             break;
         }
         case Type::List: {
@@ -299,9 +301,7 @@ void Value::toString(text::StringBuilder &stringBuilder, size_t level) const noe
                     } else {
                         stringBuilder << ',';
                     }
-                    stringBuilder << '"';
-                    stringBuilder << item.first;
-                    stringBuilder << "\":";
+                    stringBuilder << '"' << item.first << "\":";
                     item.second->toString(stringBuilder, level);
                 }
             } else {
