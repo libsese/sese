@@ -258,6 +258,8 @@ set(
         text/Algorithm.h
         text/DateTimeFormatter.cpp
         text/DateTimeFormatter.h
+        text/Number.cpp
+        text/Number.h
         text/SString.cpp
         text/SString.h
         text/SStringBuilder.cpp
