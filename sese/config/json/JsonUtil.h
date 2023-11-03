@@ -56,9 +56,9 @@ public:
      */
     static void serialize(ObjectData *object, OutputStream *outputStream) noexcept;
 
-private:
     static bool tokenizer(InputStream *inputStream, Tokens &tokens) noexcept;
 
+private:
     static ObjectData::Ptr createObject(Tokens &tokens, size_t level) noexcept;
     static ArrayData::Ptr createArray(Tokens &tokens, size_t level) noexcept;
 

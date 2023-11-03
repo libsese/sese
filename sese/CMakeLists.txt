@@ -238,6 +238,8 @@ set(
         config/json/JsonUtil.cpp
         config/json/JsonUtil.h
         config/json/Marco.h
+        config/json.cpp
+        config/json.h
         config/UniReader.h
         config/xml/XmlTypes.cpp
         config/xml/XmlTypes.h

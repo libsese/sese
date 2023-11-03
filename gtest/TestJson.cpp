@@ -121,6 +121,21 @@ TEST(TestJson, Setter) {
     sese::json::JsonUtil::serialize(object.get(), &console);
 }
 
+#include <sese/config/Json.h>
+
+TEST(TestJson, Value) {
+    auto input = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
+    auto object = sese::Json::parse(input.get(), 4);
+    input->close();
+    ASSERT_FALSE(object.isNull());
+
+    auto content = object.toString(4);
+    puts(content.c_str());
+    // auto output = sese::io::FileStream::create("./2967168498.json", TEXT_WRITE_CREATE_TRUNC);
+    // sese::Json::streamify(output.get(), object.getDict());
+    // output->close();
+}
+
 /// 键值对分割错误
 TEST(TestJson, Error_0) {
     const char str[] = "{\n"
