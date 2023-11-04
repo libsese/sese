@@ -238,8 +238,8 @@ set(
         config/json/JsonUtil.cpp
         config/json/JsonUtil.h
         config/json/Marco.h
-        config/json.cpp
-        config/json.h
+        config/Json.cpp
+        config/Json.h
         config/UniReader.h
         config/xml/XmlTypes.cpp
         config/xml/XmlTypes.h
@@ -250,6 +250,8 @@ set(
         config/yaml/YamlTypes.h
         config/yaml/YamlUtil.cpp
         config/yaml/YamlUtil.h
+        config/Yaml.cpp
+        config/Yaml.h
 )
 
 set(

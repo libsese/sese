@@ -38,22 +38,19 @@ public:
     /// \param output 输出流
     static void serialize(const Data::Ptr &data, OutputStream *output) noexcept;
 
-#ifdef SESE_BUILD_TEST
-public:
-#else
-private:
-#endif
     static int getSpaceCount(const std::string &line) noexcept;
 
     static Line getLine(InputStream *input) noexcept;
 
     static Tokens tokenizer(const std::string &line) noexcept;
 
+    static void writeSpace(size_t count, OutputStream *output) noexcept;
+
+private:
     static ObjectData::Ptr createObject(TokensQueue &tokensQueue, size_t level) noexcept;
 
     static ArrayData::Ptr createArray(TokensQueue &tokensQueue, size_t level) noexcept;
 
-    static void writeSpace(size_t count, OutputStream *output) noexcept;
 
     static void serializeObject(ObjectData *objectData, OutputStream *output, size_t level) noexcept;
 
