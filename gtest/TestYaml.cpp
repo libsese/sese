@@ -267,6 +267,16 @@ TEST(TestYaml, Serialize_3) {
     sese::yaml::YamlUtil::serialize(data, &output);
 }
 
+#include <sese/config/Yaml.h>
+
+TEST(TestYaml, Value) {
+    auto input = sese::io::InputBufferWrapper(str1, sizeof(str1) - 1);
+    auto value = sese::Yaml::parse(&input, 5);
+    ASSERT_FALSE(value.isNull());
+    auto content = value.toString(5);
+    puts(content.c_str());
+}
+
 /// 数组嵌套数组超出深度限制
 TEST(TestYaml, Error_0) {
     const char str[]{"- root:\n"
