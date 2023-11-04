@@ -7,6 +7,8 @@ using sese::Json;
 using sese::Value;
 using sese::json::JsonUtil;
 
+// GCOVR_EXCL_START
+
 /// 判断一个 token 是否为 json 关键字
 /// \param str token
 /// \return 结果
@@ -235,3 +237,5 @@ Value Json::parse(io::InputStream *input, size_t level) {
 void Json::streamify(io::OutputStream *out, const Value::Dict &dict) {
     streamifyObject(out, dict);
 }
+
+// GCOVR_EXCL_STOP

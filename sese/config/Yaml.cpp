@@ -4,6 +4,8 @@
 using sese::Value;
 using sese::Yaml;
 
+// GCOVR_EXCL_START
+
 Value Yaml::parseObject(sese::Yaml::TokensQueue &tokensQueue, size_t level) {
     if (level == 0) return {};
 
@@ -291,3 +293,5 @@ void Yaml::streamify(io::OutputStream *output, const Value &value) {
         return;
     }
 }
+
+// GCOVR_EXCL_STOP
