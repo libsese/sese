@@ -4,6 +4,17 @@
 
 using sese::Value;
 
+TEST(TestValue, Contruct) {
+    EXPECT_TRUE(Value(Value::Type::Null).isNull());
+    EXPECT_TRUE(Value(Value::Type::Bool).isBool());
+    EXPECT_TRUE(Value(Value::Type::Int).isInt());
+    EXPECT_TRUE(Value(Value::Type::Double).isDouble());
+    EXPECT_TRUE(Value(Value::Type::String).isString());
+    EXPECT_TRUE(Value(Value::Type::Blob).isBlob());
+    EXPECT_TRUE(Value(Value::Type::List).isList());
+    EXPECT_TRUE(Value(Value::Type::Dict).isDict());
+}
+
 TEST(TestValue, IdentityNull) {
     Value value;
     EXPECT_TRUE(value.isNull());
@@ -58,8 +69,15 @@ TEST(TestValue, IdentityString) {
     EXPECT_TRUE(value.isString());
 
     EXPECT_EQ(*value.getIfString(), "test");
+    EXPECT_FALSE(value.getIfBool().has_value());
+    EXPECT_FALSE(value.getIfDouble().has_value());
+    EXPECT_EQ(value.getIfList(), nullptr);
+    EXPECT_EQ(value.getIfDict(), nullptr);
 
-    EXPECT_EQ(value.getString(), "test");
+    EXPECT_FALSE(value.getString().empty());
+
+    value.getString().append("test");
+    EXPECT_EQ(*value.getIfString(), "testtest");
 }
 
 TEST(TestValue, IdentityBlob) {
@@ -74,6 +92,13 @@ TEST(TestValue, IdentityBlob) {
 
     auto data = value.getBlob();
     EXPECT_EQ(memcmp(data.data(), "test", data.size()), 0);
+
+    Value::Blob blob;
+    blob.emplace_back(1);
+    blob.emplace_back(2);
+    EXPECT_TRUE(Value(std::move(blob)).isBlob());
+
+    value.getBlob().clear();
 }
 
 TEST(TestValue, IdentityList) {
@@ -83,6 +108,9 @@ TEST(TestValue, IdentityList) {
     EXPECT_FALSE(value.isInt());
     EXPECT_FALSE(value.isDouble());
     EXPECT_TRUE(value.isList());
+
+    EXPECT_TRUE(value.getList().empty());
+    value.getList().clear();
 }
 
 TEST(TestValue, IdentityDict) {
@@ -92,6 +120,9 @@ TEST(TestValue, IdentityDict) {
     EXPECT_FALSE(value.isInt());
     EXPECT_FALSE(value.isDouble());
     EXPECT_TRUE(value.isDict());
+
+    EXPECT_TRUE(value.getDict().empty());
+    value.getDict().clear();
 }
 
 TEST(TestValue, ConvertInt) {

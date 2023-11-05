@@ -35,6 +35,24 @@ TEST(TestStringBuilder, Construct_1) {
     ASSERT_EQ(builder2.length(), 0);
 }
 
+TEST(TestStringBuilder, Operator_0) {
+    auto builder = sese::text::StringBuilder();
+    auto string_view = std::string_view("He");
+    auto string = sese::text::String::fromUTF8("ll");
+    auto string_view2 = sese::text::StringView("o");
+    builder << string_view << string << string_view2;
+    ASSERT_EQ(builder.toString(), "Hello");
+}
+
+TEST(TestStringBuilder, Operator_1) {
+    auto builder = sese::text::StringBuffer();
+    auto string_view = std::string_view("He");
+    auto string = sese::text::String::fromUTF8("ll");
+    auto string_view2 = sese::text::StringView("o");
+    builder << string_view << string << string_view2;
+    ASSERT_EQ(builder.toString(), "Hello");
+}
+
 TEST(TestStringBuilder, Reverse) {
     auto builder = sese::text::StringBuffer();
     builder << "Hello";
