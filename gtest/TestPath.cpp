@@ -1,4 +1,5 @@
-#include <sese/system/Path.h>
+#include <sese/system/Paths.h>
+#include <sese/record/Marco.h>
 
 #include <gtest/gtest.h>
 
@@ -69,3 +70,14 @@ TEST(TestPath, UnixParse) {
 }
 
 #endif
+
+TEST(TestPath, RuntimePaths) {
+    auto wordDir = sese::system::Paths::getWorkDir();
+    SESE_INFO("work dir: %s", wordDir.getUnixPath().c_str());
+
+    auto execDir = sese::system::Paths::getExecutablePath();
+    SESE_INFO("exec path: %s", execDir.getUnixPath().c_str());
+
+    auto execName = sese::system::Paths::getExecutableName();
+    SESE_INFO("exec name: %s", execName.c_str());
+}
