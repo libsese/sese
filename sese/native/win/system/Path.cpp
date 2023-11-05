@@ -60,3 +60,11 @@ Path Path::fromNativePath(const std::string &nativePath) noexcept {
         return {};
     }
 }
+
+void Path::replaceWindowsPathSplitChar(char *path, size_t len) noexcept {
+    for (size_t i = 0; i < len; i++) {
+        if (path[i] == '\\') {
+            path[i] = '/';
+        }
+    }
+}

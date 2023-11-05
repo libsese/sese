@@ -39,7 +39,9 @@ for Windows:
     static Path fromNativePath(const std::string &nativePath) noexcept;
 
 #ifdef SESE_PLATFORM_WINDOWS
-    const std::string &getNativePath() const { return nativePath; }
+    static void replaceWindowsPathSplitChar(char *path, size_t len) noexcept;
+
+    [[nodiscard]] const std::string &getNativePath() const { return nativePath; }
 #else
     [[nodiscard]] const std::string &getNativePath() const { return unixPath; }
 #endif

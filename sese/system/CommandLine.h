@@ -15,7 +15,7 @@ namespace sese::system {
 /// 命令行参数初始化任务
 class CommandLineInitiateTask : public InitiateTask {
 public:
-    explicit CommandLineInitiateTask(const int argc, const char *const *argv);
+    explicit CommandLineInitiateTask(int argc, const char *const *argv);
 
     int32_t init() noexcept override;
 
