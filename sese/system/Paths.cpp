@@ -5,7 +5,7 @@
 #include <unistd.h>
 #endif
 
-#ifdef SESE_PLATFORM_DARWIN
+#ifdef SESE_PLATFORM_APPLE
 #include <mach-o/dyld.h>
 #endif
 

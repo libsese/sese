@@ -10,7 +10,7 @@ TEST(TestNumber, Hex) {
         EXPECT_EQ(str, "AABBCCDD");
     }
     {
-        auto str = Number::toHex(0xFFFFFFFFFFFFFFFF, false);
+        auto str = Number::toHex(static_cast<uint64_t>(0xFFFFFFFFFFFFFFFF), false);
         EXPECT_EQ(str, "ffffffffffffffff");
     }
 }
