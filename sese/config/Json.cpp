@@ -32,18 +32,18 @@ Value Json::parseObject(Json::Tokens &tokens, size_t level) {
             break;
         } else if (name == ",") {
             // token 为 ',' 说明接下来还有键值对
-            if (tokens.empty()) return {}; // GCOVR_EXCL_LINE
+            if (tokens.empty()) return {};
             name = tokens.front();
             tokens.pop();
         }
         name = name.substr(1, name.size() - 2);
 
-        if (tokens.empty()) return {}; // GCOVR_EXCL_LINE
+        if (tokens.empty()) return {};
         // 此处 token 必是 ":"
         if (tokens.front() != ":") return {};
         tokens.pop();
 
-        if (tokens.empty()) return {}; // GCOVR_EXCL_LINE
+        if (tokens.empty()) return {};
         auto value = tokens.front();
         tokens.pop();
 
@@ -97,7 +97,7 @@ Value Json::parseArray(sese::Json::Tokens &tokens, size_t level) {
             break;
         } else if (token == ",") {
             // token 为 ',' 说明接下来还有值
-            if (tokens.empty()) return {}; // GCOVR_EXCL_LINE
+            if (tokens.empty()) return {};
             token = tokens.front();
             tokens.pop();
         }
@@ -175,11 +175,11 @@ void Json::streamifyObject(io::OutputStream *out, const Value::Dict &object) {
         out->write("\":", 2);
 
         if (data->getType() == Value::Type::Dict) {
-            streamifyObject(out, data->getDict()); // GCOVR_EXCL_LINE
+            streamifyObject(out, data->getDict());
         } else if (data->getType() == Value::Type::List) {
-            streamifyArray(out, data->getList()); // GCOVR_EXCL_LINE
+            streamifyArray(out, data->getList());
         } else {
-            streamifyBasic(out, data); // GCOVR_EXCL_LINE
+            streamifyBasic(out, data);
         }
     }
     out->write("}", 1);
@@ -196,11 +196,11 @@ void Json::streamifyArray(io::OutputStream *out, const Value::List &array) {
         }
 
         if (data.getType() == Value::Type::Dict) {
-            streamifyObject(out, data.getDict()); // GCOVR_EXCL_LINE
+            streamifyObject(out, data.getDict());
         } else if (data.getType() == Value::Type::List) {
-            streamifyArray(out, data.getList()); // GCOVR_EXCL_LINE
+            streamifyArray(out, data.getList());
         } else {
-            streamifyBasic(out, &data); // GCOVR_EXCL_LINE
+            streamifyBasic(out, &data);
         }
     }
     out->write("]", 1);

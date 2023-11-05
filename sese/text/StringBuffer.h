@@ -55,14 +55,6 @@ public:
     std::string toString() override;
     String toSString() override;
 
-public:
-    void operator<<(char ch) noexcept { this->append(ch); }
-    void operator<<(const char *str) noexcept { this->append(str); }
-    void operator<<(const std::string &str) noexcept { this->append(str); }
-    void operator<<(const std::string_view &str) noexcept { this->append(str); }
-    void operator<<(const String &str) noexcept { this->append(str); }
-    void operator<<(const StringView &str) noexcept { this->append(str); }
-
 private:
     using AbstractStringBuffer::empty;
     using AbstractStringBuffer::getCharAt;
@@ -73,3 +65,15 @@ private:
     std::mutex mutex;
 };
 } // namespace sese::text
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, char ch);
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const char *str);
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const std::string &str);
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const std::string_view &str);
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const sese::text::String &str);
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const sese::text::StringView &str);

@@ -11,7 +11,7 @@ Value Yaml::parseObject(sese::Yaml::TokensQueue &tokensQueue, size_t level) {
 
     auto result = Value::Dict();
     // 对象无子元素
-    if (tokensQueue.empty()) return Value(std::move(result)); // GCOVR_EXCL_LINE
+    if (tokensQueue.empty()) return Value(std::move(result));
     int count = std::get<0>(tokensQueue.front());
 
     while (!tokensQueue.empty()) {
@@ -186,7 +186,7 @@ Value Yaml::parse(sese::io::InputStream *input, size_t level) {
 
     decltype(auto) top = tokensQueue.front();
     decltype(auto) topTokens = std::get<1>(top);
-    if (topTokens.empty()) return {}; // GCOVR_EXCL_LINE
+    if (topTokens.empty()) return {};
     if (topTokens[0] == "-") {
         // 根元素是数组
         return parseArray(tokensQueue, level);
@@ -199,7 +199,7 @@ Value Yaml::parse(sese::io::InputStream *input, size_t level) {
 void Yaml::streamifyObject(io::OutputStream *output, const Value::Dict &dict, size_t level) {
     for (decltype(auto) item: dict) {
         if (item.second->getType() == Value::Type::Dict) {
-            auto &&sub = item.second->getDict(); // GCOVR_EXCL_LINE
+            auto &&sub = item.second->getDict();
             if (!sub.empty()) {
                 sese::yaml::YamlUtil::writeSpace(level * 2, output);
                 output->write(item.first.c_str(), item.first.length());
@@ -207,7 +207,7 @@ void Yaml::streamifyObject(io::OutputStream *output, const Value::Dict &dict, si
                 streamifyObject(output, sub, level + 1);
             }
         } else if (item.second->getType() == Value::Type::List) {
-            auto &&sub = item.second->getList(); // GCOVR_EXCL_LINE
+            auto &&sub = item.second->getList();
             if (!sub.empty()) {
                 sese::yaml::YamlUtil::writeSpace(level * 2, output);
                 output->write(item.first.c_str(), item.first.length());
@@ -215,7 +215,7 @@ void Yaml::streamifyObject(io::OutputStream *output, const Value::Dict &dict, si
                 streamifyArray(output, sub, level + 1);
             }
         } else {
-            auto sub = item.second; // GCOVR_EXCL_LINE
+            auto sub = item.second;
             sese::yaml::YamlUtil::writeSpace(level * 2, output);
             output->write(item.first.c_str(), item.first.length());
             output->write(": ", 2);
@@ -240,8 +240,8 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
     auto count = 0;
     for (decltype(auto) item: list) {
         if (item.getType() == Value::Type::Dict) {
-            auto &&sub = item.getDict(); // GCOVR_EXCL_LINE
-            if (!sub.empty()) {          // GCOVR_EXCL_LINE
+            auto &&sub = item.getDict();
+            if (!sub.empty()) {
                 auto name = "element_" + std::to_string(count);
                 count += 1;
                 sese::yaml::YamlUtil::writeSpace(level * 2, output);
@@ -251,8 +251,8 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
                 streamifyObject(output, sub, level + 1);
             }
         } else if (item.getType() == Value::Type::List) {
-            auto &&sub = item.getList(); // GCOVR_EXCL_LINE
-            if (!sub.empty()) {          // GCOVR_EXCL_LINE
+            auto &&sub = item.getList();
+            if (!sub.empty()) {
                 auto name = "element_" + std::to_string(count);
                 count += 1;
                 sese::yaml::YamlUtil::writeSpace(level * 2, output);
@@ -262,7 +262,7 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
                 streamifyArray(output, sub, level + 1);
             }
         } else {
-            auto &&sub = item; // GCOVR_EXCL_LINE
+            auto &&sub = item;
             sese::yaml::YamlUtil::writeSpace(level * 2, output);
             output->write("- ", 2);
             if (sub.isNull()) {
@@ -284,10 +284,10 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
 
 void Yaml::streamify(io::OutputStream *output, const Value &value) {
     if (value.getType() == Value::Type::Dict) {
-        auto &&sub = value.getDict(); // GCOVR_EXCL_LINE
+        auto &&sub = value.getDict();
         streamifyObject(output, sub, 0);
     } else if (value.getType() == Value::Type::List) {
-        auto &&sub = value.getList(); // GCOVR_EXCL_LINE
+        auto &&sub = value.getList();
         streamifyArray(output, sub, 0);
     } else {
         return;

@@ -6,6 +6,7 @@
 #include "sese/thread/Thread.h"
 
 #include <memory>
+#include <utility>
 
 // using sese::EncodingConverterInitiateTask;
 using sese::Initializer;
@@ -15,20 +16,19 @@ using sese::system::CommandLineInitiateTask;
 
 static Initializer gInitializer;
 
+// GCOVR_EXCL_START
 [[maybe_unused]] void *Initializer::getInitializer() noexcept {
-    // 不会出错，不需要判断
-    // GCOVR_EXCL_START
     addTask(std::make_shared<ThreadInitiateTask>());
     addTask(std::make_shared<record::LoggerInitiateTask>());
 #ifdef _WIN32
     addTask(std::make_shared<net::SocketInitiateTask>());
 #endif
     addTask(std::make_shared<security::SecurityInitTask>());
-    // GCOVR_EXCL_STOP
     return &gInitializer;
 }
+// GCOVR_EXCL_STOP
 
-InitiateTask::InitiateTask(const std::string &name) : name(name) {
+InitiateTask::InitiateTask(std::string name) : name(std::move(name)) {
 }
 
 const std::string &sese::InitiateTask::getName() const {

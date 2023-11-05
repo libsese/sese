@@ -13,13 +13,55 @@ TEST(TestVersion, TestConstructor) {
 }
 
 TEST(TestVersion, TestParse) {
-    auto option = Version::parse("1.2.3.4");
-    ASSERT_TRUE(option.has_value());
-    auto version = option.value();
-    EXPECT_EQ(version.getMajor(), 1);
-    EXPECT_EQ(version.getMinor(), 2);
-    EXPECT_EQ(version.getPatch(), 3);
-    EXPECT_EQ(version.getRevision(), 4);
+    {
+        auto option = Version::parse("2");
+        ASSERT_TRUE(option.has_value());
+        auto version = option.value();
+        EXPECT_EQ(version.getMajor(), 2);
+        EXPECT_EQ(version.getMinor(), 0);
+    }
+    {
+        auto option = Version::parse("1A");
+        ASSERT_FALSE(option.has_value());
+    }
+    {
+        auto option = Version::parse("1.2");
+        ASSERT_TRUE(option.has_value());
+        auto version = option.value();
+        EXPECT_EQ(version.getMajor(), 1);
+        EXPECT_EQ(version.getMinor(), 2);
+        EXPECT_EQ(version.getPatch(), 0);
+    }
+    {
+        auto option = Version::parse("1.2A");
+        ASSERT_FALSE(option.has_value());
+    }
+    {
+        auto option = Version::parse("1.2.3");
+        ASSERT_TRUE(option.has_value());
+        auto version = option.value();
+        EXPECT_EQ(version.getMajor(), 1);
+        EXPECT_EQ(version.getMinor(), 2);
+        EXPECT_EQ(version.getPatch(), 3);
+        EXPECT_EQ(version.getRevision(), 0);
+    }
+    {
+        auto option = Version::parse("1.2.3A");
+        ASSERT_FALSE(option.has_value());
+    }
+    {
+        auto option = Version::parse("1.2.3.4");
+        ASSERT_TRUE(option.has_value());
+        auto version = option.value();
+        EXPECT_EQ(version.getMajor(), 1);
+        EXPECT_EQ(version.getMinor(), 2);
+        EXPECT_EQ(version.getPatch(), 3);
+        EXPECT_EQ(version.getRevision(), 4);
+    }
+    {
+        auto option = Version::parse("1.2.3.4A");
+        ASSERT_FALSE(option.has_value());
+    }
 }
 
 TEST(TestVersion, TestString) {

@@ -28,7 +28,7 @@ public:
      */
     using Ptr = std::shared_ptr<InitiateTask>;
 
-    explicit InitiateTask(const std::string &name);
+    explicit InitiateTask(std::string name);
     virtual ~InitiateTask() = default;
 
     virtual int32_t init() noexcept = 0;

@@ -136,4 +136,34 @@ sese::text::String sese::text::StringBuffer::toSString() {
     return AbstractStringBuffer::toSString();
 }
 
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, char ch) {
+    buffer.append(ch);
+    return buffer;
+}
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const char *str) {
+    buffer.append(str);
+    return buffer;
+}
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const std::string &str) {
+    buffer.append(str);
+    return buffer;
+}
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const std::string_view &str) {
+    buffer.append(str);
+    return buffer;
+}
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const sese::text::String &str) {
+    buffer.append(str);
+    return buffer;
+}
+
+sese::text::StringBuffer &operator<<(sese::text::StringBuffer &buffer, const sese::text::StringView &str) {
+    buffer.append(str);
+    return buffer;
+}
+
 // GCOVR_EXCL_STOP
