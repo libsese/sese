@@ -3,6 +3,7 @@
 #include "sese/util/Initializer.h"
 #include "sese/security/SecurityConfig.h"
 #include "sese/system/CommandLine.h"
+#include "sese/system/Paths.h"
 #include "sese/thread/Thread.h"
 
 #include <memory>
@@ -13,11 +14,13 @@ using sese::Initializer;
 using sese::InitiateTask;
 // using sese::TestInitiateTask;
 using sese::system::CommandLineInitiateTask;
+using sese::system::PathsInitiateTask;
 
 static Initializer gInitializer;
 
 // GCOVR_EXCL_START
 [[maybe_unused]] void *Initializer::getInitializer() noexcept {
+    addTask(std::make_shared<PathsInitiateTask>());
     addTask(std::make_shared<ThreadInitiateTask>());
     addTask(std::make_shared<record::LoggerInitiateTask>());
 #ifdef _WIN32
@@ -60,6 +63,7 @@ void sese::initCore(const int argc, const char *const *argv) noexcept {
     // 不会出错，不需要判断
     // GCOVR_EXCL_START
     Initializer::addTask(std::make_shared<system::CommandLineInitiateTask>(argc, argv));
+    Initializer::addTask(std::make_shared<PathsInitiateTask>());
     Initializer::addTask(std::make_shared<ThreadInitiateTask>());
     Initializer::addTask(std::make_shared<record::LoggerInitiateTask>());
 #ifdef _WIN32

@@ -138,9 +138,10 @@ set(
         system/FileLocker.h
         system/FileNotifier.h
         system/LibraryLoader.h
-        system/NetworkUtil.cpp
         system/NetworkUtil.h
         system/Path.h
+        system/Paths.cpp
+        system/Paths.h
         system/Process.h
         system/SharedMemory.h
         system/StackInfo.h
@@ -467,6 +468,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
             native/win/security/evp/SHA512Context.cpp
             native/win/system/FileLocker.cpp
             native/win/system/LibraryLoader.cpp
+            native/win/system/NetworkUtil.cpp
             native/win/system/Path.cpp
             native/win/system/Process.cpp
             native/win/system/SharedMemory.cpp
@@ -522,6 +524,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_sources(Core PRIVATE
             native/linux/Config.h
             native/linux/system/FileNotifier.cpp
+            native/linux/system/NetworkUtil.cpp
             native/linux/system/StackInfo.cpp
     )
 
@@ -550,6 +553,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_sources(Core PRIVATE
             native/darwin/Config.h
             native/darwin/system/FileNotifier.cpp
+            native/darwin/system/NetworkUtil.cpp
             native/darwin/system/StackInfo.cpp
     )
 
