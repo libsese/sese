@@ -57,7 +57,9 @@ socklen_t IPv6Address::getRawAddressLength() const noexcept {
 std::string IPv6Address::getAddress() const noexcept {
     auto *addr = (uint16_t *) &this->address.sin6_addr.s6_addr;
     char temp[40];
-    sprintf(temp,
+    std::snprintf(
+            temp,
+            40,
             "%04X:%04X:%04X:%04X:%04X:%04X:%04X:%04X",
             ToBigEndian16(addr[0]),
             ToBigEndian16(addr[1]),

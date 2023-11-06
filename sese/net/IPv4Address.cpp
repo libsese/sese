@@ -62,12 +62,15 @@ std::string IPv4Address::getAddress() const noexcept {
     addr = ToLittleEndian32(addr);
 
     char temp[16]{0};
-    sprintf(temp,
+    std::snprintf(
+            temp,
+            16,
             "%d.%d.%d.%d",
             (addr & 0x000000FF) >> 0,
             (addr & 0x0000FF00) >> 8,
             (addr & 0x00FF0000) >> 16,
-            (addr & 0xFF000000) >> 24);
+            (addr & 0xFF000000) >> 24
+    );
     return {temp};
 }
 

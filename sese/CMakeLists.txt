@@ -212,8 +212,6 @@ set(
         net/rpc/RpcClient.cpp
         net/rpc/RpcClient.h
         net/rpc/Marco.h
-        net/rpc/Server.cpp
-        net/rpc/Server.h
         net/Socket.cpp
         net/Socket.h
         net/ws/FrameHeader.h
