@@ -154,11 +154,11 @@ std::string sese::PercentConverter::decode(const char *src) {
     while (*p != 0) {
         if (*p == '%') {
             ch1 = getHexChar(p[1]);
-            if (ch1 == -1) {
+            if (ch1 == static_cast<char>(-1)) {
                 return {};
             }
             ch2 = getHexChar(p[2]);
-            if (ch2 == -1) {
+            if (ch2 == static_cast<char>(-1)) {
                 return {};
             }
             decodeChar = ch1 * 0x10 + ch2;
