@@ -8,7 +8,7 @@
 
 #if defined(__x86_64__)
 #define SESE_ARCH_X64
-#elif defined(__aarch64__)
+#elif defined(__aarch64__) || defined(__arm__)
 #define SESE_ARCH_ARM64
 #else
 #error only support x86_64 & arm64

@@ -31,8 +31,8 @@ size_t sstr::getStringLengthFromUTF8String(const char *str) {
     size_t i = 0;
     while (true) {
         if (0 == str[i]) return len;
-        auto n = getSizeFromUTF8Char(str[i]);
-        if (-1 == n) return len;
+        char n = getSizeFromUTF8Char(str[i]);
+        if (static_cast<char>(-1) == n) return len;
         i += n;
         len++;
     }
@@ -458,8 +458,8 @@ size_t SStringView::len() const {
     size_t len = 0;
     for (size_t i = 0; i < _size;) {
         if (0 == _data[i]) return len;
-        auto n = getSizeFromUTF8Char(_data[i]);
-        if (-1 == n) return len;
+        char n = getSizeFromUTF8Char(_data[i]);
+        if (static_cast<char>(-1) == n) return len;
         if (i + n > _size) return len;
         i += n;
         len++;
@@ -584,7 +584,7 @@ std::vector<SString> SStringView::split(const char *str) const {
     pos2 = BM(_data, str);
     pos1 = 0;
     while (true) {
-        v.emplace_back(SString(_data + pos1, pos2 - pos1));
+        v.emplace_back(_data + pos1, pos2 - pos1);
 
         pos1 = pos2 + size;
         pos2 = BM(_data + pos1, str);
@@ -651,8 +651,8 @@ std::vector<SChar> SStringView::toChars() const {
     chars.reserve(len);
     for (size_t i = 0; i < _size;) {
         if (0 == _data[i]) break;
-        auto n = getSizeFromUTF8Char(_data[i]);
-        if (-1 == n) break;
+        char n = getSizeFromUTF8Char(_data[i]);
+        if (static_cast<char>(-1) == n) break;
         if (i + n > _size) break;
         chars.emplace_back(getUnicodeCharFromUTF8Char(n, &_data[i]));
         i += n;
@@ -695,8 +695,8 @@ SChar SStringView::at(size_t index) const {
     size_t n = 0;
     for (size_t i = 0; i < _size;) {
         if (0 == _data[i]) return NullChar;
-        auto c = getSizeFromUTF8Char(_data[i]);
-        if (-1 == c) return NullChar;
+        char c = getSizeFromUTF8Char(_data[i]);
+        if (static_cast<char>(-1) == c) return NullChar;
         if (i + c > _size) return NullChar;
         n++;
         if (index == n) {
