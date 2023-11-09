@@ -88,6 +88,8 @@ public:
 private:
     HttpClientHandle() = default;
 
+    HttpClient *client{nullptr};
+
     bool ssl = false;
     security::SSLContext::Ptr clientCtx{};
 

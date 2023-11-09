@@ -77,7 +77,7 @@ int64_t operator<<(sese::io::OutputStream *output, std::array<T, N> data) {
     return output->write(data.data(), sizeof(T) * N);
 }
 
-#if SESE_CXX_STANDARD > 201709L
+#if SESE_CXX_STANDARD >= 202000L
 #include <span>
 SESE_OUT_DEF_TEMPLATE_ALL(data, data.data(), sizeof(T) * data.size(), std::span<T>, class T)
 #endif
