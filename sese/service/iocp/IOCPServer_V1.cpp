@@ -45,10 +45,16 @@ IOCPService::IOCPService(IOCPServer *master, bool activeReleaseMode)
 IOCPService::~IOCPService() {
     for (auto &&item: eventSet) {
         auto ctx = (Context *) item->data;
-        event::EventLoop::freeEvent(item);
+        if (ctx->ssl) {
+            // std::printf("ssl free %p\n", ctx->ssl);
+            SSL_free((SSL *) ctx->ssl);
+            ctx->ssl = nullptr;
+        }
         if (ctx->timeoutEvent) {
             cancelTimeoutEvent(ctx->timeoutEvent);
         }
+        sese::net::Socket::close(ctx->fd);
+        event::EventLoop::freeEvent(item);
         ctx->self->getDeleteContextCallback()(ctx);
         delete ctx;
     }
@@ -269,6 +275,7 @@ void IOCPService::freeEventEx(sese::event::BaseEvent *event) {
 
 void IOCPService::releaseContext(Context *ctx) {
     if (ctx->ssl) {
+        // std::printf("ssl free %p\n", ctx->ssl);
         SSL_free((SSL *) ctx->ssl);
         ctx->ssl = nullptr;
     }
@@ -355,6 +362,7 @@ void IOCPServer::postConnect(const net::IPAddress::Ptr &to, const security::SSLC
     ctx->data = data;
     if (cliCtx) {
         ctx->ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
+        // printf("ssl new %p\n", ctx->ssl);
         SSL_set_fd((SSL *) ctx->ssl, (int) sock);
         SSL_set_alpn_protos((SSL *) ctx->ssl, (const unsigned char *) clientProtos.c_str(), (unsigned) clientProtos.length());
     }

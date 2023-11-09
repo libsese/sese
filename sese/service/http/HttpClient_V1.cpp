@@ -4,6 +4,8 @@
 #include <sese/util/Util.h>
 #include <sese/record/Marco.h>
 
+#include <cassert>
+
 sese::service::v1::HttpClient::HttpClient() {
     Supper::setDeleteContextCallback([this](sese::iocp::Context *ctx) { this->deleter(ctx); });
     Supper::setActiveReleaseMode(false);
@@ -11,6 +13,10 @@ sese::service::v1::HttpClient::HttpClient() {
 }
 
 std::shared_future<sese::service::v1::HttpClientHandle::RequestStatus> sese::service::v1::HttpClient::post(const HttpClientHandle::Ptr &handle) {
+    if (handle->client == nullptr) {
+        handle->client = this;
+    }
+    assert(handle->client == this);
     preprocess(handle);
     handle->promise = std::make_unique<std::promise<HttpClientHandle::RequestStatus>>();
     if (handle->context == nullptr) {
