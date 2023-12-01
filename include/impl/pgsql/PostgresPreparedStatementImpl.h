@@ -12,6 +12,7 @@ namespace sese::db::impl {
         explicit PostgresPreparedStatementImpl(const std::string &stmt, uint32_t count, PGconn *conn) noexcept;
         ~PostgresPreparedStatementImpl() noexcept override;
 
+        bool createStmt() noexcept;
         ResultSet::Ptr executeQuery() noexcept override;
         int64_t executeUpdate() noexcept override;
 
@@ -31,6 +32,7 @@ namespace sese::db::impl {
         uint32_t count = 0;
         Oid *paramTypes;
         const char **paramValues;
+        uint32_t paramValuesSize = 0;
         std::string *strings;
         std::string stmtName;
 

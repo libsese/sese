@@ -7,7 +7,6 @@ using namespace sese::db;
 impl::PostgresDriverInstanceImpl::PostgresDriverInstanceImpl(PGconn *conn) noexcept {
     PQsetNoticeProcessor(conn, nullptr, nullptr);
 
-
     this->conn = conn;
     auto status = PQstatus(conn);
     if (status != CONNECTION_OK) {
