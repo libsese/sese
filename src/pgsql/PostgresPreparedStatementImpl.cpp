@@ -12,7 +12,6 @@ sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(con
     this->strings = new std::string[count];
 
     std::random_device rand;
-    this->stmtName = "sese_stmt_" + std::to_string(rand());
     this->result = nullptr;
     if (paramValuesSize == count) {
         createStmt();
@@ -35,9 +34,9 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setDouble(uint32_t index, do
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = FLOAT8OID;
     this->paramValuesSize++;
-    if (paramValuesSize == count) {
-        createStmt();
-    }
+//    if (paramValuesSize == count) {
+//        createStmt();
+//    }
     return true;
 }
 
@@ -47,9 +46,9 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setFloat(uint32_t index, flo
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = FLOAT4OID;
     this->paramValuesSize++;
-    if (paramValuesSize == count) {
-        createStmt();
-    }
+//    if (paramValuesSize == count) {
+//        createStmt();
+//    }
     return true;
 }
 
@@ -59,9 +58,9 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setInteger(uint32_t index, i
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = INT4OID;
     this->paramValuesSize++;
-    if (paramValuesSize == count) {
-        createStmt();
-    }
+//    if (paramValuesSize == count) {
+//        createStmt();
+//    }
     return true;
 }
 
@@ -71,9 +70,9 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setLong(uint32_t index, int6
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = INT8OID;
     this->paramValuesSize++;
-    if (paramValuesSize == count) {
-        createStmt();
-    }
+//    if (paramValuesSize == count) {
+//        createStmt();
+//    }
     return true;
 }
 
@@ -82,9 +81,9 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setText(uint32_t index, cons
     this->paramValues[index - 1] = value;
     this->paramTypes[index - 1] = TEXTOID;
     this->paramValuesSize++;
-    if (paramValuesSize == count) {
-        createStmt();
-    }
+//    if (paramValuesSize == count) {
+//        createStmt();
+//    }
     return true;
 }
 
@@ -93,14 +92,15 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setNull(uint32_t index) noex
     this->paramValues[index - 1] = nullptr;
     this->paramTypes[index - 1] = 0;
     this->paramValuesSize++;
-    if (paramValuesSize == count) {
-        createStmt();
-    }
+//    if (paramValuesSize == count) {
+//        createStmt();
+//    }
     return true;
 }
 
 //创建 stmt 语句
 bool sese::db::impl::PostgresPreparedStatementImpl::createStmt() noexcept {
+    this->stmtName = "sese_stmt_" + std::to_string(rand());
     const Oid *containerType = paramTypes;
 
     if (result) {
@@ -128,6 +128,10 @@ bool sese::db::impl::PostgresPreparedStatementImpl::createStmt() noexcept {
 }
 
 sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQuery() noexcept {
+    if (paramValuesSize >= count) {
+        if (!createStmt()) return nullptr;
+    }
+
     result = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
     if (result == nullptr) {
         error = (int) PQstatus(conn);
@@ -151,6 +155,10 @@ sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQ
 }
 
 int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept {
+    if (paramValuesSize >= count) {
+        if (!createStmt()) return -1;
+    }
+
     result = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
     if (result == nullptr) {
         error = (int) PQstatus(conn);
