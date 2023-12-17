@@ -74,11 +74,9 @@ bool impl::SqliteDriverInstanceImpl::rollback() noexcept {
 
 bool impl::SqliteDriverInstanceImpl::getInsertId(int64_t &id) const noexcept {
     id = (int64_t) sqlite3_last_insert_rowid(conn);
-    if (id) {
-        return true;
-    } else {
-        return false;
-    }
+    if (id) return true;
+    return false;
+
 }
 
 bool impl::SqliteDriverInstanceImpl::begin() noexcept {

@@ -32,10 +32,9 @@ namespace sese::db::impl {
         uint32_t count = 0;
         Oid *paramTypes;
         const char **paramValues;
-        uint32_t paramValuesSize = 0;
         std::string *strings;
         std::string stmtName;
-
+        bool stmtStatus;
         int error = 0;
         PGresult *result;
     };

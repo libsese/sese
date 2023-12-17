@@ -6,16 +6,12 @@ sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(con
     this->stmt = stmt;
     this->count = count;
     this->conn = conn;
+    this->result = nullptr;
+    this->stmtStatus = false;
     this->paramTypes = (Oid *) malloc(sizeof(Oid) * count);
     memset(this->paramTypes, 0, sizeof(Oid) * count);
     this->paramValues = (const char **) malloc(sizeof(const char *) * count);
     this->strings = new std::string[count];
-
-    std::random_device rand;
-    this->result = nullptr;
-    if (paramValuesSize == count) {
-        createStmt();
-    }
 }
 
 sese::db::impl::PostgresPreparedStatementImpl::~PostgresPreparedStatementImpl() noexcept {
@@ -33,10 +29,6 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setDouble(uint32_t index, do
     this->strings[index - 1] = std::to_string(value);
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = FLOAT8OID;
-    this->paramValuesSize++;
-//    if (paramValuesSize == count) {
-//        createStmt();
-//    }
     return true;
 }
 
@@ -45,10 +37,6 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setFloat(uint32_t index, flo
     this->strings[index - 1] = std::to_string(value);
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = FLOAT4OID;
-    this->paramValuesSize++;
-//    if (paramValuesSize == count) {
-//        createStmt();
-//    }
     return true;
 }
 
@@ -57,10 +45,6 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setInteger(uint32_t index, i
     this->strings[index - 1] = std::to_string(value);
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = INT4OID;
-    this->paramValuesSize++;
-//    if (paramValuesSize == count) {
-//        createStmt();
-//    }
     return true;
 }
 
@@ -69,10 +53,6 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setLong(uint32_t index, int6
     this->strings[index - 1] = std::to_string(value);
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = INT8OID;
-    this->paramValuesSize++;
-//    if (paramValuesSize == count) {
-//        createStmt();
-//    }
     return true;
 }
 
@@ -80,10 +60,6 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setText(uint32_t index, cons
     if (index - 1 >= count) return false;
     this->paramValues[index - 1] = value;
     this->paramTypes[index - 1] = TEXTOID;
-    this->paramValuesSize++;
-//    if (paramValuesSize == count) {
-//        createStmt();
-//    }
     return true;
 }
 
@@ -91,16 +67,17 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setNull(uint32_t index) noex
     if (index - 1 >= count) return false;
     this->paramValues[index - 1] = nullptr;
     this->paramTypes[index - 1] = 0;
-    this->paramValuesSize++;
-//    if (paramValuesSize == count) {
-//        createStmt();
-//    }
     return true;
 }
 
-//创建 stmt 语句
+/// 此函数用于创建驱动实现的具体预处理语句。
+/// 创建成功将会返回 true 并且 stmtStatus 为 true；
+/// 创建失败将会返回 false 并且 stmtStatus 为 false。
 bool sese::db::impl::PostgresPreparedStatementImpl::createStmt() noexcept {
-    this->stmtName = "sese_stmt_" + std::to_string(rand());
+    std::random_device device;
+    std::discrete_distribution<int> discreteDistribution;
+
+    this->stmtName = "sese_stmt_" + std::to_string(discreteDistribution(device));
     const Oid *containerType = paramTypes;
 
     if (result) {
@@ -108,31 +85,36 @@ bool sese::db::impl::PostgresPreparedStatementImpl::createStmt() noexcept {
         result = nullptr;
     }
 
-    result = PQprepare(conn, stmtName.c_str(), stmt.c_str(), count, containerType);
+    result = PQprepare(conn, stmtName.c_str(), stmt.c_str(), static_cast<int>(count), containerType);
     if (result == nullptr) {
         error = (int) PQstatus(conn);
+        this->stmtStatus = false;
         return false;
     }
 
     auto status = PQresultStatus(result);
     if (status != PGRES_COMMAND_OK) {
         error = (int) status;
+        this->stmtStatus = false;
         return false;
     }
 
-    if (result) {
-        PQclear(result);
-        result = nullptr;
-    }
+    this->stmtStatus = true;
+    PQclear(result);
+    result = nullptr;
+
     return true;
 }
 
+/// 执行前将判断驱动预处理语句是否已经被创建，
+/// 如果 预处理语句不存在且尝试创建预处理语句失败 则 返回并返回空指针，
+/// 反之继续执行接下来的逻辑
 sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQuery() noexcept {
-    if (paramValuesSize >= count) {
-        if (!createStmt()) return nullptr;
+    if (!this->stmtStatus && !createStmt()) {
+        return nullptr;
     }
 
-    result = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
+    result = PQexecPrepared(conn, stmtName.c_str(), static_cast<int>(count), paramValues, nullptr, nullptr, 0);
     if (result == nullptr) {
         error = (int) PQstatus(conn);
         return nullptr;
@@ -141,7 +123,6 @@ sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQ
     auto status = PQresultStatus(result);
 
     if (status != PGRES_TUPLES_OK) {
-        // fprintf(stderr, "%s\n", PQerrorMessage(conn));
         error = (int) status;
         return nullptr;
     }
@@ -149,17 +130,16 @@ sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQ
 
     auto rt = std::make_unique<impl::PostgresResultSetImpl>(result);
     error = 0;
-    paramValuesSize = 0;
     result = nullptr;
     return rt;
 }
 
 int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept {
-    if (paramValuesSize >= count) {
-        if (!createStmt()) return -1;
+    if (!this->stmtStatus && !createStmt()) {
+        return -1;
     }
 
-    result = PQexecPrepared(conn, stmtName.c_str(), count, paramValues, nullptr, nullptr, 0);
+    result = PQexecPrepared(conn, stmtName.c_str(), static_cast<int>(count), paramValues, nullptr, nullptr, 0);
     if (result == nullptr) {
         error = (int) PQstatus(conn);
         return -1;
@@ -168,7 +148,6 @@ int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept 
     auto status = PQresultStatus(result);
 
     if (status != PGRES_COMMAND_OK) {
-        // fprintf(stderr, "%s\n", PQerrorMessage(conn));
         error = (int) status;
         return -1;
     }
@@ -176,7 +155,6 @@ int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept 
 
     auto rt = (int64_t) PQcmdTuples(result);
     PQclear(result);
-    paramValuesSize = 0;
     result = nullptr;
     error = 0;
     return rt;

@@ -23,6 +23,7 @@ namespace sese::db::impl {
 
     protected:
         sqlite3_stmt *stmt;
+        bool stmtStatus = false;
     };
 
 }// namespace sese::db::impl
