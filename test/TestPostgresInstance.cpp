@@ -209,11 +209,6 @@ TEST(TestDriverInstance, TestUpdateStmt) {
         printf("id = %d, name = %s\n", (int) results1->getInteger(0), results1->getString(1).data());
     }
 
-    //    auto results1 = instance->executeQuery("select * from tb_stmt_update where id = 1;");
-    //    ASSERT_NE(nullptr, results1);
-    //    while (results1->next()) {
-    //        printf("id = %d, name = %s\n", (int) results1->getInteger(0), results1->getString(1).data());
-    //    }
 }
 
 // create delete_stmt

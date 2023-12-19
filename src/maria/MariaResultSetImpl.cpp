@@ -11,7 +11,7 @@ impl::MariaResultSetImpl::~MariaResultSetImpl() noexcept {
 }
 
 void impl::MariaResultSetImpl::reset() noexcept {
-    mysql_field_seek(res, 0);
+    mysql_data_seek(res, 0);
 }
 
 bool impl::MariaResultSetImpl::next() noexcept {

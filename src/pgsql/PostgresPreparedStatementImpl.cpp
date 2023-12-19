@@ -74,10 +74,11 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setNull(uint32_t index) noex
 /// 创建成功将会返回 true 并且 stmtStatus 为 true；
 /// 创建失败将会返回 false 并且 stmtStatus 为 false。
 bool sese::db::impl::PostgresPreparedStatementImpl::createStmt() noexcept {
-    std::random_device device;
-    std::discrete_distribution<int> discreteDistribution;
+    std::random_device rd;
+    std::mt19937 e{rd()};
+    std::uniform_int_distribution<int> discreteDistribution(1,65535);
 
-    this->stmtName = "sese_stmt_" + std::to_string(discreteDistribution(device));
+    this->stmtName = "sese_stmt_" + std::to_string(discreteDistribution(e));
     const Oid *containerType = paramTypes;
 
     if (result) {
@@ -121,7 +122,6 @@ sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQ
     }
 
     auto status = PQresultStatus(result);
-
     if (status != PGRES_TUPLES_OK) {
         error = (int) status;
         return nullptr;
@@ -146,7 +146,6 @@ int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept 
     }
 
     auto status = PQresultStatus(result);
-
     if (status != PGRES_COMMAND_OK) {
         error = (int) status;
         return -1;

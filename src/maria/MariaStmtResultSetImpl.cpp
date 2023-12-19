@@ -12,6 +12,7 @@ sese::db::impl::MariaStmtResultSet::~MariaStmtResultSet() noexcept {
 }
 
 void sese::db::impl::MariaStmtResultSet::reset() noexcept {
+    mysql_stmt_data_seek(stmt, 0);
 }
 
 bool sese::db::impl::MariaStmtResultSet::next() noexcept {
