@@ -37,13 +37,85 @@
 //}
 //#endif
 
-const char *sese::text::DateTimeFormatter::Month[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+const std::array<std::string, 12> sese::text::DateTimeFormatter::monthArray{
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+};
 
-const char *sese::text::DateTimeFormatter::Mon[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+const std::map<std::string, uint8_t> sese::text::DateTimeFormatter::monthMap{
+        {"January", 1},
+        {"February", 2},
+        {"March", 3},
+        {"April", 4},
+        {"May", 5},
+        {"June", 6},
+        {"July", 7},
+        {"August", 8},
+        {"September", 9},
+        {"October", 10},
+        {"November", 11},
+        {"December", 12}
+};
 
-const char *sese::text::DateTimeFormatter::WeekDay[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+const std::array<std::string, 12> sese::text::DateTimeFormatter::monArray{
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+};
 
-const char *sese::text::DateTimeFormatter::WkDay[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+const std::map<std::string, uint8_t> sese::text::DateTimeFormatter::monMap{
+        {"Jan", 1},
+        {"Feb", 2},
+        {"Mar", 3},
+        {"Apr", 4},
+        {"May", 5},
+        {"Jun", 6},
+        {"Jul", 7},
+        {"Aug", 8},
+        {"Sep", 9},
+        {"Oct", 10},
+        {"Nov", 11},
+        {"Dec", 12}
+};
+
+const std::array<std::string, 7> sese::text::DateTimeFormatter::weekDay{
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+};
+
+const std::array<std::string, 7> sese::text::DateTimeFormatter::wkDay{
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+};
 
 
 static int count(const char &ch, const char *str) {
@@ -74,9 +146,9 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
                 }
                 builder.append(std::to_string(dateTime.getDays())); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(WkDay[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
+                builder.append(wkDay[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
             } else {
-                builder.append(WeekDay[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
+                builder.append(weekDay[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
             }
             input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'm') {
@@ -101,9 +173,9 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
                 }
                 builder.append(std::to_string(dateTime.getMonths() + 1)); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(Mon[dateTime.getMonths()]); // GCOVR_EXCL_LINE
+                builder.append(monArray[dateTime.getMonths()]); // GCOVR_EXCL_LINE
             } else {
-                builder.append(Month[dateTime.getMonths()]); // GCOVR_EXCL_LINE
+                builder.append(monthArray[dateTime.getMonths()]); // GCOVR_EXCL_LINE
             }
             input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'y') {
@@ -239,13 +311,13 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dat
 #pragma warning(disable : 4996)
 #endif
 
-inline int mon2number(const char *str) {
-    for (int i = 0; i < 12; i++) {
-        if (strcasecmp(str, sese::text::DateTimeFormatter::Mon[i]) == 0) {
-            return i;
-        }
+int sese::text::DateTimeFormatter::mon2number(const std::string &str) {
+    auto item = monMap.find(str);
+    if (item != monMap.end()) {
+        return item->second - 1;
+    } else {
+        return -1;
     }
-    return -1;
 }
 
 #ifdef _timezone
@@ -257,44 +329,46 @@ inline int mon2number(const char *str) {
 
 uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &text) {
     std::tm tm{};
+    auto mon = text.substr(8, 3);
+    tm.tm_mon = mon2number(mon);
     if (text[7] == '-') {
         // 另一种时间格式
-        auto date = StringBuilder::split(text, " ");
+        // auto date = StringBuilder::split(text, " ");
+        // char _h[3]{0};
+        // char _m[3]{0};
+        // char _s[3]{0};
+        // memcpy(_h, date[2].c_str() + 0, 2);
+        // memcpy(_m, date[2].c_str() + 3, 2);
+        // memcpy(_s, date[2].c_str() + 6, 2);
+        // char *end;
+        // tm.tm_hour = (int) std::strtol(_h, &end, 10);
+        // tm.tm_min = (int) std::strtol(_m, &end, 10);
+        // tm.tm_sec = (int) std::strtol(_s, &end, 10);
+        // date = StringBuilder::split(date[1], "-");
+        // tm.tm_mday = std::stoi(date[0]);
+        // tm.tm_mon = mon2number(date[1].c_str());
+        // tm.tm_year = std::stoi(date[2]) + 100;
 
-        char _h[3]{0};
-        char _m[3]{0};
-        char _s[3]{0};
-        memcpy(_h, date[2].c_str() + 0, 2);
-        memcpy(_m, date[2].c_str() + 3, 2);
-        memcpy(_s, date[2].c_str() + 6, 2);
-
-        char *end;
-        tm.tm_hour = (int) std::strtol(_h, &end, 10);
-        tm.tm_min = (int) std::strtol(_m, &end, 10);
-        tm.tm_sec = (int) std::strtol(_s, &end, 10);
-
-        date = StringBuilder::split(date[1], "-");
-        tm.tm_mday = std::stoi(date[0]);
-        tm.tm_mon = mon2number(date[1].c_str());
-        tm.tm_year = std::stoi(date[2]) + 100;
+        std::sscanf(text.c_str(), "%*4s %2d-%*3s-%2d %2d:%2d:%2d %*3s", &tm.tm_mday, &tm.tm_year, &tm.tm_hour, &tm.tm_min, &tm.tm_sec); // NOLINT
+        tm.tm_year += 100;
     } else {
-        auto date = StringBuilder::split(text, " ");
+        // auto date = StringBuilder::split(text, " ");
+        // tm.tm_mday = std::stoi(date[1]);
+        // tm.tm_mon = mon2number(date[2]);
+        // tm.tm_year = std::stoi(date[3]) - 1900;
+        // char _h[3]{0};
+        // char _m[3]{0};
+        // char _s[3]{0};
+        // memcpy(_h, date[4].c_str() + 0, 2);
+        // memcpy(_m, date[4].c_str() + 3, 2);
+        // memcpy(_s, date[4].c_str() + 6, 2);
+        // char *end;
+        // tm.tm_hour = (int) std::strtol(_h, &end, 10);
+        // tm.tm_min = (int) std::strtol(_m, &end, 10);
+        // tm.tm_sec = (int) std::strtol(_s, &end, 10);
 
-        tm.tm_mday = std::stoi(date[1]);
-        tm.tm_mon = mon2number(date[2].c_str());
-        tm.tm_year = std::stoi(date[3]) - 1900;
-
-        char _h[3]{0};
-        char _m[3]{0};
-        char _s[3]{0};
-        memcpy(_h, date[4].c_str() + 0, 2);
-        memcpy(_m, date[4].c_str() + 3, 2);
-        memcpy(_s, date[4].c_str() + 6, 2);
-
-        char *end;
-        tm.tm_hour = (int) std::strtol(_h, &end, 10);
-        tm.tm_min = (int) std::strtol(_m, &end, 10);
-        tm.tm_sec = (int) std::strtol(_s, &end, 10);
+        std::sscanf(text.c_str(), "%*4s %2d %*3s %4d %2d:%2d:%2d %*3s", &tm.tm_mday, &tm.tm_year, &tm.tm_hour, &tm.tm_min, &tm.tm_sec); // NOLINT
+        tm.tm_year -= 1900;
     }
     return std::mktime(&tm) - timezone;
 }

@@ -5,9 +5,13 @@
  * @brief 日期时间格式化类
  */
 #pragma once
+
 #include "sese/Config.h"
 #include "sese/util/DateTime.h"
 #include "sese/text/StringBuilder.h"
+
+#include <map>
+#include <array>
 
 namespace sese::text {
 
@@ -73,10 +77,16 @@ public:
      */
     static uint64_t parseFromISO8601(const std::string &text);
 
-public:
-    static const char *Mon[12];
-    static const char *Month[12];
-    static const char *WkDay[7];
-    static const char *WeekDay[7];
+protected:
+    static int mon2number(const std::string &text);
+
+    static const std::map<std::string, uint8_t> monMap;
+    static const std::array<std::string, 12> monArray;
+
+    static const std::map<std::string, uint8_t> monthMap;
+    static const std::array<std::string, 12> monthArray;
+
+    static const std::array<std::string, 7> wkDay;
+    static const std::array<std::string, 7> weekDay;
 };
 } // namespace sese::text
