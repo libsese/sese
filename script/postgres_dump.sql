@@ -71,13 +71,13 @@ ALTER TABLE public.tb_delete OWNER TO postgres;
 -- Name: tb_getInsertId; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.tb_getInsertId (
-    id bigserial,
+CREATE TABLE public."tb_getInsertId" (
+    id integer NOT NULL,
     name character varying(32) NOT NULL
 );
 
 
-ALTER TABLE public.tb_getInsertId OWNER TO postgres;
+ALTER TABLE public."tb_getInsertId" OWNER TO postgres;
 
 --
 -- Name: tb_insert; Type: TABLE; Schema: public; Owner: postgres
@@ -120,8 +120,8 @@ ALTER TABLE public.tb_rollBack OWNER TO postgres;
 --
 
 CREATE TABLE public.tb_stmt_delete (
-    id integer NOT NULL,
-    name character varying(32) NOT NULL
+    id integer,
+    name character varying(32)
 );
 
 
@@ -132,8 +132,11 @@ ALTER TABLE public.tb_stmt_delete OWNER TO postgres;
 --
 
 CREATE TABLE public.tb_stmt_insert (
-    id integer NOT NULL,
-    name character varying(32) NOT NULL
+    id bigint,
+    name character varying(32),
+    setDouble double precision,
+    setFloat real,
+    setInteger integer
 );
 
 
@@ -144,8 +147,8 @@ ALTER TABLE public.tb_stmt_insert OWNER TO postgres;
 --
 
 CREATE TABLE public.tb_stmt_query (
-    id integer NOT NULL,
-    name character varying(32) NOT NULL
+    id integer,
+    name character varying(32)
 );
 
 
@@ -156,8 +159,8 @@ ALTER TABLE public.tb_stmt_query OWNER TO postgres;
 --
 
 CREATE TABLE public.tb_stmt_update (
-    id integer NOT NULL,
-    name character varying(32) NOT NULL
+    id integer,
+    name character varying(32)
 );
 
 
@@ -179,8 +182,7 @@ ALTER TABLE public.tb_update OWNER TO postgres;
 -- Data for Name: tb_begin; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tb_begin VALUES (1, 'foo');
-INSERT INTO public.tb_begin VALUES (2, 'bar');
+
 
 --
 -- Data for Name: tb_commit; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -202,8 +204,8 @@ INSERT INTO public.tb_delete VALUES (2, 'bar');
 -- Data for Name: tb_getInsertId; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tb_getInsertId (name) VALUES ('foo');
-INSERT INTO public.tb_getInsertId (name) VALUES ('bar');
+INSERT INTO public."tb_getInsertId" VALUES (1, 'foo');
+INSERT INTO public."tb_getInsertId" VALUES (2, 'bar');
 
 
 --
@@ -242,8 +244,8 @@ INSERT INTO public.tb_stmt_delete VALUES (2, 'bar');
 -- Data for Name: tb_stmt_insert; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tb_stmt_insert VALUES (1, 'foo');
-INSERT INTO public.tb_stmt_insert VALUES (2, 'bar');
+INSERT INTO public.tb_stmt_insert VALUES (2, 'bar', 1, 1, 1);
+INSERT INTO public.tb_stmt_insert VALUES (1, 'foo', 1, 1, 1);
 
 
 --
@@ -274,8 +276,8 @@ INSERT INTO public.tb_update VALUES (2, 'bar');
 -- Name: tb_getInsertId tb_getInsertId_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.tb_getInsertId
-    ADD CONSTRAINT tb_getInsertId_pk PRIMARY KEY (id);
+ALTER TABLE ONLY public."tb_getInsertId"
+    ADD CONSTRAINT "tb_getInsertId_pk" PRIMARY KEY (id);
 
 
 --
