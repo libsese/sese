@@ -14,77 +14,13 @@ endif ()
 
 add_definitions("-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
 
+file(GLOB TEST_SRC "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
+
 add_executable(
         AllTestInMain
-        AllTest.cpp
-        TestAddress.cpp
-        TestArgParser.cpp
-        TestAsyncLogger.cpp
-        TestBase64.cpp
-        TestBufferedStream.cpp
-        TestBufferWrapper.cpp
-        TestByteBuilder.cpp
-        TestCompressor.cpp
-        TestConcurrent.cpp
-        TestConfig.cpp
-        TestCookies.cpp
-        TestCSVUtil.cpp
-        TestDateTime.cpp
-        TestDNS.cpp
-        TestEncodingConverter.cpp
-        TestEndian.cpp
-        TestEnv.cpp
-        TestException.cpp
-        TestFakeStream.cpp
-        TestFileNotifier.cpp
-        TestFileLocker.cpp
-        TestFileStream.cpp
-        TestFixedBuffer.cpp
-        TestHttp.cpp
-        TestHttp2.cpp
-        TestHttpClient.cpp
-        TestHttpService.cpp
-        TestHttpService_V2.cpp
-        TestHttpUtil.cpp
-        TestIni.cpp
-        TestInit.cpp
-        TestIOBuf.cpp
-        TestIOCP.cpp
-        TestJson.cpp
-        TestLibraryLoader.cpp
-        TestLogger.cpp
-        TestMemoryViewer.cpp
-        TestMessageDigest.cpp
-        TestNetworkUtil.cpp
-        TestNumber.cpp
-        TestOutputUtil.cpp
-        TestPath.cpp
-        TestPercentConverter.cpp
-        TestPlugin/TestPlugin.cpp
-        TestProcess.cpp
-        TestRandom.cpp
-        TestRange.cpp
-        TestReusableSocket.cpp
-        TestRPC.cpp
-        TestService.cpp
+        ${TEST_SRC}
         TestSharedMemory/TestSharedMemory.cpp
-        TestSocket.cpp
-        TestSSL.cpp
-        TestSString.cpp
-        TestStackInfo.cpp
-        TestStopWatch.cpp
-        TestStream.cpp
-        TestStringBuilder.cpp
-        TestThread.cpp
-        TestTimer.cpp
-        TestUniReader.cpp
-        TestUtil.cpp
-        TestUuid.cpp
-        TestValue.cpp
-        TestVersion.cpp
-        TestWebsocketService.cpp
-        TestXML.cpp
-        TestYaml.cpp
+        TestPlugin/TestPlugin.cpp
 )
 
 target_link_libraries(AllTestInMain Core GTest::gtest GTest::gtest_main)
