@@ -35,7 +35,7 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
 }
 
 std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept {
-    auto pos = str.find_first_of("<");
+    auto pos = str.find_first_of('<');
     if (pos == std::string::npos) {
         return str;
     } else {

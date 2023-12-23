@@ -45,11 +45,7 @@ public:
     /// \return 编码结果
     static bool decodeBase62(InputStream *input, OutputStream *output) noexcept;
 
-#ifdef SESE_BUILD_TEST
 public:
-#else
-private:
-#endif
     static bool encodeInteger(size_t num, OutputStream *output) noexcept;
     static int64_t decodeBuffer(const unsigned char *buffer, size_t size) noexcept;
 };
