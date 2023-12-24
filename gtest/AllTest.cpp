@@ -1,4 +1,5 @@
 #include <sese/util/Initializer.h>
+#include <sese/record/Marco.h>
 
 #include <gtest/gtest.h>
 
