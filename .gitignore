@@ -6,6 +6,7 @@ coverage
 CMakeSettings.json
 build
 build-*
+.xmake
 
 
 ### C++ template

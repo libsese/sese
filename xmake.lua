@@ -13,12 +13,19 @@ set_encodings("utf-8")
 
 add_includedirs("$(projectdir)")
 
+if is_plat("linux") or is_plat("macosx") then 
+    add_cxxflags("-fPIC")
+end
+
 target("sese-core")
     set_kind("shared")
     add_defines("SESE_REPO_HASH=\"$(shell git --no-pager log -1 --pretty=format:%h)\"")
     add_defines("SESE_REPO_BRANCH=\"$(shell git --no-pager symbolic-ref --short -q HEAD)\"")
     add_packages("openssl3")
     add_packages("zlib")
+    if is_mode("debug") then
+        set_policy("build.sanitizer.address", true)
+    end
     if is_plat("windows") then
         add_defines("WIN32")
         add_packages("advapi32")
@@ -29,6 +36,18 @@ target("sese-core")
         add_packages("ws2_32")
         add_files("sese/native/win/**.cpp")
         add_links("dbghelp", "iphlpapi")
+    end
+    if is_plat("linux") then
+        add_packages("pthread")
+	    add_files("sese/native/linux/**.cpp")
+	    add_files("sese/native/unix/**.cpp")
+    end
+    if is_plat("macosx") then
+        add_frameworks("CoreFoundation")
+        add_frameworks("CoreServices")
+        add_frameworks("IOKit")
+        add_files("sese/native/darwin/**.cpp")
+        add_files("sese/native/unix/**.cpp")
     end
     -- add_files("sese/concurrent/**.cpp")
     add_files("sese/config/**.cpp")
@@ -60,38 +79,29 @@ target("plugin")
     add_files("sese/plugin/**.cpp")
     add_headerfiles("sese/**.h")
 
-option("test")
-    set_default(false)
-    set_showmenu(true)
-    set_description("enable unit test")
-
 target("module")
     set_kind("shared")
-    add_options("test")
+    set_extension(".m")
+    set_prefixname("")
     add_files("gtest/TestPlugin/Module.cpp")
     add_deps("plugin")
-    add_links("plugin")
-    set_extension(".m")
 
 target("mem.d")
     set_kind("binary")
-    add_options("test")
     add_files("gtest/TestSharedMemory/Memory.d.cpp")
     add_deps("sese-core")
-    add_links("sese-core")
 
-target("test")
+target("all_test_in_main")
     set_kind("binary")
-    add_options("test")
     add_defines("SESE_BUILD_TEST")
-    add_packages("gtest")
     add_files("gtest/*.cpp")
     add_files("gtest/TestPlugin/TestPlugin.cpp")
     add_files("gtest/TestSharedMemory/TestSharedMemory.cpp")
-    add_deps("module")
-    add_deps("mem.d")
     add_deps("sese-core")
-    add_links("sese-core")
+    add_packages("gtest")
+    if is_mode("debug") then
+        set_policy("build.sanitizer.address", true)
+    end
     on_config(function (target)
         import("core.project.project")
         local projectdir = os.projectdir():gsub("\\", "/")
@@ -104,3 +114,10 @@ target("test")
         target:add("defines", "PATH_TO_MODULE=\"" .. module_targetfile .. "\"")
         target:add("defines", "PATH_TO_MEM_D=\"" .. mem_d_targetfile .."\"")
     end)
+
+target("test")
+    set_kind("phony")
+    add_options("test")
+    add_deps("module")
+    add_deps("mem.d")
+    add_deps("all_test_in_main")
