@@ -4,7 +4,7 @@
 using sese::PercentConverter;
 using sese::io::OutputStream;
 
-std::set<char> sese::PercentConverter::urlExcludeChars{
+const std::set<char> PercentConverter::urlExcludeChars{
         '!', '*', '\"', '\'', '(', ')', ';', ':', '@', '&',
         '=', '+', '$', ',', '/', '?', '%', '#', '[', ']', ' '};
 
@@ -13,35 +13,11 @@ char inline getEncodeChar(unsigned char ch) {
 }
 
 void PercentConverter::encode(const char *src, OutputStream *dest) {
-    unsigned char buffer[3]{'%'};
+    unsigned char buffer[3]{'%', 0, 0};
     auto *p = reinterpret_cast<const unsigned char *>(src);
     while (*p != 0) {
         if (((*p & 0b1000'0000) >> 7) == 0) {
-            dest->write(p, 1);
-            p++;
-        } else {
-            buffer[1] = getEncodeChar(*p / 0x10);
-            buffer[2] = getEncodeChar(*p % 0x10);
-            dest->write(buffer, 3);
-            p++;
-        }
-    }
-}
-
-void PercentConverter::encode(const char *src, const OutputStream::Ptr &dest) {
-    encode(src, dest.get());
-}
-
-void PercentConverter::encode(const char *src, const OutputStream::Ptr &dest, std::set<char> &excludeChars) {
-    encode(src, dest.get(), excludeChars);
-}
-
-void PercentConverter::encode(const char *src, OutputStream *dest, std::set<char> &excludeChars) {
-    unsigned char buffer[3]{'%'};
-    auto *p = reinterpret_cast<const unsigned char *>(src);
-    while (*p != 0) {
-        if (((*p & 0b1000'0000) >> 7) == 0) {
-            if (excludeChars.count((char) *p)) {
+            if (urlExcludeChars.count((char) *p)) {
                 buffer[1] = getEncodeChar(*p / 0x10);
                 buffer[2] = getEncodeChar(*p % 0x10);
                 dest->write(buffer, 3);
@@ -57,6 +33,10 @@ void PercentConverter::encode(const char *src, OutputStream *dest, std::set<char
             p++;
         }
     }
+}
+
+void PercentConverter::encode(const char *src, const OutputStream::Ptr &dest) {
+    encode(src, dest.get());
 }
 
 char inline getHexChar(char ch) {
@@ -102,30 +82,13 @@ bool PercentConverter::decode(const char *src, OutputStream *dest) {
     return true;
 }
 
-std::string PercentConverter::encode(const char *src) {
+std::string sese::PercentConverter::encode(const char *src) {
     text::StringBuilder builder;
     unsigned char buffer[4]{'%', 0, 0, 0};
     auto *p = reinterpret_cast<const unsigned char *>(src);
     while (*p != 0) {
         if (((*p & 0b1000'0000) >> 7) == 0) {
-            builder.append((char) *p);
-            p++;
-        } else {
-            buffer[1] = getEncodeChar(*p / 0x10);
-            buffer[2] = getEncodeChar(*p % 0x10);
-            builder.append((const char *) buffer);
-            p++;
-        }
-    }
-    return builder.toString();
-}
-std::string sese::PercentConverter::encode(const char *src, std::set<char> &excludeChars) {
-    text::StringBuilder builder;
-    unsigned char buffer[4]{'%', 0, 0, 0};
-    auto *p = reinterpret_cast<const unsigned char *>(src);
-    while (*p != 0) {
-        if (((*p & 0b1000'0000) >> 7) == 0) {
-            if (excludeChars.count((char) *p)) {
+            if (urlExcludeChars.count((char) *p)) {
                 buffer[1] = getEncodeChar(*p / 0x10);
                 buffer[2] = getEncodeChar(*p % 0x10);
                 builder.append((const char *) buffer);

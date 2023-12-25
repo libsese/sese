@@ -1,8 +1,8 @@
 1 TYPELIB "WindowsDllInfo.rc"
 1 VERSIONINFO
 
-FILEVERSION @PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@
-PRODUCTVERSION @PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@
+FILEVERSION ${PROJECT_VERSION_MAJOR}, ${PROJECT_VERSION_MINOR}, ${PROJECT_VERSION_PATCH}
+PRODUCTVERSION ${PROJECT_VERSION_MAJOR}, ${PROJECT_VERSION_MINOR}, ${PROJECT_VERSION_PATCH}
 FILEFLAGSMASK 0x3FL
 #ifdef _DEBUG
 FILEFLAGS 0x1L
@@ -19,10 +19,10 @@ BEGIN
         BEGIN
             VALUE "FileDescription", "Sese Library - https://github.com/libsese/sese.core.git"
             VALUE "InternalName", "Sese Library"
-            VALUE "LegalCopyright", "Kaoru (C) 2022"
-            VALUE "OriginalFilename", "sese.dll"
-            VALUE "ProductName", "Sese"
-            VALUE "ProductVersion", "${PROJECT_VERSION_MAJOR},${PROJECT_VERSION_MINOR},${SESE_REPO_HASH}"
+            VALUE "LegalCopyright", "Kaoru (C) 2022-2024"
+            VALUE "OriginalFilename", "sese.core.dll"
+            VALUE "ProductName", "sese-core"
+            VALUE "ProductVersion", "${PROJECT_VERSION_MAJOR},${PROJECT_VERSION_MINOR},${PROJECT_VERSION_PATCH}"
         END
     END
     BLOCK "VarFileInfo"

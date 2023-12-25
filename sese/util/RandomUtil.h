@@ -8,9 +8,8 @@
 
 #pragma once
 
-#include <sese/util/Random.h>
-
 #include <cmath>
+#include <random>
 
 namespace sese {
 /// 随机工具类
@@ -21,11 +20,6 @@ public:
     static const int REQUIRED_DIGIT = 4;
     static const int REQUIRED_SYMBOL = 8;
 
-    static std::string UPPER_LETTER_LIST;
-    static std::string LOWER_LETTER_LIST;
-    static std::string DIGIT_LIST;
-    static std::string SYMBOL_LIST;
-
     template<class ReturnValue>
     static ReturnValue next();
 
@@ -34,20 +28,27 @@ public:
 
     static std::string nextString(size_t length, int required);
 
+    static uint64_t nextUnsignedInt64();
+
 private:
     static std::string nextString(size_t length, bool upper, bool lower, bool digit, bool symbol);
 
-    static Random dev;
+    static std::string UPPER_LETTER_LIST;
+    static std::string LOWER_LETTER_LIST;
+    static std::string DIGIT_LIST;
+    static std::string SYMBOL_LIST;
+
+    static std::random_device dev;
 };
 } // namespace sese
 
 template<class ReturnValue>
-ReturnValue sese::RandomUtil::next() {
+inline ReturnValue sese::RandomUtil::next() {
     return static_cast<ReturnValue>(dev());
 }
 
 template<class ReturnValue>
-ReturnValue sese::RandomUtil::next(ReturnValue min, ReturnValue max) {
+inline ReturnValue sese::RandomUtil::next(ReturnValue min, ReturnValue max) {
     auto _min = std::min<ReturnValue>(min, max);
     auto _max = std::max<ReturnValue>(min, max);
     auto range = _max - _min;

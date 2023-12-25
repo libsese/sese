@@ -17,15 +17,16 @@ if is_plat("linux") or is_plat("macosx") then
     add_cxxflags("-fPIC")
 end
 
+if is_mode("debug") then
+    set_policy("build.sanitizer.address", true)
+end
+
 target("sese-core")
     set_kind("shared")
     add_defines("SESE_REPO_HASH=\"$(shell git --no-pager log -1 --pretty=format:%h)\"")
     add_defines("SESE_REPO_BRANCH=\"$(shell git --no-pager symbolic-ref --short -q HEAD)\"")
     add_packages("openssl3")
     add_packages("zlib")
-    if is_mode("debug") then
-        set_policy("build.sanitizer.address", true)
-    end
     if is_plat("windows") then
         add_defines("WIN32")
         add_packages("advapi32")
@@ -34,6 +35,7 @@ target("sese-core")
         -- add_packages("iphlpapi")
         add_packages("secur32")
         add_packages("ws2_32")
+        add_files("$(buildir)/*.rc")
         add_files("sese/native/win/**.cpp")
         add_links("dbghelp", "iphlpapi")
     end
@@ -65,6 +67,18 @@ target("sese-core")
     add_files("sese/util/**.cpp")
     add_headerfiles("sese/**.h")
     add_rules("utils.symbols.export_all", {export_classes = true})
+    on_load(function (target)
+        import("core.base.semver")
+        import("core.project.project")
+        local version = semver.new(project.version())
+        if is_plat("windows") then 
+            target:set("configdir", "$(buildir)")
+            target:add("configfiles", "WindowsDllInfo.rc.in");
+            target:set("configvar", "PROJECT_VERSION_MAJOR", version:major())
+            target:set("configvar", "PROJECT_VERSION_MINOR", version:minor())
+            target:set("configvar", "PROJECT_VERSION_PATCH", version:patch())
+        end
+    end)
     on_config(function (target) 
         import("core.base.semver")
         import("core.project.project")
@@ -90,9 +104,6 @@ target("mem.d")
     set_kind("binary")
     add_files("gtest/TestSharedMemory/Memory.d.cpp")
     add_deps("sese-core")
-    if is_mode("debug") then
-        set_policy("build.sanitizer.address", true)
-    end
 
 target("test")
     set_kind("binary")
@@ -104,9 +115,6 @@ target("test")
     add_deps("mem.d", {inherit = false})
     add_deps("sese-core")
     add_packages("gtest")
-    if is_mode("debug") then
-        set_policy("build.sanitizer.address", true)
-    end
     on_config(function (target)
         import("core.project.project")
         local projectdir = os.projectdir():gsub("\\", "/")

@@ -1,11 +1,10 @@
 #include "sese/config/CSVWriter.h"
 #include "sese/io/FileStream.h"
 #include "sese/util/RandomUtil.h"
+#include "sese/util/Random.h"
 #include "sese/record/Marco.h"
 
 #include "gtest/gtest.h"
-
-#include <random>
 
 TEST(TestRandom, STD) {
     sese::Random device;

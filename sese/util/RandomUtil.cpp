@@ -2,12 +2,16 @@
 
 #include <sese/text/StringBuilder.h>
 
-sese::Random sese::RandomUtil::dev{};
+std::random_device sese::RandomUtil::dev{};
 
 std::string sese::RandomUtil::UPPER_LETTER_LIST = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 std::string sese::RandomUtil::LOWER_LETTER_LIST = "abcdefghijklmnopqrstuvwxyz";
 std::string sese::RandomUtil::DIGIT_LIST = "01234567890";
 std::string sese::RandomUtil::SYMBOL_LIST = "@#$&*()'\"%-+=/;:!,?._^[]{}|~\\<>";
+
+uint64_t sese::RandomUtil::nextUnsignedInt64() {
+    return dev();
+}
 
 std::string sese::RandomUtil::nextString(size_t length, int required) {
     bool upper = required & REQUIRED_UPPER_LETTER;

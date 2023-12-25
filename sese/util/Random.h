@@ -14,7 +14,7 @@ namespace sese {
 /**
  * @brief 基于线性同余发生器的随机类
  */
-class API Random : public Noncopyable {
+class SESE_DEPRECATED_WITH("Unsafe") Random : public Noncopyable {
     // for std::random_device
 public:
     using ResultType = uint64_t;
