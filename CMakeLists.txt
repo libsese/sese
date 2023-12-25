@@ -3,11 +3,16 @@ project(sese-db VERSION 1.1.2)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 
 option(SESE_DB_BUILD_TEST "build unit test targets" ON)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
 option(SESE_DB_USE_SQLITE "add sqlite support" OFF)
 option(SESE_DB_USE_POSTGRES "add postgresql support" OFF)
+
+list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
+
+message(STATUS "Using toolchain file: ${CMAKE_TOOLCHAIN_FILE}.")
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     if (UNIX)

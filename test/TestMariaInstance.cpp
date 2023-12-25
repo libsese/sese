@@ -6,6 +6,14 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
+// instanceError
+TEST(TestDriverInstance, TestInstanceError) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;port=18806;"
+    );
+    ASSERT_EQ(nullptr, instance);
+}
 
 // query
 TEST(TestDriverInstance, TestQueryData) {
@@ -16,12 +24,25 @@ TEST(TestDriverInstance, TestQueryData) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto result = instance->executeQuery("select * from tb_query where id = 1");
-    ASSERT_NE(nullptr, result);
-    while (result->next()) {
-        printf("result id = %d name = %s\n", result->getInteger(0), result->getString(1).data());
+    // error
+    auto result = instance->executeQuery("select * from tb_query_error where id = 1");
+    ASSERT_EQ(nullptr, result);
+    printf("errorMsg: %s\n", instance->getLastErrorMessage());
+
+    auto result1 = instance->executeQuery("select * from tb_query;");
+    ASSERT_NE(nullptr, result1);
+    printf("columns: %zu\n", result1->getColumns());
+    while (result1->next()) {
+        printf("result: id = %d name = %s\n", result1->getInteger(0), result1->getString(1).data());
+    }
+
+    result1->reset();
+
+    while (result1->next()) {
+        printf("result: id = %d name = %s\n", result1->getInteger(0), result1->getString(1).data());
     }
 }
+
 
 // update
 TEST(TestDriverInstance, TestModifyData) {
@@ -40,6 +61,11 @@ TEST(TestDriverInstance, TestModifyData) {
 
     auto count = instance->executeUpdate("update tb_update set name = 'bar' where id = 1;");
     EXPECT_NE(-1, count);
+
+    //error
+    auto count1 = instance->executeUpdate("update tb_update_error set name = 'bar' where id = 1;");
+    EXPECT_EQ(-1, count1);
+    printf("errorMsg: %s\n", instance->getLastErrorMessage());
 
     auto result1 = instance->executeQuery("select * from tb_update where id = 1;");
     ASSERT_NE(nullptr, result1);
@@ -60,16 +86,21 @@ TEST(TestDriverInstance, TestInsertData) {
     auto result = instance->executeQuery("select * from tb_insert;");
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+        printf("result: id = %d name = %s double = %lf setFloat = %f\n", (int) result->getLong(0), result->getString(1).data(), result->getDouble(2), result->getFloat(3));
     }
 
-    auto count = instance->executeUpdate("insert into tb_insert (id, name) values (3, 'mike');");
+    auto count = instance->executeUpdate("insert into tb_insert (id, name, setDouble, setFloat) values (3, 'mike', 3, 3);");
     EXPECT_NE(-1, count);
+
+    // error
+    auto count1 = instance->executeUpdate("insert into tb_insert_error (id, name) values (3, 'mike');");
+    EXPECT_EQ(-1, count1);
+    printf("errorMsg: %s\n", instance->getLastErrorMessage());
 
     auto result1 = instance->executeQuery("select * from tb_insert;");
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
-        printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+        printf("result1: id = %d name = %s double = %lf setFloat = %f\n", (int) result1->getLong(0), result1->getString(1).data(), result1->getDouble(2), result1->getFloat(3));
     }
 }
 
@@ -91,6 +122,11 @@ TEST(TestDriverInstance, TestDeleteData) {
     auto count = instance->executeUpdate("delete from tb_delete where id = 1;");
     EXPECT_NE(-1, count);
 
+    // error
+    auto count1 = instance->executeUpdate("update tb_delete_error set name = 'bar' where id = 1;");
+    EXPECT_EQ(-1, count1);
+    printf("errorMsg: %s\n", instance->getLastErrorMessage());
+
     auto result1 = instance->executeQuery("select * from tb_delete;");
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
@@ -111,10 +147,18 @@ TEST(TestCreateStmt, TestQueryStmt) {
     auto stmt = instance->createStatement("select * from tb_stmt_query where id = ?;");
     ASSERT_NE(nullptr, stmt);
 
-    EXPECT_EQ(true, stmt->setLong(1, id));
+//    ASSERT_NE(true, stmt->setLong(2, id));
+    ASSERT_EQ(true, stmt->setLong(1, id));
 
     auto result = stmt->executeQuery();
     ASSERT_NE(nullptr, result);
+    printf("columns: %zu\n", result->getColumns());
+    while (result->next()) {
+        printf("result: id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+    }
+
+    result->reset();
+
     while (result->next()) {
         printf("result: id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
@@ -140,11 +184,19 @@ TEST(TestCreateStmt, TestUpdateStmt) {
     auto stmt = instance->createStatement("update tb_stmt_update set name = ? where id = ?;");
     ASSERT_NE(nullptr, stmt);
 
-    EXPECT_EQ(true, stmt->setText(1, name));
-    EXPECT_EQ(true, stmt->setLong(2, id));
+    ASSERT_NE(true, stmt->setText(3, name));
+    ASSERT_EQ(true, stmt->setText(1, name));
+    ASSERT_EQ(true, stmt->setLong(2, id));
 
     auto count = stmt->executeUpdate();
-    EXPECT_NE(-1, count);
+    ASSERT_NE(-1, count);
+
+    int64_t id1 = 2;
+    ASSERT_NE(true, stmt->setNull(3));
+    ASSERT_EQ(true, stmt->setNull(1));
+    ASSERT_EQ(true, stmt->setLong(2, id1));
+    auto count1 = stmt->executeUpdate();
+    ASSERT_NE(-1, count1);
 
     auto result1 = instance->executeQuery("select * from tb_stmt_update where id = 1;");
     ASSERT_NE(nullptr, result1);
@@ -168,11 +220,11 @@ TEST(TestCreateStmt, TestdeleteStmt) {
         printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
-    int64_t id = 1;
+    int32_t id = 1;
     auto stmt = instance->createStatement("delete from tb_stmt_delete where id = ?;");
     ASSERT_NE(nullptr, stmt);
 
-    EXPECT_EQ(true, stmt->setLong(1, id));
+    EXPECT_EQ(true, stmt->setInteger(1, id));
 
     auto count = stmt->executeUpdate();
     EXPECT_NE(-1, count);
@@ -194,29 +246,42 @@ TEST(TestCreateStmt, TestinsertStmt) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto result = instance->executeQuery("select * from tb_stmt_insert;");
+    auto stmtQuery = instance->createStatement("select * from tb_stmt_insert;");
+    auto result = stmtQuery->executeQuery();
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("result: id = %d name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+        printf("result: id = %d name = %s setDouble = %lf setFloat = %f setInteger = %d\n", (int) result->getLong(0), result->getString(1).data(), result->getDouble(2), result->getFloat(3), result->getInteger(4));
     }
 
-    int64_t id = 3;
+    int32_t id = 3;
     const char *name = "mike";
-    auto stmt = instance->createStatement("insert into tb_stmt_insert (id, name) values (?, ?);");
+    int64_t Long = 78;
+    float flo = 5.1;
+    double dou = 45.45;
+    auto stmt = instance->createStatement("insert into tb_stmt_insert (id, name, setDouble, setFloat, setLong) values (?, ?, ?, ?, ?);");
     ASSERT_NE(nullptr, stmt);
-
-    EXPECT_EQ(true, stmt->setLong(1, id));
+    EXPECT_EQ(true, stmt->setInteger(1, id));
+    ASSERT_NE(true, stmt->setInteger(6, id));
     EXPECT_EQ(true, stmt->setText(2, name));
+    ASSERT_NE(true, stmt->setText(6, name));
+    ASSERT_NE(true, stmt->setDouble(6, dou));
+    EXPECT_EQ(true, stmt->setDouble(3, dou));
+    ASSERT_NE(true, stmt->setFloat(6, flo));
+    EXPECT_EQ(true, stmt->setFloat(4, flo));
+    ASSERT_NE(true, stmt->setLong(6, Long));
+    EXPECT_EQ(true, stmt->setLong(5, Long));
 
     auto count = stmt->executeUpdate();
     EXPECT_NE(-1, count);
 
-    auto result1 = instance->executeQuery("select * from tb_stmt_insert;");
+    auto stmtQuery1 = instance->createStatement("select * from tb_stmt_insert;");
+    auto result1 = stmtQuery1->executeQuery();
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
-        printf("result1: id = %d name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+        printf("result1: id = %d name = %s setDouble = %lf setFloat = %f setLong = %ld\n", (int) result1->getInteger(0), result1->getString(1).data(), result1->getDouble(2), result1->getFloat(3), result1->getLong(4));
     }
 }
+
 
 // get autoCommit
 TEST(TestTransaction, TestGetAutoCommit) {
@@ -386,7 +451,7 @@ TEST(TestTransaction, TestGetInserId) {
 
     int64_t id = 0;
     ASSERT_EQ(true, instance->getInsertId(id));
-    printf("insertId = %lld\n", id);
+    printf("insertId = %ld\n", id);
 
     auto results1 = instance->executeQuery("select * from tb_getInsertId;");
     ASSERT_NE(nullptr, results1);

@@ -34,6 +34,12 @@ TEST(TestDriverInstance, TestQueryData) {
     while (result->next()) {
         printf("id = %d, name = %s Columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
     }
+
+    result->reset();
+
+    while (result->next()) {
+        printf("id = %d, name = %s Columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
+    }
 }
 
 // update
@@ -133,7 +139,6 @@ TEST(TestDriverInstance, TestUpdateStmt) {
     ASSERT_NE(-1, count1);
 
     auto result1 = instance->executeQuery("select * from tb_stmt_update where id = 1;");
-    result1->reset();
     while (result1->next()) {
         printf("result1 id = %d, name = %s\n", result1->getInteger(0), result1->getString(1).data());
     }
@@ -146,13 +151,19 @@ TEST(TestDriverInstance, TestSelectstmt) {
     ASSERT_EQ(0, instance->getLastError());
 
     int64_t id = 1;
-    auto stmt = instance->createStatement("select * from tb_stmt_query where id = ?;");
+    auto stmt = instance->createStatement("select * from tb_stmt_query where id  = ?;");
     ASSERT_NE(nullptr, stmt);
 
     EXPECT_EQ(true, stmt->setLong(1, id));
 
     auto result = stmt->executeQuery();
     ASSERT_NE(nullptr, result);
+    while (result->next()) {
+        printf("stmt result: id = %d, name = %s, columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
+    }
+
+    result->reset();
+
     while (result->next()) {
         printf("stmt result: id = %d, name = %s, columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
     }
