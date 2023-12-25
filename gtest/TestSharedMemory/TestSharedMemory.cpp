@@ -19,10 +19,10 @@ TEST(TestSharedMemory, MEM_D) {
     if (mem == nullptr) {
         EXPECT_TRUE(process->kill());
     }
-    ASSERT_NE(mem, nullptr) << "failed to use shared memory: errno" << sese::getErrorString();
+    ASSERT_NE(mem, nullptr) << "failed to use shared memory: " << sese::getErrorString();
 
     auto pInt = (int64_t *) mem->getBuffer();
-    LogHelper::i("memory daemon init number is: %lld", *pInt);
+    LogHelper::i("memory daemon init number is: %" PRId64, *pInt);
 
     *pInt += 1;
     EXPECT_EQ(process->wait(), 0);
