@@ -23,16 +23,12 @@ end
 
 target("sese-core")
     set_kind("shared")
-    add_defines("SESE_REPO_HASH=\"$(shell git --no-pager log -1 --pretty=format:%h)\"")
-    add_defines("SESE_REPO_BRANCH=\"$(shell git --no-pager symbolic-ref --short -q HEAD)\"")
     add_packages("openssl3")
     add_packages("zlib")
     if is_plat("windows") then
         add_defines("WIN32")
         add_packages("advapi32")
         add_packages("crypt32")
-        -- add_packages("dbghelp")
-        -- add_packages("iphlpapi")
         add_packages("secur32")
         add_packages("ws2_32")
         add_files("$(buildir)/*.rc")
@@ -51,10 +47,8 @@ target("sese-core")
         add_files("sese/native/darwin/**.cpp")
         add_files("sese/native/unix/**.cpp")
     end
-    -- add_files("sese/concurrent/**.cpp")
     add_files("sese/config/**.cpp")
     add_files("sese/convert/**.cpp")
-    -- add_files("sese/event/**.cpp")
     add_files("sese/io/**.cpp")
     add_files("sese/net/**.cpp")
     add_files("sese/plugin/**.cpp")
@@ -86,6 +80,18 @@ target("sese-core")
         target:add("defines", "SESE_MAJOR_VERSION=\"" .. version:major() .. "\"")
         target:add("defines", "SESE_MINOR_VERSION=\"" .. version:minor() .. "\"")
         target:add("defines", "SESE_PATCH_VERSION=\"" .. version:patch() .. "\"")
+
+        import("lib.detect.find_program")
+        local git = find_program("git")
+        if git then
+            local branch = "$(shell git --no-pager symbolic-ref --short -q HEAD)"
+            local hash = "$(shell git --no-pager log -1 --pretty=format:%h)"
+            target:add("defines", "SESE_REPO_BRANCH=\"" .. branch .. "\"")
+            target:add("defines", "SESE_REPO_HASH=\"" .. hash .. "\"")
+        else
+            target:add("defines", "SESE_REPO_BRANCH=\"Unknown\"")
+            target:add("defines", "SESE_REPO_HASH=\"Unknown\"")
+        end
     end)
 
 target("plugin")
@@ -128,5 +134,10 @@ target("test")
 
         import("lib.detect.find_program")
         local program = find_program("python", {paths = {"$(env PATH)"}, check = "--version"})
-        target:add("defines", "PY_EXECUTABLE=\"" .. program:gsub("\\", "/") .. "\"")
+        if program then
+            target:add("defines", "PY_EXECUTABLE=\"" .. program:gsub("\\", "/") .. "\"")
+        else
+            target:add("defines", "PY_EXECUTABLE=\"python3\"")
+            print("XMake did not find python, and the test may not run properly.")
+        end
     end)
