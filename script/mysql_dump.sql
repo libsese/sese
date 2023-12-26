@@ -113,7 +113,10 @@ DROP TABLE IF EXISTS `tb_insert`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_insert` (
   `id` int(11) NOT NULL,
-  `name` varchar(32) DEFAULT NULL
+  `name` varchar(32) NOT NULL,
+  `setDouble` double DEFAULT NULL,
+  `setFloat` float DEFAULT NULL,
+  `setLong` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于插入测试';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,7 +125,7 @@ CREATE TABLE `tb_insert` (
 --
 
 LOCK TABLES `tb_insert` WRITE;
-INSERT INTO `tb_insert` VALUES (1,'foo'),(2,'bar');
+INSERT INTO `tb_insert` VALUES (1,'foo',1,1,1),(2,'bar',2,2,2);
 UNLOCK TABLES;
 
 --
@@ -197,7 +200,10 @@ DROP TABLE IF EXISTS `tb_stmt_insert`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_stmt_insert` (
   `id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL
+  `name` varchar(32) NOT NULL,
+  `setDouble` double DEFAULT NULL,
+  `setFloat` float DEFAULT NULL,
+  `setLong` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于预处理语句的插入测试';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -206,7 +212,7 @@ CREATE TABLE `tb_stmt_insert` (
 --
 
 LOCK TABLES `tb_stmt_insert` WRITE;
-INSERT INTO `tb_stmt_insert` VALUES (1,'foo'),(2,'bar');
+INSERT INTO `tb_stmt_insert` VALUES (1,'foo',1,1,1),(2,'bar',2,2,2);
 UNLOCK TABLES;
 
 --
@@ -239,7 +245,7 @@ DROP TABLE IF EXISTS `tb_stmt_update`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_stmt_update` (
   `id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL
+  `name` varchar(32) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于预处理语句的更新';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -281,4 +287,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-29 16:24:45
+-- Dump completed on 2023-12-25 14:26:58
