@@ -1,5 +1,6 @@
 #include <sese/db/DriverManager.h>
 #include <gtest/gtest.h>
+#include <cinttypes>
 
 using sese::db::DatabaseType;
 using sese::db::DriverInstance;
@@ -32,13 +33,13 @@ TEST(TestDriverInstance, TestQueryData) {
     auto result = instance->executeQuery("select * from tb_query where id = 1;");
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("id = %d, name = %s Columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
+        printf("id = %" PRId32 ", name = %s Columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
     }
 
     result->reset();
 
     while (result->next()) {
-        printf("id = %d, name = %s Columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
+        printf("id = %" PRId32 ", name = %s Columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
     }
 }
 
@@ -51,7 +52,7 @@ TEST(TestDriverInstance, TestUpdateData) {
     auto result = instance->executeQuery("select * from tb_update where id = 1;");
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("result id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+        printf("result id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
     auto count = instance->executeUpdate(R"(update tb_update set name = "mike" where id = 1;)");
@@ -60,7 +61,7 @@ TEST(TestDriverInstance, TestUpdateData) {
     auto result1 = instance->executeQuery("select * from tb_update where id = 1;");
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
-        printf("result1 id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+        printf("result1 id = %" PRId32 ", name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
 }
 
@@ -73,16 +74,16 @@ TEST(TestDriverInstance, TestDeleteData) {
     auto result = instance->executeQuery("select * from tb_delete;");
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("result id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+        printf("result id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
     auto count = instance->executeUpdate("delete from tb_delete where id = 1;");
-    EXPECT_NE(-1, count);
+    ASSERT_NE(-1, count);
 
     auto result1 = instance->executeQuery("select * from tb_delete;");
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
-        printf("result1 id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+        printf("result1 id = %" PRId32 ", name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
 }
 
@@ -95,16 +96,16 @@ TEST(TestDriverInstance, TestInsertData) {
     auto result = instance->executeQuery("select * from tb_insert;");
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("result id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+        printf("result id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
     auto count = instance->executeUpdate("insert into tb_insert (id, name) values (3, 'mike');");
-    EXPECT_NE(-1, count);
+    ASSERT_NE(-1, count);
 
     auto result1 = instance->executeQuery("select * from tb_insert;");
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
-        printf("result1 id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+        printf("result1 id = %" PRId32 ", name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
 }
 
@@ -117,7 +118,7 @@ TEST(TestDriverInstance, TestUpdateStmt) {
     auto result = instance->executeQuery("select * from tb_stmt_update;");
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("result id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+        printf("result id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
     int64_t id = 1;
@@ -125,22 +126,22 @@ TEST(TestDriverInstance, TestUpdateStmt) {
     auto stmt = instance->createStatement("update tb_stmt_update set name = ? where id = ?;");
     ASSERT_NE(nullptr, stmt);
 
-    EXPECT_EQ(true, stmt->setText(1, name));
-    EXPECT_EQ(true, stmt->setLong(2, id));
+    ASSERT_EQ(true, stmt->setText(1, name));
+    ASSERT_EQ(true, stmt->setLong(2, id));
 
     auto count = stmt->executeUpdate();
-    EXPECT_NE(-1, count);
+    ASSERT_NE(-1, count);
 
     id = 2;
-    EXPECT_EQ(true, stmt->setNull(1));
-    EXPECT_EQ(true, stmt->setLong(2, id));
+    ASSERT_EQ(true, stmt->setNull(1));
+    ASSERT_EQ(true, stmt->setLong(2, id));
 
     auto count1 = stmt->executeUpdate();
     ASSERT_NE(-1, count1);
 
     auto result1 = instance->executeQuery("select * from tb_stmt_update where id = 1;");
     while (result1->next()) {
-        printf("result1 id = %d, name = %s\n", result1->getInteger(0), result1->getString(1).data());
+        printf("result1 id = %" PRId32 ", name = %s\n", result1->getInteger(0), result1->getString(1).data());
     }
 }
 
@@ -150,22 +151,22 @@ TEST(TestDriverInstance, TestSelectstmt) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    int64_t id = 1;
+    int32_t id = 1;
     auto stmt = instance->createStatement("select * from tb_stmt_query where id  = ?;");
     ASSERT_NE(nullptr, stmt);
 
-    EXPECT_EQ(true, stmt->setLong(1, id));
+    ASSERT_EQ(true, stmt->setInteger(1, id));
 
     auto result = stmt->executeQuery();
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("stmt result: id = %d, name = %s, columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
+        printf("stmt result: id = %" PRId32 ", name = %s, columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
     }
 
     result->reset();
 
     while (result->next()) {
-        printf("stmt result: id = %d, name = %s, columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
+        printf("stmt result: id = %" PRId32 ", name = %s, columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
     }
 }
 
@@ -178,22 +179,22 @@ TEST(TestDriverInstance, TestDeletestmt) {
     auto result = instance->executeQuery("select * from tb_stmt_delete;");
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("stmt result: id = %d, name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+        printf("stmt result: id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
     int64_t id = 1;
     auto stmt = instance->createStatement("delete from tb_stmt_delete where id = ?;");
     ASSERT_NE(nullptr, stmt);
 
-    EXPECT_EQ(true, stmt->setLong(1, id));
+    ASSERT_EQ(true, stmt->setLong(1, id));
 
     auto count = stmt->executeUpdate();
-    EXPECT_NE(-1, count);
+    ASSERT_NE(-1, count);
 
     auto result1 = instance->executeQuery("select * from tb_stmt_delete;");
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
-        printf("stmt result1: id = %d, name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+        printf("stmt result1: id = %" PRId32 ", name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
     }
 }
 
@@ -206,7 +207,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
     auto result = instance->executeQuery("select * from tb_stmt_insert;");
     ASSERT_NE(nullptr, result);
     while (result->next()) {
-        printf("stmt result: id = %d name = %s setDouble = %lf setFloat = %f setInteger = %d\n", (int) result->getLong(0), result->getString(1).data(), result->getDouble(2), result->getFloat(3), result->getInteger(4));
+        printf("stmt result: id = %" PRId32 " name = %s setDouble = %lf setFloat = %f setLong = %" PRId64 "\n", (int) result->getInteger(0), result->getString(1).data(), result->getDouble(2), result->getFloat(3), result->getLong(4));
     }
 
     int32_t id = 3;
@@ -231,7 +232,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
     ASSERT_NE(true, stmt->setNull(7));
 
     auto count = stmt->executeUpdate();
-    EXPECT_NE(-1, count);
+    ASSERT_NE(-1, count);
 
     ASSERT_EQ(true, stmt->setInteger(1, id));
     ASSERT_EQ(true, stmt->setText(2, name));
@@ -241,7 +242,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
     ASSERT_EQ(true, stmt->setNull(6));
 
     auto count1 = stmt->executeUpdate();
-    EXPECT_NE(-1, count1);
+    ASSERT_NE(-1, count1);
 
     ASSERT_EQ(true, stmt->setText(2, name));
     ASSERT_EQ(true, stmt->setInteger(1, id));
@@ -251,7 +252,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
     ASSERT_EQ(true, stmt->setNull(6));
 
     auto count2 = stmt->executeUpdate();
-    EXPECT_NE(-1, count2);
+    ASSERT_NE(-1, count2);
 
     ASSERT_EQ(true, stmt->setDouble(3, dou));
     ASSERT_EQ(true, stmt->setText(2, name));
@@ -261,7 +262,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
     ASSERT_EQ(true, stmt->setNull(6));
 
     auto count3 = stmt->executeUpdate();
-    EXPECT_NE(-1, count3);
+    ASSERT_NE(-1, count3);
 
     ASSERT_EQ(true, stmt->setFloat(4, flo));
     ASSERT_EQ(true, stmt->setDouble(3, dou));
@@ -271,7 +272,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
     ASSERT_EQ(true, stmt->setNull(6));
 
     auto count4 = stmt->executeUpdate();
-    EXPECT_NE(-1, count4);
+    ASSERT_NE(-1, count4);
 
     ASSERT_EQ(true, stmt->setLong(5, lon));
     ASSERT_EQ(true, stmt->setFloat(4, flo));
@@ -287,7 +288,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
     auto result1 = stmtQuery->executeQuery();
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
-        printf("result1: id = %d name = %s setDouble = %lf setFloat = %f setInteger = %d\n", (int) result1->getLong(0), result1->getString(1).data(), result1->getDouble(2), result1->getFloat(3), result1->getInteger(4));
+        printf("result1: id = %" PRId32 " name = %s setDouble = %lf setFloat = %f setInteger = %" PRId64 "\n", (int) result1->getInteger(0), result1->getString(1).data(), result1->getDouble(2), result1->getFloat(3), result1->getLong(4));
     }
 }
 
@@ -311,7 +312,7 @@ TEST(TestTransaction, TestBegin) {
     // 事务的回滚操作
     auto results = instance->executeQuery("select * from tb_begin;");
     while (results->next()) {
-        printf("id = %d, name = %s\n", results->getInteger(0), results->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
     }
 
     ASSERT_EQ(true, instance->begin());
@@ -323,13 +324,13 @@ TEST(TestTransaction, TestBegin) {
 
     auto results1 = instance->executeQuery("select * from tb_begin;");
     while (results1->next()) {
-        printf("id = %d, name = %s\n", results1->getInteger(0), results1->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
     }
 
     // 事务的提交操作
     auto results2 = instance->executeQuery("select * from tb_begin;");
     while (results2->next()) {
-        printf("id = %d, name = %s\n", results2->getInteger(0), results2->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", results2->getInteger(0), results2->getString(1).data());
     }
 
     ASSERT_EQ(true, instance->begin());
@@ -341,7 +342,7 @@ TEST(TestTransaction, TestBegin) {
 
     auto results3 = instance->executeQuery("select * from tb_begin;");
     while (results3->next()) {
-        printf("id = %d, name = %s\n", results3->getInteger(0), results3->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", results3->getInteger(0), results3->getString(1).data());
     }
 }
 
@@ -353,7 +354,7 @@ TEST(TestTransaction, TestCommit) {
 
     auto results = instance->executeQuery("select * from tb_commit;");
     while (results->next()) {
-        printf("id = %d, name = %s\n", results->getInteger(0), results->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
     }
 
     bool status;
@@ -368,7 +369,7 @@ TEST(TestTransaction, TestCommit) {
 
     auto results1 = instance->executeQuery("select * from tb_commit;");
     while (results1->next()) {
-        printf("id = %d, name = %s\n", results1->getInteger(0), results1->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
     }
 }
 
@@ -380,7 +381,7 @@ TEST(TestTransaction, TestRollBack) {
 
     auto results = instance->executeQuery("select * from tb_rollBack;");
     while (results->next()) {
-        printf("id = %d, name = %s\n", results->getInteger(0), results->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
     }
 
     bool status;
@@ -395,7 +396,7 @@ TEST(TestTransaction, TestRollBack) {
 
     auto results1 = instance->executeQuery("select * from tb_rollBack;");
     while (results1->next()) {
-        printf("id = %d, name = %s\n", results1->getInteger(0), results1->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
     }
 }
 
@@ -408,7 +409,7 @@ TEST(TestTransaction, TestGetInserId) {
     auto results = instance->executeQuery("select * from tb_getInsertId;");
     ASSERT_NE(nullptr, results);
     while (results->next()) {
-        printf("id = %d, name = %s\n", (int) results->getInteger(0), results->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", (int) results->getInteger(0), results->getString(1).data());
     }
 
     auto count = instance->executeUpdate("insert into tb_getInsertId (name) values ('mike');");
@@ -416,12 +417,12 @@ TEST(TestTransaction, TestGetInserId) {
 
     int64_t id = 0;
     ASSERT_EQ(true, instance->getInsertId(id));
-    printf("insertId = %ld\n", id);
+    printf("insertId = %" PRId64 "\n", id);
 
     auto results1 = instance->executeQuery("select * from tb_getInsertId;");
     ASSERT_NE(nullptr, results1);
     while (results1->next()) {
-        printf("id = %d, name = %s\n", (int) results1->getInteger(0), results1->getString(1).data());
+        printf("id = %" PRId32 ", name = %s\n", (int) results1->getInteger(0), results1->getString(1).data());
     }
 }
 

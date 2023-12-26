@@ -115,7 +115,8 @@ CREATE TABLE `tb_insert` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `setDouble` double DEFAULT NULL,
-  `setFloat` float DEFAULT NULL
+  `setFloat` float DEFAULT NULL,
+  `setLong` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于插入测试';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -124,7 +125,7 @@ CREATE TABLE `tb_insert` (
 --
 
 LOCK TABLES `tb_insert` WRITE;
-INSERT INTO `tb_insert` VALUES (1,'foo',1,1),(2,'bar',2,2);
+INSERT INTO `tb_insert` VALUES (1,'foo',1,1,1),(2,'bar',2,2,2);
 UNLOCK TABLES;
 
 --

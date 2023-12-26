@@ -44,7 +44,7 @@ namespace sese::db {
         /// \param value 值
         /// \return 是否设置成功
         virtual bool setLong(uint32_t index, int64_t &value) noexcept = 0;
-        /// \brief设置文本值
+        /// \brief 设置文本值
         /// \param index 索引
         /// \param value 值
         /// \return 是否设置成功
