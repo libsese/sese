@@ -13,7 +13,7 @@ set_encodings("utf-8")
 
 add_includedirs("$(projectdir)")
 
-if is_plat("linux") or is_plat("macosx") then 
+if is_plat("linux") or is_plat("macosx") then
     add_cxxflags("-fPIC")
 end
 
@@ -21,10 +21,24 @@ if is_mode("debug") then
     set_policy("build.sanitizer.address", true)
 end
 
+option("test")
+    set_description("enable unit test")
+    set_showmenu(true)
+    set_default(false)
+    -- set_category("build")
+
+option("async_logger")
+    set_description("enable async logger")
+    set_showmenu(true)
+    set_default(false)
+    add_defines("USE_ASYNC_LOGGER")
+    -- set_category("features")
+
 target("sese-core")
     set_kind("shared")
     add_packages("openssl3")
     add_packages("zlib")
+    add_options("async_logger")
     if is_plat("windows") then
         add_defines("WIN32")
         add_packages("advapi32")
@@ -65,7 +79,7 @@ target("sese-core")
         import("core.base.semver")
         import("core.project.project")
         local version = semver.new(project.version())
-        if is_plat("windows") then 
+        if is_plat("windows") then
             target:set("configdir", "$(buildir)")
             target:add("configfiles", "WindowsDllInfo.rc.in");
             target:set("configvar", "PROJECT_VERSION_MAJOR", version:major())
@@ -73,7 +87,7 @@ target("sese-core")
             target:set("configvar", "PROJECT_VERSION_PATCH", version:patch())
         end
     end)
-    on_config(function (target) 
+    on_config(function (target)
         import("core.base.semver")
         import("core.project.project")
         local version = semver.new(project.version())
@@ -99,45 +113,50 @@ target("plugin")
     add_files("sese/plugin/**.cpp")
     add_headerfiles("sese/**.h")
 
-target("module")
-    set_kind("shared")
-    set_extension(".m")
-    set_prefixname("")
-    add_files("gtest/TestPlugin/Module.cpp")
-    add_deps("plugin")
+if has_config("test") then
+    target("module")
+        set_kind("shared")
+        set_enabled(true)
+        set_extension(".m")
+        set_prefixname("")
+        add_files("gtest/TestPlugin/Module.cpp")
+        add_deps("plugin")
 
-target("mem.d")
-    set_kind("binary")
-    add_files("gtest/TestSharedMemory/Memory.d.cpp")
-    add_deps("sese-core")
+    target("mem.d")
+        set_kind("binary")
+        set_enabled(true)
+        add_files("gtest/TestSharedMemory/Memory.d.cpp")
+        add_deps("sese-core")
 
-target("test")
-    set_kind("binary")
-    add_defines("SESE_BUILD_TEST")
-    add_files("gtest/*.cpp")
-    add_files("gtest/TestPlugin/TestPlugin.cpp")
-    add_files("gtest/TestSharedMemory/TestSharedMemory.cpp")
-    add_deps("module", {inherit = false})
-    add_deps("mem.d", {inherit = false})
-    add_deps("sese-core")
-    add_packages("gtest")
-    on_config(function (target)
-        import("core.project.project")
-        local projectdir = os.projectdir():gsub("\\", "/")
-        local core_targetfile = (os.projectdir() .. "\\" .. project.target("sese-core"):targetfile()):gsub("\\", "/")
-        local module_targetfile = (os.projectdir() .. "\\" .. project.target("module"):targetfile()):gsub("\\", "/")
-        local mem_d_targetfile = (os.projectdir() .. "\\" .. project.target("mem.d"):targetfile()):gsub("\\", "/")
-        target:add("defines", "PROJECT_PATH=\"" .. projectdir .. "\"")
-        target:add("defines", "PATH_TO_CORE=\"" .. core_targetfile .. "\"")
-        target:add("defines", "PATH_TO_MODULE=\"" .. module_targetfile .. "\"")
-        target:add("defines", "PATH_TO_MEM_D=\"" .. mem_d_targetfile .."\"")
+    target("test")
+        set_kind("binary")
+        set_enabled(true)
+        add_defines("SESE_BUILD_TEST")
+        add_files("gtest/*.cpp")
+        add_files("gtest/TestPlugin/TestPlugin.cpp")
+        add_files("gtest/TestSharedMemory/TestSharedMemory.cpp")
+        add_deps("module", {inherit = false})
+        add_deps("mem.d", {inherit = false})
+        add_deps("sese-core")
+        add_packages("gtest")
+        on_config(function (target)
+            import("core.project.project")
+            local projectdir = os.projectdir():gsub("\\", "/")
+            local core_targetfile = (os.projectdir() .. "\\" .. project.target("sese-core"):targetfile()):gsub("\\", "/")
+            local module_targetfile = (os.projectdir() .. "\\" .. project.target("module"):targetfile()):gsub("\\", "/")
+            local mem_d_targetfile = (os.projectdir() .. "\\" .. project.target("mem.d"):targetfile()):gsub("\\", "/")
+            target:add("defines", "PROJECT_PATH=\"" .. projectdir .. "\"")
+            target:add("defines", "PATH_TO_CORE=\"" .. core_targetfile .. "\"")
+            target:add("defines", "PATH_TO_MODULE=\"" .. module_targetfile .. "\"")
+            target:add("defines", "PATH_TO_MEM_D=\"" .. mem_d_targetfile .."\"")
 
-        import("lib.detect.find_program")
-        local program = find_program("python", {paths = {"$(env PATH)"}, check = "--version"})
-        if program then
-            target:add("defines", "PY_EXECUTABLE=\"" .. program:gsub("\\", "/") .. "\"")
-        else
-            target:add("defines", "PY_EXECUTABLE=\"python3\"")
-            print("XMake did not find python, and the test may not run properly.")
-        end
-    end)
+            import("lib.detect.find_program")
+            local program = find_program("python", {paths = {"$(env PATH)"}, check = "--version"})
+            if program then
+                target:add("defines", "PY_EXECUTABLE=\"" .. program:gsub("\\", "/") .. "\"")
+            else
+                target:add("defines", "PY_EXECUTABLE=\"python3\"")
+                print("XMake did not find python, and the test may not run properly.")
+            end
+        end)
+end
