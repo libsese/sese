@@ -108,10 +108,25 @@ target("sese-core")
         end
     end)
 
-target("plugin")
+target("sese-plugin")
     set_kind("static")
     add_files("sese/plugin/**.cpp")
     add_headerfiles("sese/**.h")
+
+target("echo-server")
+    set_kind("binary")
+    add_files("echo-server/**.cpp")
+    add_deps("sese-core")
+
+target("http-client")
+    set_kind("binary")
+    add_files("http-client/**.cpp")
+    add_deps("sese-core")
+
+target("json2yml")
+    set_kind("binary")
+    add_files("json2yml/**.cpp")
+    add_deps("sese-core")
 
 if has_config("test") then
     target("module")
@@ -120,7 +135,7 @@ if has_config("test") then
         set_extension(".m")
         set_prefixname("")
         add_files("gtest/TestPlugin/Module.cpp")
-        add_deps("plugin")
+        add_deps("sese-plugin")
 
     target("mem.d")
         set_kind("binary")
