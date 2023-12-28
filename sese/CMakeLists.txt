@@ -113,7 +113,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
 
     file(GLOB_RECURSE NATIVE_LINUX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/linux/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/linux/*.h")
-    target_sources(Core ${UNIX_SRC} ${NATIVE_LINUX_SRC})
+    target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_LINUX_SRC})
 
     target_compile_options(Plugin PUBLIC "-fPIC")
 
@@ -132,7 +132,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_compile_options(Plugin PUBLIC "-fPIC")
 
     file(GLOB_RECURSE NATIVE_DRAWIN_SRC "${CMAKE_CURRENT_LIST_DIR}/darwin/linux/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/darwin/linux/*.h")
-    target_sources(Core ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
+    target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
 
     target_compile_options(Core PRIVATE "-fno-exceptions")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
