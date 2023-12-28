@@ -37,7 +37,7 @@ DateTime::DateTime(uint64_t timestamp, int32_t utc, Policy policy) noexcept {
 #endif
             auto tm = gmtime(reinterpret_cast<const time_t *>(&time));
             this->years = tm->tm_year + 1900;
-            this->months = tm->tm_mon;
+            this->months = tm->tm_mon + 1;
             this->days = tm->tm_mday;
             this->hours = tm->tm_hour;
             this->minutes = tm->tm_min;

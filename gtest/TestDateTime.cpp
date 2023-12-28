@@ -26,6 +26,19 @@ TEST(TestDateTime, Info) {
     log.info("day of week: %d", time->getDayOfWeek());
 }
 
+TEST(TestDateTime, InfoCheck) {
+    auto tm = sese::DateTime(1703758865'114'514, 0);
+    EXPECT_EQ(tm.getYears(), 2023);
+    EXPECT_EQ(tm.getMonths(), 12);
+    EXPECT_EQ(tm.getDays(), 28);
+    EXPECT_EQ(tm.getHours(), 10);
+    EXPECT_EQ(tm.getMinutes(), 21);
+    EXPECT_EQ(tm.getSeconds(), 05);
+    EXPECT_EQ(tm.getMilliseconds(), 114);
+    EXPECT_EQ(tm.getMicroseconds(), 514);
+    EXPECT_EQ(tm.getUTC(), 0);
+}
+
 TEST(TestDateTime, Compare) {
     // 2022-03-03 00:00:00
     auto time1 = sese::DateTime(1646265600000000, 0);

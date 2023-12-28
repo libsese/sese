@@ -1,3 +1,9 @@
+/// \file DateTimeParser.h
+/// \brief 日期解析器
+/// \author kaoru
+/// \date 2023年12月29日
+
+
 #pragma once
 
 #include <sese/Config.h>
@@ -7,6 +13,7 @@
 
 namespace sese::text {
 
+/// 日期解析器
 class API DateTimeParser {
 public:
     /**
