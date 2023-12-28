@@ -1,6 +1,6 @@
 set_xmakever("2.8.5")
 set_project("sese-core")
-set_version("1.3.2")
+set_version("1.3.3")
 
 add_rules("mode.debug", "mode.release")
 

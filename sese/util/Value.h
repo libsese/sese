@@ -6,7 +6,6 @@
 #pragma once
 
 #include <map>
-#include <span>
 #include <variant>
 #include <vector>
 #include <optional>

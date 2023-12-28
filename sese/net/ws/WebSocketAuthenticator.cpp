@@ -5,18 +5,21 @@
 #include "sese/convert/Base64Converter.h"
 #include "sese/convert/SHA1Util.h"
 
+#include <random>
+
 using sese::io::InputBufferWrapper;
 using sese::io::OutputBufferWrapper;
 
 const char *sese::net::ws::WebsocketAuthenticator::APPEND_STRING = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 
 void sese::net::ws::WebsocketAuthenticator::generateKey(uint8_t *key) {
-    uint64_t r = static_cast<decltype(r)>(sese::Random()());
+    auto dev = std::random_device();
+    uint64_t r = static_cast<decltype(r)>(dev());
     auto p = (uint8_t *) &r;
     for (int i = 0; i < 8; ++i) {
         key[i] = *(p + i);
     }
-    r = static_cast<decltype(r)>(sese::Random()());
+    r = static_cast<decltype(r)>(dev());
     for (int i = 0; i < 8; ++i) {
         key[i + 8] = *(p + i);
     }

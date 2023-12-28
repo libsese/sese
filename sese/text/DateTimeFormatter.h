@@ -13,6 +13,10 @@
 #include <map>
 #include <array>
 
+#ifdef _MSC_VER
+#pragma warning(disable: 4251)
+#endif
+
 namespace sese::text {
 
 /**

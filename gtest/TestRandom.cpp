@@ -1,10 +1,21 @@
 #include "sese/config/CSVWriter.h"
 #include "sese/io/FileStream.h"
 #include "sese/util/RandomUtil.h"
-#include "sese/util/Random.h"
 #include "sese/record/Marco.h"
 
 #include "gtest/gtest.h"
+
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
+#include "sese/util/Random.h"
 
 TEST(TestRandom, STD) {
     sese::Random device;
@@ -25,6 +36,12 @@ TEST(TestRandom, Misc) {
     ASSERT_EQ(sese::Random::max(), UINT64_MAX);
     ASSERT_EQ(sese::Random::min(), 0);
 }
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 
 TEST(TestRandomUtil, Signed) {
     auto i1 = sese::RandomUtil::next<int>();

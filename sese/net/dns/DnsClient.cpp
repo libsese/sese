@@ -4,7 +4,6 @@
 #include <sese/net/dns/DndSession.h>
 #include <sese/io/InputBufferWrapper.h>
 #include <sese/io/OutputBufferWrapper.h>
-#include <sese/util/Random.h>
 
 #include <random>
 
@@ -17,7 +16,7 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     auto socket = sese::net::Socket(sock, nullptr);
     auto expectType = family == AF_INET ? SESE_DNS_QR_TYPE_A : SESE_DNS_QR_TYPE_AAAA;
 
-    sese::Random device;
+    std::random_device device;
     auto engine = std::default_random_engine((uint32_t) device());
     std::uniform_int_distribution<uint16_t> dis(1, UINT16_MAX);
 

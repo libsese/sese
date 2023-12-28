@@ -1,10 +1,10 @@
 #include <sese/system/SharedMemory.h>
 #include <sese/record/LogHelper.h>
-#include <sese/util/Random.h>
 
 #include <chrono>
 #include <memory>
 #include <thread>
+#include <random>
 
 using namespace std::chrono_literals;
 
@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
         helper.info("create success");
     }
 
-    auto random = (int64_t) sese::Random()();
+    auto random = (int64_t) std::random_device()();
     helper.info("select random number: %lld", random);
     auto buffer = mem->getBuffer();
     auto pInt = (int64_t *) buffer;
