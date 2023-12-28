@@ -196,3 +196,26 @@ TEST(TestTimeSpan, Part) {
     SESE_INFO("milliseconds %" PRId32, time.getMilliseconds());
     SESE_INFO("microseconds %" PRId32, time.getMicroseconds());
 }
+
+#include <sese/text/DateTimeParser.h>
+
+using sese::DateTime;
+using sese::text::DateTimeParser;
+
+TEST(TestDateTime, Parser_1) {
+    auto tm = DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", "2020-10-07 23:29:40");
+    ASSERT_TRUE(tm.has_value());
+    EXPECT_EQ(1602113380'000'000, tm.value().getTimestamp());
+}
+
+TEST(TestDateTime, Parser_2) {
+    auto tm = DateTimeParser::parse("yyyy-MM-dd HH:mm:ss * z", "2020-01-03 19:23:51 GTM +08");
+    ASSERT_TRUE(tm.has_value());
+    EXPECT_EQ(1578050631'000'000, tm.value().getTimestamp());
+}
+
+TEST(TestDateTime, Parser_3) {
+    auto tm = DateTimeParser::parse("yyyy-MM-dd HH:mm:ss fff rrr * z", "2020-01-03 19:23:51 985 211 GTM +08");
+    ASSERT_TRUE(tm.has_value());
+    EXPECT_EQ(1578050631'985'211, tm.value().getTimestamp());
+}

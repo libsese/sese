@@ -52,6 +52,10 @@
 #define strcasecmp strcmpi
 #endif
 
+#ifndef timegm
+#define timegm _mkgmtime
+#endif
+
 #if defined(__MINGW32__)
 #define SESE_FILENAME (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 #else
