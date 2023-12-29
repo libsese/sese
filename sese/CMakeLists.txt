@@ -131,7 +131,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
     target_compile_options(Plugin PUBLIC "-fPIC")
 
-    file(GLOB_RECURSE NATIVE_DRAWIN_SRC "${CMAKE_CURRENT_LIST_DIR}/darwin/linux/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/darwin/linux/*.h")
+    file(GLOB_RECURSE NATIVE_DRAWIN_SRC "${CMAKE_CURRENT_LIST_DIR}/native/darwin/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/darwin/*.h")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
 
     target_compile_options(Core PRIVATE "-fno-exceptions")
