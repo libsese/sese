@@ -1,6 +1,14 @@
 #include <sese/db/DriverManager.h>
+#include <sese/util/Initializer.h>
+#include <sese/record/Marco.h>
 #include <gtest/gtest.h>
 #include <cinttypes>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::initCore(argc, argv);
+    return RUN_ALL_TESTS();
+}
 
 using sese::db::DatabaseType;
 using sese::db::DriverInstance;
@@ -257,7 +265,7 @@ TEST(TestCreateStmt, TestinsertStmt) {
     int32_t id = 3;
     const char *name = "mike";
     int64_t Long = 78;
-    float flo = 5.1;
+    float flo = 5.1f;
     double dou = 45.45;
     auto stmt = instance->createStatement("insert into tb_stmt_insert (id, name, setDouble, setFloat, setLong) values (?, ?, ?, ?, ?);");
     ASSERT_NE(nullptr, stmt);
@@ -452,7 +460,7 @@ TEST(TestTransaction, TestGetInserId) {
 
     int64_t id = 0;
     ASSERT_EQ(true, instance->getInsertId(id));
-    printf("insertId = %ld\n", id);
+    printf("insertId = %" PRId64, id);
 
     auto results1 = instance->executeQuery("select * from tb_getInsertId;");
     ASSERT_NE(nullptr, results1);

@@ -1,6 +1,13 @@
 #include <sese/db/DriverManager.h>
+#include <sese/util/Initializer.h>
 #include <gtest/gtest.h>
 #include <cinttypes>
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    sese::initCore(argc, argv);
+    return RUN_ALL_TESTS();
+}
 
 using sese::db::DatabaseType;
 using sese::db::DriverInstance;
@@ -212,7 +219,7 @@ TEST(TestDriverInstance, TestInsertstmt) {
 
     int32_t id = 3;
     const char *name = "mike";
-    float flo = 5.1;
+    float flo = 5.1f;
     double dou = 45.45;
     int64_t lon = 3;
     auto stmt = instance->createStatement("insert into tb_stmt_insert (id, name, setDouble, setFloat, setLong, setNull) values (?, ?, ?, ?, ?, ?);");

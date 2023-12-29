@@ -1,0 +1,17 @@
+{
+    "default-registry": {
+        "kind": "git",
+        "repository": "https://github.com/microsoft/vcpkg.git",
+        "baseline": "c8696863d371ab7f46e213d8f5ca923c4aef2a00"
+    },
+    "registries": [
+        {
+            "kind": "git",
+            "repository": "https://github.com/libsese/vcpkg-registry.git",
+            "baseline": "15515e04ea87845add3080a4d2be303bfdd5101d",
+            "packages": [
+                "sese-core"
+            ]
+        }
+    ]
+}

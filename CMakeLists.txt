@@ -77,6 +77,9 @@ if (SESE_DB_USE_MARIADB)
     add_definitions(-DHAS_MARIADB)
 endif ()
 
+find_package(sese CONFIG REQUIRED)
+target_link_libraries(DB PUBLIC Sese::Core)
+
 if (SESE_DB_USE_SQLITE)
     find_package(unofficial-sqlite3 CONFIG REQUIRED)
     target_link_libraries(DB PRIVATE unofficial::sqlite3::sqlite3)
