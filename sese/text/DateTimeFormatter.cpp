@@ -320,15 +320,11 @@ int sese::text::DateTimeFormatter::mon2number(const std::string &str) {
     }
 }
 
-#ifdef _timezone
-#define timezone _timezone
-#endif
-
 // 此处不处理错误的格式
 // GCOVR_EXCL_START
 
 uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &text) {
-    std::tm tm{};
+    struct tm tm{};
     auto mon = text.substr(8, 3);
     tm.tm_mon = mon2number(mon);
     if (text[7] == '-') {
@@ -370,18 +366,18 @@ uint64_t sese::text::DateTimeFormatter::parseFromGreenwich(const std::string &te
         std::sscanf(text.c_str(), "%*4s %2d %*3s %4d %2d:%2d:%2d %*3s", &tm.tm_mday, &tm.tm_year, &tm.tm_hour, &tm.tm_min, &tm.tm_sec); // NOLINT
         tm.tm_year -= 1900;
     }
-    return std::mktime(&tm) - timezone;
+    return timegm(&tm);
 }
 
 uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text) {
-    std::tm tm{};
+    struct tm tm{};
     if (text.length() == 10) {
         auto date = StringBuilder::split(text, "-");
         if (date.size() == 3) {
             tm.tm_year = (int) (std::stoi(date[0]) - 1900);
             tm.tm_mon = (int) (std::stoi(date[1]) - 1);
             tm.tm_mday = (int) std::stoi(date[2]);
-            return std::mktime(&tm) - timezone;
+            return timegm(&tm);
         } else {
             return UINT64_MAX;
         }
@@ -403,7 +399,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             tm.tm_hour = (int) std::stoi(time[0]);
             tm.tm_min = (int) std::stoi(time[1]);
             tm.tm_sec = (int) std::stoi(time[2]);
-            return std::mktime(&tm) - timezone;
+            return timegm(&tm);
         } else {
             return UINT64_MAX;
         }
@@ -425,7 +421,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             tm.tm_hour = (int) std::stoi(time[0]);
             tm.tm_min = (int) std::stoi(time[1]);
             tm.tm_sec = (int) std::stoi(time[2]);
-            return std::mktime(&tm) - timezone;
+            return timegm(&tm);
         } else {
             return UINT64_MAX;
         }
@@ -447,7 +443,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
             tm.tm_hour = (int) std::stoi(time[0]);
             tm.tm_min = (int) std::stoi(time[1]);
             tm.tm_sec = (int) std::stoi(time[2]);
-            return std::mktime(&tm) - std::stoi(dateTimeZone[2]) * 60 * 60 - timezone;
+            return timegm(&tm) - std::stoi(dateTimeZone[2]) * 60 * 60;
         } else {
             return UINT64_MAX;
         }
@@ -479,7 +475,7 @@ uint64_t sese::text::DateTimeFormatter::parseFromISO8601(const std::string &text
         if (zone.size() != 2) return UINT64_MAX;
         auto hour = std::stoi(zone[0]);
         auto min = std::stoi(zone[1]);
-        return std::mktime(&tm) - (((hour * 60) + min) * 60) - timezone;
+        return timegm(&tm) - (((hour * 60) + min) * 60);
     } else {
         return UINT64_MAX;
     }

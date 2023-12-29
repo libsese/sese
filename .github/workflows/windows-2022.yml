@@ -1,4 +1,4 @@
-name: macOS
+name: Windows
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: windows-2022
 
     steps:
       - name: Checkout
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+            python-version: '3.11'
 
       - name: Install Dependencies(pip-ci)
         run: pip install -r ${{ github.workspace }}/ci/requirements.txt
@@ -30,7 +30,7 @@ jobs:
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_check
+        run: python -m ci.win_check
 
       - name: Cache Vcpkg Dependencies
         uses: actions/cache@v3
@@ -38,14 +38,23 @@ jobs:
           path: ${{ github.workspace }}/build/vcpkg_installed
           key: ${{ runner.os }}-vcpkg-${{ hashFiles('**/vcpkg.json') }}
 
+      - name: Setup Ninja
+        uses: ashutoshvarma/setup-ninja@master
+        with:
+          version: 1.11.1
+
+      - name: Requiring CL
+        uses: ilammy/msvc-dev-cmd@v1.12.1
+
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_config
+        run: python -m ci.win_config
 
       - name: Build
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_build
+        run: python -m ci.win_build
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_test
+        run: python -m ci.win_test
+
