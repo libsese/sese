@@ -8,9 +8,9 @@
 <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=blue&logo=cmake" alt="buildsystem"/>
 <br>
 <img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese-core/badge"/>
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/windows-latest.yml?label=Windows&logo=windows">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/ubuntu-latest.yml?label=Ubuntu&logo=ubuntu">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/macos-latest.yml?label=macOS&logo=apple">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/windows-2022.yml?label=Windows&logo=windows">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/ubuntu-22.04.yml?label=Ubuntu&logo=ubuntu">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/macos-12.yml?label=macOS&logo=apple">
 <br>
 </div>
 
