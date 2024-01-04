@@ -41,7 +41,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     endif ()
 endif ()
 
-add_library(DB SHARED)
+add_library(DB)
 
 if (${CMAKE_GENERATOR} MATCHES "Ninja")
     # 单配置
