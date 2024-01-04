@@ -41,7 +41,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     endif ()
 endif ()
 
-add_library(DB)
+add_library(DB SHARED)
 
 if (${CMAKE_GENERATOR} MATCHES "Ninja")
     # 单配置
@@ -118,6 +118,10 @@ target_include_directories(
 
 if (WIN32)
     target_compile_options(DB PRIVATE /utf-8)
+
+    set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
+    configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
+    target_sources(DB PRIVATE ${DLL_INFO_RC})
 else ()
     find_package(Threads REQUIRED)
     target_link_libraries(DB PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
