@@ -17,9 +17,9 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "FileDescription", "Sese Library - https://github.com/libsese/sese.core.git"
+            VALUE "FileDescription", "Sese Library - https://github.com/libsese/sese-core.git"
             VALUE "InternalName", "Sese Library"
-            VALUE "LegalCopyright", "Kaoru (C) 2022-2024"
+            VALUE "LegalCopyright", "(c) 2022-2024 libsese"
             VALUE "OriginalFilename", "sese.core.dll"
             VALUE "ProductName", "sese-core"
             VALUE "ProductVersion", "${PROJECT_VERSION_MAJOR},${PROJECT_VERSION_MINOR},${PROJECT_VERSION_PATCH}"
