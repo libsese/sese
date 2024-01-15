@@ -1,7 +1,7 @@
-FROM ubuntu:latest
+FROM ubuntu:jammy
 
-COPY script/sqlite_dump.sql /root/sqlite_dump.sql
-COPY docker/docker-entrypoint.sh /root/docker-entrypoint.sh
+COPY sqlite_dump.sql /root/sqlite_dump.sql
+COPY docker-entrypoint.sh /root/docker-entrypoint.sh
 
 RUN chmod 755 /root/docker-entrypoint.sh
 
