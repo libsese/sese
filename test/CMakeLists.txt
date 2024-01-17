@@ -42,6 +42,7 @@ if (SESE_DB_USE_POSTGRES)
             TestPostgresInstance.cpp
             TestPostgresStatement.cpp
             TestPostgresTransaction.cpp
+            TestPostgresMetadata.cpp
     )
     target_link_libraries(TestPostgres DB)
     target_link_libraries(TestPostgres GTest::gtest GTest::gtest_main)

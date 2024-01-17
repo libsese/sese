@@ -23,6 +23,9 @@ namespace sese::db::impl {
         bool setText(uint32_t index, const char *value) noexcept override;
         bool setNull(uint32_t index) noexcept override;
 
+        bool getColumnType(uint32_t index, MetadataType &type) noexcept override;
+        int64_t getColumnSize(uint32_t index) noexcept override;
+
         [[nodiscard]] int getLastError() const noexcept override;
         [[nodiscard]] const char *getLastErrorMessage() const noexcept override;
 

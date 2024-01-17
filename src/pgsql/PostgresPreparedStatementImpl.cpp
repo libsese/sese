@@ -170,3 +170,53 @@ const char *sese::db::impl::PostgresPreparedStatementImpl::getLastErrorMessage()
         return PQerrorMessage(conn);
     }
 }
+
+bool sese::db::impl::PostgresPreparedStatementImpl::getColumnType(uint32_t index, sese::db::MetadataType &type) noexcept {
+    auto meta = PQdescribePrepared(conn, stmtName.c_str());
+    if (meta == nullptr || PQnfields(meta) <= index) {
+        return -1;
+    }
+    auto oid = PQftype(meta, static_cast<int>(index));
+    switch (oid) {
+        case TEXTOID:
+            type = MetadataType::Text;
+            break;
+        case INT8OID:
+            type = MetadataType::Long;
+            break;
+        case INT4OID:
+            type = MetadataType::Integer;
+            break;
+        case INT2OID:
+            type = MetadataType::Short;
+            break;
+        case FLOAT8OID:
+            type = MetadataType::Float;
+            break;
+        case FLOAT4OID:
+            type = MetadataType::Double;
+            break;
+        case DATEOID:
+            type = MetadataType::Date;
+            break;
+        case TIMEOID:
+            type = MetadataType::Time;
+            break;
+        case TIMESTAMPTZOID:
+        case TIMESTAMPOID:
+            type = MetadataType::DateTime;
+            break;
+        default:
+            type = MetadataType::Unknown;
+            break;
+    }
+    return true;
+}
+
+int64_t sese::db::impl::PostgresPreparedStatementImpl::getColumnSize(uint32_t index) noexcept {
+    auto meta = PQdescribePrepared(conn, stmtName.c_str());
+    if (meta == nullptr || PQnfields(meta) <= index) {
+        return -1;
+    }
+    return PQfsize(meta, index);
+}
