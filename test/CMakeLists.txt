@@ -26,6 +26,7 @@ if (SESE_DB_USE_SQLITE)
             TestSqliteInstance.cpp
             TestSqliteStatement.cpp
             TestSqliteTransaction.cpp
+            TestSqliteMetadata.cpp
     )
     target_link_libraries(TestSqlite DB)
     target_link_libraries(TestSqlite GTest::gtest GTest::gtest_main)

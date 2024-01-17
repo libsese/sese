@@ -27,7 +27,6 @@ bool impl::SqliteResultSetImpl::next() noexcept {
     }
 }
 
-
 size_t impl::SqliteResultSetImpl::getColumns() const noexcept {
     return columns;
 }
@@ -35,12 +34,11 @@ size_t impl::SqliteResultSetImpl::getColumns() const noexcept {
 int32_t impl::SqliteResultSetImpl::getInteger(size_t index) const noexcept {
     char *p = table[(columns) *current + index];
     char *end;
-    return std::strtol(p, &end, 10);
+    return static_cast<int32_t>(std::strtol(p, &end, 10));
 }
 
 std::string_view impl::SqliteResultSetImpl::getString(size_t index) const noexcept {
-    char *p = table[(columns) *current + index];
-    return {p};
+    return {table[(columns) *current + index]};
 }
 
 double impl::SqliteResultSetImpl::getDouble(size_t index) const noexcept {
