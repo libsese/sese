@@ -130,7 +130,12 @@ bool sese::db::impl::PostgresPreparedStatementImpl::getColumnType(uint32_t index
     }
     auto oid = PQftype(meta, static_cast<int>(index));
     switch (oid) {
+        case BOOLOID:
+            type = MetadataType::Boolean;
+            break;
         case TEXTOID:
+        case CHAROID:
+        case VARCHAROID:
             type = MetadataType::Text;
             break;
         case INT8OID:
