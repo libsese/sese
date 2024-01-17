@@ -28,5 +28,7 @@ namespace sese::db::impl {
         PGconn *conn;
         PGresult *result;
         int error = 0;
+
+        std::random_device rd{};
     };
 }// namespace sese::db
