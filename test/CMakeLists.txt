@@ -13,6 +13,7 @@ if (SESE_DB_USE_MARIADB)
             TestMariaInstance.cpp
             TestMariaStatement.cpp
             TestMariaTransaction.cpp
+            TestMariaMetadata.cpp
     )
     target_link_libraries(TestMaria DB)
     target_link_libraries(TestMaria GTest::gtest GTest::gtest_main)

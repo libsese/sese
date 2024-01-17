@@ -3,7 +3,8 @@
 sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(
         MYSQL_STMT *stmt,
         MYSQL_RES *meta,
-        size_t count) noexcept {
+        size_t count
+) noexcept {
     this->stmt = stmt;
     this->meta = meta;
     this->count = count;
@@ -94,7 +95,7 @@ sese::db::ResultSet::Ptr sese::db::impl::MariaPreparedStatementImpl::executeQuer
     }
     return std::make_unique<impl::MariaStmtResultSet>(stmt, result, meta->field_count);
 
-    freeResult:
+freeResult:
     freeBindStruct(result, meta->field_count);
     return nullptr;
 }
@@ -158,4 +159,58 @@ int sese::db::impl::MariaPreparedStatementImpl::getLastError() const noexcept {
 
 const char *sese::db::impl::MariaPreparedStatementImpl::getLastErrorMessage() const noexcept {
     return mysql_stmt_error(stmt);
+}
+
+bool sese::db::impl::MariaPreparedStatementImpl::getColumnType(uint32_t index, sese::db::MetadataType &type) noexcept {
+    if ((nullptr == meta) || (meta->field_count <= index)) {
+        return false;
+    }
+
+    switch (meta->fields[index].type) {
+        case MYSQL_TYPE_STRING:
+        case MYSQL_TYPE_VARCHAR:
+        case MYSQL_TYPE_VAR_STRING:
+            type = MetadataType::Text;
+            break;
+        case MYSQL_TYPE_TINY:
+            type = MetadataType::Char;
+            break;
+        case MYSQL_TYPE_SHORT:
+            type = MetadataType::Short;
+            break;
+        case MYSQL_TYPE_LONG:
+            type = MetadataType::Integer;
+            break;
+        case MYSQL_TYPE_LONGLONG:
+            type = MetadataType::Long;
+            break;
+        case MYSQL_TYPE_FLOAT:
+            type = MetadataType::Float;
+            break;
+        case MYSQL_TYPE_DOUBLE:
+            type = MetadataType::Double;
+            break;
+        case MYSQL_TYPE_TIME:
+            type = MetadataType::Time;
+            break;
+        case MYSQL_TYPE_DATE:
+            type = MetadataType::Date;
+            break;
+        case MYSQL_TYPE_DATETIME:
+            type = MetadataType::DateTime;
+            break;
+        default:
+            type = MetadataType::Unknown;
+            break;
+    }
+    return true;
+}
+
+int64_t sese::db::impl::MariaPreparedStatementImpl::getColumnSize(uint32_t index) noexcept {
+    // 当类型为二进制数据或者字符串时，该值才具有参考意义
+    // 注意单位是字节，字符串需要考虑字符集问题
+    if ((nullptr == meta) || (meta->field_count <= index)) {
+        return -1;
+    }
+    return static_cast<int64_t>(meta->fields[index].length);
 }
