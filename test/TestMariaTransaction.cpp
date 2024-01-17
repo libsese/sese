@@ -8,7 +8,7 @@ using sese::db::DriverManager;
 using sese::db::ResultSet;
 
 // get autoCommit
-TEST(TestTransaction, TestGetAutoCommit) {
+TEST(TestMariaTransaction, TestGetAutoCommit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -23,7 +23,7 @@ TEST(TestTransaction, TestGetAutoCommit) {
 }
 
 // set autoCommit
-TEST(TestTransaction, TestSetAutoCommit) {
+TEST(TestMariaTransaction, TestSetAutoCommit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -46,7 +46,7 @@ TEST(TestTransaction, TestSetAutoCommit) {
 }
 
 // commit
-TEST(TestTransaction, TestCommit) {
+TEST(TestMariaTransaction, TestCommit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -77,7 +77,7 @@ TEST(TestTransaction, TestCommit) {
 }
 
 // rollBack
-TEST(TestTransaction, TestRollBack) {
+TEST(TestMariaTransaction, TestRollBack) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -108,7 +108,7 @@ TEST(TestTransaction, TestRollBack) {
 }
 
 // begin
-TEST(TestTransaction, TestBegin) {
+TEST(TestMariaTransaction, TestBegin) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -155,7 +155,7 @@ TEST(TestTransaction, TestBegin) {
 }
 
 // getInsertId
-TEST(TestTransaction, TestGetInserId) {
+TEST(TestMariaTransaction, TestGetInserId) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
