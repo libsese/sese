@@ -7,8 +7,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-// get autoCommit
-TEST(TestTransaction, TestGetAutoCommit) {
+TEST(TestMariaTransaction, GetAutoCommit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -22,8 +21,7 @@ TEST(TestTransaction, TestGetAutoCommit) {
     printf("autoCommit = %d\n", status);
 }
 
-// set autoCommit
-TEST(TestTransaction, TestSetAutoCommit) {
+TEST(TestMariaTransaction, SetAutoCommit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -45,8 +43,7 @@ TEST(TestTransaction, TestSetAutoCommit) {
     printf("autoCommit = %d\n", status);
 }
 
-// commit
-TEST(TestTransaction, TestCommit) {
+TEST(TestMariaTransaction, Commit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -76,8 +73,7 @@ TEST(TestTransaction, TestCommit) {
     }
 }
 
-// rollBack
-TEST(TestTransaction, TestRollBack) {
+TEST(TestMariaTransaction, RollBack) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -107,8 +103,7 @@ TEST(TestTransaction, TestRollBack) {
     }
 }
 
-// begin
-TEST(TestTransaction, TestBegin) {
+TEST(TestMariaTransaction, Begin) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -154,8 +149,7 @@ TEST(TestTransaction, TestBegin) {
     }
 }
 
-// getInsertId
-TEST(TestTransaction, TestGetInserId) {
+TEST(TestMariaTransaction, GetInserId) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"

@@ -8,8 +8,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-// create select_stmt
-TEST(TestDriverInstance, TestQueryStmt) {
+TEST(TestPostgresStmt, QueryStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -30,8 +29,7 @@ TEST(TestDriverInstance, TestQueryStmt) {
     }
 }
 
-// create update_stmt
-TEST(TestDriverInstance, TestUpdateStmt) {
+TEST(TestPostgresStmt, UpdateStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -70,8 +68,7 @@ TEST(TestDriverInstance, TestUpdateStmt) {
 
 }
 
-// create delete_stmt
-TEST(TestDriverInstance, TestDeleteStmt) {
+TEST(TestPostgresStmt, DeleteStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -101,8 +98,7 @@ TEST(TestDriverInstance, TestDeleteStmt) {
     }
 }
 
-// create insert_stmt
-TEST(TestDriverInstance, TestInsertStmt) {
+TEST(TestPostgresStmt, InsertStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"

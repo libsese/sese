@@ -13,6 +13,7 @@ if (SESE_DB_USE_MARIADB)
             TestMariaInstance.cpp
             TestMariaStatement.cpp
             TestMariaTransaction.cpp
+            TestMariaMetadata.cpp
     )
     target_link_libraries(TestMaria DB)
     target_link_libraries(TestMaria GTest::gtest GTest::gtest_main)
@@ -26,6 +27,7 @@ if (SESE_DB_USE_SQLITE)
             TestSqliteInstance.cpp
             TestSqliteStatement.cpp
             TestSqliteTransaction.cpp
+            TestSqliteMetadata.cpp
     )
     target_link_libraries(TestSqlite DB)
     target_link_libraries(TestSqlite GTest::gtest GTest::gtest_main)
@@ -40,6 +42,7 @@ if (SESE_DB_USE_POSTGRES)
             TestPostgresInstance.cpp
             TestPostgresStatement.cpp
             TestPostgresTransaction.cpp
+            TestPostgresMetadata.cpp
     )
     target_link_libraries(TestPostgres DB)
     target_link_libraries(TestPostgres GTest::gtest GTest::gtest_main)

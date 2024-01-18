@@ -7,8 +7,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-// instanceError
-TEST(TestDriverInstance, TestInstanceError) {
+TEST(TestMariaDriverInstance, InstanceError) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;port=18806;"
@@ -16,8 +15,7 @@ TEST(TestDriverInstance, TestInstanceError) {
     ASSERT_EQ(nullptr, instance);
 }
 
-// query
-TEST(TestDriverInstance, TestQueryData) {
+TEST(TestMariaDriverInstance, QueryData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -44,8 +42,7 @@ TEST(TestDriverInstance, TestQueryData) {
     }
 }
 
-// update
-TEST(TestDriverInstance, TestModifyData) {
+TEST(TestMariaDriverInstance, ModifyData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -74,8 +71,7 @@ TEST(TestDriverInstance, TestModifyData) {
     }
 }
 
-// insert
-TEST(TestDriverInstance, TestInsertData) {
+TEST(TestMariaDriverInstance, InsertData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -104,8 +100,7 @@ TEST(TestDriverInstance, TestInsertData) {
     }
 }
 
-// delete
-TEST(TestDriverInstance, TestDeleteData) {
+TEST(TestMariaDriverInstance, DeleteData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"

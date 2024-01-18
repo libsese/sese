@@ -5,8 +5,6 @@
 using namespace sese::db;
 
 impl::PostgresDriverInstanceImpl::PostgresDriverInstanceImpl(PGconn *conn) noexcept {
-    PQsetNoticeProcessor(conn, nullptr, nullptr);
-
     this->conn = conn;
     auto status = PQstatus(conn);
     if (status != CONNECTION_OK) {
@@ -80,9 +78,22 @@ PreparedStatement::Ptr impl::PostgresDriverInstanceImpl::createStatement(const c
             stringBuilder << sql[i];
         }
     }
-    std::string str = stringBuilder.str();
 
-    return std::make_unique<impl::PostgresPreparedStatementImpl>(str, count, conn);
+    std::string stmtString = stringBuilder.str();
+    std::uniform_int_distribution<int> discreteDistribution(1, 65535);
+    auto stmtName = "sese_stmt_" + std::to_string(discreteDistribution(rd));
+
+    auto res = PQprepare(conn, stmtName.c_str(), stmtString.c_str(), count, nullptr);
+    if (PQresultStatus(res) == PGRES_COMMAND_OK) {
+        this->error = 0;
+        PQclear(res);
+        return std::make_unique<impl::PostgresPreparedStatementImpl>(stmtName, stmtString, count, conn);
+    } else {
+        this->error = static_cast<int>(PQresultStatus(res));
+        PQclear(res);
+        return nullptr;
+    }
+
 }
 
 int impl::PostgresDriverInstanceImpl::getLastError() const noexcept {

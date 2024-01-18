@@ -288,3 +288,11 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-12-25 14:26:58
+
+CREATE TABLE `tb_metadata` (
+    `i`   int not null,
+    `str` varchar(31) not null,
+    `f`   float not null,
+    `d`   double not null,
+    `bin` blob(234) not null
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

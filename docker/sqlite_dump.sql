@@ -93,4 +93,13 @@ INSERT INTO tb_begin VALUES(2,'bar');
 INSERT INTO tb_begin VALUES(4,'mike');
 DELETE FROM sqlite_sequence;
 INSERT INTO sqlite_sequence VALUES('tb_getInsertId',67);
+
+CREATE TABLE tb_metadata
+(
+    int         integer     not null,
+    str         varchar(16) not null,
+    float_num   real        not null,
+    bin         blob(32)    not null
+);
+
 COMMIT;

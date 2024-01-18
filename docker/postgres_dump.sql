@@ -182,7 +182,17 @@ ALTER TABLE public.tb_update OWNER TO postgres;
 -- Data for Name: tb_begin; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+CREATE TABLE public.tb_metadata (
+    s smallint not null,
+    i integer not null,
+    l bigint not null,
+    b bool not null,
+    str varchar(20) not null,
+    f float not null,
+    bin bytea not null
+);
 
+ALTER TABLE public.tb_metadata OWNER TO postgres;
 
 --
 -- Data for Name: tb_commit; Type: TABLE DATA; Schema: public; Owner: postgres

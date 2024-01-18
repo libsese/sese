@@ -8,7 +8,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-TEST(TestDriverInstance, TestError) {
+TEST(TestSqliteDriverInstance, Error) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -25,8 +25,7 @@ TEST(TestDriverInstance, TestError) {
     printf("errorMsg: %s\n", instance->getLastErrorMessage());
 }
 
-// query
-TEST(TestDriverInstance, TestQueryData) {
+TEST(TestSqliteDriverInstance, QueryData) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -44,8 +43,7 @@ TEST(TestDriverInstance, TestQueryData) {
     }
 }
 
-// update
-TEST(TestDriverInstance, TestUpdateData) {
+TEST(TestSqliteDriverInstance, UpdateData) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -56,8 +54,8 @@ TEST(TestDriverInstance, TestUpdateData) {
         printf("result id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
-    auto count = instance->executeUpdate(R"(update tb_update set name = "mike" where id = 1;)");
-    ASSERT_NE(-1, count);
+    auto count = instance->executeUpdate(R"(update tb_update set name = "foo" where id = 1;)");
+    ASSERT_NE(-1, count) << instance->getLastErrorMessage();
 
     auto result1 = instance->executeQuery("select * from tb_update where id = 1;");
     ASSERT_NE(nullptr, result1);
@@ -66,8 +64,7 @@ TEST(TestDriverInstance, TestUpdateData) {
     }
 }
 
-// delete
-TEST(TestDriverInstance, TestDeleteData) {
+TEST(TestSqliteDriverInstance, DeleteData) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -88,8 +85,7 @@ TEST(TestDriverInstance, TestDeleteData) {
     }
 }
 
-// insert
-TEST(TestDriverInstance, TestInsertData) {
+TEST(TestSqliteDriverInstance, InsertData) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());

@@ -1,9 +1,12 @@
 /// \file PreparedStatement.h
 /// \author kaoru
 /// \brief 预处理语句对象
-/// \version 0.1
+/// \version 0.2
+
 #pragma once
+
 #include <sese/db/ResultSet.h>
+#include <sese/db/Metadata.h>
 
 namespace sese::db {
 
@@ -53,6 +56,16 @@ namespace sese::db {
         /// \param index 索引
         /// \return 是否设置成功
         virtual bool setNull(uint32_t index) noexcept = 0;
+
+        /// \brief 获取结果集列类型
+        /// \param index 索引值
+        /// \param type 列类型
+        /// \return 是否获取成功
+        virtual bool getColumnType(uint32_t index, MetadataType &type) noexcept = 0;
+        /// \brief 获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节
+        /// \param index 索引值
+        /// \return 失败返回 -1
+        virtual int64_t getColumnSize(uint32_t index) noexcept = 0;
 
         /// 获取实例对应驱动的错误码
         /// \return 错误码
