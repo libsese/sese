@@ -8,8 +8,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-// commit
-TEST(TestPostgresTransaction, TestCommit) {
+TEST(TestPostgresTransaction, Commit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -35,8 +34,7 @@ TEST(TestPostgresTransaction, TestCommit) {
     }
 }
 
-// rollBack
-TEST(TestPostgresTransaction, TestRollBack) {
+TEST(TestPostgresTransaction, RollBack) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -62,8 +60,7 @@ TEST(TestPostgresTransaction, TestRollBack) {
     }
 }
 
-// begin
-TEST(TestPostgresTransaction, TestBegin) {
+TEST(TestPostgresTransaction, Begin) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"

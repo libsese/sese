@@ -7,8 +7,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-// create select_stmt
-TEST(TestMariaStmt, TestQueryStmt) {
+TEST(TestMariaStmt, QueryStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -37,8 +36,7 @@ TEST(TestMariaStmt, TestQueryStmt) {
     }
 }
 
-// create update_stmt
-TEST(TestMariaStmt, TestUpdateStmt) {
+TEST(TestMariaStmt, UpdateStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -78,8 +76,7 @@ TEST(TestMariaStmt, TestUpdateStmt) {
     }
 }
 
-// create delete_stmt
-TEST(TestMariaStmt, TestdeleteStmt) {
+TEST(TestMariaStmt, DeleteStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -109,8 +106,7 @@ TEST(TestMariaStmt, TestdeleteStmt) {
     }
 }
 
-// create insert_stmt
-TEST(TestMariaStmt, TestinsertStmt) {
+TEST(TestMariaStmt, InsertStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"

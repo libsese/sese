@@ -8,8 +8,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-// get autoCommit
-TEST(TestSqliteTransaction, TestGetAutoCommit) {
+TEST(TestSqliteTransaction, GetAutoCommit) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -19,8 +18,7 @@ TEST(TestSqliteTransaction, TestGetAutoCommit) {
     printf("autoCommit = %d\n", status);
 }
 
-// begin
-TEST(TestSqliteTransaction, TestBegin) {
+TEST(TestSqliteTransaction, Begin) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -62,8 +60,7 @@ TEST(TestSqliteTransaction, TestBegin) {
     }
 }
 
-// commit
-TEST(TestSqliteTransaction, TestCommit) {
+TEST(TestSqliteTransaction, Commit) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -89,8 +86,7 @@ TEST(TestSqliteTransaction, TestCommit) {
     }
 }
 
-// rollBack
-TEST(TestSqliteTransaction, TestRollBack) {
+TEST(TestSqliteTransaction, RollBack) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -116,8 +112,7 @@ TEST(TestSqliteTransaction, TestRollBack) {
     }
 }
 
-// getInsertId
-TEST(TestSqliteTransaction, TestGetInserId) {
+TEST(TestSqliteTransaction, GetInserId) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());

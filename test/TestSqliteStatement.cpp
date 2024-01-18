@@ -8,8 +8,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-// create update_stmt
-TEST(TestSqliteStmt, TestUpdateStmt) {
+TEST(TestSqliteStmt, UpdateStmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -44,8 +43,7 @@ TEST(TestSqliteStmt, TestUpdateStmt) {
     }
 }
 
-// create select_stmt
-TEST(TestSqliteStmt, TestSelectstmt) {
+TEST(TestSqliteStmt, Selectstmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -69,8 +67,7 @@ TEST(TestSqliteStmt, TestSelectstmt) {
     }
 }
 
-// create delete_stmt
-TEST(TestSqliteStmt, TestDeletestmt) {
+TEST(TestSqliteStmt, Deletestmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -97,8 +94,7 @@ TEST(TestSqliteStmt, TestDeletestmt) {
     }
 }
 
-// create insert_stmt
-TEST(TestSqliteStmt, TestInsertstmt) {
+TEST(TestSqliteStmt, Insertstmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());

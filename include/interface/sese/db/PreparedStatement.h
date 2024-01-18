@@ -62,7 +62,7 @@ namespace sese::db {
         /// \param type 列类型
         /// \return 是否获取成功
         virtual bool getColumnType(uint32_t index, MetadataType &type) noexcept = 0;
-        /// \brief 获取结果集列大小
+        /// \brief 获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节
         /// \param index 索引值
         /// \return 失败返回 -1
         virtual int64_t getColumnSize(uint32_t index) noexcept = 0;

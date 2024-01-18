@@ -8,8 +8,7 @@ using sese::db::DriverInstance;
 using sese::db::DriverManager;
 using sese::db::ResultSet;
 
-// instanceError
-TEST(TestPostgresDriverInstance, TestInstanceError) {
+TEST(TestPostgresDriverInstance, InstanceError) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=error;db=db_test;port=18080;"
@@ -35,8 +34,7 @@ TEST(TestPostgresDriverInstance, TestInstanceError) {
     auto results6 = instance->begin();
 }
 
-// query
-TEST(TestPostgresDriverInstance, TestQueryData) {
+TEST(TestPostgresDriverInstance, QueryData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -70,8 +68,7 @@ TEST(TestPostgresDriverInstance, TestQueryData) {
     }
 }
 
-// update
-TEST(TestPostgresDriverInstance, TestUpdateData) {
+TEST(TestPostgresDriverInstance, UpdateData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -102,8 +99,7 @@ TEST(TestPostgresDriverInstance, TestUpdateData) {
     }
 }
 
-// delete
-TEST(TestPostgresDriverInstance, TestDeleteData) {
+TEST(TestPostgresDriverInstance, DeleteData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -126,8 +122,7 @@ TEST(TestPostgresDriverInstance, TestDeleteData) {
     }
 }
 
-// insert
-TEST(TestPostgresDriverInstance, TestInsertData) {
+TEST(TestPostgresDriverInstance, InsertData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
