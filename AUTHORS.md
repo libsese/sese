@@ -4,7 +4,7 @@
 
 如有缺漏，请联系以下地址。
 
-> mail: shiina_kaoru@outlook.com
+> mail: shiinasama2001@gmail.com
 
 ---
 

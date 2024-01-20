@@ -1,6 +1,6 @@
 <h1 align="center">Sese Library</h1>
 <div align="center">
-<img src="logo.svg" width="128" height="128" alt="logo"/>
+<img src="static/logo.svg" width="128" height="128" alt="logo"/>
 </div>
 <div align="center">
 <img src="https://img.shields.io/static/v1?label=license&message=Apache-2.0&color=blue&logo=Apache" alt="license"/>

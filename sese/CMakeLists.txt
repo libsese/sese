@@ -24,12 +24,14 @@ file(GLOB_RECURSE SECURITY_SRC "${CMAKE_CURRENT_LIST_DIR}/security/*.cpp" "${CMA
 file(GLOB_RECURSE PLUGIN_SRC "${CMAKE_CURRENT_LIST_DIR}/plugin/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/plugin/*.h")
 file(GLOB_RECURSE SERVICE_SRC "${CMAKE_CURRENT_LIST_DIR}/service/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/service/*.h")
 file(GLOB_RECURSE UNIX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.h")
+file(GLOB_RECURSE INTERNAL_SRC "${CMAKE_CURRENT_LIST_DIR}/internal/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/internal/*.h")
 
 add_library(Core
         ${CONCURRENT_SRC}
         ${CONVERT_SRC}
         ${EVENT_SRC}
         ${RECORD_SRC}
+        ${INTERNAL_SRC}
         ${IO_SRC}
         ${THREAD_SRC}
         ${SYSTEM_SRC}
@@ -174,10 +176,10 @@ install(
 )
 
 install(
-        DIRECTORY "${PROJECT_SOURCE_DIR}/sese"
+        DIRECTORY "${CMAKE_CURRENT_LIST_DIR}"
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
-        FILES_MATCHING
-        PATTERN "*.h"
+        FILES_MATCHING PATTERN "*.h"
+        EXCLUDE PATTERN "${CMAKE_CURRENT_LIST_DIR}/internal"
 )
 
 install(
