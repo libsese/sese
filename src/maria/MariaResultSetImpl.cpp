@@ -49,3 +49,9 @@ float impl::MariaResultSetImpl::getFloat(size_t index) const noexcept {
     char *end;
     return std::strtof(row[index], &end);
 }
+std::optional<sese::DateTime> impl::MariaResultSetImpl::getDateTime(size_t index) const noexcept {
+    std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", row[index]);
+    if (rt.has_value()) return rt;
+    return std::nullopt;
+}
+

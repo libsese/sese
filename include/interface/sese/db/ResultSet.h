@@ -7,6 +7,9 @@
 
 #include <string>
 #include <cstring>
+#include <sese/util/DateTime.h>
+#include <sese/text/DateTimeParser.h>
+#include <optional>
 
 namespace sese::db {
 
@@ -47,5 +50,9 @@ namespace sese::db {
         /// \param index 索引
         /// \return 单精度浮点值
         [[nodiscard]] virtual float getFloat(size_t index) const noexcept = 0;
+        /// \brief 在当前记录中获取一个时间数据结构
+        /// \param index 索引
+        /// \return 时间数据结构
+        [[nodiscard]] virtual std::optional<sese::DateTime> getDateTime(size_t index) const noexcept = 0;
     };
 }

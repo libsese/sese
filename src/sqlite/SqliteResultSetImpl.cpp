@@ -58,3 +58,8 @@ int64_t impl::SqliteResultSetImpl::getLong(size_t index) const noexcept {
     char *end;
     return std::strtoll(p, &end, 10);
 }
+std::optional<sese::DateTime> impl::SqliteResultSetImpl::getDateTime(size_t index) const noexcept {
+    std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", table[(columns) *current + index]);
+    if (rt.has_value()) return rt;
+    return std::nullopt;
+}
