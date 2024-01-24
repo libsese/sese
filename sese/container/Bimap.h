@@ -6,6 +6,7 @@
 #pragma once
 
 #include <map>
+#include <initializer_list>
 
 namespace sese {
 
@@ -24,6 +25,16 @@ public:
     Bimap &operator=(const Bimap &) = default;
     Bimap(Bimap &&) = default;
     Bimap &operator=(Bimap &&) = default;
+
+    Bimap(const std::initializer_list<std::pair<BimapKeyType, BimapValueType>> &init) {
+        for (const auto &[key, value]: init) {
+            insert(key, value);
+        }
+    }
+
+    decltype(auto) begin() const { return first.begin(); }
+
+    decltype(auto) end() const { return first.end(); }
 
     void insert(const BimapKeyType &key, const BimapValueType &value) {
         first[key] = value;
@@ -51,18 +62,6 @@ public:
     bool tryEraseByValue(const BimapValueType &value) {
         if (second.find(value) == second.end()) return false;
         eraseByValue(value);
-        return true;
-    }
-
-    bool findByKey(const BimapKeyType &key, BimapValueType &value) const {
-        if (first.find(key) == first.end()) return false;
-        value = first.at(key);
-        return true;
-    }
-
-    bool findByValue(const BimapValueType &value, BimapKeyType &key) const {
-        if (second.find(value) == second.end()) return false;
-        key = second.at(value);
         return true;
     }
 
@@ -104,7 +103,7 @@ public:
     }
 
 private:
-    std::map<BimapKeyType, BimapValueType> first;
-    std::map<BimapValueType, BimapKeyType> second;
+    std::map<BimapKeyType, BimapValueType> first{};
+    std::map<BimapValueType, BimapKeyType> second{};
 };
 } // namespace sese
