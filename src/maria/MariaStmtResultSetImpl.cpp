@@ -52,6 +52,5 @@ float sese::db::impl::MariaStmtResultSet::getFloat(size_t index) const noexcept 
 }
 std::optional<sese::DateTime> sese::db::impl::MariaStmtResultSet::getDateTime(size_t index) const noexcept {
     std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", (const char *) row[index].buffer);
-    if (rt.has_value()) return rt;
-    return std::nullopt;
+    return rt;
 }

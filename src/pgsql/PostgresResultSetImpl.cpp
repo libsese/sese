@@ -56,6 +56,5 @@ float impl::PostgresResultSetImpl::getFloat(size_t index) const noexcept {
 }
 std::optional<sese::DateTime> impl::PostgresResultSetImpl::getDateTime(size_t index) const noexcept {
     std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", PQgetvalue(res, row - 1, (int) index));
-    if (rt.has_value()) return rt;
-    return std::nullopt;
+    return rt;
 }
