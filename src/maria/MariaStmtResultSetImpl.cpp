@@ -1,6 +1,8 @@
 #include <maria/MariaStmtResultSetImpl.h>
 #include <maria/MariaPreparedStatementImpl.h>
 
+#include <ctime>
+
 sese::db::impl::MariaStmtResultSet::MariaStmtResultSet(MYSQL_STMT *stmt, MYSQL_BIND *row, size_t count) noexcept {
     this->stmt = stmt;
     this->row = row;
@@ -50,7 +52,20 @@ float sese::db::impl::MariaStmtResultSet::getFloat(size_t index) const noexcept 
     value = *(float *)row[index].buffer;
     return value;
 }
+
 std::optional<sese::DateTime> sese::db::impl::MariaStmtResultSet::getDateTime(size_t index) const noexcept {
-    std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", (const char *) row[index].buffer);
-    return rt;
+    // 未来需要详细的 DateTime 构造函数
+    auto datetime = static_cast<MYSQL_TIME *>(row[index].buffer);
+    std::tm tm{};
+    tm.tm_year = datetime->year - 1900;
+    tm.tm_mon = datetime->month - 1;
+    tm.tm_mday = datetime->day;
+    tm.tm_hour = datetime->hour;
+    tm.tm_min = datetime->minute;
+    tm.tm_sec = datetime->second;
+    auto timestamp = timegm(&tm);
+    if (-1 == timestamp) {
+        return std::nullopt;
+    }
+    return sese::DateTime(timestamp * 1000000, 0, sese::DateTime::Policy::FORMAT);
 }

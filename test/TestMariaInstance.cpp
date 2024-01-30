@@ -129,7 +129,7 @@ TEST(TestMariaDriverInstance, DeleteData) {
     }
 }
 
-TEST(TestMariaStmt, dateTime) {
+TEST(TestMariaStmt, DateTime) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"

@@ -153,7 +153,7 @@ TEST(TestMariaStmt, InsertStmt) {
     }
 }
 
-TEST(TestMariaStmt, dateTimeStmt) {
+TEST(TestMariaStmt, DateTimeStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
