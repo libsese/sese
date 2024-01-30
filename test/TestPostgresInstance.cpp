@@ -51,20 +51,20 @@ TEST(TestPostgresDriverInstance, QueryData) {
 
     auto results1 = instance->executeQuery("select * from tb_query;");
     ASSERT_NE(nullptr, results1);
-    printf("Columns = %zu", results1->getColumns());
+    printf("Columns = %zu\n", results1->getColumns());
     while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+        printf("result: id = %" PRId32 " name = %s\n", results1->getInteger(0), results1->getString(1).data());
     }
 
     results1->reset();
     while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+        printf("result: id = %" PRId32 " name = %s\n", results1->getInteger(0), results1->getString(1).data());
     }
 
     results1 = instance->executeQuery("select * from tb_query where id = 1;");
     ASSERT_NE(nullptr, results1);
     while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+        printf("result: id = %" PRId32 " name = %s\n", results1->getInteger(0), results1->getString(1).data());
     }
 }
 
@@ -143,5 +143,21 @@ TEST(TestPostgresDriverInstance, InsertData) {
     ASSERT_NE(nullptr, results1);
     while (results1->next()) {
         printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    }
+}
+
+TEST(TestPostgresDriverInstance, datetime) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Postgres,
+            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
+    auto results1 = instance->executeQuery("select * from tb_dateTime;");
+    ASSERT_NE(nullptr, results1);
+    printf("Columns = %zu\n", results1->getColumns());
+    while (results1->next()) {
+        printf("result: id = %" PRId32 " time = %" PRId64 "\n", results1->getInteger(0), results1->getDateTime(1).value().getTimestamp());
     }
 }

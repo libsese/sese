@@ -42,7 +42,7 @@ TEST(TestMariaDriverInstance, QueryData) {
     }
 }
 
-TEST(TestMariaDriverInstance, ModifyData) {
+TEST(TestMariaDriverInstance, Modifyata) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -126,5 +126,21 @@ TEST(TestMariaDriverInstance, DeleteData) {
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
         printf("result1: id = %" PRId32 " name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+    }
+}
+
+TEST(TestMariaStmt, dateTime) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto result = instance->executeQuery("select * from tb_dateTime;");
+    ASSERT_NE(nullptr, result);
+    printf("columns: %zu\n", result->getColumns());
+    while (result->next()) {
+        printf("id = %" PRId32 " time = %" PRId64 "\n", result->getInteger(0), result->getDateTime(1).value().getTimestamp());
     }
 }

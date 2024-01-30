@@ -5,6 +5,7 @@ CREATE TABLE tb_delete
     id   integer,
     name varchar(32)
 );
+INSERT INTO tb_delete VALUES(1,'foo');
 INSERT INTO tb_delete VALUES(2,'bar');
 CREATE TABLE tb_insert
 (
@@ -13,10 +14,6 @@ CREATE TABLE tb_insert
 );
 INSERT INTO tb_insert VALUES(1,'foo');
 INSERT INTO tb_insert VALUES(2,'bar');
-INSERT INTO tb_insert VALUES(3,'mike');
-INSERT INTO tb_insert VALUES(3,'mike');
-INSERT INTO tb_insert VALUES(3,'mike');
-INSERT INTO tb_insert VALUES(3,'mike');
 CREATE TABLE tb_query
 (
     id   integer,
@@ -33,8 +30,11 @@ INSERT INTO tb_stmt_delete VALUES(2,'bar');
 CREATE TABLE tb_stmt_insert
 (
     id   integer,
-    name varchar(32)
-, setDouble double, setFloat float, setLong bigint);
+    name varchar(32),
+    setDouble double,
+    setFloat float,
+    setLong bigint
+);
 INSERT INTO tb_stmt_insert VALUES(1,'foo',1.0,1.0,1);
 INSERT INTO tb_stmt_insert VALUES(2,'bar',1.0,1.0,1);
 CREATE TABLE tb_stmt_query

@@ -104,6 +104,32 @@ CREATE TABLE public.tb_query (
 ALTER TABLE public.tb_query OWNER TO postgres;
 
 --
+-- Name: tb_dateTime; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_dateTime
+(
+    id   integer NOT NULL,
+    time timestamp NOT NULL
+);
+
+
+ALTER TABLE public.tb_dateTime OWNER TO postgres;
+
+--
+-- Name: tb_stmt_dateTime; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_stmt_dateTime
+(
+    id   integer NOT NULL,
+    time timestamp NOT NULL
+);
+
+
+ALTER TABLE public.tb_stmt_dateTime OWNER TO postgres;
+
+--
 -- Name: tb_rollBack; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -233,6 +259,19 @@ INSERT INTO public.tb_insert VALUES (2, 'bar');
 INSERT INTO public.tb_query VALUES (1, 'foo');
 INSERT INTO public.tb_query VALUES (2, 'bar');
 
+--
+-- Data for Name: tb_dateTime; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.tb_dateTime VALUES (1, '2023-03-18 12:30:00');
+INSERT INTO public.tb_dateTime VALUES (2, '2023-03-18 12:30:00');
+
+--
+-- Data for Name: tb_stmt_dateTime; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.tb_stmt_dateTime VALUES (1, '2023-03-18 12:30:00');
+INSERT INTO public.tb_stmt_dateTime VALUES (2, '2023-03-18 12:30:00');
 
 --
 -- Data for Name: tb_rollBack; Type: TABLE DATA; Schema: public; Owner: postgres

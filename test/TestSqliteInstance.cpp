@@ -32,14 +32,15 @@ TEST(TestSqliteDriverInstance, QueryData) {
 
     auto result = instance->executeQuery("select * from tb_query where id = 1;");
     ASSERT_NE(nullptr, result);
+    printf("columns: %zu\n", result->getColumns());
     while (result->next()) {
-        printf("id = %" PRId32 ", name = %s Columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
+        printf("id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 
     result->reset();
 
     while (result->next()) {
-        printf("id = %" PRId32 ", name = %s Columns = %zu\n", (int) result->getInteger(0), result->getString(1).data(), result->getColumns());
+        printf("id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
     }
 }
 
@@ -103,5 +104,18 @@ TEST(TestSqliteDriverInstance, InsertData) {
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
         printf("result1 id = %" PRId32 ", name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+    }
+}
+
+TEST(TestSqliteDriverInstance, dateTime) {
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto result = instance->executeQuery("select * from tb_dateTime;");
+    ASSERT_NE(nullptr, result);
+    printf("columns: %zu\n", result->getColumns());
+    while (result->next()) {
+        printf("id = %" PRId32 " time = %" PRId64 "\n", result->getInteger(0), result->getDateTime(1).value().getTimestamp());
     }
 }

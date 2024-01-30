@@ -25,7 +25,7 @@ TEST(TestPostgresStmt, QueryStmt) {
     auto results = stmt->executeQuery();
     ASSERT_NE(nullptr, results);
     while (results->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
+        printf("result: id = %" PRId32 " name = %s\n", results->getInteger(0), results->getString(1).data());
     }
 }
 
@@ -139,5 +139,26 @@ TEST(TestPostgresStmt, InsertStmt) {
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
         printf("result1: id = %" PRId64 " name = %s setDouble = %lf setFloat = %f setInteger = %" PRId32 "\n", result1->getLong(0), result1->getString(1).data(), result1->getDouble(2), result1->getFloat(3), result1->getInteger(4));
+    }
+}
+
+TEST(TestPostgresStmt, dateTimeStmt) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Postgres,
+            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
+    int32_t id = 1;
+    auto stmt = instance->createStatement("select * from tb_stmt_dateTime where id = ?;");
+    ASSERT_NE(nullptr, stmt);
+
+    ASSERT_EQ(true, stmt->setInteger(1, id));
+
+    auto results = stmt->executeQuery();
+    ASSERT_NE(nullptr, results);
+    while (results->next()) {
+        printf("result: id = %" PRId32 " time = %" PRId64 "\n", results->getInteger(0), results->getDateTime(1).value().getTimestamp());
     }
 }

@@ -25,15 +25,17 @@ TEST(TestMariaStmt, QueryStmt) {
     auto result = stmt->executeQuery();
     ASSERT_NE(nullptr, result);
     printf("columns: %zu\n", result->getColumns());
-    while (result->next()) {
-        printf("result: id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
-    }
-
-    result->reset();
-
-    while (result->next()) {
-        printf("result: id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
-    }
+    printf("time = %s\n", result->getString(0).data());
+    printf("time = %" PRId64 "\n", result->getDateTime(0).value().getTimestamp());
+    //while (result->next()) {
+    //    printf("result: id = %" PRId32 " name = %s time = %s\n", result->getInteger(0), result->getString(1).data(), result->getString(2).data());
+    //}
+//
+//    result->reset();
+//
+//    while (result->next()) {
+//        printf("result: id = %" PRId32 " name = %s time = %s\n", result->getInteger(0), result->getString(1).data(), result->getString(2).data());
+//    }
 }
 
 TEST(TestMariaStmt, UpdateStmt) {
@@ -148,5 +150,24 @@ TEST(TestMariaStmt, InsertStmt) {
     ASSERT_NE(nullptr, result1);
     while (result1->next()) {
         printf("result1: id = %" PRId32 " name = %s setDouble = %lf setFloat = %f setLong = %" PRId64 "\n", (int) result1->getInteger(0), result1->getString(1).data(), result1->getDouble(2), result1->getFloat(3), result1->getLong(4));
+    }
+}
+
+TEST(TestMariaStmt, dateTimeStmt) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto stmt = instance->createStatement("select * from tb_stmt_dateTime;");
+    ASSERT_NE(nullptr, stmt);
+
+    auto result = stmt->executeQuery();
+    ASSERT_NE(nullptr, result);
+    printf("columns: %zu\n", result->getColumns());
+    while (result->next()) {
+        printf("id = %" PRId32 " time = %" PRId64 "\n", result->getInteger(0), result->getDateTime(1).value().getTimestamp());
     }
 }
