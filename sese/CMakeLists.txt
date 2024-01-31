@@ -24,6 +24,7 @@ file(GLOB_RECURSE SECURITY_SRC "${CMAKE_CURRENT_LIST_DIR}/security/*.cpp" "${CMA
 file(GLOB_RECURSE PLUGIN_SRC "${CMAKE_CURRENT_LIST_DIR}/plugin/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/plugin/*.h")
 file(GLOB_RECURSE SERVICE_SRC "${CMAKE_CURRENT_LIST_DIR}/service/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/service/*.h")
 file(GLOB_RECURSE UNIX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.h")
+file(GLOB_RECURSE RES_SRC "${CMAKE_CURRENT_LIST_DIR}/res/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/res/*.h")
 file(GLOB_RECURSE INTERNAL_SRC "${CMAKE_CURRENT_LIST_DIR}/internal/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/internal/*.h")
 
 add_library(Core
@@ -42,6 +43,7 @@ add_library(Core
         ${SECURITY_SRC}
         ${PLUGIN_SRC}
         ${SERVICE_SRC}
+        ${RES_SRC}
         Config.h
 )
 
