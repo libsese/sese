@@ -72,6 +72,14 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setNull(uint32_t index) noex
     return true;
 }
 
+bool sese::db::impl::PostgresPreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
+    if (index - 1 >= count) return false;
+    std::string timeValue = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
+    this->paramValues[index - 1] = timeValue.c_str();
+    this->paramTypes[index - 1] = TIMESTAMPOID;
+    return true;
+}
+
 sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQuery() noexcept {
     result = PQexecPrepared(conn, stmtName.c_str(), static_cast<int>(count), paramValues, nullptr, nullptr, 0);
     if (result == nullptr) {

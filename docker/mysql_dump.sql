@@ -258,13 +258,13 @@ INSERT INTO `tb_stmt_update` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_stmt_dateTime`
+-- Table structure for table `tb_stmt_getTime`
 --
 
-DROP TABLE IF EXISTS `tb_stmt_dateTime`;
+DROP TABLE IF EXISTS `tb_stmt_getTime`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_stmt_dateTime`
+CREATE TABLE `tb_stmt_getTime`
 (
     `id`   int(11) NOT NULL,
     `time` datetime NOT NULL
@@ -275,8 +275,30 @@ CREATE TABLE `tb_stmt_dateTime`
 -- Dumping data for table `tb_stmt_dateTime`
 --
 
-LOCK TABLES `tb_stmt_dateTime` WRITE;
-INSERT INTO `tb_stmt_dateTime` VALUES (1,'2023-03-18 12:30:00'),(2,'2023-03-18 12:30:00');
+LOCK TABLES `tb_stmt_getTime` WRITE;
+INSERT INTO `tb_stmt_getTime` VALUES (1,'2023-03-18 12:30:00'),(2,'2023-03-18 12:30:00');
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_stmt_setTime`
+--
+
+DROP TABLE IF EXISTS `tb_stmt_setTime`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_stmt_setTime`
+(
+    `id`   int(11) NOT NULL,
+    `time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_stmt_dateTime`
+--
+
+LOCK TABLES `tb_stmt_setTime` WRITE;
+INSERT INTO `tb_stmt_setTime` VALUES (1,'2023-03-18 12:30:00'),(2,'2023-03-18 12:30:00');
 UNLOCK TABLES;
 
 --

@@ -118,6 +118,13 @@ bool impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
     return SQLITE_OK == sqlite3_bind_null(stmt, (int) index);
 }
 
+bool impl::SqlitePreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
+    if (this->stmtStatus) sqlite3_reset(stmt);
+    std::string timeValue = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
+    this->stmtStatus = false;
+    return SQLITE_OK == sqlite3_bind_text(stmt, (int) index, timeValue.c_str(), -1, nullptr);
+}
+
 int impl::SqlitePreparedStatementImpl::getLastError() const noexcept {
     auto conn = sqlite3_db_handle(stmt);
     if (conn) {
@@ -190,3 +197,4 @@ int64_t impl::SqlitePreparedStatementImpl::getColumnSize(uint32_t index) noexcep
         return std::strtol(number.c_str(), &end, 10);
     }
 }
+

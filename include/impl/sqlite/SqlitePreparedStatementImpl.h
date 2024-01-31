@@ -21,6 +21,7 @@ namespace sese::db::impl {
         bool setInteger(uint32_t index, int32_t &value) noexcept override;
         bool setText(uint32_t index, const char *value) noexcept override;
         bool setNull(uint32_t index) noexcept override;
+        bool setDateTime(uint32_t index, const sese::DateTime &value) noexcept override;
 
         bool getColumnType(uint32_t index, MetadataType &type) noexcept override;
         int64_t getColumnSize(uint32_t index) noexcept override;

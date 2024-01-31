@@ -25,17 +25,15 @@ TEST(TestMariaStmt, QueryStmt) {
     auto result = stmt->executeQuery();
     ASSERT_NE(nullptr, result);
     printf("columns: %zu\n", result->getColumns());
-    printf("time = %s\n", result->getString(0).data());
-    printf("time = %" PRId64 "\n", result->getDateTime(0).value().getTimestamp());
-    //while (result->next()) {
-    //    printf("result: id = %" PRId32 " name = %s time = %s\n", result->getInteger(0), result->getString(1).data(), result->getString(2).data());
-    //}
-//
-//    result->reset();
-//
-//    while (result->next()) {
-//        printf("result: id = %" PRId32 " name = %s time = %s\n", result->getInteger(0), result->getString(1).data(), result->getString(2).data());
-//    }
+    while (result->next()) {
+        printf("result: id = %" PRId32 " name = %s\n", result->getInteger(0), result->getString(1).data());
+    }
+
+    result->reset();
+
+    while (result->next()) {
+        printf("result: id = %" PRId32 " name = %s\n", result->getInteger(0), result->getString(1).data());
+    }
 }
 
 TEST(TestMariaStmt, UpdateStmt) {
@@ -153,7 +151,7 @@ TEST(TestMariaStmt, InsertStmt) {
     }
 }
 
-TEST(TestMariaStmt, DateTimeStmt) {
+TEST(TestMariaStmt, GetDateTimeStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -161,7 +159,7 @@ TEST(TestMariaStmt, DateTimeStmt) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto stmt = instance->createStatement("select * from tb_stmt_dateTime;");
+    auto stmt = instance->createStatement("select * from tb_stmt_getTime;");
     ASSERT_NE(nullptr, stmt);
 
     auto result = stmt->executeQuery();
@@ -169,5 +167,47 @@ TEST(TestMariaStmt, DateTimeStmt) {
     printf("columns: %zu\n", result->getColumns());
     while (result->next()) {
         printf("id = %" PRId32 " time = %" PRId64 "\n", result->getInteger(0), result->getDateTime(1).value().getTimestamp());
+    }
+}
+
+TEST(TestMariaStmt, SetDateTimeStmt) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto result = instance->executeQuery("select * from tb_stmt_setTime;");
+    ASSERT_NE(nullptr, result);
+
+    printf("columns: %zu\n", result->getColumns());
+    while (result->next()) {
+        printf("id = %" PRId32 " time = %" PRId64 "\n", result->getInteger(0), result->getDateTime(1).value().getTimestamp());
+    }
+
+    auto stmt = instance->createStatement("insert into tb_stmt_setTime (id, time) values (?, ?);");
+    ASSERT_NE(nullptr, stmt);
+
+    int id = 3;
+    auto dateTime = sese::DateTime(1679142600000000, 0);
+    ASSERT_EQ(true, stmt->setInteger(1, id));
+    ASSERT_NE(true, stmt->setInteger(6, id));
+    ASSERT_EQ(true, stmt->setDateTime(2, dateTime));
+    ASSERT_NE(true, stmt->setDateTime(6, dateTime));
+
+    auto count = stmt->executeUpdate();
+    ASSERT_NE(-1, count);
+
+    stmt->setDateTime(2, dateTime);
+    stmt->setInteger(2, id);
+    stmt->setDateTime(2, dateTime);
+
+    auto result1 = instance->executeQuery("select * from tb_stmt_setTime;");
+    ASSERT_NE(nullptr, result);
+
+    printf("columns: %zu\n", result1->getColumns());
+    while (result1->next()) {
+        printf("id = %" PRId32 " time = %" PRId64 "\n", result1->getInteger(0), result1->getDateTime(1).value().getTimestamp());
     }
 }

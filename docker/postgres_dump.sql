@@ -117,17 +117,30 @@ CREATE TABLE public.tb_dateTime
 ALTER TABLE public.tb_dateTime OWNER TO postgres;
 
 --
--- Name: tb_stmt_dateTime; Type: TABLE; Schema: public; Owner: postgres
+-- Name: tb_stmt_getTime; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.tb_stmt_dateTime
+CREATE TABLE public.tb_stmt_getTime
 (
     id   integer NOT NULL,
     time timestamp NOT NULL
 );
 
 
-ALTER TABLE public.tb_stmt_dateTime OWNER TO postgres;
+ALTER TABLE public.tb_stmt_setTime OWNER TO postgres;
+
+--
+-- Name: tb_stmt_setTime; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_stmt_setTime
+(
+    id   integer NOT NULL,
+    time timestamp NOT NULL
+);
+
+
+ALTER TABLE public.tb_stmt_setTime OWNER TO postgres;
 
 --
 -- Name: tb_rollBack; Type: TABLE; Schema: public; Owner: postgres
@@ -267,11 +280,18 @@ INSERT INTO public.tb_dateTime VALUES (1, '2023-03-18 12:30:00');
 INSERT INTO public.tb_dateTime VALUES (2, '2023-03-18 12:30:00');
 
 --
--- Data for Name: tb_stmt_dateTime; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: tb_stmt_getTime; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tb_stmt_dateTime VALUES (1, '2023-03-18 12:30:00');
-INSERT INTO public.tb_stmt_dateTime VALUES (2, '2023-03-18 12:30:00');
+INSERT INTO public.tb_stmt_getTime VALUES (1, '2023-03-18 12:30:00');
+INSERT INTO public.tb_stmt_getTime VALUES (2, '2023-03-18 12:30:00');
+
+--
+-- Data for Name: tb_stmt_setTime; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.tb_stmt_setTime VALUES (1, '2023-03-18 12:30:00');
+INSERT INTO public.tb_stmt_setTime VALUES (2, '2023-03-18 12:30:00');
 
 --
 -- Data for Name: tb_rollBack; Type: TABLE DATA; Schema: public; Owner: postgres

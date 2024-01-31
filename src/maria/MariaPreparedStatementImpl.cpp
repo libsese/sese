@@ -57,8 +57,11 @@ bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *res
             case MYSQL_TYPE_TIME:
             case MYSQL_TYPE_DATE:
             case MYSQL_TYPE_DATETIME:
+            {
                 *p = malloc(sizeof(MYSQL_TIME));
+                memset(*p, 0, sizeof(MYSQL_TIME));
                 break;
+            }
             default:
                 return false;
         }
@@ -150,6 +153,30 @@ bool sese::db::impl::MariaPreparedStatementImpl::setText(uint32_t index, const c
 bool sese::db::impl::MariaPreparedStatementImpl::setNull(uint32_t index) noexcept {
     if (index - 1 >= count) return false;
     this->param[index - 1].buffer_type = MYSQL_TYPE_NULL;
+    return true;
+}
+
+bool sese::db::impl::MariaPreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
+    if (index - 1 >= count) return false;
+    if (!this->isDatetime[index - 1]) {
+        this->param[index - 1].buffer = malloc(sizeof(MYSQL_TIME));
+        this->isDatetime[index - 1] = true;
+        SESE_DEBUG("alloc buffer addr: %p", this->param[index - 1].buffer);
+    } else {
+        SESE_DEBUG("use buffer addr: %p", this->param[index - 1].buffer);
+    }
+    memset(this->param[index - 1].buffer, 0 , sizeof(MYSQL_TIME));
+    auto time = static_cast<MYSQL_TIME *>(this->param[index - 1].buffer);
+    time->year = value.getYears();
+    time->month = value.getMonths();
+    time->day = value.getDays();
+    time->hour = value.getHours();
+    time->minute = value.getMinutes();
+    time->second = value.getSeconds();
+    time->time_type = MYSQL_TIMESTAMP_DATETIME;
+
+    this->param[index - 1].buffer_type = MYSQL_TYPE_DATETIME;
+    this->param[index - 1].buffer_length = sizeof(MYSQL_TIME);
     return true;
 }
 
