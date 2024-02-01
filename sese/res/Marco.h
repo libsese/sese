@@ -16,7 +16,7 @@
     class streamClass final : public sese::res::ResourceStream {            \
     public:                                                                 \
         streamClass() : sese::res::ResourceStream(streamBuf, streamSize) {} \
-    }
+    };
 
 #define SESE_MAKE_RES_STREAM(streamBuf, streamSize) \
     std::make_unique<sese::res::ResourceStream>(streamBuf, streamSize)
