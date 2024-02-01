@@ -204,7 +204,7 @@ TEST(TestMariaStmt, SetDateTimeStmt) {
     stmt->setDateTime(2, dateTime);
 
     auto result1 = instance->executeQuery("select * from tb_stmt_setTime;");
-    ASSERT_NE(nullptr, result);
+    ASSERT_NE(nullptr, result1);
 
     printf("columns: %zu\n", result1->getColumns());
     while (result1->next()) {

@@ -2,6 +2,9 @@
 
 #include <sese/record/Marco.h>
 
+#undef SESE_DEBUG
+#define SESE_DEBUG(str, ...)
+
 using namespace sese::db;
 
 const char *impl::SqlitePreparedStatementImpl::IntegerAffinitySet[9]{
@@ -53,11 +56,22 @@ std::string impl::SqlitePreparedStatementImpl::splitBefore(const std::string &st
     return str.substr(0, pos);
 }
 
-impl::SqlitePreparedStatementImpl::SqlitePreparedStatementImpl(sqlite3_stmt *stmt) noexcept
+impl::SqlitePreparedStatementImpl::SqlitePreparedStatementImpl(sqlite3_stmt *stmt, size_t count) noexcept
     : stmt(stmt) {
+    this->count = count;
+    this->isDatetime = (bool *) malloc(count);
+    memset(this->isDatetime, false, count);
+    this->buffer = (void **) malloc(sizeof(void *) * count);
 }
 
 impl::SqlitePreparedStatementImpl::~SqlitePreparedStatementImpl() noexcept {
+    for (int i = 0; i < count; ++i) {
+        if (this->isDatetime[i]) {
+            SESE_DEBUG("free buffer addr: %p", this->buffer[i]);
+            free(buffer[i]);
+        }
+    }
+    free(isDatetime);
     sqlite3_finalize(stmt);
 }
 
@@ -84,45 +98,84 @@ int64_t impl::SqlitePreparedStatementImpl::executeUpdate() noexcept {
 
 bool impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, double &value) noexcept {
     if (this->stmtStatus) sqlite3_reset(stmt);
+    if (this->isDatetime[index - 1]) {
+        free(this->buffer[index - 1]);
+        this->isDatetime[index - 1] = false;
+    }
     this->stmtStatus = false;
     return SQLITE_OK == sqlite3_bind_double(stmt, (int) index, value);
 }
 
 bool impl::SqlitePreparedStatementImpl::setFloat(uint32_t index, float &value) noexcept {
     if (this->stmtStatus) sqlite3_reset(stmt);
+    if (this->isDatetime[index - 1]) {
+        free(this->buffer[index - 1]);
+        this->isDatetime[index - 1] = false;
+    }
     this->stmtStatus = false;
     return SQLITE_OK == sqlite3_bind_double(stmt, (int) index, value);
 }
 
 bool impl::SqlitePreparedStatementImpl::setLong(uint32_t index, int64_t &value) noexcept {
     if (this->stmtStatus) sqlite3_reset(stmt);
+    if (this->isDatetime[index - 1]) {
+        free(this->buffer[index - 1]);
+        this->isDatetime[index - 1] = false;
+    }
     this->stmtStatus = false;
     return SQLITE_OK == sqlite3_bind_int64(stmt, (int) index, value);
 }
 
 bool impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, int32_t &value) noexcept {
     if (this->stmtStatus) sqlite3_reset(stmt);
+    if (this->isDatetime[index - 1]) {
+        SESE_DEBUG("free buffer addr: %p", this->buffer[index - 1]);
+        free(this->buffer[index - 1]);
+        this->isDatetime[index - 1] = false;
+    }
     this->stmtStatus = false;
     return SQLITE_OK == sqlite3_bind_int(stmt, (int) index, value);
 }
 
 bool impl::SqlitePreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
     if (this->stmtStatus) sqlite3_reset(stmt);
+    if (this->isDatetime[index - 1]) {
+        free(this->buffer[index - 1]);
+        this->isDatetime[index - 1] = false;
+    }
     this->stmtStatus = false;
     return SQLITE_OK == sqlite3_bind_text(stmt, (int) index, value, -1, nullptr);
 }
 
 bool impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
     if (this->stmtStatus) sqlite3_reset(stmt);
+    if (this->isDatetime[index - 1]) {
+        free(this->buffer[index - 1]);
+        this->isDatetime[index - 1] = false;
+    }
     this->stmtStatus = false;
     return SQLITE_OK == sqlite3_bind_null(stmt, (int) index);
 }
 
 bool impl::SqlitePreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
     if (this->stmtStatus) sqlite3_reset(stmt);
-    std::string timeValue = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
     this->stmtStatus = false;
-    return SQLITE_OK == sqlite3_bind_text(stmt, (int) index, timeValue.c_str(), -1, nullptr);
+
+    if (!this->isDatetime[index - 1]) {
+        this->buffer[index - 1] = malloc(20);
+        this->isDatetime[index - 1] = true;
+        SESE_DEBUG("alloc buffer addr: %p", this->buffer[index - 1]);
+    } else {
+        SESE_DEBUG("use buffer addr: %p", this->buffer[index - 1])
+    }
+
+    memset(this->buffer[index - 1], 0 , 20);
+
+    std::string dateValue = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
+    const char *timeValue = dateValue.c_str();
+    memcpy(this->buffer[index - 1], timeValue, 20);
+
+    return SQLITE_OK == sqlite3_bind_text(stmt, (int) index, timeValue, -1, SQLITE_TRANSIENT);
 }
 
 int impl::SqlitePreparedStatementImpl::getLastError() const noexcept {

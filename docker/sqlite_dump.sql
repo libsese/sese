@@ -102,11 +102,10 @@ INSERT INTO tb_stmt_query VALUES(1,'foo');
 INSERT INTO tb_stmt_query VALUES(2,'bar');
 CREATE TABLE tb_stmt_setTime
 (
-    id   integer not null,
-    time text    not null
+    id       integer not null,
+    intTime  int,
+    charTime text
 );
-INSERT INTO tb_stmt_setTime VALUES(1,'2023-03-18 12:30:00');
-INSERT INTO tb_stmt_setTime VALUES(2,'2023-03-18 12:30:00');
 DELETE FROM sqlite_sequence;
 INSERT INTO sqlite_sequence VALUES('tb_getInsertId',67);
 COMMIT;

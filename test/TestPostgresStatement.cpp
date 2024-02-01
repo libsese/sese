@@ -142,7 +142,7 @@ TEST(TestPostgresStmt, InsertStmt) {
     }
 }
 
-TEST(TestPostgresStmt, dateTimeStmt) {
+TEST(TestPostgresStmt, GetTimeStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
@@ -157,6 +157,34 @@ TEST(TestPostgresStmt, dateTimeStmt) {
     ASSERT_EQ(true, stmt->setInteger(1, id));
 
     auto results = stmt->executeQuery();
+    ASSERT_NE(nullptr, results);
+    while (results->next()) {
+        printf("result: id = %" PRId32 " time = %" PRId64 "\n", results->getInteger(0), results->getDateTime(1).value().getTimestamp());
+    }
+}
+
+TEST(TestPostgresStmt, SetTimeStmt) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Postgres,
+            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
+
+    auto stmt = instance->createStatement("insert into tb_stmt_setTime (id, time) values (?, ?);");
+    ASSERT_NE(nullptr, stmt);
+
+    int32_t id = 3;
+    auto dateTime = sese::DateTime(1679142600000000, 0);
+    ASSERT_EQ(true, stmt->setInteger(1, id));
+    ASSERT_EQ(true, stmt->setDateTime(2, dateTime));
+
+    auto count = stmt->executeUpdate();
+    printf("errorMsg = %s\n", instance->getLastErrorMessage());
+    ASSERT_NE(-1, count);
+
+    auto results = instance->executeQuery("select * from tb_stmt_setTime;");
     ASSERT_NE(nullptr, results);
     while (results->next()) {
         printf("result: id = %" PRId32 " time = %" PRId64 "\n", results->getInteger(0), results->getDateTime(1).value().getTimestamp());

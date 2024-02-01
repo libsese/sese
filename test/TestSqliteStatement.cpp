@@ -188,7 +188,7 @@ TEST(TestSqliteStmt, Insertstmt) {
     }
 }
 
-TEST(TestSqliteStmt, dateTimestmt) {
+TEST(TestSqliteStmt, GetTimeStmt) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -204,5 +204,36 @@ TEST(TestSqliteStmt, dateTimestmt) {
     printf("columns = %zu\n", result->getColumns());
     while (result->next()) {
         printf("stmt result: id = %" PRId32 ", time = %" PRId64 "\n", (int) result->getInteger(0), result->getDateTime(1).value().getTimestamp());
+    }
+}
+
+TEST(TestSqliteStmt, SetTimeStmt) {
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto stmt = instance->createStatement("insert into tb_stmt_setTime (id, intTime, charTime) values (?, ?, ?);");
+    ASSERT_NE(nullptr, stmt);
+
+    int id = 3;
+    auto dateTime = sese::DateTime(1679142600000000, 0);
+
+    ASSERT_EQ(true, stmt->setInteger(1, id));
+//    ASSERT_NE(true, stmt->setInteger(6, id));
+    ASSERT_EQ(true, stmt->setDateTime(2, dateTime));
+//    ASSERT_NE(true, stmt->setDateTime(6, dateTime));
+    ASSERT_EQ(true, stmt->setDateTime(3, dateTime));
+//    ASSERT_NE(true, stmt->setDateTime(6, dateTime));
+
+
+    auto count = stmt->executeUpdate();
+    ASSERT_NE(-1, count);
+
+    auto result1 = instance->executeQuery("select * from tb_stmt_setTime;");
+    ASSERT_NE(nullptr, result1);
+
+    printf("columns: %zu\n", result1->getColumns());
+    while (result1->next()) {
+        printf("result: id = %" PRId32 " intTime = %" PRId64 " charTime = %" PRId64 "\n", (int) result1->getInteger(0), result1->getDateTime(1).value().getTimestamp(), result1->getDateTime(2).value().getTimestamp());
     }
 }

@@ -146,7 +146,7 @@ TEST(TestPostgresDriverInstance, InsertData) {
     }
 }
 
-TEST(TestPostgresDriverInstance, datetime) {
+TEST(TestPostgresDriverInstance, Datetime) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
             "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"

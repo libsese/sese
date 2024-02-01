@@ -107,7 +107,7 @@ TEST(TestSqliteDriverInstance, InsertData) {
     }
 }
 
-TEST(TestSqliteDriverInstance, dateTime) {
+TEST(TestSqliteDriverInstance, DateTime) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());

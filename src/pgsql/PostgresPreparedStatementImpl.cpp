@@ -21,6 +21,7 @@ sese::db::impl::PostgresPreparedStatementImpl::~PostgresPreparedStatementImpl() 
         PQclear(result);
         result = nullptr;
     }
+
     free(paramTypes);
     free(paramValues);
     delete[] this->strings;
@@ -74,8 +75,9 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setNull(uint32_t index) noex
 
 bool sese::db::impl::PostgresPreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
     if (index - 1 >= count) return false;
-    std::string timeValue = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
-    this->paramValues[index - 1] = timeValue.c_str();
+    std::string dateValue = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
+    this->strings[index - 1] = dateValue;
+    this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = TIMESTAMPOID;
     return true;
 }

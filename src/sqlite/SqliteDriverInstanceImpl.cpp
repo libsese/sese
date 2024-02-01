@@ -34,8 +34,13 @@ int64_t impl::SqliteDriverInstanceImpl::executeUpdate(const char *sql) noexcept 
 
 PreparedStatement::Ptr impl::SqliteDriverInstanceImpl::createStatement(const char *sql) noexcept {
     sqlite3_stmt *stmt;
+    size_t len = strlen(sql);
+    size_t count = 0;
+    for (size_t i = 0; i < len; ++i) {
+        if (sql[i] == '?') count++;
+    }
     if (SQLITE_OK == sqlite3_prepare_v2(conn, sql, -1, &stmt, nullptr)) {
-        return std::make_unique<impl::SqlitePreparedStatementImpl>(stmt);
+        return std::make_unique<impl::SqlitePreparedStatementImpl>(stmt, count);
     } else {
         return nullptr;
     }

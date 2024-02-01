@@ -127,7 +127,7 @@ CREATE TABLE public.tb_stmt_getTime
 );
 
 
-ALTER TABLE public.tb_stmt_setTime OWNER TO postgres;
+ALTER TABLE public.tb_stmt_getTime OWNER TO postgres;
 
 --
 -- Name: tb_stmt_setTime; Type: TABLE; Schema: public; Owner: postgres

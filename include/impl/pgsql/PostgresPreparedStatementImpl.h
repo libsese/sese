@@ -4,6 +4,7 @@
 #include <pgsql/PostgresResultSetImpl.h>
 #include <sstream>
 #include <random>
+#include <libpq-fe.h>
 
 namespace sese::db::impl {
 
