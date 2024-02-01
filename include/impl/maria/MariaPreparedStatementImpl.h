@@ -27,7 +27,7 @@ namespace sese::db::impl {
         [[nodiscard]] int getLastError() const noexcept override;
         [[nodiscard]] const char *getLastErrorMessage() const noexcept override;
 
-        static bool mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept;
+        static bool mallocBindStruct(MYSQL_RES *meta, MYSQL_BIND **bind) noexcept;
         static void freeBindStruct(MYSQL_BIND *bind, size_t count) noexcept;
 
     protected:
@@ -35,6 +35,7 @@ namespace sese::db::impl {
         size_t count = 0;
         MYSQL_BIND *param;
         MYSQL_RES *meta;
+        bool *isDatetime;
     };
 
 }// namespace sese::db
