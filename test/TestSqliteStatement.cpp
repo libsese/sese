@@ -194,7 +194,7 @@ TEST(TestSqliteStmt, GetTimeStmt) {
     ASSERT_EQ(0, instance->getLastError());
 
     int32_t id = 1;
-    auto stmt = instance->createStatement("select * from tb_stmt_dateTime where id  = ?;");
+    auto stmt = instance->createStatement("select * from tb_stmt_getTime where id  = ?;");
     ASSERT_NE(nullptr, stmt);
 
     ASSERT_EQ(true, stmt->setInteger(1, id));
