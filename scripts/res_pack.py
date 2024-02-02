@@ -23,6 +23,42 @@ def get_datetime():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
+def escape_special_chars(ch: bytes) -> bytes:
+    mapping = {
+        "\a": "\\a",
+        "\b": "\\b",
+        "\t": "\\t",
+        "\n": "\\n",
+        "\v": "\\v",
+        "\f": "\\f",
+        "\r": "\\r",
+        "\"": "\\\"",
+        "\\": "\\\\"
+    }
+    for key, value in mapping.items():
+        if ch == key.encode('utf-8'):
+            return value.encode('utf-8')
+    return ch
+
+
+def write_binary(output, data, length):
+    for i in range(0, length):
+        # 方案1
+        # output.write(('\\x{:02x}'.format(data[i])).encode('utf-8'))
+        # 方案2
+        # 如果比特是可打印的，则直接输出字符，否则转义
+        # if 32 <= data[i] <= 126:
+        #     output.write(data[i:i + 1])
+        # else:
+        #     output.write('\\x{:02x}'.format(data[i]).encode('utf-8'))
+        # 方案3
+        # 转义字符为字符串的转义形式
+        if 7 <= data[i] <= 13 or data[i] == 34 or data[i] == 92:
+            output.write(escape_special_chars(data[i: i + 1]))
+        else:
+            output.write(data[i:i + 1])
+
+
 def get_files(base_path: str) -> list:
     files = list()
     for filepath, dirnames, filenames in os.walk(base_path):
@@ -50,8 +86,7 @@ def write_res_add(file, output) -> bool:
             first = False
 
         output.write("        \"".encode('utf-8'))
-        for i in range(0, len(data)):
-            output.write(('\\x{:02x}'.format(data[i])).encode('utf-8'))
+        write_binary(output, data, len(data))
         output.write("\"\n".encode('utf-8'))
 
     if first:
@@ -131,8 +166,7 @@ def write_stream(file) -> bool:
             first = False
 
         output.write("    \"".encode('utf-8'))
-        for i in range(0, len(data)):
-            output.write(('\\x{:02x}'.format(data[i])).encode('utf-8'))
+        write_binary(output, data, len(data))
         output.write("\"\n".encode('utf-8'))
 
     if first:
