@@ -16,11 +16,6 @@ TEST(TestPostgresTransaction, Commit) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
 
-    auto results = instance->executeQuery("select * from tb_commit;");
-    while (results->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
-    }
-
     ASSERT_EQ(true, instance->begin());
 
     auto count = instance->executeUpdate("insert into tb_commit (id, name) values (3, 'mike')");
@@ -28,10 +23,24 @@ TEST(TestPostgresTransaction, Commit) {
 
     ASSERT_EQ(true, instance->commit());
 
-    auto results1 = instance->executeQuery("select * from tb_commit;");
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    auto results = instance->executeQuery("select * from tb_commit;");
+    ASSERT_NE(nullptr, results);
+    if (results->next()) {
+        ASSERT_EQ(1, results->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, results->getString(1).data());
     }
+    if (results->next()) {
+        ASSERT_EQ(2, results->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results->getString(1).data());
+    }
+    if (results->next()) {
+        ASSERT_EQ(3, results->getInteger(0));
+        std::string_view strings = "mike";
+        ASSERT_EQ(strings, results->getString(1).data());
+    }
+    ASSERT_EQ(false, results->next());
 }
 
 TEST(TestPostgresTransaction, RollBack) {
@@ -44,20 +53,24 @@ TEST(TestPostgresTransaction, RollBack) {
 
     ASSERT_EQ(true, instance->begin());
 
-    auto results = instance->executeQuery("select * from tb_rollBack;");
-    while (results->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
-    }
-
     auto count = instance->executeUpdate("insert into tb_rollBack (id, name) values (3, 'mike');");
     ASSERT_NE(-1, count);
 
     ASSERT_EQ(true, instance->rollback());
 
-    auto results1 = instance->executeQuery("select * from tb_rollBack;");
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    auto results = instance->executeQuery("select * from tb_rollBack;");
+    ASSERT_NE(nullptr, results);
+    if (results->next()) {
+        ASSERT_EQ(1, results->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, results->getString(1).data());
     }
+    if (results->next()) {
+        ASSERT_EQ(2, results->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results->getString(1).data());
+    }
+    ASSERT_EQ(false, results->next());
 }
 
 TEST(TestPostgresTransaction, Begin) {
@@ -69,11 +82,6 @@ TEST(TestPostgresTransaction, Begin) {
     ASSERT_EQ(instance->getLastError(), 0);
 
     // 事务的回滚操作
-    auto results = instance->executeQuery("select * from tb_begin;");
-    while (results->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
-    }
-
     ASSERT_EQ(true, instance->begin());
 
     auto count = instance->executeUpdate("insert into tb_begin (id, name) values (3, 'mike');");
@@ -81,28 +89,45 @@ TEST(TestPostgresTransaction, Begin) {
 
     ASSERT_EQ(true, instance->rollback());
 
-    auto results1 = instance->executeQuery("select * from tb_begin;");
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    auto results = instance->executeQuery("select * from tb_begin;");
+    if (results->next()) {
+        ASSERT_EQ(1, results->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, results->getString(1).data());
     }
+    if (results->next()) {
+        ASSERT_EQ(2, results->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results->getString(1).data());
+    }
+    ASSERT_EQ(false, results->next());
 
     // 事务的提交操作
-    auto results2 = instance->executeQuery("select * from tb_begin;");
-    while (results2->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results2->getInteger(0), results2->getString(1).data());
-    }
-
     ASSERT_EQ(true, instance->begin());
 
-    auto count1 = instance->executeUpdate("insert into tb_begin (id, name) values (4, 'mike');");
+    auto count1 = instance->executeUpdate("insert into tb_begin (id, name) values (3, 'mike');");
     ASSERT_NE(-1, count1);
 
     ASSERT_EQ(true, instance->commit());
 
-    auto results3 = instance->executeQuery("select * from tb_begin;");
-    while (results3->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results3->getInteger(0), results3->getString(1).data());
+    auto results1 = instance->executeQuery("select * from tb_begin;");
+    ASSERT_NE(nullptr, results1);
+    if (results1->next()) {
+        ASSERT_EQ(1, results1->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, results1->getString(1).data());
     }
+    if (results1->next()) {
+        ASSERT_EQ(2, results1->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results1->getString(1).data());
+    }
+    if (results1->next()) {
+        ASSERT_EQ(3, results1->getInteger(0));
+        std::string_view strings = "mike";
+        ASSERT_EQ(strings, results1->getString(1).data());
+    }
+    ASSERT_EQ(false, results1->next());
 }
 
 TEST(TestPostgresTransaction, UseLess) {
