@@ -24,16 +24,22 @@ TEST(TestMariaStmt, QueryStmt) {
 
     auto result = stmt->executeQuery();
     ASSERT_NE(nullptr, result);
-    printf("columns: %zu\n", result->getColumns());
-    while (result->next()) {
-        printf("result: id = %" PRId32 " name = %s\n", result->getInteger(0), result->getString(1).data());
+    ASSERT_EQ(2, result->getColumns());
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, result->getString(1).data());
     }
+    ASSERT_EQ(false, result->next());
 
     result->reset();
 
-    while (result->next()) {
-        printf("result: id = %" PRId32 " name = %s\n", result->getInteger(0), result->getString(1).data());
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, result->getString(1).data());
     }
+    ASSERT_EQ(false, result->next());
 }
 
 TEST(TestMariaStmt, UpdateStmt) {
@@ -43,12 +49,6 @@ TEST(TestMariaStmt, UpdateStmt) {
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
-
-    auto result = instance->executeQuery("select * from tb_stmt_update where id = 1;");
-    ASSERT_NE(nullptr, result);
-    while (result->next()) {
-        printf("result: id = %" PRId32 " name = %s\n", (int) result->getInteger(0), result->getString(1).data());
-    }
 
     int64_t id = 1;
     const char *name = "mike";
@@ -62,6 +62,15 @@ TEST(TestMariaStmt, UpdateStmt) {
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);
 
+    auto result = instance->executeQuery("select * from tb_stmt_update where id = 1;");
+    ASSERT_NE(nullptr, result);
+
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        ASSERT_NE(nullptr, result->getString(1).data());
+    }
+    ASSERT_EQ(false, result->next());
+
     int64_t id1 = 2;
     ASSERT_NE(true, stmt->setNull(3));
     ASSERT_EQ(true, stmt->setNull(1));
@@ -69,11 +78,12 @@ TEST(TestMariaStmt, UpdateStmt) {
     auto count1 = stmt->executeUpdate();
     ASSERT_NE(-1, count1);
 
-    auto result1 = instance->executeQuery("select * from tb_stmt_update where id = 1;");
+    auto result1 = instance->executeQuery("select * from tb_stmt_update where id = 2;");
     ASSERT_NE(nullptr, result1);
-    while (result1->next()) {
-        printf("result1: id = %" PRId32 " name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+    if (result1->next()) {
+        ASSERT_EQ(2, result1->getInteger(0));
     }
+    ASSERT_EQ(false, result1->next());
 }
 
 TEST(TestMariaStmt, DeleteStmt) {
@@ -84,12 +94,6 @@ TEST(TestMariaStmt, DeleteStmt) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto result = instance->executeQuery("select * from tb_stmt_delete;");
-    ASSERT_NE(nullptr, result);
-    while (result->next()) {
-        printf("result: id = %" PRId32 " name = %s\n", (int) result->getInteger(0), result->getString(1).data());
-    }
-
     int32_t id = 1;
     auto stmt = instance->createStatement("delete from tb_stmt_delete where id = ?;");
     ASSERT_NE(nullptr, stmt);
@@ -99,11 +103,14 @@ TEST(TestMariaStmt, DeleteStmt) {
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);
 
-    auto result1 = instance->executeQuery("select * from tb_stmt_delete;");
-    ASSERT_NE(nullptr, result1);
-    while (result1->next()) {
-        printf("result1: id = %" PRId32 " name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+    auto result = instance->executeQuery("select * from tb_stmt_delete;");
+    ASSERT_NE(nullptr, result);
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, result->getString(1).data());
     }
+    ASSERT_EQ(false, result->next());
 }
 
 TEST(TestMariaStmt, InsertStmt) {
@@ -114,13 +121,6 @@ TEST(TestMariaStmt, InsertStmt) {
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
-
-    auto stmtQuery = instance->createStatement("select * from tb_stmt_insert;");
-    auto result = stmtQuery->executeQuery();
-    ASSERT_NE(nullptr, result);
-    while (result->next()) {
-        printf("result: id = %" PRId32 " name = %s setDouble = %lf setFloat = %f setLong = %" PRId64 "\n", (int) result->getInteger(0), result->getString(1).data(), result->getDouble(2), result->getFloat(3), result->getLong(4));
-    }
 
     int32_t id = 3;
     const char *name = "mike";
@@ -143,12 +143,34 @@ TEST(TestMariaStmt, InsertStmt) {
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);
 
-    auto stmtQuery1 = instance->createStatement("select * from tb_stmt_insert;");
-    auto result1 = stmtQuery1->executeQuery();
-    ASSERT_NE(nullptr, result1);
-    while (result1->next()) {
-        printf("result1: id = %" PRId32 " name = %s setDouble = %lf setFloat = %f setLong = %" PRId64 "\n", (int) result1->getInteger(0), result1->getString(1).data(), result1->getDouble(2), result1->getFloat(3), result1->getLong(4));
+    auto stmtQuery = instance->createStatement("select * from tb_stmt_insert;");
+    auto result = stmtQuery->executeQuery();
+    ASSERT_NE(nullptr, result);
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, result->getString(1).data());
+        ASSERT_EQ(1.000000, result->getDouble(2));
+        ASSERT_EQ(1.000000, result->getFloat(3));
+        ASSERT_EQ(1, result->getLong(4));
     }
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, result->getString(1).data());
+        ASSERT_EQ(2.000000, result->getDouble(2));
+        ASSERT_EQ(2.000000, result->getFloat(3));
+        ASSERT_EQ(2, result->getLong(4));
+    }
+    if (result->next()) {
+        ASSERT_EQ(3, result->getInteger(0));
+        std::string_view strings = "mike";
+        ASSERT_EQ(strings, result->getString(1).data());
+        ASSERT_EQ(45.450000, result->getDouble(2));
+        ASSERT_EQ(5.1f, result->getFloat(3));
+        ASSERT_EQ(78, result->getLong(4));
+    }
+    ASSERT_EQ(false, result->next());
 }
 
 TEST(TestMariaStmt, GetDateTimeStmt) {
@@ -164,10 +186,15 @@ TEST(TestMariaStmt, GetDateTimeStmt) {
 
     auto result = stmt->executeQuery();
     ASSERT_NE(nullptr, result);
-    printf("columns: %zu\n", result->getColumns());
-    while (result->next()) {
-        printf("id = %" PRId32 " time = %" PRId64 "\n", result->getInteger(0), result->getDateTime(1).value().getTimestamp());
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
     }
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
+    }
+    ASSERT_EQ(false, result->next());
 }
 
 TEST(TestMariaStmt, SetDateTimeStmt) {
@@ -177,14 +204,6 @@ TEST(TestMariaStmt, SetDateTimeStmt) {
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
-
-    auto result = instance->executeQuery("select * from tb_stmt_setTime;");
-    ASSERT_NE(nullptr, result);
-
-    printf("columns: %zu\n", result->getColumns());
-    while (result->next()) {
-        printf("id = %" PRId32 " time = %" PRId64 "\n", result->getInteger(0), result->getDateTime(1).value().getTimestamp());
-    }
 
     auto stmt = instance->createStatement("insert into tb_stmt_setTime (id, time) values (?, ?);");
     ASSERT_NE(nullptr, stmt);
@@ -199,15 +218,23 @@ TEST(TestMariaStmt, SetDateTimeStmt) {
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);
 
-    stmt->setDateTime(2, dateTime);
-    stmt->setInteger(2, id);
-    stmt->setDateTime(2, dateTime);
+//    stmt->setDateTime(2, dateTime);
+//    stmt->setInteger(2, id);
+//    stmt->setDateTime(2, dateTime);
 
-    auto result1 = instance->executeQuery("select * from tb_stmt_setTime;");
-    ASSERT_NE(nullptr, result1);
-
-    printf("columns: %zu\n", result1->getColumns());
-    while (result1->next()) {
-        printf("id = %" PRId32 " time = %" PRId64 "\n", result1->getInteger(0), result1->getDateTime(1).value().getTimestamp());
+    auto result = instance->executeQuery("select * from tb_stmt_setTime;");
+    ASSERT_NE(nullptr, result);
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
     }
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
+    }
+    if (result->next()) {
+        ASSERT_EQ(3, result->getInteger(0));
+        ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
+    }
+    ASSERT_EQ(false, result->next());
 }
