@@ -145,6 +145,7 @@ TEST(TestMariaTransaction, Begin) {
         std::string_view strings = "bar";
         ASSERT_EQ(strings, results->getString(1).data());
     }
+    ASSERT_EQ(false, results->next());
 
     // 事务的提交操作
     ASSERT_EQ(true, instance->begin());
@@ -171,6 +172,7 @@ TEST(TestMariaTransaction, Begin) {
         std::string_view strings = "mike";
         ASSERT_EQ(strings, results1->getString(1).data());
     }
+    ASSERT_EQ(false, results1->next());
 }
 
 TEST(TestMariaTransaction, GetInserId) {
@@ -206,4 +208,5 @@ TEST(TestMariaTransaction, GetInserId) {
         std::string_view strings = "mike";
         ASSERT_EQ(strings, results->getString(1).data());
     }
+    ASSERT_EQ(false, results->next());
 }

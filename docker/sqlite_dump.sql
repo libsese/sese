@@ -27,7 +27,7 @@ CREATE TABLE tb_stmt_insert
     name varchar(32)
 , setDouble double, setFloat float, setLong bigint, setNull integer);
 INSERT INTO tb_stmt_insert VALUES(1,'foo',1.0,1.0,1,1);
-INSERT INTO tb_stmt_insert VALUES(2,'bar',1.0,1.0,1,1);
+INSERT INTO tb_stmt_insert VALUES(2,'bar',2.0,2.0,2,2);
 CREATE TABLE tb_stmt_update
 (
     id   integer,
@@ -106,6 +106,13 @@ CREATE TABLE tb_stmt_setTime
     intTime  int,
     charTime text
 );
+CREATE TABLE tb_metadata
+(
+    int         integer     not null,
+    str         varchar(16) not null,
+    float_num   real        not null,
+    bin         blob(32)    not null
+);
 DELETE FROM sqlite_sequence;
-INSERT INTO sqlite_sequence VALUES('tb_getInsertId',67);
+INSERT INTO sqlite_sequence VALUES('tb_getInsertId',1);
 COMMIT;

@@ -16,13 +16,13 @@ TEST(TestSqliteDriverInstance, Error) {
     auto resultError = instance->executeQuery("select * from tb_query_error where id = 1;");
     ASSERT_EQ(nullptr, resultError);
 
-    printf("errorMsg: %s\n", instance->getLastErrorMessage());
+    ASSERT_NE(nullptr, instance->getLastErrorMessage());
 
     //stmtError
     auto resultStmtError = instance->createStatement("select * from tb_stmt_query_error where id = 1;");
     ASSERT_EQ(nullptr, resultStmtError);
 
-    printf("errorMsg: %s\n", instance->getLastErrorMessage());
+    ASSERT_NE(nullptr, instance->getLastErrorMessage());
 }
 
 TEST(TestSqliteDriverInstance, QueryData) {
@@ -30,18 +30,34 @@ TEST(TestSqliteDriverInstance, QueryData) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto result = instance->executeQuery("select * from tb_query where id = 1;");
+    auto result = instance->executeQuery("select * from tb_query;");
     ASSERT_NE(nullptr, result);
-    printf("columns: %zu\n", result->getColumns());
-    while (result->next()) {
-        printf("id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+    ASSERT_EQ(2, result->getColumns());
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, result->getString(1).data());
     }
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, result->getString(1).data());
+    }
+    ASSERT_EQ(false, result->next());
 
     result->reset();
 
-    while (result->next()) {
-        printf("id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, result->getString(1).data());
     }
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, result->getString(1).data());
+    }
+    ASSERT_EQ(false, result->next());
 }
 
 TEST(TestSqliteDriverInstance, UpdateData) {
@@ -49,20 +65,17 @@ TEST(TestSqliteDriverInstance, UpdateData) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto result = instance->executeQuery("select * from tb_update where id = 1;");
-    ASSERT_NE(nullptr, result);
-    while (result->next()) {
-        printf("result id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
-    }
-
-    auto count = instance->executeUpdate(R"(update tb_update set name = "foo" where id = 1;)");
+    auto count = instance->executeUpdate(R"(update tb_update set name = "mike" where id = 1;)");
     ASSERT_NE(-1, count) << instance->getLastErrorMessage();
 
-    auto result1 = instance->executeQuery("select * from tb_update where id = 1;");
-    ASSERT_NE(nullptr, result1);
-    while (result1->next()) {
-        printf("result1 id = %" PRId32 ", name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+    auto result = instance->executeQuery("select * from tb_update where id = 1;");
+    ASSERT_NE(nullptr, result);
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        std::string_view strings = "mike";
+        ASSERT_EQ(strings, result->getString(1).data());
     }
+    ASSERT_EQ(false, result->next());
 }
 
 TEST(TestSqliteDriverInstance, DeleteData) {
@@ -70,20 +83,17 @@ TEST(TestSqliteDriverInstance, DeleteData) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto result = instance->executeQuery("select * from tb_delete;");
-    ASSERT_NE(nullptr, result);
-    while (result->next()) {
-        printf("result id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
-    }
-
     auto count = instance->executeUpdate("delete from tb_delete where id = 1;");
     ASSERT_NE(-1, count);
 
-    auto result1 = instance->executeQuery("select * from tb_delete;");
-    ASSERT_NE(nullptr, result1);
-    while (result1->next()) {
-        printf("result1 id = %" PRId32 ", name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+    auto result = instance->executeQuery("select * from tb_delete;");
+    ASSERT_NE(nullptr, result);
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, result->getString(1).data());
     }
+    ASSERT_EQ(false, result->next());
 }
 
 TEST(TestSqliteDriverInstance, InsertData) {
@@ -91,20 +101,27 @@ TEST(TestSqliteDriverInstance, InsertData) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto result = instance->executeQuery("select * from tb_insert;");
-    ASSERT_NE(nullptr, result);
-    while (result->next()) {
-        printf("result id = %" PRId32 ", name = %s\n", (int) result->getInteger(0), result->getString(1).data());
-    }
-
     auto count = instance->executeUpdate("insert into tb_insert (id, name) values (3, 'mike');");
     ASSERT_NE(-1, count);
 
-    auto result1 = instance->executeQuery("select * from tb_insert;");
-    ASSERT_NE(nullptr, result1);
-    while (result1->next()) {
-        printf("result1 id = %" PRId32 ", name = %s\n", (int) result1->getInteger(0), result1->getString(1).data());
+    auto result = instance->executeQuery("select * from tb_insert;");
+    ASSERT_NE(nullptr, result);
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, result->getString(1).data());
     }
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, result->getString(1).data());
+    }
+    if (result->next()) {
+        ASSERT_EQ(3, result->getInteger(0));
+        std::string_view strings = "mike";
+        ASSERT_EQ(strings, result->getString(1).data());
+    }
+    ASSERT_EQ(false, result->next());
 }
 
 TEST(TestSqliteDriverInstance, DateTime) {
@@ -114,8 +131,12 @@ TEST(TestSqliteDriverInstance, DateTime) {
 
     auto result = instance->executeQuery("select * from tb_dateTime;");
     ASSERT_NE(nullptr, result);
-    printf("columns: %zu\n", result->getColumns());
-    while (result->next()) {
-        printf("id = %" PRId32 " time = %" PRId64 "\n", result->getInteger(0), result->getDateTime(1).value().getTimestamp());
+    if (result->next()) {
+        ASSERT_EQ(1, result->getInteger(0));
+        ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
+    }
+    if (result->next()) {
+        ASSERT_EQ(2, result->getInteger(0));
+        ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
     }
 }
