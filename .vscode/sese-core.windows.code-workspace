@@ -5,9 +5,14 @@
 		}
 	],
 	"settings": {
+		"C_Cpp.intelliSenseEngine": "disabled",
 		"cmake.configureArgs": [
 			"-DSESE_BUILD_TEST=ON",
 			"-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
 		],
+		"cmake.configureSettings": {
+			"CMAKE_MAKE_PROGRAM": "Ninja"
+		},
+		"cmake.generator": "Ninja"
 	}
 }

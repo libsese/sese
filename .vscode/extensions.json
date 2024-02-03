@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cmake-tools",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "matepek.vscode-catch2-test-adapter",
+        "ms-python.vscode-pylance",
+        "ms-python.python"
+    ]
+}
