@@ -1,3 +1,8 @@
+/// \file ResourceStream.h
+/// \brief 静态资源流
+/// \author kaoru
+/// \date 2024年02月4日
+
 #pragma once
 
 #include <sese/io/PeekableStream.h>
@@ -5,6 +10,7 @@
 
 namespace sese::res {
 
+/// 静态资源流
 class API ResourceStream : public io::PeekableStream, public io::InputStream {
 public:
     using Ptr = std::unique_ptr<ResourceStream>;
