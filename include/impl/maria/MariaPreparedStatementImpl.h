@@ -19,6 +19,7 @@ namespace sese::db::impl {
         bool setLong(uint32_t index, int64_t &value) noexcept override;
         bool setText(uint32_t index, const char *value) noexcept override;
         bool setNull(uint32_t index) noexcept override;
+        bool setDateTime(uint32_t index, const sese::DateTime &value) noexcept override;
 
         bool getColumnType(uint32_t index, MetadataType &type) noexcept override;
         int64_t getColumnSize(uint32_t index) noexcept override;
@@ -26,7 +27,7 @@ namespace sese::db::impl {
         [[nodiscard]] int getLastError() const noexcept override;
         [[nodiscard]] const char *getLastErrorMessage() const noexcept override;
 
-        static bool mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept;
+        static bool mallocBindStruct(MYSQL_RES *meta, MYSQL_BIND **bind) noexcept;
         static void freeBindStruct(MYSQL_BIND *bind, size_t count) noexcept;
 
     protected:
@@ -34,6 +35,7 @@ namespace sese::db::impl {
         size_t count = 0;
         MYSQL_BIND *param;
         MYSQL_RES *meta;
+        bool *isDatetime;
     };
 
 }// namespace sese::db

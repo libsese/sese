@@ -7,6 +7,7 @@
 
 #include <sese/db/ResultSet.h>
 #include <sese/db/Metadata.h>
+#include <sese/text/DateTimeFormatter.h>
 
 namespace sese::db {
 
@@ -56,7 +57,10 @@ namespace sese::db {
         /// \param index 索引
         /// \return 是否设置成功
         virtual bool setNull(uint32_t index) noexcept = 0;
-
+        /// \brief 设置为 dateTime
+        /// \param index 索引
+        /// \return 是否设置成功
+        virtual bool setDateTime(uint32_t index, const sese::DateTime &value) noexcept = 0;
         /// \brief 获取结果集列类型
         /// \param index 索引值
         /// \param type 列类型

@@ -15,7 +15,7 @@ TEST(TestPostgresDriverInstance, InstanceError) {
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_NE(instance->getLastError(), 0);
-    printf("errorMsg:%s\n", instance->getLastErrorMessage());
+    ASSERT_NE(nullptr, instance->getLastErrorMessage());
 
     auto results = instance->executeQuery("select * from tb_query;");
 
@@ -41,31 +41,50 @@ TEST(TestPostgresDriverInstance, QueryData) {
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
-    printf("errorMsg:%s\n", instance->getLastErrorMessage());
 
     // error
     auto results = instance->executeQuery("select * from tb_query_error;");
     ASSERT_EQ(nullptr, results);
     ASSERT_NE(instance->getLastError(), 0);
-    printf("errorMsg: %s\n", instance->getLastErrorMessage());
+    ASSERT_NE(nullptr, instance->getLastErrorMessage());
 
     auto results1 = instance->executeQuery("select * from tb_query;");
     ASSERT_NE(nullptr, results1);
-    printf("Columns = %zu", results1->getColumns());
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    ASSERT_EQ(2, results1->getColumns());
+    if (results1->next()) {
+        ASSERT_EQ(1, results1->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, results1->getString(1).data());
     }
+    if (results1->next()) {
+        ASSERT_EQ(2, results1->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results1->getString(1).data());
+    }
+    ASSERT_EQ(false, results1->next());
 
     results1->reset();
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+
+    if (results1->next()) {
+        ASSERT_EQ(1, results1->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, results1->getString(1).data());
     }
+    if (results1->next()) {
+        ASSERT_EQ(2, results1->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results1->getString(1).data());
+    }
+    ASSERT_EQ(false, results1->next());
 
     results1 = instance->executeQuery("select * from tb_query where id = 1;");
     ASSERT_NE(nullptr, results1);
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    if (results1->next()) {
+        ASSERT_EQ(1, results1->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, results1->getString(1).data());
     }
+    ASSERT_EQ(false, results1->next());
 }
 
 TEST(TestPostgresDriverInstance, UpdateData) {
@@ -75,11 +94,6 @@ TEST(TestPostgresDriverInstance, UpdateData) {
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
-
-    auto results = instance->executeQuery("select * from tb_update;");
-    while (results->next()) {
-        printf("id = %" PRId32 ", name = %s\n", (int) results->getInteger(0), results->getString(1).data());
-    }
 
     auto count = instance->executeUpdate("update tb_update set name = 'mike' where id = 1;");
     ASSERT_NE(-1, count);
@@ -91,12 +105,21 @@ TEST(TestPostgresDriverInstance, UpdateData) {
     auto count1 = instance->executeUpdate("update tb_update_error set name = 'mike' where id = 1;");
     ASSERT_EQ(-1, count1);
     ASSERT_NE(instance->getLastError(), 0);
-    printf("errorMsg: %s\n", instance->getLastErrorMessage());
+    ASSERT_NE(instance->getLastErrorMessage(), nullptr);
 
-    auto results1 = instance->executeQuery("select * from tb_update;");
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    auto results = instance->executeQuery("select * from tb_update;");
+    ASSERT_NE(nullptr, results);
+    if (results->next()) {
+        ASSERT_EQ(1, results->getInteger(0));
+        std::string_view strings = "mike";
+        ASSERT_EQ(strings, results->getString(1).data());
     }
+    if (results->next()) {
+        ASSERT_EQ(2, results->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results->getString(1).data());
+    }
+    ASSERT_EQ(false, results->next());
 }
 
 TEST(TestPostgresDriverInstance, DeleteData) {
@@ -107,19 +130,17 @@ TEST(TestPostgresDriverInstance, DeleteData) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
 
-    auto results = instance->executeQuery("select * from tb_delete;");
-    while (results->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
-    }
-
     auto count = instance->executeUpdate("delete from tb_delete where id = 1;");
     ASSERT_NE(-1, count);
 
-    auto results1 = instance->executeQuery("select * from tb_delete;");
-    ASSERT_NE(nullptr, results1);
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    auto results = instance->executeQuery("select * from tb_delete;");
+    ASSERT_NE(nullptr, results);
+    if (results->next()) {
+        ASSERT_EQ(2, results->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results->getString(1).data());
     }
+    ASSERT_EQ(false, results->next());
 }
 
 TEST(TestPostgresDriverInstance, InsertData) {
@@ -130,18 +151,46 @@ TEST(TestPostgresDriverInstance, InsertData) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
 
-    auto results = instance->executeQuery("select * from tb_insert;");
-    ASSERT_NE(nullptr, results);
-    while (results->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results->getInteger(0), results->getString(1).data());
-    }
-
     auto count = instance->executeUpdate("insert into tb_insert (id, name) values (3,'mike');");
     ASSERT_NE(-1, count);
 
-    auto results1 = instance->executeQuery("select * from tb_insert;");
-    ASSERT_NE(nullptr, results1);
-    while (results1->next()) {
-        printf("id = %" PRId32 ", name = %s\n", results1->getInteger(0), results1->getString(1).data());
+    auto results = instance->executeQuery("select * from tb_insert;");
+    ASSERT_NE(nullptr, results);
+    if (results->next()) {
+        ASSERT_EQ(1, results->getInteger(0));
+        std::string_view strings = "foo";
+        ASSERT_EQ(strings, results->getString(1).data());
     }
+    if (results->next()) {
+        ASSERT_EQ(2, results->getInteger(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results->getString(1).data());
+    }
+    if (results->next()) {
+        ASSERT_EQ(3, results->getInteger(0));
+        std::string_view strings = "mike";
+        ASSERT_EQ(strings, results->getString(1).data());
+    }
+    ASSERT_EQ(false, results->next());
+}
+
+TEST(TestPostgresDriverInstance, Datetime) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Postgres,
+            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
+    auto results = instance->executeQuery("select * from tb_dateTime;");
+    ASSERT_NE(nullptr, results);
+    if (results->next()) {
+        ASSERT_EQ(1, results->getInteger(0));
+        ASSERT_EQ(1679142600000000, results->getDateTime(1).value().getTimestamp());
+    }
+    if (results->next()) {
+        ASSERT_EQ(2, results->getInteger(0));
+        ASSERT_EQ(1679142600000000, results->getDateTime(1).value().getTimestamp());
+    }
+    ASSERT_EQ(false, results->next());
 }

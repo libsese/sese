@@ -47,10 +47,14 @@ std::string_view impl::PostgresResultSetImpl::getString(size_t index) const noex
 
 double impl::PostgresResultSetImpl::getDouble(size_t index) const noexcept {
     char *end;
-    return std::strtol(PQgetvalue(res, row - 1, (int) index), &end, 10);
+    return std::strtod(PQgetvalue(res, row - 1, (int) index), &end);
 }
 
 float impl::PostgresResultSetImpl::getFloat(size_t index) const noexcept {
     char *end;
     return std::strtof(PQgetvalue(res, row - 1, (int) index), &end);
+}
+std::optional<sese::DateTime> impl::PostgresResultSetImpl::getDateTime(size_t index) const noexcept {
+    std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", PQgetvalue(res, row - 1, (int) index));
+    return rt;
 }

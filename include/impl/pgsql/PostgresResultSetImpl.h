@@ -17,7 +17,7 @@ namespace sese::db::impl {
         [[nodiscard]] std::string_view getString(size_t index) const noexcept override;
         [[nodiscard]] double getDouble(size_t index) const noexcept override;
         [[nodiscard]] float getFloat(size_t index) const noexcept override;
-
+        [[nodiscard]] std::optional<sese::DateTime> getDateTime(size_t index) const noexcept override;
     protected:
         PGresult *res;
         int row;

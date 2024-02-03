@@ -1,4 +1,8 @@
 #include <maria/MariaPreparedStatementImpl.h>
+#include <sese/record/Marco.h>
+
+#undef SESE_DEBUG
+#define SESE_DEBUG(str, ...)
 
 sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(
         MYSQL_STMT *stmt,
@@ -8,33 +12,46 @@ sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(
     this->stmt = stmt;
     this->meta = meta;
     this->count = count;
+
     this->param = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * count);
     memset(this->param, 0, sizeof(MYSQL_BIND) * count);
+
+    this->isDatetime = (bool *) malloc(count);
+    memset(this->isDatetime, false, count);
 }
 
 sese::db::impl::MariaPreparedStatementImpl::~MariaPreparedStatementImpl() noexcept {
     mysql_stmt_close(stmt);
+
+    for (int i = 0; i < count; ++i) {
+        if (this->isDatetime[i]) {
+            SESE_DEBUG("free buffer addr: %p", this->param[i].buffer);
+            free(this->param[i].buffer);
+        }
+    }
+
     free(param);
+    free(isDatetime);
     if (meta) {
         mysql_free_result(meta);
     }
 }
 
-//为可能的数据类型分配内存
-bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *res, MYSQL_BIND **bind) noexcept {
-    *bind = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * res->field_count);
-    memset(*bind, 0, sizeof(MYSQL_BIND) * res->field_count);
-    for (unsigned int i = 0; i < res->field_count; i++) {
+// 为结果集可能的数据类型分配内存
+bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *meta, MYSQL_BIND **bind) noexcept {
+    *bind = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * meta->field_count);
+    memset(*bind, 0, sizeof(MYSQL_BIND) * meta->field_count);
+    for (unsigned int i = 0; i < meta->field_count; i++) {
         // 非定长数据
         void **p = &((*bind)[i].buffer);
-        switch (res->fields[i].type) {
+        switch (meta->fields[i].type) {
             case MYSQL_TYPE_BLOB:
             case MYSQL_TYPE_TINY_BLOB:
             case MYSQL_TYPE_STRING:
             case MYSQL_TYPE_VARCHAR:
             case MYSQL_TYPE_VAR_STRING:
-                *p = malloc(res->fields[i].length);
-                (*bind)[i].buffer_length = res->fields[i].length;
+                *p = malloc(meta->fields[i].length);
+                (*bind)[i].buffer_length = meta->fields[i].length;
                 break;
             case MYSQL_TYPE_TINY:
                 *p = malloc(1);
@@ -57,12 +74,15 @@ bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *res
             case MYSQL_TYPE_TIME:
             case MYSQL_TYPE_DATE:
             case MYSQL_TYPE_DATETIME:
+            {
                 *p = malloc(sizeof(MYSQL_TIME));
+                memset(*p, 0, sizeof(MYSQL_TIME));
                 break;
+            }
             default:
                 return false;
         }
-        (*bind)[i].buffer_type = res->fields[i].type;
+        (*bind)[i].buffer_type = meta->fields[i].type;
     }
     return true;
 }
@@ -113,6 +133,11 @@ int64_t sese::db::impl::MariaPreparedStatementImpl::executeUpdate() noexcept {
 
 bool sese::db::impl::MariaPreparedStatementImpl::setDouble(uint32_t index, double &value) noexcept {
     if (index - 1 >= count) return false;
+    if (this->isDatetime[index - 1]) {
+        SESE_DEBUG("free buffer addr: %p", this->param[index - 1].buffer);
+        free(this->param[index - 1].buffer);
+        this->isDatetime[index - 1] = false;
+    }
     this->param[index - 1].buffer_type = MYSQL_TYPE_DOUBLE;
     this->param[index - 1].buffer = &value;
     return true;
@@ -120,6 +145,11 @@ bool sese::db::impl::MariaPreparedStatementImpl::setDouble(uint32_t index, doubl
 
 bool sese::db::impl::MariaPreparedStatementImpl::setFloat(uint32_t index, float &value) noexcept {
     if (index - 1 >= count) return false;
+    if (this->isDatetime[index - 1]) {
+        SESE_DEBUG("free buffer addr: %p", this->param[index - 1].buffer);
+        free(this->param[index - 1].buffer);
+        this->isDatetime[index - 1] = false;
+    }
     this->param[index - 1].buffer_type = MYSQL_TYPE_FLOAT;
     this->param[index - 1].buffer = &value;
     return true;
@@ -127,6 +157,11 @@ bool sese::db::impl::MariaPreparedStatementImpl::setFloat(uint32_t index, float 
 
 bool sese::db::impl::MariaPreparedStatementImpl::setInteger(uint32_t index, int32_t &value) noexcept {
     if (index - 1 >= count) return false;
+    if (this->isDatetime[index - 1]) {
+        SESE_DEBUG("free buffer addr: %p", this->param[index - 1].buffer);
+        free(this->param[index - 1].buffer);
+        this->isDatetime[index - 1] = false;
+    }
     this->param[index - 1].buffer_type = MYSQL_TYPE_LONG;
     this->param[index - 1].buffer = &value;
     return true;
@@ -134,6 +169,11 @@ bool sese::db::impl::MariaPreparedStatementImpl::setInteger(uint32_t index, int3
 
 bool sese::db::impl::MariaPreparedStatementImpl::setLong(uint32_t index, int64_t &value) noexcept {
     if (index - 1 >= count) return false;
+    if (this->isDatetime[index - 1]) {
+        SESE_DEBUG("free buffer addr: %p", this->param[index - 1].buffer);
+        free(this->param[index - 1].buffer);
+        this->isDatetime[index - 1] = false;
+    }
     this->param[index - 1].buffer_type = MYSQL_TYPE_LONGLONG;
     this->param[index - 1].buffer = &value;
     return true;
@@ -141,6 +181,11 @@ bool sese::db::impl::MariaPreparedStatementImpl::setLong(uint32_t index, int64_t
 
 bool sese::db::impl::MariaPreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
     if (index - 1 >= count) return false;
+    if (this->isDatetime[index - 1]) {
+        SESE_DEBUG("free buffer addr: %p", this->param[index - 1].buffer);
+        free(this->param[index - 1].buffer);
+        this->isDatetime[index - 1] = false;
+    }
     this->param[index - 1].buffer_type = MYSQL_TYPE_VAR_STRING;
     this->param[index - 1].buffer = (void *) value;
     this->param[index - 1].buffer_length = (unsigned long) strlen(value);
@@ -149,7 +194,36 @@ bool sese::db::impl::MariaPreparedStatementImpl::setText(uint32_t index, const c
 
 bool sese::db::impl::MariaPreparedStatementImpl::setNull(uint32_t index) noexcept {
     if (index - 1 >= count) return false;
+    if (this->isDatetime[index - 1]) {
+        SESE_DEBUG("free buffer addr: %p", this->param[index - 1].buffer);
+        free(this->param[index - 1].buffer);
+        this->isDatetime[index - 1] = false;
+    }
     this->param[index - 1].buffer_type = MYSQL_TYPE_NULL;
+    return true;
+}
+
+bool sese::db::impl::MariaPreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
+    if (index - 1 >= count) return false;
+    if (!this->isDatetime[index - 1]) {
+        this->param[index - 1].buffer = malloc(sizeof(MYSQL_TIME));
+        this->isDatetime[index - 1] = true;
+        SESE_DEBUG("alloc buffer addr: %p", this->param[index - 1].buffer);
+    } else {
+        SESE_DEBUG("use buffer addr: %p", this->param[index - 1].buffer);
+    }
+    memset(this->param[index - 1].buffer, 0 , sizeof(MYSQL_TIME));
+    auto time = static_cast<MYSQL_TIME *>(this->param[index - 1].buffer);
+    time->year = value.getYears();
+    time->month = value.getMonths();
+    time->day = value.getDays();
+    time->hour = value.getHours();
+    time->minute = value.getMinutes();
+    time->second = value.getSeconds();
+    time->time_type = MYSQL_TIMESTAMP_DATETIME;
+
+    this->param[index - 1].buffer_type = MYSQL_TYPE_DATETIME;
+    this->param[index - 1].buffer_length = sizeof(MYSQL_TIME);
     return true;
 }
 
