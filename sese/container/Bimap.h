@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <cstddef>
 #include <map>
 #include <initializer_list>
 
@@ -23,8 +24,8 @@ public:
     ~Bimap() = default;
     Bimap(const Bimap &) = default;
     Bimap &operator=(const Bimap &) = default;
-    Bimap(Bimap &&) = default;
-    Bimap &operator=(Bimap &&) = default;
+    Bimap(Bimap &&)  noexcept = default;
+    Bimap &operator=(Bimap &&)  noexcept = default;
 
     Bimap(const std::initializer_list<std::pair<BimapKeyType, BimapValueType>> &init) {
         for (const auto &[key, value]: init) {

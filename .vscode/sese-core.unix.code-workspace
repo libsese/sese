@@ -9,5 +9,9 @@
 			"-DSESE_BUILD_TEST=ON",
 			"-DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake"
 		],
+		"cmake.configureSettings": {
+			"CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
+		},
+		"cmake.generator": "Ninja"
 	}
 }
