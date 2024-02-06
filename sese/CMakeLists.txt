@@ -1,5 +1,6 @@
-find_package(ZLIB REQUIRED)
 find_package(OpenSSL REQUIRED)
+find_package(ZLIB REQUIRED)
+
 
 add_library(Plugin STATIC
         plugin/BaseClass.h
