@@ -1,6 +1,12 @@
-name: ubuntu
+name: ubuntu-apt
 
 on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 env:
@@ -8,11 +14,8 @@ env:
   VCPKG_FEATURE_FLAGS: dependencygraph
 
 jobs:
-  test-with-release:
+  test:
     runs-on: ubuntu-22.04
-
-    needs: test-with-coverage
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -30,18 +33,11 @@ jobs:
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_check
-
-
-      - name: Cache Vcpkg Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ github.workspace }}/build/vcpkg_installed
-          key: ${{ runner.os }}-vcpkg-${{ hashFiles('**/vcpkg.json') }}
+        run: apt build-dep .
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_config
+        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -Bbuild
 
       - name: Build
         working-directory: ${{ github.workspace }}
@@ -51,9 +47,8 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: python3 -m ci.unix_test
 
-  test-with-coverage:
-    runs-on: ubuntu-latest
-
+  test-coverage:
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -71,17 +66,11 @@ jobs:
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_check
-
-      - name: Cache Vcpkg Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ github.workspace }}/build/vcpkg_installed
-          key: ${{ runner.os }}-vcpkg-coverage-${{ hashFiles('**/vcpkg.json') }}
+        run: apt build-dep .
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_config_coverage
+        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -Bbuild-coverage -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
 
       - name: Build
         working-directory: ${{ github.workspace }}
@@ -98,5 +87,6 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: CoverageReport
+          name: coverage-report
           path: ${{ github.workspace }}/coverage
+
