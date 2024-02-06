@@ -33,7 +33,7 @@ jobs:
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
-        run: apt build-dep .
+        run: sudo apt build-dep .
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
@@ -66,7 +66,7 @@ jobs:
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
-        run: apt build-dep .
+        run: sudo apt build-dep .
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
