@@ -62,6 +62,31 @@ INSERT INTO `tb_commit` VALUES (1,'foo'),(2,'bar');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tb_isNull`
+--
+
+DROP TABLE IF EXISTS `tb_isNull`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_isNull` (
+  `id` int(11) DEFAULT NULL,
+  `name` varchar(32) DEFAULT NULL,
+  `double_null` double DEFAULT NULL,
+  `float_null` float DEFAULT NULL,
+  `long_null` bigint(20) DEFAULT NULL,
+  `dateTime_null` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于判空测试';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_isNull`
+--
+
+LOCK TABLES `tb_isNull` WRITE;
+INSERT INTO `tb_isNull` VALUES (1,'foo',1,1,1,'2023-03-18 12:30:00'),(2,'bar',2,2,2,'2023-03-18 12:30:00');
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_delete`
 --
 

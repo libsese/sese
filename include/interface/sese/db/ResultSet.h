@@ -8,7 +8,6 @@
 #include <string>
 #include <cstring>
 #include <sese/util/DateTime.h>
-#include <sese/text/DateTimeParser.h>
 #include <optional>
 
 namespace sese::db {
@@ -54,5 +53,9 @@ namespace sese::db {
         /// \param index 索引
         /// \return 时间数据结构
         [[nodiscard]] virtual std::optional<sese::DateTime> getDateTime(size_t index) const noexcept = 0;
+        /// \brief 判断返回的结果是否为空
+        /// \param index 索引
+        /// \return 是否为空
+        [[nodiscard]] virtual bool isNull(size_t index) const noexcept = 0;
     };
 }

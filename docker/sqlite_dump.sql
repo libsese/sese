@@ -106,13 +106,17 @@ CREATE TABLE tb_stmt_setTime
     intTime  int,
     charTime text
 );
-CREATE TABLE tb_metadata
+CREATE TABLE IF NOT EXISTS "tb_isNull"
 (
-    int         integer     not null,
-    str         varchar(16) not null,
-    float_num   real        not null,
-    bin         blob(32)    not null
+    id       integer,
+    name     varchar(32),
+    double_null   double,
+    float_null    float,
+    long_null     bigint,
+    dateTime_null text
 );
+INSERT INTO tb_isNull VALUES(1,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO tb_isNull VALUES(NULL,'bar',NULL,NULL,NULL,NULL);
 DELETE FROM sqlite_sequence;
-INSERT INTO sqlite_sequence VALUES('tb_getInsertId',1);
+INSERT INTO sqlite_sequence VALUES('tb_getInsertId',3);
 COMMIT;
