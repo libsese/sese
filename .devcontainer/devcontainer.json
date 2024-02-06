@@ -1,6 +1,8 @@
 {
     "name": "dev-default-config",
-    "image": "mcr.microsoft.com/devcontainers/cpp:focal",
+    "build": {
+        "dockerfile": "dockerfile"
+    },
     "customizations": {
         "vscode": {
             "extensions": [
@@ -9,7 +11,8 @@
                 "llvm-vs-code-extensions.vscode-clangd",
                 "matepek.vscode-catch2-test-adapter",
                 "ms-python.vscode-pylance",
-                "ms-python.python"
+                "ms-python.python",
+                "EditorConfig.EditorConfig"
             ]
         }
     }

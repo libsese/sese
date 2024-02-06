@@ -1,4 +1,4 @@
-find_package(GTest CONFIG REQUIRED)
+find_package(GTest REQUIRED)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)

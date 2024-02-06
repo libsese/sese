@@ -1,0 +1,17 @@
+Source: sese-core
+Section: devel
+Priority: optional
+Maintainer: shiinasama2001@gmail.com
+Build-Depends: debhelper (>= 11),
+               cmake,
+               g++,
+               libgtest-dev,
+               python3,
+               libssl-dev,
+               zlib1g-dev
+
+Package: sese-core
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: no description
