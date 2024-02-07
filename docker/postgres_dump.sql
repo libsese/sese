@@ -224,10 +224,10 @@ ALTER TABLE public.tb_update OWNER TO postgres;
 CREATE TABLE public.tb_isNull (
     id integer,
     name character varying(32),
-    double_null double precision,
-    float_null real,
-    long_null bigint,
-    dateTime_null timestamp
+    doubleNull double precision,
+    floatNull real,
+    longNull bigint,
+    dateTimeNull timestamp
 );
 
 
@@ -240,10 +240,10 @@ ALTER TABLE public.tb_isNull OWNER TO postgres;
 CREATE TABLE public.tb_stmt_isNull (
     id integer,
     name character varying(32),
-    double_null double precision,
-    float_null real,
-    long_null bigint,
-    dateTime_null timestamp
+    doubleNull double precision,
+    floatNull real,
+    longNull bigint,
+    dateTimeNull timestamp
 );
 
 

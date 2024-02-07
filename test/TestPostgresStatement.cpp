@@ -223,3 +223,65 @@ TEST(TestPostgresStmt, SetTimeStmt) {
     }
     ASSERT_EQ(false, results->next());
 }
+
+TEST(TestPostgresStmt, isNullStmt) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Postgres,
+            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
+    auto stmt = instance->createStatement("update tb_stmt_isNull set name = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where id = ?;");
+    ASSERT_NE(nullptr, stmt);
+
+    int32_t id = 1;
+    ASSERT_EQ(true, stmt->setNull(1));
+    ASSERT_EQ(true, stmt->setNull(2));
+    ASSERT_EQ(true, stmt->setNull(3));
+    ASSERT_EQ(true, stmt->setNull(4));
+    ASSERT_EQ(true, stmt->setNull(5));
+    ASSERT_EQ(true, stmt->setInteger(6, id));
+
+    auto count = stmt->executeUpdate();
+    ASSERT_NE(-1, count);
+
+    auto stmt1 = instance->createStatement("update tb_stmt_isNull set id = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where name = ?;");
+    ASSERT_NE(nullptr, stmt1);
+
+    const char *name = "bar";
+    ASSERT_EQ(true, stmt1->setNull(1));
+    ASSERT_EQ(true, stmt1->setNull(2));
+    ASSERT_EQ(true, stmt1->setNull(3));
+    ASSERT_EQ(true, stmt1->setNull(4));
+    ASSERT_EQ(true, stmt1->setNull(5));
+    ASSERT_EQ(true, stmt1->setText(6, name));
+
+    auto count1 = stmt1->executeUpdate();
+    ASSERT_NE(-1, count1);
+
+    auto stmt2 = instance->createStatement("select * from tb_stmt_isNull");
+    ASSERT_NE(nullptr, stmt2);
+
+    auto results = stmt2->executeQuery();
+    ASSERT_NE(nullptr, results);
+
+    if (results->next()) {
+        ASSERT_EQ(1, results->getInteger(0));
+        ASSERT_EQ(true, results->isNull(1));
+        ASSERT_EQ(true, results->isNull(2));
+        ASSERT_EQ(true, results->isNull(3));
+        ASSERT_EQ(true, results->isNull(4));
+        ASSERT_EQ(true, results->isNull(5));
+    }
+    if (results->next()) {
+        ASSERT_EQ(true, results->isNull(0));
+        std::string_view strings = "bar";
+        ASSERT_EQ(strings, results->getString(1));
+        ASSERT_EQ(true, results->isNull(2));
+        ASSERT_EQ(true, results->isNull(3));
+        ASSERT_EQ(true, results->isNull(4));
+        ASSERT_EQ(true, results->isNull(5));
+    }
+    ASSERT_EQ(false, results->next());
+}

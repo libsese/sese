@@ -71,10 +71,10 @@ DROP TABLE IF EXISTS `tb_isNull`;
 CREATE TABLE `tb_isNull` (
   `id` int(11) DEFAULT NULL,
   `name` varchar(32) DEFAULT NULL,
-  `double_null` double DEFAULT NULL,
-  `float_null` float DEFAULT NULL,
-  `long_null` bigint(20) DEFAULT NULL,
-  `dateTime_null` datetime DEFAULT NULL
+  `doubleNull` double DEFAULT NULL,
+  `floatNull` float DEFAULT NULL,
+  `longNull` bigint(20) DEFAULT NULL,
+  `dateTimeNull` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于判空测试';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -96,10 +96,10 @@ DROP TABLE IF EXISTS `tb_stmt_isNull`;
 CREATE TABLE `tb_stmt_isNull` (
   `id` int(11) DEFAULT NULL,
   `name` varchar(32) DEFAULT NULL,
-  `double_null` double DEFAULT NULL,
-  `float_null` float DEFAULT NULL,
-  `long_null` bigint(20) DEFAULT NULL,
-  `dateTime_null` datetime DEFAULT NULL
+  `doubleNull` double DEFAULT NULL,
+  `floatNull` float DEFAULT NULL,
+  `longNull` bigint(20) DEFAULT NULL,
+  `dateTimeNull` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='用于预处理语句的判空测试';
 /*!40101 SET character_set_client = @saved_cs_client */;
 

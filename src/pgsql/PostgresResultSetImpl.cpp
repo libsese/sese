@@ -60,6 +60,6 @@ std::optional<sese::DateTime> impl::PostgresResultSetImpl::getDateTime(size_t in
     return rt;
 }
 bool impl::PostgresResultSetImpl::isNull(size_t index) const noexcept {
-    if (PQgetisnull(res, row - 1, (int) index) != 0) return true;
+    if (PQgetisnull(res, row - 1, (int) index)) return true;
     return false;
 }
