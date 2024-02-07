@@ -115,8 +115,19 @@ CREATE TABLE IF NOT EXISTS "tb_isNull"
     long_null     bigint,
     dateTime_null text
 );
-INSERT INTO tb_isNull VALUES(1,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO tb_isNull VALUES(NULL,'bar',NULL,NULL,NULL,NULL);
+INSERT INTO tb_isNull VALUES(1,'foo',1,1,1,'2023-03-18 12:30:00');
+INSERT INTO tb_isNull VALUES(2,'bar',2,2,2,'2023-03-18 12:30:00');
+CREATE TABLE IF NOT EXISTS "tb_stmt_isNull"
+(
+    id       integer,
+    name     varchar(32),
+    double_null   double,
+    float_null    float,
+    long_null     bigint,
+    dateTime_null text
+    );
+INSERT INTO tb_stmt_isNull VALUES(1,'foo',1,1,1,'2023-03-18 12:30:00');
+INSERT INTO tb_stmt_isNull VALUES(2,'bar',2,2,2,'2023-03-18 12:30:00');
 DELETE FROM sqlite_sequence;
-INSERT INTO sqlite_sequence VALUES('tb_getInsertId',3);
+INSERT INTO sqlite_sequence VALUES('tb_getInsertId',1);
 COMMIT;
