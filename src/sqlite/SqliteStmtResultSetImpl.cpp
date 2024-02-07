@@ -57,6 +57,6 @@ std::optional<sese::DateTime> impl::SqliteStmtResultSetImpl::getDateTime(size_t 
     return rt;
 }
 bool impl::SqliteStmtResultSetImpl::isNull(size_t index) const noexcept {
-    if (sqlite3_column_type(stmt, (int) index)) return true;
+    if (sqlite3_column_type(stmt, (int) index) == SQLITE_NULL) return true;
     return false;
 }

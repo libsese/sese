@@ -142,12 +142,30 @@ TEST(TestSqliteDriverInstance, DateTime) {
 }
 
 TEST(TestSqliteDriverInstance, isNull) {
-    auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
-    );
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
-    ASSERT_EQ(instance->getLastError(), 0);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto results = instance->executeQuery("select * from tb_isNull");
+    ASSERT_NE(nullptr, results);
+
+    if (results->next()) {
+        ASSERT_EQ(false, results->isNull(0));
+        ASSERT_EQ(false, results->isNull(1));
+        ASSERT_EQ(false, results->isNull(2));
+        ASSERT_EQ(false, results->isNull(3));
+        ASSERT_EQ(false, results->isNull(4));
+        ASSERT_EQ(false, results->isNull(5));
+    }
+    if (results->next()) {
+        ASSERT_EQ(false, results->isNull(0));
+        ASSERT_EQ(false, results->isNull(1));
+        ASSERT_EQ(false, results->isNull(2));
+        ASSERT_EQ(false, results->isNull(3));
+        ASSERT_EQ(false, results->isNull(4));
+        ASSERT_EQ(false, results->isNull(5));
+    }
+    ASSERT_EQ(false, results->next());
 
     auto stmt = instance->createStatement("update tb_isNull set name = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where id = ?;");
     ASSERT_NE(nullptr, stmt);
@@ -177,25 +195,25 @@ TEST(TestSqliteDriverInstance, isNull) {
     auto count1 = stmt1->executeUpdate();
     ASSERT_NE(-1, count1);
 
-    auto results = instance->executeQuery("select * from tb_isNull");
-    ASSERT_NE(nullptr, results);
+    auto results1 = instance->executeQuery("select * from tb_isNull");
+    ASSERT_NE(nullptr, results1);
 
-    if (results->next()) {
-        ASSERT_EQ(1, results->getInteger(0));
-        ASSERT_EQ(true, results->isNull(1));
-        ASSERT_EQ(true, results->isNull(2));
-        ASSERT_EQ(true, results->isNull(3));
-        ASSERT_EQ(true, results->isNull(4));
-        ASSERT_EQ(true, results->isNull(5));
+    if (results1->next()) {
+        ASSERT_EQ(1, results1->getInteger(0));
+        ASSERT_EQ(true, results1->isNull(1));
+        ASSERT_EQ(true, results1->isNull(2));
+        ASSERT_EQ(true, results1->isNull(3));
+        ASSERT_EQ(true, results1->isNull(4));
+        ASSERT_EQ(true, results1->isNull(5));
     }
-    if (results->next()) {
-        ASSERT_EQ(true, results->isNull(0));
+    if (results1->next()) {
+        ASSERT_EQ(true, results1->isNull(0));
         std::string_view strings = "bar";
-        ASSERT_EQ(strings, results->getString(1));
-        ASSERT_EQ(true, results->isNull(2));
-        ASSERT_EQ(true, results->isNull(3));
-        ASSERT_EQ(true, results->isNull(4));
-        ASSERT_EQ(true, results->isNull(5));
+        ASSERT_EQ(strings, results1->getString(1));
+        ASSERT_EQ(true, results1->isNull(2));
+        ASSERT_EQ(true, results1->isNull(3));
+        ASSERT_EQ(true, results1->isNull(4));
+        ASSERT_EQ(true, results1->isNull(5));
     }
-    ASSERT_EQ(false, results->next());
+    ASSERT_EQ(false, results1->next());
 }

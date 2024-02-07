@@ -232,56 +232,80 @@ TEST(TestPostgresStmt, isNullStmt) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
 
-    auto stmt = instance->createStatement("update tb_stmt_isNull set name = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where id = ?;");
+    auto stmt = instance->createStatement("select * from tb_stmt_isNull;");
     ASSERT_NE(nullptr, stmt);
 
-    int32_t id = 1;
-    ASSERT_EQ(true, stmt->setNull(1));
-    ASSERT_EQ(true, stmt->setNull(2));
-    ASSERT_EQ(true, stmt->setNull(3));
-    ASSERT_EQ(true, stmt->setNull(4));
-    ASSERT_EQ(true, stmt->setNull(5));
-    ASSERT_EQ(true, stmt->setInteger(6, id));
+    auto results = stmt->executeQuery();
+    ASSERT_NE(nullptr, results);
 
-    auto count = stmt->executeUpdate();
-    ASSERT_NE(-1, count);
+    if (results->next()) {
+        ASSERT_EQ(false, results->isNull(0));
+        ASSERT_EQ(false, results->isNull(1));
+        ASSERT_EQ(false, results->isNull(2));
+        ASSERT_EQ(false, results->isNull(3));
+        ASSERT_EQ(false, results->isNull(4));
+        ASSERT_EQ(false, results->isNull(5));
+    }
+    if (results->next()) {
+        ASSERT_EQ(false, results->isNull(0));
+        ASSERT_EQ(false, results->isNull(1));
+        ASSERT_EQ(false, results->isNull(2));
+        ASSERT_EQ(false, results->isNull(3));
+        ASSERT_EQ(false, results->isNull(4));
+        ASSERT_EQ(false, results->isNull(5));
+    }
+    ASSERT_EQ(false, results->next());
 
-    auto stmt1 = instance->createStatement("update tb_stmt_isNull set id = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where name = ?;");
+    auto stmt1 = instance->createStatement("update tb_stmt_isNull set name = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where id = ?;");
     ASSERT_NE(nullptr, stmt1);
 
-    const char *name = "bar";
+    int32_t id = 1;
     ASSERT_EQ(true, stmt1->setNull(1));
     ASSERT_EQ(true, stmt1->setNull(2));
     ASSERT_EQ(true, stmt1->setNull(3));
     ASSERT_EQ(true, stmt1->setNull(4));
     ASSERT_EQ(true, stmt1->setNull(5));
-    ASSERT_EQ(true, stmt1->setText(6, name));
+    ASSERT_EQ(true, stmt1->setInteger(6, id));
 
-    auto count1 = stmt1->executeUpdate();
-    ASSERT_NE(-1, count1);
+    auto count = stmt1->executeUpdate();
+    ASSERT_NE(-1, count);
 
-    auto stmt2 = instance->createStatement("select * from tb_stmt_isNull");
+    auto stmt2 = instance->createStatement("update tb_stmt_isNull set id = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where name = ?;");
     ASSERT_NE(nullptr, stmt2);
 
-    auto results = stmt2->executeQuery();
-    ASSERT_NE(nullptr, results);
+    const char *name = "bar";
+    ASSERT_EQ(true, stmt2->setNull(1));
+    ASSERT_EQ(true, stmt2->setNull(2));
+    ASSERT_EQ(true, stmt2->setNull(3));
+    ASSERT_EQ(true, stmt2->setNull(4));
+    ASSERT_EQ(true, stmt2->setNull(5));
+    ASSERT_EQ(true, stmt2->setText(6, name));
 
-    if (results->next()) {
-        ASSERT_EQ(1, results->getInteger(0));
-        ASSERT_EQ(true, results->isNull(1));
-        ASSERT_EQ(true, results->isNull(2));
-        ASSERT_EQ(true, results->isNull(3));
-        ASSERT_EQ(true, results->isNull(4));
-        ASSERT_EQ(true, results->isNull(5));
+    auto count1 = stmt2->executeUpdate();
+    ASSERT_NE(-1, count1);
+
+    auto stmt3 = instance->createStatement("select * from tb_stmt_isNull");
+    ASSERT_NE(nullptr, stmt3);
+
+    auto results1 = stmt3->executeQuery();
+    ASSERT_NE(nullptr, results1);
+
+    if (results1->next()) {
+        ASSERT_EQ(1, results1->getInteger(0));
+        ASSERT_EQ(true, results1->isNull(1));
+        ASSERT_EQ(true, results1->isNull(2));
+        ASSERT_EQ(true, results1->isNull(3));
+        ASSERT_EQ(true, results1->isNull(4));
+        ASSERT_EQ(true, results1->isNull(5));
     }
-    if (results->next()) {
-        ASSERT_EQ(true, results->isNull(0));
+    if (results1->next()) {
+        ASSERT_EQ(true, results1->isNull(0));
         std::string_view strings = "bar";
-        ASSERT_EQ(strings, results->getString(1));
-        ASSERT_EQ(true, results->isNull(2));
-        ASSERT_EQ(true, results->isNull(3));
-        ASSERT_EQ(true, results->isNull(4));
-        ASSERT_EQ(true, results->isNull(5));
+        ASSERT_EQ(strings, results1->getString(1));
+        ASSERT_EQ(true, results1->isNull(2));
+        ASSERT_EQ(true, results1->isNull(3));
+        ASSERT_EQ(true, results1->isNull(4));
+        ASSERT_EQ(true, results1->isNull(5));
     }
-    ASSERT_EQ(false, results->next());
+    ASSERT_EQ(false, results1->next());
 }
