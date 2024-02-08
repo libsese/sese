@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:jammy
 
 ENV TERM=xterm-256color
 
@@ -6,4 +6,4 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     bash -c 'yes | unminimize'
 
 RUN apt-get update -y && \
-    apt-get install -y git gcc g++ cmake ninja-build clangd python3 libgtest-dev libssl-dev zlib1g-dev
+    apt-get install -y git gcc g++ cmake ninja-build clangd python3 libgtest-dev libarchive-dev libssl-dev zlib1g-dev

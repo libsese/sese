@@ -1,6 +1,12 @@
-name: macOS
+name: macOS-brew
 
 on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -24,17 +30,11 @@ jobs:
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_check
-
-      - name: Cache Vcpkg Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ github.workspace }}/build/vcpkg_installed
-          key: ${{ runner.os }}-vcpkg-${{ hashFiles('**/vcpkg.json') }}
+        run: brew install openssl libarchive googletest
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_config
+        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -Bbuild
 
       - name: Build
         working-directory: ${{ github.workspace }}

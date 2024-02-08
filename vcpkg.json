@@ -5,6 +5,10 @@
     "license": "Apache-2.0",
     "dependencies": [
         {
+            "name": "libarchive",
+            "version>=": "3.6.2"
+        },
+        {
             "name": "openssl",
             "version>=": "3.2.0#1"
         },
