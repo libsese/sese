@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.13)
 # https://cmake.org/cmake/help/latest/policy/CMP0048.html
 cmake_policy(SET CMP0048 NEW)
 
+option(SESE_USE_BREW "use the homebrew packages control" OFF)
 option(SESE_USE_APT "use the apt packages control" OFF)
 option(SESE_BUILD_TEST "build unit test targets" OFF)
 if (SESE_BUILD_TEST)

@@ -1,6 +1,6 @@
+find_package(LibArchive REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(ZLIB REQUIRED)
-
 
 add_library(Plugin STATIC
         plugin/BaseClass.h
@@ -10,6 +10,7 @@ add_library(Plugin STATIC
         plugin/ModuleInfo.h
 )
 
+file(GLOB_RECURSE ARCHIVE_SRC "${CMAKE_CURRENT_LIST_DIR}/archive/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/archive/*.h")
 file(GLOB_RECURSE CONCURRENT_SRC "${CMAKE_CURRENT_LIST_DIR}/concurrent/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/concurrent/*.h")
 file(GLOB_RECURSE EVENT_SRC "${CMAKE_CURRENT_LIST_DIR}/event/*.h")
 file(GLOB_RECURSE RECORD_SRC  "${CMAKE_CURRENT_LIST_DIR}/record/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/record/*.h")
@@ -29,6 +30,7 @@ file(GLOB_RECURSE RES_SRC "${CMAKE_CURRENT_LIST_DIR}/res/*.cpp" "${CMAKE_CURRENT
 file(GLOB_RECURSE INTERNAL_SRC "${CMAKE_CURRENT_LIST_DIR}/internal/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/internal/*.h")
 
 add_library(Core
+        ${ARCHIVE_SRC}
         ${CONCURRENT_SRC}
         ${CONVERT_SRC}
         ${EVENT_SRC}
@@ -156,6 +158,7 @@ target_link_libraries(Core PUBLIC
 )
 
 target_link_libraries(Core PRIVATE
+        LibArchive::LibArchive
         OpenSSL::Crypto
         OpenSSL::SSL
         ZLIB::ZLIB
