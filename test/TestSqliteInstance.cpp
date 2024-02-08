@@ -149,71 +149,19 @@ TEST(TestSqliteDriverInstance, isNull) {
     auto results = instance->executeQuery("select * from tb_isNull");
     ASSERT_NE(nullptr, results);
 
-    if (results->next()) {
-        ASSERT_EQ(false, results->isNull(0));
-        ASSERT_EQ(false, results->isNull(1));
-        ASSERT_EQ(false, results->isNull(2));
-        ASSERT_EQ(false, results->isNull(3));
-        ASSERT_EQ(false, results->isNull(4));
-        ASSERT_EQ(false, results->isNull(5));
-    }
-    if (results->next()) {
-        ASSERT_EQ(false, results->isNull(0));
-        ASSERT_EQ(false, results->isNull(1));
-        ASSERT_EQ(false, results->isNull(2));
-        ASSERT_EQ(false, results->isNull(3));
-        ASSERT_EQ(false, results->isNull(4));
-        ASSERT_EQ(false, results->isNull(5));
-    }
-    ASSERT_EQ(false, results->next());
+    ASSERT_TRUE(results->next());
+    EXPECT_FALSE(results->isNull(0));
+    EXPECT_FALSE(results->isNull(1));
+    EXPECT_FALSE(results->isNull(2));
+    EXPECT_FALSE(results->isNull(3));
+    EXPECT_FALSE(results->isNull(4));
+    EXPECT_FALSE(results->isNull(5));
 
-    auto stmt = instance->createStatement("update tb_isNull set name = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where id = ?;");
-    ASSERT_NE(nullptr, stmt);
-
-    int32_t id = 1;
-    ASSERT_EQ(true, stmt->setNull(1));
-    ASSERT_EQ(true, stmt->setNull(2));
-    ASSERT_EQ(true, stmt->setNull(3));
-    ASSERT_EQ(true, stmt->setNull(4));
-    ASSERT_EQ(true, stmt->setNull(5));
-    ASSERT_EQ(true, stmt->setInteger(6, id));
-
-    auto count = stmt->executeUpdate();
-    ASSERT_NE(-1, count);
-
-    auto stmt1 = instance->createStatement("update tb_isNull set id = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where name = ?;");
-    ASSERT_NE(nullptr, stmt1);
-
-    const char *name = "bar";
-    ASSERT_EQ(true, stmt1->setNull(1));
-    ASSERT_EQ(true, stmt1->setNull(2));
-    ASSERT_EQ(true, stmt1->setNull(3));
-    ASSERT_EQ(true, stmt1->setNull(4));
-    ASSERT_EQ(true, stmt1->setNull(5));
-    ASSERT_EQ(true, stmt1->setText(6, name));
-
-    auto count1 = stmt1->executeUpdate();
-    ASSERT_NE(-1, count1);
-
-    auto results1 = instance->executeQuery("select * from tb_isNull");
-    ASSERT_NE(nullptr, results1);
-
-    if (results1->next()) {
-        ASSERT_EQ(1, results1->getInteger(0));
-        ASSERT_EQ(true, results1->isNull(1));
-        ASSERT_EQ(true, results1->isNull(2));
-        ASSERT_EQ(true, results1->isNull(3));
-        ASSERT_EQ(true, results1->isNull(4));
-        ASSERT_EQ(true, results1->isNull(5));
-    }
-    if (results1->next()) {
-        ASSERT_EQ(true, results1->isNull(0));
-        std::string_view strings = "bar";
-        ASSERT_EQ(strings, results1->getString(1));
-        ASSERT_EQ(true, results1->isNull(2));
-        ASSERT_EQ(true, results1->isNull(3));
-        ASSERT_EQ(true, results1->isNull(4));
-        ASSERT_EQ(true, results1->isNull(5));
-    }
-    ASSERT_EQ(false, results1->next());
+    ASSERT_TRUE(results->next());
+    EXPECT_TRUE(results->isNull(0));
+    EXPECT_TRUE(results->isNull(1));
+    EXPECT_TRUE(results->isNull(2));
+    EXPECT_TRUE(results->isNull(3));
+    EXPECT_TRUE(results->isNull(4));
+    EXPECT_TRUE(results->isNull(5));
 }

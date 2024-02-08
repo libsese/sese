@@ -384,14 +384,14 @@ INSERT INTO public.tb_update VALUES (2, 'bar');
 --
 
 INSERT INTO public.tb_isNull VALUES (1, 'foo', 1, 1, 1, '2023-03-18 12:30:00');
-INSERT INTO public.tb_isNull VALUES (2, 'bar', 2, 2, 2, '2023-03-18 12:30:00');
+INSERT INTO public.tb_isNull VALUES (null, null, null, null, null, null);
 
 --
 -- Data for Name: tb_stmt_isNull; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.tb_stmt_isNull VALUES (1, 'foo', 1, 1, 1, '2023-03-18 12:30:00');
-INSERT INTO public.tb_stmt_isNull VALUES (2, 'bar', 2, 2, 2, '2023-03-18 12:30:00');
+INSERT INTO public.tb_stmt_isNull VALUES (null, null, null, null, null, null);
 
 --
 -- Name: tb_getInsertId tb_getInsertId_pk; Type: CONSTRAINT; Schema: public; Owner: postgres

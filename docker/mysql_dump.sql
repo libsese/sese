@@ -108,7 +108,7 @@ CREATE TABLE `tb_stmt_isNull` (
 --
 
 LOCK TABLES `tb_stmt_isNull` WRITE;
-INSERT INTO `tb_stmt_isNull` VALUES (1,'foo',1,1,1,'2023-03-18 12:30:00'),(2,'bar',2,2,2,'2023-03-18 12:30:00');
+INSERT INTO `tb_stmt_isNull` VALUES (1,'foo',1,1,1,'2023-03-18 12:30:00'),(null,null,null,null,null,null);
 UNLOCK TABLES;
 
 --
