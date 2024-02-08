@@ -26,7 +26,11 @@ inline int open(struct archive *a, void *archive) {
     return ArchiveWriter::openCallback(a, static_cast<ArchiveWriter *>(archive));
 }
 
+#ifdef __APPLE__
+inline long write(archive *a, void *archive, const void *buffer, size_t len) {
+#else
 inline int64_t write(struct archive *a, void *archive, const void *buffer, size_t len) {
+#endif
     return ArchiveWriter::writeCallback(a, static_cast<ArchiveWriter *>(archive), buffer, len);
 }
 

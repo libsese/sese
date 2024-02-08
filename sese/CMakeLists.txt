@@ -1,3 +1,7 @@
+if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
+endif()
+
 find_package(LibArchive REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(ZLIB REQUIRED)

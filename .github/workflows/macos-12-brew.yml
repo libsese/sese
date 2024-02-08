@@ -32,15 +32,8 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: brew install openssl libarchive googletest
 
-      - name: Add path
-        run: echo "/usr/local/opt/libarchive/bin" >> $GITHUB_PATH
-
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        env:
-          LDFLAGS: "-L/usr/local/opt/libarchive/lib"
-          CPPFLAGS: "-I/usr/local/opt/libarchive/include"
-          PKG_CONFIG_PATH: "/usr/local/opt/libarchive/lib/pkgconfig"
         run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -Bbuild
 
       - name: Build

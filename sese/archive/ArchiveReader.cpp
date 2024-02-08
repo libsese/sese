@@ -110,7 +110,11 @@ inline int open(struct archive *a, void *data) {
     return ArchiveReader::openCallback(a, static_cast<ArchiveReader *>(data));
 }
 
+#ifdef __APPLE__
+inline long read(archive *a, void *data, const void **buffer) {
+#else
 inline int64_t read(struct archive *a, void *data, const void **buffer) {
+#endif
     return ArchiveReader::readCallback(a, static_cast<ArchiveReader *>(data), buffer);
 }
 
