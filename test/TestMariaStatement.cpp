@@ -218,9 +218,9 @@ TEST(TestMariaStmt, SetDateTimeStmt) {
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);
 
-//    stmt->setDateTime(2, dateTime);
-//    stmt->setInteger(2, id);
-//    stmt->setDateTime(2, dateTime);
+    //    stmt->setDateTime(2, dateTime);
+    //    stmt->setInteger(2, id);
+    //    stmt->setDateTime(2, dateTime);
 
     auto result = instance->executeQuery("select * from tb_stmt_setTime;");
     ASSERT_NE(nullptr, result);
@@ -250,25 +250,25 @@ TEST(TestMariaStmt, isNullStmt) {
     auto stmt = instance->createStatement("select * from tb_stmt_isNull;");
     ASSERT_NE(nullptr, stmt);
 
-     auto results = stmt->executeQuery();
-     ASSERT_NE(nullptr, results);
+    auto results = stmt->executeQuery();
+    ASSERT_NE(nullptr, results);
 
-    if (results->next()) {
-        ASSERT_EQ(false, results->isNull(0));
-        ASSERT_EQ(false, results->isNull(1));
-        ASSERT_EQ(false, results->isNull(2));
-        ASSERT_EQ(false, results->isNull(3));
-        ASSERT_EQ(false, results->isNull(4));
-        ASSERT_EQ(false, results->isNull(5));
-    }
-    if (results->next()) {
-        ASSERT_EQ(false, results->isNull(0));
-        ASSERT_EQ(false, results->isNull(1));
-        ASSERT_EQ(false, results->isNull(2));
-        ASSERT_EQ(false, results->isNull(3));
-        ASSERT_EQ(false, results->isNull(4));
-        ASSERT_EQ(false, results->isNull(5));
-    }
+    ASSERT_TRUE(results->next());
+    ASSERT_EQ(false, results->isNull(0));
+    ASSERT_EQ(false, results->isNull(1));
+    ASSERT_EQ(false, results->isNull(2));
+    ASSERT_EQ(false, results->isNull(3));
+    ASSERT_EQ(false, results->isNull(4));
+    ASSERT_EQ(false, results->isNull(5));
+
+    ASSERT_TRUE(results->next());
+    ASSERT_EQ(false, results->isNull(0));
+    ASSERT_EQ(false, results->isNull(1));
+    ASSERT_EQ(false, results->isNull(2));
+    ASSERT_EQ(false, results->isNull(3));
+    ASSERT_EQ(false, results->isNull(4));
+    ASSERT_EQ(false, results->isNull(5));
+
     ASSERT_EQ(false, results->next());
 
     auto stmt1 = instance->createStatement("update tb_stmt_isNull set name = ?, doubleNull = ?, floatNull = ?, longNull = ?, dateTimeNull = ? where id = ?;");
@@ -305,22 +305,22 @@ TEST(TestMariaStmt, isNullStmt) {
     auto results1 = stmt3->executeQuery();
     ASSERT_NE(nullptr, results1);
 
-    if (results1->next()) {
-        ASSERT_EQ(1, results1->getInteger(0));
-        ASSERT_EQ(true, results1->isNull(1));
-        ASSERT_EQ(true, results1->isNull(2));
-        ASSERT_EQ(true, results1->isNull(3));
-        ASSERT_EQ(true, results1->isNull(4));
-        ASSERT_EQ(true, results1->isNull(5));
-    }
-    if (results1->next()) {
-        ASSERT_EQ(true, results1->isNull(0));
-        std::string_view strings = "bar";
-        ASSERT_EQ(strings, results1->getString(1));
-        ASSERT_EQ(true, results1->isNull(2));
-        ASSERT_EQ(true, results1->isNull(3));
-        ASSERT_EQ(true, results1->isNull(4));
-        ASSERT_EQ(true, results1->isNull(5));
-    }
+    ASSERT_TRUE(results1->next());
+    ASSERT_EQ(1, results1->getInteger(0));
+    ASSERT_EQ(true, results1->isNull(1));
+    ASSERT_EQ(true, results1->isNull(2));
+    ASSERT_EQ(true, results1->isNull(3));
+    ASSERT_EQ(true, results1->isNull(4));
+    ASSERT_EQ(true, results1->isNull(5));
+
+    ASSERT_TRUE(results1->next());
+    ASSERT_EQ(true, results1->isNull(0));
+    std::string_view strings = "bar";
+    ASSERT_EQ(strings, results1->getString(1));
+    ASSERT_EQ(true, results1->isNull(2));
+    ASSERT_EQ(true, results1->isNull(3));
+    ASSERT_EQ(true, results1->isNull(4));
+    ASSERT_EQ(true, results1->isNull(5));
+
     ASSERT_EQ(false, results1->next());
 }

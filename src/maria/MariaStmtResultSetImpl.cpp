@@ -68,9 +68,7 @@ std::optional<sese::DateTime> sese::db::impl::MariaStmtResultSet::getDateTime(si
     }
     return sese::DateTime(timestamp * 1000000, 0, sese::DateTime::Policy::FORMAT);
 }
+
 bool sese::db::impl::MariaStmtResultSet::isNull(size_t index) const noexcept {
-    if (row[index].buffer_type == MYSQL_TYPE_NULL || row[index].length == nullptr) {
-        return true;
-    }
-    return false;
+    return *row[index].is_null == 1;
 }
