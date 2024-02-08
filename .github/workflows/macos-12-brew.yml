@@ -34,7 +34,7 @@ jobs:
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -Bbuild
+        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DLIBARCHIVE_INCLUDE_DIR=STRING:/usr/local/opt/libarchive/include -Bbuild
 
       - name: Build
         working-directory: ${{ github.workspace }}
