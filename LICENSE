@@ -237,3 +237,7 @@ subject to the terms and conditions of the following licenses:
 - libsese/sese-event
     Project URL: https://github.com/libsese/sese-event
     License: Apache-2.0 License
+
+- libsese/sese-archive
+    Project URL: https://github.com/libsese/sese-archive
+    License: Apache-2.0 License
