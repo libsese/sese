@@ -129,5 +129,12 @@ CREATE TABLE IF NOT EXISTS "tb_stmt_isNull"
 INSERT INTO tb_stmt_isNull VALUES(1,'foo',1,1,1,'2023-03-18 12:30:00');
 INSERT INTO tb_stmt_isNull VALUES(null, null, null, null, null, null);
 DELETE FROM sqlite_sequence;
-INSERT INTO sqlite_sequence VALUES('tb_getInsertId',3);
+INSERT INTO sqlite_sequence VALUES('tb_getInsertId',1);
+CREATE TABLE tb_metadata
+(
+    int         integer     not null,
+    str         varchar(16) not null,
+    float_num   real        not null,
+    bin         blob(32)    not null
+);
 COMMIT;
