@@ -106,6 +106,30 @@ CREATE TABLE tb_stmt_setTime
     intTime  int,
     charTime text
 );
+CREATE TABLE IF NOT EXISTS "tb_isNull"
+(
+    id       integer,
+    name     varchar(32),
+    doubleNull   double,
+    floatNull    float,
+    longNull     bigint,
+    dateTimeNull text
+);
+INSERT INTO tb_isNull VALUES(1,'foo',1,1,1,'2023-03-18 12:30:00');
+INSERT INTO tb_isNull VALUES(null, null, null, null, null, null);
+CREATE TABLE IF NOT EXISTS "tb_stmt_isNull"
+(
+    id       integer,
+    name     varchar(32),
+    doubleNull   double,
+    floatNull    float,
+    longNull     bigint,
+    dateTimeNull text
+    );
+INSERT INTO tb_stmt_isNull VALUES(1,'foo',1,1,1,'2023-03-18 12:30:00');
+INSERT INTO tb_stmt_isNull VALUES(null, null, null, null, null, null);
+DELETE FROM sqlite_sequence;
+INSERT INTO sqlite_sequence VALUES('tb_getInsertId',1);
 CREATE TABLE tb_metadata
 (
     int         integer     not null,
@@ -113,6 +137,4 @@ CREATE TABLE tb_metadata
     float_num   real        not null,
     bin         blob(32)    not null
 );
-DELETE FROM sqlite_sequence;
-INSERT INTO sqlite_sequence VALUES('tb_getInsertId',1);
 COMMIT;

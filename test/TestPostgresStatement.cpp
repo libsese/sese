@@ -223,3 +223,34 @@ TEST(TestPostgresStmt, SetTimeStmt) {
     }
     ASSERT_EQ(false, results->next());
 }
+
+TEST(TestPostgresStmt, isNullStmt) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Postgres,
+            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
+    auto stmt = instance->createStatement("select * from tb_stmt_isNull;");
+    ASSERT_NE(nullptr, stmt);
+
+    auto results = stmt->executeQuery();
+    ASSERT_NE(nullptr, results);
+
+    ASSERT_TRUE(results->next());
+    EXPECT_FALSE(results->isNull(0));
+    EXPECT_FALSE(results->isNull(1));
+    EXPECT_FALSE(results->isNull(2));
+    EXPECT_FALSE(results->isNull(3));
+    EXPECT_FALSE(results->isNull(4));
+    EXPECT_FALSE(results->isNull(5));
+
+    ASSERT_TRUE(results->next());
+    EXPECT_TRUE(results->isNull(0));
+    EXPECT_TRUE(results->isNull(1));
+    EXPECT_TRUE(results->isNull(2));
+    EXPECT_TRUE(results->isNull(3));
+    EXPECT_TRUE(results->isNull(4));
+    EXPECT_TRUE(results->isNull(5));
+}

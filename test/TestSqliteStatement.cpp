@@ -263,3 +263,31 @@ TEST(TestSqliteStmt, SetTimeStmt) {
     }
     ASSERT_EQ(false, result->next());
 }
+
+TEST(TestSqliteStmt, isNullStmt) {
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto stmt = instance->createStatement("select * from tb_stmt_isNull;");
+    ASSERT_NE(nullptr, stmt);
+
+    auto results = stmt->executeQuery();
+    ASSERT_NE(nullptr, results);
+
+    ASSERT_TRUE(results->next());
+    EXPECT_FALSE(results->isNull(0));
+    EXPECT_FALSE(results->isNull(1));
+    EXPECT_FALSE(results->isNull(2));
+    EXPECT_FALSE(results->isNull(3));
+    EXPECT_FALSE(results->isNull(4));
+    EXPECT_FALSE(results->isNull(5));
+
+    ASSERT_TRUE(results->next());
+    EXPECT_TRUE(results->isNull(0));
+    EXPECT_TRUE(results->isNull(1));
+    EXPECT_TRUE(results->isNull(2));
+    EXPECT_TRUE(results->isNull(3));
+    EXPECT_TRUE(results->isNull(4));
+    EXPECT_TRUE(results->isNull(5));
+}

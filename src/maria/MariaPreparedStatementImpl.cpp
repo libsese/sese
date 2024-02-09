@@ -42,54 +42,58 @@ bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *met
     *bind = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * meta->field_count);
     memset(*bind, 0, sizeof(MYSQL_BIND) * meta->field_count);
     for (unsigned int i = 0; i < meta->field_count; i++) {
+        auto &&item = (*bind)[i];
+        item.is_null = static_cast<char *>(malloc(sizeof(my_bool)));
+        *item.is_null = 0;
+
         // 非定长数据
-        void **p = &((*bind)[i].buffer);
         switch (meta->fields[i].type) {
             case MYSQL_TYPE_BLOB:
             case MYSQL_TYPE_TINY_BLOB:
             case MYSQL_TYPE_STRING:
             case MYSQL_TYPE_VARCHAR:
             case MYSQL_TYPE_VAR_STRING:
-                *p = malloc(meta->fields[i].length);
-                (*bind)[i].buffer_length = meta->fields[i].length;
+                item.buffer = malloc(meta->fields[i].length);
+                item.buffer_length = meta->fields[i].length;
                 break;
             case MYSQL_TYPE_TINY:
-                *p = malloc(1);
+                item.buffer = malloc(1);
                 break;
             case MYSQL_TYPE_SHORT:
-                *p = malloc(2);
+                item.buffer = malloc(2);
                 break;
             case MYSQL_TYPE_LONG:
-                *p = malloc(4);
+                item.buffer = malloc(4);
                 break;
             case MYSQL_TYPE_LONGLONG:
-                *p = malloc(8);
+                item.buffer = malloc(8);
                 break;
             case MYSQL_TYPE_FLOAT:
-                *p = malloc(4);
+                item.buffer = malloc(4);
                 break;
             case MYSQL_TYPE_DOUBLE:
-                *p = malloc(8);
+                item.buffer = malloc(8);
                 break;
             case MYSQL_TYPE_TIME:
             case MYSQL_TYPE_DATE:
             case MYSQL_TYPE_DATETIME:
             {
-                *p = malloc(sizeof(MYSQL_TIME));
-                memset(*p, 0, sizeof(MYSQL_TIME));
+                item.buffer = malloc(sizeof(MYSQL_TIME));
+                memset(item.buffer, 0, sizeof(MYSQL_TIME));
                 break;
             }
             default:
                 return false;
         }
-        (*bind)[i].buffer_type = meta->fields[i].type;
+        item.buffer_type = meta->fields[i].type;
     }
     return true;
 }
 
 void sese::db::impl::MariaPreparedStatementImpl::freeBindStruct(MYSQL_BIND *bind, size_t count) noexcept {
     for (auto i = 0; i < count; ++i) {
-        if (bind[i].buffer != nullptr) free(bind[i].buffer);
+        free(bind[i].buffer);
+        free(bind[i].is_null);
     }
     free(bind);
 }

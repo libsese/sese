@@ -138,7 +138,7 @@ TEST(TestSqliteTransaction, RollBack) {
     ASSERT_EQ(false, results->next());
 }
 
-TEST(TestSqliteTransaction, GetInserId) {
+TEST(TestSqliteTransaction, GetInsertId) {
     auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());

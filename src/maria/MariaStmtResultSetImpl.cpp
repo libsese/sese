@@ -26,13 +26,13 @@ size_t sese::db::impl::MariaStmtResultSet::getColumns() const noexcept {
 
 int64_t sese::db::impl::MariaStmtResultSet::getLong(size_t index) const noexcept {
     int64_t value;
-    value = *(int64_t *)row[index].buffer;
+    value = *(int64_t *) row[index].buffer;
     return value;
 }
 
 int32_t sese::db::impl::MariaStmtResultSet::getInteger(size_t index) const noexcept {
     int32_t value;
-    value = *(int32_t *)row[index].buffer;
+    value = *(int32_t *) row[index].buffer;
     return value;
 }
 
@@ -42,13 +42,13 @@ std::string_view sese::db::impl::MariaStmtResultSet::getString(size_t index) con
 
 double sese::db::impl::MariaStmtResultSet::getDouble(size_t index) const noexcept {
     double value;
-    value = *(double *)row[index].buffer;
+    value = *(double *) row[index].buffer;
     return value;
 }
 
 float sese::db::impl::MariaStmtResultSet::getFloat(size_t index) const noexcept {
     float value;
-    value = *(float *)row[index].buffer;
+    value = *(float *) row[index].buffer;
     return value;
 }
 
@@ -67,4 +67,8 @@ std::optional<sese::DateTime> sese::db::impl::MariaStmtResultSet::getDateTime(si
         return std::nullopt;
     }
     return sese::DateTime(timestamp * 1000000, 0, sese::DateTime::Policy::FORMAT);
+}
+
+bool sese::db::impl::MariaStmtResultSet::isNull(size_t index) const noexcept {
+    return *row[index].is_null == 1;
 }

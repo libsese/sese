@@ -1,4 +1,6 @@
 #include <sqlite/SqliteStmtResultSetImpl.h>
+#include <sese/text/DateTimeParser.h>
+
 
 using namespace sese::db;
 
@@ -53,4 +55,8 @@ int64_t impl::SqliteStmtResultSetImpl::getLong(size_t index) const noexcept {
 std::optional<sese::DateTime> impl::SqliteStmtResultSetImpl::getDateTime(size_t index) const noexcept {
     std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", (const char *) sqlite3_column_text(stmt, (int) index));
     return rt;
+}
+bool impl::SqliteStmtResultSetImpl::isNull(size_t index) const noexcept {
+    if (sqlite3_column_type(stmt, (int) index) == SQLITE_NULL) return true;
+    return false;
 }

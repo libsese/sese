@@ -1,4 +1,5 @@
 #include <maria/MariaResultSetImpl.h>
+#include <sese/text/DateTimeParser.h>
 
 using namespace sese::db;
 
@@ -53,4 +54,6 @@ std::optional<sese::DateTime> impl::MariaResultSetImpl::getDateTime(size_t index
     std::optional<sese::DateTime> rt = text::DateTimeParser::parse("yyyy-MM-dd HH:mm:ss", row[index]);
     return rt;
 }
-
+bool impl::MariaResultSetImpl::isNull(size_t index) const noexcept {
+    return row[index] == nullptr;
+}

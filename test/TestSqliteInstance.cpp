@@ -140,3 +140,28 @@ TEST(TestSqliteDriverInstance, DateTime) {
         ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
     }
 }
+
+TEST(TestSqliteDriverInstance, isNull) {
+    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, PATH_TO_DB);
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto results = instance->executeQuery("select * from tb_isNull");
+    ASSERT_NE(nullptr, results);
+
+    ASSERT_TRUE(results->next());
+    EXPECT_FALSE(results->isNull(0));
+    EXPECT_FALSE(results->isNull(1));
+    EXPECT_FALSE(results->isNull(2));
+    EXPECT_FALSE(results->isNull(3));
+    EXPECT_FALSE(results->isNull(4));
+    EXPECT_FALSE(results->isNull(5));
+
+    ASSERT_TRUE(results->next());
+    EXPECT_TRUE(results->isNull(0));
+    EXPECT_TRUE(results->isNull(1));
+    EXPECT_TRUE(results->isNull(2));
+    EXPECT_TRUE(results->isNull(3));
+    EXPECT_TRUE(results->isNull(4));
+    EXPECT_TRUE(results->isNull(5));
+}

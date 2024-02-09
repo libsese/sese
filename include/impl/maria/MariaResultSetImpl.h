@@ -13,6 +13,7 @@ namespace sese::db::impl {
 
         void reset() noexcept override;
         [[nodiscard]] bool next() noexcept override;
+        [[nodiscard]] bool isNull(size_t index) const noexcept override;
         [[nodiscard]] size_t getColumns() const noexcept override;
 
         [[nodiscard]] int32_t getInteger(size_t index) const noexcept override;

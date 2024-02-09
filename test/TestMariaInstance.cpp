@@ -159,7 +159,7 @@ TEST(TestMariaDriverInstance, DeleteData) {
     ASSERT_EQ(false, result->next());
 }
 
-TEST(TestMariaStmt, DateTime) {
+TEST(TestMariaDriverInstance, DateTime) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
             "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
@@ -179,4 +179,32 @@ TEST(TestMariaStmt, DateTime) {
         ASSERT_EQ(1679142600000000, result->getDateTime(1).value().getTimestamp());
     }
     ASSERT_EQ(false, result->next());
+}
+
+TEST(TestMariaDriverInstance, isNull) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Maria,
+            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(0, instance->getLastError());
+
+    auto results = instance->executeQuery("select * from tb_isNull");
+    ASSERT_NE(nullptr, results);
+
+    ASSERT_TRUE(results->next());
+    EXPECT_FALSE(results->isNull(0));
+    EXPECT_FALSE(results->isNull(1));
+    EXPECT_FALSE(results->isNull(2));
+    EXPECT_FALSE(results->isNull(3));
+    EXPECT_FALSE(results->isNull(4));
+    EXPECT_FALSE(results->isNull(5));
+
+    ASSERT_TRUE(results->next());
+    EXPECT_TRUE(results->isNull(0));
+    EXPECT_TRUE(results->isNull(1));
+    EXPECT_TRUE(results->isNull(2));
+    EXPECT_TRUE(results->isNull(3));
+    EXPECT_TRUE(results->isNull(4));
+    EXPECT_TRUE(results->isNull(5));
 }

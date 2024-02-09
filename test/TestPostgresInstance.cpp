@@ -194,3 +194,31 @@ TEST(TestPostgresDriverInstance, Datetime) {
     }
     ASSERT_EQ(false, results->next());
 }
+
+TEST(TestPostgresDriverInstance, isNull) {
+    auto instance = DriverManager::getInstance(
+            DatabaseType::Postgres,
+            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+    );
+    ASSERT_NE(nullptr, instance);
+    ASSERT_EQ(instance->getLastError(), 0);
+
+    auto results = instance->executeQuery("select * from tb_isNull");
+    ASSERT_NE(nullptr, results);
+
+    ASSERT_TRUE(results->next());
+    EXPECT_FALSE(results->isNull(0));
+    EXPECT_FALSE(results->isNull(1));
+    EXPECT_FALSE(results->isNull(2));
+    EXPECT_FALSE(results->isNull(3));
+    EXPECT_FALSE(results->isNull(4));
+    EXPECT_FALSE(results->isNull(5));
+
+    ASSERT_TRUE(results->next());
+    EXPECT_TRUE(results->isNull(0));
+    EXPECT_TRUE(results->isNull(1));
+    EXPECT_TRUE(results->isNull(2));
+    EXPECT_TRUE(results->isNull(3));
+    EXPECT_TRUE(results->isNull(4));
+    EXPECT_TRUE(results->isNull(5));
+}

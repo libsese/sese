@@ -218,6 +218,38 @@ CREATE TABLE public.tb_update (
 ALTER TABLE public.tb_update OWNER TO postgres;
 
 --
+-- Name: tb_isNull; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_isNull (
+    id integer,
+    name character varying(32),
+    doubleNull double precision,
+    floatNull real,
+    longNull bigint,
+    dateTimeNull timestamp
+);
+
+
+ALTER TABLE public.tb_isNull OWNER TO postgres;
+
+--
+-- Name: tb_stmt_isNull; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_stmt_isNull (
+    id integer,
+    name character varying(32),
+    doubleNull double precision,
+    floatNull real,
+    longNull bigint,
+    dateTimeNull timestamp
+);
+
+
+ALTER TABLE public.tb_stmt_isNull OWNER TO postgres;
+
+--
 -- Name: tb_metadata; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -347,6 +379,19 @@ INSERT INTO public.tb_stmt_update VALUES (2, 'bar');
 INSERT INTO public.tb_update VALUES (1, 'foo');
 INSERT INTO public.tb_update VALUES (2, 'bar');
 
+--
+-- Data for Name: tb_isNull; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.tb_isNull VALUES (1, 'foo', 1, 1, 1, '2023-03-18 12:30:00');
+INSERT INTO public.tb_isNull VALUES (null, null, null, null, null, null);
+
+--
+-- Data for Name: tb_stmt_isNull; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.tb_stmt_isNull VALUES (1, 'foo', 1, 1, 1, '2023-03-18 12:30:00');
+INSERT INTO public.tb_stmt_isNull VALUES (null, null, null, null, null, null);
 
 --
 -- Name: tb_getInsertId tb_getInsertId_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
