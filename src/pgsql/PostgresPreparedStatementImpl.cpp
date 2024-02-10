@@ -27,7 +27,7 @@ sese::db::impl::PostgresPreparedStatementImpl::~PostgresPreparedStatementImpl() 
     delete[] this->strings;
 }
 
-bool sese::db::impl::PostgresPreparedStatementImpl::setDouble(uint32_t index, double &value) noexcept {
+bool sese::db::impl::PostgresPreparedStatementImpl::setDouble(uint32_t index, const double &value) noexcept {
     if (index - 1 >= count) return false;
     this->strings[index - 1] = std::to_string(value);
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
@@ -35,7 +35,7 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setDouble(uint32_t index, do
     return true;
 }
 
-bool sese::db::impl::PostgresPreparedStatementImpl::setFloat(uint32_t index, float &value) noexcept {
+bool sese::db::impl::PostgresPreparedStatementImpl::setFloat(uint32_t index, const float &value) noexcept {
     if (index - 1 >= count) return false;
     this->strings[index - 1] = std::to_string(value);
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
@@ -43,7 +43,7 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setFloat(uint32_t index, flo
     return true;
 }
 
-bool sese::db::impl::PostgresPreparedStatementImpl::setInteger(uint32_t index, int32_t &value) noexcept {
+bool sese::db::impl::PostgresPreparedStatementImpl::setInteger(uint32_t index, const int32_t &value) noexcept {
     if (index - 1 >= count) return false;
     this->strings[index - 1] = std::to_string(value);
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
@@ -51,7 +51,7 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setInteger(uint32_t index, i
     return true;
 }
 
-bool sese::db::impl::PostgresPreparedStatementImpl::setLong(uint32_t index, int64_t &value) noexcept {
+bool sese::db::impl::PostgresPreparedStatementImpl::setLong(uint32_t index, const int64_t &value) noexcept {
     if (index - 1 >= count) return false;
     this->strings[index - 1] = std::to_string(value);
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
@@ -185,5 +185,5 @@ int64_t sese::db::impl::PostgresPreparedStatementImpl::getColumnSize(uint32_t in
     if (meta == nullptr || PQnfields(meta) <= index) {
         return -1;
     }
-    return PQfsize(meta, index);
+    return PQfsize(meta, static_cast<int>(index));
 }

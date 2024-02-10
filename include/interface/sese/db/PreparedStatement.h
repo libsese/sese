@@ -32,22 +32,22 @@ namespace sese::db {
         /// \param index 索引
         /// \param value 值
         /// \return 是否设置成功
-        virtual bool setDouble(uint32_t index, double &value) noexcept = 0;
+        virtual bool setDouble(uint32_t index, const double &value) noexcept = 0;
         /// \brief 设置单精度浮点值
         /// \param index 索引
         /// \param value 值
         /// \return 是否设置成功
-        virtual bool setFloat(uint32_t index, float &value) noexcept = 0;
+        virtual bool setFloat(uint32_t index, const float &value) noexcept = 0;
         /// \brief 设置整型值
         /// \param index 索引
         /// \param value 值
         /// \return 是否设置成功
-        virtual bool setInteger(uint32_t index, int32_t &value) noexcept = 0;
+        virtual bool setInteger(uint32_t index, const int32_t &value) noexcept = 0;
         /// \brief 设置长整型值
         /// \param index 索引
         /// \param value 值
         /// \return 是否设置成功
-        virtual bool setLong(uint32_t index, int64_t &value) noexcept = 0;
+        virtual bool setLong(uint32_t index, const int64_t &value) noexcept = 0;
         /// \brief 设置文本值
         /// \param index 索引
         /// \param value 值

@@ -8,5 +8,5 @@ insert_final_newline = false
 trim_trailing_whitespace = true
 charset = utf-8
 
-[*.{sh,bash}]
+[*.{sh,bash,sql}]
 end_of_line = lf
