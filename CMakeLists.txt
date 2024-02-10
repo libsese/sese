@@ -27,7 +27,7 @@ auto_enable_feature(SESE_DB_USE_MARIADB "mysql")
 auto_enable_feature(SESE_DB_USE_SQLITE "sqlite3")
 auto_enable_feature(SESE_DB_USE_POSTGRES "psql")
 
-project(sese-db VERSION 1.1.3)
+project(sese-db VERSION 1.2.0)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)

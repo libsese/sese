@@ -1,6 +1,6 @@
 {
     "name": "sese-db",
-    "version-string": "1.1.3",
+    "version-string": "1.2.0",
     "dependencies": [
         {
             "name": "sese-core",
