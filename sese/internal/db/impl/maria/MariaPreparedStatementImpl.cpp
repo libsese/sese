@@ -38,7 +38,7 @@ bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *met
     memset(*bind, 0, sizeof(MYSQL_BIND) * meta->field_count);
     for (unsigned int i = 0; i < meta->field_count; i++) {
         auto &&item = (*bind)[i];
-        item.is_null = static_cast<char *>(malloc(sizeof(my_bool)));
+        item.is_null = static_cast<decltype(item.is_null)>(malloc(sizeof(char)));
         *item.is_null = 0;
 
         // 非定长数据

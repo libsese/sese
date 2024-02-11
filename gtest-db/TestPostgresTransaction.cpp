@@ -3,6 +3,8 @@
 #include <gtest/gtest.h>
 #include <cinttypes>
 
+#include "Config.h"
+
 using sese::db::DatabaseType;
 using sese::db::DriverInstance;
 using sese::db::DriverManager;
@@ -11,7 +13,7 @@ using sese::db::ResultSet;
 TEST(TestPostgresTransaction, Commit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
@@ -46,7 +48,7 @@ TEST(TestPostgresTransaction, Commit) {
 TEST(TestPostgresTransaction, RollBack) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
@@ -76,7 +78,7 @@ TEST(TestPostgresTransaction, RollBack) {
 TEST(TestPostgresTransaction, Begin) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
@@ -133,7 +135,7 @@ TEST(TestPostgresTransaction, Begin) {
 TEST(TestPostgresTransaction, UseLess) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);

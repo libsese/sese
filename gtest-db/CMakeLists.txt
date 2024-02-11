@@ -6,6 +6,12 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set(CMAKE_EXE_LINKER_FLAGS "-Wl,-copy-dt-needed-entries")
 endif ()
 
+if (SESE_GITHUB_WORKFLOW)
+    add_definitions(-DSQLITE_CONNECTION_STRING=\"${PROJECT_SOURCE_DIR}/build/db_test.db\")
+    add_definitions(-DMYSQL_CONNECTION_STRING=\"host=127.0.0.1;port=3306;user=root;pwd=root;db=db_test;\")
+    add_definitions(-DPSQL_CONNECTION_STRING=\"host=127.0.0.1;port=5432;user=postgres;pwd=postgres;db=db_test;\")
+endif ()
+
 if (SESE_DB_USE_MARIADB)
     add_executable(TestMaria)
     target_sources(TestMaria PRIVATE

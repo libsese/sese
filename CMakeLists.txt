@@ -5,9 +5,9 @@ cmake_minimum_required(VERSION 3.13)
 # https://cmake.org/cmake/help/latest/policy/CMP0048.html
 cmake_policy(SET CMP0048 NEW)
 
-option(SESE_USE_BREW "use the homebrew packages control" OFF)
-option(SESE_USE_APT "use the apt packages control" OFF)
+option(SESE_USE_NATIVE_MANAGER "use the unix-like packages control" OFF)
 option(SESE_BUILD_TEST "build unit test targets" OFF)
+option(SESE_GITHUB_WORKFLOW "under github workflow" OFF)
 
 option(SESE_DB_USE_SQLITE "add sqlite support" ON)
 option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)

@@ -1,3 +1,5 @@
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
     set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
 endif()
@@ -64,8 +66,14 @@ if (SESE_DB_USE_SQLITE)
             "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/sqlite/*.h"
     )
     target_sources(Core PRIVATE ${SQLITE_SRC})
-    find_package(unofficial-sqlite3 CONFIG REQUIRED)
-    target_link_libraries(Core PRIVATE unofficial::sqlite3::sqlite3)
+
+    if (SESE_USE_NATIVE_MANAGER)
+        find_package(SQLite3 REQUIRED)
+        target_link_libraries(Core PRIVATE SQLite::SQLite3)
+    else ()
+        find_package(unofficial-sqlite3 CONFIG REQUIRED)
+        target_link_libraries(Core PRIVATE unofficial::sqlite3::sqlite3)
+    endif ()
 endif ()
 
 if (SESE_DB_USE_MARIADB)
@@ -76,9 +84,15 @@ if (SESE_DB_USE_MARIADB)
             "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/maria/*.cpp"
             "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/maria/*.h"
     )
+
     target_sources(Core PRIVATE ${MARIA_SRC})
-    find_package(unofficial-libmariadb CONFIG REQUIRED)
-    target_link_libraries(Core PRIVATE unofficial::libmariadb)
+    if (SESE_USE_NATIVE_MANAGER)
+        find_package(MySQL MODULE REQUIRED)
+        target_link_libraries(Core PRIVATE ${MYSQL_LIB})
+    else ()
+        find_package(unofficial-libmariadb CONFIG REQUIRED)
+        target_link_libraries(Core PRIVATE unofficial::libmariadb)
+    endif ()
 endif ()
 
 if (SESE_DB_USE_POSTGRES)

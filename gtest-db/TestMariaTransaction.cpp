@@ -2,6 +2,8 @@
 #include <gtest/gtest.h>
 #include <cinttypes>
 
+#include "Config.h"
+
 using sese::db::DatabaseType;
 using sese::db::DriverInstance;
 using sese::db::DriverManager;
@@ -10,7 +12,7 @@ using sese::db::ResultSet;
 TEST(TestMariaTransaction, GetAutoCommit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
 
     );
     ASSERT_NE(nullptr, instance);
@@ -24,7 +26,7 @@ TEST(TestMariaTransaction, GetAutoCommit) {
 TEST(TestMariaTransaction, SetAutoCommit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
 
     );
     ASSERT_NE(nullptr, instance);
@@ -46,7 +48,7 @@ TEST(TestMariaTransaction, SetAutoCommit) {
 TEST(TestMariaTransaction, Commit) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
 
     );
     ASSERT_NE(nullptr, instance);
@@ -85,7 +87,7 @@ TEST(TestMariaTransaction, Commit) {
 TEST(TestMariaTransaction, RollBack) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
 
     );
     ASSERT_NE(nullptr, instance);
@@ -119,7 +121,7 @@ TEST(TestMariaTransaction, RollBack) {
 TEST(TestMariaTransaction, Begin) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
 
     );
     ASSERT_NE(nullptr, instance);
@@ -178,7 +180,7 @@ TEST(TestMariaTransaction, Begin) {
 TEST(TestMariaTransaction, GetInserId) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
 
     );
     ASSERT_NE(nullptr, instance);

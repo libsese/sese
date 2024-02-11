@@ -1,12 +1,14 @@
 #include <gtest/gtest.h>
 #include <sese/db/DriverManager.h>
 
+#include "Config.h"
+
 class TestMariaMetadata : public testing::Test {
 protected:
     static sese::db::DriverInstance::Ptr instance;
 
     static void SetUpTestSuite() {
-        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::MySql, "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;");
+        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::MySql, MYSQL_CONNECTION_STRING);
         ASSERT_NE(nullptr, instance);
     }
 };

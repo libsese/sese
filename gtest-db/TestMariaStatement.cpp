@@ -2,6 +2,8 @@
 #include <gtest/gtest.h>
 #include <cinttypes>
 
+#include "Config.h"
+
 using sese::db::DatabaseType;
 using sese::db::DriverInstance;
 using sese::db::DriverManager;
@@ -10,7 +12,7 @@ using sese::db::ResultSet;
 TEST(TestMariaStmt, QueryStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -45,7 +47,7 @@ TEST(TestMariaStmt, QueryStmt) {
 TEST(TestMariaStmt, UpdateStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -89,7 +91,7 @@ TEST(TestMariaStmt, UpdateStmt) {
 TEST(TestMariaStmt, DeleteStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -116,7 +118,7 @@ TEST(TestMariaStmt, DeleteStmt) {
 TEST(TestMariaStmt, InsertStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
 
     );
     ASSERT_NE(nullptr, instance);
@@ -176,7 +178,7 @@ TEST(TestMariaStmt, InsertStmt) {
 TEST(TestMariaStmt, GetDateTimeStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -200,7 +202,7 @@ TEST(TestMariaStmt, GetDateTimeStmt) {
 TEST(TestMariaStmt, SetDateTimeStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
@@ -242,7 +244,7 @@ TEST(TestMariaStmt, SetDateTimeStmt) {
 TEST(TestMariaStmt, isNullStmt) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Maria,
-            "host=127.0.0.1;user=root;pwd=libsese;db=db_test;port=18806;"
+            MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());

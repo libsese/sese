@@ -3,6 +3,8 @@
 #include <gtest/gtest.h>
 #include <cinttypes>
 
+#include "Config.h"
+
 using sese::db::DatabaseType;
 using sese::db::DriverInstance;
 using sese::db::DriverManager;
@@ -37,7 +39,7 @@ TEST(TestPostgresDriverInstance, InstanceError) {
 TEST(TestPostgresDriverInstance, QueryData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
@@ -90,7 +92,7 @@ TEST(TestPostgresDriverInstance, QueryData) {
 TEST(TestPostgresDriverInstance, UpdateData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
@@ -125,7 +127,7 @@ TEST(TestPostgresDriverInstance, UpdateData) {
 TEST(TestPostgresDriverInstance, DeleteData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
@@ -146,7 +148,7 @@ TEST(TestPostgresDriverInstance, DeleteData) {
 TEST(TestPostgresDriverInstance, InsertData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
@@ -177,7 +179,7 @@ TEST(TestPostgresDriverInstance, InsertData) {
 TEST(TestPostgresDriverInstance, Datetime) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);
@@ -198,7 +200,7 @@ TEST(TestPostgresDriverInstance, Datetime) {
 TEST(TestPostgresDriverInstance, isNull) {
     auto instance = DriverManager::getInstance(
             DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=libsese;db=db_test;port=18080;"
+            PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(instance->getLastError(), 0);

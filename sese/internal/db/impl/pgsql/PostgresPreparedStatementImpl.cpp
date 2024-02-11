@@ -1,6 +1,21 @@
 #include <sese/internal/db/impl/pgsql/PostgresPreparedStatementImpl.h>
-#include <catalog/pg_type_d.h>
 #include <sstream>
+
+#ifndef FLOAT8OID
+#define FLOAT8OID 701
+#define FLOAT4OID 700
+#define INT8OID 20
+#define INT4OID 23
+#define INT2OID 21
+#define TEXTOID 25
+#define TIMESTAMPOID 1114
+#define TIMESTAMPTZOID 1184
+#define BOOLOID 16
+#define CHAROID 18
+#define VARCHAROID 1043
+#define DATEOID 1082
+#define TIMEOID 1083
+#endif
 
 sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(
         const std::string &stmtName,

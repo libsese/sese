@@ -31,7 +31,7 @@ jobs:
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -Bbuild
+        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -Bbuild
 
       - name: Build
         working-directory: ${{ github.workspace }}
@@ -39,4 +39,4 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_test
+        run: build/gtest/AllTestInMain

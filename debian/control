@@ -9,7 +9,10 @@ Build-Depends: debhelper (>= 11),
                python3,
                libarchive-dev,
                libssl-dev,
-               zlib1g-dev
+               zlib1g-dev,
+               libsqlite3-dev,
+               libmysqlclient-dev,
+               libpq-dev
 
 Package: sese-core
 Architecture: any
