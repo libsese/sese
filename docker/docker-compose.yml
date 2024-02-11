@@ -1,0 +1,31 @@
+version: '3'
+services:
+    mariadb:
+        image: mariadb
+        environment:
+            - MARIADB_ROOT_HOST=%
+            - MARIADB_USER=libsese
+            - MARIADB_PASSWORD=libsese
+            - MARIADB_ROOT_PASSWORD=libsese
+        restart: on-failure
+        ports:
+            - '127.0.0.1:18806:3306'
+        volumes:
+            - ./mysql_dump.sql:/docker-entrypoint-initdb.d/mysql_dump.sql:ro
+    sqlite:
+        build:
+            context: .
+            dockerfile: sqlite.dockerfile
+        command:
+            - '/root/docker-entrypoint.sh'
+        volumes:
+            - './tmp:/tmp'
+    postgresql:
+        image: postgres
+        environment:
+            - POSTGRES_PASSWORD=libsese
+        restart: on-failure
+        ports:
+            - '127.0.0.1:18080:5432'
+        volumes:
+            - ./postgres_dump.sql:/docker-entrypoint-initdb.d/postgres_dump.sql:ro

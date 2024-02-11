@@ -16,6 +16,7 @@ add_library(Plugin STATIC
 
 file(GLOB_RECURSE ARCHIVE_SRC "${CMAKE_CURRENT_LIST_DIR}/archive/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/archive/*.h")
 file(GLOB_RECURSE CONCURRENT_SRC "${CMAKE_CURRENT_LIST_DIR}/concurrent/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/concurrent/*.h")
+file(GLOB_RECURSE DB_SRC "${CMAKE_CURRENT_LIST_DIR}/db/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/db/*.h")
 file(GLOB_RECURSE EVENT_SRC "${CMAKE_CURRENT_LIST_DIR}/event/*.h")
 file(GLOB_RECURSE RECORD_SRC  "${CMAKE_CURRENT_LIST_DIR}/record/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/record/*.h")
 file(GLOB_RECURSE CONVERT_SRC "${CMAKE_CURRENT_LIST_DIR}/convert/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/convert/*.h")
@@ -31,12 +32,12 @@ file(GLOB_RECURSE PLUGIN_SRC "${CMAKE_CURRENT_LIST_DIR}/plugin/*.cpp" "${CMAKE_C
 file(GLOB_RECURSE SERVICE_SRC "${CMAKE_CURRENT_LIST_DIR}/service/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/service/*.h")
 file(GLOB_RECURSE UNIX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.h")
 file(GLOB_RECURSE RES_SRC "${CMAKE_CURRENT_LIST_DIR}/res/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/res/*.h")
-file(GLOB_RECURSE INTERNAL_SRC "${CMAKE_CURRENT_LIST_DIR}/internal/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/internal/*.h")
 
 add_library(Core
         ${ARCHIVE_SRC}
         ${CONCURRENT_SRC}
         ${CONVERT_SRC}
+        ${DB_SRC}
         ${EVENT_SRC}
         ${RECORD_SRC}
         ${INTERNAL_SRC}
@@ -53,6 +54,45 @@ add_library(Core
         ${RES_SRC}
         Config.h
 )
+
+if (SESE_DB_USE_SQLITE)
+    add_definitions(-DHAS_SQLITE)
+    file(
+            GLOB_RECURSE
+            SQLITE_SRC
+            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/sqlite/*.cpp"
+            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/sqlite/*.h"
+    )
+    target_sources(Core PRIVATE ${SQLITE_SRC})
+    find_package(unofficial-sqlite3 CONFIG REQUIRED)
+    target_link_libraries(Core PRIVATE unofficial::sqlite3::sqlite3)
+endif ()
+
+if (SESE_DB_USE_MARIADB)
+    add_definitions(-DHAS_MARIADB)
+    file(
+            GLOB_RECURSE
+            MARIA_SRC
+            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/maria/*.cpp"
+            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/maria/*.h"
+    )
+    target_sources(Core PRIVATE ${MARIA_SRC})
+    find_package(unofficial-libmariadb CONFIG REQUIRED)
+    target_link_libraries(Core PRIVATE unofficial::libmariadb)
+endif ()
+
+if (SESE_DB_USE_POSTGRES)
+    add_definitions(-DHAS_POSTGRES)
+    file(
+            GLOB_RECURSE
+            PSQL_SRC
+            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/pgsql/*.cpp"
+            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/pgsql/*.h"
+    )
+    target_sources(Core PRIVATE ${PSQL_SRC})
+    find_package(PostgreSQL REQUIRED)
+    target_link_libraries(Core PRIVATE PostgreSQL::PostgreSQL)
+endif ()
 
 option(USE_ASYNC_LOGGER "use async logger" OFF)
 if (USE_ASYNC_LOGGER)
