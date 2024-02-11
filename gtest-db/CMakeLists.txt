@@ -6,14 +6,23 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set(CMAKE_EXE_LINKER_FLAGS "-Wl,-copy-dt-needed-entries")
 endif ()
 
-if (SESE_GITHUB_WORKFLOW)
-    add_definitions(-DSQLITE_CONNECTION_STRING=\"${PROJECT_SOURCE_DIR}/build/db_test.db\")
-    add_definitions(-DMYSQL_CONNECTION_STRING=\"host=127.0.0.1;port=3306;user=root;pwd=root;db=db_test;\")
-    add_definitions(-DPSQL_CONNECTION_STRING=\"host=127.0.0.1;port=5432;user=postgres;pwd=postgres;db=db_test;\")
-endif ()
+# if (SESE_GITHUB_WORKFLOW)
+# add_definitions("-DSQLITE_CONNECTION_STRING=\"${PROJECT_SOURCE_DIR}/build/db_test.db\"")
+#     add_definitions("-DMYSQL_CONNECTION_STRING=\"host=127.0.0.1\\;port=3306\\;user=root\\;pwd=root\\;db=db_test\\;\"")
+#     add_definitions("-DPSQL_CONNECTION_STRING=\"host=127.0.0.1\\;port=5432\\;user=postgres\\;pwd=postgres\\;db=db_test\\;\"")
+# endif ()
 
 if (SESE_DB_USE_MARIADB)
     add_executable(TestMaria)
+
+    if (SESE_GITHUB_WORKFLOW)
+        target_compile_definitions(
+            TestMaria
+            PRIVATE
+            "MYSQL_CONNECTION_STRING=\"host=127.0.0.1\\;port=3306\\;user=root\\;pwd=root\\;db=db_test\\;\""
+        )
+    endif ()
+
     target_sources(TestMaria PRIVATE
             TestMariaMain.cpp
             TestMariaInstance.cpp
@@ -28,6 +37,15 @@ endif ()
 
 if (SESE_DB_USE_SQLITE)
     add_executable(TestSqlite)
+
+    if (SESE_GITHUB_WORKFLOW)
+        target_compile_definitions(
+            TestSqlite
+            PRIVATE
+            "SQLITE_CONNECTION_STRING=\"${PROJECT_SOURCE_DIR}/build/db_test.db\""
+        )
+    endif ()
+
     target_sources(TestSqlite PRIVATE
             TestSqliteMain.cpp
             TestSqliteInstance.cpp
@@ -43,6 +61,15 @@ endif ()
 
 if (SESE_DB_USE_POSTGRES)
     add_executable(TestPostgres)
+
+    if (SESE_GITHUB_WORKFLOW)
+        target_compile_definitions(
+            TestPostgres
+            PRIVATE
+            "PSQL_CONNECTION_STRING=\"host=127.0.0.1\\;port=5432\\;user=postgres\\;pwd=postgres\\;db=db_test\\;\""
+        )
+    endif ()
+
     target_sources(TestPostgres PRIVATE
             TestPostgresMain.cpp
             TestPostgresInstance.cpp

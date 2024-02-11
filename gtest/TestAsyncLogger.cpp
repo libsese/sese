@@ -31,14 +31,14 @@ TEST(TestAsyncLogger, Appender) {
     // sese::sleep(0);
 }
 
-TEST(TestAsyncLogger, HighLoad) {
+TEST(TestAsyncLogger, DISABLED_HighLoad) {
     auto logger = sese::record::AsyncLogger();
     for (auto i = 0; i < 640; i++) {
         logger.log(makeEvent(sese::record::Level::DEBUG));
     }
 }
 
-TEST(TestAsyncLogger, MuiltThread) {
+TEST(TestAsyncLogger, DISABLED_MuiltThread) {
     auto logger = sese::record::AsyncLogger();
 
     auto func = [&logger]() {

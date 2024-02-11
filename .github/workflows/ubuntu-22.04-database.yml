@@ -46,8 +46,9 @@ jobs:
 
       - name: Setup MySQL
         working-directory: ${{ github.workspace }}
-        run: sudo systemctl start mysql.service && \
-             sudo mysql -uroot -proot < docker/mysql_dump.sql
+        run: |
+          sudo systemctl start mysql.service
+          sudo mysql -uroot -proot < docker/mysql_dump.sql
 
       - name: TestMaria
         working-directory: ${{ github.workspace }}
@@ -57,8 +58,9 @@ jobs:
         run: sudo systemctl stop mysql.service
 
       - name: Setup Postgres
-        run: sudo systemctl start postgresql.service && \
-             sudo psql -f docker/postgres_dump.sql
+        run: |
+          sudo systemctl start postgresql.service
+          sudo psql -U postgres -f docker/postgres_dump.sql
 
       - name: TestPostgres
         working-directory: ${{ github.workspace }}

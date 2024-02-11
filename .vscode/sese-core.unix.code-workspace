@@ -9,7 +9,7 @@
 			"-DSESE_BUILD_TEST=ON",
             "-DSESE_USE_NATIVE_MANAGER=ON",
             "-DSESE_DB_USE_MARIADB=ON",
-            "-DSESE_DB_USE_POSTGRES=ON",
+            "-DSESE_DB_USE_POSTGRES=ON"
 		],
 		"cmake.configureSettings": {
 			"CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
