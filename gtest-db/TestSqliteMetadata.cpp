@@ -1,12 +1,14 @@
 #include <gtest/gtest.h>
 #include <sese/db/DriverManager.h>
 
+#include "Config.h"
+
 class TestSqliteMetadata : public testing::Test {
 protected:
     static sese::db::DriverInstance::Ptr instance;
 
     static void SetUpTestSuite() {
-        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::Sqlite, PATH_TO_DB);
+        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
         ASSERT_NE(nullptr, instance);
     }
 };

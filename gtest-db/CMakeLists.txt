@@ -8,6 +8,7 @@ endif ()
 
 if (SESE_DB_USE_MARIADB)
     add_executable(TestMaria)
+
     target_sources(TestMaria PRIVATE
             TestMariaMain.cpp
             TestMariaInstance.cpp
@@ -22,6 +23,7 @@ endif ()
 
 if (SESE_DB_USE_SQLITE)
     add_executable(TestSqlite)
+
     target_sources(TestSqlite PRIVATE
             TestSqliteMain.cpp
             TestSqliteInstance.cpp
@@ -37,6 +39,7 @@ endif ()
 
 if (SESE_DB_USE_POSTGRES)
     add_executable(TestPostgres)
+
     target_sources(TestPostgres PRIVATE
             TestPostgresMain.cpp
             TestPostgresInstance.cpp

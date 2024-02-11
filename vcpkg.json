@@ -25,6 +25,9 @@
             "host": true
         }
     ],
+    "default-features": [
+        "sqlite3"
+    ],
     "features": {
         "tests": {
             "description": "build the unit test",

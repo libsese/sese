@@ -53,5 +53,5 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: python -m ci.win_test
+        run: build/gtest/AllTestInMain
 

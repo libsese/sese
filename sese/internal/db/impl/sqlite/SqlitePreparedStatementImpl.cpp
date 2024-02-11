@@ -85,7 +85,7 @@ int64_t impl::SqlitePreparedStatementImpl::executeUpdate() noexcept {
     if (SQLITE_DONE == sqlite3_step(stmt)) {
         auto conn = sqlite3_db_handle(stmt);
         this->stmtStatus = true;
-        return sqlite3_changes64(conn);
+        return sqlite3_changes(conn);
     } else {
         return -1;
     }

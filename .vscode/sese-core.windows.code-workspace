@@ -8,7 +8,9 @@
 		"C_Cpp.intelliSenseEngine": "disabled",
 		"cmake.configureArgs": [
 			"-DSESE_BUILD_TEST=ON",
-			"-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+			"-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "-DSESE_DB_USE_MARIADB=ON",
+            "-DSESE_DB_USE_POSTGRES=ON"
 		],
 		"cmake.configureSettings": {
 			"CMAKE_MAKE_PROGRAM": "ninja"
