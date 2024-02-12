@@ -239,7 +239,7 @@ TEST_F(TestAsyncHttpClient, DISABLED_Multi) {
     }
 }
 
-TEST_F(TestAsyncHttpClient, KeepAlive) {
+TEST_F(TestAsyncHttpClient, DISABLED_KeepAlive) {
     auto handle = Handle::create("http://bing.com");
     auto future = client.post(handle);
     auto status = future.get();

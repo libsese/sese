@@ -26,7 +26,7 @@ int64_t impl::SqliteDriverInstanceImpl::executeUpdate(const char *sql) noexcept 
     auto rt = sqlite3_exec(conn, sql, nullptr, nullptr, &error);
     if (error) sqlite3_free(error);
     if (rt == 0) {
-        return sqlite3_changes64(conn);
+        return sqlite3_changes(conn);
     } else {
         return -1;
     }
