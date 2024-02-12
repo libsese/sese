@@ -91,9 +91,26 @@ if (SESE_DB_USE_MARIADB)
             find_package(MySQL MODULE REQUIRED)
             target_link_libraries(Core PRIVATE ${MYSQL_LIB})
         elseif (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/local/opt/mysql-client/include")
-            set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -L/usr/local/opt/mysql-client/lib")
-            target_link_libraries(Core PRIVATE mysqlclient)
+            find_path(MYSQL_INCLUDE_DIR mysql.h
+                /usr/local/include/mysql
+                /usr/local/mysql/include
+                /usr/include/mysql
+            )
+            find_library(
+                MYSQL_LIB
+                NAME mysqlclient
+                PATHS /usr/lib /usr/local/lib /usr/local/mysql/lib
+                PATH_SUFFIXES mysql
+            )
+
+            message(STATUS "MYSQL_INCLUDE_DIR :${MYSQL_INCLUDE_DIR}")
+            message(STATUS "MYSQL_LIB         :${MYSQL_LIB}")
+            if (MYSQL_INCLUDE_DIR AND MYSQL_LIB)
+                target_include_directories(Core PRIVATE ${MYSQL_INCLUDE_DIR})
+                target_link_libraries(Core PRIVATE ${MYSQL_LIB})
+            else ()
+                message(FATAL_ERROR "Could NOT find MySQL library")
+            endif ()
         endif ()
     else ()
         find_package(unofficial-libmariadb CONFIG REQUIRED)

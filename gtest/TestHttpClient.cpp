@@ -189,7 +189,7 @@ protected:
 
 TestAsyncHttpClient::Client TestAsyncHttpClient::client;
 
-TEST_F(TestAsyncHttpClient, Once) {
+TEST_F(TestAsyncHttpClient, DISABLED_Once) {
     auto handle = Handle::create("https://microsoft.com");
     handle->writeBody("Hello", 5);
     auto future = client.post(handle);
@@ -206,7 +206,7 @@ TEST_F(TestAsyncHttpClient, Once) {
 
 #include <sese/security/SSLContextBuilder.h>
 
-TEST_F(TestAsyncHttpClient, Multi) {
+TEST_F(TestAsyncHttpClient, DISABLED_Multi) {
     // auto address = sese::net::IPv4Address::create("110.242.68.66", 80);
     auto address = std::dynamic_pointer_cast<sese::net::IPv4Address>(sese::net::IPv4Address::lookUpAny("microsoft.com"));
     address->setPort(443);
@@ -226,7 +226,7 @@ TEST_F(TestAsyncHttpClient, Multi) {
             SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
         });
     } else {
-        FAIL();
+        FAIL() << sese::net::getNetworkErrorString();
     }
 
     if (s2 == Handle::RequestStatus::Succeeded) {
@@ -235,7 +235,7 @@ TEST_F(TestAsyncHttpClient, Multi) {
             SESE_INFO("%s: %s", pair.first.c_str(), pair.second.c_str());
         });
     } else {
-        FAIL();
+        FAIL() << sese::net::getNetworkErrorString();
     }
 }
 

@@ -30,41 +30,36 @@ jobs:
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -DSESE_GITHUB_WORKFLOW=ON -Bbuild
+        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -Bbuild
 
       - name: Build
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_build
+        run: cmake --build build --target TestPostgres TestSqlite TestMaria
 
       - name: Run Sqlite Scripts
         working-directory: ${{ github.workspace }}
-        run: sqlite3 build/db_test.db < docker/sqlite_dump.sql
+        run: |
+          mkdir docker/tmp
+          sqlite3 docker/tmp/db_test.db < docker/sqlite_dump.sql
 
       - name: TestSqlite
         working-directory: ${{ github.workspace }}
         run: build/gtest-db/TestSqlite
 
-      - name: Setup MySQL
-        working-directory: ${{ github.workspace }}
+      - name: Services up
+        working-directory: ${{ github.workspace }}/docker
         run: |
-          sudo systemctl start mysql.service
-          sudo mysql -uroot -proot < docker/mysql_dump.sql
+          sudo docker-compose up -d mariadb postgresql
+          sleep 5
 
       - name: TestMaria
         working-directory: ${{ github.workspace }}
         run: build/gtest-db/TestMaria
 
-      - name: Stop MySQL
-        run: sudo systemctl stop mysql.service
-
-      - name: Setup Postgres
-        run: |
-          sudo systemctl start postgresql.service
-          sudo psql -U postgres -f docker/postgres_dump.sql
-
       - name: TestPostgres
         working-directory: ${{ github.workspace }}
         run: build/gtest-db/TestPostgres
 
-      - name: Stop Postgres
-        run: sudo systemctl stop postgresql.service
+      - name: Services down
+        working-directory: ${{ github.workspace }}/docker
+        run: sudo docker-compose down
