@@ -62,7 +62,7 @@ add_definitions("-DPROJECT_PATH=\"${CMAKE_CURRENT_LIST_DIR}\"")
 add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
 if (${CMAKE_BUILD_TYPE} STREQUAL "Debug" OR ${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebugInfo")
-    add_definitions("-DSESE_DEBUG")
+    add_definitions("-DSESE_IS_DEBUG")
 endif ()
 
 add_subdirectory(sese)

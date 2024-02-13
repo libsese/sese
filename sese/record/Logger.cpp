@@ -13,7 +13,7 @@ namespace sese::record {
 Logger::Logger() noexcept {
     formatter = std::make_shared<SimpleFormatter>();
     builtInAppender = std::make_shared<ConsoleAppender>();
-#ifdef SESE_DEBUG
+#ifdef SESE_IS_DEBUG
     builtInAppender->setLevel(sese::record::Level::DEBUG);
 #else
     builtInAppender->setLevel(sese::record::Level::INFO);

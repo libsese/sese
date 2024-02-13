@@ -61,9 +61,17 @@ constexpr static const char *THREAD_MAIN_NAME = "Main";
 /// 日志输出缓存区大小
 constexpr static const size_t RECORD_OUTPUT_BUFFER = 4096;
 /// 日志格式化器时间匹配格式
+#ifndef SESE_RECORD_TIME_PATTERN
 constexpr static const char *RECORD_DEFAULT_TIME_PATTERN = TIME_SHORT_PATTERN;
+#else
+constexpr static const char *RECORD_DEFAULT_TIME_PATTERN = SESE_RECORD_TIME_PATTERN;
+#endif
 /// 日志格式化器匹配格式
+#ifndef SESE_RECORD_TEXT_PATTERN
 constexpr static const char *RECORD_DEFAULT_TEXT_PATTERN = "c lv fn:li tn:th> m\n";
+#else
+constexpr static const char *RECORD_DEFAULT_TEXT_PATTERN = SESE_RECORD_TEXT_PATTERN;
+#endif
 /// 日志输出文件名称匹配模式
 constexpr static const char *RECORD_DEFAULT_FILE_TIME_PATTERN = "yyyyMMdd HHmmssff";
 /// 异步日志器缓冲区大小
@@ -73,7 +81,7 @@ constexpr static const size_t RECORD_BUFFER_SIZE = 4096;
 constexpr static const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024;
 
 /// 是否启用调试模式
-#ifdef SESE_DEBUG
+#ifdef SESE_IS_DEBUG
 constexpr static const bool ENABLE_TEST = true;
 #else
 constexpr static const bool ENABLE_TEST = false;
