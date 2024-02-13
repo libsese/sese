@@ -73,7 +73,11 @@ constexpr static const size_t RECORD_BUFFER_SIZE = 4096;
 constexpr static const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024;
 
 /// 是否启用调试模式
+#ifdef SESE_DEBUG
 constexpr static const bool ENABLE_TEST = true;
+#else
+constexpr static const bool ENABLE_TEST = false;
+#endif
 
 /// 定时器时间轮轮片数
 constexpr static const size_t TIMER_WHEEL_NUMBER = 30;

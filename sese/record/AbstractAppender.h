@@ -35,6 +35,8 @@ public:
 
     [[nodiscard]] Level getLevel() const noexcept { return level; }
 
+    void setLevel(Level lv) noexcept { this->level = lv; }
+
 protected:
     /// 输出阈值
     Level level = Level::DEBUG;

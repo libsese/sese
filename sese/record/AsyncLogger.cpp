@@ -26,24 +26,23 @@ AsyncLogger::~AsyncLogger() noexcept {
 
 void AsyncLogger::log(const Event::Ptr &event) noexcept {
     std::unique_lock locker(mutex);
-    // 内建控制台输出地不对日志等级做任何限制
-    // if (builtInAppender->getLevel() <= event->getLevel()) {
-    std::string content = formatter->dump(event);
-    if (currentBuffer->getWriteableSize() > content.length()) {
-        currentBuffer->write(content.data(), content.length());
-    } else {
-        buffer2Ready.push_back(currentBuffer);
-
-        if (nextBuffer) {
-            currentBuffer = nextBuffer;
-            nextBuffer = nullptr;
+    if (builtInAppender->getLevel() <= event->getLevel()) {
+        std::string content = formatter->dump(event);
+        if (currentBuffer->getWriteableSize() > content.length()) {
+            currentBuffer->write(content.data(), content.length());
         } else {
-            currentBuffer = new io::FixedBuilder(RECORD_BUFFER_SIZE);
+            buffer2Ready.push_back(currentBuffer);
+
+            if (nextBuffer) {
+                currentBuffer = nextBuffer;
+                nextBuffer = nullptr;
+            } else {
+                currentBuffer = new io::FixedBuilder(RECORD_BUFFER_SIZE);
+            }
+            currentBuffer->write(content.data(), content.length());
+            conditionVariable.notify_one();
         }
-        currentBuffer->write(content.data(), content.length());
-        conditionVariable.notify_one();
     }
-    // }
 }
 
 void AsyncLogger::dump(const void *buffer, size_t length) noexcept {

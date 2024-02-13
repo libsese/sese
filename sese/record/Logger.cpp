@@ -13,6 +13,11 @@ namespace sese::record {
 Logger::Logger() noexcept {
     formatter = std::make_shared<SimpleFormatter>();
     builtInAppender = std::make_shared<ConsoleAppender>();
+#ifdef SESE_DEBUG
+    builtInAppender->setLevel(sese::record::Level::DEBUG);
+#else
+    builtInAppender->setLevel(sese::record::Level::INFO);
+#endif
 }
 
 void Logger::addAppender(const AbstractAppender::Ptr &appender) noexcept {
@@ -33,28 +38,27 @@ void Logger::removeAppender(const AbstractAppender::Ptr &appender) noexcept {
 
 void Logger::log(const Event::Ptr &event) noexcept {
     std::string content = formatter->dump(event);
-    // 内建控制台输出地不对日志等级做任何限制
-    // if (builtInAppender->getLevel() <= event->getLevel()) {
-    setbuf(stdout, nullptr);
-    // 此处逻辑本身就是完备的
-    switch (event->getLevel()) { // GCOVR_EXCL_LINE
-        case Level::DEBUG:
-            ConsoleAppender::setDebugColor();
-            break;
-        case Level::INFO:
-            ConsoleAppender::setInfoColor();
-            break;
-        case Level::WARN:
-            ConsoleAppender::setWarnColor();
-            break;
-        case Level::ERR:
-            ConsoleAppender::setErrorColor();
-            break;
+    if (builtInAppender->getLevel() <= event->getLevel()) {
+        setbuf(stdout, nullptr);
+        // 此处逻辑本身就是完备的
+        switch (event->getLevel()) {
+            case Level::DEBUG:
+                ConsoleAppender::setDebugColor();
+                break;
+            case Level::INFO:
+                ConsoleAppender::setInfoColor();
+                break;
+            case Level::WARN:
+                ConsoleAppender::setWarnColor();
+                break;
+            case Level::ERR:
+                ConsoleAppender::setErrorColor();
+                break;
+        }
+        builtInAppender->dump(content.c_str(), content.length());
+        ConsoleAppender::setCleanColor();
+        fflush(stdout);
     }
-    builtInAppender->dump(content.c_str(), content.length());
-    ConsoleAppender::setCleanColor();
-    fflush(stdout);
-    // }
 
     for (auto &appender: appenderVector) {
         if (appender->getLevel() <= event->getLevel()) {
