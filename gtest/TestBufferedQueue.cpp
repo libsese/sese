@@ -40,8 +40,8 @@ TEST(TestBufferedQueue, NN) {
         auto time = watch.stop();
         SESE_INFO("time cost: %zu ms", static_cast<size_t>(time.getTotalMilliseconds()));
     };
-    sese::Thread thread3(proc2, "1");
-    sese::Thread thread4(proc2, "3/50002");
+    sese::Thread thread3(proc2, "consumer1");
+    sese::Thread thread4(proc2, "consumer2");
 
     thread1.start();
     thread2.start();
