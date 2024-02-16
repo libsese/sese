@@ -1,3 +1,8 @@
+/// \file BufferedQueue.h
+/// \brief 缓存队列
+/// \author kaoru
+/// \date 2024年2月16日
+
 #pragma once
 
 #include <queue>
