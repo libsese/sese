@@ -43,9 +43,7 @@ public:
 
 private:
     void swap() {
-        auto &&tmp = writeQueue;
-        writeQueue = readQueue;
-        readQueue = writeQueue;
+        std::swap(q1, q2);
     }
 
 private:
