@@ -9,8 +9,7 @@
 		"cmake.configureArgs": [
 			"-DSESE_BUILD_TEST=ON",
             "-DSESE_RECORD_TIME_PATTERN=\"yyyy-MM-dd hh::mm:ss\"",
-            "-DSESE_RECORD_TEXT_PATTERN=\"c lv m\\n\"",
-			"-DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            "-DSESE_RECORD_TEXT_PATTERN=\"c lv m\\n\""
 		],
 		"cmake.configureSettings": {
 			"CMAKE_MAKE_PROGRAM": "ninja"
