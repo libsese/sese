@@ -202,8 +202,10 @@ install(
 install(
         DIRECTORY "${CMAKE_CURRENT_LIST_DIR}"
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
-        FILES_MATCHING PATTERN "*.h"
-        EXCLUDE PATTERN "${CMAKE_CURRENT_LIST_DIR}/internal"
+        FILES_MATCHING
+        PATTERN "*.h"
+        PATTERN "*.hpp"
+        PATTERN "${CMAKE_CURRENT_LIST_DIR}/internal" EXCLUDE
 )
 
 install(

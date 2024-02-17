@@ -7,7 +7,8 @@
 	"settings": {
 		"cmake.configureArgs": [
 			"-DSESE_BUILD_TEST=ON",
-            "-DSESE_USE_APT=ON"
+            "-DSESE_USE_APT=ON",
+            "-DBUILD_SHARED_LIBS=ON"
 		],
 		"cmake.configureSettings": {
 			"CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
