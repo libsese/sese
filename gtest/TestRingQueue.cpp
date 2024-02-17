@@ -73,18 +73,18 @@ TEST(TestRingQueue, MutilThread) {
     const auto total = 4000;
     RingQueue<int, 500> queue;
 
-    std::mutex mutex1;
+    std::mutex mutex;
     auto proc1 = [&] {
         sese::StopWatch watch;
         for (int i = 0; i < total / 2;) {
-            mutex1.lock();
+            mutex.lock();
             if (!queue.full()) {
                 queue.push(i);
                 i += 1;
             } else  {
                 SESE_DEBUG("full hit");
             }
-            mutex1.unlock();
+            mutex.unlock();
         }
         auto time = watch.stop();
         SESE_INFO("time cost: %zu ms", static_cast<size_t>(time.getTotalMilliseconds()));
@@ -92,12 +92,11 @@ TEST(TestRingQueue, MutilThread) {
     sese::Thread thread1(proc1, "producer1");
     sese::Thread thread2(proc1, "producer2");
 
-    std::mutex mutex2;
     auto times = 0;
     auto proc2 = [&] {
         sese::StopWatch watch;
         for (int i = 0; i < total / 2;) {
-            mutex2.lock();
+            mutex.lock();
             if (!queue.empty()) {
                 queue.pop();
                 i += 1;
@@ -105,7 +104,7 @@ TEST(TestRingQueue, MutilThread) {
             } else {
                 SESE_DEBUG("empty hit");
             }
-            mutex2.unlock();
+            mutex.unlock();
         }
         auto time = watch.stop();
         SESE_INFO("time cost: %zu ms", static_cast<size_t>(time.getTotalMilliseconds()));
