@@ -15,7 +15,7 @@ apt build-dep .
 对于 macOS:
 
 ```bash
-brew install openssl libarchive googletest
+brew install openssl libarchive googletest sqlite3 mysql-client mysql libpq
 ```
 
 通常的配置步骤:

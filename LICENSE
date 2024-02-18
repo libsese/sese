@@ -241,3 +241,19 @@ subject to the terms and conditions of the following licenses:
 - libsese/sese-archive
     Project URL: https://github.com/libsese/sese-archive
     License: Apache-2.0 License
+
+- libsese/sese-db
+    Project URL: https://github.com/libsese/sese-db
+    License: Apache-2.0 License
+
+- sqlite
+    Project URL: https://sqlite.org/index.html
+    License: No License
+
+- mysql-connector-c
+    Project URL: https://www.mysql.com/
+    License: MySQL License(https://www.mysql.com/about/legal/licensing/oem/)
+
+- postgres
+    Project URL: https://www.postgresql.org/
+    License: PostgreSQL License

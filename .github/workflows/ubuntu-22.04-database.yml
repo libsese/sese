@@ -1,0 +1,65 @@
+name: ubuntu-database
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-db:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies(pip-ci)
+        run: pip install -r ${{ github.workspace }}/ci/requirements.txt
+
+      - name: Install Dependencies(pip-scripts)
+        run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
+
+      - name: Check deps
+        working-directory: ${{ github.workspace }}
+        run: sudo apt build-dep .
+
+      - name: Configure CMake
+        working-directory: ${{ github.workspace }}
+        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -Bbuild
+
+      - name: Build
+        working-directory: ${{ github.workspace }}
+        run: cmake --build build --target TestPostgres TestSqlite TestMaria
+
+      - name: Run Sqlite Scripts
+        working-directory: ${{ github.workspace }}
+        run: |
+          mkdir docker/tmp
+          sqlite3 docker/tmp/db_test.db < docker/sqlite_dump.sql
+
+      - name: TestSqlite
+        working-directory: ${{ github.workspace }}
+        run: build/gtest-db/TestSqlite
+
+      - name: Services up
+        working-directory: ${{ github.workspace }}/docker
+        run: |
+          sudo docker-compose up -d mariadb postgresql
+          sleep 5
+
+      - name: TestMaria
+        working-directory: ${{ github.workspace }}
+        run: build/gtest-db/TestMaria
+
+      - name: TestPostgres
+        working-directory: ${{ github.workspace }}
+        run: build/gtest-db/TestPostgres
+
+      - name: Services down
+        working-directory: ${{ github.workspace }}/docker
+        run: sudo docker-compose down

@@ -5,20 +5,24 @@ cmake_minimum_required(VERSION 3.13)
 # https://cmake.org/cmake/help/latest/policy/CMP0048.html
 cmake_policy(SET CMP0048 NEW)
 
-option(SESE_USE_BREW "use the homebrew packages control" OFF)
-option(SESE_USE_APT "use the apt packages control" OFF)
+option(SESE_USE_NATIVE_MANAGER "use the unix-like packages control" OFF)
 option(SESE_BUILD_TEST "build unit test targets" OFF)
 option(SESE_AUTO_VCPKG "auto find vcpkg and include toolchain" OFF)
+option(SESE_DB_USE_SQLITE "add sqlite support" ON)
+option(SESE_DB_USE_MARIADB "add mariadb and mysql support" OFF)
+option(SESE_DB_USE_POSTGRES "add postgresql support" OFF)
 
 include(cmake/MiniSeseTools.cmake)
 
-sese_auto_enable_feature(SESE_BUILD_TEST tests)
+sese_auto_enable_feature(SESE_BUILD_TEST "tests")
+sese_auto_enable_feature(SESE_DB_USE_SQLITE "sqlite3")
+sese_auto_enable_feature(SESE_DB_USE_MARIADB "mysql")
+sese_auto_enable_feature(SESE_DB_USE_POSTGRES "psql")
 
 if (WIN32 OR SESE_AUTO_VCPKG)
     sese_auto_detect_triplet()
     sese_auto_find_vcpkg()
 endif ()
-
 
 project(sese-core VERSION 1.3.4)
 
@@ -34,7 +38,8 @@ if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
     get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 endif ()
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug" OR ${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebugInfo")
+    add_definitions("-DSESE_IS_DEBUG")
     if (WIN32)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
         # for sanitizer
@@ -65,15 +70,12 @@ add_definitions("-DSESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
 add_definitions("-DPROJECT_PATH=\"${CMAKE_CURRENT_LIST_DIR}\"")
 add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
-if (${CMAKE_BUILD_TYPE} STREQUAL "Debug" OR ${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebugInfo")
-    add_definitions("-DSESE_IS_DEBUG")
-endif ()
-
 add_subdirectory(sese)
 
 if (SESE_BUILD_TEST)
     enable_testing()
     add_subdirectory(gtest)
+    add_subdirectory(gtest-db)
     add_subdirectory(demo/echo-server)
     add_subdirectory(demo/http-client)
     add_subdirectory(demo/json2yml)

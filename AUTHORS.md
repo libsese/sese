@@ -1,11 +1,10 @@
-# 贡献者
+# AUTHORS
 
-此列表用于展示和记录为此项目做出过贡献的开发者。
+This list includes individuals who have contributed code and maintained this project.  
 
-如有缺漏，请联系以下地址。
+If there are any omissions, please contact the address below.
 
-> mail: shiinasama2001@gmail.com
-
----
+> mail: shiina_kaoru@outlook.com
 
 - SHIINASAMA
+- DreamerQcl
