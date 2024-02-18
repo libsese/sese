@@ -150,8 +150,8 @@ const char *sese::db::impl::PostgresPreparedStatementImpl::getLastErrorMessage()
 
 bool sese::db::impl::PostgresPreparedStatementImpl::getColumnType(uint32_t index, sese::db::MetadataType &type) noexcept {
     auto meta = PQdescribePrepared(conn, stmtName.c_str());
-    if (meta == nullptr || PQnfields(meta) <= index) {
-        return -1;
+    if (meta == nullptr || PQnfields(meta) <= static_cast<int>(index)) {
+        return false;
     }
     auto oid = PQftype(meta, static_cast<int>(index));
     switch (oid) {
@@ -197,7 +197,7 @@ bool sese::db::impl::PostgresPreparedStatementImpl::getColumnType(uint32_t index
 
 int64_t sese::db::impl::PostgresPreparedStatementImpl::getColumnSize(uint32_t index) noexcept {
     auto meta = PQdescribePrepared(conn, stmtName.c_str());
-    if (meta == nullptr || PQnfields(meta) <= index) {
+    if (meta == nullptr || PQnfields(meta) <= static_cast<int>(index)) {
         return -1;
     }
     return PQfsize(meta, static_cast<int>(index));

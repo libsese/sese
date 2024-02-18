@@ -193,7 +193,7 @@ const char *impl::SqlitePreparedStatementImpl::getLastErrorMessage() const noexc
 }
 
 bool impl::SqlitePreparedStatementImpl::getColumnType(uint32_t index, MetadataType &type) noexcept {
-    if (sqlite3_column_count(stmt) <= index) {
+    if (sqlite3_column_count(stmt) <= static_cast<int>(index)) {
         return false;
     }
 
@@ -226,7 +226,7 @@ bool impl::SqlitePreparedStatementImpl::getColumnType(uint32_t index, MetadataTy
 }
 
 int64_t impl::SqlitePreparedStatementImpl::getColumnSize(uint32_t index) noexcept {
-    if (sqlite3_column_count(stmt) <= index) {
+    if (sqlite3_column_count(stmt) <= static_cast<int>(index)) {
         return -1;
     }
 

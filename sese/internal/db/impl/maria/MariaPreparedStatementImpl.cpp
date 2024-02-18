@@ -140,7 +140,7 @@ void sese::db::impl::MariaPreparedStatementImpl::reinterpret(MYSQL_BIND *target,
     }
     target->buffer = malloc(size);
     target->buffer_type = expeceType;
-    target->buffer_length = size;
+    target->buffer_length = static_cast<decltype(target->buffer_length)>(size);
     memcpy(target->buffer, buffer, size);
 }
 
