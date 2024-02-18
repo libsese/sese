@@ -47,6 +47,8 @@ brew install openssl libarchive googletest sqlite3 mysql-client mysql libpq
   cmake -DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake -DSESE_BUILD_TEST=ON
   ```
 
+  如果你不希望使用 vcpkg 的清单模式，你可以将 VCPKG_MANIFEST_MODE 设置为 OFF 以强制使用经典模式。
+
 - 代码规范
 
   风格、格式、检查等配置应当是被启用的，项目中的有 **.clang-format** / **.clang-tidy** / **.editconfig** 等。
