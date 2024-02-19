@@ -7,7 +7,9 @@
 
 using namespace sese;
 
-int system::StackInfo::WILL_SKIP = 1;
+int system::StackInfo::getSkipOffset() {
+    return 1;
+}
 
 inline size_t findPos2(const char *buffer, size_t pos) {
     size_t count = 0;
@@ -27,7 +29,7 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
     int frames = ::backtrace(array, limit);
     char **strings = backtrace_symbols(array, limit);
     for (auto &&i: sese::Range<int>(skip, frames - 1)) {
-        /* 
+        /*
          * "1   TestStackInfo                       0x000000010001dcc1 _ZN4sese6system9StackInfoC1Eii + 33"
          *                                         ^                  ^                               ^
          *                                        pos2               pos3                            pos1

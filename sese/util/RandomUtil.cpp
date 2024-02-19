@@ -95,3 +95,7 @@ std::string sese::RandomUtil::nextString(size_t length, bool upper, bool lower, 
 
     return res;
 }
+
+std::random_device &sese::RandomUtil::getDevInstance() noexcept {
+    return dev;
+}

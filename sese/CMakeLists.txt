@@ -173,28 +173,6 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     else ()
         target_compile_options(Core PRIVATE "/D_HAS_EXCEPTIONS=0")
     endif ()
-
-    if (${CMAKE_GENERATOR} MATCHES "Ninja")
-        # 单配置
-        add_custom_command(
-                TARGET
-                Core
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/gtest
-        )
-    else ()
-        # 多配置
-        add_custom_command(
-                TARGET
-                Core
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/gtest/$<CONFIG>
-        )
-    endif ()
 endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
@@ -237,7 +215,6 @@ set_target_properties(
 set_target_properties(
         Plugin PROPERTIES
         CXX_STANDARD 17
-        WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
 
 target_compile_definitions(Core PRIVATE "SESE_MAJOR_VERSION=\"${PROJECT_VERSION_MAJOR}\"")

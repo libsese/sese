@@ -5,7 +5,9 @@
 
 using namespace sese;
 
-int system::StackInfo::WILL_SKIP = 1;
+int system::StackInfo::getSkipOffset() {
+    return 1;
+}
 
 system::StackInfo::StackInfo(int limit, int skip) noexcept {
     void **pStack = (void **) malloc(sizeof(void *) * limit);

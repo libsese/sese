@@ -35,7 +35,7 @@ if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
     get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 endif ()
 
-if (${CMAKE_BUILD_TYPE} STREQUAL "Debug" OR ${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebugInfo")
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebugInfo")
     add_definitions("-DSESE_IS_DEBUG")
     if (WIN32)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")

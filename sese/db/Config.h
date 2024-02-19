@@ -4,11 +4,8 @@
 /// \version 0.1
 #pragma once
 
-#ifdef _WIN32
-#define SESE_DB_API __declspec(dllexport)
-#else
+// 已弃用
 #define SESE_DB_API
-#endif
 
 #ifdef _MSC_VER
 #pragma warning(disable : 4251)

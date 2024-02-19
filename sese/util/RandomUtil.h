@@ -30,6 +30,8 @@ public:
 
     static uint64_t nextUnsignedInt64();
 
+    static std::random_device &getDevInstance() noexcept;
+
 private:
     static std::string nextString(size_t length, bool upper, bool lower, bool digit, bool symbol);
 
@@ -44,7 +46,7 @@ private:
 
 template<class ReturnValue>
 inline ReturnValue sese::RandomUtil::next() {
-    return static_cast<ReturnValue>(dev());
+    return static_cast<ReturnValue>(getDevInstance()());
 }
 
 template<class ReturnValue>
@@ -52,7 +54,7 @@ inline ReturnValue sese::RandomUtil::next(ReturnValue min, ReturnValue max) {
     auto _min = std::min<ReturnValue>(min, max);
     auto _max = std::max<ReturnValue>(min, max);
     auto range = _max - _min;
-    auto tmp = dev();
+    auto tmp = getDevInstance()();
     return static_cast<ReturnValue>(tmp % range) + _min;
 }
 

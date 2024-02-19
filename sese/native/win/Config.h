@@ -37,12 +37,8 @@
 /// C++ 版本标识符
 #define SESE_CXX_STANDARD _MSVC_LANG
 
-#if defined(_MSC_VER)
-/// 可导出类型标识符
-#define API __declspec(dllexport)
-#else
+/// 可导出类型标识符 - 现在已弃用
 #define API
-#endif
 
 /// pid_t 格式化占位符
 #define PRIdTid "u"

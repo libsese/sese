@@ -11,7 +11,7 @@ int sese::Exception::WILL_SKIP_OFFSET = 2;
 
 sese::Exception::Exception(const char *message)
     : NativeException(message) {
-    stackInfo = new system::StackInfo(8, sese::system::StackInfo::WILL_SKIP + WILL_SKIP_OFFSET);
+    stackInfo = new system::StackInfo(8, sese::system::StackInfo::getSkipOffset() + WILL_SKIP_OFFSET);
 }
 
 sese::Exception::~Exception() {

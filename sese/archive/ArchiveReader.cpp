@@ -29,7 +29,7 @@ bool ArchiveReader::extract(const std::filesystem::path &src_path, const std::fi
     auto dest = dest_path.string();
 
     struct archive *a = archive_read_new();
-    archive_read_support_compression_all(a);
+    // archive_read_support_compression_all(XX);
     archive_read_support_filter_all(a);
     archive_read_support_format_all(a);
 
@@ -141,7 +141,7 @@ int ArchiveReader::setOptions(const std::string &opt) {
 }
 
 bool ArchiveReader::extract(const ArchiveReader::ExtractCallback &callback) {
-    archive_read_support_compression_all(XX);
+    // archive_read_support_compression_all(XX);
     archive_read_support_filter_all(XX);
     archive_read_support_format_all(XX);
     if (ARCHIVE_OK != archive_read_open(
