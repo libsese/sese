@@ -11,7 +11,8 @@
             "-DSESE_DB_USE_MARIADB=ON",
             "-DSESE_DB_USE_POSTGRES=ON",
             "-DSESE_RECORD_TIME_PATTERN=\"yyyy-MM-dd hh::mm:ss\"",
-            "-DSESE_RECORD_TEXT_PATTERN=\"c lv m\\n\""
+            "-DSESE_RECORD_TEXT_PATTERN=\"c lv m\\n\"",
+            "-DBUILD_SHARED_LIBS=ON"
 		],
 		"cmake.configureSettings": {
 			"CMAKE_MAKE_PROGRAM": "ninja"

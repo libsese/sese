@@ -25,11 +25,8 @@ if (WIN32 OR SESE_AUTO_VCPKG)
 endif ()
 
 project(sese-core VERSION 1.3.4)
-
-set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(SESE_REPO_HASH "UNKNOWN")
 set(SESE_REPO_BRANCH "UNKNOWN")
 if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
@@ -55,19 +52,7 @@ if (${CMAKE_BUILD_TYPE} STREQUAL "Debug" OR ${CMAKE_BUILD_TYPE} STREQUAL "RelWit
     endif ()
 endif ()
 
-# message(STATUS "==================== SESE-CORE ====================")
-# message(STATUS "Project version: ${PROJECT_VERSION}")
-# message(STATUS "C STANDARD VERSION: ${CMAKE_C_STANDARD}")
-# message(STATUS "CXX STANDARD VERSION: ${CMAKE_CXX_STANDARD}")
-# message(STATUS "Repository branch: ${SESE_REPO_BRANCH}")
-# message(STATUS "Repository hash: ${SESE_REPO_HASH}")
-
-add_definitions("-DSESE_MAJOR_VERSION=\"${PROJECT_VERSION_MAJOR}\"")
-add_definitions("-DSESE_MINOR_VERSION=\"${PROJECT_VERSION_MINOR}\"")
-add_definitions("-DSESE_PATCH_VERSION=\"${PROJECT_VERSION_PATCH}\"")
-add_definitions("-DSESE_REPO_HASH=\"${SESE_REPO_HASH}\"")
-add_definitions("-DSESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
-add_definitions("-DPROJECT_PATH=\"${CMAKE_CURRENT_LIST_DIR}\"")
+add_definitions("-DPROJECT_PATH=\"${PROJECT_SOURCE_DIR}\"")
 add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
 add_subdirectory(sese)

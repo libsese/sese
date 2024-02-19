@@ -6,4 +6,5 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     bash -c 'yes | unminimize'
 
 RUN apt-get update -y && \
-    apt-get install -y git gcc g++ cmake ninja-build clangd python3 libgtest-dev libarchive-dev libssl-dev zlib1g-dev libsqlite3-dev libmysqlclient-dev libpq-dev
+    apt-get install -y git gcc g++ cmake ninja-build clangd python3 libgtest-dev libarchive-dev libssl-dev zlib1g-dev libsqlite3-dev libmysqlclient-dev libpq-dev && \
+    rm -rf /var/lib/apt/lists/*

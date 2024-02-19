@@ -12,5 +12,5 @@ charset = utf-8
 indent_style = space
 indent_size = 2
 
-[*.{sh,bash,sql}]
+[*.{sh,bash}]
 end_of_line = lf

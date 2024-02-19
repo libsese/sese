@@ -2,7 +2,7 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
     set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
-endif()
+endif ()
 
 find_package(LibArchive REQUIRED)
 find_package(OpenSSL REQUIRED)
@@ -20,7 +20,7 @@ file(GLOB_RECURSE ARCHIVE_SRC "${CMAKE_CURRENT_LIST_DIR}/archive/*.cpp" "${CMAKE
 file(GLOB_RECURSE CONCURRENT_SRC "${CMAKE_CURRENT_LIST_DIR}/concurrent/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/concurrent/*.h")
 file(GLOB_RECURSE DB_SRC "${CMAKE_CURRENT_LIST_DIR}/db/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/db/*.h")
 file(GLOB_RECURSE EVENT_SRC "${CMAKE_CURRENT_LIST_DIR}/event/*.h")
-file(GLOB_RECURSE RECORD_SRC  "${CMAKE_CURRENT_LIST_DIR}/record/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/record/*.h")
+file(GLOB_RECURSE RECORD_SRC "${CMAKE_CURRENT_LIST_DIR}/record/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/record/*.h")
 file(GLOB_RECURSE CONVERT_SRC "${CMAKE_CURRENT_LIST_DIR}/convert/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/convert/*.h")
 file(GLOB_RECURSE IO_SRC "${CMAKE_CURRENT_LIST_DIR}/io/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/io/*.h")
 file(GLOB_RECURSE THREAD_SRC "${CMAKE_CURRENT_LIST_DIR}/thread/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/thread/*.h")
@@ -92,15 +92,15 @@ if (SESE_DB_USE_MARIADB)
             target_link_libraries(Core PRIVATE ${MYSQL_LIB})
         elseif (CMAKE_SYSTEM_NAME MATCHES "Darwin")
             find_path(MYSQL_INCLUDE_DIR mysql.h
-                /usr/local/include/mysql
-                /usr/local/mysql/include
-                /usr/include/mysql
+                    /usr/local/include/mysql
+                    /usr/local/mysql/include
+                    /usr/include/mysql
             )
             find_library(
-                MYSQL_LIB
-                NAME mysqlclient
-                PATHS /usr/lib /usr/local/lib /usr/local/mysql/lib
-                PATH_SUFFIXES mysql
+                    MYSQL_LIB
+                    NAME mysqlclient
+                    PATHS /usr/lib /usr/local/lib /usr/local/mysql/lib
+                    PATH_SUFFIXES mysql
             )
 
             message(STATUS "MYSQL_INCLUDE_DIR :${MYSQL_INCLUDE_DIR}")
@@ -226,36 +226,42 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 endif ()
 
-set_target_properties(Core
-        PROPERTIES
+set_target_properties(
+        Core PROPERTIES
         CXX_STANDARD 17
         OUTPUT_NAME "sese.core"
         PREFIX ""
         WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
 
-target_link_libraries(Core PUBLIC
-        Plugin
+set_target_properties(
+        Plugin PROPERTIES
+        CXX_STANDARD 17
+        WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
 
-target_link_libraries(Core PRIVATE
-        LibArchive::LibArchive
-        OpenSSL::Crypto
-        OpenSSL::SSL
-        ZLIB::ZLIB
-)
+target_compile_definitions(Core PRIVATE "SESE_MAJOR_VERSION=\"${PROJECT_VERSION_MAJOR}\"")
+target_compile_definitions(Core PRIVATE "SESE_MINOR_VERSION=\"${PROJECT_VERSION_MINOR}\"")
+target_compile_definitions(Core PRIVATE "SESE_PATCH_VERSION=\"${PROJECT_VERSION_PATCH}\"")
+target_compile_definitions(Core PRIVATE "SESE_REPO_HASH=\"${SESE_REPO_HASH}\"")
+target_compile_definitions(Core PRIVATE "SESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
+
+target_link_libraries(Core PUBLIC Plugin)
+target_link_libraries(Core PRIVATE LibArchive::LibArchive)
+target_link_libraries(Core PRIVATE OpenSSL::Crypto OpenSSL::SSL)
+target_link_libraries(Core PRIVATE ZLIB::ZLIB)
 
 if (DEFINED SESE_RECORD_TIME_PATTERN)
     target_compile_definitions(
-        Core PRIVATE
-        "SESE_RECORD_TIME_PATTERN=${SESE_RECORD_TIME_PATTERN}"
+            Core PRIVATE
+            "SESE_RECORD_TIME_PATTERN=${SESE_RECORD_TIME_PATTERN}"
     )
 endif ()
 
 if (DEFINED SESE_RECORD_TEXT_PATTERN)
     target_compile_definitions(
-        Core PRIVATE
-        "SESE_RECORD_TEXT_PATTERN=${SESE_RECORD_TEXT_PATTERN}"
+            Core PRIVATE
+            "SESE_RECORD_TEXT_PATTERN=${SESE_RECORD_TEXT_PATTERN}"
     )
 endif ()
 

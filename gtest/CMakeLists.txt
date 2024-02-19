@@ -15,7 +15,6 @@ endif ()
 add_definitions("-DPY_EXECUTABLE=\"${Python3_EXECUTABLE}\"")
 
 file(GLOB TEST_SRC "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
-
 add_executable(
         AllTestInMain
         ${TEST_SRC}
@@ -41,7 +40,7 @@ add_dependencies(AllTestInMain Module)
 
 # TestSharedMemory
 add_executable(Memory.d TestSharedMemory/Memory.d.cpp)
-target_link_libraries(Memory.d Core)
+target_link_libraries(Memory.d PRIVATE Core)
 set_target_properties(
         Memory.d PROPERTIES
         OUTPUT_NAME "Memory.d"
