@@ -58,8 +58,9 @@ public:
     /// \param output 输出流
     void printStacktrace(sese::io::OutputStream *output);
 
+    static int getSkipOffset();
+
 protected:
-    static int WILL_SKIP_OFFSET;
 
     virtual std::string buildStacktrace();
 

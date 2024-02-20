@@ -9,3 +9,5 @@
 *.xml   text eol=crlf
 *.yml   text eol=crlf
 *.in    text eol=crlf
+*.sh    text eol=lf
+*.bash  text eol=lf

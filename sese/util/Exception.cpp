@@ -3,15 +3,17 @@
 
 #include <algorithm>
 
+int sese::Exception::getSkipOffset() {
 #if defined(SESE_PLATFORM_WINDOWS)
-int sese::Exception::WILL_SKIP_OFFSET = 1;
+    return 1;
 #else
-int sese::Exception::WILL_SKIP_OFFSET = 2;
+    return 2;
 #endif
+}
 
 sese::Exception::Exception(const char *message)
     : NativeException(message) {
-    stackInfo = new system::StackInfo(8, sese::system::StackInfo::getSkipOffset() + WILL_SKIP_OFFSET);
+    stackInfo = new system::StackInfo(8, sese::system::StackInfo::getSkipOffset() + getSkipOffset());
 }
 
 sese::Exception::~Exception() {
