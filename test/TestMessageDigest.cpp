@@ -113,7 +113,7 @@ TEST(TestOldMessageDigest, MD5) {
 }
 
 TEST(TestOldMessageDigest, MD5File_0) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-112.txt", "rb");
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/test/Data/checksum-size-112.txt", "rb");
     ASSERT_NE(file, nullptr);
 
     const char *expect = "05055d054939c7b713f9fefec599daa5";
@@ -122,7 +122,7 @@ TEST(TestOldMessageDigest, MD5File_0) {
 }
 
 TEST(TestOldMessageDigest, MD5File_1) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-122.txt", "rb");
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/test/Data/checksum-size-122.txt", "rb");
     ASSERT_NE(file, nullptr);
 
     const char *expect = "c13edc8b492731630ad0a983ef66f292";
@@ -131,7 +131,7 @@ TEST(TestOldMessageDigest, MD5File_1) {
 }
 
 TEST(TestOldMessageDigest, MD5File_2) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-128.txt", "rb");
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/test/Data/checksum-size-128.txt", "rb");
     ASSERT_NE(file, nullptr);
 
     const char *expect = "382b83364eaaebb4770851d9b704457b";
@@ -140,7 +140,7 @@ TEST(TestOldMessageDigest, MD5File_2) {
 }
 
 TEST(TestOldMessageDigest, SHA1File) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-122.txt", "rb");
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/test/Data/checksum-size-122.txt", "rb");
     ASSERT_NE(file, nullptr);
 
     const char *expect = "632baa1212f10189290a79dd109219d501d36aec";
@@ -149,7 +149,7 @@ TEST(TestOldMessageDigest, SHA1File) {
 }
 
 TEST(TestOldMessageDigest, SHA256File) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/checksum-size-122.txt", "rb");
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/test/Data/checksum-size-122.txt", "rb");
     ASSERT_NE(file, nullptr);
 
     const char *expect = "82bbdd6fdd8a848f703ad941ca491938ada0d98c97b45a76162436b04f95a840";

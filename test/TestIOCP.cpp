@@ -64,8 +64,8 @@ TEST(TestIOCP, Server_0) {
 
 TEST(TestIOCP, Server_1) {
     auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
-    servCtx->importCertFile(PROJECT_PATH "/gtest/Data/test-ca.crt");
-    servCtx->importPrivateKeyFile(PROJECT_PATH "/gtest/Data/test-key.pem");
+    servCtx->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
+    servCtx->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
     ASSERT_TRUE(servCtx->authPrivateKey());
 
     auto address = sese::net::IPv4Address::localhost(sese::net::createRandomPort());

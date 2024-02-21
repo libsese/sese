@@ -48,3 +48,5 @@ set_target_properties(
 )
 target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_MEM_D=\"$<TARGET_FILE:Memory.d>\"")
 add_dependencies(AllTestInMain Memory.d)
+
+add_subdirectory(TestDB)

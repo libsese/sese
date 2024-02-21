@@ -14,8 +14,8 @@ TEST(TestSSL, Auth) {
     ASSERT_NE(context, nullptr);
     ASSERT_NE(context->getContext(), nullptr);
 
-    ASSERT_TRUE(context->importCertFile(PROJECT_PATH "/gtest/Data/test-ca.crt"));
-    ASSERT_TRUE(context->importPrivateKeyFile(PROJECT_PATH "/gtest/Data/test-key.pem"));
+    ASSERT_TRUE(context->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt"));
+    ASSERT_TRUE(context->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem"));
     ASSERT_TRUE(context->authPrivateKey());
 }
 
@@ -44,8 +44,8 @@ TEST(TestSSL, Server) {
     auto port = sese::net::createRandomPort();
     auto address = sese::net::IPv4Address::localhost((uint16_t) port);
     auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
-    servCtx->importCertFile(PROJECT_PATH "/gtest/Data/test-ca.crt");
-    servCtx->importPrivateKeyFile(PROJECT_PATH "/gtest/Data/test-key.pem");
+    servCtx->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
+    servCtx->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
     ASSERT_TRUE(servCtx->authPrivateKey());
 
     auto server = sese::security::SecuritySocket(servCtx, sese::net::Socket::Family::IPv4, IPPROTO_IP);
