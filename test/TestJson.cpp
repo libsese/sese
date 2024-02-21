@@ -1,14 +1,14 @@
 #include "gtest/gtest.h"
 
 #include "sese/config/json/JsonUtil.h"
+#include "sese/config/json/Marco.h"
 #include "sese/io/ConsoleOutputStream.h"
 #include "sese/io/FileStream.h"
 #include "sese/io/InputBufferWrapper.h"
-#include "sese/net/rpc/Marco.h"
 
 /// 从文件解析 Json 格式
 TEST(TestJson, FromFile) {
-    auto fileStream = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
+    auto fileStream = sese::io::FileStream::create(PROJECT_PATH "/test/Data/data.json", TEXT_READ_EXISTED);
     auto object = sese::json::JsonUtil::deserialize(fileStream, 3);
     ASSERT_TRUE(object != nullptr);
 
@@ -124,7 +124,7 @@ TEST(TestJson, Setter) {
 #include <sese/config/Json.h>
 
 TEST(TestJson, Value) {
-    auto input = sese::io::FileStream::create(PROJECT_PATH "/gtest/Data/data.json", TEXT_READ_EXISTED);
+    auto input = sese::io::FileStream::create(PROJECT_PATH "/test/Data/data.json", TEXT_READ_EXISTED);
     auto object = sese::Json::parse(input.get(), 4);
     input->close();
     ASSERT_FALSE(object.isNull());

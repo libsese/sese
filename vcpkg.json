@@ -1,9 +1,16 @@
 {
     "name": "sese-core",
-    "version-string": "1.4.0",
+    "version-string": "2.0.0",
     "supports": "x64",
     "license": "Apache-2.0",
     "dependencies": [
+        {
+            "name": "asio",
+            "features": [
+                "openssl"
+            ],
+            "version>=": "1.29.0"
+        },
         {
             "name": "libarchive",
             "version>=": "3.6.2"

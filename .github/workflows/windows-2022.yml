@@ -53,5 +53,5 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/gtest/AllTestInMain
+        run: build/test/AllTestInMain
 

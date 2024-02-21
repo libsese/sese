@@ -42,7 +42,7 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/gtest/AllTestInMain
+        run: build/test/AllTestInMain
 
   test-coverage:
     runs-on: ubuntu-22.04
@@ -75,7 +75,7 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build-coverage/gtest/AllTestInMain
+        run: build-coverage/test/AllTestInMain
 
       - name: Coverage
         working-directory: ${{ github.workspace }}

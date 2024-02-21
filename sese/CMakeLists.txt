@@ -1,13 +1,3 @@
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
-
-if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
-endif ()
-
-find_package(LibArchive REQUIRED)
-find_package(OpenSSL REQUIRED)
-find_package(ZLIB REQUIRED)
-
 add_library(Plugin STATIC
         plugin/BaseClass.h
         plugin/ClassFactory.cpp
@@ -177,31 +167,29 @@ endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(Threads REQUIRED)
+    target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(Core PRIVATE ${CMAKE_DL_LIBS})
 
     file(GLOB_RECURSE NATIVE_LINUX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/linux/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/linux/*.h")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_LINUX_SRC})
 
-    target_compile_options(Plugin PUBLIC "-fPIC")
-
+    target_compile_options(Core PRIVATE "-fno-exceptions")
     target_compile_options(Core PUBLIC "-fPIC")
     target_link_options(Core PUBLIC "-rdynamic")
-
-    target_compile_options(Core PRIVATE "-fno-exceptions")
-    target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
+    target_compile_options(Plugin PUBLIC "-fPIC")
 endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(IOKIT_FRAMEWORK IOKit REQUIRED)
     find_library(CORESERVICES_FRAMEWORK CoreServices REQUIRED)
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
+    target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
     target_compile_options(Plugin PUBLIC "-fPIC")
+    target_compile_options(Core PRIVATE "-fno-exceptions")
 
     file(GLOB_RECURSE NATIVE_DRAWIN_SRC "${CMAKE_CURRENT_LIST_DIR}/native/darwin/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/darwin/*.h")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
-
-    target_compile_options(Core PRIVATE "-fno-exceptions")
-    target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 endif ()
 
 set_target_properties(
@@ -223,10 +211,23 @@ target_compile_definitions(Core PRIVATE "SESE_PATCH_VERSION=\"${PROJECT_VERSION_
 target_compile_definitions(Core PRIVATE "SESE_REPO_HASH=\"${SESE_REPO_HASH}\"")
 target_compile_definitions(Core PRIVATE "SESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
 
-target_link_libraries(Core PUBLIC Plugin)
+find_package(asio CONFIG REQUIRED)
+target_link_libraries(Core PRIVATE asio::asio)
+
+if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
+endif ()
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+find_package(LibArchive REQUIRED)
 target_link_libraries(Core PRIVATE LibArchive::LibArchive)
+
+find_package(OpenSSL REQUIRED)
 target_link_libraries(Core PRIVATE OpenSSL::Crypto OpenSSL::SSL)
+
+find_package(ZLIB REQUIRED)
 target_link_libraries(Core PRIVATE ZLIB::ZLIB)
+
+target_link_libraries(Core PUBLIC Plugin)
 
 if (DEFINED SESE_RECORD_TIME_PATTERN)
     target_compile_definitions(
