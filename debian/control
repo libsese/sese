@@ -12,7 +12,8 @@ Build-Depends: debhelper (>= 11),
                zlib1g-dev,
                libsqlite3-dev,
                libmysqlclient-dev,
-               libpq-dev
+               libpq-dev,
+               libasio-dev
 
 Package: sese-core
 Architecture: any

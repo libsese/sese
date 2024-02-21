@@ -94,7 +94,6 @@ if (SESE_DB_USE_MARIADB)
                     PATHS /usr/lib /usr/local/lib /usr/local/mysql/lib
                     PATH_SUFFIXES mysql
             )
-
             message(STATUS "MYSQL_INCLUDE_DIR :${MYSQL_INCLUDE_DIR}")
             message(STATUS "MYSQL_LIB         :${MYSQL_LIB}")
             if (MYSQL_INCLUDE_DIR AND MYSQL_LIB)
@@ -213,8 +212,20 @@ target_compile_definitions(Core PRIVATE "SESE_PATCH_VERSION=\"${PROJECT_VERSION_
 target_compile_definitions(Core PRIVATE "SESE_REPO_HASH=\"${SESE_REPO_HASH}\"")
 target_compile_definitions(Core PRIVATE "SESE_REPO_BRANCH=\"${SESE_REPO_BRANCH}\"")
 
-find_package(asio CONFIG REQUIRED)
-target_link_libraries(Core PRIVATE asio::asio)
+if (SESE_USE_NATIVE_MANAGER)
+    find_path(
+            ASIO_INCLUDE_DIR asio.hpp
+            /usr/include
+            /usr/local/include
+    )
+    if ("${ASIO_INCLUDE_DIR}" STREQUAL "ASIO_INCLUDE_DIR-NOTFOUND")
+        message(FATAL_ERROR "Could not found asio")
+    endif ()
+    target_include_directories(Core PRIVATE ${ASIO_INCLUDE_DIR})
+else ()
+    find_package(asio CONFIG REQUIRED)
+    target_link_libraries(Core PRIVATE asio::asio)
+endif ()
 
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
     set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")

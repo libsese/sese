@@ -27,7 +27,7 @@ jobs:
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
-        run: brew install openssl libarchive googletest sqlite3 mysql-client mysql libpq
+        run: brew install openssl libarchive googletest sqlite3 mysql-client mysql libpq asio
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
