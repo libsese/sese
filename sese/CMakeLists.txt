@@ -1,3 +1,5 @@
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${PROJECT_SOURCE_DIR}/cmake")
+
 add_library(Plugin STATIC
         plugin/BaseClass.h
         plugin/ClassFactory.cpp
@@ -217,7 +219,6 @@ target_link_libraries(Core PRIVATE asio::asio)
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
     set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
 endif ()
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 find_package(LibArchive REQUIRED)
 target_link_libraries(Core PRIVATE LibArchive::LibArchive)
 
