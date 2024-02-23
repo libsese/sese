@@ -27,6 +27,8 @@ file(GLOB_RECURSE SERVICE_SRC "${CMAKE_CURRENT_LIST_DIR}/service/*.cpp" "${CMAKE
 file(GLOB_RECURSE UNIX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.h")
 file(GLOB_RECURSE RES_SRC "${CMAKE_CURRENT_LIST_DIR}/res/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/res/*.h")
 
+file(GLOB_RECURSE INTERNAL_NET_SRC "${CMAKE_CURRENT_LIST_DIR}/internal/net/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/internal/net/*.h")
+
 add_library(Core
         ${ARCHIVE_SRC}
         ${CONCURRENT_SRC}
@@ -46,6 +48,7 @@ add_library(Core
         ${PLUGIN_SRC}
         ${SERVICE_SRC}
         ${RES_SRC}
+        ${INTERNAL_NET_SRC}
         Config.h
 )
 
@@ -129,6 +132,28 @@ endif ()
 
 if (SESE_BUILD_TEST)
     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
+
+    if (${CMAKE_GENERATOR} MATCHES "Ninja")
+        # 单配置
+        add_custom_command(
+                TARGET
+                Core
+                POST_BUILD
+                COMMAND
+                ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/test
+        )
+    else ()
+        # 多配置
+        add_custom_command(
+                TARGET
+                Core
+                POST_BUILD
+                COMMAND
+                ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/test/$<CONFIG>
+        )
+    endif ()
 endif ()
 
 target_include_directories(
@@ -159,11 +184,11 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     endif ()
     target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
 
-    if (${MINGW})
-        target_compile_options(Core PRIVATE "-fno-exceptions")
-    else ()
-        target_compile_options(Core PRIVATE "/D_HAS_EXCEPTIONS=0")
-    endif ()
+    # if (${MINGW})
+    #     target_compile_options(Core PRIVATE "-fno-exceptions")
+    # else ()
+    #     target_compile_options(Core PRIVATE "/D_HAS_EXCEPTIONS=0")
+    # endif ()
 endif ()
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
@@ -174,7 +199,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     file(GLOB_RECURSE NATIVE_LINUX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/linux/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/linux/*.h")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_LINUX_SRC})
 
-    target_compile_options(Core PRIVATE "-fno-exceptions")
+    # target_compile_options(Core PRIVATE "-fno-exceptions")
     target_compile_options(Core PUBLIC "-fPIC")
     target_link_options(Core PUBLIC "-rdynamic")
     target_compile_options(Plugin PUBLIC "-fPIC")
@@ -186,8 +211,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
+    # target_compile_options(Core PRIVATE "-fno-exceptions")
     target_compile_options(Plugin PUBLIC "-fPIC")
-    target_compile_options(Core PRIVATE "-fno-exceptions")
 
     file(GLOB_RECURSE NATIVE_DRAWIN_SRC "${CMAKE_CURRENT_LIST_DIR}/native/darwin/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/darwin/*.h")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
