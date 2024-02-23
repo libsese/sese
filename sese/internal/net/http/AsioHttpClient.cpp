@@ -26,10 +26,6 @@ std::string AsioHttpClient::getLastErrorString() {
 
 bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
     auto urlResult = RequestParser::parse(url);
-    if (urlResult.address == nullptr) {
-        return false;
-    }
-
     req = std::move(urlResult.request);
     if (!proxy.empty()) {
         auto proxyResult = RequestParser::parse(proxy);
@@ -42,6 +38,9 @@ bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
         address = std::move(proxyResult.address);
         ssl = sese::strcmpDoNotCase("https", proxyResult.url.getProtocol().c_str());
     } else {
+        if (urlResult.address == nullptr) {
+            return false;
+        }
         address = std::move(urlResult.address);
         ssl = sese::strcmpDoNotCase("https", urlResult.url.getProtocol().c_str());
     }
