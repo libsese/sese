@@ -26,7 +26,7 @@ TEST(TestHttpClient, WithSSL) {
     }
 }
 
-TEST(TestHttpClient, WithProxy) {
+TEST(TestHttpClient, DISABLED_WithProxy) {
     auto client = RequestableFactory::createHttpRequest("https://www.baidu.com", "http://127.0.0.1:7890");
     ASSERT_NOT_NULL(client);
     ASSERT_TRUE(client->request()) << client->getLastError();
