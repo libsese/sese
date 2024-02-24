@@ -1,19 +1,19 @@
 #include "sese/config/yaml/YamlTypes.h"
 
 sese::yaml::Data::Data(sese::yaml::DataType type) noexcept
-    : type(type) {
+    : TYPE(type) {
 }
 
 sese::yaml::ObjectData::ObjectData() noexcept
-    : Data(DataType::ObjectData) {
+    : Data(DataType::OBJECT_DATA) {
 }
 
 sese::yaml::ArrayData::ArrayData() noexcept
-    : Data(DataType::ArrayData) {
+    : Data(DataType::ARRAY_DATA) {
 }
 
 sese::yaml::BasicData::BasicData() noexcept
-    : Data(DataType::BasicData) {
+    : Data(DataType::BASIC_DATA) {
 }
 
 void sese::yaml::ObjectData::set(const std::string &key, const sese::yaml::Data::Ptr &data) noexcept {

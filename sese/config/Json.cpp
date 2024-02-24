@@ -174,9 +174,9 @@ void Json::streamifyObject(io::OutputStream *out, const Value::Dict &object) {
         out->write(name.c_str(), name.length());
         out->write("\":", 2);
 
-        if (data->getType() == Value::Type::Dict) {
+        if (data->getType() == Value::Type::DICT) {
             streamifyObject(out, data->getDict());
-        } else if (data->getType() == Value::Type::List) {
+        } else if (data->getType() == Value::Type::LIST) {
             streamifyArray(out, data->getList());
         } else {
             streamifyBasic(out, data);
@@ -195,9 +195,9 @@ void Json::streamifyArray(io::OutputStream *out, const Value::List &array) {
             out->write(",", 1);
         }
 
-        if (data.getType() == Value::Type::Dict) {
+        if (data.getType() == Value::Type::DICT) {
             streamifyObject(out, data.getDict());
-        } else if (data.getType() == Value::Type::List) {
+        } else if (data.getType() == Value::Type::LIST) {
             streamifyArray(out, data.getList());
         } else {
             streamifyBasic(out, &data);

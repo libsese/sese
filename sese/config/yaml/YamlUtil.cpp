@@ -8,33 +8,33 @@
 #endif
 
 sese::yaml::Data::Ptr sese::yaml::YamlUtil::deserialize(InputStream *input, size_t level) noexcept {
-    TokensQueue tokensQueue;
+    TokensQueue tokens_queue;
     while (true) {
         decltype(auto) line = sese::yaml::YamlUtil::getLine(input);
-        if (std::get<1>(line).length() == 0) {
+        if (std::get<1>(line).empty()) {
             break;
         }
         auto tokens = sese::yaml::YamlUtil::tokenizer(std::get<1>(line));
-        tokensQueue.emplace(std::get<0>(line), tokens);
+        tokens_queue.emplace(std::get<0>(line), tokens);
     }
 
-    decltype(auto) top = tokensQueue.front();
-    decltype(auto) topTokens = std::get<1>(top);
-    if (topTokens.empty()) return nullptr; // GCOVR_EXCL_LINE
-    if (topTokens[0] == "-") {
+    decltype(auto) top = tokens_queue.front();
+    decltype(auto) top_tokens = std::get<1>(top);
+    if (top_tokens.empty()) return nullptr; // GCOVR_EXCL_LINE
+    if (top_tokens[0] == "-") {
         // 根元素是数组
-        return createArray(tokensQueue, level);
+        return createArray(tokens_queue, level);
     } else {
         // 根元素是对象
-        return createObject(tokensQueue, level);
+        return createObject(tokens_queue, level);
     }
 }
 
 void sese::yaml::YamlUtil::serialize(const Data::Ptr &data, OutputStream *output) noexcept {
-    if (data->getType() == DataType::ObjectData) {
+    if (data->getType() == DataType::OBJECT_DATA) {
         auto sub = dynamic_cast<ObjectData *>(data.get()); // GCOVR_EXCL_LINE
         serializeObject(sub, output, 0);
-    } else if (data->getType() == DataType::ArrayData) {
+    } else if (data->getType() == DataType::ARRAY_DATA) {
         auto sub = dynamic_cast<ArrayData *>(data.get()); // GCOVR_EXCL_LINE
         serializeArray(sub, output, 0);
     } else {
@@ -64,7 +64,7 @@ std::tuple<int, std::string> sese::yaml::YamlUtil::getLine(InputStream *input) n
             goto ret;
         }
         if (ch == '\r' || ch == '\n') {
-            if (builder.length() > 0) {
+            if (!builder.empty()) {
                 goto ret;
             } else {
                 continue;
@@ -83,14 +83,14 @@ ret:
 std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line) noexcept {
     std::vector<std::string> vector;
     sese::text::StringBuilder builder(1024);
-    bool isStr = false; // 是否是字符串
+    bool is_str = false; // 是否是字符串
     bool quot1 = false; // 单引号 - 不转义
     bool quot2 = false; // 双引号 - 转义
     bool tran = false;  // 是否转义
     for (decltype(auto) ch: line) {
         if (quot1) {
             if (ch == '\'') {
-                isStr = false;
+                is_str = false;
                 quot1 = false;
                 vector.emplace_back(builder.toString());
                 builder.clear();
@@ -118,7 +118,7 @@ std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line
                 builder << ch;
                 tran = false;
             } else if (ch == '\"') {
-                isStr = false;
+                is_str = false;
                 quot2 = false;
                 vector.emplace_back(builder.toString());
                 builder.clear();
@@ -127,9 +127,9 @@ std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line
             } else {
                 builder << ch;
             }
-        } else if (isStr) {
+        } else if (is_str) {
             if (ch == ':') {
-                isStr = false;
+                is_str = false;
                 vector.emplace_back(builder.toString());
                 vector.emplace_back(":");
                 builder.clear();
@@ -138,10 +138,10 @@ std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line
             }
         } else if (ch == '\'') {
             quot1 = true;
-            isStr = true;
+            is_str = true;
         } else if (ch == '\"') {
             quot2 = true;
-            isStr = true;
+            is_str = true;
         } else if (ch == ':') {
             vector.emplace_back(":");
         } else if (ch == '-') {
@@ -150,7 +150,7 @@ std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line
             continue;
         } else {
             builder << ch;
-            isStr = true;
+            is_str = true;
         }
     }
 
@@ -163,79 +163,77 @@ std::vector<std::string> sese::yaml::YamlUtil::tokenizer(const std::string &line
 
 sese::yaml::ObjectData::Ptr
 sese::yaml::YamlUtil::createObject(
-        sese::yaml::YamlUtil::TokensQueue &tokensQueue,
+        sese::yaml::YamlUtil::TokensQueue &tokens_queue,
         size_t level
 ) noexcept {
     if (level == 0) return nullptr;
 
     auto result = std::make_shared<ObjectData>();
     // 对象无子元素
-    if (tokensQueue.empty()) return result; // GCOVR_EXCL_LINE
-    int count = std::get<0>(tokensQueue.front());
+    if (tokens_queue.empty()) return result; // GCOVR_EXCL_LINE
+    int count = std::get<0>(tokens_queue.front());
 
-    while (!tokensQueue.empty()) {
-        decltype(auto) countAndTokens = tokensQueue.front();
-        auto currentCount = std::get<0>(countAndTokens);
-        auto currentTokens = std::get<1>(countAndTokens);
+    while (!tokens_queue.empty()) {
+        decltype(auto) count_and_tokens = tokens_queue.front();
+        auto current_count = std::get<0>(count_and_tokens);
+        auto current_tokens = std::get<1>(count_and_tokens);
 
-        if (count == currentCount) {
-            if (currentTokens.size() == 3) {
-                if (currentTokens[1] != ":") {
+        if (count == current_count) {
+            if (current_tokens.size() == 3) {
+                if (current_tokens[1] != ":") {
                     return nullptr;
                 }
                 // 普通键值对
-                std::string key = currentTokens[0];
-                std::string value = currentTokens[2];
-                auto valueObject = std::make_shared<BasicData>();
+                std::string key = current_tokens[0];
+                std::string value = current_tokens[2];
+                auto value_object = std::make_shared<BasicData>();
                 if (0 == strcasecmp(value.c_str(), "null") || value == "~") {
-                    valueObject->setNull(true);
+                    value_object->setNull(true);
                 } else {
-                    valueObject->setDataAs<std::string>(value);
+                    value_object->setDataAs<std::string>(value);
                 }
-                result->set(key, valueObject);
-                tokensQueue.pop();
-            } else if (currentTokens.size() == 2) {
+                result->set(key, value_object);
+                tokens_queue.pop();
+            } else if (current_tokens.size() == 2) {
                 // 可能是空对象，也可能是新对象或新数组
-                auto currentCountAndTokens = tokensQueue.front();
-                tokensQueue.pop();
-                if (tokensQueue.empty()) {
+                auto current_count_and_tokens = tokens_queue.front();
+                tokens_queue.pop();
+                if (tokens_queue.empty()) {
                     // 不存在下一行且当前元素为 null
-                    auto valueObject = std::make_shared<BasicData>();
-                    valueObject->setNull(true);
-                    result->set(currentTokens[0], valueObject);
+                    auto value_object = std::make_shared<BasicData>();
+                    value_object->setNull(true);
+                    result->set(current_tokens[0], value_object);
                 } else {
                     // 存在下一行
-                    auto nextCountAndTokens = tokensQueue.front();
-                    auto nextCount = std::get<0>(nextCountAndTokens);
-                    auto nextTokens = std::get<1>(nextCountAndTokens);
-                    if (nextCount == count) {
+                    auto next_count_and_tokens = tokens_queue.front();
+                    auto next_count = std::get<0>(next_count_and_tokens);
+                    auto next_tokens = std::get<1>(next_count_and_tokens);
+                    if (next_count == count) {
                         // 当前行元素是 null
                         // 下一个元素依然是本对象所属
-                        auto valueObject = std::make_shared<BasicData>();
-                        valueObject->setNull(true);
-                        result->set(currentTokens[0], valueObject);
-                    } else if (nextCount < count) {
+                        auto value_object = std::make_shared<BasicData>();
+                        value_object->setNull(true);
+                        result->set(current_tokens[0], value_object);
+                    } else if (next_count < count) {
                         // 当前行元素是 null
                         // 下一个元素不是本对象所属
-                        auto valueObject = std::make_shared<BasicData>();
-                        valueObject->setNull(true);
-                        result->set(currentTokens[0], valueObject);
+                        const auto VALUE_OBJECT = std::make_shared<BasicData>();
+                        VALUE_OBJECT->setNull(true);
+                        result->set(current_tokens[0], VALUE_OBJECT);
                         return result;
-                    } else if (nextCount > count) {
+                    } else if (next_count > count) {
                         // 新的数组
-                        if (nextTokens[0] == "-") {
-                            auto valueObject = createArray(tokensQueue, level - 1);
-                            if (valueObject) {
-                                result->set(currentTokens[0], valueObject);
+                        if (next_tokens[0] == "-") {
+                            if (auto value_object = createArray(tokens_queue, level - 1)) {
+                                result->set(current_tokens[0], value_object);
                             } else {
                                 return nullptr;
                             }
                         }
                         // 新的对象
                         else {
-                            auto valueObject = createObject(tokensQueue, level - 1);
-                            if (valueObject) {
-                                result->set(currentTokens[0], valueObject);
+                            if (auto value_object = createObject(tokens_queue, level - 1)) {
+                                result->set(current_tokens[0], value_object);
                             } else {
                                 return nullptr;
                             }
@@ -243,14 +241,14 @@ sese::yaml::YamlUtil::createObject(
                     }
                 }
             }
-        } else if (count > currentCount) {
+        } else if (count > current_count) {
             // 当前对象结束
             return result;
         }
         // 错误 - 这几乎不可能发生
         // GCOVR_EXCL_START
         else {
-            tokensQueue.pop();
+            tokens_queue.pop();
             continue;
         }
         // GCOVR_EXCL_STOP
@@ -260,60 +258,59 @@ sese::yaml::YamlUtil::createObject(
 
 sese::yaml::ArrayData::Ptr
 sese::yaml::YamlUtil::createArray(
-        sese::yaml::YamlUtil::TokensQueue &tokensQueue,
+        sese::yaml::YamlUtil::TokensQueue &tokens_queue,
         size_t level
 ) noexcept {
     if (level == 0) return nullptr;
 
     auto result = std::make_shared<ArrayData>();
     // 对象无子元素
-    if (tokensQueue.empty()) return result;
-    int count = std::get<0>(tokensQueue.front());
+    if (tokens_queue.empty()) return result;
+    const int COUNT = std::get<0>(tokens_queue.front());
 
-    while (!tokensQueue.empty()) {
-        decltype(auto) countAndTokens = tokensQueue.front();
-        auto currentCount = std::get<0>(countAndTokens);
-        auto currentTokens = std::get<1>(countAndTokens);
+    while (!tokens_queue.empty()) {
+        decltype(auto) count_and_tokens = tokens_queue.front();
+        const auto CURRENT_COUNT = std::get<0>(count_and_tokens);
+        auto current_tokens = std::get<1>(count_and_tokens);
 
-        if (count == currentCount) {
-            if (currentTokens.size() == 1) {
-                auto valueObject = std::make_shared<BasicData>();
-                valueObject->setNull(true);
-                result->push(valueObject);
-                tokensQueue.pop();
-            } else if (currentTokens.size() == 2) {
-                std::string value = currentTokens[1];
-                auto valueObject = std::make_shared<BasicData>();
+        if (COUNT == CURRENT_COUNT) {
+            if (current_tokens.size() == 1) {
+                auto value_object = std::make_shared<BasicData>();
+                value_object->setNull(true);
+                result->push(value_object);
+                tokens_queue.pop();
+            } else if (current_tokens.size() == 2) {
+                std::string value = current_tokens[1];
+                auto value_object = std::make_shared<BasicData>();
                 if (0 == strcasecmp(value.c_str(), "null") || value == "~") {
-                    valueObject->setNull(true);
+                    value_object->setNull(true);
                 } else {
-                    valueObject->setDataAs<std::string>(value);
+                    value_object->setDataAs<std::string>(value);
                 }
-                result->push(valueObject);
-                tokensQueue.pop();
-            } else if (currentTokens.size() == 3) {
+                result->push(value_object);
+                tokens_queue.pop();
+            } else if (current_tokens.size() == 3) {
                 // 新的对象或数组
-                auto currentCountAndTokens = tokensQueue.front();
-                tokensQueue.pop();
-                if (tokensQueue.empty()) {
+                auto current_count_and_tokens = tokens_queue.front();
+                tokens_queue.pop();
+                if (tokens_queue.empty()) {
                     // 不存在下一行，跳过该对象
                     return result;
                 } else {
-                    auto nextCountAndTokens = tokensQueue.front();
-                    auto nextCount = std::get<0>(nextCountAndTokens);
-                    auto nextTokens = std::get<1>(nextCountAndTokens);
-                    if (nextCount > count) {
-                        if (nextTokens[0] == "-") {
-                            auto valueObject = createArray(tokensQueue, level - 1);
-                            if (valueObject) {
-                                result->push(valueObject);
+                    auto next_count_and_tokens = tokens_queue.front();
+                    const auto NEXT_COUNT = std::get<0>(next_count_and_tokens);
+                    auto next_tokens = std::get<1>(next_count_and_tokens);
+                    if (NEXT_COUNT > COUNT) {
+                        if (next_tokens[0] == "-") {
+                            if (auto value_object = createArray(tokens_queue, level - 1)) {
+                                result->push(value_object);
                             } else {
                                 return nullptr;
                             }
                         } else {
-                            auto valueObject = createObject(tokensQueue, level - 1);
-                            if (valueObject) {
-                                result->push(valueObject);
+                            auto value_object = createObject(tokens_queue, level - 1);
+                            if (value_object) {
+                                result->push(value_object);
                             } else {
                                 return nullptr;
                             }
@@ -322,20 +319,20 @@ sese::yaml::YamlUtil::createArray(
                     // 错误 - 这几乎不会发生
                     // GCOVR_EXCL_START
                     else {
-                        tokensQueue.pop();
+                        tokens_queue.pop();
                         continue;
                     }
                     // GCOVR_EXCL_STOP
                 }
             }
-        } else if (count > currentCount) {
+        } else if (COUNT > CURRENT_COUNT) {
             // 当前数组结束
             return result;
         }
         // 错误 - 这几乎不会发生
         // GCOVR_EXCL_START
         else {
-            tokensQueue.pop();
+            tokens_queue.pop();
             continue;
         }
         // GCOVR_EXCL_STOP
@@ -343,7 +340,7 @@ sese::yaml::YamlUtil::createArray(
     return result;
 }
 
-constexpr auto getSpaceArray = []() {
+constexpr auto GET_SPACE_ARRAY = []() {
     std::array<char, 1024> array{};
     for (decltype(auto) item: array) {
         item = ' ';
@@ -352,36 +349,34 @@ constexpr auto getSpaceArray = []() {
 };
 
 void sese::yaml::YamlUtil::writeSpace(size_t count, OutputStream *output) noexcept {
-    auto buffer = getSpaceArray();
-    auto size = std::min<size_t>(1024, count);
-    output->write(buffer.data(), size);
+    const auto BUFFER = GET_SPACE_ARRAY();
+    const auto SIZE = std::min<size_t>(1024, count);
+    output->write(BUFFER.data(), SIZE);
 }
 
-void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, OutputStream *output, size_t level) noexcept {
-    for (decltype(auto) item: *objectData) {
-        if (item.second->getType() == DataType::ObjectData) {
-            auto sub = dynamic_cast<ObjectData *>(item.second.get()); // GCOVR_EXCL_LINE
-            if (!sub->empty()) {
+void sese::yaml::YamlUtil::serializeObject(ObjectData *object_data, OutputStream *output, size_t level) noexcept {
+    for (auto &[fst, snd]: *object_data) {
+        if (snd->getType() == DataType::OBJECT_DATA) {
+            if (const auto SUB = dynamic_cast<ObjectData *>(snd.get());!SUB->empty()) {
                 writeSpace(level * 2, output);
-                output->write(item.first.c_str(), item.first.length());
+                output->write(fst.c_str(), fst.length());
                 output->write(":\n", 2);
-                serializeObject(sub, output, level + 1);
+                serializeObject(SUB, output, level + 1);
             }
-        } else if (item.second->getType() == DataType::ArrayData) {
-            auto sub = dynamic_cast<ArrayData *>(item.second.get()); // GCOVR_EXCL_LINE
-            if (!sub->empty()) {
+        } else if (snd->getType() == DataType::ARRAY_DATA) {
+            if (const auto SUB = dynamic_cast<ArrayData *>(snd.get());!SUB->empty()) {
                 writeSpace(level * 2, output);
-                output->write(item.first.c_str(), item.first.length());
+                output->write(fst.c_str(), fst.length());
                 output->write(":\n", 2);
-                serializeArray(sub, output, level + 1);
+                serializeArray(SUB, output, level + 1);
             }
         } else {
-            auto sub = dynamic_cast<BasicData *>(item.second.get()); // GCOVR_EXCL_LINE
-            auto data = sub->getDataAs<std::string>("");
+            const auto SUB = dynamic_cast<BasicData *>(snd.get()); // GCOVR_EXCL_LINE
+            auto data = SUB->getDataAs<std::string>("");
             writeSpace(level * 2, output);
-            output->write(item.first.c_str(), item.first.length());
+            output->write(fst.c_str(), fst.length());
             output->write(": ", 2);
-            if (sub->isNull()) {
+            if (SUB->isNull()) {
                 output->write("~", 1);
             } else {
                 output->write(data.c_str(), data.length());
@@ -391,37 +386,35 @@ void sese::yaml::YamlUtil::serializeObject(ObjectData *objectData, OutputStream 
     }
 }
 
-void sese::yaml::YamlUtil::serializeArray(ArrayData *arrayData, OutputStream *output, size_t level) noexcept {
+void sese::yaml::YamlUtil::serializeArray(ArrayData *array_data, OutputStream *output, size_t level) noexcept {
     auto count = 0;
-    for (decltype(auto) item: *arrayData) {
-        if (item->getType() == DataType::ObjectData) {
-            auto sub = dynamic_cast<ObjectData *>(item.get()); // GCOVR_EXCL_LINE
-            if (!sub->empty()) {                               // GCOVR_EXCL_LINE
+    for (decltype(auto) item: *array_data) {
+        if (item->getType() == DataType::OBJECT_DATA) {
+            if (const auto SUB = dynamic_cast<ObjectData *>(item.get());!SUB->empty()) {                               // GCOVR_EXCL_LINE
                 auto name = "element_" + std::to_string(count);
                 count += 1;
                 writeSpace(level * 2, output);
                 output->write("- ", 2);
                 output->write(name.c_str(), name.length());
                 output->write(":\n", 2);
-                serializeObject(sub, output, level + 1);
+                serializeObject(SUB, output, level + 1);
             }
-        } else if (item->getType() == DataType::ArrayData) {
-            auto sub = dynamic_cast<ArrayData *>(item.get()); // GCOVR_EXCL_LINE
-            if (!sub->empty()) {                              // GCOVR_EXCL_LINE
+        } else if (item->getType() == DataType::ARRAY_DATA) {
+            if (const auto SUB = dynamic_cast<ArrayData *>(item.get());!SUB->empty()) {                              // GCOVR_EXCL_LINE
                 auto name = "element_" + std::to_string(count);
                 count += 1;
                 writeSpace(level * 2, output);
                 output->write("- ", 2);
                 output->write(name.c_str(), name.length());
                 output->write(":\n", 2);
-                serializeArray(sub, output, level + 1);
+                serializeArray(SUB, output, level + 1);
             }
         } else {
-            auto sub = dynamic_cast<BasicData *>(item.get()); // GCOVR_EXCL_LINE
-            auto data = sub->getDataAs<std::string>("");
+            const auto SUB = dynamic_cast<BasicData *>(item.get()); // GCOVR_EXCL_LINE
+            auto data = SUB->getDataAs<std::string>("");
             writeSpace(level * 2, output);
             output->write("- ", 2);
-            if (sub->isNull()) {
+            if (SUB->isNull()) {
                 output->write("~", 1);
             } else {
                 output->write(data.c_str(), data.length());

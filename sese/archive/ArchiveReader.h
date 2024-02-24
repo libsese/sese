@@ -29,7 +29,7 @@
 namespace sese::archive {
 
     /// 存档读取器
-    class ArchiveReader{
+    class ArchiveReader {
     public:
         /// 解压回调函数
         using ExtractCallback = std::function<bool(const std::filesystem::path &base_path, Config::EntryType type, io::InputStream *input, size_t readable)>;
@@ -50,12 +50,12 @@ namespace sese::archive {
         /// 为当前读取的文档设置使用的密码
         /// \param pwd 欲使用的密码
         /// \return 成功返回 0
-        int setPassword(const std::string &pwd);
+        [[nodiscard]] int setPassword(const std::string &pwd) const;
 
         /// 为当前的存档设置 libarchive 选项
         /// \param opt 选项字符串
         /// \return 成功返回 0
-        int setOptions(const std::string &opt);
+        [[nodiscard]] int setOptions(const std::string &opt) const;
 
         /// 执行解压操作
         /// \param callback 解压回调函数
@@ -64,17 +64,17 @@ namespace sese::archive {
 
         /// 获取当前错误码
         /// \return 错误码
-        int getError();
+        [[nodiscard]] int getError()const;
 
         /// 获取当前错误字符串
         /// \return 错误字符串
-        const char *getErrorString();
+        [[nodiscard]] const char *getErrorString()const;
 
-        static int openCallback(void *a, ArchiveReader *_this);
+        static int openCallback(void *a, ArchiveReader *archive_this);
 
-        static int64_t readCallback(void *a, ArchiveReader *_this, const void **buffer);
+        static int64_t readCallback(void *a, ArchiveReader *archive_this, const void **buffer);
 
-        static int closeCallback(void *a, ArchiveReader * _this);
+        static int closeCallback(void *a, ArchiveReader *archive_this);
 
     protected:
         char buffer[4096]{};

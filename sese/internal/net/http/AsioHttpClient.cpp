@@ -1,4 +1,5 @@
 #include "sese/net/http/RequestParser.h"
+#include "sese/net/http/HttpUtil.h"
 #include "sese/internal/net/AsioIPConvert.h"
 #include "sese/internal/net/http/AsioHttpClient.h"
 #include "sese/util/Util.h"
@@ -36,13 +37,13 @@ bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
         req->set("via:", proxy);
         req->set("proxy-connection", "keep-alive");
         address = std::move(proxyResult.address);
-        ssl = sese::strcmpDoNotCase("https", proxyResult.url.getProtocol().c_str());
+        ssl = strcmpDoNotCase("https", proxyResult.url.getProtocol().c_str());
     } else {
         if (urlResult.address == nullptr) {
             return false;
         }
         address = std::move(urlResult.address);
-        ssl = sese::strcmpDoNotCase("https", urlResult.url.getProtocol().c_str());
+        ssl = strcmpDoNotCase("https", urlResult.url.getProtocol().c_str());
     }
 
     resp = std::make_unique<Response>();
@@ -87,8 +88,8 @@ bool AsioHttpClient::request() {
         return false;
     }
 
-    auto connectionValue = resp->get("connection", "close");
-    if (sese::strcmpDoNotCase("close", connectionValue.c_str())) {
+    const auto connectionValue = resp->get("connection", "close");
+    if (strcmpDoNotCase("close", connectionValue.c_str())) {
         first = true;
         if (ssl) {
             code = sslSocket.shutdown(code);
@@ -97,7 +98,7 @@ bool AsioHttpClient::request() {
     }
 
     // 自动应用 cookie
-    auto dest = req->getCookies();
+    const auto dest = req->getCookies();
     for (auto &&item: *resp->getCookies()) {
         dest->add(item.second);
     }

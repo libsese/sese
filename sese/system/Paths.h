@@ -3,6 +3,8 @@
 /// \author kaoru
 /// \date 2023年11月5日
 
+#pragma once
+
 #include <sese/system/Path.h>
 #include <sese/util/Initializer.h>
 

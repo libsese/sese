@@ -4,10 +4,12 @@
  * @author kaoru
  * @date 2022年3月28日
  */
+#pragma once
+
 #include "sese/record/AbstractFormatter.h"
 #include "sese/Config.h"
-#include "AbstractFormatter.h"
-#include "Event.h"
+#include "sese/record/AbstractFormatter.h"
+#include "sese/record/Event.h"
 
 namespace sese::record {
 /**

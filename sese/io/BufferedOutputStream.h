@@ -14,9 +14,9 @@ class API BufferedOutputStream : public OutputStream {
 public:
     using Ptr = std::shared_ptr<BufferedOutputStream>;
 
-    explicit BufferedOutputStream(const OutputStream::Ptr &source, size_t bufferSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
+    explicit BufferedOutputStream(const OutputStream::Ptr &source, size_t buffer_size = STREAM_BYTE_STREAM_SIZE_FACTOR);
 
-    ~BufferedOutputStream() noexcept;
+    ~BufferedOutputStream() noexcept override;
 
     int64_t write(const void *buffer, size_t length) override;
 

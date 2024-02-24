@@ -1,13 +1,15 @@
+#pragma once
+
 #include "sese/net/IPv6Address.h"
 #include <asio.hpp>
 
-asio::ip::address convert(const sese::net::IPAddress::Ptr &addr) {
+inline asio::ip::address convert(const sese::net::IPAddress::Ptr &addr) {
     if (addr->getRawAddress()->sa_family == AF_INET) {
-        auto ipv4 = (sockaddr_in *) addr->getRawAddress();
+        const auto ipv4 = reinterpret_cast<sockaddr_in *>(addr->getRawAddress());
         return asio::ip::make_address_v4(htonl(ipv4->sin_addr.s_addr));
     } else {
-        auto ipv6 = (sockaddr_in6 *) addr->getRawAddress();
-        std::array<unsigned char, 16> bytes = {
+        const auto ipv6 = reinterpret_cast<sockaddr_in6 *>(addr->getRawAddress());
+        const std::array<unsigned char, 16> bytes = {
                 ipv6->sin6_addr.s6_addr[0],
                 ipv6->sin6_addr.s6_addr[1],
                 ipv6->sin6_addr.s6_addr[2],

@@ -38,10 +38,10 @@ bool DynamicTable::set(const std::string &key, const std::string &value) noexcep
 }
 
 std::optional<DynamicTable::Header> DynamicTable::get(size_t index) const noexcept {
-    if (index < predefined_headers.size()) {
-        return predefined_headers.at(index);
-    } else if (index < predefined_headers.size() + queue.size()) {
-        return queue.at(index - predefined_headers.size());
+    if (index < PREDEFINED_HEADERS.size()) {
+        return PREDEFINED_HEADERS.at(index);
+    } else if (index < PREDEFINED_HEADERS.size() + queue.size()) {
+        return queue.at(index - PREDEFINED_HEADERS.size());
     }
     return std::nullopt;
 }

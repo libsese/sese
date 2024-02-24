@@ -5,14 +5,14 @@
 using sese::Value;
 
 TEST(TestValue, Contruct) {
-    EXPECT_TRUE(Value(Value::Type::Null).isNull());
-    EXPECT_TRUE(Value(Value::Type::Bool).isBool());
-    EXPECT_TRUE(Value(Value::Type::Int).isInt());
-    EXPECT_TRUE(Value(Value::Type::Double).isDouble());
-    EXPECT_TRUE(Value(Value::Type::String).isString());
-    EXPECT_TRUE(Value(Value::Type::Blob).isBlob());
-    EXPECT_TRUE(Value(Value::Type::List).isList());
-    EXPECT_TRUE(Value(Value::Type::Dict).isDict());
+    EXPECT_TRUE(Value(Value::Type::NONE).isNull());
+    EXPECT_TRUE(Value(Value::Type::BOOL).isBool());
+    EXPECT_TRUE(Value(Value::Type::INT).isInt());
+    EXPECT_TRUE(Value(Value::Type::DOUBLE).isDouble());
+    EXPECT_TRUE(Value(Value::Type::STRING).isString());
+    EXPECT_TRUE(Value(Value::Type::BLOB).isBlob());
+    EXPECT_TRUE(Value(Value::Type::LIST).isList());
+    EXPECT_TRUE(Value(Value::Type::DICT).isDict());
 }
 
 TEST(TestValue, IdentityNull) {

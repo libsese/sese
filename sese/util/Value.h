@@ -20,14 +20,14 @@ namespace sese {
 class Value {
 public:
     enum class Type {
-        Null = 0,
-        Bool,
-        Int,
-        Double,
-        String,
-        Blob,
-        List,
-        Dict
+        NONE = 0,
+        BOOL,
+        INT,
+        DOUBLE,
+        STRING,
+        BLOB,
+        LIST,
+        DICT
     };
 
     using String = std::string;
@@ -57,8 +57,8 @@ public:
         size_t erase(const Value &value);
         Iterator erase(Iterator it);
         ConstIterator erase(ConstIterator it);
-        Iterator erase(Iterator first, Iterator last);
-        ConstIterator erase(ConstIterator first, ConstIterator last);
+        Iterator erase(const Iterator &first, const Iterator &last);
+        ConstIterator erase(const ConstIterator &first, const ConstIterator &last);
 
         Iterator begin();
         [[nodiscard]] ConstIterator begin() const;
@@ -141,8 +141,8 @@ public:
         ReverseIterator rend();
         [[nodiscard]] ConstReverseIterator rend() const;
 
-        Iterator erase(Iterator it);
-        Iterator erase(ConstIterator it);
+        Iterator erase(const Iterator& it);
+        Iterator erase(const ConstIterator &it);
 
         [[nodiscard]] const Value *find(const String &key) const;
         Value *find(const String &key);
@@ -242,7 +242,7 @@ public:
     bool operator!=(const Value &rhs) const;
 
 private:
-    void toString(text::StringBuilder &stringBuilder, size_t level) const noexcept;
+    void toString(text::StringBuilder &string_builder, size_t level) const noexcept;
 
     std::variant<Null, bool, int, double, String, Blob, List, Dict> data;
 };

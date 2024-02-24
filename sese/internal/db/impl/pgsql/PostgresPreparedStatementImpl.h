@@ -2,7 +2,6 @@
 
 #include <sese/db/PreparedStatement.h>
 #include <sese/internal/db/impl/pgsql/PostgresResultSetImpl.h>
-#include <sstream>
 #include <random>
 #include <libpq-fe.h>
 
@@ -10,7 +9,7 @@ namespace sese::db::impl {
 
     class SESE_DB_API PostgresPreparedStatementImpl : public PreparedStatement {
     public:
-        explicit PostgresPreparedStatementImpl(const std::string &stmtName, const std::string &stmtString, uint32_t count, PGconn *conn) noexcept;
+        explicit PostgresPreparedStatementImpl(std::string stmt_name, std::string stmt_string, uint32_t count, PGconn *conn) noexcept;
         ~PostgresPreparedStatementImpl() noexcept override;
 
 

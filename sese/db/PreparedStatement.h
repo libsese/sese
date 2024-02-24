@@ -59,6 +59,7 @@ namespace sese::db {
         virtual bool setNull(uint32_t index) noexcept = 0;
         /// \brief 设置为 dateTime
         /// \param index 索引
+        /// \param value 日期
         /// \return 是否设置成功
         virtual bool setDateTime(uint32_t index, const sese::DateTime &value) noexcept = 0;
         /// \brief 获取结果集列类型

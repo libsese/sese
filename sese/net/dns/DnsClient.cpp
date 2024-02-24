@@ -1,7 +1,7 @@
 #include <sese/net/dns/DnsClient.h>
 #include <sese/net/Socket.h>
 #include <sese/net/dns/DnsUtil.h>
-#include <sese/net/dns/DndSession.h>
+#include <sese/net/dns/DnsSession.h>
 #include <sese/io/InputBufferWrapper.h>
 #include <sese/io/OutputBufferWrapper.h>
 
@@ -33,7 +33,7 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     info.flags.AA = 0;
     info.questions = 1;
 
-    DndSession session;
+    DnsSession session;
     session.getQueries().emplace_back(domain, expectType, SESE_DNS_QR_CLASS_IN, 0);
 
     uint8_t buffer[DNS_PACKAGE_SIZE];

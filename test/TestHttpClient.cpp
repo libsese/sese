@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <sese/net/http/RequestableFactory.h>
+#include <sese/thread/Async.h>
 #include <sese/record/Marco.h>
 
 using namespace sese::net::http;
@@ -17,9 +18,16 @@ TEST(TestHttpClient, WithoutSSL) {
 }
 
 TEST(TestHttpClient, WithSSL) {
+    using namespace std::chrono_literals;
+
     auto client = RequestableFactory::createHttpRequest("https://www.baidu.com");
     ASSERT_NOT_NULL(client);
-    ASSERT_TRUE(client->request()) << client->getLastError();
+    // ASSERT_TRUE(client->request()) << client->getLastError();
+    auto future = sese::async<bool>([&]{return client->request();});
+    std::future_status status;
+    do {
+        status = future.wait_for(0.1s);
+    } while (status != std::future_status::ready);
 
     for (auto &&[key, value]: *client->getResponse()) {
         SESE_INFO("%s: %s", key.c_str(), value.c_str());

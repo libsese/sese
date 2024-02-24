@@ -44,17 +44,17 @@ public:
     [[nodiscard]] bool isStarted() const { return _isStart; }
 
     /// 初始化负载器资源
-    /// \tparam Service 需要启动的服务
+    /// \tparam SERVICE 需要启动的服务
     /// \return 是否初始化成功
-    template<class Service>
+    template<class SERVICE>
     bool init() noexcept;
 
     /// 初始化均衡器资源
-    /// \tparam Service 需要启动的服务
+    /// \tparam SERVICE 需要启动的服务
     /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
     /// \return 是否初始化成功
-    template<class Service>
-    bool init(std::function<Service *()> creator) noexcept;
+    template<class SERVICE>
+    bool init(std::function<SERVICE *()> creator) noexcept;
 
     /// 启动当前负载器和服务
     void start() noexcept;
@@ -75,9 +75,9 @@ protected:
     void master() noexcept;
 
     void slave(
-            sese::event::EventLoop *eventLoop,
-            std::queue<SocketStatus> *masterQueue,
-            std::queue<SocketStatus> *slaveQueue,
+            sese::event::EventLoop *event_loop,
+            std::queue<SocketStatus> *master_queue,
+            std::queue<SocketStatus> *slave_queue,
             std::mutex *mutex
     ) noexcept;
 
@@ -100,7 +100,7 @@ protected:
     std::queue<SocketStatus> *slaveSocketQueueArray{nullptr};
     std::mutex *mutexArray{nullptr};
 
-    std::function<void(int, sese::event::EventLoop *eventLoop, void *)> onDispatchedCallbackFunction;
+    std::function<void(int, sese::event::EventLoop *event_loop, void *)> onDispatchedCallbackFunction;
 };
 
 /// 用户均衡负载器主线程
@@ -115,13 +115,13 @@ public:
 // 此处测试代码不便于模拟
 // GCOVR_EXCL_START
 
-template<class Service>
+template<class SERVICE>
 bool sese::service::UserBalanceLoader::init() noexcept {
-    return sese::service::UserBalanceLoader::init<Service>([]() -> Service * { return new Service; });
+    return sese::service::UserBalanceLoader::init<SERVICE>([]() -> SERVICE * { return new SERVICE; });
 }
 
-template<class Service>
-bool sese::service::UserBalanceLoader::init(std::function<Service *()> creator) noexcept {
+template<class SERVICE>
+bool sese::service::UserBalanceLoader::init(std::function<SERVICE *()> creator) noexcept {
     if (address == nullptr) return false;
 
     socket = new net::Socket(
@@ -145,7 +145,7 @@ bool sese::service::UserBalanceLoader::init(std::function<Service *()> creator) 
     }
 
     masterEventLoop = new MasterEventLoop;
-    masterEventLoop->setListenFd((int) socket->getRawSocket());
+    masterEventLoop->setListenFd(static_cast<int>(socket->getRawSocket()));
     if (!masterEventLoop->init()) {
         goto freeMaster;
     }
@@ -171,8 +171,8 @@ bool sese::service::UserBalanceLoader::init(std::function<Service *()> creator) 
     return true;
 
 freeEvent:
-    for (decltype(auto) eventLoop: eventLoopVector) {
-        delete eventLoop;
+    for (decltype(auto) event_loop: eventLoopVector) {
+        delete event_loop;
     }
     eventLoopVector.clear();
 

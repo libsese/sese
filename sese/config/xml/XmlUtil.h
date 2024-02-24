@@ -24,32 +24,32 @@ public:
     using Tokens = std::queue<std::string>;
 
     /// 从流中反序列化一个 Xml 元素对象
-    /// \param inputStream 输入流
+    /// \param input_stream 输入流
     /// \param level 反序列化深度
     /// \retval nullptr 反序列化失败，否则为成功
-    static Element::Ptr deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept;
+    static Element::Ptr deserialize(const InputStream::Ptr &input_stream, size_t level) noexcept;
 
     /// 从流中反序列化一个 Xml 元素对象
-    /// \param inputStream 输入流
+    /// \param input_stream 输入流
     /// \param level 反序列化深度
     /// \retval nullptr 反序列化失败，否则为成功
-    static Element::Ptr deserialize(InputStream *inputStream, size_t level) noexcept;
+    static Element::Ptr deserialize(InputStream *input_stream, size_t level) noexcept;
 
     /// 向流中序列化一个 Xml 元素对象
     /// \param object 待序列化对象
-    /// \param outputStream 待输出流
-    static void serialize(const Element::Ptr &object, const OutputStream::Ptr &outputStream) noexcept;
+    /// \param output_stream 待输出流
+    static void serialize(const Element::Ptr &object, const OutputStream::Ptr &output_stream) noexcept;
 
     /// 向流中序列化一个 Xml 元素对象
     /// \param object 待序列化对象
-    /// \param outputStream 待输出流
-    static void serialize(const Element::Ptr &object, OutputStream *outputStream) noexcept;
+    /// \param output_stream 待输出流
+    static void serialize(const Element::Ptr &object, OutputStream *output_stream) noexcept;
 
 private:
-    static void tokenizer(InputStream *inputStream, Tokens &tokens) noexcept;
+    static void tokenizer(InputStream *input_stream, Tokens &tokens) noexcept;
 
     static bool removeComment(Tokens &tokens) noexcept;
 
-    static Element::Ptr createElement(Tokens &tokens, size_t level, bool isSubElement) noexcept;
+    static Element::Ptr createElement(Tokens &tokens, size_t level, bool is_sub_element) noexcept;
 };
 } // namespace sese::xml

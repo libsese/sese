@@ -217,16 +217,16 @@ bool ArchiveWriter::addDirectory(const std::filesystem::path &base, const std::f
         // 压缩包中的相对路径
         auto &&pathname = (base / item.path().filename()).string();
         // 原始文件系统中的绝对路径
-        auto &&filePath = item.path().string();
+        auto &&file_path = item.path().string();
 
         struct archive_entry *entry = archive_entry_new();
         archive_entry_set_pathname(entry, pathname.c_str());
-        archive_entry_set_size(entry, static_cast<int64_t>(std::filesystem::file_size(filePath)));
+        archive_entry_set_size(entry, static_cast<int64_t>(std::filesystem::file_size(file_path)));
         archive_entry_set_filetype(entry, AE_IFREG);
         archive_write_header(XX, entry);
 
         int64_t len;
-        auto file = io::File::create(filePath, BINARY_READ_EXISTED);
+        auto file = io::File::create(file_path, BINARY_READ_EXISTED);
         char buffer[4096];
         while ((len = file->read(buffer, 4096)) > 0) {
             if (archive_write_data(XX, buffer, static_cast<size_t>(len)) != len) {
@@ -257,17 +257,16 @@ bool ArchiveWriter::addStream(const std::filesystem::path &path, io::InputStream
     archive_entry_set_is_data_encrypted(entry, 1);
     archive_write_header(XX, entry);
 
-    char buffer[4096];
     while (exp) {
-        auto len = input->read(buffer, std::min<size_t>(exp, 4096));
-        if (len <= 0) {
+        char buffer[4096];
+        const auto LEN = input->read(buffer, std::min<size_t>(exp, 4096));
+        if (LEN <= 0) {
             break;
         }
-        auto write = archive_write_data(XX, buffer, static_cast<size_t>(len));
-        if (write != len) {
+        if (const auto WRITE = archive_write_data(XX, buffer, static_cast<size_t>(LEN));WRITE != LEN) {
             break;
         } else {
-            exp -= static_cast<size_t>(len);
+            exp -= static_cast<size_t>(LEN);
         }
     }
     archive_entry_free(entry);
@@ -278,22 +277,22 @@ bool ArchiveWriter::addStream(const std::filesystem::path &path, io::InputStream
     }
 }
 
-int ArchiveWriter::openCallback(void *archive, ArchiveWriter *_this) {
+int ArchiveWriter::openCallback(void *archive, ArchiveWriter *archive_this) {
     return ARCHIVE_OK;
 }
 
-int64_t ArchiveWriter::writeCallback(void *archive, ArchiveWriter *_this, const void *buffer, size_t len) {
-    return _this->output->write(buffer, len);
+int64_t ArchiveWriter::writeCallback(void *archive, ArchiveWriter *archive_this, const void *buffer, size_t len) {
+    return archive_this->output->write(buffer, len);
 }
 
-int ArchiveWriter::closeCallback(void *archive, ArchiveWriter *_this) {
+int ArchiveWriter::closeCallback(void *archive, ArchiveWriter *archive_this) {
     return ARCHIVE_OK;
 }
 
-int ArchiveWriter::freeCallback(void *archive, ArchiveWriter *_this) {
+int ArchiveWriter::freeCallback(void *archive, ArchiveWriter *archive_this) {
     return ARCHIVE_OK;
 }
 
-const char *ArchiveWriter::passphraseCallback(void *archive, archive::ArchiveWriter *_this) {
+const char *ArchiveWriter::passphraseCallback(void *archive, archive::ArchiveWriter *archive_this) {
     return nullptr;
 }

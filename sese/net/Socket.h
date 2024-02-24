@@ -49,9 +49,9 @@ public:
 
     enum class ShutdownMode {
 #ifdef _WIN32
-        Read = 0,
-        Write = 1,
-        Both = 2
+        READ = 0,
+        WRITE = 1,
+        BOTH = 2
 #else
         Read = SHUT_RD,
         Write = SHUT_WR,
@@ -62,7 +62,7 @@ public:
 public:
     Socket(Family family, Type type, int32_t protocol = IPPROTO_IP) noexcept;
     Socket(socket_t handle, Address::Ptr address) noexcept;
-    ~Socket() noexcept;
+    ~Socket() noexcept override;
 
 public:
     virtual int32_t bind(Address::Ptr address) noexcept;
@@ -135,11 +135,11 @@ private:
 public:
     static socket_t socket(int family, int type, int protocol) noexcept;
 
-    static int bind(socket_t socket, const sockaddr *addr, socklen_t addrLen) noexcept;
+    static int bind(socket_t socket, const sockaddr *addr, socklen_t addr_len) noexcept;
 
     static socket_t accept(socket_t socket, sockaddr *addr = nullptr, socklen_t *len = nullptr) noexcept;
 
-    static int connect(socket_t socket, const sockaddr *addr, socklen_t addrLen) noexcept;
+    static int connect(socket_t socket, const sockaddr *addr, socklen_t addr_len) noexcept;
 
     static int64_t write(socket_t socket, const void *buffer, size_t len, int flags) noexcept;
 

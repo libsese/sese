@@ -1,10 +1,8 @@
 #pragma once
 
 #include "sese/net/http/CookieMap.h"
-#include "sese/net/http/HttpUtil.h"
 #include "sese/net/http/Requestable.h"
 #include "sese/net/IPv6Address.h"
-#include "sese/io/FakeStream.h"
 #include "sese/record/Marco.h"
 
 #include <asio.hpp>

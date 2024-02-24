@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <utility>
 
 using sese::Value;
 using List = sese::Value::List;
@@ -11,28 +12,28 @@ using Dict = sese::Value::Dict;
 
 Value::Value(Type type) {
     switch (type) {
-        case Type::Null:
+        case Type::NONE:
             data.emplace<Null>();
             break;
-        case Type::Bool:
+        case Type::BOOL:
             data.emplace<bool>(false);
             break;
-        case Type::Int:
+        case Type::INT:
             data.emplace<int>(0);
             break;
-        case Type::Double:
+        case Type::DOUBLE:
             data.emplace<double>(0.0);
             break;
-        case Type::String:
+        case Type::STRING:
             data.emplace<String>();
             break;
-        case Type::List:
+        case Type::LIST:
             data.emplace<List>();
             break;
-        case Type::Dict:
+        case Type::DICT:
             data.emplace<Dict>();
             break;
-        case Type::Blob:
+        case Type::BLOB:
             data.emplace<Blob>();
             break;
     }
@@ -62,11 +63,11 @@ Value::Value(List &&value) : data(std::move(value)) {}
 Value::Value(Dict &&value) : data(std::move(value)) {}
 
 Value Value::list() {
-    return Value(Type::List);
+    return Value(Type::LIST);
 }
 
 Value Value::dict() {
-    return Value(Type::Dict);
+    return Value(Type::DICT);
 }
 
 Value::Type Value::getType() const {
@@ -74,35 +75,35 @@ Value::Type Value::getType() const {
 }
 
 bool Value::isNull() const {
-    return getType() == Type::Null;
+    return getType() == Type::NONE;
 }
 
 bool Value::isBool() const {
-    return getType() == Type::Bool;
+    return getType() == Type::BOOL;
 }
 
 bool Value::isInt() const {
-    return getType() == Type::Int;
+    return getType() == Type::INT;
 }
 
 bool Value::isDouble() const {
-    return getType() == Type::Double;
+    return getType() == Type::DOUBLE;
 }
 
 bool Value::isString() const {
-    return getType() == Type::String;
+    return getType() == Type::STRING;
 }
 
 bool Value::isBlob() const {
-    return getType() == Type::Blob;
+    return getType() == Type::BLOB;
 }
 
 bool Value::isList() const {
-    return getType() == Type::List;
+    return getType() == Type::LIST;
 }
 
 bool Value::isDict() const {
-    return getType() == Type::Dict;
+    return getType() == Type::DICT;
 }
 
 std::optional<bool> Value::getIfBool() const {
@@ -213,21 +214,21 @@ bool Value::operator==(const sese::Value &rhs) const {
         return false;
     } else {
         switch (getType()) {
-            case Type::Null:
+            case Type::NONE:
                 return true;
-            case Type::Bool:
+            case Type::BOOL:
                 return std::get<bool>(data) == std::get<bool>(rhs.data);
-            case Type::Int:
+            case Type::INT:
                 return std::get<int>(data) == std::get<int>(rhs.data);
-            case Type::Double:
+            case Type::DOUBLE:
                 return std::get<double>(data) == std::get<double>(rhs.data);
-            case Type::String:
+            case Type::STRING:
                 return std::get<String>(data) == std::get<String>(rhs.data);
-            case Type::Blob:
+            case Type::BLOB:
                 return std::get_if<Blob>(&data) == std::get_if<Blob>(&rhs.data);
-            case Type::List:
+            case Type::LIST:
                 return std::get_if<List>(&data) == std::get_if<List>(&rhs.data);
-            case Type::Dict:
+            case Type::DICT:
                 return std::get_if<Dict>(&data) == std::get_if<Dict>(&rhs.data);
         }
         return false;
@@ -242,72 +243,72 @@ bool Value::operator!=(const sese::Value &rhs) const {
 
 std::string Value::toString(size_t level) const noexcept {
     level = std::max<size_t>(level, 1);
-    text::StringBuilder stringBuilder(4096);
-    toString(stringBuilder, level);
-    return stringBuilder.toString();
+    text::StringBuilder string_builder(4096);
+    toString(string_builder, level);
+    return string_builder.toString();
 }
 
-void Value::toString(text::StringBuilder &stringBuilder, size_t level) const noexcept {
+void Value::toString(text::StringBuilder &string_builder, size_t level) const noexcept {
     level -= 1;
     switch (getType()) {
-        case Type::Null:
-            stringBuilder << "<NULL>";
+        case Type::NONE:
+            string_builder << "<NULL>";
             break;
-        case Type::Bool:
-            stringBuilder << (std::get<bool>(data) ? "<TRUE>" : "<FALSE>");
+        case Type::BOOL:
+            string_builder << (std::get<bool>(data) ? "<TRUE>" : "<FALSE>");
             break;
-        case Type::Int:
-            stringBuilder << std::to_string(std::get<int>(data));
+        case Type::INT:
+            string_builder << std::to_string(std::get<int>(data));
             break;
-        case Type::Double:
-            stringBuilder << std::to_string(std::get<double>(data));
+        case Type::DOUBLE:
+            string_builder << std::to_string(std::get<double>(data));
             break;
-        case Type::String:
-            stringBuilder << '"' << std::get<String>(data) << '"';
+        case Type::STRING:
+            string_builder << '"' << std::get<String>(data) << '"';
             break;
-        case Type::Blob: {
-            auto blob = std::get_if<Blob>(&data);
-            auto number = text::Number::toHex(reinterpret_cast<uint64_t>(blob->data()));
-            stringBuilder << "<p:0x" << number << " l:" << std::to_string(blob->size()) << ">";
+        case Type::BLOB: {
+            const auto BLOB = std::get_if<Blob>(&data);
+            const auto NUMBER = text::Number::toHex(reinterpret_cast<uint64_t>(BLOB->data()));
+            string_builder << "<p:0x" << NUMBER << " l:" << std::to_string(BLOB->size()) << ">";
             break;
         }
-        case Type::List: {
-            auto list = std::get_if<List>(&data);
-            auto first = true;
-            stringBuilder << '[';
+        case Type::LIST: {
+            const auto LIST = std::get_if<List>(&data);
+            string_builder << '[';
             if (level) {
-                for (auto &&item: *list) {
+                auto first = true;
+                for (auto &&item: *LIST) {
                     if (first) {
                         first = false;
                     } else {
-                        stringBuilder << ',';
+                        string_builder << ',';
                     }
-                    item.toString(stringBuilder, level);
+                    item.toString(string_builder, level);
                 }
             } else {
-                stringBuilder << "...";
+                string_builder << "...";
             }
-            stringBuilder << ']';
+            string_builder << ']';
             break;
         }
-        case Type::Dict: {
-            auto list = std::get_if<Dict>(&data);
-            auto first = true;
-            stringBuilder << '{';
+        case Type::DICT: {
+            const auto LIST = std::get_if<Dict>(&data);
+            string_builder << '{';
             if (level) {
-                for (auto &&item: *list) {
+                auto first = true;
+                for (const auto &[fst, snd]: *LIST) {
                     if (first) {
                         first = false;
                     } else {
-                        stringBuilder << ',';
+                        string_builder << ',';
                     }
-                    stringBuilder << '"' << item.first << "\":";
-                    item.second->toString(stringBuilder, level);
+                    string_builder << '"' << fst << "\":";
+                    snd->toString(string_builder, level);
                 }
             } else {
-                stringBuilder << "...";
+                string_builder << "...";
             }
-            stringBuilder << '}';
+            string_builder << '}';
             break;
         }
     }
@@ -347,15 +348,15 @@ size_t List::erase(const sese::Value &value) {
     return count;
 }
 
-List::Iterator List::erase(Iterator it) { return vector.erase(it); }
+List::Iterator List::erase(Iterator it) { return vector.erase(std::move(it)); }
 
-List::ConstIterator List::erase(ConstIterator it) { return vector.erase(it); }
+List::ConstIterator List::erase(ConstIterator it) { return vector.erase(std::move(it)); }
 
-List::Iterator List::erase(Iterator first, Iterator last) {
+List::Iterator List::erase(const Iterator &first, const Iterator &last) {
     return vector.erase(first, last);
 }
 
-List::ConstIterator List::erase(ConstIterator first, ConstIterator last) {
+List::ConstIterator List::erase(const ConstIterator &first, const ConstIterator &last) {
     return vector.erase(first, last);
 }
 
@@ -470,7 +471,7 @@ List &&List::append(Dict &&value) && {
 }
 
 List::Iterator List::insert(sese::Value::List::Iterator it, sese::Value &&value) {
-    return vector.insert(it, std::move(value));
+    return vector.insert(std::move(it), std::move(value));
 }
 
 Dict::~Dict() {
@@ -525,12 +526,12 @@ Dict::ReverseIterator Dict::rend() { return map.rend(); }
 
 Dict::ConstReverseIterator Dict::rend() const { return map.rend(); }
 
-Dict::Iterator Dict::erase(Dict::Iterator it) {
+Dict::Iterator Dict::erase(const Dict::Iterator& it) {
     delete it->second;
     return map.erase(it);
 }
 
-Dict::Iterator Dict::erase(Dict::ConstIterator it) {
+Dict::Iterator Dict::erase(const Dict::ConstIterator &it) {
     delete it->second;
     return map.erase(it);
 }

@@ -24,6 +24,7 @@ class IOCPService;
 /// 基于 sese-event 的完成端口服务器
 class IOCPServer {
 public:
+    virtual ~IOCPServer() = default;
     using DeleteContextCallback = std::function<void(Context *data)>;
 
     IOCPServer();
@@ -55,10 +56,10 @@ public:
     /**
      * 投递连接事件
      * @param to 连接地址
-     * @param cliCtx ssl 客户端上下文
+     * @param cli_ctx ssl 客户端上下文
      * @param data 额外数据
      */
-    void postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx, void *data = nullptr);
+    void postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cli_ctx, void *data = nullptr);
     /**
      * 设置超时事件
      * @param ctx 操作上下文
@@ -113,20 +114,20 @@ public:
      * ALPN 协议协商完成回调函数
      * @param ctx 上下文
      * @param in 协商内容
-     * @param inLength 协商内容长度
+     * @param in_length 协商内容长度
      */
-    virtual void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t inLength) {}
+    virtual void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t in_length) {}
     /**
      * ALPN 协商回调函数
      * @param out 对端期望内容
-     * @param outLength 对端期望内容长度
+     * @param out_length 对端期望内容长度
      * @param in 响应内容
-     * @param inLength 响应内容长度
+     * @param in_length 响应内容长度
      * @return ALPN 状态码
      */
     int onAlpnSelect(
-            const uint8_t **out, uint8_t *outLength,
-            const uint8_t *in, uint32_t inLength
+            const uint8_t **out, uint8_t *out_length,
+            const uint8_t *in, uint32_t in_length
     );
 
 public:
@@ -191,7 +192,7 @@ public:
     [[maybe_unused]] void setDispatchTimeout(uint32_t seconds) { balanceLoader.setDispatchTimeout(seconds); }
 
 protected:
-    void preConnectCallback(int fd, sese::event::EventLoop *eventLoop, Context *ctx);
+    void preConnectCallback(int fd, sese::event::EventLoop *event_loop, Context *ctx);
 
     /**
      * 设置主动释放模式
@@ -256,7 +257,7 @@ public:
      * 获取当前上下文连接文件描述符
      * @return 文件描述符
      */
-    [[nodiscard]] int32_t getFd() const { return (int32_t) Context::fd; }
+    [[nodiscard]] int32_t getFd() const { return static_cast<int32_t>(Context::fd); }
     /**
      * 获取当前上下文额外数据
      * @return 额外数据
@@ -264,9 +265,9 @@ public:
     [[nodiscard]] void *getData() const { return Context::data; }
     /**
      * 设置当前上下文额外数据
-     * @param pData 额外数据
+     * @param p_data 额外数据
      */
-    [[maybe_unused]] void setData(void *pData) { Context::data = pData; }
+    [[maybe_unused]] void setData(void *p_data) { Context::data = p_data; }
 };
 
 /// 基于 sese-event 的完成端口子服务
@@ -274,8 +275,8 @@ class IOCPService final : public service::v2::TimerableService {
 public:
     /// 初始化子服务
     /// \param master 主服务器
-    /// \param activeReleaseMode 主动释放模式
-    explicit IOCPService(IOCPServer *master, bool activeReleaseMode);
+    /// \param active_release_mode 主动释放模式
+    explicit IOCPService(IOCPServer *master, bool active_release_mode);
     /// 析构函数
     ~IOCPService() override;
 
@@ -328,23 +329,23 @@ public:
      * ALPN 协商完成回调函数
      * @param ctx 操作上下文
      * @param in 协商内容
-     * @param inLength 协商内容长度
+     * @param in_length 协商内容长度
      */
-    static void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t inLength);
+    static void onAlpnGet(Context *ctx, const uint8_t *in, uint32_t in_length);
     /**
      * ALPN 协商回调函数
      * @param ssl SSL 上下文
      * @param out 对端期望内容
-     * @param outLength 对端期望内容长度
+     * @param out_length 对端期望内容长度
      * @param in 响应内容
-     * @param inLength 响应内容长度
+     * @param in_length 响应内容长度
      * @param service 所属子服务
      * @return ALPN 状态码
      */
     static int alpnCallbackFunction(
             void *ssl,
-            const uint8_t **out, uint8_t *outLength,
-            const uint8_t *in, uint32_t inLength,
+            const uint8_t **out, uint8_t *out_length,
+            const uint8_t *in, uint32_t in_length,
             IOCPService *service
     );
 

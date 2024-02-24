@@ -35,6 +35,18 @@ DateTime::DateTime(uint64_t timestamp, int32_t utc, Policy policy) noexcept {
 #else
             auto time = static_cast<time_t>(totalSeconds);
 #endif
+#ifdef SESE_PLATFORM_WINDOWS
+            tm tm{};
+            gmtime_s(&tm, &time);
+            this->years = tm.tm_year + 1900;
+            this->months = tm.tm_mon + 1;
+            this->days = tm.tm_mday;
+            this->hours = tm.tm_hour;
+            this->minutes = tm.tm_min;
+            this->seconds = tm.tm_sec;
+            this->dayofweek = tm.tm_wday;
+            this->dayofyear = tm.tm_yday;
+#else
             auto tm = gmtime(reinterpret_cast<const time_t *>(&time));
             this->years = tm->tm_year + 1900;
             this->months = tm->tm_mon + 1;
@@ -44,6 +56,7 @@ DateTime::DateTime(uint64_t timestamp, int32_t utc, Policy policy) noexcept {
             this->seconds = tm->tm_sec;
             this->dayofweek = tm->tm_wday;
             this->dayofyear = tm->tm_yday;
+#endif
         }
 
         {

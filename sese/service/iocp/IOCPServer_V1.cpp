@@ -27,16 +27,16 @@ int64_t Context::trunc(size_t length) {
 
 #pragma region Service
 
-IOCPService::IOCPService(IOCPServer *master, bool activeReleaseMode)
+IOCPService::IOCPService(IOCPServer *master, bool active_release_mode)
     : TimerableService() {
     IOCPService::master = master;
-    IOCPService::handleClose = activeReleaseMode;
+    IOCPService::handleClose = active_release_mode;
 
     if (master->getServCtx()) {
-        auto serverSSL = (SSL_CTX *) master->getServCtx()->getContext();
+        const auto SERVER_SSL = static_cast<SSL_CTX *>(master->getServCtx()->getContext());
         SSL_CTX_set_alpn_select_cb(
-                serverSSL,
-                (SSL_CTX_alpn_select_cb_func) &alpnCallbackFunction,
+                SERVER_SSL,
+                reinterpret_cast<SSL_CTX_alpn_select_cb_func>(&alpnCallbackFunction),
                 this
         );
     }
@@ -44,19 +44,19 @@ IOCPService::IOCPService(IOCPServer *master, bool activeReleaseMode)
 
 IOCPService::~IOCPService() {
     for (auto &&item: eventSet) {
-        auto ctx = (Context *) item->data;
-        if (ctx->ssl) {
+        const auto CTX = static_cast<Context *>(item->data);
+        if (CTX->ssl) {
             // std::printf("ssl free %p\n", ctx->ssl);
-            SSL_free((SSL *) ctx->ssl);
-            ctx->ssl = nullptr;
+            SSL_free(static_cast<SSL *>(CTX->ssl));
+            CTX->ssl = nullptr;
         }
-        if (ctx->timeoutEvent) {
-            cancelTimeoutEvent(ctx->timeoutEvent);
+        if (CTX->timeoutEvent) {
+            cancelTimeoutEvent(CTX->timeoutEvent);
         }
-        sese::net::Socket::close(ctx->fd);
+        sese::net::Socket::close(CTX->fd);
         event::EventLoop::freeEvent(item);
-        ctx->self->getDeleteContextCallback()(ctx);
-        delete ctx;
+        CTX->self->getDeleteContextCallback()(CTX);
+        delete CTX;
     }
 }
 
@@ -66,7 +66,7 @@ void IOCPService::postRead(Context *ctx) {
         ctx->event->events |= EVENT_READ;
         IOCPService::setEvent(ctx->event);
     } else {
-        ctx->event = createEventEx((int) ctx->fd, EVENT_READ, ctx);
+        ctx->event = createEventEx(static_cast<int>(ctx->fd), EVENT_READ, ctx);
         ctx->event->data = ctx;
     }
 }
@@ -77,7 +77,7 @@ void IOCPService::postWrite(Context *ctx) {
         ctx->event->events |= EVENT_WRITE;
         IOCPService::setEvent(ctx->event);
     } else {
-        ctx->event = createEventEx((int) ctx->fd, EVENT_WRITE, ctx);
+        ctx->event = createEventEx(static_cast<int>(ctx->fd), EVENT_WRITE, ctx);
         ctx->event->data = ctx;
     }
 }
@@ -85,7 +85,7 @@ void IOCPService::postWrite(Context *ctx) {
 void IOCPService::postClose(Context *ctx) {
     if (handleClose) {
         using namespace sese::net;
-        Socket::shutdown(ctx->fd, Socket::ShutdownMode::Both);
+        Socket::shutdown(ctx->fd, Socket::ShutdownMode::BOTH);
     } else {
         releaseContext(ctx);
     }
@@ -116,92 +116,85 @@ void IOCPService::onConnected(Context *ctx) {
     ctx->self->onConnected(ctx);
 }
 
-void IOCPService::onAlpnGet(Context *ctx, const uint8_t *in, uint32_t inLength) {
-    ctx->self->onAlpnGet(ctx, in, inLength);
+void IOCPService::onAlpnGet(Context *ctx, const uint8_t *in, uint32_t in_length) {
+    ctx->self->onAlpnGet(ctx, in, in_length);
 }
 
 void IOCPService::onAccept(int fd) {
-    SSL *clientSSL;
     if (sese::net::Socket::setNonblocking(fd)) {
         sese::net::Socket::close(fd);
     }
 
-    auto ctx = new Context;
-    ctx->self = master;
-    ctx->client = this;
-    ctx->fd = fd;
+    const auto CTX = new Context;
+    CTX->self = master;
+    CTX->client = this;
+    CTX->fd = fd;
 
     if (master->getServCtx()) {
-        auto serverSSL = (SSL_CTX *) master->getServCtx()->getContext();
-        clientSSL = SSL_new(serverSSL);
-        SSL_set_fd(clientSSL, fd);
-        SSL_set_accept_state(clientSSL);
+        const auto SERVER_SSL = static_cast<SSL_CTX *>(master->getServCtx()->getContext());
+        SSL *client_ssl = SSL_new(SERVER_SSL);
+        SSL_set_fd(client_ssl, fd);
+        SSL_set_accept_state(client_ssl);
 
         while (true) {
-            auto rt = SSL_do_handshake(clientSSL);
-            if (rt <= 0) {
-                auto err = SSL_get_error(clientSSL, rt);
-                if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
-                    SSL_free(clientSSL);
+            if (const auto RT = SSL_do_handshake(client_ssl); RT <= 0) {
+                if (const auto ERR = SSL_get_error(client_ssl, RT); ERR != SSL_ERROR_WANT_READ && ERR != SSL_ERROR_WANT_WRITE) {
+                    SSL_free(client_ssl);
                     sese::net::Socket::close(fd);
-                    delete ctx;
+                    delete CTX;
                     return;
                 }
             } else {
-                ctx->ssl = clientSSL;
-                SSL_set_mode(clientSSL, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
+                CTX->ssl = client_ssl;
+                SSL_set_mode(client_ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
                 const uint8_t *data = nullptr;
-                uint32_t dataLength;
-                SSL_get0_alpn_selected(clientSSL, &data, &dataLength);
-                onAlpnGet(ctx, data, dataLength);
+                uint32_t data_length;
+                SSL_get0_alpn_selected(client_ssl, &data, &data_length);
+                onAlpnGet(CTX, data, data_length);
                 break;
             }
         }
     }
 
-    onAcceptCompleted(ctx);
+    onAcceptCompleted(CTX);
 }
 
 void IOCPService::onRead(sese::event::BaseEvent *event) {
-    auto ctx = (Context *) event->data;
+    const auto CTX = static_cast<Context *>(event->data);
 
-    onPreRead(ctx);
+    onPreRead(CTX);
 
     size_t len = 0;
-    char buf[MTU_VALUE];
     while (true) {
-        auto l = read((int) ctx->fd, buf, MTU_VALUE, ctx->ssl);
-        if (l <= 0) {
-            if (l == 0 && len == 0) {
-                releaseContext(ctx);
+        char buf[MTU_VALUE];
+        if (const auto L = read(static_cast<int>(CTX->fd), buf, MTU_VALUE, CTX->ssl); L <= 0) {
+            if (L == 0 && len == 0) {
+                releaseContext(CTX);
                 break;
             } else {
-                onReadCompleted(ctx);
+                onReadCompleted(CTX);
                 break;
             }
         } else {
-            ctx->recv.write(buf, l);
-            len += static_cast<size_t>(l);
+            CTX->recv.write(buf, L);
+            len += static_cast<size_t>(L);
         }
     }
 }
 
 void IOCPService::onWrite(sese::event::BaseEvent *event) {
-    auto ctx = (Context *) event->data;
-    if (ctx->isConn) {
-        ctx->isConn = false;
-        auto ssl = (SSL *) ctx->ssl;
-        if (ctx->ssl) {
+    if (const auto CTX = static_cast<Context *>(event->data); CTX->isConn) {
+        CTX->isConn = false;
+        auto ssl = static_cast<SSL *>(CTX->ssl);
+        if (CTX->ssl) {
             SSL_set_connect_state(ssl);
             // GCOVR_EXCL_START
             while (true) {
-                auto rt = SSL_do_handshake((SSL *) ssl);
-                if (rt <= 0) {
+                if (const auto RT = SSL_do_handshake(ssl); RT <= 0) {
                     // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
-                    auto err = SSL_get_error((SSL *) ssl, rt);
-                    if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
-                        SSL_free((SSL *) ssl);
-                        ctx->ssl = nullptr;
+                    if (const auto ERR = SSL_get_error(ssl, RT); ERR != SSL_ERROR_WANT_READ && ERR != SSL_ERROR_WANT_WRITE) {
+                        SSL_free(ssl);
+                        CTX->ssl = nullptr;
                         ssl = nullptr;
                         break;
                     }
@@ -211,55 +204,53 @@ void IOCPService::onWrite(sese::event::BaseEvent *event) {
             }
             // GCOVR_EXCL_STOP
             if (ssl == nullptr) {
-                releaseContext(ctx);
+                releaseContext(CTX);
                 return;
             } else {
                 SSL_set_mode(ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
                 const uint8_t *data = nullptr;
-                uint32_t dataLength;
-                SSL_get0_alpn_selected(ssl, &data, &dataLength);
-                onAlpnGet(ctx, data, dataLength);
+                uint32_t data_length;
+                SSL_get0_alpn_selected(ssl, &data, &data_length);
+                onAlpnGet(CTX, data, data_length);
             }
         }
-        onConnected(ctx);
+        onConnected(CTX);
     } else {
-        char buf[MTU_VALUE];
         while (true) {
-            auto len = ctx->send.peek(buf, MTU_VALUE);
-            if (len == 0) {
-                ctx->send.freeCapacity();
-                onWriteCompleted(ctx);
+            char buf[MTU_VALUE];
+            const auto LEN = CTX->send.peek(buf, MTU_VALUE);
+            if (LEN == 0) {
+                CTX->send.freeCapacity();
+                onWriteCompleted(CTX);
                 break;
             }
-            auto l = write((int) ctx->fd, buf, len, ctx->ssl);
-            if (l <= 0) {
-                auto err = sese::net::getNetworkError();
-                if (err == EWOULDBLOCK || err == EINTR) {
-                    postWrite(ctx);
+            if (const auto L = write(static_cast<int>(CTX->fd), buf, LEN, CTX->ssl); L <= 0) {
+                if (const auto ERR = sese::net::getNetworkError(); ERR == EWOULDBLOCK || ERR == EINTR) {
+                    postWrite(CTX);
                     break;
                 } else {
-                    releaseContext(ctx);
+                    releaseContext(CTX);
                     break;
                 }
             } else {
-                ctx->send.trunc(l);
+                CTX->send.trunc(L);
             }
         }
     }
 }
 
 void IOCPService::onClose(sese::event::BaseEvent *event) {
-    auto ctx = (Context *) event->data;
-    releaseContext(ctx);
+    const auto CTX = static_cast<Context *>(event->data);
+    releaseContext(CTX);
 }
 
 void IOCPService::onTimeout(v2::TimeoutEvent *event) {
-    auto ctx = (Context *) event->data;
-    IOCPService::onTimeout(ctx);
+    const auto CTX = static_cast<Context *>(event->data);
+    IOCPService::onTimeout(CTX);
 }
 
-int IOCPService::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, IOCPService *service) {
-    return service->master->onAlpnSelect(out, outLength, in, inLength);
+int IOCPService::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *out_length, const uint8_t *in, uint32_t in_length, IOCPService *service) {
+    return service->master->onAlpnSelect(out, out_length, in, in_length);
 }
 
 sese::event::BaseEvent *IOCPService::createEventEx(int fd, unsigned int events, void *data) {
@@ -276,7 +267,7 @@ void IOCPService::freeEventEx(sese::event::BaseEvent *event) {
 void IOCPService::releaseContext(Context *ctx) {
     if (ctx->ssl) {
         // std::printf("ssl free %p\n", ctx->ssl);
-        SSL_free((SSL *) ctx->ssl);
+        SSL_free(static_cast<SSL *>(ctx->ssl));
         ctx->ssl = nullptr;
     }
     if (ctx->timeoutEvent) {
@@ -290,7 +281,7 @@ void IOCPService::releaseContext(Context *ctx) {
 
 int64_t IOCPService::read(int fd, void *buffer, size_t len, void *ssl) {
     if (ssl) {
-        return SSL_read((SSL *) ssl, buffer, (int) len);
+        return SSL_read(static_cast<SSL *>(ssl), buffer, static_cast<int>(len));
     } else {
         return sese::net::Socket::read(fd, buffer, len, 0);
     }
@@ -298,7 +289,7 @@ int64_t IOCPService::read(int fd, void *buffer, size_t len, void *ssl) {
 
 int64_t IOCPService::write(int fd, const void *buffer, size_t len, void *ssl) {
     if (ssl) {
-        return SSL_write((SSL *) ssl, buffer, (int) len);
+        return SSL_write(static_cast<SSL *>(ssl), buffer, static_cast<int>(len));
     } else {
         return sese::net::Socket::write(fd, buffer, len, 0);
     }
@@ -310,17 +301,16 @@ int64_t IOCPService::write(int fd, const void *buffer, size_t len, void *ssl) {
 
 IOCPServer::IOCPServer() {
     this->balanceLoader.setOnDispatchedCallbackFunction(
-            [&](int fd, sese::event::EventLoop *eventLoop, void *data) {
-                this->preConnectCallback(fd, eventLoop, (Context *) data);
+            [&](int fd, sese::event::EventLoop *event_loop, void *data) {
+                this->preConnectCallback(fd, event_loop, static_cast<Context *>(data));
             }
     );
 }
 
 bool IOCPServer::init() {
-    auto rt = balanceLoader.init<IOCPService>([this]() -> auto {
-        return new IOCPService(this, this->activeReleaseMode);
-    });
-    if (rt) {
+    if (balanceLoader.init<IOCPService>([this]() -> auto {
+            return new IOCPService(this, this->activeReleaseMode);
+        })) {
         balanceLoader.start();
         return true;
     }
@@ -343,31 +333,29 @@ void IOCPServer::postClose(Context *ctx) {
     ctx->client->postClose(ctx);
 }
 
-void IOCPServer::postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx, void *data) {
-    auto sock = sese::net::Socket::socket(to->getFamily(), SOCK_STREAM, IPPROTO_IP);
-    sese::net::Socket::setNonblocking(sock);
+void IOCPServer::postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cli_ctx, void *data) {
+    const auto SOCK = sese::net::Socket::socket(to->getFamily(), SOCK_STREAM, IPPROTO_IP);
+    sese::net::Socket::setNonblocking(SOCK);
 
-    auto rt = connect(sock, to->getRawAddress(), to->getRawAddressLength());
-    if (rt) {
-        auto err = sese::net::getNetworkError();
-        if (err != EINPROGRESS) {
+    if (connect(SOCK, to->getRawAddress(), to->getRawAddressLength())) {
+        if (const auto ERR = sese::net::getNetworkError(); ERR != EINPROGRESS) {
             return;
         }
     }
 
-    auto ctx = new Context;
-    ctx->fd = sock;
-    ctx->self = this;
-    ctx->isConn = true;
-    ctx->data = data;
-    if (cliCtx) {
-        ctx->ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
+    const auto CTX = new Context;
+    CTX->fd = SOCK;
+    CTX->self = this;
+    CTX->isConn = true;
+    CTX->data = data;
+    if (cli_ctx) {
+        CTX->ssl = SSL_new(static_cast<SSL_CTX *>(cli_ctx->getContext()));
         // printf("ssl new %p\n", ctx->ssl);
-        SSL_set_fd((SSL *) ctx->ssl, (int) sock);
-        SSL_set_alpn_protos((SSL *) ctx->ssl, (const unsigned char *) clientProtos.c_str(), (unsigned) clientProtos.length());
+        SSL_set_fd(static_cast<SSL *>(CTX->ssl), static_cast<int>(SOCK));
+        SSL_set_alpn_protos(static_cast<SSL *>(CTX->ssl), reinterpret_cast<const unsigned char *>(clientProtos.c_str()), static_cast<unsigned>(clientProtos.length()));
     }
 
-    balanceLoader.dispatchSocket(sock, ctx);
+    balanceLoader.dispatchSocket(SOCK, CTX);
 }
 
 void IOCPServer::setTimeout(Context *ctx, int64_t seconds) {
@@ -386,16 +374,16 @@ void IOCPServer::cancelTimeout(Context *ctx) {
     }
 }
 
-int IOCPServer::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
-    if (SSL_select_next_proto((unsigned char **) out, outLength, (const uint8_t *) servProtos.c_str(), (int) servProtos.length(), in, inLength) != OPENSSL_NPN_NEGOTIATED) {
+int IOCPServer::onAlpnSelect(const uint8_t **out, uint8_t *out_length, const uint8_t *in, uint32_t in_length) {
+    if (SSL_select_next_proto(const_cast<unsigned char **>(out), out_length, reinterpret_cast<const uint8_t *>(servProtos.c_str()), static_cast<int>(servProtos.length()), in, in_length) != OPENSSL_NPN_NEGOTIATED) {
         return SSL_TLSEXT_ERR_NOACK;
     }
     return SSL_TLSEXT_ERR_OK;
 }
 
-void IOCPServer::preConnectCallback([[maybe_unused]] int fd, sese::event::EventLoop *eventLoop, Context *ctx) {
+void IOCPServer::preConnectCallback([[maybe_unused]] int fd, sese::event::EventLoop *event_loop, Context *ctx) {
     if (ctx) {
-        ctx->client = reinterpret_cast<IOCPService *>(eventLoop);
+        ctx->client = reinterpret_cast<IOCPService *>(event_loop);
         onPreConnect(ctx);
         postWrite(ctx);
     }

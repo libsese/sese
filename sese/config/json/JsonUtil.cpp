@@ -17,17 +17,17 @@ inline bool isKeyword(const char *str) {
 
 using namespace sese::json;
 
-ObjectData::Ptr JsonUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
-    return deserialize(inputStream.get(), level);
+ObjectData::Ptr JsonUtil::deserialize(const InputStream::Ptr &input_stream, size_t level) noexcept {
+    return deserialize(input_stream.get(), level);
 }
 
-void JsonUtil::serialize(const ObjectData::Ptr &object, const OutputStream::Ptr &outputStream) noexcept {
-    serializeObject(object.get(), outputStream.get());
+void JsonUtil::serialize(const ObjectData::Ptr &object, const OutputStream::Ptr &output_stream) noexcept {
+    serializeObject(object.get(), output_stream.get());
 }
 
-ObjectData::Ptr JsonUtil::deserialize(InputStream *inputStream, size_t level) noexcept {
+ObjectData::Ptr JsonUtil::deserialize(InputStream *input_stream, size_t level) noexcept {
     Tokens tokens;
-    if (!tokenizer(inputStream, tokens)) {
+    if (!tokenizer(input_stream, tokens)) {
         return nullptr;
     }
 
@@ -41,16 +41,16 @@ ObjectData::Ptr JsonUtil::deserialize(InputStream *inputStream, size_t level) no
     return createObject(tokens, level);
 }
 
-void JsonUtil::serialize(ObjectData *object, OutputStream *outputStream) noexcept {
-    serializeObject(object, outputStream);
+void JsonUtil::serialize(ObjectData *object, OutputStream *output_stream) noexcept {
+    serializeObject(object, output_stream);
 }
 
-bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
+bool JsonUtil::tokenizer(InputStream *input_stream, Tokens &tokens) noexcept {
     char ch;
     text::StringBuilder builder;
 
     int64_t len;
-    while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
+    while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
         switch (ch) {
             case '{':
             case '}':
@@ -64,10 +64,10 @@ bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
             case '\"':
                 builder.append("\"");
                 // 字符串 token，需要处理转义符号
-                while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
+                while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
                     // 说明是转义字符
                     if (ch == '\\') {
-                        if (inputStream->read(&ch, 1 * sizeof(char)) == 0) {
+                        if (input_stream->read(&ch, 1 * sizeof(char)) == 0) {
                             // 字符串不完整
                             return false;
                         }
@@ -87,7 +87,7 @@ bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
                 // 普通的值 token
                 if (sese::isSpace(ch)) break;
                 builder.append(ch);
-                while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
+                while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
                     //fix: 此处多加关键字判断
                     if (isKeyword(&ch)) {
                         tokens.push(builder.toString());
@@ -113,14 +113,14 @@ bool JsonUtil::tokenizer(InputStream *inputStream, Tokens &tokens) noexcept {
 }
 
 ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
-    bool hasEnd = false;
+    bool has_end = false;
     if (level == 0) { return nullptr; }
     auto object = std::make_shared<ObjectData>();
     while (!tokens.empty()) {
         auto name = tokens.front();
         tokens.pop();
         if (name == "}") {
-            hasEnd = true;
+            has_end = true;
             break;
         } else if (name == ",") {
             // token 为 ',' 说明接下来还有键值对
@@ -142,12 +142,11 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
         if (value == "{") {
             // 值是一个 ObjectData
             level--;
-            ObjectData::Ptr subObject = createObject(tokens, level);
-            if (subObject == nullptr) {
+            if (auto sub_object = createObject(tokens, level);sub_object == nullptr) {
                 // 解析错误，直接返回
                 return nullptr;
             } else {
-                object->set(name, subObject);
+                object->set(name, sub_object);
             }
             level++;
         } else if (value == "[") {
@@ -175,7 +174,7 @@ ObjectData::Ptr JsonUtil::createObject(Tokens &tokens, size_t level) noexcept {
         }
     }
 
-    if (hasEnd) {
+    if (has_end) {
         return object;
     } else {
         return nullptr;
@@ -243,25 +242,25 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
     // }
 }
 
-void JsonUtil::serializeObject(ObjectData *object, OutputStream *outputStream) noexcept {
-    bool isFirst = true;
-    outputStream->write("{", 1);
+void JsonUtil::serializeObject(ObjectData *object, OutputStream *output_stream) noexcept {
+    bool is_first = true;
+    output_stream->write("{", 1);
     for (auto iterator = object->begin(); iterator != object->end(); iterator++) {
-        if (isFirst) {
-            isFirst = false;
+        if (is_first) {
+            is_first = false;
         } else {
-            outputStream->write(",", 1);
+            output_stream->write(",", 1);
         }
         auto data = iterator->second;
         auto name = iterator->first;
-        outputStream->write("\"", 1);
-        outputStream->write(name.c_str(), name.length());
-        outputStream->write("\":", 2);
+        output_stream->write("\"", 1);
+        output_stream->write(name.c_str(), name.length());
+        output_stream->write("\":", 2);
 
-        if (data->getType() == DataType::Object) {
-            serializeObject(dynamic_cast<ObjectData *>(data.get()), outputStream); // GCOVR_EXCL_LINE
-        } else if (data->getType() == DataType::Array) {
-            serializeArray(dynamic_cast<ArrayData *>(data.get()), outputStream); // GCOVR_EXCL_LINE
+        if (data->getType() == DataType::OBJECT) {
+            serializeObject(dynamic_cast<ObjectData *>(data.get()), output_stream); // GCOVR_EXCL_LINE
+        } else if (data->getType() == DataType::ARRAY) {
+            serializeArray(dynamic_cast<ArrayData *>(data.get()), output_stream); // GCOVR_EXCL_LINE
         } else {
             auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
             // if (raw[0] == '\"') {
@@ -298,32 +297,32 @@ void JsonUtil::serializeObject(ObjectData *object, OutputStream *outputStream) n
             //     }
             //     outputStream->write("\"", 1);
             // } else {
-            outputStream->write(raw.c_str(), raw.length());
+            output_stream->write(raw.c_str(), raw.length());
             //}
         }
     }
-    outputStream->write("}", 1);
+    output_stream->write("}", 1);
 }
 
-void JsonUtil::serializeArray(ArrayData *array, OutputStream *outputStream) noexcept {
-    bool isFirst = true;
-    outputStream->write("[", 1);
+void JsonUtil::serializeArray(ArrayData *array, OutputStream *output_stream) noexcept {
+    bool is_first = true;
+    output_stream->write("[", 1);
     for (auto iterator = array->begin(); iterator != array->end(); iterator++) {
-        if (isFirst) {
-            isFirst = false;
+        if (is_first) {
+            is_first = false;
         } else {
-            outputStream->write(",", 1);
+            output_stream->write(",", 1);
         }
 
         auto data = *iterator;
-        if (data->getType() == DataType::Object) {
-            serializeObject(dynamic_cast<ObjectData *>(data.get()), outputStream); // GCOVR_EXCL_LINE
-        } else if (data->getType() == DataType::Array) {
-            serializeArray(dynamic_cast<ArrayData *>(data.get()), outputStream); // GCOVR_EXCL_LINE
+        if (data->getType() == DataType::OBJECT) {
+            serializeObject(dynamic_cast<ObjectData *>(data.get()), output_stream); // GCOVR_EXCL_LINE
+        } else if (data->getType() == DataType::ARRAY) {
+            serializeArray(dynamic_cast<ArrayData *>(data.get()), output_stream); // GCOVR_EXCL_LINE
         } else {
             auto raw = std::dynamic_pointer_cast<BasicData>(data)->raw();
-            outputStream->write(raw.c_str(), raw.length());
+            output_stream->write(raw.c_str(), raw.length());
         }
     }
-    outputStream->write("]", 1);
+    output_stream->write("]", 1);
 }

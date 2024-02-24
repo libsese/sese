@@ -9,7 +9,7 @@
 
 #include <sese/net/Socket.h>
 #include <sese/net/dns/DnsClient.h>
-#include <sese/net/dns/DndSession.h>
+#include <sese/net/dns/DnsSession.h>
 #include <sese/thread/Thread.h>
 
 #include <atomic>

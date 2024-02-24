@@ -18,7 +18,7 @@ namespace sese::net::http {
 typedef std::pair<const std::string, const std::string> header_t;
 typedef std::vector<bool> bits_t;
 
-static const std::array<header_t, 62> predefined_headers = {
+static const std::array<header_t, 62> PREDEFINED_HEADERS = {
         {header_t("INVALIDINDEX", "INVALIDINDEX"), header_t(":authority", ""), header_t(":method", "GET"),
          header_t(":method", "POST"), header_t(":path", "/"), header_t(":path", "/index.html"),
          header_t(":scheme", "http"), header_t(":scheme", "https"), header_t(":status", "200"),
@@ -39,10 +39,12 @@ static const std::array<header_t, 62> predefined_headers = {
          header_t("referer", ""), header_t("refresh", ""), header_t("retry-after", ""),
          header_t("server", ""), header_t("set-cookie", ""), header_t("strict-transport-security", ""),
          header_t("transfer-encoding", ""), header_t("user-agent", ""), header_t("vary", ""),
-         header_t("via", ""), header_t("www-authenticate", "")}};
+         header_t("via", ""), header_t("www-authenticate", "")}
+};
 
 // 256 chars plus end of string
-static const std::array<bits_t, 257> huffman_table = {
+static const std::array<bits_t, 257> HUFFMAN_TABLE = {
+        // NOLINTBEGIN
         {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},                                                    // 0
          {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0},                      // 1
          {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0},       // 2
@@ -299,5 +301,7 @@ static const std::array<bits_t, 257> huffman_table = {
          {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1},
          {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
          {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0},
-         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}}};
+         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}}
+};
+// NOLINTEND
 } // namespace sese::net::http

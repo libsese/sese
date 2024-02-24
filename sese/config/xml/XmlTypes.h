@@ -30,7 +30,7 @@ public:
     [[nodiscard]] const SubType &getElements() const;
     void addElement(const Element::Ptr &element);
     void setAttribute(const std::string &name, const std::string &value);
-    [[nodiscard]] const std::string &getAttribute(const std::string &name, const std::string &defaultValue) const;
+    [[nodiscard]] const std::string &getAttribute(const std::string &name, const std::string &default_value) const;
     void removeAttribute(const std::string &name);
 
     SubType elements;

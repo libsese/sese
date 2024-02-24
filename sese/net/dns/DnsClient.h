@@ -1,4 +1,4 @@
-/// \file Client.h
+/// \file DnsClient.h
 /// \author kaoru
 /// \brief DNS 客户端类
 /// \version 0.1
