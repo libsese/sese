@@ -152,9 +152,9 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
         }
         // 静态表查询
         {
-            auto iteratorKey = predefined_headers.end();
-            auto iteratorAll = predefined_headers.end();
-            for (auto header = predefined_headers.begin(); header != predefined_headers.end(); ++header) {
+            auto iteratorKey = PREDEFINED_HEADERS.end();
+            auto iteratorAll = PREDEFINED_HEADERS.end();
+            for (auto header = PREDEFINED_HEADERS.begin(); header != PREDEFINED_HEADERS.end(); ++header) {
                 if (header->first == item.first) {
                     iteratorKey = header;
                     if (header->second == item.second) {
@@ -165,16 +165,16 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
             }
 
             // auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHitAll);
-            if (iteratorAll != predefined_headers.end()) {
+            if (iteratorAll != PREDEFINED_HEADERS.end()) {
                 /// 对应第 0 种情况
-                size_t index = iteratorAll - predefined_headers.begin();
+                size_t index = iteratorAll - PREDEFINED_HEADERS.begin();
                 size += encodeIndexCase0(dest, index);
                 continue;
             }
 
             // iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
-            if (iteratorKey != predefined_headers.end()) {
-                size_t index = iteratorKey - predefined_headers.begin();
+            if (iteratorKey != PREDEFINED_HEADERS.end()) {
+                size_t index = iteratorKey - PREDEFINED_HEADERS.begin();
                 /// 对应第 1 种情况
                 size += encodeIndexCase1(dest, index);
                 size += encodeString(dest, item.second);
@@ -227,9 +227,9 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
 
         // 静态表查询
         {
-            auto iteratorKey = predefined_headers.end();
-            auto iteratorAll = predefined_headers.end();
-            for (auto header = predefined_headers.begin(); header != predefined_headers.end(); ++header) {
+            auto iteratorKey = PREDEFINED_HEADERS.end();
+            auto iteratorAll = PREDEFINED_HEADERS.end();
+            for (auto header = PREDEFINED_HEADERS.begin(); header != PREDEFINED_HEADERS.end(); ++header) {
                 if (header->first == item.first) {
                     iteratorKey = header;
                     if (header->second == item.second) {
@@ -240,14 +240,14 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
             }
 
             // auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
-            if (iteratorAll != predefined_headers.end()) {
+            if (iteratorAll != PREDEFINED_HEADERS.end()) {
                 /// 第 0 种情况
-                size += encodeIndexCase0(dest, iteratorAll - predefined_headers.begin());
+                size += encodeIndexCase0(dest, iteratorAll - PREDEFINED_HEADERS.begin());
                 continue;
             }
-            if (iteratorKey != predefined_headers.end()) {
+            if (iteratorKey != PREDEFINED_HEADERS.end()) {
                 /// 第 2 种情况
-                size += encodeIndexCase2(dest, iteratorKey - predefined_headers.begin());
+                size += encodeIndexCase2(dest, iteratorKey - PREDEFINED_HEADERS.begin());
                 size += encodeString(dest, item.second);
                 continue;
             }

@@ -5,10 +5,12 @@
  * @date 2022年3月28日
  */
 #pragma once
+
 #include <cassert>
 #include <cinttypes>
 #include <string>
-#include "sese/util/Memory.h"
+#include <sese/util/Memory.h>
+
 #ifdef _WIN32
 #pragma warning(disable : 4819)
 #define SESE_PLATFORM_WINDOWS
@@ -20,7 +22,10 @@
 #define SESE_PLATFORM_APPLE
 #include "sese/native/darwin/Config.h"
 #endif
+
+#ifdef assert
 #undef assert
+#endif
 
 #define SESE_MARCO_END \
     switch (0)         \

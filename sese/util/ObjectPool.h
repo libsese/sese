@@ -40,7 +40,7 @@ public:
     }
 
     static ObjectPool::Ptr create() noexcept {
-        return std::shared_ptr<ObjectPool<T>>(new ObjectPool<T>);
+        return std::make_shared_for_overwrite<ObjectPool<T>> ();
     }
 
     auto borrow() noexcept {

@@ -20,7 +20,7 @@ LibraryObject::LibraryObject(Module module) noexcept {
 }
 
 const void *LibraryObject::findFunctionByName(const std::string &name) const {
-    return (const void *) GetProcAddress(module, name.c_str());
+    return reinterpret_cast<const void *>(GetProcAddress(module, name.c_str()));
 }
 
 LibraryObject::~LibraryObject() noexcept {

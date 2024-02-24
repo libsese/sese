@@ -24,10 +24,10 @@ public:
     /**
      * 包装指定流
      * @param source 欲包装的流
-     * @param bufferSize 缓存大小
+     * @param buffer_size 缓存大小
      */
-    explicit BufferedStream(const Stream::Ptr &source, size_t bufferSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
-    ~BufferedStream() noexcept;
+    explicit BufferedStream(const Stream::Ptr &source, size_t buffer_size = STREAM_BYTE_STREAM_SIZE_FACTOR);
+    ~BufferedStream() noexcept override;
 
     /**
      * @verbatim

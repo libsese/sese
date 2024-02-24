@@ -15,7 +15,7 @@ namespace sese {
 class API Noncopyable {
 public:
     Noncopyable() = default;
-    ~Noncopyable() = default;
+    virtual~Noncopyable() = default;
 
     /// 删除拷贝相关构造函数
     Noncopyable(const Noncopyable &) = delete;

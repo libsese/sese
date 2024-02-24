@@ -8,36 +8,36 @@ using sese::Version;
 Version::Version(uint16_t major, uint16_t minor, uint16_t patch, uint16_t revision) : major_(major), minor_(minor), patch_(patch), revision_(revision) {}
 
 std::optional<Version> Version::parse(const std::string &version) {
-    const char *startPtr = version.c_str();
-    char *endPtr = const_cast<char *>(startPtr);
+    const char *start_ptr = version.c_str();
+    auto end_ptr = const_cast<char *>(start_ptr);
 
-    auto major = static_cast<uint16_t>(std::strtoul(startPtr, &endPtr, 10));
-    if (*endPtr == 0) {
-        return Version(major, 0, 0, 0);
-    } else if (*endPtr != '.') {
+    const auto MAJOR = static_cast<uint16_t>(std::strtoul(start_ptr, &end_ptr, 10));
+    if (*end_ptr == 0) {
+        return Version(MAJOR, 0, 0, 0);
+    } else if (*end_ptr != '.') {
         return std::nullopt;
     }
 
-    startPtr = endPtr + 1;
-    auto minor = static_cast<uint16_t>(std::strtoul(startPtr, &endPtr, 10));
-    if (*endPtr == 0) {
-        return Version(major, minor, 0, 0);
-    } else if (*endPtr != '.') {
+    start_ptr = end_ptr + 1;
+    const auto MINOR = static_cast<uint16_t>(std::strtoul(start_ptr, &end_ptr, 10));
+    if (*end_ptr == 0) {
+        return Version(MAJOR, MINOR, 0, 0);
+    } else if (*end_ptr != '.') {
         return std::nullopt;
     }
 
-    startPtr = endPtr + 1;
-    auto patch = static_cast<uint16_t>(std::strtoul(startPtr, &endPtr, 10));
-    if (*endPtr == 0) {
-        return Version(major, minor, patch, 0);
-    } else if (*endPtr != '.') {
+    start_ptr = end_ptr + 1;
+    const auto PATCH = static_cast<uint16_t>(std::strtoul(start_ptr, &end_ptr, 10));
+    if (*end_ptr == 0) {
+        return Version(MAJOR, MINOR, PATCH, 0);
+    } else if (*end_ptr != '.') {
         return std::nullopt;
     }
 
-    startPtr = endPtr + 1;
-    auto revision = static_cast<uint16_t>(std::strtoul(startPtr, &endPtr, 10));
-    if (*endPtr == 0) {
-        return Version(major, minor, patch, revision);
+    start_ptr = end_ptr + 1;
+    const auto REVISION = static_cast<uint16_t>(std::strtoul(start_ptr, &end_ptr, 10));
+    if (*end_ptr == 0) {
+        return Version(MAJOR, MINOR, PATCH, REVISION);
     } else {
         return std::nullopt;
     }

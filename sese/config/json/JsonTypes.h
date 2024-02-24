@@ -23,11 +23,11 @@ namespace sese::json {
 // 从文本处理方面来看，可以归纳 4 种类型
 enum class DataType {
     // 基础数据类型，如字符串、数字等
-    Basic,
+    BASIC,
     // 标准的 Json 对象
-    Object,
+    OBJECT,
     // 数组
-    Array,
+    ARRAY,
 };
 
 /// JSON 数据基类
@@ -42,10 +42,10 @@ public:
     explicit Data(DataType type);
     virtual ~Data() = default;
 
-    [[nodiscard]] DataType getType() const noexcept { return type; }
+    [[nodiscard]] DataType getType() const noexcept { return TYPE; }
 
 protected:
-    const DataType type; // 节点的数据类型 - 数据类型是不可变的
+    const DataType TYPE; // 节点的数据类型 - 数据类型是不可变的
 };
 
 /// JSON 基础数据类型
@@ -63,11 +63,11 @@ public:
     void setNull(bool null) noexcept;
     /**
      * 设置值为非 null
-     * @param newData 新的数据
-     * @param isString 是否为字符串
+     * @param new_data 新的数据
+     * @param is_string 是否为字符串
      * @warning 最好不要手动调用此函数，考虑使用 setDataAs() 函数
      */
-    void setNotNull(std::string newData, bool isString = false) noexcept;
+    void setNotNull(std::string new_data, bool is_string = false) noexcept;
 
     template<typename T>
     void
@@ -93,23 +93,23 @@ public:
 
     template<typename T>
     std::enable_if_t<std::is_same_v<T, std::string>, std::string>
-    getDataAs(const T &defaultValue);
+    getDataAs(const T &default_value);
 
     template<typename T>
     std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view>
-    getDataAs(const T &defaultValue);
+    getDataAs(const T &default_value);
 
     template<typename T>
     std::enable_if_t<std::is_same_v<T, int64_t>, int64_t>
-    getDataAs(T defaultValue);
+    getDataAs(T default_value);
 
     template<typename T>
     std::enable_if_t<std::is_same_v<T, bool>, bool>
-    getDataAs(T defaultValue = false);
+    getDataAs(T default_value = false);
 
     template<typename T>
     std::enable_if_t<std::is_same_v<T, double>, double>
-    getDataAs(T defaultValue);
+    getDataAs(T default_value);
 
 protected:
     std::string data;
@@ -117,35 +117,35 @@ protected:
 };
 
 template<typename T>
-std::enable_if_t<std::is_same_v<T, std::string>, std::string> BasicData::getDataAs(const T &defaultValue) {
+std::enable_if_t<std::is_same_v<T, std::string>, std::string> BasicData::getDataAs(const T &default_value) {
     if (_isNull) {
-        return defaultValue;
+        return default_value;
     } else {
         return data.substr(1, data.size() - 2);
     }
 }
 
 template<typename T>
-std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view> BasicData::getDataAs(const T &defaultValue) {
+std::enable_if_t<std::is_same_v<T, std::string_view>, std::string_view> BasicData::getDataAs(const T &default_value) {
     if (_isNull) {
-        return defaultValue;
+        return default_value;
     } else {
         return {data.c_str() + 1, data.size() - 2};
     }
 }
 
 template<typename T>
-std::enable_if_t<std::is_same_v<T, int64_t>, int64_t> BasicData::getDataAs(T defaultValue) {
+std::enable_if_t<std::is_same_v<T, int64_t>, int64_t> BasicData::getDataAs(T default_value) {
     if (_isNull) {
-        return defaultValue;
+        return default_value;
     } else {
         return _atoi64(data.c_str());
     }
 }
 
 template<typename T>
-std::enable_if_t<std::is_same_v<T, bool>, bool> BasicData::getDataAs(T defaultValue) {
-    if (_isNull) return defaultValue;
+std::enable_if_t<std::is_same_v<T, bool>, bool> BasicData::getDataAs(T default_value) {
+    if (_isNull) return default_value;
     if (data == "true") {
         return true;
     } else {
@@ -154,12 +154,12 @@ std::enable_if_t<std::is_same_v<T, bool>, bool> BasicData::getDataAs(T defaultVa
 }
 
 template<typename T>
-std::enable_if_t<std::is_same_v<T, double>, double> BasicData::getDataAs(T defaultValue) {
+std::enable_if_t<std::is_same_v<T, double>, double> BasicData::getDataAs(T default_value) {
     if (_isNull) {
-        return defaultValue;
+        return default_value;
     } else {
-        char *pEnd = nullptr;
-        auto res = std::strtod(data.c_str(), &pEnd);
+        char *p_end = nullptr;
+        auto res = std::strtod(data.c_str(), &p_end);
         return res;
     }
 }
@@ -225,7 +225,7 @@ std::shared_ptr<std::enable_if_t<std::is_same_v<BasicData, T>, BasicData>> Objec
     if (raw == nullptr) {
         return nullptr;
     } else {
-        if (raw->getType() == DataType::Basic) {
+        if (raw->getType() == DataType::BASIC) {
             return std::dynamic_pointer_cast<BasicData>(raw);
         } else {
             return nullptr;
@@ -239,7 +239,7 @@ std::shared_ptr<std::enable_if_t<std::is_same_v<ObjectData, T>, ObjectData>> Obj
     if (raw == nullptr) {
         return nullptr;
     } else {
-        if (raw->getType() == DataType::Object) {
+        if (raw->getType() == DataType::OBJECT) {
             return std::dynamic_pointer_cast<ObjectData>(raw);
         } else {
             return nullptr;
@@ -253,7 +253,7 @@ std::shared_ptr<std::enable_if_t<std::is_same_v<ArrayData, T>, ArrayData>> Objec
     if (raw == nullptr) {
         return nullptr;
     } else {
-        if (raw->getType() == DataType::Array) {
+        if (raw->getType() == DataType::ARRAY) {
             return std::dynamic_pointer_cast<ArrayData>(raw);
         } else {
             return nullptr;

@@ -124,15 +124,15 @@ namespace sese::archive {
         /// \return 是否成功
         bool addStream(const std::filesystem::path &path, io::InputStream *input, size_t len);
 
-        static int openCallback(void *archive, ArchiveWriter *_this);
+        static int openCallback(void *archive, ArchiveWriter *archive_this);
 
-        static int64_t writeCallback(void *archive, ArchiveWriter *_this, const void *buffer, size_t len);
+        static int64_t writeCallback(void *archive, ArchiveWriter *archive_this, const void *buffer, size_t len);
 
-        static int closeCallback(void *archive, ArchiveWriter *_this);
+        static int closeCallback(void *archive, ArchiveWriter *archive_this);
 
-        static int freeCallback(void *archive, ArchiveWriter *_this);
+        static int freeCallback(void *archive, ArchiveWriter *archive_this);
 
-        static const char *passphraseCallback(void *archive, ArchiveWriter *_this);
+        static const char *passphraseCallback(void *archive, ArchiveWriter *archive_this);
 
     protected:
         io::OutputStream *output{};

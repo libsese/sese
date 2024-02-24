@@ -1,4 +1,4 @@
-/// \file DNSSession.h
+/// \file DnsSession.h
 /// \author kaoru
 /// \brief DNS 会话类
 /// \version 0.1
@@ -14,7 +14,7 @@
 namespace sese::net::dns {
 
 /// DNS 会话类
-class API DndSession {
+class API DnsSession {
 public:
     [[nodiscard]] auto &getQueries() { return queries; }
     [[nodiscard]] auto &getAnswers() { return answers; }

@@ -30,29 +30,28 @@ AbstractStringBuffer::~AbstractStringBuffer() noexcept {
     }
 }
 
-AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &abstractStringBuffer) noexcept {
-    this->cap = abstractStringBuffer.cap;
-    this->len = abstractStringBuffer.len;
+AbstractStringBuffer::AbstractStringBuffer(const AbstractStringBuffer &abstract_string_buffer) noexcept {
+    this->cap = abstract_string_buffer.cap;
+    this->len = abstract_string_buffer.len;
     this->buffer = new char[this->cap];
-    memcpy(this->buffer, abstractStringBuffer.buffer, this->len);
+    memcpy(this->buffer, abstract_string_buffer.buffer, this->len);
     memset(this->buffer + this->len, 0, this->cap - this->len);
 }
 
-AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &&abstractStringBuffer) noexcept {
-    this->cap = abstractStringBuffer.cap;
-    this->len = abstractStringBuffer.len;
-    this->buffer = abstractStringBuffer.buffer;
+AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &&abstract_string_buffer) noexcept {
+    this->cap = abstract_string_buffer.cap;
+    this->len = abstract_string_buffer.len;
+    this->buffer = abstract_string_buffer.buffer;
 
-    abstractStringBuffer.cap = 0;
-    abstractStringBuffer.len = 0;
-    abstractStringBuffer.buffer = nullptr;
+    abstract_string_buffer.cap = 0;
+    abstract_string_buffer.len = 0;
+    abstract_string_buffer.buffer = nullptr;
 }
 
 std::vector<std::string> AbstractStringBuffer::split(const std::string &text, const std::string &sub) noexcept {
     std::vector<std::string> v;
-    std::string::size_type pos1, pos2;
-    pos2 = text.find(sub);
-    pos1 = 0;
+    std::string::size_type pos2 = text.find(sub);
+    std::string::size_type pos1 = 0;
     while (std::string::npos != pos2) {
         v.emplace_back(text.data() + pos1, pos2 - pos1);
 
@@ -68,8 +67,8 @@ std::vector<std::string> AbstractStringBuffer::split(const std::string &text, co
 void AbstractStringBuffer::append(const char *data, size_t l) noexcept {
     if (l > cap - this->len) {
         // 触发扩容
-        auto newSize = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
-        this->expansion(newSize);
+        const auto NEW_SIZE = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
+        this->expansion(NEW_SIZE);
     }
     memcpy(&this->buffer[this->len], data, l);
     this->len += l;
@@ -89,19 +88,19 @@ void AbstractStringBuffer::append(const std::string_view &str) noexcept {
 }
 
 void AbstractStringBuffer::append(const String &str) noexcept {
-    AbstractStringBuffer::append(((StringView *) &str)->data(), str.len());
+    AbstractStringBuffer::append(reinterpret_cast<const StringView *>(&str)->data(), str.len());
 }
 
 void AbstractStringBuffer::append(const StringView &view) noexcept {
     AbstractStringBuffer::append(view.data(), view.len());
 }
 
-void AbstractStringBuffer::expansion(size_t newSize) noexcept {
-    char *newBuffer = new char[newSize];
-    memcpy(newBuffer, this->buffer, len);
+void AbstractStringBuffer::expansion(size_t new_size) noexcept {
+    const auto NEW_BUFFER = new char[new_size];
+    memcpy(NEW_BUFFER, this->buffer, len);
     delete[] this->buffer; // GCOVR_EXCL_LINE
-    this->buffer = newBuffer;
-    this->cap = newSize;
+    this->buffer = NEW_BUFFER;
+    this->cap = new_size;
 }
 
 std::string AbstractStringBuffer::toString() {
@@ -122,9 +121,8 @@ std::vector<std::string> AbstractStringBuffer::split(const std::string &str) con
     std::vector<std::string> v;
     //        auto s = std::string(this->buffer);
     auto s = std::string_view(this->buffer, this->len);
-    std::string::size_type pos1, pos2;
-    pos2 = s.find(str);
-    pos1 = 0;
+    std::string::size_type pos2 = s.find(str);
+    std::string::size_type pos1 = 0;
     while (std::string::npos != pos2) {
         //            v.push_back(s.substr(pos1, pos2 - pos1));
         v.emplace_back(s.data() + pos1, pos2 - pos1);
@@ -153,11 +151,10 @@ bool AbstractStringBuffer::setChatAt(int index, char ch) {
 }
 
 void AbstractStringBuffer::reverse() noexcept {
-    char temp = '\0';
     for (int j = 0; j < len / 2; j++) {
-        temp = this->buffer[j];
+        const char TEMP = this->buffer[j];
         this->buffer[j] = this->buffer[len - 1 - j];
-        this->buffer[len - 1 - j] = temp;
+        this->buffer[len - 1 - j] = TEMP;
     }
 }
 
@@ -191,8 +188,8 @@ bool AbstractStringBuffer::insertAt(int index, const char *data, size_t l) {
     }
     if (l > cap - this->len) {
         // 触发扩容
-        auto newSize = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
-        this->expansion(newSize);
+        const auto NEW_SIZE = ((l + this->len) / STRING_BUFFER_SIZE_FACTOR + 1) * STRING_BUFFER_SIZE_FACTOR;
+        this->expansion(NEW_SIZE);
     }
     memmove(&this->buffer[index + l], &this->buffer[index], len);
     memcpy(&this->buffer[index], data, l);
@@ -214,7 +211,7 @@ bool AbstractStringBuffer::insertAt(int index, const std::string_view &str) {
 }
 
 bool AbstractStringBuffer::insertAt(int index, const String &str) {
-    return insertAt(index, ((StringView *) &str)->data(), str.len());
+    return insertAt(index, reinterpret_cast<const StringView *>(&str)->data(), str.len());
 }
 
 bool AbstractStringBuffer::insertAt(int index, const StringView &view) {

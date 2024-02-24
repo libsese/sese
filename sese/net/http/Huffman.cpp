@@ -14,8 +14,8 @@ huffman_node_t::huffman_node_t(
              m_code(c) {}
 
 huffman_tree_t::huffman_tree_t() noexcept : m_root(new huffman_node_t) {
-    for (std::size_t idx = 0; idx < huffman_table.size(); idx++) {
-        const bits_t &bits = huffman_table.at(idx);
+    for (std::size_t idx = 0; idx < HUFFMAN_TABLE.size(); idx++) {
+        const bits_t &bits = HUFFMAN_TABLE.at(idx);
         huffman_node_t *current = m_root;
 
         for (const auto &bit: bits) {
@@ -112,7 +112,7 @@ std::vector<uint8_t> huffman_encoder_t::encode(std::vector<uint8_t> &src) noexce
     std::vector<uint8_t> ret(0);
 
     for (auto &byte: src) {
-        bits_t bits = huffman_table.at(byte);
+        bits_t bits = HUFFMAN_TABLE.at(byte);
 
         for (decltype(auto) bit: bits) {
             if (write_bit(bit)) {

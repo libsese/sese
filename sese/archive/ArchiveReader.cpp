@@ -25,7 +25,7 @@ using sese::archive::ArchiveReader;
 
 bool ArchiveReader::extract(const std::filesystem::path &src_path, const std::filesystem::path &dest_path,
                             const std::string &pwd) {
-    auto src = src_path.string();
+    const auto SRC = src_path.string();
     auto dest = dest_path.string();
 
     struct archive *a = archive_read_new();
@@ -40,7 +40,7 @@ bool ArchiveReader::extract(const std::filesystem::path &src_path, const std::fi
         }
     }
 
-    if (ARCHIVE_OK != archive_read_open_filename(a, src.c_str(), 4096)) {
+    if (ARCHIVE_OK != archive_read_open_filename(a, SRC.c_str(), 4096)) {
         archive_read_free(a);
         return false;
     }
@@ -50,13 +50,11 @@ bool ArchiveReader::extract(const std::filesystem::path &src_path, const std::fi
         std::string filename = archive_entry_pathname(entry);
 
         auto exp = archive_entry_size(entry);
-        auto type = archive_entry_filetype(entry);
-        if (AE_IFDIR == type) {
+        if (const auto TYPE = archive_entry_filetype(entry); AE_IFDIR == TYPE) {
             if ('/' == filename.at(filename.length() - 1)) {
                 filename = filename.substr(0, filename.length() - 1);
             }
-            auto path = dest_path / filename;
-            if (std::filesystem::exists(path)) {
+            if (auto path = dest_path / filename; std::filesystem::exists(path)) {
                 if (!std::filesystem::is_directory(path)) {
                     archive_read_free(a);
                     return false;
@@ -70,32 +68,31 @@ bool ArchiveReader::extract(const std::filesystem::path &src_path, const std::fi
             continue;
         }
 
-        auto parent = (dest_path / filename).parent_path();
-        if (!std::filesystem::exists(parent)) {
+        if (auto parent = (dest_path / filename).parent_path(); !std::filesystem::exists(parent)) {
             if (!std::filesystem::create_directories(parent)) {
                 archive_read_free(a);
                 return false;
             }
         }
 
-        char buffer[4096];
         auto filepath = (dest_path / filename).string();
-        auto file = File::create(filepath, BINARY_WRITE_CREATE_TRUNC);
+        const auto FILE = File::create(filepath, BINARY_WRITE_CREATE_TRUNC);
         while (exp) {
-            auto len = archive_read_data(a, buffer, std::min<size_t>(exp, 4096));
-            if (len <= 0) {
+            char buffer[4096];
+            const auto LEN = archive_read_data(a, buffer, std::min<size_t>(exp, 4096));
+            if (LEN <= 0) {
                 break;
             }
-            auto write = file->write(buffer, static_cast<size_t>(len));
-            if (write != len) {
+            auto write = FILE->write(buffer, static_cast<size_t>(LEN));
+            if (write != LEN) {
                 break;
             } else {
-                exp -= len;
+                exp -= LEN;
             }
         }
 
-        file->flush();
-        file->close();
+        FILE->flush();
+        FILE->close();
         if (exp) {
             archive_read_free(a);
             return false;
@@ -125,18 +122,18 @@ inline int close(struct archive *a, void *data) {
 #define XX ((struct archive *) (this->archive))
 
 ArchiveReader::ArchiveReader(io::InputStream *input)
-        : input(input), archive(archive_read_new()) {
+        : archive(archive_read_new()), input(input) {
 }
 
 ArchiveReader::~ArchiveReader() {
     archive_read_free(XX);
 }
 
-int ArchiveReader::setPassword(const std::string &pwd) {
+int ArchiveReader::setPassword(const std::string &pwd) const {
     return archive_read_add_passphrase(XX, pwd.c_str());
 }
 
-int ArchiveReader::setOptions(const std::string &opt) {
+int ArchiveReader::setOptions(const std::string &opt) const {
     return archive_read_set_options(XX, opt.c_str());
 }
 
@@ -155,37 +152,37 @@ bool ArchiveReader::extract(const ArchiveReader::ExtractCallback &callback) {
     }
 
     struct archive_entry *entry{};
-    auto archiveInputStream = ArchiveInputStream(archive);
+    auto archive_input_stream = ArchiveInputStream(archive);
     while (archive_read_next_header(XX, &entry) == ARCHIVE_OK) {
         std::string filename = archive_entry_pathname(entry);
 
-        auto size = archive_entry_size(entry);
-        auto type = archive_entry_filetype(entry);
+        const auto SIZE = archive_entry_size(entry);
+        const auto TYPE = archive_entry_filetype(entry);
 
-        callback(filename, Config::fromValue(type), &archiveInputStream, size);
+        callback(filename, Config::fromValue(TYPE), &archive_input_stream, SIZE);
     }
     return true;
 }
 
-int ArchiveReader::getError() {
+int ArchiveReader::getError() const {
     return archive_errno(XX);
 }
 
-const char *ArchiveReader::getErrorString() {
+const char *ArchiveReader::getErrorString() const {
     return archive_error_string(XX);
 }
 
-int ArchiveReader::openCallback(void *a, ArchiveReader *_this) {
+int ArchiveReader::openCallback(void *a, ArchiveReader *archive_this) {
     return ARCHIVE_OK;
 }
 
-int64_t ArchiveReader::readCallback(void *a, ArchiveReader *_this, const void **buffer) {
-    auto read = _this->input->read(_this->buffer, 4096);
-    *buffer = _this->buffer;
-    return read;
+int64_t ArchiveReader::readCallback(void *a, ArchiveReader *archive_this, const void **buffer) {
+    const auto READ = archive_this->input->read(archive_this->buffer, 4096);
+    *buffer = archive_this->buffer;
+    return READ;
 }
 
-int ArchiveReader::closeCallback(void *a, ArchiveReader *_this) {
+int ArchiveReader::closeCallback(void *a, ArchiveReader *archive_this) {
     return ARCHIVE_OK;
 }
 

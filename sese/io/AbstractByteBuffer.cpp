@@ -4,24 +4,24 @@
 
 namespace sese::io {
 
-AbstractByteBuffer::Node::Node(size_t bufferSize) {
-    this->buffer = malloc(bufferSize);
-    this->cap = bufferSize;
+AbstractByteBuffer::Node::Node(size_t buffer_size) {
+    this->buffer = malloc(buffer_size);
+    this->cap = buffer_size;
 }
 
 AbstractByteBuffer::Node::~Node() {
     free(this->buffer);
 }
 
-AbstractByteBuffer::AbstractByteBuffer(size_t baseSize, size_t factor) {
-    this->root = new Node(baseSize); // GCOVR_EXCL_LINE
-    this->cap = baseSize;
+AbstractByteBuffer::AbstractByteBuffer(size_t base_size, size_t factor) {
+    this->root = new Node(base_size); // GCOVR_EXCL_LINE
+    this->cap = base_size;
     this->currentWriteNode = root;
     this->currentReadNode = root;
     this->factor = factor;
 }
 
-AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &src) noexcept {
+AbstractByteBuffer::AbstractByteBuffer(const AbstractByteBuffer &src) noexcept {
     // this->root = new Node(abstractByteBuffer.cap);
     // this->cap = abstractByteBuffer.cap;
     // this->length = 0;
@@ -53,24 +53,24 @@ AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &src) noexcept {
     this->currentReadNode = this->root;
 
     /// 拷贝子节点
-    Node *pLastNode = this->root;
-    Node *pNode = src.root->next;
-    while (pNode) {
-        auto sub = new Node(pNode->cap);
-        sub->length = pNode->length;
-        memcpy(sub->buffer, pNode->buffer, pNode->length);
+    Node *p_last_node = this->root;
+    const Node *p_node = src.root->next;
+    while (p_node) {
+        const auto SUB = new Node(p_node->cap);
+        SUB->length = p_node->length;
+        memcpy(SUB->buffer, p_node->buffer, p_node->length);
 
-        if (pNode == src.currentWriteNode) { // GCOVR_EXCL_LINE
-            this->currentWriteNode = sub;
+        if (p_node == src.currentWriteNode) { // GCOVR_EXCL_LINE
+            this->currentWriteNode = SUB;
         }
-        if (pNode == src.currentReadNode) { // GCOVR_EXCL_LINE
-            this->currentReadNode = sub;
+        if (p_node == src.currentReadNode) { // GCOVR_EXCL_LINE
+            this->currentReadNode = SUB;
         }
 
-        pLastNode->next = sub;
-        pLastNode = sub;
+        p_last_node->next = SUB;
+        p_last_node = SUB;
 
-        pNode = pNode->next;
+        p_node = p_node->next;
     }
 
     /// 拷贝全局属性
@@ -81,32 +81,31 @@ AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &src) noexcept {
     this->factor = src.factor;
 }
 
-AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer) noexcept {
-    this->root = abstractByteBuffer.root;
-    this->currentWriteNode = abstractByteBuffer.currentWriteNode;
-    this->currentWritePos = abstractByteBuffer.currentWritePos;
-    this->currentReadNode = abstractByteBuffer.currentReadNode;
-    this->currentReadPos = abstractByteBuffer.currentReadPos;
-    this->length = abstractByteBuffer.length;
-    this->cap = abstractByteBuffer.cap;
-    this->factor = abstractByteBuffer.factor;
+AbstractByteBuffer::AbstractByteBuffer(AbstractByteBuffer &&abstract_byte_buffer) noexcept {
+    this->root = abstract_byte_buffer.root;
+    this->currentWriteNode = abstract_byte_buffer.currentWriteNode;
+    this->currentWritePos = abstract_byte_buffer.currentWritePos;
+    this->currentReadNode = abstract_byte_buffer.currentReadNode;
+    this->currentReadPos = abstract_byte_buffer.currentReadPos;
+    this->length = abstract_byte_buffer.length;
+    this->cap = abstract_byte_buffer.cap;
+    this->factor = abstract_byte_buffer.factor;
 
-    abstractByteBuffer.root = nullptr;
-    abstractByteBuffer.currentWriteNode = nullptr;
-    abstractByteBuffer.currentWritePos = 0;
-    abstractByteBuffer.currentReadNode = nullptr;
-    abstractByteBuffer.currentReadPos = 0;
-    abstractByteBuffer.length = 0;
-    abstractByteBuffer.cap = 0;
-    abstractByteBuffer.factor = 0;
+    abstract_byte_buffer.root = nullptr;
+    abstract_byte_buffer.currentWriteNode = nullptr;
+    abstract_byte_buffer.currentWritePos = 0;
+    abstract_byte_buffer.currentReadNode = nullptr;
+    abstract_byte_buffer.currentReadPos = 0;
+    abstract_byte_buffer.length = 0;
+    abstract_byte_buffer.cap = 0;
+    abstract_byte_buffer.factor = 0;
 }
 
 AbstractByteBuffer::~AbstractByteBuffer() {
-    Node *toDel;
     while (root != nullptr) {
-        toDel = root;
-        root = toDel->next;
-        delete toDel; // GCOVR_EXCL_LINE
+        const Node *to_del = root;
+        root = to_del->next;
+        delete to_del; // GCOVR_EXCL_LINE
     }
 }
 
@@ -125,27 +124,27 @@ size_t AbstractByteBuffer::getCapacity() const {
 
 size_t AbstractByteBuffer::getReadableSize() const {
     size_t size = currentReadNode->length - currentReadPos;
-    auto pNode = currentReadNode->next;
-    while (pNode) {
-        if (pNode == currentWriteNode) {
+    auto p_node = currentReadNode->next;
+    while (p_node) {
+        if (p_node == currentWriteNode) {
             size += currentWritePos;
         } else {
-            size += pNode->cap;
+            size += p_node->cap;
         }
-        pNode = pNode->next;
+        p_node = p_node->next;
     }
     return size;
 }
 
 size_t AbstractByteBuffer::freeCapacity() {
     // 还原 root，删除 root 之后的节点
-    size_t freeCap = 0;
-    auto pNode = root->next;
-    while (pNode) {
-        auto toDel = pNode;
-        freeCap += toDel->cap;
-        pNode = pNode->next;
-        delete toDel;
+    size_t free_cap = 0;
+    auto p_node = root->next;
+    while (p_node) {
+        const auto TO_DEL = p_node;
+        free_cap += TO_DEL->cap;
+        p_node = p_node->next;
+        delete TO_DEL;
     }
 
     this->root->length = 0;
@@ -155,7 +154,7 @@ size_t AbstractByteBuffer::freeCapacity() {
     this->currentWritePos = 0;
     this->currentReadPos = 0;
 
-    return freeCap;
+    return free_cap;
 }
 
 void AbstractByteBuffer::swap(AbstractByteBuffer &other) noexcept {
@@ -168,24 +167,23 @@ void AbstractByteBuffer::swap(AbstractByteBuffer &other) noexcept {
     std::swap(this->cap, other.cap);
 }
 
-int64_t AbstractByteBuffer::read(void *buffer, size_t needRead) {
-    int64_t actualRead = 0;
+int64_t AbstractByteBuffer::read(void *buffer, size_t need_read) {
+    int64_t actual_read = 0;
     while (true) {
         // 当前单元能提供的剩余读取量
-        size_t currentReadNodeRemaining = currentReadNode->length - currentReadPos;
         // 当前单元能满足读取需求
-        if (needRead <= currentReadNodeRemaining) {
-            memcpy((char *) buffer + actualRead, (char *) currentReadNode->buffer + currentReadPos, needRead);
-            actualRead += (int64_t) needRead;
-            currentReadPos += needRead;
+        if (const size_t CURRENT_READ_NODE_REMAINING = currentReadNode->length - currentReadPos ;need_read <= CURRENT_READ_NODE_REMAINING) {
+            memcpy(static_cast<char *>(buffer) + actual_read, static_cast<char *>(currentReadNode->buffer) + currentReadPos, need_read);
+            actual_read += static_cast<int64_t>(need_read);
+            currentReadPos += need_read;
             break;
         }
         // 当前单元不能满足读取需求
         else {
-            memcpy((char *) buffer + actualRead, (char *) currentReadNode->buffer + currentReadPos, currentReadNodeRemaining);
-            actualRead += (int64_t) currentReadNodeRemaining;
-            needRead -= currentReadNodeRemaining;
-            currentReadPos += currentReadNodeRemaining;
+            memcpy(static_cast<char *>(buffer) + actual_read, static_cast<char *>(currentReadNode->buffer) + currentReadPos, CURRENT_READ_NODE_REMAINING);
+            actual_read += static_cast<int64_t>(CURRENT_READ_NODE_REMAINING);
+            need_read -= CURRENT_READ_NODE_REMAINING;
+            currentReadPos += CURRENT_READ_NODE_REMAINING;
             if (currentReadNode == currentWriteNode) {
                 // 已经没有剩余节点可供读取
                 break;
@@ -197,27 +195,26 @@ int64_t AbstractByteBuffer::read(void *buffer, size_t needRead) {
             }
         }
     }
-    return actualRead;
+    return actual_read;
 }
 
-int64_t AbstractByteBuffer::write(const void *buffer, size_t needWrite) {
-    int64_t actualWrite = 0;
+int64_t AbstractByteBuffer::write(const void *buffer, size_t need_write) {
+    int64_t actual_write = 0;
     while (true) {
         // 当前单元能提供的剩余写入量
-        size_t currentWriteNodeRemaining = currentWriteNode->cap - currentWriteNode->length;
         // 当前单元能满足写入需求
-        if (needWrite <= currentWriteNodeRemaining) {
-            memcpy((char *) currentWriteNode->buffer + currentWritePos, (char *) buffer + actualWrite, needWrite);
-            actualWrite += (int64_t) needWrite;
-            currentWritePos += needWrite;
-            currentWriteNode->length += needWrite;
+        if (const size_t CURRENT_WRITE_NODE_REMAINING = currentWriteNode->cap - currentWriteNode->length; need_write <= CURRENT_WRITE_NODE_REMAINING) {
+            memcpy(static_cast<char *>(currentWriteNode->buffer) + currentWritePos, static_cast<const char *>(buffer) + actual_write, need_write);
+            actual_write += static_cast<int64_t>(need_write);
+            currentWritePos += need_write;
+            currentWriteNode->length += need_write;
             break;
         }
         // 当前单元不能满足读取需求
         else {
-            memcpy((char *) currentWriteNode->buffer + currentWritePos, (char *) buffer + actualWrite, currentWriteNodeRemaining);
-            actualWrite += (int64_t) currentWriteNodeRemaining;
-            needWrite -= currentWriteNodeRemaining;
+            memcpy(static_cast<char *>(currentWriteNode->buffer) + currentWritePos, static_cast<const char *>(buffer) + actual_write, CURRENT_WRITE_NODE_REMAINING);
+            actual_write += static_cast<int64_t>(CURRENT_WRITE_NODE_REMAINING);
+            need_write -= CURRENT_WRITE_NODE_REMAINING;
             currentWriteNode->length = currentWriteNode->cap;
 
             // 更新全局信息
@@ -230,63 +227,61 @@ int64_t AbstractByteBuffer::write(const void *buffer, size_t needWrite) {
             continue;
         }
     }
-    return actualWrite;
+    return actual_write;
 }
 
-int64_t AbstractByteBuffer::peek(void *buffer, size_t needRead) {
-    const Node *_currentReadNode = currentReadNode;
-    const Node *_currentWriteNode = currentWriteNode;
-    auto _currentReadPos = currentReadPos;
+int64_t AbstractByteBuffer::peek(void *buffer, size_t need_read) {
+    const Node *current_read_node = currentReadNode;
+    const Node *current_write_node = currentWriteNode;
+    auto current_read_pos = currentReadPos;
 
-    int64_t actualRead = 0;
+    int64_t actual_read = 0;
     while (true) {
         // 当前单元能提供的剩余读取量
-        size_t currentReadNodeRemaining = _currentReadNode->length - _currentReadPos;
         // 当前单元能满足读取需求
-        if (needRead <= currentReadNodeRemaining) {
-            memcpy((char *) buffer + actualRead, (char *) _currentReadNode->buffer + _currentReadPos, needRead);
-            actualRead += (int64_t) needRead;
-            _currentReadPos += needRead;
+        if (const size_t CURRENT_READ_NODE_REMAINING = current_read_node->length - current_read_pos ;need_read <= CURRENT_READ_NODE_REMAINING) {
+            memcpy(static_cast<char *>(buffer) + actual_read, static_cast<char *>(current_read_node->buffer) + current_read_pos, need_read);
+            actual_read += static_cast<int64_t>(need_read);
+            current_read_pos += need_read;
             break;
         }
         // 当前单元不能满足读取需求
         else {
-            memcpy((char *) buffer + actualRead, (char *) _currentReadNode->buffer + _currentReadPos, currentReadNodeRemaining);
-            actualRead += (int64_t) currentReadNodeRemaining;
-            needRead -= currentReadNodeRemaining;
-            _currentReadPos += currentReadNodeRemaining;
-            if (_currentReadNode == _currentWriteNode) {
+            memcpy(static_cast<char *>(buffer) + actual_read, static_cast<char *>(current_read_node->buffer) + current_read_pos, CURRENT_READ_NODE_REMAINING);
+            actual_read += static_cast<int64_t>(CURRENT_READ_NODE_REMAINING);
+            need_read -= CURRENT_READ_NODE_REMAINING;
+            current_read_pos += CURRENT_READ_NODE_REMAINING;
+            if (current_read_node == current_write_node) {
                 // 已经没有剩余节点可供读取
                 break;
             } else {
                 // 切换下一个节点继续读取
-                _currentReadNode = _currentReadNode->next;
-                _currentReadPos = 0;
+                current_read_node = current_read_node->next;
+                current_read_pos = 0;
                 continue;
             }
         }
     }
-    return actualRead;
+    return actual_read;
 }
 
-int64_t AbstractByteBuffer::trunc(size_t needRead) {
-    int64_t actualRead = 0;
+int64_t AbstractByteBuffer::trunc(size_t need_read) {
+    int64_t actual_read = 0;
     while (true) {
         // 当前单元能提供的剩余读取量
-        size_t currentReadNodeRemaining = currentReadNode->length - currentReadPos;
         // 当前单元能满足读取需求
-        if (needRead <= currentReadNodeRemaining) {
+        if (const size_t CURRENT_READ_NODE_REMAINING = currentReadNode->length - currentReadPos ;need_read <= CURRENT_READ_NODE_REMAINING) {
             // memcpy((char *) buffer + actualRead, (char *) currentReadNode->buffer + currentReadPos, length);
-            actualRead += (int64_t) needRead;
-            currentReadPos += needRead;
+            actual_read += static_cast<int64_t>(need_read);
+            currentReadPos += need_read;
             break;
         }
         // 当前单元不能满足读取需求
         else {
             // memcpy((char *) buffer + actualRead, (char *) currentReadNode->buffer + currentReadPos, currentReadNodeRemaining);
-            actualRead += (int64_t) currentReadNodeRemaining;
-            needRead -= currentReadNodeRemaining;
-            currentReadPos += currentReadNodeRemaining;
+            actual_read += static_cast<int64_t>(CURRENT_READ_NODE_REMAINING);
+            need_read -= CURRENT_READ_NODE_REMAINING;
+            currentReadPos += CURRENT_READ_NODE_REMAINING;
             if (currentReadNode == currentWriteNode) {
                 // 已经没有剩余节点可供读取
                 break;
@@ -298,7 +293,7 @@ int64_t AbstractByteBuffer::trunc(size_t needRead) {
             }
         }
     }
-    return actualRead;
+    return actual_read;
 }
 
 } // namespace sese::io

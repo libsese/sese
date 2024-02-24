@@ -18,9 +18,9 @@ class API BufferedInputStream : public InputStream {
 public:
     using Ptr = std::shared_ptr<BufferedInputStream>;
 
-    explicit BufferedInputStream(const InputStream::Ptr &source, size_t bufferSize = STREAM_BYTE_STREAM_SIZE_FACTOR);
+    explicit BufferedInputStream(const InputStream::Ptr &source, size_t buffer_size = STREAM_BYTE_STREAM_SIZE_FACTOR);
 
-    ~BufferedInputStream() noexcept;
+    ~BufferedInputStream() noexcept override;
 
     int64_t read(void *buffer, size_t length) override;
 

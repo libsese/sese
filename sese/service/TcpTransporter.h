@@ -42,6 +42,7 @@ struct API TcpTransporterConfig {
     uint32_t keepalive = 30;
     security::SSLContext::Ptr servCtx = nullptr;
 
+    virtual ~TcpTransporterConfig() = default;
     virtual TcpConnection *createConnection() = 0;
     virtual void freeConnection(TcpConnection *conn);
 };
@@ -49,7 +50,7 @@ struct API TcpTransporterConfig {
 /// TCP 传输器
 class API TcpTransporter : public v1::TimerableService {
 public:
-    explicit TcpTransporter(TcpTransporterConfig *transporterConfig) noexcept;
+    explicit TcpTransporter(TcpTransporterConfig *transporter_config) noexcept;
     ~TcpTransporter() override;
 
 protected:
@@ -57,18 +58,18 @@ protected:
     void onRead(event::BaseEvent *event) override;
     void onWrite(event::BaseEvent *event) override;
     void onClose(event::BaseEvent *event) override;
-    void onTimeout(v1::TimeoutEvent *timeoutEvent) override;
+    void onTimeout(v1::TimeoutEvent *timeout_event) override;
 
 protected:
     virtual void postRead(TcpConnection *conn);
     virtual void postWrite(TcpConnection *conn);
     virtual int onProcAlpnSelect(
-            const uint8_t **out, uint8_t *outLength,
-            const uint8_t *in, uint32_t inLength
+            const uint8_t **out, uint8_t *out_length,
+            const uint8_t *in, uint32_t in_length
     ) = 0;
     virtual void onProcAlpnGet(
             TcpConnection *conn,
-            const uint8_t *in, uint32_t inLength
+            const uint8_t *in, uint32_t in_length
     ) = 0;
     virtual void onProcHandle(TcpConnection *conn) = 0;
     virtual void onProcClose(TcpConnection *conn) = 0;
@@ -85,8 +86,8 @@ protected:
 private:
     static int alpnCallbackFunction(
             void *ssl,
-            const uint8_t **out, uint8_t *outLength,
-            const uint8_t *in, uint32_t inLength,
+            const uint8_t **out, uint8_t *out_length,
+            const uint8_t *in, uint32_t in_length,
             TcpTransporter *transporter
     );
 };

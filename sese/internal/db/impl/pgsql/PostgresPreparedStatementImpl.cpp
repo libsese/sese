@@ -1,5 +1,6 @@
 #include <sese/internal/db/impl/pgsql/PostgresPreparedStatementImpl.h>
 #include <sstream>
+#include <utility>
 
 #ifndef FLOAT8OID
 #define FLOAT8OID 701
@@ -18,16 +19,16 @@
 #endif
 
 sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl(
-        const std::string &stmtName,
-        const std::string &stmtString,
+        std::string stmt_name,
+        std::string stmt_string,
         uint32_t count,
         PGconn *conn
 ) noexcept
-    : stmtName(stmtName), stmtString(stmtString), count(count), conn(conn), result(nullptr) {
-    this->paramTypes = (Oid *) malloc(sizeof(Oid) * count);
+    : conn(conn), stmtName(std::move(stmt_name)), stmtString(std::move(stmt_string)), count(count), result(nullptr) {
+    this->paramTypes = static_cast<Oid *>(malloc(sizeof(Oid) * count));
     memset(this->paramTypes, 0, sizeof(Oid) * count);
 
-    this->paramValues = (const char **) malloc(sizeof(const char *) * count);
+    this->paramValues = static_cast<const char **>(malloc(sizeof(const char *) * count));
     this->strings = new std::string[count];
 }
 
@@ -90,8 +91,8 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setNull(uint32_t index) noex
 
 bool sese::db::impl::PostgresPreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
     if (index - 1 >= count) return false;
-    std::string dateValue = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
-    this->strings[index - 1] = dateValue;
+    const std::string DATE_VALUE = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
+    this->strings[index - 1] = DATE_VALUE;
     this->paramValues[index - 1] = this->strings[index - 1].c_str();
     this->paramTypes[index - 1] = TIMESTAMPOID;
     return true;
@@ -100,13 +101,12 @@ bool sese::db::impl::PostgresPreparedStatementImpl::setDateTime(uint32_t index, 
 sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQuery() noexcept {
     result = PQexecPrepared(conn, stmtName.c_str(), static_cast<int>(count), paramValues, nullptr, nullptr, 0);
     if (result == nullptr) {
-        error = (int) PQstatus(conn);
+        error = static_cast<int>(PQstatus(conn));
         return nullptr;
     }
 
-    auto status = PQresultStatus(result);
-    if (status != PGRES_TUPLES_OK) {
-        error = (int) status;
+    if (const auto STATUS = PQresultStatus(result); STATUS != PGRES_TUPLES_OK) {
+        error = static_cast<int>(STATUS);
         return nullptr;
     }
 
@@ -119,21 +119,20 @@ sese::db::ResultSet::Ptr sese::db::impl::PostgresPreparedStatementImpl::executeQ
 int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate() noexcept {
     result = PQexecPrepared(conn, stmtName.c_str(), static_cast<int>(count), paramValues, nullptr, nullptr, 0);
     if (result == nullptr) {
-        error = (int) PQstatus(conn);
+        error = static_cast<int>(PQstatus(conn));
         return -1;
     }
 
-    auto status = PQresultStatus(result);
-    if (status != PGRES_COMMAND_OK) {
-        error = (int) status;
+    if (const auto STATUS = PQresultStatus(result); STATUS != PGRES_COMMAND_OK) {
+        error = static_cast<int>(STATUS);
         return -1;
     }
 
-    auto rt = (int64_t) PQcmdTuples(result);
+    const auto RT = reinterpret_cast<int64_t>(PQcmdTuples(result));
     PQclear(result);
     result = nullptr;
     error = 0;
-    return rt;
+    return RT;
 }
 
 int sese::db::impl::PostgresPreparedStatementImpl::getLastError() const noexcept {
@@ -149,12 +148,11 @@ const char *sese::db::impl::PostgresPreparedStatementImpl::getLastErrorMessage()
 }
 
 bool sese::db::impl::PostgresPreparedStatementImpl::getColumnType(uint32_t index, sese::db::MetadataType &type) noexcept {
-    auto meta = PQdescribePrepared(conn, stmtName.c_str());
-    if (meta == nullptr || PQnfields(meta) <= static_cast<int>(index)) {
+    const auto META = PQdescribePrepared(conn, stmtName.c_str());
+    if (META == nullptr || PQnfields(META) <= static_cast<int>(index)) {
         return false;
     }
-    auto oid = PQftype(meta, static_cast<int>(index));
-    switch (oid) {
+    switch (PQftype(META, static_cast<int>(index))) {
         case BOOLOID:
             type = MetadataType::Boolean;
             break;
@@ -196,9 +194,9 @@ bool sese::db::impl::PostgresPreparedStatementImpl::getColumnType(uint32_t index
 }
 
 int64_t sese::db::impl::PostgresPreparedStatementImpl::getColumnSize(uint32_t index) noexcept {
-    auto meta = PQdescribePrepared(conn, stmtName.c_str());
-    if (meta == nullptr || PQnfields(meta) <= static_cast<int>(index)) {
+    const auto META = PQdescribePrepared(conn, stmtName.c_str());
+    if (META == nullptr || PQnfields(META) <= static_cast<int>(index)) {
         return -1;
     }
-    return PQfsize(meta, static_cast<int>(index));
+    return PQfsize(META, static_cast<int>(index));
 }

@@ -1,5 +1,5 @@
 /**
-* @file ConcurrentObjectPool.h
+* @file ObjectPool.h
 * @author kaoru
 * @date 2023年1月12日
 * @brief 并发对象池
@@ -47,13 +47,13 @@ public:
         if (queue.pop(p)) {
             return std::shared_ptr<T>(
                     p,
-                    [wkPool = this->weak_from_this()](T *t) { ObjectPool<T>::recycleCallback(wkPool, t); }
+                    [wk_pool = this->weak_from_this()](T *t) { ObjectPool<T>::recycleCallback(wk_pool, t); }
             );
         } else {
             p = new T;
             return std::shared_ptr<T>(
                     p,
-                    [wkPool = this->weak_from_this()](T *t) { ObjectPool<T>::recycleCallback(wkPool, t); }
+                    [wk_pool = this->weak_from_this()](T *t) { ObjectPool<T>::recycleCallback(wk_pool, t); }
             );
         }
     }
@@ -63,11 +63,10 @@ private:
     ObjectPool() = default;
 
     /// 已借出对象的销毁器
-    /// \param wkPool 对象所属对象池的弱指针，用于执行回收逻辑
+    /// \param wk_pool 对象所属对象池的弱指针，用于执行回收逻辑
     /// \param t 待回收对象
-    static void recycleCallback(const std::weak_ptr<ObjectPool<T>> &wkPool, T *t) {
-        auto pool = wkPool.lock();
-        if (pool) {
+    static void recycleCallback(const std::weak_ptr<ObjectPool<T>> &wk_pool, T *t) {
+        if (auto pool = wk_pool.lock()) {
             pool->queue.push(t);
         } else {
             delete t;

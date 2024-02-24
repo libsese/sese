@@ -5,32 +5,32 @@
 
 namespace sese::xml {
 
-Element::Ptr XmlUtil::deserialize(const InputStream::Ptr &inputStream, size_t level) noexcept {
-    return deserialize(inputStream.get(), level);
+Element::Ptr XmlUtil::deserialize(const InputStream::Ptr &input_stream, size_t level) noexcept {
+    return deserialize(input_stream.get(), level);
 }
 
-void XmlUtil::serialize(const Element::Ptr &object, const OutputStream::Ptr &outputStream) noexcept {
-    serialize(object, outputStream.get());
+void XmlUtil::serialize(const Element::Ptr &object, const OutputStream::Ptr &output_stream) noexcept {
+    serialize(object, output_stream.get());
 }
 
-void XmlUtil::tokenizer(InputStream *inputStream, sese::xml::XmlUtil::Tokens &tokens) noexcept {
-    text::StringBuilder stringBuilder;
+void XmlUtil::tokenizer(InputStream *input_stream, sese::xml::XmlUtil::Tokens &tokens) noexcept {
+    text::StringBuilder string_builder;
     char ch;
     int64_t len;
-    while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
+    while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
         if (sese::isSpace(ch)) {
-            if (stringBuilder.empty()) continue;
-            tokens.push(stringBuilder.toString());
-            stringBuilder.clear();
+            if (string_builder.empty()) continue;
+            tokens.push(string_builder.toString());
+            string_builder.clear();
         } else if (ch == '>') {
-            if (!stringBuilder.empty())
-                tokens.push(stringBuilder.toString());
+            if (!string_builder.empty())
+                tokens.push(string_builder.toString());
             tokens.push({ch});
-            stringBuilder.clear();
+            string_builder.clear();
         } else if (ch == '<') {
-            if (!stringBuilder.empty()) {
-                tokens.push(stringBuilder.toString());
-                stringBuilder.clear();
+            if (!string_builder.empty()) {
+                tokens.push(string_builder.toString());
+                string_builder.clear();
             }
             tokens.push({ch});
 
@@ -48,34 +48,34 @@ void XmlUtil::tokenizer(InputStream *inputStream, sese::xml::XmlUtil::Tokens &to
             //     }
             //     tokens.push({ch});
             // }
-            if (!stringBuilder.empty()) {
-                tokens.push(stringBuilder.toString());
-                stringBuilder.clear();
+            if (!string_builder.empty()) {
+                tokens.push(string_builder.toString());
+                string_builder.clear();
             }
             tokens.push({ch});
         } else if (ch == '=') {
-            tokens.push(stringBuilder.toString());
-            stringBuilder.clear();
+            tokens.push(string_builder.toString());
+            string_builder.clear();
             tokens.push({ch});
         } else if (ch == '\"') {
-            while ((len = inputStream->read(&ch, 1 * sizeof(char))) != 0) {
+            while ((len = input_stream->read(&ch, 1 * sizeof(char))) != 0) {
                 if (ch == '\"') {
-                    tokens.push(stringBuilder.toString());
-                    stringBuilder.clear();
+                    tokens.push(string_builder.toString());
+                    string_builder.clear();
                     break;
                 } else {
-                    stringBuilder.append(ch);
+                    string_builder.append(ch);
                 }
             }
         } else {
-            stringBuilder.append(ch);
+            string_builder.append(ch);
         }
     }
 }
 
-Element::Ptr XmlUtil::deserialize(InputStream *inputStream, size_t level) noexcept {
+Element::Ptr XmlUtil::deserialize(InputStream *input_stream, size_t level) noexcept {
     Tokens tokens;
-    tokenizer(inputStream, tokens);
+    tokenizer(input_stream, tokens);
     return createElement(tokens, level, false);
 }
 
@@ -103,12 +103,12 @@ bool XmlUtil::removeComment(sese::xml::XmlUtil::Tokens &tokens) noexcept {
     if (tokens.empty()) return nullptr; \
     if (tokens.front() != word) return nullptr
 
-Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t level, bool isSubElement) noexcept {
+Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t level, bool is_sub_element) noexcept {
     if (level == 0) return nullptr;
     Element::Ptr element = nullptr;
     while (!tokens.empty()) {
         // <name(/,w)>
-        if (!isSubElement) {
+        if (!is_sub_element) {
             if (tokens.front() != "<") return nullptr;
             tokens.pop();
 
@@ -137,7 +137,7 @@ Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t l
         if (tokens.empty()) return nullptr; // GCOVR_EXCL_LINE
         // attrName=""
         while (tokens.front() != ">" && tokens.front() != "/") {
-            std::string attrName = tokens.front();
+            std::string attr_name = tokens.front();
             tokens.pop(); // attrName
             // if (tokens.empty()) return nullptr;
             // if (tokens.front() != "=") return nullptr;
@@ -145,7 +145,7 @@ Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t l
             tokens.pop(); // =
 
             if (tokens.empty()) return nullptr; // GCOVR_EXCL_LINE
-            element->setAttribute(attrName, tokens.front());
+            element->setAttribute(attr_name, tokens.front());
             tokens.pop(); // attrValue
         }
 
@@ -190,7 +190,7 @@ Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t l
                 }
             } else {
                 bool first = true;
-                text::StringBuilder stringBuilder;
+                text::StringBuilder string_builder;
                 while (!tokens.empty()) {
                     if (tokens.front() == "<") {
                         break;
@@ -198,13 +198,13 @@ Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t l
                         if (first) {
                             first = false;
                         } else {
-                            stringBuilder.append(" ");
+                            string_builder.append(" ");
                         }
-                        stringBuilder.append(tokens.front());
+                        string_builder.append(tokens.front());
                         tokens.pop();
                     }
                 }
-                element->setValue(stringBuilder.toString());
+                element->setValue(string_builder.toString());
 
                 CHECK("<");                // GCOVR_EXCL_LINE
                 tokens.pop();              // '<'
@@ -222,14 +222,14 @@ Element::Ptr XmlUtil::createElement(sese::xml::XmlUtil::Tokens &tokens, size_t l
 }
 
 void XmlUtil::serialize(const Element::Ptr &object, OutputStream *stream) noexcept {
-    auto name = object->getName();
-    auto attributes = object->getAttributes();
-    auto value = object->getValue();
+    const auto NAME = object->getName();
+    const auto ATTRIBUTES = object->getAttributes();
+    const auto VALUE = object->getValue();
     stream->write("<", 1);
-    stream->write(name.c_str(), name.length());
+    stream->write(NAME.c_str(), NAME.length());
 
-    if (!attributes.empty()) {
-        for (decltype(auto) attr: attributes) {
+    if (!ATTRIBUTES.empty()) {
+        for (decltype(auto) attr: ATTRIBUTES) {
             stream->write(" ", 1);
             stream->write(attr.first.c_str(), attr.first.length());
             stream->write("=\"", 2);
@@ -244,16 +244,16 @@ void XmlUtil::serialize(const Element::Ptr &object, OutputStream *stream) noexce
             serialize(element, stream);
         }
         stream->write("</", 2);
-        stream->write(name.c_str(), name.length());
+        stream->write(NAME.c_str(), NAME.length());
         stream->write(">", 1);
     } else {
-        if (value.length() == 0) {
+        if (VALUE.empty()) {
             stream->write("/>", 2);
         } else {
             stream->write(">", 1);
-            stream->write(value.c_str(), value.length());
+            stream->write(VALUE.c_str(), VALUE.length());
             stream->write("</", 2);
-            stream->write(name.c_str(), name.length());
+            stream->write(NAME.c_str(), NAME.length());
             stream->write(">", 1);
         }
     }

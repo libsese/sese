@@ -132,8 +132,8 @@ TEST(TestPostgresStmt, InsertStmt) {
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);
 
-    auto stmtQuery1 = instance->createStatement("select * from tb_stmt_insert;");
-    auto result = stmtQuery1->executeQuery();
+    auto stmt_query1 = instance->createStatement("select * from tb_stmt_insert;");
+    auto result = stmt_query1->executeQuery();
     ASSERT_NE(nullptr, result);
     if (result->next()) {
         ASSERT_EQ(1, result->getInteger(0));
@@ -202,9 +202,9 @@ TEST(TestPostgresStmt, SetTimeStmt) {
     ASSERT_NE(nullptr, stmt);
 
     int32_t id = 3;
-    auto dateTime = sese::DateTime(1679142600000000, 0);
+    auto date_time = sese::DateTime(1679142600000000, 0);
     ASSERT_EQ(true, stmt->setInteger(1, id));
-    ASSERT_EQ(true, stmt->setDateTime(2, dateTime));
+    ASSERT_EQ(true, stmt->setDateTime(2, date_time));
 
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);

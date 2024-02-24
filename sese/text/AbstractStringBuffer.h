@@ -30,8 +30,8 @@ public:
     explicit AbstractStringBuffer(const char *str) noexcept;
     virtual ~AbstractStringBuffer() noexcept;
 
-    AbstractStringBuffer(AbstractStringBuffer &abstractStringBuffer) noexcept;
-    AbstractStringBuffer(AbstractStringBuffer &&abstractStringBuffer) noexcept;
+    AbstractStringBuffer(const AbstractStringBuffer &abstract_string_buffer) noexcept;
+    AbstractStringBuffer(AbstractStringBuffer &&abstract_string_buffer) noexcept;
 
     static std::vector<std::string> split(const std::string &text, const std::string &sub) noexcept;
 
@@ -43,9 +43,9 @@ protected:
 protected:
     /**
      * 扩容
-     * @param newSize 扩容后大小
+     * @param new_size 扩容后大小
      */
-    void expansion(size_t newSize) noexcept;
+    void expansion(size_t new_size) noexcept;
 
 
     bool insertAt(int index, const char *data, size_t len);

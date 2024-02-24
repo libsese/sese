@@ -16,7 +16,7 @@ namespace sese::io {
 class API AbstractFixedBuffer : public Stream, public PeekableStream {
 public:
     explicit AbstractFixedBuffer(size_t size) noexcept;
-    virtual ~AbstractFixedBuffer() noexcept;
+    ~AbstractFixedBuffer() noexcept override;
     // copy
     AbstractFixedBuffer(const AbstractFixedBuffer &buffer) noexcept;
     // move

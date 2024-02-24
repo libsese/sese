@@ -37,8 +37,8 @@ void LogHelper::e(const char *format, ...) noexcept {
 void LogHelper::l(Level level, const char *file, int32_t line, const char *format, va_list ap) {
     char buf[RECORD_OUTPUT_BUFFER]{0};
     std::vsnprintf(buf, RECORD_OUTPUT_BUFFER,format, ap);
-    record::Event::Ptr event = std::make_shared<record::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf);
-    getLogger()->log(event);
+    const auto EVENT = std::make_shared<record::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf);
+    getLogger()->log(EVENT);
 }
 
 LogHelper::LogHelper() {
@@ -48,8 +48,8 @@ LogHelper::LogHelper() {
 void LogHelper::log(record::Level level, const char *file, int32_t line, const char *format, va_list ap) {
     char buf[RECORD_OUTPUT_BUFFER]{0};
     std::vsnprintf(buf, RECORD_OUTPUT_BUFFER,format, ap);
-    record::Event::Ptr event = std::make_shared<record::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf);
-    logger->log(event);
+    const auto EVENT = std::make_shared<record::Event>(sese::DateTime::now(), level, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId(), file, line, buf);
+    logger->log(EVENT);
 }
 
 void LogHelper::debug(const char *format, ...) {

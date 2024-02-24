@@ -7,20 +7,20 @@ using Func = double(double);
 
 TEST(TestLibraryLoader, _0) {
 #ifdef _WIN32
-    const char *libName = "NTDLL.DLL";
+    auto lib_name = "NTDLL.DLL";
 #elif __linux__
-    const char *libName = "libstdc++.so.6";
+    auto *lib_name = "libstdc++.so.6";
 #elif __APPLE__
-    const char *libName = "libstdc++.6.dylib";
+    auto *lib_name = "libstdc++.6.dylib";
 #endif
-    sese::record::LogHelper::i("loading lib \"%s\"", libName);
-    auto object = sese::system::LibraryObject::create(libName);
-    ASSERT_NE(object, nullptr);
-    auto sin = (Func *) object->findFunctionByName("sin");
-    ASSERT_NE(sin, nullptr);
+    sese::record::LogHelper::i("loading lib \"%s\"", lib_name);
+    const auto OBJECT = sese::system::LibraryObject::create(lib_name);
+    ASSERT_NE(OBJECT, nullptr);
+    const auto SIN = (Func *) (OBJECT->findFunctionByName("sin"));
+    ASSERT_NE(SIN, nullptr);
 
-    auto a = sin(1.0f);
-    auto b = sin(0.0f);
-    sese::record::LogHelper::i("sin(1.0f) = %f", a);
-    sese::record::LogHelper::i("sin(0.0f) = %f", b);
+    const auto A = SIN(1.0f);
+    const auto B = SIN(0.0f);
+    sese::record::LogHelper::i("sin(1.0f) = %f", A);
+    sese::record::LogHelper::i("sin(0.0f) = %f", B);
 }

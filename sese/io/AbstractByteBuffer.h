@@ -31,27 +31,27 @@ private:
         size_t cap = 0;
         /**
          * 初始化节点
-         * @param bufferSize 节点分配内存大小
+         * @param buffer_size 节点分配内存大小
          */
-        explicit Node(size_t bufferSize);
+        explicit Node(size_t buffer_size);
         /// 析构
         ~Node();
     };
 
 public:
     /**
-     * @param baseSize 初始节点内存大小
+     * @param base_size 初始节点内存大小
      * @param factor 追加内存节点大小
      */
-    explicit AbstractByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
+    explicit AbstractByteBuffer(size_t base_size = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
 
     /// 拷贝
-    AbstractByteBuffer(AbstractByteBuffer &abstractByteBuffer) noexcept;
+    AbstractByteBuffer(const AbstractByteBuffer &abstract_byte_buffer) noexcept;
     /// 移动语义
-    AbstractByteBuffer(AbstractByteBuffer &&abstractByteBuffer) noexcept;
+    AbstractByteBuffer(AbstractByteBuffer &&abstract_byte_buffer) noexcept;
 
     /// 析构
-    virtual ~AbstractByteBuffer();
+    ~AbstractByteBuffer() override;
     /// 重置读取位置
     virtual void resetPos();
     /**
@@ -85,7 +85,7 @@ public:
     int64_t write(const void *buffer, size_t len) override;
 
     int64_t peek(void *buffer, size_t len) override;
-    int64_t trunc(size_t needRead) override;
+    int64_t trunc(size_t need_read) override;
 
 private:
     size_t factor = 0;

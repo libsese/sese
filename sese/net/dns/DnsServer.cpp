@@ -86,7 +86,7 @@ void sese::net::dns::DnsServer::loop() noexcept {
         auto output = sese::io::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
 
         FrameHeaderInfo info;
-        DndSession session;
+        DnsSession session;
         DnsUtil::decodeFrameHeaderInfo(buffer, info);
         DnsUtil::decodeQueries(info.questions, &input, session.getQueries());
 

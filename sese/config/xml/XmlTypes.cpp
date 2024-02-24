@@ -30,21 +30,20 @@ void Element::addElement(const Element::Ptr &element) {
     elements.push_back(element);
 }
 
-void Element::setAttribute(const std::string &nameStr, const std::string &valueStr) {
-    attributes[nameStr] = valueStr;
+void Element::setAttribute(const std::string &name, const std::string &value) {
+    attributes[name] = value;
 }
 
-const std::string &Element::getAttribute(const std::string &nameStr, const std::string &defaultValue) const {
-    auto iterator = attributes.find(nameStr);
-    if (iterator == attributes.end()) {
-        return defaultValue;
+const std::string &Element::getAttribute(const std::string &name, const std::string &default_value) const {
+    if (const auto ITERATOR = attributes.find(name); ITERATOR == attributes.end()) {
+        return default_value;
     } else {
-        return iterator->second;
+        return ITERATOR->second;
     }
 }
 
-void Element::removeAttribute(const std::string &nameStr) {
-    attributes.erase(nameStr);
+void Element::removeAttribute(const std::string &name) {
+    attributes.erase(name);
 }
 
 } // namespace sese::xml

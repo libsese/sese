@@ -50,7 +50,7 @@ public:
     [[nodiscard]] const void *findFunctionByName(const std::string &name) const;
 
 private:
-    LibraryObject(Module module) noexcept;
+    explicit LibraryObject(Module module) noexcept;
 
     Module module;
 };

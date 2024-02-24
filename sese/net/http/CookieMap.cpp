@@ -16,7 +16,7 @@ Cookie::Ptr CookieMap::find(const std::string &name) noexcept {
 }
 
 void CookieMap::expired(uint64_t now) {
-    for (decltype(auto) iterator = map.begin(); iterator != map.end();) {
+    for (auto iterator = map.begin(); iterator != map.end();) {
         if (iterator->second->getExpires()) {
             if (iterator->second->expired(now)) {
                 map.erase(iterator++);
@@ -30,7 +30,7 @@ void CookieMap::expired(uint64_t now) {
 }
 
 void CookieMap::update(uint64_t offset) {
-    for (decltype(auto) iterator = map.begin(); iterator != map.end(); ++iterator) {
+    for (auto iterator = map.begin(); iterator != map.end(); ++iterator) {
         iterator->second->update(offset);
     }
 }

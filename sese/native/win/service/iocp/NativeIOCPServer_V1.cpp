@@ -9,8 +9,8 @@ using namespace sese::net;
 using namespace sese::iocp;
 using namespace sese::_windows::iocp::v1;
 
-NativeContext::NativeContext(OverlappedWrapper *pWrapper) : pWrapper(pWrapper) {
-    wsabufWrite.buf = (CHAR *) malloc(IOCP_WSABUF_SIZE);
+NativeContext::NativeContext(OverlappedWrapper *p_wrapper) : pWrapper(p_wrapper) {
+    wsabufWrite.buf = static_cast<CHAR *>(malloc(IOCP_WSABUF_SIZE));
 }
 
 NativeContext::~NativeContext() {
@@ -22,7 +22,7 @@ NativeContext::~NativeContext() {
 
 int64_t NativeContext::read(void *buffer, size_t length) {
     if (ssl) {
-        return SSL_read((SSL *) ssl, buffer, (int) length);
+        return SSL_read(static_cast<SSL *>(ssl), buffer, static_cast<int>(length));
     } else {
         return recv.read(buffer, length);
     }
@@ -30,7 +30,7 @@ int64_t NativeContext::read(void *buffer, size_t length) {
 
 int64_t NativeContext::write(const void *buffer, size_t length) {
     if (ssl) {
-        return SSL_write((SSL *) ssl, buffer, (int) length);
+        return SSL_write(static_cast<SSL *>(ssl), buffer, static_cast<int>(length));
     } else {
         return send.write(buffer, length);
     }
@@ -49,10 +49,9 @@ int64_t NativeContext::trunc(size_t length) {
         char buffer[1024]{};
         int64_t real = 0;
         while (true) {
-            auto need = std::min<int>(static_cast<int>(length - real), sizeof(buffer));
-            int l = SSL_read((SSL *) ssl, buffer, need);
-            if (l > 0) {
-                real += l;
+            const auto NEED = std::min<int>(static_cast<int>(length - real), sizeof(buffer));
+            if (const int L = SSL_read(static_cast<SSL *>(ssl), buffer, NEED); L > 0) {
+                real += L;
             } else {
                 break;
             }
@@ -116,19 +115,19 @@ bool NativeIOCPServer::init() {
     acceptThread->start();
 
     if (sslCtx) {
-        auto serverSSL = (SSL_CTX *) sslCtx->getContext();
+        const auto SERVER_SSL = static_cast<SSL_CTX *>(sslCtx->getContext());
         SSL_CTX_set_alpn_select_cb(
-                serverSSL,
-                (SSL_CTX_alpn_select_cb_func) &alpnCallbackFunction,
+                SERVER_SSL,
+                reinterpret_cast<SSL_CTX_alpn_select_cb_func>(&alpnCallbackFunction),
                 this
         );
     }
 
-    auto method = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bioIOCP");
-    BIO_meth_set_ctrl(method, (long (*)(BIO *, int, long, void *)) & NativeIOCPServer::bioCtrl);
-    BIO_meth_set_read(method, (int (*)(BIO *, char *, int)) & NativeIOCPServer::bioRead);
-    BIO_meth_set_write(method, (int (*)(BIO *, const char *, int)) & NativeIOCPServer::bioWrite);
-    this->bioMethod = method;
+    const auto METHOD = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, "bioIOCP");
+    BIO_meth_set_ctrl(METHOD, reinterpret_cast<long (*)(BIO *, int, long, void *)>(&NativeIOCPServer::bioCtrl));
+    BIO_meth_set_read(METHOD, reinterpret_cast<int (*)(BIO *, char *, int)>(&NativeIOCPServer::bioRead));
+    BIO_meth_set_write(METHOD, reinterpret_cast<int (*)(BIO *, const char *, int)>(&NativeIOCPServer::bioWrite));
+    this->bioMethod = METHOD;
 
     return true;
 }
@@ -137,7 +136,7 @@ void NativeIOCPServer::shutdown() {
     void *lpCompletionKey = nullptr;
     isShutdown = true;
     for (int i = 0; i < threads; ++i) {
-        PostQueuedCompletionStatus(iocpFd, -1, (ULONG_PTR) lpCompletionKey, nullptr);
+        PostQueuedCompletionStatus(iocpFd, -1, reinterpret_cast<ULONG_PTR>(lpCompletionKey), nullptr);
     }
     for (auto &&thread: eventThreadGroup) {
         thread->join();
@@ -154,16 +153,16 @@ void NativeIOCPServer::shutdown() {
     wrapperSet.clear();
 
     if (bioMethod) {
-        BIO_meth_free((BIO_METHOD *) bioMethod);
+        BIO_meth_free(static_cast<BIO_METHOD *>(bioMethod));
         bioMethod = nullptr;
     }
 }
 
 void NativeIOCPServer::postRead(NativeIOCPServer::Context *ctx) {
-    ctx->type = NativeContext::Type::Read;
+    ctx->type = NativeContext::Type::READ;
     ctx->readNode = new IOBufNode(IOCP_WSABUF_SIZE);
-    ctx->wsabufRead.buf = (CHAR *) ctx->readNode->buffer;
-    ctx->wsabufRead.len = (ULONG) ctx->readNode->capacity;
+    ctx->wsabufRead.buf = static_cast<CHAR *>(ctx->readNode->buffer);
+    ctx->wsabufRead.len = static_cast<ULONG>(ctx->readNode->capacity);
     DWORD nBytes, dwFlags = 0;
     int nRt = WSARecv(
             ctx->fd,
@@ -185,8 +184,8 @@ void NativeIOCPServer::postWrite(NativeIOCPServer::Context *ctx) {
     if (len == 0) {
         return;
     }
-    ctx->type = NativeContext::Type::Write;
-    ctx->wsabufWrite.len = (ULONG) len;
+    ctx->type = NativeContext::Type::WRITE;
+    ctx->wsabufWrite.len = static_cast<ULONG>(len);
     DWORD nBytes, dwFlags = 0;
     int nRt = WSASend(
             ctx->fd,
@@ -206,8 +205,8 @@ void NativeIOCPServer::postWrite(NativeIOCPServer::Context *ctx) {
 void NativeIOCPServer::postClose(NativeIOCPServer::Context *ctx) {
     if (activeReleaseMode) {
         void *lpCompletionKey = nullptr;
-        ctx->type = Context::Type::Close;
-        PostQueuedCompletionStatus(iocpFd, 0, (ULONG_PTR) lpCompletionKey, (LPOVERLAPPED) ctx->pWrapper);
+        ctx->type = Context::Type::CLOSE;
+        PostQueuedCompletionStatus(iocpFd, 0, reinterpret_cast<ULONG_PTR>(lpCompletionKey), reinterpret_cast<LPOVERLAPPED>(ctx->pWrapper));
     } else {
         releaseContext(ctx);
     }
@@ -215,14 +214,14 @@ void NativeIOCPServer::postClose(NativeIOCPServer::Context *ctx) {
 
 #define ConnectEx ((LPFN_CONNECTEX) connectEx)
 
-void NativeIOCPServer::postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cliCtx, void *data) {
+void NativeIOCPServer::postConnect(const net::IPAddress::Ptr &to, const security::SSLContext::Ptr &cli_ctx, void *data) {
     auto sock = sese::net::Socket::socket(to->getFamily(), SOCK_STREAM, IPPROTO_IP);
     if (to->getFamily() == AF_INET) {
-        auto from = sese::net::IPv4Address::any();
-        sese::net::Socket::bind(sock, from->getRawAddress(), from->getRawAddressLength());
+        const auto FROM = sese::net::IPv4Address::any();
+        sese::net::Socket::bind(sock, FROM->getRawAddress(), FROM->getRawAddressLength());
     } else {
-        auto from = sese::net::IPv6Address::any();
-        sese::net::Socket::bind(sock, from->getRawAddress(), from->getRawAddressLength());
+        const auto FROM = sese::net::IPv6Address::any();
+        sese::net::Socket::bind(sock, FROM->getRawAddress(), FROM->getRawAddressLength());
     }
 
     sese::net::Socket::setNonblocking(sock);
@@ -230,18 +229,18 @@ void NativeIOCPServer::postConnect(const net::IPAddress::Ptr &to, const security
     auto pWrapper = new OverlappedWrapper();
     pWrapper->ctx.fd = sock;
     pWrapper->ctx.self = this;
-    pWrapper->ctx.type = NativeContext::Type::Connect;
+    pWrapper->ctx.type = NativeContext::Type::CONNECT;
     pWrapper->ctx.data = data;
-    if (cliCtx) {
-        pWrapper->ctx.ssl = SSL_new((SSL_CTX *) cliCtx->getContext());
-        SSL_set_fd((SSL *) pWrapper->ctx.ssl, (int) sock);
-        SSL_set_alpn_protos((SSL *) pWrapper->ctx.ssl, (const unsigned char *) clientProtos.c_str(), (unsigned) clientProtos.length());
+    if (cli_ctx) {
+        pWrapper->ctx.ssl = SSL_new(static_cast<SSL_CTX *>(cli_ctx->getContext()));
+        SSL_set_fd(static_cast<SSL *>(pWrapper->ctx.ssl), static_cast<int>(sock));
+        SSL_set_alpn_protos(static_cast<SSL *>(pWrapper->ctx.ssl), reinterpret_cast<const unsigned char *>(clientProtos.c_str()), static_cast<unsigned>(clientProtos.length()));
     }
     auto addr = to->getRawAddress();
     auto len = to->getRawAddressLength();
 
-    CreateIoCompletionPort((HANDLE) pWrapper->ctx.fd, iocpFd, 0, 0);
-    BOOL nRt = ConnectEx(sock, addr, len, nullptr, 0, nullptr, (LPOVERLAPPED) pWrapper);
+    CreateIoCompletionPort(reinterpret_cast<HANDLE>(pWrapper->ctx.fd), iocpFd, 0, 0);
+    BOOL nRt = ConnectEx(sock, addr, len, nullptr, 0, nullptr, reinterpret_cast<LPOVERLAPPED>(pWrapper));
     auto e = getNetworkError();
     if (nRt == FALSE && e != ERROR_IO_PENDING) {
         releaseContext(&pWrapper->ctx);
@@ -284,9 +283,9 @@ void NativeIOCPServer::acceptThreadProc() {
             pWrapper->ctx.self = this;
 
             if (sslCtx) {
-                auto serverSSL = (SSL_CTX *) sslCtx->getContext();
+                auto serverSSL = static_cast<SSL_CTX *>(sslCtx->getContext());
                 auto clientSSL = SSL_new(serverSSL);
-                SSL_set_fd(clientSSL, (int) clientSocket);
+                SSL_set_fd(clientSSL, static_cast<int>(clientSocket));
                 SSL_set_accept_state(clientSSL);
 
                 while (true) {
@@ -309,17 +308,17 @@ void NativeIOCPServer::acceptThreadProc() {
                         uint32_t dataLength;
                         SSL_get0_alpn_selected(clientSSL, &data, &dataLength);
                         onAlpnGet(&pWrapper->ctx, data, dataLength);
-                        pWrapper->ctx.bio = BIO_new((BIO_METHOD *) bioMethod);
-                        BIO_set_data((BIO *) pWrapper->ctx.bio, &pWrapper->ctx);
-                        BIO_set_init((BIO *) pWrapper->ctx.bio, 1);
-                        BIO_set_shutdown((BIO *) pWrapper->ctx.bio, 0);
-                        SSL_set_bio((SSL *) pWrapper->ctx.ssl, (BIO *) pWrapper->ctx.bio, (BIO *) pWrapper->ctx.bio);
+                        pWrapper->ctx.bio = BIO_new(static_cast<BIO_METHOD *>(bioMethod));
+                        BIO_set_data(static_cast<BIO *>(pWrapper->ctx.bio), &pWrapper->ctx);
+                        BIO_set_init(static_cast<BIO *>(pWrapper->ctx.bio), 1);
+                        BIO_set_shutdown(static_cast<BIO *>(pWrapper->ctx.bio), 0);
+                        SSL_set_bio(static_cast<SSL *>(pWrapper->ctx.ssl), static_cast<BIO *>(pWrapper->ctx.bio), static_cast<BIO *>(pWrapper->ctx.bio));
                         break;
                     }
                 }
             }
 
-            CreateIoCompletionPort((HANDLE) pWrapper->ctx.fd, iocpFd, 0, 0);
+            CreateIoCompletionPort(reinterpret_cast<HANDLE>(pWrapper->ctx.fd), iocpFd, 0, 0);
 
             wrapperSetMutex.lock();
             wrapperSet.emplace(pWrapper);
@@ -351,10 +350,10 @@ void NativeIOCPServer::eventThreadProc() {
         );
         if (pWrapper == nullptr) {
             continue;
-        } else if (lpNumberOfBytesTransferred == 0 && pWrapper->ctx.type != NativeContext::Type::Connect) {
+        } else if (lpNumberOfBytesTransferred == 0 && pWrapper->ctx.type != NativeContext::Type::CONNECT) {
             // 主动释放模式对端关闭
             // 任何模式下的非主动关闭
-            if (activeReleaseMode || pWrapper->ctx.type != NativeContext::Type::Close) {
+            if (activeReleaseMode || pWrapper->ctx.type != NativeContext::Type::CLOSE) {
                 releaseContext(&pWrapper->ctx);
             }
             continue;
@@ -362,7 +361,7 @@ void NativeIOCPServer::eventThreadProc() {
             break;
         }
 
-        if (pWrapper->ctx.type == NativeContext::Type::Read) {
+        if (pWrapper->ctx.type == NativeContext::Type::READ) {
             onPreRead(&pWrapper->ctx);
             pWrapper->ctx.readNode->size = lpNumberOfBytesTransferred;
             pWrapper->ctx.recv.push(pWrapper->ctx.readNode);
@@ -374,14 +373,14 @@ void NativeIOCPServer::eventThreadProc() {
             } else {
                 onReadCompleted(&pWrapper->ctx);
             }
-        } else if (pWrapper->ctx.type == NativeContext::Type::Write) {
+        } else if (pWrapper->ctx.type == NativeContext::Type::WRITE) {
             pWrapper->ctx.send.trunc(lpNumberOfBytesTransferred);
             auto len = pWrapper->ctx.send.peek(pWrapper->ctx.wsabufWrite.buf, IOCP_WSABUF_SIZE);
             if (len == 0) {
                 onWriteCompleted(&pWrapper->ctx);
             } else {
-                pWrapper->ctx.type = NativeContext::Type::Write;
-                pWrapper->ctx.wsabufWrite.len = (ULONG) len;
+                pWrapper->ctx.type = NativeContext::Type::WRITE;
+                pWrapper->ctx.wsabufWrite.len = static_cast<ULONG>(len);
                 DWORD nBytes, dwFlags = 0;
                 int nRt = WSASend(
                         pWrapper->ctx.fd,
@@ -398,7 +397,7 @@ void NativeIOCPServer::eventThreadProc() {
                 }
             }
         } else {
-            auto connectStatus = GetOverlappedResult((HANDLE) pWrapper->ctx.fd, (LPOVERLAPPED) pWrapper, &lpNumberOfBytesTransferred, TRUE);
+            auto connectStatus = GetOverlappedResult(reinterpret_cast<HANDLE>(pWrapper->ctx.fd), reinterpret_cast<LPOVERLAPPED>(pWrapper), &lpNumberOfBytesTransferred, TRUE);
             if (connectStatus == FALSE) {
                 releaseContext(&pWrapper->ctx);
                 continue;
@@ -433,28 +432,28 @@ void NativeIOCPServer::eventThreadProc() {
                     uint32_t dataLength;
                     SSL_get0_alpn_selected(ssl, &data, &dataLength);
                     onAlpnGet(&pWrapper->ctx, data, dataLength);
-                    pWrapper->ctx.bio = BIO_new((BIO_METHOD *) bioMethod);
-                    BIO_set_data((BIO *) pWrapper->ctx.bio, &pWrapper->ctx);
-                    BIO_set_init((BIO *) pWrapper->ctx.bio, 1);
-                    BIO_set_shutdown((BIO *) pWrapper->ctx.bio, 0);
-                    SSL_set_bio((SSL *) pWrapper->ctx.ssl, (BIO *) pWrapper->ctx.bio, (BIO *) pWrapper->ctx.bio);
+                    pWrapper->ctx.bio = BIO_new(static_cast<BIO_METHOD *>(bioMethod));
+                    BIO_set_data(static_cast<BIO *>(pWrapper->ctx.bio), &pWrapper->ctx);
+                    BIO_set_init(static_cast<BIO *>(pWrapper->ctx.bio), 1);
+                    BIO_set_shutdown(static_cast<BIO *>(pWrapper->ctx.bio), 0);
+                    SSL_set_bio(static_cast<SSL *>(pWrapper->ctx.ssl), static_cast<BIO *>(pWrapper->ctx.bio), static_cast<BIO *>(pWrapper->ctx.bio));
                 }
             }
-            pWrapper->ctx.type = Context::Type::Ready;
+            pWrapper->ctx.type = Context::Type::READY;
             pWrapper->ctx.self->onConnected(&pWrapper->ctx);
         }
     }
 }
 
-int NativeIOCPServer::onAlpnSelect(const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength) {
-    if (SSL_select_next_proto((unsigned char **) out, outLength, (const uint8_t *) servProtos.c_str(), (int) servProtos.length(), in, inLength) != OPENSSL_NPN_NEGOTIATED) {
+int NativeIOCPServer::onAlpnSelect(const uint8_t **out, uint8_t *out_length, const uint8_t *in, uint32_t in_length) {
+    if (SSL_select_next_proto(const_cast<unsigned char **>(out), out_length, reinterpret_cast<const uint8_t *>(servProtos.c_str()), static_cast<int>(servProtos.length()), in, in_length) != OPENSSL_NPN_NEGOTIATED) {
         return SSL_TLSEXT_ERR_NOACK;
     }
     return SSL_TLSEXT_ERR_OK;
 }
 
-int NativeIOCPServer::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, NativeIOCPServer *server) {
-    return server->onAlpnSelect(out, outLength, in, inLength);
+int NativeIOCPServer::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *out_length, const uint8_t *in, uint32_t in_length, NativeIOCPServer *server) {
+    return server->onAlpnSelect(out, out_length, in, in_length);
 }
 
 bool NativeIOCPServer::initConnectEx() {
@@ -480,13 +479,13 @@ long NativeIOCPServer::bioCtrl([[maybe_unused]] void *bio, int cmd, [[maybe_unus
 }
 
 int NativeIOCPServer::bioWrite(void *bio, const char *in, int length) {
-    auto ctx = (NativeContext *) BIO_get_data((BIO *) bio);
-    return (int) ctx->send.write(in, length);
+    auto ctx = static_cast<NativeContext *>(BIO_get_data(static_cast<BIO *>(bio)));
+    return static_cast<int>(ctx->send.write(in, length));
 }
 
 int NativeIOCPServer::bioRead(void *bio, char *out, int length) {
-    auto ctx = (NativeContext *) BIO_get_data((BIO *) bio);
-    return (int) ctx->recv.read(out, length);
+    auto ctx = static_cast<NativeContext *>(BIO_get_data(static_cast<BIO *>(bio)));
+    return static_cast<int>(ctx->recv.read(out, length));
 }
 
 void NativeIOCPServer::setTimeout(NativeIOCPServer::Context *ctx, int64_t seconds) {
@@ -526,7 +525,7 @@ void NativeIOCPServer::releaseContext(Context *ctx) {
     wrapperSetMutex.unlock();
     Socket::close(pWrapper->ctx.fd);
     if (pWrapper->ctx.ssl) {
-        SSL_free((SSL *) pWrapper->ctx.ssl);
+        SSL_free(static_cast<SSL *>(pWrapper->ctx.ssl));
         pWrapper->ctx.ssl = nullptr;
     }
     pWrapper->ctx.self->getDeleteContextCallback()(&pWrapper->ctx);

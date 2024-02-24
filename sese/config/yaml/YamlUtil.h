@@ -47,13 +47,13 @@ public:
     static void writeSpace(size_t count, OutputStream *output) noexcept;
 
 private:
-    static ObjectData::Ptr createObject(TokensQueue &tokensQueue, size_t level) noexcept;
+    static ObjectData::Ptr createObject(TokensQueue &tokens_queue, size_t level) noexcept;
 
-    static ArrayData::Ptr createArray(TokensQueue &tokensQueue, size_t level) noexcept;
+    static ArrayData::Ptr createArray(TokensQueue &tokens_queue, size_t level) noexcept;
 
 
-    static void serializeObject(ObjectData *objectData, OutputStream *output, size_t level) noexcept;
+    static void serializeObject(ObjectData *object_data, OutputStream *output, size_t level) noexcept;
 
-    static void serializeArray(ArrayData *arrayData, OutputStream *output, size_t level) noexcept;
+    static void serializeArray(ArrayData *array_data, OutputStream *output, size_t level) noexcept;
 };
 } // namespace sese::yaml

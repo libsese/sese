@@ -20,9 +20,9 @@ namespace sese::yaml {
 
 /// 类型枚举
 enum class DataType {
-    ObjectData,
-    ArrayData,
-    BasicData
+    OBJECT_DATA,
+    ARRAY_DATA,
+    BASIC_DATA
 };
 
 class ObjectData;
@@ -37,10 +37,10 @@ public:
     explicit Data(DataType type) noexcept;
     virtual ~Data() noexcept = default;
 
-    [[nodiscard]] DataType getType() const noexcept { return type; }
+    [[nodiscard]] DataType getType() const noexcept { return TYPE; }
 
 private:
-    const DataType type;
+    const DataType TYPE;
 };
 
 /// 对象类型
@@ -235,7 +235,7 @@ protected:
 template<class T>
 std::enable_if_t<std::is_same_v<T, sese::yaml::ObjectData>, std::shared_ptr<sese::yaml::ObjectData>> sese::yaml::ObjectData::getDataAs(const std::string &key) noexcept {
     auto p = get(key);
-    if (p != nullptr && p->getType() == DataType::ObjectData) {
+    if (p != nullptr && p->getType() == DataType::OBJECT_DATA) {
         return std::dynamic_pointer_cast<ObjectData>(p);
     } else {
         return nullptr;
@@ -245,7 +245,7 @@ std::enable_if_t<std::is_same_v<T, sese::yaml::ObjectData>, std::shared_ptr<sese
 template<class T>
 std::enable_if_t<std::is_same_v<T, sese::yaml::ArrayData>, std::shared_ptr<sese::yaml::ArrayData>> sese::yaml::ObjectData::getDataAs(const std::string &key) noexcept {
     auto p = get(key);
-    if (p != nullptr && p->getType() == DataType::ArrayData) {
+    if (p != nullptr && p->getType() == DataType::ARRAY_DATA) {
         return std::dynamic_pointer_cast<ArrayData>(p);
     } else {
         return nullptr;
@@ -255,7 +255,7 @@ std::enable_if_t<std::is_same_v<T, sese::yaml::ArrayData>, std::shared_ptr<sese:
 template<class T>
 std::enable_if_t<std::is_same_v<T, sese::yaml::BasicData>, std::shared_ptr<sese::yaml::BasicData>> sese::yaml::ObjectData::getDataAs(const std::string &key) noexcept {
     auto p = get(key);
-    if (p != nullptr && p->getType() == DataType::BasicData) {
+    if (p != nullptr && p->getType() == DataType::BASIC_DATA) {
         return std::dynamic_pointer_cast<BasicData>(p);
     } else {
         return nullptr;

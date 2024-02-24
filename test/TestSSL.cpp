@@ -36,7 +36,7 @@ TEST(TestSSL, Client) {
     client->read(buffer, sizeof(buffer));
     // SESE_INFO("%s", buffer);
 
-    client->shutdown(sese::net::Socket::ShutdownMode::Both);
+    client->shutdown(sese::net::Socket::ShutdownMode::BOTH);
     client->close();
 }
 

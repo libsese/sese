@@ -1,5 +1,6 @@
 #include "sese/system/FileNotifier.h"
 
+#include <assert.h>
 #include <windows.h>
 #include <locale>
 #include <codecvt>
@@ -9,76 +10,68 @@
 using namespace sese::system;
 
 FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
-    auto fileHandle = CreateFile(
-            path.c_str(),
-            GENERIC_READ | GENERIC_WRITE | FILE_LIST_DIRECTORY,
-            FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
-            nullptr,
-            OPEN_EXISTING,
-            FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OVERLAPPED,
-            nullptr
+    const auto FILE_HANDLE = CreateFile(
+        path.c_str(),
+        GENERIC_READ | GENERIC_WRITE | FILE_LIST_DIRECTORY,
+        FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
+        nullptr,
+        OPEN_EXISTING,
+        FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OVERLAPPED,
+        nullptr
     );
-    if (fileHandle == INVALID_HANDLE_VALUE) {
-        return nullptr;
-    }
+    if (FILE_HANDLE == INVALID_HANDLE_VALUE) { return nullptr; }
 
-    auto overlapped = new OVERLAPPED{};
+    const auto overlapped = new OVERLAPPED{};
     overlapped->hEvent = CreateEventA(nullptr, false, false, nullptr);
 
-    auto notifier = new FileNotifier;
-    notifier->fileHandle = fileHandle;
-    notifier->overlapped = overlapped;
-    notifier->option = option;
+    const auto NOTIFIER = new FileNotifier;
+    NOTIFIER->fileHandle = FILE_HANDLE;
+    NOTIFIER->overlapped = overlapped;
+    NOTIFIER->option = option;
 
-    return std::unique_ptr<FileNotifier>(notifier);
+    return std::unique_ptr<FileNotifier>(NOTIFIER);
 }
 
-FileNotifier::~FileNotifier() noexcept {
-    if (this->th) {
-        shutdown();
-    }
-}
+FileNotifier::~FileNotifier() noexcept { if (this->th) { shutdown(); } }
 
 void FileNotifier::loopNonblocking() noexcept {
     auto proc = [this]() {
-        std::wstring_convert<std::codecvt_utf8<wchar_t>> convert;
+        std::wstring_convert<std::codecvt_utf8<wchar_t> > convert;
         DWORD read = 0;
-        char buffer[1024];
         while (!isShutdown) {
+            char buffer[1024];
             if (!ReadDirectoryChangesW(
-                        (HANDLE) fileHandle,
-                        buffer,
-                        sizeof(buffer),
-                        false,
-                        FILE_NOTIFY_CHANGE_FILE_NAME | FILE_NOTIFY_CHANGE_DIR_NAME | FILE_NOTIFY_CHANGE_ATTRIBUTES |
-                                FILE_NOTIFY_CHANGE_SIZE | FILE_NOTIFY_CHANGE_LAST_WRITE | FILE_NOTIFY_CHANGE_SECURITY,
-                        (LPDWORD) &read,
-                        (LPOVERLAPPED) overlapped,
-                        nullptr
-                )) {
-                break;
-            }
-            if (WaitForSingleObject(((LPOVERLAPPED) overlapped)->hEvent, INFINITE) == WAIT_OBJECT_0) {
+                (HANDLE) fileHandle,
+                buffer,
+                sizeof(buffer),
+                false,
+                FILE_NOTIFY_CHANGE_FILE_NAME | FILE_NOTIFY_CHANGE_DIR_NAME | FILE_NOTIFY_CHANGE_ATTRIBUTES |
+                FILE_NOTIFY_CHANGE_SIZE | FILE_NOTIFY_CHANGE_LAST_WRITE | FILE_NOTIFY_CHANGE_SECURITY,
+                (LPDWORD) &read,
+                static_cast<LPOVERLAPPED>(overlapped),
+                nullptr
+            )) { break; }
+            if (WaitForSingleObject(static_cast<LPOVERLAPPED>(overlapped)->hEvent, INFINITE) == WAIT_OBJECT_0) {
                 if (!isShutdown) {
                     size_t count = 0;
-                    auto infoPos = buffer + 0;
+                    auto info_pos = buffer + 0;
                     std::string name0;
                     std::string name1;
                 again:
-                    auto info = (FILE_NOTIFY_INFORMATION *) infoPos;
+                    const auto INFO = reinterpret_cast<FILE_NOTIFY_INFORMATION *>(info_pos);
                     if (count % 2) {
                         name1 = convert.to_bytes(
-                                info->FileName,
-                                (wchar_t *) (((char *) info->FileName) + info->FileNameLength)
+                            INFO->FileName,
+                            reinterpret_cast<wchar_t *>(reinterpret_cast<char *>(INFO->FileName) + INFO->FileNameLength)
                         );
                     } else {
                         name0 = convert.to_bytes(
-                                info->FileName,
-                                (wchar_t *) (((char *) info->FileName) + info->FileNameLength)
+                            INFO->FileName,
+                            reinterpret_cast<wchar_t *>(reinterpret_cast<char *>(INFO->FileName) + INFO->FileNameLength)
                         );
                     }
 
-                    switch (info->Action) {
+                    switch (INFO->Action) {
                         case FILE_ACTION_ADDED:
                             option->onCreate(name0);
                             break;
@@ -90,16 +83,17 @@ void FileNotifier::loopNonblocking() noexcept {
                             break;
                         case FILE_ACTION_RENAMED_OLD_NAME:
                             count += 1;
-                            infoPos += info->NextEntryOffset;
+                            info_pos += INFO->NextEntryOffset;
                             goto again;
                         case FILE_ACTION_RENAMED_NEW_NAME:
                             count += 1;
                             option->onMove(name0, name1);
                             break;
+                        default:
+                            assert(false);
+                            break;
                     }
-                } else {
-                    break;
-                }
+                } else { break; }
             }
         }
     };
@@ -109,10 +103,10 @@ void FileNotifier::loopNonblocking() noexcept {
 
 void FileNotifier::shutdown() noexcept {
     isShutdown = true;
-    SetEvent(((LPOVERLAPPED) overlapped)->hEvent);
+    SetEvent(static_cast<LPOVERLAPPED>(overlapped)->hEvent);
     th->join();
     th = nullptr;
     CloseHandle(fileHandle);
     fileHandle = nullptr;
-    delete (LPOVERLAPPED) overlapped;
+    delete static_cast<LPOVERLAPPED>(overlapped);
 }

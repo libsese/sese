@@ -17,6 +17,7 @@ namespace sese::io {
 /// 可窥视流接口
 class API PeekableStream {
 public:
+    virtual ~PeekableStream() = default;
     typedef std::shared_ptr<PeekableStream> Ptr;
 
     /// 仅读取内容，不步进

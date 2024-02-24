@@ -17,9 +17,9 @@ class Yaml {
     using Tokens = std::vector<std::string>;
     using TokensQueue = std::queue<std::tuple<int, Tokens>>;
 
-    static Value parseObject(TokensQueue &tokensQueue, size_t level);
+    static Value parseObject(TokensQueue &tokens_queue, size_t level);
 
-    static Value parseArray(TokensQueue &tokensQueue, size_t level);
+    static Value parseArray(TokensQueue &tokens_queue, size_t level);
 
     static void streamifyObject(io::OutputStream *output, const Value::Dict &dict, size_t level);
 
