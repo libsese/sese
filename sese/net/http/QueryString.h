@@ -28,7 +28,7 @@ public:
     std::string toString() noexcept;
 
     void set(const std::string &key, const std::string &value) noexcept;
-    const std::string &get(const std::string &key, const std::string &defaultValue) noexcept;
+    const std::string &get(const std::string &key, const std::string &default_value) noexcept;
 
     [[nodiscard]] inline size_t size() const noexcept { return keyValueSet.size(); }
     [[nodiscard]] inline bool empty() const noexcept { return keyValueSet.empty(); }

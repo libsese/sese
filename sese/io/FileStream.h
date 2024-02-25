@@ -47,7 +47,7 @@ public:
     /// \param mode 打开模式
     /// \retval nullptr 打开失败
     /// \retval 文件流对象
-    static FileStream::Ptr create(const std::string &filePath, const char *mode) noexcept;
+    static FileStream::Ptr create(const std::string &file_path, const char *mode) noexcept;
 
     /// 以 UNIX-LIKE 风格打开一个文件
     /// \param path UNIX-LIKE 路径

@@ -13,7 +13,7 @@ sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl(
     this->meta = meta;
     this->count = count;
 
-    this->param = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * count);
+    this->param = static_cast<MYSQL_BIND *>(malloc(sizeof(MYSQL_BIND) * count));
     memset(this->param, 0, sizeof(MYSQL_BIND) * count);
 }
 
@@ -34,7 +34,7 @@ sese::db::impl::MariaPreparedStatementImpl::~MariaPreparedStatementImpl() noexce
 
 // 为结果集可能的数据类型分配内存
 bool sese::db::impl::MariaPreparedStatementImpl::mallocBindStruct(MYSQL_RES *meta, MYSQL_BIND **bind) noexcept {
-    *bind = (MYSQL_BIND *) malloc(sizeof(MYSQL_BIND) * meta->field_count);
+    *bind = static_cast<MYSQL_BIND *>(malloc(sizeof(MYSQL_BIND) * meta->field_count));
     memset(*bind, 0, sizeof(MYSQL_BIND) * meta->field_count);
     for (unsigned int i = 0; i < meta->field_count; i++) {
         auto &&item = (*bind)[i];
@@ -126,11 +126,11 @@ int64_t sese::db::impl::MariaPreparedStatementImpl::executeUpdate() noexcept {
     if (mysql_stmt_execute(stmt)) {
         return -1;
     }
-    return (int64_t) mysql_stmt_affected_rows(stmt);
+    return static_cast<int64_t>(mysql_stmt_affected_rows(stmt));
 }
 
-void sese::db::impl::MariaPreparedStatementImpl::reinterpret(MYSQL_BIND *target, enum_field_types expeceType, const void *buffer, size_t size) noexcept {
-    if (target->buffer_type == expeceType) {
+void sese::db::impl::MariaPreparedStatementImpl::reinterpret(MYSQL_BIND *target, enum_field_types expece_type, const void *buffer, size_t size) noexcept {
+    if (target->buffer_type == expece_type) {
         memcpy(target->buffer, buffer, size);
         return;
     }
@@ -139,7 +139,7 @@ void sese::db::impl::MariaPreparedStatementImpl::reinterpret(MYSQL_BIND *target,
         free(target->buffer);
     }
     target->buffer = malloc(size);
-    target->buffer_type = expeceType;
+    target->buffer_type = expece_type;
     target->buffer_length = static_cast<decltype(target->buffer_length)>(size);
     memcpy(target->buffer, buffer, size);
 }
@@ -173,7 +173,7 @@ bool sese::db::impl::MariaPreparedStatementImpl::setText(uint32_t index, const c
     if (this->param[index - 1].buffer) {
         free(this->param[index - 1].buffer);
     }
-    this->param[index - 1].buffer_length = (unsigned long) strlen(value);
+    this->param[index - 1].buffer_length = static_cast<unsigned long>(strlen(value));
     this->param[index - 1].buffer = malloc(this->param[index - 1].buffer_length + 1);
     static_cast<char *>(this->param[index - 1].buffer)[this->param[index - 1].buffer_length] = 0;
     memcpy(this->param[index - 1].buffer, value, this->param[index - 1].buffer_length);
@@ -220,7 +220,7 @@ bool sese::db::impl::MariaPreparedStatementImpl::setDateTime(uint32_t index, con
 }
 
 int sese::db::impl::MariaPreparedStatementImpl::getLastError() const noexcept {
-    return (int) mysql_stmt_errno(stmt);
+    return static_cast<int>(mysql_stmt_errno(stmt));
 }
 
 const char *sese::db::impl::MariaPreparedStatementImpl::getLastErrorMessage() const noexcept {
@@ -236,37 +236,37 @@ bool sese::db::impl::MariaPreparedStatementImpl::getColumnType(uint32_t index, s
         case MYSQL_TYPE_STRING:
         case MYSQL_TYPE_VARCHAR:
         case MYSQL_TYPE_VAR_STRING:
-            type = MetadataType::Text;
+            type = MetadataType::TEXT;
             break;
         case MYSQL_TYPE_TINY:
-            type = MetadataType::Char;
+            type = MetadataType::CHAR;
             break;
         case MYSQL_TYPE_SHORT:
-            type = MetadataType::Short;
+            type = MetadataType::SHORT;
             break;
         case MYSQL_TYPE_LONG:
-            type = MetadataType::Integer;
+            type = MetadataType::INTEGER;
             break;
         case MYSQL_TYPE_LONGLONG:
-            type = MetadataType::Long;
+            type = MetadataType::LONG;
             break;
         case MYSQL_TYPE_FLOAT:
-            type = MetadataType::Float;
+            type = MetadataType::FLOAT;
             break;
         case MYSQL_TYPE_DOUBLE:
-            type = MetadataType::Double;
+            type = MetadataType::DOUBLE;
             break;
         case MYSQL_TYPE_TIME:
-            type = MetadataType::Time;
+            type = MetadataType::TIME;
             break;
         case MYSQL_TYPE_DATE:
-            type = MetadataType::Date;
+            type = MetadataType::DATE;
             break;
         case MYSQL_TYPE_DATETIME:
-            type = MetadataType::DateTime;
+            type = MetadataType::DATE_TIME;
             break;
         default:
-            type = MetadataType::Unknown;
+            type = MetadataType::UNKNOWN;
             break;
     }
     return true;

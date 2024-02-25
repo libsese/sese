@@ -22,7 +22,7 @@ class API ByteBuffer final : AbstractByteBuffer {
 public:
     using Ptr = std::unique_ptr<ByteBuffer>;
 
-    explicit ByteBuffer(size_t baseSize = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
+    explicit ByteBuffer(size_t base_size = STREAM_BYTE_STREAM_SIZE_FACTOR, size_t factor = STREAM_BYTE_STREAM_SIZE_FACTOR);
     void resetPos() override;
     [[nodiscard]] size_t getLength();
     [[nodiscard]] size_t getCapacity();
@@ -30,7 +30,7 @@ public:
     int64_t read(void *buffer, size_t len) override;
     int64_t write(const void *buffer, size_t len) override;
     int64_t peek(void *buffer, size_t len) override;
-    int64_t trunc(size_t needRead) override;
+    int64_t trunc(size_t need_read) override;
     // [[nodiscard]] size_t getCurrentWritePos();
     // [[nodiscard]] size_t getCurrentReadPos();
 

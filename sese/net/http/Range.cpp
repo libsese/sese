@@ -29,17 +29,17 @@ std::vector<sese::net::http::Range> sese::net::http::Range::parse(const std::str
     for (decltype(auto) item: tmp1) {
         auto tmp2 = sese::text::StringBuilder::split(item, "-");
         if (tmp2.size() == 1) {
-            char *endPtr;
-            auto begin = std::strtol(tmp2[0].c_str(), &endPtr, 10);
+            char *end_ptr;
+            auto begin = std::strtol(tmp2[0].c_str(), &end_ptr, 10);
             if (begin > total - 1) {
                 vector.clear();
                 break;
             }
             vector.emplace_back(begin, total - begin);
         } else if (tmp2.size() == 2) {
-            char *endPtr;
-            auto begin = std::strtol(tmp2[0].c_str(), &endPtr, 10);
-            auto end = std::strtol(tmp2[1].c_str(), &endPtr, 10);
+            char *end_ptr;
+            auto begin = std::strtol(tmp2[0].c_str(), &end_ptr, 10);
+            auto end = std::strtol(tmp2[1].c_str(), &end_ptr, 10);
             if (begin > total - 1 || end > total - 1) {
                 vector.clear();
                 break;

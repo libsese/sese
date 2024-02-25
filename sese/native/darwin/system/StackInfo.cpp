@@ -62,10 +62,10 @@ std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept
 
     // _ZN1N1C4funcE -> N::C::func(int)
     bool first = true;
-    char *pStr = const_cast<char *>(str.data()) + pos;
-    char *pNext = nullptr;
+    char *p_str = const_cast<char *>(str.data()) + pos;
+    char *p_next = nullptr;
     while (true) {
-        auto len = std::strtoll(pStr, &pNext, 10);
+        auto len = std::strtoll(p_str, &p_next, 10);
         if (len == 0) {
             break;
         } else {
@@ -74,8 +74,8 @@ std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept
             } else {
                 output.write("::", 2);
             }
-            output.write(pNext, len);
-            pStr = pNext + len;
+            output.write(p_next, len);
+            p_str = p_next + len;
         }
     }
 

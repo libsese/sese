@@ -2,12 +2,12 @@
 
 using namespace sese::system;
 
-static int gArgc = 0;
-static const char *const *gArgv = nullptr;
+static int g_argc = 0;
+static const char *const *g_argv = nullptr;
 
-CommandLineInitiateTask::CommandLineInitiateTask(const int argc, const char *const *argv) : InitiateTask(__FUNCTION__) {
-    gArgc = argc;
-    gArgv = argv;
+CommandLineInitiateTask::CommandLineInitiateTask(const int ARGC, const char *const *argv) : InitiateTask(__FUNCTION__) {
+    g_argc = ARGC;
+    g_argv = argv;
 }
 
 int32_t CommandLineInitiateTask::init() noexcept {
@@ -18,9 +18,9 @@ int32_t CommandLineInitiateTask::destroy() noexcept {
 }
 
 int CommandLine::getArgc() {
-    return gArgc;
+    return g_argc;
 }
 
 const char *const *CommandLine::getArgv() {
-    return gArgv;
+    return g_argv;
 }

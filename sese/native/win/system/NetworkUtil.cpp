@@ -7,19 +7,18 @@
 using namespace sese::system;
 
 std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
-    ULONG rt = 0;
     ULONG size = 0;
     std::unique_ptr<CHAR[]> buffer;
-    PIP_ADAPTER_ADDRESSES pAddresses = nullptr;
+    PIP_ADAPTER_ADDRESSES p_addresses = nullptr;
 
     std::vector<NetworkInterface> result;
 
-    rt = GetAdaptersAddresses(
-            AF_UNSPEC,
-            GAA_FLAG_SKIP_MULTICAST | GAA_FLAG_SKIP_DNS_SERVER,
-            nullptr,
-            pAddresses,
-            &size
+    ULONG rt = GetAdaptersAddresses(
+        AF_UNSPEC,
+        GAA_FLAG_SKIP_MULTICAST | GAA_FLAG_SKIP_DNS_SERVER,
+        nullptr,
+        p_addresses,
+        &size
     );
 
     // 此处必为 ERROR_BUFFER_OVERFLOW，作用仅为获取实际所需大小
@@ -28,13 +27,13 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     }
 
     buffer = std::make_unique<CHAR[]>(size);
-    pAddresses = (PIP_ADAPTER_ADDRESSES) buffer.get();
+    p_addresses = reinterpret_cast<PIP_ADAPTER_ADDRESSES>(buffer.get());
 
     rt = GetAdaptersAddresses(
             AF_UNSPEC,
             GAA_FLAG_SKIP_MULTICAST | GAA_FLAG_SKIP_DNS_SERVER,
             nullptr,
-            pAddresses,
+            p_addresses,
             &size
     );
 
@@ -43,33 +42,32 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
         return result;
     }
 
-    NetworkInterface Interface;
-    decltype(pAddresses->FirstUnicastAddress) unicastAddress;
-    while (pAddresses) {
-        if (pAddresses->IfType == IF_TYPE_ETHERNET_CSMACD) {
-            Interface.name = pAddresses->AdapterName;
+    NetworkInterface inter;
+    while (p_addresses) {
+        if (p_addresses->IfType == IF_TYPE_ETHERNET_CSMACD) {
+            inter.name = p_addresses->AdapterName;
 
-            unicastAddress = pAddresses->FirstUnicastAddress;
-            while (unicastAddress) {
-                auto pSockAddr = (SOCKADDR *) unicastAddress->Address.lpSockaddr;
-                if (pSockAddr->sa_family == AF_INET) {
-                    sockaddr_in sockaddrIn = *(sockaddr_in *) unicastAddress->Address.lpSockaddr;
-                    Interface.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(sockaddrIn));
-                } else if (pSockAddr->sa_family == AF_INET6) {
-                    sockaddr_in6 sockaddrIn6 = *(sockaddr_in6 *) unicastAddress->Address.lpSockaddr;
-                    Interface.ipv6Addresses.emplace_back(std::make_shared<sese::net::IPv6Address>(sockaddrIn6));
+            decltype(p_addresses->FirstUnicastAddress) unicast_address = p_addresses->FirstUnicastAddress;
+            while (unicast_address) {
+                auto p_sock_addr = unicast_address->Address.lpSockaddr;
+                if (p_sock_addr->sa_family == AF_INET) {
+                    sockaddr_in sockaddr = *reinterpret_cast<sockaddr_in *>(unicast_address->Address.lpSockaddr);
+                    inter.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(sockaddr));
+                } else if (p_sock_addr->sa_family == AF_INET6) {
+                    sockaddr_in6 sockaddr6 = *reinterpret_cast<sockaddr_in6 *>(unicast_address->Address.lpSockaddr);
+                    inter.ipv6Addresses.emplace_back(std::make_shared<sese::net::IPv6Address>(sockaddr6));
                 }
-                unicastAddress = unicastAddress->Next;
+                unicast_address = unicast_address->Next;
             }
 
-            memcpy(Interface.mac.data(), pAddresses->PhysicalAddress, 6);
+            memcpy(inter.mac.data(), p_addresses->PhysicalAddress, 6);
 
-            result.emplace_back(Interface);
-            Interface.ipv4Addresses.clear();
-            Interface.ipv6Addresses.clear();
+            result.emplace_back(inter);
+            inter.ipv4Addresses.clear();
+            inter.ipv6Addresses.clear();
         }
 
-        pAddresses = pAddresses->Next;
+        p_addresses = p_addresses->Next;
     }
 
     return result;

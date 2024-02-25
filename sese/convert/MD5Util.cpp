@@ -20,8 +20,8 @@ void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
     unsigned char buffer[64];
     uint64_t length = 0;
 
-    bool isBreak = false;
-    while (!isBreak) {
+    bool is_break = false;
+    while (!is_break) {
         int64_t len = input->read(buffer, 64);
         if (len == 64) {
             length += len;
@@ -31,14 +31,14 @@ void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
             /// 执行完本次后不再执行
-            isBreak = true;
+            is_break = true;
         } else if (len < 56) {
             length += len;
             memcpy(&buffer[len], PADDING, 64 - len - 8);
             length *= 8; /// 单位为 位
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
-            isBreak = true;
+            is_break = true;
         } else {
             length += len;
             memcpy(&buffer[len], PADDING, 64 - len);
@@ -48,7 +48,7 @@ void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
             length *= 8; /// 单位为 位
             length = ToLittleEndian64(length);
             memcpy(&buffer[56], &length, 8);
-            isBreak = true;
+            is_break = true;
         }
 
         MD5Util::transform(result, buffer);
@@ -58,20 +58,20 @@ void MD5Util::encode(InputStream *input, OutputStream *output) noexcept {
 }
 
 // GCOVR_EXCL_START
-std::unique_ptr<char[]> MD5Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
-    return encode(input.get(), isCap);
+std::unique_ptr<char[]> MD5Util::encode(const InputStream::Ptr &input, bool is_cap) noexcept {
+    return encode(input.get(), is_cap);
 }
 // GCOVR_EXCL_STOP
 
-std::unique_ptr<char[]> MD5Util::encode(InputStream *input, bool isCap) noexcept {
+std::unique_ptr<char[]> MD5Util::encode(InputStream *input, bool is_cap) noexcept {
     ByteBuilder dest(16);
     encode(input, &dest);
     unsigned char buffer[16];
     auto rt = std::unique_ptr<char[]>(new char[33]); // GCOVR_EXCL_LINE
     dest.read(buffer, 16);
     for (size_t i = 0; i < 16; i++) {
-        rt[i * 2 + 1] = MemoryViewer::toChar(buffer[i] % 0x10, isCap);
-        rt[i * 2 + 0] = MemoryViewer::toChar(buffer[i] / 0x10, isCap);
+        rt[i * 2 + 1] = MemoryViewer::toChar(buffer[i] % 0x10, is_cap);
+        rt[i * 2 + 0] = MemoryViewer::toChar(buffer[i] / 0x10, is_cap);
     }
     rt[32] = 0;
     return rt;

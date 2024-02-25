@@ -16,14 +16,14 @@ sese::net::http::RequestParser::Result sese::net::http::RequestParser::parse(con
     if (result.url.getHost().find(':') == std::string::npos) {
         addr = parseAddress(result.url.getHost());
     } else {
-        auto splitResult = text::StringBuilder::split(result.url.getHost(), ":");
-        if (splitResult.size() == 2) {
-            char *endPtr;
-            port = (uint16_t) std::strtol(splitResult[1].c_str(), &endPtr, 10);
-            if (*endPtr != 0) {
+        auto split_result = text::StringBuilder::split(result.url.getHost(), ":");
+        if (split_result.size() == 2) {
+            char *end_ptr;
+            port = (uint16_t) std::strtol(split_result[1].c_str(), &end_ptr, 10);
+            if (*end_ptr != 0) {
                 return result;
             }
-            addr = parseAddress(splitResult[0]);
+            addr = parseAddress(split_result[0]);
         } else {
             return result;
         }
@@ -47,9 +47,9 @@ sese::net::IPv4Address::Ptr sese::net::http::RequestParser::parseAddress(const s
     auto result = text::StringBuilder::split(host, ".");
     if (result.size() == 4) {
         for (decltype(auto) item: result) {
-            char *endPtr;
-            auto bit = std::strtol(item.c_str(), &endPtr, 10);
-            if (*endPtr != 0) {
+            char *end_ptr;
+            auto bit = std::strtol(item.c_str(), &end_ptr, 10);
+            if (*end_ptr != 0) {
                 goto lookup;
             }
             if (bit < 0 || bit > 255) {

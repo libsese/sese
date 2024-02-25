@@ -63,23 +63,23 @@ TEST(TestIOCP, Server_0) {
 }
 
 TEST(TestIOCP, Server_1) {
-    auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
-    servCtx->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
-    servCtx->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
-    ASSERT_TRUE(servCtx->authPrivateKey());
+    auto serv_ctx = sese::security::SSLContextBuilder::SSL4Server();
+    serv_ctx->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
+    serv_ctx->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
+    ASSERT_TRUE(serv_ctx->authPrivateKey());
 
     auto address = sese::net::IPv4Address::localhost(sese::net::createRandomPort());
 
     MyIOCPServer server;
     server.setAddress(address);
-    server.setServCtx(servCtx);
+    server.setServCtx(serv_ctx);
     server.setThreads(2);
     server.setServProtos("\x8http/1.1");
     ASSERT_TRUE(server.init());
     SESE_INFO("server listening on %d", address->getPort());
 
-    auto clientCtx = sese::security::SSLContextBuilder::SSL4Client();
-    auto socket = clientCtx->newSocketPtr(sese::net::Socket::Family::IPv4, 0);
+    auto client_ctx = sese::security::SSLContextBuilder::SSL4Client();
+    auto socket = client_ctx->newSocketPtr(sese::net::Socket::Family::IPv4, 0);
     ASSERT_EQ(socket->connect(address), 0);
     *socket << "Hello World";
 

@@ -25,18 +25,18 @@ TEST(TestConfig, Config) {
     auto config = sese::ConfigUtil::readFrom(file.get());
     ASSERT_TRUE(config != nullptr);
 
-    auto defaultSection = config->getDefaultSection();
-    ASSERT_TRUE(defaultSection != nullptr);
-    auto defaultName = defaultSection->getValueByKey("name", "unknown");
-    log.info("[default] name = %s", defaultName.c_str());
+    auto default_section = config->getDefaultSection();
+    ASSERT_TRUE(default_section != nullptr);
+    auto default_name = default_section->getValueByKey("name", "unknown");
+    log.info("[default] name = %s", default_name.c_str());
 
-    auto serverSection = config->getSectionByName("server");
-    ASSERT_TRUE(serverSection != nullptr);
-    log.info("[server] address = %s", serverSection->getValueByKey("address", "192.168.1.1").c_str());
-    log.info("[server] port = %s", serverSection->getValueByKey("port", "8080").c_str());
+    auto server_section = config->getSectionByName("server");
+    ASSERT_TRUE(server_section != nullptr);
+    log.info("[server] address = %s", server_section->getValueByKey("address", "192.168.1.1").c_str());
+    log.info("[server] port = %s", server_section->getValueByKey("port", "8080").c_str());
 
-    auto clientSection = config->getSectionByName("client");
-    ASSERT_TRUE(clientSection == nullptr);
+    auto client_section = config->getSectionByName("client");
+    ASSERT_TRUE(client_section == nullptr);
 }
 
 #if defined(__clang__)
@@ -51,10 +51,10 @@ TEST(TestConfig, Json) {
     auto object = sese::json::JsonUtil::deserialize(file, 3);
     ASSERT_TRUE(object != nullptr);
 
-    auto booleanValue = object->getDataAs<sese::json::BasicData>("boolean");
-    ASSERT_TRUE(booleanValue != nullptr);
-    ASSERT_TRUE(booleanValue->getDataAs<bool>(false));
-    booleanValue->setDataAs<bool>(false);
+    auto boolean_value = object->getDataAs<sese::json::BasicData>("boolean");
+    ASSERT_TRUE(boolean_value != nullptr);
+    ASSERT_TRUE(boolean_value->getDataAs<bool>(false));
+    boolean_value->setDataAs<bool>(false);
 
     auto out = std::make_shared<sese::io::ConsoleOutputStream>();
     sese::json::JsonUtil::serialize(object, out);
@@ -67,9 +67,9 @@ TEST(TestConfig, Xml) {
     auto element = sese::xml::XmlUtil::deserialize(file, 5);
     ASSERT_TRUE(element != nullptr);
 
-    auto subElement = std::make_shared<sese::xml::Element>("new-element");
-    subElement->setAttribute("info", "from serialize");
-    element->elements.push_back(subElement);
+    auto sub_element = std::make_shared<sese::xml::Element>("new-element");
+    sub_element->setAttribute("info", "from serialize");
+    element->elements.push_back(sub_element);
 
     // auto saveFile = sese::FileStream::create("out.xml", BINARY_WRITE_CREATE_TRUNC);
     // ASSERT_TRUE(saveFile != nullptr);

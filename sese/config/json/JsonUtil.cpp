@@ -202,23 +202,23 @@ ArrayData::Ptr JsonUtil::createArray(Tokens &tokens, size_t level) noexcept {
         if (token == "{") {
             // 值是一个 ObjectData
             level--;
-            ObjectData::Ptr subObject = createObject(tokens, level);
-            if (subObject == nullptr) {
+            ObjectData::Ptr sub_object = createObject(tokens, level);
+            if (sub_object == nullptr) {
                 // 解析错误，直接返回
                 return nullptr;
             } else {
-                array->push(subObject);
+                array->push(sub_object);
             }
             level++;
         } else if (token == "[") {
             // 值是一个 ArrayData
             level--;
-            ArrayData::Ptr subArray = createArray(tokens, level);
-            if (subArray == nullptr) {
+            ArrayData::Ptr sub_array = createArray(tokens, level);
+            if (sub_array == nullptr) {
                 // 解析错误，直接返回
                 return nullptr;
             } else {
-                array->push(subArray);
+                array->push(sub_array);
             }
             level++;
         } else {

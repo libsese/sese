@@ -21,9 +21,9 @@ TEST(TestSharedMemory, MEM_D) {
     }
     ASSERT_NE(mem, nullptr) << "failed to use shared memory: " << sese::getErrorString();
 
-    auto pInt = (int64_t *) mem->getBuffer();
-    LogHelper::i("memory daemon init number is: %" PRId64, *pInt);
+    auto p_int = (int64_t *) mem->getBuffer();
+    LogHelper::i("memory daemon init number is: %" PRId64, *p_int);
 
-    *pInt += 1;
+    *p_int += 1;
     EXPECT_EQ(process->wait(), 0);
 }

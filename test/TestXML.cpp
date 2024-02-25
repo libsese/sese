@@ -9,8 +9,8 @@
 #include <filesystem>
 
 TEST(TestXML, File) {
-    auto fileSteam = sese::io::FileStream::create(PROJECT_PATH "/test/Data/data.xml", BINARY_READ_EXISTED);
-    auto element = sese::xml::XmlUtil::deserialize(fileSteam, 5);
+    auto file_steam = sese::io::FileStream::create(PROJECT_PATH "/test/Data/data.xml", BINARY_READ_EXISTED);
+    auto element = sese::xml::XmlUtil::deserialize(file_steam, 5);
     ASSERT_NE(element, nullptr);
 
     for (decltype(auto) item: element->getElements()) {
@@ -21,14 +21,14 @@ TEST(TestXML, File) {
         item->removeAttribute("count");
     }
 
-    auto subElement = std::make_shared<sese::xml::Element>("new-element");
-    subElement->setAttribute("info", "from serialize");
-    element->addElement(subElement);
+    auto sub_element = std::make_shared<sese::xml::Element>("new-element");
+    sub_element->setAttribute("info", "from serialize");
+    element->addElement(sub_element);
 
-    auto saveFileStream = sese::io::FileStream::create("out.xml", BINARY_WRITE_CREATE_TRUNC);
-    ASSERT_NE(saveFileStream, nullptr);
-    sese::xml::XmlUtil::serialize(element, saveFileStream);
-    saveFileStream->close();
+    auto save_file_stream = sese::io::FileStream::create("out.xml", BINARY_WRITE_CREATE_TRUNC);
+    ASSERT_NE(save_file_stream, nullptr);
+    sese::xml::XmlUtil::serialize(element, save_file_stream);
+    save_file_stream->close();
     std::filesystem::remove("out.xml");
 
     auto output = std::make_shared<sese::io::ConsoleOutputStream>();
@@ -38,85 +38,85 @@ TEST(TestXML, File) {
 
 /// 不合法的元素结尾
 TEST(TestXML, Error_0) {
-    const char str[] = {"<root>\n"
+    const char STR[] = {"<root>\n"
                         "    <item1>Hello</item2>\n"
                         "</root>"};
-    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     auto element = sese::xml::XmlUtil::deserialize(&input, 5);
     ASSERT_EQ(element, nullptr);
 }
 
 /// 不合法的元素结尾
 TEST(TestXML, Error_1) {
-    const char str[] = {"<root>\n"
+    const char STR[] = {"<root>\n"
                         "    <item1>Hello<item1>\n"
                         "</root>"};
-    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     auto element = sese::xml::XmlUtil::deserialize(&input, 5);
     ASSERT_EQ(element, nullptr);
 }
 
 /// 不合法的元素结尾
 TEST(TestXML, Error_2) {
-    const char str[] = {"<root>\n"
+    const char STR[] = {"<root>\n"
                         "    <item1>Hello</item1\n"
                         "</root>"};
-    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     auto element = sese::xml::XmlUtil::deserialize(&input, 5);
     ASSERT_EQ(element, nullptr);
 }
 
 /// 不合法的注释
 TEST(TestXML, Error_3) {
-    const char str[] = {"<root>\n"
+    const char STR[] = {"<root>\n"
                         "    <!-- Content ->\n"
                         "</root>"};
-    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     auto element = sese::xml::XmlUtil::deserialize(&input, 5);
     ASSERT_EQ(element, nullptr);
 }
 
 /// 不合法的注释
 TEST(TestXML, Error_4) {
-    const char str[] = {"<root>\n"
+    const char STR[] = {"<root>\n"
                         "    <!-- Content --\n"
                         "</root>"};
-    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     auto element = sese::xml::XmlUtil::deserialize(&input, 5);
     ASSERT_EQ(element, nullptr);
 }
 
 /// 错误子元素
 TEST(TestXML, Error_5) {
-    const char str[] = {"<root>\n"
+    const char STR[] = {"<root>\n"
                         "    <item>\n"
                         "        <item>\n"
                         "            <item>Hello<item>\n"
                         "        </item>\n"
                         "    </item>\n"
                         "</root>"};
-    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     auto element = sese::xml::XmlUtil::deserialize(&input, 5);
     ASSERT_EQ(element, nullptr);
 }
 
 /// 根节点注释错误
 TEST(TestXML, Error_6) {
-    const char str[] = {"<!-- CM ->\n"
+    const char STR[] = {"<!-- CM ->\n"
                         "<root>\n"
                         "</root>"};
-    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     auto element = sese::xml::XmlUtil::deserialize(&input, 5);
     ASSERT_EQ(element, nullptr);
 }
 
 /// 节点深度超过限制
 TEST(TestXML, Error_7) {
-    const char str[] = {"<root>\n"
+    const char STR[] = {"<root>\n"
                         "    <object>\n"
                         "    </object>\n"
                         "</root>"};
-    auto input = sese::io::InputBufferWrapper(str, sizeof(str) - 1);
+    auto input = sese::io::InputBufferWrapper(STR, sizeof(STR) - 1);
     auto element = sese::xml::XmlUtil::deserialize(&input, 1);
     ASSERT_EQ(element, nullptr);
 }

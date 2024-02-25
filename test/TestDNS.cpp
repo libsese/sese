@@ -11,10 +11,10 @@
 using namespace std::chrono_literals;
 
 TEST(TestDNS, Decode_0) {
-    const uint8_t buffer[12] = {0xc1, 0xa8, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+    const uint8_t BUFFER[12] = {0xc1, 0xa8, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
     sese::net::dns::FrameHeaderInfo info{};
-    sese::net::dns::DnsUtil::decodeFrameHeaderInfo(buffer, info);
+    sese::net::dns::DnsUtil::decodeFrameHeaderInfo(BUFFER, info);
 
     EXPECT_EQ(info.transactionId, 0xc1a8);
 
@@ -31,10 +31,10 @@ TEST(TestDNS, Decode_0) {
 }
 
 TEST(TestDNS, Decode_1) {
-    const uint8_t buffer[12] = {0xc1, 0xa8, 0x81, 0x83, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00};
+    const uint8_t BUFFER[12] = {0xc1, 0xa8, 0x81, 0x83, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00};
 
     sese::net::dns::FrameHeaderInfo info{};
-    sese::net::dns::DnsUtil::decodeFrameHeaderInfo(buffer, info);
+    sese::net::dns::DnsUtil::decodeFrameHeaderInfo(BUFFER, info);
 
     EXPECT_EQ(info.transactionId, 0xc1a8);
 
@@ -53,7 +53,7 @@ TEST(TestDNS, Decode_1) {
 }
 
 TEST(TestDNS, Encode_0) {
-    const uint8_t expect[12] = {0x82, 0x67, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+    const uint8_t EXPECT[12] = {0x82, 0x67, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     uint8_t result[12]{};
 
     sese::net::dns::FrameHeaderInfo info{};
@@ -71,11 +71,11 @@ TEST(TestDNS, Encode_0) {
     info.additionalPrs = 0;
 
     sese::net::dns::DnsUtil::encodeFrameHeaderInfo(result, info);
-    EXPECT_EQ(memcmp(expect, result, 12), 0);
+    EXPECT_EQ(memcmp(EXPECT, result, 12), 0);
 }
 
 TEST(TestDNS, Encode_1) {
-    const uint8_t expect[12] = {0x82, 0x67, 0x81, 0x83, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00};
+    const uint8_t EXPECT[12] = {0x82, 0x67, 0x81, 0x83, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00};
     uint8_t result[12]{};
 
     sese::net::dns::FrameHeaderInfo info{};
@@ -95,7 +95,7 @@ TEST(TestDNS, Encode_1) {
     info.additionalPrs = 0;
 
     sese::net::dns::DnsUtil::encodeFrameHeaderInfo(result, info);
-    EXPECT_EQ(memcmp(expect, result, 12), 0);
+    EXPECT_EQ(memcmp(EXPECT, result, 12), 0);
 }
 
 static sese::net::IPv4Address::Ptr createAddress() {

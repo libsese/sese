@@ -1,6 +1,6 @@
 #include "sese/service/iocp/IOBuf.h"
 
-sese::iocp::IOBufNode::IOBufNode(size_t capacity) : capacity(capacity) {
+sese::iocp::IOBufNode::IOBufNode(size_t capacity) : CAPACITY(capacity) {
     buffer = malloc(capacity);
 }
 
@@ -15,7 +15,7 @@ size_t sese::iocp::IOBufNode::getReadableSize() const noexcept {
 }
 
 size_t sese::iocp::IOBufNode::getWriteableSize() const noexcept {
-    return capacity - size;
+    return CAPACITY - size;
 }
 
 sese::iocp::IOBuf::~IOBuf() {
@@ -35,11 +35,11 @@ void sese::iocp::IOBuf::push(sese::iocp::IOBuf::Node *node) {
 }
 
 void sese::iocp::IOBuf::clear() {
-    Node *pCur = root;
-    while (pCur) {
-        auto next = pCur->next;
-        delete pCur;
-        pCur = next;
+    Node *p_cur = root;
+    while (p_cur) {
+        auto next = p_cur->next;
+        delete p_cur;
+        p_cur = next;
     }
     root = tail = cur = nullptr;
     total = 0;
@@ -57,11 +57,11 @@ size_t sese::iocp::IOBuf::getTotalSize() const noexcept {
 int64_t sese::iocp::IOBuf::read(void *buffer, size_t length) {
     size_t real = 0;
     while (true) {
-        size_t nodeRemaining = cur->getReadableSize();
-        if (length <= nodeRemaining) {
+        size_t node_remaining = cur->getReadableSize();
+        if (length <= node_remaining) {
             memcpy(
-                    (char *) buffer + real,
-                    (char *) cur->buffer + cur->read,
+                    static_cast<char *>(buffer) + real,
+                    static_cast<char *>(cur->buffer) + cur->read,
                     length
             );
             real += length;
@@ -70,34 +70,34 @@ int64_t sese::iocp::IOBuf::read(void *buffer, size_t length) {
             break;
         } else {
             memcpy(
-                    (char *) buffer + real,
-                    (char *) cur->buffer + cur->read,
-                    nodeRemaining
+                    static_cast<char *>(buffer) + real,
+                    static_cast<char *>(cur->buffer) + cur->read,
+                    node_remaining
             );
-            real += nodeRemaining;
-            cur->read += nodeRemaining;
-            readed += nodeRemaining;
+            real += node_remaining;
+            cur->read += node_remaining;
+            readed += node_remaining;
             if (cur == tail) {
                 break;
             } else {
                 cur = cur->next;
-                length -= nodeRemaining;
+                length -= node_remaining;
             }
         }
     }
-    return (int64_t) real;
+    return static_cast<int64_t>(real);
 }
 
 int64_t sese::iocp::IOBuf::peek(void *buffer, size_t length) {
     size_t real = 0;
-    Node *myCur = cur;
-    Node node = *myCur;
+    Node *my_cur = cur;
+    Node node = *my_cur;
     while (true) {
-        size_t nodeRemaining = node.getReadableSize();
-        if (length <= nodeRemaining) {
+        size_t node_remaining = node.getReadableSize();
+        if (length <= node_remaining) {
             memcpy(
-                    (char *) buffer + real,
-                    (char *) node.buffer + node.read,
+                    static_cast<char *>(buffer) + real,
+                    static_cast<char *>(node.buffer) + node.read,
                     length
             );
             real += length;
@@ -105,47 +105,47 @@ int64_t sese::iocp::IOBuf::peek(void *buffer, size_t length) {
             break;
         } else {
             memcpy(
-                    (char *) buffer + real,
-                    (char *) node.buffer + node.read,
-                    nodeRemaining
+                    static_cast<char *>(buffer) + real,
+                    static_cast<char *>(node.buffer) + node.read,
+                    node_remaining
             );
-            real += nodeRemaining;
-            node.read += nodeRemaining;
-            if (myCur == tail) {
+            real += node_remaining;
+            node.read += node_remaining;
+            if (my_cur == tail) {
                 break;
             } else {
-                myCur = myCur->next;
-                node.buffer = myCur->buffer;
-                node.size = myCur->size;
+                my_cur = my_cur->next;
+                node.buffer = my_cur->buffer;
+                node.size = my_cur->size;
                 node.read = 0;
-                length -= nodeRemaining;
+                length -= node_remaining;
             }
         }
     }
     node.buffer = nullptr;
-    return (int64_t) real;
+    return static_cast<int64_t>(real);
 }
 
 int64_t sese::iocp::IOBuf::trunc(size_t length) {
     size_t real = 0;
     while (true) {
-        size_t nodeRemaining = cur->getReadableSize();
-        if (length <= nodeRemaining) {
+        size_t node_remaining = cur->getReadableSize();
+        if (length <= node_remaining) {
             real += length;
             cur->read += length;
             readed += length;
             break;
         } else {
-            real += nodeRemaining;
-            cur->read += nodeRemaining;
-            readed += nodeRemaining;
+            real += node_remaining;
+            cur->read += node_remaining;
+            readed += node_remaining;
             if (cur == tail) {
                 break;
             } else {
                 cur = cur->next;
-                length -= nodeRemaining;
+                length -= node_remaining;
             }
         }
     }
-    return (int64_t) real;
+    return static_cast<int64_t>(real);
 }

@@ -29,9 +29,9 @@ public:
     [[nodiscard]] socklen_t getRawAddressLength() const noexcept override;
     [[nodiscard]] std::string getAddress() const noexcept override;
 
-    [[nodiscard]] IPAddress::Ptr getBroadcastAddress(uint32_t prefixLen) const noexcept override;
-    [[nodiscard]] IPAddress::Ptr getNetworkAddress(uint32_t prefixLen) const noexcept override;
-    [[nodiscard]] IPAddress::Ptr getSubnetMask(uint32_t prefixLen) const noexcept override;
+    [[nodiscard]] IPAddress::Ptr getBroadcastAddress(uint32_t prefix_len) const noexcept override;
+    [[nodiscard]] IPAddress::Ptr getNetworkAddress(uint32_t prefix_len) const noexcept override;
+    [[nodiscard]] IPAddress::Ptr getSubnetMask(uint32_t prefix_len) const noexcept override;
 
     void setPort(uint16_t port) noexcept override { address.sin_port = ToBigEndian16(port); }
     [[nodiscard]] uint16_t getPort() const noexcept override {

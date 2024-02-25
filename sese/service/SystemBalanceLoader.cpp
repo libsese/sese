@@ -8,15 +8,15 @@ sese::service::SystemBalanceLoader::~SystemBalanceLoader() noexcept {
     }
 
     if (!eventLoopVector.empty()) {
-        for (decltype(auto) eventLoop: eventLoopVector) {
-            delete eventLoop;
+        for (decltype(auto) event_loop: eventLoopVector) {
+            delete event_loop;
         }
         eventLoopVector.clear();
     }
 
     if (!socketVector.empty()) {
-        for (decltype(auto) subSocket: socketVector) {
-            sese::net::Socket::close(subSocket);
+        for (decltype(auto) sub_socket: socketVector) {
+            sese::net::Socket::close(sub_socket);
         }
         socketVector.clear();
     }
@@ -33,9 +33,9 @@ void sese::service::SystemBalanceLoader::start() noexcept {
 
     for (size_t i = 0; i < threads; ++i) {
         auto thread = std::make_unique<sese::Thread>(
-                [this, eventLoop = this->eventLoopVector[i]]() {
+                [this, event_loop = this->eventLoopVector[i]]() {
                     while (!_isStop) {
-                        eventLoop->dispatch(100);
+                        event_loop->dispatch(100);
                     }
                 },
                 "SBL_" + std::to_string(i)
@@ -56,13 +56,13 @@ void sese::service::SystemBalanceLoader::stop() noexcept {
         }
         threadVector.clear();
 
-        for (decltype(auto) eventLoop: eventLoopVector) {
-            delete eventLoop;
+        for (decltype(auto) event_loop: eventLoopVector) {
+            delete event_loop;
         }
         eventLoopVector.clear();
 
-        for (decltype(auto) subSocket: socketVector) {
-            sese::net::Socket::close(subSocket);
+        for (decltype(auto) sub_socket: socketVector) {
+            sese::net::Socket::close(sub_socket);
         }
         socketVector.clear();
     }

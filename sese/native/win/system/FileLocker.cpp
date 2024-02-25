@@ -12,9 +12,9 @@ bool sese::system::FileLocker::lockRead(int64_t start, int64_t len) {
 
 bool sese::system::FileLocker::lock(int64_t start, int64_t len) {
     auto handle = (HANDLE) _get_osfhandle(fd);
-    auto pStart = (DWORD *) &start;
-    auto pLen = (DWORD *) &len;
-    if (TRUE == ::LockFile(handle, *pStart, *(pStart + 1), *pLen, *(pLen + 1))) {
+    auto p_start = (DWORD *) &start;
+    auto p_len = (DWORD *) &len;
+    if (TRUE == ::LockFile(handle, *p_start, *(p_start + 1), *p_len, *(p_len + 1))) {
         offset = start;
         size = len;
         return true;
@@ -25,9 +25,9 @@ bool sese::system::FileLocker::lock(int64_t start, int64_t len) {
 
 bool sese::system::FileLocker::unlock() {
     auto handle = (HANDLE) _get_osfhandle(fd);
-    auto pStart = (DWORD *) &offset;
-    auto pLen = (DWORD *) &size;
-    if (TRUE == UnlockFile(handle, *pStart, *(pStart + 1), *pLen, *(pLen + 1))) {
+    auto p_start = (DWORD *) &offset;
+    auto p_len = (DWORD *) &size;
+    if (TRUE == UnlockFile(handle, *p_start, *(p_start + 1), *p_len, *(p_len + 1))) {
         offset = size = 0;
         return true;
     } else {

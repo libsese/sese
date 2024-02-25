@@ -208,20 +208,20 @@ GTEST_TEST(TestHttpCookie, SendRequestCookie) {
     char buffer[1024]{};
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
-    auto cookieMap = std::make_shared<sese::net::http::CookieMap>();
+    auto cookie_map = std::make_shared<sese::net::http::CookieMap>();
     {
         auto cookie = std::make_shared<sese::net::http::Cookie>("id", "foo");
         cookie->setValue("bar");
-        cookieMap->add(cookie);
+        cookie_map->add(cookie);
     }
 
     {
         auto cookie = std::make_shared<sese::net::http::Cookie>("token", "123456");
-        cookieMap->add(cookie);
+        cookie_map->add(cookie);
     }
 
     sese::net::http::RequestHeader resp{};
-    resp.setCookies(cookieMap);
+    resp.setCookies(cookie_map);
 
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::sendRequest(&output, &resp));
 }
@@ -230,7 +230,7 @@ GTEST_TEST(TestHttpCookie, SendResponseCookie) {
     char buffer[1024]{};
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer));
 
-    auto cookieMap = std::make_shared<sese::net::http::CookieMap>();
+    auto cookie_map = std::make_shared<sese::net::http::CookieMap>();
     {
         auto cookie = std::make_shared<sese::net::http::Cookie>("id", "foo");
         cookie->setValue("bar");
@@ -239,17 +239,17 @@ GTEST_TEST(TestHttpCookie, SendResponseCookie) {
         cookie->setMaxAge(10);
         cookie->setPath("/docs");
         cookie->setSecure(true);
-        cookieMap->add(cookie);
+        cookie_map->add(cookie);
     }
 
     {
         auto cookie = std::make_shared<sese::net::http::Cookie>("token", "123456");
         cookie->setExpires(1690155929);
-        cookieMap->add(cookie);
+        cookie_map->add(cookie);
     }
 
     sese::net::http::ResponseHeader resp;
-    resp.setCookies(cookieMap);
+    resp.setCookies(cookie_map);
 
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::sendResponse(&output, &resp));
 }

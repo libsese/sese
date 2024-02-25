@@ -22,7 +22,7 @@ struct IOBufNode {
     /// 缓存已填充大小
     size_t size{0};
     /// 缓存容量大小
-    const size_t capacity;
+    const size_t CAPACITY;
     /// 下一个节点
     IOBufNode *next{nullptr};
 

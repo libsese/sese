@@ -154,40 +154,40 @@ bool sese::db::impl::PostgresPreparedStatementImpl::getColumnType(uint32_t index
     }
     switch (PQftype(META, static_cast<int>(index))) {
         case BOOLOID:
-            type = MetadataType::Boolean;
+            type = MetadataType::BOOLEAN;
             break;
         case TEXTOID:
         case CHAROID:
         case VARCHAROID:
-            type = MetadataType::Text;
+            type = MetadataType::TEXT;
             break;
         case INT8OID:
-            type = MetadataType::Long;
+            type = MetadataType::LONG;
             break;
         case INT4OID:
-            type = MetadataType::Integer;
+            type = MetadataType::INTEGER;
             break;
         case INT2OID:
-            type = MetadataType::Short;
+            type = MetadataType::SHORT;
             break;
         case FLOAT8OID:
-            type = MetadataType::Float;
+            type = MetadataType::FLOAT;
             break;
         case FLOAT4OID:
-            type = MetadataType::Double;
+            type = MetadataType::DOUBLE;
             break;
         case DATEOID:
-            type = MetadataType::Date;
+            type = MetadataType::DATE;
             break;
         case TIMEOID:
-            type = MetadataType::Time;
+            type = MetadataType::TIME;
             break;
         case TIMESTAMPTZOID:
         case TIMESTAMPOID:
-            type = MetadataType::DateTime;
+            type = MetadataType::DATE_TIME;
             break;
         default:
-            type = MetadataType::Unknown;
+            type = MetadataType::UNKNOWN;
             break;
     }
     return true;

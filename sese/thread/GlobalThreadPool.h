@@ -16,8 +16,8 @@ class API GlobalThreadPool {
 public:
     static void postTask(const std::function<void()> &func);
 
-    template<class ReturnType>
-    static std::shared_future<ReturnType> postTask(const std::function<ReturnType()> &func);
+    template<class RETURN_TYPE>
+    static std::shared_future<RETURN_TYPE> postTask(const std::function<RETURN_TYPE()> &func);
 
 #ifdef SESE_PLATFORM_WINDOWS
 private:
@@ -25,15 +25,15 @@ private:
         std::function<void()> function;
     };
 
-    template<class ReturnType>
+    template<class RETURN_TYPE>
     struct Task2 {
-        std::packaged_task<ReturnType()> packagedTask;
+        std::packaged_task<RETURN_TYPE()> packagedTask;
     };
 
-    static DWORD WINAPI taskRunner1(LPVOID lpParam);
+    static DWORD WINAPI taskRunner1(LPVOID lp_param);
 
-    template<class ReturnType>
-    static DWORD WINAPI taskRunner2(LPVOID lpParma);
+    template<class RETURN_TYPE>
+    static DWORD WINAPI taskRunner2(LPVOID lp_parma);
 #else
 private:
     static SingletonPtr<ThreadPool> globalThreadPool;
@@ -43,19 +43,19 @@ private:
 
 #ifdef SESE_PLATFORM_WINDOWS
 
-template<class ReturnType>
-std::shared_future<ReturnType> sese::GlobalThreadPool::postTask(const std::function<ReturnType()> &func) {
-    auto task2 = new Task2<ReturnType>();
-    auto packagedTask = std::packaged_task<ReturnType()>(func);
-    std::shared_future<ReturnType> future(packagedTask.get_future());
-    task2->packagedTask = std::move(packagedTask);
-    QueueUserWorkItem(taskRunner2<ReturnType>, task2, WT_EXECUTEDEFAULT);
+template<class RETURN_TYPE>
+std::shared_future<RETURN_TYPE> sese::GlobalThreadPool::postTask(const std::function<RETURN_TYPE()> &func) {
+    auto task2 = new Task2<RETURN_TYPE>();
+    auto packaged_task = std::packaged_task<RETURN_TYPE()>(func);
+    std::shared_future<RETURN_TYPE> future(packaged_task.get_future());
+    task2->packagedTask = std::move(packaged_task);
+    QueueUserWorkItem(taskRunner2<RETURN_TYPE>, task2, WT_EXECUTEDEFAULT);
     return future;
 }
 
-template<class ReturnType>
-DWORD sese::GlobalThreadPool::taskRunner2(LPVOID lpParma) {
-    auto task2 = (Task2<ReturnType> *) lpParma;
+template<class RETURN_TYPE>
+DWORD sese::GlobalThreadPool::taskRunner2(LPVOID lp_parma) {
+    auto task2 = (Task2<RETURN_TYPE> *) lp_parma;
     task2->packagedTask();
     delete task2;
     return 0;

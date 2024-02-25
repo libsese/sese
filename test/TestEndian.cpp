@@ -27,8 +27,8 @@ TEST(TestEndian, MemoryViewer) {
     char buffer[128]{};
     sese::io::OutputBufferWrapper output0(buffer, 64);
     sese::io::OutputBufferWrapper output1(buffer + 64, 64);
-    sese::MemoryViewer::peer32(&output0, &value, EndianType::Big);
-    sese::MemoryViewer::peer32(&output1, &value, EndianType::Little);
+    sese::MemoryViewer::peer32(&output0, &value, EndianType::BIG);
+    sese::MemoryViewer::peer32(&output1, &value, EndianType::LITTLE);
     log.info("value view on big endian   : %s", buffer);
     log.info("value view on little endian: %s", buffer + 64);
 }

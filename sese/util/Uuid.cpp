@@ -5,8 +5,8 @@
 #pragma warning(disable : 4244)
 #endif
 
-sese::Uuid::Uuid(uint8_t selfId, uint64_t timestamp, uint8_t r) noexcept {
-    this->selfId = selfId;
+sese::Uuid::Uuid(uint8_t self_id, uint64_t timestamp, uint8_t r) noexcept {
+    this->selfId = self_id;
     this->timestamp = timestamp;
     this->r = r;
 }

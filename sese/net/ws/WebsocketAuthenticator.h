@@ -31,7 +31,7 @@ public:
     static std::unique_ptr<char[]> toResult(const char *key) noexcept;
 
 private:
-    static const char *APPEND_STRING;
+    static const char *append_string;
 
     /// 生成二进制 key
     static void generateKey(uint8_t key[16]);

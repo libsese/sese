@@ -12,9 +12,9 @@ namespace sese {
 
 /// 缓存队列（多生产者-多消费者）
 template<class T>
-class BufferedQueue_NN {
+class BufferedQueueNn {
 public:
-    explicit BufferedQueue_NN(size_t writeLimit) : writeLimit(writeLimit) {}
+    explicit BufferedQueueNn(size_t write_limit) : writeLimit(write_limit) {}
 
     bool pop(T &t) {
         Locker locker(readMutex);
@@ -66,17 +66,17 @@ private:
 
 /// 缓存队列（多生产者-单消费者）
 template<class T>
-using BufferedQueue_N1 = BufferedQueue_NN<T>;
+using BufferedQueueN1 = BufferedQueueNn<T>;
 
 /// 缓存队列（单生产者-多消费者）
 template<class T>
-using BufferedQueue_1N = BufferedQueue_NN<T>;
+using BufferedQueue1N = BufferedQueueNn<T>;
 
 /// 缓存队列（单生产者-单消费者）
 template<class T>
-class BufferedQueue_11 {
+class BufferedQueue11 {
 public:
-    explicit BufferedQueue_11(size_t writeLimit) : writeLimit(writeLimit) {}
+    explicit BufferedQueue11(size_t write_limit) : writeLimit(write_limit) {}
 
     bool pop(T &t) {
         Locker locker(mutex);

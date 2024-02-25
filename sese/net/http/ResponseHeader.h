@@ -18,14 +18,14 @@ public:
 
     ResponseHeader() = default;
 
-    ResponseHeader(const std::initializer_list<KeyValueType> &initializerList)
-        : Header(initializerList) {}
+    ResponseHeader(const std::initializer_list<KeyValueType> &initializer_list)
+        : Header(initializer_list) {}
 
-    void setCode(uint16_t responseCode) noexcept { statusCode = responseCode; }
+    void setCode(uint16_t response_code) noexcept { statusCode = response_code; }
     [[nodiscard]] uint16_t getCode() const noexcept { return statusCode; }
 
     [[nodiscard]] HttpVersion getVersion() const { return version; }
-    void setVersion(HttpVersion newVersion) { this->version = newVersion; }
+    void setVersion(HttpVersion new_version) { this->version = new_version; }
 
 protected:
     uint16_t statusCode = 200;

@@ -18,8 +18,8 @@ public:
     void onCreate(std::string_view name) override {
         printf("touch %s\n", name.data());
     }
-    void onMove(std::string_view srcName, std::string_view dstName) override {
-        printf("mv %s %s\n", srcName.data(), dstName.data());
+    void onMove(std::string_view src_name, std::string_view dst_name) override {
+        printf("mv %s %s\n", src_name.data(), dst_name.data());
     }
     void onModify(std::string_view name) override {
         printf("mod %s\n", name.data());

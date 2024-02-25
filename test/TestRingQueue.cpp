@@ -70,13 +70,13 @@ TEST(TestRingQueue, Push) {
 }
 
 TEST(TestRingQueue, MutilThread) {
-    const auto total = 4000;
+    const auto TOTAL = 4000;
     RingQueue<int, 500> queue;
 
     std::mutex mutex;
     auto proc1 = [&] {
         sese::StopWatch watch;
-        for (int i = 0; i < total / 2;) {
+        for (int i = 0; i < TOTAL / 2;) {
             mutex.lock();
             if (!queue.full()) {
                 queue.push(i);
@@ -95,7 +95,7 @@ TEST(TestRingQueue, MutilThread) {
     auto times = 0;
     auto proc2 = [&] {
         sese::StopWatch watch;
-        for (int i = 0; i < total / 2;) {
+        for (int i = 0; i < TOTAL / 2;) {
             mutex.lock();
             if (!queue.empty()) {
                 queue.pop();
@@ -120,5 +120,5 @@ TEST(TestRingQueue, MutilThread) {
     thread2.join();
     thread3.join();
     thread4.join();
-    ASSERT_EQ(times, total);
+    ASSERT_EQ(times, TOTAL);
 }

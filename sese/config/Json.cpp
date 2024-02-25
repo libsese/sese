@@ -21,14 +21,14 @@ inline bool isKeyword(const char *str) {
 }
 
 Value Json::parseObject(Json::Tokens &tokens, size_t level) {
-    bool hasEnd = false;
+    bool has_end = false;
     if (level == 0) { return {}; }
     auto object = Value::Dict();
     while (!tokens.empty()) {
         auto name = tokens.front();
         tokens.pop();
         if (name == "}") {
-            hasEnd = true;
+            has_end = true;
             break;
         } else if (name == ",") {
             // token 为 ',' 说明接下来还有键值对
@@ -50,12 +50,12 @@ Value Json::parseObject(Json::Tokens &tokens, size_t level) {
         if (value == "{") {
             // 值是一个 ObjectData
             level--;
-            auto subObject = parseObject(tokens, level);
-            if (subObject.isNull()) {
+            auto sub_object = parseObject(tokens, level);
+            if (sub_object.isNull()) {
                 // 解析错误，直接返回
                 return {};
             } else {
-                object.set(name, std::move(subObject));
+                object.set(name, std::move(sub_object));
             }
             level++;
         } else if (value == "[") {
@@ -77,7 +77,7 @@ Value Json::parseObject(Json::Tokens &tokens, size_t level) {
         }
     }
 
-    if (hasEnd) {
+    if (has_end) {
         return Value(std::move(object));
     } else {
         return {};
@@ -105,23 +105,23 @@ Value Json::parseArray(sese::Json::Tokens &tokens, size_t level) {
         if (token == "{") {
             // 值是一个 ObjectData
             level--;
-            auto subObject = parseObject(tokens, level);
-            if (subObject.isNull()) {
+            auto sub_object = parseObject(tokens, level);
+            if (sub_object.isNull()) {
                 // 解析错误，直接返回
                 return {};
             } else {
-                array.append(std::move(subObject));
+                array.append(std::move(sub_object));
             }
             level++;
         } else if (token == "[") {
             // 值是一个 ArrayData
             level--;
-            auto subArray = parseArray(tokens, level);
-            if (subArray.isNull()) {
+            auto sub_array = parseArray(tokens, level);
+            if (sub_array.isNull()) {
                 // 解析错误，直接返回
                 return {};
             } else {
-                array.append(std::move(subArray));
+                array.append(std::move(sub_array));
             }
             level++;
         } else {
@@ -150,8 +150,8 @@ Value Json::parseBasic(const std::string &value) {
     } else if (value.compare(0, 1, "\"") == 0) {
         return Value(value.substr(1, value.size() - 2));
     } else {
-        auto isFloat = value.find('.', 1);
-        if (isFloat != std::string::npos) {
+        auto is_float = value.find('.', 1);
+        if (is_float != std::string::npos) {
             return Value(std::stod(value));
         } else {
             return Value(std::stoi(value));
@@ -160,11 +160,11 @@ Value Json::parseBasic(const std::string &value) {
 }
 
 void Json::streamifyObject(io::OutputStream *out, const Value::Dict &object) {
-    bool isFirst = true;
+    bool is_first = true;
     out->write("{", 1);
     for (const auto &iterator: object) {
-        if (isFirst) {
-            isFirst = false;
+        if (is_first) {
+            is_first = false;
         } else {
             out->write(",", 1);
         }
@@ -186,11 +186,11 @@ void Json::streamifyObject(io::OutputStream *out, const Value::Dict &object) {
 }
 
 void Json::streamifyArray(io::OutputStream *out, const Value::List &array) {
-    bool isFirst = true;
+    bool is_first = true;
     out->write("[", 1);
     for (const auto &data: array) {
-        if (isFirst) {
-            isFirst = false;
+        if (is_first) {
+            is_first = false;
         } else {
             out->write(",", 1);
         }

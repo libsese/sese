@@ -8,10 +8,10 @@
 namespace sese::db {
     /// \brief 数据库类型枚举
     enum class DatabaseType {
-        MySql,
-        Maria,
-        Sqlite,
-        Postgres
+        MY_SQL,
+        MARIA,
+        SQLITE,
+        POSTGRES
     };
 
     /// \brief 数据库驱动实例管理器
@@ -22,6 +22,6 @@ namespace sese::db {
         /// \param connString 连接字符串
         /// \return 数据库驱动实例
         /// \retval nullptr 创建数据库驱动实例失败，且通常是不可恢复错误，但极少出现
-        static DriverInstance::Ptr getInstance(DatabaseType type, const char *connString) noexcept;
+        static DriverInstance::Ptr getInstance(DatabaseType type, const char *conn_string) noexcept;
     };
 }// namespace sese::db

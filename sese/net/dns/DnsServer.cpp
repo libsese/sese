@@ -69,14 +69,14 @@ void sese::net::dns::DnsServer::shutdown() noexcept {
 }
 
 void sese::net::dns::DnsServer::loop() noexcept {
-    auto clientAddress = std::make_shared<sese::net::IPv4Address>();
+    auto client_address = std::make_shared<sese::net::IPv4Address>();
     while (true) {
         if (isShutdown) {
             break;
         }
 
         uint8_t buffer[DNS_PACKAGE_SIZE];
-        auto len = socket->recv(buffer, sizeof(buffer), clientAddress, 0);
+        auto len = socket->recv(buffer, sizeof(buffer), client_address, 0);
         if (len <= 0) {
             sese::sleep(0);
             continue;
@@ -143,6 +143,6 @@ void sese::net::dns::DnsServer::loop() noexcept {
         DnsUtil::encodeFrameHeaderInfo(buffer, info);
         DnsUtil::encodeQueries(&output, session.getQueries());
         DnsUtil::encodeAnswers(&output, session.getAnswers());
-        socket->send(buffer, 12 + output.getLength(), clientAddress, 0);
+        socket->send(buffer, 12 + output.getLength(), client_address, 0);
     }
 }

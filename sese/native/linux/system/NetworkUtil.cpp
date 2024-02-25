@@ -16,35 +16,35 @@ using namespace sese::system;
 std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     std::vector<NetworkInterface> interfaces;
     std::map<std::string, NetworkInterface> map;
-    struct ifaddrs *pIfAddress = nullptr;
+    struct ifaddrs *p_if_address = nullptr;
 
     // 这些信息仅用于获取网卡名称、 IPv4 和 mac 信息
     // glib 2.3.3 以下不支持使用其获取 IPv6 相关信息
-    getifaddrs(&pIfAddress);
+    getifaddrs(&p_if_address);
 
-    auto pAddress = pIfAddress;
-    while (pAddress) {
-        if (pAddress->ifa_addr->sa_family == AF_INET ||
-            pAddress->ifa_addr->sa_family == AF_PACKET) {
+    auto p_address = p_if_address;
+    while (p_address) {
+        if (p_address->ifa_addr->sa_family == AF_INET ||
+            p_address->ifa_addr->sa_family == AF_PACKET) {
 
-            auto iterator = map.find(pAddress->ifa_name);
+            auto iterator = map.find(p_address->ifa_name);
             if (iterator == map.end()) {
                 auto i = NetworkInterface();
-                iterator = map.insert({pAddress->ifa_name, i}).first;
+                iterator = map.insert({p_address->ifa_name, i}).first;
             }
-            if (pAddress->ifa_addr->sa_family == AF_INET) {
-                sockaddr_in addr = *(sockaddr_in *) (pAddress->ifa_addr);
+            if (p_address->ifa_addr->sa_family == AF_INET) {
+                sockaddr_in addr = *(sockaddr_in *) (p_address->ifa_addr);
                 iterator->second.ipv4Addresses.emplace_back(std::make_shared<sese::net::IPv4Address>(addr));
-            } else if (pAddress->ifa_addr->sa_family == AF_PACKET) {
-                iterator->second.name = pAddress->ifa_name;
-                memcpy(iterator->second.mac.data(), pAddress->ifa_addr, 6);
+            } else if (p_address->ifa_addr->sa_family == AF_PACKET) {
+                iterator->second.name = p_address->ifa_name;
+                memcpy(iterator->second.mac.data(), p_address->ifa_addr, 6);
             }
         }
 
-        pAddress = pAddress->ifa_next;
+        p_address = p_address->ifa_next;
     }
 
-    freeifaddrs(pIfAddress);
+    freeifaddrs(p_if_address);
 
     // 用于获取 IPv6 信息
     FILE *f = fopen("/proc/net/if_inet6", "r");

@@ -10,30 +10,30 @@ int system::StackInfo::getSkipOffset() {
 }
 
 system::StackInfo::StackInfo(int limit, int skip) noexcept {
-    void **pStack = (void **) malloc(sizeof(void *) * limit);
+    void **p_stack = (void **) malloc(sizeof(void *) * limit);
     auto process = GetCurrentProcess();
     SymInitialize(process, nullptr, TRUE);
-    auto frames = CaptureStackBackTrace(skip, limit, pStack, nullptr);
+    auto frames = CaptureStackBackTrace(skip, limit, p_stack, nullptr);
     for (auto &&i: sese::Range<WORD>(0, frames - 1)) {
-        auto address = (DWORD64) (pStack[i]);
+        auto address = (DWORD64) (p_stack[i]);
 
-        DWORD64 displacementSym = 0;
+        DWORD64 displacement_sym = 0;
         char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)]{};
-        auto pSymbol = (PSYMBOL_INFO) buffer;
-        pSymbol->SizeOfStruct = sizeof(SYMBOL_INFO);
-        pSymbol->MaxNameLen = MAX_SYM_NAME;
+        auto p_symbol = (PSYMBOL_INFO) buffer;
+        p_symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
+        p_symbol->MaxNameLen = MAX_SYM_NAME;
 
         BOOL rt = TRUE;
-        rt = SymFromAddr(process, address, &displacementSym, pSymbol);
+        rt = SymFromAddr(process, address, &displacement_sym, p_symbol);
         if (!rt) {
             stacks.emplace_back(SubStackInfo{});
             continue;
         }
 
-        stacks.emplace_back(SubStackInfo{pSymbol->Address, decodeSymbolName(pSymbol->Name)});
+        stacks.emplace_back(SubStackInfo{p_symbol->Address, decodeSymbolName(p_symbol->Name)});
     }
 
-    free(pStack);
+    free(p_stack);
 }
 
 std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept {

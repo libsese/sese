@@ -7,8 +7,8 @@ void sese::service::TcpTransporterConfig::freeConnection(sese::service::TcpConne
     delete conn;
 }
 
-sese::service::TcpTransporter::TcpTransporter(sese::service::TcpTransporterConfig *transporterConfig) noexcept {
-    this->config = transporterConfig;
+sese::service::TcpTransporter::TcpTransporter(sese::service::TcpTransporterConfig *transporter_config) noexcept {
+    this->config = transporter_config;
 
     if (this->config->servCtx) {
         // ALPN
@@ -39,7 +39,7 @@ sese::service::TcpTransporter::~TcpTransporter() {
 }
 
 void sese::service::TcpTransporter::onAccept(int fd) {
-    SSL *clientSSL;
+    SSL *client_ssl;
     // GCOVR_EXCL_START
     if (sese::net::Socket::setNonblocking(fd)) {
         sese::net::Socket::close(fd);
@@ -50,32 +50,32 @@ void sese::service::TcpTransporter::onAccept(int fd) {
 
     // GCOVR_EXCL_STOP
     if (config->servCtx) {
-        clientSSL = SSL_new((SSL_CTX *) config->servCtx->getContext());
-        SSL_set_fd(clientSSL, (int) fd);
-        SSL_set_accept_state(clientSSL);
+        client_ssl = SSL_new((SSL_CTX *) config->servCtx->getContext());
+        SSL_set_fd(client_ssl, (int) fd);
+        SSL_set_accept_state(client_ssl);
 
         // GCOVR_EXCL_START
         while (true) {
-            auto rt = SSL_do_handshake(clientSSL);
+            auto rt = SSL_do_handshake(client_ssl);
             if (rt <= 0) {
-                auto err = SSL_get_error(clientSSL, rt);
+                auto err = SSL_get_error(client_ssl, rt);
                 if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
-                    SSL_free(clientSSL);
+                    SSL_free(client_ssl);
                     sese::net::Socket::close(fd);
                     // delete conn;
                     config->freeConnection(conn);
                     return;
                 }
             } else {
-                conn->ssl = clientSSL;
+                conn->ssl = client_ssl;
                 // 此选项允许 OpenSSL 在尝试重试 SSL_write 时使用不完全相同的 buffer 参数
                 // https://stackoverflow.com/questions/2997218/why-am-i-getting-error1409f07fssl-routinesssl3-write-pending-bad-write-retr
-                SSL_set_mode(clientSSL, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
+                SSL_set_mode(client_ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
                 // ALPN Callback
                 const uint8_t *data = nullptr;
-                uint32_t dataLength;
-                SSL_get0_alpn_selected(clientSSL, &data, &dataLength);
-                onProcAlpnGet(conn, data, dataLength);
+                uint32_t data_length;
+                SSL_get0_alpn_selected(client_ssl, &data, &data_length);
+                onProcAlpnGet(conn, data, data_length);
                 break;
             }
         }
@@ -210,8 +210,8 @@ int64_t sese::service::TcpTransporter::write(int fd, const void *buffer, size_t 
     }
 }
 
-void sese::service::TcpTransporter::onTimeout(sese::service::v1::TimeoutEvent *timeoutEvent) {
-    auto conn = (TcpConnection *) timeoutEvent->data;
+void sese::service::TcpTransporter::onTimeout(sese::service::v1::TimeoutEvent *timeout_event) {
+    auto conn = (TcpConnection *) timeout_event->data;
     onProcClose(conn);
     if (config->servCtx) {
         SSL_free((SSL *) conn->ssl);
@@ -234,6 +234,6 @@ void sese::service::TcpTransporter::postWrite(TcpConnection *conn) {
     onWrite(conn->event);
 }
 
-int sese::service::TcpTransporter::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *outLength, const uint8_t *in, uint32_t inLength, sese::service::TcpTransporter *transporter) {
-    return transporter->onProcAlpnSelect(out, outLength, in, inLength);
+int sese::service::TcpTransporter::alpnCallbackFunction([[maybe_unused]] void *ssl, const uint8_t **out, uint8_t *out_length, const uint8_t *in, uint32_t in_length, sese::service::TcpTransporter *transporter) {
+    return transporter->onProcAlpnSelect(out, out_length, in, in_length);
 }

@@ -30,9 +30,9 @@ public:
     [[nodiscard]] bool isSecure() const;
     void setSecure(bool secure);
     [[nodiscard]] bool isHttpOnly() const;
-    void setHttpOnly(bool httpOnly);
+    void setHttpOnly(bool http_only);
     [[nodiscard]] uint64_t getMaxAge() const;
-    void setMaxAge(uint64_t maxAge);
+    void setMaxAge(uint64_t max_age);
     [[nodiscard]] uint64_t getExpires() const;
     void setExpires(uint64_t expires);
     [[nodiscard]] const std::string &getName() const;

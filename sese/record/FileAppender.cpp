@@ -1,8 +1,8 @@
 #include "sese/record/FileAppender.h"
 
-sese::record::FileAppender::FileAppender(io::FileStream::Ptr fileStream, sese::record::Level level)
+sese::record::FileAppender::FileAppender(io::FileStream::Ptr file_stream, sese::record::Level level)
     : AbstractAppender(level),
-      fileStream(std::move(fileStream)) {
+      fileStream(std::move(file_stream)) {
     bufferedStream = std::make_shared<io::BufferedStream>(this->fileStream, 4 * 1024);
 }
 

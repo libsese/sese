@@ -52,11 +52,11 @@ public:
     /// \tparam type 指定类型
     /// \param id 对象标识符
     /// \retval nullptr 实例化错误
-    template<typename type>
-    std::shared_ptr<type> createClassWithIdAs(const std::string &id) {
+    template<typename TYPE>
+    std::shared_ptr<TYPE> createClassWithIdAs(const std::string &id) {
         auto p = createClassWithId(id);
         if (p) {
-            return std::reinterpret_pointer_cast<type>(p);
+            return std::reinterpret_pointer_cast<TYPE>(p);
         } else {
             return nullptr;
         }

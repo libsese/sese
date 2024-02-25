@@ -13,12 +13,12 @@ int sese::net::Socket::listen(socket_t socket, int backlog) noexcept {
     return ::listen(socket, backlog);
 }
 
-int sese::net::Socket::bind(socket_t socket, const sockaddr *addr, socklen_t addrLen) noexcept {
-    return ::bind(socket, addr, addrLen);
+int sese::net::Socket::bind(socket_t socket, const sockaddr *addr, socklen_t addr_len) noexcept {
+    return ::bind(socket, addr, addr_len);
 }
 
-int sese::net::Socket::connect(socket_t socket, const sockaddr *addr, socklen_t addrLen) noexcept {
-    return ::connect(socket, addr, addrLen);
+int sese::net::Socket::connect(socket_t socket, const sockaddr *addr, socklen_t addr_len) noexcept {
+    return ::connect(socket, addr, addr_len);
 }
 
 #include <cassert>

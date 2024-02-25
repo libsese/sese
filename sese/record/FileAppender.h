@@ -22,7 +22,7 @@ class API FileAppender final : public sese::record::AbstractAppender {
 public:
     typedef std::shared_ptr<FileAppender> Ptr;
 
-    explicit FileAppender(io::FileStream::Ptr fileStream, Level level = Level::DEBUG);
+    explicit FileAppender(io::FileStream::Ptr file_stream, Level level = Level::DEBUG);
 
     ~FileAppender() noexcept override;
 

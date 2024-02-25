@@ -10,12 +10,12 @@ using sese::Base64Converter;
 using sese::io::Stream;
 
 /// 标准 BASE64 码表
-sese::Base64Converter::CodePage Base64CodePage = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+sese::Base64Converter::CodePage base64_code_page = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-sese::Base64Converter::CodePage Base62CodePage = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+sese::Base64Converter::CodePage base62_code_page = (sese::Base64Converter::CodePage) "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 void inline encode(unsigned char in, unsigned char &out) {
-    out = Base64CodePage[in];
+    out = base64_code_page[in];
 }
 
 void Base64Converter::encode(InputStream *src, OutputStream *dest) {
@@ -114,16 +114,16 @@ void Base64Converter::decode(const InputStream::Ptr &src, const OutputStream::Pt
 
 bool Base64Converter::encodeInteger(size_t num, OutputStream *output) noexcept {
     if (num == 0) {
-        output->write(&Base62CodePage[0], 1);
+        output->write(&base62_code_page[0], 1);
         return true;
     }
 
     std::vector<unsigned char> vector;
-    auto base = strlen((const char *) Base62CodePage);
+    auto base = strlen((const char *) base62_code_page);
     while (num > 0) {
         std::div_t res = div((int) num, (int) base);
         num = res.quot;
-        vector.push_back(Base62CodePage[res.rem]);
+        vector.push_back(base62_code_page[res.rem]);
     }
 
     std::reverse(vector.begin(), vector.end());
@@ -131,8 +131,8 @@ bool Base64Converter::encodeInteger(size_t num, OutputStream *output) noexcept {
 }
 
 int64_t Base64Converter::decodeBuffer(const unsigned char *buffer, size_t size) noexcept {
-    auto base = strlen((const char *) Base62CodePage);
-    auto page = std::string_view((const char *) Base62CodePage, base);
+    auto base = strlen((const char *) base62_code_page);
+    auto page = std::string_view((const char *) base62_code_page, base);
     int64_t num = 0;
     for (auto idx = 0; idx < size; ++idx) {
         auto power = (size - (idx + 1));

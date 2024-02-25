@@ -16,7 +16,7 @@
 #endif
 
 TEST(TestIni, Read) {
-    const char ini[]{
+    const char INI[]{
             "server_address=192.168.3.1\n"
             "server_port=8080\n"
             "\n"
@@ -24,29 +24,29 @@ TEST(TestIni, Read) {
             "width = 1920\n"
             "height = 1080"};
 
-    auto input = sese::io::InputBufferWrapper(ini, sizeof(ini) - 1);
+    auto input = sese::io::InputBufferWrapper(INI, sizeof(INI) - 1);
     auto config = sese::ConfigUtil::readFrom(&input);
     ASSERT_NE(config, nullptr);
 
-    auto defConfig = config->getDefaultSection();
-    ASSERT_NE(defConfig, nullptr);
-    auto address = defConfig->getValueByKey("server_address", "undef");
-    auto port = defConfig->getValueByKey("server_port", "undef");
+    auto def_config = config->getDefaultSection();
+    ASSERT_NE(def_config, nullptr);
+    auto address = def_config->getValueByKey("server_address", "undef");
+    auto port = def_config->getValueByKey("server_port", "undef");
     EXPECT_EQ(address, "192.168.3.1");
     EXPECT_EQ(port, "8080");
 
-    auto videoConfig = config->getSectionByName("video");
-    ASSERT_NE(videoConfig, nullptr);
-    auto width = videoConfig->getValueByKey("width", "undef");
-    auto height = videoConfig->getValueByKey("height", "undef");
+    auto video_config = config->getSectionByName("video");
+    ASSERT_NE(video_config, nullptr);
+    auto width = video_config->getValueByKey("width", "undef");
+    auto height = video_config->getValueByKey("height", "undef");
     EXPECT_EQ(width, "1920");
     EXPECT_EQ(height, "1080");
 }
 
 TEST(TestIni, Write) {
     auto config = std::make_shared<sese::ConfigObject>();
-    auto defSection = config->getDefaultSection();
-    defSection->setKeyValue("name", "test");
+    auto def_section = config->getDefaultSection();
+    def_section->setKeyValue("name", "test");
 
     auto section = std::make_shared<sese::ConfigObject::Section>("my_section");
     section->setKeyValue("path", "/usr/bin");
@@ -76,8 +76,8 @@ TEST(TestIniConfig, Parse) {
     std::string str1 = config->defSection["TestMessage"];
     EXPECT_EQ(str1, "Hello World");
 
-    auto secondSection = config->sectionMap["Second Section"];
-    EXPECT_EQ(secondSection["Test Message"], "This is the second section");
+    auto second_section = config->sectionMap["Second Section"];
+    EXPECT_EQ(second_section["Test Message"], "This is the second section");
 }
 
 TEST(TestIniConfig, Unparse) {

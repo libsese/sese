@@ -115,9 +115,9 @@ GTEST_TEST(TestSocket, Server_UDP) {
             [&server] {
                 SESE_INFO("waiting recv");
                 char buffer[1024]{};
-                auto clientAddress = std::make_shared<sese::net::IPv4Address>();
-                server.recv(buffer, sizeof(buffer), clientAddress, 0);
-                SESE_INFO("Recv Address: %s:%d", clientAddress->getAddress().c_str(), clientAddress->getPort());
+                auto client_address = std::make_shared<sese::net::IPv4Address>();
+                server.recv(buffer, sizeof(buffer), client_address, 0);
+                SESE_INFO("Recv Address: %s:%d", client_address->getAddress().c_str(), client_address->getPort());
                 SESE_INFO("Recv Message: %s", buffer);
                 SESE_INFO("close");
             },

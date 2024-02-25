@@ -7,33 +7,33 @@
 using namespace sese::system;
 
 FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption *option) noexcept {
-    int inotifyFd = inotify_init1(0);
-    if (inotifyFd < 0) {
+    int inotify_fd = inotify_init1(0);
+    if (inotify_fd < 0) {
         return nullptr;
     }
 
-    int opt = fcntl(inotifyFd, F_GETFL);
+    int opt = fcntl(inotify_fd, F_GETFL);
     if (opt < 0) {
-        close(inotifyFd);
+        close(inotify_fd);
         return nullptr;
     }
 
-    int ret = fcntl(inotifyFd, F_SETFL, opt | O_NONBLOCK);
+    int ret = fcntl(inotify_fd, F_SETFL, opt | O_NONBLOCK);
     if (ret < 0) {
-        close(inotifyFd);
+        close(inotify_fd);
         return nullptr;
     }
 
-    int watchFd = inotify_add_watch(inotifyFd, path.c_str(), IN_MODIFY | IN_CREATE | IN_DELETE | IN_MOVE);
-    if (watchFd < 0) {
-        close(inotifyFd);
+    int watch_fd = inotify_add_watch(inotify_fd, path.c_str(), IN_MODIFY | IN_CREATE | IN_DELETE | IN_MOVE);
+    if (watch_fd < 0) {
+        close(inotify_fd);
         return nullptr;
     }
 
     auto notifier = new FileNotifier;
     notifier->option = option;
-    notifier->inotifyFd = inotifyFd;
-    notifier->watchFd = watchFd;
+    notifier->inotifyFd = inotify_fd;
+    notifier->watchFd = watch_fd;
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
@@ -45,23 +45,23 @@ FileNotifier::~FileNotifier() noexcept {
 
 void FileNotifier::loopNonblocking() noexcept {
     auto proc = [this]() {
-        fd_set fdSet;
+        fd_set fd_set;
         struct timeval timeout {
             1, 0
         };
         char buffer[1024];
         while (!isShutdown) {
-            FD_ZERO(&fdSet);
-            FD_SET(inotifyFd, &fdSet);
-            select(FD_SETSIZE, &fdSet, nullptr, nullptr, &timeout);
+            FD_ZERO(&fd_set);
+            FD_SET(inotifyFd, &fd_set);
+            select(FD_SETSIZE, &fd_set, nullptr, nullptr, &timeout);
             if (FD_ISSET(inotifyFd, &fdSet)) {
-                auto pEvent = (inotify_event *) &buffer;
+                auto p_event = (inotify_event *) &buffer;
                 auto len = read(inotifyFd, buffer, sizeof(buffer));
                 auto times = (len / sizeof(inotify_event)) - 1;
-                char *fromString = nullptr;
+                char *from_string = nullptr;
                 while (times) {
                     if (pEvent->wd != watchFd) {
-                        pEvent++;
+                        p_event++;
                         times--;
                         continue;
                     } else {
@@ -72,15 +72,15 @@ void FileNotifier::loopNonblocking() noexcept {
                         } else if (pEvent->mask & IN_DELETE) {
                             option->onDelete({pEvent->name});
                         } else if (pEvent->mask & IN_MOVED_FROM) {
-                            fromString = pEvent->name;
+                            from_string = pEvent->name;
                         } else if (pEvent->mask & IN_MOVED_TO) {
-                            if (fromString) {
-                                option->onMove({fromString}, {pEvent->name});
-                                fromString = nullptr;
+                            if (from_string) {
+                                option->onMove({from_string}, {pEvent->name});
+                                from_string = nullptr;
                             }
                         }
                         times--;
-                        pEvent++;
+                        p_event++;
                     }
                 }
             }

@@ -36,11 +36,11 @@ public:
     typedef std::shared_ptr<Event> Ptr;
 
 public:
-    Event(DateTime dateTime, Level lv, const char *threadName, tid_t id, const char *file, int32_t line,
+    Event(DateTime date_time, Level lv, const char *thread_name, tid_t id, const char *file, int32_t line,
           const char *msg) noexcept {
-        this->dateTime = dateTime;
+        this->dateTime = date_time;
         this->level = lv;
-        this->threadName = threadName;
+        this->threadName = thread_name;
         this->threadId = id;
         this->file = file;
         this->line = line;

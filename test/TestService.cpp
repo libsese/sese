@@ -45,17 +45,17 @@ TEST(TestService, SystemBalanceLoader) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    std::vector<sese::net::Socket> socketVector;
+    std::vector<sese::net::Socket> socket_vector;
     for (int i = 0; i < 20; ++i) {
         auto s = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
-        s.setNonblocking(true);
-        socketVector.emplace_back(s);
+        sese::net::Socket::setNonblocking(true);
+        socket_vector.emplace_back(s);
     }
-    for (decltype(auto) s: socketVector) {
+    for (decltype(auto) s: socket_vector) {
         s.connect(addr);
     }
     std::this_thread::sleep_for(300ms);
-    for (decltype(auto) s: socketVector) {
+    for (decltype(auto) s: socket_vector) {
         s.close();
     }
 
@@ -74,17 +74,17 @@ TEST(TestService, UserBalanceLoader) {
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    std::vector<sese::net::Socket> socketVector;
+    std::vector<sese::net::Socket> socket_vector;
     for (int i = 0; i < 20; ++i) {
         auto s = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
-        s.setNonblocking(true);
-        socketVector.emplace_back(s);
+        sese::net::Socket::setNonblocking(true);
+        socket_vector.emplace_back(s);
     }
-    for (decltype(auto) s: socketVector) {
+    for (decltype(auto) s: socket_vector) {
         s.connect(addr);
     }
     std::this_thread::sleep_for(500ms);
-    for (decltype(auto) s: socketVector) {
+    for (decltype(auto) s: socket_vector) {
         s.close();
     }
 
@@ -92,7 +92,7 @@ TEST(TestService, UserBalanceLoader) {
     service.stop();
 }
 
-class MyTimerableService_V1 : public sese::service::v1::TimerableService {
+class MyTimerableServiceV1 : public sese::service::v1::TimerableService {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
@@ -105,20 +105,20 @@ public:
     }
 
     void onRead(sese::event::BaseEvent *event) override {
-        auto timeoutEvent = getTimeoutEventByFd(event->fd);
+        auto timeout_event = getTimeoutEventByFd(event->fd);
         // timeoutEvent will not be nullptr
-        cancelTimeoutEvent(timeoutEvent);
+        cancelTimeoutEvent(timeout_event);
         char buffer[1024]{};
-        sese::net::Socket::read(timeoutEvent->fd, buffer, 1024, 0);
+        sese::net::Socket::read(timeout_event->fd, buffer, 1024, 0);
         puts(buffer);
         setEvent(event);
-        setTimeoutEvent(timeoutEvent, 3);
+        setTimeoutEvent(timeout_event, 3);
     }
 
-    void onTimeout(sese::service::v1::TimeoutEvent *timeoutEvent) override {
-        printf("fd %d close", timeoutEvent->fd);
-        sese::net::Socket::close(timeoutEvent->fd);
-        auto event = (sese::event::Event *) timeoutEvent->data;
+    void onTimeout(sese::service::v1::TimeoutEvent *timeout_event) override {
+        printf("fd %d close", timeout_event->fd);
+        sese::net::Socket::close(timeout_event->fd);
+        auto event = (sese::event::Event *) timeout_event->data;
         freeEvent(event);
     }
 };
@@ -131,23 +131,23 @@ TEST(TestService, TimerableService) {
     service.setAddress(addr);
     service.setAcceptTimeout(500);
     service.setDispatchTimeout(500);
-    ASSERT_TRUE(service.init<MyTimerableService_V1>());
+    ASSERT_TRUE(service.init<MyTimerableServiceV1>());
 
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    std::vector<sese::net::Socket> socketVector;
+    std::vector<sese::net::Socket> socket_vector;
     for (int i = 0; i < 20; ++i) {
         auto s = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
-        s.setNonblocking(true);
-        socketVector.emplace_back(s);
+        sese::net::Socket::setNonblocking(true);
+        socket_vector.emplace_back(s);
     }
-    for (decltype(auto) s: socketVector) {
+    for (decltype(auto) s: socket_vector) {
         s.connect(addr);
     }
-    socketVector[4].write("Hello", 5);
+    socket_vector[4].write("Hello", 5);
     std::this_thread::sleep_for(5s);
-    for (decltype(auto) s: socketVector) {
+    for (decltype(auto) s: socket_vector) {
         s.close();
     }
 
@@ -155,7 +155,7 @@ TEST(TestService, TimerableService) {
     service.stop();
 }
 
-class MyTimerableService_V2 : public sese::service::v2::TimerableService {
+class MyTimerableServiceV2 : public sese::service::v2::TimerableService {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
@@ -170,23 +170,23 @@ public:
     }
 
     void onRead(sese::event::BaseEvent *event) override {
-        auto timeoutEvent = (sese::service::v2::TimeoutEvent *) (event->data);
+        auto timeout_event = (sese::service::v2::TimeoutEvent *) (event->data);
         // timeoutEvent will not be nullptr
-        cancelTimeoutEvent(timeoutEvent);
-        timeoutEvent = nullptr;
+        cancelTimeoutEvent(timeout_event);
+        timeout_event = nullptr;
         // timeoutEvent has been delete
         char buffer[1024]{};
         sese::net::Socket::read(event->fd, buffer, 1024, 0);
         puts(buffer);
 
-        timeoutEvent = setTimeoutEvent(3, nullptr);
+        timeout_event = setTimeoutEvent(3, nullptr);
         setEvent(event);
-        event->data = timeoutEvent;
-        timeoutEvent->data = event;
+        event->data = timeout_event;
+        timeout_event->data = event;
     }
 
-    void onTimeout(sese::service::v2::TimeoutEvent *timeoutEvent) override {
-        auto event = (sese::event::Event *) timeoutEvent->data;
+    void onTimeout(sese::service::v2::TimeoutEvent *timeout_event) override {
+        auto event = (sese::event::Event *) timeout_event->data;
         printf("fd %d close", event->fd);
         sese::net::Socket::close(event->fd);
         freeEvent(event);
@@ -201,23 +201,23 @@ TEST(TestService, TimerableService_V2) {
     service.setAddress(addr);
     service.setAcceptTimeout(500);
     service.setDispatchTimeout(500);
-    ASSERT_TRUE(service.init<MyTimerableService_V2>());
+    ASSERT_TRUE(service.init<MyTimerableServiceV2>());
 
     service.start();
     ASSERT_TRUE(service.isStarted());
 
-    std::vector<sese::net::Socket> socketVector;
+    std::vector<sese::net::Socket> socket_vector;
     for (int i = 0; i < 20; ++i) {
         auto s = sese::net::Socket(sese::net::Socket::Family::IPv4, sese::net::Socket::Type::TCP);
-        s.setNonblocking(true);
-        socketVector.emplace_back(s);
+        sese::net::Socket::setNonblocking(true);
+        socket_vector.emplace_back(s);
     }
-    for (decltype(auto) s: socketVector) {
+    for (decltype(auto) s: socket_vector) {
         s.connect(addr);
     }
-    socketVector[4].write("Hello", 5);
+    socket_vector[4].write("Hello", 5);
     std::this_thread::sleep_for(5s);
-    for (decltype(auto) s: socketVector) {
+    for (decltype(auto) s: socket_vector) {
         s.close();
     }
 

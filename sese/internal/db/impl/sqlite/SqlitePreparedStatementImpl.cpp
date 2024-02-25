@@ -2,7 +2,7 @@
 
 using namespace sese::db;
 
-const char *impl::SqlitePreparedStatementImpl::IntegerAffinitySet[9]{
+const char *impl::SqlitePreparedStatementImpl::INTEGER_AFFINITY_SET[9]{
         "INT",
         "INTEGER",
         "TINYINT",
@@ -14,7 +14,7 @@ const char *impl::SqlitePreparedStatementImpl::IntegerAffinitySet[9]{
         "INT8"
 };
 
-const char *impl::SqlitePreparedStatementImpl::TextAffinitySet[8]{
+const char *impl::SqlitePreparedStatementImpl::TEXT_AFFINITY_SET[8]{
         "CHARACTER",
         "VARCHAR",
         "VARYING CHARACTER",
@@ -25,7 +25,7 @@ const char *impl::SqlitePreparedStatementImpl::TextAffinitySet[8]{
         "CLOB"
 };
 
-const char *impl::SqlitePreparedStatementImpl::RealAffinitySet[6]{
+const char *impl::SqlitePreparedStatementImpl::REAL_AFFINITY_SET[6]{
         "REAL",
         "DOUBLE",
         "DOUBLE PRECISION",
@@ -54,9 +54,9 @@ std::string impl::SqlitePreparedStatementImpl::splitBefore(const std::string &st
 impl::SqlitePreparedStatementImpl::SqlitePreparedStatementImpl(sqlite3_stmt *stmt, size_t count) noexcept
     : stmt(stmt) {
     this->count = count;
-    this->isManual = (bool *) malloc(count);
+    this->isManual = static_cast<bool *>(malloc(count));
     memset(this->isManual, false, count);
-    this->buffer = (void **) malloc(sizeof(void *) * count);
+    this->buffer = static_cast<void **>(malloc(sizeof(void *) * count));
 }
 
 impl::SqlitePreparedStatementImpl::~SqlitePreparedStatementImpl() noexcept {
@@ -98,7 +98,7 @@ bool impl::SqlitePreparedStatementImpl::setDouble(uint32_t index, const double &
         this->isManual[index - 1] = false;
     }
     this->stmtStatus = false;
-    return SQLITE_OK == sqlite3_bind_double(stmt, (int) index, value);
+    return SQLITE_OK == sqlite3_bind_double(stmt, static_cast<int>(index), value);
 }
 
 bool impl::SqlitePreparedStatementImpl::setFloat(uint32_t index, const float &value) noexcept {
@@ -108,7 +108,7 @@ bool impl::SqlitePreparedStatementImpl::setFloat(uint32_t index, const float &va
         this->isManual[index - 1] = false;
     }
     this->stmtStatus = false;
-    return SQLITE_OK == sqlite3_bind_double(stmt, (int) index, value);
+    return SQLITE_OK == sqlite3_bind_double(stmt, static_cast<int>(index), value);
 }
 
 bool impl::SqlitePreparedStatementImpl::setLong(uint32_t index, const int64_t &value) noexcept {
@@ -118,7 +118,7 @@ bool impl::SqlitePreparedStatementImpl::setLong(uint32_t index, const int64_t &v
         this->isManual[index - 1] = false;
     }
     this->stmtStatus = false;
-    return SQLITE_OK == sqlite3_bind_int64(stmt, (int) index, value);
+    return SQLITE_OK == sqlite3_bind_int64(stmt, static_cast<int>(index), value);
 }
 
 bool impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, const int32_t &value) noexcept {
@@ -128,7 +128,7 @@ bool impl::SqlitePreparedStatementImpl::setInteger(uint32_t index, const int32_t
         this->isManual[index - 1] = false;
     }
     this->stmtStatus = false;
-    return SQLITE_OK == sqlite3_bind_int(stmt, (int) index, value);
+    return SQLITE_OK == sqlite3_bind_int(stmt, static_cast<int>(index), value);
 }
 
 bool impl::SqlitePreparedStatementImpl::setText(uint32_t index, const char *value) noexcept {
@@ -144,7 +144,7 @@ bool impl::SqlitePreparedStatementImpl::setText(uint32_t index, const char *valu
     memcpy(this->buffer[index - 1], value, len);
 
     this->stmtStatus = false;
-    return SQLITE_OK == sqlite3_bind_text(stmt, (int) index, value, -1, nullptr);
+    return SQLITE_OK == sqlite3_bind_text(stmt, static_cast<int>(index), value, -1, nullptr);
 }
 
 bool impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
@@ -154,7 +154,7 @@ bool impl::SqlitePreparedStatementImpl::setNull(uint32_t index) noexcept {
         this->isManual[index - 1] = false;
     }
     this->stmtStatus = false;
-    return SQLITE_OK == sqlite3_bind_null(stmt, (int) index);
+    return SQLITE_OK == sqlite3_bind_null(stmt, static_cast<int>(index));
 }
 
 bool impl::SqlitePreparedStatementImpl::setDateTime(uint32_t index, const sese::DateTime &value) noexcept {
@@ -168,10 +168,10 @@ bool impl::SqlitePreparedStatementImpl::setDateTime(uint32_t index, const sese::
     this->buffer[index - 1] = malloc(20);
     this->isManual[index - 1] = true;
 
-    std::string dateValue = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
-    memcpy(this->buffer[index - 1], dateValue.c_str(), 20);
+    std::string date_value = text::DateTimeFormatter::format(value, "yyyy-MM-dd HH:mm:ss");
+    memcpy(this->buffer[index - 1], date_value.c_str(), 20);
 
-    return SQLITE_OK == sqlite3_bind_text(stmt, (int) index, static_cast<const char *>(this->buffer[index - 1]), -1, SQLITE_TRANSIENT);
+    return SQLITE_OK == sqlite3_bind_text(stmt, static_cast<int>(index), static_cast<const char *>(this->buffer[index - 1]), -1, SQLITE_TRANSIENT);
 }
 
 int impl::SqlitePreparedStatementImpl::getLastError() const noexcept {
@@ -206,20 +206,20 @@ bool impl::SqlitePreparedStatementImpl::getColumnType(uint32_t index, MetadataTy
     // 但目前的官方提供的 API 使得我暂时只能这么做
     auto target = splitBefore(raw);
     // SESE_DEBUG("raw: %s, target: %s", raw, target.c_str());
-    if (in(IntegerAffinitySet, 9, target.c_str())) {
-        type = MetadataType::Integer;
-    } else if (in(TextAffinitySet, 8, target.c_str())) {
-        type = MetadataType::Text;
-    } else if (in(RealAffinitySet, 4, target.c_str())) {
-        type = MetadataType::Float;
+    if (in(INTEGER_AFFINITY_SET, 9, target.c_str())) {
+        type = MetadataType::INTEGER;
+    } else if (in(TEXT_AFFINITY_SET, 8, target.c_str())) {
+        type = MetadataType::TEXT;
+    } else if (in(REAL_AFFINITY_SET, 4, target.c_str())) {
+        type = MetadataType::FLOAT;
     } else if (sese::strcmpDoNotCase("BOOLEAN", target.c_str())) {
-        type = MetadataType::Boolean;
+        type = MetadataType::BOOLEAN;
     } else if (sese::strcmpDoNotCase("DATE", target.c_str())) {
-        type = MetadataType::Date;
+        type = MetadataType::DATE;
     } else if (sese::strcmpDoNotCase("DATETIME", target.c_str())) {
-        type = MetadataType::DateTime;
+        type = MetadataType::DATE_TIME;
     } else {
-        type = MetadataType::Unknown;
+        type = MetadataType::UNKNOWN;
     }
 
     return true;

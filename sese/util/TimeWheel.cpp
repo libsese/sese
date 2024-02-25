@@ -7,11 +7,11 @@
 using namespace sese;
 
 TimeWheel::TimeWheel() {
-    TimeoutEventSlot *preAddress = nullptr;
+    TimeoutEventSlot *pre_address = nullptr;
     Range<int> range(0, 59);
     std::for_each(range.rbegin(), range.rend(), [&](const int &number) {
-        this->slots[number].next = preAddress;
-        preAddress = &this->slots[number];
+        this->slots[number].next = pre_address;
+        pre_address = &this->slots[number];
     });
     this->slots[59].next = &this->slots[0];
     startTime = lastCheckTime = getTimestamp();
@@ -54,13 +54,13 @@ void TimeWheel::cancel(TimeoutEvent *event) {
 
 void TimeWheel::check() {
     auto current = getTimestamp();
-    auto numberOfSlots = current - lastCheckTime;
-    numberOfSlots = std::min<int64_t>(numberOfSlots, 60);
+    auto number_of_slots = current - lastCheckTime;
+    number_of_slots = std::min<int64_t>(number_of_slots, 60);
 
     auto index = (lastCheckTime - startTime) % 60;
-    auto pSlot = &slots[index];
-    for (int i = 0; i < numberOfSlots; ++i) {
-        for (auto iterator = pSlot->events.begin(); iterator != pSlot->events.end();) {
+    auto p_slot = &slots[index];
+    for (int i = 0; i < number_of_slots; ++i) {
+        for (auto iterator = p_slot->events.begin(); iterator != p_slot->events.end();) {
 #define EVENT (*iterator)
             if (EVENT->target > current) {
                 iterator++;
@@ -68,16 +68,16 @@ void TimeWheel::check() {
                 EVENT->callback();
                 if (EVENT->repeat) {
                     EVENT->target = getTimestamp() + EVENT->range;
-                    auto newIndex = (EVENT->target - startTime) % 60;
-                    slots[newIndex].events.emplace_back(EVENT);
+                    auto new_index = (EVENT->target - startTime) % 60;
+                    slots[new_index].events.emplace_back(EVENT);
                 } else {
                     delete EVENT; // GCOVR_EXCL_LINE
                 }
-                pSlot->events.erase(iterator++);
+                p_slot->events.erase(iterator++);
             }
 #undef EVENT
         }
-        pSlot = pSlot->next;
+        p_slot = p_slot->next;
     }
     lastCheckTime = current;
 }

@@ -13,14 +13,14 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
         return nullptr;
     }
 
-    auto getModuleInfo = (getModuleInfoFunc *) obj->findFunctionByName(STR2(GET_MODULE_INFO_FUNC_NAME));
-    auto getFactory = (getFactoryFunc *) obj->findFunctionByName(STR2(GET_CLASS_FACTORY_FUNC_NAME));
-    if (!getModuleInfo || !getFactory) {
+    auto get_module_info = (getModuleInfoFunc *) obj->findFunctionByName(STR2(GET_MODULE_INFO_FUNC_NAME));
+    auto get_factory = (getFactoryFunc *) obj->findFunctionByName(STR2(GET_CLASS_FACTORY_FUNC_NAME));
+    if (!get_module_info || !get_factory) {
         return nullptr;
     }
 
-    auto info = getModuleInfo();
-    auto factory = getFactory();
+    auto info = get_module_info();
+    auto factory = get_factory();
     // 按照标准，此步不应该出错
     // if (!info || !factory) {
     //    return nullptr;
@@ -41,23 +41,23 @@ sese::plugin::Module::Ptr sese::plugin::Module::openWithPath(const system::Path 
 }
 
 sese::plugin::BaseClass::Ptr sese::plugin::Module::createClassWithId(const std::string &id) noexcept {
-    auto pFactory = (ClassFactory *) this->factory;
-    return pFactory->createClassWithId(id);
+    auto p_factory = (ClassFactory *) this->factory;
+    return p_factory->createClassWithId(id);
 }
 
 const char *sese::plugin::Module::getName() noexcept {
-    auto pInfo = (ModuleInfo *) this->info;
-    return pInfo->moduleName;
+    auto p_info = (ModuleInfo *) this->info;
+    return p_info->moduleName;
 }
 
 const char *sese::plugin::Module::getVersion() noexcept {
-    auto pInfo = (ModuleInfo *) this->info;
-    return pInfo->versionString;
+    auto p_info = (ModuleInfo *) this->info;
+    return p_info->versionString;
 }
 
 const char *sese::plugin::Module::getDescription() noexcept {
-    auto pInfo = (ModuleInfo *) this->info;
-    return pInfo->description;
+    auto p_info = (ModuleInfo *) this->info;
+    return p_info->description;
 }
 
 const sese::plugin::ClassFactory::RegisterInfoMapType &sese::plugin::Module::getRegisterClassInfo() noexcept {

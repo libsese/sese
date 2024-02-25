@@ -16,9 +16,9 @@
 
 namespace sese {
 
-const Random::ResultType Random::multiplier = 25214903917L;
-const Random::ResultType Random::addend = 11L;
-const Random::ResultType Random::mask = (1LL << 48) - 1;
+const Random::ResultType Random::MULTIPLIER = 25214903917L;
+const Random::ResultType Random::ADDEND = 11L;
+const Random::ResultType Random::MASK = (1LL << 48) - 1;
 
 /**
      * @brief 数据分割用结构体
@@ -70,9 +70,9 @@ double sese::Random::entropy() const { // NOLINT
 }
 
 sese::Random::ResultType sese::Random::operator()() {
-    auto unit = (LongLongSplitter *) &_seed;
-    _seed = (unit->low * multiplier + addend) & mask;
-    return _seed ^ Random::noise();
+    auto unit = reinterpret_cast<LongLongSplitter *>(&_seed);
+    _seed = (unit->low * MULTIPLIER + ADDEND) & MASK;
+    return _seed ^ noise();
 }
 
 #if defined(__clang__)

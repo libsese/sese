@@ -17,7 +17,7 @@ class API SESE_DEPRECATED_WITH("please use sese::text::StringBuilder") SStringBu
 public:
     SStringBuilder(const SStringBuilder &builder);
     SStringBuilder(SStringBuilder &&builder) noexcept;
-    explicit SStringBuilder(size_t bufferSize);
+    explicit SStringBuilder(size_t buffer_size);
     ~SStringBuilder();
 
     // 基础功能

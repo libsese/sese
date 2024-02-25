@@ -9,8 +9,8 @@
 
 using namespace std::chrono_literals;
 
-static const char *TYPE_MAIN_THREAD = "Main Thread";
-static const char *TYPE_NOT_MAIN_THREAD = "Not Main Thread";
+static const char *type_main_thread = "Main Thread";
+static const char *type_not_main_thread = "Not Main Thread";
 void proc(int &num, sese::record::LogHelper &helper);
 
 TEST(TestThread, Thread) {
@@ -26,7 +26,7 @@ TEST(TestThread, Thread) {
     log.info("Thread's name = %s, tid = %" PRIdTid, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
 
     auto i = sese::Thread::getCurrentThreadData();
-    auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
+    auto msg = i ? type_not_main_thread : type_main_thread;
     log.info("Current thread is %s", msg);
 }
 
@@ -34,7 +34,7 @@ void proc(int &num, sese::record::LogHelper &helper) {
     helper.info("Thread's name = %s, tid = %" PRIdTid, sese::Thread::getCurrentThreadName(), sese::Thread::getCurrentThreadId());
 
     auto i = sese::Thread::getCurrentThreadData();
-    auto msg = i ? TYPE_NOT_MAIN_THREAD : TYPE_MAIN_THREAD;
+    auto msg = i ? type_not_main_thread : type_main_thread;
     helper.info("Current thread is %s", msg);
 
     ASSERT_TRUE(i != nullptr);
@@ -103,13 +103,13 @@ void func(std::packaged_task<int()> task) {
     task();
 }
 
-template<class ReturnType>
-std::shared_future<ReturnType> postTask(sese::ThreadPool &pool, const std::function<ReturnType()> &task) {
-    using TaskPtr = std::shared_ptr<std::packaged_task<ReturnType()>>;
-    TaskPtr packagedTask = std::make_shared<std::packaged_task<ReturnType()>>(task);
-    std::shared_future<ReturnType> future(packagedTask->get_future());
+template<class RETURN_TYPE>
+std::shared_future<RETURN_TYPE> postTask(sese::ThreadPool &pool, const std::function<RETURN_TYPE()> &task) {
+    using TaskPtr = std::shared_ptr<std::packaged_task<RETURN_TYPE()>>;
+    TaskPtr packaged_task = std::make_shared<std::packaged_task<RETURN_TYPE()>>(task);
+    std::shared_future<RETURN_TYPE> future(packaged_task->get_future());
 
-    pool.postTask([task = std::move(packagedTask)]() mutable {
+    pool.postTask([task = std::move(packaged_task)]() mutable {
         (*task)();
     });
 
@@ -150,7 +150,7 @@ TEST(TestThread, ThreadPool_Future) {
             status = future.wait_for(0.1s);
             SESE_INFO("NoReady");
         } while (status != std::future_status::ready);
-        auto rt = future.get();
+        const auto& rt = future.get();
         SESE_INFO("Getvalue %s", rt.c_str());
         EXPECT_EQ(rt, "114514");
     }
@@ -206,15 +206,15 @@ TEST(TestThread, GlobalThreadPool) {
 
 TEST(TestThread, SpinLock) {
     int i = 0;
-    sese::SpinLock spinLock;
-    auto proc = [&i, &spinLock]() {
+    sese::SpinLock spin_lock;
+    auto proc = [&i, &spin_lock]() {
         for (int n = 0; n < 10000; ++n) {
-            sese::Locker locker(spinLock);
+            sese::Locker locker(spin_lock);
             i += 1;
         }
     };
 
-    sese::StopWatch stopWatch;
+    sese::StopWatch stop_watch;
     auto f1 = sese::async<void>(proc);
     auto f2 = sese::async<void>(proc);
     auto f3 = sese::async<void>(proc);
@@ -223,7 +223,7 @@ TEST(TestThread, SpinLock) {
     f2.get();
     f3.get();
     f4.get();
-    auto span = stopWatch.stop();
+    auto span = stop_watch.stop();
     SESE_DEBUG("cost time %" PRIu64 "us", span.getTotalMicroseconds());
     EXPECT_EQ(i, 40000);
 }
@@ -238,7 +238,7 @@ TEST(TestThread, Mutex) {
         }
     };
 
-    sese::StopWatch stopWatch;
+    sese::StopWatch stop_watch;
     auto f1 = sese::async<void>(proc);
     auto f2 = sese::async<void>(proc);
     auto f3 = sese::async<void>(proc);
@@ -247,7 +247,7 @@ TEST(TestThread, Mutex) {
     f2.get();
     f3.get();
     f4.get();
-    auto span = stopWatch.stop();
+    auto span = stop_watch.stop();
     SESE_DEBUG("cost time %" PRIu64 "us", span.getTotalMicroseconds());
     EXPECT_EQ(i, 40000);
 }

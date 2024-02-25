@@ -17,41 +17,41 @@ TEST(TestCompress, ZLIB) {
     char temp[8];
     sese::io::OutputBufferWrapper out(temp, 8);
 
-    char compressBufferIn[] = {"using zlib with cpp"};
-    compressor.input(compressBufferIn, sizeof(compressBufferIn));
+    char compress_buffer_in[] = {"using zlib with cpp"};
+    compressor.input(compress_buffer_in, sizeof(compress_buffer_in));
 
     int rt;
-    size_t lastTime = 0;
+    size_t last_time = 0;
     do {
         rt = compressor.deflate(&out);
-        sese::record::LogHelper::d("compressing (%d/%d)", compressor.getTotalIn(), sizeof(compressBufferIn));
-        auto current = compressor.getTotalOut() - lastTime;
-        lastTime = compressor.getTotalOut();
+        sese::record::LogHelper::d("compressing (%d/%d)", compressor.getTotalIn(), sizeof(compress_buffer_in));
+        auto current = compressor.getTotalOut() - last_time;
+        last_time = compressor.getTotalOut();
         builder.write(temp, current);
         out.reset();
     } while (rt != 0);
     sese::record::LogHelper::d("compress done");
 
-    char compressBufferOut[32]{};
-    auto compressSize = builder.read(compressBufferOut, 32);
+    char compress_buffer_out[32]{};
+    auto compress_size = builder.read(compress_buffer_out, 32);
     builder.freeCapacity();
     sese::Decompressor decompressor(sese::CompressionType::ZLIB, 8);
-    decompressor.input(compressBufferOut, (unsigned int) compressSize);
-    lastTime = 0;
+    decompressor.input(compress_buffer_out, (unsigned int) compress_size);
+    last_time = 0;
     do {
         rt = decompressor.inflate(&out);
-        sese::record::LogHelper::d("decompressing (%d/%d)", decompressor.getTotalIn(), compressSize);
-        auto current = decompressor.getTotalOut() - lastTime;
-        lastTime = decompressor.getTotalOut();
+        sese::record::LogHelper::d("decompressing (%d/%d)", decompressor.getTotalIn(), compress_size);
+        auto current = decompressor.getTotalOut() - last_time;
+        last_time = decompressor.getTotalOut();
         builder.write(temp, current);
         out.reset();
     } while (rt != 0);
     sese::record::LogHelper::d("decompress done");
 
-    char decompressBufferOut[32]{};
-    builder.read(decompressBufferOut, 32);
+    char decompress_buffer_out[32]{};
+    builder.read(decompress_buffer_out, 32);
 
-    ASSERT_TRUE(strcmp(decompressBufferOut, compressBufferIn) == 0);
+    ASSERT_TRUE(strcmp(decompress_buffer_out, compress_buffer_in) == 0);
 }
 
 TEST(TestCompress, GZIP) {

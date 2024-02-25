@@ -29,7 +29,7 @@ namespace sese::db::impl {
 
         static bool mallocBindStruct(MYSQL_RES *meta, MYSQL_BIND **bind) noexcept;
         static void freeBindStruct(MYSQL_BIND *bind, size_t count) noexcept;
-        static void reinterpret(MYSQL_BIND *target, enum_field_types expeceType, const void *buffer, size_t size) noexcept;
+        static void reinterpret(MYSQL_BIND *target, enum_field_types expece_type, const void *buffer, size_t size) noexcept;
 
     protected:
         MYSQL_STMT *stmt;

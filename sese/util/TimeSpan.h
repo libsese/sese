@@ -23,7 +23,7 @@ public:
     /**
      * @brief 零时间间隔
      */
-    static const TimeSpan Zero;
+    static const TimeSpan ZERO;
 
 public:
     TimeSpan(int32_t days, int32_t hours, int32_t minutes, int32_t seconds, int32_t milliseconds, int32_t microseconds) noexcept;

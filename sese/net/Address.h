@@ -40,7 +40,7 @@ public:
     using Ptr = std::shared_ptr<Address>;
 
 public:
-    static Ptr create(const sockaddr *address, socklen_t addressLen);
+    static Ptr create(const sockaddr *address, socklen_t address_len);
 
     static bool lookUp(std::vector<Address::Ptr> &result, const std::string &host, int family = AF_INET, int type = 0, int protocol = 0);
 

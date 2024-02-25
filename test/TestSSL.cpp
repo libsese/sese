@@ -43,12 +43,12 @@ TEST(TestSSL, Client) {
 TEST(TestSSL, Server) {
     auto port = sese::net::createRandomPort();
     auto address = sese::net::IPv4Address::localhost((uint16_t) port);
-    auto servCtx = sese::security::SSLContextBuilder::SSL4Server();
-    servCtx->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
-    servCtx->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
-    ASSERT_TRUE(servCtx->authPrivateKey());
+    auto serv_ctx = sese::security::SSLContextBuilder::SSL4Server();
+    serv_ctx->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
+    serv_ctx->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
+    ASSERT_TRUE(serv_ctx->authPrivateKey());
 
-    auto server = sese::security::SecuritySocket(servCtx, sese::net::Socket::Family::IPv4, IPPROTO_IP);
+    auto server = sese::security::SecuritySocket(serv_ctx, sese::net::Socket::Family::IPv4, IPPROTO_IP);
     ASSERT_EQ(server.bind(address), 0);
     server.listen(SERVER_MAX_CONNECTION);
 
@@ -69,8 +69,8 @@ TEST(TestSSL, Server) {
     );
     th.start();
 
-    auto clientCtx = sese::security::SSLContextBuilder::SSL4Client();
-    auto client = sese::security::SecuritySocket(clientCtx, sese::net::Socket::Family::IPv4, IPPROTO_IP);
+    auto client_ctx = sese::security::SSLContextBuilder::SSL4Client();
+    auto client = sese::security::SecuritySocket(client_ctx, sese::net::Socket::Family::IPv4, IPPROTO_IP);
     if (client.connect(address)) {
         SESE_ERROR("failed to connect");
         FAIL();

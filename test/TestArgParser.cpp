@@ -18,14 +18,14 @@ TEST(TestArgParser, Parse_0) {
     SESE_INFO("current path: %s", args->getCurrentPath().c_str());
     SESE_INFO("exec file name: %s", args->getFileName().c_str());
 
-    auto findValue = [&args](const std::string &key, const std::string &defaultValue) {
-        SESE_INFO("%s = %s", key.c_str(), args->getValueByKey(key, defaultValue).c_str());
+    auto find_value = [&args](const std::string &key, const std::string &default_value) {
+        SESE_INFO("%s = %s", key.c_str(), args->getValueByKey(key, default_value).c_str());
     };
 
-    findValue("a1", "undef");
-    findValue("a2", "undef");
-    findValue("a3", "undef");
-    findValue("a4", "undef");
+    find_value("a1", "undef");
+    find_value("a2", "undef");
+    find_value("a3", "undef");
+    find_value("a4", "undef");
 
     auto set = args->getKeyValSet();
     for (auto &item: set) {

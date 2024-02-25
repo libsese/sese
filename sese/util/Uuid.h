@@ -20,7 +20,7 @@ public:
     /// \param selfId 本机 ID
     /// \param timestamp 时间戳
     /// \param r 保留位
-    Uuid(uint8_t selfId, uint64_t timestamp, uint8_t r = 0) noexcept;
+    Uuid(uint8_t self_id, uint64_t timestamp, uint8_t r = 0) noexcept;
 
     /// 获取本机 ID
     /// \return 本机 ID

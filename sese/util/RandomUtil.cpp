@@ -4,10 +4,10 @@
 
 std::random_device sese::RandomUtil::dev{};
 
-std::string sese::RandomUtil::UPPER_LETTER_LIST = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-std::string sese::RandomUtil::LOWER_LETTER_LIST = "abcdefghijklmnopqrstuvwxyz";
-std::string sese::RandomUtil::DIGIT_LIST = "01234567890";
-std::string sese::RandomUtil::SYMBOL_LIST = "@#$&*()'\"%-+=/;:!,?._^[]{}|~\\<>";
+const std::string sese::RandomUtil::UPPER_LETTER_LIST = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const std::string sese::RandomUtil::LOWER_LETTER_LIST = "abcdefghijklmnopqrstuvwxyz";
+const std::string sese::RandomUtil::DIGIT_LIST = "01234567890";
+const std::string sese::RandomUtil::SYMBOL_LIST = "@#$&*()'\"%-+=/;:!,?._^[]{}|~\\<>";
 
 uint64_t sese::RandomUtil::nextUnsignedInt64() {
     return dev();
@@ -36,50 +36,50 @@ std::string sese::RandomUtil::nextString(size_t length, bool upper, bool lower, 
     size_t size = length / types;
     size_t less = length;
     if (upper) {
-        size_t letterSize;
+        size_t letter_size;
         if (less < size * 2) {
-            letterSize = less;
+            letter_size = less;
         } else {
-            letterSize = std::min(less, size);
+            letter_size = std::min(less, size);
         }
-        less -= letterSize;
-        for (int i = 0; i < letterSize; ++i) {
+        less -= letter_size;
+        for (int i = 0; i < letter_size; ++i) {
             seq.append(UPPER_LETTER_LIST.at(next<size_t>(0, UPPER_LETTER_LIST.length())));
         }
     }
     if (lower) {
-        size_t letterSize;
+        size_t letter_size;
         if (less < size * 2) {
-            letterSize = less;
+            letter_size = less;
         } else {
-            letterSize = std::min(less, size);
+            letter_size = std::min(less, size);
         }
-        less -= letterSize;
-        for (int i = 0; i < letterSize; ++i) {
+        less -= letter_size;
+        for (int i = 0; i < letter_size; ++i) {
             seq.append(LOWER_LETTER_LIST.at(next<size_t>(0, LOWER_LETTER_LIST.length())));
         }
     }
     if (symbol) {
-        size_t symbolSize;
+        size_t symbol_size;
         if (less < size * 2) {
-            symbolSize = less;
+            symbol_size = less;
         } else {
-            symbolSize = std::min(less, size);
+            symbol_size = std::min(less, size);
         }
-        less -= symbolSize;
-        for (int i = 0; i < symbolSize; ++i) {
+        less -= symbol_size;
+        for (int i = 0; i < symbol_size; ++i) {
             seq.append(SYMBOL_LIST.at(next<size_t>(0, SYMBOL_LIST.length())));
         }
     }
     if (digit) {
-        size_t digitSize;
+        size_t digit_size;
         if (less < size * 2) {
-            digitSize = less;
+            digit_size = less;
         } else {
-            digitSize = std::min(less, size);
+            digit_size = std::min(less, size);
         }
-        less -= digitSize;
-        for (int i = 0; i < digitSize; ++i) {
+        less -= digit_size;
+        for (int i = 0; i < digit_size; ++i) {
             seq.append(DIGIT_LIST.at(next<size_t>(0, DIGIT_LIST.length())));
         }
     }

@@ -2,11 +2,11 @@
 #include <zlib.h>
 
 sese::GZipFileInputStream::Ptr sese::GZipFileInputStream::create(const char *file) noexcept {
-    auto gzFile = gzopen(file, "rb");
-    if (!gzFile) return nullptr;
-    auto pStream = new GZipFileInputStream;
-    pStream->gzFile = gzFile;
-    return {pStream, deleter};
+    auto gz_file = gzopen(file, "rb");
+    if (!gz_file) return nullptr;
+    auto p_stream = new GZipFileInputStream;
+    p_stream->gzFile = gz_file;
+    return {p_stream, deleter};
 }
 
 int64_t sese::GZipFileInputStream::read(void *buffer, size_t length) {

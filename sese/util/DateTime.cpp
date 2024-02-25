@@ -26,12 +26,12 @@ DateTime::DateTime(uint64_t timestamp, int32_t utc, Policy policy) noexcept {
     this->timestamp = timestamp;
 
     if (policy == Policy::FORMAT) {
-        auto totalSeconds = timestamp / 1000 / 1000;
-        totalSeconds += utc * 60 * 60;
+        auto total_seconds = timestamp / 1000 / 1000;
+        total_seconds += utc * 60 * 60;
 
         {
 #ifndef SESE_PLATFORM_APPLE
-            auto time = static_cast<int64_t>(totalSeconds);
+            auto time = static_cast<int64_t>(total_seconds);
 #else
             auto time = static_cast<time_t>(totalSeconds);
 #endif
@@ -69,8 +69,8 @@ DateTime::DateTime(uint64_t timestamp, int32_t utc, Policy policy) noexcept {
     }
 }
 
-int32_t DateTime::compareTo(const DateTime &dateTime) const noexcept {
-    auto rt = (int64_t) this->timestamp - (int64_t) dateTime.timestamp;
+int32_t DateTime::compareTo(const DateTime &date_time) const noexcept {
+    auto rt = (int64_t) this->timestamp - (int64_t) date_time.timestamp;
     if (rt < 0) {
         return -1;
     } else if (rt > 0) {
@@ -80,8 +80,8 @@ int32_t DateTime::compareTo(const DateTime &dateTime) const noexcept {
     }
 }
 
-int32_t DateTime::unclearCompareTo(const DateTime &dateTime) const noexcept {
-    auto rt = (int64_t) this->timestamp - (int64_t) dateTime.timestamp;
+int32_t DateTime::unclearCompareTo(const DateTime &date_time) const noexcept {
+    auto rt = (int64_t) this->timestamp - (int64_t) date_time.timestamp;
     rt /= 1000 * 1000;
     if (rt < 0) {
         return -1;
@@ -92,16 +92,16 @@ int32_t DateTime::unclearCompareTo(const DateTime &dateTime) const noexcept {
     }
 }
 
-TimeSpan DateTime::operator-(const DateTime &dateTime) const noexcept {
-    auto time = this->timestamp - dateTime.timestamp;
+TimeSpan DateTime::operator-(const DateTime &date_time) const noexcept {
+    auto time = this->timestamp - date_time.timestamp;
     return TimeSpan{time};
 }
 
-DateTime DateTime::operator-(const TimeSpan &timeSpan) const noexcept {
-    return DateTime{this->timestamp - timeSpan.getTimestamp(), this->utc};
+DateTime DateTime::operator-(const TimeSpan &time_span) const noexcept {
+    return DateTime{this->timestamp - time_span.getTimestamp(), this->utc};
 }
 
-DateTime DateTime::operator+(const TimeSpan &timeSpan) const noexcept {
-    return DateTime{this->timestamp + timeSpan.getTimestamp(), this->utc};
+DateTime DateTime::operator+(const TimeSpan &time_span) const noexcept {
+    return DateTime{this->timestamp + time_span.getTimestamp(), this->utc};
 }
 } // namespace sese

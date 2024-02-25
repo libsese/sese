@@ -31,10 +31,10 @@ using namespace sese::net::http;
 HuffmanDecoder HPackUtil::decoder{};
 HuffmanEncoder HPackUtil::encoder{};
 
-bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &table, Header &header) noexcept {
+bool HPackUtil::decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header) noexcept {
     uint8_t buf;
     size_t len = 0;
-    while (len < contentLength) {
+    while (len < content_length) {
         src->read(&buf, 1);
         len += 1;
         /// 对应第 0 种情况
@@ -55,14 +55,14 @@ bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &tab
             }
         } else {
             uint32_t index = 0;
-            bool isStore;
+            bool is_store;
             /// 对应第 1 种情况
             if (0b0100'0000 == (buf & 0b1100'0000)) {
                 // 添加至动态表
                 auto l = decodeInteger(buf, src, index, 6);
                 if (-1 == l) return false;
                 len += l;
-                isStore = true;
+                is_store = true;
             }
             /// 对应第 2 种和第 3 种情况
             else {
@@ -70,7 +70,7 @@ bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &tab
                 auto l = decodeInteger(buf, src, index, 4);
                 if (-1 == l) return false;
                 len += l;
-                isStore = false;
+                is_store = false;
             }
 
             std::string key;
@@ -97,7 +97,7 @@ bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &tab
                 len += l;
             }
 
-            if (isStore) {
+            if (is_store) {
                 table.set(key, value);
             }
 
@@ -112,36 +112,36 @@ bool HPackUtil::decode(InputStream *src, size_t contentLength, DynamicTable &tab
     return true;
 }
 
-size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHeader, Header &indexedHeader) noexcept {
+size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &once_header, Header &indexed_header) noexcept {
     size_t size = 0;
     // 处理索引的 HEADERS
-    for (const auto &item: indexedHeader) {
+    for (const auto &item: indexed_header) {
         // 动态表查询
         {
-            auto iteratorKey = table.end();
-            auto iteratorAll = table.end();
+            auto iterator_key = table.end();
+            auto iterator_all = table.end();
             for (auto header = table.begin(); header != table.end(); ++header) {
                 if (header->first == item.first) {
-                    iteratorKey = header;
+                    iterator_key = header;
                     if (header->second == item.second) {
-                        iteratorAll = header;
+                        iterator_all = header;
                         break;
                     }
                 }
             }
 
             // auto iterator = std::find_if(table.begin(), table.end(), isHitAll);
-            if (iteratorAll != table.end()) {
+            if (iterator_all != table.end()) {
                 /// 对应第 0 种情况
-                size_t index = iteratorAll - table.begin() + 62;
+                size_t index = iterator_all - table.begin() + 62;
                 size += encodeIndexCase0(dest, index);
                 continue;
             }
 
             // iterator = std::find_if(table.begin(), table.end(), isHit);
             // 存在动态表中
-            if (iteratorKey != table.end()) {
-                size_t index = iteratorKey - table.begin() + 62;
+            if (iterator_key != table.end()) {
+                size_t index = iterator_key - table.begin() + 62;
                 /// 对应第 1 种情况
                 size += encodeIndexCase1(dest, index);
                 size += encodeString(dest, item.second);
@@ -152,29 +152,29 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
         }
         // 静态表查询
         {
-            auto iteratorKey = PREDEFINED_HEADERS.end();
-            auto iteratorAll = PREDEFINED_HEADERS.end();
+            auto iterator_key = PREDEFINED_HEADERS.end();
+            auto iterator_all = PREDEFINED_HEADERS.end();
             for (auto header = PREDEFINED_HEADERS.begin(); header != PREDEFINED_HEADERS.end(); ++header) {
                 if (header->first == item.first) {
-                    iteratorKey = header;
+                    iterator_key = header;
                     if (header->second == item.second) {
-                        iteratorAll = header;
+                        iterator_all = header;
                         break;
                     }
                 }
             }
 
             // auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHitAll);
-            if (iteratorAll != PREDEFINED_HEADERS.end()) {
+            if (iterator_all != PREDEFINED_HEADERS.end()) {
                 /// 对应第 0 种情况
-                size_t index = iteratorAll - PREDEFINED_HEADERS.begin();
+                size_t index = iterator_all - PREDEFINED_HEADERS.begin();
                 size += encodeIndexCase0(dest, index);
                 continue;
             }
 
             // iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
-            if (iteratorKey != PREDEFINED_HEADERS.end()) {
-                size_t index = iteratorKey - PREDEFINED_HEADERS.begin();
+            if (iterator_key != PREDEFINED_HEADERS.end()) {
+                size_t index = iterator_key - PREDEFINED_HEADERS.begin();
                 /// 对应第 1 种情况
                 size += encodeIndexCase1(dest, index);
                 size += encodeString(dest, item.second);
@@ -195,31 +195,31 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
     }
 
     // 处理一次性 HEADERS
-    for (const auto &item: onceHeader) {
+    for (const auto &item: once_header) {
         // 动态表查询
         {
-            auto iteratorKey = table.end();
-            auto iteratorAll = table.end();
+            auto iterator_key = table.end();
+            auto iterator_all = table.end();
             for (auto header = table.begin(); header != table.end(); ++header) {
                 if (header->first == item.first) {
-                    iteratorKey = header;
+                    iterator_key = header;
                     if (header->second == item.second) {
-                        iteratorAll = header;
+                        iterator_all = header;
                         break;
                     }
                 }
             }
 
             // auto iterator = std::find_if(table.begin(), table.end(), isHit);
-            if (iteratorAll != table.end()) {
+            if (iterator_all != table.end()) {
                 /// 第 0 种情况
-                size += encodeIndexCase0(dest, iteratorAll - table.begin() + 62);
+                size += encodeIndexCase0(dest, iterator_all - table.begin() + 62);
                 continue;
             }
 
-            if (iteratorKey != table.end()) {
+            if (iterator_key != table.end()) {
                 /// 第 2 种情况
-                size += encodeIndexCase2(dest, iteratorKey - table.begin() + 62);
+                size += encodeIndexCase2(dest, iterator_key - table.begin() + 62);
                 size += encodeString(dest, item.second);
                 continue;
             }
@@ -227,27 +227,27 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
 
         // 静态表查询
         {
-            auto iteratorKey = PREDEFINED_HEADERS.end();
-            auto iteratorAll = PREDEFINED_HEADERS.end();
+            auto iterator_key = PREDEFINED_HEADERS.end();
+            auto iterator_all = PREDEFINED_HEADERS.end();
             for (auto header = PREDEFINED_HEADERS.begin(); header != PREDEFINED_HEADERS.end(); ++header) {
                 if (header->first == item.first) {
-                    iteratorKey = header;
+                    iterator_key = header;
                     if (header->second == item.second) {
-                        iteratorAll = header;
+                        iterator_all = header;
                         break;
                     }
                 }
             }
 
             // auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);
-            if (iteratorAll != PREDEFINED_HEADERS.end()) {
+            if (iterator_all != PREDEFINED_HEADERS.end()) {
                 /// 第 0 种情况
-                size += encodeIndexCase0(dest, iteratorAll - PREDEFINED_HEADERS.begin());
+                size += encodeIndexCase0(dest, iterator_all - PREDEFINED_HEADERS.begin());
                 continue;
             }
-            if (iteratorKey != PREDEFINED_HEADERS.end()) {
+            if (iterator_key != PREDEFINED_HEADERS.end()) {
                 /// 第 2 种情况
-                size += encodeIndexCase2(dest, iteratorKey - PREDEFINED_HEADERS.begin());
+                size += encodeIndexCase2(dest, iterator_key - PREDEFINED_HEADERS.begin());
                 size += encodeString(dest, item.second);
                 continue;
             }
@@ -263,18 +263,18 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
     }
 
     /// 此处未对 Cookies 进行压缩
-    auto onceCookies = onceHeader.getCookies();
-    auto indexedCookies = indexedHeader.getCookies();
-    if (onceCookies) {
-        for (const auto &cookie: *onceCookies) {
+    auto once_cookies = once_header.getCookies();
+    auto indexed_cookies = indexed_header.getCookies();
+    if (once_cookies) {
+        for (const auto &cookie: *once_cookies) {
             auto str = buildCookieString(cookie.second);
             size += encodeIndexCase2(dest, 0);
             size += encodeString(dest, "Set-Cookie");
             size += encodeString(dest, str);
         }
     }
-    if (indexedCookies) {
-        for (const auto &cookie: *indexedCookies) {
+    if (indexed_cookies) {
+        for (const auto &cookie: *indexed_cookies) {
             auto str = buildCookieString(cookie.second);
             size += encodeIndexCase2(dest, 0);
             size += encodeString(dest, "Set-Cookie");
@@ -286,14 +286,14 @@ size_t HPackUtil::encode(OutputStream *dest, DynamicTable &table, Header &onceHe
 }
 
 int HPackUtil::decodeInteger(uint8_t &buf, InputStream *src, uint32_t &dest, uint8_t n) noexcept {
-    const auto two_N = static_cast<uint16_t>(std::pow(2, n) - 1);
-    dest = buf & two_N;
-    if (dest == two_N) {
-        uint64_t M = 0;
+    const auto TWO_N = static_cast<uint16_t>(std::pow(2, n) - 1);
+    dest = buf & TWO_N;
+    if (dest == TWO_N) {
+        uint64_t m = 0;
         int len = 0;
         while ((src->read(&buf, 1)) > 0) {
-            dest += (buf & 0x7F) << M;
-            M += 7;
+            dest += (buf & 0x7F) << m;
+            m += 7;
             len += 1;
 
             if (!(buf & 0x80)) {
@@ -310,14 +310,14 @@ int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
     uint8_t buf;
     src->read(&buf, 1);
     uint8_t len = (buf & 0x7F);
-    bool isHuffman = (buf & 0x80) == 0x80;
+    bool is_huffman = (buf & 0x80) == 0x80;
 
     char buffer[UINT8_MAX]{};
     if (len != src->read(buffer, len)) {
         return -1;
     }
 
-    if (isHuffman) {
+    if (is_huffman) {
         auto result = decoder.decode(buffer, len);
         if (result != std::nullopt) {
             dest = decoder.decode(buffer, len).value();
@@ -329,9 +329,9 @@ int HPackUtil::decodeString(InputStream *src, std::string &dest) noexcept {
 }
 
 size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
-    const auto prefix = static_cast<uint8_t>(std::pow(2, 7) - 1);
+    const auto PREFIX = static_cast<uint8_t>(std::pow(2, 7) - 1);
     uint8_t buf;
-    if (index < prefix) {
+    if (index < PREFIX) {
         buf = 0b1000'0000 | (((uint8_t) index) & 0b0111'1111);
         dest->write(&buf, 1);
         return 1;
@@ -339,7 +339,7 @@ size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
         buf = 0b1000'0000 | 0b0111'1111;
         dest->write(&buf, 1);
         size_t size = 1;
-        index -= prefix;
+        index -= PREFIX;
         while (index >= 128) {
             buf = index % 128 + 128;
             dest->write(&buf, 1);
@@ -351,9 +351,9 @@ size_t HPackUtil::encodeIndexCase0(OutputStream *dest, size_t index) noexcept {
 }
 
 size_t HPackUtil::encodeIndexCase1(OutputStream *dest, size_t index) noexcept {
-    const auto prefix = static_cast<uint8_t>(std::pow(2, 6) - 1);
+    const auto PREFIX = static_cast<uint8_t>(std::pow(2, 6) - 1);
     uint8_t buf;
-    if (index < prefix) {
+    if (index < PREFIX) {
         buf = 0b0100'0000 | (((uint8_t) index) & 0b0011'1111);
         dest->write(&buf, 1);
         return 1;
@@ -361,7 +361,7 @@ size_t HPackUtil::encodeIndexCase1(OutputStream *dest, size_t index) noexcept {
         buf = 0b0100'0000 | 0b0011'1111;
         dest->write(&buf, 1);
         size_t size = 1;
-        index -= prefix;
+        index -= PREFIX;
         while (index >= 128) {
             buf = index % 128 + 128;
             dest->write(&buf, 1);
@@ -376,9 +376,9 @@ size_t HPackUtil::encodeIndexCase1(OutputStream *dest, size_t index) noexcept {
 }
 
 size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
-    const auto prefix = static_cast<uint8_t>(std::pow(2, 4) - 1);
+    const auto PREFIX = static_cast<uint8_t>(std::pow(2, 4) - 1);
     uint8_t buf;
-    if (index < prefix) {
+    if (index < PREFIX) {
         buf = 0b0000'0000 | (((uint8_t) index) & 0b0000'1111);
         dest->write(&buf, 1);
         return 1;
@@ -386,7 +386,7 @@ size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
         buf = 0b0000'0000 | 0b0000'1111;
         dest->write(&buf, 1);
         size_t size = 1;
-        index -= prefix;
+        index -= PREFIX;
         while (index >= 128) {
             buf = index % 128 + 128;
             dest->write(&buf, 1);
@@ -401,9 +401,9 @@ size_t HPackUtil::encodeIndexCase2(OutputStream *dest, size_t index) noexcept {
 }
 
 size_t HPackUtil::encodeIndexCase3(OutputStream *dest, size_t index) noexcept {
-    const auto prefix = static_cast<uint8_t>(std::pow(2, 4) - 1);
+    const auto PREFIX = static_cast<uint8_t>(std::pow(2, 4) - 1);
     uint8_t buf;
-    if (index < prefix) {
+    if (index < PREFIX) {
         buf = 0b0001'0000 | (((uint8_t) index) & 0b0000'1111);
         dest->write(&buf, 1);
         return 1;
@@ -411,7 +411,7 @@ size_t HPackUtil::encodeIndexCase3(OutputStream *dest, size_t index) noexcept {
         buf = 0b0001'0000 | 0b0000'1111;
         dest->write(&buf, 1);
         size_t size = 1;
-        index -= prefix;
+        index -= PREFIX;
         while (index >= 128) {
             buf = index % 128 + 128;
             dest->write(&buf, 1);
@@ -426,13 +426,13 @@ size_t HPackUtil::encodeIndexCase3(OutputStream *dest, size_t index) noexcept {
 }
 
 size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexcept {
-    const auto prefix = static_cast<uint8_t>(std::pow(2, 7) - 1);
-    auto strLen = str.length();
-    if (strLen > 8) {
+    const auto PREFIX = static_cast<uint8_t>(std::pow(2, 7) - 1);
+    auto str_len = str.length();
+    if (str_len > 8) {
         /// 需要 Huffman 压缩
         uint8_t buf;
         auto code = encoder.encode(str);
-        if (code.size() < prefix) {
+        if (code.size() < PREFIX) {
             buf = 0b1000'0000 | ((uint8_t) code.size());
             dest->write(&buf, 1);
             dest->write(code.data(), code.size());
@@ -442,7 +442,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
             dest->write(&buf, 1);
             size_t size = 1;
             size_t i = code.size();
-            i -= prefix;
+            i -= PREFIX;
             while (i >= 128) {
                 buf = i % 128 + 128;
                 dest->write(&buf, 1);
@@ -458,7 +458,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
     } else {
         /// 不需要 Huffman 压缩
         uint8_t buf;
-        if (str.size() < prefix) {
+        if (str.size() < PREFIX) {
             buf = 0b0000'0000 | ((uint8_t) str.size());
             dest->write(&buf, 1);
             dest->write(str.data(), str.size());
@@ -468,7 +468,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
             dest->write(&buf, 1);
             size_t size = 1;
             size_t i = str.size();
-            i -= prefix;
+            i -= PREFIX;
             while (i >= 128) {
                 buf = i % 128 + 128;
                 dest->write(&buf, 1);
@@ -500,15 +500,15 @@ std::string HPackUtil::buildCookieString(const Cookie::Ptr &cookie) noexcept {
         stream << "; " << domain;
     }
 
-    uint64_t maxAge = cookie->getMaxAge();
-    if (maxAge > 0) {
-        stream << "; Max-Age=" << maxAge;
+    uint64_t max_age = cookie->getMaxAge();
+    if (max_age > 0) {
+        stream << "; Max-Age=" << max_age;
     } else {
         uint64_t expires = cookie->getExpires();
         if (expires > 0) {
             auto date = DateTime(expires, 0);
-            auto dateString = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
-            stream << "; Expires=" << dateString;
+            auto date_string = sese::text::DateTimeFormatter::format(date, TIME_GREENWICH_MEAN_PATTERN);
+            stream << "; Expires=" << date_string;
         }
     }
 
@@ -517,8 +517,8 @@ std::string HPackUtil::buildCookieString(const Cookie::Ptr &cookie) noexcept {
         stream << "; Secure";
     }
 
-    bool httpOnly = cookie->isHttpOnly();
-    if (httpOnly) {
+    bool http_only = cookie->isHttpOnly();
+    if (http_only) {
         stream << "; HttpOnly";
     }
 

@@ -1,6 +1,6 @@
 #include "sese/system/FileNotifier.h"
 
-#include <assert.h>
+#include <cassert>
 #include <windows.h>
 #include <locale>
 #include <codecvt>

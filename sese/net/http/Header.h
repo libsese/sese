@@ -29,13 +29,13 @@ public:
     using KeyValueType = std::pair<std::string, std::string>;
 
     explicit Header() = default;
-    Header(const std::initializer_list<KeyValueType> &initializerList) noexcept;
+    Header(const std::initializer_list<KeyValueType> &initializer_list) noexcept;
     virtual ~Header() = default;
 
     void set(const std::string &key, const std::string &value) noexcept;
-    const std::string &get(const std::string &key, const std::string &defaultValue) noexcept;
+    const std::string &get(const std::string &key, const std::string &default_value) noexcept;
 #if SESE_CXX_STANDARD > 201700L
-    std::string_view getView(const std::string &key, const std::string &defaultValue) noexcept;
+    std::string_view getView(const std::string &key, const std::string &default_value) noexcept;
 #endif
     inline std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
     inline std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }

@@ -2,17 +2,17 @@
 
 namespace sese::db {
     enum class MetadataType {
-        Text,
-        Boolean,
-        Char,
-        Short,
-        Integer,
-        Long,
-        Float,
-        Double,
-        Date,
-        Time,
-        DateTime,
-        Unknown
+        TEXT,
+        BOOLEAN,
+        CHAR,
+        SHORT,
+        INTEGER,
+        LONG,
+        FLOAT,
+        DOUBLE,
+        DATE,
+        TIME,
+        DATE_TIME,
+        UNKNOWN
     };
 }

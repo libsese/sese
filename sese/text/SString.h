@@ -85,7 +85,7 @@ public:
         Iterator(const char *ref, size_t size, size_t pos = 0);
 
         Iterator operator++();
-        Iterator operator++(int c);
+        // Iterator operator++(int c);
 
         bool operator==(const Iterator &other) const;
         bool operator!=(const Iterator &other) const;
@@ -220,8 +220,8 @@ public:
 
     explicit SString() noexcept;
     SString(const char *str, size_t size);
-    SString(const SString &sString) noexcept;
-    SString(SString &&sString) noexcept;
+    SString(const SString &s_string) noexcept;
+    SString(SString &&s_string) noexcept;
     ~SString() noexcept override;
 
     static SString fromSChars(SChar ch[], size_t size);

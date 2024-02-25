@@ -145,8 +145,8 @@ TEST(TestMariaStmt, InsertStmt) {
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);
 
-    auto stmtQuery = instance->createStatement("select * from tb_stmt_insert;");
-    auto result = stmtQuery->executeQuery();
+    auto stmt_query = instance->createStatement("select * from tb_stmt_insert;");
+    auto result = stmt_query->executeQuery();
     ASSERT_NE(nullptr, result);
     if (result->next()) {
         ASSERT_EQ(1, result->getInteger(0));
@@ -211,11 +211,11 @@ TEST(TestMariaStmt, SetDateTimeStmt) {
     ASSERT_NE(nullptr, stmt);
 
     int id = 3;
-    auto dateTime = sese::DateTime(1679142600000000, 0);
+    auto date_time = sese::DateTime(1679142600000000, 0);
     ASSERT_EQ(true, stmt->setInteger(1, id));
     ASSERT_NE(true, stmt->setInteger(6, id));
-    ASSERT_EQ(true, stmt->setDateTime(2, dateTime));
-    ASSERT_NE(true, stmt->setDateTime(6, dateTime));
+    ASSERT_EQ(true, stmt->setDateTime(2, date_time));
+    ASSERT_NE(true, stmt->setDateTime(6, date_time));
 
     auto count = stmt->executeUpdate();
     ASSERT_NE(-1, count);

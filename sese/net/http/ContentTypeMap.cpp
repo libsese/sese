@@ -1,6 +1,6 @@
 #include <sese/net/http/HttpUtil.h>
 
-std::map<std::string, std::string> sese::net::http::HttpUtil::contentTypeMap{
+std::map<std::string, std::string> sese::net::http::HttpUtil::content_type_map{
         {"", "application/x-"},
         {"*", "application/octet-stream"},
         {"pdf", "application/pdf"},

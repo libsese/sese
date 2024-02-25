@@ -5,8 +5,8 @@
 using namespace sese::system;
 
 Process::Ptr Process::create(const char *command) noexcept {
-    auto startupInfo = new STARTUPINFO{};
-    auto processInfo = new PROCESS_INFORMATION{};
+    auto startup_info = new STARTUPINFO{};
+    auto process_info = new PROCESS_INFORMATION{};
 
     char buffer[1024]{};
     strcpy_s(buffer, command);
@@ -20,18 +20,18 @@ Process::Ptr Process::create(const char *command) noexcept {
             0,
             nullptr,
             nullptr,
-            startupInfo,
-            processInfo
+            startup_info,
+            process_info
     );
 
     if (rt) {
         auto p = new Process;
-        p->startupInfo = startupInfo;
-        p->processInfo = processInfo;
+        p->startupInfo = startup_info;
+        p->processInfo = process_info;
         return std::unique_ptr<Process>(p);
     } else {
-        delete startupInfo;
-        delete processInfo;
+        delete startup_info;
+        delete process_info;
         return nullptr;
     }
 }
@@ -41,31 +41,31 @@ sese::pid_t Process::getCurrentProcessId() noexcept {
 }
 
 Process::~Process() noexcept {
-    auto sInfo = (STARTUPINFO *) startupInfo;
-    auto pInfo = (PROCESS_INFORMATION *) processInfo;
-    delete sInfo;
-    delete pInfo;
+    auto s_info = static_cast<STARTUPINFO *>(startupInfo);
+    auto p_info = static_cast<PROCESS_INFORMATION *>(processInfo);
+    delete s_info;
+    delete p_info;
     startupInfo = nullptr;
     processInfo = nullptr;
 }
 
 int Process::wait() const noexcept {
-    DWORD exitCode;
-    auto pInfo = (PROCESS_INFORMATION *) processInfo;
+    DWORD exit_code;
+    auto p_info = static_cast<PROCESS_INFORMATION *>(processInfo);
     // pInfo cannot be nullptr
-    if (!pInfo) return -1;
-    WaitForSingleObject(pInfo->hProcess, INFINITE);
-    GetExitCodeProcess(pInfo->hProcess, &exitCode);
-    return (int) exitCode;
+    if (!p_info) return -1;
+    WaitForSingleObject(p_info->hProcess, INFINITE);
+    GetExitCodeProcess(p_info->hProcess, &exit_code);
+    return static_cast<int>(exit_code);
 }
 
 bool Process::kill() const noexcept {
-    auto pInfo = (PROCESS_INFORMATION *) processInfo;
-    if (!pInfo) return false;
-    return TerminateProcess(pInfo->hProcess, -1) != 0;
+    auto p_info = static_cast<PROCESS_INFORMATION *>(processInfo);
+    if (!p_info) return false;
+    return TerminateProcess(p_info->hProcess, -1) != 0;
 }
 
 sese::pid_t Process::getProcessId() const noexcept {
     if (!processInfo) return 0;
-    return GetProcessId(((PROCESS_INFORMATION *) processInfo)->hProcess);
+    return GetProcessId(static_cast<PROCESS_INFORMATION *>(processInfo)->hProcess);
 }

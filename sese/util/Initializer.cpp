@@ -16,7 +16,7 @@ using sese::InitiateTask;
 using sese::system::CommandLineInitiateTask;
 using sese::system::PathsInitiateTask;
 
-static Initializer gInitializer;
+static Initializer g_initializer;
 
 // GCOVR_EXCL_START
 [[maybe_unused]] void *Initializer::getInitializer() noexcept {
@@ -27,7 +27,7 @@ static Initializer gInitializer;
     addTask(std::make_shared<net::SocketInitiateTask>());
 #endif
     addTask(std::make_shared<security::SecurityInitTask>());
-    return &gInitializer;
+    return &g_initializer;
 }
 // GCOVR_EXCL_STOP
 
@@ -55,14 +55,14 @@ void Initializer::addTask(const InitiateTask::Ptr &task) noexcept {
     if (rt != 0) {
         printf("Load failed: %32s Exit code %d", task->getName().c_str(), rt);
     } else {
-        gInitializer.tasks.emplace(task);
+        g_initializer.tasks.emplace(task);
     }
 }
 
-void sese::initCore(const int argc, const char *const *argv) noexcept {
+void sese::initCore(const int ARGC, const char *const *argv) noexcept {
     // 不会出错，不需要判断
     // GCOVR_EXCL_START
-    Initializer::addTask(std::make_shared<system::CommandLineInitiateTask>(argc, argv));
+    Initializer::addTask(std::make_shared<system::CommandLineInitiateTask>(ARGC, argv));
     Initializer::addTask(std::make_shared<PathsInitiateTask>());
     Initializer::addTask(std::make_shared<ThreadInitiateTask>());
     Initializer::addTask(std::make_shared<record::LoggerInitiateTask>());

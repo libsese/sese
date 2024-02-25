@@ -43,11 +43,11 @@ const std::map<std::string, std::string> &sese::ArgParser::getKeyValSet() const 
     return this->keyValSet;
 }
 
-const std::string &sese::ArgParser::getValueByKey(const std::string &key, const std::string &defaultValue) const noexcept {
+const std::string &sese::ArgParser::getValueByKey(const std::string &key, const std::string &default_value) const noexcept {
     for (const auto &iterator: keyValSet) {
         if (iterator.first == key) {
             return iterator.second;
         }
     }
-    return defaultValue;
+    return default_value;
 }

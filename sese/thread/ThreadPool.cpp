@@ -4,8 +4,8 @@
 #include <algorithm>
 
 namespace sese {
-ThreadPool::ThreadPool(std::string threadPoolName, size_t threads)
-    : name(std::move(threadPoolName)),
+ThreadPool::ThreadPool(std::string thread_pool_name, size_t threads)
+    : name(std::move(thread_pool_name)),
       threads(std::max<size_t>(2, threads)),
       data(std::make_shared<RuntimeData>()) {
 

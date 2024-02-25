@@ -38,16 +38,16 @@ TEST(TestConcurrent, DISABLED_LinkedStack_PushAndPop) {
 
     std::atomic<int> produce = 0;
     std::atomic<int> consume = 0;
-    const int expect = 20000;
+    const int EXPECT = 20000;
     LinkedStack<int> stack;
-    auto produceProc = [&stack, &produce] {
+    auto produce_proc = [&stack, &produce] {
         for (int i = 0; i < 10000; ++i) {
             produce += 1;
             stack.push(1);
             // SESE_DEBUG("PUSH");
         }
     };
-    auto consumeProc = [&stack, &consume] {
+    auto consume_proc = [&stack, &consume] {
         int value;
         while (true) {
             if (stack.pop(value)) {
@@ -56,17 +56,17 @@ TEST(TestConcurrent, DISABLED_LinkedStack_PushAndPop) {
             } else {
                 SESE_WARN("FAILED");
             }
-            if (consume == expect) {
+            if (consume == EXPECT) {
                 break;
             }
         }
     };
 
-    auto p1 = sese::async<void>(produceProc);
-    auto p2 = sese::async<void>(produceProc);
+    auto p1 = sese::async<void>(produce_proc);
+    auto p2 = sese::async<void>(produce_proc);
 
-    auto c1 = sese::async<void>(consumeProc);
-    auto c2 = sese::async<void>(consumeProc);
+    auto c1 = sese::async<void>(consume_proc);
+    auto c2 = sese::async<void>(consume_proc);
 
     p1.get();
     c1.get();
@@ -108,16 +108,16 @@ TEST(TestConcurrent, DISABLED_LinkedQueue_PushAndPop) {
 
     std::atomic<int> produce = 0;
     std::atomic<int> consume = 0;
-    const int expect = 20000;
+    const int EXPECT = 20000;
     LinkedQueue<int> queue;
-    auto produceProc = [&queue, &produce] {
+    auto produce_proc = [&queue, &produce] {
         for (int i = 0; i < 10000; ++i) {
             produce += 1;
             queue.push(1);
             // SESE_DEBUG("PUSH");
         }
     };
-    auto consumeProc = [&queue, &consume] {
+    auto consume_proc = [&queue, &consume] {
         int value;
         while (true) {
             if (queue.pop(value)) {
@@ -126,17 +126,17 @@ TEST(TestConcurrent, DISABLED_LinkedQueue_PushAndPop) {
             } else {
                 SESE_WARN("FAILED");
             }
-            if (consume == expect) {
+            if (consume == EXPECT) {
                 break;
             }
         }
     };
 
-    auto p1 = sese::async<void>(produceProc);
-    auto p2 = sese::async<void>(produceProc);
+    auto p1 = sese::async<void>(produce_proc);
+    auto p2 = sese::async<void>(produce_proc);
 
-    auto c1 = sese::async<void>(consumeProc);
-    auto c2 = sese::async<void>(consumeProc);
+    auto c1 = sese::async<void>(consume_proc);
+    auto c2 = sese::async<void>(consume_proc);
 
     p1.get();
     c1.get();

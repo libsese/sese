@@ -33,8 +33,8 @@ public:
      * @param threadPoolName 线程池名称（影响池内线程名称）
      * @param threads 线程数量
      */
-    explicit ThreadPool(std::string threadPoolName = THREAD_DEFAULT_NAME, size_t threads = 4);
-    ~ThreadPool();
+    explicit ThreadPool(std::string thread_pool_name = THREAD_DEFAULT_NAME, size_t threads = 4);
+    ~ThreadPool() override;
 
 public:
     /**
@@ -56,12 +56,12 @@ public:
      * @param f 函数
      * @param args 参数
      */
-    template<typename Function, typename... Args>
-    void postTaskEx(Function &&f, Args &&...args) {
-        auto boundFunction = [func = std::forward<Function>(f), args = std::make_tuple(std::forward<Args>(args)...)]() mutable {
+    template<typename FUNCTION, typename... ARGS>
+    void postTaskEx(FUNCTION &&f, ARGS &&...args) {
+        auto bound_function = [func = std::forward<FUNCTION>(f), args = std::make_tuple(std::forward<ARGS>(args)...)]() mutable {
             std::apply(std::move(func), std::move(args));
         };
-        this->postTask(std::move(boundFunction));
+        this->postTask(std::move(bound_function));
     }
 
     /**
@@ -70,8 +70,8 @@ public:
      * \param tasks 欲执行的任务
      * \return std::shared_future 对象
      */
-    template<class ReturnType>
-    std::shared_future<ReturnType> postTask(const std::function<ReturnType()> &tasks);
+    template<class RETURN_TYPE>
+    std::shared_future<RETURN_TYPE> postTask(const std::function<RETURN_TYPE()> &tasks);
 
     /**
      * @brief 关闭当前线程池并阻塞至子线程退出
@@ -101,19 +101,19 @@ private:
 
 // GCOVR_EXCL_START
 
-template<class ReturnType>
-std::shared_future<ReturnType> sese::ThreadPool::postTask(const std::function<ReturnType()> &task) {
+template<class RETURN_TYPE>
+std::shared_future<RETURN_TYPE> sese::ThreadPool::postTask(const std::function<RETURN_TYPE()> &task) {
     /**
      * 注意：
      * 由于 std::packaged_task 属于不可拷贝对象，
      * 并且 std::function 会对参数类型进行擦除，导致 std::move 也无法作用于不可拷贝对象，
      * 所以此处选择了使用 std::shared_ptr 对 std::packaged_task 进行封装
      */
-    using TaskPtr = std::shared_ptr<std::packaged_task<ReturnType()>>;
-    TaskPtr packagedTask = std::make_shared<std::packaged_task<ReturnType()>>(task);
-    std::shared_future<ReturnType> future(packagedTask->get_future());
+    using TaskPtr = std::shared_ptr<std::packaged_task<RETURN_TYPE()>>;
+    TaskPtr packaged_task = std::make_shared<std::packaged_task<RETURN_TYPE()>>(task);
+    std::shared_future<RETURN_TYPE> future(packaged_task->get_future());
 
-    this->postTask([task = std::move(packagedTask)]() mutable {
+    this->postTask([task = std::move(packaged_task)]() mutable {
         (*task)();
     });
 

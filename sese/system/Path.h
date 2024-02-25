@@ -26,9 +26,9 @@ for Windows:
      *  \endverbatim
      *  \param unixPath UNIX-LIKE 格式路径
      */
-    Path(const char *unixPath) noexcept;
+    explicit Path(const char *unix_path) noexcept;
 
-    explicit Path(const std::string_view &unixPath) noexcept;
+    explicit Path(const std::string_view &unix_path) noexcept;
 
     Path() = default;
 
@@ -36,7 +36,7 @@ for Windows:
     /// \warning 不做额外检查
     /// \param nativePath 原生路径
     /// \return UNIX-LIKE 路径
-    static Path fromNativePath(const std::string &nativePath) noexcept;
+    static Path fromNativePath(const std::string &native_path) noexcept;
 
 #ifdef SESE_PLATFORM_WINDOWS
     static void replaceWindowsPathSplitChar(char *path, size_t len) noexcept;

@@ -27,9 +27,9 @@ public:
     using RegisterInfoMapType = std::map<std::string, RegisterInfo>;
     using ParamListType = std::initializer_list<std::pair<std::string, RegisterInfo>>;
 
-    ClassFactory(const ParamListType &initializerList) noexcept;
-    ClassFactory(ClassFactory &&classFactory) = delete;
-    ClassFactory(const ClassFactory &classFactory) = delete;
+    ClassFactory(const ParamListType &initializer_list) noexcept;
+    ClassFactory(ClassFactory &&class_factory) = delete;
+    ClassFactory(const ClassFactory &class_factory) = delete;
 
     /// 创建某个已注册类的实例
     /// \param id 类注册名

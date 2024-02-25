@@ -15,23 +15,23 @@
 
 using namespace sese::db;
 
-DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, const char *connectionString) noexcept {
+DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, const char *connection_string) noexcept {
     switch (type) {
 #ifdef HAS_MARIADB
-        case DatabaseType::MySql:
-        case DatabaseType::Maria: {
-            auto config = tokenize(connectionString);
+        case DatabaseType::MY_SQL:
+        case DatabaseType::MARIA: {
+            auto config = tokenize(connection_string);
 
-            auto hostIterator = config.find("host");
-            auto userIterator = config.find("user");
-            auto pwdIterator = config.find("pwd");
-            auto dbIterator = config.find("db");
-            auto portIterator = config.find("port");
-            if (hostIterator == config.end() ||
-                userIterator == config.end() ||
-                pwdIterator == config.end() ||
-                dbIterator == config.end() ||
-                portIterator == config.end()) {
+            auto host_iterator = config.find("host");
+            auto user_iterator = config.find("user");
+            auto pwd_iterator = config.find("pwd");
+            auto db_iterator = config.find("db");
+            auto port_iterator = config.find("port");
+            if (host_iterator == config.end() ||
+                user_iterator == config.end() ||
+                pwd_iterator == config.end() ||
+                db_iterator == config.end() ||
+                port_iterator == config.end()) {
                 // 缺少必要字段
                 return nullptr;
             }
@@ -44,11 +44,11 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
 
             mysql_real_connect(
                     conn,
-                    hostIterator->second.c_str(),
-                    userIterator->second.c_str(),
-                    pwdIterator->second.c_str(),
-                    dbIterator->second.c_str(),
-                    std::stoi(portIterator->second),
+                    host_iterator->second.c_str(),
+                    user_iterator->second.c_str(),
+                    pwd_iterator->second.c_str(),
+                    db_iterator->second.c_str(),
+                    std::stoi(port_iterator->second),
                     nullptr,
                     0
             );
@@ -57,36 +57,36 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
         }
 #endif
 #ifdef HAS_SQLITE
-        case DatabaseType::Sqlite: {
+        case DatabaseType::SQLITE: {
             sqlite3 *conn;
-            sqlite3_open_v2(connectionString, &conn, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nullptr);
+            sqlite3_open_v2(connection_string, &conn, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, nullptr);
             return std::make_unique<impl::SqliteDriverInstanceImpl>(conn);
         }
 #endif
 #ifdef HAS_POSTGRES
-        case DatabaseType::Postgres: {
-            auto config = tokenize(connectionString);
+        case DatabaseType::POSTGRES: {
+            auto config = tokenize(connection_string);
 
-            auto hostIterator = config.find("host");
-            auto userIterator = config.find("user");
-            auto pwdIterator = config.find("pwd");
-            auto dbIterator = config.find("db");
-            auto portIterator = config.find("port");
-            if (hostIterator == config.end() ||
-                userIterator == config.end() ||
-                pwdIterator == config.end() ||
-                dbIterator == config.end() ||
-                portIterator == config.end()) {
+            auto host_iterator = config.find("host");
+            auto user_iterator = config.find("user");
+            auto pwd_iterator = config.find("pwd");
+            auto db_iterator = config.find("db");
+            auto port_iterator = config.find("port");
+            if (host_iterator == config.end() ||
+                user_iterator == config.end() ||
+                pwd_iterator == config.end() ||
+                db_iterator == config.end() ||
+                port_iterator == config.end()) {
                 // 缺少必要字段
                 return nullptr;
             }
             const char *keywords[] = {"host", "user", "password", "dbname", "port", nullptr};
             const char *values[] = {
-                    hostIterator->second.c_str(),
-                    userIterator->second.c_str(),
-                    pwdIterator->second.c_str(),
-                    dbIterator->second.c_str(),
-                    portIterator->second.c_str(),
+                    host_iterator->second.c_str(),
+                    user_iterator->second.c_str(),
+                    pwd_iterator->second.c_str(),
+                    db_iterator->second.c_str(),
+                    port_iterator->second.c_str(),
                     nullptr};
 
             PGconn *conn = PQconnectdbParams(keywords, values, 0);

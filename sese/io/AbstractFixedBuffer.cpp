@@ -35,12 +35,12 @@ int64_t sese::io::AbstractFixedBuffer::read(void *buf, size_t length) {
     if (writeSize - readSize >= length) {
         memcpy(buf, buffer + readSize, length);
         readSize += length;
-        return (int64_t) length;
+        return static_cast<int64_t>(length);
     } else {
         auto read = writeSize - readSize;
         memcpy(buf, buffer + readSize, read);
         readSize += read;
-        return (int64_t) read;
+        return static_cast<int64_t>(read);
     }
 }
 
@@ -48,12 +48,12 @@ int64_t sese::io::AbstractFixedBuffer::write(const void *buf, size_t length) {
     if (size - writeSize >= length) {
         memcpy(buffer + writeSize, buf, length);
         writeSize += length;
-        return (int64_t) length;
+        return static_cast<int64_t>(length);
     } else {
         auto write = size - writeSize;
         memcpy(buffer + writeSize, buf, write);
         writeSize += write;
-        return (int64_t) write;
+        return static_cast<int64_t>(write);
     }
 }
 
@@ -61,12 +61,12 @@ int64_t sese::io::AbstractFixedBuffer::peek(void *buf, size_t length) {
     if (writeSize - readSize >= length) {
         memcpy(buf, buffer + readSize, length);
         // readSize += length;
-        return (int64_t) length;
+        return static_cast<int64_t>(length);
     } else {
         auto read = writeSize - readSize;
         memcpy(buf, buffer + readSize, read);
         // readSize += read;
-        return (int64_t) read;
+        return static_cast<int64_t>(read);
     }
 }
 
@@ -78,11 +78,11 @@ int64_t sese::io::AbstractFixedBuffer::trunc(size_t length) {
     if (writeSize - readSize >= length) {
         // memcpy(buf, buffer + readSize, length);
         readSize += length;
-        return (int64_t) length;
+        return static_cast<int64_t>(length);
     } else {
         auto read = writeSize - readSize;
         // memcpy(buf, buffer + readSize, read);
         readSize += read;
-        return (int64_t) read;
+        return static_cast<int64_t>(read);
     }
 }

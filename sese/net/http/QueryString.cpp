@@ -5,10 +5,10 @@
 using sese::net::http::QueryString;
 using sese::text::StringBuilder;
 
-const std::string &QueryString::get(const std::string &key, const std::string &defaultValue) noexcept {
+const std::string &QueryString::get(const std::string &key, const std::string &default_value) noexcept {
     auto iterator = keyValueSet.find(key);
     if (iterator == keyValueSet.end()) {
-        return defaultValue;
+        return default_value;
     } else {
         return iterator->second;
     }
@@ -28,43 +28,43 @@ QueryString::QueryString(const std::string &query) noexcept {
 
     std::string key;
     std::string value;
-    bool hasKey = false;
+    bool has_key = false;
     for (char ch: query) {
         if (ch == '?') {
             continue;
         } else if (ch == '=') {
-            if (hasKey) {
+            if (has_key) {
                 continue;
             } else {
-                hasKey = true;
+                has_key = true;
                 key = builder.toString();
                 builder.clear();
             }
         } else if (ch == '&') {
-            if (hasKey) {
+            if (has_key) {
                 value = builder.toString();
                 builder.clear();
                 if (!value.empty()) {
-                    auto decodeKey = PercentConverter::decode(key.c_str());
-                    auto decodeValue = PercentConverter::decode(value.c_str());
-                    if (!decodeKey.empty() && !decodeValue.empty()) {
-                        keyValueSet[decodeKey] = decodeValue;
+                    auto decode_key = PercentConverter::decode(key.c_str());
+                    auto decode_value = PercentConverter::decode(value.c_str());
+                    if (!decode_key.empty() && !decode_value.empty()) {
+                        keyValueSet[decode_key] = decode_value;
                     }
                 }
             }
-            hasKey = false;
+            has_key = false;
         } else {
             builder.append(ch);
         }
     }
-    if (hasKey && !builder.empty()) {
+    if (has_key && !builder.empty()) {
         value = builder.toString();
-        auto decodeKey = PercentConverter::decode(key.c_str());
-        auto decodeValue = PercentConverter::decode(value.c_str());
-        if (decodeKey.empty() || decodeValue.empty()) {
+        auto decode_key = PercentConverter::decode(key.c_str());
+        auto decode_value = PercentConverter::decode(value.c_str());
+        if (decode_key.empty() || decode_value.empty()) {
             return;
         }
-        keyValueSet[decodeKey] = decodeValue;
+        keyValueSet[decode_key] = decode_value;
     }
 }
 
@@ -73,10 +73,10 @@ std::string QueryString::toString() noexcept {
     if (!keyValueSet.empty()) {
         builder.append('?');
 
-        bool isFirst = true;
+        bool is_first = true;
         for (const auto &item: keyValueSet) {
-            if (isFirst) {
-                isFirst = false;
+            if (is_first) {
+                is_first = false;
             } else {
                 builder.append('&');
             }

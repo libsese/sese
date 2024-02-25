@@ -58,7 +58,7 @@ public:
     /// \param relativeTimestamp 定时时间
     /// \param isRepeat 是否重复
     /// \return 任务句柄
-    TimerTask::Ptr delay(const std::function<void()> &callback, int64_t relativeTimestamp, bool isRepeat = false) noexcept;
+    TimerTask::Ptr delay(const std::function<void()> &callback, int64_t relative_timestamp, bool is_repeat = false) noexcept;
     /// 结束定时器并终止定时线程
     void shutdown() noexcept;
 
@@ -66,7 +66,7 @@ public:
     /// 私有构造函数
     Timer() = default;
     void loop() noexcept;
-    static void cancelCallback(const std::weak_ptr<Timer> &weakTimer, const std::weak_ptr<TimerTask> &weakTask) noexcept;
+    static void cancelCallback(const std::weak_ptr<Timer> &weak_timer, const std::weak_ptr<TimerTask> &weak_task) noexcept;
 
     size_t number = 0;
     std::mutex mutex{};

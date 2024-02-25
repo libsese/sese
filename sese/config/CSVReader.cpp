@@ -2,9 +2,9 @@
 
 #include <sstream>
 
-sese::CSVReader::CSVReader(InputStream *source, char splitChar) noexcept {
+sese::CSVReader::CSVReader(InputStream *source, char split_char) noexcept {
     CSVReader::source = source;
-    CSVReader::splitChar = splitChar;
+    CSVReader::splitChar = split_char;
 }
 
 sese::CSVReader::Row sese::CSVReader::read() noexcept {

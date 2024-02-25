@@ -35,7 +35,7 @@ public:
 public:
     /// 当超时事件发生时触发
     /// \param timeoutEvent
-    virtual void onTimeout(TimeoutEvent *timeoutEvent);
+    virtual void onTimeout(TimeoutEvent *timeout_event);
 
     /// 新建一个超时事件
     /// \note 每一个文件描述符只能对应一个超时事件，<p>
@@ -54,7 +54,7 @@ public:
     /// \see createTimoutEvent
     /// \param timeoutEvent 超时事件结构
     /// \param seconds 超时时间，单位是秒
-    void setTimeoutEvent(TimeoutEvent *timeoutEvent, uint64_t seconds);
+    void setTimeoutEvent(TimeoutEvent *timeout_event, uint64_t seconds);
 
     /// 通过文件描述符获取超时事件结构
     /// \param fd 文件描述符
@@ -64,11 +64,11 @@ public:
 
     /// 取消当前的超时事件
     /// \param timeoutEvent 超时事件结构
-    void cancelTimeoutEvent(TimeoutEvent *timeoutEvent);
+    void cancelTimeoutEvent(TimeoutEvent *timeout_event);
 
     /// 释放当前的超时事件结构
     /// \param timeoutEvent 超时事件结构
-    void freeTimeoutEvent(TimeoutEvent *timeoutEvent);
+    void freeTimeoutEvent(TimeoutEvent *timeout_event);
 
 private:
     uint64_t startTimestamp{0};

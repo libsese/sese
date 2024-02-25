@@ -45,7 +45,7 @@ public:
      * @param defaultValue 参数默认值
      * @return 返回参数值，参数不存在返回默认值
      */
-    [[nodiscard]] const std::string &getValueByKey(const std::string &key, const std::string &defaultValue) const noexcept;
+    [[nodiscard]] const std::string &getValueByKey(const std::string &key, const std::string &default_value) const noexcept;
 
     /**
      * 获取程序工作目录

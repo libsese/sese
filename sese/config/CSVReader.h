@@ -23,8 +23,8 @@ public:
 
     /// 构造函数
     /// \param source 读取的流
-    /// \param splitChar 分割字符
-    explicit CSVReader(InputStream *source, char splitChar = ',') noexcept;
+    /// \param split_char 分割字符
+    explicit CSVReader(InputStream *source, char split_char = ',') noexcept;
 
     /// 从流中读取一行
     /// \return 返回包含一行内所有元素的 vector 容器

@@ -20,7 +20,7 @@ public:
     /// 初始化分块参数
     /// \param blockMaxSize 分块的预定大小，此参数在非 DEBUG 模式下具有最小值限制，至少为 1000 * 1024，即 1MB
     /// \param level 等级阈值
-    explicit BlockAppender(size_t blockMaxSize, Level level = Level::DEBUG);
+    explicit BlockAppender(size_t block_max_size, Level level = Level::DEBUG);
 
     ~BlockAppender() noexcept override;
 

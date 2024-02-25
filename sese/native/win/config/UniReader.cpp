@@ -17,14 +17,14 @@ std::string sese::UniReader::readLine() {
     return convert.to_bytes(str);
 }
 
-std::shared_ptr<sese::UniReader> sese::UniReader::create(const std::string &fileName) noexcept {
-    auto fileStream = io::FileStream::create(fileName, TEXT_READ_EXISTED_W);
-    if (!fileStream) {
+std::shared_ptr<sese::UniReader> sese::UniReader::create(const std::string &file_name) noexcept {
+    auto file_stream = io::FileStream::create(file_name, TEXT_READ_EXISTED_W);
+    if (!file_stream) {
         return nullptr;
     }
-    auto reader = std::make_shared<io::WStreamReader>(fileStream);
-    auto uniReader = new UniReader();
-    uniReader->fileStream = fileStream;
-    uniReader->reader = reader;
-    return std::shared_ptr<sese::UniReader>(uniReader);
+    auto reader = std::make_shared<io::WStreamReader>(file_stream);
+    auto uni_reader = new UniReader();
+    uni_reader->fileStream = file_stream;
+    uni_reader->reader = reader;
+    return std::shared_ptr<sese::UniReader>(uni_reader);
 }

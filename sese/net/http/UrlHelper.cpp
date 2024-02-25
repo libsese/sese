@@ -4,42 +4,42 @@ using sese::net::http::Url;
 
 Url::Url(const std::string &url) noexcept {
     // 协议
-    auto protocolEnd = url.find("://", 0);
-    if (protocolEnd != std::string::npos) {
-        protocol = std::string_view(url.data(), protocolEnd);
-        protocolEnd += 3;
+    auto protocol_end = url.find("://", 0);
+    if (protocol_end != std::string::npos) {
+        protocol = std::string_view(url.data(), protocol_end);
+        protocol_end += 3;
     } else {
-        protocolEnd = 0;
+        protocol_end = 0;
     }
 
     // 域名
-    bool foundHost = false;
-    auto hostEnd = url.find('/', protocolEnd);
-    if (hostEnd != std::string::npos) {
-        foundHost = true;
-        host = std::string_view(url.data() + protocolEnd, hostEnd - protocolEnd);
+    bool found_host = false;
+    auto host_end = url.find('/', protocol_end);
+    if (host_end != std::string::npos) {
+        found_host = true;
+        host = std::string_view(url.data() + protocol_end, host_end - protocol_end);
     } else {
-        hostEnd = protocolEnd;
+        host_end = protocol_end;
     }
 
     // 资源 & 查询字符串
-    auto uriEnd = url.find('?', hostEnd);
-    if (uriEnd == std::string::npos) {
+    auto uri_end = url.find('?', host_end);
+    if (uri_end == std::string::npos) {
         // 无查询字符串
-        if (!foundHost) {
-            host = std::string_view(url.data() + hostEnd);
+        if (!found_host) {
+            host = std::string_view(url.data() + host_end);
             this->url = "/";
         } else {
-            this->url = std::string_view(url.data() + hostEnd);
+            this->url = std::string_view(url.data() + host_end);
         }
     } else {
         // 有查询字符串
-        if (!foundHost) {
-            host = std::string_view(url.data() + hostEnd, uriEnd - hostEnd);
+        if (!found_host) {
+            host = std::string_view(url.data() + host_end, uri_end - host_end);
             this->url = "/";
         } else {
-            this->url = std::string_view(url.data() + hostEnd, uriEnd - hostEnd);
+            this->url = std::string_view(url.data() + host_end, uri_end - host_end);
         }
-        query = std::string_view(url.data() + uriEnd);
+        query = std::string_view(url.data() + uri_end);
     }
 }

@@ -25,7 +25,7 @@ public:
     /// 对象池对象智能指针
     using ObjectPtr = std::shared_ptr<T>;
 
-    ~ObjectPool() {
+    ~ObjectPool() override {
         while (!queue.empty()) {
             T *p = nullptr;
             if (queue.pop(p)) {

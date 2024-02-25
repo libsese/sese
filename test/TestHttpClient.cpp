@@ -47,7 +47,7 @@ TEST(TestHttpClient, DISABLED_WithProxy) {
 TEST(TestHttpClient, KeepAlive) {
     auto client = RequestableFactory::createHttpRequest("https://www.baidu.com");
     ASSERT_NOT_NULL(client);
-    client->getRequest()->setType(RequestType::Head);
+    client->getRequest()->setType(RequestType::HEAD);
     ASSERT_TRUE(client->request()) << client->getLastError();
 
     SESE_INFO("first request.");

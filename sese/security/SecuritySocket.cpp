@@ -33,19 +33,19 @@ int32_t sese::security::SecuritySocket::connect(Address::Ptr address) noexcept {
         // GCOVR_EXCL_STOP
     }
 
-    ssl = SSL_new((SSL_CTX *) context->getContext());
-    auto clientFd = this->getRawSocket();
+    ssl = SSL_new(static_cast<SSL_CTX *>(context->getContext()));
+    auto client_fd = this->getRawSocket();
 
-    SSL_set_fd((SSL *) ssl, (int) clientFd);
-    SSL_set_connect_state((SSL *) ssl);
+    SSL_set_fd(static_cast<SSL *>(ssl), static_cast<int>(client_fd));
+    SSL_set_connect_state(static_cast<SSL *>(ssl));
     // GCOVR_EXCL_START
     while (true) {
-        auto rt = SSL_do_handshake((SSL *) ssl);
+        auto rt = SSL_do_handshake(static_cast<SSL *>(ssl));
         if (rt <= 0) {
             // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
-            auto err = SSL_get_error((SSL *) ssl, rt);
+            auto err = SSL_get_error(static_cast<SSL *>(ssl), rt);
             if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
-                SSL_free((SSL *) ssl);
+                SSL_free(static_cast<SSL *>(ssl));
                 Socket::close();
                 return -1;
             }
@@ -59,25 +59,25 @@ int32_t sese::security::SecuritySocket::connect(Address::Ptr address) noexcept {
 }
 
 sese::net::Socket::Ptr sese::security::SecuritySocket::accept() const {
-    auto clientFd = ::accept(this->getRawSocket(), nullptr, nullptr);
+    auto client_fd = ::accept(this->getRawSocket(), nullptr, nullptr);
     // GCOVR_EXCL_START
-    if (clientFd == -1) {
+    if (client_fd == -1) {
         return nullptr;
     }
     // GCOVR_EXCL_STOP
 
-    auto clientSSL = SSL_new((SSL_CTX *) context->getContext());
-    SSL_set_fd(clientSSL, (int) clientFd);
-    SSL_set_accept_state(clientSSL);
+    auto client_ssl = SSL_new(static_cast<SSL_CTX *>(context->getContext()));
+    SSL_set_fd(client_ssl, static_cast<int>(client_fd));
+    SSL_set_accept_state(client_ssl);
     // GCOVR_EXCL_START
     while (true) {
-        auto rt = SSL_do_handshake(clientSSL);
+        auto rt = SSL_do_handshake(client_ssl);
         if (rt <= 0) {
             // err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE
-            auto err = SSL_get_error(clientSSL, rt);
+            auto err = SSL_get_error(client_ssl, rt);
             if (err != SSL_ERROR_WANT_READ && err != SSL_ERROR_WANT_WRITE) {
-                SSL_free(clientSSL);
-                Socket::close(clientFd);
+                SSL_free(client_ssl);
+                Socket::close(client_fd);
                 return nullptr;
             }
         } else {
@@ -86,7 +86,7 @@ sese::net::Socket::Ptr sese::security::SecuritySocket::accept() const {
     }
     // GCOVR_EXCL_STOP
 
-    return std::make_shared<SecuritySocket>(context, clientSSL, clientFd);
+    return std::make_shared<SecuritySocket>(context, client_ssl, client_fd);
 }
 
 int32_t sese::security::SecuritySocket::shutdown(sese::net::Socket::ShutdownMode mode) const {
@@ -94,17 +94,17 @@ int32_t sese::security::SecuritySocket::shutdown(sese::net::Socket::ShutdownMode
 }
 
 int64_t sese::security::SecuritySocket::read(void *buffer, size_t length) {
-    return SSL_read((SSL *) ssl, buffer, (int) length);
+    return SSL_read(static_cast<SSL *>(ssl), buffer, static_cast<int>(length));
 }
 
 int64_t sese::security::SecuritySocket::write(const void *buffer, size_t length) {
-    return SSL_write((SSL *) ssl, buffer, (int) length);
+    return SSL_write(static_cast<SSL *>(ssl), buffer, static_cast<int>(length));
 }
 
 void sese::security::SecuritySocket::close() {
     if (ssl) {
-        SSL_shutdown((SSL *) ssl);
-        SSL_free((SSL *) ssl);
+        SSL_shutdown(static_cast<SSL *>(ssl));
+        SSL_free(static_cast<SSL *>(ssl));
     }
     Socket::close();
 }
