@@ -45,27 +45,27 @@ int32_t sese::system::PathsInitiateTask::init() noexcept {
     char buffer[PATH_MAX]{};
     auto n = getcwd(buffer, sizeof(buffer));
     if (n == nullptr) return -1;
-    gWorkDir = buffer;
-    if (!gWorkDir.isValid()) return -1;
+    g_work_dir = buffer;
+    if (!g_work_dir.isValid()) return -1;
 
 #ifdef SESE_PLATFORM_LINUX
     memset(buffer, 0 , sizeof(buffer));
     auto i = readlink("/proc/self/exe", buffer, sizeof(buffer));
     if (i == -1) return -1;
-    gExecutablePath = buffer;
+    g_executable_path = buffer;
     auto p = std::strrchr(buffer, '/');
     *p = 0;
     p += 1;
-    gExecutableName = p;
+    g_executable_name = p;
 #else
     memset(buffer, 0 , sizeof(buffer));
     uint32_t len = sizeof(buffer);
     if(_NSGetExecutablePath(buffer, &len) != 0) return -1;
-    gExecutablePath = buffer;
+    g_executable_path = buffer;
     auto p = std::strrchr(buffer, '/');
     *p = 0;
     p += 1;
-    gExecutableName = p;
+    g_executable_name = p;
 #endif
 
     return 0;

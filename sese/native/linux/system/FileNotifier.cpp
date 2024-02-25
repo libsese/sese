@@ -1,5 +1,4 @@
 #include "sese/system/FileNotifier.h"
-#include "sese/record/LogHelper.h"
 
 #include <sys/inotify.h>
 #include <sys/fcntl.h>
@@ -32,8 +31,8 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
 
     auto notifier = new FileNotifier;
     notifier->option = option;
-    notifier->inotifyFd = inotify_fd;
-    notifier->watchFd = watch_fd;
+    notifier->inotify_fd = inotify_fd;
+    notifier->watch_fd = watch_fd;
     return std::unique_ptr<FileNotifier>(notifier);
 }
 
@@ -45,37 +44,37 @@ FileNotifier::~FileNotifier() noexcept {
 
 void FileNotifier::loopNonblocking() noexcept {
     auto proc = [this]() {
-        fd_set fd_set;
+        fd_set set;
         struct timeval timeout {
             1, 0
         };
         char buffer[1024];
-        while (!isShutdown) {
-            FD_ZERO(&fd_set);
-            FD_SET(inotifyFd, &fd_set);
-            select(FD_SETSIZE, &fd_set, nullptr, nullptr, &timeout);
-            if (FD_ISSET(inotifyFd, &fdSet)) {
+        while (!is_shutdown) {
+            FD_ZERO(&set);
+            FD_SET(inotify_fd, &set);
+            select(FD_SETSIZE, &set, nullptr, nullptr, &timeout);
+            if (FD_ISSET(inotify_fd, &set)) {
                 auto p_event = (inotify_event *) &buffer;
-                auto len = read(inotifyFd, buffer, sizeof(buffer));
+                auto len = read(inotify_fd, buffer, sizeof(buffer));
                 auto times = (len / sizeof(inotify_event)) - 1;
                 char *from_string = nullptr;
                 while (times) {
-                    if (pEvent->wd != watchFd) {
+                    if (p_event->wd != watch_fd) {
                         p_event++;
                         times--;
                         continue;
                     } else {
-                        if (pEvent->mask & IN_CREATE) {
-                            option->onCreate({pEvent->name});
-                        } else if (pEvent->mask & IN_MODIFY) {
-                            option->onModify({pEvent->name});
-                        } else if (pEvent->mask & IN_DELETE) {
-                            option->onDelete({pEvent->name});
-                        } else if (pEvent->mask & IN_MOVED_FROM) {
-                            from_string = pEvent->name;
-                        } else if (pEvent->mask & IN_MOVED_TO) {
+                        if (p_event->mask & IN_CREATE) {
+                            option->onCreate({p_event->name});
+                        } else if (p_event->mask & IN_MODIFY) {
+                            option->onModify({p_event->name});
+                        } else if (p_event->mask & IN_DELETE) {
+                            option->onDelete({p_event->name});
+                        } else if (p_event->mask & IN_MOVED_FROM) {
+                            from_string = p_event->name;
+                        } else if (p_event->mask & IN_MOVED_TO) {
                             if (from_string) {
-                                option->onMove({from_string}, {pEvent->name});
+                                option->onMove({from_string}, {p_event->name});
                                 from_string = nullptr;
                             }
                         }
@@ -91,8 +90,8 @@ void FileNotifier::loopNonblocking() noexcept {
 }
 
 void FileNotifier::shutdown() noexcept {
-    isShutdown = true;
+    is_shutdown = true;
     th->join();
     th = nullptr;
-    close(inotifyFd);
+    close(inotify_fd);
 }

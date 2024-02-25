@@ -4,7 +4,7 @@
 
 using namespace sese::system;
 
-static key_t SharedMemory::name2key(const char *name) noexcept {
+key_t SharedMemory::name2key(const char *name) noexcept {
     auto builder = std::make_shared<io::ByteBuilder>();
     builder->write(name, strlen(name));
     auto str = MD5Util::encode(builder);

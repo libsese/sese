@@ -42,19 +42,19 @@ public:
     virtual ~Process() noexcept;
 
 private:
-    void *startupInfo = nullptr;
-    void *processInfo = nullptr;
+    void *startup_info = nullptr;
+    void *process_info = nullptr;
 #else
 public:
     virtual ~Process() noexcept = default;
 
 private:
     // Unix-like 执行新进程实现
-    static void exec(char *pCommand) noexcept;
+    static void exec(char *p_command) noexcept;
     // 计算字符串中参数的个数
-    static size_t count(const char *pCommand) noexcept;
+    static size_t count(const char *p_command) noexcept;
     // 将下一个空格设置为 '\0'，并返回空格下一个字符的指针
-    static char *spilt(char *pCommand) noexcept;
+    static char *spilt(char *p_command) noexcept;
 
     pid_t id = -1;
 #endif

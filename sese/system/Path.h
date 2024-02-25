@@ -26,36 +26,36 @@ for Windows:
      *  \endverbatim
      *  \param unixPath UNIX-LIKE 格式路径
      */
-    explicit Path(const char *unix_path) noexcept;
+    Path(const char *unix_path) noexcept;
 
-    explicit Path(const std::string_view &unix_path) noexcept;
+    Path(const std::string_view &unix_path) noexcept;
 
     Path() = default;
 
     /// 将原生路径转换为 UNIX-LIKE 路径
     /// \warning 不做额外检查
-    /// \param nativePath 原生路径
+    /// \param native_path 原生路径
     /// \return UNIX-LIKE 路径
     static Path fromNativePath(const std::string &native_path) noexcept;
 
 #ifdef SESE_PLATFORM_WINDOWS
     static void replaceWindowsPathSplitChar(char *path, size_t len) noexcept;
 
-    [[nodiscard]] const std::string &getNativePath() const { return nativePath; }
+    [[nodiscard]] const std::string &getNativePath() const { return native_path; }
 #else
-    [[nodiscard]] const std::string &getNativePath() const { return unixPath; }
+    [[nodiscard]] const std::string &getNativePath() const { return unix_path; }
 #endif
 
-    [[nodiscard]] const std::string &getUnixPath() const { return unixPath; }
+    [[nodiscard]] const std::string &getUnixPath() const { return unix_path; }
 
     /// \return 当前路径是否有效
     [[nodiscard]] bool isValid() const { return valid; }
 
 protected:
 #ifdef SESE_PLATFORM_WINDOWS
-    std::string nativePath{};
+    std::string native_path{};
 #endif
-    std::string unixPath{};
+    std::string unix_path{};
 
     bool valid = false;
 };

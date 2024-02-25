@@ -53,9 +53,9 @@ public:
         WRITE = 1,
         BOTH = 2
 #else
-        Read = SHUT_RD,
-        Write = SHUT_WR,
-        Both = SHUT_RDWR
+        READ = SHUT_RD,
+        WRITE = SHUT_WR,
+        BOTH = SHUT_RDWR
 #endif
     };
 

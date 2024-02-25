@@ -30,7 +30,7 @@ sese::pid_t Process::getCurrentProcessId() noexcept {
     return getpid();
 }
 
-int Process::wait() noexcept {
+int Process::wait() const noexcept {
     int status;
     ::waitpid(id, &status, 0);
     if (!WIFEXITED(status)) {
@@ -40,8 +40,8 @@ int Process::wait() noexcept {
     }
 }
 
-static void Process::exec(char *p_command) noexcept {
-    auto count = Process::count(pCommand);
+void Process::exec(char *p_command) noexcept {
+    auto count = Process::count(p_command);
     auto args = new char *[count + 2];
     char *p = p_command;
     char **p_args = args;
@@ -49,7 +49,7 @@ static void Process::exec(char *p_command) noexcept {
         auto new_pos = spilt(p);
         *p_args = p;
         p_args++;
-        p = newPos;
+        p = new_pos;
     }
     *p_args = nullptr;
 
@@ -63,15 +63,15 @@ static void Process::exec(char *p_command) noexcept {
     }
 }
 
-sese::pid_t Process::getProcessId() noexcept {
+sese::pid_t Process::getProcessId() const noexcept {
     return id;
 }
 
-bool Process::kill() noexcept {
+bool Process::kill() const noexcept {
     return ::kill(id, SIGKILL) == 0;
 }
 
-static size_t Process::count(const char *p_command) noexcept {
+size_t Process::count(const char *p_command) noexcept {
     const char *p = p_command;
     size_t count = 0;
     size_t space_count = 0;
@@ -94,7 +94,7 @@ static size_t Process::count(const char *p_command) noexcept {
     return space_count;
 }
 
-static char *Process::spilt(char *p_command) noexcept {
+char *Process::spilt(char *p_command) noexcept {
     char *p = p_command;
     int count = 0;
     while (*p != 0) {

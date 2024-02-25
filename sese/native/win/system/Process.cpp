@@ -26,8 +26,8 @@ Process::Ptr Process::create(const char *command) noexcept {
 
     if (rt) {
         auto p = new Process;
-        p->startupInfo = startup_info;
-        p->processInfo = process_info;
+        p->startup_info = startup_info;
+        p->process_info = process_info;
         return std::unique_ptr<Process>(p);
     } else {
         delete startup_info;
@@ -41,17 +41,17 @@ sese::pid_t Process::getCurrentProcessId() noexcept {
 }
 
 Process::~Process() noexcept {
-    auto s_info = static_cast<STARTUPINFO *>(startupInfo);
-    auto p_info = static_cast<PROCESS_INFORMATION *>(processInfo);
+    auto s_info = static_cast<STARTUPINFO *>(startup_info);
+    auto p_info = static_cast<PROCESS_INFORMATION *>(process_info);
     delete s_info;
     delete p_info;
-    startupInfo = nullptr;
-    processInfo = nullptr;
+    startup_info = nullptr;
+    process_info = nullptr;
 }
 
 int Process::wait() const noexcept {
     DWORD exit_code;
-    auto p_info = static_cast<PROCESS_INFORMATION *>(processInfo);
+    auto p_info = static_cast<PROCESS_INFORMATION *>(process_info);
     // pInfo cannot be nullptr
     if (!p_info) return -1;
     WaitForSingleObject(p_info->hProcess, INFINITE);
@@ -60,12 +60,12 @@ int Process::wait() const noexcept {
 }
 
 bool Process::kill() const noexcept {
-    auto p_info = static_cast<PROCESS_INFORMATION *>(processInfo);
+    auto p_info = static_cast<PROCESS_INFORMATION *>(process_info);
     if (!p_info) return false;
     return TerminateProcess(p_info->hProcess, -1) != 0;
 }
 
 sese::pid_t Process::getProcessId() const noexcept {
-    if (!processInfo) return 0;
-    return GetProcessId(static_cast<PROCESS_INFORMATION *>(processInfo)->hProcess);
+    if (!process_info) return 0;
+    return GetProcessId(static_cast<PROCESS_INFORMATION *>(process_info)->hProcess);
 }
