@@ -33,7 +33,7 @@ DateTime::DateTime(uint64_t timestamp, int32_t utc, Policy policy) noexcept {
 #ifndef SESE_PLATFORM_APPLE
             auto time = static_cast<int64_t>(total_seconds);
 #else
-            auto time = static_cast<time_t>(totalSeconds);
+            auto time = static_cast<time_t>(total_seconds);
 #endif
 #ifdef SESE_PLATFORM_WINDOWS
             tm tm{};

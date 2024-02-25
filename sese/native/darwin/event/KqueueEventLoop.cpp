@@ -53,7 +53,7 @@ void sese::event::KqueueEventLoop::dispatch(uint32_t time) {
     };
 
     auto number_of_fds = ::kevent(kqueue, nullptr, 0, events, MAX_EVENT_SIZE, &timeout);
-    if (-1 == numberOfFds) return;
+    if (-1 == number_of_fds) return;
     for (int i = 0; i < number_of_fds; ++i) {
         auto event = reinterpret_cast<BaseEvent *>(events[i].udata);
         if (events[i].ident == listenFd) {

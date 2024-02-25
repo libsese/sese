@@ -16,7 +16,7 @@
 #endif
 
 #ifdef __APPLE__
-#define sprintf(buf, format, ...) snprintf(buf, sizeof(buf), format, ##__VA_ARGS__)
+#define sprintf(buf, format, ...) snprintf(buf, RECORD_OUTPUT_BUFFER, format, ##__VA_ARGS__)
 #endif
 
 #define __SESE_LOG(point_to_logger, level, format, ...)                           \

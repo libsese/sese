@@ -15,7 +15,7 @@ static void callback(
     auto option = (sese::system::FileNotifyOption *) info;
     const char *last_src = nullptr;
     for (size_t i = 0; i < num_events; ++i) {
-        auto dict = (CFDictionaryRef) CFArrayGetValueAtIndex((CFArrayRef) eventPaths, (CFIndex) i);
+        auto dict = (CFDictionaryRef) CFArrayGetValueAtIndex((CFArrayRef) event_paths, (CFIndex) i);
         auto path = (CFStringRef) CFDictionaryGetValue(dict, kFSEventStreamEventExtendedDataPathKey);
         auto src = CFStringGetCStringPtr(path, kCFStringEncodingUTF8);
 
@@ -29,7 +29,7 @@ static void callback(
         }
         if (event_flags[i] & kFSEventStreamEventFlagItemRenamed) {
             if (last_src) {
-                auto len0 = std::string_view(lastSrc).find_last_of('/') + 1;
+                auto len0 = std::string_view(last_src).find_last_of('/') + 1;
                 auto len1 = std::string_view(src).find_last_of('/') + 1;
                 option->onMove(last_src + len0, src + len1);
                 last_src = nullptr;
@@ -73,7 +73,7 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
             nullptr,
             &callback,
             &context,
-            pathsToWatch,
+            paths_to_watch,
             kFSEventStreamEventIdSinceNow,
             1,
             kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagUseExtendedData
