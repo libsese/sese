@@ -59,15 +59,15 @@ private:
     FileNotifier() = default;
 
 #ifdef WIN32
-    void *fileHandle = nullptr;
+    void *file_handle = nullptr;
     void *overlapped = nullptr;
-    std::atomic_bool isShutdown = false;
+    std::atomic_bool is_shutdown = false;
     FileNotifyOption *option = nullptr;
     Thread::Ptr th = nullptr;
 #elif __linux__
-    int inotifyFd = -1;
-    int watchFd = -1;
-    std::atomic_bool isShutdown = false;
+    int inotify_fd = -1;
+    int watch_fd = -1;
+    std::atomic_bool is_shutdown = false;
     FileNotifyOption *option = nullptr;
     Thread::Ptr th = nullptr;
 #elif __APPLE__

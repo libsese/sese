@@ -350,7 +350,7 @@ SString SString::fromUCS2LE(const wchar_t *str) {
     auto index = 0;
     while (L'\0' != *p) {
         auto n = getUTF8SizeFromUnicodeChar((SChar) *p);
-        insertUnicodeChar2UTF8String(sString._data + index, (uint32_t) *p, n);
+        insertUnicodeChar2UTF8String(s_string._data + index, (uint32_t) *p, n);
         index += n;
         p++;
     }

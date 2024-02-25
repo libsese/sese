@@ -25,7 +25,7 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
     overlapped->hEvent = CreateEventA(nullptr, false, false, nullptr);
 
     const auto NOTIFIER = new FileNotifier;
-    NOTIFIER->fileHandle = FILE_HANDLE;
+    NOTIFIER->file_handle = FILE_HANDLE;
     NOTIFIER->overlapped = overlapped;
     NOTIFIER->option = option;
 
@@ -38,10 +38,10 @@ void FileNotifier::loopNonblocking() noexcept {
     auto proc = [this]() {
         std::wstring_convert<std::codecvt_utf8<wchar_t> > convert;
         DWORD read = 0;
-        while (!isShutdown) {
+        while (!is_shutdown) {
             char buffer[1024];
             if (!ReadDirectoryChangesW(
-                (HANDLE) fileHandle,
+                (HANDLE) file_handle,
                 buffer,
                 sizeof(buffer),
                 false,
@@ -102,11 +102,11 @@ void FileNotifier::loopNonblocking() noexcept {
 }
 
 void FileNotifier::shutdown() noexcept {
-    isShutdown = true;
+    is_shutdown = true;
     SetEvent(static_cast<LPOVERLAPPED>(overlapped)->hEvent);
     th->join();
     th = nullptr;
-    CloseHandle(fileHandle);
-    fileHandle = nullptr;
+    CloseHandle(file_handle);
+    file_handle = nullptr;
     delete static_cast<LPOVERLAPPED>(overlapped);
 }

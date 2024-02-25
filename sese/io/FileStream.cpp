@@ -62,7 +62,7 @@ FileStream::Ptr FileStream::create(const std::string &file_path, const char *mod
     }
 #else
     FILE *file = nullptr;
-    file = fopen(filePath.c_str(), mode);
+    file = fopen(file_path.c_str(), mode);
     if (file) {
         auto stream = new FileStream();
         stream->file = file;
