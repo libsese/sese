@@ -3,7 +3,7 @@
 
 #include <algorithm>
 
-sese::Compressor::Compressor(sese::CompressionType type, size_t level, size_t bufferSize) {
+sese::Compressor::Compressor(sese::CompressionType type, size_t level, size_t buffer_size) {
     stream = new z_stream;
     auto stm = (z_stream *) stream;
     stm->zalloc = nullptr;
@@ -14,8 +14,8 @@ sese::Compressor::Compressor(sese::CompressionType type, size_t level, size_t bu
     stm->avail_out = 0;
     stm->next_out = nullptr;
 
-    cap = bufferSize;
-    buffer = new unsigned char[bufferSize];
+    cap = buffer_size;
+    buffer = new unsigned char[buffer_size];
 
     level = std::min<size_t>(9, level);
     deflateInit2(stm, (int) level, Z_DEFLATED, MAX_WBITS + (int) type, MAX_MEM_LEVEL, Z_DEFAULT_STRATEGY);
@@ -30,9 +30,9 @@ sese::Compressor::~Compressor() {
     stream = nullptr;
 }
 
-void sese::Compressor::input(const void *input, unsigned int inputSize) {
+void sese::Compressor::input(const void *input, unsigned int input_size) {
     auto stm = (z_stream *) stream;
-    stm->avail_in = inputSize;
+    stm->avail_in = input_size;
     stm->next_in = (unsigned char *) input;
     stm->avail_out = (unsigned int) cap;
     stm->next_out = (unsigned char *) buffer;
@@ -44,10 +44,10 @@ int sese::Compressor::deflate(OutputStream *out) {
     // 输出 buffer 未能完全输出，继续输出
     if (length != 0) {
         auto last = length - read;
-        auto realWrote = out->write(buffer + read, last);
-        if (last != realWrote) {
+        auto real_wrote = out->write(buffer + read, last);
+        if (last != real_wrote) {
             // 输出 buffer 未能全部输出
-            read += realWrote;
+            read += real_wrote;
             return Z_BUF_ERROR;
         } else {
             length = 0;
@@ -66,11 +66,11 @@ int sese::Compressor::deflate(OutputStream *out) {
             return Z_STREAM_ERROR;
 
         auto wrote = (int) cap - stm->avail_out;
-        auto realWrote = out->write(buffer, wrote);
-        if (wrote != realWrote) {
+        auto real_wrote = out->write(buffer, wrote);
+        if (wrote != real_wrote) {
             // 输出 buffer 未能全部输出
             length = wrote;
-            read = realWrote;
+            read = real_wrote;
             return Z_BUF_ERROR;
         } else {
             stm->avail_out = (unsigned int) cap;

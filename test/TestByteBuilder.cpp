@@ -13,9 +13,9 @@ TEST(TestByteBuilder, Read) {
         //   "Hello World, sese"
         // node2:
         //   "\'s Byte Builder"
-        const char str[] = {"Hello World, sese's Byte Builder"};
-        auto len = builder.write(str, sizeof(str) - 1);
-        ASSERT_EQ(len, sizeof(str) - 1);
+        const char STR[] = {"Hello World, sese's Byte Builder"};
+        auto len = builder.write(STR, sizeof(STR) - 1);
+        ASSERT_EQ(len, sizeof(STR) - 1);
     }
     {
         // read a part of the first node
@@ -62,9 +62,9 @@ TEST(TestByteBuilder, Peek) {
         //   "Hello World, sese"
         // node2:
         //   "\'s Byte Builder"
-        const char str[] = {"Hello World, sese's Byte Builder"};
-        auto len = builder.write(str, sizeof(str) - 1);
-        ASSERT_EQ(len, sizeof(str) - 1);
+        const char STR[] = {"Hello World, sese's Byte Builder"};
+        auto len = builder.write(STR, sizeof(STR) - 1);
+        ASSERT_EQ(len, sizeof(STR) - 1);
     }
     {
         // read a part of the first node

@@ -26,24 +26,24 @@ std::string AsioHttpClient::getLastErrorString() {
 }
 
 bool AsioHttpClient::init(const std::string &url, const std::string &proxy) {
-    auto urlResult = RequestParser::parse(url);
-    req = std::move(urlResult.request);
+    auto url_result = RequestParser::parse(url);
+    req = std::move(url_result.request);
     if (!proxy.empty()) {
-        auto proxyResult = RequestParser::parse(proxy);
-        if (proxyResult.address == nullptr) {
+        auto proxy_result = RequestParser::parse(proxy);
+        if (proxy_result.address == nullptr) {
             return false;
         }
         req->setUrl(url);
         req->set("via:", proxy);
         req->set("proxy-connection", "keep-alive");
-        address = std::move(proxyResult.address);
-        ssl = strcmpDoNotCase("https", proxyResult.url.getProtocol().c_str());
+        address = std::move(proxy_result.address);
+        ssl = strcmpDoNotCase("https", proxy_result.url.getProtocol().c_str());
     } else {
-        if (urlResult.address == nullptr) {
+        if (url_result.address == nullptr) {
             return false;
         }
-        address = std::move(urlResult.address);
-        ssl = strcmpDoNotCase("https", urlResult.url.getProtocol().c_str());
+        address = std::move(url_result.address);
+        ssl = strcmpDoNotCase("https", url_result.url.getProtocol().c_str());
     }
 
     resp = std::make_unique<Response>();
@@ -83,13 +83,13 @@ bool AsioHttpClient::request() {
         }
     }
 
-    auto responseStatus = HttpUtil::recvResponse(this, resp.get());
-    if (!responseStatus) {
+    auto response_status = HttpUtil::recvResponse(this, resp.get());
+    if (!response_status) {
         return false;
     }
 
-    const auto connectionValue = resp->get("connection", "close");
-    if (strcmpDoNotCase("close", connectionValue.c_str())) {
+    const auto CONNECTION_VALUE = resp->get("connection", "close");
+    if (strcmpDoNotCase("close", CONNECTION_VALUE.c_str())) {
         first = true;
         if (ssl) {
             code = sslSocket.shutdown(code);
@@ -98,9 +98,9 @@ bool AsioHttpClient::request() {
     }
 
     // 自动应用 cookie
-    const auto dest = req->getCookies();
+    const auto DEST = req->getCookies();
     for (auto &&item: *resp->getCookies()) {
-        dest->add(item.second);
+        DEST->add(item.second);
     }
 
     return true;

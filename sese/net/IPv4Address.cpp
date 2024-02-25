@@ -74,13 +74,13 @@ std::string IPv4Address::getAddress() const noexcept {
     return {temp};
 }
 
-IPAddress::Ptr IPv4Address::getBroadcastAddress(uint32_t prefixLen) const noexcept {
-    if (prefixLen > 32) {
+IPAddress::Ptr IPv4Address::getBroadcastAddress(uint32_t prefix_len) const noexcept {
+    if (prefix_len > 32) {
         return nullptr;
     }
 
     sockaddr_in addr(this->address);
-    auto mask = CreateMask<uint32_t>(prefixLen);
+    auto mask = CreateMask<uint32_t>(prefix_len);
     //    if (Environment::isLittleEndian()) {
     //        mask = ByteSwap32(mask);
     //    }
@@ -89,13 +89,13 @@ IPAddress::Ptr IPv4Address::getBroadcastAddress(uint32_t prefixLen) const noexce
     return std::make_shared<IPv4Address>(addr);
 }
 
-IPAddress::Ptr IPv4Address::getNetworkAddress(uint32_t prefixLen) const noexcept {
-    if (prefixLen > 32) {
+IPAddress::Ptr IPv4Address::getNetworkAddress(uint32_t prefix_len) const noexcept {
+    if (prefix_len > 32) {
         return nullptr;
     }
 
     sockaddr_in addr(this->address);
-    auto mask = CreateMask<uint32_t>(prefixLen);
+    auto mask = CreateMask<uint32_t>(prefix_len);
     //    if (Environment::isLittleEndian()) {
     //        mask = ByteSwap32(mask);
     //    }
@@ -104,14 +104,14 @@ IPAddress::Ptr IPv4Address::getNetworkAddress(uint32_t prefixLen) const noexcept
     return std::make_shared<IPv4Address>(addr);
 }
 
-IPAddress::Ptr IPv4Address::getSubnetMask(uint32_t prefixLen) const noexcept {
-    if (prefixLen > 32) {
+IPAddress::Ptr IPv4Address::getSubnetMask(uint32_t prefix_len) const noexcept {
+    if (prefix_len > 32) {
         return nullptr;
     }
 
     sockaddr_in addr{0};
     addr.sin_family = AF_INET;
-    auto mask = CreateMask<uint32_t>(prefixLen);
+    auto mask = CreateMask<uint32_t>(prefix_len);
     //    if (Environment::isLittleEndian()) {
     //        mask = ByteSwap32(mask);
     //    }

@@ -42,17 +42,17 @@ public:
      * 投递读事件
      * @param ctx 操作上下文
      */
-    void postRead(Context *ctx);
+    static void postRead(Context *ctx);
     /**
      * 投递写事件
      * @param ctx 操作上下文
      */
-    void postWrite(Context *ctx);
+    static void postWrite(Context *ctx);
     /**
      * 投递关闭事件
      * @param ctx 操作上下文
      */
-    void postClose(Context *ctx);
+    static void postClose(Context *ctx);
     /**
      * 投递连接事件
      * @param to 连接地址
@@ -65,12 +65,12 @@ public:
      * @param ctx 操作上下文
      * @param seconds 超时时间
      */
-    void setTimeout(Context *ctx, int64_t seconds);
+    static void setTimeout(Context *ctx, int64_t seconds);
     /**
      * 取消超时事件
      * @param ctx 操作上下文
      */
-    void cancelTimeout(Context *ctx);
+    static void cancelTimeout(Context *ctx);
     /**
      * 默认的上下文释放回调函数
      */

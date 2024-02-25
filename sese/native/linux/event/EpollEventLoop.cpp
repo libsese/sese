@@ -35,12 +35,12 @@ sese::event::EpollEventLoop::~EpollEventLoop() {
 void sese::event::EpollEventLoop::dispatch(uint32_t timeout) {
     epoll_event events[MAX_EVENT_SIZE]{};
 
-    int numberOfFds = epoll_wait(epoll, events, MAX_EVENT_SIZE, (int) timeout);
-    if (-1 == numberOfFds) {
+    int number_of_fds = epoll_wait(epoll, events, MAX_EVENT_SIZE, (int) timeout);
+    if (-1 == number_of_fds) {
         return;
     }
 
-    for (int i = 0; i < numberOfFds; ++i) {
+    for (int i = 0; i < number_of_fds; ++i) {
         auto event = (BaseEvent *) events[i].data.ptr;
         auto fd = event->fd;
         if (fd == listenFd) {
@@ -97,13 +97,13 @@ sese::event::BaseEvent *sese::event::EpollEventLoop::createEvent(int fd, unsigne
     event->events = events;
     event->data = data;
 
-    epoll_event epollEvent{};
+    epoll_event epoll_event{};
     if (handleClose) {
-        epollEvent.events = convert.toNativeEvent(events) | EPOLLIN | EPOLLET | EPOLLRDHUP;
+        epoll_event.events = convert.toNativeEvent(events) | EPOLLIN | EPOLLET | EPOLLRDHUP;
     } else {
-        epollEvent.events = convert.toNativeEvent(events) | EPOLLIN | EPOLLET;
+        epoll_event.events = convert.toNativeEvent(events) | EPOLLIN | EPOLLET;
     }
-    epollEvent.data.ptr = event;
+    epoll_event.data.ptr = event;
     if (-1 == epoll_ctl(epoll, EPOLL_CTL_ADD, fd, &epollEvent)) {
         delete event;
         return nullptr;
@@ -118,13 +118,13 @@ void sese::event::EpollEventLoop::freeEvent(sese::event::BaseEvent *event) {
 }
 
 bool sese::event::EpollEventLoop::setEvent(sese::event::BaseEvent *event) {
-    epoll_event epollEvent{};
+    epoll_event epoll_event{};
     if (handleClose) {
         epollEvent.events = convert.toNativeEvent(event->events) | EPOLLIN | EPOLLET | EPOLLRDHUP;
     } else {
         epollEvent.events = convert.toNativeEvent(event->events) | EPOLLIN | EPOLLET;
     }
-    epollEvent.data.ptr = event;
+    epoll_event.data.ptr = event;
 
     auto result = epoll_ctl(epoll, EPOLL_CTL_MOD, event->fd, &epollEvent);
     return (result == 0 || (result == -1 && errno == EEXIST));

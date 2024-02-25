@@ -15,14 +15,14 @@ TEST(TestSqliteDriverInstance, Error) {
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
-    auto resultError = instance->executeQuery("select * from tb_query_error where id = 1;");
-    ASSERT_EQ(nullptr, resultError);
+    auto result_error = instance->executeQuery("select * from tb_query_error where id = 1;");
+    ASSERT_EQ(nullptr, result_error);
 
     ASSERT_NE(nullptr, instance->getLastErrorMessage());
 
     //stmtError
-    auto resultStmtError = instance->createStatement("select * from tb_stmt_query_error where id = 1;");
-    ASSERT_EQ(nullptr, resultStmtError);
+    auto result_stmt_error = instance->createStatement("select * from tb_stmt_query_error where id = 1;");
+    ASSERT_EQ(nullptr, result_stmt_error);
 
     ASSERT_NE(nullptr, instance->getLastErrorMessage());
 }

@@ -17,23 +17,23 @@ public:
 };
 
 TEST(TestFakeStream, FakeStream) {
-    MyFakeStream myFakeStream;
-    auto fakeStream = new sese::io::FakeStream<MyFakeStream>(&myFakeStream);
-    sese::io::Stream *stream = fakeStream;
+    MyFakeStream my_fake_stream;
+    auto fake_stream = new sese::io::FakeStream<MyFakeStream>(&my_fake_stream);
+    sese::io::Stream *stream = fake_stream;
     ASSERT_EQ(stream->read(nullptr, 0), 114);
     ASSERT_EQ(stream->write(nullptr, 0), 514);
-    delete fakeStream;
+    delete fake_stream;
 }
 
 TEST(TestFakeStream, ClosableFakeStream) {
-    MyFakeStream myFakeStream;
-    auto fakeStream = new sese::io::ClosableFakeStream<MyFakeStream>(&myFakeStream);
-    sese::io::Stream *stream = fakeStream;
+    MyFakeStream my_fake_stream;
+    auto fake_stream = new sese::io::ClosableFakeStream<MyFakeStream>(&my_fake_stream);
+    sese::io::Stream *stream = fake_stream;
     ASSERT_EQ(stream->read(nullptr, 0), 114);
     ASSERT_EQ(stream->write(nullptr, 0), 514);
 
-    sese::io::Closeable *closeable = fakeStream;
+    sese::io::Closeable *closeable = fake_stream;
     closeable->close();
 
-    delete fakeStream;
+    delete fake_stream;
 }

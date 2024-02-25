@@ -12,43 +12,43 @@ using sese::io::ByteBuilder;
 static const size_t BLOCK_INTS = 16; /* number of 32bit integers per SHA1 block */
 // static const size_t BLOCK_BYTES = BLOCK_INTS * 4;
 
-inline static uint32_t rol(const uint32_t value, const size_t bits) {
-    return (value << bits) | (value >> (32 - bits));
+inline static uint32_t rol(const uint32_t VALUE, const size_t BITS) {
+    return (VALUE << BITS) | (VALUE >> (32 - BITS));
 }
 
-inline static uint32_t blk(const uint32_t block[BLOCK_INTS], const size_t i) {
-    return rol(block[(i + 13) & 15] ^ block[(i + 8) & 15] ^ block[(i + 2) & 15] ^ block[i], 1);
+inline static uint32_t blk(const uint32_t block[BLOCK_INTS], const size_t I) {
+    return rol(block[(I + 13) & 15] ^ block[(I + 8) & 15] ^ block[(I + 2) & 15] ^ block[I], 1);
 }
 
 /*
  * (R0+R1), R2, R3, R4 are the different operations used in SHA1
  */
-inline static void R0(const uint32_t block[BLOCK_INTS], const uint32_t v, uint32_t &w, const uint32_t x, const uint32_t y, uint32_t &z, const size_t i) {
-    z += ((w & (x ^ y)) ^ y) + block[i] + 0x5a827999 + rol(v, 5);
+inline static void R0(const uint32_t block[BLOCK_INTS], const uint32_t V, uint32_t &w, const uint32_t X, const uint32_t Y, uint32_t &z, const size_t I) {
+    z += ((w & (X ^ Y)) ^ Y) + block[I] + 0x5a827999 + rol(V, 5);
     w = rol(w, 30);
 }
 
-inline static void R1(uint32_t block[BLOCK_INTS], const uint32_t v, uint32_t &w, const uint32_t x, const uint32_t y, uint32_t &z, const size_t i) {
-    block[i] = blk(block, i);
-    z += ((w & (x ^ y)) ^ y) + block[i] + 0x5a827999 + rol(v, 5);
+inline static void R1(uint32_t block[BLOCK_INTS], const uint32_t V, uint32_t &w, const uint32_t X, const uint32_t Y, uint32_t &z, const size_t I) {
+    block[I] = blk(block, I);
+    z += ((w & (X ^ Y)) ^ Y) + block[I] + 0x5a827999 + rol(V, 5);
     w = rol(w, 30);
 }
 
-inline static void R2(uint32_t block[BLOCK_INTS], const uint32_t v, uint32_t &w, const uint32_t x, const uint32_t y, uint32_t &z, const size_t i) {
-    block[i] = blk(block, i);
-    z += (w ^ x ^ y) + block[i] + 0x6ed9eba1 + rol(v, 5);
+inline static void R2(uint32_t block[BLOCK_INTS], const uint32_t V, uint32_t &w, const uint32_t X, const uint32_t Y, uint32_t &z, const size_t I) {
+    block[I] = blk(block, I);
+    z += (w ^ X ^ Y) + block[I] + 0x6ed9eba1 + rol(V, 5);
     w = rol(w, 30);
 }
 
-inline static void R3(uint32_t block[BLOCK_INTS], const uint32_t v, uint32_t &w, const uint32_t x, const uint32_t y, uint32_t &z, const size_t i) {
-    block[i] = blk(block, i);
-    z += (((w | x) & y) | (w & x)) + block[i] + 0x8f1bbcdc + rol(v, 5);
+inline static void R3(uint32_t block[BLOCK_INTS], const uint32_t V, uint32_t &w, const uint32_t X, const uint32_t Y, uint32_t &z, const size_t I) {
+    block[I] = blk(block, I);
+    z += (((w | X) & Y) | (w & X)) + block[I] + 0x8f1bbcdc + rol(V, 5);
     w = rol(w, 30);
 }
 
-inline static void R4(uint32_t block[BLOCK_INTS], const uint32_t v, uint32_t &w, const uint32_t x, const uint32_t y, uint32_t &z, const size_t i) {
-    block[i] = blk(block, i);
-    z += (w ^ x ^ y) + block[i] + 0xca62c1d6 + rol(v, 5);
+inline static void R4(uint32_t block[BLOCK_INTS], const uint32_t V, uint32_t &w, const uint32_t X, const uint32_t Y, uint32_t &z, const size_t I) {
+    block[I] = blk(block, I);
+    z += (w ^ X ^ Y) + block[I] + 0xca62c1d6 + rol(V, 5);
     w = rol(w, 30);
 }
 
@@ -209,11 +209,11 @@ void SHA1Util::encode(InputStream *input, OutputStream *output) noexcept {
 }
 
 // GCOVR_EXCL_START
-inline char toChar(unsigned char ch, bool isCap) {
+inline char toChar(unsigned char ch, bool is_cap) {
     if (ch >= 0 && ch <= 9) {
         return (char) (ch + 48);
     } else {
-        if (isCap) {
+        if (is_cap) {
             return (char) (ch + 55);
         } else {
             return (char) (ch + 87);
@@ -222,19 +222,19 @@ inline char toChar(unsigned char ch, bool isCap) {
 }
 // GCOVR_EXCL_STOP
 
-std::unique_ptr<char[]> SHA1Util::encode(const InputStream::Ptr &input, bool isCap) noexcept {
-    return encode(input.get(), isCap);
+std::unique_ptr<char[]> SHA1Util::encode(const InputStream::Ptr &input, bool is_cap) noexcept {
+    return encode(input.get(), is_cap);
 }
 
-std::unique_ptr<char[]> SHA1Util::encode(InputStream *input, bool isCap) noexcept {
+std::unique_ptr<char[]> SHA1Util::encode(InputStream *input, bool is_cap) noexcept {
     ByteBuilder dest(64);
     encode(input, &dest);
     unsigned char buffer[40];
     auto rt = std::unique_ptr<char[]>(new char[41]);
     dest.read(buffer, 20);
     for (auto i = 0; i < 20; ++i) {
-        rt[i * 2 + 1] = toChar(buffer[i] % 0x10, isCap);
-        rt[i * 2 + 0] = toChar(buffer[i] / 0x10, isCap);
+        rt[i * 2 + 1] = toChar(buffer[i] % 0x10, is_cap);
+        rt[i * 2 + 0] = toChar(buffer[i] / 0x10, is_cap);
     }
     rt[40] = 0;
     return rt;

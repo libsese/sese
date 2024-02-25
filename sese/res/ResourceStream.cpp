@@ -32,19 +32,19 @@ int64_t sese::res::ResourceStream::getSeek() const {
 }
 
 int32_t sese::res::ResourceStream::setSeek(int64_t offset, int32_t whence) {
-    int64_t newPos;
+    int64_t new_pos;
     if (whence == SEEK_CUR) {
-        newPos = static_cast<int64_t>(pos) + offset;
+        new_pos = static_cast<int64_t>(pos) + offset;
     } else if (whence == SEEK_SET) {
-        newPos = offset;
+        new_pos = offset;
     } else if (whence == SEEK_END) {
-        newPos = static_cast<int64_t>(size) - 1 + offset;
+        new_pos = static_cast<int64_t>(size) - 1 + offset;
     } else {
         return -1;
     }
-    if (newPos < 0 || newPos - 1 > static_cast<int64_t>(size)) {
+    if (new_pos < 0 || new_pos - 1 > static_cast<int64_t>(size)) {
         return -1;
     }
-    pos = static_cast<size_t>(newPos);
+    pos = static_cast<size_t>(new_pos);
     return 0;
 }

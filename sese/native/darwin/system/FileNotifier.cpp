@@ -7,37 +7,37 @@
 static void callback(
         ConstFSEventStreamRef stream,
         void *info,
-        size_t numEvents,
-        void *eventPaths,
-        const FSEventStreamEventFlags eventFlags[],
-        const FSEventStreamEventId eventIds[]
+        size_t num_events,
+        void *event_paths,
+        const FSEventStreamEventFlags event_flags[],
+        const FSEventStreamEventId event_ids[]
 ) {
     auto option = (sese::system::FileNotifyOption *) info;
-    const char *lastSrc = nullptr;
-    for (size_t i = 0; i < numEvents; ++i) {
+    const char *last_src = nullptr;
+    for (size_t i = 0; i < num_events; ++i) {
         auto dict = (CFDictionaryRef) CFArrayGetValueAtIndex((CFArrayRef) eventPaths, (CFIndex) i);
         auto path = (CFStringRef) CFDictionaryGetValue(dict, kFSEventStreamEventExtendedDataPathKey);
         auto src = CFStringGetCStringPtr(path, kCFStringEncodingUTF8);
 
-        if (eventFlags[i] & kFSEventStreamEventFlagItemCreated) {
+        if (event_flags[i] & kFSEventStreamEventFlagItemCreated) {
             auto len = std::string_view(src).find_last_of('/') + 1;
             option->onCreate(src + len);
         }
-        if (eventFlags[i] & kFSEventStreamEventFlagItemModified) {
+        if (event_flags[i] & kFSEventStreamEventFlagItemModified) {
             auto len = std::string_view(src).find_last_of('/') + 1;
             option->onModify(src + len);
         }
-        if (eventFlags[i] & kFSEventStreamEventFlagItemRenamed) {
-            if (lastSrc) {
+        if (event_flags[i] & kFSEventStreamEventFlagItemRenamed) {
+            if (last_src) {
                 auto len0 = std::string_view(lastSrc).find_last_of('/') + 1;
                 auto len1 = std::string_view(src).find_last_of('/') + 1;
-                option->onMove(lastSrc + len0, src + len1);
-                lastSrc = nullptr;
+                option->onMove(last_src + len0, src + len1);
+                last_src = nullptr;
             } else {
-                lastSrc = src;
+                last_src = src;
             }
         }
-        if (eventFlags[i] & kFSEventStreamEventFlagItemRemoved) {
+        if (event_flags[i] & kFSEventStreamEventFlagItemRemoved) {
             auto len = std::string_view(src).find_last_of('/') + 1;
             option->onDelete(src + len);
         }
@@ -53,7 +53,7 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
             kCFStringEncodingUTF8
     );
 
-    CFArrayRef pathsToWatch = CFArrayCreate(
+    CFArrayRef paths_to_watch = CFArrayCreate(
             nullptr,
             (const void **) &p,
             1,

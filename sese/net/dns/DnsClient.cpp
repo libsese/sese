@@ -14,7 +14,7 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveSystem(const std::stri
 sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::string &domain, const IPAddress::Ptr &server, int family, int type, int protocol) noexcept {
     auto sock = sese::net::Socket::socket(server->getFamily(), SOCK_DGRAM, IPPROTO_IP);
     auto socket = sese::net::Socket(sock, nullptr);
-    auto expectType = family == AF_INET ? SESE_DNS_QR_TYPE_A : SESE_DNS_QR_TYPE_AAAA;
+    auto expect_type = family == AF_INET ? SESE_DNS_QR_TYPE_A : SESE_DNS_QR_TYPE_AAAA;
 
     std::random_device device;
     auto engine = std::default_random_engine((uint32_t) device());
@@ -34,7 +34,7 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     info.questions = 1;
 
     DnsSession session;
-    session.getQueries().emplace_back(domain, expectType, SESE_DNS_QR_CLASS_IN, 0);
+    session.getQueries().emplace_back(domain, expect_type, SESE_DNS_QR_CLASS_IN, 0);
 
     uint8_t buffer[DNS_PACKAGE_SIZE];
     auto output = sese::io::OutputBufferWrapper((char *) buffer + 12, sizeof(buffer) - 12);
@@ -58,7 +58,7 @@ sese::net::Address::Ptr sese::net::dns::DnsClient::resolveCustom(const std::stri
     DnsUtil::decodeAnswers(info.answerPrs, &input, session.getAnswers(), (const char *) buffer);
 
     for (auto &item: session.getAnswers()) {
-        if (expectType == item.getType()) {
+        if (expect_type == item.getType()) {
             if (family == AF_INET) {
                 auto data = (const uint32_t *) item.getData().c_str();
                 uint32_t addr = FromBigEndian32(*data);

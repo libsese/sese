@@ -46,15 +46,15 @@ public:
     /// 初始化负载器资源
     /// \tparam Service 需要启动的服务
     /// \return 是否初始化成功
-    template<class Service>
+    template<class SERVICE>
     bool init() noexcept;
 
     /// 初始化均衡器资源
     /// \tparam Service 需要启动的服务
     /// \param creator Service 创建函数，创建成功返回实例指针，否则应该返回空表示创建失败
     /// \return 是否初始化成功
-    template<class Service>
-    bool init(std::function<Service *()> creator) noexcept;
+    template<class SERVICE>
+    bool init(std::function<SERVICE *()> creator) noexcept;
 
     /// 启动当前负载器和服务
     void start() noexcept;
@@ -75,31 +75,31 @@ protected:
 };
 } // namespace sese::service
 
-template<class Service>
+template<class SERVICE>
 bool sese::service::SystemBalanceLoader::init() noexcept {
-    return sese::service::SystemBalanceLoader::init<Service>([]() -> Service * { return new Service; });
+    return sese::service::SystemBalanceLoader::init<SERVICE>([]() -> SERVICE * { return new SERVICE; });
 }
 
 // 此处测试代码不便于模拟
 // GCOVR_EXCL_START
 
-template<class Service>
-bool sese::service::SystemBalanceLoader::init(std::function<Service *()> creator) noexcept {
+template<class SERVICE>
+bool sese::service::SystemBalanceLoader::init(std::function<SERVICE *()> creator) noexcept {
     if (address == nullptr) return false;
 
-    sese::net::ReusableSocket reusableSocket(address);
+    sese::net::ReusableSocket reusable_socket(address);
     for (size_t i = 0; i < threads; ++i) {
-        auto subSocket = reusableSocket.makeRawSocket();
-        if (subSocket == -1) {
+        auto sub_socket = reusable_socket.makeRawSocket();
+        if (sub_socket == -1) {
             goto freeSocket;
         }
-        if (0 != sese::net::Socket::setNonblocking(subSocket)) {
+        if (0 != sese::net::Socket::setNonblocking(sub_socket)) {
             goto freeSocket;
         }
-        if (0 != sese::net::Socket::listen(subSocket, 32)) {
+        if (0 != sese::net::Socket::listen(sub_socket, 32)) {
             goto freeSocket;
         }
-        socketVector.emplace_back(subSocket);
+        socketVector.emplace_back(sub_socket);
     }
 
     for (size_t i = 0; i < threads; ++i) {
@@ -119,14 +119,14 @@ bool sese::service::SystemBalanceLoader::init(std::function<Service *()> creator
     return true;
 
 freeEvent:
-    for (decltype(auto) eventLoop: eventLoopVector) {
-        delete eventLoop;
+    for (decltype(auto) event_loop: eventLoopVector) {
+        delete event_loop;
     }
     eventLoopVector.clear();
 
 freeSocket:
-    for (decltype(auto) subSocket: socketVector) {
-        sese::net::Socket::close(subSocket);
+    for (decltype(auto) sub_socket: socketVector) {
+        sese::net::Socket::close(sub_socket);
     }
     socketVector.clear();
     return false;

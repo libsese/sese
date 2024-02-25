@@ -1,7 +1,7 @@
 #include "sese/convert/Decompressor.h"
 #include "zlib.h"
 
-sese::Decompressor::Decompressor(sese::CompressionType type, size_t bufferSize) {
+sese::Decompressor::Decompressor(sese::CompressionType type, size_t buffer_size) {
     stream = new z_stream;
     auto stm = (z_stream *) stream;
     stm->zalloc = nullptr;
@@ -12,8 +12,8 @@ sese::Decompressor::Decompressor(sese::CompressionType type, size_t bufferSize) 
     stm->avail_out = 0;
     stm->next_out = nullptr;
 
-    cap = bufferSize;
-    buffer = new unsigned char[bufferSize];
+    cap = buffer_size;
+    buffer = new unsigned char[buffer_size];
 
     inflateInit2(stm, MAX_WBITS + (int) type);
 }
@@ -27,9 +27,9 @@ sese::Decompressor::~Decompressor() {
     stream = nullptr;
 }
 
-void sese::Decompressor::input(const void *input, unsigned int inputLen) {
+void sese::Decompressor::input(const void *input, unsigned int input_len) {
     auto stm = (z_stream *) stream;
-    stm->avail_in = (unsigned int) inputLen;
+    stm->avail_in = (unsigned int) input_len;
     stm->next_in = (unsigned char *) input;
     stm->avail_out = (unsigned int) cap;
     stm->next_out = (unsigned char *) buffer;
@@ -42,10 +42,10 @@ int sese::Decompressor::inflate(OutputStream *out) {
     // 输出 buffer 未能完全输出，继续输出
     if (length != 0) {
         auto last = length - read;
-        auto realWrote = out->write(buffer + read, last);
-        if (last != realWrote) {
+        auto real_wrote = out->write(buffer + read, last);
+        if (last != real_wrote) {
             // 输出 buffer 未能全部输出
-            read += realWrote;
+            read += real_wrote;
             return Z_BUF_ERROR;
         } else {
             length = 0;
@@ -64,11 +64,11 @@ int sese::Decompressor::inflate(OutputStream *out) {
             return Z_STREAM_ERROR;
 
         auto wrote = (int) cap - stm->avail_out;
-        auto realWrote = out->write(buffer, wrote);
-        if (wrote != realWrote) {
+        auto real_wrote = out->write(buffer, wrote);
+        if (wrote != real_wrote) {
             // 输出 buffer 未能全部输出
             length = wrote;
-            read = realWrote;
+            read = real_wrote;
             return Z_BUF_ERROR;
         } else {
             stm->avail_out = (unsigned int) cap;

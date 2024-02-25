@@ -69,25 +69,25 @@ int64_t impl::PostgresDriverInstanceImpl::executeUpdate(const char *sql) noexcep
 
 PreparedStatement::Ptr impl::PostgresDriverInstanceImpl::createStatement(const char *sql) noexcept {
     int count = 0;
-    std::stringstream stringBuilder;
+    std::stringstream string_builder;
     for (size_t i = 0; i < strlen(sql); ++i) {
         if (sql[i] == '?') {
             count++;
-            stringBuilder << '$' << count;
+            string_builder << '$' << count;
         } else {
-            stringBuilder << sql[i];
+            string_builder << sql[i];
         }
     }
 
-    std::string stmtString = stringBuilder.str();
-    std::uniform_int_distribution<int> discreteDistribution(1, 65535);
-    auto stmtName = "sese_stmt_" + std::to_string(discreteDistribution(rd));
+    std::string stmt_string = string_builder.str();
+    std::uniform_int_distribution<int> discrete_distribution(1, 65535);
+    auto stmt_name = "sese_stmt_" + std::to_string(discrete_distribution(rd));
 
-    auto res = PQprepare(conn, stmtName.c_str(), stmtString.c_str(), count, nullptr);
+    auto res = PQprepare(conn, stmt_name.c_str(), stmt_string.c_str(), count, nullptr);
     if (PQresultStatus(res) == PGRES_COMMAND_OK) {
         this->error = 0;
         PQclear(res);
-        return std::make_unique<impl::PostgresPreparedStatementImpl>(stmtName, stmtString, count, conn);
+        return std::make_unique<impl::PostgresPreparedStatementImpl>(stmt_name, stmt_string, count, conn);
     } else {
         this->error = static_cast<int>(PQresultStatus(res));
         PQclear(res);

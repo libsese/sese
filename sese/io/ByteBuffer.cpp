@@ -8,9 +8,9 @@ int64_t sese::io::ByteBuffer::read(void *buffer, size_t len) {
     return AbstractByteBuffer::read(buffer, len);
 }
 
-int64_t sese::io::ByteBuffer::write(const void *buffer, size_t needWrite) {
+int64_t sese::io::ByteBuffer::write(const void *buffer, size_t need_write) {
     Locker locker(mutex);
-    return AbstractByteBuffer::write(buffer, needWrite);
+    return AbstractByteBuffer::write(buffer, need_write);
 }
 
 int64_t sese::io::ByteBuffer::peek(void *buffer, size_t len) {
@@ -18,7 +18,7 @@ int64_t sese::io::ByteBuffer::peek(void *buffer, size_t len) {
     return AbstractByteBuffer::peek(buffer, len);
 }
 
-sese::io::ByteBuffer::ByteBuffer(size_t baseSize, size_t factor) : AbstractByteBuffer(baseSize, factor) {
+sese::io::ByteBuffer::ByteBuffer(size_t base_size, size_t factor) : AbstractByteBuffer(base_size, factor) {
 }
 
 void sese::io::ByteBuffer::resetPos() {
@@ -51,9 +51,9 @@ size_t sese::io::ByteBuffer::freeCapacity() {
 //     return AbstractByteBuffer::getCurrentWritePos();
 // }
 
-int64_t sese::io::ByteBuffer::trunc(size_t needRead) {
+int64_t sese::io::ByteBuffer::trunc(size_t need_read) {
     Locker locker(mutex);
-    return AbstractByteBuffer::trunc(needRead);
+    return AbstractByteBuffer::trunc(need_read);
 }
 
 // GCOVR_EXCL_STOP

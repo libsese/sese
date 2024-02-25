@@ -25,7 +25,7 @@ struct API FileNotifyOption {
     virtual void onCreate(std::string_view name) = 0;
 
     /// 移动文件
-    virtual void onMove(std::string_view srcName, std::string_view dstName) = 0;
+    virtual void onMove(std::string_view src_name, std::string_view dst_name) = 0;
 
     /// 修改文件
     virtual void onModify(std::string_view name) = 0;

@@ -33,7 +33,7 @@ public:
      @endverbatim
      * @param timePattern 时间格式字符串
      */
-    explicit SimpleFormatter(const std::string &textPattern = RECORD_DEFAULT_TEXT_PATTERN, const std::string &timePattern = RECORD_DEFAULT_TIME_PATTERN) noexcept;
+    explicit SimpleFormatter(const std::string &text_pattern = RECORD_DEFAULT_TEXT_PATTERN, const std::string &time_pattern = RECORD_DEFAULT_TIME_PATTERN) noexcept;
 
     std::string dump(const Event::Ptr &event) noexcept override;
 

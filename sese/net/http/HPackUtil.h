@@ -31,7 +31,7 @@ public:
     /// \param table 解析所用的动态表
     /// \param header 存放解析结果
     /// \return 解析成功与否
-    static bool decode(InputStream *src, size_t contentLength, DynamicTable &table, Header &header) noexcept;
+    static bool decode(InputStream *src, size_t content_length, DynamicTable &table, Header &header) noexcept;
 
     /// 尝试将 HEADERS 按照 HPACK 格式压缩
     /// \param dest 目的流
@@ -39,7 +39,7 @@ public:
     /// \param onceHeader 非索引字段
     /// \param indexedHeader 索引字段
     /// \return 压缩产生的缓存大小
-    static size_t encode(OutputStream *dest, DynamicTable &table, Header &onceHeader, Header &indexedHeader) noexcept;
+    static size_t encode(OutputStream *dest, DynamicTable &table, Header &once_header, Header &indexed_header) noexcept;
 
 private:
     static int decodeInteger(uint8_t &buf, InputStream *src, uint32_t &dest, uint8_t n) noexcept;

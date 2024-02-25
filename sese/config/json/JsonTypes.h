@@ -184,8 +184,8 @@ void BasicData::setDataAs(std::enable_if_t<std::is_same_v<T, int64_t>, int64_t> 
 }
 
 template<typename T>
-void BasicData::setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>, const std::string &> t) {
-    data = "\"" + t + "\"";
+void BasicData::setDataAs(const std::enable_if_t<std::is_same_v<T, std::string>, const std::string &> T) {
+    data = "\"" + T + "\"";
 }
 
 class ArrayData;

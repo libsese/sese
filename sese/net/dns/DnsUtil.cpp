@@ -161,17 +161,17 @@ bool sese::net::dns::DnsUtil::decodeDomain(InputStream *input, std::string &doma
         } else if (((l & 0b1100'0000) >> 6) == 3) {
             // 当前分段使用压缩
             uint16_t index;
-            auto pIndex = (uint8_t *) &index;
-            pIndex[0] = (0b0011'1111 & l);
+            auto p_index = (uint8_t *) &index;
+            p_index[0] = (0b0011'1111 & l);
             ASSERT_READ(&l, 1);
-            pIndex[1] = l;
+            p_index[1] = l;
             index = FromBigEndian16(index);
-            auto indexInput = sese::io::InputBufferWrapper(buffer + index, DNS_PACKAGE_SIZE - index);
+            auto index_input = sese::io::InputBufferWrapper(buffer + index, DNS_PACKAGE_SIZE - index);
             std::string result;
             if (level == 0) {
                 return false;
             }
-            if (!sese::net::dns::DnsUtil::decodeDomain(&indexInput, result, buffer, level - 1, finsh)) {
+            if (!sese::net::dns::DnsUtil::decodeDomain(&index_input, result, buffer, level - 1, finsh)) {
                 return false;
             }
             if (first) {

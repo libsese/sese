@@ -2,13 +2,13 @@
 #include <zlib.h>
 
 sese::GZipFileOutputStream::Ptr sese::GZipFileOutputStream::create(const char *file, size_t level) noexcept {
-    auto gzFile = gzopen(file, "wb");
-    if (!gzFile) return nullptr;
+    auto gz_file = gzopen(file, "wb");
+    if (!gz_file) return nullptr;
     auto l = std::min<int>((int) level, 9);
-    gzsetparams(gzFile, l, Z_DEFAULT_STRATEGY);
-    auto pStream = new GZipFileOutputStream;
-    pStream->gzFile = gzFile;
-    return {pStream, deleter};
+    gzsetparams(gz_file, l, Z_DEFAULT_STRATEGY);
+    auto p_stream = new GZipFileOutputStream;
+    p_stream->gzFile = gz_file;
+    return {p_stream, deleter};
 }
 
 int64_t sese::GZipFileOutputStream::write(const void *buffer, size_t length) {

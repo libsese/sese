@@ -37,9 +37,9 @@ namespace sese::db::impl {
         void **buffer;
 
         static std::string splitBefore(const std::string &str);
-        static const char *IntegerAffinitySet[];
-        static const char *TextAffinitySet[];
-        static const char *RealAffinitySet[];
+        static const char *INTEGER_AFFINITY_SET[];
+        static const char *TEXT_AFFINITY_SET[];
+        static const char *REAL_AFFINITY_SET[];
     };
 
 }// namespace sese::db::impl

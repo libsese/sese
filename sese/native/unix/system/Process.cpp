@@ -15,9 +15,9 @@ Process::Ptr Process::create(const char *command) noexcept {
         return std::unique_ptr<Process>(proc);
     } else if (pid == 0) {
         // client process
-        char pCommand[1024];
-        std::strcpy(pCommand, command);
-        exec(pCommand);
+        char p_command[1024];
+        std::strcpy(p_command, command);
+        exec(p_command);
         // never reach
         return nullptr; // GCOVR_EXCL_LINE
     } else {
@@ -30,7 +30,7 @@ sese::pid_t Process::getCurrentProcessId() noexcept {
     return getpid();
 }
 
-int Process::wait() const noexcept {
+int Process::wait() noexcept {
     int status;
     ::waitpid(id, &status, 0);
     if (!WIFEXITED(status)) {
@@ -40,18 +40,18 @@ int Process::wait() const noexcept {
     }
 }
 
-void Process::exec(char *pCommand) noexcept {
+static void Process::exec(char *p_command) noexcept {
     auto count = Process::count(pCommand);
     auto args = new char *[count + 2];
-    char *p = pCommand;
-    char **pArgs = args;
+    char *p = p_command;
+    char **p_args = args;
     for (int i = 0; i < count + 1; ++i) {
-        auto newPos = spilt(p);
-        *pArgs = p;
-        pArgs++;
+        auto new_pos = spilt(p);
+        *p_args = p;
+        p_args++;
         p = newPos;
     }
-    *pArgs = nullptr;
+    *p_args = nullptr;
 
     auto code = execvp(args[0], &args[0]);
 
@@ -63,18 +63,18 @@ void Process::exec(char *pCommand) noexcept {
     }
 }
 
-sese::pid_t Process::getProcessId() const noexcept {
+sese::pid_t Process::getProcessId() noexcept {
     return id;
 }
 
-bool Process::kill() const noexcept {
+bool Process::kill() noexcept {
     return ::kill(id, SIGKILL) == 0;
 }
 
-size_t Process::count(const char *pCommand) noexcept {
-    const char *p = pCommand;
+static size_t Process::count(const char *p_command) noexcept {
+    const char *p = p_command;
     size_t count = 0;
-    size_t spaceCount = 0;
+    size_t space_count = 0;
     while (*p != 0) {
         if (*p == '\"') {
             count++;
@@ -82,7 +82,7 @@ size_t Process::count(const char *pCommand) noexcept {
             continue;
         } else if (*p == ' ') {
             if (count % 2 == 0) {
-                spaceCount++;
+                space_count++;
                 p++;
             } else {
                 p++;
@@ -91,11 +91,11 @@ size_t Process::count(const char *pCommand) noexcept {
             p++;
         }
     }
-    return spaceCount;
+    return space_count;
 }
 
-char *Process::spilt(char *pCommand) noexcept {
-    char *p = pCommand;
+static char *Process::spilt(char *p_command) noexcept {
+    char *p = p_command;
     int count = 0;
     while (*p != 0) {
         if (*p == '\"') {

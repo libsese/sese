@@ -39,27 +39,27 @@ sese::event::WSAEventLoop::~WSAEventLoop() {
 }
 
 void sese::event::WSAEventLoop::dispatch(uint32_t timeout) {
-    DWORD nIndex = WSAWaitForMultipleEvents(numbers, wsaEvents, FALSE, timeout, FALSE);
-    if (nIndex == WSA_WAIT_FAILED || nIndex == WSA_WAIT_TIMEOUT) return;
+    DWORD n_index = WSAWaitForMultipleEvents(numbers, wsaEvents, FALSE, timeout, FALSE);
+    if (n_index == WSA_WAIT_FAILED || n_index == WSA_WAIT_TIMEOUT) return;
 
-    nIndex -= WSA_WAIT_EVENT_0;
-    for (DWORD i = nIndex; i < numbers; ++i) {
-        nIndex = ::WSAWaitForMultipleEvents(1, &wsaEvents[i], TRUE, timeout, FALSE);
-        if (nIndex == WSA_WAIT_FAILED || nIndex == WSA_WAIT_TIMEOUT) continue;
+    n_index -= WSA_WAIT_EVENT_0;
+    for (DWORD i = n_index; i < numbers; ++i) {
+        n_index = ::WSAWaitForMultipleEvents(1, &wsaEvents[i], TRUE, timeout, FALSE);
+        if (n_index == WSA_WAIT_FAILED || n_index == WSA_WAIT_TIMEOUT) continue;
 
-        WSANETWORKEVENTS enumEvent;
-        WSAEnumNetworkEvents(sockets[i], wsaEvents[i], &enumEvent);
-        if (enumEvent.lNetworkEvents & FD_ACCEPT) {
-            if (enumEvent.iErrorCode[FD_ACCEPT_BIT] == 0) {
+        WSANETWORKEVENTS enum_event;
+        WSAEnumNetworkEvents(sockets[i], wsaEvents[i], &enum_event);
+        if (enum_event.lNetworkEvents & FD_ACCEPT) {
+            if (enum_event.iErrorCode[FD_ACCEPT_BIT] == 0) {
                 SOCKET client = accept(sockets[i], nullptr, nullptr);
                 if (-1 != client) {
                     onAccept((int) client);
                 }
-            } else if (enumEvent.iErrorCode[FD_ACCEPT_BIT] != 0 && events[i]->events & EVENT_ERROR) {
+            } else if (enum_event.iErrorCode[FD_ACCEPT_BIT] != 0 && events[i]->events & EVENT_ERROR) {
                 onError(events[i]);
             }
         }
-        if ((enumEvent.lNetworkEvents & FD_CLOSE) && handleClose) {
+        if ((enum_event.lNetworkEvents & FD_CLOSE) && handleClose) {
             // mutex.lock();
             // WSACloseEvent(wsaEvents[i]);
             // memmove(&sockets[i], &sockets[i], (numbers - i - 1) * sizeof(SOCKET));
@@ -69,23 +69,23 @@ void sese::event::WSAEventLoop::dispatch(uint32_t timeout) {
             // mutex.unlock();
             onClose(events[i]);
         }
-        if (enumEvent.lNetworkEvents & FD_READ) {
-            if (enumEvent.iErrorCode[FD_READ_BIT] == 0) {
+        if (enum_event.lNetworkEvents & FD_READ) {
+            if (enum_event.iErrorCode[FD_READ_BIT] == 0) {
                 char buf;
                 if (1 == recv(sockets[i], &buf, 1, MSG_PEEK)) {
                     onRead(events[i]);
                 }
-            } else if (enumEvent.iErrorCode[FD_READ_BIT] != 0 && events[i]->events & EVENT_ERROR) {
+            } else if (enum_event.iErrorCode[FD_READ_BIT] != 0 && events[i]->events & EVENT_ERROR) {
                 onError(events[i]);
             }
         }
-        if (enumEvent.lNetworkEvents & FD_WRITE) {
-            if (enumEvent.iErrorCode[FD_WRITE_BIT] == 0) {
+        if (enum_event.lNetworkEvents & FD_WRITE) {
+            if (enum_event.iErrorCode[FD_WRITE_BIT] == 0) {
                 char buf;
                 if (0 == send(sockets[i], &buf, 0, 0)) {
                     onWrite(events[i]);
                 }
-            } else if (enumEvent.iErrorCode[FD_WRITE_BIT] != 0 && events[i]->events & EVENT_ERROR) {
+            } else if (enum_event.iErrorCode[FD_WRITE_BIT] != 0 && events[i]->events & EVENT_ERROR) {
                 onError(events[i]);
             }
         }
@@ -108,9 +108,9 @@ void sese::event::WSAEventLoop::onClose(sese::event::BaseEvent *event) {
 }
 
 sese::event::BaseEvent *sese::event::WSAEventLoop::createEvent(int fd, unsigned int events, void *data) {
-    WSAEVENT _wsaEvent = WSACreateEvent();
-    if (WSAEventSelect(fd, _wsaEvent, convert.toNativeEvent(events) | FD_CLOSE)) {
-        WSACloseEvent(_wsaEvent);
+    WSAEVENT wsa_event = WSACreateEvent();
+    if (WSAEventSelect(fd, wsa_event, convert.toNativeEvent(events) | FD_CLOSE)) {
+        WSACloseEvent(wsa_event);
         return nullptr;
     }
 
@@ -118,11 +118,11 @@ sese::event::BaseEvent *sese::event::WSAEventLoop::createEvent(int fd, unsigned 
     event->fd = fd;
     event->events = events;
     event->data = data;
-    event->wsaEvent = _wsaEvent;
+    event->wsaEvent = wsa_event;
 
     // mutex.lock();
     sockets[numbers] = fd;
-    wsaEvents[numbers] = _wsaEvent;
+    wsaEvents[numbers] = wsa_event;
     this->events[numbers] = event;
     numbers += 1;
     // mutex.unlock();

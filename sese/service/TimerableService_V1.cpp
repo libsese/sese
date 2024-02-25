@@ -16,7 +16,7 @@ TimerableService::~TimerableService() {
     }
 }
 
-void TimerableService::onTimeout(TimeoutEvent *timeoutEvent) {
+void TimerableService::onTimeout(TimeoutEvent *timeout_event) {
 }
 
 TimeoutEvent *TimerableService::createTimeoutEvent(int fd, void *data, uint64_t seconds) {
@@ -35,13 +35,13 @@ TimeoutEvent *TimerableService::createTimeoutEvent(int fd, void *data, uint64_t 
     return event;
 }
 
-void TimerableService::setTimeoutEvent(TimeoutEvent *timeoutEvent, uint64_t seconds) {
+void TimerableService::setTimeoutEvent(TimeoutEvent *timeout_event, uint64_t seconds) {
     // 原先存在事件，先取消
     {
-        auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
+        auto index = (timeout_event->exceptTimestamp - startTimestamp) % 60;
         // SESE_INFO("cancel event at %d", (int) index);
         auto &table = timeoutTable[index];
-        table.remove(timeoutEvent);
+        table.remove(timeout_event);
     }
     // auto iterator = std::find_if(table.begin(), table.end(), [&](TimeoutEvent *event) -> bool {
     //     return timeoutEvent->fd == event->fd;
@@ -53,11 +53,11 @@ void TimerableService::setTimeoutEvent(TimeoutEvent *timeoutEvent, uint64_t seco
     // 设置新事件
     {
 
-        timeoutEvent->exceptTimestamp = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count() + seconds;
-        auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
+        timeout_event->exceptTimestamp = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now()).time_since_epoch().count() + seconds;
+        auto index = (timeout_event->exceptTimestamp - startTimestamp) % 60;
         auto &table = timeoutTable[index];
         // SESE_INFO("new event at %d", (int) index);
-        table.emplace_back(timeoutEvent);
+        table.emplace_back(timeout_event);
     }
 }
 
@@ -70,13 +70,13 @@ TimeoutEvent *TimerableService::getTimeoutEventByFd(int fd) {
     }
 }
 
-void TimerableService::cancelTimeoutEvent(TimeoutEvent *timeoutEvent) {
+void TimerableService::cancelTimeoutEvent(TimeoutEvent *timeout_event) {
     // 原先存在事件，先取消
-    auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
+    auto index = (timeout_event->exceptTimestamp - startTimestamp) % 60;
     // SESE_INFO("cancel event at %d", (int) index);
     auto &table = timeoutTable[index];
 
-    table.remove(timeoutEvent);
+    table.remove(timeout_event);
     // auto iterator = std::find_if(table.begin(), table.end(), [&](TimeoutEvent *event) -> bool {
     //     return timeoutEvent->fd == event->fd;
     // });
@@ -85,13 +85,13 @@ void TimerableService::cancelTimeoutEvent(TimeoutEvent *timeoutEvent) {
     // }
 }
 
-void TimerableService::freeTimeoutEvent(TimeoutEvent *timeoutEvent) {
-    auto index = (timeoutEvent->exceptTimestamp - startTimestamp) % 60;
+void TimerableService::freeTimeoutEvent(TimeoutEvent *timeout_event) {
+    auto index = (timeout_event->exceptTimestamp - startTimestamp) % 60;
     auto &table = timeoutTable[index];
     // SESE_INFO("free %d at %d", timeoutEvent->fd, (int) index);
-    table.remove(timeoutEvent);
+    table.remove(timeout_event);
 
-    auto iterator = timeoutMap.find(timeoutEvent->fd);
+    auto iterator = timeoutMap.find(timeout_event->fd);
     if (iterator != timeoutMap.end()) {
         delete iterator->second;
         timeoutMap.erase(iterator);

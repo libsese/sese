@@ -1,3 +1,5 @@
+#include <utility>
+
 #include "sese/thread/Thread.h"
 #include "sese/Config.h"
 
@@ -25,9 +27,9 @@ static sese::tid_t getTid() noexcept {
 
 namespace sese {
 
-thread_local std::shared_ptr<sese::Thread::RuntimeData> currentData = nullptr;
+thread_local std::shared_ptr<sese::Thread::RuntimeData> current_data = nullptr;
 
-tid_t Thread::mainId = 0;
+tid_t Thread::main_id = 0;
 
 int32_t ThreadInitiateTask::init() noexcept {
     Thread::setCurrentThreadAsMain();
@@ -39,27 +41,27 @@ int32_t ThreadInitiateTask::destroy() noexcept {
 }
 
 tid_t Thread::getCurrentThreadId() noexcept {
-    return currentData ? currentData->id : ::getTid();
+    return current_data ? current_data->id : ::getTid();
 }
 
 const char *Thread::getCurrentThreadName() noexcept {
     auto tid = ::getTid();
-    if (tid == Thread::mainId) return THREAD_MAIN_NAME;
-    return currentData ? currentData->name.c_str() : THREAD_DEFAULT_NAME;
+    if (tid == Thread::main_id) return THREAD_MAIN_NAME;
+    return current_data ? current_data->name.c_str() : THREAD_DEFAULT_NAME;
 }
 
 void Thread::setCurrentThreadAsMain() noexcept {
-    if (Thread::mainId == 0) {
-        Thread::mainId = ::getTid();
+    if (Thread::main_id == 0) {
+        Thread::main_id = ::getTid();
     }
 }
 
 tid_t Thread::getMainThreadId() noexcept {
-    return Thread::mainId;
+    return Thread::main_id;
 }
 
 Thread::RuntimeData *Thread::getCurrentThreadData() noexcept {
-    return currentData.get();
+    return current_data.get();
 }
 
 Thread::Thread(const std::function<void()> &function, const std::string &name) {
@@ -77,10 +79,10 @@ void Thread::join() {
 }
 
 void Thread::run(std::shared_ptr<RuntimeData> data) {
-    currentData = data;
-    currentData->id = ::getTid();
+    current_data = std::move(data);
+    current_data->id = ::getTid();
 
-    currentData->function();
+    current_data->function();
 }
 
 bool Thread::joinable() const {

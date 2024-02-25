@@ -44,18 +44,18 @@ int32_t Socket::listen(int32_t backlog) const noexcept {
 Socket::Ptr Socket::accept() const {
     if (address->getRawAddress()->sa_family == AF_INET) {
         sockaddr addr{0};
-        socklen_t addrLen = sizeof(addr);
-        auto clientHandle = ::accept(handle, (sockaddr *) &addr, &addrLen);
-        auto pAddr = Address::create((sockaddr *) &addr, addrLen);
-        auto pClientSocket = new Socket(clientHandle, pAddr);
-        return std::shared_ptr<Socket>(pClientSocket);
+        socklen_t addr_len = sizeof(addr);
+        auto client_handle = ::accept(handle, (sockaddr *) &addr, &addr_len);
+        auto p_addr = Address::create((sockaddr *) &addr, addr_len);
+        auto p_client_socket = new Socket(client_handle, p_addr);
+        return std::shared_ptr<Socket>(p_client_socket);
     } else {
         sockaddr_in6 addr{0};
-        socklen_t addrLen = sizeof(addr);
-        auto clientHandle = ::accept(handle, (sockaddr *) &addr, &addrLen);
-        auto pAddr = Address::create((sockaddr *) &addr, addrLen);
-        auto pClientSocket = new Socket(clientHandle, pAddr);
-        return std::shared_ptr<Socket>(pClientSocket);
+        socklen_t addr_len = sizeof(addr);
+        auto client_handle = ::accept(handle, (sockaddr *) &addr, &addr_len);
+        auto p_addr = Address::create((sockaddr *) &addr, addr_len);
+        auto p_client_socket = new Socket(client_handle, p_addr);
+        return std::shared_ptr<Socket>(p_client_socket);
     }
 }
 

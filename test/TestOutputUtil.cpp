@@ -55,9 +55,9 @@ TEST(TestOutputUtil, Span) {
     char buffer[16]{};
     auto output = sese::io::OutputBufferWrapper(buffer, sizeof(buffer) - 1);
 
-    const char str[]{"Hello World"};
-    std::span<const char> span(str);
-    ASSERT_EQ(output << span, sizeof(str));
+    const char STR[]{"Hello World"};
+    std::span<const char> span(STR);
+    ASSERT_EQ(output << span, sizeof(STR));
 }
 
 #endif

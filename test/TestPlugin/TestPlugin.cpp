@@ -19,8 +19,8 @@ TEST(TestPlugin, SUCCESS) {
 
     printf("register class:\n");
     printf("\tid%-28s raw name\n", "");
-    auto infoMap = m->getRegisterClassInfo();
-    for (const auto &info: infoMap) {
+    auto info_map = m->getRegisterClassInfo();
+    for (const auto &info: info_map) {
         printf("\t%-28s %s\n", info.first.c_str(), info.second.info->name());
     }
 

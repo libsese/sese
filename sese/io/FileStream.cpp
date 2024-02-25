@@ -50,10 +50,10 @@ int32_t FileStream::flush() {
     return fflush(file);
 }
 
-FileStream::Ptr FileStream::create(const std::string &filePath, const char *mode) noexcept {
+FileStream::Ptr FileStream::create(const std::string &file_path, const char *mode) noexcept {
 #ifdef _WIN32
     FILE *file = nullptr;
-    if (fopen_s(&file, filePath.c_str(), mode) != 0) {
+    if (fopen_s(&file, file_path.c_str(), mode) != 0) {
         return nullptr;
     } else {
         auto stream = new FileStream;
@@ -84,9 +84,9 @@ int64_t FileStream::peek(void *buffer, size_t length) {
 }
 
 int64_t FileStream::trunc(size_t length) {
-    auto oldPos = ftell(file);
+    auto old_pos = ftell(file);
     this->setSeek((int) length, SEEK_CUR);
-    return ftell(file) - oldPos;
+    return ftell(file) - old_pos;
 }
 
 int32_t FileStream::getFd() const {

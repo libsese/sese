@@ -69,7 +69,7 @@ void AsyncLogger::dump(const void *buffer, size_t length) noexcept {
 void AsyncLogger::loop() noexcept {
     auto buffer1 = new io::FixedBuilder(RECORD_BUFFER_SIZE);
     auto buffer2 = new io::FixedBuilder(RECORD_BUFFER_SIZE);
-    std::vector<io::FixedBuilder *> buffer2Write;
+    std::vector<io::FixedBuilder *> buffer2_write;
 
     while (true) {
         if (isShutdown) break;
@@ -81,7 +81,7 @@ void AsyncLogger::loop() noexcept {
             buffer2Ready.emplace_back(currentBuffer);
             currentBuffer = buffer1;
             buffer1 = nullptr;
-            buffer2Write.swap(buffer2Ready);
+            buffer2_write.swap(buffer2Ready);
             if (!nextBuffer) {
                 nextBuffer = buffer2;
                 buffer2 = nullptr;
@@ -89,45 +89,45 @@ void AsyncLogger::loop() noexcept {
         }
         // buffer 过多，触发几率极小
         // GCOVR_EXCL_START
-        if (buffer2Write.size() > 25) {
-            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](io::FixedBuilder *buffer) {
+        if (buffer2_write.size() > 25) {
+            std::for_each(buffer2_write.begin() + 2, buffer2_write.end(), [](io::FixedBuilder *buffer) {
                 delete buffer;
             });
-            buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());
+            buffer2_write.erase(buffer2_write.begin() + 2, buffer2_write.end());
         }
         // GCOVR_EXCL_STOP
 
-        for (const auto &buffer: buffer2Write) {
+        for (const auto &buffer: buffer2_write) {
             builtInAppender->dump(buffer->data(), buffer->getReadableSize());
         }
         for (auto &appender: appenderVector) {
-            for (const auto &buffer: buffer2Write) {
+            for (const auto &buffer: buffer2_write) {
                 appender->dump(buffer->data(), buffer->getReadableSize());
             }
         }
 
         // 移除过多的缓冲区，避免堆积过多
-        if (buffer2Write.size() > 2) {
-            std::for_each(buffer2Write.begin() + 2, buffer2Write.end(), [](io::FixedBuilder *buffer) {
+        if (buffer2_write.size() > 2) {
+            std::for_each(buffer2_write.begin() + 2, buffer2_write.end(), [](io::FixedBuilder *buffer) {
                 delete buffer; // GCOVR_EXCL_LINE
             });
-            buffer2Write.erase(buffer2Write.begin() + 2, buffer2Write.end());
-            buffer2Write.resize(2);
+            buffer2_write.erase(buffer2_write.begin() + 2, buffer2_write.end());
+            buffer2_write.resize(2);
         }
 
         if (!buffer1) { // NOLINT
-            buffer1 = buffer2Write.back();
-            buffer2Write.pop_back();
+            buffer1 = buffer2_write.back();
+            buffer2_write.pop_back();
             buffer1->reset();
         }
 
         if (!buffer2) { // NOLINT
-            buffer2 = buffer2Write.back();
-            buffer2Write.pop_back();
+            buffer2 = buffer2_write.back();
+            buffer2_write.pop_back();
             buffer2->reset();
         }
 
-        buffer2Write.clear();
+        buffer2_write.clear();
     }
 
     // 此处需要输出剩余的 buffer，触发几率较小

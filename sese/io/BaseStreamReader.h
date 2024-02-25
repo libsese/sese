@@ -61,12 +61,12 @@ public:
     std::basic_string<T> readLine() {
         std::basic_stringstream<T> string;
         // auto canReadSize = bufferStream->getLength() - bufferStream->getCurrentReadPos();
-        auto canReadSize = bufferStream->getReadableSize();
-        if (canReadSize == 0) {
-            canReadSize += preRead();
+        auto can_read_size = bufferStream->getReadableSize();
+        if (can_read_size == 0) {
+            can_read_size += preRead();
         }
 
-        if (canReadSize > 0) {
+        if (can_read_size > 0) {
             /// 有东西可读
             T ch;
             while (read(ch)) {

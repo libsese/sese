@@ -32,9 +32,9 @@ public:
 private:
     ResultType _seed;
 
-    static const ResultType multiplier;
-    static const ResultType addend;
-    static const ResultType mask;
+    static const ResultType MULTIPLIER;
+    static const ResultType ADDEND;
+    static const ResultType MASK;
     static ResultType noise() noexcept;
 };
 } // namespace sese

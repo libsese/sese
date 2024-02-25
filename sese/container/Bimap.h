@@ -55,23 +55,23 @@ public:
     }
 
     bool tryEraseByKey(const BimapKeyType &key) {
-        if (first.find(key) == first.end()) return false;
+        if (!first.contains(key)) return false;
         eraseByKey(key);
         return true;
     }
 
     bool tryEraseByValue(const BimapValueType &value) {
-        if (second.find(value) == second.end()) return false;
+        if (!second.contains(value)) return false;
         eraseByValue(value);
         return true;
     }
 
     bool existByKey(const BimapKeyType &key) const {
-        return first.find(key) != first.end();
+        return first.contains(key);
     }
 
     bool existByValue(const BimapValueType &value) const {
-        return second.find(value) != second.end();
+        return second.contains(value);
     }
 
     [[nodiscard]] const BimapValueType &getByKey(const BimapKeyType &key) const {

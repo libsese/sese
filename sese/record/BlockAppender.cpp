@@ -8,18 +8,18 @@ using namespace sese;
 using namespace sese::record;
 
 inline std::string getDateTimeString() {
-    auto dateTime = DateTime::now();
-    return text::DateTimeFormatter::format(dateTime, RECORD_DEFAULT_FILE_TIME_PATTERN) + ".log";
+    auto date_time = DateTime::now();
+    return text::DateTimeFormatter::format(date_time, RECORD_DEFAULT_FILE_TIME_PATTERN) + ".log";
 }
 
-BlockAppender::BlockAppender(size_t blockMaxSize, sese::record::Level level)
-    : AbstractAppender(level), maxSize(blockMaxSize) {
+BlockAppender::BlockAppender(size_t block_max_size, sese::record::Level level)
+    : AbstractAppender(level), maxSize(block_max_size) {
     // #ifndef _DEBUG
     //     maxSize = blockMaxSize < 1000 * 1024 ? 1000 * 1024 : blockMaxSize;
     // #endif
     maxSize = std::max<decltype(maxSize)>(1024 * 1000, maxSize);
-    auto fileName = getDateTimeString();
-    fileStream = io::FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
+    auto file_name = getDateTimeString();
+    fileStream = io::FileStream::create(file_name, TEXT_WRITE_CREATE_TRUNC);
     bufferedStream = std::make_unique<io::BufferedStream>(fileStream, 4 * 1024);
 }
 
@@ -34,8 +34,8 @@ void BlockAppender::dump(const char *buffer, size_t i) noexcept {
         this->size = i;
         bufferedStream->flush();
         fileStream->close();
-        auto fileName = getDateTimeString();
-        fileStream = io::FileStream::create(fileName, TEXT_WRITE_CREATE_TRUNC);
+        auto file_name = getDateTimeString();
+        fileStream = io::FileStream::create(file_name, TEXT_WRITE_CREATE_TRUNC);
         bufferedStream->reset(fileStream);
         bufferedStream->write((void *) buffer, i);
     } else {

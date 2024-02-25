@@ -54,9 +54,9 @@ namespace sese::text {
  */
 class API DateTimeFormatter {
 public:
-    static std::string format(const DateTime &dateTime, const std::string &pattern = TIME_DEFAULT_PATTERN);
+    static std::string format(const DateTime &date_time, const std::string &pattern = TIME_DEFAULT_PATTERN);
 
-    static std::string format(const DateTime::Ptr &dateTime, const std::string &pattern = TIME_DEFAULT_PATTERN);
+    static std::string format(const DateTime::Ptr &date_time, const std::string &pattern = TIME_DEFAULT_PATTERN);
 
     /** 将格林威治时间转换为时间戳
      * \param text 格林威治时间文本
@@ -84,13 +84,13 @@ public:
 protected:
     static int mon2number(const std::string &text);
 
-    static const std::map<std::string, uint8_t> monMap;
-    static const std::array<std::string, 12> monArray;
+    static const std::map<std::string, uint8_t> MON_MAP;
+    static const std::array<std::string, 12> MON_ARRAY;
 
-    static const std::map<std::string, uint8_t> monthMap;
-    static const std::array<std::string, 12> monthArray;
+    static const std::map<std::string, uint8_t> MONTH_MAP;
+    static const std::array<std::string, 12> MONTH_ARRAY;
 
-    static const std::array<std::string, 7> wkDay;
-    static const std::array<std::string, 7> weekDay;
+    static const std::array<std::string, 7> WK_DAY;
+    static const std::array<std::string, 7> WEEK_DAY;
 };
 } // namespace sese::text

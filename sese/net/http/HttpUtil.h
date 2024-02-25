@@ -62,13 +62,13 @@ public:
     static CookieMap::Ptr parseFromCookie(const std::string &text) noexcept;
 
     /// content-type 拓展名映射
-    static std::map<std::string, std::string> contentTypeMap;
+    static std::map<std::string, std::string> content_type_map;
 
 private:
     static bool getLine(InputStream *source, text::StringBuilder &builder) noexcept;
 
-    inline static bool recvHeader(InputStream *source, text::StringBuilder &builder, Header *header, bool isResp = false) noexcept;
-    inline static bool sendHeader(OutputStream *dest, Header *header, bool isResp = false) noexcept;
+    inline static bool recvHeader(InputStream *source, text::StringBuilder &builder, Header *header, bool is_resp = false) noexcept;
+    inline static bool sendHeader(OutputStream *dest, Header *header, bool is_resp = false) noexcept;
 
     inline static bool sendSetCookie(OutputStream *dest, const CookieMap::Ptr &cookies) noexcept;
     inline static bool sendCookie(OutputStream *dest, const CookieMap::Ptr &cookies) noexcept;

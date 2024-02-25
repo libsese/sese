@@ -5,13 +5,13 @@
 #include <sese/util/StopWatch.h>
 
 TEST(TestBufferedQueue, NN) {
-    const auto total = 4000;
-    sese::BufferedQueue_NN<int> queue(total);
+    const auto TOTAL = 4000;
+    sese::BufferedQueueNn<int> queue(TOTAL);
 
     std::mutex mutex1;
     auto proc1 = [&] {
         sese::StopWatch watch;
-        for (int i = 0; i < total / 2; ++i) {
+        for (int i = 0; i < TOTAL / 2; ++i) {
             mutex1.lock();
             EXPECT_TRUE(queue.push(i));
             mutex1.unlock();
@@ -27,7 +27,7 @@ TEST(TestBufferedQueue, NN) {
     auto proc2 = [&] {
         sese::StopWatch watch;
         int value;
-        for (int i = 0; i < total / 2;) {
+        for (int i = 0; i < TOTAL / 2;) {
             if (queue.pop(value)) {
                 i += 1;
                 mutex2.lock();
@@ -51,17 +51,17 @@ TEST(TestBufferedQueue, NN) {
     thread2.join();
     thread3.join();
     thread4.join();
-    ASSERT_EQ(times, total);
+    ASSERT_EQ(times, TOTAL);
 }
 
 TEST(TestBufferedQueue, 11) {
-    const auto total = 4000;
-    sese::BufferedQueue_NN<int> queue(total);
+    const auto TOTAL = 4000;
+    sese::BufferedQueueNn<int> queue(TOTAL);
 
     std::mutex mutex1;
     auto proc1 = [&] {
         sese::StopWatch watch;
-        for (int i = 0; i < total; ++i) {
+        for (int i = 0; i < TOTAL; ++i) {
             mutex1.lock();
             EXPECT_TRUE(queue.push(i));
             mutex1.unlock();
@@ -76,7 +76,7 @@ TEST(TestBufferedQueue, 11) {
     auto proc2 = [&] {
         sese::StopWatch watch;
         int value;
-        for (int i = 0; i < total;) {
+        for (int i = 0; i < TOTAL;) {
             if (queue.pop(value)) {
                 i += 1;
                 mutex2.lock();
@@ -95,14 +95,14 @@ TEST(TestBufferedQueue, 11) {
     thread2.start();
     thread1.join();
     thread2.join();
-    EXPECT_EQ(times, total);
+    EXPECT_EQ(times, TOTAL);
 }
 
 TEST(TestBufferedQueue, Limit) {
-    const auto limit = 5;
-    sese::BufferedQueue_N1<int> queue1(limit);
-    sese::BufferedQueue_11<int> queue2(limit);
-    for (int i = 0; i < limit; ++i) {
+    constexpr auto LIMIT = 5;
+    sese::BufferedQueueN1<int> queue1(LIMIT);
+    sese::BufferedQueue11<int> queue2(LIMIT);
+    for (int i = 0; i < LIMIT; ++i) {
         EXPECT_TRUE(queue1.push(i));
         EXPECT_TRUE(queue2.push(i));
     }

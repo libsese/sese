@@ -27,7 +27,7 @@ public:
     static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
     static void encode(InputStream *input, OutputStream *output) noexcept;
 
-    static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
-    static std::unique_ptr<char[]> encode(InputStream *input, bool isCap = true) noexcept;
+    static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool is_cap = true) noexcept;
+    static std::unique_ptr<char[]> encode(InputStream *input, bool is_cap = true) noexcept;
 };
 } // namespace sese

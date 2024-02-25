@@ -2,11 +2,11 @@
 
 using sese::io::BufferedInputStream;
 
-BufferedInputStream::BufferedInputStream(const InputStream::Ptr &source, size_t bufferSize) {
+BufferedInputStream::BufferedInputStream(const InputStream::Ptr &source, size_t buffer_size) {
     this->source = source;
     this->pos = 0;
     this->len = 0;
-    this->cap = bufferSize;
+    this->cap = buffer_size;
     this->buffer = malloc(cap);
 }
 

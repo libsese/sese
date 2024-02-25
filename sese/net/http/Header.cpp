@@ -5,8 +5,8 @@
 
 using namespace sese::net::http;
 
-Header::Header(const std::initializer_list<KeyValueType> &initializerList) noexcept {
-    for (const auto &item: initializerList) {
+Header::Header(const std::initializer_list<KeyValueType> &initializer_list) noexcept {
+    for (const auto &item: initializer_list) {
         headers.insert(item);
     }
 }
@@ -24,12 +24,12 @@ void Header::set(const std::string &key, const std::string &value) noexcept {
     headers[temp] = value;
 }
 
-const std::string &Header::get(const std::string &key, const std::string &defaultValue) noexcept {
+const std::string &Header::get(const std::string &key, const std::string &default_value) noexcept {
     auto temp = key;
     std::transform(temp.begin(), temp.end(), temp.begin(), XX);
     auto res = headers.find(temp);
     if (res == headers.end()) {
-        return defaultValue;
+        return default_value;
     } else {
         return res->second;
     }
@@ -39,10 +39,10 @@ const std::string &Header::get(const std::string &key, const std::string &defaul
 
 #if SESE_CXX_STANDARD > 201700L
 
-std::string_view Header::getView(const std::string &key, const std::string &defaultValue) noexcept {
+std::string_view Header::getView(const std::string &key, const std::string &default_value) noexcept {
     auto res = headers.find(key);
     if (res == headers.end()) {
-        return defaultValue;
+        return default_value;
     } else {
         return res->second;
     }

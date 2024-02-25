@@ -26,12 +26,12 @@ public:
     static void encode(const InputStream::Ptr &input, const OutputStream::Ptr &output) noexcept;
     static void encode(InputStream *input, OutputStream *output) noexcept;
 
-    static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool isCap = true) noexcept;
-    static std::unique_ptr<char[]> encode(InputStream *input, bool isCap = true) noexcept;
+    static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool is_cap = true) noexcept;
+    static std::unique_ptr<char[]> encode(InputStream *input, bool is_cap = true) noexcept;
 
 private:
     /// 常数序列
-    static const Bitset32 k[64];
+    static const Bitset32 K[64];
 
     static void structure(Bitset32 *block) noexcept;
     static void encode(Bitset32 value[8], Bitset32 *block, Bitset32 k) noexcept;

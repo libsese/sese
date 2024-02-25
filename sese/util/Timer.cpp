@@ -31,13 +31,13 @@ Timer::~Timer() noexcept {
     delete[] timerTasks; // GCOVR_EXCL_LINE
 }
 
-TimerTask::Ptr Timer::delay(const std::function<void()> &callback, int64_t relativeTimestamp, bool isRepeat) noexcept {
+TimerTask::Ptr Timer::delay(const std::function<void()> &callback, int64_t relative_timestamp, bool is_repeat) noexcept {
     // 初始化任务
     auto task = std::shared_ptr<TimerTask>(new TimerTask);
     task->callback = callback;
-    task->sleepTimestamp = relativeTimestamp;
-    task->isRepeat = isRepeat;
-    task->targetTimestamp = currentTimestamp + relativeTimestamp;
+    task->sleepTimestamp = relative_timestamp;
+    task->isRepeat = is_repeat;
+    task->targetTimestamp = currentTimestamp + relative_timestamp;
     task->cancelCallback = [capture0 = weak_from_this(), capture1 = task->weak_from_this()] { return Timer::cancelCallback(capture0, capture1); };
 
     // 添加至对应轮片
@@ -77,9 +77,9 @@ void Timer::loop() noexcept {
     }
 }
 
-void Timer::cancelCallback(const std::weak_ptr<Timer> &weakTimer, const std::weak_ptr<TimerTask> &weakTask) noexcept {
-    auto timer = weakTimer.lock();
-    auto task = weakTask.lock();
+void Timer::cancelCallback(const std::weak_ptr<Timer> &weak_timer, const std::weak_ptr<TimerTask> &weak_task) noexcept {
+    auto timer = weak_timer.lock();
+    auto task = weak_task.lock();
     // 此处条件为了预防万一而设，通常不会失败
     if (timer && task) { // GCOVR_EXCL_LINE
         size_t index = task->targetTimestamp % timer->number;

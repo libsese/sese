@@ -6,15 +6,15 @@
 #ifdef _WIN32
 #pragma warning(disable : 4996)
 /// 控制台句柄由 Windows 负责自动关闭，程序不管理其生命周期
-static HANDLE ConsoleHandle = INVALID_HANDLE_VALUE;
+static HANDLE console_handle = INVALID_HANDLE_VALUE;
 #endif
 
 using sese::record::ConsoleAppender;
 
 ConsoleAppender::ConsoleAppender(record::Level level) noexcept : record::AbstractAppender(level) {
 #ifdef _WIN32
-    if (ConsoleHandle == INVALID_HANDLE_VALUE) {
-        ConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (console_handle == INVALID_HANDLE_VALUE) {
+        console_handle = GetStdHandle(STD_OUTPUT_HANDLE);
     }
 #endif
 }
@@ -26,23 +26,23 @@ void ConsoleAppender::dump(const char *buffer, size_t size) noexcept {
 
 #ifdef _WIN32
 void ConsoleAppender::setDebugColor() noexcept {
-    SetConsoleTextAttribute(ConsoleHandle, 0x02);
+    SetConsoleTextAttribute(console_handle, 0x02);
 }
 
 void ConsoleAppender::setInfoColor() noexcept {
-    SetConsoleTextAttribute(ConsoleHandle, 0x07);
+    SetConsoleTextAttribute(console_handle, 0x07);
 }
 
 void ConsoleAppender::setWarnColor() noexcept {
-    SetConsoleTextAttribute(ConsoleHandle, 0x06);
+    SetConsoleTextAttribute(console_handle, 0x06);
 }
 
 void ConsoleAppender::setErrorColor() noexcept {
-    SetConsoleTextAttribute(ConsoleHandle, 0x04);
+    SetConsoleTextAttribute(console_handle, 0x04);
 }
 
 void ConsoleAppender::setCleanColor() noexcept {
-    SetConsoleTextAttribute(ConsoleHandle, 0x07);
+    SetConsoleTextAttribute(console_handle, 0x07);
 }
 #else
 void ConsoleAppender::setDebugColor() noexcept {

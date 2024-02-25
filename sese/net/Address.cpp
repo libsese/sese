@@ -3,11 +3,11 @@
 
 using namespace sese::net;
 
-Address::Ptr Address::create(const sockaddr *address, socklen_t addressLen) {
+Address::Ptr Address::create(const sockaddr *address, socklen_t address_len) {
     if (address->sa_family == AF_INET) {
-        return std::make_shared<IPv4Address>(*(const sockaddr_in *) address);
+        return std::make_shared<IPv4Address>(*reinterpret_cast<const sockaddr_in *>(address));
     } else if (address->sa_family == AF_INET6) {
-        return std::make_shared<IPv6Address>(*(const sockaddr_in6 *) address);
+        return std::make_shared<IPv6Address>(*reinterpret_cast<const sockaddr_in6 *>(address));
     } else {
         return nullptr;
     }
@@ -31,7 +31,7 @@ bool Address::lookUp(std::vector<Address::Ptr> &result, const std::string &host,
 
     auto next = res;
     while (next) {
-        result.emplace_back(create(next->ai_addr, (socklen_t) next->ai_addrlen));
+        result.emplace_back(create(next->ai_addr, static_cast<socklen_t>(next->ai_addrlen)));
         next = next->ai_next;
     }
 

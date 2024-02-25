@@ -15,28 +15,28 @@ int main(int argc, char *argv[]) {
     }
 
     std::string src = argv[1];
-    auto srcFile = sese::io::File::create(src, BINARY_READ_EXISTED);
-    if (srcFile == nullptr) {
+    auto src_file = sese::io::File::create(src, BINARY_READ_EXISTED);
+    if (src_file == nullptr) {
         SESE_ERROR("File %s failed to open", src.c_str());
         return -1;
     }
 
-    auto json = sese::Json::parse(srcFile.get(), 16);
-    srcFile->close();
+    auto json = sese::Json::parse(src_file.get(), 16);
+    src_file->close();
     if (json.isNull()) {
         SESE_ERROR("Parsing %s failed", src.c_str());
         return -1;
     }
 
     auto dest = src + ".yml";
-    auto destFile = sese::io::File::create(dest, BINARY_WRITE_CREATE_TRUNC);
-    if (destFile == nullptr) {
+    auto dest_file = sese::io::File::create(dest, BINARY_WRITE_CREATE_TRUNC);
+    if (dest_file == nullptr) {
         SESE_ERROR("File %s failed to open", dest.c_str());
         return -1;
     }
 
-    sese::Yaml::streamify(destFile.get(), json);
-    destFile->close();
+    sese::Yaml::streamify(dest_file.get(), json);
+    dest_file->close();
     SESE_INFO("Saved to %s", dest.c_str());
 
     return 0;

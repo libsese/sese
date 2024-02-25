@@ -180,10 +180,10 @@ TEST(TestSqliteStmt, Insertstmt) {
 //    ASSERT_EQ(true, stmt->setNull(6));
 
 
-    auto stmtQuery = instance->createStatement("select id, name, setDouble, setFloat, setLong from tb_stmt_insert;");
-    ASSERT_NE(nullptr, stmtQuery);
+    auto stmt_query = instance->createStatement("select id, name, setDouble, setFloat, setLong from tb_stmt_insert;");
+    ASSERT_NE(nullptr, stmt_query);
 
-    auto result = stmtQuery->executeQuery();
+    auto result = stmt_query->executeQuery();
     ASSERT_NE(nullptr, result);
     if (result->next()) {
         ASSERT_EQ(1, result->getInteger(0));
@@ -242,13 +242,13 @@ TEST(TestSqliteStmt, SetTimeStmt) {
     ASSERT_NE(nullptr, stmt);
 
     int id = 1;
-    auto dateTime = sese::DateTime(1679142600000000, 0);
+    auto date_time = sese::DateTime(1679142600000000, 0);
 
     ASSERT_EQ(true, stmt->setInteger(1, id));
 //    ASSERT_NE(true, stmt->setInteger(6, id));
-    ASSERT_EQ(true, stmt->setDateTime(2, dateTime));
+    ASSERT_EQ(true, stmt->setDateTime(2, date_time));
 //    ASSERT_NE(true, stmt->setDateTime(6, dateTime));
-    ASSERT_EQ(true, stmt->setDateTime(3, dateTime));
+    ASSERT_EQ(true, stmt->setDateTime(3, date_time));
 //    ASSERT_NE(true, stmt->setDateTime(6, dateTime));
 
 

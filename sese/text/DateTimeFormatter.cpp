@@ -37,7 +37,7 @@
 //}
 //#endif
 
-const std::array<std::string, 12> sese::text::DateTimeFormatter::monthArray{
+const std::array<std::string, 12> sese::text::DateTimeFormatter::MONTH_ARRAY{
         "January",
         "February",
         "March",
@@ -52,7 +52,7 @@ const std::array<std::string, 12> sese::text::DateTimeFormatter::monthArray{
         "December"
 };
 
-const std::map<std::string, uint8_t> sese::text::DateTimeFormatter::monthMap{
+const std::map<std::string, uint8_t> sese::text::DateTimeFormatter::MONTH_MAP{
         {"January", 1},
         {"February", 2},
         {"March", 3},
@@ -67,7 +67,7 @@ const std::map<std::string, uint8_t> sese::text::DateTimeFormatter::monthMap{
         {"December", 12}
 };
 
-const std::array<std::string, 12> sese::text::DateTimeFormatter::monArray{
+const std::array<std::string, 12> sese::text::DateTimeFormatter::MON_ARRAY{
         "Jan",
         "Feb",
         "Mar",
@@ -82,7 +82,7 @@ const std::array<std::string, 12> sese::text::DateTimeFormatter::monArray{
         "Dec"
 };
 
-const std::map<std::string, uint8_t> sese::text::DateTimeFormatter::monMap{
+const std::map<std::string, uint8_t> sese::text::DateTimeFormatter::MON_MAP{
         {"Jan", 1},
         {"Feb", 2},
         {"Mar", 3},
@@ -97,7 +97,7 @@ const std::map<std::string, uint8_t> sese::text::DateTimeFormatter::monMap{
         {"Dec", 12}
 };
 
-const std::array<std::string, 7> sese::text::DateTimeFormatter::weekDay{
+const std::array<std::string, 7> sese::text::DateTimeFormatter::WEEK_DAY{
         "Sunday",
         "Monday",
         "Tuesday",
@@ -107,7 +107,7 @@ const std::array<std::string, 7> sese::text::DateTimeFormatter::weekDay{
         "Saturday"
 };
 
-const std::array<std::string, 7> sese::text::DateTimeFormatter::wkDay{
+const std::array<std::string, 7> sese::text::DateTimeFormatter::WK_DAY{
         "Sun",
         "Mon",
         "Tue",
@@ -146,9 +146,9 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
                 }
                 builder.append(std::to_string(dateTime.getDays())); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(wkDay[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
+                builder.append(WK_DAY[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
             } else {
-                builder.append(weekDay[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
+                builder.append(WEEK_DAY[dateTime.getDayOfWeek()]); // GCOVR_EXCL_LINE
             }
             input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'm') {
@@ -173,9 +173,9 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime &dateTime
                 }
                 builder.append(std::to_string(dateTime.getMonths())); // GCOVR_EXCL_LINE
             } else if (count == 3) {
-                builder.append(monArray[dateTime.getMonths() - 1]); // GCOVR_EXCL_LINE
+                builder.append(MON_ARRAY[dateTime.getMonths() - 1]); // GCOVR_EXCL_LINE
             } else {
-                builder.append(monthArray[dateTime.getMonths() - 1]); // GCOVR_EXCL_LINE
+                builder.append(MONTH_ARRAY[dateTime.getMonths() - 1]); // GCOVR_EXCL_LINE
             }
             input.trunc(count); // GCOVR_EXCL_LINE
         } else if (buffer[0] == 'y') {
@@ -312,8 +312,8 @@ std::string sese::text::DateTimeFormatter::format(const sese::DateTime::Ptr &dat
 #endif
 
 int sese::text::DateTimeFormatter::mon2number(const std::string &str) {
-    auto item = monMap.find(str);
-    if (item != monMap.end()) {
+    auto item = MON_MAP.find(str);
+    if (item != MON_MAP.end()) {
         return item->second - 1;
     } else {
         return -1;

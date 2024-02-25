@@ -64,13 +64,13 @@ public:
     [[nodiscard]] uint64_t getTimestamp() const noexcept { return this->timestamp; }
 
 public:
-    TimeSpan operator-(const DateTime &dateTime) const noexcept;
-    DateTime operator-(const TimeSpan &timeSpan) const noexcept;
-    DateTime operator+(const TimeSpan &timeSpan) const noexcept;
+    TimeSpan operator-(const DateTime &date_time) const noexcept;
+    DateTime operator-(const TimeSpan &time_span) const noexcept;
+    DateTime operator+(const TimeSpan &time_span) const noexcept;
     /// 精细比较
-    [[nodiscard]] int32_t compareTo(const DateTime &dateTime) const noexcept;
+    [[nodiscard]] int32_t compareTo(const DateTime &date_time) const noexcept;
     /// 粗略比较
-    [[nodiscard]] int32_t unclearCompareTo(const DateTime &dateTime) const noexcept;
+    [[nodiscard]] int32_t unclearCompareTo(const DateTime &date_time) const noexcept;
 
 private:
     // 初次计算的数据

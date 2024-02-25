@@ -1,6 +1,6 @@
 #include "sese/util/TimeSpan.h"
 
-const sese::TimeSpan sese::TimeSpan::Zero = sese::TimeSpan(0, 0, 0, 0, 0, 0);
+const sese::TimeSpan sese::TimeSpan::ZERO = sese::TimeSpan(0, 0, 0, 0, 0, 0);
 
 sese::TimeSpan::TimeSpan(
         int32_t days,

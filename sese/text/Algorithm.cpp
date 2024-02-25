@@ -29,14 +29,14 @@ int sstr::KMP(const char *str, const char *sub) {
 
     int k = 0;
     int res = -1;
-    for (int i = 0; i < (int) std::strlen(str); i++) {
+    for (int i = 0; i < static_cast<int>(std::strlen(str)); i++) {
         while (k > 0 && str[i] != sub[k]) {
             k = next[k - 1];
         }
         if (str[i] == sub[k]) {
             k++;
         }
-        if (k == (int) std::strlen(sub)) {
+        if (k == static_cast<int>(std::strlen(sub))) {
             res = i - k + 1;
             k = next[k - 1];
         }
@@ -46,32 +46,32 @@ int sstr::KMP(const char *str, const char *sub) {
 
 static int dist(const char *t, char ch) {
     auto len = std::strlen(t);
-    int i = len - 1;
+    int i = static_cast<int>(len) - 1;
     if (ch == t[i])
-        return len;
+        return static_cast<int>(len);
     i--;
     while (i >= 0) {
         if (ch == t[i])
-            return len - 1 - i;
+            return static_cast<int>(len) - 1 - i;
         else
             i--;
     }
-    return len;
+    return static_cast<int>(len);
 }
 
 
 int sstr::BM(const char *str, const char *sub) {
     auto n = std::strlen(str);
     auto m = std::strlen(sub);
-    int i = m - 1;
-    int j = m - 1;
+    int i = static_cast<int>(m) - 1;
+    int j = static_cast<int>(m) - 1;
     while (j >= 0 && i < n) {
         if (str[i] == sub[j]) {
             i--;
             j--;
         } else {
             i += dist(sub, str[i]);
-            j = m - 1;
+            j = static_cast<int>(m) - 1;
         }
     }
     if (j < 0) {
@@ -97,31 +97,31 @@ int sstr::BM(const char *str, const char *sub) {
 
 static int dist(std::vector<sstr::SChar> &t, uint32_t ch) {
     auto len = t.size();
-    int i = len - 1;
-    if (ch == (uint32_t) t[i])
-        return len;
+    int i = static_cast<int>(len) - 1;
+    if (ch == static_cast<uint32_t>(t[i]))
+        return static_cast<int>(len);
     i--;
     while (i >= 0) {
-        if (ch == (uint32_t) t[i])
-            return len - 1 - i;
+        if (ch == static_cast<uint32_t>(t[i]))
+            return static_cast<int>(len) - 1 - i;
         else
             i--;
     }
-    return len;
+    return static_cast<int>(len);
 }
 
 int sstr::BM(const uint32_t *str, size_t size, std::vector<SChar> &sub) {
     auto n = size;
     auto m = sub.size();
-    int i = m - 1;
-    int j = m - 1;
+    int i = static_cast<int>(m) - 1;
+    int j = static_cast<int>(m) - 1;
     while (j >= 0 && i < n) {
-        if (str[i] == (uint32_t) sub[j]) {
+        if (str[i] == static_cast<uint32_t>(sub[j])) {
             i--;
             j--;
         } else {
             i += dist(sub, str[i]);
-            j = m - 1;
+            j = static_cast<int>(m) - 1;
         }
     }
     if (j < 0) {
@@ -132,5 +132,5 @@ int sstr::BM(const uint32_t *str, size_t size, std::vector<SChar> &sub) {
 
 int sstr::NORMAL(const char *str, const char *sub) {
     auto p = strstr(str, sub);
-    return p ? (int) (p - str) : -1;
+    return p ? static_cast<int>(p - str) : -1;
 }

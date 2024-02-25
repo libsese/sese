@@ -15,16 +15,16 @@ namespace sese {
 /// 随机工具类
 class RandomUtil {
 public:
-    static const int REQUIRED_UPPER_LETTER = 1;
-    static const int REQUIRED_LOWER_LETTER = 2;
-    static const int REQUIRED_DIGIT = 4;
-    static const int REQUIRED_SYMBOL = 8;
+    static constexpr int REQUIRED_UPPER_LETTER = 1;
+    static constexpr int REQUIRED_LOWER_LETTER = 2;
+    static constexpr int REQUIRED_DIGIT = 4;
+    static constexpr int REQUIRED_SYMBOL = 8;
 
-    template<class ReturnValue>
-    static ReturnValue next();
+    template<class RETURN_VALUE>
+    static RETURN_VALUE next();
 
-    template<class ReturnValue>
-    static ReturnValue next(ReturnValue min, ReturnValue max);
+    template<class RETURN_VALUE>
+    static RETURN_VALUE next(RETURN_VALUE min, RETURN_VALUE max);
 
     static std::string nextString(size_t length, int required);
 
@@ -35,27 +35,27 @@ public:
 private:
     static std::string nextString(size_t length, bool upper, bool lower, bool digit, bool symbol);
 
-    static std::string UPPER_LETTER_LIST;
-    static std::string LOWER_LETTER_LIST;
-    static std::string DIGIT_LIST;
-    static std::string SYMBOL_LIST;
+    static const std::string UPPER_LETTER_LIST;
+    static const std::string LOWER_LETTER_LIST;
+    static const std::string DIGIT_LIST;
+    static const std::string SYMBOL_LIST;
 
     static std::random_device dev;
 };
 } // namespace sese
 
-template<class ReturnValue>
-inline ReturnValue sese::RandomUtil::next() {
-    return static_cast<ReturnValue>(getDevInstance()());
+template<class RETURN_VALUE>
+inline RETURN_VALUE sese::RandomUtil::next() {
+    return static_cast<RETURN_VALUE>(getDevInstance()());
 }
 
-template<class ReturnValue>
-inline ReturnValue sese::RandomUtil::next(ReturnValue min, ReturnValue max) {
-    auto _min = std::min<ReturnValue>(min, max);
-    auto _max = std::max<ReturnValue>(min, max);
-    auto range = _max - _min;
-    auto tmp = getDevInstance()();
-    return static_cast<ReturnValue>(tmp % range) + _min;
+template<class RETURN_VALUE>
+inline RETURN_VALUE sese::RandomUtil::next(RETURN_VALUE min, RETURN_VALUE max) {
+    const auto TEMP_MIN = std::min<RETURN_VALUE>(min, max);
+    const auto TEMP_MAX = std::max<RETURN_VALUE>(min, max);
+    const auto RANGE = TEMP_MAX - TEMP_MIN;
+    auto TMP = getDevInstance()();
+    return static_cast<RETURN_VALUE>(TMP % RANGE) + min;
 }
 
 template<>
@@ -72,16 +72,16 @@ inline double sese::RandomUtil::next() {
 
 template<>
 inline float sese::RandomUtil::next(float min, float max) {
-    auto _min = std::min<float>(min, max);
-    auto range = std::abs(max - min);
-    auto tmp = next<float>();
-    return _min + range * tmp;
+    const auto TMP_MIN = std::min<float>(min, max);
+    const auto RANGE = std::abs(max - min);
+    const auto TMP = next<float>();
+    return TMP_MIN + RANGE * TMP;
 }
 
 template<>
 inline double sese::RandomUtil::next(double min, double max) {
-    auto _min = std::min<double>(min, max);
-    auto range = std::abs(max - min);
-    auto tmp = next<double>();
-    return _min + range * tmp;
+    const auto TMP_MIN = std::min<double>(min, max);
+    const auto RANGE = std::abs(max - min);
+    const auto TMP = next<double>();
+    return TMP_MIN + RANGE * TMP;
 }

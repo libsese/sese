@@ -32,7 +32,7 @@ public:
     using Ptr = std::shared_ptr<ObjectPool<T>>;
     using ObjectPtr = std::shared_ptr<T>;
 
-    ~ObjectPool() {
+    ~ObjectPool() override {
         while (!queue.empty()) {
             delete queue.front();
             queue.pop();
@@ -50,7 +50,7 @@ public:
             auto t = new T;
             return std::shared_ptr<T>(
                     t,
-                    [wkPool = this->weak_from_this()](T *t) { ObjectPool<T>::recycleCallback(wkPool, t); }
+                    [wk_pool = this->weak_from_this()](T *t) { ObjectPool<T>::recycleCallback(wk_pool, t); }
             );
         } else {
             auto t = queue.front();
@@ -58,7 +58,7 @@ public:
             mutex.unlock();
             return std::shared_ptr<T>(
                     t,
-                    [wkPool = this->weak_from_this()](T *t) { ObjectPool<T>::recycleCallback(wkPool, t); }
+                    [wk_pool = this->weak_from_this()](T *t) { ObjectPool<T>::recycleCallback(wk_pool, t); }
             );
         }
     }
@@ -66,16 +66,16 @@ public:
 private:
     ObjectPool() = default;
 
-    static void recycleCallback(const std::weak_ptr<ObjectPool> &wkPool, T *toRecycle) noexcept {
-        auto pool = wkPool.lock();
+    static void recycleCallback(const std::weak_ptr<ObjectPool> &wk_pool, T *to_recycle) noexcept {
+        auto pool = wk_pool.lock();
         if (pool) {
             // to recycle
             pool->mutex.lock();
-            pool->queue.emplace(toRecycle);
+            pool->queue.emplace(to_recycle);
             pool->mutex.unlock();
         } else {
             // to delete
-            delete toRecycle;
+            delete to_recycle;
         }
     }
 

@@ -7,15 +7,15 @@ TextReader::~TextReader() noexcept {
 }
 
 std::shared_ptr<sese::text::TextReader> TextReader::create(const char *u8str) noexcept {
-    auto fileStream = io::FileStream::create(u8str, BINARY_READ_EXISTED);
-    if (fileStream == nullptr) {
+    auto file_stream = io::FileStream::create(u8str, BINARY_READ_EXISTED);
+    if (file_stream == nullptr) {
         return nullptr;
     }
 
-    auto bufferedStream = std::make_shared<io::BufferedStream>(fileStream);
+    auto buffered_stream = std::make_shared<io::BufferedStream>(file_stream);
     auto reader = new TextReader;
-    reader->fileStream = fileStream;
-    reader->bufferedStream = bufferedStream;
+    reader->fileStream = file_stream;
+    reader->bufferedStream = buffered_stream;
     return std::shared_ptr<sese::text::TextReader>(reader);
 }
 

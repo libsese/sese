@@ -3,11 +3,11 @@
 
 using sese::io::BufferedStream;
 
-BufferedStream::BufferedStream(const Stream::Ptr &source, size_t bufferSize) {
+BufferedStream::BufferedStream(const Stream::Ptr &source, size_t buffer_size) {
     this->source = source;
     this->pos = 0;
     this->len = 0;
-    this->cap = bufferSize;
+    this->cap = buffer_size;
     this->buffer = malloc(cap);
 }
 
@@ -41,28 +41,28 @@ int64_t BufferedStream::read(void *buf, size_t length) {
     if (length <= this->cap) {
         if (this->len - this->pos >= length) {
             // 字节数足够 - 不需要预读取
-            memcpy(buf, (char *) this->buffer + this->pos, length);
+            memcpy(buf, static_cast<char *>(this->buffer) + this->pos, length);
             pos += length;
-            return (int64_t) length;
+            return static_cast<int64_t>(length);
         } else {
             // 字节数不足 - 需要预读取
             size_t total = this->len - this->pos;
-            memcpy(buf, (char *) this->buffer + this->pos, total);
+            memcpy(buf, static_cast<char *>(this->buffer) + this->pos, total);
             pos += total;
             if (0 != preRead()) {
                 if (this->len - this->pos >= length - total) {
                     // 字节数足够
-                    memcpy((char *) buf + total, this->buffer, length - total);
+                    memcpy(static_cast<char *>(buf) + total, this->buffer, length - total);
                     pos = length - total;
                     total = length;
                 } else {
                     // 字节数不足，且无法继续读取
-                    memcpy((char *) buf + total, this->buffer, this->len - this->pos);
+                    memcpy(static_cast<char *>(buf) + total, this->buffer, this->len - this->pos);
                     pos = this->len - this->pos;
                     total += this->len - this->pos;
                 }
             }
-            return (int64_t) total;
+            return static_cast<int64_t>(total);
         }
     } else {
         // 先处理已有缓存
@@ -71,16 +71,15 @@ int64_t BufferedStream::read(void *buf, size_t length) {
         this->len = 0;
         this->pos = 0;
         // 操作裸流
-        size_t read;
         while (true) {
-            read = source->read((char *) buf + total, (length - total) >= 1024 ? 1024 : length - total);
-            total += (int64_t) read;
+            size_t read = source->read(static_cast<char *>(buf) + total, (length - total) >= 1024 ? 1024 : length - total);
+            total += static_cast<int64_t>(read);
             // 无可再读
             if (read <= 0) break;
             // 完成目标
             if (total == length) break;
         }
-        return (int64_t) total;
+        return static_cast<int64_t>(total);
     }
 }
 
@@ -94,9 +93,9 @@ int64_t BufferedStream::write(const void *buf, size_t length) {
     if (length <= this->cap) {
         if (this->cap - this->len >= length) {
             // 字节数足够 - 不需要刷新
-            memcpy((char *) this->buffer + this->len, buf, length);
+            memcpy(static_cast<char *>(this->buffer) + this->len, buf, length);
             this->len += length;
-            return (int64_t) length;
+            return static_cast<int64_t>(length);
         } else {
             // 字节数不足 - 需要刷新
             size_t expect = len - pos;
@@ -104,7 +103,7 @@ int64_t BufferedStream::write(const void *buf, size_t length) {
                 memcpy(this->buffer, (char *) buf, length);
                 this->len = length;
                 expect = length;
-                return (int64_t) expect;
+                return static_cast<int64_t>(expect);
             } else {
                 // flush 失败
                 return -1;
@@ -123,7 +122,7 @@ int64_t BufferedStream::write(const void *buf, size_t length) {
 
         int64_t wrote = 0;
         while (true) {
-            auto rt = source->write((const char *) buf + wrote, length - wrote >= cap ? cap : length - wrote);
+            auto rt = source->write(static_cast<const char *>(buf) + wrote, length - wrote >= cap ? cap : length - wrote);
             if (rt <= 0) return -1;
             wrote += rt;
             if (wrote == length) break;
@@ -135,14 +134,14 @@ int64_t BufferedStream::write(const void *buf, size_t length) {
 
 int64_t BufferedStream::flush() noexcept {
     // 将已有未处理数据立即写入流
-    auto wrote = source->write((char *) buffer + pos, len - pos);
+    auto wrote = source->write(static_cast<char *>(buffer) + pos, len - pos);
     pos = 0;
     len = 0;
     return wrote;
 }
 
-void BufferedStream::reset(const sese::io::Stream::Ptr &newSource) noexcept {
-    this->source = newSource;
+void BufferedStream::reset(const sese::io::Stream::Ptr &new_source) noexcept {
+    this->source = new_source;
     pos = 0;
     len = 0;
 }

@@ -29,9 +29,9 @@ using WeakType = std::weak_ptr<T>;
  * @param args 模板参数的构造函数参数
  * @return SharedType<ReturnType>
  */
-template<typename ReturnType, typename... Args>
-inline SharedType<ReturnType> makeShared(Args &&...args) {
-    return std::make_shared<ReturnType>(args...);
+template<typename RETURN_TYPE, typename... ARGS>
+inline SharedType<RETURN_TYPE> makeShared(ARGS &&...args) {
+    return std::make_shared<RETURN_TYPE>(args...);
 }
 
 /**
@@ -41,9 +41,9 @@ inline SharedType<ReturnType> makeShared(Args &&...args) {
  * @param args 模板参数的构造函数参数
  * @return UniqueType<ReturnType>
  */
-template<typename ReturnType, typename... Args>
-inline SharedType<ReturnType> makeUnique(Args &&...args) {
-    return std::make_unique<ReturnType>(args...);
+template<typename RETURN_TYPE, typename... ARGS>
+inline SharedType<RETURN_TYPE> makeUnique(ARGS &&...args) {
+    return std::make_unique<RETURN_TYPE>(args...);
 }
 
 /**
@@ -53,9 +53,9 @@ inline SharedType<ReturnType> makeUnique(Args &&...args) {
  * @param list 初始化列表
  * @return std::shared_ptr<ReturnType>
  */
-template<typename ReturnType, typename InitType>
-SharedType<ReturnType> makeSharedFromList(std::initializer_list<InitType> list) {
-    return std::make_shared<ReturnType>(std::move(list));
+template<typename RETURN_TYPE, typename INIT_TYPE>
+SharedType<RETURN_TYPE> makeSharedFromList(std::initializer_list<INIT_TYPE> list) {
+    return std::make_shared<RETURN_TYPE>(std::move(list));
 }
 
 /**
@@ -65,9 +65,9 @@ SharedType<ReturnType> makeSharedFromList(std::initializer_list<InitType> list) 
  * @param list 初始化列表
  * @return std::unique_ptr<ReturnType>
  */
-template<typename ReturnType, typename InitType>
-UniqueType<ReturnType> makeUniqueFromList(std::initializer_list<InitType> list) {
-    return std::make_unique<ReturnType>(std::move(list));
+template<typename RETURN_TYPE, typename INIT_TYPE>
+UniqueType<RETURN_TYPE> makeUniqueFromList(std::initializer_list<INIT_TYPE> list) {
+    return std::make_unique<RETURN_TYPE>(std::move(list));
 }
 
 /**
@@ -77,9 +77,9 @@ UniqueType<ReturnType> makeUniqueFromList(std::initializer_list<InitType> list) 
  * @param rawType 需要转换的 std::shared_ptr
  * @return std::shared_ptr<ReturnType>
  */
-template<typename ReturnType, typename RawType>
-inline SharedType<ReturnType> dynamicPointerCast(SharedType<RawType> rawType) {
-    return std::dynamic_pointer_cast<ReturnType>(rawType);
+template<typename RETURN_TYPE, typename RAW_TYPE>
+inline SharedType<RETURN_TYPE> dynamicPointerCast(SharedType<RAW_TYPE> raw_type) {
+    return std::dynamic_pointer_cast<RETURN_TYPE>(raw_type);
 }
 
 /**
@@ -89,10 +89,10 @@ inline SharedType<ReturnType> dynamicPointerCast(SharedType<RawType> rawType) {
  * @param rawType 需要转换的 std::unique_ptr
  * @return std::unique_ptr<ReturnType>
  */
-template<typename ReturnType, typename RawType>
-UniqueType<ReturnType> dynamicPointerCast(UniqueType<RawType> &rawType) {
-    RawType *pointer = rawType.release();
-    ReturnType *newPointer = dynamic_cast<ReturnType *>(pointer); // NOLINT
-    return std::unique_ptr<ReturnType>(newPointer);
+template<typename RETURN_TYPE, typename RAW_TYPE>
+UniqueType<RETURN_TYPE> dynamicPointerCast(UniqueType<RAW_TYPE> &raw_type) {
+    RAW_TYPE *pointer = raw_type.release();
+    RETURN_TYPE *newPointer = dynamic_cast<RETURN_TYPE *>(pointer); // NOLINT
+    return std::unique_ptr<RETURN_TYPE>(newPointer);
 }
 } // namespace sese

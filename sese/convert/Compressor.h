@@ -21,7 +21,7 @@ public:
     /// \param type 压缩格式 - 此处不建议使用 GZIP 选项
     /// \param level 压缩等级
     /// \param bufferSize 设置内部缓存大小
-    explicit Compressor(CompressionType type, size_t level, size_t bufferSize = ZLIB_CHUNK_SIZE);
+    explicit Compressor(CompressionType type, size_t level, size_t buffer_size = ZLIB_CHUNK_SIZE);
 
     /// 释放资源
     virtual ~Compressor();
@@ -29,7 +29,7 @@ public:
     /// 设置欲压缩的缓存
     /// \param input 欲压缩的缓存
     /// \param inputSize 此缓存的大小
-    void input(const void *input, unsigned int inputSize);
+    void input(const void *input, unsigned int input_size);
 
     /// 进行压缩
     /// \param out 压缩后的数据输出流

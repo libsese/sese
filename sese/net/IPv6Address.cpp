@@ -72,29 +72,29 @@ std::string IPv6Address::getAddress() const noexcept {
     return {temp};
 }
 
-IPAddress::Ptr IPv6Address::getBroadcastAddress(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv6Address::getBroadcastAddress(uint32_t prefix_len) const noexcept {
     sockaddr_in6 addr(this->address);
-    addr.sin6_addr.s6_addr[prefixLen / 8] |= CreateMask<uint8_t>(prefixLen % 8);
-    for (auto i = prefixLen / 8 + 1; i < 16; i++) {
+    addr.sin6_addr.s6_addr[prefix_len / 8] |= CreateMask<uint8_t>(prefix_len % 8);
+    for (auto i = prefix_len / 8 + 1; i < 16; i++) {
         addr.sin6_addr.s6_addr[i] = 0xFF;
     }
     return std::make_shared<IPv6Address>(addr);
 }
 
-IPAddress::Ptr IPv6Address::getNetworkAddress(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv6Address::getNetworkAddress(uint32_t prefix_len) const noexcept {
     sockaddr_in6 addr(this->address);
-    addr.sin6_addr.s6_addr[prefixLen / 8] &= CreateMask<uint8_t>(prefixLen % 8);
-    for (auto i = prefixLen / 8 + 1; i < 16; ++i) {
+    addr.sin6_addr.s6_addr[prefix_len / 8] &= CreateMask<uint8_t>(prefix_len % 8);
+    for (auto i = prefix_len / 8 + 1; i < 16; ++i) {
         addr.sin6_addr.s6_addr[i] = 0x00;
     }
     return std::make_shared<IPv6Address>(addr);
 }
 
-IPAddress::Ptr IPv6Address::getSubnetMask(uint32_t prefixLen) const noexcept {
+IPAddress::Ptr IPv6Address::getSubnetMask(uint32_t prefix_len) const noexcept {
     sockaddr_in6 subnet{0};
     subnet.sin6_family = AF_INET6;
-    subnet.sin6_addr.s6_addr[prefixLen / 8] = ~CreateMask<uint8_t>(prefixLen % 8);
-    for (auto i = 0; i < prefixLen / 8; ++i) {
+    subnet.sin6_addr.s6_addr[prefix_len / 8] = ~CreateMask<uint8_t>(prefix_len % 8);
+    for (auto i = 0; i < prefix_len / 8; ++i) {
         subnet.sin6_addr.s6_addr[i] = 0xff;
     }
     return std::make_shared<IPv6Address>(subnet);

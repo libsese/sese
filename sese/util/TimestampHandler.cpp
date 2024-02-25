@@ -10,12 +10,12 @@ uint64_t sese::TimestampHandler::getCurrentTimestamp() noexcept {
 }
 
 uint64_t sese::TimestampHandler::tryGetCurrentTimestamp() noexcept {
-    auto newPoint = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
-    if (newPoint > latest) {
-        latest = newPoint;
+    auto new_point = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
+    if (new_point > latest) {
+        latest = new_point;
         return latest.count();
     } else {
-        if (latest - newPoint > std::chrono::seconds(5)) {
+        if (latest - new_point > std::chrono::seconds(5)) {
             return UINT64_MAX;
         } else {
             return 0;

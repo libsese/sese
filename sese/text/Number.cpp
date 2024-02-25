@@ -4,10 +4,10 @@
 
 using sese::text::Number;
 
-std::string Number::toHex(uint64_t number, bool upperCase) noexcept {
+std::string Number::toHex(uint64_t number, bool upper_case) noexcept {
     char buffer[32];
     size_t len;
-    if (upperCase) {
+    if (upper_case) {
         len = std::snprintf(buffer, 32, "%" PRIX64, number);
     } else {
         len = std::snprintf(buffer, 32, "%" PRIx64, number);
@@ -15,10 +15,10 @@ std::string Number::toHex(uint64_t number, bool upperCase) noexcept {
     return std::string{buffer, len};
 }
 
-std::string Number::toHex(int64_t number, bool upperCase) noexcept {
+std::string Number::toHex(int64_t number, bool upper_case) noexcept {
     char buffer[32];
     size_t len;
-    if (upperCase) {
+    if (upper_case) {
         len = std::snprintf(buffer, 32, "%" PRIX64, number);
     } else {
         len = std::snprintf(buffer, 32, "%" PRIx64, number);

@@ -24,18 +24,18 @@ int main(int argc, char **argv) {
     auto random = (int64_t) std::random_device()();
     helper.info("select random number: %lld", random);
     auto buffer = mem->getBuffer();
-    auto pInt = (int64_t *) buffer;
-    *pInt = random;
+    auto p_int = (int64_t *) buffer;
+    *p_int = random;
 
     while (true) {
-        if (*pInt == random + 1) {
+        if (*p_int == random + 1) {
             break;
         } else {
             std::this_thread::sleep_for(500ms);
         }
     }
 
-    helper.info("recv change number: %lld", *pInt);
+    helper.info("recv change number: %lld", *p_int);
 
     return 0;
 }

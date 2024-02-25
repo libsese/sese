@@ -25,43 +25,43 @@ class LinkedStack {
 
 public:
     ~LinkedStack() {
-        auto pNode = root.load();
-        while (pNode) {
-            auto pNext = pNode->next.load();
-            delete pNode;
-            pNode = pNext;
+        auto p_node = root.load();
+        while (p_node) {
+            auto p_next = p_node->next.load();
+            delete p_node;
+            p_node = p_next;
         }
     }
 
     void push(const T &value) {
-        auto newNode = new Node;
-        newNode->value = value;
+        auto new_node = new Node;
+        new_node->value = value;
 
-        Node *currentRoot;
+        Node *current_root;
         while (true) {
-            currentRoot = root.load();
-            newNode->next.store(currentRoot);
-            if (root.compare_exchange_weak(currentRoot, newNode)) {
+            current_root = root.load();
+            new_node->next.store(current_root);
+            if (root.compare_exchange_weak(current_root, new_node)) {
                 break;
             }
         }
     }
 
     bool pop(T &value) {
-        Node *oldRoot;
-        Node *newRoot;
+        Node *old_root;
+        Node *new_root;
         while (true) {
-            oldRoot = root.load();
-            if (oldRoot == nullptr) {
+            old_root = root.load();
+            if (old_root == nullptr) {
                 return false;
             }
-            newRoot = oldRoot->next.load();
-            if (root.compare_exchange_weak(oldRoot, newRoot)) {
+            new_root = old_root->next.load();
+            if (root.compare_exchange_weak(old_root, new_root)) {
                 break;
             }
         }
-        value = oldRoot->value;
-        delete oldRoot;
+        value = old_root->value;
+        delete old_root;
         return true;
     }
 

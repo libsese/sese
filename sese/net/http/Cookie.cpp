@@ -12,8 +12,8 @@ Cookie::Cookie(const std::string &name, const std::string &value) noexcept {
     this->value = value;
 }
 
-bool Cookie::expired(const uint64_t now) const {
-    return now > this->expires;
+bool Cookie::expired(const uint64_t NOW) const {
+    return NOW > this->expires;
 }
 
 bool Cookie::isSecure() const {
@@ -28,16 +28,16 @@ bool Cookie::isHttpOnly() const {
     return httpOnly;
 }
 
-void Cookie::setHttpOnly(bool httpOnly) {
-    Cookie::httpOnly = httpOnly;
+void Cookie::setHttpOnly(bool http_only) {
+    Cookie::httpOnly = http_only;
 }
 
 uint64_t Cookie::getMaxAge() const {
     return maxAge;
 }
 
-void Cookie::setMaxAge(uint64_t maxAge) {
-    Cookie::maxAge = maxAge;
+void Cookie::setMaxAge(uint64_t max_age) {
+    Cookie::maxAge = max_age;
     // Cookie::expires = now + maxAge;
 }
 

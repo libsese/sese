@@ -25,24 +25,24 @@ TEST(TestUuid, Chrono) {
 
 /// \note 此处仅简单的调用一下接口。若要复现在时间回拨时的处理，需要另外编写测试程序，并且手动使操作系统时间回拨，其他基于 TimestampHandler 的功能同理
 TEST(TestUuid, TimestampHandler) {
-    sese::TimestampHandler timestampHandler(std::chrono::system_clock::now());
+    sese::TimestampHandler timestamp_handler(std::chrono::system_clock::now());
 
-    auto p1 = timestampHandler.getCurrentTimestamp();
+    auto p1 = timestamp_handler.getCurrentTimestamp();
     std::cout << "p1 -> " << p1 << "\n";
 
     for (int i = 0; i < 100; ++i) {
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
-        auto p2 = timestampHandler.tryGetCurrentTimestamp();
+        auto p2 = timestamp_handler.tryGetCurrentTimestamp();
         std::cout << "p2 -> " << p2 << "\n";
     }
 }
 
 TEST(TestUuid, UUID) {
-    uint8_t selfId = 0x23;
-    sese::TimestampHandler timestampHandler(std::chrono::system_clock::now());
+    uint8_t self_id = 0x23;
+    sese::TimestampHandler timestamp_handler(std::chrono::system_clock::now());
 
-    auto uuid0 = sese::Uuid(selfId, timestampHandler.getCurrentTimestamp(), 0x45);
-    uuid0.setSelfId(selfId);
+    auto uuid0 = sese::Uuid(self_id, timestamp_handler.getCurrentTimestamp(), 0x45);
+    uuid0.setSelfId(self_id);
     uuid0.setR(0x45);
 
     auto number = uuid0.toNumber();

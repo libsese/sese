@@ -39,6 +39,6 @@ public:
     static std::string decode(const char *src);
 
 private:
-    static const std::set<char> urlExcludeChars;
+    static const std::set<char> URL_EXCLUDE_CHARS;
 };
 } // namespace sese

@@ -32,14 +32,14 @@ public:
     }
 
     ~LinkedQueue() {
-        auto pNode = head.load();
-        while (pNode) {
-            auto pNext = pNode->next.load();
-            if (pNext == pNode) {
-                pNext = nullptr;
+        auto p_node = head.load();
+        while (p_node) {
+            auto p_next = p_node->next.load();
+            if (p_next == p_node) {
+                p_next = nullptr;
             }
-            delete pNode;
-            pNode = pNext;
+            delete p_node;
+            p_node = p_next;
         }
     }
 

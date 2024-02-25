@@ -103,10 +103,10 @@ TEST(TestReusableSocket, LoadBalancing) {
 
 TEST(TestReusableSocket, Error) {
     auto addr = sese::net::IPv4Address::create("0.0.0.1", 0);
-    sese::net::ReusableSocket reusableSocket(addr);
+    sese::net::ReusableSocket reusable_socket(addr);
 
-    auto sock1 = reusableSocket.makeRawSocket();
-    auto sock2 = reusableSocket.makeSocket();
+    auto sock1 = reusable_socket.makeRawSocket();
+    auto sock2 = reusable_socket.makeSocket();
     ASSERT_EQ(sock1, -1);
     ASSERT_EQ(sock2, std::nullopt);
 }

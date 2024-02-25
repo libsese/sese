@@ -5,8 +5,8 @@
 
 using namespace sese::system;
 
-Path::Path(const std::string_view &unixPath) noexcept {
-    Path::unixPath = unixPath;
+Path::Path(const std::string_view &unix_path) noexcept {
+    Path::unixPath = unix_path;
 
     // 带盘符的绝对路径
     if (!Path::unixPath.empty() && Path::unixPath.at(0) == '/') {
@@ -25,33 +25,33 @@ Path::Path(const std::string_view &unixPath) noexcept {
     }
     // 相对路径
     else {
-        nativePath = unixPath;
+        nativePath = unix_path;
         valid = true;
     }
 }
 
-Path::Path(const char *unixPath) noexcept : Path(std::string_view(unixPath)) {
+Path::Path(const char *unix_path) noexcept : Path(std::string_view(unix_path)) {
 }
 
-Path Path::fromNativePath(const std::string &nativePath) noexcept {
+Path Path::fromNativePath(const std::string &native_path) noexcept {
     // 带盘符的绝对路径
-    if (nativePath.size() >= 3 && nativePath.compare(1, 2, ":/") == 0 && isalpha(nativePath.at(0))) {
-        text::StringBuilder stringBuilder;
-        stringBuilder.append('/');
-        stringBuilder.append(nativePath.at(0));
-        stringBuilder.append(nativePath.c_str() + 2, nativePath.size() - 2);
+    if (native_path.size() >= 3 && native_path.compare(1, 2, ":/") == 0 && isalpha(native_path.at(0))) {
+        text::StringBuilder string_builder;
+        string_builder.append('/');
+        string_builder.append(native_path.at(0));
+        string_builder.append(native_path.c_str() + 2, native_path.size() - 2);
 
         Path result;
-        result.unixPath = stringBuilder.toString();
-        result.nativePath = nativePath;
+        result.unixPath = string_builder.toString();
+        result.nativePath = native_path;
         result.valid = true;
         return result;
     }
     // 相对路径
-    else if (!nativePath.empty() && nativePath.at(0) != '/') {
+    else if (!native_path.empty() && native_path.at(0) != '/') {
         Path result;
-        result.unixPath = nativePath;
-        result.nativePath = nativePath;
+        result.unixPath = native_path;
+        result.nativePath = native_path;
         result.valid = true;
         return result;
     }

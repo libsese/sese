@@ -26,12 +26,12 @@ void showStreamHeader(auto &header) noexcept {
     }
 }
 
-void showStreamHeader(auto &onceHeader, auto &indexedHeader) noexcept {
+void showStreamHeader(auto &once_header, auto &indexed_header) noexcept {
     puts("============ Stream Header ============");
-    for (decltype(auto) pair: onceHeader) {
+    for (decltype(auto) pair: once_header) {
         printf("%s: %s", pair.first.c_str(), pair.second.c_str());
     }
-    for (decltype(auto) pair: indexedHeader) {
+    for (decltype(auto) pair: indexed_header) {
         printf("%s: %s", pair.first.c_str(), pair.second.c_str());
     }
 }
@@ -57,41 +57,41 @@ TEST(TestHttp2, DynamicTable_0) {
 TEST(TestHttp2, HuffmanEncoder) {
     sese::net::http::HuffmanEncoder encoder;
     {
-        const char buf[] = "\xdc\x34\xfd\x28\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62\xd1\xbf";
+        const char BUF[] = "\xdc\x34\xfd\x28\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62\xd1\xbf";
         auto code = encoder.encode("Sat, 01 Apr 2023 14:57:33 GMT");
         ASSERT_TRUE(!code.empty());
 
-        std::string_view bufView{buf, sizeof(buf) - 1};
-        std::string_view codeView{(const char *) code.data(), code.size()};
-        EXPECT_TRUE(bufView == codeView);
+        std::string_view buf_view{BUF, sizeof(BUF) - 1};
+        std::string_view code_view{(const char *) code.data(), code.size()};
+        EXPECT_TRUE(buf_view == code_view);
     }
     {
-        const char buf[] = "\xfe\x5c\x64\xa3\x14\x8c\x95\x60\xbd\x1b\x5f\xcf";
+        const char BUF[] = "\xfe\x5c\x64\xa3\x14\x8c\x95\x60\xbd\x1b\x5f\xcf";
         auto code = encoder.encode("\"63ea2d3e-18b4\"");
         ASSERT_TRUE(!code.empty());
 
-        std::string_view bufView{buf, sizeof(buf) - 1};
-        std::string_view codeView{(const char *) code.data(), code.size()};
-        EXPECT_TRUE(bufView == codeView);
+        std::string_view buf_view{BUF, sizeof(BUF) - 1};
+        std::string_view code_view{(const char *) code.data(), code.size()};
+        EXPECT_TRUE(buf_view == code_view);
     }
 }
 
 TEST(TestHttp2, HuffmanDecoder) {
     sese::net::http::HuffmanDecoder decoder;
 
-    const char buf1[] = "\xdc\x34\xfd\x28\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62\xd1\xbf";
-    auto str1 = decoder.decode(buf1, sizeof(buf1) - 1);
+    const char BUF1[] = "\xdc\x34\xfd\x28\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62\xd1\xbf";
+    auto str1 = decoder.decode(BUF1, sizeof(BUF1) - 1);
     ASSERT_TRUE(str1 != std::nullopt);
     EXPECT_TRUE(str1.value() == "Sat, 01 Apr 2023 14:57:33 GMT");
 
-    const char buf2[] = "\xfe\x5c\x64\xa3\x14\x8c\x95\x60\xbd\x1b\x5f\xcf";
-    auto str2 = decoder.decode(buf2, sizeof(buf2) - 1);
+    const char BUF2[] = "\xfe\x5c\x64\xa3\x14\x8c\x95\x60\xbd\x1b\x5f\xcf";
+    auto str2 = decoder.decode(BUF2, sizeof(BUF2) - 1);
     ASSERT_TRUE(str2 != std::nullopt);
     EXPECT_TRUE(str2.value() == "\"63ea2d3e-18b4\"");
 }
 
 TEST(TestHttp2, HPackDecode) {
-    const char buf[] = "\x88\x61\x96\xdc\x34\xfd\x28"
+    const char BUF[] = "\x88\x61\x96\xdc\x34\xfd\x28"
                        "\x00\xa9\x0d\x76\x28\x20\x09\x95\x02\xd5\xc6\xdd\xb8\xcb\x2a\x62"
                        "\xd1\xbf\x5f\x87\x49\x7c\xa5\x89\xd3\x4d\x1f\x6c\x96\xd0\x7a\xbe"
                        "\x94\x0b\x2a\x61\x2c\x6a\x08\x02\x65\x40\x8a\xe0\x9f\xb8\xd8\x14"
@@ -108,11 +108,11 @@ TEST(TestHttp2, HPackDecode) {
                        "\x40\x90\xf2\xb1\x0f\x52\x4b\x52\x56\x4f\xaa\xca\xb1\xeb\x49\x8f"
                        "\x52\x3f\x85\xa8\xe8\xa8\xd2\xcb";
 
-    auto input = sese::io::InputBufferWrapper(buf, sizeof(buf) - 1);
+    auto input = sese::io::InputBufferWrapper(BUF, sizeof(BUF) - 1);
     auto table = sese::net::http::DynamicTable();
     auto header = sese::net::http::Header();
 
-    ASSERT_TRUE(sese::net::http::HPackUtil::decode(&input, sizeof(buf) - 1, table, header));
+    ASSERT_TRUE(sese::net::http::HPackUtil::decode(&input, sizeof(BUF) - 1, table, header));
 
     showStreamHeader(header);
     showDynamicTable(table);
@@ -120,78 +120,78 @@ TEST(TestHttp2, HPackDecode) {
 
 TEST(TestHttp2, HeaderExample) {
     auto buffer = sese::io::ByteBuilder();
-    auto reqTable = sese::net::http::DynamicTable();
-    auto respTable = sese::net::http::DynamicTable();
+    auto req_table = sese::net::http::DynamicTable();
+    auto resp_table = sese::net::http::DynamicTable();
     size_t size;
 
     {
         puts("1st request");
-        auto onceHeader = sese::net::http::Header();
-        auto indexedHeader = sese::net::http::Header();
-        onceHeader.set(":method", "GET");
-        onceHeader.set(":scheme", "http");
-        onceHeader.set(":path", "/");
-        indexedHeader.set(":authority", "www.example.com");
-        size = sese::net::http::HPackUtil::encode(&buffer, reqTable, onceHeader, indexedHeader);
+        auto once_header = sese::net::http::Header();
+        auto indexed_header = sese::net::http::Header();
+        once_header.set(":method", "GET");
+        once_header.set(":scheme", "http");
+        once_header.set(":path", "/");
+        indexed_header.set(":authority", "www.example.com");
+        size = sese::net::http::HPackUtil::encode(&buffer, req_table, once_header, indexed_header);
 
         char raw[1024];
         buffer.read(raw, size);
-        showStreamHeader(onceHeader, indexedHeader);
-        showDynamicTable(reqTable);
+        showStreamHeader(once_header, indexed_header);
+        showDynamicTable(req_table);
 
-        auto respHeader = sese::net::http::Header();
+        auto resp_header = sese::net::http::Header();
         buffer.write(raw, size);
-        ASSERT_TRUE(sese::net::http::HPackUtil::decode(&buffer, size, respTable, respHeader));
+        ASSERT_TRUE(sese::net::http::HPackUtil::decode(&buffer, size, resp_table, resp_header));
 
-        showStreamHeader(respHeader);
-        showDynamicTable(respTable);
+        showStreamHeader(resp_header);
+        showDynamicTable(resp_table);
     }
 
     {
         puts("\n2nd request");
-        auto onceHeader = sese::net::http::Header();
-        auto indexedHeader = sese::net::http::Header();
-        onceHeader.set(":method", "GET");
-        onceHeader.set(":scheme", "http");
-        onceHeader.set(":path", "/");
-        indexedHeader.set(":authority", "www.example.com");
-        indexedHeader.set("cache-control", "no-cache");
-        size = sese::net::http::HPackUtil::encode(&buffer, reqTable, onceHeader, indexedHeader);
+        auto once_header = sese::net::http::Header();
+        auto indexed_header = sese::net::http::Header();
+        once_header.set(":method", "GET");
+        once_header.set(":scheme", "http");
+        once_header.set(":path", "/");
+        indexed_header.set(":authority", "www.example.com");
+        indexed_header.set("cache-control", "no-cache");
+        size = sese::net::http::HPackUtil::encode(&buffer, req_table, once_header, indexed_header);
 
         char raw[1024];
         buffer.read(raw, size);
-        showStreamHeader(onceHeader, indexedHeader);
-        showDynamicTable(reqTable);
+        showStreamHeader(once_header, indexed_header);
+        showDynamicTable(req_table);
 
-        auto respHeader = sese::net::http::Header();
+        auto resp_header = sese::net::http::Header();
         buffer.write(raw, size);
-        ASSERT_TRUE(sese::net::http::HPackUtil::decode(&buffer, size, respTable, respHeader));
+        ASSERT_TRUE(sese::net::http::HPackUtil::decode(&buffer, size, resp_table, resp_header));
 
-        showStreamHeader(respHeader);
-        showDynamicTable(respTable);
+        showStreamHeader(resp_header);
+        showDynamicTable(resp_table);
     }
 
     {
         puts("\n3rd request");
-        auto onceHeader = sese::net::http::Header();
-        auto indexedHeader = sese::net::http::Header();
-        onceHeader.set(":method", "GET");
-        onceHeader.set(":scheme", "http");
-        onceHeader.set(":path", "/index.html");
-        indexedHeader.set(":authority", "www.example.com");
-        indexedHeader.set("custom-key", "custom-value");
-        size = sese::net::http::HPackUtil::encode(&buffer, reqTable, onceHeader, indexedHeader);
+        auto once_header = sese::net::http::Header();
+        auto indexed_header = sese::net::http::Header();
+        once_header.set(":method", "GET");
+        once_header.set(":scheme", "http");
+        once_header.set(":path", "/index.html");
+        indexed_header.set(":authority", "www.example.com");
+        indexed_header.set("custom-key", "custom-value");
+        size = sese::net::http::HPackUtil::encode(&buffer, req_table, once_header, indexed_header);
 
         char raw[1024];
         buffer.read(raw, size);
-        showStreamHeader(onceHeader, indexedHeader);
-        showDynamicTable(reqTable);
+        showStreamHeader(once_header, indexed_header);
+        showDynamicTable(req_table);
 
-        auto respHeader = sese::net::http::Header();
+        auto resp_header = sese::net::http::Header();
         buffer.write(raw, size);
-        ASSERT_TRUE(sese::net::http::HPackUtil::decode(&buffer, size, respTable, respHeader));
+        ASSERT_TRUE(sese::net::http::HPackUtil::decode(&buffer, size, resp_table, resp_header));
 
-        showStreamHeader(respHeader);
-        showDynamicTable(respTable);
+        showStreamHeader(resp_header);
+        showDynamicTable(resp_table);
     }
 }

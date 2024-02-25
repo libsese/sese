@@ -5,11 +5,11 @@
 #include "gtest/gtest.h"
 
 TEST(TestCSVUtil, Reader) {
-    const char buffer[] = "A1,B1,C1,D1,E1,\r\n"
+    const char BUFFER[] = "A1,B1,C1,D1,E1,\r\n"
                           "A2,B2,C2,D2,E2,F2\r\n"
                           "A3,,C3,\"D3\",,\n"
                           "A4,B4,C4,D4,E4,";
-    auto in = sese::io::InputBufferWrapper(buffer, sizeof(buffer) - 1);
+    auto in = sese::io::InputBufferWrapper(BUFFER, sizeof(BUFFER) - 1);
     sese::CSVReader reader(&in);
     sese::CSVReader::Row row;
     do {

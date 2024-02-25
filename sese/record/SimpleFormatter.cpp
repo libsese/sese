@@ -25,10 +25,10 @@ extern "C" API const char *getLevelString(record::Level level) noexcept {
     }
 }
 
-record::SimpleFormatter::SimpleFormatter(const std::string &textPattern, const std::string &timePattern) noexcept
+record::SimpleFormatter::SimpleFormatter(const std::string &text_pattern, const std::string &time_pattern) noexcept
     : AbstractFormatter() {
-    this->textPattern = textPattern;
-    this->timePattern = timePattern;
+    this->textPattern = text_pattern;
+    this->timePattern = time_pattern;
 }
 
 std::string record::SimpleFormatter::dump(const Event::Ptr &event) noexcept {

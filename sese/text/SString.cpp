@@ -14,7 +14,7 @@ using sstr::SString;
 using sstr::SStringView;
 using Iterator = sstr::SStringView::Iterator;
 
-static SChar NullChar(0);
+static SChar null_char(0);
 
 #pragma region Util
 
@@ -38,6 +38,7 @@ size_t sstr::getStringLengthFromUTF8String(const char *str) {
     }
 }
 
+// NOLINTBEGIN
 char sstr::getSizeFromUTF8Char(char ch) {
     if ((ch & 0b10000000) == 0b00000000) {
         return 1;
@@ -53,25 +54,26 @@ char sstr::getSizeFromUTF8Char(char ch) {
 }
 
 char sstr::getUTF8SizeFromUnicodeChar(SChar ch) {
-    if ((uint32_t) ch <= 0x7f) {
+    if (static_cast<uint32_t>(ch) <= 0x7f) {
         return 1;
-    } else if ((uint32_t) ch > 0x7f && (uint32_t) ch <= 0x7ff) {
+    } else if (static_cast<uint32_t>(ch) > 0x7f && static_cast<uint32_t>(ch) <= 0x7ff) {
         return 2;
-    } else if ((uint32_t) ch > 0x7ff && (uint32_t) ch <= 0xffff) {
+    } else if (static_cast<uint32_t>(ch) > 0x7ff && static_cast<uint32_t>(ch) <= 0xffff) {
         return 3;
-    } else if ((uint32_t) ch > 0xffff && (uint32_t) ch <= 0x7ffff) {
+    } else if (static_cast<uint32_t>(ch) > 0xffff && static_cast<uint32_t>(ch) <= 0x7ffff) {
         return 4;
     } else {
         return -1;
     }
 }
+// NOLINTEND
 
 /// 从 wchar_t 中获取该字符在 UTF-8 中的字节占位字节数
 /// \warning 该函数仅在 *nix 上可用
 /// \param ch 宽字节
 /// \return 占位字节数
 inline char getUTF8SizeFromWChat(wchar_t ch) {
-    return getUTF8SizeFromUnicodeChar((SChar) ch);
+    return getUTF8SizeFromUnicodeChar(static_cast<SChar>(ch));
 }
 
 SChar sstr::getUnicodeCharFromUTF8Char(char size, const char *ch) {
@@ -85,7 +87,7 @@ SChar sstr::getUnicodeCharFromUTF8Char(char size, const char *ch) {
         case 4:
             return SChar((*ch & 0b00000111) << 18 | (*(ch + 1) & 0b00111111) << 12 | (*(ch + 2) & 0b00111111) << 6 | (*(ch + 3) & 0b00111111));
         default:
-            return NullChar;
+            return null_char;
     }
 }
 
@@ -96,19 +98,19 @@ SChar sstr::getUnicodeCharFromUTF8Char(char size, const char *ch) {
 /// \return 是否成功
 static bool insertUnicodeChar2UTF8String(char *destination, uint32_t code, size_t n) {
     if (1 == n) {
-        *(destination + 0) = (char) (0b01111111 & code);
+        *(destination + 0) = static_cast<char>(0b01111111 & code);
     } else if (2 == n) {
-        *(destination + 0) = (char) (0b11000000 | (0b0000011111000000 & code) >> 6);
-        *(destination + 1) = (char) (0b10000000 | (0b0000000000111111 & code));
+        *(destination + 0) = static_cast<char>(0b11000000 | (0b0000011111000000 & code) >> 6);
+        *(destination + 1) = static_cast<char>(0b10000000 | (0b0000000000111111 & code));
     } else if (3 == n) {
-        *(destination + 0) = (char) (0b11100000 | (0b1111000000000000 & code) >> 12);
-        *(destination + 1) = (char) (0b10000000 | (0b0000111111000000 & code) >> 6);
-        *(destination + 2) = (char) (0b10000000 | (0b0000000000111111 & code));
+        *(destination + 0) = static_cast<char>(0b11100000 | (0b1111000000000000 & code) >> 12);
+        *(destination + 1) = static_cast<char>(0b10000000 | (0b0000111111000000 & code) >> 6);
+        *(destination + 2) = static_cast<char>(0b10000000 | (0b0000000000111111 & code));
     } else if (4 == n) {
-        *(destination + 0) = (char) (0b11110000 | (0b000111000000000000000000 & code) >> 18);
-        *(destination + 1) = (char) (0b10000000 | (0b000000111111000000000000 & code) >> 12);
-        *(destination + 2) = (char) (0b10000000 | (0b000000000000111111000000 & code) >> 6);
-        *(destination + 3) = (char) (0b10000000 | (0b000000000000000000111111 & code));
+        *(destination + 0) = static_cast<char>(0b11110000 | (0b000111000000000000000000 & code) >> 18);
+        *(destination + 1) = static_cast<char>(0b10000000 | (0b000000111111000000000000 & code) >> 12);
+        *(destination + 2) = static_cast<char>(0b10000000 | (0b000000000000111111000000 & code) >> 6);
+        *(destination + 3) = static_cast<char>(0b10000000 | (0b000000000000000000111111 & code));
     } else {
         return false;
     }
@@ -160,7 +162,7 @@ static void toUpper(char *str) {
 
 #pragma region SChar
 
-SChar::SChar(uint32_t _code) noexcept { code = _code; }
+SChar::SChar(uint32_t code) noexcept { SChar::code = code; }
 
 bool SChar::operator==(const SChar &ch) const { return ch.code == code; }
 bool SChar::operator<(const SChar &ch) const { return code < ch.code; }
@@ -186,7 +188,7 @@ Iterator::Iterator(const char *ref, size_t size, size_t pos) {
 }
 
 Iterator Iterator::operator++() {
-    if (NullChar == _ch) {
+    if (null_char == _ch) {
         return *this;
     }
     auto n = getUTF8SizeFromUnicodeChar(_ch);
@@ -195,15 +197,15 @@ Iterator Iterator::operator++() {
     return *this;
 }
 
-Iterator Iterator::operator++(int c) {
-    auto count = 0;
-    while (_ch != NullChar || c == count) {
-        auto n = getUTF8SizeFromUnicodeChar(_ch);
-        _pos += n;
-        _ch = sstr::getUnicodeFromUTF8Char(_ref + _pos);
-    }
-    return *this;
-}
+// Iterator Iterator::operator++(int c) {
+//     auto count = 0;
+//     while (_ch != null_char || c == count) {
+//         auto n = getUTF8SizeFromUnicodeChar(_ch);
+//         _pos += n;
+//         _ch = sstr::getUnicodeFromUTF8Char(_ref + _pos);
+//     }
+//     return *this;
+// }
 
 bool Iterator::operator==(const Iterator &other) const {
     return _ref + _pos == other._ref + other._pos;
@@ -245,26 +247,26 @@ sstr::SString::SString() noexcept : SStringView() {}
 SString::SString(const char *str, size_t size) : SStringView() {
     _size = size;
     _capacity = (size / BLOCK_SIZE + 1) * BLOCK_SIZE;
-    _data = (char *) malloc(_capacity);
+    _data = static_cast<char *>(malloc(_capacity));
     memcpy(_data, str, size);
     _data[size] = '\0';
 }
 
-SString::SString(const sstr::SString &sString) noexcept : SStringView(sString) {
-    _capacity = sString._capacity;
-    _size = sString._size;
-    _data = (char *) malloc(_capacity);
-    memcpy(_data, sString._data, _size + 1);
+SString::SString(const sstr::SString &s_string) noexcept : SStringView(s_string) {
+    _capacity = s_string._capacity;
+    _size = s_string._size;
+    _data = static_cast<char *>(malloc(_capacity));
+    memcpy(_data, s_string._data, _size + 1);
 }
 
-SString::SString(sstr::SString &&sString) noexcept : SStringView() {
-    _data = sString._data;
-    _capacity = sString._capacity;
-    _size = sString._size;
+SString::SString(sstr::SString &&s_string) noexcept : SStringView() {
+    _data = s_string._data;
+    _capacity = s_string._capacity;
+    _size = s_string._size;
 
-    sString._data = nullptr;
-    sString._capacity = 0;
-    sString._size = 0;
+    s_string._data = nullptr;
+    s_string._capacity = 0;
+    s_string._size = 0;
 }
 
 void SString::toLower() {
@@ -276,14 +278,14 @@ void SString::toUpper() {
 }
 
 SString SString::fromUTF8(const char *str) {
-    SString sString;
-    sString._size = getByteLengthFromUTF8String(str);
-    auto n = sString._size / BLOCK_SIZE + 1;
-    sString._capacity = n * BLOCK_SIZE;
-    sString._data = (char *) malloc(n * sString._capacity);
-    memcpy(sString._data, str, sString._size);
-    sString._data[sString._size] = '\0';
-    return sString;
+    SString s_string;
+    s_string._size = getByteLengthFromUTF8String(str);
+    auto n = s_string._size / BLOCK_SIZE + 1;
+    s_string._capacity = n * BLOCK_SIZE;
+    s_string._data = static_cast<char *>(malloc(n * s_string._capacity));
+    memcpy(s_string._data, str, s_string._size);
+    s_string._data[s_string._size] = '\0';
+    return s_string;
 }
 
 SString SString::fromSChars(SChar ch[], size_t size) {
@@ -292,12 +294,12 @@ SString SString::fromSChars(SChar ch[], size_t size) {
         string._size += getUTF8SizeFromUnicodeChar(ch[i]);
     }
     string._capacity = (string._size / BLOCK_SIZE + 1) * BLOCK_SIZE;
-    string._data = (char *) malloc(string._capacity);
+    string._data = static_cast<char *>(malloc(string._capacity));
 
     auto index = 0;
     for (auto i = 0; i < size; i++) {
         auto n = getUTF8SizeFromUnicodeChar(ch[i]);
-        insertUnicodeChar2UTF8String(string._data + index, (uint32_t) ch[i], n);
+        insertUnicodeChar2UTF8String(string._data + index, static_cast<uint32_t>(ch[i]), n);
         index += n;
     }
 
@@ -312,12 +314,12 @@ SString SString::fromSChars(std::vector<SChar> &chars) {
         string._size += getUTF8SizeFromUnicodeChar(i);
     }
     string._capacity = (string._size / BLOCK_SIZE + 1) * BLOCK_SIZE;
-    string._data = (char *) malloc(string._capacity);
+    string._data = static_cast<char *>(malloc(string._capacity));
 
     auto index = 0;
     for (auto i: chars) {
         auto n = getUTF8SizeFromUnicodeChar(i);
-        insertUnicodeChar2UTF8String(string._data + index, (uint32_t) i, n);
+        insertUnicodeChar2UTF8String(string._data + index, static_cast<uint32_t>(i), n);
         index += n;
     }
 
@@ -330,19 +332,19 @@ SString SString::fromUCS2LE(const wchar_t *str) {
     // as utf-16le
     // on *nix, wchar_t use 4 bytes by default
     // as utf-32le
-    SString sString;
+    SString s_string;
     const wchar_t *p = str;
     while (L'\0' != *p) {
-        sString._size += getUTF8SizeFromWChat(*p);
+        s_string._size += getUTF8SizeFromWChat(*p);
         p++;
     }
-    sString._capacity = (sString._size / BLOCK_SIZE + 1) * BLOCK_SIZE;
-    sString._data = (char *) malloc(sString._capacity);
+    s_string._capacity = (s_string._size / BLOCK_SIZE + 1) * BLOCK_SIZE;
+    s_string._data = static_cast<char *>(malloc(s_string._capacity));
     // 无法转换部分字符串
     // wcstombs(sString._data, str, sString._size);
 
 #ifdef _WIN32
-    WideCharToMultiByte(CP_UTF8, 0, str, -1, sString._data, sString._size, NULL, NULL);
+    WideCharToMultiByte(CP_UTF8, 0, str, -1, s_string._data, s_string._size, nullptr, nullptr);
 #else
     p = str;
     auto index = 0;
@@ -354,39 +356,39 @@ SString SString::fromUCS2LE(const wchar_t *str) {
     }
 #endif
 
-    sString._data[sString._size] = '\0';
-    return sString;
+    s_string._data[s_string._size] = '\0';
+    return s_string;
 }
 
 void SString::operator+=(const char *str) {
     auto len = strlen(str);
-    auto newSize = _size + len;
-    auto n = newSize / BLOCK_SIZE + 1;
+    auto new_size = _size + len;
+    auto n = new_size / BLOCK_SIZE + 1;
     _capacity = n * BLOCK_SIZE;
 
-    auto newData = (char *) malloc(_capacity);
-    memcpy(newData + 0, _data, _size);
-    memcpy(newData + _size, str, len);
-    newData[newSize] = '\0';
+    auto new_data = static_cast<char *>(malloc(_capacity));
+    memcpy(new_data + 0, _data, _size);
+    memcpy(new_data + _size, str, len);
+    new_data[new_size] = '\0';
     free(_data);
 
-    _data = newData;
-    _size = newSize;
+    _data = new_data;
+    _size = new_size;
 }
 
 void SString::operator+=(const sstr::SStringView &str) {
-    auto newSize = _size + str.size();
-    auto n = newSize / BLOCK_SIZE + 1;
+    auto new_size = _size + str.size();
+    auto n = new_size / BLOCK_SIZE + 1;
     _capacity = n * BLOCK_SIZE;
 
-    auto newData = (char *) malloc(_capacity);
-    memcpy(newData + 0, _data, _size);
-    memcpy(newData + _size, str.data(), str.size());
-    newData[newSize] = '\0';
+    auto new_data = static_cast<char *>(malloc(_capacity));
+    memcpy(new_data + 0, _data, _size);
+    memcpy(new_data + _size, str.data(), str.size());
+    new_data[new_size] = '\0';
     free(_data);
 
-    _data = newData;
-    _size = newSize;
+    _data = new_data;
+    _size = new_size;
 }
 
 #pragma endregion
@@ -510,25 +512,25 @@ SString::IteratorType SStringView::end() {
 #endif
 
 SString SStringView::trim() const {
-    auto newSize = _size;
+    auto new_size = _size;
     for (auto i = 0; i < _size; i++) {
         if (_data[i] == ' ') {
-            newSize--;
+            new_size--;
         }
     }
 
-    auto newCap = (newSize / BLOCK_SIZE + 1) * BLOCK_SIZE;
+    auto new_cap = (new_size / BLOCK_SIZE + 1) * BLOCK_SIZE;
 
-    char *newData = (char *) malloc(newCap);
+    char *new_data = static_cast<char *>(malloc(new_cap));
     char *p = _data;
     while (*p == ' ') p++;
-    memcpy(newData, p, newSize);
-    newData[newSize] = '\0';
+    memcpy(new_data, p, new_size);
+    new_data[new_size] = '\0';
 
     SString string;
-    string._size = newSize;
-    string._capacity = newCap;
-    string._data = newData;
+    string._size = new_size;
+    string._capacity = new_cap;
+    string._data = new_data;
     return string;
 }
 
@@ -536,7 +538,7 @@ SString SStringView::reverse() const {
     SString string;
     string._size = _size;
     string._capacity = (_size / BLOCK_SIZE + 1) * BLOCK_SIZE;
-    string._data = (char *) malloc(string._capacity);
+    string._data = static_cast<char *>(malloc(string._capacity));
 
     auto index = _size;
     string._data[index] = '\0';
@@ -557,7 +559,7 @@ SString SStringView::append(const char *str) const {
     res._size = _size + len;
     auto n = res._size / BLOCK_SIZE + 1;
     res._capacity = n * BLOCK_SIZE;
-    res._data = (char *) malloc(res._capacity);
+    res._data = static_cast<char *>(malloc(res._capacity));
     memcpy(res._data + 0, _data, _size);
     memcpy(res._data + _size, str, len);
     res._data[res._size] = '\0';
@@ -569,7 +571,7 @@ SString SStringView::append(const sstr::SStringView &str) const {
     res._size = _size + str._size;
     auto n = res._size / BLOCK_SIZE + 1;
     res._capacity = n * BLOCK_SIZE;
-    res._data = (char *) malloc(res._capacity);
+    res._data = static_cast<char *>(malloc(res._capacity));
     memcpy(res._data + 0, _data, _size);
     memcpy(res._data + _size, str._data, str._size);
     res._data[res._size] = '\0';
@@ -609,7 +611,7 @@ SString SStringView::substring(size_t begin) const {
 
     str._size = _size + _data - p;
     str._capacity = (str._size / BLOCK_SIZE + 1) * BLOCK_SIZE;
-    str._data = (char *) malloc(str._capacity);
+    str._data = static_cast<char *>(malloc(str._capacity));
     memcpy(str._data, p, str._size);
     str._data[str._size] = '\0';
     return str;
@@ -622,7 +624,7 @@ SString SStringView::substring(size_t begin, size_t len) const {
 
     // pre calculated
     auto count = 0;
-    auto newSize = 0;
+    auto new_size = 0;
     auto p = start;
     while (true) {
         if ('\0' == *p) {
@@ -631,15 +633,15 @@ SString SStringView::substring(size_t begin, size_t len) const {
             break;
         } else {
             auto n = sstr::getSizeFromUTF8Char(*p);
-            newSize += n;
+            new_size += n;
             p += n;
             count++;
         }
     }
 
-    str._size = newSize;
+    str._size = new_size;
     str._capacity = (str._size / BLOCK_SIZE + 1) * BLOCK_SIZE;
-    str._data = (char *) malloc(str._capacity);
+    str._data = static_cast<char *>(malloc(str._capacity));
     memcpy(str._data, start, str._size);
     str._data[str._size] = '\0';
     return str;
@@ -694,17 +696,17 @@ SChar SStringView::at(size_t index) const {
     index += 1;
     size_t n = 0;
     for (size_t i = 0; i < _size;) {
-        if (0 == _data[i]) return NullChar;
+        if (0 == _data[i]) return null_char;
         char c = getSizeFromUTF8Char(_data[i]);
-        if (static_cast<char>(-1) == c) return NullChar;
-        if (i + c > _size) return NullChar;
+        if (static_cast<char>(-1) == c) return null_char;
+        if (i + c > _size) return null_char;
         n++;
         if (index == n) {
             return getUnicodeCharFromUTF8Char(c, &_data[i]);
         }
         i += c;
     }
-    return NullChar;
+    return null_char;
 }
 
 SChar SStringView::operator[](size_t index) const {

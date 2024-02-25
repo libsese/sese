@@ -119,17 +119,17 @@ TEST(TestSStringView, Misc) {
     EXPECT_EQ(pos0, 7);
     EXPECT_EQ(pos1, 5);
 
-    auto spaceString = sese::text::StringView("  こんにちは  ");
-    auto trimString = spaceString.trim();
+    auto space_string = sese::text::StringView("  こんにちは  ");
+    auto trim_string = space_string.trim();
     // printf("after trim: %s\n", trimString.data());
     // printf("after reverse: %s\n", trimString.reverse().data());
     // puts("");
-    EXPECT_EQ(trimString, "こんにちは");
+    EXPECT_EQ(trim_string, "こんにちは");
 
-    auto spiltString = sese::text::StringView("こんにちは、わたくしはSStringです");
-    printf("spilt string: %s\n", spiltString.data());
-    auto spiltRes = spiltString.split("は");
-    for (auto i: spiltRes) {
+    auto spilt_string = sese::text::StringView("こんにちは、わたくしはSStringです");
+    printf("spilt string: %s\n", spilt_string.data());
+    auto spilt_res = spilt_string.split("は");
+    for (auto i: spilt_res) {
         printf("%s\n", i.data());
     }
 }
@@ -159,9 +159,9 @@ TEST(TestSString, Misc) {
     EXPECT_TRUE(str.null());
 
     str = sese::text::StringView("你吃了吗？");
-    auto endsWord = sese::text::StringView("吗？");
+    auto ends_word = sese::text::StringView("吗？");
     // printf("str.endsWith = %s\n", str.endsWith(endsWord) ? "true" : "false");
-    EXPECT_TRUE(str.endsWith(endsWord));
+    EXPECT_TRUE(str.endsWith(ends_word));
 
     str = sese::text::StringView("你好 hello");
     // printf("str.isLower = %s\n", str.isLower() ? "true" : "false");
@@ -183,10 +183,10 @@ TEST(TestSString, Misc) {
     // printf("upper.toLower = %s\n", upper.data());
     EXPECT_EQ(upper, "你好 hello");
 
-    auto oldStr = sese::text::String::fromUTF8("hello");
-    auto chars = oldStr.toChars();
-    auto newStr = sese::text::String::fromSChars(chars.data(), chars.size());
-    newStr.toUpper();
-    EXPECT_TRUE(oldStr.isLower());
-    EXPECT_FALSE(newStr.isLower());
+    auto old_str = sese::text::String::fromUTF8("hello");
+    auto chars = old_str.toChars();
+    auto new_str = sese::text::String::fromSChars(chars.data(), chars.size());
+    new_str.toUpper();
+    EXPECT_TRUE(old_str.isLower());
+    EXPECT_FALSE(new_str.isLower());
 }

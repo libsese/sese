@@ -9,11 +9,11 @@
 #include <mach-o/dyld.h>
 #endif
 
-static sese::system::Path gWorkDir;
+static sese::system::Path g_work_dir;
 
-static sese::system::Path gExecutablePath;
+static sese::system::Path g_executable_path;
 
-static std::string gExecutableName;
+static std::string g_executable_name;
 
 sese::system::PathsInitiateTask::PathsInitiateTask() : InitiateTask(__FUNCTION__) {}
 
@@ -25,19 +25,19 @@ int32_t sese::system::PathsInitiateTask::init() noexcept {
     len = GetCurrentDirectoryA(sizeof(buffer), buffer);
     if (len == 0) return -1;
     Path::replaceWindowsPathSplitChar(buffer, len);
-    gWorkDir = Path::fromNativePath(buffer);
-    if (!gWorkDir.isValid()) return -1;
+    g_work_dir = Path::fromNativePath(buffer);
+    if (!g_work_dir.isValid()) return -1;
 
     ZeroMemory(buffer, sizeof(buffer));
     len = GetModuleFileNameA(nullptr, buffer, PATH_MAX);
     if (len == 0) return -1;
     Path::replaceWindowsPathSplitChar(buffer, len);
     auto p = std::strrchr(buffer, '/');
-    gExecutablePath = Path::fromNativePath(buffer);
+    g_executable_path = Path::fromNativePath(buffer);
     *p = 0;
     p += 1;
-    if (!gExecutablePath.isValid()) return -1;
-    gExecutableName = p;
+    if (!g_executable_path.isValid()) return -1;
+    g_executable_name = p;
 
     return 0;
 #undef PATH_MAX
@@ -77,13 +77,13 @@ int32_t sese::system::PathsInitiateTask::destroy() noexcept {
 }
 
 const sese::system::Path &sese::system::Paths::getWorkDir() {
-    return gWorkDir;
+    return g_work_dir;
 }
 
 const sese::system::Path &sese::system::Paths::getExecutablePath() {
-    return gExecutablePath;
+    return g_executable_path;
 }
 
 const std::string &sese::system::Paths::getExecutableName() {
-    return gExecutableName;
+    return g_executable_name;
 }

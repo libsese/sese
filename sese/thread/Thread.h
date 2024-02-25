@@ -81,7 +81,7 @@ public:
     static Thread::RuntimeData *getCurrentThreadData() noexcept;
 
 private:
-    static tid_t mainId;
+    static tid_t main_id;
     std::shared_ptr<RuntimeData> data = nullptr;
 };
 
