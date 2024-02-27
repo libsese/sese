@@ -52,7 +52,7 @@ void FileNotifier::loopNonblocking() noexcept {
                 nullptr
             )) { break; }
             if (WaitForSingleObject(static_cast<LPOVERLAPPED>(overlapped)->hEvent, INFINITE) == WAIT_OBJECT_0) {
-                if (!is_Shutdown) {
+                if (!is_shutdown) {
                     size_t count = 0;
                     auto info_pos = buffer + 0;
                     std::string name0;
