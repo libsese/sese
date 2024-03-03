@@ -103,19 +103,19 @@ bool ArchiveReader::extract(const std::filesystem::path &src_path, const std::fi
     return true;
 }
 
-inline int open(struct archive *a, void *data) {
+SESE_ALWAYS_INLINE int open(struct archive *a, void *data) {
     return ArchiveReader::openCallback(a, static_cast<ArchiveReader *>(data));
 }
 
 #ifdef __APPLE__
-inline long read(archive *a, void *data, const void **buffer) {
+SESE_ALWAYS_INLINE long read(archive *a, void *data, const void **buffer) {
 #else
-inline int64_t read(struct archive *a, void *data, const void **buffer) {
+SESE_ALWAYS_INLINE int64_t read(struct archive *a, void *data, const void **buffer) {
 #endif
     return ArchiveReader::readCallback(a, static_cast<ArchiveReader *>(data), buffer);
 }
 
-inline int close(struct archive *a, void *data) {
+SESE_ALWAYS_INLINE int close(struct archive *a, void *data) {
     return ArchiveReader::closeCallback(a, static_cast<ArchiveReader *>(data));
 }
 

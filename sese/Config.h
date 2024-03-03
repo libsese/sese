@@ -44,6 +44,15 @@
 #define SESE_DEPRECATED_WITH(x) [[deprecated(x)]]
 #endif /* __MINGW32__ */
 
+#if defined(_MSC_VER)
+#define SESE_ALWAYS_INLINE __forceinline
+#elif defined(__clang__)
+#define SESE_ALWAYS_INLINE inline __attribute__((always_inline))
+#elif defined(__GNUC__)
+#define SESE_ALWAYS_INLINE inline __attribute__((always_inline))
+#else
+#endif
+
 /// 默认时区
 constexpr static int32_t TIME_DEFAULT_ZONE = 8;
 /// 世界协调时匹配格式
