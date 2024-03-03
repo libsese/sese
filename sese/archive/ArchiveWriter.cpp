@@ -27,22 +27,22 @@ inline int open(struct archive *a, void *archive) {
 }
 
 #ifdef __APPLE__
-inline long write(archive *a, void *archive, const void *buffer, size_t len) {
+SESE_ALWAYS_INLINE long write(archive *a, void *archive, const void *buffer, size_t len) {
 #else
-inline int64_t write(struct archive *a, void *archive, const void *buffer, size_t len) {
+SESE_ALWAYS_INLINE int64_t write(struct archive *a, void *archive, const void *buffer, size_t len) {
 #endif
     return ArchiveWriter::writeCallback(a, static_cast<ArchiveWriter *>(archive), buffer, len);
 }
 
-inline int close(struct archive *a, void *archive) {
+SESE_ALWAYS_INLINE int close(struct archive *a, void *archive) {
     return ArchiveWriter::closeCallback(a, static_cast<ArchiveWriter *>(archive));
 }
 
-inline int free(struct archive *a, void *archive) {
+SESE_ALWAYS_INLINE int free(struct archive *a, void *archive) {
     return ArchiveWriter::freeCallback(a, static_cast<ArchiveWriter *>(archive));
 }
 
-inline const char *passphrase(struct archive *a,void *archive) {
+SESE_ALWAYS_INLINE const char *passphrase(struct archive *a,void *archive) {
     return ArchiveWriter::passphraseCallback(a, static_cast<ArchiveWriter *>(archive));
 }
 
