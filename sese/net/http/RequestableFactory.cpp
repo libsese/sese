@@ -4,7 +4,7 @@
 using namespace sese::net::http;
 
 std::unique_ptr<Requestable> RequestableFactory::createHttpRequest(const std::string &url, const std::string &proxy) {
-    auto rt = std::make_unique<AsioHttpClient>();
+    auto rt = std::make_unique<internal::net::http::AsioHttpClient>();
     if (rt->init(url, proxy)) {
         return rt;
     } else {

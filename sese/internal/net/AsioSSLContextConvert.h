@@ -1,8 +1,12 @@
 #pragma once
 
 #include "sese/security/SSLContext.h"
-#include <asio/ssl.hpp>
 
-inline asio::ssl::context convert(const sese::security::SSLContext &context) {
-    return asio::ssl::context(static_cast<SSL_CTX *>(context.getContext()));
+#include <asio/ssl.hpp>
+#include <openssl/ssl.h>
+
+namespace sese::internal::net {
+inline asio::ssl::context convert(const sese::security::SSLContext::Ptr &context) {
+    return asio::ssl::context(static_cast<SSL_CTX *>(context->getContext()));
 }
+} // namespace sese::internal::net

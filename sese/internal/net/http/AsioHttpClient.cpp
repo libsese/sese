@@ -5,6 +5,7 @@
 #include "sese/util/Util.h"
 
 using namespace sese::net::http;
+using namespace sese::internal::net::http;
 
 AsioHttpClient::AsioHttpClient()
     : ioContext(),
