@@ -3,6 +3,7 @@
 #include "sese/net/IPv6Address.h"
 #include <asio.hpp>
 
+namespace sese::internal::net {
 inline asio::ip::address convert(const sese::net::IPAddress::Ptr &addr) {
     if (addr->getRawAddress()->sa_family == AF_INET) {
         const auto ipv4 = reinterpret_cast<sockaddr_in *>(addr->getRawAddress());
@@ -30,3 +31,4 @@ inline asio::ip::address convert(const sese::net::IPAddress::Ptr &addr) {
         return asio::ip::make_address_v6(bytes, ipv6->sin6_scope_id);
     }
 }
+} // namespace sese::internal::net

@@ -8,9 +8,9 @@
 #include <asio.hpp>
 #include <asio/ssl.hpp>
 
-namespace sese::net::http {
+namespace sese::internal::net::http {
 
-class AsioHttpClient : public Requestable {
+class AsioHttpClient : public sese::net::http::Requestable {
 public:
     AsioHttpClient();
 
@@ -29,8 +29,8 @@ public:
     std::string getLastErrorString() override;
 
 protected:
-    IPAddress::Ptr address = nullptr;
-    CookieMap::Ptr cookies = nullptr;
+    sese::net::IPAddress::Ptr address = nullptr;
+    sese::net::http::CookieMap::Ptr cookies = nullptr;
 
     asio::error_code code{};
     asio::io_context ioContext;
