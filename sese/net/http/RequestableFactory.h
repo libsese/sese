@@ -6,10 +6,11 @@
 #pragma once
 
 #include <sese/net/http/Requestable.h>
+#include <sese/util/NotInstantiable.h>
 
 namespace sese::net::http {
 /// 可请求类型工厂
-class RequestableFactory {
+class RequestableFactory : public NotInstantiable {
 public:
     /// 创建普通可请求类型
     /// \param url 请求地址，支持 https/http 协议

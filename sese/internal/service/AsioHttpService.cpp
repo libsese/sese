@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
+#include <sese/record/Marco.h>
 #include <sese/internal/service/AsioHttpService.h>
 #include <sese/internal/net/AsioSSLContextConvert.h>
 #include <sese/internal/net/AsioIPConvert.h>
@@ -49,14 +51,11 @@ sese::internal::service::AsioHttpService::AsioHttpService(
 }
 
 sese::internal::service::AsioHttpService::~AsioHttpService() {
-    if (ssl_context) { // NOLINT
-        delete ssl_context;
-    }
 }
 
 bool sese::internal::service::AsioHttpService::startup() {
     if (ssl) {
-        ssl_context = new asio::ssl::context(std::move(net::convert(ssl)));
+        ssl_context = new asio::ssl::context(net::convert(ssl));
     }
 
     code = acceptor.open(asio::ip::tcp::v4(), code);
@@ -96,26 +95,29 @@ void sese::internal::service::AsioHttpService::onAsyncAccept(asio::ip::tcp::sock
     if (ssl) {
         auto stream = new asio::ssl::stream<asio::ip::tcp::socket &>(client, *ssl_context);
         error = stream->handshake(asio::ssl::stream_base::handshake_type::server, error);
-        if (error) {
-            error = client.shutdown(asio::socket_base::shutdown_type::shutdown_both, error);
-            error = client.close(error);
-            delete stream;
-            return;
-        }
+        // if (error) {
+        //     SESE_DEBUG("error: %s", error.message().c_str());
+        //     error = client.shutdown(asio::socket_base::shutdown_type::shutdown_both, error);
+        //     error = client.close(error);
+        //     delete stream;
+        //     return;
+        // }
 
         auto session = std::make_shared<AsioHttpSession>(client, stream);
         auto buffer = new iocp::IOBufNode(MAX_BUFFER_SIZE);
         session->recv_buf.push(buffer);
         sessionMap[client.native_handle()] = session;
         stream->async_read_some(asio::buffer(buffer->buffer, MAX_BUFFER_SIZE), [session, this, buffer](const asio::error_code &error, std::size_t bytes_transferred) {
+            buffer->size = bytes_transferred;
             this->onAsyncRead(session, static_cast<char *>(buffer->buffer), bytes_transferred);
         });
     } else {
         auto session = std::make_shared<AsioHttpSession>(client, nullptr);
         auto buffer = new iocp::IOBufNode(MAX_BUFFER_SIZE);
         session->recv_buf.push(buffer);
-        sessionMap[session->socket.native_handle()] = std::move(session);
+        sessionMap[session->socket.native_handle()] = session;
         session->socket.async_read_some(asio::buffer(buffer->buffer, MAX_BUFFER_SIZE), [session, this, buffer](const asio::error_code &error, std::size_t bytes_transferred) {
+            buffer->size = bytes_transferred;
             this->onAsyncRead(session, static_cast<char *>(buffer->buffer), bytes_transferred);
         });
     }
@@ -141,12 +143,14 @@ void sese::internal::service::AsioHttpService::onAsyncRead(const std::shared_ptr
                 auto buf = new iocp::IOBufNode(MAX_BUFFER_SIZE);
                 session->recv_buf.push(buf);
                 session->stream->async_read_some(asio::buffer(buf->buffer, MAX_BUFFER_SIZE), [session, this, buf](const asio::error_code &error, std::size_t bytes_transferred) {
+                    buf->size = bytes_transferred;
                     this->onAsyncRead(session, static_cast<char *>(buf->buffer), bytes_transferred);
                 });
             } else {
                 auto buf = new iocp::IOBufNode(MAX_BUFFER_SIZE);
                 session->recv_buf.push(buf);
                 session->socket.async_read_some(asio::buffer(buf->buffer, MAX_BUFFER_SIZE), [session, this, buf](const asio::error_code &error, std::size_t bytes_transferred) {
+                    buf->size = bytes_transferred;
                     this->onAsyncRead(session, static_cast<char *>(buf->buffer), bytes_transferred);
                 });
             }
@@ -198,12 +202,13 @@ void sese::internal::service::AsioHttpService::onAsyncRead(const std::shared_ptr
         session->make_header = true;
     }
 
-    session->buffer_length = session->send_buf.peek(session->buffer, MTU_VALUE);
+    session->buffer_length = session->send_buf.read(session->buffer, MTU_VALUE);
     session->buffer_pos = 0;
     if (ssl) {
         session->stream->async_write_some(
                 asio::buffer(session->buffer + session->buffer_pos, session->buffer_length - session->buffer_pos),
                 [session, this](const asio::error_code &error, std::size_t bytes_transferred) {
+                    session->buffer_pos += bytes_transferred;
                     this->onAsyncWrite(session, bytes_transferred);
                 }
         );
@@ -211,6 +216,7 @@ void sese::internal::service::AsioHttpService::onAsyncRead(const std::shared_ptr
         session->socket.async_write_some(
                 asio::buffer(session->buffer + session->buffer_pos, session->buffer_length - session->buffer_pos),
                 [session, this](const asio::error_code &error, std::size_t bytes_transferred) {
+                    session->buffer_pos += bytes_transferred;
                     this->onAsyncWrite(session, bytes_transferred);
                 }
         );
@@ -218,7 +224,6 @@ void sese::internal::service::AsioHttpService::onAsyncRead(const std::shared_ptr
 }
 
 void sese::internal::service::AsioHttpService::onAsyncWrite(const std::shared_ptr<AsioHttpSession> &session, size_t bytes_transferred) {
-    session->buffer_pos += bytes_transferred;
     if (!session->send_header) {
     resend_header:
         if (session->buffer_pos < session->buffer_length - 1) {
@@ -226,24 +231,32 @@ void sese::internal::service::AsioHttpService::onAsyncWrite(const std::shared_pt
                 session->stream->async_write_some(
                         asio::buffer(session->buffer + session->buffer_pos, session->buffer_length - session->buffer_pos),
                         [session, this](const asio::error_code &error, std::size_t bytes_transferred) {
+                            session->buffer_pos += bytes_transferred;
                             this->onAsyncWrite(session, bytes_transferred);
                         }
                 );
+                return;
             } else {
                 session->socket.async_write_some(
                         asio::buffer(session->buffer + session->buffer_pos, session->buffer_length - session->buffer_pos),
                         [session, this](const asio::error_code &error, std::size_t bytes_transferred) {
+                            session->buffer_pos += bytes_transferred;
                             this->onAsyncWrite(session, bytes_transferred);
                         }
                 );
+                return;
             }
         } else {
-            session->buffer_length = session->send_buf.peek(session->buffer, MTU_VALUE);
+            session->buffer_length = session->send_buf.read(session->buffer, MTU_VALUE);
             session->buffer_pos = 0;
             if (session->buffer_length != 0) {
                 goto resend_header;
             }
         }
+        session->send_header = true;
+
+        session->buffer_length = session->resp().getBody().read(session->buffer, MTU_VALUE);
+        session->buffer_pos = 0;
     }
 
     if (!session->send_body) {
@@ -253,24 +266,32 @@ void sese::internal::service::AsioHttpService::onAsyncWrite(const std::shared_pt
                 session->stream->async_write_some(
                         asio::buffer(session->buffer + session->buffer_pos, session->buffer_length - session->buffer_pos),
                         [session, this](const asio::error_code &error, std::size_t bytes_transferred) {
+                            session->buffer_pos += bytes_transferred;
                             this->onAsyncWrite(session, bytes_transferred);
                         }
                 );
+                return;
             } else {
                 session->socket.async_write_some(
                         asio::buffer(session->buffer + session->buffer_pos, session->buffer_length - session->buffer_pos),
                         [session, this](const asio::error_code &error, std::size_t bytes_transferred) {
+                            session->buffer_pos += bytes_transferred;
                             this->onAsyncWrite(session, bytes_transferred);
                         }
                 );
+                return;
             }
         } else {
-            session->buffer_length = session->resp().getBody().peek(session->buffer, MTU_VALUE);
+            session->buffer_length = session->resp().getBody().read(session->buffer, MTU_VALUE);
             session->buffer_pos = 0;
             if (session->buffer_length != 0) {
                 goto resend_body;
             }
         }
+
+        session->buffer_pos = 0;
+        session->buffer_length = 0;
+        session->send_body = true;
     }
 
     // 完成一次响应，重置状态
@@ -286,4 +307,11 @@ void sese::internal::service::AsioHttpService::onAsyncWrite(const std::shared_pt
     session->send_body = false;
     session->buffer_pos = 0;
     session->buffer_length = 0;
+
+    // 暂时先只关闭
+    asio::error_code code;
+    code = session->socket.shutdown(asio::socket_base::shutdown_type::shutdown_both, code);
+    code = session->socket.close(code);
+
+    acceptor.async_accept([this](asio::error_code error, asio::ip::tcp::socket socket) { onAsyncAccept(socket); });
 }

@@ -18,3 +18,23 @@
 // limitations under the License.
 
 #pragma once
+
+#include <sese/service/Service.h>
+#include <sese/service/HttpSession.h>
+#include <sese/security/SSLContext.h>
+#include <sese/net/IPv6Address.h>
+#include <sese/util/NotInstantiable.h>
+
+#include <functional>
+
+namespace sese::service {
+class HttpServiceFactory : public NotInstantiable {
+public:
+    static std::unique_ptr<Service> createHttpService(
+            const net::IPAddress::Ptr &addr,
+            const security::SSLContext::Ptr &ssl,
+            size_t keep_alive,
+            size_t max_buffer_size,
+            const std::function<void(HttpSession *)> &callback);
+};
+}
