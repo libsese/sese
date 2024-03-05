@@ -35,7 +35,7 @@ class AsioHttpSession : public sese::service::HttpSession {
     friend class AsioHttpService;
 
 public:
-    AsioHttpSession(asio::ip::tcp::socket &socket, asio::ssl::stream<asio::ip::tcp::socket &> *stream);
+    AsioHttpSession(asio::ip::tcp::socket socket);
 
     ~AsioHttpSession() override;
 
@@ -75,7 +75,7 @@ public:
     int getLastError() override;
 
     void onAsyncAccept(asio::ip::tcp::socket &client);
-    void onAsyncRead(const std::shared_ptr<AsioHttpSession> &session, const char *buffer, size_t bytes_transferred);
+    void onAsyncRead(const std::shared_ptr<AsioHttpSession> &session, sese::iocp::IOBufNode *node, size_t bytes_transferred);
     void onAsyncWrite(const std::shared_ptr<AsioHttpSession> &session, size_t bytes_transferred);
 
 private:

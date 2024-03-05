@@ -21,10 +21,8 @@
 #include <sese/util/Util.h>
 
 sese::internal::service::AsioHttpSession::AsioHttpSession(
-        asio::ip::tcp::socket &socket,
-        asio::ssl::stream<asio::ip::tcp::socket &> *stream
-)
-    : socket(std::move(socket)), stream(stream) {
+        asio::ip::tcp::socket socket
+) : socket(std::move(socket)), stream(nullptr) {
 }
 
 sese::internal::service::AsioHttpSession::~AsioHttpSession() {
@@ -92,38 +90,39 @@ int sese::internal::service::AsioHttpService::getLastError() {
 
 void sese::internal::service::AsioHttpService::onAsyncAccept(asio::ip::tcp::socket &client) {
     asio::error_code error;
+    auto session = std::make_shared<AsioHttpSession>(std::move(client));
     if (ssl) {
-        auto stream = new asio::ssl::stream<asio::ip::tcp::socket &>(client, *ssl_context);
-        error = stream->handshake(asio::ssl::stream_base::handshake_type::server, error);
-        // if (error) {
-        //     SESE_DEBUG("error: %s", error.message().c_str());
-        //     error = client.shutdown(asio::socket_base::shutdown_type::shutdown_both, error);
-        //     error = client.close(error);
-        //     delete stream;
-        //     return;
-        // }
+        session->stream = new asio::ssl::stream<asio::ip::tcp::socket &>(session->socket, *ssl_context);
+        error = session->stream->handshake(asio::ssl::stream_base::handshake_type::server, error);
+        if (error) {
+            error = client.shutdown(asio::socket_base::shutdown_type::shutdown_both, error);
+            error = client.close(error);
+            delete session->stream;
+            session->stream = nullptr;
+            return;
+        }
 
-        auto session = std::make_shared<AsioHttpSession>(client, stream);
         auto buffer = new iocp::IOBufNode(MAX_BUFFER_SIZE);
         session->recv_buf.push(buffer);
         sessionMap[client.native_handle()] = session;
-        stream->async_read_some(asio::buffer(buffer->buffer, MAX_BUFFER_SIZE), [session, this, buffer](const asio::error_code &error, std::size_t bytes_transferred) {
+        session->stream->async_read_some(asio::buffer(buffer->buffer, MAX_BUFFER_SIZE), [session, this, buffer](const asio::error_code &error, std::size_t bytes_transferred) {
             buffer->size = bytes_transferred;
-            this->onAsyncRead(session, static_cast<char *>(buffer->buffer), bytes_transferred);
+            this->onAsyncRead(session, buffer, bytes_transferred);
         });
     } else {
-        auto session = std::make_shared<AsioHttpSession>(client, nullptr);
         auto buffer = new iocp::IOBufNode(MAX_BUFFER_SIZE);
         session->recv_buf.push(buffer);
         sessionMap[session->socket.native_handle()] = session;
         session->socket.async_read_some(asio::buffer(buffer->buffer, MAX_BUFFER_SIZE), [session, this, buffer](const asio::error_code &error, std::size_t bytes_transferred) {
             buffer->size = bytes_transferred;
-            this->onAsyncRead(session, static_cast<char *>(buffer->buffer), bytes_transferred);
+            this->onAsyncRead(session, buffer, bytes_transferred);
         });
     }
 }
 
-void sese::internal::service::AsioHttpService::onAsyncRead(const std::shared_ptr<AsioHttpSession> &session, const char *buffer, size_t bytes_transferred) {
+void sese::internal::service::AsioHttpService::onAsyncRead(const std::shared_ptr<AsioHttpSession> &session, sese::iocp::IOBufNode *node, size_t bytes_transferred) {
+    auto &&buffer = static_cast<char *>(node->buffer);
+
     if (!session->recv_header) {
         size_t count = 0;
         for (int i = 0; i < bytes_transferred; ++i) {
@@ -144,14 +143,14 @@ void sese::internal::service::AsioHttpService::onAsyncRead(const std::shared_ptr
                 session->recv_buf.push(buf);
                 session->stream->async_read_some(asio::buffer(buf->buffer, MAX_BUFFER_SIZE), [session, this, buf](const asio::error_code &error, std::size_t bytes_transferred) {
                     buf->size = bytes_transferred;
-                    this->onAsyncRead(session, static_cast<char *>(buf->buffer), bytes_transferred);
+                    this->onAsyncRead(session, buf, bytes_transferred);
                 });
             } else {
                 auto buf = new iocp::IOBufNode(MAX_BUFFER_SIZE);
                 session->recv_buf.push(buf);
                 session->socket.async_read_some(asio::buffer(buf->buffer, MAX_BUFFER_SIZE), [session, this, buf](const asio::error_code &error, std::size_t bytes_transferred) {
                     buf->size = bytes_transferred;
-                    this->onAsyncRead(session, static_cast<char *>(buf->buffer), bytes_transferred);
+                    this->onAsyncRead(session, buf, bytes_transferred);
                 });
             }
             return;
@@ -177,13 +176,13 @@ void sese::internal::service::AsioHttpService::onAsyncRead(const std::shared_ptr
                 auto buf = new iocp::IOBufNode(MAX_BUFFER_SIZE);
                 session->recv_buf.push(buf);
                 session->stream->async_read_some(asio::buffer(buf->buffer, MAX_BUFFER_SIZE), [session, this, buf](const asio::error_code &error, std::size_t bytes_transferred) {
-                    this->onAsyncRead(session, static_cast<char *>(buf->buffer), bytes_transferred);
+                    this->onAsyncRead(session, buf, bytes_transferred);
                 });
             } else {
                 auto buf = new iocp::IOBufNode(MAX_BUFFER_SIZE);
                 session->recv_buf.push(buf);
                 session->socket.async_read_some(asio::buffer(buf->buffer, MAX_BUFFER_SIZE), [session, this, buf](const asio::error_code &error, std::size_t bytes_transferred) {
-                    this->onAsyncRead(session, static_cast<char *>(buf->buffer), bytes_transferred);
+                    this->onAsyncRead(session, buf, bytes_transferred);
                 });
             }
             return;
@@ -309,9 +308,14 @@ void sese::internal::service::AsioHttpService::onAsyncWrite(const std::shared_pt
     session->buffer_length = 0;
 
     // 暂时先只关闭
-    asio::error_code code;
-    code = session->socket.shutdown(asio::socket_base::shutdown_type::shutdown_both, code);
-    code = session->socket.close(code);
+    asio::error_code error;
+    if (ssl) {
+        error = session->stream->shutdown(error);
+    } else {
+        error = session->socket.shutdown(asio::socket_base::shutdown_type::shutdown_both, error);
+    }
+    error = session->socket.close(error);
+    sessionMap.erase(session->socket.native_handle());
 
     acceptor.async_accept([this](asio::error_code error, asio::ip::tcp::socket socket) { onAsyncAccept(socket); });
 }
