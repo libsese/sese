@@ -63,7 +63,7 @@ private:
 class AsioHttpService : public sese::service::Service {
 public:
     AsioHttpService(
-            sese::net::IPAddress::Ptr addr,
+            net::IPAddress::Ptr addr,
             security::SSLContext::Ptr ssl,
             size_t keep_alive,
             size_t max_buffer_size,

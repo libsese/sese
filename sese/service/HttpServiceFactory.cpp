@@ -12,4 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sese/service/HttpServiceFactory.h"
+#include <sese/service/HttpServiceFactory.h>
+#include <sese/internal/service/AsioHttpService.h>
+
+std::unique_ptr<sese::service::Service> sese::service::HttpServiceFactory::createHttpService(
+        const net::IPAddress::Ptr &addr,
+        const security::SSLContext::Ptr &ssl,
+        size_t keep_alive,
+        size_t max_buffer_size,
+        const std::function<void(HttpSession *)> &callback
+) {
+    return std::make_unique<internal::service::AsioHttpService>(addr, ssl, keep_alive, max_buffer_size, callback);
+}
