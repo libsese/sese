@@ -34,7 +34,7 @@ TEST(TestHttpService, WithSSL) {
 
     auto service = sese::service::HttpServiceFactory::createHttpService(
             ip_address,
-            nullptr,
+            ssl_context,
             60,
             MTU_VALUE,
             handle
