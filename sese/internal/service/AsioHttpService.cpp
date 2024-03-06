@@ -44,6 +44,7 @@ AsioHttpService::AsioHttpService(
         std::function<void(sese::service::HttpSession *)> callback
 )
     : io_context(),
+      strand(io_context),
       acceptor(io_context),
       addr(std::move(addr)),
       ssl(std::move(ssl)),
@@ -51,6 +52,7 @@ AsioHttpService::AsioHttpService(
       threads(),
       MAX_BUFFER_SIZE(max_buffer_size),
       callback(std::move(callback)) {
+    // asio::strand<asio::io_context::basic_executor_type<std::allocator<void>, 0>> work_guard = asio::make_strand(io_context);
     for (size_t i = 0; i < threads; ++i) {
         auto th = Thread(
                 [this] {
@@ -253,8 +255,8 @@ void AsioHttpService::onAsyncWrite(const std::shared_ptr<AsioHttpSession> &sessi
     session->buffer_pos = 0;
     session->buffer_length = 0;
 
-    session->req().clear();
-    session->resp().clear();
+    // session->req().clear();
+    // session->resp().clear();
 
     if (session->keepalive) {
         sese::sleep(0);

@@ -22,7 +22,7 @@
 
 
 TEST(TestHttpService, WithSSL) {
-    auto ip_address = sese::net::IPv4Address::localhost(8080);
+    auto ip_address = sese::net::IPv4Address::localhost(443);
     auto ssl_context = sese::security::SSLContextBuilder::SSL4Server();
     ASSERT_TRUE(ssl_context->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt"));
     ASSERT_TRUE(ssl_context->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem"));
