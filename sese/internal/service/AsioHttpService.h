@@ -93,6 +93,7 @@ private:
     const size_t MAX_BUFFER_SIZE;
 
     asio::io_context io_context;
+    asio::io_context::strand strand;
     asio::ip::tcp::acceptor acceptor;
     asio::ssl::context *ssl_context{};
     asio::error_code code;
