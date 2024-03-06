@@ -41,13 +41,14 @@ public:
 /**
  * @brief 线程类
  */
-class API Thread : Noncopyable {
+class API Thread : public Noncopyable {
 public:
     using Ptr = std::unique_ptr<Thread>;
 
     struct RuntimeData;
 
     explicit Thread(const std::function<void()> &function, const std::string &name = THREAD_DEFAULT_NAME);
+    Thread(Thread &thread);
 
     void start();
     void join();

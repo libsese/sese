@@ -22,6 +22,7 @@
 #include <sese/thread/Thread.h>
 
 #include <map>
+#include <vector>
 #include <functional>
 #include <asio.hpp>
 #include <asio/ssl.hpp>
@@ -35,7 +36,7 @@ class AsioHttpSession : public sese::service::HttpSession {
     friend class AsioHttpService;
 
 public:
-    AsioHttpSession(asio::ip::tcp::socket socket);
+    explicit AsioHttpSession(asio::ip::tcp::socket socket);
 
     ~AsioHttpSession() override;
 
@@ -52,6 +53,7 @@ private:
 
     size_t recv_body_size{};
 
+    bool keepalive = true;
     char buffer[MTU_VALUE]{};
     size_t buffer_pos{};
     size_t buffer_length{};
@@ -66,6 +68,7 @@ public:
             net::IPAddress::Ptr addr,
             security::SSLContext::Ptr ssl,
             size_t keep_alive,
+            size_t threads,
             size_t max_buffer_size,
             std::function<void(sese::service::HttpSession *)> callback
     );
@@ -74,9 +77,14 @@ public:
     bool shutdown() override;
     int getLastError() override;
 
+private:
     void onAsyncAccept(asio::ip::tcp::socket &client);
     void onAsyncRead(const std::shared_ptr<AsioHttpSession> &session, sese::iocp::IOBufNode *node, size_t bytes_transferred);
     void onAsyncWrite(const std::shared_ptr<AsioHttpSession> &session, size_t bytes_transferred);
+
+    void postAsyncAccept();
+    void postAsyncRead(const std::shared_ptr<AsioHttpSession> &session);
+    void postAsyncWrite(const std::shared_ptr<AsioHttpSession> &session);
 
 private:
     net::IPAddress::Ptr addr;
@@ -89,9 +97,7 @@ private:
     asio::ssl::context *ssl_context{};
     asio::error_code code;
 
-    std::map<socket_t, std::shared_ptr<AsioHttpSession>> sessionMap;
+    std::vector<Thread> threads;
     std::function<void(sese::service::HttpSession *)> callback;
-
-    Thread thread;
 };
 } // namespace sese::internal::service

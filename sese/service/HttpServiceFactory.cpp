@@ -19,8 +19,9 @@ std::unique_ptr<sese::service::Service> sese::service::HttpServiceFactory::creat
         const net::IPAddress::Ptr &addr,
         const security::SSLContext::Ptr &ssl,
         size_t keep_alive,
+        size_t threads,
         size_t max_buffer_size,
         const std::function<void(HttpSession *)> &callback
 ) {
-    return std::make_unique<internal::service::AsioHttpService>(addr, ssl, keep_alive, max_buffer_size, callback);
+    return std::make_unique<internal::service::AsioHttpService>(addr, ssl, keep_alive, threads, max_buffer_size, callback);
 }
