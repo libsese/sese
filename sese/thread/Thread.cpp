@@ -70,6 +70,10 @@ Thread::Thread(const std::function<void()> &function, const std::string &name) {
     this->data->function = function;                      // GCOVR_EXCL_LINE
 }
 
+Thread::Thread(Thread &thread) {
+    this->data = std::move(thread.data); // GCOVR_EXCL_LINE
+}
+
 void Thread::start() {
     this->data->th = std::thread([this] { run(this->data); }); // GCOVR_EXCL_LINE
 }

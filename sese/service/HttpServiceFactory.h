@@ -34,6 +34,7 @@ public:
             const net::IPAddress::Ptr &addr,
             const security::SSLContext::Ptr &ssl,
             size_t keep_alive,
+            size_t threads,
             size_t max_buffer_size,
             const std::function<void(HttpSession *)> &callback);
 };

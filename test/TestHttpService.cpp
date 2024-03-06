@@ -28,14 +28,20 @@ TEST(TestHttpService, WithSSL) {
     ASSERT_TRUE(ssl_context->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem"));
     ASSERT_TRUE(ssl_context->authPrivateKey());
     auto handle = [](sese::service::HttpSession *session) {
-        SESE_DEBUG("url: %s", session->req().getUrl().c_str());
-        session->resp().getBody().write("Hello, World", 12);
+        auto &&url = session->req().getUrl();
+        SESE_DEBUG("url: %s", url.c_str());
+        if (url == "/index.html") {
+            session->resp().getBody().write("<h1>Hello, World</h1>", 21);
+        } else {
+            session->resp().setCode(404);
+        }
     };
 
     auto service = sese::service::HttpServiceFactory::createHttpService(
             ip_address,
             ssl_context,
             60,
+            4,
             MTU_VALUE,
             handle
     );
