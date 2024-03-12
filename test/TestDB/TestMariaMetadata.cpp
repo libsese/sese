@@ -8,7 +8,7 @@ protected:
     static sese::db::DriverInstance::Ptr instance;
 
     static void SetUpTestSuite() {
-        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::MySql, MYSQL_CONNECTION_STRING);
+        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::MY_SQL, MYSQL_CONNECTION_STRING);
         ASSERT_NE(nullptr, instance);
     }
 };
@@ -21,27 +21,27 @@ TEST_F(TestMariaMetadata, CheckType) {
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(0, type));
-        EXPECT_EQ(sese::db::MetadataType::Integer, type);
+        EXPECT_EQ(sese::db::MetadataType::INTEGER, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(1, type));
-        EXPECT_EQ(sese::db::MetadataType::Text, type);
+        EXPECT_EQ(sese::db::MetadataType::TEXT, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(2, type));
-        EXPECT_EQ(sese::db::MetadataType::Float, type);
+        EXPECT_EQ(sese::db::MetadataType::FLOAT, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(3, type));
-        EXPECT_EQ(sese::db::MetadataType::Double, type);
+        EXPECT_EQ(sese::db::MetadataType::DOUBLE, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(4, type));
-        EXPECT_EQ(sese::db::MetadataType::Unknown, type);
+        EXPECT_EQ(sese::db::MetadataType::UNKNOWN, type);
     }
     {
         sese::db::MetadataType type;

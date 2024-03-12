@@ -8,7 +8,7 @@ protected:
     static sese::db::DriverInstance::Ptr instance;
 
     static void SetUpTestSuite() {
-        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
+        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::SQLITE, SQLITE_CONNECTION_STRING);
         ASSERT_NE(nullptr, instance);
     }
 };
@@ -21,22 +21,22 @@ TEST_F(TestSqliteMetadata, CheckType) {
     {
         sese::db::MetadataType type;
         ASSERT_EQ(true, stmt->getColumnType(0, type));
-        EXPECT_EQ(sese::db::MetadataType::Integer, type);
+        EXPECT_EQ(sese::db::MetadataType::INTEGER, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_EQ(true, stmt->getColumnType(1, type));
-        EXPECT_EQ(sese::db::MetadataType::Text, type);
+        EXPECT_EQ(sese::db::MetadataType::TEXT, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_EQ(true, stmt->getColumnType(2, type));
-        EXPECT_EQ(sese::db::MetadataType::Float, type);
+        EXPECT_EQ(sese::db::MetadataType::FLOAT, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_EQ(true, stmt->getColumnType(3, type));
-        EXPECT_EQ(sese::db::MetadataType::Unknown, type);
+        EXPECT_EQ(sese::db::MetadataType::UNKNOWN, type);
     }
     {
         // 越界

@@ -11,7 +11,7 @@ using sese::db::ResultSet;
 
 TEST(TestMariaTransaction, GetAutoCommit) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
 
     );
@@ -25,7 +25,7 @@ TEST(TestMariaTransaction, GetAutoCommit) {
 
 TEST(TestMariaTransaction, SetAutoCommit) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
 
     );
@@ -47,7 +47,7 @@ TEST(TestMariaTransaction, SetAutoCommit) {
 
 TEST(TestMariaTransaction, Commit) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
 
     );
@@ -86,7 +86,7 @@ TEST(TestMariaTransaction, Commit) {
 
 TEST(TestMariaTransaction, RollBack) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
 
     );
@@ -120,7 +120,7 @@ TEST(TestMariaTransaction, RollBack) {
 
 TEST(TestMariaTransaction, Begin) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
 
     );
@@ -179,7 +179,7 @@ TEST(TestMariaTransaction, Begin) {
 
 TEST(TestMariaTransaction, GetInserId) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
 
     );

@@ -8,7 +8,7 @@ protected:
     static sese::db::DriverInstance::Ptr instance;
 
     static void SetUpTestSuite() {
-        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::Postgres, PSQL_CONNECTION_STRING);
+        instance = sese::db::DriverManager::getInstance(sese::db::DatabaseType::POSTGRES, PSQL_CONNECTION_STRING);
         ASSERT_NE(nullptr, instance);
     }
 };
@@ -21,36 +21,36 @@ TEST_F(TestPostgresMetadata, CheckType) {
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(0, type));
-        EXPECT_EQ(sese::db::MetadataType::Short, type);
+        EXPECT_EQ(sese::db::MetadataType::SHORT, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(1, type));
-        EXPECT_EQ(sese::db::MetadataType::Integer, type);
+        EXPECT_EQ(sese::db::MetadataType::INTEGER, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(2, type));
-        EXPECT_EQ(sese::db::MetadataType::Long, type);
+        EXPECT_EQ(sese::db::MetadataType::LONG, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(3, type));
-        EXPECT_EQ(sese::db::MetadataType::Boolean, type);
+        EXPECT_EQ(sese::db::MetadataType::BOOLEAN, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(4, type));
-        EXPECT_EQ(sese::db::MetadataType::Text, type);
+        EXPECT_EQ(sese::db::MetadataType::TEXT, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(5, type));
-        EXPECT_EQ(sese::db::MetadataType::Float, type);
+        EXPECT_EQ(sese::db::MetadataType::FLOAT, type);
     }
     {
         sese::db::MetadataType type;
         ASSERT_TRUE(stmt->getColumnType(6, type));
-        EXPECT_EQ(sese::db::MetadataType::Unknown, type);
+        EXPECT_EQ(sese::db::MetadataType::UNKNOWN, type);
     }
 }

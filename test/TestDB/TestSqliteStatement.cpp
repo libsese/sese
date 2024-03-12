@@ -11,7 +11,7 @@ using sese::db::DriverManager;
 using sese::db::ResultSet;
 
 TEST(TestSqliteStmt, UpdateStmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
+    auto instance = DriverManager::getInstance(DatabaseType::SQLITE, SQLITE_CONNECTION_STRING);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
@@ -49,7 +49,7 @@ TEST(TestSqliteStmt, UpdateStmt) {
 }
 
 TEST(TestSqliteStmt, Selectstmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
+    auto instance = DriverManager::getInstance(DatabaseType::SQLITE, SQLITE_CONNECTION_STRING);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
@@ -80,7 +80,7 @@ TEST(TestSqliteStmt, Selectstmt) {
 }
 
 TEST(TestSqliteStmt, Deletestmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
+    auto instance = DriverManager::getInstance(DatabaseType::SQLITE, SQLITE_CONNECTION_STRING);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
@@ -104,7 +104,7 @@ TEST(TestSqliteStmt, Deletestmt) {
 }
 
 TEST(TestSqliteStmt, Insertstmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
+    auto instance = DriverManager::getInstance(DatabaseType::SQLITE, SQLITE_CONNECTION_STRING);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
@@ -213,7 +213,7 @@ TEST(TestSqliteStmt, Insertstmt) {
 }
 
 TEST(TestSqliteStmt, GetTimeStmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
+    auto instance = DriverManager::getInstance(DatabaseType::SQLITE, SQLITE_CONNECTION_STRING);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
@@ -234,7 +234,7 @@ TEST(TestSqliteStmt, GetTimeStmt) {
 }
 
 TEST(TestSqliteStmt, SetTimeStmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
+    auto instance = DriverManager::getInstance(DatabaseType::SQLITE, SQLITE_CONNECTION_STRING);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
@@ -267,7 +267,7 @@ TEST(TestSqliteStmt, SetTimeStmt) {
 }
 
 TEST(TestSqliteStmt, isNullStmt) {
-    auto instance = DriverManager::getInstance(DatabaseType::Sqlite, SQLITE_CONNECTION_STRING);
+    auto instance = DriverManager::getInstance(DatabaseType::SQLITE, SQLITE_CONNECTION_STRING);
     ASSERT_NE(nullptr, instance);
     ASSERT_EQ(0, instance->getLastError());
 
