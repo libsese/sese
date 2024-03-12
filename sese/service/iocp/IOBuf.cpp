@@ -1,4 +1,17 @@
 #include "sese/service/iocp/IOBuf.h"
+#include "sese/record/Marco.h"
+
+void *sese::iocp::IOBufNode::operator new(size_t size) {
+    auto p = malloc(size);
+    memset(p, 0, size);
+    // SESE_INFO("malloc %p", p);
+    return p;
+}
+
+void sese::iocp::IOBufNode::operator delete(void *p) {
+    // SESE_INFO("free %p", p);
+    free(p);
+}
 
 sese::iocp::IOBufNode::IOBufNode(size_t capacity) : CAPACITY(capacity) {
     buffer = malloc(capacity);

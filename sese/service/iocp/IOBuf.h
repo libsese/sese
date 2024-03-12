@@ -46,6 +46,10 @@ struct IOBufNode {
      * @return 可写大小（空闲部分）
      */
     [[nodiscard]] size_t getWriteableSize() const noexcept;
+
+    void *operator new(size_t size);
+
+    void operator delete(void *p);
 };
 
 /// 用于 IOCP 的链式缓存
