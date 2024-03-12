@@ -44,7 +44,7 @@ jobs:
 
       - name: TestSqlite
         working-directory: ${{ github.workspace }}
-        run: build/test-db/TestSqlite
+        run: build/test/TestDB/TestSqlite
 
       - name: Services up
         working-directory: ${{ github.workspace }}/docker
@@ -54,11 +54,11 @@ jobs:
 
       - name: TestMaria
         working-directory: ${{ github.workspace }}
-        run: build/test-db/TestMaria
+        run: build/test/TestDB/TestMaria
 
       - name: TestPostgres
         working-directory: ${{ github.workspace }}
-        run: build/test-db/TestPostgres
+        run: build/test/TestDB/TestPostgres
 
       - name: Services down
         working-directory: ${{ github.workspace }}/docker
