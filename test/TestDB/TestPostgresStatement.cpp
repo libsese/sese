@@ -12,7 +12,7 @@ using sese::db::ResultSet;
 
 TEST(TestPostgresStmt, QueryStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -36,7 +36,7 @@ TEST(TestPostgresStmt, QueryStmt) {
 
 TEST(TestPostgresStmt, UpdateStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -78,7 +78,7 @@ TEST(TestPostgresStmt, UpdateStmt) {
 
 TEST(TestPostgresStmt, DeleteStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -105,7 +105,7 @@ TEST(TestPostgresStmt, DeleteStmt) {
 
 TEST(TestPostgresStmt, InsertStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -164,7 +164,7 @@ TEST(TestPostgresStmt, InsertStmt) {
 
 TEST(TestPostgresStmt, GetTimeStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -191,7 +191,7 @@ TEST(TestPostgresStmt, GetTimeStmt) {
 
 TEST(TestPostgresStmt, SetTimeStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -228,7 +228,7 @@ TEST(TestPostgresStmt, SetTimeStmt) {
 
 TEST(TestPostgresStmt, isNullStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);

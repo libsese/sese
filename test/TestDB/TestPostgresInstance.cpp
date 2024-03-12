@@ -12,8 +12,8 @@ using sese::db::ResultSet;
 
 TEST(TestPostgresDriverInstance, InstanceError) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
-            "host=127.0.0.1;user=postgres;pwd=error;db=db_test;port=18080;"
+            DatabaseType::POSTGRES,
+            "host=127.0.0.1;user=POSTGRES;pwd=error;db=db_test;port=18080;"
     );
     ASSERT_NE(nullptr, instance);
     ASSERT_NE(instance->getLastError(), 0);
@@ -38,7 +38,7 @@ TEST(TestPostgresDriverInstance, InstanceError) {
 
 TEST(TestPostgresDriverInstance, QueryData) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -91,7 +91,7 @@ TEST(TestPostgresDriverInstance, QueryData) {
 
 TEST(TestPostgresDriverInstance, UpdateData) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -126,7 +126,7 @@ TEST(TestPostgresDriverInstance, UpdateData) {
 
 TEST(TestPostgresDriverInstance, DeleteData) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -147,7 +147,7 @@ TEST(TestPostgresDriverInstance, DeleteData) {
 
 TEST(TestPostgresDriverInstance, InsertData) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -178,7 +178,7 @@ TEST(TestPostgresDriverInstance, InsertData) {
 
 TEST(TestPostgresDriverInstance, Datetime) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -199,7 +199,7 @@ TEST(TestPostgresDriverInstance, Datetime) {
 
 TEST(TestPostgresDriverInstance, isNull) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);

@@ -12,7 +12,7 @@ using sese::db::ResultSet;
 
 TEST(TestPostgresTransaction, Commit) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -47,7 +47,7 @@ TEST(TestPostgresTransaction, Commit) {
 
 TEST(TestPostgresTransaction, RollBack) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -77,7 +77,7 @@ TEST(TestPostgresTransaction, RollBack) {
 
 TEST(TestPostgresTransaction, Begin) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -134,7 +134,7 @@ TEST(TestPostgresTransaction, Begin) {
 
 TEST(TestPostgresTransaction, UseLess) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Postgres,
+            DatabaseType::POSTGRES,
             PSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);

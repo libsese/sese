@@ -11,7 +11,7 @@ using sese::db::ResultSet;
 
 TEST(TestMariaDriverInstance, InstanceError) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             "host=127.0.0.1;user=root;pwd=libsese;port=18806;"
     );
     ASSERT_EQ(nullptr, instance);
@@ -19,7 +19,7 @@ TEST(TestMariaDriverInstance, InstanceError) {
 
 TEST(TestMariaDriverInstance, QueryData) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -63,7 +63,7 @@ TEST(TestMariaDriverInstance, QueryData) {
 
 TEST(TestMariaDriverInstance, Modifyata) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -90,7 +90,7 @@ TEST(TestMariaDriverInstance, Modifyata) {
 
 TEST(TestMariaDriverInstance, InsertData) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -137,7 +137,7 @@ TEST(TestMariaDriverInstance, InsertData) {
 
 TEST(TestMariaDriverInstance, DeleteData) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -163,7 +163,7 @@ TEST(TestMariaDriverInstance, DeleteData) {
 
 TEST(TestMariaDriverInstance, DateTime) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -185,7 +185,7 @@ TEST(TestMariaDriverInstance, DateTime) {
 
 TEST(TestMariaDriverInstance, isNull) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);

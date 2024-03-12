@@ -11,7 +11,7 @@ using sese::db::ResultSet;
 
 TEST(TestMariaStmt, QueryStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -46,7 +46,7 @@ TEST(TestMariaStmt, QueryStmt) {
 
 TEST(TestMariaStmt, UpdateStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -90,7 +90,7 @@ TEST(TestMariaStmt, UpdateStmt) {
 
 TEST(TestMariaStmt, DeleteStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -117,7 +117,7 @@ TEST(TestMariaStmt, DeleteStmt) {
 
 TEST(TestMariaStmt, InsertStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
 
     );
@@ -177,7 +177,7 @@ TEST(TestMariaStmt, InsertStmt) {
 
 TEST(TestMariaStmt, GetDateTimeStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -201,7 +201,7 @@ TEST(TestMariaStmt, GetDateTimeStmt) {
 
 TEST(TestMariaStmt, SetDateTimeStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
@@ -243,7 +243,7 @@ TEST(TestMariaStmt, SetDateTimeStmt) {
 
 TEST(TestMariaStmt, isNullStmt) {
     auto instance = DriverManager::getInstance(
-            DatabaseType::Maria,
+            DatabaseType::MARIA,
             MYSQL_CONNECTION_STRING
     );
     ASSERT_NE(nullptr, instance);
