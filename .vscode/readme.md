@@ -1,9 +1,5 @@
 # 使用
 
-对于 Windows 用户请打开 **[sese-core.windows.code-workspace](./sese-core.windows.code-workspace)**
-
-对于使用 macOS 和各个 Linux 发行版即 unix-like 的用户请打开 **[sese-core.unix.code-workspace](sese-core.unix.code-workspace)**
-
 禁用由 CMake 拓展带来的 CTest 索引并自动启用 TestMate 需要修改用户的配置文件，添加如下配置
 
 ```json

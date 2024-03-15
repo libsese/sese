@@ -1,0 +1,57 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "windows-no-manifest",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "SESE_BUILD_TEST": "ON",
+                "SESE_DB_USE_MARIADB": "ON",
+                "SESE_DB_USE_POSTGRES": "ON",
+                "VCPKG_MANIFEST_MODE": "OFF"
+            }
+        },
+        {
+            "name": "windows-default",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "SESE_BUILD_TEST": "ON",
+                "SESE_DB_USE_MARIADB": "ON",
+                "SESE_DB_USE_POSTGRES": "ON",
+                "VCPKG_MANIFEST_MODE": "ON"
+            }
+        },
+        {
+            "name": "linux",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "SESE_BUILD_TEST": "ON",
+                "SESE_USE_NATIVE_MANAGER": "ON",
+                "SESE_DB_USE_MARIADB": "ON",
+                "SESE_DB_USE_POSTGRES": "ON",
+                "BUILD_SHARED_LIBS": "ON"
+            }
+        },
+        {
+            "name": "darwin",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_MAKE_PROGRAM": "/usr/local/bin/ninja",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "SESE_BUILD_TEST": "ON",
+                "SESE_USE_NATIVE_MANAGER": "ON",
+                "SESE_DB_USE_MARIADB": "ON",
+                "SESE_DB_USE_POSTGRES": "ON",
+                "BUILD_SHARED_LIBS": "ON"
+            }
+        }
+    ]
+}
