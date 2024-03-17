@@ -6,6 +6,7 @@
         "matepek.vscode-catch2-test-adapter",
         "ms-python.vscode-pylance",
         "ms-python.python",
-        "editorconfig.editorconfig"
+        "editorconfig.editorconfig",
+        "github.vscode-github-actions"
     ]
 }

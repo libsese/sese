@@ -12,7 +12,8 @@
                 "matepek.vscode-catch2-test-adapter",
                 "ms-python.vscode-pylance",
                 "ms-python.python",
-                "EditorConfig.EditorConfig"
+                "EditorConfig.EditorConfig",
+                "github.vscode-github-actions"
             ]
         }
     }
