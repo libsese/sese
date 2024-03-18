@@ -2,6 +2,7 @@
 
 #include "sese/security/SSLContext.h"
 
+#include <malloc.h>
 #include <asio/ssl.hpp>
 #include <openssl/ssl.h>
 

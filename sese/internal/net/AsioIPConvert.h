@@ -1,6 +1,7 @@
 #pragma once
 
 #include "sese/net/IPv6Address.h"
+#include <malloc.h>
 #include <asio.hpp>
 
 namespace sese::internal::net {

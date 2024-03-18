@@ -5,6 +5,7 @@
 #include "sese/net/IPv6Address.h"
 #include "sese/record/Marco.h"
 
+#include <malloc.h>
 #include <asio.hpp>
 #include <asio/ssl.hpp>
 

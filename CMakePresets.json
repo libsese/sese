@@ -2,18 +2,6 @@
     "version": 6,
     "configurePresets": [
         {
-            "name": "windows-no-manifest",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "SESE_BUILD_TEST": "ON",
-                "SESE_DB_USE_MARIADB": "ON",
-                "SESE_DB_USE_POSTGRES": "ON",
-                "VCPKG_MANIFEST_MODE": "OFF"
-            }
-        },
-        {
             "name": "windows-default",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
@@ -23,6 +11,18 @@
                 "SESE_DB_USE_MARIADB": "ON",
                 "SESE_DB_USE_POSTGRES": "ON",
                 "VCPKG_MANIFEST_MODE": "ON"
+            }
+        },
+        {
+            "name": "windows-no-manifest",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "SESE_BUILD_TEST": "ON",
+                "SESE_DB_USE_MARIADB": "ON",
+                "SESE_DB_USE_POSTGRES": "ON",
+                "VCPKG_MANIFEST_MODE": "OFF"
             }
         },
         {
