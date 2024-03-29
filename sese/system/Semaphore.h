@@ -40,10 +40,9 @@ public:
 
     /// 创建一个命名信号量
     /// \param name 名称
-    /// \param initial_count 初始计数
-    /// \param maximum_count 最大计数
+    /// \param initial_count 初始计数，默认为 1 行为与互斥量一致
     /// \retval nullptr 创建失败
-    static Semaphore::Ptr create(std::string name, uint32_t initial_count);
+    static Semaphore::Ptr create(std::string name, uint32_t initial_count = 1);
 
     ~Semaphore();
 
