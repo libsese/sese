@@ -20,10 +20,22 @@
 TEST(TestIPC, Temp) {
     auto channel = sese::system::IPCChannel::create("Test", 1024);
     ASSERT_TRUE(channel->write(5, "hello"));
+    ASSERT_TRUE(channel->write(6, "abc"));
+    ASSERT_TRUE(channel->write(5, "hi"));
+    ASSERT_TRUE(channel->write(6, "bye"));
 
-    auto result = channel->read(5);
-    for (auto &&msg: result) {
-        SESE_INFO("message: %s", msg.getDataAsString().c_str());
+    {
+        auto result = channel->read(5);
+        for (auto &&msg: result) {
+            SESE_INFO("message 5: %s", msg.getDataAsString().c_str());
+        }
+    }
+
+    {
+        auto result = channel->read(6);
+        for (auto &&msg: result) {
+            SESE_INFO("message 6: %s", msg.getDataAsString().c_str());
+        }
     }
 }
 
@@ -35,8 +47,11 @@ TEST(TestIPC, Process) {
     ASSERT_NE(nullptr, process);
 
     channel->write(1, "Hello");
+    channel->write(2, "Hi");
     channel->write(1, "12345", 4);
     channel->write(1, "Exit");
 
     EXPECT_EQ(0, process->wait());
+    auto res = channel->read(2);
+    EXPECT_EQ(res.front().getDataAsString(), "Hi");
 }

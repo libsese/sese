@@ -141,14 +141,14 @@ std::list<Message> IPCChannel::read(uint32_t id) {
         } else {
             memcpy(buf + 0, &iterator->id, sizeof(uint32_t));
             memcpy(buf + 4, &iterator->length, sizeof(uint32_t));
-            memcpy(buf + 8, &iterator->buffer, iterator->length);
+            memmove(buf + 8, iterator->buffer, iterator->length);
             buf += 8 + iterator->length;
             size += 8 + iterator->length;
             iterator++;
         }
     }
     memset(buf, 0, sizeof(uint32_t));
-    this->mem_info->tail = size + 4;
+    this->mem_info->tail = size;
 
     return list;
 }
