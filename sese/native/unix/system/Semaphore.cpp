@@ -52,7 +52,11 @@ bool Semaphore::unlock() {
 }
 
 bool Semaphore::tryLock(std::chrono::milliseconds ms) {
+#ifdef SESE_PLATFORM_LINUX
     struct timespec time {};
     time.tv_nsec = 1000000 * ms.count();
     return 0 == sem_timedwait(semaphore, &time);
+#else
+    return 0 == sem_trywait(semaphore);
+#endif
 }
