@@ -20,6 +20,7 @@ add_executable(
         ${TEST_SRC}
         TestSharedMemory/TestSharedMemory.cpp
         TestPlugin/TestPlugin.cpp
+        TestIPC/TestIPC.cpp
 )
 
 target_link_libraries(AllTestInMain Core GTest::gtest GTest::gtest_main)
@@ -48,5 +49,16 @@ set_target_properties(
 )
 target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_MEM_D=\"$<TARGET_FILE:Memory.d>\"")
 add_dependencies(AllTestInMain Memory.d)
+
+# TestIPC
+add_executable(IPC.d TestIPC/IPC.d.cpp)
+target_link_libraries(IPC.d PRIVATE Core)
+set_target_properties(
+        IPC.d PROPERTIES
+        OUTPUT_NAME "IPC.d"
+        PREFIX ""
+)
+target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_IPC_D=\"$<TARGET_FILE:IPC.d>\"")
+add_dependencies(AllTestInMain IPC.d)
 
 add_subdirectory(TestDB)

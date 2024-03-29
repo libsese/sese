@@ -56,6 +56,31 @@ IPCChannel::Ptr IPCChannel::create(const std::string &name, size_t buffer_size) 
     return std::unique_ptr<IPCChannel>(ipc);
 }
 
+IPCChannel::Ptr IPCChannel::use(const std::string &name) {
+    auto sem_name = name + "00Semaphore";
+    auto mem_name = name + "00Memory";
+
+    auto sem = Semaphore::create(sem_name);
+    if (!sem) {
+        return nullptr;
+    }
+
+    auto mem = SharedMemory::use(mem_name.c_str());
+    if (!mem) {
+        return nullptr;
+    }
+
+    auto buffer = static_cast<char *>(mem->getBuffer());
+    auto mem_info = reinterpret_cast<MemInfo *>(buffer + 0);
+
+    auto ipc = new IPCChannel();
+    ipc->mem_info = mem_info;
+    ipc->buffer = buffer + sizeof(MemInfo);
+    ipc->semaphore = std::move(sem);
+    ipc->shared_memory = std::move(mem);
+    return std::unique_ptr<IPCChannel>(ipc);
+}
+
 #define HEADER_SIZE (sizeof(MessageIterator) - sizeof(uint32_t) * 2)
 
 bool IPCChannel::write(uint32_t id, const void *data, uint32_t length) {
@@ -79,7 +104,7 @@ bool IPCChannel::write(uint32_t id, const void *data, uint32_t length) {
 #undef HEADER_SIZE
 
 bool IPCChannel::write(uint32_t id, const std::string &message) {
-    return write(id, message.data(), message.length());
+    return write(id, message.data(), static_cast<uint32_t>(message.length()));
 }
 
 std::list<Message> IPCChannel::read(uint32_t id) {

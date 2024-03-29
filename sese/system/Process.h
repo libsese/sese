@@ -21,6 +21,7 @@ public:
     static Process::Ptr create(const char *command) noexcept;
 
     /// 获取当前进程 ID
+    /// \return 当前进程 ID
     [[nodiscard]] static pid_t getCurrentProcessId() noexcept;
 
     /// 等待进程结束
@@ -32,6 +33,7 @@ public:
     [[nodiscard]] bool kill() const noexcept;
 
     /// 获取进程 ID
+    /// \return 获取进程对象 ID
     [[nodiscard]] pid_t getProcessId() const noexcept;
 
 private:
