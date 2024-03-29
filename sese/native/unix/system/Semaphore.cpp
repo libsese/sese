@@ -16,41 +16,43 @@
 // Created by kaoru on 2024-03-29.
 //
 
+#include <semaphore.h>
 #include <sese/system/Semaphore.h>
+
+#ifdef SESE_PLATFORM_LINUX
+#include <fcntl.h>
+#include <sys/stat.h>
+#endif
 
 using sese::system::Semaphore;
 
 Semaphore::Ptr Semaphore::create(std::string name, uint32_t initial_count) {
-    auto handle = CreateSemaphoreA(
-            nullptr,
-            static_cast<LONG>(initial_count),
-            static_cast<LONG>(initial_count),
-            name.c_str()
-    );
-    if (!handle) {
+    auto sem = sem_open(name.c_str(), O_CREAT | O_RDWR, 0666, initial_count);
+    if (sem == SEM_FAILED) {
         return nullptr;
     }
 
     auto res = new Semaphore();
-    res->hSemaphore = handle;
+    res->semaphore = sem;
+    res->sem_name = std::move(name);
     return std::unique_ptr<Semaphore>(res);
 }
 
 Semaphore::~Semaphore() {
-    CloseHandle(hSemaphore);
-    hSemaphore = nullptr;
+    sem_close(semaphore);
+    sem_unlink(sem_name.c_str());
 }
 
 bool Semaphore::lock() {
-    return WAIT_OBJECT_0 == WaitForSingleObject(hSemaphore, INFINITE);
+    return 0 == sem_wait(semaphore);
 }
 
-// https://learn.microsoft.com/zh-cn/windows/win32/api/synchapi/nf-synchapi-releasesemaphore?source=docs
 bool Semaphore::unlock() {
-    return 0 != ReleaseSemaphore(hSemaphore, 1, nullptr);
+    return 0 == sem_post(semaphore);
 }
 
 bool Semaphore::tryLock(std::chrono::milliseconds ms) {
-    auto count = ms.count();
-    return WAIT_OBJECT_0 == WaitForSingleObject(hSemaphore, count);
+    struct timespec time {};
+    time.tv_nsec = 1000000 * ms.count();
+    return 0 == sem_timedwait(semaphore, &time);
 }

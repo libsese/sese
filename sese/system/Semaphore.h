@@ -27,6 +27,10 @@
 #include <chrono>
 
 
+#ifndef SESE_PLATFORM_WINDOWS
+#include <semaphore.h>
+#endif
+
 namespace sese::system {
 
 /// 命名信号量
@@ -39,15 +43,15 @@ public:
     /// \param initial_count 初始计数
     /// \param maximum_count 最大计数
     /// \retval nullptr 创建失败
-    static Semaphore::Ptr create(const char *name, uint32_t initial_count, uint32_t maximum_count);
+    static Semaphore::Ptr create(std::string name, uint32_t initial_count);
 
     ~Semaphore();
 
     /// 阻塞并等待至获取到资源
-    void lock();
+    bool lock();
 
     /// 释放当前资源
-    void unlock();
+    bool unlock();
 
     /// 在一定时间内尝试获取资源
     /// \param ms 单位为毫秒的等待时间
@@ -60,6 +64,8 @@ private:
 #ifdef SESE_PLATFORM_WINDOWS
     HANDLE hSemaphore{};
 #else
+    std::string sem_name{};
+    sem_t *semaphore{};
 #endif
 };
 
