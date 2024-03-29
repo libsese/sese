@@ -32,12 +32,20 @@ struct MemInfo {
 /// 消息实体
 class Message {
 public:
+    /// 实例化信息结构体
+    /// \param message buffer
     explicit Message(std::string message);
 
+    /// 将当前数据作为字符串返回
+    /// \return 字符串
     [[nodiscard]] const std::string &getDataAsString() const;
 
+    /// 获取数据指针
+    /// \return 数据
     [[nodiscard]] const void *data() const;
 
+    /// 获取数据长度
+    /// \return 数据长度
     [[nodiscard]] size_t length() const;
 
 private:
@@ -56,7 +64,16 @@ class IPCChannel {
 public:
     using Ptr = std::unique_ptr<IPCChannel>;
 
+    /// 创建 IPC 通道
+    /// \param name 通道名称
+    /// \param buffer_size 共享内存大小
+    /// \return IPC 通道
     static IPCChannel::Ptr create(const std::string &name, size_t buffer_size);
+
+    /// 使用现有的 IPC 通道
+    /// \param name 通道名称
+    /// \return IPC 通道
+    static IPCChannel::Ptr use(const std::string &name);
 
     /// 向 IPC 通道写入编号为 id 的数据
     /// \param id 编号

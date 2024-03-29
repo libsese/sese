@@ -12,6 +12,9 @@
 #include "sese/io/OutputStream.h"
 
 #include <chrono>
+#include <thread>
+
+using namespace std::chrono_literals;
 
 namespace sese {
 
@@ -75,6 +78,14 @@ API int32_t findFirstAt(const char *str, char ch);
  * @param second 秒
  */
 API void sleep(uint32_t second);
+
+/**
+ * 使当前线程休眠一段时间，std 实现
+ */
+template<class REP, class PERIOD>
+API void sleep(const std::chrono::duration<REP, PERIOD> &duration) {
+    std::this_thread::sleep_for(duration);
+}
 
 /**
  * 获取报错信息
