@@ -54,7 +54,7 @@ public:
     bool unlock();
 
     /// 在一定时间内尝试获取资源
-    /// \param ms 单位为毫秒的等待时间
+    /// \param ms 单位为毫秒的等待时间，处于 APPLE 平台下时此参数无效
     /// \return 是否获取成功
     bool tryLock(std::chrono::milliseconds ms);
 
