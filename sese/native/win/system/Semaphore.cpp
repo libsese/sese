@@ -52,5 +52,5 @@ bool Semaphore::unlock() {
 
 bool Semaphore::tryLock(std::chrono::milliseconds ms) {
     auto count = ms.count();
-    return WAIT_OBJECT_0 == WaitForSingleObject(hSemaphore, count);
+    return WAIT_OBJECT_0 == WaitForSingleObject(hSemaphore, static_cast<DWORD>(count));
 }

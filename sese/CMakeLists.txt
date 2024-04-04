@@ -1,5 +1,10 @@
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${PROJECT_SOURCE_DIR}/cmake")
 
+###################################################################################
+# 通用目标
+# 1.Core
+# 2.Plugin
+###################################################################################
 add_library(Plugin STATIC
         plugin/BaseClass.h
         plugin/ClassFactory.cpp
@@ -8,158 +13,45 @@ add_library(Plugin STATIC
         plugin/ModuleInfo.h
 )
 
-file(GLOB_RECURSE ARCHIVE_SRC "${CMAKE_CURRENT_LIST_DIR}/archive/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/archive/*.h")
-file(GLOB_RECURSE CONCURRENT_SRC "${CMAKE_CURRENT_LIST_DIR}/concurrent/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/concurrent/*.h")
-file(GLOB_RECURSE DB_SRC "${CMAKE_CURRENT_LIST_DIR}/db/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/db/*.h")
-file(GLOB_RECURSE EVENT_SRC "${CMAKE_CURRENT_LIST_DIR}/event/*.h")
-file(GLOB_RECURSE RECORD_SRC "${CMAKE_CURRENT_LIST_DIR}/record/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/record/*.h")
-file(GLOB_RECURSE CONVERT_SRC "${CMAKE_CURRENT_LIST_DIR}/convert/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/convert/*.h")
-file(GLOB_RECURSE IO_SRC "${CMAKE_CURRENT_LIST_DIR}/io/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/io/*.h")
-file(GLOB_RECURSE THREAD_SRC "${CMAKE_CURRENT_LIST_DIR}/thread/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/thread/*.h")
-file(GLOB_RECURSE SYSTEM_SRC "${CMAKE_CURRENT_LIST_DIR}/system/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/system/*.h")
-file(GLOB_RECURSE NET_SRC "${CMAKE_CURRENT_LIST_DIR}/net/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/net/*.h")
-file(GLOB_RECURSE CONFIG_SRC "${CMAKE_CURRENT_LIST_DIR}/config/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/config/*.h")
-file(GLOB_RECURSE TEXT_SRC "${CMAKE_CURRENT_LIST_DIR}/text/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/text/*.h")
-file(GLOB_RECURSE UTIL_SRC "${CMAKE_CURRENT_LIST_DIR}/util/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/util/*.h")
-file(GLOB_RECURSE SECURITY_SRC "${CMAKE_CURRENT_LIST_DIR}/security/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/security/*.h")
-file(GLOB_RECURSE PLUGIN_SRC "${CMAKE_CURRENT_LIST_DIR}/plugin/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/plugin/*.h")
-file(GLOB_RECURSE SERVICE_SRC "${CMAKE_CURRENT_LIST_DIR}/service/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/service/*.h")
-file(GLOB_RECURSE UNIX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/unix/*.h")
-file(GLOB_RECURSE RES_SRC "${CMAKE_CURRENT_LIST_DIR}/res/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/res/*.h")
+file(
+        GLOB_RECURSE PUBLIC_SRC
+        "concurrent/*.cpp" "concurrent/*.h"
+        "event/*.h"
+        "record/*.cpp" "record/*.h"
+        "convert/*.cpp" "convert/*.h"
+        "io/*.cpp" "io/*.h"
+        "thread/*.cpp" "thread/*.h"
+        "system/*.cpp" "system/*.h"
+        "net/*.cpp" "net/*.h"
+        "config/*.cpp" "config/*.h"
+        "text/*.cpp" "text/*.h"
+        "util/*.cpp" "util/*.h"
+        "security/*.cpp" "security/*.h"
+        "plugin/*.cpp" "plugin/*.h"
+        "service/*.cpp" "service/*.h"
+        "res/*.cpp" "res/*.h"
+)
+
+file (
+        GLOB_RECURSE UNIX_SRC
+        "native/unix/*.cpp" "native/unix/*.h"
+)
 
 file(
         GLOB_RECURSE INTERNAL_SRC
-        "${CMAKE_CURRENT_LIST_DIR}/internal/net/*.cpp"
-        "${CMAKE_CURRENT_LIST_DIR}/internal/net/*.h"
-        "${CMAKE_CURRENT_LIST_DIR}/internal/service/*.cpp"
-        "${CMAKE_CURRENT_LIST_DIR}/internal/service/*.h"
+        "internal/net/*.cpp"
+        "internal/net/*.h"
+        "internal/service/*.cpp"
+        "internal/service/*.h"
 )
 
 add_library(Core
-        ${ARCHIVE_SRC}
-        ${CONCURRENT_SRC}
-        ${CONVERT_SRC}
-        ${DB_SRC}
-        ${EVENT_SRC}
-        ${RECORD_SRC}
+        ${PUBLIC_SRC}
         ${INTERNAL_SRC}
-        ${IO_SRC}
-        ${THREAD_SRC}
-        ${SYSTEM_SRC}
-        ${NET_SRC}
-        ${CONFIG_SRC}
-        ${TEXT_SRC}
-        ${UTIL_SRC}
-        ${SECURITY_SRC}
-        ${PLUGIN_SRC}
-        ${SERVICE_SRC}
-        ${RES_SRC}
         Config.h
 )
 
-if (SESE_DB_USE_SQLITE)
-    add_definitions(-DHAS_SQLITE)
-    file(
-            GLOB_RECURSE
-            SQLITE_SRC
-            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/sqlite/*.cpp"
-            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/sqlite/*.h"
-    )
-    target_sources(Core PRIVATE ${SQLITE_SRC})
-
-    if (SESE_USE_NATIVE_MANAGER)
-        find_package(SQLite3 REQUIRED)
-        target_link_libraries(Core PRIVATE SQLite::SQLite3)
-    else ()
-        find_package(unofficial-sqlite3 CONFIG REQUIRED)
-        target_link_libraries(Core PRIVATE unofficial::sqlite3::sqlite3)
-    endif ()
-endif ()
-
-if (SESE_DB_USE_MARIADB)
-    add_definitions(-DHAS_MARIADB)
-    file(
-            GLOB_RECURSE
-            MARIA_SRC
-            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/maria/*.cpp"
-            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/maria/*.h"
-    )
-
-    target_sources(Core PRIVATE ${MARIA_SRC})
-    if (SESE_USE_NATIVE_MANAGER)
-        if (CMAKE_SYSTEM_NAME MATCHES "Linux")
-            find_package(MySQL MODULE REQUIRED)
-            target_link_libraries(Core PRIVATE ${MYSQL_LIB})
-        elseif (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-            find_path(MYSQL_INCLUDE_DIR mysql.h
-                    /usr/local/include/mysql
-                    /usr/local/mysql/include
-                    /usr/include/mysql
-            )
-            find_library(
-                    MYSQL_LIB
-                    NAME mysqlclient
-                    PATHS /usr/lib /usr/local/lib /usr/local/mysql/lib
-                    PATH_SUFFIXES mysql
-            )
-            message(STATUS "MYSQL_INCLUDE_DIR :${MYSQL_INCLUDE_DIR}")
-            message(STATUS "MYSQL_LIB         :${MYSQL_LIB}")
-            if (MYSQL_INCLUDE_DIR AND MYSQL_LIB)
-                target_include_directories(Core PRIVATE ${MYSQL_INCLUDE_DIR})
-                target_link_libraries(Core PRIVATE ${MYSQL_LIB})
-            else ()
-                message(FATAL_ERROR "Could NOT find MySQL library")
-            endif ()
-        endif ()
-    else ()
-        find_package(unofficial-libmariadb CONFIG REQUIRED)
-        target_link_libraries(Core PRIVATE unofficial::libmariadb)
-    endif ()
-endif ()
-
-if (SESE_DB_USE_POSTGRES)
-    add_definitions(-DHAS_POSTGRES)
-    file(
-            GLOB_RECURSE
-            PSQL_SRC
-            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/pgsql/*.cpp"
-            "${CMAKE_CURRENT_LIST_DIR}/internal/db/impl/pgsql/*.h"
-    )
-    target_sources(Core PRIVATE ${PSQL_SRC})
-    find_package(PostgreSQL REQUIRED)
-    target_link_libraries(Core PRIVATE PostgreSQL::PostgreSQL)
-endif ()
-
-option(USE_ASYNC_LOGGER "use async logger" OFF)
-if (USE_ASYNC_LOGGER)
-    target_compile_definitions(Core PRIVATE -DUSE_ASYNC_LOGGER)
-endif ()
-
-if (SESE_BUILD_TEST)
-    target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
-
-    if (${CMAKE_GENERATOR} MATCHES "Ninja")
-        # 单配置
-        add_custom_command(
-                TARGET
-                Core
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/test
-        )
-    else ()
-        # 多配置
-        add_custom_command(
-                TARGET
-                Core
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/test/$<CONFIG>
-        )
-    endif ()
-endif ()
+target_link_libraries(Core PUBLIC Plugin)
 
 target_include_directories(
         Core
@@ -174,54 +66,6 @@ target_include_directories(
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
         $<INSTALL_INTERFACE:include>
 )
-
-if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    file(GLOB_RECURSE NATIVE_WIN_SRC "${CMAKE_CURRENT_LIST_DIR}/native/win/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/win/*.h")
-    set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
-    configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
-
-    target_sources(Core PRIVATE ${DLL_INFO_RC})
-    target_sources(Core PRIVATE ${NATIVE_WIN_SRC})
-
-    if (${MSVC})
-        target_compile_options(Core PRIVATE "/utf-8")
-        target_compile_options(Plugin PRIVATE "/utf-8")
-    endif ()
-    target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
-
-    # if (${MINGW})
-    #     target_compile_options(Core PRIVATE "-fno-exceptions")
-    # else ()
-    #     target_compile_options(Core PRIVATE "/D_HAS_EXCEPTIONS=0")
-    # endif ()
-endif ()
-
-if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    find_package(Threads REQUIRED)
-    target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT})
-    target_link_libraries(Core PRIVATE ${CMAKE_DL_LIBS})
-
-    file(GLOB_RECURSE NATIVE_LINUX_SRC "${CMAKE_CURRENT_LIST_DIR}/native/linux/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/linux/*.h")
-    target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_LINUX_SRC})
-
-    # target_compile_options(Core PRIVATE "-fno-exceptions")
-    target_compile_options(Core PUBLIC "-fPIC")
-    target_link_options(Core PUBLIC "-rdynamic")
-    target_compile_options(Plugin PUBLIC "-fPIC")
-endif ()
-
-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    find_library(IOKIT_FRAMEWORK IOKit REQUIRED)
-    find_library(CORESERVICES_FRAMEWORK CoreServices REQUIRED)
-    find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
-    target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
-
-    # target_compile_options(Core PRIVATE "-fno-exceptions")
-    target_compile_options(Plugin PUBLIC "-fPIC")
-
-    file(GLOB_RECURSE NATIVE_DRAWIN_SRC "${CMAKE_CURRENT_LIST_DIR}/native/darwin/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/native/darwin/*.h")
-    target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
-endif ()
 
 set_target_properties(
         Core PROPERTIES
@@ -257,19 +101,34 @@ else ()
     target_link_libraries(Core PRIVATE asio::asio)
 endif ()
 
-if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
-endif ()
-find_package(LibArchive REQUIRED)
-target_link_libraries(Core PRIVATE LibArchive::LibArchive)
-
 find_package(OpenSSL REQUIRED)
 target_link_libraries(Core PRIVATE OpenSSL::Crypto OpenSSL::SSL)
 
 find_package(ZLIB REQUIRED)
 target_link_libraries(Core PRIVATE ZLIB::ZLIB)
 
-target_link_libraries(Core PUBLIC Plugin)
+###################################################################################
+# 内部独立子库和可选项
+# 1.Archive
+# 2.DB
+# 3.Async Logger
+# 4.SESE_RECORD_TIME_PATTERN
+# 5.SESE_RECORD_TEXT_PATTERN
+###################################################################################
+if (MSVC)
+    add_definitions(/utf-8)
+endif ()
+include_directories(${PROJECT_SOURCE_DIR})
+
+add_subdirectory(archive)
+target_link_libraries(Core PRIVATE Archive)
+
+add_subdirectory(db)
+target_link_libraries(Core PRIVATE DB)
+
+if (SESE_USE_ASYNC_LOGGER)
+    target_compile_definitions(Core PRIVATE -DUSE_ASYNC_LOGGER)
+endif ()
 
 if (DEFINED SESE_RECORD_TIME_PATTERN)
     target_compile_definitions(
@@ -285,6 +144,92 @@ if (DEFINED SESE_RECORD_TEXT_PATTERN)
     )
 endif ()
 
+###################################################################################
+# 额外的任务配置
+###################################################################################
+if (SESE_BUILD_TEST AND WIN32)
+    target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
+
+    if (${CMAKE_GENERATOR} MATCHES "Ninja")
+        # 单配置
+        add_custom_command(
+                TARGET
+                Core
+                POST_BUILD
+                COMMAND
+                ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/test
+        )
+    else ()
+        # 多配置
+        add_custom_command(
+                TARGET
+                Core
+                POST_BUILD
+                COMMAND
+                ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/test/$<CONFIG>
+        )
+    endif ()
+endif ()
+
+###################################################################################
+# Windows 平台配置
+###################################################################################
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    file(GLOB_RECURSE NATIVE_WIN_SRC "native/win/*.cpp" "native/win/*.h")
+    set(DLL_INFO_RC ${PROJECT_BINARY_DIR}/WindowsDllInfo.rc)
+    configure_file(${PROJECT_SOURCE_DIR}/WindowsDllInfo.rc.in ${DLL_INFO_RC})
+
+    target_sources(Core PRIVATE ${DLL_INFO_RC})
+    target_sources(Core PRIVATE ${NATIVE_WIN_SRC})
+
+    if (${MSVC})
+        target_compile_options(Core PRIVATE "/utf-8")
+        target_compile_options(Plugin PRIVATE "/utf-8")
+    endif ()
+    target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
+
+    # if (${MINGW})
+    #     target_compile_options(Core PRIVATE "-fno-exceptions")
+    # else ()
+    #     target_compile_options(Core PRIVATE "/D_HAS_EXCEPTIONS=0")
+    # endif ()
+endif ()
+
+###################################################################################
+# Linux 平台配置
+###################################################################################
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    find_package(Threads REQUIRED)
+    target_link_libraries(Core PRIVATE ${CMAKE_THREAD_LIBS_INIT})
+    target_link_libraries(Core PRIVATE ${CMAKE_DL_LIBS})
+
+    file(GLOB_RECURSE NATIVE_LINUX_SRC "native/linux/*.cpp" "native/linux/*.h")
+    target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_LINUX_SRC})
+
+    # target_compile_options(Core PRIVATE "-fno-exceptions")
+    target_compile_options(Core PUBLIC "-fPIC")
+    target_link_options(Core PUBLIC "-rdynamic")
+    target_compile_options(Plugin PUBLIC "-fPIC")
+endif ()
+
+###################################################################################
+# macOS 平台配置
+###################################################################################
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    find_library(IOKIT_FRAMEWORK IOKit REQUIRED)
+    find_library(CORESERVICES_FRAMEWORK CoreServices REQUIRED)
+    find_library(COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
+    target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
+
+    # target_compile_options(Core PRIVATE "-fno-exceptions")
+    target_compile_options(Plugin PUBLIC "-fPIC")
+
+    file(GLOB_RECURSE NATIVE_DRAWIN_SRC "native/darwin/*.cpp" "native/darwin/*.h")
+    target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
+endif ()
+
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
@@ -294,7 +239,7 @@ configure_package_config_file(
 )
 
 install(
-        TARGETS Core Plugin
+        TARGETS Archive DB Core Plugin
         EXPORT SeseTargets
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
