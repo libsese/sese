@@ -45,7 +45,7 @@ jobs:
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}
-        run: python -m ci.win_config
+        run: cmake -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_ARCHIVE=ON -Bbuild
 
       - name: Build
         working-directory: ${{ github.workspace }}
