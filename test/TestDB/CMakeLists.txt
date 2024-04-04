@@ -1,11 +1,5 @@
 find_package(GTest CONFIG REQUIRED)
 
-if (MSVC)
-    add_compile_options(/utf-8)
-elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    set(CMAKE_EXE_LINKER_FLAGS "-Wl,-copy-dt-needed-entries")
-endif ()
-
 if (SESE_DB_USE_MARIADB)
     add_executable(TestMaria)
     target_sources(TestMaria PRIVATE

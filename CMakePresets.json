@@ -8,9 +8,12 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "SESE_BUILD_TEST": "ON",
+                "SESE_BUILD_EXAMPLE": "ON",
+                "SESE_USE_ARCHIVE": "ON",
                 "SESE_DB_USE_MARIADB": "ON",
                 "SESE_DB_USE_POSTGRES": "ON",
-                "VCPKG_MANIFEST_MODE": "ON"
+                "VCPKG_MANIFEST_MODE": "ON",
+                "BUILD_SHARED_LIBS": "ON"
             }
         },
         {
@@ -20,9 +23,12 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "SESE_BUILD_TEST": "ON",
+                "SESE_BUILD_EXAMPLE": "ON",
+                "SESE_USE_ARCHIVE": "ON",
                 "SESE_DB_USE_MARIADB": "ON",
                 "SESE_DB_USE_POSTGRES": "ON",
-                "VCPKG_MANIFEST_MODE": "OFF"
+                "VCPKG_MANIFEST_MODE": "OFF",
+                "BUILD_SHARED_LIBS": "ON"
             }
         },
         {
@@ -33,7 +39,9 @@
                 "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "SESE_BUILD_TEST": "ON",
+                "SESE_BUILD_EXAMPLE": "ON",
                 "SESE_USE_NATIVE_MANAGER": "ON",
+                "SESE_USE_ARCHIVE": "ON",
                 "SESE_DB_USE_MARIADB": "ON",
                 "SESE_DB_USE_POSTGRES": "ON",
                 "BUILD_SHARED_LIBS": "ON"
@@ -47,7 +55,9 @@
                 "CMAKE_MAKE_PROGRAM": "/usr/local/bin/ninja",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "SESE_BUILD_TEST": "ON",
+                "SESE_BUILD_EXAMPLE": "ON",
                 "SESE_USE_NATIVE_MANAGER": "ON",
+                "SESE_USE_ARCHIVE": "ON",
                 "SESE_DB_USE_MARIADB": "ON",
                 "SESE_DB_USE_POSTGRES": "ON",
                 "BUILD_SHARED_LIBS": "ON"

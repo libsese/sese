@@ -12,10 +12,6 @@
             "version>=": "1.29.0"
         },
         {
-            "name": "libarchive",
-            "version>=": "3.7.2"
-        },
-        {
             "name": "openssl",
             "version>=": "3.2.0#1"
         },
@@ -48,6 +44,15 @@
         "async-logger": {
             "description": "use the async logger",
             "dependencies": []
+        },
+        "archive": {
+            "description": "add archive support",
+            "dependencies": [
+                {
+                    "name": "libarchive",
+                    "version>=": "3.7.2"
+                }
+            ]
         },
         "mysql": {
             "description": "add mysql and mariadb support",
