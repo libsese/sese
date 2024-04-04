@@ -26,18 +26,28 @@ add_executable(
 target_link_libraries(AllTestInMain Core GTest::gtest GTest::gtest_main)
 add_test(NAME AllTestInMain COMMAND AllTestInMain)
 
-# Test Plugin
-add_library(Module SHARED TestPlugin/Module.cpp)
-target_link_libraries(Module PUBLIC Core)
+# TestArchive
+if (SESE_USE_ARCHIVE)
+    target_sources(
+            AllTestInMain
+            PRIVATE
+            TestArchive/TestArchiveReader.cpp
+            TestArchive/TestArchiveWriter.cpp
+    )
+endif ()
+
+# TestPlugin
+add_library(Module.m SHARED TestPlugin/Module.m.cpp)
+target_link_libraries(Module.m PUBLIC Core)
 set_target_properties(
-        Module PROPERTIES
-        OUTPUT_NAME "Module"
+        Module.m PROPERTIES
+        OUTPUT_NAME "Module.m"
         PREFIX ""
-        SUFFIX ".m"
+        SUFFIX ""
 )
-target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module>\"")
+target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_MODULE=\"$<TARGET_FILE:Module.m>\"")
 target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_CORE=\"$<TARGET_FILE:Core>\"")
-add_dependencies(AllTestInMain Module)
+add_dependencies(AllTestInMain Module.m)
 
 # TestSharedMemory
 add_executable(Memory.d TestSharedMemory/Memory.d.cpp)

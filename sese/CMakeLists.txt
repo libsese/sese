@@ -32,7 +32,7 @@ file(
         "res/*.cpp" "res/*.h"
 )
 
-file (
+file(
         GLOB_RECURSE UNIX_SRC
         "native/unix/*.cpp" "native/unix/*.h"
 )
@@ -120,8 +120,18 @@ if (MSVC)
 endif ()
 include_directories(${PROJECT_SOURCE_DIR})
 
-add_subdirectory(archive)
-target_link_libraries(Core PRIVATE Archive)
+if (SESE_USE_ARCHIVE)
+    add_subdirectory(archive)
+    target_link_libraries(Core PRIVATE Archive)
+    install(
+            TARGETS Archive
+            EXPORT SeseTargets
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib
+            PUBLIC_HEADER DESTINATION include
+    )
+endif ()
 
 add_subdirectory(db)
 target_link_libraries(Core PRIVATE DB)
@@ -239,7 +249,7 @@ configure_package_config_file(
 )
 
 install(
-        TARGETS Archive DB Core Plugin
+        TARGETS DB Core Plugin
         EXPORT SeseTargets
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
