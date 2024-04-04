@@ -10,6 +10,10 @@ add_library(DB OBJECT
         ./Util.h
 )
 
+if (UNIX)
+    set_target_properties(DB PROPERTIES POSITION_INDEPENDENT_CODE ON)
+endif ()
+
 if (SESE_DB_USE_SQLITE)
     target_compile_definitions(DB PUBLIC -DHAS_SQLITE)
     target_sources(DB PRIVATE

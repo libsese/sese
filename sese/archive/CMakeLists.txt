@@ -11,6 +11,10 @@ add_library(Archive OBJECT
         ./Config.h
 )
 
+if (UNIX)
+    set_target_properties(Archive PROPERTIES POSITION_INDEPENDENT_CODE ON)
+endif ()
+
 if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
     set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
 endif ()

@@ -53,6 +53,10 @@ add_library(Core
 
 target_link_libraries(Core PUBLIC Plugin)
 
+if (SESE_BUILD_TEST)
+    target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
+endif ()
+
 target_include_directories(
         Core
         PUBLIC
@@ -219,9 +223,11 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_LINUX_SRC})
 
     # target_compile_options(Core PRIVATE "-fno-exceptions")
-    target_compile_options(Core PUBLIC "-fPIC")
+    # target_compile_options(Core PUBLIC "-fPIC")
+    set_target_properties(Core PROPERTIES POSITION_INDEPENDENT_CODE ON)
     target_link_options(Core PUBLIC "-rdynamic")
-    target_compile_options(Plugin PUBLIC "-fPIC")
+    # target_compile_options(Plugin PUBLIC "-fPIC")
+    set_target_properties(Plugin PROPERTIES POSITION_INDEPENDENT_CODE ON)
 endif ()
 
 ###################################################################################
@@ -234,7 +240,8 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(Core PRIVATE ${COREFOUNDATION_FRAMEWORK} ${IOKIT_FRAMEWORK} ${CORESERVICES_FRAMEWORK})
 
     # target_compile_options(Core PRIVATE "-fno-exceptions")
-    target_compile_options(Plugin PUBLIC "-fPIC")
+    # target_compile_options(Plugin PUBLIC "-fPIC")
+    set_target_properties(Plugin PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
     file(GLOB_RECURSE NATIVE_DRAWIN_SRC "native/darwin/*.cpp" "native/darwin/*.h")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
