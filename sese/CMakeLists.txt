@@ -127,14 +127,7 @@ include_directories(${PROJECT_SOURCE_DIR})
 if (SESE_USE_ARCHIVE)
     add_subdirectory(archive)
     target_link_libraries(Core PRIVATE Archive)
-    install(
-            TARGETS Archive
-            EXPORT SeseTargets
-            RUNTIME DESTINATION bin
-            LIBRARY DESTINATION lib
-            ARCHIVE DESTINATION lib
-            PUBLIC_HEADER DESTINATION include
-    )
+    set(ARCHIVE_TARGET Archive)
 endif ()
 
 add_subdirectory(db)
@@ -247,6 +240,9 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_sources(Core PRIVATE ${UNIX_SRC} ${NATIVE_DRAWIN_SRC})
 endif ()
 
+###################################################################################
+# CMake 安装包配置
+###################################################################################
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
@@ -256,7 +252,7 @@ configure_package_config_file(
 )
 
 install(
-        TARGETS DB Core Plugin
+        TARGETS ${ARCHIVE_TARGET} DB Core Plugin
         EXPORT SeseTargets
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
