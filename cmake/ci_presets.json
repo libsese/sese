@@ -1,0 +1,116 @@
+{
+    "version": 6,
+    "include": [
+        "base_presets.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "windows-ci-config",
+            "hidden": true,
+            "inherits": ["windows-release"]
+        },
+        {
+            "name": "linux-ci-config",
+            "hidden": true,
+            "inherits": ["linux-release"]
+        },
+        {
+            "name": "darwin-ci-config",
+            "hidden": true,
+            "inherits": ["darwin-release"]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-ci-build",
+            "hidden": true,
+            "configurePreset": "windows-ci-config",
+            "jobs": 4
+        },
+        {
+            "name": "linux-ci-build",
+            "hidden": true,
+            "configurePreset": "linux-ci-config",
+            "jobs": 4
+        },
+        {
+            "name": "darwin-ci-build",
+            "hidden": true,
+            "configurePreset": "darwin-ci-config",
+            "jobs": 4
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "windows-ci-test",
+            "hidden": true,
+            "configurePreset": "windows-ci-config",
+            "filter": {
+                "include": {
+                    "name": "AllTestInMain"
+                }
+            }
+        },
+        {
+            "name": "linux-ci-test",
+            "hidden": true,
+            "configurePreset": "linux-ci-config"
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "windows-ci-workflow",
+            "displayName": "Windows CI Workflow",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "windows-ci-config"
+                },
+                {
+                    "type": "build",
+                    "name": "windows-ci-build"
+                },
+                {
+                    "type": "test",
+                    "name": "windows-ci-test"
+                }
+            ]
+        },
+        {
+            "name": "linux-ci-workflow",
+            "displayName": "Linux CI Workflow",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "linux-ci-config"
+                },
+                {
+                    "type": "build",
+                    "name": "linux-ci-build"
+                },
+                {
+                    "type": "test",
+                    "name": "linux-ci-test"
+                }
+            ]
+        },
+        {
+            "name": "darwin-ci-workflow",
+            "displayName": "Darwin CI Workflow",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "darwin-ci-config"
+                },
+                {
+                    "type": "build",
+                    "name": "darwin-ci-build"
+                },
+                {
+                    "type": "test",
+                    "name": "darwin-ci-test"
+                }
+            ]
+        }
+    ]
+}

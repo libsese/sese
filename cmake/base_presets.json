@@ -1,0 +1,110 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "base-config",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
+            "hidden": true,
+            "cacheVariables": {
+                "SESE_BUILD_TEST": "ON",
+                "SESE_BUILD_EXAMPLE": "ON",
+                "SESE_USE_ARCHIVE": "ON",
+                "SESE_DB_USE_MARIADB": "ON",
+                "SESE_DB_USE_POSTGRES": "ON",
+                "BUILD_SHARED_LIBS": "ON"
+            }
+        },
+        {
+            "name": "windows-base",
+            "hidden": true,
+            "cacheVariables": {
+                "VCPKG_TARGET_TRIPLET": "x64-windows",
+                "VCPKG_MANIFEST_MODE": "ON"
+            },
+            "inherits": [
+                "base-config"
+            ]
+        },
+        {
+            "name": "windows-debug",
+            "displayName": "Windows Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "inherits": [
+                "windows-base"
+            ]
+        },
+        {
+            "name": "windows-release",
+            "displayName": "Windows Release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "inherits": [
+                "windows-base"
+            ]
+        },
+        {
+            "name": "linux-base",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
+            },
+            "inherits": [
+                "base-config"
+            ]
+        },
+        {
+            "name": "linux-debug",
+            "displayName": "Linux Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "inherits": [
+                "linux-base"
+            ]
+        },
+        {
+            "name": "linux-release",
+            "displayName": "Linux release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "inherits": [
+                "linux-base"
+            ]
+        },
+        {
+            "name": "darwin-base",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_MAKE_PROGRAM": "/usr/local/bin/ninja"
+            },
+            "inherits": [
+                "base-config"
+            ]
+        },
+        {
+            "name": "darwin-debug",
+            "displayName": "Darwin Debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "inherits": [
+                "darwin-base"
+            ]
+        },
+        {
+            "name": "darwin-release",
+            "displayName": "Darwin Release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "inherits": [
+                "darwin-base"
+            ]
+        }
+    ]
+}

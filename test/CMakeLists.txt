@@ -71,4 +71,48 @@ set_target_properties(
 target_compile_definitions(AllTestInMain PRIVATE "-DPATH_TO_IPC_D=\"$<TARGET_FILE:IPC.d>\"")
 add_dependencies(AllTestInMain IPC.d)
 
-add_subdirectory(TestDB)
+# TestMaria
+if (SESE_DB_USE_MARIADB)
+    add_executable(TestMaria)
+    target_sources(TestMaria PRIVATE
+            ./TestDB/TestMariaMain.cpp
+            ./TestDB/TestMariaInstance.cpp
+            ./TestDB/TestMariaStatement.cpp
+            ./TestDB/TestMariaTransaction.cpp
+            ./TestDB/TestMariaMetadata.cpp
+    )
+    target_link_libraries(TestMaria PRIVATE Core)
+    target_link_libraries(TestMaria PRIVATE GTest::gtest GTest::gtest_main)
+    add_test(NAME TestMaria COMMAND $<TARGET_FILE:TestMaria>)
+endif ()
+
+# TestSqlite
+if (SESE_DB_USE_SQLITE)
+    add_executable(TestSqlite)
+    target_sources(TestSqlite PRIVATE
+            ./TestDB/TestSqliteMain.cpp
+            ./TestDB/TestSqliteInstance.cpp
+            ./TestDB/TestSqliteStatement.cpp
+            ./TestDB/TestSqliteTransaction.cpp
+            ./TestDB/TestSqliteMetadata.cpp
+    )
+    target_link_libraries(TestSqlite PRIVATE Core)
+    target_link_libraries(TestSqlite PRIVATE GTest::gtest GTest::gtest_main)
+    target_compile_definitions(TestSqlite PRIVATE -DPATH_TO_DB=\"${PROJECT_SOURCE_DIR}/docker/tmp/db_test.db\")
+    add_test(NAME TestSqlite COMMAND $<TARGET_FILE:TestSqlite>)
+endif ()
+
+# TestPostgres
+if (SESE_DB_USE_POSTGRES)
+    add_executable(TestPostgres)
+    target_sources(TestPostgres PRIVATE
+            ./TestDB/TestPostgresMain.cpp
+            ./TestDB/TestPostgresInstance.cpp
+            ./TestDB/TestPostgresStatement.cpp
+            ./TestDB/TestPostgresTransaction.cpp
+            ./TestDB/TestPostgresMetadata.cpp
+    )
+    target_link_libraries(TestPostgres PRIVATE Core)
+    target_link_libraries(TestPostgres PRIVATE GTest::gtest GTest::gtest_main)
+    add_test(NAME TestPostgres COMMAND $<TARGET_FILE:TestPostgres>)
+endif ()
