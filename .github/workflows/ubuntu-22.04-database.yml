@@ -31,7 +31,7 @@ jobs:
 
       - name: Build
         working-directory: ${{ github.workspace }}
-        run: cmake --build build --target TestPostgres TestSqlite TestMaria
+        run: cmake --build build -- -j 2
 
       - name: Run Sqlite Scripts
         working-directory: ${{ github.workspace }}
