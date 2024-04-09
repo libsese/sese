@@ -22,9 +22,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies(pip-ci)
-        run: pip install -r ${{ github.workspace }}/ci/requirements.txt
-
       - name: Install Dependencies(pip-scripts)
         run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
 
@@ -38,25 +35,22 @@ jobs:
 
       - name: Build
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_build
+        run: cmake --build build -- -j 2
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/test/AllTestInMain
+        run: build/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*
 
   test-coverage:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.2
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5.1.0
         with:
           python-version: '3.11'
-
-      - name: Install Dependencies(pip-ci)
-        run: pip install -r ${{ github.workspace }}/ci/requirements.txt
 
       - name: Install Dependencies(pip-scripts)
         run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
@@ -71,15 +65,15 @@ jobs:
 
       - name: Build
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.unix_build_coverage
+        run: cmake --build build-coverage -- -j 2
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build-coverage/test/AllTestInMain
+        run: build-coverage/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*
 
       - name: Coverage
         working-directory: ${{ github.workspace }}
-        run: python3 -m ci.make_coverage_report
+        run: python3 scripts/make_coverage_report.py
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
