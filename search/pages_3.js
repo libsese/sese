@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['弃用列表_0',['弃用列表',['../deprecated.html',1,'']]]
+  ['内部实现目录_0',['内部实现目录',['../md_sese_2internal_2_r_e_a_d_m_e.html',1,'']]]
 ];

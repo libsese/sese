@@ -9,10 +9,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,9 +27,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign">
    <div id="projectname">sese-core
    </div>
+   <div id="projectbrief">A cross-platform foundational library</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +55,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('namespacesese.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,7 +93,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#namespaces">命名空间</a> &#124;
@@ -356,8 +381,8 @@ $(function() {
 <tr class="memitem:ad886f60f663e826d49276753928e0209" id="r_ad886f60f663e826d49276753928e0209"><td class="memTemplParams" colspan="2">template&lt;class RETURN_TYPE &gt; </td></tr>
 <tr class="memitem:ad886f60f663e826d49276753928e0209"><td class="memTemplItemLeft" align="right" valign="top">std::shared_future&lt; RETURN_TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese.html#ad886f60f663e826d49276753928e0209">asyncWithGlobalPool</a> (const std::function&lt; RETURN_TYPE()&gt; &amp;task) noexcept</td></tr>
 <tr class="separator:ad886f60f663e826d49276753928e0209"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cb667d0a821524e1131d08da87559fa" id="r_a5cb667d0a821524e1131d08da87559fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#a5cb667d0a821524e1131d08da87559fa">initCore</a> (int ARGC, const char *const *argv) noexcept</td></tr>
-<tr class="separator:a5cb667d0a821524e1131d08da87559fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4b46ffad174639bc2bfe96d85f8892" id="r_a1f4b46ffad174639bc2bfe96d85f8892"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#a1f4b46ffad174639bc2bfe96d85f8892">initCore</a> (int argc, const char *const *argv) noexcept</td></tr>
+<tr class="separator:a1f4b46ffad174639bc2bfe96d85f8892"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9753bbc0af8293d0974d9bf39ebb393" id="r_ad9753bbc0af8293d0974d9bf39ebb393"><td class="memTemplParams" colspan="2">template&lt;typename RETURN_TYPE , typename... ARGS&gt; </td></tr>
 <tr class="memitem:ad9753bbc0af8293d0974d9bf39ebb393"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">SharedType</a>&lt; RETURN_TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese.html#ad9753bbc0af8293d0974d9bf39ebb393">makeShared</a> (ARGS &amp;&amp;...args)</td></tr>
 <tr class="separator:ad9753bbc0af8293d0974d9bf39ebb393"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -795,14 +820,14 @@ template&lt;typename RETURN_TYPE , typename RAW_TYPE &gt; </div>
 </div><div class="memdoc">
 <p>std::shared_ptr 的类型转换 </p><dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">ReturnType</td><td>预计返回 std::shared_ptr 的模板参数 </td></tr>
-    <tr><td class="paramname">RawType</td><td>原始的 std::shared_ptr 的模板参数 </td></tr>
+    <tr><td class="paramname">RETURN_TYPE</td><td>预计返回 std::shared_ptr 的模板参数 </td></tr>
+    <tr><td class="paramname">RAW_TYPE</td><td>原始的 std::shared_ptr 的模板参数 </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rawType</td><td>需要转换的 std::shared_ptr </td></tr>
+    <tr><td class="paramname">raw_type</td><td>需要转换的 std::shared_ptr </td></tr>
   </table>
   </dd>
 </dl>
@@ -834,14 +859,14 @@ template&lt;typename RETURN_TYPE , typename RAW_TYPE &gt; </div>
 </div><div class="memdoc">
 <p>std::unique_ptr 的类型转换 </p><dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">ReturnType</td><td>预计返回 std::unique_ptr 的模板参数 </td></tr>
-    <tr><td class="paramname">RawType</td><td>原始的 std::unique_ptr 的模板参数 </td></tr>
+    <tr><td class="paramname">RETURN_TYPE</td><td>预计返回 std::unique_ptr 的模板参数 </td></tr>
+    <tr><td class="paramname">RAW_TYPE</td><td>原始的 std::unique_ptr 的模板参数 </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rawType</td><td>需要转换的 std::unique_ptr </td></tr>
+    <tr><td class="paramname">raw_type</td><td>需要转换的 std::unique_ptr </td></tr>
   </table>
   </dd>
 </dl>
@@ -1053,8 +1078,8 @@ template&lt;typename RETURN_TYPE , typename RAW_TYPE &gt; </div>
 
 </div>
 </div>
-<a id="a5cb667d0a821524e1131d08da87559fa" name="a5cb667d0a821524e1131d08da87559fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cb667d0a821524e1131d08da87559fa">&#9670;&#160;</a></span>initCore()</h2>
+<a id="a1f4b46ffad174639bc2bfe96d85f8892" name="a1f4b46ffad174639bc2bfe96d85f8892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4b46ffad174639bc2bfe96d85f8892">&#9670;&#160;</a></span>initCore()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1066,7 +1091,7 @@ template&lt;typename RETURN_TYPE , typename RAW_TYPE &gt; </div>
           <td class="memname">void sese::initCore </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ARGC</em>, </td>
+          <td class="paramname"><em>argc</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1095,10 +1120,10 @@ template&lt;typename RETURN_TYPE , typename RAW_TYPE &gt; </div>
 </dl>
 
 <p class="definition">在文件 <a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a> 第 <a class="el" href="_initializer_8cpp_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>                                                                    {</div>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>                                                              {</div>
 <div class="line"><span class="lineno">   63</span>    <span class="comment">// 不会出错，不需要判断</span></div>
 <div class="line"><span class="lineno">   64</span>    <span class="comment">// GCOVR_EXCL_START</span></div>
-<div class="line"><span class="lineno">   65</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">Initializer::addTask</a>(std::make_shared&lt;system::CommandLineInitiateTask&gt;(ARGC, argv));</div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">Initializer::addTask</a>(std::make_shared&lt;system::CommandLineInitiateTask&gt;(argc, argv));</div>
 <div class="line"><span class="lineno">   66</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">Initializer::addTask</a>(std::make_shared&lt;PathsInitiateTask&gt;());</div>
 <div class="line"><span class="lineno">   67</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">Initializer::addTask</a>(std::make_shared&lt;ThreadInitiateTask&gt;());</div>
 <div class="line"><span class="lineno">   68</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">Initializer::addTask</a>(std::make_shared&lt;record::LoggerInitiateTask&gt;());</div>
@@ -1189,8 +1214,8 @@ template&lt;typename RETURN_TYPE , typename... ARGS&gt; </div>
 </div><div class="memdoc">
 <p>实例化 SharedType </p><dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">ReturnType</td><td>SharedType 模板参数 </td></tr>
-    <tr><td class="paramname">Args</td><td>模板参数的构造函数参数类型 </td></tr>
+    <tr><td class="paramname">RETURN_TYPE</td><td>SharedType 模板参数 </td></tr>
+    <tr><td class="paramname">ARGS</td><td>模板参数的构造函数参数类型 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1228,8 +1253,8 @@ template&lt;typename RETURN_TYPE , typename INIT_TYPE &gt; </div>
 </div><div class="memdoc">
 <p>std::make_shared 搭配 std::initializer_list 使用 </p><dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">ReturnType</td><td>预计返回 std::shared_ptr 的模板类型 </td></tr>
-    <tr><td class="paramname">InitType</td><td>std::initializer_list 模板参数 </td></tr>
+    <tr><td class="paramname">RETURN_TYPE</td><td>预计返回 std::shared_ptr 的模板类型 </td></tr>
+    <tr><td class="paramname">INIT_TYPE</td><td>std::initializer_list 模板参数 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1275,8 +1300,8 @@ template&lt;typename RETURN_TYPE , typename... ARGS&gt; </div>
 </div><div class="memdoc">
 <p>实例化 UniqueType </p><dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">ReturnType</td><td>UniqueType 模板参数 </td></tr>
-    <tr><td class="paramname">Args</td><td>模板参数的构造函数参数类型 </td></tr>
+    <tr><td class="paramname">RETURN_TYPE</td><td>UniqueType 模板参数 </td></tr>
+    <tr><td class="paramname">ARGS</td><td>模板参数的构造函数参数类型 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1314,8 +1339,8 @@ template&lt;typename RETURN_TYPE , typename INIT_TYPE &gt; </div>
 </div><div class="memdoc">
 <p>std::make_unique 搭配 std::initializer_list 使用 </p><dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">ReturnType</td><td>预计返回 std::unique_ptr 的模板参数 </td></tr>
-    <tr><td class="paramname">InitType</td><td>std::initializer_list 的模板参数 </td></tr>
+    <tr><td class="paramname">RETURN_TYPE</td><td>预计返回 std::unique_ptr 的模板参数 </td></tr>
+    <tr><td class="paramname">INIT_TYPE</td><td>std::initializer_list 的模板参数 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1606,9 +1631,13 @@ template&lt;class REP , class PERIOD &gt; </div>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

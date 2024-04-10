@@ -5,14 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>sese-core: 首页</title>
+<title>sese-core: sese-core</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,9 +27,11 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign">
    <div id="projectname">sese-core
    </div>
+   <div id="projectbrief">A cross-platform foundational library</div>
   </td>
  </tr>
  </tbody>
@@ -47,6 +56,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,14 +93,52 @@ $(function() {
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">sese-core 文档</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">sese-core </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e_8zh___c_n"></a> </p><h1 align="center">Sese Library</h1>
+<div align="center"> <img src="logo.svg" alt="logo" style="pointer-events: none;" width="128" height="128" class="inline"/> </div> <div align="center"> <img src="https://img.shields.io/static/v1?label=license&amp;message=Apache-2.0&amp;color=blue&amp;logo=Apache" alt="license" class="inline"/> <img src="https://img.shields.io/static/v1?label=language&amp;message=C%2B%2B%2017&amp;color=blue&amp;logo=cplusplus" alt="lang" class="inline"/> <img src="https://img.shields.io/static/v1?label=build%20system&amp;message=CMake&amp;color=blue&amp;logo=cmake" alt="buildsystem" class="inline"/> <br  />
+ <img src="https://www.codefactor.io/repository/github/libsese/sese-core/badge" alt="CodeFactor Status" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/windows-2022.yml?label=Windows&amp;logo=windows" alt="GitHub Workflow Status (with event)" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/ubuntu-22.04-apt.yml?label=Ubuntu&amp;logo=ubuntu" alt="GitHub Workflow Status (with event)" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/macos-12-brew.yml?label=macOS&amp;logo=apple" alt="GitHub Workflow Status (with event)" class="inline"/> <br  />
+ </div><h2><a class="anchor" id="autotoc_md0"></a>
+SESE-CORE</h2>
+<p>SESE-CODE 是一个使用 C++17 语言标准、以 CMake 作为构建系统、以 vcpkg 作为包管理器的跨平台基础项目，可以用于系统基础开发以及 Web 开发等。</p>
+<p>项目目前支持在 x86_64 架构下的 Windows、macOS 以及各个 Linux 发行版上运行， ARM 架构尚未进行测试。</p>
+<p>项目定位是一定程度上作为标准库的补充使用（例如 folly、boost 等），例如异步、日志、线程、二进制接口等这些常用的功能。</p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+构建</h2>
+<p>使用 vcpkg 导入依赖则不太需要你关系具体如何构建这个项目。只需要导入私有的 vcpkg-registry，填写 vcpkg.json 并添加 vcpkg 工具链即可。</p>
+<p>如果是编译安装或者作为开发者本地开发或调试本项目同样需要使用 vcpkg。 clone 项目并配置该项目，添加 vcpkg 工具链和 SESE_BUILD_TEST=ON 以构建单元测试。</p>
+<p>使用以下脚本自动配置当前项目至 build 目录下：</p>
+<div class="fragment"><div class="line">python3 scripts/config.py</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
+CODESPACES</h2>
+<p>使用 CODESPACES 只需要以项目的默认的配置创建容器即可。 .vscode/settings.json 提供了该容器可直接使用的默认配置。</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+自构建容器</h2>
+<p>项目也提供了 Dockerfile 文件构建一个可以直接用于开发的容器环境，具体细节可以参考 docker/readme.md 文件，此处不再赘述。</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+单元测试</h2>
+<p>项目选用了 googletest 作为项目的单元测试框架，部分测试屏蔽了 SIGPIPE 信号以保证正常运行。 使用 gdb 或 lldb 调试时，可能会自动加载项目下的 **.gdbinit** 或 **.lldbinit** 文件屏蔽所有的 SIGPIPE 信号。 运行所有测试只需要进入构建目录并运行 ctest 即可。</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+测试报告</h2>
+<p>生成测试报告需要编译器支持并设置 FLAGS 以生成报告数据。而生成报告则依赖于 gcovr，可以通过 pip 或者系统的包管理系统安装。 对于一些已经标记过时、弃用的实现，已经通过 <b>gcovr.cfg</b> 进行了过滤，使用以下命令可以直接在 coverage 目录下生成测试报告。</p>
+<div class="fragment"><div class="line">python3 scripts/make_coverage_report.py</div>
+</div><!-- fragment --><p>有时候你可能需要通过 gcovr 的某些选项来选择特定版本的 gcov 可执行文件。</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+WORKFLOWS</h2>
+<p>针对支持的三大平台均有工作流进行自动测试。其中在 ubuntu 的 test_coverage_job 中将会生成一份名为 CoverageReport.zip 的测试报告文件。</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+更多</h2>
+<p>需要更多信息，请移步 <a href="https://libsese.github.io/sese-docs/#/">documents</a>。 </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>
