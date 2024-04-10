@@ -24,7 +24,8 @@ public:
         // SHA224,
         SHA256,
         SHA384,
-        SHA512
+        SHA512,
+        SM3
     };
 
     static std::string digest(Type type, InputStream *input, bool is_cap = false) noexcept;
@@ -38,5 +39,6 @@ private:
     static void digestSHA256(char *str, InputStream *input, bool is_cap) noexcept;
     static void digestSHA384(char *str, InputStream *input, bool is_cap) noexcept;
     static void digestSHA512(char *str, InputStream *input, bool is_cap) noexcept;
+    static void digestSM3(char *str, InputStream *input, bool is_cap) noexcept;
 };
 } // namespace sese::security

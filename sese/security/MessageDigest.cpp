@@ -4,6 +4,7 @@
 #include "sese/security/evp/SHA256Context.h"
 #include "sese/security/evp/SHA384Context.h"
 #include "sese/security/evp/SHA512Context.h"
+#include "sese/security/evp/SM3Context.h"
 #include "sese/util/MemoryViewer.h"
 
 std::string sese::security::MessageDigest::digest(sese::security::MessageDigest::Type type, InputStream *input, bool is_cap) noexcept {
@@ -42,6 +43,11 @@ std::string sese::security::MessageDigest::digest(sese::security::MessageDigest:
             char str[64 * 2 + 1];
             digestSHA512(str, input, is_cap);
             return {str, 64 * 2};
+        }
+        case Type::SM3: {
+            char str [32 * 2 + 1];
+            digestSM3(str, input, is_cap);
+            return {str, 32 * 2};
         }
         default:
             // Never reach
@@ -191,4 +197,22 @@ void sese::security::MessageDigest::digestSHA512(char *str, InputStream *input, 
         str[i * 2 + 1] = MemoryViewer::toChar(div_rt.rem, is_cap);
     }
     str[128] = 0;
+}
+
+void sese::security::MessageDigest::digestSM3(char *str, InputStream *input, bool is_cap) noexcept {
+    evp::SM3Context context;
+    size_t len;
+    char buffer[1024];
+    while ((len = input->read(buffer, 1024)) > 0) {
+        context.update(buffer, len);
+    }
+    context.final();
+
+    auto result = static_cast<uint8_t *>(context.getResult());
+    for (int i = 0; i < context.getLength(); ++i) {
+        std::div_t div_rt = std::div(result[i], 0x10);
+        str[i * 2 + 0] = MemoryViewer::toChar(div_rt.quot, is_cap);
+        str[i * 2 + 1] = MemoryViewer::toChar(div_rt.rem, is_cap);
+    }
+    str[64] = 0;
 }
