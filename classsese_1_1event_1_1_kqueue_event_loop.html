@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -192,8 +193,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>kqueue 事件循环 </p>
-
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8h_source.html">KqueueEventLoop.h</a> 第 <a class="el" href="_kqueue_event_loop_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="acea77ed4593ed26e04e9bf066a0529ac" name="acea77ed4593ed26e04e9bf066a0529ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acea77ed4593ed26e04e9bf066a0529ac">&#9670;&#160;</a></span>~KqueueEventLoop()</h2>
@@ -218,20 +217,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00036">36</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>                                           {</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">if</span> (-1 != <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>) {</div>
-<div class="line"><span class="lineno">   38</span>        <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>);</div>
-<div class="line"><span class="lineno">   39</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a> = -1;</div>
-<div class="line"><span class="lineno">   40</span>    }</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a>) {</div>
-<div class="line"><span class="lineno">   43</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a>;</div>
-<div class="line"><span class="lineno">   44</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   45</span>    }</div>
-<div class="line"><span class="lineno">   46</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00118">close()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close()</a>.</p>
 
 </div>
 </div>
@@ -278,48 +264,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#aeb4c42e9e5ce9307b3a6f586bea524a2">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00119">119</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>                                                                                                 {</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keyword">auto</span> <span class="keyword">event</span> = <span class="keyword">new</span> KqueueEvent;</div>
-<div class="line"><span class="lineno">  121</span>    <span class="keyword">event</span>-&gt;fd = fd;</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keyword">event</span>-&gt;events = events;</div>
-<div class="line"><span class="lineno">  123</span>    <span class="comment">// event-&gt;oldEvents = events;</span></div>
-<div class="line"><span class="lineno">  124</span>    <span class="keyword">event</span>-&gt;data = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
-<div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>    <span class="comment">// if (events &amp; EVENT_READ) {</span></div>
-<div class="line"><span class="lineno">  127</span>    <span class="comment">//     if (!addNativeEvent(fd, EVFILT_READ, event)) {</span></div>
-<div class="line"><span class="lineno">  128</span>    <span class="comment">//         // 通常不会出错</span></div>
-<div class="line"><span class="lineno">  129</span>    <span class="comment">//         delete event;</span></div>
-<div class="line"><span class="lineno">  130</span>    <span class="comment">//         return nullptr;</span></div>
-<div class="line"><span class="lineno">  131</span>    <span class="comment">//     }</span></div>
-<div class="line"><span class="lineno">  132</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  133</span> </div>
-<div class="line"><span class="lineno">  134</span>    <span class="comment">// if (!addNativeEvent(fd, EVFILT_READ, event)) {</span></div>
-<div class="line"><span class="lineno">  135</span>    <span class="comment">//     // 通常不会出错</span></div>
-<div class="line"><span class="lineno">  136</span>    <span class="comment">//     delete event;</span></div>
-<div class="line"><span class="lineno">  137</span>    <span class="comment">//     return nullptr;</span></div>
-<div class="line"><span class="lineno">  138</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  139</span>    <span class="comment">// if (events &amp; EVENT_WRITE) {</span></div>
-<div class="line"><span class="lineno">  140</span>    <span class="comment">//     if (!addNativeEvent(fd, EVFILT_WRITE, event)) {</span></div>
-<div class="line"><span class="lineno">  141</span>    <span class="comment">//         // 通常不会出错</span></div>
-<div class="line"><span class="lineno">  142</span>    <span class="comment">//         delete event;</span></div>
-<div class="line"><span class="lineno">  143</span>    <span class="comment">//         return nullptr;</span></div>
-<div class="line"><span class="lineno">  144</span>    <span class="comment">//     }</span></div>
-<div class="line"><span class="lineno">  145</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  146</span>    <span class="keyword">struct </span>kevent kevent {};</div>
-<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">if</span> (events &amp; <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>) {</div>
-<div class="line"><span class="lineno">  148</span>        EV_SET(&amp;kevent, event-&gt;fd, EVFILT_READ, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);</div>
-<div class="line"><span class="lineno">  149</span>        ::kevent(<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>, &amp;kevent, 1, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  150</span>    }</div>
-<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">if</span> (events &amp; <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>) {</div>
-<div class="line"><span class="lineno">  152</span>        EV_SET(&amp;kevent, event-&gt;fd, EVFILT_WRITE, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);</div>
-<div class="line"><span class="lineno">  153</span>        ::kevent(<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>, &amp;kevent, 1, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  154</span>    }</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> event;</div>
-<div class="line"><span class="lineno">  157</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a>, <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>, <a class="el" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a> , 以及 <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>.</p>
 
 </div>
 </div>
@@ -349,52 +294,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#acc96fd81d204831200614e2d5a0c0d39">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00048">48</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                     {</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keyword">struct </span>kevent events[<a class="code hl_define" href="_kqueue_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09">MAX_EVENT_SIZE</a>]{};</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keyword">auto</span> div = ldiv(time, 1000);</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keyword">struct </span>timespec timeout {</div>
-<div class="line"><span class="lineno">   52</span>        div.quot, div.rem * 1000000</div>
-<div class="line"><span class="lineno">   53</span>    };</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>    <span class="keyword">auto</span> number_of_fds = ::kevent(<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>, <span class="keyword">nullptr</span>, 0, events, <a class="code hl_define" href="_kqueue_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09">MAX_EVENT_SIZE</a>, &amp;timeout);</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (-1 == number_of_fds) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; number_of_fds; ++i) {</div>
-<div class="line"><span class="lineno">   58</span>        <span class="keyword">auto</span> <span class="keyword">event</span> = <span class="keyword">reinterpret_cast&lt;</span>BaseEvent *<span class="keyword">&gt;</span>(events[i].udata);</div>
-<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">if</span> (events[i].ident == <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83">listenFd</a>) {</div>
-<div class="line"><span class="lineno">   60</span>            <span class="keyword">auto</span> client = accept(<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83">listenFd</a>, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   61</span>            <span class="keywordflow">if</span> (client == -1) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   62</span>            <a class="code hl_function" href="classsese_1_1event_1_1_kqueue_event_loop.html#a0aa500bd522880edc44b9dde136b06e2">onAccept</a>(client);</div>
-<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   64</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">if</span> (events[i].flags &amp; EV_ERROR &amp;&amp; event-&gt;events &amp; <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>) {</div>
-<div class="line"><span class="lineno">   66</span>                <a class="code hl_function" href="classsese_1_1event_1_1_kqueue_event_loop.html#a0ac244f6dcce8e289bafd403a2e37e3a">onError</a>(event);</div>
-<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   68</span>            }</div>
-<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">if</span> (events[i].filter == EVFILT_READ) {</div>
-<div class="line"><span class="lineno">   70</span>                <span class="keywordflow">if</span> (event-&gt;events &amp; <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>) {</div>
-<div class="line"><span class="lineno">   71</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_kqueue_event_loop.html#a2de90f7983850a647a82815382260afe">onRead</a>(event);</div>
-<div class="line"><span class="lineno">   72</span>                }</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>                <span class="keywordflow">if</span> ((events[i].flags &amp; EV_EOF) &amp;&amp; <a class="code hl_variable" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2" title="指示当前循环是否处理关闭事件">handleClose</a>) {</div>
-<div class="line"><span class="lineno">   75</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_kqueue_event_loop.html#abcd26aec053b3ad04d8a81ce8a9ea0ba">onClose</a>(event);</div>
-<div class="line"><span class="lineno">   76</span>                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   77</span>                }</div>
-<div class="line"><span class="lineno">   78</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (events[i].filter == EVFILT_WRITE) {</div>
-<div class="line"><span class="lineno">   79</span>                <span class="keywordflow">if</span> ((events[i].flags &amp; EV_EOF) &amp;&amp; <a class="code hl_variable" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2" title="指示当前循环是否处理关闭事件">handleClose</a>) {</div>
-<div class="line"><span class="lineno">   80</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_kqueue_event_loop.html#abcd26aec053b3ad04d8a81ce8a9ea0ba">onClose</a>(event);</div>
-<div class="line"><span class="lineno">   81</span>                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   82</span>                }</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>                <span class="keywordflow">if</span> (event-&gt;events &amp; <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>) {</div>
-<div class="line"><span class="lineno">   85</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_kqueue_event_loop.html#a4cc2d76401559700a5764b031534a88d">onWrite</a>(<span class="keyword">reinterpret_cast&lt;</span>BaseEvent *<span class="keyword">&gt;</span>(events[i].udata));</div>
-<div class="line"><span class="lineno">   86</span>                }</div>
-<div class="line"><span class="lineno">   87</span>            }</div>
-<div class="line"><span class="lineno">   88</span>        }</div>
-<div class="line"><span class="lineno">   89</span>    }</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a>, <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a> , 以及 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00009">MAX_EVENT_SIZE</a>.</p>
+<p class="reference">引用了 <a class="el" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>, <a class="el" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>, <a class="el" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a> , 以及 <a class="el" href="_kqueue_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09">MAX_EVENT_SIZE</a>.</p>
 
 </div>
 </div>
@@ -424,21 +324,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ad437b12929edb2660a01fd3fa57e2d93">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00159">159</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  159</span>                                                                  {</div>
-<div class="line"><span class="lineno">  160</span>    <span class="comment">// auto fd = event-&gt;fd;</span></div>
-<div class="line"><span class="lineno">  161</span>    <span class="comment">// auto events = event-&gt;events;</span></div>
-<div class="line"><span class="lineno">  162</span>    <span class="comment">// if (events &amp; EVENT_READ) {</span></div>
-<div class="line"><span class="lineno">  163</span>    <span class="comment">//    delNativeEvent(fd, EVFILT_READ, event);</span></div>
-<div class="line"><span class="lineno">  164</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  165</span>    <span class="comment">// delNativeEvent(fd, EVFILT_READ, event);</span></div>
-<div class="line"><span class="lineno">  166</span>    <span class="comment">// if (events &amp; EVENT_WRITE) {</span></div>
-<div class="line"><span class="lineno">  167</span>    <span class="comment">//     delNativeEvent(fd, EVFILT_WRITE, event);</span></div>
-<div class="line"><span class="lineno">  168</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  169</span> </div>
-<div class="line"><span class="lineno">  170</span>    <span class="keyword">delete</span> event;</div>
-<div class="line"><span class="lineno">  171</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a78bd5361229de0d32f2d38272a6bea94" name="a78bd5361229de0d32f2d38272a6bea94"></a>
@@ -466,33 +351,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a377d38f5f4c3386967c7e4a791d5810f">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                    {</div>
-<div class="line"><span class="lineno">   12</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a> = <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">::kqueue</a>();</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">if</span> (-1 == <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">if</span> (0 &gt;= <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83">listenFd</a>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a> = <span class="keyword">new</span> KqueueEvent;</div>
-<div class="line"><span class="lineno">   17</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a>-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">fd</a> = <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83">listenFd</a>;</div>
-<div class="line"><span class="lineno">   18</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a>-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> = <a class="code hl_define" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">EVENT_NULL</a>;</div>
-<div class="line"><span class="lineno">   19</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a>-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">data</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>    <span class="keyword">struct </span>kevent kevent {};</div>
-<div class="line"><span class="lineno">   22</span>    EV_SET(&amp;kevent, <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83">listenFd</a>, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a>);</div>
-<div class="line"><span class="lineno">   23</span>    <span class="comment">// 通常不会失败</span></div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (-1 == ::kevent(<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>, &amp;kevent, 1, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>)) {</div>
-<div class="line"><span class="lineno">   25</span>        <span class="keyword">delete</span> this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a>;</div>
-<div class="line"><span class="lineno">   26</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   27</span> </div>
-<div class="line"><span class="lineno">   28</span>        <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>);</div>
-<div class="line"><span class="lineno">   29</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a> = -1;</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   32</span>    }</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   34</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00118">close()</a>, <a class="el" href="_base_event_8h_source.html#l00021">sese::event::BaseEvent::data</a>, <a class="el" href="_base_event_8h_source.html#l00009">EVENT_NULL</a>, <a class="el" href="_base_event_8h_source.html#l00020">sese::event::BaseEvent::events</a>, <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>, <a class="el" href="_kqueue_event_loop_8h_source.html#l00050">kqueue</a>, <a class="el" href="_kqueue_event_loop_8h_source.html#l00049">listenEvent</a> , 以及 <a class="el" href="_kqueue_event_loop_8h_source.html#l00048">listenFd</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close()</a>, <a class="el" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">sese::event::BaseEvent::data</a>, <a class="el" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">EVENT_NULL</a>, <a class="el" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">sese::event::BaseEvent::events</a>, <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a8fd8e4d99b6a3c5781b50d2bbf701ee6">listenEvent</a> , 以及 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83">listenFd</a>.</p>
 
 </div>
 </div>
@@ -522,10 +381,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#add63e0b4d354df6a4e44ec523b7990a4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00092">92</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>                                              {</div>
-<div class="line"><span class="lineno">   93</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="abcd26aec053b3ad04d8a81ce8a9ea0ba" name="abcd26aec053b3ad04d8a81ce8a9ea0ba"></a>
@@ -554,10 +409,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00104">104</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>                                                                {</div>
-<div class="line"><span class="lineno">  105</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a0ac244f6dcce8e289bafd403a2e37e3a" name="a0ac244f6dcce8e289bafd403a2e37e3a"></a>
@@ -586,10 +437,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ae4015c16ccbbbdb70fc573522d626850">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00101">101</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>                                                                {</div>
-<div class="line"><span class="lineno">  102</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a2de90f7983850a647a82815382260afe" name="a2de90f7983850a647a82815382260afe"></a>
@@ -618,10 +465,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60d8eb8bc4458845aa52598233e64ef4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00095">95</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>                                                               {</div>
-<div class="line"><span class="lineno">   96</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a4cc2d76401559700a5764b031534a88d" name="a4cc2d76401559700a5764b031534a88d"></a>
@@ -650,10 +493,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a01e4f8ce45d64a7eaf01386a594b256c">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00098">98</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>                                                                {</div>
-<div class="line"><span class="lineno">   99</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a31c057c4c42b0ec7aeec78f910bbabcf" name="a31c057c4c42b0ec7aeec78f910bbabcf"></a>
@@ -682,48 +521,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a9948fa27a1d36040ad5b3a54909496eb">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a> 第 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00173">173</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  173</span>                                                                 {</div>
-<div class="line"><span class="lineno">  174</span>    <span class="keyword">auto</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> = <span class="keyword">reinterpret_cast&lt;</span>KqueueEvent *<span class="keyword">&gt;</span>(event);</div>
-<div class="line"><span class="lineno">  175</span>    <span class="keyword">auto</span> events = <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>-&gt;events;</div>
-<div class="line"><span class="lineno">  176</span>    <span class="comment">// bool rt1 = true;</span></div>
-<div class="line"><span class="lineno">  177</span>    <span class="comment">// bool rt2 = true;</span></div>
-<div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>    <span class="comment">// if (e-&gt;oldEvents &amp; EVENT_READ &amp;&amp; !(e-&gt;events &amp; EVENT_READ)) {</span></div>
-<div class="line"><span class="lineno">  180</span>    <span class="comment">//     // 原先存在的事件，现在需要删除</span></div>
-<div class="line"><span class="lineno">  181</span>    <span class="comment">//     rt1 = delNativeEvent(e-&gt;fd, EVFILT_READ, event);</span></div>
-<div class="line"><span class="lineno">  182</span>    <span class="comment">// } else if (e-&gt;events &amp; EVENT_READ) {</span></div>
-<div class="line"><span class="lineno">  183</span>    <span class="comment">//     // 原先存在的事件，需要重新启用</span></div>
-<div class="line"><span class="lineno">  184</span>    <span class="comment">//     // 原先不存在的事件，需要添加</span></div>
-<div class="line"><span class="lineno">  185</span>    <span class="comment">//     rt1 = addNativeEvent(e-&gt;fd, EVFILT_READ, event);</span></div>
-<div class="line"><span class="lineno">  186</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  187</span> </div>
-<div class="line"><span class="lineno">  188</span>    <span class="comment">// if (e-&gt;oldEvents &amp; EVENT_WRITE &amp;&amp; !(e-&gt;events &amp; EVENT_WRITE)) {</span></div>
-<div class="line"><span class="lineno">  189</span>    <span class="comment">//     // 原先存在的事件，现在需要删除</span></div>
-<div class="line"><span class="lineno">  190</span>    <span class="comment">//     rt2 = delNativeEvent(e-&gt;fd, EVFILT_WRITE, event);</span></div>
-<div class="line"><span class="lineno">  191</span>    <span class="comment">// } else if (e-&gt;events &amp; EVENT_WRITE) {</span></div>
-<div class="line"><span class="lineno">  192</span>    <span class="comment">//     // 原先存在的事件，需要重新启用</span></div>
-<div class="line"><span class="lineno">  193</span>    <span class="comment">//     // 原先不存在的事件，需要添加</span></div>
-<div class="line"><span class="lineno">  194</span>    <span class="comment">//     rt2 = addNativeEvent(e-&gt;fd, EVFILT_WRITE, event);</span></div>
-<div class="line"><span class="lineno">  195</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  196</span> </div>
-<div class="line"><span class="lineno">  197</span>    <span class="comment">// e-&gt;oldEvents = e-&gt;events;</span></div>
-<div class="line"><span class="lineno">  198</span>    <span class="comment">// return rt1 &amp;&amp; rt2;</span></div>
-<div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>    <span class="keyword">struct </span>kevent kevent {};</div>
-<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (events &amp; <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>) {</div>
-<div class="line"><span class="lineno">  202</span>        EV_SET(&amp;kevent, event-&gt;fd, EVFILT_READ, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);</div>
-<div class="line"><span class="lineno">  203</span>        ::kevent(<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>, &amp;kevent, 1, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  204</span>    }</div>
-<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">if</span> (events &amp; <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>) {</div>
-<div class="line"><span class="lineno">  206</span>        EV_SET(&amp;kevent, event-&gt;fd, EVFILT_WRITE, EV_ADD | EV_ENABLE | EV_ONESHOT, 0, 0, event);</div>
-<div class="line"><span class="lineno">  207</span>        ::kevent(<a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a91a38971dc0033ae3965c97dfc0051fa">kqueue</a>, &amp;kevent, 1, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  208</span>    }</div>
-<div class="line"><span class="lineno">  209</span> </div>
-<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">return</span> event;</div>
-<div class="line"><span class="lineno">  211</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00368">e</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a>, <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a>, <a class="el" href="_base_event_8h_source.html#l00020">sese::event::BaseEvent::events</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>, <a class="el" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>, <a class="el" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>, <a class="el" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">sese::event::BaseEvent::events</a> , 以及 <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>.</p>
 
 </div>
 </div>
@@ -753,10 +551,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4caa4a768bb29bd3f394505575f6cb0e">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8h_source.html">KqueueEventLoop.h</a> 第 <a class="el" href="_kqueue_event_loop_8h_source.html#l00040">40</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{ <a class="code hl_variable" href="classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83">listenFd</a> = fd; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_kqueue_event_loop_8h_source.html#l00048">listenFd</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a116f10c08f40f24184779359a9290d83">listenFd</a>.</p>
 
 </div>
 </div>
@@ -781,10 +576,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8h_source.html">KqueueEventLoop.h</a> 第 <a class="el" href="_kqueue_event_loop_8h_source.html#l00050">50</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>{-1};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00011">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">init()</a>.</p>
 
 </div>
 </div>
@@ -808,10 +600,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8h_source.html">KqueueEventLoop.h</a> 第 <a class="el" href="_kqueue_event_loop_8h_source.html#l00049">49</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{<span class="keyword">nullptr</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00011">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">init()</a>.</p>
 
 </div>
 </div>
@@ -835,16 +624,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_kqueue_event_loop_8h_source.html">KqueueEventLoop.h</a> 第 <a class="el" href="_kqueue_event_loop_8h_source.html#l00048">48</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>{-1};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00011">init()</a> , 以及 <a class="el" href="_kqueue_event_loop_8h_source.html#l00040">setListenFd()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">init()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a09c3191027fe394d396bfad9d33b5b19">setListenFd()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/native/darwin/event/<a class="el" href="_kqueue_event_loop_8h_source.html">KqueueEventLoop.h</a></li>
-<li>sese/native/darwin/event/<a class="el" href="_kqueue_event_loop_8cpp_source.html">KqueueEventLoop.cpp</a></li>
+<li>sese/native/darwin/event/<a class="el" href="_kqueue_event_loop_8cpp.html">KqueueEventLoop.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

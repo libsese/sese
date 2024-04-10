@@ -19,5 +19,13 @@ var classsese_1_1net_1_1http_1_1_cookie =
     [ "setPath", "classsese_1_1net_1_1http_1_1_cookie.html#a20cf3a19cb45dfcbee53e1ad8646adf1", null ],
     [ "setSecure", "classsese_1_1net_1_1http_1_1_cookie.html#aae66d1e0cb62fb0e69cd48f5973a2d6b", null ],
     [ "setValue", "classsese_1_1net_1_1http_1_1_cookie.html#a4015fe4114a91950881d3d0740772e5e", null ],
-    [ "update", "classsese_1_1net_1_1http_1_1_cookie.html#a094cc598dd359131305e610779d679bc", null ]
+    [ "update", "classsese_1_1net_1_1http_1_1_cookie.html#a094cc598dd359131305e610779d679bc", null ],
+    [ "domain", "classsese_1_1net_1_1http_1_1_cookie.html#ab2ba5f123f17a3db2c300c32ee74689e", null ],
+    [ "expires", "classsese_1_1net_1_1http_1_1_cookie.html#a500f5a31d6fdef665c61037b58b86a7b", null ],
+    [ "httpOnly", "classsese_1_1net_1_1http_1_1_cookie.html#a74914ce504293cc039cfde225a8a7de4", null ],
+    [ "maxAge", "classsese_1_1net_1_1http_1_1_cookie.html#a6991a73625f3f7787e995da8e56416a5", null ],
+    [ "name", "classsese_1_1net_1_1http_1_1_cookie.html#a596b3792a41e99890403f1c7b8419647", null ],
+    [ "path", "classsese_1_1net_1_1http_1_1_cookie.html#ad03881ed1b737fc88293c4f54a8ff369", null ],
+    [ "secure", "classsese_1_1net_1_1http_1_1_cookie.html#a3da54e655eeb9c9ddbd9900dfbd89693", null ],
+    [ "value", "classsese_1_1net_1_1http_1_1_cookie.html#a7c5c1c9b06c45b8247cdbc7cfa9556d6", null ]
 ];

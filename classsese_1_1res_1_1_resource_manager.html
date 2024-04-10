@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -164,8 +165,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>静态资源管理器 </p>
-
-<p class="definition">在文件 <a class="el" href="_resource_manager_8h_source.html">ResourceManager.h</a> 第 <a class="el" href="_resource_manager_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ab4c4f6d6f0c21efa37fb3fd4881d0c3d" name="ab4c4f6d6f0c21efa37fb3fd4881d0c3d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4c4f6d6f0c21efa37fb3fd4881d0c3d">&#9670;&#160;</a></span>MapType</h2>
@@ -178,8 +177,6 @@ Protected 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_resource_manager_8h_source.html">ResourceManager.h</a> 第 <a class="el" href="_resource_manager_8h_source.html#l00018">18</a> 行定义.</p>
 
 </div>
 </div>
@@ -258,10 +255,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_resource_manager_8h_source.html">ResourceManager.h</a> 第 <a class="el" href="_resource_manager_8h_source.html#l00029">29</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1res_1_1_resource_manager.html#a3d062b1a73dfd4b5d2b156164d0f1041">resourceMap</a>.begin(); }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_resource_manager_8h_source.html#l00034">resourceMap</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1res_1_1_resource_manager.html#a3d062b1a73dfd4b5d2b156164d0f1041">resourceMap</a>.</p>
 
 </div>
 </div>
@@ -288,10 +282,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_resource_manager_8h_source.html">ResourceManager.h</a> 第 <a class="el" href="_resource_manager_8h_source.html#l00031">31</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1res_1_1_resource_manager.html#a3d062b1a73dfd4b5d2b156164d0f1041">resourceMap</a>.end(); }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_resource_manager_8h_source.html#l00034">resourceMap</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1res_1_1_resource_manager.html#a3d062b1a73dfd4b5d2b156164d0f1041">resourceMap</a>.</p>
 
 </div>
 </div>
@@ -323,16 +314,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_resource_manager_8cpp_source.html">ResourceManager.cpp</a> 第 <a class="el" href="_resource_manager_8cpp_source.html#l00003">3</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>                                                                                  {</div>
-<div class="line"><span class="lineno">    4</span>    <span class="keyword">auto</span> iterator = <a class="code hl_variable" href="classsese_1_1res_1_1_resource_manager.html#a3d062b1a73dfd4b5d2b156164d0f1041">resourceMap</a>.find(name);</div>
-<div class="line"><span class="lineno">    5</span>    <span class="keywordflow">if</span> (iterator == <a class="code hl_variable" href="classsese_1_1res_1_1_resource_manager.html#a3d062b1a73dfd4b5d2b156164d0f1041">resourceMap</a>.end()) {</div>
-<div class="line"><span class="lineno">    6</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">    7</span>    }</div>
-<div class="line"><span class="lineno">    8</span>    <span class="keywordflow">return</span> iterator-&gt;second;</div>
-<div class="line"><span class="lineno">    9</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_resource_manager_8h_source.html#l00034">resourceMap</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1res_1_1_resource_manager.html#a3d062b1a73dfd4b5d2b156164d0f1041">resourceMap</a>.</p>
 
 </div>
 </div>
@@ -357,15 +339,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_resource_manager_8h_source.html">ResourceManager.h</a> 第 <a class="el" href="_resource_manager_8h_source.html#l00034">34</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_resource_manager_8h_source.html#l00029">begin()</a>, <a class="el" href="_resource_manager_8h_source.html#l00031">end()</a> , 以及 <a class="el" href="_resource_manager_8cpp_source.html#l00003">getResource()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1res_1_1_resource_manager.html#aa5cbc908909d2cd0739c0e56e8c027b9">begin()</a>, <a class="el" href="classsese_1_1res_1_1_resource_manager.html#aa5390205e08f159d07c31f8b3fda5fe8">end()</a> , 以及 <a class="el" href="classsese_1_1res_1_1_resource_manager.html#adc6383f2b74c8162cec1495182b85a7a">getResource()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/res/<a class="el" href="_resource_manager_8h_source.html">ResourceManager.h</a></li>
-<li>sese/res/<a class="el" href="_resource_manager_8cpp_source.html">ResourceManager.cpp</a></li>
+<li>sese/res/<a class="el" href="_resource_manager_8cpp.html">ResourceManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

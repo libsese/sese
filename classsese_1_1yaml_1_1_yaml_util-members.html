@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -131,6 +132,8 @@ $(document).ready(function(){initNavTree('classsese_1_1yaml_1_1_yaml_util.html',
 
 <p>成员的完整列表，这些成员属于 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a>,包括所有继承而来的类成员</p>
 <table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a2b8ba48639e4cdd561466d5cf1adbcf7">createArray</a>(TokensQueue &amp;tokens_queue, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a6812f02ff678191ce778dc9119bafaa4">createObject</a>(TokensQueue &amp;tokens_queue, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a20327652abbd72bff6c7eac3abcebaf7">deserialize</a>(InputStream *input, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a280f2758326c84ffac266eadd43d5f8e">getLine</a>(InputStream *input) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a1755b6f46601f2de0fdc7e658667ef4f">getSpaceCount</a>(const std::string &amp;line) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
@@ -141,6 +144,8 @@ $(document).ready(function(){initNavTree('classsese_1_1yaml_1_1_yaml_util.html',
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_not_instantiable.html#ab7477b0374b1cb79bc945bd958c87243">operator=</a>(const NotInstantiable &amp;)=delete</td><td class="entry"><a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a7a71bd5448933bc14e1831f33c10ece6">OutputStream</a> typedef</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#ac2b2e6da653d8ffc31ea36ad6e3b6515">serialize</a>(const Data::Ptr &amp;data, OutputStream *output) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aa691e5a6741507a03b25a556374971b0">serializeArray</a>(ArrayData *array_data, OutputStream *output, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aab2daeda7e5a901a59e8a8a793f56d1b">serializeObject</a>(ObjectData *object_data, OutputStream *output, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aca854ce209061b7188b81b06e392b4d5">tokenizer</a>(const std::string &amp;line) noexcept</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aa3bd35bbaf69d761b197f1c673ab140e">Tokens</a> typedef</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a1f251e34d90d8806a117dc0d6a8a3106">TokensQueue</a> typedef</td><td class="entry"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html">sese::yaml::YamlUtil</a></td><td class="entry"></td></tr>

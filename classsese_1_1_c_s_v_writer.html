@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -174,8 +175,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>CSV 流写入器 </p>
-
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a> 第 <a class="el" href="_c_s_v_writer_8h_source.html#l00017">17</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a2f86abff53e257673f8b2fb18e7e4f7a" name="a2f86abff53e257673f8b2fb18e7e4f7a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f86abff53e257673f8b2fb18e7e4f7a">&#9670;&#160;</a></span>OutputStream</h2>
@@ -190,8 +189,6 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>工具支持的输出流 </p>
-
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a> 第 <a class="el" href="_c_s_v_writer_8h_source.html#l00020">20</a> 行定义.</p>
 
 </div>
 </div>
@@ -208,8 +205,6 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>行 </p>
-
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a> 第 <a class="el" href="_c_s_v_writer_8h_source.html#l00022">22</a> 行定义.</p>
 
 </div>
 </div>
@@ -262,13 +257,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8cpp_source.html">CSVWriter.cpp</a> 第 <a class="el" href="_c_s_v_writer_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                                                {</div>
-<div class="line"><span class="lineno">    7</span>    <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#affc082cb4f11d8a2bd9302f25dd2278d">CSVWriter::dest</a> = <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#affc082cb4f11d8a2bd9302f25dd2278d">dest</a>;</div>
-<div class="line"><span class="lineno">    8</span>    <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#ad7c97977c7039e56fc2b3986fb5fc3c0">CSVWriter::splitChar</a> = split_char;</div>
-<div class="line"><span class="lineno">    9</span>    <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#a73c4490682238bd7e16ad0f5820ffdb0">CSVWriter::isCRLF</a> = <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#a6b6ace71a070414bd6cbf543343b5ac5">crlf</a>;</div>
-<div class="line"><span class="lineno">   10</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -302,25 +290,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8cpp_source.html">CSVWriter.cpp</a> 第 <a class="el" href="_c_s_v_writer_8cpp_source.html#l00012">12</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>                                                              {</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordtype">bool</span> first = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;col: row) {</div>
-<div class="line"><span class="lineno">   15</span>        <span class="keywordflow">if</span> (first) {</div>
-<div class="line"><span class="lineno">   16</span>            first = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   17</span>            <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#affc082cb4f11d8a2bd9302f25dd2278d">dest</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(col.c_str(), col.size());</div>
-<div class="line"><span class="lineno">   18</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   19</span>            <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#affc082cb4f11d8a2bd9302f25dd2278d">dest</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(&amp;<a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#ad7c97977c7039e56fc2b3986fb5fc3c0">splitChar</a>, 1);</div>
-<div class="line"><span class="lineno">   20</span>            <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#affc082cb4f11d8a2bd9302f25dd2278d">dest</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(col.c_str(), col.size());</div>
-<div class="line"><span class="lineno">   21</span>        }</div>
-<div class="line"><span class="lineno">   22</span>    }</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#a73c4490682238bd7e16ad0f5820ffdb0">isCRLF</a>) {</div>
-<div class="line"><span class="lineno">   24</span>        <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#affc082cb4f11d8a2bd9302f25dd2278d">dest</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(<a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#a6b6ace71a070414bd6cbf543343b5ac5">crlf</a>, 2);</div>
-<div class="line"><span class="lineno">   25</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   26</span>        <a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#affc082cb4f11d8a2bd9302f25dd2278d">dest</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(<a class="code hl_variable" href="classsese_1_1_c_s_v_writer.html#a75196064e939459bb0c6e8b444a41222">lf</a>, 1);</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-<div class="line"><span class="lineno">   28</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -344,8 +313,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a> 第 <a class="el" href="_c_s_v_writer_8h_source.html#l00024">24</a> 行定义.</p>
-
 </div>
 </div>
 <a id="affc082cb4f11d8a2bd9302f25dd2278d" name="affc082cb4f11d8a2bd9302f25dd2278d"></a>
@@ -367,8 +334,6 @@ Protected 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a> 第 <a class="el" href="_c_s_v_writer_8h_source.html#l00040">40</a> 行定义.</p>
 
 </div>
 </div>
@@ -392,8 +357,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a> 第 <a class="el" href="_c_s_v_writer_8h_source.html#l00039">39</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a75196064e939459bb0c6e8b444a41222" name="a75196064e939459bb0c6e8b444a41222"></a>
@@ -415,8 +378,6 @@ Protected 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a> 第 <a class="el" href="_c_s_v_writer_8h_source.html#l00025">25</a> 行定义.</p>
 
 </div>
 </div>
@@ -440,13 +401,11 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a> 第 <a class="el" href="_c_s_v_writer_8h_source.html#l00038">38</a> 行定义.</p>
-
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/config/<a class="el" href="_c_s_v_writer_8h_source.html">CSVWriter.h</a></li>
-<li>sese/config/<a class="el" href="_c_s_v_writer_8cpp_source.html">CSVWriter.cpp</a></li>
+<li>sese/config/<a class="el" href="_c_s_v_writer_8cpp.html">CSVWriter.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -158,8 +159,6 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>epoll 事件转换器 </p>
-
-<p class="definition">在文件 <a class="el" href="_epoll_event_convert_8h_source.html">EpollEventConvert.h</a> 第 <a class="el" href="_epoll_event_convert_8h_source.html#l00013">13</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
 <a id="aaf15f0982b86dc689b233628bf03b85b" name="aaf15f0982b86dc689b233628bf03b85b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaf15f0982b86dc689b233628bf03b85b">&#9670;&#160;</a></span>fromNativeEvent()</h2>
@@ -187,22 +186,7 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_convert.html#aeca759ee048deade0db86fc0bcfed2c5">sese::event::BaseEventConvert</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_convert_8cpp_source.html">EpollEventConvert.cpp</a> 第 <a class="el" href="_epoll_event_convert_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                                  {</div>
-<div class="line"><span class="lineno">    6</span>    <span class="keywordtype">short</span> result = 0;</div>
-<div class="line"><span class="lineno">    7</span>    <span class="comment">// if (event &amp; EPOLLIN) {</span></div>
-<div class="line"><span class="lineno">    8</span>    <span class="comment">//     result |= EVENT_READ;</span></div>
-<div class="line"><span class="lineno">    9</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">if</span> (event &amp; EPOLLOUT) {</div>
-<div class="line"><span class="lineno">   11</span>        result |= <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>;</div>
-<div class="line"><span class="lineno">   12</span>    }</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">if</span> (event &amp; EPOLLERR) {</div>
-<div class="line"><span class="lineno">   14</span>        result |= <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>;</div>
-<div class="line"><span class="lineno">   15</span>    }</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">   17</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a>.</p>
+<p class="reference">引用了 <a class="el" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a> , 以及 <a class="el" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>.</p>
 
 </div>
 </div>
@@ -232,28 +216,13 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_convert.html#a4fab2e6edc39d098f11898c683e10e38">sese::event::BaseEventConvert</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_convert_8cpp_source.html">EpollEventConvert.cpp</a> 第 <a class="el" href="_epoll_event_convert_8cpp_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                                {</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordtype">int</span> result = 0;</div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">if</span> (event &amp; <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>) {</div>
-<div class="line"><span class="lineno">   22</span>        result |= EPOLLIN;</div>
-<div class="line"><span class="lineno">   23</span>    }</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (event &amp; <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>) {</div>
-<div class="line"><span class="lineno">   25</span>        result |= EPOLLOUT;</div>
-<div class="line"><span class="lineno">   26</span>    }</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (event &amp; <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>) {</div>
-<div class="line"><span class="lineno">   28</span>        result |= EPOLLERR;</div>
-<div class="line"><span class="lineno">   29</span>    }</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a>.</p>
+<p class="reference">引用了 <a class="el" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>, <a class="el" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a> , 以及 <a class="el" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/native/linux/event/<a class="el" href="_epoll_event_convert_8h_source.html">EpollEventConvert.h</a></li>
-<li>sese/native/linux/event/<a class="el" href="_epoll_event_convert_8cpp_source.html">EpollEventConvert.cpp</a></li>
+<li>sese/native/linux/event/<a class="el" href="_epoll_event_convert_8cpp.html">EpollEventConvert.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

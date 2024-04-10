@@ -26,5 +26,18 @@ var classsese_1_1_date_time =
     [ "operator+", "classsese_1_1_date_time.html#a6b90e66cfdd11919f358ddb00fdbe07d", null ],
     [ "operator-", "classsese_1_1_date_time.html#a30f482e00e06437810a05e895ec28143", null ],
     [ "operator-", "classsese_1_1_date_time.html#af0acfa657139ea951ceaaad665c3e580", null ],
-    [ "unclearCompareTo", "classsese_1_1_date_time.html#aac360f58f4eda9a46cb1bd3832372de2", null ]
+    [ "unclearCompareTo", "classsese_1_1_date_time.html#aac360f58f4eda9a46cb1bd3832372de2", null ],
+    [ "dayofweek", "classsese_1_1_date_time.html#af6ce6ae10023056b93ef6118463ba65c", null ],
+    [ "dayofyear", "classsese_1_1_date_time.html#a689b39ab82f9d1af735efd2e0dd5b5f5", null ],
+    [ "days", "classsese_1_1_date_time.html#ad29fa772003803ff4319c0aca176f849", null ],
+    [ "hours", "classsese_1_1_date_time.html#a3920faf484e00946e7a705b8fe0bf6c0", null ],
+    [ "isLeap", "classsese_1_1_date_time.html#ad5576b8d8ea44352912858ba9ef5d23d", null ],
+    [ "microseconds", "classsese_1_1_date_time.html#aa490364707424bc820fd755b0610b674", null ],
+    [ "milliseconds", "classsese_1_1_date_time.html#a366c399d1cc65547587c85362400ae9f", null ],
+    [ "minutes", "classsese_1_1_date_time.html#ac3fcc7eadd2669d7f9be2df7f7a2abf6", null ],
+    [ "months", "classsese_1_1_date_time.html#a085f3ed3b3fab82117cdb3efdda579bc", null ],
+    [ "seconds", "classsese_1_1_date_time.html#a981d5c215277afb8ed59ed7f7aa48484", null ],
+    [ "timestamp", "classsese_1_1_date_time.html#a4a5f948ba0ba89d47d98365b5e616a37", null ],
+    [ "utc", "classsese_1_1_date_time.html#af19d88c3b0b5d045767d65fb40a5b94e", null ],
+    [ "years", "classsese_1_1_date_time.html#a73a8863173fed63b00e6772e80472f79", null ]
 ];

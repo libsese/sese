@@ -14,5 +14,6 @@ var searchData=
   ['master_11',['master',['../classsese_1_1service_1_1_user_balance_loader.html#af60e64315c8a246071ab3b7ecc8f56ef',1,'sese::service::UserBalanceLoader']]],
   ['md5context_12',['MD5Context',['../classsese_1_1security_1_1evp_1_1_m_d5_context.html#a2abf50cc6d245ada51214bfc1528f2a8',1,'sese::security::evp::MD5Context']]],
   ['message_13',['Message',['../classsese_1_1system_1_1_message.html#ab4d5bfa325f842124cf7af6c2b149695',1,'sese::system::Message']]],
-  ['mon2number_14',['mon2number',['../classsese_1_1text_1_1_date_time_formatter.html#af8d4bbeeb1fc9007b6e599cda89adbe3',1,'sese::text::DateTimeFormatter']]]
+  ['module_14',['Module',['../classsese_1_1plugin_1_1_module.html#ad38fbc1e9bb58cef9dd820eb927fff35',1,'sese::plugin::Module']]],
+  ['mon2number_15',['mon2number',['../classsese_1_1text_1_1_date_time_formatter.html#af8d4bbeeb1fc9007b6e599cda89adbe3',1,'sese::text::DateTimeFormatter']]]
 ];

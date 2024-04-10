@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -127,6 +128,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_locker.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_locker-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::Locker&lt; T &gt; 模板类 参考</div></div>
 </div><!--header-->
@@ -143,6 +145,11 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a95230a82b2446f0e2ce413b7fc11d0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed0c68c00274e4fe1ec0f9dc235b9e3e" id="r_aed0c68c00274e4fe1ec0f9dc235b9e3e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_locker.html#aed0c68c00274e4fe1ec0f9dc235b9e3e">~Locker</a> ()</td></tr>
 <tr class="separator:aed0c68c00274e4fe1ec0f9dc235b9e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a4e871e7fa76b8575d7396fab51322cb7" id="r_a4e871e7fa76b8575d7396fab51322cb7"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_locker.html#a4e871e7fa76b8575d7396fab51322cb7">mutex</a></td></tr>
+<tr class="separator:a4e871e7fa76b8575d7396fab51322cb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T = std::mutex&gt;<br />
@@ -153,8 +160,6 @@ class sese::Locker&lt; T &gt;</div><p>std::mutex 包装器 </p>
   </table>
   </dd>
 </dl>
-
-<p class="definition">在文件 <a class="el" href="_locker_8h_source.html">Locker.h</a> 第 <a class="el" href="_locker_8h_source.html#l00019">19</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a95230a82b2446f0e2ce413b7fc11d0dd" name="a95230a82b2446f0e2ce413b7fc11d0dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95230a82b2446f0e2ce413b7fc11d0dd">&#9670;&#160;</a></span>Locker()</h2>
@@ -182,11 +187,6 @@ template&lt;typename T  = std::mutex&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_locker_8h_source.html">Locker.h</a> 第 <a class="el" href="_locker_8h_source.html#l00021">21</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>                          : mutex(t) {</div>
-<div class="line"><span class="lineno">   22</span>        mutex.lock();</div>
-<div class="line"><span class="lineno">   23</span>    }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aed0c68c00274e4fe1ec0f9dc235b9e3e" name="aed0c68c00274e4fe1ec0f9dc235b9e3e"></a>
@@ -214,11 +214,31 @@ template&lt;typename T  = std::mutex&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_locker_8h_source.html">Locker.h</a> 第 <a class="el" href="_locker_8h_source.html#l00024">24</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>              {</div>
-<div class="line"><span class="lineno">   25</span>        mutex.unlock();</div>
-<div class="line"><span class="lineno">   26</span>    }</div>
-</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a4e871e7fa76b8575d7396fab51322cb7" name="a4e871e7fa76b8575d7396fab51322cb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e871e7fa76b8575d7396fab51322cb7">&#9670;&#160;</a></span>mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = std::mutex&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T&amp; <a class="el" href="classsese_1_1_locker.html">sese::Locker</a>&lt; T &gt;::mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>

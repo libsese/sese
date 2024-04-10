@@ -40,6 +40,7 @@ var classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server =
     [ "setTimeout", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aff6c0e9b7a2544e87af2cd93d0830d4a", null ],
     [ "shutdown", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6", null ],
     [ "acceptThread", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a7d2382ae517c2d7181864987d7f8a8af", null ],
+    [ "activeReleaseMode", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8e8dd24e50d0f09aca38779eff237398", null ],
     [ "address", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac", null ],
     [ "bioMethod", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c", null ],
     [ "clientProtos", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8b866c25feb4d7ba81e1abc670bde261", null ],

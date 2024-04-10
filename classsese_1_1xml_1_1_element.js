@@ -13,5 +13,8 @@ var classsese_1_1xml_1_1_element =
     [ "removeAttribute", "classsese_1_1xml_1_1_element.html#a25d1cd141bcdd67e6a6b64a17fae942a", null ],
     [ "setAttribute", "classsese_1_1xml_1_1_element.html#a725ab6f2384bdbd84f922eedef886dd1", null ],
     [ "setValue", "classsese_1_1xml_1_1_element.html#ad3e00787e9911845f3d139afbb89b7e6", null ],
-    [ "elements", "classsese_1_1xml_1_1_element.html#a11c84c92f6b1612d517426f766fa1a3f", null ]
+    [ "attributes", "classsese_1_1xml_1_1_element.html#a0b6e633573c5987fe587f907ab0b70f3", null ],
+    [ "elements", "classsese_1_1xml_1_1_element.html#a11c84c92f6b1612d517426f766fa1a3f", null ],
+    [ "name", "classsese_1_1xml_1_1_element.html#a56d106618211d33b08b52e844dae2953", null ],
+    [ "value", "classsese_1_1xml_1_1_element.html#afadba7620a1e16bd40169cc5e38911fb", null ]
 ];

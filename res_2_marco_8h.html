@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -185,16 +186,6 @@ $(document).ready(function(){initNavTree('res_2_marco_8h.html',''); initResizabl
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="res_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="res_2_marco_8h_source.html#l00024">24</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>                            : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1res_1_1_resource_manager.html" title="静态资源管理器">sese::res::ResourceManager</a> { \</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keyword">public</span>:                                                       \</div>
-<div class="line"><span class="lineno">   30</span>        managerName() : <a class="code hl_namespace" href="namespacesese.html">sese</a>::res::ResourceManager() {</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span><span class="preprocessor">#define SESE_DEF_RES_MANAGER_END(managerName) \</span></div>
-<div class="line"><span class="lineno">   33</span><span class="preprocessor">        }                                     \</span></div>
-<div class="line"><span class="lineno">   34</span><span class="preprocessor">    };                                        \</span></div>
-<div class="line"><span class="lineno">   35</span><span class="preprocessor">    using managerName##Instance = sese::SingletonPtr&lt;managerName&gt;;</span></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ad98cdd8323b54c4254df8f1f6741f6b4" name="ad98cdd8323b54c4254df8f1f6741f6b4"></a>
@@ -215,11 +206,6 @@ $(document).ready(function(){initNavTree('res_2_marco_8h.html',''); initResizabl
 <b>值:</b><div class="fragment"><div class="line">    <span class="keyword">class </span>managerName final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1res_1_1_resource_manager.html" title="静态资源管理器">sese::res::ResourceManager</a> { \</div>
 <div class="line">    <span class="keyword">public</span>:                                                       \</div>
 <div class="line">        managerName() : <a class="code hl_namespace" href="namespacesese.html">sese</a>::res::ResourceManager() {</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="res_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="res_2_marco_8h_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>                            : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1res_1_1_resource_manager.html" title="静态资源管理器">sese::res::ResourceManager</a> { \</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keyword">public</span>:                                                       \</div>
-<div class="line"><span class="lineno">   30</span>        managerName() : <a class="code hl_namespace" href="namespacesese.html">sese</a>::res::ResourceManager() {</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -242,8 +228,6 @@ $(document).ready(function(){initNavTree('res_2_marco_8h.html',''); initResizabl
 <div class="line">    };                                        \</div>
 <div class="line">    <span class="keyword">using </span>managerName##Instance = <a class="code hl_class" href="classsese_1_1_singleton_ptr.html" title="智能指针单例模板类">sese::SingletonPtr&lt;managerName&gt;</a>;</div>
 </div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="res_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="res_2_marco_8h_source.html#l00032">32</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a88fd534004a9ac3c955f733e02f559a2" name="a88fd534004a9ac3c955f733e02f559a2"></a>
@@ -281,12 +265,6 @@ $(document).ready(function(){initNavTree('res_2_marco_8h.html',''); initResizabl
 <div class="line">    <span class="keyword">public</span>:                                                                 \</div>
 <div class="line">        streamClass() : <a class="code hl_namespace" href="namespacesese.html">sese</a>::res::ResourceStream(streamBuf, streamSize) {} \</div>
 <div class="line">    };</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="res_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="res_2_marco_8h_source.html#l00015">15</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                            : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1res_1_1_resource_stream.html" title="静态资源流">sese::res::ResourceStream</a> {            \</div>
-<div class="line"><span class="lineno">   17</span>    <span class="keyword">public</span>:                                                                 \</div>
-<div class="line"><span class="lineno">   18</span>        streamClass() : <a class="code hl_namespace" href="namespacesese.html">sese</a>::res::ResourceStream(streamBuf, streamSize) {} \</div>
-<div class="line"><span class="lineno">   19</span>    };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -332,12 +310,6 @@ $(document).ready(function(){initNavTree('res_2_marco_8h.html',''); initResizabl
 <div class="line">        resClass() : <a class="code hl_namespace" href="namespacesese.html">sese</a>::res::Resource(resBuf, resSize) {} \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="res_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="res_2_marco_8h_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>                         : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1res_1_1_resource.html" title="静态资源">sese::res::Resource</a> {      \</div>
-<div class="line"><span class="lineno">    8</span>    <span class="keyword">public</span>:                                                  \</div>
-<div class="line"><span class="lineno">    9</span>        resClass() : <a class="code hl_namespace" href="namespacesese.html">sese</a>::res::Resource(resBuf, resSize) {} \</div>
-<div class="line"><span class="lineno">   10</span>    }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="adfaa157440b175e47388f79292687ae8" name="adfaa157440b175e47388f79292687ae8"></a>
@@ -365,8 +337,6 @@ $(document).ready(function(){initNavTree('res_2_marco_8h.html',''); initResizabl
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="res_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="res_2_marco_8h_source.html#l00021">21</a> 行定义.</p>
 
 </div>
 </div>
@@ -401,8 +371,6 @@ $(document).ready(function(){initNavTree('res_2_marco_8h.html',''); initResizabl
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="res_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="res_2_marco_8h_source.html#l00012">12</a> 行定义.</p>
 
 </div>
 </div>

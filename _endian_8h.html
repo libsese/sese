@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -224,8 +225,6 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
 <div class="textblock"><p>字节序转换 </p>
 <dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
 <dl class="section date"><dt>日期</dt><dd>2022年4月3日 </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 中定义.</p>
 </div><h2 class="groupheader">宏定义说明</h2>
 <a id="ac18bd0db7f9250328b5712a8bf0f9a3a" name="ac18bd0db7f9250328b5712a8bf0f9a3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac18bd0db7f9250328b5712a8bf0f9a3a">&#9670;&#160;</a></span>ByteSwap16</h2>
@@ -242,8 +241,6 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00017">17</a> 行定义.</p>
 
 </div>
 </div>
@@ -262,8 +259,6 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00018">18</a> 行定义.</p>
 
 </div>
 </div>
@@ -291,239 +286,6 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
 <div class="line">            (i64 &amp; 0x00FF000000000000) &gt;&gt; 40 | \</div>
 <div class="line">            (i64 &amp; 0xFF00000000000000) &gt;&gt; 56)</div>
 </div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>             {</div>
-<div class="line"><span class="lineno">   30</span><span class="preprocessor">#if (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__) || defined(_WIN32)</span></div>
-<div class="line"><span class="lineno">   31</span><span class="preprocessor">#define SESE_LITTLE_ENDIAN</span></div>
-<div class="line"><span class="lineno">   32</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   33</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16</a>(T t) {</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">   35</span>}</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   38</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#aee39e2ac7b85b19445e3e49d84ae0e71">ToBigEndian32</a>(T t) {</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">   40</span>}</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   43</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#aac1643a53942add87fbfe380e1a4f308">ToBigEndian64</a>(T t) {</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">   45</span>}</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   48</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a6078cc3b30976e98bf75a21271b931ae">ToLittleEndian16</a>(T t) {</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   53</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a2d514848bec4edf4d30a320997e66d02">ToLittleEndian32</a>(T t) {</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   55</span>}</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   58</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a4f01b391acade3b4c64d3f88700640d1">ToLittleEndian64</a>(T t) {</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   60</span>}</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   63</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16</a>(T t) {</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">   65</span>}</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   68</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#adbf79fbea7a031ee08cd875f6115786a">FromBigEndian32</a>(T t) {</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">   70</span>}</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   73</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a30d804217c328748ab79cd9c5b178f54">FromBigEndian64</a>(T t) {</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">   75</span>}</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   78</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#ac96104fd9b2524e781021e31aafefdd9">FromLittleEndian16</a>(T t) {</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   80</span>}</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   83</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a4126826b3c9290ca101e879e4a7dd28e">FromLittleEndian32</a>(T t) {</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   85</span>}</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   88</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#ac1d41b11e64751472086b653eed6cd06">FromLittleEndian64</a>(T t) {</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">   93</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">   94</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 2, T&gt;::t</div>
-<div class="line"><span class="lineno">   95</span>        <a class="code hl_function" href="_endian_8h.html#a803bdc40a108dfeea9cdab47a093e2dc">ToBigEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">   97</span>}</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  100</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  101</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 4, T&gt;::t</div>
-<div class="line"><span class="lineno">  102</span>        <a class="code hl_function" href="_endian_8h.html#a803bdc40a108dfeea9cdab47a093e2dc">ToBigEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">  104</span>}</div>
-<div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  107</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  108</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 8, T&gt;::t</div>
-<div class="line"><span class="lineno">  109</span>        <a class="code hl_function" href="_endian_8h.html#a803bdc40a108dfeea9cdab47a093e2dc">ToBigEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">  111</span>}</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  114</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a8d2df19a0a10bed77f39925313c2a636">ToLittleEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  116</span>}</div>
-<div class="line"><span class="lineno">  117</span> </div>
-<div class="line"><span class="lineno">  118</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  119</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  120</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 2, T&gt;::t</div>
-<div class="line"><span class="lineno">  121</span>        <a class="code hl_function" href="_endian_8h.html#ad8bbe33d7855273e16e532d279fa1203">FromBigEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">  123</span>}</div>
-<div class="line"><span class="lineno">  124</span> </div>
-<div class="line"><span class="lineno">  125</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  126</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  127</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 4, T&gt;::t</div>
-<div class="line"><span class="lineno">  128</span>        <a class="code hl_function" href="_endian_8h.html#ad8bbe33d7855273e16e532d279fa1203">FromBigEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">  130</span>}</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  133</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  134</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 8, T&gt;::t</div>
-<div class="line"><span class="lineno">  135</span>        <a class="code hl_function" href="_endian_8h.html#ad8bbe33d7855273e16e532d279fa1203">FromBigEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">  137</span>}</div>
-<div class="line"><span class="lineno">  138</span> </div>
-<div class="line"><span class="lineno">  139</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  140</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a432168a8b7d59beadb3981b00541d5c3">FromLittleEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  142</span>}</div>
-<div class="line"><span class="lineno">  143</span> </div>
-<div class="line"><span class="lineno">  144</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">  145</span><span class="preprocessor">#define SESE_BIG_ENDIAN</span></div>
-<div class="line"><span class="lineno">  146</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  147</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16</a>(T t) {</div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  149</span>}</div>
-<div class="line"><span class="lineno">  150</span> </div>
-<div class="line"><span class="lineno">  151</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  152</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#aee39e2ac7b85b19445e3e49d84ae0e71">ToBigEndian32</a>(T t) {</div>
-<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  154</span>}</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  157</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#aac1643a53942add87fbfe380e1a4f308">ToBigEndian64</a>(T t) {</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  159</span>}</div>
-<div class="line"><span class="lineno">  160</span> </div>
-<div class="line"><span class="lineno">  161</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  162</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a6078cc3b30976e98bf75a21271b931ae">ToLittleEndian16</a>(T t) {</div>
-<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">  164</span>}</div>
-<div class="line"><span class="lineno">  165</span> </div>
-<div class="line"><span class="lineno">  166</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  167</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a2d514848bec4edf4d30a320997e66d02">ToLittleEndian32</a>(T t) {</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">  169</span>}</div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  172</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a4f01b391acade3b4c64d3f88700640d1">ToLittleEndian64</a>(T t) {</div>
-<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">  174</span>}</div>
-<div class="line"><span class="lineno">  175</span> </div>
-<div class="line"><span class="lineno">  176</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  177</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a2724928a5507d2ccb30e741d62a3688f">FromBigEndian16</a>(T t) {</div>
-<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  179</span>}</div>
-<div class="line"><span class="lineno">  180</span> </div>
-<div class="line"><span class="lineno">  181</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  182</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#adbf79fbea7a031ee08cd875f6115786a">FromBigEndian32</a>(T t) {</div>
-<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  184</span>}</div>
-<div class="line"><span class="lineno">  185</span> </div>
-<div class="line"><span class="lineno">  186</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  187</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a30d804217c328748ab79cd9c5b178f54">FromBigEndian64</a>(T t) {</div>
-<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  189</span>}</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  192</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#ac96104fd9b2524e781021e31aafefdd9">FromLittleEndian16</a>(T t) {</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">  194</span>}</div>
-<div class="line"><span class="lineno">  195</span> </div>
-<div class="line"><span class="lineno">  196</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  197</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a4126826b3c9290ca101e879e4a7dd28e">FromLittleEndian32</a>(T t) {</div>
-<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">  199</span>}</div>
-<div class="line"><span class="lineno">  200</span> </div>
-<div class="line"><span class="lineno">  201</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  202</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#ac1d41b11e64751472086b653eed6cd06">FromLittleEndian64</a>(T t) {</div>
-<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">  204</span>}</div>
-<div class="line"><span class="lineno">  205</span> </div>
-<div class="line"><span class="lineno">  206</span> </div>
-<div class="line"><span class="lineno">  207</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  208</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  209</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 2, T&gt;::t</div>
-<div class="line"><span class="lineno">  210</span>        <a class="code hl_function" href="_endian_8h.html#a8d2df19a0a10bed77f39925313c2a636">ToLittleEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  211</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">  212</span>}</div>
-<div class="line"><span class="lineno">  213</span> </div>
-<div class="line"><span class="lineno">  214</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  215</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  216</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 4, T&gt;::t</div>
-<div class="line"><span class="lineno">  217</span>        <a class="code hl_function" href="_endian_8h.html#a8d2df19a0a10bed77f39925313c2a636">ToLittleEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  218</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">  219</span>}</div>
-<div class="line"><span class="lineno">  220</span> </div>
-<div class="line"><span class="lineno">  221</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  222</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  223</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 8, T&gt;::t</div>
-<div class="line"><span class="lineno">  224</span>        <a class="code hl_function" href="_endian_8h.html#a8d2df19a0a10bed77f39925313c2a636">ToLittleEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  225</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">  226</span>}</div>
-<div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  229</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#a803bdc40a108dfeea9cdab47a093e2dc">ToBigEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  230</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  231</span>}</div>
-<div class="line"><span class="lineno">  232</span> </div>
-<div class="line"><span class="lineno">  233</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  234</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  235</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 2, T&gt;::t</div>
-<div class="line"><span class="lineno">  236</span>        <a class="code hl_function" href="_endian_8h.html#a432168a8b7d59beadb3981b00541d5c3">FromLittleEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">  238</span>}</div>
-<div class="line"><span class="lineno">  239</span> </div>
-<div class="line"><span class="lineno">  240</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  241</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  242</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 4, T&gt;::t</div>
-<div class="line"><span class="lineno">  243</span>        <a class="code hl_function" href="_endian_8h.html#a432168a8b7d59beadb3981b00541d5c3">FromLittleEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">  245</span>}</div>
-<div class="line"><span class="lineno">  246</span> </div>
-<div class="line"><span class="lineno">  247</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  248</span><span class="keyword">inline</span></div>
-<div class="line"><span class="lineno">  249</span>        <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>(T) == 8, T&gt;::t</div>
-<div class="line"><span class="lineno">  250</span>        <a class="code hl_function" href="_endian_8h.html#a432168a8b7d59beadb3981b00541d5c3">FromLittleEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">  252</span>}</div>
-<div class="line"><span class="lineno">  253</span> </div>
-<div class="line"><span class="lineno">  254</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="lineno">  255</span><span class="keyword">inline</span> T <a class="code hl_function" href="_endian_8h.html#ad8bbe33d7855273e16e532d279fa1203">FromBigEndian</a>(T t) {</div>
-<div class="line"><span class="lineno">  256</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  257</span>}</div>
-<div class="line"><span class="lineno">  258</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  259</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a83069a2dcb8201f582f9c4b7e9a2d360" name="a83069a2dcb8201f582f9c4b7e9a2d360"></a>
@@ -537,8 +299,6 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00031">31</a> 行定义.</p>
 
 </div>
 </div>
@@ -567,12 +327,6 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
 <tr><td class="fieldname"><a id="ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139" name="ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139"></a>BIG&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00012">12</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>                      {</div>
-<div class="line"><span class="lineno">   13</span>    <a class="code hl_enumvalue" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfba1314341b466dcb5e2c880b76414c49fe">LITTLE</a>,</div>
-<div class="line"><span class="lineno">   14</span>    <a class="code hl_enumvalue" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">BIG</a></div>
-<div class="line"><span class="lineno">   15</span>};</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">函数说明</h2>
@@ -602,12 +356,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00121">121</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  121</span>                           {</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">  123</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00017">ByteSwap16</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>.</p>
 
 </div>
 </div>
@@ -637,12 +386,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00128">128</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  128</span>                           {</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">  130</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00018">ByteSwap32</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>.</p>
 
 </div>
 </div>
@@ -672,12 +416,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00135">135</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  135</span>                           {</div>
-<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">  137</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00019">ByteSwap64</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>.</p>
 
 </div>
 </div>
@@ -707,14 +446,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00063">63</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>                              {</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">   65</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00017">ByteSwap16</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_dns_util_8cpp_source.html#l00204">sese::net::dns::DnsUtil::decodeAnswers()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00151">sese::net::dns::DnsUtil::decodeDomain()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00060">sese::net::dns::DnsUtil::decodeQueries()</a>, <a class="el" href="_i_pv4_address_8h_source.html#l00037">sese::net::IPv4Address::getPort()</a>, <a class="el" href="_i_pv6_address_8h_source.html#l00037">sese::net::IPv6Address::getPort()</a> , 以及 <a class="el" href="_socket_8h_source.html#l00122">sese::net::Socket::readInt16()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a5bac75c285b23644dca072f259f99b68">sese::net::dns::DnsUtil::decodeAnswers()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#acc7b45a9a3d44a8b4484d733dffeb95f">sese::net::dns::DnsUtil::decodeDomain()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#aa8c069f5dcaf9a74fee799a3cc80e538">sese::net::dns::DnsUtil::decodeQueries()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#adcb97aa1961557f4ef7897958afab4c5">sese::net::IPv4Address::getPort()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a45126deeabb0a290a68efa73f97fb9ab">sese::net::IPv6Address::getPort()</a> , 以及 <a class="el" href="classsese_1_1net_1_1_socket.html#ab6f1632bbb708a70467f37d1f7acf8c2">sese::net::Socket::readInt16()</a>.</p>
 
 </div>
 </div>
@@ -744,14 +478,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00068">68</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>                              {</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">   70</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00018">ByteSwap32</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00018">sese::Bitset32::Bitset32()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00204">sese::net::dns::DnsUtil::decodeAnswers()</a>, <a class="el" href="_s_h_a1_util_8cpp_source.html#l00166">sese::SHA1Util::encode()</a>, <a class="el" href="_base64_converter_8cpp_source.html#l00146">sese::Base64Converter::encodeBase62()</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00034">sese::Bitset32::get()</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00184">sese::Bitset32::operator+()</a> , 以及 <a class="el" href="_dns_client_8cpp_source.html#l00014">sese::net::dns::DnsClient::resolveCustom()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1_bitset32.html#af19c4ea6348f299f9e8e0a4b0a87f65d">sese::Bitset32::Bitset32()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a5bac75c285b23644dca072f259f99b68">sese::net::dns::DnsUtil::decodeAnswers()</a>, <a class="el" href="classsese_1_1_s_h_a1_util.html#aee022319d2e5a32ac825b473b744f47d">sese::SHA1Util::encode()</a>, <a class="el" href="classsese_1_1_base64_converter.html#ad9c52b427592a25f2f6beaf1aa6f7e7c">sese::Base64Converter::encodeBase62()</a>, <a class="el" href="structsese_1_1_bitset32.html#a6d794f2c85d5de0c37d70be7c833e590">sese::Bitset32::get()</a>, <a class="el" href="structsese_1_1_bitset32.html#ab05bc1c399d5b9904aac4c95ab2ca436">sese::Bitset32::operator+()</a> , 以及 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_client.html#aa4402a9922373269adc09279307fe697">sese::net::dns::DnsClient::resolveCustom()</a>.</p>
 
 </div>
 </div>
@@ -781,12 +510,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00073">73</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>                              {</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">   75</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00019">ByteSwap64</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>.</p>
 
 </div>
 </div>
@@ -816,11 +540,6 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00140">140</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>                               {</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  142</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ac96104fd9b2524e781021e31aafefdd9" name="ac96104fd9b2524e781021e31aafefdd9"></a>
@@ -849,11 +568,6 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00078">78</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>                                 {</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   80</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a4126826b3c9290ca101e879e4a7dd28e" name="a4126826b3c9290ca101e879e4a7dd28e"></a>
@@ -882,11 +596,6 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00083">83</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>                                 {</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   85</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ac1d41b11e64751472086b653eed6cd06" name="ac1d41b11e64751472086b653eed6cd06"></a>
@@ -915,11 +624,6 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00088">88</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>                                 {</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a803bdc40a108dfeea9cdab47a093e2dc" name="a803bdc40a108dfeea9cdab47a093e2dc"></a>
@@ -948,12 +652,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00095">95</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>                         {</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">   97</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00017">ByteSwap16</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>.</p>
 
 </div>
 </div>
@@ -983,12 +682,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00102">102</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>                         {</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">  104</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00018">ByteSwap32</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>.</p>
 
 </div>
 </div>
@@ -1018,12 +712,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00109">109</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>                         {</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">  111</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00019">ByteSwap64</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>.</p>
 
 </div>
 </div>
@@ -1053,14 +742,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00033">33</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                            {</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>(t);</div>
-<div class="line"><span class="lineno">   35</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00017">ByteSwap16</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#ac18bd0db7f9250328b5712a8bf0f9a3a">ByteSwap16</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_i_pv4_address_8cpp_source.html#l00009">sese::net::IPv4Address::create()</a>, <a class="el" href="_i_pv6_address_8cpp_source.html#l00012">sese::net::IPv6Address::create()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00121">sese::net::dns::DnsUtil::encodeAnswers()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00102">sese::net::dns::DnsUtil::encodeQueries()</a>, <a class="el" href="_i_pv6_address_8cpp_source.html#l00057">sese::net::IPv6Address::getAddress()</a>, <a class="el" href="_i_pv4_address_8cpp_source.html#l00036">sese::net::IPv4Address::IPv4Address()</a>, <a class="el" href="_memory_viewer_8cpp_source.html#l00047">sese::MemoryViewer::peer16()</a>, <a class="el" href="_i_pv4_address_8h_source.html#l00036">sese::net::IPv4Address::setPort()</a>, <a class="el" href="_i_pv6_address_8h_source.html#l00036">sese::net::IPv6Address::setPort()</a> , 以及 <a class="el" href="_socket_8h_source.html#l00116">sese::net::Socket::writeInt16()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#a4368d564be715d58e5d4828311d46d6d">sese::net::IPv4Address::create()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a7ea87741b7c2d6c81fbeb09b5600abc2">sese::net::IPv6Address::create()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#ae61018c045781d729733a176daed9aaf">sese::net::dns::DnsUtil::encodeAnswers()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#abe31fc0e9517fe82cf184b76f7f57ea4">sese::net::dns::DnsUtil::encodeQueries()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a0970f57bfd389d7f77e7016e8a881836">sese::net::IPv6Address::getAddress()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#a723d7bf4623b6bcf849bfd7089e2124a">sese::net::IPv4Address::IPv4Address()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a883776b402352e227d976d91adb42462">sese::net::dns::DnsServer::loop()</a>, <a class="el" href="classsese_1_1_memory_viewer.html#a9c40be7589063bdd1ce130c48dc21aac">sese::MemoryViewer::peer16()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#a2d8a439487be640dab2e31ebdc71ed4e">sese::net::IPv4Address::setPort()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a9a93367d61de89ca59bb8917fabd5a01">sese::net::IPv6Address::setPort()</a> , 以及 <a class="el" href="classsese_1_1net_1_1_socket.html#ac95ea90a747e6cf433276e2583876256">sese::net::Socket::writeInt16()</a>.</p>
 
 </div>
 </div>
@@ -1090,14 +774,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00038">38</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>                            {</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>(t);</div>
-<div class="line"><span class="lineno">   40</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00018">ByteSwap32</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a7f8c2b7ad726a0c6018c5a0e6d62c450">ByteSwap32</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_base64_converter_8cpp_source.html#l00171">sese::Base64Converter::decodeBase62()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00121">sese::net::dns::DnsUtil::encodeAnswers()</a>, <a class="el" href="_i_pv4_address_8cpp_source.html#l00077">sese::net::IPv4Address::getBroadcastAddress()</a>, <a class="el" href="_i_pv4_address_8cpp_source.html#l00092">sese::net::IPv4Address::getNetworkAddress()</a>, <a class="el" href="_i_pv4_address_8cpp_source.html#l00107">sese::net::IPv4Address::getSubnetMask()</a>, <a class="el" href="_i_pv4_address_8cpp_source.html#l00036">sese::net::IPv4Address::IPv4Address()</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00184">sese::Bitset32::operator+()</a>, <a class="el" href="_memory_viewer_8cpp_source.html#l00057">sese::MemoryViewer::peer32()</a> , 以及 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00029">sese::Bitset32::set()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_base64_converter.html#a4cc1c2f81ec7adb863bf395485399187">sese::Base64Converter::decodeBase62()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#ae61018c045781d729733a176daed9aaf">sese::net::dns::DnsUtil::encodeAnswers()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#a95b8a451c98580fe88dce927a2ca9f93">sese::net::IPv4Address::getBroadcastAddress()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#a41321cecbab01c0161aad657ad8aacd9">sese::net::IPv4Address::getNetworkAddress()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#ac25e2c3d8a8ac3f42a7aa573c9041d99">sese::net::IPv4Address::getSubnetMask()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#a723d7bf4623b6bcf849bfd7089e2124a">sese::net::IPv4Address::IPv4Address()</a>, <a class="el" href="structsese_1_1_bitset32.html#ab05bc1c399d5b9904aac4c95ab2ca436">sese::Bitset32::operator+()</a>, <a class="el" href="classsese_1_1_memory_viewer.html#a9e6702382c5c72d8912609ca4cdc7763">sese::MemoryViewer::peer32()</a> , 以及 <a class="el" href="structsese_1_1_bitset32.html#af2f277d15668656317018a4897c481f2">sese::Bitset32::set()</a>.</p>
 
 </div>
 </div>
@@ -1127,14 +806,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00043">43</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>                            {</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>(t);</div>
-<div class="line"><span class="lineno">   45</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00019">ByteSwap64</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a12a98caebf84ec6ccb07da8cf38116f0">ByteSwap64</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_h_a1_util_8cpp_source.html#l00166">sese::SHA1Util::encode()</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00226">sese::SHA256Util::encode()</a> , 以及 <a class="el" href="_memory_viewer_8cpp_source.html#l00067">sese::MemoryViewer::peer64()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_s_h_a1_util.html#aee022319d2e5a32ac825b473b744f47d">sese::SHA1Util::encode()</a>, <a class="el" href="classsese_1_1_s_h_a256_util.html#a2e8cd43282448ef42a793ac383ae6d5c">sese::SHA256Util::encode()</a> , 以及 <a class="el" href="classsese_1_1_memory_viewer.html#a6d65029773b91755ffb7d7a1c8844dd4">sese::MemoryViewer::peer64()</a>.</p>
 
 </div>
 </div>
@@ -1164,12 +838,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00114">114</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>                             {</div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">  116</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00226">sese::SHA256Util::encode()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_s_h_a256_util.html#a2e8cd43282448ef42a793ac383ae6d5c">sese::SHA256Util::encode()</a>.</p>
 
 </div>
 </div>
@@ -1199,12 +868,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00048">48</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                               {</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_memory_viewer_8cpp_source.html#l00047">sese::MemoryViewer::peer16()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_memory_viewer.html#a9c40be7589063bdd1ce130c48dc21aac">sese::MemoryViewer::peer16()</a>.</p>
 
 </div>
 </div>
@@ -1234,12 +898,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00053">53</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>                               {</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   55</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_i_pv4_address_8cpp_source.html#l00057">sese::net::IPv4Address::getAddress()</a> , 以及 <a class="el" href="_memory_viewer_8cpp_source.html#l00057">sese::MemoryViewer::peer32()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#ae7884ff391309fdd5c8ea69f2ad78a04">sese::net::IPv4Address::getAddress()</a> , 以及 <a class="el" href="classsese_1_1_memory_viewer.html#a9e6702382c5c72d8912609ca4cdc7763">sese::MemoryViewer::peer32()</a>.</p>
 
 </div>
 </div>
@@ -1269,12 +928,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_endian_8h_source.html">Endian.h</a> 第 <a class="el" href="_endian_8h_source.html#l00058">58</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>                               {</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> t;</div>
-<div class="line"><span class="lineno">   60</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_m_d5_util_8cpp_source.html#l00018">sese::MD5Util::encode()</a> , 以及 <a class="el" href="_memory_viewer_8cpp_source.html#l00067">sese::MemoryViewer::peer64()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_m_d5_util.html#af68c8586b6fcfaa6539d18f95e3f868a">sese::MD5Util::encode()</a> , 以及 <a class="el" href="classsese_1_1_memory_viewer.html#a6d65029773b91755ffb7d7a1c8844dd4">sese::MemoryViewer::peer64()</a>.</p>
 
 </div>
 </div>

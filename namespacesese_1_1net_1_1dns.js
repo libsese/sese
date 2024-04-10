@@ -2,7 +2,7 @@ var namespacesese_1_1net_1_1dns =
 [
     [ "Answer", "classsese_1_1net_1_1dns_1_1_answer.html", "classsese_1_1net_1_1dns_1_1_answer" ],
     [ "DnsClient", "classsese_1_1net_1_1dns_1_1_dns_client.html", "classsese_1_1net_1_1dns_1_1_dns_client" ],
-    [ "DNSConfig", "structsese_1_1net_1_1dns_1_1_d_n_s_config.html", "structsese_1_1net_1_1dns_1_1_d_n_s_config" ],
+    [ "DnsConfig", "structsese_1_1net_1_1dns_1_1_dns_config.html", "structsese_1_1net_1_1dns_1_1_dns_config" ],
     [ "DnsServer", "classsese_1_1net_1_1dns_1_1_dns_server.html", "classsese_1_1net_1_1dns_1_1_dns_server" ],
     [ "DnsSession", "classsese_1_1net_1_1dns_1_1_dns_session.html", "classsese_1_1net_1_1dns_1_1_dns_session" ],
     [ "DnsUtil", "classsese_1_1net_1_1dns_1_1_dns_util.html", "classsese_1_1net_1_1dns_1_1_dns_util" ],

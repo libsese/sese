@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -208,8 +209,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>异步日志器 </p>
-
-<p class="definition">在文件 <a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a> 第 <a class="el" href="_async_logger_8h_source.html#l00021">21</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a1ec00e14d6d7bd41638028cb792c4efe" name="a1ec00e14d6d7bd41638028cb792c4efe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1ec00e14d6d7bd41638028cb792c4efe">&#9670;&#160;</a></span>AsyncLogger()</h2>
@@ -226,17 +225,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8cpp_source.html">AsyncLogger.cpp</a> 第 <a class="el" href="_async_logger_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                         : <a class="code hl_function" href="classsese_1_1record_1_1_logger.html#aef18cfc8276c633ee70cd95834845a74" title="初始化">Logger</a>() {</div>
-<div class="line"><span class="lineno">   11</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a> = <span class="keyword">new</span> io::FixedBuilder(<a class="code hl_variable" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025" title="异步日志器缓冲区大小">RECORD_BUFFER_SIZE</a>);</div>
-<div class="line"><span class="lineno">   12</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a> = <span class="keyword">new</span> io::FixedBuilder(<a class="code hl_variable" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025" title="异步日志器缓冲区大小">RECORD_BUFFER_SIZE</a>);</div>
-<div class="line"><span class="lineno">   13</span> </div>
-<div class="line"><span class="lineno">   14</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#aea9f5a6926cbd0b04aa2d8a5fa157edc">thread</a> = std::make_unique&lt;Thread&gt;([<span class="keyword">this</span>] { <a class="code hl_function" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">loop</a>(); }, <span class="stringliteral">&quot;AsyncLogger&quot;</span>);</div>
-<div class="line"><span class="lineno">   15</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a7b53ed40667a57ecf5235b6d1a0be219">isShutdown</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   16</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#aea9f5a6926cbd0b04aa2d8a5fa157edc">thread</a>-&gt;start();</div>
-<div class="line"><span class="lineno">   17</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_async_logger_8h_source.html#l00034">currentBuffer</a>, <a class="el" href="_async_logger_8h_source.html#l00041">isShutdown</a>, <a class="el" href="_async_logger_8cpp_source.html#l00069">loop()</a>, <a class="el" href="_async_logger_8h_source.html#l00035">nextBuffer</a>, <a class="el" href="_config_8h_source.html#l00092">RECORD_BUFFER_SIZE</a> , 以及 <a class="el" href="_async_logger_8h_source.html#l00042">thread</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a7b53ed40667a57ecf5235b6d1a0be219">isShutdown</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">loop()</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a>, <a class="el" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025">RECORD_BUFFER_SIZE</a> , 以及 <a class="el" href="classsese_1_1record_1_1_async_logger.html#aea9f5a6926cbd0b04aa2d8a5fa157edc">thread</a>.</p>
 
 </div>
 </div>
@@ -263,16 +252,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8cpp_source.html">AsyncLogger.cpp</a> 第 <a class="el" href="_async_logger_8cpp_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>                                   {</div>
-<div class="line"><span class="lineno">   20</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a7b53ed40667a57ecf5235b6d1a0be219">isShutdown</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   21</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a4426394019c22333363d915467f43280">conditionVariable</a>.notify_one();</div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#aea9f5a6926cbd0b04aa2d8a5fa157edc">thread</a>-&gt;join();</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   24</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a>;    <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_async_logger_8h_source.html#l00040">conditionVariable</a>, <a class="el" href="_async_logger_8h_source.html#l00034">currentBuffer</a>, <a class="el" href="_async_logger_8h_source.html#l00041">isShutdown</a>, <a class="el" href="_async_logger_8h_source.html#l00035">nextBuffer</a> , 以及 <a class="el" href="_async_logger_8h_source.html#l00042">thread</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a4426394019c22333363d915467f43280">conditionVariable</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a7b53ed40667a57ecf5235b6d1a0be219">isShutdown</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a> , 以及 <a class="el" href="classsese_1_1record_1_1_async_logger.html#aea9f5a6926cbd0b04aa2d8a5fa157edc">thread</a>.</p>
 
 </div>
 </div>
@@ -320,29 +300,7 @@ Protected 属性</h2></td></tr>
 
 <p>重载 <a class="el" href="classsese_1_1record_1_1_logger.html#abe318342d58ba0d7b6090326337cd8d9">sese::record::Logger</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8cpp_source.html">AsyncLogger.cpp</a> 第 <a class="el" href="_async_logger_8cpp_source.html#l00048">48</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                                 {</div>
-<div class="line"><span class="lineno">   49</span>    std::unique_lock locker(<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a3af4bec75efcfc9c1c4187284a3dbe8e">mutex</a>);</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a8ec9a4c7d829a7780dc65b95187d4b64">getWriteableSize</a>() &gt; length) {</div>
-<div class="line"><span class="lineno">   51</span>        <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">write</a>((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer, length);</div>
-<div class="line"><span class="lineno">   52</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   53</span>        <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>.push_back(<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>);</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a>) {</div>
-<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#afdb88235e18dbf76c760cc070ae99f7c">getSize</a>() &gt; length) {</div>
-<div class="line"><span class="lineno">   57</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   58</span>            }</div>
-<div class="line"><span class="lineno">   59</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a> = <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a>;</div>
-<div class="line"><span class="lineno">   60</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   61</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   62</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a> = <span class="keyword">new</span> io::FixedBuilder(<a class="code hl_variable" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025" title="异步日志器缓冲区大小">RECORD_BUFFER_SIZE</a>);</div>
-<div class="line"><span class="lineno">   63</span>        }</div>
-<div class="line"><span class="lineno">   64</span>        <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">write</a>((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer, length);</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a4426394019c22333363d915467f43280">conditionVariable</a>.notify_one();</div>
-<div class="line"><span class="lineno">   66</span>    }</div>
-<div class="line"><span class="lineno">   67</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_config_8h_source.html#l00092">RECORD_BUFFER_SIZE</a>.</p>
+<p class="reference">引用了 <a class="el" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025">RECORD_BUFFER_SIZE</a>.</p>
 
 </div>
 </div>
@@ -378,29 +336,7 @@ Protected 属性</h2></td></tr>
 
 <p>重载 <a class="el" href="classsese_1_1record_1_1_logger.html#a41672c6fef48429e9be389767ba836d7">sese::record::Logger</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8cpp_source.html">AsyncLogger.cpp</a> 第 <a class="el" href="_async_logger_8cpp_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>                                                    {</div>
-<div class="line"><span class="lineno">   28</span>    std::unique_lock locker(<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a3af4bec75efcfc9c1c4187284a3dbe8e">mutex</a>);</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;getLevel() &lt;= event-&gt;getLevel()) {</div>
-<div class="line"><span class="lineno">   30</span>        std::string content = <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">formatter</a>-&gt;dump(event);</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a8ec9a4c7d829a7780dc65b95187d4b64">getWriteableSize</a>() &gt; content.length()) {</div>
-<div class="line"><span class="lineno">   32</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">write</a>(content.data(), content.length());</div>
-<div class="line"><span class="lineno">   33</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   34</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>.push_back(<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>);</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a>) {</div>
-<div class="line"><span class="lineno">   37</span>                <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a> = <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a>;</div>
-<div class="line"><span class="lineno">   38</span>                <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   39</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   40</span>                <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a> = <span class="keyword">new</span> io::FixedBuilder(<a class="code hl_variable" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025" title="异步日志器缓冲区大小">RECORD_BUFFER_SIZE</a>);</div>
-<div class="line"><span class="lineno">   41</span>            }</div>
-<div class="line"><span class="lineno">   42</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">write</a>(content.data(), content.length());</div>
-<div class="line"><span class="lineno">   43</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a4426394019c22333363d915467f43280">conditionVariable</a>.notify_one();</div>
-<div class="line"><span class="lineno">   44</span>        }</div>
-<div class="line"><span class="lineno">   45</span>    }</div>
-<div class="line"><span class="lineno">   46</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_config_8h_source.html#l00092">RECORD_BUFFER_SIZE</a>.</p>
+<p class="reference">引用了 <a class="el" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025">RECORD_BUFFER_SIZE</a>.</p>
 
 </div>
 </div>
@@ -427,94 +363,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8cpp_source.html">AsyncLogger.cpp</a> 第 <a class="el" href="_async_logger_8cpp_source.html#l00069">69</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>                                {</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keyword">auto</span> buffer1 = <span class="keyword">new</span> io::FixedBuilder(<a class="code hl_variable" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025" title="异步日志器缓冲区大小">RECORD_BUFFER_SIZE</a>);</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keyword">auto</span> buffer2 = <span class="keyword">new</span> io::FixedBuilder(<a class="code hl_variable" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025" title="异步日志器缓冲区大小">RECORD_BUFFER_SIZE</a>);</div>
-<div class="line"><span class="lineno">   72</span>    std::vector&lt;io::FixedBuilder *&gt; buffer2_write;</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a7b53ed40667a57ecf5235b6d1a0be219">isShutdown</a>) <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   76</span>        {</div>
-<div class="line"><span class="lineno">   77</span>            std::unique_lock locker(<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a3af4bec75efcfc9c1c4187284a3dbe8e">mutex</a>);</div>
-<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>.empty()) {</div>
-<div class="line"><span class="lineno">   79</span>                <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a4426394019c22333363d915467f43280">conditionVariable</a>.wait_for(locker, 3s);</div>
-<div class="line"><span class="lineno">   80</span>            }</div>
-<div class="line"><span class="lineno">   81</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>.emplace_back(<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>);</div>
-<div class="line"><span class="lineno">   82</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a> = buffer1;</div>
-<div class="line"><span class="lineno">   83</span>            buffer1 = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   84</span>            buffer2_write.swap(<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>);</div>
-<div class="line"><span class="lineno">   85</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a>) {</div>
-<div class="line"><span class="lineno">   86</span>                <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a> = buffer2;</div>
-<div class="line"><span class="lineno">   87</span>                buffer2 = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   88</span>            }</div>
-<div class="line"><span class="lineno">   89</span>        }</div>
-<div class="line"><span class="lineno">   90</span>        <span class="comment">// buffer 过多，触发几率极小</span></div>
-<div class="line"><span class="lineno">   91</span>        <span class="comment">// GCOVR_EXCL_START</span></div>
-<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">if</span> (buffer2_write.size() &gt; 25) {</div>
-<div class="line"><span class="lineno">   93</span>            std::for_each(buffer2_write.begin() + 2, buffer2_write.end(), [](io::FixedBuilder *buffer) {</div>
-<div class="line"><span class="lineno">   94</span>                delete buffer;</div>
-<div class="line"><span class="lineno">   95</span>            });</div>
-<div class="line"><span class="lineno">   96</span>            buffer2_write.erase(buffer2_write.begin() + 2, buffer2_write.end());</div>
-<div class="line"><span class="lineno">   97</span>        }</div>
-<div class="line"><span class="lineno">   98</span>        <span class="comment">// GCOVR_EXCL_STOP</span></div>
-<div class="line"><span class="lineno">   99</span> </div>
-<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;buffer: buffer2_write) {</div>
-<div class="line"><span class="lineno">  101</span>            <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;dump(buffer-&gt;data(), buffer-&gt;getReadableSize());</div>
-<div class="line"><span class="lineno">  102</span>        }</div>
-<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;appender: <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>) {</div>
-<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;buffer: buffer2_write) {</div>
-<div class="line"><span class="lineno">  105</span>                appender-&gt;dump(buffer-&gt;data(), buffer-&gt;getReadableSize());</div>
-<div class="line"><span class="lineno">  106</span>            }</div>
-<div class="line"><span class="lineno">  107</span>        }</div>
-<div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>        <span class="comment">// 移除过多的缓冲区，避免堆积过多</span></div>
-<div class="line"><span class="lineno">  110</span>        <span class="keywordflow">if</span> (buffer2_write.size() &gt; 2) {</div>
-<div class="line"><span class="lineno">  111</span>            std::for_each(buffer2_write.begin() + 2, buffer2_write.end(), [](io::FixedBuilder *buffer) {</div>
-<div class="line"><span class="lineno">  112</span>                delete buffer; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  113</span>            });</div>
-<div class="line"><span class="lineno">  114</span>            buffer2_write.erase(buffer2_write.begin() + 2, buffer2_write.end());</div>
-<div class="line"><span class="lineno">  115</span>            buffer2_write.resize(2);</div>
-<div class="line"><span class="lineno">  116</span>        }</div>
-<div class="line"><span class="lineno">  117</span> </div>
-<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">if</span> (!buffer1) { <span class="comment">// NOLINT</span></div>
-<div class="line"><span class="lineno">  119</span>            buffer1 = buffer2_write.back();</div>
-<div class="line"><span class="lineno">  120</span>            buffer2_write.pop_back();</div>
-<div class="line"><span class="lineno">  121</span>            buffer1-&gt;reset();</div>
-<div class="line"><span class="lineno">  122</span>        }</div>
-<div class="line"><span class="lineno">  123</span> </div>
-<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">if</span> (!buffer2) { <span class="comment">// NOLINT</span></div>
-<div class="line"><span class="lineno">  125</span>            buffer2 = buffer2_write.back();</div>
-<div class="line"><span class="lineno">  126</span>            buffer2_write.pop_back();</div>
-<div class="line"><span class="lineno">  127</span>            buffer2-&gt;reset();</div>
-<div class="line"><span class="lineno">  128</span>        }</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>        buffer2_write.clear();</div>
-<div class="line"><span class="lineno">  131</span>    }</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>    <span class="comment">// 此处需要输出剩余的 buffer，触发几率较小</span></div>
-<div class="line"><span class="lineno">  134</span>    <span class="comment">// GCOVR_EXCL_START</span></div>
-<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;buffer: <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>) {</div>
-<div class="line"><span class="lineno">  136</span>        <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;dump(buffer-&gt;data(), buffer-&gt;getReadableSize());</div>
-<div class="line"><span class="lineno">  137</span>    }</div>
-<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;appender: <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>) {</div>
-<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;buffer: <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>) {</div>
-<div class="line"><span class="lineno">  140</span>            appender-&gt;dump(buffer-&gt;data(), buffer-&gt;getReadableSize());</div>
-<div class="line"><span class="lineno">  141</span>        }</div>
-<div class="line"><span class="lineno">  142</span>    }</div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;buffer: <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>) {</div>
-<div class="line"><span class="lineno">  144</span>        <span class="keyword">delete</span> buffer;</div>
-<div class="line"><span class="lineno">  145</span>    }</div>
-<div class="line"><span class="lineno">  146</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>.clear();</div>
-<div class="line"><span class="lineno">  147</span>    <span class="comment">// GCOVR_EXCL_STOP</span></div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>    <span class="keyword">delete</span> buffer1; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  150</span>    <span class="keyword">delete</span> buffer2; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  151</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_logger_8h_source.html#l00075">sese::record::Logger::appenderVector</a>, <a class="el" href="_async_logger_8h_source.html#l00037">buffer2Ready</a>, <a class="el" href="_logger_8h_source.html#l00074">sese::record::Logger::builtInAppender</a>, <a class="el" href="_async_logger_8h_source.html#l00040">conditionVariable</a>, <a class="el" href="_async_logger_8h_source.html#l00034">currentBuffer</a>, <a class="el" href="_async_logger_8h_source.html#l00041">isShutdown</a>, <a class="el" href="_async_logger_8h_source.html#l00039">mutex</a>, <a class="el" href="_async_logger_8h_source.html#l00035">nextBuffer</a> , 以及 <a class="el" href="_config_8h_source.html#l00092">RECORD_BUFFER_SIZE</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">sese::record::Logger::appenderVector</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#ad1480dc02796a08f8fc0258c9718d777">buffer2Ready</a>, <a class="el" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">sese::record::Logger::builtInAppender</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a4426394019c22333363d915467f43280">conditionVariable</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a5c1b01fd6ce32d88c8c93dc368cb4b94">currentBuffer</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a7b53ed40667a57ecf5235b6d1a0be219">isShutdown</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a3af4bec75efcfc9c1c4187284a3dbe8e">mutex</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a1d56d632add5af70aa26fe26397533ec">nextBuffer</a> , 以及 <a class="el" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025">RECORD_BUFFER_SIZE</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00010">AsyncLogger()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a1ec00e14d6d7bd41638028cb792c4efe">AsyncLogger()</a>.</p>
 
 </div>
 </div>
@@ -539,9 +390,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a> 第 <a class="el" href="_async_logger_8h_source.html#l00037">37</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00069">loop()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">loop()</a>.</p>
 
 </div>
 </div>
@@ -565,9 +414,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a> 第 <a class="el" href="_async_logger_8h_source.html#l00040">40</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00069">loop()</a> , 以及 <a class="el" href="_async_logger_8cpp_source.html#l00019">~AsyncLogger()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">loop()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a765bc0b00d646a6ab5635024c6435f3a">~AsyncLogger()</a>.</p>
 
 </div>
 </div>
@@ -591,9 +438,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a> 第 <a class="el" href="_async_logger_8h_source.html#l00034">34</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00010">AsyncLogger()</a>, <a class="el" href="_async_logger_8cpp_source.html#l00069">loop()</a> , 以及 <a class="el" href="_async_logger_8cpp_source.html#l00019">~AsyncLogger()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a1ec00e14d6d7bd41638028cb792c4efe">AsyncLogger()</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">loop()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a765bc0b00d646a6ab5635024c6435f3a">~AsyncLogger()</a>.</p>
 
 </div>
 </div>
@@ -617,10 +462,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a> 第 <a class="el" href="_async_logger_8h_source.html#l00041">41</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00010">AsyncLogger()</a>, <a class="el" href="_async_logger_8cpp_source.html#l00069">loop()</a> , 以及 <a class="el" href="_async_logger_8cpp_source.html#l00019">~AsyncLogger()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a1ec00e14d6d7bd41638028cb792c4efe">AsyncLogger()</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">loop()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a765bc0b00d646a6ab5635024c6435f3a">~AsyncLogger()</a>.</p>
 
 </div>
 </div>
@@ -644,9 +486,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a> 第 <a class="el" href="_async_logger_8h_source.html#l00039">39</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00069">loop()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">loop()</a>.</p>
 
 </div>
 </div>
@@ -670,9 +510,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a> 第 <a class="el" href="_async_logger_8h_source.html#l00035">35</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00010">AsyncLogger()</a>, <a class="el" href="_async_logger_8cpp_source.html#l00069">loop()</a> , 以及 <a class="el" href="_async_logger_8cpp_source.html#l00019">~AsyncLogger()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a1ec00e14d6d7bd41638028cb792c4efe">AsyncLogger()</a>, <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">loop()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a765bc0b00d646a6ab5635024c6435f3a">~AsyncLogger()</a>.</p>
 
 </div>
 </div>
@@ -696,15 +534,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a> 第 <a class="el" href="_async_logger_8h_source.html#l00042">42</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00010">AsyncLogger()</a> , 以及 <a class="el" href="_async_logger_8cpp_source.html#l00019">~AsyncLogger()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a1ec00e14d6d7bd41638028cb792c4efe">AsyncLogger()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a765bc0b00d646a6ab5635024c6435f3a">~AsyncLogger()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/record/<a class="el" href="_async_logger_8h_source.html">AsyncLogger.h</a></li>
-<li>sese/record/<a class="el" href="_async_logger_8cpp_source.html">AsyncLogger.cpp</a></li>
+<li>sese/record/<a class="el" href="_async_logger_8cpp.html">AsyncLogger.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

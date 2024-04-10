@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -202,8 +203,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>WSAEventSelect 事件循环 </p>
-
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00019">19</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a482d8108cf259eb1a165ca064cfe5d27" name="a482d8108cf259eb1a165ca064cfe5d27"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a482d8108cf259eb1a165ca064cfe5d27">&#9670;&#160;</a></span>~WSAEventLoop()</h2>
@@ -228,19 +227,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00029">29</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>                                     {</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a>) {</div>
-<div class="line"><span class="lineno">   31</span>        WSACloseEvent(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a>);</div>
-<div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   33</span>    }</div>
-<div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a>) {</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a>;</div>
-<div class="line"><span class="lineno">   37</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -286,31 +272,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#aeb4c42e9e5ce9307b3a6f586bea524a2">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00110">110</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>                                                                                              {</div>
-<div class="line"><span class="lineno">  111</span>    WSAEVENT wsa_event = WSACreateEvent();</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (WSAEventSelect(fd, wsa_event, <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a4c4aaa102146d8ab539b9e00e9bb03f3">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_convert.html#a0ea07bdbc0cb346cd3b9c77d36822b30">toNativeEvent</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>) | FD_CLOSE)) {</div>
-<div class="line"><span class="lineno">  113</span>        WSACloseEvent(wsa_event);</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>    <span class="keyword">auto</span> <span class="keyword">event</span> = <span class="keyword">new</span> WSAEvent;</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keyword">event</span>-&gt;fd = fd;</div>
-<div class="line"><span class="lineno">  119</span>    <span class="keyword">event</span>-&gt;events = <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>;</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keyword">event</span>-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">data</a> = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
-<div class="line"><span class="lineno">  121</span>    <span class="keyword">event</span>-&gt;wsaEvent = wsa_event;</div>
-<div class="line"><span class="lineno">  122</span> </div>
-<div class="line"><span class="lineno">  123</span>    <span class="comment">// mutex.lock();</span></div>
-<div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a>] = fd;</div>
-<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>[<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a>] = wsa_event;</div>
-<div class="line"><span class="lineno">  126</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a>] = event;</div>
-<div class="line"><span class="lineno">  127</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a> += 1;</div>
-<div class="line"><span class="lineno">  128</span>    <span class="comment">// mutex.unlock();</span></div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> event;</div>
-<div class="line"><span class="lineno">  131</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp_source.html#l00007">convert</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>.</p>
 
 </div>
 </div>
@@ -340,62 +302,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#acc96fd81d204831200614e2d5a0c0d39">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00041">41</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>                                                     {</div>
-<div class="line"><span class="lineno">   42</span>    DWORD n_index = WSAWaitForMultipleEvents(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a>, <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>, FALSE, timeout, FALSE);</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (n_index == WSA_WAIT_FAILED || n_index == WSA_WAIT_TIMEOUT) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>    n_index -= WSA_WAIT_EVENT_0;</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">for</span> (DWORD i = n_index; i &lt; <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a>; ++i) {</div>
-<div class="line"><span class="lineno">   47</span>        n_index = ::WSAWaitForMultipleEvents(1, &amp;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>[i], TRUE, timeout, FALSE);</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span> (n_index == WSA_WAIT_FAILED || n_index == WSA_WAIT_TIMEOUT) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>        WSANETWORKEVENTS enum_event;</div>
-<div class="line"><span class="lineno">   51</span>        WSAEnumNetworkEvents(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[i], <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>[i], &amp;enum_event);</div>
-<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">if</span> (enum_event.lNetworkEvents &amp; FD_ACCEPT) {</div>
-<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">if</span> (enum_event.iErrorCode[FD_ACCEPT_BIT] == 0) {</div>
-<div class="line"><span class="lineno">   54</span>                SOCKET client = accept(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[i], <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   55</span>                <span class="keywordflow">if</span> (-1 != client) {</div>
-<div class="line"><span class="lineno">   56</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a58093f821d12b7bbe4d3eb04aa1866b6">onAccept</a>((<span class="keywordtype">int</span>) client);</div>
-<div class="line"><span class="lineno">   57</span>                }</div>
-<div class="line"><span class="lineno">   58</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (enum_event.iErrorCode[FD_ACCEPT_BIT] != 0 &amp;&amp; <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> &amp; <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>) {</div>
-<div class="line"><span class="lineno">   59</span>                <a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a122e5ee5259f479909084c04830a8599">onError</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]);</div>
-<div class="line"><span class="lineno">   60</span>            }</div>
-<div class="line"><span class="lineno">   61</span>        }</div>
-<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">if</span> ((enum_event.lNetworkEvents &amp; FD_CLOSE) &amp;&amp; <a class="code hl_variable" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2" title="指示当前循环是否处理关闭事件">handleClose</a>) {</div>
-<div class="line"><span class="lineno">   63</span>            <span class="comment">// mutex.lock();</span></div>
-<div class="line"><span class="lineno">   64</span>            <span class="comment">// WSACloseEvent(wsaEvents[i]);</span></div>
-<div class="line"><span class="lineno">   65</span>            <span class="comment">// memmove(&amp;sockets[i], &amp;sockets[i], (numbers - i - 1) * sizeof(SOCKET));</span></div>
-<div class="line"><span class="lineno">   66</span>            <span class="comment">// memmove(&amp;wsaEvents[i], &amp;wsaEvents[i], (numbers - i - 1) * sizeof(HANDLE));</span></div>
-<div class="line"><span class="lineno">   67</span>            <span class="comment">// memmove(&amp;events[i], &amp;events[i], (numbers - i - 1) * sizeof(WSAEvent *));</span></div>
-<div class="line"><span class="lineno">   68</span>            <span class="comment">// numbers -= 1;</span></div>
-<div class="line"><span class="lineno">   69</span>            <span class="comment">// mutex.unlock();</span></div>
-<div class="line"><span class="lineno">   70</span>            <a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ac60ba2f1b704ec4b7f4aaea345fc53ed">onClose</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]);</div>
-<div class="line"><span class="lineno">   71</span>        }</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">if</span> (enum_event.lNetworkEvents &amp; FD_READ) {</div>
-<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">if</span> (enum_event.iErrorCode[FD_READ_BIT] == 0) {</div>
-<div class="line"><span class="lineno">   74</span>                <span class="keywordtype">char</span> buf;</div>
-<div class="line"><span class="lineno">   75</span>                <span class="keywordflow">if</span> (1 == recv(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[i], &amp;buf, 1, MSG_PEEK)) {</div>
-<div class="line"><span class="lineno">   76</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa6063e67778ce5a957f7559f15198ef5">onRead</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]);</div>
-<div class="line"><span class="lineno">   77</span>                }</div>
-<div class="line"><span class="lineno">   78</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (enum_event.iErrorCode[FD_READ_BIT] != 0 &amp;&amp; <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> &amp; <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>) {</div>
-<div class="line"><span class="lineno">   79</span>                <a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a122e5ee5259f479909084c04830a8599">onError</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]);</div>
-<div class="line"><span class="lineno">   80</span>            }</div>
-<div class="line"><span class="lineno">   81</span>        }</div>
-<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">if</span> (enum_event.lNetworkEvents &amp; FD_WRITE) {</div>
-<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">if</span> (enum_event.iErrorCode[FD_WRITE_BIT] == 0) {</div>
-<div class="line"><span class="lineno">   84</span>                <span class="keywordtype">char</span> buf;</div>
-<div class="line"><span class="lineno">   85</span>                <span class="keywordflow">if</span> (0 == send(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[i], &amp;buf, 0, 0)) {</div>
-<div class="line"><span class="lineno">   86</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a7621b97224b03b80b0797ce38011bafd">onWrite</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]);</div>
-<div class="line"><span class="lineno">   87</span>                }</div>
-<div class="line"><span class="lineno">   88</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (enum_event.iErrorCode[FD_WRITE_BIT] != 0 &amp;&amp; <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> &amp; <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>) {</div>
-<div class="line"><span class="lineno">   89</span>                <a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a122e5ee5259f479909084c04830a8599">onError</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i]);</div>
-<div class="line"><span class="lineno">   90</span>            }</div>
-<div class="line"><span class="lineno">   91</span>        }</div>
-<div class="line"><span class="lineno">   92</span>    }</div>
-<div class="line"><span class="lineno">   93</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a>.</p>
+<p class="reference">引用了 <a class="el" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>.</p>
 
 </div>
 </div>
@@ -425,31 +332,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ad437b12929edb2660a01fd3fa57e2d93">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00133">133</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  133</span>                                                               {</div>
-<div class="line"><span class="lineno">  134</span>    <span class="keywordtype">bool</span> found = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  135</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 0;</div>
-<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">for</span> (; i &lt; <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a>; ++i) {</div>
-<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">if</span> (event-&gt;fd == <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[i]) {</div>
-<div class="line"><span class="lineno">  138</span>            found = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  139</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  140</span>        }</div>
-<div class="line"><span class="lineno">  141</span>    }</div>
-<div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">if</span> (found) {</div>
-<div class="line"><span class="lineno">  144</span>        WSACloseEvent(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>[i]);</div>
-<div class="line"><span class="lineno">  145</span>        memmove(&amp;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[i], &amp;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[i], (<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a> - i - 1) * <span class="keyword">sizeof</span>(SOCKET));</div>
-<div class="line"><span class="lineno">  146</span>        memmove(&amp;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>[i], &amp;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>[i], (<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a> - i - 1) * <span class="keyword">sizeof</span>(HANDLE));</div>
-<div class="line"><span class="lineno">  147</span>        memmove(&amp;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i], &amp;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[i], (<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a> - i - 1) * <span class="keyword">sizeof</span>(WSAEvent *));</div>
-<div class="line"><span class="lineno">  148</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a> -= 1;</div>
-<div class="line"><span class="lineno">  149</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  150</span>        <span class="comment">// 这一般不会发生</span></div>
-<div class="line"><span class="lineno">  151</span>    }</div>
-<div class="line"><span class="lineno">  152</span> </div>
-<div class="line"><span class="lineno">  153</span>    <span class="keyword">delete</span> event;</div>
-<div class="line"><span class="lineno">  154</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>.</p>
 
 </div>
 </div>
@@ -478,32 +361,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a377d38f5f4c3386967c7e4a791d5810f">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                 {</div>
-<div class="line"><span class="lineno">    6</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a> = WSACreateEvent();</div>
-<div class="line"><span class="lineno">    7</span>    <span class="keywordflow">if</span> (WSA_INVALID_EVENT == <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">    8</span>    <span class="keywordflow">if</span> (0 &gt;= <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ab81ce45898376315a696c869ddf7a79c">listenFd</a>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">    9</span> </div>
-<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">if</span> (WSAEventSelect(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ab81ce45898376315a696c869ddf7a79c">listenFd</a>, <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a>, FD_ACCEPT)) {</div>
-<div class="line"><span class="lineno">   11</span>        WSACloseEvent(<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a>);</div>
-<div class="line"><span class="lineno">   12</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   13</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   14</span>    }</div>
-<div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a> = <span class="keyword">new</span> WSAEvent;</div>
-<div class="line"><span class="lineno">   17</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a>-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> = <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>;</div>
-<div class="line"><span class="lineno">   18</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a>-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">fd</a> = <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ab81ce45898376315a696c869ddf7a79c">listenFd</a>;</div>
-<div class="line"><span class="lineno">   19</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a>-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event.html#aaa9fbf0a4420802cea697aa37ed8cbb6">wsaEvent</a> = <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a>;</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>[0] = <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ab81ce45898376315a696c869ddf7a79c">listenFd</a>;</div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>[0] = <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a>-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event.html#aaa9fbf0a4420802cea697aa37ed8cbb6">wsaEvent</a>;</div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>[0] = <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a>;</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a> += 1;</div>
-<div class="line"><span class="lineno">   25</span> </div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a>, <a class="el" href="_base_event_8h_source.html#l00020">sese::event::BaseEvent::events</a>, <a class="el" href="_w_s_a_event_loop_8h_source.html#l00055">events</a>, <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>, <a class="el" href="_w_s_a_event_loop_8h_source.html#l00047">listenEvent</a>, <a class="el" href="_w_s_a_event_loop_8h_source.html#l00046">listenFd</a>, <a class="el" href="_w_s_a_event_loop_8h_source.html#l00052">numbers</a>, <a class="el" href="_w_s_a_event_loop_8h_source.html#l00053">sockets</a>, <a class="el" href="_w_s_a_event_8h_source.html#l00015">sese::event::WSAEvent::wsaEvent</a>, <a class="el" href="_w_s_a_event_loop_8h_source.html#l00049">wsaEvent</a> , 以及 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00054">wsaEvents</a>.</p>
+<p class="reference">引用了 <a class="el" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>, <a class="el" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">sese::event::BaseEvent::events</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a48345249c26c559b93abcd752c8b982f">events</a>, <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#af4ff994703569df9b9c7249321dc3609">listenEvent</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ab81ce45898376315a696c869ddf7a79c">listenFd</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3de51758b1e2e63366ce693b4e28ff9c">numbers</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a6dec9fa70c389eaa37c89c5fc7b6df3e">sockets</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event.html#aaa9fbf0a4420802cea697aa37ed8cbb6">sese::event::WSAEvent::wsaEvent</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a11292ff57360a0d1e35145da496fc56d">wsaEvent</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#acc7e767bb526b17d1f84df9fb4628ac9">wsaEvents</a>.</p>
 
 </div>
 </div>
@@ -533,10 +391,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#add63e0b4d354df6a4e44ec523b7990a4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00095">95</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>                                           {</div>
-<div class="line"><span class="lineno">   96</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ac60ba2f1b704ec4b7f4aaea345fc53ed" name="ac60ba2f1b704ec4b7f4aaea345fc53ed"></a>
@@ -565,10 +419,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00107">107</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  107</span>                                                             {</div>
-<div class="line"><span class="lineno">  108</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a122e5ee5259f479909084c04830a8599" name="a122e5ee5259f479909084c04830a8599"></a>
@@ -597,10 +447,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ae4015c16ccbbbdb70fc573522d626850">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00104">104</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>                                                             {</div>
-<div class="line"><span class="lineno">  105</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa6063e67778ce5a957f7559f15198ef5" name="aa6063e67778ce5a957f7559f15198ef5"></a>
@@ -629,10 +475,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60d8eb8bc4458845aa52598233e64ef4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00098">98</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>                                                            {</div>
-<div class="line"><span class="lineno">   99</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a7621b97224b03b80b0797ce38011bafd" name="a7621b97224b03b80b0797ce38011bafd"></a>
@@ -661,10 +503,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a01e4f8ce45d64a7eaf01386a594b256c">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00101">101</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>                                                             {</div>
-<div class="line"><span class="lineno">  102</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="abb115bf9e27c0e1998fa9256f416146f" name="abb115bf9e27c0e1998fa9256f416146f"></a>
@@ -693,14 +531,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a9948fa27a1d36040ad5b3a54909496eb">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00156">156</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  156</span>                                                              {</div>
-<div class="line"><span class="lineno">  157</span>    <span class="keyword">auto</span> ev = <span class="keyword">reinterpret_cast&lt;</span>WSAEvent *<span class="keyword">&gt;</span>(event);</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keyword">auto</span> rt = 0 == WSAEventSelect(ev-&gt;fd, ev-&gt;wsaEvent, <a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a4c4aaa102146d8ab539b9e00e9bb03f3">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_w_s_a_event_convert.html#a0ea07bdbc0cb346cd3b9c77d36822b30">toNativeEvent</a>(ev-&gt;events) | FD_CLOSE);</div>
-<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> rt;</div>
-<div class="line"><span class="lineno">  160</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp_source.html#l00007">convert</a>.</p>
+<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>.</p>
 
 </div>
 </div>
@@ -730,11 +561,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4caa4a768bb29bd3f394505575f6cb0e">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a> 第 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00162">162</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  162</span>                                              {</div>
-<div class="line"><span class="lineno">  163</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ab81ce45898376315a696c869ddf7a79c">listenFd</a> = fd;</div>
-<div class="line"><span class="lineno">  164</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -758,8 +584,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00050">50</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a48345249c26c559b93abcd752c8b982f" name="a48345249c26c559b93abcd752c8b982f"></a>
@@ -782,10 +606,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00055">55</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>{}; <span class="comment">// 此处生命周期应由用户负责</span></div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">init()</a>.</p>
 
 </div>
 </div>
@@ -809,10 +630,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00047">47</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>{<span class="keyword">nullptr</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">init()</a>.</p>
 
 </div>
 </div>
@@ -836,10 +654,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00046">46</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>{-1};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">init()</a>.</p>
 
 </div>
 </div>
@@ -863,9 +678,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00052">52</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">init()</a>.</p>
 
 </div>
 </div>
@@ -889,10 +702,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00053">53</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">init()</a>.</p>
 
 </div>
 </div>
@@ -916,10 +726,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00049">49</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{<span class="keyword">nullptr</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">init()</a>.</p>
 
 </div>
 </div>
@@ -943,16 +750,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a> 第 <a class="el" href="_w_s_a_event_loop_8h_source.html#l00054">54</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">init()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/native/win/event/<a class="el" href="_w_s_a_event_loop_8h_source.html">WSAEventLoop.h</a></li>
-<li>sese/native/win/event/<a class="el" href="_w_s_a_event_loop_8cpp_source.html">WSAEventLoop.cpp</a></li>
+<li>sese/native/win/event/<a class="el" href="_w_s_a_event_loop_8cpp.html">WSAEventLoop.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

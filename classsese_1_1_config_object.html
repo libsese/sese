@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_config_object.html','');
 <a href="#nested-classes">类</a> &#124;
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_config_object-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::ConfigObject类 参考</div></div>
 </div><!--header-->
@@ -162,11 +164,16 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:addb3d463ba813cda062ce1ffc3c0bf74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d7a806734266c89bd42aea1652c7b66" id="r_a5d7a806734266c89bd42aea1652c7b66"><td class="memItemLeft" align="right" valign="top">const std::map&lt; std::string, <a class="el" href="structsese_1_1_config_object_1_1_section.html#ab00905cd919b10a4185c511ffff9fdc8">Section::Ptr</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_config_object.html#a5d7a806734266c89bd42aea1652c7b66">getAllSection</a> () const</td></tr>
 <tr class="separator:a5d7a806734266c89bd42aea1652c7b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a969fe4ef5931418f740bb1d5129b0099" id="r_a969fe4ef5931418f740bb1d5129b0099"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_config_object_1_1_section.html#ab00905cd919b10a4185c511ffff9fdc8">Section::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_config_object.html#a969fe4ef5931418f740bb1d5129b0099">defaultSection</a></td></tr>
+<tr class="separator:a969fe4ef5931418f740bb1d5129b0099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a814ac5f1efb1f2fb1c01ced79c0101f8" id="r_a814ac5f1efb1f2fb1c01ced79c0101f8"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="structsese_1_1_config_object_1_1_section.html#ab00905cd919b10a4185c511ffff9fdc8">Section::Ptr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_config_object.html#a814ac5f1efb1f2fb1c01ced79c0101f8">sections</a></td></tr>
+<tr class="separator:a814ac5f1efb1f2fb1c01ced79c0101f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>传统配置文件类 </p>
-
-<p class="definition">在文件 <a class="el" href="_config_util_8h_source.html">ConfigUtil.h</a> 第 <a class="el" href="_config_util_8h_source.html#l00025">25</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ad2c907273f3078a41536d29583c3aeaf" name="ad2c907273f3078a41536d29583c3aeaf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad2c907273f3078a41536d29583c3aeaf">&#9670;&#160;</a></span>Ptr</h2>
@@ -179,8 +186,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_config_util_8h_source.html">ConfigUtil.h</a> 第 <a class="el" href="_config_util_8h_source.html#l00027">27</a> 行定义.</p>
 
 </div>
 </div>
@@ -243,9 +248,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_config_util_8h_source.html">ConfigUtil.h</a> 第 <a class="el" href="_config_util_8h_source.html#l00049">49</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>{ <span class="keywordflow">return</span> this-&gt;defaultSection; }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ad9ac353dfd93a0d6cdfb4e38762737a5" name="ad9ac353dfd93a0d6cdfb4e38762737a5"></a>
@@ -287,6 +289,51 @@ Public 成员函数</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a969fe4ef5931418f740bb1d5129b0099" name="a969fe4ef5931418f740bb1d5129b0099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a969fe4ef5931418f740bb1d5129b0099">&#9670;&#160;</a></span>defaultSection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1_config_object_1_1_section.html#ab00905cd919b10a4185c511ffff9fdc8">Section::Ptr</a> sese::ConfigObject::defaultSection</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a814ac5f1efb1f2fb1c01ced79c0101f8" name="a814ac5f1efb1f2fb1c01ced79c0101f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a814ac5f1efb1f2fb1c01ced79c0101f8">&#9670;&#160;</a></span>sections</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="structsese_1_1_config_object_1_1_section.html#ab00905cd919b10a4185c511ffff9fdc8">Section::Ptr</a>&gt; sese::ConfigObject::sections</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

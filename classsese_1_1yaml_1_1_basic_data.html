@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -211,8 +212,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>基本数据类 </p>
-
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00093">93</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a6646257d8962f6e1640ed85309e8b20d" name="a6646257d8962f6e1640ed85309e8b20d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6646257d8962f6e1640ed85309e8b20d">&#9670;&#160;</a></span>Ptr</h2>
@@ -225,8 +224,6 @@ Protected 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00095">95</a> 行定义.</p>
 
 </div>
 </div>
@@ -254,10 +251,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8cpp_source.html">YamlTypes.cpp</a> 第 <a class="el" href="_yaml_types_8cpp_source.html#l00015">15</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>    : <a class="code hl_function" href="classsese_1_1yaml_1_1_data.html#a83b7b481dc71352551111caee0a27dab">Data</a>(<a class="code hl_enumvalue" href="namespacesese_1_1yaml.html#ad98fe9b98e6b6e5e5210b70b0d74c65cad4f00aeec72166053163696ec83cef66">DataType::BASIC_DATA</a>) {</div>
-<div class="line"><span class="lineno">   17</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -300,16 +293,9 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00105">105</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>                                           {</div>
-<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#af5601784bfaaf0f7da5579e0ceee2117">_isNull</a>) {</div>
-<div class="line"><span class="lineno">  107</span>            <span class="keywordflow">return</span> def;</div>
-<div class="line"><span class="lineno">  108</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  109</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a>;</div>
-<div class="line"><span class="lineno">  110</span>        }</div>
-<div class="line"><span class="lineno">  111</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aa691e5a6741507a03b25a556374971b0">sese::yaml::YamlUtil::serializeArray()</a> , 以及 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aab2daeda7e5a901a59e8a8a793f56d1b">sese::yaml::YamlUtil::serializeObject()</a>.</p>
 
 </div>
 </div>
@@ -352,15 +338,6 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00119">119</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>                                           {</div>
-<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#af5601784bfaaf0f7da5579e0ceee2117">_isNull</a>) {</div>
-<div class="line"><span class="lineno">  121</span>            <span class="keywordflow">return</span> def;</div>
-<div class="line"><span class="lineno">  122</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  123</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a>;</div>
-<div class="line"><span class="lineno">  124</span>        }</div>
-<div class="line"><span class="lineno">  125</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
 </div>
@@ -404,20 +381,7 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00133">133</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  133</span>                                    {</div>
-<div class="line"><span class="lineno">  134</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#af5601784bfaaf0f7da5579e0ceee2117">_isNull</a>) {</div>
-<div class="line"><span class="lineno">  135</span>            <span class="keywordflow">return</span> def;</div>
-<div class="line"><span class="lineno">  136</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  137</span>            <span class="keywordflow">if</span> (0 == <a class="code hl_define" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c" title="忽略大小写比较">strcasecmp</a>(<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a>.c_str(), <span class="stringliteral">&quot;yes&quot;</span>) || 0 == <a class="code hl_define" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c" title="忽略大小写比较">strcasecmp</a>(<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a>.c_str(), <span class="stringliteral">&quot;true&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  138</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  139</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  140</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  141</span>            }</div>
-<div class="line"><span class="lineno">  142</span>        }</div>
-<div class="line"><span class="lineno">  143</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="native_2win_2_config_8h_source.html#l00048">strcasecmp</a>.</p>
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c">strcasecmp</a>.</p>
 
 </div>
 </div>
@@ -460,16 +424,6 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00151">151</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  151</span>                                    {</div>
-<div class="line"><span class="lineno">  152</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#af5601784bfaaf0f7da5579e0ceee2117">_isNull</a>) {</div>
-<div class="line"><span class="lineno">  153</span>            <span class="keywordflow">return</span> def;</div>
-<div class="line"><span class="lineno">  154</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  155</span>            <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">  156</span>            <span class="keywordflow">return</span> std::strtol(<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a>.c_str(), &amp;end, 10);</div>
-<div class="line"><span class="lineno">  157</span>        }</div>
-<div class="line"><span class="lineno">  158</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
 </div>
@@ -513,16 +467,6 @@ template&lt;class T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00166">166</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  166</span>                                    {</div>
-<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#af5601784bfaaf0f7da5579e0ceee2117">_isNull</a>) {</div>
-<div class="line"><span class="lineno">  168</span>            <span class="keywordflow">return</span> def;</div>
-<div class="line"><span class="lineno">  169</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  170</span>            <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">  171</span>            <span class="keywordflow">return</span> std::strtod(<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a>.c_str(), &amp;end);</div>
-<div class="line"><span class="lineno">  172</span>        }</div>
-<div class="line"><span class="lineno">  173</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
 </div>
@@ -551,9 +495,6 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>返回</dt><dd>当前值是否为空 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00176">176</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  176</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#af5601784bfaaf0f7da5579e0ceee2117">_isNull</a>; }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a8620dafea6917c5c3c3d40cec175ab0f" name="a8620dafea6917c5c3c3d40cec175ab0f"></a>
@@ -594,11 +535,6 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00183">183</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  183</span>                                                                                           {</div>
-<div class="line"><span class="lineno">  184</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a> = value;</div>
-<div class="line"><span class="lineno">  185</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
 </div>
@@ -641,11 +577,6 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00192">192</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  192</span>                                                                                                     {</div>
-<div class="line"><span class="lineno">  193</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a> = value;</div>
-<div class="line"><span class="lineno">  194</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
 </div>
@@ -688,11 +619,6 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00201">201</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  201</span>                                                                          {</div>
-<div class="line"><span class="lineno">  202</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a> = value ? <span class="stringliteral">&quot;true&quot;</span> : <span class="stringliteral">&quot;false&quot;</span>;</div>
-<div class="line"><span class="lineno">  203</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
 </div>
@@ -735,11 +661,6 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00219">219</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  219</span>                                                                              {</div>
-<div class="line"><span class="lineno">  220</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a> = std::to_string(value);</div>
-<div class="line"><span class="lineno">  221</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
 </div>
@@ -782,11 +703,6 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00210">210</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  210</span>                                                                                {</div>
-<div class="line"><span class="lineno">  211</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#ab33cdf49aae8670e1ed4f4188726ca79">data</a> = std::to_string(value);</div>
-<div class="line"><span class="lineno">  212</span>    }</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
 </div>
@@ -821,11 +737,6 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00225">225</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  225</span>                                     {</div>
-<div class="line"><span class="lineno">  226</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1yaml_1_1_basic_data.html#af5601784bfaaf0f7da5579e0ceee2117">_isNull</a> = null;</div>
-<div class="line"><span class="lineno">  227</span>    }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -849,8 +760,6 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00231">231</a> 行定义.</p>
-
 </div>
 </div>
 <a id="ab33cdf49aae8670e1ed4f4188726ca79" name="ab33cdf49aae8670e1ed4f4188726ca79"></a>
@@ -873,13 +782,11 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00230">230</a> 行定义.</p>
-
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/config/yaml/<a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a></li>
-<li>sese/config/yaml/<a class="el" href="_yaml_types_8cpp_source.html">YamlTypes.cpp</a></li>
+<li>sese/config/yaml/<a class="el" href="_yaml_types_8cpp.html">YamlTypes.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

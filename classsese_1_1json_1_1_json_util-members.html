@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -131,6 +132,8 @@ $(document).ready(function(){initNavTree('classsese_1_1json_1_1_json_util.html',
 
 <p>成员的完整列表，这些成员属于 <a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a>,包括所有继承而来的类成员</p>
 <table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#a4a65aef3297a194eb018dcbf9b3a95d8">createArray</a>(Tokens &amp;tokens, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#af7c67ac812525342092c53efa35c9a75">createObject</a>(Tokens &amp;tokens, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#aadd24028d56f1f761ecbc214c1d36d51">deserialize</a>(const InputStream::Ptr &amp;input_stream, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#a00621a383bbd92d839b1fabf568d4617">deserialize</a>(InputStream *input_stream, size_t level) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#aacda2c5bbdb655faffd407ef77e283fe">InputStream</a> typedef</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"></td></tr>
@@ -140,6 +143,8 @@ $(document).ready(function(){initNavTree('classsese_1_1json_1_1_json_util.html',
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#aaca2ef3b8a9f15ae1489d32feb976876">OutputStream</a> typedef</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#a6815b450b2183a158f9bf57e9c12a2ce">serialize</a>(const ObjectData::Ptr &amp;object, const OutputStream::Ptr &amp;output_stream) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#abb8650db922a2535afd1205e0d56a333">serialize</a>(ObjectData *object, OutputStream *output_stream) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#a666e5bde750bf1fdc10e06e2227bfa06">serializeArray</a>(ArrayData *array, OutputStream *output_stream) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#ad59c031eb35f9d37a1e345db5db767fe">serializeObject</a>(ObjectData *object, OutputStream *output_stream) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#ac1aa1afe6f5d57fc1fe0d05be67ee350">tokenizer</a>(InputStream *input_stream, Tokens &amp;tokens) noexcept</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html#a9eedc75c4f41db502d8ae735874897db">Tokens</a> typedef</td><td class="entry"><a class="el" href="classsese_1_1json_1_1_json_util.html">sese::json::JsonUtil</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_not_instantiable.html#ae0447de63059ff64d0e8becf5637297a">~NotInstantiable</a>()=default</td><td class="entry"><a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>

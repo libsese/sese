@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -154,8 +155,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>时间戳处理器 </p>
-
-<p class="definition">在文件 <a class="el" href="_timestamp_handler_8h_source.html">TimestampHandler.h</a> 第 <a class="el" href="_timestamp_handler_8h_source.html#l00017">17</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a9cd469bb66836fcb678ef1d20cf89ed5" name="a9cd469bb66836fcb678ef1d20cf89ed5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9cd469bb66836fcb678ef1d20cf89ed5">&#9670;&#160;</a></span>TimestampHandler()</h2>
@@ -181,11 +180,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_timestamp_handler_8cpp_source.html">TimestampHandler.cpp</a> 第 <a class="el" href="_timestamp_handler_8cpp_source.html#l00003">3</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>                                                                                     {</div>
-<div class="line"><span class="lineno">    4</span>    <a class="code hl_variable" href="classsese_1_1_timestamp_handler.html#a18979057755f7003442904fc8133356d">latest</a> = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(point.time_since_epoch());</div>
-<div class="line"><span class="lineno">    5</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -213,13 +207,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取当前时间戳 </p><dl class="section return"><dt>返回</dt><dd>毫秒级时间戳 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_timestamp_handler_8cpp_source.html">TimestampHandler.cpp</a> 第 <a class="el" href="_timestamp_handler_8cpp_source.html#l00007">7</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                            {</div>
-<div class="line"><span class="lineno">    8</span>    <a class="code hl_variable" href="classsese_1_1_timestamp_handler.html#a18979057755f7003442904fc8133356d">latest</a> = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::system_clock::now().time_since_epoch());</div>
-<div class="line"><span class="lineno">    9</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1_timestamp_handler.html#a18979057755f7003442904fc8133356d">latest</a>.count();</div>
-<div class="line"><span class="lineno">   10</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_timestamp_handler_8h_source.html#l00029">latest</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_timestamp_handler.html#a18979057755f7003442904fc8133356d">latest</a>.</p>
 
 </div>
 </div>
@@ -253,21 +241,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_timestamp_handler_8cpp_source.html">TimestampHandler.cpp</a> 第 <a class="el" href="_timestamp_handler_8cpp_source.html#l00012">12</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>                                                               {</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keyword">auto</span> new_point = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::system_clock::now().time_since_epoch());</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">if</span> (new_point &gt; <a class="code hl_variable" href="classsese_1_1_timestamp_handler.html#a18979057755f7003442904fc8133356d">latest</a>) {</div>
-<div class="line"><span class="lineno">   15</span>        <a class="code hl_variable" href="classsese_1_1_timestamp_handler.html#a18979057755f7003442904fc8133356d">latest</a> = new_point;</div>
-<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1_timestamp_handler.html#a18979057755f7003442904fc8133356d">latest</a>.count();</div>
-<div class="line"><span class="lineno">   17</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1_timestamp_handler.html#a18979057755f7003442904fc8133356d">latest</a> - new_point &gt; std::chrono::seconds(5)) {</div>
-<div class="line"><span class="lineno">   19</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
-<div class="line"><span class="lineno">   20</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   21</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   22</span>        }</div>
-<div class="line"><span class="lineno">   23</span>    }</div>
-<div class="line"><span class="lineno">   24</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -291,16 +264,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_timestamp_handler_8h_source.html">TimestampHandler.h</a> 第 <a class="el" href="_timestamp_handler_8h_source.html#l00029">29</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_timestamp_handler_8cpp_source.html#l00007">getCurrentTimestamp()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_timestamp_handler.html#aa9075afea20ed366391700a3cfac5a2e">getCurrentTimestamp()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/util/<a class="el" href="_timestamp_handler_8h_source.html">TimestampHandler.h</a></li>
-<li>sese/util/<a class="el" href="_timestamp_handler_8cpp_source.html">TimestampHandler.cpp</a></li>
+<li>sese/util/<a class="el" href="_timestamp_handler_8cpp.html">TimestampHandler.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

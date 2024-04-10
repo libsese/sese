@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,8 @@ $(document).ready(function(){initNavTree('classsese_1_1io_1_1_base_stream_reader
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1io_1_1_base_stream_reader-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::io::BaseStreamReader&lt; T &gt; 模板类 参考</div></div>
 </div><!--header-->
@@ -157,12 +160,22 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a585192de8c458baa7acf957e9995e51b" id="r_a585192de8c458baa7acf957e9995e51b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1io_1_1_byte_builder.html#a06c03d0ac53dd2e9df603d6a7ad13d66">ByteBuilder::Ptr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#a585192de8c458baa7acf957e9995e51b">getBuffer</a> () noexcept</td></tr>
 <tr class="memdesc:a585192de8c458baa7acf957e9995e51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">由于 <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html" title="输出流包装类，Windows 下 UTF-8 需要特殊处理">BaseStreamReader</a> 的缓存机制，导致缓存尾部数据可能丢失，该函数返回超前未被读取部分数据长度  <br /></td></tr>
 <tr class="separator:a585192de8c458baa7acf957e9995e51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a6d044cbe0064c34aeb0ee7d2eade65f7" id="r_a6d044cbe0064c34aeb0ee7d2eade65f7"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#a6d044cbe0064c34aeb0ee7d2eade65f7">preRead</a> ()</td></tr>
+<tr class="separator:a6d044cbe0064c34aeb0ee7d2eade65f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:abea22b2c7d67871366818120eb55b95c" id="r_abea22b2c7d67871366818120eb55b95c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#abea22b2c7d67871366818120eb55b95c">sourceStream</a></td></tr>
+<tr class="separator:abea22b2c7d67871366818120eb55b95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48f0c7f04f19e9eeb66f9b6c66a71cc8" id="r_a48f0c7f04f19e9eeb66f9b6c66a71cc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_byte_builder.html#a06c03d0ac53dd2e9df603d6a7ad13d66">ByteBuilder::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#a48f0c7f04f19e9eeb66f9b6c66a71cc8">bufferStream</a></td></tr>
+<tr class="separator:a48f0c7f04f19e9eeb66f9b6c66a71cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T = char&gt;<br />
 class sese::io::BaseStreamReader&lt; T &gt;</div><p>输出流包装类，Windows 下 UTF-8 需要特殊处理 </p>
-
-<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00024">24</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ae3a680d4af31c5b0a08b14ff3afd1e2f" name="ae3a680d4af31c5b0a08b14ff3afd1e2f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae3a680d4af31c5b0a08b14ff3afd1e2f">&#9670;&#160;</a></span>Ptr</h2>
@@ -177,8 +190,6 @@ template&lt;typename T  = char&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00026">26</a> 行定义.</p>
 
 </div>
 </div>
@@ -217,12 +228,6 @@ template&lt;typename T  = char&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00033">33</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                       {</div>
-<div class="line"><span class="lineno">   34</span>        this-&gt;sourceStream = source;</div>
-<div class="line"><span class="lineno">   35</span>        this-&gt;bufferStream = std::make_unique&lt;ByteBuilder&gt;();</div>
-<div class="line"><span class="lineno">   36</span>    }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -256,9 +261,35 @@ template&lt;typename T  = char&gt; </div>
 <dd>
 缓存 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00098">98</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>{ <span class="keywordflow">return</span> this-&gt;bufferStream; }</div>
-</div><!-- fragment -->
+</div>
+</div>
+<a id="a6d044cbe0064c34aeb0ee7d2eade65f7" name="a6d044cbe0064c34aeb0ee7d2eade65f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d044cbe0064c34aeb0ee7d2eade65f7">&#9670;&#160;</a></span>preRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">sese::io::BaseStreamReader</a>&lt; T &gt;::preRead </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a> , 以及 <a class="el" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a">STRING_BUFFER_SIZE_FACTOR</a>.</p>
+
 </div>
 </div>
 <a id="aa8dfba50583a49755df5ee796bffeab2" name="aa8dfba50583a49755df5ee796bffeab2"></a>
@@ -299,17 +330,6 @@ template&lt;typename T  = char&gt; </div>
 <p><a class="el" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">FileStream</a> 读至文件尾返回值为 0 源已被读完</p>
 <p>嘿嘿，读取到一个字符</p>
 
-<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00043">43</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>                     {</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">if</span> (bufferStream-&gt;read(&amp;ch, <span class="keyword">sizeof</span>(T)) == 0) {</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keyword">auto</span> len = preRead();</div>
-<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (0 == len) {</div>
-<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   51</span>            }</div>
-<div class="line"><span class="lineno">   52</span>        }</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   55</span>    }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a78020ced8fe9ed303500aa117287775b" name="a78020ced8fe9ed303500aa117287775b"></a>
@@ -341,34 +361,56 @@ template&lt;typename T  = char&gt; </div>
 <dl class="section return"><dt>返回</dt><dd>返回读取的字符串，长度为零测读取完成 </dd></dl>
 <p>有东西可读</p>
 
-<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00061">61</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>                                  {</div>
-<div class="line"><span class="lineno">   62</span>        std::basic_stringstream&lt;T&gt; string;</div>
-<div class="line"><span class="lineno">   63</span>        <span class="comment">// auto canReadSize = bufferStream-&gt;getLength() - bufferStream-&gt;getCurrentReadPos();</span></div>
-<div class="line"><span class="lineno">   64</span>        <span class="keyword">auto</span> can_read_size = bufferStream-&gt;getReadableSize();</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">if</span> (can_read_size == 0) {</div>
-<div class="line"><span class="lineno">   66</span>            can_read_size += preRead();</div>
-<div class="line"><span class="lineno">   67</span>        }</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (can_read_size &gt; 0) {</div>
-<div class="line"><span class="lineno">   71</span>            T ch;</div>
-<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">while</span> (<a class="code hl_function" href="classsese_1_1io_1_1_base_stream_reader.html#aa8dfba50583a49755df5ee796bffeab2" title="读取一个字符">read</a>(ch)) {</div>
-<div class="line"><span class="lineno">   73</span>                <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\r&#39;</span> || ch == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><span class="lineno">   74</span>                    <span class="keyword">auto</span> empty = <span class="keywordtype">string</span>.rdbuf()-&gt;in_avail() == 0;</div>
-<div class="line"><span class="lineno">   75</span>                    <span class="keywordflow">if</span> (!empty) {</div>
-<div class="line"><span class="lineno">   76</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   77</span>                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   78</span>                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   79</span>                    }</div>
-<div class="line"><span class="lineno">   80</span>                }</div>
-<div class="line"><span class="lineno">   81</span>                <span class="keywordtype">string</span> &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">   82</span>            }</div>
-<div class="line"><span class="lineno">   83</span>        }</div>
-<div class="line"><span class="lineno">   84</span>        bufferStream-&gt;freeCapacity();</div>
-<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">return</span> <span class="keywordtype">string</span>.str();</div>
-<div class="line"><span class="lineno">   86</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a48f0c7f04f19e9eeb66f9b6c66a71cc8" name="a48f0c7f04f19e9eeb66f9b6c66a71cc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48f0c7f04f19e9eeb66f9b6c66a71cc8">&#9670;&#160;</a></span>bufferStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_byte_builder.html#a06c03d0ac53dd2e9df603d6a7ad13d66">ByteBuilder::Ptr</a> <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">sese::io::BaseStreamReader</a>&lt; T &gt;::bufferStream</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abea22b2c7d67871366818120eb55b95c" name="abea22b2c7d67871366818120eb55b95c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abea22b2c7d67871366818120eb55b95c">&#9670;&#160;</a></span>sourceStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">sese::io::BaseStreamReader</a>&lt; T &gt;::sourceStream</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

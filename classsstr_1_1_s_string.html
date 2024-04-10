@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -288,8 +289,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>字符串 </p>
-
-<p class="definition">在文件 <a class="el" href="_s_string_8h_source.html">SString.h</a> 第 <a class="el" href="_s_string_8h_source.html#l00217">217</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a4cfd2093a225495aa123a61979c4e121" name="a4cfd2093a225495aa123a61979c4e121"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4cfd2093a225495aa123a61979c4e121">&#9670;&#160;</a></span>SString() <span class="overload">[1/4]</span></h2>
@@ -314,9 +313,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00245">245</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  245</span>: <a class="code hl_friend" href="classsstr_1_1_s_string.html#a382b56f56d7d9dd8041d71e1b81184ce">SStringView</a>() {}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a6628b4c701dd935d7c4e06cb5742f1a6" name="a6628b4c701dd935d7c4e06cb5742f1a6"></a>
@@ -345,16 +341,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00247">247</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  247</span>                                             : <a class="code hl_friend" href="classsstr_1_1_s_string.html#a382b56f56d7d9dd8041d71e1b81184ce">SStringView</a>() {</div>
-<div class="line"><span class="lineno">  248</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> = <a class="code hl_function" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a>;</div>
-<div class="line"><span class="lineno">  249</span>    <a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = (<a class="code hl_function" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a> / <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> + 1) * <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>;</div>
-<div class="line"><span class="lineno">  250</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(malloc(<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>));</div>
-<div class="line"><span class="lineno">  251</span>    memcpy(<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>, str, <a class="code hl_function" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a>);</div>
-<div class="line"><span class="lineno">  252</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>[<a class="code hl_function" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a>] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  253</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00254">_capacity</a>, <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a>, <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp_source.html#l00010">BLOCK_SIZE</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00237">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size()</a>.</p>
 
 </div>
 </div>
@@ -382,15 +369,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00255">255</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  255</span>                                                     : <a class="code hl_friend" href="classsstr_1_1_s_string.html#a382b56f56d7d9dd8041d71e1b81184ce">SStringView</a>(s_string) {</div>
-<div class="line"><span class="lineno">  256</span>    <a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = s_string.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>;</div>
-<div class="line"><span class="lineno">  257</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> = s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>;</div>
-<div class="line"><span class="lineno">  258</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(malloc(<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>));</div>
-<div class="line"><span class="lineno">  259</span>    memcpy(<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>, s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>, <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> + 1);</div>
-<div class="line"><span class="lineno">  260</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>.</p>
 
 </div>
 </div>
@@ -418,18 +397,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00262">262</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  262</span>                                                : <a class="code hl_friend" href="classsstr_1_1_s_string.html#a382b56f56d7d9dd8041d71e1b81184ce">SStringView</a>() {</div>
-<div class="line"><span class="lineno">  263</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>;</div>
-<div class="line"><span class="lineno">  264</span>    <a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = s_string.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>;</div>
-<div class="line"><span class="lineno">  265</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> = s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>;</div>
-<div class="line"><span class="lineno">  266</span> </div>
-<div class="line"><span class="lineno">  267</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  268</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = 0;</div>
-<div class="line"><span class="lineno">  269</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> = 0;</div>
-<div class="line"><span class="lineno">  270</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>.</p>
 
 </div>
 </div>
@@ -456,15 +424,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00230">230</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  230</span>                               {</div>
-<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>) {</div>
-<div class="line"><span class="lineno">  232</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>);</div>
-<div class="line"><span class="lineno">  233</span>        <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  234</span>    }</div>
-<div class="line"><span class="lineno">  235</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>.</p>
 
 </div>
 </div>
@@ -485,12 +445,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取缓存区容量 </p><dl class="section return"><dt>返回</dt><dd>缓冲区容量 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00241">241</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  241</span>                          {</div>
-<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>;</div>
-<div class="line"><span class="lineno">  243</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00254">_capacity</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>.</p>
 
 </div>
 </div>
@@ -512,11 +467,6 @@ Protected 属性</h2></td></tr>
 <p>获取 data 指针 </p>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000008">弃用:</a></b></dt><dd>通常不应该使用该函数 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00226">226</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  226</span>                        {</div>
-<div class="line"><span class="lineno">  227</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>;</div>
-<div class="line"><span class="lineno">  228</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a0c227110c46d97e06b8e5d578cfc757f" name="a0c227110c46d97e06b8e5d578cfc757f"></a>
@@ -553,27 +503,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00291">291</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  291</span>                                                   {</div>
-<div class="line"><span class="lineno">  292</span>    <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> string;</div>
-<div class="line"><span class="lineno">  293</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; <a class="code hl_function" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a>; i++) {</div>
-<div class="line"><span class="lineno">  294</span>        <span class="keywordtype">string</span>.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> += <a class="code hl_function" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">getUTF8SizeFromUnicodeChar</a>(ch[i]);</div>
-<div class="line"><span class="lineno">  295</span>    }</div>
-<div class="line"><span class="lineno">  296</span>    <span class="keywordtype">string</span>._capacity = (<span class="keywordtype">string</span>._size / <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> + 1) * <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>;</div>
-<div class="line"><span class="lineno">  297</span>    <span class="keywordtype">string</span>._data = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(malloc(<span class="keywordtype">string</span>.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>));</div>
-<div class="line"><span class="lineno">  298</span> </div>
-<div class="line"><span class="lineno">  299</span>    <span class="keyword">auto</span> index = 0;</div>
-<div class="line"><span class="lineno">  300</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; <a class="code hl_function" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size</a>; i++) {</div>
-<div class="line"><span class="lineno">  301</span>        <span class="keyword">auto</span> n = <a class="code hl_function" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">getUTF8SizeFromUnicodeChar</a>(ch[i]);</div>
-<div class="line"><span class="lineno">  302</span>        <a class="code hl_function" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String</a>(<span class="keywordtype">string</span>.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> + index, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(ch[i]), n);</div>
-<div class="line"><span class="lineno">  303</span>        index += n;</div>
-<div class="line"><span class="lineno">  304</span>    }</div>
-<div class="line"><span class="lineno">  305</span> </div>
-<div class="line"><span class="lineno">  306</span>    <span class="keywordtype">string</span>._data[<span class="keywordtype">string</span>._size] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  307</span>    <span class="keywordflow">return</span> string;</div>
-<div class="line"><span class="lineno">  308</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00254">_capacity</a>, <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a>, <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp_source.html#l00010">BLOCK_SIZE</a>, <a class="el" href="_s_string_8cpp_source.html#l00056">sstr::getUTF8SizeFromUnicodeChar()</a>, <a class="el" href="_s_string_8cpp_source.html#l00099">insertUnicodeChar2UTF8String()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00237">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a>, <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#a13effdf2279053e156e195b3f16f00a3">size()</a>.</p>
 
 </div>
 </div>
@@ -601,28 +531,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00310">310</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  310</span>                                                   {</div>
-<div class="line"><span class="lineno">  311</span>    <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> string;</div>
-<div class="line"><span class="lineno">  312</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i: chars) {</div>
-<div class="line"><span class="lineno">  313</span>        <span class="comment">// 暂时不处理损坏的字符</span></div>
-<div class="line"><span class="lineno">  314</span>        <span class="keywordtype">string</span>.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> += <a class="code hl_function" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">getUTF8SizeFromUnicodeChar</a>(i);</div>
-<div class="line"><span class="lineno">  315</span>    }</div>
-<div class="line"><span class="lineno">  316</span>    <span class="keywordtype">string</span>._capacity = (<span class="keywordtype">string</span>._size / <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> + 1) * <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>;</div>
-<div class="line"><span class="lineno">  317</span>    <span class="keywordtype">string</span>._data = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(malloc(<span class="keywordtype">string</span>.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>));</div>
-<div class="line"><span class="lineno">  318</span> </div>
-<div class="line"><span class="lineno">  319</span>    <span class="keyword">auto</span> index = 0;</div>
-<div class="line"><span class="lineno">  320</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i: chars) {</div>
-<div class="line"><span class="lineno">  321</span>        <span class="keyword">auto</span> n = <a class="code hl_function" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">getUTF8SizeFromUnicodeChar</a>(i);</div>
-<div class="line"><span class="lineno">  322</span>        <a class="code hl_function" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String</a>(<span class="keywordtype">string</span>.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> + index, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(i), n);</div>
-<div class="line"><span class="lineno">  323</span>        index += n;</div>
-<div class="line"><span class="lineno">  324</span>    }</div>
-<div class="line"><span class="lineno">  325</span> </div>
-<div class="line"><span class="lineno">  326</span>    <span class="keywordtype">string</span>._data[<span class="keywordtype">string</span>._size] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  327</span>    <span class="keywordflow">return</span> string;</div>
-<div class="line"><span class="lineno">  328</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00254">_capacity</a>, <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a>, <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp_source.html#l00010">BLOCK_SIZE</a>, <a class="el" href="_s_string_8cpp_source.html#l00056">sstr::getUTF8SizeFromUnicodeChar()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00099">insertUnicodeChar2UTF8String()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a> , 以及 <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a>.</p>
 
 </div>
 </div>
@@ -650,41 +559,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00330">330</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  330</span>                                              {</div>
-<div class="line"><span class="lineno">  331</span>    <span class="comment">// on dos-like, wchar_t use 2 bytes</span></div>
-<div class="line"><span class="lineno">  332</span>    <span class="comment">// as utf-16le</span></div>
-<div class="line"><span class="lineno">  333</span>    <span class="comment">// on *nix, wchar_t use 4 bytes by default</span></div>
-<div class="line"><span class="lineno">  334</span>    <span class="comment">// as utf-32le</span></div>
-<div class="line"><span class="lineno">  335</span>    <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> s_string;</div>
-<div class="line"><span class="lineno">  336</span>    <span class="keyword">const</span> <span class="keywordtype">wchar_t</span> *p = str;</div>
-<div class="line"><span class="lineno">  337</span>    <span class="keywordflow">while</span> (L<span class="charliteral">&#39;\0&#39;</span> != *p) {</div>
-<div class="line"><span class="lineno">  338</span>        s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> += <a class="code hl_function" href="_s_string_8cpp.html#a9427b6bc7a0fd1c817d87d4d359fe1e4">getUTF8SizeFromWChat</a>(*p);</div>
-<div class="line"><span class="lineno">  339</span>        p++;</div>
-<div class="line"><span class="lineno">  340</span>    }</div>
-<div class="line"><span class="lineno">  341</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = (s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> / <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> + 1) * <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>;</div>
-<div class="line"><span class="lineno">  342</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(malloc(s_string.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>));</div>
-<div class="line"><span class="lineno">  343</span>    <span class="comment">// 无法转换部分字符串</span></div>
-<div class="line"><span class="lineno">  344</span>    <span class="comment">// wcstombs(sString._data, str, sString._size);</span></div>
-<div class="line"><span class="lineno">  345</span> </div>
-<div class="line"><span class="lineno">  346</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><span class="lineno">  347</span>    WideCharToMultiByte(CP_UTF8, 0, str, -1, s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>, s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  348</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">  349</span>    p = str;</div>
-<div class="line"><span class="lineno">  350</span>    <span class="keyword">auto</span> index = 0;</div>
-<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">while</span> (L<span class="charliteral">&#39;\0&#39;</span> != *p) {</div>
-<div class="line"><span class="lineno">  352</span>        <span class="keyword">auto</span> n = <a class="code hl_function" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">getUTF8SizeFromUnicodeChar</a>((<a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a>) *p);</div>
-<div class="line"><span class="lineno">  353</span>        <a class="code hl_function" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String</a>(s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> + index, (uint32_t) *p, n);</div>
-<div class="line"><span class="lineno">  354</span>        index += n;</div>
-<div class="line"><span class="lineno">  355</span>        p++;</div>
-<div class="line"><span class="lineno">  356</span>    }</div>
-<div class="line"><span class="lineno">  357</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  358</span> </div>
-<div class="line"><span class="lineno">  359</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>[s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  360</span>    <span class="keywordflow">return</span> s_string;</div>
-<div class="line"><span class="lineno">  361</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00254">_capacity</a>, <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a>, <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp_source.html#l00010">BLOCK_SIZE</a>, <a class="el" href="_s_string_8cpp_source.html#l00056">sstr::getUTF8SizeFromUnicodeChar()</a>, <a class="el" href="_s_string_8cpp_source.html#l00075">getUTF8SizeFromWChat()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00099">insertUnicodeChar2UTF8String()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="namespacesstr.html#a4b0cf9515a690f4c199e218d9d28d7d9">sstr::getUTF8SizeFromUnicodeChar()</a>, <a class="el" href="_s_string_8cpp.html#a9427b6bc7a0fd1c817d87d4d359fe1e4">getUTF8SizeFromWChat()</a> , 以及 <a class="el" href="_s_string_8cpp.html#ae18a024cdcc0c9754c7abbfe9fb7cf1b">insertUnicodeChar2UTF8String()</a>.</p>
 
 </div>
 </div>
@@ -712,21 +587,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00280">280</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  280</span>                                         {</div>
-<div class="line"><span class="lineno">  281</span>    <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> s_string;</div>
-<div class="line"><span class="lineno">  282</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> = <a class="code hl_function" href="namespacesstr.html#a7b2563ea10e30c6ebc4d4e071ebd7c2d">getByteLengthFromUTF8String</a>(str);</div>
-<div class="line"><span class="lineno">  283</span>    <span class="keyword">auto</span> n = s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> / <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> + 1;</div>
-<div class="line"><span class="lineno">  284</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = n * <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>;</div>
-<div class="line"><span class="lineno">  285</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(malloc(n * s_string.<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>));</div>
-<div class="line"><span class="lineno">  286</span>    memcpy(s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>, str, s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>);</div>
-<div class="line"><span class="lineno">  287</span>    s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>[s_string.<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  288</span>    <span class="keywordflow">return</span> s_string;</div>
-<div class="line"><span class="lineno">  289</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00254">_capacity</a>, <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a>, <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp_source.html#l00010">BLOCK_SIZE</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00021">sstr::getByteLengthFromUTF8String()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> , 以及 <a class="el" href="namespacesstr.html#a7b2563ea10e30c6ebc4d4e071ebd7c2d">sstr::getByteLengthFromUTF8String()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00581">sstr::SStringView::split()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#adcf5893628660a32df09d75d7d3cbbb9">sstr::SStringView::split()</a>.</p>
 
 </div>
 </div>
@@ -746,24 +609,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00363">363</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  363</span>                                        {</div>
-<div class="line"><span class="lineno">  364</span>    <span class="keyword">auto</span> <a class="code hl_function" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">len</a> = strlen(str);</div>
-<div class="line"><span class="lineno">  365</span>    <span class="keyword">auto</span> new_size = <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> + <a class="code hl_function" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">len</a>;</div>
-<div class="line"><span class="lineno">  366</span>    <span class="keyword">auto</span> n = new_size / <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> + 1;</div>
-<div class="line"><span class="lineno">  367</span>    <a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = n * <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>;</div>
-<div class="line"><span class="lineno">  368</span> </div>
-<div class="line"><span class="lineno">  369</span>    <span class="keyword">auto</span> new_data = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(malloc(<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>));</div>
-<div class="line"><span class="lineno">  370</span>    memcpy(new_data + 0, <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>, <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>);</div>
-<div class="line"><span class="lineno">  371</span>    memcpy(new_data + <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>, str, <a class="code hl_function" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">len</a>);</div>
-<div class="line"><span class="lineno">  372</span>    new_data[new_size] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  373</span>    <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>);</div>
-<div class="line"><span class="lineno">  374</span> </div>
-<div class="line"><span class="lineno">  375</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = new_data;</div>
-<div class="line"><span class="lineno">  376</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> = new_size;</div>
-<div class="line"><span class="lineno">  377</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00254">_capacity</a>, <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a>, <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp_source.html#l00010">BLOCK_SIZE</a>, <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00459">sstr::SStringView::len()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>.</p>
 
 </div>
 </div>
@@ -783,23 +629,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00379">379</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  379</span>                                                   {</div>
-<div class="line"><span class="lineno">  380</span>    <span class="keyword">auto</span> new_size = <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> + str.<a class="code hl_function" href="classsstr_1_1_s_string_view.html#ae4c7d6597ab71acc037a4f1b8bcb29ac">size</a>();</div>
-<div class="line"><span class="lineno">  381</span>    <span class="keyword">auto</span> n = new_size / <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a> + 1;</div>
-<div class="line"><span class="lineno">  382</span>    <a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a> = n * <a class="code hl_define" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>;</div>
-<div class="line"><span class="lineno">  383</span> </div>
-<div class="line"><span class="lineno">  384</span>    <span class="keyword">auto</span> new_data = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(malloc(<a class="code hl_variable" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>));</div>
-<div class="line"><span class="lineno">  385</span>    memcpy(new_data + 0, <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>, <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>);</div>
-<div class="line"><span class="lineno">  386</span>    memcpy(new_data + <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>, str.<a class="code hl_function" href="classsstr_1_1_s_string_view.html#a5b521606b27523db565edc87e8f7e24f">data</a>(), str.<a class="code hl_function" href="classsstr_1_1_s_string_view.html#ae4c7d6597ab71acc037a4f1b8bcb29ac">size</a>());</div>
-<div class="line"><span class="lineno">  387</span>    new_data[new_size] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  388</span>    <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>);</div>
-<div class="line"><span class="lineno">  389</span> </div>
-<div class="line"><span class="lineno">  390</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a> = new_data;</div>
-<div class="line"><span class="lineno">  391</span>    <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a> = new_size;</div>
-<div class="line"><span class="lineno">  392</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00254">_capacity</a>, <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a>, <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp_source.html#l00010">BLOCK_SIZE</a>, <a class="el" href="_s_string_8cpp_source.html#l00472">sstr::SStringView::data()</a>, <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00455">sstr::SStringView::size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string.html#a7c5689dba4fc067252bf61ffa560d73c">_capacity</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>, <a class="el" href="_s_string_8cpp.html#ad51ded0bbd705f02f73fc60c0b721ced">BLOCK_SIZE</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a5b521606b27523db565edc87e8f7e24f">sstr::SStringView::data()</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#ae4c7d6597ab71acc037a4f1b8bcb29ac">sstr::SStringView::size()</a>.</p>
 
 </div>
 </div>
@@ -829,14 +659,9 @@ Protected 属性</h2></td></tr>
 
 <p>重载 <a class="el" href="classsstr_1_1_s_string_view.html#ae4c7d6597ab71acc037a4f1b8bcb29ac">sstr::SStringView</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00237">237</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  237</span>                           {</div>
-<div class="line"><span class="lineno">  238</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">_size</a>;</div>
-<div class="line"><span class="lineno">  239</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00213">sstr::SStringView::_size</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#ad33ed2f9acc5a4810346839bcde4f599">sstr::SStringView::_size</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00291">fromSChars()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00247">SString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string.html#a0c227110c46d97e06b8e5d578cfc757f">fromSChars()</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#a6628b4c701dd935d7c4e06cb5742f1a6">SString()</a>.</p>
 
 </div>
 </div>
@@ -857,14 +682,9 @@ Protected 属性</h2></td></tr>
 
 <p>将字符串转换为全小写的形式 </p>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00272">272</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  272</span>                      {</div>
-<div class="line"><span class="lineno">  273</span>    <a class="code hl_function" href="classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539" title="将字符串转换为全小写的形式">::toLower</a>(<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>);</div>
-<div class="line"><span class="lineno">  274</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00272">toLower()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539">toLower()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00272">toLower()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string.html#abd691e8d7f10cee850ebd2c682a88539">toLower()</a>.</p>
 
 </div>
 </div>
@@ -885,14 +705,9 @@ Protected 属性</h2></td></tr>
 
 <p>将字符串转换为全大写的形式 </p>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00276">276</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  276</span>                      {</div>
-<div class="line"><span class="lineno">  277</span>    <a class="code hl_function" href="classsstr_1_1_s_string.html#a0c3aa5332dc6802cdae68ea376338a6f" title="将字符串转换为全大写的形式">::toUpper</a>(<a class="code hl_variable" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">_data</a>);</div>
-<div class="line"><span class="lineno">  278</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8h_source.html#l00212">sstr::SStringView::_data</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00276">toUpper()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#a4be022e2ea5bbc98e34fcd29a1f6aff9">sstr::SStringView::_data</a> , 以及 <a class="el" href="classsstr_1_1_s_string.html#a0c3aa5332dc6802cdae68ea376338a6f">toUpper()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00276">toUpper()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string.html#a0c3aa5332dc6802cdae68ea376338a6f">toUpper()</a>.</p>
 
 </div>
 </div>
@@ -917,8 +732,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8h_source.html">SString.h</a> 第 <a class="el" href="_s_string_8h_source.html#l00219">219</a> 行定义.</p>
-
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -942,15 +755,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_string_8h_source.html">SString.h</a> 第 <a class="el" href="_s_string_8h_source.html#l00254">254</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00556">sstr::SStringView::append()</a>, <a class="el" href="_s_string_8cpp_source.html#l00569">sstr::SStringView::append()</a>, <a class="el" href="_s_string_8cpp_source.html#l00241">cap()</a>, <a class="el" href="_s_string_8cpp_source.html#l00291">fromSChars()</a>, <a class="el" href="_s_string_8cpp_source.html#l00310">fromSChars()</a>, <a class="el" href="_s_string_8cpp_source.html#l00330">fromUCS2LE()</a>, <a class="el" href="_s_string_8cpp_source.html#l00280">fromUTF8()</a>, <a class="el" href="_s_string_8cpp_source.html#l00363">operator+=()</a>, <a class="el" href="_s_string_8cpp_source.html#l00379">operator+=()</a>, <a class="el" href="_s_string_8cpp_source.html#l00247">SString()</a>, <a class="el" href="_s_string_8cpp_source.html#l00607">sstr::SStringView::substring()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00620">sstr::SStringView::substring()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#a7080a92af8d8ad1a48f15aaddfe70880">sstr::SStringView::append()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#affab8fc705cbe6653bbbc0358b08c7bc">sstr::SStringView::append()</a>, <a class="el" href="classsstr_1_1_s_string.html#a4c99de58091476ca74d7628bf52b9fb4">cap()</a>, <a class="el" href="classsstr_1_1_s_string.html#a0c227110c46d97e06b8e5d578cfc757f">fromSChars()</a>, <a class="el" href="classsstr_1_1_s_string.html#a2a111f6208164e6a0104ec897707d2de">fromSChars()</a>, <a class="el" href="classsstr_1_1_s_string.html#abaa9c53aa5e179e22cf692366e339dbc">fromUCS2LE()</a>, <a class="el" href="classsstr_1_1_s_string.html#a665e3d2b50a3be6d87cdac902d4a99e1">fromUTF8()</a>, <a class="el" href="classsstr_1_1_s_string.html#a1840682413835a6700cd062d2c76f139">operator+=()</a>, <a class="el" href="classsstr_1_1_s_string.html#aab76e3388ee0d07522eb94b1248baa14">operator+=()</a>, <a class="el" href="classsstr_1_1_s_string.html#a6628b4c701dd935d7c4e06cb5742f1a6">SString()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#af0b2fbdd659342ea63c9a3f7d00873be">sstr::SStringView::substring()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#ab84e992d54f0199ce23c0bc54f200617">sstr::SStringView::substring()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/text/<a class="el" href="_s_string_8h_source.html">SString.h</a></li>
-<li>sese/text/<a class="el" href="_s_string_8cpp_source.html">SString.cpp</a></li>
+<li>sese/text/<a class="el" href="_s_string_8cpp.html">SString.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

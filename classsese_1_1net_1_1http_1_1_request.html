@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_request.h
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1net_1_1http_1_1_request-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::net::http::Request类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -212,6 +214,11 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a5ee2a6d0e0c28ca059d391580db8caac inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a5ee2a6d0e0c28ca059d391580db8caac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a5ee2a6d0e0c28ca059d391580db8caac">setCookie</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie)</td></tr>
 <tr class="separator:a5ee2a6d0e0c28ca059d391580db8caac inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:af63d43bfc0f6ede551e642ebdd012ae4" id="r_af63d43bfc0f6ede551e642ebdd012ae4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html#af63d43bfc0f6ede551e642ebdd012ae4">body</a> {8192}</td></tr>
+<tr class="separator:af63d43bfc0f6ede551e642ebdd012ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pro_attribs_classsese_1_1net_1_1http_1_1_request_header"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classsese_1_1net_1_1http_1_1_request_header')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html">sese::net::http::RequestHeader</a></td></tr>
@@ -229,8 +236,6 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>HTTP 请求类 </p>
-
-<p class="definition">在文件 <a class="el" href="_request_8h_source.html">Request.h</a> 第 <a class="el" href="_request_8h_source.html#l00017">17</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ac95123a2170ff626c48494672303eadd" name="ac95123a2170ff626c48494672303eadd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac95123a2170ff626c48494672303eadd">&#9670;&#160;</a></span>Ptr</h2>
@@ -243,8 +248,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_request_8h_source.html">Request.h</a> 第 <a class="el" href="_request_8h_source.html#l00019">19</a> 行定义.</p>
 
 </div>
 </div>
@@ -272,9 +275,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_request_8h_source.html">Request.h</a> 第 <a class="el" href="_request_8h_source.html#l00021">21</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>{ <span class="keywordflow">return</span> body; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_request.html#af63d43bfc0f6ede551e642ebdd012ae4">body</a>.</p>
+
 </div>
 </div>
 <a id="a0177e9e7fd523e7031661443ea8c111e" name="a0177e9e7fd523e7031661443ea8c111e"></a>
@@ -301,21 +303,36 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_request_8cpp_source.html">Request.cpp</a> 第 <a class="el" href="_request_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                                  {</div>
-<div class="line"><span class="lineno">    6</span>    std::swap(<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#a46282fbdcd8404e769fa061cd4e84eca">type</a>, another.type);</div>
-<div class="line"><span class="lineno">    7</span>    std::swap(<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#aa355c1d4af17334052ec5438c5d1ffbb">url</a>, another.url);</div>
-<div class="line"><span class="lineno">    8</span>    std::swap(<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#a48534bb1c5f858019585c9d177443e83">version</a>, another.version);</div>
-<div class="line"><span class="lineno">    9</span>    std::swap(<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_header.html#a3772da84907cc494bbebdbf846bb8684">cookies</a>, another.cookies);</div>
-<div class="line"><span class="lineno">   10</span>    std::swap(<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_header.html#a4e14f8c962a58da8bc87d40ee4e266c1">headers</a>, another.headers);</div>
-<div class="line"><span class="lineno">   11</span>    body.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9">swap</a>(another.body);</div>
-<div class="line"><span class="lineno">   12</span>}</div>
-</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="af63d43bfc0f6ede551e642ebdd012ae4" name="af63d43bfc0f6ede551e642ebdd012ae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af63d43bfc0f6ede551e642ebdd012ae4">&#9670;&#160;</a></span>body</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> sese::net::http::Request::body {8192}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_request.html#a98d131f2682ce0afec136a62838e883b">getBody()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/net/http/<a class="el" href="_request_8h_source.html">Request.h</a></li>
-<li>sese/net/http/<a class="el" href="_request_8cpp_source.html">Request.cpp</a></li>
+<li>sese/net/http/<a class="el" href="_request_8cpp.html">Request.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

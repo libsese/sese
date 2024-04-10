@@ -7,7 +7,7 @@ var searchData=
   ['decompressor_4',['Decompressor',['../classsese_1_1_decompressor.html',1,'sese']]],
   ['dict_5',['Dict',['../classsese_1_1_value_1_1_dict.html',1,'sese::Value']]],
   ['dnsclient_6',['DnsClient',['../classsese_1_1net_1_1dns_1_1_dns_client.html',1,'sese::net::dns']]],
-  ['dnsconfig_7',['DNSConfig',['../structsese_1_1net_1_1dns_1_1_d_n_s_config.html',1,'sese::net::dns']]],
+  ['dnsconfig_7',['DnsConfig',['../structsese_1_1net_1_1dns_1_1_dns_config.html',1,'sese::net::dns']]],
   ['dnsserver_8',['DnsServer',['../classsese_1_1net_1_1dns_1_1_dns_server.html',1,'sese::net::dns']]],
   ['dnssession_9',['DnsSession',['../classsese_1_1net_1_1dns_1_1_dns_session.html',1,'sese::net::dns']]],
   ['dnsutil_10',['DnsUtil',['../classsese_1_1net_1_1dns_1_1_dns_util.html',1,'sese::net::dns']]],

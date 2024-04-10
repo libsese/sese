@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -127,6 +128,7 @@ $(document).ready(function(){initNavTree('classsese_1_1io_1_1_fixed_buffer.html'
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1io_1_1_fixed_buffer-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::io::FixedBuffer类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -199,6 +201,11 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream" id="r_aeb71ca5a92ba6b49caae5489458f5fd1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html#aeb71ca5a92ba6b49caae5489458f5fd1">~PeekableStream</a> ()=default</td></tr>
 <tr class="separator:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:ab0d111f533921564881e4c5e6e8f9312" id="r_ab0d111f533921564881e4c5e6e8f9312"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_fixed_buffer.html#ab0d111f533921564881e4c5e6e8f9312">mutex</a></td></tr>
+<tr class="separator:ab0d111f533921564881e4c5e6e8f9312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pub_types_classsese_1_1io_1_1_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_stream.html">sese::io::Stream</a></td></tr>
@@ -225,8 +232,6 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>线程安全的固定大小缓存 </p>
-
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8h_source.html">FixedBuffer.h</a> 第 <a class="el" href="_fixed_buffer_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ad90905cefa19a3c9b7300ad03591b884" name="ad90905cefa19a3c9b7300ad03591b884"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad90905cefa19a3c9b7300ad03591b884">&#9670;&#160;</a></span>FixedBuffer()</h2>
@@ -252,9 +257,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a> 第 <a class="el" href="_fixed_buffer_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>: <a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a2d82635a370aae705b897a2b03fe2a65">AbstractFixedBuffer</a>(<a class="code hl_variable" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a67a5d329d91e1369b54eec20bba94fce">size</a>) {}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -281,13 +283,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a> 第 <a class="el" href="_fixed_buffer_8cpp_source.html#l00033">33</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                   {</div>
-<div class="line"><span class="lineno">   34</span>    Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#af3cca555dc8d055f8df8dfe7dd9a1239">AbstractFixedBuffer::getReadableSize</a>();</div>
-<div class="line"><span class="lineno">   36</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_fixed_buffer_8h_source.html#l00035">sese::io::AbstractFixedBuffer::getReadableSize()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#af3cca555dc8d055f8df8dfe7dd9a1239">sese::io::AbstractFixedBuffer::getReadableSize()</a>.</p>
 
 </div>
 </div>
@@ -314,13 +310,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a> 第 <a class="el" href="_fixed_buffer_8cpp_source.html#l00038">38</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>                                                    {</div>
-<div class="line"><span class="lineno">   39</span>    Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a8ec9a4c7d829a7780dc65b95187d4b64">AbstractFixedBuffer::getWriteableSize</a>();</div>
-<div class="line"><span class="lineno">   41</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_fixed_buffer_8h_source.html#l00036">sese::io::AbstractFixedBuffer::getWriteableSize()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a8ec9a4c7d829a7780dc65b95187d4b64">sese::io::AbstractFixedBuffer::getWriteableSize()</a>.</p>
 
 </div>
 </div>
@@ -368,13 +358,7 @@ Public 成员函数</h2></td></tr>
 
 <p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#aa202056b5f571e8540a713125c2b28b3">sese::io::AbstractFixedBuffer</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a> 第 <a class="el" href="_fixed_buffer_8cpp_source.html#l00018">18</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                           {</div>
-<div class="line"><span class="lineno">   19</span>    Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#aa202056b5f571e8540a713125c2b28b3">AbstractFixedBuffer::peek</a>(<a class="code hl_variable" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a4e61e1c9a6d6de0afd569185e406f773">buffer</a>, length);</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00060">sese::io::AbstractFixedBuffer::peek()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#aa202056b5f571e8540a713125c2b28b3">sese::io::AbstractFixedBuffer::peek()</a>.</p>
 
 </div>
 </div>
@@ -414,13 +398,7 @@ Public 成员函数</h2></td></tr>
 
 <p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#aac0a038c6397343049837a641242ae94">sese::io::AbstractFixedBuffer</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a> 第 <a class="el" href="_fixed_buffer_8cpp_source.html#l00008">8</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    8</span>                                                           {</div>
-<div class="line"><span class="lineno">    9</span>    Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#aac0a038c6397343049837a641242ae94">AbstractFixedBuffer::read</a>(<a class="code hl_variable" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a4e61e1c9a6d6de0afd569185e406f773">buffer</a>, length);</div>
-<div class="line"><span class="lineno">   11</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_fixed_buffer_8h_source.html#l00042">sese::io::AbstractFixedBuffer::buffer</a> , 以及 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00034">sese::io::AbstractFixedBuffer::read()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a4e61e1c9a6d6de0afd569185e406f773">sese::io::AbstractFixedBuffer::buffer</a>, <a class="el" href="classsese_1_1io_1_1_fixed_buffer.html#ab0d111f533921564881e4c5e6e8f9312">mutex</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#aac0a038c6397343049837a641242ae94">sese::io::AbstractFixedBuffer::read()</a>.</p>
 
 </div>
 </div>
@@ -449,13 +427,7 @@ Public 成员函数</h2></td></tr>
 
 <p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a9a73c70fa89f16d0487f58557816eaa9">sese::io::AbstractFixedBuffer</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a> 第 <a class="el" href="_fixed_buffer_8cpp_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>                                       {</div>
-<div class="line"><span class="lineno">   29</span>    Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   30</span>    <a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a9a73c70fa89f16d0487f58557816eaa9">AbstractFixedBuffer::reset</a>();</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00073">sese::io::AbstractFixedBuffer::reset()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a9a73c70fa89f16d0487f58557816eaa9">sese::io::AbstractFixedBuffer::reset()</a>.</p>
 
 </div>
 </div>
@@ -492,13 +464,7 @@ Public 成员函数</h2></td></tr>
 
 <p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5d31667bbe8bc28d2336ae1c39a05a15">sese::io::AbstractFixedBuffer</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a> 第 <a class="el" href="_fixed_buffer_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                              {</div>
-<div class="line"><span class="lineno">   24</span>    Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5d31667bbe8bc28d2336ae1c39a05a15">AbstractFixedBuffer::trunc</a>(length);</div>
-<div class="line"><span class="lineno">   26</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00077">sese::io::AbstractFixedBuffer::trunc()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5d31667bbe8bc28d2336ae1c39a05a15">sese::io::AbstractFixedBuffer::trunc()</a>.</p>
 
 </div>
 </div>
@@ -538,19 +504,38 @@ Public 成员函数</h2></td></tr>
 
 <p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">sese::io::AbstractFixedBuffer</a> .</p>
 
-<p class="definition">在文件 <a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a> 第 <a class="el" href="_fixed_buffer_8cpp_source.html#l00013">13</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                                  {</div>
-<div class="line"><span class="lineno">   14</span>    Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">AbstractFixedBuffer::write</a>(<a class="code hl_variable" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a4e61e1c9a6d6de0afd569185e406f773">buffer</a>, length);</div>
-<div class="line"><span class="lineno">   16</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00047">sese::io::AbstractFixedBuffer::write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5ce5e1cdb5a63c0126f9f4b708763563">sese::io::AbstractFixedBuffer::write()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ab0d111f533921564881e4c5e6e8f9312" name="ab0d111f533921564881e4c5e6e8f9312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0d111f533921564881e4c5e6e8f9312">&#9670;&#160;</a></span>mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex sese::io::FixedBuffer::mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_fixed_buffer.html#af09a62b8c03da04bfeb7e3556bede7b4">read()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/io/<a class="el" href="_fixed_buffer_8h_source.html">FixedBuffer.h</a></li>
-<li>sese/io/<a class="el" href="_fixed_buffer_8cpp_source.html">FixedBuffer.cpp</a></li>
+<li>sese/io/<a class="el" href="_fixed_buffer_8cpp.html">FixedBuffer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

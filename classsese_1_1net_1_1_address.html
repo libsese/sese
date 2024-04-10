@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -177,8 +178,6 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>地址类 </p>
-
-<p class="definition">在文件 <a class="el" href="_address_8h_source.html">Address.h</a> 第 <a class="el" href="_address_8h_source.html#l00038">38</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a5df9be83e1eed77cb1368a28e7f340fe" name="a5df9be83e1eed77cb1368a28e7f340fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5df9be83e1eed77cb1368a28e7f340fe">&#9670;&#160;</a></span>Ptr</h2>
@@ -191,8 +190,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_address_8h_source.html">Address.h</a> 第 <a class="el" href="_address_8h_source.html#l00040">40</a> 行定义.</p>
 
 </div>
 </div>
@@ -257,18 +254,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_address_8cpp_source.html">Address.cpp</a> 第 <a class="el" href="_address_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                                         {</div>
-<div class="line"><span class="lineno">    7</span>    <span class="keywordflow">if</span> (address-&gt;sa_family == AF_INET) {</div>
-<div class="line"><span class="lineno">    8</span>        <span class="keywordflow">return</span> std::make_shared&lt;IPv4Address&gt;(*<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>sockaddr_in *<span class="keyword">&gt;</span>(address));</div>
-<div class="line"><span class="lineno">    9</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (address-&gt;sa_family == AF_INET6) {</div>
-<div class="line"><span class="lineno">   10</span>        <span class="keywordflow">return</span> std::make_shared&lt;IPv6Address&gt;(*<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>sockaddr_in6 *<span class="keyword">&gt;</span>(address));</div>
-<div class="line"><span class="lineno">   11</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   13</span>    }</div>
-<div class="line"><span class="lineno">   14</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00044">sese::net::Socket::accept()</a>, <a class="el" href="_i_p_address_8cpp_source.html#l00005">sese::net::IPAddress::create()</a> , 以及 <a class="el" href="_address_8cpp_source.html#l00016">lookUp()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_socket.html#ac3e0595afbf0687b8a4e36b7dee8186b">sese::net::Socket::accept()</a>, <a class="el" href="classsese_1_1net_1_1_i_p_address.html#a3a3333efc217a358ccbb9afeedac2b26">sese::net::IPAddress::create()</a> , 以及 <a class="el" href="classsese_1_1net_1_1_address.html#a7b9b1edae56e8ff707324ac13e207391">lookUp()</a>.</p>
 
 </div>
 </div>
@@ -405,36 +391,9 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_address_8cpp_source.html">Address.cpp</a> 第 <a class="el" href="_address_8cpp_source.html#l00016">16</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                                                                                                             {</div>
-<div class="line"><span class="lineno">   17</span>    <span class="keyword">struct </span>addrinfo *res, hints{0};</div>
-<div class="line"><span class="lineno">   18</span>    hints.ai_flags = 0;</div>
-<div class="line"><span class="lineno">   19</span>    hints.ai_family = family;</div>
-<div class="line"><span class="lineno">   20</span>    hints.ai_socktype = type;</div>
-<div class="line"><span class="lineno">   21</span>    hints.ai_protocol = protocol;</div>
-<div class="line"><span class="lineno">   22</span>    hints.ai_addrlen = 0;</div>
-<div class="line"><span class="lineno">   23</span>    hints.ai_canonname = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   24</span>    hints.ai_addr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   25</span>    hints.ai_next = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   26</span> </div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordtype">int</span> err = getaddrinfo(host.c_str(), <span class="keyword">nullptr</span>, &amp;hints, &amp;res);</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span> (err) {</div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   30</span>    }</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>    <span class="keyword">auto</span> next = res;</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">while</span> (next) {</div>
-<div class="line"><span class="lineno">   34</span>        result.emplace_back(<a class="code hl_function" href="classsese_1_1net_1_1_address.html#abfc97bb3bb4df0dc597442b6b19ce8a6">create</a>(next-&gt;ai_addr, <span class="keyword">static_cast&lt;</span>socklen_t<span class="keyword">&gt;</span>(next-&gt;ai_addrlen)));</div>
-<div class="line"><span class="lineno">   35</span>        next = next-&gt;ai_next;</div>
-<div class="line"><span class="lineno">   36</span>    }</div>
-<div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>    freeaddrinfo(res);</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   40</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_address_8cpp_source.html#l00006">create()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_address.html#abfc97bb3bb4df0dc597442b6b19ce8a6">create()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_address_8cpp_source.html#l00042">lookUpAny()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_address.html#a544254bd48f66c88cf02abd86d778ffc">lookUpAny()</a>.</p>
 
 </div>
 </div>
@@ -484,24 +443,13 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_address_8cpp_source.html">Address.cpp</a> 第 <a class="el" href="_address_8cpp_source.html#l00042">42</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>                                                                                       {</div>
-<div class="line"><span class="lineno">   43</span>    std::vector&lt;Address::Ptr&gt; temp;</div>
-<div class="line"><span class="lineno">   44</span>    <a class="code hl_function" href="classsese_1_1net_1_1_address.html#a7b9b1edae56e8ff707324ac13e207391">lookUp</a>(temp, host, family, type, protocol);</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (temp.empty()) {</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   47</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span> temp[0];</div>
-<div class="line"><span class="lineno">   49</span>    }</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_address_8cpp_source.html#l00016">lookUp()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_address.html#a7b9b1edae56e8ff707324ac13e207391">lookUp()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/net/<a class="el" href="_address_8h_source.html">Address.h</a></li>
-<li>sese/net/<a class="el" href="_address_8cpp_source.html">Address.cpp</a></li>
+<li>sese/net/<a class="el" href="_address_8cpp.html">Address.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

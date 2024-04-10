@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -134,9 +135,7 @@ $(document).ready(function(){initNavTree('_algorithm_8cpp.html',''); initResizab
 <code>#include &lt;<a class="el" href="_s_string_8h_source.html">sese/text/SString.h</a>&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-</div>
-<p><a href="_algorithm_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:aa5b2a9148479ba88b31c0c8c459a3148" id="r_aa5b2a9148479ba88b31c0c8c459a3148"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_algorithm_8cpp.html#aa5b2a9148479ba88b31c0c8c459a3148">getNext</a> (const char *str)</td></tr>
@@ -181,23 +180,7 @@ $(document).ready(function(){initNavTree('_algorithm_8cpp.html',''); initResizab
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8cpp_source.html">Algorithm.cpp</a> 第 <a class="el" href="_algorithm_8cpp_source.html#l00047">47</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                        {</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keyword">auto</span> len = std::strlen(t);</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordtype">int</span> i = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len) - 1;</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">if</span> (ch == t[i])</div>
-<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len);</div>
-<div class="line"><span class="lineno">   52</span>    i--;</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">while</span> (i &gt;= 0) {</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">if</span> (ch == t[i])</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len) - 1 - i;</div>
-<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   57</span>            i--;</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len);</div>
-<div class="line"><span class="lineno">   60</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_algorithm_8cpp_source.html#l00063">sstr::BM()</a> , 以及 <a class="el" href="_algorithm_8cpp_source.html#l00113">sstr::BM()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="namespacesstr.html#a483b3805f810437b39367e9b9eb78354">sstr::BM()</a> , 以及 <a class="el" href="namespacesstr.html#ab42e42004ea3b272fca7a7a0c426192c">sstr::BM()</a>.</p>
 
 </div>
 </div>
@@ -235,22 +218,6 @@ $(document).ready(function(){initNavTree('_algorithm_8cpp.html',''); initResizab
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8cpp_source.html">Algorithm.cpp</a> 第 <a class="el" href="_algorithm_8cpp_source.html#l00098">98</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>                                                      {</div>
-<div class="line"><span class="lineno">   99</span>    <span class="keyword">auto</span> len = t.size();</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keywordtype">int</span> i = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len) - 1;</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">if</span> (ch == <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(t[i]))</div>
-<div class="line"><span class="lineno">  102</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len);</div>
-<div class="line"><span class="lineno">  103</span>    i--;</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">while</span> (i &gt;= 0) {</div>
-<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">if</span> (ch == <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(t[i]))</div>
-<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len) - 1 - i;</div>
-<div class="line"><span class="lineno">  107</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  108</span>            i--;</div>
-<div class="line"><span class="lineno">  109</span>    }</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len);</div>
-<div class="line"><span class="lineno">  111</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa5b2a9148479ba88b31c0c8c459a3148" name="aa5b2a9148479ba88b31c0c8c459a3148"></a>
@@ -277,24 +244,7 @@ $(document).ready(function(){initNavTree('_algorithm_8cpp.html',''); initResizab
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8cpp_source.html">Algorithm.cpp</a> 第 <a class="el" href="_algorithm_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                               {</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keyword">auto</span> len = std::strlen(str);</div>
-<div class="line"><span class="lineno">   13</span>    std::vector&lt;int&gt; next(len, 0);</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; len; i++) {</div>
-<div class="line"><span class="lineno">   15</span>        <span class="keywordtype">int</span> k = next[i - 1];</div>
-<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">while</span> (k &gt; 0 &amp;&amp; str[i] != str[k]) {</div>
-<div class="line"><span class="lineno">   17</span>            k = next[k - 1];</div>
-<div class="line"><span class="lineno">   18</span>        }</div>
-<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">if</span> (str[i] == str[k]) {</div>
-<div class="line"><span class="lineno">   20</span>            k++;</div>
-<div class="line"><span class="lineno">   21</span>        }</div>
-<div class="line"><span class="lineno">   22</span>        next[i] = k;</div>
-<div class="line"><span class="lineno">   23</span>    }</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> next;</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_algorithm_8cpp_source.html#l00027">sstr::KMP()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="namespacesstr.html#addb08b0d19d6f5351ddc559e395aaaa1">sstr::KMP()</a>.</p>
 
 </div>
 </div>

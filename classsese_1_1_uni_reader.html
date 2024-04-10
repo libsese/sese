@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,8 @@ $(document).ready(function(){initNavTree('classsese_1_1_uni_reader.html',''); in
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_uni_reader-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::UniReader类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -155,12 +158,22 @@ Public 成员函数</h2></td></tr>
 静态 Public 成员函数</h2></td></tr>
 <tr class="memitem:aeb8b5e2a8d416fc5f0c9afa994620a59" id="r_aeb8b5e2a8d416fc5f0c9afa994620a59"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classsese_1_1_uni_reader.html">UniReader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_uni_reader.html#aeb8b5e2a8d416fc5f0c9afa994620a59">create</a> (const std::string &amp;fileName) noexcept</td></tr>
 <tr class="separator:aeb8b5e2a8d416fc5f0c9afa994620a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a9bd40b289f3a84af6a10f4d84405a308" id="r_a9bd40b289f3a84af6a10f4d84405a308"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_uni_reader.html#a9bd40b289f3a84af6a10f4d84405a308">UniReader</a> ()=default</td></tr>
+<tr class="separator:a9bd40b289f3a84af6a10f4d84405a308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a8ebe58f16142634a1c7fdfb7ca15330c" id="r_a8ebe58f16142634a1c7fdfb7ca15330c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">io::FileStream::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_uni_reader.html#a8ebe58f16142634a1c7fdfb7ca15330c">fileStream</a></td></tr>
+<tr class="separator:a8ebe58f16142634a1c7fdfb7ca15330c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab694a114190af4c15564728fbe5d21a1" id="r_ab694a114190af4c15564728fbe5d21a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#ae3a680d4af31c5b0a08b14ff3afd1e2f">io::StreamReader::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_uni_reader.html#ab694a114190af4c15564728fbe5d21a1">reader</a></td></tr>
+<tr class="separator:ab694a114190af4c15564728fbe5d21a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>跨平台的文件读取器，主要适配 Windows，支持 UTF-8 </p>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">弃用:</a></b></dt><dd>请考虑使用 <a class="el" href="classsese_1_1text_1_1_text_reader.html" title="文本读取类">sese::text::TextReader</a> </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="_uni_reader_8h_source.html">UniReader.h</a> 第 <a class="el" href="_uni_reader_8h_source.html#l00023">23</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a49f16ea02f943651227059bd6c08a0b1" name="a49f16ea02f943651227059bd6c08a0b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a49f16ea02f943651227059bd6c08a0b1">&#9670;&#160;</a></span>Ptr</h2>
@@ -173,8 +186,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_uni_reader_8h_source.html">UniReader.h</a> 第 <a class="el" href="_uni_reader_8h_source.html#l00025">25</a> 行定义.</p>
 
 </div>
 </div>
@@ -194,11 +205,33 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="unix_2config_2_uni_reader_8cpp_source.html">UniReader.cpp</a> 第 <a class="el" href="unix_2config_2_uni_reader_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                          {</div>
-<div class="line"><span class="lineno">   11</span>    fileStream-&gt;close();</div>
-<div class="line"><span class="lineno">   12</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_uni_reader.html#a8ebe58f16142634a1c7fdfb7ca15330c">fileStream</a>.</p>
+
+</div>
+</div>
+<a id="a9bd40b289f3a84af6a10f4d84405a308" name="a9bd40b289f3a84af6a10f4d84405a308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bd40b289f3a84af6a10f4d84405a308">&#9670;&#160;</a></span>UniReader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::UniReader::UniReader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -238,20 +271,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="unix_2config_2_uni_reader_8cpp_source.html">UniReader.cpp</a> 第 <a class="el" href="unix_2config_2_uni_reader_8cpp_source.html#l00018">18</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                                                      {</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keyword">auto</span> file_stream = <a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">sese::io::FileStream::create</a>(file_name, <a class="code hl_define" href="_file_stream_8h.html#a6f92697ffb97dceb570552916ec69f77">TEXT_READ_EXISTED</a>);</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">if</span> (!file_stream) {</div>
-<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   22</span>    }</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keyword">auto</span> reader = std::make_shared&lt;sese::io::StreamReader&gt;(file_stream);</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keyword">auto</span> uni_reader = <span class="keyword">new</span> UniReader();</div>
-<div class="line"><span class="lineno">   25</span>    uni_reader-&gt;fileStream = file_stream;</div>
-<div class="line"><span class="lineno">   26</span>    uni_reader-&gt;reader = reader;</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">return</span> std::shared_ptr&lt;sese::UniReader&gt;(uni_reader);</div>
-<div class="line"><span class="lineno">   28</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_file_stream_8cpp_source.html#l00053">sese::io::FileStream::create()</a> , 以及 <a class="el" href="_file_stream_8h_source.html#l00030">TEXT_READ_EXISTED</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">sese::io::FileStream::create()</a> , 以及 <a class="el" href="_file_stream_8h.html#a6f92697ffb97dceb570552916ec69f77">TEXT_READ_EXISTED</a>.</p>
 
 </div>
 </div>
@@ -271,17 +291,59 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>读取一行 </p><dl class="section return"><dt>返回</dt><dd>读取到的文本，当 string.empty() 为 true 时表示没有内容可供再读取 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="unix_2config_2_uni_reader_8cpp_source.html">UniReader.cpp</a> 第 <a class="el" href="unix_2config_2_uni_reader_8cpp_source.html#l00014">14</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>                                  {</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">return</span> reader-&gt;readLine();</div>
-<div class="line"><span class="lineno">   16</span>}</div>
-</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a8ebe58f16142634a1c7fdfb7ca15330c" name="a8ebe58f16142634a1c7fdfb7ca15330c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ebe58f16142634a1c7fdfb7ca15330c">&#9670;&#160;</a></span>fileStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">io::FileStream::Ptr</a> sese::UniReader::fileStream</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_uni_reader.html#a59a573f076a422ab1919ff266a1be79e">~UniReader()</a>.</p>
+
+</div>
+</div>
+<a id="ab694a114190af4c15564728fbe5d21a1" name="ab694a114190af4c15564728fbe5d21a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab694a114190af4c15564728fbe5d21a1">&#9670;&#160;</a></span>reader</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#ae3a680d4af31c5b0a08b14ff3afd1e2f">io::StreamReader::Ptr</a> sese::UniReader::reader</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/config/<a class="el" href="_uni_reader_8h_source.html">UniReader.h</a></li>
-<li>sese/native/unix/config/<a class="el" href="unix_2config_2_uni_reader_8cpp_source.html">UniReader.cpp</a></li>
-<li>sese/native/win/config/<a class="el" href="win_2config_2_uni_reader_8cpp_source.html">UniReader.cpp</a></li>
+<li>sese/native/unix/config/<a class="el" href="unix_2config_2_uni_reader_8cpp.html">UniReader.cpp</a></li>
+<li>sese/native/win/config/<a class="el" href="win_2config_2_uni_reader_8cpp.html">UniReader.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

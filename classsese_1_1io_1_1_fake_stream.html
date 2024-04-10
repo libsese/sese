@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -191,8 +192,6 @@ class sese::io::FakeStream&lt; T &gt;</div><p>伪装流 </p>
   </table>
   </dd>
 </dl>
-
-<p class="definition">在文件 <a class="el" href="_fake_stream_8h_source.html">FakeStream.h</a> 第 <a class="el" href="_fake_stream_8h_source.html#l00023">23</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ae9cea81e70e7a97d0aecfab4b47df2c4" name="ae9cea81e70e7a97d0aecfab4b47df2c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9cea81e70e7a97d0aecfab4b47df2c4">&#9670;&#160;</a></span>FakeStream()</h2>
@@ -220,9 +219,6 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_fake_stream_8h_source.html">FakeStream.h</a> 第 <a class="el" href="_fake_stream_8h_source.html#l00025">25</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>: <a class="code hl_variable" href="classsese_1_1io_1_1_fake_stream.html#a43e54e7f13d0e50fb4434581c9745430">t</a>(<a class="code hl_variable" href="classsese_1_1io_1_1_fake_stream.html#a43e54e7f13d0e50fb4434581c9745430">t</a>) {}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -264,10 +260,7 @@ template&lt;typename T &gt; </div>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_fake_stream_8h_source.html">FakeStream.h</a> 第 <a class="el" href="_fake_stream_8h_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1io_1_1_fake_stream.html#a43e54e7f13d0e50fb4434581c9745430">t</a>-&gt;read(buffer, length); }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_fake_stream_8h_source.html#l00031">sese::io::FakeStream&lt; T &gt;::t</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_fake_stream.html#a43e54e7f13d0e50fb4434581c9745430">sese::io::FakeStream&lt; T &gt;::t</a>.</p>
 
 </div>
 </div>
@@ -309,10 +302,7 @@ template&lt;typename T &gt; </div>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_fake_stream_8h_source.html">FakeStream.h</a> 第 <a class="el" href="_fake_stream_8h_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1io_1_1_fake_stream.html#a43e54e7f13d0e50fb4434581c9745430">t</a>-&gt;write(buffer, length); };</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_fake_stream_8h_source.html#l00031">sese::io::FakeStream&lt; T &gt;::t</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_fake_stream.html#a43e54e7f13d0e50fb4434581c9745430">sese::io::FakeStream&lt; T &gt;::t</a>.</p>
 
 </div>
 </div>
@@ -339,9 +329,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_fake_stream_8h_source.html">FakeStream.h</a> 第 <a class="el" href="_fake_stream_8h_source.html#l00031">31</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_fake_stream_8h_source.html#l00040">sese::io::ClosableFakeStream&lt; T &gt;::close()</a>, <a class="el" href="_fake_stream_8h_source.html#l00027">sese::io::FakeStream&lt; T &gt;::read()</a> , 以及 <a class="el" href="_fake_stream_8h_source.html#l00028">sese::io::FakeStream&lt; T &gt;::write()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_closable_fake_stream.html#ab8a5b775e43db2d4e4381bb0778cc2b3">sese::io::ClosableFakeStream&lt; T &gt;::close()</a>, <a class="el" href="classsese_1_1io_1_1_fake_stream.html#a8b45da04333ac29405a26c0e8dd71c79">sese::io::FakeStream&lt; T &gt;::read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_fake_stream.html#ae494319ffe2da6a4d9519808e19ddc02">sese::io::FakeStream&lt; T &gt;::write()</a>.</p>
 
 </div>
 </div>

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -194,8 +195,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>epoll 事件循环 </p>
-
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a88fed3ac353a5545f52d6a90b2a732bc" name="a88fed3ac353a5545f52d6a90b2a732bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a88fed3ac353a5545f52d6a90b2a732bc">&#9670;&#160;</a></span>~EpollEventLoop()</h2>
@@ -220,20 +219,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                         {</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (-1 != <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>) {</div>
-<div class="line"><span class="lineno">   25</span>        <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>);</div>
-<div class="line"><span class="lineno">   26</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a> = -1;</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a>) {</div>
-<div class="line"><span class="lineno">   30</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a>;</div>
-<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   32</span>    }</div>
-<div class="line"><span class="lineno">   33</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00118">close()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close()</a>.</p>
 
 </div>
 </div>
@@ -280,31 +266,9 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#aeb4c42e9e5ce9307b3a6f586bea524a2">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00094">94</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>                                                                                                {</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keyword">auto</span> <span class="keyword">event</span> = <span class="keyword">new</span> EpollEvent;</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keyword">event</span>-&gt;fd = fd;</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keyword">event</span>-&gt;events = events;</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keyword">event</span>-&gt;data = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
-<div class="line"><span class="lineno">   99</span> </div>
-<div class="line"><span class="lineno">  100</span>    epoll_event epoll_event{};</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2" title="指示当前循环是否处理关闭事件">handleClose</a>) {</div>
-<div class="line"><span class="lineno">  102</span>        epoll_event.events = <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a>(events) | EPOLLIN | EPOLLET | EPOLLRDHUP;</div>
-<div class="line"><span class="lineno">  103</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  104</span>        epoll_event.events = <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a>(events) | EPOLLIN | EPOLLET;</div>
-<div class="line"><span class="lineno">  105</span>    }</div>
-<div class="line"><span class="lineno">  106</span>    epoll_event.data.ptr = event;</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">if</span> (-1 == epoll_ctl(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, EPOLL_CTL_ADD, fd, &amp;epoll_event)) {</div>
-<div class="line"><span class="lineno">  108</span>        <span class="keyword">delete</span> event;</div>
-<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  110</span>    }</div>
-<div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> event;</div>
-<div class="line"><span class="lineno">  113</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp_source.html#l00007">convert</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2f92c67542ca7d524d14252013cee174">init()</a>.</p>
 
 </div>
 </div>
@@ -334,52 +298,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#acc96fd81d204831200614e2d5a0c0d39">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00035">35</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                       {</div>
-<div class="line"><span class="lineno">   36</span>    epoll_event events[<a class="code hl_define" href="_kqueue_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09">MAX_EVENT_SIZE</a>]{};</div>
-<div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordtype">int</span> number_of_fds = epoll_wait(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, events, <a class="code hl_define" href="_kqueue_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09">MAX_EVENT_SIZE</a>, (<span class="keywordtype">int</span>) timeout);</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (-1 == number_of_fds) {</div>
-<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; number_of_fds; ++i) {</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keyword">auto</span> <span class="keyword">event</span> = (BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr;</div>
-<div class="line"><span class="lineno">   45</span>        <span class="keyword">auto</span> fd = <span class="keyword">event</span>-&gt;fd;</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">if</span> (fd == <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a>) {</div>
-<div class="line"><span class="lineno">   47</span>            <span class="keyword">auto</span> client = accept(fd, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">if</span> (-1 != client) {</div>
-<div class="line"><span class="lineno">   49</span>                <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#a2032e39346a140e336bf2d2593c1f974">onAccept</a>(client);</div>
-<div class="line"><span class="lineno">   50</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   51</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   52</span>            }</div>
-<div class="line"><span class="lineno">   53</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">if</span> (events[i].events &amp; EPOLLERR) {</div>
-<div class="line"><span class="lineno">   55</span>                <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#a41c3fe62bc9245514152defd7be5d3d6">onError</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
-<div class="line"><span class="lineno">   56</span>            }</div>
-<div class="line"><span class="lineno">   57</span>            <span class="keywordflow">if</span> (events[i].events &amp; EPOLLIN) {</div>
-<div class="line"><span class="lineno">   58</span>                <span class="keywordflow">if</span> (event-&gt;events &amp; <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>) {</div>
-<div class="line"><span class="lineno">   59</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#abad97ea60c1f02a6aa24411ed147a49e">onRead</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
-<div class="line"><span class="lineno">   60</span>                }</div>
-<div class="line"><span class="lineno">   61</span>                <span class="keywordflow">if</span> (events[i].events &amp; EPOLLRDHUP) {</div>
-<div class="line"><span class="lineno">   62</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#ab9a8e0e429bb7e6b52105f4e7819b746">onClose</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
-<div class="line"><span class="lineno">   63</span>                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   64</span>                }</div>
-<div class="line"><span class="lineno">   65</span>            }</div>
-<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">if</span> (events[i].events &amp; EPOLLOUT) {</div>
-<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">if</span> (events[i].events &amp; EPOLLRDHUP) {</div>
-<div class="line"><span class="lineno">   68</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#ab9a8e0e429bb7e6b52105f4e7819b746">onClose</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
-<div class="line"><span class="lineno">   69</span>                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   70</span>                }</div>
-<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">if</span> (event-&gt;events &amp; <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>) {</div>
-<div class="line"><span class="lineno">   72</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#ad7710a4650fc365648f90e9ddc025682">onWrite</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
-<div class="line"><span class="lineno">   73</span>                }</div>
-<div class="line"><span class="lineno">   74</span>            }</div>
-<div class="line"><span class="lineno">   75</span>        }</div>
-<div class="line"><span class="lineno">   76</span>    }</div>
-<div class="line"><span class="lineno">   77</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a>, <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a> , 以及 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00009">MAX_EVENT_SIZE</a>.</p>
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>, <a class="el" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a> , 以及 <a class="el" href="_kqueue_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09">MAX_EVENT_SIZE</a>.</p>
 
 </div>
 </div>
@@ -409,13 +328,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ad437b12929edb2660a01fd3fa57e2d93">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00115">115</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>                                                                 {</div>
-<div class="line"><span class="lineno">  116</span>    epoll_ctl(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, EPOLL_CTL_DEL, event-&gt;fd, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keyword">delete</span> event;</div>
-<div class="line"><span class="lineno">  118</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>.</p>
 
 </div>
 </div>
@@ -444,19 +357,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a377d38f5f4c3386967c7e4a791d5810f">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">12</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>                                   {</div>
-<div class="line"><span class="lineno">   13</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a> = epoll_create1(0);</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">if</span> (-1 == <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">if</span> (0 &gt;= <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   16</span> </div>
-<div class="line"><span class="lineno">   17</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a> = this-&gt;<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">createEvent</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a>, <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a> | <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   18</span>    <span class="comment">// 通常不会失败</span></div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (!this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00094">createEvent()</a>, <a class="el" href="_epoll_event_loop_8h_source.html#l00046">epoll</a>, <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a>, <a class="el" href="_epoll_event_loop_8h_source.html#l00044">listenEvent</a> , 以及 <a class="el" href="_epoll_event_loop_8h_source.html#l00043">listenFd</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, <a class="el" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>, <a class="el" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a> , 以及 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a>.</p>
 
 </div>
 </div>
@@ -486,10 +387,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#add63e0b4d354df6a4e44ec523b7990a4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00079">79</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   79</span>                                             {</div>
-<div class="line"><span class="lineno">   80</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ab9a8e0e429bb7e6b52105f4e7819b746" name="ab9a8e0e429bb7e6b52105f4e7819b746"></a>
@@ -518,10 +415,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00091">91</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>                                                               {</div>
-<div class="line"><span class="lineno">   92</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a41c3fe62bc9245514152defd7be5d3d6" name="a41c3fe62bc9245514152defd7be5d3d6"></a>
@@ -550,10 +443,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ae4015c16ccbbbdb70fc573522d626850">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00088">88</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>                                                      {</div>
-<div class="line"><span class="lineno">   89</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="abad97ea60c1f02a6aa24411ed147a49e" name="abad97ea60c1f02a6aa24411ed147a49e"></a>
@@ -582,10 +471,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60d8eb8bc4458845aa52598233e64ef4">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00082">82</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>                                                     {</div>
-<div class="line"><span class="lineno">   83</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ad7710a4650fc365648f90e9ddc025682" name="ad7710a4650fc365648f90e9ddc025682"></a>
@@ -614,10 +499,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a01e4f8ce45d64a7eaf01386a594b256c">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00085">85</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   85</span>                                                      {</div>
-<div class="line"><span class="lineno">   86</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a901628b73ee8726e13b152b92a4e2b57" name="a901628b73ee8726e13b152b92a4e2b57"></a>
@@ -646,21 +527,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a9948fa27a1d36040ad5b3a54909496eb">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00120">120</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                                {</div>
-<div class="line"><span class="lineno">  121</span>    epoll_event epoll_event{};</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2" title="指示当前循环是否处理关闭事件">handleClose</a>) {</div>
-<div class="line"><span class="lineno">  123</span>        epoll_event.events = <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a>(event-&gt;events) | EPOLLIN | EPOLLET | EPOLLRDHUP;</div>
-<div class="line"><span class="lineno">  124</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  125</span>        epoll_event.events = <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a>(event-&gt;events) | EPOLLIN | EPOLLET;</div>
-<div class="line"><span class="lineno">  126</span>    }</div>
-<div class="line"><span class="lineno">  127</span>    epoll_event.data.ptr = event;</div>
-<div class="line"><span class="lineno">  128</span> </div>
-<div class="line"><span class="lineno">  129</span>    <span class="keyword">auto</span> result = epoll_ctl(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, EPOLL_CTL_MOD, event-&gt;fd, &amp;epoll_event);</div>
-<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> (result == 0 || (result == -1 &amp;&amp; errno == EEXIST));</div>
-<div class="line"><span class="lineno">  131</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp_source.html#l00007">convert</a>, <a class="el" href="_base_event_8h_source.html#l00020">sese::event::BaseEvent::events</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>, <a class="el" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">sese::event::BaseEvent::events</a> , 以及 <a class="el" href="structsese_1_1event_1_1_base_event.html#ab34b208eace687cd3639dd8c5bd63853">sese::event::BaseEvent::fd</a>.</p>
 
 </div>
 </div>
@@ -690,10 +557,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4caa4a768bb29bd3f394505575f6cb0e">sese::event::BaseEventLoop</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00040">40</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{ <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a> = fd; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_epoll_event_loop_8h_source.html#l00043">listenFd</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a>.</p>
 
 </div>
 </div>
@@ -718,8 +582,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00047">47</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a7c96df135a56e8b8793a51e5ffdde06f" name="a7c96df135a56e8b8793a51e5ffdde06f"></a>
@@ -742,10 +604,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00046">46</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>{-1};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2f92c67542ca7d524d14252013cee174">init()</a>.</p>
 
 </div>
 </div>
@@ -769,10 +628,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00044">44</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>{<span class="keyword">nullptr</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2f92c67542ca7d524d14252013cee174">init()</a>.</p>
 
 </div>
 </div>
@@ -796,16 +652,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00043">43</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>{-1};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">init()</a> , 以及 <a class="el" href="_epoll_event_loop_8h_source.html#l00040">setListenFd()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2f92c67542ca7d524d14252013cee174">init()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abf0ad36d87ab5d5ef0e396f1cb207569">setListenFd()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/native/linux/event/<a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a></li>
-<li>sese/native/linux/event/<a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a></li>
+<li>sese/native/linux/event/<a class="el" href="_epoll_event_loop_8cpp.html">EpollEventLoop.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

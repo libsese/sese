@@ -53,5 +53,7 @@ var classsese_1_1net_1_1_socket =
     [ "writeInt64", "classsese_1_1net_1_1_socket.html#a814ea29cf37dc72df82b8d54734de3a7", null ],
     [ "writeUint16", "classsese_1_1net_1_1_socket.html#affadc0d6aebc8dee63db9fbb06373093", null ],
     [ "writeUint32", "classsese_1_1net_1_1_socket.html#ade9d450d914e834bf725182461fb3671", null ],
-    [ "writeUint64", "classsese_1_1net_1_1_socket.html#a72f97055925ffab833b79c940934704b", null ]
+    [ "writeUint64", "classsese_1_1net_1_1_socket.html#a72f97055925ffab833b79c940934704b", null ],
+    [ "address", "classsese_1_1net_1_1_socket.html#af5cf2ec0d24e60c474b23d18f5ddf592", null ],
+    [ "handle", "classsese_1_1net_1_1_socket.html#aab922556f11f5ce15182fcbb236b6187", null ]
 ];

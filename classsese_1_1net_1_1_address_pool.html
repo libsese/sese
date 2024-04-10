@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -127,6 +128,9 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1_address_pool.html
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
 <a href="classsese_1_1net_1_1_address_pool-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::net::AddressPool&lt; ADDRESS &gt; 模板类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -141,13 +145,54 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1_address_pool.html
 静态 Public 成员函数</h2></td></tr>
 <tr class="memitem:a272f8e12a5f02920ca123b97d03b8363" id="r_a272f8e12a5f02920ca123b97d03b8363"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; ADDRESS &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address_pool.html#a272f8e12a5f02920ca123b97d03b8363">lookup</a> (const std::string &amp;domain) noexcept</td></tr>
 <tr class="separator:a272f8e12a5f02920ca123b97d03b8363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a3359d57884870d28ff922e52e63f3e57" id="r_a3359d57884870d28ff922e52e63f3e57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address_pool.html#a3359d57884870d28ff922e52e63f3e57">AddressPool</a> ()=default</td></tr>
+<tr class="separator:a3359d57884870d28ff922e52e63f3e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a1d0935d9685ce2701c99131a056631e7" id="r_a1d0935d9685ce2701c99131a056631e7"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::shared_ptr&lt; ADDRESS &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address_pool.html#a1d0935d9685ce2701c99131a056631e7">addressMap</a></td></tr>
+<tr class="separator:a1d0935d9685ce2701c99131a056631e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a15317358dafd5c6bcbe541dbe44f0849" id="r_a15317358dafd5c6bcbe541dbe44f0849"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_address_pool.html">AddressPool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1_address_pool.html#a15317358dafd5c6bcbe541dbe44f0849">pool</a></td></tr>
+<tr class="separator:a15317358dafd5c6bcbe541dbe44f0849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class ADDRESS&gt;<br />
 class sese::net::AddressPool&lt; ADDRESS &gt;</div><p>IP 地址池 </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a3359d57884870d28ff922e52e63f3e57" name="a3359d57884870d28ff922e52e63f3e57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3359d57884870d28ff922e52e63f3e57">&#9670;&#160;</a></span>AddressPool()</h2>
 
-<p class="definition">在文件 <a class="el" href="_address_pool_8h_source.html">AddressPool.h</a> 第 <a class="el" href="_address_pool_8h_source.html#l00021">21</a> 行定义.</p>
-</div><h2 class="groupheader">成员函数说明</h2>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ADDRESS &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_address_pool.html">sese::net::AddressPool</a>&lt; ADDRESS &gt;::AddressPool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
 <a id="a272f8e12a5f02920ca123b97d03b8363" name="a272f8e12a5f02920ca123b97d03b8363"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a272f8e12a5f02920ca123b97d03b8363">&#9670;&#160;</a></span>lookup()</h2>
 
@@ -187,26 +232,60 @@ template&lt;class ADDRESS &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_address_pool_8h_source.html">AddressPool.h</a> 第 <a class="el" href="_address_pool_8h_source.html#l00046">46</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                                                                           {</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keyword">auto</span> iterator = pool.addressMap.find(domain);</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keyword">auto</span> inet = std::is_same&lt;ADDRESS, sese::net::IPv4Address&gt;::value ? AF_INET : AF_INET6;</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">if</span> (iterator == pool.addressMap.end()) {</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keyword">auto</span> address = ADDRESS::lookUpAny(domain, inet, IPPROTO_IP);</div>
-<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == address) {</div>
-<div class="line"><span class="lineno">   52</span>            <span class="comment">// 未命中缓存且查找失败</span></div>
-<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   54</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keyword">auto</span> ip = dynamicPointerCast&lt;ADDRESS&gt;(address);</div>
-<div class="line"><span class="lineno">   56</span>            pool.addressMap[domain] = ip;</div>
-<div class="line"><span class="lineno">   57</span>            <span class="keywordflow">return</span> ip;</div>
-<div class="line"><span class="lineno">   58</span>        }</div>
-<div class="line"><span class="lineno">   59</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">return</span> iterator-&gt;second;</div>
-<div class="line"><span class="lineno">   61</span>    }</div>
-<div class="line"><span class="lineno">   62</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_request_parser_8cpp_source.html#l00046">sese::net::http::RequestParser::parseAddress()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_address_pool.html#a1d0935d9685ce2701c99131a056631e7">sese::net::AddressPool&lt; ADDRESS &gt;::addressMap</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_request_parser.html#a6d5db7b58fadede4f5856d3a63955233">sese::net::http::RequestParser::parseAddress()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a1d0935d9685ce2701c99131a056631e7" name="a1d0935d9685ce2701c99131a056631e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d0935d9685ce2701c99131a056631e7">&#9670;&#160;</a></span>addressMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ADDRESS &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::shared_ptr&lt;ADDRESS&gt; &gt; <a class="el" href="classsese_1_1net_1_1_address_pool.html">sese::net::AddressPool</a>&lt; ADDRESS &gt;::addressMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_address_pool.html#a272f8e12a5f02920ca123b97d03b8363">sese::net::AddressPool&lt; ADDRESS &gt;::lookup()</a>.</p>
+
+</div>
+</div>
+<a id="a15317358dafd5c6bcbe541dbe44f0849" name="a15317358dafd5c6bcbe541dbe44f0849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15317358dafd5c6bcbe541dbe44f0849">&#9670;&#160;</a></span>pool</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ADDRESS &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_address_pool.html">AddressPool</a>&lt; ADDRESS &gt; <a class="el" href="classsese_1_1net_1_1_address_pool.html">sese::net::AddressPool</a>&lt; ADDRESS &gt;::pool</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

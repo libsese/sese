@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -189,8 +190,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>日志输出类 </p>
-
-<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00037">37</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a1ff6bf98f643c1e07c21708a72dc6343" name="a1ff6bf98f643c1e07c21708a72dc6343"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1ff6bf98f643c1e07c21708a72dc6343">&#9670;&#160;</a></span>Ptr</h2>
@@ -205,8 +204,6 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>智能指针 </p>
-
-<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00040">40</a> 行定义.</p>
 
 </div>
 </div>
@@ -236,18 +233,7 @@ Protected 属性</h2></td></tr>
 
 <p>初始化 </p>
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00013">13</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                        {</div>
-<div class="line"><span class="lineno">   14</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">formatter</a> = std::make_shared&lt;SimpleFormatter&gt;();</div>
-<div class="line"><span class="lineno">   15</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a> = std::make_shared&lt;ConsoleAppender&gt;();</div>
-<div class="line"><span class="lineno">   16</span><span class="preprocessor">#ifdef SESE_IS_DEBUG</span></div>
-<div class="line"><span class="lineno">   17</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;setLevel(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">sese::record::Level::DEBUG</a>);</div>
-<div class="line"><span class="lineno">   18</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">   19</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;setLevel(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">sese::record::Level::INFO</a>);</div>
-<div class="line"><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_logger_8h_source.html#l00074">builtInAppender</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a>, <a class="el" href="_logger_8h_source.html#l00073">formatter</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a>, <a class="el" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">formatter</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a>.</p>
 
 </div>
 </div>
@@ -307,12 +293,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                                     {</div>
-<div class="line"><span class="lineno">   24</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>.emplace_back(appender);</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00072">addGlobalLoggerAppender()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_logger.html#a96eea5856c58b0babbebb37a2c27338e">addGlobalLoggerAppender()</a>.</p>
 
 </div>
 </div>
@@ -346,12 +327,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00072">72</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>                                                                                 {</div>
-<div class="line"><span class="lineno">   73</span>    <a class="code hl_variable" href="namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3">logger</a>-&gt;<a class="code hl_function" href="classsese_1_1record_1_1_logger.html#a0f9beac541a2ccfa7a70c03102c72c87">addAppender</a>(appender); <span class="comment">// NOLINT</span></div>
-<div class="line"><span class="lineno">   74</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_logger_8cpp_source.html#l00023">addAppender()</a> , 以及 <a class="el" href="_logger_8cpp_source.html#l00070">sese::record::logger</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1record_1_1_logger.html#a0f9beac541a2ccfa7a70c03102c72c87">addAppender()</a> , 以及 <a class="el" href="namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3">sese::record::logger</a>.</p>
 
 </div>
 </div>
@@ -398,15 +374,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a5869b76c2cad7982de77bd015fc6679c">sese::record::AsyncLogger</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00080">80</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                            {</div>
-<div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;dump((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer, length);</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;appender: <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>) {</div>
-<div class="line"><span class="lineno">   83</span>        appender-&gt;dump((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer, length);</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
-<div class="line"><span class="lineno">   85</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_exception_8cpp_source.html#l00046">sese::Exception::printStacktrace()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_exception.html#a041ea2611970213547e8b81883d66220">sese::Exception::printStacktrace()</a>.</p>
 
 </div>
 </div>
@@ -442,39 +410,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a02af73db0e7e100defd93d3582ee83fe">sese::record::AsyncLogger</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00039">39</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>                                               {</div>
-<div class="line"><span class="lineno">   40</span>    std::string content = <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">formatter</a>-&gt;dump(event);</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;getLevel() &lt;= event-&gt;getLevel()) {</div>
-<div class="line"><span class="lineno">   42</span>        setbuf(stdout, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   43</span>        <span class="comment">// 此处逻辑本身就是完备的</span></div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">switch</span> (event-&gt;getLevel()) {</div>
-<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">Level::DEBUG</a>:</div>
-<div class="line"><span class="lineno">   46</span>                <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#a5e58f894090ad428f9cf1c5cd01b607e">ConsoleAppender::setDebugColor</a>();</div>
-<div class="line"><span class="lineno">   47</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">Level::INFO</a>:</div>
-<div class="line"><span class="lineno">   49</span>                <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#a63d3021bd0211a824de1b2bc5831fb1f">ConsoleAppender::setInfoColor</a>();</div>
-<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">Level::WARN</a>:</div>
-<div class="line"><span class="lineno">   52</span>                <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#a6854a1f67a4bc7d2c5eaba8f19cde9c4">ConsoleAppender::setWarnColor</a>();</div>
-<div class="line"><span class="lineno">   53</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">Level::ERR</a>:</div>
-<div class="line"><span class="lineno">   55</span>                <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#a3ba7fa443e01e7ff3c4b5167d9e963d8">ConsoleAppender::setErrorColor</a>();</div>
-<div class="line"><span class="lineno">   56</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   57</span>        }</div>
-<div class="line"><span class="lineno">   58</span>        <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;dump(content.c_str(), content.length());</div>
-<div class="line"><span class="lineno">   59</span>        <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#ab7eb558d52fbefccec50ca9bf69f1cad">ConsoleAppender::setCleanColor</a>();</div>
-<div class="line"><span class="lineno">   60</span>        fflush(stdout);</div>
-<div class="line"><span class="lineno">   61</span>    }</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;appender: <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>) {</div>
-<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">if</span> (appender-&gt;getLevel() &lt;= event-&gt;getLevel()) {</div>
-<div class="line"><span class="lineno">   65</span>            appender-&gt;dump(content.c_str(), content.length());</div>
-<div class="line"><span class="lineno">   66</span>        }</div>
-<div class="line"><span class="lineno">   67</span>    }</div>
-<div class="line"><span class="lineno">   68</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::ERR</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a>, <a class="el" href="_console_appender_8cpp_source.html#l00064">sese::record::ConsoleAppender::setCleanColor()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00048">sese::record::ConsoleAppender::setDebugColor()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00060">sese::record::ConsoleAppender::setErrorColor()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00052">sese::record::ConsoleAppender::setInfoColor()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00056">sese::record::ConsoleAppender::setWarnColor()</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::WARN</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::ERR</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a>, <a class="el" href="classsese_1_1record_1_1_console_appender.html#ab7eb558d52fbefccec50ca9bf69f1cad">sese::record::ConsoleAppender::setCleanColor()</a>, <a class="el" href="classsese_1_1record_1_1_console_appender.html#a5e58f894090ad428f9cf1c5cd01b607e">sese::record::ConsoleAppender::setDebugColor()</a>, <a class="el" href="classsese_1_1record_1_1_console_appender.html#a3ba7fa443e01e7ff3c4b5167d9e963d8">sese::record::ConsoleAppender::setErrorColor()</a>, <a class="el" href="classsese_1_1record_1_1_console_appender.html#a63d3021bd0211a824de1b2bc5831fb1f">sese::record::ConsoleAppender::setInfoColor()</a>, <a class="el" href="classsese_1_1record_1_1_console_appender.html#a6854a1f67a4bc7d2c5eaba8f19cde9c4">sese::record::ConsoleAppender::setWarnColor()</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::WARN</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_log_helper.html#ad0da2651d29aceba2963921e90d1d4b3">sese::record::LogHelper::l()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_log_helper.html#a442d9d7fa21e7acef7858a647c89a76b">sese::record::LogHelper::log()</a>.</p>
 
 </div>
 </div>
@@ -508,20 +446,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>                                                                        {</div>
-<div class="line"><span class="lineno">   28</span>    <span class="comment">// 此处删除逻辑无需验证</span></div>
-<div class="line"><span class="lineno">   29</span>    <span class="comment">// GCOVR_EXCL_START</span></div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iterator = <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>.begin(); iterator &lt; <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>.end(); iterator++) {</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (*iterator == appender) {</div>
-<div class="line"><span class="lineno">   32</span>            this-&gt;<a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>.erase(iterator);</div>
-<div class="line"><span class="lineno">   33</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   34</span>        }</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="line"><span class="lineno">   36</span>    <span class="comment">// GCOVR_EXCL_STOP</span></div>
-<div class="line"><span class="lineno">   37</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00076">removeGlobalLoggerAppender()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_logger.html#acf3821d839e22aeb21e44f302985287d">removeGlobalLoggerAppender()</a>.</p>
 
 </div>
 </div>
@@ -555,12 +480,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00076">76</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                                                    {</div>
-<div class="line"><span class="lineno">   77</span>    <a class="code hl_variable" href="namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3">logger</a>-&gt;<a class="code hl_function" href="classsese_1_1record_1_1_logger.html#a35e344c1b3c19c3d5c576dd1a91b556f">removeAppender</a>(appender); <span class="comment">// NOLINT</span></div>
-<div class="line"><span class="lineno">   78</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_logger_8cpp_source.html#l00070">sese::record::logger</a> , 以及 <a class="el" href="_logger_8cpp_source.html#l00027">removeAppender()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3">sese::record::logger</a> , 以及 <a class="el" href="classsese_1_1record_1_1_logger.html#a35e344c1b3c19c3d5c576dd1a91b556f">removeAppender()</a>.</p>
 
 </div>
 </div>
@@ -585,9 +505,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00075">75</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00069">sese::record::AsyncLogger::loop()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">sese::record::AsyncLogger::loop()</a>.</p>
 
 </div>
 </div>
@@ -611,9 +529,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00074">74</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00013">Logger()</a> , 以及 <a class="el" href="_async_logger_8cpp_source.html#l00069">sese::record::AsyncLogger::loop()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_logger.html#aef18cfc8276c633ee70cd95834845a74">Logger()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a9d01d43861d9638cfccde764f23e7068">sese::record::AsyncLogger::loop()</a>.</p>
 
 </div>
 </div>
@@ -637,15 +553,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00073">73</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00013">Logger()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_logger.html#aef18cfc8276c633ee70cd95834845a74">Logger()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/record/<a class="el" href="_logger_8h_source.html">Logger.h</a></li>
-<li>sese/record/<a class="el" href="_logger_8cpp_source.html">Logger.cpp</a></li>
+<li>sese/record/<a class="el" href="_logger_8cpp.html">Logger.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

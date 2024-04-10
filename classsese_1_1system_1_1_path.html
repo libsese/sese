@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -170,8 +171,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>UNIX-LIKE 路径转换类 </p>
-
-<p class="definition">在文件 <a class="el" href="_path_8h_source.html">Path.h</a> 第 <a class="el" href="_path_8h_source.html#l00017">17</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ab339602804391b89a481126fa81f8c86" name="ab339602804391b89a481126fa81f8c86"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab339602804391b89a481126fa81f8c86">&#9670;&#160;</a></span>Path() <span class="overload">[1/3]</span></h2>
@@ -210,10 +209,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="unix_2system_2_path_8cpp_source.html">Path.cpp</a> 第 <a class="el" href="unix_2system_2_path_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                         : <a class="code hl_function" href="classsese_1_1system_1_1_path.html#a6cef8ba0d1de688d923ceb76a6dea661">Path</a>(std::string_view(<a class="code hl_variable" href="classsese_1_1system_1_1_path.html#aecb5a61b1ab165697971eb18711d7698">unix_path</a>)) {</div>
-<div class="line"><span class="lineno">   11</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ab923997318582e499c04a3c9f794b736" name="ab923997318582e499c04a3c9f794b736"></a>
@@ -253,13 +248,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="unix_2system_2_path_8cpp_source.html">Path.cpp</a> 第 <a class="el" href="unix_2system_2_path_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                   {</div>
-<div class="line"><span class="lineno">    6</span>    <a class="code hl_variable" href="classsese_1_1system_1_1_path.html#aecb5a61b1ab165697971eb18711d7698">Path::unix_path</a> = <a class="code hl_variable" href="classsese_1_1system_1_1_path.html#aecb5a61b1ab165697971eb18711d7698">unix_path</a>;</div>
-<div class="line"><span class="lineno">    7</span>    <a class="code hl_variable" href="classsese_1_1system_1_1_path.html#a7b4ff22d49f0e65d1c6f4c9b2eac641b">Path::valid</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">    8</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_path_8h_source.html#l00068">unix_path</a> , 以及 <a class="el" href="_path_8h_source.html#l00070">valid</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1system_1_1_path.html#aecb5a61b1ab165697971eb18711d7698">unix_path</a> , 以及 <a class="el" href="classsese_1_1system_1_1_path.html#a7b4ff22d49f0e65d1c6f4c9b2eac641b">valid</a>.</p>
 
 </div>
 </div>
@@ -321,17 +310,9 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>UNIX-LIKE 路径 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="unix_2system_2_path_8cpp_source.html">Path.cpp</a> 第 <a class="el" href="unix_2system_2_path_8cpp_source.html#l00013">13</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                               {</div>
-<div class="line"><span class="lineno">   14</span>    <a class="code hl_class" href="classsese_1_1system_1_1_path.html" title="UNIX-LIKE 路径转换类">Path</a> result;</div>
-<div class="line"><span class="lineno">   15</span>    result.<a class="code hl_variable" href="classsese_1_1system_1_1_path.html#aecb5a61b1ab165697971eb18711d7698">unix_path</a> = native_path;</div>
-<div class="line"><span class="lineno">   16</span>    result.<a class="code hl_variable" href="classsese_1_1system_1_1_path.html#a7b4ff22d49f0e65d1c6f4c9b2eac641b">valid</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   17</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">   18</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_path_8h_source.html#l00068">unix_path</a> , 以及 <a class="el" href="_path_8h_source.html#l00070">valid</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1system_1_1_path.html#aecb5a61b1ab165697971eb18711d7698">unix_path</a> , 以及 <a class="el" href="classsese_1_1system_1_1_path.html#a7b4ff22d49f0e65d1c6f4c9b2eac641b">valid</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_paths_8cpp_source.html#l00020">sese::system::PathsInitiateTask::init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_paths_initiate_task.html#a3eda7cc68889b836739e9029f2506bc6">sese::system::PathsInitiateTask::init()</a>.</p>
 
 </div>
 </div>
@@ -358,9 +339,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_path_8h_source.html">Path.h</a> 第 <a class="el" href="_path_8h_source.html#l00056">56</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1system_1_1_path.html#aecb5a61b1ab165697971eb18711d7698">unix_path</a>; }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a180ba89d0f143b75a1cdc0df7b51c147" name="a180ba89d0f143b75a1cdc0df7b51c147"></a>
@@ -386,9 +364,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_path_8h_source.html">Path.h</a> 第 <a class="el" href="_path_8h_source.html#l00059">59</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1system_1_1_path.html#aecb5a61b1ab165697971eb18711d7698">unix_path</a>; }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ac4f5ae8d37151f708433386a2242f9de" name="ac4f5ae8d37151f708433386a2242f9de"></a>
@@ -415,10 +390,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>返回</dt><dd>当前路径是否有效 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_path_8h_source.html">Path.h</a> 第 <a class="el" href="_path_8h_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1system_1_1_path.html#a7b4ff22d49f0e65d1c6f4c9b2eac641b">valid</a>; }</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_paths_8cpp_source.html#l00020">sese::system::PathsInitiateTask::init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_paths_initiate_task.html#a3eda7cc68889b836739e9029f2506bc6">sese::system::PathsInitiateTask::init()</a>.</p>
 
 </div>
 </div>
@@ -443,10 +415,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_path_8h_source.html">Path.h</a> 第 <a class="el" href="_path_8h_source.html#l00068">68</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="unix_2system_2_path_8cpp_source.html#l00013">fromNativePath()</a> , 以及 <a class="el" href="unix_2system_2_path_8cpp_source.html#l00005">Path()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_path.html#ad28dec912f0e439d63e8655aff992272">fromNativePath()</a> , 以及 <a class="el" href="classsese_1_1system_1_1_path.html#ab923997318582e499c04a3c9f794b736">Path()</a>.</p>
 
 </div>
 </div>
@@ -470,16 +439,14 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_path_8h_source.html">Path.h</a> 第 <a class="el" href="_path_8h_source.html#l00070">70</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="unix_2system_2_path_8cpp_source.html#l00013">fromNativePath()</a> , 以及 <a class="el" href="unix_2system_2_path_8cpp_source.html#l00005">Path()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_path.html#ad28dec912f0e439d63e8655aff992272">fromNativePath()</a> , 以及 <a class="el" href="classsese_1_1system_1_1_path.html#ab923997318582e499c04a3c9f794b736">Path()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/system/<a class="el" href="_path_8h_source.html">Path.h</a></li>
-<li>sese/native/unix/system/<a class="el" href="unix_2system_2_path_8cpp_source.html">Path.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="win_2system_2_path_8cpp_source.html">Path.cpp</a></li>
+<li>sese/native/unix/system/<a class="el" href="unix_2system_2_path_8cpp.html">Path.cpp</a></li>
+<li>sese/native/win/system/<a class="el" href="win_2system_2_path_8cpp.html">Path.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

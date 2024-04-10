@@ -10,5 +10,6 @@ var classsese_1_1_range_1_1_reverse_iterator =
     [ "operator*", "classsese_1_1_range_1_1_reverse_iterator.html#a03a5c88f9f00c97ff37e3d1427a85f94", null ],
     [ "operator++", "classsese_1_1_range_1_1_reverse_iterator.html#ad281adf1749b20ba79b1f7d71969a22c", null ],
     [ "operator++", "classsese_1_1_range_1_1_reverse_iterator.html#a7f9e9c10021873b2fddc5cc7145a9515", null ],
-    [ "operator==", "classsese_1_1_range_1_1_reverse_iterator.html#abdbe2960f96f1c0951aa817d8181b4b7", null ]
+    [ "operator==", "classsese_1_1_range_1_1_reverse_iterator.html#abdbe2960f96f1c0951aa817d8181b4b7", null ],
+    [ "curNumber", "classsese_1_1_range_1_1_reverse_iterator.html#a2e9bd0899eefef502ccca2b3f9b9f433", null ]
 ];

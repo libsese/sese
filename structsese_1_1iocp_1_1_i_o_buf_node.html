@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -174,8 +175,6 @@ Public 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p><a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html" title="用于 IOCP 的链式缓存">IOBuf</a> 节点 </p>
-
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8h_source.html">IOBuf.h</a> 第 <a class="el" href="_i_o_buf_8h_source.html#l00017">17</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a0541eaf32688f946c467ba2d1ffe2de0" name="a0541eaf32688f946c467ba2d1ffe2de0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0541eaf32688f946c467ba2d1ffe2de0">&#9670;&#160;</a></span>IOBufNode()</h2>
@@ -207,12 +206,7 @@ Public 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8cpp_source.html">IOBuf.cpp</a> 第 <a class="el" href="_i_o_buf_8cpp_source.html#l00016">16</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                                            : <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95" title="缓存容量大小">CAPACITY</a>(capacity) {</div>
-<div class="line"><span class="lineno">   17</span>    <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a> = malloc(capacity);</div>
-<div class="line"><span class="lineno">   18</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_i_o_buf_8h_source.html#l00019">buffer</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90">buffer</a>.</p>
 
 </div>
 </div>
@@ -233,14 +227,7 @@ Public 属性</h2></td></tr>
 
 <p>节点析构 </p>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8cpp_source.html">IOBuf.cpp</a> 第 <a class="el" href="_i_o_buf_8cpp_source.html#l00020">20</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>                              {</div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>) {</div>
-<div class="line"><span class="lineno">   22</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>);</div>
-<div class="line"><span class="lineno">   23</span>    }</div>
-<div class="line"><span class="lineno">   24</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>.</p>
 
 </div>
 </div>
@@ -269,14 +256,9 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取节点可读部分大小 </p><dl class="section return"><dt>返回</dt><dd>可读大小 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8cpp_source.html">IOBuf.cpp</a> 第 <a class="el" href="_i_o_buf_8cpp_source.html#l00026">26</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   26</span>                                                         {</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab" title="缓存已填充大小">size</a> - <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7c07e3bbde5aec473a7f09ebe47a1f21" title="缓存已读大小">read</a>;</div>
-<div class="line"><span class="lineno">   28</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read()</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_i_o_buf_8cpp_source.html#l00104">sese::iocp::IOBuf::peek()</a> , 以及 <a class="el" href="_i_o_buf_8cpp_source.html#l00070">sese::iocp::IOBuf::read()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a1a8aa393267b82d295781741f1cb1927">sese::iocp::IOBuf::peek()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a2d691f90864df66d0df15666e2f2d8bf">sese::iocp::IOBuf::read()</a>.</p>
 
 </div>
 </div>
@@ -304,11 +286,6 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取节点可写入大小 </p><dl class="section return"><dt>返回</dt><dd>可写大小（空闲部分） </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8cpp_source.html">IOBuf.cpp</a> 第 <a class="el" href="_i_o_buf_8cpp_source.html#l00030">30</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>                                                          {</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95" title="缓存容量大小">CAPACITY</a> - <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab" title="缓存已填充大小">size</a>;</div>
-<div class="line"><span class="lineno">   32</span>}</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
 </div>
@@ -329,13 +306,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8cpp_source.html">IOBuf.cpp</a> 第 <a class="el" href="_i_o_buf_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                               {</div>
-<div class="line"><span class="lineno">   12</span>    <span class="comment">// SESE_INFO(&quot;free %p&quot;, p);</span></div>
-<div class="line"><span class="lineno">   13</span>    <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(p);</div>
-<div class="line"><span class="lineno">   14</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>.</p>
 
 </div>
 </div>
@@ -355,14 +326,6 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8cpp_source.html">IOBuf.cpp</a> 第 <a class="el" href="_i_o_buf_8cpp_source.html#l00004">4</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    4</span>                                                 {</div>
-<div class="line"><span class="lineno">    5</span>    <span class="keyword">auto</span> p = malloc(<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab" title="缓存已填充大小">size</a>);</div>
-<div class="line"><span class="lineno">    6</span>    memset(p, 0, <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab" title="缓存已填充大小">size</a>);</div>
-<div class="line"><span class="lineno">    7</span>    <span class="comment">// SESE_INFO(&quot;malloc %p&quot;, p);</span></div>
-<div class="line"><span class="lineno">    8</span>    <span class="keywordflow">return</span> p;</div>
-<div class="line"><span class="lineno">    9</span>}</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
 </div>
@@ -382,10 +345,7 @@ Public 属性</h2></td></tr>
 
 <p>缓存指针 </p>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8h_source.html">IOBuf.h</a> 第 <a class="el" href="_i_o_buf_8h_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>{<span class="keyword">nullptr</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_i_o_buf_8cpp_source.html#l00016">IOBufNode()</a>, <a class="el" href="_i_o_buf_8cpp_source.html#l00104">sese::iocp::IOBuf::peek()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00161">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a0541eaf32688f946c467ba2d1ffe2de0">IOBufNode()</a>, <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a1a8aa393267b82d295781741f1cb1927">sese::iocp::IOBuf::peek()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8aff108b860c0ad2b5dd9d9189c13bf5">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a>.</p>
 
 </div>
 </div>
@@ -403,9 +363,7 @@ Public 属性</h2></td></tr>
 
 <p>缓存容量大小 </p>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8h_source.html">IOBuf.h</a> 第 <a class="el" href="_i_o_buf_8h_source.html#l00025">25</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00161">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8aff108b860c0ad2b5dd9d9189c13bf5">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a>.</p>
 
 </div>
 </div>
@@ -423,10 +381,7 @@ Public 属性</h2></td></tr>
 
 <p>下一个节点 </p>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8h_source.html">IOBuf.h</a> 第 <a class="el" href="_i_o_buf_8h_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>{<span class="keyword">nullptr</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_i_o_buf_8cpp_source.html#l00050">sese::iocp::IOBuf::clear()</a>, <a class="el" href="_i_o_buf_8cpp_source.html#l00104">sese::iocp::IOBuf::peek()</a> , 以及 <a class="el" href="_i_o_buf_8cpp_source.html#l00040">sese::iocp::IOBuf::push()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a3304557def613bfe4eacdd5d8d250a93">sese::iocp::IOBuf::clear()</a>, <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a1a8aa393267b82d295781741f1cb1927">sese::iocp::IOBuf::peek()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a13445627a0e5f04073ebaaa36ed8c8a5">sese::iocp::IOBuf::push()</a>.</p>
 
 </div>
 </div>
@@ -444,10 +399,7 @@ Public 属性</h2></td></tr>
 
 <p>缓存已读大小 </p>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8h_source.html">IOBuf.h</a> 第 <a class="el" href="_i_o_buf_8h_source.html#l00021">21</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>{0};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_i_o_buf_8cpp_source.html#l00104">sese::iocp::IOBuf::peek()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a1a8aa393267b82d295781741f1cb1927">sese::iocp::IOBuf::peek()</a>.</p>
 
 </div>
 </div>
@@ -465,16 +417,13 @@ Public 属性</h2></td></tr>
 
 <p>缓存已填充大小 </p>
 
-<p class="definition">在文件 <a class="el" href="_i_o_buf_8h_source.html">IOBuf.h</a> 第 <a class="el" href="_i_o_buf_8h_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>{0};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_i_o_buf_8cpp_source.html#l00104">sese::iocp::IOBuf::peek()</a> , 以及 <a class="el" href="_i_o_buf_8cpp_source.html#l00040">sese::iocp::IOBuf::push()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a1a8aa393267b82d295781741f1cb1927">sese::iocp::IOBuf::peek()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1_i_o_buf.html#a13445627a0e5f04073ebaaa36ed8c8a5">sese::iocp::IOBuf::push()</a>.</p>
 
 </div>
 </div>
 <hr/>该结构体的文档由以下文件生成:<ul>
 <li>sese/service/iocp/<a class="el" href="_i_o_buf_8h_source.html">IOBuf.h</a></li>
-<li>sese/service/iocp/<a class="el" href="_i_o_buf_8cpp_source.html">IOBuf.cpp</a></li>
+<li>sese/service/iocp/<a class="el" href="_i_o_buf_8cpp.html">IOBuf.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

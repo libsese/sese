@@ -34,6 +34,7 @@ var classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server =
     [ "setThreads", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6423868f07d0e9e6d9a9b2fd6216a441", null ],
     [ "setTimeout", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afbcbd23b89822a275eec7339642f070d", null ],
     [ "shutdown", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afe265af21499c32168c00f5dd9a87d1a", null ],
+    [ "activeReleaseMode", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a8d9755083e0c8a8d7fe1e69bfcc64301", null ],
     [ "balanceLoader", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde", null ],
     [ "clientProtos", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932", null ],
     [ "deleteContextCallback", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace", null ],

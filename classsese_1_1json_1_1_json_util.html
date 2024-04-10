@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1json_1_1_json_util.html',
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
 <a href="classsese_1_1json_1_1_json_util-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::json::JsonUtil类 参考</div></div>
 </div><!--header-->
@@ -169,6 +171,17 @@ Public 类型</h2></td></tr>
 <tr class="memitem:ac1aa1afe6f5d57fc1fe0d05be67ee350" id="r_ac1aa1afe6f5d57fc1fe0d05be67ee350"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_json_util.html#ac1aa1afe6f5d57fc1fe0d05be67ee350">tokenizer</a> (<a class="el" href="classsese_1_1json_1_1_json_util.html#aacda2c5bbdb655faffd407ef77e283fe">InputStream</a> *input_stream, <a class="el" href="classsese_1_1json_1_1_json_util.html#a9eedc75c4f41db502d8ae735874897db">Tokens</a> &amp;tokens) noexcept</td></tr>
 <tr class="separator:ac1aa1afe6f5d57fc1fe0d05be67ee350"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:af7c67ac812525342092c53efa35c9a75" id="r_af7c67ac812525342092c53efa35c9a75"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1json_1_1_object_data.html#a13da123b62958d661585d39710339047">ObjectData::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_json_util.html#af7c67ac812525342092c53efa35c9a75">createObject</a> (<a class="el" href="classsese_1_1json_1_1_json_util.html#a9eedc75c4f41db502d8ae735874897db">Tokens</a> &amp;tokens, size_t level) noexcept</td></tr>
+<tr class="separator:af7c67ac812525342092c53efa35c9a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a65aef3297a194eb018dcbf9b3a95d8" id="r_a4a65aef3297a194eb018dcbf9b3a95d8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1json_1_1_array_data.html#a1a8df39e9edb953a2ef26a60c0724a1a">ArrayData::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_json_util.html#a4a65aef3297a194eb018dcbf9b3a95d8">createArray</a> (<a class="el" href="classsese_1_1json_1_1_json_util.html#a9eedc75c4f41db502d8ae735874897db">Tokens</a> &amp;tokens, size_t level) noexcept</td></tr>
+<tr class="separator:a4a65aef3297a194eb018dcbf9b3a95d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad59c031eb35f9d37a1e345db5db767fe" id="r_ad59c031eb35f9d37a1e345db5db767fe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_json_util.html#ad59c031eb35f9d37a1e345db5db767fe">serializeObject</a> (<a class="el" href="classsese_1_1json_1_1_object_data.html">ObjectData</a> *object, <a class="el" href="classsese_1_1json_1_1_json_util.html#aaca2ef3b8a9f15ae1489d32feb976876">OutputStream</a> *output_stream) noexcept</td></tr>
+<tr class="separator:ad59c031eb35f9d37a1e345db5db767fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a666e5bde750bf1fdc10e06e2227bfa06" id="r_a666e5bde750bf1fdc10e06e2227bfa06"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_json_util.html#a666e5bde750bf1fdc10e06e2227bfa06">serializeArray</a> (<a class="el" href="classsese_1_1json_1_1_array_data.html">ArrayData</a> *array, <a class="el" href="classsese_1_1json_1_1_json_util.html#aaca2ef3b8a9f15ae1489d32feb976876">OutputStream</a> *output_stream) noexcept</td></tr>
+<tr class="separator:a666e5bde750bf1fdc10e06e2227bfa06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
@@ -183,8 +196,6 @@ Public 类型</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>JSON 序列化工具类 </p>
-
-<p class="definition">在文件 <a class="el" href="_json_util_8h_source.html">JsonUtil.h</a> 第 <a class="el" href="_json_util_8h_source.html#l00023">23</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="aacda2c5bbdb655faffd407ef77e283fe" name="aacda2c5bbdb655faffd407ef77e283fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aacda2c5bbdb655faffd407ef77e283fe">&#9670;&#160;</a></span>InputStream</h2>
@@ -197,8 +208,6 @@ Public 类型</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_json_util_8h_source.html">JsonUtil.h</a> 第 <a class="el" href="_json_util_8h_source.html#l00025">25</a> 行定义.</p>
 
 </div>
 </div>
@@ -214,8 +223,6 @@ Public 类型</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_json_util_8h_source.html">JsonUtil.h</a> 第 <a class="el" href="_json_util_8h_source.html#l00026">26</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a9eedc75c4f41db502d8ae735874897db" name="a9eedc75c4f41db502d8ae735874897db"></a>
@@ -230,11 +237,85 @@ Public 类型</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_json_util_8h_source.html">JsonUtil.h</a> 第 <a class="el" href="_json_util_8h_source.html#l00027">27</a> 行定义.</p>
-
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="a4a65aef3297a194eb018dcbf9b3a95d8" name="a4a65aef3297a194eb018dcbf9b3a95d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a65aef3297a194eb018dcbf9b3a95d8">&#9670;&#160;</a></span>createArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1json_1_1_array_data.html#a1a8df39e9edb953a2ef26a60c0724a1a">ArrayData::Ptr</a> JsonUtil::createArray </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1json_1_1_json_util.html#a9eedc75c4f41db502d8ae735874897db">Tokens</a> &amp;&#160;</td>
+          <td class="paramname"><em>tokens</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_json_util_8cpp.html#a5b119222e7117b386b8f508154d4516b">isKeyword()</a>.</p>
+
+</div>
+</div>
+<a id="af7c67ac812525342092c53efa35c9a75" name="af7c67ac812525342092c53efa35c9a75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7c67ac812525342092c53efa35c9a75">&#9670;&#160;</a></span>createObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1json_1_1_object_data.html#a13da123b62958d661585d39710339047">ObjectData::Ptr</a> JsonUtil::createObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1json_1_1_json_util.html#a9eedc75c4f41db502d8ae735874897db">Tokens</a> &amp;&#160;</td>
+          <td class="paramname"><em>tokens</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_json_util_8cpp.html#a5b119222e7117b386b8f508154d4516b">isKeyword()</a>.</p>
+
+</div>
+</div>
 <a id="aadd24028d56f1f761ecbc214c1d36d51" name="aadd24028d56f1f761ecbc214c1d36d51"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aadd24028d56f1f761ecbc214c1d36d51">&#9670;&#160;</a></span>deserialize() <span class="overload">[1/2]</span></h2>
 
@@ -277,11 +358,6 @@ Public 类型</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>解析得到的 JsonObject，解析失败时返回 nullptr（比如超过设定的解析深度，或者不合法的 token 排序，暂时不支持 \u 转义） </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_json_util_8cpp_source.html">JsonUtil.cpp</a> 第 <a class="el" href="_json_util_8cpp_source.html#l00020">20</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>                                                                                             {</div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1json_1_1_json_util.html#aadd24028d56f1f761ecbc214c1d36d51">deserialize</a>(input_stream.get(), level);</div>
-<div class="line"><span class="lineno">   22</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a00621a383bbd92d839b1fabf568d4617" name="a00621a383bbd92d839b1fabf568d4617"></a>
@@ -326,23 +402,6 @@ Public 类型</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>解析得到的 JsonObject，解析失败时返回 nullptr（比如超过设定的解析深度，或者不合法的 token 排序，暂时不支持 \u 转义） </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_json_util_8cpp_source.html">JsonUtil.cpp</a> 第 <a class="el" href="_json_util_8cpp_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>                                                                                    {</div>
-<div class="line"><span class="lineno">   29</span>    <a class="code hl_typedef" href="classsese_1_1json_1_1_json_util.html#a9eedc75c4f41db502d8ae735874897db">Tokens</a> tokens;</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classsese_1_1json_1_1_json_util.html#ac1aa1afe6f5d57fc1fe0d05be67ee350">tokenizer</a>(input_stream, tokens)) {</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   32</span>    }</div>
-<div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (tokens.empty()) {</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   36</span>    }</div>
-<div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>    <span class="comment">// 第一个 token 必是 &#39;{&#39;，直接弹出</span></div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (tokens.front() != <span class="stringliteral">&quot;{&quot;</span>) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   40</span>    tokens.pop();</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> createObject(tokens, level);</div>
-<div class="line"><span class="lineno">   42</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a6815b450b2183a158f9bf57e9c12a2ce" name="a6815b450b2183a158f9bf57e9c12a2ce"></a>
@@ -386,11 +445,6 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_json_util_8cpp_source.html">JsonUtil.cpp</a> 第 <a class="el" href="_json_util_8cpp_source.html#l00024">24</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>                                                                                                   {</div>
-<div class="line"><span class="lineno">   25</span>    serializeObject(<span class="keywordtype">object</span>.get(), output_stream.get());</div>
-<div class="line"><span class="lineno">   26</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="abb8650db922a2535afd1205e0d56a333" name="abb8650db922a2535afd1205e0d56a333"></a>
@@ -434,11 +488,82 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_json_util_8cpp_source.html">JsonUtil.cpp</a> 第 <a class="el" href="_json_util_8cpp_source.html#l00044">44</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>                                                                                 {</div>
-<div class="line"><span class="lineno">   45</span>    serializeObject(<span class="keywordtype">object</span>, output_stream);</div>
-<div class="line"><span class="lineno">   46</span>}</div>
-</div><!-- fragment -->
+</div>
+</div>
+<a id="a666e5bde750bf1fdc10e06e2227bfa06" name="a666e5bde750bf1fdc10e06e2227bfa06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a666e5bde750bf1fdc10e06e2227bfa06">&#9670;&#160;</a></span>serializeArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void JsonUtil::serializeArray </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1json_1_1_array_data.html">ArrayData</a> *&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1json_1_1_json_util.html#aaca2ef3b8a9f15ae1489d32feb976876">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output_stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+
+</div>
+</div>
+<a id="ad59c031eb35f9d37a1e345db5db767fe" name="ad59c031eb35f9d37a1e345db5db767fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad59c031eb35f9d37a1e345db5db767fe">&#9670;&#160;</a></span>serializeObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void JsonUtil::serializeObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1json_1_1_object_data.html">ObjectData</a> *&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1json_1_1_json_util.html#aaca2ef3b8a9f15ae1489d32feb976876">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output_stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+
 </div>
 </div>
 <a id="ac1aa1afe6f5d57fc1fe0d05be67ee350" name="ac1aa1afe6f5d57fc1fe0d05be67ee350"></a>
@@ -475,81 +600,13 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_json_util_8cpp_source.html">JsonUtil.cpp</a> 第 <a class="el" href="_json_util_8cpp_source.html#l00048">48</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                                           {</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordtype">char</span> ch;</div>
-<div class="line"><span class="lineno">   50</span>    text::StringBuilder builder;</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>    int64_t len;</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">while</span> ((len = input_stream-&gt;read(&amp;ch, 1 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>))) != 0) {</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">switch</span> (ch) {</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">case</span> <span class="charliteral">&#39;{&#39;</span>:</div>
-<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">case</span> <span class="charliteral">&#39;}&#39;</span>:</div>
-<div class="line"><span class="lineno">   57</span>            <span class="keywordflow">case</span> <span class="charliteral">&#39;[&#39;</span>:</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">case</span> <span class="charliteral">&#39;]&#39;</span>:</div>
-<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">case</span> <span class="charliteral">&#39;,&#39;</span>:</div>
-<div class="line"><span class="lineno">   60</span>            <span class="keywordflow">case</span> <span class="charliteral">&#39;:&#39;</span>:</div>
-<div class="line"><span class="lineno">   61</span>                <span class="comment">// 一般的 token</span></div>
-<div class="line"><span class="lineno">   62</span>                tokens.push({ch});</div>
-<div class="line"><span class="lineno">   63</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">case</span> <span class="charliteral">&#39;\&quot;&#39;</span>:</div>
-<div class="line"><span class="lineno">   65</span>                builder.append(<span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   66</span>                <span class="comment">// 字符串 token，需要处理转义符号</span></div>
-<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">while</span> ((len = input_stream-&gt;read(&amp;ch, 1 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>))) != 0) {</div>
-<div class="line"><span class="lineno">   68</span>                    <span class="comment">// 说明是转义字符</span></div>
-<div class="line"><span class="lineno">   69</span>                    <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\\&#39;</span>) {</div>
-<div class="line"><span class="lineno">   70</span>                        <span class="keywordflow">if</span> (input_stream-&gt;read(&amp;ch, 1 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>)) == 0) {</div>
-<div class="line"><span class="lineno">   71</span>                            <span class="comment">// 字符串不完整</span></div>
-<div class="line"><span class="lineno">   72</span>                            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   73</span>                        }</div>
-<div class="line"><span class="lineno">   74</span>                        builder &lt;&lt; <span class="charliteral">&#39;\\&#39;</span>;</div>
-<div class="line"><span class="lineno">   75</span>                        builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">   76</span>                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\&quot;&#39;</span>) {</div>
-<div class="line"><span class="lineno">   77</span>                        builder.append(<span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   78</span>                        tokens.push(builder.toString());</div>
-<div class="line"><span class="lineno">   79</span>                        builder.clear();</div>
-<div class="line"><span class="lineno">   80</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   81</span>                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   82</span>                        builder.append(ch);</div>
-<div class="line"><span class="lineno">   83</span>                    }</div>
-<div class="line"><span class="lineno">   84</span>                }</div>
-<div class="line"><span class="lineno">   85</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   87</span>                <span class="comment">// 普通的值 token</span></div>
-<div class="line"><span class="lineno">   88</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">sese::isSpace</a>(ch)) <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   89</span>                builder.append(ch);</div>
-<div class="line"><span class="lineno">   90</span>                <span class="keywordflow">while</span> ((len = input_stream-&gt;read(&amp;ch, 1 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>))) != 0) {</div>
-<div class="line"><span class="lineno">   91</span>                    <span class="comment">//fix: 此处多加关键字判断</span></div>
-<div class="line"><span class="lineno">   92</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="_json_8cpp.html#a5b119222e7117b386b8f508154d4516b">isKeyword</a>(&amp;ch)) {</div>
-<div class="line"><span class="lineno">   93</span>                        tokens.push(builder.toString());</div>
-<div class="line"><span class="lineno">   94</span>                        builder.clear();</div>
-<div class="line"><span class="lineno">   95</span>                        tokens.push({ch});</div>
-<div class="line"><span class="lineno">   96</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   97</span>                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">sese::isSpace</a>(ch)) {</div>
-<div class="line"><span class="lineno">   98</span>                        tokens.push(builder.toString());</div>
-<div class="line"><span class="lineno">   99</span>                        builder.clear();</div>
-<div class="line"><span class="lineno">  100</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  101</span>                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;,&#39;</span>) {</div>
-<div class="line"><span class="lineno">  102</span>                        tokens.push(builder.toString());</div>
-<div class="line"><span class="lineno">  103</span>                        builder.clear();</div>
-<div class="line"><span class="lineno">  104</span>                        tokens.emplace(<span class="stringliteral">&quot;,&quot;</span>);</div>
-<div class="line"><span class="lineno">  105</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  106</span>                    }</div>
-<div class="line"><span class="lineno">  107</span>                    builder.append(ch);</div>
-<div class="line"><span class="lineno">  108</span>                }</div>
-<div class="line"><span class="lineno">  109</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  110</span>        }</div>
-<div class="line"><span class="lineno">  111</span>    }</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  113</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00115">sese::text::AbstractStringBuffer::clear()</a>, <a class="el" href="_json_util_8cpp_source.html#l00010">isKeyword()</a>, <a class="el" href="util_2_util_8cpp_source.html#l00009">sese::isSpace()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">sese::text::AbstractStringBuffer::toString()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ac5022adf90d2c19c2e6056a8f962b0d0">sese::text::AbstractStringBuffer::clear()</a>, <a class="el" href="_json_util_8cpp.html#a5b119222e7117b386b8f508154d4516b">isKeyword()</a>, <a class="el" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">sese::isSpace()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/config/json/<a class="el" href="_json_util_8h_source.html">JsonUtil.h</a></li>
-<li>sese/config/json/<a class="el" href="_json_util_8cpp_source.html">JsonUtil.cpp</a></li>
+<li>sese/config/json/<a class="el" href="_json_util_8cpp.html">JsonUtil.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

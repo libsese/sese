@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,8 @@ $(document).ready(function(){initNavTree('classsese_1_1_random_util.html',''); i
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
 <a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
 <a href="classsese_1_1_random_util-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::RandomUtil类 参考</div></div>
 </div><!--header-->
@@ -179,11 +182,27 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a9399f948a0c4efe54e47d44fb4f17b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7941ca2f4ee1ea08a290574a456c741c" id="r_a7941ca2f4ee1ea08a290574a456c741c"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_random_util.html#a7941ca2f4ee1ea08a290574a456c741c">REQUIRED_SYMBOL</a> = 8</td></tr>
 <tr class="separator:a7941ca2f4ee1ea08a290574a456c741c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:a93c8e04cdd8dba3fb8a06e5831977b99" id="r_a93c8e04cdd8dba3fb8a06e5831977b99"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_random_util.html#a93c8e04cdd8dba3fb8a06e5831977b99">nextString</a> (size_t length, bool upper, bool lower, bool digit, bool symbol)</td></tr>
+<tr class="separator:a93c8e04cdd8dba3fb8a06e5831977b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a1d728709c06900a08a54930176b54de7" id="r_a1d728709c06900a08a54930176b54de7"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_random_util.html#a1d728709c06900a08a54930176b54de7">UPPER_LETTER_LIST</a> = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</td></tr>
+<tr class="separator:a1d728709c06900a08a54930176b54de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a513e7cec8890009bd457c01f300931cd" id="r_a513e7cec8890009bd457c01f300931cd"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_random_util.html#a513e7cec8890009bd457c01f300931cd">LOWER_LETTER_LIST</a> = &quot;abcdefghijklmnopqrstuvwxyz&quot;</td></tr>
+<tr class="separator:a513e7cec8890009bd457c01f300931cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfcbc90097e969476e6e95e7f924ce5c" id="r_abfcbc90097e969476e6e95e7f924ce5c"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_random_util.html#abfcbc90097e969476e6e95e7f924ce5c">DIGIT_LIST</a> = &quot;01234567890&quot;</td></tr>
+<tr class="separator:abfcbc90097e969476e6e95e7f924ce5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bfb461c05164e7b12ed149fe2890cb5" id="r_a5bfb461c05164e7b12ed149fe2890cb5"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_random_util.html#a5bfb461c05164e7b12ed149fe2890cb5">SYMBOL_LIST</a> = &quot;@#$&amp;*()'\&quot;%-+=/;:!,?._^[]{}|~\&lt;&gt;&quot;</td></tr>
+<tr class="separator:a5bfb461c05164e7b12ed149fe2890cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae91da30efbc15ea66f386d89ec929650" id="r_ae91da30efbc15ea66f386d89ec929650"><td class="memItemLeft" align="right" valign="top">static std::random_device&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_random_util.html#ae91da30efbc15ea66f386d89ec929650">dev</a> {}</td></tr>
+<tr class="separator:ae91da30efbc15ea66f386d89ec929650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>随机工具类 </p>
-
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
 <a id="a1167c33410b5512e010d9d8800faa515" name="a1167c33410b5512e010d9d8800faa515"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1167c33410b5512e010d9d8800faa515">&#9670;&#160;</a></span>getDevInstance()</h2>
@@ -208,12 +227,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8cpp_source.html">RandomUtil.cpp</a> 第 <a class="el" href="_random_util_8cpp_source.html#l00099">99</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>                                                          {</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">return</span> dev;</div>
-<div class="line"><span class="lineno">  101</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_random_util_8h_source.html#l00048">next()</a> , 以及 <a class="el" href="_random_util_8h_source.html#l00053">next()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_random_util.html#a357b6500e28fb1d5898f938c78d6c6cd">next()</a> , 以及 <a class="el" href="classsese_1_1_random_util.html#a16be189a89291706f29dffb2785738ba">next()</a>.</p>
 
 </div>
 </div>
@@ -242,12 +256,7 @@ template&lt;class RETURN_VALUE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00048">48</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                         {</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>RETURN_VALUE<span class="keyword">&gt;</span>(<a class="code hl_function" href="classsese_1_1_random_util.html#a1167c33410b5512e010d9d8800faa515">getDevInstance</a>()());</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_random_util_8cpp_source.html#l00099">getDevInstance()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_random_util.html#a1167c33410b5512e010d9d8800faa515">getDevInstance()</a>.</p>
 
 </div>
 </div>
@@ -276,12 +285,6 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>                                  {</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keyword">auto</span> pos = next&lt;uint32_t&gt;(0, UINT32_MAX);</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(pos) / <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(UINT32_MAX);</div>
-<div class="line"><span class="lineno">   65</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ac61dd2b00062d3e512acc75dc506e9d0" name="ac61dd2b00062d3e512acc75dc506e9d0"></a>
@@ -309,12 +312,6 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00068">68</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>                                   {</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keyword">auto</span> pos = next&lt;uint32_t&gt;(0, UINT32_MAX);</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(pos) / <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(UINT32_MAX);</div>
-<div class="line"><span class="lineno">   71</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a93e4d9ad37e6d48d3f4249681b5ba433" name="a93e4d9ad37e6d48d3f4249681b5ba433"></a>
@@ -353,14 +350,6 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00082">82</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>                                                         {</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keyword">const</span> <span class="keyword">auto</span> TMP_MIN = std::min&lt;double&gt;(min, max);</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keyword">const</span> <span class="keyword">auto</span> RANGE = std::abs(max - min);</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keyword">const</span> <span class="keyword">auto</span> TMP = next&lt;double&gt;();</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> TMP_MIN + RANGE * TMP;</div>
-<div class="line"><span class="lineno">   87</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a00847c44b3b52e92e2ff6312cdad8540" name="a00847c44b3b52e92e2ff6312cdad8540"></a>
@@ -399,14 +388,6 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00074">74</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>                                                      {</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keyword">const</span> <span class="keyword">auto</span> TMP_MIN = std::min&lt;float&gt;(min, max);</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keyword">const</span> <span class="keyword">auto</span> RANGE = std::abs(max - min);</div>
-<div class="line"><span class="lineno">   77</span>    <span class="keyword">const</span> <span class="keyword">auto</span> TMP = next&lt;float&gt;();</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">return</span> TMP_MIN + RANGE * TMP;</div>
-<div class="line"><span class="lineno">   79</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a16be189a89291706f29dffb2785738ba" name="a16be189a89291706f29dffb2785738ba"></a>
@@ -445,21 +426,68 @@ template&lt;class RETURN_VALUE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00053">53</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>                                                                           {</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keyword">const</span> <span class="keyword">auto</span> TEMP_MIN = std::min&lt;RETURN_VALUE&gt;(min, max);</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keyword">const</span> <span class="keyword">auto</span> TEMP_MAX = std::max&lt;RETURN_VALUE&gt;(min, max);</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keyword">const</span> <span class="keyword">auto</span> RANGE = TEMP_MAX - TEMP_MIN;</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keyword">auto</span> TMP = <a class="code hl_function" href="classsese_1_1_random_util.html#a1167c33410b5512e010d9d8800faa515">getDevInstance</a>()();</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>RETURN_VALUE<span class="keyword">&gt;</span>(TMP % RANGE) + min;</div>
-<div class="line"><span class="lineno">   59</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_random_util_8cpp_source.html#l00099">getDevInstance()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_random_util.html#a1167c33410b5512e010d9d8800faa515">getDevInstance()</a>.</p>
+
+</div>
+</div>
+<a id="a93c8e04cdd8dba3fb8a06e5831977b99" name="a93c8e04cdd8dba3fb8a06e5831977b99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93c8e04cdd8dba3fb8a06e5831977b99">&#9670;&#160;</a></span>nextString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::RandomUtil::nextString </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>upper</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>lower</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>digit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>symbol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
 
 </div>
 </div>
 <a id="a28da9f4941128ffbf1461c38fef94157" name="a28da9f4941128ffbf1461c38fef94157"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28da9f4941128ffbf1461c38fef94157">&#9670;&#160;</a></span>nextString()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a28da9f4941128ffbf1461c38fef94157">&#9670;&#160;</a></span>nextString() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -492,22 +520,9 @@ template&lt;class RETURN_VALUE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8cpp_source.html">RandomUtil.cpp</a> 第 <a class="el" href="_random_util_8cpp_source.html#l00016">16</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                                                                {</div>
-<div class="line"><span class="lineno">   17</span>    <span class="keywordtype">bool</span> upper = required &amp; <a class="code hl_variable" href="classsese_1_1_random_util.html#a2816225b13522bd9f42934817958a1cc">REQUIRED_UPPER_LETTER</a>;</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keywordtype">bool</span> lower = required &amp; <a class="code hl_variable" href="classsese_1_1_random_util.html#acc632319eeedb38574c6be898d81e6bb">REQUIRED_LOWER_LETTER</a>;</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordtype">bool</span> digit = required &amp; <a class="code hl_variable" href="classsese_1_1_random_util.html#a9399f948a0c4efe54e47d44fb4f17b3e">REQUIRED_DIGIT</a>;</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordtype">bool</span> symbol = required &amp; <a class="code hl_variable" href="classsese_1_1_random_util.html#a7941ca2f4ee1ea08a290574a456c741c">REQUIRED_SYMBOL</a>;</div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">if</span> (upper || lower || digit || symbol) {</div>
-<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_random_util.html#a28da9f4941128ffbf1461c38fef94157">sese::RandomUtil::nextString</a>(length, upper, lower, digit, symbol);</div>
-<div class="line"><span class="lineno">   23</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><span class="lineno">   25</span>    }</div>
-<div class="line"><span class="lineno">   26</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_random_util_8cpp_source.html#l00016">nextString()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_random_util.html#a28da9f4941128ffbf1461c38fef94157">nextString()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_random_util_8cpp_source.html#l00016">nextString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_random_util.html#a28da9f4941128ffbf1461c38fef94157">nextString()</a>.</p>
 
 </div>
 </div>
@@ -534,14 +549,79 @@ template&lt;class RETURN_VALUE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8cpp_source.html">RandomUtil.cpp</a> 第 <a class="el" href="_random_util_8cpp_source.html#l00012">12</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>                                           {</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">return</span> dev();</div>
-<div class="line"><span class="lineno">   14</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_random_util.html#ae91da30efbc15ea66f386d89ec929650">dev</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
+<a id="ae91da30efbc15ea66f386d89ec929650" name="ae91da30efbc15ea66f386d89ec929650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae91da30efbc15ea66f386d89ec929650">&#9670;&#160;</a></span>dev</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::random_device sese::RandomUtil::dev {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_random_util.html#a5dfe07c20cedbc71e0705a7ccbdb612b">nextUnsignedInt64()</a>.</p>
+
+</div>
+</div>
+<a id="abfcbc90097e969476e6e95e7f924ce5c" name="abfcbc90097e969476e6e95e7f924ce5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfcbc90097e969476e6e95e7f924ce5c">&#9670;&#160;</a></span>DIGIT_LIST</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string sese::RandomUtil::DIGIT_LIST = &quot;01234567890&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a513e7cec8890009bd457c01f300931cd" name="a513e7cec8890009bd457c01f300931cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a513e7cec8890009bd457c01f300931cd">&#9670;&#160;</a></span>LOWER_LETTER_LIST</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string sese::RandomUtil::LOWER_LETTER_LIST = &quot;abcdefghijklmnopqrstuvwxyz&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a9399f948a0c4efe54e47d44fb4f17b3e" name="a9399f948a0c4efe54e47d44fb4f17b3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9399f948a0c4efe54e47d44fb4f17b3e">&#9670;&#160;</a></span>REQUIRED_DIGIT</h2>
 
@@ -561,8 +641,6 @@ template&lt;class RETURN_VALUE &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00020">20</a> 行定义.</p>
 
 </div>
 </div>
@@ -586,8 +664,6 @@ template&lt;class RETURN_VALUE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00019">19</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a7941ca2f4ee1ea08a290574a456c741c" name="a7941ca2f4ee1ea08a290574a456c741c"></a>
@@ -609,8 +685,6 @@ template&lt;class RETURN_VALUE &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00021">21</a> 行定义.</p>
 
 </div>
 </div>
@@ -634,13 +708,55 @@ template&lt;class RETURN_VALUE &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_random_util_8h_source.html">RandomUtil.h</a> 第 <a class="el" href="_random_util_8h_source.html#l00018">18</a> 行定义.</p>
+</div>
+</div>
+<a id="a5bfb461c05164e7b12ed149fe2890cb5" name="a5bfb461c05164e7b12ed149fe2890cb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bfb461c05164e7b12ed149fe2890cb5">&#9670;&#160;</a></span>SYMBOL_LIST</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string sese::RandomUtil::SYMBOL_LIST = &quot;@#$&amp;*()'\&quot;%-+=/;:!,?._^[]{}|~\&lt;&gt;&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d728709c06900a08a54930176b54de7" name="a1d728709c06900a08a54930176b54de7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d728709c06900a08a54930176b54de7">&#9670;&#160;</a></span>UPPER_LETTER_LIST</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string sese::RandomUtil::UPPER_LETTER_LIST = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/util/<a class="el" href="_random_util_8h_source.html">RandomUtil.h</a></li>
-<li>sese/util/<a class="el" href="_random_util_8cpp_source.html">RandomUtil.cpp</a></li>
+<li>sese/util/<a class="el" href="_random_util_8cpp.html">RandomUtil.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

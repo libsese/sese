@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -160,8 +161,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>Huffman 树 </p>
-
-<p class="definition">在文件 <a class="el" href="_huffman_8h_source.html">Huffman.h</a> 第 <a class="el" href="_huffman_8h_source.html#l00051">51</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a15422f90998afd0dd2b99578333094af" name="a15422f90998afd0dd2b99578333094af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15422f90998afd0dd2b99578333094af">&#9670;&#160;</a></span>huffman_tree_t()</h2>
@@ -186,32 +185,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_huffman_8cpp_source.html">Huffman.cpp</a> 第 <a class="el" href="_huffman_8cpp_source.html#l00016">16</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                                        : <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de">m_root</a>(<span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1net_1_1http_1_1huffman__node__t.html" title="Huffman 解码节点">huffman_node_t</a>) {</div>
-<div class="line"><span class="lineno">   17</span>    <span class="keywordflow">for</span> (std::size_t idx = 0; idx &lt; <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a01ac945648e80cdf9e3e17bcf28677d0">HUFFMAN_TABLE</a>.size(); idx++) {</div>
-<div class="line"><span class="lineno">   18</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4">bits_t</a> &amp;bits = <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a01ac945648e80cdf9e3e17bcf28677d0">HUFFMAN_TABLE</a>.at(idx);</div>
-<div class="line"><span class="lineno">   19</span>        <a class="code hl_class" href="classsese_1_1net_1_1http_1_1huffman__node__t.html" title="Huffman 解码节点">huffman_node_t</a> *current = <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de">m_root</a>;</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;bit: bits) {</div>
-<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">if</span> (bit) {</div>
-<div class="line"><span class="lineno">   23</span>                <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == current-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#ac7e4233c54de5c1db79466d46b4e24dd">right</a>()) {</div>
-<div class="line"><span class="lineno">   24</span>                    current-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#ac7e4233c54de5c1db79466d46b4e24dd">right</a>(<span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1net_1_1http_1_1huffman__node__t.html" title="Huffman 解码节点">huffman_node_t</a>);</div>
-<div class="line"><span class="lineno">   25</span>                }</div>
-<div class="line"><span class="lineno">   26</span>                current = current-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#ac7e4233c54de5c1db79466d46b4e24dd">right</a>();</div>
-<div class="line"><span class="lineno">   27</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   28</span>                <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == current-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a17986473f8839f8623657740ad05030b">left</a>()) {</div>
-<div class="line"><span class="lineno">   29</span>                    current-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a17986473f8839f8623657740ad05030b">left</a>(<span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1net_1_1http_1_1huffman__node__t.html" title="Huffman 解码节点">huffman_node_t</a>);</div>
-<div class="line"><span class="lineno">   30</span>                }</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>                current = current-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a17986473f8839f8623657740ad05030b">left</a>();</div>
-<div class="line"><span class="lineno">   33</span>            }</div>
-<div class="line"><span class="lineno">   34</span>        }</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>        current-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a257aff4b43e16d0e3e2b812ec5032af0">code</a>(<span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(idx));</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="line"><span class="lineno">   38</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_huffman_8h_source.html#l00037">sese::net::http::huffman_node_t::code()</a>, <a class="el" href="_h_p_a_c_k_8h_source.html#l00046">sese::net::http::HUFFMAN_TABLE</a>, <a class="el" href="_huffman_8h_source.html#l00041">sese::net::http::huffman_node_t::left()</a>, <a class="el" href="_huffman_8h_source.html#l00053">m_root</a> , 以及 <a class="el" href="_huffman_8h_source.html#l00045">sese::net::http::huffman_node_t::right()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a257aff4b43e16d0e3e2b812ec5032af0">sese::net::http::huffman_node_t::code()</a>, <a class="el" href="namespacesese_1_1net_1_1http.html#a01ac945648e80cdf9e3e17bcf28677d0">sese::net::http::HUFFMAN_TABLE</a>, <a class="el" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a17986473f8839f8623657740ad05030b">sese::net::http::huffman_node_t::left()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de">m_root</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#ac7e4233c54de5c1db79466d46b4e24dd">sese::net::http::huffman_node_t::right()</a>.</p>
 
 </div>
 </div>
@@ -238,12 +212,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_huffman_8cpp_source.html">Huffman.cpp</a> 第 <a class="el" href="_huffman_8cpp_source.html#l00040">40</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>                                         {</div>
-<div class="line"><span class="lineno">   41</span>    <a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#a479742c8adbba07d9acbc3e4e90e0893">delete_node</a>(<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de">m_root</a>);</div>
-<div class="line"><span class="lineno">   42</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_huffman_8cpp_source.html#l00044">delete_node()</a> , 以及 <a class="el" href="_huffman_8h_source.html#l00053">m_root</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#a479742c8adbba07d9acbc3e4e90e0893">delete_node()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de">m_root</a>.</p>
 
 </div>
 </div>
@@ -274,49 +243,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_huffman_8cpp_source.html">Huffman.cpp</a> 第 <a class="el" href="_huffman_8cpp_source.html#l00055">55</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>                                                                         {</div>
-<div class="line"><span class="lineno">   56</span>    std::string dst;</div>
-<div class="line"><span class="lineno">   57</span>    <a class="code hl_class" href="classsese_1_1net_1_1http_1_1huffman__node__t.html" title="Huffman 解码节点">huffman_node_t</a> *current(<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de">m_root</a>);</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">if</span> (len &gt; std::numeric_limits&lt;unsigned int&gt;::max()) {</div>
-<div class="line"><span class="lineno">   60</span>        <span class="comment">// throw std::invalid_argument(&quot;HPACK::huffman_tree_t::decode(): Overly long input string&quot;);</span></div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> idx = 0; idx &lt; len; ++idx) {</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">for</span> (int8_t j = 7; j &gt;= 0; j--) {</div>
-<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">if</span> ((src[idx] &amp; (1 &lt;&lt; j)) &gt; 0) {</div>
-<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == current-&gt;right()) {</div>
-<div class="line"><span class="lineno">   68</span>                    <span class="comment">// throw std::runtime_error(</span></div>
-<div class="line"><span class="lineno">   69</span>                    <span class="comment">//        &quot;HPACK::huffman_tree_t::decode(): Internal state error (right == nullptr)&quot;);</span></div>
-<div class="line"><span class="lineno">   70</span>                    <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">   71</span>                }</div>
-<div class="line"><span class="lineno">   72</span>                current = current-&gt;right();</div>
-<div class="line"><span class="lineno">   73</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   74</span>                <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == current-&gt;left()) {</div>
-<div class="line"><span class="lineno">   75</span>                    <span class="comment">// throw std::runtime_error(&quot;HPACK::huffman_tree_t::decode(): Internal state error (left == nullptr)&quot;);</span></div>
-<div class="line"><span class="lineno">   76</span>                    <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">   77</span>                }</div>
-<div class="line"><span class="lineno">   78</span>                current = current-&gt;left();</div>
-<div class="line"><span class="lineno">   79</span>            }</div>
-<div class="line"><span class="lineno">   80</span> </div>
-<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (current-&gt;code() &gt;= 0) {</div>
-<div class="line"><span class="lineno">   82</span>                uint16_t code = current-&gt;code();</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>                <span class="keywordflow">if</span> (257 == code)</div>
-<div class="line"><span class="lineno">   85</span>                    dst += <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(((code &amp; 0xFF00) &gt;&gt; 8) &amp; 0xFF);</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>                dst += <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(code &amp; 0xFF);</div>
-<div class="line"><span class="lineno">   88</span>                current = <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de">m_root</a>;</div>
-<div class="line"><span class="lineno">   89</span>            }</div>
-<div class="line"><span class="lineno">   90</span>        }</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> dst;</div>
-<div class="line"><span class="lineno">   94</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_huffman_8h_source.html#l00037">sese::net::http::huffman_node_t::code()</a>, <a class="el" href="_huffman_8h_source.html#l00041">sese::net::http::huffman_node_t::left()</a>, <a class="el" href="_huffman_8h_source.html#l00053">m_root</a> , 以及 <a class="el" href="_huffman_8h_source.html#l00045">sese::net::http::huffman_node_t::right()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a257aff4b43e16d0e3e2b812ec5032af0">sese::net::http::huffman_node_t::code()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a17986473f8839f8623657740ad05030b">sese::net::http::huffman_node_t::left()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#aff9d807ad904fcff53ae54430d1398de">m_root</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#ac7e4233c54de5c1db79466d46b4e24dd">sese::net::http::huffman_node_t::right()</a>.</p>
 
 </div>
 </div>
@@ -344,19 +271,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_huffman_8cpp_source.html">Huffman.cpp</a> 第 <a class="el" href="_huffman_8cpp_source.html#l00044">44</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>                                                           {</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> != n-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#ac7e4233c54de5c1db79466d46b4e24dd">right</a>()) {</div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#a479742c8adbba07d9acbc3e4e90e0893">delete_node</a>(n-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#ac7e4233c54de5c1db79466d46b4e24dd">right</a>());</div>
-<div class="line"><span class="lineno">   47</span>    }</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> != n-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a17986473f8839f8623657740ad05030b">left</a>()) {</div>
-<div class="line"><span class="lineno">   49</span>        <a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#a479742c8adbba07d9acbc3e4e90e0893">delete_node</a>(n-&gt;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1huffman__node__t.html#a17986473f8839f8623657740ad05030b">left</a>());</div>
-<div class="line"><span class="lineno">   50</span>    }</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>    <span class="keyword">delete</span> n;</div>
-<div class="line"><span class="lineno">   53</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_huffman_8cpp_source.html#l00040">~huffman_tree_t()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#af240a3198297918b06268cd25cd19699">~huffman_tree_t()</a>.</p>
 
 </div>
 </div>
@@ -381,15 +296,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_huffman_8h_source.html">Huffman.h</a> 第 <a class="el" href="_huffman_8h_source.html#l00053">53</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_huffman_8cpp_source.html#l00055">decode()</a>, <a class="el" href="_huffman_8cpp_source.html#l00016">huffman_tree_t()</a> , 以及 <a class="el" href="_huffman_8cpp_source.html#l00040">~huffman_tree_t()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#a2121db27088504e0670d4f898005301f">decode()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#a15422f90998afd0dd2b99578333094af">huffman_tree_t()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1huffman__tree__t.html#af240a3198297918b06268cd25cd19699">~huffman_tree_t()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/net/http/<a class="el" href="_huffman_8h_source.html">Huffman.h</a></li>
-<li>sese/net/http/<a class="el" href="_huffman_8cpp_source.html">Huffman.cpp</a></li>
+<li>sese/net/http/<a class="el" href="_huffman_8cpp.html">Huffman.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

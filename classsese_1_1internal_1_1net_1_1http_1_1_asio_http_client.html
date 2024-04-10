@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -132,6 +133,9 @@ $(document).ready(function(){initNavTree('classsese_1_1internal_1_1net_1_1http_1
   <div class="headertitle"><div class="title">sese::internal::net::http::AsioHttpClient类 参考</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>基于ASIO实现的HTTP/1.1客户端  
+ <a href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -214,8 +218,7 @@ Protected 属性</h2></td></tr>
 <tr class="separator:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00013">13</a> 行定义.</p>
+<div class="textblock"><p>基于ASIO实现的HTTP/1.1客户端 </p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ac886cfb025f5056d5ed6a01f6a7101e6" name="ac886cfb025f5056d5ed6a01f6a7101e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac886cfb025f5056d5ed6a01f6a7101e6">&#9670;&#160;</a></span>AsioHttpClient()</h2>
@@ -232,13 +235,6 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a> 第 <a class="el" href="_asio_http_client_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>    : <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a16b701a2a9ac944f30fb74f4e08d7c35">ioContext</a>(),</div>
-<div class="line"><span class="lineno">   12</span>      <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>(<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a16b701a2a9ac944f30fb74f4e08d7c35">ioContext</a>),</div>
-<div class="line"><span class="lineno">   13</span>      <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a3362950cf97c0f61535244c1cae0071e">sslContext</a>(asio::ssl::context::tlsv12),</div>
-<div class="line"><span class="lineno">   14</span>      <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#afc06d4c564d4420ba4bd55d66b354440">sslSocket</a>(<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>, <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a3362950cf97c0f61535244c1cae0071e">sslContext</a>) {</div>
-<div class="line"><span class="lineno">   15</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a8a433f1ae2f1d4e7fd47075f14f0aea1" name="a8a433f1ae2f1d4e7fd47075f14f0aea1"></a>
@@ -264,12 +260,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a> 第 <a class="el" href="_asio_http_client_8cpp_source.html#l00017">17</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>                                {</div>
-<div class="line"><span class="lineno">   18</span>    <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>.close();</div>
-<div class="line"><span class="lineno">   19</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_asio_http_client_8h_source.html#l00037">socket</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>.</p>
 
 </div>
 </div>
@@ -300,12 +291,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a34454423576336abc23ff1ea13e2c39b">sese::net::http::Requestable</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a> 第 <a class="el" href="_asio_http_client_8cpp_source.html#l00021">21</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>                                 {</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>.value();</div>
-<div class="line"><span class="lineno">   23</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_asio_http_client_8h_source.html#l00035">code</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>.</p>
 
 </div>
 </div>
@@ -335,12 +321,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#aa6bfcde26859d5e40528357bc6a90229">sese::net::http::Requestable</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a> 第 <a class="el" href="_asio_http_client_8cpp_source.html#l00025">25</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>                                             {</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>.message();</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_asio_http_client_8h_source.html#l00035">code</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>.</p>
 
 </div>
 </div>
@@ -388,38 +369,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#ae6da6d57c369c45fecc4a42f00edac2d">sese::net::http::Requestable</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a> 第 <a class="el" href="_asio_http_client_8cpp_source.html#l00029">29</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>                                                                      {</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keyword">auto</span> url_result = <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_request_parser.html#af1a74f01a229b6f35e140592b76f8283">RequestParser::parse</a>(url);</div>
-<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a> = std::move(url_result.request);</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (!proxy.empty()) {</div>
-<div class="line"><span class="lineno">   33</span>        <span class="keyword">auto</span> proxy_result = <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_request_parser.html#af1a74f01a229b6f35e140592b76f8283">RequestParser::parse</a>(proxy);</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span> (proxy_result.address == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   35</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   36</span>        }</div>
-<div class="line"><span class="lineno">   37</span>        <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>-&gt;setUrl(url);</div>
-<div class="line"><span class="lineno">   38</span>        <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>-&gt;set(<span class="stringliteral">&quot;via:&quot;</span>, proxy);</div>
-<div class="line"><span class="lineno">   39</span>        <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>-&gt;set(<span class="stringliteral">&quot;proxy-connection&quot;</span>, <span class="stringliteral">&quot;keep-alive&quot;</span>);</div>
-<div class="line"><span class="lineno">   40</span>        <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a35df57e4bbe70da5c1ed02867c7e92bd">address</a> = std::move(proxy_result.address);</div>
-<div class="line"><span class="lineno">   41</span>        <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a> = <a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">strcmpDoNotCase</a>(<span class="stringliteral">&quot;https&quot;</span>, proxy_result.url.getProtocol().c_str());</div>
-<div class="line"><span class="lineno">   42</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">if</span> (url_result.address == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   44</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   45</span>        }</div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a35df57e4bbe70da5c1ed02867c7e92bd">address</a> = std::move(url_result.address);</div>
-<div class="line"><span class="lineno">   47</span>        <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a> = <a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">strcmpDoNotCase</a>(<span class="stringliteral">&quot;https&quot;</span>, url_result.url.getProtocol().c_str());</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>    <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">resp</a> = std::make_unique&lt;Response&gt;();</div>
-<div class="line"><span class="lineno">   51</span>    <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>-&gt;set(<span class="stringliteral">&quot;user-agent&quot;</span>, <span class="stringliteral">&quot;sese-httpclient/1.0&quot;</span>);</div>
-<div class="line"><span class="lineno">   52</span>    <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>-&gt;set(<span class="stringliteral">&quot;connection&quot;</span>, <span class="stringliteral">&quot;keep-alive&quot;</span>);</div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a36dde3cadf4d1bbf5c19ba8bcf70dbcd">cookies</a> = std::make_shared&lt;CookieMap&gt;();</div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>-&gt;setCookies(<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a36dde3cadf4d1bbf5c19ba8bcf70dbcd">cookies</a>);</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   57</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_asio_http_client_8h_source.html#l00032">address</a>, <a class="el" href="_asio_http_client_8h_source.html#l00033">cookies</a>, <a class="el" href="_request_parser_8cpp_source.html#l00006">sese::net::http::RequestParser::parse()</a>, <a class="el" href="_requestable_8h_source.html#l00050">sese::net::http::Requestable::req</a>, <a class="el" href="_requestable_8h_source.html#l00051">sese::net::http::Requestable::resp</a>, <a class="el" href="_asio_http_client_8h_source.html#l00039">ssl</a> , 以及 <a class="el" href="util_2_util_8cpp_source.html#l00046">sese::strcmpDoNotCase()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a35df57e4bbe70da5c1ed02867c7e92bd">address</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a36dde3cadf4d1bbf5c19ba8bcf70dbcd">cookies</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_request_parser.html#af1a74f01a229b6f35e140592b76f8283">sese::net::http::RequestParser::parse()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">sese::net::http::Requestable::req</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">sese::net::http::Requestable::resp</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a> , 以及 <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>.</p>
 
 </div>
 </div>
@@ -459,25 +409,9 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a38e732da4e1a4ad927ccbd1e545b19e8">sese::net::http::Requestable</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a> 第 <a class="el" href="_asio_http_client_8cpp_source.html#l00110">110</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>                                                  {</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read</a>;</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a>) {</div>
-<div class="line"><span class="lineno">  113</span>        <a class="code hl_function" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read</a> = <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#afc06d4c564d4420ba4bd55d66b354440">sslSocket</a>.read_some(asio::buffer(buf, len), <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>);</div>
-<div class="line"><span class="lineno">  114</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  115</span>        <a class="code hl_function" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read</a> = <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>.read_some(asio::buffer(buf, len), <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>);</div>
-<div class="line"><span class="lineno">  116</span>    }</div>
-<div class="line"><span class="lineno">  117</span> </div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>) {</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  120</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(<a class="code hl_function" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read</a>);</div>
-<div class="line"><span class="lineno">  122</span>    }</div>
-<div class="line"><span class="lineno">  123</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_asio_http_client_8h_source.html#l00035">code</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00110">read()</a>, <a class="el" href="_asio_http_client_8h_source.html#l00037">socket</a>, <a class="el" href="_asio_http_client_8h_source.html#l00039">ssl</a> , 以及 <a class="el" href="_asio_http_client_8h_source.html#l00042">sslSocket</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#afc06d4c564d4420ba4bd55d66b354440">sslSocket</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_asio_http_client_8cpp_source.html#l00110">read()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read()</a>.</p>
 
 </div>
 </div>
@@ -507,59 +441,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a512ba1b20798b86137573b056a716ae3">sese::net::http::Requestable</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a> 第 <a class="el" href="_asio_http_client_8cpp_source.html#l00059">59</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>                             {</div>
-<div class="line"><span class="lineno">   60</span>    <span class="comment">// 允许重连一次</span></div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordtype">int</span> times = 0;</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a940ce4c1fcc35261f1615ac2ad1c666d">first</a>) {</div>
-<div class="line"><span class="lineno">   63</span>        times += 1;</div>
-<div class="line"><span class="lineno">   64</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a940ce4c1fcc35261f1615ac2ad1c666d">first</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   66</span>    }</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">while</span> (!<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_http_util.html#abf1c72f1b44582756c202b6709fe65f5" title="向流中发送一个请求">HttpUtil::sendRequest</a>(<span class="keyword">this</span>, <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>.get())) {</div>
-<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">if</span> (times &gt; 1) {</div>
-<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   70</span>        }</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>        times += 1;</div>
-<div class="line"><span class="lineno">   73</span>        asio::ip::tcp::endpoint endpoint(<a class="code hl_variable" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>(<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a35df57e4bbe70da5c1ed02867c7e92bd">address</a>), <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a35df57e4bbe70da5c1ed02867c7e92bd">address</a>-&gt;getPort());</div>
-<div class="line"><span class="lineno">   74</span>        <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a> = <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>.connect(endpoint, <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>);</div>
-<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>) {</div>
-<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   77</span>        }</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a>) {</div>
-<div class="line"><span class="lineno">   80</span>            <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a> = <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#afc06d4c564d4420ba4bd55d66b354440">sslSocket</a>.handshake(asio::ssl::stream_base::client, <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>);</div>
-<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>) {</div>
-<div class="line"><span class="lineno">   82</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   83</span>            }</div>
-<div class="line"><span class="lineno">   84</span>        }</div>
-<div class="line"><span class="lineno">   85</span>    }</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    <span class="keyword">auto</span> response_status = <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_http_util.html#a61e679735b6881437ba057690fc5bf24" title="从流中接收一个响应">HttpUtil::recvResponse</a>(<span class="keyword">this</span>, <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">resp</a>.get());</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">if</span> (!response_status) {</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   90</span>    }</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>    <span class="keyword">const</span> <span class="keyword">auto</span> CONNECTION_VALUE = <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">resp</a>-&gt;get(<span class="stringliteral">&quot;connection&quot;</span>, <span class="stringliteral">&quot;close&quot;</span>);</div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">strcmpDoNotCase</a>(<span class="stringliteral">&quot;close&quot;</span>, CONNECTION_VALUE.c_str())) {</div>
-<div class="line"><span class="lineno">   94</span>        <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a940ce4c1fcc35261f1615ac2ad1c666d">first</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a>) {</div>
-<div class="line"><span class="lineno">   96</span>            <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a> = <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#afc06d4c564d4420ba4bd55d66b354440">sslSocket</a>.shutdown(<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>);</div>
-<div class="line"><span class="lineno">   97</span>        }</div>
-<div class="line"><span class="lineno">   98</span>        <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>.close();</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <span class="comment">// 自动应用 cookie</span></div>
-<div class="line"><span class="lineno">  102</span>    <span class="keyword">const</span> <span class="keyword">auto</span> DEST = <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>-&gt;getCookies();</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;item: *<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">resp</a>-&gt;getCookies()) {</div>
-<div class="line"><span class="lineno">  104</span>        DEST-&gt;add(item.second);</div>
-<div class="line"><span class="lineno">  105</span>    }</div>
-<div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  108</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_asio_http_client_8h_source.html#l00032">address</a>, <a class="el" href="_asio_http_client_8h_source.html#l00035">code</a>, <a class="el" href="_encoding_converter_8cpp_source.html#l00007">convert</a>, <a class="el" href="_asio_http_client_8h_source.html#l00040">first</a>, <a class="el" href="_http_util_8cpp_source.html#l00132">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="_requestable_8h_source.html#l00050">sese::net::http::Requestable::req</a>, <a class="el" href="_requestable_8h_source.html#l00051">sese::net::http::Requestable::resp</a>, <a class="el" href="_http_util_8cpp_source.html#l00080">sese::net::http::HttpUtil::sendRequest()</a>, <a class="el" href="_asio_http_client_8h_source.html#l00037">socket</a>, <a class="el" href="_asio_http_client_8h_source.html#l00039">ssl</a>, <a class="el" href="_asio_http_client_8h_source.html#l00042">sslSocket</a> , 以及 <a class="el" href="util_2_util_8cpp_source.html#l00046">sese::strcmpDoNotCase()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a35df57e4bbe70da5c1ed02867c7e92bd">address</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>, <a class="el" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a940ce4c1fcc35261f1615ac2ad1c666d">first</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#a61e679735b6881437ba057690fc5bf24">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">sese::net::http::Requestable::req</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">sese::net::http::Requestable::resp</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#abf1c72f1b44582756c202b6709fe65f5">sese::net::http::HttpUtil::sendRequest()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#afc06d4c564d4420ba4bd55d66b354440">sslSocket</a> , 以及 <a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase()</a>.</p>
 
 </div>
 </div>
@@ -599,23 +481,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a4bbfd3daa4fbeb435d652f7bac84b514">sese::net::http::Requestable</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a> 第 <a class="el" href="_asio_http_client_8cpp_source.html#l00125">125</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>                                                         {</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordtype">size_t</span> wrote;</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a>) {</div>
-<div class="line"><span class="lineno">  128</span>        wrote = <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#afc06d4c564d4420ba4bd55d66b354440">sslSocket</a>.write_some(asio::buffer(buf, len), <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>);</div>
-<div class="line"><span class="lineno">  129</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  130</span>        wrote = <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>.write_some(asio::buffer(buf, len), <a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>);</div>
-<div class="line"><span class="lineno">  131</span>    }</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>) {</div>
-<div class="line"><span class="lineno">  134</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  135</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  136</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(wrote);</div>
-<div class="line"><span class="lineno">  137</span>    }</div>
-<div class="line"><span class="lineno">  138</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_asio_http_client_8h_source.html#l00035">code</a>, <a class="el" href="_asio_http_client_8h_source.html#l00037">socket</a>, <a class="el" href="_asio_http_client_8h_source.html#l00039">ssl</a> , 以及 <a class="el" href="_asio_http_client_8h_source.html#l00042">sslSocket</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aec68816f721b4b888779389878c9b6d3">code</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a343e5f8fcbf9839d59eab1fd96e70ff4">socket</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a4781dca28b5c143cc005a8c24b9d2156">ssl</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#afc06d4c564d4420ba4bd55d66b354440">sslSocket</a>.</p>
 
 </div>
 </div>
@@ -640,9 +506,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00032">32</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_asio_http_client_8cpp_source.html#l00029">init()</a> , 以及 <a class="el" href="_asio_http_client_8cpp_source.html#l00059">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#ab2937c06515eddeca6f12ddf4cf00814">init()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8133f79c8818d8efdd1e9952e5ecab7c">request()</a>.</p>
 
 </div>
 </div>
@@ -666,10 +530,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00035">35</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_asio_http_client_8cpp_source.html#l00021">getLastError()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00025">getLastErrorString()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00110">read()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00059">request()</a> , 以及 <a class="el" href="_asio_http_client_8cpp_source.html#l00125">write()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#aa638667eedba6efa90892ac5421f171e">getLastError()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a1167dd2e8e57b3676e1a70603c2acf77">getLastErrorString()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8133f79c8818d8efdd1e9952e5ecab7c">request()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a3937c27375973cf4740a443e9853c739">write()</a>.</p>
 
 </div>
 </div>
@@ -693,9 +554,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00033">33</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_asio_http_client_8cpp_source.html#l00029">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#ab2937c06515eddeca6f12ddf4cf00814">init()</a>.</p>
 
 </div>
 </div>
@@ -719,9 +578,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00040">40</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_asio_http_client_8cpp_source.html#l00059">request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8133f79c8818d8efdd1e9952e5ecab7c">request()</a>.</p>
 
 </div>
 </div>
@@ -745,8 +602,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00036">36</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a343e5f8fcbf9839d59eab1fd96e70ff4" name="a343e5f8fcbf9839d59eab1fd96e70ff4"></a>
@@ -769,9 +624,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00037">37</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_asio_http_client_8cpp_source.html#l00110">read()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00059">request()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00125">write()</a> , 以及 <a class="el" href="_asio_http_client_8cpp_source.html#l00017">~AsioHttpClient()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8133f79c8818d8efdd1e9952e5ecab7c">request()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a3937c27375973cf4740a443e9853c739">write()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8a433f1ae2f1d4e7fd47075f14f0aea1">~AsioHttpClient()</a>.</p>
 
 </div>
 </div>
@@ -795,9 +648,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00039">39</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_asio_http_client_8cpp_source.html#l00029">init()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00110">read()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00059">request()</a> , 以及 <a class="el" href="_asio_http_client_8cpp_source.html#l00125">write()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#ab2937c06515eddeca6f12ddf4cf00814">init()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8133f79c8818d8efdd1e9952e5ecab7c">request()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a3937c27375973cf4740a443e9853c739">write()</a>.</p>
 
 </div>
 </div>
@@ -821,8 +672,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00041">41</a> 行定义.</p>
-
 </div>
 </div>
 <a id="afc06d4c564d4420ba4bd55d66b354440" name="afc06d4c564d4420ba4bd55d66b354440"></a>
@@ -845,15 +694,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a> 第 <a class="el" href="_asio_http_client_8h_source.html#l00042">42</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_asio_http_client_8cpp_source.html#l00110">read()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00059">request()</a> , 以及 <a class="el" href="_asio_http_client_8cpp_source.html#l00125">write()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a5469aa725164a1be5b9487bde86a81ec">read()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8133f79c8818d8efdd1e9952e5ecab7c">request()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a3937c27375973cf4740a443e9853c739">write()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/internal/net/http/<a class="el" href="_asio_http_client_8h_source.html">AsioHttpClient.h</a></li>
-<li>sese/internal/net/http/<a class="el" href="_asio_http_client_8cpp_source.html">AsioHttpClient.cpp</a></li>
+<li>sese/internal/net/http/<a class="el" href="_asio_http_client_8cpp.html">AsioHttpClient.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

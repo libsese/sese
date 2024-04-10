@@ -15,5 +15,6 @@ var classsese_1_1_time_span =
     [ "getTotalMilliseconds", "classsese_1_1_time_span.html#a766a672cb7b962c2d492a5ce349d1ba8", null ],
     [ "getTotalMinutes", "classsese_1_1_time_span.html#ae3c3d35e4dffbb1aa66256209d4e9b5a", null ],
     [ "getTotalSeconds", "classsese_1_1_time_span.html#a23be9a65be8377e596801de38e080b74", null ],
+    [ "timestamp", "classsese_1_1_time_span.html#a1b69934665fd3048c9db59b2fa051b5e", null ],
     [ "ZERO", "classsese_1_1_time_span.html#a7ea21db35b0c0a39a1378d76e4dcefe2", null ]
 ];

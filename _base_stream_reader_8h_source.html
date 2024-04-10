@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -206,7 +207,8 @@ $(document).ready(function(){initNavTree('_base_stream_reader_8h_source.html',''
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_base_stream_reader.html#a585192de8c458baa7acf957e9995e51b">   98</a></span>    <span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1io_1_1_byte_builder.html#a06c03d0ac53dd2e9df603d6a7ad13d66">ByteBuilder::Ptr</a> &amp;<a class="code hl_function" href="classsese_1_1io_1_1_base_stream_reader.html#a585192de8c458baa7acf957e9995e51b" title="由于 BaseStreamReader 的缓存机制，导致缓存尾部数据可能丢失，该函数返回超前未被读取部分数据长度">getBuffer</a>() noexcept { <span class="keywordflow">return</span> this-&gt;bufferStream; }</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    int64_t preRead() {</div>
+<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_base_stream_reader.html#a6d044cbe0064c34aeb0ee7d2eade65f7">  101</a></span>    int64_t <a class="code hl_function" href="classsese_1_1io_1_1_base_stream_reader.html#a6d044cbe0064c34aeb0ee7d2eade65f7">preRead</a>() {</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd" title="字节流缓冲区单元因子">STREAM_BYTE_STREAM_SIZE_FACTOR</a>];</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keyword">auto</span> len = sourceStream-&gt;read(buffer, <a class="code hl_variable" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a" title="String Buffer 单元因子">STRING_BUFFER_SIZE_FACTOR</a>);</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">if</span> (0 &lt; len) {</div>
@@ -214,10 +216,11 @@ $(document).ready(function(){initNavTree('_base_stream_reader_8h_source.html',''
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">return</span> len;</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
+</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    Stream::Ptr sourceStream;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    ByteBuilder::Ptr bufferStream;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_base_stream_reader.html#abea22b2c7d67871366818120eb55b95c">  111</a></span>    <a class="code hl_typedef" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> <a class="code hl_variable" href="classsese_1_1io_1_1_base_stream_reader.html#abea22b2c7d67871366818120eb55b95c">sourceStream</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_base_stream_reader.html#a48f0c7f04f19e9eeb66f9b6c66a71cc8">  112</a></span>    <a class="code hl_typedef" href="classsese_1_1io_1_1_byte_builder.html#a06c03d0ac53dd2e9df603d6a7ad13d66">ByteBuilder::Ptr</a> <a class="code hl_variable" href="classsese_1_1io_1_1_base_stream_reader.html#a48f0c7f04f19e9eeb66f9b6c66a71cc8">bufferStream</a>;</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>};</div>
 </div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>

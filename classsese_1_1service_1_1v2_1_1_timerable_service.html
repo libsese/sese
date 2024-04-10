@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -127,6 +128,7 @@ $(document).ready(function(){initNavTree('classsese_1_1service_1_1v2_1_1_timerab
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1service_1_1v2_1_1_timerable_service-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::service::v2::TimerableService类 参考</div></div>
 </div><!--header-->
@@ -156,11 +158,15 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a81a1ae4f7fe235f6fe1a68bd142eee38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cf80b02b7facfd94e70e43e08049388" id="r_a3cf80b02b7facfd94e70e43e08049388"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">cancelTimeoutEvent</a> (<a class="el" href="structsese_1_1service_1_1v2_1_1_timeout_event.html">v2::TimeoutEvent</a> *event)</td></tr>
 <tr class="separator:a3cf80b02b7facfd94e70e43e08049388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a6e265b27eb2f41e501116c67fdc2faa6" id="r_a6e265b27eb2f41e501116c67fdc2faa6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_time_wheel.html">TimeWheel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a6e265b27eb2f41e501116c67fdc2faa6">timeWheel</a> {}</td></tr>
+<tr class="memdesc:a6e265b27eb2f41e501116c67fdc2faa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">时间轮  <br /></td></tr>
+<tr class="separator:a6e265b27eb2f41e501116c67fdc2faa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>可定时服务 </p>
-
-<p class="definition">在文件 <a class="el" href="_timerable_service___v2_8h_source.html">TimerableService_V2.h</a> 第 <a class="el" href="_timerable_service___v2_8h_source.html#l00026">26</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
 <a id="a3cf80b02b7facfd94e70e43e08049388" name="a3cf80b02b7facfd94e70e43e08049388"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3cf80b02b7facfd94e70e43e08049388">&#9670;&#160;</a></span>cancelTimeoutEvent()</h2>
@@ -184,15 +190,9 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_timerable_service___v2_8cpp_source.html">TimerableService_V2.cpp</a> 第 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>                                                               {</div>
-<div class="line"><span class="lineno">   29</span>    timeWheel.<a class="code hl_function" href="classsese_1_1_time_wheel.html#abdb2f1bbbeedeb421d16d63a0dd1c390">cancel</a>(event-&gt;event);</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keyword">delete</span> event;</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp_source.html#l00049">sese::TimeWheel::cancel()</a> , 以及 <a class="el" href="_timerable_service___v2_8h_source.html#l00020">sese::service::v2::TimeoutEvent::event</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_time_wheel.html#abdb2f1bbbeedeb421d16d63a0dd1c390">sese::TimeWheel::cancel()</a>, <a class="el" href="structsese_1_1service_1_1v2_1_1_timeout_event.html#ace9238239582db254e1549f244604b47">sese::service::v2::TimeoutEvent::event</a> , 以及 <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a6e265b27eb2f41e501116c67fdc2faa6">timeWheel</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00370">sese::iocp::v1::IOCPServer::cancelTimeout()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00361">sese::iocp::v1::IOCPServer::setTimeout()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00045">sese::iocp::v1::IOCPService::~IOCPService()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a7269da27822e4cbb8491a9a392347435">sese::iocp::v1::IOCPServer::cancelTimeout()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ae8c20b27594710cd3350072139ea43f2">sese::iocp::v1::IOCPService::releaseContext()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afbcbd23b89822a275eec7339642f070d">sese::iocp::v1::IOCPServer::setTimeout()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ad3da176b2def0938c9cf8134fbd5b851">sese::iocp::v1::IOCPService::~IOCPService()</a>.</p>
 
 </div>
 </div>
@@ -226,13 +226,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_timerable_service___v2_8cpp_source.html">TimerableService_V2.cpp</a> 第 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                {</div>
-<div class="line"><span class="lineno">    7</span>    timeWheel.<a class="code hl_function" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720" title="检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件">check</a>();</div>
-<div class="line"><span class="lineno">    8</span>    EventLoop::dispatch(timeout);</div>
-<div class="line"><span class="lineno">    9</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp_source.html#l00055">sese::TimeWheel::check()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720">sese::TimeWheel::check()</a> , 以及 <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a6e265b27eb2f41e501116c67fdc2faa6">timeWheel</a>.</p>
 
 </div>
 </div>
@@ -268,11 +262,7 @@ Public 成员函数</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ab6ba6a0f9004258978f1714409b1e40c">sese::iocp::v1::IOCPService</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_timerable_service___v2_8cpp_source.html">TimerableService_V2.cpp</a> 第 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                      {</div>
-<div class="line"><span class="lineno">   12</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00014">setTimeoutEvent()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a81a1ae4f7fe235f6fe1a68bd142eee38">setTimeoutEvent()</a>.</p>
 
 </div>
 </div>
@@ -310,30 +300,42 @@ Public 成员函数</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>超时事件结构 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_timerable_service___v2_8cpp_source.html">TimerableService_V2.cpp</a> 第 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00014">14</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>                                                                           {</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keyword">auto</span> <span class="keyword">event</span> = <span class="keyword">new</span> v2::TimeoutEvent;</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keyword">event</span>-&gt;event = timeWheel.<a class="code hl_function" href="classsese_1_1_time_wheel.html#ad28e39359a50a74f841abc2bfebcc4d0">delay</a>(</div>
-<div class="line"><span class="lineno">   17</span>            [<span class="keyword">this</span>, event]() {</div>
-<div class="line"><span class="lineno">   18</span>                this-&gt;<a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a40b9af3055e541b7da3c7a58ec74ab44">onTimeout</a>(event);</div>
-<div class="line"><span class="lineno">   19</span>                <span class="keyword">delete</span> event;</div>
-<div class="line"><span class="lineno">   20</span>            },</div>
-<div class="line"><span class="lineno">   21</span>            seconds,</div>
-<div class="line"><span class="lineno">   22</span>            false</div>
-<div class="line"><span class="lineno">   23</span>    );</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keyword">event</span>-&gt;data = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span> event;</div>
-<div class="line"><span class="lineno">   26</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00035">sese::TimeWheel::delay()</a>, <a class="el" href="_timerable_service___v2_8h_source.html#l00020">sese::service::v2::TimeoutEvent::event</a> , 以及 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00011">onTimeout()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1_time_wheel.html#ad28e39359a50a74f841abc2bfebcc4d0">sese::TimeWheel::delay()</a>, <a class="el" href="structsese_1_1service_1_1v2_1_1_timeout_event.html#ace9238239582db254e1549f244604b47">sese::service::v2::TimeoutEvent::event</a>, <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a40b9af3055e541b7da3c7a58ec74ab44">onTimeout()</a> , 以及 <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a6e265b27eb2f41e501116c67fdc2faa6">timeWheel</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00361">sese::iocp::v1::IOCPServer::setTimeout()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afbcbd23b89822a275eec7339642f070d">sese::iocp::v1::IOCPServer::setTimeout()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a6e265b27eb2f41e501116c67fdc2faa6" name="a6e265b27eb2f41e501116c67fdc2faa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e265b27eb2f41e501116c67fdc2faa6">&#9670;&#160;</a></span>timeWheel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_time_wheel.html">TimeWheel</a> sese::service::v2::TimerableService::timeWheel {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>时间轮 </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">cancelTimeoutEvent()</a>, <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a8c0c0cc7a7acd12856b684ae219d2696">dispatch()</a> , 以及 <a class="el" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a81a1ae4f7fe235f6fe1a68bd142eee38">setTimeoutEvent()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/service/<a class="el" href="_timerable_service___v2_8h_source.html">TimerableService_V2.h</a></li>
-<li>sese/service/<a class="el" href="_timerable_service___v2_8cpp_source.html">TimerableService_V2.cpp</a></li>
+<li>sese/service/<a class="el" href="_timerable_service___v2_8cpp.html">TimerableService_V2.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

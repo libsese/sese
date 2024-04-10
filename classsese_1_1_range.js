@@ -8,5 +8,7 @@ var classsese_1_1_range =
     [ "end", "classsese_1_1_range.html#acc1b25153cbf826fa60d25c7d5798a53", null ],
     [ "exist", "classsese_1_1_range.html#a854c9c41be8188c5adb545a8d74407dc", null ],
     [ "rbegin", "classsese_1_1_range.html#af432d5267c724b0155b39d5a4127b383", null ],
-    [ "rend", "classsese_1_1_range.html#aa97c9213d1221e6eb7136026396dce7b", null ]
+    [ "rend", "classsese_1_1_range.html#aa97c9213d1221e6eb7136026396dce7b", null ],
+    [ "beginNumber", "classsese_1_1_range.html#a124d6fece4a71e4ca7fab7aba7456d9d", null ],
+    [ "endNumber", "classsese_1_1_range.html#afa9d3e9cf55b62797eacbd2118ce25f2", null ]
 ];

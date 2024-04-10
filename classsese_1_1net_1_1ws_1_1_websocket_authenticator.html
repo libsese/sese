@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -127,6 +128,8 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1ws_1_1_websocket_a
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
 <a href="classsese_1_1net_1_1ws_1_1_websocket_authenticator-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::net::ws::WebsocketAuthenticator类 参考</div></div>
 </div><!--header-->
@@ -155,6 +158,17 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1ws_1_1_websocket_a
 <tr class="memitem:af47324839ece6b376a1cb864e1c31ab7" id="r_af47324839ece6b376a1cb864e1c31ab7"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; char[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#af47324839ece6b376a1cb864e1c31ab7">toResult</a> (const char *key) noexcept</td></tr>
 <tr class="separator:af47324839ece6b376a1cb864e1c31ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:ae8e9244efd3c99ceb37fe9c28ed66701" id="r_ae8e9244efd3c99ceb37fe9c28ed66701"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#ae8e9244efd3c99ceb37fe9c28ed66701">generateKey</a> (uint8_t key[16])</td></tr>
+<tr class="memdesc:ae8e9244efd3c99ceb37fe9c28ed66701"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成二进制 key  <br /></td></tr>
+<tr class="separator:ae8e9244efd3c99ceb37fe9c28ed66701"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a40673f5c40e7b01ddd6ac8249a57a9df" id="r_a40673f5c40e7b01ddd6ac8249a57a9df"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#a40673f5c40e7b01ddd6ac8249a57a9df">append_string</a> = &quot;258EAFA5-E914-47DA-95CA-C5AB0DC85B11&quot;</td></tr>
+<tr class="separator:a40673f5c40e7b01ddd6ac8249a57a9df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
@@ -169,9 +183,35 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1ws_1_1_websocket_a
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>Websocket 验证器 </p>
-
-<p class="definition">在文件 <a class="el" href="_websocket_authenticator_8h_source.html">WebsocketAuthenticator.h</a> 第 <a class="el" href="_websocket_authenticator_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
+<a id="ae8e9244efd3c99ceb37fe9c28ed66701" name="ae8e9244efd3c99ceb37fe9c28ed66701"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8e9244efd3c99ceb37fe9c28ed66701">&#9670;&#160;</a></span>generateKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::net::ws::WebsocketAuthenticator::generateKey </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>key</em>[16]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>生成二进制 key </p>
+
+</div>
+</div>
 <a id="ac26f70f5030a77f7c914d7d7decf83d9" name="ac26f70f5030a77f7c914d7d7decf83d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac26f70f5030a77f7c914d7d7decf83d9">&#9670;&#160;</a></span>generateKeyPair()</h2>
 
@@ -196,44 +236,7 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1ws_1_1_websocket_a
 </div><div class="memdoc">
 <p>生成密钥对 </p><dl class="section return"><dt>返回</dt><dd>密钥对 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_web_socket_authenticator_8cpp_source.html">WebSocketAuthenticator.cpp</a> 第 <a class="el" href="_web_socket_authenticator_8cpp_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>                                                                                                                {</div>
-<div class="line"><span class="lineno">   29</span>    <span class="comment">// 生成二进制 key</span></div>
-<div class="line"><span class="lineno">   30</span>    uint8_t buffer[16];</div>
-<div class="line"><span class="lineno">   31</span>    generateKey(buffer);</div>
-<div class="line"><span class="lineno">   32</span>    <span class="comment">// 生成字符串 key</span></div>
-<div class="line"><span class="lineno">   33</span>    <span class="keyword">auto</span> key_string = std::unique_ptr&lt;char[]&gt;(<span class="keyword">new</span> <span class="keywordtype">char</span>[25]);</div>
-<div class="line"><span class="lineno">   34</span>    key_string.get()[24] = 0;</div>
-<div class="line"><span class="lineno">   35</span>    {</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keyword">auto</span> <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a> = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">InputBufferWrapper</a>(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer), 16);</div>
-<div class="line"><span class="lineno">   37</span>        <span class="keyword">auto</span> out = <a class="code hl_class" href="classsese_1_1io_1_1_output_buffer_wrapper.html" title="输出缓存包装器">OutputBufferWrapper</a>((<span class="keywordtype">char</span> *) key_string.get(), 24);</div>
-<div class="line"><span class="lineno">   38</span>        <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">Base64Converter::encode</a>(&amp;<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, &amp;out);</div>
-<div class="line"><span class="lineno">   39</span>    }</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>    <span class="comment">// 拼接 key</span></div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordtype">char</span> buffer0[24 + 36];</div>
-<div class="line"><span class="lineno">   43</span>    memcpy(buffer0 + 0, key_string.get(), 24);</div>
-<div class="line"><span class="lineno">   44</span>    memcpy(buffer0 + 24, append_string, 36);</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordtype">char</span> buffer1[20];</div>
-<div class="line"><span class="lineno">   47</span>    {</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keyword">auto</span> <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a> = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">InputBufferWrapper</a>(buffer0, 60);</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keyword">auto</span> out = <a class="code hl_class" href="classsese_1_1io_1_1_output_buffer_wrapper.html" title="输出缓存包装器">OutputBufferWrapper</a>(buffer1, 20);</div>
-<div class="line"><span class="lineno">   50</span>        <a class="code hl_function" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">SHA1Util::encode</a>(&amp;<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, &amp;out);</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>    <span class="keyword">auto</span> result_string = std::unique_ptr&lt;char[]&gt;(<span class="keyword">new</span> <span class="keywordtype">char</span>[29]);</div>
-<div class="line"><span class="lineno">   54</span>    result_string.get()[28] = 0;</div>
-<div class="line"><span class="lineno">   55</span>    {</div>
-<div class="line"><span class="lineno">   56</span>        <span class="keyword">auto</span> <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a> = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">InputBufferWrapper</a>(buffer1, 20);</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keyword">auto</span> out = <a class="code hl_class" href="classsese_1_1io_1_1_output_buffer_wrapper.html" title="输出缓存包装器">OutputBufferWrapper</a>(result_string.get(), 28);</div>
-<div class="line"><span class="lineno">   58</span>        <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">Base64Converter::encode</a>(&amp;<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, &amp;out);</div>
-<div class="line"><span class="lineno">   59</span>    }</div>
-<div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">return</span> {std::move(key_string), std::move(result_string)};</div>
-<div class="line"><span class="lineno">   62</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a1_util_8cpp_source.html#l00161">sese::SHA1Util::encode()</a>, <a class="el" href="_base64_converter_8cpp_source.html#l00058">sese::Base64Converter::encode()</a> , 以及 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">sese::SHA1Util::encode()</a>, <a class="el" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">sese::Base64Converter::encode()</a> , 以及 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a>.</p>
 
 </div>
 </div>
@@ -268,31 +271,7 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1ws_1_1_websocket_a
 </dl>
 <dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_web_socket_authenticator_8cpp_source.html">WebSocketAuthenticator.cpp</a> 第 <a class="el" href="_web_socket_authenticator_8cpp_source.html#l00088">88</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>                                                                                        {</div>
-<div class="line"><span class="lineno">   89</span>    <span class="comment">// 拼接 key</span></div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordtype">char</span> buffer0[24 + 36];</div>
-<div class="line"><span class="lineno">   91</span>    memcpy(buffer0 + 0, key, 24);</div>
-<div class="line"><span class="lineno">   92</span>    memcpy(buffer0 + 24, append_string, 36);</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordtype">char</span> buffer1[20];</div>
-<div class="line"><span class="lineno">   95</span>    {</div>
-<div class="line"><span class="lineno">   96</span>        <span class="keyword">auto</span> <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a> = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">InputBufferWrapper</a>(buffer0, 60);</div>
-<div class="line"><span class="lineno">   97</span>        <span class="keyword">auto</span> out = <a class="code hl_class" href="classsese_1_1io_1_1_output_buffer_wrapper.html" title="输出缓存包装器">OutputBufferWrapper</a>(buffer1, 20);</div>
-<div class="line"><span class="lineno">   98</span>        <a class="code hl_function" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">SHA1Util::encode</a>(&amp;<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, &amp;out);</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <span class="keyword">auto</span> res = std::unique_ptr&lt;char[]&gt;(<span class="keyword">new</span> <span class="keywordtype">char</span>[29]);</div>
-<div class="line"><span class="lineno">  102</span>    res.get()[28] = 0;</div>
-<div class="line"><span class="lineno">  103</span>    {</div>
-<div class="line"><span class="lineno">  104</span>        <span class="keyword">auto</span> <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a> = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">InputBufferWrapper</a>(buffer1, 20);</div>
-<div class="line"><span class="lineno">  105</span>        <span class="keyword">auto</span> out = <a class="code hl_class" href="classsese_1_1io_1_1_output_buffer_wrapper.html" title="输出缓存包装器">OutputBufferWrapper</a>(res.get(), 28);</div>
-<div class="line"><span class="lineno">  106</span>        <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">Base64Converter::encode</a>(&amp;<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, &amp;out);</div>
-<div class="line"><span class="lineno">  107</span>    }</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">return</span> std::move(res);</div>
-<div class="line"><span class="lineno">  109</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a1_util_8cpp_source.html#l00161">sese::SHA1Util::encode()</a>, <a class="el" href="_base64_converter_8cpp_source.html#l00058">sese::Base64Converter::encode()</a> , 以及 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">sese::SHA1Util::encode()</a>, <a class="el" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">sese::Base64Converter::encode()</a> , 以及 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a>.</p>
 
 </div>
 </div>
@@ -338,38 +317,36 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1ws_1_1_websocket_a
 </dl>
 <dl class="section return"><dt>返回</dt><dd>验证结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_web_socket_authenticator_8cpp_source.html">WebSocketAuthenticator.cpp</a> 第 <a class="el" href="_web_socket_authenticator_8cpp_source.html#l00064">64</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>                                                                                         {</div>
-<div class="line"><span class="lineno">   65</span>    <span class="comment">// 拼接 key</span></div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordtype">char</span> buffer0[24 + 36];</div>
-<div class="line"><span class="lineno">   67</span>    memcpy(buffer0 + 0, key, 24);</div>
-<div class="line"><span class="lineno">   68</span>    memcpy(buffer0 + 24, append_string, 36);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordtype">char</span> buffer1[20];</div>
-<div class="line"><span class="lineno">   71</span>    {</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keyword">auto</span> <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a> = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">InputBufferWrapper</a>(buffer0, 60);</div>
-<div class="line"><span class="lineno">   73</span>        <span class="keyword">auto</span> out = <a class="code hl_class" href="classsese_1_1io_1_1_output_buffer_wrapper.html" title="输出缓存包装器">OutputBufferWrapper</a>(buffer1, 20);</div>
-<div class="line"><span class="lineno">   74</span>        <a class="code hl_function" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">SHA1Util::encode</a>(&amp;<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, &amp;out);</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>    <span class="keywordtype">char</span> buffer2[29];</div>
-<div class="line"><span class="lineno">   78</span>    buffer2[28] = 0;</div>
-<div class="line"><span class="lineno">   79</span>    {</div>
-<div class="line"><span class="lineno">   80</span>        <span class="keyword">auto</span> <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a> = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">InputBufferWrapper</a>(buffer1, 20);</div>
-<div class="line"><span class="lineno">   81</span>        <span class="keyword">auto</span> out = <a class="code hl_class" href="classsese_1_1io_1_1_output_buffer_wrapper.html" title="输出缓存包装器">OutputBufferWrapper</a>(buffer2, 28);</div>
-<div class="line"><span class="lineno">   82</span>        <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">Base64Converter::encode</a>(&amp;<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, &amp;out);</div>
-<div class="line"><span class="lineno">   83</span>    }</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">return</span> 0 == <a class="code hl_function" href="namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1">strcmp</a>(result, buffer2);</div>
-<div class="line"><span class="lineno">   86</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a1_util_8cpp_source.html#l00161">sese::SHA1Util::encode()</a>, <a class="el" href="_base64_converter_8cpp_source.html#l00058">sese::Base64Converter::encode()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a> , 以及 <a class="el" href="util_2_util_8cpp_source.html#l00042">sese::strcmp()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">sese::SHA1Util::encode()</a>, <a class="el" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">sese::Base64Converter::encode()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a> , 以及 <a class="el" href="namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1">sese::strcmp()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a40673f5c40e7b01ddd6ac8249a57a9df" name="a40673f5c40e7b01ddd6ac8249a57a9df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40673f5c40e7b01ddd6ac8249a57a9df">&#9670;&#160;</a></span>append_string</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sese::net::ws::WebsocketAuthenticator::append_string = &quot;258EAFA5-E914-47DA-95CA-C5AB0DC85B11&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/net/ws/<a class="el" href="_websocket_authenticator_8h_source.html">WebsocketAuthenticator.h</a></li>
-<li>sese/net/ws/<a class="el" href="_web_socket_authenticator_8cpp_source.html">WebSocketAuthenticator.cpp</a></li>
+<li>sese/net/ws/<a class="el" href="_web_socket_authenticator_8cpp.html">WebSocketAuthenticator.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

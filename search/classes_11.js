@@ -19,5 +19,5 @@ var searchData=
   ['reusablesocket_16',['ReusableSocket',['../classsese_1_1net_1_1_reusable_socket.html',1,'sese::net']]],
   ['reverseiterator_17',['ReverseIterator',['../classsese_1_1_range_1_1_reverse_iterator.html',1,'sese::Range']]],
   ['ringqueue_18',['RingQueue',['../classsese_1_1_ring_queue.html',1,'sese']]],
-  ['runtimedata_19',['RuntimeData',['../structsese_1_1_thread_1_1_runtime_data.html',1,'sese::Thread']]]
+  ['runtimedata_19',['runtimedata',['../structsese_1_1_thread_1_1_runtime_data.html',1,'sese::Thread::RuntimeData'],['../structsese_1_1_thread_pool_1_1_runtime_data.html',1,'sese::ThreadPool::RuntimeData']]]
 ];

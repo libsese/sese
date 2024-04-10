@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1yaml_1_1_data.html',''); 
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1yaml_1_1_data-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::yaml::Data类 参考</div></div>
 </div><!--header-->
@@ -162,11 +164,14 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a256713f210b43707eb32dc353c4bdd27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2587670d5082baaf757178d75d165817" id="r_a2587670d5082baaf757178d75d165817"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1yaml.html#ad98fe9b98e6b6e5e5210b70b0d74c65c">DataType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1yaml_1_1_data.html#a2587670d5082baaf757178d75d165817">getType</a> () const noexcept</td></tr>
 <tr class="separator:a2587670d5082baaf757178d75d165817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:af5cd45d8984776276a9251f9a76df8e0" id="r_af5cd45d8984776276a9251f9a76df8e0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacesese_1_1yaml.html#ad98fe9b98e6b6e5e5210b70b0d74c65c">DataType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1yaml_1_1_data.html#af5cd45d8984776276a9251f9a76df8e0">TYPE</a></td></tr>
+<tr class="separator:af5cd45d8984776276a9251f9a76df8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>类型基类 </p>
-
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00033">33</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="abddaf7ad36986f271567fe377dfb602d" name="abddaf7ad36986f271567fe377dfb602d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abddaf7ad36986f271567fe377dfb602d">&#9670;&#160;</a></span>Ptr</h2>
@@ -179,8 +184,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00035">35</a> 行定义.</p>
 
 </div>
 </div>
@@ -209,10 +212,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8cpp_source.html">YamlTypes.cpp</a> 第 <a class="el" href="_yaml_types_8cpp_source.html#l00003">3</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    4</span>    : TYPE(type) {</div>
-<div class="line"><span class="lineno">    5</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a256713f210b43707eb32dc353c4bdd27" name="a256713f210b43707eb32dc353c4bdd27"></a>
@@ -264,14 +263,34 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a> 第 <a class="el" href="_yaml_types_8h_source.html#l00040">40</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{ <span class="keywordflow">return</span> TYPE; }</div>
-</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="af5cd45d8984776276a9251f9a76df8e0" name="af5cd45d8984776276a9251f9a76df8e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5cd45d8984776276a9251f9a76df8e0">&#9670;&#160;</a></span>TYPE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespacesese_1_1yaml.html#ad98fe9b98e6b6e5e5210b70b0d74c65c">DataType</a> sese::yaml::Data::TYPE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/config/yaml/<a class="el" href="_yaml_types_8h_source.html">YamlTypes.h</a></li>
-<li>sese/config/yaml/<a class="el" href="_yaml_types_8cpp_source.html">YamlTypes.cpp</a></li>
+<li>sese/config/yaml/<a class="el" href="_yaml_types_8cpp.html">YamlTypes.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

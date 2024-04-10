@@ -6,5 +6,7 @@ var classsese_1_1_config_object =
     [ "getAllSection", "classsese_1_1_config_object.html#a5d7a806734266c89bd42aea1652c7b66", null ],
     [ "getDefaultSection", "classsese_1_1_config_object.html#a4f979c9c3237e5ba0e083e2d29394d1a", null ],
     [ "getSectionByName", "classsese_1_1_config_object.html#ad9ac353dfd93a0d6cdfb4e38762737a5", null ],
-    [ "setSection", "classsese_1_1_config_object.html#addb3d463ba813cda062ce1ffc3c0bf74", null ]
+    [ "setSection", "classsese_1_1_config_object.html#addb3d463ba813cda062ce1ffc3c0bf74", null ],
+    [ "defaultSection", "classsese_1_1_config_object.html#a969fe4ef5931418f740bb1d5129b0099", null ],
+    [ "sections", "classsese_1_1_config_object.html#a814ac5f1efb1f2fb1c01ced79c0101f8", null ]
 ];

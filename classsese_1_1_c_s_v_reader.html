@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -164,8 +165,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>CSV 流读取器 </p>
-
-<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00017">17</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a504cfb913c19d368500fecdaed7d4284" name="a504cfb913c19d368500fecdaed7d4284"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a504cfb913c19d368500fecdaed7d4284">&#9670;&#160;</a></span>InputStream</h2>
@@ -180,8 +179,6 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>工具支持的输入流 </p>
-
-<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00020">20</a> 行定义.</p>
 
 </div>
 </div>
@@ -198,8 +195,6 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 
 <p>行 </p>
-
-<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00022">22</a> 行定义.</p>
 
 </div>
 </div>
@@ -245,12 +240,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8cpp_source.html">CSVReader.cpp</a> 第 <a class="el" href="_c_s_v_reader_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                                      {</div>
-<div class="line"><span class="lineno">    6</span>    <a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">CSVReader::source</a> = <a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a>;</div>
-<div class="line"><span class="lineno">    7</span>    <a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#a5b380eb0a12858df8f410e9f9ecb0393">CSVReader::splitChar</a> = split_char;</div>
-<div class="line"><span class="lineno">    8</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -278,55 +267,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>从流中读取一行 </p><dl class="section return"><dt>返回</dt><dd>返回包含一行内所有元素的 vector 容器 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8cpp_source.html">CSVReader.cpp</a> 第 <a class="el" href="_c_s_v_reader_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                              {</div>
-<div class="line"><span class="lineno">   11</span>    <a class="code hl_typedef" href="classsese_1_1_c_s_v_reader.html#a5ab2848d3fd33798cf2b586e65b636cb" title="行">Row</a> row;</div>
-<div class="line"><span class="lineno">   12</span>    std::stringstream builder;</div>
-<div class="line"><span class="lineno">   13</span> </div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordtype">char</span> ch = 0;</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordtype">size_t</span> quot = 0;</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">while</span> ((<a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">read</a>(&amp;ch, 1)) != 0) {</div>
-<div class="line"><span class="lineno">   17</span>        <span class="comment">// 是否处于字符串内部</span></div>
-<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">if</span> (quot % 2 == 1) {</div>
-<div class="line"><span class="lineno">   19</span>            <span class="keywordflow">if</span> (ch != <span class="charliteral">&#39;\&quot;&#39;</span>) {</div>
-<div class="line"><span class="lineno">   20</span>                builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">   21</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   22</span>                <span class="comment">// 退出字符串</span></div>
-<div class="line"><span class="lineno">   23</span>                quot += 1;</div>
-<div class="line"><span class="lineno">   24</span>            }</div>
-<div class="line"><span class="lineno">   25</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\&quot;&#39;</span>) {</div>
-<div class="line"><span class="lineno">   27</span>                <span class="comment">// 进入字符串</span></div>
-<div class="line"><span class="lineno">   28</span>                quot += 1;</div>
-<div class="line"><span class="lineno">   29</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#a5b380eb0a12858df8f410e9f9ecb0393">CSVReader::splitChar</a>) {</div>
-<div class="line"><span class="lineno">   30</span>                <span class="comment">// 切割元素</span></div>
-<div class="line"><span class="lineno">   31</span>                row.emplace_back(builder.str());</div>
-<div class="line"><span class="lineno">   32</span>                builder.str(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   33</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\r&#39;</span>) {</div>
-<div class="line"><span class="lineno">   34</span>                <span class="comment">// 换行 - \r\n</span></div>
-<div class="line"><span class="lineno">   35</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">read</a>(&amp;ch, 1) != 0) {</div>
-<div class="line"><span class="lineno">   36</span>                    row.emplace_back(builder.str());</div>
-<div class="line"><span class="lineno">   37</span>                    builder.str(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   38</span>                    <span class="keywordflow">return</span> row;</div>
-<div class="line"><span class="lineno">   39</span>                }</div>
-<div class="line"><span class="lineno">   40</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><span class="lineno">   41</span>                <span class="comment">// 换行 - \n</span></div>
-<div class="line"><span class="lineno">   42</span>                row.emplace_back(builder.str());</div>
-<div class="line"><span class="lineno">   43</span>                builder.str(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   44</span>                <span class="keywordflow">return</span> row;</div>
-<div class="line"><span class="lineno">   45</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   46</span>                builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">   47</span>            }</div>
-<div class="line"><span class="lineno">   48</span>        }</div>
-<div class="line"><span class="lineno">   49</span>    }</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">if</span> (builder.rdbuf()-&gt;in_avail() != 0 || ch == <span class="charliteral">&#39;,&#39;</span>) {</div>
-<div class="line"><span class="lineno">   51</span>        row.emplace_back(builder.str());</div>
-<div class="line"><span class="lineno">   52</span>        builder.str(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> row;</div>
-<div class="line"><span class="lineno">   55</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a>, <a class="el" href="_c_s_v_reader_8h_source.html#l00035">source</a> , 以及 <a class="el" href="_c_s_v_reader_8h_source.html#l00034">splitChar</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a>, <a class="el" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a> , 以及 <a class="el" href="classsese_1_1_c_s_v_reader.html#a5b380eb0a12858df8f410e9f9ecb0393">splitChar</a>.</p>
 
 </div>
 </div>
@@ -351,9 +292,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00035">35</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_c_s_v_reader_8cpp_source.html#l00010">read()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_c_s_v_reader.html#ae710e7410620247d0bd19adeb409c62a">read()</a>.</p>
 
 </div>
 </div>
@@ -377,15 +316,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00034">34</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_c_s_v_reader_8cpp_source.html#l00010">read()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_c_s_v_reader.html#ae710e7410620247d0bd19adeb409c62a">read()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/config/<a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a></li>
-<li>sese/config/<a class="el" href="_c_s_v_reader_8cpp_source.html">CSVReader.cpp</a></li>
+<li>sese/config/<a class="el" href="_c_s_v_reader_8cpp.html">CSVReader.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

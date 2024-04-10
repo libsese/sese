@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -197,22 +198,22 @@ $(document).ready(function(){initNavTree('_date_time_8h_source.html',''); initRe
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// 初次计算的数据</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    int32_t years = 1970;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    int32_t months = 1;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    int32_t days = 1;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    int32_t hours = 0;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    int32_t minutes = 0;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    int32_t seconds = 0;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    int32_t dayofweek = 0;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    int32_t dayofyear = 0;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a73a8863173fed63b00e6772e80472f79">   77</a></span>    int32_t years = 1970;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a085f3ed3b3fab82117cdb3efdda579bc">   78</a></span>    int32_t months = 1;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#ad29fa772003803ff4319c0aca176f849">   79</a></span>    int32_t days = 1;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a3920faf484e00946e7a705b8fe0bf6c0">   80</a></span>    int32_t hours = 0;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#ac3fcc7eadd2669d7f9be2df7f7a2abf6">   81</a></span>    int32_t minutes = 0;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a981d5c215277afb8ed59ed7f7aa48484">   82</a></span>    int32_t seconds = 0;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#af6ce6ae10023056b93ef6118463ba65c">   83</a></span>    int32_t dayofweek = 0;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a689b39ab82f9d1af735efd2e0dd5b5f5">   84</a></span>    int32_t dayofyear = 0;</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">bool</span> isLeap = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    int32_t milliseconds = 0;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    int32_t microseconds = 0;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#ad5576b8d8ea44352912858ba9ef5d23d">   86</a></span>    <span class="keywordtype">bool</span> isLeap = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a366c399d1cc65547587c85362400ae9f">   87</a></span>    int32_t milliseconds = 0;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#aa490364707424bc820fd755b0610b674">   88</a></span>    int32_t microseconds = 0;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// 核心数据</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    int32_t utc = 0;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    uint64_t timestamp = 0;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#af19d88c3b0b5d045767d65fb40a5b94e">   91</a></span>    int32_t utc = 0;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a4a5f948ba0ba89d47d98365b5e616a37">   92</a></span>    uint64_t timestamp = 0;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>};</div>
 </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>} <span class="comment">// namespace sese</span></div>

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -133,6 +134,9 @@ $(document).ready(function(){initNavTree('classsese_1_1archive_1_1_config.html',
 </div><!--header-->
 <div class="contents">
 
+<p>Archive 配置类  
+ <a href="classsese_1_1archive_1_1_config.html#details">更多...</a></p>
+
 <p><code>#include &lt;<a class="el" href="archive_2_config_8h_source.html">Config.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -159,8 +163,7 @@ Public 类型</h2></td></tr>
 <tr class="separator:a169b8d889176e8cf8d8667d40a4e16b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="archive_2_config_8h_source.html">Config.h</a> 第 <a class="el" href="archive_2_config_8h_source.html#l00018">18</a> 行定义.</p>
+<div class="textblock"><p>Archive 配置类 </p>
 </div><h2 class="groupheader">成员枚举类型说明</h2>
 <a id="acb4e4bdf76bca8b6d535e37e549eb3b9" name="acb4e4bdf76bca8b6d535e37e549eb3b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb4e4bdf76bca8b6d535e37e549eb3b9">&#9670;&#160;</a></span>EntryType</h2>
@@ -192,18 +195,6 @@ Public 类型</h2></td></tr>
 <tr><td class="fieldname"><a id="acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64" name="acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64"></a>IFO&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">在文件 <a class="el" href="archive_2_config_8h_source.html">Config.h</a> 第 <a class="el" href="archive_2_config_8h_source.html#l00020">20</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>                             {</div>
-<div class="line"><span class="lineno">   21</span>            <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a08ad08f6491037714d09263a79bebfba">MT</a>,</div>
-<div class="line"><span class="lineno">   22</span>            <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af4cf3fe4b67244332eecec055742d449">REG</a>,</div>
-<div class="line"><span class="lineno">   23</span>            <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a96c5571f7b6648b76366cba9755c4f43">LNK</a>,</div>
-<div class="line"><span class="lineno">   24</span>            <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ad304ef841c9d86c3ced968af32a9f9a3">SOCK</a>,</div>
-<div class="line"><span class="lineno">   25</span>            <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af842e3bace9c0c18c5b23a56932090a7">CHR</a>,</div>
-<div class="line"><span class="lineno">   26</span>            <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a386ad08c9fb495ee29b07905b98af57b">BLK</a>,</div>
-<div class="line"><span class="lineno">   27</span>            <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ac1561b120842fabe1310417083827590">DIR</a>,</div>
-<div class="line"><span class="lineno">   28</span>            <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64">IFO</a></div>
-<div class="line"><span class="lineno">   29</span>        };</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -231,29 +222,9 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_config_8cpp_source.html">Config.cpp</a> 第 <a class="el" href="_config_8cpp_source.html#l00041">41</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>                                           {</div>
-<div class="line"><span class="lineno">   42</span><span class="preprocessor">#define XX(str) \</span></div>
-<div class="line"><span class="lineno">   43</span><span class="preprocessor">    case AE_IF##str: \</span></div>
-<div class="line"><span class="lineno">   44</span><span class="preprocessor">        return Config::EntryType::str;</span></div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">switch</span> (value) {</div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a08ad08f6491037714d09263a79bebfba">MT</a>)</div>
-<div class="line"><span class="lineno">   47</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af4cf3fe4b67244332eecec055742d449">REG</a>)</div>
-<div class="line"><span class="lineno">   48</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a96c5571f7b6648b76366cba9755c4f43">LNK</a>)</div>
-<div class="line"><span class="lineno">   49</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ad304ef841c9d86c3ced968af32a9f9a3">SOCK</a>)</div>
-<div class="line"><span class="lineno">   50</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af842e3bace9c0c18c5b23a56932090a7">CHR</a>)</div>
-<div class="line"><span class="lineno">   51</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a386ad08c9fb495ee29b07905b98af57b">BLK</a>)</div>
-<div class="line"><span class="lineno">   52</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ac1561b120842fabe1310417083827590">DIR</a>)</div>
-<div class="line"><span class="lineno">   53</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64">IFO</a>)</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af4cf3fe4b67244332eecec055742d449">Config::EntryType::REG</a>;</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span><span class="preprocessor">#undef XX</span></div>
-<div class="line"><span class="lineno">   58</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a386ad08c9fb495ee29b07905b98af57b">BLK</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af842e3bace9c0c18c5b23a56932090a7">CHR</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ac1561b120842fabe1310417083827590">DIR</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64">IFO</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a96c5571f7b6648b76366cba9755c4f43">LNK</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a08ad08f6491037714d09263a79bebfba">MT</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af4cf3fe4b67244332eecec055742d449">REG</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ad304ef841c9d86c3ced968af32a9f9a3">SOCK</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a386ad08c9fb495ee29b07905b98af57b">BLK</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af842e3bace9c0c18c5b23a56932090a7">CHR</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ac1561b120842fabe1310417083827590">DIR</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64">IFO</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a96c5571f7b6648b76366cba9755c4f43">LNK</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a08ad08f6491037714d09263a79bebfba">MT</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af4cf3fe4b67244332eecec055742d449">REG</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ad304ef841c9d86c3ced968af32a9f9a3">SOCK</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_archive_reader_8cpp_source.html#l00140">sese::archive::ArchiveReader::extract()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#af8d92c9cafb69b7e4fd17d55edfc728a">sese::archive::ArchiveReader::extract()</a>.</p>
 
 </div>
 </div>
@@ -281,34 +252,13 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_config_8cpp_source.html">Config.cpp</a> 第 <a class="el" href="_config_8cpp_source.html#l00021">21</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>                                        {</div>
-<div class="line"><span class="lineno">   22</span><span class="preprocessor">#define XX(str)\</span></div>
-<div class="line"><span class="lineno">   23</span><span class="preprocessor">    case EntryType::str:  \</span></div>
-<div class="line"><span class="lineno">   24</span><span class="preprocessor">        return AE_IF##str;</span></div>
-<div class="line"><span class="lineno">   25</span> </div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">switch</span> (type) {</div>
-<div class="line"><span class="lineno">   27</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a08ad08f6491037714d09263a79bebfba">MT</a>)</div>
-<div class="line"><span class="lineno">   28</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af4cf3fe4b67244332eecec055742d449">REG</a>)</div>
-<div class="line"><span class="lineno">   29</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a96c5571f7b6648b76366cba9755c4f43">LNK</a>)</div>
-<div class="line"><span class="lineno">   30</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ad304ef841c9d86c3ced968af32a9f9a3">SOCK</a>)</div>
-<div class="line"><span class="lineno">   31</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af842e3bace9c0c18c5b23a56932090a7">CHR</a>)</div>
-<div class="line"><span class="lineno">   32</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a386ad08c9fb495ee29b07905b98af57b">BLK</a>)</div>
-<div class="line"><span class="lineno">   33</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ac1561b120842fabe1310417083827590">DIR</a>)</div>
-<div class="line"><span class="lineno">   34</span>        <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>(<a class="code hl_enumvalue" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64">IFO</a>)</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="line"><span class="lineno">   38</span><span class="preprocessor">#undef XX</span></div>
-<div class="line"><span class="lineno">   39</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a386ad08c9fb495ee29b07905b98af57b">BLK</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af842e3bace9c0c18c5b23a56932090a7">CHR</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ac1561b120842fabe1310417083827590">DIR</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64">IFO</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a96c5571f7b6648b76366cba9755c4f43">LNK</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a08ad08f6491037714d09263a79bebfba">MT</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af4cf3fe4b67244332eecec055742d449">REG</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ad304ef841c9d86c3ced968af32a9f9a3">SOCK</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a386ad08c9fb495ee29b07905b98af57b">BLK</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af842e3bace9c0c18c5b23a56932090a7">CHR</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ac1561b120842fabe1310417083827590">DIR</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a19fa10ce05ae245f667f26ec5e334a64">IFO</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a96c5571f7b6648b76366cba9755c4f43">LNK</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9a08ad08f6491037714d09263a79bebfba">MT</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9af4cf3fe4b67244332eecec055742d449">REG</a>, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9ad304ef841c9d86c3ced968af32a9f9a3">SOCK</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/archive/<a class="el" href="archive_2_config_8h_source.html">Config.h</a></li>
-<li>sese/archive/<a class="el" href="_config_8cpp_source.html">Config.cpp</a></li>
+<li>sese/archive/<a class="el" href="_config_8cpp.html">Config.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

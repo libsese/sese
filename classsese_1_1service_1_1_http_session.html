@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -127,6 +128,7 @@ $(document).ready(function(){initNavTree('classsese_1_1service_1_1_http_session.
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1service_1_1_http_session-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::service::HttpSession类 参考</div></div>
 </div><!--header-->
@@ -142,11 +144,15 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:aeaf25c1e876c97bb2abe4e55bf31cc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0f50342250342723aaff5fb883942ad" id="r_ae0f50342250342723aaff5fb883942ad"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_http_session.html#ae0f50342250342723aaff5fb883942ad">~HttpSession</a> ()=default</td></tr>
 <tr class="separator:ae0f50342250342723aaff5fb883942ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:acf6140190efa85ee4ddc31ce0dc91580" id="r_acf6140190efa85ee4ddc31ce0dc91580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html">net::http::Request</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_http_session.html#acf6140190efa85ee4ddc31ce0dc91580">request</a> {}</td></tr>
+<tr class="separator:acf6140190efa85ee4ddc31ce0dc91580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97d6ce67dd39b46e8cb03dca29a6a81" id="r_af97d6ce67dd39b46e8cb03dca29a6a81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html">net::http::Response</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1_http_session.html#af97d6ce67dd39b46e8cb03dca29a6a81">response</a> {}</td></tr>
+<tr class="separator:af97d6ce67dd39b46e8cb03dca29a6a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="_http_session_8h_source.html">HttpSession.h</a> 第 <a class="el" href="_http_session_8h_source.html#l00026">26</a> 行定义.</p>
-</div><h2 class="groupheader">构造及析构函数说明</h2>
+<h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ae0f50342250342723aaff5fb883942ad" name="ae0f50342250342723aaff5fb883942ad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae0f50342250342723aaff5fb883942ad">&#9670;&#160;</a></span>~HttpSession()</h2>
 
@@ -196,9 +202,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_http_session_8h_source.html">HttpSession.h</a> 第 <a class="el" href="_http_session_8h_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{ <span class="keywordflow">return</span> request; };</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1service_1_1_http_session.html#acf6140190efa85ee4ddc31ce0dc91580">request</a>.</p>
+
 </div>
 </div>
 <a id="aeaf25c1e876c97bb2abe4e55bf31cc2b" name="aeaf25c1e876c97bb2abe4e55bf31cc2b"></a>
@@ -224,9 +229,57 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_http_session_8h_source.html">HttpSession.h</a> 第 <a class="el" href="_http_session_8h_source.html#l00029">29</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{ <span class="keywordflow">return</span> response; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1service_1_1_http_session.html#af97d6ce67dd39b46e8cb03dca29a6a81">response</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="acf6140190efa85ee4ddc31ce0dc91580" name="acf6140190efa85ee4ddc31ce0dc91580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf6140190efa85ee4ddc31ce0dc91580">&#9670;&#160;</a></span>request</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1http_1_1_request.html">net::http::Request</a> sese::service::HttpSession::request {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1service_1_1_http_session.html#a40c0cc981b23a88218c8a17ca25f0cc9">req()</a>.</p>
+
+</div>
+</div>
+<a id="af97d6ce67dd39b46e8cb03dca29a6a81" name="af97d6ce67dd39b46e8cb03dca29a6a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97d6ce67dd39b46e8cb03dca29a6a81">&#9670;&#160;</a></span>response</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html">net::http::Response</a> sese::service::HttpSession::response {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1service_1_1_http_session.html#aeaf25c1e876c97bb2abe4e55bf31cc2b">resp()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>

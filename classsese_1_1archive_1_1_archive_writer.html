@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -230,8 +231,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>存档写入器 </p>
-
-<p class="definition">在文件 <a class="el" href="_archive_writer_8h_source.html">ArchiveWriter.h</a> 第 <a class="el" href="_archive_writer_8h_source.html#l00031">31</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a2b5cbec849c3ea0bd84458b093382a1f" name="a2b5cbec849c3ea0bd84458b093382a1f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2b5cbec849c3ea0bd84458b093382a1f">&#9670;&#160;</a></span>ArchiveWriter()</h2>
@@ -263,12 +262,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00049">49</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>        : <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a>(<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a>), <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_writer.html#acf4d1476971c319c2a7d281b847220bd">archive</a>(archive_write_new()) {</div>
-<div class="line"><span class="lineno">   51</span>    archive_write_set_passphrase_callback(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, <span class="keyword">this</span>, <a class="code hl_function" href="_archive_writer_8cpp.html#a30e23a28134402f94d95be7f917d51fe">passphrase</a>);</div>
-<div class="line"><span class="lineno">   52</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00045">passphrase()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp.html#a30e23a28134402f94d95be7f917d51fe">passphrase()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -295,12 +289,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00054">54</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>                              {</div>
-<div class="line"><span class="lineno">   55</span>    archive_write_free(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   56</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -333,47 +322,7 @@ Protected 属性</h2></td></tr>
 
 <p>实体操作函数，不推荐使用 </p>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00207">207</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  207</span>                                                                                            {</div>
-<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;item: std::filesystem::directory_iterator(dir)) {</div>
-<div class="line"><span class="lineno">  209</span>        <span class="keywordflow">if</span> (item.is_directory()) {</div>
-<div class="line"><span class="lineno">  210</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae" title="实体操作函数，不推荐使用">ArchiveWriter::addDirectory</a>(base / item.path().filename(), item)) {</div>
-<div class="line"><span class="lineno">  211</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  212</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  213</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  214</span>            }</div>
-<div class="line"><span class="lineno">  215</span>        }</div>
-<div class="line"><span class="lineno">  216</span> </div>
-<div class="line"><span class="lineno">  217</span>        <span class="comment">// 压缩包中的相对路径</span></div>
-<div class="line"><span class="lineno">  218</span>        <span class="keyword">auto</span> &amp;&amp;pathname = (base / item.path().filename()).<span class="keywordtype">string</span>();</div>
-<div class="line"><span class="lineno">  219</span>        <span class="comment">// 原始文件系统中的绝对路径</span></div>
-<div class="line"><span class="lineno">  220</span>        <span class="keyword">auto</span> &amp;&amp;file_path = item.path().string();</div>
-<div class="line"><span class="lineno">  221</span> </div>
-<div class="line"><span class="lineno">  222</span>        <span class="keyword">struct </span>archive_entry *entry = archive_entry_new();</div>
-<div class="line"><span class="lineno">  223</span>        archive_entry_set_pathname(entry, pathname.c_str());</div>
-<div class="line"><span class="lineno">  224</span>        archive_entry_set_size(entry, <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(std::filesystem::file_size(file_path)));</div>
-<div class="line"><span class="lineno">  225</span>        archive_entry_set_filetype(entry, AE_IFREG);</div>
-<div class="line"><span class="lineno">  226</span>        archive_write_header(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, entry);</div>
-<div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span>        int64_t len;</div>
-<div class="line"><span class="lineno">  229</span>        <span class="keyword">auto</span> file = <a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">io::File::create</a>(file_path, <a class="code hl_define" href="_file_stream_8h.html#ad689a321125d8b0828cd6569aa902eb4">BINARY_READ_EXISTED</a>);</div>
-<div class="line"><span class="lineno">  230</span>        <span class="keywordtype">char</span> buffer[4096];</div>
-<div class="line"><span class="lineno">  231</span>        <span class="keywordflow">while</span> ((len = file-&gt;read(buffer, 4096)) &gt; 0) {</div>
-<div class="line"><span class="lineno">  232</span>            <span class="keywordflow">if</span> (archive_write_data(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, buffer, <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(len)) != len) {</div>
-<div class="line"><span class="lineno">  233</span>                file-&gt;close();</div>
-<div class="line"><span class="lineno">  234</span>                file.reset();</div>
-<div class="line"><span class="lineno">  235</span>                archive_entry_free(entry);</div>
-<div class="line"><span class="lineno">  236</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  237</span>            }</div>
-<div class="line"><span class="lineno">  238</span>        }</div>
-<div class="line"><span class="lineno">  239</span>        file-&gt;close();</div>
-<div class="line"><span class="lineno">  240</span>        file.reset();</div>
-<div class="line"><span class="lineno">  241</span>        archive_entry_free(entry);</div>
-<div class="line"><span class="lineno">  242</span>    }</div>
-<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  244</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00203">addDirectory()</a>, <a class="el" href="_file_stream_8h_source.html#l00025">BINARY_READ_EXISTED</a>, <a class="el" href="_file_stream_8cpp_source.html#l00053">sese::io::FileStream::create()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory()</a>, <a class="el" href="_file_stream_8h.html#ad689a321125d8b0828cd6569aa902eb4">BINARY_READ_EXISTED</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">sese::io::FileStream::create()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -395,14 +344,9 @@ Protected 属性</h2></td></tr>
 
 <p>实体操作函数，不推荐使用 </p>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00203">203</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  203</span>                                                             {</div>
-<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae" title="实体操作函数，不推荐使用">addDirectory</a>(<span class="stringliteral">&quot;&quot;</span>, dir);</div>
-<div class="line"><span class="lineno">  205</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00203">addDirectory()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00207">addDirectory()</a>, <a class="el" href="_archive_writer_8cpp_source.html#l00203">addDirectory()</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00161">addPath()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2544625cbe63e6aca28326048d6a2154">addDirectory()</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2e0ad3ef7eb83a342e02cfa7a263ed9a">addPath()</a>.</p>
 
 </div>
 </div>
@@ -434,34 +378,7 @@ Protected 属性</h2></td></tr>
 
 <p>实体操作函数，不推荐使用 </p>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00177">177</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  177</span>                                                                                        {</div>
-<div class="line"><span class="lineno">  178</span>    <span class="keyword">auto</span> &amp;&amp;pathname = (base / file.filename()).<span class="keywordtype">string</span>();</div>
-<div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>    <span class="keyword">struct </span>archive_entry *entry = archive_entry_new();</div>
-<div class="line"><span class="lineno">  181</span>    archive_entry_set_pathname(entry, pathname.c_str());</div>
-<div class="line"><span class="lineno">  182</span>    archive_entry_set_size(entry, <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(std::filesystem::file_size(file)));</div>
-<div class="line"><span class="lineno">  183</span>    archive_entry_set_filetype(entry, AE_IFREG);</div>
-<div class="line"><span class="lineno">  184</span>    archive_write_header(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, entry);</div>
-<div class="line"><span class="lineno">  185</span> </div>
-<div class="line"><span class="lineno">  186</span>    int64_t len;</div>
-<div class="line"><span class="lineno">  187</span>    <span class="keyword">auto</span> stream = <a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">io::File::create</a>(file.string(), <a class="code hl_define" href="_file_stream_8h.html#ad689a321125d8b0828cd6569aa902eb4">BINARY_READ_EXISTED</a>);</div>
-<div class="line"><span class="lineno">  188</span>    <span class="keywordtype">char</span> buffer[4096];</div>
-<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">while</span> ((len = stream-&gt;read(buffer, 4096)) &gt; 0) {</div>
-<div class="line"><span class="lineno">  190</span>        <span class="keywordflow">if</span> (archive_write_data(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, buffer, <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(len)) != len) {</div>
-<div class="line"><span class="lineno">  191</span>            stream-&gt;close();</div>
-<div class="line"><span class="lineno">  192</span>            stream.reset();</div>
-<div class="line"><span class="lineno">  193</span>            archive_entry_free(entry);</div>
-<div class="line"><span class="lineno">  194</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  195</span>        }</div>
-<div class="line"><span class="lineno">  196</span>    }</div>
-<div class="line"><span class="lineno">  197</span>    stream-&gt;close();</div>
-<div class="line"><span class="lineno">  198</span>    stream.reset();</div>
-<div class="line"><span class="lineno">  199</span>    archive_entry_free(entry);</div>
-<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  201</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_file_stream_8h_source.html#l00025">BINARY_READ_EXISTED</a>, <a class="el" href="_file_stream_8cpp_source.html#l00053">sese::io::FileStream::create()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_file_stream_8h.html#ad689a321125d8b0828cd6569aa902eb4">BINARY_READ_EXISTED</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">sese::io::FileStream::create()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -483,14 +400,9 @@ Protected 属性</h2></td></tr>
 
 <p>实体操作函数，不推荐使用 </p>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00173">173</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  173</span>                                                         {</div>
-<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a" title="实体操作函数，不推荐使用">addFile</a>(<span class="stringliteral">&quot;&quot;</span>, file);</div>
-<div class="line"><span class="lineno">  175</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00173">addFile()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a">addFile()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00173">addFile()</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00161">addPath()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a">addFile()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2e0ad3ef7eb83a342e02cfa7a263ed9a">addPath()</a>.</p>
 
 </div>
 </div>
@@ -528,20 +440,7 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00161">161</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  161</span>                                                                                        {</div>
-<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">if</span> (!std::filesystem::exists(path)) {</div>
-<div class="line"><span class="lineno">  163</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  164</span>    }</div>
-<div class="line"><span class="lineno">  165</span> </div>
-<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">if</span> (std::filesystem::is_directory(path)) {</div>
-<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae" title="实体操作函数，不推荐使用">addDirectory</a>(base, path);</div>
-<div class="line"><span class="lineno">  168</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a" title="实体操作函数，不推荐使用">addFile</a>(base, path);</div>
-<div class="line"><span class="lineno">  170</span>    }</div>
-<div class="line"><span class="lineno">  171</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00203">addDirectory()</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00173">addFile()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#ade0972a68cd432dca257f796c5109eae">addDirectory()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a257df0348e14ff0f208cf2ff6199465a">addFile()</a>.</p>
 
 </div>
 </div>
@@ -568,14 +467,9 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00157">157</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  157</span>                                                         {</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#a538197c8eac8dc63cfaa36f21290d7fa">addPath</a>(<span class="stringliteral">&quot;&quot;</span>, path);</div>
-<div class="line"><span class="lineno">  159</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00157">addPath()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a538197c8eac8dc63cfaa36f21290d7fa">addPath()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00157">addPath()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a538197c8eac8dc63cfaa36f21290d7fa">addPath()</a>.</p>
 
 </div>
 </div>
@@ -620,42 +514,7 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00246">246</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  246</span>                                                                                             {</div>
-<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == input) {</div>
-<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  249</span>    }</div>
-<div class="line"><span class="lineno">  250</span> </div>
-<div class="line"><span class="lineno">  251</span>    <span class="keyword">auto</span> &amp;&amp;pathname = path.string();</div>
-<div class="line"><span class="lineno">  252</span> </div>
-<div class="line"><span class="lineno">  253</span>    <span class="keyword">struct </span>archive_entry *entry = archive_entry_new();</div>
-<div class="line"><span class="lineno">  254</span>    archive_entry_set_pathname(entry, pathname.c_str());</div>
-<div class="line"><span class="lineno">  255</span>    archive_entry_set_size(entry, <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(exp));</div>
-<div class="line"><span class="lineno">  256</span>    archive_entry_set_filetype(entry, AE_IFREG);</div>
-<div class="line"><span class="lineno">  257</span>    archive_entry_set_is_data_encrypted(entry, 1);</div>
-<div class="line"><span class="lineno">  258</span>    archive_write_header(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, entry);</div>
-<div class="line"><span class="lineno">  259</span> </div>
-<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">while</span> (exp) {</div>
-<div class="line"><span class="lineno">  261</span>        <span class="keywordtype">char</span> buffer[4096];</div>
-<div class="line"><span class="lineno">  262</span>        <span class="keyword">const</span> <span class="keyword">auto</span> LEN = input-&gt;read(buffer, std::min&lt;size_t&gt;(exp, 4096));</div>
-<div class="line"><span class="lineno">  263</span>        <span class="keywordflow">if</span> (LEN &lt;= 0) {</div>
-<div class="line"><span class="lineno">  264</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  265</span>        }</div>
-<div class="line"><span class="lineno">  266</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a> = archive_write_data(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, buffer, <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(LEN));<a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a> != LEN) {</div>
-<div class="line"><span class="lineno">  267</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  268</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  269</span>            exp -= <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(LEN);</div>
-<div class="line"><span class="lineno">  270</span>        }</div>
-<div class="line"><span class="lineno">  271</span>    }</div>
-<div class="line"><span class="lineno">  272</span>    archive_entry_free(entry);</div>
-<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">if</span> (exp) {</div>
-<div class="line"><span class="lineno">  274</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  275</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  276</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  277</span>    }</div>
-<div class="line"><span class="lineno">  278</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a>, <a class="el" href="_http_util_8cpp_source.html#l00220">WRITE</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a>, <a class="el" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -675,23 +534,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>开始添加实体 </p><dl class="section return"><dt>返回</dt><dd>操作结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00138">138</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  138</span>                          {</div>
-<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a>) {</div>
-<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  141</span>    }</div>
-<div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">return</span> ARCHIVE_OK == archive_write_open2(</div>
-<div class="line"><span class="lineno">  144</span>            <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>,</div>
-<div class="line"><span class="lineno">  145</span>            <span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">  146</span>            <a class="code hl_function" href="_archive_reader_8cpp.html#a356db994bf7c720b287004189f874668">open</a>,</div>
-<div class="line"><span class="lineno">  147</span>            <a class="code hl_function" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a>,</div>
-<div class="line"><span class="lineno">  148</span>            <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a>,</div>
-<div class="line"><span class="lineno">  149</span>            <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a></div>
-<div class="line"><span class="lineno">  150</span>    );</div>
-<div class="line"><span class="lineno">  151</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00118">close()</a>, <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00106">open()</a>, <a class="el" href="_archive_writer_8h_source.html#l00138">output</a>, <a class="el" href="_archive_writer_8cpp_source.html#l00032">write()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close()</a>, <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>, <a class="el" href="_archive_reader_8cpp.html#a356db994bf7c720b287004189f874668">open()</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a>, <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write()</a> , 以及 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -729,12 +572,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00288">288</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  288</span>                                                                           {</div>
-<div class="line"><span class="lineno">  289</span>    <span class="keywordflow">return</span> ARCHIVE_OK;</div>
-<div class="line"><span class="lineno">  290</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00037">close()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp.html#a45c7343a2bb5e3a29cd376963e0483f5">close()</a>.</p>
 
 </div>
 </div>
@@ -754,12 +592,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>结束添加实体 </p><dl class="section return"><dt>返回</dt><dd>操作结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00153">153</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  153</span>                         {</div>
-<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">return</span> ARCHIVE_OK == archive_write_close(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  155</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -797,12 +630,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00292">292</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  292</span>                                                                          {</div>
-<div class="line"><span class="lineno">  293</span>    <span class="keywordflow">return</span> ARCHIVE_OK;</div>
-<div class="line"><span class="lineno">  294</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>.</p>
 
 </div>
 </div>
@@ -822,12 +650,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取当前错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00130">130</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  130</span>                            {</div>
-<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">return</span> archive_errno(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  132</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -847,12 +670,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取当前错误信息 </p><dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00134">134</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  134</span>                                          {</div>
-<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">return</span> archive_error_string(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  136</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -890,12 +708,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00280">280</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  280</span>                                                                          {</div>
-<div class="line"><span class="lineno">  281</span>    <span class="keywordflow">return</span> ARCHIVE_OK;</div>
-<div class="line"><span class="lineno">  282</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00025">open()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp.html#ab602931610f7c5040357dfd637068e22">open()</a>.</p>
 
 </div>
 </div>
@@ -933,12 +746,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00296">296</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  296</span>                                                                                               {</div>
-<div class="line"><span class="lineno">  297</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  298</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00045">passphrase()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp.html#a30e23a28134402f94d95be7f917d51fe">passphrase()</a>.</p>
 
 </div>
 </div>
@@ -957,12 +765,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>                                  {</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">return</span> archive_write_add_filter_bzip2(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   64</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -981,12 +784,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00090">90</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   90</span>                                  {</div>
-<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">return</span> archive_write_add_filter_grzip(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   92</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1005,12 +803,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00058">58</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>                                 {</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> archive_write_add_filter_gzip(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   60</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1029,12 +822,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00094">94</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>                                  {</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> archive_write_add_filter_lrzip(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   96</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1053,12 +841,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00066">66</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>                                {</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">return</span> archive_write_add_filter_lz4(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   68</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1077,12 +860,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00070">70</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                                 {</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">return</span> archive_write_add_filter_lzip(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   72</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1101,12 +879,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00082">82</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>                                 {</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> archive_write_add_filter_lzma(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   84</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1125,12 +898,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00086">86</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>                                 {</div>
-<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">return</span> archive_write_add_filter_lzop(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   88</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1149,12 +917,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00098">98</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>                                 {</div>
-<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">return</span> archive_write_add_filter_none(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  100</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1173,12 +936,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00078">78</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>                               {</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> archive_write_add_filter_xz(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   80</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1197,12 +955,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00074">74</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>                                 {</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">return</span> archive_write_add_filter_zstd(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">   76</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1221,12 +974,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00114">114</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>                               {</div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> archive_write_set_format_7zip(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  116</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1245,12 +993,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00118">118</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  118</span>                                {</div>
-<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">return</span> archive_write_set_format_iso9660(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  120</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1269,12 +1012,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00106">106</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>                                {</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> archive_write_set_format_ustar(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  108</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1293,12 +1031,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00102">102</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>                                {</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> archive_write_set_format_xar(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  104</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1317,12 +1050,7 @@ Protected 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00110">110</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>                                {</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">return</span> archive_write_set_format_zip(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
-<div class="line"><span class="lineno">  112</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1349,12 +1077,7 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>成功返回 0 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00126">126</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  126</span>                                                  {</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">return</span> archive_write_set_options(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, opt.c_str());</div>
-<div class="line"><span class="lineno">  128</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1381,12 +1104,7 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>成功返回 0 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00122">122</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  122</span>                                                   {</div>
-<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">return</span> archive_write_set_passphrase(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, pwd.c_str());</div>
-<div class="line"><span class="lineno">  124</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>.</p>
 
 </div>
 </div>
@@ -1436,14 +1154,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00284">284</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  284</span>                                                                                                               {</div>
-<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">return</span> archive_this-&gt;<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(buffer, len);</div>
-<div class="line"><span class="lineno">  286</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8h_source.html#l00138">output</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a971fe4665920bb548bffc07c8e7b9f15">output</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00032">write()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write()</a>.</p>
 
 </div>
 </div>
@@ -1468,9 +1181,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8h_source.html">ArchiveWriter.h</a> 第 <a class="el" href="_archive_writer_8h_source.html#l00139">139</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  139</span>{};</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a971fe4665920bb548bffc07c8e7b9f15" name="a971fe4665920bb548bffc07c8e7b9f15"></a>
@@ -1493,16 +1203,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_writer_8h_source.html">ArchiveWriter.h</a> 第 <a class="el" href="_archive_writer_8h_source.html#l00138">138</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  138</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00138">begin()</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00284">writeCallback()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3e6fb3ac807b2693a6a6750dbe8c12ab">begin()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3cd6fe9dcb60a5e9bbcc1ef388af8d9e">writeCallback()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/archive/<a class="el" href="_archive_writer_8h_source.html">ArchiveWriter.h</a></li>
-<li>sese/archive/<a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a></li>
+<li>sese/archive/<a class="el" href="_archive_writer_8cpp.html">ArchiveWriter.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

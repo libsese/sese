@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,8 @@ $(document).ready(function(){initNavTree('classsese_1_1io_1_1_buffered_stream.ht
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1io_1_1_buffered_stream-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::io::BufferedStream类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -166,21 +169,21 @@ Public 类型</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a63254560fe5494622c9bd291ee697635" id="r_a63254560fe5494622c9bd291ee697635"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a63254560fe5494622c9bd291ee697635">BufferedStream</a> (const <a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> &amp;source, size_t buffer_size=<a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a>)</td></tr>
+<tr class="memitem:a63254560fe5494622c9bd291ee697635" id="r_a63254560fe5494622c9bd291ee697635"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a63254560fe5494622c9bd291ee697635">BufferedStream</a> (const <a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> &amp;<a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">source</a>, size_t buffer_size=<a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a>)</td></tr>
 <tr class="separator:a63254560fe5494622c9bd291ee697635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81dcb57a11559ccdbf8e2b0fc0696e45" id="r_a81dcb57a11559ccdbf8e2b0fc0696e45"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a81dcb57a11559ccdbf8e2b0fc0696e45">~BufferedStream</a> () noexcept override</td></tr>
 <tr class="separator:a81dcb57a11559ccdbf8e2b0fc0696e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ece73c99bb1373d2254816ca968ac8d" id="r_a0ece73c99bb1373d2254816ca968ac8d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read</a> (void *buffer, size_t length) override</td></tr>
+<tr class="memitem:a0ece73c99bb1373d2254816ca968ac8d" id="r_a0ece73c99bb1373d2254816ca968ac8d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read</a> (void *<a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a>, size_t length) override</td></tr>
 <tr class="separator:a0ece73c99bb1373d2254816ca968ac8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70d35d40bee69b5f75040e2bbe0da337" id="r_a70d35d40bee69b5f75040e2bbe0da337"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a70d35d40bee69b5f75040e2bbe0da337">clear</a> () noexcept</td></tr>
 <tr class="memdesc:a70d35d40bee69b5f75040e2bbe0da337"><td class="mdescLeft">&#160;</td><td class="mdescRight">清空当前读取标志位  <br /></td></tr>
 <tr class="separator:a70d35d40bee69b5f75040e2bbe0da337"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84cbb6763733912bc600c5670f3afef2" id="r_a84cbb6763733912bc600c5670f3afef2"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">write</a> (const void *buffer, size_t length) override</td></tr>
+<tr class="memitem:a84cbb6763733912bc600c5670f3afef2" id="r_a84cbb6763733912bc600c5670f3afef2"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">write</a> (const void *<a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a>, size_t length) override</td></tr>
 <tr class="separator:a84cbb6763733912bc600c5670f3afef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14d09477d93879892498b7ec334c1c8b" id="r_a14d09477d93879892498b7ec334c1c8b"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a14d09477d93879892498b7ec334c1c8b">flush</a> () noexcept</td></tr>
 <tr class="memdesc:a14d09477d93879892498b7ec334c1c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">将当前缓存曲内容全部刷新至流中，并且重置当前写入标志位  <br /></td></tr>
 <tr class="separator:a14d09477d93879892498b7ec334c1c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef48ec99f9aa5c1e9184b87133cf5eb4" id="r_aef48ec99f9aa5c1e9184b87133cf5eb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#aef48ec99f9aa5c1e9184b87133cf5eb4">reset</a> (const <a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> &amp;source) noexcept</td></tr>
+<tr class="memitem:aef48ec99f9aa5c1e9184b87133cf5eb4" id="r_aef48ec99f9aa5c1e9184b87133cf5eb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#aef48ec99f9aa5c1e9184b87133cf5eb4">reset</a> (const <a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> &amp;<a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">source</a>) noexcept</td></tr>
 <tr class="separator:aef48ec99f9aa5c1e9184b87133cf5eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff27bdf2429f485852bdbb6615c95f68" id="r_aff27bdf2429f485852bdbb6615c95f68"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#aff27bdf2429f485852bdbb6615c95f68">getPosition</a> () const</td></tr>
 <tr class="separator:aff27bdf2429f485852bdbb6615c95f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -205,12 +208,33 @@ Public 成员函数</h2></td></tr>
 <tr class="inherit_header pub_methods_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
 <tr class="memitem:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_ae464ac2ec10447e7096b5bcca08bad54"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#ae464ac2ec10447e7096b5bcca08bad54">~OutputStream</a> () noexcept=default</td></tr>
 <tr class="separator:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:ab3082411f0281932bda7450549e8d632" id="r_ab3082411f0281932bda7450549e8d632"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ab3082411f0281932bda7450549e8d632">preRead</a> ()</td></tr>
+<tr class="separator:ab3082411f0281932bda7450549e8d632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:ad09ee1cb28891cf0bd5bcf4e1b6b56ae" id="r_ad09ee1cb28891cf0bd5bcf4e1b6b56ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">source</a></td></tr>
+<tr class="memdesc:ad09ee1cb28891cf0bd5bcf4e1b6b56ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">源流指针  <br /></td></tr>
+<tr class="separator:ad09ee1cb28891cf0bd5bcf4e1b6b56ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace244d3b61db0405a0c0583f4e28ab1c" id="r_ace244d3b61db0405a0c0583f4e28ab1c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a> = nullptr</td></tr>
+<tr class="memdesc:ace244d3b61db0405a0c0583f4e28ab1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">缓存指针  <br /></td></tr>
+<tr class="separator:ace244d3b61db0405a0c0583f4e28ab1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6070e71c3a7faf72dd54264ac6731c51" id="r_a6070e71c3a7faf72dd54264ac6731c51"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51">pos</a></td></tr>
+<tr class="memdesc:a6070e71c3a7faf72dd54264ac6731c51"><td class="mdescLeft">&#160;</td><td class="mdescRight">已操作的数据大小  <br /></td></tr>
+<tr class="separator:a6070e71c3a7faf72dd54264ac6731c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b9cd3701a42d7306c83e71681a4bc5" id="r_a59b9cd3701a42d7306c83e71681a4bc5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a59b9cd3701a42d7306c83e71681a4bc5">len</a></td></tr>
+<tr class="memdesc:a59b9cd3701a42d7306c83e71681a4bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">可供操作的数据大小  <br /></td></tr>
+<tr class="separator:a59b9cd3701a42d7306c83e71681a4bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33661e5128e1593f437d8d3f3c534903" id="r_a33661e5128e1593f437d8d3f3c534903"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a33661e5128e1593f437d8d3f3c534903">cap</a></td></tr>
+<tr class="memdesc:a33661e5128e1593f437d8d3f3c534903"><td class="mdescLeft">&#160;</td><td class="mdescRight">缓存容量  <br /></td></tr>
+<tr class="separator:a33661e5128e1593f437d8d3f3c534903"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>流缓存类 </p>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">弃用:</a></b></dt><dd>请考虑使用 <a class="el" href="classsese_1_1io_1_1_buffered_output_stream.html" title="输出流缓存类">BufferedOutputStream</a> 或 <a class="el" href="classsese_1_1io_1_1_buffered_input_stream.html" title="输入流缓存类">BufferedInputStream</a> </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8h_source.html">BufferedStream.h</a> 第 <a class="el" href="_buffered_stream_8h_source.html#l00020">20</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a3db699b9ba265ef798e618962deb56b1" name="a3db699b9ba265ef798e618962deb56b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3db699b9ba265ef798e618962deb56b1">&#9670;&#160;</a></span>Ptr</h2>
@@ -223,8 +247,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8h_source.html">BufferedStream.h</a> 第 <a class="el" href="_buffered_stream_8h_source.html#l00022">22</a> 行定义.</p>
 
 </div>
 </div>
@@ -270,15 +292,8 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8cpp_source.html">BufferedStream.cpp</a> 第 <a class="el" href="_buffered_stream_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                                          {</div>
-<div class="line"><span class="lineno">    7</span>    this-&gt;source = source;</div>
-<div class="line"><span class="lineno">    8</span>    this-&gt;pos = 0;</div>
-<div class="line"><span class="lineno">    9</span>    this-&gt;len = 0;</div>
-<div class="line"><span class="lineno">   10</span>    this-&gt;cap = buffer_size;</div>
-<div class="line"><span class="lineno">   11</span>    this-&gt;buffer = malloc(cap);</div>
-<div class="line"><span class="lineno">   12</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a33661e5128e1593f437d8d3f3c534903">cap</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a59b9cd3701a42d7306c83e71681a4bc5">len</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51">pos</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">source</a>.</p>
+
 </div>
 </div>
 <a id="a81dcb57a11559ccdbf8e2b0fc0696e45" name="a81dcb57a11559ccdbf8e2b0fc0696e45"></a>
@@ -304,12 +319,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8cpp_source.html">BufferedStream.cpp</a> 第 <a class="el" href="_buffered_stream_8cpp_source.html#l00014">14</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>                                         {</div>
-<div class="line"><span class="lineno">   15</span>    <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(buffer);</div>
-<div class="line"><span class="lineno">   16</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a> , 以及 <a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free()</a>.</p>
 
 </div>
 </div>
@@ -340,13 +350,8 @@ Public 成员函数</h2></td></tr>
 <p>清空当前读取标志位 </p>
 <dl class="section warning"><dt>警告</dt><dd>执行此操作前请确保 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html" title="流缓存类">BufferedStream</a> 中的内容已全部读出，否则可能导致必要信息丢失 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8cpp_source.html">BufferedStream.cpp</a> 第 <a class="el" href="_buffered_stream_8cpp_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>                                    {</div>
-<div class="line"><span class="lineno">   29</span>    <span class="comment">// 清除所有标志位</span></div>
-<div class="line"><span class="lineno">   30</span>    pos = 0;</div>
-<div class="line"><span class="lineno">   31</span>    len = 0;</div>
-<div class="line"><span class="lineno">   32</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a59b9cd3701a42d7306c83e71681a4bc5">len</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51">pos</a>.</p>
+
 </div>
 </div>
 <a id="a14d09477d93879892498b7ec334c1c8b" name="a14d09477d93879892498b7ec334c1c8b"></a>
@@ -375,16 +380,9 @@ Public 成员函数</h2></td></tr>
 <p>将当前缓存曲内容全部刷新至流中，并且重置当前写入标志位 </p>
 <dl class="section return"><dt>返回</dt><dd>刷新写入流中的字节数 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8cpp_source.html">BufferedStream.cpp</a> 第 <a class="el" href="_buffered_stream_8cpp_source.html#l00135">135</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  135</span>                                       {</div>
-<div class="line"><span class="lineno">  136</span>    <span class="comment">// 将已有未处理数据立即写入流</span></div>
-<div class="line"><span class="lineno">  137</span>    <span class="keyword">auto</span> wrote = source-&gt;write(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer) + pos, len - pos);</div>
-<div class="line"><span class="lineno">  138</span>    pos = 0;</div>
-<div class="line"><span class="lineno">  139</span>    len = 0;</div>
-<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">return</span> wrote;</div>
-<div class="line"><span class="lineno">  141</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_buffered_stream_8cpp_source.html#l00086">write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a59b9cd3701a42d7306c83e71681a4bc5">len</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51">pos</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">source</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">write()</a>.</p>
 
 </div>
 </div>
@@ -411,9 +409,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8h_source.html">BufferedStream.h</a> 第 <a class="el" href="_buffered_stream_8h_source.html#l00074">74</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>{ <span class="keywordflow">return</span> cap; }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a2fbebf7e91eb3e3dff1ee50f5e1ea3dc" name="a2fbebf7e91eb3e3dff1ee50f5e1ea3dc"></a>
@@ -439,9 +434,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8h_source.html">BufferedStream.h</a> 第 <a class="el" href="_buffered_stream_8h_source.html#l00073">73</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>{ <span class="keywordflow">return</span> len; }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aff27bdf2429f485852bdbb6615c95f68" name="aff27bdf2429f485852bdbb6615c95f68"></a>
@@ -467,9 +459,35 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8h_source.html">BufferedStream.h</a> 第 <a class="el" href="_buffered_stream_8h_source.html#l00072">72</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>{ <span class="keywordflow">return</span> pos; }</div>
-</div><!-- fragment -->
+</div>
+</div>
+<a id="ab3082411f0281932bda7450549e8d632" name="ab3082411f0281932bda7450549e8d632"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3082411f0281932bda7450549e8d632">&#9670;&#160;</a></span>preRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t BufferedStream::preRead </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a33661e5128e1593f437d8d3f3c534903">cap</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a59b9cd3701a42d7306c83e71681a4bc5">len</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51">pos</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">source</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a>.</p>
+
 </div>
 </div>
 <a id="a0ece73c99bb1373d2254816ca968ac8d" name="a0ece73c99bb1373d2254816ca968ac8d"></a>
@@ -519,62 +537,9 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8cpp_source.html">BufferedStream.cpp</a> 第 <a class="el" href="_buffered_stream_8cpp_source.html#l00034">34</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>                                                     {</div>
-<div class="line"><span class="lineno">   35</span>    <span class="comment">/*</span></div>
-<div class="line"><span class="lineno">   36</span><span class="comment">     * 如果读取所需字节数需要缓存两次以下，</span></div>
-<div class="line"><span class="lineno">   37</span><span class="comment">     * 需要进行预读操作，避免频繁的IO操作；</span></div>
-<div class="line"><span class="lineno">   38</span><span class="comment">     * 如果读取所需字节数需要缓存两次及两次以上，</span></div>
-<div class="line"><span class="lineno">   39</span><span class="comment">     * 则处理原先的缓存后，直接操作裸流，减少拷贝次数</span></div>
-<div class="line"><span class="lineno">   40</span><span class="comment">     */</span></div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (length &lt;= this-&gt;cap) {</div>
-<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">if</span> (this-&gt;len - this-&gt;pos &gt;= length) {</div>
-<div class="line"><span class="lineno">   43</span>            <span class="comment">// 字节数足够 - 不需要预读取</span></div>
-<div class="line"><span class="lineno">   44</span>            memcpy(buf, <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(this-&gt;buffer) + this-&gt;pos, length);</div>
-<div class="line"><span class="lineno">   45</span>            pos += length;</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(length);</div>
-<div class="line"><span class="lineno">   47</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   48</span>            <span class="comment">// 字节数不足 - 需要预读取</span></div>
-<div class="line"><span class="lineno">   49</span>            <span class="keywordtype">size_t</span> total = this-&gt;len - this-&gt;pos;</div>
-<div class="line"><span class="lineno">   50</span>            memcpy(buf, <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(this-&gt;buffer) + this-&gt;pos, total);</div>
-<div class="line"><span class="lineno">   51</span>            pos += total;</div>
-<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">if</span> (0 != preRead()) {</div>
-<div class="line"><span class="lineno">   53</span>                <span class="keywordflow">if</span> (this-&gt;len - this-&gt;pos &gt;= length - total) {</div>
-<div class="line"><span class="lineno">   54</span>                    <span class="comment">// 字节数足够</span></div>
-<div class="line"><span class="lineno">   55</span>                    memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buf) + total, this-&gt;buffer, length - total);</div>
-<div class="line"><span class="lineno">   56</span>                    pos = length - total;</div>
-<div class="line"><span class="lineno">   57</span>                    total = length;</div>
-<div class="line"><span class="lineno">   58</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   59</span>                    <span class="comment">// 字节数不足，且无法继续读取</span></div>
-<div class="line"><span class="lineno">   60</span>                    memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buf) + total, this-&gt;buffer, this-&gt;len - this-&gt;pos);</div>
-<div class="line"><span class="lineno">   61</span>                    pos = this-&gt;len - this-&gt;pos;</div>
-<div class="line"><span class="lineno">   62</span>                    total += this-&gt;len - this-&gt;pos;</div>
-<div class="line"><span class="lineno">   63</span>                }</div>
-<div class="line"><span class="lineno">   64</span>            }</div>
-<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(total);</div>
-<div class="line"><span class="lineno">   66</span>        }</div>
-<div class="line"><span class="lineno">   67</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   68</span>        <span class="comment">// 先处理已有缓存</span></div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordtype">size_t</span> total = this-&gt;len - this-&gt;pos;</div>
-<div class="line"><span class="lineno">   70</span>        memcpy(buf, this-&gt;buffer, total);</div>
-<div class="line"><span class="lineno">   71</span>        this-&gt;len = 0;</div>
-<div class="line"><span class="lineno">   72</span>        this-&gt;pos = 0;</div>
-<div class="line"><span class="lineno">   73</span>        <span class="comment">// 操作裸流</span></div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   75</span>            <span class="keywordtype">size_t</span> <a class="code hl_function" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read</a> = source-&gt;read(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buf) + total, (length - total) &gt;= 1024 ? 1024 : length - total);</div>
-<div class="line"><span class="lineno">   76</span>            total += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(<a class="code hl_function" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read</a>);</div>
-<div class="line"><span class="lineno">   77</span>            <span class="comment">// 无可再读</span></div>
-<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read</a> &lt;= 0) <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   79</span>            <span class="comment">// 完成目标</span></div>
-<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">if</span> (total == length) <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   81</span>        }</div>
-<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(total);</div>
-<div class="line"><span class="lineno">   83</span>    }</div>
-<div class="line"><span class="lineno">   84</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_buffered_stream_8cpp_source.html#l00034">read()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a33661e5128e1593f437d8d3f3c534903">cap</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a59b9cd3701a42d7306c83e71681a4bc5">len</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51">pos</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ab3082411f0281932bda7450549e8d632">preRead()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">source</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_buffered_stream_8cpp_source.html#l00034">read()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ab3082411f0281932bda7450549e8d632">preRead()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a>.</p>
 
 </div>
 </div>
@@ -608,13 +573,6 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8cpp_source.html">BufferedStream.cpp</a> 第 <a class="el" href="_buffered_stream_8cpp_source.html#l00143">143</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  143</span>                                                                     {</div>
-<div class="line"><span class="lineno">  144</span>    this-&gt;source = new_source;</div>
-<div class="line"><span class="lineno">  145</span>    pos = 0;</div>
-<div class="line"><span class="lineno">  146</span>    len = 0;</div>
-<div class="line"><span class="lineno">  147</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a84cbb6763733912bc600c5670f3afef2" name="a84cbb6763733912bc600c5670f3afef2"></a>
@@ -664,63 +622,144 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_buffered_stream_8cpp_source.html">BufferedStream.cpp</a> 第 <a class="el" href="_buffered_stream_8cpp_source.html#l00086">86</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>                                                            {</div>
-<div class="line"><span class="lineno">   87</span>    <span class="comment">/*</span></div>
-<div class="line"><span class="lineno">   88</span><span class="comment">     * 如果写入所需字节数需要刷新缓存两次一下，</span></div>
-<div class="line"><span class="lineno">   89</span><span class="comment">     * 则暂时写入缓存，避免频繁的IO操作；</span></div>
-<div class="line"><span class="lineno">   90</span><span class="comment">     * 如果写入所需字节数需要刷新缓存两次及两次以上，</span></div>
-<div class="line"><span class="lineno">   91</span><span class="comment">     * 则处理原先的缓存后，直接操作裸流，减少拷贝次数</span></div>
-<div class="line"><span class="lineno">   92</span><span class="comment">     */</span></div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (length &lt;= this-&gt;cap) {</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (this-&gt;cap - this-&gt;len &gt;= length) {</div>
-<div class="line"><span class="lineno">   95</span>            <span class="comment">// 字节数足够 - 不需要刷新</span></div>
-<div class="line"><span class="lineno">   96</span>            memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(this-&gt;buffer) + this-&gt;len, buf, length);</div>
-<div class="line"><span class="lineno">   97</span>            this-&gt;len += length;</div>
-<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(length);</div>
-<div class="line"><span class="lineno">   99</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  100</span>            <span class="comment">// 字节数不足 - 需要刷新</span></div>
-<div class="line"><span class="lineno">  101</span>            <span class="keywordtype">size_t</span> expect = len - pos;</div>
-<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">if</span> (expect == <a class="code hl_function" href="classsese_1_1io_1_1_buffered_stream.html#a14d09477d93879892498b7ec334c1c8b" title="将当前缓存曲内容全部刷新至流中，并且重置当前写入标志位">flush</a>()) {</div>
-<div class="line"><span class="lineno">  103</span>                memcpy(this-&gt;buffer, (<span class="keywordtype">char</span> *) buf, length);</div>
-<div class="line"><span class="lineno">  104</span>                this-&gt;len = length;</div>
-<div class="line"><span class="lineno">  105</span>                expect = length;</div>
-<div class="line"><span class="lineno">  106</span>                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(expect);</div>
-<div class="line"><span class="lineno">  107</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  108</span>                <span class="comment">// flush 失败</span></div>
-<div class="line"><span class="lineno">  109</span>                <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  110</span>            }</div>
-<div class="line"><span class="lineno">  111</span>        }</div>
-<div class="line"><span class="lineno">  112</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  113</span>        <span class="comment">// 直接写入</span></div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">if</span> (this-&gt;len != this-&gt;pos) {</div>
-<div class="line"><span class="lineno">  115</span>            <span class="comment">// 缓存区有剩余，需要刷新</span></div>
-<div class="line"><span class="lineno">  116</span>            <span class="keywordtype">size_t</span> expect = len - pos;</div>
-<div class="line"><span class="lineno">  117</span>            <span class="keywordflow">if</span> (expect != <a class="code hl_function" href="classsese_1_1io_1_1_buffered_stream.html#a14d09477d93879892498b7ec334c1c8b" title="将当前缓存曲内容全部刷新至流中，并且重置当前写入标志位">flush</a>()) {</div>
-<div class="line"><span class="lineno">  118</span>                <span class="comment">// flush 失败</span></div>
-<div class="line"><span class="lineno">  119</span>                <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  120</span>            }</div>
-<div class="line"><span class="lineno">  121</span>        }</div>
-<div class="line"><span class="lineno">  122</span> </div>
-<div class="line"><span class="lineno">  123</span>        int64_t wrote = 0;</div>
-<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">  125</span>            <span class="keyword">auto</span> rt = source-&gt;write(<span class="keyword">static_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buf) + wrote, length - wrote &gt;= cap ? cap : length - wrote);</div>
-<div class="line"><span class="lineno">  126</span>            <span class="keywordflow">if</span> (rt &lt;= 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  127</span>            wrote += rt;</div>
-<div class="line"><span class="lineno">  128</span>            <span class="keywordflow">if</span> (wrote == length) <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  129</span>        }</div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">return</span> wrote;</div>
-<div class="line"><span class="lineno">  132</span>    }</div>
-<div class="line"><span class="lineno">  133</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_buffered_stream_8cpp_source.html#l00135">flush()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ace244d3b61db0405a0c0583f4e28ab1c">buffer</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a33661e5128e1593f437d8d3f3c534903">cap</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a14d09477d93879892498b7ec334c1c8b">flush()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a59b9cd3701a42d7306c83e71681a4bc5">len</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a6070e71c3a7faf72dd54264ac6731c51">pos</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">source</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ace244d3b61db0405a0c0583f4e28ab1c" name="ace244d3b61db0405a0c0583f4e28ab1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace244d3b61db0405a0c0583f4e28ab1c">&#9670;&#160;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* sese::io::BufferedStream::buffer = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>缓存指针 </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a63254560fe5494622c9bd291ee697635">BufferedStream()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a14d09477d93879892498b7ec334c1c8b">flush()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ab3082411f0281932bda7450549e8d632">preRead()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">write()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a81dcb57a11559ccdbf8e2b0fc0696e45">~BufferedStream()</a>.</p>
+
+</div>
+</div>
+<a id="a33661e5128e1593f437d8d3f3c534903" name="a33661e5128e1593f437d8d3f3c534903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33661e5128e1593f437d8d3f3c534903">&#9670;&#160;</a></span>cap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::BufferedStream::cap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>缓存容量 </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a63254560fe5494622c9bd291ee697635">BufferedStream()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ab3082411f0281932bda7450549e8d632">preRead()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">write()</a>.</p>
+
+</div>
+</div>
+<a id="a59b9cd3701a42d7306c83e71681a4bc5" name="a59b9cd3701a42d7306c83e71681a4bc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b9cd3701a42d7306c83e71681a4bc5">&#9670;&#160;</a></span>len</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::BufferedStream::len</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>可供操作的数据大小 </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a63254560fe5494622c9bd291ee697635">BufferedStream()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a70d35d40bee69b5f75040e2bbe0da337">clear()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a14d09477d93879892498b7ec334c1c8b">flush()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ab3082411f0281932bda7450549e8d632">preRead()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">write()</a>.</p>
+
+</div>
+</div>
+<a id="a6070e71c3a7faf72dd54264ac6731c51" name="a6070e71c3a7faf72dd54264ac6731c51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6070e71c3a7faf72dd54264ac6731c51">&#9670;&#160;</a></span>pos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::BufferedStream::pos</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>已操作的数据大小 </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a63254560fe5494622c9bd291ee697635">BufferedStream()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a70d35d40bee69b5f75040e2bbe0da337">clear()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a14d09477d93879892498b7ec334c1c8b">flush()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ab3082411f0281932bda7450549e8d632">preRead()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">write()</a>.</p>
+
+</div>
+</div>
+<a id="ad09ee1cb28891cf0bd5bcf4e1b6b56ae" name="ad09ee1cb28891cf0bd5bcf4e1b6b56ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09ee1cb28891cf0bd5bcf4e1b6b56ae">&#9670;&#160;</a></span>source</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> sese::io::BufferedStream::source</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>源流指针 </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a63254560fe5494622c9bd291ee697635">BufferedStream()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a14d09477d93879892498b7ec334c1c8b">flush()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#ab3082411f0281932bda7450549e8d632">preRead()</a>, <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a0ece73c99bb1373d2254816ca968ac8d">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_buffered_stream.html#a84cbb6763733912bc600c5670f3afef2">write()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/io/<a class="el" href="_buffered_stream_8h_source.html">BufferedStream.h</a></li>
-<li>sese/io/<a class="el" href="_buffered_stream_8cpp_source.html">BufferedStream.cpp</a></li>
+<li>sese/io/<a class="el" href="_buffered_stream_8cpp.html">BufferedStream.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

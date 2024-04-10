@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -145,7 +146,7 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_requestab
   <map id="sese::net::http::Requestable_map" name="sese::net::http::Requestable_map">
 <area href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类" alt="sese::io::InputStream" shape="rect" coords="0,0,220,24"/>
 <area href="classsese_1_1io_1_1_output_stream.html" title="流式输出接口类" alt="sese::io::OutputStream" shape="rect" coords="230,0,450,24"/>
-<area href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html" alt="sese::internal::net::http::AsioHttpClient" shape="rect" coords="115,112,335,136"/>
+<area href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html" title="基于ASIO实现的HTTP/1.1客户端" alt="sese::internal::net::http::AsioHttpClient" shape="rect" coords="115,112,335,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -194,8 +195,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>可请求接口 </p>
-
-<p class="definition">在文件 <a class="el" href="_requestable_8h_source.html">Requestable.h</a> 第 <a class="el" href="_requestable_8h_source.html#l00015">15</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ad0ff7745cc428ba199d41f670274af69" name="ad0ff7745cc428ba199d41f670274af69"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad0ff7745cc428ba199d41f670274af69">&#9670;&#160;</a></span>~Requestable()</h2>
@@ -303,10 +302,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取请求头集合 </p><dl class="section return"><dt>返回</dt><dd>请求头集合 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_requestable_8h_source.html">Requestable.h</a> 第 <a class="el" href="_requestable_8h_source.html#l00043">43</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_requestable_8h_source.html#l00050">req</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a9382a081a27b0d3a7629b6a40a12ae63">req</a>.</p>
 
 </div>
 </div>
@@ -334,10 +330,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取响应头集合 </p><dl class="section return"><dt>返回</dt><dd>响应头集合 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_requestable_8h_source.html">Requestable.h</a> 第 <a class="el" href="_requestable_8h_source.html#l00047">47</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">resp</a>; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_requestable_8h_source.html#l00051">resp</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2a6b7aea54248db4c20715cb2eba8103">resp</a>.</p>
 
 </div>
 </div>
@@ -516,9 +509,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_requestable_8h_source.html">Requestable.h</a> 第 <a class="el" href="_requestable_8h_source.html#l00050">50</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_requestable_8h_source.html#l00043">getRequest()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00029">sese::internal::net::http::AsioHttpClient::init()</a> , 以及 <a class="el" href="_asio_http_client_8cpp_source.html#l00059">sese::internal::net::http::AsioHttpClient::request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2079c6b3809081013e68a39fe159b5f1">getRequest()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#ab2937c06515eddeca6f12ddf4cf00814">sese::internal::net::http::AsioHttpClient::init()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8133f79c8818d8efdd1e9952e5ecab7c">sese::internal::net::http::AsioHttpClient::request()</a>.</p>
 
 </div>
 </div>
@@ -542,9 +533,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_requestable_8h_source.html">Requestable.h</a> 第 <a class="el" href="_requestable_8h_source.html#l00051">51</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_requestable_8h_source.html#l00047">getResponse()</a>, <a class="el" href="_asio_http_client_8cpp_source.html#l00029">sese::internal::net::http::AsioHttpClient::init()</a> , 以及 <a class="el" href="_asio_http_client_8cpp_source.html#l00059">sese::internal::net::http::AsioHttpClient::request()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1http_1_1_requestable.html#a2e8164432fb6150c5a739de1e53f8a40">getResponse()</a>, <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#ab2937c06515eddeca6f12ddf4cf00814">sese::internal::net::http::AsioHttpClient::init()</a> , 以及 <a class="el" href="classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html#a8133f79c8818d8efdd1e9952e5ecab7c">sese::internal::net::http::AsioHttpClient::request()</a>.</p>
 
 </div>
 </div>

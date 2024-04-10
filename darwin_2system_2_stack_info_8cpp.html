@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -135,9 +136,7 @@ $(document).ready(function(){initNavTree('darwin_2system_2_stack_info_8cpp.html'
 <code>#include &lt;<a class="el" href="util_2_range_8h_source.html">sese/util/Range.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_output_buffer_wrapper_8h_source.html">sese/io/OutputBufferWrapper.h</a>&gt;</code><br />
 <code>#include &lt;execinfo.h&gt;</code><br />
-</div>
-<p><a href="darwin_2system_2_stack_info_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:a7b0f2d58a1eae5d507a65f9cf39ede15" id="r_a7b0f2d58a1eae5d507a65f9cf39ede15"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="darwin_2system_2_stack_info_8cpp.html#a7b0f2d58a1eae5d507a65f9cf39ede15">findPos2</a> (const char *buffer, size_t pos)</td></tr>
@@ -178,23 +177,9 @@ $(document).ready(function(){initNavTree('darwin_2system_2_stack_info_8cpp.html'
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="darwin_2system_2_stack_info_8cpp_source.html">StackInfo.cpp</a> 第 <a class="el" href="darwin_2system_2_stack_info_8cpp_source.html#l00014">14</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>                                                       {</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; pos; ++i) {</div>
-<div class="line"><span class="lineno">   17</span>        <span class="keywordflow">if</span> (buffer[-i] == <span class="charliteral">&#39; &#39;</span>) {</div>
-<div class="line"><span class="lineno">   18</span>            <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> += 1;</div>
-<div class="line"><span class="lineno">   19</span>        }</div>
-<div class="line"><span class="lineno">   20</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 3) {</div>
-<div class="line"><span class="lineno">   21</span>            <span class="keywordflow">return</span> pos - i;</div>
-<div class="line"><span class="lineno">   22</span>        }</div>
-<div class="line"><span class="lineno">   23</span>    }</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="darwin_2system_2_stack_info_8cpp_source.html#l00027">sese::system::StackInfo::StackInfo()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_stack_info.html#ada44b925c21e89c7a04857f653cb378a">sese::system::StackInfo::StackInfo()</a>.</p>
 
 </div>
 </div>

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -196,8 +197,6 @@ Public 类型</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>内存视图工具 </p>
-
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8h_source.html">MemoryViewer.h</a> 第 <a class="el" href="_memory_viewer_8h_source.html#l00018">18</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a46d5591a8f5b79a821a7a42d94065260" name="a46d5591a8f5b79a821a7a42d94065260"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46d5591a8f5b79a821a7a42d94065260">&#9670;&#160;</a></span>OutputStream</h2>
@@ -212,8 +211,6 @@ Public 类型</h2></td></tr>
 </div><div class="memdoc">
 
 <p>工具所使用输出流 </p>
-
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8h_source.html">MemoryViewer.h</a> 第 <a class="el" href="_memory_viewer_8h_source.html#l00021">21</a> 行定义.</p>
 
 </div>
 </div>
@@ -275,22 +272,7 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00017">17</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>                                                                                               {</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keyword">auto</span> *p = (uint8_t *) position;</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>; i++) {</div>
-<div class="line"><span class="lineno">   20</span>        <span class="keywordtype">char</span> word[3]{0, 0, <span class="charliteral">&#39; &#39;</span>};</div>
-<div class="line"><span class="lineno">   21</span>        word[0] = <a class="code hl_function" href="classsese_1_1_memory_viewer.html#aea12bcd5f6ef3df72aaf5b1cca82804f">toChar</a>(*(p + i + 0) / 0x10, is_cap);</div>
-<div class="line"><span class="lineno">   22</span>        word[1] = <a class="code hl_function" href="classsese_1_1_memory_viewer.html#aea12bcd5f6ef3df72aaf5b1cca82804f">toChar</a>(*(p + i + 0) % 0x10, is_cap);</div>
-<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">if</span> (i + 1 == <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>) {</div>
-<div class="line"><span class="lineno">   24</span>            output-&gt;write(word, 2);</div>
-<div class="line"><span class="lineno">   25</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   26</span>            output-&gt;write(word, 3);</div>
-<div class="line"><span class="lineno">   27</span>        }</div>
-<div class="line"><span class="lineno">   28</span>    }</div>
-<div class="line"><span class="lineno">   29</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a> , 以及 <a class="el" href="_s_h_a1_util_8cpp_source.html#l00212">toChar()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a> , 以及 <a class="el" href="_s_h_a1_util_8cpp.html#a39371113aca7dd5d9ed1d21d225c2f4b">toChar()</a>.</p>
 
 </div>
 </div>
@@ -344,11 +326,6 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00035">35</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                                                    {</div>
-<div class="line"><span class="lineno">   36</span>    <a class="code hl_function" href="classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3" title="获取内存视图">peer</a>(output, position, 2, is_cap);</div>
-<div class="line"><span class="lineno">   37</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a9c40be7589063bdd1ce130c48dc21aac" name="a9c40be7589063bdd1ce130c48dc21aac"></a>
@@ -408,18 +385,7 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00047">47</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                                                                                     {</div>
-<div class="line"><span class="lineno">   48</span>    uint16_t <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = *<span class="keyword">static_cast&lt;</span>uint16_t *<span class="keyword">&gt;</span>(position);</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">if</span> (type == <a class="code hl_enumvalue" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">EndianType::BIG</a>) {</div>
-<div class="line"><span class="lineno">   50</span>        <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <a class="code hl_function" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
-<div class="line"><span class="lineno">   51</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   52</span>        <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <a class="code hl_function" href="_endian_8h.html#a6078cc3b30976e98bf75a21271b931ae">ToLittleEndian16</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_function" href="classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3" title="获取内存视图">peer</a>(output, &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, 2, is_cap);</div>
-<div class="line"><span class="lineno">   55</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">BIG</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_endian_8h_source.html#l00033">ToBigEndian16()</a> , 以及 <a class="el" href="_endian_8h_source.html#l00048">ToLittleEndian16()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">BIG</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a> , 以及 <a class="el" href="_endian_8h.html#a6078cc3b30976e98bf75a21271b931ae">ToLittleEndian16()</a>.</p>
 
 </div>
 </div>
@@ -473,11 +439,6 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00039">39</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>                                                                                    {</div>
-<div class="line"><span class="lineno">   40</span>    <a class="code hl_function" href="classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3" title="获取内存视图">peer</a>(output, position, 4, is_cap);</div>
-<div class="line"><span class="lineno">   41</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a9e6702382c5c72d8912609ca4cdc7763" name="a9e6702382c5c72d8912609ca4cdc7763"></a>
@@ -537,18 +498,7 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00057">57</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>                                                                                                     {</div>
-<div class="line"><span class="lineno">   58</span>    uint32_t <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = *<span class="keyword">static_cast&lt;</span>uint32_t *<span class="keyword">&gt;</span>(position);</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">if</span> (type == <a class="code hl_enumvalue" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">EndianType::BIG</a>) {</div>
-<div class="line"><span class="lineno">   60</span>        <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <a class="code hl_function" href="_endian_8h.html#aee39e2ac7b85b19445e3e49d84ae0e71">ToBigEndian32</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
-<div class="line"><span class="lineno">   61</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   62</span>        <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <a class="code hl_function" href="_endian_8h.html#a2d514848bec4edf4d30a320997e66d02">ToLittleEndian32</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
-<div class="line"><span class="lineno">   63</span>    }</div>
-<div class="line"><span class="lineno">   64</span>    <a class="code hl_function" href="classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3" title="获取内存视图">peer</a>(output, &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, 4, is_cap);</div>
-<div class="line"><span class="lineno">   65</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">BIG</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_endian_8h_source.html#l00038">ToBigEndian32()</a> , 以及 <a class="el" href="_endian_8h_source.html#l00053">ToLittleEndian32()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">BIG</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_endian_8h.html#aee39e2ac7b85b19445e3e49d84ae0e71">ToBigEndian32()</a> , 以及 <a class="el" href="_endian_8h.html#a2d514848bec4edf4d30a320997e66d02">ToLittleEndian32()</a>.</p>
 
 </div>
 </div>
@@ -602,11 +552,6 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00043">43</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>                                                                                    {</div>
-<div class="line"><span class="lineno">   44</span>    <a class="code hl_function" href="classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3" title="获取内存视图">peer</a>(output, position, 8, is_cap);</div>
-<div class="line"><span class="lineno">   45</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a6d65029773b91755ffb7d7a1c8844dd4" name="a6d65029773b91755ffb7d7a1c8844dd4"></a>
@@ -666,18 +611,7 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00067">67</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>                                                                                                     {</div>
-<div class="line"><span class="lineno">   68</span>    uint64_t <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = *<span class="keyword">static_cast&lt;</span>uint64_t *<span class="keyword">&gt;</span>(position);</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (type == <a class="code hl_enumvalue" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">EndianType::BIG</a>) {</div>
-<div class="line"><span class="lineno">   70</span>        <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <a class="code hl_function" href="_endian_8h.html#aac1643a53942add87fbfe380e1a4f308">ToBigEndian64</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
-<div class="line"><span class="lineno">   71</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   72</span>        <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <a class="code hl_function" href="_endian_8h.html#a4f01b391acade3b4c64d3f88700640d1">ToLittleEndian64</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
-<div class="line"><span class="lineno">   73</span>    }</div>
-<div class="line"><span class="lineno">   74</span>    <a class="code hl_function" href="classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3" title="获取内存视图">peer</a>(output, &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, 8, is_cap);</div>
-<div class="line"><span class="lineno">   75</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">BIG</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_endian_8h_source.html#l00043">ToBigEndian64()</a> , 以及 <a class="el" href="_endian_8h_source.html#l00058">ToLittleEndian64()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfbaa60c6c694491d75b439073b8cb05b139">BIG</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_endian_8h.html#aac1643a53942add87fbfe380e1a4f308">ToBigEndian64()</a> , 以及 <a class="el" href="_endian_8h.html#a4f01b391acade3b4c64d3f88700640d1">ToLittleEndian64()</a>.</p>
 
 </div>
 </div>
@@ -731,11 +665,6 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00031">31</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>                                                                                   {</div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_function" href="classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3" title="获取内存视图">peer</a>(output, position, 1, is_cap);</div>
-<div class="line"><span class="lineno">   33</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aea12bcd5f6ef3df72aaf5b1cca82804f" name="aea12bcd5f6ef3df72aaf5b1cca82804f"></a>
@@ -772,26 +701,13 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a> 第 <a class="el" href="_memory_viewer_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                                {</div>
-<div class="line"><span class="lineno">    6</span>    <span class="keywordflow">if</span> (ch &gt;= 0 &amp;&amp; ch &lt;= 9) {</div>
-<div class="line"><span class="lineno">    7</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(ch + 48);</div>
-<div class="line"><span class="lineno">    8</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">    9</span>        <span class="keywordflow">if</span> (is_cap) {</div>
-<div class="line"><span class="lineno">   10</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(ch + 55);</div>
-<div class="line"><span class="lineno">   11</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   12</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(ch + 87);</div>
-<div class="line"><span class="lineno">   13</span>        }</div>
-<div class="line"><span class="lineno">   14</span>    }</div>
-<div class="line"><span class="lineno">   15</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_m_d5_util_8cpp_source.html#l00066">sese::MD5Util::encode()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_m_d5_util.html#a3715b1f9e785cd69dd5f704b4beb23e9">sese::MD5Util::encode()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/util/<a class="el" href="_memory_viewer_8h_source.html">MemoryViewer.h</a></li>
-<li>sese/util/<a class="el" href="_memory_viewer_8cpp_source.html">MemoryViewer.cpp</a></li>
+<li>sese/util/<a class="el" href="_memory_viewer_8cpp.html">MemoryViewer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

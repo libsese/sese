@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -132,9 +133,7 @@ $(document).ready(function(){initNavTree('_percent_converter_8cpp.html',''); ini
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_percent_converter_8h_source.html">sese/convert/PercentConverter.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_string_builder_8h_source.html">sese/text/StringBuilder.h</a>&quot;</code><br />
-</div>
-<p><a href="_percent_converter_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:a2e7132e030e9a0264465893f42283763" id="r_a2e7132e030e9a0264465893f42283763"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a> (unsigned char ch)</td></tr>
@@ -167,12 +166,7 @@ $(document).ready(function(){initNavTree('_percent_converter_8cpp.html',''); ini
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a> 第 <a class="el" href="_percent_converter_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                            {</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">return</span> ch + (ch &gt;= 0 &amp;&amp; ch &lt;= 9 ? 48 : 55);</div>
-<div class="line"><span class="lineno">   13</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_percent_converter_8cpp_source.html#l00085">sese::PercentConverter::encode()</a> , 以及 <a class="el" href="_percent_converter_8cpp_source.html#l00015">sese::PercentConverter::encode()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_percent_converter.html#a37ec439da4531de6459e10194933594d">sese::PercentConverter::encode()</a> , 以及 <a class="el" href="classsese_1_1_percent_converter.html#a5ca9d6288128b6d6ff672d973f6fd329">sese::PercentConverter::encode()</a>.</p>
 
 </div>
 </div>
@@ -200,20 +194,7 @@ $(document).ready(function(){initNavTree('_percent_converter_8cpp.html',''); ini
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a> 第 <a class="el" href="_percent_converter_8cpp_source.html#l00042">42</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>                                {</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (ch &gt;= <span class="charliteral">&#39;A&#39;</span> &amp;&amp; ch &lt;= <span class="charliteral">&#39;F&#39;</span>) {</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">return</span> ch - 55;</div>
-<div class="line"><span class="lineno">   45</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch &gt;= <span class="charliteral">&#39;a&#39;</span> &amp;&amp; ch &lt;= <span class="charliteral">&#39;f&#39;</span>) {</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">return</span> ch - 87;</div>
-<div class="line"><span class="lineno">   47</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; ch &lt;= <span class="charliteral">&#39;9&#39;</span>) {</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span> ch - 48;</div>
-<div class="line"><span class="lineno">   49</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(-1);</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
-<div class="line"><span class="lineno">   52</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_percent_converter_8cpp_source.html#l00110">sese::PercentConverter::decode()</a> , 以及 <a class="el" href="_percent_converter_8cpp_source.html#l00058">sese::PercentConverter::decode()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_percent_converter.html#a414c0bb931028add3b65c2ee120c9127">sese::PercentConverter::decode()</a> , 以及 <a class="el" href="classsese_1_1_percent_converter.html#a01974b8044e0fec7a83b0b6f97074b74">sese::PercentConverter::decode()</a>.</p>
 
 </div>
 </div>

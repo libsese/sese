@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -241,8 +242,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>字符串缓冲类 </p>
-
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8h_source.html">AbstractStringBuffer.h</a> 第 <a class="el" href="_abstract_string_buffer_8h_source.html#l00020">20</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a9faca19db32e67cc7a698bfc681159ad" name="a9faca19db32e67cc7a698bfc681159ad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9faca19db32e67cc7a698bfc681159ad">&#9670;&#160;</a></span>AbstractStringBuffer() <span class="overload">[1/4]</span></h2>
@@ -274,13 +273,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00013">13</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                              {</div>
-<div class="line"><span class="lineno">   14</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> = <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>;</div>
-<div class="line"><span class="lineno">   15</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>];</div>
-<div class="line"><span class="lineno">   16</span>    memset(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>, 0, <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>);</div>
-<div class="line"><span class="lineno">   17</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ad68902b6bacdd7f2bfd3259dca4ccd14" name="ad68902b6bacdd7f2bfd3259dca4ccd14"></a>
@@ -315,16 +307,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                                   {</div>
-<div class="line"><span class="lineno">   20</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> = strlen(str);</div>
-<div class="line"><span class="lineno">   21</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> = (<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> / <a class="code hl_variable" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a" title="String Buffer 单元因子">STRING_BUFFER_SIZE_FACTOR</a> + 1) * <a class="code hl_variable" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a" title="String Buffer 单元因子">STRING_BUFFER_SIZE_FACTOR</a>;</div>
-<div class="line"><span class="lineno">   22</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>];</div>
-<div class="line"><span class="lineno">   23</span>    memcpy(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>, str, <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>);</div>
-<div class="line"><span class="lineno">   24</span>    memset(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a> + <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>, 0, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> - <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>);</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_config_8h_source.html#l00066">STRING_BUFFER_SIZE_FACTOR</a>.</p>
+<p class="reference">引用了 <a class="el" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a">STRING_BUFFER_SIZE_FACTOR</a>.</p>
 
 </div>
 </div>
@@ -351,14 +334,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>                                                     {</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a> != <span class="keyword">nullptr</span>) { <span class="comment">// NOLINT</span></div>
-<div class="line"><span class="lineno">   29</span>        <span class="keyword">delete</span>[] this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>;     <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   30</span>    }</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a>.</p>
 
 </div>
 </div>
@@ -386,15 +362,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00033">33</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                                                                      {</div>
-<div class="line"><span class="lineno">   34</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> = abstract_string_buffer.cap;</div>
-<div class="line"><span class="lineno">   35</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> = abstract_string_buffer.len;</div>
-<div class="line"><span class="lineno">   36</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>];</div>
-<div class="line"><span class="lineno">   37</span>    memcpy(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>, abstract_string_buffer.buffer, this-&gt;len);</div>
-<div class="line"><span class="lineno">   38</span>    memset(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a> + this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>, 0, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> - this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>);</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a650736e683cc8f815a797bec864a0409" name="a650736e683cc8f815a797bec864a0409"></a>
@@ -421,17 +388,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00041">41</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>                                                                                                 {</div>
-<div class="line"><span class="lineno">   42</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> = abstract_string_buffer.cap;</div>
-<div class="line"><span class="lineno">   43</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> = abstract_string_buffer.len;</div>
-<div class="line"><span class="lineno">   44</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a> = abstract_string_buffer.buffer;</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>    abstract_string_buffer.cap = 0;</div>
-<div class="line"><span class="lineno">   47</span>    abstract_string_buffer.len = 0;</div>
-<div class="line"><span class="lineno">   48</span>    abstract_string_buffer.buffer = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   49</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -461,14 +417,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a0b862d1cbbe06c3a7f605cdf504f7a97">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">248</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  248</span>                                                  {</div>
-<div class="line"><span class="lineno">  249</span>    <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">AbstractStringBuffer::append</a>(&amp;ch, 1);</div>
-<div class="line"><span class="lineno">  250</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">append()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">append()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00077">append()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00082">append()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00086">append()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00090">append()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00094">append()</a>, <a class="el" href="_exception_8cpp_source.html#l00023">sese::Exception::buildStacktrace()</a>, <a class="el" href="_percent_converter_8cpp_source.html#l00110">sese::PercentConverter::decode()</a>, <a class="el" href="_simple_formatter_8cpp_source.html#l00034">sese::record::SimpleFormatter::dump()</a>, <a class="el" href="_percent_converter_8cpp_source.html#l00085">sese::PercentConverter::encode()</a>, <a class="el" href="_string_builder_8cpp_source.html#l00005">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp_source.html#l00010">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp_source.html#l00025">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp_source.html#l00030">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp_source.html#l00015">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp_source.html#l00020">operator&lt;&lt;()</a>, <a class="el" href="_query_string_8cpp_source.html#l00021">sese::net::http::QueryString::QueryString()</a>, <a class="el" href="_input_stream_reader_8cpp_source.html#l00006">sese::io::InputStreamReader::readLine()</a>, <a class="el" href="_json_util_8cpp_source.html#l00048">sese::json::JsonUtil::tokenizer()</a> , 以及 <a class="el" href="_query_string_8cpp_source.html#l00071">sese::net::http::QueryString::toString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#aac608fc5c82c30547b3522dbb3852bf8">append()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a25b57fa5bfae734e8432a154d13f0a37">append()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#aa03d0cda322d715783e98de7e6c456a0">append()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a6d8304aa7de119d7f751372b43d9ae2f">append()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#acebd6bb587ba0c5c4908dd900d2923ad">append()</a>, <a class="el" href="classsese_1_1_exception.html#a1a100e5b4e7d58ab9d88e44f744ac92b">sese::Exception::buildStacktrace()</a>, <a class="el" href="classsese_1_1xml_1_1_xml_util.html#a881d170a04e1d4125c6e6d779681fde8">sese::xml::XmlUtil::createElement()</a>, <a class="el" href="classsese_1_1_percent_converter.html#a414c0bb931028add3b65c2ee120c9127">sese::PercentConverter::decode()</a>, <a class="el" href="classsese_1_1record_1_1_simple_formatter.html#a0cb033e59e8114a43f372112e1d2e83b">sese::record::SimpleFormatter::dump()</a>, <a class="el" href="classsese_1_1_percent_converter.html#a37ec439da4531de6459e10194933594d">sese::PercentConverter::encode()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#afa65e9ba1314b6e60293e16147c283f4">sese::net::http::HttpUtil::getLine()</a>, <a class="el" href="classsese_1_1_random_util.html#a93c8e04cdd8dba3fb8a06e5831977b99">sese::RandomUtil::nextString()</a>, <a class="el" href="_string_builder_8cpp.html#a28c296fbe681d405c56b72767cb0aa4b">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp.html#a73a8d9a66b37d25ad835cc850a1afbb9">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp.html#a57e919bc230154c78e26cd97f1e157f1">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp.html#ad461a21d7a78bd8bf935e2da1460774c">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp.html#aa8e3ea2e57be94808ea0368c3d35ad11">operator&lt;&lt;()</a>, <a class="el" href="_string_builder_8cpp.html#af0611e7c8cc393a3bf94c8c7c5ceadd5">operator&lt;&lt;()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a6dede00a6ae2343185cb86b9510ebc47">sese::net::http::QueryString::QueryString()</a>, <a class="el" href="classsese_1_1io_1_1_input_stream_reader.html#aaa387ee5f3f6e3271163207239e0309a">sese::io::InputStreamReader::readLine()</a>, <a class="el" href="classsese_1_1json_1_1_json_util.html#ac1aa1afe6f5d57fc1fe0d05be67ee350">sese::json::JsonUtil::tokenizer()</a>, <a class="el" href="classsese_1_1xml_1_1_xml_util.html#aa4ad173341b19c94a86fe85bbbe555a4">sese::xml::XmlUtil::tokenizer()</a> , 以及 <a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a39ebf5e1ec3adeaa89442718fcffa42a">sese::net::http::QueryString::toString()</a>.</p>
 
 </div>
 </div>
@@ -508,18 +459,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#adc229ecadce41bcb7a47c75c58e12154">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00067">67</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>                                                                     {</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> (l &gt; <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> - this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>) {</div>
-<div class="line"><span class="lineno">   69</span>        <span class="comment">// 触发扩容</span></div>
-<div class="line"><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keyword">auto</span> NEW_SIZE = ((l + this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>) / <a class="code hl_variable" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a" title="String Buffer 单元因子">STRING_BUFFER_SIZE_FACTOR</a> + 1) * <a class="code hl_variable" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a" title="String Buffer 单元因子">STRING_BUFFER_SIZE_FACTOR</a>;</div>
-<div class="line"><span class="lineno">   71</span>        this-&gt;<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a619ffa7ef935be7673ac947eba4ee41b" title="字符串缓存">expansion</a>(NEW_SIZE);</div>
-<div class="line"><span class="lineno">   72</span>    }</div>
-<div class="line"><span class="lineno">   73</span>    memcpy(&amp;this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>], <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, l);</div>
-<div class="line"><span class="lineno">   74</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> += l;</div>
-<div class="line"><span class="lineno">   75</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_config_8h_source.html#l00066">STRING_BUFFER_SIZE_FACTOR</a>.</p>
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a">STRING_BUFFER_SIZE_FACTOR</a>.</p>
 
 </div>
 </div>
@@ -549,13 +489,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a44952b1f7f8a18499aece94958ec8870">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00077">77</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>                                                          {</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keyword">auto</span> l = strlen(str);</div>
-<div class="line"><span class="lineno">   79</span>    <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">AbstractStringBuffer::append</a>(str, l);</div>
-<div class="line"><span class="lineno">   80</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">append()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append()</a>.</p>
 
 </div>
 </div>
@@ -585,12 +519,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a920bd20c9e87a48f25a06c7d375f42f1">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00082">82</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>                                                               {</div>
-<div class="line"><span class="lineno">   83</span>    <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">AbstractStringBuffer::append</a>(str.data(), str.length());</div>
-<div class="line"><span class="lineno">   84</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">append()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append()</a>.</p>
 
 </div>
 </div>
@@ -620,12 +549,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a63b9111a968439a451da8000d1c5c7b2">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00086">86</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>                                                                    {</div>
-<div class="line"><span class="lineno">   87</span>    <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">AbstractStringBuffer::append</a>(str.data(), str.length());</div>
-<div class="line"><span class="lineno">   88</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">append()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append()</a>.</p>
 
 </div>
 </div>
@@ -655,12 +579,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a1f31186efdf048a7eac684caf4715432">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00090">90</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   90</span>                                                            {</div>
-<div class="line"><span class="lineno">   91</span>    <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">AbstractStringBuffer::append</a>(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code hl_typedef" href="namespacesese_1_1text.html#a0367c112b4808cefb1e1e4128f429a2e">StringView</a> *<span class="keyword">&gt;</span>(&amp;str)-&gt;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>(), str.<a class="code hl_function" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">len</a>());</div>
-<div class="line"><span class="lineno">   92</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">append()</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00459">sstr::SStringView::len()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append()</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>.</p>
 
 </div>
 </div>
@@ -690,12 +609,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a35d38304a80b428b153b278883ac2a38">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00094">94</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>                                                                 {</div>
-<div class="line"><span class="lineno">   95</span>    <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">AbstractStringBuffer::append</a>(view.data(), view.len());</div>
-<div class="line"><span class="lineno">   96</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">append()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append()</a>.</p>
 
 </div>
 </div>
@@ -724,15 +638,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#ae72a567ea8be25f3cd7e6b560b2b4b89">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00115">115</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>                                          {</div>
-<div class="line"><span class="lineno">  116</span>    <span class="comment">// memset(this-&gt;buffer, 0, cap);</span></div>
-<div class="line"><span class="lineno">  117</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> = 0;</div>
-<div class="line"><span class="lineno">  118</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">len</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d">len</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00048">sese::text::StringBuffer::clear()</a>, <a class="el" href="_query_string_8cpp_source.html#l00021">sese::net::http::QueryString::QueryString()</a>, <a class="el" href="_input_stream_reader_8cpp_source.html#l00006">sese::io::InputStreamReader::readLine()</a>, <a class="el" href="_http_util_8cpp_source.html#l00032">sese::net::http::HttpUtil::recvRequest()</a>, <a class="el" href="_http_util_8cpp_source.html#l00132">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="_yaml_util_8cpp_source.html#l00083">sese::yaml::YamlUtil::tokenizer()</a> , 以及 <a class="el" href="_json_util_8cpp_source.html#l00048">sese::json::JsonUtil::tokenizer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#ae72a567ea8be25f3cd7e6b560b2b4b89">sese::text::StringBuffer::clear()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a6dede00a6ae2343185cb86b9510ebc47">sese::net::http::QueryString::QueryString()</a>, <a class="el" href="classsese_1_1io_1_1_input_stream_reader.html#aaa387ee5f3f6e3271163207239e0309a">sese::io::InputStreamReader::readLine()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#abeb1987ab11d64b48c815bf17f4043ec">sese::net::http::HttpUtil::recvRequest()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#a61e679735b6881437ba057690fc5bf24">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aca854ce209061b7188b81b06e392b4d5">sese::yaml::YamlUtil::tokenizer()</a>, <a class="el" href="classsese_1_1json_1_1_json_util.html#ac1aa1afe6f5d57fc1fe0d05be67ee350">sese::json::JsonUtil::tokenizer()</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_xml_util.html#aa4ad173341b19c94a86fe85bbbe555a4">sese::xml::XmlUtil::tokenizer()</a>.</p>
 
 </div>
 </div>
@@ -772,23 +680,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a8d0343e6435a6a71f7634bd59ef25984">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00172">172</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  172</span>                                               {</div>
-<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">if</span> (0 &gt; start) {</div>
-<div class="line"><span class="lineno">  174</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  175</span>    }</div>
-<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> &lt; start + l) {</div>
-<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  178</span>    }</div>
-<div class="line"><span class="lineno">  179</span>    memmove(&amp;this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[start], &amp;this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[start + l], this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> - start - l);</div>
-<div class="line"><span class="lineno">  180</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> -= l;</div>
-<div class="line"><span class="lineno">  181</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  183</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a> , 以及 <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">len</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d">len</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00088">sese::text::StringBuffer::del()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a8d0343e6435a6a71f7634bd59ef25984">sese::text::StringBuffer::del()</a>.</p>
 
 </div>
 </div>
@@ -818,21 +712,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a763cb4c4e34ffd839bd9839556f0dbee">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00161">161</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  161</span>                                              {</div>
-<div class="line"><span class="lineno">  162</span>    <span class="comment">// if (this-&gt;cap &lt;= index || index &lt; 0) throw IndexOutOfBoundsException();</span></div>
-<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">if</span> (!<a class="code hl_define" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24" title="更快速的边界检查 - [0, max)">CheckRange</a>(index, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = index; i &lt; <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> - 1; i++) {</div>
-<div class="line"><span class="lineno">  165</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[i] = this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[i + 1];</div>
-<div class="line"><span class="lineno">  166</span>    }</div>
-<div class="line"><span class="lineno">  167</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[len - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  168</span>    this-&gt;len -= 1;</div>
-<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  170</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a>, <a class="el" href="util_2_util_8h_source.html#l00135">CheckRange</a> , 以及 <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">len</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a>, <a class="el" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">CheckRange</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d">len</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00083">sese::text::StringBuffer::delCharAt()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a763cb4c4e34ffd839bd9839556f0dbee">sese::text::StringBuffer::delCharAt()</a>.</p>
 
 </div>
 </div>
@@ -859,10 +741,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8h_source.html">AbstractStringBuffer.h</a> 第 <a class="el" href="_abstract_string_buffer_8h_source.html#l00063">63</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>{ <span class="keywordflow">return</span> 0 == this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>; };</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00068">sese::text::StringBuffer::empty()</a>, <a class="el" href="_yaml_util_8cpp_source.html#l00058">sese::yaml::YamlUtil::getLine()</a>, <a class="el" href="_query_string_8cpp_source.html#l00021">sese::net::http::QueryString::QueryString()</a> , 以及 <a class="el" href="_input_stream_reader_8cpp_source.html#l00006">sese::io::InputStreamReader::readLine()</a>.</p>
+<p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a900154b0e1f8b8b606d8185030d10832">sese::text::StringBuffer</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a7fe69429caa63e43ea9af6027ed07518">sese::text::StringBuffer::empty()</a>, <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a280f2758326c84ffac266eadd43d5f8e">sese::yaml::YamlUtil::getLine()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a6dede00a6ae2343185cb86b9510ebc47">sese::net::http::QueryString::QueryString()</a>, <a class="el" href="classsese_1_1io_1_1_input_stream_reader.html#aaa387ee5f3f6e3271163207239e0309a">sese::io::InputStreamReader::readLine()</a> , 以及 <a class="el" href="classsese_1_1xml_1_1_xml_util.html#aa4ad173341b19c94a86fe85bbbe555a4">sese::xml::XmlUtil::tokenizer()</a>.</p>
 
 </div>
 </div>
@@ -898,16 +779,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00098">98</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>                                                             {</div>
-<div class="line"><span class="lineno">   99</span>    <span class="keyword">const</span> <span class="keyword">auto</span> NEW_BUFFER = <span class="keyword">new</span> <span class="keywordtype">char</span>[new_size];</div>
-<div class="line"><span class="lineno">  100</span>    memcpy(NEW_BUFFER, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>, <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>);</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keyword">delete</span>[] this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  102</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a> = NEW_BUFFER;</div>
-<div class="line"><span class="lineno">  103</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> = new_size;</div>
-<div class="line"><span class="lineno">  104</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a>.</p>
 
 </div>
 </div>
@@ -935,16 +807,11 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00140">140</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>                                                    {</div>
-<div class="line"><span class="lineno">  141</span>    <span class="comment">// if (this-&gt;cap &lt;= index || index &lt; 0) throw IndexOutOfBoundsException();</span></div>
-<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">if</span> (!<a class="code hl_define" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24" title="更快速的边界检查 - [0, max)">CheckRange</a>(index, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>)) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">return</span> this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[index];</div>
-<div class="line"><span class="lineno">  144</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a>, <a class="el" href="_abstract_string_buffer_8h_source.html#l00039">cap</a> , 以及 <a class="el" href="util_2_util_8h_source.html#l00135">CheckRange</a>.</p>
+<p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#acc2e00a1b82edec0f9c006e4e3827413">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00073">sese::text::StringBuffer::getCharAt()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> , 以及 <a class="el" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">CheckRange</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#ad7d3936447cdf63407b28a6aa665cda3">sese::text::StringBuffer::getCharAt()</a>.</p>
 
 </div>
 </div>
@@ -988,25 +855,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">185</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  185</span>                                                                         {</div>
-<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> &lt;= index) {</div>
-<div class="line"><span class="lineno">  187</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  188</span>    }</div>
-<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">if</span> (l &gt; <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> - this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>) {</div>
-<div class="line"><span class="lineno">  190</span>        <span class="comment">// 触发扩容</span></div>
-<div class="line"><span class="lineno">  191</span>        <span class="keyword">const</span> <span class="keyword">auto</span> NEW_SIZE = ((l + this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>) / <a class="code hl_variable" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a" title="String Buffer 单元因子">STRING_BUFFER_SIZE_FACTOR</a> + 1) * <a class="code hl_variable" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a" title="String Buffer 单元因子">STRING_BUFFER_SIZE_FACTOR</a>;</div>
-<div class="line"><span class="lineno">  192</span>        this-&gt;<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a619ffa7ef935be7673ac947eba4ee41b" title="字符串缓存">expansion</a>(NEW_SIZE);</div>
-<div class="line"><span class="lineno">  193</span>    }</div>
-<div class="line"><span class="lineno">  194</span>    memmove(&amp;this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[index + l], &amp;this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[index], <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>);</div>
-<div class="line"><span class="lineno">  195</span>    memcpy(&amp;this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[index], <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, l);</div>
-<div class="line"><span class="lineno">  196</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> += l;</div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  198</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a>, <a class="el" href="_abstract_string_buffer_8h_source.html#l00039">cap</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00098">expansion()</a>, <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">len</a> , 以及 <a class="el" href="_config_8h_source.html#l00066">STRING_BUFFER_SIZE_FACTOR</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a619ffa7ef935be7673ac947eba4ee41b">expansion()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d">len</a> , 以及 <a class="el" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a">STRING_BUFFER_SIZE_FACTOR</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00200">insertAt()</a>, <a class="el" href="_string_buffer_8cpp_source.html#l00093">sese::text::StringBuffer::insertAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00205">insertAt()</a>, <a class="el" href="_string_buffer_8cpp_source.html#l00098">sese::text::StringBuffer::insertAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00209">insertAt()</a>, <a class="el" href="_string_buffer_8cpp_source.html#l00103">sese::text::StringBuffer::insertAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00213">insertAt()</a>, <a class="el" href="_string_buffer_8cpp_source.html#l00108">sese::text::StringBuffer::insertAt()</a>, <a class="el" href="_string_buffer_8cpp_source.html#l00113">sese::text::StringBuffer::insertAt()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00217">insertAt()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a0d383ff7d1d2e076c7098af48e5c5fda">insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a42ad5969a09a163224c1636a33f5eb65">sese::text::StringBuffer::insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a75bfd8bfc38836564c6c6539eb82b57d">insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a1b5dc31df17e34aae9a36801a1698e15">sese::text::StringBuffer::insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ae3208a81799723e6d1c03e6561175f7e">insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a9609fca3237169c227a5c5326d8090a4">sese::text::StringBuffer::insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a44ecc052b3c43723b431579bfbe95c03">insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a146ff172c911a4b5bed08c4cd9beca3e">sese::text::StringBuffer::insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_string_buffer.html#ad58a38e8c8fb4ede126c13f0ef949201">sese::text::StringBuffer::insertAt()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a877b32515e30ed715b01d0c36ea5c5f8">insertAt()</a>.</p>
 
 </div>
 </div>
@@ -1046,13 +897,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a42ad5969a09a163224c1636a33f5eb65">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00200">200</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  200</span>                                                              {</div>
-<div class="line"><span class="lineno">  201</span>    <span class="keyword">auto</span> l = strlen(str);</div>
-<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt</a>(index, str, l);</div>
-<div class="line"><span class="lineno">  203</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a>.</p>
 
 </div>
 </div>
@@ -1092,12 +937,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a1b5dc31df17e34aae9a36801a1698e15">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00205">205</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  205</span>                                                                   {</div>
-<div class="line"><span class="lineno">  206</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt</a>(index, str.data(), str.length());</div>
-<div class="line"><span class="lineno">  207</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a>.</p>
 
 </div>
 </div>
@@ -1137,12 +977,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a9609fca3237169c227a5c5326d8090a4">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00209">209</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  209</span>                                                                        {</div>
-<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt</a>(index, str.data(), str.length());</div>
-<div class="line"><span class="lineno">  211</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a>.</p>
 
 </div>
 </div>
@@ -1182,12 +1017,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a146ff172c911a4b5bed08c4cd9beca3e">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00213">213</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  213</span>                                                                {</div>
-<div class="line"><span class="lineno">  214</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt</a>(index, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code hl_typedef" href="namespacesese_1_1text.html#a0367c112b4808cefb1e1e4128f429a2e">StringView</a> *<span class="keyword">&gt;</span>(&amp;str)-&gt;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>(), str.<a class="code hl_function" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">len</a>());</div>
-<div class="line"><span class="lineno">  215</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00459">sstr::SStringView::len()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>.</p>
 
 </div>
 </div>
@@ -1227,12 +1057,7 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#ad58a38e8c8fb4ede126c13f0ef949201">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00217">217</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  217</span>                                                                     {</div>
-<div class="line"><span class="lineno">  218</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt</a>(index, view.data(), view.len());</div>
-<div class="line"><span class="lineno">  219</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8cpp_source.html#l00472">sstr::SStringView::data()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00459">sstr::SStringView::len()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsstr_1_1_s_string_view.html#a5b521606b27523db565edc87e8f7e24f">sstr::SStringView::data()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>.</p>
 
 </div>
 </div>
@@ -1259,10 +1084,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8h_source.html">AbstractStringBuffer.h</a> 第 <a class="el" href="_abstract_string_buffer_8h_source.html#l00061">61</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>{ <span class="keywordflow">return</span> this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>; }</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00058">sese::text::StringBuffer::length()</a>.</p>
+<p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a48fbc8836756a9c4d3ff1ab72c2a8954">sese::text::StringBuffer</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a19da3aa38399751646c3be420ddef89d">sese::text::StringBuffer::length()</a>.</p>
 
 </div>
 </div>
@@ -1291,18 +1115,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#ab9de1b82902be88df2b1941a05231449">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00153">153</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  153</span>                                            {</div>
-<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> / 2; j++) {</div>
-<div class="line"><span class="lineno">  155</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> TEMP = this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[j];</div>
-<div class="line"><span class="lineno">  156</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[j] = this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> - 1 - j];</div>
-<div class="line"><span class="lineno">  157</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> - 1 - j] = TEMP;</div>
-<div class="line"><span class="lineno">  158</span>    }</div>
-<div class="line"><span class="lineno">  159</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a> , 以及 <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">len</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d">len</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00053">sese::text::StringBuffer::reverse()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#ab9de1b82902be88df2b1941a05231449">sese::text::StringBuffer::reverse()</a>.</p>
 
 </div>
 </div>
@@ -1342,17 +1157,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a69e29349b8b98ca772aeed5d4dd4637f">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00146">146</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>                                                       {</div>
-<div class="line"><span class="lineno">  147</span>    <span class="comment">// if (this-&gt;cap &lt;= index || index &lt; 0) throw IndexOutOfBoundsException();</span></div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">if</span> (!<a class="code hl_define" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24" title="更快速的边界检查 - [0, max)">CheckRange</a>(index, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  149</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[index] = ch;</div>
-<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  151</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a>, <a class="el" href="_abstract_string_buffer_8h_source.html#l00039">cap</a> , 以及 <a class="el" href="util_2_util_8h_source.html#l00135">CheckRange</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a> , 以及 <a class="el" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">CheckRange</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00078">sese::text::StringBuffer::setChatAt()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a69e29349b8b98ca772aeed5d4dd4637f">sese::text::StringBuffer::setChatAt()</a>.</p>
 
 </div>
 </div>
@@ -1379,10 +1186,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8h_source.html">AbstractStringBuffer.h</a> 第 <a class="el" href="_abstract_string_buffer_8h_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{ <span class="keywordflow">return</span> this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#ab14466b9e6fd6a4459d02d549c255228">cap</a>; }</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00063">sese::text::StringBuffer::size()</a>.</p>
+<p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a03a8e40e59290d1035a4615d788a83ca">sese::text::StringBuffer</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a71833bbcbed629458ba27ea9efcdcaa5">sese::text::StringBuffer::size()</a>.</p>
 
 </div>
 </div>
@@ -1410,27 +1216,8 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00120">120</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                                                    {</div>
-<div class="line"><span class="lineno">  121</span>    std::vector&lt;std::string&gt; v;</div>
-<div class="line"><span class="lineno">  122</span>    <span class="comment">//        auto s = std::string(this-&gt;buffer);</span></div>
-<div class="line"><span class="lineno">  123</span>    <span class="keyword">auto</span> s = std::string_view(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>);</div>
-<div class="line"><span class="lineno">  124</span>    std::string::size_type pos2 = s.find(str);</div>
-<div class="line"><span class="lineno">  125</span>    std::string::size_type pos1 = 0;</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">while</span> (std::string::npos != pos2) {</div>
-<div class="line"><span class="lineno">  127</span>        <span class="comment">//            v.push_back(s.substr(pos1, pos2 - pos1));</span></div>
-<div class="line"><span class="lineno">  128</span>        v.emplace_back(s.data() + pos1, pos2 - pos1);</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>        pos1 = pos2 + str.size();</div>
-<div class="line"><span class="lineno">  131</span>        pos2 = s.find(str, pos1);</div>
-<div class="line"><span class="lineno">  132</span>    }</div>
-<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">if</span> (pos1 != s.length()) {</div>
-<div class="line"><span class="lineno">  134</span>        <span class="comment">//            v.push_back(s.substr(pos1));</span></div>
-<div class="line"><span class="lineno">  135</span>        v.emplace_back(s.data() + pos1, this-&gt;len - pos1);</div>
-<div class="line"><span class="lineno">  136</span>    }</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">return</span> v;</div>
-<div class="line"><span class="lineno">  138</span>}</div>
-</div><!-- fragment -->
+<p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#ac96804eb3a65a50dc1d4a54fd94cb61a">sese::text::StringBuffer</a> 重载.</p>
+
 </div>
 </div>
 <a id="a634e4a03c81a2b2b9759f5d360643b8f" name="a634e4a03c81a2b2b9759f5d360643b8f"></a>
@@ -1467,24 +1254,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00051">51</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                                                                                     {</div>
-<div class="line"><span class="lineno">   52</span>    std::vector&lt;std::string&gt; v;</div>
-<div class="line"><span class="lineno">   53</span>    std::string::size_type pos2 = text.find(sub);</div>
-<div class="line"><span class="lineno">   54</span>    std::string::size_type pos1 = 0;</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">while</span> (std::string::npos != pos2) {</div>
-<div class="line"><span class="lineno">   56</span>        v.emplace_back(text.data() + pos1, pos2 - pos1);</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>        pos1 = pos2 + sub.size();</div>
-<div class="line"><span class="lineno">   59</span>        pos2 = text.find(sub, pos1);</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">if</span> (pos1 != text.length()) {</div>
-<div class="line"><span class="lineno">   62</span>        v.emplace_back(text.data() + pos1);</div>
-<div class="line"><span class="lineno">   63</span>    }</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> v;</div>
-<div class="line"><span class="lineno">   65</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_range_8cpp_source.html#l00009">sese::net::http::Range::parse()</a>, <a class="el" href="_request_parser_8cpp_source.html#l00006">sese::net::http::RequestParser::parse()</a>, <a class="el" href="_arg_parser_8cpp_source.html#l00007">sese::ArgParser::parse()</a>, <a class="el" href="_request_parser_8cpp_source.html#l00046">sese::net::http::RequestParser::parseAddress()</a>, <a class="el" href="_http_util_8cpp_source.html#l00367">sese::net::http::HttpUtil::parseFromCookie()</a>, <a class="el" href="_date_time_formatter_8cpp_source.html#l00372">sese::text::DateTimeFormatter::parseFromISO8601()</a>, <a class="el" href="_http_util_8cpp_source.html#l00329">sese::net::http::HttpUtil::parseFromSetCookie()</a>, <a class="el" href="_http_util_8cpp_source.html#l00032">sese::net::http::HttpUtil::recvRequest()</a>, <a class="el" href="_http_util_8cpp_source.html#l00132">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="_string_buffer_8cpp_source.html#l00124">sese::text::StringBuffer::split()</a> , 以及 <a class="el" href="db_2_util_8cpp_source.html#l00006">sese::db::tokenize()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="structsese_1_1net_1_1http_1_1_range.html#a9a92703e7a8b5279abb8663c95479d3e">sese::net::http::Range::parse()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_request_parser.html#af1a74f01a229b6f35e140592b76f8283">sese::net::http::RequestParser::parse()</a>, <a class="el" href="classsese_1_1_arg_parser.html#a78a07ecaa8f31a1d2f78044fd1f34710">sese::ArgParser::parse()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_request_parser.html#a6d5db7b58fadede4f5856d3a63955233">sese::net::http::RequestParser::parseAddress()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#ab98b0f3917837e87d1f9f4d8fbd3ee92">sese::net::http::HttpUtil::parseFromCookie()</a>, <a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#adc46251d602830473b472a96b8e103ab">sese::text::DateTimeFormatter::parseFromISO8601()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#a89a0f4154a7cada7cd96740885f0c2fa">sese::net::http::HttpUtil::parseFromSetCookie()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#abeb1987ab11d64b48c815bf17f4043ec">sese::net::http::HttpUtil::recvRequest()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#a61e679735b6881437ba057690fc5bf24">sese::net::http::HttpUtil::recvResponse()</a>, <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a6b3f1c6643b0901bfdd7a8a6b9664d52">sese::text::StringBuffer::split()</a> , 以及 <a class="el" href="namespacesese_1_1db.html#ac2fdea009a81a3aa726d98dfcca5e81d">sese::db::tokenize()</a>.</p>
 
 </div>
 </div>
@@ -1513,14 +1283,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a3c81c5e66fe7aba78a88dcb664405cb2">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00111">111</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>                                       {</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> {this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>};</div>
-<div class="line"><span class="lineno">  113</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a> , 以及 <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">len</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d">len</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00134">sese::text::StringBuffer::toSString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#a3c81c5e66fe7aba78a88dcb664405cb2">sese::text::StringBuffer::toSString()</a>.</p>
 
 </div>
 </div>
@@ -1549,15 +1314,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#aaef0ad40fef1e3416df064b972ebe6ed">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">106</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>                                         {</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keyword">auto</span> view = std::string_view(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>, this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>);</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">return</span> {view.begin(), view.end()}; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  109</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a> , 以及 <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">len</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d">len</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_percent_converter_8cpp_source.html#l00110">sese::PercentConverter::decode()</a>, <a class="el" href="_simple_formatter_8cpp_source.html#l00034">sese::record::SimpleFormatter::dump()</a>, <a class="el" href="_percent_converter_8cpp_source.html#l00085">sese::PercentConverter::encode()</a>, <a class="el" href="_yaml_util_8cpp_source.html#l00058">sese::yaml::YamlUtil::getLine()</a>, <a class="el" href="_query_string_8cpp_source.html#l00021">sese::net::http::QueryString::QueryString()</a>, <a class="el" href="_input_stream_reader_8cpp_source.html#l00006">sese::io::InputStreamReader::readLine()</a>, <a class="el" href="_yaml_util_8cpp_source.html#l00083">sese::yaml::YamlUtil::tokenizer()</a>, <a class="el" href="_json_util_8cpp_source.html#l00048">sese::json::JsonUtil::tokenizer()</a>, <a class="el" href="_query_string_8cpp_source.html#l00071">sese::net::http::QueryString::toString()</a>, <a class="el" href="_string_buffer_8cpp_source.html#l00129">sese::text::StringBuffer::toString()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00244">sese::Value::toString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1xml_1_1_xml_util.html#a881d170a04e1d4125c6e6d779681fde8">sese::xml::XmlUtil::createElement()</a>, <a class="el" href="classsese_1_1_percent_converter.html#a414c0bb931028add3b65c2ee120c9127">sese::PercentConverter::decode()</a>, <a class="el" href="classsese_1_1record_1_1_simple_formatter.html#a0cb033e59e8114a43f372112e1d2e83b">sese::record::SimpleFormatter::dump()</a>, <a class="el" href="classsese_1_1_percent_converter.html#a37ec439da4531de6459e10194933594d">sese::PercentConverter::encode()</a>, <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a280f2758326c84ffac266eadd43d5f8e">sese::yaml::YamlUtil::getLine()</a>, <a class="el" href="classsese_1_1_random_util.html#a93c8e04cdd8dba3fb8a06e5831977b99">sese::RandomUtil::nextString()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a6dede00a6ae2343185cb86b9510ebc47">sese::net::http::QueryString::QueryString()</a>, <a class="el" href="classsese_1_1io_1_1_input_stream_reader.html#aaa387ee5f3f6e3271163207239e0309a">sese::io::InputStreamReader::readLine()</a>, <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aca854ce209061b7188b81b06e392b4d5">sese::yaml::YamlUtil::tokenizer()</a>, <a class="el" href="classsese_1_1json_1_1_json_util.html#ac1aa1afe6f5d57fc1fe0d05be67ee350">sese::json::JsonUtil::tokenizer()</a>, <a class="el" href="classsese_1_1xml_1_1_xml_util.html#aa4ad173341b19c94a86fe85bbbe555a4">sese::xml::XmlUtil::tokenizer()</a>, <a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a39ebf5e1ec3adeaa89442718fcffa42a">sese::net::http::QueryString::toString()</a>, <a class="el" href="classsese_1_1text_1_1_string_buffer.html#aaef0ad40fef1e3416df064b972ebe6ed">sese::text::StringBuffer::toString()</a> , 以及 <a class="el" href="classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3">sese::Value::toString()</a>.</p>
 
 </div>
 </div>
@@ -1588,36 +1347,9 @@ Protected 属性</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#aba00f9628655883ea3f53ce5fb1d89f9">sese::text::StringBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a> 第 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00222">222</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  222</span>                                         {</div>
-<div class="line"><span class="lineno">  223</span>    <span class="keywordtype">size_t</span> w = 0;</div>
-<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>; i++) {</div>
-<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">isSpace</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[len - 1 - i])) {</div>
-<div class="line"><span class="lineno">  226</span>            this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[len - 1 - i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">  227</span>            w += 1;</div>
-<div class="line"><span class="lineno">  228</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  229</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  230</span>        }</div>
-<div class="line"><span class="lineno">  231</span>    }</div>
-<div class="line"><span class="lineno">  232</span>    this-&gt;len -= w;</div>
-<div class="line"><span class="lineno">  233</span> </div>
-<div class="line"><span class="lineno">  234</span>    w = 0;</div>
-<div class="line"><span class="lineno">  235</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a>; i++) {</div>
-<div class="line"><span class="lineno">  236</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">isSpace</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[i])) {</div>
-<div class="line"><span class="lineno">  237</span>            w = i;</div>
-<div class="line"><span class="lineno">  238</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  239</span>        }</div>
-<div class="line"><span class="lineno">  240</span>    }</div>
-<div class="line"><span class="lineno">  241</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d" title="实际容量">len</a> - w; i++) {</div>
-<div class="line"><span class="lineno">  242</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[i] = this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[i + w];</div>
-<div class="line"><span class="lineno">  243</span>    }</div>
-<div class="line"><span class="lineno">  244</span>    memset(&amp;this-&gt;<a class="code hl_variable" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075" title="字符串长度">buffer</a>[len - w], 0, w + 1);</div>
-<div class="line"><span class="lineno">  245</span>    this-&gt;len -= w;</div>
-<div class="line"><span class="lineno">  246</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">buffer</a>, <a class="el" href="util_2_util_8cpp_source.html#l00009">sese::isSpace()</a> , 以及 <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">len</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a47660c06526e97d9f1faaeeb4e96b075">buffer</a>, <a class="el" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">sese::isSpace()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a54531659f84fcc8f6381eca51880e84d">len</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_string_buffer_8cpp_source.html#l00119">sese::text::StringBuffer::trim()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_string_buffer.html#aba00f9628655883ea3f53ce5fb1d89f9">sese::text::StringBuffer::trim()</a>.</p>
 
 </div>
 </div>
@@ -1644,9 +1376,7 @@ Protected 属性</h2></td></tr>
 
 <p>字符串长度 </p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8h_source.html">AbstractStringBuffer.h</a> 第 <a class="el" href="_abstract_string_buffer_8h_source.html#l00041">41</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00172">del()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00161">delCharAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00140">getCharAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00153">reverse()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00146">setChatAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00111">toSString()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">toString()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00222">trim()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00027">~AbstractStringBuffer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a05b99b5a6e987ddb1939befa94b19530">del()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ac202ff6da1181aecc46b77c4aaa79364">delCharAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#acc2e00a1b82edec0f9c006e4e3827413">getCharAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a887a8dd0ec8a351a2a5b114913fcb14e">reverse()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a8afd1f365d9f39d7d9127ef6f8fc01b2">setChatAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a83533db65bcce444e72a6b5db93a8f70">toSString()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a835c48f90c31722857f4c71ceb7b44a3">trim()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a2759aa4f0046dd874040828e5b8a0dfc">~AbstractStringBuffer()</a>.</p>
 
 </div>
 </div>
@@ -1670,10 +1400,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8h_source.html">AbstractStringBuffer.h</a> 第 <a class="el" href="_abstract_string_buffer_8h_source.html#l00039">39</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>{};           </div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00140">getCharAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00146">setChatAt()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#acc2e00a1b82edec0f9c006e4e3827413">getCharAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a8afd1f365d9f39d7d9127ef6f8fc01b2">setChatAt()</a>.</p>
 
 </div>
 </div>
@@ -1699,15 +1426,13 @@ Protected 属性</h2></td></tr>
 
 <p>实际容量 </p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_string_buffer_8h_source.html">AbstractStringBuffer.h</a> 第 <a class="el" href="_abstract_string_buffer_8h_source.html#l00040">40</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00115">clear()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00172">del()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00161">delCharAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">insertAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00153">reverse()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00111">toSString()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">toString()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00222">trim()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ac5022adf90d2c19c2e6056a8f962b0d0">clear()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a05b99b5a6e987ddb1939befa94b19530">del()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ac202ff6da1181aecc46b77c4aaa79364">delCharAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a18dca05c79f52992bda867d2e0fca325">insertAt()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a887a8dd0ec8a351a2a5b114913fcb14e">reverse()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a83533db65bcce444e72a6b5db93a8f70">toSString()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a835c48f90c31722857f4c71ceb7b44a3">trim()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/text/<a class="el" href="_abstract_string_buffer_8h_source.html">AbstractStringBuffer.h</a></li>
-<li>sese/text/<a class="el" href="_abstract_string_buffer_8cpp_source.html">AbstractStringBuffer.cpp</a></li>
+<li>sese/text/<a class="el" href="_abstract_string_buffer_8cpp.html">AbstractStringBuffer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -162,8 +163,6 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>随机输入流 </p>
-
-<p class="definition">在文件 <a class="el" href="_random_input_stream_8h_source.html">RandomInputStream.h</a> 第 <a class="el" href="_random_input_stream_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
 <a id="a662fc5a1f34625c55f7d8be67eefff2d" name="a662fc5a1f34625c55f7d8be67eefff2d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a662fc5a1f34625c55f7d8be67eefff2d">&#9670;&#160;</a></span>read()</h2>
@@ -201,25 +200,13 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_random_input_stream_8cpp_source.html">RandomInputStream.cpp</a> 第 <a class="el" href="_random_input_stream_8cpp_source.html#l00004">4</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    4</span>                                                                 {</div>
-<div class="line"><span class="lineno">    5</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
-<div class="line"><span class="lineno">    6</span>    <span class="keywordflow">while</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> != length) {</div>
-<div class="line"><span class="lineno">    7</span>        <span class="keyword">auto</span> r = RandomUtil::next&lt;uint64_t&gt;();</div>
-<div class="line"><span class="lineno">    8</span>        <span class="keyword">auto</span> need = std::min&lt;size_t&gt;(8, length - <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>);</div>
-<div class="line"><span class="lineno">    9</span>        memcpy((uint8_t *) buffer + <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, &amp;r, need);</div>
-<div class="line"><span class="lineno">   10</span>        <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> += need;</div>
-<div class="line"><span class="lineno">   11</span>    }</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(length);</div>
-<div class="line"><span class="lineno">   13</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/io/<a class="el" href="_random_input_stream_8h_source.html">RandomInputStream.h</a></li>
-<li>sese/io/<a class="el" href="_random_input_stream_8cpp_source.html">RandomInputStream.cpp</a></li>
+<li>sese/io/<a class="el" href="_random_input_stream_8cpp.html">RandomInputStream.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

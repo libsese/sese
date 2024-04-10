@@ -10,5 +10,7 @@ var classsese_1_1security_1_1_security_socket =
     [ "getSSL", "classsese_1_1security_1_1_security_socket.html#a6175d65a4f91aeeb77be4f5889fe102f", null ],
     [ "read", "classsese_1_1security_1_1_security_socket.html#ac5d1d541081a06ff7a552bb6dd62db3d", null ],
     [ "shutdown", "classsese_1_1security_1_1_security_socket.html#a68406980c4110b14663cd3c7a2aafbdc", null ],
-    [ "write", "classsese_1_1security_1_1_security_socket.html#acf22bdcfb5f0fcc698d0d251d1a3e45f", null ]
+    [ "write", "classsese_1_1security_1_1_security_socket.html#acf22bdcfb5f0fcc698d0d251d1a3e45f", null ],
+    [ "context", "classsese_1_1security_1_1_security_socket.html#a67ddfaa51a0451b4f815e038db7de72b", null ],
+    [ "ssl", "classsese_1_1security_1_1_security_socket.html#ab6e76b128ea46e817a2f3309b566d601", null ]
 ];

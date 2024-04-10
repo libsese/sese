@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -157,8 +158,6 @@ Public 类型</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>信息摘要工具类 </p>
-
-<p class="definition">在文件 <a class="el" href="convert_2_message_digest_8h_source.html">MessageDigest.h</a> 第 <a class="el" href="convert_2_message_digest_8h_source.html#l00014">14</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a0b9eebc5a5f94a8618ec3c919a6faff9" name="a0b9eebc5a5f94a8618ec3c919a6faff9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b9eebc5a5f94a8618ec3c919a6faff9">&#9670;&#160;</a></span>InputStream</h2>
@@ -171,8 +170,6 @@ Public 类型</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="convert_2_message_digest_8h_source.html">MessageDigest.h</a> 第 <a class="el" href="convert_2_message_digest_8h_source.html#l00016">16</a> 行定义.</p>
 
 </div>
 </div>
@@ -194,13 +191,6 @@ Public 类型</h2></td></tr>
 <tr><td class="fieldname"><a id="a9087027222cc1930068d1ae09a9c28e4a586aa399dfd1c99b49f02dacc025f11a" name="a9087027222cc1930068d1ae09a9c28e4a586aa399dfd1c99b49f02dacc025f11a"></a>SHA256&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">在文件 <a class="el" href="convert_2_message_digest_8h_source.html">MessageDigest.h</a> 第 <a class="el" href="convert_2_message_digest_8h_source.html#l00018">18</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>              {</div>
-<div class="line"><span class="lineno">   19</span>        <a class="code hl_enumvalue" href="classsese_1_1_message_digest.html#a9087027222cc1930068d1ae09a9c28e4a9f4718261c09557347b2e68d57105ce7">MD5</a>,</div>
-<div class="line"><span class="lineno">   20</span>        <a class="code hl_enumvalue" href="classsese_1_1_message_digest.html#a9087027222cc1930068d1ae09a9c28e4a6884e10787977b0269ad3dc64f7978d0">SHA1</a>,</div>
-<div class="line"><span class="lineno">   21</span>        <a class="code hl_enumvalue" href="classsese_1_1_message_digest.html#a9087027222cc1930068d1ae09a9c28e4a586aa399dfd1c99b49f02dacc025f11a">SHA256</a></div>
-<div class="line"><span class="lineno">   22</span>    };</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -259,19 +249,7 @@ Public 类型</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>摘要结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="convert_2_message_digest_8cpp_source.html">MessageDigest.cpp</a> 第 <a class="el" href="convert_2_message_digest_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                                                                             {</div>
-<div class="line"><span class="lineno">    7</span>    <span class="keywordflow">switch</span> (type) {</div>
-<div class="line"><span class="lineno">    8</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_message_digest.html#a9087027222cc1930068d1ae09a9c28e4a9f4718261c09557347b2e68d57105ce7">MD5</a>:</div>
-<div class="line"><span class="lineno">    9</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_m_d5_util.html#af3d7485a3e0f1fd2581c19fd9cdb2100" title="生成 MD5 信息">sese::MD5Util::encode</a>(source, is_cap);</div>
-<div class="line"><span class="lineno">   10</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_message_digest.html#a9087027222cc1930068d1ae09a9c28e4a6884e10787977b0269ad3dc64f7978d0">SHA1</a>:</div>
-<div class="line"><span class="lineno">   11</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">sese::SHA1Util::encode</a>(source, is_cap);</div>
-<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   13</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">sese::SHA256Util::encode</a>(source, is_cap);</div>
-<div class="line"><span class="lineno">   14</span>    }</div>
-<div class="line"><span class="lineno">   15</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_m_d5_util_8cpp_source.html#l00013">sese::MD5Util::encode()</a>, <a class="el" href="_s_h_a1_util_8cpp_source.html#l00161">sese::SHA1Util::encode()</a> , 以及 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00221">sese::SHA256Util::encode()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_m_d5_util.html#af3d7485a3e0f1fd2581c19fd9cdb2100">sese::MD5Util::encode()</a>, <a class="el" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">sese::SHA1Util::encode()</a> , 以及 <a class="el" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">sese::SHA256Util::encode()</a>.</p>
 
 </div>
 </div>
@@ -315,25 +293,13 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="convert_2_message_digest_8cpp_source.html">MessageDigest.cpp</a> 第 <a class="el" href="convert_2_message_digest_8cpp_source.html#l00017">17</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>                                                                                                    {</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">switch</span> (type) {</div>
-<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_message_digest.html#a9087027222cc1930068d1ae09a9c28e4a9f4718261c09557347b2e68d57105ce7">MD5</a>:</div>
-<div class="line"><span class="lineno">   20</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_m_d5_util.html#af3d7485a3e0f1fd2581c19fd9cdb2100" title="生成 MD5 信息">sese::MD5Util::encode</a>(source, is_cap);</div>
-<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_message_digest.html#a9087027222cc1930068d1ae09a9c28e4a6884e10787977b0269ad3dc64f7978d0">SHA1</a>:</div>
-<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">sese::SHA1Util::encode</a>(source, is_cap);</div>
-<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">sese::SHA256Util::encode</a>(source, is_cap);</div>
-<div class="line"><span class="lineno">   25</span>    }</div>
-<div class="line"><span class="lineno">   26</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_m_d5_util_8cpp_source.html#l00013">sese::MD5Util::encode()</a>, <a class="el" href="_s_h_a1_util_8cpp_source.html#l00161">sese::SHA1Util::encode()</a> , 以及 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00221">sese::SHA256Util::encode()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_m_d5_util.html#af3d7485a3e0f1fd2581c19fd9cdb2100">sese::MD5Util::encode()</a>, <a class="el" href="classsese_1_1_s_h_a1_util.html#a58c25e2815c3d98d34edf6eccd12cb73">sese::SHA1Util::encode()</a> , 以及 <a class="el" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">sese::SHA256Util::encode()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/convert/<a class="el" href="convert_2_message_digest_8h_source.html">MessageDigest.h</a></li>
-<li>sese/convert/<a class="el" href="convert_2_message_digest_8cpp_source.html">MessageDigest.cpp</a></li>
+<li>sese/convert/<a class="el" href="convert_2_message_digest_8cpp.html">MessageDigest.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

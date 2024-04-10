@@ -8,6 +8,9 @@ var classsese_1_1record_1_1_log_helper =
     [ "error", "classsese_1_1record_1_1_log_helper.html#a746d0b2d285ad1f51a8995448b5ce693", null ],
     [ "i", "classsese_1_1record_1_1_log_helper.html#a41b397d9826760c87401f1e8053b0ba3", null ],
     [ "info", "classsese_1_1record_1_1_log_helper.html#a10ff82c5326bd1050411048da278c43b", null ],
+    [ "l", "classsese_1_1record_1_1_log_helper.html#ad0da2651d29aceba2963921e90d1d4b3", null ],
+    [ "log", "classsese_1_1record_1_1_log_helper.html#a442d9d7fa21e7acef7858a647c89a76b", null ],
     [ "w", "classsese_1_1record_1_1_log_helper.html#a2b08e1d047644d642111c8ae750b52f8", null ],
-    [ "warn", "classsese_1_1record_1_1_log_helper.html#aab58f61746ba97a0ce554c46224c4504", null ]
+    [ "warn", "classsese_1_1record_1_1_log_helper.html#aab58f61746ba97a0ce554c46224c4504", null ],
+    [ "logger", "classsese_1_1record_1_1_log_helper.html#aad3fab3fea1fdb9aeb4a61376a2e804b", null ]
 ];

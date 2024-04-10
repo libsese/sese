@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -127,6 +128,7 @@ $(document).ready(function(){initNavTree('classsese_1_1security_1_1evp_1_1_s_h_a
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1security_1_1evp_1_1_s_h_a512_context-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::security::evp::SHA512Context类 参考</div></div>
 </div><!--header-->
@@ -166,6 +168,15 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a7b59bce16f3e8c49e997639e92d4fcf5 inherit pub_methods_classsese_1_1security_1_1evp_1_1_context" id="r_a7b59bce16f3e8c49e997639e92d4fcf5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1evp_1_1_context.html#a7b59bce16f3e8c49e997639e92d4fcf5">~Context</a> () noexcept=default</td></tr>
 <tr class="separator:a7b59bce16f3e8c49e997639e92d4fcf5 inherit pub_methods_classsese_1_1security_1_1evp_1_1_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a2c37a2acbaa03dd9a3cc31347bf46b1d" id="r_a2c37a2acbaa03dd9a3cc31347bf46b1d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#a2c37a2acbaa03dd9a3cc31347bf46b1d">length</a> = 64</td></tr>
+<tr class="separator:a2c37a2acbaa03dd9a3cc31347bf46b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a372157b9e514d0e354ddf767e4ca1d35" id="r_a372157b9e514d0e354ddf767e4ca1d35"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#a372157b9e514d0e354ddf767e4ca1d35">result</a> [64] {}</td></tr>
+<tr class="separator:a372157b9e514d0e354ddf767e4ca1d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1907c6a17c734755b36681d7f22812e" id="r_af1907c6a17c734755b36681d7f22812e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#af1907c6a17c734755b36681d7f22812e">context</a> = nullptr</td></tr>
+<tr class="separator:af1907c6a17c734755b36681d7f22812e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pub_types_classsese_1_1security_1_1evp_1_1_context"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1security_1_1evp_1_1_context')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1security_1_1evp_1_1_context.html">sese::security::evp::Context</a></td></tr>
@@ -174,8 +185,6 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>EVP SHA512 算法上下文 </p>
-
-<p class="definition">在文件 <a class="el" href="_s_h_a512_context_8h_source.html">SHA512Context.h</a> 第 <a class="el" href="_s_h_a512_context_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="afe165103df49e3419102528fec65ff23" name="afe165103df49e3419102528fec65ff23"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe165103df49e3419102528fec65ff23">&#9670;&#160;</a></span>SHA512Context()</h2>
@@ -200,12 +209,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html">SHA512Context.cpp</a> 第 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                     : <a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_context.html#ad710cd6ec93567547ad39adf97154124">Context</a>() {</div>
-<div class="line"><span class="lineno">    6</span>    this-&gt;context = EVP_MD_CTX_new();</div>
-<div class="line"><span class="lineno">    7</span>    EVP_DigestInit((EVP_MD_CTX *) this-&gt;context, EVP_sha512());</div>
-<div class="line"><span class="lineno">    8</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#af1907c6a17c734755b36681d7f22812e">context</a>.</p>
+
 </div>
 </div>
 <a id="a0f7aa597a0629a91bc7ae83a55381818" name="a0f7aa597a0629a91bc7ae83a55381818"></a>
@@ -231,11 +236,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html">SHA512Context.cpp</a> 第 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                      {</div>
-<div class="line"><span class="lineno">   11</span>    EVP_MD_CTX_free((EVP_MD_CTX *) this-&gt;context);</div>
-<div class="line"><span class="lineno">   12</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -264,11 +264,8 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1security_1_1evp_1_1_context.html#a98b821ad5cc9175066d2dc12d22a1d71">sese::security::evp::Context</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html">SHA512Context.cpp</a> 第 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html#l00018">18</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                  {</div>
-<div class="line"><span class="lineno">   19</span>    EVP_DigestFinal((EVP_MD_CTX *) this-&gt;context, result, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   20</span>}</div>
-</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_message_digest.html#a9bceb90955e3dc66928b7484e7b6411f">sese::security::MessageDigest::digestSHA512()</a>.</p>
+
 </div>
 </div>
 <a id="af54b0ee80f07355eb9befb1e883fb86c" name="af54b0ee80f07355eb9befb1e883fb86c"></a>
@@ -296,11 +293,8 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1security_1_1evp_1_1_context.html#a13411057065f063fdf9ea82f89abb445">sese::security::evp::Context</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html">SHA512Context.cpp</a> 第 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html#l00026">26</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   26</span>                                                        {</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">return</span> 64;</div>
-<div class="line"><span class="lineno">   28</span>}</div>
-</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_message_digest.html#a9bceb90955e3dc66928b7484e7b6411f">sese::security::MessageDigest::digestSHA512()</a>.</p>
+
 </div>
 </div>
 <a id="ae170ed19a1d182bb15bd8830aa760421" name="ae170ed19a1d182bb15bd8830aa760421"></a>
@@ -328,11 +322,8 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1security_1_1evp_1_1_context.html#afcb36d1ef1a03facf53dd7f1af2c496b">sese::security::evp::Context</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html">SHA512Context.cpp</a> 第 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html#l00022">22</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   22</span>                                                       {</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">   24</span>}</div>
-</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_message_digest.html#a9bceb90955e3dc66928b7484e7b6411f">sese::security::MessageDigest::digestSHA512()</a>.</p>
+
 </div>
 </div>
 <a id="a9da5f4d763aefa7f13574cbd1abedd4a" name="a9da5f4d763aefa7f13574cbd1abedd4a"></a>
@@ -371,17 +362,83 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1security_1_1evp_1_1_context.html#aeb168240cc4fff14edfce2f2711fc66b">sese::security::evp::Context</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html">SHA512Context.cpp</a> 第 <a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html#l00014">14</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>                                                                                 {</div>
-<div class="line"><span class="lineno">   15</span>    EVP_DigestUpdate((EVP_MD_CTX *) this-&gt;context, buffer, len);</div>
-<div class="line"><span class="lineno">   16</span>}</div>
-</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_message_digest.html#a9bceb90955e3dc66928b7484e7b6411f">sese::security::MessageDigest::digestSHA512()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="af1907c6a17c734755b36681d7f22812e" name="af1907c6a17c734755b36681d7f22812e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1907c6a17c734755b36681d7f22812e">&#9670;&#160;</a></span>context</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* sese::security::evp::SHA512Context::context = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#afe165103df49e3419102528fec65ff23">SHA512Context()</a>.</p>
+
+</div>
+</div>
+<a id="a2c37a2acbaa03dd9a3cc31347bf46b1d" name="a2c37a2acbaa03dd9a3cc31347bf46b1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c37a2acbaa03dd9a3cc31347bf46b1d">&#9670;&#160;</a></span>length</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::security::evp::SHA512Context::length = 64</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a372157b9e514d0e354ddf767e4ca1d35" name="a372157b9e514d0e354ddf767e4ca1d35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a372157b9e514d0e354ddf767e4ca1d35">&#9670;&#160;</a></span>result</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sese::security::evp::SHA512Context::result[64] {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/security/evp/<a class="el" href="_s_h_a512_context_8h_source.html">SHA512Context.h</a></li>
-<li>sese/native/unix/security/evp/<a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp_source.html">SHA512Context.cpp</a></li>
-<li>sese/native/win/security/evp/<a class="el" href="win_2security_2evp_2_s_h_a512_context_8cpp_source.html">SHA512Context.cpp</a></li>
+<li>sese/native/unix/security/evp/<a class="el" href="unix_2security_2evp_2_s_h_a512_context_8cpp.html">SHA512Context.cpp</a></li>
+<li>sese/native/win/security/evp/<a class="el" href="win_2security_2evp_2_s_h_a512_context_8cpp.html">SHA512Context.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

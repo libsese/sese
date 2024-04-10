@@ -51,5 +51,6 @@ var classsese_1_1_value_1_1_list =
     [ "rend", "classsese_1_1_value_1_1_list.html#a719d9c76450b74e11be59fa0976cde82", null ],
     [ "reserve", "classsese_1_1_value_1_1_list.html#ad9e9d0945ed8cb1c0c32f7cc071ce351", null ],
     [ "resize", "classsese_1_1_value_1_1_list.html#a8c4ea4aca881d123108cf8a04fa97c6e", null ],
-    [ "size", "classsese_1_1_value_1_1_list.html#a0d5eb7ebaed76cd316f287ca032b39e8", null ]
+    [ "size", "classsese_1_1_value_1_1_list.html#a0d5eb7ebaed76cd316f287ca032b39e8", null ],
+    [ "vector", "classsese_1_1_value_1_1_list.html#ad5ea50ea8df54c339e2b850e75f33f7d", null ]
 ];

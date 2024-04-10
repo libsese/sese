@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,7 @@ $(document).ready(function(){initNavTree('classsese_1_1system_1_1_file_notifier.
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
 <a href="classsese_1_1system_1_1_file_notifier-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::system::FileNotifier类 参考</div></div>
 </div><!--header-->
@@ -159,13 +161,16 @@ Public 成员函数</h2></td></tr>
 静态 Public 成员函数</h2></td></tr>
 <tr class="memitem:a3e9cb4c190e5ec266c73bb2a04f0809e" id="r_a3e9cb4c190e5ec266c73bb2a04f0809e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1system_1_1_file_notifier.html#a742b5e2f2ea550bead834fb4bd8c88c8">FileNotifier::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_file_notifier.html#a3e9cb4c190e5ec266c73bb2a04f0809e">create</a> (const std::string &amp;path, <a class="el" href="structsese_1_1system_1_1_file_notify_option.html">FileNotifyOption</a> *option) noexcept</td></tr>
 <tr class="separator:a3e9cb4c190e5ec266c73bb2a04f0809e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:ae65a96fa4752c2afed9dc717d8f4e51d" id="r_ae65a96fa4752c2afed9dc717d8f4e51d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_file_notifier.html#ae65a96fa4752c2afed9dc717d8f4e51d">FileNotifier</a> ()=default</td></tr>
+<tr class="separator:ae65a96fa4752c2afed9dc717d8f4e51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>文件变更监视器 </p>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug:</a></b></dt><dd>此实现 Darwin 事件顺序与 Windows 和 Linux 不一致。 </dd></dl>
 <p>Darwin 优先触发同一文件多个事件，Windows 和 Linux 按时间顺序触发。 </p>
-
-<p class="definition">在文件 <a class="el" href="_file_notifier_8h_source.html">FileNotifier.h</a> 第 <a class="el" href="_file_notifier_8h_source.html#l00040">40</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a742b5e2f2ea550bead834fb4bd8c88c8" name="a742b5e2f2ea550bead834fb4bd8c88c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a742b5e2f2ea550bead834fb4bd8c88c8">&#9670;&#160;</a></span>Ptr</h2>
@@ -178,8 +183,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_file_notifier_8h_source.html">FileNotifier.h</a> 第 <a class="el" href="_file_notifier_8h_source.html#l00042">42</a> 行定义.</p>
 
 </div>
 </div>
@@ -207,14 +210,32 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html">FileNotifier.cpp</a> 第 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00091">91</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>                                     {</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">if</span> (this-&gt;stream) {</div>
-<div class="line"><span class="lineno">   93</span>        <a class="code hl_function" href="classsese_1_1system_1_1_file_notifier.html#a844550dad1d2a8d786ed3ffbef855783" title="关闭监视器并阻塞至后台线程退出">shutdown</a>();</div>
-<div class="line"><span class="lineno">   94</span>    }</div>
-<div class="line"><span class="lineno">   95</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00101">shutdown()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1system_1_1_file_notifier.html#a844550dad1d2a8d786ed3ffbef855783">shutdown()</a>.</p>
+
+</div>
+</div>
+<a id="ae65a96fa4752c2afed9dc717d8f4e51d" name="ae65a96fa4752c2afed9dc717d8f4e51d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65a96fa4752c2afed9dc717d8f4e51d">&#9670;&#160;</a></span>FileNotifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::system::FileNotifier::FileNotifier </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -266,50 +287,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html">FileNotifier.cpp</a> 第 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00049">49</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                                                                             {</div>
-<div class="line"><span class="lineno">   50</span>    CFStringRef p = CFStringCreateWithCString(</div>
-<div class="line"><span class="lineno">   51</span>            <span class="keyword">nullptr</span>,</div>
-<div class="line"><span class="lineno">   52</span>            path.c_str(),</div>
-<div class="line"><span class="lineno">   53</span>            kCFStringEncodingUTF8</div>
-<div class="line"><span class="lineno">   54</span>    );</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    CFArrayRef paths_to_watch = CFArrayCreate(</div>
-<div class="line"><span class="lineno">   57</span>            <span class="keyword">nullptr</span>,</div>
-<div class="line"><span class="lineno">   58</span>            (<span class="keyword">const</span> <span class="keywordtype">void</span> **) &amp;p,</div>
-<div class="line"><span class="lineno">   59</span>            1,</div>
-<div class="line"><span class="lineno">   60</span>            &amp;kCFTypeArrayCallBacks</div>
-<div class="line"><span class="lineno">   61</span>    );</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>    <span class="keyword">auto</span> notifier = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1system_1_1_file_notifier.html" title="文件变更监视器">FileNotifier</a>;</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    FSEventStreamContext context;</div>
-<div class="line"><span class="lineno">   66</span>    context.version = 0;</div>
-<div class="line"><span class="lineno">   67</span>    context.info = option;</div>
-<div class="line"><span class="lineno">   68</span>    context.retain = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   69</span>    context.release = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   70</span>    context.copyDescription = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    notifier-&gt;stream = FSEventStreamCreate(</div>
-<div class="line"><span class="lineno">   73</span>            <span class="keyword">nullptr</span>,</div>
-<div class="line"><span class="lineno">   74</span>            &amp;<a class="code hl_function" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>,</div>
-<div class="line"><span class="lineno">   75</span>            &amp;context,</div>
-<div class="line"><span class="lineno">   76</span>            paths_to_watch,</div>
-<div class="line"><span class="lineno">   77</span>            kFSEventStreamEventIdSinceNow,</div>
-<div class="line"><span class="lineno">   78</span>            1,</div>
-<div class="line"><span class="lineno">   79</span>            kFSEventStreamCreateFlagFileEvents | kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagUseExtendedData</div>
-<div class="line"><span class="lineno">   80</span>    );</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>    notifier-&gt;queue = dispatch_queue_create(<span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   83</span>    FSEventStreamSetDispatchQueue(</div>
-<div class="line"><span class="lineno">   84</span>            (FSEventStreamRef) notifier-&gt;stream,</div>
-<div class="line"><span class="lineno">   85</span>            (dispatch_queue_t) notifier-&gt;queue</div>
-<div class="line"><span class="lineno">   86</span>    );</div>
-<div class="line"><span class="lineno">   87</span> </div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> std::unique_ptr&lt;FileNotifier&gt;(notifier);</div>
-<div class="line"><span class="lineno">   89</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00007">callback()</a>.</p>
+<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a>.</p>
 
 </div>
 </div>
@@ -338,11 +316,6 @@ Public 成员函数</h2></td></tr>
 
 <p>启动线程，开始处理变更事件 </p>
 
-<p class="definition">在文件 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html">FileNotifier.cpp</a> 第 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00097">97</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>                                            {</div>
-<div class="line"><span class="lineno">   98</span>    FSEventStreamStart((FSEventStreamRef) this-&gt;stream);</div>
-<div class="line"><span class="lineno">   99</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a844550dad1d2a8d786ed3ffbef855783" name="a844550dad1d2a8d786ed3ffbef855783"></a>
@@ -370,25 +343,15 @@ Public 成员函数</h2></td></tr>
 
 <p>关闭监视器并阻塞至后台线程退出 </p>
 
-<p class="definition">在文件 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html">FileNotifier.cpp</a> 第 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00101">101</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>                                     {</div>
-<div class="line"><span class="lineno">  102</span>    FSEventStreamStop((FSEventStreamRef) this-&gt;stream);</div>
-<div class="line"><span class="lineno">  103</span>    FSEventStreamInvalidate((FSEventStreamRef) this-&gt;stream);</div>
-<div class="line"><span class="lineno">  104</span>    FSEventStreamRelease((FSEventStreamRef) this-&gt;stream);</div>
-<div class="line"><span class="lineno">  105</span>    dispatch_release((dispatch_queue_t) this-&gt;queue);</div>
-<div class="line"><span class="lineno">  106</span>    stream = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  107</span>    queue = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  108</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00091">~FileNotifier()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_file_notifier.html#a3bb4e75333341df153a046191a7d27f3">~FileNotifier()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/system/<a class="el" href="_file_notifier_8h_source.html">FileNotifier.h</a></li>
-<li>sese/native/darwin/system/<a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html">FileNotifier.cpp</a></li>
-<li>sese/native/linux/system/<a class="el" href="linux_2system_2_file_notifier_8cpp_source.html">FileNotifier.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="win_2system_2_file_notifier_8cpp_source.html">FileNotifier.cpp</a></li>
+<li>sese/native/darwin/system/<a class="el" href="darwin_2system_2_file_notifier_8cpp.html">FileNotifier.cpp</a></li>
+<li>sese/native/linux/system/<a class="el" href="linux_2system_2_file_notifier_8cpp.html">FileNotifier.cpp</a></li>
+<li>sese/native/win/system/<a class="el" href="win_2system_2_file_notifier_8cpp.html">FileNotifier.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

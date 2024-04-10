@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,8 @@ $(document).ready(function(){initNavTree('classsese_1_1_m_d5_util.html',''); ini
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
 <a href="classsese_1_1_m_d5_util-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::MD5Util类 参考</div></div>
 </div><!--header-->
@@ -161,11 +164,76 @@ Public 类型</h2></td></tr>
 <tr class="memitem:a3715b1f9e785cd69dd5f704b4beb23e9" id="r_a3715b1f9e785cd69dd5f704b4beb23e9"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; char[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a3715b1f9e785cd69dd5f704b4beb23e9">encode</a> (<a class="el" href="classsese_1_1_m_d5_util.html#ab01f2a370934e0c75292802ac660b4ec">InputStream</a> *input, bool is_cap=true) noexcept</td></tr>
 <tr class="memdesc:a3715b1f9e785cd69dd5f704b4beb23e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成 32 位大写 MD5 字符串  <br /></td></tr>
 <tr class="separator:a3715b1f9e785cd69dd5f704b4beb23e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:a459fcae1d9892369a6bc8c22e08541c0" id="r_a459fcae1d9892369a6bc8c22e08541c0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a459fcae1d9892369a6bc8c22e08541c0">transform</a> (uint32_t *res, uint8_t *buffer) noexcept</td></tr>
+<tr class="memdesc:a459fcae1d9892369a6bc8c22e08541c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于进行变换操作  <br /></td></tr>
+<tr class="separator:a459fcae1d9892369a6bc8c22e08541c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4413e5c048cd8ec6271ec384311b1ff4" id="r_a4413e5c048cd8ec6271ec384311b1ff4"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a4413e5c048cd8ec6271ec384311b1ff4">F</a> (uint32_t x, uint32_t y, uint32_t z) noexcept</td></tr>
+<tr class="separator:a4413e5c048cd8ec6271ec384311b1ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b40471319e0e618be3d046e3694a0eb" id="r_a1b40471319e0e618be3d046e3694a0eb"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a1b40471319e0e618be3d046e3694a0eb">G</a> (uint32_t x, uint32_t y, uint32_t z) noexcept</td></tr>
+<tr class="separator:a1b40471319e0e618be3d046e3694a0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aade3536f3a3c01e1c07ebef216ebbd76" id="r_aade3536f3a3c01e1c07ebef216ebbd76"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#aade3536f3a3c01e1c07ebef216ebbd76">H</a> (uint32_t x, uint32_t y, uint32_t z) noexcept</td></tr>
+<tr class="separator:aade3536f3a3c01e1c07ebef216ebbd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14d3e2aa7a98e46c829138bd1f7a6b78" id="r_a14d3e2aa7a98e46c829138bd1f7a6b78"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a14d3e2aa7a98e46c829138bd1f7a6b78">I</a> (uint32_t x, uint32_t y, uint32_t z) noexcept</td></tr>
+<tr class="separator:a14d3e2aa7a98e46c829138bd1f7a6b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7f220889e23f51e3f2a7e1b809eb232" id="r_ab7f220889e23f51e3f2a7e1b809eb232"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#ab7f220889e23f51e3f2a7e1b809eb232">FF</a> (uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a>, uint32_t x, uint32_t s, uint32_t t) noexcept</td></tr>
+<tr class="separator:ab7f220889e23f51e3f2a7e1b809eb232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a236ad3136e45c19b19f0a26ce2d383df" id="r_a236ad3136e45c19b19f0a26ce2d383df"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a236ad3136e45c19b19f0a26ce2d383df">GG</a> (uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a>, uint32_t x, uint32_t s, uint32_t t) noexcept</td></tr>
+<tr class="separator:a236ad3136e45c19b19f0a26ce2d383df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85d57baf5931c654a7f4c41dbf5d66e" id="r_ac85d57baf5931c654a7f4c41dbf5d66e"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#ac85d57baf5931c654a7f4c41dbf5d66e">HH</a> (uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a>, uint32_t x, uint32_t s, uint32_t t) noexcept</td></tr>
+<tr class="separator:ac85d57baf5931c654a7f4c41dbf5d66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa260ad3649b4a24b35f24792220446d7" id="r_aa260ad3649b4a24b35f24792220446d7"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#aa260ad3649b4a24b35f24792220446d7">II</a> (uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>, uint32_t <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a>, uint32_t x, uint32_t s, uint32_t t) noexcept</td></tr>
+<tr class="separator:aa260ad3649b4a24b35f24792220446d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a61632ed28a0dc784446b27ad2712efcd" id="r_a61632ed28a0dc784446b27ad2712efcd"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a61632ed28a0dc784446b27ad2712efcd">A</a> = 0x67452301</td></tr>
+<tr class="separator:a61632ed28a0dc784446b27ad2712efcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c8af968a9b34711f81652db407f5d8" id="r_a62c8af968a9b34711f81652db407f5d8"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a62c8af968a9b34711f81652db407f5d8">B</a> = 0xefcdab89</td></tr>
+<tr class="separator:a62c8af968a9b34711f81652db407f5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a0c40f3e6ceab8cb15b0a7d12b3f47b" id="r_a4a0c40f3e6ceab8cb15b0a7d12b3f47b"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a4a0c40f3e6ceab8cb15b0a7d12b3f47b">C</a> = 0x98badcfe</td></tr>
+<tr class="separator:a4a0c40f3e6ceab8cb15b0a7d12b3f47b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9fdffea50f88a5627fe87e26298a7bc" id="r_ac9fdffea50f88a5627fe87e26298a7bc"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#ac9fdffea50f88a5627fe87e26298a7bc">D</a> = 0x10325476</td></tr>
+<tr class="separator:ac9fdffea50f88a5627fe87e26298a7bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8847be4437cc94ebc3922816f66c50a" id="r_af8847be4437cc94ebc3922816f66c50a"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#af8847be4437cc94ebc3922816f66c50a">S11</a> = 7</td></tr>
+<tr class="separator:af8847be4437cc94ebc3922816f66c50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a882f45cdc0da4702cabfbb408fd20dd6" id="r_a882f45cdc0da4702cabfbb408fd20dd6"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a882f45cdc0da4702cabfbb408fd20dd6">S12</a> = 12</td></tr>
+<tr class="separator:a882f45cdc0da4702cabfbb408fd20dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9c8cee00bbaca6e3be8088226cf85e3" id="r_af9c8cee00bbaca6e3be8088226cf85e3"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#af9c8cee00bbaca6e3be8088226cf85e3">S13</a> = 17</td></tr>
+<tr class="separator:af9c8cee00bbaca6e3be8088226cf85e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02afd6c3bd09b406484007328a7a006d" id="r_a02afd6c3bd09b406484007328a7a006d"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a02afd6c3bd09b406484007328a7a006d">S14</a> = 22</td></tr>
+<tr class="separator:a02afd6c3bd09b406484007328a7a006d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac098cf26cc9508d7a88bae255b20d5c8" id="r_ac098cf26cc9508d7a88bae255b20d5c8"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#ac098cf26cc9508d7a88bae255b20d5c8">S21</a> = 5</td></tr>
+<tr class="separator:ac098cf26cc9508d7a88bae255b20d5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a570963b38115d07e7d80ddd99d187c2c" id="r_a570963b38115d07e7d80ddd99d187c2c"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a570963b38115d07e7d80ddd99d187c2c">S22</a> = 9</td></tr>
+<tr class="separator:a570963b38115d07e7d80ddd99d187c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6987791444df70d0aeedfce1f830a64e" id="r_a6987791444df70d0aeedfce1f830a64e"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a6987791444df70d0aeedfce1f830a64e">S23</a> = 14</td></tr>
+<tr class="separator:a6987791444df70d0aeedfce1f830a64e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acca68e8f197774906c838fde755638bb" id="r_acca68e8f197774906c838fde755638bb"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#acca68e8f197774906c838fde755638bb">S24</a> = 20</td></tr>
+<tr class="separator:acca68e8f197774906c838fde755638bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d8512ee95751e6f6fa511400d0f785d" id="r_a3d8512ee95751e6f6fa511400d0f785d"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a3d8512ee95751e6f6fa511400d0f785d">S31</a> = 4</td></tr>
+<tr class="separator:a3d8512ee95751e6f6fa511400d0f785d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f821b5c327be6ec7af2a635a9b168d" id="r_aa6f821b5c327be6ec7af2a635a9b168d"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#aa6f821b5c327be6ec7af2a635a9b168d">S32</a> = 11</td></tr>
+<tr class="separator:aa6f821b5c327be6ec7af2a635a9b168d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a429efbf53bae20358f8c6fb2a65c6d" id="r_a2a429efbf53bae20358f8c6fb2a65c6d"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a2a429efbf53bae20358f8c6fb2a65c6d">S33</a> = 16</td></tr>
+<tr class="separator:a2a429efbf53bae20358f8c6fb2a65c6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5238218e1328d20009b484f868bced7c" id="r_a5238218e1328d20009b484f868bced7c"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a5238218e1328d20009b484f868bced7c">S34</a> = 23</td></tr>
+<tr class="separator:a5238218e1328d20009b484f868bced7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09fee1cbe3ec34892ac05373e94a838d" id="r_a09fee1cbe3ec34892ac05373e94a838d"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a09fee1cbe3ec34892ac05373e94a838d">S41</a> = 6</td></tr>
+<tr class="separator:a09fee1cbe3ec34892ac05373e94a838d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72ebbddfd0e621468b7a78727f676ea8" id="r_a72ebbddfd0e621468b7a78727f676ea8"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#a72ebbddfd0e621468b7a78727f676ea8">S42</a> = 10</td></tr>
+<tr class="separator:a72ebbddfd0e621468b7a78727f676ea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea0a4826a2ab209d367d6d8c47e468b1" id="r_aea0a4826a2ab209d367d6d8c47e468b1"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#aea0a4826a2ab209d367d6d8c47e468b1">S43</a> = 15</td></tr>
+<tr class="separator:aea0a4826a2ab209d367d6d8c47e468b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7fd67fcb410eb047f19ce721b1f1afd" id="r_ab7fd67fcb410eb047f19ce721b1f1afd"><td class="memItemLeft" align="right" valign="top">static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#ab7fd67fcb410eb047f19ce721b1f1afd">S44</a> = 21</td></tr>
+<tr class="separator:ab7fd67fcb410eb047f19ce721b1f1afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af76433e2f2a804758015e4d44511d7f5" id="r_af76433e2f2a804758015e4d44511d7f5"><td class="memItemLeft" align="right" valign="top">static constexpr const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_m_d5_util.html#af76433e2f2a804758015e4d44511d7f5">PADDING</a> [64] = {0x80}</td></tr>
+<tr class="separator:af76433e2f2a804758015e4d44511d7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>MD5 算法类 </p>
-
-<p class="definition">在文件 <a class="el" href="_m_d5_util_8h_source.html">MD5Util.h</a> 第 <a class="el" href="_m_d5_util_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ab01f2a370934e0c75292802ac660b4ec" name="ab01f2a370934e0c75292802ac660b4ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab01f2a370934e0c75292802ac660b4ec">&#9670;&#160;</a></span>InputStream</h2>
@@ -180,8 +248,6 @@ Public 类型</h2></td></tr>
 </div><div class="memdoc">
 
 <p>工具所用输入流 </p>
-
-<p class="definition">在文件 <a class="el" href="_m_d5_util_8h_source.html">MD5Util.h</a> 第 <a class="el" href="_m_d5_util_8h_source.html#l00021">21</a> 行定义.</p>
 
 </div>
 </div>
@@ -198,8 +264,6 @@ Public 类型</h2></td></tr>
 </div><div class="memdoc">
 
 <p>工具所用输出流 </p>
-
-<p class="definition">在文件 <a class="el" href="_m_d5_util_8h_source.html">MD5Util.h</a> 第 <a class="el" href="_m_d5_util_8h_source.html#l00019">19</a> 行定义.</p>
 
 </div>
 </div>
@@ -248,12 +312,7 @@ Public 类型</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>返回生成的字符串，生成失败则为 nullptr </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_m_d5_util_8cpp_source.html">MD5Util.cpp</a> 第 <a class="el" href="_m_d5_util_8cpp_source.html#l00061">61</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>                                                                                       {</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_m_d5_util.html#af3d7485a3e0f1fd2581c19fd9cdb2100" title="生成 MD5 信息">encode</a>(input.get(), is_cap);</div>
-<div class="line"><span class="lineno">   63</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00017">encode()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp.html#a916bb1846ef38fccf6fbe59964208139">encode()</a>.</p>
 
 </div>
 </div>
@@ -300,14 +359,9 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_m_d5_util_8cpp_source.html">MD5Util.cpp</a> 第 <a class="el" href="_m_d5_util_8cpp_source.html#l00013">13</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                                                        {</div>
-<div class="line"><span class="lineno">   14</span>    <a class="code hl_function" href="classsese_1_1_m_d5_util.html#af3d7485a3e0f1fd2581c19fd9cdb2100" title="生成 MD5 信息">encode</a>(input.get(), output.get());</div>
-<div class="line"><span class="lineno">   15</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00017">encode()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp.html#a916bb1846ef38fccf6fbe59964208139">encode()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="convert_2_message_digest_8cpp_source.html#l00006">sese::MessageDigest::digest()</a> , 以及 <a class="el" href="convert_2_message_digest_8cpp_source.html#l00017">sese::MessageDigest::digest()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_message_digest.html#acef02568e5530e0ce31552e449357fe0">sese::MessageDigest::digest()</a> , 以及 <a class="el" href="classsese_1_1_message_digest.html#a9dcd293090366453154ec4db5a841867">sese::MessageDigest::digest()</a>.</p>
 
 </div>
 </div>
@@ -355,22 +409,7 @@ Public 类型</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>返回生成的字符串，生成失败则为 nullptr </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_m_d5_util_8cpp_source.html">MD5Util.cpp</a> 第 <a class="el" href="_m_d5_util_8cpp_source.html#l00066">66</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>                                                                              {</div>
-<div class="line"><span class="lineno">   67</span>    <a class="code hl_class" href="classsese_1_1io_1_1_byte_builder.html" title="线程不安全的字节缓冲类">ByteBuilder</a> dest(16);</div>
-<div class="line"><span class="lineno">   68</span>    <a class="code hl_function" href="classsese_1_1_m_d5_util.html#af3d7485a3e0f1fd2581c19fd9cdb2100" title="生成 MD5 信息">encode</a>(input, &amp;dest);</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[16];</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keyword">auto</span> rt = std::unique_ptr&lt;char[]&gt;(<span class="keyword">new</span> <span class="keywordtype">char</span>[33]); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   71</span>    dest.read(buffer, 16);</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; 16; i++) {</div>
-<div class="line"><span class="lineno">   73</span>        rt[i * 2 + 1] = <a class="code hl_function" href="classsese_1_1_memory_viewer.html#aea12bcd5f6ef3df72aaf5b1cca82804f">MemoryViewer::toChar</a>(buffer[i] % 0x10, is_cap);</div>
-<div class="line"><span class="lineno">   74</span>        rt[i * 2 + 0] = <a class="code hl_function" href="classsese_1_1_memory_viewer.html#aea12bcd5f6ef3df72aaf5b1cca82804f">MemoryViewer::toChar</a>(buffer[i] / 0x10, is_cap);</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
-<div class="line"><span class="lineno">   76</span>    rt[32] = 0;</div>
-<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">return</span> rt;</div>
-<div class="line"><span class="lineno">   78</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00017">encode()</a>, <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00170">sese::io::AbstractByteBuffer::read()</a> , 以及 <a class="el" href="_memory_viewer_8cpp_source.html#l00005">sese::MemoryViewer::toChar()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp.html#a916bb1846ef38fccf6fbe59964208139">encode()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aba3ee2794220fe6a65232206a2cd30b2">sese::io::AbstractByteBuffer::read()</a> , 以及 <a class="el" href="classsese_1_1_memory_viewer.html#aea12bcd5f6ef3df72aaf5b1cca82804f">sese::MemoryViewer::toChar()</a>.</p>
 
 </div>
 </div>
@@ -421,55 +460,958 @@ Public 类型</h2></td></tr>
 <p>单位为 位</p>
 <p>单位为 位</p>
 
-<p class="definition">在文件 <a class="el" href="_m_d5_util_8cpp_source.html">MD5Util.cpp</a> 第 <a class="el" href="_m_d5_util_8cpp_source.html#l00018">18</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                                      {</div>
-<div class="line"><span class="lineno">   19</span>    uint32_t result[4]{A, B, C, D};</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[64];</div>
-<div class="line"><span class="lineno">   21</span>    uint64_t length = 0;</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordtype">bool</span> is_break = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">while</span> (!is_break) {</div>
-<div class="line"><span class="lineno">   25</span>        int64_t len = input-&gt;read(buffer, 64);</div>
-<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">if</span> (len == 64) {</div>
-<div class="line"><span class="lineno">   27</span>            length += len;</div>
-<div class="line"><span class="lineno">   28</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (len == 0) {</div>
-<div class="line"><span class="lineno">   29</span>            memcpy(&amp;buffer[len], PADDING, 64 - len - 8);</div>
-<div class="line"><span class="lineno">   30</span>            length *= 8; </div>
-<div class="line"><span class="lineno">   31</span>            length = <a class="code hl_function" href="_endian_8h.html#a4f01b391acade3b4c64d3f88700640d1">ToLittleEndian64</a>(length);</div>
-<div class="line"><span class="lineno">   32</span>            memcpy(&amp;buffer[56], &amp;length, 8);</div>
-<div class="line"><span class="lineno">   34</span>            is_break = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   35</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (len &lt; 56) {</div>
-<div class="line"><span class="lineno">   36</span>            length += len;</div>
-<div class="line"><span class="lineno">   37</span>            memcpy(&amp;buffer[len], PADDING, 64 - len - 8);</div>
-<div class="line"><span class="lineno">   38</span>            length *= 8; </div>
-<div class="line"><span class="lineno">   39</span>            length = <a class="code hl_function" href="_endian_8h.html#a4f01b391acade3b4c64d3f88700640d1">ToLittleEndian64</a>(length);</div>
-<div class="line"><span class="lineno">   40</span>            memcpy(&amp;buffer[56], &amp;length, 8);</div>
-<div class="line"><span class="lineno">   41</span>            is_break = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   42</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   43</span>            length += len;</div>
-<div class="line"><span class="lineno">   44</span>            memcpy(&amp;buffer[len], PADDING, 64 - len);</div>
-<div class="line"><span class="lineno">   45</span>            <span class="comment">// 倒数第二次变换</span></div>
-<div class="line"><span class="lineno">   46</span>            MD5Util::transform(result, buffer);</div>
-<div class="line"><span class="lineno">   47</span>            memset(buffer, 0, 56);</div>
-<div class="line"><span class="lineno">   48</span>            length *= 8; </div>
-<div class="line"><span class="lineno">   49</span>            length = <a class="code hl_function" href="_endian_8h.html#a4f01b391acade3b4c64d3f88700640d1">ToLittleEndian64</a>(length);</div>
-<div class="line"><span class="lineno">   50</span>            memcpy(&amp;buffer[56], &amp;length, 8);</div>
-<div class="line"><span class="lineno">   51</span>            is_break = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   52</span>        }</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>        MD5Util::transform(result, buffer);</div>
-<div class="line"><span class="lineno">   55</span>    }</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>    output-&gt;write(result, 16);</div>
-<div class="line"><span class="lineno">   58</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00058">ToLittleEndian64()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a4f01b391acade3b4c64d3f88700640d1">ToLittleEndian64()</a> , 以及 <a class="el" href="classsese_1_1_m_d5_util.html#a459fcae1d9892369a6bc8c22e08541c0">transform()</a>.</p>
+
+</div>
+</div>
+<a id="a4413e5c048cd8ec6271ec384311b1ff4" name="a4413e5c048cd8ec6271ec384311b1ff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4413e5c048cd8ec6271ec384311b1ff4">&#9670;&#160;</a></span>F()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t MD5Util::F </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab7f220889e23f51e3f2a7e1b809eb232" name="ab7f220889e23f51e3f2a7e1b809eb232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7f220889e23f51e3f2a7e1b809eb232">&#9670;&#160;</a></span>FF()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t MD5Util::FF </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>, <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a> , 以及 <a class="el" href="_m_d5_util_8cpp.html#a16c373b52e917aa2e506bf64d260b78d">LeftRotate</a>.</p>
+
+</div>
+</div>
+<a id="a1b40471319e0e618be3d046e3694a0eb" name="a1b40471319e0e618be3d046e3694a0eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b40471319e0e618be3d046e3694a0eb">&#9670;&#160;</a></span>G()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t MD5Util::G </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a236ad3136e45c19b19f0a26ce2d383df" name="a236ad3136e45c19b19f0a26ce2d383df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a236ad3136e45c19b19f0a26ce2d383df">&#9670;&#160;</a></span>GG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t MD5Util::GG </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>, <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a> , 以及 <a class="el" href="_m_d5_util_8cpp.html#a16c373b52e917aa2e506bf64d260b78d">LeftRotate</a>.</p>
+
+</div>
+</div>
+<a id="aade3536f3a3c01e1c07ebef216ebbd76" name="aade3536f3a3c01e1c07ebef216ebbd76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aade3536f3a3c01e1c07ebef216ebbd76">&#9670;&#160;</a></span>H()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t MD5Util::H </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac85d57baf5931c654a7f4c41dbf5d66e" name="ac85d57baf5931c654a7f4c41dbf5d66e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac85d57baf5931c654a7f4c41dbf5d66e">&#9670;&#160;</a></span>HH()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t MD5Util::HH </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>, <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a> , 以及 <a class="el" href="_m_d5_util_8cpp.html#a16c373b52e917aa2e506bf64d260b78d">LeftRotate</a>.</p>
+
+</div>
+</div>
+<a id="a14d3e2aa7a98e46c829138bd1f7a6b78" name="a14d3e2aa7a98e46c829138bd1f7a6b78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14d3e2aa7a98e46c829138bd1f7a6b78">&#9670;&#160;</a></span>I()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t MD5Util::I </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa260ad3649b4a24b35f24792220446d7" name="aa260ad3649b4a24b35f24792220446d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa260ad3649b4a24b35f24792220446d7">&#9670;&#160;</a></span>II()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t MD5Util::II </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>, <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a> , 以及 <a class="el" href="_m_d5_util_8cpp.html#a16c373b52e917aa2e506bf64d260b78d">LeftRotate</a>.</p>
+
+</div>
+</div>
+<a id="a459fcae1d9892369a6bc8c22e08541c0" name="a459fcae1d9892369a6bc8c22e08541c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a459fcae1d9892369a6bc8c22e08541c0">&#9670;&#160;</a></span>transform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MD5Util::transform </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>用于进行变换操作 </p>
+
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>, <a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a> , 以及 <a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_m_d5_util.html#af68c8586b6fcfaa6539d18f95e3f868a">encode()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a61632ed28a0dc784446b27ad2712efcd" name="a61632ed28a0dc784446b27ad2712efcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61632ed28a0dc784446b27ad2712efcd">&#9670;&#160;</a></span>A</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::A = 0x67452301</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62c8af968a9b34711f81652db407f5d8" name="a62c8af968a9b34711f81652db407f5d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c8af968a9b34711f81652db407f5d8">&#9670;&#160;</a></span>B</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::B = 0xefcdab89</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a0c40f3e6ceab8cb15b0a7d12b3f47b" name="a4a0c40f3e6ceab8cb15b0a7d12b3f47b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a0c40f3e6ceab8cb15b0a7d12b3f47b">&#9670;&#160;</a></span>C</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::C = 0x98badcfe</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac9fdffea50f88a5627fe87e26298a7bc" name="ac9fdffea50f88a5627fe87e26298a7bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9fdffea50f88a5627fe87e26298a7bc">&#9670;&#160;</a></span>D</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::D = 0x10325476</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af76433e2f2a804758015e4d44511d7f5" name="af76433e2f2a804758015e4d44511d7f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af76433e2f2a804758015e4d44511d7f5">&#9670;&#160;</a></span>PADDING</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const unsigned char sese::MD5Util::PADDING[64] = {0x80}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8847be4437cc94ebc3922816f66c50a" name="af8847be4437cc94ebc3922816f66c50a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8847be4437cc94ebc3922816f66c50a">&#9670;&#160;</a></span>S11</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S11 = 7</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a882f45cdc0da4702cabfbb408fd20dd6" name="a882f45cdc0da4702cabfbb408fd20dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a882f45cdc0da4702cabfbb408fd20dd6">&#9670;&#160;</a></span>S12</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S12 = 12</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9c8cee00bbaca6e3be8088226cf85e3" name="af9c8cee00bbaca6e3be8088226cf85e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9c8cee00bbaca6e3be8088226cf85e3">&#9670;&#160;</a></span>S13</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S13 = 17</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02afd6c3bd09b406484007328a7a006d" name="a02afd6c3bd09b406484007328a7a006d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02afd6c3bd09b406484007328a7a006d">&#9670;&#160;</a></span>S14</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S14 = 22</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac098cf26cc9508d7a88bae255b20d5c8" name="ac098cf26cc9508d7a88bae255b20d5c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac098cf26cc9508d7a88bae255b20d5c8">&#9670;&#160;</a></span>S21</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S21 = 5</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a570963b38115d07e7d80ddd99d187c2c" name="a570963b38115d07e7d80ddd99d187c2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a570963b38115d07e7d80ddd99d187c2c">&#9670;&#160;</a></span>S22</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S22 = 9</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6987791444df70d0aeedfce1f830a64e" name="a6987791444df70d0aeedfce1f830a64e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6987791444df70d0aeedfce1f830a64e">&#9670;&#160;</a></span>S23</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S23 = 14</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acca68e8f197774906c838fde755638bb" name="acca68e8f197774906c838fde755638bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acca68e8f197774906c838fde755638bb">&#9670;&#160;</a></span>S24</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S24 = 20</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d8512ee95751e6f6fa511400d0f785d" name="a3d8512ee95751e6f6fa511400d0f785d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d8512ee95751e6f6fa511400d0f785d">&#9670;&#160;</a></span>S31</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S31 = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6f821b5c327be6ec7af2a635a9b168d" name="aa6f821b5c327be6ec7af2a635a9b168d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f821b5c327be6ec7af2a635a9b168d">&#9670;&#160;</a></span>S32</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S32 = 11</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a429efbf53bae20358f8c6fb2a65c6d" name="a2a429efbf53bae20358f8c6fb2a65c6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a429efbf53bae20358f8c6fb2a65c6d">&#9670;&#160;</a></span>S33</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S33 = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5238218e1328d20009b484f868bced7c" name="a5238218e1328d20009b484f868bced7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5238218e1328d20009b484f868bced7c">&#9670;&#160;</a></span>S34</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S34 = 23</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09fee1cbe3ec34892ac05373e94a838d" name="a09fee1cbe3ec34892ac05373e94a838d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09fee1cbe3ec34892ac05373e94a838d">&#9670;&#160;</a></span>S41</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S41 = 6</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72ebbddfd0e621468b7a78727f676ea8" name="a72ebbddfd0e621468b7a78727f676ea8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72ebbddfd0e621468b7a78727f676ea8">&#9670;&#160;</a></span>S42</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S42 = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea0a4826a2ab209d367d6d8c47e468b1" name="aea0a4826a2ab209d367d6d8c47e468b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea0a4826a2ab209d367d6d8c47e468b1">&#9670;&#160;</a></span>S43</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S43 = 15</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab7fd67fcb410eb047f19ce721b1f1afd" name="ab7fd67fcb410eb047f19ce721b1f1afd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7fd67fcb410eb047f19ce721b1f1afd">&#9670;&#160;</a></span>S44</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint32_t sese::MD5Util::S44 = 21</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/convert/<a class="el" href="_m_d5_util_8h_source.html">MD5Util.h</a></li>
-<li>sese/convert/<a class="el" href="_m_d5_util_8cpp_source.html">MD5Util.cpp</a></li>
+<li>sese/convert/<a class="el" href="_m_d5_util_8cpp.html">MD5Util.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

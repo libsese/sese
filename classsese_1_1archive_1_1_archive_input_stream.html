@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -170,8 +171,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>存档输入流 </p>
-
-<p class="definition">在文件 <a class="el" href="_archive_input_stream_8h_source.html">ArchiveInputStream.h</a> 第 <a class="el" href="_archive_input_stream_8h_source.html#l00028">28</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a181ffbb6775262469e1d6451f8e2023b" name="a181ffbb6775262469e1d6451f8e2023b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a181ffbb6775262469e1d6451f8e2023b">&#9670;&#160;</a></span>ArchiveInputStream()</h2>
@@ -197,10 +196,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_input_stream_8cpp_source.html">ArchiveInputStream.cpp</a> 第 <a class="el" href="_archive_input_stream_8cpp_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>        : <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_input_stream.html#ad882bdd03e5206a6cf6e11b0520fe13d">archive_read</a>(<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_input_stream.html#ad882bdd03e5206a6cf6e11b0520fe13d">archive_read</a>) {</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -240,11 +235,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_archive_input_stream_8cpp_source.html">ArchiveInputStream.cpp</a> 第 <a class="el" href="_archive_input_stream_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                                       {</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> archive_read_data(<span class="keyword">static_cast&lt;</span>struct archive *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_input_stream.html#ad882bdd03e5206a6cf6e11b0520fe13d">archive_read</a>), buffer, length);</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -268,13 +258,11 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_input_stream_8h_source.html">ArchiveInputStream.h</a> 第 <a class="el" href="_archive_input_stream_8h_source.html#l00035">35</a> 行定义.</p>
-
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/archive/<a class="el" href="_archive_input_stream_8h_source.html">ArchiveInputStream.h</a></li>
-<li>sese/archive/<a class="el" href="_archive_input_stream_8cpp_source.html">ArchiveInputStream.cpp</a></li>
+<li>sese/archive/<a class="el" href="_archive_input_stream_8cpp.html">ArchiveInputStream.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

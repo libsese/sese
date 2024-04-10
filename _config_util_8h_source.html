@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -173,8 +174,8 @@ $(document).ready(function(){initNavTree('_config_util_8h_source.html',''); init
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classsese_1_1_config_object.html#a5d7a806734266c89bd42aea1652c7b66">   57</a></span>    [[nodiscard]] <span class="keyword">const</span> std::map&lt;std::string, Section::Ptr&gt; &amp;<a class="code hl_function" href="classsese_1_1_config_object.html#a5d7a806734266c89bd42aea1652c7b66">getAllSection</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_typedef" href="structsese_1_1_config_object_1_1_section.html#ab00905cd919b10a4185c511ffff9fdc8">Section::Ptr</a> defaultSection;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    std::map&lt;std::string, Section::Ptr&gt; sections;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classsese_1_1_config_object.html#a969fe4ef5931418f740bb1d5129b0099">   60</a></span>    <a class="code hl_typedef" href="structsese_1_1_config_object_1_1_section.html#ab00905cd919b10a4185c511ffff9fdc8">Section::Ptr</a> <a class="code hl_variable" href="classsese_1_1_config_object.html#a969fe4ef5931418f740bb1d5129b0099">defaultSection</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classsese_1_1_config_object.html#a814ac5f1efb1f2fb1c01ced79c0101f8">   61</a></span>    std::map&lt;std::string, Section::Ptr&gt; <a class="code hl_variable" href="classsese_1_1_config_object.html#a814ac5f1efb1f2fb1c01ced79c0101f8">sections</a>;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
 </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
@@ -188,7 +189,7 @@ $(document).ready(function(){initNavTree('_config_util_8h_source.html',''); init
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classsese_1_1_config_util.html#a4ca9a8498e2e16d35dacad9d59028d94">   84</a></span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1_config_util.html#a4ca9a8498e2e16d35dacad9d59028d94">write2</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1_config_object.html#ad2c907273f3078a41536d29583c3aeaf">ConfigObject::Ptr</a> &amp;config_file, <a class="code hl_class" href="classsese_1_1io_1_1_output_stream.html" title="流式输出接口类">OutputStream</a> *output);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keyword">static</span> std::string readLine(<a class="code hl_class" href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类">InputStream</a> *input);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classsese_1_1_config_util.html#ab2d4d2a254445cbc63665f8eea2c95a0">   87</a></span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1_config_util.html#ab2d4d2a254445cbc63665f8eea2c95a0">readLine</a>(<a class="code hl_class" href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类">InputStream</a> *input);</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
 </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>} <span class="comment">// namespace sese</span></div>

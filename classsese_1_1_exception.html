@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -185,8 +186,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>异常类 </p>
-
-<p class="definition">在文件 <a class="el" href="_exception_8h_source.html">Exception.h</a> 第 <a class="el" href="_exception_8h_source.html#l00044">44</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ad1300db1c4481ee3ab305426fa9086c1" name="ad1300db1c4481ee3ab305426fa9086c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad1300db1c4481ee3ab305426fa9086c1">&#9670;&#160;</a></span>Exception()</h2>
@@ -212,12 +211,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a> 第 <a class="el" href="_exception_8cpp_source.html#l00014">14</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>    : <a class="code hl_typedef" href="namespacesese.html#a2a784f1525ed145abfd470ef9ac08abc">NativeException</a>(message) {</div>
-<div class="line"><span class="lineno">   16</span>    <a class="code hl_variable" href="classsese_1_1_exception.html#a963b47f3d26e3dce328aee36c2b9ab09">stackInfo</a> = <span class="keyword">new</span> system::StackInfo(8, <a class="code hl_function" href="classsese_1_1system_1_1_stack_info.html#a64d546980410950e09df7b07b99eea1a">sese::system::StackInfo::getSkipOffset</a>() + <a class="code hl_function" href="classsese_1_1_exception.html#a8b4d61dbff589e23b93c9dc13555b9d1">getSkipOffset</a>());</div>
-<div class="line"><span class="lineno">   17</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="darwin_2system_2_stack_info_8cpp_source.html#l00010">sese::system::StackInfo::getSkipOffset()</a>, <a class="el" href="_exception_8cpp_source.html#l00006">getSkipOffset()</a> , 以及 <a class="el" href="_exception_8h_source.html#l00067">stackInfo</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1system_1_1_stack_info.html#a64d546980410950e09df7b07b99eea1a">sese::system::StackInfo::getSkipOffset()</a>, <a class="el" href="classsese_1_1_exception.html#a8b4d61dbff589e23b93c9dc13555b9d1">getSkipOffset()</a> , 以及 <a class="el" href="classsese_1_1_exception.html#a963b47f3d26e3dce328aee36c2b9ab09">stackInfo</a>.</p>
 
 </div>
 </div>
@@ -244,11 +238,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a> 第 <a class="el" href="_exception_8cpp_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>                          {</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keyword">delete</span> <a class="code hl_variable" href="classsese_1_1_exception.html#a963b47f3d26e3dce328aee36c2b9ab09">stackInfo</a>; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -275,26 +264,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a> 第 <a class="el" href="_exception_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                         {</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">sese::text::StringBuilder</a> builder{4096};</div>
-<div class="line"><span class="lineno">   25</span>    builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append</a>(<span class="stringliteral">&quot;Exception with description: &quot;</span>);</div>
-<div class="line"><span class="lineno">   26</span>    builder.append(<a class="code hl_function" href="classsese_1_1_unix_exception.html#ae645c81dfc987d6aedf8554c70a0238e">what</a>());</div>
-<div class="line"><span class="lineno">   27</span>    builder.append(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><span class="lineno">   28</span>    std::for_each(<a class="code hl_variable" href="classsese_1_1_exception.html#a963b47f3d26e3dce328aee36c2b9ab09">stackInfo</a>-&gt;rbegin(), <a class="code hl_variable" href="classsese_1_1_exception.html#a963b47f3d26e3dce328aee36c2b9ab09">stackInfo</a>-&gt;rend(), [&amp;builder](<span class="keyword">const</span> <a class="code hl_struct" href="structsese_1_1system_1_1_sub_stack_info.html" title="子堆栈信息">sese::system::SubStackInfo</a> &amp;info) {</div>
-<div class="line"><span class="lineno">   29</span>        char address[16]{};</div>
-<div class="line"><span class="lineno">   30</span>        std::snprintf(address, <span class="keyword">sizeof</span>(address), <span class="stringliteral">&quot;0x%&quot;</span> PRIx64, info.address);</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>        builder.append(<span class="stringliteral">&quot;\tat &quot;</span>);</div>
-<div class="line"><span class="lineno">   33</span>        builder.append(info.func);</div>
-<div class="line"><span class="lineno">   34</span>        builder.append(<span class="stringliteral">&quot; (&quot;</span>);</div>
-<div class="line"><span class="lineno">   35</span>        builder.append(address);</div>
-<div class="line"><span class="lineno">   36</span>        builder.append(<span class="stringliteral">&quot;)\n&quot;</span>);</div>
-<div class="line"><span class="lineno">   37</span>    });</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> builder.toString();</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_stack_info_8h_source.html#l00020">sese::system::SubStackInfo::address</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">sese::text::AbstractStringBuffer::append()</a> , 以及 <a class="el" href="_stack_info_8h_source.html#l00021">sese::system::SubStackInfo::func</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1system_1_1_sub_stack_info.html#ab5cf2a470c83c0303107c9e1c68d8e33">sese::system::SubStackInfo::address</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">sese::text::AbstractStringBuffer::append()</a> , 以及 <a class="el" href="structsese_1_1system_1_1_sub_stack_info.html#ab4dc2f5d7eaa3c5fe2940f94eb63939e">sese::system::SubStackInfo::func</a>.</p>
 
 </div>
 </div>
@@ -321,16 +291,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a> 第 <a class="el" href="_exception_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                 {</div>
-<div class="line"><span class="lineno">    7</span><span class="preprocessor">#if defined(SESE_PLATFORM_WINDOWS)</span></div>
-<div class="line"><span class="lineno">    8</span>    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">    9</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">   11</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   12</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_exception_8cpp_source.html#l00014">Exception()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_exception.html#ad1300db1c4481ee3ab305426fa9086c1">Exception()</a>.</p>
 
 </div>
 </div>
@@ -351,12 +312,6 @@ Protected 属性</h2></td></tr>
 
 <p>向标准输出打印堆栈跟踪 </p>
 
-<p class="definition">在文件 <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a> 第 <a class="el" href="_exception_8cpp_source.html#l00041">41</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>                                    {</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keyword">auto</span> content = <a class="code hl_function" href="classsese_1_1_exception.html#a1a100e5b4e7d58ab9d88e44f744ac92b">buildStacktrace</a>();</div>
-<div class="line"><span class="lineno">   43</span>    fwrite(content.c_str(), 1, content.length(), stdout);</div>
-<div class="line"><span class="lineno">   44</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a408bab5a11108356ebcf51b36ed6cdf6" name="a408bab5a11108356ebcf51b36ed6cdf6"></a>
@@ -381,12 +336,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a> 第 <a class="el" href="_exception_8cpp_source.html#l00051">51</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                                              {</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keyword">auto</span> content = <a class="code hl_function" href="classsese_1_1_exception.html#a1a100e5b4e7d58ab9d88e44f744ac92b">buildStacktrace</a>();</div>
-<div class="line"><span class="lineno">   53</span>    output-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(content.c_str(), content.length());</div>
-<div class="line"><span class="lineno">   54</span>}</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
 
 </div>
@@ -413,13 +362,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a> 第 <a class="el" href="_exception_8cpp_source.html#l00046">46</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                                            {</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keyword">auto</span> content = <a class="code hl_function" href="classsese_1_1_exception.html#a1a100e5b4e7d58ab9d88e44f744ac92b">buildStacktrace</a>();</div>
-<div class="line"><span class="lineno">   48</span>    logger-&gt;<a class="code hl_function" href="classsese_1_1record_1_1_logger.html#abe318342d58ba0d7b6090326337cd8d9">dump</a>(content.c_str(), content.length());</div>
-<div class="line"><span class="lineno">   49</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_logger_8cpp_source.html#l00080">sese::record::Logger::dump()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1record_1_1_logger.html#abe318342d58ba0d7b6090326337cd8d9">sese::record::Logger::dump()</a>.</p>
 
 </div>
 </div>
@@ -444,16 +387,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_exception_8h_source.html">Exception.h</a> 第 <a class="el" href="_exception_8h_source.html#l00067">67</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_exception_8cpp_source.html#l00014">Exception()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_exception.html#ad1300db1c4481ee3ab305426fa9086c1">Exception()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/util/<a class="el" href="_exception_8h_source.html">Exception.h</a></li>
-<li>sese/util/<a class="el" href="_exception_8cpp_source.html">Exception.cpp</a></li>
+<li>sese/util/<a class="el" href="_exception_8cpp.html">Exception.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

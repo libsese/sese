@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -205,12 +206,12 @@ $(document).ready(function(){initNavTree('_s_string_8h_source.html',''); initRes
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a> operator*();</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_typedef" href="_s_string_8cpp.html#aa42f7e36024f7f02787a145b15bbf64e">Iterator</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classsstr_1_1_s_string_view_1_1_iterator.html#a54a6ae2a4b0e86c1a9912ad298d773ec">   95</a></span>        <a class="code hl_function" href="classsstr_1_1_s_string_view_1_1_iterator.html#a54a6ae2a4b0e86c1a9912ad298d773ec">Iterator</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *_ref = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordtype">size_t</span> _pos = 0;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordtype">size_t</span> _size = 0;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a> _ch = <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a>(0);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classsstr_1_1_s_string_view_1_1_iterator.html#a015e15151bcc21850da2b64587254cc2">   97</a></span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *_ref = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classsstr_1_1_s_string_view_1_1_iterator.html#ad4a70ee2f6a6959aab0933cccb0dd581">   98</a></span>        <span class="keywordtype">size_t</span> _pos = 0;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classsstr_1_1_s_string_view_1_1_iterator.html#ac12a5d3a98dc5d87381f93506a0c77f6">   99</a></span>        <span class="keywordtype">size_t</span> _size = 0;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classsstr_1_1_s_string_view_1_1_iterator.html#a8108e67d2082b1509baffa13dc7baf53">  100</a></span>        <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a> _ch = <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a>(0);</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    };</div>
 </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
@@ -240,10 +241,10 @@ $(document).ready(function(){initNavTree('_s_string_8h_source.html',''); initRes
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    [[nodiscard]] <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> append(<span class="keyword">const</span> <a class="code hl_class" href="classsstr_1_1_s_string_view.html" title="字符串视图">SStringView</a> &amp;str) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> append(<span class="keyword">const</span> <span class="keywordtype">char</span> *u8str) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    [[nodiscard]] std::vector&lt;SString&gt; split(<span class="keyword">const</span> <a class="code hl_class" href="classsstr_1_1_s_string_view.html" title="字符串视图">SStringView</a> &amp;str) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> append(<span class="keyword">const</span> <span class="keywordtype">char</span> *u8str) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    [[nodiscard]] std::vector&lt;SString&gt; split(<span class="keyword">const</span> <a class="code hl_class" href="classsstr_1_1_s_string_view.html" title="字符串视图">SStringView</a> &amp;str) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    std::vector&lt;SString&gt; split(<span class="keyword">const</span> <span class="keywordtype">char</span> *str) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    [[nodiscard]] <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> substring(<span class="keywordtype">size_t</span> begin) <span class="keyword">const</span>;</div>

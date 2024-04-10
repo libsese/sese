@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -200,10 +201,7 @@ Protected 属性</h2></td></tr>
 <tr class="memitem:aace49ec362b911b274d378a3a2f1c2aa inherit pub_types_classsese_1_1db_1_1_result_set" id="r_aace49ec362b911b274d378a3a2f1c2aa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_result_set.html">ResultSet</a> &gt;</td></tr>
 <tr class="separator:aace49ec362b911b274d378a3a2f1c2aa inherit pub_types_classsese_1_1db_1_1_result_set"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html">MariaStmtResultSetImpl.h</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html#l00008">8</a> 行定义.</p>
-</div><h2 class="groupheader">构造及析构函数说明</h2>
+<h2 class="groupheader">构造及析构函数说明</h2>
 <a id="af00953545f7b5e751bce15ed54f747de" name="af00953545f7b5e751bce15ed54f747de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af00953545f7b5e751bce15ed54f747de">&#9670;&#160;</a></span>MariaStmtResultSet()</h2>
 
@@ -244,14 +242,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                                                                         {</div>
-<div class="line"><span class="lineno">    6</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a1bc082b27e7c017ed1165cf011e3340d">stmt</a> = <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a1bc082b27e7c017ed1165cf011e3340d">stmt</a>;</div>
-<div class="line"><span class="lineno">    7</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a> = <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>;</div>
-<div class="line"><span class="lineno">    8</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#aa0cd93c1ca4c73bbccc0d7cb13f0d241">columns</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>;</div>
-<div class="line"><span class="lineno">    9</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
 
 </div>
 </div>
@@ -278,12 +269,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                           {</div>
-<div class="line"><span class="lineno">   12</span>    <a class="code hl_function" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a5c55f4ad9c39357defda12c4539a2b83">MariaPreparedStatementImpl::freeBindStruct</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>, this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#aa0cd93c1ca4c73bbccc0d7cb13f0d241">columns</a>);</div>
-<div class="line"><span class="lineno">   13</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html#l00028">columns</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00087">sese::db::impl::MariaPreparedStatementImpl::freeBindStruct()</a> , 以及 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html#l00027">row</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#aa0cd93c1ca4c73bbccc0d7cb13f0d241">columns</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a5c55f4ad9c39357defda12c4539a2b83">sese::db::impl::MariaPreparedStatementImpl::freeBindStruct()</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>.</p>
 
 </div>
 </div>
@@ -316,11 +302,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6e656f99c9e5f12805d7e5b590fe710f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                               {</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#aa0cd93c1ca4c73bbccc0d7cb13f0d241">columns</a>;</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a5675da0f5706f18be6deff873be57573" name="a5675da0f5706f18be6deff873be57573"></a>
@@ -358,25 +339,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a51ae76db5ab676ccf9bdd5a867501cb7">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00055">55</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>                                                                                               {</div>
-<div class="line"><span class="lineno">   56</span>    <span class="comment">// 未来需要详细的 DateTime 构造函数</span></div>
-<div class="line"><span class="lineno">   57</span>    <span class="keyword">auto</span> datetime = <span class="keyword">static_cast&lt;</span>MYSQL_TIME *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>[index].buffer);</div>
-<div class="line"><span class="lineno">   58</span>    std::tm tm{};</div>
-<div class="line"><span class="lineno">   59</span>    tm.tm_year = datetime-&gt;year - 1900;</div>
-<div class="line"><span class="lineno">   60</span>    tm.tm_mon = datetime-&gt;month - 1;</div>
-<div class="line"><span class="lineno">   61</span>    tm.tm_mday = datetime-&gt;day;</div>
-<div class="line"><span class="lineno">   62</span>    tm.tm_hour = datetime-&gt;hour;</div>
-<div class="line"><span class="lineno">   63</span>    tm.tm_min = datetime-&gt;minute;</div>
-<div class="line"><span class="lineno">   64</span>    tm.tm_sec = datetime-&gt;second;</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keyword">auto</span> timestamp = <a class="code hl_define" href="native_2win_2_config_8h.html#a7b014834433c82b4d39a4c40841b6e0d">timegm</a>(&amp;tm);</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (-1 == timestamp) {</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">sese::DateTime</a>(timestamp * 1000000, 0, <a class="code hl_enumvalue" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2" title="创建时间戳的同时解析成可阅读的格式">sese::DateTime::Policy::FORMAT</a>);</div>
-<div class="line"><span class="lineno">   70</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">sese::DateTime::FORMAT</a> , 以及 <a class="el" href="native_2win_2_config_8h_source.html#l00052">timegm</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">sese::DateTime::FORMAT</a> , 以及 <a class="el" href="native_2win_2_config_8h.html#a7b014834433c82b4d39a4c40841b6e0d">timegm</a>.</p>
 
 </div>
 </div>
@@ -415,13 +378,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6de86e2e29172a1b09fb80395c83b179">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00043">43</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>                                                                          {</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordtype">double</span> value;</div>
-<div class="line"><span class="lineno">   45</span>    value = *(<span class="keywordtype">double</span> *) <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>[index].buffer;</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">   47</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a01835a96fc9d9174b460f169871869db" name="a01835a96fc9d9174b460f169871869db"></a>
@@ -459,13 +415,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a26e848ab49b6c26f962e451c431b1414">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00049">49</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                                                        {</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordtype">float</span> value;</div>
-<div class="line"><span class="lineno">   51</span>    value = *(<span class="keywordtype">float</span> *) <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>[index].buffer;</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">   53</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a1f1945d3366f727b195a4231b878d855" name="a1f1945d3366f727b195a4231b878d855"></a>
@@ -503,13 +452,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a7cee3b3394a785050d8f2fdf3fc6ed4f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00033">33</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                                            {</div>
-<div class="line"><span class="lineno">   34</span>    int32_t value;</div>
-<div class="line"><span class="lineno">   35</span>    value = *(int32_t *) <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>[index].buffer;</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">   37</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa2a37259cfb68d7a116dcf6703cd4042" name="aa2a37259cfb68d7a116dcf6703cd4042"></a>
@@ -547,13 +489,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a8a240837690a71c7d0459abd23dcff8f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>                                                                         {</div>
-<div class="line"><span class="lineno">   28</span>    int64_t value;</div>
-<div class="line"><span class="lineno">   29</span>    value = *(int64_t *) <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>[index].buffer;</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a978e94c24f9ba9893257158b392a0b5d" name="a978e94c24f9ba9893257158b392a0b5d"></a>
@@ -591,11 +526,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a5a3ee10d4713b24f70985920b2c47a7d">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00039">39</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>                                                                                  {</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">return</span> {(<span class="keyword">const</span> <span class="keywordtype">char</span> *) <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>[index].buffer};</div>
-<div class="line"><span class="lineno">   41</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a8541ad28bf4e5e1f14ef48377d52f56a" name="a8541ad28bf4e5e1f14ef48377d52f56a"></a>
@@ -633,11 +563,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6655f06551ec04340db0427f5590d533">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00072">72</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>                                                                     {</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">return</span> *<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b">row</a>[index].is_null == 1;</div>
-<div class="line"><span class="lineno">   74</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a0ce0029d167258433555b57b47a8ca27" name="a0ce0029d167258433555b57b47a8ca27"></a>
@@ -668,11 +593,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#ae6d65c2cadbb0382f4019c52e2d33523">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                 {</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> 0 == mysql_stmt_fetch(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a1bc082b27e7c017ed1165cf011e3340d">stmt</a>);</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa4e4bc2c88c464a9b219489a0ae7adb9" name="aa4e4bc2c88c464a9b219489a0ae7adb9"></a>
@@ -702,11 +622,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#adaddeaeceb01003e51a360da5cafc646">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00015">15</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>                                                  {</div>
-<div class="line"><span class="lineno">   16</span>    mysql_stmt_data_seek(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a1bc082b27e7c017ed1165cf011e3340d">stmt</a>, 0);</div>
-<div class="line"><span class="lineno">   17</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -730,9 +645,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html">MariaStmtResultSetImpl.h</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html#l00028">28</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00011">~MariaStmtResultSet()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#afb8ca96f121d86ddbae490c33b641851">~MariaStmtResultSet()</a>.</p>
 
 </div>
 </div>
@@ -756,9 +669,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html">MariaStmtResultSetImpl.h</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html#l00027">27</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00011">~MariaStmtResultSet()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#afb8ca96f121d86ddbae490c33b641851">~MariaStmtResultSet()</a>.</p>
 
 </div>
 </div>
@@ -782,13 +693,11 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html">MariaStmtResultSetImpl.h</a> 第 <a class="el" href="_maria_stmt_result_set_impl_8h_source.html#l00026">26</a> 行定义.</p>
-
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/internal/db/impl/maria/<a class="el" href="_maria_stmt_result_set_impl_8h_source.html">MariaStmtResultSetImpl.h</a></li>
-<li>sese/internal/db/impl/maria/<a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html">MariaStmtResultSetImpl.cpp</a></li>
+<li>sese/internal/db/impl/maria/<a class="el" href="_maria_stmt_result_set_impl_8cpp.html">MariaStmtResultSetImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

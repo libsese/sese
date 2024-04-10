@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -133,9 +134,7 @@ $(document).ready(function(){initNavTree('_json_8cpp.html',''); initResizable();
 <div class="textblock"><code>#include &lt;<a class="el" href="_json_8h_source.html">sese/config/Json.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_json_util_8h_source.html">sese/config/json/JsonUtil.h</a>&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
-</div>
-<p><a href="_json_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:a5b119222e7117b386b8f508154d4516b" id="r_a5b119222e7117b386b8f508154d4516b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_json_8cpp.html#a5b119222e7117b386b8f508154d4516b">isKeyword</a> (const char *str)</td></tr>
@@ -173,15 +172,8 @@ $(document).ready(function(){initNavTree('_json_8cpp.html',''); initResizable();
 </dl>
 <dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_json_8cpp_source.html">Json.cpp</a> 第 <a class="el" href="_json_8cpp_source.html#l00015">15</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>                                       {</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">if</span> (str[0] == <span class="charliteral">&#39;}&#39;</span> || str[0] == <span class="charliteral">&#39;]&#39;</span> || str[0] == <span class="charliteral">&#39;:&#39;</span> || str[0] == <span class="charliteral">&#39;,&#39;</span>) {</div>
-<div class="line"><span class="lineno">   17</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   18</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   20</span>    }</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_json.html#a18483085918207320433e35c2c72051b">sese::Json::parseArray()</a> , 以及 <a class="el" href="classsese_1_1_json.html#a847f60d6598374573089e3cc75e73575">sese::Json::parseObject()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->

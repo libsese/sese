@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1yaml_1_1_yaml_util.html',
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
 <a href="classsese_1_1yaml_1_1_yaml_util-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::yaml::YamlUtil类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -175,6 +177,17 @@ Public 类型</h2></td></tr>
 <tr class="memitem:adb18ecb74f9f20552f1ef12ffbadd080" id="r_adb18ecb74f9f20552f1ef12ffbadd080"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#adb18ecb74f9f20552f1ef12ffbadd080">writeSpace</a> (size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a7a71bd5448933bc14e1831f33c10ece6">OutputStream</a> *output) noexcept</td></tr>
 <tr class="separator:adb18ecb74f9f20552f1ef12ffbadd080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:a6812f02ff678191ce778dc9119bafaa4" id="r_a6812f02ff678191ce778dc9119bafaa4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1yaml_1_1_object_data.html#ae8f55465b5025a760c0d56bdb29f64fe">ObjectData::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a6812f02ff678191ce778dc9119bafaa4">createObject</a> (<a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a1f251e34d90d8806a117dc0d6a8a3106">TokensQueue</a> &amp;tokens_queue, size_t level) noexcept</td></tr>
+<tr class="separator:a6812f02ff678191ce778dc9119bafaa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b8ba48639e4cdd561466d5cf1adbcf7" id="r_a2b8ba48639e4cdd561466d5cf1adbcf7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1yaml_1_1_array_data.html#a91167c35dbaf301594eb469e22cd35f0">ArrayData::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a2b8ba48639e4cdd561466d5cf1adbcf7">createArray</a> (<a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a1f251e34d90d8806a117dc0d6a8a3106">TokensQueue</a> &amp;tokens_queue, size_t level) noexcept</td></tr>
+<tr class="separator:a2b8ba48639e4cdd561466d5cf1adbcf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab2daeda7e5a901a59e8a8a793f56d1b" id="r_aab2daeda7e5a901a59e8a8a793f56d1b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aab2daeda7e5a901a59e8a8a793f56d1b">serializeObject</a> (<a class="el" href="classsese_1_1yaml_1_1_object_data.html">ObjectData</a> *object_data, <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a7a71bd5448933bc14e1831f33c10ece6">OutputStream</a> *output, size_t level) noexcept</td></tr>
+<tr class="separator:aab2daeda7e5a901a59e8a8a793f56d1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa691e5a6741507a03b25a556374971b0" id="r_aa691e5a6741507a03b25a556374971b0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aa691e5a6741507a03b25a556374971b0">serializeArray</a> (<a class="el" href="classsese_1_1yaml_1_1_array_data.html">ArrayData</a> *array_data, <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a7a71bd5448933bc14e1831f33c10ece6">OutputStream</a> *output, size_t level) noexcept</td></tr>
+<tr class="separator:aa691e5a6741507a03b25a556374971b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
@@ -189,8 +202,6 @@ Public 类型</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>YAML 工具类 </p>
-
-<p class="definition">在文件 <a class="el" href="_yaml_util_8h_source.html">YamlUtil.h</a> 第 <a class="el" href="_yaml_util_8h_source.html#l00021">21</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ae211203daa497cdf89e6719d7b54e0e5" name="ae211203daa497cdf89e6719d7b54e0e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae211203daa497cdf89e6719d7b54e0e5">&#9670;&#160;</a></span>InputStream</h2>
@@ -203,8 +214,6 @@ Public 类型</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_yaml_util_8h_source.html">YamlUtil.h</a> 第 <a class="el" href="_yaml_util_8h_source.html#l00023">23</a> 行定义.</p>
 
 </div>
 </div>
@@ -220,8 +229,6 @@ Public 类型</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8h_source.html">YamlUtil.h</a> 第 <a class="el" href="_yaml_util_8h_source.html#l00025">25</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a7a71bd5448933bc14e1831f33c10ece6" name="a7a71bd5448933bc14e1831f33c10ece6"></a>
@@ -235,8 +242,6 @@ Public 类型</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_yaml_util_8h_source.html">YamlUtil.h</a> 第 <a class="el" href="_yaml_util_8h_source.html#l00024">24</a> 行定义.</p>
 
 </div>
 </div>
@@ -252,8 +257,6 @@ Public 类型</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8h_source.html">YamlUtil.h</a> 第 <a class="el" href="_yaml_util_8h_source.html#l00026">26</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a1f251e34d90d8806a117dc0d6a8a3106" name="a1f251e34d90d8806a117dc0d6a8a3106"></a>
@@ -268,11 +271,85 @@ Public 类型</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8h_source.html">YamlUtil.h</a> 第 <a class="el" href="_yaml_util_8h_source.html#l00027">27</a> 行定义.</p>
-
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="a2b8ba48639e4cdd561466d5cf1adbcf7" name="a2b8ba48639e4cdd561466d5cf1adbcf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b8ba48639e4cdd561466d5cf1adbcf7">&#9670;&#160;</a></span>createArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1yaml_1_1_array_data.html#a91167c35dbaf301594eb469e22cd35f0">sese::yaml::ArrayData::Ptr</a> sese::yaml::YamlUtil::createArray </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a1f251e34d90d8806a117dc0d6a8a3106">TokensQueue</a> &amp;&#160;</td>
+          <td class="paramname"><em>tokens_queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c">strcasecmp</a>.</p>
+
+</div>
+</div>
+<a id="a6812f02ff678191ce778dc9119bafaa4" name="a6812f02ff678191ce778dc9119bafaa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6812f02ff678191ce778dc9119bafaa4">&#9670;&#160;</a></span>createObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1yaml_1_1_object_data.html#ae8f55465b5025a760c0d56bdb29f64fe">sese::yaml::ObjectData::Ptr</a> sese::yaml::YamlUtil::createObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a1f251e34d90d8806a117dc0d6a8a3106">TokensQueue</a> &amp;&#160;</td>
+          <td class="paramname"><em>tokens_queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a> , 以及 <a class="el" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c">strcasecmp</a>.</p>
+
+</div>
+</div>
 <a id="a20327652abbd72bff6c7eac3abcebaf7" name="a20327652abbd72bff6c7eac3abcebaf7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20327652abbd72bff6c7eac3abcebaf7">&#9670;&#160;</a></span>deserialize()</h2>
 
@@ -321,31 +398,7 @@ Public 类型</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>yaml 对象 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8cpp_source.html">YamlUtil.cpp</a> 第 <a class="el" href="_yaml_util_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                                                       {</div>
-<div class="line"><span class="lineno">   11</span>    <a class="code hl_typedef" href="classsese_1_1yaml_1_1_yaml_util.html#a1f251e34d90d8806a117dc0d6a8a3106">TokensQueue</a> tokens_queue;</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   13</span>        <span class="keyword">decltype</span>(<span class="keyword">auto</span>) line = <a class="code hl_function" href="classsese_1_1yaml_1_1_yaml_util.html#a280f2758326c84ffac266eadd43d5f8e">sese::yaml::YamlUtil::getLine</a>(input);</div>
-<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">if</span> (std::get&lt;1&gt;(line).empty()) {</div>
-<div class="line"><span class="lineno">   15</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   16</span>        }</div>
-<div class="line"><span class="lineno">   17</span>        <span class="keyword">auto</span> tokens = <a class="code hl_function" href="classsese_1_1yaml_1_1_yaml_util.html#aca854ce209061b7188b81b06e392b4d5">sese::yaml::YamlUtil::tokenizer</a>(std::get&lt;1&gt;(line));</div>
-<div class="line"><span class="lineno">   18</span>        tokens_queue.emplace(std::get&lt;0&gt;(line), tokens);</div>
-<div class="line"><span class="lineno">   19</span>    }</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>    <span class="keyword">decltype</span>(<span class="keyword">auto</span>) top = tokens_queue.front();</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keyword">decltype</span>(<span class="keyword">auto</span>) top_tokens = std::get&lt;1&gt;(top);</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">if</span> (top_tokens.empty()) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (top_tokens[0] == <span class="stringliteral">&quot;-&quot;</span>) {</div>
-<div class="line"><span class="lineno">   25</span>        <span class="comment">// 根元素是数组</span></div>
-<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">return</span> createArray(tokens_queue, level);</div>
-<div class="line"><span class="lineno">   27</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   28</span>        <span class="comment">// 根元素是对象</span></div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">return</span> createObject(tokens_queue, level);</div>
-<div class="line"><span class="lineno">   30</span>    }</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_yaml_util_8cpp_source.html#l00058">getLine()</a> , 以及 <a class="el" href="_yaml_util_8cpp_source.html#l00083">tokenizer()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a280f2758326c84ffac266eadd43d5f8e">getLine()</a> , 以及 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#aca854ce209061b7188b81b06e392b4d5">tokenizer()</a>.</p>
 
 </div>
 </div>
@@ -373,35 +426,9 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8cpp_source.html">YamlUtil.cpp</a> 第 <a class="el" href="_yaml_util_8cpp_source.html#l00058">58</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>                                                                              {</div>
-<div class="line"><span class="lineno">   59</span>    <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">sese::text::StringBuilder</a> builder(1024);</div>
-<div class="line"><span class="lineno">   60</span>    <span class="keywordtype">char</span> ch;</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   62</span>        <span class="keyword">auto</span> l = input-&gt;read(&amp;ch, 1);</div>
-<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">if</span> (l &lt;= 0) {</div>
-<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">goto</span> ret;</div>
-<div class="line"><span class="lineno">   65</span>        }</div>
-<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\r&#39;</span> || ch == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><span class="lineno">   67</span>            <span class="keywordflow">if</span> (!builder.empty()) {</div>
-<div class="line"><span class="lineno">   68</span>                <span class="keywordflow">goto</span> ret;</div>
-<div class="line"><span class="lineno">   69</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   70</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   71</span>            }</div>
-<div class="line"><span class="lineno">   72</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   73</span>            builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">   74</span>        }</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>ret:</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keyword">auto</span> str = builder.toString();</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="classsese_1_1yaml_1_1_yaml_util.html#a1755b6f46601f2de0fdc7e658667ef4f">YamlUtil::getSpaceCount</a>(str);</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> {<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, str.substr(<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>)};</div>
-<div class="line"><span class="lineno">   81</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>, <a class="el" href="_abstract_string_buffer_8h_source.html#l00063">sese::text::AbstractStringBuffer::empty()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">sese::text::AbstractStringBuffer::toString()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a900154b0e1f8b8b606d8185030d10832">sese::text::AbstractStringBuffer::empty()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_yaml_util_8cpp_source.html#l00010">deserialize()</a> , 以及 <a class="el" href="_yaml_8cpp_source.html#l00172">sese::Yaml::parse()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a20327652abbd72bff6c7eac3abcebaf7">deserialize()</a> , 以及 <a class="el" href="classsese_1_1_yaml.html#a7169e079338c40568498b4dfa4db3e93">sese::Yaml::parse()</a>.</p>
 
 </div>
 </div>
@@ -429,19 +456,6 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8cpp_source.html">YamlUtil.cpp</a> 第 <a class="el" href="_yaml_util_8cpp_source.html#l00046">46</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                                                  {</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordtype">int</span> value = 0;</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) ch: line) {</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39; &#39;</span>) {</div>
-<div class="line"><span class="lineno">   50</span>            value += 1;</div>
-<div class="line"><span class="lineno">   51</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">   53</span>        }</div>
-<div class="line"><span class="lineno">   54</span>    }</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">   56</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ac2b2e6da653d8ffc31ea36ad6e3b6515" name="ac2b2e6da653d8ffc31ea36ad6e3b6515"></a>
@@ -485,21 +499,95 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8cpp_source.html">YamlUtil.cpp</a> 第 <a class="el" href="_yaml_util_8cpp_source.html#l00033">33</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                                                   {</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>-&gt;getType() == <a class="code hl_enumvalue" href="namespacesese_1_1yaml.html#ad98fe9b98e6b6e5e5210b70b0d74c65ca90d0f02d9dbfc46c45511004c043b44a">DataType::OBJECT_DATA</a>) {</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keyword">auto</span> sub = <span class="keyword">dynamic_cast&lt;</span>ObjectData *<span class="keyword">&gt;</span>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.get()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   36</span>        serializeObject(sub, output, 0);</div>
-<div class="line"><span class="lineno">   37</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>-&gt;getType() == <a class="code hl_enumvalue" href="namespacesese_1_1yaml.html#ad98fe9b98e6b6e5e5210b70b0d74c65ca33d7f23e58de40d5cf5112803c799b75">DataType::ARRAY_DATA</a>) {</div>
-<div class="line"><span class="lineno">   38</span>        <span class="keyword">auto</span> sub = <span class="keyword">dynamic_cast&lt;</span>ArrayData *<span class="keyword">&gt;</span>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.get()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   39</span>        serializeArray(sub, output, 0);</div>
-<div class="line"><span class="lineno">   40</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   41</span>        <span class="comment">// BasicData</span></div>
-<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   43</span>    }</div>
-<div class="line"><span class="lineno">   44</span>}</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+
+</div>
+</div>
+<a id="aa691e5a6741507a03b25a556374971b0" name="aa691e5a6741507a03b25a556374971b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa691e5a6741507a03b25a556374971b0">&#9670;&#160;</a></span>serializeArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::yaml::YamlUtil::serializeArray </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1yaml_1_1_array_data.html">ArrayData</a> *&#160;</td>
+          <td class="paramname"><em>array_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a7a71bd5448933bc14e1831f33c10ece6">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1yaml_1_1_object_data.html#a7713dc3620e19033da6b52c182c0f647">sese::yaml::ObjectData::empty()</a> , 以及 <a class="el" href="classsese_1_1yaml_1_1_basic_data.html#a7fce46307a189d6fdda22042bc08f391">sese::yaml::BasicData::getDataAs()</a>.</p>
+
+</div>
+</div>
+<a id="aab2daeda7e5a901a59e8a8a793f56d1b" name="aab2daeda7e5a901a59e8a8a793f56d1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab2daeda7e5a901a59e8a8a793f56d1b">&#9670;&#160;</a></span>serializeObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::yaml::YamlUtil::serializeObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1yaml_1_1_object_data.html">ObjectData</a> *&#160;</td>
+          <td class="paramname"><em>object_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a7a71bd5448933bc14e1831f33c10ece6">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1yaml_1_1_object_data.html#a7713dc3620e19033da6b52c182c0f647">sese::yaml::ObjectData::empty()</a> , 以及 <a class="el" href="classsese_1_1yaml_1_1_basic_data.html#a7fce46307a189d6fdda22042bc08f391">sese::yaml::BasicData::getDataAs()</a>.</p>
 
 </div>
 </div>
@@ -527,91 +615,9 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8cpp_source.html">YamlUtil.cpp</a> 第 <a class="el" href="_yaml_util_8cpp_source.html#l00083">83</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>                                                                               {</div>
-<div class="line"><span class="lineno">   84</span>    std::vector&lt;std::string&gt; vector;</div>
-<div class="line"><span class="lineno">   85</span>    <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">sese::text::StringBuilder</a> builder(1024);</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordtype">bool</span> is_str = <span class="keyword">false</span>; <span class="comment">// 是否是字符串</span></div>
-<div class="line"><span class="lineno">   87</span>    <span class="keywordtype">bool</span> quot1 = <span class="keyword">false</span>; <span class="comment">// 单引号 - 不转义</span></div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordtype">bool</span> quot2 = <span class="keyword">false</span>; <span class="comment">// 双引号 - 转义</span></div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordtype">bool</span> tran = <span class="keyword">false</span>;  <span class="comment">// 是否转义</span></div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) ch: line) {</div>
-<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">if</span> (quot1) {</div>
-<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\&#39;&#39;</span>) {</div>
-<div class="line"><span class="lineno">   93</span>                is_str = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   94</span>                quot1 = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   95</span>                vector.emplace_back(builder.toString());</div>
-<div class="line"><span class="lineno">   96</span>                builder.clear();</div>
-<div class="line"><span class="lineno">   97</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   98</span>                builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">   99</span>            }</div>
-<div class="line"><span class="lineno">  100</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (quot2) {</div>
-<div class="line"><span class="lineno">  101</span>            <span class="keywordflow">if</span> (tran) {</div>
-<div class="line"><span class="lineno">  102</span>                <span class="comment">// 不再自动处理转义字符</span></div>
-<div class="line"><span class="lineno">  103</span>                <span class="comment">// switch (ch) {</span></div>
-<div class="line"><span class="lineno">  104</span>                <span class="comment">//     case &#39;n&#39;:</span></div>
-<div class="line"><span class="lineno">  105</span>                <span class="comment">//         stream &lt;&lt; &#39;\n&#39;;</span></div>
-<div class="line"><span class="lineno">  106</span>                <span class="comment">//         break;</span></div>
-<div class="line"><span class="lineno">  107</span>                <span class="comment">//     case &#39;r&#39;:</span></div>
-<div class="line"><span class="lineno">  108</span>                <span class="comment">//         stream &lt;&lt; &#39;\r&#39;;</span></div>
-<div class="line"><span class="lineno">  109</span>                <span class="comment">//         break;</span></div>
-<div class="line"><span class="lineno">  110</span>                <span class="comment">//     case &#39;&quot;&#39;:</span></div>
-<div class="line"><span class="lineno">  111</span>                <span class="comment">//     case &#39;\&#39;&#39;:</span></div>
-<div class="line"><span class="lineno">  112</span>                <span class="comment">//     case &#39;\\&#39;:</span></div>
-<div class="line"><span class="lineno">  113</span>                <span class="comment">//     default:</span></div>
-<div class="line"><span class="lineno">  114</span>                <span class="comment">//         stream &lt;&lt; ch;</span></div>
-<div class="line"><span class="lineno">  115</span>                <span class="comment">//         break;</span></div>
-<div class="line"><span class="lineno">  116</span>                <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  117</span>                builder &lt;&lt; <span class="charliteral">&#39;\\&#39;</span>;</div>
-<div class="line"><span class="lineno">  118</span>                builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">  119</span>                tran = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  120</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\&quot;&#39;</span>) {</div>
-<div class="line"><span class="lineno">  121</span>                is_str = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  122</span>                quot2 = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  123</span>                vector.emplace_back(builder.toString());</div>
-<div class="line"><span class="lineno">  124</span>                builder.clear();</div>
-<div class="line"><span class="lineno">  125</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\\&#39;</span>) {</div>
-<div class="line"><span class="lineno">  126</span>                tran = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  127</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  128</span>                builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">  129</span>            }</div>
-<div class="line"><span class="lineno">  130</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (is_str) {</div>
-<div class="line"><span class="lineno">  131</span>            <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;:&#39;</span>) {</div>
-<div class="line"><span class="lineno">  132</span>                is_str = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  133</span>                vector.emplace_back(builder.toString());</div>
-<div class="line"><span class="lineno">  134</span>                vector.emplace_back(<span class="stringliteral">&quot;:&quot;</span>);</div>
-<div class="line"><span class="lineno">  135</span>                builder.clear();</div>
-<div class="line"><span class="lineno">  136</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  137</span>                builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">  138</span>            }</div>
-<div class="line"><span class="lineno">  139</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\&#39;&#39;</span>) {</div>
-<div class="line"><span class="lineno">  140</span>            quot1 = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  141</span>            is_str = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  142</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\&quot;&#39;</span>) {</div>
-<div class="line"><span class="lineno">  143</span>            quot2 = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  144</span>            is_str = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  145</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;:&#39;</span>) {</div>
-<div class="line"><span class="lineno">  146</span>            vector.emplace_back(<span class="stringliteral">&quot;:&quot;</span>);</div>
-<div class="line"><span class="lineno">  147</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;-&#39;</span>) {</div>
-<div class="line"><span class="lineno">  148</span>            vector.emplace_back(<span class="stringliteral">&quot;-&quot;</span>);</div>
-<div class="line"><span class="lineno">  149</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39; &#39;</span>) {</div>
-<div class="line"><span class="lineno">  150</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  151</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  152</span>            builder &lt;&lt; ch;</div>
-<div class="line"><span class="lineno">  153</span>            is_str = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  154</span>        }</div>
-<div class="line"><span class="lineno">  155</span>    }</div>
-<div class="line"><span class="lineno">  156</span> </div>
-<div class="line"><span class="lineno">  157</span>    <span class="keyword">auto</span> str = builder.toString();</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">if</span> (!str.empty()) {</div>
-<div class="line"><span class="lineno">  159</span>        vector.emplace_back(str);</div>
-<div class="line"><span class="lineno">  160</span>    }</div>
-<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">return</span> vector;</div>
-<div class="line"><span class="lineno">  162</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00115">sese::text::AbstractStringBuffer::clear()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">sese::text::AbstractStringBuffer::toString()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#ac5022adf90d2c19c2e6056a8f962b0d0">sese::text::AbstractStringBuffer::clear()</a> , 以及 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">sese::text::AbstractStringBuffer::toString()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_yaml_util_8cpp_source.html#l00010">deserialize()</a> , 以及 <a class="el" href="_yaml_8cpp_source.html#l00172">sese::Yaml::parse()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#a20327652abbd72bff6c7eac3abcebaf7">deserialize()</a> , 以及 <a class="el" href="classsese_1_1_yaml.html#a7169e079338c40568498b4dfa4db3e93">sese::Yaml::parse()</a>.</p>
 
 </div>
 </div>
@@ -649,20 +655,15 @@ Public 类型</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_yaml_util_8cpp_source.html">YamlUtil.cpp</a> 第 <a class="el" href="_yaml_util_8cpp_source.html#l00351">351</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  351</span>                                                                             {</div>
-<div class="line"><span class="lineno">  352</span>    <span class="keyword">const</span> <span class="keyword">auto</span> BUFFER = <a class="code hl_variable" href="_yaml_util_8cpp.html#abbf37168ab9dce3e7a060e3514587c69">GET_SPACE_ARRAY</a>();</div>
-<div class="line"><span class="lineno">  353</span>    <span class="keyword">const</span> <span class="keyword">auto</span> SIZE = std::min&lt;size_t&gt;(1024, <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>);</div>
-<div class="line"><span class="lineno">  354</span>    output-&gt;write(BUFFER.data(), SIZE);</div>
-<div class="line"><span class="lineno">  355</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a> , 以及 <a class="el" href="_yaml_util_8cpp_source.html#l00343">GET_SPACE_ARRAY</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a> , 以及 <a class="el" href="_yaml_util_8cpp.html#abbf37168ab9dce3e7a060e3514587c69">GET_SPACE_ARRAY</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_yaml.html#ac286a726617735d595cd944810eb01ac">sese::Yaml::streamifyArray()</a> , 以及 <a class="el" href="classsese_1_1_yaml.html#ab24858ad10ecb46c3d5696027b0ec9ab">sese::Yaml::streamifyObject()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/config/yaml/<a class="el" href="_yaml_util_8h_source.html">YamlUtil.h</a></li>
-<li>sese/config/yaml/<a class="el" href="_yaml_util_8cpp_source.html">YamlUtil.cpp</a></li>
+<li>sese/config/yaml/<a class="el" href="_yaml_util_8cpp.html">YamlUtil.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,9 @@ $(document).ready(function(){initNavTree('classsese_1_1system_1_1_shared_memory.
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1system_1_1_shared_memory-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::system::SharedMemory类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -158,11 +162,28 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a609004e73674720758b98086799b0748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af17d5de9adecaa8dc3a483631b7f8c74" id="r_af17d5de9adecaa8dc3a483631b7f8c74"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1system_1_1_shared_memory.html#aab05e8c936f11e27ad800af46a391753">SharedMemory::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_shared_memory.html#af17d5de9adecaa8dc3a483631b7f8c74">use</a> (const char *name) noexcept</td></tr>
 <tr class="separator:af17d5de9adecaa8dc3a483631b7f8c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a6888d13296968df9d86693109090b841" id="r_a6888d13296968df9d86693109090b841"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_shared_memory.html#a6888d13296968df9d86693109090b841">SharedMemory</a> ()=default</td></tr>
+<tr class="separator:a6888d13296968df9d86693109090b841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:a70064b1ed2752adbd17f7115d8c02b21" id="r_a70064b1ed2752adbd17f7115d8c02b21"><td class="memItemLeft" align="right" valign="top">static key_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_shared_memory.html#a70064b1ed2752adbd17f7115d8c02b21">name2key</a> (const char *name) noexcept</td></tr>
+<tr class="separator:a70064b1ed2752adbd17f7115d8c02b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:abfec4f8addcfee061b17fa2feaffba1a" id="r_abfec4f8addcfee061b17fa2feaffba1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_shared_memory.html#abfec4f8addcfee061b17fa2feaffba1a">id</a> {}</td></tr>
+<tr class="separator:abfec4f8addcfee061b17fa2feaffba1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d5d363813eab416f8c4373f4e6d1e85" id="r_a9d5d363813eab416f8c4373f4e6d1e85"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_shared_memory.html#a9d5d363813eab416f8c4373f4e6d1e85">buffer</a> = nullptr</td></tr>
+<tr class="separator:a9d5d363813eab416f8c4373f4e6d1e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fac63c9b0cda7152e33f5133abd1e30" id="r_a2fac63c9b0cda7152e33f5133abd1e30"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_shared_memory.html#a2fac63c9b0cda7152e33f5133abd1e30">isOwner</a> {}</td></tr>
+<tr class="separator:a2fac63c9b0cda7152e33f5133abd1e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>共享内存类 </p>
-
-<p class="definition">在文件 <a class="el" href="_shared_memory_8h_source.html">SharedMemory.h</a> 第 <a class="el" href="_shared_memory_8h_source.html#l00019">19</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="aab05e8c936f11e27ad800af46a391753" name="aab05e8c936f11e27ad800af46a391753"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab05e8c936f11e27ad800af46a391753">&#9670;&#160;</a></span>Ptr</h2>
@@ -175,8 +196,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_shared_memory_8h_source.html">SharedMemory.h</a> 第 <a class="el" href="_shared_memory_8h_source.html#l00021">21</a> 行定义.</p>
 
 </div>
 </div>
@@ -206,14 +225,33 @@ Public 成员函数</h2></td></tr>
 
 <p>析构函数 </p>
 
-<p class="definition">在文件 <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html">SharedMemory.cpp</a> 第 <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html#l00025">25</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>                                     {</div>
-<div class="line"><span class="lineno">   26</span>    shmdt(buffer);</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (isOwner) {</div>
-<div class="line"><span class="lineno">   28</span>        shmctl(<span class="keywordtype">id</span>, IPC_RMID, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   29</span>    }</div>
-<div class="line"><span class="lineno">   30</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#a9d5d363813eab416f8c4373f4e6d1e85">buffer</a> , 以及 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#a2fac63c9b0cda7152e33f5133abd1e30">isOwner</a>.</p>
+
+</div>
+</div>
+<a id="a6888d13296968df9d86693109090b841" name="a6888d13296968df9d86693109090b841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6888d13296968df9d86693109090b841">&#9670;&#160;</a></span>SharedMemory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::system::SharedMemory::SharedMemory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -265,29 +303,9 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html">SharedMemory.cpp</a> 第 <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html#l00032">32</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>                                                                           {</div>
-<div class="line"><span class="lineno">   33</span>    int32_t key = name2key(name);</div>
-<div class="line"><span class="lineno">   34</span>    int32_t <span class="keywordtype">id</span> = shmget((key_t) key, <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>, 0666 | IPC_CREAT);</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span> (-1 == <span class="keywordtype">id</span>) {</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>    <span class="keyword">auto</span> buffer = shmat(<span class="keywordtype">id</span>, <span class="keyword">nullptr</span>, 0);</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">if</span> (buffer == (<span class="keywordtype">void</span> *) -1) {</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   42</span>    }</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <span class="keyword">auto</span> rt = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1system_1_1_shared_memory.html" title="共享内存类">SharedMemory</a>;</div>
-<div class="line"><span class="lineno">   45</span>    rt-&gt;isOwner = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   46</span>    rt-&gt;id = id;</div>
-<div class="line"><span class="lineno">   47</span>    rt-&gt;buffer = buffer;</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> std::unique_ptr&lt;SharedMemory&gt;(rt);</div>
-<div class="line"><span class="lineno">   49</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#a2fac63c9b0cda7152e33f5133abd1e30">isOwner</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_i_p_c_8cpp_source.html#l00025">sese::system::IPCChannel::create()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_i_p_c_channel.html#a020521e704dc74be511d5174f9b470fb">sese::system::IPCChannel::create()</a>.</p>
 
 </div>
 </div>
@@ -315,11 +333,36 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>获取共享内存实际地址 </p><dl class="section return"><dt>返回</dt><dd>共享内存块 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html">SharedMemory.cpp</a> 第 <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html#l00070">70</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                                       {</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">return</span> buffer;</div>
-<div class="line"><span class="lineno">   72</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#a9d5d363813eab416f8c4373f4e6d1e85">buffer</a>.</p>
+
+</div>
+</div>
+<a id="a70064b1ed2752adbd17f7115d8c02b21" name="a70064b1ed2752adbd17f7115d8c02b21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70064b1ed2752adbd17f7115d8c02b21">&#9670;&#160;</a></span>name2key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">key_t SharedMemory::name2key </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
 </div>
 </div>
 <a id="af17d5de9adecaa8dc3a483631b7f8c74" name="af17d5de9adecaa8dc3a483631b7f8c74"></a>
@@ -359,34 +402,87 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html">SharedMemory.cpp</a> 第 <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html#l00051">51</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                                           {</div>
-<div class="line"><span class="lineno">   52</span>    int32_t key = name2key(name);</div>
-<div class="line"><span class="lineno">   53</span>    int32_t <span class="keywordtype">id</span> = shmget(key, 0, 0666);</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">if</span> (-1 == <span class="keywordtype">id</span>) {</div>
-<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>    <span class="keyword">auto</span> buffer = shmat(<span class="keywordtype">id</span>, <span class="keyword">nullptr</span>, 0);</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">if</span> (buffer == (<span class="keywordtype">void</span> *) -1) {</div>
-<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   61</span>    }</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>    <span class="keyword">auto</span> rt = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1system_1_1_shared_memory.html" title="共享内存类">SharedMemory</a>;</div>
-<div class="line"><span class="lineno">   64</span>    rt-&gt;isOwner = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   65</span>    rt-&gt;id = id;</div>
-<div class="line"><span class="lineno">   66</span>    rt-&gt;buffer = buffer;</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">return</span> std::unique_ptr&lt;SharedMemory&gt;(rt);</div>
-<div class="line"><span class="lineno">   68</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_i_p_c_8cpp_source.html#l00059">sese::system::IPCChannel::use()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#a2fac63c9b0cda7152e33f5133abd1e30">isOwner</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_i_p_c_channel.html#aed8e08977d1b833ad277987b6ee380ed">sese::system::IPCChannel::use()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a9d5d363813eab416f8c4373f4e6d1e85" name="a9d5d363813eab416f8c4373f4e6d1e85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d5d363813eab416f8c4373f4e6d1e85">&#9670;&#160;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* sese::system::SharedMemory::buffer = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#a5e7d376a4a7e7b2e7bfc96b914d3969a">getBuffer()</a> , 以及 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#aa2861717e9a6b1682c062328d0ea87e3">~SharedMemory()</a>.</p>
+
+</div>
+</div>
+<a id="abfec4f8addcfee061b17fa2feaffba1a" name="abfec4f8addcfee061b17fa2feaffba1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfec4f8addcfee061b17fa2feaffba1a">&#9670;&#160;</a></span>id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::system::SharedMemory::id {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2fac63c9b0cda7152e33f5133abd1e30" name="a2fac63c9b0cda7152e33f5133abd1e30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fac63c9b0cda7152e33f5133abd1e30">&#9670;&#160;</a></span>isOwner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::system::SharedMemory::isOwner {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#a609004e73674720758b98086799b0748">create()</a>, <a class="el" href="classsese_1_1system_1_1_shared_memory.html#af17d5de9adecaa8dc3a483631b7f8c74">use()</a> , 以及 <a class="el" href="classsese_1_1system_1_1_shared_memory.html#aa2861717e9a6b1682c062328d0ea87e3">~SharedMemory()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/system/<a class="el" href="_shared_memory_8h_source.html">SharedMemory.h</a></li>
-<li>sese/native/unix/system/<a class="el" href="unix_2system_2_shared_memory_8cpp_source.html">SharedMemory.cpp</a></li>
-<li>sese/native/win/system/<a class="el" href="win_2system_2_shared_memory_8cpp_source.html">SharedMemory.cpp</a></li>
+<li>sese/native/unix/system/<a class="el" href="unix_2system_2_shared_memory_8cpp.html">SharedMemory.cpp</a></li>
+<li>sese/native/win/system/<a class="el" href="win_2system_2_shared_memory_8cpp.html">SharedMemory.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

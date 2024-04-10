@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_config_util.html',''); i
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
 <a href="classsese_1_1_config_util-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::ConfigUtil类 参考</div></div>
 </div><!--header-->
@@ -151,11 +153,14 @@ Public 类型</h2></td></tr>
 <tr class="separator:af5fd0271579cf5988abd99bc0eb77f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ca9a8498e2e16d35dacad9d59028d94" id="r_a4ca9a8498e2e16d35dacad9d59028d94"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_config_util.html#a4ca9a8498e2e16d35dacad9d59028d94">write2</a> (const <a class="el" href="classsese_1_1_config_object.html#ad2c907273f3078a41536d29583c3aeaf">ConfigObject::Ptr</a> &amp;config_file, <a class="el" href="classsese_1_1_config_util.html#a478f343127761e662085cf51b01bf6c6">OutputStream</a> *output)</td></tr>
 <tr class="separator:a4ca9a8498e2e16d35dacad9d59028d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:ab2d4d2a254445cbc63665f8eea2c95a0" id="r_ab2d4d2a254445cbc63665f8eea2c95a0"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_config_util.html#ab2d4d2a254445cbc63665f8eea2c95a0">readLine</a> (<a class="el" href="classsese_1_1_config_util.html#ac9f1348f1813c91cfa94913490e3e33b">InputStream</a> *input)</td></tr>
+<tr class="separator:ab2d4d2a254445cbc63665f8eea2c95a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>传统配置文件工具 </p>
-
-<p class="definition">在文件 <a class="el" href="_config_util_8h_source.html">ConfigUtil.h</a> 第 <a class="el" href="_config_util_8h_source.html#l00067">67</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ac9f1348f1813c91cfa94913490e3e33b" name="ac9f1348f1813c91cfa94913490e3e33b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9f1348f1813c91cfa94913490e3e33b">&#9670;&#160;</a></span>InputStream</h2>
@@ -168,8 +173,6 @@ Public 类型</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_config_util_8h_source.html">ConfigUtil.h</a> 第 <a class="el" href="_config_util_8h_source.html#l00069">69</a> 行定义.</p>
 
 </div>
 </div>
@@ -184,8 +187,6 @@ Public 类型</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_config_util_8h_source.html">ConfigUtil.h</a> 第 <a class="el" href="_config_util_8h_source.html#l00070">70</a> 行定义.</p>
 
 </div>
 </div>
@@ -220,6 +221,32 @@ Public 类型</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>配置文件类指针，读取失败返回 nullptr </dd></dl>
+
+</div>
+</div>
+<a id="ab2d4d2a254445cbc63665f8eea2c95a0" name="ab2d4d2a254445cbc63665f8eea2c95a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2d4d2a254445cbc63665f8eea2c95a0">&#9670;&#160;</a></span>readLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::string sese::ConfigUtil::readLine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_config_util.html#ac9f1348f1813c91cfa94913490e3e33b">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

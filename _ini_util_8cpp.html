@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -132,9 +133,7 @@ $(document).ready(function(){initNavTree('_ini_util_8cpp.html',''); initResizabl
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="_ini_util_8h_source.html">sese/config/ini/IniUtil.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_input_stream_reader_8h_source.html">sese/io/InputStreamReader.h</a>&gt;</code><br />
-</div>
-<p><a href="_ini_util_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
 <tr class="memitem:af097e4b9ef093d215d82efc79da4bc9a" id="r_af097e4b9ef093d215d82efc79da4bc9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(buf,  <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>)&#160;&#160;&#160;    if (output-&gt;<a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a>(buf, <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>) != <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>) return false;</td></tr>
@@ -167,40 +166,6 @@ $(document).ready(function(){initNavTree('_ini_util_8cpp.html',''); initResizabl
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_ini_util_8cpp_source.html">IniUtil.cpp</a> 第 <a class="el" href="_ini_util_8cpp_source.html#l00042">42</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                                                                {</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;item: target-&gt;defSection) {</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (!unparsePair(item, output)) {</div>
-<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   52</span>        }</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(<span class="stringliteral">&quot;\n&quot;</span>, 1)</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    for (auto &amp;&amp;map: target-&gt;sectionMap) {</div>
-<div class="line"><span class="lineno">   57</span>        <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(<span class="stringliteral">&quot;[&quot;</span>, 1)</div>
-<div class="line"><span class="lineno">   58</span>        <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(map.first.c_str(), map.first.length())</div>
-<div class="line"><span class="lineno">   59</span>        <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(&quot;]\n&quot;, 2)</div>
-<div class="line"><span class="lineno">   60</span>        for (auto &amp;&amp;item: map.second) {</div>
-<div class="line"><span class="lineno">   61</span>            <span class="keywordflow">if</span> (!unparsePair(item, output)) {</div>
-<div class="line"><span class="lineno">   62</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   63</span>            }</div>
-<div class="line"><span class="lineno">   64</span>        }</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(<span class="stringliteral">&quot;\n&quot;</span>, 1)</div>
-<div class="line"><span class="lineno">   66</span>    }</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   69</span>}</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span><span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1ini_1_1_ini_util.html#acb02ecded9211b359b9114f463aaaf5c">IniUtil::unparsePair</a>(<span class="keyword">const</span> std::pair&lt;std::string, std::string&gt; &amp;pair, OutputStream *output) <span class="keyword">noexcept</span> {</div>
-<div class="line"><span class="lineno">   72</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(pair.first.c_str(), pair.first.length())</div>
-<div class="line"><span class="lineno">   73</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(&quot;=&quot;, 1)</div>
-<div class="line"><span class="lineno">   74</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(pair.second.c_str(), pair.second.length())</div>
-<div class="line"><span class="lineno">   75</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(&quot;\n&quot;, 1)</div>
-<div class="line"><span class="lineno">   76</span>    return true;</div>
-<div class="line"><span class="lineno">   77</span>}</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
-</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

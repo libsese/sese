@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -194,10 +195,7 @@ Protected 属性</h2></td></tr>
 <tr class="memitem:aace49ec362b911b274d378a3a2f1c2aa inherit pub_types_classsese_1_1db_1_1_result_set" id="r_aace49ec362b911b274d378a3a2f1c2aa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_result_set.html">ResultSet</a> &gt;</td></tr>
 <tr class="separator:aace49ec362b911b274d378a3a2f1c2aa inherit pub_types_classsese_1_1db_1_1_result_set"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8h_source.html">SqliteStmtResultSetImpl.h</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8h_source.html#l00007">7</a> 行定义.</p>
-</div><h2 class="groupheader">构造及析构函数说明</h2>
+<h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a227bda552ee9fa345f65f1df9f0d576b" name="a227bda552ee9fa345f65f1df9f0d576b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a227bda552ee9fa345f65f1df9f0d576b">&#9670;&#160;</a></span>SqliteStmtResultSetImpl()</h2>
 
@@ -222,11 +220,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                                                {</div>
-<div class="line"><span class="lineno">   24</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a> = <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>;</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -258,11 +251,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6e656f99c9e5f12805d7e5b590fe710f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                              {</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> sqlite3_column_count(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>);</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa2c03080fe233a66c4b1d8a8548b71ce" name="aa2c03080fe233a66c4b1d8a8548b71ce"></a>
@@ -300,13 +288,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a51ae76db5ab676ccf9bdd5a867501cb7">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00055">55</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>                                                                                              {</div>
-<div class="line"><span class="lineno">   56</span>    std::optional&lt;sese::DateTime&gt; rt = <a class="code hl_function" href="classsese_1_1text_1_1_date_time_parser.html#a4eb27b633f9a2ae5d3b66c5de1ebbda0">text::DateTimeParser::parse</a>(<span class="stringliteral">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>, (<span class="keyword">const</span> <span class="keywordtype">char</span> *) sqlite3_column_text(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>, (<span class="keywordtype">int</span>) index));</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">return</span> rt;</div>
-<div class="line"><span class="lineno">   58</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_parser_8cpp_source.html#l00026">sese::text::DateTimeParser::parse()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_date_time_parser.html#a4eb27b633f9a2ae5d3b66c5de1ebbda0">sese::text::DateTimeParser::parse()</a>.</p>
 
 </div>
 </div>
@@ -345,13 +327,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6de86e2e29172a1b09fb80395c83b179">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00038">38</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>                                                                         {</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keyword">auto</span> p = (<span class="keyword">const</span> <span class="keywordtype">char</span> *) sqlite3_column_text(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>, (<span class="keywordtype">int</span>) index);</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> std::strtod(p, &amp;end);</div>
-<div class="line"><span class="lineno">   42</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a7bacc95062f508284606999a625752c6" name="a7bacc95062f508284606999a625752c6"></a>
@@ -389,13 +364,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a26e848ab49b6c26f962e451c431b1414">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00044">44</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>                                                                       {</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keyword">auto</span> p = (<span class="keyword">const</span> <span class="keywordtype">char</span> *) sqlite3_column_text(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>, (<span class="keywordtype">int</span>) index);</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">return</span> std::strtof(p, &amp;end);</div>
-<div class="line"><span class="lineno">   48</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a74159aece207ea0409c1b4f2451fd832" name="a74159aece207ea0409c1b4f2451fd832"></a>
@@ -433,13 +401,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a7cee3b3394a785050d8f2fdf3fc6ed4f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>                                                                           {</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keyword">auto</span> p = (<span class="keyword">const</span> <span class="keywordtype">char</span> *) sqlite3_column_text(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>, (<span class="keywordtype">int</span>) index);</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> std::strtol(p, &amp;end, 10);</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a12c55d3bc3b12a09321d53b48709d533" name="a12c55d3bc3b12a09321d53b48709d533"></a>
@@ -477,13 +438,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a8a240837690a71c7d0459abd23dcff8f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00050">50</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>                                                                        {</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keyword">auto</span> p = (<span class="keyword">const</span> <span class="keywordtype">char</span> *) sqlite3_column_text(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>, (<span class="keywordtype">int</span>) index);</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">return</span> std::strtoll(p, &amp;end, 10);</div>
-<div class="line"><span class="lineno">   54</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="af54a599ba6042019236e6908cedb1e0d" name="af54a599ba6042019236e6908cedb1e0d"></a>
@@ -521,12 +475,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a5a3ee10d4713b24f70985920b2c47a7d">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00033">33</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                                                 {</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keyword">auto</span> p = (<span class="keyword">const</span> <span class="keywordtype">char</span> *) sqlite3_column_text(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>, (<span class="keywordtype">int</span>) index);</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> {p};</div>
-<div class="line"><span class="lineno">   36</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a036a40bdb9d49725c017cef2e7d08556" name="a036a40bdb9d49725c017cef2e7d08556"></a>
@@ -564,12 +512,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6655f06551ec04340db0427f5590d533">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00059">59</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>                                                                    {</div>
-<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">if</span> (sqlite3_column_type(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>, (<span class="keywordtype">int</span>) index) == SQLITE_NULL) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   62</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a6ae8fa700ca24032c882d9c6eefd33e1" name="a6ae8fa700ca24032c882d9c6eefd33e1"></a>
@@ -600,11 +542,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#ae6d65c2cadbb0382f4019c52e2d33523">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                {</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">return</span> sqlite3_step(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>) == SQLITE_ROW;</div>
-<div class="line"><span class="lineno">   13</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a2e1e400258901438b9f17500284f32f5" name="a2e1e400258901438b9f17500284f32f5"></a>
@@ -634,12 +571,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#adaddeaeceb01003e51a360da5cafc646">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00007">7</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                 {</div>
-<div class="line"><span class="lineno">    8</span>    sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>);</div>
-<div class="line"><span class="lineno">    9</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_sqlite_stmt_result_set_impl_8h_source.html#l00024">stmt</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a3d2ace455d02655c07a0ed67241eaa04">stmt</a>.</p>
 
 </div>
 </div>
@@ -664,15 +596,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_sqlite_stmt_result_set_impl_8h_source.html">SqliteStmtResultSetImpl.h</a> 第 <a class="el" href="_sqlite_stmt_result_set_impl_8h_source.html#l00024">24</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html#l00007">reset()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a2e1e400258901438b9f17500284f32f5">reset()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/internal/db/impl/sqlite/<a class="el" href="_sqlite_stmt_result_set_impl_8h_source.html">SqliteStmtResultSetImpl.h</a></li>
-<li>sese/internal/db/impl/sqlite/<a class="el" href="_sqlite_stmt_result_set_impl_8cpp_source.html">SqliteStmtResultSetImpl.cpp</a></li>
+<li>sese/internal/db/impl/sqlite/<a class="el" href="_sqlite_stmt_result_set_impl_8cpp.html">SqliteStmtResultSetImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

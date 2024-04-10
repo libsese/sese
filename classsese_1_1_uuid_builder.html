@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -153,8 +154,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p><a class="el" href="classsese_1_1_uuid.html" title="Uuid 类">Uuid</a> 生成器 </p>
-
-<p class="definition">在文件 <a class="el" href="_uuid_builder_8h_source.html">UuidBuilder.h</a> 第 <a class="el" href="_uuid_builder_8h_source.html#l00021">21</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a9a70b0950458af973022f558c81e33bb" name="a9a70b0950458af973022f558c81e33bb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a70b0950458af973022f558c81e33bb">&#9670;&#160;</a></span>UuidBuilder()</h2>
@@ -181,10 +180,6 @@ Protected 属性</h2></td></tr>
 
 <p>构造函数 </p>
 
-<p class="definition">在文件 <a class="el" href="_uuid_builder_8cpp_source.html">UuidBuilder.cpp</a> 第 <a class="el" href="_uuid_builder_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>    : <a class="code hl_variable" href="classsese_1_1_uuid_builder.html#afe1bab6b2381c22378ea295e34d600dd">timestampHandler</a>(std::chrono::system_clock::now()) {</div>
-<div class="line"><span class="lineno">    7</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -219,31 +214,6 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>是否生成成功 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_uuid_builder_8cpp_source.html">UuidBuilder.cpp</a> 第 <a class="el" href="_uuid_builder_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                      {</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keyword">auto</span> timestamp = <a class="code hl_variable" href="classsese_1_1_uuid_builder.html#afe1bab6b2381c22378ea295e34d600dd">timestampHandler</a>.<a class="code hl_function" href="classsese_1_1_timestamp_handler.html#aee8db62898f2b24fc5f2e87e539a82d8">tryGetCurrentTimestamp</a>();</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">if</span> (timestamp == 0) {</div>
-<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 5; i++) {</div>
-<div class="line"><span class="lineno">   15</span>            std::this_thread::sleep_for(std::chrono::seconds(1));</div>
-<div class="line"><span class="lineno">   16</span>            timestamp = <a class="code hl_variable" href="classsese_1_1_uuid_builder.html#afe1bab6b2381c22378ea295e34d600dd">timestampHandler</a>.<a class="code hl_function" href="classsese_1_1_timestamp_handler.html#aee8db62898f2b24fc5f2e87e539a82d8">tryGetCurrentTimestamp</a>();</div>
-<div class="line"><span class="lineno">   17</span>            <span class="keywordflow">if</span> (timestamp == 0) {</div>
-<div class="line"><span class="lineno">   18</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   19</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (timestamp == UINT64_MAX) {</div>
-<div class="line"><span class="lineno">   20</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   21</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   22</span>                dest.<a class="code hl_function" href="classsese_1_1_uuid.html#ada4cfc716dd94f565b984e70d456e052">setTimestamp</a>(timestamp);</div>
-<div class="line"><span class="lineno">   23</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   24</span>            }</div>
-<div class="line"><span class="lineno">   25</span>        }</div>
-<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   27</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (timestamp == UINT64_MAX) {</div>
-<div class="line"><span class="lineno">   28</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   29</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   30</span>        dest.<a class="code hl_function" href="classsese_1_1_uuid.html#ada4cfc716dd94f565b984e70d456e052">setTimestamp</a>(timestamp);</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   32</span>    }</div>
-<div class="line"><span class="lineno">   33</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -267,13 +237,11 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_uuid_builder_8h_source.html">UuidBuilder.h</a> 第 <a class="el" href="_uuid_builder_8h_source.html#l00032">32</a> 行定义.</p>
-
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/util/<a class="el" href="_uuid_builder_8h_source.html">UuidBuilder.h</a></li>
-<li>sese/util/<a class="el" href="_uuid_builder_8cpp_source.html">UuidBuilder.cpp</a></li>
+<li>sese/util/<a class="el" href="_uuid_builder_8cpp.html">UuidBuilder.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

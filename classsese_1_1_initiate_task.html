@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_initiate_task.html','');
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_initiate_task-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::InitiateTask类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -160,7 +162,7 @@ Public 类型</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ab583d5497b2a9f07e8c2340b0df9359a" id="r_ab583d5497b2a9f07e8c2340b0df9359a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#ab583d5497b2a9f07e8c2340b0df9359a">InitiateTask</a> (std::string name)</td></tr>
+<tr class="memitem:ab583d5497b2a9f07e8c2340b0df9359a" id="r_ab583d5497b2a9f07e8c2340b0df9359a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#ab583d5497b2a9f07e8c2340b0df9359a">InitiateTask</a> (std::string <a class="el" href="classsese_1_1_initiate_task.html#a0b0d5849dcc607db700e818b85f3e702">name</a>)</td></tr>
 <tr class="separator:ab583d5497b2a9f07e8c2340b0df9359a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7da3e0f23b5f86f26c43624f77583f9" id="r_af7da3e0f23b5f86f26c43624f77583f9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#af7da3e0f23b5f86f26c43624f77583f9">~InitiateTask</a> ()=default</td></tr>
 <tr class="separator:af7da3e0f23b5f86f26c43624f77583f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,11 +172,14 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:abfacf32c5d027127de872ca765293036"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0df8ae4f5869e7c5653d086c67d3aa1c" id="r_a0df8ae4f5869e7c5653d086c67d3aa1c"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#a0df8ae4f5869e7c5653d086c67d3aa1c">getName</a> () const</td></tr>
 <tr class="separator:a0df8ae4f5869e7c5653d086c67d3aa1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a0b0d5849dcc607db700e818b85f3e702" id="r_a0b0d5849dcc607db700e818b85f3e702"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#a0b0d5849dcc607db700e818b85f3e702">name</a></td></tr>
+<tr class="separator:a0b0d5849dcc607db700e818b85f3e702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>初始化任务基类 </p>
-
-<p class="definition">在文件 <a class="el" href="_initializer_8h_source.html">Initializer.h</a> 第 <a class="el" href="_initializer_8h_source.html#l00019">19</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a06c06dc20e0ef03ba4c8ced352f03224" name="a06c06dc20e0ef03ba4c8ced352f03224"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a06c06dc20e0ef03ba4c8ced352f03224">&#9670;&#160;</a></span>Ptr</h2>
@@ -190,8 +195,6 @@ Public 成员函数</h2></td></tr>
 
 <p>初始化任务智能指针 </p>
 <dl class="section note"><dt>注解</dt><dd>std::stack 使用 std::deque 实现， 其中 std::deque::top 使用 '=' 运算符， 与 std::unique_ptr 冲突。 所以，InitiateTask::Ptr 使用 std::shared_ptr </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="_initializer_8h_source.html">Initializer.h</a> 第 <a class="el" href="_initializer_8h_source.html#l00029">29</a> 行定义.</p>
 
 </div>
 </div>
@@ -220,10 +223,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a> 第 <a class="el" href="_initializer_8cpp_source.html#l00034">34</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>                                         : name(std::move(name)) {</div>
-<div class="line"><span class="lineno">   35</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="af7da3e0f23b5f86f26c43624f77583f9" name="af7da3e0f23b5f86f26c43624f77583f9"></a>
@@ -294,11 +293,6 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a> 第 <a class="el" href="_initializer_8cpp_source.html#l00037">37</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>                                                 {</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> name;</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa031ea39215e525b8e0049e5b53d68a7" name="aa031ea39215e525b8e0049e5b53d68a7"></a>
@@ -328,9 +322,32 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a0b0d5849dcc607db700e818b85f3e702" name="a0b0d5849dcc607db700e818b85f3e702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b0d5849dcc607db700e818b85f3e702">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::InitiateTask::name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/util/<a class="el" href="_initializer_8h_source.html">Initializer.h</a></li>
-<li>sese/util/<a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a></li>
+<li>sese/util/<a class="el" href="_initializer_8cpp.html">Initializer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

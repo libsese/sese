@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -200,10 +201,7 @@ Protected 属性</h2></td></tr>
 <tr class="memitem:aace49ec362b911b274d378a3a2f1c2aa inherit pub_types_classsese_1_1db_1_1_result_set" id="r_aace49ec362b911b274d378a3a2f1c2aa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_result_set.html">ResultSet</a> &gt;</td></tr>
 <tr class="separator:aace49ec362b911b274d378a3a2f1c2aa inherit pub_types_classsese_1_1db_1_1_result_set"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8h_source.html">PostgresResultSetImpl.h</a> 第 <a class="el" href="_postgres_result_set_impl_8h_source.html#l00006">6</a> 行定义.</p>
-</div><h2 class="groupheader">构造及析构函数说明</h2>
+<h2 class="groupheader">构造及析构函数说明</h2>
 <a id="aa17c479a2a8f0d9774f49410a6418d32" name="aa17c479a2a8f0d9774f49410a6418d32"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa17c479a2a8f0d9774f49410a6418d32">&#9670;&#160;</a></span>PostgresResultSetImpl()</h2>
 
@@ -228,13 +226,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                                       {</div>
-<div class="line"><span class="lineno">    7</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a> = <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>;</div>
-<div class="line"><span class="lineno">    8</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> = 0;</div>
-<div class="line"><span class="lineno">    9</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a996d6215caf6bb73614d297b7eecfce1">totalRow</a> = PQntuples(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>);</div>
-<div class="line"><span class="lineno">   10</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a19e35b14d9abcf093b0fb2bcd7dfa538" name="a19e35b14d9abcf093b0fb2bcd7dfa538"></a>
@@ -260,12 +251,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00012">12</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>                                                           {</div>
-<div class="line"><span class="lineno">   13</span>    PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>);</div>
-<div class="line"><span class="lineno">   14</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_postgres_result_set_impl_8h_source.html#l00023">res</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>.</p>
 
 </div>
 </div>
@@ -298,11 +284,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6e656f99c9e5f12805d7e5b590fe710f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00031">31</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>                                                            {</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">return</span> PQnfields(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>);</div>
-<div class="line"><span class="lineno">   33</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ae3c3d6db80f8c24a4460b019e309dc02" name="ae3c3d6db80f8c24a4460b019e309dc02"></a>
@@ -340,13 +321,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a51ae76db5ab676ccf9bdd5a867501cb7">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00058">58</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>                                                                                            {</div>
-<div class="line"><span class="lineno">   59</span>    std::optional&lt;sese::DateTime&gt; rt = <a class="code hl_function" href="classsese_1_1text_1_1_date_time_parser.html#a4eb27b633f9a2ae5d3b66c5de1ebbda0">text::DateTimeParser::parse</a>(<span class="stringliteral">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>, PQgetvalue(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> - 1, (<span class="keywordtype">int</span>) index));</div>
-<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">return</span> rt;</div>
-<div class="line"><span class="lineno">   61</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_parser_8cpp_source.html#l00026">sese::text::DateTimeParser::parse()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_date_time_parser.html#a4eb27b633f9a2ae5d3b66c5de1ebbda0">sese::text::DateTimeParser::parse()</a>.</p>
 
 </div>
 </div>
@@ -385,12 +360,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6de86e2e29172a1b09fb80395c83b179">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00049">49</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                                                       {</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> std::strtod(PQgetvalue(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> - 1, (<span class="keywordtype">int</span>) index), &amp;end);</div>
-<div class="line"><span class="lineno">   52</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="acd38a8221ebbb8387a62082f98e26a2b" name="acd38a8221ebbb8387a62082f98e26a2b"></a>
@@ -428,12 +397,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a26e848ab49b6c26f962e451c431b1414">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00054">54</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>                                                                     {</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> std::strtof(PQgetvalue(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> - 1, (<span class="keywordtype">int</span>) index), &amp;end);</div>
-<div class="line"><span class="lineno">   57</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a6c7f522b9e99182c6bc83225eb927ad3" name="a6c7f522b9e99182c6bc83225eb927ad3"></a>
@@ -471,12 +434,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a7cee3b3394a785050d8f2fdf3fc6ed4f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00035">35</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                                         {</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> (int32_t) std::strtol(PQgetvalue(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> - 1, (<span class="keywordtype">int</span>) index), &amp;end, 10);</div>
-<div class="line"><span class="lineno">   38</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a51bf478a02d4785bc5497f6c7da6c4a6" name="a51bf478a02d4785bc5497f6c7da6c4a6"></a>
@@ -514,12 +471,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a8a240837690a71c7d0459abd23dcff8f">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00040">40</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>                                                                      {</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordtype">char</span> *end;</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">return</span> std::strtol(PQgetvalue(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> - 1, (<span class="keywordtype">int</span>) index), &amp;end, 10);</div>
-<div class="line"><span class="lineno">   43</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a4a979ac77ee8226c87cdae023f2a5440" name="a4a979ac77ee8226c87cdae023f2a5440"></a>
@@ -557,11 +508,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a5a3ee10d4713b24f70985920b2c47a7d">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00045">45</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>                                                                               {</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> PQgetvalue(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> - 1, (<span class="keywordtype">int</span>) index);</div>
-<div class="line"><span class="lineno">   47</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a53138c8da7f513bd8532f9c08366de2f" name="a53138c8da7f513bd8532f9c08366de2f"></a>
@@ -599,12 +545,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#a6655f06551ec04340db0427f5590d533">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>                                                                  {</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">if</span> (PQgetisnull(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6d2aeeb28d9df6a00f8ebcca1eb0ff39">res</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> - 1, (<span class="keywordtype">int</span>) index)) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   65</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aca56e59ae1e677f1a234a6987fb4ddfd" name="aca56e59ae1e677f1a234a6987fb4ddfd"></a>
@@ -635,18 +575,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#ae6d65c2cadbb0382f4019c52e2d33523">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00020">20</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>                                              {</div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a996d6215caf6bb73614d297b7eecfce1">totalRow</a> &lt;= 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> + 1 &lt;= <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a996d6215caf6bb73614d297b7eecfce1">totalRow</a>) {</div>
-<div class="line"><span class="lineno">   24</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> += 1;</div>
-<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   26</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   28</span>    }</div>
-<div class="line"><span class="lineno">   29</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ae43aba7f979d69952a54c0c8296c367f" name="ae43aba7f979d69952a54c0c8296c367f"></a>
@@ -676,11 +604,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_result_set.html#adaddeaeceb01003e51a360da5cafc646">sese::db::ResultSet</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a> 第 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00016">16</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                                               {</div>
-<div class="line"><span class="lineno">   17</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f">row</a> = 0;</div>
-<div class="line"><span class="lineno">   18</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -704,9 +627,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8h_source.html">PostgresResultSetImpl.h</a> 第 <a class="el" href="_postgres_result_set_impl_8h_source.html#l00023">23</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_postgres_result_set_impl_8cpp_source.html#l00012">~PostgresResultSetImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a19e35b14d9abcf093b0fb2bcd7dfa538">~PostgresResultSetImpl()</a>.</p>
 
 </div>
 </div>
@@ -730,8 +651,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8h_source.html">PostgresResultSetImpl.h</a> 第 <a class="el" href="_postgres_result_set_impl_8h_source.html#l00024">24</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a996d6215caf6bb73614d297b7eecfce1" name="a996d6215caf6bb73614d297b7eecfce1"></a>
@@ -754,13 +673,11 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_result_set_impl_8h_source.html">PostgresResultSetImpl.h</a> 第 <a class="el" href="_postgres_result_set_impl_8h_source.html#l00025">25</a> 行定义.</p>
-
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_result_set_impl_8h_source.html">PostgresResultSetImpl.h</a></li>
-<li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_result_set_impl_8cpp_source.html">PostgresResultSetImpl.cpp</a></li>
+<li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_result_set_impl_8cpp.html">PostgresResultSetImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_initializer.html',''); i
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_initializer-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::Initializer类 参考</div></div>
 </div><!--header-->
@@ -152,11 +154,14 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a2b6192b40150ac13daee039bd4095f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d42e66b99ca577236d3b5ed86043914" id="r_a7d42e66b99ca577236d3b5ed86043914"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="_config_8h.html#a898d83d1482652c4ca1ec065b99530bc">SESE_DEPRECATED</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initializer.html#a7d42e66b99ca577236d3b5ed86043914">getInitializer</a> () noexcept</td></tr>
 <tr class="separator:a7d42e66b99ca577236d3b5ed86043914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:ac29a2bce374fe2f224585a7181494d22" id="r_ac29a2bce374fe2f224585a7181494d22"><td class="memItemLeft" align="right" valign="top">std::stack&lt; <a class="el" href="classsese_1_1_initiate_task.html#a06c06dc20e0ef03ba4c8ced352f03224">InitiateTask::Ptr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initializer.html#ac29a2bce374fe2f224585a7181494d22">tasks</a></td></tr>
+<tr class="separator:ac29a2bce374fe2f224585a7181494d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>初始化器 </p>
-
-<p class="definition">在文件 <a class="el" href="_initializer_8h_source.html">Initializer.h</a> 第 <a class="el" href="_initializer_8h_source.html#l00044">44</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="add39a548b1e5405e938e786f069191e1" name="add39a548b1e5405e938e786f069191e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add39a548b1e5405e938e786f069191e1">&#9670;&#160;</a></span>~Initializer()</h2>
@@ -182,18 +187,8 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>保证初始化器按顺序销毁</p>
 
-<p class="definition">在文件 <a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a> 第 <a class="el" href="_initializer_8cpp_source.html#l00041">41</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>                          {</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">while</span> (!tasks.empty()) {</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keyword">auto</span> &amp;&amp;top = tasks.top();</div>
-<div class="line"><span class="lineno">   45</span>        <span class="keyword">auto</span> rt = top-&gt;destroy();</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">if</span> (rt != 0) {</div>
-<div class="line"><span class="lineno">   47</span>            printf(<span class="stringliteral">&quot;Unload failed: %32s Exit code %d&quot;</span>, top-&gt;getName().c_str(), rt);</div>
-<div class="line"><span class="lineno">   48</span>        }</div>
-<div class="line"><span class="lineno">   49</span>        tasks.pop();</div>
-<div class="line"><span class="lineno">   50</span>    }</div>
-<div class="line"><span class="lineno">   51</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_initializer.html#ac29a2bce374fe2f224585a7181494d22">tasks</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -222,12 +217,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_initializer_8h_source.html">Initializer.h</a> 第 <a class="el" href="_initializer_8h_source.html#l00057">57</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>                                   {</div>
-<div class="line"><span class="lineno">   58</span>        <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">Initializer::addTask</a>(std::make_unique&lt;T&gt;());</div>
-<div class="line"><span class="lineno">   59</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_initializer_8cpp_source.html#l00022">getInitializer()</a> , 以及 <a class="el" href="_initializer_8cpp_source.html#l00062">sese::initCore()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_initializer.html#a7d42e66b99ca577236d3b5ed86043914">getInitializer()</a> , 以及 <a class="el" href="namespacesese.html#a1f4b46ffad174639bc2bfe96d85f8892">sese::initCore()</a>.</p>
 
 </div>
 </div>
@@ -261,17 +251,7 @@ template&lt;class T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a> 第 <a class="el" href="_initializer_8cpp_source.html#l00053">53</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>                                                              {</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keyword">auto</span> rt = task-&gt;init();</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">if</span> (rt != 0) {</div>
-<div class="line"><span class="lineno">   56</span>        printf(<span class="stringliteral">&quot;Load failed: %32s Exit code %d&quot;</span>, task-&gt;getName().c_str(), rt);</div>
-<div class="line"><span class="lineno">   57</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   58</span>        <a class="code hl_variable" href="_initializer_8cpp.html#a2605c19cd56880c05285358afff95e0f">g_initializer</a>.tasks.emplace(task);</div>
-<div class="line"><span class="lineno">   59</span>    }</div>
-<div class="line"><span class="lineno">   60</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_initializer_8cpp_source.html#l00019">g_initializer</a>.</p>
+<p class="reference">引用了 <a class="el" href="_initializer_8cpp.html#a2605c19cd56880c05285358afff95e0f">g_initializer</a> , 以及 <a class="el" href="classsese_1_1_initializer.html#ac29a2bce374fe2f224585a7181494d22">tasks</a>.</p>
 
 </div>
 </div>
@@ -300,25 +280,38 @@ template&lt;class T &gt; </div>
 <p>获取初始化器指针 </p><dl class="section note"><dt>注解</dt><dd>将 sese 作为使用静态链接库使用时，请务必使用该函数手动进行初始化 </dd></dl>
 <dl class="section return"><dt>返回</dt><dd>初始化指针，此返回值无用 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a> 第 <a class="el" href="_initializer_8cpp_source.html#l00022">22</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   22</span>                                                            {</div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">addTask</a>(std::make_shared&lt;PathsInitiateTask&gt;());</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">addTask</a>(std::make_shared&lt;ThreadInitiateTask&gt;());</div>
-<div class="line"><span class="lineno">   25</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">addTask</a>(std::make_shared&lt;record::LoggerInitiateTask&gt;());</div>
-<div class="line"><span class="lineno">   26</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">addTask</a>(std::make_shared&lt;net::SocketInitiateTask&gt;());</div>
-<div class="line"><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   29</span>    <a class="code hl_function" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">addTask</a>(std::make_shared&lt;security::SecurityInitTask&gt;());</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> &amp;<a class="code hl_variable" href="_initializer_8cpp.html#a2605c19cd56880c05285358afff95e0f">g_initializer</a>;</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_initializer_8h_source.html#l00057">addTask()</a> , 以及 <a class="el" href="_initializer_8cpp_source.html#l00019">g_initializer</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_initializer.html#a2b6192b40150ac13daee039bd4095f13">addTask()</a> , 以及 <a class="el" href="_initializer_8cpp.html#a2605c19cd56880c05285358afff95e0f">g_initializer</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ac29a2bce374fe2f224585a7181494d22" name="ac29a2bce374fe2f224585a7181494d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29a2bce374fe2f224585a7181494d22">&#9670;&#160;</a></span>tasks</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stack&lt;<a class="el" href="classsese_1_1_initiate_task.html#a06c06dc20e0ef03ba4c8ced352f03224">InitiateTask::Ptr</a>&gt; sese::Initializer::tasks</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_initializer.html#aad6d3115e09c39e2252e48c49b88eb55">addTask()</a> , 以及 <a class="el" href="classsese_1_1_initializer.html#add39a548b1e5405e938e786f069191e1">~Initializer()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/util/<a class="el" href="_initializer_8h_source.html">Initializer.h</a></li>
-<li>sese/util/<a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a></li>
+<li>sese/util/<a class="el" href="_initializer_8cpp.html">Initializer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

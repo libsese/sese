@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1security_1_1_s_s_l_contex
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1security_1_1_s_s_l_context-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::security::SSLContext类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -171,11 +173,14 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a68d874b7ad16b4b4444e7007671228bd" id="r_a68d874b7ad16b4b4444e7007671228bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Socket::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a68d874b7ad16b4b4444e7007671228bd">newSocketPtr</a> (<a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Socket::Family</a> family, int32_t flags)</td></tr>
 <tr class="memdesc:a68d874b7ad16b4b4444e7007671228bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">从当前上下文中创建一个 TCP Socket  <br /></td></tr>
 <tr class="separator:a68d874b7ad16b4b4444e7007671228bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a87d485b2e000ec44dffe7c33874c899f" id="r_a87d485b2e000ec44dffe7c33874c899f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a87d485b2e000ec44dffe7c33874c899f">context</a> = nullptr</td></tr>
+<tr class="separator:a87d485b2e000ec44dffe7c33874c899f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>SSL 上下文 </p>
-
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a> 第 <a class="el" href="_s_s_l_context_8h_source.html#l00014">14</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a33b0bbf1987dd213c5d8886906f2099a" name="a33b0bbf1987dd213c5d8886906f2099a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a33b0bbf1987dd213c5d8886906f2099a">&#9670;&#160;</a></span>Ptr</h2>
@@ -188,8 +193,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a> 第 <a class="el" href="_s_s_l_context_8h_source.html#l00016">16</a> 行定义.</p>
 
 </div>
 </div>
@@ -204,8 +207,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a> 第 <a class="el" href="_s_s_l_context_8h_source.html#l00017">17</a> 行定义.</p>
 
 </div>
 </div>
@@ -234,11 +235,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00007">7</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                  {</div>
-<div class="line"><span class="lineno">    8</span>    context = SSL_CTX_new((<span class="keyword">const</span> SSL_METHOD *) method);</div>
-<div class="line"><span class="lineno">    9</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a12d155f4dd5c32228e2d4c96d52fd97d" name="a12d155f4dd5c32228e2d4c96d52fd97d"></a>
@@ -264,11 +260,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00011">11</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                 {</div>
-<div class="line"><span class="lineno">   12</span>    SSL_CTX_free((SSL_CTX *) context);</div>
-<div class="line"><span class="lineno">   13</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a87d485b2e000ec44dffe7c33874c899f">context</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -298,11 +291,8 @@ Public 成员函数</h2></td></tr>
 <p>校验证书和私钥 </p>
 <dl class="section return"><dt>返回</dt><dd>校验结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>                                         {</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">return</span> 1 == SSL_CTX_check_private_key((SSL_CTX *) context);</div>
-<div class="line"><span class="lineno">   29</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a87d485b2e000ec44dffe7c33874c899f">context</a>.</p>
+
 </div>
 </div>
 <a id="abd649a75c193adf97ff1ff9596a1a9bc" name="abd649a75c193adf97ff1ff9596a1a9bc"></a>
@@ -328,11 +318,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00015">15</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>                                            {</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">return</span> context;</div>
-<div class="line"><span class="lineno">   17</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a87d485b2e000ec44dffe7c33874c899f">context</a>.</p>
+
 </div>
 </div>
 <a id="acc25ff5fde416f95b93ce58bc134126c" name="acc25ff5fde416f95b93ce58bc134126c"></a>
@@ -368,11 +355,6 @@ Public 成员函数</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>加载结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                         {</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> 1 == SSL_CTX_use_certificate_file((SSL_CTX *) context, file, SSL_FILETYPE_PEM);</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa14ef51827206585088235025cf6dc5c" name="aa14ef51827206585088235025cf6dc5c"></a>
@@ -408,11 +390,6 @@ Public 成员函数</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>加载结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                               {</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> 1 == SSL_CTX_use_PrivateKey_file((SSL_CTX *) context, file, SSL_FILETYPE_PEM);</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a68d874b7ad16b4b4444e7007671228bd" name="a68d874b7ad16b4b4444e7007671228bd"></a>
@@ -451,16 +428,36 @@ Public 成员函数</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>创建完成的 Socket </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00036">36</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>                                                                            {</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> std::make_shared&lt;SecuritySocket&gt;(shared_from_this(), family, flags);</div>
-<div class="line"><span class="lineno">   38</span>}</div>
-</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a87d485b2e000ec44dffe7c33874c899f" name="a87d485b2e000ec44dffe7c33874c899f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87d485b2e000ec44dffe7c33874c899f">&#9670;&#160;</a></span>context</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* sese::security::SSLContext::context = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a876b04102f6144398cb5b2f67d56ec5e">authPrivateKey()</a>, <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#abd649a75c193adf97ff1ff9596a1a9bc">getContext()</a> , 以及 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a12d155f4dd5c32228e2d4c96d52fd97d">~SSLContext()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/security/<a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a></li>
-<li>sese/security/<a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a></li>
+<li>sese/security/<a class="el" href="_s_s_l_context_8cpp.html">SSLContext.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

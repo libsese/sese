@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,8 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_h_pack_ut
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
 <a href="classsese_1_1net_1_1http_1_1_h_pack_util-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::net::http::HPackUtil类 参考</div></div>
 </div><!--header-->
@@ -163,6 +166,32 @@ Public 类型</h2></td></tr>
 <tr class="memitem:a9323debee57166cc235a9ca963d3c4f2" id="r_a9323debee57166cc235a9ca963d3c4f2"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a9323debee57166cc235a9ca963d3c4f2">encode</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, <a class="el" href="classsese_1_1net_1_1http_1_1_dynamic_table.html">DynamicTable</a> &amp;table, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;once_header, <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &amp;indexed_header) noexcept</td></tr>
 <tr class="separator:a9323debee57166cc235a9ca963d3c4f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:a9138653a43fc83d0d65917826354c349" id="r_a9138653a43fc83d0d65917826354c349"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a9138653a43fc83d0d65917826354c349">decodeInteger</a> (uint8_t &amp;buf, <a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, uint32_t &amp;dest, uint8_t n) noexcept</td></tr>
+<tr class="separator:a9138653a43fc83d0d65917826354c349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f44672d43fab3ac549f64c682860ae" id="r_a42f44672d43fab3ac549f64c682860ae"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a42f44672d43fab3ac549f64c682860ae">decodeString</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *src, std::string &amp;dest) noexcept</td></tr>
+<tr class="separator:a42f44672d43fab3ac549f64c682860ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eec6c216dc5bcaa23ad057507075a8f" id="r_a9eec6c216dc5bcaa23ad057507075a8f"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a9eec6c216dc5bcaa23ad057507075a8f">encodeIndexCase0</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
+<tr class="separator:a9eec6c216dc5bcaa23ad057507075a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85db0f683a0b148cfa45ba5cf4c8c659" id="r_a85db0f683a0b148cfa45ba5cf4c8c659"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a85db0f683a0b148cfa45ba5cf4c8c659">encodeIndexCase1</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
+<tr class="separator:a85db0f683a0b148cfa45ba5cf4c8c659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08030d0b5d7b49606780979ce59d80c2" id="r_a08030d0b5d7b49606780979ce59d80c2"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a08030d0b5d7b49606780979ce59d80c2">encodeIndexCase2</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
+<tr class="separator:a08030d0b5d7b49606780979ce59d80c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab86c89506c433430ba3cc6cfaa6d1e51" id="r_ab86c89506c433430ba3cc6cfaa6d1e51"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ab86c89506c433430ba3cc6cfaa6d1e51">encodeIndexCase3</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, size_t index) noexcept</td></tr>
+<tr class="separator:ab86c89506c433430ba3cc6cfaa6d1e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47118bf81bfd307c614a19cd924a69a" id="r_af47118bf81bfd307c614a19cd924a69a"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#af47118bf81bfd307c614a19cd924a69a">encodeString</a> (<a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *dest, const std::string &amp;str) noexcept</td></tr>
+<tr class="separator:af47118bf81bfd307c614a19cd924a69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98dc16490271859f0260bd6d51b19564" id="r_a98dc16490271859f0260bd6d51b19564"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a98dc16490271859f0260bd6d51b19564">buildCookieString</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie) noexcept</td></tr>
+<tr class="separator:a98dc16490271859f0260bd6d51b19564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:ab664faeaf4e254ba194e645671fb292f" id="r_ab664faeaf4e254ba194e645671fb292f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese_1_1net_1_1http.html#a9e08e353faf1a6c281acffee20472190">HuffmanDecoder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ab664faeaf4e254ba194e645671fb292f">decoder</a> {}</td></tr>
+<tr class="separator:ab664faeaf4e254ba194e645671fb292f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87c844834b5d3070e9c82f7399c2481f" id="r_a87c844834b5d3070e9c82f7399c2481f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese_1_1net_1_1http.html#a8541a42c533f0b8f1119d560a17b3d63">HuffmanEncoder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#a87c844834b5d3070e9c82f7399c2481f">encoder</a> {}</td></tr>
+<tr class="separator:a87c844834b5d3070e9c82f7399c2481f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
@@ -177,8 +206,6 @@ Public 类型</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>HPACK 解压缩工具类 </p>
-
-<p class="definition">在文件 <a class="el" href="_h_pack_util_8h_source.html">HPackUtil.h</a> 第 <a class="el" href="_h_pack_util_8h_source.html#l00021">21</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ae1148e75ad8148c291c6efb9df37dd40" name="ae1148e75ad8148c291c6efb9df37dd40"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae1148e75ad8148c291c6efb9df37dd40">&#9670;&#160;</a></span>InputStream</h2>
@@ -193,8 +220,6 @@ Public 类型</h2></td></tr>
 </div><div class="memdoc">
 
 <p>工具指定输入流 </p>
-
-<p class="definition">在文件 <a class="el" href="_h_pack_util_8h_source.html">HPackUtil.h</a> 第 <a class="el" href="_h_pack_util_8h_source.html#l00024">24</a> 行定义.</p>
 
 </div>
 </div>
@@ -212,11 +237,37 @@ Public 类型</h2></td></tr>
 
 <p>工具指定输出流 </p>
 
-<p class="definition">在文件 <a class="el" href="_h_pack_util_8h_source.html">HPackUtil.h</a> 第 <a class="el" href="_h_pack_util_8h_source.html#l00026">26</a> 行定义.</p>
-
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="a98dc16490271859f0260bd6d51b19564" name="a98dc16490271859f0260bd6d51b19564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98dc16490271859f0260bd6d51b19564">&#9670;&#160;</a></span>buildCookieString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string HPackUtil::buildCookieString </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>cookie</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">sese::text::DateTimeFormatter::format()</a> , 以及 <a class="el" href="_config_8h.html#a359537d4f46f2734aafef400b273e6f9">TIME_GREENWICH_MEAN_PATTERN</a>.</p>
+
+</div>
+</div>
 <a id="ab645a4008c3ba572c5ccf88052a7e712" name="ab645a4008c3ba572c5ccf88052a7e712"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab645a4008c3ba572c5ccf88052a7e712">&#9670;&#160;</a></span>decode()</h2>
 
@@ -276,86 +327,91 @@ Public 类型</h2></td></tr>
 <p>对应第 1 种情况</p>
 <p>对应第 2 种和第 3 种情况</p>
 
-<p class="definition">在文件 <a class="el" href="_h_pack_util_8cpp_source.html">HPackUtil.cpp</a> 第 <a class="el" href="_h_pack_util_8cpp_source.html#l00034">34</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>                                                                                                            {</div>
-<div class="line"><span class="lineno">   35</span>    uint8_t buf;</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordtype">size_t</span> len = 0;</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">while</span> (len &lt; content_length) {</div>
-<div class="line"><span class="lineno">   38</span>        src-&gt;read(&amp;buf, 1);</div>
-<div class="line"><span class="lineno">   39</span>        len += 1;</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (buf &amp; 0b1000&#39;0000) {</div>
-<div class="line"><span class="lineno">   42</span>            uint32_t index = 0;</div>
-<div class="line"><span class="lineno">   43</span>            <span class="keyword">auto</span> l = decodeInteger(buf, src, index, 7);</div>
-<div class="line"><span class="lineno">   44</span>            <span class="keywordflow">if</span> (-1 == l) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   45</span>            len += l;</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">if</span> (index == 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>            <span class="keyword">auto</span> pair = table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a6c4fbb878d5d52107782453a71aae250">get</a>(index);</div>
-<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">if</span> (pair == std::nullopt) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (<a class="code hl_define" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c" title="忽略大小写比较">strcasecmp</a>(pair-&gt;first.c_str(), <span class="stringliteral">&quot;Cookie&quot;</span>) == 0) {</div>
-<div class="line"><span class="lineno">   51</span>                <span class="keyword">auto</span> cookies = <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_http_util.html#ab98b0f3917837e87d1f9f4d8fbd3ee92">HttpUtil::parseFromCookie</a>(pair-&gt;second);</div>
-<div class="line"><span class="lineno">   52</span>                header.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#aa175360bd9ffa572f85b39304028a16b">setCookies</a>(cookies);</div>
-<div class="line"><span class="lineno">   53</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   54</span>                header.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a7db37c82bd6015aa16055b0896842ab6">set</a>(pair-&gt;first, pair-&gt;second);</div>
-<div class="line"><span class="lineno">   55</span>            }</div>
-<div class="line"><span class="lineno">   56</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   57</span>            uint32_t index = 0;</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keywordtype">bool</span> is_store;</div>
-<div class="line"><span class="lineno">   60</span>            <span class="keywordflow">if</span> (0b0100&#39;0000 == (buf &amp; 0b1100&#39;0000)) {</div>
-<div class="line"><span class="lineno">   61</span>                <span class="comment">// 添加至动态表</span></div>
-<div class="line"><span class="lineno">   62</span>                <span class="keyword">auto</span> l = decodeInteger(buf, src, index, 6);</div>
-<div class="line"><span class="lineno">   63</span>                <span class="keywordflow">if</span> (-1 == l) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   64</span>                len += l;</div>
-<div class="line"><span class="lineno">   65</span>                is_store = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   66</span>            }</div>
-<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   69</span>                <span class="comment">// 不添加至动态表</span></div>
-<div class="line"><span class="lineno">   70</span>                <span class="keyword">auto</span> l = decodeInteger(buf, src, index, 4);</div>
-<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">if</span> (-1 == l) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   72</span>                len += l;</div>
-<div class="line"><span class="lineno">   73</span>                is_store = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   74</span>            }</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>            std::string key;</div>
-<div class="line"><span class="lineno">   77</span>            <span class="keywordflow">if</span> (0 != index) {</div>
-<div class="line"><span class="lineno">   78</span>                <span class="keyword">auto</span> ret = table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a6c4fbb878d5d52107782453a71aae250">get</a>(index);</div>
-<div class="line"><span class="lineno">   79</span>                <span class="keywordflow">if</span> (ret == std::nullopt) {</div>
-<div class="line"><span class="lineno">   80</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   81</span>                }</div>
-<div class="line"><span class="lineno">   82</span>                key = ret.value().first;</div>
-<div class="line"><span class="lineno">   83</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   84</span>                <span class="keyword">auto</span> l = decodeString(src, key);</div>
-<div class="line"><span class="lineno">   85</span>                <span class="keywordflow">if</span> (-1 == l) {</div>
-<div class="line"><span class="lineno">   86</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   87</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   88</span>                    len += l;</div>
-<div class="line"><span class="lineno">   89</span>                }</div>
-<div class="line"><span class="lineno">   90</span>            }</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>            std::string value;</div>
-<div class="line"><span class="lineno">   93</span>            <span class="keyword">auto</span> l = decodeString(src, value);</div>
-<div class="line"><span class="lineno">   94</span>            <span class="keywordflow">if</span> (-1 == l) {</div>
-<div class="line"><span class="lineno">   95</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   96</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   97</span>                len += l;</div>
-<div class="line"><span class="lineno">   98</span>            }</div>
-<div class="line"><span class="lineno">   99</span> </div>
-<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">if</span> (is_store) {</div>
-<div class="line"><span class="lineno">  101</span>                table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a4ec2ed9ad7682b7fb180af23ce4fc4e0">set</a>(key, value);</div>
-<div class="line"><span class="lineno">  102</span>            }</div>
-<div class="line"><span class="lineno">  103</span> </div>
-<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">if</span> (<a class="code hl_define" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c" title="忽略大小写比较">strcasecmp</a>(key.c_str(), <span class="stringliteral">&quot;Cookie&quot;</span>) == 0) {</div>
-<div class="line"><span class="lineno">  105</span>                <span class="keyword">auto</span> cookies = <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_http_util.html#ab98b0f3917837e87d1f9f4d8fbd3ee92">HttpUtil::parseFromCookie</a>(value);</div>
-<div class="line"><span class="lineno">  106</span>                header.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#aa175360bd9ffa572f85b39304028a16b">setCookies</a>(cookies);</div>
-<div class="line"><span class="lineno">  107</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  108</span>                header.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a7db37c82bd6015aa16055b0896842ab6">set</a>(key, value);</div>
-<div class="line"><span class="lineno">  109</span>            }</div>
-<div class="line"><span class="lineno">  110</span>        }</div>
-<div class="line"><span class="lineno">  111</span>    }</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  113</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_http_util_8cpp_source.html#l00367">sese::net::http::HttpUtil::parseFromCookie()</a> , 以及 <a class="el" href="native_2win_2_config_8h_source.html#l00048">strcasecmp</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1http_1_1_http_util.html#ab98b0f3917837e87d1f9f4d8fbd3ee92">sese::net::http::HttpUtil::parseFromCookie()</a> , 以及 <a class="el" href="native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c">strcasecmp</a>.</p>
+
+</div>
+</div>
+<a id="a9138653a43fc83d0d65917826354c349" name="a9138653a43fc83d0d65917826354c349"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9138653a43fc83d0d65917826354c349">&#9670;&#160;</a></span>decodeInteger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HPackUtil::decodeInteger </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t &amp;&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42f44672d43fab3ac549f64c682860ae" name="a42f44672d43fab3ac549f64c682860ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f44672d43fab3ac549f64c682860ae">&#9670;&#160;</a></span>decodeString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HPackUtil::decodeString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#ae1148e75ad8148c291c6efb9df37dd40">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -427,175 +483,250 @@ Public 类型</h2></td></tr>
 <p>第 2 种情况</p>
 <p>此处未对 Cookies 进行压缩</p>
 
-<p class="definition">在文件 <a class="el" href="_h_pack_util_8cpp_source.html">HPackUtil.cpp</a> 第 <a class="el" href="_h_pack_util_8cpp_source.html#l00115">115</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>                                                                                                                      {</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> = 0;</div>
-<div class="line"><span class="lineno">  117</span>    <span class="comment">// 处理索引的 HEADERS</span></div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;item: indexed_header) {</div>
-<div class="line"><span class="lineno">  119</span>        <span class="comment">// 动态表查询</span></div>
-<div class="line"><span class="lineno">  120</span>        {</div>
-<div class="line"><span class="lineno">  121</span>            <span class="keyword">auto</span> iterator_key = table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>();</div>
-<div class="line"><span class="lineno">  122</span>            <span class="keyword">auto</span> iterator_all = table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>();</div>
-<div class="line"><span class="lineno">  123</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> header = table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#aa50708ff4124f32ce8251b4020fc5821">begin</a>(); header != table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>(); ++header) {</div>
-<div class="line"><span class="lineno">  124</span>                <span class="keywordflow">if</span> (header-&gt;first == item.first) {</div>
-<div class="line"><span class="lineno">  125</span>                    iterator_key = header;</div>
-<div class="line"><span class="lineno">  126</span>                    <span class="keywordflow">if</span> (header-&gt;second == item.second) {</div>
-<div class="line"><span class="lineno">  127</span>                        iterator_all = header;</div>
-<div class="line"><span class="lineno">  128</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  129</span>                    }</div>
-<div class="line"><span class="lineno">  130</span>                }</div>
-<div class="line"><span class="lineno">  131</span>            }</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>            <span class="comment">// auto iterator = std::find_if(table.begin(), table.end(), isHitAll);</span></div>
-<div class="line"><span class="lineno">  134</span>            <span class="keywordflow">if</span> (iterator_all != table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>()) {</div>
-<div class="line"><span class="lineno">  136</span>                <span class="keywordtype">size_t</span> index = iterator_all - table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#aa50708ff4124f32ce8251b4020fc5821">begin</a>() + 62;</div>
-<div class="line"><span class="lineno">  137</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase0(dest, index);</div>
-<div class="line"><span class="lineno">  138</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  139</span>            }</div>
-<div class="line"><span class="lineno">  140</span> </div>
-<div class="line"><span class="lineno">  141</span>            <span class="comment">// iterator = std::find_if(table.begin(), table.end(), isHit);</span></div>
-<div class="line"><span class="lineno">  142</span>            <span class="comment">// 存在动态表中</span></div>
-<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">if</span> (iterator_key != table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>()) {</div>
-<div class="line"><span class="lineno">  144</span>                <span class="keywordtype">size_t</span> index = iterator_key - table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#aa50708ff4124f32ce8251b4020fc5821">begin</a>() + 62;</div>
-<div class="line"><span class="lineno">  146</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase1(dest, index);</div>
-<div class="line"><span class="lineno">  147</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, item.second);</div>
-<div class="line"><span class="lineno">  149</span>                table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a4ec2ed9ad7682b7fb180af23ce4fc4e0">set</a>(item.first, item.second);</div>
-<div class="line"><span class="lineno">  150</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  151</span>            }</div>
-<div class="line"><span class="lineno">  152</span>        }</div>
-<div class="line"><span class="lineno">  153</span>        <span class="comment">// 静态表查询</span></div>
-<div class="line"><span class="lineno">  154</span>        {</div>
-<div class="line"><span class="lineno">  155</span>            <span class="keyword">auto</span> iterator_key = <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end();</div>
-<div class="line"><span class="lineno">  156</span>            <span class="keyword">auto</span> iterator_all = <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end();</div>
-<div class="line"><span class="lineno">  157</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> header = <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.begin(); header != <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end(); ++header) {</div>
-<div class="line"><span class="lineno">  158</span>                <span class="keywordflow">if</span> (header-&gt;first == item.first) {</div>
-<div class="line"><span class="lineno">  159</span>                    iterator_key = header;</div>
-<div class="line"><span class="lineno">  160</span>                    <span class="keywordflow">if</span> (header-&gt;second == item.second) {</div>
-<div class="line"><span class="lineno">  161</span>                        iterator_all = header;</div>
-<div class="line"><span class="lineno">  162</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  163</span>                    }</div>
-<div class="line"><span class="lineno">  164</span>                }</div>
-<div class="line"><span class="lineno">  165</span>            }</div>
-<div class="line"><span class="lineno">  166</span> </div>
-<div class="line"><span class="lineno">  167</span>            <span class="comment">// auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHitAll);</span></div>
-<div class="line"><span class="lineno">  168</span>            <span class="keywordflow">if</span> (iterator_all != <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end()) {</div>
-<div class="line"><span class="lineno">  170</span>                <span class="keywordtype">size_t</span> index = iterator_all - <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.begin();</div>
-<div class="line"><span class="lineno">  171</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase0(dest, index);</div>
-<div class="line"><span class="lineno">  172</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  173</span>            }</div>
-<div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>            <span class="comment">// iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);</span></div>
-<div class="line"><span class="lineno">  176</span>            <span class="keywordflow">if</span> (iterator_key != <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end()) {</div>
-<div class="line"><span class="lineno">  177</span>                <span class="keywordtype">size_t</span> index = iterator_key - <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.begin();</div>
-<div class="line"><span class="lineno">  179</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase1(dest, index);</div>
-<div class="line"><span class="lineno">  180</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, item.second);</div>
-<div class="line"><span class="lineno">  182</span>                table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a4ec2ed9ad7682b7fb180af23ce4fc4e0">set</a>(item.first, item.second);</div>
-<div class="line"><span class="lineno">  183</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  184</span>            }</div>
-<div class="line"><span class="lineno">  185</span>        }</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  188</span>        {</div>
-<div class="line"><span class="lineno">  189</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase1(dest, 0);</div>
-<div class="line"><span class="lineno">  190</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, item.first);</div>
-<div class="line"><span class="lineno">  191</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, item.second);</div>
-<div class="line"><span class="lineno">  192</span>            table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#a4ec2ed9ad7682b7fb180af23ce4fc4e0">set</a>(item.first, item.second);</div>
-<div class="line"><span class="lineno">  193</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  194</span>        }</div>
-<div class="line"><span class="lineno">  195</span>    }</div>
-<div class="line"><span class="lineno">  196</span> </div>
-<div class="line"><span class="lineno">  197</span>    <span class="comment">// 处理一次性 HEADERS</span></div>
-<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;item: once_header) {</div>
-<div class="line"><span class="lineno">  199</span>        <span class="comment">// 动态表查询</span></div>
-<div class="line"><span class="lineno">  200</span>        {</div>
-<div class="line"><span class="lineno">  201</span>            <span class="keyword">auto</span> iterator_key = table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>();</div>
-<div class="line"><span class="lineno">  202</span>            <span class="keyword">auto</span> iterator_all = table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>();</div>
-<div class="line"><span class="lineno">  203</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> header = table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#aa50708ff4124f32ce8251b4020fc5821">begin</a>(); header != table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>(); ++header) {</div>
-<div class="line"><span class="lineno">  204</span>                <span class="keywordflow">if</span> (header-&gt;first == item.first) {</div>
-<div class="line"><span class="lineno">  205</span>                    iterator_key = header;</div>
-<div class="line"><span class="lineno">  206</span>                    <span class="keywordflow">if</span> (header-&gt;second == item.second) {</div>
-<div class="line"><span class="lineno">  207</span>                        iterator_all = header;</div>
-<div class="line"><span class="lineno">  208</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  209</span>                    }</div>
-<div class="line"><span class="lineno">  210</span>                }</div>
-<div class="line"><span class="lineno">  211</span>            }</div>
-<div class="line"><span class="lineno">  212</span> </div>
-<div class="line"><span class="lineno">  213</span>            <span class="comment">// auto iterator = std::find_if(table.begin(), table.end(), isHit);</span></div>
-<div class="line"><span class="lineno">  214</span>            <span class="keywordflow">if</span> (iterator_all != table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>()) {</div>
-<div class="line"><span class="lineno">  216</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase0(dest, iterator_all - table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#aa50708ff4124f32ce8251b4020fc5821">begin</a>() + 62);</div>
-<div class="line"><span class="lineno">  217</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  218</span>            }</div>
-<div class="line"><span class="lineno">  219</span> </div>
-<div class="line"><span class="lineno">  220</span>            <span class="keywordflow">if</span> (iterator_key != table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#acd06d130817f8c232df8e93e24074de7">end</a>()) {</div>
-<div class="line"><span class="lineno">  222</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase2(dest, iterator_key - table.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_dynamic_table.html#aa50708ff4124f32ce8251b4020fc5821">begin</a>() + 62);</div>
-<div class="line"><span class="lineno">  223</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, item.second);</div>
-<div class="line"><span class="lineno">  224</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  225</span>            }</div>
-<div class="line"><span class="lineno">  226</span>        }</div>
-<div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span>        <span class="comment">// 静态表查询</span></div>
-<div class="line"><span class="lineno">  229</span>        {</div>
-<div class="line"><span class="lineno">  230</span>            <span class="keyword">auto</span> iterator_key = <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end();</div>
-<div class="line"><span class="lineno">  231</span>            <span class="keyword">auto</span> iterator_all = <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end();</div>
-<div class="line"><span class="lineno">  232</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> header = <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.begin(); header != <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end(); ++header) {</div>
-<div class="line"><span class="lineno">  233</span>                <span class="keywordflow">if</span> (header-&gt;first == item.first) {</div>
-<div class="line"><span class="lineno">  234</span>                    iterator_key = header;</div>
-<div class="line"><span class="lineno">  235</span>                    <span class="keywordflow">if</span> (header-&gt;second == item.second) {</div>
-<div class="line"><span class="lineno">  236</span>                        iterator_all = header;</div>
-<div class="line"><span class="lineno">  237</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  238</span>                    }</div>
-<div class="line"><span class="lineno">  239</span>                }</div>
-<div class="line"><span class="lineno">  240</span>            }</div>
-<div class="line"><span class="lineno">  241</span> </div>
-<div class="line"><span class="lineno">  242</span>            <span class="comment">// auto iterator = std::find_if(predefined_headers.begin(), predefined_headers.end(), isHit);</span></div>
-<div class="line"><span class="lineno">  243</span>            <span class="keywordflow">if</span> (iterator_all != <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end()) {</div>
-<div class="line"><span class="lineno">  245</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase0(dest, iterator_all - <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.begin());</div>
-<div class="line"><span class="lineno">  246</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  247</span>            }</div>
-<div class="line"><span class="lineno">  248</span>            <span class="keywordflow">if</span> (iterator_key != <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.end()) {</div>
-<div class="line"><span class="lineno">  250</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase2(dest, iterator_key - <a class="code hl_variable" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">PREDEFINED_HEADERS</a>.begin());</div>
-<div class="line"><span class="lineno">  251</span>                <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, item.second);</div>
-<div class="line"><span class="lineno">  252</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  253</span>            }</div>
-<div class="line"><span class="lineno">  254</span>        }</div>
-<div class="line"><span class="lineno">  255</span> </div>
-<div class="line"><span class="lineno">  256</span>        <span class="comment">// 无任何索引数据</span></div>
-<div class="line"><span class="lineno">  257</span>        {</div>
-<div class="line"><span class="lineno">  258</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase3(dest, 0);</div>
-<div class="line"><span class="lineno">  259</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, item.first);</div>
-<div class="line"><span class="lineno">  260</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, item.second);</div>
-<div class="line"><span class="lineno">  261</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  262</span>        }</div>
-<div class="line"><span class="lineno">  263</span>    }</div>
-<div class="line"><span class="lineno">  264</span> </div>
-<div class="line"><span class="lineno">  266</span>    <span class="keyword">auto</span> once_cookies = once_header.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a72bcf08f22a546bae75d7a582e9d83fc">getCookies</a>();</div>
-<div class="line"><span class="lineno">  267</span>    <span class="keyword">auto</span> indexed_cookies = indexed_header.<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a72bcf08f22a546bae75d7a582e9d83fc">getCookies</a>();</div>
-<div class="line"><span class="lineno">  268</span>    <span class="keywordflow">if</span> (once_cookies) {</div>
-<div class="line"><span class="lineno">  269</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cookie: *once_cookies) {</div>
-<div class="line"><span class="lineno">  270</span>            <span class="keyword">auto</span> str = buildCookieString(cookie.second);</div>
-<div class="line"><span class="lineno">  271</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase2(dest, 0);</div>
-<div class="line"><span class="lineno">  272</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, <span class="stringliteral">&quot;Set-Cookie&quot;</span>);</div>
-<div class="line"><span class="lineno">  273</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, str);</div>
-<div class="line"><span class="lineno">  274</span>        }</div>
-<div class="line"><span class="lineno">  275</span>    }</div>
-<div class="line"><span class="lineno">  276</span>    <span class="keywordflow">if</span> (indexed_cookies) {</div>
-<div class="line"><span class="lineno">  277</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cookie: *indexed_cookies) {</div>
-<div class="line"><span class="lineno">  278</span>            <span class="keyword">auto</span> str = buildCookieString(cookie.second);</div>
-<div class="line"><span class="lineno">  279</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeIndexCase2(dest, 0);</div>
-<div class="line"><span class="lineno">  280</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, <span class="stringliteral">&quot;Set-Cookie&quot;</span>);</div>
-<div class="line"><span class="lineno">  281</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += encodeString(dest, str);</div>
-<div class="line"><span class="lineno">  282</span>        }</div>
-<div class="line"><span class="lineno">  283</span>    }</div>
-<div class="line"><span class="lineno">  284</span> </div>
-<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>;</div>
-<div class="line"><span class="lineno">  286</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_h_p_a_c_k_8h_source.html#l00021">sese::net::http::PREDEFINED_HEADERS</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">sese::net::http::PREDEFINED_HEADERS</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<a id="a9eec6c216dc5bcaa23ad057507075a8f" name="a9eec6c216dc5bcaa23ad057507075a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eec6c216dc5bcaa23ad057507075a8f">&#9670;&#160;</a></span>encodeIndexCase0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t HPackUtil::encodeIndexCase0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<a id="a85db0f683a0b148cfa45ba5cf4c8c659" name="a85db0f683a0b148cfa45ba5cf4c8c659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85db0f683a0b148cfa45ba5cf4c8c659">&#9670;&#160;</a></span>encodeIndexCase1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t HPackUtil::encodeIndexCase1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<a id="a08030d0b5d7b49606780979ce59d80c2" name="a08030d0b5d7b49606780979ce59d80c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08030d0b5d7b49606780979ce59d80c2">&#9670;&#160;</a></span>encodeIndexCase2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t HPackUtil::encodeIndexCase2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<a id="ab86c89506c433430ba3cc6cfaa6d1e51" name="ab86c89506c433430ba3cc6cfaa6d1e51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab86c89506c433430ba3cc6cfaa6d1e51">&#9670;&#160;</a></span>encodeIndexCase3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t HPackUtil::encodeIndexCase3 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<a id="af47118bf81bfd307c614a19cd924a69a" name="af47118bf81bfd307c614a19cd924a69a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af47118bf81bfd307c614a19cd924a69a">&#9670;&#160;</a></span>encodeString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t HPackUtil::encodeString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1http_1_1_h_pack_util.html#add2a79eadc72a4a87dac7a6502040501">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>需要 Huffman 压缩</p>
+<p>不需要 Huffman 压缩</p>
+
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ab664faeaf4e254ba194e645671fb292f" name="ab664faeaf4e254ba194e645671fb292f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab664faeaf4e254ba194e645671fb292f">&#9670;&#160;</a></span>decoder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a9e08e353faf1a6c281acffee20472190">HuffmanDecoder</a> HPackUtil::decoder {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87c844834b5d3070e9c82f7399c2481f" name="a87c844834b5d3070e9c82f7399c2481f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87c844834b5d3070e9c82f7399c2481f">&#9670;&#160;</a></span>encoder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a8541a42c533f0b8f1119d560a17b3d63">HuffmanEncoder</a> HPackUtil::encoder {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/net/http/<a class="el" href="_h_pack_util_8h_source.html">HPackUtil.h</a></li>
-<li>sese/net/http/<a class="el" href="_h_pack_util_8cpp_source.html">HPackUtil.cpp</a></li>
+<li>sese/net/http/<a class="el" href="_h_pack_util_8cpp.html">HPackUtil.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_version.html',''); initR
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_version-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::Version类 参考</div></div>
 </div><!--header-->
@@ -179,11 +181,20 @@ Public 成员函数</h2></td></tr>
 静态 Public 成员函数</h2></td></tr>
 <tr class="memitem:ae43863048af326222ad111dbfe4b93ec" id="r_ae43863048af326222ad111dbfe4b93ec"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="classsese_1_1_version.html">Version</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_version.html#ae43863048af326222ad111dbfe4b93ec">parse</a> (const std::string &amp;version)</td></tr>
 <tr class="separator:ae43863048af326222ad111dbfe4b93ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a9d4db95b5411b295aed9cc93fef5f81c" id="r_a9d4db95b5411b295aed9cc93fef5f81c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a></td></tr>
+<tr class="separator:a9d4db95b5411b295aed9cc93fef5f81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaf7a70efcd12e94532c9ca8bf3c40e5" id="r_abaf7a70efcd12e94532c9ca8bf3c40e5"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a></td></tr>
+<tr class="separator:abaf7a70efcd12e94532c9ca8bf3c40e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f1d347a71be56318b10b429dbb8aac3" id="r_a3f1d347a71be56318b10b429dbb8aac3"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a></td></tr>
+<tr class="separator:a3f1d347a71be56318b10b429dbb8aac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a975a5f962ce7d8d522bfeb3229fb6db1" id="r_a975a5f962ce7d8d522bfeb3229fb6db1"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a></td></tr>
+<tr class="separator:a975a5f962ce7d8d522bfeb3229fb6db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>版本类 </p>
-
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00015">15</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a3b5af3925921dbb756450f689efd92c2" name="a3b5af3925921dbb756450f689efd92c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b5af3925921dbb756450f689efd92c2">&#9670;&#160;</a></span>Version()</h2>
@@ -223,9 +234,6 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00008">8</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    8</span>: major_(major), minor_(minor), patch_(patch), revision_(revision) {}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -252,9 +260,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00024">24</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>{ <span class="keywordflow">return</span> major_; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>.</p>
+
 </div>
 </div>
 <a id="a5df675bedbc17d7d2f4306a2c615f1e1" name="a5df675bedbc17d7d2f4306a2c615f1e1"></a>
@@ -280,9 +287,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00026">26</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   26</span>{ <span class="keywordflow">return</span> minor_; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>.</p>
+
 </div>
 </div>
 <a id="a6fca32d84169f9033a5f25242029d2d7" name="a6fca32d84169f9033a5f25242029d2d7"></a>
@@ -308,9 +314,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{ <span class="keywordflow">return</span> patch_; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a>.</p>
+
 </div>
 </div>
 <a id="a9ab8f356ecc48c2e1abbedd330e1995d" name="a9ab8f356ecc48c2e1abbedd330e1995d"></a>
@@ -336,9 +341,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00030">30</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{ <span class="keywordflow">return</span> revision_; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
 </div>
 </div>
 <a id="a198b734120aba5aef0afcb6725e49d6e" name="a198b734120aba5aef0afcb6725e49d6e"></a>
@@ -357,11 +361,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00104">104</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>                                                       {</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">return</span> major_ != other.major_ || minor_ != other.minor_ || patch_ != other.patch_ || revision_ != other.revision_;</div>
-<div class="line"><span class="lineno">  106</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>, <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>, <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a> , 以及 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
 </div>
 </div>
 <a id="ad1850dfe4da9d84030b5a8aa4ce61c4b" name="ad1850dfe4da9d84030b5a8aa4ce61c4b"></a>
@@ -380,11 +381,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00108">108</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  108</span>                                                      {</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">return</span> major_ &lt; other.major_ || minor_ &lt; other.minor_ || patch_ &lt; other.patch_ || revision_ &lt; other.revision_;</div>
-<div class="line"><span class="lineno">  110</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>, <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>, <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a> , 以及 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
 </div>
 </div>
 <a id="a258c58cd081eff4f2c98d59f370049c3" name="a258c58cd081eff4f2c98d59f370049c3"></a>
@@ -403,11 +401,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00116">116</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  116</span>                                                       {</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> major_ &lt;= other.major_ &amp;&amp; minor_ &lt;= other.minor_ &amp;&amp; patch_ &lt;= other.patch_ &amp;&amp; revision_ &lt;= other.revision_;</div>
-<div class="line"><span class="lineno">  118</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>, <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>, <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a> , 以及 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
 </div>
 </div>
 <a id="a63c25cead3e9426997ad1474f03ca714" name="a63c25cead3e9426997ad1474f03ca714"></a>
@@ -426,11 +421,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00100">100</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>                                                       {</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">return</span> major_ == other.major_ &amp;&amp; minor_ == other.minor_ &amp;&amp; patch_ == other.patch_ &amp;&amp; revision_ == other.revision_;</div>
-<div class="line"><span class="lineno">  102</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>, <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>, <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a> , 以及 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
 </div>
 </div>
 <a id="a3806036b5f91e6d2caf3c8305688da8c" name="a3806036b5f91e6d2caf3c8305688da8c"></a>
@@ -449,11 +441,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00112">112</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  112</span>                                                      {</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">return</span> major_ &gt; other.major_ || minor_ &gt; other.minor_ || patch_ &gt; other.patch_ || revision_ &gt; other.revision_;</div>
-<div class="line"><span class="lineno">  114</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>, <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>, <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a> , 以及 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
 </div>
 </div>
 <a id="aa611cc0638e5eda040a09f08bd1fa4f9" name="aa611cc0638e5eda040a09f08bd1fa4f9"></a>
@@ -472,11 +461,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00120">120</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                       {</div>
-<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">return</span> major_ &gt;= other.major_ &amp;&amp; minor_ &gt;= other.minor_ &amp;&amp; patch_ &gt;= other.patch_ &amp;&amp; revision_ &gt;= other.revision_;</div>
-<div class="line"><span class="lineno">  122</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>, <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>, <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a> , 以及 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
 </div>
 </div>
 <a id="ae43863048af326222ad111dbfe4b93ec" name="ae43863048af326222ad111dbfe4b93ec"></a>
@@ -503,43 +489,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                            {</div>
-<div class="line"><span class="lineno">   11</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *start_ptr = version.c_str();</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keyword">auto</span> end_ptr = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(start_ptr);</div>
-<div class="line"><span class="lineno">   13</span> </div>
-<div class="line"><span class="lineno">   14</span>    <span class="keyword">const</span> <span class="keyword">auto</span> MAJOR = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(std::strtoul(start_ptr, &amp;end_ptr, 10));</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">if</span> (*end_ptr == 0) {</div>
-<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classsese_1_1_version.html" title="版本类">Version</a>(MAJOR, 0, 0, 0);</div>
-<div class="line"><span class="lineno">   17</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*end_ptr != <span class="charliteral">&#39;.&#39;</span>) {</div>
-<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">   19</span>    }</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>    start_ptr = end_ptr + 1;</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keyword">const</span> <span class="keyword">auto</span> MINOR = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(std::strtoul(start_ptr, &amp;end_ptr, 10));</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">if</span> (*end_ptr == 0) {</div>
-<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classsese_1_1_version.html" title="版本类">Version</a>(MAJOR, MINOR, 0, 0);</div>
-<div class="line"><span class="lineno">   25</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*end_ptr != <span class="charliteral">&#39;.&#39;</span>) {</div>
-<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>    start_ptr = end_ptr + 1;</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keyword">const</span> <span class="keyword">auto</span> PATCH = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(std::strtoul(start_ptr, &amp;end_ptr, 10));</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (*end_ptr == 0) {</div>
-<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classsese_1_1_version.html" title="版本类">Version</a>(MAJOR, MINOR, PATCH, 0);</div>
-<div class="line"><span class="lineno">   33</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*end_ptr != <span class="charliteral">&#39;.&#39;</span>) {</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>    start_ptr = end_ptr + 1;</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keyword">const</span> <span class="keyword">auto</span> REVISION = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(std::strtoul(start_ptr, &amp;end_ptr, 10));</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (*end_ptr == 0) {</div>
-<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classsese_1_1_version.html" title="版本类">Version</a>(MAJOR, MINOR, PATCH, REVISION);</div>
-<div class="line"><span class="lineno">   41</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><span class="lineno">   43</span>    }</div>
-<div class="line"><span class="lineno">   44</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a98cd07ae567a976e9a9cdaefad0af7bc" name="a98cd07ae567a976e9a9cdaefad0af7bc"></a>
@@ -566,9 +515,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00025">25</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>{ Version::major_ = major; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>.</p>
+
 </div>
 </div>
 <a id="a67b8aadfc2ef0d737173423e67886657" name="a67b8aadfc2ef0d737173423e67886657"></a>
@@ -595,9 +543,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>{ Version::minor_ = minor; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>.</p>
+
 </div>
 </div>
 <a id="af4961136c3a74485a8b62a72b1da6b1a" name="af4961136c3a74485a8b62a72b1da6b1a"></a>
@@ -624,9 +571,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00029">29</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{ Version::patch_ = patch; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a>.</p>
+
 </div>
 </div>
 <a id="a4597d90775de7cd96894ef0839fa88dd" name="a4597d90775de7cd96894ef0839fa88dd"></a>
@@ -653,9 +599,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_version_8h_source.html">Version.h</a> 第 <a class="el" href="_version_8h_source.html#l00031">31</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{ Version::revision_ = revision; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
 </div>
 </div>
 <a id="a02281335899be50b76bc5536ba48cd16" name="a02281335899be50b76bc5536ba48cd16"></a>
@@ -674,55 +619,7 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>获取简短的版本号字符串，只包含非零部分，例如 "0.2.3"、"1.2" </p><dl class="section return"><dt>返回</dt><dd>简短的版本号字符串 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00051">51</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                       {</div>
-<div class="line"><span class="lineno">   52</span>    std::vector&lt;uint16_t&gt; vector;</div>
-<div class="line"><span class="lineno">   53</span>    vector.reserve(4);</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (revision_) {</div>
-<div class="line"><span class="lineno">   57</span>        vector.emplace_back(revision_);</div>
-<div class="line"><span class="lineno">   58</span>        <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>++;</div>
-<div class="line"><span class="lineno">   59</span>    }</div>
-<div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">if</span> (!patch_ &amp;&amp; !<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>) {</div>
-<div class="line"><span class="lineno">   62</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   63</span>        vector.emplace_back(patch_);</div>
-<div class="line"><span class="lineno">   64</span>        <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>++;</div>
-<div class="line"><span class="lineno">   65</span>    }</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span> (!minor_ &amp;&amp; !<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>) {</div>
-<div class="line"><span class="lineno">   68</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   69</span>        vector.emplace_back(minor_);</div>
-<div class="line"><span class="lineno">   70</span>        <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>++;</div>
-<div class="line"><span class="lineno">   71</span>    }</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">if</span> (!major_ &amp;&amp; !<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>) {</div>
-<div class="line"><span class="lineno">   74</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   75</span>        vector.emplace_back(major_);</div>
-<div class="line"><span class="lineno">   76</span>        <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>++;</div>
-<div class="line"><span class="lineno">   77</span>    }</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 0) {</div>
-<div class="line"><span class="lineno">   80</span>        vector.emplace_back(0);</div>
-<div class="line"><span class="lineno">   81</span>        <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> += 1;</div>
-<div class="line"><span class="lineno">   82</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   83</span>        std::reverse(vector.begin(), vector.end());</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>    <span class="comment">// vector to versioning string</span></div>
-<div class="line"><span class="lineno">   87</span>    std::string version;</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>; i++) {</div>
-<div class="line"><span class="lineno">   89</span>        version += std::to_string(vector[i]);</div>
-<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">if</span> (i != <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> - 1) {</div>
-<div class="line"><span class="lineno">   91</span>            version += <span class="stringliteral">&quot;.&quot;</span>;</div>
-<div class="line"><span class="lineno">   92</span>        }</div>
-<div class="line"><span class="lineno">   93</span>    }</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> version;</div>
-<div class="line"><span class="lineno">   96</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>, <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>, <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>, <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a> , 以及 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
 
 </div>
 </div>
@@ -742,16 +639,110 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>获取完整的版本号字符串 </p><dl class="section return"><dt>返回</dt><dd>完整的版本号字符串 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_version_8cpp_source.html">Version.cpp</a> 第 <a class="el" href="_version_8cpp_source.html#l00046">46</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                  {</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">return</span> std::to_string(major_) + <span class="stringliteral">&quot;.&quot;</span> + std::to_string(minor_) + <span class="stringliteral">&quot;.&quot;</span> + std::to_string(patch_) + <span class="stringliteral">&quot;.&quot;</span> + std::to_string(revision_);</div>
-<div class="line"><span class="lineno">   48</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a>, <a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a>, <a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a> , 以及 <a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a9d4db95b5411b295aed9cc93fef5f81c" name="a9d4db95b5411b295aed9cc93fef5f81c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d4db95b5411b295aed9cc93fef5f81c">&#9670;&#160;</a></span>major_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t sese::Version::major_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_version.html#a25cc0c86f76eb121aa56fdb43a557663">getMajor()</a>, <a class="el" href="classsese_1_1_version.html#a198b734120aba5aef0afcb6725e49d6e">operator!=()</a>, <a class="el" href="classsese_1_1_version.html#ad1850dfe4da9d84030b5a8aa4ce61c4b">operator&lt;()</a>, <a class="el" href="classsese_1_1_version.html#a258c58cd081eff4f2c98d59f370049c3">operator&lt;=()</a>, <a class="el" href="classsese_1_1_version.html#a63c25cead3e9426997ad1474f03ca714">operator==()</a>, <a class="el" href="classsese_1_1_version.html#a3806036b5f91e6d2caf3c8305688da8c">operator&gt;()</a>, <a class="el" href="classsese_1_1_version.html#aa611cc0638e5eda040a09f08bd1fa4f9">operator&gt;=()</a>, <a class="el" href="classsese_1_1_version.html#a98cd07ae567a976e9a9cdaefad0af7bc">setMajor()</a>, <a class="el" href="classsese_1_1_version.html#a02281335899be50b76bc5536ba48cd16">toShortString()</a> , 以及 <a class="el" href="classsese_1_1_version.html#ac90b3ac66d4b768a11883711878b1b43">toString()</a>.</p>
+
+</div>
+</div>
+<a id="abaf7a70efcd12e94532c9ca8bf3c40e5" name="abaf7a70efcd12e94532c9ca8bf3c40e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaf7a70efcd12e94532c9ca8bf3c40e5">&#9670;&#160;</a></span>minor_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t sese::Version::minor_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_version.html#a5df675bedbc17d7d2f4306a2c615f1e1">getMinor()</a>, <a class="el" href="classsese_1_1_version.html#a198b734120aba5aef0afcb6725e49d6e">operator!=()</a>, <a class="el" href="classsese_1_1_version.html#ad1850dfe4da9d84030b5a8aa4ce61c4b">operator&lt;()</a>, <a class="el" href="classsese_1_1_version.html#a258c58cd081eff4f2c98d59f370049c3">operator&lt;=()</a>, <a class="el" href="classsese_1_1_version.html#a63c25cead3e9426997ad1474f03ca714">operator==()</a>, <a class="el" href="classsese_1_1_version.html#a3806036b5f91e6d2caf3c8305688da8c">operator&gt;()</a>, <a class="el" href="classsese_1_1_version.html#aa611cc0638e5eda040a09f08bd1fa4f9">operator&gt;=()</a>, <a class="el" href="classsese_1_1_version.html#a67b8aadfc2ef0d737173423e67886657">setMinor()</a>, <a class="el" href="classsese_1_1_version.html#a02281335899be50b76bc5536ba48cd16">toShortString()</a> , 以及 <a class="el" href="classsese_1_1_version.html#ac90b3ac66d4b768a11883711878b1b43">toString()</a>.</p>
+
+</div>
+</div>
+<a id="a3f1d347a71be56318b10b429dbb8aac3" name="a3f1d347a71be56318b10b429dbb8aac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f1d347a71be56318b10b429dbb8aac3">&#9670;&#160;</a></span>patch_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t sese::Version::patch_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_version.html#a6fca32d84169f9033a5f25242029d2d7">getPatch()</a>, <a class="el" href="classsese_1_1_version.html#a198b734120aba5aef0afcb6725e49d6e">operator!=()</a>, <a class="el" href="classsese_1_1_version.html#ad1850dfe4da9d84030b5a8aa4ce61c4b">operator&lt;()</a>, <a class="el" href="classsese_1_1_version.html#a258c58cd081eff4f2c98d59f370049c3">operator&lt;=()</a>, <a class="el" href="classsese_1_1_version.html#a63c25cead3e9426997ad1474f03ca714">operator==()</a>, <a class="el" href="classsese_1_1_version.html#a3806036b5f91e6d2caf3c8305688da8c">operator&gt;()</a>, <a class="el" href="classsese_1_1_version.html#aa611cc0638e5eda040a09f08bd1fa4f9">operator&gt;=()</a>, <a class="el" href="classsese_1_1_version.html#af4961136c3a74485a8b62a72b1da6b1a">setPatch()</a>, <a class="el" href="classsese_1_1_version.html#a02281335899be50b76bc5536ba48cd16">toShortString()</a> , 以及 <a class="el" href="classsese_1_1_version.html#ac90b3ac66d4b768a11883711878b1b43">toString()</a>.</p>
+
+</div>
+</div>
+<a id="a975a5f962ce7d8d522bfeb3229fb6db1" name="a975a5f962ce7d8d522bfeb3229fb6db1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a975a5f962ce7d8d522bfeb3229fb6db1">&#9670;&#160;</a></span>revision_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t sese::Version::revision_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_version.html#a9ab8f356ecc48c2e1abbedd330e1995d">getRevision()</a>, <a class="el" href="classsese_1_1_version.html#a198b734120aba5aef0afcb6725e49d6e">operator!=()</a>, <a class="el" href="classsese_1_1_version.html#ad1850dfe4da9d84030b5a8aa4ce61c4b">operator&lt;()</a>, <a class="el" href="classsese_1_1_version.html#a258c58cd081eff4f2c98d59f370049c3">operator&lt;=()</a>, <a class="el" href="classsese_1_1_version.html#a63c25cead3e9426997ad1474f03ca714">operator==()</a>, <a class="el" href="classsese_1_1_version.html#a3806036b5f91e6d2caf3c8305688da8c">operator&gt;()</a>, <a class="el" href="classsese_1_1_version.html#aa611cc0638e5eda040a09f08bd1fa4f9">operator&gt;=()</a>, <a class="el" href="classsese_1_1_version.html#a4597d90775de7cd96894ef0839fa88dd">setRevision()</a>, <a class="el" href="classsese_1_1_version.html#a02281335899be50b76bc5536ba48cd16">toShortString()</a> , 以及 <a class="el" href="classsese_1_1_version.html#ac90b3ac66d4b768a11883711878b1b43">toString()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/util/<a class="el" href="_version_8h_source.html">Version.h</a></li>
-<li>sese/util/<a class="el" href="_version_8cpp_source.html">Version.cpp</a></li>
+<li>sese/util/<a class="el" href="_version_8cpp.html">Version.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

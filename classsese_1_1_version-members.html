@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -135,6 +136,8 @@ $(document).ready(function(){initNavTree('classsese_1_1_version.html',''); initR
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_version.html#a5df675bedbc17d7d2f4306a2c615f1e1">getMinor</a>() const</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_version.html#a6fca32d84169f9033a5f25242029d2d7">getPatch</a>() const</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_version.html#a9ab8f356ecc48c2e1abbedd330e1995d">getRevision</a>() const</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c">major_</a></td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5">minor_</a></td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_version.html#a198b734120aba5aef0afcb6725e49d6e">operator!=</a>(const Version &amp;other) const</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_version.html#ad1850dfe4da9d84030b5a8aa4ce61c4b">operator&lt;</a>(const Version &amp;other) const</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_version.html#a258c58cd081eff4f2c98d59f370049c3">operator&lt;=</a>(const Version &amp;other) const</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"></td></tr>
@@ -142,6 +145,8 @@ $(document).ready(function(){initNavTree('classsese_1_1_version.html',''); initR
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_version.html#a3806036b5f91e6d2caf3c8305688da8c">operator&gt;</a>(const Version &amp;other) const</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_version.html#aa611cc0638e5eda040a09f08bd1fa4f9">operator&gt;=</a>(const Version &amp;other) const</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_version.html#ae43863048af326222ad111dbfe4b93ec">parse</a>(const std::string &amp;version)</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3">patch_</a></td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1">revision_</a></td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_version.html#a98cd07ae567a976e9a9cdaefad0af7bc">setMajor</a>(uint16_t major)</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_version.html#a67b8aadfc2ef0d737173423e67886657">setMinor</a>(uint16_t minor)</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_version.html#af4961136c3a74485a8b62a72b1da6b1a">setPatch</a>(uint16_t patch)</td><td class="entry"><a class="el" href="classsese_1_1_version.html">sese::Version</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>

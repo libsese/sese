@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -136,9 +137,7 @@ $(document).ready(function(){initNavTree('_json_util_8cpp.html',''); initResizab
 <code>#include &quot;<a class="el" href="_buffered_input_stream_8h_source.html">sese/io/BufferedInputStream.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="_string_builder_8h_source.html">sese/text/StringBuilder.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="util_2_util_8h_source.html">sese/util/Util.h</a>&gt;</code><br />
-</div>
-<p><a href="_json_util_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
 <tr class="memitem:af5377339bff575301da756d2f685a510" id="r_af5377339bff575301da756d2f685a510"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_json_util_8cpp.html#af5377339bff575301da756d2f685a510">CheckRangeBetween</a>(x,  min,  max)&#160;&#160;&#160;(((x) - (min)) | ((max) - (x)) &gt;= 0)</td></tr>
@@ -216,16 +215,7 @@ $(document).ready(function(){initNavTree('_json_util_8cpp.html',''); initResizab
 </dl>
 <dl class="section return"><dt>返回</dt><dd>结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_json_util_8cpp_source.html">JsonUtil.cpp</a> 第 <a class="el" href="_json_util_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                       {</div>
-<div class="line"><span class="lineno">   11</span>    <span class="keywordflow">if</span> (str[0] == <span class="charliteral">&#39;}&#39;</span> || str[0] == <span class="charliteral">&#39;]&#39;</span> || str[0] == <span class="charliteral">&#39;:&#39;</span> || str[0] == <span class="charliteral">&#39;,&#39;</span>) {</div>
-<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   13</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   15</span>    }</div>
-<div class="line"><span class="lineno">   16</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_json_util_8cpp_source.html#l00048">sese::json::JsonUtil::tokenizer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1json_1_1_json_util.html#a4a65aef3297a194eb018dcbf9b3a95d8">sese::json::JsonUtil::createArray()</a>, <a class="el" href="classsese_1_1json_1_1_json_util.html#af7c67ac812525342092c53efa35c9a75">sese::json::JsonUtil::createObject()</a> , 以及 <a class="el" href="classsese_1_1json_1_1_json_util.html#ac1aa1afe6f5d57fc1fe0d05be67ee350">sese::json::JsonUtil::tokenizer()</a>.</p>
 
 </div>
 </div>

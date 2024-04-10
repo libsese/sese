@@ -8,5 +8,6 @@ var classsese_1_1security_1_1_s_s_l_context =
     [ "getContext", "classsese_1_1security_1_1_s_s_l_context.html#abd649a75c193adf97ff1ff9596a1a9bc", null ],
     [ "importCertFile", "classsese_1_1security_1_1_s_s_l_context.html#acc25ff5fde416f95b93ce58bc134126c", null ],
     [ "importPrivateKeyFile", "classsese_1_1security_1_1_s_s_l_context.html#aa14ef51827206585088235025cf6dc5c", null ],
-    [ "newSocketPtr", "classsese_1_1security_1_1_s_s_l_context.html#a68d874b7ad16b4b4444e7007671228bd", null ]
+    [ "newSocketPtr", "classsese_1_1security_1_1_s_s_l_context.html#a68d874b7ad16b4b4444e7007671228bd", null ],
+    [ "context", "classsese_1_1security_1_1_s_s_l_context.html#a87d485b2e000ec44dffe7c33874c899f", null ]
 ];

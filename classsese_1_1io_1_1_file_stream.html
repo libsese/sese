@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,8 @@ $(document).ready(function(){initNavTree('classsese_1_1io_1_1_file_stream.html',
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1io_1_1_file_stream-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::io::FileStream类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -210,11 +213,19 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a0f0b3b41e51beff78b4327d6a709b9d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab75e9aa9e8229c6404df0883def62850" id="r_ab75e9aa9e8229c6404df0883def62850"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">FileStream::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_file_stream.html#ab75e9aa9e8229c6404df0883def62850">createWithPath</a> (const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;path, const char *mode) noexcept</td></tr>
 <tr class="separator:ab75e9aa9e8229c6404df0883def62850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a8adbdc1ff0d8bcb56c7d5546d311e66d" id="r_a8adbdc1ff0d8bcb56c7d5546d311e66d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_file_stream.html#a8adbdc1ff0d8bcb56c7d5546d311e66d">FileStream</a> () noexcept=default</td></tr>
+<tr class="separator:a8adbdc1ff0d8bcb56c7d5546d311e66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a00306b7f5a507f1e9aeb227d57a0b06c" id="r_a00306b7f5a507f1e9aeb227d57a0b06c"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a> = nullptr</td></tr>
+<tr class="separator:a00306b7f5a507f1e9aeb227d57a0b06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>文件流类 </p>
-
-<p class="definition">在文件 <a class="el" href="_file_stream_8h_source.html">FileStream.h</a> 第 <a class="el" href="_file_stream_8h_source.html#l00041">41</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a78c73bd6730635ffb7a638477c3ba26e" name="a78c73bd6730635ffb7a638477c3ba26e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78c73bd6730635ffb7a638477c3ba26e">&#9670;&#160;</a></span>Ptr</h2>
@@ -227,8 +238,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_file_stream_8h_source.html">FileStream.h</a> 第 <a class="el" href="_file_stream_8h_source.html#l00043">43</a> 行定义.</p>
 
 </div>
 </div>
@@ -252,6 +261,31 @@ Public 成员函数</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8adbdc1ff0d8bcb56c7d5546d311e66d" name="a8adbdc1ff0d8bcb56c7d5546d311e66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8adbdc1ff0d8bcb56c7d5546d311e66d">&#9670;&#160;</a></span>FileStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::io::FileStream::FileStream </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -284,12 +318,8 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_closeable.html#afe62a6eb76d583596866c8403a96deac">sese::io::Closeable</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00036">36</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>                       {</div>
-<div class="line"><span class="lineno">   37</span>    ::fclose(file);</div>
-<div class="line"><span class="lineno">   38</span>    file = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
+
 </div>
 </div>
 <a id="a0f0b3b41e51beff78b4327d6a709b9d0" name="a0f0b3b41e51beff78b4327d6a709b9d0"></a>
@@ -340,31 +370,9 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00053">53</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>                                                                                      {</div>
-<div class="line"><span class="lineno">   54</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><span class="lineno">   55</span>    FILE *file = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (fopen_s(&amp;file, file_path.c_str(), mode) != 0) {</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   58</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   59</span>        <span class="keyword">auto</span> stream = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">FileStream</a>;</div>
-<div class="line"><span class="lineno">   60</span>        stream-&gt;file = file;</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> std::shared_ptr&lt;FileStream&gt;(stream);</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="line"><span class="lineno">   63</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">   64</span>    FILE *file = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   65</span>    file = fopen(file_path.c_str(), mode);</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (file) {</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keyword">auto</span> stream = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">FileStream</a>();</div>
-<div class="line"><span class="lineno">   68</span>        stream-&gt;file = file;</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span> std::shared_ptr&lt;FileStream&gt;(stream);</div>
-<div class="line"><span class="lineno">   70</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   72</span>    }</div>
-<div class="line"><span class="lineno">   73</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   74</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00207">sese::archive::ArchiveWriter::addDirectory()</a>, <a class="el" href="_archive_writer_8cpp_source.html#l00177">sese::archive::ArchiveWriter::addFile()</a>, <a class="el" href="_block_appender_8cpp_source.html#l00015">sese::record::BlockAppender::BlockAppender()</a>, <a class="el" href="_text_reader_8cpp_source.html#l00009">sese::text::TextReader::create()</a>, <a class="el" href="unix_2config_2_uni_reader_8cpp_source.html#l00018">sese::UniReader::create()</a>, <a class="el" href="_file_stream_8cpp_source.html#l00076">createWithPath()</a> , 以及 <a class="el" href="_block_appender_8cpp_source.html#l00031">sese::record::BlockAppender::dump()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a2544625cbe63e6aca28326048d6a2154">sese::archive::ArchiveWriter::addDirectory()</a>, <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a77b70e9f7ce2ab7a281ff39ad998efde">sese::archive::ArchiveWriter::addFile()</a>, <a class="el" href="classsese_1_1record_1_1_block_appender.html#a9c4650b07a1df95b556be74b061c1f6d">sese::record::BlockAppender::BlockAppender()</a>, <a class="el" href="classsese_1_1text_1_1_text_reader.html#a243ddb4a8f13dd5f278b71df43bd892f">sese::text::TextReader::create()</a>, <a class="el" href="classsese_1_1_uni_reader.html#aeb8b5e2a8d416fc5f0c9afa994620a59">sese::UniReader::create()</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#ab75e9aa9e8229c6404df0883def62850">createWithPath()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_block_appender.html#ae6b5d3e34cfcd88101c0bcb27b61fcc0">sese::record::BlockAppender::dump()</a>.</p>
 
 </div>
 </div>
@@ -415,12 +423,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00076">76</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                                                          {</div>
-<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">FileStream::create</a>(path.getNativePath(), mode);</div>
-<div class="line"><span class="lineno">   78</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_file_stream_8cpp_source.html#l00053">create()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">create()</a>.</p>
 
 </div>
 </div>
@@ -439,11 +442,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00049">49</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                          {</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> fflush(file);</div>
-<div class="line"><span class="lineno">   51</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
+
 </div>
 </div>
 <a id="aaec4306ec863594c74041e36cd62ceee" name="aaec4306ec863594c74041e36cd62ceee"></a>
@@ -461,11 +461,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00092">92</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>                                {</div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> fileno(file);</div>
-<div class="line"><span class="lineno">   94</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
+
 </div>
 </div>
 <a id="adb14aab8b9a8d8f171c3c83cdfef3948" name="adb14aab8b9a8d8f171c3c83cdfef3948"></a>
@@ -483,11 +480,8 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00041">41</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>                            {</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">return</span> ftell(file);</div>
-<div class="line"><span class="lineno">   43</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
+
 </div>
 </div>
 <a id="a27a05640779675dde405424b39c1bca3" name="a27a05640779675dde405424b39c1bca3"></a>
@@ -534,14 +528,7 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#a628ee255e598043189b2ac0e4e319193">sese::io::PeekableStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00080">80</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                    {</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keyword">auto</span> len = this-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a697d1769ba0c6f93a03382bf99113b76">read</a>(buffer, length);</div>
-<div class="line"><span class="lineno">   82</span>    this-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a7a3f32ad7dc940cef877fbae7d40409f">setSeek</a>(-len, SEEK_CUR);</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> len;</div>
-<div class="line"><span class="lineno">   84</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_file_stream_8cpp_source.html#l00028">read()</a> , 以及 <a class="el" href="_file_stream_8cpp_source.html#l00045">setSeek()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a697d1769ba0c6f93a03382bf99113b76">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a7a3f32ad7dc940cef877fbae7d40409f">setSeek()</a>.</p>
 
 </div>
 </div>
@@ -581,12 +568,9 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00028">28</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>                                                    {</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">return</span> (int64_t)::fread(buffer, 1, length, file);</div>
-<div class="line"><span class="lineno">   30</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_file_stream_8cpp_source.html#l00080">peek()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a27a05640779675dde405424b39c1bca3">peek()</a>.</p>
 
 </div>
 </div>
@@ -616,12 +600,9 @@ Public 成员函数</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00045">45</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>                                                          {</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> fseek(file, offset, whence);</div>
-<div class="line"><span class="lineno">   47</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_file_stream_8cpp_source.html#l00080">peek()</a> , 以及 <a class="el" href="_file_stream_8cpp_source.html#l00086">trunc()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a27a05640779675dde405424b39c1bca3">peek()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a1382a876bf965b7b417ec7b76a434550">trunc()</a>.</p>
 
 </div>
 </div>
@@ -658,14 +639,7 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#ae7eaaf3b47b873769e0a0249b06588ad">sese::io::PeekableStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00086">86</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>                                       {</div>
-<div class="line"><span class="lineno">   87</span>    <span class="keyword">auto</span> old_pos = ftell(file);</div>
-<div class="line"><span class="lineno">   88</span>    this-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a7a3f32ad7dc940cef877fbae7d40409f">setSeek</a>((<span class="keywordtype">int</span>) length, SEEK_CUR);</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> ftell(file) - old_pos;</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_file_stream_8cpp_source.html#l00045">setSeek()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a> , 以及 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a7a3f32ad7dc940cef877fbae7d40409f">setSeek()</a>.</p>
 
 </div>
 </div>
@@ -705,16 +679,38 @@ Public 成员函数</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a> 第 <a class="el" href="_file_stream_8cpp_source.html#l00032">32</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>                                                           {</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> (int64_t)::fwrite(buffer, 1, length, file);</div>
-<div class="line"><span class="lineno">   34</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">file</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a00306b7f5a507f1e9aeb227d57a0b06c" name="a00306b7f5a507f1e9aeb227d57a0b06c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00306b7f5a507f1e9aeb227d57a0b06c">&#9670;&#160;</a></span>file</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* sese::io::FileStream::file = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_file_stream.html#a4be153f099bdbfa08a796973175c3716">close()</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#a0f0b3b41e51beff78b4327d6a709b9d0">create()</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#aedd5e5feb7b7db813a5375c55c48a539">flush()</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#aaec4306ec863594c74041e36cd62ceee">getFd()</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#adb14aab8b9a8d8f171c3c83cdfef3948">getSeek()</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#a697d1769ba0c6f93a03382bf99113b76">read()</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#a7a3f32ad7dc940cef877fbae7d40409f">setSeek()</a>, <a class="el" href="classsese_1_1io_1_1_file_stream.html#a1382a876bf965b7b417ec7b76a434550">trunc()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_file_stream.html#ac5f16a5108e129882c519710bf23fd2b">write()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/io/<a class="el" href="_file_stream_8h_source.html">FileStream.h</a></li>
-<li>sese/io/<a class="el" href="_file_stream_8cpp_source.html">FileStream.cpp</a></li>
+<li>sese/io/<a class="el" href="_file_stream_8cpp.html">FileStream.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

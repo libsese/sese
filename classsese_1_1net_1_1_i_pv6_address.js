@@ -16,5 +16,6 @@ var classsese_1_1net_1_1_i_pv6_address =
     [ "getSubnetMask", "classsese_1_1net_1_1_i_pv6_address.html#a4fbf651d3fe2e928d48e93c584b6fde0", null ],
     [ "localhost", "classsese_1_1net_1_1_i_pv6_address.html#aef9fb6ee50d8e9d32b3ddea12977a99c", null ],
     [ "setFamily", "classsese_1_1net_1_1_i_pv6_address.html#af2e2a05590ff81799f9c958281f54ef7", null ],
-    [ "setPort", "classsese_1_1net_1_1_i_pv6_address.html#a9a93367d61de89ca59bb8917fabd5a01", null ]
+    [ "setPort", "classsese_1_1net_1_1_i_pv6_address.html#a9a93367d61de89ca59bb8917fabd5a01", null ],
+    [ "address", "classsese_1_1net_1_1_i_pv6_address.html#a95a023c56b51fd029983282d6502b5f4", null ]
 ];

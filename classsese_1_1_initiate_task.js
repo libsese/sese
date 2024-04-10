@@ -5,5 +5,6 @@ var classsese_1_1_initiate_task =
     [ "~InitiateTask", "classsese_1_1_initiate_task.html#af7da3e0f23b5f86f26c43624f77583f9", null ],
     [ "destroy", "classsese_1_1_initiate_task.html#abfacf32c5d027127de872ca765293036", null ],
     [ "getName", "classsese_1_1_initiate_task.html#a0df8ae4f5869e7c5653d086c67d3aa1c", null ],
-    [ "init", "classsese_1_1_initiate_task.html#aa031ea39215e525b8e0049e5b53d68a7", null ]
+    [ "init", "classsese_1_1_initiate_task.html#aa031ea39215e525b8e0049e5b53d68a7", null ],
+    [ "name", "classsese_1_1_initiate_task.html#a0b0d5849dcc607db700e818b85f3e702", null ]
 ];

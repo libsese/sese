@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -133,9 +134,7 @@ $(document).ready(function(){initNavTree('_yaml_util_8cpp.html',''); initResizab
 <div class="textblock"><code>#include &quot;<a class="el" href="_yaml_util_8h_source.html">sese/config/yaml/YamlUtil.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_string_builder_8h_source.html">sese/text/StringBuilder.h</a>&quot;</code><br />
 <code>#include &lt;array&gt;</code><br />
-</div>
-<p><a href="_yaml_util_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
 <tr class="memitem:abbf37168ab9dce3e7a060e3514587c69" id="r_abbf37168ab9dce3e7a060e3514587c69"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_yaml_util_8cpp.html#abbf37168ab9dce3e7a060e3514587c69">GET_SPACE_ARRAY</a></td></tr>
@@ -169,16 +168,7 @@ $(document).ready(function(){initNavTree('_yaml_util_8cpp.html',''); initResizab
 <div class="line">    <span class="keywordflow">return</span> array;</div>
 <div class="line">}</div>
 </div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="_yaml_util_8cpp_source.html">YamlUtil.cpp</a> 第 <a class="el" href="_yaml_util_8cpp_source.html#l00343">343</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  343</span>                                      {</div>
-<div class="line"><span class="lineno">  344</span>    std::array&lt;char, 1024&gt; array{};</div>
-<div class="line"><span class="lineno">  345</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) item: array) {</div>
-<div class="line"><span class="lineno">  346</span>        item = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><span class="lineno">  347</span>    }</div>
-<div class="line"><span class="lineno">  348</span>    <span class="keywordflow">return</span> array;</div>
-<div class="line"><span class="lineno">  349</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_yaml_util_8cpp_source.html#l00351">sese::yaml::YamlUtil::writeSpace()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1yaml_1_1_yaml_util.html#adb18ecb74f9f20552f1ef12ffbadd080">sese::yaml::YamlUtil::writeSpace()</a>.</p>
 
 </div>
 </div>

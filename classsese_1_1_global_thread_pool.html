@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_global_thread_pool.html'
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
 <a href="classsese_1_1_global_thread_pool-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::GlobalThreadPool类 参考</div></div>
 </div><!--header-->
@@ -151,11 +153,14 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a35363f09b7d872b3bebe9c398db4c08c" id="r_a35363f09b7d872b3bebe9c398db4c08c"><td class="memTemplParams" colspan="2">template&lt;class RETURN_TYPE &gt; </td></tr>
 <tr class="memitem:a35363f09b7d872b3bebe9c398db4c08c"><td class="memTemplItemLeft" align="right" valign="top">static std::shared_future&lt; RETURN_TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1_global_thread_pool.html#a35363f09b7d872b3bebe9c398db4c08c">postTask</a> (const std::function&lt; RETURN_TYPE()&gt; &amp;func)</td></tr>
 <tr class="separator:a35363f09b7d872b3bebe9c398db4c08c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a1421277f02095f9be2014cc0aed07d71" id="r_a1421277f02095f9be2014cc0aed07d71"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_singleton_ptr.html">SingletonPtr</a>&lt; <a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_global_thread_pool.html#a1421277f02095f9be2014cc0aed07d71">globalThreadPool</a></td></tr>
+<tr class="separator:a1421277f02095f9be2014cc0aed07d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>全局线程池，在 Windows 上使用系统线程池，而在 UNIX 平台上则使用懒汉单例模式的线程池 </p>
-
-<p class="definition">在文件 <a class="el" href="_global_thread_pool_8h_source.html">GlobalThreadPool.h</a> 第 <a class="el" href="_global_thread_pool_8h_source.html#l00015">15</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
 <a id="a35363f09b7d872b3bebe9c398db4c08c" name="a35363f09b7d872b3bebe9c398db4c08c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a35363f09b7d872b3bebe9c398db4c08c">&#9670;&#160;</a></span>postTask() <span class="overload">[1/3]</span></h2>
@@ -203,12 +208,6 @@ template&lt;class ReturnType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_global_thread_pool_8h_source.html">GlobalThreadPool.h</a> 第 <a class="el" href="_global_thread_pool_8h_source.html#l00067">67</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>                                                                                                 {</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keyword">auto</span> pool = globalThreadPool.getInstance();</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> pool-&gt;postTask&lt;ReturnType&gt;(func);</div>
-<div class="line"><span class="lineno">   70</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a36b670e57248aed6aced9a386e432488" name="a36b670e57248aed6aced9a386e432488"></a>
@@ -235,18 +234,39 @@ template&lt;class ReturnType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="unix_2thread_2_global_thread_pool_8cpp_source.html">GlobalThreadPool.cpp</a> 第 <a class="el" href="unix_2thread_2_global_thread_pool_8cpp_source.html#l00003">3</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>                                                                   {</div>
-<div class="line"><span class="lineno">    4</span>    <span class="keyword">auto</span> pool = globalThreadPool.getInstance();</div>
-<div class="line"><span class="lineno">    5</span>    pool-&gt;postTask(func);</div>
-<div class="line"><span class="lineno">    6</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_global_thread_pool.html#a1421277f02095f9be2014cc0aed07d71">globalThreadPool</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a1421277f02095f9be2014cc0aed07d71" name="a1421277f02095f9be2014cc0aed07d71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1421277f02095f9be2014cc0aed07d71">&#9670;&#160;</a></span>globalThreadPool</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_singleton_ptr.html">SingletonPtr</a>&lt;<a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a>&gt; sese::GlobalThreadPool::globalThreadPool</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_global_thread_pool.html#a36b670e57248aed6aced9a386e432488">postTask()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/thread/<a class="el" href="_global_thread_pool_8h_source.html">GlobalThreadPool.h</a></li>
-<li>sese/native/unix/thread/<a class="el" href="unix_2thread_2_global_thread_pool_8cpp_source.html">GlobalThreadPool.cpp</a></li>
-<li>sese/native/win/thread/<a class="el" href="win_2thread_2_global_thread_pool_8cpp_source.html">GlobalThreadPool.cpp</a></li>
+<li>sese/native/unix/thread/<a class="el" href="unix_2thread_2_global_thread_pool_8cpp.html">GlobalThreadPool.cpp</a></li>
+<li>sese/native/win/thread/<a class="el" href="win_2thread_2_global_thread_pool_8cpp.html">GlobalThreadPool.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

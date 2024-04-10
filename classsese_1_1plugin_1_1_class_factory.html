@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -173,8 +174,6 @@ Protected 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>类工厂内建实现 </p>
-
-<p class="definition">在文件 <a class="el" href="_class_factory_8h_source.html">ClassFactory.h</a> 第 <a class="el" href="_class_factory_8h_source.html#l00020">20</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a1ba709d027da7d7b931904b4583b887d" name="a1ba709d027da7d7b931904b4583b887d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1ba709d027da7d7b931904b4583b887d">&#9670;&#160;</a></span>ParamListType</h2>
@@ -187,8 +186,6 @@ Protected 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_class_factory_8h_source.html">ClassFactory.h</a> 第 <a class="el" href="_class_factory_8h_source.html#l00028">28</a> 行定义.</p>
 
 </div>
 </div>
@@ -203,8 +200,6 @@ Protected 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_class_factory_8h_source.html">ClassFactory.h</a> 第 <a class="el" href="_class_factory_8h_source.html#l00027">27</a> 行定义.</p>
 
 </div>
 </div>
@@ -233,13 +228,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_class_factory_8cpp_source.html">ClassFactory.cpp</a> 第 <a class="el" href="_class_factory_8cpp_source.html#l00003">3</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    3</span>                                                                                                         {</div>
-<div class="line"><span class="lineno">    4</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) pair: initializer_list) {</div>
-<div class="line"><span class="lineno">    5</span>        <a class="code hl_variable" href="classsese_1_1plugin_1_1_class_factory.html#ab604e844a83d0c095ad1822632511003">infoMap</a>[pair.first] = pair.second;</div>
-<div class="line"><span class="lineno">    6</span>    }</div>
-<div class="line"><span class="lineno">    7</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a604699570299900fb0b3621c4bb031d6" name="a604699570299900fb0b3621c4bb031d6"></a>
@@ -325,16 +313,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_class_factory_8cpp_source.html">ClassFactory.cpp</a> 第 <a class="el" href="_class_factory_8cpp_source.html#l00009">9</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    9</span>                                                                                             {</div>
-<div class="line"><span class="lineno">   10</span>    <span class="keyword">auto</span> iterator = <a class="code hl_variable" href="classsese_1_1plugin_1_1_class_factory.html#ab604e844a83d0c095ad1822632511003">infoMap</a>.find(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">   11</span>    <span class="keywordflow">if</span> (iterator != <a class="code hl_variable" href="classsese_1_1plugin_1_1_class_factory.html#ab604e844a83d0c095ad1822632511003">infoMap</a>.end()) {</div>
-<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">return</span> iterator-&gt;second.builder();</div>
-<div class="line"><span class="lineno">   13</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   15</span>    }</div>
-<div class="line"><span class="lineno">   16</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a0698fed6c92d661d30e8ed02f7f923ad" name="a0698fed6c92d661d30e8ed02f7f923ad"></a>
@@ -361,12 +339,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取已注册类的类型信息 </p><dl class="section return"><dt>返回</dt><dd>类信息映射表 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_class_factory_8cpp_source.html">ClassFactory.cpp</a> 第 <a class="el" href="_class_factory_8cpp_source.html#l00018">18</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                                                                       {</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1plugin_1_1_class_factory.html#ab604e844a83d0c095ad1822632511003">infoMap</a>;</div>
-<div class="line"><span class="lineno">   20</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_class_factory_8h_source.html#l00043">infoMap</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1plugin_1_1_class_factory.html#ab604e844a83d0c095ad1822632511003">infoMap</a>.</p>
 
 </div>
 </div>
@@ -391,16 +364,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_class_factory_8h_source.html">ClassFactory.h</a> 第 <a class="el" href="_class_factory_8h_source.html#l00043">43</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_class_factory_8cpp_source.html#l00018">getRegisterClassInfo()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1plugin_1_1_class_factory.html#a0698fed6c92d661d30e8ed02f7f923ad">getRegisterClassInfo()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/plugin/<a class="el" href="_class_factory_8h_source.html">ClassFactory.h</a></li>
-<li>sese/plugin/<a class="el" href="_class_factory_8cpp_source.html">ClassFactory.cpp</a></li>
+<li>sese/plugin/<a class="el" href="_class_factory_8cpp.html">ClassFactory.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

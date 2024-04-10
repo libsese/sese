@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -127,6 +128,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_buffered_queue11.html','
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_buffered_queue11-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::BufferedQueue11&lt; T &gt; 模板类 参考</div></div>
 </div><!--header-->
@@ -145,12 +147,19 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a294ae3fffe5f3fa58d8fa456831b2072"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70a4aacdad10a85d5b512f1719b7610f" id="r_a70a4aacdad10a85d5b512f1719b7610f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_buffered_queue11.html#a70a4aacdad10a85d5b512f1719b7610f">push</a> (const T &amp;t)</td></tr>
 <tr class="separator:a70a4aacdad10a85d5b512f1719b7610f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:ab91658a200a570fb6fab4b35a42e958f" id="r_ab91658a200a570fb6fab4b35a42e958f"><td class="memItemLeft" align="right" valign="top">std::queue&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_buffered_queue11.html#ab91658a200a570fb6fab4b35a42e958f">queue</a></td></tr>
+<tr class="separator:ab91658a200a570fb6fab4b35a42e958f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d467e122461341ea302b768b9c1df3" id="r_aa4d467e122461341ea302b768b9c1df3"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_buffered_queue11.html#aa4d467e122461341ea302b768b9c1df3">mutex</a></td></tr>
+<tr class="separator:aa4d467e122461341ea302b768b9c1df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd2523bfd79acd8611dade4f78de0351" id="r_abd2523bfd79acd8611dade4f78de0351"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_buffered_queue11.html#abd2523bfd79acd8611dade4f78de0351">writeLimit</a></td></tr>
+<tr class="separator:abd2523bfd79acd8611dade4f78de0351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class T&gt;<br />
 class sese::BufferedQueue11&lt; T &gt;</div><p>缓存队列（单生产者-单消费者） </p>
-
-<p class="definition">在文件 <a class="el" href="_buffered_queue_8h_source.html">BufferedQueue.h</a> 第 <a class="el" href="_buffered_queue_8h_source.html#l00077">77</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a799923f3d2389767b7ee252638165362" name="a799923f3d2389767b7ee252638165362"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a799923f3d2389767b7ee252638165362">&#9670;&#160;</a></span>BufferedQueue11()</h2>
@@ -178,9 +187,6 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_buffered_queue_8h_source.html">BufferedQueue.h</a> 第 <a class="el" href="_buffered_queue_8h_source.html#l00079">79</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   79</span>: writeLimit(write_limit) {}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -210,18 +216,8 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_buffered_queue_8h_source.html">BufferedQueue.h</a> 第 <a class="el" href="_buffered_queue_8h_source.html#l00081">81</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   81</span>                   {</div>
-<div class="line"><span class="lineno">   82</span>        Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">if</span> (queue.empty()) {</div>
-<div class="line"><span class="lineno">   84</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   85</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   86</span>            t = queue.front();</div>
-<div class="line"><span class="lineno">   87</span>            queue.pop();</div>
-<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   89</span>        }</div>
-<div class="line"><span class="lineno">   90</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_buffered_queue11.html#aa4d467e122461341ea302b768b9c1df3">sese::BufferedQueue11&lt; T &gt;::mutex</a> , 以及 <a class="el" href="classsese_1_1_buffered_queue11.html#ab91658a200a570fb6fab4b35a42e958f">sese::BufferedQueue11&lt; T &gt;::queue</a>.</p>
+
 </div>
 </div>
 <a id="a70a4aacdad10a85d5b512f1719b7610f" name="a70a4aacdad10a85d5b512f1719b7610f"></a>
@@ -250,17 +246,87 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_buffered_queue_8h_source.html">BufferedQueue.h</a> 第 <a class="el" href="_buffered_queue_8h_source.html#l00092">92</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>                          {</div>
-<div class="line"><span class="lineno">   93</span>        Locker locker(mutex);</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (queue.size() &gt;= writeLimit) {</div>
-<div class="line"><span class="lineno">   95</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   96</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   97</span>            queue.push(t);</div>
-<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   99</span>        }</div>
-<div class="line"><span class="lineno">  100</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_buffered_queue11.html#aa4d467e122461341ea302b768b9c1df3">sese::BufferedQueue11&lt; T &gt;::mutex</a>, <a class="el" href="classsese_1_1_buffered_queue11.html#ab91658a200a570fb6fab4b35a42e958f">sese::BufferedQueue11&lt; T &gt;::queue</a> , 以及 <a class="el" href="classsese_1_1_buffered_queue11.html#abd2523bfd79acd8611dade4f78de0351">sese::BufferedQueue11&lt; T &gt;::writeLimit</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aa4d467e122461341ea302b768b9c1df3" name="aa4d467e122461341ea302b768b9c1df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4d467e122461341ea302b768b9c1df3">&#9670;&#160;</a></span>mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex <a class="el" href="classsese_1_1_buffered_queue11.html">sese::BufferedQueue11</a>&lt; T &gt;::mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_buffered_queue11.html#a294ae3fffe5f3fa58d8fa456831b2072">sese::BufferedQueue11&lt; T &gt;::pop()</a> , 以及 <a class="el" href="classsese_1_1_buffered_queue11.html#a70a4aacdad10a85d5b512f1719b7610f">sese::BufferedQueue11&lt; T &gt;::push()</a>.</p>
+
+</div>
+</div>
+<a id="ab91658a200a570fb6fab4b35a42e958f" name="ab91658a200a570fb6fab4b35a42e958f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91658a200a570fb6fab4b35a42e958f">&#9670;&#160;</a></span>queue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt;T&gt; <a class="el" href="classsese_1_1_buffered_queue11.html">sese::BufferedQueue11</a>&lt; T &gt;::queue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_buffered_queue11.html#a294ae3fffe5f3fa58d8fa456831b2072">sese::BufferedQueue11&lt; T &gt;::pop()</a> , 以及 <a class="el" href="classsese_1_1_buffered_queue11.html#a70a4aacdad10a85d5b512f1719b7610f">sese::BufferedQueue11&lt; T &gt;::push()</a>.</p>
+
+</div>
+</div>
+<a id="abd2523bfd79acd8611dade4f78de0351" name="abd2523bfd79acd8611dade4f78de0351"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd2523bfd79acd8611dade4f78de0351">&#9670;&#160;</a></span>writeLimit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classsese_1_1_buffered_queue11.html">sese::BufferedQueue11</a>&lt; T &gt;::writeLimit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_buffered_queue11.html#a70a4aacdad10a85d5b512f1719b7610f">sese::BufferedQueue11&lt; T &gt;::push()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>

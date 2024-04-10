@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1io_1_1_abstract_byte_buff
   <div class="summary">
 <a href="#nested-classes">类</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1io_1_1_abstract_byte_buffer-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::io::AbstractByteBuffer类 参考</div></div>
 </div><!--header-->
@@ -152,9 +154,15 @@ $(document).ready(function(){initNavTree('classsese_1_1io_1_1_abstract_byte_buff
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html">Node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">缓冲节点  <a href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ab09a40ec6120b4fb1b044f7a8acbe62b" id="r_ab09a40ec6120b4fb1b044f7a8acbe62b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer</a> (size_t base_size=<a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a>, size_t factor=<a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a>)</td></tr>
+<tr class="memitem:ab09a40ec6120b4fb1b044f7a8acbe62b" id="r_ab09a40ec6120b4fb1b044f7a8acbe62b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer</a> (size_t base_size=<a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a>, size_t <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a10c1ae4ee4e5c54e87d2bd4c5969366d">factor</a>=<a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a>)</td></tr>
 <tr class="separator:ab09a40ec6120b4fb1b044f7a8acbe62b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54239375ac434917f74006e7f10805c7" id="r_a54239375ac434917f74006e7f10805c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a54239375ac434917f74006e7f10805c7">AbstractByteBuffer</a> (const <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html">AbstractByteBuffer</a> &amp;abstract_byte_buffer) noexcept</td></tr>
 <tr class="memdesc:a54239375ac434917f74006e7f10805c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">拷贝  <br /></td></tr>
@@ -196,6 +204,25 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream" id="r_aeb71ca5a92ba6b49caae5489458f5fd1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html#aeb71ca5a92ba6b49caae5489458f5fd1">~PeekableStream</a> ()=default</td></tr>
 <tr class="separator:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a10c1ae4ee4e5c54e87d2bd4c5969366d" id="r_a10c1ae4ee4e5c54e87d2bd4c5969366d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a10c1ae4ee4e5c54e87d2bd4c5969366d">factor</a> = 0</td></tr>
+<tr class="separator:a10c1ae4ee4e5c54e87d2bd4c5969366d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab83d29c07c99a202fdcb5291cb8ee512" id="r_ab83d29c07c99a202fdcb5291cb8ee512"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512">root</a> = nullptr</td></tr>
+<tr class="separator:ab83d29c07c99a202fdcb5291cb8ee512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3899ef288fdaf1bc5ccdefaea0676803" id="r_a3899ef288fdaf1bc5ccdefaea0676803"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a> = nullptr</td></tr>
+<tr class="separator:a3899ef288fdaf1bc5ccdefaea0676803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac59fa70f7615ac185657cdc80fee2db9" id="r_ac59fa70f7615ac185657cdc80fee2db9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac59fa70f7615ac185657cdc80fee2db9">currentWritePos</a> = 0</td></tr>
+<tr class="separator:ac59fa70f7615ac185657cdc80fee2db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32d33a907cd841d5a306e2916351d7c3" id="r_a32d33a907cd841d5a306e2916351d7c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a> = nullptr</td></tr>
+<tr class="separator:a32d33a907cd841d5a306e2916351d7c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f617211f0f91908e420796377f0eef0" id="r_a3f617211f0f91908e420796377f0eef0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a> = 0</td></tr>
+<tr class="separator:a3f617211f0f91908e420796377f0eef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac113d892233467efc209ba81a4c28f2a" id="r_ac113d892233467efc209ba81a4c28f2a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac113d892233467efc209ba81a4c28f2a">length</a> = 0</td></tr>
+<tr class="separator:ac113d892233467efc209ba81a4c28f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d4216b89556192e836f99324075ef71" id="r_a1d4216b89556192e836f99324075ef71"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a1d4216b89556192e836f99324075ef71">cap</a> = 0</td></tr>
+<tr class="separator:a1d4216b89556192e836f99324075ef71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pub_types_classsese_1_1io_1_1_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_stream.html">sese::io::Stream</a></td></tr>
@@ -213,8 +240,6 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>字节缓冲区类 </p>
-
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8h_source.html">AbstractByteBuffer.h</a> 第 <a class="el" href="_abstract_byte_buffer_8h_source.html#l00018">18</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="ab09a40ec6120b4fb1b044f7a8acbe62b" name="ab09a40ec6120b4fb1b044f7a8acbe62b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab09a40ec6120b4fb1b044f7a8acbe62b">&#9670;&#160;</a></span>AbstractByteBuffer() <span class="overload">[1/3]</span></h2>
@@ -257,15 +282,8 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00016">16</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                                                                      {</div>
-<div class="line"><span class="lineno">   17</span>    this-&gt;root = <span class="keyword">new</span> Node(base_size); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   18</span>    this-&gt;cap = base_size;</div>
-<div class="line"><span class="lineno">   19</span>    this-&gt;currentWriteNode = root;</div>
-<div class="line"><span class="lineno">   20</span>    this-&gt;currentReadNode = root;</div>
-<div class="line"><span class="lineno">   21</span>    this-&gt;factor = factor;</div>
-<div class="line"><span class="lineno">   22</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a1d4216b89556192e836f99324075ef71">cap</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a10c1ae4ee4e5c54e87d2bd4c5969366d">factor</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512">root</a>.</p>
+
 </div>
 </div>
 <a id="a54239375ac434917f74006e7f10805c7" name="a54239375ac434917f74006e7f10805c7"></a>
@@ -297,64 +315,8 @@ Public 成员函数</h2></td></tr>
 <p>拷贝子节点</p>
 <p>拷贝全局属性</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00024">24</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>                                                                             {</div>
-<div class="line"><span class="lineno">   25</span>    <span class="comment">// this-&gt;root = new Node(abstractByteBuffer.cap);</span></div>
-<div class="line"><span class="lineno">   26</span>    <span class="comment">// this-&gt;cap = abstractByteBuffer.cap;</span></div>
-<div class="line"><span class="lineno">   27</span>    <span class="comment">// this-&gt;length = 0;</span></div>
-<div class="line"><span class="lineno">   28</span>    <span class="comment">// this-&gt;currentWriteNode = root;</span></div>
-<div class="line"><span class="lineno">   29</span>    <span class="comment">// this-&gt;currentWritePos = abstractByteBuffer.length + abstractByteBuffer.currentWritePos;</span></div>
-<div class="line"><span class="lineno">   30</span>    <span class="comment">// this-&gt;currentReadNode = root;</span></div>
-<div class="line"><span class="lineno">   31</span>    <span class="comment">// this-&gt;currentReadPos = abstractByteBuffer.length + abstractByteBuffer.currentReadPos;</span></div>
-<div class="line"><span class="lineno">   32</span>    <span class="comment">// size_t copyPos = 0;</span></div>
-<div class="line"><span class="lineno">   33</span>    <span class="comment">// Node *pNode = abstractByteBuffer.root;</span></div>
-<div class="line"><span class="lineno">   34</span>    <span class="comment">// if (pNode != nullptr) {</span></div>
-<div class="line"><span class="lineno">   35</span>    <span class="comment">//     while (true) {</span></div>
-<div class="line"><span class="lineno">   36</span>    <span class="comment">//         if(pNode == abstractByteBuffer.currentReadNode) {</span></div>
-<div class="line"><span class="lineno">   37</span>    <span class="comment">//             this-&gt;currentReadPos = copyPos + abstractByteBuffer.currentReadPos;</span></div>
-<div class="line"><span class="lineno">   38</span>    <span class="comment">//         }</span></div>
-<div class="line"><span class="lineno">   39</span>    <span class="comment">//         memcpy((char *) root-&gt;buffer + copyPos, pNode-&gt;buffer, pNode-&gt;length);</span></div>
-<div class="line"><span class="lineno">   40</span>    <span class="comment">//         if (pNode-&gt;next == nullptr) {</span></div>
-<div class="line"><span class="lineno">   41</span>    <span class="comment">//             break;</span></div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">//         } else {</span></div>
-<div class="line"><span class="lineno">   43</span>    <span class="comment">//             pNode = pNode-&gt;next;</span></div>
-<div class="line"><span class="lineno">   44</span>    <span class="comment">//             copyPos += pNode-&gt;length;</span></div>
-<div class="line"><span class="lineno">   45</span>    <span class="comment">//         }</span></div>
-<div class="line"><span class="lineno">   46</span>    <span class="comment">//     }</span></div>
-<div class="line"><span class="lineno">   47</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   49</span>    this-&gt;root = <span class="keyword">new</span> Node(src.root-&gt;cap);</div>
-<div class="line"><span class="lineno">   50</span>    this-&gt;root-&gt;length = src.root-&gt;length;</div>
-<div class="line"><span class="lineno">   51</span>    memcpy(this-&gt;root-&gt;buffer, src.root-&gt;buffer, src.root-&gt;length);</div>
-<div class="line"><span class="lineno">   52</span>    this-&gt;currentWriteNode = this-&gt;root;</div>
-<div class="line"><span class="lineno">   53</span>    this-&gt;currentReadNode = this-&gt;root;</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   56</span>    Node *p_last_node = this-&gt;root;</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keyword">const</span> Node *p_node = src.root-&gt;next;</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">while</span> (p_node) {</div>
-<div class="line"><span class="lineno">   59</span>        <span class="keyword">const</span> <span class="keyword">auto</span> SUB = <span class="keyword">new</span> Node(p_node-&gt;cap);</div>
-<div class="line"><span class="lineno">   60</span>        SUB-&gt;length = p_node-&gt;length;</div>
-<div class="line"><span class="lineno">   61</span>        memcpy(SUB-&gt;buffer, p_node-&gt;buffer, p_node-&gt;length);</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">if</span> (p_node == src.currentWriteNode) { <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   64</span>            this-&gt;currentWriteNode = SUB;</div>
-<div class="line"><span class="lineno">   65</span>        }</div>
-<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">if</span> (p_node == src.currentReadNode) { <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   67</span>            this-&gt;currentReadNode = SUB;</div>
-<div class="line"><span class="lineno">   68</span>        }</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>        p_last_node-&gt;next = SUB;</div>
-<div class="line"><span class="lineno">   71</span>        p_last_node = SUB;</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>        p_node = p_node-&gt;next;</div>
-<div class="line"><span class="lineno">   74</span>    }</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   77</span>    this-&gt;cap = src.cap;</div>
-<div class="line"><span class="lineno">   78</span>    this-&gt;length = src.length;</div>
-<div class="line"><span class="lineno">   79</span>    this-&gt;currentReadPos = src.currentReadPos;</div>
-<div class="line"><span class="lineno">   80</span>    this-&gt;currentWritePos = src.currentWritePos;</div>
-<div class="line"><span class="lineno">   81</span>    this-&gt;factor = src.factor;</div>
-<div class="line"><span class="lineno">   82</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a56353c41743991ccb285dd06b2cb70b6">sese::io::AbstractByteBuffer::Node::buffer</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#afc2b0f605ce183c5d4fa763b97b03ddc">sese::io::AbstractByteBuffer::Node::cap</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512">root</a>.</p>
+
 </div>
 </div>
 <a id="a71513b2fbb858d57f8504154dc6714c2" name="a71513b2fbb858d57f8504154dc6714c2"></a>
@@ -383,27 +345,8 @@ Public 成员函数</h2></td></tr>
 
 <p>移动语义 </p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00084">84</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>                                                                                         {</div>
-<div class="line"><span class="lineno">   85</span>    this-&gt;root = abstract_byte_buffer.root;</div>
-<div class="line"><span class="lineno">   86</span>    this-&gt;currentWriteNode = abstract_byte_buffer.currentWriteNode;</div>
-<div class="line"><span class="lineno">   87</span>    this-&gt;currentWritePos = abstract_byte_buffer.currentWritePos;</div>
-<div class="line"><span class="lineno">   88</span>    this-&gt;currentReadNode = abstract_byte_buffer.currentReadNode;</div>
-<div class="line"><span class="lineno">   89</span>    this-&gt;currentReadPos = abstract_byte_buffer.currentReadPos;</div>
-<div class="line"><span class="lineno">   90</span>    this-&gt;length = abstract_byte_buffer.length;</div>
-<div class="line"><span class="lineno">   91</span>    this-&gt;cap = abstract_byte_buffer.cap;</div>
-<div class="line"><span class="lineno">   92</span>    this-&gt;factor = abstract_byte_buffer.factor;</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>    abstract_byte_buffer.root = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   95</span>    abstract_byte_buffer.currentWriteNode = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   96</span>    abstract_byte_buffer.currentWritePos = 0;</div>
-<div class="line"><span class="lineno">   97</span>    abstract_byte_buffer.currentReadNode = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   98</span>    abstract_byte_buffer.currentReadPos = 0;</div>
-<div class="line"><span class="lineno">   99</span>    abstract_byte_buffer.length = 0;</div>
-<div class="line"><span class="lineno">  100</span>    abstract_byte_buffer.cap = 0;</div>
-<div class="line"><span class="lineno">  101</span>    abstract_byte_buffer.factor = 0;</div>
-<div class="line"><span class="lineno">  102</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a1d4216b89556192e836f99324075ef71">cap</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac59fa70f7615ac185657cdc80fee2db9">currentWritePos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a10c1ae4ee4e5c54e87d2bd4c5969366d">factor</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac113d892233467efc209ba81a4c28f2a">length</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512">root</a>.</p>
+
 </div>
 </div>
 <a id="adb203e29f3c1cfa71e295405d3586a2b" name="adb203e29f3c1cfa71e295405d3586a2b"></a>
@@ -431,15 +374,8 @@ Public 成员函数</h2></td></tr>
 
 <p>析构 </p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00104">104</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>                                        {</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">while</span> (root != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  106</span>        <span class="keyword">const</span> Node *to_del = root;</div>
-<div class="line"><span class="lineno">  107</span>        root = to_del-&gt;next;</div>
-<div class="line"><span class="lineno">  108</span>        <span class="keyword">delete</span> to_del; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  109</span>    }</div>
-<div class="line"><span class="lineno">  110</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512">root</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -469,29 +405,9 @@ Public 成员函数</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#aa9d783b8664890feec56be7af07ccd57">sese::io::ByteBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00139">139</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  139</span>                                        {</div>
-<div class="line"><span class="lineno">  140</span>    <span class="comment">// 还原 root，删除 root 之后的节点</span></div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordtype">size_t</span> free_cap = 0;</div>
-<div class="line"><span class="lineno">  142</span>    <span class="keyword">auto</span> p_node = root-&gt;next;</div>
-<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">while</span> (p_node) {</div>
-<div class="line"><span class="lineno">  144</span>        <span class="keyword">const</span> <span class="keyword">auto</span> TO_DEL = p_node;</div>
-<div class="line"><span class="lineno">  145</span>        free_cap += TO_DEL-&gt;cap;</div>
-<div class="line"><span class="lineno">  146</span>        p_node = p_node-&gt;next;</div>
-<div class="line"><span class="lineno">  147</span>        <span class="keyword">delete</span> TO_DEL;</div>
-<div class="line"><span class="lineno">  148</span>    }</div>
-<div class="line"><span class="lineno">  149</span> </div>
-<div class="line"><span class="lineno">  150</span>    this-&gt;root-&gt;length = 0;</div>
-<div class="line"><span class="lineno">  151</span>    this-&gt;root-&gt;next = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  152</span>    this-&gt;currentWriteNode = this-&gt;root;</div>
-<div class="line"><span class="lineno">  153</span>    this-&gt;currentReadNode = this-&gt;root;</div>
-<div class="line"><span class="lineno">  154</span>    this-&gt;currentWritePos = 0;</div>
-<div class="line"><span class="lineno">  155</span>    this-&gt;currentReadPos = 0;</div>
-<div class="line"><span class="lineno">  156</span> </div>
-<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">return</span> free_cap;</div>
-<div class="line"><span class="lineno">  158</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_byte_buffer_8cpp_source.html#l00039">sese::io::ByteBuffer::freeCapacity()</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#afc2b0f605ce183c5d4fa763b97b03ddc">sese::io::AbstractByteBuffer::Node::cap</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac59fa70f7615ac185657cdc80fee2db9">currentWritePos</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512">root</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#aa9d783b8664890feec56be7af07ccd57">sese::io::ByteBuffer::freeCapacity()</a>.</p>
 
 </div>
 </div>
@@ -519,12 +435,11 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>返回</dt><dd>所有节点容量总数 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00121">121</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  121</span>                                             {</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> this-&gt;cap;</div>
-<div class="line"><span class="lineno">  123</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_byte_buffer_8cpp_source.html#l00034">sese::io::ByteBuffer::getCapacity()</a>.</p>
+<p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a4b380c9183805818aaa40db8bd667420">sese::io::ByteBuffer</a> 重载.</p>
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a1d4216b89556192e836f99324075ef71">cap</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a1b78f7dbe66e53c73258caca160e4fdc">sese::io::ByteBuffer::getCapacity()</a>.</p>
 
 </div>
 </div>
@@ -552,12 +467,11 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>返回</dt><dd>所有节点已用内存总数 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00117">117</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  117</span>                                           {</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">return</span> this-&gt;length + currentWriteNode-&gt;length;</div>
-<div class="line"><span class="lineno">  119</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_byte_buffer_8cpp_source.html#l00029">sese::io::ByteBuffer::getLength()</a>.</p>
+<p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a7f688fe58a47816e45402d93de044a45">sese::io::ByteBuffer</a> 重载.</p>
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac113d892233467efc209ba81a4c28f2a">length</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a424b3448336f0a6684f1c5566fca8dc8">sese::io::ByteBuffer::getLength()</a>.</p>
 
 </div>
 </div>
@@ -585,22 +499,7 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>返回</dt><dd>可读字节总数 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00125">125</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>                                                 {</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> = currentReadNode-&gt;length - currentReadPos;</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keyword">auto</span> p_node = currentReadNode-&gt;next;</div>
-<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">while</span> (p_node) {</div>
-<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">if</span> (p_node == currentWriteNode) {</div>
-<div class="line"><span class="lineno">  130</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += currentWritePos;</div>
-<div class="line"><span class="lineno">  131</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  132</span>            <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> += p_node-&gt;cap;</div>
-<div class="line"><span class="lineno">  133</span>        }</div>
-<div class="line"><span class="lineno">  134</span>        p_node = p_node-&gt;next;</div>
-<div class="line"><span class="lineno">  135</span>    }</div>
-<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>;</div>
-<div class="line"><span class="lineno">  137</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#afc2b0f605ce183c5d4fa763b97b03ddc">sese::io::AbstractByteBuffer::Node::cap</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac59fa70f7615ac185657cdc80fee2db9">currentWritePos</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
 </div>
 </div>
@@ -650,43 +549,9 @@ Public 成员函数</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#abcc5c9d1bf4d22dc4959c6ed7d7762bf">sese::io::ByteBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00233">233</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  233</span>                                                               {</div>
-<div class="line"><span class="lineno">  234</span>    <span class="keyword">const</span> Node *current_read_node = currentReadNode;</div>
-<div class="line"><span class="lineno">  235</span>    <span class="keyword">const</span> Node *current_write_node = currentWriteNode;</div>
-<div class="line"><span class="lineno">  236</span>    <span class="keyword">auto</span> current_read_pos = currentReadPos;</div>
-<div class="line"><span class="lineno">  237</span> </div>
-<div class="line"><span class="lineno">  238</span>    int64_t actual_read = 0;</div>
-<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">  240</span>        <span class="comment">// 当前单元能提供的剩余读取量</span></div>
-<div class="line"><span class="lineno">  241</span>        <span class="comment">// 当前单元能满足读取需求</span></div>
-<div class="line"><span class="lineno">  242</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keywordtype">size_t</span> CURRENT_READ_NODE_REMAINING = current_read_node-&gt;length - current_read_pos ;need_read &lt;= CURRENT_READ_NODE_REMAINING) {</div>
-<div class="line"><span class="lineno">  243</span>            memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer) + actual_read, <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(current_read_node-&gt;buffer) + current_read_pos, need_read);</div>
-<div class="line"><span class="lineno">  244</span>            actual_read += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(need_read);</div>
-<div class="line"><span class="lineno">  245</span>            current_read_pos += need_read;</div>
-<div class="line"><span class="lineno">  246</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  247</span>        }</div>
-<div class="line"><span class="lineno">  248</span>        <span class="comment">// 当前单元不能满足读取需求</span></div>
-<div class="line"><span class="lineno">  249</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  250</span>            memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer) + actual_read, <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(current_read_node-&gt;buffer) + current_read_pos, CURRENT_READ_NODE_REMAINING);</div>
-<div class="line"><span class="lineno">  251</span>            actual_read += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(CURRENT_READ_NODE_REMAINING);</div>
-<div class="line"><span class="lineno">  252</span>            need_read -= CURRENT_READ_NODE_REMAINING;</div>
-<div class="line"><span class="lineno">  253</span>            current_read_pos += CURRENT_READ_NODE_REMAINING;</div>
-<div class="line"><span class="lineno">  254</span>            <span class="keywordflow">if</span> (current_read_node == current_write_node) {</div>
-<div class="line"><span class="lineno">  255</span>                <span class="comment">// 已经没有剩余节点可供读取</span></div>
-<div class="line"><span class="lineno">  256</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  257</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  258</span>                <span class="comment">// 切换下一个节点继续读取</span></div>
-<div class="line"><span class="lineno">  259</span>                current_read_node = current_read_node-&gt;next;</div>
-<div class="line"><span class="lineno">  260</span>                current_read_pos = 0;</div>
-<div class="line"><span class="lineno">  261</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  262</span>            }</div>
-<div class="line"><span class="lineno">  263</span>        }</div>
-<div class="line"><span class="lineno">  264</span>    }</div>
-<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">return</span> actual_read;</div>
-<div class="line"><span class="lineno">  266</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_byte_buffer_8cpp_source.html#l00016">sese::io::ByteBuffer::peek()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00018">sese::iocp::v1::Context::peek()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00182">sese::_windows::iocp::v1::NativeIOCPServer::postWrite()</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a56353c41743991ccb285dd06b2cb70b6">sese::io::AbstractByteBuffer::Node::buffer</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a> , 以及 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#abcc5c9d1bf4d22dc4959c6ed7d7762bf">sese::io::ByteBuffer::peek()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#abc46cd1d3ac99187ff38c5fbb14b5362">sese::iocp::v1::Context::peek()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad776a1800f79300e758d2d9f0e10a7eb">sese::_windows::iocp::v1::NativeIOCPServer::postWrite()</a>.</p>
 
 </div>
 </div>
@@ -728,39 +593,9 @@ Public 成员函数</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a34d7b60a4341bb8c7710eaa5a897c652">sese::io::ByteBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00170">170</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  170</span>                                                               {</div>
-<div class="line"><span class="lineno">  171</span>    int64_t actual_read = 0;</div>
-<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">  173</span>        <span class="comment">// 当前单元能提供的剩余读取量</span></div>
-<div class="line"><span class="lineno">  174</span>        <span class="comment">// 当前单元能满足读取需求</span></div>
-<div class="line"><span class="lineno">  175</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keywordtype">size_t</span> CURRENT_READ_NODE_REMAINING = currentReadNode-&gt;length - currentReadPos ;need_read &lt;= CURRENT_READ_NODE_REMAINING) {</div>
-<div class="line"><span class="lineno">  176</span>            memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer) + actual_read, <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(currentReadNode-&gt;buffer) + currentReadPos, need_read);</div>
-<div class="line"><span class="lineno">  177</span>            actual_read += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(need_read);</div>
-<div class="line"><span class="lineno">  178</span>            currentReadPos += need_read;</div>
-<div class="line"><span class="lineno">  179</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  180</span>        }</div>
-<div class="line"><span class="lineno">  181</span>        <span class="comment">// 当前单元不能满足读取需求</span></div>
-<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  183</span>            memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer) + actual_read, <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(currentReadNode-&gt;buffer) + currentReadPos, CURRENT_READ_NODE_REMAINING);</div>
-<div class="line"><span class="lineno">  184</span>            actual_read += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(CURRENT_READ_NODE_REMAINING);</div>
-<div class="line"><span class="lineno">  185</span>            need_read -= CURRENT_READ_NODE_REMAINING;</div>
-<div class="line"><span class="lineno">  186</span>            currentReadPos += CURRENT_READ_NODE_REMAINING;</div>
-<div class="line"><span class="lineno">  187</span>            <span class="keywordflow">if</span> (currentReadNode == currentWriteNode) {</div>
-<div class="line"><span class="lineno">  188</span>                <span class="comment">// 已经没有剩余节点可供读取</span></div>
-<div class="line"><span class="lineno">  189</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  190</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  191</span>                <span class="comment">// 切换下一个节点继续读取</span></div>
-<div class="line"><span class="lineno">  192</span>                currentReadNode = currentReadNode-&gt;next;</div>
-<div class="line"><span class="lineno">  193</span>                currentReadPos = 0;</div>
-<div class="line"><span class="lineno">  194</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  195</span>            }</div>
-<div class="line"><span class="lineno">  196</span>        }</div>
-<div class="line"><span class="lineno">  197</span>    }</div>
-<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">return</span> actual_read;</div>
-<div class="line"><span class="lineno">  199</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_m_d5_util_8cpp_source.html#l00066">sese::MD5Util::encode()</a>, <a class="el" href="_s_h_a1_util_8cpp_source.html#l00229">sese::SHA1Util::encode()</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00336">sese::SHA256Util::encode()</a>, <a class="el" href="_byte_buffer_8cpp_source.html#l00006">sese::io::ByteBuffer::read()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00010">sese::iocp::v1::Context::read()</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a56353c41743991ccb285dd06b2cb70b6">sese::io::AbstractByteBuffer::Node::buffer</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a> , 以及 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_m_d5_util.html#a3715b1f9e785cd69dd5f704b4beb23e9">sese::MD5Util::encode()</a>, <a class="el" href="classsese_1_1_s_h_a1_util.html#ac98036048870f0c983c488628a989721">sese::SHA1Util::encode()</a>, <a class="el" href="classsese_1_1_s_h_a256_util.html#a4f4acb1a2f0c21e122dd7bd3a6206b87">sese::SHA256Util::encode()</a>, <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a34d7b60a4341bb8c7710eaa5a897c652">sese::io::ByteBuffer::read()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a1ec697ea3f23b31ec60b73a69b568261">sese::iocp::v1::Context::read()</a>.</p>
 
 </div>
 </div>
@@ -791,13 +626,9 @@ Public 成员函数</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#af9062d37a000dbe6b22cd141c6a5b064">sese::io::ByteBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00112">112</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  112</span>                                  {</div>
-<div class="line"><span class="lineno">  113</span>    this-&gt;currentReadNode = root;</div>
-<div class="line"><span class="lineno">  114</span>    this-&gt;currentReadPos = 0;</div>
-<div class="line"><span class="lineno">  115</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_byte_buffer_8cpp_source.html#l00024">sese::io::ByteBuffer::resetPos()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512">root</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#af9062d37a000dbe6b22cd141c6a5b064">sese::io::ByteBuffer::resetPos()</a>.</p>
 
 </div>
 </div>
@@ -825,17 +656,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00160">160</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  160</span>                                                                {</div>
-<div class="line"><span class="lineno">  161</span>    std::swap(this-&gt;root, other.root);</div>
-<div class="line"><span class="lineno">  162</span>    std::swap(this-&gt;currentWriteNode, other.currentWriteNode);</div>
-<div class="line"><span class="lineno">  163</span>    std::swap(this-&gt;currentWritePos, other.currentWritePos);</div>
-<div class="line"><span class="lineno">  164</span>    std::swap(this-&gt;currentReadNode, other.currentReadNode);</div>
-<div class="line"><span class="lineno">  165</span>    std::swap(this-&gt;currentReadPos, other.currentReadPos);</div>
-<div class="line"><span class="lineno">  166</span>    std::swap(this-&gt;length, other.length);</div>
-<div class="line"><span class="lineno">  167</span>    std::swap(this-&gt;cap, other.cap);</div>
-<div class="line"><span class="lineno">  168</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a1d4216b89556192e836f99324075ef71">cap</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac59fa70f7615ac185657cdc80fee2db9">currentWritePos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac113d892233467efc209ba81a4c28f2a">length</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512">root</a>.</p>
+
 </div>
 </div>
 <a id="ae7297d57122eac25013c0904b567c78d" name="ae7297d57122eac25013c0904b567c78d"></a>
@@ -873,39 +695,9 @@ Public 成员函数</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a2681e147d95fc147d980d4c9397a8f2b">sese::io::ByteBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00268">268</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  268</span>                                                  {</div>
-<div class="line"><span class="lineno">  269</span>    int64_t actual_read = 0;</div>
-<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">  271</span>        <span class="comment">// 当前单元能提供的剩余读取量</span></div>
-<div class="line"><span class="lineno">  272</span>        <span class="comment">// 当前单元能满足读取需求</span></div>
-<div class="line"><span class="lineno">  273</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keywordtype">size_t</span> CURRENT_READ_NODE_REMAINING = currentReadNode-&gt;length - currentReadPos ;need_read &lt;= CURRENT_READ_NODE_REMAINING) {</div>
-<div class="line"><span class="lineno">  274</span>            <span class="comment">// memcpy((char *) buffer + actualRead, (char *) currentReadNode-&gt;buffer + currentReadPos, length);</span></div>
-<div class="line"><span class="lineno">  275</span>            actual_read += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(need_read);</div>
-<div class="line"><span class="lineno">  276</span>            currentReadPos += need_read;</div>
-<div class="line"><span class="lineno">  277</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  278</span>        }</div>
-<div class="line"><span class="lineno">  279</span>        <span class="comment">// 当前单元不能满足读取需求</span></div>
-<div class="line"><span class="lineno">  280</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  281</span>            <span class="comment">// memcpy((char *) buffer + actualRead, (char *) currentReadNode-&gt;buffer + currentReadPos, currentReadNodeRemaining);</span></div>
-<div class="line"><span class="lineno">  282</span>            actual_read += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(CURRENT_READ_NODE_REMAINING);</div>
-<div class="line"><span class="lineno">  283</span>            need_read -= CURRENT_READ_NODE_REMAINING;</div>
-<div class="line"><span class="lineno">  284</span>            currentReadPos += CURRENT_READ_NODE_REMAINING;</div>
-<div class="line"><span class="lineno">  285</span>            <span class="keywordflow">if</span> (currentReadNode == currentWriteNode) {</div>
-<div class="line"><span class="lineno">  286</span>                <span class="comment">// 已经没有剩余节点可供读取</span></div>
-<div class="line"><span class="lineno">  287</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  288</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  289</span>                <span class="comment">// 切换下一个节点继续读取</span></div>
-<div class="line"><span class="lineno">  290</span>                currentReadNode = currentReadNode-&gt;next;</div>
-<div class="line"><span class="lineno">  291</span>                currentReadPos = 0;</div>
-<div class="line"><span class="lineno">  292</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  293</span>            }</div>
-<div class="line"><span class="lineno">  294</span>        }</div>
-<div class="line"><span class="lineno">  295</span>    }</div>
-<div class="line"><span class="lineno">  296</span>    <span class="keywordflow">return</span> actual_read;</div>
-<div class="line"><span class="lineno">  297</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00022">sese::iocp::v1::Context::trunc()</a> , 以及 <a class="el" href="_byte_buffer_8cpp_source.html#l00054">sese::io::ByteBuffer::trunc()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a32d33a907cd841d5a306e2916351d7c3">currentReadNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3f617211f0f91908e420796377f0eef0">currentReadPos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a> , 以及 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#ab33f79771858dcf4d7c6dc1239bfef4f">sese::iocp::v1::Context::trunc()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a2681e147d95fc147d980d4c9397a8f2b">sese::io::ByteBuffer::trunc()</a>.</p>
 
 </div>
 </div>
@@ -947,46 +739,209 @@ Public 成员函数</h2></td></tr>
 
 <p>被 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a2c1cd42014e19737f09b98c9a198f9dd">sese::io::ByteBuffer</a> 重载.</p>
 
-<p class="definition">在文件 <a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a> 第 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00201">201</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  201</span>                                                                       {</div>
-<div class="line"><span class="lineno">  202</span>    int64_t actual_write = 0;</div>
-<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">  204</span>        <span class="comment">// 当前单元能提供的剩余写入量</span></div>
-<div class="line"><span class="lineno">  205</span>        <span class="comment">// 当前单元能满足写入需求</span></div>
-<div class="line"><span class="lineno">  206</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keywordtype">size_t</span> CURRENT_WRITE_NODE_REMAINING = currentWriteNode-&gt;cap - currentWriteNode-&gt;length; need_write &lt;= CURRENT_WRITE_NODE_REMAINING) {</div>
-<div class="line"><span class="lineno">  207</span>            memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(currentWriteNode-&gt;buffer) + currentWritePos, <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer) + actual_write, need_write);</div>
-<div class="line"><span class="lineno">  208</span>            actual_write += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(need_write);</div>
-<div class="line"><span class="lineno">  209</span>            currentWritePos += need_write;</div>
-<div class="line"><span class="lineno">  210</span>            currentWriteNode-&gt;length += need_write;</div>
-<div class="line"><span class="lineno">  211</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  212</span>        }</div>
-<div class="line"><span class="lineno">  213</span>        <span class="comment">// 当前单元不能满足读取需求</span></div>
-<div class="line"><span class="lineno">  214</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  215</span>            memcpy(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(currentWriteNode-&gt;buffer) + currentWritePos, <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer) + actual_write, CURRENT_WRITE_NODE_REMAINING);</div>
-<div class="line"><span class="lineno">  216</span>            actual_write += <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(CURRENT_WRITE_NODE_REMAINING);</div>
-<div class="line"><span class="lineno">  217</span>            need_write -= CURRENT_WRITE_NODE_REMAINING;</div>
-<div class="line"><span class="lineno">  218</span>            currentWriteNode-&gt;length = currentWriteNode-&gt;cap;</div>
-<div class="line"><span class="lineno">  219</span> </div>
-<div class="line"><span class="lineno">  220</span>            <span class="comment">// 更新全局信息</span></div>
-<div class="line"><span class="lineno">  221</span>            length += currentWriteNode-&gt;cap;</div>
-<div class="line"><span class="lineno">  222</span>            cap += factor;</div>
-<div class="line"><span class="lineno">  223</span>            <span class="comment">// 直接切换至下一个单元</span></div>
-<div class="line"><span class="lineno">  224</span>            currentWritePos = 0;</div>
-<div class="line"><span class="lineno">  225</span>            currentWriteNode-&gt;next = <span class="keyword">new</span> Node(factor); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  226</span>            currentWriteNode = currentWriteNode-&gt;next;</div>
-<div class="line"><span class="lineno">  227</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  228</span>        }</div>
-<div class="line"><span class="lineno">  229</span>    }</div>
-<div class="line"><span class="lineno">  230</span>    <span class="keywordflow">return</span> actual_write;</div>
-<div class="line"><span class="lineno">  231</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_byte_buffer_8cpp_source.html#l00011">sese::io::ByteBuffer::write()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00031">sese::_windows::iocp::v1::NativeContext::write()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00014">sese::iocp::v1::Context::write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a56353c41743991ccb285dd06b2cb70b6">sese::io::AbstractByteBuffer::Node::buffer</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#afc2b0f605ce183c5d4fa763b97b03ddc">sese::io::AbstractByteBuffer::Node::cap</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a1d4216b89556192e836f99324075ef71">cap</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a3899ef288fdaf1bc5ccdefaea0676803">currentWriteNode</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac59fa70f7615ac185657cdc80fee2db9">currentWritePos</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a10c1ae4ee4e5c54e87d2bd4c5969366d">factor</a>, <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#aba1fd104a592d0163607790179954da9">sese::io::AbstractByteBuffer::Node::length</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ac113d892233467efc209ba81a4c28f2a">length</a> , 以及 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html#a74249927c8d1906477f071fcd12e8142">sese::io::AbstractByteBuffer::Node::next</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a2c1cd42014e19737f09b98c9a198f9dd">sese::io::ByteBuffer::write()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#aadd2c79b75c32b5541740be20580d398">sese::_windows::iocp::v1::NativeContext::write()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a5312e84786b661ac3ad98400bb597635">sese::iocp::v1::Context::write()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a1d4216b89556192e836f99324075ef71" name="a1d4216b89556192e836f99324075ef71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4216b89556192e836f99324075ef71">&#9670;&#160;</a></span>cap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::AbstractByteBuffer::cap = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a4b380c9183805818aaa40db8bd667420">getCapacity()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">write()</a>.</p>
+
+</div>
+</div>
+<a id="a32d33a907cd841d5a306e2916351d7c3" name="a32d33a907cd841d5a306e2916351d7c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32d33a907cd841d5a306e2916351d7c3">&#9670;&#160;</a></span>currentReadNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html">Node</a>* sese::io::AbstractByteBuffer::currentReadNode = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a54239375ac434917f74006e7f10805c7">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a73f0889296b5de12c6b3eb272cade1cd">resetPos()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">trunc()</a>.</p>
+
+</div>
+</div>
+<a id="a3f617211f0f91908e420796377f0eef0" name="a3f617211f0f91908e420796377f0eef0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f617211f0f91908e420796377f0eef0">&#9670;&#160;</a></span>currentReadPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::AbstractByteBuffer::currentReadPos = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a73f0889296b5de12c6b3eb272cade1cd">resetPos()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">trunc()</a>.</p>
+
+</div>
+</div>
+<a id="a3899ef288fdaf1bc5ccdefaea0676803" name="a3899ef288fdaf1bc5ccdefaea0676803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3899ef288fdaf1bc5ccdefaea0676803">&#9670;&#160;</a></span>currentWriteNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html">Node</a>* sese::io::AbstractByteBuffer::currentWriteNode = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a54239375ac434917f74006e7f10805c7">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a7f688fe58a47816e45402d93de044a45">getLength()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">peek()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aba3ee2794220fe6a65232206a2cd30b2">read()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">trunc()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">write()</a>.</p>
+
+</div>
+</div>
+<a id="ac59fa70f7615ac185657cdc80fee2db9" name="ac59fa70f7615ac185657cdc80fee2db9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac59fa70f7615ac185657cdc80fee2db9">&#9670;&#160;</a></span>currentWritePos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::AbstractByteBuffer::currentWritePos = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a69380782f681e3e3b34ab8f3b2978ccf">getReadableSize()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">write()</a>.</p>
+
+</div>
+</div>
+<a id="a10c1ae4ee4e5c54e87d2bd4c5969366d" name="a10c1ae4ee4e5c54e87d2bd4c5969366d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10c1ae4ee4e5c54e87d2bd4c5969366d">&#9670;&#160;</a></span>factor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::AbstractByteBuffer::factor = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">write()</a>.</p>
+
+</div>
+</div>
+<a id="ac113d892233467efc209ba81a4c28f2a" name="ac113d892233467efc209ba81a4c28f2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac113d892233467efc209ba81a4c28f2a">&#9670;&#160;</a></span>length</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::AbstractByteBuffer::length = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>length 不计算最后一个 <a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html" title="缓冲节点">Node</a> 的，真实长度应为 realLength = length + currentWriteNode-&gt;length </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a7f688fe58a47816e45402d93de044a45">getLength()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">write()</a>.</p>
+
+</div>
+</div>
+<a id="ab83d29c07c99a202fdcb5291cb8ee512" name="ab83d29c07c99a202fdcb5291cb8ee512"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab83d29c07c99a202fdcb5291cb8ee512">&#9670;&#160;</a></span>root</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1io_1_1_abstract_byte_buffer_1_1_node.html">Node</a>* sese::io::AbstractByteBuffer::root = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a71513b2fbb858d57f8504154dc6714c2">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a54239375ac434917f74006e7f10805c7">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ab09a40ec6120b4fb1b044f7a8acbe62b">AbstractByteBuffer()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a86b89ad54d270e3128ff1c68d1840013">freeCapacity()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a73f0889296b5de12c6b3eb272cade1cd">resetPos()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a43ee24e56c7b9433a10605ea1b0d6cb9">swap()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#adb203e29f3c1cfa71e295405d3586a2b">~AbstractByteBuffer()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/io/<a class="el" href="_abstract_byte_buffer_8h_source.html">AbstractByteBuffer.h</a></li>
-<li>sese/io/<a class="el" href="_abstract_byte_buffer_8cpp_source.html">AbstractByteBuffer.cpp</a></li>
+<li>sese/io/<a class="el" href="_abstract_byte_buffer_8cpp.html">AbstractByteBuffer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

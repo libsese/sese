@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -176,10 +177,10 @@ $(document).ready(function(){initNavTree('_timerable_service___v1_8h_source.html
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#afc1b0427fc181ab6c67739a1c99bee18">freeTimeoutEvent</a>(<a class="code hl_struct" href="structsese_1_1service_1_1v1_1_1_timeout_event.html" title="超时事件结构">TimeoutEvent</a> *timeout_event);</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    uint64_t startTimestamp{0};</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#ab8e7738c201be7990e62ee14a0a2c732">   74</a></span>    uint64_t <a class="code hl_variable" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#ab8e7738c201be7990e62ee14a0a2c732">startTimestamp</a>{0};</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    std::map&lt;int, TimeoutEvent *&gt; timeoutMap;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    std::list&lt;TimeoutEvent *&gt; timeoutTable[60]{};</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#a091c9843b5abbaa2aa01bdaa42964c56">   76</a></span>    std::map&lt;int, TimeoutEvent *&gt; <a class="code hl_variable" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#a091c9843b5abbaa2aa01bdaa42964c56">timeoutMap</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#a3c73d09200f40b36ee35b1fb9f029acf">   77</a></span>    std::list&lt;TimeoutEvent *&gt; <a class="code hl_variable" href="classsese_1_1service_1_1v1_1_1_timerable_service.html#a3c73d09200f40b36ee35b1fb9f029acf">timeoutTable</a>[60]{};</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
 </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>

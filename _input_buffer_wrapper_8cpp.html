@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -132,9 +133,7 @@ $(document).ready(function(){initNavTree('_input_buffer_wrapper_8cpp.html',''); 
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_input_buffer_wrapper_8h_source.html">sese/io/InputBufferWrapper.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_output_stream_8h_source.html">sese/io/OutputStream.h</a>&quot;</code><br />
-</div>
-<p><a href="_input_buffer_wrapper_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
 <tr class="memitem:af113cff5714740934696ec2b636f778e" id="r_af113cff5714740934696ec2b636f778e"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_input_buffer_wrapper_8cpp.html#af113cff5714740934696ec2b636f778e">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> &amp;out, <a class="el" href="classsese_1_1io_1_1_input_buffer_wrapper.html">sese::io::InputBufferWrapper</a> &amp;input) noexcept</td></tr>
@@ -177,13 +176,6 @@ $(document).ready(function(){initNavTree('_input_buffer_wrapper_8cpp.html',''); 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_input_buffer_wrapper_8cpp_source.html">InputBufferWrapper.cpp</a> 第 <a class="el" href="_input_buffer_wrapper_8cpp_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>                                                                                      {</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keyword">auto</span> len = out.<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#ada571e75bdb3a0b883d269037e794969">getBuffer</a>() + input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#a4bee7ec4ad48fd42862ef9ae5912769a">getLength</a>(), input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#ad58c196ef36b13e425028b1b039c8e6d">getCapacity</a>() - input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#a4bee7ec4ad48fd42862ef9ae5912769a">getLength</a>());</div>
-<div class="line"><span class="lineno">   64</span>    input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#acd2ed47a9b72230b9e2826c2c6429383">trunc</a>(len);</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">return</span> len;</div>
-<div class="line"><span class="lineno">   66</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="afe931ae0905ba68ea87d721c37867e7f" name="afe931ae0905ba68ea87d721c37867e7f"></a>
@@ -220,13 +212,6 @@ $(document).ready(function(){initNavTree('_input_buffer_wrapper_8cpp.html',''); 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_input_buffer_wrapper_8cpp_source.html">InputBufferWrapper.cpp</a> 第 <a class="el" href="_input_buffer_wrapper_8cpp_source.html#l00068">68</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>                                                                                      {</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keyword">auto</span> len = out-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#ada571e75bdb3a0b883d269037e794969">getBuffer</a>() + input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#a4bee7ec4ad48fd42862ef9ae5912769a">getLength</a>(), input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#ad58c196ef36b13e425028b1b039c8e6d">getCapacity</a>() - input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#a4bee7ec4ad48fd42862ef9ae5912769a">getLength</a>());</div>
-<div class="line"><span class="lineno">   70</span>    input.<a class="code hl_function" href="classsese_1_1io_1_1_input_buffer_wrapper.html#acd2ed47a9b72230b9e2826c2c6429383">trunc</a>(len);</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">return</span> len;</div>
-<div class="line"><span class="lineno">   72</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

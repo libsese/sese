@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -133,11 +134,15 @@ $(document).ready(function(){initNavTree('classsese_1_1_object_pool.html',''); i
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#a9286e309377b8ed188e3e2a89ccf65ca">borrow</a>() noexcept</td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#a3feeb9b299408b8f4da6b30cfec79914">create</a>() noexcept</td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html#a9617504ed3c5dd90a447dc77738dc591">Noncopyable</a>()=default</td><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html#aea344687934584a12c4fd9c693ebe40c">Noncopyable</a>(const Noncopyable &amp;)=delete</td><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#a2f5b428c37d40efdc2a2b51f0fb5650d">mutex</a></td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html#a9617504ed3c5dd90a447dc77738dc591">Noncopyable</a>()=default</td><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html#aea344687934584a12c4fd9c693ebe40c">Noncopyable</a>(const Noncopyable &amp;)=delete</td><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#ac86186fbc5dffea3800177d53f3c15ee">ObjectPool</a>()=default</td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#ad28dd1ced31883e8c1ec1f4139747c82">ObjectPtr</a> typedef</td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html#a6c6e0a037e8da0af53b777f27b6836c3">operator=</a>(const Noncopyable &amp;)=delete</td><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#a19002fbf4bf473cef2adb76c06d7b25f">Ptr</a> typedef</td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#ab2ae5bc10473317b7d36f8567726f2c6">queue</a></td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#adf630ca4e971d973011e9a54591e96ea">recycleCallback</a>(const std::weak_ptr&lt; ObjectPool &gt; &amp;wk_pool, T *to_recycle) noexcept</td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html#a45e87fb882cec8e6e33a080cfe9e8e98">~Noncopyable</a>()=default</td><td class="entry"><a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1_object_pool.html#a9bad41586a21e8c3f2e9a7845be20cc6">~ObjectPool</a>() override</td><td class="entry"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
 </table></div><!-- contents -->

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,6 +129,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_decompressor.html',''); 
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_decompressor-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::Decompressor类 参考</div></div>
 </div><!--header-->
@@ -161,11 +163,26 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:ae5fc4eb6d6fab057343cfde966d637d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a303923ac7635e218382bb269b318c8e4" id="r_a303923ac7635e218382bb269b318c8e4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a303923ac7635e218382bb269b318c8e4">getTotalOut</a> () const</td></tr>
 <tr class="separator:a303923ac7635e218382bb269b318c8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:aabe2fcb56c03183a1e8099efcebadbad" id="r_aabe2fcb56c03183a1e8099efcebadbad"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#aabe2fcb56c03183a1e8099efcebadbad">stream</a></td></tr>
+<tr class="separator:aabe2fcb56c03183a1e8099efcebadbad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaf65d76875157b56b1cb5ec3cbdf14b" id="r_afaf65d76875157b56b1cb5ec3cbdf14b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#afaf65d76875157b56b1cb5ec3cbdf14b">cap</a> = 0</td></tr>
+<tr class="memdesc:afaf65d76875157b56b1cb5ec3cbdf14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示 buffer 分配空间大小  <br /></td></tr>
+<tr class="separator:afaf65d76875157b56b1cb5ec3cbdf14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5577d960c697d655e404b7880d75e0dd" id="r_a5577d960c697d655e404b7880d75e0dd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a5577d960c697d655e404b7880d75e0dd">length</a> = 0</td></tr>
+<tr class="memdesc:a5577d960c697d655e404b7880d75e0dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示 buffer 填充大小  <br /></td></tr>
+<tr class="separator:a5577d960c697d655e404b7880d75e0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4850a2b36ac3c808505ca2fb1c8726a8" id="r_a4850a2b36ac3c808505ca2fb1c8726a8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a4850a2b36ac3c808505ca2fb1c8726a8">read</a> = 0</td></tr>
+<tr class="memdesc:a4850a2b36ac3c808505ca2fb1c8726a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示 buffer 已读部分  <br /></td></tr>
+<tr class="separator:a4850a2b36ac3c808505ca2fb1c8726a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b47abb10e8d4dee47e750664e72578" id="r_a57b47abb10e8d4dee47e750664e72578"><td class="memItemLeft" align="right" valign="top">unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_decompressor.html#a57b47abb10e8d4dee47e750664e72578">buffer</a></td></tr>
+<tr class="memdesc:a57b47abb10e8d4dee47e750664e72578"><td class="mdescLeft">&#160;</td><td class="mdescRight">内部缓存 buffer  <br /></td></tr>
+<tr class="separator:a57b47abb10e8d4dee47e750664e72578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>解压器 </p>
-
-<p class="definition">在文件 <a class="el" href="_decompressor_8h_source.html">Decompressor.h</a> 第 <a class="el" href="_decompressor_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a68a2f513fcc982cedcef66fdd42be35a" name="a68a2f513fcc982cedcef66fdd42be35a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a68a2f513fcc982cedcef66fdd42be35a">&#9670;&#160;</a></span>OutputStream</h2>
@@ -178,8 +195,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_decompressor_8h_source.html">Decompressor.h</a> 第 <a class="el" href="_decompressor_8h_source.html#l00018">18</a> 行定义.</p>
 
 </div>
 </div>
@@ -225,24 +240,8 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_decompressor_8cpp_source.html">Decompressor.cpp</a> 第 <a class="el" href="_decompressor_8cpp_source.html#l00004">4</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    4</span>                                                                           {</div>
-<div class="line"><span class="lineno">    5</span>    stream = <span class="keyword">new</span> z_stream;</div>
-<div class="line"><span class="lineno">    6</span>    <span class="keyword">auto</span> stm = (z_stream *) stream;</div>
-<div class="line"><span class="lineno">    7</span>    stm-&gt;zalloc = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">    8</span>    stm-&gt;zfree = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">    9</span>    stm-&gt;opaque = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   10</span>    stm-&gt;avail_in = 0;</div>
-<div class="line"><span class="lineno">   11</span>    stm-&gt;next_in = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   12</span>    stm-&gt;avail_out = 0;</div>
-<div class="line"><span class="lineno">   13</span>    stm-&gt;next_out = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   14</span> </div>
-<div class="line"><span class="lineno">   15</span>    cap = buffer_size;</div>
-<div class="line"><span class="lineno">   16</span>    buffer = <span class="keyword">new</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>[buffer_size];</div>
-<div class="line"><span class="lineno">   17</span> </div>
-<div class="line"><span class="lineno">   18</span>    inflateInit2(stm, MAX_WBITS + (<span class="keywordtype">int</span>) type);</div>
-<div class="line"><span class="lineno">   19</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_decompressor.html#a57b47abb10e8d4dee47e750664e72578">buffer</a>, <a class="el" href="classsese_1_1_decompressor.html#afaf65d76875157b56b1cb5ec3cbdf14b">cap</a> , 以及 <a class="el" href="classsese_1_1_decompressor.html#aabe2fcb56c03183a1e8099efcebadbad">stream</a>.</p>
+
 </div>
 </div>
 <a id="a991f185be0bb687f113985403d8006e4" name="a991f185be0bb687f113985403d8006e4"></a>
@@ -270,16 +269,6 @@ Public 成员函数</h2></td></tr>
 
 <p>释放资源 </p>
 
-<p class="definition">在文件 <a class="el" href="_decompressor_8cpp_source.html">Decompressor.cpp</a> 第 <a class="el" href="_decompressor_8cpp_source.html#l00021">21</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>                                {</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keyword">delete</span>[] buffer; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>    <span class="keyword">auto</span> stm = (z_stream *) stream;</div>
-<div class="line"><span class="lineno">   25</span>    ::inflateEnd(stm);</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keyword">delete</span> stm; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   27</span>    stream = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   28</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -299,12 +288,6 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>当前已处理输入缓存大小 </p><dl class="section return"><dt>返回</dt><dd>缓存大小 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_decompressor_8cpp_source.html">Decompressor.cpp</a> 第 <a class="el" href="_decompressor_8cpp_source.html#l00090">90</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   90</span>                                          {</div>
-<div class="line"><span class="lineno">   91</span>    <span class="keyword">auto</span> stm = (z_stream *) stream;</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">return</span> stm-&gt;total_in;</div>
-<div class="line"><span class="lineno">   93</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a303923ac7635e218382bb269b318c8e4" name="a303923ac7635e218382bb269b318c8e4"></a>
@@ -323,13 +306,7 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>当前已处理输出缓存大小 </p><dl class="section return"><dt>返回</dt><dd>缓存大小 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_decompressor_8cpp_source.html">Decompressor.cpp</a> 第 <a class="el" href="_decompressor_8cpp_source.html#l00095">95</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>                                           {</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keyword">auto</span> stm = (z_stream *) stream;</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> stm-&gt;total_out - length + read;</div>
-<div class="line"><span class="lineno">   98</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read()</a>.</p>
 
 </div>
 </div>
@@ -363,50 +340,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_decompressor_8cpp_source.html">Decompressor.cpp</a> 第 <a class="el" href="_decompressor_8cpp_source.html#l00040">40</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>                                               {</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keyword">auto</span> stm = (z_stream *) stream;</div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">// 输出 buffer 未能完全输出，继续输出</span></div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (length != 0) {</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keyword">auto</span> last = length - read;</div>
-<div class="line"><span class="lineno">   45</span>        <span class="keyword">auto</span> real_wrote = out-&gt;write(buffer + read, last);</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">if</span> (last != real_wrote) {</div>
-<div class="line"><span class="lineno">   47</span>            <span class="comment">// 输出 buffer 未能全部输出</span></div>
-<div class="line"><span class="lineno">   48</span>            <a class="code hl_function" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read</a> += real_wrote;</div>
-<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> Z_BUF_ERROR;</div>
-<div class="line"><span class="lineno">   50</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   51</span>            length = 0;</div>
-<div class="line"><span class="lineno">   52</span>            <a class="code hl_function" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read</a> = 0;</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>            stm-&gt;avail_out = (<span class="keywordtype">unsigned</span> int) cap;</div>
-<div class="line"><span class="lineno">   55</span>            stm-&gt;next_out = buffer;</div>
-<div class="line"><span class="lineno">   56</span>        }</div>
-<div class="line"><span class="lineno">   57</span>    }</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>    <span class="comment">// 输入 buffer 未解析完全，继续解析</span></div>
-<div class="line"><span class="lineno">   60</span>    <span class="keywordtype">int</span> ret;</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">do</span> {</div>
-<div class="line"><span class="lineno">   62</span>        ret = <a class="code hl_function" href="classsese_1_1_decompressor.html#a211890d7a081a70b6d2076c98eb9d52f">::inflate</a>(stm, Z_FINISH);</div>
-<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">if</span> (ret == Z_STREAM_ERROR)</div>
-<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">return</span> Z_STREAM_ERROR;</div>
-<div class="line"><span class="lineno">   65</span> </div>
-<div class="line"><span class="lineno">   66</span>        <span class="keyword">auto</span> wrote = (int) cap - stm-&gt;avail_out;</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keyword">auto</span> real_wrote = out-&gt;write(buffer, wrote);</div>
-<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">if</span> (wrote != real_wrote) {</div>
-<div class="line"><span class="lineno">   69</span>            <span class="comment">// 输出 buffer 未能全部输出</span></div>
-<div class="line"><span class="lineno">   70</span>            length = wrote;</div>
-<div class="line"><span class="lineno">   71</span>            <a class="code hl_function" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read</a> = real_wrote;</div>
-<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">return</span> Z_BUF_ERROR;</div>
-<div class="line"><span class="lineno">   73</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   74</span>            stm-&gt;avail_out = (<span class="keywordtype">unsigned</span> int) cap;</div>
-<div class="line"><span class="lineno">   75</span>            stm-&gt;next_out = buffer;</div>
-<div class="line"><span class="lineno">   76</span>        }</div>
-<div class="line"><span class="lineno">   77</span>    } <span class="keywordflow">while</span> (ret != Z_STREAM_END);</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> Z_OK;</div>
-<div class="line"><span class="lineno">   80</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
 
 </div>
 </div>
@@ -443,15 +377,6 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_decompressor_8cpp_source.html">Decompressor.cpp</a> 第 <a class="el" href="_decompressor_8cpp_source.html#l00030">30</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>                                                                      {</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keyword">auto</span> stm = (z_stream *) stream;</div>
-<div class="line"><span class="lineno">   32</span>    stm-&gt;avail_in = (<span class="keywordtype">unsigned</span> int) input_len;</div>
-<div class="line"><span class="lineno">   33</span>    stm-&gt;next_in = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *) <a class="code hl_function" href="classsese_1_1_decompressor.html#afdac9051eef8e8bf0369450d1118a50f">input</a>;</div>
-<div class="line"><span class="lineno">   34</span>    stm-&gt;avail_out = (<span class="keywordtype">unsigned</span> int) cap;</div>
-<div class="line"><span class="lineno">   35</span>    stm-&gt;next_out = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *) buffer;</div>
-<div class="line"><span class="lineno">   36</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a6536b3e4ffc3695f9c9da0e58754d514" name="a6536b3e4ffc3695f9c9da0e58754d514"></a>
@@ -471,21 +396,138 @@ Public 成员函数</h2></td></tr>
 
 <p>重置 z_stream 对象 </p>
 
-<p class="definition">在文件 <a class="el" href="_decompressor_8cpp_source.html">Decompressor.cpp</a> 第 <a class="el" href="_decompressor_8cpp_source.html#l00082">82</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>                            {</div>
-<div class="line"><span class="lineno">   83</span>    length = 0;</div>
-<div class="line"><span class="lineno">   84</span>    read = 0;</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keyword">auto</span> stm = (z_stream *) stream;</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> inflateReset(stm);</div>
-<div class="line"><span class="lineno">   87</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a57b47abb10e8d4dee47e750664e72578" name="a57b47abb10e8d4dee47e750664e72578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57b47abb10e8d4dee47e750664e72578">&#9670;&#160;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char* sese::Decompressor::buffer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>内部缓存 buffer </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_decompressor.html#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
+
+</div>
+</div>
+<a id="afaf65d76875157b56b1cb5ec3cbdf14b" name="afaf65d76875157b56b1cb5ec3cbdf14b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaf65d76875157b56b1cb5ec3cbdf14b">&#9670;&#160;</a></span>cap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::Decompressor::cap = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>表示 buffer 分配空间大小 </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_decompressor.html#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
+
+</div>
+</div>
+<a id="a5577d960c697d655e404b7880d75e0dd" name="a5577d960c697d655e404b7880d75e0dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5577d960c697d655e404b7880d75e0dd">&#9670;&#160;</a></span>length</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::Decompressor::length = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>表示 buffer 填充大小 </p>
+
+</div>
+</div>
+<a id="a4850a2b36ac3c808505ca2fb1c8726a8" name="a4850a2b36ac3c808505ca2fb1c8726a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4850a2b36ac3c808505ca2fb1c8726a8">&#9670;&#160;</a></span>read</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::Decompressor::read = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>表示 buffer 已读部分 </p>
+
+</div>
+</div>
+<a id="aabe2fcb56c03183a1e8099efcebadbad" name="aabe2fcb56c03183a1e8099efcebadbad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabe2fcb56c03183a1e8099efcebadbad">&#9670;&#160;</a></span>stream</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* sese::Decompressor::stream</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_decompressor.html#ac19a21884e764ecdebd6b528e90cc1b1">Decompressor()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/convert/<a class="el" href="_decompressor_8h_source.html">Decompressor.h</a></li>
-<li>sese/convert/<a class="el" href="_decompressor_8cpp_source.html">Decompressor.cpp</a></li>
+<li>sese/convert/<a class="el" href="_decompressor_8cpp.html">Decompressor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

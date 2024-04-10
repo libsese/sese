@@ -17,5 +17,9 @@ var classsese_1_1_version =
     [ "setPatch", "classsese_1_1_version.html#af4961136c3a74485a8b62a72b1da6b1a", null ],
     [ "setRevision", "classsese_1_1_version.html#a4597d90775de7cd96894ef0839fa88dd", null ],
     [ "toShortString", "classsese_1_1_version.html#a02281335899be50b76bc5536ba48cd16", null ],
-    [ "toString", "classsese_1_1_version.html#ac90b3ac66d4b768a11883711878b1b43", null ]
+    [ "toString", "classsese_1_1_version.html#ac90b3ac66d4b768a11883711878b1b43", null ],
+    [ "major_", "classsese_1_1_version.html#a9d4db95b5411b295aed9cc93fef5f81c", null ],
+    [ "minor_", "classsese_1_1_version.html#abaf7a70efcd12e94532c9ca8bf3c40e5", null ],
+    [ "patch_", "classsese_1_1_version.html#a3f1d347a71be56318b10b429dbb8aac3", null ],
+    [ "revision_", "classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1", null ]
 ];

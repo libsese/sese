@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -188,10 +189,7 @@ Protected 属性</h2></td></tr>
 <tr class="memitem:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance" id="r_a85be3abcd3cd8c86292965639a208b16"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a> &gt;</td></tr>
 <tr class="separator:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8h_source.html">MariaDriverInstanceImpl.h</a> 第 <a class="el" href="_maria_driver_instance_impl_8h_source.html#l00008">8</a> 行定义.</p>
-</div><h2 class="groupheader">构造及析构函数说明</h2>
+<h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a4adcf72b19d56aee7c6d31a4dd32ba56" name="a4adcf72b19d56aee7c6d31a4dd32ba56"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4adcf72b19d56aee7c6d31a4dd32ba56">&#9670;&#160;</a></span>MariaDriverInstanceImpl()</h2>
 
@@ -216,11 +214,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00006">6</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                                         {</div>
-<div class="line"><span class="lineno">    7</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a> = <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>;</div>
-<div class="line"><span class="lineno">    8</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a48dd5818ccd8246bf8895c9e851cb108" name="a48dd5818ccd8246bf8895c9e851cb108"></a>
@@ -246,12 +239,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00010">10</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                               {</div>
-<div class="line"><span class="lineno">   11</span>    mysql_close(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   12</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_maria_driver_instance_impl_8h_source.html#l00029">conn</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>.</p>
 
 </div>
 </div>
@@ -282,11 +270,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a86eb94e26844ebcb016819d2716f6c80">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00097">97</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>                                                 {</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> mysql_query(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>, <span class="stringliteral">&quot;BEGIN;&quot;</span>) == 0;</div>
-<div class="line"><span class="lineno">   99</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a9b93d5004654cec720b14531461b98ea" name="a9b93d5004654cec720b14531461b98ea"></a>
@@ -320,12 +303,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a57d6ebbec84b20c7183ec1239ff123cc">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00078">78</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>                                                  {</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordtype">int</span> comm = (<span class="keywordtype">unsigned</span> char) mysql_commit(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> comm == 0;</div>
-<div class="line"><span class="lineno">   81</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa27f0972fd6d5045cada5f94059c5831" name="aa27f0972fd6d5045cada5f94059c5831"></a>
@@ -367,27 +344,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#ac59e04041daa62eef70adbbe923a6f3c">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00029">29</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>                                                                                          {</div>
-<div class="line"><span class="lineno">   30</span>    MYSQL_STMT *stmt = mysql_stmt_init(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (stmt == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordtype">size_t</span> len = strlen(sql);</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (mysql_stmt_prepare(stmt, sql, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>) len)) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>    <span class="comment">// 此处需要手动计算 &#39;?&#39; 个数</span></div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; len; ++i) {</div>
-<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">if</span> (sql[i] == <span class="charliteral">&#39;?&#39;</span>) <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>++;</div>
-<div class="line"><span class="lineno">   40</span>    }</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">// 获取结果集元数据，对于非 DQL 而言这可能是 nullptr，不应作为错误处理</span></div>
-<div class="line"><span class="lineno">   43</span>    <span class="keyword">auto</span> meta = mysql_stmt_result_metadata(stmt);</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> std::make_unique&lt;impl::MariaPreparedStatementImpl&gt;(stmt, meta, <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>);</div>
-<div class="line"><span class="lineno">   46</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
 
 </div>
 </div>
@@ -430,15 +387,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a1c872d805ce3065afc9843f0ee2ce361">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00014">14</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>                                                                               {</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">if</span> (0 != mysql_query(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>, sql)) {</div>
-<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   17</span>    }</div>
-<div class="line"><span class="lineno">   18</span>    MYSQL_RES *result = mysql_store_result(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">return</span> std::make_unique&lt;MariaResultSetImpl&gt;(result);</div>
-<div class="line"><span class="lineno">   20</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a481c5f148391f14b57eff9a4c3e14a37" name="a481c5f148391f14b57eff9a4c3e14a37"></a>
@@ -480,14 +428,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a228dbfc67efa358605ff73c720536793">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00022">22</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   22</span>                                                                           {</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">if</span> (0 != mysql_query(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>, sql)) {</div>
-<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">   25</span>    }</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> (int64_t) mysql_affected_rows(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ab9e3a3880e20c9b738e3b2c0d2c6c162" name="ab9e3a3880e20c9b738e3b2c0d2c6c162"></a>
@@ -523,20 +463,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a54a3030dbd9dcafe8f14cc437a6ee0d4">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00066">66</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>                                                                     {</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keyword">auto</span> rt = <a class="code hl_function" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#aef84d356d5b874368588f8f64873d83e">executeQuery</a>(<span class="stringliteral">&quot;show variables like &#39;autocommit&#39;;&quot;</span>);</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> (rt) {</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">while</span> (rt-&gt;next()) {</div>
-<div class="line"><span class="lineno">   70</span>            status = <a class="code hl_function" href="namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1">strcmp</a>(rt-&gt;getString(1).data(), <span class="stringliteral">&quot;ON&quot;</span>) == 0;</div>
-<div class="line"><span class="lineno">   71</span>        }</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   73</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
-<div class="line"><span class="lineno">   76</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="util_2_util_8cpp_source.html#l00042">sese::strcmp()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1">sese::strcmp()</a>.</p>
 
 </div>
 </div>
@@ -573,16 +500,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a11c2e3954833882365a74431ae85417a">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00088">88</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>                                                                        {</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordtype">id</span> = (int64_t) mysql_insert_id(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">if</span> (<span class="keywordtype">id</span>) {</div>
-<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   92</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   94</span>    }</div>
-<div class="line"><span class="lineno">   95</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a82ad69b66795715b4e9e3b6743e4b3c4" name="a82ad69b66795715b4e9e3b6743e4b3c4"></a>
@@ -611,11 +528,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a5b25a40ffc85321d20bd19522976e120">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00048">48</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                             {</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) mysql_errno(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a1ebb39d96f13d6ef7bacbf3e777090b3" name="a1ebb39d96f13d6ef7bacbf3e777090b3"></a>
@@ -644,11 +556,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a440896cddef5269a0a80e5010fe6b7d4">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00052">52</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>                                                                            {</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">return</span> mysql_error(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   54</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aee8504fd5f25ba0e085fae2d66d0e979" name="aee8504fd5f25ba0e085fae2d66d0e979"></a>
@@ -682,12 +589,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a101cebfab159068ef701980db574b52c">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00083">83</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>                                                    {</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordtype">int</span> back = (<span class="keywordtype">unsigned</span> char) mysql_rollback(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>);</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">return</span> back == 0;</div>
-<div class="line"><span class="lineno">   86</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="af54508b9bf4aaa491889711f6665d535" name="af54508b9bf4aaa491889711f6665d535"></a>
@@ -731,17 +632,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a28b9a4621f53551ab3156583ead8e2ac">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a> 第 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00056">56</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>                                                                    {</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordtype">int</span> temp;</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (enable) {</div>
-<div class="line"><span class="lineno">   59</span>        temp = (<span class="keywordtype">unsigned</span> char) mysql_autocommit(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>, 1);</div>
-<div class="line"><span class="lineno">   60</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   61</span>        temp = (<span class="keywordtype">unsigned</span> char) mysql_autocommit(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a49c664ad8d629712451193d1e2ce042a">conn</a>, 0);</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">return</span> temp == 0;</div>
-<div class="line"><span class="lineno">   64</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -765,15 +655,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_maria_driver_instance_impl_8h_source.html">MariaDriverInstanceImpl.h</a> 第 <a class="el" href="_maria_driver_instance_impl_8h_source.html#l00029">29</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00010">~MariaDriverInstanceImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a48dd5818ccd8246bf8895c9e851cb108">~MariaDriverInstanceImpl()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/internal/db/impl/maria/<a class="el" href="_maria_driver_instance_impl_8h_source.html">MariaDriverInstanceImpl.h</a></li>
-<li>sese/internal/db/impl/maria/<a class="el" href="_maria_driver_instance_impl_8cpp_source.html">MariaDriverInstanceImpl.cpp</a></li>
+<li>sese/internal/db/impl/maria/<a class="el" href="_maria_driver_instance_impl_8cpp.html">MariaDriverInstanceImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

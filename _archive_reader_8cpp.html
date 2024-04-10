@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -136,9 +137,7 @@ $(document).ready(function(){initNavTree('_archive_reader_8cpp.html',''); initRe
 <code>#include &lt;<a class="el" href="_file_8h_source.html">sese/io/File.h</a>&gt;</code><br />
 <code>#include &lt;archive.h&gt;</code><br />
 <code>#include &lt;archive_entry.h&gt;</code><br />
-</div>
-<p><a href="_archive_reader_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
 <tr class="memitem:a7b8003af9a638915bbca18f3896c5eb7" id="r_a7b8003af9a638915bbca18f3896c5eb7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>&#160;&#160;&#160;((struct archive *) (this-&gt;archive))</td></tr>
@@ -165,8 +164,6 @@ $(document).ready(function(){initNavTree('_archive_reader_8cpp.html',''); initRe
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00122">122</a> 行定义.</p>
 
 </div>
 </div>
@@ -197,14 +194,9 @@ $(document).ready(function(){initNavTree('_archive_reader_8cpp.html',''); initRe
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00118">118</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  118</span>                                                            {</div>
-<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#aebf5b6bd2c0a70fd7741be3831d79cd9">ArchiveReader::closeCallback</a>(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_reader.html" title="存档读取器">ArchiveReader</a> *<span class="keyword">&gt;</span>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>));</div>
-<div class="line"><span class="lineno">  120</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00185">sese::archive::ArchiveReader::closeCallback()</a> , 以及 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aebf5b6bd2c0a70fd7741be3831d79cd9">sese::archive::ArchiveReader::closeCallback()</a> , 以及 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00138">sese::archive::ArchiveWriter::begin()</a>, <a class="el" href="net_2_socket_8cpp_source.html#l00092">sese::net::Socket::close()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00140">sese::archive::ArchiveReader::extract()</a>, <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00011">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="_epoll_event_loop_8cpp_source.html#l00023">sese::event::EpollEventLoop::~EpollEventLoop()</a> , 以及 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00036">sese::event::KqueueEventLoop::~KqueueEventLoop()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3e6fb3ac807b2693a6a6750dbe8c12ab">sese::archive::ArchiveWriter::begin()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a39ef6f7cfb09604181a82d890232a778">sese::net::Socket::close()</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#af8d92c9cafb69b7e4fd17d55edfc728a">sese::archive::ArchiveReader::extract()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a88fed3ac353a5545f52d6a90b2a732bc">sese::event::EpollEventLoop::~EpollEventLoop()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#acea77ed4593ed26e04e9bf066a0529ac">sese::event::KqueueEventLoop::~KqueueEventLoop()</a>.</p>
 
 </div>
 </div>
@@ -234,14 +226,9 @@ $(document).ready(function(){initNavTree('_archive_reader_8cpp.html',''); initRe
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00106">106</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>                                                           {</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#aa722ee18d5a995bb6261205eb7c81726">ArchiveReader::openCallback</a>(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_reader.html" title="存档读取器">ArchiveReader</a> *<span class="keyword">&gt;</span>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>));</div>
-<div class="line"><span class="lineno">  108</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00175">sese::archive::ArchiveReader::openCallback()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa722ee18d5a995bb6261205eb7c81726">sese::archive::ArchiveReader::openCallback()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00138">sese::archive::ArchiveWriter::begin()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00140">sese::archive::ArchiveReader::extract()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1archive_1_1_archive_writer.html#a3e6fb3ac807b2693a6a6750dbe8c12ab">sese::archive::ArchiveWriter::begin()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#af8d92c9cafb69b7e4fd17d55edfc728a">sese::archive::ArchiveReader::extract()</a>.</p>
 
 </div>
 </div>
@@ -277,15 +264,9 @@ $(document).ready(function(){initNavTree('_archive_reader_8cpp.html',''); initRe
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00113">113</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  113</span>                                                                                    {</div>
-<div class="line"><span class="lineno">  114</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#a3f5284d50f16126bdac2cb4ebcfc2e30">ArchiveReader::readCallback</a>(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_reader.html" title="存档读取器">ArchiveReader</a> *<span class="keyword">&gt;</span>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>), buffer);</div>
-<div class="line"><span class="lineno">  116</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00179">sese::archive::ArchiveReader::readCallback()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a3f5284d50f16126bdac2cb4ebcfc2e30">sese::archive::ArchiveReader::readCallback()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_compressor_8cpp_source.html#l00042">sese::Compressor::deflate()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00140">sese::archive::ArchiveReader::extract()</a>, <a class="el" href="_i_o_buf_8cpp_source.html#l00026">sese::iocp::IOBufNode::getReadableSize()</a>, <a class="el" href="_compressor_8cpp_source.html#l00097">sese::Compressor::getTotalOut()</a>, <a class="el" href="_decompressor_8cpp_source.html#l00095">sese::Decompressor::getTotalOut()</a>, <a class="el" href="_decompressor_8cpp_source.html#l00040">sese::Decompressor::inflate()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00091">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00060">sese::io::AbstractFixedBuffer::peek()</a>, <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00034">sese::io::AbstractFixedBuffer::read()</a>, <a class="el" href="_base_stream_reader_8h_source.html#l00061">sese::io::BaseStreamReader&lt; T &gt;::readLine()</a>, <a class="el" href="_compressor_8cpp_source.html#l00084">sese::Compressor::reset()</a>, <a class="el" href="_decompressor_8cpp_source.html#l00082">sese::Decompressor::reset()</a> , 以及 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00077">sese::io::AbstractFixedBuffer::trunc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_compressor.html#ac285dd8f592ee7bf474275402437b536">sese::Compressor::deflate()</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#af8d92c9cafb69b7e4fd17d55edfc728a">sese::archive::ArchiveReader::extract()</a>, <a class="el" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7b46810616c4e0d3e2b1ed66e8d13b0d">sese::iocp::IOBufNode::getReadableSize()</a>, <a class="el" href="classsese_1_1_compressor.html#acd171164a8cbecc9ec3d9ebdd0b34b43">sese::Compressor::getTotalOut()</a>, <a class="el" href="classsese_1_1_decompressor.html#a303923ac7635e218382bb269b318c8e4">sese::Decompressor::getTotalOut()</a>, <a class="el" href="classsese_1_1_decompressor.html#a211890d7a081a70b6d2076c98eb9d52f">sese::Decompressor::inflate()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#aa202056b5f571e8540a713125c2b28b3">sese::io::AbstractFixedBuffer::peek()</a>, <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#aac0a038c6397343049837a641242ae94">sese::io::AbstractFixedBuffer::read()</a>, <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#a78020ced8fe9ed303500aa117287775b">sese::io::BaseStreamReader&lt; T &gt;::readLine()</a>, <a class="el" href="classsese_1_1_compressor.html#a7468f95aaf6478be9bef051817b2adcb">sese::Compressor::reset()</a>, <a class="el" href="classsese_1_1_decompressor.html#a6536b3e4ffc3695f9c9da0e58754d514">sese::Decompressor::reset()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_abstract_fixed_buffer.html#a5d31667bbe8bc28d2336ae1c39a05a15">sese::io::AbstractFixedBuffer::trunc()</a>.</p>
 
 </div>
 </div>

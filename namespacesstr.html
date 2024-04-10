@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -195,8 +196,6 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8h_source.html">Algorithm.h</a> 第 <a class="el" href="_algorithm_8h_source.html#l00016">16</a> 行定义.</p>
-
 </div>
 </div>
 <h2 class="groupheader">函数说明</h2>
@@ -234,30 +233,9 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8cpp_source.html">Algorithm.cpp</a> 第 <a class="el" href="_algorithm_8cpp_source.html#l00063">63</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>                                             {</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keyword">auto</span> n = std::strlen(str);</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keyword">auto</span> m = std::strlen(sub);</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordtype">int</span> i = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m) - 1;</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordtype">int</span> j = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m) - 1;</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">while</span> (j &gt;= 0 &amp;&amp; i &lt; n) {</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (str[i] == sub[j]) {</div>
-<div class="line"><span class="lineno">   70</span>            i--;</div>
-<div class="line"><span class="lineno">   71</span>            j--;</div>
-<div class="line"><span class="lineno">   72</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   73</span>            i += <a class="code hl_function" href="_algorithm_8cpp.html#a9dd39f540ac039dab65afc7300115c0b">dist</a>(sub, str[i]);</div>
-<div class="line"><span class="lineno">   74</span>            j = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m) - 1;</div>
-<div class="line"><span class="lineno">   75</span>        }</div>
-<div class="line"><span class="lineno">   76</span>    }</div>
-<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">if</span> (j &lt; 0) {</div>
-<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">return</span> i + 1;</div>
-<div class="line"><span class="lineno">   79</span>    }</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">   81</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_algorithm_8cpp_source.html#l00047">dist()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_algorithm_8cpp.html#a9dd39f540ac039dab65afc7300115c0b">dist()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00484">sstr::SStringView::find()</a>, <a class="el" href="_s_string_8cpp_source.html#l00476">sstr::SStringView::findByBytes()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00581">sstr::SStringView::split()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#a81a7e16b15c09f1f3a4d4f25716574cc">sstr::SStringView::find()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a91c9f31de316644651842c0a20d272b0">sstr::SStringView::findByBytes()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#adcf5893628660a32df09d75d7d3cbbb9">sstr::SStringView::split()</a>.</p>
 
 </div>
 </div>
@@ -301,28 +279,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8cpp_source.html">Algorithm.cpp</a> 第 <a class="el" href="_algorithm_8cpp_source.html#l00113">113</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  113</span>                                                                    {</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keyword">auto</span> n = <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>;</div>
-<div class="line"><span class="lineno">  115</span>    <span class="keyword">auto</span> m = sub.size();</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordtype">int</span> i = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m) - 1;</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordtype">int</span> j = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m) - 1;</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">while</span> (j &gt;= 0 &amp;&amp; i &lt; n) {</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">if</span> (str[i] == <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(sub[j])) {</div>
-<div class="line"><span class="lineno">  120</span>            i--;</div>
-<div class="line"><span class="lineno">  121</span>            j--;</div>
-<div class="line"><span class="lineno">  122</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  123</span>            i += <a class="code hl_function" href="_algorithm_8cpp.html#a9dd39f540ac039dab65afc7300115c0b">dist</a>(sub, str[i]);</div>
-<div class="line"><span class="lineno">  124</span>            j = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m) - 1;</div>
-<div class="line"><span class="lineno">  125</span>        }</div>
-<div class="line"><span class="lineno">  126</span>    }</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> (j &lt; 0) {</div>
-<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">return</span> i + 1;</div>
-<div class="line"><span class="lineno">  129</span>    }</div>
-<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  131</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_algorithm_8cpp_source.html#l00047">dist()</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_algorithm_8cpp.html#a9dd39f540ac039dab65afc7300115c0b">dist()</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
 </div>
 </div>
@@ -349,16 +306,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>字符串字节长度 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00021">21</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>                                                        {</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keywordtype">size_t</span> len = 0;</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">while</span> (*(str + len)) {</div>
-<div class="line"><span class="lineno">   24</span>        len++;</div>
-<div class="line"><span class="lineno">   25</span>    }</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> len;</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00280">sstr::SString::fromUTF8()</a>, <a class="el" href="_s_string_8cpp_source.html#l00455">sstr::SStringView::size()</a>, <a class="el" href="_s_string_8cpp_source.html#l00581">sstr::SStringView::split()</a>, <a class="el" href="_s_string_8cpp_source.html#l00439">sstr::SStringView::SStringView()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00650">sstr::SStringView::toChars()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string.html#a665e3d2b50a3be6d87cdac902d4a99e1">sstr::SString::fromUTF8()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ae4c7d6597ab71acc037a4f1b8bcb29ac">sstr::SStringView::size()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#adcf5893628660a32df09d75d7d3cbbb9">sstr::SStringView::split()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#aac68ea4919af1aa9bf3be1690d0579a3">sstr::SStringView::SStringView()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a0fccc3cebe1ef25013d9c9ff5bfb8305">sstr::SStringView::toChars()</a>.</p>
 
 </div>
 </div>
@@ -385,22 +333,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>字符占位字节数 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00042">42</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>                                      {</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> ((ch &amp; 0b10000000) == 0b00000000) {</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   45</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((ch &amp; 0b11100000) == 0b11000000) {</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">   47</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((ch &amp; 0b11110000) == 0b11100000) {</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span> 3;</div>
-<div class="line"><span class="lineno">   49</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((ch &amp; 0b11111000) == 0b11110000) {</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> 4;</div>
-<div class="line"><span class="lineno">   51</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00128">at()</a>, <a class="el" href="_s_string_8cpp_source.html#l00695">sstr::SStringView::at()</a>, <a class="el" href="_s_string_8cpp_source.html#l00484">sstr::SStringView::find()</a>, <a class="el" href="_s_string_8cpp_source.html#l00029">getStringLengthFromUTF8String()</a>, <a class="el" href="_s_string_8cpp_source.html#l00120">getUnicodeFromUTF8Char()</a>, <a class="el" href="_s_string_8cpp_source.html#l00459">sstr::SStringView::len()</a>, <a class="el" href="_text_reader_8cpp_source.html#l00022">sese::text::TextReader::readLine()</a>, <a class="el" href="_s_string_8cpp_source.html#l00537">sstr::SStringView::reverse()</a>, <a class="el" href="_s_string_8cpp_source.html#l00620">sstr::SStringView::substring()</a>, <a class="el" href="_s_string_8cpp_source.html#l00650">sstr::SStringView::toChars()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00669">sstr::SStringView::toCWString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp.html#a8252847139f3ffb67cc7e1afeeaba632">at()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ac8879e46ce80450e35c68667f2118850">sstr::SStringView::at()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a81a7e16b15c09f1f3a4d4f25716574cc">sstr::SStringView::find()</a>, <a class="el" href="namespacesstr.html#acd254492b0387d2d265114a4e0aade10">getStringLengthFromUTF8String()</a>, <a class="el" href="namespacesstr.html#a2290d61cc6d0c8dd374a499ff5df6d89">getUnicodeFromUTF8Char()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a53d8ec1384d2110dc3552c5114823c27">sstr::SStringView::len()</a>, <a class="el" href="classsese_1_1text_1_1_text_reader.html#a62c6048cdba4db7ecc9f35390284b325">sese::text::TextReader::readLine()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a3046249e69445564aab06f6338ae7a71">sstr::SStringView::reverse()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#ab84e992d54f0199ce23c0bc54f200617">sstr::SStringView::substring()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a0fccc3cebe1ef25013d9c9ff5bfb8305">sstr::SStringView::toChars()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a48ee9a0785da97bc727220b69e8afabd">sstr::SStringView::toCWString()</a>.</p>
 
 </div>
 </div>
@@ -427,20 +360,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>字符串长度 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00029">29</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>                                                          {</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordtype">size_t</span> len = 0;</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordtype">size_t</span> i = 0;</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">if</span> (0 == str[i]) <span class="keywordflow">return</span> len;</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordtype">char</span> n = <a class="code hl_function" href="namespacesstr.html#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char</a>(str[i]);</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(-1) == n) <span class="keywordflow">return</span> len;</div>
-<div class="line"><span class="lineno">   36</span>        i += n;</div>
-<div class="line"><span class="lineno">   37</span>        len++;</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8cpp_source.html#l00042">getSizeFromUTF8Char()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesstr.html#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char()</a>.</p>
 
 </div>
 </div>
@@ -478,25 +398,9 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>Unicode 字符 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00079">79</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   79</span>                                                                {</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">switch</span> (<a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>) {</div>
-<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">case</span> 1:</div>
-<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">return</span> <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a>(*ch &amp; 0b01111111);</div>
-<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">case</span> 2:</div>
-<div class="line"><span class="lineno">   84</span>            <span class="keywordflow">return</span> <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a>((*ch &amp; 0b00011111) &lt;&lt; 6 | (*(ch + 1) &amp; 0b00111111));</div>
-<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">case</span> 3:</div>
-<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span> <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a>((*ch &amp; 0b00001111) &lt;&lt; 12 | (*(ch + 1) &amp; 0b00111111) &lt;&lt; 6 | (*(ch + 2) &amp; 0b00111111));</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">case</span> 4:</div>
-<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">return</span> <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a>((*ch &amp; 0b00000111) &lt;&lt; 18 | (*(ch + 1) &amp; 0b00111111) &lt;&lt; 12 | (*(ch + 2) &amp; 0b00111111) &lt;&lt; 6 | (*(ch + 3) &amp; 0b00111111));</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   90</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="_s_string_8cpp.html#a2cf7d1fd6461ba228219b3c034b7919a">null_char</a>;</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
-<div class="line"><span class="lineno">   92</span>}</div>
-</div><!-- fragment -->
 <p class="reference">引用了 <a class="el" href="_s_string_8cpp.html#a2cf7d1fd6461ba228219b3c034b7919a">null_char</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00695">sstr::SStringView::at()</a>, <a class="el" href="_s_string_8cpp_source.html#l00120">getUnicodeFromUTF8Char()</a>, <a class="el" href="_s_string_8cpp_source.html#l00650">sstr::SStringView::toChars()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00669">sstr::SStringView::toCWString()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view.html#ac8879e46ce80450e35c68667f2118850">sstr::SStringView::at()</a>, <a class="el" href="namespacesstr.html#a2290d61cc6d0c8dd374a499ff5df6d89">getUnicodeFromUTF8Char()</a>, <a class="el" href="classsstr_1_1_s_string_view.html#a0fccc3cebe1ef25013d9c9ff5bfb8305">sstr::SStringView::toChars()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view.html#a48ee9a0785da97bc727220b69e8afabd">sstr::SStringView::toCWString()</a>.</p>
 
 </div>
 </div>
@@ -523,14 +427,9 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>字符代码 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00120">120</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                     {</div>
-<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesstr.html#a1f87d98d2b85585199a66b90beba9995">getUnicodeCharFromUTF8Char</a>(<a class="code hl_function" href="namespacesstr.html#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char</a>(*u8char), u8char);</div>
-<div class="line"><span class="lineno">  122</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8cpp_source.html#l00042">getSizeFromUTF8Char()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00079">getUnicodeCharFromUTF8Char()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesstr.html#a033291010134d6d14f916b70904cf5f3">getSizeFromUTF8Char()</a> , 以及 <a class="el" href="namespacesstr.html#a1f87d98d2b85585199a66b90beba9995">getUnicodeCharFromUTF8Char()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00183">sstr::SStringView::Iterator::Iterator()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00190">sstr::SStringView::Iterator::operator++()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string_view_1_1_iterator.html#a5f8620d38529d4be2fb54082da232013">sstr::SStringView::Iterator::Iterator()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view_1_1_iterator.html#abeb82022880cec9a2c15a8b85b037ea2">sstr::SStringView::Iterator::operator++()</a>.</p>
 
 </div>
 </div>
@@ -557,22 +456,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </dl>
 <dl class="section return"><dt>返回</dt><dd>占位字节数 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_s_string_8cpp_source.html">SString.cpp</a> 第 <a class="el" href="_s_string_8cpp_source.html#l00056">56</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>                                              {</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(ch) &lt;= 0x7f) {</div>
-<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   59</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(ch) &gt; 0x7f &amp;&amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(ch) &lt;= 0x7ff) {</div>
-<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">   61</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(ch) &gt; 0x7ff &amp;&amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(ch) &lt;= 0xffff) {</div>
-<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">return</span> 3;</div>
-<div class="line"><span class="lineno">   63</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(ch) &gt; 0xffff &amp;&amp; <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(ch) &lt;= 0x7ffff) {</div>
-<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">return</span> 4;</div>
-<div class="line"><span class="lineno">   65</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">   67</span>    }</div>
-<div class="line"><span class="lineno">   68</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_s_string_8cpp_source.html#l00291">sstr::SString::fromSChars()</a>, <a class="el" href="_s_string_8cpp_source.html#l00310">sstr::SString::fromSChars()</a>, <a class="el" href="_s_string_8cpp_source.html#l00330">sstr::SString::fromUCS2LE()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00190">sstr::SStringView::Iterator::operator++()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsstr_1_1_s_string.html#a0c227110c46d97e06b8e5d578cfc757f">sstr::SString::fromSChars()</a>, <a class="el" href="classsstr_1_1_s_string.html#a2a111f6208164e6a0104ec897707d2de">sstr::SString::fromSChars()</a>, <a class="el" href="classsstr_1_1_s_string.html#abaa9c53aa5e179e22cf692366e339dbc">sstr::SString::fromUCS2LE()</a> , 以及 <a class="el" href="classsstr_1_1_s_string_view_1_1_iterator.html#abeb82022880cec9a2c15a8b85b037ea2">sstr::SStringView::Iterator::operator++()</a>.</p>
 
 </div>
 </div>
@@ -610,28 +494,7 @@ $(document).ready(function(){initNavTree('namespacesstr.html',''); initResizable
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8cpp_source.html">Algorithm.cpp</a> 第 <a class="el" href="_algorithm_8cpp_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>                                              {</div>
-<div class="line"><span class="lineno">   28</span>    std::vector&lt;int&gt; next = <a class="code hl_function" href="_algorithm_8cpp.html#aa5b2a9148479ba88b31c0c8c459a3148">getNext</a>(str);</div>
-<div class="line"><span class="lineno">   29</span> </div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordtype">int</span> k = 0;</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordtype">int</span> res = -1;</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; static_cast&lt;int&gt;(std::strlen(str)); i++) {</div>
-<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">while</span> (k &gt; 0 &amp;&amp; str[i] != sub[k]) {</div>
-<div class="line"><span class="lineno">   34</span>            k = next[k - 1];</div>
-<div class="line"><span class="lineno">   35</span>        }</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">if</span> (str[i] == sub[k]) {</div>
-<div class="line"><span class="lineno">   37</span>            k++;</div>
-<div class="line"><span class="lineno">   38</span>        }</div>
-<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">if</span> (k == <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(std::strlen(sub))) {</div>
-<div class="line"><span class="lineno">   40</span>            res = i - k + 1;</div>
-<div class="line"><span class="lineno">   41</span>            k = next[k - 1];</div>
-<div class="line"><span class="lineno">   42</span>        }</div>
-<div class="line"><span class="lineno">   43</span>    }</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> res;</div>
-<div class="line"><span class="lineno">   45</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_algorithm_8cpp_source.html#l00011">getNext()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_algorithm_8cpp.html#aa5b2a9148479ba88b31c0c8c459a3148">getNext()</a>.</p>
 
 </div>
 </div>
@@ -699,14 +562,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8h_source.html">Algorithm.h</a> 第 <a class="el" href="_algorithm_8h_source.html#l00036">36</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>                                                                                {</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; len - begin; i++) {</div>
-<div class="line"><span class="lineno">   38</span>        header[begin + i] = header[begin + <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> + i];</div>
-<div class="line"><span class="lineno">   39</span>    }</div>
-<div class="line"><span class="lineno">   40</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
 
 </div>
 </div>
@@ -744,12 +600,6 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8cpp_source.html">Algorithm.cpp</a> 第 <a class="el" href="_algorithm_8cpp_source.html#l00133">133</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  133</span>                                                 {</div>
-<div class="line"><span class="lineno">  134</span>    <span class="keyword">auto</span> p = strstr(str, sub);</div>
-<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">return</span> p ? <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(p - str) : -1;</div>
-<div class="line"><span class="lineno">  136</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ab09c2d6ffdfbc1b70dc7e1e78a3aefc7" name="ab09c2d6ffdfbc1b70dc7e1e78a3aefc7"></a>
@@ -816,14 +666,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_algorithm_8h_source.html">Algorithm.h</a> 第 <a class="el" href="_algorithm_8h_source.html#l00050">50</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>                                                                                 {</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; len - begin; i++) {</div>
-<div class="line"><span class="lineno">   52</span>        header[len - 1 + <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> - i] = header[len - 1 - i];</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
 
 </div>
 </div>
@@ -856,59 +699,7 @@ template&lt;typename T &gt; </div>
 <p>字符个数</p>
 <p>容量（单位 uint32_t 即 4 bytes）</p>
 
-<p class="definition">在文件 <a class="el" href="_s_string_builder_8h_source.html">SStringBuilder.h</a> 第 <a class="el" href="_s_string_builder_8h_source.html#l00015">15</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>                                                                                        {</div>
-<div class="line"><span class="lineno">   16</span>    <span class="comment">// 构造相关</span></div>
-<div class="line"><span class="lineno">   17</span><span class="keyword">public</span>:</div>
-<div class="line"><span class="lineno">   18</span>    SStringBuilder(<span class="keyword">const</span> SStringBuilder &amp;builder);     <span class="comment">// NOLINT</span></div>
-<div class="line"><span class="lineno">   19</span>    SStringBuilder(SStringBuilder &amp;&amp;builder) <span class="keyword">noexcept</span>; <span class="comment">// NOLINT</span></div>
-<div class="line"><span class="lineno">   20</span>    <span class="keyword">explicit</span> SStringBuilder(<span class="keywordtype">size_t</span> buffer_size);</div>
-<div class="line"><span class="lineno">   21</span>    ~SStringBuilder();</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    <span class="comment">// 基础功能</span></div>
-<div class="line"><span class="lineno">   24</span><span class="keyword">public</span>:</div>
-<div class="line"><span class="lineno">   25</span>    [[nodiscard]] <span class="keyword">const</span> uint32_t *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>() <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   26</span>    [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>() <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   27</span>    [[nodiscard]] <span class="keywordtype">size_t</span> cap() <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>    [[nodiscard]] <span class="keywordtype">bool</span> null() <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   30</span>    [[nodiscard]] <span class="keywordtype">bool</span> emtpy() <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordtype">bool</span> reserve(<span class="keywordtype">size_t</span> <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>);</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordtype">void</span> trim();</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordtype">void</span> reverse();</div>
-<div class="line"><span class="lineno">   35</span>    int32_t find(<span class="keyword">const</span> <span class="keywordtype">char</span> *str) <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   36</span>    [[nodiscard]] int32_t find(<span class="keyword">const</span> <a class="code hl_class" href="classsstr_1_1_s_string_view.html" title="字符串视图">SStringView</a> &amp;str) <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordtype">void</span> append(<span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordtype">void</span> append(<span class="keyword">const</span> <a class="code hl_class" href="classsstr_1_1_s_string_view.html" title="字符串视图">SStringView</a> &amp;str);</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>    <span class="comment">// 不会支持</span></div>
-<div class="line"><span class="lineno">   41</span>    <span class="comment">// std::vector&lt;SString&gt; split(const char *str) const;</span></div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">// std::vector&lt;SString&gt; split(const SString &amp;str) const;</span></div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordtype">void</span> clear();</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>    [[nodiscard]] <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a> <a class="code hl_function" href="_s_string_8cpp.html#a8252847139f3ffb67cc7e1afeeaba632" title="获取指定字符的起始指针">at</a>(<span class="keywordtype">size_t</span> index) <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordtype">void</span> set(<span class="keywordtype">size_t</span> index, <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a> ch);</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordtype">void</span> remove(<span class="keywordtype">size_t</span> index);</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordtype">void</span> remove(<span class="keywordtype">size_t</span> begin, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordtype">void</span> substring(<span class="keywordtype">size_t</span> begin);</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordtype">void</span> substring(<span class="keywordtype">size_t</span> begin, <span class="keywordtype">size_t</span> len);</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordtype">void</span> insert(<span class="keywordtype">size_t</span> index, <a class="code hl_struct" href="structsstr_1_1_s_char.html" title="Unicode 字符">SChar</a> ch);</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordtype">void</span> insert(<span class="keywordtype">size_t</span> index, <span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordtype">void</span> insert(<span class="keywordtype">size_t</span> index, <span class="keyword">const</span> <a class="code hl_class" href="classsstr_1_1_s_string_view.html" title="字符串视图">SStringView</a> &amp;str);</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordtype">void</span> replace(<span class="keywordtype">size_t</span> begin, <span class="keywordtype">size_t</span> len, <span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordtype">void</span> replace(<span class="keywordtype">size_t</span> begin, <span class="keywordtype">size_t</span> len, <span class="keyword">const</span> <a class="code hl_class" href="classsstr_1_1_s_string_view.html" title="字符串视图">SStringView</a> &amp;str);</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>    [[nodiscard]] <a class="code hl_class" href="classsstr_1_1_s_string.html" title="字符串">SString</a> toString() <span class="keyword">const</span>;</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span><span class="keyword">private</span>:</div>
-<div class="line"><span class="lineno">   62</span>    uint32_t *_data = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordtype">size_t</span> _size = 0;</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordtype">size_t</span> _cap = 0;</div>
-<div class="line"><span class="lineno">   67</span>};</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_string_8cpp_source.html#l00128">at()</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_string_8cpp.html#a8252847139f3ffb67cc7e1afeeaba632">at()</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
 
 </div>
 </div>

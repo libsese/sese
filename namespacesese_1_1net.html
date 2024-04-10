@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -203,8 +204,6 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net.html',''); initRe
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_address_pool_8h_source.html">AddressPool.h</a> 第 <a class="el" href="_address_pool_8h_source.html#l00040">40</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a2ee13ee00756c8f1d744d6b0b4834ae2" name="a2ee13ee00756c8f1d744d6b0b4834ae2"></a>
@@ -218,8 +217,6 @@ $(document).ready(function(){initNavTree('namespacesese_1_1net.html',''); initRe
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_address_pool_8h_source.html">AddressPool.h</a> 第 <a class="el" href="_address_pool_8h_source.html#l00041">41</a> 行定义.</p>
 
 </div>
 </div>
@@ -250,11 +247,6 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_address_8h_source.html">Address.h</a> 第 <a class="el" href="_address_8h_source.html#l00031">31</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>                                   {</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">return</span> (1 &lt;&lt; (<span class="keyword">sizeof</span>(T) * 8 - bits)) - 1;</div>
-<div class="line"><span class="lineno">   33</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a8ea118872585aaf0b333cbef6d05a47c" name="a8ea118872585aaf0b333cbef6d05a47c"></a>
@@ -281,11 +273,6 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>随机在 (1024, 65535) 范围内选择一个端口 </p><dl class="section return"><dt>返回</dt><dd>随机端口 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="net_2_socket_8cpp_source.html">Socket.cpp</a> 第 <a class="el" href="net_2_socket_8cpp_source.html#l00108">108</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  108</span>                                            {</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">return</span> sese::RandomUtil::next&lt;uint16_t&gt;(1025, 65535);</div>
-<div class="line"><span class="lineno">  110</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a246ca6551700294b4e22470e24e40209" name="a246ca6551700294b4e22470e24e40209"></a>
@@ -314,12 +301,7 @@ template&lt;typename T &gt; </div>
 <p>获取网络相关 error 代码 </p>
 <dl class="section return"><dt>返回</dt><dd>error 代码 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="net_2_socket_8cpp_source.html">Socket.cpp</a> 第 <a class="el" href="net_2_socket_8cpp_source.html#l00096">96</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   96</span>                                      {</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> errno;</div>
-<div class="line"><span class="lineno">   98</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00022">sese::net::Socket::connect()</a>, <a class="el" href="_security_socket_8cpp_source.html#l00016">sese::security::SecuritySocket::connect()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">sese::_windows::iocp::v1::NativeIOCPServer::eventThreadProc()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00091">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00185">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00126">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">sese::_windows::iocp::v1::NativeIOCPServer::postConnect()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00336">sese::iocp::v1::IOCPServer::postConnect()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00161">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00182">sese::_windows::iocp::v1::NativeIOCPServer::postWrite()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_socket.html#a00aeebfbe5e71a124e00769f24f67d9e">sese::net::Socket::connect()</a>, <a class="el" href="classsese_1_1security_1_1_security_socket.html#a889f7e6f3952506bb42b5b87cfe99fb8">sese::security::SecuritySocket::connect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">sese::_windows::iocp::v1::NativeIOCPServer::eventThreadProc()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a912c9f39ea8710babbc718ccd186f1d6">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">sese::_windows::iocp::v1::NativeIOCPServer::postConnect()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">sese::iocp::v1::IOCPServer::postConnect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8aff108b860c0ad2b5dd9d9189c13bf5">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad776a1800f79300e758d2d9f0e10a7eb">sese::_windows::iocp::v1::NativeIOCPServer::postWrite()</a>.</p>
 
 </div>
 </div>
@@ -356,12 +338,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>错误描述 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="net_2_socket_8cpp_source.html">Socket.cpp</a> 第 <a class="el" href="net_2_socket_8cpp_source.html#l00100">100</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>                                                           {</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">sese::getErrorString</a>(error);</div>
-<div class="line"><span class="lineno">  102</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="util_2_util_8cpp_source.html#l00058">sese::getErrorString()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">sese::getErrorString()</a>.</p>
 
 </div>
 </div>
@@ -405,33 +382,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_address_8cpp_source.html">Address.cpp</a> 第 <a class="el" href="_address_8cpp_source.html#l00052">52</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>                                                                 {</div>
-<div class="line"><span class="lineno">   53</span><span class="preprocessor">#if defined(__MINGW32__) &amp;&amp; !defined(InetPtonA)</span></div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordtype">char</span> ipaddr[64];</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordtype">int</span> addr_size = -1;</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (af == AF_INET) {</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keyword">struct </span>sockaddr_in ip4 {};</div>
-<div class="line"><span class="lineno">   58</span>        addr_size = <span class="keyword">sizeof</span>(SOCKADDR_IN);</div>
-<div class="line"><span class="lineno">   59</span>        WSAStringToAddress((LPSTR) ipaddr, af, <span class="keyword">nullptr</span>, (LPSOCKADDR) &amp;ip4, &amp;addr_size);</div>
-<div class="line"><span class="lineno">   60</span>        memcpy(dst, &amp;(ip4.sin_addr), 4);</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   62</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (af == AF_INET6) {</div>
-<div class="line"><span class="lineno">   63</span>        <span class="keyword">struct </span>sockaddr_in6 ip6 {};</div>
-<div class="line"><span class="lineno">   64</span>        addr_size = <span class="keyword">sizeof</span>(SOCKADDR_IN6);</div>
-<div class="line"><span class="lineno">   65</span>        WSAStringToAddress((LPSTR) ipaddr, af, <span class="keyword">nullptr</span>, (LPSOCKADDR) &amp;ip6, &amp;addr_size);</div>
-<div class="line"><span class="lineno">   66</span>        memcpy(dst, &amp;(ip6.sin6_addr), 16);</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   70</span><span class="preprocessor">#elif defined(__MINGW32__)</span></div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">return</span> InetPtonA(af, src, dst);</div>
-<div class="line"><span class="lineno">   72</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">   73</span>    return ::inet_pton(af, src, dst);</div>
-<div class="line"><span class="lineno">   74</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   75</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_i_pv4_address_8cpp_source.html#l00009">sese::net::IPv4Address::create()</a>, <a class="el" href="_i_pv6_address_8cpp_source.html#l00012">sese::net::IPv6Address::create()</a> , 以及 <a class="el" href="_dns_server_8cpp_source.html#l00007">sese::net::dns::DnsServer::create()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#a4368d564be715d58e5d4828311d46d6d">sese::net::IPv4Address::create()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#a7ea87741b7c2d6c81fbeb09b5600abc2">sese::net::IPv6Address::create()</a> , 以及 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#abf2234f01d02f1646a525983839e5d45">sese::net::dns::DnsServer::create()</a>.</p>
 
 </div>
 </div>

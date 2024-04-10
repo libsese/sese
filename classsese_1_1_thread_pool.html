@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,7 @@ $(document).ready(function(){initNavTree('classsese_1_1_thread_pool.html',''); i
 <a href="#nested-classes">类</a> &#124;
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_thread_pool-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::ThreadPool类 参考</div></div>
 </div><!--header-->
@@ -148,6 +150,11 @@ $(document).ready(function(){initNavTree('classsese_1_1_thread_pool.html',''); i
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_thread_pool_1_1_runtime_data.html">RuntimeData</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
 <tr class="memitem:acab6965077f045f388217c64e032479b" id="r_acab6965077f045f388217c64e032479b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#acab6965077f045f388217c64e032479b">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1_thread_pool.html">ThreadPool</a> &gt;</td></tr>
@@ -155,7 +162,7 @@ Public 类型</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:aa23e3306f0d6732e6641d68d7e3e0b9c" id="r_aa23e3306f0d6732e6641d68d7e3e0b9c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool</a> (std::string thread_pool_name=<a class="el" href="_config_8h.html#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a>, size_t threads=4)</td></tr>
+<tr class="memitem:aa23e3306f0d6732e6641d68d7e3e0b9c" id="r_aa23e3306f0d6732e6641d68d7e3e0b9c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool</a> (std::string thread_pool_name=<a class="el" href="_config_8h.html#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a>, size_t <a class="el" href="classsese_1_1_thread_pool.html#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a>=4)</td></tr>
 <tr class="separator:aa23e3306f0d6732e6641d68d7e3e0b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a773801f1d002420c53dc134cde32e2b2" id="r_a773801f1d002420c53dc134cde32e2b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a773801f1d002420c53dc134cde32e2b2">~ThreadPool</a> () override</td></tr>
 <tr class="separator:a773801f1d002420c53dc134cde32e2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,11 +198,20 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable" id="r_a6c6e0a037e8da0af53b777f27b6836c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_noncopyable.html">Noncopyable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a6c6e0a037e8da0af53b777f27b6836c3">operator=</a> (const <a class="el" href="classsese_1_1_noncopyable.html">Noncopyable</a> &amp;)=delete</td></tr>
 <tr class="memdesc:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除拷贝相关构造函数  <br /></td></tr>
 <tr class="separator:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:aa5be4192c6a172b82dae5a266c12690f" id="r_aa5be4192c6a172b82dae5a266c12690f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aa5be4192c6a172b82dae5a266c12690f">name</a></td></tr>
+<tr class="separator:aa5be4192c6a172b82dae5a266c12690f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa88fa0145dadaebe4ec54aa566cd46d2" id="r_aa88fa0145dadaebe4ec54aa566cd46d2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a> = 0</td></tr>
+<tr class="separator:aa88fa0145dadaebe4ec54aa566cd46d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a748643eac74490a895ce79a3c0bf410e" id="r_a748643eac74490a895ce79a3c0bf410e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classsese_1_1_thread.html">Thread</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a748643eac74490a895ce79a3c0bf410e">threadGroup</a></td></tr>
+<tr class="separator:a748643eac74490a895ce79a3c0bf410e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73637e4c326342f1308d703bb6701ed7" id="r_a73637e4c326342f1308d703bb6701ed7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structsese_1_1_thread_pool_1_1_runtime_data.html">RuntimeData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a></td></tr>
+<tr class="separator:a73637e4c326342f1308d703bb6701ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>线程池类 </p>
-
-<p class="definition">在文件 <a class="el" href="_thread_pool_8h_source.html">ThreadPool.h</a> 第 <a class="el" href="_thread_pool_8h_source.html#l00027">27</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="acab6965077f045f388217c64e032479b" name="acab6965077f045f388217c64e032479b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acab6965077f045f388217c64e032479b">&#9670;&#160;</a></span>Ptr</h2>
@@ -208,8 +224,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_thread_pool_8h_source.html">ThreadPool.h</a> 第 <a class="el" href="_thread_pool_8h_source.html#l00029">29</a> 行定义.</p>
 
 </div>
 </div>
@@ -255,37 +269,8 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8cpp_source.html">ThreadPool.cpp</a> 第 <a class="el" href="_thread_pool_8cpp_source.html#l00007">7</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    8</span>    : name(std::move(thread_pool_name)),</div>
-<div class="line"><span class="lineno">    9</span>      threads(std::max&lt;size_t&gt;(2, threads)),</div>
-<div class="line"><span class="lineno">   10</span>      data(std::make_shared&lt;RuntimeData&gt;()) {</div>
-<div class="line"><span class="lineno">   11</span> </div>
-<div class="line"><span class="lineno">   12</span>    <span class="keyword">auto</span> proc = [data = data] {</div>
-<div class="line"><span class="lineno">   13</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   14</span>            std::unique_lock&lt;std::mutex&gt; locker(data-&gt;mutex);</div>
-<div class="line"><span class="lineno">   15</span>            <span class="keywordflow">if</span> (data-&gt;isShutdown) {</div>
-<div class="line"><span class="lineno">   16</span>                locker.unlock();</div>
-<div class="line"><span class="lineno">   17</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   18</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data-&gt;tasks.empty()) {</div>
-<div class="line"><span class="lineno">   19</span>                data-&gt;conditionVariable.wait(locker);</div>
-<div class="line"><span class="lineno">   20</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   21</span>                <span class="keyword">auto</span> task = std::move(data-&gt;tasks.front());</div>
-<div class="line"><span class="lineno">   22</span>                data-&gt;tasks.pop();</div>
-<div class="line"><span class="lineno">   23</span>                locker.unlock();</div>
-<div class="line"><span class="lineno">   24</span>                <span class="keywordflow">if</span> (task != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   25</span>                    task();</div>
-<div class="line"><span class="lineno">   26</span>                }</div>
-<div class="line"><span class="lineno">   27</span>            }</div>
-<div class="line"><span class="lineno">   28</span>        }</div>
-<div class="line"><span class="lineno">   29</span>    };</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; threads; i++) {</div>
-<div class="line"><span class="lineno">   32</span>        <span class="keyword">auto</span> pthread = <span class="keyword">new</span> Thread(proc, name + std::to_string(i));</div>
-<div class="line"><span class="lineno">   33</span>        threadGroup.emplace_back(pthread);</div>
-<div class="line"><span class="lineno">   34</span>        pthread-&gt;start();</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="line"><span class="lineno">   36</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>, <a class="el" href="classsese_1_1_thread_pool.html#aa5be4192c6a172b82dae5a266c12690f">name</a>, <a class="el" href="classsese_1_1_thread_pool.html#a748643eac74490a895ce79a3c0bf410e">threadGroup</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#aa88fa0145dadaebe4ec54aa566cd46d2">threads</a>.</p>
+
 </div>
 </div>
 <a id="a773801f1d002420c53dc134cde32e2b2" name="a773801f1d002420c53dc134cde32e2b2"></a>
@@ -311,14 +296,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8cpp_source.html">ThreadPool.cpp</a> 第 <a class="el" href="_thread_pool_8cpp_source.html#l00038">38</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>                        {</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (!data-&gt;isShutdown) {</div>
-<div class="line"><span class="lineno">   40</span>        <a class="code hl_function" href="classsese_1_1_thread_pool.html#ad60b449591fbe1e86cb7c8afc896b437" title="关闭当前线程池并阻塞至子线程退出">shutdown</a>();</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
-<div class="line"><span class="lineno">   42</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_thread_pool_8cpp_source.html#l00062">shutdown()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -346,12 +324,8 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8cpp_source.html">ThreadPool.cpp</a> 第 <a class="el" href="_thread_pool_8cpp_source.html#l00078">78</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>                                {</div>
-<div class="line"><span class="lineno">   79</span>    Locker locker(data-&gt;mutex);</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> data-&gt;tasks.empty();</div>
-<div class="line"><span class="lineno">   81</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
+
 </div>
 </div>
 <a id="a26dc2666e1e7828b6ed05de924479c43" name="a26dc2666e1e7828b6ed05de924479c43"></a>
@@ -377,9 +351,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8h_source.html">ThreadPool.h</a> 第 <a class="el" href="_thread_pool_8h_source.html#l00083">83</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>{ <span class="keywordflow">return</span> name; }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aff7870797445ca12fe0632605bf685a4" name="aff7870797445ca12fe0632605bf685a4"></a>
@@ -405,9 +376,6 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8h_source.html">ThreadPool.h</a> 第 <a class="el" href="_thread_pool_8h_source.html#l00084">84</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>{ <span class="keywordflow">return</span> threads; }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a024e526d148b9b1c3cafccdc42f044cc" name="a024e526d148b9b1c3cafccdc42f044cc"></a>
@@ -442,20 +410,7 @@ template&lt;class RETURN_TYPE &gt; </div>
 <dl class="section return"><dt>返回</dt><dd>std::shared_future 对象 </dd></dl>
 <p>注意： 由于 std::packaged_task 属于不可拷贝对象， 并且 std::function 会对参数类型进行擦除，导致 std::move 也无法作用于不可拷贝对象， 所以此处选择了使用 std::shared_ptr 对 std::packaged_task 进行封装</p>
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8h_source.html">ThreadPool.h</a> 第 <a class="el" href="_thread_pool_8h_source.html#l00105">105</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>                                                                                             {</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keyword">using </span>TaskPtr = std::shared_ptr&lt;std::packaged_task&lt;RETURN_TYPE()&gt;&gt;;</div>
-<div class="line"><span class="lineno">  113</span>    TaskPtr packaged_task = std::make_shared&lt;std::packaged_task&lt;RETURN_TYPE()&gt;&gt;(task);</div>
-<div class="line"><span class="lineno">  114</span>    std::shared_future&lt;RETURN_TYPE&gt; future(packaged_task-&gt;get_future());</div>
-<div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>    this-&gt;<a class="code hl_function" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask</a>([task = std::move(packaged_task)]() <span class="keyword">mutable</span> {</div>
-<div class="line"><span class="lineno">  117</span>        (*task)();</div>
-<div class="line"><span class="lineno">  118</span>    });</div>
-<div class="line"><span class="lineno">  119</span> </div>
-<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">return</span> future;</div>
-<div class="line"><span class="lineno">  121</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_thread_pool_8cpp_source.html#l00044">postTask()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask()</a>.</p>
 
 </div>
 </div>
@@ -481,16 +436,9 @@ template&lt;class RETURN_TYPE &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8cpp_source.html">ThreadPool.cpp</a> 第 <a class="el" href="_thread_pool_8cpp_source.html#l00044">44</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>                                                         {</div>
-<div class="line"><span class="lineno">   45</span>    {</div>
-<div class="line"><span class="lineno">   46</span>        Locker locker(data-&gt;mutex);</div>
-<div class="line"><span class="lineno">   47</span>        data-&gt;tasks.emplace(task);</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="line"><span class="lineno">   49</span>    data-&gt;conditionVariable.notify_one();</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_async_8h_source.html#l00053">sese::async()</a> , 以及 <a class="el" href="_thread_pool_8h_source.html#l00105">postTask()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="namespacesese.html#a6a6da68e9dbdc9dd32902487bde06506">sese::async()</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#a024e526d148b9b1c3cafccdc42f044cc">postTask()</a>.</p>
 
 </div>
 </div>
@@ -516,17 +464,8 @@ template&lt;class RETURN_TYPE &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8cpp_source.html">ThreadPool.cpp</a> 第 <a class="el" href="_thread_pool_8cpp_source.html#l00052">52</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>                                                                     {</div>
-<div class="line"><span class="lineno">   53</span>    {</div>
-<div class="line"><span class="lineno">   54</span>        Locker locker(data-&gt;mutex);</div>
-<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;task: tasks) {</div>
-<div class="line"><span class="lineno">   56</span>            data-&gt;tasks.emplace(task);</div>
-<div class="line"><span class="lineno">   57</span>        }</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
-<div class="line"><span class="lineno">   59</span>    data-&gt;conditionVariable.notify_all();</div>
-<div class="line"><span class="lineno">   60</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
+
 </div>
 </div>
 <a id="a1ea4548199bfb8c35aa92fa6797f3acd" name="a1ea4548199bfb8c35aa92fa6797f3acd"></a>
@@ -579,15 +518,7 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8h_source.html">ThreadPool.h</a> 第 <a class="el" href="_thread_pool_8h_source.html#l00060">60</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>                                                  {</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keyword">auto</span> bound_function = [func = std::forward&lt;FUNCTION&gt;(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a7a51ed112e9b79f89e3e70beb8db8bf5">f</a>), args = std::make_tuple(std::forward&lt;ARGS&gt;(args)...)]() <span class="keyword">mutable</span> {</div>
-<div class="line"><span class="lineno">   62</span>            std::apply(std::move(func), std::move(args));</div>
-<div class="line"><span class="lineno">   63</span>        };</div>
-<div class="line"><span class="lineno">   64</span>        this-&gt;<a class="code hl_function" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask</a>(std::move(bound_function));</div>
-<div class="line"><span class="lineno">   65</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00369">f</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a7a51ed112e9b79f89e3e70beb8db8bf5">f</a>.</p>
 
 </div>
 </div>
@@ -608,19 +539,9 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
 
 <p>关闭当前线程池并阻塞至子线程退出 </p>
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8cpp_source.html">ThreadPool.cpp</a> 第 <a class="el" href="_thread_pool_8cpp_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>                          {</div>
-<div class="line"><span class="lineno">   63</span>    data-&gt;isShutdown = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   64</span>    data-&gt;conditionVariable.notify_all();</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> pthread: threadGroup) {</div>
-<div class="line"><span class="lineno">   66</span>        <span class="comment">// if (pthread-&gt;joinable()) {</span></div>
-<div class="line"><span class="lineno">   67</span>        pthread-&gt;join();</div>
-<div class="line"><span class="lineno">   68</span>        <span class="keyword">delete</span> pthread; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   69</span>        <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   70</span>    }</div>
-<div class="line"><span class="lineno">   71</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_thread_pool_8cpp_source.html#l00038">~ThreadPool()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#a748643eac74490a895ce79a3c0bf410e">threadGroup</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#a773801f1d002420c53dc134cde32e2b2">~ThreadPool()</a>.</p>
 
 </div>
 </div>
@@ -647,17 +568,110 @@ template&lt;typename FUNCTION , typename... ARGS&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_thread_pool_8cpp_source.html">ThreadPool.cpp</a> 第 <a class="el" href="_thread_pool_8cpp_source.html#l00073">73</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>                                 {</div>
-<div class="line"><span class="lineno">   74</span>    Locker locker(data-&gt;mutex);</div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">return</span> data-&gt;tasks.size();</div>
-<div class="line"><span class="lineno">   76</span>}</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a73637e4c326342f1308d703bb6701ed7" name="a73637e4c326342f1308d703bb6701ed7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73637e4c326342f1308d703bb6701ed7">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="structsese_1_1_thread_pool_1_1_runtime_data.html">RuntimeData</a>&gt; sese::ThreadPool::data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#a89126914685345c7e3a297f9ac1e3e46">empty()</a>, <a class="el" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask()</a>, <a class="el" href="classsese_1_1_thread_pool.html#a6ea9b4866d3dd366f5f287627bf4c318">postTask()</a>, <a class="el" href="classsese_1_1_thread_pool.html#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a>, <a class="el" href="classsese_1_1_thread_pool.html#a91bb13b6c676612dfabba4e6b65329f7">size()</a>, <a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#a773801f1d002420c53dc134cde32e2b2">~ThreadPool()</a>.</p>
+
+</div>
+</div>
+<a id="aa5be4192c6a172b82dae5a266c12690f" name="aa5be4192c6a172b82dae5a266c12690f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5be4192c6a172b82dae5a266c12690f">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::ThreadPool::name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
+
+</div>
+</div>
+<a id="a748643eac74490a895ce79a3c0bf410e" name="a748643eac74490a895ce79a3c0bf410e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a748643eac74490a895ce79a3c0bf410e">&#9670;&#160;</a></span>threadGroup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classsese_1_1_thread.html">Thread</a> *&gt; sese::ThreadPool::threadGroup</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#ad60b449591fbe1e86cb7c8afc896b437">shutdown()</a> , 以及 <a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
+
+</div>
+</div>
+<a id="aa88fa0145dadaebe4ec54aa566cd46d2" name="aa88fa0145dadaebe4ec54aa566cd46d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa88fa0145dadaebe4ec54aa566cd46d2">&#9670;&#160;</a></span>threads</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::ThreadPool::threads = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_thread_pool.html#aa23e3306f0d6732e6641d68d7e3e0b9c">ThreadPool()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/thread/<a class="el" href="_thread_pool_8h_source.html">ThreadPool.h</a></li>
-<li>sese/thread/<a class="el" href="_thread_pool_8cpp_source.html">ThreadPool.cpp</a></li>
+<li>sese/thread/<a class="el" href="_thread_pool_8cpp.html">ThreadPool.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

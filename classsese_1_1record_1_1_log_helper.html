@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,9 @@ $(document).ready(function(){initNavTree('classsese_1_1record_1_1_log_helper.htm
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1record_1_1_log_helper-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::record::LogHelper类 参考</div></div>
 </div><!--header-->
@@ -171,11 +175,24 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a2b08e1d047644d642111c8ae750b52f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae597e00a829783b043e6670f922c7735" id="r_ae597e00a829783b043e6670f922c7735"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_log_helper.html#ae597e00a829783b043e6670f922c7735">e</a> (const char *format,...) noexcept</td></tr>
 <tr class="separator:ae597e00a829783b043e6670f922c7735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a442d9d7fa21e7acef7858a647c89a76b" id="r_a442d9d7fa21e7acef7858a647c89a76b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_log_helper.html#a442d9d7fa21e7acef7858a647c89a76b">log</a> (<a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5">Level</a> level, const char *file, int32_t line, const char *format, va_list ap)</td></tr>
+<tr class="separator:a442d9d7fa21e7acef7858a647c89a76b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:ad0da2651d29aceba2963921e90d1d4b3" id="r_ad0da2651d29aceba2963921e90d1d4b3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_log_helper.html#ad0da2651d29aceba2963921e90d1d4b3">l</a> (<a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5">Level</a> level, const char *file, int32_t line, const char *format, va_list ap)</td></tr>
+<tr class="separator:ad0da2651d29aceba2963921e90d1d4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:aad3fab3fea1fdb9aeb4a61376a2e804b" id="r_aad3fab3fea1fdb9aeb4a61376a2e804b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1record_1_1_logger.html">Logger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_log_helper.html#aad3fab3fea1fdb9aeb4a61376a2e804b">logger</a> = nullptr</td></tr>
+<tr class="separator:aad3fab3fea1fdb9aeb4a61376a2e804b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>日志工具 </p>
-
-<p class="definition">在文件 <a class="el" href="_log_helper_8h_source.html">LogHelper.h</a> 第 <a class="el" href="_log_helper_8h_source.html#l00015">15</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a048262a05e1fde7d435d4a58b64752db" name="a048262a05e1fde7d435d4a58b64752db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a048262a05e1fde7d435d4a58b64752db">&#9670;&#160;</a></span>Ptr</h2>
@@ -188,8 +205,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_log_helper_8h_source.html">LogHelper.h</a> 第 <a class="el" href="_log_helper_8h_source.html#l00017">17</a> 行定义.</p>
 
 </div>
 </div>
@@ -218,12 +233,7 @@ Public 成员函数</h2></td></tr>
 </div><div class="memdoc">
 <p>初始化日志工具 </p>
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00044">44</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>                     {</div>
-<div class="line"><span class="lineno">   45</span>    logger = <a class="code hl_function" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">record::getLogger</a>();</div>
-<div class="line"><span class="lineno">   46</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_logger_8cpp_source.html#l00087">sese::record::getLogger()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_log_helper.html#aad3fab3fea1fdb9aeb4a61376a2e804b">logger</a>.</p>
 
 </div>
 </div>
@@ -262,15 +272,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00009">9</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    9</span>                                                  {</div>
-<div class="line"><span class="lineno">   10</span>    va_list ap;</div>
-<div class="line"><span class="lineno">   11</span>    va_start(ap, format);</div>
-<div class="line"><span class="lineno">   12</span>    l(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">record::Level::DEBUG</a>, <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>, __LINE__, format, ap); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   13</span>    va_end(ap);</div>
-<div class="line"><span class="lineno">   14</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a> , 以及 <a class="el" href="native_2darwin_2_config_8h_source.html#l00030">SESE_FILENAME</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#ad0da2651d29aceba2963921e90d1d4b3">l()</a> , 以及 <a class="el" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>.</p>
 
 </div>
 </div>
@@ -302,15 +304,7 @@ Public 成员函数</h2></td></tr>
 
 <p>输出 DEBUG 级别的日志 </p>
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00055">55</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>                                             {</div>
-<div class="line"><span class="lineno">   56</span>    va_list ap;</div>
-<div class="line"><span class="lineno">   57</span>    va_start(ap, format);</div>
-<div class="line"><span class="lineno">   58</span>    log(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">record::Level::DEBUG</a>, <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>, __LINE__, format, ap); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   59</span>    va_end(ap);</div>
-<div class="line"><span class="lineno">   60</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a> , 以及 <a class="el" href="native_2darwin_2_config_8h_source.html#l00030">SESE_FILENAME</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#a442d9d7fa21e7acef7858a647c89a76b">log()</a> , 以及 <a class="el" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>.</p>
 
 </div>
 </div>
@@ -348,15 +342,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00030">30</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>                                                  {</div>
-<div class="line"><span class="lineno">   31</span>    va_list ap;</div>
-<div class="line"><span class="lineno">   32</span>    va_start(ap, format);</div>
-<div class="line"><span class="lineno">   33</span>    l(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">record::Level::ERR</a>, <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>, __LINE__, format, ap); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   34</span>    va_end(ap);</div>
-<div class="line"><span class="lineno">   35</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::ERR</a> , 以及 <a class="el" href="native_2darwin_2_config_8h_source.html#l00030">SESE_FILENAME</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::ERR</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#ad0da2651d29aceba2963921e90d1d4b3">l()</a> , 以及 <a class="el" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>.</p>
 
 </div>
 </div>
@@ -388,15 +374,7 @@ Public 成员函数</h2></td></tr>
 
 <p>输出 ERROR 级别的日志 </p>
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00076">76</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>                                             {</div>
-<div class="line"><span class="lineno">   77</span>    va_list ap;</div>
-<div class="line"><span class="lineno">   78</span>    va_start(ap, format);</div>
-<div class="line"><span class="lineno">   79</span>    log(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">record::Level::ERR</a>, <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>, __LINE__, format, ap); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   80</span>    va_end(ap);</div>
-<div class="line"><span class="lineno">   81</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::ERR</a> , 以及 <a class="el" href="native_2darwin_2_config_8h_source.html#l00030">SESE_FILENAME</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::ERR</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#a442d9d7fa21e7acef7858a647c89a76b">log()</a> , 以及 <a class="el" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>.</p>
 
 </div>
 </div>
@@ -434,15 +412,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00016">16</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                                                  {</div>
-<div class="line"><span class="lineno">   17</span>    va_list ap;</div>
-<div class="line"><span class="lineno">   18</span>    va_start(ap, format);</div>
-<div class="line"><span class="lineno">   19</span>    l(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">record::Level::INFO</a>, <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>, __LINE__, format, ap); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   20</span>    va_end(ap);</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a> , 以及 <a class="el" href="native_2darwin_2_config_8h_source.html#l00030">SESE_FILENAME</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#ad0da2651d29aceba2963921e90d1d4b3">l()</a> , 以及 <a class="el" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>.</p>
 
 </div>
 </div>
@@ -474,15 +444,127 @@ Public 成员函数</h2></td></tr>
 
 <p>输出 INFO 级别的日志 </p>
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00062">62</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>                                            {</div>
-<div class="line"><span class="lineno">   63</span>    va_list ap;</div>
-<div class="line"><span class="lineno">   64</span>    va_start(ap, format);</div>
-<div class="line"><span class="lineno">   65</span>    log(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">record::Level::INFO</a>, <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>, __LINE__, format, ap); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   66</span>    va_end(ap);</div>
-<div class="line"><span class="lineno">   67</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a> , 以及 <a class="el" href="native_2darwin_2_config_8h_source.html#l00030">SESE_FILENAME</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#a442d9d7fa21e7acef7858a647c89a76b">log()</a> , 以及 <a class="el" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>.</p>
+
+</div>
+</div>
+<a id="ad0da2651d29aceba2963921e90d1d4b3" name="ad0da2651d29aceba2963921e90d1d4b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0da2651d29aceba2963921e90d1d4b3">&#9670;&#160;</a></span>l()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogHelper::l </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5">Level</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>ap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>输出 DEBUG 级别的日志 </p><dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">弃用:</a></b></dt><dd>已知会和已有函数冲突 </dd></dl>
+<p>输出 INFO 级别的日志 </p><dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000004">弃用:</a></b></dt><dd>已知会和已有函数冲突 </dd></dl>
+<p>输出 WARN 级别的日志 </p><dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000005">弃用:</a></b></dt><dd>已知会和已有函数冲突 </dd></dl>
+<p>输出 ERROR 级别的日志 </p><dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000006">弃用:</a></b></dt><dd>已知会和已有函数冲突 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>, <a class="el" href="classsese_1_1_thread.html#ac6b4828712bf84101f715bde4cd5a6f8">sese::Thread::getCurrentThreadId()</a>, <a class="el" href="classsese_1_1_thread.html#a7aaf91cc85a6788bbd2b1c063d2e81e8">sese::Thread::getCurrentThreadName()</a>, <a class="el" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger()</a>, <a class="el" href="classsese_1_1record_1_1_logger.html#a41672c6fef48429e9be389767ba836d7">sese::record::Logger::log()</a>, <a class="el" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">sese::DateTime::now()</a> , 以及 <a class="el" href="_config_8h.html#a7f70689da1c5396f60685d951094b54a">RECORD_OUTPUT_BUFFER</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_log_helper.html#a7100b3ae62860868f2d3e7c0acd21de6">d()</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#ae597e00a829783b043e6670f922c7735">e()</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#a41b397d9826760c87401f1e8053b0ba3">i()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_log_helper.html#a2b08e1d047644d642111c8ae750b52f8">w()</a>.</p>
+
+</div>
+</div>
+<a id="a442d9d7fa21e7acef7858a647c89a76b" name="a442d9d7fa21e7acef7858a647c89a76b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a442d9d7fa21e7acef7858a647c89a76b">&#9670;&#160;</a></span>log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LogHelper::log </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5">record::Level</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>ap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>, <a class="el" href="classsese_1_1_thread.html#ac6b4828712bf84101f715bde4cd5a6f8">sese::Thread::getCurrentThreadId()</a>, <a class="el" href="classsese_1_1_thread.html#a7aaf91cc85a6788bbd2b1c063d2e81e8">sese::Thread::getCurrentThreadName()</a>, <a class="el" href="classsese_1_1record_1_1_logger.html#a41672c6fef48429e9be389767ba836d7">sese::record::Logger::log()</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#aad3fab3fea1fdb9aeb4a61376a2e804b">logger</a>, <a class="el" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">sese::DateTime::now()</a> , 以及 <a class="el" href="_config_8h.html#a7f70689da1c5396f60685d951094b54a">RECORD_OUTPUT_BUFFER</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_log_helper.html#af4298761e98200c115fa1bba8da5700f">debug()</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#a746d0b2d285ad1f51a8995448b5ce693">error()</a>, <a class="el" href="classsese_1_1record_1_1_log_helper.html#a10ff82c5326bd1050411048da278c43b">info()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_log_helper.html#aab58f61746ba97a0ce554c46224c4504">warn()</a>.</p>
 
 </div>
 </div>
@@ -520,15 +602,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00023">23</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                  {</div>
-<div class="line"><span class="lineno">   24</span>    va_list ap;</div>
-<div class="line"><span class="lineno">   25</span>    va_start(ap, format);</div>
-<div class="line"><span class="lineno">   26</span>    l(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">record::Level::WARN</a>, <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>, __LINE__, format, ap); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   27</span>    va_end(ap);</div>
-<div class="line"><span class="lineno">   28</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="native_2darwin_2_config_8h_source.html#l00030">SESE_FILENAME</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::WARN</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1record_1_1_log_helper.html#ad0da2651d29aceba2963921e90d1d4b3">l()</a>, <a class="el" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::WARN</a>.</p>
 
 </div>
 </div>
@@ -560,21 +634,38 @@ Public 成员函数</h2></td></tr>
 
 <p>输出 WARN 级别的日志 </p>
 
-<p class="definition">在文件 <a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a> 第 <a class="el" href="_log_helper_8cpp_source.html#l00069">69</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>                                            {</div>
-<div class="line"><span class="lineno">   70</span>    va_list ap;</div>
-<div class="line"><span class="lineno">   71</span>    va_start(ap, format);</div>
-<div class="line"><span class="lineno">   72</span>    log(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">record::Level::WARN</a>, <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>, __LINE__, format, ap); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">   73</span>    va_end(ap);</div>
-<div class="line"><span class="lineno">   74</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="native_2darwin_2_config_8h_source.html#l00030">SESE_FILENAME</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::WARN</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1record_1_1_log_helper.html#a442d9d7fa21e7acef7858a647c89a76b">log()</a>, <a class="el" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::WARN</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aad3fab3fea1fdb9aeb4a61376a2e804b" name="aad3fab3fea1fdb9aeb4a61376a2e804b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad3fab3fea1fdb9aeb4a61376a2e804b">&#9670;&#160;</a></span>logger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1record_1_1_logger.html">Logger</a>* sese::record::LogHelper::logger = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_log_helper.html#a442d9d7fa21e7acef7858a647c89a76b">log()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_log_helper.html#ab961c52d3a50c96a317a1465855f7bef">LogHelper()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/record/<a class="el" href="_log_helper_8h_source.html">LogHelper.h</a></li>
-<li>sese/record/<a class="el" href="_log_helper_8cpp_source.html">LogHelper.cpp</a></li>
+<li>sese/record/<a class="el" href="_log_helper_8cpp.html">LogHelper.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

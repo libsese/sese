@@ -24,5 +24,7 @@ var classsese_1_1_bimap =
     [ "operator=", "classsese_1_1_bimap.html#adb6680e90c467911858f49f0170ac73e", null ],
     [ "size", "classsese_1_1_bimap.html#afb348aa5dfd4b6780a8334594650b830", null ],
     [ "tryEraseByKey", "classsese_1_1_bimap.html#a2f5bddf1267a11d14a69879274b6fdf3", null ],
-    [ "tryEraseByValue", "classsese_1_1_bimap.html#a05e915ff2c52f6eda68d52e18b65e4fb", null ]
+    [ "tryEraseByValue", "classsese_1_1_bimap.html#a05e915ff2c52f6eda68d52e18b65e4fb", null ],
+    [ "first", "classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896", null ],
+    [ "second", "classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466", null ]
 ];

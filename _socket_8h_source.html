@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -238,8 +239,8 @@ $(document).ready(function(){initNavTree('_socket_8h_source.html',''); initResiz
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_socket.html#a1668a11950ebff22dbd6195b080e6226">  129</a></span>    [[nodiscard]] <span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a> &amp;<a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a1668a11950ebff22dbd6195b080e6226">getAddress</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> address; }</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <a class="code hl_typedef" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b" title="Native Socket 类型">socket_t</a> handle{};</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    Address::Ptr address;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_socket.html#aab922556f11f5ce15182fcbb236b6187">  132</a></span>    <a class="code hl_typedef" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b" title="Native Socket 类型">socket_t</a> handle{};</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1_socket.html#af5cf2ec0d24e60c474b23d18f5ddf592">  133</a></span>    <a class="code hl_typedef" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a> <a class="code hl_variable" href="classsese_1_1net_1_1_socket.html#af5cf2ec0d24e60c474b23d18f5ddf592">address</a>;</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b" title="Native Socket 类型">socket_t</a> socket(<span class="keywordtype">int</span> family, <span class="keywordtype">int</span> type, <span class="keywordtype">int</span> protocol) <span class="keyword">noexcept</span>;</div>
@@ -260,7 +261,7 @@ $(document).ready(function(){initNavTree('_socket_8h_source.html',''); initResiz
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    static <span class="keywordtype">void</span> <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a>(<a class="code hl_typedef" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b" title="Native Socket 类型">socket_t</a> socket) noexcept;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    static <span class="keywordtype">int</span> shutdown(<a class="code hl_typedef" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b" title="Native Socket 类型">socket_t</a> socket, ShutdownMode mode) noexcept;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    static <span class="keywordtype">int</span> shutdown(<a class="code hl_typedef" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b" title="Native Socket 类型">socket_t</a> socket, <a class="code hl_enumeration" href="classsese_1_1net_1_1_socket.html#adcb403ccd7ca44367873003c10766d23">ShutdownMode</a> mode) noexcept;</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>};</div>
 </div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>

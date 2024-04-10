@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -129,6 +130,8 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1dns_1_1_dns_server
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1net_1_1dns_1_1_dns_server-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::net::dns::DnsServer类 参考</div></div>
 </div><!--header-->
@@ -157,13 +160,31 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:a9e0eab69a1f97ad873b561fb6326f2f2" id="r_a9e0eab69a1f97ad873b561fb6326f2f2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ac8190e5f278b7997878c6a2bb2bada56">DnsServer::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a9e0eab69a1f97ad873b561fb6326f2f2">create</a> (const <a class="el" href="structsese_1_1net_1_1dns_1_1_d_n_s_config.html">DNSConfig</a> *config) noexcept</td></tr>
-<tr class="separator:a9e0eab69a1f97ad873b561fb6326f2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2234f01d02f1646a525983839e5d45" id="r_abf2234f01d02f1646a525983839e5d45"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ac8190e5f278b7997878c6a2bb2bada56">DnsServer::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#abf2234f01d02f1646a525983839e5d45">create</a> (const <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_config.html">DnsConfig</a> *config) noexcept</td></tr>
+<tr class="separator:abf2234f01d02f1646a525983839e5d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a308db8804f34559cdb2cb8738f9cd5ce" id="r_a308db8804f34559cdb2cb8738f9cd5ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a308db8804f34559cdb2cb8738f9cd5ce">DnsServer</a> ()=default</td></tr>
+<tr class="separator:a308db8804f34559cdb2cb8738f9cd5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883776b402352e227d976d91adb42462" id="r_a883776b402352e227d976d91adb42462"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a883776b402352e227d976d91adb42462">loop</a> () noexcept</td></tr>
+<tr class="separator:a883776b402352e227d976d91adb42462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a408633278145abd2822eefac2999930e" id="r_a408633278145abd2822eefac2999930e"><td class="memItemLeft" align="right" valign="top">std::atomic_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a408633278145abd2822eefac2999930e">isShutdown</a> {false}</td></tr>
+<tr class="separator:a408633278145abd2822eefac2999930e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d812fe4cda96f11e14de55d51f641aa" id="r_a3d812fe4cda96f11e14de55d51f641aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Socket::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a3d812fe4cda96f11e14de55d51f641aa">socket</a> = nullptr</td></tr>
+<tr class="separator:a3d812fe4cda96f11e14de55d51f641aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5fb0cad49a0cea929dd2345bb99af31" id="r_ab5fb0cad49a0cea929dd2345bb99af31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_thread.html#ad7103016dd7461634441d871434bbb8d">Thread::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ab5fb0cad49a0cea929dd2345bb99af31">thread</a> = nullptr</td></tr>
+<tr class="separator:ab5fb0cad49a0cea929dd2345bb99af31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a582112093ead9bbec2e9c1481f7b403e" id="r_a582112093ead9bbec2e9c1481f7b403e"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a582112093ead9bbec2e9c1481f7b403e">hostIPv4Map</a></td></tr>
+<tr class="separator:a582112093ead9bbec2e9c1481f7b403e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad21cdddba18b16f1bfb4b06d8fbd98c2" id="r_ad21cdddba18b16f1bfb4b06d8fbd98c2"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ad21cdddba18b16f1bfb4b06d8fbd98c2">hostIPv6Map</a></td></tr>
+<tr class="separator:ad21cdddba18b16f1bfb4b06d8fbd98c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>DNS 服务器 </p>
-
-<p class="definition">在文件 <a class="el" href="_dns_server_8h_source.html">DnsServer.h</a> 第 <a class="el" href="_dns_server_8h_source.html#l00028">28</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ac8190e5f278b7997878c6a2bb2bada56" name="ac8190e5f278b7997878c6a2bb2bada56"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8190e5f278b7997878c6a2bb2bada56">&#9670;&#160;</a></span>Ptr</h2>
@@ -176,8 +197,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_dns_server_8h_source.html">DnsServer.h</a> 第 <a class="el" href="_dns_server_8h_source.html#l00030">30</a> 行定义.</p>
 
 </div>
 </div>
@@ -205,26 +224,38 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_dns_server_8cpp_source.html">DnsServer.cpp</a> 第 <a class="el" href="_dns_server_8cpp_source.html#l00042">42</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>                                         {</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (thread &amp;&amp; !isShutdown) {</div>
-<div class="line"><span class="lineno">   44</span>        <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_server.html#af0dbcfcc61b642f7027f1dd48963318c" title="关闭实例">shutdown</a>();</div>
-<div class="line"><span class="lineno">   45</span>        thread = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   46</span>    }</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (socket) {</div>
-<div class="line"><span class="lineno">   49</span>        socket-&gt;close();</div>
-<div class="line"><span class="lineno">   50</span>        socket = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
-<div class="line"><span class="lineno">   52</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_dns_server_8cpp_source.html#l00059">shutdown()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a408633278145abd2822eefac2999930e">isShutdown</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#af0dbcfcc61b642f7027f1dd48963318c">shutdown()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a3d812fe4cda96f11e14de55d51f641aa">socket</a> , 以及 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ab5fb0cad49a0cea929dd2345bb99af31">thread</a>.</p>
+
+</div>
+</div>
+<a id="a308db8804f34559cdb2cb8738f9cd5ce" name="a308db8804f34559cdb2cb8738f9cd5ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a308db8804f34559cdb2cb8738f9cd5ce">&#9670;&#160;</a></span>DnsServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::net::dns::DnsServer::DnsServer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a9e0eab69a1f97ad873b561fb6326f2f2" name="a9e0eab69a1f97ad873b561fb6326f2f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e0eab69a1f97ad873b561fb6326f2f2">&#9670;&#160;</a></span>create()</h2>
+<a id="abf2234f01d02f1646a525983839e5d45" name="abf2234f01d02f1646a525983839e5d45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2234f01d02f1646a525983839e5d45">&#9670;&#160;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +266,7 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#ac8190e5f278b7997878c6a2bb2bada56">sese::net::dns::DnsServer::Ptr</a> sese::net::dns::DnsServer::create </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structsese_1_1net_1_1dns_1_1_d_n_s_config.html">DNSConfig</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structsese_1_1net_1_1dns_1_1_dns_config.html">DnsConfig</a> *&#160;</td>
           <td class="paramname"><em>config</em></td><td>)</td>
           <td></td>
         </tr>
@@ -260,43 +291,34 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_dns_server_8cpp_source.html">DnsServer.cpp</a> 第 <a class="el" href="_dns_server_8cpp_source.html#l00007">7</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                                                             {</div>
-<div class="line"><span class="lineno">    8</span>    <span class="keyword">auto</span> socket = std::make_shared&lt;sese::net::Socket&gt;(<a class="code hl_enumvalue" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15ca42a9137a05a60eb752dcdf982e717626">Socket::Family::IPv4</a>, <a class="code hl_enumvalue" href="classsese_1_1net_1_1_socket.html#a0c21e2e21cf7e9de3db55d4b96411dd1af5ef036b4d8b630721e51fe23489fbc9">Socket::Type::UDP</a>, IPPROTO_IP);</div>
-<div class="line"><span class="lineno">    9</span>    <span class="keywordflow">if</span> (socket-&gt;bind(config-&gt;address)) {</div>
-<div class="line"><span class="lineno">   10</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   11</span>    }</div>
-<div class="line"><span class="lineno">   12</span> </div>
-<div class="line"><span class="lineno">   13</span>    socket-&gt;setNonblocking();</div>
-<div class="line"><span class="lineno">   14</span> </div>
-<div class="line"><span class="lineno">   15</span>    <span class="keyword">auto</span> ptr = <span class="keyword">new</span> DnsServer;</div>
-<div class="line"><span class="lineno">   16</span>    ptr-&gt;socket = socket;</div>
-<div class="line"><span class="lineno">   17</span> </div>
-<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;item: config-&gt;hostIPv4Map) {</div>
-<div class="line"><span class="lineno">   19</span>        <span class="comment">// auto v = text::StringBuilder::split(item.second, &quot;.&quot;);</span></div>
-<div class="line"><span class="lineno">   20</span>        <span class="comment">// if (v.size() != 4) {</span></div>
-<div class="line"><span class="lineno">   21</span>        <span class="comment">//     continue;</span></div>
-<div class="line"><span class="lineno">   22</span>        <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   23</span>        <span class="comment">// char *end;</span></div>
-<div class="line"><span class="lineno">   24</span>        <span class="comment">// uint8_t buffer[4];</span></div>
-<div class="line"><span class="lineno">   25</span>        <span class="comment">// for (int i = 0; i &lt; 4; ++i) {</span></div>
-<div class="line"><span class="lineno">   26</span>        <span class="comment">//     buffer[i] = (uint8_t) std::strtol(v[i].c_str(), &amp;end, 10);</span></div>
-<div class="line"><span class="lineno">   27</span>        <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   28</span>        uint8_t buffer[4];</div>
-<div class="line"><span class="lineno">   29</span>        <a class="code hl_function" href="namespacesese_1_1net.html#a5b0f21f5acccf3fe7b53f40cfea956e2">sese::net::inetPton</a>(AF_INET, item.second.c_str(), buffer);</div>
-<div class="line"><span class="lineno">   30</span>        ptr-&gt;hostIPv4Map[item.first] = std::string((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer, 4);</div>
-<div class="line"><span class="lineno">   31</span>    }</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;item: config-&gt;hostIPv6Map) {</div>
-<div class="line"><span class="lineno">   34</span>        uint8_t buffer[16];</div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_function" href="namespacesese_1_1net.html#a5b0f21f5acccf3fe7b53f40cfea956e2">sese::net::inetPton</a>(AF_INET6, item.second.c_str(), buffer);</div>
-<div class="line"><span class="lineno">   36</span>        ptr-&gt;hostIPv6Map[item.first] = std::string((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer, 16);</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> std::unique_ptr&lt;DnsServer&gt;(ptr);</div>
-<div class="line"><span class="lineno">   40</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_address_8cpp_source.html#l00052">sese::net::inetPton()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1net.html#a5b0f21f5acccf3fe7b53f40cfea956e2">sese::net::inetPton()</a> , 以及 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a3d812fe4cda96f11e14de55d51f641aa">socket</a>.</p>
+
+</div>
+</div>
+<a id="a883776b402352e227d976d91adb42462" name="a883776b402352e227d976d91adb42462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883776b402352e227d976d91adb42462">&#9670;&#160;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::net::dns::DnsServer::loop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#aa65e249ddac5fcc8f156aca31222bdcd">sese::net::dns::FrameHeaderInfo::answerPrs</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#aa6636db5c606085fa2bcffc1635421c3">sese::net::dns::DnsUtil::decodeFrameHeaderInfo()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#aa8c069f5dcaf9a74fee799a3cc80e538">sese::net::dns::DnsUtil::decodeQueries()</a>, <a class="el" href="_config_8h.html#adef322795de1e9ca964d542350bb1167">DNS_PACKAGE_SIZE</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#ae61018c045781d729733a176daed9aaf">sese::net::dns::DnsUtil::encodeAnswers()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a367743fd6779474801d15ff974f45757">sese::net::dns::DnsUtil::encodeFrameHeaderInfo()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_util.html#abe31fc0e9517fe82cf184b76f7f57ea4">sese::net::dns::DnsUtil::encodeQueries()</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#abcd828134b73a12494e75990a1aa6843">sese::net::dns::FrameHeaderInfo::flags</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_session.html#a2a3f8b41bed5876de830b9a0dcfd8e6a">sese::net::dns::DnsSession::getAnswers()</a>, <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_session.html#a7df35901592a2a290fa54b151f242165">sese::net::dns::DnsSession::getQueries()</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a881ead234f5cacde68e5f84f98cf5898">sese::net::dns::FrameFlagsInfo::QR</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#a3e441dbfc029aec5e6776181dbb54cde">sese::net::dns::FrameHeaderInfo::questions</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a14e0a03afd34190d75fba3f8ed3405a0">sese::net::dns::FrameFlagsInfo::rcode</a>, <a class="el" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a9bcae0ab56c2a33324be5f7352931c87">sese::net::dns::FrameFlagsInfo::RD</a>, <a class="el" href="_frame_header_8h.html#aa9cf2f7690930da0d9965954505f294d">SESE_DNS_QR_CLASS_IN</a>, <a class="el" href="_frame_header_8h.html#a4feff532b9921d33a5808ad60160e61c">SESE_DNS_QR_TYPE_A</a>, <a class="el" href="_frame_header_8h.html#adc47dd0a6ae844f6a8113801d150ea2d">SESE_DNS_QR_TYPE_AAAA</a>, <a class="el" href="_frame_header_8h.html#a3005b8111efe2f255060a3a10e380aa2">SESE_DNS_RCODE_NAME_ERROR</a>, <a class="el" href="_frame_header_8h.html#a68268522cc2a4516e9cd4733903a748f">SESE_DNS_RCODE_NO_ERROR</a>, <a class="el" href="_frame_header_8h.html#aa966e0cd7240c28ecc3afa0641992e80">SESE_DNS_RCODE_NOT_IMPLEMENTED</a>, <a class="el" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sese::sleep()</a> , 以及 <a class="el" href="_endian_8h.html#aa1df02e3abf62729b63393135da67cdc">ToBigEndian16()</a>.</p>
 
 </div>
 </div>
@@ -325,20 +347,7 @@ Public 成员函数</h2></td></tr>
 
 <p>关闭实例 </p>
 
-<p class="definition">在文件 <a class="el" href="_dns_server_8cpp_source.html">DnsServer.cpp</a> 第 <a class="el" href="_dns_server_8cpp_source.html#l00059">59</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>                                            {</div>
-<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">if</span> (thread) {</div>
-<div class="line"><span class="lineno">   61</span>        isShutdown = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>        thread-&gt;join();</div>
-<div class="line"><span class="lineno">   64</span>        socket-&gt;close();</div>
-<div class="line"><span class="lineno">   65</span> </div>
-<div class="line"><span class="lineno">   66</span>        thread = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   67</span>        socket = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="line"><span class="lineno">   69</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_dns_server_8cpp_source.html#l00042">~DnsServer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a38c5d839f287d68fb494b61d113dfb57">~DnsServer()</a>.</p>
 
 </div>
 </div>
@@ -367,17 +376,128 @@ Public 成员函数</h2></td></tr>
 
 <p>启动实例 </p>
 
-<p class="definition">在文件 <a class="el" href="_dns_server_8cpp_source.html">DnsServer.cpp</a> 第 <a class="el" href="_dns_server_8cpp_source.html#l00054">54</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>                                         {</div>
-<div class="line"><span class="lineno">   55</span>    this-&gt;thread = std::make_unique&lt;Thread&gt;([<span class="keyword">this</span>] { this-&gt;loop(); }, <span class="stringliteral">&quot;DNS&quot;</span>);</div>
-<div class="line"><span class="lineno">   56</span>    this-&gt;thread-&gt;start();</div>
-<div class="line"><span class="lineno">   57</span>}</div>
-</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a582112093ead9bbec2e9c1481f7b403e" name="a582112093ead9bbec2e9c1481f7b403e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a582112093ead9bbec2e9c1481f7b403e">&#9670;&#160;</a></span>hostIPv4Map</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::string&gt; sese::net::dns::DnsServer::hostIPv4Map</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad21cdddba18b16f1bfb4b06d8fbd98c2" name="ad21cdddba18b16f1bfb4b06d8fbd98c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad21cdddba18b16f1bfb4b06d8fbd98c2">&#9670;&#160;</a></span>hostIPv6Map</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::string&gt; sese::net::dns::DnsServer::hostIPv6Map</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a408633278145abd2822eefac2999930e" name="a408633278145abd2822eefac2999930e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a408633278145abd2822eefac2999930e">&#9670;&#160;</a></span>isShutdown</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic_bool sese::net::dns::DnsServer::isShutdown {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a38c5d839f287d68fb494b61d113dfb57">~DnsServer()</a>.</p>
+
+</div>
+</div>
+<a id="a3d812fe4cda96f11e14de55d51f641aa" name="a3d812fe4cda96f11e14de55d51f641aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d812fe4cda96f11e14de55d51f641aa">&#9670;&#160;</a></span>socket</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Socket::Ptr</a> sese::net::dns::DnsServer::socket = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#abf2234f01d02f1646a525983839e5d45">create()</a> , 以及 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a38c5d839f287d68fb494b61d113dfb57">~DnsServer()</a>.</p>
+
+</div>
+</div>
+<a id="ab5fb0cad49a0cea929dd2345bb99af31" name="ab5fb0cad49a0cea929dd2345bb99af31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5fb0cad49a0cea929dd2345bb99af31">&#9670;&#160;</a></span>thread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_thread.html#ad7103016dd7461634441d871434bbb8d">Thread::Ptr</a> sese::net::dns::DnsServer::thread = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1net_1_1dns_1_1_dns_server.html#a38c5d839f287d68fb494b61d113dfb57">~DnsServer()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/net/dns/<a class="el" href="_dns_server_8h_source.html">DnsServer.h</a></li>
-<li>sese/net/dns/<a class="el" href="_dns_server_8cpp_source.html">DnsServer.cpp</a></li>
+<li>sese/net/dns/<a class="el" href="_dns_server_8cpp.html">DnsServer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

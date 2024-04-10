@@ -3,6 +3,8 @@ var classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service =
     [ "IOCPService", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7a0a275897c1afb2e6c474381cf5ce0a", null ],
     [ "~IOCPService", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ad3da176b2def0938c9cf8134fbd5b851", null ],
     [ "alpnCallbackFunction", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a72fbe3e2473223c4ca4b3e7c40c1b6b8", null ],
+    [ "createEventEx", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#af8fec3d80edaed21e42dc4385430ab59", null ],
+    [ "freeEventEx", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ab581132e7144559bc36d9fb978b62996", null ],
     [ "onAccept", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a1f07a9b926c03da44d3cd957f93e1ee3", null ],
     [ "onAcceptCompleted", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a958b240914aeb9168e4f0f291552dee3", null ],
     [ "onAlpnGet", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7c322a195a88b3f2019e2300b19811aa", null ],
@@ -17,5 +19,10 @@ var classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service =
     [ "onWriteCompleted", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2c563e28f6fc1cd93ff93df4af771620", null ],
     [ "postClose", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2f1fb16e1649fc1ce74abd6f3c5945ff", null ],
     [ "postRead", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0", null ],
-    [ "postWrite", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5", null ]
+    [ "postWrite", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5", null ],
+    [ "read", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#af055a0355e406a32f768e49099a7a56f", null ],
+    [ "releaseContext", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ae8c20b27594710cd3350072139ea43f2", null ],
+    [ "write", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ab93bff42a1e1092317952ee932c2a874", null ],
+    [ "eventSet", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ab5a4a1908cbc052175f3c2ff1578985c", null ],
+    [ "master", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a8fed98ba35bb01e86136885e0caf141f", null ]
 ];

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -158,7 +159,7 @@ $(document).ready(function(){initNavTree('_initializer_8h_source.html',''); init
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    [[nodiscard]] const std::<span class="keywordtype">string</span> &amp;getName() const;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>private:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::<span class="keywordtype">string</span> name;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1_initiate_task.html#a0b0d5849dcc607db700e818b85f3e702">   40</a></span>    std::<span class="keywordtype">string</span> name;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
 </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
@@ -168,7 +169,7 @@ $(document).ready(function(){initNavTree('_initializer_8h_source.html',''); init
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classsese_1_1_initializer.html" title="初始化器">~Initializer</a>();</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    std::stack&lt;InitiateTask::Ptr&gt; tasks;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classsese_1_1_initializer.html#ac29a2bce374fe2f224585a7181494d22">   49</a></span>    std::stack&lt;InitiateTask::Ptr&gt; <a class="code hl_variable" href="classsese_1_1_initializer.html#ac29a2bce374fe2f224585a7181494d22">tasks</a>;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addTask(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1_initiate_task.html#a06c06dc20e0ef03ba4c8ced352f03224" title="初始化任务智能指针">InitiateTask::Ptr</a> &amp;task) <span class="keyword">noexcept</span>;</div>

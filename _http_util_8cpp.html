@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -132,9 +133,7 @@ $(document).ready(function(){initNavTree('_http_util_8cpp.html',''); initResizab
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="_http_util_8h_source.html">sese/net/http/HttpUtil.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_date_time_formatter_8h_source.html">sese/text/DateTimeFormatter.h</a>&gt;</code><br />
-</div>
-<p><a href="_http_util_8cpp_source.html">浏览源代码.</a></p>
-<table class="memberdecls">
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 宏定义</h2></td></tr>
 <tr class="memitem:aaff71c6a827c63c88f736c3ff56b9dc0" id="r_aaff71c6a827c63c88f736c3ff56b9dc0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_http_util_8cpp.html#aaff71c6a827c63c88f736c3ff56b9dc0">_atoi64</a>(val)&#160;&#160;&#160;strtoll(val, nullptr, 10)</td></tr>
@@ -160,8 +159,6 @@ $(document).ready(function(){initNavTree('_http_util_8cpp.html',''); initResizab
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_http_util_8cpp_source.html">HttpUtil.cpp</a> 第 <a class="el" href="_http_util_8cpp_source.html#l00005">5</a> 行定义.</p>
 
 </div>
 </div>
@@ -191,8 +188,6 @@ $(document).ready(function(){initNavTree('_http_util_8cpp.html',''); initResizab
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_http_util_8cpp_source.html">HttpUtil.cpp</a> 第 <a class="el" href="_http_util_8cpp_source.html#l00327">327</a> 行定义.</p>
-
 </div>
 </div>
 <a id="a5791e4114611ba3cb42bd36151cd047c" name="a5791e4114611ba3cb42bd36151cd047c"></a>
@@ -221,162 +216,6 @@ $(document).ready(function(){initNavTree('_http_util_8cpp.html',''); initResizab
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_http_util_8cpp_source.html">HttpUtil.cpp</a> 第 <a class="el" href="_http_util_8cpp_source.html#l00220">220</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  223</span>                                                                                   {</div>
-<div class="line"><span class="lineno">  224</span>    <span class="keywordtype">size_t</span> len;</div>
-<div class="line"><span class="lineno">  225</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pair: *header) {</div>
-<div class="line"><span class="lineno">  226</span>        len = pair.first.length();</div>
-<div class="line"><span class="lineno">  227</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(pair.first.c_str(), len); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  228</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;: &quot;</span>, 2);                 <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  229</span>        len = pair.second.length();</div>
-<div class="line"><span class="lineno">  230</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(pair.second.c_str(), len); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  231</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;\r\n&quot;</span>, 2);                <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  232</span>    }</div>
-<div class="line"><span class="lineno">  233</span> </div>
-<div class="line"><span class="lineno">  234</span>    <span class="keyword">auto</span> cookies = header-&gt;getCookies();</div>
-<div class="line"><span class="lineno">  235</span>    <span class="keywordflow">if</span> (cookies != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  236</span>        <span class="keywordflow">if</span> (is_resp) {</div>
-<div class="line"><span class="lineno">  237</span>            <span class="keywordflow">if</span> (!sendSetCookie(dest, cookies)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  238</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  239</span>            <span class="keywordflow">if</span> (!sendCookie(dest, cookies)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  240</span>        }</div>
-<div class="line"><span class="lineno">  241</span>    }</div>
-<div class="line"><span class="lineno">  242</span> </div>
-<div class="line"><span class="lineno">  243</span> </div>
-<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">if</span> (-1 == dest-&gt;write(<span class="stringliteral">&quot;\r\n&quot;</span>, 2)) <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  246</span>}</div>
-<div class="line"><span class="lineno">  247</span> </div>
-<div class="line"><span class="lineno">  248</span><span class="keywordtype">bool</span> HttpUtil::sendSetCookie(OutputStream *dest, <span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> &amp;cookies) <span class="keyword">noexcept</span> {</div>
-<div class="line"><span class="lineno">  249</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) cookie: *cookies) {</div>
-<div class="line"><span class="lineno">  250</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;Set-Cookie: &quot;</span>, 12); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  251</span>        <span class="keyword">const</span> std::string &amp;name = cookie.first;</div>
-<div class="line"><span class="lineno">  252</span>        <span class="keyword">const</span> std::string &amp;value = cookie.second-&gt;getValue();</div>
-<div class="line"><span class="lineno">  253</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(name.c_str(), name.size());   <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  254</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;=&quot;</span>, 1);                      <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  255</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(value.c_str(), value.size()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  256</span> </div>
-<div class="line"><span class="lineno">  257</span>        <span class="keyword">const</span> std::string &amp;path = cookie.second-&gt;getPath();</div>
-<div class="line"><span class="lineno">  258</span>        <span class="keywordflow">if</span> (!path.empty()) {</div>
-<div class="line"><span class="lineno">  259</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;; Path=&quot;</span>, 7);              <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  260</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(path.c_str(), path.size()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  261</span>        }</div>
-<div class="line"><span class="lineno">  262</span> </div>
-<div class="line"><span class="lineno">  263</span>        <span class="keyword">const</span> std::string &amp;domain = cookie.second-&gt;getDomain();</div>
-<div class="line"><span class="lineno">  264</span>        <span class="keywordflow">if</span> (!domain.empty()) {</div>
-<div class="line"><span class="lineno">  265</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;; Domain=&quot;</span>, 9);                <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  266</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(domain.c_str(), domain.size()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  267</span>        }</div>
-<div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>        uint64_t max_age = cookie.second-&gt;getMaxAge();</div>
-<div class="line"><span class="lineno">  270</span>        <span class="keywordflow">if</span> (max_age &gt; 0) {</div>
-<div class="line"><span class="lineno">  271</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;; Max-Age=&quot;</span>, 10); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  272</span>            <span class="keyword">auto</span> age = std::to_string(max_age);</div>
-<div class="line"><span class="lineno">  273</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(age.c_str(), age.length()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  274</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  275</span>            uint64_t expires = cookie.second-&gt;getExpires();</div>
-<div class="line"><span class="lineno">  276</span>            <span class="keywordflow">if</span> (expires &gt; 0) {</div>
-<div class="line"><span class="lineno">  277</span>                <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;; Expires=&quot;</span>, 10); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  278</span>                <span class="keyword">auto</span> date = DateTime(expires * 1000000, 0);</div>
-<div class="line"><span class="lineno">  279</span>                <span class="keyword">auto</span> date_string = <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">sese::text::DateTimeFormatter::format</a>(date, <a class="code hl_variable" href="_config_8h.html#a359537d4f46f2734aafef400b273e6f9" title="格林威治时间匹配格式">TIME_GREENWICH_MEAN_PATTERN</a>);</div>
-<div class="line"><span class="lineno">  280</span>                <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(date_string.c_str(), date_string.size()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  281</span>            }</div>
-<div class="line"><span class="lineno">  282</span>        }</div>
-<div class="line"><span class="lineno">  283</span> </div>
-<div class="line"><span class="lineno">  284</span>        <span class="keywordtype">bool</span> secure = cookie.second-&gt;isSecure();</div>
-<div class="line"><span class="lineno">  285</span>        <span class="keywordflow">if</span> (secure) {</div>
-<div class="line"><span class="lineno">  286</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;; Secure&quot;</span>, 8); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  287</span>        }</div>
-<div class="line"><span class="lineno">  288</span> </div>
-<div class="line"><span class="lineno">  289</span>        <span class="keywordtype">bool</span> http_only = cookie.second-&gt;isHttpOnly();</div>
-<div class="line"><span class="lineno">  290</span>        <span class="keywordflow">if</span> (http_only) {</div>
-<div class="line"><span class="lineno">  291</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;; HttpOnly&quot;</span>, 10); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  292</span>        }</div>
-<div class="line"><span class="lineno">  293</span> </div>
-<div class="line"><span class="lineno">  294</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;\r\n&quot;</span>, 2); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  295</span>    }</div>
-<div class="line"><span class="lineno">  296</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  297</span>}</div>
-<div class="line"><span class="lineno">  298</span> </div>
-<div class="line"><span class="lineno">  299</span><span class="keywordtype">bool</span> HttpUtil::sendCookie(OutputStream *dest, <span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> &amp;cookies) <span class="keyword">noexcept</span> {</div>
-<div class="line"><span class="lineno">  300</span>    <span class="keywordflow">if</span> (!cookies-&gt;empty()) {</div>
-<div class="line"><span class="lineno">  301</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;Cookie: &quot;</span>, 8); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  302</span>    }</div>
-<div class="line"><span class="lineno">  303</span> </div>
-<div class="line"><span class="lineno">  304</span>    <span class="keywordtype">bool</span> is_first = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  305</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) cookie: *cookies) {</div>
-<div class="line"><span class="lineno">  306</span>        <span class="keywordflow">if</span> (is_first) {</div>
-<div class="line"><span class="lineno">  307</span>            is_first = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  308</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  309</span>            <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;; &quot;</span>, 2); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  310</span>        }</div>
-<div class="line"><span class="lineno">  311</span>        <span class="keyword">const</span> std::string &amp;name = cookie.first;</div>
-<div class="line"><span class="lineno">  312</span>        <span class="keyword">const</span> std::string &amp;value = cookie.second-&gt;getValue();</div>
-<div class="line"><span class="lineno">  313</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(name.c_str(), name.size());   <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  314</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;=&quot;</span>, 1);                      <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  315</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(value.c_str(), value.size()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
-<div class="line"><span class="lineno">  316</span>    }</div>
-<div class="line"><span class="lineno">  317</span> </div>
-<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">if</span> (!cookies-&gt;empty()) {</div>
-<div class="line"><span class="lineno">  319</span>        <a class="code hl_define" href="_http_util_8cpp.html#a5791e4114611ba3cb42bd36151cd047c">WRITE</a>(<span class="stringliteral">&quot;\r\n&quot;</span>, 2); <span class="comment">// GCOVR_EXCL_LINE;</span></div>
-<div class="line"><span class="lineno">  320</span>    }</div>
-<div class="line"><span class="lineno">  321</span> </div>
-<div class="line"><span class="lineno">  322</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  323</span>}</div>
-<div class="line"><span class="lineno">  324</span> </div>
-<div class="line"><span class="lineno">  325</span><span class="preprocessor">#undef WRITE</span></div>
-<div class="line"><span class="lineno">  326</span> </div>
-<div class="line"><span class="lineno">  327</span><span class="preprocessor">#define COMPARE(str1, str2) strcasecmp(str1.c_str(), str2) == 0</span></div>
-<div class="line"><span class="lineno">  328</span> </div>
-<div class="line"><span class="lineno">  329</span><a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_http_util.html#a89a0f4154a7cada7cd96740885f0c2fa">HttpUtil::parseFromSetCookie</a>(<span class="keyword">const</span> std::string &amp;text) <span class="keyword">noexcept</span> {</div>
-<div class="line"><span class="lineno">  330</span>    <span class="keyword">auto</span> result = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(text, <span class="stringliteral">&quot;; &quot;</span>);</div>
-<div class="line"><span class="lineno">  331</span>    <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> cookie = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  332</span>    <span class="keywordtype">bool</span> is_first = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  333</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) one: result) {</div>
-<div class="line"><span class="lineno">  334</span>        <span class="keyword">auto</span> index = one.find(<span class="charliteral">&#39;=&#39;</span>);</div>
-<div class="line"><span class="lineno">  335</span>        <span class="keywordflow">if</span> (is_first) {</div>
-<div class="line"><span class="lineno">  336</span>            <span class="keywordflow">if</span> (index == std::string::npos) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  337</span>            cookie = std::make_shared&lt;Cookie&gt;(one.substr(0, index), one.substr(index + 1));</div>
-<div class="line"><span class="lineno">  338</span>            is_first = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  339</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  340</span>            <span class="keywordflow">if</span> (index != std::string::npos) {</div>
-<div class="line"><span class="lineno">  341</span>                <span class="comment">// 键值对</span></div>
-<div class="line"><span class="lineno">  342</span>                <span class="keywordflow">if</span> (<a class="code hl_define" href="_http_util_8cpp.html#a5ff2c605a03059745d22dca7521a07a8">COMPARE</a>(one.substr(0, index), <span class="stringliteral">&quot;max-age&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  343</span>                    cookie-&gt;setMaxAge(std::stoll(one.substr(index + 1)));</div>
-<div class="line"><span class="lineno">  344</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_define" href="_http_util_8cpp.html#a5ff2c605a03059745d22dca7521a07a8">COMPARE</a>(one.substr(0, index), <span class="stringliteral">&quot;expires&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  345</span>                    cookie-&gt;setExpires(text::DateTimeFormatter::parseFromGreenwich(one.substr(index + 1)));</div>
-<div class="line"><span class="lineno">  346</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_define" href="_http_util_8cpp.html#a5ff2c605a03059745d22dca7521a07a8">COMPARE</a>(one.substr(0, index), <span class="stringliteral">&quot;path&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  347</span>                    cookie-&gt;setPath(one.substr(index + 1));</div>
-<div class="line"><span class="lineno">  348</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_define" href="_http_util_8cpp.html#a5ff2c605a03059745d22dca7521a07a8">COMPARE</a>(one.substr(0, index), <span class="stringliteral">&quot;domain&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  349</span>                    cookie-&gt;setDomain(one.substr(index + 1));</div>
-<div class="line"><span class="lineno">  350</span>                }</div>
-<div class="line"><span class="lineno">  351</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  352</span>                <span class="comment">// 属性</span></div>
-<div class="line"><span class="lineno">  353</span>                <span class="keywordflow">if</span> (<a class="code hl_define" href="_http_util_8cpp.html#a5ff2c605a03059745d22dca7521a07a8">COMPARE</a>(one, <span class="stringliteral">&quot;secure&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  354</span>                    cookie-&gt;setSecure(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  355</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_define" href="_http_util_8cpp.html#a5ff2c605a03059745d22dca7521a07a8">COMPARE</a>(one, <span class="stringliteral">&quot;httponly&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  356</span>                    cookie-&gt;setHttpOnly(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  357</span>                }</div>
-<div class="line"><span class="lineno">  358</span>            }</div>
-<div class="line"><span class="lineno">  359</span>        }</div>
-<div class="line"><span class="lineno">  360</span>    }</div>
-<div class="line"><span class="lineno">  361</span> </div>
-<div class="line"><span class="lineno">  362</span>    <span class="keywordflow">return</span> cookie;</div>
-<div class="line"><span class="lineno">  363</span>}</div>
-<div class="line"><span class="lineno">  364</span> </div>
-<div class="line"><span class="lineno">  365</span><span class="preprocessor">#undef COMPARE</span></div>
-<div class="line"><span class="lineno">  366</span> </div>
-<div class="line"><span class="lineno">  367</span><a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_http_util.html#ab98b0f3917837e87d1f9f4d8fbd3ee92">HttpUtil::parseFromCookie</a>(<span class="keyword">const</span> std::string &amp;text) <span class="keyword">noexcept</span> {</div>
-<div class="line"><span class="lineno">  368</span>    <span class="keyword">auto</span> cookies = std::make_shared&lt;CookieMap&gt;();</div>
-<div class="line"><span class="lineno">  369</span>    <span class="keyword">auto</span> result = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(text, <span class="stringliteral">&quot;; &quot;</span>);</div>
-<div class="line"><span class="lineno">  370</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) one: result) {</div>
-<div class="line"><span class="lineno">  371</span>        <span class="keyword">auto</span> pair = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(one, <span class="stringliteral">&quot;=&quot;</span>);</div>
-<div class="line"><span class="lineno">  372</span>        <span class="keywordflow">if</span> (pair.size() != 2) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  373</span>        cookies-&gt;add(std::make_shared&lt;Cookie&gt;(pair[0], pair[1]));</div>
-<div class="line"><span class="lineno">  374</span>    }</div>
-<div class="line"><span class="lineno">  375</span>    <span class="keywordflow">return</span> cookies;</div>
-<div class="line"><span class="lineno">  376</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

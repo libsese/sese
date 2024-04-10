@@ -57,5 +57,7 @@ var classsese_1_1_value =
     [ "list", "classsese_1_1_value.html#a41e007683fd504b8a86d0c31cdbf1d54", null ],
     [ "operator!=", "classsese_1_1_value.html#abbbbb9691b81043918719899f11f10a7", null ],
     [ "operator==", "classsese_1_1_value.html#a0c9eb3e2a8d0eaaf423e7f6324438039", null ],
-    [ "toString", "classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3", null ]
+    [ "toString", "classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3", null ],
+    [ "toString", "classsese_1_1_value.html#a4ce6a4126620b020aada251732338265", null ],
+    [ "data", "classsese_1_1_value.html#a340d1bf19e1cfab9ded3d0dd6c35ae2e", null ]
 ];

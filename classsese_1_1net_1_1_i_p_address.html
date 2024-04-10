@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -198,8 +199,6 @@ Public 成员函数</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>IP 地址类 </p>
-
-<p class="definition">在文件 <a class="el" href="_i_p_address_8h_source.html">IPAddress.h</a> 第 <a class="el" href="_i_p_address_8h_source.html#l00017">17</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="ade090a38545f6d26aa5ab6490eedd11e" name="ade090a38545f6d26aa5ab6490eedd11e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade090a38545f6d26aa5ab6490eedd11e">&#9670;&#160;</a></span>Ptr</h2>
@@ -212,8 +211,6 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_i_p_address_8h_source.html">IPAddress.h</a> 第 <a class="el" href="_i_p_address_8h_source.html#l00019">19</a> 行定义.</p>
 
 </div>
 </div>
@@ -252,30 +249,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_i_p_address_8cpp_source.html">IPAddress.cpp</a> 第 <a class="el" href="_i_p_address_8cpp_source.html#l00005">5</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                                 {</div>
-<div class="line"><span class="lineno">    6</span>    addrinfo *res, hints{0};</div>
-<div class="line"><span class="lineno">    7</span>    hints.ai_flags = AI_NUMERICHOST;</div>
-<div class="line"><span class="lineno">    8</span>    hints.ai_family = AF_UNSPEC;</div>
-<div class="line"><span class="lineno">    9</span> </div>
-<div class="line"><span class="lineno">   10</span>    <span class="keyword">auto</span> err = getaddrinfo(address, <span class="keyword">nullptr</span>, &amp;hints, &amp;res);</div>
-<div class="line"><span class="lineno">   11</span>    <span class="keywordflow">if</span> (err) {</div>
-<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   13</span>    }</div>
-<div class="line"><span class="lineno">   14</span> </div>
-<div class="line"><span class="lineno">   15</span>    <a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> result = std::dynamic_pointer_cast&lt;IPAddress&gt;(<a class="code hl_function" href="classsese_1_1net_1_1_address.html#abfc97bb3bb4df0dc597442b6b19ce8a6">Address::create</a>(res-&gt;ai_addr, (socklen_t) res-&gt;ai_addrlen));</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">if</span> (result) {</div>
-<div class="line"><span class="lineno">   17</span>        result-&gt;setPort(port);</div>
-<div class="line"><span class="lineno">   18</span>    }</div>
-<div class="line"><span class="lineno">   19</span>    <span class="comment">// 此处暂时没有很好的办法触发</span></div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   21</span>        result = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   22</span>    }</div>
-<div class="line"><span class="lineno">   23</span>    freeaddrinfo(res);</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_address_8cpp_source.html#l00006">sese::net::Address::create()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_address.html#abfc97bb3bb4df0dc597442b6b19ce8a6">sese::net::Address::create()</a>.</p>
 
 </div>
 </div>
@@ -475,7 +449,7 @@ Public 成员函数</h2></td></tr>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/net/<a class="el" href="_i_p_address_8h_source.html">IPAddress.h</a></li>
-<li>sese/net/<a class="el" href="_i_p_address_8cpp_source.html">IPAddress.cpp</a></li>
+<li>sese/net/<a class="el" href="_i_p_address_8cpp.html">IPAddress.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

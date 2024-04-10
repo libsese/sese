@@ -49,5 +49,6 @@ var classsese_1_1_value_1_1_dict =
     [ "set", "classsese_1_1_value_1_1_dict.html#a066dc0436bbbbc3afdf8f6af007a9ab1", null ],
     [ "set", "classsese_1_1_value_1_1_dict.html#a7ec52533bc34723e25c5aa1d42f51830", null ],
     [ "set", "classsese_1_1_value_1_1_dict.html#a8e68f30dfa2bd4e3a44dbe245ed02fc6", null ],
-    [ "size", "classsese_1_1_value_1_1_dict.html#af02a39f06aeb80693c7f2b1ab575fd45", null ]
+    [ "size", "classsese_1_1_value_1_1_dict.html#af02a39f06aeb80693c7f2b1ab575fd45", null ],
+    [ "map", "classsese_1_1_value_1_1_dict.html#a73203cabb1cfe10ef8a23483fa8edc46", null ]
 ];

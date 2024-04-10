@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -146,12 +147,12 @@ $(document).ready(function(){initNavTree('_request_8h_source.html',''); initResi
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">   19</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_request.html#ac95123a2170ff626c48494672303eadd">Ptr</a> = std::unique_ptr&lt;Request&gt;;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_request.html#a98d131f2682ce0afec136a62838e883b">   21</a></span>    <a class="code hl_class" href="classsese_1_1io_1_1_byte_builder.html" title="线程不安全的字节缓冲类">io::ByteBuilder</a> &amp;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_request.html#a98d131f2682ce0afec136a62838e883b">getBody</a>() { <span class="keywordflow">return</span> body; }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_request.html#a98d131f2682ce0afec136a62838e883b">   21</a></span>    <a class="code hl_class" href="classsese_1_1io_1_1_byte_builder.html" title="线程不安全的字节缓冲类">io::ByteBuilder</a> &amp;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_request.html#a98d131f2682ce0afec136a62838e883b">getBody</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request.html#af63d43bfc0f6ede551e642ebdd012ae4">body</a>; }</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_request.html#a0177e9e7fd523e7031661443ea8c111e">swap</a>(<a class="code hl_class" href="classsese_1_1net_1_1http_1_1_request.html" title="HTTP 请求类">Request</a> &amp;another) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_class" href="classsese_1_1io_1_1_byte_builder.html" title="线程不安全的字节缓冲类">io::ByteBuilder</a> body{8192};</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_request.html#af63d43bfc0f6ede551e642ebdd012ae4">   26</a></span>    <a class="code hl_class" href="classsese_1_1io_1_1_byte_builder.html" title="线程不安全的字节缓冲类">io::ByteBuilder</a> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request.html#af63d43bfc0f6ede551e642ebdd012ae4">body</a>{8192};</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
 </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>

@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -165,8 +166,6 @@ Public 属性</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>网络事件基类 </p>
-
-<p class="definition">在文件 <a class="el" href="_base_event_8h_source.html">BaseEvent.h</a> 第 <a class="el" href="_base_event_8h_source.html#l00016">16</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a87392d84d67b3dcb100d6212a124e6b1" name="a87392d84d67b3dcb100d6212a124e6b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87392d84d67b3dcb100d6212a124e6b1">&#9670;&#160;</a></span>~BaseEvent()</h2>
@@ -206,10 +205,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_base_event_8h_source.html">BaseEvent.h</a> 第 <a class="el" href="_base_event_8h_source.html#l00021">21</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>{<span class="keyword">nullptr</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00011">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00167">sese::service::TcpTransporter::onClose()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00091">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00185">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00126">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00063">sese::iocp::v1::IOCPService::postRead()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00074">sese::iocp::v1::IOCPService::postWrite()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a226bb6841eb265244cbb21301e62fa29">sese::service::TcpTransporter::onClose()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a912c9f39ea8710babbc718ccd186f1d6">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0">sese::iocp::v1::IOCPService::postRead()</a> , 以及 <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">sese::iocp::v1::IOCPService::postWrite()</a>.</p>
 
 </div>
 </div>
@@ -225,10 +221,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_base_event_8h_source.html">BaseEvent.h</a> 第 <a class="el" href="_base_event_8h_source.html#l00020">20</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{<a class="code hl_define" href="_base_event_8h.html#a2f3d4a2bb76493159546a9997e013695">EVENT_NULL</a>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00011">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">sese::event::WSAEventLoop::init()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00063">sese::iocp::v1::IOCPService::postRead()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00225">sese::service::TcpTransporter::postRead()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00074">sese::iocp::v1::IOCPService::postWrite()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00231">sese::service::TcpTransporter::postWrite()</a>, <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00173">sese::event::KqueueEventLoop::setEvent()</a> , 以及 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00120">sese::event::EpollEventLoop::setEvent()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop::init()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0">sese::iocp::v1::IOCPService::postRead()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a38629b14334cb02196e034a7bd5fb4e2">sese::service::TcpTransporter::postRead()</a>, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">sese::iocp::v1::IOCPService::postWrite()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#af250ed213d80a28d8c14d7e5f92d3d12">sese::service::TcpTransporter::postWrite()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop::setEvent()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop::setEvent()</a>.</p>
 
 </div>
 </div>
@@ -244,10 +237,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_base_event_8h_source.html">BaseEvent.h</a> 第 <a class="el" href="_base_event_8h_source.html#l00019">19</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>{0};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00119">sese::event::KqueueEventLoop::createEvent()</a>, <a class="el" href="_epoll_event_loop_8cpp_source.html#l00094">sese::event::EpollEventLoop::createEvent()</a>, <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00110">sese::event::WSAEventLoop::createEvent()</a>, <a class="el" href="_epoll_event_loop_8cpp_source.html#l00115">sese::event::EpollEventLoop::freeEvent()</a>, <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00133">sese::event::WSAEventLoop::freeEvent()</a>, <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00011">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00005">sese::event::WSAEventLoop::init()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00167">sese::service::TcpTransporter::onClose()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00091">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00126">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00173">sese::event::KqueueEventLoop::setEvent()</a> , 以及 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00120">sese::event::EpollEventLoop::setEvent()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#aa66c5b7c2705cc6d96241b3d2b0bfd75">sese::event::KqueueEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">sese::event::EpollEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a5edea23ed9eacb74c977e0769b671dce">sese::event::WSAEventLoop::createEvent()</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a76a53b0bd0316a4b7ac5a8500704b33d">sese::event::EpollEventLoop::freeEvent()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa0df844b1a306e982edf7fe3fae77336">sese::event::WSAEventLoop::freeEvent()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop::init()</a>, <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop::init()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#a226bb6841eb265244cbb21301e62fa29">sese::service::TcpTransporter::onClose()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#adab0fb9618e0c2dc050f6e9ea9e13614">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="classsese_1_1service_1_1_tcp_transporter.html#ae7da3d97000b234f7f37bef4b0b4df2c">sese::service::TcpTransporter::onWrite()</a>, <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop::setEvent()</a> , 以及 <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop::setEvent()</a>.</p>
 
 </div>
 </div>

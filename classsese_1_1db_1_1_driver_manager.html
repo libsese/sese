@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -145,8 +146,6 @@ $(document).ready(function(){initNavTree('classsese_1_1db_1_1_driver_manager.htm
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>数据库驱动实例管理器 </p>
-
-<p class="definition">在文件 <a class="el" href="_driver_manager_8h_source.html">DriverManager.h</a> 第 <a class="el" href="_driver_manager_8h_source.html#l00018">18</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
 <a id="a96d50e1392cdc06ed665382ccf627777" name="a96d50e1392cdc06ed665382ccf627777"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a96d50e1392cdc06ed665382ccf627777">&#9670;&#160;</a></span>getInstance()</h2>
@@ -198,100 +197,13 @@ $(document).ready(function(){initNavTree('classsese_1_1db_1_1_driver_manager.htm
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_driver_manager_8cpp_source.html">DriverManager.cpp</a> 第 <a class="el" href="_driver_manager_8cpp_source.html#l00018">18</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                                                                            {</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">switch</span> (type) {</div>
-<div class="line"><span class="lineno">   20</span><span class="preprocessor">#ifdef HAS_MARIADB</span></div>
-<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1db.html#a7da16b504b023198c816f226a1ee045ca0a90275f25d598c5086791d7bd65a402">DatabaseType::MY_SQL</a>:</div>
-<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1db.html#a7da16b504b023198c816f226a1ee045cae197a45073b221ab28576706c05097d8">DatabaseType::MARIA</a>: {</div>
-<div class="line"><span class="lineno">   23</span>            <span class="keyword">auto</span> config = <a class="code hl_function" href="namespacesese_1_1db.html#ac2fdea009a81a3aa726d98dfcca5e81d" title="对字符串进行简单的分词">tokenize</a>(connection_string);</div>
-<div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>            <span class="keyword">auto</span> host_iterator = config.find(<span class="stringliteral">&quot;host&quot;</span>);</div>
-<div class="line"><span class="lineno">   26</span>            <span class="keyword">auto</span> user_iterator = config.find(<span class="stringliteral">&quot;user&quot;</span>);</div>
-<div class="line"><span class="lineno">   27</span>            <span class="keyword">auto</span> pwd_iterator = config.find(<span class="stringliteral">&quot;pwd&quot;</span>);</div>
-<div class="line"><span class="lineno">   28</span>            <span class="keyword">auto</span> db_iterator = config.find(<span class="stringliteral">&quot;db&quot;</span>);</div>
-<div class="line"><span class="lineno">   29</span>            <span class="keyword">auto</span> port_iterator = config.find(<span class="stringliteral">&quot;port&quot;</span>);</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">if</span> (host_iterator == config.end() ||</div>
-<div class="line"><span class="lineno">   31</span>                user_iterator == config.end() ||</div>
-<div class="line"><span class="lineno">   32</span>                pwd_iterator == config.end() ||</div>
-<div class="line"><span class="lineno">   33</span>                db_iterator == config.end() ||</div>
-<div class="line"><span class="lineno">   34</span>                port_iterator == config.end()) {</div>
-<div class="line"><span class="lineno">   35</span>                <span class="comment">// 缺少必要字段</span></div>
-<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   37</span>            }</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>            MYSQL *conn = mysql_init(<span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">if</span> (conn == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   41</span>                <span class="comment">// 此处通常是不可恢复错误触发，例如内存不足</span></div>
-<div class="line"><span class="lineno">   42</span>                <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   43</span>            }</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>            mysql_real_connect(</div>
-<div class="line"><span class="lineno">   46</span>                    conn,</div>
-<div class="line"><span class="lineno">   47</span>                    host_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   48</span>                    user_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   49</span>                    pwd_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   50</span>                    db_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   51</span>                    std::stoi(port_iterator-&gt;second),</div>
-<div class="line"><span class="lineno">   52</span>                    <span class="keyword">nullptr</span>,</div>
-<div class="line"><span class="lineno">   53</span>                    0</div>
-<div class="line"><span class="lineno">   54</span>            );</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">return</span> std::make_unique&lt;impl::MariaDriverInstanceImpl&gt;(conn);</div>
-<div class="line"><span class="lineno">   57</span>        }</div>
-<div class="line"><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   59</span><span class="preprocessor">#ifdef HAS_SQLITE</span></div>
-<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1db.html#a7da16b504b023198c816f226a1ee045ca624f0d1fb84ced47f6b4d05e8ab82c7b">DatabaseType::SQLITE</a>: {</div>
-<div class="line"><span class="lineno">   61</span>            sqlite3 *conn;</div>
-<div class="line"><span class="lineno">   62</span>            sqlite3_open_v2(connection_string, &amp;conn, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">return</span> std::make_unique&lt;impl::SqliteDriverInstanceImpl&gt;(conn);</div>
-<div class="line"><span class="lineno">   64</span>        }</div>
-<div class="line"><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   66</span><span class="preprocessor">#ifdef HAS_POSTGRES</span></div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1db.html#a7da16b504b023198c816f226a1ee045ca3844e1d819be690fa5e18b5c89281934">DatabaseType::POSTGRES</a>: {</div>
-<div class="line"><span class="lineno">   68</span>            <span class="keyword">auto</span> config = <a class="code hl_function" href="namespacesese_1_1db.html#ac2fdea009a81a3aa726d98dfcca5e81d" title="对字符串进行简单的分词">tokenize</a>(connection_string);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>            <span class="keyword">auto</span> host_iterator = config.find(<span class="stringliteral">&quot;host&quot;</span>);</div>
-<div class="line"><span class="lineno">   71</span>            <span class="keyword">auto</span> user_iterator = config.find(<span class="stringliteral">&quot;user&quot;</span>);</div>
-<div class="line"><span class="lineno">   72</span>            <span class="keyword">auto</span> pwd_iterator = config.find(<span class="stringliteral">&quot;pwd&quot;</span>);</div>
-<div class="line"><span class="lineno">   73</span>            <span class="keyword">auto</span> db_iterator = config.find(<span class="stringliteral">&quot;db&quot;</span>);</div>
-<div class="line"><span class="lineno">   74</span>            <span class="keyword">auto</span> port_iterator = config.find(<span class="stringliteral">&quot;port&quot;</span>);</div>
-<div class="line"><span class="lineno">   75</span>            <span class="keywordflow">if</span> (host_iterator == config.end() ||</div>
-<div class="line"><span class="lineno">   76</span>                user_iterator == config.end() ||</div>
-<div class="line"><span class="lineno">   77</span>                pwd_iterator == config.end() ||</div>
-<div class="line"><span class="lineno">   78</span>                db_iterator == config.end() ||</div>
-<div class="line"><span class="lineno">   79</span>                port_iterator == config.end()) {</div>
-<div class="line"><span class="lineno">   80</span>                <span class="comment">// 缺少必要字段</span></div>
-<div class="line"><span class="lineno">   81</span>                <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   82</span>            }</div>
-<div class="line"><span class="lineno">   83</span>            <span class="keyword">const</span> <span class="keywordtype">char</span> *keywords[] = {<span class="stringliteral">&quot;host&quot;</span>, <span class="stringliteral">&quot;user&quot;</span>, <span class="stringliteral">&quot;password&quot;</span>, <span class="stringliteral">&quot;dbname&quot;</span>, <span class="stringliteral">&quot;port&quot;</span>, <span class="keyword">nullptr</span>};</div>
-<div class="line"><span class="lineno">   84</span>            <span class="keyword">const</span> <span class="keywordtype">char</span> *values[] = {</div>
-<div class="line"><span class="lineno">   85</span>                    host_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   86</span>                    user_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   87</span>                    pwd_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   88</span>                    db_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   89</span>                    port_iterator-&gt;second.c_str(),</div>
-<div class="line"><span class="lineno">   90</span>                    <span class="keyword">nullptr</span>};</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>            PGconn *conn = PQconnectdbParams(keywords, values, 0);</div>
-<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">if</span> (conn == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   94</span>                <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   95</span>            }</div>
-<div class="line"><span class="lineno">   96</span>            <span class="keywordflow">return</span> std::make_unique&lt;impl::PostgresDriverInstanceImpl&gt;(conn);</div>
-<div class="line"><span class="lineno">   97</span>        }</div>
-<div class="line"><span class="lineno">   98</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  101</span>    }</div>
-<div class="line"><span class="lineno">  102</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="db_2_util_8cpp_source.html#l00006">sese::db::tokenize()</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1db.html#ac2fdea009a81a3aa726d98dfcca5e81d">sese::db::tokenize()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/db/<a class="el" href="_driver_manager_8h_source.html">DriverManager.h</a></li>
-<li>sese/db/<a class="el" href="_driver_manager_8cpp_source.html">DriverManager.cpp</a></li>
+<li>sese/db/<a class="el" href="_driver_manager_8cpp.html">DriverManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

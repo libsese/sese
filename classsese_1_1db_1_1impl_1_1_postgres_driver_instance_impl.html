@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -194,10 +195,7 @@ Protected 属性</h2></td></tr>
 <tr class="memitem:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance" id="r_a85be3abcd3cd8c86292965639a208b16"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a> &gt;</td></tr>
 <tr class="separator:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock">
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00007">7</a> 行定义.</p>
-</div><h2 class="groupheader">构造及析构函数说明</h2>
+<h2 class="groupheader">构造及析构函数说明</h2>
 <a id="aeccfcd09601af4ea4582f1d50a2eb8aa" name="aeccfcd09601af4ea4582f1d50a2eb8aa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeccfcd09601af4ea4582f1d50a2eb8aa">&#9670;&#160;</a></span>PostgresDriverInstanceImpl()</h2>
 
@@ -222,18 +220,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00007">7</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                                                {</div>
-<div class="line"><span class="lineno">    8</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a> = <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>;</div>
-<div class="line"><span class="lineno">    9</span>    <span class="keyword">auto</span> status = PQstatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
-<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">if</span> (status != CONNECTION_OK) {</div>
-<div class="line"><span class="lineno">   11</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
-<div class="line"><span class="lineno">   12</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   13</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
-<div class="line"><span class="lineno">   14</span>    }</div>
-<div class="line"><span class="lineno">   15</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   16</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a46968c4869e49c8da513065ff7c1cef6" name="a46968c4869e49c8da513065ff7c1cef6"></a>
@@ -259,16 +245,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00018">18</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                                     {</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
-<div class="line"><span class="lineno">   20</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   22</span>    }</div>
-<div class="line"><span class="lineno">   23</span>    PQfinish(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
-<div class="line"><span class="lineno">   24</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00028">conn</a> , 以及 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00029">result</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>.</p>
 
 </div>
 </div>
@@ -299,28 +276,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a86eb94e26844ebcb016819d2716f6c80">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00171">171</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  171</span>                                                    {</div>
-<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
-<div class="line"><span class="lineno">  173</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  174</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  175</span>    }</div>
-<div class="line"><span class="lineno">  176</span> </div>
-<div class="line"><span class="lineno">  177</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, <span class="stringliteral">&quot;BEGIN;&quot;</span>);</div>
-<div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  180</span> </div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">if</span> (status != PGRES_COMMAND_OK) {</div>
-<div class="line"><span class="lineno">  182</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
-<div class="line"><span class="lineno">  183</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  184</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  185</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
-<div class="line"><span class="lineno">  186</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  187</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  188</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  189</span>    }</div>
-<div class="line"><span class="lineno">  190</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a4e0d160da5d784f9a761567d0ffdf055" name="a4e0d160da5d784f9a761567d0ffdf055"></a>
@@ -354,30 +309,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a57d6ebbec84b20c7183ec1239ff123cc">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00119">119</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>                                                     {</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
-<div class="line"><span class="lineno">  121</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  122</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  123</span>    }</div>
-<div class="line"><span class="lineno">  124</span> </div>
-<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, <span class="stringliteral">&quot;COMMIT;&quot;</span>);</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  128</span>    }</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">if</span> (status != PGRES_COMMAND_OK) {</div>
-<div class="line"><span class="lineno">  132</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
-<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  134</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  135</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
-<div class="line"><span class="lineno">  136</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  137</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  139</span>    }</div>
-<div class="line"><span class="lineno">  140</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a295b90d971b4fbf7197390303d137dc3" name="a295b90d971b4fbf7197390303d137dc3"></a>
@@ -419,37 +350,7 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#ac59e04041daa62eef70adbbe923a6f3c">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00070">70</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                                                             {</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
-<div class="line"><span class="lineno">   72</span>    std::stringstream string_builder;</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; strlen(sql); ++i) {</div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">if</span> (sql[i] == <span class="charliteral">&#39;?&#39;</span>) {</div>
-<div class="line"><span class="lineno">   75</span>            <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>++;</div>
-<div class="line"><span class="lineno">   76</span>            string_builder &lt;&lt; <span class="charliteral">&#39;$&#39;</span> &lt;&lt; <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>;</div>
-<div class="line"><span class="lineno">   77</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   78</span>            string_builder &lt;&lt; sql[i];</div>
-<div class="line"><span class="lineno">   79</span>        }</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>    std::string stmt_string = string_builder.str();</div>
-<div class="line"><span class="lineno">   83</span>    std::uniform_int_distribution&lt;int&gt; discrete_distribution(1, 65535);</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keyword">auto</span> stmt_name = <span class="stringliteral">&quot;sese_stmt_&quot;</span> + std::to_string(discrete_distribution(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#af7fdcbcc46e97342f66703cc4992e68c">rd</a>));</div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>    <span class="keyword">auto</span> res = PQprepare(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, stmt_name.c_str(), stmt_string.c_str(), <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (PQresultStatus(res) == PGRES_COMMAND_OK) {</div>
-<div class="line"><span class="lineno">   88</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
-<div class="line"><span class="lineno">   89</span>        PQclear(res);</div>
-<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">return</span> std::make_unique&lt;impl::PostgresPreparedStatementImpl&gt;(stmt_name, stmt_string, <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
-<div class="line"><span class="lineno">   91</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   92</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(PQresultStatus(res));</div>
-<div class="line"><span class="lineno">   93</span>        PQclear(res);</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   95</span>    }</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count()</a>.</p>
 
 </div>
 </div>
@@ -492,29 +393,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a1c872d805ce3065afc9843f0ee2ce361">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00026">26</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   26</span>                                                                                  {</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
-<div class="line"><span class="lineno">   28</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">   29</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   30</span>    }</div>
-<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, sql);</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   33</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) PQstatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">if</span> (status != PGRES_TUPLES_OK) {</div>
-<div class="line"><span class="lineno">   38</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
-<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   40</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keyword">auto</span> rt = std::make_unique&lt;PostgresResultSetImpl&gt;(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">   42</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
-<div class="line"><span class="lineno">   43</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">return</span> rt;</div>
-<div class="line"><span class="lineno">   45</span>    }</div>
-<div class="line"><span class="lineno">   46</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a6fd50e96e5344d77073cde88878694ea" name="a6fd50e96e5344d77073cde88878694ea"></a>
@@ -556,29 +434,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a228dbfc67efa358605ff73c720536793">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00048">48</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                                              {</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
-<div class="line"><span class="lineno">   50</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">   51</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   52</span>    }</div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, sql);</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (status != PGRES_COMMAND_OK) {</div>
-<div class="line"><span class="lineno">   59</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
-<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">   61</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   62</span>        <span class="keyword">auto</span> rt = (int64_t) PQcmdTuples(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">   63</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
-<div class="line"><span class="lineno">   64</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span> rt;</div>
-<div class="line"><span class="lineno">   67</span>    }</div>
-<div class="line"><span class="lineno">   68</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a3086c1dd5820d502ca4e062ecb45009b" name="a3086c1dd5820d502ca4e062ecb45009b"></a>
@@ -614,11 +469,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a54a3030dbd9dcafe8f14cc437a6ee0d4">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00115">115</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>                                                                        {</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  117</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa4c1a9977a0e4799a7e4bbb0dcf4530f" name="aa4c1a9977a0e4799a7e4bbb0dcf4530f"></a>
@@ -654,11 +504,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a11c2e3954833882365a74431ae85417a">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00167">167</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>                                                                           {</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  169</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a88cf873afff7222731ba2e26e7108a97" name="a88cf873afff7222731ba2e26e7108a97"></a>
@@ -687,11 +532,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a5b25a40ffc85321d20bd19522976e120">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00099">99</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>                                                                {</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a>;</div>
-<div class="line"><span class="lineno">  101</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a4f545197ac7ed8bdbb761725f6992e9c" name="a4f545197ac7ed8bdbb761725f6992e9c"></a>
@@ -720,15 +560,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a440896cddef5269a0a80e5010fe6b7d4">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00103">103</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  103</span>                                                                               {</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
-<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> PQresultErrorMessage(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  106</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  107</span>        <span class="keywordflow">return</span> PQerrorMessage(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
-<div class="line"><span class="lineno">  108</span>    }</div>
-<div class="line"><span class="lineno">  109</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a1f8e79b375c352637a439cc250f5f5e3" name="a1f8e79b375c352637a439cc250f5f5e3"></a>
@@ -762,30 +593,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a101cebfab159068ef701980db574b52c">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00143">143</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  143</span>                                                       {</div>
-<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
-<div class="line"><span class="lineno">  145</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  146</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  147</span>    }</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, <span class="stringliteral">&quot;rollback;&quot;</span>);</div>
-<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  152</span>    }</div>
-<div class="line"><span class="lineno">  153</span> </div>
-<div class="line"><span class="lineno">  154</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">if</span> (status != PGRES_COMMAND_OK) {</div>
-<div class="line"><span class="lineno">  156</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
-<div class="line"><span class="lineno">  157</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  158</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  159</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
-<div class="line"><span class="lineno">  160</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
-<div class="line"><span class="lineno">  161</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  163</span>    }</div>
-<div class="line"><span class="lineno">  164</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a7065a54c00e0df73d56319d8fd650d28" name="a7065a54c00e0df73d56319d8fd650d28"></a>
@@ -829,11 +636,6 @@ Protected 属性</h2></td></tr>
 
 <p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a28b9a4621f53551ab3156583ead8e2ac">sese::db::DriverInstance</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00111">111</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>                                                                       {</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  113</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -857,9 +659,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00028">28</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00018">~PostgresDriverInstanceImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl()</a>.</p>
 
 </div>
 </div>
@@ -883,8 +683,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00030">30</a> 行定义.</p>
-
 </div>
 </div>
 <a id="af7fdcbcc46e97342f66703cc4992e68c" name="af7fdcbcc46e97342f66703cc4992e68c"></a>
@@ -907,9 +705,6 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00032">32</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>{};</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a4dc88be3870a8bc521aa0a97bcf3605a" name="a4dc88be3870a8bc521aa0a97bcf3605a"></a>
@@ -932,15 +727,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00029">29</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00018">~PostgresDriverInstanceImpl()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a></li>
-<li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a></li>
+<li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_driver_instance_impl_8cpp.html">PostgresDriverInstanceImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

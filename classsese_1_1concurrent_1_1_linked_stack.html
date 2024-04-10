@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,13 +129,23 @@ $(document).ready(function(){initNavTree('classsese_1_1concurrent_1_1_linked_sta
   <div class="summary">
 <a href="#nested-classes">类</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1concurrent_1_1_linked_stack-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::concurrent::LinkedStack&lt; T &gt; 模板类 参考</div></div>
 </div><!--header-->
 <div class="contents">
 
+<p>非阻塞线程安全栈  
+ <a href="classsese_1_1concurrent_1_1_linked_stack.html#details">更多...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_linked_stack_8h_source.html">LinkedStack.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1concurrent_1_1_linked_stack_1_1_node.html">Node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点  <a href="structsese_1_1concurrent_1_1_linked_stack_1_1_node.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a36df0e7962d0429bcee46f9b852beecb" id="r_a36df0e7962d0429bcee46f9b852beecb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#a36df0e7962d0429bcee46f9b852beecb">~LinkedStack</a> ()</td></tr>
@@ -145,17 +156,21 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:afdc844c776e540afce9e18b189096022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adab4beccc24543df08841acc52f2a151" id="r_adab4beccc24543df08841acc52f2a151"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#adab4beccc24543df08841acc52f2a151">empty</a> ()</td></tr>
 <tr class="separator:adab4beccc24543df08841acc52f2a151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:aad2735232bdd7686bdddfbab659ef744" id="r_aad2735232bdd7686bdddfbab659ef744"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; <a class="el" href="structsese_1_1concurrent_1_1_linked_stack_1_1_node.html">Node</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#aad2735232bdd7686bdddfbab659ef744">root</a> {nullptr}</td></tr>
+<tr class="separator:aad2735232bdd7686bdddfbab659ef744"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class T&gt;<br />
-class sese::concurrent::LinkedStack&lt; T &gt;</div><p>非阻塞线程安全栈 </p><dl class="tparams"><dt>模板参数</dt><dd>
+class sese::concurrent::LinkedStack&lt; T &gt;</div><p>非阻塞线程安全栈 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>模板类型 </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">在文件 <a class="el" href="_linked_stack_8h_source.html">LinkedStack.h</a> 第 <a class="el" href="_linked_stack_8h_source.html#l00018">18</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a36df0e7962d0429bcee46f9b852beecb" name="a36df0e7962d0429bcee46f9b852beecb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36df0e7962d0429bcee46f9b852beecb">&#9670;&#160;</a></span>~LinkedStack()</h2>
@@ -182,16 +197,8 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_linked_stack_8h_source.html">LinkedStack.h</a> 第 <a class="el" href="_linked_stack_8h_source.html#l00027">27</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>                   {</div>
-<div class="line"><span class="lineno">   28</span>        <span class="keyword">auto</span> p_node = root.load();</div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">while</span> (p_node) {</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keyword">auto</span> p_next = p_node-&gt;next.load();</div>
-<div class="line"><span class="lineno">   31</span>            <span class="keyword">delete</span> p_node;</div>
-<div class="line"><span class="lineno">   32</span>            p_node = p_next;</div>
-<div class="line"><span class="lineno">   33</span>        }</div>
-<div class="line"><span class="lineno">   34</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#aad2735232bdd7686bdddfbab659ef744">sese::concurrent::LinkedStack&lt; T &gt;::root</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
@@ -220,11 +227,8 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_linked_stack_8h_source.html">LinkedStack.h</a> 第 <a class="el" href="_linked_stack_8h_source.html#l00068">68</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>                 {</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span> root.load() == <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   70</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#aad2735232bdd7686bdddfbab659ef744">sese::concurrent::LinkedStack&lt; T &gt;::root</a>.</p>
+
 </div>
 </div>
 <a id="afdc844c776e540afce9e18b189096022" name="afdc844c776e540afce9e18b189096022"></a>
@@ -253,25 +257,8 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_linked_stack_8h_source.html">LinkedStack.h</a> 第 <a class="el" href="_linked_stack_8h_source.html#l00050">50</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>                       {</div>
-<div class="line"><span class="lineno">   51</span>        Node *old_root;</div>
-<div class="line"><span class="lineno">   52</span>        Node *new_root;</div>
-<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   54</span>            old_root = root.load();</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">if</span> (old_root == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   56</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   57</span>            }</div>
-<div class="line"><span class="lineno">   58</span>            new_root = old_root-&gt;next.load();</div>
-<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">if</span> (root.compare_exchange_weak(old_root, new_root)) {</div>
-<div class="line"><span class="lineno">   60</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   61</span>            }</div>
-<div class="line"><span class="lineno">   62</span>        }</div>
-<div class="line"><span class="lineno">   63</span>        value = old_root-&gt;value;</div>
-<div class="line"><span class="lineno">   64</span>        <span class="keyword">delete</span> old_root;</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   66</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="structsese_1_1concurrent_1_1_linked_stack_1_1_node.html#aec8362d375c02e6d9bda36b8a06684e9">sese::concurrent::LinkedStack&lt; T &gt;::Node::next</a>, <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#aad2735232bdd7686bdddfbab659ef744">sese::concurrent::LinkedStack&lt; T &gt;::root</a> , 以及 <a class="el" href="structsese_1_1concurrent_1_1_linked_stack_1_1_node.html#a3463e25d732b46b3e2f25041fe88641c">sese::concurrent::LinkedStack&lt; T &gt;::Node::value</a>.</p>
+
 </div>
 </div>
 <a id="aa8c8527eb18a8fa7156c73a93a37c360" name="aa8c8527eb18a8fa7156c73a93a37c360"></a>
@@ -300,21 +287,35 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_linked_stack_8h_source.html">LinkedStack.h</a> 第 <a class="el" href="_linked_stack_8h_source.html#l00036">36</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>                              {</div>
-<div class="line"><span class="lineno">   37</span>        <span class="keyword">auto</span> new_node = <span class="keyword">new</span> Node;</div>
-<div class="line"><span class="lineno">   38</span>        new_node-&gt;value = value;</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>        Node *current_root;</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   42</span>            current_root = root.load();</div>
-<div class="line"><span class="lineno">   43</span>            new_node-&gt;next.store(current_root);</div>
-<div class="line"><span class="lineno">   44</span>            <span class="keywordflow">if</span> (root.compare_exchange_weak(current_root, new_node)) {</div>
-<div class="line"><span class="lineno">   45</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   46</span>            }</div>
-<div class="line"><span class="lineno">   47</span>        }</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="structsese_1_1concurrent_1_1_linked_stack_1_1_node.html#aec8362d375c02e6d9bda36b8a06684e9">sese::concurrent::LinkedStack&lt; T &gt;::Node::next</a>, <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#aad2735232bdd7686bdddfbab659ef744">sese::concurrent::LinkedStack&lt; T &gt;::root</a> , 以及 <a class="el" href="structsese_1_1concurrent_1_1_linked_stack_1_1_node.html#a3463e25d732b46b3e2f25041fe88641c">sese::concurrent::LinkedStack&lt; T &gt;::Node::value</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aad2735232bdd7686bdddfbab659ef744" name="aad2735232bdd7686bdddfbab659ef744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad2735232bdd7686bdddfbab659ef744">&#9670;&#160;</a></span>root</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;<a class="el" href="structsese_1_1concurrent_1_1_linked_stack_1_1_node.html">Node</a> *&gt; <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html">sese::concurrent::LinkedStack</a>&lt; T &gt;::root {nullptr}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#adab4beccc24543df08841acc52f2a151">sese::concurrent::LinkedStack&lt; T &gt;::empty()</a>, <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#afdc844c776e540afce9e18b189096022">sese::concurrent::LinkedStack&lt; T &gt;::pop()</a>, <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#aa8c8527eb18a8fa7156c73a93a37c360">sese::concurrent::LinkedStack&lt; T &gt;::push()</a> , 以及 <a class="el" href="classsese_1_1concurrent_1_1_linked_stack.html#a36df0e7962d0429bcee46f9b852beecb">sese::concurrent::LinkedStack&lt; T &gt;::~LinkedStack()</a>.</p>
+
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>

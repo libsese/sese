@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -223,14 +224,6 @@ $(document).ready(function(){initNavTree('namespacesese_1_1record.html',''); ini
 </td></tr>
 </table>
 
-<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00020">20</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>                 {</div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">DEBUG</a> = 0,</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">INFO</a> = 1,</div>
-<div class="line"><span class="lineno">   26</span>    <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">WARN</a> = 2,</div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">ERR</a> = 3</div>
-<div class="line"><span class="lineno">   29</span>};</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">函数说明</h2>
@@ -258,12 +251,9 @@ $(document).ready(function(){initNavTree('namespacesese_1_1record.html',''); ini
 </div><div class="memdoc">
 <p>获取全局 <a class="el" href="classsese_1_1record_1_1_logger.html" title="日志输出类">Logger</a> 指针 </p><dl class="section return"><dt>返回</dt><dd><a class="el" href="classsese_1_1record_1_1_logger.html" title="日志输出类">Logger</a> 指针 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00087">87</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   87</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3">logger</a>; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_logger_8cpp_source.html#l00070">logger</a>.</p>
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3">logger</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_log_helper_8cpp_source.html#l00044">sese::record::LogHelper::LogHelper()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_log_helper.html#ad0da2651d29aceba2963921e90d1d4b3">sese::record::LogHelper::l()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_log_helper.html#ab961c52d3a50c96a317a1465855f7bef">sese::record::LogHelper::LogHelper()</a>.</p>
 
 </div>
 </div>
@@ -288,9 +278,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1record.html',''); ini
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00070">70</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00072">sese::record::Logger::addGlobalLoggerAppender()</a>, <a class="el" href="_logger_8cpp_source.html#l00100">sese::record::LoggerInitiateTask::destroy()</a>, <a class="el" href="_logger_8cpp_source.html#l00087">getLogger()</a>, <a class="el" href="_logger_8cpp_source.html#l00089">sese::record::LoggerInitiateTask::init()</a> , 以及 <a class="el" href="_logger_8cpp_source.html#l00076">sese::record::Logger::removeGlobalLoggerAppender()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1record_1_1_logger.html#a96eea5856c58b0babbebb37a2c27338e">sese::record::Logger::addGlobalLoggerAppender()</a>, <a class="el" href="classsese_1_1record_1_1_logger_initiate_task.html#a034963871b7b5be54381529a01dbb118">sese::record::LoggerInitiateTask::destroy()</a>, <a class="el" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">getLogger()</a>, <a class="el" href="classsese_1_1record_1_1_logger_initiate_task.html#a97aedf1a38da5c6ece75258741be53bd">sese::record::LoggerInitiateTask::init()</a> , 以及 <a class="el" href="classsese_1_1record_1_1_logger.html#acf3821d839e22aeb21e44f302985287d">sese::record::Logger::removeGlobalLoggerAppender()</a>.</p>
 
 </div>
 </div>

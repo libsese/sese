@@ -15,5 +15,7 @@ var classsese_1_1_thread =
     [ "joinable", "classsese_1_1_thread.html#a5ca139147e828c91f80ad3e86d88bc21", null ],
     [ "run", "classsese_1_1_thread.html#a8836d5c3e7895a56b59eb0f3584fb6c0", null ],
     [ "setCurrentThreadAsMain", "classsese_1_1_thread.html#a38ff8d4d5aee53181e8b364ffd58d6b0", null ],
-    [ "start", "classsese_1_1_thread.html#a59219703ab2a15f57118c21ee4188b9a", null ]
+    [ "start", "classsese_1_1_thread.html#a59219703ab2a15f57118c21ee4188b9a", null ],
+    [ "data", "classsese_1_1_thread.html#ad6400c148d585d10d2aaec579a9eda7f", null ],
+    [ "main_id", "classsese_1_1_thread.html#a5e18e8b2e4914c6e4e7841f4f736d66e", null ]
 ];

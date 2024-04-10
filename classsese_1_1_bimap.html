@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -128,10 +129,14 @@ $(document).ready(function(){initNavTree('classsese_1_1_bimap.html',''); initRes
   <div class="summary">
 <a href="#pub-types">Public 类型</a> &#124;
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1_bimap-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::Bimap&lt; K, V &gt; 模板类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>双向映射表  
+ <a href="classsese_1_1_bimap.html#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_bimap_8h_source.html">Bimap.h</a>&gt;</code></p>
 <table class="memberdecls">
@@ -190,18 +195,24 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:afb348aa5dfd4b6780a8334594650b830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a914c5d2012dc978624c5fc2b36ac03d1" id="r_a914c5d2012dc978624c5fc2b36ac03d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_bimap.html#a914c5d2012dc978624c5fc2b36ac03d1">clear</a> ()</td></tr>
 <tr class="separator:a914c5d2012dc978624c5fc2b36ac03d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a6149517d5859909d1377599b06315896" id="r_a6149517d5859909d1377599b06315896"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classsese_1_1_bimap.html#a977d2ac7d283cb05bd924ca882e5c82e">BimapKeyType</a>, <a class="el" href="classsese_1_1_bimap.html#a3aa68fbefacc019e830c9ac3eaae8df1">BimapValueType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">first</a> {}</td></tr>
+<tr class="separator:a6149517d5859909d1377599b06315896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ad9e5ae7332c3a68eee650fcc80466" id="r_a35ad9e5ae7332c3a68eee650fcc80466"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="classsese_1_1_bimap.html#a3aa68fbefacc019e830c9ac3eaae8df1">BimapValueType</a>, <a class="el" href="classsese_1_1_bimap.html#a977d2ac7d283cb05bd924ca882e5c82e">BimapKeyType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">second</a> {}</td></tr>
+<tr class="separator:a35ad9e5ae7332c3a68eee650fcc80466"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class K, class V&gt;<br />
-class sese::Bimap&lt; K, V &gt;</div><p>双向映射表 </p><dl class="tparams"><dt>模板参数</dt><dd>
+class sese::Bimap&lt; K, V &gt;</div><p>双向映射表 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">K</td><td>键类型 </td></tr>
     <tr><td class="paramname">V</td><td>值类型 </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00018">18</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="a977d2ac7d283cb05bd924ca882e5c82e" name="a977d2ac7d283cb05bd924ca882e5c82e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a977d2ac7d283cb05bd924ca882e5c82e">&#9670;&#160;</a></span>BimapKeyType</h2>
@@ -216,8 +227,6 @@ template&lt;class K , class V &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00020">20</a> 行定义.</p>
 
 </div>
 </div>
@@ -234,8 +243,6 @@ template&lt;class K , class V &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00021">21</a> 行定义.</p>
 
 </div>
 </div>
@@ -376,14 +383,7 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00030">30</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>                                                                                  {</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[key, value]: init) {</div>
-<div class="line"><span class="lineno">   32</span>            <a class="code hl_function" href="classsese_1_1_bimap.html#a75e4b497135f9881263884db78871e20">insert</a>(key, value);</div>
-<div class="line"><span class="lineno">   33</span>        }</div>
-<div class="line"><span class="lineno">   34</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_bimap_8h_source.html#l00040">sese::Bimap&lt; K, V &gt;::insert()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a75e4b497135f9881263884db78871e20">sese::Bimap&lt; K, V &gt;::insert()</a>.</p>
 
 </div>
 </div>
@@ -413,9 +413,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00036">36</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>{ <span class="keywordflow">return</span> first.begin(); }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a>.</p>
+
 </div>
 </div>
 <a id="a914c5d2012dc978624c5fc2b36ac03d1" name="a914c5d2012dc978624c5fc2b36ac03d1"></a>
@@ -443,12 +442,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00101">101</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>                 {</div>
-<div class="line"><span class="lineno">  102</span>        first.clear();</div>
-<div class="line"><span class="lineno">  103</span>        second.clear();</div>
-<div class="line"><span class="lineno">  104</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a> , 以及 <a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">sese::Bimap&lt; K, V &gt;::second</a>.</p>
+
 </div>
 </div>
 <a id="ace5158c9931b85d025252191b06bdbb9" name="ace5158c9931b85d025252191b06bdbb9"></a>
@@ -476,11 +471,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00093">93</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>                                     {</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> first.empty();</div>
-<div class="line"><span class="lineno">   95</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a>.</p>
+
 </div>
 </div>
 <a id="ae46c56998622369e37b0361cefa03590" name="ae46c56998622369e37b0361cefa03590"></a>
@@ -508,9 +500,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00038">38</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{ <span class="keywordflow">return</span> first.end(); }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a>.</p>
+
 </div>
 </div>
 <a id="aa8c6035accc7b6506dcc3a59bcb79f5c" name="aa8c6035accc7b6506dcc3a59bcb79f5c"></a>
@@ -539,14 +530,9 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00045">45</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>                                             {</div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_typedef" href="classsese_1_1_bimap.html#a3aa68fbefacc019e830c9ac3eaae8df1">BimapValueType</a> value = first[key];</div>
-<div class="line"><span class="lineno">   47</span>        first.erase(key);</div>
-<div class="line"><span class="lineno">   48</span>        second.erase(value);</div>
-<div class="line"><span class="lineno">   49</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_bimap_8h_source.html#l00057">sese::Bimap&lt; K, V &gt;::tryEraseByKey()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a> , 以及 <a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">sese::Bimap&lt; K, V &gt;::second</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_bimap.html#a2f5bddf1267a11d14a69879274b6fdf3">sese::Bimap&lt; K, V &gt;::tryEraseByKey()</a>.</p>
 
 </div>
 </div>
@@ -576,14 +562,9 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00051">51</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                                   {</div>
-<div class="line"><span class="lineno">   52</span>        <a class="code hl_typedef" href="classsese_1_1_bimap.html#a977d2ac7d283cb05bd924ca882e5c82e">BimapKeyType</a> key = second[value];</div>
-<div class="line"><span class="lineno">   53</span>        first.erase(key);</div>
-<div class="line"><span class="lineno">   54</span>        second.erase(value);</div>
-<div class="line"><span class="lineno">   55</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_bimap_8h_source.html#l00063">sese::Bimap&lt; K, V &gt;::tryEraseByValue()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a> , 以及 <a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">sese::Bimap&lt; K, V &gt;::second</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_bimap.html#a05e915ff2c52f6eda68d52e18b65e4fb">sese::Bimap&lt; K, V &gt;::tryEraseByValue()</a>.</p>
 
 </div>
 </div>
@@ -613,11 +594,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00069">69</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>                                                   {</div>
-<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">return</span> first.contains(key);</div>
-<div class="line"><span class="lineno">   71</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a>.</p>
+
 </div>
 </div>
 <a id="aa33d8868409891e781baf07e6126323d" name="aa33d8868409891e781baf07e6126323d"></a>
@@ -646,11 +624,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00073">73</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>                                                         {</div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">return</span> second.contains(value);</div>
-<div class="line"><span class="lineno">   75</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">sese::Bimap&lt; K, V &gt;::second</a>.</p>
+
 </div>
 </div>
 <a id="acb4c93ece235e8f9f1e021f9039991d8" name="acb4c93ece235e8f9f1e021f9039991d8"></a>
@@ -679,11 +654,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00081">81</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   81</span>                                                                    {</div>
-<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">return</span> first.at(key);</div>
-<div class="line"><span class="lineno">   83</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a>.</p>
+
 </div>
 </div>
 <a id="a60f98087e408050648efb11a87e4cbf8" name="a60f98087e408050648efb11a87e4cbf8"></a>
@@ -712,11 +684,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00077">77</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>                                                                                {</div>
-<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">return</span> first.at(key);</div>
-<div class="line"><span class="lineno">   79</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a>.</p>
+
 </div>
 </div>
 <a id="a30655545bd041bdbd0fdc20d3e511ef6" name="a30655545bd041bdbd0fdc20d3e511ef6"></a>
@@ -745,11 +714,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00089">89</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   89</span>                                                                        {</div>
-<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">return</span> second.at(value);</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">sese::Bimap&lt; K, V &gt;::second</a>.</p>
+
 </div>
 </div>
 <a id="a2552eb93d930e52ab421b16d25bacca0" name="a2552eb93d930e52ab421b16d25bacca0"></a>
@@ -778,11 +744,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00085">85</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   85</span>                                                                                    {</div>
-<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">return</span> second.at(value);</div>
-<div class="line"><span class="lineno">   87</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">sese::Bimap&lt; K, V &gt;::second</a>.</p>
+
 </div>
 </div>
 <a id="a75e4b497135f9881263884db78871e20" name="a75e4b497135f9881263884db78871e20"></a>
@@ -821,13 +784,9 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00040">40</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>                                                                      {</div>
-<div class="line"><span class="lineno">   41</span>        first[key] = value;</div>
-<div class="line"><span class="lineno">   42</span>        second[value] = key;</div>
-<div class="line"><span class="lineno">   43</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_bimap_8h_source.html#l00030">sese::Bimap&lt; K, V &gt;::Bimap()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a> , 以及 <a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">sese::Bimap&lt; K, V &gt;::second</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_bimap.html#a885e8732364ac692a401be5ab4dce3c5">sese::Bimap&lt; K, V &gt;::Bimap()</a>.</p>
 
 </div>
 </div>
@@ -912,11 +871,8 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00097">97</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>                                      {</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span> first.size();</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a>.</p>
+
 </div>
 </div>
 <a id="a2f5bddf1267a11d14a69879274b6fdf3" name="a2f5bddf1267a11d14a69879274b6fdf3"></a>
@@ -945,14 +901,7 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00057">57</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>                                                {</div>
-<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">if</span> (!first.contains(key)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   59</span>        <a class="code hl_function" href="classsese_1_1_bimap.html#aa8c6035accc7b6506dcc3a59bcb79f5c">eraseByKey</a>(key);</div>
-<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   61</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_bimap_8h_source.html#l00045">sese::Bimap&lt; K, V &gt;::eraseByKey()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#aa8c6035accc7b6506dcc3a59bcb79f5c">sese::Bimap&lt; K, V &gt;::eraseByKey()</a> , 以及 <a class="el" href="classsese_1_1_bimap.html#a6149517d5859909d1377599b06315896">sese::Bimap&lt; K, V &gt;::first</a>.</p>
 
 </div>
 </div>
@@ -982,14 +931,60 @@ template&lt;class K , class V &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_bimap_8h_source.html">Bimap.h</a> 第 <a class="el" href="_bimap_8h_source.html#l00063">63</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>                                                      {</div>
-<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">if</span> (!second.contains(value)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_function" href="classsese_1_1_bimap.html#acaba11651b9e1cb456e35f6090f6baae">eraseByValue</a>(value);</div>
-<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   67</span>    }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_bimap_8h_source.html#l00051">sese::Bimap&lt; K, V &gt;::eraseByValue()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_bimap.html#acaba11651b9e1cb456e35f6090f6baae">sese::Bimap&lt; K, V &gt;::eraseByValue()</a> , 以及 <a class="el" href="classsese_1_1_bimap.html#a35ad9e5ae7332c3a68eee650fcc80466">sese::Bimap&lt; K, V &gt;::second</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a6149517d5859909d1377599b06315896" name="a6149517d5859909d1377599b06315896"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6149517d5859909d1377599b06315896">&#9670;&#160;</a></span>first</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class K , class V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;<a class="el" href="classsese_1_1_bimap.html#a977d2ac7d283cb05bd924ca882e5c82e">BimapKeyType</a>, <a class="el" href="classsese_1_1_bimap.html#a3aa68fbefacc019e830c9ac3eaae8df1">BimapValueType</a>&gt; <a class="el" href="classsese_1_1_bimap.html">sese::Bimap</a>&lt; K, V &gt;::first {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_bimap.html#afa0ff82a07ba2bf0d2f678754d140f34">sese::Bimap&lt; K, V &gt;::begin()</a>, <a class="el" href="classsese_1_1_bimap.html#a914c5d2012dc978624c5fc2b36ac03d1">sese::Bimap&lt; K, V &gt;::clear()</a>, <a class="el" href="classsese_1_1_bimap.html#ace5158c9931b85d025252191b06bdbb9">sese::Bimap&lt; K, V &gt;::empty()</a>, <a class="el" href="classsese_1_1_bimap.html#ae46c56998622369e37b0361cefa03590">sese::Bimap&lt; K, V &gt;::end()</a>, <a class="el" href="classsese_1_1_bimap.html#aa8c6035accc7b6506dcc3a59bcb79f5c">sese::Bimap&lt; K, V &gt;::eraseByKey()</a>, <a class="el" href="classsese_1_1_bimap.html#acaba11651b9e1cb456e35f6090f6baae">sese::Bimap&lt; K, V &gt;::eraseByValue()</a>, <a class="el" href="classsese_1_1_bimap.html#a4fd2c85ec3a7ea87c4ac99209c2a4a8d">sese::Bimap&lt; K, V &gt;::existByKey()</a>, <a class="el" href="classsese_1_1_bimap.html#acb4c93ece235e8f9f1e021f9039991d8">sese::Bimap&lt; K, V &gt;::getByKey()</a>, <a class="el" href="classsese_1_1_bimap.html#a60f98087e408050648efb11a87e4cbf8">sese::Bimap&lt; K, V &gt;::getByKey()</a>, <a class="el" href="classsese_1_1_bimap.html#a75e4b497135f9881263884db78871e20">sese::Bimap&lt; K, V &gt;::insert()</a>, <a class="el" href="classsese_1_1_bimap.html#afb348aa5dfd4b6780a8334594650b830">sese::Bimap&lt; K, V &gt;::size()</a> , 以及 <a class="el" href="classsese_1_1_bimap.html#a2f5bddf1267a11d14a69879274b6fdf3">sese::Bimap&lt; K, V &gt;::tryEraseByKey()</a>.</p>
+
+</div>
+</div>
+<a id="a35ad9e5ae7332c3a68eee650fcc80466" name="a35ad9e5ae7332c3a68eee650fcc80466"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35ad9e5ae7332c3a68eee650fcc80466">&#9670;&#160;</a></span>second</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class K , class V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;<a class="el" href="classsese_1_1_bimap.html#a3aa68fbefacc019e830c9ac3eaae8df1">BimapValueType</a>, <a class="el" href="classsese_1_1_bimap.html#a977d2ac7d283cb05bd924ca882e5c82e">BimapKeyType</a>&gt; <a class="el" href="classsese_1_1_bimap.html">sese::Bimap</a>&lt; K, V &gt;::second {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1_bimap.html#a914c5d2012dc978624c5fc2b36ac03d1">sese::Bimap&lt; K, V &gt;::clear()</a>, <a class="el" href="classsese_1_1_bimap.html#aa8c6035accc7b6506dcc3a59bcb79f5c">sese::Bimap&lt; K, V &gt;::eraseByKey()</a>, <a class="el" href="classsese_1_1_bimap.html#acaba11651b9e1cb456e35f6090f6baae">sese::Bimap&lt; K, V &gt;::eraseByValue()</a>, <a class="el" href="classsese_1_1_bimap.html#aa33d8868409891e781baf07e6126323d">sese::Bimap&lt; K, V &gt;::existByValue()</a>, <a class="el" href="classsese_1_1_bimap.html#a30655545bd041bdbd0fdc20d3e511ef6">sese::Bimap&lt; K, V &gt;::getByValue()</a>, <a class="el" href="classsese_1_1_bimap.html#a2552eb93d930e52ab421b16d25bacca0">sese::Bimap&lt; K, V &gt;::getByValue()</a>, <a class="el" href="classsese_1_1_bimap.html#a75e4b497135f9881263884db78871e20">sese::Bimap&lt; K, V &gt;::insert()</a> , 以及 <a class="el" href="classsese_1_1_bimap.html#a05e915ff2c52f6eda68d52e18b65e4fb">sese::Bimap&lt; K, V &gt;::tryEraseByValue()</a>.</p>
 
 </div>
 </div>

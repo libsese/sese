@@ -61,8 +61,9 @@
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">sese-core
+   &#160;<span id="projectnumber">x.y.z</span>
    </div>
-   <div id="projectbrief">A cross-platform foundational library</div>
+   <div id="projectbrief">A cross-platform library</div>
   </td>
  </tr>
  </tbody>
@@ -132,6 +133,7 @@ $(document).ready(function(){initNavTree('classsese_1_1__windows_1_1iocp_1_1v1_1
 <a href="#pro-methods">Protected 成员函数</a> &#124;
 <a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
 <a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
 <a href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">sese::_windows::iocp::v1::NativeIOCPServer类 参考</div></div>
 </div><!--header-->
@@ -270,11 +272,14 @@ Protected 属性</h2></td></tr>
 <tr class="separator:a288b0f8524825f1faea339dc8d220c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b866c25feb4d7ba81e1abc670bde261" id="r_a8b866c25feb4d7ba81e1abc670bde261"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8b866c25feb4d7ba81e1abc670bde261">clientProtos</a> {}</td></tr>
 <tr class="separator:a8b866c25feb4d7ba81e1abc670bde261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a8e8dd24e50d0f09aca38779eff237398" id="r_a8e8dd24e50d0f09aca38779eff237398"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8e8dd24e50d0f09aca38779eff237398">activeReleaseMode</a> = true</td></tr>
+<tr class="separator:a8e8dd24e50d0f09aca38779eff237398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>Windows 原生 IOCP 服务器 </p>
-
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00116">116</a> 行定义.</p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
 <a id="aff88310d725a2dde054f3109831a4d73" name="aff88310d725a2dde054f3109831a4d73"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff88310d725a2dde054f3109831a4d73">&#9670;&#160;</a></span>Context</h2>
@@ -287,8 +292,6 @@ Protected 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00118">118</a> 行定义.</p>
 
 </div>
 </div>
@@ -303,8 +306,6 @@ Protected 属性</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00119">119</a> 行定义.</p>
 
 </div>
 </div>
@@ -360,91 +361,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">257</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  257</span>                                        {</div>
-<div class="line"><span class="lineno">  258</span>    <span class="keyword">using namespace </span>std::chrono_literals;</div>
-<div class="line"><span class="lineno">  259</span> </div>
-<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">while</span> (!<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a06bf363f935e68316551e92ff0ff7f79">isShutdown</a>) {</div>
-<div class="line"><span class="lineno">  261</span> </div>
-<div class="line"><span class="lineno">  262</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a> != INVALID_SOCKET) {</div>
-<div class="line"><span class="lineno">  263</span>            <span class="keyword">auto</span> client_socket = accept(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a>, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  264</span>            <span class="keywordflow">if</span> (client_socket == INVALID_SOCKET) {</div>
-<div class="line"><span class="lineno">  265</span>                <span class="comment">// std::this_thread::sleep_for(500ms);</span></div>
-<div class="line"><span class="lineno">  266</span>                <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  267</span>                <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>.<a class="code hl_function" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720" title="检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件">check</a>();</div>
-<div class="line"><span class="lineno">  268</span>                <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  269</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  270</span>            }</div>
-<div class="line"><span class="lineno">  271</span> </div>
-<div class="line"><span class="lineno">  272</span>            <span class="keywordflow">if</span> (SOCKET_ERROR == <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">Socket::setNonblocking</a>(client_socket)) {</div>
-<div class="line"><span class="lineno">  273</span>                <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">Socket::close</a>(client_socket);</div>
-<div class="line"><span class="lineno">  274</span>                <span class="comment">// std::this_thread::sleep_for(500ms);</span></div>
-<div class="line"><span class="lineno">  275</span>                <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  276</span>                <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>.<a class="code hl_function" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720" title="检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件">check</a>();</div>
-<div class="line"><span class="lineno">  277</span>                <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  278</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  279</span>            }</div>
-<div class="line"><span class="lineno">  280</span> </div>
-<div class="line"><span class="lineno">  281</span>            <span class="keyword">auto</span> p_wrapper = <span class="keyword">new</span> <a class="code hl_struct" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html" title="Overlapped 包装器">OverlappedWrapper</a>;</div>
-<div class="line"><span class="lineno">  282</span>            p_wrapper-&gt;<a class="code hl_variable" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html#a1956412b17cbfd72c5109417386f0441">ctx</a>.fd = client_socket;</div>
-<div class="line"><span class="lineno">  283</span>            p_wrapper-&gt;ctx.self = <span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  284</span> </div>
-<div class="line"><span class="lineno">  285</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sslCtx</a>) {</div>
-<div class="line"><span class="lineno">  286</span>                <span class="keyword">auto</span> server_ssl = <span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sslCtx</a>-&gt;getContext());</div>
-<div class="line"><span class="lineno">  287</span>                <span class="keyword">auto</span> client_ssl = SSL_new(server_ssl);</div>
-<div class="line"><span class="lineno">  288</span>                SSL_set_fd(client_ssl, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(client_socket));</div>
-<div class="line"><span class="lineno">  289</span>                SSL_set_accept_state(client_ssl);</div>
-<div class="line"><span class="lineno">  290</span> </div>
-<div class="line"><span class="lineno">  291</span>                <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">  292</span>                    <span class="keyword">auto</span> rt = SSL_do_handshake(client_ssl);</div>
-<div class="line"><span class="lineno">  293</span>                    <span class="keywordflow">if</span> (rt &lt;= 0) {</div>
-<div class="line"><span class="lineno">  294</span>                        <span class="keyword">auto</span> err = SSL_get_error(client_ssl, rt);</div>
-<div class="line"><span class="lineno">  295</span>                        <span class="keywordflow">if</span> (err != SSL_ERROR_WANT_READ &amp;&amp; err != SSL_ERROR_WANT_WRITE) {</div>
-<div class="line"><span class="lineno">  296</span>                            SSL_free(client_ssl);</div>
-<div class="line"><span class="lineno">  297</span>                            <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">Socket::close</a>(client_socket);</div>
-<div class="line"><span class="lineno">  298</span>                            <span class="keyword">delete</span> p_wrapper;</div>
-<div class="line"><span class="lineno">  299</span>                            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  300</span>                            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>.<a class="code hl_function" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720" title="检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件">check</a>();</div>
-<div class="line"><span class="lineno">  301</span>                            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  302</span>                            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  303</span>                        }</div>
-<div class="line"><span class="lineno">  304</span>                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  305</span>                        p_wrapper-&gt;ctx.ssl = client_ssl;</div>
-<div class="line"><span class="lineno">  306</span>                        SSL_set_mode(client_ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);</div>
-<div class="line"><span class="lineno">  307</span>                        <span class="keyword">const</span> uint8_t *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  308</span>                        uint32_t data_length;</div>
-<div class="line"><span class="lineno">  309</span>                        SSL_get0_alpn_selected(client_ssl, &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, &amp;data_length);</div>
-<div class="line"><span class="lineno">  310</span>                        <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad463c2fd490c898b344b4bc2e7077844">onAlpnGet</a>(&amp;p_wrapper-&gt;ctx, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, data_length);</div>
-<div class="line"><span class="lineno">  311</span>                        p_wrapper-&gt;ctx.bio = BIO_new(<span class="keyword">static_cast&lt;</span>BIO_METHOD *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a>));</div>
-<div class="line"><span class="lineno">  312</span>                        BIO_set_data(<span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio), &amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  313</span>                        BIO_set_init(<span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio), 1);</div>
-<div class="line"><span class="lineno">  314</span>                        BIO_set_shutdown(<span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio), 0);</div>
-<div class="line"><span class="lineno">  315</span>                        SSL_set_bio(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.ssl), <span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio), <span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio));</div>
-<div class="line"><span class="lineno">  316</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  317</span>                    }</div>
-<div class="line"><span class="lineno">  318</span>                }</div>
-<div class="line"><span class="lineno">  319</span>            }</div>
-<div class="line"><span class="lineno">  320</span> </div>
-<div class="line"><span class="lineno">  321</span>            CreateIoCompletionPort(<span class="keyword">reinterpret_cast&lt;</span>HANDLE<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.fd), <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, 0, 0);</div>
-<div class="line"><span class="lineno">  322</span> </div>
-<div class="line"><span class="lineno">  323</span>            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  324</span>            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a>.emplace(p_wrapper);</div>
-<div class="line"><span class="lineno">  325</span>            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>.<a class="code hl_function" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720" title="检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件">check</a>();</div>
-<div class="line"><span class="lineno">  326</span>            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  327</span> </div>
-<div class="line"><span class="lineno">  328</span>            <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a84ac9242a7622948b1d0248e5d57bc08">onAcceptCompleted</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  329</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  330</span>            std::this_thread::sleep_for(500ms);</div>
-<div class="line"><span class="lineno">  331</span>            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  332</span>            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>.<a class="code hl_function" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720" title="检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件">check</a>();</div>
-<div class="line"><span class="lineno">  333</span>            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  334</span>        }</div>
-<div class="line"><span class="lineno">  335</span>    }</div>
-<div class="line"><span class="lineno">  336</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00314">bioMethod</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00055">sese::TimeWheel::check()</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00094">sese::net::Socket::close()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00110">sese::_windows::iocp::v1::OverlappedWrapper::ctx</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00301">iocpFd</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00300">isShutdown</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00302">listenFd</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00174">onAcceptCompleted()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00211">onAlpnGet()</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00066">sese::net::Socket::setNonblocking()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00313">sslCtx</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00306">wheel</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00307">wrapperSet</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00308">wrapperSetMutex</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a>, <a class="el" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720">sese::TimeWheel::check()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close()</a>, <a class="el" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html#a1956412b17cbfd72c5109417386f0441">sese::_windows::iocp::v1::OverlappedWrapper::ctx</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a8021e05cb478012bc3757a37bd24f1bc">sese::_windows::iocp::v1::NativeContext::fd</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a06bf363f935e68316551e92ff0ff7f79">isShutdown</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a84ac9242a7622948b1d0248e5d57bc08">onAcceptCompleted()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad463c2fd490c898b344b4bc2e7077844">onAlpnGet()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sslCtx</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>.</p>
 
 </div>
 </div>
@@ -506,14 +425,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00455">455</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  455</span>                                                                                                                                                                                {</div>
-<div class="line"><span class="lineno">  456</span>    <span class="keywordflow">return</span> server-&gt;<a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8ee98242ab6478ccfd965e48e0aae1b7">onAlpnSelect</a>(out, out_length, <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, in_length);</div>
-<div class="line"><span class="lineno">  457</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00448">onAlpnSelect()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8ee98242ab6478ccfd965e48e0aae1b7">onAlpnSelect()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>.</p>
 
 </div>
 </div>
@@ -563,16 +477,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00473">473</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  473</span>                                                                                                                         {</div>
-<div class="line"><span class="lineno">  474</span>    <span class="keywordtype">int</span> ret = 0;</div>
-<div class="line"><span class="lineno">  475</span>    <span class="keywordflow">if</span> (cmd == BIO_CTRL_FLUSH) {</div>
-<div class="line"><span class="lineno">  476</span>        ret = 1;</div>
-<div class="line"><span class="lineno">  477</span>    }</div>
-<div class="line"><span class="lineno">  478</span>    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><span class="lineno">  479</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>.</p>
 
 </div>
 </div>
@@ -616,13 +521,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00486">486</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  486</span>                                                              {</div>
-<div class="line"><span class="lineno">  487</span>    <span class="keyword">auto</span> ctx = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html" title="原生 IOCP 操作上下文">NativeContext</a> *<span class="keyword">&gt;</span>(BIO_get_data(<span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(bio)));</div>
-<div class="line"><span class="lineno">  488</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ctx-&gt;recv.read(out, length));</div>
-<div class="line"><span class="lineno">  489</span>}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>.</p>
 
 </div>
 </div>
@@ -666,15 +565,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00481">481</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  481</span>                                                                    {</div>
-<div class="line"><span class="lineno">  482</span>    <span class="keyword">auto</span> ctx = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html" title="原生 IOCP 操作上下文">NativeContext</a> *<span class="keyword">&gt;</span>(BIO_get_data(<span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(bio)));</div>
-<div class="line"><span class="lineno">  483</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ctx-&gt;send.write(<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, length));</div>
-<div class="line"><span class="lineno">  484</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>.</p>
 
 </div>
 </div>
@@ -700,17 +593,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00508">508</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  508</span>                                                                 {</div>
-<div class="line"><span class="lineno">  509</span>    <span class="keywordflow">if</span> (ctx-&gt;timeoutEvent) {</div>
-<div class="line"><span class="lineno">  510</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  511</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>.<a class="code hl_function" href="classsese_1_1_time_wheel.html#abdb2f1bbbeedeb421d16d63a0dd1c390">cancel</a>(ctx-&gt;timeoutEvent);</div>
-<div class="line"><span class="lineno">  512</span>        ctx-&gt;timeoutEvent = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  513</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  514</span>    }</div>
-<div class="line"><span class="lineno">  515</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp_source.html#l00049">sese::TimeWheel::cancel()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00306">wheel</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00308">wrapperSetMutex</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_time_wheel.html#abdb2f1bbbeedeb421d16d63a0dd1c390">sese::TimeWheel::cancel()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ac9afada7edc822b77a2514124deff5dc">sese::_windows::iocp::v1::NativeContext::timeoutEvent</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.</p>
 
 </div>
 </div>
@@ -737,120 +620,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">338</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  338</span>                                       {</div>
-<div class="line"><span class="lineno">  339</span>    <a class="code hl_struct" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html" title="Overlapped 包装器">OverlappedWrapper</a> *p_wrapper{};</div>
-<div class="line"><span class="lineno">  340</span>    DWORD lp_number_of_bytes_transferred = 0;</div>
-<div class="line"><span class="lineno">  341</span>    <span class="keywordtype">void</span> *lp_completion_key = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  342</span> </div>
-<div class="line"><span class="lineno">  343</span>    <span class="keywordflow">while</span> (!<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a06bf363f935e68316551e92ff0ff7f79">isShutdown</a>) {</div>
-<div class="line"><span class="lineno">  344</span>        GetQueuedCompletionStatus(</div>
-<div class="line"><span class="lineno">  345</span>                <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>,</div>
-<div class="line"><span class="lineno">  346</span>                &amp;lp_number_of_bytes_transferred,</div>
-<div class="line"><span class="lineno">  347</span>                <span class="keyword">reinterpret_cast&lt;</span>PULONG_PTR<span class="keyword">&gt;</span>(&amp;lp_completion_key),</div>
-<div class="line"><span class="lineno">  348</span>                <span class="keyword">reinterpret_cast&lt;</span>LPOVERLAPPED *<span class="keyword">&gt;</span>(&amp;p_wrapper),</div>
-<div class="line"><span class="lineno">  349</span>                INFINITE</div>
-<div class="line"><span class="lineno">  350</span>        );</div>
-<div class="line"><span class="lineno">  351</span>        <span class="keywordflow">if</span> (p_wrapper == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  352</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  353</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lp_number_of_bytes_transferred == 0 &amp;&amp; p_wrapper-&gt;ctx.type != NativeContext::Type::CONNECT) {</div>
-<div class="line"><span class="lineno">  354</span>            <span class="comment">// 主动释放模式对端关闭</span></div>
-<div class="line"><span class="lineno">  355</span>            <span class="comment">// 任何模式下的非主动关闭</span></div>
-<div class="line"><span class="lineno">  356</span>            <span class="keywordflow">if</span> (activeReleaseMode || p_wrapper-&gt;ctx.type != NativeContext::Type::CLOSE) {</div>
-<div class="line"><span class="lineno">  357</span>                <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  358</span>            }</div>
-<div class="line"><span class="lineno">  359</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  360</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lp_number_of_bytes_transferred == -1) {</div>
-<div class="line"><span class="lineno">  361</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  362</span>        }</div>
-<div class="line"><span class="lineno">  363</span> </div>
-<div class="line"><span class="lineno">  364</span>        <span class="keywordflow">if</span> (p_wrapper-&gt;ctx.type == NativeContext::Type::READ) {</div>
-<div class="line"><span class="lineno">  365</span>            <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a9eb0b23cef120051239777df69ac7600">onPreRead</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  366</span>            p_wrapper-&gt;ctx.readNode-&gt;size = lp_number_of_bytes_transferred;</div>
-<div class="line"><span class="lineno">  367</span>            p_wrapper-&gt;ctx.recv.push(p_wrapper-&gt;ctx.readNode);</div>
-<div class="line"><span class="lineno">  368</span>            p_wrapper-&gt;ctx.readNode = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  369</span>            p_wrapper-&gt;ctx.wsabufRead.buf = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  370</span>            p_wrapper-&gt;ctx.wsabufRead.len = 0;</div>
-<div class="line"><span class="lineno">  371</span>            <span class="keywordflow">if</span> (lp_number_of_bytes_transferred == <a class="code hl_variable" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41" title="IOCP 投递的 Recv 事件时携带的 WSABUF 大小">IOCP_WSABUF_SIZE</a>) {</div>
-<div class="line"><span class="lineno">  372</span>                <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8aff108b860c0ad2b5dd9d9189c13bf5">postRead</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  373</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  374</span>                <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab1345224c08d2f004860053da761137f">onReadCompleted</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  375</span>            }</div>
-<div class="line"><span class="lineno">  376</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (p_wrapper-&gt;ctx.type == NativeContext::Type::WRITE) {</div>
-<div class="line"><span class="lineno">  377</span>            p_wrapper-&gt;ctx.send.trunc(lp_number_of_bytes_transferred);</div>
-<div class="line"><span class="lineno">  378</span>            <span class="keyword">auto</span> len = p_wrapper-&gt;ctx.send.peek(p_wrapper-&gt;ctx.wsabufWrite.buf, <a class="code hl_variable" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41" title="IOCP 投递的 Recv 事件时携带的 WSABUF 大小">IOCP_WSABUF_SIZE</a>);</div>
-<div class="line"><span class="lineno">  379</span>            <span class="keywordflow">if</span> (len == 0) {</div>
-<div class="line"><span class="lineno">  380</span>                <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aaff19af13c9601e1c894e1ca8702d22d">onWriteCompleted</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  381</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  382</span>                p_wrapper-&gt;ctx.type = NativeContext::Type::WRITE;</div>
-<div class="line"><span class="lineno">  383</span>                p_wrapper-&gt;ctx.wsabufWrite.len = <span class="keyword">static_cast&lt;</span>ULONG<span class="keyword">&gt;</span>(len);</div>
-<div class="line"><span class="lineno">  384</span>                DWORD n_bytes, dw_flags = 0;</div>
-<div class="line"><span class="lineno">  385</span>                <span class="keywordtype">int</span> n_rt = WSASend(</div>
-<div class="line"><span class="lineno">  386</span>                        p_wrapper-&gt;ctx.fd,</div>
-<div class="line"><span class="lineno">  387</span>                        &amp;p_wrapper-&gt;ctx.wsabufWrite,</div>
-<div class="line"><span class="lineno">  388</span>                        1,</div>
-<div class="line"><span class="lineno">  389</span>                        &amp;n_bytes,</div>
-<div class="line"><span class="lineno">  390</span>                        dw_flags,</div>
-<div class="line"><span class="lineno">  391</span>                        &amp;(p_wrapper-&gt;overlapped),</div>
-<div class="line"><span class="lineno">  392</span>                        <span class="keyword">nullptr</span></div>
-<div class="line"><span class="lineno">  393</span>                );</div>
-<div class="line"><span class="lineno">  394</span>                <span class="keyword">auto</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> = <a class="code hl_function" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209" title="获取网络相关 error 代码">getNetworkError</a>();</div>
-<div class="line"><span class="lineno">  395</span>                <span class="keywordflow">if</span> (n_rt == SOCKET_ERROR &amp;&amp; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> != ERROR_IO_PENDING) {</div>
-<div class="line"><span class="lineno">  396</span>                    <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  397</span>                }</div>
-<div class="line"><span class="lineno">  398</span>            }</div>
-<div class="line"><span class="lineno">  399</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  400</span>            <span class="keyword">auto</span> connect_status = GetOverlappedResult(<span class="keyword">reinterpret_cast&lt;</span>HANDLE<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.fd), <span class="keyword">reinterpret_cast&lt;</span>LPOVERLAPPED<span class="keyword">&gt;</span>(p_wrapper), &amp;lp_number_of_bytes_transferred, TRUE);</div>
-<div class="line"><span class="lineno">  401</span>            <span class="keywordflow">if</span> (connect_status == FALSE) {</div>
-<div class="line"><span class="lineno">  402</span>                <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  403</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  404</span>            }</div>
-<div class="line"><span class="lineno">  405</span> </div>
-<div class="line"><span class="lineno">  406</span>            <span class="keyword">auto</span> ssl = (SSL *) p_wrapper-&gt;ctx.ssl;</div>
-<div class="line"><span class="lineno">  407</span>            <span class="keywordflow">if</span> (ssl) {</div>
-<div class="line"><span class="lineno">  408</span>                SSL_set_connect_state(ssl);</div>
-<div class="line"><span class="lineno">  409</span>                <span class="comment">// GCOVR_EXCL_START</span></div>
-<div class="line"><span class="lineno">  410</span>                <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">  411</span>                    <span class="keyword">auto</span> rt = SSL_do_handshake((SSL *) ssl);</div>
-<div class="line"><span class="lineno">  412</span>                    <span class="keywordflow">if</span> (rt &lt;= 0) {</div>
-<div class="line"><span class="lineno">  413</span>                        <span class="comment">// err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE</span></div>
-<div class="line"><span class="lineno">  414</span>                        <span class="keyword">auto</span> err = SSL_get_error((SSL *) ssl, rt);</div>
-<div class="line"><span class="lineno">  415</span>                        <span class="keywordflow">if</span> (err != SSL_ERROR_WANT_READ &amp;&amp; err != SSL_ERROR_WANT_WRITE) {</div>
-<div class="line"><span class="lineno">  416</span>                            SSL_free((SSL *) ssl);</div>
-<div class="line"><span class="lineno">  417</span>                            p_wrapper-&gt;ctx.ssl = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  418</span>                            ssl = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  419</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  420</span>                        }</div>
-<div class="line"><span class="lineno">  421</span>                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  422</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  423</span>                    }</div>
-<div class="line"><span class="lineno">  424</span>                }</div>
-<div class="line"><span class="lineno">  425</span>                <span class="comment">// GCOVR_EXCL_STOP</span></div>
-<div class="line"><span class="lineno">  426</span>                <span class="keywordflow">if</span> (ssl == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">  427</span>                    <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  428</span>                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  429</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  430</span>                    SSL_set_mode(ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);</div>
-<div class="line"><span class="lineno">  431</span>                    <span class="keyword">const</span> uint8_t *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  432</span>                    uint32_t data_length;</div>
-<div class="line"><span class="lineno">  433</span>                    SSL_get0_alpn_selected(ssl, &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, &amp;data_length);</div>
-<div class="line"><span class="lineno">  434</span>                    <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad463c2fd490c898b344b4bc2e7077844">onAlpnGet</a>(&amp;p_wrapper-&gt;ctx, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, data_length);</div>
-<div class="line"><span class="lineno">  435</span>                    p_wrapper-&gt;ctx.bio = BIO_new(<span class="keyword">static_cast&lt;</span>BIO_METHOD *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a>));</div>
-<div class="line"><span class="lineno">  436</span>                    BIO_set_data(<span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio), &amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  437</span>                    BIO_set_init(<span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio), 1);</div>
-<div class="line"><span class="lineno">  438</span>                    BIO_set_shutdown(<span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio), 0);</div>
-<div class="line"><span class="lineno">  439</span>                    SSL_set_bio(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.ssl), <span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio), <span class="keyword">static_cast&lt;</span>BIO *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.bio));</div>
-<div class="line"><span class="lineno">  440</span>                }</div>
-<div class="line"><span class="lineno">  441</span>            }</div>
-<div class="line"><span class="lineno">  442</span>            p_wrapper-&gt;ctx.type = Context::Type::READY;</div>
-<div class="line"><span class="lineno">  443</span>            p_wrapper-&gt;ctx.self-&gt;onConnected(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  444</span>        }</div>
-<div class="line"><span class="lineno">  445</span>    }</div>
-<div class="line"><span class="lineno">  446</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00314">bioMethod</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00368">e</a>, <a class="el" href="net_2_socket_8cpp_source.html#l00096">sese::net::getNetworkError()</a>, <a class="el" href="_config_8h_source.html#l00127">IOCP_WSABUF_SIZE</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00301">iocpFd</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00300">isShutdown</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00211">onAlpnGet()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00179">onPreRead()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00184">onReadCompleted()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00189">onWriteCompleted()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00161">postRead()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">releaseContext()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8e8dd24e50d0f09aca38779eff237398">activeReleaseMode</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406ba7286293c9125ac7d7bace94c190bc16d">sese::_windows::iocp::v1::NativeContext::CLOSE</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406bab57e2519e26151feacdbe52076bc39ec">sese::_windows::iocp::v1::NativeContext::CONNECT</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>, <a class="el" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209">sese::net::getNetworkError()</a>, <a class="el" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41">IOCP_WSABUF_SIZE</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a06bf363f935e68316551e92ff0ff7f79">isShutdown</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad463c2fd490c898b344b4bc2e7077844">onAlpnGet()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a9eb0b23cef120051239777df69ac7600">onPreRead()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab1345224c08d2f004860053da761137f">onReadCompleted()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aaff19af13c9601e1c894e1ca8702d22d">onWriteCompleted()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8aff108b860c0ad2b5dd9d9189c13bf5">postRead()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406ba3466fab4975481651940ed328aa990e4">sese::_windows::iocp::v1::NativeContext::READ</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406ba2baa69eafc7204f3bd8648eba580c489">sese::_windows::iocp::v1::NativeContext::READY</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406bad4b9e47f65b6e79b010582f15785867e">sese::_windows::iocp::v1::NativeContext::WRITE</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>.</p>
 
 </div>
 </div>
@@ -878,10 +650,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取当前服务的操作上下文销毁回调函数 </p><dl class="section return"><dt>返回</dt><dd>回调函数 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00265">265</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  265</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ad33451c858f7084de0d58a285241e3">NativeIOCPServer::deleteContextCallback</a>; };</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00312">deleteContextCallback</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ad33451c858f7084de0d58a285241e3">deleteContextCallback</a>.</p>
 
 </div>
 </div>
@@ -909,10 +678,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取当前服务器监听 SSL 上下文 </p><dl class="section return"><dt>返回</dt><dd>SSL 上下文 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00260">260</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  260</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">NativeIOCPServer::sslCtx</a>; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00313">sslCtx</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sslCtx</a>.</p>
 
 </div>
 </div>
@@ -932,72 +698,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>初始化并启动服务器 </p><dl class="section return"><dt>返回</dt><dd>初始化结果 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">71</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>                            {</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0e8627cd374ef0fa49e10648775f61d8">initConnectEx</a>()) {</div>
-<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   74</span>    }</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac">address</a>) {</div>
-<div class="line"><span class="lineno">   77</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a> = WSASocketW(</div>
-<div class="line"><span class="lineno">   78</span>                <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac">address</a>-&gt;getFamily(),</div>
-<div class="line"><span class="lineno">   79</span>                SOCK_STREAM,</div>
-<div class="line"><span class="lineno">   80</span>                0,</div>
-<div class="line"><span class="lineno">   81</span>                <span class="keyword">nullptr</span>,</div>
-<div class="line"><span class="lineno">   82</span>                0,</div>
-<div class="line"><span class="lineno">   83</span>                WSA_FLAG_OVERLAPPED</div>
-<div class="line"><span class="lineno">   84</span>        );</div>
-<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a> == INVALID_SOCKET) {</div>
-<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   87</span>        }</div>
-<div class="line"><span class="lineno">   88</span>        <span class="keywordflow">if</span> (SOCKET_ERROR == <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">Socket::setNonblocking</a>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a>)) {</div>
-<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   90</span>        }</div>
-<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">if</span> (SOCKET_ERROR == <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a0c7afdbe504176777ab8bf6784a0cc7a">Socket::bind</a>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a>, <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac">address</a>-&gt;getRawAddress(), <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac">address</a>-&gt;getRawAddressLength())) {</div>
-<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   93</span>        }</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (SOCKET_ERROR == <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#aa4284ed021cd2ad0a99f11f702878725">Socket::listen</a>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a>, SOMAXCONN)) {</div>
-<div class="line"><span class="lineno">   95</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   96</span>        }</div>
-<div class="line"><span class="lineno">   97</span>    }</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a> = CreateIoCompletionPort(INVALID_HANDLE_VALUE, <span class="keyword">nullptr</span>, 0, <span class="keyword">static_cast&lt;</span>DWORD<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae0517a4f36fef31bb5abcb71b6de56dd">threads</a>));</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a> == INVALID_HANDLE_VALUE) {</div>
-<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac">address</a>) {</div>
-<div class="line"><span class="lineno">  102</span>            <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">Socket::close</a>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a>);</div>
-<div class="line"><span class="lineno">  103</span>            <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a> = INVALID_SOCKET;</div>
-<div class="line"><span class="lineno">  104</span>        }</div>
-<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  106</span>    }</div>
-<div class="line"><span class="lineno">  107</span> </div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae0517a4f36fef31bb5abcb71b6de56dd">threads</a>; ++i) {</div>
-<div class="line"><span class="lineno">  109</span>        <span class="keyword">auto</span> th = std::make_unique&lt;Thread&gt;([<span class="keyword">this</span>] { <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc</a>(); }, <span class="stringliteral">&quot;IOCP_&quot;</span> + std::to_string(i + 1));</div>
-<div class="line"><span class="lineno">  110</span>        th-&gt;start();</div>
-<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#acde0c63aa3e43533d0f9e496dbb0dbe3">eventThreadGroup</a>.emplace_back(std::move(th));</div>
-<div class="line"><span class="lineno">  112</span>    }</div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a7d2382ae517c2d7181864987d7f8a8af">acceptThread</a> = std::make_unique&lt;Thread&gt;([<span class="keyword">this</span>] { <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc</a>(); }, <span class="stringliteral">&quot;IOCP_0&quot;</span>);</div>
-<div class="line"><span class="lineno">  115</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a7d2382ae517c2d7181864987d7f8a8af">acceptThread</a>-&gt;start();</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sslCtx</a>) {</div>
-<div class="line"><span class="lineno">  118</span>        <span class="keyword">const</span> <span class="keyword">auto</span> SERVER_SSL = <span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sslCtx</a>-&gt;getContext());</div>
-<div class="line"><span class="lineno">  119</span>        SSL_CTX_set_alpn_select_cb(</div>
-<div class="line"><span class="lineno">  120</span>                SERVER_SSL,</div>
-<div class="line"><span class="lineno">  121</span>                <span class="keyword">reinterpret_cast&lt;</span>SSL_CTX_alpn_select_cb_func<span class="keyword">&gt;</span>(&amp;<a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4bbd02db2f86a3b74ceebbad7ba6ff0e">alpnCallbackFunction</a>),</div>
-<div class="line"><span class="lineno">  122</span>                <span class="keyword">this</span></div>
-<div class="line"><span class="lineno">  123</span>        );</div>
-<div class="line"><span class="lineno">  124</span>    }</div>
-<div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>    <span class="keyword">const</span> <span class="keyword">auto</span> METHOD = BIO_meth_new(BIO_get_new_index() | BIO_TYPE_SOURCE_SINK, <span class="stringliteral">&quot;bioIOCP&quot;</span>);</div>
-<div class="line"><span class="lineno">  127</span>    BIO_meth_set_ctrl(METHOD, <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">long</span> (*)(BIO *, <span class="keywordtype">int</span>, <span class="keywordtype">long</span>, <span class="keywordtype">void</span> *)<span class="keyword">&gt;</span>(&amp;<a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a30afbdd1da74f51c8d58af63b88fdeee">NativeIOCPServer::bioCtrl</a>));</div>
-<div class="line"><span class="lineno">  128</span>    BIO_meth_set_read(METHOD, <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">int</span> (*)(BIO *, <span class="keywordtype">char</span> *, <span class="keywordtype">int</span>)<span class="keyword">&gt;</span>(&amp;<a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a080975e06a2d80dee501df8438a6d056">NativeIOCPServer::bioRead</a>));</div>
-<div class="line"><span class="lineno">  129</span>    BIO_meth_set_write(METHOD, <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">int</span> (*)(BIO *, <span class="keyword">const </span><span class="keywordtype">char</span> *, <span class="keywordtype">int</span>)<span class="keyword">&gt;</span>(&amp;<a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad2dd9537549a4f66267cfb0079f570e7">NativeIOCPServer::bioWrite</a>));</div>
-<div class="line"><span class="lineno">  130</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a> = METHOD;</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  133</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00304">acceptThread</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00303">address</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00455">alpnCallbackFunction()</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00017">sese::net::Socket::bind()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00473">bioCtrl()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00314">bioMethod</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00486">bioRead()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00481">bioWrite()</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00094">sese::net::Socket::close()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00311">eventThreadGroup</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00459">initConnectEx()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00301">iocpFd</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00040">sese::net::Socket::listen()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00302">listenFd</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00066">sese::net::Socket::setNonblocking()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00313">sslCtx</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00310">threads</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a7d2382ae517c2d7181864987d7f8a8af">acceptThread</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac">address</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4bbd02db2f86a3b74ceebbad7ba6ff0e">alpnCallbackFunction()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a0c7afdbe504176777ab8bf6784a0cc7a">sese::net::Socket::bind()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a30afbdd1da74f51c8d58af63b88fdeee">bioCtrl()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a080975e06a2d80dee501df8438a6d056">bioRead()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad2dd9537549a4f66267cfb0079f570e7">bioWrite()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#acde0c63aa3e43533d0f9e496dbb0dbe3">eventThreadGroup</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0e8627cd374ef0fa49e10648775f61d8">initConnectEx()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#aa4284ed021cd2ad0a99f11f702878725">sese::net::Socket::listen()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0292d60eeeffe68c15cb65bd3773ddfb">listenFd</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sslCtx</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae0517a4f36fef31bb5abcb71b6de56dd">threads</a>.</p>
 
 </div>
 </div>
@@ -1024,24 +725,9 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00459">459</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  459</span>                                     {</div>
-<div class="line"><span class="lineno">  460</span>    <span class="keyword">auto</span> sock = ::socket(AF_INET, SOCK_STREAM, 0);</div>
-<div class="line"><span class="lineno">  461</span>    DWORD dw_bytes;</div>
-<div class="line"><span class="lineno">  462</span>    GUID guid = WSAID_CONNECTEX;</div>
-<div class="line"><span class="lineno">  463</span>    <span class="keyword">auto</span> rc = WSAIoctl(</div>
-<div class="line"><span class="lineno">  464</span>            sock, SIO_GET_EXTENSION_FUNCTION_POINTER,</div>
-<div class="line"><span class="lineno">  465</span>            &amp;guid, <span class="keyword">sizeof</span>(guid),</div>
-<div class="line"><span class="lineno">  466</span>            &amp;<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a812628f78ee26faa91654f792b753c1c">connectEx</a>, <span class="keyword">sizeof</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a812628f78ee26faa91654f792b753c1c">connectEx</a>),</div>
-<div class="line"><span class="lineno">  467</span>            &amp;dw_bytes, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span></div>
-<div class="line"><span class="lineno">  468</span>    );</div>
-<div class="line"><span class="lineno">  469</span>    <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">Socket::close</a>(sock);</div>
-<div class="line"><span class="lineno">  470</span>    <span class="keywordflow">return</span> rc == 0;</div>
-<div class="line"><span class="lineno">  471</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00094">sese::net::Socket::close()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00293">connectEx</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a812628f78ee26faa91654f792b753c1c">connectEx</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>.</p>
 
 </div>
 </div>
@@ -1069,9 +755,8 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>获取主动释放模式状态 </p><dl class="section return"><dt>返回</dt><dd>主动释放模式状态 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00270">270</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  270</span>{ <span class="keywordflow">return</span> NativeIOCPServer::activeReleaseMode; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8e8dd24e50d0f09aca38779eff237398">activeReleaseMode</a>.</p>
+
 </div>
 </div>
 <a id="a84ac9242a7622948b1d0248e5d57bc08" name="a84ac9242a7622948b1d0248e5d57bc08"></a>
@@ -1104,10 +789,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00174">174</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  174</span>{}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>.</p>
 
 </div>
 </div>
@@ -1159,10 +841,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00211">211</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  211</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>.</p>
 
 </div>
 </div>
@@ -1214,17 +893,9 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>ALPN 状态码 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00448">448</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  448</span>                                                                                                                  {</div>
-<div class="line"><span class="lineno">  449</span>    <span class="keywordflow">if</span> (SSL_select_next_proto(<span class="keyword">const_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> **<span class="keyword">&gt;</span>(out), out_length, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a288b0f8524825f1faea339dc8d220c3a">servProtos</a>.c_str()), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a288b0f8524825f1faea339dc8d220c3a">servProtos</a>.length()), <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, in_length) != OPENSSL_NPN_NEGOTIATED) {</div>
-<div class="line"><span class="lineno">  450</span>        <span class="keywordflow">return</span> SSL_TLSEXT_ERR_NOACK;</div>
-<div class="line"><span class="lineno">  451</span>    }</div>
-<div class="line"><span class="lineno">  452</span>    <span class="keywordflow">return</span> SSL_TLSEXT_ERR_OK;</div>
-<div class="line"><span class="lineno">  453</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00315">servProtos</a>.</p>
+<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a288b0f8524825f1faea339dc8d220c3a">servProtos</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00455">alpnCallbackFunction()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4bbd02db2f86a3b74ceebbad7ba6ff0e">alpnCallbackFunction()</a>.</p>
 
 </div>
 </div>
@@ -1258,9 +929,6 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00204">204</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  204</span>{};</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aaba480198ed7718f4160b89aab5ee3f6" name="aaba480198ed7718f4160b89aab5ee3f6"></a>
@@ -1288,9 +956,6 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>默认的上下文释放回调函数 </p>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00169">169</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  169</span>{}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="aa8453593cada6bdac3d63ad04b7a23b5" name="aa8453593cada6bdac3d63ad04b7a23b5"></a>
@@ -1323,10 +988,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00199">199</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  199</span>{}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">postConnect()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">postConnect()</a>.</p>
 
 </div>
 </div>
@@ -1360,10 +1022,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00179">179</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  179</span>{}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>.</p>
 
 </div>
 </div>
@@ -1397,10 +1056,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00184">184</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  184</span>{}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>.</p>
 
 </div>
 </div>
@@ -1434,10 +1090,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00194">194</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  194</span>{}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00491">setTimeout()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aff6c0e9b7a2544e87af2cd93d0830d4a">setTimeout()</a>.</p>
 
 </div>
 </div>
@@ -1471,10 +1124,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00189">189</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  189</span>{}</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>.</p>
 
 </div>
 </div>
@@ -1500,18 +1150,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00205">205</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  205</span>                                                             {</div>
-<div class="line"><span class="lineno">  206</span>    <span class="keywordflow">if</span> (activeReleaseMode) {</div>
-<div class="line"><span class="lineno">  207</span>        <span class="keywordtype">void</span> *lp_completion_key = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  208</span>        ctx-&gt;type = Context::Type::CLOSE;</div>
-<div class="line"><span class="lineno">  209</span>        PostQueuedCompletionStatus(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, 0, <span class="keyword">reinterpret_cast&lt;</span>ULONG_PTR<span class="keyword">&gt;</span>(lp_completion_key), <span class="keyword">reinterpret_cast&lt;</span>LPOVERLAPPED<span class="keyword">&gt;</span>(ctx-&gt;pWrapper));</div>
-<div class="line"><span class="lineno">  210</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  211</span>        <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext</a>(ctx);</div>
-<div class="line"><span class="lineno">  212</span>    }</div>
-<div class="line"><span class="lineno">  213</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00301">iocpFd</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">releaseContext()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8e8dd24e50d0f09aca38779eff237398">activeReleaseMode</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406ba7286293c9125ac7d7bace94c190bc16d">sese::_windows::iocp::v1::NativeContext::CLOSE</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae6bea00be8273ce1c43619020359da25">sese::_windows::iocp::v1::NativeContext::pWrapper</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae671eddaedb848213cf9dbbb1a2ce137">sese::_windows::iocp::v1::NativeContext::type</a>.</p>
 
 </div>
 </div>
@@ -1555,46 +1194,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">217</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  217</span>                                                                                                              {</div>
-<div class="line"><span class="lineno">  218</span>    <span class="keyword">auto</span> sock = <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket::socket</a>(to-&gt;getFamily(), SOCK_STREAM, IPPROTO_IP);</div>
-<div class="line"><span class="lineno">  219</span>    <span class="keywordflow">if</span> (to-&gt;getFamily() == AF_INET) {</div>
-<div class="line"><span class="lineno">  220</span>        <span class="keyword">const</span> <span class="keyword">auto</span> FROM = <a class="code hl_function" href="classsese_1_1net_1_1_i_pv4_address.html#acd5491059822ad02a61abcf9136405ef">sese::net::IPv4Address::any</a>();</div>
-<div class="line"><span class="lineno">  221</span>        <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a0c7afdbe504176777ab8bf6784a0cc7a">sese::net::Socket::bind</a>(sock, FROM-&gt;getRawAddress(), FROM-&gt;getRawAddressLength());</div>
-<div class="line"><span class="lineno">  222</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  223</span>        <span class="keyword">const</span> <span class="keyword">auto</span> FROM = <a class="code hl_function" href="classsese_1_1net_1_1_i_pv6_address.html#aadade551d372c187e88f09419a57235b">sese::net::IPv6Address::any</a>();</div>
-<div class="line"><span class="lineno">  224</span>        <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a0c7afdbe504176777ab8bf6784a0cc7a">sese::net::Socket::bind</a>(sock, FROM-&gt;getRawAddress(), FROM-&gt;getRawAddressLength());</div>
-<div class="line"><span class="lineno">  225</span>    }</div>
-<div class="line"><span class="lineno">  226</span> </div>
-<div class="line"><span class="lineno">  227</span>    <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking</a>(sock);</div>
-<div class="line"><span class="lineno">  228</span> </div>
-<div class="line"><span class="lineno">  229</span>    <span class="keyword">auto</span> p_wrapper = <span class="keyword">new</span> <a class="code hl_struct" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html" title="Overlapped 包装器">OverlappedWrapper</a>();</div>
-<div class="line"><span class="lineno">  230</span>    p_wrapper-&gt;ctx.fd = sock;</div>
-<div class="line"><span class="lineno">  231</span>    p_wrapper-&gt;ctx.self = <span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  232</span>    p_wrapper-&gt;ctx.type = NativeContext::Type::CONNECT;</div>
-<div class="line"><span class="lineno">  233</span>    p_wrapper-&gt;ctx.data = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
-<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">if</span> (cli_ctx) {</div>
-<div class="line"><span class="lineno">  235</span>        p_wrapper-&gt;ctx.ssl = SSL_new(<span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(cli_ctx-&gt;getContext()));</div>
-<div class="line"><span class="lineno">  236</span>        SSL_set_fd(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.ssl), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(sock));</div>
-<div class="line"><span class="lineno">  237</span>        SSL_set_alpn_protos(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.ssl), <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8b866c25feb4d7ba81e1abc670bde261">clientProtos</a>.c_str()), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8b866c25feb4d7ba81e1abc670bde261">clientProtos</a>.length()));</div>
-<div class="line"><span class="lineno">  238</span>    }</div>
-<div class="line"><span class="lineno">  239</span>    <span class="keyword">auto</span> addr = to-&gt;getRawAddress();</div>
-<div class="line"><span class="lineno">  240</span>    <span class="keyword">auto</span> len = to-&gt;getRawAddressLength();</div>
-<div class="line"><span class="lineno">  241</span> </div>
-<div class="line"><span class="lineno">  242</span>    CreateIoCompletionPort(<span class="keyword">reinterpret_cast&lt;</span>HANDLE<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.fd), <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, 0, 0);</div>
-<div class="line"><span class="lineno">  243</span>    BOOL n_rt = <a class="code hl_define" href="_native_i_o_c_p_server___v1_8cpp.html#a6e6fc0c2102b8bd1ab9462e0d285f812">ConnectEx</a>(sock, addr, len, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, <span class="keyword">reinterpret_cast&lt;</span>LPOVERLAPPED<span class="keyword">&gt;</span>(p_wrapper));</div>
-<div class="line"><span class="lineno">  244</span>    <span class="keyword">auto</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> = <a class="code hl_function" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209" title="获取网络相关 error 代码">getNetworkError</a>();</div>
-<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">if</span> (n_rt == FALSE &amp;&amp; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> != ERROR_IO_PENDING) {</div>
-<div class="line"><span class="lineno">  246</span>        <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  247</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  248</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  249</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a>.emplace(p_wrapper);</div>
-<div class="line"><span class="lineno">  250</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  251</span>        <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aa8453593cada6bdac3d63ad04b7a23b5">onPreConnect</a>(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  252</span>    }</div>
-<div class="line"><span class="lineno">  253</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_i_pv4_address_8cpp_source.html#l00030">sese::net::IPv4Address::any()</a>, <a class="el" href="_i_pv6_address_8cpp_source.html#l00028">sese::net::IPv6Address::any()</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00017">sese::net::Socket::bind()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00316">clientProtos</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00215">ConnectEx</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00368">e</a>, <a class="el" href="net_2_socket_8cpp_source.html#l00096">sese::net::getNetworkError()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00301">iocpFd</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00199">onPreConnect()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">releaseContext()</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00066">sese::net::Socket::setNonblocking()</a>, <a class="el" href="net_2_socket_8cpp_source.html#l00004">sese::net::Socket::socket()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00307">wrapperSet</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00308">wrapperSetMutex</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1net_1_1_i_pv4_address.html#acd5491059822ad02a61abcf9136405ef">sese::net::IPv4Address::any()</a>, <a class="el" href="classsese_1_1net_1_1_i_pv6_address.html#aadade551d372c187e88f09419a57235b">sese::net::IPv6Address::any()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a0c7afdbe504176777ab8bf6784a0cc7a">sese::net::Socket::bind()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8b866c25feb4d7ba81e1abc670bde261">clientProtos</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406bab57e2519e26151feacdbe52076bc39ec">sese::_windows::iocp::v1::NativeContext::CONNECT</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp.html#a6e6fc0c2102b8bd1ab9462e0d285f812">ConnectEx</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>, <a class="el" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209">sese::net::getNetworkError()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aa8453593cada6bdac3d63ad04b7a23b5">onPreConnect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket::socket()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.</p>
 
 </div>
 </div>
@@ -1620,31 +1220,9 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00161">161</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  161</span>                                                            {</div>
-<div class="line"><span class="lineno">  162</span>    ctx-&gt;type = NativeContext::Type::READ;</div>
-<div class="line"><span class="lineno">  163</span>    ctx-&gt;readNode = <span class="keyword">new</span> <a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">IOBufNode</a>(<a class="code hl_variable" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41" title="IOCP 投递的 Recv 事件时携带的 WSABUF 大小">IOCP_WSABUF_SIZE</a>);</div>
-<div class="line"><span class="lineno">  164</span>    ctx-&gt;wsabufRead.buf = <span class="keyword">static_cast&lt;</span><a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea027acd3aa6b1dd7f26119d3cf0f9a063">CHAR</a> *<span class="keyword">&gt;</span>(ctx-&gt;readNode-&gt;<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>);</div>
-<div class="line"><span class="lineno">  165</span>    ctx-&gt;wsabufRead.len = <span class="keyword">static_cast&lt;</span>ULONG<span class="keyword">&gt;</span>(ctx-&gt;readNode-&gt;<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95" title="缓存容量大小">CAPACITY</a>);</div>
-<div class="line"><span class="lineno">  166</span>    DWORD n_bytes, dw_flags = 0;</div>
-<div class="line"><span class="lineno">  167</span>    <span class="keywordtype">int</span> n_rt = WSARecv(</div>
-<div class="line"><span class="lineno">  168</span>            ctx-&gt;fd,</div>
-<div class="line"><span class="lineno">  169</span>            &amp;ctx-&gt;wsabufRead,</div>
-<div class="line"><span class="lineno">  170</span>            1,</div>
-<div class="line"><span class="lineno">  171</span>            &amp;n_bytes,</div>
-<div class="line"><span class="lineno">  172</span>            &amp;dw_flags,</div>
-<div class="line"><span class="lineno">  173</span>            &amp;(ctx-&gt;pWrapper-&gt;<a class="code hl_variable" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html#ad914b13c3b06f79ae7a63496e94215b7">overlapped</a>),</div>
-<div class="line"><span class="lineno">  174</span>            <span class="keyword">nullptr</span></div>
-<div class="line"><span class="lineno">  175</span>    );</div>
-<div class="line"><span class="lineno">  176</span>    <span class="keyword">auto</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> = <a class="code hl_function" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209" title="获取网络相关 error 代码">getNetworkError</a>();</div>
-<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">if</span> (n_rt == SOCKET_ERROR &amp;&amp; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> != ERROR_IO_PENDING) {</div>
-<div class="line"><span class="lineno">  178</span>        <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext</a>(ctx);</div>
-<div class="line"><span class="lineno">  179</span>    }</div>
-<div class="line"><span class="lineno">  180</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_i_o_buf_8h_source.html#l00019">sese::iocp::IOBufNode::buffer</a>, <a class="el" href="_i_o_buf_8h_source.html#l00025">sese::iocp::IOBufNode::CAPACITY</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00368">e</a>, <a class="el" href="net_2_socket_8cpp_source.html#l00096">sese::net::getNetworkError()</a>, <a class="el" href="_config_8h_source.html#l00127">IOCP_WSABUF_SIZE</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00109">sese::_windows::iocp::v1::OverlappedWrapper::overlapped</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">releaseContext()</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90">sese::iocp::IOBufNode::buffer</a>, <a class="el" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95">sese::iocp::IOBufNode::CAPACITY</a>, <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a8021e05cb478012bc3757a37bd24f1bc">sese::_windows::iocp::v1::NativeContext::fd</a>, <a class="el" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209">sese::net::getNetworkError()</a>, <a class="el" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41">IOCP_WSABUF_SIZE</a>, <a class="el" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html#ad914b13c3b06f79ae7a63496e94215b7">sese::_windows::iocp::v1::OverlappedWrapper::overlapped</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae6bea00be8273ce1c43619020359da25">sese::_windows::iocp::v1::NativeContext::pWrapper</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406ba3466fab4975481651940ed328aa990e4">sese::_windows::iocp::v1::NativeContext::READ</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a445dbab06de71ce19d91d12f0b3946a6">sese::_windows::iocp::v1::NativeContext::readNode</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae671eddaedb848213cf9dbbb1a2ce137">sese::_windows::iocp::v1::NativeContext::type</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a45fb36e823d6f50b3e5ff25cfb3c2d94">sese::_windows::iocp::v1::NativeContext::wsabufRead</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>.</p>
 
 </div>
 </div>
@@ -1670,31 +1248,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00182">182</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  182</span>                                                             {</div>
-<div class="line"><span class="lineno">  183</span>    <span class="keyword">auto</span> len = ctx-&gt;send.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">peek</a>(ctx-&gt;wsabufWrite.buf, <a class="code hl_variable" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41" title="IOCP 投递的 Recv 事件时携带的 WSABUF 大小">IOCP_WSABUF_SIZE</a>);</div>
-<div class="line"><span class="lineno">  184</span>    <span class="keywordflow">if</span> (len == 0) {</div>
-<div class="line"><span class="lineno">  185</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  186</span>    }</div>
-<div class="line"><span class="lineno">  187</span>    ctx-&gt;type = NativeContext::Type::WRITE;</div>
-<div class="line"><span class="lineno">  188</span>    ctx-&gt;wsabufWrite.len = <span class="keyword">static_cast&lt;</span>ULONG<span class="keyword">&gt;</span>(len);</div>
-<div class="line"><span class="lineno">  189</span>    DWORD n_bytes, dw_flags = 0;</div>
-<div class="line"><span class="lineno">  190</span>    <span class="keywordtype">int</span> n_rt = WSASend(</div>
-<div class="line"><span class="lineno">  191</span>            ctx-&gt;fd,</div>
-<div class="line"><span class="lineno">  192</span>            &amp;ctx-&gt;wsabufWrite,</div>
-<div class="line"><span class="lineno">  193</span>            1,</div>
-<div class="line"><span class="lineno">  194</span>            &amp;n_bytes,</div>
-<div class="line"><span class="lineno">  195</span>            dw_flags,</div>
-<div class="line"><span class="lineno">  196</span>            &amp;(ctx-&gt;pWrapper-&gt;<a class="code hl_variable" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html#ad914b13c3b06f79ae7a63496e94215b7">overlapped</a>),</div>
-<div class="line"><span class="lineno">  197</span>            <span class="keyword">nullptr</span></div>
-<div class="line"><span class="lineno">  198</span>    );</div>
-<div class="line"><span class="lineno">  199</span>    <span class="keyword">auto</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> = <a class="code hl_function" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209" title="获取网络相关 error 代码">getNetworkError</a>();</div>
-<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">if</span> (n_rt == SOCKET_ERROR &amp;&amp; <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a> != ERROR_IO_PENDING) {</div>
-<div class="line"><span class="lineno">  201</span>        <a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext</a>(ctx);</div>
-<div class="line"><span class="lineno">  202</span>    }</div>
-<div class="line"><span class="lineno">  203</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00368">e</a>, <a class="el" href="net_2_socket_8cpp_source.html#l00096">sese::net::getNetworkError()</a>, <a class="el" href="_config_8h_source.html#l00127">IOCP_WSABUF_SIZE</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00109">sese::_windows::iocp::v1::OverlappedWrapper::overlapped</a>, <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00233">sese::io::AbstractByteBuffer::peek()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">releaseContext()</a>.</p>
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a8021e05cb478012bc3757a37bd24f1bc">sese::_windows::iocp::v1::NativeContext::fd</a>, <a class="el" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209">sese::net::getNetworkError()</a>, <a class="el" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41">IOCP_WSABUF_SIZE</a>, <a class="el" href="structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html#ad914b13c3b06f79ae7a63496e94215b7">sese::_windows::iocp::v1::OverlappedWrapper::overlapped</a>, <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">sese::io::AbstractByteBuffer::peek()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae6bea00be8273ce1c43619020359da25">sese::_windows::iocp::v1::NativeContext::pWrapper</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#aec66d87189ce9409175342a0c16de39a">sese::_windows::iocp::v1::NativeContext::send</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae671eddaedb848213cf9dbbb1a2ce137">sese::_windows::iocp::v1::NativeContext::type</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a1b944765a60dec71f81efae81707406bad4b9e47f65b6e79b010582f15785867e">sese::_windows::iocp::v1::NativeContext::WRITE</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#aac0ea6809400524db9db202e77e781b5">sese::_windows::iocp::v1::NativeContext::wsabufWrite</a>.</p>
 
 </div>
 </div>
@@ -1728,28 +1282,9 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">517</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  517</span>                                                  {</div>
-<div class="line"><span class="lineno">  518</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  519</span>    <span class="keyword">auto</span> p_wrapper = ctx-&gt;pWrapper;</div>
-<div class="line"><span class="lineno">  520</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a>.erase(p_wrapper);</div>
-<div class="line"><span class="lineno">  521</span>    <span class="keywordflow">if</span> (p_wrapper-&gt;ctx.timeoutEvent) {</div>
-<div class="line"><span class="lineno">  522</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>.<a class="code hl_function" href="classsese_1_1_time_wheel.html#abdb2f1bbbeedeb421d16d63a0dd1c390">cancel</a>(p_wrapper-&gt;ctx.timeoutEvent);</div>
-<div class="line"><span class="lineno">  523</span>        p_wrapper-&gt;ctx.timeoutEvent = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  524</span>    }</div>
-<div class="line"><span class="lineno">  525</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  526</span>    <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">Socket::close</a>(p_wrapper-&gt;ctx.fd);</div>
-<div class="line"><span class="lineno">  527</span>    <span class="keywordflow">if</span> (p_wrapper-&gt;ctx.ssl) {</div>
-<div class="line"><span class="lineno">  528</span>        SSL_free(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(p_wrapper-&gt;ctx.ssl));</div>
-<div class="line"><span class="lineno">  529</span>        p_wrapper-&gt;ctx.ssl = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  530</span>    }</div>
-<div class="line"><span class="lineno">  531</span>    p_wrapper-&gt;ctx.self-&gt;getDeleteContextCallback()(&amp;p_wrapper-&gt;ctx);</div>
-<div class="line"><span class="lineno">  532</span>    <span class="keyword">delete</span> p_wrapper;</div>
-<div class="line"><span class="lineno">  533</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp_source.html#l00049">sese::TimeWheel::cancel()</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00094">sese::net::Socket::close()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00306">wheel</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00307">wrapperSet</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00308">wrapperSetMutex</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_time_wheel.html#abdb2f1bbbeedeb421d16d63a0dd1c390">sese::TimeWheel::cancel()</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ae6bea00be8273ce1c43619020359da25">sese::_windows::iocp::v1::NativeContext::pWrapper</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00205">postClose()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">postConnect()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00161">postRead()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00182">postWrite()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2f7daa5c5cafc54ba278bccba6e150fb">postClose()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">postConnect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8aff108b860c0ad2b5dd9d9189c13bf5">postRead()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ad776a1800f79300e758d2d9f0e10a7eb">postWrite()</a>.</p>
 
 </div>
 </div>
@@ -1783,9 +1318,8 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00277">277</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  277</span>{ NativeIOCPServer::activeReleaseMode = enable; }</div>
-</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8e8dd24e50d0f09aca38779eff237398">activeReleaseMode</a>.</p>
+
 </div>
 </div>
 <a id="afe32d52c201924c4dec059efb93e8592" name="afe32d52c201924c4dec059efb93e8592"></a>
@@ -1818,10 +1352,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00230">230</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  230</span>{ <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac">NativeIOCPServer::address</a> = addr; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00303">address</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a77266aafd9935268ab78df3173ac90ac">address</a>.</p>
 
 </div>
 </div>
@@ -1855,10 +1386,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00250">250</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  250</span>{ <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8b866c25feb4d7ba81e1abc670bde261">NativeIOCPServer::clientProtos</a> = protos; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00316">clientProtos</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8b866c25feb4d7ba81e1abc670bde261">clientProtos</a>.</p>
 
 </div>
 </div>
@@ -1892,10 +1420,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00255">255</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  255</span>{ <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ad33451c858f7084de0d58a285241e3">NativeIOCPServer::deleteContextCallback</a> = <a class="code hl_function" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00007">callback()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00312">deleteContextCallback</a>.</p>
+<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ad33451c858f7084de0d58a285241e3">deleteContextCallback</a>.</p>
 
 </div>
 </div>
@@ -1929,10 +1454,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00240">240</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  240</span>{ <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">NativeIOCPServer::sslCtx</a> = ctx; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00313">sslCtx</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2bd681f7575cb729d5995ea04d3381c3">sslCtx</a>.</p>
 
 </div>
 </div>
@@ -1966,10 +1488,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00245">245</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  245</span>{ <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a288b0f8524825f1faea339dc8d220c3a">NativeIOCPServer::servProtos</a> = protos; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00315">servProtos</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a288b0f8524825f1faea339dc8d220c3a">servProtos</a>.</p>
 
 </div>
 </div>
@@ -2003,10 +1522,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00235">235</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  235</span>{ <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae0517a4f36fef31bb5abcb71b6de56dd">NativeIOCPServer::threads</a> = number_of_threads; }</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00310">threads</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae0517a4f36fef31bb5abcb71b6de56dd">threads</a>.</p>
 
 </div>
 </div>
@@ -2043,25 +1559,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00491">491</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  491</span>                                                                               {</div>
-<div class="line"><span class="lineno">  492</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.lock();</div>
-<div class="line"><span class="lineno">  493</span>    ctx-&gt;timeoutEvent = <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a>.<a class="code hl_function" href="classsese_1_1_time_wheel.html#ad28e39359a50a74f841abc2bfebcc4d0">delay</a>(</div>
-<div class="line"><span class="lineno">  494</span>            [<span class="keyword">this</span>, ctx]() {</div>
-<div class="line"><span class="lineno">  495</span>                <span class="comment">// auto pWrapper = ctx-&gt;pWrapper;</span></div>
-<div class="line"><span class="lineno">  496</span>                <span class="comment">// Socket::close(pWrapper-&gt;ctx.fd);</span></div>
-<div class="line"><span class="lineno">  497</span>                <span class="comment">// pWrapper-&gt;ctx.self-&gt;getDeleteContextCallback()(&amp;pWrapper-&gt;ctx);</span></div>
-<div class="line"><span class="lineno">  498</span>                <span class="comment">// wrapperSet.erase(pWrapper);</span></div>
-<div class="line"><span class="lineno">  499</span>                <span class="comment">// delete ctx-&gt;pWrapper;</span></div>
-<div class="line"><span class="lineno">  500</span>                ctx-&gt;timeoutEvent = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  501</span>                this-&gt;<a class="code hl_function" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2fe8a388dcdeec9d00144d0c2b4f0587">onTimeout</a>(ctx);</div>
-<div class="line"><span class="lineno">  502</span>            },</div>
-<div class="line"><span class="lineno">  503</span>            seconds, false</div>
-<div class="line"><span class="lineno">  504</span>    );</div>
-<div class="line"><span class="lineno">  505</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.unlock();</div>
-<div class="line"><span class="lineno">  506</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp_source.html#l00035">sese::TimeWheel::delay()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00194">onTimeout()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00306">wheel</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00308">wrapperSetMutex</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1_time_wheel.html#ad28e39359a50a74f841abc2bfebcc4d0">sese::TimeWheel::delay()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2fe8a388dcdeec9d00144d0c2b4f0587">onTimeout()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#ac9afada7edc822b77a2514124deff5dc">sese::_windows::iocp::v1::NativeContext::timeoutEvent</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a965320768f7f11db4c69c13baa799f0c">wheel</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a6cf9dd36bf25d3dcdb37d2f5b48132a3">wrapperSetMutex</a>.</p>
 
 </div>
 </div>
@@ -2081,34 +1579,7 @@ Protected 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>终止工作线程、释放系统资源并结束服务器 </p>
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">135</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  135</span>                                {</div>
-<div class="line"><span class="lineno">  136</span>    <span class="keywordtype">void</span> *lp_completion_key = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  137</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a06bf363f935e68316551e92ff0ff7f79">isShutdown</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae0517a4f36fef31bb5abcb71b6de56dd">threads</a>; ++i) {</div>
-<div class="line"><span class="lineno">  139</span>        PostQueuedCompletionStatus(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, -1, <span class="keyword">reinterpret_cast&lt;</span>ULONG_PTR<span class="keyword">&gt;</span>(lp_completion_key), <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">  140</span>    }</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;thread: <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#acde0c63aa3e43533d0f9e496dbb0dbe3">eventThreadGroup</a>) {</div>
-<div class="line"><span class="lineno">  142</span>        thread-&gt;join();</div>
-<div class="line"><span class="lineno">  143</span>    }</div>
-<div class="line"><span class="lineno">  144</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#acde0c63aa3e43533d0f9e496dbb0dbe3">eventThreadGroup</a>.clear();</div>
-<div class="line"><span class="lineno">  145</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a7d2382ae517c2d7181864987d7f8a8af">acceptThread</a>-&gt;join();</div>
-<div class="line"><span class="lineno">  146</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a7d2382ae517c2d7181864987d7f8a8af">acceptThread</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;item: <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a>) {</div>
-<div class="line"><span class="lineno">  149</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ad33451c858f7084de0d58a285241e3">deleteContextCallback</a>(&amp;item-&gt;ctx);</div>
-<div class="line"><span class="lineno">  150</span>        <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">Socket::close</a>(item-&gt;ctx.fd);</div>
-<div class="line"><span class="lineno">  151</span>        <span class="keyword">delete</span> item;</div>
-<div class="line"><span class="lineno">  152</span>    }</div>
-<div class="line"><span class="lineno">  153</span>    <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a>.clear();</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a>) {</div>
-<div class="line"><span class="lineno">  156</span>        BIO_meth_free(<span class="keyword">static_cast&lt;</span>BIO_METHOD *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a>));</div>
-<div class="line"><span class="lineno">  157</span>        <a class="code hl_variable" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  158</span>    }</div>
-<div class="line"><span class="lineno">  159</span>}</div>
-</div><!-- fragment -->
-<p class="reference">引用了 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00304">acceptThread</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00314">bioMethod</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00094">sese::net::Socket::close()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00312">deleteContextCallback</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00311">eventThreadGroup</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00301">iocpFd</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00300">isShutdown</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00310">threads</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00307">wrapperSet</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a7d2382ae517c2d7181864987d7f8a8af">acceptThread</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a03a474b7d3794f2203689bd138b11a4c">bioMethod</a>, <a class="el" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ad33451c858f7084de0d58a285241e3">deleteContextCallback</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#acde0c63aa3e43533d0f9e496dbb0dbe3">eventThreadGroup</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a52f8176d8bcbc991c320f4775a33a0cc">iocpFd</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a06bf363f935e68316551e92ff0ff7f79">isShutdown</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae0517a4f36fef31bb5abcb71b6de56dd">threads</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8cea0b34f2f8d5e152e4ab4b0de54499">wrapperSet</a>.</p>
 
 </div>
 </div>
@@ -2133,10 +1604,31 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00304">304</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  304</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6">shutdown()</a>.</p>
+
+</div>
+</div>
+<a id="a8e8dd24e50d0f09aca38779eff237398" name="a8e8dd24e50d0f09aca38779eff237398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e8dd24e50d0f09aca38779eff237398">&#9670;&#160;</a></span>activeReleaseMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::_windows::iocp::v1::NativeIOCPServer::activeReleaseMode = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#afc0b25984bddb17011a914707b62ef8b">isActiveReleaseMode()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2f7daa5c5cafc54ba278bccba6e150fb">postClose()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a749df226e4535fe4d7749032f69afc54">setActiveReleaseMode()</a>.</p>
 
 </div>
 </div>
@@ -2160,10 +1652,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00303">303</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  303</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00230">setAddress()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#afe32d52c201924c4dec059efb93e8592">setAddress()</a>.</p>
 
 </div>
 </div>
@@ -2187,10 +1676,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00314">314</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  314</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -2214,10 +1700,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00316">316</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  316</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">postConnect()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00250">setClientProtos()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">postConnect()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a9ebfb23d911f188d5d069439d782a3d1">setClientProtos()</a>.</p>
 
 </div>
 </div>
@@ -2241,10 +1724,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00293">293</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  293</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00459">initConnectEx()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0e8627cd374ef0fa49e10648775f61d8">initConnectEx()</a>.</p>
 
 </div>
 </div>
@@ -2268,9 +1748,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00312">312</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00265">getDeleteContextCallback()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00255">setDeleteContextCallback()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a050e0578f5822c4809a1a3f0df43007a">getDeleteContextCallback()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8ac5948ee7b4467e0d4c28d0b40bd6fb">setDeleteContextCallback()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -2294,10 +1772,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00311">311</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  311</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -2321,10 +1796,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00301">301</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  301</span>{INVALID_HANDLE_VALUE};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00205">postClose()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">postConnect()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a2f7daa5c5cafc54ba278bccba6e150fb">postClose()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">postConnect()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -2348,10 +1820,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00300">300</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  300</span>{<span class="keyword">false</span>};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">eventThreadProc()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a1dc70635412b0b17b61bcb192f54ea5d">eventThreadProc()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -2375,10 +1844,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00302">302</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  302</span>{INVALID_SOCKET};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>.</p>
 
 </div>
 </div>
@@ -2402,10 +1868,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00315">315</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  315</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00448">onAlpnSelect()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00245">setServProtos()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a8ee98242ab6478ccfd965e48e0aae1b7">onAlpnSelect()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a050205376f4572fab28d389818f30cc6">setServProtos()</a>.</p>
 
 </div>
 </div>
@@ -2429,10 +1892,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00313">313</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  313</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00260">getServCtx()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00240">setServCtx()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a661f8cf74b75dd8e14980bae36894319">getServCtx()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a0ae7bb0f5aa58f6679c1d4c2904946f2">setServCtx()</a>.</p>
 
 </div>
 </div>
@@ -2456,10 +1916,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00310">310</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  310</span>{2};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00071">init()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00235">setThreads()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ae6309d1f4f34b1f49abb3432d2f74090">init()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#abab1f44b4fd551163200eed51b8a1cf9">setThreads()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -2483,10 +1940,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00306">306</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  306</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00508">cancelTimeout()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">releaseContext()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00491">setTimeout()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aa1af5b04ac5b7490808e0407172a4828">cancelTimeout()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aff6c0e9b7a2544e87af2cd93d0830d4a">setTimeout()</a>.</p>
 
 </div>
 </div>
@@ -2510,10 +1964,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00307">307</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  307</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">postConnect()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">releaseContext()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00135">shutdown()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">postConnect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ab66c5f410368fa8a3becdc267cf9b8a6">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -2537,16 +1988,13 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a> 第 <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00308">308</a> 行定义.</p>
-<div class="fragment"><div class="line"><span class="lineno">  308</span>{};</div>
-</div><!-- fragment -->
-<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">acceptThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00508">cancelTimeout()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">postConnect()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">releaseContext()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00491">setTimeout()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#ac0460d435cbd8b70242c4222235dcdb4">acceptThreadProc()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aa1af5b04ac5b7490808e0407172a4828">cancelTimeout()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a957c0417930540de3aa6ea0dc260a899">postConnect()</a>, <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#a4e6b2f958305174d07ea27e90973779a">releaseContext()</a> , 以及 <a class="el" href="classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#aff6c0e9b7a2544e87af2cd93d0830d4a">setTimeout()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>sese/native/win/service/iocp/<a class="el" href="_native_i_o_c_p_server___v1_8h_source.html">NativeIOCPServer_V1.h</a></li>
-<li>sese/native/win/service/iocp/<a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html">NativeIOCPServer_V1.cpp</a></li>
+<li>sese/native/win/service/iocp/<a class="el" href="_native_i_o_c_p_server___v1_8cpp.html">NativeIOCPServer_V1.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

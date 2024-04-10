@@ -2,6 +2,7 @@ var classsese_1_1service_1_1_tcp_transporter =
 [
     [ "TcpTransporter", "classsese_1_1service_1_1_tcp_transporter.html#a16d4f5c4966e162880a4e0c1ab861c5f", null ],
     [ "~TcpTransporter", "classsese_1_1service_1_1_tcp_transporter.html#ac46125bb19158d79bd7031d3780c5a67", null ],
+    [ "alpnCallbackFunction", "classsese_1_1service_1_1_tcp_transporter.html#a60f02abdb15fee3d2a65be2f9ccb8b01", null ],
     [ "createEventEx", "classsese_1_1service_1_1_tcp_transporter.html#afae04864c64aae1d5ab1c6abbe99e128", null ],
     [ "freeEventEx", "classsese_1_1service_1_1_tcp_transporter.html#ab4385edcdd37f6ee8ba9c3b6e9b61317", null ],
     [ "onAccept", "classsese_1_1service_1_1_tcp_transporter.html#a1a5218b7fda70144049d2355eb066306", null ],
