@@ -92,6 +92,16 @@ TEST(TestMessageDigest, SHA512) {
     }
 }
 
+TEST(TestMessageDigest, SM3) {
+    const char *str0 = "Hello";
+    const char *rt0 = "dc74f051ad5bc19ba721bf0023e10de03bae29bbe013c43988bae55828bcebbc";
+    {
+        auto input = sese::io::InputBufferWrapper(str0, 5);
+        auto rt = MessageDigest::digest(MessageDigest::Type::SM3, &input);
+        EXPECT_EQ(rt, rt0);
+    }
+}
+
 using OldMessageDigest = sese::MessageDigest;
 
 TEST(TestOldMessageDigest, MD5) {
