@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/text/StringBuffer.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">StringBuffer.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>线程安全的字符串缓存类  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_abstract_string_buffer_8h_source.html">sese/text/AbstractStringBuffer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_config_8h_source.html">sese/Config.h</a>&quot;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
+</div>
+<p><a href="_string_buffer_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程安全的字符串缓存类  <a href="classsese_1_1text_1_1_string_buffer.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacesese" id="r_namespacesese"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html">sese</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacesese_1_1text" id="r_namespacesese_1_1text"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html">sese::text</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a6018646f615c237bb5bae3e61b43c545" id="r_a6018646f615c237bb5bae3e61b43c545"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_string_buffer_8h.html#a6018646f615c237bb5bae3e61b43c545">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;buffer, char ch)</td></tr>
+<tr class="separator:a6018646f615c237bb5bae3e61b43c545"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae254043f558727319dad0275aa103418" id="r_ae254043f558727319dad0275aa103418"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_string_buffer_8h.html#ae254043f558727319dad0275aa103418">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;buffer, const char *str)</td></tr>
+<tr class="separator:ae254043f558727319dad0275aa103418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43a6c60011bb30cf2e5ecee67d99ef0e" id="r_a43a6c60011bb30cf2e5ecee67d99ef0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_string_buffer_8h.html#a43a6c60011bb30cf2e5ecee67d99ef0e">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;buffer, const std::string &amp;str)</td></tr>
+<tr class="separator:a43a6c60011bb30cf2e5ecee67d99ef0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd01b9e345baae70e1ae5f0414abf6b" id="r_a5cd01b9e345baae70e1ae5f0414abf6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_string_buffer_8h.html#a5cd01b9e345baae70e1ae5f0414abf6b">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;buffer, const std::string_view &amp;str)</td></tr>
+<tr class="separator:a5cd01b9e345baae70e1ae5f0414abf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073954ed563f6a715d8bd554a5d17d2c" id="r_a073954ed563f6a715d8bd554a5d17d2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_string_buffer_8h.html#a073954ed563f6a715d8bd554a5d17d2c">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;buffer, const <a class="el" href="namespacesese_1_1text.html#a59ec2dd8b3e31671748756873801e69a">sese::text::String</a> &amp;str)</td></tr>
+<tr class="separator:a073954ed563f6a715d8bd554a5d17d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12bed3ed0ffdcb2c8ec18839b298d6ed" id="r_a12bed3ed0ffdcb2c8ec18839b298d6ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_string_buffer_8h.html#a12bed3ed0ffdcb2c8ec18839b298d6ed">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;buffer, const <a class="el" href="namespacesese_1_1text.html#a0367c112b4808cefb1e1e4128f429a2e">sese::text::StringView</a> &amp;str)</td></tr>
+<tr class="separator:a12bed3ed0ffdcb2c8ec18839b298d6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>线程安全的字符串缓存类 </p>
+<dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022年4月5日 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_string_buffer_8h_source.html">StringBuffer.h</a> 中定义.</p>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="a6018646f615c237bb5bae3e61b43c545" name="a6018646f615c237bb5bae3e61b43c545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6018646f615c237bb5bae3e61b43c545">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_string_buffer_8cpp_source.html">StringBuffer.cpp</a> 第 <a class="el" href="_string_buffer_8cpp_source.html#l00139">139</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  139</span>                                                                        {</div>
+<div class="line"><span class="lineno">  140</span>    buffer.<a class="code hl_function" href="classsese_1_1text_1_1_string_buffer.html#a0b862d1cbbe06c3a7f605cdf504f7a97">append</a>(ch);</div>
+<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><span class="lineno">  142</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_string_buffer_8cpp_source.html#l00013">sese::text::StringBuffer::append()</a>.</p>
+
+</div>
+</div>
+<a id="ae254043f558727319dad0275aa103418" name="ae254043f558727319dad0275aa103418"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae254043f558727319dad0275aa103418">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_string_buffer_8cpp_source.html">StringBuffer.cpp</a> 第 <a class="el" href="_string_buffer_8cpp_source.html#l00144">144</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>                                                                                {</div>
+<div class="line"><span class="lineno">  145</span>    buffer.<a class="code hl_function" href="classsese_1_1text_1_1_string_buffer.html#a0b862d1cbbe06c3a7f605cdf504f7a97">append</a>(str);</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><span class="lineno">  147</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_string_buffer_8cpp_source.html#l00013">sese::text::StringBuffer::append()</a>.</p>
+
+</div>
+</div>
+<a id="a073954ed563f6a715d8bd554a5d17d2c" name="a073954ed563f6a715d8bd554a5d17d2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a073954ed563f6a715d8bd554a5d17d2c">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesese_1_1text.html#a59ec2dd8b3e31671748756873801e69a">sese::text::String</a> &amp;&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_string_buffer_8cpp_source.html">StringBuffer.cpp</a> 第 <a class="el" href="_string_buffer_8cpp_source.html#l00159">159</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  159</span>                                                                                          {</div>
+<div class="line"><span class="lineno">  160</span>    buffer.<a class="code hl_function" href="classsese_1_1text_1_1_string_buffer.html#a0b862d1cbbe06c3a7f605cdf504f7a97">append</a>(str);</div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><span class="lineno">  162</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_string_buffer_8cpp_source.html#l00013">sese::text::StringBuffer::append()</a>.</p>
+
+</div>
+</div>
+<a id="a12bed3ed0ffdcb2c8ec18839b298d6ed" name="a12bed3ed0ffdcb2c8ec18839b298d6ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12bed3ed0ffdcb2c8ec18839b298d6ed">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacesese_1_1text.html#a0367c112b4808cefb1e1e4128f429a2e">sese::text::StringView</a> &amp;&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_string_buffer_8cpp_source.html">StringBuffer.cpp</a> 第 <a class="el" href="_string_buffer_8cpp_source.html#l00164">164</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>                                                                                              {</div>
+<div class="line"><span class="lineno">  165</span>    buffer.<a class="code hl_function" href="classsese_1_1text_1_1_string_buffer.html#a0b862d1cbbe06c3a7f605cdf504f7a97">append</a>(str);</div>
+<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><span class="lineno">  167</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_string_buffer_8cpp_source.html#l00013">sese::text::StringBuffer::append()</a>.</p>
+
+</div>
+</div>
+<a id="a43a6c60011bb30cf2e5ecee67d99ef0e" name="a43a6c60011bb30cf2e5ecee67d99ef0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43a6c60011bb30cf2e5ecee67d99ef0e">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_string_buffer_8cpp_source.html">StringBuffer.cpp</a> 第 <a class="el" href="_string_buffer_8cpp_source.html#l00149">149</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  149</span>                                                                                     {</div>
+<div class="line"><span class="lineno">  150</span>    buffer.<a class="code hl_function" href="classsese_1_1text_1_1_string_buffer.html#a0b862d1cbbe06c3a7f605cdf504f7a97">append</a>(str);</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><span class="lineno">  152</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_string_buffer_8cpp_source.html#l00013">sese::text::StringBuffer::append()</a>.</p>
+
+</div>
+</div>
+<a id="a5cd01b9e345baae70e1ae5f0414abf6b" name="a5cd01b9e345baae70e1ae5f0414abf6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cd01b9e345baae70e1ae5f0414abf6b">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1text_1_1_string_buffer.html">sese::text::StringBuffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string_view &amp;&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_string_buffer_8cpp_source.html">StringBuffer.cpp</a> 第 <a class="el" href="_string_buffer_8cpp_source.html#l00154">154</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  154</span>                                                                                          {</div>
+<div class="line"><span class="lineno">  155</span>    buffer.<a class="code hl_function" href="classsese_1_1text_1_1_string_buffer.html#a0b862d1cbbe06c3a7f605cdf504f7a97">append</a>(str);</div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><span class="lineno">  157</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_string_buffer_8cpp_source.html#l00013">sese::text::StringBuffer::append()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

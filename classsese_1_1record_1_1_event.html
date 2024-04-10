@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::record::Event类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1record.html">record</a></li><li class="navelem"><a class="el" href="classsese_1_1record_1_1_event.html">Event</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1record_1_1_event-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::record::Event类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>日志事件类  
+ <a href="classsese_1_1record_1_1_event.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="record_2_event_8h_source.html">Event.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a9fb6d6bf0c594bb2220fc745e52b7574" id="r_a9fb6d6bf0c594bb2220fc745e52b7574"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1record_1_1_event.html">Event</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#a9fb6d6bf0c594bb2220fc745e52b7574">Ptr</a></td></tr>
+<tr class="separator:a9fb6d6bf0c594bb2220fc745e52b7574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a24afd52f0d59bcda08dfb0e3aabb968d" id="r_a24afd52f0d59bcda08dfb0e3aabb968d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#a24afd52f0d59bcda08dfb0e3aabb968d">Event</a> (<a class="el" href="classsese_1_1_date_time.html">DateTime</a> date_time, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5">Level</a> lv, const char *thread_name, <a class="el" href="namespacesese.html#a07fae0615b50765c5b926bffd711e831">tid_t</a> id, const char *file, int32_t line, const char *msg) noexcept</td></tr>
+<tr class="separator:a24afd52f0d59bcda08dfb0e3aabb968d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70162f5345143e31cd03c058af250bdd" id="r_a70162f5345143e31cd03c058af250bdd"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#a70162f5345143e31cd03c058af250bdd">getTime</a> () const noexcept</td></tr>
+<tr class="separator:a70162f5345143e31cd03c058af250bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c2b620c659a1873a49d40ecf3d493a2" id="r_a1c2b620c659a1873a49d40ecf3d493a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5">Level</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#a1c2b620c659a1873a49d40ecf3d493a2">getLevel</a> () const noexcept</td></tr>
+<tr class="separator:a1c2b620c659a1873a49d40ecf3d493a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5029e952e2540bd758b5986302e73d" id="r_ada5029e952e2540bd758b5986302e73d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese.html#a07fae0615b50765c5b926bffd711e831">tid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#ada5029e952e2540bd758b5986302e73d">getThreadId</a> () const noexcept</td></tr>
+<tr class="separator:ada5029e952e2540bd758b5986302e73d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac202c8f1757c6ca60421a100bd44371c" id="r_ac202c8f1757c6ca60421a100bd44371c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#ac202c8f1757c6ca60421a100bd44371c">getLine</a> () const noexcept</td></tr>
+<tr class="separator:ac202c8f1757c6ca60421a100bd44371c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f8c2964e958e05ece919fff44c35fcf" id="r_a9f8c2964e958e05ece919fff44c35fcf"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#a9f8c2964e958e05ece919fff44c35fcf">getFileName</a> () const noexcept</td></tr>
+<tr class="separator:a9f8c2964e958e05ece919fff44c35fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b7261534e1b1b5ec82b26ffd8fccd76" id="r_a1b7261534e1b1b5ec82b26ffd8fccd76"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#a1b7261534e1b1b5ec82b26ffd8fccd76">getMessage</a> () const noexcept</td></tr>
+<tr class="separator:a1b7261534e1b1b5ec82b26ffd8fccd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8351d65bfbe0c3613fa7c3b44edc69e8" id="r_a8351d65bfbe0c3613fa7c3b44edc69e8"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_event.html#a8351d65bfbe0c3613fa7c3b44edc69e8">getThreadName</a> () const noexcept</td></tr>
+<tr class="separator:a8351d65bfbe0c3613fa7c3b44edc69e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>日志事件类 </p>
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00034">34</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a9fb6d6bf0c594bb2220fc745e52b7574" name="a9fb6d6bf0c594bb2220fc745e52b7574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fb6d6bf0c594bb2220fc745e52b7574">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::shared_ptr&lt;<a class="el" href="classsese_1_1record_1_1_event.html">Event</a>&gt; <a class="el" href="classsese_1_1record_1_1_event.html#a9fb6d6bf0c594bb2220fc745e52b7574">sese::record::Event::Ptr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00036">36</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a24afd52f0d59bcda08dfb0e3aabb968d" name="a24afd52f0d59bcda08dfb0e3aabb968d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24afd52f0d59bcda08dfb0e3aabb968d">&#9670;&#160;</a></span>Event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::record::Event::Event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_date_time.html">DateTime</a>&#160;</td>
+          <td class="paramname"><em>date_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5">Level</a>&#160;</td>
+          <td class="paramname"><em>lv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>thread_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesese.html#a07fae0615b50765c5b926bffd711e831">tid_t</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00039">39</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>                                    {</div>
+<div class="line"><span class="lineno">   41</span>        this-&gt;dateTime = date_time;</div>
+<div class="line"><span class="lineno">   42</span>        this-&gt;level = lv;</div>
+<div class="line"><span class="lineno">   43</span>        this-&gt;threadName = thread_name;</div>
+<div class="line"><span class="lineno">   44</span>        this-&gt;threadId = id;</div>
+<div class="line"><span class="lineno">   45</span>        this-&gt;file = file;</div>
+<div class="line"><span class="lineno">   46</span>        this-&gt;line = line;</div>
+<div class="line"><span class="lineno">   47</span>        this-&gt;message = msg;</div>
+<div class="line"><span class="lineno">   48</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a9f8c2964e958e05ece919fff44c35fcf" name="a9f8c2964e958e05ece919fff44c35fcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f8c2964e958e05ece919fff44c35fcf">&#9670;&#160;</a></span>getFileName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sese::record::Event::getFileName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00054">54</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{ <span class="keywordflow">return</span> this-&gt;file; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1c2b620c659a1873a49d40ecf3d493a2" name="a1c2b620c659a1873a49d40ecf3d493a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c2b620c659a1873a49d40ecf3d493a2">&#9670;&#160;</a></span>getLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5">Level</a> sese::record::Event::getLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00051">51</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{ <span class="keywordflow">return</span> this-&gt;level; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac202c8f1757c6ca60421a100bd44371c" name="ac202c8f1757c6ca60421a100bd44371c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac202c8f1757c6ca60421a100bd44371c">&#9670;&#160;</a></span>getLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::record::Event::getLine </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00053">53</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{ <span class="keywordflow">return</span> this-&gt;line; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1b7261534e1b1b5ec82b26ffd8fccd76" name="a1b7261534e1b1b5ec82b26ffd8fccd76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b7261534e1b1b5ec82b26ffd8fccd76">&#9670;&#160;</a></span>getMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sese::record::Event::getMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00055">55</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>{ <span class="keywordflow">return</span> this-&gt;message; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ada5029e952e2540bd758b5986302e73d" name="ada5029e952e2540bd758b5986302e73d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada5029e952e2540bd758b5986302e73d">&#9670;&#160;</a></span>getThreadId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese.html#a07fae0615b50765c5b926bffd711e831">tid_t</a> sese::record::Event::getThreadId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00052">52</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{ <span class="keywordflow">return</span> this-&gt;threadId; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8351d65bfbe0c3613fa7c3b44edc69e8" name="a8351d65bfbe0c3613fa7c3b44edc69e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8351d65bfbe0c3613fa7c3b44edc69e8">&#9670;&#160;</a></span>getThreadName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sese::record::Event::getThreadName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00056">56</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{ <span class="keywordflow">return</span> this-&gt;threadName; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a70162f5345143e31cd03c058af250bdd" name="a70162f5345143e31cd03c058af250bdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70162f5345143e31cd03c058af250bdd">&#9670;&#160;</a></span>getTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp; sese::record::Event::getTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_event_8h_source.html">Event.h</a> 第 <a class="el" href="record_2_event_8h_source.html#l00050">50</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>{ <span class="keywordflow">return</span> this-&gt;dateTime; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/record/<a class="el" href="record_2_event_8h_source.html">Event.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

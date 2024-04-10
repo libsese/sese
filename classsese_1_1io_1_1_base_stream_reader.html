@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::io::BaseStreamReader&lt; T &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li><li class="navelem"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">BaseStreamReader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1io_1_1_base_stream_reader-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::io::BaseStreamReader&lt; T &gt; 模板类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>输出流包装类，Windows 下 UTF-8 需要特殊处理  
+ <a href="classsese_1_1io_1_1_base_stream_reader.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ae3a680d4af31c5b0a08b14ff3afd1e2f" id="r_ae3a680d4af31c5b0a08b14ff3afd1e2f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#ae3a680d4af31c5b0a08b14ff3afd1e2f">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">BaseStreamReader</a>&lt; T &gt; &gt;</td></tr>
+<tr class="separator:ae3a680d4af31c5b0a08b14ff3afd1e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ac869853f2f0a00b54befdfe3cf7f9995" id="r_ac869853f2f0a00b54befdfe3cf7f9995"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#ac869853f2f0a00b54befdfe3cf7f9995">BaseStreamReader</a> (const <a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> &amp;source)</td></tr>
+<tr class="memdesc:ac869853f2f0a00b54befdfe3cf7f9995"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:ac869853f2f0a00b54befdfe3cf7f9995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8dfba50583a49755df5ee796bffeab2" id="r_aa8dfba50583a49755df5ee796bffeab2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#aa8dfba50583a49755df5ee796bffeab2">read</a> (T &amp;ch)</td></tr>
+<tr class="memdesc:aa8dfba50583a49755df5ee796bffeab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取一个字符  <br /></td></tr>
+<tr class="separator:aa8dfba50583a49755df5ee796bffeab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78020ced8fe9ed303500aa117287775b" id="r_a78020ced8fe9ed303500aa117287775b"><td class="memItemLeft" align="right" valign="top">std::basic_string&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#a78020ced8fe9ed303500aa117287775b">readLine</a> ()</td></tr>
+<tr class="memdesc:a78020ced8fe9ed303500aa117287775b"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取一行  <br /></td></tr>
+<tr class="separator:a78020ced8fe9ed303500aa117287775b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585192de8c458baa7acf957e9995e51b" id="r_a585192de8c458baa7acf957e9995e51b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1io_1_1_byte_builder.html#a06c03d0ac53dd2e9df603d6a7ad13d66">ByteBuilder::Ptr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html#a585192de8c458baa7acf957e9995e51b">getBuffer</a> () noexcept</td></tr>
+<tr class="memdesc:a585192de8c458baa7acf957e9995e51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">由于 <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html" title="输出流包装类，Windows 下 UTF-8 需要特殊处理">BaseStreamReader</a> 的缓存机制，导致缓存尾部数据可能丢失，该函数返回超前未被读取部分数据长度  <br /></td></tr>
+<tr class="separator:a585192de8c458baa7acf957e9995e51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T = char&gt;<br />
+class sese::io::BaseStreamReader&lt; T &gt;</div><p>输出流包装类，Windows 下 UTF-8 需要特殊处理 </p>
+
+<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00024">24</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="ae3a680d4af31c5b0a08b14ff3afd1e2f" name="ae3a680d4af31c5b0a08b14ff3afd1e2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a680d4af31c5b0a08b14ff3afd1e2f">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">sese::io::BaseStreamReader</a>&lt; T &gt;::Ptr =  std::shared_ptr&lt;<a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">BaseStreamReader</a>&lt;T&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00026">26</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ac869853f2f0a00b54befdfe3cf7f9995" name="ac869853f2f0a00b54befdfe3cf7f9995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac869853f2f0a00b54befdfe3cf7f9995">&#9670;&#160;</a></span>BaseStreamReader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">sese::io::BaseStreamReader</a>&lt; T &gt;::BaseStreamReader </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_stream.html#a95a28ebc9d768d0533d7d29a498a461e">Stream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>source</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>欲包装流 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00033">33</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                       {</div>
+<div class="line"><span class="lineno">   34</span>        this-&gt;sourceStream = source;</div>
+<div class="line"><span class="lineno">   35</span>        this-&gt;bufferStream = std::make_unique&lt;ByteBuilder&gt;();</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a585192de8c458baa7acf957e9995e51b" name="a585192de8c458baa7acf957e9995e51b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a585192de8c458baa7acf957e9995e51b">&#9670;&#160;</a></span>getBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1io_1_1_byte_builder.html#a06c03d0ac53dd2e9df603d6a7ad13d66">ByteBuilder::Ptr</a> &amp; <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">sese::io::BaseStreamReader</a>&lt; T &gt;::getBuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>由于 <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html" title="输出流包装类，Windows 下 UTF-8 需要特殊处理">BaseStreamReader</a> 的缓存机制，导致缓存尾部数据可能丢失，该函数返回超前未被读取部分数据长度 </p>
+<dl class="section return"><dt>返回</dt><dd>超前数据长度 用于缓存超前部分数据 </dd>
+<dd>
+缓存 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00098">98</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   98</span>{ <span class="keywordflow">return</span> this-&gt;bufferStream; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa8dfba50583a49755df5ee796bffeab2" name="aa8dfba50583a49755df5ee796bffeab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8dfba50583a49755df5ee796bffeab2">&#9670;&#160;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">sese::io::BaseStreamReader</a>&lt; T &gt;::read </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>读取一个字符 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>字符容器 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>读取是否成功 </dd></dl>
+<p>未命中缓存，尝试从源中读取</p>
+<p><a class="el" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">FileStream</a> 读至文件尾返回值为 0 源已被读完</p>
+<p>嘿嘿，读取到一个字符</p>
+
+<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00043">43</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>                     {</div>
+<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">if</span> (bufferStream-&gt;read(&amp;ch, <span class="keyword">sizeof</span>(T)) == 0) {</div>
+<div class="line"><span class="lineno">   46</span>            <span class="keyword">auto</span> len = preRead();</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (0 == len) {</div>
+<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   51</span>            }</div>
+<div class="line"><span class="lineno">   52</span>        }</div>
+<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   55</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a78020ced8fe9ed303500aa117287775b" name="a78020ced8fe9ed303500aa117287775b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78020ced8fe9ed303500aa117287775b">&#9670;&#160;</a></span>readLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T  = char&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::basic_string&lt; T &gt; <a class="el" href="classsese_1_1io_1_1_base_stream_reader.html">sese::io::BaseStreamReader</a>&lt; T &gt;::readLine </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>读取一行 </p>
+<dl class="section return"><dt>返回</dt><dd>返回读取的字符串，长度为零测读取完成 </dd></dl>
+<p>有东西可读</p>
+
+<p class="definition">在文件 <a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a> 第 <a class="el" href="_base_stream_reader_8h_source.html#l00061">61</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>                                  {</div>
+<div class="line"><span class="lineno">   62</span>        std::basic_stringstream&lt;T&gt; string;</div>
+<div class="line"><span class="lineno">   63</span>        <span class="comment">// auto canReadSize = bufferStream-&gt;getLength() - bufferStream-&gt;getCurrentReadPos();</span></div>
+<div class="line"><span class="lineno">   64</span>        <span class="keyword">auto</span> can_read_size = bufferStream-&gt;getReadableSize();</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">if</span> (can_read_size == 0) {</div>
+<div class="line"><span class="lineno">   66</span>            can_read_size += preRead();</div>
+<div class="line"><span class="lineno">   67</span>        }</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (can_read_size &gt; 0) {</div>
+<div class="line"><span class="lineno">   71</span>            T ch;</div>
+<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">while</span> (<a class="code hl_function" href="classsese_1_1io_1_1_base_stream_reader.html#aa8dfba50583a49755df5ee796bffeab2" title="读取一个字符">read</a>(ch)) {</div>
+<div class="line"><span class="lineno">   73</span>                <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\r&#39;</span> || ch == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><span class="lineno">   74</span>                    <span class="keyword">auto</span> empty = <span class="keywordtype">string</span>.rdbuf()-&gt;in_avail() == 0;</div>
+<div class="line"><span class="lineno">   75</span>                    <span class="keywordflow">if</span> (!empty) {</div>
+<div class="line"><span class="lineno">   76</span>                        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   77</span>                    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   78</span>                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   79</span>                    }</div>
+<div class="line"><span class="lineno">   80</span>                }</div>
+<div class="line"><span class="lineno">   81</span>                <span class="keywordtype">string</span> &lt;&lt; ch;</div>
+<div class="line"><span class="lineno">   82</span>            }</div>
+<div class="line"><span class="lineno">   83</span>        }</div>
+<div class="line"><span class="lineno">   84</span>        bufferStream-&gt;freeCapacity();</div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">return</span> <span class="keywordtype">string</span>.str();</div>
+<div class="line"><span class="lineno">   86</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/io/<a class="el" href="_base_stream_reader_8h_source.html">BaseStreamReader.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

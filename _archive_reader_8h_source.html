@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/archive/ArchiveReader.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_29bb00e9166889c104a5f069c0df53dd.html">archive</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ArchiveReader.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_archive_reader_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// Copyright 2024 libsese</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">//</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">//    http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">//</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// limitations under the License.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;<a class="code" href="archive_2_config_8h.html">sese/archive/Config.h</a>&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;<a class="code" href="_input_stream_8h.html" title="流式输入接口类">sese/io/InputStream.h</a>&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1archive.html">sese::archive</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classsese_1_1archive_1_1_archive_reader.html">   32</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_reader.html" title="存档读取器">ArchiveReader</a> {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">   35</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686" title="解压回调函数">ExtractCallback</a> = std::function&lt;bool(<span class="keyword">const</span> std::filesystem::path &amp;base_path, <a class="code hl_enumeration" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9">Config::EntryType</a> type, <a class="code hl_class" href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类">io::InputStream</a> *<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>, <span class="keywordtype">size_t</span> readable)&gt;;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#a69fb1284e6826a2d91bbcd8cefa21351">extract</a>(<span class="keyword">const</span> std::filesystem::path &amp;src_path, <span class="keyword">const</span> std::filesystem::path &amp;dest_path, <span class="keyword">const</span> std::string &amp;pwd = {});</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">explicit</span> <a class="code hl_class" href="classsese_1_1archive_1_1_archive_reader.html" title="存档读取器">ArchiveReader</a>(<a class="code hl_class" href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类">io::InputStream</a> *<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">virtual</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#aae5aae96cbf7c1978554cee78096eeac">~ArchiveReader</a>();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#a1fb6a8d58fb642ac7f6ef8b7a53c847f">setPassword</a>(<span class="keyword">const</span> std::string &amp;pwd) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#a0d3e0871fc0eb317f495f6bf077f3bbc">setOptions</a>(<span class="keyword">const</span> std::string &amp;opt) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#a69fb1284e6826a2d91bbcd8cefa21351">extract</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686" title="解压回调函数">ExtractCallback</a> &amp;<a class="code hl_function" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#a8a0c3642582325c24a4d06452a9eba83">getError</a>()<span class="keyword">const</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        [[nodiscard]] <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#a84f2d853d75a00583ed5ff995ef1b853">getErrorString</a>()<span class="keyword">const</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#aa722ee18d5a995bb6261205eb7c81726">openCallback</a>(<span class="keywordtype">void</span> *<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="code hl_class" href="classsese_1_1archive_1_1_archive_reader.html" title="存档读取器">ArchiveReader</a> *archive_this);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keyword">static</span> int64_t <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#a3f5284d50f16126bdac2cb4ebcfc2e30">readCallback</a>(<span class="keywordtype">void</span> *<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="code hl_class" href="classsese_1_1archive_1_1_archive_reader.html" title="存档读取器">ArchiveReader</a> *archive_this, <span class="keyword">const</span> <span class="keywordtype">void</span> **<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_reader.html#aebf5b6bd2c0a70fd7741be3831d79cd9">closeCallback</a>(<span class="keywordtype">void</span> *<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="code hl_class" href="classsese_1_1archive_1_1_archive_reader.html" title="存档读取器">ArchiveReader</a> *archive_this);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">   80</a></span>        <span class="keywordtype">char</span> <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>[4096]{};</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">   81</a></span>        <span class="keywordtype">void</span> *<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">archive</a>{};</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">   82</a></span>        <a class="code hl_class" href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类">io::InputStream</a> *<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>{};</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    };</div>
+</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

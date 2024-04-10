@@ -1,0 +1,1549 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::Value::Dict类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_value.html">Value</a></li><li class="navelem"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1_value_1_1_dict-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::Value::Dict类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_value_8h_source.html">Value.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a554df893b7ef14bccf7765111efca9d2" id="r_a554df893b7ef14bccf7765111efca9d2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a554df893b7ef14bccf7765111efca9d2">Raw</a> = std::map&lt; <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a>, <a class="el" href="classsese_1_1_value.html">Value</a> * &gt;</td></tr>
+<tr class="separator:a554df893b7ef14bccf7765111efca9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af09ba075af48b3cef08c72c7b247f2f0" id="r_af09ba075af48b3cef08c72c7b247f2f0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Iterator</a> = Raw::iterator</td></tr>
+<tr class="separator:af09ba075af48b3cef08c72c7b247f2f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc8170f0fa2673818432a957e01c3bab" id="r_abc8170f0fa2673818432a957e01c3bab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">ConstIterator</a> = Raw::const_iterator</td></tr>
+<tr class="separator:abc8170f0fa2673818432a957e01c3bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5905c275e84c19f4433e6a2c24dfdac" id="r_ab5905c275e84c19f4433e6a2c24dfdac"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ab5905c275e84c19f4433e6a2c24dfdac">ReverseIterator</a> = Raw::reverse_iterator</td></tr>
+<tr class="separator:ab5905c275e84c19f4433e6a2c24dfdac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c5741882d970e21342c7153f4245641" id="r_a1c5741882d970e21342c7153f4245641"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641">ConstReverseIterator</a> = Raw::const_reverse_iterator</td></tr>
+<tr class="separator:a1c5741882d970e21342c7153f4245641"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a60a103d095f1a300550b17efb87cd801" id="r_a60a103d095f1a300550b17efb87cd801"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a60a103d095f1a300550b17efb87cd801">Dict</a> ()=default</td></tr>
+<tr class="separator:a60a103d095f1a300550b17efb87cd801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46561fe694c0bba6e7ed3703c47bf43f" id="r_a46561fe694c0bba6e7ed3703c47bf43f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a46561fe694c0bba6e7ed3703c47bf43f">~Dict</a> ()</td></tr>
+<tr class="separator:a46561fe694c0bba6e7ed3703c47bf43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a945b91f0f652a3004a15b0c62f3580fa" id="r_a945b91f0f652a3004a15b0c62f3580fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a945b91f0f652a3004a15b0c62f3580fa">Dict</a> (<a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:a945b91f0f652a3004a15b0c62f3580fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ace82fb8ad7e048c42a60ea7c9a9d9" id="r_a05ace82fb8ad7e048c42a60ea7c9a9d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a05ace82fb8ad7e048c42a60ea7c9a9d9">operator=</a> (<a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:a05ace82fb8ad7e048c42a60ea7c9a9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d2d4a86f4f7ccf58b0e038c94cb9c47" id="r_a8d2d4a86f4f7ccf58b0e038c94cb9c47"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a8d2d4a86f4f7ccf58b0e038c94cb9c47">Dict</a> (const <a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;other)=delete</td></tr>
+<tr class="separator:a8d2d4a86f4f7ccf58b0e038c94cb9c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8d0b19c9690c89d4b5d4985e6f221ce" id="r_ac8d0b19c9690c89d4b5d4985e6f221ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ac8d0b19c9690c89d4b5d4985e6f221ce">operator=</a> (const <a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;other)=delete</td></tr>
+<tr class="separator:ac8d0b19c9690c89d4b5d4985e6f221ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1abfd8768857f795d785cd62637c0a" id="r_a8a1abfd8768857f795d785cd62637c0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a8a1abfd8768857f795d785cd62637c0a">empty</a> () const</td></tr>
+<tr class="separator:a8a1abfd8768857f795d785cd62637c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af02a39f06aeb80693c7f2b1ab575fd45" id="r_af02a39f06aeb80693c7f2b1ab575fd45"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#af02a39f06aeb80693c7f2b1ab575fd45">size</a> () const</td></tr>
+<tr class="separator:af02a39f06aeb80693c7f2b1ab575fd45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf50a79a1369ac6aca3f7e5f57148aaf" id="r_abf50a79a1369ac6aca3f7e5f57148aaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#abf50a79a1369ac6aca3f7e5f57148aaf">clear</a> ()</td></tr>
+<tr class="separator:abf50a79a1369ac6aca3f7e5f57148aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88e6e545d8cd2e411693c30430845de" id="r_ac88e6e545d8cd2e411693c30430845de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ac88e6e545d8cd2e411693c30430845de">contains</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key) const</td></tr>
+<tr class="separator:ac88e6e545d8cd2e411693c30430845de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a695318dbd2bf4ecf01167880e65523aa" id="r_a695318dbd2bf4ecf01167880e65523aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a695318dbd2bf4ecf01167880e65523aa">begin</a> ()</td></tr>
+<tr class="separator:a695318dbd2bf4ecf01167880e65523aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae190db740464153b4041311d7a5ea734" id="r_ae190db740464153b4041311d7a5ea734"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ae190db740464153b4041311d7a5ea734">begin</a> () const</td></tr>
+<tr class="separator:ae190db740464153b4041311d7a5ea734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a749508efd02e7bbd20d2d55ef69eabe7" id="r_a749508efd02e7bbd20d2d55ef69eabe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a749508efd02e7bbd20d2d55ef69eabe7">end</a> ()</td></tr>
+<tr class="separator:a749508efd02e7bbd20d2d55ef69eabe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6a7c4fbe78323574abede261342f04f" id="r_ab6a7c4fbe78323574abede261342f04f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ab6a7c4fbe78323574abede261342f04f">end</a> () const</td></tr>
+<tr class="separator:ab6a7c4fbe78323574abede261342f04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46c62427609aa16a98c78b0ab44be5a" id="r_af46c62427609aa16a98c78b0ab44be5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#af46c62427609aa16a98c78b0ab44be5a">cbegin</a> () const</td></tr>
+<tr class="separator:af46c62427609aa16a98c78b0ab44be5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bf56b975e01e64d33c7203ebeeeda97" id="r_a7bf56b975e01e64d33c7203ebeeeda97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a7bf56b975e01e64d33c7203ebeeeda97">cend</a> () const</td></tr>
+<tr class="separator:a7bf56b975e01e64d33c7203ebeeeda97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc43fa6c906c40ad4e379688b2dcb020" id="r_abc43fa6c906c40ad4e379688b2dcb020"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#ab5905c275e84c19f4433e6a2c24dfdac">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc43fa6c906c40ad4e379688b2dcb020">rbegin</a> ()</td></tr>
+<tr class="separator:abc43fa6c906c40ad4e379688b2dcb020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8996cd24a9d174b52d75226ad6e1c9da" id="r_a8996cd24a9d174b52d75226ad6e1c9da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a8996cd24a9d174b52d75226ad6e1c9da">rbegin</a> () const</td></tr>
+<tr class="separator:a8996cd24a9d174b52d75226ad6e1c9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a022f5c35a6ecadfd2689f1ea37375435" id="r_a022f5c35a6ecadfd2689f1ea37375435"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#ab5905c275e84c19f4433e6a2c24dfdac">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a022f5c35a6ecadfd2689f1ea37375435">rend</a> ()</td></tr>
+<tr class="separator:a022f5c35a6ecadfd2689f1ea37375435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87b122bd3f606d2ee9a6f8ab9aa16e7e" id="r_a87b122bd3f606d2ee9a6f8ab9aa16e7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a87b122bd3f606d2ee9a6f8ab9aa16e7e">rend</a> () const</td></tr>
+<tr class="separator:a87b122bd3f606d2ee9a6f8ab9aa16e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e597245e644c57da4daab0438f9e747" id="r_a9e597245e644c57da4daab0438f9e747"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a9e597245e644c57da4daab0438f9e747">erase</a> (const <a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Iterator</a> &amp;it)</td></tr>
+<tr class="separator:a9e597245e644c57da4daab0438f9e747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa20f54576c8c3a495628b9b003307019" id="r_aa20f54576c8c3a495628b9b003307019"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#aa20f54576c8c3a495628b9b003307019">erase</a> (const <a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">ConstIterator</a> &amp;it)</td></tr>
+<tr class="separator:aa20f54576c8c3a495628b9b003307019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678eeb16368305bf03c9f7116fa8ffd4" id="r_a678eeb16368305bf03c9f7116fa8ffd4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_value.html">Value</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a678eeb16368305bf03c9f7116fa8ffd4">find</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key) const</td></tr>
+<tr class="separator:a678eeb16368305bf03c9f7116fa8ffd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af32f9f39751c0cc0cf97a7701d7be4f1" id="r_af32f9f39751c0cc0cf97a7701d7be4f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html">Value</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#af32f9f39751c0cc0cf97a7701d7be4f1">find</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key)</td></tr>
+<tr class="separator:af32f9f39751c0cc0cf97a7701d7be4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec52533bc34723e25c5aa1d42f51830" id="r_a7ec52533bc34723e25c5aa1d42f51830"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a7ec52533bc34723e25c5aa1d42f51830">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:a7ec52533bc34723e25c5aa1d42f51830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3dbaed1ca000b9fb751857106b47e54" id="r_ad3dbaed1ca000b9fb751857106b47e54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ad3dbaed1ca000b9fb751857106b47e54">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, bool value) &amp;</td></tr>
+<tr class="separator:ad3dbaed1ca000b9fb751857106b47e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5951dddf4564925c35eaa50a9a448550" id="r_a5951dddf4564925c35eaa50a9a448550"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a5951dddf4564925c35eaa50a9a448550">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, int value) &amp;</td></tr>
+<tr class="separator:a5951dddf4564925c35eaa50a9a448550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae18a97b40b433dc83c3ddeaeeadad28c" id="r_ae18a97b40b433dc83c3ddeaeeadad28c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ae18a97b40b433dc83c3ddeaeeadad28c">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, double value) &amp;</td></tr>
+<tr class="separator:ae18a97b40b433dc83c3ddeaeeadad28c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9a670e96a5baf95de1c5b869e6f551" id="r_a3a9a670e96a5baf95de1c5b869e6f551"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a3a9a670e96a5baf95de1c5b869e6f551">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, const char *value) &amp;</td></tr>
+<tr class="separator:a3a9a670e96a5baf95de1c5b869e6f551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f00babc441201be05606cd79b137d46" id="r_a6f00babc441201be05606cd79b137d46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a6f00babc441201be05606cd79b137d46">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, const char *value, size_t length) &amp;</td></tr>
+<tr class="separator:a6f00babc441201be05606cd79b137d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1d2e8981a3e280779224b07521368c6" id="r_af1d2e8981a3e280779224b07521368c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#af1d2e8981a3e280779224b07521368c6">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:af1d2e8981a3e280779224b07521368c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df87ebacff5c3fb41fb56885aa684be" id="r_a5df87ebacff5c3fb41fb56885aa684be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a5df87ebacff5c3fb41fb56885aa684be">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:a5df87ebacff5c3fb41fb56885aa684be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb56cb4da49bb0f84935063574450b8" id="r_aaeb56cb4da49bb0f84935063574450b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#aaeb56cb4da49bb0f84935063574450b8">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:aaeb56cb4da49bb0f84935063574450b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaadde5eaa89198e163b23c5cf3e0d34" id="r_adaadde5eaa89198e163b23c5cf3e0d34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#adaadde5eaa89198e163b23c5cf3e0d34">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:adaadde5eaa89198e163b23c5cf3e0d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e68f30dfa2bd4e3a44dbe245ed02fc6" id="r_a8e68f30dfa2bd4e3a44dbe245ed02fc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a8e68f30dfa2bd4e3a44dbe245ed02fc6">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:a8e68f30dfa2bd4e3a44dbe245ed02fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9930c2538b0ec242dbd7526597644b0" id="r_af9930c2538b0ec242dbd7526597644b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#af9930c2538b0ec242dbd7526597644b0">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, bool value) &amp;&amp;</td></tr>
+<tr class="separator:af9930c2538b0ec242dbd7526597644b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a061d5f9b9674dccc2ef6560f68bdd443" id="r_a061d5f9b9674dccc2ef6560f68bdd443"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a061d5f9b9674dccc2ef6560f68bdd443">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, int value) &amp;&amp;</td></tr>
+<tr class="separator:a061d5f9b9674dccc2ef6560f68bdd443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accc1ccca25885eff73e81fddee279c2b" id="r_accc1ccca25885eff73e81fddee279c2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#accc1ccca25885eff73e81fddee279c2b">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, double value) &amp;&amp;</td></tr>
+<tr class="separator:accc1ccca25885eff73e81fddee279c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad482b03f76181c8bbe3ea26e6d446468" id="r_ad482b03f76181c8bbe3ea26e6d446468"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ad482b03f76181c8bbe3ea26e6d446468">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, const char *value) &amp;&amp;</td></tr>
+<tr class="separator:ad482b03f76181c8bbe3ea26e6d446468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3d5b0fa732a7ae6607ed7e36a375f9f" id="r_aa3d5b0fa732a7ae6607ed7e36a375f9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#aa3d5b0fa732a7ae6607ed7e36a375f9f">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, const char *value, size_t length) &amp;&amp;</td></tr>
+<tr class="separator:aa3d5b0fa732a7ae6607ed7e36a375f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a066dc0436bbbbc3afdf8f6af007a9ab1" id="r_a066dc0436bbbbc3afdf8f6af007a9ab1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a066dc0436bbbbc3afdf8f6af007a9ab1">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:a066dc0436bbbbc3afdf8f6af007a9ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae906059dcb6bff944998c564e195c4d3" id="r_ae906059dcb6bff944998c564e195c4d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#ae906059dcb6bff944998c564e195c4d3">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:ae906059dcb6bff944998c564e195c4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62474d13c71221db792ac04153396cfd" id="r_a62474d13c71221db792ac04153396cfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#a62474d13c71221db792ac04153396cfd">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:a62474d13c71221db792ac04153396cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5a74acdc2a1f3662586156995a985d4" id="r_aa5a74acdc2a1f3662586156995a985d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#aa5a74acdc2a1f3662586156995a985d4">set</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key, <a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:aa5a74acdc2a1f3662586156995a985d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacb8d5d49351748412ab6e2a5fd05189" id="r_aacb8d5d49351748412ab6e2a5fd05189"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html#aacb8d5d49351748412ab6e2a5fd05189">remove</a> (const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;key)</td></tr>
+<tr class="separator:aacb8d5d49351748412ab6e2a5fd05189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00109">109</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="abc8170f0fa2673818432a957e01c3bab" name="abc8170f0fa2673818432a957e01c3bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc8170f0fa2673818432a957e01c3bab">&#9670;&#160;</a></span>ConstIterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">sese::Value::Dict::ConstIterator</a> =  Raw::const_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00113">113</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1c5741882d970e21342c7153f4245641" name="a1c5741882d970e21342c7153f4245641"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c5741882d970e21342c7153f4245641">&#9670;&#160;</a></span>ConstReverseIterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641">sese::Value::Dict::ConstReverseIterator</a> =  Raw::const_reverse_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00115">115</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af09ba075af48b3cef08c72c7b247f2f0" name="af09ba075af48b3cef08c72c7b247f2f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af09ba075af48b3cef08c72c7b247f2f0">&#9670;&#160;</a></span>Iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">sese::Value::Dict::Iterator</a> =  Raw::iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00112">112</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a554df893b7ef14bccf7765111efca9d2" name="a554df893b7ef14bccf7765111efca9d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a554df893b7ef14bccf7765111efca9d2">&#9670;&#160;</a></span>Raw</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_dict.html#a554df893b7ef14bccf7765111efca9d2">sese::Value::Dict::Raw</a> =  std::map&lt;<a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a>, <a class="el" href="classsese_1_1_value.html">Value</a> *&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00111">111</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab5905c275e84c19f4433e6a2c24dfdac" name="ab5905c275e84c19f4433e6a2c24dfdac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5905c275e84c19f4433e6a2c24dfdac">&#9670;&#160;</a></span>ReverseIterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_dict.html#ab5905c275e84c19f4433e6a2c24dfdac">sese::Value::Dict::ReverseIterator</a> =  Raw::reverse_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00114">114</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a60a103d095f1a300550b17efb87cd801" name="a60a103d095f1a300550b17efb87cd801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60a103d095f1a300550b17efb87cd801">&#9670;&#160;</a></span>Dict() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::Value::Dict::Dict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46561fe694c0bba6e7ed3703c47bf43f" name="a46561fe694c0bba6e7ed3703c47bf43f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46561fe694c0bba6e7ed3703c47bf43f">&#9670;&#160;</a></span>~Dict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dict::~Dict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00477">477</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  477</span>            {</div>
+<div class="line"><span class="lineno">  478</span>    <a class="code hl_function" href="classsese_1_1_value_1_1_dict.html#abf50a79a1369ac6aca3f7e5f57148aaf">clear</a>();</div>
+<div class="line"><span class="lineno">  479</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a945b91f0f652a3004a15b0c62f3580fa" name="a945b91f0f652a3004a15b0c62f3580fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a945b91f0f652a3004a15b0c62f3580fa">&#9670;&#160;</a></span>Dict() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dict::Dict </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00481">481</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  481</span>                                         {</div>
+<div class="line"><span class="lineno">  482</span>    std::swap(this-&gt;map, other.map);</div>
+<div class="line"><span class="lineno">  483</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8d2d4a86f4f7ccf58b0e038c94cb9c47" name="a8d2d4a86f4f7ccf58b0e038c94cb9c47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d2d4a86f4f7ccf58b0e038c94cb9c47">&#9670;&#160;</a></span>Dict() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::Value::Dict::Dict </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a695318dbd2bf4ecf01167880e65523aa" name="a695318dbd2bf4ecf01167880e65523aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a695318dbd2bf4ecf01167880e65523aa">&#9670;&#160;</a></span>begin() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Dict::Iterator</a> Dict::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00509">509</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  509</span>{ <span class="keywordflow">return</span> map.begin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae190db740464153b4041311d7a5ea734" name="ae190db740464153b4041311d7a5ea734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae190db740464153b4041311d7a5ea734">&#9670;&#160;</a></span>begin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">Dict::ConstIterator</a> Dict::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00511">511</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  511</span>{ <span class="keywordflow">return</span> map.begin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af46c62427609aa16a98c78b0ab44be5a" name="af46c62427609aa16a98c78b0ab44be5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af46c62427609aa16a98c78b0ab44be5a">&#9670;&#160;</a></span>cbegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">Dict::ConstIterator</a> Dict::cbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00517">517</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  517</span>{ <span class="keywordflow">return</span> map.cbegin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7bf56b975e01e64d33c7203ebeeeda97" name="a7bf56b975e01e64d33c7203ebeeeda97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bf56b975e01e64d33c7203ebeeeda97">&#9670;&#160;</a></span>cend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">Dict::ConstIterator</a> Dict::cend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00519">519</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  519</span>{ <span class="keywordflow">return</span> map.cend(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abf50a79a1369ac6aca3f7e5f57148aaf" name="abf50a79a1369ac6aca3f7e5f57148aaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf50a79a1369ac6aca3f7e5f57148aaf">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00498">498</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  498</span>                 {</div>
+<div class="line"><span class="lineno">  499</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;it: map) {</div>
+<div class="line"><span class="lineno">  500</span>        <span class="keyword">delete</span> it.second;</div>
+<div class="line"><span class="lineno">  501</span>    }</div>
+<div class="line"><span class="lineno">  502</span>    map.clear();</div>
+<div class="line"><span class="lineno">  503</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac88e6e545d8cd2e411693c30430845de" name="ac88e6e545d8cd2e411693c30430845de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac88e6e545d8cd2e411693c30430845de">&#9670;&#160;</a></span>contains()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Dict::contains </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00505">505</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  505</span>                                                {</div>
+<div class="line"><span class="lineno">  506</span>    <span class="keywordflow">return</span> map.count(key) &gt; 0;</div>
+<div class="line"><span class="lineno">  507</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8a1abfd8768857f795d785cd62637c0a" name="a8a1abfd8768857f795d785cd62637c0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1abfd8768857f795d785cd62637c0a">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Dict::empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00490">490</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  490</span>                       {</div>
+<div class="line"><span class="lineno">  491</span>    <span class="keywordflow">return</span> map.empty();</div>
+<div class="line"><span class="lineno">  492</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a749508efd02e7bbd20d2d55ef69eabe7" name="a749508efd02e7bbd20d2d55ef69eabe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a749508efd02e7bbd20d2d55ef69eabe7">&#9670;&#160;</a></span>end() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Dict::Iterator</a> Dict::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00513">513</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  513</span>{ <span class="keywordflow">return</span> map.end(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab6a7c4fbe78323574abede261342f04f" name="ab6a7c4fbe78323574abede261342f04f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a7c4fbe78323574abede261342f04f">&#9670;&#160;</a></span>end() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">Dict::ConstIterator</a> Dict::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00515">515</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  515</span>{ <span class="keywordflow">return</span> map.end(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa20f54576c8c3a495628b9b003307019" name="aa20f54576c8c3a495628b9b003307019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20f54576c8c3a495628b9b003307019">&#9670;&#160;</a></span>erase() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Dict::Iterator</a> Dict::erase </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value_1_1_dict.html#abc8170f0fa2673818432a957e01c3bab">ConstIterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00534">534</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  534</span>                                                    {</div>
+<div class="line"><span class="lineno">  535</span>    <span class="keyword">delete</span> it-&gt;second;</div>
+<div class="line"><span class="lineno">  536</span>    <span class="keywordflow">return</span> map.erase(it);</div>
+<div class="line"><span class="lineno">  537</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9e597245e644c57da4daab0438f9e747" name="a9e597245e644c57da4daab0438f9e747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e597245e644c57da4daab0438f9e747">&#9670;&#160;</a></span>erase() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Dict::Iterator</a> Dict::erase </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value_1_1_dict.html#af09ba075af48b3cef08c72c7b247f2f0">Iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00529">529</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  529</span>                                               {</div>
+<div class="line"><span class="lineno">  530</span>    <span class="keyword">delete</span> it-&gt;second;</div>
+<div class="line"><span class="lineno">  531</span>    <span class="keywordflow">return</span> map.erase(it);</div>
+<div class="line"><span class="lineno">  532</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af32f9f39751c0cc0cf97a7701d7be4f1" name="af32f9f39751c0cc0cf97a7701d7be4f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af32f9f39751c0cc0cf97a7701d7be4f1">&#9670;&#160;</a></span>find() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html">Value</a> * Dict::find </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00539">539</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  539</span>                                        {</div>
+<div class="line"><span class="lineno">  540</span>    <span class="keyword">auto</span> it = map.find(key);</div>
+<div class="line"><span class="lineno">  541</span>    <span class="keywordflow">if</span> (it == map.end()) {</div>
+<div class="line"><span class="lineno">  542</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  543</span>    }</div>
+<div class="line"><span class="lineno">  544</span>    <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><span class="lineno">  545</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a678eeb16368305bf03c9f7116fa8ffd4" name="a678eeb16368305bf03c9f7116fa8ffd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678eeb16368305bf03c9f7116fa8ffd4">&#9670;&#160;</a></span>find() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_value.html">Value</a> * Dict::find </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00547">547</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  547</span>                                                    {</div>
+<div class="line"><span class="lineno">  548</span>    <span class="keyword">auto</span> it = map.find(key);</div>
+<div class="line"><span class="lineno">  549</span>    <span class="keywordflow">if</span> (it == map.end()) {</div>
+<div class="line"><span class="lineno">  550</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  551</span>    }</div>
+<div class="line"><span class="lineno">  552</span>    <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><span class="lineno">  553</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac8d0b19c9690c89d4b5d4985e6f221ce" name="ac8d0b19c9690c89d4b5d4985e6f221ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8d0b19c9690c89d4b5d4985e6f221ce">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp; sese::Value::Dict::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a05ace82fb8ad7e048c42a60ea7c9a9d9" name="a05ace82fb8ad7e048c42a60ea7c9a9d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05ace82fb8ad7e048c42a60ea7c9a9d9">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp; Dict::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00485">485</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  485</span>                                                    {</div>
+<div class="line"><span class="lineno">  486</span>    std::swap(this-&gt;map, other.map);</div>
+<div class="line"><span class="lineno">  487</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  488</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abc43fa6c906c40ad4e379688b2dcb020" name="abc43fa6c906c40ad4e379688b2dcb020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc43fa6c906c40ad4e379688b2dcb020">&#9670;&#160;</a></span>rbegin() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#ab5905c275e84c19f4433e6a2c24dfdac">Dict::ReverseIterator</a> Dict::rbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00521">521</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  521</span>{ <span class="keywordflow">return</span> map.rbegin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8996cd24a9d174b52d75226ad6e1c9da" name="a8996cd24a9d174b52d75226ad6e1c9da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8996cd24a9d174b52d75226ad6e1c9da">&#9670;&#160;</a></span>rbegin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641">Dict::ConstReverseIterator</a> Dict::rbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00523">523</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  523</span>{ <span class="keywordflow">return</span> map.rbegin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aacb8d5d49351748412ab6e2a5fd05189" name="aacb8d5d49351748412ab6e2a5fd05189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacb8d5d49351748412ab6e2a5fd05189">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Dict::remove </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00645">645</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  645</span>                                        {</div>
+<div class="line"><span class="lineno">  646</span>    <span class="keywordflow">return</span> map.erase(key) &gt; 0;</div>
+<div class="line"><span class="lineno">  647</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a022f5c35a6ecadfd2689f1ea37375435" name="a022f5c35a6ecadfd2689f1ea37375435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a022f5c35a6ecadfd2689f1ea37375435">&#9670;&#160;</a></span>rend() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#ab5905c275e84c19f4433e6a2c24dfdac">Dict::ReverseIterator</a> Dict::rend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00525">525</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  525</span>{ <span class="keywordflow">return</span> map.rend(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a87b122bd3f606d2ee9a6f8ab9aa16e7e" name="a87b122bd3f606d2ee9a6f8ab9aa16e7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87b122bd3f606d2ee9a6f8ab9aa16e7e">&#9670;&#160;</a></span>rend() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html#a1c5741882d970e21342c7153f4245641">Dict::ConstReverseIterator</a> Dict::rend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00527">527</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  527</span>{ <span class="keywordflow">return</span> map.rend(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5df87ebacff5c3fb41fb56885aa684be" name="a5df87ebacff5c3fb41fb56885aa684be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5df87ebacff5c3fb41fb56885aa684be">&#9670;&#160;</a></span>set() <span class="overload">[1/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00579">579</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  579</span>                                                     {</div>
+<div class="line"><span class="lineno">  580</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  581</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae906059dcb6bff944998c564e195c4d3" name="ae906059dcb6bff944998c564e195c4d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae906059dcb6bff944998c564e195c4d3">&#9670;&#160;</a></span>set() <span class="overload">[2/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00625">625</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  625</span>                                                        {</div>
+<div class="line"><span class="lineno">  626</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  627</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  628</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad3dbaed1ca000b9fb751857106b47e54" name="ad3dbaed1ca000b9fb751857106b47e54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3dbaed1ca000b9fb751857106b47e54">&#9670;&#160;</a></span>set() <span class="overload">[3/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00559">559</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  559</span>                                                   {</div>
+<div class="line"><span class="lineno">  560</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value);</div>
+<div class="line"><span class="lineno">  561</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af9930c2538b0ec242dbd7526597644b0" name="af9930c2538b0ec242dbd7526597644b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9930c2538b0ec242dbd7526597644b0">&#9670;&#160;</a></span>set() <span class="overload">[4/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00600">600</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  600</span>                                                      {</div>
+<div class="line"><span class="lineno">  601</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value);</div>
+<div class="line"><span class="lineno">  602</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  603</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3a9a670e96a5baf95de1c5b869e6f551" name="a3a9a670e96a5baf95de1c5b869e6f551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9a670e96a5baf95de1c5b869e6f551">&#9670;&#160;</a></span>set() <span class="overload">[5/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00571">571</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  571</span>                                                          {</div>
+<div class="line"><span class="lineno">  572</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value);</div>
+<div class="line"><span class="lineno">  573</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad482b03f76181c8bbe3ea26e6d446468" name="ad482b03f76181c8bbe3ea26e6d446468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad482b03f76181c8bbe3ea26e6d446468">&#9670;&#160;</a></span>set() <span class="overload">[6/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00615">615</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  615</span>                                                             {</div>
+<div class="line"><span class="lineno">  616</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value);</div>
+<div class="line"><span class="lineno">  617</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  618</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6f00babc441201be05606cd79b137d46" name="a6f00babc441201be05606cd79b137d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f00babc441201be05606cd79b137d46">&#9670;&#160;</a></span>set() <span class="overload">[7/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00583">583</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  583</span>                                                                         {</div>
+<div class="line"><span class="lineno">  584</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value, length);</div>
+<div class="line"><span class="lineno">  585</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa3d5b0fa732a7ae6607ed7e36a375f9f" name="aa3d5b0fa732a7ae6607ed7e36a375f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3d5b0fa732a7ae6607ed7e36a375f9f">&#9670;&#160;</a></span>set() <span class="overload">[8/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00630">630</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  630</span>                                                                            {</div>
+<div class="line"><span class="lineno">  631</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value, length);</div>
+<div class="line"><span class="lineno">  632</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  633</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adaadde5eaa89198e163b23c5cf3e0d34" name="adaadde5eaa89198e163b23c5cf3e0d34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaadde5eaa89198e163b23c5cf3e0d34">&#9670;&#160;</a></span>set() <span class="overload">[9/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00591">591</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  591</span>                                                     {</div>
+<div class="line"><span class="lineno">  592</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  593</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa5a74acdc2a1f3662586156995a985d4" name="aa5a74acdc2a1f3662586156995a985d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5a74acdc2a1f3662586156995a985d4">&#9670;&#160;</a></span>set() <span class="overload">[10/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00640">640</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  640</span>                                                        {</div>
+<div class="line"><span class="lineno">  641</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  642</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  643</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae18a97b40b433dc83c3ddeaeeadad28c" name="ae18a97b40b433dc83c3ddeaeeadad28c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18a97b40b433dc83c3ddeaeeadad28c">&#9670;&#160;</a></span>set() <span class="overload">[11/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00567">567</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  567</span>                                                     {</div>
+<div class="line"><span class="lineno">  568</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value);</div>
+<div class="line"><span class="lineno">  569</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="accc1ccca25885eff73e81fddee279c2b" name="accc1ccca25885eff73e81fddee279c2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accc1ccca25885eff73e81fddee279c2b">&#9670;&#160;</a></span>set() <span class="overload">[12/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00610">610</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  610</span>                                                        {</div>
+<div class="line"><span class="lineno">  611</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value);</div>
+<div class="line"><span class="lineno">  612</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  613</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5951dddf4564925c35eaa50a9a448550" name="a5951dddf4564925c35eaa50a9a448550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5951dddf4564925c35eaa50a9a448550">&#9670;&#160;</a></span>set() <span class="overload">[13/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00563">563</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  563</span>                                                  {</div>
+<div class="line"><span class="lineno">  564</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value);</div>
+<div class="line"><span class="lineno">  565</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a061d5f9b9674dccc2ef6560f68bdd443" name="a061d5f9b9674dccc2ef6560f68bdd443"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a061d5f9b9674dccc2ef6560f68bdd443">&#9670;&#160;</a></span>set() <span class="overload">[14/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00605">605</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  605</span>                                                     {</div>
+<div class="line"><span class="lineno">  606</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(value);</div>
+<div class="line"><span class="lineno">  607</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  608</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aaeb56cb4da49bb0f84935063574450b8" name="aaeb56cb4da49bb0f84935063574450b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeb56cb4da49bb0f84935063574450b8">&#9670;&#160;</a></span>set() <span class="overload">[15/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00587">587</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  587</span>                                                     {</div>
+<div class="line"><span class="lineno">  588</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  589</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a62474d13c71221db792ac04153396cfd" name="a62474d13c71221db792ac04153396cfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62474d13c71221db792ac04153396cfd">&#9670;&#160;</a></span>set() <span class="overload">[16/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00635">635</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  635</span>                                                        {</div>
+<div class="line"><span class="lineno">  636</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  637</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  638</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af1d2e8981a3e280779224b07521368c6" name="af1d2e8981a3e280779224b07521368c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1d2e8981a3e280779224b07521368c6">&#9670;&#160;</a></span>set() <span class="overload">[17/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00575">575</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  575</span>                                                       {</div>
+<div class="line"><span class="lineno">  576</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  577</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a066dc0436bbbbc3afdf8f6af007a9ab1" name="a066dc0436bbbbc3afdf8f6af007a9ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a066dc0436bbbbc3afdf8f6af007a9ab1">&#9670;&#160;</a></span>set() <span class="overload">[18/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00620">620</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  620</span>                                                          {</div>
+<div class="line"><span class="lineno">  621</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  622</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  623</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7ec52533bc34723e25c5aa1d42f51830" name="a7ec52533bc34723e25c5aa1d42f51830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec52533bc34723e25c5aa1d42f51830">&#9670;&#160;</a></span>set() <span class="overload">[19/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00555">555</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  555</span>                                                      {</div>
+<div class="line"><span class="lineno">  556</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  557</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8e68f30dfa2bd4e3a44dbe245ed02fc6" name="a8e68f30dfa2bd4e3a44dbe245ed02fc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e68f30dfa2bd4e3a44dbe245ed02fc6">&#9670;&#160;</a></span>set() <span class="overload">[20/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp; Dict::set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00595">595</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  595</span>                                                         {</div>
+<div class="line"><span class="lineno">  596</span>    map[key] = <span class="keyword">new</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::move(value));</div>
+<div class="line"><span class="lineno">  597</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  598</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af02a39f06aeb80693c7f2b1ab575fd45" name="af02a39f06aeb80693c7f2b1ab575fd45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af02a39f06aeb80693c7f2b1ab575fd45">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Dict::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00494">494</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  494</span>                        {</div>
+<div class="line"><span class="lineno">  495</span>    <span class="keywordflow">return</span> map.size();</div>
+<div class="line"><span class="lineno">  496</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/util/<a class="el" href="_value_8h_source.html">Value.h</a></li>
+<li>sese/util/<a class="el" href="_value_8cpp_source.html">Value.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

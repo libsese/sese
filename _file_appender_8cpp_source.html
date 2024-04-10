@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/record/FileAppender.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">FileAppender.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_file_appender_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_file_appender_8h.html" title="日志文件输出源类">sese/record/FileAppender.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_file_appender.html#ad14b1125e05ddd08f3e10cc8b47226f7">    3</a></span><a class="code hl_function" href="classsese_1_1record_1_1_file_appender.html#ad14b1125e05ddd08f3e10cc8b47226f7">sese::record::FileAppender::FileAppender</a>(<a class="code hl_typedef" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">io::FileStream::Ptr</a> file_stream, <a class="code hl_enumeration" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5" title="日志等级">sese::record::Level</a> level)</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    : <a class="code hl_class" href="classsese_1_1record_1_1_abstract_appender.html" title="日志输出源基类">AbstractAppender</a>(level),</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>      fileStream(std::move(file_stream)) {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    bufferedStream = std::make_shared&lt;io::BufferedStream&gt;(this-&gt;fileStream, 4 * 1024);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>}</div>
+</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_file_appender.html#abbb34ef503dd5bea0bba3bbcadfccc96">    9</a></span><a class="code hl_function" href="classsese_1_1record_1_1_file_appender.html#abbb34ef503dd5bea0bba3bbcadfccc96">sese::record::FileAppender::~FileAppender</a>() noexcept {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    bufferedStream-&gt;flush();</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    fileStream-&gt;close();</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classsese_1_1record_1_1_file_appender.html#aa962985e44b93b64c633f0a26a06d7d2">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1record_1_1_file_appender.html#aa962985e44b93b64c633f0a26a06d7d2">sese::record::FileAppender::dump</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, <span class="keywordtype">size_t</span> <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    bufferedStream-&gt;write((<span class="keywordtype">void</span> *) buffer, <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+</div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/internal/db/impl/pgsql/PostgresPreparedStatementImpl.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_7d3fb913f6b3b461897efa8818b452ce.html">internal</a></li><li class="navelem"><a class="el" href="dir_c9366299fa87328e564dff5f7ba33f48.html">db</a></li><li class="navelem"><a class="el" href="dir_64e8d45e344e56b95f09a83975d9e6cd.html">impl</a></li><li class="navelem"><a class="el" href="dir_9a47523aaf29fad08561db1f7177f117.html">pgsql</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a>  </div>
+  <div class="headertitle"><div class="title">PostgresPreparedStatementImpl.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="_postgres_prepared_statement_impl_8h_source.html">sese/internal/db/impl/pgsql/PostgresPreparedStatementImpl.h</a>&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
+</div>
+<p><a href="_postgres_prepared_statement_impl_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a8fa1c5f811247e1b88bc65475218d41c" id="r_a8fa1c5f811247e1b88bc65475218d41c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a8fa1c5f811247e1b88bc65475218d41c">FLOAT8OID</a>&#160;&#160;&#160;701</td></tr>
+<tr class="separator:a8fa1c5f811247e1b88bc65475218d41c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a355afc3e7ec3b4bb0860f61371d942b6" id="r_a355afc3e7ec3b4bb0860f61371d942b6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a355afc3e7ec3b4bb0860f61371d942b6">FLOAT4OID</a>&#160;&#160;&#160;700</td></tr>
+<tr class="separator:a355afc3e7ec3b4bb0860f61371d942b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b14b0f52e041ced4e021121ed0b31b" id="r_a59b14b0f52e041ced4e021121ed0b31b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a59b14b0f52e041ced4e021121ed0b31b">INT8OID</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:a59b14b0f52e041ced4e021121ed0b31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af473c8bca64740230ff280c0de2c5721" id="r_af473c8bca64740230ff280c0de2c5721"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#af473c8bca64740230ff280c0de2c5721">INT4OID</a>&#160;&#160;&#160;23</td></tr>
+<tr class="separator:af473c8bca64740230ff280c0de2c5721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e54a35a82c0ec11b9952a46f4d7af3" id="r_a31e54a35a82c0ec11b9952a46f4d7af3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a31e54a35a82c0ec11b9952a46f4d7af3">INT2OID</a>&#160;&#160;&#160;21</td></tr>
+<tr class="separator:a31e54a35a82c0ec11b9952a46f4d7af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c945702a9e2e4694e5673db84c2a77d" id="r_a3c945702a9e2e4694e5673db84c2a77d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a3c945702a9e2e4694e5673db84c2a77d">TEXTOID</a>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:a3c945702a9e2e4694e5673db84c2a77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac4c664545022e308e9d78a040114a9" id="r_a1ac4c664545022e308e9d78a040114a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a1ac4c664545022e308e9d78a040114a9">TIMESTAMPOID</a>&#160;&#160;&#160;1114</td></tr>
+<tr class="separator:a1ac4c664545022e308e9d78a040114a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45943b815620f615b4780464d5c64bad" id="r_a45943b815620f615b4780464d5c64bad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a45943b815620f615b4780464d5c64bad">TIMESTAMPTZOID</a>&#160;&#160;&#160;1184</td></tr>
+<tr class="separator:a45943b815620f615b4780464d5c64bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98237a4b91c161bd6c2df63a2bb94207" id="r_a98237a4b91c161bd6c2df63a2bb94207"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a98237a4b91c161bd6c2df63a2bb94207">BOOLOID</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a98237a4b91c161bd6c2df63a2bb94207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace83b8c6f7699112ced411650600b475" id="r_ace83b8c6f7699112ced411650600b475"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#ace83b8c6f7699112ced411650600b475">CHAROID</a>&#160;&#160;&#160;18</td></tr>
+<tr class="separator:ace83b8c6f7699112ced411650600b475"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24eccf5fa2a41f7738ab1aa1b7dce72d" id="r_a24eccf5fa2a41f7738ab1aa1b7dce72d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a24eccf5fa2a41f7738ab1aa1b7dce72d">VARCHAROID</a>&#160;&#160;&#160;1043</td></tr>
+<tr class="separator:a24eccf5fa2a41f7738ab1aa1b7dce72d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee8ba3353d19cf2dd1f72d0a83b47f3a" id="r_aee8ba3353d19cf2dd1f72d0a83b47f3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#aee8ba3353d19cf2dd1f72d0a83b47f3a">DATEOID</a>&#160;&#160;&#160;1082</td></tr>
+<tr class="separator:aee8ba3353d19cf2dd1f72d0a83b47f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c1fe4b1e1ffeeb4eefc1136a880f0a6" id="r_a9c1fe4b1e1ffeeb4eefc1136a880f0a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_postgres_prepared_statement_impl_8cpp.html#a9c1fe4b1e1ffeeb4eefc1136a880f0a6">TIMEOID</a>&#160;&#160;&#160;1083</td></tr>
+<tr class="separator:a9c1fe4b1e1ffeeb4eefc1136a880f0a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a98237a4b91c161bd6c2df63a2bb94207" name="a98237a4b91c161bd6c2df63a2bb94207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98237a4b91c161bd6c2df63a2bb94207">&#9670;&#160;</a></span>BOOLOID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOOLOID&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00014">14</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ace83b8c6f7699112ced411650600b475" name="ace83b8c6f7699112ced411650600b475"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace83b8c6f7699112ced411650600b475">&#9670;&#160;</a></span>CHAROID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CHAROID&#160;&#160;&#160;18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00015">15</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aee8ba3353d19cf2dd1f72d0a83b47f3a" name="aee8ba3353d19cf2dd1f72d0a83b47f3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee8ba3353d19cf2dd1f72d0a83b47f3a">&#9670;&#160;</a></span>DATEOID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DATEOID&#160;&#160;&#160;1082</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00017">17</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a355afc3e7ec3b4bb0860f61371d942b6" name="a355afc3e7ec3b4bb0860f61371d942b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a355afc3e7ec3b4bb0860f61371d942b6">&#9670;&#160;</a></span>FLOAT4OID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLOAT4OID&#160;&#160;&#160;700</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00007">7</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8fa1c5f811247e1b88bc65475218d41c" name="a8fa1c5f811247e1b88bc65475218d41c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fa1c5f811247e1b88bc65475218d41c">&#9670;&#160;</a></span>FLOAT8OID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLOAT8OID&#160;&#160;&#160;701</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00006">6</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a31e54a35a82c0ec11b9952a46f4d7af3" name="a31e54a35a82c0ec11b9952a46f4d7af3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31e54a35a82c0ec11b9952a46f4d7af3">&#9670;&#160;</a></span>INT2OID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INT2OID&#160;&#160;&#160;21</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00010">10</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af473c8bca64740230ff280c0de2c5721" name="af473c8bca64740230ff280c0de2c5721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af473c8bca64740230ff280c0de2c5721">&#9670;&#160;</a></span>INT4OID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INT4OID&#160;&#160;&#160;23</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00009">9</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a59b14b0f52e041ced4e021121ed0b31b" name="a59b14b0f52e041ced4e021121ed0b31b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b14b0f52e041ced4e021121ed0b31b">&#9670;&#160;</a></span>INT8OID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INT8OID&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00008">8</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3c945702a9e2e4694e5673db84c2a77d" name="a3c945702a9e2e4694e5673db84c2a77d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c945702a9e2e4694e5673db84c2a77d">&#9670;&#160;</a></span>TEXTOID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TEXTOID&#160;&#160;&#160;25</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00011">11</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9c1fe4b1e1ffeeb4eefc1136a880f0a6" name="a9c1fe4b1e1ffeeb4eefc1136a880f0a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c1fe4b1e1ffeeb4eefc1136a880f0a6">&#9670;&#160;</a></span>TIMEOID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMEOID&#160;&#160;&#160;1083</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00018">18</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1ac4c664545022e308e9d78a040114a9" name="a1ac4c664545022e308e9d78a040114a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ac4c664545022e308e9d78a040114a9">&#9670;&#160;</a></span>TIMESTAMPOID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMESTAMPOID&#160;&#160;&#160;1114</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00012">12</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a45943b815620f615b4780464d5c64bad" name="a45943b815620f615b4780464d5c64bad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45943b815620f615b4780464d5c64bad">&#9670;&#160;</a></span>TIMESTAMPTZOID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIMESTAMPTZOID&#160;&#160;&#160;1184</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00013">13</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a24eccf5fa2a41f7738ab1aa1b7dce72d" name="a24eccf5fa2a41f7738ab1aa1b7dce72d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24eccf5fa2a41f7738ab1aa1b7dce72d">&#9670;&#160;</a></span>VARCHAROID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VARCHAROID&#160;&#160;&#160;1043</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00016">16</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

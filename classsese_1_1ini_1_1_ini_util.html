@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::ini::IniUtil类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1ini.html">ini</a></li><li class="navelem"><a class="el" href="classsese_1_1ini_1_1_ini_util.html">IniUtil</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
+<a href="classsese_1_1ini_1_1_ini_util-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::ini::IniUtil类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>INI 工具类  
+ <a href="classsese_1_1ini_1_1_ini_util.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_ini_util_8h_source.html">IniUtil.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a82a5b81ed2a53069bdb90c7f2833503d" id="r_a82a5b81ed2a53069bdb90c7f2833503d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#a82a5b81ed2a53069bdb90c7f2833503d">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">io::PeekableStream</a></td></tr>
+<tr class="memdesc:a82a5b81ed2a53069bdb90c7f2833503d"><td class="mdescLeft">&#160;</td><td class="mdescRight">工具支持的输入流  <br /></td></tr>
+<tr class="separator:a82a5b81ed2a53069bdb90c7f2833503d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d053e4a5de3c80e23447b15b1a8091" id="r_aa4d053e4a5de3c80e23447b15b1a8091"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa4d053e4a5de3c80e23447b15b1a8091">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td></tr>
+<tr class="memdesc:aa4d053e4a5de3c80e23447b15b1a8091"><td class="mdescLeft">&#160;</td><td class="mdescRight">工具支持的输出流  <br /></td></tr>
+<tr class="separator:aa4d053e4a5de3c80e23447b15b1a8091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa45a0f2723bc0fcaa1e07d2ab15056db" id="r_aa45a0f2723bc0fcaa1e07d2ab15056db"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa45a0f2723bc0fcaa1e07d2ab15056db">IniConfigObject</a> = std::unique_ptr&lt; <a class="el" href="structsese_1_1ini_1_1_ini_config.html">IniConfig</a> &gt;</td></tr>
+<tr class="memdesc:aa45a0f2723bc0fcaa1e07d2ab15056db"><td class="mdescLeft">&#160;</td><td class="mdescRight">INI CONFIG 对象  <br /></td></tr>
+<tr class="separator:aa45a0f2723bc0fcaa1e07d2ab15056db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a3096b2893572e5501a9e3f323beac2c1" id="r_a3096b2893572e5501a9e3f323beac2c1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa45a0f2723bc0fcaa1e07d2ab15056db">IniConfigObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#a3096b2893572e5501a9e3f323beac2c1">parse</a> (<a class="el" href="classsese_1_1ini_1_1_ini_util.html#a82a5b81ed2a53069bdb90c7f2833503d">InputStream</a> *input) noexcept</td></tr>
+<tr class="separator:a3096b2893572e5501a9e3f323beac2c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a950a859c3d1d1047ff27c506893fa6f2" id="r_a950a859c3d1d1047ff27c506893fa6f2"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#a950a859c3d1d1047ff27c506893fa6f2">unparse</a> (const <a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa45a0f2723bc0fcaa1e07d2ab15056db">IniConfigObject</a> &amp;target, <a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa4d053e4a5de3c80e23447b15b1a8091">OutputStream</a> *output) noexcept</td></tr>
+<tr class="separator:a950a859c3d1d1047ff27c506893fa6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+静态 Protected 成员函数</h2></td></tr>
+<tr class="memitem:acb02ecded9211b359b9114f463aaaf5c" id="r_acb02ecded9211b359b9114f463aaaf5c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#acb02ecded9211b359b9114f463aaaf5c">unparsePair</a> (const std::pair&lt; std::string, std::string &gt; &amp;pair, <a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa4d053e4a5de3c80e23447b15b1a8091">OutputStream</a> *output) noexcept</td></tr>
+<tr class="separator:acb02ecded9211b359b9114f463aaaf5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>INI 工具类 </p>
+
+<p class="definition">在文件 <a class="el" href="_ini_util_8h_source.html">IniUtil.h</a> 第 <a class="el" href="_ini_util_8h_source.html#l00017">17</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="aa45a0f2723bc0fcaa1e07d2ab15056db" name="aa45a0f2723bc0fcaa1e07d2ab15056db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa45a0f2723bc0fcaa1e07d2ab15056db">&#9670;&#160;</a></span>IniConfigObject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa45a0f2723bc0fcaa1e07d2ab15056db">sese::ini::IniUtil::IniConfigObject</a> =  std::unique_ptr&lt;<a class="el" href="structsese_1_1ini_1_1_ini_config.html">IniConfig</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>INI CONFIG 对象 </p>
+
+<p class="definition">在文件 <a class="el" href="_ini_util_8h_source.html">IniUtil.h</a> 第 <a class="el" href="_ini_util_8h_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a82a5b81ed2a53069bdb90c7f2833503d" name="a82a5b81ed2a53069bdb90c7f2833503d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82a5b81ed2a53069bdb90c7f2833503d">&#9670;&#160;</a></span>InputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1ini_1_1_ini_util.html#a82a5b81ed2a53069bdb90c7f2833503d">sese::ini::IniUtil::InputStream</a> =  <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">io::PeekableStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>工具支持的输入流 </p>
+
+<p class="definition">在文件 <a class="el" href="_ini_util_8h_source.html">IniUtil.h</a> 第 <a class="el" href="_ini_util_8h_source.html#l00020">20</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa4d053e4a5de3c80e23447b15b1a8091" name="aa4d053e4a5de3c80e23447b15b1a8091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4d053e4a5de3c80e23447b15b1a8091">&#9670;&#160;</a></span>OutputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa4d053e4a5de3c80e23447b15b1a8091">sese::ini::IniUtil::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>工具支持的输出流 </p>
+
+<p class="definition">在文件 <a class="el" href="_ini_util_8h_source.html">IniUtil.h</a> 第 <a class="el" href="_ini_util_8h_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a3096b2893572e5501a9e3f323beac2c1" name="a3096b2893572e5501a9e3f323beac2c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3096b2893572e5501a9e3f323beac2c1">&#9670;&#160;</a></span>parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa45a0f2723bc0fcaa1e07d2ab15056db">IniUtil::IniConfigObject</a> IniUtil::parse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#a82a5b81ed2a53069bdb90c7f2833503d">IniUtil::InputStream</a> *&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>从可窥视流中解析一个 INI CONFIG 对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>欲处理的可窥视流 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>INI CONFIG 对象 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_ini_util_8cpp_source.html">IniUtil.cpp</a> 第 <a class="el" href="_ini_util_8cpp_source.html#l00006">6</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                                        {</div>
+<div class="line"><span class="lineno">    7</span>    <span class="keyword">auto</span> reader = io::InputStreamReader(input);</div>
+<div class="line"><span class="lineno">    8</span> </div>
+<div class="line"><span class="lineno">    9</span>    <span class="keyword">auto</span> config = std::make_unique&lt;IniConfig&gt;();</div>
+<div class="line"><span class="lineno">   10</span>    <span class="keyword">auto</span> current = &amp;config-&gt;defSection;</div>
+<div class="line"><span class="lineno">   11</span> </div>
+<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><span class="lineno">   13</span>        std::string line = reader.readLine();</div>
+<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">if</span> (line.empty()) {</div>
+<div class="line"><span class="lineno">   15</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   16</span>        }</div>
+<div class="line"><span class="lineno">   17</span> </div>
+<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;[&#39;</span>) {</div>
+<div class="line"><span class="lineno">   19</span>            <span class="comment">// new section</span></div>
+<div class="line"><span class="lineno">   20</span>            <span class="keyword">auto</span> pos = line.find_last_of(<span class="charliteral">&#39;]&#39;</span>);</div>
+<div class="line"><span class="lineno">   21</span>            <span class="keywordflow">if</span> (pos == std::string::npos) {</div>
+<div class="line"><span class="lineno">   22</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   23</span>            }</div>
+<div class="line"><span class="lineno">   24</span>            <span class="keyword">auto</span> iterator = config-&gt;sectionMap.emplace(line.substr(1, pos - 1), std::map&lt;std::string, std::string&gt;{});</div>
+<div class="line"><span class="lineno">   25</span>            current = &amp;iterator.first-&gt;second;</div>
+<div class="line"><span class="lineno">   26</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;#&#39;</span>) {</div>
+<div class="line"><span class="lineno">   27</span>            <span class="comment">// comment</span></div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   29</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   30</span>            <span class="comment">// current section</span></div>
+<div class="line"><span class="lineno">   31</span>            <span class="keyword">auto</span> pos = line.find_first_of(<span class="charliteral">&#39;=&#39;</span>);</div>
+<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">if</span> (pos == std::string::npos) {</div>
+<div class="line"><span class="lineno">   33</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   34</span>            }</div>
+<div class="line"><span class="lineno">   35</span>            current-&gt;emplace(line.substr(0, pos), line.substr(pos + 1));</div>
+<div class="line"><span class="lineno">   36</span>        }</div>
+<div class="line"><span class="lineno">   37</span>    }</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> config;</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a950a859c3d1d1047ff27c506893fa6f2" name="a950a859c3d1d1047ff27c506893fa6f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a950a859c3d1d1047ff27c506893fa6f2">&#9670;&#160;</a></span>unparse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IniUtil::unparse </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa45a0f2723bc0fcaa1e07d2ab15056db">IniConfigObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa4d053e4a5de3c80e23447b15b1a8091">IniUtil::OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>向流中写入 INI CONFIG 对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>欲写入的 INI CONFIG </td></tr>
+    <tr><td class="paramname">output</td><td>欲输出的流 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>操作是否成功 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_ini_util_8cpp_source.html">IniUtil.cpp</a> 第 <a class="el" href="_ini_util_8cpp_source.html#l00048">48</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                                                                {</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;item: target-&gt;defSection) {</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classsese_1_1ini_1_1_ini_util.html#acb02ecded9211b359b9114f463aaaf5c">unparsePair</a>(item, output)) {</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   52</span>        }</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(<span class="stringliteral">&quot;\n&quot;</span>, 1)</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>    for (auto &amp;&amp;map: target-&gt;sectionMap) {</div>
+<div class="line"><span class="lineno">   57</span>        <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(<span class="stringliteral">&quot;[&quot;</span>, 1)</div>
+<div class="line"><span class="lineno">   58</span>        <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(map.first.c_str(), map.first.length())</div>
+<div class="line"><span class="lineno">   59</span>        <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(&quot;]\n&quot;, 2)</div>
+<div class="line"><span class="lineno">   60</span>        for (auto &amp;&amp;item: map.second) {</div>
+<div class="line"><span class="lineno">   61</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classsese_1_1ini_1_1_ini_util.html#acb02ecded9211b359b9114f463aaaf5c">unparsePair</a>(item, output)) {</div>
+<div class="line"><span class="lineno">   62</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   63</span>            }</div>
+<div class="line"><span class="lineno">   64</span>        }</div>
+<div class="line"><span class="lineno">   65</span>        <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(<span class="stringliteral">&quot;\n&quot;</span>, 1)</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   69</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_ini_util_8cpp_source.html#l00042">ASSERT_WRITE</a>.</p>
+
+</div>
+</div>
+<a id="acb02ecded9211b359b9114f463aaaf5c" name="acb02ecded9211b359b9114f463aaaf5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb02ecded9211b359b9114f463aaaf5c">&#9670;&#160;</a></span>unparsePair()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IniUtil::unparsePair </td>
+          <td>(</td>
+          <td class="paramtype">const std::pair&lt; std::string, std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pair</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1ini_1_1_ini_util.html#aa4d053e4a5de3c80e23447b15b1a8091">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_ini_util_8cpp_source.html">IniUtil.cpp</a> 第 <a class="el" href="_ini_util_8cpp_source.html#l00071">71</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>                                                                                                  {</div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(pair.first.c_str(), pair.first.length())</div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(&quot;=&quot;, 1)</div>
+<div class="line"><span class="lineno">   74</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(pair.second.c_str(), pair.second.length())</div>
+<div class="line"><span class="lineno">   75</span>    <a class="code hl_define" href="_ini_util_8cpp.html#af097e4b9ef093d215d82efc79da4bc9a">ASSERT_WRITE</a>(&quot;\n&quot;, 1)</div>
+<div class="line"><span class="lineno">   76</span>    return true;</div>
+<div class="line"><span class="lineno">   77</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_ini_util_8cpp_source.html#l00042">ASSERT_WRITE</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/config/ini/<a class="el" href="_ini_util_8h_source.html">IniUtil.h</a></li>
+<li>sese/config/ini/<a class="el" href="_ini_util_8cpp_source.html">IniUtil.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

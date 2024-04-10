@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/native/unix/security/evp/MD5Context.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5a27d73af174e870851ec050345bcb12.html">native</a></li><li class="navelem"><a class="el" href="dir_b3046c2f43b006796d9507a766bbdea0.html">unix</a></li><li class="navelem"><a class="el" href="dir_55db5b644d1aaf410853faf9f685e645.html">security</a></li><li class="navelem"><a class="el" href="dir_e0fbe9397cfe24b965782b07017eceaf.html">evp</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">MD5Context.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="unix_2security_2evp_2_m_d5_context_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="_m_d5_context_8h.html" title="EVP MD5 算法上下文">sese/security/evp/MD5Context.h</a>&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;openssl/evp.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="foldopen" id="foldopen00005" data-start="{" data-end="}">
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#a2abf50cc6d245ada51214bfc1528f2a8">    5</a></span><a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#a2abf50cc6d245ada51214bfc1528f2a8">sese::security::evp::MD5Context::MD5Context</a>() noexcept : <a class="code hl_class" href="classsese_1_1security_1_1evp_1_1_context.html" title="EVP 上下文基类">Context</a>() {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    this-&gt;context = EVP_MD_CTX_new();</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    EVP_DigestInit((EVP_MD_CTX *) this-&gt;context, EVP_md5());</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>}</div>
+</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#aec15a86de92670d54a315744c0aa7309">   10</a></span><a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#aec15a86de92670d54a315744c0aa7309">sese::security::evp::MD5Context::~MD5Context</a>() noexcept {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    EVP_MD_CTX_free((EVP_MD_CTX *) this-&gt;context);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#a99272b723269f91867bc07aa64e4ebaa">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#a99272b723269f91867bc07aa64e4ebaa">sese::security::evp::MD5Context::update</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> len) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    EVP_DigestUpdate((EVP_MD_CTX *) this-&gt;context, buffer, len);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#acc12e23161e88d1e676d903c6dbcfa4d">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#acc12e23161e88d1e676d903c6dbcfa4d">sese::security::evp::MD5Context::final</a>() noexcept {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    EVP_DigestFinal((EVP_MD_CTX *) this-&gt;context, result, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#ad34bb9f26e836d117212bd387c64794a">   22</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#ad34bb9f26e836d117212bd387c64794a">sese::security::evp::MD5Context::getResult</a>() noexcept {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#add1df00c71362fe6b39ed3c1435a221a">   26</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_m_d5_context.html#add1df00c71362fe6b39ed3c1435a221a">sese::security::evp::MD5Context::getLength</a>() noexcept {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">return</span> length;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+</div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

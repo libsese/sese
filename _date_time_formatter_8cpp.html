@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/text/DateTimeFormatter.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">DateTimeFormatter.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_date_time_formatter_8h_source.html">sese/text/DateTimeFormatter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_string_builder_8h_source.html">sese/text/StringBuilder.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_input_buffer_wrapper_8h_source.html">sese/io/InputBufferWrapper.h</a>&quot;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;ctime&gt;</code><br />
+</div>
+<p><a href="_date_time_formatter_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a8dcbd9b1a3c3650f2a16c9ced7fc112c" id="r_a8dcbd9b1a3c3650f2a16c9ced7fc112c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> (const char &amp;ch, const char *str)</td></tr>
+<tr class="separator:a8dcbd9b1a3c3650f2a16c9ced7fc112c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="a8dcbd9b1a3c3650f2a16c9ced7fc112c" name="a8dcbd9b1a3c3650f2a16c9ced7fc112c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dcbd9b1a3c3650f2a16c9ced7fc112c">&#9670;&#160;</a></span>count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int count </td>
+          <td>(</td>
+          <td class="paramtype">const char &amp;&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8cpp_source.html">DateTimeFormatter.cpp</a> 第 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">121</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  121</span>                                                  {</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 4; i++) {</div>
+<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">if</span> (*(str + i) != ch) {</div>
+<div class="line"><span class="lineno">  124</span>            <span class="keywordflow">return</span> i;</div>
+<div class="line"><span class="lineno">  125</span>        }</div>
+<div class="line"><span class="lineno">  126</span>    }</div>
+<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">return</span> 4;</div>
+<div class="line"><span class="lineno">  128</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_maria_driver_instance_impl_8cpp_source.html#l00029">sese::db::impl::MariaDriverInstanceImpl::createStatement()</a>, <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00070">sese::db::impl::PostgresDriverInstanceImpl::createStatement()</a>, <a class="el" href="_sqlite_driver_instance_impl_8cpp_source.html#l00035">sese::db::impl::SqliteDriverInstanceImpl::createStatement()</a>, <a class="el" href="_value_8cpp_source.html#l00331">sese::Value::List::erase()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00101">sese::db::impl::PostgresPreparedStatementImpl::executeQuery()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00119">sese::db::impl::PostgresPreparedStatementImpl::executeUpdate()</a>, <a class="el" href="_s_string_8cpp_source.html#l00484">sstr::SStringView::find()</a>, <a class="el" href="darwin_2system_2_stack_info_8cpp_source.html#l00014">findPos2()</a>, <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00087">sese::db::impl::MariaPreparedStatementImpl::freeBindStruct()</a>, <a class="el" href="_yaml_util_8cpp_source.html#l00058">sese::yaml::YamlUtil::getLine()</a>, <a class="el" href="_algorithm_8h_source.html#l00036">sstr::LeftShiftElement()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00007">sese::db::impl::MariaPreparedStatementImpl::MariaPreparedStatementImpl()</a>, <a class="el" href="_maria_stmt_result_set_impl_8cpp_source.html#l00005">sese::db::impl::MariaStmtResultSet::MariaStmtResultSet()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00021">sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl()</a>, <a class="el" href="util_2_range_8h_source.html#l00021">sese::Range&lt; TYPE &gt;::Range()</a>, <a class="el" href="_random_input_stream_8cpp_source.html#l00004">sese::io::RandomInputStream::read()</a>, <a class="el" href="_algorithm_8h_source.html#l00050">sstr::RightShiftElement()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00198">sese::db::impl::MariaPreparedStatementImpl::setDateTime()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00092">sese::db::impl::PostgresPreparedStatementImpl::setDateTime()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00147">sese::db::impl::MariaPreparedStatementImpl::setDouble()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00046">sese::db::impl::PostgresPreparedStatementImpl::setDouble()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00153">sese::db::impl::MariaPreparedStatementImpl::setFloat()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00054">sese::db::impl::PostgresPreparedStatementImpl::setFloat()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00159">sese::db::impl::MariaPreparedStatementImpl::setInteger()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00062">sese::db::impl::PostgresPreparedStatementImpl::setInteger()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00165">sese::db::impl::MariaPreparedStatementImpl::setLong()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00070">sese::db::impl::PostgresPreparedStatementImpl::setLong()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00184">sese::db::impl::MariaPreparedStatementImpl::setNull()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00085">sese::db::impl::PostgresPreparedStatementImpl::setNull()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00171">sese::db::impl::MariaPreparedStatementImpl::setText()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00078">sese::db::impl::PostgresPreparedStatementImpl::setText()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00054">sese::db::impl::SqlitePreparedStatementImpl::SqlitePreparedStatementImpl()</a>, <a class="el" href="_s_string_8cpp_source.html#l00620">sstr::SStringView::substring()</a>, <a class="el" href="_s_string_8cpp_source.html#l00669">sstr::SStringView::toCWString()</a>, <a class="el" href="_version_8cpp_source.html#l00051">sese::Version::toShortString()</a>, <a class="el" href="_yaml_util_8cpp_source.html#l00351">sese::yaml::YamlUtil::writeSpace()</a> , 以及 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00062">sese::db::impl::SqlitePreparedStatementImpl::~SqlitePreparedStatementImpl()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

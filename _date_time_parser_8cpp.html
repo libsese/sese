@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/text/DateTimeParser.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a>  </div>
+  <div class="headertitle"><div class="title">DateTimeParser.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="_config_8h_source.html">sese/Config.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_date_time_parser_8h_source.html">sese/text/DateTimeParser.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_input_buffer_wrapper_8h_source.html">sese/io/InputBufferWrapper.h</a>&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+</div>
+<p><a href="_date_time_parser_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ab5dc0bc1cf120f5c452fdc765dda0d87" id="r_ab5dc0bc1cf120f5c452fdc765dda0d87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_date_time_parser_8cpp.html#ab5dc0bc1cf120f5c452fdc765dda0d87">XX</a>(ch,  exp_size,  save_to)</td></tr>
+<tr class="separator:ab5dc0bc1cf120f5c452fdc765dda0d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="ab5dc0bc1cf120f5c452fdc765dda0d87" name="ab5dc0bc1cf120f5c452fdc765dda0d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5dc0bc1cf120f5c452fdc765dda0d87">&#9670;&#160;</a></span>XX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ch, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">exp_size, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">save_to&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">case</span> ch: {                                              \</div>
+<div class="line">        <span class="keywordtype">char</span> *end;                                          \</div>
+<div class="line">        <span class="keyword">auto</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>(p_format, exp_size);                 \</div>
+<div class="line">        if (<a class="code hl_define" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a> &gt;= exp_size) {                                \</div>
+<div class="line">            <span class="keywordtype">char</span> buffer[exp_size + 1]{};                    \</div>
+<div class="line">            if (input.read(buffer, exp_size) != exp_size) { \</div>
+<div class="line">                <span class="keywordflow">return</span> std::nullopt;                        \</div>
+<div class="line">            }                                               \</div>
+<div class="line">            save_to = std::strtol(buffer, &amp;end, 10);        \</div>
+<div class="line">            if (*end != 0) {                                \</div>
+<div class="line">                <span class="keywordflow">return</span> std::nullopt;                        \</div>
+<div class="line">            }                                               \</div>
+<div class="line">            p_format += exp_size;                           \</div>
+<div class="line">        } <span class="keywordflow">else</span> {                                            \</div>
+<div class="line">            p_format += <a class="code hl_define" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>;                                  \</div>
+<div class="line">        }                                                   \</div>
+<div class="line">        <span class="keywordflow">break</span>;                                              \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

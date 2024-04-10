@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::service::TcpConnection结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html">TcpConnection</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="structsese_1_1service_1_1_tcp_connection-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::service::TcpConnection结构体 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>TCP 连接  
+ <a href="structsese_1_1service_1_1_tcp_connection.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a9f136078cdd830da96d303afdf770900" id="r_a9f136078cdd830da96d303afdf770900"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html#a9f136078cdd830da96d303afdf770900">~TcpConnection</a> ()=default</td></tr>
+<tr class="separator:a9f136078cdd830da96d303afdf770900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a8c9b88d1f84afcf3885446577be28869" id="r_a8c9b88d1f84afcf3885446577be28869"><td class="memItemLeft" align="right" valign="top">std::atomic_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html#a8c9b88d1f84afcf3885446577be28869">isAsync</a> = false</td></tr>
+<tr class="memdesc:a8c9b88d1f84afcf3885446577be28869"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置此变量表明此连接正在进行异步处理， 遇到对端关闭事件（onClose）时，不进行资源释放处理， 释放操作至少会延迟至写入事件或读取事件（onWrite、onRead）时检测到连接断开处理， 异步操作结束时，应当重新将此标志设置为 false  <br /></td></tr>
+<tr class="separator:a8c9b88d1f84afcf3885446577be28869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a879693cc37ea1fc2e742b77a6e0bd3eb" id="r_a879693cc37ea1fc2e742b77a6e0bd3eb"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html#a879693cc37ea1fc2e742b77a6e0bd3eb">ssl</a> = nullptr</td></tr>
+<tr class="separator:a879693cc37ea1fc2e742b77a6e0bd3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81edbdf9c905c0659fe12fb24e406ea9" id="r_a81edbdf9c905c0659fe12fb24e406ea9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html#a81edbdf9c905c0659fe12fb24e406ea9">event</a> = nullptr</td></tr>
+<tr class="separator:a81edbdf9c905c0659fe12fb24e406ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af845239dccfaffeaf7cdabd8f7aec290" id="r_af845239dccfaffeaf7cdabd8f7aec290"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1service_1_1v1_1_1_timeout_event.html">service::v1::TimeoutEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html#af845239dccfaffeaf7cdabd8f7aec290">timeoutEvent</a> = nullptr</td></tr>
+<tr class="separator:af845239dccfaffeaf7cdabd8f7aec290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad47a6de97493852b85e3f9f9f907eb36" id="r_ad47a6de97493852b85e3f9f9f907eb36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html#ad47a6de97493852b85e3f9f9f907eb36">buffer2read</a> {8192}</td></tr>
+<tr class="separator:ad47a6de97493852b85e3f9f9f907eb36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02da4a7d98672dcf4318504e4317077c" id="r_a02da4a7d98672dcf4318504e4317077c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1service_1_1_tcp_connection.html#a02da4a7d98672dcf4318504e4317077c">buffer2write</a> {8192}</td></tr>
+<tr class="separator:a02da4a7d98672dcf4318504e4317077c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>TCP 连接 </p>
+
+<p class="definition">在文件 <a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a> 第 <a class="el" href="_tcp_transporter_8h_source.html#l00022">22</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a9f136078cdd830da96d303afdf770900" name="a9f136078cdd830da96d303afdf770900"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f136078cdd830da96d303afdf770900">&#9670;&#160;</a></span>~TcpConnection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::service::TcpConnection::~TcpConnection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ad47a6de97493852b85e3f9f9f907eb36" name="ad47a6de97493852b85e3f9f9f907eb36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad47a6de97493852b85e3f9f9f907eb36">&#9670;&#160;</a></span>buffer2read</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> sese::service::TcpConnection::buffer2read {8192}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a> 第 <a class="el" href="_tcp_transporter_8h_source.html#l00036">36</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>{8192};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a02da4a7d98672dcf4318504e4317077c" name="a02da4a7d98672dcf4318504e4317077c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02da4a7d98672dcf4318504e4317077c">&#9670;&#160;</a></span>buffer2write</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_byte_builder.html">io::ByteBuilder</a> sese::service::TcpConnection::buffer2write {8192}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a> 第 <a class="el" href="_tcp_transporter_8h_source.html#l00037">37</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>{8192};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a81edbdf9c905c0659fe12fb24e406ea9" name="a81edbdf9c905c0659fe12fb24e406ea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81edbdf9c905c0659fe12fb24e406ea9">&#9670;&#160;</a></span>event</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1event_1_1_base_event.html">event::BaseEvent</a>* sese::service::TcpConnection::event = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a> 第 <a class="el" href="_tcp_transporter_8h_source.html#l00034">34</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_tcp_transporter_8cpp_source.html#l00225">sese::service::TcpTransporter::postRead()</a> , 以及 <a class="el" href="_tcp_transporter_8cpp_source.html#l00231">sese::service::TcpTransporter::postWrite()</a>.</p>
+
+</div>
+</div>
+<a id="a8c9b88d1f84afcf3885446577be28869" name="a8c9b88d1f84afcf3885446577be28869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c9b88d1f84afcf3885446577be28869">&#9670;&#160;</a></span>isAsync</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic_bool sese::service::TcpConnection::isAsync = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置此变量表明此连接正在进行异步处理， 遇到对端关闭事件（onClose）时，不进行资源释放处理， 释放操作至少会延迟至写入事件或读取事件（onWrite、onRead）时检测到连接断开处理， 异步操作结束时，应当重新将此标志设置为 false </p>
+<p><a class="anchor" id="tcp_connection_delay_close_by_async"></a></p>
+
+<p class="definition">在文件 <a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a> 第 <a class="el" href="_tcp_transporter_8h_source.html#l00031">31</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a879693cc37ea1fc2e742b77a6e0bd3eb" name="a879693cc37ea1fc2e742b77a6e0bd3eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a879693cc37ea1fc2e742b77a6e0bd3eb">&#9670;&#160;</a></span>ssl</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* sese::service::TcpConnection::ssl = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a> 第 <a class="el" href="_tcp_transporter_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af845239dccfaffeaf7cdabd8f7aec290" name="af845239dccfaffeaf7cdabd8f7aec290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af845239dccfaffeaf7cdabd8f7aec290">&#9670;&#160;</a></span>timeoutEvent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1service_1_1v1_1_1_timeout_event.html">service::v1::TimeoutEvent</a>* sese::service::TcpConnection::timeoutEvent = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a> 第 <a class="el" href="_tcp_transporter_8h_source.html#l00035">35</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该结构体的文档由以下文件生成:<ul>
+<li>sese/service/<a class="el" href="_tcp_transporter_8h_source.html">TcpTransporter.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

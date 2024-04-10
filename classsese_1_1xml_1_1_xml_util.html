@@ -1,0 +1,434 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::xml::XmlUtil类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1xml.html">xml</a></li><li class="navelem"><a class="el" href="classsese_1_1xml_1_1_xml_util.html">XmlUtil</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1xml_1_1_xml_util-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::xml::XmlUtil类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>XML 序列化工具类  
+ <a href="classsese_1_1xml_1_1_xml_util.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_xml_util_8h_source.html">XmlUtil.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::xml::XmlUtil 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1xml_1_1_xml_util.png" usemap="#sese::xml::XmlUtil_map" alt=""/>
+  <map id="sese::xml::XmlUtil_map" name="sese::xml::XmlUtil_map">
+<area href="classsese_1_1_not_instantiable.html" title="不可实例化类" alt="sese::NotInstantiable" shape="rect" coords="0,0,126,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a1c5be3827824f13858034516269e7aab" id="r_a1c5be3827824f13858034516269e7aab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#a1c5be3827824f13858034516269e7aab">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td></tr>
+<tr class="separator:a1c5be3827824f13858034516269e7aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49b4585f2fec24c71d1e26e187faf1c7" id="r_a49b4585f2fec24c71d1e26e187faf1c7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#a49b4585f2fec24c71d1e26e187faf1c7">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td></tr>
+<tr class="separator:a49b4585f2fec24c71d1e26e187faf1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a862f14e4e68ba0aa4b635e56753d95b5" id="r_a862f14e4e68ba0aa4b635e56753d95b5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#a862f14e4e68ba0aa4b635e56753d95b5">Tokens</a> = std::queue&lt; std::string &gt;</td></tr>
+<tr class="separator:a862f14e4e68ba0aa4b635e56753d95b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:ae7f6ba6b8d9b19009592ff4696c5ffc1" id="r_ae7f6ba6b8d9b19009592ff4696c5ffc1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#ae7f6ba6b8d9b19009592ff4696c5ffc1">deserialize</a> (const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;input_stream, size_t level) noexcept</td></tr>
+<tr class="separator:ae7f6ba6b8d9b19009592ff4696c5ffc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195c028993998516e6b7fe82df741a8a" id="r_a195c028993998516e6b7fe82df741a8a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#a195c028993998516e6b7fe82df741a8a">deserialize</a> (<a class="el" href="classsese_1_1xml_1_1_xml_util.html#a1c5be3827824f13858034516269e7aab">InputStream</a> *input_stream, size_t level) noexcept</td></tr>
+<tr class="separator:a195c028993998516e6b7fe82df741a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cab8e8373336fafd4c4b2f65d17ba08" id="r_a5cab8e8373336fafd4c4b2f65d17ba08"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#a5cab8e8373336fafd4c4b2f65d17ba08">serialize</a> (const <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;object, const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;output_stream) noexcept</td></tr>
+<tr class="separator:a5cab8e8373336fafd4c4b2f65d17ba08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4dc3c747ffb7c36e36bc4d7dc6ebe4d" id="r_ac4dc3c747ffb7c36e36bc4d7dc6ebe4d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#ac4dc3c747ffb7c36e36bc4d7dc6ebe4d">serialize</a> (const <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;object, <a class="el" href="classsese_1_1xml_1_1_xml_util.html#a49b4585f2fec24c71d1e26e187faf1c7">OutputStream</a> *output_stream) noexcept</td></tr>
+<tr class="separator:ac4dc3c747ffb7c36e36bc4d7dc6ebe4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
+<tr class="memitem:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable" id="r_a56cae6201f07d769ffc3d05c749c7937"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#a56cae6201f07d769ffc3d05c749c7937">NotInstantiable</a> ()=delete</td></tr>
+<tr class="separator:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0447de63059ff64d0e8becf5637297a inherit pub_methods_classsese_1_1_not_instantiable" id="r_ae0447de63059ff64d0e8becf5637297a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#ae0447de63059ff64d0e8becf5637297a">~NotInstantiable</a> ()=default</td></tr>
+<tr class="separator:ae0447de63059ff64d0e8becf5637297a inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af88c4042d8bc4f4cea9d59bfde8389fa inherit pub_methods_classsese_1_1_not_instantiable" id="r_af88c4042d8bc4f4cea9d59bfde8389fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#af88c4042d8bc4f4cea9d59bfde8389fa">NotInstantiable</a> (const <a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;)=delete</td></tr>
+<tr class="separator:af88c4042d8bc4f4cea9d59bfde8389fa inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7477b0374b1cb79bc945bd958c87243 inherit pub_methods_classsese_1_1_not_instantiable" id="r_ab7477b0374b1cb79bc945bd958c87243"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#ab7477b0374b1cb79bc945bd958c87243">operator=</a> (const <a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;)=delete</td></tr>
+<tr class="separator:ab7477b0374b1cb79bc945bd958c87243 inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>XML 序列化工具类 </p>
+
+<p class="definition">在文件 <a class="el" href="_xml_util_8h_source.html">XmlUtil.h</a> 第 <a class="el" href="_xml_util_8h_source.html#l00020">20</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a1c5be3827824f13858034516269e7aab" name="a1c5be3827824f13858034516269e7aab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c5be3827824f13858034516269e7aab">&#9670;&#160;</a></span>InputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_xml_util.html#a1c5be3827824f13858034516269e7aab">sese::xml::XmlUtil::InputStream</a> =  <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_util_8h_source.html">XmlUtil.h</a> 第 <a class="el" href="_xml_util_8h_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a49b4585f2fec24c71d1e26e187faf1c7" name="a49b4585f2fec24c71d1e26e187faf1c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49b4585f2fec24c71d1e26e187faf1c7">&#9670;&#160;</a></span>OutputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_xml_util.html#a49b4585f2fec24c71d1e26e187faf1c7">sese::xml::XmlUtil::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_util_8h_source.html">XmlUtil.h</a> 第 <a class="el" href="_xml_util_8h_source.html#l00023">23</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a862f14e4e68ba0aa4b635e56753d95b5" name="a862f14e4e68ba0aa4b635e56753d95b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a862f14e4e68ba0aa4b635e56753d95b5">&#9670;&#160;</a></span>Tokens</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_xml_util.html#a862f14e4e68ba0aa4b635e56753d95b5">sese::xml::XmlUtil::Tokens</a> =  std::queue&lt;std::string&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_util_8h_source.html">XmlUtil.h</a> 第 <a class="el" href="_xml_util_8h_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ae7f6ba6b8d9b19009592ff4696c5ffc1" name="ae7f6ba6b8d9b19009592ff4696c5ffc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7f6ba6b8d9b19009592ff4696c5ffc1">&#9670;&#160;</a></span>deserialize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> sese::xml::XmlUtil::deserialize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>input_stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>从流中反序列化一个 Xml 元素对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_stream</td><td>输入流 </td></tr>
+    <tr><td class="paramname">level</td><td>反序列化深度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>反序列化失败，否则为成功 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_xml_util_8cpp_source.html">XmlUtil.cpp</a> 第 <a class="el" href="_xml_util_8cpp_source.html#l00008">8</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    8</span>                                                                                         {</div>
+<div class="line"><span class="lineno">    9</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1xml_1_1_xml_util.html#ae7f6ba6b8d9b19009592ff4696c5ffc1">deserialize</a>(input_stream.get(), level);</div>
+<div class="line"><span class="lineno">   10</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a195c028993998516e6b7fe82df741a8a" name="a195c028993998516e6b7fe82df741a8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a195c028993998516e6b7fe82df741a8a">&#9670;&#160;</a></span>deserialize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> sese::xml::XmlUtil::deserialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#a1c5be3827824f13858034516269e7aab">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>input_stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>从流中反序列化一个 Xml 元素对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_stream</td><td>输入流 </td></tr>
+    <tr><td class="paramname">level</td><td>反序列化深度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>反序列化失败，否则为成功 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_xml_util_8cpp_source.html">XmlUtil.cpp</a> 第 <a class="el" href="_xml_util_8cpp_source.html#l00076">76</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                                                {</div>
+<div class="line"><span class="lineno">   77</span>    <a class="code hl_typedef" href="classsese_1_1xml_1_1_xml_util.html#a862f14e4e68ba0aa4b635e56753d95b5">Tokens</a> tokens;</div>
+<div class="line"><span class="lineno">   78</span>    tokenizer(input_stream, tokens);</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> createElement(tokens, level, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   80</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5cab8e8373336fafd4c4b2f65d17ba08" name="a5cab8e8373336fafd4c4b2f65d17ba08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cab8e8373336fafd4c4b2f65d17ba08">&#9670;&#160;</a></span>serialize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::xml::XmlUtil::serialize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>output_stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>向流中序列化一个 Xml 元素对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>待序列化对象 </td></tr>
+    <tr><td class="paramname">output_stream</td><td>待输出流 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_xml_util_8cpp_source.html">XmlUtil.cpp</a> 第 <a class="el" href="_xml_util_8cpp_source.html#l00012">12</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>                                                                                               {</div>
+<div class="line"><span class="lineno">   13</span>    <a class="code hl_function" href="classsese_1_1xml_1_1_xml_util.html#a5cab8e8373336fafd4c4b2f65d17ba08">serialize</a>(<span class="keywordtype">object</span>, output_stream.get());</div>
+<div class="line"><span class="lineno">   14</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac4dc3c747ffb7c36e36bc4d7dc6ebe4d" name="ac4dc3c747ffb7c36e36bc4d7dc6ebe4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4dc3c747ffb7c36e36bc4d7dc6ebe4d">&#9670;&#160;</a></span>serialize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::xml::XmlUtil::serialize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1xml_1_1_xml_util.html#a49b4585f2fec24c71d1e26e187faf1c7">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output_stream</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>向流中序列化一个 Xml 元素对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>待序列化对象 </td></tr>
+    <tr><td class="paramname">output_stream</td><td>待输出流 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_xml_util_8cpp_source.html">XmlUtil.cpp</a> 第 <a class="el" href="_xml_util_8cpp_source.html#l00224">224</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  224</span>                                                                               {</div>
+<div class="line"><span class="lineno">  225</span>    <span class="keyword">const</span> <span class="keyword">auto</span> NAME = <span class="keywordtype">object</span>-&gt;getName();</div>
+<div class="line"><span class="lineno">  226</span>    <span class="keyword">const</span> <span class="keyword">auto</span> ATTRIBUTES = <span class="keywordtype">object</span>-&gt;getAttributes();</div>
+<div class="line"><span class="lineno">  227</span>    <span class="keyword">const</span> <span class="keyword">auto</span> VALUE = <span class="keywordtype">object</span>-&gt;getValue();</div>
+<div class="line"><span class="lineno">  228</span>    stream-&gt;write(<span class="stringliteral">&quot;&lt;&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  229</span>    stream-&gt;write(NAME.c_str(), NAME.length());</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (!ATTRIBUTES.empty()) {</div>
+<div class="line"><span class="lineno">  232</span>        <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) attr: ATTRIBUTES) {</div>
+<div class="line"><span class="lineno">  233</span>            stream-&gt;write(<span class="stringliteral">&quot; &quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  234</span>            stream-&gt;write(attr.first.c_str(), attr.first.length());</div>
+<div class="line"><span class="lineno">  235</span>            stream-&gt;write(<span class="stringliteral">&quot;=\&quot;&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">  236</span>            stream-&gt;write(attr.second.c_str(), attr.second.length());</div>
+<div class="line"><span class="lineno">  237</span>            stream-&gt;write(<span class="stringliteral">&quot;\&quot;&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  238</span>        }</div>
+<div class="line"><span class="lineno">  239</span>    }</div>
+<div class="line"><span class="lineno">  240</span> </div>
+<div class="line"><span class="lineno">  241</span>    <span class="keywordflow">if</span> (!object-&gt;elements.empty()) {</div>
+<div class="line"><span class="lineno">  242</span>        stream-&gt;write(<span class="stringliteral">&quot;&gt;&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  243</span>        <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<span class="keyword">auto</span>) element: object-&gt;elements) {</div>
+<div class="line"><span class="lineno">  244</span>            <a class="code hl_function" href="classsese_1_1xml_1_1_xml_util.html#a5cab8e8373336fafd4c4b2f65d17ba08">serialize</a>(element, stream);</div>
+<div class="line"><span class="lineno">  245</span>        }</div>
+<div class="line"><span class="lineno">  246</span>        stream-&gt;write(<span class="stringliteral">&quot;&lt;/&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">  247</span>        stream-&gt;write(NAME.c_str(), NAME.length());</div>
+<div class="line"><span class="lineno">  248</span>        stream-&gt;write(<span class="stringliteral">&quot;&gt;&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  249</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  250</span>        <span class="keywordflow">if</span> (VALUE.empty()) {</div>
+<div class="line"><span class="lineno">  251</span>            stream-&gt;write(<span class="stringliteral">&quot;/&gt;&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">  252</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  253</span>            stream-&gt;write(<span class="stringliteral">&quot;&gt;&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  254</span>            stream-&gt;write(VALUE.c_str(), VALUE.length());</div>
+<div class="line"><span class="lineno">  255</span>            stream-&gt;write(<span class="stringliteral">&quot;&lt;/&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">  256</span>            stream-&gt;write(NAME.c_str(), NAME.length());</div>
+<div class="line"><span class="lineno">  257</span>            stream-&gt;write(<span class="stringliteral">&quot;&gt;&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  258</span>        }</div>
+<div class="line"><span class="lineno">  259</span>    }</div>
+<div class="line"><span class="lineno">  260</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/config/xml/<a class="el" href="_xml_util_8h_source.html">XmlUtil.h</a></li>
+<li>sese/config/xml/<a class="el" href="_xml_util_8cpp_source.html">XmlUtil.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

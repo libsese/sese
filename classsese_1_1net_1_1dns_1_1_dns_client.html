@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::net::dns::DnsClient类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1dns.html">dns</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_client.html">DnsClient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1net_1_1dns_1_1_dns_client-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::net::dns::DnsClient类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>DNS 客户端  
+ <a href="classsese_1_1net_1_1dns_1_1_dns_client.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_dns_client_8h_source.html">DnsClient.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a217a9ac4e8a4dfef348bb9f58640a97f" id="r_a217a9ac4e8a4dfef348bb9f58640a97f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_client.html#a217a9ac4e8a4dfef348bb9f58640a97f">resolveSystem</a> (const std::string &amp;domain, int family=AF_INET, int type=0, int protocol=0) noexcept</td></tr>
+<tr class="separator:a217a9ac4e8a4dfef348bb9f58640a97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4402a9922373269adc09279307fe697" id="r_aa4402a9922373269adc09279307fe697"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">sese::net::Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_client.html#aa4402a9922373269adc09279307fe697">resolveCustom</a> (const std::string &amp;domain, const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> &amp;server, int family=AF_INET, int type=0, int protocol=0) noexcept</td></tr>
+<tr class="separator:aa4402a9922373269adc09279307fe697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac21ac182c0a8c1376d8546472aba13c2" id="r_ac21ac182c0a8c1376d8546472aba13c2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">Address::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1dns_1_1_dns_client.html#ac21ac182c0a8c1376d8546472aba13c2">resolveAuto</a> (const std::string &amp;domain, const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> &amp;server, int family=AF_INET, int type=0, int protocol=0) noexcept</td></tr>
+<tr class="separator:ac21ac182c0a8c1376d8546472aba13c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>DNS 客户端 </p>
+
+<p class="definition">在文件 <a class="el" href="_dns_client_8h_source.html">DnsClient.h</a> 第 <a class="el" href="_dns_client_8h_source.html#l00019">19</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="ac21ac182c0a8c1376d8546472aba13c2" name="ac21ac182c0a8c1376d8546472aba13c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac21ac182c0a8c1376d8546472aba13c2">&#9670;&#160;</a></span>resolveAuto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">sese::net::Address::Ptr</a> sese::net::dns::DnsClient::resolveAuto </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>domain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>server</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>family</em> = <code>AF_INET</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>protocol</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>优先使用其他域名解析器、其次使用系统域名解析器 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">domain</td><td>域名 </td></tr>
+    <tr><td class="paramname">server</td><td>DNS 服务器地址 </td></tr>
+    <tr><td class="paramname">family</td><td>协议族 </td></tr>
+    <tr><td class="paramname">type</td><td>类型 </td></tr>
+    <tr><td class="paramname">protocol</td><td>协议 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>IP 地址 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>查找失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_dns_client_8cpp_source.html">DnsClient.cpp</a> 第 <a class="el" href="_dns_client_8cpp_source.html#l00076">76</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                                                                                                                   {</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keyword">auto</span> result = <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_client.html#aa4402a9922373269adc09279307fe697">resolveCustom</a>(domain, server, family, type, protocol);</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span> (result) {</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span>    result = <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_client.html#a217a9ac4e8a4dfef348bb9f58640a97f">resolveSystem</a>(domain, family, type, protocol);</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">if</span> (result) {</div>
+<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   86</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa4402a9922373269adc09279307fe697" name="aa4402a9922373269adc09279307fe697"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4402a9922373269adc09279307fe697">&#9670;&#160;</a></span>resolveCustom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">sese::net::Address::Ptr</a> sese::net::dns::DnsClient::resolveCustom </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>domain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">IPAddress::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>server</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>family</em> = <code>AF_INET</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>protocol</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>使用其他域名解析器 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">domain</td><td>域名 </td></tr>
+    <tr><td class="paramname">server</td><td>DNS 服务器地址 </td></tr>
+    <tr><td class="paramname">family</td><td>协议族 </td></tr>
+    <tr><td class="paramname">type</td><td>类型 </td></tr>
+    <tr><td class="paramname">protocol</td><td>协议 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>IP 地址 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>查找失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_dns_client_8cpp_source.html">DnsClient.cpp</a> 第 <a class="el" href="_dns_client_8cpp_source.html#l00014">14</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>                                                                                                                                                     {</div>
+<div class="line"><span class="lineno">   15</span>    <span class="keyword">auto</span> sock = <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket::socket</a>(server-&gt;getFamily(), SOCK_DGRAM, IPPROTO_IP);</div>
+<div class="line"><span class="lineno">   16</span>    <span class="keyword">auto</span> socket = <a class="code hl_class" href="classsese_1_1net_1_1_socket.html" title="Native Socket 类">sese::net::Socket</a>(sock, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   17</span>    <span class="keyword">auto</span> expect_type = family == AF_INET ? <a class="code hl_define" href="_frame_header_8h.html#a4feff532b9921d33a5808ad60160e61c">SESE_DNS_QR_TYPE_A</a> : <a class="code hl_define" href="_frame_header_8h.html#adc47dd0a6ae844f6a8113801d150ea2d">SESE_DNS_QR_TYPE_AAAA</a>;</div>
+<div class="line"><span class="lineno">   18</span> </div>
+<div class="line"><span class="lineno">   19</span>    std::random_device device;</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keyword">auto</span> engine = std::default_random_engine((uint32_t) device());</div>
+<div class="line"><span class="lineno">   21</span>    std::uniform_int_distribution&lt;uint16_t&gt; dis(1, UINT16_MAX);</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>    <span class="keyword">auto</span> <span class="keywordtype">id</span> = dis(engine);</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_struct" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html" title="帧头信息">sese::net::dns::FrameHeaderInfo</a> info{};</div>
+<div class="line"><span class="lineno">   26</span>    info.<a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#aab9cab63e2e7adabee5cc56ffefd99a1">transactionId</a> = id;</div>
+<div class="line"><span class="lineno">   27</span>    info.flags.QR = 0;</div>
+<div class="line"><span class="lineno">   28</span>    info.flags.TC = 0;</div>
+<div class="line"><span class="lineno">   29</span>    info.flags.opcode = 0;</div>
+<div class="line"><span class="lineno">   30</span>    info.flags.RD = 1;</div>
+<div class="line"><span class="lineno">   31</span>    info.flags.RA = 0;</div>
+<div class="line"><span class="lineno">   32</span>    info.flags.rcode = 0;</div>
+<div class="line"><span class="lineno">   33</span>    info.flags.AA = 0;</div>
+<div class="line"><span class="lineno">   34</span>    info.questions = 1;</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    DnsSession session;</div>
+<div class="line"><span class="lineno">   37</span>    session.getQueries().emplace_back(domain, expect_type, <a class="code hl_define" href="_frame_header_8h.html#aa9cf2f7690930da0d9965954505f294d">SESE_DNS_QR_CLASS_IN</a>, 0);</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>    uint8_t buffer[<a class="code hl_variable" href="_config_8h.html#adef322795de1e9ca964d542350bb1167" title="框架 DNS 数据包大小">DNS_PACKAGE_SIZE</a>];</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keyword">auto</span> output = <a class="code hl_class" href="classsese_1_1io_1_1_output_buffer_wrapper.html" title="输出缓存包装器">sese::io::OutputBufferWrapper</a>((<span class="keywordtype">char</span> *) buffer + 12, <span class="keyword">sizeof</span>(buffer) - 12);</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>    <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a367743fd6779474801d15ff974f45757">DnsUtil::encodeFrameHeaderInfo</a>(buffer, info);</div>
+<div class="line"><span class="lineno">   43</span>    <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_util.html#abe31fc0e9517fe82cf184b76f7f57ea4">DnsUtil::encodeQueries</a>(&amp;output, session.getQueries());</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>    socket.send(buffer, 12 + output.getLength(), server, 0);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    <span class="keyword">auto</span> len = socket.recv(buffer, <span class="keyword">sizeof</span>(buffer), server, 0);</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keyword">auto</span> input = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">sese::io::InputBufferWrapper</a>((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer + 12, len - 12);</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>    session.getQueries().clear();</div>
+<div class="line"><span class="lineno">   51</span>    <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_util.html#aa6636db5c606085fa2bcffc1635421c3">DnsUtil::decodeFrameHeaderInfo</a>(buffer, info);</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (info.flags.rcode != <a class="code hl_define" href="_frame_header_8h.html#a68268522cc2a4516e9cd4733903a748f">SESE_DNS_RCODE_NO_ERROR</a>) {</div>
+<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   55</span>    }</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_util.html#aa8c069f5dcaf9a74fee799a3cc80e538">DnsUtil::decodeQueries</a>(info.questions, &amp;input, session.getQueries());</div>
+<div class="line"><span class="lineno">   58</span>    <a class="code hl_function" href="classsese_1_1net_1_1dns_1_1_dns_util.html#a5bac75c285b23644dca072f259f99b68">DnsUtil::decodeAnswers</a>(info.answerPrs, &amp;input, session.getAnswers(), (<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;item: session.getAnswers()) {</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">if</span> (expect_type == item.getType()) {</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keywordflow">if</span> (family == AF_INET) {</div>
+<div class="line"><span class="lineno">   63</span>                <span class="keyword">auto</span> <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = (<span class="keyword">const</span> uint32_t *) item.getData().c_str();</div>
+<div class="line"><span class="lineno">   64</span>                uint32_t addr = <a class="code hl_function" href="_endian_8h.html#adbf79fbea7a031ee08cd875f6115786a">FromBigEndian32</a>(*<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
+<div class="line"><span class="lineno">   65</span>                <span class="keywordflow">return</span> std::make_shared&lt;sese::net::IPv4Address&gt;(addr, 0);</div>
+<div class="line"><span class="lineno">   66</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   67</span>                <span class="keyword">auto</span> <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = (uint8_t *) item.getData().c_str();</div>
+<div class="line"><span class="lineno">   68</span>                <span class="keywordflow">return</span> std::make_shared&lt;sese::net::IPv6Address&gt;(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, 0);</div>
+<div class="line"><span class="lineno">   69</span>            }</div>
+<div class="line"><span class="lineno">   70</span>        }</div>
+<div class="line"><span class="lineno">   71</span>    }</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   74</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_config_8h_source.html#l00132">DNS_PACKAGE_SIZE</a>, <a class="el" href="_endian_8h_source.html#l00068">FromBigEndian32()</a>, <a class="el" href="_dns_session_8h_source.html#l00020">sese::net::dns::DnsSession::getAnswers()</a>, <a class="el" href="_dns_session_8h_source.html#l00019">sese::net::dns::DnsSession::getQueries()</a>, <a class="el" href="_frame_header_8h_source.html#l00055">SESE_DNS_QR_CLASS_IN</a>, <a class="el" href="_frame_header_8h_source.html#l00046">SESE_DNS_QR_TYPE_A</a>, <a class="el" href="_frame_header_8h_source.html#l00051">SESE_DNS_QR_TYPE_AAAA</a>, <a class="el" href="_frame_header_8h_source.html#l00039">SESE_DNS_RCODE_NO_ERROR</a>, <a class="el" href="net_2_socket_8cpp_source.html#l00004">sese::net::Socket::socket()</a> , 以及 <a class="el" href="_frame_header_8h_source.html#l00030">sese::net::dns::FrameHeaderInfo::transactionId</a>.</p>
+
+</div>
+</div>
+<a id="a217a9ac4e8a4dfef348bb9f58640a97f" name="a217a9ac4e8a4dfef348bb9f58640a97f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217a9ac4e8a4dfef348bb9f58640a97f">&#9670;&#160;</a></span>resolveSystem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_address.html#a5df9be83e1eed77cb1368a28e7f340fe">sese::net::Address::Ptr</a> sese::net::dns::DnsClient::resolveSystem </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>domain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>family</em> = <code>AF_INET</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>protocol</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>使用系统的域名解析器 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">domain</td><td>域名 </td></tr>
+    <tr><td class="paramname">family</td><td>协议族 </td></tr>
+    <tr><td class="paramname">type</td><td>类型 </td></tr>
+    <tr><td class="paramname">protocol</td><td>协议 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>IP 地址 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>查找失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_dns_client_8cpp_source.html">DnsClient.cpp</a> 第 <a class="el" href="_dns_client_8cpp_source.html#l00010">10</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                                                                                         {</div>
+<div class="line"><span class="lineno">   11</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1net_1_1_address.html#a544254bd48f66c88cf02abd86d778ffc">Address::lookUpAny</a>(domain, family, type, protocol);</div>
+<div class="line"><span class="lineno">   12</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/net/dns/<a class="el" href="_dns_client_8h_source.html">DnsClient.h</a></li>
+<li>sese/net/dns/<a class="el" href="_dns_client_8cpp_source.html">DnsClient.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

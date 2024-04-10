@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::db::DriverInstance类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1db_1_1_driver_instance-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::db::DriverInstance类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>数据库驱动实例类  
+ <a href="classsese_1_1db_1_1_driver_instance.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_driver_instance_8h_source.html">DriverInstance.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::db::DriverInstance 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1db_1_1_driver_instance.png" usemap="#sese::db::DriverInstance_map" alt=""/>
+  <map id="sese::db::DriverInstance_map" name="sese::db::DriverInstance_map">
+<area href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html" alt="sese::db::impl::MariaDriverInstanceImpl" shape="rect" coords="0,56,246,80"/>
+<area href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html" alt="sese::db::impl::PostgresDriverInstanceImpl" shape="rect" coords="256,56,502,80"/>
+<area href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html" alt="sese::db::impl::SqliteDriverInstanceImpl" shape="rect" coords="512,56,758,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a85be3abcd3cd8c86292965639a208b16" id="r_a85be3abcd3cd8c86292965639a208b16"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a> &gt;</td></tr>
+<tr class="separator:a85be3abcd3cd8c86292965639a208b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a15de255cbeae6dbbeb2710390df97238" id="r_a15de255cbeae6dbbeb2710390df97238"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a15de255cbeae6dbbeb2710390df97238">~DriverInstance</a> () noexcept=default</td></tr>
+<tr class="memdesc:a15de255cbeae6dbbeb2710390df97238"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
+<tr class="separator:a15de255cbeae6dbbeb2710390df97238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c872d805ce3065afc9843f0ee2ce361" id="r_a1c872d805ce3065afc9843f0ee2ce361"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a1c872d805ce3065afc9843f0ee2ce361">executeQuery</a> (const char *sql) noexcept=0</td></tr>
+<tr class="separator:a1c872d805ce3065afc9843f0ee2ce361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a228dbfc67efa358605ff73c720536793" id="r_a228dbfc67efa358605ff73c720536793"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a228dbfc67efa358605ff73c720536793">executeUpdate</a> (const char *sql) noexcept=0</td></tr>
+<tr class="separator:a228dbfc67efa358605ff73c720536793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac59e04041daa62eef70adbbe923a6f3c" id="r_ac59e04041daa62eef70adbbe923a6f3c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#ac59e04041daa62eef70adbbe923a6f3c">createStatement</a> (const char *sql) noexcept=0</td></tr>
+<tr class="separator:ac59e04041daa62eef70adbbe923a6f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b25a40ffc85321d20bd19522976e120" id="r_a5b25a40ffc85321d20bd19522976e120"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a5b25a40ffc85321d20bd19522976e120">getLastError</a> () const noexcept=0</td></tr>
+<tr class="separator:a5b25a40ffc85321d20bd19522976e120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a440896cddef5269a0a80e5010fe6b7d4" id="r_a440896cddef5269a0a80e5010fe6b7d4"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a440896cddef5269a0a80e5010fe6b7d4">getLastErrorMessage</a> () const noexcept=0</td></tr>
+<tr class="separator:a440896cddef5269a0a80e5010fe6b7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28b9a4621f53551ab3156583ead8e2ac" id="r_a28b9a4621f53551ab3156583ead8e2ac"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a28b9a4621f53551ab3156583ead8e2ac">setAutoCommit</a> (bool enable) noexcept=0</td></tr>
+<tr class="separator:a28b9a4621f53551ab3156583ead8e2ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54a3030dbd9dcafe8f14cc437a6ee0d4" id="r_a54a3030dbd9dcafe8f14cc437a6ee0d4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a54a3030dbd9dcafe8f14cc437a6ee0d4">getAutoCommit</a> (bool &amp;status) noexcept=0</td></tr>
+<tr class="separator:a54a3030dbd9dcafe8f14cc437a6ee0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a101cebfab159068ef701980db574b52c" id="r_a101cebfab159068ef701980db574b52c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a101cebfab159068ef701980db574b52c">rollback</a> () noexcept=0</td></tr>
+<tr class="separator:a101cebfab159068ef701980db574b52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57d6ebbec84b20c7183ec1239ff123cc" id="r_a57d6ebbec84b20c7183ec1239ff123cc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a57d6ebbec84b20c7183ec1239ff123cc">commit</a> () noexcept=0</td></tr>
+<tr class="separator:a57d6ebbec84b20c7183ec1239ff123cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11c2e3954833882365a74431ae85417a" id="r_a11c2e3954833882365a74431ae85417a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a11c2e3954833882365a74431ae85417a">getInsertId</a> (int64_t &amp;id) const noexcept=0</td></tr>
+<tr class="separator:a11c2e3954833882365a74431ae85417a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86eb94e26844ebcb016819d2716f6c80" id="r_a86eb94e26844ebcb016819d2716f6c80"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a86eb94e26844ebcb016819d2716f6c80">begin</a> () noexcept=0</td></tr>
+<tr class="separator:a86eb94e26844ebcb016819d2716f6c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>数据库驱动实例类 </p>
+
+<p class="definition">在文件 <a class="el" href="_driver_instance_8h_source.html">DriverInstance.h</a> 第 <a class="el" href="_driver_instance_8h_source.html#l00012">12</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a85be3abcd3cd8c86292965639a208b16" name="a85be3abcd3cd8c86292965639a208b16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85be3abcd3cd8c86292965639a208b16">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">sese::db::DriverInstance::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_driver_instance_8h_source.html">DriverInstance.h</a> 第 <a class="el" href="_driver_instance_8h_source.html#l00014">14</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a15de255cbeae6dbbeb2710390df97238" name="a15de255cbeae6dbbeb2710390df97238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15de255cbeae6dbbeb2710390df97238">&#9670;&#160;</a></span>~DriverInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::db::DriverInstance::~DriverInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>析构函数 </p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a86eb94e26844ebcb016819d2716f6c80" name="a86eb94e26844ebcb016819d2716f6c80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86eb94e26844ebcb016819d2716f6c80">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::DriverInstance::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>事务开启 </p><dl class="section return"><dt>返回</dt><dd>false 开始失败 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#ad18995f1136d428bd29fafc7971b2df7">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a98a8584958e4176bb33e29cdc11210f2">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a0a4e0cdfb9e426ad3f9031e1a349211b">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a57d6ebbec84b20c7183ec1239ff123cc" name="a57d6ebbec84b20c7183ec1239ff123cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57d6ebbec84b20c7183ec1239ff123cc">&#9670;&#160;</a></span>commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::DriverInstance::commit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>事务提交 </p><dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>提交失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a9b93d5004654cec720b14531461b98ea">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4e0d160da5d784f9a761567d0ffdf055">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#ad0a9545fe484cf67194ef484a11539c2">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ac59e04041daa62eef70adbbe923a6f3c" name="ac59e04041daa62eef70adbbe923a6f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac59e04041daa62eef70adbbe923a6f3c">&#9670;&#160;</a></span>createStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a> sese::db::DriverInstance::createStatement </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>创建预处理语句对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>SQL 语句 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>预处理语句对象 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>创建失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#aa27f0972fd6d5045cada5f94059c5831">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a295b90d971b4fbf7197390303d137dc3">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a7a45c30d90c677b789c7f001cae4522d">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a1c872d805ce3065afc9843f0ee2ce361" name="a1c872d805ce3065afc9843f0ee2ce361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c872d805ce3065afc9843f0ee2ce361">&#9670;&#160;</a></span>executeQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a> sese::db::DriverInstance::executeQuery </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>执行查询 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>查询语句 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>查询结果集 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>为查询失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#aef84d356d5b874368588f8f64873d83e">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a181c0123c4c931b7b625b387e93f902f">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a39edc73afb565ca89914fee08fa066c2">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a228dbfc67efa358605ff73c720536793" name="a228dbfc67efa358605ff73c720536793"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a228dbfc67efa358605ff73c720536793">&#9670;&#160;</a></span>executeUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t sese::db::DriverInstance::executeUpdate </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>执行更新 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>更新预计 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>统计更新的行数 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>执行失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a481c5f148391f14b57eff9a4c3e14a37">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a6fd50e96e5344d77073cde88878694ea">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a1edfa0bdd72f4394d80e5a508f35948c">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a54a3030dbd9dcafe8f14cc437a6ee0d4" name="a54a3030dbd9dcafe8f14cc437a6ee0d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54a3030dbd9dcafe8f14cc437a6ee0d4">&#9670;&#160;</a></span>getAutoCommit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::DriverInstance::getAutoCommit </td>
+          <td>(</td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>status</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>查看自动提交是否打开 </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 获取 autoCommit,在使用 postgresql 时建议使用命令行获取该值 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>查看失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#ab9e3a3880e20c9b738e3b2c0d2c6c162">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a3086c1dd5820d502ca4e062ecb45009b">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#aad2158703567d71f6af54df9e52f6036">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a11c2e3954833882365a74431ae85417a" name="a11c2e3954833882365a74431ae85417a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11c2e3954833882365a74431ae85417a">&#9670;&#160;</a></span>getInsertId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::DriverInstance::getInsertId </td>
+          <td>(</td>
+          <td class="paramtype">int64_t &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取自增后的id </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 获取自增 Id，在使用 postgresql 时建议通过命令行使用 SELECT currval(pg_get_serial_sequence('tabName', 'colName')) 进行自增 Id 的获取; </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>获取失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a09862e4bc73f2aae37b9095f12f0f471">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#aa4c1a9977a0e4799a7e4bbb0dcf4530f">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a413a80b4f2153f09f289965dca99f51a">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a5b25a40ffc85321d20bd19522976e120" name="a5b25a40ffc85321d20bd19522976e120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b25a40ffc85321d20bd19522976e120">&#9670;&#160;</a></span>getLastError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int sese::db::DriverInstance::getLastError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a82ad69b66795715b4e9e3b6743e4b3c4">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a88cf873afff7222731ba2e26e7108a97">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a6374d7559156c4a047aa2e3be8e8b718">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a440896cddef5269a0a80e5010fe6b7d4" name="a440896cddef5269a0a80e5010fe6b7d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a440896cddef5269a0a80e5010fe6b7d4">&#9670;&#160;</a></span>getLastErrorMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const char * sese::db::DriverInstance::getLastErrorMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误信息，需要判空 </p><dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#a1ebb39d96f13d6ef7bacbf3e777090b3">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4f545197ac7ed8bdbb761725f6992e9c">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#ae17e446d0836b36dec9bc48123935205">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a101cebfab159068ef701980db574b52c" name="a101cebfab159068ef701980db574b52c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a101cebfab159068ef701980db574b52c">&#9670;&#160;</a></span>rollback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::DriverInstance::rollback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>事务回滚 </p><dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>回滚失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#aee8504fd5f25ba0e085fae2d66d0e979">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a1f8e79b375c352637a439cc250f5f5e3">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a35a469dcfe57fe19a199d806d47362c5">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a28b9a4621f53551ab3156583ead8e2ac" name="a28b9a4621f53551ab3156583ead8e2ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28b9a4621f53551ab3156583ead8e2ac">&#9670;&#160;</a></span>setAutoCommit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::DriverInstance::setAutoCommit </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置事务自动提交 </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 设置 autocommit，且 autoCommit 属性为全局级，在使用 postgresql 时建议使用 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a86eb94e26844ebcb016819d2716f6c80">begin()</a> 开启事务 </dd>
+<dd>
+因官方不支持 sqlite3 设置 autocommit，在使用 sqlite 时建议使用 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a86eb94e26844ebcb016819d2716f6c80">begin()</a> 开启事务 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>设置自动提交 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>设置失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_driver_instance_impl.html#af54508b9bf4aaa491889711f6665d535">sese::db::impl::MariaDriverInstanceImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a7065a54c00e0df73d56319d8fd650d28">sese::db::impl::PostgresDriverInstanceImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_driver_instance_impl.html#a5107ab0c30f740a8b4e591fd7773b925">sese::db::impl::SqliteDriverInstanceImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/db/<a class="el" href="_driver_instance_8h_source.html">DriverInstance.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

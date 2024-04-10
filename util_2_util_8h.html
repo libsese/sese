@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/util/Util.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">Util.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>工具杂项函数  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_config_8h_source.html">sese/Config.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_input_stream_8h_source.html">sese/io/InputStream.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_output_stream_8h_source.html">sese/io/OutputStream.h</a>&quot;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+</div>
+<p><a href="util_2_util_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_str_cmp.html">sese::StrCmp</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">字符比较器  <a href="structsese_1_1_str_cmp.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_str_cmp_i.html">sese::StrCmpI</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">字符比较器（忽略大小写）  <a href="structsese_1_1_str_cmp_i.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacesese" id="r_namespacesese"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html">sese</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ab9c344524c8e81a0aad0352329abaa24" id="r_ab9c344524c8e81a0aad0352329abaa24"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">CheckRange</a>(x,  max)&#160;&#160;&#160;((unsigned int) (x) &lt; (max))</td></tr>
+<tr class="memdesc:ab9c344524c8e81a0aad0352329abaa24"><td class="mdescLeft">&#160;</td><td class="mdescRight">更快速的边界检查 - [0, max)  <br /></td></tr>
+<tr class="separator:ab9c344524c8e81a0aad0352329abaa24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5377339bff575301da756d2f685a510" id="r_af5377339bff575301da756d2f685a510"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_2_util_8h.html#af5377339bff575301da756d2f685a510">CheckRangeBetween</a>(x,  min,  max)&#160;&#160;&#160;(((x) - (min)) | ((max) - (x)) &gt;= 0)</td></tr>
+<tr class="memdesc:af5377339bff575301da756d2f685a510"><td class="mdescLeft">&#160;</td><td class="mdescRight">更快速的边界检查 - [min, max]  <br /></td></tr>
+<tr class="separator:af5377339bff575301da756d2f685a510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:af76bcde45079eb9f6de3201bf6d825b1" id="r_af76bcde45079eb9f6de3201bf6d825b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1">sese::strcmp</a> (char const *lv, char const *rv) noexcept</td></tr>
+<tr class="separator:af76bcde45079eb9f6de3201bf6d825b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf55c4521a0bbe4bd02595161d2fc9cd" id="r_aaf55c4521a0bbe4bd02595161d2fc9cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase</a> (char const *lv, char const *rv) noexcept</td></tr>
+<tr class="separator:aaf55c4521a0bbe4bd02595161d2fc9cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6122cf4dd9b32a7c8a00112c45639f37" id="r_a6122cf4dd9b32a7c8a00112c45639f37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">sese::isSpace</a> (char ch) noexcept</td></tr>
+<tr class="separator:a6122cf4dd9b32a7c8a00112c45639f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab14e5e23a63f2107c457534c877646a8" id="r_ab14e5e23a63f2107c457534c877646a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#ab14e5e23a63f2107c457534c877646a8">sese::getLevelString</a> (Level level) noexcept</td></tr>
+<tr class="separator:ab14e5e23a63f2107c457534c877646a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c52b4c131447df3e4b83a9a7451ee97" id="r_a7c52b4c131447df3e4b83a9a7451ee97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#a7c52b4c131447df3e4b83a9a7451ee97">sese::findFirstAt</a> (const char *str, char ch)</td></tr>
+<tr class="separator:a7c52b4c131447df3e4b83a9a7451ee97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac383eba57816760f6f2c997d7345143" id="r_aac383eba57816760f6f2c997d7345143"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sese::sleep</a> (uint32_t second)</td></tr>
+<tr class="separator:aac383eba57816760f6f2c997d7345143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a5605fe9c056879ab684e6fa8e2c460" id="r_a1a5605fe9c056879ab684e6fa8e2c460"><td class="memTemplParams" colspan="2">template&lt;class REP , class PERIOD &gt; </td></tr>
+<tr class="memitem:a1a5605fe9c056879ab684e6fa8e2c460"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese.html#a1a5605fe9c056879ab684e6fa8e2c460">sese::sleep</a> (const std::chrono::duration&lt; REP, PERIOD &gt; &amp;duration)</td></tr>
+<tr class="separator:a1a5605fe9c056879ab684e6fa8e2c460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1833da64507c8e59f6799b93d2504ec6" id="r_a1833da64507c8e59f6799b93d2504ec6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">sese::getErrorString</a> (int64_t error=errno)</td></tr>
+<tr class="separator:a1833da64507c8e59f6799b93d2504ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e35a3f44b1c1dd95685d82185df166" id="r_ab5e35a3f44b1c1dd95685d82185df166"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#ab5e35a3f44b1c1dd95685d82185df166">sese::getErrorCode</a> ()</td></tr>
+<tr class="separator:ab5e35a3f44b1c1dd95685d82185df166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa562f1f629706a4851b840247fa1b5a0" id="r_aa562f1f629706a4851b840247fa1b5a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53">API</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html#aa562f1f629706a4851b840247fa1b5a0">sese::streamMove</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> *out, <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a> *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, size_t <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>) noexcept</td></tr>
+<tr class="separator:aa562f1f629706a4851b840247fa1b5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0c7e6e475d4dd6b5f4dd0f04be4fbfa" id="r_aa0c7e6e475d4dd6b5f4dd0f04be4fbfa"><td class="memTemplParams" colspan="2">template&lt;typename TP &gt; </td></tr>
+<tr class="memitem:aa0c7e6e475d4dd6b5f4dd0f04be4fbfa"><td class="memTemplItemLeft" align="right" valign="top">std::time_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="util_2_util_8h.html#aa0c7e6e475d4dd6b5f4dd0f04be4fbfa">to_time_t</a> (TP tp)</td></tr>
+<tr class="memdesc:aa0c7e6e475d4dd6b5f4dd0f04be4fbfa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t">https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t</a>  <br /></td></tr>
+<tr class="separator:aa0c7e6e475d4dd6b5f4dd0f04be4fbfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedfb30d135e80a656599eae70116ec74" id="r_aedfb30d135e80a656599eae70116ec74"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_2_util_8h.html#aedfb30d135e80a656599eae70116ec74">getSpecificVersion</a> ()</td></tr>
+<tr class="separator:aedfb30d135e80a656599eae70116ec74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>工具杂项函数 </p>
+<dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022年3月28日 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="util_2_util_8h_source.html">Util.h</a> 中定义.</p>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="ab9c344524c8e81a0aad0352329abaa24" name="ab9c344524c8e81a0aad0352329abaa24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9c344524c8e81a0aad0352329abaa24">&#9670;&#160;</a></span>CheckRange</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CheckRange</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">max&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((unsigned int) (x) &lt; (max))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更快速的边界检查 - [0, max) </p>
+
+<p class="definition">在文件 <a class="el" href="util_2_util_8h_source.html">Util.h</a> 第 <a class="el" href="util_2_util_8h_source.html#l00135">135</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af5377339bff575301da756d2f685a510" name="af5377339bff575301da756d2f685a510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5377339bff575301da756d2f685a510">&#9670;&#160;</a></span>CheckRangeBetween</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CheckRangeBetween</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">min, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">max&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(((x) - (min)) | ((max) - (x)) &gt;= 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>更快速的边界检查 - [min, max] </p>
+
+<p class="definition">在文件 <a class="el" href="util_2_util_8h_source.html">Util.h</a> 第 <a class="el" href="util_2_util_8h_source.html#l00140">140</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="aedfb30d135e80a656599eae70116ec74" name="aedfb30d135e80a656599eae70116ec74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedfb30d135e80a656599eae70116ec74">&#9670;&#160;</a></span>getSpecificVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * getSpecificVersion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>获取详细的信息(C 接口) </p><dl class="section return"><dt>返回</dt><dd>版本信息字符串 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="util_2_util_8cpp_source.html">Util.cpp</a> 第 <a class="el" href="util_2_util_8cpp_source.html#l00091">91</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>                                 {</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">return</span> SESE_MAJOR_VERSION <span class="stringliteral">&quot;.&quot;</span> SESE_MINOR_VERSION <span class="stringliteral">&quot;.&quot;</span> SESE_PATCH_VERSION;</div>
+<div class="line"><span class="lineno">   93</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa0c7e6e475d4dd6b5f4dd0f04be4fbfa" name="aa0c7e6e475d4dd6b5f4dd0f04be4fbfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0c7e6e475d4dd6b5f4dd0f04be4fbfa">&#9670;&#160;</a></span>to_time_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TP &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::time_t to_time_t </td>
+          <td>(</td>
+          <td class="paramtype">TP&#160;</td>
+          <td class="paramname"><em>tp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a href="https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t">https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t</a> </p>
+
+<p class="definition">在文件 <a class="el" href="util_2_util_8h_source.html">Util.h</a> 第 <a class="el" href="util_2_util_8h_source.html#l00115">115</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>                           {</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keyword">using namespace </span>std::chrono;</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keyword">auto</span> sctp = time_point_cast&lt;system_clock::duration&gt;(tp - TP::clock::now() + system_clock::now());</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">return</span> system_clock::to_time_t(sctp);</div>
+<div class="line"><span class="lineno">  119</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

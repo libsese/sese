@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/archive/ArchiveWriter.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_29bb00e9166889c104a5f069c0df53dd.html">archive</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">ArchiveWriter.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_file_8h_source.html">sese/io/File.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_archive_writer_8h_source.html">ArchiveWriter.h</a>&quot;</code><br />
+<code>#include &lt;archive.h&gt;</code><br />
+<code>#include &lt;archive_entry.h&gt;</code><br />
+</div>
+<p><a href="_archive_writer_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a7b8003af9a638915bbca18f3896c5eb7" id="r_a7b8003af9a638915bbca18f3896c5eb7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_archive_writer_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>&#160;&#160;&#160;static_cast&lt;struct archive *&gt;(ArchiveWriter::archive)</td></tr>
+<tr class="separator:a7b8003af9a638915bbca18f3896c5eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ab602931610f7c5040357dfd637068e22" id="r_ab602931610f7c5040357dfd637068e22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_archive_writer_8cpp.html#ab602931610f7c5040357dfd637068e22">open</a> (struct archive *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, void *archive)</td></tr>
+<tr class="separator:ab602931610f7c5040357dfd637068e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afed581789a1bfc9131088afbfca5ef46" id="r_afed581789a1bfc9131088afbfca5ef46"><td class="memItemLeft" align="right" valign="top">SESE_ALWAYS_INLINE int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a> (struct archive *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, void *archive, const void *buffer, size_t len)</td></tr>
+<tr class="separator:afed581789a1bfc9131088afbfca5ef46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45c7343a2bb5e3a29cd376963e0483f5" id="r_a45c7343a2bb5e3a29cd376963e0483f5"><td class="memItemLeft" align="right" valign="top">SESE_ALWAYS_INLINE int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_archive_writer_8cpp.html#a45c7343a2bb5e3a29cd376963e0483f5">close</a> (struct archive *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, void *archive)</td></tr>
+<tr class="separator:a45c7343a2bb5e3a29cd376963e0483f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dbec6638bdd9b7108314a9266649c82" id="r_a3dbec6638bdd9b7108314a9266649c82"><td class="memItemLeft" align="right" valign="top">SESE_ALWAYS_INLINE int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a> (struct archive *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, void *archive)</td></tr>
+<tr class="separator:a3dbec6638bdd9b7108314a9266649c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30e23a28134402f94d95be7f917d51fe" id="r_a30e23a28134402f94d95be7f917d51fe"><td class="memItemLeft" align="right" valign="top">SESE_ALWAYS_INLINE const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_archive_writer_8cpp.html#a30e23a28134402f94d95be7f917d51fe">passphrase</a> (struct archive *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, void *archive)</td></tr>
+<tr class="separator:a30e23a28134402f94d95be7f917d51fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a7b8003af9a638915bbca18f3896c5eb7" name="a7b8003af9a638915bbca18f3896c5eb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b8003af9a638915bbca18f3896c5eb7">&#9670;&#160;</a></span>XX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX&#160;&#160;&#160;static_cast&lt;struct archive *&gt;(ArchiveWriter::archive)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00021">21</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a45c7343a2bb5e3a29cd376963e0483f5" name="a45c7343a2bb5e3a29cd376963e0483f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45c7343a2bb5e3a29cd376963e0483f5">&#9670;&#160;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SESE_ALWAYS_INLINE int close </td>
+          <td>(</td>
+          <td class="paramtype">struct archive *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>archive</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00037">37</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>                                                               {</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#a304d9ae2fa50361b27cbcbd47207e150">ArchiveWriter::closeCallback</a>(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_writer.html" title="存档写入器">ArchiveWriter</a> *<span class="keyword">&gt;</span>(archive));</div>
+<div class="line"><span class="lineno">   39</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00288">sese::archive::ArchiveWriter::closeCallback()</a>.</p>
+
+</div>
+</div>
+<a id="a3dbec6638bdd9b7108314a9266649c82" name="a3dbec6638bdd9b7108314a9266649c82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dbec6638bdd9b7108314a9266649c82">&#9670;&#160;</a></span>free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SESE_ALWAYS_INLINE int free </td>
+          <td>(</td>
+          <td class="paramtype">struct archive *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>archive</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00041">41</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>                                                              {</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#a55a2521844147b693d324e5327a2752c">ArchiveWriter::freeCallback</a>(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_writer.html" title="存档写入器">ArchiveWriter</a> *<span class="keyword">&gt;</span>(archive));</div>
+<div class="line"><span class="lineno">   43</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00292">sese::archive::ArchiveWriter::freeCallback()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00138">sese::archive::ArchiveWriter::begin()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00087">sese::db::impl::MariaPreparedStatementImpl::freeBindStruct()</a>, <a class="el" href="_i_o_buf_8cpp_source.html#l00011">sese::iocp::IOBufNode::operator delete()</a>, <a class="el" href="_s_string_8cpp_source.html#l00363">sstr::SString::operator+=()</a>, <a class="el" href="_s_string_8cpp_source.html#l00379">sstr::SString::operator+=()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00132">sese::db::impl::MariaPreparedStatementImpl::reinterpret()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00198">sese::db::impl::MariaPreparedStatementImpl::setDateTime()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00160">sese::db::impl::SqlitePreparedStatementImpl::setDateTime()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00094">sese::db::impl::SqlitePreparedStatementImpl::setDouble()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00104">sese::db::impl::SqlitePreparedStatementImpl::setFloat()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00124">sese::db::impl::SqlitePreparedStatementImpl::setInteger()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00114">sese::db::impl::SqlitePreparedStatementImpl::setLong()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00184">sese::db::impl::MariaPreparedStatementImpl::setNull()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00150">sese::db::impl::SqlitePreparedStatementImpl::setNull()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00171">sese::db::impl::MariaPreparedStatementImpl::setText()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00134">sese::db::impl::SqlitePreparedStatementImpl::setText()</a>, <a class="el" href="darwin_2system_2_stack_info_8cpp_source.html#l00027">sese::system::StackInfo::StackInfo()</a>, <a class="el" href="_buffered_input_stream_8cpp_source.html#l00013">sese::io::BufferedInputStream::~BufferedInputStream()</a>, <a class="el" href="_buffered_output_stream_8cpp_source.html#l00013">sese::io::BufferedOutputStream::~BufferedOutputStream()</a>, <a class="el" href="_buffered_stream_8cpp_source.html#l00014">sese::io::BufferedStream::~BufferedStream()</a>, <a class="el" href="_i_o_buf_8cpp_source.html#l00020">sese::iocp::IOBufNode::~IOBufNode()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00020">sese::db::impl::MariaPreparedStatementImpl::~MariaPreparedStatementImpl()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00016">sese::_windows::iocp::v1::NativeContext::~NativeContext()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00035">sese::db::impl::PostgresPreparedStatementImpl::~PostgresPreparedStatementImpl()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00062">sese::db::impl::SqlitePreparedStatementImpl::~SqlitePreparedStatementImpl()</a> , 以及 <a class="el" href="_s_string_8cpp_source.html#l00230">sstr::SString::~SString()</a>.</p>
+
+</div>
+</div>
+<a id="ab602931610f7c5040357dfd637068e22" name="ab602931610f7c5040357dfd637068e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab602931610f7c5040357dfd637068e22">&#9670;&#160;</a></span>open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int open </td>
+          <td>(</td>
+          <td class="paramtype">struct archive *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>archive</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00025">25</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>                                                  {</div>
+<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#a0ba5337b6f212c524600c0bde50a54c5">ArchiveWriter::openCallback</a>(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_writer.html" title="存档写入器">ArchiveWriter</a> *<span class="keyword">&gt;</span>(archive));</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00280">sese::archive::ArchiveWriter::openCallback()</a>.</p>
+
+</div>
+</div>
+<a id="a30e23a28134402f94d95be7f917d51fe" name="a30e23a28134402f94d95be7f917d51fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30e23a28134402f94d95be7f917d51fe">&#9670;&#160;</a></span>passphrase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SESE_ALWAYS_INLINE const char * passphrase </td>
+          <td>(</td>
+          <td class="paramtype">struct archive *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>archive</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00045">45</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>                                                                           {</div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#af63133e3778385af9d8c3be77c85baa4">ArchiveWriter::passphraseCallback</a>(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_writer.html" title="存档写入器">ArchiveWriter</a> *<span class="keyword">&gt;</span>(archive));</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00296">sese::archive::ArchiveWriter::passphraseCallback()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00049">sese::archive::ArchiveWriter::ArchiveWriter()</a>.</p>
+
+</div>
+</div>
+<a id="afed581789a1bfc9131088afbfca5ef46" name="afed581789a1bfc9131088afbfca5ef46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afed581789a1bfc9131088afbfca5ef46">&#9670;&#160;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SESE_ALWAYS_INLINE int64_t write </td>
+          <td>(</td>
+          <td class="paramtype">struct archive *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>archive</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_writer_8cpp_source.html">ArchiveWriter.cpp</a> 第 <a class="el" href="_archive_writer_8cpp_source.html#l00032">32</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>                                                                                                   {</div>
+<div class="line"><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1archive_1_1_archive_writer.html#a3cd6fe9dcb60a5e9bbcc1ef388af8d9e">ArchiveWriter::writeCallback</a>(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1archive_1_1_archive_writer.html" title="存档写入器">ArchiveWriter</a> *<span class="keyword">&gt;</span>(archive), buffer, len);</div>
+<div class="line"><span class="lineno">   35</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00284">sese::archive::ArchiveWriter::writeCallback()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_archive_writer_8cpp_source.html#l00138">sese::archive::ArchiveWriter::begin()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00026">sese::archive::ArchiveReader::extract()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00126">sese::service::TcpTransporter::onWrite()</a> , 以及 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00047">sese::io::AbstractFixedBuffer::write()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

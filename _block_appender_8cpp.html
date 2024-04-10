@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/record/BlockAppender.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">BlockAppender.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_block_appender_8h_source.html">sese/record/BlockAppender.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_date_time_formatter_8h_source.html">sese/text/DateTimeFormatter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_locker_8h_source.html">sese/thread/Locker.h</a>&quot;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+</div>
+<p><a href="_block_appender_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a4cfa1e16159bf28fd9de69d68f3138b2" id="r_a4cfa1e16159bf28fd9de69d68f3138b2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_block_appender_8cpp.html#a4cfa1e16159bf28fd9de69d68f3138b2">getDateTimeString</a> ()</td></tr>
+<tr class="separator:a4cfa1e16159bf28fd9de69d68f3138b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="a4cfa1e16159bf28fd9de69d68f3138b2" name="a4cfa1e16159bf28fd9de69d68f3138b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cfa1e16159bf28fd9de69d68f3138b2">&#9670;&#160;</a></span>getDateTimeString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string getDateTimeString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_block_appender_8cpp_source.html">BlockAppender.cpp</a> 第 <a class="el" href="_block_appender_8cpp_source.html#l00010">10</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>                                     {</div>
+<div class="line"><span class="lineno">   11</span>    <span class="keyword">auto</span> date_time = <a class="code hl_function" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">DateTime::now</a>();</div>
+<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">text::DateTimeFormatter::format</a>(date_time, <a class="code hl_variable" href="_config_8h.html#ae1047874c1ad993ee6286a6ab9bad583" title="日志输出文件名称匹配模式">RECORD_DEFAULT_FILE_TIME_PATTERN</a>) + <span class="stringliteral">&quot;.log&quot;</span>;</div>
+<div class="line"><span class="lineno">   13</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>, <a class="el" href="_date_time_8cpp_source.html#l00012">sese::DateTime::now()</a> , 以及 <a class="el" href="_config_8h_source.html#l00090">RECORD_DEFAULT_FILE_TIME_PATTERN</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_block_appender_8cpp_source.html#l00015">sese::record::BlockAppender::BlockAppender()</a> , 以及 <a class="el" href="_block_appender_8cpp_source.html#l00031">sese::record::BlockAppender::dump()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

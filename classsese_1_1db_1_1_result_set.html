@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::db::ResultSet类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1_result_set.html">ResultSet</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1db_1_1_result_set-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::db::ResultSet类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>查询结果集  
+ <a href="classsese_1_1db_1_1_result_set.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_result_set_8h_source.html">ResultSet.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::db::ResultSet 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1db_1_1_result_set.png" usemap="#sese::db::ResultSet_map" alt=""/>
+  <map id="sese::db::ResultSet_map" name="sese::db::ResultSet_map">
+<area href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html" alt="sese::db::impl::MariaResultSetImpl" shape="rect" coords="0,56,219,80"/>
+<area href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html" alt="sese::db::impl::MariaStmtResultSet" shape="rect" coords="229,56,448,80"/>
+<area href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html" alt="sese::db::impl::PostgresResultSetImpl" shape="rect" coords="458,56,677,80"/>
+<area href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html" alt="sese::db::impl::SqliteResultSetImpl" shape="rect" coords="687,56,906,80"/>
+<area href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html" alt="sese::db::impl::SqliteStmtResultSetImpl" shape="rect" coords="916,56,1135,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:aace49ec362b911b274d378a3a2f1c2aa" id="r_aace49ec362b911b274d378a3a2f1c2aa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_result_set.html">ResultSet</a> &gt;</td></tr>
+<tr class="separator:aace49ec362b911b274d378a3a2f1c2aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aec49cdfc596a52b30586d36330f70264" id="r_aec49cdfc596a52b30586d36330f70264"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#aec49cdfc596a52b30586d36330f70264">~ResultSet</a> () noexcept=default</td></tr>
+<tr class="memdesc:aec49cdfc596a52b30586d36330f70264"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
+<tr class="separator:aec49cdfc596a52b30586d36330f70264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaddeaeceb01003e51a360da5cafc646" id="r_adaddeaeceb01003e51a360da5cafc646"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#adaddeaeceb01003e51a360da5cafc646">reset</a> () noexcept=0</td></tr>
+<tr class="memdesc:adaddeaeceb01003e51a360da5cafc646"><td class="mdescLeft">&#160;</td><td class="mdescRight">定位首条查询记录  <br /></td></tr>
+<tr class="separator:adaddeaeceb01003e51a360da5cafc646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d65c2cadbb0382f4019c52e2d33523" id="r_ae6d65c2cadbb0382f4019c52e2d33523"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#ae6d65c2cadbb0382f4019c52e2d33523">next</a> () noexcept=0</td></tr>
+<tr class="memdesc:ae6d65c2cadbb0382f4019c52e2d33523"><td class="mdescLeft">&#160;</td><td class="mdescRight">定位到下一条记录  <br /></td></tr>
+<tr class="separator:ae6d65c2cadbb0382f4019c52e2d33523"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e656f99c9e5f12805d7e5b590fe710f" id="r_a6e656f99c9e5f12805d7e5b590fe710f"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#a6e656f99c9e5f12805d7e5b590fe710f">getColumns</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a6e656f99c9e5f12805d7e5b590fe710f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取记录列数  <br /></td></tr>
+<tr class="separator:a6e656f99c9e5f12805d7e5b590fe710f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cee3b3394a785050d8f2fdf3fc6ed4f" id="r_a7cee3b3394a785050d8f2fdf3fc6ed4f"><td class="memItemLeft" align="right" valign="top">virtual int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#a7cee3b3394a785050d8f2fdf3fc6ed4f">getInteger</a> (size_t index) const noexcept=0</td></tr>
+<tr class="memdesc:a7cee3b3394a785050d8f2fdf3fc6ed4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">在当前记录中获取一个整型值  <br /></td></tr>
+<tr class="separator:a7cee3b3394a785050d8f2fdf3fc6ed4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a240837690a71c7d0459abd23dcff8f" id="r_a8a240837690a71c7d0459abd23dcff8f"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#a8a240837690a71c7d0459abd23dcff8f">getLong</a> (size_t index) const noexcept=0</td></tr>
+<tr class="memdesc:a8a240837690a71c7d0459abd23dcff8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">在当前记录中获取一个长整型值  <br /></td></tr>
+<tr class="separator:a8a240837690a71c7d0459abd23dcff8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a3ee10d4713b24f70985920b2c47a7d" id="r_a5a3ee10d4713b24f70985920b2c47a7d"><td class="memItemLeft" align="right" valign="top">virtual std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#a5a3ee10d4713b24f70985920b2c47a7d">getString</a> (size_t index) const noexcept=0</td></tr>
+<tr class="memdesc:a5a3ee10d4713b24f70985920b2c47a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">在当前记录中获取一个字符串  <br /></td></tr>
+<tr class="separator:a5a3ee10d4713b24f70985920b2c47a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6de86e2e29172a1b09fb80395c83b179" id="r_a6de86e2e29172a1b09fb80395c83b179"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#a6de86e2e29172a1b09fb80395c83b179">getDouble</a> (size_t index) const noexcept=0</td></tr>
+<tr class="memdesc:a6de86e2e29172a1b09fb80395c83b179"><td class="mdescLeft">&#160;</td><td class="mdescRight">在当前记录中获取一个双精度浮点值  <br /></td></tr>
+<tr class="separator:a6de86e2e29172a1b09fb80395c83b179"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26e848ab49b6c26f962e451c431b1414" id="r_a26e848ab49b6c26f962e451c431b1414"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#a26e848ab49b6c26f962e451c431b1414">getFloat</a> (size_t index) const noexcept=0</td></tr>
+<tr class="memdesc:a26e848ab49b6c26f962e451c431b1414"><td class="mdescLeft">&#160;</td><td class="mdescRight">在当前记录中获取一个单精度浮点值  <br /></td></tr>
+<tr class="separator:a26e848ab49b6c26f962e451c431b1414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ae76db5ab676ccf9bdd5a867501cb7" id="r_a51ae76db5ab676ccf9bdd5a867501cb7"><td class="memItemLeft" align="right" valign="top">virtual std::optional&lt; <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#a51ae76db5ab676ccf9bdd5a867501cb7">getDateTime</a> (size_t index) const noexcept=0</td></tr>
+<tr class="memdesc:a51ae76db5ab676ccf9bdd5a867501cb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">在当前记录中获取一个时间数据结构  <br /></td></tr>
+<tr class="separator:a51ae76db5ab676ccf9bdd5a867501cb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6655f06551ec04340db0427f5590d533" id="r_a6655f06551ec04340db0427f5590d533"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_result_set.html#a6655f06551ec04340db0427f5590d533">isNull</a> (size_t index) const noexcept=0</td></tr>
+<tr class="memdesc:a6655f06551ec04340db0427f5590d533"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断返回的结果是否为空  <br /></td></tr>
+<tr class="separator:a6655f06551ec04340db0427f5590d533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>查询结果集 </p>
+
+<p class="definition">在文件 <a class="el" href="_result_set_8h_source.html">ResultSet.h</a> 第 <a class="el" href="_result_set_8h_source.html#l00016">16</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="aace49ec362b911b274d378a3a2f1c2aa" name="aace49ec362b911b274d378a3a2f1c2aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aace49ec362b911b274d378a3a2f1c2aa">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">sese::db::ResultSet::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1db_1_1_result_set.html">ResultSet</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_result_set_8h_source.html">ResultSet.h</a> 第 <a class="el" href="_result_set_8h_source.html#l00018">18</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aec49cdfc596a52b30586d36330f70264" name="aec49cdfc596a52b30586d36330f70264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec49cdfc596a52b30586d36330f70264">&#9670;&#160;</a></span>~ResultSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::db::ResultSet::~ResultSet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>析构函数 </p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a6e656f99c9e5f12805d7e5b590fe710f" name="a6e656f99c9e5f12805d7e5b590fe710f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e656f99c9e5f12805d7e5b590fe710f">&#9670;&#160;</a></span>getColumns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual size_t sese::db::ResultSet::getColumns </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取记录列数 </p>
+<dl class="section return"><dt>返回</dt><dd>结果集记录的列数 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#a57ac1edeb0e6caaa5cf0ff2e953ddbcb">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a1a7fdba12500dab50d1bfecfeb1a8e9f">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#ab7ecb979ea3682f15f40e98600557350">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#ae8c829efda6f795f74da86a8ae29b051">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#ac84412864f0827680b2ce366439ab41b">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a51ae76db5ab676ccf9bdd5a867501cb7" name="a51ae76db5ab676ccf9bdd5a867501cb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ae76db5ab676ccf9bdd5a867501cb7">&#9670;&#160;</a></span>getDateTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::optional&lt; <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &gt; sese::db::ResultSet::getDateTime </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在当前记录中获取一个时间数据结构 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>时间数据结构 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#a975495d1bd5d54580ae93156bc424b02">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a5675da0f5706f18be6deff873be57573">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#ae3c3d6db80f8c24a4460b019e309dc02">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#add7c3b42688899afee99dc02bfb1b9aa">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#aa2c03080fe233a66c4b1d8a8548b71ce">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a6de86e2e29172a1b09fb80395c83b179" name="a6de86e2e29172a1b09fb80395c83b179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6de86e2e29172a1b09fb80395c83b179">&#9670;&#160;</a></span>getDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual double sese::db::ResultSet::getDouble </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在当前记录中获取一个双精度浮点值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>双精度浮点值 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#ad14f9200625b18ad281147b91fe56d0f">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#ad24818504e9ca1b4a5c9b1204dcc59a7">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a8453d42b10409bae6ff01caf7b27cb8c">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#ab0fa765f0881f53ee2d3018196ab5ccf">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a92268997c2ab856090f7172dc461a906">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a26e848ab49b6c26f962e451c431b1414" name="a26e848ab49b6c26f962e451c431b1414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26e848ab49b6c26f962e451c431b1414">&#9670;&#160;</a></span>getFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float sese::db::ResultSet::getFloat </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在当前记录中获取一个单精度浮点值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>单精度浮点值 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#a8a1318c89fb21b88b40737fa32b205a0">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a01835a96fc9d9174b460f169871869db">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#acd38a8221ebbb8387a62082f98e26a2b">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#a3455d0d76170c768d196862154e0664e">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a7bacc95062f508284606999a625752c6">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a7cee3b3394a785050d8f2fdf3fc6ed4f" name="a7cee3b3394a785050d8f2fdf3fc6ed4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cee3b3394a785050d8f2fdf3fc6ed4f">&#9670;&#160;</a></span>getInteger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int32_t sese::db::ResultSet::getInteger </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在当前记录中获取一个整型值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>整型值 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#a31ce576b324664705ca38f779cc0a4ea">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a1f1945d3366f727b195a4231b878d855">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a6c7f522b9e99182c6bc83225eb927ad3">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#a059c99359dec6e25bf9752ec19700142">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a74159aece207ea0409c1b4f2451fd832">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a8a240837690a71c7d0459abd23dcff8f" name="a8a240837690a71c7d0459abd23dcff8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a240837690a71c7d0459abd23dcff8f">&#9670;&#160;</a></span>getLong()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t sese::db::ResultSet::getLong </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在当前记录中获取一个长整型值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>长整型值 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#a640d3be7c9f15f2c05865bb0e62f4654">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#aa2a37259cfb68d7a116dcf6703cd4042">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a51bf478a02d4785bc5497f6c7da6c4a6">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#a7c86961cb6d4f771693e6f31438bbb40">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a12c55d3bc3b12a09321d53b48709d533">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a5a3ee10d4713b24f70985920b2c47a7d" name="a5a3ee10d4713b24f70985920b2c47a7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3ee10d4713b24f70985920b2c47a7d">&#9670;&#160;</a></span>getString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string_view sese::db::ResultSet::getString </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在当前记录中获取一个字符串 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>字符串 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#a9b2d825efd46d1386b78d37b1f5e1fcf">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a978e94c24f9ba9893257158b392a0b5d">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a4a979ac77ee8226c87cdae023f2a5440">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#a7dd5b837f2ba8b28c073bd3a888b1686">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#af54a599ba6042019236e6908cedb1e0d">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a6655f06551ec04340db0427f5590d533" name="a6655f06551ec04340db0427f5590d533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6655f06551ec04340db0427f5590d533">&#9670;&#160;</a></span>isNull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::ResultSet::isNull </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>判断返回的结果是否为空 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否为空 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#ada7cdd074c16902820bb303ad67d1b14">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a8541ad28bf4e5e1f14ef48377d52f56a">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#a53138c8da7f513bd8532f9c08366de2f">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#ad8c5d168d7a3f725975ae2688ebac89c">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a036a40bdb9d49725c017cef2e7d08556">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ae6d65c2cadbb0382f4019c52e2d33523" name="ae6d65c2cadbb0382f4019c52e2d33523"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6d65c2cadbb0382f4019c52e2d33523">&#9670;&#160;</a></span>next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::ResultSet::next </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>定位到下一条记录 </p>
+<dl class="section return"><dt>返回</dt><dd>是否存在下一条记录 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#ac4ba90722c70037f0249eef184e71d45">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0ce0029d167258433555b57b47a8ca27">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aca56e59ae1e677f1a234a6987fb4ddfd">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#abe1a9c8a547aa63202c66c96ae6ad06d">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a6ae8fa700ca24032c882d9c6eefd33e1">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="adaddeaeceb01003e51a360da5cafc646" name="adaddeaeceb01003e51a360da5cafc646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaddeaeceb01003e51a360da5cafc646">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::db::ResultSet::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>定位首条查询记录 </p>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#a8d5b4ec27089f46ec34d88c198d5e236">sese::db::impl::MariaResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#aa4e4bc2c88c464a9b219489a0ae7adb9">sese::db::impl::MariaStmtResultSet</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#ae43aba7f979d69952a54c0c8296c367f">sese::db::impl::PostgresResultSetImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#ab8fd2cfb8bbb9510cf92bda655ccf943">sese::db::impl::SqliteResultSetImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_stmt_result_set_impl.html#a2e1e400258901438b9f17500284f32f5">sese::db::impl::SqliteStmtResultSetImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/db/<a class="el" href="_result_set_8h_source.html">ResultSet.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

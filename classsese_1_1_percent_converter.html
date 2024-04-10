@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::PercentConverter类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_percent_converter.html">PercentConverter</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1_percent_converter-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::PercentConverter类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>百分号编码转换器  
+ <a href="classsese_1_1_percent_converter.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_percent_converter_8h_source.html">PercentConverter.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::PercentConverter 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1_percent_converter.png" usemap="#sese::PercentConverter_map" alt=""/>
+  <map id="sese::PercentConverter_map" name="sese::PercentConverter_map">
+<area href="classsese_1_1_not_instantiable.html" title="不可实例化类" alt="sese::NotInstantiable" shape="rect" coords="0,0,145,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ae0b86c4c7aac72321808915caa0f15a7" id="r_ae0b86c4c7aac72321808915caa0f15a7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_percent_converter.html#ae0b86c4c7aac72321808915caa0f15a7">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td></tr>
+<tr class="separator:ae0b86c4c7aac72321808915caa0f15a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a7c482aa66ef22298b31104de5891b76e" id="r_a7c482aa66ef22298b31104de5891b76e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_percent_converter.html#a7c482aa66ef22298b31104de5891b76e">encode</a> (const char *src, const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;dest)</td></tr>
+<tr class="separator:a7c482aa66ef22298b31104de5891b76e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67efd5c30b4203b3dc92dfef3884310c" id="r_a67efd5c30b4203b3dc92dfef3884310c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_percent_converter.html#a67efd5c30b4203b3dc92dfef3884310c">decode</a> (const char *src, const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;dest)</td></tr>
+<tr class="separator:a67efd5c30b4203b3dc92dfef3884310c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ca9d6288128b6d6ff672d973f6fd329" id="r_a5ca9d6288128b6d6ff672d973f6fd329"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_percent_converter.html#a5ca9d6288128b6d6ff672d973f6fd329">encode</a> (const char *src, <a class="el" href="classsese_1_1_percent_converter.html#ae0b86c4c7aac72321808915caa0f15a7">OutputStream</a> *dest)</td></tr>
+<tr class="separator:a5ca9d6288128b6d6ff672d973f6fd329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01974b8044e0fec7a83b0b6f97074b74" id="r_a01974b8044e0fec7a83b0b6f97074b74"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_percent_converter.html#a01974b8044e0fec7a83b0b6f97074b74">decode</a> (const char *src, <a class="el" href="classsese_1_1_percent_converter.html#ae0b86c4c7aac72321808915caa0f15a7">OutputStream</a> *dest)</td></tr>
+<tr class="separator:a01974b8044e0fec7a83b0b6f97074b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37ec439da4531de6459e10194933594d" id="r_a37ec439da4531de6459e10194933594d"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_percent_converter.html#a37ec439da4531de6459e10194933594d">encode</a> (const char *src)</td></tr>
+<tr class="separator:a37ec439da4531de6459e10194933594d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414c0bb931028add3b65c2ee120c9127" id="r_a414c0bb931028add3b65c2ee120c9127"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_percent_converter.html#a414c0bb931028add3b65c2ee120c9127">decode</a> (const char *src)</td></tr>
+<tr class="separator:a414c0bb931028add3b65c2ee120c9127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
+<tr class="memitem:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable" id="r_a56cae6201f07d769ffc3d05c749c7937"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#a56cae6201f07d769ffc3d05c749c7937">NotInstantiable</a> ()=delete</td></tr>
+<tr class="separator:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0447de63059ff64d0e8becf5637297a inherit pub_methods_classsese_1_1_not_instantiable" id="r_ae0447de63059ff64d0e8becf5637297a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#ae0447de63059ff64d0e8becf5637297a">~NotInstantiable</a> ()=default</td></tr>
+<tr class="separator:ae0447de63059ff64d0e8becf5637297a inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af88c4042d8bc4f4cea9d59bfde8389fa inherit pub_methods_classsese_1_1_not_instantiable" id="r_af88c4042d8bc4f4cea9d59bfde8389fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#af88c4042d8bc4f4cea9d59bfde8389fa">NotInstantiable</a> (const <a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;)=delete</td></tr>
+<tr class="separator:af88c4042d8bc4f4cea9d59bfde8389fa inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7477b0374b1cb79bc945bd958c87243 inherit pub_methods_classsese_1_1_not_instantiable" id="r_ab7477b0374b1cb79bc945bd958c87243"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#ab7477b0374b1cb79bc945bd958c87243">operator=</a> (const <a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;)=delete</td></tr>
+<tr class="separator:ab7477b0374b1cb79bc945bd958c87243 inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>百分号编码转换器 </p>
+
+<p class="definition">在文件 <a class="el" href="_percent_converter_8h_source.html">PercentConverter.h</a> 第 <a class="el" href="_percent_converter_8h_source.html#l00022">22</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="ae0b86c4c7aac72321808915caa0f15a7" name="ae0b86c4c7aac72321808915caa0f15a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b86c4c7aac72321808915caa0f15a7">&#9670;&#160;</a></span>OutputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_percent_converter.html#ae0b86c4c7aac72321808915caa0f15a7">sese::PercentConverter::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">io::OutputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_percent_converter_8h_source.html">PercentConverter.h</a> 第 <a class="el" href="_percent_converter_8h_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a414c0bb931028add3b65c2ee120c9127" name="a414c0bb931028add3b65c2ee120c9127"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414c0bb931028add3b65c2ee120c9127">&#9670;&#160;</a></span>decode() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::PercentConverter::decode </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>解码字符串 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>带解码字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">{}</td><td>解码失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a> 第 <a class="el" href="_percent_converter_8cpp_source.html#l00110">110</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>                                                      {</div>
+<div class="line"><span class="lineno">  111</span>    text::StringBuilder builder;</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordtype">char</span> decode_char;</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordtype">char</span> ch1;</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordtype">char</span> ch2;</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>    <span class="keyword">auto</span> *p = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(src);</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">while</span> (*p != 0) {</div>
+<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">if</span> (*p == <span class="charliteral">&#39;%&#39;</span>) {</div>
+<div class="line"><span class="lineno">  119</span>            ch1 = <a class="code hl_function" href="_percent_converter_8cpp.html#a2285158a824d74c114c3ddc8466e9eb5">getHexChar</a>(p[1]);</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">if</span> (ch1 == <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(-1)) {</div>
+<div class="line"><span class="lineno">  121</span>                <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  122</span>            }</div>
+<div class="line"><span class="lineno">  123</span>            ch2 = <a class="code hl_function" href="_percent_converter_8cpp.html#a2285158a824d74c114c3ddc8466e9eb5">getHexChar</a>(p[2]);</div>
+<div class="line"><span class="lineno">  124</span>            <span class="keywordflow">if</span> (ch2 == <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(-1)) {</div>
+<div class="line"><span class="lineno">  125</span>                <span class="keywordflow">return</span> {};</div>
+<div class="line"><span class="lineno">  126</span>            }</div>
+<div class="line"><span class="lineno">  127</span>            decode_char = ch1 * 0x10 + ch2;</div>
+<div class="line"><span class="lineno">  128</span>            builder.append(decode_char);</div>
+<div class="line"><span class="lineno">  129</span>            p += 3;</div>
+<div class="line"><span class="lineno">  130</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  131</span>            builder.append(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(*p));</div>
+<div class="line"><span class="lineno">  132</span>            p += 1;</div>
+<div class="line"><span class="lineno">  133</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  134</span>        }</div>
+<div class="line"><span class="lineno">  135</span>    }</div>
+<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">return</span> builder.toString();</div>
+<div class="line"><span class="lineno">  137</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="_percent_converter_8cpp_source.html#l00042">getHexChar()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+</div>
+</div>
+<a id="a67efd5c30b4203b3dc92dfef3884310c" name="a67efd5c30b4203b3dc92dfef3884310c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67efd5c30b4203b3dc92dfef3884310c">&#9670;&#160;</a></span>decode() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PercentConverter::decode </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a> 第 <a class="el" href="_percent_converter_8cpp_source.html#l00054">54</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>                                                                          {</div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_percent_converter.html#a67efd5c30b4203b3dc92dfef3884310c">decode</a>(src, dest.get());</div>
+<div class="line"><span class="lineno">   56</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_percent_converter_8cpp_source.html#l00054">decode()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_percent_converter_8cpp_source.html#l00054">decode()</a>.</p>
+
+</div>
+</div>
+<a id="a01974b8044e0fec7a83b0b6f97074b74" name="a01974b8044e0fec7a83b0b6f97074b74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01974b8044e0fec7a83b0b6f97074b74">&#9670;&#160;</a></span>decode() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PercentConverter::decode </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_percent_converter.html#ae0b86c4c7aac72321808915caa0f15a7">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a> 第 <a class="el" href="_percent_converter_8cpp_source.html#l00058">58</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>                                                                 {</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordtype">char</span> decode_char;</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordtype">char</span> ch1;</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordtype">char</span> ch2;</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    <span class="keyword">auto</span> *p = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(src);</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">while</span> (*p != 0) {</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">if</span> (*p == <span class="charliteral">&#39;%&#39;</span>) {</div>
+<div class="line"><span class="lineno">   66</span>            ch1 = <a class="code hl_function" href="_percent_converter_8cpp.html#a2285158a824d74c114c3ddc8466e9eb5">getHexChar</a>(p[1]);</div>
+<div class="line"><span class="lineno">   67</span>            <span class="keywordflow">if</span> (ch1 == <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(-1)) {</div>
+<div class="line"><span class="lineno">   68</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   69</span>            }</div>
+<div class="line"><span class="lineno">   70</span>            ch2 = <a class="code hl_function" href="_percent_converter_8cpp.html#a2285158a824d74c114c3ddc8466e9eb5">getHexChar</a>(p[2]);</div>
+<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">if</span> (ch2 == <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(-1)) {</div>
+<div class="line"><span class="lineno">   72</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   73</span>            }</div>
+<div class="line"><span class="lineno">   74</span>            decode_char = ch1 * 0x10 + ch2;</div>
+<div class="line"><span class="lineno">   75</span>            dest-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>((<span class="keyword">const</span> <span class="keywordtype">void</span> *) &amp;decode_char, 1);</div>
+<div class="line"><span class="lineno">   76</span>            p += 3;</div>
+<div class="line"><span class="lineno">   77</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   78</span>            dest-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(p, 1);</div>
+<div class="line"><span class="lineno">   79</span>            p += 1;</div>
+<div class="line"><span class="lineno">   80</span>        }</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_percent_converter_8cpp_source.html#l00042">getHexChar()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
+
+</div>
+</div>
+<a id="a37ec439da4531de6459e10194933594d" name="a37ec439da4531de6459e10194933594d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37ec439da4531de6459e10194933594d">&#9670;&#160;</a></span>encode() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::PercentConverter::encode </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a> 第 <a class="el" href="_percent_converter_8cpp_source.html#l00085">85</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>                                                      {</div>
+<div class="line"><span class="lineno">   86</span>    text::StringBuilder builder;</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[4]{<span class="charliteral">&#39;%&#39;</span>, 0, 0, 0};</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keyword">auto</span> *p = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(src);</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">while</span> (*p != 0) {</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">if</span> (((*p &amp; 0b1000&#39;0000) &gt;&gt; 7) == 0) {</div>
+<div class="line"><span class="lineno">   91</span>            <span class="keywordflow">if</span> (URL_EXCLUDE_CHARS.count(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(*p))) {</div>
+<div class="line"><span class="lineno">   92</span>                buffer[1] = <a class="code hl_function" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a>(*p / 0x10);</div>
+<div class="line"><span class="lineno">   93</span>                buffer[2] = <a class="code hl_function" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a>(*p % 0x10);</div>
+<div class="line"><span class="lineno">   94</span>                builder.append(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer));</div>
+<div class="line"><span class="lineno">   95</span>                p++;</div>
+<div class="line"><span class="lineno">   96</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   97</span>                builder.append(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(*p));</div>
+<div class="line"><span class="lineno">   98</span>                p++;</div>
+<div class="line"><span class="lineno">   99</span>            }</div>
+<div class="line"><span class="lineno">  100</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  101</span>            buffer[1] = <a class="code hl_function" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a>(*p / 0x10);</div>
+<div class="line"><span class="lineno">  102</span>            buffer[2] = <a class="code hl_function" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a>(*p % 0x10);</div>
+<div class="line"><span class="lineno">  103</span>            builder.append(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(buffer));</div>
+<div class="line"><span class="lineno">  104</span>            p++;</div>
+<div class="line"><span class="lineno">  105</span>        }</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> builder.toString();</div>
+<div class="line"><span class="lineno">  108</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="_percent_converter_8cpp_source.html#l00011">getEncodeChar()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+</div>
+</div>
+<a id="a7c482aa66ef22298b31104de5891b76e" name="a7c482aa66ef22298b31104de5891b76e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c482aa66ef22298b31104de5891b76e">&#9670;&#160;</a></span>encode() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PercentConverter::encode </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a> 第 <a class="el" href="_percent_converter_8cpp_source.html#l00038">38</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>                                                                          {</div>
+<div class="line"><span class="lineno">   39</span>    <a class="code hl_function" href="classsese_1_1_percent_converter.html#a7c482aa66ef22298b31104de5891b76e">encode</a>(src, dest.get());</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_percent_converter_8cpp_source.html#l00038">encode()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_percent_converter_8cpp_source.html#l00038">encode()</a> , 以及 <a class="el" href="_query_string_8cpp_source.html#l00071">sese::net::http::QueryString::toString()</a>.</p>
+
+</div>
+</div>
+<a id="a5ca9d6288128b6d6ff672d973f6fd329" name="a5ca9d6288128b6d6ff672d973f6fd329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ca9d6288128b6d6ff672d973f6fd329">&#9670;&#160;</a></span>encode() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PercentConverter::encode </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_percent_converter.html#ae0b86c4c7aac72321808915caa0f15a7">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a> 第 <a class="el" href="_percent_converter_8cpp_source.html#l00015">15</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>                                                                 {</div>
+<div class="line"><span class="lineno">   16</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[3]{<span class="charliteral">&#39;%&#39;</span>, 0, 0};</div>
+<div class="line"><span class="lineno">   17</span>    <span class="keyword">auto</span> *p = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(src);</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">while</span> (*p != 0) {</div>
+<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">if</span> (((*p &amp; 0b1000&#39;0000) &gt;&gt; 7) == 0) {</div>
+<div class="line"><span class="lineno">   20</span>            <span class="keywordflow">if</span> (URL_EXCLUDE_CHARS.count(<span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(*p))) {</div>
+<div class="line"><span class="lineno">   21</span>                buffer[1] = <a class="code hl_function" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a>(*p / 0x10);</div>
+<div class="line"><span class="lineno">   22</span>                buffer[2] = <a class="code hl_function" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a>(*p % 0x10);</div>
+<div class="line"><span class="lineno">   23</span>                dest-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(buffer, 3);</div>
+<div class="line"><span class="lineno">   24</span>                p++;</div>
+<div class="line"><span class="lineno">   25</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   26</span>                dest-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(p, 1);</div>
+<div class="line"><span class="lineno">   27</span>                p++;</div>
+<div class="line"><span class="lineno">   28</span>            }</div>
+<div class="line"><span class="lineno">   29</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   30</span>            buffer[1] = <a class="code hl_function" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a>(*p / 0x10);</div>
+<div class="line"><span class="lineno">   31</span>            buffer[2] = <a class="code hl_function" href="_percent_converter_8cpp.html#a2e7132e030e9a0264465893f42283763">getEncodeChar</a>(*p % 0x10);</div>
+<div class="line"><span class="lineno">   32</span>            dest-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(buffer, 3);</div>
+<div class="line"><span class="lineno">   33</span>            p++;</div>
+<div class="line"><span class="lineno">   34</span>        }</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_percent_converter_8cpp_source.html#l00011">getEncodeChar()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/convert/<a class="el" href="_percent_converter_8h_source.html">PercentConverter.h</a></li>
+<li>sese/convert/<a class="el" href="_percent_converter_8cpp_source.html">PercentConverter.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

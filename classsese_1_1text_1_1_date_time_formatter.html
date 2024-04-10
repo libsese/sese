@@ -1,0 +1,997 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::text::DateTimeFormatter类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1text.html">text</a></li><li class="navelem"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html">DateTimeFormatter</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
+<a href="#pro-static-attribs">静态 Protected 属性</a> &#124;
+<a href="classsese_1_1text_1_1_date_time_formatter-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::text::DateTimeFormatter类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>日期时间格式化类  
+ <a href="classsese_1_1text_1_1_date_time_formatter.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a63b44e02ed64b429caa33f07abc8bbd5" id="r_a63b44e02ed64b429caa33f07abc8bbd5"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">format</a> (const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;date_time, const std::string &amp;pattern=<a class="el" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee">TIME_DEFAULT_PATTERN</a>)</td></tr>
+<tr class="separator:a63b44e02ed64b429caa33f07abc8bbd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1253fbefb4c7b856e1bd47ebaafc39f8" id="r_a1253fbefb4c7b856e1bd47ebaafc39f8"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#a1253fbefb4c7b856e1bd47ebaafc39f8">format</a> (const <a class="el" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">DateTime::Ptr</a> &amp;date_time, const std::string &amp;pattern=<a class="el" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee">TIME_DEFAULT_PATTERN</a>)</td></tr>
+<tr class="separator:a1253fbefb4c7b856e1bd47ebaafc39f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3908a3fffa546234116ec7af0dc63a1" id="r_af3908a3fffa546234116ec7af0dc63a1"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#af3908a3fffa546234116ec7af0dc63a1">parseFromGreenwich</a> (const std::string &amp;text)</td></tr>
+<tr class="separator:af3908a3fffa546234116ec7af0dc63a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc46251d602830473b472a96b8e103ab" id="r_adc46251d602830473b472a96b8e103ab"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#adc46251d602830473b472a96b8e103ab">parseFromISO8601</a> (const std::string &amp;text)</td></tr>
+<tr class="separator:adc46251d602830473b472a96b8e103ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+静态 Protected 成员函数</h2></td></tr>
+<tr class="memitem:af8d4bbeeb1fc9007b6e599cda89adbe3" id="r_af8d4bbeeb1fc9007b6e599cda89adbe3"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#af8d4bbeeb1fc9007b6e599cda89adbe3">mon2number</a> (const std::string &amp;text)</td></tr>
+<tr class="separator:af8d4bbeeb1fc9007b6e599cda89adbe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+静态 Protected 属性</h2></td></tr>
+<tr class="memitem:ac20351443e085befd71e3e3350f2cd7c" id="r_ac20351443e085befd71e3e3350f2cd7c"><td class="memItemLeft" align="right" valign="top">static const std::map&lt; std::string, uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#ac20351443e085befd71e3e3350f2cd7c">MON_MAP</a></td></tr>
+<tr class="separator:ac20351443e085befd71e3e3350f2cd7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a399eda28b893b513c34e2580cc2e17b2" id="r_a399eda28b893b513c34e2580cc2e17b2"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; std::string, 12 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#a399eda28b893b513c34e2580cc2e17b2">MON_ARRAY</a></td></tr>
+<tr class="separator:a399eda28b893b513c34e2580cc2e17b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adea3a02f1a1e2e111e8c217366fbf024" id="r_adea3a02f1a1e2e111e8c217366fbf024"><td class="memItemLeft" align="right" valign="top">static const std::map&lt; std::string, uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#adea3a02f1a1e2e111e8c217366fbf024">MONTH_MAP</a></td></tr>
+<tr class="separator:adea3a02f1a1e2e111e8c217366fbf024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41c15b695870c0fbdb255f548f4c3af8" id="r_a41c15b695870c0fbdb255f548f4c3af8"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; std::string, 12 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#a41c15b695870c0fbdb255f548f4c3af8">MONTH_ARRAY</a></td></tr>
+<tr class="separator:a41c15b695870c0fbdb255f548f4c3af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e541cbdd004138509f67a4db5372d5e" id="r_a7e541cbdd004138509f67a4db5372d5e"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; std::string, 7 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#a7e541cbdd004138509f67a4db5372d5e">WK_DAY</a></td></tr>
+<tr class="separator:a7e541cbdd004138509f67a4db5372d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc8a8c7c759c27abcd3e1778e4888f2e" id="r_acc8a8c7c759c27abcd3e1778e4888f2e"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; std::string, 7 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1text_1_1_date_time_formatter.html#acc8a8c7c759c27abcd3e1778e4888f2e">WEEK_DAY</a></td></tr>
+<tr class="separator:acc8a8c7c759c27abcd3e1778e4888f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>日期时间格式化类 </p>
+<pre class="fragment">时间格式通配符
+d    一个月中的某天(1-31)
+dd   一个月中的某天(01-31)
+ddd  一周某天的缩写(Mon)
+dddd 一周某天的全称(Monday)
+m    分钟(0-59)
+mm   分钟(00-59)
+M    月份(1-12)
+MM   月份(01-12)
+MMM  月份缩写(Jun)
+MMMM 月份完整名称(June)
+y    年份(0-99)
+yy   年份(00-99)
+yyy  年份(000-999)
+yyyy 年份(0000-9999)
+z    相对于 UTC 偏移量
+h    12小时制(0-11)
+hh   12小时制(00-11)
+H    24小时制(0-23)
+HH   24小时制(00-23)
+t    AM / PM - 可配合 12 小时制使用
+s    秒数(0-59)
+ss   秒数(00-59)
+f    毫秒数(0-999)
+ff   毫秒数(000-999)
+fff  微秒数(0-999)
+ffff 微秒数(000-999)
+%    转义符号
+</pre> 
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a> 第 <a class="el" href="_date_time_formatter_8h_source.html#l00055">55</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a63b44e02ed64b429caa33f07abc8bbd5" name="a63b44e02ed64b429caa33f07abc8bbd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63b44e02ed64b429caa33f07abc8bbd5">&#9670;&#160;</a></span>format() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::text::DateTimeFormatter::format </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;&#160;</td>
+          <td class="paramname"><em>date_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pattern</em> = <code><a class="el" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee">TIME_DEFAULT_PATTERN</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8cpp_source.html">DateTimeFormatter.cpp</a> 第 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">130</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  130</span>                                                                                                  {</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keyword">auto</span> builder = StringBuilder(128);</div>
+<div class="line"><span class="lineno">  132</span>    <span class="keyword">auto</span> input = <a class="code hl_class" href="classsese_1_1io_1_1_input_buffer_wrapper.html" title="输入缓存包装器">sese::io::InputBufferWrapper</a>(pattern.c_str(), pattern.length()); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  133</span> </div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><span class="lineno">  135</span>        <span class="keywordtype">char</span> buffer[5]{};</div>
+<div class="line"><span class="lineno">  136</span>        <span class="keyword">auto</span> len = input.peek(buffer, 4); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">if</span> (len &lt; 1) <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  138</span> </div>
+<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;d&#39;</span>) {</div>
+<div class="line"><span class="lineno">  140</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">::count</a>(<span class="charliteral">&#39;d&#39;</span>, buffer);</div>
+<div class="line"><span class="lineno">  141</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 1) {</div>
+<div class="line"><span class="lineno">  142</span>                builder.append(std::to_string(dateTime.getDays())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  143</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 2) {</div>
+<div class="line"><span class="lineno">  144</span>                <span class="keywordflow">if</span> (dateTime.getDays() &lt; 10) {</div>
+<div class="line"><span class="lineno">  145</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  146</span>                }</div>
+<div class="line"><span class="lineno">  147</span>                builder.append(std::to_string(dateTime.getDays())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  148</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 3) {</div>
+<div class="line"><span class="lineno">  149</span>                builder.append(<a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#a7e541cbdd004138509f67a4db5372d5e">WK_DAY</a>[dateTime.getDayOfWeek()]); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  150</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  151</span>                builder.append(<a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#acc8a8c7c759c27abcd3e1778e4888f2e">WEEK_DAY</a>[dateTime.getDayOfWeek()]); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  152</span>            }</div>
+<div class="line"><span class="lineno">  153</span>            input.trunc(<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  154</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;m&#39;</span>) {</div>
+<div class="line"><span class="lineno">  155</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">::count</a>(<span class="charliteral">&#39;m&#39;</span>, buffer);</div>
+<div class="line"><span class="lineno">  156</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 1) {</div>
+<div class="line"><span class="lineno">  157</span>                builder.append(std::to_string(dateTime.getMinutes())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  158</span>                input.trunc(1);                                        <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  159</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> &gt; 1) {</div>
+<div class="line"><span class="lineno">  160</span>                <span class="keywordflow">if</span> (dateTime.getMinutes() &lt; 10) {</div>
+<div class="line"><span class="lineno">  161</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><span class="lineno">  162</span>                }</div>
+<div class="line"><span class="lineno">  163</span>                builder.append(std::to_string(dateTime.getMinutes())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  164</span>                input.trunc(2);                                        <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  165</span>            }</div>
+<div class="line"><span class="lineno">  166</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;M&#39;</span>) {</div>
+<div class="line"><span class="lineno">  167</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">::count</a>(<span class="charliteral">&#39;M&#39;</span>, buffer);</div>
+<div class="line"><span class="lineno">  168</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 1) {</div>
+<div class="line"><span class="lineno">  169</span>                builder.append(std::to_string(dateTime.getMonths())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  170</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 2) {</div>
+<div class="line"><span class="lineno">  171</span>                <span class="keywordflow">if</span> (dateTime.getMonths() &lt; 10) {</div>
+<div class="line"><span class="lineno">  172</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  173</span>                }</div>
+<div class="line"><span class="lineno">  174</span>                builder.append(std::to_string(dateTime.getMonths())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  175</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 3) {</div>
+<div class="line"><span class="lineno">  176</span>                builder.append(<a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#a399eda28b893b513c34e2580cc2e17b2">MON_ARRAY</a>[dateTime.getMonths() - 1]); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  177</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  178</span>                builder.append(<a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#a41c15b695870c0fbdb255f548f4c3af8">MONTH_ARRAY</a>[dateTime.getMonths() - 1]); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  179</span>            }</div>
+<div class="line"><span class="lineno">  180</span>            input.trunc(<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  181</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;y&#39;</span>) {</div>
+<div class="line"><span class="lineno">  182</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">::count</a>(<span class="charliteral">&#39;y&#39;</span>, buffer);</div>
+<div class="line"><span class="lineno">  183</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 1) {</div>
+<div class="line"><span class="lineno">  184</span>                builder.append(std::to_string(dateTime.getYears() % 100)); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  185</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 2) {</div>
+<div class="line"><span class="lineno">  186</span>                <span class="keyword">auto</span> year = dateTime.getYears() % 100;</div>
+<div class="line"><span class="lineno">  187</span>                <span class="keywordflow">if</span> (year &lt; 10) {</div>
+<div class="line"><span class="lineno">  188</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  189</span>                }</div>
+<div class="line"><span class="lineno">  190</span>                builder.append(std::to_string(year)); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  191</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 3) {</div>
+<div class="line"><span class="lineno">  192</span>                <span class="keyword">auto</span> year = dateTime.getYears() % 1000;</div>
+<div class="line"><span class="lineno">  193</span>                <span class="keywordflow">if</span> (year &lt; 100) {</div>
+<div class="line"><span class="lineno">  194</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  195</span>                }</div>
+<div class="line"><span class="lineno">  196</span>                <span class="keywordflow">if</span> (year &lt; 10) {</div>
+<div class="line"><span class="lineno">  197</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  198</span>                }</div>
+<div class="line"><span class="lineno">  199</span>                builder.append(std::to_string(year)); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  200</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  201</span>                <span class="comment">// 此处时间通常不会小于 10，因为 DateTime 时间戳默认是无符号整数</span></div>
+<div class="line"><span class="lineno">  202</span>                <span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><span class="lineno">  203</span>                <span class="keyword">auto</span> year = dateTime.getYears() % 10000;</div>
+<div class="line"><span class="lineno">  204</span>                <span class="keywordflow">if</span> (year &lt; 1000) {</div>
+<div class="line"><span class="lineno">  205</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><span class="lineno">  206</span>                }</div>
+<div class="line"><span class="lineno">  207</span>                <span class="keywordflow">if</span> (year &lt; 100) {</div>
+<div class="line"><span class="lineno">  208</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><span class="lineno">  209</span>                }</div>
+<div class="line"><span class="lineno">  210</span>                <span class="keywordflow">if</span> (year &lt; 10) {</div>
+<div class="line"><span class="lineno">  211</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><span class="lineno">  212</span>                }</div>
+<div class="line"><span class="lineno">  213</span>                <span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><span class="lineno">  214</span>                builder.append(std::to_string(year)); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  215</span>            }</div>
+<div class="line"><span class="lineno">  216</span>            input.trunc(<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  217</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;z&#39;</span>) {</div>
+<div class="line"><span class="lineno">  218</span>            <span class="keywordflow">if</span> (dateTime.getUTC() &gt;= 0) {</div>
+<div class="line"><span class="lineno">  219</span>                builder.append(<span class="charliteral">&#39;+&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  220</span>            }</div>
+<div class="line"><span class="lineno">  221</span>            builder.append(std::to_string(dateTime.getUTC())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  222</span>            input.trunc(1);                                    <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  223</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;h&#39;</span>) {</div>
+<div class="line"><span class="lineno">  224</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">::count</a>(<span class="charliteral">&#39;h&#39;</span>, buffer);</div>
+<div class="line"><span class="lineno">  225</span>            <span class="keyword">auto</span> hour = dateTime.getHours();</div>
+<div class="line"><span class="lineno">  226</span>            hour = hour % 12 == 0 ? 12 : hour % 12;</div>
+<div class="line"><span class="lineno">  227</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 1) {</div>
+<div class="line"><span class="lineno">  228</span>                builder.append(std::to_string(hour)); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  229</span>                input.trunc(1);                       <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  230</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> &gt; 1) {</div>
+<div class="line"><span class="lineno">  231</span>                <span class="keywordflow">if</span> (hour &lt; 10) {</div>
+<div class="line"><span class="lineno">  232</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  233</span>                }</div>
+<div class="line"><span class="lineno">  234</span>                builder.append(std::to_string(hour)); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  235</span>                input.trunc(2);                       <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  236</span>            }</div>
+<div class="line"><span class="lineno">  237</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;H&#39;</span>) {</div>
+<div class="line"><span class="lineno">  238</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">::count</a>(<span class="charliteral">&#39;H&#39;</span>, buffer);</div>
+<div class="line"><span class="lineno">  239</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 1) {</div>
+<div class="line"><span class="lineno">  240</span>                builder.append(std::to_string(dateTime.getHours())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  241</span>                input.trunc(1);                                      <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  242</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> &gt; 1) {</div>
+<div class="line"><span class="lineno">  243</span>                <span class="keywordflow">if</span> (dateTime.getHours() &lt; 10) {</div>
+<div class="line"><span class="lineno">  244</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  245</span>                }</div>
+<div class="line"><span class="lineno">  246</span>                builder.append(std::to_string(dateTime.getHours())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  247</span>                input.trunc(2);                                      <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  248</span>            }</div>
+<div class="line"><span class="lineno">  249</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;t&#39;</span>) {</div>
+<div class="line"><span class="lineno">  250</span>            builder.append(dateTime.getHours() &lt; 12 ? <span class="stringliteral">&quot;AM&quot;</span> : <span class="stringliteral">&quot;PM&quot;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  251</span>            input.trunc(1);                                         <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  252</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;s&#39;</span>) {</div>
+<div class="line"><span class="lineno">  253</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">::count</a>(<span class="charliteral">&#39;s&#39;</span>, buffer);</div>
+<div class="line"><span class="lineno">  254</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 1) {</div>
+<div class="line"><span class="lineno">  255</span>                builder.append(std::to_string(dateTime.getSeconds())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  256</span>                input.trunc(1);                                        <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  257</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> &gt; 1) {</div>
+<div class="line"><span class="lineno">  258</span>                <span class="keywordflow">if</span> (dateTime.getSeconds() &lt; 10) {</div>
+<div class="line"><span class="lineno">  259</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  260</span>                }</div>
+<div class="line"><span class="lineno">  261</span>                builder.append(std::to_string(dateTime.getSeconds())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  262</span>                input.trunc(2);                                        <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  263</span>            }</div>
+<div class="line"><span class="lineno">  264</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;f&#39;</span>) {</div>
+<div class="line"><span class="lineno">  265</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">::count</a>(<span class="charliteral">&#39;f&#39;</span>, buffer);</div>
+<div class="line"><span class="lineno">  266</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 1) {</div>
+<div class="line"><span class="lineno">  267</span>                builder.append(std::to_string(dateTime.getMilliseconds())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  268</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 2) {</div>
+<div class="line"><span class="lineno">  269</span>                <span class="keyword">auto</span> num = dateTime.getMilliseconds();</div>
+<div class="line"><span class="lineno">  270</span>                <span class="keywordflow">if</span> (num &lt; 100) {</div>
+<div class="line"><span class="lineno">  271</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  272</span>                }</div>
+<div class="line"><span class="lineno">  273</span>                <span class="keywordflow">if</span> (num &lt; 10) {</div>
+<div class="line"><span class="lineno">  274</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  275</span>                }</div>
+<div class="line"><span class="lineno">  276</span>                builder.append(std::to_string(num)); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  277</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> == 3) {</div>
+<div class="line"><span class="lineno">  278</span>                builder.append(std::to_string(dateTime.getMicroseconds())); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  279</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  280</span>                <span class="keyword">auto</span> num = dateTime.getMicroseconds();</div>
+<div class="line"><span class="lineno">  281</span>                <span class="keywordflow">if</span> (num &lt; 100) {</div>
+<div class="line"><span class="lineno">  282</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  283</span>                }</div>
+<div class="line"><span class="lineno">  284</span>                <span class="keywordflow">if</span> (num &lt; 10) {</div>
+<div class="line"><span class="lineno">  285</span>                    builder.append(<span class="charliteral">&#39;0&#39;</span>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  286</span>                }</div>
+<div class="line"><span class="lineno">  287</span>                builder.append(std::to_string(num)); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  288</span>            }</div>
+<div class="line"><span class="lineno">  289</span>            input.trunc(<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  290</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[0] == <span class="charliteral">&#39;%&#39;</span>) {</div>
+<div class="line"><span class="lineno">  291</span>            <span class="keywordflow">if</span> (len &gt; 1) {</div>
+<div class="line"><span class="lineno">  292</span>                builder.append(buffer[1]); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  293</span>                input.trunc(2);            <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  294</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  295</span>                input.trunc(1); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  296</span>            }</div>
+<div class="line"><span class="lineno">  297</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  298</span>            builder.append(buffer[0]); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  299</span>            input.trunc(1);            <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  300</span>        }</div>
+<div class="line"><span class="lineno">  301</span>    }</div>
+<div class="line"><span class="lineno">  302</span> </div>
+<div class="line"><span class="lineno">  303</span>    <span class="keywordflow">return</span> builder.toString(); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">  304</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>, <a class="el" href="_date_time_8h_source.html#l00062">sese::DateTime::getDayOfWeek()</a>, <a class="el" href="_date_time_8h_source.html#l00055">sese::DateTime::getDays()</a>, <a class="el" href="_date_time_8h_source.html#l00056">sese::DateTime::getHours()</a>, <a class="el" href="_date_time_8h_source.html#l00060">sese::DateTime::getMicroseconds()</a>, <a class="el" href="_date_time_8h_source.html#l00059">sese::DateTime::getMilliseconds()</a>, <a class="el" href="_date_time_8h_source.html#l00057">sese::DateTime::getMinutes()</a>, <a class="el" href="_date_time_8h_source.html#l00054">sese::DateTime::getMonths()</a>, <a class="el" href="_date_time_8h_source.html#l00058">sese::DateTime::getSeconds()</a>, <a class="el" href="_date_time_8h_source.html#l00061">sese::DateTime::getUTC()</a>, <a class="el" href="_date_time_8h_source.html#l00053">sese::DateTime::getYears()</a>, <a class="el" href="_date_time_formatter_8h_source.html#l00070">MON_ARRAY</a>, <a class="el" href="_date_time_formatter_8h_source.html#l00040">MONTH_ARRAY</a>, <a class="el" href="_date_time_formatter_8h_source.html#l00100">WEEK_DAY</a> , 以及 <a class="el" href="_date_time_formatter_8h_source.html#l00110">WK_DAY</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_simple_formatter_8cpp_source.html#l00034">sese::record::SimpleFormatter::dump()</a>, <a class="el" href="_block_appender_8cpp_source.html#l00010">getDateTimeString()</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00092">sese::db::impl::PostgresPreparedStatementImpl::setDateTime()</a> , 以及 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00160">sese::db::impl::SqlitePreparedStatementImpl::setDateTime()</a>.</p>
+
+</div>
+</div>
+<a id="a1253fbefb4c7b856e1bd47ebaafc39f8" name="a1253fbefb4c7b856e1bd47ebaafc39f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1253fbefb4c7b856e1bd47ebaafc39f8">&#9670;&#160;</a></span>format() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::text::DateTimeFormatter::format </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">DateTime::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>date_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pattern</em> = <code><a class="el" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee">TIME_DEFAULT_PATTERN</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8cpp_source.html">DateTimeFormatter.cpp</a> 第 <a class="el" href="_date_time_formatter_8cpp_source.html#l00306">306</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  306</span>                                                                                                     {</div>
+<div class="line"><span class="lineno">  307</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">format</a>(*dateTime.get(), pattern);</div>
+<div class="line"><span class="lineno">  308</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af8d4bbeeb1fc9007b6e599cda89adbe3" name="af8d4bbeeb1fc9007b6e599cda89adbe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8d4bbeeb1fc9007b6e599cda89adbe3">&#9670;&#160;</a></span>mon2number()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::text::DateTimeFormatter::mon2number </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8cpp_source.html">DateTimeFormatter.cpp</a> 第 <a class="el" href="_date_time_formatter_8cpp_source.html#l00314">314</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  314</span>                                                              {</div>
+<div class="line"><span class="lineno">  315</span>    <span class="keyword">auto</span> item = <a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#ac20351443e085befd71e3e3350f2cd7c">MON_MAP</a>.find(str);</div>
+<div class="line"><span class="lineno">  316</span>    <span class="keywordflow">if</span> (item != <a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#ac20351443e085befd71e3e3350f2cd7c">MON_MAP</a>.end()) {</div>
+<div class="line"><span class="lineno">  317</span>        <span class="keywordflow">return</span> item-&gt;second - 1;</div>
+<div class="line"><span class="lineno">  318</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  319</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  320</span>    }</div>
+<div class="line"><span class="lineno">  321</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af3908a3fffa546234116ec7af0dc63a1" name="af3908a3fffa546234116ec7af0dc63a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3908a3fffa546234116ec7af0dc63a1">&#9670;&#160;</a></span>parseFromGreenwich()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t sese::text::DateTimeFormatter::parseFromGreenwich </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>将格林威治时间转换为时间戳 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>格林威治时间文本 <pre class="fragment">"Tue, 17 Oct 2023 15:41:22 GMT"
+"Thu, 31-Dec-37 23:55:55 GMT"
+</pre> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>时间戳 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8cpp_source.html">DateTimeFormatter.cpp</a> 第 <a class="el" href="_date_time_formatter_8cpp_source.html#l00326">326</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  326</span>                                                                            {</div>
+<div class="line"><span class="lineno">  327</span>    <span class="keyword">struct </span>tm tm{};</div>
+<div class="line"><span class="lineno">  328</span>    <span class="keyword">auto</span> mon = text.substr(8, 3);</div>
+<div class="line"><span class="lineno">  329</span>    tm.tm_mon = <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#af8d4bbeeb1fc9007b6e599cda89adbe3">mon2number</a>(mon);</div>
+<div class="line"><span class="lineno">  330</span>    <span class="keywordflow">if</span> (text[7] == <span class="charliteral">&#39;-&#39;</span>) {</div>
+<div class="line"><span class="lineno">  331</span>        <span class="comment">// 另一种时间格式</span></div>
+<div class="line"><span class="lineno">  332</span>        <span class="comment">// auto date = StringBuilder::split(text, &quot; &quot;);</span></div>
+<div class="line"><span class="lineno">  333</span>        <span class="comment">// char _h[3]{0};</span></div>
+<div class="line"><span class="lineno">  334</span>        <span class="comment">// char _m[3]{0};</span></div>
+<div class="line"><span class="lineno">  335</span>        <span class="comment">// char _s[3]{0};</span></div>
+<div class="line"><span class="lineno">  336</span>        <span class="comment">// memcpy(_h, date[2].c_str() + 0, 2);</span></div>
+<div class="line"><span class="lineno">  337</span>        <span class="comment">// memcpy(_m, date[2].c_str() + 3, 2);</span></div>
+<div class="line"><span class="lineno">  338</span>        <span class="comment">// memcpy(_s, date[2].c_str() + 6, 2);</span></div>
+<div class="line"><span class="lineno">  339</span>        <span class="comment">// char *end;</span></div>
+<div class="line"><span class="lineno">  340</span>        <span class="comment">// tm.tm_hour = (int) std::strtol(_h, &amp;end, 10);</span></div>
+<div class="line"><span class="lineno">  341</span>        <span class="comment">// tm.tm_min = (int) std::strtol(_m, &amp;end, 10);</span></div>
+<div class="line"><span class="lineno">  342</span>        <span class="comment">// tm.tm_sec = (int) std::strtol(_s, &amp;end, 10);</span></div>
+<div class="line"><span class="lineno">  343</span>        <span class="comment">// date = StringBuilder::split(date[1], &quot;-&quot;);</span></div>
+<div class="line"><span class="lineno">  344</span>        <span class="comment">// tm.tm_mday = std::stoi(date[0]);</span></div>
+<div class="line"><span class="lineno">  345</span>        <span class="comment">// tm.tm_mon = mon2number(date[1].c_str());</span></div>
+<div class="line"><span class="lineno">  346</span>        <span class="comment">// tm.tm_year = std::stoi(date[2]) + 100;</span></div>
+<div class="line"><span class="lineno">  347</span> </div>
+<div class="line"><span class="lineno">  348</span>        std::sscanf(text.c_str(), <span class="stringliteral">&quot;%*4s %2d-%*3s-%2d %2d:%2d:%2d %*3s&quot;</span>, &amp;tm.tm_mday, &amp;tm.tm_year, &amp;tm.tm_hour, &amp;tm.tm_min, &amp;tm.tm_sec); <span class="comment">// NOLINT</span></div>
+<div class="line"><span class="lineno">  349</span>        tm.tm_year += 100;</div>
+<div class="line"><span class="lineno">  350</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  351</span>        <span class="comment">// auto date = StringBuilder::split(text, &quot; &quot;);</span></div>
+<div class="line"><span class="lineno">  352</span>        <span class="comment">// tm.tm_mday = std::stoi(date[1]);</span></div>
+<div class="line"><span class="lineno">  353</span>        <span class="comment">// tm.tm_mon = mon2number(date[2]);</span></div>
+<div class="line"><span class="lineno">  354</span>        <span class="comment">// tm.tm_year = std::stoi(date[3]) - 1900;</span></div>
+<div class="line"><span class="lineno">  355</span>        <span class="comment">// char _h[3]{0};</span></div>
+<div class="line"><span class="lineno">  356</span>        <span class="comment">// char _m[3]{0};</span></div>
+<div class="line"><span class="lineno">  357</span>        <span class="comment">// char _s[3]{0};</span></div>
+<div class="line"><span class="lineno">  358</span>        <span class="comment">// memcpy(_h, date[4].c_str() + 0, 2);</span></div>
+<div class="line"><span class="lineno">  359</span>        <span class="comment">// memcpy(_m, date[4].c_str() + 3, 2);</span></div>
+<div class="line"><span class="lineno">  360</span>        <span class="comment">// memcpy(_s, date[4].c_str() + 6, 2);</span></div>
+<div class="line"><span class="lineno">  361</span>        <span class="comment">// char *end;</span></div>
+<div class="line"><span class="lineno">  362</span>        <span class="comment">// tm.tm_hour = (int) std::strtol(_h, &amp;end, 10);</span></div>
+<div class="line"><span class="lineno">  363</span>        <span class="comment">// tm.tm_min = (int) std::strtol(_m, &amp;end, 10);</span></div>
+<div class="line"><span class="lineno">  364</span>        <span class="comment">// tm.tm_sec = (int) std::strtol(_s, &amp;end, 10);</span></div>
+<div class="line"><span class="lineno">  365</span> </div>
+<div class="line"><span class="lineno">  366</span>        std::sscanf(text.c_str(), <span class="stringliteral">&quot;%*4s %2d %*3s %4d %2d:%2d:%2d %*3s&quot;</span>, &amp;tm.tm_mday, &amp;tm.tm_year, &amp;tm.tm_hour, &amp;tm.tm_min, &amp;tm.tm_sec); <span class="comment">// NOLINT</span></div>
+<div class="line"><span class="lineno">  367</span>        tm.tm_year -= 1900;</div>
+<div class="line"><span class="lineno">  368</span>    }</div>
+<div class="line"><span class="lineno">  369</span>    <span class="keywordflow">return</span> <a class="code hl_define" href="native_2win_2_config_8h.html#a7b014834433c82b4d39a4c40841b6e0d">timegm</a>(&amp;tm);</div>
+<div class="line"><span class="lineno">  370</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="native_2win_2_config_8h_source.html#l00052">timegm</a>.</p>
+
+</div>
+</div>
+<a id="adc46251d602830473b472a96b8e103ab" name="adc46251d602830473b472a96b8e103ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc46251d602830473b472a96b8e103ab">&#9670;&#160;</a></span>parseFromISO8601()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t sese::text::DateTimeFormatter::parseFromISO8601 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>将 ISO 8601 时间转换为时间戳 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>ISO 8601 时间文本 <pre class="fragment">"2023-06-20"
+"2023-06-20 16:46:55"
+"2023-06-20T16:46:55Z"
+"2023-06-20 16:46:55 +8"
+"2023-06-20T16:46:55+00:00"
+</pre> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>时间戳 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8cpp_source.html">DateTimeFormatter.cpp</a> 第 <a class="el" href="_date_time_formatter_8cpp_source.html#l00372">372</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  372</span>                                                                          {</div>
+<div class="line"><span class="lineno">  373</span>    <span class="keyword">struct </span>tm tm{};</div>
+<div class="line"><span class="lineno">  374</span>    <span class="keywordflow">if</span> (text.length() == 10) {</div>
+<div class="line"><span class="lineno">  375</span>        <span class="keyword">auto</span> date = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(text, <span class="stringliteral">&quot;-&quot;</span>);</div>
+<div class="line"><span class="lineno">  376</span>        <span class="keywordflow">if</span> (date.size() == 3) {</div>
+<div class="line"><span class="lineno">  377</span>            tm.tm_year = (int) (std::stoi(date[0]) - 1900);</div>
+<div class="line"><span class="lineno">  378</span>            tm.tm_mon = (int) (std::stoi(date[1]) - 1);</div>
+<div class="line"><span class="lineno">  379</span>            tm.tm_mday = (int) std::stoi(date[2]);</div>
+<div class="line"><span class="lineno">  380</span>            <span class="keywordflow">return</span> <a class="code hl_define" href="native_2win_2_config_8h.html#a7b014834433c82b4d39a4c40841b6e0d">timegm</a>(&amp;tm);</div>
+<div class="line"><span class="lineno">  381</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  382</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  383</span>        }</div>
+<div class="line"><span class="lineno">  384</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (text.length() == 19) {</div>
+<div class="line"><span class="lineno">  385</span>        <span class="keyword">auto</span> dateTime = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(text, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><span class="lineno">  386</span>        <span class="keywordflow">if</span> (dateTime.size() != 2) <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  387</span> </div>
+<div class="line"><span class="lineno">  388</span>        <span class="keyword">auto</span> date = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(dateTime[0], <span class="stringliteral">&quot;-&quot;</span>);</div>
+<div class="line"><span class="lineno">  389</span>        <span class="keywordflow">if</span> (date.size() == 3) {</div>
+<div class="line"><span class="lineno">  390</span>            tm.tm_year = (int) (std::stoi(date[0]) - 1900);</div>
+<div class="line"><span class="lineno">  391</span>            tm.tm_mon = (int) (std::stoi(date[1]) - 1);</div>
+<div class="line"><span class="lineno">  392</span>            tm.tm_mday = (int) (std::stoi(date[2]));</div>
+<div class="line"><span class="lineno">  393</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  394</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  395</span>        }</div>
+<div class="line"><span class="lineno">  396</span> </div>
+<div class="line"><span class="lineno">  397</span>        <span class="keyword">auto</span> time = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(dateTime[1], <span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><span class="lineno">  398</span>        <span class="keywordflow">if</span> (time.size() == 3) {</div>
+<div class="line"><span class="lineno">  399</span>            tm.tm_hour = (int) std::stoi(time[0]);</div>
+<div class="line"><span class="lineno">  400</span>            tm.tm_min = (int) std::stoi(time[1]);</div>
+<div class="line"><span class="lineno">  401</span>            tm.tm_sec = (int) std::stoi(time[2]);</div>
+<div class="line"><span class="lineno">  402</span>            <span class="keywordflow">return</span> <a class="code hl_define" href="native_2win_2_config_8h.html#a7b014834433c82b4d39a4c40841b6e0d">timegm</a>(&amp;tm);</div>
+<div class="line"><span class="lineno">  403</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  404</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  405</span>        }</div>
+<div class="line"><span class="lineno">  406</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (text.length() == 20) {</div>
+<div class="line"><span class="lineno">  407</span>        <span class="keyword">auto</span> dateTime = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(text, <span class="stringliteral">&quot;T&quot;</span>);</div>
+<div class="line"><span class="lineno">  408</span>        <span class="keywordflow">if</span> (dateTime.size() != 2) <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  409</span> </div>
+<div class="line"><span class="lineno">  410</span>        <span class="keyword">auto</span> date = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(dateTime[0], <span class="stringliteral">&quot;-&quot;</span>);</div>
+<div class="line"><span class="lineno">  411</span>        <span class="keywordflow">if</span> (date.size() == 3) {</div>
+<div class="line"><span class="lineno">  412</span>            tm.tm_year = (int) (std::stoi(date[0]) - 1900);</div>
+<div class="line"><span class="lineno">  413</span>            tm.tm_mon = (int) (std::stoi(date[1]) - 1);</div>
+<div class="line"><span class="lineno">  414</span>            tm.tm_mday = (int) (std::stoi(date[2]));</div>
+<div class="line"><span class="lineno">  415</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  416</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  417</span>        }</div>
+<div class="line"><span class="lineno">  418</span> </div>
+<div class="line"><span class="lineno">  419</span>        <span class="keyword">auto</span> time = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(dateTime[1], <span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><span class="lineno">  420</span>        <span class="keywordflow">if</span> (time.size() == 3) {</div>
+<div class="line"><span class="lineno">  421</span>            tm.tm_hour = (int) std::stoi(time[0]);</div>
+<div class="line"><span class="lineno">  422</span>            tm.tm_min = (int) std::stoi(time[1]);</div>
+<div class="line"><span class="lineno">  423</span>            tm.tm_sec = (int) std::stoi(time[2]);</div>
+<div class="line"><span class="lineno">  424</span>            <span class="keywordflow">return</span> <a class="code hl_define" href="native_2win_2_config_8h.html#a7b014834433c82b4d39a4c40841b6e0d">timegm</a>(&amp;tm);</div>
+<div class="line"><span class="lineno">  425</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  426</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  427</span>        }</div>
+<div class="line"><span class="lineno">  428</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (text.length() == 22) {</div>
+<div class="line"><span class="lineno">  429</span>        <span class="keyword">auto</span> dateTimeZone = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(text, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><span class="lineno">  430</span>        <span class="keywordflow">if</span> (dateTimeZone.size() != 3) <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  431</span> </div>
+<div class="line"><span class="lineno">  432</span>        <span class="keyword">auto</span> date = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(dateTimeZone[0], <span class="stringliteral">&quot;-&quot;</span>);</div>
+<div class="line"><span class="lineno">  433</span>        <span class="keywordflow">if</span> (date.size() == 3) {</div>
+<div class="line"><span class="lineno">  434</span>            tm.tm_year = (int) (std::stoi(date[0]) - 1900);</div>
+<div class="line"><span class="lineno">  435</span>            tm.tm_mon = (int) (std::stoi(date[1]) - 1);</div>
+<div class="line"><span class="lineno">  436</span>            tm.tm_mday = (int) (std::stoi(date[2]));</div>
+<div class="line"><span class="lineno">  437</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  438</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  439</span>        }</div>
+<div class="line"><span class="lineno">  440</span> </div>
+<div class="line"><span class="lineno">  441</span>        <span class="keyword">auto</span> time = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(dateTimeZone[1], <span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><span class="lineno">  442</span>        <span class="keywordflow">if</span> (time.size() == 3) {</div>
+<div class="line"><span class="lineno">  443</span>            tm.tm_hour = (int) std::stoi(time[0]);</div>
+<div class="line"><span class="lineno">  444</span>            tm.tm_min = (int) std::stoi(time[1]);</div>
+<div class="line"><span class="lineno">  445</span>            tm.tm_sec = (int) std::stoi(time[2]);</div>
+<div class="line"><span class="lineno">  446</span>            <span class="keywordflow">return</span> <a class="code hl_define" href="native_2win_2_config_8h.html#a7b014834433c82b4d39a4c40841b6e0d">timegm</a>(&amp;tm) - std::stoi(dateTimeZone[2]) * 60 * 60;</div>
+<div class="line"><span class="lineno">  447</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  448</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  449</span>        }</div>
+<div class="line"><span class="lineno">  450</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (text.length() == 25) {</div>
+<div class="line"><span class="lineno">  451</span>        <span class="keyword">auto</span> dateTimeZone = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(text, <span class="stringliteral">&quot;T&quot;</span>);</div>
+<div class="line"><span class="lineno">  452</span>        <span class="keywordflow">if</span> (dateTimeZone.size() != 2) <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  453</span> </div>
+<div class="line"><span class="lineno">  454</span>        <span class="keyword">auto</span> date = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(dateTimeZone[0], <span class="stringliteral">&quot;-&quot;</span>);</div>
+<div class="line"><span class="lineno">  455</span>        <span class="keywordflow">if</span> (date.size() == 3) {</div>
+<div class="line"><span class="lineno">  456</span>            tm.tm_year = (int) (std::stoi(date[0]) - 1900);</div>
+<div class="line"><span class="lineno">  457</span>            tm.tm_mon = (int) (std::stoi(date[1]) - 1);</div>
+<div class="line"><span class="lineno">  458</span>            tm.tm_mday = (int) (std::stoi(date[2]));</div>
+<div class="line"><span class="lineno">  459</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  460</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  461</span>        }</div>
+<div class="line"><span class="lineno">  462</span> </div>
+<div class="line"><span class="lineno">  463</span>        <span class="keyword">auto</span> time = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(dateTimeZone[1], <span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><span class="lineno">  464</span>        <span class="keywordflow">if</span> (time.size() == 4) {</div>
+<div class="line"><span class="lineno">  465</span>            tm.tm_hour = (int) std::stoi(time[0]);</div>
+<div class="line"><span class="lineno">  466</span>            tm.tm_min = (int) std::stoi(time[1]);</div>
+<div class="line"><span class="lineno">  467</span>            tm.tm_sec = (int) std::stoi(time[2]);</div>
+<div class="line"><span class="lineno">  468</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  469</span>            <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  470</span>        }</div>
+<div class="line"><span class="lineno">  471</span> </div>
+<div class="line"><span class="lineno">  472</span>        <span class="keyword">auto</span> timeZone = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(text, <span class="stringliteral">&quot;+&quot;</span>);</div>
+<div class="line"><span class="lineno">  473</span>        <span class="keywordflow">if</span> (timeZone.size() != 2) <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  474</span>        <span class="keyword">auto</span> zone = <a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">StringBuilder::split</a>(timeZone[1], <span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><span class="lineno">  475</span>        <span class="keywordflow">if</span> (zone.size() != 2) <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  476</span>        <span class="keyword">auto</span> hour = std::stoi(zone[0]);</div>
+<div class="line"><span class="lineno">  477</span>        <span class="keyword">auto</span> min = std::stoi(zone[1]);</div>
+<div class="line"><span class="lineno">  478</span>        <span class="keywordflow">return</span> <a class="code hl_define" href="native_2win_2_config_8h.html#a7b014834433c82b4d39a4c40841b6e0d">timegm</a>(&amp;tm) - (((hour * 60) + min) * 60);</div>
+<div class="line"><span class="lineno">  479</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  480</span>        <span class="keywordflow">return</span> UINT64_MAX;</div>
+<div class="line"><span class="lineno">  481</span>    }</div>
+<div class="line"><span class="lineno">  482</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00051">sese::text::AbstractStringBuffer::split()</a> , 以及 <a class="el" href="native_2win_2_config_8h_source.html#l00052">timegm</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a399eda28b893b513c34e2580cc2e17b2" name="a399eda28b893b513c34e2580cc2e17b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a399eda28b893b513c34e2580cc2e17b2">&#9670;&#160;</a></span>MON_ARRAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::array&lt; std::string, 12 &gt; sese::text::DateTimeFormatter::MON_ARRAY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;Jan&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Feb&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Mar&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Apr&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;May&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Jun&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Jul&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Aug&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Sep&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Oct&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Nov&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Dec&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a> 第 <a class="el" href="_date_time_formatter_8h_source.html#l00070">70</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>        :</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#af8d4bbeeb1fc9007b6e599cda89adbe3">mon2number</a>(<span class="keyword">const</span> std::string &amp;text);</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, uint8_t&gt; <a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#ac20351443e085befd71e3e3350f2cd7c">MON_MAP</a>;</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 12&gt; <a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#a399eda28b893b513c34e2580cc2e17b2">MON_ARRAY</a>;</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, uint8_t&gt; <a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#adea3a02f1a1e2e111e8c217366fbf024">MONTH_MAP</a>;</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 12&gt; <a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#a41c15b695870c0fbdb255f548f4c3af8">MONTH_ARRAY</a>;</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 7&gt; <a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#a7e541cbdd004138509f67a4db5372d5e">WK_DAY</a>;</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 7&gt; <a class="code hl_variable" href="classsese_1_1text_1_1_date_time_formatter.html#acc8a8c7c759c27abcd3e1778e4888f2e">WEEK_DAY</a>;</div>
+<div class="line"><span class="lineno">   95</span>};</div>
+<div class="line"><span class="lineno">   96</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">format()</a>.</p>
+
+</div>
+</div>
+<a id="ac20351443e085befd71e3e3350f2cd7c" name="ac20351443e085befd71e3e3350f2cd7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac20351443e085befd71e3e3350f2cd7c">&#9670;&#160;</a></span>MON_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::map&lt; std::string, uint8_t &gt; sese::text::DateTimeFormatter::MON_MAP</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        {<span class="stringliteral">&quot;Jan&quot;</span>, 1},</div>
+<div class="line">        {<span class="stringliteral">&quot;Feb&quot;</span>, 2},</div>
+<div class="line">        {<span class="stringliteral">&quot;Mar&quot;</span>, 3},</div>
+<div class="line">        {<span class="stringliteral">&quot;Apr&quot;</span>, 4},</div>
+<div class="line">        {<span class="stringliteral">&quot;May&quot;</span>, 5},</div>
+<div class="line">        {<span class="stringliteral">&quot;Jun&quot;</span>, 6},</div>
+<div class="line">        {<span class="stringliteral">&quot;Jul&quot;</span>, 7},</div>
+<div class="line">        {<span class="stringliteral">&quot;Aug&quot;</span>, 8},</div>
+<div class="line">        {<span class="stringliteral">&quot;Sep&quot;</span>, 9},</div>
+<div class="line">        {<span class="stringliteral">&quot;Oct&quot;</span>, 10},</div>
+<div class="line">        {<span class="stringliteral">&quot;Nov&quot;</span>, 11},</div>
+<div class="line">        {<span class="stringliteral">&quot;Dec&quot;</span>, 12}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a> 第 <a class="el" href="_date_time_formatter_8h_source.html#l00085">85</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a41c15b695870c0fbdb255f548f4c3af8" name="a41c15b695870c0fbdb255f548f4c3af8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41c15b695870c0fbdb255f548f4c3af8">&#9670;&#160;</a></span>MONTH_ARRAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::array&lt; std::string, 12 &gt; sese::text::DateTimeFormatter::MONTH_ARRAY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;January&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;February&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;March&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;April&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;May&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;June&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;July&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;August&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;September&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;October&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;November&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;December&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a> 第 <a class="el" href="_date_time_formatter_8h_source.html#l00040">40</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">format()</a>.</p>
+
+</div>
+</div>
+<a id="adea3a02f1a1e2e111e8c217366fbf024" name="adea3a02f1a1e2e111e8c217366fbf024"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adea3a02f1a1e2e111e8c217366fbf024">&#9670;&#160;</a></span>MONTH_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::map&lt; std::string, uint8_t &gt; sese::text::DateTimeFormatter::MONTH_MAP</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        {<span class="stringliteral">&quot;January&quot;</span>, 1},</div>
+<div class="line">        {<span class="stringliteral">&quot;February&quot;</span>, 2},</div>
+<div class="line">        {<span class="stringliteral">&quot;March&quot;</span>, 3},</div>
+<div class="line">        {<span class="stringliteral">&quot;April&quot;</span>, 4},</div>
+<div class="line">        {<span class="stringliteral">&quot;May&quot;</span>, 5},</div>
+<div class="line">        {<span class="stringliteral">&quot;June&quot;</span>, 6},</div>
+<div class="line">        {<span class="stringliteral">&quot;July&quot;</span>, 7},</div>
+<div class="line">        {<span class="stringliteral">&quot;August&quot;</span>, 8},</div>
+<div class="line">        {<span class="stringliteral">&quot;September&quot;</span>, 9},</div>
+<div class="line">        {<span class="stringliteral">&quot;October&quot;</span>, 10},</div>
+<div class="line">        {<span class="stringliteral">&quot;November&quot;</span>, 11},</div>
+<div class="line">        {<span class="stringliteral">&quot;December&quot;</span>, 12}</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a> 第 <a class="el" href="_date_time_formatter_8h_source.html#l00055">55</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>                            {</div>
+<div class="line"><span class="lineno">   56</span><span class="keyword">public</span>:</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">format</a>(<span class="keyword">const</span> DateTime &amp;date_time, <span class="keyword">const</span> std::string &amp;pattern = <a class="code hl_variable" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee" title="世界协调时匹配格式">TIME_DEFAULT_PATTERN</a>);</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">format</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">DateTime::Ptr</a> &amp;date_time, <span class="keyword">const</span> std::string &amp;pattern = <a class="code hl_variable" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee" title="世界协调时匹配格式">TIME_DEFAULT_PATTERN</a>);</div>
+<div class="line"><span class="lineno">   60</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acc8a8c7c759c27abcd3e1778e4888f2e" name="acc8a8c7c759c27abcd3e1778e4888f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc8a8c7c759c27abcd3e1778e4888f2e">&#9670;&#160;</a></span>WEEK_DAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::array&lt; std::string, 7 &gt; sese::text::DateTimeFormatter::WEEK_DAY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;Sunday&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Monday&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Tuesday&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Wednesday&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Thursday&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Friday&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Saturday&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a> 第 <a class="el" href="_date_time_formatter_8h_source.html#l00100">100</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>                       : 4251)</div>
+<div class="line"><span class="lineno">  117</span>#endif</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacesese_1_1text.html">sese::text</a> {</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  154</span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> DateTimeFormatter {</div>
+<div class="line"><span class="lineno">  155</span><span class="keyword">public</span>:</div>
+<div class="line"><span class="lineno">  156</span>    <span class="keyword">static</span> std::string format(<span class="keyword">const</span> DateTime &amp;date_time, <span class="keyword">const</span> std::string &amp;pattern = <a class="code hl_variable" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee" title="世界协调时匹配格式">TIME_DEFAULT_PATTERN</a>);</div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>    <span class="keyword">static</span> std::string format(<span class="keyword">const</span> DateTime::Ptr &amp;date_time, <span class="keyword">const</span> std::string &amp;pattern = <a class="code hl_variable" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee" title="世界协调时匹配格式">TIME_DEFAULT_PATTERN</a>);</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  168</span>    <span class="keyword">static</span> uint64_t parseFromGreenwich(<span class="keyword">const</span> std::string &amp;text);</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  181</span>    <span class="keyword">static</span> uint64_t parseFromISO8601(<span class="keyword">const</span> std::string &amp;text);</div>
+<div class="line"><span class="lineno">  182</span> </div>
+<div class="line"><span class="lineno">  183</span><span class="keyword">protected</span>:</div>
+<div class="line"><span class="lineno">  184</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> mon2number(<span class="keyword">const</span> std::string &amp;text);</div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, uint8_t&gt; MON_MAP;</div>
+<div class="line"><span class="lineno">  187</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 12&gt; MON_ARRAY;</div>
+<div class="line"><span class="lineno">  188</span> </div>
+<div class="line"><span class="lineno">  189</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, uint8_t&gt; MONTH_MAP;</div>
+<div class="line"><span class="lineno">  190</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 12&gt; MONTH_ARRAY;</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 7&gt; WK_DAY;</div>
+<div class="line"><span class="lineno">  193</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 7&gt; WEEK_DAY;</div>
+<div class="line"><span class="lineno">  194</span>};</div>
+<div class="line"><span class="lineno">  195</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">format()</a>.</p>
+
+</div>
+</div>
+<a id="a7e541cbdd004138509f67a4db5372d5e" name="a7e541cbdd004138509f67a4db5372d5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e541cbdd004138509f67a4db5372d5e">&#9670;&#160;</a></span>WK_DAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::array&lt; std::string, 7 &gt; sese::text::DateTimeFormatter::WK_DAY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;Sun&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Mon&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Tue&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Wed&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Thu&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Fri&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Sat&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a> 第 <a class="el" href="_date_time_formatter_8h_source.html#l00110">110</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>                       : 4251)</div>
+<div class="line"><span class="lineno">  127</span>#endif</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacesese_1_1text.html">sese::text</a> {</div>
+<div class="line"><span class="lineno">  130</span> </div>
+<div class="line"><span class="lineno">  164</span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> DateTimeFormatter {</div>
+<div class="line"><span class="lineno">  165</span><span class="keyword">public</span>:</div>
+<div class="line"><span class="lineno">  166</span>    <span class="keyword">static</span> std::string format(<span class="keyword">const</span> DateTime &amp;date_time, <span class="keyword">const</span> std::string &amp;pattern = <a class="code hl_variable" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee" title="世界协调时匹配格式">TIME_DEFAULT_PATTERN</a>);</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>    <span class="keyword">static</span> std::string format(<span class="keyword">const</span> DateTime::Ptr &amp;date_time, <span class="keyword">const</span> std::string &amp;pattern = <a class="code hl_variable" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee" title="世界协调时匹配格式">TIME_DEFAULT_PATTERN</a>);</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  178</span>    <span class="keyword">static</span> uint64_t parseFromGreenwich(<span class="keyword">const</span> std::string &amp;text);</div>
+<div class="line"><span class="lineno">  179</span> </div>
+<div class="line"><span class="lineno">  191</span>    <span class="keyword">static</span> uint64_t parseFromISO8601(<span class="keyword">const</span> std::string &amp;text);</div>
+<div class="line"><span class="lineno">  192</span> </div>
+<div class="line"><span class="lineno">  193</span><span class="keyword">protected</span>:</div>
+<div class="line"><span class="lineno">  194</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> mon2number(<span class="keyword">const</span> std::string &amp;text);</div>
+<div class="line"><span class="lineno">  195</span> </div>
+<div class="line"><span class="lineno">  196</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, uint8_t&gt; MON_MAP;</div>
+<div class="line"><span class="lineno">  197</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 12&gt; MON_ARRAY;</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string, uint8_t&gt; MONTH_MAP;</div>
+<div class="line"><span class="lineno">  200</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 12&gt; MONTH_ARRAY;</div>
+<div class="line"><span class="lineno">  201</span> </div>
+<div class="line"><span class="lineno">  202</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 7&gt; WK_DAY;</div>
+<div class="line"><span class="lineno">  203</span>    <span class="keyword">static</span> <span class="keyword">const</span> std::array&lt;std::string, 7&gt; WEEK_DAY;</div>
+<div class="line"><span class="lineno">  204</span>};</div>
+<div class="line"><span class="lineno">  205</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">format()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/text/<a class="el" href="_date_time_formatter_8h_source.html">DateTimeFormatter.h</a></li>
+<li>sese/text/<a class="el" href="_date_time_formatter_8cpp_source.html">DateTimeFormatter.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

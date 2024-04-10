@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::security::SSLContext类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1security.html">security</a></li><li class="navelem"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1security_1_1_s_s_l_context-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::security::SSLContext类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>SSL 上下文  
+ <a href="classsese_1_1security_1_1_s_s_l_context.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::security::SSLContext 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1security_1_1_s_s_l_context.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a33b0bbf1987dd213c5d8886906f2099a" id="r_a33b0bbf1987dd213c5d8886906f2099a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a> &gt;</td></tr>
+<tr class="separator:a33b0bbf1987dd213c5d8886906f2099a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad875ff38eb4dd6994ef35f61f5e8ec0a" id="r_ad875ff38eb4dd6994ef35f61f5e8ec0a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#ad875ff38eb4dd6994ef35f61f5e8ec0a">Socket</a> = <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td></tr>
+<tr class="separator:ad875ff38eb4dd6994ef35f61f5e8ec0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ade74f5f64b6db5b63bc9e1c2f8f79458" id="r_ade74f5f64b6db5b63bc9e1c2f8f79458"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#ade74f5f64b6db5b63bc9e1c2f8f79458">SSLContext</a> (const void *method) noexcept</td></tr>
+<tr class="separator:ade74f5f64b6db5b63bc9e1c2f8f79458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12d155f4dd5c32228e2d4c96d52fd97d" id="r_a12d155f4dd5c32228e2d4c96d52fd97d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a12d155f4dd5c32228e2d4c96d52fd97d">~SSLContext</a> () noexcept</td></tr>
+<tr class="separator:a12d155f4dd5c32228e2d4c96d52fd97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd649a75c193adf97ff1ff9596a1a9bc" id="r_abd649a75c193adf97ff1ff9596a1a9bc"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#abd649a75c193adf97ff1ff9596a1a9bc">getContext</a> () const noexcept</td></tr>
+<tr class="separator:abd649a75c193adf97ff1ff9596a1a9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc25ff5fde416f95b93ce58bc134126c" id="r_acc25ff5fde416f95b93ce58bc134126c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#acc25ff5fde416f95b93ce58bc134126c">importCertFile</a> (const char *file) noexcept</td></tr>
+<tr class="memdesc:acc25ff5fde416f95b93ce58bc134126c"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文件中加载证书  <br /></td></tr>
+<tr class="separator:acc25ff5fde416f95b93ce58bc134126c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa14ef51827206585088235025cf6dc5c" id="r_aa14ef51827206585088235025cf6dc5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#aa14ef51827206585088235025cf6dc5c">importPrivateKeyFile</a> (const char *file) noexcept</td></tr>
+<tr class="memdesc:aa14ef51827206585088235025cf6dc5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文件中加载私钥  <br /></td></tr>
+<tr class="separator:aa14ef51827206585088235025cf6dc5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a876b04102f6144398cb5b2f67d56ec5e" id="r_a876b04102f6144398cb5b2f67d56ec5e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a876b04102f6144398cb5b2f67d56ec5e">authPrivateKey</a> () noexcept</td></tr>
+<tr class="memdesc:a876b04102f6144398cb5b2f67d56ec5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">校验证书和私钥  <br /></td></tr>
+<tr class="separator:a876b04102f6144398cb5b2f67d56ec5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d874b7ad16b4b4444e7007671228bd" id="r_a68d874b7ad16b4b4444e7007671228bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Socket::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a68d874b7ad16b4b4444e7007671228bd">newSocketPtr</a> (<a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Socket::Family</a> family, int32_t flags)</td></tr>
+<tr class="memdesc:a68d874b7ad16b4b4444e7007671228bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">从当前上下文中创建一个 TCP Socket  <br /></td></tr>
+<tr class="separator:a68d874b7ad16b4b4444e7007671228bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>SSL 上下文 </p>
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a> 第 <a class="el" href="_s_s_l_context_8h_source.html#l00014">14</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a33b0bbf1987dd213c5d8886906f2099a" name="a33b0bbf1987dd213c5d8886906f2099a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33b0bbf1987dd213c5d8886906f2099a">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">sese::security::SSLContext::Ptr</a> =  std::shared_ptr&lt;<a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a> 第 <a class="el" href="_s_s_l_context_8h_source.html#l00016">16</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad875ff38eb4dd6994ef35f61f5e8ec0a" name="ad875ff38eb4dd6994ef35f61f5e8ec0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad875ff38eb4dd6994ef35f61f5e8ec0a">&#9670;&#160;</a></span>Socket</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#ad875ff38eb4dd6994ef35f61f5e8ec0a">sese::security::SSLContext::Socket</a> =  <a class="el" href="classsese_1_1net_1_1_socket.html">sese::net::Socket</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a> 第 <a class="el" href="_s_s_l_context_8h_source.html#l00017">17</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ade74f5f64b6db5b63bc9e1c2f8f79458" name="ade74f5f64b6db5b63bc9e1c2f8f79458"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade74f5f64b6db5b63bc9e1c2f8f79458">&#9670;&#160;</a></span>SSLContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SSLContext::SSLContext </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>method</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00007">7</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                  {</div>
+<div class="line"><span class="lineno">    8</span>    context = SSL_CTX_new((<span class="keyword">const</span> SSL_METHOD *) method);</div>
+<div class="line"><span class="lineno">    9</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a12d155f4dd5c32228e2d4c96d52fd97d" name="a12d155f4dd5c32228e2d4c96d52fd97d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12d155f4dd5c32228e2d4c96d52fd97d">&#9670;&#160;</a></span>~SSLContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SSLContext::~SSLContext </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00011">11</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>                                 {</div>
+<div class="line"><span class="lineno">   12</span>    SSL_CTX_free((SSL_CTX *) context);</div>
+<div class="line"><span class="lineno">   13</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a876b04102f6144398cb5b2f67d56ec5e" name="a876b04102f6144398cb5b2f67d56ec5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a876b04102f6144398cb5b2f67d56ec5e">&#9670;&#160;</a></span>authPrivateKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SSLContext::authPrivateKey </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>校验证书和私钥 </p>
+<dl class="section return"><dt>返回</dt><dd>校验结果 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00027">27</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>                                         {</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">return</span> 1 == SSL_CTX_check_private_key((SSL_CTX *) context);</div>
+<div class="line"><span class="lineno">   29</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abd649a75c193adf97ff1ff9596a1a9bc" name="abd649a75c193adf97ff1ff9596a1a9bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd649a75c193adf97ff1ff9596a1a9bc">&#9670;&#160;</a></span>getContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * SSLContext::getContext </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00015">15</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>                                            {</div>
+<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">return</span> context;</div>
+<div class="line"><span class="lineno">   17</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acc25ff5fde416f95b93ce58bc134126c" name="acc25ff5fde416f95b93ce58bc134126c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc25ff5fde416f95b93ce58bc134126c">&#9670;&#160;</a></span>importCertFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SSLContext::importCertFile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>从文件中加载证书 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>证书文件路径 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>加载结果 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00019">19</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                         {</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> 1 == SSL_CTX_use_certificate_file((SSL_CTX *) context, file, SSL_FILETYPE_PEM);</div>
+<div class="line"><span class="lineno">   21</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa14ef51827206585088235025cf6dc5c" name="aa14ef51827206585088235025cf6dc5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa14ef51827206585088235025cf6dc5c">&#9670;&#160;</a></span>importPrivateKeyFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SSLContext::importPrivateKeyFile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>从文件中加载私钥 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>私钥文件路径 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>加载结果 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00023">23</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                               {</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> 1 == SSL_CTX_use_PrivateKey_file((SSL_CTX *) context, file, SSL_FILETYPE_PEM);</div>
+<div class="line"><span class="lineno">   25</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a68d874b7ad16b4b4444e7007671228bd" name="a68d874b7ad16b4b4444e7007671228bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68d874b7ad16b4b4444e7007671228bd">&#9670;&#160;</a></span>newSocketPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">sese::net::Socket::Ptr</a> SSLContext::newSocketPtr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Socket::Family</a>&#160;</td>
+          <td class="paramname"><em>family</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从当前上下文中创建一个 TCP Socket </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">family</td><td>协议 </td></tr>
+    <tr><td class="paramname">flags</td><td>标志 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>创建完成的 Socket </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a> 第 <a class="el" href="_s_s_l_context_8cpp_source.html#l00036">36</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>                                                                            {</div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> std::make_shared&lt;SecuritySocket&gt;(shared_from_this(), family, flags);</div>
+<div class="line"><span class="lineno">   38</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/security/<a class="el" href="_s_s_l_context_8h_source.html">SSLContext.h</a></li>
+<li>sese/security/<a class="el" href="_s_s_l_context_8cpp_source.html">SSLContext.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

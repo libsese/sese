@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/net/http/HPACK.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_114bac163f10ce5b4749d20bfd96922c.html">net</a></li><li class="navelem"><a class="el" href="dir_fc5eb64f8b6490c66e0bc105dbd81c03.html">http</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">HPACK.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>HTTP2 静态数据  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;array&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+</div>
+<p><a href="_h_p_a_c_k_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacesese" id="r_namespacesese"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html">sese</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacesese_1_1net" id="r_namespacesese_1_1net"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net.html">sese::net</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacesese_1_1net_1_1http" id="r_namespacesese_1_1net_1_1http"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html">sese::net::http</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a7e37b487fa33960ae0d06310ff3cde14" id="r_a7e37b487fa33960ae0d06310ff3cde14"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; const std::string, const std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">sese::net::http::header_t</a></td></tr>
+<tr class="separator:a7e37b487fa33960ae0d06310ff3cde14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a85a877bfbede2a0fe32ac5b7a2dc4" id="r_a92a85a877bfbede2a0fe32ac5b7a2dc4"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4">sese::net::http::bits_t</a></td></tr>
+<tr class="separator:a92a85a877bfbede2a0fe32ac5b7a2dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a0e4b92b0c04d9f6cc3f8186f513edb8d" id="r_a0e4b92b0c04d9f6cc3f8186f513edb8d"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; <a class="el" href="namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14">header_t</a>, 62 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a0e4b92b0c04d9f6cc3f8186f513edb8d">sese::net::http::PREDEFINED_HEADERS</a></td></tr>
+<tr class="separator:a0e4b92b0c04d9f6cc3f8186f513edb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01ac945648e80cdf9e3e17bcf28677d0" id="r_a01ac945648e80cdf9e3e17bcf28677d0"><td class="memItemLeft" align="right" valign="top">static const std::array&lt; <a class="el" href="namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4">bits_t</a>, 257 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1net_1_1http.html#a01ac945648e80cdf9e3e17bcf28677d0">sese::net::http::HUFFMAN_TABLE</a></td></tr>
+<tr class="separator:a01ac945648e80cdf9e3e17bcf28677d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>HTTP2 静态数据 </p>
+<pre class="fragment">此文件来源于
+https://github.com/jnferguson/hpack-rfc7541.git
+部分
+</pre> 
+<p class="definition">在文件 <a class="el" href="_h_p_a_c_k_8h_source.html">HPACK.h</a> 中定义.</p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

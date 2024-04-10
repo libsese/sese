@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::ObjectPool&lt; T &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_object_pool.html">ObjectPool</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1_object_pool-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::ObjectPool&lt; T &gt; 模板类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>对象池  
+ <a href="classsese_1_1_object_pool.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="util_2_object_pool_8h_source.html">ObjectPool.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::ObjectPool&lt; T &gt; 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1_object_pool.png" usemap="#sese::ObjectPool_3C_20T_20_3E_map" alt=""/>
+  <map id="sese::ObjectPool_3C_20T_20_3E_map" name="sese::ObjectPool_3C_20T_20_3E_map">
+<area href="classsese_1_1_noncopyable.html" title="不可复制类" alt="sese::Noncopyable" shape="rect" coords="303,0,596,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a19002fbf4bf473cef2adb76c06d7b25f" id="r_a19002fbf4bf473cef2adb76c06d7b25f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_object_pool.html#a19002fbf4bf473cef2adb76c06d7b25f">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1_object_pool.html">ObjectPool</a>&lt; T &gt; &gt;</td></tr>
+<tr class="separator:a19002fbf4bf473cef2adb76c06d7b25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28dd1ced31883e8c1ec1f4139747c82" id="r_ad28dd1ced31883e8c1ec1f4139747c82"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_object_pool.html#ad28dd1ced31883e8c1ec1f4139747c82">ObjectPtr</a> = std::shared_ptr&lt; T &gt;</td></tr>
+<tr class="separator:ad28dd1ced31883e8c1ec1f4139747c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a9bad41586a21e8c3f2e9a7845be20cc6" id="r_a9bad41586a21e8c3f2e9a7845be20cc6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_object_pool.html#a9bad41586a21e8c3f2e9a7845be20cc6">~ObjectPool</a> () override</td></tr>
+<tr class="separator:a9bad41586a21e8c3f2e9a7845be20cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9286e309377b8ed188e3e2a89ccf65ca" id="r_a9286e309377b8ed188e3e2a89ccf65ca"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_object_pool.html#a9286e309377b8ed188e3e2a89ccf65ca">borrow</a> () noexcept</td></tr>
+<tr class="separator:a9286e309377b8ed188e3e2a89ccf65ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1_noncopyable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_noncopyable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td></tr>
+<tr class="memitem:a9617504ed3c5dd90a447dc77738dc591 inherit pub_methods_classsese_1_1_noncopyable" id="r_a9617504ed3c5dd90a447dc77738dc591"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a9617504ed3c5dd90a447dc77738dc591">Noncopyable</a> ()=default</td></tr>
+<tr class="separator:a9617504ed3c5dd90a447dc77738dc591 inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e87fb882cec8e6e33a080cfe9e8e98 inherit pub_methods_classsese_1_1_noncopyable" id="r_a45e87fb882cec8e6e33a080cfe9e8e98"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a45e87fb882cec8e6e33a080cfe9e8e98">~Noncopyable</a> ()=default</td></tr>
+<tr class="separator:a45e87fb882cec8e6e33a080cfe9e8e98 inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea344687934584a12c4fd9c693ebe40c inherit pub_methods_classsese_1_1_noncopyable" id="r_aea344687934584a12c4fd9c693ebe40c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#aea344687934584a12c4fd9c693ebe40c">Noncopyable</a> (const <a class="el" href="classsese_1_1_noncopyable.html">Noncopyable</a> &amp;)=delete</td></tr>
+<tr class="memdesc:aea344687934584a12c4fd9c693ebe40c inherit pub_methods_classsese_1_1_noncopyable"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除拷贝相关构造函数  <br /></td></tr>
+<tr class="separator:aea344687934584a12c4fd9c693ebe40c inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable" id="r_a6c6e0a037e8da0af53b777f27b6836c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_noncopyable.html">Noncopyable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a6c6e0a037e8da0af53b777f27b6836c3">operator=</a> (const <a class="el" href="classsese_1_1_noncopyable.html">Noncopyable</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除拷贝相关构造函数  <br /></td></tr>
+<tr class="separator:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a3feeb9b299408b8f4da6b30cfec79914" id="r_a3feeb9b299408b8f4da6b30cfec79914"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_object_pool.html#a19002fbf4bf473cef2adb76c06d7b25f">ObjectPool::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_object_pool.html#a3feeb9b299408b8f4da6b30cfec79914">create</a> () noexcept</td></tr>
+<tr class="separator:a3feeb9b299408b8f4da6b30cfec79914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class sese::ObjectPool&lt; T &gt;</div><p>对象池 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>复用对象 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="util_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="util_2_object_pool_8h_source.html#l00028">28</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="ad28dd1ced31883e8c1ec1f4139747c82" name="ad28dd1ced31883e8c1ec1f4139747c82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28dd1ced31883e8c1ec1f4139747c82">&#9670;&#160;</a></span>ObjectPtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool</a>&lt; T &gt;::ObjectPtr =  std::shared_ptr&lt;T&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="util_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="util_2_object_pool_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a19002fbf4bf473cef2adb76c06d7b25f" name="a19002fbf4bf473cef2adb76c06d7b25f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19002fbf4bf473cef2adb76c06d7b25f">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool</a>&lt; T &gt;::Ptr =  std::shared_ptr&lt;<a class="el" href="classsese_1_1_object_pool.html">ObjectPool</a>&lt;T&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="util_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="util_2_object_pool_8h_source.html#l00032">32</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a9bad41586a21e8c3f2e9a7845be20cc6" name="a9bad41586a21e8c3f2e9a7845be20cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bad41586a21e8c3f2e9a7845be20cc6">&#9670;&#160;</a></span>~ObjectPool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool</a>&lt; T &gt;::~<a class="el" href="classsese_1_1_object_pool.html">ObjectPool</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="util_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="util_2_object_pool_8h_source.html#l00035">35</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>                           {</div>
+<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">while</span> (!queue.empty()) {</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keyword">delete</span> queue.front();</div>
+<div class="line"><span class="lineno">   38</span>            queue.pop();</div>
+<div class="line"><span class="lineno">   39</span>        }</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a9286e309377b8ed188e3e2a89ccf65ca" name="a9286e309377b8ed188e3e2a89ccf65ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9286e309377b8ed188e3e2a89ccf65ca">&#9670;&#160;</a></span>borrow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool</a>&lt; T &gt;::borrow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="util_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="util_2_object_pool_8h_source.html#l00046">46</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>                           {</div>
+<div class="line"><span class="lineno">   47</span>        mutex.lock();</div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span> (queue.empty()) {</div>
+<div class="line"><span class="lineno">   49</span>            mutex.unlock();</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keyword">auto</span> t = <span class="keyword">new</span> T;</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">return</span> std::shared_ptr&lt;T&gt;(</div>
+<div class="line"><span class="lineno">   52</span>                    t,</div>
+<div class="line"><span class="lineno">   53</span>                    [wk_pool = this-&gt;weak_from_this()](T *t) { ObjectPool&lt;T&gt;::recycleCallback(wk_pool, t); }</div>
+<div class="line"><span class="lineno">   54</span>            );</div>
+<div class="line"><span class="lineno">   55</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   56</span>            <span class="keyword">auto</span> t = queue.front();</div>
+<div class="line"><span class="lineno">   57</span>            queue.pop();</div>
+<div class="line"><span class="lineno">   58</span>            mutex.unlock();</div>
+<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">return</span> std::shared_ptr&lt;T&gt;(</div>
+<div class="line"><span class="lineno">   60</span>                    t,</div>
+<div class="line"><span class="lineno">   61</span>                    [wk_pool = this-&gt;weak_from_this()](T *t) { ObjectPool&lt;T&gt;::recycleCallback(wk_pool, t); }</div>
+<div class="line"><span class="lineno">   62</span>            );</div>
+<div class="line"><span class="lineno">   63</span>        }</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3feeb9b299408b8f4da6b30cfec79914" name="a3feeb9b299408b8f4da6b30cfec79914"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3feeb9b299408b8f4da6b30cfec79914">&#9670;&#160;</a></span>create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classsese_1_1_object_pool.html#a19002fbf4bf473cef2adb76c06d7b25f">ObjectPool::Ptr</a> <a class="el" href="classsese_1_1_object_pool.html">sese::ObjectPool</a>&lt; T &gt;::create </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="util_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="util_2_object_pool_8h_source.html#l00042">42</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>                                           {</div>
+<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">return</span> std::make_shared_for_overwrite&lt;ObjectPool&lt;T&gt;&gt; ();</div>
+<div class="line"><span class="lineno">   44</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/util/<a class="el" href="util_2_object_pool_8h_source.html">ObjectPool.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

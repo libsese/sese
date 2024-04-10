@@ -1,0 +1,1279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::db::impl::SqlitePreparedStatementImpl类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db_1_1impl.html">impl</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html">SqlitePreparedStatementImpl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="#pro-static-attribs">静态 Protected 属性</a> &#124;
+<a href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::db::impl::SqlitePreparedStatementImpl类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::db::impl::SqlitePreparedStatementImpl 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.png" usemap="#sese::db::impl::SqlitePreparedStatementImpl_map" alt=""/>
+  <map id="sese::db::impl::SqlitePreparedStatementImpl_map" name="sese::db::impl::SqlitePreparedStatementImpl_map">
+<area href="classsese_1_1db_1_1_prepared_statement.html" title="预处理语句对象" alt="sese::db::PreparedStatement" shape="rect" coords="0,0,251,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ae3c5486c7b4032981dc05396a8a0e62f" id="r_ae3c5486c7b4032981dc05396a8a0e62f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ae3c5486c7b4032981dc05396a8a0e62f">SqlitePreparedStatementImpl</a> (sqlite3_stmt *<a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, size_t <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a>) noexcept</td></tr>
+<tr class="separator:ae3c5486c7b4032981dc05396a8a0e62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4935f04e9f4656e0b8f4ffc1b9d2edd" id="r_ad4935f04e9f4656e0b8f4ffc1b9d2edd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad4935f04e9f4656e0b8f4ffc1b9d2edd">~SqlitePreparedStatementImpl</a> () noexcept override</td></tr>
+<tr class="separator:ad4935f04e9f4656e0b8f4ffc1b9d2edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd220f1f5900accc809eb6fded73a734" id="r_abd220f1f5900accc809eb6fded73a734"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#abd220f1f5900accc809eb6fded73a734">executeQuery</a> () noexcept override</td></tr>
+<tr class="memdesc:abd220f1f5900accc809eb6fded73a734"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行查询  <br /></td></tr>
+<tr class="separator:abd220f1f5900accc809eb6fded73a734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a506cb42853c52291b599fdb97eaaaeb3" id="r_a506cb42853c52291b599fdb97eaaaeb3"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a506cb42853c52291b599fdb97eaaaeb3">executeUpdate</a> () noexcept override</td></tr>
+<tr class="memdesc:a506cb42853c52291b599fdb97eaaaeb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行更新  <br /></td></tr>
+<tr class="separator:a506cb42853c52291b599fdb97eaaaeb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96f310b45eacbdab13a8018ed0bd2473" id="r_a96f310b45eacbdab13a8018ed0bd2473"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a96f310b45eacbdab13a8018ed0bd2473">setDouble</a> (uint32_t index, const double &amp;value) noexcept override</td></tr>
+<tr class="memdesc:a96f310b45eacbdab13a8018ed0bd2473"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置双精度浮点值  <br /></td></tr>
+<tr class="separator:a96f310b45eacbdab13a8018ed0bd2473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b896515d62d327b7e4e9a1a4105b7c7" id="r_a0b896515d62d327b7e4e9a1a4105b7c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a0b896515d62d327b7e4e9a1a4105b7c7">setFloat</a> (uint32_t index, const float &amp;value) noexcept override</td></tr>
+<tr class="memdesc:a0b896515d62d327b7e4e9a1a4105b7c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置单精度浮点值  <br /></td></tr>
+<tr class="separator:a0b896515d62d327b7e4e9a1a4105b7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecfa52f2db218a691b022f0227e62f96" id="r_aecfa52f2db218a691b022f0227e62f96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aecfa52f2db218a691b022f0227e62f96">setLong</a> (uint32_t index, const int64_t &amp;value) noexcept override</td></tr>
+<tr class="memdesc:aecfa52f2db218a691b022f0227e62f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置长整型值  <br /></td></tr>
+<tr class="separator:aecfa52f2db218a691b022f0227e62f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44e992bf21d0aea4f1ba63b61d3e6147" id="r_a44e992bf21d0aea4f1ba63b61d3e6147"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a44e992bf21d0aea4f1ba63b61d3e6147">setInteger</a> (uint32_t index, const int32_t &amp;value) noexcept override</td></tr>
+<tr class="memdesc:a44e992bf21d0aea4f1ba63b61d3e6147"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置整型值  <br /></td></tr>
+<tr class="separator:a44e992bf21d0aea4f1ba63b61d3e6147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb2e549730359c0285d2fe12ff53a15" id="r_a0fb2e549730359c0285d2fe12ff53a15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a0fb2e549730359c0285d2fe12ff53a15">setText</a> (uint32_t index, const char *value) noexcept override</td></tr>
+<tr class="memdesc:a0fb2e549730359c0285d2fe12ff53a15"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置文本值  <br /></td></tr>
+<tr class="separator:a0fb2e549730359c0285d2fe12ff53a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3e20d1486565fa4455a0edd2b30f76d" id="r_ab3e20d1486565fa4455a0edd2b30f76d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ab3e20d1486565fa4455a0edd2b30f76d">setNull</a> (uint32_t index) noexcept override</td></tr>
+<tr class="memdesc:ab3e20d1486565fa4455a0edd2b30f76d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置为 NULL  <br /></td></tr>
+<tr class="separator:ab3e20d1486565fa4455a0edd2b30f76d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd88b5ce4e8f5516cc2db1c9a8c1dcd" id="r_a5dd88b5ce4e8f5516cc2db1c9a8c1dcd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a5dd88b5ce4e8f5516cc2db1c9a8c1dcd">setDateTime</a> (uint32_t index, const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;value) noexcept override</td></tr>
+<tr class="memdesc:a5dd88b5ce4e8f5516cc2db1c9a8c1dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置为 dateTime  <br /></td></tr>
+<tr class="separator:a5dd88b5ce4e8f5516cc2db1c9a8c1dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa78ce823b71dee85b7e25c4f6955e449" id="r_aa78ce823b71dee85b7e25c4f6955e449"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aa78ce823b71dee85b7e25c4f6955e449">getColumnType</a> (uint32_t index, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;type) noexcept override</td></tr>
+<tr class="memdesc:aa78ce823b71dee85b7e25c4f6955e449"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取结果集列类型  <br /></td></tr>
+<tr class="separator:aa78ce823b71dee85b7e25c4f6955e449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96e35118f7c3e2a686a24318d7997ec8" id="r_a96e35118f7c3e2a686a24318d7997ec8"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a96e35118f7c3e2a686a24318d7997ec8">getColumnSize</a> (uint32_t index) noexcept override</td></tr>
+<tr class="memdesc:a96e35118f7c3e2a686a24318d7997ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节  <br /></td></tr>
+<tr class="separator:a96e35118f7c3e2a686a24318d7997ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a877a6137e73d7368e07c6e86c6da22f8" id="r_a877a6137e73d7368e07c6e86c6da22f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a877a6137e73d7368e07c6e86c6da22f8">getLastError</a> () const noexcept override</td></tr>
+<tr class="separator:a877a6137e73d7368e07c6e86c6da22f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b64869de0f9a5160956ea57cc70977" id="r_ab7b64869de0f9a5160956ea57cc70977"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ab7b64869de0f9a5160956ea57cc70977">getLastErrorMessage</a> () const noexcept override</td></tr>
+<tr class="separator:ab7b64869de0f9a5160956ea57cc70977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1db_1_1_prepared_statement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1db_1_1_prepared_statement')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">sese::db::PreparedStatement</a></td></tr>
+<tr class="memitem:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement" id="r_a33a127fdb8b9d6b07c7c046f19fd3935"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a33a127fdb8b9d6b07c7c046f19fd3935">~PreparedStatement</a> () noexcept=default</td></tr>
+<tr class="memdesc:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
+<tr class="separator:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+静态 Protected 成员函数</h2></td></tr>
+<tr class="memitem:aae592e6ccfc854711f1b8f34f1d57ff3" id="r_aae592e6ccfc854711f1b8f34f1d57ff3"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aae592e6ccfc854711f1b8f34f1d57ff3">splitBefore</a> (const std::string &amp;str)</td></tr>
+<tr class="separator:aae592e6ccfc854711f1b8f34f1d57ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a3d72b880e75274f8f0d318aa70c5e63f" id="r_a3d72b880e75274f8f0d318aa70c5e63f"><td class="memItemLeft" align="right" valign="top">sqlite3_stmt *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a></td></tr>
+<tr class="separator:a3d72b880e75274f8f0d318aa70c5e63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad14b6c93f4ca2547d70ba5bf135266ce" id="r_ad14b6c93f4ca2547d70ba5bf135266ce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = false</td></tr>
+<tr class="separator:ad14b6c93f4ca2547d70ba5bf135266ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3c42f2c379dad7a635220f7f2ad1c1b" id="r_af3c42f2c379dad7a635220f7f2ad1c1b"><td class="memItemLeft" align="right" valign="top">bool *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a></td></tr>
+<tr class="separator:af3c42f2c379dad7a635220f7f2ad1c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66b0475c7b28f8869707293c0cbccd7b" id="r_a66b0475c7b28f8869707293c0cbccd7b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a> = 0</td></tr>
+<tr class="separator:a66b0475c7b28f8869707293c0cbccd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a3ab1b0b1283b2a8b0dd8956e062792" id="r_a2a3ab1b0b1283b2a8b0dd8956e062792"><td class="memItemLeft" align="right" valign="top">void **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a></td></tr>
+<tr class="separator:a2a3ab1b0b1283b2a8b0dd8956e062792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+静态 Protected 属性</h2></td></tr>
+<tr class="memitem:a5aa6a72bc44db0b00ddcf933768d14f0" id="r_a5aa6a72bc44db0b00ddcf933768d14f0"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a5aa6a72bc44db0b00ddcf933768d14f0">INTEGER_AFFINITY_SET</a> []</td></tr>
+<tr class="separator:a5aa6a72bc44db0b00ddcf933768d14f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30074c39469af3ead1e97dc2133d0575" id="r_a30074c39469af3ead1e97dc2133d0575"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a30074c39469af3ead1e97dc2133d0575">TEXT_AFFINITY_SET</a> []</td></tr>
+<tr class="separator:a30074c39469af3ead1e97dc2133d0575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e446174bbc99d0db92032c2bb1d240a" id="r_a6e446174bbc99d0db92032c2bb1d240a"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a6e446174bbc99d0db92032c2bb1d240a">REAL_AFFINITY_SET</a> []</td></tr>
+<tr class="separator:a6e446174bbc99d0db92032c2bb1d240a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1db_1_1_prepared_statement"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1db_1_1_prepared_statement')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">sese::db::PreparedStatement</a></td></tr>
+<tr class="memitem:aa679cb5888117ad6604066899ac893e0 inherit pub_types_classsese_1_1db_1_1_prepared_statement" id="r_aa679cb5888117ad6604066899ac893e0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">PreparedStatement</a> &gt;</td></tr>
+<tr class="separator:aa679cb5888117ad6604066899ac893e0 inherit pub_types_classsese_1_1db_1_1_prepared_statement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00011">11</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ae3c5486c7b4032981dc05396a8a0e62f" name="ae3c5486c7b4032981dc05396a8a0e62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3c5486c7b4032981dc05396a8a0e62f">&#9670;&#160;</a></span>SqlitePreparedStatementImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">impl::SqlitePreparedStatementImpl::SqlitePreparedStatementImpl </td>
+          <td>(</td>
+          <td class="paramtype">sqlite3_stmt *&#160;</td>
+          <td class="paramname"><em>stmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00054">54</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>    : <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>) {</div>
+<div class="line"><span class="lineno">   56</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a> = <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a>;</div>
+<div class="line"><span class="lineno">   57</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span> *<span class="keyword">&gt;</span>(malloc(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a>));</div>
+<div class="line"><span class="lineno">   58</span>    memset(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>, <span class="keyword">false</span>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a>);</div>
+<div class="line"><span class="lineno">   59</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span> **<span class="keyword">&gt;</span>(malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) * <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a>));</div>
+<div class="line"><span class="lineno">   60</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+
+</div>
+</div>
+<a id="ad4935f04e9f4656e0b8f4ffc1b9d2edd" name="ad4935f04e9f4656e0b8f4ffc1b9d2edd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4935f04e9f4656e0b8f4ffc1b9d2edd">&#9670;&#160;</a></span>~SqlitePreparedStatementImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">impl::SqlitePreparedStatementImpl::~SqlitePreparedStatementImpl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00062">62</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>                                                                       {</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a66b0475c7b28f8869707293c0cbccd7b">count</a>; ++i) {</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[i]) {</div>
+<div class="line"><span class="lineno">   65</span>            <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[i]);</div>
+<div class="line"><span class="lineno">   66</span>        }</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="line"><span class="lineno">   68</span>    <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>);</div>
+<div class="line"><span class="lineno">   69</span>    <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>);</div>
+<div class="line"><span class="lineno">   70</span>    sqlite3_finalize(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">   71</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="abd220f1f5900accc809eb6fded73a734" name="abd220f1f5900accc809eb6fded73a734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd220f1f5900accc809eb6fded73a734">&#9670;&#160;</a></span>executeQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a> impl::SqlitePreparedStatementImpl::executeQuery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>执行查询 </p>
+<dl class="section return"><dt>返回</dt><dd>查询结果集 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>查询失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a105dd94bf914f6b5a41135c3c469118e">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00073">73</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>                                                                    {</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keyword">auto</span> rt = sqlite3_step(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">if</span> (rt == SQLITE_ROW || rt == SQLITE_DONE) {</div>
+<div class="line"><span class="lineno">   76</span>        sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">   77</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">return</span> std::make_unique&lt;SqliteStmtResultSetImpl&gt;(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">   79</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   80</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+<div class="line"><span class="lineno">   82</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a506cb42853c52291b599fdb97eaaaeb3" name="a506cb42853c52291b599fdb97eaaaeb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a506cb42853c52291b599fdb97eaaaeb3">&#9670;&#160;</a></span>executeUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t impl::SqlitePreparedStatementImpl::executeUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>执行更新 </p>
+<dl class="section return"><dt>返回</dt><dd>统计更新的行数 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>查询失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a9694d9a5743da55015a6581e8ead04dd">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00084">84</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>                                                                {</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">if</span> (SQLITE_DONE == sqlite3_step(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>)) {</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keyword">auto</span> conn = sqlite3_db_handle(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">   87</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   88</span>        <span class="keywordflow">return</span> sqlite3_changes(conn);</div>
+<div class="line"><span class="lineno">   89</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+<div class="line"><span class="lineno">   92</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a96e35118f7c3e2a686a24318d7997ec8" name="a96e35118f7c3e2a686a24318d7997ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e35118f7c3e2a686a24318d7997ec8">&#9670;&#160;</a></span>getColumnSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t impl::SqlitePreparedStatementImpl::getColumnSize </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>失败返回 -1 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a1883a70b666418e29fdfab12b76b86bb">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00228">228</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  228</span>                                                                              {</div>
+<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">if</span> (sqlite3_column_count(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>) &lt;= <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index)) {</div>
+<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  231</span>    }</div>
+<div class="line"><span class="lineno">  232</span> </div>
+<div class="line"><span class="lineno">  233</span>    std::string raw = sqlite3_column_decltype(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index));</div>
+<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">if</span> (raw.empty()) {</div>
+<div class="line"><span class="lineno">  235</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  236</span>    }</div>
+<div class="line"><span class="lineno">  237</span> </div>
+<div class="line"><span class="lineno">  238</span>    <span class="comment">// 同上</span></div>
+<div class="line"><span class="lineno">  239</span>    <span class="keyword">auto</span> pos = raw.find_first_of(<span class="charliteral">&#39;(&#39;</span>);</div>
+<div class="line"><span class="lineno">  240</span>    <span class="keywordflow">if</span> (pos == std::string::npos) {</div>
+<div class="line"><span class="lineno">  241</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  242</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  243</span>        <span class="keyword">auto</span> number = raw.substr(pos + 1, raw.length() - pos - 2);</div>
+<div class="line"><span class="lineno">  244</span>        <span class="comment">// SESE_DEBUG(&quot;number string: %s&quot;, number.c_str());</span></div>
+<div class="line"><span class="lineno">  245</span>        <span class="keywordtype">char</span> *end;</div>
+<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">return</span> std::strtol(number.c_str(), &amp;end, 10);</div>
+<div class="line"><span class="lineno">  247</span>    }</div>
+<div class="line"><span class="lineno">  248</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa78ce823b71dee85b7e25c4f6955e449" name="aa78ce823b71dee85b7e25c4f6955e449"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa78ce823b71dee85b7e25c4f6955e449">&#9670;&#160;</a></span>getColumnType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::SqlitePreparedStatementImpl::getColumnType </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取结果集列类型 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引值 </td></tr>
+    <tr><td class="paramname">type</td><td>列类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否获取成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a01f6496e4c85855b83491c67acdb4834">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00195">195</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>                                                                                               {</div>
+<div class="line"><span class="lineno">  196</span>    <span class="keywordflow">if</span> (sqlite3_column_count(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>) &lt;= <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index)) {</div>
+<div class="line"><span class="lineno">  197</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  198</span>    }</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>    <span class="keyword">auto</span> raw = sqlite3_column_decltype(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index));</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (<span class="keyword">nullptr</span> == raw) {</div>
+<div class="line"><span class="lineno">  202</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  203</span>    }</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>    <span class="comment">// 这并不是最好的确定 SQLite 结果集元数据的最好的方法，</span></div>
+<div class="line"><span class="lineno">  206</span>    <span class="comment">// 但目前的官方提供的 API 使得我暂时只能这么做</span></div>
+<div class="line"><span class="lineno">  207</span>    <span class="keyword">auto</span> target = <a class="code hl_function" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aae592e6ccfc854711f1b8f34f1d57ff3">splitBefore</a>(raw);</div>
+<div class="line"><span class="lineno">  208</span>    <span class="comment">// SESE_DEBUG(&quot;raw: %s, target: %s&quot;, raw, target.c_str());</span></div>
+<div class="line"><span class="lineno">  209</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a5aa6a72bc44db0b00ddcf933768d14f0">INTEGER_AFFINITY_SET</a>, 9, target.c_str())) {</div>
+<div class="line"><span class="lineno">  210</span>        type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea5d5cd46919fa987731fb2edefe0f2a0c">MetadataType::INTEGER</a>;</div>
+<div class="line"><span class="lineno">  211</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a30074c39469af3ead1e97dc2133d0575">TEXT_AFFINITY_SET</a>, 8, target.c_str())) {</div>
+<div class="line"><span class="lineno">  212</span>        type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea61a96ffcb251bb9bf0abf8fec19d0ea8">MetadataType::TEXT</a>;</div>
+<div class="line"><span class="lineno">  213</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a6e446174bbc99d0db92032c2bb1d240a">REAL_AFFINITY_SET</a>, 4, target.c_str())) {</div>
+<div class="line"><span class="lineno">  214</span>        type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeae738c26bf4ce1037fa81b039a915cbf6">MetadataType::FLOAT</a>;</div>
+<div class="line"><span class="lineno">  215</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase</a>(<span class="stringliteral">&quot;BOOLEAN&quot;</span>, target.c_str())) {</div>
+<div class="line"><span class="lineno">  216</span>        type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeac48d5da12d702e73d6966069f2687376">MetadataType::BOOLEAN</a>;</div>
+<div class="line"><span class="lineno">  217</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase</a>(<span class="stringliteral">&quot;DATE&quot;</span>, target.c_str())) {</div>
+<div class="line"><span class="lineno">  218</span>        type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea633a6c7a6b9958f8174250094daf1e6a">MetadataType::DATE</a>;</div>
+<div class="line"><span class="lineno">  219</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">sese::strcmpDoNotCase</a>(<span class="stringliteral">&quot;DATETIME&quot;</span>, target.c_str())) {</div>
+<div class="line"><span class="lineno">  220</span>        type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea43354b9116100a9ffc05d385bd6eb65a">MetadataType::DATE_TIME</a>;</div>
+<div class="line"><span class="lineno">  221</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  222</span>        type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea696b031073e74bf2cb98e5ef201d4aa3">MetadataType::UNKNOWN</a>;</div>
+<div class="line"><span class="lineno">  223</span>    }</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  226</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeac48d5da12d702e73d6966069f2687376">sese::db::BOOLEAN</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea633a6c7a6b9958f8174250094daf1e6a">sese::db::DATE</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea43354b9116100a9ffc05d385bd6eb65a">sese::db::DATE_TIME</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeae738c26bf4ce1037fa81b039a915cbf6">sese::db::FLOAT</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea5d5cd46919fa987731fb2edefe0f2a0c">sese::db::INTEGER</a>, <a class="el" href="util_2_util_8cpp_source.html#l00046">sese::strcmpDoNotCase()</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea61a96ffcb251bb9bf0abf8fec19d0ea8">sese::db::TEXT</a> , 以及 <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea696b031073e74bf2cb98e5ef201d4aa3">sese::db::UNKNOWN</a>.</p>
+
+</div>
+</div>
+<a id="a877a6137e73d7368e07c6e86c6da22f8" name="a877a6137e73d7368e07c6e86c6da22f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a877a6137e73d7368e07c6e86c6da22f8">&#9670;&#160;</a></span>getLastError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int impl::SqlitePreparedStatementImpl::getLastError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aff8704df5f18c8689877bb96b95a0d0c">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00177">177</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  177</span>                                                                 {</div>
+<div class="line"><span class="lineno">  178</span>    <span class="keyword">auto</span> conn = sqlite3_db_handle(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">  179</span>    <span class="keywordflow">if</span> (conn) {</div>
+<div class="line"><span class="lineno">  180</span>        <span class="keywordflow">return</span> sqlite3_errcode(conn);</div>
+<div class="line"><span class="lineno">  181</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">return</span> SQLITE_MISUSE;</div>
+<div class="line"><span class="lineno">  183</span>    }</div>
+<div class="line"><span class="lineno">  184</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab7b64869de0f9a5160956ea57cc70977" name="ab7b64869de0f9a5160956ea57cc70977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b64869de0f9a5160956ea57cc70977">&#9670;&#160;</a></span>getLastErrorMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * impl::SqlitePreparedStatementImpl::getLastErrorMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误信息，需要判空 </p><dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a75a7fed952a3c61fbe612ec30187f357">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00186">186</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  186</span>                                                                                {</div>
+<div class="line"><span class="lineno">  187</span>    <span class="keyword">auto</span> conn = sqlite3_db_handle(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">if</span> (conn) {</div>
+<div class="line"><span class="lineno">  189</span>        <span class="keywordflow">return</span> sqlite3_errmsg(conn);</div>
+<div class="line"><span class="lineno">  190</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  191</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  192</span>    }</div>
+<div class="line"><span class="lineno">  193</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5dd88b5ce4e8f5516cc2db1c9a8c1dcd" name="a5dd88b5ce4e8f5516cc2db1c9a8c1dcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dd88b5ce4e8f5516cc2db1c9a8c1dcd">&#9670;&#160;</a></span>setDateTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::SqlitePreparedStatementImpl::setDateTime </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置为 dateTime </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>日期 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a9c9370a35583b2a7133b0e5e6e8b1985">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00160">160</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>                                                                                                    {</div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a>) sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">  162</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1]) {</div>
+<div class="line"><span class="lineno">  165</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1]);</div>
+<div class="line"><span class="lineno">  166</span>    }</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1] = malloc(20);</div>
+<div class="line"><span class="lineno">  169</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1] = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>    std::string date_value = <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">text::DateTimeFormatter::format</a>(value, <span class="stringliteral">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</div>
+<div class="line"><span class="lineno">  172</span>    memcpy(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1], date_value.c_str(), 20);</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">return</span> SQLITE_OK == sqlite3_bind_text(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index), <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1]), -1, SQLITE_TRANSIENT);</div>
+<div class="line"><span class="lineno">  175</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+
+</div>
+</div>
+<a id="a96f310b45eacbdab13a8018ed0bd2473" name="a96f310b45eacbdab13a8018ed0bd2473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96f310b45eacbdab13a8018ed0bd2473">&#9670;&#160;</a></span>setDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::SqlitePreparedStatementImpl::setDouble </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置双精度浮点值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a62f89fa2510371aa3e363b64daeeadf5">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00094">94</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>                                                                                            {</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a>) sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1]) {</div>
+<div class="line"><span class="lineno">   97</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1]);</div>
+<div class="line"><span class="lineno">   98</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1] = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   99</span>    }</div>
+<div class="line"><span class="lineno">  100</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">return</span> SQLITE_OK == sqlite3_bind_double(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index), value);</div>
+<div class="line"><span class="lineno">  102</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+
+</div>
+</div>
+<a id="a0b896515d62d327b7e4e9a1a4105b7c7" name="a0b896515d62d327b7e4e9a1a4105b7c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b896515d62d327b7e4e9a1a4105b7c7">&#9670;&#160;</a></span>setFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::SqlitePreparedStatementImpl::setFloat </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置单精度浮点值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a6bd612984a8076e4672464a5c7662ee2">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00104">104</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>                                                                                          {</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a>) sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1]) {</div>
+<div class="line"><span class="lineno">  107</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1]);</div>
+<div class="line"><span class="lineno">  108</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1] = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  109</span>    }</div>
+<div class="line"><span class="lineno">  110</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">return</span> SQLITE_OK == sqlite3_bind_double(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index), value);</div>
+<div class="line"><span class="lineno">  112</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+
+</div>
+</div>
+<a id="a44e992bf21d0aea4f1ba63b61d3e6147" name="a44e992bf21d0aea4f1ba63b61d3e6147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44e992bf21d0aea4f1ba63b61d3e6147">&#9670;&#160;</a></span>setInteger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::SqlitePreparedStatementImpl::setInteger </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置整型值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a55317de12df378f61ca63254ffec3e85">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00124">124</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  124</span>                                                                                              {</div>
+<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a>) sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1]) {</div>
+<div class="line"><span class="lineno">  127</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1]);</div>
+<div class="line"><span class="lineno">  128</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1] = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  129</span>    }</div>
+<div class="line"><span class="lineno">  130</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">return</span> SQLITE_OK == sqlite3_bind_int(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index), value);</div>
+<div class="line"><span class="lineno">  132</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+
+</div>
+</div>
+<a id="aecfa52f2db218a691b022f0227e62f96" name="aecfa52f2db218a691b022f0227e62f96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecfa52f2db218a691b022f0227e62f96">&#9670;&#160;</a></span>setLong()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::SqlitePreparedStatementImpl::setLong </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置长整型值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a67af917ce535790231ed63ac9fcb740e">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00114">114</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  114</span>                                                                                           {</div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a>) sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1]) {</div>
+<div class="line"><span class="lineno">  117</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1]);</div>
+<div class="line"><span class="lineno">  118</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1] = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  119</span>    }</div>
+<div class="line"><span class="lineno">  120</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">return</span> SQLITE_OK == sqlite3_bind_int64(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index), value);</div>
+<div class="line"><span class="lineno">  122</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+
+</div>
+</div>
+<a id="ab3e20d1486565fa4455a0edd2b30f76d" name="ab3e20d1486565fa4455a0edd2b30f76d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e20d1486565fa4455a0edd2b30f76d">&#9670;&#160;</a></span>setNull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::SqlitePreparedStatementImpl::setNull </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置为 NULL </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a3aacf6508a378e864e31716b4193ad97">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00150">150</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>                                                                     {</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a>) sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1]) {</div>
+<div class="line"><span class="lineno">  153</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1]);</div>
+<div class="line"><span class="lineno">  154</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1] = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  155</span>    }</div>
+<div class="line"><span class="lineno">  156</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">return</span> SQLITE_OK == sqlite3_bind_null(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index));</div>
+<div class="line"><span class="lineno">  158</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+
+</div>
+</div>
+<a id="a0fb2e549730359c0285d2fe12ff53a15" name="a0fb2e549730359c0285d2fe12ff53a15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb2e549730359c0285d2fe12ff53a15">&#9670;&#160;</a></span>setText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::SqlitePreparedStatementImpl::setText </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置文本值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a6d44037b048965d377dee894ebc0f58f">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00134">134</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  134</span>                                                                                        {</div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a>) sqlite3_reset(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>);</div>
+<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1]) {</div>
+<div class="line"><span class="lineno">  137</span>        <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1]);</div>
+<div class="line"><span class="lineno">  138</span>    }</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#af3c42f2c379dad7a635220f7f2ad1c1b">isManual</a>[index - 1] = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  141</span>    <span class="keyword">auto</span> len = strlen(value);</div>
+<div class="line"><span class="lineno">  142</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1] = malloc(len + 1);</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1])[len] = 0;</div>
+<div class="line"><span class="lineno">  144</span>    memcpy(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a2a3ab1b0b1283b2a8b0dd8956e062792">buffer</a>[index - 1], value, len);</div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ad14b6c93f4ca2547d70ba5bf135266ce">stmtStatus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> SQLITE_OK == sqlite3_bind_text(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a3d72b880e75274f8f0d318aa70c5e63f">stmt</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index), value, -1, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  148</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>.</p>
+
+</div>
+</div>
+<a id="aae592e6ccfc854711f1b8f34f1d57ff3" name="aae592e6ccfc854711f1b8f34f1d57ff3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae592e6ccfc854711f1b8f34f1d57ff3">&#9670;&#160;</a></span>splitBefore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string impl::SqlitePreparedStatementImpl::splitBefore </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00046">46</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>                                                                           {</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keyword">auto</span> pos = str.find_first_of(<span class="charliteral">&#39;(&#39;</span>);</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (std::string::npos == pos) {</div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">return</span> str;</div>
+<div class="line"><span class="lineno">   50</span>    }</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> str.substr(0, pos);</div>
+<div class="line"><span class="lineno">   52</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a2a3ab1b0b1283b2a8b0dd8956e062792" name="a2a3ab1b0b1283b2a8b0dd8956e062792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a3ab1b0b1283b2a8b0dd8956e062792">&#9670;&#160;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void** sese::db::impl::SqlitePreparedStatementImpl::buffer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00037">37</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a66b0475c7b28f8869707293c0cbccd7b" name="a66b0475c7b28f8869707293c0cbccd7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66b0475c7b28f8869707293c0cbccd7b">&#9670;&#160;</a></span>count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::db::impl::SqlitePreparedStatementImpl::count = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00036">36</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5aa6a72bc44db0b00ddcf933768d14f0" name="a5aa6a72bc44db0b00ddcf933768d14f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aa6a72bc44db0b00ddcf933768d14f0">&#9670;&#160;</a></span>INTEGER_AFFINITY_SET</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * impl::SqlitePreparedStatementImpl::INTEGER_AFFINITY_SET</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;INT&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;INTEGER&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;TINYINT&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;SMALLINT&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;MEDIUMINT&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;BIGINT&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;UNSIGNED BIG INT&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;INT2&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;INT8&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00040">40</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af3c42f2c379dad7a635220f7f2ad1c1b" name="af3c42f2c379dad7a635220f7f2ad1c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3c42f2c379dad7a635220f7f2ad1c1b">&#9670;&#160;</a></span>isManual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool* sese::db::impl::SqlitePreparedStatementImpl::isManual</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00035">35</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6e446174bbc99d0db92032c2bb1d240a" name="a6e446174bbc99d0db92032c2bb1d240a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e446174bbc99d0db92032c2bb1d240a">&#9670;&#160;</a></span>REAL_AFFINITY_SET</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * impl::SqlitePreparedStatementImpl::REAL_AFFINITY_SET</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;REAL&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;DOUBLE&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;DOUBLE PRECISION&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;FLOAT&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;NUMERIC&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;DECIMAL&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00042">42</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3d72b880e75274f8f0d318aa70c5e63f" name="a3d72b880e75274f8f0d318aa70c5e63f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d72b880e75274f8f0d318aa70c5e63f">&#9670;&#160;</a></span>stmt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sqlite3_stmt* sese::db::impl::SqlitePreparedStatementImpl::stmt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad14b6c93f4ca2547d70ba5bf135266ce" name="ad14b6c93f4ca2547d70ba5bf135266ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad14b6c93f4ca2547d70ba5bf135266ce">&#9670;&#160;</a></span>stmtStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::SqlitePreparedStatementImpl::stmtStatus = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00034">34</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a30074c39469af3ead1e97dc2133d0575" name="a30074c39469af3ead1e97dc2133d0575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30074c39469af3ead1e97dc2133d0575">&#9670;&#160;</a></span>TEXT_AFFINITY_SET</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * impl::SqlitePreparedStatementImpl::TEXT_AFFINITY_SET</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        <span class="stringliteral">&quot;CHARACTER&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;VARCHAR&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;VARYING CHARACTER&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;NCHAR&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;NATIVE CHARACTER&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;NVARCHAR&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;TEXT&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;CLOB&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a> 第 <a class="el" href="_sqlite_prepared_statement_impl_8h_source.html#l00041">41</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/internal/db/impl/sqlite/<a class="el" href="_sqlite_prepared_statement_impl_8h_source.html">SqlitePreparedStatementImpl.h</a></li>
+<li>sese/internal/db/impl/sqlite/<a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html">SqlitePreparedStatementImpl.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

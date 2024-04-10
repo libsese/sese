@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::iocp::v1::Context类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1iocp.html">iocp</a></li><li class="navelem"><a class="el" href="namespacesese_1_1iocp_1_1v1.html">v1</a></li><li class="navelem"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#friends">友元</a> &#124;
+<a href="classsese_1_1iocp_1_1v1_1_1_context-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::iocp::v1::Context类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>基于 sese-event 的完成端口操作上下文  
+ <a href="classsese_1_1iocp_1_1v1_1_1_context.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::iocp::v1::Context 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1iocp_1_1v1_1_1_context.png" usemap="#sese::iocp::v1::Context_map" alt=""/>
+  <map id="sese::iocp::v1::Context_map" name="sese::iocp::v1::Context_map">
+<area href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类" alt="sese::io::InputStream" shape="rect" coords="0,0,151,24"/>
+<area href="classsese_1_1io_1_1_output_stream.html" title="流式输出接口类" alt="sese::io::OutputStream" shape="rect" coords="161,0,312,24"/>
+<area href="classsese_1_1io_1_1_peekable_stream.html" title="可窥视流接口" alt="sese::io::PeekableStream" shape="rect" coords="322,0,473,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a1ec697ea3f23b31ec60b73a69b568261" id="r_a1ec697ea3f23b31ec60b73a69b568261"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a1ec697ea3f23b31ec60b73a69b568261">read</a> (void *buffer, size_t length) override</td></tr>
+<tr class="separator:a1ec697ea3f23b31ec60b73a69b568261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5312e84786b661ac3ad98400bb597635" id="r_a5312e84786b661ac3ad98400bb597635"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#a5312e84786b661ac3ad98400bb597635">write</a> (const void *buffer, size_t length) override</td></tr>
+<tr class="separator:a5312e84786b661ac3ad98400bb597635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc46cd1d3ac99187ff38c5fbb14b5362" id="r_abc46cd1d3ac99187ff38c5fbb14b5362"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#abc46cd1d3ac99187ff38c5fbb14b5362">peek</a> (void *buffer, size_t length) override</td></tr>
+<tr class="separator:abc46cd1d3ac99187ff38c5fbb14b5362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab33f79771858dcf4d7c6dc1239bfef4f" id="r_ab33f79771858dcf4d7c6dc1239bfef4f"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#ab33f79771858dcf4d7c6dc1239bfef4f">trunc</a> (size_t length) override</td></tr>
+<tr class="separator:ab33f79771858dcf4d7c6dc1239bfef4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbbb803bfd477380c941be8b9e7df03c" id="r_abbbb803bfd477380c941be8b9e7df03c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#abbbb803bfd477380c941be8b9e7df03c">getFd</a> () const</td></tr>
+<tr class="separator:abbbb803bfd477380c941be8b9e7df03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfd70aef2754ba560dfea2adaef526b4" id="r_abfd70aef2754ba560dfea2adaef526b4"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#abfd70aef2754ba560dfea2adaef526b4">getData</a> () const</td></tr>
+<tr class="separator:abfd70aef2754ba560dfea2adaef526b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac49611ab7cad4919e60aac626ad573b8" id="r_ac49611ab7cad4919e60aac626ad573b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#ac49611ab7cad4919e60aac626ad573b8">setData</a> (void *p_data)</td></tr>
+<tr class="separator:ac49611ab7cad4919e60aac626ad573b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="memitem:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream" id="r_acc4179962d8ad6f886cf4d85642823a3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#acc4179962d8ad6f886cf4d85642823a3">~InputStream</a> () noexcept=default</td></tr>
+<tr class="separator:acc4179962d8ad6f886cf4d85642823a3 inherit pub_methods_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="memitem:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream" id="r_ae464ac2ec10447e7096b5bcca08bad54"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#ae464ac2ec10447e7096b5bcca08bad54">~OutputStream</a> () noexcept=default</td></tr>
+<tr class="separator:ae464ac2ec10447e7096b5bcca08bad54 inherit pub_methods_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
+<tr class="memitem:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream" id="r_aeb71ca5a92ba6b49caae5489458f5fd1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html#aeb71ca5a92ba6b49caae5489458f5fd1">~PeekableStream</a> ()=default</td></tr>
+<tr class="separator:aeb71ca5a92ba6b49caae5489458f5fd1 inherit pub_methods_classsese_1_1io_1_1_peekable_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:ae31b569ad6c8e9a7220c709e5cb49039" id="r_ae31b569ad6c8e9a7220c709e5cb49039"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#ae31b569ad6c8e9a7220c709e5cb49039">IOCPServer</a></td></tr>
+<tr class="separator:ae31b569ad6c8e9a7220c709e5cb49039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbeb78c96113ba99351d3327f9a2ce50" id="r_acbeb78c96113ba99351d3327f9a2ce50"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html#acbeb78c96113ba99351d3327f9a2ce50">IOCPService</a></td></tr>
+<tr class="separator:acbeb78c96113ba99351d3327f9a2ce50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_input_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_input_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="memitem:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream" id="r_a0452a75dd0ee9345d78e9d14c1b7cb78"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_input_stream.html">InputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">Ptr</a></td></tr>
+<tr class="separator:a0452a75dd0ee9345d78e9d14c1b7cb78 inherit pub_types_classsese_1_1io_1_1_input_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_output_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_output_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="memitem:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream" id="r_a4446385dc8f0d3431a03fda5165a4b3a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_output_stream.html">OutputStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">Ptr</a></td></tr>
+<tr class="separator:a4446385dc8f0d3431a03fda5165a4b3a inherit pub_types_classsese_1_1io_1_1_output_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1io_1_1_peekable_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1io_1_1_peekable_stream')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">sese::io::PeekableStream</a></td></tr>
+<tr class="memitem:a419bfa8f7e6094f2176165bc1a85fa2a inherit pub_types_classsese_1_1io_1_1_peekable_stream" id="r_a419bfa8f7e6094f2176165bc1a85fa2a"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1io_1_1_peekable_stream.html">PeekableStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_peekable_stream.html#a419bfa8f7e6094f2176165bc1a85fa2a">Ptr</a></td></tr>
+<tr class="separator:a419bfa8f7e6094f2176165bc1a85fa2a inherit pub_types_classsese_1_1io_1_1_peekable_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>基于 sese-event 的完成端口操作上下文 </p>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00214">214</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="abfd70aef2754ba560dfea2adaef526b4" name="abfd70aef2754ba560dfea2adaef526b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfd70aef2754ba560dfea2adaef526b4">&#9670;&#160;</a></span>getData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * sese::iocp::v1::Context::getData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取当前上下文额外数据 </p><dl class="section return"><dt>返回</dt><dd>额外数据 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00265">265</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  265</span>{ <span class="keywordflow">return</span> Context::data; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abbbb803bfd477380c941be8b9e7df03c" name="abbbb803bfd477380c941be8b9e7df03c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbbb803bfd477380c941be8b9e7df03c">&#9670;&#160;</a></span>getFd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::iocp::v1::Context::getFd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取当前上下文连接文件描述符 </p><dl class="section return"><dt>返回</dt><dd>文件描述符 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00260">260</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  260</span>{ <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int32_t<span class="keyword">&gt;</span>(Context::fd); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abc46cd1d3ac99187ff38c5fbb14b5362" name="abc46cd1d3ac99187ff38c5fbb14b5362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc46cd1d3ac99187ff38c5fbb14b5362">&#9670;&#160;</a></span>peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Context::peek </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>从当前连接中读取内容，但不步进 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>缓存 </td></tr>
+    <tr><td class="paramname">length</td><td>缓存大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>实际读取大小 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#a628ee255e598043189b2ac0e4e319193">sese::io::PeekableStream</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00018">18</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                 {</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">return</span> recv.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">peek</a>(buffer, length);</div>
+<div class="line"><span class="lineno">   20</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00233">sese::io::AbstractByteBuffer::peek()</a>.</p>
+
+</div>
+</div>
+<a id="a1ec697ea3f23b31ec60b73a69b568261" name="a1ec697ea3f23b31ec60b73a69b568261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ec697ea3f23b31ec60b73a69b568261">&#9670;&#160;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Context::read </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>从当前连接中读取内容 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>缓存 </td></tr>
+    <tr><td class="paramname">length</td><td>缓存大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>实际读取大小 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00010">10</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                 {</div>
+<div class="line"><span class="lineno">   11</span>    <span class="keywordflow">return</span> recv.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aba3ee2794220fe6a65232206a2cd30b2">read</a>(buffer, length);</div>
+<div class="line"><span class="lineno">   12</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00170">sese::io::AbstractByteBuffer::read()</a>.</p>
+
+</div>
+</div>
+<a id="ac49611ab7cad4919e60aac626ad573b8" name="ac49611ab7cad4919e60aac626ad573b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac49611ab7cad4919e60aac626ad573b8">&#9670;&#160;</a></span>setData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::Context::setData </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置当前上下文额外数据 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_data</td><td>额外数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00270">270</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  270</span>{ Context::data = p_data; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab33f79771858dcf4d7c6dc1239bfef4f" name="ab33f79771858dcf4d7c6dc1239bfef4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab33f79771858dcf4d7c6dc1239bfef4f">&#9670;&#160;</a></span>trunc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Context::trunc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>在当前连接中步进，不读取内容 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">length</td><td>步进大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>实际步进大小 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#ae7eaaf3b47b873769e0a0249b06588ad">sese::io::PeekableStream</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00022">22</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>                                    {</div>
+<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">return</span> recv.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">trunc</a>(length);</div>
+<div class="line"><span class="lineno">   24</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00268">sese::io::AbstractByteBuffer::trunc()</a>.</p>
+
+</div>
+</div>
+<a id="a5312e84786b661ac3ad98400bb597635" name="a5312e84786b661ac3ad98400bb597635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5312e84786b661ac3ad98400bb597635">&#9670;&#160;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Context::write </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>向当前连接中写入内容 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>缓存 </td></tr>
+    <tr><td class="paramname">length</td><td>缓存大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>实际写入大小 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00014">14</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>                                                        {</div>
+<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">return</span> send.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">write</a>(buffer, length);</div>
+<div class="line"><span class="lineno">   16</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00201">sese::io::AbstractByteBuffer::write()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">友元及相关函数文档</h2>
+<a id="ae31b569ad6c8e9a7220c709e5cb49039" name="ae31b569ad6c8e9a7220c709e5cb49039"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae31b569ad6c8e9a7220c709e5cb49039">&#9670;&#160;</a></span>IOCPServer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html">IOCPServer</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00215">215</a> 行定义.</p>
+
+</div>
+</div>
+<a id="acbeb78c96113ba99351d3327f9a2ce50" name="acbeb78c96113ba99351d3327f9a2ce50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbeb78c96113ba99351d3327f9a2ce50">&#9670;&#160;</a></span>IOCPService</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html">IOCPService</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00216">216</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/service/iocp/<a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a></li>
+<li>sese/service/iocp/<a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

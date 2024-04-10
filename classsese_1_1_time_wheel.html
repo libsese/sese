@@ -1,0 +1,469 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::TimeWheel类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_time_wheel.html">TimeWheel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1_time_wheel-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::TimeWheel类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>时间轮  
+ <a href="classsese_1_1_time_wheel.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_time_wheel_8h_source.html">TimeWheel.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ad88678f249e0937fddba84c86c756171" id="r_ad88678f249e0937fddba84c86c756171"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#ad88678f249e0937fddba84c86c756171">TimeWheel</a> ()</td></tr>
+<tr class="separator:ad88678f249e0937fddba84c86c756171"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83486ae59127621c1c2bfd92de607ce6" id="r_a83486ae59127621c1c2bfd92de607ce6"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#a83486ae59127621c1c2bfd92de607ce6">~TimeWheel</a> ()</td></tr>
+<tr class="separator:a83486ae59127621c1c2bfd92de607ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28e39359a50a74f841abc2bfebcc4d0" id="r_ad28e39359a50a74f841abc2bfebcc4d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#ad28e39359a50a74f841abc2bfebcc4d0">delay</a> (const <a class="el" href="structsese_1_1_timeout_event.html#adf1f3bf9bb96a6245314e690f69f1a1f">TimeoutEvent::Callback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>, int64_t seconds, bool repeat=false)</td></tr>
+<tr class="separator:ad28e39359a50a74f841abc2bfebcc4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb2f1bbbeedeb421d16d63a0dd1c390" id="r_abdb2f1bbbeedeb421d16d63a0dd1c390"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#abdb2f1bbbeedeb421d16d63a0dd1c390">cancel</a> (<a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> *event)</td></tr>
+<tr class="separator:abdb2f1bbbeedeb421d16d63a0dd1c390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bf36bb2b8cfcd0c2d25047058d1a720" id="r_a8bf36bb2b8cfcd0c2d25047058d1a720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#a8bf36bb2b8cfcd0c2d25047058d1a720">check</a> ()</td></tr>
+<tr class="memdesc:a8bf36bb2b8cfcd0c2d25047058d1a720"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件  <br /></td></tr>
+<tr class="separator:a8bf36bb2b8cfcd0c2d25047058d1a720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+静态 Protected 成员函数</h2></td></tr>
+<tr class="memitem:a3acab877ddb03fbd0b204b86d32487dd" id="r_a3acab877ddb03fbd0b204b86d32487dd"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#a3acab877ddb03fbd0b204b86d32487dd">getTimestamp</a> ()</td></tr>
+<tr class="separator:a3acab877ddb03fbd0b204b86d32487dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a39d44c8d1b2b2869fd7d6820e1db8812" id="r_a39d44c8d1b2b2869fd7d6820e1db8812"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a> {}</td></tr>
+<tr class="separator:a39d44c8d1b2b2869fd7d6820e1db8812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa359f4e5a5a6552aa9d62df1e8590ab9" id="r_aa359f4e5a5a6552aa9d62df1e8590ab9"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#aa359f4e5a5a6552aa9d62df1e8590ab9">lastCheckTime</a> {}</td></tr>
+<tr class="separator:aa359f4e5a5a6552aa9d62df1e8590ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78bdf3a8f381fd93b847e2830d027d46" id="r_a78bdf3a8f381fd93b847e2830d027d46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1_timeout_event_slot.html">TimeoutEventSlot</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">slots</a> [60] {}</td></tr>
+<tr class="separator:a78bdf3a8f381fd93b847e2830d027d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>时间轮 </p>
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8h_source.html">TimeWheel.h</a> 第 <a class="el" href="_time_wheel_8h_source.html#l00048">48</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ad88678f249e0937fddba84c86c756171" name="ad88678f249e0937fddba84c86c756171"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad88678f249e0937fddba84c86c756171">&#9670;&#160;</a></span>TimeWheel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TimeWheel::TimeWheel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8cpp_source.html">TimeWheel.cpp</a> 第 <a class="el" href="_time_wheel_8cpp_source.html#l00009">9</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    9</span>                     {</div>
+<div class="line"><span class="lineno">   10</span>    <a class="code hl_struct" href="structsese_1_1_timeout_event_slot.html" title="超时事件槽（时间轮轮片）">TimeoutEventSlot</a> *pre_address = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   11</span>    <a class="code hl_class" href="classsese_1_1_range.html" title="区间类">Range&lt;int&gt;</a> range(0, 59);</div>
+<div class="line"><span class="lineno">   12</span>    std::for_each(range.rbegin(), range.rend(), [&amp;](<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;number) {</div>
+<div class="line"><span class="lineno">   13</span>        this-&gt;slots[number].next = pre_address;</div>
+<div class="line"><span class="lineno">   14</span>        pre_address = &amp;this-&gt;slots[number];</div>
+<div class="line"><span class="lineno">   15</span>    });</div>
+<div class="line"><span class="lineno">   16</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">slots</a>[59].<a class="code hl_variable" href="structsese_1_1_timeout_event_slot.html#afaa6bb6b3836ee875b8d0db655664686" title="指向下一个超时事件槽">next</a> = &amp;this-&gt;<a class="code hl_variable" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">slots</a>[0];</div>
+<div class="line"><span class="lineno">   17</span>    <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a> = <a class="code hl_variable" href="classsese_1_1_time_wheel.html#aa359f4e5a5a6552aa9d62df1e8590ab9">lastCheckTime</a> = <a class="code hl_function" href="classsese_1_1_time_wheel.html#a3acab877ddb03fbd0b204b86d32487dd">getTimestamp</a>();</div>
+<div class="line"><span class="lineno">   18</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp_source.html#l00029">getTimestamp()</a>, <a class="el" href="_time_wheel_8h_source.html#l00076">lastCheckTime</a>, <a class="el" href="_time_wheel_8h_source.html#l00042">sese::TimeoutEventSlot::next</a>, <a class="el" href="util_2_range_8h_source.html#l00123">sese::Range&lt; TYPE &gt;::rbegin()</a>, <a class="el" href="util_2_range_8h_source.html#l00127">sese::Range&lt; TYPE &gt;::rend()</a>, <a class="el" href="_time_wheel_8h_source.html#l00077">slots</a> , 以及 <a class="el" href="_time_wheel_8h_source.html#l00075">startTime</a>.</p>
+
+</div>
+</div>
+<a id="a83486ae59127621c1c2bfd92de607ce6" name="a83486ae59127621c1c2bfd92de607ce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83486ae59127621c1c2bfd92de607ce6">&#9670;&#160;</a></span>~TimeWheel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TimeWheel::~TimeWheel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8cpp_source.html">TimeWheel.cpp</a> 第 <a class="el" href="_time_wheel_8cpp_source.html#l00020">20</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>                      {</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">for</span> (<a class="code hl_struct" href="structsese_1_1_timeout_event_slot.html" title="超时事件槽（时间轮轮片）">TimeoutEventSlot</a> &amp;slot: <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">slots</a>) {</div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">for</span> (<a class="code hl_struct" href="structsese_1_1_timeout_event.html" title="超时事件">TimeoutEvent</a> *event: slot.events) {</div>
+<div class="line"><span class="lineno">   23</span>            <span class="keyword">delete</span> event; <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">   24</span>        }</div>
+<div class="line"><span class="lineno">   25</span>        slot.events.clear();</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_time_wheel_8h_source.html#l00077">slots</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="abdb2f1bbbeedeb421d16d63a0dd1c390" name="abdb2f1bbbeedeb421d16d63a0dd1c390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdb2f1bbbeedeb421d16d63a0dd1c390">&#9670;&#160;</a></span>cancel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TimeWheel::cancel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>取消一个超时事件，事件将变得不可用 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>超时事件 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8cpp_source.html">TimeWheel.cpp</a> 第 <a class="el" href="_time_wheel_8cpp_source.html#l00049">49</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                          {</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keyword">auto</span> index = (<span class="keyword">event</span>-&gt;target - <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a>) % 60;</div>
+<div class="line"><span class="lineno">   51</span>    <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">slots</a>[index].<a class="code hl_variable" href="structsese_1_1_timeout_event_slot.html#a46bcff193be455888c4e62de7326f243" title="存放于此的超时事件列表">events</a>.remove(event);</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keyword">delete</span> event; <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">   53</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_time_wheel_8h_source.html#l00040">sese::TimeoutEventSlot::events</a>, <a class="el" href="_time_wheel_8h_source.html#l00077">slots</a> , 以及 <a class="el" href="_time_wheel_8h_source.html#l00075">startTime</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00508">sese::_windows::iocp::v1::NativeIOCPServer::cancelTimeout()</a>, <a class="el" href="_timerable_service___v2_8cpp_source.html#l00028">sese::service::v2::TimerableService::cancelTimeoutEvent()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00517">sese::_windows::iocp::v1::NativeIOCPServer::releaseContext()</a>.</p>
+
+</div>
+</div>
+<a id="a8bf36bb2b8cfcd0c2d25047058d1a720" name="a8bf36bb2b8cfcd0c2d25047058d1a720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf36bb2b8cfcd0c2d25047058d1a720">&#9670;&#160;</a></span>check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TimeWheel::check </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>检查当前是否有需要触发的超时事件，有则触发对应的回调函数并根据需要销毁事件 </p>
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8cpp_source.html">TimeWheel.cpp</a> 第 <a class="el" href="_time_wheel_8cpp_source.html#l00055">55</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>                      {</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keyword">auto</span> current = <a class="code hl_function" href="classsese_1_1_time_wheel.html#a3acab877ddb03fbd0b204b86d32487dd">getTimestamp</a>();</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keyword">auto</span> number_of_slots = current - <a class="code hl_variable" href="classsese_1_1_time_wheel.html#aa359f4e5a5a6552aa9d62df1e8590ab9">lastCheckTime</a>;</div>
+<div class="line"><span class="lineno">   58</span>    number_of_slots = std::min&lt;int64_t&gt;(number_of_slots, 60);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    <span class="keyword">auto</span> index = (<a class="code hl_variable" href="classsese_1_1_time_wheel.html#aa359f4e5a5a6552aa9d62df1e8590ab9">lastCheckTime</a> - <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a>) % 60;</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keyword">auto</span> p_slot = &amp;<a class="code hl_variable" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">slots</a>[index];</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; number_of_slots; ++i) {</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> iterator = p_slot-&gt;events.begin(); iterator != p_slot-&gt;events.end();) {</div>
+<div class="line"><span class="lineno">   64</span><span class="preprocessor">#define EVENT (*iterator)</span></div>
+<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">if</span> (<a class="code hl_define" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>-&gt;target &gt; current) {</div>
+<div class="line"><span class="lineno">   66</span>                iterator++;</div>
+<div class="line"><span class="lineno">   67</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   68</span>                <a class="code hl_define" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>-&gt;callback();</div>
+<div class="line"><span class="lineno">   69</span>                <span class="keywordflow">if</span> (<a class="code hl_define" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>-&gt;repeat) {</div>
+<div class="line"><span class="lineno">   70</span>                    <a class="code hl_define" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>-&gt;target = <a class="code hl_function" href="classsese_1_1_time_wheel.html#a3acab877ddb03fbd0b204b86d32487dd">getTimestamp</a>() + <a class="code hl_define" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>-&gt;range;</div>
+<div class="line"><span class="lineno">   71</span>                    <span class="keyword">auto</span> new_index = (<a class="code hl_define" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>-&gt;target - <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a>) % 60;</div>
+<div class="line"><span class="lineno">   72</span>                    <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">slots</a>[new_index].<a class="code hl_variable" href="structsese_1_1_timeout_event_slot.html#a46bcff193be455888c4e62de7326f243" title="存放于此的超时事件列表">events</a>.emplace_back(<a class="code hl_define" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>);</div>
+<div class="line"><span class="lineno">   73</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   74</span>                    <span class="keyword">delete</span> <a class="code hl_define" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>; <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">   75</span>                }</div>
+<div class="line"><span class="lineno">   76</span>                p_slot-&gt;events.erase(iterator++);</div>
+<div class="line"><span class="lineno">   77</span>            }</div>
+<div class="line"><span class="lineno">   78</span><span class="preprocessor">#undef EVENT</span></div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="line"><span class="lineno">   80</span>        p_slot = p_slot-&gt;next;</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_variable" href="classsese_1_1_time_wheel.html#aa359f4e5a5a6552aa9d62df1e8590ab9">lastCheckTime</a> = current;</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_time_wheel_8cpp.html#a7877e997621e1161f058fce90febd464">EVENT</a>, <a class="el" href="_time_wheel_8h_source.html#l00040">sese::TimeoutEventSlot::events</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00029">getTimestamp()</a>, <a class="el" href="_time_wheel_8h_source.html#l00076">lastCheckTime</a>, <a class="el" href="_time_wheel_8h_source.html#l00077">slots</a> , 以及 <a class="el" href="_time_wheel_8h_source.html#l00075">startTime</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">sese::_windows::iocp::v1::NativeIOCPServer::acceptThreadProc()</a> , 以及 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00006">sese::service::v2::TimerableService::dispatch()</a>.</p>
+
+</div>
+</div>
+<a id="ad28e39359a50a74f841abc2bfebcc4d0" name="ad28e39359a50a74f841abc2bfebcc4d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28e39359a50a74f841abc2bfebcc4d0">&#9670;&#160;</a></span>delay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1_timeout_event.html">TimeoutEvent</a> * TimeWheel::delay </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structsese_1_1_timeout_event.html#adf1f3bf9bb96a6245314e690f69f1a1f">TimeoutEvent::Callback</a> &amp;&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>repeat</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>添加一个超时事件 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>超时回调函数 </td></tr>
+    <tr><td class="paramname">seconds</td><td>超时时间 </td></tr>
+    <tr><td class="paramname">repeat</td><td>事件是否重复触发 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>超时事件 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8cpp_source.html">TimeWheel.cpp</a> 第 <a class="el" href="_time_wheel_8cpp_source.html#l00035">35</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                                                                 {</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keyword">auto</span> current = <a class="code hl_function" href="classsese_1_1_time_wheel.html#a3acab877ddb03fbd0b204b86d32487dd">getTimestamp</a>();</div>
+<div class="line"><span class="lineno">   37</span>    <span class="keyword">auto</span> <span class="keyword">event</span> = <span class="keyword">new</span> <a class="code hl_struct" href="structsese_1_1_timeout_event.html" title="超时事件">TimeoutEvent</a>;</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keyword">event</span>-&gt;<a class="code hl_variable" href="structsese_1_1_timeout_event.html#a1faccf1da114a3e28d0d4913dccb40f4" title="超时事件定时事件总长">range</a> = seconds;</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keyword">event</span>-&gt;repeat = repeat;</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keyword">event</span>-&gt;callback = <a class="code hl_function" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>;</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keyword">event</span>-&gt;target = current + seconds;</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>    <span class="keyword">auto</span> index = (<span class="keyword">event</span>-&gt;target - <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a39d44c8d1b2b2869fd7d6820e1db8812">startTime</a>) % 60;</div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_variable" href="classsese_1_1_time_wheel.html#a78bdf3a8f381fd93b847e2830d027d46">slots</a>[index].<a class="code hl_variable" href="structsese_1_1_timeout_event_slot.html#a46bcff193be455888c4e62de7326f243" title="存放于此的超时事件列表">events</a>.emplace_back(event);</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> event;</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00007">callback()</a>, <a class="el" href="_time_wheel_8h_source.html#l00040">sese::TimeoutEventSlot::events</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00029">getTimestamp()</a>, <a class="el" href="_time_wheel_8h_source.html#l00026">sese::TimeoutEvent::range</a>, <a class="el" href="_time_wheel_8h_source.html#l00077">slots</a> , 以及 <a class="el" href="_time_wheel_8h_source.html#l00075">startTime</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00491">sese::_windows::iocp::v1::NativeIOCPServer::setTimeout()</a> , 以及 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00014">sese::service::v2::TimerableService::setTimeoutEvent()</a>.</p>
+
+</div>
+</div>
+<a id="a3acab877ddb03fbd0b204b86d32487dd" name="a3acab877ddb03fbd0b204b86d32487dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3acab877ddb03fbd0b204b86d32487dd">&#9670;&#160;</a></span>getTimestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t TimeWheel::getTimestamp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8cpp_source.html">TimeWheel.cpp</a> 第 <a class="el" href="_time_wheel_8cpp_source.html#l00029">29</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>                                {</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keyword">auto</span> point = std::chrono::system_clock::now();</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keyword">auto</span> timestamp = std::chrono::time_point_cast&lt;std::chrono::seconds&gt;(point);</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">return</span> timestamp.time_since_epoch().count();</div>
+<div class="line"><span class="lineno">   33</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_time_wheel_8cpp_source.html#l00055">check()</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00035">delay()</a> , 以及 <a class="el" href="_time_wheel_8cpp_source.html#l00009">TimeWheel()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aa359f4e5a5a6552aa9d62df1e8590ab9" name="aa359f4e5a5a6552aa9d62df1e8590ab9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa359f4e5a5a6552aa9d62df1e8590ab9">&#9670;&#160;</a></span>lastCheckTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::TimeWheel::lastCheckTime {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8h_source.html">TimeWheel.h</a> 第 <a class="el" href="_time_wheel_8h_source.html#l00076">76</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_time_wheel_8cpp_source.html#l00055">check()</a> , 以及 <a class="el" href="_time_wheel_8cpp_source.html#l00009">TimeWheel()</a>.</p>
+
+</div>
+</div>
+<a id="a78bdf3a8f381fd93b847e2830d027d46" name="a78bdf3a8f381fd93b847e2830d027d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78bdf3a8f381fd93b847e2830d027d46">&#9670;&#160;</a></span>slots</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1_timeout_event_slot.html">TimeoutEventSlot</a> sese::TimeWheel::slots[60] {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8h_source.html">TimeWheel.h</a> 第 <a class="el" href="_time_wheel_8h_source.html#l00077">77</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_time_wheel_8cpp_source.html#l00049">cancel()</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00055">check()</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00035">delay()</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00009">TimeWheel()</a> , 以及 <a class="el" href="_time_wheel_8cpp_source.html#l00020">~TimeWheel()</a>.</p>
+
+</div>
+</div>
+<a id="a39d44c8d1b2b2869fd7d6820e1db8812" name="a39d44c8d1b2b2869fd7d6820e1db8812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39d44c8d1b2b2869fd7d6820e1db8812">&#9670;&#160;</a></span>startTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::TimeWheel::startTime {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_time_wheel_8h_source.html">TimeWheel.h</a> 第 <a class="el" href="_time_wheel_8h_source.html#l00075">75</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_time_wheel_8cpp_source.html#l00049">cancel()</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00055">check()</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00035">delay()</a> , 以及 <a class="el" href="_time_wheel_8cpp_source.html#l00009">TimeWheel()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/util/<a class="el" href="_time_wheel_8h_source.html">TimeWheel.h</a></li>
+<li>sese/util/<a class="el" href="_time_wheel_8cpp_source.html">TimeWheel.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

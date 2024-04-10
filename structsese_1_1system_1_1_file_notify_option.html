@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::system::FileNotifyOption结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1system.html">system</a></li><li class="navelem"><a class="el" href="structsese_1_1system_1_1_file_notify_option.html">FileNotifyOption</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="structsese_1_1system_1_1_file_notify_option-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::system::FileNotifyOption结构体 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>文件变更回调选项类  
+ <a href="structsese_1_1system_1_1_file_notify_option.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_file_notifier_8h_source.html">FileNotifier.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a43153fc1c0a780ac1fc3e31a3303ade2" id="r_a43153fc1c0a780ac1fc3e31a3303ade2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1system_1_1_file_notify_option.html#a43153fc1c0a780ac1fc3e31a3303ade2">~FileNotifyOption</a> ()=default</td></tr>
+<tr class="separator:a43153fc1c0a780ac1fc3e31a3303ade2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c624c82fa912da287890a18e6f75a78" id="r_a0c624c82fa912da287890a18e6f75a78"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1system_1_1_file_notify_option.html#a0c624c82fa912da287890a18e6f75a78">onCreate</a> (std::string_view name)=0</td></tr>
+<tr class="memdesc:a0c624c82fa912da287890a18e6f75a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建文件  <br /></td></tr>
+<tr class="separator:a0c624c82fa912da287890a18e6f75a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ffa36c9eeab56455787b12d1b66758" id="r_aa4ffa36c9eeab56455787b12d1b66758"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1system_1_1_file_notify_option.html#aa4ffa36c9eeab56455787b12d1b66758">onMove</a> (std::string_view src_name, std::string_view dst_name)=0</td></tr>
+<tr class="memdesc:aa4ffa36c9eeab56455787b12d1b66758"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动文件  <br /></td></tr>
+<tr class="separator:aa4ffa36c9eeab56455787b12d1b66758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addad44211dc9651c467eb3530183a04f" id="r_addad44211dc9651c467eb3530183a04f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1system_1_1_file_notify_option.html#addad44211dc9651c467eb3530183a04f">onModify</a> (std::string_view name)=0</td></tr>
+<tr class="memdesc:addad44211dc9651c467eb3530183a04f"><td class="mdescLeft">&#160;</td><td class="mdescRight">修改文件  <br /></td></tr>
+<tr class="separator:addad44211dc9651c467eb3530183a04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68dc46d3ad67eae2cf903a41f1a86974" id="r_a68dc46d3ad67eae2cf903a41f1a86974"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1system_1_1_file_notify_option.html#a68dc46d3ad67eae2cf903a41f1a86974">onDelete</a> (std::string_view name)=0</td></tr>
+<tr class="memdesc:a68dc46d3ad67eae2cf903a41f1a86974"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除文件  <br /></td></tr>
+<tr class="separator:a68dc46d3ad67eae2cf903a41f1a86974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>文件变更回调选项类 </p>
+
+<p class="definition">在文件 <a class="el" href="_file_notifier_8h_source.html">FileNotifier.h</a> 第 <a class="el" href="_file_notifier_8h_source.html#l00021">21</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a43153fc1c0a780ac1fc3e31a3303ade2" name="a43153fc1c0a780ac1fc3e31a3303ade2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43153fc1c0a780ac1fc3e31a3303ade2">&#9670;&#160;</a></span>~FileNotifyOption()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::system::FileNotifyOption::~FileNotifyOption </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a0c624c82fa912da287890a18e6f75a78" name="a0c624c82fa912da287890a18e6f75a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c624c82fa912da287890a18e6f75a78">&#9670;&#160;</a></span>onCreate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::system::FileNotifyOption::onCreate </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建文件 </p>
+
+</div>
+</div>
+<a id="a68dc46d3ad67eae2cf903a41f1a86974" name="a68dc46d3ad67eae2cf903a41f1a86974"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68dc46d3ad67eae2cf903a41f1a86974">&#9670;&#160;</a></span>onDelete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::system::FileNotifyOption::onDelete </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>删除文件 </p>
+
+</div>
+</div>
+<a id="addad44211dc9651c467eb3530183a04f" name="addad44211dc9651c467eb3530183a04f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addad44211dc9651c467eb3530183a04f">&#9670;&#160;</a></span>onModify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::system::FileNotifyOption::onModify </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>修改文件 </p>
+
+</div>
+</div>
+<a id="aa4ffa36c9eeab56455787b12d1b66758" name="aa4ffa36c9eeab56455787b12d1b66758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4ffa36c9eeab56455787b12d1b66758">&#9670;&#160;</a></span>onMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::system::FileNotifyOption::onMove </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>src_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>dst_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>移动文件 </p>
+
+</div>
+</div>
+<hr/>该结构体的文档由以下文件生成:<ul>
+<li>sese/system/<a class="el" href="_file_notifier_8h_source.html">FileNotifier.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

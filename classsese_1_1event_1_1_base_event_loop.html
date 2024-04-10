@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::event::BaseEventLoop类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1event.html">event</a></li><li class="navelem"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html">BaseEventLoop</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1event_1_1_base_event_loop-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::event::BaseEventLoop类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>基础网络事件循环接口  
+ <a href="classsese_1_1event_1_1_base_event_loop.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_base_event_loop_8h_source.html">BaseEventLoop.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::event::BaseEventLoop 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1event_1_1_base_event_loop.png" usemap="#sese::event::BaseEventLoop_map" alt=""/>
+  <map id="sese::event::BaseEventLoop_map" name="sese::event::BaseEventLoop_map">
+<area href="classsese_1_1event_1_1_epoll_event_loop.html" title="epoll 事件循环" alt="sese::event::EpollEventLoop" shape="rect" coords="0,56,183,80"/>
+<area href="classsese_1_1event_1_1_kqueue_event_loop.html" title="kqueue 事件循环" alt="sese::event::KqueueEventLoop" shape="rect" coords="193,56,376,80"/>
+<area href="classsese_1_1event_1_1_w_s_a_event_loop.html" title="WSAEventSelect 事件循环" alt="sese::event::WSAEventLoop" shape="rect" coords="386,56,569,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a377d38f5f4c3386967c7e4a791d5810f" id="r_a377d38f5f4c3386967c7e4a791d5810f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a377d38f5f4c3386967c7e4a791d5810f">init</a> ()=0</td></tr>
+<tr class="separator:a377d38f5f4c3386967c7e4a791d5810f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60614a322dd2715e94dfe0f89eac8eb9" id="r_a60614a322dd2715e94dfe0f89eac8eb9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60614a322dd2715e94dfe0f89eac8eb9">~BaseEventLoop</a> ()=default</td></tr>
+<tr class="separator:a60614a322dd2715e94dfe0f89eac8eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc96fd81d204831200614e2d5a0c0d39" id="r_acc96fd81d204831200614e2d5a0c0d39"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#acc96fd81d204831200614e2d5a0c0d39">dispatch</a> (uint32_t timeout)=0</td></tr>
+<tr class="separator:acc96fd81d204831200614e2d5a0c0d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add63e0b4d354df6a4e44ec523b7990a4" id="r_add63e0b4d354df6a4e44ec523b7990a4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#add63e0b4d354df6a4e44ec523b7990a4">onAccept</a> (int fd)=0</td></tr>
+<tr class="separator:add63e0b4d354df6a4e44ec523b7990a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60d8eb8bc4458845aa52598233e64ef4" id="r_a60d8eb8bc4458845aa52598233e64ef4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60d8eb8bc4458845aa52598233e64ef4">onRead</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="separator:a60d8eb8bc4458845aa52598233e64ef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e4f8ce45d64a7eaf01386a594b256c" id="r_a01e4f8ce45d64a7eaf01386a594b256c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a01e4f8ce45d64a7eaf01386a594b256c">onWrite</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="separator:a01e4f8ce45d64a7eaf01386a594b256c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4015c16ccbbbdb70fc573522d626850" id="r_ae4015c16ccbbbdb70fc573522d626850"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ae4015c16ccbbbdb70fc573522d626850">onError</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="separator:ae4015c16ccbbbdb70fc573522d626850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af024aaaa988ba9e8363eb97fe8fc19f4" id="r_af024aaaa988ba9e8363eb97fe8fc19f4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4">onClose</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="separator:af024aaaa988ba9e8363eb97fe8fc19f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4c42e9e5ce9307b3a6f586bea524a2" id="r_aeb4c42e9e5ce9307b3a6f586bea524a2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#aeb4c42e9e5ce9307b3a6f586bea524a2">createEvent</a> (int fd, unsigned int events, void *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)=0</td></tr>
+<tr class="separator:aeb4c42e9e5ce9307b3a6f586bea524a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad437b12929edb2660a01fd3fa57e2d93" id="r_ad437b12929edb2660a01fd3fa57e2d93"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ad437b12929edb2660a01fd3fa57e2d93">freeEvent</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="separator:ad437b12929edb2660a01fd3fa57e2d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9948fa27a1d36040ad5b3a54909496eb" id="r_a9948fa27a1d36040ad5b3a54909496eb"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a9948fa27a1d36040ad5b3a54909496eb">setEvent</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event)=0</td></tr>
+<tr class="separator:a9948fa27a1d36040ad5b3a54909496eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4caa4a768bb29bd3f394505575f6cb0e" id="r_a4caa4a768bb29bd3f394505575f6cb0e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4caa4a768bb29bd3f394505575f6cb0e">setListenFd</a> (int fd)=0</td></tr>
+<tr class="separator:a4caa4a768bb29bd3f394505575f6cb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a4abdb066697382d81267982d8e5961f2" id="r_a4abdb066697382d81267982d8e5961f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2">handleClose</a> = true</td></tr>
+<tr class="memdesc:a4abdb066697382d81267982d8e5961f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">指示当前循环是否处理关闭事件  <br /></td></tr>
+<tr class="separator:a4abdb066697382d81267982d8e5961f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>基础网络事件循环接口 </p>
+
+<p class="definition">在文件 <a class="el" href="_base_event_loop_8h_source.html">BaseEventLoop.h</a> 第 <a class="el" href="_base_event_loop_8h_source.html#l00016">16</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a60614a322dd2715e94dfe0f89eac8eb9" name="a60614a322dd2715e94dfe0f89eac8eb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60614a322dd2715e94dfe0f89eac8eb9">&#9670;&#160;</a></span>~BaseEventLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::event::BaseEventLoop::~BaseEventLoop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aeb4c42e9e5ce9307b3a6f586bea524a2" name="aeb4c42e9e5ce9307b3a6f586bea524a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4c42e9e5ce9307b3a6f586bea524a2">&#9670;&#160;</a></span>createEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> * sese::event::BaseEventLoop::createEvent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#aa66c5b7c2705cc6d96241b3d2b0bfd75">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a5edea23ed9eacb74c977e0769b671dce">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="acc96fd81d204831200614e2d5a0c0d39" name="acc96fd81d204831200614e2d5a0c0d39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc96fd81d204831200614e2d5a0c0d39">&#9670;&#160;</a></span>dispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::event::BaseEventLoop::dispatch </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a502d065bd7bb1b9e3435920ea32780b8">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a7f3be34660b6ea8a6cd3697ff996f454">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a3b9bfd5e0ef2ca43badf2ffb931f64d4">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ad437b12929edb2660a01fd3fa57e2d93" name="ad437b12929edb2660a01fd3fa57e2d93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad437b12929edb2660a01fd3fa57e2d93">&#9670;&#160;</a></span>freeEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::event::BaseEventLoop::freeEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#ab5fdb1234b323303e65d0b0b0fc60c32">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a76a53b0bd0316a4b7ac5a8500704b33d">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa0df844b1a306e982edf7fe3fae77336">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a377d38f5f4c3386967c7e4a791d5810f" name="a377d38f5f4c3386967c7e4a791d5810f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a377d38f5f4c3386967c7e4a791d5810f">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::event::BaseEventLoop::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a78bd5361229de0d32f2d38272a6bea94">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2f92c67542ca7d524d14252013cee174">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39e308de8c8a42073055bda56a35dcb4">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="add63e0b4d354df6a4e44ec523b7990a4" name="add63e0b4d354df6a4e44ec523b7990a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add63e0b4d354df6a4e44ec523b7990a4">&#9670;&#160;</a></span>onAccept()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::event::BaseEventLoop::onAccept </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a0aa500bd522880edc44b9dde136b06e2">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2032e39346a140e336bf2d2593c1f974">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a58093f821d12b7bbe4d3eb04aa1866b6">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="af024aaaa988ba9e8363eb97fe8fc19f4" name="af024aaaa988ba9e8363eb97fe8fc19f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af024aaaa988ba9e8363eb97fe8fc19f4">&#9670;&#160;</a></span>onClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::event::BaseEventLoop::onClose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#abcd26aec053b3ad04d8a81ce8a9ea0ba">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#ab9a8e0e429bb7e6b52105f4e7819b746">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#ac60ba2f1b704ec4b7f4aaea345fc53ed">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ae4015c16ccbbbdb70fc573522d626850" name="ae4015c16ccbbbdb70fc573522d626850"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4015c16ccbbbdb70fc573522d626850">&#9670;&#160;</a></span>onError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::event::BaseEventLoop::onError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a0ac244f6dcce8e289bafd403a2e37e3a">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a41c3fe62bc9245514152defd7be5d3d6">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a122e5ee5259f479909084c04830a8599">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a60d8eb8bc4458845aa52598233e64ef4" name="a60d8eb8bc4458845aa52598233e64ef4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60d8eb8bc4458845aa52598233e64ef4">&#9670;&#160;</a></span>onRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::event::BaseEventLoop::onRead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a2de90f7983850a647a82815382260afe">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abad97ea60c1f02a6aa24411ed147a49e">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#aa6063e67778ce5a957f7559f15198ef5">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a01e4f8ce45d64a7eaf01386a594b256c" name="a01e4f8ce45d64a7eaf01386a594b256c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e4f8ce45d64a7eaf01386a594b256c">&#9670;&#160;</a></span>onWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::event::BaseEventLoop::onWrite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a4cc2d76401559700a5764b031534a88d">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#ad7710a4650fc365648f90e9ddc025682">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a7621b97224b03b80b0797ce38011bafd">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a9948fa27a1d36040ad5b3a54909496eb" name="a9948fa27a1d36040ad5b3a54909496eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9948fa27a1d36040ad5b3a54909496eb">&#9670;&#160;</a></span>setEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::event::BaseEventLoop::setEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a31c057c4c42b0ec7aeec78f910bbabcf">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#abb115bf9e27c0e1998fa9256f416146f">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a4caa4a768bb29bd3f394505575f6cb0e" name="a4caa4a768bb29bd3f394505575f6cb0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4caa4a768bb29bd3f394505575f6cb0e">&#9670;&#160;</a></span>setListenFd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::event::BaseEventLoop::setListenFd </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1event_1_1_kqueue_event_loop.html#a09c3191027fe394d396bfad9d33b5b19">sese::event::KqueueEventLoop</a>, <a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abf0ad36d87ab5d5ef0e396f1cb207569">sese::event::EpollEventLoop</a> , 以及 <a class="el" href="classsese_1_1event_1_1_w_s_a_event_loop.html#a39c1469a509bafccf7503901c44a132b">sese::event::WSAEventLoop</a> 内被实现.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a4abdb066697382d81267982d8e5961f2" name="a4abdb066697382d81267982d8e5961f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4abdb066697382d81267982d8e5961f2">&#9670;&#160;</a></span>handleClose</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::event::BaseEventLoop::handleClose = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>指示当前循环是否处理关闭事件 </p>
+
+<p class="definition">在文件 <a class="el" href="_base_event_loop_8h_source.html">BaseEventLoop.h</a> 第 <a class="el" href="_base_event_loop_8h_source.html#l00044">44</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/event/<a class="el" href="_base_event_loop_8h_source.html">BaseEventLoop.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

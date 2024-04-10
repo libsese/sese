@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/convert/GZipFileOutputStream.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_8432cd711d83e4d7ec40e70b9a1de33d.html">convert</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">GZipFileOutputStream.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_g_zip_file_output_stream_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="_g_zip_file_output_stream_8h.html" title="GZip 文件输出流（压缩）">sese/convert/GZipFileOutputStream.h</a>&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;zlib.h&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="foldopen" id="foldopen00004" data-start="{" data-end="}">
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="classsese_1_1_g_zip_file_output_stream.html#a5ded098742a571ac70409a54c845cec2">    4</a></span><a class="code hl_typedef" href="classsese_1_1_g_zip_file_output_stream.html#a504324ca60429cf15b4d87ce71007a6f">sese::GZipFileOutputStream::Ptr</a> <a class="code hl_function" href="classsese_1_1_g_zip_file_output_stream.html#a5ded098742a571ac70409a54c845cec2">sese::GZipFileOutputStream::create</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keywordtype">size_t</span> level) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <span class="keyword">auto</span> gz_file = gzopen(file, <span class="stringliteral">&quot;wb&quot;</span>);</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    <span class="keywordflow">if</span> (!gz_file) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">auto</span> l = std::min&lt;int&gt;((<span class="keywordtype">int</span>) level, 9);</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    gzsetparams(gz_file, l, Z_DEFAULT_STRATEGY);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keyword">auto</span> p_stream = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1_g_zip_file_output_stream.html" title="GZip 文件输出流（压缩）">GZipFileOutputStream</a>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    p_stream-&gt;gzFile = gz_file;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">return</span> {p_stream, deleter};</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classsese_1_1_g_zip_file_output_stream.html#a8c39cfd8a811b1349a21e7dd840b6317">   14</a></span>int64_t <a class="code hl_function" href="classsese_1_1_g_zip_file_output_stream.html#a8c39cfd8a811b1349a21e7dd840b6317">sese::GZipFileOutputStream::write</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> gzwrite((gzFile_s *) gzFile, buffer, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) length);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classsese_1_1_g_zip_file_output_stream.html#a57fd7f778bb5f6bf6faf8c967cee5fab">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1_g_zip_file_output_stream.html#a57fd7f778bb5f6bf6faf8c967cee5fab">sese::GZipFileOutputStream::close</a>() noexcept {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    gzclose((gzFile_s *) gzFile);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    gzFile = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classsese_1_1_g_zip_file_output_stream.html#abd3a27132542e5a175a26f29ed302fb3">   23</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1_g_zip_file_output_stream.html#abd3a27132542e5a175a26f29ed302fb3">sese::GZipFileOutputStream::deleter</a>(<a class="code hl_class" href="classsese_1_1_g_zip_file_output_stream.html" title="GZip 文件输出流（压缩）">sese::GZipFileOutputStream</a> *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">delete</span> <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
+</div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/record/Marco.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a>  </div>
+  <div class="headertitle"><div class="title">Marco.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>日志宏  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="_logger_8h_source.html">sese/record/Logger.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_thread_8h_source.html">sese/thread/Thread.h</a>&gt;</code><br />
+</div>
+<p><a href="record_2_marco_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ae78e46049906a7a818c610f188ad9a5a" id="r_ae78e46049906a7a818c610f188ad9a5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(point_to_logger,  level,  format, ...)</td></tr>
+<tr class="separator:ae78e46049906a7a818c610f188ad9a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1d3aba7849a0f5e4e2c98304c4639a8" id="r_af1d3aba7849a0f5e4e2c98304c4639a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(point_to_logger,  buffer,  length)</td></tr>
+<tr class="separator:af1d3aba7849a0f5e4e2c98304c4639a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a738f59797003131a3d51f95cc24f7e37" id="r_a738f59797003131a3d51f95cc24f7e37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(point_to_logger,  <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;    e.printStacktrace(point_to_logger)</td></tr>
+<tr class="separator:a738f59797003131a3d51f95cc24f7e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c7b9b055051419896c49a59292b4521" id="r_a9c7b9b055051419896c49a59292b4521"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a9c7b9b055051419896c49a59292b4521">__SESE_DEBUG</a>(sese_tmp_logger,  format, ...)</td></tr>
+<tr class="separator:a9c7b9b055051419896c49a59292b4521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82fca32f4aa42f273fb9688b4b638d9e" id="r_a82fca32f4aa42f273fb9688b4b638d9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a82fca32f4aa42f273fb9688b4b638d9e">__SESE_INFO</a>(sese_tmp_logger,  format, ...)</td></tr>
+<tr class="separator:a82fca32f4aa42f273fb9688b4b638d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99f403c0a68d0fc39e18498ff540d4f1" id="r_a99f403c0a68d0fc39e18498ff540d4f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a99f403c0a68d0fc39e18498ff540d4f1">__SESE_WARN</a>(sese_tmp_logger,  format, ...)</td></tr>
+<tr class="separator:a99f403c0a68d0fc39e18498ff540d4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad79c45edd21c8ef28caef8540772334b" id="r_ad79c45edd21c8ef28caef8540772334b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ad79c45edd21c8ef28caef8540772334b">__SESE_ERROR</a>(sese_tmp_logger,  format, ...)</td></tr>
+<tr class="separator:ad79c45edd21c8ef28caef8540772334b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae23dce9adff7d55a14a54cb5411d7667" id="r_ae23dce9adff7d55a14a54cb5411d7667"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ae23dce9adff7d55a14a54cb5411d7667">SESE_RAW</a>(buffer,  length)&#160;&#160;&#160;    <a class="el" href="record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(<a class="el" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger</a>(), buffer, length)</td></tr>
+<tr class="separator:ae23dce9adff7d55a14a54cb5411d7667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b7117d61063ae74e9498af412bb101" id="r_a77b7117d61063ae74e9498af412bb101"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a77b7117d61063ae74e9498af412bb101">SESE_EXCEPT</a>(<a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)&#160;&#160;&#160;<a class="el" href="record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(<a class="el" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger</a>(), <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)</td></tr>
+<tr class="separator:a77b7117d61063ae74e9498af412bb101"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a964cda869f112de222e00400f1e3dc79" id="r_a964cda869f112de222e00400f1e3dc79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a964cda869f112de222e00400f1e3dc79">SESE_DEBUG</a>(sese_tmp_format, ...)</td></tr>
+<tr class="separator:a964cda869f112de222e00400f1e3dc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee0f4393a326979982219d142aa9d067" id="r_aee0f4393a326979982219d142aa9d067"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(sese_tmp_format, ...)</td></tr>
+<tr class="separator:aee0f4393a326979982219d142aa9d067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a08c4c287ebe371abb3fa9d4a9712fa" id="r_a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#a7a08c4c287ebe371abb3fa9d4a9712fa">SESE_WARN</a>(sese_tmp_format, ...)</td></tr>
+<tr class="separator:a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1238b2e7ea6758c6e7bab5310024ed7" id="r_ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ae1238b2e7ea6758c6e7bab5310024ed7">SESE_ERROR</a>(sese_tmp_format, ...)</td></tr>
+<tr class="separator:ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>日志宏 </p>
+<dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2023年9月13日 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 中定义.</p>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="a9c7b9b055051419896c49a59292b4521" name="a9c7b9b055051419896c49a59292b4521"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c7b9b055051419896c49a59292b4521">&#9670;&#160;</a></span>__SESE_DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SESE_DEBUG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sese_tmp_logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">sese::record::Level::DEBUG</a>, format, ##__VA_ARGS__) \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00046">46</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad79c45edd21c8ef28caef8540772334b" name="ad79c45edd21c8ef28caef8540772334b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad79c45edd21c8ef28caef8540772334b">&#9670;&#160;</a></span>__SESE_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SESE_ERROR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sese_tmp_logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">sese::record::Level::ERR</a>, format, ##__VA_ARGS__) \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00058">58</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a738f59797003131a3d51f95cc24f7e37" name="a738f59797003131a3d51f95cc24f7e37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a738f59797003131a3d51f95cc24f7e37">&#9670;&#160;</a></span>__SESE_EXCEPT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SESE_EXCEPT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">point_to_logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    e.printStacktrace(point_to_logger)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a82fca32f4aa42f273fb9688b4b638d9e" name="a82fca32f4aa42f273fb9688b4b638d9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82fca32f4aa42f273fb9688b4b638d9e">&#9670;&#160;</a></span>__SESE_INFO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SESE_INFO</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sese_tmp_logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">sese::record::Level::INFO</a>, format, ##__VA_ARGS__) \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00050">50</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae78e46049906a7a818c610f188ad9a5a" name="ae78e46049906a7a818c610f188ad9a5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae78e46049906a7a818c610f188ad9a5a">&#9670;&#160;</a></span>__SESE_LOG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SESE_LOG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">point_to_logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">level, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    {                                                                             \</div>
+<div class="line">        <span class="keywordtype">char</span> sese_tmp_buf[<a class="code hl_variable" href="_config_8h.html#a7f70689da1c5396f60685d951094b54a" title="日志输出缓存区大小">RECORD_OUTPUT_BUFFER</a>]{0};                               \</div>
+<div class="line">        std::snprintf(sese_tmp_buf, <a class="code hl_variable" href="_config_8h.html#a7f70689da1c5396f60685d951094b54a" title="日志输出缓存区大小">RECORD_OUTPUT_BUFFER</a>, format, ##__VA_ARGS__); \</div>
+<div class="line">        <span class="keyword">auto</span> sese_tmp_time = <a class="code hl_function" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">sese::DateTime::now</a>();                               \</div>
+<div class="line">        <span class="keyword">auto</span> sese_tmp_event = std::make_shared&lt;sese::record::Event&gt;(              \</div>
+<div class="line">                sese_tmp_time,                                                    \</div>
+<div class="line">                level,                                                            \</div>
+<div class="line">                <a class="code hl_function" href="classsese_1_1_thread.html#a7aaf91cc85a6788bbd2b1c063d2e81e8">sese::Thread::getCurrentThreadName</a>(),                             \</div>
+<div class="line">                <a class="code hl_function" href="classsese_1_1_thread.html#ac6b4828712bf84101f715bde4cd5a6f8">sese::Thread::getCurrentThreadId</a>(),                               \</div>
+<div class="line">                <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>,                                                    \</div>
+<div class="line">                __LINE__,                                                         \</div>
+<div class="line">                sese_tmp_buf                                                      \</div>
+<div class="line">        );                                                                        \</div>
+<div class="line">        point_to_logger-&gt;log(sese_tmp_event);                                     \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00022">22</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>    {                                                                             \</div>
+<div class="line"><span class="lineno">   24</span>        <span class="keywordtype">char</span> sese_tmp_buf[<a class="code hl_variable" href="_config_8h.html#a7f70689da1c5396f60685d951094b54a" title="日志输出缓存区大小">RECORD_OUTPUT_BUFFER</a>]{0};                               \</div>
+<div class="line"><span class="lineno">   25</span>        std::snprintf(sese_tmp_buf, <a class="code hl_variable" href="_config_8h.html#a7f70689da1c5396f60685d951094b54a" title="日志输出缓存区大小">RECORD_OUTPUT_BUFFER</a>, format, ##__VA_ARGS__); \</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keyword">auto</span> sese_tmp_time = <a class="code hl_function" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">sese::DateTime::now</a>();                               \</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keyword">auto</span> sese_tmp_event = std::make_shared&lt;sese::record::Event&gt;(              \</div>
+<div class="line"><span class="lineno">   28</span>                sese_tmp_time,                                                    \</div>
+<div class="line"><span class="lineno">   29</span>                level,                                                            \</div>
+<div class="line"><span class="lineno">   30</span>                <a class="code hl_function" href="classsese_1_1_thread.html#a7aaf91cc85a6788bbd2b1c063d2e81e8">sese::Thread::getCurrentThreadName</a>(),                             \</div>
+<div class="line"><span class="lineno">   31</span>                <a class="code hl_function" href="classsese_1_1_thread.html#ac6b4828712bf84101f715bde4cd5a6f8">sese::Thread::getCurrentThreadId</a>(),                               \</div>
+<div class="line"><span class="lineno">   32</span>                <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>,                                                    \</div>
+<div class="line"><span class="lineno">   33</span>                __LINE__,                                                         \</div>
+<div class="line"><span class="lineno">   34</span>                sese_tmp_buf                                                      \</div>
+<div class="line"><span class="lineno">   35</span>        );                                                                        \</div>
+<div class="line"><span class="lineno">   36</span>        point_to_logger-&gt;log(sese_tmp_event);                                     \</div>
+<div class="line"><span class="lineno">   37</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af1d3aba7849a0f5e4e2c98304c4639a8" name="af1d3aba7849a0f5e4e2c98304c4639a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1d3aba7849a0f5e4e2c98304c4639a8">&#9670;&#160;</a></span>__SESE_RAW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SESE_RAW</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">point_to_logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">buffer, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">length&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    point_to_logger-&gt;dump(buffer, length);          \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00039">39</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a99f403c0a68d0fc39e18498ff540d4f1" name="a99f403c0a68d0fc39e18498ff540d4f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99f403c0a68d0fc39e18498ff540d4f1">&#9670;&#160;</a></span>__SESE_WARN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __SESE_WARN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sese_tmp_logger, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(sese_tmp_logger, <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">sese::record::Level::WARN</a>, format, ##__VA_ARGS__) \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00054">54</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a964cda869f112de222e00400f1e3dc79" name="a964cda869f112de222e00400f1e3dc79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a964cda869f112de222e00400f1e3dc79">&#9670;&#160;</a></span>SESE_DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_DEBUG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sese_tmp_format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">sese::record::Level::DEBUG</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00067">67</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae1238b2e7ea6758c6e7bab5310024ed7" name="ae1238b2e7ea6758c6e7bab5310024ed7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1238b2e7ea6758c6e7bab5310024ed7">&#9670;&#160;</a></span>SESE_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_ERROR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sese_tmp_format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">sese::record::Level::ERR</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00079">79</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a77b7117d61063ae74e9498af412bb101" name="a77b7117d61063ae74e9498af412bb101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77b7117d61063ae74e9498af412bb101">&#9670;&#160;</a></span>SESE_EXCEPT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_EXCEPT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37">__SESE_EXCEPT</a>(<a class="el" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger</a>(), <a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00065">65</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aee0f4393a326979982219d142aa9d067" name="aee0f4393a326979982219d142aa9d067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee0f4393a326979982219d142aa9d067">&#9670;&#160;</a></span>SESE_INFO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_INFO</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sese_tmp_format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">sese::record::Level::INFO</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00071">71</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae23dce9adff7d55a14a54cb5411d7667" name="ae23dce9adff7d55a14a54cb5411d7667"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae23dce9adff7d55a14a54cb5411d7667">&#9670;&#160;</a></span>SESE_RAW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_RAW</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">buffer, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">length&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    <a class="el" href="record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8">__SESE_RAW</a>(<a class="el" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger</a>(), buffer, length)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00062">62</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7a08c4c287ebe371abb3fa9d4a9712fa" name="a7a08c4c287ebe371abb3fa9d4a9712fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a08c4c287ebe371abb3fa9d4a9712fa">&#9670;&#160;</a></span>SESE_WARN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_WARN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sese_tmp_format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">__SESE_LOG</a>(<a class="code hl_function" href="namespacesese_1_1record.html#ae3bc58b0525f93b3e6b48148b77919fe">sese::record::getLogger</a>(), <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">sese::record::Level::WARN</a>, sese_tmp_format, ##__VA_ARGS__) \</div>
+<div class="line">    <a class="code hl_define" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="record_2_marco_8h_source.html">Marco.h</a> 第 <a class="el" href="record_2_marco_8h_source.html#l00075">75</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

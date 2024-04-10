@@ -1,0 +1,899 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::db::impl::PostgresDriverInstanceImpl类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db_1_1impl.html">impl</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html">PostgresDriverInstanceImpl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::db::impl::PostgresDriverInstanceImpl类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::db::impl::PostgresDriverInstanceImpl 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.png" usemap="#sese::db::impl::PostgresDriverInstanceImpl_map" alt=""/>
+  <map id="sese::db::impl::PostgresDriverInstanceImpl_map" name="sese::db::impl::PostgresDriverInstanceImpl_map">
+<area href="classsese_1_1db_1_1_driver_instance.html" title="数据库驱动实例类" alt="sese::db::DriverInstance" shape="rect" coords="0,0,246,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aeccfcd09601af4ea4582f1d50a2eb8aa" id="r_aeccfcd09601af4ea4582f1d50a2eb8aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#aeccfcd09601af4ea4582f1d50a2eb8aa">PostgresDriverInstanceImpl</a> (PGconn *<a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>) noexcept</td></tr>
+<tr class="separator:aeccfcd09601af4ea4582f1d50a2eb8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46968c4869e49c8da513065ff7c1cef6" id="r_a46968c4869e49c8da513065ff7c1cef6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a46968c4869e49c8da513065ff7c1cef6">~PostgresDriverInstanceImpl</a> () noexcept override</td></tr>
+<tr class="separator:a46968c4869e49c8da513065ff7c1cef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a181c0123c4c931b7b625b387e93f902f" id="r_a181c0123c4c931b7b625b387e93f902f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a181c0123c4c931b7b625b387e93f902f">executeQuery</a> (const char *sql) noexcept override</td></tr>
+<tr class="separator:a181c0123c4c931b7b625b387e93f902f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fd50e96e5344d77073cde88878694ea" id="r_a6fd50e96e5344d77073cde88878694ea"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a6fd50e96e5344d77073cde88878694ea">executeUpdate</a> (const char *sql) noexcept override</td></tr>
+<tr class="separator:a6fd50e96e5344d77073cde88878694ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a295b90d971b4fbf7197390303d137dc3" id="r_a295b90d971b4fbf7197390303d137dc3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a295b90d971b4fbf7197390303d137dc3">createStatement</a> (const char *sql) noexcept override</td></tr>
+<tr class="separator:a295b90d971b4fbf7197390303d137dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88cf873afff7222731ba2e26e7108a97" id="r_a88cf873afff7222731ba2e26e7108a97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a88cf873afff7222731ba2e26e7108a97">getLastError</a> () const noexcept override</td></tr>
+<tr class="separator:a88cf873afff7222731ba2e26e7108a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f545197ac7ed8bdbb761725f6992e9c" id="r_a4f545197ac7ed8bdbb761725f6992e9c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4f545197ac7ed8bdbb761725f6992e9c">getLastErrorMessage</a> () const noexcept override</td></tr>
+<tr class="separator:a4f545197ac7ed8bdbb761725f6992e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7065a54c00e0df73d56319d8fd650d28" id="r_a7065a54c00e0df73d56319d8fd650d28"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a7065a54c00e0df73d56319d8fd650d28">setAutoCommit</a> (bool enable) noexcept override</td></tr>
+<tr class="separator:a7065a54c00e0df73d56319d8fd650d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3086c1dd5820d502ca4e062ecb45009b" id="r_a3086c1dd5820d502ca4e062ecb45009b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a3086c1dd5820d502ca4e062ecb45009b">getAutoCommit</a> (bool &amp;status) noexcept override</td></tr>
+<tr class="separator:a3086c1dd5820d502ca4e062ecb45009b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98a8584958e4176bb33e29cdc11210f2" id="r_a98a8584958e4176bb33e29cdc11210f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a98a8584958e4176bb33e29cdc11210f2">begin</a> () noexcept override</td></tr>
+<tr class="separator:a98a8584958e4176bb33e29cdc11210f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e0d160da5d784f9a761567d0ffdf055" id="r_a4e0d160da5d784f9a761567d0ffdf055"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4e0d160da5d784f9a761567d0ffdf055">commit</a> () noexcept override</td></tr>
+<tr class="separator:a4e0d160da5d784f9a761567d0ffdf055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f8e79b375c352637a439cc250f5f5e3" id="r_a1f8e79b375c352637a439cc250f5f5e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a1f8e79b375c352637a439cc250f5f5e3">rollback</a> () noexcept override</td></tr>
+<tr class="separator:a1f8e79b375c352637a439cc250f5f5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4c1a9977a0e4799a7e4bbb0dcf4530f" id="r_aa4c1a9977a0e4799a7e4bbb0dcf4530f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#aa4c1a9977a0e4799a7e4bbb0dcf4530f">getInsertId</a> (int64_t &amp;id) const noexcept override</td></tr>
+<tr class="separator:aa4c1a9977a0e4799a7e4bbb0dcf4530f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
+<tr class="memitem:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance" id="r_a15de255cbeae6dbbeb2710390df97238"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a15de255cbeae6dbbeb2710390df97238">~DriverInstance</a> () noexcept=default</td></tr>
+<tr class="memdesc:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
+<tr class="separator:a15de255cbeae6dbbeb2710390df97238 inherit pub_methods_classsese_1_1db_1_1_driver_instance"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:ad996ecbc1f79d80e4fc4d7a0e994330c" id="r_ad996ecbc1f79d80e4fc4d7a0e994330c"><td class="memItemLeft" align="right" valign="top">PGconn *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a></td></tr>
+<tr class="separator:ad996ecbc1f79d80e4fc4d7a0e994330c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc88be3870a8bc521aa0a97bcf3605a" id="r_a4dc88be3870a8bc521aa0a97bcf3605a"><td class="memItemLeft" align="right" valign="top">PGresult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a></td></tr>
+<tr class="separator:a4dc88be3870a8bc521aa0a97bcf3605a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47578dcc7047ac51923ff828ca9fc5b" id="r_ae47578dcc7047ac51923ff828ca9fc5b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0</td></tr>
+<tr class="separator:ae47578dcc7047ac51923ff828ca9fc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7fdcbcc46e97342f66703cc4992e68c" id="r_af7fdcbcc46e97342f66703cc4992e68c"><td class="memItemLeft" align="right" valign="top">std::random_device&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#af7fdcbcc46e97342f66703cc4992e68c">rd</a> {}</td></tr>
+<tr class="separator:af7fdcbcc46e97342f66703cc4992e68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1db_1_1_driver_instance"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1db_1_1_driver_instance')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_driver_instance.html">sese::db::DriverInstance</a></td></tr>
+<tr class="memitem:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance" id="r_a85be3abcd3cd8c86292965639a208b16"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_driver_instance.html#a85be3abcd3cd8c86292965639a208b16">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_driver_instance.html">DriverInstance</a> &gt;</td></tr>
+<tr class="separator:a85be3abcd3cd8c86292965639a208b16 inherit pub_types_classsese_1_1db_1_1_driver_instance"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00007">7</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aeccfcd09601af4ea4582f1d50a2eb8aa" name="aeccfcd09601af4ea4582f1d50a2eb8aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeccfcd09601af4ea4582f1d50a2eb8aa">&#9670;&#160;</a></span>PostgresDriverInstanceImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">impl::PostgresDriverInstanceImpl::PostgresDriverInstanceImpl </td>
+          <td>(</td>
+          <td class="paramtype">PGconn *&#160;</td>
+          <td class="paramname"><em>conn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00007">7</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                                                {</div>
+<div class="line"><span class="lineno">    8</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a> = <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>;</div>
+<div class="line"><span class="lineno">    9</span>    <span class="keyword">auto</span> status = PQstatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
+<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">if</span> (status != CONNECTION_OK) {</div>
+<div class="line"><span class="lineno">   11</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
+<div class="line"><span class="lineno">   12</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   13</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
+<div class="line"><span class="lineno">   14</span>    }</div>
+<div class="line"><span class="lineno">   15</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   16</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a46968c4869e49c8da513065ff7c1cef6" name="a46968c4869e49c8da513065ff7c1cef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46968c4869e49c8da513065ff7c1cef6">&#9670;&#160;</a></span>~PostgresDriverInstanceImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">impl::PostgresDriverInstanceImpl::~PostgresDriverInstanceImpl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00018">18</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                                     {</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
+<div class="line"><span class="lineno">   20</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   22</span>    }</div>
+<div class="line"><span class="lineno">   23</span>    PQfinish(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
+<div class="line"><span class="lineno">   24</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00028">conn</a> , 以及 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00029">result</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a98a8584958e4176bb33e29cdc11210f2" name="a98a8584958e4176bb33e29cdc11210f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98a8584958e4176bb33e29cdc11210f2">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::PostgresDriverInstanceImpl::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>事务开启 </p><dl class="section return"><dt>返回</dt><dd>false 开始失败 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a86eb94e26844ebcb016819d2716f6c80">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00171">171</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  171</span>                                                    {</div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
+<div class="line"><span class="lineno">  173</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  174</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  175</span>    }</div>
+<div class="line"><span class="lineno">  176</span> </div>
+<div class="line"><span class="lineno">  177</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, <span class="stringliteral">&quot;BEGIN;&quot;</span>);</div>
+<div class="line"><span class="lineno">  178</span> </div>
+<div class="line"><span class="lineno">  179</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">if</span> (status != PGRES_COMMAND_OK) {</div>
+<div class="line"><span class="lineno">  182</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
+<div class="line"><span class="lineno">  183</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  184</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  185</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
+<div class="line"><span class="lineno">  186</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  187</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  188</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  189</span>    }</div>
+<div class="line"><span class="lineno">  190</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4e0d160da5d784f9a761567d0ffdf055" name="a4e0d160da5d784f9a761567d0ffdf055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e0d160da5d784f9a761567d0ffdf055">&#9670;&#160;</a></span>commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::PostgresDriverInstanceImpl::commit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>事务提交 </p><dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>提交失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a57d6ebbec84b20c7183ec1239ff123cc">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00119">119</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  119</span>                                                     {</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
+<div class="line"><span class="lineno">  121</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  122</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, <span class="stringliteral">&quot;COMMIT;&quot;</span>);</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  128</span>    }</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">if</span> (status != PGRES_COMMAND_OK) {</div>
+<div class="line"><span class="lineno">  132</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  134</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  135</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
+<div class="line"><span class="lineno">  136</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  137</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  139</span>    }</div>
+<div class="line"><span class="lineno">  140</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a295b90d971b4fbf7197390303d137dc3" name="a295b90d971b4fbf7197390303d137dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a295b90d971b4fbf7197390303d137dc3">&#9670;&#160;</a></span>createStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">PreparedStatement::Ptr</a> impl::PostgresDriverInstanceImpl::createStatement </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>创建预处理语句对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>SQL 语句 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>预处理语句对象 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>创建失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#ac59e04041daa62eef70adbbe923a6f3c">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00070">70</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                                                             {</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
+<div class="line"><span class="lineno">   72</span>    std::stringstream string_builder;</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; strlen(sql); ++i) {</div>
+<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">if</span> (sql[i] == <span class="charliteral">&#39;?&#39;</span>) {</div>
+<div class="line"><span class="lineno">   75</span>            <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>++;</div>
+<div class="line"><span class="lineno">   76</span>            string_builder &lt;&lt; <span class="charliteral">&#39;$&#39;</span> &lt;&lt; <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>;</div>
+<div class="line"><span class="lineno">   77</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   78</span>            string_builder &lt;&lt; sql[i];</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>    std::string stmt_string = string_builder.str();</div>
+<div class="line"><span class="lineno">   83</span>    std::uniform_int_distribution&lt;int&gt; discrete_distribution(1, 65535);</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keyword">auto</span> stmt_name = <span class="stringliteral">&quot;sese_stmt_&quot;</span> + std::to_string(discrete_distribution(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#af7fdcbcc46e97342f66703cc4992e68c">rd</a>));</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    <span class="keyword">auto</span> res = PQprepare(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, stmt_name.c_str(), stmt_string.c_str(), <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (PQresultStatus(res) == PGRES_COMMAND_OK) {</div>
+<div class="line"><span class="lineno">   88</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
+<div class="line"><span class="lineno">   89</span>        PQclear(res);</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">return</span> std::make_unique&lt;impl::PostgresPreparedStatementImpl&gt;(stmt_name, stmt_string, <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
+<div class="line"><span class="lineno">   91</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   92</span>        this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(PQresultStatus(res));</div>
+<div class="line"><span class="lineno">   93</span>        PQclear(res);</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+
+</div>
+</div>
+<a id="a181c0123c4c931b7b625b387e93f902f" name="a181c0123c4c931b7b625b387e93f902f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a181c0123c4c931b7b625b387e93f902f">&#9670;&#160;</a></span>executeQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a> impl::PostgresDriverInstanceImpl::executeQuery </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>执行查询 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>查询语句 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>查询结果集 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>为查询失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a1c872d805ce3065afc9843f0ee2ce361">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00026">26</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>                                                                                  {</div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
+<div class="line"><span class="lineno">   28</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">   29</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   30</span>    }</div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, sql);</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   33</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) PQstatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">if</span> (status != PGRES_TUPLES_OK) {</div>
+<div class="line"><span class="lineno">   38</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
+<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   40</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keyword">auto</span> rt = std::make_unique&lt;PostgresResultSetImpl&gt;(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">   42</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
+<div class="line"><span class="lineno">   43</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">return</span> rt;</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6fd50e96e5344d77073cde88878694ea" name="a6fd50e96e5344d77073cde88878694ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fd50e96e5344d77073cde88878694ea">&#9670;&#160;</a></span>executeUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t impl::PostgresDriverInstanceImpl::executeUpdate </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sql</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>执行更新 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sql</td><td>更新预计 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>统计更新的行数 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>执行失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a228dbfc67efa358605ff73c720536793">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00048">48</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                                              {</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
+<div class="line"><span class="lineno">   50</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">   51</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, sql);</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">   56</span>    }</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (status != PGRES_COMMAND_OK) {</div>
+<div class="line"><span class="lineno">   59</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
+<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">   61</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   62</span>        <span class="keyword">auto</span> rt = (int64_t) PQcmdTuples(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">   63</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
+<div class="line"><span class="lineno">   64</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span> rt;</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="line"><span class="lineno">   68</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3086c1dd5820d502ca4e062ecb45009b" name="a3086c1dd5820d502ca4e062ecb45009b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3086c1dd5820d502ca4e062ecb45009b">&#9670;&#160;</a></span>getAutoCommit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::PostgresDriverInstanceImpl::getAutoCommit </td>
+          <td>(</td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>status</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>查看自动提交是否打开 </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 获取 autoCommit,在使用 postgresql 时建议使用命令行获取该值 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>查看失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a54a3030dbd9dcafe8f14cc437a6ee0d4">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00115">115</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>                                                                        {</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  117</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa4c1a9977a0e4799a7e4bbb0dcf4530f" name="aa4c1a9977a0e4799a7e4bbb0dcf4530f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4c1a9977a0e4799a7e4bbb0dcf4530f">&#9670;&#160;</a></span>getInsertId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::PostgresDriverInstanceImpl::getInsertId </td>
+          <td>(</td>
+          <td class="paramtype">int64_t &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取自增后的id </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 获取自增 Id，在使用 postgresql 时建议通过命令行使用 SELECT currval(pg_get_serial_sequence('tabName', 'colName')) 进行自增 Id 的获取; </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>获取失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a11c2e3954833882365a74431ae85417a">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00167">167</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>                                                                           {</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  169</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a88cf873afff7222731ba2e26e7108a97" name="a88cf873afff7222731ba2e26e7108a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88cf873afff7222731ba2e26e7108a97">&#9670;&#160;</a></span>getLastError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int impl::PostgresDriverInstanceImpl::getLastError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a5b25a40ffc85321d20bd19522976e120">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00099">99</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>                                                                {</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a>;</div>
+<div class="line"><span class="lineno">  101</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4f545197ac7ed8bdbb761725f6992e9c" name="a4f545197ac7ed8bdbb761725f6992e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f545197ac7ed8bdbb761725f6992e9c">&#9670;&#160;</a></span>getLastErrorMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * impl::PostgresDriverInstanceImpl::getLastErrorMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误信息，需要判空 </p><dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a440896cddef5269a0a80e5010fe6b7d4">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00103">103</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>                                                                               {</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> PQresultErrorMessage(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  106</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  107</span>        <span class="keywordflow">return</span> PQerrorMessage(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>);</div>
+<div class="line"><span class="lineno">  108</span>    }</div>
+<div class="line"><span class="lineno">  109</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1f8e79b375c352637a439cc250f5f5e3" name="a1f8e79b375c352637a439cc250f5f5e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f8e79b375c352637a439cc250f5f5e3">&#9670;&#160;</a></span>rollback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::PostgresDriverInstanceImpl::rollback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>事务回滚 </p><dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>回滚失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a101cebfab159068ef701980db574b52c">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00143">143</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  143</span>                                                       {</div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>) {</div>
+<div class="line"><span class="lineno">  145</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  146</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  147</span>    }</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = PQexec(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ad996ecbc1f79d80e4fc4d7a0e994330c">conn</a>, <span class="stringliteral">&quot;rollback;&quot;</span>);</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  152</span>    }</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <span class="keyword">auto</span> status = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">if</span> (status != PGRES_COMMAND_OK) {</div>
+<div class="line"><span class="lineno">  156</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = (int) status;</div>
+<div class="line"><span class="lineno">  157</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  158</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  159</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#ae47578dcc7047ac51923ff828ca9fc5b">error</a> = 0;</div>
+<div class="line"><span class="lineno">  160</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a>);</div>
+<div class="line"><span class="lineno">  161</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a4dc88be3870a8bc521aa0a97bcf3605a">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  163</span>    }</div>
+<div class="line"><span class="lineno">  164</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7065a54c00e0df73d56319d8fd650d28" name="a7065a54c00e0df73d56319d8fd650d28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7065a54c00e0df73d56319d8fd650d28">&#9670;&#160;</a></span>setAutoCommit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool impl::PostgresDriverInstanceImpl::setAutoCommit </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置事务自动提交 </p><dl class="section warning"><dt>警告</dt><dd>因官方不支持 libpq 设置 autocommit，且 autoCommit 属性为全局级，在使用 postgresql 时建议使用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a98a8584958e4176bb33e29cdc11210f2">begin()</a> 开启事务 </dd>
+<dd>
+因官方不支持 sqlite3 设置 autocommit，在使用 sqlite 时建议使用 <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#a98a8584958e4176bb33e29cdc11210f2">begin()</a> 开启事务 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>设置自动提交 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">false</td><td>设置失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_driver_instance.html#a28b9a4621f53551ab3156583ead8e2ac">sese::db::DriverInstance</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a> 第 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00111">111</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>                                                                       {</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  113</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ad996ecbc1f79d80e4fc4d7a0e994330c" name="ad996ecbc1f79d80e4fc4d7a0e994330c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad996ecbc1f79d80e4fc4d7a0e994330c">&#9670;&#160;</a></span>conn</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PGconn* sese::db::impl::PostgresDriverInstanceImpl::conn</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00028">28</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00018">~PostgresDriverInstanceImpl()</a>.</p>
+
+</div>
+</div>
+<a id="ae47578dcc7047ac51923ff828ca9fc5b" name="ae47578dcc7047ac51923ff828ca9fc5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47578dcc7047ac51923ff828ca9fc5b">&#9670;&#160;</a></span>error</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::db::impl::PostgresDriverInstanceImpl::error = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00030">30</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af7fdcbcc46e97342f66703cc4992e68c" name="af7fdcbcc46e97342f66703cc4992e68c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7fdcbcc46e97342f66703cc4992e68c">&#9670;&#160;</a></span>rd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::random_device sese::db::impl::PostgresDriverInstanceImpl::rd {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00032">32</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4dc88be3870a8bc521aa0a97bcf3605a" name="a4dc88be3870a8bc521aa0a97bcf3605a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dc88be3870a8bc521aa0a97bcf3605a">&#9670;&#160;</a></span>result</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PGresult* sese::db::impl::PostgresDriverInstanceImpl::result</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a> 第 <a class="el" href="_postgres_driver_instance_impl_8h_source.html#l00029">29</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_postgres_driver_instance_impl_8cpp_source.html#l00018">~PostgresDriverInstanceImpl()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_driver_instance_impl_8h_source.html">PostgresDriverInstanceImpl.h</a></li>
+<li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_driver_instance_impl_8cpp_source.html">PostgresDriverInstanceImpl.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

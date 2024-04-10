@@ -1,0 +1,717 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::Base64Converter类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_base64_converter.html">Base64Converter</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1_base64_converter-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::Base64Converter类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>BASE64 转换器  
+ <a href="classsese_1_1_base64_converter.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_base64_converter_8h_source.html">Base64Converter.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::Base64Converter 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1_base64_converter.png" usemap="#sese::Base64Converter_map" alt=""/>
+  <map id="sese::Base64Converter_map" name="sese::Base64Converter_map">
+<area href="classsese_1_1_not_instantiable.html" title="不可实例化类" alt="sese::NotInstantiable" shape="rect" coords="0,0,143,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a0294e1576dfacc48966ac637f9565518" id="r_a0294e1576dfacc48966ac637f9565518"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="separator:a0294e1576dfacc48966ac637f9565518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4928f1f091f0df7c6f2cee3f5f9c7be7" id="r_a4928f1f091f0df7c6f2cee3f5f9c7be7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="separator:a4928f1f091f0df7c6f2cee3f5f9c7be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcc38dc3caa6f7d50de652b694df88fc" id="r_adcc38dc3caa6f7d50de652b694df88fc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#adcc38dc3caa6f7d50de652b694df88fc">CodePage</a> = const unsigned char *</td></tr>
+<tr class="separator:adcc38dc3caa6f7d50de652b694df88fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:af90ff106f76de888019111b2666c792b" id="r_af90ff106f76de888019111b2666c792b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">encode</a> (const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;src, const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;dest)</td></tr>
+<tr class="separator:af90ff106f76de888019111b2666c792b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04bc047bade46a36e58478ebb1091d17" id="r_a04bc047bade46a36e58478ebb1091d17"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#a04bc047bade46a36e58478ebb1091d17">encode</a> (<a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> *src, <a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *dest)</td></tr>
+<tr class="separator:a04bc047bade46a36e58478ebb1091d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4d46838fde69ef133279b5b0b6e4cf0" id="r_ac4d46838fde69ef133279b5b0b6e4cf0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#ac4d46838fde69ef133279b5b0b6e4cf0">decode</a> (const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;src, const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;dest)</td></tr>
+<tr class="separator:ac4d46838fde69ef133279b5b0b6e4cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f72417e949f1ee426c92d3705ff065f" id="r_a4f72417e949f1ee426c92d3705ff065f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#a4f72417e949f1ee426c92d3705ff065f">decode</a> (<a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> *src, <a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *dest)</td></tr>
+<tr class="separator:a4f72417e949f1ee426c92d3705ff065f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9c52b427592a25f2f6beaf1aa6f7e7c" id="r_ad9c52b427592a25f2f6beaf1aa6f7e7c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#ad9c52b427592a25f2f6beaf1aa6f7e7c">encodeBase62</a> (<a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> *input, <a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *output) noexcept</td></tr>
+<tr class="separator:ad9c52b427592a25f2f6beaf1aa6f7e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cc1c2f81ec7adb863bf395485399187" id="r_a4cc1c2f81ec7adb863bf395485399187"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#a4cc1c2f81ec7adb863bf395485399187">decodeBase62</a> (<a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> *input, <a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *output) noexcept</td></tr>
+<tr class="separator:a4cc1c2f81ec7adb863bf395485399187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86f2ee795aaaaf9735ebdd58a7b040ad" id="r_a86f2ee795aaaaf9735ebdd58a7b040ad"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#a86f2ee795aaaaf9735ebdd58a7b040ad">encodeInteger</a> (size_t num, <a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *output) noexcept</td></tr>
+<tr class="separator:a86f2ee795aaaaf9735ebdd58a7b040ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c350b1e1dec397d2976790e5aefb687" id="r_a3c350b1e1dec397d2976790e5aefb687"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_base64_converter.html#a3c350b1e1dec397d2976790e5aefb687">decodeBuffer</a> (const unsigned char *buffer, size_t <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>) noexcept</td></tr>
+<tr class="separator:a3c350b1e1dec397d2976790e5aefb687"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1_not_instantiable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_not_instantiable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_not_instantiable.html">sese::NotInstantiable</a></td></tr>
+<tr class="memitem:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable" id="r_a56cae6201f07d769ffc3d05c749c7937"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#a56cae6201f07d769ffc3d05c749c7937">NotInstantiable</a> ()=delete</td></tr>
+<tr class="separator:a56cae6201f07d769ffc3d05c749c7937 inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0447de63059ff64d0e8becf5637297a inherit pub_methods_classsese_1_1_not_instantiable" id="r_ae0447de63059ff64d0e8becf5637297a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#ae0447de63059ff64d0e8becf5637297a">~NotInstantiable</a> ()=default</td></tr>
+<tr class="separator:ae0447de63059ff64d0e8becf5637297a inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af88c4042d8bc4f4cea9d59bfde8389fa inherit pub_methods_classsese_1_1_not_instantiable" id="r_af88c4042d8bc4f4cea9d59bfde8389fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#af88c4042d8bc4f4cea9d59bfde8389fa">NotInstantiable</a> (const <a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;)=delete</td></tr>
+<tr class="separator:af88c4042d8bc4f4cea9d59bfde8389fa inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7477b0374b1cb79bc945bd958c87243 inherit pub_methods_classsese_1_1_not_instantiable" id="r_ab7477b0374b1cb79bc945bd958c87243"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_not_instantiable.html#ab7477b0374b1cb79bc945bd958c87243">operator=</a> (const <a class="el" href="classsese_1_1_not_instantiable.html">NotInstantiable</a> &amp;)=delete</td></tr>
+<tr class="separator:ab7477b0374b1cb79bc945bd958c87243 inherit pub_methods_classsese_1_1_not_instantiable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>BASE64 转换器 </p>
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8h_source.html">Base64Converter.h</a> 第 <a class="el" href="_base64_converter_8h_source.html#l00021">21</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="adcc38dc3caa6f7d50de652b694df88fc" name="adcc38dc3caa6f7d50de652b694df88fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcc38dc3caa6f7d50de652b694df88fc">&#9670;&#160;</a></span>CodePage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_base64_converter.html#adcc38dc3caa6f7d50de652b694df88fc">sese::Base64Converter::CodePage</a> =  const unsigned char *</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8h_source.html">Base64Converter.h</a> 第 <a class="el" href="_base64_converter_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4928f1f091f0df7c6f2cee3f5f9c7be7" name="a4928f1f091f0df7c6f2cee3f5f9c7be7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4928f1f091f0df7c6f2cee3f5f9c7be7">&#9670;&#160;</a></span>InputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">sese::Base64Converter::InputStream</a> =  <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8h_source.html">Base64Converter.h</a> 第 <a class="el" href="_base64_converter_8h_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0294e1576dfacc48966ac637f9565518" name="a0294e1576dfacc48966ac637f9565518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0294e1576dfacc48966ac637f9565518">&#9670;&#160;</a></span>OutputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">sese::Base64Converter::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8h_source.html">Base64Converter.h</a> 第 <a class="el" href="_base64_converter_8h_source.html#l00023">23</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ac4d46838fde69ef133279b5b0b6e4cf0" name="ac4d46838fde69ef133279b5b0b6e4cf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4d46838fde69ef133279b5b0b6e4cf0">&#9670;&#160;</a></span>decode() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Base64Converter::decode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a> 第 <a class="el" href="_base64_converter_8cpp_source.html#l00110">110</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>                                                                                   {</div>
+<div class="line"><span class="lineno">  111</span>    <a class="code hl_function" href="classsese_1_1_base64_converter.html#ac4d46838fde69ef133279b5b0b6e4cf0">decode</a>(src.get(), dest.get());</div>
+<div class="line"><span class="lineno">  112</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00110">decode()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_base64_converter_8cpp_source.html#l00110">decode()</a>.</p>
+
+</div>
+</div>
+<a id="a4f72417e949f1ee426c92d3705ff065f" name="a4f72417e949f1ee426c92d3705ff065f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f72417e949f1ee426c92d3705ff065f">&#9670;&#160;</a></span>decode() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Base64Converter::decode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a> 第 <a class="el" href="_base64_converter_8cpp_source.html#l00063">63</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>                                                                 {</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[4]{0};</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    int64_t len;</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">while</span> ((len = src-&gt;read(buffer, 4)) != 0) {</div>
+<div class="line"><span class="lineno">   68</span>        <span class="keywordtype">int</span> offset = 0;</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; len; i++) {</div>
+<div class="line"><span class="lineno">   70</span>            <span class="comment">// 此处已是逻辑完备的</span></div>
+<div class="line"><span class="lineno">   71</span>            <span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">if</span> (buffer[i] &gt;= <span class="charliteral">&#39;A&#39;</span> &amp;&amp; buffer[i] &lt;= <span class="charliteral">&#39;Z&#39;</span>) {</div>
+<div class="line"><span class="lineno">   73</span>                buffer[i] -= 65;</div>
+<div class="line"><span class="lineno">   74</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] &gt;= <span class="charliteral">&#39;a&#39;</span> &amp;&amp; buffer[i] &lt;= <span class="charliteral">&#39;z&#39;</span>) {</div>
+<div class="line"><span class="lineno">   75</span>                buffer[i] -= 71;</div>
+<div class="line"><span class="lineno">   76</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; buffer[i] &lt;= <span class="charliteral">&#39;9&#39;</span>) {</div>
+<div class="line"><span class="lineno">   77</span>                buffer[i] += 4;</div>
+<div class="line"><span class="lineno">   78</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;+&#39;</span> || buffer[i] == <span class="charliteral">&#39;-&#39;</span>) {</div>
+<div class="line"><span class="lineno">   79</span>                buffer[i] = 62;</div>
+<div class="line"><span class="lineno">   80</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;/&#39;</span> || buffer[i] == <span class="charliteral">&#39;_&#39;</span>) {</div>
+<div class="line"><span class="lineno">   81</span>                buffer[i] = 63;</div>
+<div class="line"><span class="lineno">   82</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   83</span>                buffer[i] = 0;</div>
+<div class="line"><span class="lineno">   84</span>                offset -= 1;</div>
+<div class="line"><span class="lineno">   85</span>            }</div>
+<div class="line"><span class="lineno">   86</span>            <span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><span class="lineno">   87</span>        }</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>        len += offset;</div>
+<div class="line"><span class="lineno">   90</span>        <span class="comment">// 1</span></div>
+<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">if</span> (len &gt;= 2) {</div>
+<div class="line"><span class="lineno">   92</span>            buffer[0] = (buffer[0] &lt;&lt; 2) | (buffer[1] &amp; 0b00110000) &gt;&gt; 4;</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>            <span class="comment">// 2</span></div>
+<div class="line"><span class="lineno">   95</span>            <span class="keywordflow">if</span> (len &gt;= 3) {</div>
+<div class="line"><span class="lineno">   96</span>                buffer[1] = (buffer[1] &amp; 0b00001111) &lt;&lt; 4 | (buffer[2] &amp; 0b00111100) &gt;&gt; 2;</div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>                <span class="comment">// 3</span></div>
+<div class="line"><span class="lineno">   99</span>                <span class="keywordflow">if</span> (len == 4) {</div>
+<div class="line"><span class="lineno">  100</span>                    buffer[2] = (buffer[2] &amp; 0b00000011) &lt;&lt; 6 | buffer[3];</div>
+<div class="line"><span class="lineno">  101</span>                }</div>
+<div class="line"><span class="lineno">  102</span>            }</div>
+<div class="line"><span class="lineno">  103</span>        }</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>        dest-&gt;write(buffer, len - 1);</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
+
+</div>
+</div>
+<a id="a4cc1c2f81ec7adb863bf395485399187" name="a4cc1c2f81ec7adb863bf395485399187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cc1c2f81ec7adb863bf395485399187">&#9670;&#160;</a></span>decodeBase62()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Base64Converter::decodeBase62 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>按照 Base62 码表解码 </p><dl class="section warning"><dt>警告</dt><dd>注意此函数的解码方式类似于 Base64，并不是标准的 Base62解码 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>输入流 </td></tr>
+    <tr><td class="paramname">output</td><td>输出流 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>编码结果 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a> 第 <a class="el" href="_base64_converter_8cpp_source.html#l00171">171</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  171</span>                                                                                    {</div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[4]{};</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>    int64_t len;</div>
+<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">while</span> ((len = input-&gt;read(buffer, 4)) != 0) {</div>
+<div class="line"><span class="lineno">  176</span>        <span class="keyword">auto</span> num = <a class="code hl_function" href="classsese_1_1_base64_converter.html#a3c350b1e1dec397d2976790e5aefb687">decodeBuffer</a>(buffer, len);</div>
+<div class="line"><span class="lineno">  177</span>        <span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><span class="lineno">  178</span>        <span class="keywordflow">if</span> (num == -1) {</div>
+<div class="line"><span class="lineno">  179</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  180</span>        }</div>
+<div class="line"><span class="lineno">  181</span> </div>
+<div class="line"><span class="lineno">  182</span>        num = <a class="code hl_function" href="_endian_8h.html#aee39e2ac7b85b19445e3e49d84ae0e71">ToBigEndian32</a>(num);</div>
+<div class="line"><span class="lineno">  183</span>        <span class="keywordflow">if</span> (len == 4) {</div>
+<div class="line"><span class="lineno">  184</span>            <span class="keywordflow">if</span> (3 != output-&gt;write(((<span class="keywordtype">char</span> *) &amp;num) + 1, 3)) {</div>
+<div class="line"><span class="lineno">  185</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  186</span>            }</div>
+<div class="line"><span class="lineno">  187</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (len == 3) {</div>
+<div class="line"><span class="lineno">  188</span>            <span class="keywordflow">if</span> (2 != output-&gt;write(((<span class="keywordtype">char</span> *) &amp;num) + 2, 2)) {</div>
+<div class="line"><span class="lineno">  189</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  190</span>            }</div>
+<div class="line"><span class="lineno">  191</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (len == 2) {</div>
+<div class="line"><span class="lineno">  192</span>            <span class="keywordflow">if</span> (1 != output-&gt;write(((<span class="keywordtype">char</span> *) &amp;num) + 3, 1)) {</div>
+<div class="line"><span class="lineno">  193</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  194</span>            }</div>
+<div class="line"><span class="lineno">  195</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  196</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  197</span>        }</div>
+<div class="line"><span class="lineno">  198</span>        <span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>        memset(buffer, 0, 4);</div>
+<div class="line"><span class="lineno">  201</span>    }</div>
+<div class="line"><span class="lineno">  202</span> </div>
+<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  204</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00038">ToBigEndian32()</a>.</p>
+
+</div>
+</div>
+<a id="a3c350b1e1dec397d2976790e5aefb687" name="a3c350b1e1dec397d2976790e5aefb687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c350b1e1dec397d2976790e5aefb687">&#9670;&#160;</a></span>decodeBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Base64Converter::decodeBuffer </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a> 第 <a class="el" href="_base64_converter_8cpp_source.html#l00133">133</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>                                                                                       {</div>
+<div class="line"><span class="lineno">  134</span>    <span class="keyword">auto</span> base = strlen((<span class="keyword">const</span> <span class="keywordtype">char</span> *) <a class="code hl_variable" href="_base64_converter_8cpp.html#a7e5d4081227674581314815d121367d5">base62_code_page</a>);</div>
+<div class="line"><span class="lineno">  135</span>    <span class="keyword">auto</span> page = std::string_view((<span class="keyword">const</span> <span class="keywordtype">char</span> *) <a class="code hl_variable" href="_base64_converter_8cpp.html#a7e5d4081227674581314815d121367d5">base62_code_page</a>, base);</div>
+<div class="line"><span class="lineno">  136</span>    int64_t num = 0;</div>
+<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> idx = 0; idx &lt; <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>; ++idx) {</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keyword">auto</span> power = (<a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> - (idx + 1));</div>
+<div class="line"><span class="lineno">  139</span>        <span class="keyword">auto</span> i = page.find((<span class="keywordtype">char</span>) (buffer[idx]));</div>
+<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">if</span> (i == std::string::npos) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  141</span>        num += i * <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(std::pow(base, power)); <span class="comment">// NOLINT</span></div>
+<div class="line"><span class="lineno">  142</span>    }</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">return</span> num;</div>
+<div class="line"><span class="lineno">  144</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00015">base62_code_page</a> , 以及 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<a id="af90ff106f76de888019111b2666c792b" name="af90ff106f76de888019111b2666c792b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af90ff106f76de888019111b2666c792b">&#9670;&#160;</a></span>encode() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Base64Converter::encode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a> 第 <a class="el" href="_base64_converter_8cpp_source.html#l00058">58</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>                                                                                   {</div>
+<div class="line"><span class="lineno">   59</span>    <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">encode</a>(src.get(), dest.get());</div>
+<div class="line"><span class="lineno">   60</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00058">encode()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_base64_converter_8cpp_source.html#l00058">encode()</a>, <a class="el" href="_base64_converter_8cpp_source.html#l00021">encode()</a>, <a class="el" href="_web_socket_authenticator_8cpp_source.html#l00028">sese::net::ws::WebsocketAuthenticator::generateKeyPair()</a>, <a class="el" href="_web_socket_authenticator_8cpp_source.html#l00088">sese::net::ws::WebsocketAuthenticator::toResult()</a> , 以及 <a class="el" href="_web_socket_authenticator_8cpp_source.html#l00064">sese::net::ws::WebsocketAuthenticator::verify()</a>.</p>
+
+</div>
+</div>
+<a id="a04bc047bade46a36e58478ebb1091d17" name="a04bc047bade46a36e58478ebb1091d17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04bc047bade46a36e58478ebb1091d17">&#9670;&#160;</a></span>encode() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Base64Converter::encode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a> 第 <a class="el" href="_base64_converter_8cpp_source.html#l00021">21</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>                                                                 {</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[3]{0};</div>
+<div class="line"><span class="lineno">   23</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> result[4]{0};</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>    int64_t len;</div>
+<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">while</span> ((len = src-&gt;read(buffer, 3)) != 0) {</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (len == 2) {</div>
+<div class="line"><span class="lineno">   28</span>            buffer[2] = 0b00000000;</div>
+<div class="line"><span class="lineno">   29</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (len == 1) {</div>
+<div class="line"><span class="lineno">   30</span>            buffer[1] = 0b00000000;</div>
+<div class="line"><span class="lineno">   31</span>            buffer[2] = 0b00000000;</div>
+<div class="line"><span class="lineno">   32</span>        }</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> bits = 0b00000000;</div>
+<div class="line"><span class="lineno">   35</span>        <span class="comment">// 1</span></div>
+<div class="line"><span class="lineno">   36</span>        bits = (buffer[0] &amp; 0b11111100) &gt;&gt; 2;</div>
+<div class="line"><span class="lineno">   37</span>        <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">::encode</a>(bits, result[0]);</div>
+<div class="line"><span class="lineno">   38</span>        <span class="comment">// 2</span></div>
+<div class="line"><span class="lineno">   39</span>        bits = (buffer[0] &amp; 0b00000011) &lt;&lt; 4 | (buffer[1] &amp; 0b11110000) &gt;&gt; 4;</div>
+<div class="line"><span class="lineno">   40</span>        <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">::encode</a>(bits, result[1]);</div>
+<div class="line"><span class="lineno">   41</span>        <span class="comment">// 3</span></div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">if</span> (len &gt;= 2) {</div>
+<div class="line"><span class="lineno">   43</span>            bits = (buffer[1] &amp; 0b00001111) &lt;&lt; 2 | (buffer[2] &amp; 0b11000000) &gt;&gt; 6;</div>
+<div class="line"><span class="lineno">   44</span>            <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">::encode</a>(bits, result[2]);</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>            <span class="comment">// 4</span></div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (len == 3) {</div>
+<div class="line"><span class="lineno">   48</span>                bits = (buffer[2] &amp; 0b00111111);</div>
+<div class="line"><span class="lineno">   49</span>                <a class="code hl_function" href="classsese_1_1_base64_converter.html#af90ff106f76de888019111b2666c792b">::encode</a>(bits, result[3]);</div>
+<div class="line"><span class="lineno">   50</span>            }</div>
+<div class="line"><span class="lineno">   51</span>        }</div>
+<div class="line"><span class="lineno">   52</span>        dest-&gt;write(result, len + 1);</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">if</span> (len != 3) dest-&gt;write(<span class="stringliteral">&quot;==&quot;</span>, len == 1 ? 2 : 1);</div>
+<div class="line"><span class="lineno">   54</span>    }</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00058">encode()</a>, <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
+
+</div>
+</div>
+<a id="ad9c52b427592a25f2f6beaf1aa6f7e7c" name="ad9c52b427592a25f2f6beaf1aa6f7e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9c52b427592a25f2f6beaf1aa6f7e7c">&#9670;&#160;</a></span>encodeBase62()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Base64Converter::encodeBase62 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>按照 Base62 码表编码 </p><dl class="section warning"><dt>警告</dt><dd>注意此函数的编码方式类似于 Base64，并不是标准的 Base62编码 </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>输入流 </td></tr>
+    <tr><td class="paramname">output</td><td>输出流 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>编码结果 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a> 第 <a class="el" href="_base64_converter_8cpp_source.html#l00146">146</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  146</span>                                                                                    {</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[4]{};</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>    int64_t len;</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">while</span> ((len = input-&gt;read(buffer + 1, 3)) != 0) {</div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">if</span> (len == 2) {</div>
+<div class="line"><span class="lineno">  152</span>            buffer[3] = buffer[2];</div>
+<div class="line"><span class="lineno">  153</span>            buffer[2] = buffer[1];</div>
+<div class="line"><span class="lineno">  154</span>            buffer[1] = 0;</div>
+<div class="line"><span class="lineno">  155</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (len == 1) {</div>
+<div class="line"><span class="lineno">  156</span>            buffer[3] = buffer[1];</div>
+<div class="line"><span class="lineno">  157</span>            buffer[2] = 0;</div>
+<div class="line"><span class="lineno">  158</span>            buffer[1] = 0;</div>
+<div class="line"><span class="lineno">  159</span>        }</div>
+<div class="line"><span class="lineno">  160</span>        <span class="comment">// buffer[0] always be zero</span></div>
+<div class="line"><span class="lineno">  161</span>        <span class="keyword">auto</span> num = *(uint32_t *) &amp;buffer;</div>
+<div class="line"><span class="lineno">  162</span>        num = <a class="code hl_function" href="_endian_8h.html#adbf79fbea7a031ee08cd875f6115786a">FromBigEndian32</a>(num);</div>
+<div class="line"><span class="lineno">  163</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classsese_1_1_base64_converter.html#a86f2ee795aaaaf9735ebdd58a7b040ad">encodeInteger</a>(num, output)) {</div>
+<div class="line"><span class="lineno">  164</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  165</span>        }</div>
+<div class="line"><span class="lineno">  166</span>    }</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  169</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_endian_8h_source.html#l00068">FromBigEndian32()</a>.</p>
+
+</div>
+</div>
+<a id="a86f2ee795aaaaf9735ebdd58a7b040ad" name="a86f2ee795aaaaf9735ebdd58a7b040ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f2ee795aaaaf9735ebdd58a7b040ad">&#9670;&#160;</a></span>encodeInteger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Base64Converter::encodeInteger </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a> 第 <a class="el" href="_base64_converter_8cpp_source.html#l00115">115</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>                                                                             {</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">if</span> (num == 0) {</div>
+<div class="line"><span class="lineno">  117</span>        output-&gt;write(&amp;<a class="code hl_variable" href="_base64_converter_8cpp.html#a7e5d4081227674581314815d121367d5">base62_code_page</a>[0], 1);</div>
+<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  119</span>    }</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>    std::vector&lt;unsigned char&gt; vector;</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keyword">auto</span> base = strlen((<span class="keyword">const</span> <span class="keywordtype">char</span> *) <a class="code hl_variable" href="_base64_converter_8cpp.html#a7e5d4081227674581314815d121367d5">base62_code_page</a>);</div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">while</span> (num &gt; 0) {</div>
+<div class="line"><span class="lineno">  124</span>        std::div_t res = div((<span class="keywordtype">int</span>) num, (<span class="keywordtype">int</span>) base);</div>
+<div class="line"><span class="lineno">  125</span>        num = res.quot;</div>
+<div class="line"><span class="lineno">  126</span>        vector.push_back(<a class="code hl_variable" href="_base64_converter_8cpp.html#a7e5d4081227674581314815d121367d5">base62_code_page</a>[res.rem]);</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>    std::reverse(vector.begin(), vector.end());</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> output-&gt;write(vector.data(), vector.size()) == vector.size();</div>
+<div class="line"><span class="lineno">  131</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00015">base62_code_page</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/convert/<a class="el" href="_base64_converter_8h_source.html">Base64Converter.h</a></li>
+<li>sese/convert/<a class="el" href="_base64_converter_8cpp_source.html">Base64Converter.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

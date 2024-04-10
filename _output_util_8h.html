@@ -1,0 +1,796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/io/OutputUtil.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_6a053736b378e458230c774ca529d5b1.html">io</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">OutputUtil.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>输出工具  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_stream_8h_source.html">sese/io/Stream.h</a>&quot;</code><br />
+<code>#include &lt;array&gt;</code><br />
+<code>#include &lt;bitset&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="_string_8h_source.html">sese/text/String.h</a>&quot;</code><br />
+</div>
+<p><a href="_output_util_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a489732e59e4be824493dfb8fb0127d75" id="r_a489732e59e4be824493dfb8fb0127d75"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a489732e59e4be824493dfb8fb0127d75">SESE_OUT_TYPE_DEF</a>(type,  <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&#160;&#160;&#160;inline int64_t operator&lt;&lt;(<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> &amp;out, type <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td></tr>
+<tr class="separator:a489732e59e4be824493dfb8fb0127d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa3a8527acb92036166554f6e2ecdbb0" id="r_afa3a8527acb92036166554f6e2ecdbb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#afa3a8527acb92036166554f6e2ecdbb0">SESE_OUT_PTR_TYPE_DEF</a>(type,  <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&#160;&#160;&#160;inline int64_t operator&lt;&lt;(<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> *out, type <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td></tr>
+<tr class="separator:afa3a8527acb92036166554f6e2ecdbb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af87c88d76c2f8feb79b9259eebfaf592" id="r_af87c88d76c2f8feb79b9259eebfaf592"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#af87c88d76c2f8feb79b9259eebfaf592">SESE_OUT_UPTR_TYPE_DEF</a>(type,  <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&#160;&#160;&#160;inline int64_t operator&lt;&lt;(const std::unique_ptr&lt;<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a>&gt; &amp;out, type <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td></tr>
+<tr class="separator:af87c88d76c2f8feb79b9259eebfaf592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fa58b79a94dc56288c0b2e89c7abcde" id="r_a0fa58b79a94dc56288c0b2e89c7abcde"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a0fa58b79a94dc56288c0b2e89c7abcde">SESE_OUT_SPTR_TYPE_DEF</a>(type,  <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&#160;&#160;&#160;inline int64_t operator&lt;&lt;(const std::shared_ptr&lt;<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a>&gt; &amp;out, type <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td></tr>
+<tr class="separator:a0fa58b79a94dc56288c0b2e89c7abcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ef8cc7d4c3f3924c8ad1dc07e7734e6" id="r_a7ef8cc7d4c3f3924c8ad1dc07e7734e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a7ef8cc7d4c3f3924c8ad1dc07e7734e6">SESE_OUT_FUNC_BODY</a>(ptr,  len)&#160;&#160;&#160;    { return <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">out.write</a>(ptr, len); }</td></tr>
+<tr class="separator:a7ef8cc7d4c3f3924c8ad1dc07e7734e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e001c7b650cb3cfe09985936db44167" id="r_a6e001c7b650cb3cfe09985936db44167"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a6e001c7b650cb3cfe09985936db44167">SESE_OUT_PTR_FUNC_BODY</a>(ptr,  len)&#160;&#160;&#160;    { return out-&gt;<a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a>(ptr, len); }</td></tr>
+<tr class="separator:a6e001c7b650cb3cfe09985936db44167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabb2cced3839565b7dca9a2a0fc87be5" id="r_aabb2cced3839565b7dca9a2a0fc87be5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#aabb2cced3839565b7dca9a2a0fc87be5">SESE_OUT_DEF</a>(type,  <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>,  ptr,  len)</td></tr>
+<tr class="separator:aabb2cced3839565b7dca9a2a0fc87be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a725da41715e575637eb25d575a2e6a41" id="r_a725da41715e575637eb25d575a2e6a41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a725da41715e575637eb25d575a2e6a41">SESE_OUT_DEF_ALL</a>(type,  <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>,  ptr,  len)</td></tr>
+<tr class="separator:a725da41715e575637eb25d575a2e6a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa09280ac55a64f07b8d8a3c3819ae9dd" id="r_aa09280ac55a64f07b8d8a3c3819ae9dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#aa09280ac55a64f07b8d8a3c3819ae9dd">SESE_OUT_DEF_TEMPLATE</a>(<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>,  ptr,  len,  type, ...)</td></tr>
+<tr class="separator:aa09280ac55a64f07b8d8a3c3819ae9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3117623d86037996206741b982fb36" id="r_a0c3117623d86037996206741b982fb36"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a0c3117623d86037996206741b982fb36">SESE_OUT_DEF_TEMPLATE_ALL</a>(<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>,  ptr,  len,  type, ...)</td></tr>
+<tr class="separator:a0c3117623d86037996206741b982fb36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a29113a4324e553b7e334beb4c56fc541" id="r_a29113a4324e553b7e334beb4c56fc541"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a29113a4324e553b7e334beb4c56fc541">SESE_OUT_DEF_TEMPLATE_ALL</a> (<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, data.c_str(), <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T) *<a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">data.size</a>(), std::basic_string&lt; T &gt;, class T) SESE_OUT_DEF_TEMPLATE_ALL(<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a></td></tr>
+<tr class="separator:a29113a4324e553b7e334beb4c56fc541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceca130c45e83b19ee83fe45f1c9aa39" id="r_aceca130c45e83b19ee83fe45f1c9aa39"><td class="memItemLeft" align="right" valign="top">data&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> ()</td></tr>
+<tr class="separator:aceca130c45e83b19ee83fe45f1c9aa39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1182f7c8b394f4637da72f5a9b4fa5d" id="r_af1182f7c8b394f4637da72f5a9b4fa5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a> (T) *data.length()</td></tr>
+<tr class="separator:af1182f7c8b394f4637da72f5a9b4fa5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74691caae10f5180dd7f3ed07ab6bb4f" id="r_a74691caae10f5180dd7f3ed07ab6bb4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> class T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a74691caae10f5180dd7f3ed07ab6bb4f">SESE_OUT_DEF_TEMPLATE_ALL</a> (<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data.data</a>(), <a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T) *<a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">data.size</a>(), std::vector&lt; T &gt;, class T) SESE_OUT_DEF_TEMPLATE_ALL(<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a></td></tr>
+<tr class="separator:a74691caae10f5180dd7f3ed07ab6bb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2123fb3308d23f9cd984552eaf0c688" id="r_ae2123fb3308d23f9cd984552eaf0c688"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> class T <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#ae2123fb3308d23f9cd984552eaf0c688">to_string</a> ().c_str()</td></tr>
+<tr class="separator:ae2123fb3308d23f9cd984552eaf0c688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b0b87fb002705ecbf1c5e8a0503a94a" id="r_a4b0b87fb002705ecbf1c5e8a0503a94a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> class T <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> ()</td></tr>
+<tr class="separator:a4b0b87fb002705ecbf1c5e8a0503a94a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebf0a035c008c6a9858bf733bbce852e" id="r_aebf0a035c008c6a9858bf733bbce852e"><td class="memTemplParams" colspan="2">template&lt;class T , size_t N&gt; </td></tr>
+<tr class="memitem:aebf0a035c008c6a9858bf733bbce852e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> class T <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> size_t N int64_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#aebf0a035c008c6a9858bf733bbce852e">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> &amp;output, std::array&lt; T, N &gt; <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td></tr>
+<tr class="separator:aebf0a035c008c6a9858bf733bbce852e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab90d47f3d9bb644bef55eaf22333ccb4" id="r_ab90d47f3d9bb644bef55eaf22333ccb4"><td class="memTemplParams" colspan="2">template&lt;class T , size_t N&gt; </td></tr>
+<tr class="memitem:ab90d47f3d9bb644bef55eaf22333ccb4"><td class="memTemplItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_output_util_8h.html#ab90d47f3d9bb644bef55eaf22333ccb4">operator&lt;&lt;</a> (<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> *output, std::array&lt; T, N &gt; <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td></tr>
+<tr class="separator:ab90d47f3d9bb644bef55eaf22333ccb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>输出工具 </p>
+<dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2023年9月13日 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 中定义.</p>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="aabb2cced3839565b7dca9a2a0fc87be5" name="aabb2cced3839565b7dca9a2a0fc87be5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabb2cced3839565b7dca9a2a0fc87be5">&#9670;&#160;</a></span>SESE_OUT_DEF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_DEF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">len&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="_output_util_8h.html#a489732e59e4be824493dfb8fb0127d75">SESE_OUT_TYPE_DEF</a>(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)          \</div>
+<div class="line">    SESE_OUT_FUNC_BODY(ptr, len)</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00029">29</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>                                                                    {</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">return</span> output.write(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.data(), <span class="keyword">sizeof</span>(T) * N);</div>
+<div class="line"><span class="lineno">   73</span>}</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T, <span class="keywordtype">size_t</span> N&gt;</div>
+<div class="line"><span class="lineno">   76</span>int64_t <a class="code hl_function" href="_output_util_8h.html#aebf0a035c008c6a9858bf733bbce852e">operator&lt;&lt;</a>(<a class="code hl_class" href="classsese_1_1io_1_1_output_stream.html" title="流式输出接口类">sese::io::OutputStream</a> *output, std::array&lt;T, N&gt; <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>) {</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">return</span> output-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.data(), <span class="keyword">sizeof</span>(T) * N);</div>
+<div class="line"><span class="lineno">   78</span>}</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span><span class="preprocessor">#if SESE_CXX_STANDARD &gt;= 202000L</span></div>
+<div class="line"><span class="lineno">   81</span><span class="preprocessor">#include &lt;span&gt;</span></div>
+<div class="line"><span class="lineno">   82</span><a class="code hl_define" href="_output_util_8h.html#a0c3117623d86037996206741b982fb36">SESE_OUT_DEF_TEMPLATE_ALL</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.data(), <span class="keyword">sizeof</span>(T) * <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.size(), std::span&lt;T&gt;, <span class="keyword">class</span> T)</div>
+<div class="line"><span class="lineno">   83</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span><span class="preprocessor">#include &quot;<a class="code" href="_string_8h.html" title="UTF-8 字符串">sese/text/String.h</a>&quot;</span></div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span><a class="code hl_define" href="_output_util_8h.html#a725da41715e575637eb25d575a2e6a41">SESE_OUT_DEF_ALL</a>(<span class="keyword">const</span> <a class="code hl_class" href="classsstr_1_1_s_string_view.html" title="字符串视图">sese::text::StringView</a> &amp;, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.<a class="code hl_function" href="classsstr_1_1_s_string_view.html#a5b521606b27523db565edc87e8f7e24f">data</a>(), <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.size())</div>
+<div class="line"><span class="lineno">   88</span><a class="code hl_define" href="_output_util_8h.html#a725da41715e575637eb25d575a2e6a41">SESE_OUT_DEF_ALL</a>(const <a class="code hl_namespace" href="namespacesese.html">sese</a>::text::String &amp;, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, ((<a class="code hl_namespace" href="namespacesese.html">sese</a>::text::StringView *) &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)-&gt;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>(), <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.<a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>())</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a725da41715e575637eb25d575a2e6a41" name="a725da41715e575637eb25d575a2e6a41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a725da41715e575637eb25d575a2e6a41">&#9670;&#160;</a></span>SESE_OUT_DEF_ALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_DEF_ALL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">len&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="_output_util_8h.html#a489732e59e4be824493dfb8fb0127d75">SESE_OUT_TYPE_DEF</a>(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)              \</div>
+<div class="line">    SESE_OUT_FUNC_BODY(ptr, len)               \</div>
+<div class="line">    SESE_OUT_PTR_TYPE_DEF(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)          \</div>
+<div class="line">    SESE_OUT_PTR_FUNC_BODY(ptr, len)           \</div>
+<div class="line">    SESE_OUT_UPTR_TYPE_DEF(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)         \</div>
+<div class="line">    SESE_OUT_PTR_FUNC_BODY(ptr, len)           \</div>
+<div class="line">    SESE_OUT_SPTR_TYPE_DEF(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)         \</div>
+<div class="line">    SESE_OUT_PTR_FUNC_BODY(ptr, len)</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa09280ac55a64f07b8d8a3c3819ae9dd" name="aa09280ac55a64f07b8d8a3c3819ae9dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa09280ac55a64f07b8d8a3c3819ae9dd">&#9670;&#160;</a></span>SESE_OUT_DEF_TEMPLATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_DEF_TEMPLATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">len, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    template&lt;__VA_ARGS__&gt;                                \</div>
+<div class="line">    SESE_OUT_TYPE_DEF(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)                        \</div>
+<div class="line">    SESE_OUT_FUNC_BODY(ptr, len)</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0c3117623d86037996206741b982fb36" name="a0c3117623d86037996206741b982fb36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c3117623d86037996206741b982fb36">&#9670;&#160;</a></span>SESE_OUT_DEF_TEMPLATE_ALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_DEF_TEMPLATE_ALL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">len, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    template&lt;__VA_ARGS__&gt;                                    \</div>
+<div class="line">    SESE_OUT_TYPE_DEF(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)                            \</div>
+<div class="line">    SESE_OUT_FUNC_BODY(ptr, len) template&lt;__VA_ARGS__&gt;       \</div>
+<div class="line">    SESE_OUT_PTR_TYPE_DEF(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)                        \</div>
+<div class="line">    SESE_OUT_PTR_FUNC_BODY(ptr, len) template&lt;__VA_ARGS__&gt;   \</div>
+<div class="line">    SESE_OUT_UPTR_TYPE_DEF(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)                       \</div>
+<div class="line">    SESE_OUT_PTR_FUNC_BODY(ptr, len) template&lt;__VA_ARGS__&gt;   \</div>
+<div class="line">    SESE_OUT_SPTR_TYPE_DEF(type, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)                       \</div>
+<div class="line">    SESE_OUT_PTR_FUNC_BODY(ptr, len)</div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00048">48</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7ef8cc7d4c3f3924c8ad1dc07e7734e6" name="a7ef8cc7d4c3f3924c8ad1dc07e7734e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ef8cc7d4c3f3924c8ad1dc07e7734e6">&#9670;&#160;</a></span>SESE_OUT_FUNC_BODY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_FUNC_BODY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">len&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    { return <a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">out.write</a>(ptr, len); }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00023">23</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>    { <span class="keywordflow">return</span> out.write(ptr, len); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6e001c7b650cb3cfe09985936db44167" name="a6e001c7b650cb3cfe09985936db44167"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e001c7b650cb3cfe09985936db44167">&#9670;&#160;</a></span>SESE_OUT_PTR_FUNC_BODY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_PTR_FUNC_BODY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">len&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    { return out-&gt;<a class="el" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a>(ptr, len); }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00025">25</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>    { <span class="keywordflow">return</span> out-&gt;write(ptr, len); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afa3a8527acb92036166554f6e2ecdbb0" name="afa3a8527acb92036166554f6e2ecdbb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa3a8527acb92036166554f6e2ecdbb0">&#9670;&#160;</a></span>SESE_OUT_PTR_TYPE_DEF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_PTR_TYPE_DEF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;inline int64_t operator&lt;&lt;(<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> *out, type <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00019">19</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0fa58b79a94dc56288c0b2e89c7abcde" name="a0fa58b79a94dc56288c0b2e89c7abcde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fa58b79a94dc56288c0b2e89c7abcde">&#9670;&#160;</a></span>SESE_OUT_SPTR_TYPE_DEF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_SPTR_TYPE_DEF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;inline int64_t operator&lt;&lt;(const std::shared_ptr&lt;<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a>&gt; &amp;out, type <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00021">21</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a489732e59e4be824493dfb8fb0127d75" name="a489732e59e4be824493dfb8fb0127d75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a489732e59e4be824493dfb8fb0127d75">&#9670;&#160;</a></span>SESE_OUT_TYPE_DEF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_TYPE_DEF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;inline int64_t operator&lt;&lt;(<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> &amp;out, type <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00018">18</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af87c88d76c2f8feb79b9259eebfaf592" name="af87c88d76c2f8feb79b9259eebfaf592"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af87c88d76c2f8feb79b9259eebfaf592">&#9670;&#160;</a></span>SESE_OUT_UPTR_TYPE_DEF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_OUT_UPTR_TYPE_DEF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;inline int64_t operator&lt;&lt;(const std::unique_ptr&lt;<a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a>&gt; &amp;out, type <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00020">20</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="aceca130c45e83b19ee83fe45f1c9aa39" name="aceca130c45e83b19ee83fe45f1c9aa39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceca130c45e83b19ee83fe45f1c9aa39">&#9670;&#160;</a></span>data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">data data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00257">sese::_windows::iocp::v1::NativeIOCPServer::acceptThreadProc()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00067">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="_string_buffer_8cpp_source.html#l00043">sese::text::StringBuffer::append()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00090">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00118">close()</a>, <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00119">sese::event::KqueueEventLoop::createEvent()</a>, <a class="el" href="_epoll_event_loop_8cpp_source.html#l00094">sese::event::EpollEventLoop::createEvent()</a>, <a class="el" href="_w_s_a_event_loop_8cpp_source.html#l00110">sese::event::WSAEventLoop::createEvent()</a>, <a class="el" href="_timerable_service___v1_8cpp_source.html#l00022">sese::service::v1::TimerableService::createTimeoutEvent()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00204">sese::net::dns::DnsUtil::decodeAnswers()</a>, <a class="el" href="_g_zip_file_input_stream_8cpp_source.html#l00021">sese::GZipFileInputStream::deleter()</a>, <a class="el" href="_g_zip_file_output_stream_8cpp_source.html#l00023">sese::GZipFileOutputStream::deleter()</a>, <a class="el" href="_epoll_event_loop_8cpp_source.html#l00035">sese::event::EpollEventLoop::dispatch()</a>, <a class="el" href="_user_balance_loader_8cpp_source.html#l00115">sese::service::UserBalanceLoader::dispatchSocket()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">sese::_windows::iocp::v1::NativeIOCPServer::eventThreadProc()</a>, <a class="el" href="_answer_8h_source.html#l00029">sese::net::dns::Answer::getData()</a>, <a class="el" href="_yaml_types_8h_source.html#l00105">sese::yaml::BasicData::getDataAs()</a>, <a class="el" href="_yaml_types_8h_source.html#l00133">sese::yaml::BasicData::getDataAs()</a>, <a class="el" href="_thread_8h_source.html#l00061">sese::Thread::getThreadName()</a>, <a class="el" href="_thread_8h_source.html#l00060">sese::Thread::getTid()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">sese::text::AbstractStringBuffer::insertAt()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00213">sese::text::AbstractStringBuffer::insertAt()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00302">sese::iocp::v1::IOCPServer::IOCPServer()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00123">sese::iocp::v1::IOCPService::onAccept()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00041">sese::service::TcpTransporter::onAccept()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00185">sese::iocp::v1::IOCPService::onWrite()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00106">open()</a>, <a class="el" href="_output_util_8h_source.html#l00071">operator&lt;&lt;()</a>, <a class="el" href="_output_util_8h_source.html#l00076">operator&lt;&lt;()</a>, <a class="el" href="_memory_viewer_8cpp_source.html#l00047">sese::MemoryViewer::peer16()</a>, <a class="el" href="_memory_viewer_8cpp_source.html#l00057">sese::MemoryViewer::peer32()</a>, <a class="el" href="_memory_viewer_8cpp_source.html#l00067">sese::MemoryViewer::peer64()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00217">sese::_windows::iocp::v1::NativeIOCPServer::postConnect()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00336">sese::iocp::v1::IOCPServer::postConnect()</a>, <a class="el" href="_json_types_8h_source.html#l00272">sese::json::ArrayData::push()</a>, <a class="el" href="_yaml_types_8h_source.html#l00084">sese::yaml::ArrayData::push()</a>, <a class="el" href="_ring_queue_8h_source.html#l00039">sese::RingQueue&lt; T, N &gt;::push()</a>, <a class="el" href="_json_types_8h_source.html#l00058">sese::json::BasicData::raw()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a>, <a class="el" href="_dns_client_8cpp_source.html#l00014">sese::net::dns::DnsClient::resolveCustom()</a>, <a class="el" href="_thread_8cpp_source.html#l00085">sese::Thread::run()</a>, <a class="el" href="_yaml_util_8cpp_source.html#l00033">sese::yaml::YamlUtil::serialize()</a>, <a class="el" href="_s_string_builder_8h_source.html#l00015">sstr::SESE_DEPRECATED_WITH()</a>, <a class="el" href="_json_types_8cpp_source.html#l00034">sese::json::ObjectData::set()</a>, <a class="el" href="_yaml_types_8cpp_source.html#l00019">sese::yaml::ObjectData::set()</a>, <a class="el" href="_yaml_types_8h_source.html#l00183">sese::yaml::BasicData::setDataAs()</a>, <a class="el" href="_yaml_types_8h_source.html#l00192">sese::yaml::BasicData::setDataAs()</a>, <a class="el" href="_yaml_types_8h_source.html#l00201">sese::yaml::BasicData::setDataAs()</a>, <a class="el" href="_yaml_types_8h_source.html#l00219">sese::yaml::BasicData::setDataAs()</a>, <a class="el" href="_yaml_types_8h_source.html#l00210">sese::yaml::BasicData::setDataAs()</a>, <a class="el" href="_json_types_8cpp_source.html#l00023">sese::json::BasicData::setNotNull()</a>, <a class="el" href="_json_types_8cpp_source.html#l00016">sese::json::BasicData::setNull()</a>, <a class="el" href="_timerable_service___v2_8cpp_source.html#l00014">sese::service::v2::TimerableService::setTimeoutEvent()</a> , 以及 <a class="el" href="_i_p_c_8cpp_source.html#l00086">sese::system::IPCChannel::write()</a>.</p>
+
+</div>
+</div>
+<a id="aebf0a035c008c6a9858bf733bbce852e" name="aebf0a035c008c6a9858bf733bbce852e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebf0a035c008c6a9858bf733bbce852e">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , size_t N&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> class T <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> size_t N int64_t operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::array&lt; T, N &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00071">71</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>                                                                    {</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">return</span> output.<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.data(), <span class="keyword">sizeof</span>(T) * N);</div>
+<div class="line"><span class="lineno">   73</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+
+</div>
+</div>
+<a id="ab90d47f3d9bb644bef55eaf22333ccb4" name="ab90d47f3d9bb644bef55eaf22333ccb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab90d47f3d9bb644bef55eaf22333ccb4">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , size_t N&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::array&lt; T, N &gt;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_output_util_8h_source.html">OutputUtil.h</a> 第 <a class="el" href="_output_util_8h_source.html#l00076">76</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                                    {</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">return</span> output-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">write</a>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.data(), <span class="keyword">sizeof</span>(T) * N);</div>
+<div class="line"><span class="lineno">   78</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="classsese_1_1io_1_1_output_stream.html#a06fe04b1817a72f19f9ca4102be038dc">sese::io::OutputStream::write()</a>.</p>
+
+</div>
+</div>
+<a id="a29113a4324e553b7e334beb4c56fc541" name="a29113a4324e553b7e334beb4c56fc541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29113a4324e553b7e334beb4c56fc541">&#9670;&#160;</a></span>SESE_OUT_DEF_TEMPLATE_ALL() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SESE_OUT_DEF_TEMPLATE_ALL </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">data.&#160;</td>
+          <td class="paramname"><em>c_str</em>(), </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T) *<a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">data.size</a>()&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::basic_string&lt; T &gt;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">class T&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74691caae10f5180dd7f3ed07ab6bb4f" name="a74691caae10f5180dd7f3ed07ab6bb4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74691caae10f5180dd7f3ed07ab6bb4f">&#9670;&#160;</a></span>SESE_OUT_DEF_TEMPLATE_ALL() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> class T SESE_OUT_DEF_TEMPLATE_ALL </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">data.&#160;</td>
+          <td class="paramname"><em>data</em>(), </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(T) *<a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">data.size</a>()&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; T &gt;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">class T&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b0b87fb002705ecbf1c5e8a0503a94a" name="a4b0b87fb002705ecbf1c5e8a0503a94a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b0b87fb002705ecbf1c5e8a0503a94a">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> class T <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00022">sese::io::AbstractFixedBuffer::AbstractFixedBuffer()</a>, <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00014">sese::io::AbstractFixedBuffer::AbstractFixedBuffer()</a>, <a class="el" href="_algorithm_8cpp_source.html#l00113">sstr::BM()</a>, <a class="el" href="unix_2system_2_shared_memory_8cpp_source.html#l00032">sese::system::SharedMemory::create()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00204">sese::net::dns::DnsUtil::decodeAnswers()</a>, <a class="el" href="_base64_converter_8cpp_source.html#l00133">sese::Base64Converter::decodeBuffer()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00151">sese::net::dns::DnsUtil::decodeDomain()</a>, <a class="el" href="_dns_util_8cpp_source.html#l00060">sese::net::dns::DnsUtil::decodeQueries()</a>, <a class="el" href="_block_appender_8cpp_source.html#l00031">sese::record::BlockAppender::dump()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00022">sese::record::ConsoleAppender::dump()</a>, <a class="el" href="_file_appender_8cpp_source.html#l00014">sese::record::FileAppender::dump()</a>, <a class="el" href="_s_h_a1_util_8cpp_source.html#l00166">sese::SHA1Util::encode()</a>, <a class="el" href="_s_h_a256_util_8cpp_source.html#l00226">sese::SHA256Util::encode()</a>, <a class="el" href="_h_pack_util_8cpp_source.html#l00115">sese::net::http::HPackUtil::encode()</a>, <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00125">sese::io::AbstractByteBuffer::getReadableSize()</a>, <a class="el" href="_i_o_buf_8cpp_source.html#l00026">sese::iocp::IOBufNode::getReadableSize()</a>, <a class="el" href="_resource_8h_source.html#l00029">sese::res::Resource::getSize()</a>, <a class="el" href="_resource_stream_8h_source.html#l00030">sese::res::ResourceStream::getSize()</a>, <a class="el" href="_abstract_fixed_buffer_8h_source.html#l00032">sese::io::AbstractFixedBuffer::getSize()</a>, <a class="el" href="_resource_8cpp_source.html#l00007">sese::res::Resource::getStream()</a>, <a class="el" href="_s_string_8cpp_source.html#l00079">sstr::getUnicodeCharFromUTF8Char()</a>, <a class="el" href="_abstract_fixed_buffer_8h_source.html#l00036">sese::io::AbstractFixedBuffer::getWriteableSize()</a>, <a class="el" href="_i_o_buf_8cpp_source.html#l00030">sese::iocp::IOBufNode::getWriteableSize()</a>, <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a>, <a class="el" href="_s_string_8cpp_source.html#l00183">sstr::SStringView::Iterator::Iterator()</a>, <a class="el" href="_i_o_buf_8cpp_source.html#l00004">sese::iocp::IOBufNode::operator new()</a>, <a class="el" href="_resource_stream_8cpp_source.html#l00014">sese::res::ResourceStream::peek()</a>, <a class="el" href="_memory_viewer_8cpp_source.html#l00017">sese::MemoryViewer::peer()</a>, <a class="el" href="_i_p_c_8cpp_source.html#l00110">sese::system::IPCChannel::read()</a>, <a class="el" href="_resource_stream_8cpp_source.html#l00005">sese::res::ResourceStream::read()</a>, <a class="el" href="_text_reader_8cpp_source.html#l00022">sese::text::TextReader::readLine()</a>, <a class="el" href="_maria_prepared_statement_impl_8cpp_source.html#l00132">sese::db::impl::MariaPreparedStatementImpl::reinterpret()</a>, <a class="el" href="_value_8cpp_source.html#l00321">sese::Value::List::reserve()</a>, <a class="el" href="_dynamic_table_8cpp_source.html#l00012">sese::net::http::DynamicTable::resize()</a>, <a class="el" href="_value_8cpp_source.html#l00323">sese::Value::List::resize()</a>, <a class="el" href="_s_string_builder_8h_source.html#l00015">sstr::SESE_DEPRECATED_WITH()</a>, <a class="el" href="_dynamic_table_8cpp_source.html#l00022">sese::net::http::DynamicTable::set()</a>, <a class="el" href="_resource_stream_8cpp_source.html#l00034">sese::res::ResourceStream::setSeek()</a>, <a class="el" href="util_2_util_8cpp_source.html#l00076">sese::streamMove()</a>, <a class="el" href="_resource_stream_8cpp_source.html#l00022">sese::res::ResourceStream::trunc()</a> , 以及 <a class="el" href="_abstract_fixed_buffer_8cpp_source.html#l00047">sese::io::AbstractFixedBuffer::write()</a>.</p>
+
+</div>
+</div>
+<a id="af1182f7c8b394f4637da72f5a9b4fa5d" name="af1182f7c8b394f4637da72f5a9b4fa5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1182f7c8b394f4637da72f5a9b4fa5d">&#9670;&#160;</a></span>sizeof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> sizeof </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2123fb3308d23f9cd984552eaf0c688" name="ae2123fb3308d23f9cd984552eaf0c688"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2123fb3308d23f9cd984552eaf0c688">&#9670;&#160;</a></span>to_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> class T <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> to_string </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

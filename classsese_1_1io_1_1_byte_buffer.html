@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::io::ByteBuffer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li><li class="navelem"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html">ByteBuffer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1io_1_1_byte_buffer-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::io::ByteBuffer类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>线程安全的字节缓冲类  
+ <a href="classsese_1_1io_1_1_byte_buffer.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_byte_buffer_8h_source.html">ByteBuffer.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::io::ByteBuffer 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1io_1_1_byte_buffer.png" usemap="#sese::io::ByteBuffer_map" alt=""/>
+  <map id="sese::io::ByteBuffer_map" name="sese::io::ByteBuffer_map">
+<area href="classsese_1_1io_1_1_abstract_byte_buffer.html" title="字节缓冲区类" alt="sese::io::AbstractByteBuffer" shape="rect" coords="0,0,167,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a738a8e7ce6f49c564dc424f7216b8ecb" id="r_a738a8e7ce6f49c564dc424f7216b8ecb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a738a8e7ce6f49c564dc424f7216b8ecb">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1io_1_1_byte_buffer.html">ByteBuffer</a> &gt;</td></tr>
+<tr class="separator:a738a8e7ce6f49c564dc424f7216b8ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a1f0b37cddd7b4539b6441b121ae30779" id="r_a1f0b37cddd7b4539b6441b121ae30779"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a1f0b37cddd7b4539b6441b121ae30779">ByteBuffer</a> (size_t base_size=<a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a>, size_t factor=<a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a>)</td></tr>
+<tr class="separator:a1f0b37cddd7b4539b6441b121ae30779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9062d37a000dbe6b22cd141c6a5b064" id="r_af9062d37a000dbe6b22cd141c6a5b064"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#af9062d37a000dbe6b22cd141c6a5b064">resetPos</a> () override</td></tr>
+<tr class="memdesc:af9062d37a000dbe6b22cd141c6a5b064"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置读取位置  <br /></td></tr>
+<tr class="separator:af9062d37a000dbe6b22cd141c6a5b064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a424b3448336f0a6684f1c5566fca8dc8" id="r_a424b3448336f0a6684f1c5566fca8dc8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a424b3448336f0a6684f1c5566fca8dc8">getLength</a> ()</td></tr>
+<tr class="separator:a424b3448336f0a6684f1c5566fca8dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b78f7dbe66e53c73258caca160e4fdc" id="r_a1b78f7dbe66e53c73258caca160e4fdc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a1b78f7dbe66e53c73258caca160e4fdc">getCapacity</a> ()</td></tr>
+<tr class="separator:a1b78f7dbe66e53c73258caca160e4fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d783b8664890feec56be7af07ccd57" id="r_aa9d783b8664890feec56be7af07ccd57"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#aa9d783b8664890feec56be7af07ccd57">freeCapacity</a> () override</td></tr>
+<tr class="separator:aa9d783b8664890feec56be7af07ccd57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d7b60a4341bb8c7710eaa5a897c652" id="r_a34d7b60a4341bb8c7710eaa5a897c652"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a34d7b60a4341bb8c7710eaa5a897c652">read</a> (void *buffer, size_t len) override</td></tr>
+<tr class="separator:a34d7b60a4341bb8c7710eaa5a897c652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1cd42014e19737f09b98c9a198f9dd" id="r_a2c1cd42014e19737f09b98c9a198f9dd"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a2c1cd42014e19737f09b98c9a198f9dd">write</a> (const void *buffer, size_t len) override</td></tr>
+<tr class="separator:a2c1cd42014e19737f09b98c9a198f9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc5c9d1bf4d22dc4959c6ed7d7762bf" id="r_abcc5c9d1bf4d22dc4959c6ed7d7762bf"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#abcc5c9d1bf4d22dc4959c6ed7d7762bf">peek</a> (void *buffer, size_t len) override</td></tr>
+<tr class="separator:abcc5c9d1bf4d22dc4959c6ed7d7762bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2681e147d95fc147d980d4c9397a8f2b" id="r_a2681e147d95fc147d980d4c9397a8f2b"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a2681e147d95fc147d980d4c9397a8f2b">trunc</a> (size_t need_read) override</td></tr>
+<tr class="separator:a2681e147d95fc147d980d4c9397a8f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>线程安全的字节缓冲类 </p>
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8h_source.html">ByteBuffer.h</a> 第 <a class="el" href="_byte_buffer_8h_source.html#l00021">21</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a738a8e7ce6f49c564dc424f7216b8ecb" name="a738a8e7ce6f49c564dc424f7216b8ecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a738a8e7ce6f49c564dc424f7216b8ecb">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1io_1_1_byte_buffer.html#a738a8e7ce6f49c564dc424f7216b8ecb">sese::io::ByteBuffer::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1io_1_1_byte_buffer.html">ByteBuffer</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8h_source.html">ByteBuffer.h</a> 第 <a class="el" href="_byte_buffer_8h_source.html#l00023">23</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a1f0b37cddd7b4539b6441b121ae30779" name="a1f0b37cddd7b4539b6441b121ae30779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f0b37cddd7b4539b6441b121ae30779">&#9670;&#160;</a></span>ByteBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::io::ByteBuffer::ByteBuffer </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>base_size</em> = <code><a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>factor</em> = <code><a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00021">21</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>                                                            : AbstractByteBuffer(base_size, factor) {</div>
+<div class="line"><span class="lineno">   22</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aa9d783b8664890feec56be7af07ccd57" name="aa9d783b8664890feec56be7af07ccd57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d783b8664890feec56be7af07ccd57">&#9670;&#160;</a></span>freeCapacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::ByteBuffer::freeCapacity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>释放 CurrentReadNode 前的所有节点 </p><dl class="section return"><dt>返回</dt><dd>实际释放空间，单位 “字节” </dd></dl>
+
+<p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a86b89ad54d270e3128ff1c68d1840013">sese::io::AbstractByteBuffer</a> .</p>
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00039">39</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                                      {</div>
+<div class="line"><span class="lineno">   40</span>    Locker locker(mutex);</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a86b89ad54d270e3128ff1c68d1840013">AbstractByteBuffer::freeCapacity</a>();</div>
+<div class="line"><span class="lineno">   42</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00139">sese::io::AbstractByteBuffer::freeCapacity()</a>.</p>
+
+</div>
+</div>
+<a id="a1b78f7dbe66e53c73258caca160e4fdc" name="a1b78f7dbe66e53c73258caca160e4fdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b78f7dbe66e53c73258caca160e4fdc">&#9670;&#160;</a></span>getCapacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::ByteBuffer::getCapacity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00034">34</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>                                     {</div>
+<div class="line"><span class="lineno">   35</span>    Locker locker(mutex);</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a4b380c9183805818aaa40db8bd667420">AbstractByteBuffer::getCapacity</a>();</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00121">sese::io::AbstractByteBuffer::getCapacity()</a>.</p>
+
+</div>
+</div>
+<a id="a424b3448336f0a6684f1c5566fca8dc8" name="a424b3448336f0a6684f1c5566fca8dc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a424b3448336f0a6684f1c5566fca8dc8">&#9670;&#160;</a></span>getLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::io::ByteBuffer::getLength </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00029">29</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>                                   {</div>
+<div class="line"><span class="lineno">   30</span>    Locker locker(mutex);</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a7f688fe58a47816e45402d93de044a45">AbstractByteBuffer::getLength</a>();</div>
+<div class="line"><span class="lineno">   32</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00117">sese::io::AbstractByteBuffer::getLength()</a>.</p>
+
+</div>
+</div>
+<a id="abcc5c9d1bf4d22dc4959c6ed7d7762bf" name="abcc5c9d1bf4d22dc4959c6ed7d7762bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcc5c9d1bf4d22dc4959c6ed7d7762bf">&#9670;&#160;</a></span>peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::io::ByteBuffer::peek </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>仅读取内容，不步进 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>缓存 </td></tr>
+    <tr><td class="paramname">length</td><td>缓存大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>实际读取大小 </dd></dl>
+
+<p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">sese::io::AbstractByteBuffer</a> .</p>
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00016">16</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>                                                       {</div>
+<div class="line"><span class="lineno">   17</span>    Locker locker(mutex);</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">AbstractByteBuffer::peek</a>(buffer, len);</div>
+<div class="line"><span class="lineno">   19</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00233">sese::io::AbstractByteBuffer::peek()</a>.</p>
+
+</div>
+</div>
+<a id="a34d7b60a4341bb8c7710eaa5a897c652" name="a34d7b60a4341bb8c7710eaa5a897c652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d7b60a4341bb8c7710eaa5a897c652">&#9670;&#160;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::io::ByteBuffer::read </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aba3ee2794220fe6a65232206a2cd30b2">sese::io::AbstractByteBuffer</a> .</p>
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00006">6</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                       {</div>
+<div class="line"><span class="lineno">    7</span>    Locker locker(mutex);</div>
+<div class="line"><span class="lineno">    8</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aba3ee2794220fe6a65232206a2cd30b2">AbstractByteBuffer::read</a>(buffer, len);</div>
+<div class="line"><span class="lineno">    9</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00170">sese::io::AbstractByteBuffer::read()</a>.</p>
+
+</div>
+</div>
+<a id="af9062d37a000dbe6b22cd141c6a5b064" name="af9062d37a000dbe6b22cd141c6a5b064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9062d37a000dbe6b22cd141c6a5b064">&#9670;&#160;</a></span>resetPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::io::ByteBuffer::resetPos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>重置读取位置 </p>
+
+<p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a73f0889296b5de12c6b3eb272cade1cd">sese::io::AbstractByteBuffer</a> .</p>
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00024">24</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>                                {</div>
+<div class="line"><span class="lineno">   25</span>    Locker locker(mutex);</div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#a73f0889296b5de12c6b3eb272cade1cd" title="重置读取位置">AbstractByteBuffer::resetPos</a>();</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00112">sese::io::AbstractByteBuffer::resetPos()</a>.</p>
+
+</div>
+</div>
+<a id="a2681e147d95fc147d980d4c9397a8f2b" name="a2681e147d95fc147d980d4c9397a8f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2681e147d95fc147d980d4c9397a8f2b">&#9670;&#160;</a></span>trunc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::io::ByteBuffer::trunc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>仅步进，不读取内容 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">length</td><td>步进大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>实际步进大小 </dd></dl>
+
+<p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">sese::io::AbstractByteBuffer</a> .</p>
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00054">54</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>                                                {</div>
+<div class="line"><span class="lineno">   55</span>    Locker locker(mutex);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">AbstractByteBuffer::trunc</a>(need_read);</div>
+<div class="line"><span class="lineno">   57</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00268">sese::io::AbstractByteBuffer::trunc()</a>.</p>
+
+</div>
+</div>
+<a id="a2c1cd42014e19737f09b98c9a198f9dd" name="a2c1cd42014e19737f09b98c9a198f9dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c1cd42014e19737f09b98c9a198f9dd">&#9670;&#160;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::io::ByteBuffer::write </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>重载 <a class="el" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">sese::io::AbstractByteBuffer</a> .</p>
+
+<p class="definition">在文件 <a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a> 第 <a class="el" href="_byte_buffer_8cpp_source.html#l00011">11</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                                     {</div>
+<div class="line"><span class="lineno">   12</span>    Locker locker(mutex);</div>
+<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">AbstractByteBuffer::write</a>(buffer, need_write);</div>
+<div class="line"><span class="lineno">   14</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00201">sese::io::AbstractByteBuffer::write()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/io/<a class="el" href="_byte_buffer_8h_source.html">ByteBuffer.h</a></li>
+<li>sese/io/<a class="el" href="_byte_buffer_8cpp_source.html">ByteBuffer.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

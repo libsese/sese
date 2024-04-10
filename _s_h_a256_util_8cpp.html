@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/convert/SHA256Util.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_8432cd711d83e4d7ec40e70b9a1de33d.html">convert</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">SHA256Util.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="_s_h_a256_util_8h_source.html">sese/convert/SHA256Util.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_byte_builder_8h_source.html">sese/io/ByteBuilder.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_endian_8h_source.html">sese/util/Endian.h</a>&gt;</code><br />
+<code>#include &lt;bitset&gt;</code><br />
+</div>
+<p><a href="_s_h_a256_util_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1_bitset32.html">sese::Bitset32</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">endian 无关的 32 位  <a href="structsese_1_1_bitset32.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0011) &lt;&lt; 6 | (bt2 &amp; 0b1111'1100) &gt;&gt; 2</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0011'1111) &lt;&lt; 2 | (bt2 &amp; 0b1100'0000) &gt;&gt; 6</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0111'1111) &lt;&lt; 1 | (bt2 &amp; 0b1000'0000) &gt;&gt; 7</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0111) &lt;&lt; 5 | (bt2 &amp; 0b1111'1000) &gt;&gt; 3</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0001'1111) &lt;&lt; 3 | (bt2 &amp; 0b1110'0000) &gt;&gt; 5</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0001) &lt;&lt; 7 | (bt2 &amp; 0b1111'1110) &gt;&gt; 1</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0011) &lt;&lt; 6 | (bt2 &amp; 0b1111'1100) &gt;&gt; 2</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0111) &lt;&lt; 5 | (bt2 &amp; 0b1111'1000) &gt;&gt; 3</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0011'1111) &lt;&lt; 2 | (bt2 &amp; 0b1100'0000) &gt;&gt; 6</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2ae4253142b602355a5f5e8a676623" id="r_a5f2ae4253142b602355a5f5e8a676623"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a5f2ae4253142b602355a5f5e8a676623">XX</a>(value,  bt1,  bt2)&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0001) &lt;&lt; 7 | (bt2 &amp; 0b1111'1110) &gt;&gt; 1</td></tr>
+<tr class="separator:a5f2ae4253142b602355a5f5e8a676623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95f49f9758264c454e229a36790070c" id="r_af95f49f9758264c454e229a36790070c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#af95f49f9758264c454e229a36790070c">XX</a>(i)&#160;&#160;&#160;value[i] = value[i] + <a class="el" href="_s_h_a256_util_8cpp.html#a56dee7158d9de89b23535bf5ad318261">h</a>[i]</td></tr>
+<tr class="separator:af95f49f9758264c454e229a36790070c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d3c3518d793541417a4845125da1ae1" id="r_a8d3c3518d793541417a4845125da1ae1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>&#160;&#160;&#160;value[0]</td></tr>
+<tr class="separator:a8d3c3518d793541417a4845125da1ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2d05693952610f937e5acb3c4a8fa1b" id="r_ab2d05693952610f937e5acb3c4a8fa1b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>&#160;&#160;&#160;value[1]</td></tr>
+<tr class="separator:ab2d05693952610f937e5acb3c4a8fa1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafc737ea9ef91f59cf9acd287fb8d085" id="r_aafc737ea9ef91f59cf9acd287fb8d085"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#aafc737ea9ef91f59cf9acd287fb8d085">c</a>&#160;&#160;&#160;value[2]</td></tr>
+<tr class="separator:aafc737ea9ef91f59cf9acd287fb8d085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2530554172d8629149ec56816eeaa947" id="r_a2530554172d8629149ec56816eeaa947"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a2530554172d8629149ec56816eeaa947">d</a>&#160;&#160;&#160;value[3]</td></tr>
+<tr class="separator:a2530554172d8629149ec56816eeaa947"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a270b1ecf56619755ce62f6970dfabc91" id="r_a270b1ecf56619755ce62f6970dfabc91"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a270b1ecf56619755ce62f6970dfabc91">e</a>&#160;&#160;&#160;value[4]</td></tr>
+<tr class="separator:a270b1ecf56619755ce62f6970dfabc91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a51ed112e9b79f89e3e70beb8db8bf5" id="r_a7a51ed112e9b79f89e3e70beb8db8bf5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a7a51ed112e9b79f89e3e70beb8db8bf5">f</a>&#160;&#160;&#160;value[5]</td></tr>
+<tr class="separator:a7a51ed112e9b79f89e3e70beb8db8bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a167d2c0ec9b943d55f2124f7442b2f6d" id="r_a167d2c0ec9b943d55f2124f7442b2f6d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a167d2c0ec9b943d55f2124f7442b2f6d">g</a>&#160;&#160;&#160;value[6]</td></tr>
+<tr class="separator:a167d2c0ec9b943d55f2124f7442b2f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56dee7158d9de89b23535bf5ad318261" id="r_a56dee7158d9de89b23535bf5ad318261"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a56dee7158d9de89b23535bf5ad318261">h</a>&#160;&#160;&#160;value[7]</td></tr>
+<tr class="separator:a56dee7158d9de89b23535bf5ad318261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a39371113aca7dd5d9ed1d21d225c2f4b" id="r_a39371113aca7dd5d9ed1d21d225c2f4b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_s_h_a256_util_8cpp.html#a39371113aca7dd5d9ed1d21d225c2f4b">toChar</a> (unsigned char ch, bool is_cap)</td></tr>
+<tr class="separator:a39371113aca7dd5d9ed1d21d225c2f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a8d3c3518d793541417a4845125da1ae1" name="a8d3c3518d793541417a4845125da1ae1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d3c3518d793541417a4845125da1ae1">&#9670;&#160;</a></span>a</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define a&#160;&#160;&#160;value[0]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">364</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab2d05693952610f937e5acb3c4a8fa1b" name="ab2d05693952610f937e5acb3c4a8fa1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2d05693952610f937e5acb3c4a8fa1b">&#9670;&#160;</a></span>b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define b&#160;&#160;&#160;value[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00365">365</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aafc737ea9ef91f59cf9acd287fb8d085" name="aafc737ea9ef91f59cf9acd287fb8d085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafc737ea9ef91f59cf9acd287fb8d085">&#9670;&#160;</a></span>c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define c&#160;&#160;&#160;value[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00366">366</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2530554172d8629149ec56816eeaa947" name="a2530554172d8629149ec56816eeaa947"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2530554172d8629149ec56816eeaa947">&#9670;&#160;</a></span>d</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define d&#160;&#160;&#160;value[3]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00367">367</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a270b1ecf56619755ce62f6970dfabc91" name="a270b1ecf56619755ce62f6970dfabc91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a270b1ecf56619755ce62f6970dfabc91">&#9670;&#160;</a></span>e</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define e&#160;&#160;&#160;value[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00368">368</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7a51ed112e9b79f89e3e70beb8db8bf5" name="a7a51ed112e9b79f89e3e70beb8db8bf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a51ed112e9b79f89e3e70beb8db8bf5">&#9670;&#160;</a></span>f</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define f&#160;&#160;&#160;value[5]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00369">369</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a167d2c0ec9b943d55f2124f7442b2f6d" name="a167d2c0ec9b943d55f2124f7442b2f6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a167d2c0ec9b943d55f2124f7442b2f6d">&#9670;&#160;</a></span>g</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define g&#160;&#160;&#160;value[6]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00370">370</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a56dee7158d9de89b23535bf5ad318261" name="a56dee7158d9de89b23535bf5ad318261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56dee7158d9de89b23535bf5ad318261">&#9670;&#160;</a></span>h</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define h&#160;&#160;&#160;value[7]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00371">371</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af95f49f9758264c454e229a36790070c" name="af95f49f9758264c454e229a36790070c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af95f49f9758264c454e229a36790070c">&#9670;&#160;</a></span>XX <span class="overload">[1/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">i</td><td>)</td>
+          <td>&#160;&#160;&#160;value[i] = value[i] + <a class="el" href="_s_h_a256_util_8cpp.html#a56dee7158d9de89b23535bf5ad318261">h</a>[i]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[2/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0011) &lt;&lt; 6 | (bt2 &amp; 0b1111'1100) &gt;&gt; 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[3/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0011'1111) &lt;&lt; 2 | (bt2 &amp; 0b1100'0000) &gt;&gt; 6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[4/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0111'1111) &lt;&lt; 1 | (bt2 &amp; 0b1000'0000) &gt;&gt; 7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[5/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0111) &lt;&lt; 5 | (bt2 &amp; 0b1111'1000) &gt;&gt; 3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[6/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0001'1111) &lt;&lt; 3 | (bt2 &amp; 0b1110'0000) &gt;&gt; 5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[7/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0001) &lt;&lt; 7 | (bt2 &amp; 0b1111'1110) &gt;&gt; 1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[8/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0011) &lt;&lt; 6 | (bt2 &amp; 0b1111'1100) &gt;&gt; 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[9/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0111) &lt;&lt; 5 | (bt2 &amp; 0b1111'1000) &gt;&gt; 3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[10/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0011'1111) &lt;&lt; 2 | (bt2 &amp; 0b1100'0000) &gt;&gt; 6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5f2ae4253142b602355a5f5e8a676623" name="a5f2ae4253142b602355a5f5e8a676623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f2ae4253142b602355a5f5e8a676623">&#9670;&#160;</a></span>XX <span class="overload">[11/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XX</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">bt2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;uint8_t value = (bt1 &amp; 0b0000'0001) &lt;&lt; 7 | (bt2 &amp; 0b1111'1110) &gt;&gt; 1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00218">218</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a39371113aca7dd5d9ed1d21d225c2f4b" name="a39371113aca7dd5d9ed1d21d225c2f4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39371113aca7dd5d9ed1d21d225c2f4b">&#9670;&#160;</a></span>toChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char toChar </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_cap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00203">203</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  203</span>                                                  {</div>
+<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">if</span> (ch &gt;= 0 &amp;&amp; ch &lt;= 9) {</div>
+<div class="line"><span class="lineno">  205</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(ch + 48);</div>
+<div class="line"><span class="lineno">  206</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  207</span>        <span class="keywordflow">if</span> (is_cap) {</div>
+<div class="line"><span class="lineno">  208</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(ch + 55);</div>
+<div class="line"><span class="lineno">  209</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  210</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(ch + 87);</div>
+<div class="line"><span class="lineno">  211</span>        }</div>
+<div class="line"><span class="lineno">  212</span>    }</div>
+<div class="line"><span class="lineno">  213</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00336">sese::SHA256Util::encode()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

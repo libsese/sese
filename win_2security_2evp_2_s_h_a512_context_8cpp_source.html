@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/native/win/security/evp/SHA512Context.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5a27d73af174e870851ec050345bcb12.html">native</a></li><li class="navelem"><a class="el" href="dir_2efdf8e368a817d51672dc0d175ff8fa.html">win</a></li><li class="navelem"><a class="el" href="dir_87a0fe2f2c87e2740789104003c99939.html">security</a></li><li class="navelem"><a class="el" href="dir_726e2708decccbe9d7ff59f224816c83.html">evp</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">SHA512Context.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="win_2security_2evp_2_s_h_a512_context_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="_s_h_a512_context_8h.html" title="EVP SHA512 算法上下文">sese/security/evp/SHA512Context.h</a>&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#afe165103df49e3419102528fec65ff23">sese::security::evp::SHA512Context::SHA512Context</a>() noexcept : Context() {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    CryptAcquireContext(&amp;this-&gt;hProv, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>, PROV_RSA_AES, CRYPT_VERIFYCONTEXT);</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    CryptCreateHash(this-&gt;hProv, CALG_SHA_512, 0, 0, &amp;this-&gt;hHash);</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>}</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#a0f7aa597a0629a91bc7ae83a55381818">sese::security::evp::SHA512Context::~SHA512Context</a>() noexcept {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordflow">if</span> (this-&gt;hProv) {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        CryptReleaseContext(this-&gt;hProv, 0);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    }</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">if</span> (this-&gt;hHash) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        CryptDestroyHash(this-&gt;hHash);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    }</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#a9da5f4d763aefa7f13574cbd1abedd4a">sese::security::evp::SHA512Context::update</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> len) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    CryptHashData(this-&gt;hHash, (<span class="keyword">const</span> BYTE *) buffer, (DWORD) len, 0);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#ae23588c4b4124896d1aa842c0598a50d">sese::security::evp::SHA512Context::final</a>() noexcept {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    CryptGetHashParam(this-&gt;hHash, HP_HASHVAL, (BYTE *) this-&gt;result, (DWORD *) &amp;length, 0);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span> *<a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#ae170ed19a1d182bb15bd8830aa760421">sese::security::evp::SHA512Context::getResult</a>() noexcept {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">return</span> this-&gt;result;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">size_t</span> <a class="code hl_function" href="classsese_1_1security_1_1evp_1_1_s_h_a512_context.html#af54b0ee80f07355eb9befb1e883fb86c">sese::security::evp::SHA512Context::getLength</a>() noexcept {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> 64;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

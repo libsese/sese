@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::system::Process类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1system.html">system</a></li><li class="navelem"><a class="el" href="classsese_1_1system_1_1_process.html">Process</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1system_1_1_process-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::system::Process类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>进程类  
+ <a href="classsese_1_1system_1_1_process.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_process_8h_source.html">Process.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ae6db53e8052980d32b9e13c1c436cbba" id="r_ae6db53e8052980d32b9e13c1c436cbba"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1system_1_1_process.html">Process</a> &gt;</td></tr>
+<tr class="separator:ae6db53e8052980d32b9e13c1c436cbba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a26576173c8042401314803be3d0b4271" id="r_a26576173c8042401314803be3d0b4271"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_process.html#a26576173c8042401314803be3d0b4271">wait</a> () const noexcept</td></tr>
+<tr class="separator:a26576173c8042401314803be3d0b4271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b3269066f148355282ea5354c22bc3" id="r_a41b3269066f148355282ea5354c22bc3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_process.html#a41b3269066f148355282ea5354c22bc3">kill</a> () const noexcept</td></tr>
+<tr class="separator:a41b3269066f148355282ea5354c22bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f236e5e0b6b26cb7613b5d12c880237" id="r_a2f236e5e0b6b26cb7613b5d12c880237"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5">pid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_process.html#a2f236e5e0b6b26cb7613b5d12c880237">getProcessId</a> () const noexcept</td></tr>
+<tr class="separator:a2f236e5e0b6b26cb7613b5d12c880237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07ff40a4769b99627fb2e88d467136f0" id="r_a07ff40a4769b99627fb2e88d467136f0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_process.html#a07ff40a4769b99627fb2e88d467136f0">~Process</a> () noexcept=default</td></tr>
+<tr class="separator:a07ff40a4769b99627fb2e88d467136f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a79e195a84f2b555e3d12ae99b369fdb8" id="r_a79e195a84f2b555e3d12ae99b369fdb8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_process.html#a79e195a84f2b555e3d12ae99b369fdb8">create</a> (const char *command) noexcept</td></tr>
+<tr class="separator:a79e195a84f2b555e3d12ae99b369fdb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9ea1c83caea24d7c7af4fc52991473" id="r_abf9ea1c83caea24d7c7af4fc52991473"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5">pid_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1system_1_1_process.html#abf9ea1c83caea24d7c7af4fc52991473">getCurrentProcessId</a> () noexcept</td></tr>
+<tr class="separator:abf9ea1c83caea24d7c7af4fc52991473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>进程类 </p>
+
+<p class="definition">在文件 <a class="el" href="_process_8h_source.html">Process.h</a> 第 <a class="el" href="_process_8h_source.html#l00014">14</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="ae6db53e8052980d32b9e13c1c436cbba" name="ae6db53e8052980d32b9e13c1c436cbba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6db53e8052980d32b9e13c1c436cbba">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">sese::system::Process::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1system_1_1_process.html">Process</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_process_8h_source.html">Process.h</a> 第 <a class="el" href="_process_8h_source.html#l00016">16</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a07ff40a4769b99627fb2e88d467136f0" name="a07ff40a4769b99627fb2e88d467136f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07ff40a4769b99627fb2e88d467136f0">&#9670;&#160;</a></span>~Process()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Process::~Process </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="win_2system_2_process_8cpp_source.html">Process.cpp</a> 第 <a class="el" href="win_2system_2_process_8cpp_source.html#l00043">43</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>                           {</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keyword">auto</span> s_info = <span class="keyword">static_cast&lt;</span>STARTUPINFO *<span class="keyword">&gt;</span>(startup_info);</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keyword">auto</span> p_info = <span class="keyword">static_cast&lt;</span>PROCESS_INFORMATION *<span class="keyword">&gt;</span>(process_info);</div>
+<div class="line"><span class="lineno">   46</span>    <span class="keyword">delete</span> s_info;</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keyword">delete</span> p_info;</div>
+<div class="line"><span class="lineno">   48</span>    startup_info = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   49</span>    process_info = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   50</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a79e195a84f2b555e3d12ae99b369fdb8" name="a79e195a84f2b555e3d12ae99b369fdb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79e195a84f2b555e3d12ae99b369fdb8">&#9670;&#160;</a></span>create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1system_1_1_process.html#ae6db53e8052980d32b9e13c1c436cbba">Process::Ptr</a> Process::create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>创建一个新的进程对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td>命令 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>创建失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="unix_2system_2_process_8cpp_source.html">Process.cpp</a> 第 <a class="el" href="unix_2system_2_process_8cpp_source.html#l00009">9</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    9</span>                                                       {</div>
+<div class="line"><span class="lineno">   10</span>    <span class="keyword">auto</span> pid = fork();</div>
+<div class="line"><span class="lineno">   11</span>    <span class="keywordflow">if</span> (pid &gt; 0) {</div>
+<div class="line"><span class="lineno">   12</span>        <span class="comment">// parent process</span></div>
+<div class="line"><span class="lineno">   13</span>        <span class="keyword">auto</span> proc = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1system_1_1_process.html" title="进程类">Process</a>;</div>
+<div class="line"><span class="lineno">   14</span>        proc-&gt;id = pid;</div>
+<div class="line"><span class="lineno">   15</span>        <span class="keywordflow">return</span> std::unique_ptr&lt;Process&gt;(proc);</div>
+<div class="line"><span class="lineno">   16</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pid == 0) {</div>
+<div class="line"><span class="lineno">   17</span>        <span class="comment">// client process</span></div>
+<div class="line"><span class="lineno">   18</span>        <span class="keywordtype">char</span> p_command[1024];</div>
+<div class="line"><span class="lineno">   19</span>        std::strcpy(p_command, command);</div>
+<div class="line"><span class="lineno">   20</span>        exec(p_command);</div>
+<div class="line"><span class="lineno">   21</span>        <span class="comment">// never reach</span></div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>; <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">   23</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   24</span>        <span class="comment">// failed to create</span></div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>; <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abf9ea1c83caea24d7c7af4fc52991473" name="abf9ea1c83caea24d7c7af4fc52991473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf9ea1c83caea24d7c7af4fc52991473">&#9670;&#160;</a></span>getCurrentProcessId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5">sese::pid_t</a> Process::getCurrentProcessId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取当前进程 ID </p><dl class="section return"><dt>返回</dt><dd>当前进程 ID </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="unix_2system_2_process_8cpp_source.html">Process.cpp</a> 第 <a class="el" href="unix_2system_2_process_8cpp_source.html#l00029">29</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>                                                {</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> getpid();</div>
+<div class="line"><span class="lineno">   31</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2f236e5e0b6b26cb7613b5d12c880237" name="a2f236e5e0b6b26cb7613b5d12c880237"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f236e5e0b6b26cb7613b5d12c880237">&#9670;&#160;</a></span>getProcessId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese.html#a93523670a1233924592d8f88c3a2c7c5">sese::pid_t</a> Process::getProcessId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取进程 ID </p><dl class="section return"><dt>返回</dt><dd>获取进程对象 ID </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="unix_2system_2_process_8cpp_source.html">Process.cpp</a> 第 <a class="el" href="unix_2system_2_process_8cpp_source.html#l00066">66</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>                                               {</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">return</span> id;</div>
+<div class="line"><span class="lineno">   68</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a41b3269066f148355282ea5354c22bc3" name="a41b3269066f148355282ea5354c22bc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41b3269066f148355282ea5354c22bc3">&#9670;&#160;</a></span>kill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Process::kill </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>结束进程 </p><dl class="section return"><dt>返回</dt><dd>操作结果 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="unix_2system_2_process_8cpp_source.html">Process.cpp</a> 第 <a class="el" href="unix_2system_2_process_8cpp_source.html#l00070">70</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>                                  {</div>
+<div class="line"><span class="lineno">   71</span>    return ::kill(<span class="keywordtype">id</span>, SIGKILL) == 0;</div>
+<div class="line"><span class="lineno">   72</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a26576173c8042401314803be3d0b4271" name="a26576173c8042401314803be3d0b4271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26576173c8042401314803be3d0b4271">&#9670;&#160;</a></span>wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Process::wait </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>等待进程结束 </p><dl class="section return"><dt>返回</dt><dd>进程退出码 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="unix_2system_2_process_8cpp_source.html">Process.cpp</a> 第 <a class="el" href="unix_2system_2_process_8cpp_source.html#l00033">33</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>                                 {</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordtype">int</span> status;</div>
+<div class="line"><span class="lineno">   35</span>    ::waitpid(<span class="keywordtype">id</span>, &amp;status, 0);</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (!WIFEXITED(status)) {</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span> WEXITSTATUS(status); <span class="comment">// GCOVR_EXCL_LINE</span></div>
+<div class="line"><span class="lineno">   38</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="line"><span class="lineno">   41</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/system/<a class="el" href="_process_8h_source.html">Process.h</a></li>
+<li>sese/native/unix/system/<a class="el" href="unix_2system_2_process_8cpp_source.html">Process.cpp</a></li>
+<li>sese/native/win/system/<a class="el" href="win_2system_2_process_8cpp_source.html">Process.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

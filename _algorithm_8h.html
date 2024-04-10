@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/text/Algorithm.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">Algorithm.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>库所需的外部算法，查找、位移等  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div>
+<p><a href="_algorithm_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacesstr" id="r_namespacesstr"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html">sstr</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a2dad52f791160cf761930ec798b693b0" id="r_a2dad52f791160cf761930ec798b693b0"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a2dad52f791160cf761930ec798b693b0">sstr::FindFunction</a>) (const char *, const char *)</td></tr>
+<tr class="separator:a2dad52f791160cf761930ec798b693b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:addb08b0d19d6f5351ddc559e395aaaa1" id="r_addb08b0d19d6f5351ddc559e395aaaa1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#addb08b0d19d6f5351ddc559e395aaaa1">sstr::KMP</a> (const char *str, const char *sub)</td></tr>
+<tr class="separator:addb08b0d19d6f5351ddc559e395aaaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a483b3805f810437b39367e9b9eb78354" id="r_a483b3805f810437b39367e9b9eb78354"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a483b3805f810437b39367e9b9eb78354">sstr::BM</a> (const char *str, const char *sub)</td></tr>
+<tr class="separator:a483b3805f810437b39367e9b9eb78354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab42e42004ea3b272fca7a7a0c426192c" id="r_ab42e42004ea3b272fca7a7a0c426192c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#ab42e42004ea3b272fca7a7a0c426192c">sstr::BM</a> (const uint32_t *str, size_t <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>, std::vector&lt; <a class="el" href="structsstr_1_1_s_char.html">SChar</a> &gt; &amp;sub)</td></tr>
+<tr class="separator:ab42e42004ea3b272fca7a7a0c426192c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76f6f1d44d1aad60f456bd9bd7685056" id="r_a76f6f1d44d1aad60f456bd9bd7685056"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesstr.html#a76f6f1d44d1aad60f456bd9bd7685056">sstr::NORMAL</a> (const char *str, const char *sub)</td></tr>
+<tr class="separator:a76f6f1d44d1aad60f456bd9bd7685056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac37b1daa78646595e8f9d403ae15251e" id="r_ac37b1daa78646595e8f9d403ae15251e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac37b1daa78646595e8f9d403ae15251e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesstr.html#ac37b1daa78646595e8f9d403ae15251e">sstr::LeftShiftElement</a> (T *header, size_t len, size_t begin, size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>)</td></tr>
+<tr class="separator:ac37b1daa78646595e8f9d403ae15251e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab09c2d6ffdfbc1b70dc7e1e78a3aefc7" id="r_ab09c2d6ffdfbc1b70dc7e1e78a3aefc7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab09c2d6ffdfbc1b70dc7e1e78a3aefc7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesstr.html#ab09c2d6ffdfbc1b70dc7e1e78a3aefc7">sstr::RightShiftElement</a> (T *header, size_t len, size_t begin, size_t <a class="el" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>)</td></tr>
+<tr class="separator:ab09c2d6ffdfbc1b70dc7e1e78a3aefc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>库所需的外部算法，查找、位移等 </p>
+<dl class="section date"><dt>日期</dt><dd>2022-9-27 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_algorithm_8h_source.html">Algorithm.h</a> 中定义.</p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

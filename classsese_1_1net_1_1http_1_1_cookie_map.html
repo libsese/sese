@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::net::http::CookieMap类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html">CookieMap</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1net_1_1http_1_1_cookie_map-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::net::http::CookieMap类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> 映射集合类  
+ <a href="classsese_1_1net_1_1http_1_1_cookie_map.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:afc20d7a1ebb845733b8e294e056ed2ff" id="r_afc20d7a1ebb845733b8e294e056ed2ff"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html">CookieMap</a> &gt;</td></tr>
+<tr class="separator:afc20d7a1ebb845733b8e294e056ed2ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4624a477115d9bfc19b89653e3d392be" id="r_a4624a477115d9bfc19b89653e3d392be"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#a4624a477115d9bfc19b89653e3d392be">Map</a> = std::map&lt; std::string, <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &gt;</td></tr>
+<tr class="separator:a4624a477115d9bfc19b89653e3d392be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aa1fe0c9e9a5bfc86bf1671b57922369f" id="r_aa1fe0c9e9a5bfc86bf1671b57922369f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#aa1fe0c9e9a5bfc86bf1671b57922369f">add</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie) noexcept</td></tr>
+<tr class="separator:aa1fe0c9e9a5bfc86bf1671b57922369f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae972a7e933b81edcd983be92fd0b55c3" id="r_ae972a7e933b81edcd983be92fd0b55c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#ae972a7e933b81edcd983be92fd0b55c3">find</a> (const std::string &amp;name) noexcept</td></tr>
+<tr class="separator:ae972a7e933b81edcd983be92fd0b55c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a458a59516cf921f82798bda41a806b9e" id="r_a458a59516cf921f82798bda41a806b9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#a458a59516cf921f82798bda41a806b9e">expired</a> (uint64_t now)</td></tr>
+<tr class="separator:a458a59516cf921f82798bda41a806b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c28af2e6d5186226ef0aa53baa94d3a" id="r_a4c28af2e6d5186226ef0aa53baa94d3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#a4c28af2e6d5186226ef0aa53baa94d3a">update</a> (uint64_t offset)</td></tr>
+<tr class="separator:a4c28af2e6d5186226ef0aa53baa94d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914898e6c7e33b3161db684ea00a4320" id="r_a914898e6c7e33b3161db684ea00a4320"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#a914898e6c7e33b3161db684ea00a4320">size</a> () const</td></tr>
+<tr class="separator:a914898e6c7e33b3161db684ea00a4320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3bf517c49095decc5013dd254296716" id="r_ac3bf517c49095decc5013dd254296716"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#ac3bf517c49095decc5013dd254296716">empty</a> () const</td></tr>
+<tr class="separator:ac3bf517c49095decc5013dd254296716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b639f7dd182878440854171355515d" id="r_ad1b639f7dd182878440854171355515d"><td class="memItemLeft" align="right" valign="top">Map::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#ad1b639f7dd182878440854171355515d">begin</a> () noexcept</td></tr>
+<tr class="separator:ad1b639f7dd182878440854171355515d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc458c15608a03e898da5042a017f361" id="r_afc458c15608a03e898da5042a017f361"><td class="memItemLeft" align="right" valign="top">Map::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc458c15608a03e898da5042a017f361">end</a> () noexcept</td></tr>
+<tr class="separator:afc458c15608a03e898da5042a017f361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> 映射集合类 </p>
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a> 第 <a class="el" href="_cookie_map_8h_source.html#l00020">20</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a4624a477115d9bfc19b89653e3d392be" name="a4624a477115d9bfc19b89653e3d392be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4624a477115d9bfc19b89653e3d392be">&#9670;&#160;</a></span>Map</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#a4624a477115d9bfc19b89653e3d392be">sese::net::http::CookieMap::Map</a> =  std::map&lt;std::string, <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a> 第 <a class="el" href="_cookie_map_8h_source.html#l00023">23</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afc20d7a1ebb845733b8e294e056ed2ff" name="afc20d7a1ebb845733b8e294e056ed2ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc20d7a1ebb845733b8e294e056ed2ff">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">sese::net::http::CookieMap::Ptr</a> =  std::shared_ptr&lt;<a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html">CookieMap</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a> 第 <a class="el" href="_cookie_map_8h_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aa1fe0c9e9a5bfc86bf1671b57922369f" name="aa1fe0c9e9a5bfc86bf1671b57922369f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1fe0c9e9a5bfc86bf1671b57922369f">&#9670;&#160;</a></span>add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CookieMap::add </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>cookie</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>添加一个 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cookie</td><td>欲添加的 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8cpp_source.html">CookieMap.cpp</a> 第 <a class="el" href="_cookie_map_8cpp_source.html#l00005">5</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                    {</div>
+<div class="line"><span class="lineno">    6</span>    map[cookie-&gt;getName()] = cookie;</div>
+<div class="line"><span class="lineno">    7</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad1b639f7dd182878440854171355515d" name="ad1b639f7dd182878440854171355515d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b639f7dd182878440854171355515d">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Map::iterator sese::net::http::CookieMap::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a> 第 <a class="el" href="_cookie_map_8h_source.html#l00044">44</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>{ <span class="keywordflow">return</span> map.begin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac3bf517c49095decc5013dd254296716" name="ac3bf517c49095decc5013dd254296716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3bf517c49095decc5013dd254296716">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::CookieMap::empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a> 第 <a class="el" href="_cookie_map_8h_source.html#l00042">42</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>{ <span class="keywordflow">return</span> map.empty(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afc458c15608a03e898da5042a017f361" name="afc458c15608a03e898da5042a017f361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc458c15608a03e898da5042a017f361">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Map::iterator sese::net::http::CookieMap::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a> 第 <a class="el" href="_cookie_map_8h_source.html#l00045">45</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>{ <span class="keywordflow">return</span> map.end(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a458a59516cf921f82798bda41a806b9e" name="a458a59516cf921f82798bda41a806b9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a458a59516cf921f82798bda41a806b9e">&#9670;&#160;</a></span>expired()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CookieMap::expired </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>now</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>检查并移除过期的 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">now</td><td>单位秒 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8cpp_source.html">CookieMap.cpp</a> 第 <a class="el" href="_cookie_map_8cpp_source.html#l00018">18</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>                                    {</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iterator = map.begin(); iterator != map.end();) {</div>
+<div class="line"><span class="lineno">   20</span>        <span class="keywordflow">if</span> (iterator-&gt;second-&gt;getExpires()) {</div>
+<div class="line"><span class="lineno">   21</span>            <span class="keywordflow">if</span> (iterator-&gt;second-&gt;expired(now)) {</div>
+<div class="line"><span class="lineno">   22</span>                map.erase(iterator++);</div>
+<div class="line"><span class="lineno">   23</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   24</span>                iterator++;</div>
+<div class="line"><span class="lineno">   25</span>            }</div>
+<div class="line"><span class="lineno">   26</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   27</span>            iterator++;</div>
+<div class="line"><span class="lineno">   28</span>        }</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="line"><span class="lineno">   30</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae972a7e933b81edcd983be92fd0b55c3" name="ae972a7e933b81edcd983be92fd0b55c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae972a7e933b81edcd983be92fd0b55c3">&#9670;&#160;</a></span>find()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> CookieMap::find </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取一个现有的 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> 名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>不存在指定名称的 <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html" title="Cookie 类">Cookie</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8cpp_source.html">CookieMap.cpp</a> 第 <a class="el" href="_cookie_map_8cpp_source.html#l00009">9</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    9</span>                                                        {</div>
+<div class="line"><span class="lineno">   10</span>    <span class="keyword">auto</span> iterator = map.find(name);</div>
+<div class="line"><span class="lineno">   11</span>    <span class="keywordflow">if</span> (iterator != map.end()) {</div>
+<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">return</span> iterator-&gt;second;</div>
+<div class="line"><span class="lineno">   13</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   15</span>    }</div>
+<div class="line"><span class="lineno">   16</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a914898e6c7e33b3161db684ea00a4320" name="a914898e6c7e33b3161db684ea00a4320"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a914898e6c7e33b3161db684ea00a4320">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::net::http::CookieMap::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a> 第 <a class="el" href="_cookie_map_8h_source.html#l00041">41</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{ <span class="keywordflow">return</span> map.size(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4c28af2e6d5186226ef0aa53baa94d3a" name="a4c28af2e6d5186226ef0aa53baa94d3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c28af2e6d5186226ef0aa53baa94d3a">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CookieMap::update </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>offset</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>将集合中 max age 字段转换成 expires </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>单位秒 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_cookie_map_8cpp_source.html">CookieMap.cpp</a> 第 <a class="el" href="_cookie_map_8cpp_source.html#l00032">32</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>                                      {</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iterator = map.begin(); iterator != map.end(); ++iterator) {</div>
+<div class="line"><span class="lineno">   34</span>        iterator-&gt;second-&gt;update(offset);</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/net/http/<a class="el" href="_cookie_map_8h_source.html">CookieMap.h</a></li>
+<li>sese/net/http/<a class="el" href="_cookie_map_8cpp_source.html">CookieMap.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,760 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::archive::ArchiveReader类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1archive.html">archive</a></li><li class="navelem"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1archive_1_1_archive_reader-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::archive::ArchiveReader类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>存档读取器  
+ <a href="classsese_1_1archive_1_1_archive_reader.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_archive_reader_8h_source.html">ArchiveReader.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:aa4f2e5ea664acf052e4d1f6339353686" id="r_aa4f2e5ea664acf052e4d1f6339353686"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> = std::function&lt; bool(const std::filesystem::path &amp;base_path, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9">Config::EntryType</a> type, <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>, size_t readable)&gt;</td></tr>
+<tr class="memdesc:aa4f2e5ea664acf052e4d1f6339353686"><td class="mdescLeft">&#160;</td><td class="mdescRight">解压回调函数  <br /></td></tr>
+<tr class="separator:aa4f2e5ea664acf052e4d1f6339353686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a59d7e42511a80e3d6b1156c6cf1c8a97" id="r_a59d7e42511a80e3d6b1156c6cf1c8a97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a59d7e42511a80e3d6b1156c6cf1c8a97">ArchiveReader</a> (<a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>)</td></tr>
+<tr class="separator:a59d7e42511a80e3d6b1156c6cf1c8a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae5aae96cbf7c1978554cee78096eeac" id="r_aae5aae96cbf7c1978554cee78096eeac"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aae5aae96cbf7c1978554cee78096eeac">~ArchiveReader</a> ()</td></tr>
+<tr class="separator:aae5aae96cbf7c1978554cee78096eeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fb6a8d58fb642ac7f6ef8b7a53c847f" id="r_a1fb6a8d58fb642ac7f6ef8b7a53c847f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a1fb6a8d58fb642ac7f6ef8b7a53c847f">setPassword</a> (const std::string &amp;pwd) const</td></tr>
+<tr class="separator:a1fb6a8d58fb642ac7f6ef8b7a53c847f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d3e0871fc0eb317f495f6bf077f3bbc" id="r_a0d3e0871fc0eb317f495f6bf077f3bbc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a0d3e0871fc0eb317f495f6bf077f3bbc">setOptions</a> (const std::string &amp;opt) const</td></tr>
+<tr class="separator:a0d3e0871fc0eb317f495f6bf077f3bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8d92c9cafb69b7e4fd17d55edfc728a" id="r_af8d92c9cafb69b7e4fd17d55edfc728a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#af8d92c9cafb69b7e4fd17d55edfc728a">extract</a> (const <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
+<tr class="separator:af8d92c9cafb69b7e4fd17d55edfc728a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0c3642582325c24a4d06452a9eba83" id="r_a8a0c3642582325c24a4d06452a9eba83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a8a0c3642582325c24a4d06452a9eba83">getError</a> () const</td></tr>
+<tr class="separator:a8a0c3642582325c24a4d06452a9eba83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84f2d853d75a00583ed5ff995ef1b853" id="r_a84f2d853d75a00583ed5ff995ef1b853"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a84f2d853d75a00583ed5ff995ef1b853">getErrorString</a> () const</td></tr>
+<tr class="separator:a84f2d853d75a00583ed5ff995ef1b853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a69fb1284e6826a2d91bbcd8cefa21351" id="r_a69fb1284e6826a2d91bbcd8cefa21351"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a69fb1284e6826a2d91bbcd8cefa21351">extract</a> (const std::filesystem::path &amp;src_path, const std::filesystem::path &amp;dest_path, const std::string &amp;pwd={})</td></tr>
+<tr class="separator:a69fb1284e6826a2d91bbcd8cefa21351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa722ee18d5a995bb6261205eb7c81726" id="r_aa722ee18d5a995bb6261205eb7c81726"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa722ee18d5a995bb6261205eb7c81726">openCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this)</td></tr>
+<tr class="separator:aa722ee18d5a995bb6261205eb7c81726"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5284d50f16126bdac2cb4ebcfc2e30" id="r_a3f5284d50f16126bdac2cb4ebcfc2e30"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a3f5284d50f16126bdac2cb4ebcfc2e30">readCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this, const void **<a class="el" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>)</td></tr>
+<tr class="separator:a3f5284d50f16126bdac2cb4ebcfc2e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebf5b6bd2c0a70fd7741be3831d79cd9" id="r_aebf5b6bd2c0a70fd7741be3831d79cd9"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aebf5b6bd2c0a70fd7741be3831d79cd9">closeCallback</a> (void *<a class="el" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *archive_this)</td></tr>
+<tr class="separator:aebf5b6bd2c0a70fd7741be3831d79cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:ab2c0cb8902190bf47a3538e3524c6270" id="r_ab2c0cb8902190bf47a3538e3524c6270"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a> [4096] {}</td></tr>
+<tr class="separator:ab2c0cb8902190bf47a3538e3524c6270"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f332149b785bb80a4eb745465393e5" id="r_a01f332149b785bb80a4eb745465393e5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">archive</a> {}</td></tr>
+<tr class="separator:a01f332149b785bb80a4eb745465393e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88f8af69ac034ae28393e4f211c8c92a" id="r_a88f8af69ac034ae28393e4f211c8c92a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a> {}</td></tr>
+<tr class="separator:a88f8af69ac034ae28393e4f211c8c92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>存档读取器 </p>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8h_source.html">ArchiveReader.h</a> 第 <a class="el" href="_archive_reader_8h_source.html#l00032">32</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="aa4f2e5ea664acf052e4d1f6339353686" name="aa4f2e5ea664acf052e4d1f6339353686"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4f2e5ea664acf052e4d1f6339353686">&#9670;&#160;</a></span>ExtractCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">sese::archive::ArchiveReader::ExtractCallback</a> =  std::function&lt;bool(const std::filesystem::path &amp;base_path, <a class="el" href="classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9">Config::EntryType</a> type, <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *<a class="el" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>, size_t readable)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解压回调函数 </p>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8h_source.html">ArchiveReader.h</a> 第 <a class="el" href="_archive_reader_8h_source.html#l00035">35</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a59d7e42511a80e3d6b1156c6cf1c8a97" name="a59d7e42511a80e3d6b1156c6cf1c8a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d7e42511a80e3d6b1156c6cf1c8a97">&#9670;&#160;</a></span>ArchiveReader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArchiveReader::ArchiveReader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a> *&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>从输入流中读取存档 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>输入流 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00124">124</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  125</span>        : <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">archive</a>(archive_read_new()), <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>(<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>) {</div>
+<div class="line"><span class="lineno">  126</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aae5aae96cbf7c1978554cee78096eeac" name="aae5aae96cbf7c1978554cee78096eeac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae5aae96cbf7c1978554cee78096eeac">&#9670;&#160;</a></span>~ArchiveReader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArchiveReader::~ArchiveReader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00128">128</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>                              {</div>
+<div class="line"><span class="lineno">  129</span>    archive_read_free(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
+<div class="line"><span class="lineno">  130</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aebf5b6bd2c0a70fd7741be3831d79cd9" name="aebf5b6bd2c0a70fd7741be3831d79cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebf5b6bd2c0a70fd7741be3831d79cd9">&#9670;&#160;</a></span>closeCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ArchiveReader::closeCallback </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *&#160;</td>
+          <td class="paramname"><em>archive_this</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00185">185</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  185</span>                                                                     {</div>
+<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">return</span> ARCHIVE_OK;</div>
+<div class="line"><span class="lineno">  187</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_archive_reader_8cpp_source.html#l00118">close()</a>.</p>
+
+</div>
+</div>
+<a id="af8d92c9cafb69b7e4fd17d55edfc728a" name="af8d92c9cafb69b7e4fd17d55edfc728a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8d92c9cafb69b7e4fd17d55edfc728a">&#9670;&#160;</a></span>extract() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ArchiveReader::extract </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1archive_1_1_archive_reader.html#aa4f2e5ea664acf052e4d1f6339353686">ExtractCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>执行解压操作 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>解压回调函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>解压是否成功 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00140">140</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  140</span>                                                                        {</div>
+<div class="line"><span class="lineno">  141</span>    <span class="comment">// archive_read_support_compression_all(XX);</span></div>
+<div class="line"><span class="lineno">  142</span>    archive_read_support_filter_all(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
+<div class="line"><span class="lineno">  143</span>    archive_read_support_format_all(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">if</span> (ARCHIVE_OK != archive_read_open(</div>
+<div class="line"><span class="lineno">  145</span>            <a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>,</div>
+<div class="line"><span class="lineno">  146</span>            <span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">  147</span>            <a class="code hl_function" href="_archive_reader_8cpp.html#a356db994bf7c720b287004189f874668">open</a>,</div>
+<div class="line"><span class="lineno">  148</span>            <a class="code hl_function" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read</a>,</div>
+<div class="line"><span class="lineno">  149</span>            <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a></div>
+<div class="line"><span class="lineno">  150</span>    )) {</div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  152</span>    }</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>    <span class="keyword">struct </span>archive_entry *entry{};</div>
+<div class="line"><span class="lineno">  155</span>    <span class="keyword">auto</span> archive_input_stream = ArchiveInputStream(<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">archive</a>);</div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">while</span> (archive_read_next_header(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, &amp;entry) == ARCHIVE_OK) {</div>
+<div class="line"><span class="lineno">  157</span>        std::string filename = archive_entry_pathname(entry);</div>
+<div class="line"><span class="lineno">  158</span> </div>
+<div class="line"><span class="lineno">  159</span>        <span class="keyword">const</span> <span class="keyword">auto</span> SIZE = archive_entry_size(entry);</div>
+<div class="line"><span class="lineno">  160</span>        <span class="keyword">const</span> <span class="keyword">auto</span> TYPE = archive_entry_filetype(entry);</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span>        <a class="code hl_function" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>(filename, <a class="code hl_function" href="classsese_1_1archive_1_1_config.html#a169b8d889176e8cf8d8667d40a4e16b9">Config::fromValue</a>(TYPE), &amp;archive_input_stream, SIZE);</div>
+<div class="line"><span class="lineno">  163</span>    }</div>
+<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  165</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8h_source.html#l00081">archive</a>, <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00007">callback()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00118">close()</a>, <a class="el" href="_config_8cpp_source.html#l00041">sese::archive::Config::fromValue()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00106">open()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+
+</div>
+</div>
+<a id="a69fb1284e6826a2d91bbcd8cefa21351" name="a69fb1284e6826a2d91bbcd8cefa21351"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69fb1284e6826a2d91bbcd8cefa21351">&#9670;&#160;</a></span>extract() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ArchiveReader::extract </td>
+          <td>(</td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>src_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
+          <td class="paramname"><em>dest_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pwd</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>将存档解压至指定位置 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src_path</td><td>存档路径 </td></tr>
+    <tr><td class="paramname">dest_path</td><td>解压目的路径 </td></tr>
+    <tr><td class="paramname">pwd</td><td>密码，可选的 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00026">26</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>                                                  {</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keyword">const</span> <span class="keyword">auto</span> SRC = src_path.string();</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keyword">auto</span> dest = dest_path.string();</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>    <span class="keyword">struct </span><a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a01f332149b785bb80a4eb745465393e5">archive</a> *<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> = archive_read_new();</div>
+<div class="line"><span class="lineno">   32</span>    <span class="comment">// archive_read_support_compression_all(XX);</span></div>
+<div class="line"><span class="lineno">   33</span>    archive_read_support_filter_all(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">   34</span>    archive_read_support_format_all(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (!pwd.empty()) {</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">if</span> (ARCHIVE_OK != archive_read_add_passphrase(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, pwd.c_str())) {</div>
+<div class="line"><span class="lineno">   38</span>            archive_read_free(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">   39</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   40</span>        }</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (ARCHIVE_OK != archive_read_open_filename(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, SRC.c_str(), 4096)) {</div>
+<div class="line"><span class="lineno">   44</span>        archive_read_free(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>    <span class="keyword">struct </span>archive_entry *entry{};</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">while</span> (archive_read_next_header(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, &amp;entry) == ARCHIVE_OK) {</div>
+<div class="line"><span class="lineno">   50</span>        std::string filename = archive_entry_pathname(entry);</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>        <span class="keyword">auto</span> exp = archive_entry_size(entry);</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> TYPE = archive_entry_filetype(entry); AE_IFDIR == TYPE) {</div>
+<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">if</span> (<span class="charliteral">&#39;/&#39;</span> == filename.at(filename.length() - 1)) {</div>
+<div class="line"><span class="lineno">   55</span>                filename = filename.substr(0, filename.length() - 1);</div>
+<div class="line"><span class="lineno">   56</span>            }</div>
+<div class="line"><span class="lineno">   57</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span> path = dest_path / filename; std::filesystem::exists(path)) {</div>
+<div class="line"><span class="lineno">   58</span>                <span class="keywordflow">if</span> (!std::filesystem::is_directory(path)) {</div>
+<div class="line"><span class="lineno">   59</span>                    archive_read_free(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">   60</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   61</span>                }</div>
+<div class="line"><span class="lineno">   62</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   63</span>                <span class="keywordflow">if</span> (!std::filesystem::create_directories(path)) {</div>
+<div class="line"><span class="lineno">   64</span>                    archive_read_free(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">   65</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   66</span>                }</div>
+<div class="line"><span class="lineno">   67</span>            }</div>
+<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   69</span>        }</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> parent = (dest_path / filename).parent_path(); !std::filesystem::exists(parent)) {</div>
+<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">if</span> (!std::filesystem::create_directories(parent)) {</div>
+<div class="line"><span class="lineno">   73</span>                archive_read_free(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">   74</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   75</span>            }</div>
+<div class="line"><span class="lineno">   76</span>        }</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>        <span class="keyword">auto</span> filepath = (dest_path / filename).<span class="keywordtype">string</span>();</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keyword">const</span> <span class="keyword">auto</span> FILE = File::create(filepath, <a class="code hl_define" href="_file_stream_8h.html#a4d6775de7d3b7fb06e32c0ce22980e5a">BINARY_WRITE_CREATE_TRUNC</a>);</div>
+<div class="line"><span class="lineno">   80</span>        <span class="keywordflow">while</span> (exp) {</div>
+<div class="line"><span class="lineno">   81</span>            <span class="keywordtype">char</span> <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>[4096];</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keyword">const</span> <span class="keyword">auto</span> LEN = archive_read_data(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>, <a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>, std::min&lt;size_t&gt;(exp, 4096));</div>
+<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">if</span> (LEN &lt;= 0) {</div>
+<div class="line"><span class="lineno">   84</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   85</span>            }</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keyword">auto</span> <a class="code hl_function" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a> = FILE-&gt;write(<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>, <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(LEN));</div>
+<div class="line"><span class="lineno">   87</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a> != LEN) {</div>
+<div class="line"><span class="lineno">   88</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   89</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   90</span>                exp -= LEN;</div>
+<div class="line"><span class="lineno">   91</span>            }</div>
+<div class="line"><span class="lineno">   92</span>        }</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>        FILE-&gt;flush();</div>
+<div class="line"><span class="lineno">   95</span>        FILE-&gt;close();</div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">if</span> (exp) {</div>
+<div class="line"><span class="lineno">   97</span>            archive_read_free(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   99</span>        }</div>
+<div class="line"><span class="lineno">  100</span>    }</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>    archive_read_free(<a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a>);</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  104</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00364">a</a>, <a class="el" href="_archive_reader_8h_source.html#l00081">archive</a>, <a class="el" href="_file_stream_8h_source.html#l00026">BINARY_WRITE_CREATE_TRUNC</a>, <a class="el" href="_archive_reader_8h_source.html#l00080">buffer</a> , 以及 <a class="el" href="_archive_writer_8cpp_source.html#l00032">write()</a>.</p>
+
+</div>
+</div>
+<a id="a8a0c3642582325c24a4d06452a9eba83" name="a8a0c3642582325c24a4d06452a9eba83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a0c3642582325c24a4d06452a9eba83">&#9670;&#160;</a></span>getError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ArchiveReader::getError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>获取当前错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00167">167</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>                                  {</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">return</span> archive_errno(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
+<div class="line"><span class="lineno">  169</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+
+</div>
+</div>
+<a id="a84f2d853d75a00583ed5ff995ef1b853" name="a84f2d853d75a00583ed5ff995ef1b853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84f2d853d75a00583ed5ff995ef1b853">&#9670;&#160;</a></span>getErrorString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * ArchiveReader::getErrorString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>获取当前错误字符串 </p><dl class="section return"><dt>返回</dt><dd>错误字符串 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00171">171</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  171</span>                                                {</div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordflow">return</span> archive_error_string(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>);</div>
+<div class="line"><span class="lineno">  173</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+
+</div>
+</div>
+<a id="aa722ee18d5a995bb6261205eb7c81726" name="aa722ee18d5a995bb6261205eb7c81726"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa722ee18d5a995bb6261205eb7c81726">&#9670;&#160;</a></span>openCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ArchiveReader::openCallback </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *&#160;</td>
+          <td class="paramname"><em>archive_this</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00175">175</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  175</span>                                                                    {</div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">return</span> ARCHIVE_OK;</div>
+<div class="line"><span class="lineno">  177</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_archive_reader_8cpp_source.html#l00106">open()</a>.</p>
+
+</div>
+</div>
+<a id="a3f5284d50f16126bdac2cb4ebcfc2e30" name="a3f5284d50f16126bdac2cb4ebcfc2e30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5284d50f16126bdac2cb4ebcfc2e30">&#9670;&#160;</a></span>readCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t ArchiveReader::readCallback </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1archive_1_1_archive_reader.html">ArchiveReader</a> *&#160;</td>
+          <td class="paramname"><em>archive_this</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00179">179</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  179</span>                                                                                             {</div>
+<div class="line"><span class="lineno">  180</span>    <span class="keyword">const</span> <span class="keyword">auto</span> READ = archive_this-&gt;<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#a88f8af69ac034ae28393e4f211c8c92a">input</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">read</a>(archive_this-&gt;<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>, 4096);</div>
+<div class="line"><span class="lineno">  181</span>    *<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a> = archive_this-&gt;<a class="code hl_variable" href="classsese_1_1archive_1_1_archive_reader.html#ab2c0cb8902190bf47a3538e3524c6270">buffer</a>;</div>
+<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">return</span> READ;</div>
+<div class="line"><span class="lineno">  183</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8h_source.html#l00080">buffer</a>, <a class="el" href="_archive_reader_8h_source.html#l00082">input</a> , 以及 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_archive_reader_8cpp_source.html#l00113">read()</a>.</p>
+
+</div>
+</div>
+<a id="a0d3e0871fc0eb317f495f6bf077f3bbc" name="a0d3e0871fc0eb317f495f6bf077f3bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d3e0871fc0eb317f495f6bf077f3bbc">&#9670;&#160;</a></span>setOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ArchiveReader::setOptions </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>opt</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>为当前的存档设置 libarchive 选项 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opt</td><td>选项字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回 0 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00136">136</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>                                                        {</div>
+<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">return</span> archive_read_set_options(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, opt.c_str());</div>
+<div class="line"><span class="lineno">  138</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+
+</div>
+</div>
+<a id="a1fb6a8d58fb642ac7f6ef8b7a53c847f" name="a1fb6a8d58fb642ac7f6ef8b7a53c847f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fb6a8d58fb642ac7f6ef8b7a53c847f">&#9670;&#160;</a></span>setPassword()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ArchiveReader::setPassword </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pwd</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>为当前读取的文档设置使用的密码 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pwd</td><td>欲使用的密码 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功返回 0 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a> 第 <a class="el" href="_archive_reader_8cpp_source.html#l00132">132</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  132</span>                                                         {</div>
+<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">return</span> archive_read_add_passphrase(<a class="code hl_define" href="_archive_reader_8cpp.html#a7b8003af9a638915bbca18f3896c5eb7">XX</a>, pwd.c_str());</div>
+<div class="line"><span class="lineno">  134</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00122">XX</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a01f332149b785bb80a4eb745465393e5" name="a01f332149b785bb80a4eb745465393e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f332149b785bb80a4eb745465393e5">&#9670;&#160;</a></span>archive</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* sese::archive::ArchiveReader::archive {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8h_source.html">ArchiveReader.h</a> 第 <a class="el" href="_archive_reader_8h_source.html#l00081">81</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_archive_reader_8cpp_source.html#l00140">extract()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00026">extract()</a>.</p>
+
+</div>
+</div>
+<a id="ab2c0cb8902190bf47a3538e3524c6270" name="ab2c0cb8902190bf47a3538e3524c6270"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2c0cb8902190bf47a3538e3524c6270">&#9670;&#160;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char sese::archive::ArchiveReader::buffer[4096] {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8h_source.html">ArchiveReader.h</a> 第 <a class="el" href="_archive_reader_8h_source.html#l00080">80</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_archive_reader_8cpp_source.html#l00026">extract()</a> , 以及 <a class="el" href="_archive_reader_8cpp_source.html#l00179">readCallback()</a>.</p>
+
+</div>
+</div>
+<a id="a88f8af69ac034ae28393e4f211c8c92a" name="a88f8af69ac034ae28393e4f211c8c92a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88f8af69ac034ae28393e4f211c8c92a">&#9670;&#160;</a></span>input</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a>* sese::archive::ArchiveReader::input {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_archive_reader_8h_source.html">ArchiveReader.h</a> 第 <a class="el" href="_archive_reader_8h_source.html#l00082">82</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_archive_reader_8cpp_source.html#l00179">readCallback()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/archive/<a class="el" href="_archive_reader_8h_source.html">ArchiveReader.h</a></li>
+<li>sese/archive/<a class="el" href="_archive_reader_8cpp_source.html">ArchiveReader.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

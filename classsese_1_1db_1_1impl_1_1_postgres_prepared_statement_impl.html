@@ -1,0 +1,1237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::db::impl::PostgresPreparedStatementImpl类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db_1_1impl.html">impl</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html">PostgresPreparedStatementImpl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::db::impl::PostgresPreparedStatementImpl类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::db::impl::PostgresPreparedStatementImpl 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.png" usemap="#sese::db::impl::PostgresPreparedStatementImpl_map" alt=""/>
+  <map id="sese::db::impl::PostgresPreparedStatementImpl_map" name="sese::db::impl::PostgresPreparedStatementImpl_map">
+<area href="classsese_1_1db_1_1_prepared_statement.html" title="预处理语句对象" alt="sese::db::PreparedStatement" shape="rect" coords="0,0,270,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a507b70bf9bd3e32e3723703c14a1b0f5" id="r_a507b70bf9bd3e32e3723703c14a1b0f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a507b70bf9bd3e32e3723703c14a1b0f5">PostgresPreparedStatementImpl</a> (std::string stmt_name, std::string stmt_string, uint32_t <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>, PGconn *<a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>) noexcept</td></tr>
+<tr class="separator:a507b70bf9bd3e32e3723703c14a1b0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e9006c54a522a81bd914dac1e3e3a02" id="r_a9e9006c54a522a81bd914dac1e3e3a02"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a9e9006c54a522a81bd914dac1e3e3a02">~PostgresPreparedStatementImpl</a> () noexcept override</td></tr>
+<tr class="separator:a9e9006c54a522a81bd914dac1e3e3a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6294323bdc214dbc2ad8bada7abd9b3" id="r_ae6294323bdc214dbc2ad8bada7abd9b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ae6294323bdc214dbc2ad8bada7abd9b3">executeQuery</a> () noexcept override</td></tr>
+<tr class="memdesc:ae6294323bdc214dbc2ad8bada7abd9b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行查询  <br /></td></tr>
+<tr class="separator:ae6294323bdc214dbc2ad8bada7abd9b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af39d642c6bd09d530cb8b37ac8d5bcca" id="r_af39d642c6bd09d530cb8b37ac8d5bcca"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#af39d642c6bd09d530cb8b37ac8d5bcca">executeUpdate</a> () noexcept override</td></tr>
+<tr class="memdesc:af39d642c6bd09d530cb8b37ac8d5bcca"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行更新  <br /></td></tr>
+<tr class="separator:af39d642c6bd09d530cb8b37ac8d5bcca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7857ccc290db253673ac29d9763ccf07" id="r_a7857ccc290db253673ac29d9763ccf07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a7857ccc290db253673ac29d9763ccf07">setDouble</a> (uint32_t index, const double &amp;value) noexcept override</td></tr>
+<tr class="memdesc:a7857ccc290db253673ac29d9763ccf07"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置双精度浮点值  <br /></td></tr>
+<tr class="separator:a7857ccc290db253673ac29d9763ccf07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a153952c04977d2d077042ad49badb922" id="r_a153952c04977d2d077042ad49badb922"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a153952c04977d2d077042ad49badb922">setFloat</a> (uint32_t index, const float &amp;value) noexcept override</td></tr>
+<tr class="memdesc:a153952c04977d2d077042ad49badb922"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置单精度浮点值  <br /></td></tr>
+<tr class="separator:a153952c04977d2d077042ad49badb922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3433bea522dabff795487290cebae6af" id="r_a3433bea522dabff795487290cebae6af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3433bea522dabff795487290cebae6af">setInteger</a> (uint32_t index, const int32_t &amp;value) noexcept override</td></tr>
+<tr class="memdesc:a3433bea522dabff795487290cebae6af"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置整型值  <br /></td></tr>
+<tr class="separator:a3433bea522dabff795487290cebae6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96376f9c76edd42583c2d1b817ebfff" id="r_ac96376f9c76edd42583c2d1b817ebfff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ac96376f9c76edd42583c2d1b817ebfff">setLong</a> (uint32_t index, const int64_t &amp;value) noexcept override</td></tr>
+<tr class="memdesc:ac96376f9c76edd42583c2d1b817ebfff"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置长整型值  <br /></td></tr>
+<tr class="separator:ac96376f9c76edd42583c2d1b817ebfff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0489a668f87a6e7423344f5720089979" id="r_a0489a668f87a6e7423344f5720089979"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0489a668f87a6e7423344f5720089979">setText</a> (uint32_t index, const char *value) noexcept override</td></tr>
+<tr class="memdesc:a0489a668f87a6e7423344f5720089979"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置文本值  <br /></td></tr>
+<tr class="separator:a0489a668f87a6e7423344f5720089979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66704b5d3acd04b2971b599b1b016e90" id="r_a66704b5d3acd04b2971b599b1b016e90"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a66704b5d3acd04b2971b599b1b016e90">setNull</a> (uint32_t index) noexcept override</td></tr>
+<tr class="memdesc:a66704b5d3acd04b2971b599b1b016e90"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置为 NULL  <br /></td></tr>
+<tr class="separator:a66704b5d3acd04b2971b599b1b016e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad04ea18464afd6be5ef2a75c4ade2d0e" id="r_ad04ea18464afd6be5ef2a75c4ade2d0e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad04ea18464afd6be5ef2a75c4ade2d0e">setDateTime</a> (uint32_t index, const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;value) noexcept override</td></tr>
+<tr class="memdesc:ad04ea18464afd6be5ef2a75c4ade2d0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置为 dateTime  <br /></td></tr>
+<tr class="separator:ad04ea18464afd6be5ef2a75c4ade2d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2b2db86b033112180ffbc0afcb83cbf" id="r_ac2b2db86b033112180ffbc0afcb83cbf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ac2b2db86b033112180ffbc0afcb83cbf">getColumnType</a> (uint32_t index, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;type) noexcept override</td></tr>
+<tr class="memdesc:ac2b2db86b033112180ffbc0afcb83cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取结果集列类型  <br /></td></tr>
+<tr class="separator:ac2b2db86b033112180ffbc0afcb83cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4480f06320c027e931dad9d082c79721" id="r_a4480f06320c027e931dad9d082c79721"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a4480f06320c027e931dad9d082c79721">getColumnSize</a> (uint32_t index) noexcept override</td></tr>
+<tr class="memdesc:a4480f06320c027e931dad9d082c79721"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节  <br /></td></tr>
+<tr class="separator:a4480f06320c027e931dad9d082c79721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a189f1b6fbda0a3bc4693f97c21d305" id="r_a3a189f1b6fbda0a3bc4693f97c21d305"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3a189f1b6fbda0a3bc4693f97c21d305">getLastError</a> () const noexcept override</td></tr>
+<tr class="separator:a3a189f1b6fbda0a3bc4693f97c21d305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f9c83590c6b2da00e9d2e4cfd0cbf48" id="r_a7f9c83590c6b2da00e9d2e4cfd0cbf48"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a7f9c83590c6b2da00e9d2e4cfd0cbf48">getLastErrorMessage</a> () const noexcept override</td></tr>
+<tr class="separator:a7f9c83590c6b2da00e9d2e4cfd0cbf48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1db_1_1_prepared_statement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1db_1_1_prepared_statement')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">sese::db::PreparedStatement</a></td></tr>
+<tr class="memitem:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement" id="r_a33a127fdb8b9d6b07c7c046f19fd3935"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a33a127fdb8b9d6b07c7c046f19fd3935">~PreparedStatement</a> () noexcept=default</td></tr>
+<tr class="memdesc:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
+<tr class="separator:a33a127fdb8b9d6b07c7c046f19fd3935 inherit pub_methods_classsese_1_1db_1_1_prepared_statement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a382394903043a8e1d3cb349876858b19" id="r_a382394903043a8e1d3cb349876858b19"><td class="memItemLeft" align="right" valign="top">PGconn *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a></td></tr>
+<tr class="separator:a382394903043a8e1d3cb349876858b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a018a3aef2b1202a8419e884e934f9e22" id="r_a018a3aef2b1202a8419e884e934f9e22"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a018a3aef2b1202a8419e884e934f9e22">stmtName</a></td></tr>
+<tr class="separator:a018a3aef2b1202a8419e884e934f9e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e638b469c0e26ed97b3f01e865896f" id="r_a25e638b469c0e26ed97b3f01e865896f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a25e638b469c0e26ed97b3f01e865896f">stmtString</a></td></tr>
+<tr class="separator:a25e638b469c0e26ed97b3f01e865896f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd568180d27efbdd69790a2a33e30f68" id="r_abd568180d27efbdd69790a2a33e30f68"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a></td></tr>
+<tr class="separator:abd568180d27efbdd69790a2a33e30f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f4f9265328cb2941211c083f452fac" id="r_ad7f4f9265328cb2941211c083f452fac"><td class="memItemLeft" align="right" valign="top">Oid *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a></td></tr>
+<tr class="separator:ad7f4f9265328cb2941211c083f452fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec2bc8fadc787d7da278c48e0c181ec" id="r_a0ec2bc8fadc787d7da278c48e0c181ec"><td class="memItemLeft" align="right" valign="top">const char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a></td></tr>
+<tr class="separator:a0ec2bc8fadc787d7da278c48e0c181ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a774fdd1772622a6ea7e9b07f4642e264" id="r_a774fdd1772622a6ea7e9b07f4642e264"><td class="memItemLeft" align="right" valign="top">std::string *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a></td></tr>
+<tr class="separator:a774fdd1772622a6ea7e9b07f4642e264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2a9d8bf838295a27a5882e1f7149618" id="r_ab2a9d8bf838295a27a5882e1f7149618"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ab2a9d8bf838295a27a5882e1f7149618">error</a> = 0</td></tr>
+<tr class="separator:ab2a9d8bf838295a27a5882e1f7149618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b363dfdc85417afb407f9482aeb13f" id="r_a35b363dfdc85417afb407f9482aeb13f"><td class="memItemLeft" align="right" valign="top">PGresult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a></td></tr>
+<tr class="separator:a35b363dfdc85417afb407f9482aeb13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_types_classsese_1_1db_1_1_prepared_statement"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1db_1_1_prepared_statement')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">sese::db::PreparedStatement</a></td></tr>
+<tr class="memitem:aa679cb5888117ad6604066899ac893e0 inherit pub_types_classsese_1_1db_1_1_prepared_statement" id="r_aa679cb5888117ad6604066899ac893e0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">PreparedStatement</a> &gt;</td></tr>
+<tr class="separator:aa679cb5888117ad6604066899ac893e0 inherit pub_types_classsese_1_1db_1_1_prepared_statement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00010">10</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a507b70bf9bd3e32e3723703c14a1b0f5" name="a507b70bf9bd3e32e3723703c14a1b0f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a507b70bf9bd3e32e3723703c14a1b0f5">&#9670;&#160;</a></span>PostgresPreparedStatementImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::db::impl::PostgresPreparedStatementImpl::PostgresPreparedStatementImpl </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>stmt_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>stmt_string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PGconn *&#160;</td>
+          <td class="paramname"><em>conn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00021">21</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>    : <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>), <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a018a3aef2b1202a8419e884e934f9e22">stmtName</a>(std::move(stmt_name)), <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a25e638b469c0e26ed97b3f01e865896f">stmtString</a>(std::move(stmt_string)), <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>), <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>(<span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   28</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a> = <span class="keyword">static_cast&lt;</span>Oid *<span class="keyword">&gt;</span>(malloc(<span class="keyword">sizeof</span>(Oid) * <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>));</div>
+<div class="line"><span class="lineno">   29</span>    memset(this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>, 0, <span class="keyword">sizeof</span>(Oid) * <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>);</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a> = <span class="keyword">static_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> **<span class="keyword">&gt;</span>(malloc(<span class="keyword">sizeof</span>(<span class="keyword">const</span> <span class="keywordtype">char</span> *) * <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>));</div>
+<div class="line"><span class="lineno">   32</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a> = <span class="keyword">new</span> std::string[<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>];</div>
+<div class="line"><span class="lineno">   33</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+
+</div>
+</div>
+<a id="a9e9006c54a522a81bd914dac1e3e3a02" name="a9e9006c54a522a81bd914dac1e3e3a02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e9006c54a522a81bd914dac1e3e3a02">&#9670;&#160;</a></span>~PostgresPreparedStatementImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::db::impl::PostgresPreparedStatementImpl::~PostgresPreparedStatementImpl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00035">35</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                                                 {</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>) {</div>
+<div class="line"><span class="lineno">   37</span>        PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>);</div>
+<div class="line"><span class="lineno">   38</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>    <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>);</div>
+<div class="line"><span class="lineno">   42</span>    <a class="code hl_function" href="_archive_writer_8cpp.html#a3dbec6638bdd9b7108314a9266649c82">free</a>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>);</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keyword">delete</span>[] this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>;</div>
+<div class="line"><span class="lineno">   44</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_writer_8cpp_source.html#l00041">free()</a>, <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00039">paramTypes</a>, <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00040">paramValues</a>, <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00043">result</a> , 以及 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00041">strings</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ae6294323bdc214dbc2ad8bada7abd9b3" name="ae6294323bdc214dbc2ad8bada7abd9b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6294323bdc214dbc2ad8bada7abd9b3">&#9670;&#160;</a></span>executeQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">sese::db::ResultSet::Ptr</a> sese::db::impl::PostgresPreparedStatementImpl::executeQuery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>执行查询 </p>
+<dl class="section return"><dt>返回</dt><dd>查询结果集 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>查询失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a105dd94bf914f6b5a41135c3c469118e">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00101">101</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>                                                                                  {</div>
+<div class="line"><span class="lineno">  102</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a> = PQexecPrepared(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a018a3aef2b1202a8419e884e934f9e22">stmtName</a>.c_str(), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>), <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>, 0);</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  104</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ab2a9d8bf838295a27a5882e1f7149618">error</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(PQstatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>));</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> STATUS = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>); STATUS != PGRES_TUPLES_OK) {</div>
+<div class="line"><span class="lineno">  109</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ab2a9d8bf838295a27a5882e1f7149618">error</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(STATUS);</div>
+<div class="line"><span class="lineno">  110</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  111</span>    }</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>    <span class="keyword">auto</span> rt = std::make_unique&lt;impl::PostgresResultSetImpl&gt;(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>);</div>
+<div class="line"><span class="lineno">  114</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ab2a9d8bf838295a27a5882e1f7149618">error</a> = 0;</div>
+<div class="line"><span class="lineno">  115</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">return</span> rt;</div>
+<div class="line"><span class="lineno">  117</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+
+</div>
+</div>
+<a id="af39d642c6bd09d530cb8b37ac8d5bcca" name="af39d642c6bd09d530cb8b37ac8d5bcca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af39d642c6bd09d530cb8b37ac8d5bcca">&#9670;&#160;</a></span>executeUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::db::impl::PostgresPreparedStatementImpl::executeUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>执行更新 </p>
+<dl class="section return"><dt>返回</dt><dd>统计更新的行数 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>查询失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a9694d9a5743da55015a6581e8ead04dd">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00119">119</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  119</span>                                                                        {</div>
+<div class="line"><span class="lineno">  120</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a> = PQexecPrepared(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a018a3aef2b1202a8419e884e934f9e22">stmtName</a>.c_str(), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>), <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>, 0);</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">  122</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ab2a9d8bf838295a27a5882e1f7149618">error</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(PQstatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>));</div>
+<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  124</span>    }</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> STATUS = PQresultStatus(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>); STATUS != PGRES_COMMAND_OK) {</div>
+<div class="line"><span class="lineno">  127</span>        <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ab2a9d8bf838295a27a5882e1f7149618">error</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(STATUS);</div>
+<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  129</span>    }</div>
+<div class="line"><span class="lineno">  130</span> </div>
+<div class="line"><span class="lineno">  131</span>    <span class="keyword">const</span> <span class="keyword">auto</span> RT = <span class="keyword">reinterpret_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(PQcmdTuples(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>));</div>
+<div class="line"><span class="lineno">  132</span>    PQclear(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>);</div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  134</span>    <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ab2a9d8bf838295a27a5882e1f7149618">error</a> = 0;</div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">return</span> RT;</div>
+<div class="line"><span class="lineno">  136</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+
+</div>
+</div>
+<a id="a4480f06320c027e931dad9d082c79721" name="a4480f06320c027e931dad9d082c79721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4480f06320c027e931dad9d082c79721">&#9670;&#160;</a></span>getColumnSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t sese::db::impl::PostgresPreparedStatementImpl::getColumnSize </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>失败返回 -1 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a1883a70b666418e29fdfab12b76b86bb">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00196">196</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  196</span>                                                                                      {</div>
+<div class="line"><span class="lineno">  197</span>    <span class="keyword">const</span> <span class="keyword">auto</span> META = PQdescribePrepared(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a018a3aef2b1202a8419e884e934f9e22">stmtName</a>.c_str());</div>
+<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">if</span> (META == <span class="keyword">nullptr</span> || PQnfields(META) &lt;= <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index)) {</div>
+<div class="line"><span class="lineno">  199</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  200</span>    }</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">return</span> PQfsize(META, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index));</div>
+<div class="line"><span class="lineno">  202</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac2b2db86b033112180ffbc0afcb83cbf" name="ac2b2db86b033112180ffbc0afcb83cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2b2db86b033112180ffbc0afcb83cbf">&#9670;&#160;</a></span>getColumnType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::PostgresPreparedStatementImpl::getColumnType </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取结果集列类型 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引值 </td></tr>
+    <tr><td class="paramname">type</td><td>列类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否获取成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a01f6496e4c85855b83491c67acdb4834">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00150">150</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>                                                                                                             {</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keyword">const</span> <span class="keyword">auto</span> META = PQdescribePrepared(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>, <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a018a3aef2b1202a8419e884e934f9e22">stmtName</a>.c_str());</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">if</span> (META == <span class="keyword">nullptr</span> || PQnfields(META) &lt;= <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index)) {</div>
+<div class="line"><span class="lineno">  153</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  154</span>    }</div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">switch</span> (PQftype(META, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(index))) {</div>
+<div class="line"><span class="lineno">  156</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a98237a4b91c161bd6c2df63a2bb94207">BOOLOID</a>:</div>
+<div class="line"><span class="lineno">  157</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeac48d5da12d702e73d6966069f2687376">MetadataType::BOOLEAN</a>;</div>
+<div class="line"><span class="lineno">  158</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a3c945702a9e2e4694e5673db84c2a77d">TEXTOID</a>:</div>
+<div class="line"><span class="lineno">  160</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#ace83b8c6f7699112ced411650600b475">CHAROID</a>:</div>
+<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a24eccf5fa2a41f7738ab1aa1b7dce72d">VARCHAROID</a>:</div>
+<div class="line"><span class="lineno">  162</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea61a96ffcb251bb9bf0abf8fec19d0ea8">MetadataType::TEXT</a>;</div>
+<div class="line"><span class="lineno">  163</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  164</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a59b14b0f52e041ced4e021121ed0b31b">INT8OID</a>:</div>
+<div class="line"><span class="lineno">  165</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeac1fabfea54ec6011e694f211f3ffebf3">MetadataType::LONG</a>;</div>
+<div class="line"><span class="lineno">  166</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#af473c8bca64740230ff280c0de2c5721">INT4OID</a>:</div>
+<div class="line"><span class="lineno">  168</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea5d5cd46919fa987731fb2edefe0f2a0c">MetadataType::INTEGER</a>;</div>
+<div class="line"><span class="lineno">  169</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  170</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a31e54a35a82c0ec11b9952a46f4d7af3">INT2OID</a>:</div>
+<div class="line"><span class="lineno">  171</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeaa35c2b02966b1563e5bf7b81b8b0cf77">MetadataType::SHORT</a>;</div>
+<div class="line"><span class="lineno">  172</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  173</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a8fa1c5f811247e1b88bc65475218d41c">FLOAT8OID</a>:</div>
+<div class="line"><span class="lineno">  174</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeae738c26bf4ce1037fa81b039a915cbf6">MetadataType::FLOAT</a>;</div>
+<div class="line"><span class="lineno">  175</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  176</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a355afc3e7ec3b4bb0860f61371d942b6">FLOAT4OID</a>:</div>
+<div class="line"><span class="lineno">  177</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeafd3e4ece78a7d422280d5ed379482229">MetadataType::DOUBLE</a>;</div>
+<div class="line"><span class="lineno">  178</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  179</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#aee8ba3353d19cf2dd1f72d0a83b47f3a">DATEOID</a>:</div>
+<div class="line"><span class="lineno">  180</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea633a6c7a6b9958f8174250094daf1e6a">MetadataType::DATE</a>;</div>
+<div class="line"><span class="lineno">  181</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a9c1fe4b1e1ffeeb4eefc1136a880f0a6">TIMEOID</a>:</div>
+<div class="line"><span class="lineno">  183</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea346ff32eaa3c09983fb2ec057816d352">MetadataType::TIME</a>;</div>
+<div class="line"><span class="lineno">  184</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  185</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a45943b815620f615b4780464d5c64bad">TIMESTAMPTZOID</a>:</div>
+<div class="line"><span class="lineno">  186</span>        <span class="keywordflow">case</span> <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a1ac4c664545022e308e9d78a040114a9">TIMESTAMPOID</a>:</div>
+<div class="line"><span class="lineno">  187</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea43354b9116100a9ffc05d385bd6eb65a">MetadataType::DATE_TIME</a>;</div>
+<div class="line"><span class="lineno">  188</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  189</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  190</span>            type = <a class="code hl_enumvalue" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea696b031073e74bf2cb98e5ef201d4aa3">MetadataType::UNKNOWN</a>;</div>
+<div class="line"><span class="lineno">  191</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  192</span>    }</div>
+<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  194</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeac48d5da12d702e73d6966069f2687376">sese::db::BOOLEAN</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00014">BOOLOID</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00015">CHAROID</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea633a6c7a6b9958f8174250094daf1e6a">sese::db::DATE</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea43354b9116100a9ffc05d385bd6eb65a">sese::db::DATE_TIME</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00017">DATEOID</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeafd3e4ece78a7d422280d5ed379482229">sese::db::DOUBLE</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeae738c26bf4ce1037fa81b039a915cbf6">sese::db::FLOAT</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00007">FLOAT4OID</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00006">FLOAT8OID</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00010">INT2OID</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00009">INT4OID</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00008">INT8OID</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea5d5cd46919fa987731fb2edefe0f2a0c">sese::db::INTEGER</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeac1fabfea54ec6011e694f211f3ffebf3">sese::db::LONG</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbeaa35c2b02966b1563e5bf7b81b8b0cf77">sese::db::SHORT</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea61a96ffcb251bb9bf0abf8fec19d0ea8">sese::db::TEXT</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00011">TEXTOID</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea346ff32eaa3c09983fb2ec057816d352">sese::db::TIME</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00018">TIMEOID</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00012">TIMESTAMPOID</a>, <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00013">TIMESTAMPTZOID</a>, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbea696b031073e74bf2cb98e5ef201d4aa3">sese::db::UNKNOWN</a> , 以及 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00016">VARCHAROID</a>.</p>
+
+</div>
+</div>
+<a id="a3a189f1b6fbda0a3bc4693f97c21d305" name="a3a189f1b6fbda0a3bc4693f97c21d305"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a189f1b6fbda0a3bc4693f97c21d305">&#9670;&#160;</a></span>getLastError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::db::impl::PostgresPreparedStatementImpl::getLastError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aff8704df5f18c8689877bb96b95a0d0c">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00138">138</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>                                                                         {</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ab2a9d8bf838295a27a5882e1f7149618">error</a>;</div>
+<div class="line"><span class="lineno">  140</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7f9c83590c6b2da00e9d2e4cfd0cbf48" name="a7f9c83590c6b2da00e9d2e4cfd0cbf48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f9c83590c6b2da00e9d2e4cfd0cbf48">&#9670;&#160;</a></span>getLastErrorMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sese::db::impl::PostgresPreparedStatementImpl::getLastErrorMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误信息，需要判空 </p><dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a75a7fed952a3c61fbe612ec30187f357">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00142">142</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  142</span>                                                                                        {</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>) {</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">return</span> PQresultErrorMessage(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a35b363dfdc85417afb407f9482aeb13f">result</a>);</div>
+<div class="line"><span class="lineno">  145</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">return</span> PQerrorMessage(<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a382394903043a8e1d3cb349876858b19">conn</a>);</div>
+<div class="line"><span class="lineno">  147</span>    }</div>
+<div class="line"><span class="lineno">  148</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad04ea18464afd6be5ef2a75c4ade2d0e" name="ad04ea18464afd6be5ef2a75c4ade2d0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad04ea18464afd6be5ef2a75c4ade2d0e">&#9670;&#160;</a></span>setDateTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::PostgresPreparedStatementImpl::setDateTime </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置为 dateTime </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>日期 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a9c9370a35583b2a7133b0e5e6e8b1985">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00092">92</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>                                                                                                            {</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (index - 1 &gt;= <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keyword">const</span> std::string DATE_VALUE = <a class="code hl_function" href="classsese_1_1text_1_1_date_time_formatter.html#a63b44e02ed64b429caa33f07abc8bbd5">text::DateTimeFormatter::format</a>(value, <span class="stringliteral">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</div>
+<div class="line"><span class="lineno">   95</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1] = DATE_VALUE;</div>
+<div class="line"><span class="lineno">   96</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>[index - 1] = this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1].c_str();</div>
+<div class="line"><span class="lineno">   97</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>[index - 1] = <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a1ac4c664545022e308e9d78a040114a9">TIMESTAMPOID</a>;</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   99</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>, <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a> , 以及 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00012">TIMESTAMPOID</a>.</p>
+
+</div>
+</div>
+<a id="a7857ccc290db253673ac29d9763ccf07" name="a7857ccc290db253673ac29d9763ccf07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7857ccc290db253673ac29d9763ccf07">&#9670;&#160;</a></span>setDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::PostgresPreparedStatementImpl::setDouble </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置双精度浮点值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a62f89fa2510371aa3e363b64daeeadf5">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00046">46</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>                                                                                                    {</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">if</span> (index - 1 &gt;= <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   48</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1] = std::to_string(value);</div>
+<div class="line"><span class="lineno">   49</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>[index - 1] = this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1].c_str();</div>
+<div class="line"><span class="lineno">   50</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>[index - 1] = <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a8fa1c5f811247e1b88bc65475218d41c">FLOAT8OID</a>;</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   52</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a> , 以及 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00006">FLOAT8OID</a>.</p>
+
+</div>
+</div>
+<a id="a153952c04977d2d077042ad49badb922" name="a153952c04977d2d077042ad49badb922"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a153952c04977d2d077042ad49badb922">&#9670;&#160;</a></span>setFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::PostgresPreparedStatementImpl::setFloat </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置单精度浮点值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a6bd612984a8076e4672464a5c7662ee2">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00054">54</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>                                                                                                  {</div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">if</span> (index - 1 &gt;= <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   56</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1] = std::to_string(value);</div>
+<div class="line"><span class="lineno">   57</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>[index - 1] = this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1].c_str();</div>
+<div class="line"><span class="lineno">   58</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>[index - 1] = <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a355afc3e7ec3b4bb0860f61371d942b6">FLOAT4OID</a>;</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   60</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a> , 以及 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00007">FLOAT4OID</a>.</p>
+
+</div>
+</div>
+<a id="a3433bea522dabff795487290cebae6af" name="a3433bea522dabff795487290cebae6af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3433bea522dabff795487290cebae6af">&#9670;&#160;</a></span>setInteger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::PostgresPreparedStatementImpl::setInteger </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置整型值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a55317de12df378f61ca63254ffec3e85">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00062">62</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>                                                                                                      {</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">if</span> (index - 1 &gt;= <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   64</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1] = std::to_string(value);</div>
+<div class="line"><span class="lineno">   65</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>[index - 1] = this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1].c_str();</div>
+<div class="line"><span class="lineno">   66</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>[index - 1] = <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#af473c8bca64740230ff280c0de2c5721">INT4OID</a>;</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   68</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a> , 以及 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00009">INT4OID</a>.</p>
+
+</div>
+</div>
+<a id="ac96376f9c76edd42583c2d1b817ebfff" name="ac96376f9c76edd42583c2d1b817ebfff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac96376f9c76edd42583c2d1b817ebfff">&#9670;&#160;</a></span>setLong()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::PostgresPreparedStatementImpl::setLong </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置长整型值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a67af917ce535790231ed63ac9fcb740e">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00070">70</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                                                                   {</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (index - 1 &gt;= <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   72</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1] = std::to_string(value);</div>
+<div class="line"><span class="lineno">   73</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>[index - 1] = this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a774fdd1772622a6ea7e9b07f4642e264">strings</a>[index - 1].c_str();</div>
+<div class="line"><span class="lineno">   74</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>[index - 1] = <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a59b14b0f52e041ced4e021121ed0b31b">INT8OID</a>;</div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   76</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a> , 以及 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00008">INT8OID</a>.</p>
+
+</div>
+</div>
+<a id="a66704b5d3acd04b2971b599b1b016e90" name="a66704b5d3acd04b2971b599b1b016e90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66704b5d3acd04b2971b599b1b016e90">&#9670;&#160;</a></span>setNull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::PostgresPreparedStatementImpl::setNull </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置为 NULL </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a3aacf6508a378e864e31716b4193ad97">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00085">85</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>                                                                             {</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (index - 1 &gt;= <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   87</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>[index - 1] = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   88</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>[index - 1] = 0;</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   90</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+
+</div>
+</div>
+<a id="a0489a668f87a6e7423344f5720089979" name="a0489a668f87a6e7423344f5720089979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0489a668f87a6e7423344f5720089979">&#9670;&#160;</a></span>setText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::db::impl::PostgresPreparedStatementImpl::setText </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置文本值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>实现了 <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a6d44037b048965d377dee894ebc0f58f">sese::db::PreparedStatement</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00078">78</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>                                                                                                {</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">if</span> (index - 1 &gt;= <a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#abd568180d27efbdd69790a2a33e30f68">count</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   80</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0ec2bc8fadc787d7da278c48e0c181ec">paramValues</a>[index - 1] = value;</div>
+<div class="line"><span class="lineno">   81</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad7f4f9265328cb2941211c083f452fac">paramTypes</a>[index - 1] = <a class="code hl_define" href="_postgres_prepared_statement_impl_8cpp.html#a3c945702a9e2e4694e5673db84c2a77d">TEXTOID</a>;</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a> , 以及 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00011">TEXTOID</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a382394903043a8e1d3cb349876858b19" name="a382394903043a8e1d3cb349876858b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a382394903043a8e1d3cb349876858b19">&#9670;&#160;</a></span>conn</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PGconn* sese::db::impl::PostgresPreparedStatementImpl::conn</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00035">35</a> 行定义.</p>
+
+</div>
+</div>
+<a id="abd568180d27efbdd69790a2a33e30f68" name="abd568180d27efbdd69790a2a33e30f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd568180d27efbdd69790a2a33e30f68">&#9670;&#160;</a></span>count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sese::db::impl::PostgresPreparedStatementImpl::count</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00038">38</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab2a9d8bf838295a27a5882e1f7149618" name="ab2a9d8bf838295a27a5882e1f7149618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2a9d8bf838295a27a5882e1f7149618">&#9670;&#160;</a></span>error</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::db::impl::PostgresPreparedStatementImpl::error = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00042">42</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad7f4f9265328cb2941211c083f452fac" name="ad7f4f9265328cb2941211c083f452fac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f4f9265328cb2941211c083f452fac">&#9670;&#160;</a></span>paramTypes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Oid* sese::db::impl::PostgresPreparedStatementImpl::paramTypes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00039">39</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00035">~PostgresPreparedStatementImpl()</a>.</p>
+
+</div>
+</div>
+<a id="a0ec2bc8fadc787d7da278c48e0c181ec" name="a0ec2bc8fadc787d7da278c48e0c181ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ec2bc8fadc787d7da278c48e0c181ec">&#9670;&#160;</a></span>paramValues</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char** sese::db::impl::PostgresPreparedStatementImpl::paramValues</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00040">40</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00035">~PostgresPreparedStatementImpl()</a>.</p>
+
+</div>
+</div>
+<a id="a35b363dfdc85417afb407f9482aeb13f" name="a35b363dfdc85417afb407f9482aeb13f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35b363dfdc85417afb407f9482aeb13f">&#9670;&#160;</a></span>result</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PGresult* sese::db::impl::PostgresPreparedStatementImpl::result</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00043">43</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00035">~PostgresPreparedStatementImpl()</a>.</p>
+
+</div>
+</div>
+<a id="a018a3aef2b1202a8419e884e934f9e22" name="a018a3aef2b1202a8419e884e934f9e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018a3aef2b1202a8419e884e934f9e22">&#9670;&#160;</a></span>stmtName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::db::impl::PostgresPreparedStatementImpl::stmtName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00036">36</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a25e638b469c0e26ed97b3f01e865896f" name="a25e638b469c0e26ed97b3f01e865896f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e638b469c0e26ed97b3f01e865896f">&#9670;&#160;</a></span>stmtString</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::db::impl::PostgresPreparedStatementImpl::stmtString</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00037">37</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a774fdd1772622a6ea7e9b07f4642e264" name="a774fdd1772622a6ea7e9b07f4642e264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a774fdd1772622a6ea7e9b07f4642e264">&#9670;&#160;</a></span>strings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string* sese::db::impl::PostgresPreparedStatementImpl::strings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a> 第 <a class="el" href="_postgres_prepared_statement_impl_8h_source.html#l00041">41</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html#l00035">~PostgresPreparedStatementImpl()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_prepared_statement_impl_8h_source.html">PostgresPreparedStatementImpl.h</a></li>
+<li>sese/internal/db/impl/pgsql/<a class="el" href="_postgres_prepared_statement_impl_8cpp_source.html">PostgresPreparedStatementImpl.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

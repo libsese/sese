@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/plugin/Module.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4972f05527b13dcc5fdc06d976e3346d.html">plugin</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Module.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_module_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_module_8h.html" title="插件模块对象，适配 sese-plugin 相关接口">sese/plugin/Module.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="plugin_2_marco_8h.html" title="模块工具宏">sese/plugin/Marco.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="_module_8cpp.html#ad493dcff569d84e71d52d204f9c2bd52">    4</a></span><span class="keyword">using </span><a class="code hl_typedef" href="_module_8cpp.html#ad493dcff569d84e71d52d204f9c2bd52">getModuleInfoFunc</a> = <a class="code hl_struct" href="structsese_1_1plugin_1_1_module_info.html" title="模块基础信息">sese::plugin::ModuleInfo</a> *();</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="_module_8cpp.html#a56f717cd1ce364b141d87fd06e6e7d4d">    5</a></span><span class="keyword">using </span><a class="code hl_typedef" href="_module_8cpp.html#a56f717cd1ce364b141d87fd06e6e7d4d">getFactoryFunc</a> = <a class="code hl_class" href="classsese_1_1plugin_1_1_class_factory.html" title="类工厂内建实现">sese::plugin::ClassFactory</a> *();</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="_module_8cpp.html#aa384b54e67422af62cc9906f271b5156">    7</a></span><span class="preprocessor">#define STR1(R) #R</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="_module_8cpp.html#a71ba5ba44624917a7c3be36880d14637">    8</a></span><span class="preprocessor">#define STR2(R) STR1(R)</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classsese_1_1plugin_1_1_module.html#ade4890f5fd1edd520cb4d9eb23caf31c">   10</a></span><a class="code hl_typedef" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> <a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#ade4890f5fd1edd520cb4d9eb23caf31c">sese::plugin::Module::open</a>(<span class="keyword">const</span> std::string &amp;path) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">auto</span> obj = LibraryObject::create(path);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordflow">if</span> (!obj) {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">auto</span> get_module_info = (<a class="code hl_typedef" href="_module_8cpp.html#ad493dcff569d84e71d52d204f9c2bd52">getModuleInfoFunc</a> *) obj-&gt;findFunctionByName(<a class="code hl_define" href="_module_8cpp.html#a71ba5ba44624917a7c3be36880d14637">STR2</a>(<a class="code hl_define" href="plugin_2_marco_8h.html#a9e611c9fd9a5288b48c3f81d6b684a6b">GET_MODULE_INFO_FUNC_NAME</a>));</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">auto</span> get_factory = (<a class="code hl_typedef" href="_module_8cpp.html#a56f717cd1ce364b141d87fd06e6e7d4d">getFactoryFunc</a> *) obj-&gt;findFunctionByName(<a class="code hl_define" href="_module_8cpp.html#a71ba5ba44624917a7c3be36880d14637">STR2</a>(<a class="code hl_define" href="plugin_2_marco_8h.html#a0a9f726ae8d56b3e38540e4bb6d15a09">GET_CLASS_FACTORY_FUNC_NAME</a>));</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (!get_module_info || !get_factory) {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">auto</span> info = get_module_info();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">auto</span> factory = get_factory();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// 按照标准，此步不应该出错</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// if (!info || !factory) {</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">//    return nullptr;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">auto</span> m = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1plugin_1_1_module.html" title="插件模块对象">Module</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    m-&gt;object = obj;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    m-&gt;info = info;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    m-&gt;factory = factory;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> std::unique_ptr&lt;Module&gt;(m);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#undef STR2</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#undef STR1</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classsese_1_1plugin_1_1_module.html#a4fac6b3716ecdfe5aa5e1036871cfbb9">   39</a></span><a class="code hl_typedef" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> <a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#a4fac6b3716ecdfe5aa5e1036871cfbb9">sese::plugin::Module::openWithPath</a>(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1system_1_1_path.html" title="UNIX-LIKE 路径转换类">system::Path</a> &amp;path) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#ade4890f5fd1edd520cb4d9eb23caf31c">sese::plugin::Module::open</a>(path.getNativePath());</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classsese_1_1plugin_1_1_module.html#ac59eaf70a35fdecbb0da466e8b4403a7">   43</a></span><a class="code hl_typedef" href="classsese_1_1plugin_1_1_base_class.html#a876321d4cdec391a945e7246c671b791">sese::plugin::BaseClass::Ptr</a> <a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#ac59eaf70a35fdecbb0da466e8b4403a7">sese::plugin::Module::createClassWithId</a>(<span class="keyword">const</span> std::string &amp;<span class="keywordtype">id</span>) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">auto</span> p_factory = (<a class="code hl_class" href="classsese_1_1plugin_1_1_class_factory.html" title="类工厂内建实现">ClassFactory</a> *) this-&gt;factory;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">return</span> p_factory-&gt;createClassWithId(<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classsese_1_1plugin_1_1_module.html#ab8fddd74a398d4ce2d20607455ab69ef">   48</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#ab8fddd74a398d4ce2d20607455ab69ef">sese::plugin::Module::getName</a>() noexcept {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">auto</span> p_info = (<a class="code hl_struct" href="structsese_1_1plugin_1_1_module_info.html" title="模块基础信息">ModuleInfo</a> *) this-&gt;info;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">return</span> p_info-&gt;<a class="code hl_variable" href="structsese_1_1plugin_1_1_module_info.html#a0a9b2dbf1caba495d8a3d7d7c10482bb" title="模块名称">moduleName</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classsese_1_1plugin_1_1_module.html#a389e9c01fcc6c3fed93808cbb0d59856">   53</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#a389e9c01fcc6c3fed93808cbb0d59856">sese::plugin::Module::getVersion</a>() noexcept {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">auto</span> p_info = (<a class="code hl_struct" href="structsese_1_1plugin_1_1_module_info.html" title="模块基础信息">ModuleInfo</a> *) this-&gt;info;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> p_info-&gt;versionString;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classsese_1_1plugin_1_1_module.html#aaaa42a7fe4e90fc7cd3b2a564c615e8b">   58</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#aaaa42a7fe4e90fc7cd3b2a564c615e8b">sese::plugin::Module::getDescription</a>() noexcept {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">auto</span> p_info = (<a class="code hl_struct" href="structsese_1_1plugin_1_1_module_info.html" title="模块基础信息">ModuleInfo</a> *) this-&gt;info;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> p_info-&gt;description;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classsese_1_1plugin_1_1_module.html#af81e95d21825fb5b3bf3ae2ab343eb54">   63</a></span><span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1plugin_1_1_class_factory.html#a0e296ae42d51eb60b1e8c4ed750a940c">sese::plugin::ClassFactory::RegisterInfoMapType</a> &amp;<a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#af81e95d21825fb5b3bf3ae2ab343eb54">sese::plugin::Module::getRegisterClassInfo</a>() noexcept {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">return</span> factory-&gt;getRegisterClassInfo();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+</div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

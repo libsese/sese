@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::concurrent::ObjectPool&lt; T &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1concurrent.html">concurrent</a></li><li class="navelem"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">ObjectPool</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1concurrent_1_1_object_pool-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::concurrent::ObjectPool&lt; T &gt; 模板类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="concurrent_2_object_pool_8h_source.html">ObjectPool.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::concurrent::ObjectPool&lt; T &gt; 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1concurrent_1_1_object_pool.png" usemap="#sese::concurrent::ObjectPool_3C_20T_20_3E_map" alt=""/>
+  <map id="sese::concurrent::ObjectPool_3C_20T_20_3E_map" name="sese::concurrent::ObjectPool_3C_20T_20_3E_map">
+<area href="classsese_1_1_noncopyable.html" title="不可复制类" alt="sese::Noncopyable" shape="rect" coords="303,0,596,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ab6ac278fb69f3e34b26634a7398e0cbf" id="r_ab6ac278fb69f3e34b26634a7398e0cbf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#ab6ac278fb69f3e34b26634a7398e0cbf">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">ObjectPool</a>&lt; T &gt; &gt;</td></tr>
+<tr class="memdesc:ab6ac278fb69f3e34b26634a7398e0cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">对象池智能指针  <br /></td></tr>
+<tr class="separator:ab6ac278fb69f3e34b26634a7398e0cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaafb3da537caf7980c3baef0bcca1d70" id="r_aaafb3da537caf7980c3baef0bcca1d70"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#aaafb3da537caf7980c3baef0bcca1d70">ObjectPtr</a> = std::shared_ptr&lt; T &gt;</td></tr>
+<tr class="memdesc:aaafb3da537caf7980c3baef0bcca1d70"><td class="mdescLeft">&#160;</td><td class="mdescRight">对象池对象智能指针  <br /></td></tr>
+<tr class="separator:aaafb3da537caf7980c3baef0bcca1d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a8f8d75e00d44ff9c4d902d5f3b095732" id="r_a8f8d75e00d44ff9c4d902d5f3b095732"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#a8f8d75e00d44ff9c4d902d5f3b095732">~ObjectPool</a> () override</td></tr>
+<tr class="separator:a8f8d75e00d44ff9c4d902d5f3b095732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10e99ec151c0acdfd1a7dbcf18ebd951" id="r_a10e99ec151c0acdfd1a7dbcf18ebd951"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#aaafb3da537caf7980c3baef0bcca1d70">ObjectPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#a10e99ec151c0acdfd1a7dbcf18ebd951">borrow</a> ()</td></tr>
+<tr class="separator:a10e99ec151c0acdfd1a7dbcf18ebd951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1_noncopyable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1_noncopyable')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1_noncopyable.html">sese::Noncopyable</a></td></tr>
+<tr class="memitem:a9617504ed3c5dd90a447dc77738dc591 inherit pub_methods_classsese_1_1_noncopyable" id="r_a9617504ed3c5dd90a447dc77738dc591"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a9617504ed3c5dd90a447dc77738dc591">Noncopyable</a> ()=default</td></tr>
+<tr class="separator:a9617504ed3c5dd90a447dc77738dc591 inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e87fb882cec8e6e33a080cfe9e8e98 inherit pub_methods_classsese_1_1_noncopyable" id="r_a45e87fb882cec8e6e33a080cfe9e8e98"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a45e87fb882cec8e6e33a080cfe9e8e98">~Noncopyable</a> ()=default</td></tr>
+<tr class="separator:a45e87fb882cec8e6e33a080cfe9e8e98 inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea344687934584a12c4fd9c693ebe40c inherit pub_methods_classsese_1_1_noncopyable" id="r_aea344687934584a12c4fd9c693ebe40c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#aea344687934584a12c4fd9c693ebe40c">Noncopyable</a> (const <a class="el" href="classsese_1_1_noncopyable.html">Noncopyable</a> &amp;)=delete</td></tr>
+<tr class="memdesc:aea344687934584a12c4fd9c693ebe40c inherit pub_methods_classsese_1_1_noncopyable"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除拷贝相关构造函数  <br /></td></tr>
+<tr class="separator:aea344687934584a12c4fd9c693ebe40c inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable" id="r_a6c6e0a037e8da0af53b777f27b6836c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_noncopyable.html">Noncopyable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_noncopyable.html#a6c6e0a037e8da0af53b777f27b6836c3">operator=</a> (const <a class="el" href="classsese_1_1_noncopyable.html">Noncopyable</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除拷贝相关构造函数  <br /></td></tr>
+<tr class="separator:a6c6e0a037e8da0af53b777f27b6836c3 inherit pub_methods_classsese_1_1_noncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a3af3ca55366c40ff9d8a0b8e049bd2d5" id="r_a3af3ca55366c40ff9d8a0b8e049bd2d5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#ab6ac278fb69f3e34b26634a7398e0cbf">Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#a3af3ca55366c40ff9d8a0b8e049bd2d5">create</a> ()</td></tr>
+<tr class="separator:a3af3ca55366c40ff9d8a0b8e049bd2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class sese::concurrent::ObjectPool&lt; T &gt;</div><p>并发对象池 </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>池中对象类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="concurrent_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="concurrent_2_object_pool_8h_source.html#l00021">21</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="aaafb3da537caf7980c3baef0bcca1d70" name="aaafb3da537caf7980c3baef0bcca1d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaafb3da537caf7980c3baef0bcca1d70">&#9670;&#160;</a></span>ObjectPtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">sese::concurrent::ObjectPool</a>&lt; T &gt;::ObjectPtr =  std::shared_ptr&lt;T&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对象池对象智能指针 </p>
+
+<p class="definition">在文件 <a class="el" href="concurrent_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="concurrent_2_object_pool_8h_source.html#l00026">26</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab6ac278fb69f3e34b26634a7398e0cbf" name="ab6ac278fb69f3e34b26634a7398e0cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ac278fb69f3e34b26634a7398e0cbf">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">sese::concurrent::ObjectPool</a>&lt; T &gt;::Ptr =  std::shared_ptr&lt;<a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">ObjectPool</a>&lt;T&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对象池智能指针 </p>
+
+<p class="definition">在文件 <a class="el" href="concurrent_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="concurrent_2_object_pool_8h_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a8f8d75e00d44ff9c4d902d5f3b095732" name="a8f8d75e00d44ff9c4d902d5f3b095732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f8d75e00d44ff9c4d902d5f3b095732">&#9670;&#160;</a></span>~ObjectPool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">sese::concurrent::ObjectPool</a>&lt; T &gt;::~<a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">ObjectPool</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="concurrent_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="concurrent_2_object_pool_8h_source.html#l00028">28</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   28</span>                           {</div>
+<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">while</span> (!queue.<a class="code hl_function" href="classsese_1_1concurrent_1_1_linked_queue.html#a4531f280fd4e3f87d5a594527607ccce">empty</a>()) {</div>
+<div class="line"><span class="lineno">   30</span>            T *p = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   31</span>            <span class="keywordflow">if</span> (queue.<a class="code hl_function" href="classsese_1_1concurrent_1_1_linked_queue.html#a9e70b334fb226f710db7bce9777f45ac">pop</a>(p)) {</div>
+<div class="line"><span class="lineno">   32</span>                <span class="keyword">delete</span> p;</div>
+<div class="line"><span class="lineno">   33</span>            }</div>
+<div class="line"><span class="lineno">   34</span>        }</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_linked_queue_8h_source.html#l00091">sese::concurrent::LinkedQueue&lt; T &gt;::empty()</a> , 以及 <a class="el" href="_linked_queue_8h_source.html#l00067">sese::concurrent::LinkedQueue&lt; T &gt;::pop()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a10e99ec151c0acdfd1a7dbcf18ebd951" name="a10e99ec151c0acdfd1a7dbcf18ebd951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10e99ec151c0acdfd1a7dbcf18ebd951">&#9670;&#160;</a></span>borrow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#aaafb3da537caf7980c3baef0bcca1d70">ObjectPtr</a> <a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">sese::concurrent::ObjectPool</a>&lt; T &gt;::borrow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>从对象池中获取一个可复用对象 </p><dl class="section return"><dt>返回</dt><dd>对象 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="concurrent_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="concurrent_2_object_pool_8h_source.html#l00045">45</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>                       {</div>
+<div class="line"><span class="lineno">   46</span>        T *p = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span> (queue.<a class="code hl_function" href="classsese_1_1concurrent_1_1_linked_queue.html#a9e70b334fb226f710db7bce9777f45ac">pop</a>(p)) {</div>
+<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">return</span> std::shared_ptr&lt;T&gt;(</div>
+<div class="line"><span class="lineno">   49</span>                    p,</div>
+<div class="line"><span class="lineno">   50</span>                    [wk_pool = this-&gt;weak_from_this()](T *t) { ObjectPool&lt;T&gt;::recycleCallback(wk_pool, t); }</div>
+<div class="line"><span class="lineno">   51</span>            );</div>
+<div class="line"><span class="lineno">   52</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   53</span>            p = <span class="keyword">new</span> T;</div>
+<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">return</span> std::shared_ptr&lt;T&gt;(</div>
+<div class="line"><span class="lineno">   55</span>                    p,</div>
+<div class="line"><span class="lineno">   56</span>                    [wk_pool = this-&gt;weak_from_this()](T *t) { ObjectPool&lt;T&gt;::recycleCallback(wk_pool, t); }</div>
+<div class="line"><span class="lineno">   57</span>            );</div>
+<div class="line"><span class="lineno">   58</span>        }</div>
+<div class="line"><span class="lineno">   59</span>    }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_linked_queue_8h_source.html#l00067">sese::concurrent::LinkedQueue&lt; T &gt;::pop()</a>.</p>
+
+</div>
+</div>
+<a id="a3af3ca55366c40ff9d8a0b8e049bd2d5" name="a3af3ca55366c40ff9d8a0b8e049bd2d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3af3ca55366c40ff9d8a0b8e049bd2d5">&#9670;&#160;</a></span>create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classsese_1_1concurrent_1_1_object_pool.html#ab6ac278fb69f3e34b26634a7398e0cbf">Ptr</a> <a class="el" href="classsese_1_1concurrent_1_1_object_pool.html">sese::concurrent::ObjectPool</a>&lt; T &gt;::create </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>在且仅能在堆上创建对象池 </p><dl class="section return"><dt>返回</dt><dd>对象池智能指针 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="concurrent_2_object_pool_8h_source.html">ObjectPool.h</a> 第 <a class="el" href="concurrent_2_object_pool_8h_source.html#l00039">39</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                        {</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">return</span> std::shared_ptr&lt;ObjectPool&lt;T&gt;&gt;(<span class="keyword">new</span> ObjectPool&lt;T&gt;);</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/concurrent/<a class="el" href="concurrent_2_object_pool_8h_source.html">ObjectPool.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

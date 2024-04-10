@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::net::http::QueryString类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html">QueryString</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1net_1_1http_1_1_query_string-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::net::http::QueryString类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>查询字符串  
+ <a href="classsese_1_1net_1_1http_1_1_query_string.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_query_string_8h_source.html">QueryString.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a917d8c6734dd64aa876135985b3fa725" id="r_a917d8c6734dd64aa876135985b3fa725"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a917d8c6734dd64aa876135985b3fa725">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html">QueryString</a> &gt;</td></tr>
+<tr class="separator:a917d8c6734dd64aa876135985b3fa725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:af435841ee596fa22a3299b8271b22c27" id="r_af435841ee596fa22a3299b8271b22c27"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#af435841ee596fa22a3299b8271b22c27">QueryString</a> () noexcept=default</td></tr>
+<tr class="separator:af435841ee596fa22a3299b8271b22c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dede00a6ae2343185cb86b9510ebc47" id="r_a6dede00a6ae2343185cb86b9510ebc47"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a6dede00a6ae2343185cb86b9510ebc47">QueryString</a> (const std::string &amp;query) noexcept</td></tr>
+<tr class="separator:a6dede00a6ae2343185cb86b9510ebc47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39ebf5e1ec3adeaa89442718fcffa42a" id="r_a39ebf5e1ec3adeaa89442718fcffa42a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a39ebf5e1ec3adeaa89442718fcffa42a">toString</a> () noexcept</td></tr>
+<tr class="separator:a39ebf5e1ec3adeaa89442718fcffa42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b60bfe066df42172f5f5040dfb744a0" id="r_a0b60bfe066df42172f5f5040dfb744a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a0b60bfe066df42172f5f5040dfb744a0">set</a> (const std::string &amp;key, const std::string &amp;value) noexcept</td></tr>
+<tr class="separator:a0b60bfe066df42172f5f5040dfb744a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe423934c2ce31fe412802f2e1080b5a" id="r_afe423934c2ce31fe412802f2e1080b5a"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#afe423934c2ce31fe412802f2e1080b5a">get</a> (const std::string &amp;key, const std::string &amp;default_value) noexcept</td></tr>
+<tr class="separator:afe423934c2ce31fe412802f2e1080b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3d6d1cfd8a643f39687f1de01bab63" id="r_a0c3d6d1cfd8a643f39687f1de01bab63"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a0c3d6d1cfd8a643f39687f1de01bab63">size</a> () const noexcept</td></tr>
+<tr class="separator:a0c3d6d1cfd8a643f39687f1de01bab63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49c1e1ed8bcf0703e1ec24cd5d806764" id="r_a49c1e1ed8bcf0703e1ec24cd5d806764"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a49c1e1ed8bcf0703e1ec24cd5d806764">empty</a> () const noexcept</td></tr>
+<tr class="separator:a49c1e1ed8bcf0703e1ec24cd5d806764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99b39387f402e79521488a90417c0af9" id="r_a99b39387f402e79521488a90417c0af9"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a99b39387f402e79521488a90417c0af9">begin</a> () noexcept</td></tr>
+<tr class="separator:a99b39387f402e79521488a90417c0af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f594b652ae43429ae2bf8eb2012aa0" id="r_a74f594b652ae43429ae2bf8eb2012aa0"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a74f594b652ae43429ae2bf8eb2012aa0">end</a> () noexcept</td></tr>
+<tr class="separator:a74f594b652ae43429ae2bf8eb2012aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a5ef6493d19994eb4c878ff6b99989dbd" id="r_a5ef6493d19994eb4c878ff6b99989dbd"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a></td></tr>
+<tr class="separator:a5ef6493d19994eb4c878ff6b99989dbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>查询字符串 </p>
+
+<p class="definition">在文件 <a class="el" href="_query_string_8h_source.html">QueryString.h</a> 第 <a class="el" href="_query_string_8h_source.html#l00022">22</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a917d8c6734dd64aa876135985b3fa725" name="a917d8c6734dd64aa876135985b3fa725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a917d8c6734dd64aa876135985b3fa725">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html#a917d8c6734dd64aa876135985b3fa725">sese::net::http::QueryString::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1net_1_1http_1_1_query_string.html">QueryString</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8h_source.html">QueryString.h</a> 第 <a class="el" href="_query_string_8h_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="af435841ee596fa22a3299b8271b22c27" name="af435841ee596fa22a3299b8271b22c27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af435841ee596fa22a3299b8271b22c27">&#9670;&#160;</a></span>QueryString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::net::http::QueryString::QueryString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6dede00a6ae2343185cb86b9510ebc47" name="a6dede00a6ae2343185cb86b9510ebc47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dede00a6ae2343185cb86b9510ebc47">&#9670;&#160;</a></span>QueryString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QueryString::QueryString </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>query</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8cpp_source.html">QueryString.cpp</a> 第 <a class="el" href="_query_string_8cpp_source.html#l00021">21</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>                                                        {</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> builder;</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>    <span class="comment">// 仅有 &#39;?&#39;</span></div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">if</span> (query.size() == 1) {</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   27</span>    }</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>    std::string key;</div>
+<div class="line"><span class="lineno">   30</span>    std::string value;</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordtype">bool</span> has_key = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">for</span> (<span class="keywordtype">char</span> ch: query) {</div>
+<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;?&#39;</span>) {</div>
+<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   35</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;=&#39;</span>) {</div>
+<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">if</span> (has_key) {</div>
+<div class="line"><span class="lineno">   37</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   38</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   39</span>                has_key = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   40</span>                key = builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString</a>();</div>
+<div class="line"><span class="lineno">   41</span>                builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#ac5022adf90d2c19c2e6056a8f962b0d0">clear</a>();</div>
+<div class="line"><span class="lineno">   42</span>            }</div>
+<div class="line"><span class="lineno">   43</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;&amp;&#39;</span>) {</div>
+<div class="line"><span class="lineno">   44</span>            <span class="keywordflow">if</span> (has_key) {</div>
+<div class="line"><span class="lineno">   45</span>                value = builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString</a>();</div>
+<div class="line"><span class="lineno">   46</span>                builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#ac5022adf90d2c19c2e6056a8f962b0d0">clear</a>();</div>
+<div class="line"><span class="lineno">   47</span>                <span class="keywordflow">if</span> (!value.empty()) {</div>
+<div class="line"><span class="lineno">   48</span>                    <span class="keyword">auto</span> decode_key = <a class="code hl_function" href="classsese_1_1_percent_converter.html#a67efd5c30b4203b3dc92dfef3884310c">PercentConverter::decode</a>(key.c_str());</div>
+<div class="line"><span class="lineno">   49</span>                    <span class="keyword">auto</span> decode_value = <a class="code hl_function" href="classsese_1_1_percent_converter.html#a67efd5c30b4203b3dc92dfef3884310c">PercentConverter::decode</a>(value.c_str());</div>
+<div class="line"><span class="lineno">   50</span>                    <span class="keywordflow">if</span> (!decode_key.empty() &amp;&amp; !decode_value.empty()) {</div>
+<div class="line"><span class="lineno">   51</span>                        <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>[decode_key] = decode_value;</div>
+<div class="line"><span class="lineno">   52</span>                    }</div>
+<div class="line"><span class="lineno">   53</span>                }</div>
+<div class="line"><span class="lineno">   54</span>            }</div>
+<div class="line"><span class="lineno">   55</span>            has_key = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   56</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   57</span>            builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append</a>(ch);</div>
+<div class="line"><span class="lineno">   58</span>        }</div>
+<div class="line"><span class="lineno">   59</span>    }</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">if</span> (has_key &amp;&amp; !builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a900154b0e1f8b8b606d8185030d10832">empty</a>()) {</div>
+<div class="line"><span class="lineno">   61</span>        value = builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString</a>();</div>
+<div class="line"><span class="lineno">   62</span>        <span class="keyword">auto</span> decode_key = <a class="code hl_function" href="classsese_1_1_percent_converter.html#a67efd5c30b4203b3dc92dfef3884310c">PercentConverter::decode</a>(key.c_str());</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keyword">auto</span> decode_value = <a class="code hl_function" href="classsese_1_1_percent_converter.html#a67efd5c30b4203b3dc92dfef3884310c">PercentConverter::decode</a>(value.c_str());</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">if</span> (decode_key.empty() || decode_value.empty()) {</div>
+<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   66</span>        }</div>
+<div class="line"><span class="lineno">   67</span>        <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>[decode_key] = decode_value;</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
+<div class="line"><span class="lineno">   69</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00115">sese::text::AbstractStringBuffer::clear()</a>, <a class="el" href="_abstract_string_buffer_8h_source.html#l00063">sese::text::AbstractStringBuffer::empty()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a99b39387f402e79521488a90417c0af9" name="a99b39387f402e79521488a90417c0af9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99b39387f402e79521488a90417c0af9">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt;::iterator sese::net::http::QueryString::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8h_source.html">QueryString.h</a> 第 <a class="el" href="_query_string_8h_source.html#l00035">35</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>.begin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a49c1e1ed8bcf0703e1ec24cd5d806764" name="a49c1e1ed8bcf0703e1ec24cd5d806764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49c1e1ed8bcf0703e1ec24cd5d806764">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::net::http::QueryString::empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8h_source.html">QueryString.h</a> 第 <a class="el" href="_query_string_8h_source.html#l00034">34</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>.empty(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a74f594b652ae43429ae2bf8eb2012aa0" name="a74f594b652ae43429ae2bf8eb2012aa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74f594b652ae43429ae2bf8eb2012aa0">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt;::iterator sese::net::http::QueryString::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8h_source.html">QueryString.h</a> 第 <a class="el" href="_query_string_8h_source.html#l00036">36</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>.end(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afe423934c2ce31fe412802f2e1080b5a" name="afe423934c2ce31fe412802f2e1080b5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe423934c2ce31fe412802f2e1080b5a">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; QueryString::get </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>default_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8cpp_source.html">QueryString.cpp</a> 第 <a class="el" href="_query_string_8cpp_source.html#l00008">8</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    8</span>                                                                                               {</div>
+<div class="line"><span class="lineno">    9</span>    <span class="keyword">auto</span> iterator = <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>.find(key);</div>
+<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">if</span> (iterator == <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>.end()) {</div>
+<div class="line"><span class="lineno">   11</span>        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><span class="lineno">   12</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   13</span>        <span class="keywordflow">return</span> iterator-&gt;second;</div>
+<div class="line"><span class="lineno">   14</span>    }</div>
+<div class="line"><span class="lineno">   15</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0b60bfe066df42172f5f5040dfb744a0" name="a0b60bfe066df42172f5f5040dfb744a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b60bfe066df42172f5f5040dfb744a0">&#9670;&#160;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QueryString::set </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8cpp_source.html">QueryString.cpp</a> 第 <a class="el" href="_query_string_8cpp_source.html#l00017">17</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>                                                                           {</div>
+<div class="line"><span class="lineno">   18</span>    <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>[key] = value;</div>
+<div class="line"><span class="lineno">   19</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0c3d6d1cfd8a643f39687f1de01bab63" name="a0c3d6d1cfd8a643f39687f1de01bab63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c3d6d1cfd8a643f39687f1de01bab63">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::net::http::QueryString::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8h_source.html">QueryString.h</a> 第 <a class="el" href="_query_string_8h_source.html#l00033">33</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>.size(); }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_query_string_8h_source.html#l00033">size()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_query_string_8h_source.html#l00033">size()</a>.</p>
+
+</div>
+</div>
+<a id="a39ebf5e1ec3adeaa89442718fcffa42a" name="a39ebf5e1ec3adeaa89442718fcffa42a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39ebf5e1ec3adeaa89442718fcffa42a">&#9670;&#160;</a></span>toString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string QueryString::toString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8cpp_source.html">QueryString.cpp</a> 第 <a class="el" href="_query_string_8cpp_source.html#l00071">71</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>                                         {</div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> builder;</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>.empty()) {</div>
+<div class="line"><span class="lineno">   74</span>        builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append</a>(<span class="charliteral">&#39;?&#39;</span>);</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordtype">bool</span> is_first = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;item: <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_query_string.html#a5ef6493d19994eb4c878ff6b99989dbd">keyValueSet</a>) {</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">if</span> (is_first) {</div>
+<div class="line"><span class="lineno">   79</span>                is_first = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   80</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   81</span>                builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append</a>(<span class="charliteral">&#39;&amp;&#39;</span>);</div>
+<div class="line"><span class="lineno">   82</span>            }</div>
+<div class="line"><span class="lineno">   83</span>            builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append</a>(<a class="code hl_function" href="classsese_1_1_percent_converter.html#a7c482aa66ef22298b31104de5891b76e">PercentConverter::encode</a>(item.first.c_str()));</div>
+<div class="line"><span class="lineno">   84</span>            builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append</a>(<span class="charliteral">&#39;=&#39;</span>);</div>
+<div class="line"><span class="lineno">   85</span>            builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a586d28ec0b007d8ada7da2e44b44e52d">append</a>(<a class="code hl_function" href="classsese_1_1_percent_converter.html#a7c482aa66ef22298b31104de5891b76e">PercentConverter::encode</a>(item.second.c_str()));</div>
+<div class="line"><span class="lineno">   86</span>        }</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString</a>();</div>
+<div class="line"><span class="lineno">   89</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00248">sese::text::AbstractStringBuffer::append()</a>, <a class="el" href="_percent_converter_8cpp_source.html#l00038">sese::PercentConverter::encode()</a>, <a class="el" href="_query_string_8h_source.html#l00039">keyValueSet</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a5ef6493d19994eb4c878ff6b99989dbd" name="a5ef6493d19994eb4c878ff6b99989dbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef6493d19994eb4c878ff6b99989dbd">&#9670;&#160;</a></span>keyValueSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::string&gt; sese::net::http::QueryString::keyValueSet</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_query_string_8h_source.html">QueryString.h</a> 第 <a class="el" href="_query_string_8h_source.html#l00039">39</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_query_string_8cpp_source.html#l00071">toString()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/net/http/<a class="el" href="_query_string_8h_source.html">QueryString.h</a></li>
+<li>sese/net/http/<a class="el" href="_query_string_8cpp_source.html">QueryString.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

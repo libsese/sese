@@ -1,0 +1,764 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::event::EpollEventLoop类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1event.html">event</a></li><li class="navelem"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html">EpollEventLoop</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1event_1_1_epoll_event_loop-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::event::EpollEventLoop类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>epoll 事件循环  
+ <a href="classsese_1_1event_1_1_epoll_event_loop.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::event::EpollEventLoop 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1event_1_1_epoll_event_loop.png" usemap="#sese::event::EpollEventLoop_map" alt=""/>
+  <map id="sese::event::EpollEventLoop_map" name="sese::event::EpollEventLoop_map">
+<area href="classsese_1_1event_1_1_base_event_loop.html" title="基础网络事件循环接口" alt="sese::event::BaseEventLoop" shape="rect" coords="0,0,169,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a2f92c67542ca7d524d14252013cee174" id="r_a2f92c67542ca7d524d14252013cee174"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2f92c67542ca7d524d14252013cee174">init</a> () override</td></tr>
+<tr class="separator:a2f92c67542ca7d524d14252013cee174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88fed3ac353a5545f52d6a90b2a732bc" id="r_a88fed3ac353a5545f52d6a90b2a732bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a88fed3ac353a5545f52d6a90b2a732bc">~EpollEventLoop</a> () override</td></tr>
+<tr class="separator:a88fed3ac353a5545f52d6a90b2a732bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f3be34660b6ea8a6cd3697ff996f454" id="r_a7f3be34660b6ea8a6cd3697ff996f454"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a7f3be34660b6ea8a6cd3697ff996f454">dispatch</a> (uint32_t timeout) override</td></tr>
+<tr class="separator:a7f3be34660b6ea8a6cd3697ff996f454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2032e39346a140e336bf2d2593c1f974" id="r_a2032e39346a140e336bf2d2593c1f974"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2032e39346a140e336bf2d2593c1f974">onAccept</a> (int fd) override</td></tr>
+<tr class="separator:a2032e39346a140e336bf2d2593c1f974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abad97ea60c1f02a6aa24411ed147a49e" id="r_abad97ea60c1f02a6aa24411ed147a49e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abad97ea60c1f02a6aa24411ed147a49e">onRead</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event) override</td></tr>
+<tr class="separator:abad97ea60c1f02a6aa24411ed147a49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7710a4650fc365648f90e9ddc025682" id="r_ad7710a4650fc365648f90e9ddc025682"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#ad7710a4650fc365648f90e9ddc025682">onWrite</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event) override</td></tr>
+<tr class="separator:ad7710a4650fc365648f90e9ddc025682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41c3fe62bc9245514152defd7be5d3d6" id="r_a41c3fe62bc9245514152defd7be5d3d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a41c3fe62bc9245514152defd7be5d3d6">onError</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event) override</td></tr>
+<tr class="separator:a41c3fe62bc9245514152defd7be5d3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9a8e0e429bb7e6b52105f4e7819b746" id="r_ab9a8e0e429bb7e6b52105f4e7819b746"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#ab9a8e0e429bb7e6b52105f4e7819b746">onClose</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event) override</td></tr>
+<tr class="separator:ab9a8e0e429bb7e6b52105f4e7819b746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07b16de4443d6a717ba865a846f3c77e" id="r_a07b16de4443d6a717ba865a846f3c77e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">createEvent</a> (int fd, unsigned int events, void *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>) override</td></tr>
+<tr class="separator:a07b16de4443d6a717ba865a846f3c77e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76a53b0bd0316a4b7ac5a8500704b33d" id="r_a76a53b0bd0316a4b7ac5a8500704b33d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a76a53b0bd0316a4b7ac5a8500704b33d">freeEvent</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event) override</td></tr>
+<tr class="separator:a76a53b0bd0316a4b7ac5a8500704b33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a901628b73ee8726e13b152b92a4e2b57" id="r_a901628b73ee8726e13b152b92a4e2b57"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a901628b73ee8726e13b152b92a4e2b57">setEvent</a> (<a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *event) override</td></tr>
+<tr class="separator:a901628b73ee8726e13b152b92a4e2b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf0ad36d87ab5d5ef0e396f1cb207569" id="r_abf0ad36d87ab5d5ef0e396f1cb207569"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#abf0ad36d87ab5d5ef0e396f1cb207569">setListenFd</a> (int fd) override</td></tr>
+<tr class="separator:abf0ad36d87ab5d5ef0e396f1cb207569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1event_1_1_base_event_loop"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1event_1_1_base_event_loop')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html">sese::event::BaseEventLoop</a></td></tr>
+<tr class="memitem:a60614a322dd2715e94dfe0f89eac8eb9 inherit pub_methods_classsese_1_1event_1_1_base_event_loop" id="r_a60614a322dd2715e94dfe0f89eac8eb9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60614a322dd2715e94dfe0f89eac8eb9">~BaseEventLoop</a> ()=default</td></tr>
+<tr class="separator:a60614a322dd2715e94dfe0f89eac8eb9 inherit pub_methods_classsese_1_1event_1_1_base_event_loop"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a32a25be14b07d83b8c2865d41f42bfe3" id="r_a32a25be14b07d83b8c2865d41f42bfe3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a> {-1}</td></tr>
+<tr class="separator:a32a25be14b07d83b8c2865d41f42bfe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a917b1611a0ef533e4cfb17674a7b3d63" id="r_a917b1611a0ef533e4cfb17674a7b3d63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a> {nullptr}</td></tr>
+<tr class="separator:a917b1611a0ef533e4cfb17674a7b3d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c96df135a56e8b8793a51e5ffdde06f" id="r_a7c96df135a56e8b8793a51e5ffdde06f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a> {-1}</td></tr>
+<tr class="separator:a7c96df135a56e8b8793a51e5ffdde06f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ce9ee77ca80f3be8bc52edfb3ee6a45" id="r_a2ce9ee77ca80f3be8bc52edfb3ee6a45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1event_1_1_epoll_event_convert.html">EpollEventConvert</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a></td></tr>
+<tr class="separator:a2ce9ee77ca80f3be8bc52edfb3ee6a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classsese_1_1event_1_1_base_event_loop"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classsese_1_1event_1_1_base_event_loop')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html">sese::event::BaseEventLoop</a></td></tr>
+<tr class="memitem:a4abdb066697382d81267982d8e5961f2 inherit pro_attribs_classsese_1_1event_1_1_base_event_loop" id="r_a4abdb066697382d81267982d8e5961f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2">handleClose</a> = true</td></tr>
+<tr class="memdesc:a4abdb066697382d81267982d8e5961f2 inherit pro_attribs_classsese_1_1event_1_1_base_event_loop"><td class="mdescLeft">&#160;</td><td class="mdescRight">指示当前循环是否处理关闭事件  <br /></td></tr>
+<tr class="separator:a4abdb066697382d81267982d8e5961f2 inherit pro_attribs_classsese_1_1event_1_1_base_event_loop"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>epoll 事件循环 </p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00016">16</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a88fed3ac353a5545f52d6a90b2a732bc" name="a88fed3ac353a5545f52d6a90b2a732bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88fed3ac353a5545f52d6a90b2a732bc">&#9670;&#160;</a></span>~EpollEventLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::event::EpollEventLoop::~EpollEventLoop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00023">23</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>                                         {</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (-1 != <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>) {</div>
+<div class="line"><span class="lineno">   25</span>        <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>);</div>
+<div class="line"><span class="lineno">   26</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a> = -1;</div>
+<div class="line"><span class="lineno">   27</span>    }</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a>) {</div>
+<div class="line"><span class="lineno">   30</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a>;</div>
+<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   32</span>    }</div>
+<div class="line"><span class="lineno">   33</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_archive_reader_8cpp_source.html#l00118">close()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a07b16de4443d6a717ba865a846f3c77e" name="a07b16de4443d6a717ba865a846f3c77e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07b16de4443d6a717ba865a846f3c77e">&#9670;&#160;</a></span>createEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1event_1_1_base_event.html">sese::event::BaseEvent</a> * sese::event::EpollEventLoop::createEvent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#aeb4c42e9e5ce9307b3a6f586bea524a2">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00094">94</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>                                                                                                {</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keyword">auto</span> <span class="keyword">event</span> = <span class="keyword">new</span> EpollEvent;</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keyword">event</span>-&gt;fd = fd;</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keyword">event</span>-&gt;events = events;</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keyword">event</span>-&gt;data = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>    epoll_event epoll_event{};</div>
+<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2" title="指示当前循环是否处理关闭事件">handleClose</a>) {</div>
+<div class="line"><span class="lineno">  102</span>        epoll_event.events = <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a>(events) | EPOLLIN | EPOLLET | EPOLLRDHUP;</div>
+<div class="line"><span class="lineno">  103</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  104</span>        epoll_event.events = <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a>(events) | EPOLLIN | EPOLLET;</div>
+<div class="line"><span class="lineno">  105</span>    }</div>
+<div class="line"><span class="lineno">  106</span>    epoll_event.data.ptr = event;</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">if</span> (-1 == epoll_ctl(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, EPOLL_CTL_ADD, fd, &amp;epoll_event)) {</div>
+<div class="line"><span class="lineno">  108</span>        <span class="keyword">delete</span> event;</div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">return</span> event;</div>
+<div class="line"><span class="lineno">  113</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp_source.html#l00007">convert</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">init()</a>.</p>
+
+</div>
+</div>
+<a id="a7f3be34660b6ea8a6cd3697ff996f454" name="a7f3be34660b6ea8a6cd3697ff996f454"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f3be34660b6ea8a6cd3697ff996f454">&#9670;&#160;</a></span>dispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::event::EpollEventLoop::dispatch </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#acc96fd81d204831200614e2d5a0c0d39">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00035">35</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                       {</div>
+<div class="line"><span class="lineno">   36</span>    epoll_event events[<a class="code hl_define" href="_kqueue_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09">MAX_EVENT_SIZE</a>]{};</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordtype">int</span> number_of_fds = epoll_wait(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, events, <a class="code hl_define" href="_kqueue_event_loop_8cpp.html#a05d5acc365e3342523d84bc4540adc09">MAX_EVENT_SIZE</a>, (<span class="keywordtype">int</span>) timeout);</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (-1 == number_of_fds) {</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; number_of_fds; ++i) {</div>
+<div class="line"><span class="lineno">   44</span>        <span class="keyword">auto</span> <span class="keyword">event</span> = (BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr;</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keyword">auto</span> fd = <span class="keyword">event</span>-&gt;fd;</div>
+<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">if</span> (fd == <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a>) {</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keyword">auto</span> client = accept(fd, <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">if</span> (-1 != client) {</div>
+<div class="line"><span class="lineno">   49</span>                <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#a2032e39346a140e336bf2d2593c1f974">onAccept</a>(client);</div>
+<div class="line"><span class="lineno">   50</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   51</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   52</span>            }</div>
+<div class="line"><span class="lineno">   53</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">if</span> (events[i].events &amp; EPOLLERR) {</div>
+<div class="line"><span class="lineno">   55</span>                <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#a41c3fe62bc9245514152defd7be5d3d6">onError</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
+<div class="line"><span class="lineno">   56</span>            }</div>
+<div class="line"><span class="lineno">   57</span>            <span class="keywordflow">if</span> (events[i].events &amp; EPOLLIN) {</div>
+<div class="line"><span class="lineno">   58</span>                <span class="keywordflow">if</span> (event-&gt;events &amp; <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>) {</div>
+<div class="line"><span class="lineno">   59</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#abad97ea60c1f02a6aa24411ed147a49e">onRead</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
+<div class="line"><span class="lineno">   60</span>                }</div>
+<div class="line"><span class="lineno">   61</span>                <span class="keywordflow">if</span> (events[i].events &amp; EPOLLRDHUP) {</div>
+<div class="line"><span class="lineno">   62</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#ab9a8e0e429bb7e6b52105f4e7819b746">onClose</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
+<div class="line"><span class="lineno">   63</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   64</span>                }</div>
+<div class="line"><span class="lineno">   65</span>            }</div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">if</span> (events[i].events &amp; EPOLLOUT) {</div>
+<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">if</span> (events[i].events &amp; EPOLLRDHUP) {</div>
+<div class="line"><span class="lineno">   68</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#ab9a8e0e429bb7e6b52105f4e7819b746">onClose</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
+<div class="line"><span class="lineno">   69</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   70</span>                }</div>
+<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">if</span> (event-&gt;events &amp; <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>) {</div>
+<div class="line"><span class="lineno">   72</span>                    <a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#ad7710a4650fc365648f90e9ddc025682">onWrite</a>((BaseEvent *) events[i].<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>.ptr);</div>
+<div class="line"><span class="lineno">   73</span>                }</div>
+<div class="line"><span class="lineno">   74</span>            }</div>
+<div class="line"><span class="lineno">   75</span>        }</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="line"><span class="lineno">   77</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a>, <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a> , 以及 <a class="el" href="_kqueue_event_loop_8cpp_source.html#l00009">MAX_EVENT_SIZE</a>.</p>
+
+</div>
+</div>
+<a id="a76a53b0bd0316a4b7ac5a8500704b33d" name="a76a53b0bd0316a4b7ac5a8500704b33d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76a53b0bd0316a4b7ac5a8500704b33d">&#9670;&#160;</a></span>freeEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::event::EpollEventLoop::freeEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ad437b12929edb2660a01fd3fa57e2d93">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00115">115</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>                                                                 {</div>
+<div class="line"><span class="lineno">  116</span>    epoll_ctl(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, EPOLL_CTL_DEL, event-&gt;fd, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keyword">delete</span> event;</div>
+<div class="line"><span class="lineno">  118</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+
+</div>
+</div>
+<a id="a2f92c67542ca7d524d14252013cee174" name="a2f92c67542ca7d524d14252013cee174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f92c67542ca7d524d14252013cee174">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::event::EpollEventLoop::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a377d38f5f4c3386967c7e4a791d5810f">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">12</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>                                   {</div>
+<div class="line"><span class="lineno">   13</span>    <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a> = epoll_create1(0);</div>
+<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">if</span> (-1 == <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">if</span> (0 &gt;= <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   16</span> </div>
+<div class="line"><span class="lineno">   17</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a> = this-&gt;<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_loop.html#a07b16de4443d6a717ba865a846f3c77e">createEvent</a>(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a>, <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a> | <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   18</span>    <span class="comment">// 通常不会失败</span></div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (!this-&gt;<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a917b1611a0ef533e4cfb17674a7b3d63">listenEvent</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   21</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00094">createEvent()</a>, <a class="el" href="_epoll_event_loop_8h_source.html#l00046">epoll</a>, <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a>, <a class="el" href="_epoll_event_loop_8h_source.html#l00044">listenEvent</a> , 以及 <a class="el" href="_epoll_event_loop_8h_source.html#l00043">listenFd</a>.</p>
+
+</div>
+</div>
+<a id="a2032e39346a140e336bf2d2593c1f974" name="a2032e39346a140e336bf2d2593c1f974"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2032e39346a140e336bf2d2593c1f974">&#9670;&#160;</a></span>onAccept()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::event::EpollEventLoop::onAccept </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#add63e0b4d354df6a4e44ec523b7990a4">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00079">79</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>                                             {</div>
+<div class="line"><span class="lineno">   80</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab9a8e0e429bb7e6b52105f4e7819b746" name="ab9a8e0e429bb7e6b52105f4e7819b746"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9a8e0e429bb7e6b52105f4e7819b746">&#9670;&#160;</a></span>onClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::event::EpollEventLoop::onClose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#af024aaaa988ba9e8363eb97fe8fc19f4">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00091">91</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>                                                               {</div>
+<div class="line"><span class="lineno">   92</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a41c3fe62bc9245514152defd7be5d3d6" name="a41c3fe62bc9245514152defd7be5d3d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41c3fe62bc9245514152defd7be5d3d6">&#9670;&#160;</a></span>onError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::event::EpollEventLoop::onError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#ae4015c16ccbbbdb70fc573522d626850">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00088">88</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>                                                      {</div>
+<div class="line"><span class="lineno">   89</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abad97ea60c1f02a6aa24411ed147a49e" name="abad97ea60c1f02a6aa24411ed147a49e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abad97ea60c1f02a6aa24411ed147a49e">&#9670;&#160;</a></span>onRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::event::EpollEventLoop::onRead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a60d8eb8bc4458845aa52598233e64ef4">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00082">82</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>                                                     {</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad7710a4650fc365648f90e9ddc025682" name="ad7710a4650fc365648f90e9ddc025682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7710a4650fc365648f90e9ddc025682">&#9670;&#160;</a></span>onWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::event::EpollEventLoop::onWrite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a01e4f8ce45d64a7eaf01386a594b256c">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00085">85</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>                                                      {</div>
+<div class="line"><span class="lineno">   86</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a901628b73ee8726e13b152b92a4e2b57" name="a901628b73ee8726e13b152b92a4e2b57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a901628b73ee8726e13b152b92a4e2b57">&#9670;&#160;</a></span>setEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::event::EpollEventLoop::setEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a> *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a9948fa27a1d36040ad5b3a54909496eb">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a> 第 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00120">120</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                                {</div>
+<div class="line"><span class="lineno">  121</span>    epoll_event epoll_event{};</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2" title="指示当前循环是否处理关闭事件">handleClose</a>) {</div>
+<div class="line"><span class="lineno">  123</span>        epoll_event.events = <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a>(event-&gt;events) | EPOLLIN | EPOLLET | EPOLLRDHUP;</div>
+<div class="line"><span class="lineno">  124</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  125</span>        epoll_event.events = <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a2ce9ee77ca80f3be8bc52edfb3ee6a45">convert</a>.<a class="code hl_function" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a>(event-&gt;events) | EPOLLIN | EPOLLET;</div>
+<div class="line"><span class="lineno">  126</span>    }</div>
+<div class="line"><span class="lineno">  127</span>    epoll_event.data.ptr = event;</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>    <span class="keyword">auto</span> result = epoll_ctl(<a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a7c96df135a56e8b8793a51e5ffdde06f">epoll</a>, EPOLL_CTL_MOD, event-&gt;fd, &amp;epoll_event);</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> (result == 0 || (result == -1 &amp;&amp; errno == EEXIST));</div>
+<div class="line"><span class="lineno">  131</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_encoding_converter_8cpp_source.html#l00007">convert</a>, <a class="el" href="_base_event_8h_source.html#l00020">sese::event::BaseEvent::events</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00019">sese::event::BaseEvent::fd</a>.</p>
+
+</div>
+</div>
+<a id="abf0ad36d87ab5d5ef0e396f1cb207569" name="abf0ad36d87ab5d5ef0e396f1cb207569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf0ad36d87ab5d5ef0e396f1cb207569">&#9670;&#160;</a></span>setListenFd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::event::EpollEventLoop::setListenFd </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_loop.html#a4caa4a768bb29bd3f394505575f6cb0e">sese::event::BaseEventLoop</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00040">40</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{ <a class="code hl_variable" href="classsese_1_1event_1_1_epoll_event_loop.html#a32a25be14b07d83b8c2865d41f42bfe3">listenFd</a> = fd; }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_epoll_event_loop_8h_source.html#l00043">listenFd</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a2ce9ee77ca80f3be8bc52edfb3ee6a45" name="a2ce9ee77ca80f3be8bc52edfb3ee6a45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ce9ee77ca80f3be8bc52edfb3ee6a45">&#9670;&#160;</a></span>convert</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1event_1_1_epoll_event_convert.html">EpollEventConvert</a> sese::event::EpollEventLoop::convert</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00047">47</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7c96df135a56e8b8793a51e5ffdde06f" name="a7c96df135a56e8b8793a51e5ffdde06f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c96df135a56e8b8793a51e5ffdde06f">&#9670;&#160;</a></span>epoll</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::event::EpollEventLoop::epoll {-1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00046">46</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{-1};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">init()</a>.</p>
+
+</div>
+</div>
+<a id="a917b1611a0ef533e4cfb17674a7b3d63" name="a917b1611a0ef533e4cfb17674a7b3d63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a917b1611a0ef533e4cfb17674a7b3d63">&#9670;&#160;</a></span>listenEvent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsese_1_1event_1_1_base_event.html">BaseEvent</a>* sese::event::EpollEventLoop::listenEvent {nullptr}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00044">44</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>{<span class="keyword">nullptr</span>};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">init()</a>.</p>
+
+</div>
+</div>
+<a id="a32a25be14b07d83b8c2865d41f42bfe3" name="a32a25be14b07d83b8c2865d41f42bfe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32a25be14b07d83b8c2865d41f42bfe3">&#9670;&#160;</a></span>listenFd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::event::EpollEventLoop::listenFd {-1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a> 第 <a class="el" href="_epoll_event_loop_8h_source.html#l00043">43</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>{-1};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_epoll_event_loop_8cpp_source.html#l00012">init()</a> , 以及 <a class="el" href="_epoll_event_loop_8h_source.html#l00040">setListenFd()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/native/linux/event/<a class="el" href="_epoll_event_loop_8h_source.html">EpollEventLoop.h</a></li>
+<li>sese/native/linux/event/<a class="el" href="_epoll_event_loop_8cpp_source.html">EpollEventLoop.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

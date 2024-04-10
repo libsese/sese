@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::db::PreparedStatement类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1db.html">db</a></li><li class="navelem"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html">PreparedStatement</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1db_1_1_prepared_statement-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::db::PreparedStatement类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>预处理语句对象  
+ <a href="classsese_1_1db_1_1_prepared_statement.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_prepared_statement_8h_source.html">PreparedStatement.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::db::PreparedStatement 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1db_1_1_prepared_statement.png" usemap="#sese::db::PreparedStatement_map" alt=""/>
+  <map id="sese::db::PreparedStatement_map" name="sese::db::PreparedStatement_map">
+<area href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html" alt="sese::db::impl::MariaPreparedStatementImpl" shape="rect" coords="0,56,270,80"/>
+<area href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html" alt="sese::db::impl::PostgresPreparedStatementImpl" shape="rect" coords="280,56,550,80"/>
+<area href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html" alt="sese::db::impl::SqlitePreparedStatementImpl" shape="rect" coords="560,56,830,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:aa679cb5888117ad6604066899ac893e0" id="r_aa679cb5888117ad6604066899ac893e0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1db_1_1_prepared_statement.html">PreparedStatement</a> &gt;</td></tr>
+<tr class="separator:aa679cb5888117ad6604066899ac893e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a33a127fdb8b9d6b07c7c046f19fd3935" id="r_a33a127fdb8b9d6b07c7c046f19fd3935"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a33a127fdb8b9d6b07c7c046f19fd3935">~PreparedStatement</a> () noexcept=default</td></tr>
+<tr class="memdesc:a33a127fdb8b9d6b07c7c046f19fd3935"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
+<tr class="separator:a33a127fdb8b9d6b07c7c046f19fd3935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105dd94bf914f6b5a41135c3c469118e" id="r_a105dd94bf914f6b5a41135c3c469118e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a105dd94bf914f6b5a41135c3c469118e">executeQuery</a> () noexcept=0</td></tr>
+<tr class="memdesc:a105dd94bf914f6b5a41135c3c469118e"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行查询  <br /></td></tr>
+<tr class="separator:a105dd94bf914f6b5a41135c3c469118e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9694d9a5743da55015a6581e8ead04dd" id="r_a9694d9a5743da55015a6581e8ead04dd"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a9694d9a5743da55015a6581e8ead04dd">executeUpdate</a> () noexcept=0</td></tr>
+<tr class="memdesc:a9694d9a5743da55015a6581e8ead04dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行更新  <br /></td></tr>
+<tr class="separator:a9694d9a5743da55015a6581e8ead04dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62f89fa2510371aa3e363b64daeeadf5" id="r_a62f89fa2510371aa3e363b64daeeadf5"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a62f89fa2510371aa3e363b64daeeadf5">setDouble</a> (uint32_t index, const double &amp;value) noexcept=0</td></tr>
+<tr class="memdesc:a62f89fa2510371aa3e363b64daeeadf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置双精度浮点值  <br /></td></tr>
+<tr class="separator:a62f89fa2510371aa3e363b64daeeadf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bd612984a8076e4672464a5c7662ee2" id="r_a6bd612984a8076e4672464a5c7662ee2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a6bd612984a8076e4672464a5c7662ee2">setFloat</a> (uint32_t index, const float &amp;value) noexcept=0</td></tr>
+<tr class="memdesc:a6bd612984a8076e4672464a5c7662ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置单精度浮点值  <br /></td></tr>
+<tr class="separator:a6bd612984a8076e4672464a5c7662ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55317de12df378f61ca63254ffec3e85" id="r_a55317de12df378f61ca63254ffec3e85"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a55317de12df378f61ca63254ffec3e85">setInteger</a> (uint32_t index, const int32_t &amp;value) noexcept=0</td></tr>
+<tr class="memdesc:a55317de12df378f61ca63254ffec3e85"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置整型值  <br /></td></tr>
+<tr class="separator:a55317de12df378f61ca63254ffec3e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67af917ce535790231ed63ac9fcb740e" id="r_a67af917ce535790231ed63ac9fcb740e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a67af917ce535790231ed63ac9fcb740e">setLong</a> (uint32_t index, const int64_t &amp;value) noexcept=0</td></tr>
+<tr class="memdesc:a67af917ce535790231ed63ac9fcb740e"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置长整型值  <br /></td></tr>
+<tr class="separator:a67af917ce535790231ed63ac9fcb740e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d44037b048965d377dee894ebc0f58f" id="r_a6d44037b048965d377dee894ebc0f58f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a6d44037b048965d377dee894ebc0f58f">setText</a> (uint32_t index, const char *value) noexcept=0</td></tr>
+<tr class="memdesc:a6d44037b048965d377dee894ebc0f58f"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置文本值  <br /></td></tr>
+<tr class="separator:a6d44037b048965d377dee894ebc0f58f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aacf6508a378e864e31716b4193ad97" id="r_a3aacf6508a378e864e31716b4193ad97"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a3aacf6508a378e864e31716b4193ad97">setNull</a> (uint32_t index) noexcept=0</td></tr>
+<tr class="memdesc:a3aacf6508a378e864e31716b4193ad97"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置为 NULL  <br /></td></tr>
+<tr class="separator:a3aacf6508a378e864e31716b4193ad97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9370a35583b2a7133b0e5e6e8b1985" id="r_a9c9370a35583b2a7133b0e5e6e8b1985"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a9c9370a35583b2a7133b0e5e6e8b1985">setDateTime</a> (uint32_t index, const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;value) noexcept=0</td></tr>
+<tr class="memdesc:a9c9370a35583b2a7133b0e5e6e8b1985"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置为 dateTime  <br /></td></tr>
+<tr class="separator:a9c9370a35583b2a7133b0e5e6e8b1985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f6496e4c85855b83491c67acdb4834" id="r_a01f6496e4c85855b83491c67acdb4834"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a01f6496e4c85855b83491c67acdb4834">getColumnType</a> (uint32_t index, <a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;type) noexcept=0</td></tr>
+<tr class="memdesc:a01f6496e4c85855b83491c67acdb4834"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取结果集列类型  <br /></td></tr>
+<tr class="separator:a01f6496e4c85855b83491c67acdb4834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1883a70b666418e29fdfab12b76b86bb" id="r_a1883a70b666418e29fdfab12b76b86bb"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a1883a70b666418e29fdfab12b76b86bb">getColumnSize</a> (uint32_t index) noexcept=0</td></tr>
+<tr class="memdesc:a1883a70b666418e29fdfab12b76b86bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节  <br /></td></tr>
+<tr class="separator:a1883a70b666418e29fdfab12b76b86bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8704df5f18c8689877bb96b95a0d0c" id="r_aff8704df5f18c8689877bb96b95a0d0c"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aff8704df5f18c8689877bb96b95a0d0c">getLastError</a> () const noexcept=0</td></tr>
+<tr class="separator:aff8704df5f18c8689877bb96b95a0d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75a7fed952a3c61fbe612ec30187f357" id="r_a75a7fed952a3c61fbe612ec30187f357"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1db_1_1_prepared_statement.html#a75a7fed952a3c61fbe612ec30187f357">getLastErrorMessage</a> () const noexcept=0</td></tr>
+<tr class="separator:a75a7fed952a3c61fbe612ec30187f357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>预处理语句对象 </p>
+
+<p class="definition">在文件 <a class="el" href="_prepared_statement_8h_source.html">PreparedStatement.h</a> 第 <a class="el" href="_prepared_statement_8h_source.html#l00015">15</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="aa679cb5888117ad6604066899ac893e0" name="aa679cb5888117ad6604066899ac893e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa679cb5888117ad6604066899ac893e0">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1db_1_1_prepared_statement.html#aa679cb5888117ad6604066899ac893e0">sese::db::PreparedStatement::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1db_1_1_prepared_statement.html">PreparedStatement</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_prepared_statement_8h_source.html">PreparedStatement.h</a> 第 <a class="el" href="_prepared_statement_8h_source.html#l00017">17</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a33a127fdb8b9d6b07c7c046f19fd3935" name="a33a127fdb8b9d6b07c7c046f19fd3935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33a127fdb8b9d6b07c7c046f19fd3935">&#9670;&#160;</a></span>~PreparedStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::db::PreparedStatement::~PreparedStatement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>析构函数 </p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a105dd94bf914f6b5a41135c3c469118e" name="a105dd94bf914f6b5a41135c3c469118e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105dd94bf914f6b5a41135c3c469118e">&#9670;&#160;</a></span>executeQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classsese_1_1db_1_1_result_set.html#aace49ec362b911b274d378a3a2f1c2aa">ResultSet::Ptr</a> sese::db::PreparedStatement::executeQuery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>执行查询 </p>
+<dl class="section return"><dt>返回</dt><dd>查询结果集 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>查询失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a5e751b6cbad34c97a319a9eda1e38a4e">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ae6294323bdc214dbc2ad8bada7abd9b3">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#abd220f1f5900accc809eb6fded73a734">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a9694d9a5743da55015a6581e8ead04dd" name="a9694d9a5743da55015a6581e8ead04dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9694d9a5743da55015a6581e8ead04dd">&#9670;&#160;</a></span>executeUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t sese::db::PreparedStatement::executeUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>执行更新 </p>
+<dl class="section return"><dt>返回</dt><dd>统计更新的行数 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>查询失败 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a5578745185344bee65bfb83ebe30974a">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#af39d642c6bd09d530cb8b37ac8d5bcca">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a506cb42853c52291b599fdb97eaaaeb3">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a1883a70b666418e29fdfab12b76b86bb" name="a1883a70b666418e29fdfab12b76b86bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1883a70b666418e29fdfab12b76b86bb">&#9670;&#160;</a></span>getColumnSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t sese::db::PreparedStatement::getColumnSize </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取结果集列大小，此接口通常只在类型为二进制或字符串时有实际作用，且单位是字节 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>失败返回 -1 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a4ce5f56adf00f0c40b1a954ad613810b">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a4480f06320c027e931dad9d082c79721">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a96e35118f7c3e2a686a24318d7997ec8">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a01f6496e4c85855b83491c67acdb4834" name="a01f6496e4c85855b83491c67acdb4834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f6496e4c85855b83491c67acdb4834">&#9670;&#160;</a></span>getColumnType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::PreparedStatement::getColumnType </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe">MetadataType</a> &amp;&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取结果集列类型 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引值 </td></tr>
+    <tr><td class="paramname">type</td><td>列类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否获取成功 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#aa8ea1cbc8785d8108692f17fefbd9461">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ac2b2db86b033112180ffbc0afcb83cbf">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aa78ce823b71dee85b7e25c4f6955e449">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="aff8704df5f18c8689877bb96b95a0d0c" name="aff8704df5f18c8689877bb96b95a0d0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8704df5f18c8689877bb96b95a0d0c">&#9670;&#160;</a></span>getLastError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int sese::db::PreparedStatement::getLastError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误码 </p><dl class="section return"><dt>返回</dt><dd>错误码 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#ac2650909d6c1c7f3fc8d6bfadbf09bf8">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3a189f1b6fbda0a3bc4693f97c21d305">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a877a6137e73d7368e07c6e86c6da22f8">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a75a7fed952a3c61fbe612ec30187f357" name="a75a7fed952a3c61fbe612ec30187f357"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75a7fed952a3c61fbe612ec30187f357">&#9670;&#160;</a></span>getLastErrorMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const char * sese::db::PreparedStatement::getLastErrorMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取实例对应驱动的错误信息，需要判空 </p><dl class="section return"><dt>返回</dt><dd>错误信息 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a5e4387f8e4808006d6301ec8382f4812">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a7f9c83590c6b2da00e9d2e4cfd0cbf48">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ab7b64869de0f9a5160956ea57cc70977">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a9c9370a35583b2a7133b0e5e6e8b1985" name="a9c9370a35583b2a7133b0e5e6e8b1985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c9370a35583b2a7133b0e5e6e8b1985">&#9670;&#160;</a></span>setDateTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::PreparedStatement::setDateTime </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">sese::DateTime</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置为 dateTime </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>日期 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#aeb1efe404c63af4ee52e723248cd24bb">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ad04ea18464afd6be5ef2a75c4ade2d0e">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a5dd88b5ce4e8f5516cc2db1c9a8c1dcd">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a62f89fa2510371aa3e363b64daeeadf5" name="a62f89fa2510371aa3e363b64daeeadf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62f89fa2510371aa3e363b64daeeadf5">&#9670;&#160;</a></span>setDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::PreparedStatement::setDouble </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置双精度浮点值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#af95fa8bc3c7a43c748b73c0fdd8da607">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a7857ccc290db253673ac29d9763ccf07">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a96f310b45eacbdab13a8018ed0bd2473">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a6bd612984a8076e4672464a5c7662ee2" name="a6bd612984a8076e4672464a5c7662ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bd612984a8076e4672464a5c7662ee2">&#9670;&#160;</a></span>setFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::PreparedStatement::setFloat </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置单精度浮点值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#aa4f3396610f7beb849a92ac156b1c8c2">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a153952c04977d2d077042ad49badb922">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a0b896515d62d327b7e4e9a1a4105b7c7">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a55317de12df378f61ca63254ffec3e85" name="a55317de12df378f61ca63254ffec3e85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55317de12df378f61ca63254ffec3e85">&#9670;&#160;</a></span>setInteger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::PreparedStatement::setInteger </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置整型值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a6d9b9630d47a69339b1afeb86836a8bc">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a3433bea522dabff795487290cebae6af">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a44e992bf21d0aea4f1ba63b61d3e6147">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a67af917ce535790231ed63ac9fcb740e" name="a67af917ce535790231ed63ac9fcb740e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67af917ce535790231ed63ac9fcb740e">&#9670;&#160;</a></span>setLong()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::PreparedStatement::setLong </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置长整型值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#a36877be19dba1c3f84b56b13b6f47594">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#ac96376f9c76edd42583c2d1b817ebfff">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#aecfa52f2db218a691b022f0227e62f96">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a3aacf6508a378e864e31716b4193ad97" name="a3aacf6508a378e864e31716b4193ad97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aacf6508a378e864e31716b4193ad97">&#9670;&#160;</a></span>setNull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::PreparedStatement::setNull </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置为 NULL </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#ad24b8769b0cddccda50c3d78885bdcf3">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a66704b5d3acd04b2971b599b1b016e90">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#ab3e20d1486565fa4455a0edd2b30f76d">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a6d44037b048965d377dee894ebc0f58f" name="a6d44037b048965d377dee894ebc0f58f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d44037b048965d377dee894ebc0f58f">&#9670;&#160;</a></span>setText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool sese::db::PreparedStatement::setText </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置文本值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>索引 </td></tr>
+    <tr><td class="paramname">value</td><td>值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否设置成功 </dd></dl>
+
+<p>在 <a class="el" href="classsese_1_1db_1_1impl_1_1_maria_prepared_statement_impl.html#ae9945ecaf61a9612c919c73493bcfb93">sese::db::impl::MariaPreparedStatementImpl</a>, <a class="el" href="classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html#a0489a668f87a6e7423344f5720089979">sese::db::impl::PostgresPreparedStatementImpl</a> , 以及 <a class="el" href="classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html#a0fb2e549730359c0285d2fe12ff53a15">sese::db::impl::SqlitePreparedStatementImpl</a> 内被实现.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/db/<a class="el" href="_prepared_statement_8h_source.html">PreparedStatement.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

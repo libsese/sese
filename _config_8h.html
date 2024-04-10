@@ -1,0 +1,1011 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/Config.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">Config.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>通用配置文件  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;cassert&gt;</code><br />
+<code>#include &lt;cinttypes&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;<a class="el" href="_memory_8h_source.html">sese/util/Memory.h</a>&gt;</code><br />
+</div>
+<p><a href="_config_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a44687c95fe4c1780e8565f66e363333d" id="r_a44687c95fe4c1780e8565f66e363333d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a44687c95fe4c1780e8565f66e363333d">SESE_MARCO_END</a></td></tr>
+<tr class="separator:a44687c95fe4c1780e8565f66e363333d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab27c127789db87432e7599922a923a43" id="r_ab27c127789db87432e7599922a923a43"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#ab27c127789db87432e7599922a923a43">SESE_STD_WRAPPER</a>(name,  member)&#160;&#160;&#160;    [[nodiscard]] auto name() const { return member.name(); }</td></tr>
+<tr class="separator:ab27c127789db87432e7599922a923a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a898d83d1482652c4ca1ec065b99530bc" id="r_a898d83d1482652c4ca1ec065b99530bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a898d83d1482652c4ca1ec065b99530bc">SESE_DEPRECATED</a>&#160;&#160;&#160;[[deprecated]]</td></tr>
+<tr class="separator:a898d83d1482652c4ca1ec065b99530bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fd5c825cc88add91412ac8478347028" id="r_a3fd5c825cc88add91412ac8478347028"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a3fd5c825cc88add91412ac8478347028">SESE_DEPRECATED_WITH</a>(x)&#160;&#160;&#160;[[deprecated(x)]]</td></tr>
+<tr class="separator:a3fd5c825cc88add91412ac8478347028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:acd688e6011699d40edbaf750db54e486" id="r_acd688e6011699d40edbaf750db54e486"><td class="memItemLeft" align="right" valign="top">static constexpr int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a> = 8</td></tr>
+<tr class="memdesc:acd688e6011699d40edbaf750db54e486"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认时区  <br /></td></tr>
+<tr class="separator:acd688e6011699d40edbaf750db54e486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dc10f54768fb0ad0aa23e7984ccecee" id="r_a8dc10f54768fb0ad0aa23e7984ccecee"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a8dc10f54768fb0ad0aa23e7984ccecee">TIME_DEFAULT_PATTERN</a> = &quot;UTCz yyyy-MM-dd HH:mm:ss.ff&quot;</td></tr>
+<tr class="memdesc:a8dc10f54768fb0ad0aa23e7984ccecee"><td class="mdescLeft">&#160;</td><td class="mdescRight">世界协调时匹配格式  <br /></td></tr>
+<tr class="separator:a8dc10f54768fb0ad0aa23e7984ccecee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a359537d4f46f2734aafef400b273e6f9" id="r_a359537d4f46f2734aafef400b273e6f9"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a359537d4f46f2734aafef400b273e6f9">TIME_GREENWICH_MEAN_PATTERN</a> = &quot;ddd, dd MMM yyyy HH:mm:ss %G%M%T&quot;</td></tr>
+<tr class="memdesc:a359537d4f46f2734aafef400b273e6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">格林威治时间匹配格式  <br /></td></tr>
+<tr class="separator:a359537d4f46f2734aafef400b273e6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8af0f60d6ae6bf12d7a4d09a013c8114" id="r_a8af0f60d6ae6bf12d7a4d09a013c8114"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a> = &quot;yyyy-MM-dd%THH:mm:ss.ff%Z&quot;</td></tr>
+<tr class="memdesc:a8af0f60d6ae6bf12d7a4d09a013c8114"><td class="mdescLeft">&#160;</td><td class="mdescRight">短格式  <br /></td></tr>
+<tr class="separator:a8af0f60d6ae6bf12d7a4d09a013c8114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05f575f830ec2bc1f0d939cbb999ec7a" id="r_a05f575f830ec2bc1f0d939cbb999ec7a"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a05f575f830ec2bc1f0d939cbb999ec7a">STRING_BUFFER_SIZE_FACTOR</a> = 1024</td></tr>
+<tr class="memdesc:a05f575f830ec2bc1f0d939cbb999ec7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">String Buffer 单元因子  <br /></td></tr>
+<tr class="separator:a05f575f830ec2bc1f0d939cbb999ec7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a458adb17a4c034322d679335e6e92b42" id="r_a458adb17a4c034322d679335e6e92b42"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a458adb17a4c034322d679335e6e92b42">SPACE_CHARS</a> = &quot; \n\r\t\v\b&quot;</td></tr>
+<tr class="memdesc:a458adb17a4c034322d679335e6e92b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">空格字符  <br /></td></tr>
+<tr class="separator:a458adb17a4c034322d679335e6e92b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab089f2f84905b37270a010c9a4db19f8" id="r_ab089f2f84905b37270a010c9a4db19f8"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#ab089f2f84905b37270a010c9a4db19f8">THREAD_DEFAULT_NAME</a> = &quot;UNKNOWN&quot;</td></tr>
+<tr class="memdesc:ab089f2f84905b37270a010c9a4db19f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认线程名称  <br /></td></tr>
+<tr class="separator:ab089f2f84905b37270a010c9a4db19f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92eb13d59bd6439d544fc9cfebd46f16" id="r_a92eb13d59bd6439d544fc9cfebd46f16"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a92eb13d59bd6439d544fc9cfebd46f16">THREAD_MAIN_NAME</a> = &quot;Main&quot;</td></tr>
+<tr class="memdesc:a92eb13d59bd6439d544fc9cfebd46f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">主线程名称  <br /></td></tr>
+<tr class="separator:a92eb13d59bd6439d544fc9cfebd46f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f70689da1c5396f60685d951094b54a" id="r_a7f70689da1c5396f60685d951094b54a"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a7f70689da1c5396f60685d951094b54a">RECORD_OUTPUT_BUFFER</a> = 4096</td></tr>
+<tr class="memdesc:a7f70689da1c5396f60685d951094b54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">日志输出缓存区大小  <br /></td></tr>
+<tr class="separator:a7f70689da1c5396f60685d951094b54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a918196882543718e47e34dc36505a3c8" id="r_a918196882543718e47e34dc36505a3c8"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a918196882543718e47e34dc36505a3c8">RECORD_DEFAULT_TIME_PATTERN</a> = <a class="el" href="_config_8h.html#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a></td></tr>
+<tr class="memdesc:a918196882543718e47e34dc36505a3c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">日志格式化器时间匹配格式  <br /></td></tr>
+<tr class="separator:a918196882543718e47e34dc36505a3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18e8810da29cad8d58e6e2a29225ff91" id="r_a18e8810da29cad8d58e6e2a29225ff91"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a18e8810da29cad8d58e6e2a29225ff91">RECORD_DEFAULT_TEXT_PATTERN</a> = &quot;c lv fn:li tn:th&gt; m\n&quot;</td></tr>
+<tr class="memdesc:a18e8810da29cad8d58e6e2a29225ff91"><td class="mdescLeft">&#160;</td><td class="mdescRight">日志格式化器匹配格式  <br /></td></tr>
+<tr class="separator:a18e8810da29cad8d58e6e2a29225ff91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1047874c1ad993ee6286a6ab9bad583" id="r_ae1047874c1ad993ee6286a6ab9bad583"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#ae1047874c1ad993ee6286a6ab9bad583">RECORD_DEFAULT_FILE_TIME_PATTERN</a> = &quot;yyyyMMdd HHmmssff&quot;</td></tr>
+<tr class="memdesc:ae1047874c1ad993ee6286a6ab9bad583"><td class="mdescLeft">&#160;</td><td class="mdescRight">日志输出文件名称匹配模式  <br /></td></tr>
+<tr class="separator:ae1047874c1ad993ee6286a6ab9bad583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4757270b8b743210ed490b8646c8d025" id="r_a4757270b8b743210ed490b8646c8d025"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a4757270b8b743210ed490b8646c8d025">RECORD_BUFFER_SIZE</a> = 4096</td></tr>
+<tr class="memdesc:a4757270b8b743210ed490b8646c8d025"><td class="mdescLeft">&#160;</td><td class="mdescRight">异步日志器缓冲区大小  <br /></td></tr>
+<tr class="separator:a4757270b8b743210ed490b8646c8d025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e27115f7638a8221d9300bd6f762fd" id="r_a00e27115f7638a8221d9300bd6f762fd"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a00e27115f7638a8221d9300bd6f762fd">STREAM_BYTE_STREAM_SIZE_FACTOR</a> = 1024</td></tr>
+<tr class="memdesc:a00e27115f7638a8221d9300bd6f762fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">字节流缓冲区单元因子  <br /></td></tr>
+<tr class="separator:a00e27115f7638a8221d9300bd6f762fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e9dea44c42475ce9d847e1fcac4cddf" id="r_a5e9dea44c42475ce9d847e1fcac4cddf"><td class="memItemLeft" align="right" valign="top">static constexpr const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a5e9dea44c42475ce9d847e1fcac4cddf">ENABLE_TEST</a> = false</td></tr>
+<tr class="memdesc:a5e9dea44c42475ce9d847e1fcac4cddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否启用调试模式  <br /></td></tr>
+<tr class="separator:a5e9dea44c42475ce9d847e1fcac4cddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5676ba0cac858717abddf92469c9957d" id="r_a5676ba0cac858717abddf92469c9957d"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a5676ba0cac858717abddf92469c9957d">TIMER_WHEEL_NUMBER</a> = 30</td></tr>
+<tr class="memdesc:a5676ba0cac858717abddf92469c9957d"><td class="mdescLeft">&#160;</td><td class="mdescRight">定时器时间轮轮片数  <br /></td></tr>
+<tr class="separator:a5676ba0cac858717abddf92469c9957d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a711baad0c32ce7fc4beb93e86580f721" id="r_a711baad0c32ce7fc4beb93e86580f721"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a711baad0c32ce7fc4beb93e86580f721">SERVER_DEFAULT_THREADS</a> = 4</td></tr>
+<tr class="memdesc:a711baad0c32ce7fc4beb93e86580f721"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP Server 默认线程池大小  <br /></td></tr>
+<tr class="separator:a711baad0c32ce7fc4beb93e86580f721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dab90695f53fd20709914c95981fe7f" id="r_a0dab90695f53fd20709914c95981fe7f"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a0dab90695f53fd20709914c95981fe7f">SERVER_MAX_CONNECTION</a> = 511</td></tr>
+<tr class="memdesc:a0dab90695f53fd20709914c95981fe7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP Server 默认监听队列大小  <br /></td></tr>
+<tr class="separator:a0dab90695f53fd20709914c95981fe7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5f2d1010a4283024e9c58103b6e4209" id="r_ae5f2d1010a4283024e9c58103b6e4209"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#ae5f2d1010a4283024e9c58103b6e4209">SERVER_KEEP_ALIVE_DURATION</a> = 10</td></tr>
+<tr class="memdesc:ae5f2d1010a4283024e9c58103b6e4209"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP Server Keep-Alive 时长  <br /></td></tr>
+<tr class="separator:ae5f2d1010a4283024e9c58103b6e4209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb069b4712a6d4d598327237dbccad90" id="r_abb069b4712a6d4d598327237dbccad90"><td class="memItemLeft" align="right" valign="top">static constexpr const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#abb069b4712a6d4d598327237dbccad90">HTTP_MAX_SINGLE_LINE</a> = 1023</td></tr>
+<tr class="memdesc:abb069b4712a6d4d598327237dbccad90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http Util 单行最大大小  <br /></td></tr>
+<tr class="separator:abb069b4712a6d4d598327237dbccad90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e21d82d505114db680929151bbcd4b5" id="r_a0e21d82d505114db680929151bbcd4b5"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a0e21d82d505114db680929151bbcd4b5">HTTPD_NAME</a> = &quot;sese::service::HttpServer&quot;</td></tr>
+<tr class="memdesc:a0e21d82d505114db680929151bbcd4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http Server 名称  <br /></td></tr>
+<tr class="separator:a0e21d82d505114db680929151bbcd4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb8c55611777ef0e29d5baef2008408e" id="r_afb8c55611777ef0e29d5baef2008408e"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#afb8c55611777ef0e29d5baef2008408e">HTTPD_BOUNDARY</a> = &quot;000000SESE0BOUNDARY000000&quot;</td></tr>
+<tr class="memdesc:afb8c55611777ef0e29d5baef2008408e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http 多段请求 boundary  <br /></td></tr>
+<tr class="separator:afb8c55611777ef0e29d5baef2008408e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d41e75e57d426eef7c0ec3e29f238d0" id="r_a5d41e75e57d426eef7c0ec3e29f238d0"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a5d41e75e57d426eef7c0ec3e29f238d0">HTTP_CLIENT_NAME</a> = &quot;sese::net::http::HttpClient&quot;</td></tr>
+<tr class="memdesc:a5d41e75e57d426eef7c0ec3e29f238d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Http Client 名称  <br /></td></tr>
+<tr class="separator:a5d41e75e57d426eef7c0ec3e29f238d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b97793edafc2646f38746198ef65c0" id="r_a52b97793edafc2646f38746198ef65c0"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a52b97793edafc2646f38746198ef65c0">ZLIB_CHUNK_SIZE</a> = 1024 * 16</td></tr>
+<tr class="memdesc:a52b97793edafc2646f38746198ef65c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compressor Chunk 默认大小  <br /></td></tr>
+<tr class="separator:a52b97793edafc2646f38746198ef65c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cf8067721b6ba44fb6636944db3ca41" id="r_a4cf8067721b6ba44fb6636944db3ca41"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#a4cf8067721b6ba44fb6636944db3ca41">IOCP_WSABUF_SIZE</a> = 65535</td></tr>
+<tr class="memdesc:a4cf8067721b6ba44fb6636944db3ca41"><td class="mdescLeft">&#160;</td><td class="mdescRight">IOCP 投递的 Recv 事件时携带的 WSABUF 大小  <br /></td></tr>
+<tr class="separator:a4cf8067721b6ba44fb6636944db3ca41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbaebe720282dc95c47f1b50c906f48f" id="r_abbaebe720282dc95c47f1b50c906f48f"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f">MTU_VALUE</a> = 1472</td></tr>
+<tr class="memdesc:abbaebe720282dc95c47f1b50c906f48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">框架默认 MTU 值  <br /></td></tr>
+<tr class="separator:abbaebe720282dc95c47f1b50c906f48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adef322795de1e9ca964d542350bb1167" id="r_adef322795de1e9ca964d542350bb1167"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_config_8h.html#adef322795de1e9ca964d542350bb1167">DNS_PACKAGE_SIZE</a> = 512</td></tr>
+<tr class="memdesc:adef322795de1e9ca964d542350bb1167"><td class="mdescLeft">&#160;</td><td class="mdescRight">框架 DNS 数据包大小  <br /></td></tr>
+<tr class="separator:adef322795de1e9ca964d542350bb1167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>通用配置文件 </p>
+<dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022年3月28日 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 中定义.</p>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="a898d83d1482652c4ca1ec065b99530bc" name="a898d83d1482652c4ca1ec065b99530bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a898d83d1482652c4ca1ec065b99530bc">&#9670;&#160;</a></span>SESE_DEPRECATED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_DEPRECATED&#160;&#160;&#160;[[deprecated]]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3fd5c825cc88add91412ac8478347028" name="a3fd5c825cc88add91412ac8478347028"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fd5c825cc88add91412ac8478347028">&#9670;&#160;</a></span>SESE_DEPRECATED_WITH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_DEPRECATED_WITH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;[[deprecated(x)]]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00044">44</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a44687c95fe4c1780e8565f66e363333d" name="a44687c95fe4c1780e8565f66e363333d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44687c95fe4c1780e8565f66e363333d">&#9670;&#160;</a></span>SESE_MARCO_END</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_MARCO_END</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <span class="keywordflow">switch</span> (0)         \</div>
+<div class="line">    <span class="keywordflow">case</span> 0:            \</div>
+<div class="line">    <span class="keywordflow">default</span>:           \</div>
+<div class="line">        <span class="keywordflow">break</span></div>
+</div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00030">30</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>          :            \</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">default</span>:           \</div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">break</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab27c127789db87432e7599922a923a43" name="ab27c127789db87432e7599922a923a43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab27c127789db87432e7599922a923a43">&#9670;&#160;</a></span>SESE_STD_WRAPPER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SESE_STD_WRAPPER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    [[nodiscard]] auto name() const { return member.name(); }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00036">36</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>                                    { <span class="keywordflow">return</span> member.name(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="adef322795de1e9ca964d542350bb1167" name="adef322795de1e9ca964d542350bb1167"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adef322795de1e9ca964d542350bb1167">&#9670;&#160;</a></span>DNS_PACKAGE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t DNS_PACKAGE_SIZE = 512</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>框架 DNS 数据包大小 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00132">132</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_dns_util_8cpp_source.html#l00151">sese::net::dns::DnsUtil::decodeDomain()</a> , 以及 <a class="el" href="_dns_client_8cpp_source.html#l00014">sese::net::dns::DnsClient::resolveCustom()</a>.</p>
+
+</div>
+</div>
+<a id="a5e9dea44c42475ce9d847e1fcac4cddf" name="a5e9dea44c42475ce9d847e1fcac4cddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e9dea44c42475ce9d847e1fcac4cddf">&#9670;&#160;</a></span>ENABLE_TEST</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const bool ENABLE_TEST = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>是否启用调试模式 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00101">101</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5d41e75e57d426eef7c0ec3e29f238d0" name="a5d41e75e57d426eef7c0ec3e29f238d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d41e75e57d426eef7c0ec3e29f238d0">&#9670;&#160;</a></span>HTTP_CLIENT_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* HTTP_CLIENT_NAME = &quot;sese::net::http::HttpClient&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Http Client 名称 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00121">121</a> 行定义.</p>
+
+</div>
+</div>
+<a id="abb069b4712a6d4d598327237dbccad90" name="abb069b4712a6d4d598327237dbccad90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb069b4712a6d4d598327237dbccad90">&#9670;&#160;</a></span>HTTP_MAX_SINGLE_LINE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t HTTP_MAX_SINGLE_LINE = 1023</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Http Util 单行最大大小 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00115">115</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afb8c55611777ef0e29d5baef2008408e" name="afb8c55611777ef0e29d5baef2008408e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb8c55611777ef0e29d5baef2008408e">&#9670;&#160;</a></span>HTTPD_BOUNDARY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* HTTPD_BOUNDARY = &quot;000000SESE0BOUNDARY000000&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Http 多段请求 boundary </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00119">119</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0e21d82d505114db680929151bbcd4b5" name="a0e21d82d505114db680929151bbcd4b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e21d82d505114db680929151bbcd4b5">&#9670;&#160;</a></span>HTTPD_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* HTTPD_NAME = &quot;sese::service::HttpServer&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Http Server 名称 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00117">117</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4cf8067721b6ba44fb6636944db3ca41" name="a4cf8067721b6ba44fb6636944db3ca41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cf8067721b6ba44fb6636944db3ca41">&#9670;&#160;</a></span>IOCP_WSABUF_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t IOCP_WSABUF_SIZE = 65535</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>IOCP 投递的 Recv 事件时携带的 WSABUF 大小 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00127">127</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00338">sese::_windows::iocp::v1::NativeIOCPServer::eventThreadProc()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00012">sese::_windows::iocp::v1::NativeContext::NativeContext()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00161">sese::_windows::iocp::v1::NativeIOCPServer::postRead()</a> , 以及 <a class="el" href="_native_i_o_c_p_server___v1_8cpp_source.html#l00182">sese::_windows::iocp::v1::NativeIOCPServer::postWrite()</a>.</p>
+
+</div>
+</div>
+<a id="abbaebe720282dc95c47f1b50c906f48f" name="abbaebe720282dc95c47f1b50c906f48f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbaebe720282dc95c47f1b50c906f48f">&#9670;&#160;</a></span>MTU_VALUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t MTU_VALUE = 1472</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>框架默认 MTU 值 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00130">130</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00162">sese::iocp::v1::IOCPService::onRead()</a>, <a class="el" href="_tcp_transporter_8cpp_source.html#l00091">sese::service::TcpTransporter::onRead()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00185">sese::iocp::v1::IOCPService::onWrite()</a> , 以及 <a class="el" href="_tcp_transporter_8cpp_source.html#l00126">sese::service::TcpTransporter::onWrite()</a>.</p>
+
+</div>
+</div>
+<a id="a4757270b8b743210ed490b8646c8d025" name="a4757270b8b743210ed490b8646c8d025"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4757270b8b743210ed490b8646c8d025">&#9670;&#160;</a></span>RECORD_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t RECORD_BUFFER_SIZE = 4096</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>异步日志器缓冲区大小 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00092">92</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00010">sese::record::AsyncLogger::AsyncLogger()</a>, <a class="el" href="_async_logger_8cpp_source.html#l00048">sese::record::AsyncLogger::dump()</a>, <a class="el" href="_async_logger_8cpp_source.html#l00027">sese::record::AsyncLogger::log()</a> , 以及 <a class="el" href="_async_logger_8cpp_source.html#l00069">sese::record::AsyncLogger::loop()</a>.</p>
+
+</div>
+</div>
+<a id="ae1047874c1ad993ee6286a6ab9bad583" name="ae1047874c1ad993ee6286a6ab9bad583"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1047874c1ad993ee6286a6ab9bad583">&#9670;&#160;</a></span>RECORD_DEFAULT_FILE_TIME_PATTERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* RECORD_DEFAULT_FILE_TIME_PATTERN = &quot;yyyyMMdd HHmmssff&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>日志输出文件名称匹配模式 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00090">90</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_block_appender_8cpp_source.html#l00010">getDateTimeString()</a>.</p>
+
+</div>
+</div>
+<a id="a18e8810da29cad8d58e6e2a29225ff91" name="a18e8810da29cad8d58e6e2a29225ff91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18e8810da29cad8d58e6e2a29225ff91">&#9670;&#160;</a></span>RECORD_DEFAULT_TEXT_PATTERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* RECORD_DEFAULT_TEXT_PATTERN = &quot;c lv fn:li tn:th&gt; m\n&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>日志格式化器匹配格式 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00085">85</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a918196882543718e47e34dc36505a3c8" name="a918196882543718e47e34dc36505a3c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a918196882543718e47e34dc36505a3c8">&#9670;&#160;</a></span>RECORD_DEFAULT_TIME_PATTERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* RECORD_DEFAULT_TIME_PATTERN = <a class="el" href="_config_8h.html#a8af0f60d6ae6bf12d7a4d09a013c8114">TIME_SHORT_PATTERN</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>日志格式化器时间匹配格式 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00079">79</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7f70689da1c5396f60685d951094b54a" name="a7f70689da1c5396f60685d951094b54a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f70689da1c5396f60685d951094b54a">&#9670;&#160;</a></span>RECORD_OUTPUT_BUFFER</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t RECORD_OUTPUT_BUFFER = 4096</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>日志输出缓存区大小 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00076">76</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a711baad0c32ce7fc4beb93e86580f721" name="a711baad0c32ce7fc4beb93e86580f721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a711baad0c32ce7fc4beb93e86580f721">&#9670;&#160;</a></span>SERVER_DEFAULT_THREADS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t SERVER_DEFAULT_THREADS = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>TCP Server 默认线程池大小 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00108">108</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae5f2d1010a4283024e9c58103b6e4209" name="ae5f2d1010a4283024e9c58103b6e4209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5f2d1010a4283024e9c58103b6e4209">&#9670;&#160;</a></span>SERVER_KEEP_ALIVE_DURATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t SERVER_KEEP_ALIVE_DURATION = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>TCP Server Keep-Alive 时长 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00112">112</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0dab90695f53fd20709914c95981fe7f" name="a0dab90695f53fd20709914c95981fe7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dab90695f53fd20709914c95981fe7f">&#9670;&#160;</a></span>SERVER_MAX_CONNECTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t SERVER_MAX_CONNECTION = 511</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>TCP Server 默认监听队列大小 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00110">110</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a458adb17a4c034322d679335e6e92b42" name="a458adb17a4c034322d679335e6e92b42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a458adb17a4c034322d679335e6e92b42">&#9670;&#160;</a></span>SPACE_CHARS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* SPACE_CHARS = &quot; \n\r\t\v\b&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>空格字符 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00068">68</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="util_2_util_8cpp_source.html#l00009">sese::isSpace()</a>.</p>
+
+</div>
+</div>
+<a id="a00e27115f7638a8221d9300bd6f762fd" name="a00e27115f7638a8221d9300bd6f762fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00e27115f7638a8221d9300bd6f762fd">&#9670;&#160;</a></span>STREAM_BYTE_STREAM_SIZE_FACTOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t STREAM_BYTE_STREAM_SIZE_FACTOR = 1024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>字节流缓冲区单元因子 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00095">95</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a05f575f830ec2bc1f0d939cbb999ec7a" name="a05f575f830ec2bc1f0d939cbb999ec7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f575f830ec2bc1f0d939cbb999ec7a">&#9670;&#160;</a></span>STRING_BUFFER_SIZE_FACTOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t STRING_BUFFER_SIZE_FACTOR = 1024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>String Buffer 单元因子 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00066">66</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00019">sese::text::AbstractStringBuffer::AbstractStringBuffer()</a>, <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00067">sese::text::AbstractStringBuffer::append()</a> , 以及 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00185">sese::text::AbstractStringBuffer::insertAt()</a>.</p>
+
+</div>
+</div>
+<a id="ab089f2f84905b37270a010c9a4db19f8" name="ab089f2f84905b37270a010c9a4db19f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab089f2f84905b37270a010c9a4db19f8">&#9670;&#160;</a></span>THREAD_DEFAULT_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* THREAD_DEFAULT_NAME = &quot;UNKNOWN&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>默认线程名称 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00071">71</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_thread_8cpp_source.html#l00047">sese::Thread::getCurrentThreadName()</a>.</p>
+
+</div>
+</div>
+<a id="a92eb13d59bd6439d544fc9cfebd46f16" name="a92eb13d59bd6439d544fc9cfebd46f16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92eb13d59bd6439d544fc9cfebd46f16">&#9670;&#160;</a></span>THREAD_MAIN_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* THREAD_MAIN_NAME = &quot;Main&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>主线程名称 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00073">73</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_thread_8cpp_source.html#l00047">sese::Thread::getCurrentThreadName()</a>.</p>
+
+</div>
+</div>
+<a id="a8dc10f54768fb0ad0aa23e7984ccecee" name="a8dc10f54768fb0ad0aa23e7984ccecee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dc10f54768fb0ad0aa23e7984ccecee">&#9670;&#160;</a></span>TIME_DEFAULT_PATTERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* TIME_DEFAULT_PATTERN = &quot;UTCz yyyy-MM-dd HH:mm:ss.ff&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>世界协调时匹配格式 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00059">59</a> 行定义.</p>
+
+</div>
+</div>
+<a id="acd688e6011699d40edbaf750db54e486" name="acd688e6011699d40edbaf750db54e486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd688e6011699d40edbaf750db54e486">&#9670;&#160;</a></span>TIME_DEFAULT_ZONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int32_t TIME_DEFAULT_ZONE = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>默认时区 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00057">57</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a359537d4f46f2734aafef400b273e6f9" name="a359537d4f46f2734aafef400b273e6f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a359537d4f46f2734aafef400b273e6f9">&#9670;&#160;</a></span>TIME_GREENWICH_MEAN_PATTERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* TIME_GREENWICH_MEAN_PATTERN = &quot;ddd, dd MMM yyyy HH:mm:ss %G%M%T&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>格林威治时间匹配格式 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00061">61</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8af0f60d6ae6bf12d7a4d09a013c8114" name="a8af0f60d6ae6bf12d7a4d09a013c8114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8af0f60d6ae6bf12d7a4d09a013c8114">&#9670;&#160;</a></span>TIME_SHORT_PATTERN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* TIME_SHORT_PATTERN = &quot;yyyy-MM-dd%THH:mm:ss.ff%Z&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>短格式 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00063">63</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5676ba0cac858717abddf92469c9957d" name="a5676ba0cac858717abddf92469c9957d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5676ba0cac858717abddf92469c9957d">&#9670;&#160;</a></span>TIMER_WHEEL_NUMBER</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const size_t TIMER_WHEEL_NUMBER = 30</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>定时器时间轮轮片数 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00105">105</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a52b97793edafc2646f38746198ef65c0" name="a52b97793edafc2646f38746198ef65c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52b97793edafc2646f38746198ef65c0">&#9670;&#160;</a></span>ZLIB_CHUNK_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t ZLIB_CHUNK_SIZE = 1024 * 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compressor Chunk 默认大小 </p>
+
+<p class="definition">在文件 <a class="el" href="_config_8h_source.html">Config.h</a> 第 <a class="el" href="_config_8h_source.html#l00124">124</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

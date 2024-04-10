@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::CSVReader类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_c_s_v_reader.html">CSVReader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1_c_s_v_reader-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::CSVReader类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>CSV 流读取器  
+ <a href="classsese_1_1_c_s_v_reader.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a504cfb913c19d368500fecdaed7d4284" id="r_a504cfb913c19d368500fecdaed7d4284"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_c_s_v_reader.html#a504cfb913c19d368500fecdaed7d4284">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td></tr>
+<tr class="memdesc:a504cfb913c19d368500fecdaed7d4284"><td class="mdescLeft">&#160;</td><td class="mdescRight">工具支持的输入流  <br /></td></tr>
+<tr class="separator:a504cfb913c19d368500fecdaed7d4284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ab2848d3fd33798cf2b586e65b636cb" id="r_a5ab2848d3fd33798cf2b586e65b636cb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_c_s_v_reader.html#a5ab2848d3fd33798cf2b586e65b636cb">Row</a> = std::vector&lt; std::string &gt;</td></tr>
+<tr class="memdesc:a5ab2848d3fd33798cf2b586e65b636cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">行  <br /></td></tr>
+<tr class="separator:a5ab2848d3fd33798cf2b586e65b636cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:acd8ded6fbfccc3b0ee25cadedcc54308" id="r_acd8ded6fbfccc3b0ee25cadedcc54308"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_c_s_v_reader.html#acd8ded6fbfccc3b0ee25cadedcc54308">CSVReader</a> (<a class="el" href="classsese_1_1_c_s_v_reader.html#a504cfb913c19d368500fecdaed7d4284">InputStream</a> *<a class="el" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a>, char split_char=',') noexcept</td></tr>
+<tr class="separator:acd8ded6fbfccc3b0ee25cadedcc54308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae710e7410620247d0bd19adeb409c62a" id="r_ae710e7410620247d0bd19adeb409c62a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_c_s_v_reader.html#a5ab2848d3fd33798cf2b586e65b636cb">Row</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_c_s_v_reader.html#ae710e7410620247d0bd19adeb409c62a">read</a> () noexcept</td></tr>
+<tr class="separator:ae710e7410620247d0bd19adeb409c62a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a5b380eb0a12858df8f410e9f9ecb0393" id="r_a5b380eb0a12858df8f410e9f9ecb0393"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_c_s_v_reader.html#a5b380eb0a12858df8f410e9f9ecb0393">splitChar</a></td></tr>
+<tr class="separator:a5b380eb0a12858df8f410e9f9ecb0393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd65b0a08e14a28bc9f53760ee214c1d" id="r_afd65b0a08e14a28bc9f53760ee214c1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_c_s_v_reader.html#a504cfb913c19d368500fecdaed7d4284">InputStream</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a> = nullptr</td></tr>
+<tr class="separator:afd65b0a08e14a28bc9f53760ee214c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>CSV 流读取器 </p>
+
+<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00017">17</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a504cfb913c19d368500fecdaed7d4284" name="a504cfb913c19d368500fecdaed7d4284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a504cfb913c19d368500fecdaed7d4284">&#9670;&#160;</a></span>InputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_c_s_v_reader.html#a504cfb913c19d368500fecdaed7d4284">sese::CSVReader::InputStream</a> =  <a class="el" href="classsese_1_1io_1_1_input_stream.html">io::InputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>工具支持的输入流 </p>
+
+<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00020">20</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5ab2848d3fd33798cf2b586e65b636cb" name="a5ab2848d3fd33798cf2b586e65b636cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ab2848d3fd33798cf2b586e65b636cb">&#9670;&#160;</a></span>Row</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_c_s_v_reader.html#a5ab2848d3fd33798cf2b586e65b636cb">sese::CSVReader::Row</a> =  std::vector&lt;std::string&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>行 </p>
+
+<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="acd8ded6fbfccc3b0ee25cadedcc54308" name="acd8ded6fbfccc3b0ee25cadedcc54308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8ded6fbfccc3b0ee25cadedcc54308">&#9670;&#160;</a></span>CSVReader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::CSVReader::CSVReader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_c_s_v_reader.html#a504cfb913c19d368500fecdaed7d4284">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>split_char</em> = <code>','</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>构造函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>读取的流 </td></tr>
+    <tr><td class="paramname">split_char</td><td>分割字符 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8cpp_source.html">CSVReader.cpp</a> 第 <a class="el" href="_c_s_v_reader_8cpp_source.html#l00005">5</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                                      {</div>
+<div class="line"><span class="lineno">    6</span>    <a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">CSVReader::source</a> = <a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a>;</div>
+<div class="line"><span class="lineno">    7</span>    <a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#a5b380eb0a12858df8f410e9f9ecb0393">CSVReader::splitChar</a> = split_char;</div>
+<div class="line"><span class="lineno">    8</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ae710e7410620247d0bd19adeb409c62a" name="ae710e7410620247d0bd19adeb409c62a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae710e7410620247d0bd19adeb409c62a">&#9670;&#160;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_c_s_v_reader.html#a5ab2848d3fd33798cf2b586e65b636cb">sese::CSVReader::Row</a> sese::CSVReader::read </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>从流中读取一行 </p><dl class="section return"><dt>返回</dt><dd>返回包含一行内所有元素的 vector 容器 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8cpp_source.html">CSVReader.cpp</a> 第 <a class="el" href="_c_s_v_reader_8cpp_source.html#l00010">10</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>                                              {</div>
+<div class="line"><span class="lineno">   11</span>    <a class="code hl_typedef" href="classsese_1_1_c_s_v_reader.html#a5ab2848d3fd33798cf2b586e65b636cb" title="行">Row</a> row;</div>
+<div class="line"><span class="lineno">   12</span>    std::stringstream builder;</div>
+<div class="line"><span class="lineno">   13</span> </div>
+<div class="line"><span class="lineno">   14</span>    <span class="keywordtype">char</span> ch = 0;</div>
+<div class="line"><span class="lineno">   15</span>    <span class="keywordtype">size_t</span> quot = 0;</div>
+<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">while</span> ((<a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">read</a>(&amp;ch, 1)) != 0) {</div>
+<div class="line"><span class="lineno">   17</span>        <span class="comment">// 是否处于字符串内部</span></div>
+<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">if</span> (quot % 2 == 1) {</div>
+<div class="line"><span class="lineno">   19</span>            <span class="keywordflow">if</span> (ch != <span class="charliteral">&#39;\&quot;&#39;</span>) {</div>
+<div class="line"><span class="lineno">   20</span>                builder &lt;&lt; ch;</div>
+<div class="line"><span class="lineno">   21</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   22</span>                <span class="comment">// 退出字符串</span></div>
+<div class="line"><span class="lineno">   23</span>                quot += 1;</div>
+<div class="line"><span class="lineno">   24</span>            }</div>
+<div class="line"><span class="lineno">   25</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\&quot;&#39;</span>) {</div>
+<div class="line"><span class="lineno">   27</span>                <span class="comment">// 进入字符串</span></div>
+<div class="line"><span class="lineno">   28</span>                quot += 1;</div>
+<div class="line"><span class="lineno">   29</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#a5b380eb0a12858df8f410e9f9ecb0393">CSVReader::splitChar</a>) {</div>
+<div class="line"><span class="lineno">   30</span>                <span class="comment">// 切割元素</span></div>
+<div class="line"><span class="lineno">   31</span>                row.emplace_back(builder.str());</div>
+<div class="line"><span class="lineno">   32</span>                builder.str(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   33</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\r&#39;</span>) {</div>
+<div class="line"><span class="lineno">   34</span>                <span class="comment">// 换行 - \r\n</span></div>
+<div class="line"><span class="lineno">   35</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1_c_s_v_reader.html#afd65b0a08e14a28bc9f53760ee214c1d">source</a>-&gt;<a class="code hl_function" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">read</a>(&amp;ch, 1) != 0) {</div>
+<div class="line"><span class="lineno">   36</span>                    row.emplace_back(builder.str());</div>
+<div class="line"><span class="lineno">   37</span>                    builder.str(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   38</span>                    <span class="keywordflow">return</span> row;</div>
+<div class="line"><span class="lineno">   39</span>                }</div>
+<div class="line"><span class="lineno">   40</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><span class="lineno">   41</span>                <span class="comment">// 换行 - \n</span></div>
+<div class="line"><span class="lineno">   42</span>                row.emplace_back(builder.str());</div>
+<div class="line"><span class="lineno">   43</span>                builder.str(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   44</span>                <span class="keywordflow">return</span> row;</div>
+<div class="line"><span class="lineno">   45</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   46</span>                builder &lt;&lt; ch;</div>
+<div class="line"><span class="lineno">   47</span>            }</div>
+<div class="line"><span class="lineno">   48</span>        }</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">if</span> (builder.rdbuf()-&gt;in_avail() != 0 || ch == <span class="charliteral">&#39;,&#39;</span>) {</div>
+<div class="line"><span class="lineno">   51</span>        row.emplace_back(builder.str());</div>
+<div class="line"><span class="lineno">   52</span>        builder.str(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> row;</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1io_1_1_input_stream.html#aedd53943f2d4327f89be11d415e60eea">sese::io::InputStream::read()</a>, <a class="el" href="_c_s_v_reader_8h_source.html#l00035">source</a> , 以及 <a class="el" href="_c_s_v_reader_8h_source.html#l00034">splitChar</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="afd65b0a08e14a28bc9f53760ee214c1d" name="afd65b0a08e14a28bc9f53760ee214c1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd65b0a08e14a28bc9f53760ee214c1d">&#9670;&#160;</a></span>source</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_c_s_v_reader.html#a504cfb913c19d368500fecdaed7d4284">InputStream</a>* sese::CSVReader::source = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00035">35</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_c_s_v_reader_8cpp_source.html#l00010">read()</a>.</p>
+
+</div>
+</div>
+<a id="a5b380eb0a12858df8f410e9f9ecb0393" name="a5b380eb0a12858df8f410e9f9ecb0393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b380eb0a12858df8f410e9f9ecb0393">&#9670;&#160;</a></span>splitChar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char sese::CSVReader::splitChar</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a> 第 <a class="el" href="_c_s_v_reader_8h_source.html#l00034">34</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_c_s_v_reader_8cpp_source.html#l00010">read()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/config/<a class="el" href="_c_s_v_reader_8h_source.html">CSVReader.h</a></li>
+<li>sese/config/<a class="el" href="_c_s_v_reader_8cpp_source.html">CSVReader.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

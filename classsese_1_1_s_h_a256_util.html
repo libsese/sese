@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::SHA256Util类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_s_h_a256_util.html">SHA256Util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1_s_h_a256_util-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::SHA256Util类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类  
+ <a href="classsese_1_1_s_h_a256_util.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_h_a256_util_8h_source.html">SHA256Util.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a11b66a98ce5f01dd3ee8906141e1e38d" id="r_a11b66a98ce5f01dd3ee8906141e1e38d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_s_h_a256_util.html#a11b66a98ce5f01dd3ee8906141e1e38d">OutputStream</a> = <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td></tr>
+<tr class="separator:a11b66a98ce5f01dd3ee8906141e1e38d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0333c420a760db35c49bfb29ae455f1c" id="r_a0333c420a760db35c49bfb29ae455f1c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_s_h_a256_util.html#a0333c420a760db35c49bfb29ae455f1c">InputStream</a> = <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td></tr>
+<tr class="separator:a0333c420a760db35c49bfb29ae455f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a55f12a5be0aafbc7add7cae4eee22628" id="r_a55f12a5be0aafbc7add7cae4eee22628"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">encode</a> (const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;input, const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;output) noexcept</td></tr>
+<tr class="separator:a55f12a5be0aafbc7add7cae4eee22628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8cd43282448ef42a793ac383ae6d5c" id="r_a2e8cd43282448ef42a793ac383ae6d5c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_s_h_a256_util.html#a2e8cd43282448ef42a793ac383ae6d5c">encode</a> (<a class="el" href="classsese_1_1_s_h_a256_util.html#a0333c420a760db35c49bfb29ae455f1c">InputStream</a> *input, <a class="el" href="classsese_1_1_s_h_a256_util.html#a11b66a98ce5f01dd3ee8906141e1e38d">OutputStream</a> *output) noexcept</td></tr>
+<tr class="separator:a2e8cd43282448ef42a793ac383ae6d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1571b849342c32574f4ba453d30ff7c2" id="r_a1571b849342c32574f4ba453d30ff7c2"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; char[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_s_h_a256_util.html#a1571b849342c32574f4ba453d30ff7c2">encode</a> (const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;input, bool is_cap=true) noexcept</td></tr>
+<tr class="separator:a1571b849342c32574f4ba453d30ff7c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4acb1a2f0c21e122dd7bd3a6206b87" id="r_a4f4acb1a2f0c21e122dd7bd3a6206b87"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; char[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_s_h_a256_util.html#a4f4acb1a2f0c21e122dd7bd3a6206b87">encode</a> (<a class="el" href="classsese_1_1_s_h_a256_util.html#a0333c420a760db35c49bfb29ae455f1c">InputStream</a> *input, bool is_cap=true) noexcept</td></tr>
+<tr class="separator:a4f4acb1a2f0c21e122dd7bd3a6206b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>非硬件指令加速的 SHA256 摘要算法，对性能有要求请不要使用此工具类 </p>
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8h_source.html">SHA256Util.h</a> 第 <a class="el" href="_s_h_a256_util_8h_source.html#l00021">21</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a0333c420a760db35c49bfb29ae455f1c" name="a0333c420a760db35c49bfb29ae455f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0333c420a760db35c49bfb29ae455f1c">&#9670;&#160;</a></span>InputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_s_h_a256_util.html#a0333c420a760db35c49bfb29ae455f1c">sese::SHA256Util::InputStream</a> =  <a class="el" href="classsese_1_1io_1_1_input_stream.html">sese::io::InputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8h_source.html">SHA256Util.h</a> 第 <a class="el" href="_s_h_a256_util_8h_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a11b66a98ce5f01dd3ee8906141e1e38d" name="a11b66a98ce5f01dd3ee8906141e1e38d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11b66a98ce5f01dd3ee8906141e1e38d">&#9670;&#160;</a></span>OutputStream</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_s_h_a256_util.html#a11b66a98ce5f01dd3ee8906141e1e38d">sese::SHA256Util::OutputStream</a> =  <a class="el" href="classsese_1_1io_1_1_output_stream.html">sese::io::OutputStream</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8h_source.html">SHA256Util.h</a> 第 <a class="el" href="_s_h_a256_util_8h_source.html#l00023">23</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a1571b849342c32574f4ba453d30ff7c2" name="a1571b849342c32574f4ba453d30ff7c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1571b849342c32574f4ba453d30ff7c2">&#9670;&#160;</a></span>encode() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; char[]&gt; SHA256Util::encode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00332">332</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  332</span>                                                                                          {</div>
+<div class="line"><span class="lineno">  333</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">encode</a>(input.get(), is_cap);</div>
+<div class="line"><span class="lineno">  334</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00017">encode()</a>.</p>
+
+</div>
+</div>
+<a id="a55f12a5be0aafbc7add7cae4eee22628" name="a55f12a5be0aafbc7add7cae4eee22628"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55f12a5be0aafbc7add7cae4eee22628">&#9670;&#160;</a></span>encode() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SHA256Util::encode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_input_stream.html#a0452a75dd0ee9345d78e9d14c1b7cb78">InputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1io_1_1_output_stream.html#a4446385dc8f0d3431a03fda5165a4b3a">OutputStream::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00221">221</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  221</span>                                                                                           {</div>
+<div class="line"><span class="lineno">  222</span>    <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">encode</a>(input.get(), output.get());</div>
+<div class="line"><span class="lineno">  223</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00017">encode()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="convert_2_message_digest_8cpp_source.html#l00006">sese::MessageDigest::digest()</a>, <a class="el" href="convert_2_message_digest_8cpp_source.html#l00017">sese::MessageDigest::digest()</a> , 以及 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00226">encode()</a>.</p>
+
+</div>
+</div>
+<a id="a4f4acb1a2f0c21e122dd7bd3a6206b87" name="a4f4acb1a2f0c21e122dd7bd3a6206b87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4acb1a2f0c21e122dd7bd3a6206b87">&#9670;&#160;</a></span>encode() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; char[]&gt; sese::SHA256Util::encode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_s_h_a256_util.html#a0333c420a760db35c49bfb29ae455f1c">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_cap</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00336">336</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  336</span>                                                                                     {</div>
+<div class="line"><span class="lineno">  337</span>    <a class="code hl_class" href="classsese_1_1io_1_1_byte_builder.html" title="线程不安全的字节缓冲类">ByteBuilder</a> dest(64);</div>
+<div class="line"><span class="lineno">  338</span>    <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">encode</a>(input, &amp;dest);</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buffer[32];</div>
+<div class="line"><span class="lineno">  341</span>    <span class="keyword">auto</span> rt = std::unique_ptr&lt;char[]&gt;(<span class="keyword">new</span> <span class="keywordtype">char</span>[65]);</div>
+<div class="line"><span class="lineno">  342</span>    dest.read(buffer, 32);</div>
+<div class="line"><span class="lineno">  343</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 32; ++i) {</div>
+<div class="line"><span class="lineno">  344</span>        rt[i * 2 + 1] = <a class="code hl_function" href="_s_h_a1_util_8cpp.html#a39371113aca7dd5d9ed1d21d225c2f4b">toChar</a>(buffer[i] % 0x10, is_cap);</div>
+<div class="line"><span class="lineno">  345</span>        rt[i * 2 + 0] = <a class="code hl_function" href="_s_h_a1_util_8cpp.html#a39371113aca7dd5d9ed1d21d225c2f4b">toChar</a>(buffer[i] / 0x10, is_cap);</div>
+<div class="line"><span class="lineno">  346</span>    }</div>
+<div class="line"><span class="lineno">  347</span>    rt[64] = 0;</div>
+<div class="line"><span class="lineno">  348</span>    <span class="keywordflow">return</span> rt;</div>
+<div class="line"><span class="lineno">  349</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base64_converter_8cpp_source.html#l00017">encode()</a>, <a class="el" href="_abstract_byte_buffer_8cpp_source.html#l00170">sese::io::AbstractByteBuffer::read()</a> , 以及 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00203">toChar()</a>.</p>
+
+</div>
+</div>
+<a id="a2e8cd43282448ef42a793ac383ae6d5c" name="a2e8cd43282448ef42a793ac383ae6d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e8cd43282448ef42a793ac383ae6d5c">&#9670;&#160;</a></span>encode() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::SHA256Util::encode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_s_h_a256_util.html#a0333c420a760db35c49bfb29ae455f1c">InputStream</a> *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_s_h_a256_util.html#a11b66a98ce5f01dd3ee8906141e1e38d">OutputStream</a> *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a> 第 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00226">226</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  226</span>                                                                             {</div>
+<div class="line"><span class="lineno">  227</span>    int64_t <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>;</div>
+<div class="line"><span class="lineno">  228</span>    uint64_t total = 0;</div>
+<div class="line"><span class="lineno">  229</span>    <a class="code hl_struct" href="structsese_1_1_bitset32.html" title="endian 无关的 32 位">Bitset32</a> buffer[64];</div>
+<div class="line"><span class="lineno">  230</span>    <span class="keyword">auto</span> *block = <span class="keyword">reinterpret_cast&lt;</span>uint8_t *<span class="keyword">&gt;</span>(buffer);</div>
+<div class="line"><span class="lineno">  231</span> </div>
+<div class="line"><span class="lineno">  232</span>    <span class="comment">// 最终结果</span></div>
+<div class="line"><span class="lineno">  233</span>    <a class="code hl_struct" href="structsese_1_1_bitset32.html" title="endian 无关的 32 位">Bitset32</a> hash[8]{0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};</div>
+<div class="line"><span class="lineno">  234</span>    <span class="comment">// 中间值</span></div>
+<div class="line"><span class="lineno">  235</span>    <a class="code hl_struct" href="structsese_1_1_bitset32.html" title="endian 无关的 32 位">Bitset32</a> value[8];</div>
+<div class="line"><span class="lineno">  236</span> </div>
+<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">while</span> ((<a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> = input-&gt;read(block, 64)) == 64) {</div>
+<div class="line"><span class="lineno">  238</span>        total += <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>;</div>
+<div class="line"><span class="lineno">  239</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 48; ++i) {</div>
+<div class="line"><span class="lineno">  240</span>            SHA256Util::structure(buffer + i);</div>
+<div class="line"><span class="lineno">  241</span>        }</div>
+<div class="line"><span class="lineno">  242</span>        memcpy(value, hash, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structsese_1_1_bitset32.html" title="endian 无关的 32 位">Bitset32</a>) * 8);</div>
+<div class="line"><span class="lineno">  243</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 64; ++i) {</div>
+<div class="line"><span class="lineno">  244</span>            <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">SHA256Util::encode</a>(value, buffer + i, K[i]);</div>
+<div class="line"><span class="lineno">  245</span>        }</div>
+<div class="line"><span class="lineno">  246</span>        hash[0] = hash[0] + value[0];</div>
+<div class="line"><span class="lineno">  247</span>        hash[1] = hash[1] + value[1];</div>
+<div class="line"><span class="lineno">  248</span>        hash[2] = hash[2] + value[2];</div>
+<div class="line"><span class="lineno">  249</span>        hash[3] = hash[3] + value[3];</div>
+<div class="line"><span class="lineno">  250</span>        hash[4] = hash[4] + value[4];</div>
+<div class="line"><span class="lineno">  251</span>        hash[5] = hash[5] + value[5];</div>
+<div class="line"><span class="lineno">  252</span>        hash[6] = hash[6] + value[6];</div>
+<div class="line"><span class="lineno">  253</span>        hash[7] = hash[7] + value[7];</div>
+<div class="line"><span class="lineno">  254</span>    }</div>
+<div class="line"><span class="lineno">  255</span> </div>
+<div class="line"><span class="lineno">  256</span>    <span class="comment">// 填充再处理一遍</span></div>
+<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">if</span> (size &lt;= 55 &amp;&amp; size &gt;= 0) {</div>
+<div class="line"><span class="lineno">  258</span>        total += <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>;</div>
+<div class="line"><span class="lineno">  259</span>        total *= 8;</div>
+<div class="line"><span class="lineno">  260</span>        memset(block + <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> + 1, 0, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structsese_1_1_bitset32.html" title="endian 无关的 32 位">Bitset32</a>) * (47 - <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>));</div>
+<div class="line"><span class="lineno">  261</span>        block[<a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>] = <a class="code hl_function" href="_endian_8h.html#a8d2df19a0a10bed77f39925313c2a636">ToLittleEndian</a>(0x80);</div>
+<div class="line"><span class="lineno">  262</span>        total = <a class="code hl_function" href="_endian_8h.html#aac1643a53942add87fbfe380e1a4f308">ToBigEndian64</a>(total * <span class="keyword">sizeof</span>(uint8_t));</div>
+<div class="line"><span class="lineno">  263</span>        memcpy(&amp;buffer[14], &amp;total, <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 48; ++i) {</div>
+<div class="line"><span class="lineno">  266</span>            SHA256Util::structure(buffer + i);</div>
+<div class="line"><span class="lineno">  267</span>        }</div>
+<div class="line"><span class="lineno">  268</span> </div>
+<div class="line"><span class="lineno">  269</span>        memcpy(value, hash, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structsese_1_1_bitset32.html" title="endian 无关的 32 位">Bitset32</a>) * 8);</div>
+<div class="line"><span class="lineno">  270</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 64; ++i) {</div>
+<div class="line"><span class="lineno">  271</span>            <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">SHA256Util::encode</a>(value, buffer + i, K[i]);</div>
+<div class="line"><span class="lineno">  272</span>        }</div>
+<div class="line"><span class="lineno">  273</span>        hash[0] = hash[0] + value[0];</div>
+<div class="line"><span class="lineno">  274</span>        hash[1] = hash[1] + value[1];</div>
+<div class="line"><span class="lineno">  275</span>        hash[2] = hash[2] + value[2];</div>
+<div class="line"><span class="lineno">  276</span>        hash[3] = hash[3] + value[3];</div>
+<div class="line"><span class="lineno">  277</span>        hash[4] = hash[4] + value[4];</div>
+<div class="line"><span class="lineno">  278</span>        hash[5] = hash[5] + value[5];</div>
+<div class="line"><span class="lineno">  279</span>        hash[6] = hash[6] + value[6];</div>
+<div class="line"><span class="lineno">  280</span>        hash[7] = hash[7] + value[7];</div>
+<div class="line"><span class="lineno">  281</span>    }</div>
+<div class="line"><span class="lineno">  282</span> </div>
+<div class="line"><span class="lineno">  283</span>    <span class="comment">// 处理倒数第二次，填充并处理最后一次</span></div>
+<div class="line"><span class="lineno">  284</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> &gt; 55) {</div>
+<div class="line"><span class="lineno">  285</span>        block[<a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>] = <a class="code hl_function" href="_endian_8h.html#a8d2df19a0a10bed77f39925313c2a636">ToLittleEndian</a>(0x80);</div>
+<div class="line"><span class="lineno">  286</span>        memset(block + <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> + 1, 0, 63 - <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>);</div>
+<div class="line"><span class="lineno">  287</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 48; ++i) {</div>
+<div class="line"><span class="lineno">  288</span>            SHA256Util::structure(buffer + i);</div>
+<div class="line"><span class="lineno">  289</span>        }</div>
+<div class="line"><span class="lineno">  290</span>        memcpy(value, hash, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structsese_1_1_bitset32.html" title="endian 无关的 32 位">Bitset32</a>) * 8);</div>
+<div class="line"><span class="lineno">  291</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 64; ++i) {</div>
+<div class="line"><span class="lineno">  292</span>            <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">SHA256Util::encode</a>(value, buffer + i, K[i]);</div>
+<div class="line"><span class="lineno">  293</span>        }</div>
+<div class="line"><span class="lineno">  294</span>        hash[0] = hash[0] + value[0];</div>
+<div class="line"><span class="lineno">  295</span>        hash[1] = hash[1] + value[1];</div>
+<div class="line"><span class="lineno">  296</span>        hash[2] = hash[2] + value[2];</div>
+<div class="line"><span class="lineno">  297</span>        hash[3] = hash[3] + value[3];</div>
+<div class="line"><span class="lineno">  298</span>        hash[4] = hash[4] + value[4];</div>
+<div class="line"><span class="lineno">  299</span>        hash[5] = hash[5] + value[5];</div>
+<div class="line"><span class="lineno">  300</span>        hash[6] = hash[6] + value[6];</div>
+<div class="line"><span class="lineno">  301</span>        hash[7] = hash[7] + value[7];</div>
+<div class="line"><span class="lineno">  302</span> </div>
+<div class="line"><span class="lineno">  303</span>        total += <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>;</div>
+<div class="line"><span class="lineno">  304</span>        total *= 8;</div>
+<div class="line"><span class="lineno">  305</span> </div>
+<div class="line"><span class="lineno">  306</span>        memset(block, 0, 56);</div>
+<div class="line"><span class="lineno">  307</span>        total = <a class="code hl_function" href="_endian_8h.html#aac1643a53942add87fbfe380e1a4f308">ToBigEndian64</a>(total * <span class="keyword">sizeof</span>(uint8_t));</div>
+<div class="line"><span class="lineno">  308</span>        memcpy(&amp;buffer[14], &amp;total, <span class="keyword">sizeof</span>(uint64_t));</div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 48; ++i) {</div>
+<div class="line"><span class="lineno">  311</span>            SHA256Util::structure(buffer + i);</div>
+<div class="line"><span class="lineno">  312</span>        }</div>
+<div class="line"><span class="lineno">  313</span>        memcpy(value, hash, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structsese_1_1_bitset32.html" title="endian 无关的 32 位">Bitset32</a>) * 8);</div>
+<div class="line"><span class="lineno">  314</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; 64; ++i) {</div>
+<div class="line"><span class="lineno">  315</span>            <a class="code hl_function" href="classsese_1_1_s_h_a256_util.html#a55f12a5be0aafbc7add7cae4eee22628">SHA256Util::encode</a>(value, buffer + i, K[i]);</div>
+<div class="line"><span class="lineno">  316</span>        }</div>
+<div class="line"><span class="lineno">  317</span>        hash[0] = hash[0] + value[0];</div>
+<div class="line"><span class="lineno">  318</span>        hash[1] = hash[1] + value[1];</div>
+<div class="line"><span class="lineno">  319</span>        hash[2] = hash[2] + value[2];</div>
+<div class="line"><span class="lineno">  320</span>        hash[3] = hash[3] + value[3];</div>
+<div class="line"><span class="lineno">  321</span>        hash[4] = hash[4] + value[4];</div>
+<div class="line"><span class="lineno">  322</span>        hash[5] = hash[5] + value[5];</div>
+<div class="line"><span class="lineno">  323</span>        hash[6] = hash[6] + value[6];</div>
+<div class="line"><span class="lineno">  324</span>        hash[7] = hash[7] + value[7];</div>
+<div class="line"><span class="lineno">  325</span>    }</div>
+<div class="line"><span class="lineno">  326</span> </div>
+<div class="line"><span class="lineno">  327</span>    output-&gt;write(hash, 32);</div>
+<div class="line"><span class="lineno">  328</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_s_h_a256_util_8cpp_source.html#l00221">encode()</a>, <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>, <a class="el" href="_endian_8h_source.html#l00043">ToBigEndian64()</a> , 以及 <a class="el" href="_endian_8h_source.html#l00114">ToLittleEndian()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/convert/<a class="el" href="_s_h_a256_util_8h_source.html">SHA256Util.h</a></li>
+<li>sese/convert/<a class="el" href="_s_h_a256_util_8cpp_source.html">SHA256Util.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

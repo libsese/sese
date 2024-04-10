@@ -1,0 +1,759 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::json::BasicData类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1json.html">json</a></li><li class="navelem"><a class="el" href="classsese_1_1json_1_1_basic_data.html">BasicData</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1json_1_1_basic_data-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::json::BasicData类 参考<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>JSON 基础数据类型  
+ <a href="classsese_1_1json_1_1_basic_data.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_json_types_8h_source.html">JsonTypes.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::json::BasicData 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1json_1_1_basic_data.png" usemap="#sese::json::BasicData_map" alt=""/>
+  <map id="sese::json::BasicData_map" name="sese::json::BasicData_map">
+<area href="classsese_1_1json_1_1_data.html" title="JSON 数据基类" alt="sese::json::Data" shape="rect" coords="0,0,130,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a41b771aa62393489c2c20b456e7a0ea1" id="r_a41b771aa62393489c2c20b456e7a0ea1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a41b771aa62393489c2c20b456e7a0ea1">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1json_1_1_basic_data.html">BasicData</a> &gt;</td></tr>
+<tr class="separator:a41b771aa62393489c2c20b456e7a0ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1json_1_1_data"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1json_1_1_data')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1json_1_1_data.html">sese::json::Data</a></td></tr>
+<tr class="memitem:afbf8b97f200be13eba8f909b9f1fb9f9 inherit pub_types_classsese_1_1json_1_1_data" id="r_afbf8b97f200be13eba8f909b9f1fb9f9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_data.html#afbf8b97f200be13eba8f909b9f1fb9f9">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1json_1_1_data.html">Data</a> &gt;</td></tr>
+<tr class="separator:afbf8b97f200be13eba8f909b9f1fb9f9 inherit pub_types_classsese_1_1json_1_1_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:adc9d2abef1f2862ad6ef624206dd40ec" id="r_adc9d2abef1f2862ad6ef624206dd40ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#adc9d2abef1f2862ad6ef624206dd40ec">BasicData</a> () noexcept</td></tr>
+<tr class="separator:adc9d2abef1f2862ad6ef624206dd40ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8fa366c815a465d23e74a8b8fb13ce0" id="r_aa8fa366c815a465d23e74a8b8fb13ce0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#aa8fa366c815a465d23e74a8b8fb13ce0">BasicData</a> (std::string text) noexcept</td></tr>
+<tr class="separator:aa8fa366c815a465d23e74a8b8fb13ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5c071abef66b1c36fcc29d233b2f35" id="r_aef5c071abef66b1c36fcc29d233b2f35"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#aef5c071abef66b1c36fcc29d233b2f35">raw</a> () const noexcept</td></tr>
+<tr class="separator:aef5c071abef66b1c36fcc29d233b2f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89778dc9f8b61538593a648037e2c3ff" id="r_a89778dc9f8b61538593a648037e2c3ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a89778dc9f8b61538593a648037e2c3ff">setNull</a> (bool null) noexcept</td></tr>
+<tr class="separator:a89778dc9f8b61538593a648037e2c3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e96cc742fb02fe84a162d56de79edc8" id="r_a1e96cc742fb02fe84a162d56de79edc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a1e96cc742fb02fe84a162d56de79edc8">setNotNull</a> (std::string new_data, bool is_string=false) noexcept</td></tr>
+<tr class="separator:a1e96cc742fb02fe84a162d56de79edc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85e209e8e2515066e6f6c8858d9ab439" id="r_a85e209e8e2515066e6f6c8858d9ab439"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a85e209e8e2515066e6f6c8858d9ab439"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a85e209e8e2515066e6f6c8858d9ab439">setDataAs</a> (std::enable_if_t&lt; std::is_same_v&lt; T, bool &gt;, bool &gt; t)</td></tr>
+<tr class="separator:a85e209e8e2515066e6f6c8858d9ab439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5a744e740ec04557dc8f766717b6d8f" id="r_ab5a744e740ec04557dc8f766717b6d8f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab5a744e740ec04557dc8f766717b6d8f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#ab5a744e740ec04557dc8f766717b6d8f">setDataAs</a> (std::enable_if_t&lt; std::is_same_v&lt; T, int64_t &gt;, int64_t &gt; t)</td></tr>
+<tr class="separator:ab5a744e740ec04557dc8f766717b6d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36dcded6924dccd18791414e64fb3e48" id="r_a36dcded6924dccd18791414e64fb3e48"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a36dcded6924dccd18791414e64fb3e48"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a36dcded6924dccd18791414e64fb3e48">setDataAs</a> (std::enable_if_t&lt; std::is_same_v&lt; T, std::string &gt;, const std::string &amp; &gt; t)</td></tr>
+<tr class="separator:a36dcded6924dccd18791414e64fb3e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0097055b4954eaf1e2dfec44174b170" id="r_ac0097055b4954eaf1e2dfec44174b170"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac0097055b4954eaf1e2dfec44174b170"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#ac0097055b4954eaf1e2dfec44174b170">setDataAs</a> (std::enable_if_t&lt; std::is_same_v&lt; T, double &gt;, double &gt; t)</td></tr>
+<tr class="separator:ac0097055b4954eaf1e2dfec44174b170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cb8c0567f7d2ffb6542579a9387560a" id="r_a9cb8c0567f7d2ffb6542579a9387560a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a9cb8c0567f7d2ffb6542579a9387560a">isNull</a> () const</td></tr>
+<tr class="separator:a9cb8c0567f7d2ffb6542579a9387560a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f35f39a0f0b487af3001b117278736" id="r_a50f35f39a0f0b487af3001b117278736"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a50f35f39a0f0b487af3001b117278736"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; std::is_same_v&lt; T, std::string &gt;, std::string &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a50f35f39a0f0b487af3001b117278736">getDataAs</a> (const T &amp;default_value)</td></tr>
+<tr class="separator:a50f35f39a0f0b487af3001b117278736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a645ad0d86fee43cefec282bdf330367a" id="r_a645ad0d86fee43cefec282bdf330367a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a645ad0d86fee43cefec282bdf330367a"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; std::is_same_v&lt; T, std::string_view &gt;, std::string_view &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a645ad0d86fee43cefec282bdf330367a">getDataAs</a> (const T &amp;default_value)</td></tr>
+<tr class="separator:a645ad0d86fee43cefec282bdf330367a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f3822c608e35efc35a7c3e2cbd6163" id="r_a25f3822c608e35efc35a7c3e2cbd6163"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a25f3822c608e35efc35a7c3e2cbd6163"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; std::is_same_v&lt; T, int64_t &gt;, int64_t &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a25f3822c608e35efc35a7c3e2cbd6163">getDataAs</a> (T default_value)</td></tr>
+<tr class="separator:a25f3822c608e35efc35a7c3e2cbd6163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a819c96cc64432bbba5eeec4f30d528a1" id="r_a819c96cc64432bbba5eeec4f30d528a1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a819c96cc64432bbba5eeec4f30d528a1"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; std::is_same_v&lt; T, bool &gt;, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#a819c96cc64432bbba5eeec4f30d528a1">getDataAs</a> (T default_value=false)</td></tr>
+<tr class="separator:a819c96cc64432bbba5eeec4f30d528a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa25ebe43b791f74fd26ad718d8dbe7d2" id="r_aa25ebe43b791f74fd26ad718d8dbe7d2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa25ebe43b791f74fd26ad718d8dbe7d2"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; std::is_same_v&lt; T, double &gt;, double &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#aa25ebe43b791f74fd26ad718d8dbe7d2">getDataAs</a> (T default_value)</td></tr>
+<tr class="separator:aa25ebe43b791f74fd26ad718d8dbe7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad146c410eedb8b0442625db8ec62f7cc" id="r_ad146c410eedb8b0442625db8ec62f7cc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ad146c410eedb8b0442625db8ec62f7cc"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#ad146c410eedb8b0442625db8ec62f7cc">setDataAs</a> (const std::enable_if_t&lt; std::is_same_v&lt; T, std::string &gt;, const std::string &amp; &gt; t)</td></tr>
+<tr class="separator:ad146c410eedb8b0442625db8ec62f7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1json_1_1_data"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1json_1_1_data')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1json_1_1_data.html">sese::json::Data</a></td></tr>
+<tr class="memitem:ab4f3589eef9a10347efb6a42cdc9b271 inherit pub_methods_classsese_1_1json_1_1_data" id="r_ab4f3589eef9a10347efb6a42cdc9b271"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_data.html#ab4f3589eef9a10347efb6a42cdc9b271">Data</a> (<a class="el" href="namespacesese_1_1json.html#ab40da7ef78b3239df0f97e1d1cebd7a6">DataType</a> type)</td></tr>
+<tr class="separator:ab4f3589eef9a10347efb6a42cdc9b271 inherit pub_methods_classsese_1_1json_1_1_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa703e6c8f3ec36b8535059d3f4b91bd1 inherit pub_methods_classsese_1_1json_1_1_data" id="r_aa703e6c8f3ec36b8535059d3f4b91bd1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_data.html#aa703e6c8f3ec36b8535059d3f4b91bd1">~Data</a> ()=default</td></tr>
+<tr class="separator:aa703e6c8f3ec36b8535059d3f4b91bd1 inherit pub_methods_classsese_1_1json_1_1_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1b60862b098b35be4127890e449b448 inherit pub_methods_classsese_1_1json_1_1_data" id="r_ab1b60862b098b35be4127890e449b448"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1json.html#ab40da7ef78b3239df0f97e1d1cebd7a6">DataType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_data.html#ab1b60862b098b35be4127890e449b448">getType</a> () const noexcept</td></tr>
+<tr class="separator:ab1b60862b098b35be4127890e449b448 inherit pub_methods_classsese_1_1json_1_1_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:ad40e63f70387bd011f575847da901ec5" id="r_ad40e63f70387bd011f575847da901ec5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a></td></tr>
+<tr class="separator:ad40e63f70387bd011f575847da901ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c94012c767e71833bed4486626b3c4" id="r_aa7c94012c767e71833bed4486626b3c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a></td></tr>
+<tr class="separator:aa7c94012c767e71833bed4486626b3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classsese_1_1json_1_1_data"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classsese_1_1json_1_1_data')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classsese_1_1json_1_1_data.html">sese::json::Data</a></td></tr>
+<tr class="memitem:ae233e7bba8f72df82d8a9f1280716f26 inherit pro_attribs_classsese_1_1json_1_1_data" id="r_ae233e7bba8f72df82d8a9f1280716f26"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacesese_1_1json.html#ab40da7ef78b3239df0f97e1d1cebd7a6">DataType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1json_1_1_data.html#ae233e7bba8f72df82d8a9f1280716f26">TYPE</a></td></tr>
+<tr class="separator:ae233e7bba8f72df82d8a9f1280716f26 inherit pro_attribs_classsese_1_1json_1_1_data"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>JSON 基础数据类型 </p>
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00052">52</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a41b771aa62393489c2c20b456e7a0ea1" name="a41b771aa62393489c2c20b456e7a0ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41b771aa62393489c2c20b456e7a0ea1">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1json_1_1_basic_data.html#a41b771aa62393489c2c20b456e7a0ea1">sese::json::BasicData::Ptr</a> =  std::shared_ptr&lt;<a class="el" href="classsese_1_1json_1_1_basic_data.html">BasicData</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00054">54</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="adc9d2abef1f2862ad6ef624206dd40ec" name="adc9d2abef1f2862ad6ef624206dd40ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc9d2abef1f2862ad6ef624206dd40ec">&#9670;&#160;</a></span>BasicData() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BasicData::BasicData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8cpp_source.html">JsonTypes.cpp</a> 第 <a class="el" href="_json_types_8cpp_source.html#l00007">7</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    8</span>    : <a class="code hl_class" href="classsese_1_1json_1_1_data.html" title="JSON 数据基类">Data</a>(<a class="code hl_enumvalue" href="namespacesese_1_1json.html#ab40da7ef78b3239df0f97e1d1cebd7a6ae4ac03f6c9f00665644e868dd1fb9f1e">DataType::BASIC</a>),</div>
+<div class="line"><span class="lineno">    9</span>      <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>(<span class="stringliteral">&quot;null&quot;</span>), <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a>(<span class="keyword">true</span>) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa8fa366c815a465d23e74a8b8fb13ce0" name="aa8fa366c815a465d23e74a8b8fb13ce0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8fa366c815a465d23e74a8b8fb13ce0">&#9670;&#160;</a></span>BasicData() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BasicData::BasicData </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8cpp_source.html">JsonTypes.cpp</a> 第 <a class="el" href="_json_types_8cpp_source.html#l00011">11</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>    : <a class="code hl_class" href="classsese_1_1json_1_1_data.html" title="JSON 数据基类">Data</a>(<a class="code hl_enumvalue" href="namespacesese_1_1json.html#ab40da7ef78b3239df0f97e1d1cebd7a6ae4ac03f6c9f00665644e868dd1fb9f1e">DataType::BASIC</a>),</div>
+<div class="line"><span class="lineno">   13</span>      <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>(std::move(text)),</div>
+<div class="line"><span class="lineno">   14</span>      <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a>(<span class="keyword">false</span>) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a50f35f39a0f0b487af3001b117278736" name="a50f35f39a0f0b487af3001b117278736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50f35f39a0f0b487af3001b117278736">&#9670;&#160;</a></span>getDataAs() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if_t&lt; std::is_same_v&lt; T, std::string &gt;, std::string &gt; sese::json::BasicData::getDataAs </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>default_value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00120">120</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                                                                 {</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a>) {</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><span class="lineno">  123</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>.substr(1, <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>.size() - 2);</div>
+<div class="line"><span class="lineno">  125</span>    }</div>
+<div class="line"><span class="lineno">  126</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8h_source.html#l00116">_isNull</a> , 以及 <a class="el" href="_json_types_8h_source.html#l00115">data</a>.</p>
+
+</div>
+</div>
+<a id="a645ad0d86fee43cefec282bdf330367a" name="a645ad0d86fee43cefec282bdf330367a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a645ad0d86fee43cefec282bdf330367a">&#9670;&#160;</a></span>getDataAs() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if_t&lt; std::is_same_v&lt; T, std::string_view &gt;, std::string_view &gt; sese::json::BasicData::getDataAs </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>default_value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00129">129</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  129</span>                                                                                                           {</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a>) {</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><span class="lineno">  132</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> {<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>.c_str() + 1, <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>.size() - 2};</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+<div class="line"><span class="lineno">  135</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8h_source.html#l00116">_isNull</a> , 以及 <a class="el" href="_json_types_8h_source.html#l00115">data</a>.</p>
+
+</div>
+</div>
+<a id="a25f3822c608e35efc35a7c3e2cbd6163" name="a25f3822c608e35efc35a7c3e2cbd6163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25f3822c608e35efc35a7c3e2cbd6163">&#9670;&#160;</a></span>getDataAs() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if_t&lt; std::is_same_v&lt; T, int64_t &gt;, int64_t &gt; sese::json::BasicData::getDataAs </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>default_value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00138">138</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>                                                                                      {</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a>) {</div>
+<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><span class="lineno">  141</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  142</span>        <span class="keywordflow">return</span> <a class="code hl_define" href="_json_types_8h.html#aaff71c6a827c63c88f736c3ff56b9dc0">_atoi64</a>(<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>.c_str());</div>
+<div class="line"><span class="lineno">  143</span>    }</div>
+<div class="line"><span class="lineno">  144</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8h_source.html#l00018">_atoi64</a>, <a class="el" href="_json_types_8h_source.html#l00116">_isNull</a> , 以及 <a class="el" href="_json_types_8h_source.html#l00115">data</a>.</p>
+
+</div>
+</div>
+<a id="aa25ebe43b791f74fd26ad718d8dbe7d2" name="aa25ebe43b791f74fd26ad718d8dbe7d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa25ebe43b791f74fd26ad718d8dbe7d2">&#9670;&#160;</a></span>getDataAs() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if_t&lt; std::is_same_v&lt; T, double &gt;, double &gt; sese::json::BasicData::getDataAs </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>default_value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00157">157</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  157</span>                                                                                    {</div>
+<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a>) {</div>
+<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><span class="lineno">  160</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  161</span>        <span class="keywordtype">char</span> *p_end = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  162</span>        <span class="keyword">auto</span> res = std::strtod(<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>.c_str(), &amp;p_end);</div>
+<div class="line"><span class="lineno">  163</span>        <span class="keywordflow">return</span> res;</div>
+<div class="line"><span class="lineno">  164</span>    }</div>
+<div class="line"><span class="lineno">  165</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8h_source.html#l00116">_isNull</a> , 以及 <a class="el" href="_json_types_8h_source.html#l00115">data</a>.</p>
+
+</div>
+</div>
+<a id="a819c96cc64432bbba5eeec4f30d528a1" name="a819c96cc64432bbba5eeec4f30d528a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a819c96cc64432bbba5eeec4f30d528a1">&#9670;&#160;</a></span>getDataAs() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::enable_if_t&lt; std::is_same_v&lt; T, bool &gt;, bool &gt; sese::json::BasicData::getDataAs </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>default_value</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00147">147</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  147</span>                                                                                {</div>
+<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a>) <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a> == <span class="stringliteral">&quot;true&quot;</span>) {</div>
+<div class="line"><span class="lineno">  150</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  151</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  152</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  153</span>    }</div>
+<div class="line"><span class="lineno">  154</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8h_source.html#l00116">_isNull</a> , 以及 <a class="el" href="_json_types_8h_source.html#l00115">data</a>.</p>
+
+</div>
+</div>
+<a id="a9cb8c0567f7d2ffb6542579a9387560a" name="a9cb8c0567f7d2ffb6542579a9387560a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cb8c0567f7d2ffb6542579a9387560a">&#9670;&#160;</a></span>isNull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::json::BasicData::isNull </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>返回一个值，指示该数据是否为 null </p><dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00092">92</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aef5c071abef66b1c36fcc29d233b2f35" name="aef5c071abef66b1c36fcc29d233b2f35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef5c071abef66b1c36fcc29d233b2f35">&#9670;&#160;</a></span>raw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; sese::json::BasicData::raw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00058">58</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a>; }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+
+</div>
+</div>
+<a id="ad146c410eedb8b0442625db8ec62f7cc" name="ad146c410eedb8b0442625db8ec62f7cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad146c410eedb8b0442625db8ec62f7cc">&#9670;&#160;</a></span>setDataAs() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::json::BasicData::setDataAs </td>
+          <td>(</td>
+          <td class="paramtype">const std::enable_if_t&lt; std::is_same_v&lt; T, std::string &gt;, const std::string &amp; &gt;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00187">187</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  187</span>                                                                                               {</div>
+<div class="line"><span class="lineno">  188</span>    <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a> = <span class="stringliteral">&quot;\&quot;&quot;</span> + t + <span class="stringliteral">&quot;\&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  189</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8h_source.html#l00115">data</a>.</p>
+
+</div>
+</div>
+<a id="a85e209e8e2515066e6f6c8858d9ab439" name="a85e209e8e2515066e6f6c8858d9ab439"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85e209e8e2515066e6f6c8858d9ab439">&#9670;&#160;</a></span>setDataAs() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::json::BasicData::setDataAs </td>
+          <td>(</td>
+          <td class="paramtype">std::enable_if_t&lt; std::is_same_v&lt; T, bool &gt;, bool &gt;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00168">168</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  168</span>                                                                       {</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">if</span> (t) {</div>
+<div class="line"><span class="lineno">  170</span>        <a class="code hl_function" href="classsese_1_1json_1_1_basic_data.html#a1e96cc742fb02fe84a162d56de79edc8">setNotNull</a>(<span class="stringliteral">&quot;true&quot;</span>);</div>
+<div class="line"><span class="lineno">  171</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  172</span>        <a class="code hl_function" href="classsese_1_1json_1_1_basic_data.html#a1e96cc742fb02fe84a162d56de79edc8">setNotNull</a>(<span class="stringliteral">&quot;false&quot;</span>);</div>
+<div class="line"><span class="lineno">  173</span>    }</div>
+<div class="line"><span class="lineno">  174</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8cpp_source.html#l00023">setNotNull()</a>.</p>
+
+</div>
+</div>
+<a id="ac0097055b4954eaf1e2dfec44174b170" name="ac0097055b4954eaf1e2dfec44174b170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0097055b4954eaf1e2dfec44174b170">&#9670;&#160;</a></span>setDataAs() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::json::BasicData::setDataAs </td>
+          <td>(</td>
+          <td class="paramtype">std::enable_if_t&lt; std::is_same_v&lt; T, double &gt;, double &gt;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00177">177</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  177</span>                                                                           {</div>
+<div class="line"><span class="lineno">  178</span>    <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a> = std::to_string(t);</div>
+<div class="line"><span class="lineno">  179</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8h_source.html#l00115">data</a>.</p>
+
+</div>
+</div>
+<a id="ab5a744e740ec04557dc8f766717b6d8f" name="ab5a744e740ec04557dc8f766717b6d8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5a744e740ec04557dc8f766717b6d8f">&#9670;&#160;</a></span>setDataAs() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::json::BasicData::setDataAs </td>
+          <td>(</td>
+          <td class="paramtype">std::enable_if_t&lt; std::is_same_v&lt; T, int64_t &gt;, int64_t &gt;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00182">182</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  182</span>                                                                             {</div>
+<div class="line"><span class="lineno">  183</span>    <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a> = std::to_string(t);</div>
+<div class="line"><span class="lineno">  184</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_json_types_8h_source.html#l00115">data</a>.</p>
+
+</div>
+</div>
+<a id="a36dcded6924dccd18791414e64fb3e48" name="a36dcded6924dccd18791414e64fb3e48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36dcded6924dccd18791414e64fb3e48">&#9670;&#160;</a></span>setDataAs() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::json::BasicData::setDataAs </td>
+          <td>(</td>
+          <td class="paramtype">std::enable_if_t&lt; std::is_same_v&lt; T, std::string &gt;, const std::string &amp; &gt;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e96cc742fb02fe84a162d56de79edc8" name="a1e96cc742fb02fe84a162d56de79edc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e96cc742fb02fe84a162d56de79edc8">&#9670;&#160;</a></span>setNotNull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BasicData::setNotNull </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>new_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_string</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置值为非 null </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_data</td><td>新的数据 </td></tr>
+    <tr><td class="paramname">is_string</td><td>是否为字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>警告</dt><dd>最好不要手动调用此函数，考虑使用 <a class="el" href="classsese_1_1json_1_1_basic_data.html#a85e209e8e2515066e6f6c8858d9ab439">setDataAs()</a> 函数 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_json_types_8cpp_source.html">JsonTypes.cpp</a> 第 <a class="el" href="_json_types_8cpp_source.html#l00023">23</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                                      {</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (is_string) {</div>
+<div class="line"><span class="lineno">   25</span>        <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a> = <span class="stringliteral">&quot;\&quot;&quot;</span> + new_data + <span class="stringliteral">&quot;\&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   26</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   27</span>        <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a> = std::move(new_data);</div>
+<div class="line"><span class="lineno">   28</span>    }</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   30</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_json_types_8h_source.html#l00168">setDataAs()</a>.</p>
+
+</div>
+</div>
+<a id="a89778dc9f8b61538593a648037e2c3ff" name="a89778dc9f8b61538593a648037e2c3ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89778dc9f8b61538593a648037e2c3ff">&#9670;&#160;</a></span>setNull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BasicData::setNull </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>null</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置值为 null </p>
+
+<p class="definition">在文件 <a class="el" href="_json_types_8cpp_source.html">JsonTypes.cpp</a> 第 <a class="el" href="_json_types_8cpp_source.html#l00016">16</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>                                          {</div>
+<div class="line"><span class="lineno">   17</span>    <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#aa7c94012c767e71833bed4486626b3c4">_isNull</a> = null;</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span> (null) {</div>
+<div class="line"><span class="lineno">   19</span>        <a class="code hl_variable" href="classsese_1_1json_1_1_basic_data.html#ad40e63f70387bd011f575847da901ec5">data</a> = <span class="stringliteral">&quot;null&quot;</span>;</div>
+<div class="line"><span class="lineno">   20</span>    }</div>
+<div class="line"><span class="lineno">   21</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aa7c94012c767e71833bed4486626b3c4" name="aa7c94012c767e71833bed4486626b3c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7c94012c767e71833bed4486626b3c4">&#9670;&#160;</a></span>_isNull</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::json::BasicData::_isNull</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00116">116</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_json_types_8h_source.html#l00120">getDataAs()</a>, <a class="el" href="_json_types_8h_source.html#l00138">getDataAs()</a> , 以及 <a class="el" href="_json_types_8h_source.html#l00147">getDataAs()</a>.</p>
+
+</div>
+</div>
+<a id="ad40e63f70387bd011f575847da901ec5" name="ad40e63f70387bd011f575847da901ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad40e63f70387bd011f575847da901ec5">&#9670;&#160;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::json::BasicData::data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_json_types_8h_source.html">JsonTypes.h</a> 第 <a class="el" href="_json_types_8h_source.html#l00115">115</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_json_types_8h_source.html#l00120">getDataAs()</a>, <a class="el" href="_json_types_8h_source.html#l00138">getDataAs()</a>, <a class="el" href="_json_types_8h_source.html#l00147">getDataAs()</a>, <a class="el" href="_json_types_8h_source.html#l00187">setDataAs()</a>, <a class="el" href="_json_types_8h_source.html#l00177">setDataAs()</a> , 以及 <a class="el" href="_json_types_8h_source.html#l00182">setDataAs()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/config/json/<a class="el" href="_json_types_8h_source.html">JsonTypes.h</a></li>
+<li>sese/config/json/<a class="el" href="_json_types_8cpp_source.html">JsonTypes.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

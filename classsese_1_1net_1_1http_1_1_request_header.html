@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::net::http::RequestHeader类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html">RequestHeader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1net_1_1http_1_1_request_header-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::net::http::RequestHeader类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>请求头类  
+ <a href="classsese_1_1net_1_1http_1_1_request_header.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_request_header_8h_source.html">RequestHeader.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::net::http::RequestHeader 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1net_1_1http_1_1_request_header.png" usemap="#sese::net::http::RequestHeader_map" alt=""/>
+  <map id="sese::net::http::RequestHeader_map" name="sese::net::http::RequestHeader_map">
+<area href="classsese_1_1net_1_1http_1_1_header.html" title="HTTP 头部键值集合" alt="sese::net::http::Header" shape="rect" coords="0,0,179,24"/>
+<area href="classsese_1_1net_1_1http_1_1_request.html" title="HTTP 请求类" alt="sese::net::http::Request" shape="rect" coords="0,112,179,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a033de6191e5f1ccbd70851e6c2c56c74" id="r_a033de6191e5f1ccbd70851e6c2c56c74"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a033de6191e5f1ccbd70851e6c2c56c74">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html">RequestHeader</a> &gt;</td></tr>
+<tr class="separator:a033de6191e5f1ccbd70851e6c2c56c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_classsese_1_1net_1_1http_1_1_header"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classsese_1_1net_1_1http_1_1_header')"><img src="closed.png" alt="-"/>&#160;Public 类型 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td></tr>
+<tr class="memitem:aa1e1119ac01933efc5e949cf8c3528af inherit pub_types_classsese_1_1net_1_1http_1_1_header" id="r_aa1e1119ac01933efc5e949cf8c3528af"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#aa1e1119ac01933efc5e949cf8c3528af">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">Header</a> &gt;</td></tr>
+<tr class="separator:aa1e1119ac01933efc5e949cf8c3528af inherit pub_types_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6067546e2e5f6685cb194ea47042a2ca inherit pub_types_classsese_1_1net_1_1http_1_1_header" id="r_a6067546e2e5f6685cb194ea47042a2ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a6067546e2e5f6685cb194ea47042a2ca">KeyValueType</a> = std::pair&lt; std::string, std::string &gt;</td></tr>
+<tr class="separator:a6067546e2e5f6685cb194ea47042a2ca inherit pub_types_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a3f8a783ec95d938a72d6389e8ec00d78" id="r_a3f8a783ec95d938a72d6389e8ec00d78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a3f8a783ec95d938a72d6389e8ec00d78">RequestHeader</a> ()=default</td></tr>
+<tr class="separator:a3f8a783ec95d938a72d6389e8ec00d78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36c545ba5c543d82c4676363981ce6fd" id="r_a36c545ba5c543d82c4676363981ce6fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a36c545ba5c543d82c4676363981ce6fd">RequestHeader</a> (const std::initializer_list&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a6067546e2e5f6685cb194ea47042a2ca">KeyValueType</a> &gt; &amp;initializer_list)</td></tr>
+<tr class="separator:a36c545ba5c543d82c4676363981ce6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3fd43f0bae6eb2124d4d800ef3912d1" id="r_ae3fd43f0bae6eb2124d4d800ef3912d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">RequestType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#ae3fd43f0bae6eb2124d4d800ef3912d1">getType</a> () const</td></tr>
+<tr class="separator:ae3fd43f0bae6eb2124d4d800ef3912d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ba4666d221b05021bf448d7a8a09f5" id="r_ab6ba4666d221b05021bf448d7a8a09f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#ab6ba4666d221b05021bf448d7a8a09f5">setType</a> (<a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">RequestType</a> request_type)</td></tr>
+<tr class="separator:ab6ba4666d221b05021bf448d7a8a09f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9792796d22e4b4568e5d2e8b5aaa9ac" id="r_ac9792796d22e4b4568e5d2e8b5aaa9ac"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#ac9792796d22e4b4568e5d2e8b5aaa9ac">getUrl</a> () const</td></tr>
+<tr class="separator:ac9792796d22e4b4568e5d2e8b5aaa9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0b3fff806e005284e7b990a5f2a831" id="r_a3d0b3fff806e005284e7b990a5f2a831"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a3d0b3fff806e005284e7b990a5f2a831">setUrl</a> (const std::string &amp;request_url)</td></tr>
+<tr class="separator:a3d0b3fff806e005284e7b990a5f2a831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c71c337536876a8c0bb4896ff394780" id="r_a9c71c337536876a8c0bb4896ff394780"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">HttpVersion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a9c71c337536876a8c0bb4896ff394780">getVersion</a> () const</td></tr>
+<tr class="separator:a9c71c337536876a8c0bb4896ff394780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b015acdb9d3a405f8c793f4c0907dfc" id="r_a8b015acdb9d3a405f8c793f4c0907dfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a8b015acdb9d3a405f8c793f4c0907dfc">setVersion</a> (<a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">HttpVersion</a> new_version)</td></tr>
+<tr class="separator:a8b015acdb9d3a405f8c793f4c0907dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1net_1_1http_1_1_header"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1net_1_1http_1_1_header')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td></tr>
+<tr class="memitem:a5c3d0b290f22fa67df396439c61de2bc inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a5c3d0b290f22fa67df396439c61de2bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a5c3d0b290f22fa67df396439c61de2bc">Header</a> ()=default</td></tr>
+<tr class="separator:a5c3d0b290f22fa67df396439c61de2bc inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf473148f0a0d9e8580b0161b1d49f3f inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_aaf473148f0a0d9e8580b0161b1d49f3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#aaf473148f0a0d9e8580b0161b1d49f3f">Header</a> (const std::initializer_list&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a6067546e2e5f6685cb194ea47042a2ca">KeyValueType</a> &gt; &amp;initializer_list) noexcept</td></tr>
+<tr class="separator:aaf473148f0a0d9e8580b0161b1d49f3f inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47afa66fb66a9d48f9e17b70c071f357 inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a47afa66fb66a9d48f9e17b70c071f357"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a47afa66fb66a9d48f9e17b70c071f357">~Header</a> ()=default</td></tr>
+<tr class="separator:a47afa66fb66a9d48f9e17b70c071f357 inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7db37c82bd6015aa16055b0896842ab6 inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a7db37c82bd6015aa16055b0896842ab6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a7db37c82bd6015aa16055b0896842ab6">set</a> (const std::string &amp;key, const std::string &amp;value) noexcept</td></tr>
+<tr class="separator:a7db37c82bd6015aa16055b0896842ab6 inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abda1472443ada4c56c75c376af28bd61 inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_abda1472443ada4c56c75c376af28bd61"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#abda1472443ada4c56c75c376af28bd61">get</a> (const std::string &amp;key, const std::string &amp;default_value) noexcept</td></tr>
+<tr class="separator:abda1472443ada4c56c75c376af28bd61 inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f5da1259d14ff3bb3a3c591eaa1d45 inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_aa1f5da1259d14ff3bb3a3c591eaa1d45"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#aa1f5da1259d14ff3bb3a3c591eaa1d45">begin</a> () noexcept</td></tr>
+<tr class="separator:aa1f5da1259d14ff3bb3a3c591eaa1d45 inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0de7f929e0c2308d21fba1b15e259db3 inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a0de7f929e0c2308d21fba1b15e259db3"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a0de7f929e0c2308d21fba1b15e259db3">end</a> () noexcept</td></tr>
+<tr class="separator:a0de7f929e0c2308d21fba1b15e259db3 inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f16ac94962f129ffd6ea7b647c456fb inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a3f16ac94962f129ffd6ea7b647c456fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a3f16ac94962f129ffd6ea7b647c456fb">clear</a> ()</td></tr>
+<tr class="separator:a3f16ac94962f129ffd6ea7b647c456fb inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18772acaacda337977c884fb40ae09ee inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a18772acaacda337977c884fb40ae09ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a18772acaacda337977c884fb40ae09ee">empty</a> () const</td></tr>
+<tr class="separator:a18772acaacda337977c884fb40ae09ee inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72bcf08f22a546bae75d7a582e9d83fc inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a72bcf08f22a546bae75d7a582e9d83fc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a72bcf08f22a546bae75d7a582e9d83fc">getCookies</a> () const</td></tr>
+<tr class="separator:a72bcf08f22a546bae75d7a582e9d83fc inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa175360bd9ffa572f85b39304028a16b inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_aa175360bd9ffa572f85b39304028a16b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#aa175360bd9ffa572f85b39304028a16b">setCookies</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> &amp;<a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a3772da84907cc494bbebdbf846bb8684">cookies</a>)</td></tr>
+<tr class="separator:aa175360bd9ffa572f85b39304028a16b inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee26bf81a39563de0799e9451ff9c6bc inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_aee26bf81a39563de0799e9451ff9c6bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#aee26bf81a39563de0799e9451ff9c6bc">getCookie</a> (const std::string &amp;name) const</td></tr>
+<tr class="separator:aee26bf81a39563de0799e9451ff9c6bc inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ee2a6d0e0c28ca059d391580db8caac inherit pub_methods_classsese_1_1net_1_1http_1_1_header" id="r_a5ee2a6d0e0c28ca059d391580db8caac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a5ee2a6d0e0c28ca059d391580db8caac">setCookie</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie)</td></tr>
+<tr class="separator:a5ee2a6d0e0c28ca059d391580db8caac inherit pub_methods_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a46282fbdcd8404e769fa061cd4e84eca" id="r_a46282fbdcd8404e769fa061cd4e84eca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">RequestType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a46282fbdcd8404e769fa061cd4e84eca">type</a> = <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325a7528035a93ee69cedb1dbddb2f0bfcc8">RequestType::GET</a></td></tr>
+<tr class="separator:a46282fbdcd8404e769fa061cd4e84eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa355c1d4af17334052ec5438c5d1ffbb" id="r_aa355c1d4af17334052ec5438c5d1ffbb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#aa355c1d4af17334052ec5438c5d1ffbb">url</a> = &quot;/&quot;</td></tr>
+<tr class="separator:aa355c1d4af17334052ec5438c5d1ffbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48534bb1c5f858019585c9d177443e83" id="r_a48534bb1c5f858019585c9d177443e83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">HttpVersion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a48534bb1c5f858019585c9d177443e83">version</a> = <a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8ab4abd26b93226f8ce368709dd09c1eb7">HttpVersion::VERSION_1_1</a></td></tr>
+<tr class="separator:a48534bb1c5f858019585c9d177443e83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classsese_1_1net_1_1http_1_1_header"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classsese_1_1net_1_1http_1_1_header')"><img src="closed.png" alt="-"/>&#160;Protected 属性 继承自 <a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td></tr>
+<tr class="memitem:a4e14f8c962a58da8bc87d40ee4e266c1 inherit pro_attribs_classsese_1_1net_1_1http_1_1_header" id="r_a4e14f8c962a58da8bc87d40ee4e266c1"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a4e14f8c962a58da8bc87d40ee4e266c1">headers</a></td></tr>
+<tr class="separator:a4e14f8c962a58da8bc87d40ee4e266c1 inherit pro_attribs_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3772da84907cc494bbebdbf846bb8684 inherit pro_attribs_classsese_1_1net_1_1http_1_1_header" id="r_a3772da84907cc494bbebdbf846bb8684"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a3772da84907cc494bbebdbf846bb8684">cookies</a> = nullptr</td></tr>
+<tr class="separator:a3772da84907cc494bbebdbf846bb8684 inherit pro_attribs_classsese_1_1net_1_1http_1_1_header"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>请求头类 </p>
+<dl class="section warning"><dt>警告</dt><dd>字段 uri 未进行任何处理（URL + QueryString） </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00034">34</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a033de6191e5f1ccbd70851e6c2c56c74" name="a033de6191e5f1ccbd70851e6c2c56c74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a033de6191e5f1ccbd70851e6c2c56c74">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html#a033de6191e5f1ccbd70851e6c2c56c74">sese::net::http::RequestHeader::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1net_1_1http_1_1_request_header.html">RequestHeader</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00036">36</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a3f8a783ec95d938a72d6389e8ec00d78" name="a3f8a783ec95d938a72d6389e8ec00d78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8a783ec95d938a72d6389e8ec00d78">&#9670;&#160;</a></span>RequestHeader() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::net::http::RequestHeader::RequestHeader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36c545ba5c543d82c4676363981ce6fd" name="a36c545ba5c543d82c4676363981ce6fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36c545ba5c543d82c4676363981ce6fd">&#9670;&#160;</a></span>RequestHeader() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::net::http::RequestHeader::RequestHeader </td>
+          <td>(</td>
+          <td class="paramtype">const std::initializer_list&lt; <a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a6067546e2e5f6685cb194ea47042a2ca">KeyValueType</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>initializer_list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00040">40</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>        : <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a5c3d0b290f22fa67df396439c61de2bc">Header</a>(initializer_list) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ae3fd43f0bae6eb2124d4d800ef3912d1" name="ae3fd43f0bae6eb2124d4d800ef3912d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3fd43f0bae6eb2124d4d800ef3912d1">&#9670;&#160;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">RequestType</a> sese::net::http::RequestHeader::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00043">43</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#a46282fbdcd8404e769fa061cd4e84eca">type</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac9792796d22e4b4568e5d2e8b5aaa9ac" name="ac9792796d22e4b4568e5d2e8b5aaa9ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9792796d22e4b4568e5d2e8b5aaa9ac">&#9670;&#160;</a></span>getUrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; sese::net::http::RequestHeader::getUrl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00046">46</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#aa355c1d4af17334052ec5438c5d1ffbb">url</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9c71c337536876a8c0bb4896ff394780" name="a9c71c337536876a8c0bb4896ff394780"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c71c337536876a8c0bb4896ff394780">&#9670;&#160;</a></span>getVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">HttpVersion</a> sese::net::http::RequestHeader::getVersion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00049">49</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#a48534bb1c5f858019585c9d177443e83">version</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab6ba4666d221b05021bf448d7a8a09f5" name="ab6ba4666d221b05021bf448d7a8a09f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ba4666d221b05021bf448d7a8a09f5">&#9670;&#160;</a></span>setType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::net::http::RequestHeader::setType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">RequestType</a>&#160;</td>
+          <td class="paramname"><em>request_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00044">44</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>{ this-&gt;<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#a46282fbdcd8404e769fa061cd4e84eca">type</a> = request_type; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3d0b3fff806e005284e7b990a5f2a831" name="a3d0b3fff806e005284e7b990a5f2a831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d0b3fff806e005284e7b990a5f2a831">&#9670;&#160;</a></span>setUrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::net::http::RequestHeader::setUrl </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>request_url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00047">47</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>{ this-&gt;<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#aa355c1d4af17334052ec5438c5d1ffbb">url</a> = request_url; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8b015acdb9d3a405f8c793f4c0907dfc" name="a8b015acdb9d3a405f8c793f4c0907dfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b015acdb9d3a405f8c793f4c0907dfc">&#9670;&#160;</a></span>setVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::net::http::RequestHeader::setVersion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">HttpVersion</a>&#160;</td>
+          <td class="paramname"><em>new_version</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00050">50</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>{ this-&gt;<a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_request_header.html#a48534bb1c5f858019585c9d177443e83">version</a> = new_version; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a46282fbdcd8404e769fa061cd4e84eca" name="a46282fbdcd8404e769fa061cd4e84eca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46282fbdcd8404e769fa061cd4e84eca">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325">RequestType</a> sese::net::http::RequestHeader::type = <a class="el" href="namespacesese_1_1net_1_1http.html#a20c34f00a2c16ad06f8e39d863a3d325a7528035a93ee69cedb1dbddb2f0bfcc8">RequestType::GET</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00053">53</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa355c1d4af17334052ec5438c5d1ffbb" name="aa355c1d4af17334052ec5438c5d1ffbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa355c1d4af17334052ec5438c5d1ffbb">&#9670;&#160;</a></span>url</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::net::http::RequestHeader::url = &quot;/&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00054">54</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a48534bb1c5f858019585c9d177443e83" name="a48534bb1c5f858019585c9d177443e83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48534bb1c5f858019585c9d177443e83">&#9670;&#160;</a></span>version</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8">HttpVersion</a> sese::net::http::RequestHeader::version = <a class="el" href="namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8ab4abd26b93226f8ce368709dd09c1eb7">HttpVersion::VERSION_1_1</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_request_header_8h_source.html">RequestHeader.h</a> 第 <a class="el" href="_request_header_8h_source.html#l00055">55</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/net/http/<a class="el" href="_request_header_8h_source.html">RequestHeader.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

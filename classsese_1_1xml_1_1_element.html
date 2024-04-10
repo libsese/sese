@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::xml::Element类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1xml.html">xml</a></li><li class="navelem"><a class="el" href="classsese_1_1xml_1_1_element.html">Element</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="classsese_1_1xml_1_1_element-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::xml::Element类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>XML 元素对象  
+ <a href="classsese_1_1xml_1_1_element.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_xml_types_8h_source.html">XmlTypes.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a2dce7b69c82656fbf6557d044f6cd67d" id="r_a2dce7b69c82656fbf6557d044f6cd67d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1xml_1_1_element.html">Element</a> &gt;</td></tr>
+<tr class="separator:a2dce7b69c82656fbf6557d044f6cd67d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bef345d8cb6de6613aa48eb483d2379" id="r_a0bef345d8cb6de6613aa48eb483d2379"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a> = std::map&lt; std::string, std::string &gt;</td></tr>
+<tr class="separator:a0bef345d8cb6de6613aa48eb483d2379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a57dbdb4446a027a6662f2824f7218" id="r_a09a57dbdb4446a027a6662f2824f7218"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">SubType</a> = std::vector&lt; <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &gt;</td></tr>
+<tr class="separator:a09a57dbdb4446a027a6662f2824f7218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ad0e436955e43cafca6f1d61ac2942767" id="r_ad0e436955e43cafca6f1d61ac2942767"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#ad0e436955e43cafca6f1d61ac2942767">Element</a> (const std::string &amp;name)</td></tr>
+<tr class="separator:ad0e436955e43cafca6f1d61ac2942767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d786e82d8b8fd9ace03d4a741f84cc5" id="r_a8d786e82d8b8fd9ace03d4a741f84cc5"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a8d786e82d8b8fd9ace03d4a741f84cc5">getName</a> () const</td></tr>
+<tr class="separator:a8d786e82d8b8fd9ace03d4a741f84cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a415adc939795fb40dc719aba14f9f68d" id="r_a415adc939795fb40dc719aba14f9f68d"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a415adc939795fb40dc719aba14f9f68d">getValue</a> () const</td></tr>
+<tr class="separator:a415adc939795fb40dc719aba14f9f68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e00787e9911845f3d139afbb89b7e6" id="r_ad3e00787e9911845f3d139afbb89b7e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#ad3e00787e9911845f3d139afbb89b7e6">setValue</a> (std::string var)</td></tr>
+<tr class="separator:ad3e00787e9911845f3d139afbb89b7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec237e06d69b55fb22fb4ff54affbab8" id="r_aec237e06d69b55fb22fb4ff54affbab8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">AttrType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#aec237e06d69b55fb22fb4ff54affbab8">getAttributes</a> () const</td></tr>
+<tr class="separator:aec237e06d69b55fb22fb4ff54affbab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90c801eef93312b2b20d1feb2f1438f0" id="r_a90c801eef93312b2b20d1feb2f1438f0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">SubType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a90c801eef93312b2b20d1feb2f1438f0">getElements</a> () const</td></tr>
+<tr class="separator:a90c801eef93312b2b20d1feb2f1438f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8e2112cacd14c7adab6f45f48c32d50" id="r_ae8e2112cacd14c7adab6f45f48c32d50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#ae8e2112cacd14c7adab6f45f48c32d50">addElement</a> (const <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;element)</td></tr>
+<tr class="separator:ae8e2112cacd14c7adab6f45f48c32d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a725ab6f2384bdbd84f922eedef886dd1" id="r_a725ab6f2384bdbd84f922eedef886dd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a725ab6f2384bdbd84f922eedef886dd1">setAttribute</a> (const std::string &amp;name, const std::string &amp;value)</td></tr>
+<tr class="separator:a725ab6f2384bdbd84f922eedef886dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4326eabdf8a0ced3af75f67f608f40b6" id="r_a4326eabdf8a0ced3af75f67f608f40b6"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a4326eabdf8a0ced3af75f67f608f40b6">getAttribute</a> (const std::string &amp;name, const std::string &amp;default_value) const</td></tr>
+<tr class="separator:a4326eabdf8a0ced3af75f67f608f40b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25d1cd141bcdd67e6a6b64a17fae942a" id="r_a25d1cd141bcdd67e6a6b64a17fae942a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a25d1cd141bcdd67e6a6b64a17fae942a">removeAttribute</a> (const std::string &amp;name)</td></tr>
+<tr class="separator:a25d1cd141bcdd67e6a6b64a17fae942a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a11c84c92f6b1612d517426f766fa1a3f" id="r_a11c84c92f6b1612d517426f766fa1a3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">SubType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1xml_1_1_element.html#a11c84c92f6b1612d517426f766fa1a3f">elements</a></td></tr>
+<tr class="separator:a11c84c92f6b1612d517426f766fa1a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>XML 元素对象 </p>
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8h_source.html">XmlTypes.h</a> 第 <a class="el" href="_xml_types_8h_source.html#l00019">19</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a0bef345d8cb6de6613aa48eb483d2379" name="a0bef345d8cb6de6613aa48eb483d2379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bef345d8cb6de6613aa48eb483d2379">&#9670;&#160;</a></span>AttrType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">sese::xml::Element::AttrType</a> =  std::map&lt;std::string, std::string&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8h_source.html">XmlTypes.h</a> 第 <a class="el" href="_xml_types_8h_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2dce7b69c82656fbf6557d044f6cd67d" name="a2dce7b69c82656fbf6557d044f6cd67d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dce7b69c82656fbf6557d044f6cd67d">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">sese::xml::Element::Ptr</a> =  std::shared_ptr&lt;<a class="el" href="classsese_1_1xml_1_1_element.html">Element</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8h_source.html">XmlTypes.h</a> 第 <a class="el" href="_xml_types_8h_source.html#l00021">21</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a09a57dbdb4446a027a6662f2824f7218" name="a09a57dbdb4446a027a6662f2824f7218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a57dbdb4446a027a6662f2824f7218">&#9670;&#160;</a></span>SubType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">sese::xml::Element::SubType</a> =  std::vector&lt;<a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8h_source.html">XmlTypes.h</a> 第 <a class="el" href="_xml_types_8h_source.html#l00023">23</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ad0e436955e43cafca6f1d61ac2942767" name="ad0e436955e43cafca6f1d61ac2942767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0e436955e43cafca6f1d61ac2942767">&#9670;&#160;</a></span>Element()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::xml::Element::Element </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00005">5</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>                                      {</div>
+<div class="line"><span class="lineno">    6</span>    this-&gt;name = name;</div>
+<div class="line"><span class="lineno">    7</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ae8e2112cacd14c7adab6f45f48c32d50" name="ae8e2112cacd14c7adab6f45f48c32d50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8e2112cacd14c7adab6f45f48c32d50">&#9670;&#160;</a></span>addElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::xml::Element::addElement </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1xml_1_1_element.html#a2dce7b69c82656fbf6557d044f6cd67d">Element::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00029">29</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>                                                  {</div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="classsese_1_1xml_1_1_element.html#a11c84c92f6b1612d517426f766fa1a3f">elements</a>.push_back(element);</div>
+<div class="line"><span class="lineno">   31</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_xml_types_8h_source.html#l00036">elements</a>.</p>
+
+</div>
+</div>
+<a id="a4326eabdf8a0ced3af75f67f608f40b6" name="a4326eabdf8a0ced3af75f67f608f40b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4326eabdf8a0ced3af75f67f608f40b6">&#9670;&#160;</a></span>getAttribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; sese::xml::Element::getAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>default_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00037">37</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>                                                                                                  {</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> ITERATOR = attributes.find(name); ITERATOR == attributes.end()) {</div>
+<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><span class="lineno">   40</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">return</span> ITERATOR-&gt;second;</div>
+<div class="line"><span class="lineno">   42</span>    }</div>
+<div class="line"><span class="lineno">   43</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aec237e06d69b55fb22fb4ff54affbab8" name="aec237e06d69b55fb22fb4ff54affbab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec237e06d69b55fb22fb4ff54affbab8">&#9670;&#160;</a></span>getAttributes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1xml_1_1_element.html#a0bef345d8cb6de6613aa48eb483d2379">Element::AttrType</a> &amp; sese::xml::Element::getAttributes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00009">9</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    9</span>                                                    {</div>
+<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">return</span> attributes;</div>
+<div class="line"><span class="lineno">   11</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a90c801eef93312b2b20d1feb2f1438f0" name="a90c801eef93312b2b20d1feb2f1438f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90c801eef93312b2b20d1feb2f1438f0">&#9670;&#160;</a></span>getElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">Element::SubType</a> &amp; sese::xml::Element::getElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00013">13</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                 {</div>
+<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1xml_1_1_element.html#a11c84c92f6b1612d517426f766fa1a3f">elements</a>;</div>
+<div class="line"><span class="lineno">   15</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_xml_types_8h_source.html#l00036">elements</a>.</p>
+
+</div>
+</div>
+<a id="a8d786e82d8b8fd9ace03d4a741f84cc5" name="a8d786e82d8b8fd9ace03d4a741f84cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d786e82d8b8fd9ace03d4a741f84cc5">&#9670;&#160;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; sese::xml::Element::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00017">17</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>                                        {</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">return</span> name;</div>
+<div class="line"><span class="lineno">   19</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a415adc939795fb40dc719aba14f9f68d" name="a415adc939795fb40dc719aba14f9f68d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a415adc939795fb40dc719aba14f9f68d">&#9670;&#160;</a></span>getValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; sese::xml::Element::getValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00021">21</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>                                         {</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">return</span> value;</div>
+<div class="line"><span class="lineno">   23</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a25d1cd141bcdd67e6a6b64a17fae942a" name="a25d1cd141bcdd67e6a6b64a17fae942a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25d1cd141bcdd67e6a6b64a17fae942a">&#9670;&#160;</a></span>removeAttribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::xml::Element::removeAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00045">45</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>                                                   {</div>
+<div class="line"><span class="lineno">   46</span>    attributes.erase(name);</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a725ab6f2384bdbd84f922eedef886dd1" name="a725ab6f2384bdbd84f922eedef886dd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a725ab6f2384bdbd84f922eedef886dd1">&#9670;&#160;</a></span>setAttribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::xml::Element::setAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00033">33</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                                        {</div>
+<div class="line"><span class="lineno">   34</span>    attributes[name] = value;</div>
+<div class="line"><span class="lineno">   35</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad3e00787e9911845f3d139afbb89b7e6" name="ad3e00787e9911845f3d139afbb89b7e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e00787e9911845f3d139afbb89b7e6">&#9670;&#160;</a></span>setValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::xml::Element::setValue </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>var</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a> 第 <a class="el" href="_xml_types_8cpp_source.html#l00025">25</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>                                    {</div>
+<div class="line"><span class="lineno">   26</span>    value = std::move(var);</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a11c84c92f6b1612d517426f766fa1a3f" name="a11c84c92f6b1612d517426f766fa1a3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11c84c92f6b1612d517426f766fa1a3f">&#9670;&#160;</a></span>elements</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1xml_1_1_element.html#a09a57dbdb4446a027a6662f2824f7218">SubType</a> sese::xml::Element::elements</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_xml_types_8h_source.html">XmlTypes.h</a> 第 <a class="el" href="_xml_types_8h_source.html#l00036">36</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_xml_types_8cpp_source.html#l00029">addElement()</a> , 以及 <a class="el" href="_xml_types_8cpp_source.html#l00013">getElements()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/config/xml/<a class="el" href="_xml_types_8h_source.html">XmlTypes.h</a></li>
+<li>sese/config/xml/<a class="el" href="_xml_types_8cpp_source.html">XmlTypes.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

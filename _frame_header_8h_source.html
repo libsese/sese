@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/net/dns/FrameHeader.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_114bac163f10ce5b4749d20bfd96922c.html">net</a></li><li class="navelem"><a class="el" href="dir_ece034d7632fbc7245397ad3255ae09e.html">dns</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">FrameHeader.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_frame_header_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma warning(disable : 4251)</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1net_1_1dns.html">sese::net::dns</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html" title="帧标识信息">FrameFlagsInfo</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a881ead234f5cacde68e5f84f98cf5898">   18</a></span>    uint8_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a881ead234f5cacde68e5f84f98cf5898">QR</a> = 0;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a75cbf1fe080cff263611a8e7fead7cc6">   19</a></span>    uint8_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a75cbf1fe080cff263611a8e7fead7cc6">opcode</a> = 0;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a3b44497f0d185331ae31a5cb86a479e5">   20</a></span>    uint8_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a3b44497f0d185331ae31a5cb86a479e5">AA</a> = 0;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#adb69ffdf1838447b3c0998451e8de12d">   21</a></span>    uint8_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#adb69ffdf1838447b3c0998451e8de12d">TC</a> = 0;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a9bcae0ab56c2a33324be5f7352931c87">   22</a></span>    uint8_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a9bcae0ab56c2a33324be5f7352931c87">RD</a> = 0;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a095abf80d0b63b6344dd212d482b9f5b">   23</a></span>    uint8_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a095abf80d0b63b6344dd212d482b9f5b">RA</a> = 0;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a0e0f95c100d6652dc864c17b53b3c174">   24</a></span>    uint8_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a0e0f95c100d6652dc864c17b53b3c174">z</a> = 0;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a14e0a03afd34190d75fba3f8ed3405a0">   25</a></span>    uint8_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a14e0a03afd34190d75fba3f8ed3405a0">rcode</a> = 0;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html">   29</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html" title="帧头信息">FrameHeaderInfo</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#aab9cab63e2e7adabee5cc56ffefd99a1">   30</a></span>    uint16_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#aab9cab63e2e7adabee5cc56ffefd99a1">transactionId</a> = 0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#abcd828134b73a12494e75990a1aa6843">   31</a></span>    <a class="code hl_struct" href="structsese_1_1net_1_1dns_1_1_frame_flags_info.html" title="帧标识信息">FrameFlagsInfo</a> <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#abcd828134b73a12494e75990a1aa6843">flags</a>{};</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#a3e441dbfc029aec5e6776181dbb54cde">   32</a></span>    uint16_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#a3e441dbfc029aec5e6776181dbb54cde">questions</a> = 0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#aa65e249ddac5fcc8f156aca31222bdcd">   33</a></span>    uint16_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#aa65e249ddac5fcc8f156aca31222bdcd">answerPrs</a> = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#a8c4609565009552d6395eb1ab4f92979">   34</a></span>    uint16_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#a8c4609565009552d6395eb1ab4f92979">authorityPrs</a> = 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#a6fbfd2c12bb77691c17f751c3e76b733">   35</a></span>    uint16_t <a class="code hl_variable" href="structsese_1_1net_1_1dns_1_1_frame_header_info.html#a6fbfd2c12bb77691c17f751c3e76b733">additionalPrs</a> = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>} <span class="comment">// namespace sese::net::dns</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a68268522cc2a4516e9cd4733903a748f">   39</a></span><span class="preprocessor">#define SESE_DNS_RCODE_NO_ERROR 0</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a71ef9c7d3ae0557bc71c426ac0a01ace">   40</a></span><span class="preprocessor">#define SESE_DNS_RCODE_FORMAT_ERROR 1</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a502550bc33b4712406055d357c1bde5b">   41</a></span><span class="preprocessor">#define SESE_DNS_RCODE_SERVER_FAILURE 2</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a3005b8111efe2f255060a3a10e380aa2">   42</a></span><span class="preprocessor">#define SESE_DNS_RCODE_NAME_ERROR 3</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#aa966e0cd7240c28ecc3afa0641992e80">   43</a></span><span class="preprocessor">#define SESE_DNS_RCODE_NOT_IMPLEMENTED 4</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a856e6a0c974c62f054b983998bb52bf1">   44</a></span><span class="preprocessor">#define SESE_DNS_RCODE_REFUSED 5</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a4feff532b9921d33a5808ad60160e61c">   46</a></span><span class="preprocessor">#define SESE_DNS_QR_TYPE_A 1</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#aa5566d2a15f34ad2e8ca3fd540d4aa08">   47</a></span><span class="preprocessor">#define SESE_DNS_QR_TYPE_CNAME 5</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a7bc046e9b98e41df5b9856e1c69bb060">   48</a></span><span class="preprocessor">#define SESE_DNS_QR_TYPE_PTR 12</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a9611bacee39279aa6d1c3c60c4c08d67">   49</a></span><span class="preprocessor">#define SESE_DNS_QR_TYPE_HINFO 13</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#ad6a633cf8b1bf59d3ae638725750efaa">   50</a></span><span class="preprocessor">#define SESE_DNS_QR_TYPE_MX 15</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#adc47dd0a6ae844f6a8113801d150ea2d">   51</a></span><span class="preprocessor">#define SESE_DNS_QR_TYPE_AAAA 28</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a9a3c9be74bc00a05e82617e85aca1828">   52</a></span><span class="preprocessor">#define SESE_DNS_QR_TYPE_AXFR 252</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#a06c592bb1794d7030dcd1334a3511983">   53</a></span><span class="preprocessor">#define SESE_DNS_QR_TYPE_ANY 255</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="_frame_header_8h.html#aa9cf2f7690930da0d9965954505f294d">   55</a></span><span class="preprocessor">#define SESE_DNS_QR_CLASS_IN 1</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

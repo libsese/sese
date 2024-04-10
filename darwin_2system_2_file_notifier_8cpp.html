@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/native/darwin/system/FileNotifier.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5a27d73af174e870851ec050345bcb12.html">native</a></li><li class="navelem"><a class="el" href="dir_721b112197b83a06bd31124caf373415.html">darwin</a></li><li class="navelem"><a class="el" href="dir_0ebd3b0d6fb55e6baac6e5283c1eb505.html">system</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">FileNotifier.cpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_file_notifier_8h_source.html">sese/system/FileNotifier.h</a>&quot;</code><br />
+<code>#include &lt;CoreFoundation/CoreFoundation.h&gt;</code><br />
+<code>#include &lt;CoreServices/CoreServices.h&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
+</div>
+<p><a href="darwin_2system_2_file_notifier_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a151d411a92b021e1788a13b9e8818d8e" id="r_a151d411a92b021e1788a13b9e8818d8e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a> (ConstFSEventStreamRef stream, void *info, size_t num_events, void *event_paths, const FSEventStreamEventFlags event_flags[], const FSEventStreamEventId event_ids[])</td></tr>
+<tr class="separator:a151d411a92b021e1788a13b9e8818d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="a151d411a92b021e1788a13b9e8818d8e" name="a151d411a92b021e1788a13b9e8818d8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a151d411a92b021e1788a13b9e8818d8e">&#9670;&#160;</a></span>callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void callback </td>
+          <td>(</td>
+          <td class="paramtype">ConstFSEventStreamRef&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num_events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>event_paths</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FSEventStreamEventFlags&#160;</td>
+          <td class="paramname"><em>event_flags</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FSEventStreamEventId&#160;</td>
+          <td class="paramname"><em>event_ids</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html">FileNotifier.cpp</a> 第 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00007">7</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>  {</div>
+<div class="line"><span class="lineno">   15</span>    <span class="keyword">auto</span> option = (<a class="code hl_struct" href="structsese_1_1system_1_1_file_notify_option.html" title="文件变更回调选项类">sese::system::FileNotifyOption</a> *) info;</div>
+<div class="line"><span class="lineno">   16</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *last_src = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   17</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; num_events; ++i) {</div>
+<div class="line"><span class="lineno">   18</span>        <span class="keyword">auto</span> dict = (CFDictionaryRef) CFArrayGetValueAtIndex((CFArrayRef) event_paths, (CFIndex) i);</div>
+<div class="line"><span class="lineno">   19</span>        <span class="keyword">auto</span> path = (CFStringRef) CFDictionaryGetValue(dict, kFSEventStreamEventExtendedDataPathKey);</div>
+<div class="line"><span class="lineno">   20</span>        <span class="keyword">auto</span> src = CFStringGetCStringPtr(path, kCFStringEncodingUTF8);</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">if</span> (event_flags[i] &amp; kFSEventStreamEventFlagItemCreated) {</div>
+<div class="line"><span class="lineno">   23</span>            <span class="keyword">auto</span> len = std::string_view(src).find_last_of(<span class="charliteral">&#39;/&#39;</span>) + 1;</div>
+<div class="line"><span class="lineno">   24</span>            option-&gt;onCreate(src + len);</div>
+<div class="line"><span class="lineno">   25</span>        }</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">if</span> (event_flags[i] &amp; kFSEventStreamEventFlagItemModified) {</div>
+<div class="line"><span class="lineno">   27</span>            <span class="keyword">auto</span> len = std::string_view(src).find_last_of(<span class="charliteral">&#39;/&#39;</span>) + 1;</div>
+<div class="line"><span class="lineno">   28</span>            option-&gt;onModify(src + len);</div>
+<div class="line"><span class="lineno">   29</span>        }</div>
+<div class="line"><span class="lineno">   30</span>        <span class="keywordflow">if</span> (event_flags[i] &amp; kFSEventStreamEventFlagItemRenamed) {</div>
+<div class="line"><span class="lineno">   31</span>            <span class="keywordflow">if</span> (last_src) {</div>
+<div class="line"><span class="lineno">   32</span>                <span class="keyword">auto</span> len0 = std::string_view(last_src).find_last_of(<span class="charliteral">&#39;/&#39;</span>) + 1;</div>
+<div class="line"><span class="lineno">   33</span>                <span class="keyword">auto</span> len1 = std::string_view(src).find_last_of(<span class="charliteral">&#39;/&#39;</span>) + 1;</div>
+<div class="line"><span class="lineno">   34</span>                option-&gt;onMove(last_src + len0, src + len1);</div>
+<div class="line"><span class="lineno">   35</span>                last_src = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   36</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   37</span>                last_src = src;</div>
+<div class="line"><span class="lineno">   38</span>            }</div>
+<div class="line"><span class="lineno">   39</span>        }</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">if</span> (event_flags[i] &amp; kFSEventStreamEventFlagItemRemoved) {</div>
+<div class="line"><span class="lineno">   41</span>            <span class="keyword">auto</span> len = std::string_view(src).find_last_of(<span class="charliteral">&#39;/&#39;</span>) + 1;</div>
+<div class="line"><span class="lineno">   42</span>            option-&gt;onDelete(src + len);</div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+<div class="line"><span class="lineno">   44</span>    }</div>
+<div class="line"><span class="lineno">   45</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00049">sese::system::FileNotifier::create()</a>, <a class="el" href="_timer_8cpp_source.html#l00034">sese::Timer::delay()</a>, <a class="el" href="_time_wheel_8cpp_source.html#l00035">sese::TimeWheel::delay()</a>, <a class="el" href="_archive_reader_8cpp_source.html#l00140">sese::archive::ArchiveReader::extract()</a>, <a class="el" href="_native_i_o_c_p_server___v1_8h_source.html#l00255">sese::_windows::iocp::v1::NativeIOCPServer::setDeleteContextCallback()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00163">sese::iocp::v1::IOCPServer::setDeleteContextCallback()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

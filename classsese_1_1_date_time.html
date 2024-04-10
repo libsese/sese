@@ -1,0 +1,991 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::DateTime类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_date_time.html">DateTime</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1_date_time-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::DateTime类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>日期时间类  
+ <a href="classsese_1_1_date_time.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_date_time_8h_source.html">DateTime.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:afe8f3e05ca49a55bbf784579f9652045" id="r_afe8f3e05ca49a55bbf784579f9652045"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">Policy</a> { <a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a8b4a8d008779c2d127d8104654ab6b87">ONLY_CREATE</a>
+, <a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">FORMAT</a>
+ }</td></tr>
+<tr class="memdesc:afe8f3e05ca49a55bbf784579f9652045"><td class="mdescLeft">&#160;</td><td class="mdescRight">日期创建策略  <a href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">更多...</a><br /></td></tr>
+<tr class="separator:afe8f3e05ca49a55bbf784579f9652045"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a026f09a60bd1cb66c51cf147a35a7fb1" id="r_a026f09a60bd1cb66c51cf147a35a7fb1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &gt;</td></tr>
+<tr class="separator:a026f09a60bd1cb66c51cf147a35a7fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a117ae22d36673ce8747c68c4c0cecb55" id="r_a117ae22d36673ce8747c68c4c0cecb55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a117ae22d36673ce8747c68c4c0cecb55">DateTime</a> () noexcept=default</td></tr>
+<tr class="separator:a117ae22d36673ce8747c68c4c0cecb55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4dd7749813b569b6f26906b259166d" id="r_acf4dd7749813b569b6f26906b259166d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#acf4dd7749813b569b6f26906b259166d">DateTime</a> (uint64_t timestamp, int32_t utc=<a class="el" href="_config_8h.html#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a>, <a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">Policy</a> policy=<a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">Policy::FORMAT</a>) noexcept</td></tr>
+<tr class="separator:acf4dd7749813b569b6f26906b259166d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0031775e2a88999acd1b6be4d00dc852" id="r_a0031775e2a88999acd1b6be4d00dc852"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a0031775e2a88999acd1b6be4d00dc852">isLeapYear</a> () const noexcept</td></tr>
+<tr class="separator:a0031775e2a88999acd1b6be4d00dc852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14d1bd26d8848eaa2c5405bc91b469e8" id="r_a14d1bd26d8848eaa2c5405bc91b469e8"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a14d1bd26d8848eaa2c5405bc91b469e8">getYears</a> () const noexcept</td></tr>
+<tr class="separator:a14d1bd26d8848eaa2c5405bc91b469e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a8507a46f6513e5d093dcee431dd81" id="r_ad1a8507a46f6513e5d093dcee431dd81"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#ad1a8507a46f6513e5d093dcee431dd81">getMonths</a> () const noexcept</td></tr>
+<tr class="separator:ad1a8507a46f6513e5d093dcee431dd81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7b30b4ba08f203c843c99d0f3ba2926" id="r_aa7b30b4ba08f203c843c99d0f3ba2926"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#aa7b30b4ba08f203c843c99d0f3ba2926">getDays</a> () const noexcept</td></tr>
+<tr class="separator:aa7b30b4ba08f203c843c99d0f3ba2926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39e672c1afa89072d4145a92a01a3ecf" id="r_a39e672c1afa89072d4145a92a01a3ecf"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a39e672c1afa89072d4145a92a01a3ecf">getHours</a> () const noexcept</td></tr>
+<tr class="separator:a39e672c1afa89072d4145a92a01a3ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9675830dac253a61e8d37c680301634a" id="r_a9675830dac253a61e8d37c680301634a"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a9675830dac253a61e8d37c680301634a">getMinutes</a> () const noexcept</td></tr>
+<tr class="separator:a9675830dac253a61e8d37c680301634a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd06f0ecf92bcce45415161f6da2507" id="r_a5dd06f0ecf92bcce45415161f6da2507"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a5dd06f0ecf92bcce45415161f6da2507">getSeconds</a> () const noexcept</td></tr>
+<tr class="separator:a5dd06f0ecf92bcce45415161f6da2507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdc1506bdec62088683b09b8fa5ebff2" id="r_acdc1506bdec62088683b09b8fa5ebff2"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#acdc1506bdec62088683b09b8fa5ebff2">getMilliseconds</a> () const noexcept</td></tr>
+<tr class="separator:acdc1506bdec62088683b09b8fa5ebff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24ef6711a261a18b4b37e9a72f9a7cd6" id="r_a24ef6711a261a18b4b37e9a72f9a7cd6"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a24ef6711a261a18b4b37e9a72f9a7cd6">getMicroseconds</a> () const noexcept</td></tr>
+<tr class="separator:a24ef6711a261a18b4b37e9a72f9a7cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad44ecf008a6a7c8e5926b82c009b6e4c" id="r_ad44ecf008a6a7c8e5926b82c009b6e4c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#ad44ecf008a6a7c8e5926b82c009b6e4c">getUTC</a> () const noexcept</td></tr>
+<tr class="separator:ad44ecf008a6a7c8e5926b82c009b6e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34bdf744800109c3fdf175b419f6e1ca" id="r_a34bdf744800109c3fdf175b419f6e1ca"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a34bdf744800109c3fdf175b419f6e1ca">getDayOfWeek</a> () const noexcept</td></tr>
+<tr class="separator:a34bdf744800109c3fdf175b419f6e1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3612ed47eb2c9bb1b0352498bd352473" id="r_a3612ed47eb2c9bb1b0352498bd352473"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a3612ed47eb2c9bb1b0352498bd352473">getDayOfYear</a> () const noexcept</td></tr>
+<tr class="separator:a3612ed47eb2c9bb1b0352498bd352473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc773aa35b46df851a8b5487c1aadf3f" id="r_abc773aa35b46df851a8b5487c1aadf3f"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#abc773aa35b46df851a8b5487c1aadf3f">getTimestamp</a> () const noexcept</td></tr>
+<tr class="separator:abc773aa35b46df851a8b5487c1aadf3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30f482e00e06437810a05e895ec28143" id="r_a30f482e00e06437810a05e895ec28143"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_time_span.html">TimeSpan</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a30f482e00e06437810a05e895ec28143">operator-</a> (const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;date_time) const noexcept</td></tr>
+<tr class="separator:a30f482e00e06437810a05e895ec28143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0acfa657139ea951ceaaad665c3e580" id="r_af0acfa657139ea951ceaaad665c3e580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_date_time.html">DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#af0acfa657139ea951ceaaad665c3e580">operator-</a> (const <a class="el" href="classsese_1_1_time_span.html">TimeSpan</a> &amp;time_span) const noexcept</td></tr>
+<tr class="separator:af0acfa657139ea951ceaaad665c3e580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b90e66cfdd11919f358ddb00fdbe07d" id="r_a6b90e66cfdd11919f358ddb00fdbe07d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_date_time.html">DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a6b90e66cfdd11919f358ddb00fdbe07d">operator+</a> (const <a class="el" href="classsese_1_1_time_span.html">TimeSpan</a> &amp;time_span) const noexcept</td></tr>
+<tr class="separator:a6b90e66cfdd11919f358ddb00fdbe07d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac14abb2bf5468a5cc9772db8476c1cfa" id="r_ac14abb2bf5468a5cc9772db8476c1cfa"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#ac14abb2bf5468a5cc9772db8476c1cfa">compareTo</a> (const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;date_time) const noexcept</td></tr>
+<tr class="memdesc:ac14abb2bf5468a5cc9772db8476c1cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">精细比较  <br /></td></tr>
+<tr class="separator:ac14abb2bf5468a5cc9772db8476c1cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac360f58f4eda9a46cb1bd3832372de2" id="r_aac360f58f4eda9a46cb1bd3832372de2"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#aac360f58f4eda9a46cb1bd3832372de2">unclearCompareTo</a> (const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;date_time) const noexcept</td></tr>
+<tr class="memdesc:aac360f58f4eda9a46cb1bd3832372de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">粗略比较  <br /></td></tr>
+<tr class="separator:aac360f58f4eda9a46cb1bd3832372de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a3b3cb8069c211fd2355c6b1a8d4d7c16" id="r_a3b3cb8069c211fd2355c6b1a8d4d7c16"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_date_time.html">DateTime</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">now</a> (int32_t utc=<a class="el" href="_config_8h.html#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a>, <a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">Policy</a> policy=<a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">Policy::FORMAT</a>) noexcept</td></tr>
+<tr class="separator:a3b3cb8069c211fd2355c6b1a8d4d7c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2aee023addef2fd44aaffed0502d403" id="r_ad2aee023addef2fd44aaffed0502d403"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">DateTime::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_date_time.html#ad2aee023addef2fd44aaffed0502d403">nowPtr</a> (int32_t utc=<a class="el" href="_config_8h.html#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a>, <a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">Policy</a> policy=<a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">Policy::FORMAT</a>) noexcept</td></tr>
+<tr class="separator:ad2aee023addef2fd44aaffed0502d403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>日期时间类 </p>
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00029">29</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a026f09a60bd1cb66c51cf147a35a7fb1" name="a026f09a60bd1cb66c51cf147a35a7fb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a026f09a60bd1cb66c51cf147a35a7fb1">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">sese::DateTime::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1_date_time.html">DateTime</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00031">31</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员枚举类型说明</h2>
+<a id="afe8f3e05ca49a55bbf784579f9652045" name="afe8f3e05ca49a55bbf784579f9652045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe8f3e05ca49a55bbf784579f9652045">&#9670;&#160;</a></span>Policy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">sese::DateTime::Policy</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>日期创建策略 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="afe8f3e05ca49a55bbf784579f9652045a8b4a8d008779c2d127d8104654ab6b87" name="afe8f3e05ca49a55bbf784579f9652045a8b4a8d008779c2d127d8104654ab6b87"></a>ONLY_CREATE&#160;</td><td class="fielddoc"><p>仅仅创建时间戳而不解析为人类可阅读的时间格式 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2" name="afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2"></a>FORMAT&#160;</td><td class="fielddoc"><p>创建时间戳的同时解析成可阅读的格式 </p>
+</td></tr>
+</table>
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00036">36</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>                      {</div>
+<div class="line"><span class="lineno">   38</span>        <a class="code hl_enumvalue" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a8b4a8d008779c2d127d8104654ab6b87" title="仅仅创建时间戳而不解析为人类可阅读的时间格式">ONLY_CREATE</a>,</div>
+<div class="line"><span class="lineno">   40</span>        <a class="code hl_enumvalue" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2" title="创建时间戳的同时解析成可阅读的格式">FORMAT</a></div>
+<div class="line"><span class="lineno">   41</span>    };</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a117ae22d36673ce8747c68c4c0cecb55" name="a117ae22d36673ce8747c68c4c0cecb55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a117ae22d36673ce8747c68c4c0cecb55">&#9670;&#160;</a></span>DateTime() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::DateTime::DateTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf4dd7749813b569b6f26906b259166d" name="acf4dd7749813b569b6f26906b259166d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf4dd7749813b569b6f26906b259166d">&#9670;&#160;</a></span>DateTime() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::DateTime::DateTime </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>utc</em> = <code><a class="el" href="_config_8h.html#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">Policy</a>&#160;</td>
+          <td class="paramname"><em>policy</em> = <code><a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">Policy::FORMAT</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a> 第 <a class="el" href="_date_time_8cpp_source.html#l00024">24</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>                                                                          {</div>
+<div class="line"><span class="lineno">   25</span>    this-&gt;utc = utc;</div>
+<div class="line"><span class="lineno">   26</span>    this-&gt;timestamp = timestamp;</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span> (policy == <a class="code hl_enumvalue" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2" title="创建时间戳的同时解析成可阅读的格式">Policy::FORMAT</a>) {</div>
+<div class="line"><span class="lineno">   29</span>        <span class="keyword">auto</span> total_seconds = timestamp / 1000 / 1000;</div>
+<div class="line"><span class="lineno">   30</span>        total_seconds += utc * 60 * 60;</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>        {</div>
+<div class="line"><span class="lineno">   33</span><span class="preprocessor">#ifndef SESE_PLATFORM_APPLE</span></div>
+<div class="line"><span class="lineno">   34</span>            <span class="keyword">auto</span> time = <span class="keyword">static_cast&lt;</span>int64_t<span class="keyword">&gt;</span>(total_seconds);</div>
+<div class="line"><span class="lineno">   35</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">   36</span>            <span class="keyword">auto</span> time = <span class="keyword">static_cast&lt;</span>time_t<span class="keyword">&gt;</span>(total_seconds);</div>
+<div class="line"><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   38</span><span class="preprocessor">#ifdef SESE_PLATFORM_WINDOWS</span></div>
+<div class="line"><span class="lineno">   39</span>            tm tm{};</div>
+<div class="line"><span class="lineno">   40</span>            gmtime_s(&amp;tm, &amp;time);</div>
+<div class="line"><span class="lineno">   41</span>            this-&gt;years = tm.tm_year + 1900;</div>
+<div class="line"><span class="lineno">   42</span>            this-&gt;months = tm.tm_mon + 1;</div>
+<div class="line"><span class="lineno">   43</span>            this-&gt;days = tm.tm_mday;</div>
+<div class="line"><span class="lineno">   44</span>            this-&gt;hours = tm.tm_hour;</div>
+<div class="line"><span class="lineno">   45</span>            this-&gt;minutes = tm.tm_min;</div>
+<div class="line"><span class="lineno">   46</span>            this-&gt;seconds = tm.tm_sec;</div>
+<div class="line"><span class="lineno">   47</span>            this-&gt;dayofweek = tm.tm_wday;</div>
+<div class="line"><span class="lineno">   48</span>            this-&gt;dayofyear = tm.tm_yday;</div>
+<div class="line"><span class="lineno">   49</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">   50</span>            <span class="keyword">auto</span> tm = gmtime(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>time_t *<span class="keyword">&gt;</span>(&amp;time));</div>
+<div class="line"><span class="lineno">   51</span>            this-&gt;years = tm-&gt;tm_year + 1900;</div>
+<div class="line"><span class="lineno">   52</span>            this-&gt;months = tm-&gt;tm_mon + 1;</div>
+<div class="line"><span class="lineno">   53</span>            this-&gt;days = tm-&gt;tm_mday;</div>
+<div class="line"><span class="lineno">   54</span>            this-&gt;hours = tm-&gt;tm_hour;</div>
+<div class="line"><span class="lineno">   55</span>            this-&gt;minutes = tm-&gt;tm_min;</div>
+<div class="line"><span class="lineno">   56</span>            this-&gt;seconds = tm-&gt;tm_sec;</div>
+<div class="line"><span class="lineno">   57</span>            this-&gt;dayofweek = tm-&gt;tm_wday;</div>
+<div class="line"><span class="lineno">   58</span>            this-&gt;dayofyear = tm-&gt;tm_yday;</div>
+<div class="line"><span class="lineno">   59</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   60</span>        }</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>        {</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keyword">auto</span> y = this-&gt;years;</div>
+<div class="line"><span class="lineno">   64</span>            <span class="keyword">auto</span> u = timestamp % (1000 * 1000);</div>
+<div class="line"><span class="lineno">   65</span>            this-&gt;isLeap = ((y % 4 == 0 &amp;&amp; y % 100 != 0) || y % 400 == 0);</div>
+<div class="line"><span class="lineno">   66</span>            this-&gt;milliseconds = (int32_t) ((int64_t) u / 1000);</div>
+<div class="line"><span class="lineno">   67</span>            this-&gt;microseconds = (int32_t) ((int64_t) u % 1000);</div>
+<div class="line"><span class="lineno">   68</span>        }</div>
+<div class="line"><span class="lineno">   69</span>    }</div>
+<div class="line"><span class="lineno">   70</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ac14abb2bf5468a5cc9772db8476c1cfa" name="ac14abb2bf5468a5cc9772db8476c1cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac14abb2bf5468a5cc9772db8476c1cfa">&#9670;&#160;</a></span>compareTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::compareTo </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;&#160;</td>
+          <td class="paramname"><em>date_time</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>精细比较 </p>
+
+<p class="definition">在文件 <a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a> 第 <a class="el" href="_date_time_8cpp_source.html#l00072">72</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>                                                                    {</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keyword">auto</span> rt = (int64_t) this-&gt;timestamp - (int64_t) date_time.timestamp;</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (rt &lt; 0) {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">   76</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (rt &gt; 0) {</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">   78</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a34bdf744800109c3fdf175b419f6e1ca" name="a34bdf744800109c3fdf175b419f6e1ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34bdf744800109c3fdf175b419f6e1ca">&#9670;&#160;</a></span>getDayOfWeek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getDayOfWeek </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00062">62</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{ <span class="keywordflow">return</span> this-&gt;dayofweek; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="a3612ed47eb2c9bb1b0352498bd352473" name="a3612ed47eb2c9bb1b0352498bd352473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3612ed47eb2c9bb1b0352498bd352473">&#9670;&#160;</a></span>getDayOfYear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getDayOfYear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00063">63</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>{ <span class="keywordflow">return</span> this-&gt;dayofyear; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa7b30b4ba08f203c843c99d0f3ba2926" name="aa7b30b4ba08f203c843c99d0f3ba2926"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7b30b4ba08f203c843c99d0f3ba2926">&#9670;&#160;</a></span>getDays()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getDays </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00055">55</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>{ <span class="keywordflow">return</span> this-&gt;days; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="a39e672c1afa89072d4145a92a01a3ecf" name="a39e672c1afa89072d4145a92a01a3ecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e672c1afa89072d4145a92a01a3ecf">&#9670;&#160;</a></span>getHours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getHours </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00056">56</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{ <span class="keywordflow">return</span> this-&gt;hours; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="a24ef6711a261a18b4b37e9a72f9a7cd6" name="a24ef6711a261a18b4b37e9a72f9a7cd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24ef6711a261a18b4b37e9a72f9a7cd6">&#9670;&#160;</a></span>getMicroseconds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getMicroseconds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00060">60</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{ <span class="keywordflow">return</span> this-&gt;microseconds; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="acdc1506bdec62088683b09b8fa5ebff2" name="acdc1506bdec62088683b09b8fa5ebff2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdc1506bdec62088683b09b8fa5ebff2">&#9670;&#160;</a></span>getMilliseconds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getMilliseconds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00059">59</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{ <span class="keywordflow">return</span> this-&gt;milliseconds; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="a9675830dac253a61e8d37c680301634a" name="a9675830dac253a61e8d37c680301634a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9675830dac253a61e8d37c680301634a">&#9670;&#160;</a></span>getMinutes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getMinutes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00057">57</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>{ <span class="keywordflow">return</span> this-&gt;minutes; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="ad1a8507a46f6513e5d093dcee431dd81" name="ad1a8507a46f6513e5d093dcee431dd81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1a8507a46f6513e5d093dcee431dd81">&#9670;&#160;</a></span>getMonths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getMonths </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00054">54</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{ <span class="keywordflow">return</span> this-&gt;months; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="a5dd06f0ecf92bcce45415161f6da2507" name="a5dd06f0ecf92bcce45415161f6da2507"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dd06f0ecf92bcce45415161f6da2507">&#9670;&#160;</a></span>getSeconds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getSeconds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00058">58</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{ <span class="keywordflow">return</span> this-&gt;seconds; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="abc773aa35b46df851a8b5487c1aadf3f" name="abc773aa35b46df851a8b5487c1aadf3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc773aa35b46df851a8b5487c1aadf3f">&#9670;&#160;</a></span>getTimestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t sese::DateTime::getTimestamp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00064">64</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>{ <span class="keywordflow">return</span> this-&gt;timestamp; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_8cpp_source.html#l00104">operator+()</a> , 以及 <a class="el" href="_date_time_8cpp_source.html#l00100">operator-()</a>.</p>
+
+</div>
+</div>
+<a id="ad44ecf008a6a7c8e5926b82c009b6e4c" name="ad44ecf008a6a7c8e5926b82c009b6e4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad44ecf008a6a7c8e5926b82c009b6e4c">&#9670;&#160;</a></span>getUTC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getUTC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00061">61</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>{ <span class="keywordflow">return</span> this-&gt;utc; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="a14d1bd26d8848eaa2c5405bc91b469e8" name="a14d1bd26d8848eaa2c5405bc91b469e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14d1bd26d8848eaa2c5405bc91b469e8">&#9670;&#160;</a></span>getYears()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::getYears </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00053">53</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{ <span class="keywordflow">return</span> this-&gt;years; }</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_date_time_formatter_8cpp_source.html#l00130">sese::text::DateTimeFormatter::format()</a>.</p>
+
+</div>
+</div>
+<a id="a0031775e2a88999acd1b6be4d00dc852" name="a0031775e2a88999acd1b6be4d00dc852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0031775e2a88999acd1b6be4d00dc852">&#9670;&#160;</a></span>isLeapYear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::DateTime::isLeapYear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8h_source.html">DateTime.h</a> 第 <a class="el" href="_date_time_8h_source.html#l00052">52</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{ <span class="keywordflow">return</span> this-&gt;isLeap; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3b3cb8069c211fd2355c6b1a8d4d7c16" name="a3b3cb8069c211fd2355c6b1a8d4d7c16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b3cb8069c211fd2355c6b1a8d4d7c16">&#9670;&#160;</a></span>now()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_date_time.html">DateTime</a> sese::DateTime::now </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>utc</em> = <code><a class="el" href="_config_8h.html#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">Policy</a>&#160;</td>
+          <td class="paramname"><em>policy</em> = <code><a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">Policy::FORMAT</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a> 第 <a class="el" href="_date_time_8cpp_source.html#l00012">12</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>                                                          {</div>
+<div class="line"><span class="lineno">   13</span>    <span class="keyword">auto</span> point = std::chrono::system_clock::now();</div>
+<div class="line"><span class="lineno">   14</span>    <span class="keyword">auto</span> timestamp = std::chrono::time_point_cast&lt;std::chrono::microseconds&gt;(point);</div>
+<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_date_time.html#a117ae22d36673ce8747c68c4c0cecb55">DateTime</a>(timestamp.time_since_epoch().count(), utc, policy);</div>
+<div class="line"><span class="lineno">   16</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_block_appender_8cpp_source.html#l00010">getDateTimeString()</a>, <a class="el" href="_stop_watch_8cpp_source.html#l00014">sese::StopWatch::reset()</a> , 以及 <a class="el" href="_stop_watch_8cpp_source.html#l00007">sese::StopWatch::stop()</a>.</p>
+
+</div>
+</div>
+<a id="ad2aee023addef2fd44aaffed0502d403" name="ad2aee023addef2fd44aaffed0502d403"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2aee023addef2fd44aaffed0502d403">&#9670;&#160;</a></span>nowPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">DateTime::Ptr</a> sese::DateTime::nowPtr </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>utc</em> = <code><a class="el" href="_config_8h.html#acd688e6011699d40edbaf750db54e486">TIME_DEFAULT_ZONE</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">Policy</a>&#160;</td>
+          <td class="paramname"><em>policy</em> = <code><a class="el" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045a47c8929b6152d540597c758853ff95a2">Policy::FORMAT</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a> 第 <a class="el" href="_date_time_8cpp_source.html#l00018">18</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>                                                                {</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keyword">auto</span> point = std::chrono::system_clock::now();</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keyword">auto</span> timestamp = std::chrono::time_point_cast&lt;std::chrono::microseconds&gt;(point);</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">return</span> std::make_unique&lt;DateTime&gt;(timestamp.time_since_epoch().count(), utc, policy);</div>
+<div class="line"><span class="lineno">   22</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6b90e66cfdd11919f358ddb00fdbe07d" name="a6b90e66cfdd11919f358ddb00fdbe07d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b90e66cfdd11919f358ddb00fdbe07d">&#9670;&#160;</a></span>operator+()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_date_time.html">DateTime</a> sese::DateTime::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_time_span.html">TimeSpan</a> &amp;&#160;</td>
+          <td class="paramname"><em>time_span</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a> 第 <a class="el" href="_date_time_8cpp_source.html#l00104">104</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>                                                                     {</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_date_time.html#a117ae22d36673ce8747c68c4c0cecb55">DateTime</a>{this-&gt;timestamp + time_span.getTimestamp(), this-&gt;utc};</div>
+<div class="line"><span class="lineno">  106</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_8h_source.html#l00064">getTimestamp()</a>.</p>
+
+</div>
+</div>
+<a id="a30f482e00e06437810a05e895ec28143" name="a30f482e00e06437810a05e895ec28143"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30f482e00e06437810a05e895ec28143">&#9670;&#160;</a></span>operator-() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_time_span.html">TimeSpan</a> sese::DateTime::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;&#160;</td>
+          <td class="paramname"><em>date_time</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a> 第 <a class="el" href="_date_time_8cpp_source.html#l00095">95</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>                                                                     {</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keyword">auto</span> time = this-&gt;timestamp - date_time.timestamp;</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> TimeSpan{time};</div>
+<div class="line"><span class="lineno">   98</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af0acfa657139ea951ceaaad665c3e580" name="af0acfa657139ea951ceaaad665c3e580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0acfa657139ea951ceaaad665c3e580">&#9670;&#160;</a></span>operator-() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_date_time.html">DateTime</a> sese::DateTime::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_time_span.html">TimeSpan</a> &amp;&#160;</td>
+          <td class="paramname"><em>time_span</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a> 第 <a class="el" href="_date_time_8cpp_source.html#l00100">100</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  100</span>                                                                     {</div>
+<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_date_time.html#a117ae22d36673ce8747c68c4c0cecb55">DateTime</a>{this-&gt;timestamp - time_span.getTimestamp(), this-&gt;utc};</div>
+<div class="line"><span class="lineno">  102</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_8h_source.html#l00064">getTimestamp()</a>.</p>
+
+</div>
+</div>
+<a id="aac360f58f4eda9a46cb1bd3832372de2" name="aac360f58f4eda9a46cb1bd3832372de2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac360f58f4eda9a46cb1bd3832372de2">&#9670;&#160;</a></span>unclearCompareTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t sese::DateTime::unclearCompareTo </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_date_time.html">DateTime</a> &amp;&#160;</td>
+          <td class="paramname"><em>date_time</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>粗略比较 </p>
+
+<p class="definition">在文件 <a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a> 第 <a class="el" href="_date_time_8cpp_source.html#l00083">83</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>                                                                           {</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keyword">auto</span> rt = (int64_t) this-&gt;timestamp - (int64_t) date_time.timestamp;</div>
+<div class="line"><span class="lineno">   85</span>    rt /= 1000 * 1000;</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (rt &lt; 0) {</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">   88</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (rt &gt; 0) {</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">   90</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   92</span>    }</div>
+<div class="line"><span class="lineno">   93</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/util/<a class="el" href="_date_time_8h_source.html">DateTime.h</a></li>
+<li>sese/util/<a class="el" href="_date_time_8cpp_source.html">DateTime.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/service/iocp/IOCPServer_V1.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5133a24ac21dd88284fde375b671b602.html">service</a></li><li class="navelem"><a class="el" href="dir_a8a0c3bf23a222b37a43b98cf3af1535.html">iocp</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">IOCPServer_V1.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_o_c_p_server___v1_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="_i_o_c_p_server___v1_8h.html" title="基于 sese-event 的完成端口服务器">sese/service/iocp/IOCPServer_V1.h</a>&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;openssl/ssl.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacesese_1_1iocp_1_1v1.html">sese::iocp::v1</a>;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacesese_1_1service.html">sese::service</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma region Context</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_context.html#a1ec697ea3f23b31ec60b73a69b568261">   10</a></span>int64_t <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_context.html#a1ec697ea3f23b31ec60b73a69b568261">Context::read</a>(<span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">return</span> recv.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aba3ee2794220fe6a65232206a2cd30b2">read</a>(buffer, length);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_context.html#a5312e84786b661ac3ad98400bb597635">   14</a></span>int64_t <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_context.html#a5312e84786b661ac3ad98400bb597635">Context::write</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> send.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#acd3aa83f7c0bee1ccd053023a852b09d">write</a>(buffer, length);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_context.html#abc46cd1d3ac99187ff38c5fbb14b5362">   18</a></span>int64_t <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_context.html#abc46cd1d3ac99187ff38c5fbb14b5362">Context::peek</a>(<span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">return</span> recv.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#aaaca120a4e920a238bce658b9c69e408">peek</a>(buffer, length);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_context.html#ab33f79771858dcf4d7c6dc1239bfef4f">   22</a></span>int64_t <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_context.html#ab33f79771858dcf4d7c6dc1239bfef4f">Context::trunc</a>(<span class="keywordtype">size_t</span> length) {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">return</span> recv.<a class="code hl_function" href="classsese_1_1io_1_1_abstract_byte_buffer.html#ae7297d57122eac25013c0904b567c78d">trunc</a>(length);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#pragma endregion Context</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#pragma region Service</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7a0a275897c1afb2e6c474381cf5ce0a">   30</a></span><a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7a0a275897c1afb2e6c474381cf5ce0a">IOCPService::IOCPService</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html" title="基于 sese-event 的完成端口服务器">IOCPServer</a> *master, <span class="keywordtype">bool</span> active_release_mode)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    : <a class="code hl_class" href="classsese_1_1service_1_1v2_1_1_timerable_service.html" title="可定时服务">TimerableService</a>() {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    IOCPService::master = master;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    IOCPService::handleClose = active_release_mode;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (master-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab89582b6b046b7982bea6b421ca3586d">getServCtx</a>()) {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">const</span> <span class="keyword">auto</span> SERVER_SSL = <span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(master-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab89582b6b046b7982bea6b421ca3586d">getServCtx</a>()-&gt;getContext());</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        SSL_CTX_set_alpn_select_cb(</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                SERVER_SSL,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                <span class="keyword">reinterpret_cast&lt;</span>SSL_CTX_alpn_select_cb_func<span class="keyword">&gt;</span>(&amp;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a72fbe3e2473223c4ca4b3e7c40c1b6b8">alpnCallbackFunction</a>),</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                <span class="keyword">this</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        );</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ad3da176b2def0938c9cf8134fbd5b851">   45</a></span><a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ad3da176b2def0938c9cf8134fbd5b851" title="析构函数">IOCPService::~IOCPService</a>() {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;item: eventSet) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">const</span> <span class="keyword">auto</span> CTX = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *<span class="keyword">&gt;</span>(item-&gt;data);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">if</span> (CTX-&gt;ssl) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="comment">// std::printf(&quot;ssl free %p\n&quot;, ctx-&gt;ssl);</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            SSL_free(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(CTX-&gt;ssl));</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            CTX-&gt;ssl = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> (CTX-&gt;timeoutEvent) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">cancelTimeoutEvent</a>(CTX-&gt;timeoutEvent);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close</a>(CTX-&gt;fd);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        event::EventLoop::freeEvent(item);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        CTX-&gt;self-&gt;getDeleteContextCallback()(CTX);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">delete</span> CTX;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0">IOCPService::postRead</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">if</span> (ctx-&gt;event) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        ctx-&gt;event-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> &amp;= ~EVENT_WRITE;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        ctx-&gt;event-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> |= <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        IOCPService::setEvent(ctx-&gt;event);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        ctx-&gt;event = createEventEx(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ctx-&gt;fd), <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>, ctx);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        ctx-&gt;event-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">data</a> = ctx;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">   74</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">IOCPService::postWrite</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">if</span> (ctx-&gt;event) {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        ctx-&gt;event-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> &amp;= ~EVENT_READ;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        ctx-&gt;event-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a0071f3d29e99a7e8ff0bd81f39e2c755">events</a> |= <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        IOCPService::setEvent(ctx-&gt;event);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        ctx-&gt;event = createEventEx(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ctx-&gt;fd), <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>, ctx);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        ctx-&gt;event-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">data</a> = ctx;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
+</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2f1fb16e1649fc1ce74abd6f3c5945ff">   85</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2f1fb16e1649fc1ce74abd6f3c5945ff">IOCPService::postClose</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (handleClose) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacesese_1_1net.html">sese::net</a>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        Socket::shutdown(ctx-&gt;fd, Socket::ShutdownMode::BOTH);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        releaseContext(ctx);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a958b240914aeb9168e4f0f291552dee3">   94</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a958b240914aeb9168e4f0f291552dee3">IOCPService::onAcceptCompleted</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    ctx-&gt;self-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab4a0e2fae503e52c1ab90b8e5a644e2b">onAcceptCompleted</a>(ctx);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#aacb1433fc0bdca020d74cdf9d4bd6d9e">   98</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#aacb1433fc0bdca020d74cdf9d4bd6d9e">IOCPService::onPreRead</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    ctx-&gt;self-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab5e63ccd4912309e4871fc5c8ed46f3c">onPreRead</a>(ctx);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a3460c0ee1e073ed5f81e2adf5327a2d4">  102</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a3460c0ee1e073ed5f81e2adf5327a2d4">IOCPService::onReadCompleted</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    ctx-&gt;self-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a08a5ca1d58d7445ecdd027cd5f12b788">onReadCompleted</a>(ctx);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2c563e28f6fc1cd93ff93df4af771620">  106</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2c563e28f6fc1cd93ff93df4af771620">IOCPService::onWriteCompleted</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    ctx-&gt;self-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a082b53a83bf77c7545c943e3dce97487">onWriteCompleted</a>(ctx);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a3bfc424346a90df8b574e31722ca00ac">  110</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a3bfc424346a90df8b574e31722ca00ac">IOCPService::onTimeout</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    ctx-&gt;timeoutEvent = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    ctx-&gt;self-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a138c236d9be67089880c03294bcc2694">onTimeout</a>(ctx);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a89e6df97c3df00d5bb415843503fcdd5">  115</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a89e6df97c3df00d5bb415843503fcdd5">IOCPService::onConnected</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    ctx-&gt;self-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a8575f93c9e0beb35d62006cadf14b6c0">onConnected</a>(ctx);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>}</div>
+</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="foldopen" id="foldopen00119" data-start="{" data-end="}">
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7c322a195a88b3f2019e2300b19811aa">  119</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7c322a195a88b3f2019e2300b19811aa">IOCPService::onAlpnGet</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx, <span class="keyword">const</span> uint8_t *<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length) {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    ctx-&gt;self-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2">onAlpnGet</a>(ctx, <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, in_length);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="foldopen" id="foldopen00123" data-start="{" data-end="}">
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a1f07a9b926c03da44d3cd957f93e1ee3">  123</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a1f07a9b926c03da44d3cd957f93e1ee3">IOCPService::onAccept</a>(<span class="keywordtype">int</span> fd) {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking</a>(fd)) {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close</a>(fd);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keyword">const</span> <span class="keyword">auto</span> CTX = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    CTX-&gt;self = master;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    CTX-&gt;client = <span class="keyword">this</span>;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    CTX-&gt;fd = fd;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">if</span> (master-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab89582b6b046b7982bea6b421ca3586d">getServCtx</a>()) {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keyword">const</span> <span class="keyword">auto</span> SERVER_SSL = <span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(master-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab89582b6b046b7982bea6b421ca3586d">getServCtx</a>()-&gt;getContext());</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        SSL *client_ssl = SSL_new(SERVER_SSL);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        SSL_set_fd(client_ssl, fd);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        SSL_set_accept_state(client_ssl);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> RT = SSL_do_handshake(client_ssl); RT &lt;= 0) {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> ERR = SSL_get_error(client_ssl, RT); ERR != SSL_ERROR_WANT_READ &amp;&amp; ERR != SSL_ERROR_WANT_WRITE) {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                    SSL_free(client_ssl);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                    <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close</a>(fd);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                    <span class="keyword">delete</span> CTX;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                CTX-&gt;ssl = client_ssl;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                SSL_set_mode(client_ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>                <span class="keyword">const</span> uint8_t *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                uint32_t data_length;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                SSL_get0_alpn_selected(client_ssl, &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, &amp;data_length);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7c322a195a88b3f2019e2300b19811aa">onAlpnGet</a>(CTX, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, data_length);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        }</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a958b240914aeb9168e4f0f291552dee3">onAcceptCompleted</a>(CTX);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>}</div>
+</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="foldopen" id="foldopen00162" data-start="{" data-end="}">
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a1a5d92ae190393f09cdfe96efd4cea65">  162</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a1a5d92ae190393f09cdfe96efd4cea65">IOCPService::onRead</a>(<a class="code hl_struct" href="structsese_1_1event_1_1_base_event.html" title="网络事件基类">sese::event::BaseEvent</a> *event) {</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">const</span> <span class="keyword">auto</span> CTX = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *<span class="keyword">&gt;</span>(<span class="keyword">event</span>-&gt;data);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#aacb1433fc0bdca020d74cdf9d4bd6d9e">onPreRead</a>(CTX);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">size_t</span> len = 0;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordtype">char</span> buf[<a class="code hl_variable" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f" title="框架默认 MTU 值">MTU_VALUE</a>];</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> L = read(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(CTX-&gt;fd), buf, <a class="code hl_variable" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f" title="框架默认 MTU 值">MTU_VALUE</a>, CTX-&gt;ssl); L &lt;= 0) {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <span class="keywordflow">if</span> (L == 0 &amp;&amp; len == 0) {</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                releaseContext(CTX);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a3460c0ee1e073ed5f81e2adf5327a2d4">onReadCompleted</a>(CTX);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            }</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            CTX-&gt;recv.write(buf, L);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            len += <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(L);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        }</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    }</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>}</div>
+</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="foldopen" id="foldopen00185" data-start="{" data-end="}">
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a912c9f39ea8710babbc718ccd186f1d6">  185</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a912c9f39ea8710babbc718ccd186f1d6">IOCPService::onWrite</a>(<a class="code hl_struct" href="structsese_1_1event_1_1_base_event.html" title="网络事件基类">sese::event::BaseEvent</a> *event) {</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> CTX = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *<span class="keyword">&gt;</span>(event-&gt;<a class="code hl_variable" href="structsese_1_1event_1_1_base_event.html#a92bc8ba91ea1f7528ee8784d5346972c">data</a>); CTX-&gt;isConn) {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        CTX-&gt;isConn = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keyword">auto</span> ssl = <span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(CTX-&gt;ssl);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">if</span> (CTX-&gt;ssl) {</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            SSL_set_connect_state(ssl);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> RT = SSL_do_handshake(ssl); RT &lt;= 0) {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                    <span class="comment">// err is SSL_ERROR_WANT_READ or SSL_ERROR_WANT_WRITE</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> ERR = SSL_get_error(ssl, RT); ERR != SSL_ERROR_WANT_READ &amp;&amp; ERR != SSL_ERROR_WANT_WRITE) {</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                        SSL_free(ssl);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                        CTX-&gt;ssl = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                        ssl = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                    }</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                }</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            }</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            <span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="keywordflow">if</span> (ssl == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                releaseContext(CTX);</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                SSL_set_mode(ssl, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                <span class="keyword">const</span> uint8_t *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                uint32_t data_length;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                SSL_get0_alpn_selected(ssl, &amp;<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, &amp;data_length);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a7c322a195a88b3f2019e2300b19811aa">onAlpnGet</a>(CTX, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>, data_length);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            }</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        }</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a89e6df97c3df00d5bb415843503fcdd5">onConnected</a>(CTX);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            <span class="keywordtype">char</span> buf[<a class="code hl_variable" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f" title="框架默认 MTU 值">MTU_VALUE</a>];</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <span class="keyword">const</span> <span class="keyword">auto</span> LEN = CTX-&gt;send.peek(buf, <a class="code hl_variable" href="_config_8h.html#abbaebe720282dc95c47f1b50c906f48f" title="框架默认 MTU 值">MTU_VALUE</a>);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            <span class="keywordflow">if</span> (LEN == 0) {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                CTX-&gt;send.freeCapacity();</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>                <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2c563e28f6fc1cd93ff93df4af771620">onWriteCompleted</a>(CTX);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> L = write(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(CTX-&gt;fd), buf, LEN, CTX-&gt;ssl); L &lt;= 0) {</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> ERR = <a class="code hl_function" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209" title="获取网络相关 error 代码">sese::net::getNetworkError</a>(); ERR == <a class="code hl_define" href="native_2win_2_config_8h.html#a4a3a0b3605fd3b2336455062ee8e25f0">EWOULDBLOCK</a> || ERR == <a class="code hl_define" href="native_2win_2_config_8h.html#a46b83d9f6c23b1b65a8cecfd775ddaed" title="WSA 错误映射">EINTR</a>) {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                    <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">postWrite</a>(CTX);</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                    releaseContext(CTX);</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                }</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                CTX-&gt;send.trunc(L);</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            }</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        }</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    }</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>}</div>
+</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="foldopen" id="foldopen00242" data-start="{" data-end="}">
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a0bac9dc50522a308f03bad11565d714f">  242</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a0bac9dc50522a308f03bad11565d714f">IOCPService::onClose</a>(<a class="code hl_struct" href="structsese_1_1event_1_1_base_event.html" title="网络事件基类">sese::event::BaseEvent</a> *event) {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keyword">const</span> <span class="keyword">auto</span> CTX = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *<span class="keyword">&gt;</span>(<span class="keyword">event</span>-&gt;data);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    releaseContext(CTX);</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}</div>
+</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="foldopen" id="foldopen00247" data-start="{" data-end="}">
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ab6ba6a0f9004258978f1714409b1e40c">  247</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a3bfc424346a90df8b574e31722ca00ac">IOCPService::onTimeout</a>(<a class="code hl_struct" href="structsese_1_1service_1_1v2_1_1_timeout_event.html" title="超时事件结构">v2::TimeoutEvent</a> *event) {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keyword">const</span> <span class="keyword">auto</span> CTX = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *<span class="keyword">&gt;</span>(<span class="keyword">event</span>-&gt;data);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a3bfc424346a90df8b574e31722ca00ac">IOCPService::onTimeout</a>(CTX);</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>}</div>
+</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="foldopen" id="foldopen00252" data-start="{" data-end="}">
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a72fbe3e2473223c4ca4b3e7c40c1b6b8">  252</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a72fbe3e2473223c4ca4b3e7c40c1b6b8">IOCPService::alpnCallbackFunction</a>([[maybe_unused]] <span class="keywordtype">void</span> *ssl, <span class="keyword">const</span> uint8_t **out, uint8_t *out_length, <span class="keyword">const</span> uint8_t *<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length, <a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html" title="基于 sese-event 的完成端口子服务">IOCPService</a> *service) {</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordflow">return</span> service-&gt;master-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ae6cbe8ea828cba53e593037905cb4d94">onAlpnSelect</a>(out, out_length, <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, in_length);</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>}</div>
+</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><a class="code hl_struct" href="structsese_1_1event_1_1_base_event.html" title="网络事件基类">sese::event::BaseEvent</a> *IOCPService::createEventEx(<span class="keywordtype">int</span> fd, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> events, <span class="keywordtype">void</span> *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>) {</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keyword">auto</span> <span class="keyword">event</span> = createEvent(fd, events, <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    eventSet.emplace(event);</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <span class="keywordflow">return</span> event;</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>}</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="keywordtype">void</span> IOCPService::freeEventEx(<a class="code hl_struct" href="structsese_1_1event_1_1_base_event.html" title="网络事件基类">sese::event::BaseEvent</a> *event) {</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    eventSet.erase(event);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    freeEvent(event);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>}</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="keywordtype">void</span> IOCPService::releaseContext(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordflow">if</span> (ctx-&gt;ssl) {</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="comment">// std::printf(&quot;ssl free %p\n&quot;, ctx-&gt;ssl);</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        SSL_free(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(ctx-&gt;ssl));</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        ctx-&gt;ssl = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    }</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="keywordflow">if</span> (ctx-&gt;timeoutEvent) {</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">cancelTimeoutEvent</a>(ctx-&gt;timeoutEvent);</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    }</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#ae228da9881d194cf8129d094e0ff95a0">sese::net::Socket::close</a>(ctx-&gt;fd);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    ctx-&gt;client-&gt;freeEventEx(ctx-&gt;event);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    ctx-&gt;self-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a5ead208f10d6d12527207b0ecf522df7">getDeleteContextCallback</a>()(ctx);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keyword">delete</span> ctx;</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>}</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>int64_t IOCPService::read(<span class="keywordtype">int</span> fd, <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> len, <span class="keywordtype">void</span> *ssl) {</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    <span class="keywordflow">if</span> (ssl) {</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="keywordflow">return</span> SSL_read(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(ssl), buffer, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len));</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#aa7882a1309376edf101d54efb5e7cb36">sese::net::Socket::read</a>(fd, buffer, len, 0);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    }</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>}</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>int64_t IOCPService::write(<span class="keywordtype">int</span> fd, <span class="keyword">const</span> <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> len, <span class="keywordtype">void</span> *ssl) {</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keywordflow">if</span> (ssl) {</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        <span class="keywordflow">return</span> SSL_write(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(ssl), buffer, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(len));</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a9974bcf56d53b3ef69581580531ce159">sese::net::Socket::write</a>(fd, buffer, len, 0);</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    }</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>}</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="preprocessor">#pragma endregion Service</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="preprocessor">#pragma region Server</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
+<div class="foldopen" id="foldopen00302" data-start="{" data-end="}">
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a89390f6b46a51913edf19312df4d797d">  302</a></span><a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a89390f6b46a51913edf19312df4d797d">IOCPServer::IOCPServer</a>() {</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a972a287ec76049fa63041aba30e0f0d7">setOnDispatchedCallbackFunction</a>(</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>            [&amp;](<span class="keywordtype">int</span> fd, sese::event::EventLoop *event_loop, <span class="keywordtype">void</span> *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>) {</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>                this-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">preConnectCallback</a>(fd, event_loop, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *<span class="keyword">&gt;</span>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>));</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            }</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    );</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>}</div>
+</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="foldopen" id="foldopen00310" data-start="{" data-end="}">
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ad3316941a7b54c825f6b7792ab3f27b4">  310</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ad3316941a7b54c825f6b7792ab3f27b4">IOCPServer::init</a>() {</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a8c59ee3a3802a9c955bd0c549c297a37">init</a>&lt;<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html" title="基于 sese-event 的完成端口子服务">IOCPService</a>&gt;([<span class="keyword">this</span>]() -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>            return new IOCPService(this, this-&gt;activeReleaseMode);</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        })) {</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a3f20c2881ad37470ee13ee769b883c3f" title="启动当前负载器和服务">start</a>();</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    }</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>}</div>
+</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
+<div class="foldopen" id="foldopen00320" data-start="{" data-end="}">
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afe265af21499c32168c00f5dd9a87d1a">  320</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afe265af21499c32168c00f5dd9a87d1a">IOCPServer::shutdown</a>() {</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a98af987660a89b01bea93bfc6a87d147" title="关闭当前负载器并卸载服务">stop</a>();</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>}</div>
+</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="foldopen" id="foldopen00324" data-start="{" data-end="}">
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a12779ad88ec076ae7d6ea0d8bddc74b7">  324</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a12779ad88ec076ae7d6ea0d8bddc74b7">IOCPServer::postRead</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0">postRead</a>(ctx);</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>}</div>
+</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
+<div class="foldopen" id="foldopen00328" data-start="{" data-end="}">
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa6c7e929e59e5ed8797792c5a450afd">  328</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa6c7e929e59e5ed8797792c5a450afd">IOCPServer::postWrite</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">postWrite</a>(ctx);</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>}</div>
+</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="foldopen" id="foldopen00332" data-start="{" data-end="}">
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#af8c4fa20f0c800a3bd246211fdfe355d">  332</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#af8c4fa20f0c800a3bd246211fdfe355d">IOCPServer::postClose</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2f1fb16e1649fc1ce74abd6f3c5945ff">postClose</a>(ctx);</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>}</div>
+</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
+<div class="foldopen" id="foldopen00336" data-start="{" data-end="}">
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">  336</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">IOCPServer::postConnect</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;to, <span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;cli_ctx, <span class="keywordtype">void</span> *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>) {</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="keyword">const</span> <span class="keyword">auto</span> SOCK = <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket::socket</a>(to-&gt;getFamily(), SOCK_STREAM, IPPROTO_IP);</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking</a>(SOCK);</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="keywordflow">if</span> (connect(SOCK, to-&gt;getRawAddress(), to-&gt;getRawAddressLength())) {</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> ERR = <a class="code hl_function" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209" title="获取网络相关 error 代码">sese::net::getNetworkError</a>(); ERR != <a class="code hl_define" href="native_2win_2_config_8h.html#a6c045d5be06e715cc335784a7320714e">EINPROGRESS</a>) {</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        }</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    }</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <span class="keyword">const</span> <span class="keyword">auto</span> CTX = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a>;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    CTX-&gt;fd = SOCK;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    CTX-&gt;self = <span class="keyword">this</span>;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    CTX-&gt;isConn = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    CTX-&gt;data = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    <span class="keywordflow">if</span> (cli_ctx) {</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        CTX-&gt;ssl = SSL_new(<span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(cli_ctx-&gt;getContext()));</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        <span class="comment">// printf(&quot;ssl new %p\n&quot;, ctx-&gt;ssl);</span></div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        SSL_set_fd(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(CTX-&gt;ssl), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(SOCK));</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        SSL_set_alpn_protos(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(CTX-&gt;ssl), <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a>.c_str()), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a>.length()));</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    }</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a4d22f3419c59cf92700950ab127f6356">dispatchSocket</a>(SOCK, CTX);</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>}</div>
+</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
+<div class="foldopen" id="foldopen00361" data-start="{" data-end="}">
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afbcbd23b89822a275eec7339642f070d">  361</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afbcbd23b89822a275eec7339642f070d">IOCPServer::setTimeout</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx, int64_t seconds) {</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="keywordflow">if</span> (ctx-&gt;timeoutEvent) {</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">cancelTimeoutEvent</a>(ctx-&gt;timeoutEvent);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        ctx-&gt;timeoutEvent = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    }</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    ctx-&gt;timeoutEvent = ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a81a1ae4f7fe235f6fe1a68bd142eee38">setTimeoutEvent</a>(seconds, ctx);</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    ctx-&gt;timeoutEvent-&gt;<a class="code hl_variable" href="structsese_1_1service_1_1v2_1_1_timeout_event.html#a66c4839fd2da2f473ebb0d0cf52b7a53" title="额外数据">data</a> = ctx;</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>}</div>
+</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
+<div class="foldopen" id="foldopen00370" data-start="{" data-end="}">
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a7269da27822e4cbb8491a9a392347435">  370</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a7269da27822e4cbb8491a9a392347435">IOCPServer::cancelTimeout</a>(<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <span class="keywordflow">if</span> (ctx-&gt;timeoutEvent) {</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">cancelTimeoutEvent</a>(ctx-&gt;timeoutEvent);</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        ctx-&gt;timeoutEvent = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    }</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>}</div>
+</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
+<div class="foldopen" id="foldopen00377" data-start="{" data-end="}">
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ae6cbe8ea828cba53e593037905cb4d94">  377</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ae6cbe8ea828cba53e593037905cb4d94">IOCPServer::onAlpnSelect</a>(<span class="keyword">const</span> uint8_t **out, uint8_t *out_length, <span class="keyword">const</span> uint8_t *<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length) {</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="keywordflow">if</span> (SSL_select_next_proto(<span class="keyword">const_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> **<span class="keyword">&gt;</span>(out), out_length, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">servProtos</a>.c_str()), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">servProtos</a>.length()), <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, in_length) != OPENSSL_NPN_NEGOTIATED) {</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        <span class="keywordflow">return</span> SSL_TLSEXT_ERR_NOACK;</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    }</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keywordflow">return</span> SSL_TLSEXT_ERR_OK;</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>}</div>
+</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
+<div class="foldopen" id="foldopen00384" data-start="{" data-end="}">
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">  384</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">IOCPServer::preConnectCallback</a>([[maybe_unused]] <span class="keywordtype">int</span> fd, sese::event::EventLoop *event_loop, <a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *ctx) {</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <span class="keywordflow">if</span> (ctx) {</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        ctx-&gt;client = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html" title="基于 sese-event 的完成端口子服务">IOCPService</a> *<span class="keyword">&gt;</span>(event_loop);</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6b80c4c7e10a993d45f158ccde0d0a9a">onPreConnect</a>(ctx);</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>        <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa6c7e929e59e5ed8797792c5a450afd">postWrite</a>(ctx);</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    }</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>}</div>
+</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span><span class="preprocessor">#pragma endregion Server</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::record::Logger类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1record.html">record</a></li><li class="navelem"><a class="el" href="classsese_1_1record_1_1_logger.html">Logger</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1record_1_1_logger-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::record::Logger类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>日志输出类  
+ <a href="classsese_1_1record_1_1_logger.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_logger_8h_source.html">Logger.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::record::Logger 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1record_1_1_logger.png" usemap="#sese::record::Logger_map" alt=""/>
+  <map id="sese::record::Logger_map" name="sese::record::Logger_map">
+<area href="classsese_1_1record_1_1_async_logger.html" title="异步日志器" alt="sese::record::AsyncLogger" shape="rect" coords="0,56,164,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a1ff6bf98f643c1e07c21708a72dc6343" id="r_a1ff6bf98f643c1e07c21708a72dc6343"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classsese_1_1record_1_1_logger.html">Logger</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">Ptr</a></td></tr>
+<tr class="memdesc:a1ff6bf98f643c1e07c21708a72dc6343"><td class="mdescLeft">&#160;</td><td class="mdescRight">智能指针  <br /></td></tr>
+<tr class="separator:a1ff6bf98f643c1e07c21708a72dc6343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aef18cfc8276c633ee70cd95834845a74" id="r_aef18cfc8276c633ee70cd95834845a74"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#aef18cfc8276c633ee70cd95834845a74">Logger</a> () noexcept</td></tr>
+<tr class="memdesc:aef18cfc8276c633ee70cd95834845a74"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化  <br /></td></tr>
+<tr class="separator:aef18cfc8276c633ee70cd95834845a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27b8e0ea679d2cd2ab4ffed5d5395390" id="r_a27b8e0ea679d2cd2ab4ffed5d5395390"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#a27b8e0ea679d2cd2ab4ffed5d5395390">~Logger</a> () noexcept=default</td></tr>
+<tr class="separator:a27b8e0ea679d2cd2ab4ffed5d5395390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f9beac541a2ccfa7a70c03102c72c87" id="r_a0f9beac541a2ccfa7a70c03102c72c87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#a0f9beac541a2ccfa7a70c03102c72c87">addAppender</a> (const <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;appender) noexcept</td></tr>
+<tr class="separator:a0f9beac541a2ccfa7a70c03102c72c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35e344c1b3c19c3d5c576dd1a91b556f" id="r_a35e344c1b3c19c3d5c576dd1a91b556f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#a35e344c1b3c19c3d5c576dd1a91b556f">removeAppender</a> (const <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;appender) noexcept</td></tr>
+<tr class="separator:a35e344c1b3c19c3d5c576dd1a91b556f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41672c6fef48429e9be389767ba836d7" id="r_a41672c6fef48429e9be389767ba836d7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#a41672c6fef48429e9be389767ba836d7">log</a> (const <a class="el" href="classsese_1_1record_1_1_event.html#a9fb6d6bf0c594bb2220fc745e52b7574">Event::Ptr</a> &amp;event) noexcept</td></tr>
+<tr class="separator:a41672c6fef48429e9be389767ba836d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe318342d58ba0d7b6090326337cd8d9" id="r_abe318342d58ba0d7b6090326337cd8d9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#abe318342d58ba0d7b6090326337cd8d9">dump</a> (const void *buffer, size_t length) noexcept</td></tr>
+<tr class="separator:abe318342d58ba0d7b6090326337cd8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a96eea5856c58b0babbebb37a2c27338e" id="r_a96eea5856c58b0babbebb37a2c27338e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#a96eea5856c58b0babbebb37a2c27338e">addGlobalLoggerAppender</a> (const <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;appender) noexcept</td></tr>
+<tr class="separator:a96eea5856c58b0babbebb37a2c27338e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf3821d839e22aeb21e44f302985287d" id="r_acf3821d839e22aeb21e44f302985287d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#acf3821d839e22aeb21e44f302985287d">removeGlobalLoggerAppender</a> (const <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;appender) noexcept</td></tr>
+<tr class="separator:acf3821d839e22aeb21e44f302985287d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a3ca4170e1c04894dd8b799c88fe65e70" id="r_a3ca4170e1c04894dd8b799c88fe65e70"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classsese_1_1record_1_1_abstract_formatter.html">AbstractFormatter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">formatter</a></td></tr>
+<tr class="separator:a3ca4170e1c04894dd8b799c88fe65e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe6acca8dc94d2b61b065a3601f47b0" id="r_acfe6acca8dc94d2b61b065a3601f47b0"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classsese_1_1record_1_1_console_appender.html">ConsoleAppender</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a></td></tr>
+<tr class="separator:acfe6acca8dc94d2b61b065a3601f47b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a188c6fdb1efb341fa4f03d3fb52cb4b2" id="r_a188c6fdb1efb341fa4f03d3fb52cb4b2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a></td></tr>
+<tr class="separator:a188c6fdb1efb341fa4f03d3fb52cb4b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>日志输出类 </p>
+
+<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00037">37</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a1ff6bf98f643c1e07c21708a72dc6343" name="a1ff6bf98f643c1e07c21708a72dc6343"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff6bf98f643c1e07c21708a72dc6343">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::shared_ptr&lt;<a class="el" href="classsese_1_1record_1_1_logger.html">Logger</a>&gt; <a class="el" href="classsese_1_1record_1_1_logger.html#a1ff6bf98f643c1e07c21708a72dc6343">sese::record::Logger::Ptr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>智能指针 </p>
+
+<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00040">40</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aef18cfc8276c633ee70cd95834845a74" name="aef18cfc8276c633ee70cd95834845a74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef18cfc8276c633ee70cd95834845a74">&#9670;&#160;</a></span>Logger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::record::Logger::Logger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>初始化 </p>
+
+<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00013">13</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>                        {</div>
+<div class="line"><span class="lineno">   14</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">formatter</a> = std::make_shared&lt;SimpleFormatter&gt;();</div>
+<div class="line"><span class="lineno">   15</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a> = std::make_shared&lt;ConsoleAppender&gt;();</div>
+<div class="line"><span class="lineno">   16</span><span class="preprocessor">#ifdef SESE_IS_DEBUG</span></div>
+<div class="line"><span class="lineno">   17</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;setLevel(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">sese::record::Level::DEBUG</a>);</div>
+<div class="line"><span class="lineno">   18</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">   19</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;setLevel(<a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">sese::record::Level::INFO</a>);</div>
+<div class="line"><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   21</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_logger_8h_source.html#l00074">builtInAppender</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a>, <a class="el" href="_logger_8h_source.html#l00073">formatter</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a>.</p>
+
+</div>
+</div>
+<a id="a27b8e0ea679d2cd2ab4ffed5d5395390" name="a27b8e0ea679d2cd2ab4ffed5d5395390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27b8e0ea679d2cd2ab4ffed5d5395390">&#9670;&#160;</a></span>~Logger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::record::Logger::~Logger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a0f9beac541a2ccfa7a70c03102c72c87" name="a0f9beac541a2ccfa7a70c03102c72c87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f9beac541a2ccfa7a70c03102c72c87">&#9670;&#160;</a></span>addAppender()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::record::Logger::addAppender </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>appender</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>添加日志输出源 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">appender</td><td>日志输出源 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00023">23</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                                     {</div>
+<div class="line"><span class="lineno">   24</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>.emplace_back(appender);</div>
+<div class="line"><span class="lineno">   25</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00072">addGlobalLoggerAppender()</a>.</p>
+
+</div>
+</div>
+<a id="a96eea5856c58b0babbebb37a2c27338e" name="a96eea5856c58b0babbebb37a2c27338e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96eea5856c58b0babbebb37a2c27338e">&#9670;&#160;</a></span>addGlobalLoggerAppender()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::record::Logger::addGlobalLoggerAppender </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>appender</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>为全局日志器添加日志输出源 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">appender</td><td>日志输出源 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00072">72</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>                                                                                 {</div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_variable" href="namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3">logger</a>-&gt;<a class="code hl_function" href="classsese_1_1record_1_1_logger.html#a0f9beac541a2ccfa7a70c03102c72c87">addAppender</a>(appender); <span class="comment">// NOLINT</span></div>
+<div class="line"><span class="lineno">   74</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_logger_8cpp_source.html#l00023">addAppender()</a> , 以及 <a class="el" href="_logger_8cpp_source.html#l00070">sese::record::logger</a>.</p>
+
+</div>
+</div>
+<a id="abe318342d58ba0d7b6090326337cd8d9" name="abe318342d58ba0d7b6090326337cd8d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe318342d58ba0d7b6090326337cd8d9">&#9670;&#160;</a></span>dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::record::Logger::dump </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>输出原始内容 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td></td></tr>
+    <tr><td class="paramname">length</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>被 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a5869b76c2cad7982de77bd015fc6679c">sese::record::AsyncLogger</a> 重载.</p>
+
+<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00080">80</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                            {</div>
+<div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;dump((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer, length);</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;appender: <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>) {</div>
+<div class="line"><span class="lineno">   83</span>        appender-&gt;dump((<span class="keyword">const</span> <span class="keywordtype">char</span> *) buffer, length);</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_exception_8cpp_source.html#l00046">sese::Exception::printStacktrace()</a>.</p>
+
+</div>
+</div>
+<a id="a41672c6fef48429e9be389767ba836d7" name="a41672c6fef48429e9be389767ba836d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41672c6fef48429e9be389767ba836d7">&#9670;&#160;</a></span>log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::record::Logger::log </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1record_1_1_event.html#a9fb6d6bf0c594bb2220fc745e52b7574">Event::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>输出日志 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>日志事件 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>被 <a class="el" href="classsese_1_1record_1_1_async_logger.html#a02af73db0e7e100defd93d3582ee83fe">sese::record::AsyncLogger</a> 重载.</p>
+
+<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00039">39</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                                               {</div>
+<div class="line"><span class="lineno">   40</span>    std::string content = <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a3ca4170e1c04894dd8b799c88fe65e70">formatter</a>-&gt;dump(event);</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;getLevel() &lt;= event-&gt;getLevel()) {</div>
+<div class="line"><span class="lineno">   42</span>        setbuf(stdout, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   43</span>        <span class="comment">// 此处逻辑本身就是完备的</span></div>
+<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">switch</span> (event-&gt;getLevel()) {</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15" title="调试">Level::DEBUG</a>:</div>
+<div class="line"><span class="lineno">   46</span>                <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#a5e58f894090ad428f9cf1c5cd01b607e">ConsoleAppender::setDebugColor</a>();</div>
+<div class="line"><span class="lineno">   47</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3" title="信息">Level::INFO</a>:</div>
+<div class="line"><span class="lineno">   49</span>                <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#a63d3021bd0211a824de1b2bc5831fb1f">ConsoleAppender::setInfoColor</a>();</div>
+<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277" title="警告">Level::WARN</a>:</div>
+<div class="line"><span class="lineno">   52</span>                <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#a6854a1f67a4bc7d2c5eaba8f19cde9c4">ConsoleAppender::setWarnColor</a>();</div>
+<div class="line"><span class="lineno">   53</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">Level::ERR</a>:</div>
+<div class="line"><span class="lineno">   55</span>                <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#a3ba7fa443e01e7ff3c4b5167d9e963d8">ConsoleAppender::setErrorColor</a>();</div>
+<div class="line"><span class="lineno">   56</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   57</span>        }</div>
+<div class="line"><span class="lineno">   58</span>        <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#acfe6acca8dc94d2b61b065a3601f47b0">builtInAppender</a>-&gt;dump(content.c_str(), content.length());</div>
+<div class="line"><span class="lineno">   59</span>        <a class="code hl_function" href="classsese_1_1record_1_1_console_appender.html#ab7eb558d52fbefccec50ca9bf69f1cad">ConsoleAppender::setCleanColor</a>();</div>
+<div class="line"><span class="lineno">   60</span>        fflush(stdout);</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;appender: <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>) {</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">if</span> (appender-&gt;getLevel() &lt;= event-&gt;getLevel()) {</div>
+<div class="line"><span class="lineno">   65</span>            appender-&gt;dump(content.c_str(), content.length());</div>
+<div class="line"><span class="lineno">   66</span>        }</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="line"><span class="lineno">   68</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5adc30ec20708ef7b0f641ef78b7880a15">sese::record::DEBUG</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482">sese::record::ERR</a>, <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a551b723eafd6a31d444fcb2f5920fbd3">sese::record::INFO</a>, <a class="el" href="_console_appender_8cpp_source.html#l00064">sese::record::ConsoleAppender::setCleanColor()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00048">sese::record::ConsoleAppender::setDebugColor()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00060">sese::record::ConsoleAppender::setErrorColor()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00052">sese::record::ConsoleAppender::setInfoColor()</a>, <a class="el" href="_console_appender_8cpp_source.html#l00056">sese::record::ConsoleAppender::setWarnColor()</a> , 以及 <a class="el" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5a32bd8a1db2275458673903bdb84cb277">sese::record::WARN</a>.</p>
+
+</div>
+</div>
+<a id="a35e344c1b3c19c3d5c576dd1a91b556f" name="a35e344c1b3c19c3d5c576dd1a91b556f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35e344c1b3c19c3d5c576dd1a91b556f">&#9670;&#160;</a></span>removeAppender()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::record::Logger::removeAppender </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>appender</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>移除日志输出源 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">appender</td><td>日志输出源 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00027">27</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>                                                                        {</div>
+<div class="line"><span class="lineno">   28</span>    <span class="comment">// 此处删除逻辑无需验证</span></div>
+<div class="line"><span class="lineno">   29</span>    <span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> iterator = <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>.begin(); iterator &lt; <a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>.end(); iterator++) {</div>
+<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (*iterator == appender) {</div>
+<div class="line"><span class="lineno">   32</span>            this-&gt;<a class="code hl_variable" href="classsese_1_1record_1_1_logger.html#a188c6fdb1efb341fa4f03d3fb52cb4b2">appenderVector</a>.erase(iterator);</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   34</span>        }</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span>    <span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><span class="lineno">   37</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00076">removeGlobalLoggerAppender()</a>.</p>
+
+</div>
+</div>
+<a id="acf3821d839e22aeb21e44f302985287d" name="acf3821d839e22aeb21e44f302985287d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf3821d839e22aeb21e44f302985287d">&#9670;&#160;</a></span>removeGlobalLoggerAppender()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::record::Logger::removeGlobalLoggerAppender </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>appender</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>为全局日志器移除日志输出源 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">appender</td><td>日志输出源 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_logger_8cpp_source.html">Logger.cpp</a> 第 <a class="el" href="_logger_8cpp_source.html#l00076">76</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                                                    {</div>
+<div class="line"><span class="lineno">   77</span>    <a class="code hl_variable" href="namespacesese_1_1record.html#ab4254674635b8529ea32b4d1588de4d3">logger</a>-&gt;<a class="code hl_function" href="classsese_1_1record_1_1_logger.html#a35e344c1b3c19c3d5c576dd1a91b556f">removeAppender</a>(appender); <span class="comment">// NOLINT</span></div>
+<div class="line"><span class="lineno">   78</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_logger_8cpp_source.html#l00070">sese::record::logger</a> , 以及 <a class="el" href="_logger_8cpp_source.html#l00027">removeAppender()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a188c6fdb1efb341fa4f03d3fb52cb4b2" name="a188c6fdb1efb341fa4f03d3fb52cb4b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a188c6fdb1efb341fa4f03d3fb52cb4b2">&#9670;&#160;</a></span>appenderVector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classsese_1_1record_1_1_abstract_appender.html#ac63e03fbca2c62835eab898c1e274cf4">AbstractAppender::Ptr</a>&gt; sese::record::Logger::appenderVector</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00075">75</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_async_logger_8cpp_source.html#l00069">sese::record::AsyncLogger::loop()</a>.</p>
+
+</div>
+</div>
+<a id="acfe6acca8dc94d2b61b065a3601f47b0" name="acfe6acca8dc94d2b61b065a3601f47b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfe6acca8dc94d2b61b065a3601f47b0">&#9670;&#160;</a></span>builtInAppender</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classsese_1_1record_1_1_console_appender.html">ConsoleAppender</a>&gt; sese::record::Logger::builtInAppender</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00074">74</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00013">Logger()</a> , 以及 <a class="el" href="_async_logger_8cpp_source.html#l00069">sese::record::AsyncLogger::loop()</a>.</p>
+
+</div>
+</div>
+<a id="a3ca4170e1c04894dd8b799c88fe65e70" name="a3ca4170e1c04894dd8b799c88fe65e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ca4170e1c04894dd8b799c88fe65e70">&#9670;&#160;</a></span>formatter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classsese_1_1record_1_1_abstract_formatter.html">AbstractFormatter</a>&gt; sese::record::Logger::formatter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_logger_8h_source.html">Logger.h</a> 第 <a class="el" href="_logger_8h_source.html#l00073">73</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_logger_8cpp_source.html#l00013">Logger()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/record/<a class="el" href="_logger_8h_source.html">Logger.h</a></li>
+<li>sese/record/<a class="el" href="_logger_8cpp_source.html">Logger.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,1383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::Value::List类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_value.html">Value</a></li><li class="navelem"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1_value_1_1_list-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::Value::List类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_value_8h_source.html">Value.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a8494cc2146df069a4f6930b084541019" id="r_a8494cc2146df069a4f6930b084541019"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a8494cc2146df069a4f6930b084541019">Raw</a> = std::vector&lt; <a class="el" href="classsese_1_1_value.html">Value</a> &gt;</td></tr>
+<tr class="separator:a8494cc2146df069a4f6930b084541019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1ab7187ae11f1cefcb35e6ea7a6fa43" id="r_ad1ab7187ae11f1cefcb35e6ea7a6fa43"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a> = Raw::iterator</td></tr>
+<tr class="separator:ad1ab7187ae11f1cefcb35e6ea7a6fa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9aae8736e1c6428c19e21b3dc4575eb" id="r_ad9aae8736e1c6428c19e21b3dc4575eb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a> = Raw::const_iterator</td></tr>
+<tr class="separator:ad9aae8736e1c6428c19e21b3dc4575eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80d03654d6047cd7274f8b066092db9b" id="r_a80d03654d6047cd7274f8b066092db9b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a80d03654d6047cd7274f8b066092db9b">ReverseIterator</a> = Raw::reverse_iterator</td></tr>
+<tr class="separator:a80d03654d6047cd7274f8b066092db9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a181aa75504c557e86f83fb37e5c93e2a" id="r_a181aa75504c557e86f83fb37e5c93e2a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a181aa75504c557e86f83fb37e5c93e2a">ConstReverseIterator</a> = Raw::const_reverse_iterator</td></tr>
+<tr class="separator:a181aa75504c557e86f83fb37e5c93e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a84fbf728eed4a388d806d91c0c60e10d" id="r_a84fbf728eed4a388d806d91c0c60e10d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a84fbf728eed4a388d806d91c0c60e10d">empty</a> () const</td></tr>
+<tr class="separator:a84fbf728eed4a388d806d91c0c60e10d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d5eb7ebaed76cd316f287ca032b39e8" id="r_a0d5eb7ebaed76cd316f287ca032b39e8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a0d5eb7ebaed76cd316f287ca032b39e8">size</a> () const</td></tr>
+<tr class="separator:a0d5eb7ebaed76cd316f287ca032b39e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9e9d0945ed8cb1c0c32f7cc071ce351" id="r_ad9e9d0945ed8cb1c0c32f7cc071ce351"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9e9d0945ed8cb1c0c32f7cc071ce351">reserve</a> (size_t <a class="el" href="classsese_1_1_value_1_1_list.html#a0d5eb7ebaed76cd316f287ca032b39e8">size</a>)</td></tr>
+<tr class="separator:ad9e9d0945ed8cb1c0c32f7cc071ce351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c4ea4aca881d123108cf8a04fa97c6e" id="r_a8c4ea4aca881d123108cf8a04fa97c6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a8c4ea4aca881d123108cf8a04fa97c6e">resize</a> (size_t <a class="el" href="classsese_1_1_value_1_1_list.html#a0d5eb7ebaed76cd316f287ca032b39e8">size</a>)</td></tr>
+<tr class="separator:a8c4ea4aca881d123108cf8a04fa97c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fad6292bd5126eeb437317383338cea" id="r_a3fad6292bd5126eeb437317383338cea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a3fad6292bd5126eeb437317383338cea">clear</a> ()</td></tr>
+<tr class="separator:a3fad6292bd5126eeb437317383338cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7e9e9bb431c515c7ee392d40c87ccd3" id="r_aa7e9e9bb431c515c7ee392d40c87ccd3"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#aa7e9e9bb431c515c7ee392d40c87ccd3">operator[]</a> (size_t index) const</td></tr>
+<tr class="separator:aa7e9e9bb431c515c7ee392d40c87ccd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21361571259e364291cc8fa1c579752f" id="r_a21361571259e364291cc8fa1c579752f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a21361571259e364291cc8fa1c579752f">operator[]</a> (size_t index)</td></tr>
+<tr class="separator:a21361571259e364291cc8fa1c579752f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac991612838e5c039c34b5b2555577e22" id="r_ac991612838e5c039c34b5b2555577e22"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ac991612838e5c039c34b5b2555577e22">erase</a> (const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;value)</td></tr>
+<tr class="separator:ac991612838e5c039c34b5b2555577e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82744d7b2eb76bdd0ca918ee1dc3b7c" id="r_ad82744d7b2eb76bdd0ca918ee1dc3b7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ad82744d7b2eb76bdd0ca918ee1dc3b7c">erase</a> (<a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a> it)</td></tr>
+<tr class="separator:ad82744d7b2eb76bdd0ca918ee1dc3b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa19b9fa6cf0d398e606b631604faec" id="r_a9aa19b9fa6cf0d398e606b631604faec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a9aa19b9fa6cf0d398e606b631604faec">erase</a> (<a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a> it)</td></tr>
+<tr class="separator:a9aa19b9fa6cf0d398e606b631604faec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef1feeb50a4fbbb98fd4696cd626f49" id="r_a5ef1feeb50a4fbbb98fd4696cd626f49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a5ef1feeb50a4fbbb98fd4696cd626f49">erase</a> (const <a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a> &amp;first, const <a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a> &amp;last)</td></tr>
+<tr class="separator:a5ef1feeb50a4fbbb98fd4696cd626f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a460d7a33b81159dd7789ced1fccb3f60" id="r_a460d7a33b81159dd7789ced1fccb3f60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a460d7a33b81159dd7789ced1fccb3f60">erase</a> (const <a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a> &amp;first, const <a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a> &amp;last)</td></tr>
+<tr class="separator:a460d7a33b81159dd7789ced1fccb3f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556d44bc641ec1aea5e1492dc9554a1d" id="r_a556d44bc641ec1aea5e1492dc9554a1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a556d44bc641ec1aea5e1492dc9554a1d">begin</a> ()</td></tr>
+<tr class="separator:a556d44bc641ec1aea5e1492dc9554a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5d28b8895496e85d1e4f65a4d2a29be" id="r_ab5d28b8895496e85d1e4f65a4d2a29be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ab5d28b8895496e85d1e4f65a4d2a29be">begin</a> () const</td></tr>
+<tr class="separator:ab5d28b8895496e85d1e4f65a4d2a29be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9c91f50bf614409b8bbef4e6a3882dc" id="r_ad9c91f50bf614409b8bbef4e6a3882dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9c91f50bf614409b8bbef4e6a3882dc">end</a> ()</td></tr>
+<tr class="separator:ad9c91f50bf614409b8bbef4e6a3882dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a744c31b3afd5c73eed7110b8b978ee1f" id="r_a744c31b3afd5c73eed7110b8b978ee1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a744c31b3afd5c73eed7110b8b978ee1f">end</a> () const</td></tr>
+<tr class="separator:a744c31b3afd5c73eed7110b8b978ee1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ce38c4886e5d439bb1ed5bf1dee90a" id="r_af2ce38c4886e5d439bb1ed5bf1dee90a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#af2ce38c4886e5d439bb1ed5bf1dee90a">cbegin</a> () const</td></tr>
+<tr class="separator:af2ce38c4886e5d439bb1ed5bf1dee90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a361006e3f1f30e0faadaf3202a391726" id="r_a361006e3f1f30e0faadaf3202a391726"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a361006e3f1f30e0faadaf3202a391726">cend</a> () const</td></tr>
+<tr class="separator:a361006e3f1f30e0faadaf3202a391726"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e666332589ba526da9162549835635a" id="r_a9e666332589ba526da9162549835635a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#a80d03654d6047cd7274f8b066092db9b">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a9e666332589ba526da9162549835635a">rbegin</a> ()</td></tr>
+<tr class="separator:a9e666332589ba526da9162549835635a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e9d217048d5e2d8356701385df1b68b" id="r_a5e9d217048d5e2d8356701385df1b68b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#a181aa75504c557e86f83fb37e5c93e2a">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a5e9d217048d5e2d8356701385df1b68b">rbegin</a> () const</td></tr>
+<tr class="separator:a5e9d217048d5e2d8356701385df1b68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fca8c68530b5cf80fcdddda540a0534" id="r_a0fca8c68530b5cf80fcdddda540a0534"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#a80d03654d6047cd7274f8b066092db9b">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a0fca8c68530b5cf80fcdddda540a0534">rend</a> ()</td></tr>
+<tr class="separator:a0fca8c68530b5cf80fcdddda540a0534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a719d9c76450b74e11be59fa0976cde82" id="r_a719d9c76450b74e11be59fa0976cde82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#a181aa75504c557e86f83fb37e5c93e2a">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a719d9c76450b74e11be59fa0976cde82">rend</a> () const</td></tr>
+<tr class="separator:a719d9c76450b74e11be59fa0976cde82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d707d39dcebbafb103578be72638550" id="r_a3d707d39dcebbafb103578be72638550"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a3d707d39dcebbafb103578be72638550">front</a> () const</td></tr>
+<tr class="separator:a3d707d39dcebbafb103578be72638550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8567b0e8ea0f67257ed6742b728a95d7" id="r_a8567b0e8ea0f67257ed6742b728a95d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a8567b0e8ea0f67257ed6742b728a95d7">front</a> ()</td></tr>
+<tr class="separator:a8567b0e8ea0f67257ed6742b728a95d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55a1b5fb3f7045ed317871a7590e35d4" id="r_a55a1b5fb3f7045ed317871a7590e35d4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a55a1b5fb3f7045ed317871a7590e35d4">back</a> () const</td></tr>
+<tr class="separator:a55a1b5fb3f7045ed317871a7590e35d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9be58452efa7f18bcd02d22a53b85f39" id="r_a9be58452efa7f18bcd02d22a53b85f39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a9be58452efa7f18bcd02d22a53b85f39">back</a> ()</td></tr>
+<tr class="separator:a9be58452efa7f18bcd02d22a53b85f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54c23a32c39a2f560ca9f4b757da29bb" id="r_a54c23a32c39a2f560ca9f4b757da29bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a54c23a32c39a2f560ca9f4b757da29bb">append</a> (<a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:a54c23a32c39a2f560ca9f4b757da29bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf5f1cd6aec47313bf3b91f83d85e89a" id="r_abf5f1cd6aec47313bf3b91f83d85e89a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#abf5f1cd6aec47313bf3b91f83d85e89a">append</a> (bool value) &amp;</td></tr>
+<tr class="separator:abf5f1cd6aec47313bf3b91f83d85e89a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e53120c563244d76e78ce156db10b55" id="r_a6e53120c563244d76e78ce156db10b55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a6e53120c563244d76e78ce156db10b55">append</a> (int value) &amp;</td></tr>
+<tr class="separator:a6e53120c563244d76e78ce156db10b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3625cf5d3fcc1f043486a603913b5140" id="r_a3625cf5d3fcc1f043486a603913b5140"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a3625cf5d3fcc1f043486a603913b5140">append</a> (double value) &amp;</td></tr>
+<tr class="separator:a3625cf5d3fcc1f043486a603913b5140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a180045c0dc213fd4b1c30dbb50134729" id="r_a180045c0dc213fd4b1c30dbb50134729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a180045c0dc213fd4b1c30dbb50134729">append</a> (const char *value) &amp;</td></tr>
+<tr class="separator:a180045c0dc213fd4b1c30dbb50134729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29580d433b20d013469379a2f315ce1" id="r_af29580d433b20d013469379a2f315ce1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#af29580d433b20d013469379a2f315ce1">append</a> (<a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:af29580d433b20d013469379a2f315ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4e5dc5ecb29bb5944dbb1aee226cb5d" id="r_ab4e5dc5ecb29bb5944dbb1aee226cb5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ab4e5dc5ecb29bb5944dbb1aee226cb5d">append</a> (<a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:ab4e5dc5ecb29bb5944dbb1aee226cb5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceba3f29c73464ff19fbecf35a8d74dc" id="r_aceba3f29c73464ff19fbecf35a8d74dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#aceba3f29c73464ff19fbecf35a8d74dc">append</a> (const char *bytes, size_t length) &amp;</td></tr>
+<tr class="separator:aceba3f29c73464ff19fbecf35a8d74dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1844d74cdf27c767557568ef8af10c89" id="r_a1844d74cdf27c767557568ef8af10c89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a1844d74cdf27c767557568ef8af10c89">append</a> (<a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:a1844d74cdf27c767557568ef8af10c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaccd3b1ad1df54d96148275ddedf27e" id="r_aaaccd3b1ad1df54d96148275ddedf27e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#aaaccd3b1ad1df54d96148275ddedf27e">append</a> (<a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;value) &amp;</td></tr>
+<tr class="separator:aaaccd3b1ad1df54d96148275ddedf27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae96283c443100146975df12605950e26" id="r_ae96283c443100146975df12605950e26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ae96283c443100146975df12605950e26">append</a> (<a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:ae96283c443100146975df12605950e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab35bb59dfef60ddff80b0883d9392a8f" id="r_ab35bb59dfef60ddff80b0883d9392a8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ab35bb59dfef60ddff80b0883d9392a8f">append</a> (bool value) &amp;&amp;</td></tr>
+<tr class="separator:ab35bb59dfef60ddff80b0883d9392a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a4655e0b1ed02b0ab07a84159b18a84" id="r_a9a4655e0b1ed02b0ab07a84159b18a84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a9a4655e0b1ed02b0ab07a84159b18a84">append</a> (int value) &amp;&amp;</td></tr>
+<tr class="separator:a9a4655e0b1ed02b0ab07a84159b18a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65a8f5c7039c86189463f18b6b10543" id="r_ab65a8f5c7039c86189463f18b6b10543"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ab65a8f5c7039c86189463f18b6b10543">append</a> (double value) &amp;&amp;</td></tr>
+<tr class="separator:ab65a8f5c7039c86189463f18b6b10543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af22af44f59e68f92c523f22ede8ceb94" id="r_af22af44f59e68f92c523f22ede8ceb94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#af22af44f59e68f92c523f22ede8ceb94">append</a> (const char *value) &amp;&amp;</td></tr>
+<tr class="separator:af22af44f59e68f92c523f22ede8ceb94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc456b455df9d5ca83b4ab396e288bc2" id="r_abc456b455df9d5ca83b4ab396e288bc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#abc456b455df9d5ca83b4ab396e288bc2">append</a> (<a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:abc456b455df9d5ca83b4ab396e288bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5b795f06e27dd0f0bb8ae69ef669ab1" id="r_ab5b795f06e27dd0f0bb8ae69ef669ab1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ab5b795f06e27dd0f0bb8ae69ef669ab1">append</a> (const char *bytes, size_t length) &amp;&amp;</td></tr>
+<tr class="separator:ab5b795f06e27dd0f0bb8ae69ef669ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f083ad8e5b276e6a1d28ed781a0b7b" id="r_a87f083ad8e5b276e6a1d28ed781a0b7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a87f083ad8e5b276e6a1d28ed781a0b7b">append</a> (<a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:a87f083ad8e5b276e6a1d28ed781a0b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9951a7cf20a8e06e4c4d2cf8ff7cebf3" id="r_a9951a7cf20a8e06e4c4d2cf8ff7cebf3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a9951a7cf20a8e06e4c4d2cf8ff7cebf3">append</a> (<a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:a9951a7cf20a8e06e4c4d2cf8ff7cebf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada2dbdd67b00afd8225b7e65e03f1c40" id="r_ada2dbdd67b00afd8225b7e65e03f1c40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#ada2dbdd67b00afd8225b7e65e03f1c40">append</a> (<a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;value) &amp;&amp;</td></tr>
+<tr class="separator:ada2dbdd67b00afd8225b7e65e03f1c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4afdd27775eb2461b23c049e8c534fa8" id="r_a4afdd27775eb2461b23c049e8c534fa8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html#a4afdd27775eb2461b23c049e8c534fa8">insert</a> (<a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a> it, <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;value)</td></tr>
+<tr class="separator:a4afdd27775eb2461b23c049e8c534fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00040">40</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="ad9aae8736e1c6428c19e21b3dc4575eb" name="ad9aae8736e1c6428c19e21b3dc4575eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9aae8736e1c6428c19e21b3dc4575eb">&#9670;&#160;</a></span>ConstIterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">sese::Value::List::ConstIterator</a> =  Raw::const_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00044">44</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a181aa75504c557e86f83fb37e5c93e2a" name="a181aa75504c557e86f83fb37e5c93e2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a181aa75504c557e86f83fb37e5c93e2a">&#9670;&#160;</a></span>ConstReverseIterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_list.html#a181aa75504c557e86f83fb37e5c93e2a">sese::Value::List::ConstReverseIterator</a> =  Raw::const_reverse_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00046">46</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad1ab7187ae11f1cefcb35e6ea7a6fa43" name="ad1ab7187ae11f1cefcb35e6ea7a6fa43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1ab7187ae11f1cefcb35e6ea7a6fa43">&#9670;&#160;</a></span>Iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">sese::Value::List::Iterator</a> =  Raw::iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8494cc2146df069a4f6930b084541019" name="a8494cc2146df069a4f6930b084541019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8494cc2146df069a4f6930b084541019">&#9670;&#160;</a></span>Raw</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_list.html#a8494cc2146df069a4f6930b084541019">sese::Value::List::Raw</a> =  std::vector&lt;<a class="el" href="classsese_1_1_value.html">Value</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00042">42</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a80d03654d6047cd7274f8b066092db9b" name="a80d03654d6047cd7274f8b066092db9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80d03654d6047cd7274f8b066092db9b">&#9670;&#160;</a></span>ReverseIterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value_1_1_list.html#a80d03654d6047cd7274f8b066092db9b">sese::Value::List::ReverseIterator</a> =  Raw::reverse_iterator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ab4e5dc5ecb29bb5944dbb1aee226cb5d" name="ab4e5dc5ecb29bb5944dbb1aee226cb5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4e5dc5ecb29bb5944dbb1aee226cb5d">&#9670;&#160;</a></span>append() <span class="overload">[1/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00417">417</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  417</span>{ vector.emplace_back(std::move(value)); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a87f083ad8e5b276e6a1d28ed781a0b7b" name="a87f083ad8e5b276e6a1d28ed781a0b7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87f083ad8e5b276e6a1d28ed781a0b7b">&#9670;&#160;</a></span>append() <span class="overload">[2/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00453">453</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  453</span>                                   {</div>
+<div class="line"><span class="lineno">  454</span>    vector.emplace_back(std::move(value));</div>
+<div class="line"><span class="lineno">  455</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  456</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abf5f1cd6aec47313bf3b91f83d85e89a" name="abf5f1cd6aec47313bf3b91f83d85e89a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf5f1cd6aec47313bf3b91f83d85e89a">&#9670;&#160;</a></span>append() <span class="overload">[3/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00405">405</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  405</span>{ vector.emplace_back(value); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab35bb59dfef60ddff80b0883d9392a8f" name="ab35bb59dfef60ddff80b0883d9392a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab35bb59dfef60ddff80b0883d9392a8f">&#9670;&#160;</a></span>append() <span class="overload">[4/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00428">428</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  428</span>                                 {</div>
+<div class="line"><span class="lineno">  429</span>    vector.emplace_back(value);</div>
+<div class="line"><span class="lineno">  430</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  431</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aceba3f29c73464ff19fbecf35a8d74dc" name="aceba3f29c73464ff19fbecf35a8d74dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceba3f29c73464ff19fbecf35a8d74dc">&#9670;&#160;</a></span>append() <span class="overload">[5/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00415">415</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  415</span>{ vector.emplace_back(bytes, length); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab5b795f06e27dd0f0bb8ae69ef669ab1" name="ab5b795f06e27dd0f0bb8ae69ef669ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5b795f06e27dd0f0bb8ae69ef669ab1">&#9670;&#160;</a></span>append() <span class="overload">[6/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00458">458</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  458</span>                                                       {</div>
+<div class="line"><span class="lineno">  459</span>    vector.emplace_back(bytes, length);</div>
+<div class="line"><span class="lineno">  460</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  461</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a180045c0dc213fd4b1c30dbb50134729" name="a180045c0dc213fd4b1c30dbb50134729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a180045c0dc213fd4b1c30dbb50134729">&#9670;&#160;</a></span>append() <span class="overload">[7/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00411">411</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  411</span>{ vector.emplace_back(value); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af22af44f59e68f92c523f22ede8ceb94" name="af22af44f59e68f92c523f22ede8ceb94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af22af44f59e68f92c523f22ede8ceb94">&#9670;&#160;</a></span>append() <span class="overload">[8/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00443">443</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  443</span>                                        {</div>
+<div class="line"><span class="lineno">  444</span>    vector.emplace_back(value);</div>
+<div class="line"><span class="lineno">  445</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  446</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aaaccd3b1ad1df54d96148275ddedf27e" name="aaaccd3b1ad1df54d96148275ddedf27e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaccd3b1ad1df54d96148275ddedf27e">&#9670;&#160;</a></span>append() <span class="overload">[9/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00421">421</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  421</span>{ vector.emplace_back(std::move(value)); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ada2dbdd67b00afd8225b7e65e03f1c40" name="ada2dbdd67b00afd8225b7e65e03f1c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada2dbdd67b00afd8225b7e65e03f1c40">&#9670;&#160;</a></span>append() <span class="overload">[10/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00468">468</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  468</span>                                   {</div>
+<div class="line"><span class="lineno">  469</span>    vector.emplace_back(std::move(value));</div>
+<div class="line"><span class="lineno">  470</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  471</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3625cf5d3fcc1f043486a603913b5140" name="a3625cf5d3fcc1f043486a603913b5140"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3625cf5d3fcc1f043486a603913b5140">&#9670;&#160;</a></span>append() <span class="overload">[11/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00409">409</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  409</span>{ vector.emplace_back(value); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab65a8f5c7039c86189463f18b6b10543" name="ab65a8f5c7039c86189463f18b6b10543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab65a8f5c7039c86189463f18b6b10543">&#9670;&#160;</a></span>append() <span class="overload">[12/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00438">438</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  438</span>                                   {</div>
+<div class="line"><span class="lineno">  439</span>    vector.emplace_back(value);</div>
+<div class="line"><span class="lineno">  440</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  441</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6e53120c563244d76e78ce156db10b55" name="a6e53120c563244d76e78ce156db10b55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e53120c563244d76e78ce156db10b55">&#9670;&#160;</a></span>append() <span class="overload">[13/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00407">407</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  407</span>{ vector.emplace_back(value); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9a4655e0b1ed02b0ab07a84159b18a84" name="a9a4655e0b1ed02b0ab07a84159b18a84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a4655e0b1ed02b0ab07a84159b18a84">&#9670;&#160;</a></span>append() <span class="overload">[14/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00433">433</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  433</span>                                {</div>
+<div class="line"><span class="lineno">  434</span>    vector.emplace_back(value);</div>
+<div class="line"><span class="lineno">  435</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  436</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1844d74cdf27c767557568ef8af10c89" name="a1844d74cdf27c767557568ef8af10c89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1844d74cdf27c767557568ef8af10c89">&#9670;&#160;</a></span>append() <span class="overload">[15/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00419">419</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  419</span>{ vector.emplace_back(std::move(value)); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9951a7cf20a8e06e4c4d2cf8ff7cebf3" name="a9951a7cf20a8e06e4c4d2cf8ff7cebf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9951a7cf20a8e06e4c4d2cf8ff7cebf3">&#9670;&#160;</a></span>append() <span class="overload">[16/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00463">463</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  463</span>                                   {</div>
+<div class="line"><span class="lineno">  464</span>    vector.emplace_back(std::move(value));</div>
+<div class="line"><span class="lineno">  465</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  466</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af29580d433b20d013469379a2f315ce1" name="af29580d433b20d013469379a2f315ce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af29580d433b20d013469379a2f315ce1">&#9670;&#160;</a></span>append() <span class="overload">[17/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00413">413</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  413</span>{ vector.emplace_back(std::move(value)); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abc456b455df9d5ca83b4ab396e288bc2" name="abc456b455df9d5ca83b4ab396e288bc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc456b455df9d5ca83b4ab396e288bc2">&#9670;&#160;</a></span>append() <span class="overload">[18/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00448">448</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  448</span>                                     {</div>
+<div class="line"><span class="lineno">  449</span>    vector.emplace_back(std::move(value));</div>
+<div class="line"><span class="lineno">  450</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  451</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a54c23a32c39a2f560ca9f4b757da29bb" name="a54c23a32c39a2f560ca9f4b757da29bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54c23a32c39a2f560ca9f4b757da29bb">&#9670;&#160;</a></span>append() <span class="overload">[19/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00403">403</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  403</span>{ vector.emplace_back(std::move(value)); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae96283c443100146975df12605950e26" name="ae96283c443100146975df12605950e26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae96283c443100146975df12605950e26">&#9670;&#160;</a></span>append() <span class="overload">[20/20]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp; List::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html">Value</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00423">423</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  423</span>                                    {</div>
+<div class="line"><span class="lineno">  424</span>    vector.emplace_back(std::move(value));</div>
+<div class="line"><span class="lineno">  425</span>    <span class="keywordflow">return</span> std::move(*<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  426</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9be58452efa7f18bcd02d22a53b85f39" name="a9be58452efa7f18bcd02d22a53b85f39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9be58452efa7f18bcd02d22a53b85f39">&#9670;&#160;</a></span>back() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html">Value</a> &amp; List::back </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00398">398</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  398</span>                  {</div>
+<div class="line"><span class="lineno">  399</span>    assert(!vector.empty());</div>
+<div class="line"><span class="lineno">  400</span>    <span class="keywordflow">return</span> vector.back();</div>
+<div class="line"><span class="lineno">  401</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a55a1b5fb3f7045ed317871a7590e35d4" name="a55a1b5fb3f7045ed317871a7590e35d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55a1b5fb3f7045ed317871a7590e35d4">&#9670;&#160;</a></span>back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp; List::back </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00393">393</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  393</span>                              {</div>
+<div class="line"><span class="lineno">  394</span>    assert(!vector.empty());</div>
+<div class="line"><span class="lineno">  395</span>    <span class="keywordflow">return</span> vector.back();</div>
+<div class="line"><span class="lineno">  396</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a556d44bc641ec1aea5e1492dc9554a1d" name="a556d44bc641ec1aea5e1492dc9554a1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556d44bc641ec1aea5e1492dc9554a1d">&#9670;&#160;</a></span>begin() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">List::Iterator</a> List::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00363">363</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  363</span>{ <span class="keywordflow">return</span> vector.begin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab5d28b8895496e85d1e4f65a4d2a29be" name="ab5d28b8895496e85d1e4f65a4d2a29be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5d28b8895496e85d1e4f65a4d2a29be">&#9670;&#160;</a></span>begin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">List::ConstIterator</a> List::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00365">365</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  365</span>{ <span class="keywordflow">return</span> vector.begin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af2ce38c4886e5d439bb1ed5bf1dee90a" name="af2ce38c4886e5d439bb1ed5bf1dee90a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ce38c4886e5d439bb1ed5bf1dee90a">&#9670;&#160;</a></span>cbegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">List::ConstIterator</a> List::cbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00371">371</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  371</span>{ <span class="keywordflow">return</span> vector.cbegin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a361006e3f1f30e0faadaf3202a391726" name="a361006e3f1f30e0faadaf3202a391726"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a361006e3f1f30e0faadaf3202a391726">&#9670;&#160;</a></span>cend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">List::ConstIterator</a> List::cend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00373">373</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  373</span>{ <span class="keywordflow">return</span> vector.cend(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3fad6292bd5126eeb437317383338cea" name="a3fad6292bd5126eeb437317383338cea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fad6292bd5126eeb437317383338cea">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00325">325</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  325</span>{ vector.clear(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a84fbf728eed4a388d806d91c0c60e10d" name="a84fbf728eed4a388d806d91c0c60e10d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84fbf728eed4a388d806d91c0c60e10d">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t List::empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00317">317</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  317</span>{ <span class="keywordflow">return</span> vector.empty(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad9c91f50bf614409b8bbef4e6a3882dc" name="ad9c91f50bf614409b8bbef4e6a3882dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9c91f50bf614409b8bbef4e6a3882dc">&#9670;&#160;</a></span>end() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">List::Iterator</a> List::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00367">367</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  367</span>{ <span class="keywordflow">return</span> vector.end(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a744c31b3afd5c73eed7110b8b978ee1f" name="a744c31b3afd5c73eed7110b8b978ee1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a744c31b3afd5c73eed7110b8b978ee1f">&#9670;&#160;</a></span>end() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">List::ConstIterator</a> List::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00369">369</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  369</span>{ <span class="keywordflow">return</span> vector.end(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a460d7a33b81159dd7789ced1fccb3f60" name="a460d7a33b81159dd7789ced1fccb3f60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a460d7a33b81159dd7789ced1fccb3f60">&#9670;&#160;</a></span>erase() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">List::ConstIterator</a> List::erase </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>last</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00359">359</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  359</span>                                                                                   {</div>
+<div class="line"><span class="lineno">  360</span>    <span class="keywordflow">return</span> vector.erase(first, last);</div>
+<div class="line"><span class="lineno">  361</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5ef1feeb50a4fbbb98fd4696cd626f49" name="a5ef1feeb50a4fbbb98fd4696cd626f49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef1feeb50a4fbbb98fd4696cd626f49">&#9670;&#160;</a></span>erase() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">List::Iterator</a> List::erase </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a> &amp;&#160;</td>
+          <td class="paramname"><em>last</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00355">355</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  355</span>                                                                    {</div>
+<div class="line"><span class="lineno">  356</span>    <span class="keywordflow">return</span> vector.erase(first, last);</div>
+<div class="line"><span class="lineno">  357</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac991612838e5c039c34b5b2555577e22" name="ac991612838e5c039c34b5b2555577e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac991612838e5c039c34b5b2555577e22">&#9670;&#160;</a></span>erase() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t List::erase </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00331">331</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  331</span>                                         {</div>
+<div class="line"><span class="lineno">  332</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
+<div class="line"><span class="lineno">  333</span>    vector.erase(</div>
+<div class="line"><span class="lineno">  334</span>            std::remove_if(</div>
+<div class="line"><span class="lineno">  335</span>                    vector.begin(),</div>
+<div class="line"><span class="lineno">  336</span>                    vector.end(),</div>
+<div class="line"><span class="lineno">  337</span>                    [&amp;value, &amp;<a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>](<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_value.html" title="值容器类">Value</a> &amp;v) {</div>
+<div class="line"><span class="lineno">  338</span>                        if (v == value) {</div>
+<div class="line"><span class="lineno">  339</span>                            count += 1;</div>
+<div class="line"><span class="lineno">  340</span>                            return true;</div>
+<div class="line"><span class="lineno">  341</span>                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  342</span>                            return false;</div>
+<div class="line"><span class="lineno">  343</span>                        }</div>
+<div class="line"><span class="lineno">  344</span>                    }</div>
+<div class="line"><span class="lineno">  345</span>            ),</div>
+<div class="line"><span class="lineno">  346</span>            vector.end()</div>
+<div class="line"><span class="lineno">  347</span>    );</div>
+<div class="line"><span class="lineno">  348</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>;</div>
+<div class="line"><span class="lineno">  349</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_date_time_formatter_8cpp_source.html#l00121">count()</a>.</p>
+
+</div>
+</div>
+<a id="a9aa19b9fa6cf0d398e606b631604faec" name="a9aa19b9fa6cf0d398e606b631604faec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aa19b9fa6cf0d398e606b631604faec">&#9670;&#160;</a></span>erase() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">List::ConstIterator</a> List::erase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_list.html#ad9aae8736e1c6428c19e21b3dc4575eb">ConstIterator</a>&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00353">353</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  353</span>{ <span class="keywordflow">return</span> vector.erase(std::move(it)); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad82744d7b2eb76bdd0ca918ee1dc3b7c" name="ad82744d7b2eb76bdd0ca918ee1dc3b7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad82744d7b2eb76bdd0ca918ee1dc3b7c">&#9670;&#160;</a></span>erase() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">List::Iterator</a> List::erase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a>&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00351">351</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  351</span>{ <span class="keywordflow">return</span> vector.erase(std::move(it)); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8567b0e8ea0f67257ed6742b728a95d7" name="a8567b0e8ea0f67257ed6742b728a95d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8567b0e8ea0f67257ed6742b728a95d7">&#9670;&#160;</a></span>front() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html">Value</a> &amp; List::front </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00388">388</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  388</span>                   {</div>
+<div class="line"><span class="lineno">  389</span>    assert(!vector.empty());</div>
+<div class="line"><span class="lineno">  390</span>    <span class="keywordflow">return</span> vector.front();</div>
+<div class="line"><span class="lineno">  391</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3d707d39dcebbafb103578be72638550" name="a3d707d39dcebbafb103578be72638550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d707d39dcebbafb103578be72638550">&#9670;&#160;</a></span>front() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp; List::front </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00383">383</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  383</span>                               {</div>
+<div class="line"><span class="lineno">  384</span>    assert(!vector.empty());</div>
+<div class="line"><span class="lineno">  385</span>    <span class="keywordflow">return</span> vector.front();</div>
+<div class="line"><span class="lineno">  386</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4afdd27775eb2461b23c049e8c534fa8" name="a4afdd27775eb2461b23c049e8c534fa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4afdd27775eb2461b23c049e8c534fa8">&#9670;&#160;</a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">List::Iterator</a> List::insert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_list.html#ad1ab7187ae11f1cefcb35e6ea7a6fa43">Iterator</a>&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html">sese::Value</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00473">473</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  473</span>                                                                     {</div>
+<div class="line"><span class="lineno">  474</span>    <span class="keywordflow">return</span> vector.insert(std::move(it), std::move(value));</div>
+<div class="line"><span class="lineno">  475</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a21361571259e364291cc8fa1c579752f" name="a21361571259e364291cc8fa1c579752f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21361571259e364291cc8fa1c579752f">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html">Value</a> &amp; List::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00329">329</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  329</span>{ <span class="keywordflow">return</span> vector[index]; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa7e9e9bb431c515c7ee392d40c87ccd3" name="aa7e9e9bb431c515c7ee392d40c87ccd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7e9e9bb431c515c7ee392d40c87ccd3">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp; List::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00327">327</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  327</span>{ <span class="keywordflow">return</span> vector[index]; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9e666332589ba526da9162549835635a" name="a9e666332589ba526da9162549835635a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e666332589ba526da9162549835635a">&#9670;&#160;</a></span>rbegin() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#a80d03654d6047cd7274f8b066092db9b">List::ReverseIterator</a> List::rbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00375">375</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  375</span>{ <span class="keywordflow">return</span> vector.rbegin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5e9d217048d5e2d8356701385df1b68b" name="a5e9d217048d5e2d8356701385df1b68b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e9d217048d5e2d8356701385df1b68b">&#9670;&#160;</a></span>rbegin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#a181aa75504c557e86f83fb37e5c93e2a">List::ConstReverseIterator</a> List::rbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00377">377</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  377</span>{ <span class="keywordflow">return</span> vector.rbegin(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0fca8c68530b5cf80fcdddda540a0534" name="a0fca8c68530b5cf80fcdddda540a0534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fca8c68530b5cf80fcdddda540a0534">&#9670;&#160;</a></span>rend() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#a80d03654d6047cd7274f8b066092db9b">List::ReverseIterator</a> List::rend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00379">379</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  379</span>{ <span class="keywordflow">return</span> vector.rend(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a719d9c76450b74e11be59fa0976cde82" name="a719d9c76450b74e11be59fa0976cde82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a719d9c76450b74e11be59fa0976cde82">&#9670;&#160;</a></span>rend() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html#a181aa75504c557e86f83fb37e5c93e2a">List::ConstReverseIterator</a> List::rend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00381">381</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  381</span>{ <span class="keywordflow">return</span> vector.rend(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad9e9d0945ed8cb1c0c32f7cc071ce351" name="ad9e9d0945ed8cb1c0c32f7cc071ce351"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9e9d0945ed8cb1c0c32f7cc071ce351">&#9670;&#160;</a></span>reserve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::reserve </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00321">321</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  321</span>{ vector.reserve(<a class="code hl_function" href="classsese_1_1_value_1_1_list.html#a0d5eb7ebaed76cd316f287ca032b39e8">size</a>); }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<a id="a8c4ea4aca881d123108cf8a04fa97c6e" name="a8c4ea4aca881d123108cf8a04fa97c6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c4ea4aca881d123108cf8a04fa97c6e">&#9670;&#160;</a></span>resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void List::resize </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00323">323</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  323</span>{ vector.resize(<a class="code hl_function" href="classsese_1_1_value_1_1_list.html#a0d5eb7ebaed76cd316f287ca032b39e8">size</a>); }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size()</a>.</p>
+
+</div>
+</div>
+<a id="a0d5eb7ebaed76cd316f287ca032b39e8" name="a0d5eb7ebaed76cd316f287ca032b39e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d5eb7ebaed76cd316f287ca032b39e8">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t List::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00319">319</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  319</span>{ <span class="keywordflow">return</span> vector.size(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/util/<a class="el" href="_value_8h_source.html">Value.h</a></li>
+<li>sese/util/<a class="el" href="_value_8cpp_source.html">Value.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

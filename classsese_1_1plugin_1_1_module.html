@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::plugin::Module类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1plugin.html">plugin</a></li><li class="navelem"><a class="el" href="classsese_1_1plugin_1_1_module.html">Module</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1plugin_1_1_module-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::plugin::Module类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>插件模块对象  
+ <a href="classsese_1_1plugin_1_1_module.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_module_8h_source.html">Module.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a5c08802318bd5b30acf5c0cc5ac1910d" id="r_a5c08802318bd5b30acf5c0cc5ac1910d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">Ptr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1plugin_1_1_module.html">Module</a> &gt;</td></tr>
+<tr class="separator:a5c08802318bd5b30acf5c0cc5ac1910d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced41657850343e22238a6213e8aa9b5" id="r_aced41657850343e22238a6213e8aa9b5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#aced41657850343e22238a6213e8aa9b5">LibraryObject</a> = <a class="el" href="classsese_1_1system_1_1_library_object.html">sese::system::LibraryObject</a></td></tr>
+<tr class="separator:aced41657850343e22238a6213e8aa9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ab8fddd74a398d4ce2d20607455ab69ef" id="r_ab8fddd74a398d4ce2d20607455ab69ef"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#ab8fddd74a398d4ce2d20607455ab69ef">getName</a> () noexcept</td></tr>
+<tr class="separator:ab8fddd74a398d4ce2d20607455ab69ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389e9c01fcc6c3fed93808cbb0d59856" id="r_a389e9c01fcc6c3fed93808cbb0d59856"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a389e9c01fcc6c3fed93808cbb0d59856">getVersion</a> () noexcept</td></tr>
+<tr class="separator:a389e9c01fcc6c3fed93808cbb0d59856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaa42a7fe4e90fc7cd3b2a564c615e8b" id="r_aaaa42a7fe4e90fc7cd3b2a564c615e8b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#aaaa42a7fe4e90fc7cd3b2a564c615e8b">getDescription</a> () noexcept</td></tr>
+<tr class="separator:aaaa42a7fe4e90fc7cd3b2a564c615e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac59eaf70a35fdecbb0da466e8b4403a7" id="r_ac59eaf70a35fdecbb0da466e8b4403a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1plugin_1_1_base_class.html#a876321d4cdec391a945e7246c671b791">BaseClass::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#ac59eaf70a35fdecbb0da466e8b4403a7">createClassWithId</a> (const std::string &amp;id) noexcept</td></tr>
+<tr class="separator:ac59eaf70a35fdecbb0da466e8b4403a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05d647f0f697691a4ff0a8f618edaa0f" id="r_a05d647f0f697691a4ff0a8f618edaa0f"><td class="memTemplParams" colspan="2">template&lt;typename TYPE &gt; </td></tr>
+<tr class="memitem:a05d647f0f697691a4ff0a8f618edaa0f"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; TYPE &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a05d647f0f697691a4ff0a8f618edaa0f">createClassWithIdAs</a> (const std::string &amp;id)</td></tr>
+<tr class="separator:a05d647f0f697691a4ff0a8f618edaa0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af81e95d21825fb5b3bf3ae2ab343eb54" id="r_af81e95d21825fb5b3bf3ae2ab343eb54"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1plugin_1_1_class_factory.html#a0e296ae42d51eb60b1e8c4ed750a940c">ClassFactory::RegisterInfoMapType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#af81e95d21825fb5b3bf3ae2ab343eb54">getRegisterClassInfo</a> () noexcept</td></tr>
+<tr class="separator:af81e95d21825fb5b3bf3ae2ab343eb54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:ade4890f5fd1edd520cb4d9eb23caf31c" id="r_ade4890f5fd1edd520cb4d9eb23caf31c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">Module::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#ade4890f5fd1edd520cb4d9eb23caf31c">open</a> (const std::string &amp;path) noexcept</td></tr>
+<tr class="separator:ade4890f5fd1edd520cb4d9eb23caf31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fac6b3716ecdfe5aa5e1036871cfbb9" id="r_a4fac6b3716ecdfe5aa5e1036871cfbb9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">Module::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1plugin_1_1_module.html#a4fac6b3716ecdfe5aa5e1036871cfbb9">openWithPath</a> (const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;path) noexcept</td></tr>
+<tr class="separator:a4fac6b3716ecdfe5aa5e1036871cfbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>插件模块对象 </p>
+
+<p class="definition">在文件 <a class="el" href="_module_8h_source.html">Module.h</a> 第 <a class="el" href="_module_8h_source.html#l00019">19</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="aced41657850343e22238a6213e8aa9b5" name="aced41657850343e22238a6213e8aa9b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced41657850343e22238a6213e8aa9b5">&#9670;&#160;</a></span>LibraryObject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1plugin_1_1_module.html#aced41657850343e22238a6213e8aa9b5">sese::plugin::Module::LibraryObject</a> =  <a class="el" href="classsese_1_1system_1_1_library_object.html">sese::system::LibraryObject</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_module_8h_source.html">Module.h</a> 第 <a class="el" href="_module_8h_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5c08802318bd5b30acf5c0cc5ac1910d" name="a5c08802318bd5b30acf5c0cc5ac1910d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c08802318bd5b30acf5c0cc5ac1910d">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> =  std::unique_ptr&lt;<a class="el" href="classsese_1_1plugin_1_1_module.html">Module</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_module_8h_source.html">Module.h</a> 第 <a class="el" href="_module_8h_source.html#l00021">21</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ac59eaf70a35fdecbb0da466e8b4403a7" name="ac59eaf70a35fdecbb0da466e8b4403a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac59eaf70a35fdecbb0da466e8b4403a7">&#9670;&#160;</a></span>createClassWithId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1plugin_1_1_base_class.html#a876321d4cdec391a945e7246c671b791">sese::plugin::BaseClass::Ptr</a> sese::plugin::Module::createClassWithId </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>使用模块的类工厂构建一个对象 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>对象标识符 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>实例化错误 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_module_8cpp_source.html">Module.cpp</a> 第 <a class="el" href="_module_8cpp_source.html#l00043">43</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>                                                                                       {</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keyword">auto</span> p_factory = (ClassFactory *) this-&gt;factory;</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> p_factory-&gt;createClassWithId(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a05d647f0f697691a4ff0a8f618edaa0f" name="a05d647f0f697691a4ff0a8f618edaa0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05d647f0f697691a4ff0a8f618edaa0f">&#9670;&#160;</a></span>createClassWithIdAs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TYPE &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; TYPE &gt; sese::plugin::Module::createClassWithIdAs </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>使用模块的类工厂构建一个对象并转换为指定类型 </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">type</td><td>指定类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>对象标识符 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>实例化错误 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_module_8h_source.html">Module.h</a> 第 <a class="el" href="_module_8h_source.html#l00056">56</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>                                                                 {</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keyword">auto</span> p = <a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#ac59eaf70a35fdecbb0da466e8b4403a7">createClassWithId</a>(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">if</span> (p) {</div>
+<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">return</span> std::reinterpret_pointer_cast&lt;TYPE&gt;(p);</div>
+<div class="line"><span class="lineno">   60</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   61</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   62</span>        }</div>
+<div class="line"><span class="lineno">   63</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aaaa42a7fe4e90fc7cd3b2a564c615e8b" name="aaaa42a7fe4e90fc7cd3b2a564c615e8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaa42a7fe4e90fc7cd3b2a564c615e8b">&#9670;&#160;</a></span>getDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sese::plugin::Module::getDescription </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取模块描述 </p><dl class="section return"><dt>返回</dt><dd>模块描述 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_module_8cpp_source.html">Module.cpp</a> 第 <a class="el" href="_module_8cpp_source.html#l00058">58</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>                                                      {</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keyword">auto</span> p_info = (ModuleInfo *) this-&gt;info;</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">return</span> p_info-&gt;description;</div>
+<div class="line"><span class="lineno">   61</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab8fddd74a398d4ce2d20607455ab69ef" name="ab8fddd74a398d4ce2d20607455ab69ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8fddd74a398d4ce2d20607455ab69ef">&#9670;&#160;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sese::plugin::Module::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取模块名称 </p><dl class="section return"><dt>返回</dt><dd>模块名称 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_module_8cpp_source.html">Module.cpp</a> 第 <a class="el" href="_module_8cpp_source.html#l00048">48</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                               {</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keyword">auto</span> p_info = (ModuleInfo *) this-&gt;info;</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> p_info-&gt;moduleName;</div>
+<div class="line"><span class="lineno">   51</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_module_info_8h_source.html#l00016">sese::plugin::ModuleInfo::moduleName</a>.</p>
+
+</div>
+</div>
+<a id="af81e95d21825fb5b3bf3ae2ab343eb54" name="af81e95d21825fb5b3bf3ae2ab343eb54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af81e95d21825fb5b3bf3ae2ab343eb54">&#9670;&#160;</a></span>getRegisterClassInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1plugin_1_1_class_factory.html#a0e296ae42d51eb60b1e8c4ed750a940c">sese::plugin::ClassFactory::RegisterInfoMapType</a> &amp; sese::plugin::Module::getRegisterClassInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取模块已注册类类型信息 </p><dl class="section return"><dt>返回</dt><dd>类型信息 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_module_8cpp_source.html">Module.cpp</a> 第 <a class="el" href="_module_8cpp_source.html#l00063">63</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>                                                                                                 {</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> factory-&gt;<a class="code hl_function" href="classsese_1_1plugin_1_1_class_factory.html#a0698fed6c92d661d30e8ed02f7f923ad">getRegisterClassInfo</a>();</div>
+<div class="line"><span class="lineno">   65</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a389e9c01fcc6c3fed93808cbb0d59856" name="a389e9c01fcc6c3fed93808cbb0d59856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a389e9c01fcc6c3fed93808cbb0d59856">&#9670;&#160;</a></span>getVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * sese::plugin::Module::getVersion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取模块版本 </p><dl class="section return"><dt>返回</dt><dd>模块版本 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_module_8cpp_source.html">Module.cpp</a> 第 <a class="el" href="_module_8cpp_source.html#l00053">53</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>                                                  {</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keyword">auto</span> p_info = (ModuleInfo *) this-&gt;info;</div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">return</span> p_info-&gt;versionString;</div>
+<div class="line"><span class="lineno">   56</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ade4890f5fd1edd520cb4d9eb23caf31c" name="ade4890f5fd1edd520cb4d9eb23caf31c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade4890f5fd1edd520cb4d9eb23caf31c">&#9670;&#160;</a></span>open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> sese::plugin::Module::open </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>尝试从动态链接库中加载一个模块 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>动态链接库路径 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>加载错误 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_module_8cpp_source.html">Module.cpp</a> 第 <a class="el" href="_module_8cpp_source.html#l00010">10</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                                         {</div>
+<div class="line"><span class="lineno">   11</span>    <span class="keyword">auto</span> obj = <a class="code hl_function" href="classsese_1_1system_1_1_library_object.html#a3c48b1eca409104a90e7a90b9b259b3f" title="加载一个外部库">LibraryObject::create</a>(path);</div>
+<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">if</span> (!obj) {</div>
+<div class="line"><span class="lineno">   13</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   14</span>    }</div>
+<div class="line"><span class="lineno">   15</span> </div>
+<div class="line"><span class="lineno">   16</span>    <span class="keyword">auto</span> get_module_info = (<a class="code hl_typedef" href="_module_8cpp.html#ad493dcff569d84e71d52d204f9c2bd52">getModuleInfoFunc</a> *) obj-&gt;findFunctionByName(<a class="code hl_define" href="_module_8cpp.html#a71ba5ba44624917a7c3be36880d14637">STR2</a>(<a class="code hl_define" href="plugin_2_marco_8h.html#a9e611c9fd9a5288b48c3f81d6b684a6b">GET_MODULE_INFO_FUNC_NAME</a>));</div>
+<div class="line"><span class="lineno">   17</span>    <span class="keyword">auto</span> get_factory = (<a class="code hl_typedef" href="_module_8cpp.html#a56f717cd1ce364b141d87fd06e6e7d4d">getFactoryFunc</a> *) obj-&gt;findFunctionByName(<a class="code hl_define" href="_module_8cpp.html#a71ba5ba44624917a7c3be36880d14637">STR2</a>(<a class="code hl_define" href="plugin_2_marco_8h.html#a0a9f726ae8d56b3e38540e4bb6d15a09">GET_CLASS_FACTORY_FUNC_NAME</a>));</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span> (!get_module_info || !get_factory) {</div>
+<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   20</span>    }</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>    <span class="keyword">auto</span> info = get_module_info();</div>
+<div class="line"><span class="lineno">   23</span>    <span class="keyword">auto</span> factory = get_factory();</div>
+<div class="line"><span class="lineno">   24</span>    <span class="comment">// 按照标准，此步不应该出错</span></div>
+<div class="line"><span class="lineno">   25</span>    <span class="comment">// if (!info || !factory) {</span></div>
+<div class="line"><span class="lineno">   26</span>    <span class="comment">//    return nullptr;</span></div>
+<div class="line"><span class="lineno">   27</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>    <span class="keyword">auto</span> m = <span class="keyword">new</span> Module;</div>
+<div class="line"><span class="lineno">   30</span>    m-&gt;object = obj;</div>
+<div class="line"><span class="lineno">   31</span>    m-&gt;info = info;</div>
+<div class="line"><span class="lineno">   32</span>    m-&gt;factory = factory;</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> std::unique_ptr&lt;Module&gt;(m);</div>
+<div class="line"><span class="lineno">   34</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="plugin_2_marco_8h_source.html#l00020">GET_CLASS_FACTORY_FUNC_NAME</a>, <a class="el" href="plugin_2_marco_8h_source.html#l00018">GET_MODULE_INFO_FUNC_NAME</a> , 以及 <a class="el" href="_module_8cpp_source.html#l00008">STR2</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_module_8cpp_source.html#l00039">openWithPath()</a>.</p>
+
+</div>
+</div>
+<a id="a4fac6b3716ecdfe5aa5e1036871cfbb9" name="a4fac6b3716ecdfe5aa5e1036871cfbb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fac6b3716ecdfe5aa5e1036871cfbb9">&#9670;&#160;</a></span>openWithPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1plugin_1_1_module.html#a5c08802318bd5b30acf5c0cc5ac1910d">sese::plugin::Module::Ptr</a> sese::plugin::Module::openWithPath </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1system_1_1_path.html">system::Path</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>尝试从动态链接库中加载一个模块 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>动态链接库路径 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">nullptr</td><td>加载错误 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_module_8cpp_source.html">Module.cpp</a> 第 <a class="el" href="_module_8cpp_source.html#l00039">39</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                                                                                  {</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1plugin_1_1_module.html#ade4890f5fd1edd520cb4d9eb23caf31c">sese::plugin::Module::open</a>(path.getNativePath());</div>
+<div class="line"><span class="lineno">   41</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_module_8cpp_source.html#l00010">open()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/plugin/<a class="el" href="_module_8h_source.html">Module.h</a></li>
+<li>sese/plugin/<a class="el" href="_module_8cpp_source.html">Module.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

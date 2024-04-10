@@ -1,0 +1,1632 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::iocp::v1::IOCPServer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1iocp.html">iocp</a></li><li class="navelem"><a class="el" href="namespacesese_1_1iocp_1_1v1.html">v1</a></li><li class="navelem"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html">IOCPServer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::iocp::v1::IOCPServer类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>基于 sese-event 的完成端口服务器  
+ <a href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:abceea41909927b7ddd32f3787b40acc4" id="r_abceea41909927b7ddd32f3787b40acc4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> = std::function&lt; void(<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&gt;</td></tr>
+<tr class="separator:abceea41909927b7ddd32f3787b40acc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a29720fc3d902d5fefec65ed748f581c0" id="r_a29720fc3d902d5fefec65ed748f581c0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a29720fc3d902d5fefec65ed748f581c0">~IOCPServer</a> ()=default</td></tr>
+<tr class="separator:a29720fc3d902d5fefec65ed748f581c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89390f6b46a51913edf19312df4d797d" id="r_a89390f6b46a51913edf19312df4d797d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a89390f6b46a51913edf19312df4d797d">IOCPServer</a> ()</td></tr>
+<tr class="separator:a89390f6b46a51913edf19312df4d797d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3316941a7b54c825f6b7792ab3f27b4" id="r_ad3316941a7b54c825f6b7792ab3f27b4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ad3316941a7b54c825f6b7792ab3f27b4">init</a> ()</td></tr>
+<tr class="separator:ad3316941a7b54c825f6b7792ab3f27b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe265af21499c32168c00f5dd9a87d1a" id="r_afe265af21499c32168c00f5dd9a87d1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afe265af21499c32168c00f5dd9a87d1a">shutdown</a> ()</td></tr>
+<tr class="separator:afe265af21499c32168c00f5dd9a87d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4836500c678aae0a24a7433152706503" id="r_a4836500c678aae0a24a7433152706503"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a4836500c678aae0a24a7433152706503">postConnect</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;to, const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;cli_ctx, void *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>=nullptr)</td></tr>
+<tr class="separator:a4836500c678aae0a24a7433152706503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4a0e2fae503e52c1ab90b8e5a644e2b" id="r_ab4a0e2fae503e52c1ab90b8e5a644e2b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab4a0e2fae503e52c1ab90b8e5a644e2b">onAcceptCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:ab4a0e2fae503e52c1ab90b8e5a644e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e63ccd4912309e4871fc5c8ed46f3c" id="r_ab5e63ccd4912309e4871fc5c8ed46f3c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab5e63ccd4912309e4871fc5c8ed46f3c">onPreRead</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:ab5e63ccd4912309e4871fc5c8ed46f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a5ca1d58d7445ecdd027cd5f12b788" id="r_a08a5ca1d58d7445ecdd027cd5f12b788"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a08a5ca1d58d7445ecdd027cd5f12b788">onReadCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:a08a5ca1d58d7445ecdd027cd5f12b788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a082b53a83bf77c7545c943e3dce97487" id="r_a082b53a83bf77c7545c943e3dce97487"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a082b53a83bf77c7545c943e3dce97487">onWriteCompleted</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:a082b53a83bf77c7545c943e3dce97487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a138c236d9be67089880c03294bcc2694" id="r_a138c236d9be67089880c03294bcc2694"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a138c236d9be67089880c03294bcc2694">onTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:a138c236d9be67089880c03294bcc2694"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b80c4c7e10a993d45f158ccde0d0a9a" id="r_a6b80c4c7e10a993d45f158ccde0d0a9a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6b80c4c7e10a993d45f158ccde0d0a9a">onPreConnect</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:a6b80c4c7e10a993d45f158ccde0d0a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8575f93c9e0beb35d62006cadf14b6c0" id="r_a8575f93c9e0beb35d62006cadf14b6c0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a8575f93c9e0beb35d62006cadf14b6c0">onConnected</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:a8575f93c9e0beb35d62006cadf14b6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2" id="r_a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2">onAlpnGet</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)</td></tr>
+<tr class="separator:a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6cbe8ea828cba53e593037905cb4d94" id="r_ae6cbe8ea828cba53e593037905cb4d94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ae6cbe8ea828cba53e593037905cb4d94">onAlpnSelect</a> (const uint8_t **out, uint8_t *out_length, const uint8_t *<a class="el" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, uint32_t in_length)</td></tr>
+<tr class="separator:ae6cbe8ea828cba53e593037905cb4d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf077bf2b22f2282ece08432e66b2bef" id="r_abf077bf2b22f2282ece08432e66b2bef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abf077bf2b22f2282ece08432e66b2bef">setAddress</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;addr)</td></tr>
+<tr class="separator:abf077bf2b22f2282ece08432e66b2bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6423868f07d0e9e6d9a9b2fd6216a441" id="r_a6423868f07d0e9e6d9a9b2fd6216a441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6423868f07d0e9e6d9a9b2fd6216a441">setThreads</a> (size_t threads)</td></tr>
+<tr class="separator:a6423868f07d0e9e6d9a9b2fd6216a441"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa792d0151f4855fbb29ab9dadd64539" id="r_aaa792d0151f4855fbb29ab9dadd64539"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa792d0151f4855fbb29ab9dadd64539">setServCtx</a> (const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;ctx)</td></tr>
+<tr class="separator:aaa792d0151f4855fbb29ab9dadd64539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee49e8321f6c05c304f292b79c51de42" id="r_aee49e8321f6c05c304f292b79c51de42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aee49e8321f6c05c304f292b79c51de42">setServProtos</a> (const std::string &amp;protos)</td></tr>
+<tr class="separator:aee49e8321f6c05c304f292b79c51de42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515e1af4fbc2402662f8a69e838fed13" id="r_a515e1af4fbc2402662f8a69e838fed13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a515e1af4fbc2402662f8a69e838fed13">setClientProtos</a> (const std::string &amp;protos)</td></tr>
+<tr class="separator:a515e1af4fbc2402662f8a69e838fed13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cfc6d15a511adce3cf3cb4d1c98227" id="r_af3cfc6d15a511adce3cf3cb4d1c98227"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#af3cfc6d15a511adce3cf3cb4d1c98227">setDeleteContextCallback</a> (const <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
+<tr class="separator:af3cfc6d15a511adce3cf3cb4d1c98227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab89582b6b046b7982bea6b421ca3586d" id="r_ab89582b6b046b7982bea6b421ca3586d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab89582b6b046b7982bea6b421ca3586d">getServCtx</a> () const</td></tr>
+<tr class="separator:ab89582b6b046b7982bea6b421ca3586d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ead208f10d6d12527207b0ecf522df7" id="r_a5ead208f10d6d12527207b0ecf522df7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a5ead208f10d6d12527207b0ecf522df7">getDeleteContextCallback</a> () const</td></tr>
+<tr class="separator:a5ead208f10d6d12527207b0ecf522df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7e9c595ad9e21ea36ee22375f1b804" id="r_a2a7e9c595ad9e21ea36ee22375f1b804"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2a7e9c595ad9e21ea36ee22375f1b804">isActiveReleaseMode</a> () const</td></tr>
+<tr class="separator:a2a7e9c595ad9e21ea36ee22375f1b804"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade78267f341f9f77e67ced9151da0ddc" id="r_ade78267f341f9f77e67ced9151da0ddc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ade78267f341f9f77e67ced9151da0ddc">setAcceptTimeout</a> (uint32_t seconds)</td></tr>
+<tr class="separator:ade78267f341f9f77e67ced9151da0ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab95082119b2be374c1c536ac7b886fba" id="r_ab95082119b2be374c1c536ac7b886fba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab95082119b2be374c1c536ac7b886fba">setDispatchTimeout</a> (uint32_t seconds)</td></tr>
+<tr class="separator:ab95082119b2be374c1c536ac7b886fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a12779ad88ec076ae7d6ea0d8bddc74b7" id="r_a12779ad88ec076ae7d6ea0d8bddc74b7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a12779ad88ec076ae7d6ea0d8bddc74b7">postRead</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:a12779ad88ec076ae7d6ea0d8bddc74b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa6c7e929e59e5ed8797792c5a450afd" id="r_aaa6c7e929e59e5ed8797792c5a450afd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa6c7e929e59e5ed8797792c5a450afd">postWrite</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:aaa6c7e929e59e5ed8797792c5a450afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c4fa20f0c800a3bd246211fdfe355d" id="r_af8c4fa20f0c800a3bd246211fdfe355d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#af8c4fa20f0c800a3bd246211fdfe355d">postClose</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:af8c4fa20f0c800a3bd246211fdfe355d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbcbd23b89822a275eec7339642f070d" id="r_afbcbd23b89822a275eec7339642f070d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#afbcbd23b89822a275eec7339642f070d">setTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx, int64_t seconds)</td></tr>
+<tr class="separator:afbcbd23b89822a275eec7339642f070d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7269da27822e4cbb8491a9a392347435" id="r_a7269da27822e4cbb8491a9a392347435"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a7269da27822e4cbb8491a9a392347435">cancelTimeout</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:a7269da27822e4cbb8491a9a392347435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadb1d016ef3f4cf8a90fcb5d73ca817c" id="r_aadb1d016ef3f4cf8a90fcb5d73ca817c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a> (<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *)</td></tr>
+<tr class="separator:aadb1d016ef3f4cf8a90fcb5d73ca817c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a789bad8334e213582b3fed967bec1825" id="r_a789bad8334e213582b3fed967bec1825"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">preConnectCallback</a> (int fd, sese::event::EventLoop *event_loop, <a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *ctx)</td></tr>
+<tr class="separator:a789bad8334e213582b3fed967bec1825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3864b63158dd1adf141270f67b72288b" id="r_a3864b63158dd1adf141270f67b72288b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a3864b63158dd1adf141270f67b72288b">setActiveReleaseMode</a> (bool enable)</td></tr>
+<tr class="separator:a3864b63158dd1adf141270f67b72288b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:aae0070684e7fe68c3e7a974252b6cace" id="r_aae0070684e7fe68c3e7a974252b6cace"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace">deleteContextCallback</a> = <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a></td></tr>
+<tr class="separator:aae0070684e7fe68c3e7a974252b6cace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2cad79d0e8b978796944c225a12b411" id="r_ac2cad79d0e8b978796944c225a12b411"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac2cad79d0e8b978796944c225a12b411">sslCtx</a> {}</td></tr>
+<tr class="separator:ac2cad79d0e8b978796944c225a12b411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6359cbad20371331335166d51543da6" id="r_ab6359cbad20371331335166d51543da6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">servProtos</a> {}</td></tr>
+<tr class="separator:ab6359cbad20371331335166d51543da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac98426c2c3a34fc6490bd5ac362f2932" id="r_ac98426c2c3a34fc6490bd5ac362f2932"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a> {}</td></tr>
+<tr class="separator:ac98426c2c3a34fc6490bd5ac362f2932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83b699d05ec462b9e582944fb2627bde" id="r_a83b699d05ec462b9e582944fb2627bde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1_user_balance_loader.html">service::UserBalanceLoader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a></td></tr>
+<tr class="separator:a83b699d05ec462b9e582944fb2627bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>基于 sese-event 的完成端口服务器 </p>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00025">25</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="abceea41909927b7ddd32f3787b40acc4" name="abceea41909927b7ddd32f3787b40acc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abceea41909927b7ddd32f3787b40acc4">&#9670;&#160;</a></span>DeleteContextCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">sese::iocp::v1::IOCPServer::DeleteContextCallback</a> =  std::function&lt;void(<a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *<a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00028">28</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a29720fc3d902d5fefec65ed748f581c0" name="a29720fc3d902d5fefec65ed748f581c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29720fc3d902d5fefec65ed748f581c0">&#9670;&#160;</a></span>~IOCPServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::iocp::v1::IOCPServer::~IOCPServer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89390f6b46a51913edf19312df4d797d" name="a89390f6b46a51913edf19312df4d797d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89390f6b46a51913edf19312df4d797d">&#9670;&#160;</a></span>IOCPServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IOCPServer::IOCPServer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00302">302</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  302</span>                       {</div>
+<div class="line"><span class="lineno">  303</span>    this-&gt;<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a972a287ec76049fa63041aba30e0f0d7">setOnDispatchedCallbackFunction</a>(</div>
+<div class="line"><span class="lineno">  304</span>            [&amp;](<span class="keywordtype">int</span> fd, sese::event::EventLoop *event_loop, <span class="keywordtype">void</span> *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>) {</div>
+<div class="line"><span class="lineno">  305</span>                this-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a789bad8334e213582b3fed967bec1825">preConnectCallback</a>(fd, event_loop, <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a> *<span class="keyword">&gt;</span>(<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>));</div>
+<div class="line"><span class="lineno">  306</span>            }</div>
+<div class="line"><span class="lineno">  307</span>    );</div>
+<div class="line"><span class="lineno">  308</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">balanceLoader</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00384">preConnectCallback()</a> , 以及 <a class="el" href="_user_balance_loader_8h_source.html#l00067">sese::service::UserBalanceLoader::setOnDispatchedCallbackFunction()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a7269da27822e4cbb8491a9a392347435" name="a7269da27822e4cbb8491a9a392347435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7269da27822e4cbb8491a9a392347435">&#9670;&#160;</a></span>cancelTimeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IOCPServer::cancelTimeout </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>取消超时事件 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00370">370</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  370</span>                                           {</div>
+<div class="line"><span class="lineno">  371</span>    <span class="keywordflow">if</span> (ctx-&gt;timeoutEvent) {</div>
+<div class="line"><span class="lineno">  372</span>        ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">cancelTimeoutEvent</a>(ctx-&gt;timeoutEvent);</div>
+<div class="line"><span class="lineno">  373</span>        ctx-&gt;timeoutEvent = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  374</span>    }</div>
+<div class="line"><span class="lineno">  375</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00028">sese::service::v2::TimerableService::cancelTimeoutEvent()</a>.</p>
+
+</div>
+</div>
+<a id="a5ead208f10d6d12527207b0ecf522df7" name="a5ead208f10d6d12527207b0ecf522df7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ead208f10d6d12527207b0ecf522df7">&#9670;&#160;</a></span>getDeleteContextCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp; sese::iocp::v1::IOCPServer::getDeleteContextCallback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取当前服务的操作上下文销毁回调函数 </p><dl class="section return"><dt>返回</dt><dd>回调函数 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00174">174</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  174</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace">IOCPServer::deleteContextCallback</a>; };</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00203">deleteContextCallback</a>.</p>
+
+</div>
+</div>
+<a id="ab89582b6b046b7982bea6b421ca3586d" name="ab89582b6b046b7982bea6b421ca3586d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab89582b6b046b7982bea6b421ca3586d">&#9670;&#160;</a></span>getServCtx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp; sese::iocp::v1::IOCPServer::getServCtx </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取当前服务器监听 SSL 上下文 </p><dl class="section return"><dt>返回</dt><dd>SSL 上下文 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00169">169</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  169</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac2cad79d0e8b978796944c225a12b411">IOCPServer::sslCtx</a>; }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00204">sslCtx</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00030">sese::iocp::v1::IOCPService::IOCPService()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00123">sese::iocp::v1::IOCPService::onAccept()</a>.</p>
+
+</div>
+</div>
+<a id="ad3316941a7b54c825f6b7792ab3f27b4" name="ad3316941a7b54c825f6b7792ab3f27b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3316941a7b54c825f6b7792ab3f27b4">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IOCPServer::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>初始化并启动服务器 </p><dl class="section return"><dt>返回</dt><dd>初始化结果 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00310">310</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  310</span>                      {</div>
+<div class="line"><span class="lineno">  311</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a8c59ee3a3802a9c955bd0c549c297a37">init</a>&lt;<a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html" title="基于 sese-event 的完成端口子服务">IOCPService</a>&gt;([<span class="keyword">this</span>]() -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  312</span>            return new IOCPService(this, this-&gt;activeReleaseMode);</div>
+<div class="line"><span class="lineno">  313</span>        })) {</div>
+<div class="line"><span class="lineno">  314</span>        <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a3f20c2881ad37470ee13ee769b883c3f" title="启动当前负载器和服务">start</a>();</div>
+<div class="line"><span class="lineno">  315</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  316</span>    }</div>
+<div class="line"><span class="lineno">  317</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  318</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">balanceLoader</a>, <a class="el" href="_user_balance_loader_8h_source.html#l00119">sese::service::UserBalanceLoader::init()</a> , 以及 <a class="el" href="_user_balance_loader_8cpp_source.html#l00045">sese::service::UserBalanceLoader::start()</a>.</p>
+
+</div>
+</div>
+<a id="a2a7e9c595ad9e21ea36ee22375f1b804" name="a2a7e9c595ad9e21ea36ee22375f1b804"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a7e9c595ad9e21ea36ee22375f1b804">&#9670;&#160;</a></span>isActiveReleaseMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::iocp::v1::IOCPServer::isActiveReleaseMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>获取主动释放模式状态 </p><dl class="section return"><dt>返回</dt><dd>主动释放模式状态 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00180">180</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  180</span>{ <span class="keywordflow">return</span> activeReleaseMode; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab4a0e2fae503e52c1ab90b8e5a644e2b" name="ab4a0e2fae503e52c1ab90b8e5a644e2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4a0e2fae503e52c1ab90b8e5a644e2b">&#9670;&#160;</a></span>onAcceptCompleted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::iocp::v1::IOCPServer::onAcceptCompleted </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>连接握手完成回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00082">82</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00094">sese::iocp::v1::IOCPService::onAcceptCompleted()</a>.</p>
+
+</div>
+</div>
+<a id="a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2" name="a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ee1dbff9b0c7a0ea1e0b9418dcaa9f2">&#9670;&#160;</a></span>onAlpnGet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::iocp::v1::IOCPServer::onAlpnGet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>in_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>ALPN 协议协商完成回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>上下文 </td></tr>
+    <tr><td class="paramname">in</td><td>协商内容 </td></tr>
+    <tr><td class="paramname">in_length</td><td>协商内容长度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00119">119</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  119</span>{}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00119">sese::iocp::v1::IOCPService::onAlpnGet()</a>.</p>
+
+</div>
+</div>
+<a id="ae6cbe8ea828cba53e593037905cb4d94" name="ae6cbe8ea828cba53e593037905cb4d94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6cbe8ea828cba53e593037905cb4d94">&#9670;&#160;</a></span>onAlpnSelect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IOCPServer::onAlpnSelect </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t **&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>out_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>in_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ALPN 协商回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>对端期望内容 </td></tr>
+    <tr><td class="paramname">out_length</td><td>对端期望内容长度 </td></tr>
+    <tr><td class="paramname">in</td><td>响应内容 </td></tr>
+    <tr><td class="paramname">in_length</td><td>响应内容长度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>ALPN 状态码 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00377">377</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  377</span>                                                                                                            {</div>
+<div class="line"><span class="lineno">  378</span>    <span class="keywordflow">if</span> (SSL_select_next_proto(<span class="keyword">const_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> **<span class="keyword">&gt;</span>(out), out_length, <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8_t *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">servProtos</a>.c_str()), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">servProtos</a>.length()), <a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, in_length) != OPENSSL_NPN_NEGOTIATED) {</div>
+<div class="line"><span class="lineno">  379</span>        <span class="keywordflow">return</span> SSL_TLSEXT_ERR_NOACK;</div>
+<div class="line"><span class="lineno">  380</span>    }</div>
+<div class="line"><span class="lineno">  381</span>    <span class="keywordflow">return</span> SSL_TLSEXT_ERR_OK;</div>
+<div class="line"><span class="lineno">  382</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_sqlite_prepared_statement_impl_8cpp_source.html#l00037">in()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00205">servProtos</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00252">sese::iocp::v1::IOCPService::alpnCallbackFunction()</a>.</p>
+
+</div>
+</div>
+<a id="a8575f93c9e0beb35d62006cadf14b6c0" name="a8575f93c9e0beb35d62006cadf14b6c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8575f93c9e0beb35d62006cadf14b6c0">&#9670;&#160;</a></span>onConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::iocp::v1::IOCPServer::onConnected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>连接事件回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00112">112</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>{}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00115">sese::iocp::v1::IOCPService::onConnected()</a>.</p>
+
+</div>
+</div>
+<a id="aadb1d016ef3f4cf8a90fcb5d73ca817c" name="aadb1d016ef3f4cf8a90fcb5d73ca817c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadb1d016ef3f4cf8a90fcb5d73ca817c">&#9670;&#160;</a></span>onDeleteContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void sese::iocp::v1::IOCPServer::onDeleteContext </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>默认的上下文释放回调函数 </p>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00077">77</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6b80c4c7e10a993d45f158ccde0d0a9a" name="a6b80c4c7e10a993d45f158ccde0d0a9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b80c4c7e10a993d45f158ccde0d0a9a">&#9670;&#160;</a></span>onPreConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::iocp::v1::IOCPServer::onPreConnect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>连接前事件回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00107">107</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  107</span>{}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00384">preConnectCallback()</a>.</p>
+
+</div>
+</div>
+<a id="ab5e63ccd4912309e4871fc5c8ed46f3c" name="ab5e63ccd4912309e4871fc5c8ed46f3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5e63ccd4912309e4871fc5c8ed46f3c">&#9670;&#160;</a></span>onPreRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::iocp::v1::IOCPServer::onPreRead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>读取事件触发回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00087">87</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>{}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00098">sese::iocp::v1::IOCPService::onPreRead()</a>.</p>
+
+</div>
+</div>
+<a id="a08a5ca1d58d7445ecdd027cd5f12b788" name="a08a5ca1d58d7445ecdd027cd5f12b788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08a5ca1d58d7445ecdd027cd5f12b788">&#9670;&#160;</a></span>onReadCompleted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::iocp::v1::IOCPServer::onReadCompleted </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>读取事件完成回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00092">92</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>{}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00102">sese::iocp::v1::IOCPService::onReadCompleted()</a>.</p>
+
+</div>
+</div>
+<a id="a138c236d9be67089880c03294bcc2694" name="a138c236d9be67089880c03294bcc2694"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a138c236d9be67089880c03294bcc2694">&#9670;&#160;</a></span>onTimeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::iocp::v1::IOCPServer::onTimeout </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>超时事件回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00102">102</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>{}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00110">sese::iocp::v1::IOCPService::onTimeout()</a>.</p>
+
+</div>
+</div>
+<a id="a082b53a83bf77c7545c943e3dce97487" name="a082b53a83bf77c7545c943e3dce97487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a082b53a83bf77c7545c943e3dce97487">&#9670;&#160;</a></span>onWriteCompleted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void sese::iocp::v1::IOCPServer::onWriteCompleted </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>写入事件完成回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00097">97</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>{}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00106">sese::iocp::v1::IOCPService::onWriteCompleted()</a>.</p>
+
+</div>
+</div>
+<a id="af8c4fa20f0c800a3bd246211fdfe355d" name="af8c4fa20f0c800a3bd246211fdfe355d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8c4fa20f0c800a3bd246211fdfe355d">&#9670;&#160;</a></span>postClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IOCPServer::postClose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>投递关闭事件 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00332">332</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  332</span>                                       {</div>
+<div class="line"><span class="lineno">  333</span>    ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a2f1fb16e1649fc1ce74abd6f3c5945ff">postClose</a>(ctx);</div>
+<div class="line"><span class="lineno">  334</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00085">sese::iocp::v1::IOCPService::postClose()</a>.</p>
+
+</div>
+</div>
+<a id="a4836500c678aae0a24a7433152706503" name="a4836500c678aae0a24a7433152706503"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4836500c678aae0a24a7433152706503">&#9670;&#160;</a></span>postConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IOCPServer::postConnect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>cli_ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>投递连接事件 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to</td><td>连接地址 </td></tr>
+    <tr><td class="paramname">cli_ctx</td><td>ssl 客户端上下文 </td></tr>
+    <tr><td class="paramname">data</td><td>额外数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00336">336</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  336</span>                                                                                                        {</div>
+<div class="line"><span class="lineno">  337</span>    <span class="keyword">const</span> <span class="keyword">auto</span> SOCK = <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a5ca3fdc2185fc9a55ebe3313926e8da6">sese::net::Socket::socket</a>(to-&gt;getFamily(), SOCK_STREAM, IPPROTO_IP);</div>
+<div class="line"><span class="lineno">  338</span>    <a class="code hl_function" href="classsese_1_1net_1_1_socket.html#a79893e2b7cb3290a9667427761b9ab5c">sese::net::Socket::setNonblocking</a>(SOCK);</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">if</span> (connect(SOCK, to-&gt;getRawAddress(), to-&gt;getRawAddressLength())) {</div>
+<div class="line"><span class="lineno">  341</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> ERR = <a class="code hl_function" href="namespacesese_1_1net.html#a246ca6551700294b4e22470e24e40209" title="获取网络相关 error 代码">sese::net::getNetworkError</a>(); <a class="code hl_enumvalue" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5acd22bad976363fdd1bfbf6759fede482" title="错误">ERR</a> != <a class="code hl_define" href="native_2win_2_config_8h.html#a6c045d5be06e715cc335784a7320714e">EINPROGRESS</a>) {</div>
+<div class="line"><span class="lineno">  342</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  343</span>        }</div>
+<div class="line"><span class="lineno">  344</span>    }</div>
+<div class="line"><span class="lineno">  345</span> </div>
+<div class="line"><span class="lineno">  346</span>    <span class="keyword">const</span> <span class="keyword">auto</span> CTX = <span class="keyword">new</span> <a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_context.html" title="基于 sese-event 的完成端口操作上下文">Context</a>;</div>
+<div class="line"><span class="lineno">  347</span>    CTX-&gt;fd = SOCK;</div>
+<div class="line"><span class="lineno">  348</span>    CTX-&gt;self = <span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  349</span>    CTX-&gt;isConn = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  350</span>    CTX-&gt;data = <a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>;</div>
+<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">if</span> (cli_ctx) {</div>
+<div class="line"><span class="lineno">  352</span>        CTX-&gt;ssl = SSL_new(<span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(cli_ctx-&gt;getContext()));</div>
+<div class="line"><span class="lineno">  353</span>        <span class="comment">// printf(&quot;ssl new %p\n&quot;, ctx-&gt;ssl);</span></div>
+<div class="line"><span class="lineno">  354</span>        SSL_set_fd(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(CTX-&gt;ssl), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(SOCK));</div>
+<div class="line"><span class="lineno">  355</span>        SSL_set_alpn_protos(<span class="keyword">static_cast&lt;</span>SSL *<span class="keyword">&gt;</span>(CTX-&gt;ssl), <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a>.c_str()), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">clientProtos</a>.length()));</div>
+<div class="line"><span class="lineno">  356</span>    }</div>
+<div class="line"><span class="lineno">  357</span> </div>
+<div class="line"><span class="lineno">  358</span>    <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a4d22f3419c59cf92700950ab127f6356">dispatchSocket</a>(SOCK, CTX);</div>
+<div class="line"><span class="lineno">  359</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">balanceLoader</a>, <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00206">clientProtos</a>, <a class="el" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data()</a>, <a class="el" href="_user_balance_loader_8cpp_source.html#l00115">sese::service::UserBalanceLoader::dispatchSocket()</a>, <a class="el" href="native_2win_2_config_8h_source.html#l00123">EINPROGRESS</a>, <a class="el" href="net_2_socket_8cpp_source.html#l00096">sese::net::getNetworkError()</a>, <a class="el" href="native_2unix_2net_2_socket_8cpp_source.html#l00066">sese::net::Socket::setNonblocking()</a> , 以及 <a class="el" href="net_2_socket_8cpp_source.html#l00004">sese::net::Socket::socket()</a>.</p>
+
+</div>
+</div>
+<a id="a12779ad88ec076ae7d6ea0d8bddc74b7" name="a12779ad88ec076ae7d6ea0d8bddc74b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12779ad88ec076ae7d6ea0d8bddc74b7">&#9670;&#160;</a></span>postRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IOCPServer::postRead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>投递读事件 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00324">324</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  324</span>                                      {</div>
+<div class="line"><span class="lineno">  325</span>    ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#a5cf28b7509447b5f9de76d3ed57e8eb0">postRead</a>(ctx);</div>
+<div class="line"><span class="lineno">  326</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00063">sese::iocp::v1::IOCPService::postRead()</a>.</p>
+
+</div>
+</div>
+<a id="aaa6c7e929e59e5ed8797792c5a450afd" name="aaa6c7e929e59e5ed8797792c5a450afd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa6c7e929e59e5ed8797792c5a450afd">&#9670;&#160;</a></span>postWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IOCPServer::postWrite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>投递写事件 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00328">328</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  328</span>                                       {</div>
+<div class="line"><span class="lineno">  329</span>    ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html#ace997be10bc1e58f6830fa9f9458b5f5">postWrite</a>(ctx);</div>
+<div class="line"><span class="lineno">  330</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00074">sese::iocp::v1::IOCPService::postWrite()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00384">preConnectCallback()</a>.</p>
+
+</div>
+</div>
+<a id="a789bad8334e213582b3fed967bec1825" name="a789bad8334e213582b3fed967bec1825"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a789bad8334e213582b3fed967bec1825">&#9670;&#160;</a></span>preConnectCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IOCPServer::preConnectCallback </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sese::event::EventLoop *&#160;</td>
+          <td class="paramname"><em>event_loop</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00384">384</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  384</span>                                                                                                         {</div>
+<div class="line"><span class="lineno">  385</span>    <span class="keywordflow">if</span> (ctx) {</div>
+<div class="line"><span class="lineno">  386</span>        ctx-&gt;client = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_class" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html" title="基于 sese-event 的完成端口子服务">IOCPService</a> *<span class="keyword">&gt;</span>(event_loop);</div>
+<div class="line"><span class="lineno">  387</span>        <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a6b80c4c7e10a993d45f158ccde0d0a9a">onPreConnect</a>(ctx);</div>
+<div class="line"><span class="lineno">  388</span>        <a class="code hl_function" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aaa6c7e929e59e5ed8797792c5a450afd">postWrite</a>(ctx);</div>
+<div class="line"><span class="lineno">  389</span>    }</div>
+<div class="line"><span class="lineno">  390</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00107">onPreConnect()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00328">postWrite()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00302">IOCPServer()</a>.</p>
+
+</div>
+</div>
+<a id="ade78267f341f9f77e67ced9151da0ddc" name="ade78267f341f9f77e67ced9151da0ddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade78267f341f9f77e67ced9151da0ddc">&#9670;&#160;</a></span>setAcceptTimeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setAcceptTimeout </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>seconds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置连接接入超时时间，此函数仅用户基于 sese-event 的 IOCP 实现 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seconds</td><td>连接接入超时时间 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00187">187</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  187</span>{ <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#ac767d1fc18fe6b0f5e76f83e4519d5b7">setAcceptTimeout</a>(seconds); }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">balanceLoader</a> , 以及 <a class="el" href="_user_balance_loader_8h_source.html#l00036">sese::service::UserBalanceLoader::setAcceptTimeout()</a>.</p>
+
+</div>
+</div>
+<a id="a3864b63158dd1adf141270f67b72288b" name="a3864b63158dd1adf141270f67b72288b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3864b63158dd1adf141270f67b72288b">&#9670;&#160;</a></span>setActiveReleaseMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setActiveReleaseMode </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置主动释放模式 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>是否启用 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00201">201</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  201</span>{ activeReleaseMode = enable; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abf077bf2b22f2282ece08432e66b2bef" name="abf077bf2b22f2282ece08432e66b2bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf077bf2b22f2282ece08432e66b2bef">&#9670;&#160;</a></span>setAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setAddress </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置当前服务绑定的 IP 地址，设置此选项服务器将会自动监听对应地址的端口 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>目标 IP </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00138">138</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>{ <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#aacd17a04291183817dae1c04fb9f6246">setAddress</a>(addr); }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">balanceLoader</a> , 以及 <a class="el" href="_user_balance_loader_8h_source.html#l00032">sese::service::UserBalanceLoader::setAddress()</a>.</p>
+
+</div>
+</div>
+<a id="a515e1af4fbc2402662f8a69e838fed13" name="a515e1af4fbc2402662f8a69e838fed13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515e1af4fbc2402662f8a69e838fed13">&#9670;&#160;</a></span>setClientProtos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setClientProtos </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>protos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置客户端 ALPN 协商内容 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protos</td><td>协议协商内容 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00158">158</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>{ <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac98426c2c3a34fc6490bd5ac362f2932">IOCPServer::clientProtos</a> = protos; }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00206">clientProtos</a>.</p>
+
+</div>
+</div>
+<a id="af3cfc6d15a511adce3cf3cb4d1c98227" name="af3cfc6d15a511adce3cf3cb4d1c98227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3cfc6d15a511adce3cf3cb4d1c98227">&#9670;&#160;</a></span>setDeleteContextCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setDeleteContextCallback </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置服务器操作上下文销毁回调函数 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>回调函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00163">163</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  163</span>{ <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aae0070684e7fe68c3e7a974252b6cace">IOCPServer::deleteContextCallback</a> = <a class="code hl_function" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>; }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp_source.html#l00007">callback()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00203">deleteContextCallback</a>.</p>
+
+</div>
+</div>
+<a id="ab95082119b2be374c1c536ac7b886fba" name="ab95082119b2be374c1c536ac7b886fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab95082119b2be374c1c536ac7b886fba">&#9670;&#160;</a></span>setDispatchTimeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setDispatchTimeout </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>seconds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置连接分发超时时间，此函数仅用户基于 sese-event 的 IOCP 实现 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seconds</td><td>连接分发超时时间 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00192">192</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  192</span>{ <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#ae5751cbce412a803b7d1906c8be57e5f">setDispatchTimeout</a>(seconds); }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">balanceLoader</a> , 以及 <a class="el" href="_user_balance_loader_8h_source.html#l00040">sese::service::UserBalanceLoader::setDispatchTimeout()</a>.</p>
+
+</div>
+</div>
+<a id="aaa792d0151f4855fbb29ab9dadd64539" name="aaa792d0151f4855fbb29ab9dadd64539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa792d0151f4855fbb29ab9dadd64539">&#9670;&#160;</a></span>setServCtx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setServCtx </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置服务器监听所使用的 SSL 上下文 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>SSL 上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00148">148</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>{ <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ac2cad79d0e8b978796944c225a12b411">IOCPServer::sslCtx</a> = ctx; }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00204">sslCtx</a>.</p>
+
+</div>
+</div>
+<a id="aee49e8321f6c05c304f292b79c51de42" name="aee49e8321f6c05c304f292b79c51de42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee49e8321f6c05c304f292b79c51de42">&#9670;&#160;</a></span>setServProtos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setServProtos </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>protos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置服务器 ALPN 协商内容 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protos</td><td>协议协商内容 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00153">153</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  153</span>{ <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#ab6359cbad20371331335166d51543da6">IOCPServer::servProtos</a> = protos; }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00205">servProtos</a>.</p>
+
+</div>
+</div>
+<a id="a6423868f07d0e9e6d9a9b2fd6216a441" name="a6423868f07d0e9e6d9a9b2fd6216a441"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6423868f07d0e9e6d9a9b2fd6216a441">&#9670;&#160;</a></span>setThreads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sese::iocp::v1::IOCPServer::setThreads </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>threads</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置服务期望线程数量 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">threads</td><td>线程数量 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00143">143</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  143</span>{ <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a80244b04a60e3a9bc0b4030b03f001ad">setThreads</a>(threads); }</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">balanceLoader</a> , 以及 <a class="el" href="_user_balance_loader_8cpp_source.html#l00039">sese::service::UserBalanceLoader::setThreads()</a>.</p>
+
+</div>
+</div>
+<a id="afbcbd23b89822a275eec7339642f070d" name="afbcbd23b89822a275eec7339642f070d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbcbd23b89822a275eec7339642f070d">&#9670;&#160;</a></span>setTimeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IOCPServer::setTimeout </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_context.html">Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>seconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>设置超时事件 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>操作上下文 </td></tr>
+    <tr><td class="paramname">seconds</td><td>超时时间 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00361">361</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  361</span>                                                         {</div>
+<div class="line"><span class="lineno">  362</span>    <span class="keywordflow">if</span> (ctx-&gt;timeoutEvent) {</div>
+<div class="line"><span class="lineno">  363</span>        ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a3cf80b02b7facfd94e70e43e08049388">cancelTimeoutEvent</a>(ctx-&gt;timeoutEvent);</div>
+<div class="line"><span class="lineno">  364</span>        ctx-&gt;timeoutEvent = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  365</span>    }</div>
+<div class="line"><span class="lineno">  366</span>    ctx-&gt;timeoutEvent = ctx-&gt;client-&gt;<a class="code hl_function" href="classsese_1_1service_1_1v2_1_1_timerable_service.html#a81a1ae4f7fe235f6fe1a68bd142eee38">setTimeoutEvent</a>(seconds, ctx);</div>
+<div class="line"><span class="lineno">  367</span>    ctx-&gt;timeoutEvent-&gt;<a class="code hl_variable" href="structsese_1_1service_1_1v2_1_1_timeout_event.html#a66c4839fd2da2f473ebb0d0cf52b7a53" title="额外数据">data</a> = ctx;</div>
+<div class="line"><span class="lineno">  368</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00028">sese::service::v2::TimerableService::cancelTimeoutEvent()</a>, <a class="el" href="_timerable_service___v2_8h_source.html#l00022">sese::service::v2::TimeoutEvent::data</a> , 以及 <a class="el" href="_timerable_service___v2_8cpp_source.html#l00014">sese::service::v2::TimerableService::setTimeoutEvent()</a>.</p>
+
+</div>
+</div>
+<a id="afe265af21499c32168c00f5dd9a87d1a" name="afe265af21499c32168c00f5dd9a87d1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe265af21499c32168c00f5dd9a87d1a">&#9670;&#160;</a></span>shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IOCPServer::shutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>终止工作线程、释放系统资源并结束服务器 </p>
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a> 第 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00320">320</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  320</span>                          {</div>
+<div class="line"><span class="lineno">  321</span>    <a class="code hl_variable" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a83b699d05ec462b9e582944fb2627bde">balanceLoader</a>.<a class="code hl_function" href="classsese_1_1service_1_1_user_balance_loader.html#a98af987660a89b01bea93bfc6a87d147" title="关闭当前负载器并卸载服务">stop</a>();</div>
+<div class="line"><span class="lineno">  322</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">balanceLoader</a> , 以及 <a class="el" href="_user_balance_loader_8cpp_source.html#l00069">sese::service::UserBalanceLoader::stop()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a83b699d05ec462b9e582944fb2627bde" name="a83b699d05ec462b9e582944fb2627bde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b699d05ec462b9e582944fb2627bde">&#9670;&#160;</a></span>balanceLoader</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1service_1_1_user_balance_loader.html">service::UserBalanceLoader</a> sese::iocp::v1::IOCPServer::balanceLoader</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00207">207</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00310">init()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00302">IOCPServer()</a>, <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00336">postConnect()</a>, <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00187">setAcceptTimeout()</a>, <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00138">setAddress()</a>, <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00192">setDispatchTimeout()</a>, <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00143">setThreads()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00320">shutdown()</a>.</p>
+
+</div>
+</div>
+<a id="ac98426c2c3a34fc6490bd5ac362f2932" name="ac98426c2c3a34fc6490bd5ac362f2932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac98426c2c3a34fc6490bd5ac362f2932">&#9670;&#160;</a></span>clientProtos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::iocp::v1::IOCPServer::clientProtos {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00206">206</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00336">postConnect()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00158">setClientProtos()</a>.</p>
+
+</div>
+</div>
+<a id="aae0070684e7fe68c3e7a974252b6cace" name="aae0070684e7fe68c3e7a974252b6cace"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae0070684e7fe68c3e7a974252b6cace">&#9670;&#160;</a></span>deleteContextCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#abceea41909927b7ddd32f3787b40acc4">DeleteContextCallback</a> sese::iocp::v1::IOCPServer::deleteContextCallback = <a class="el" href="classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#aadb1d016ef3f4cf8a90fcb5d73ca817c">onDeleteContext</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00203">203</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00174">getDeleteContextCallback()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00163">setDeleteContextCallback()</a>.</p>
+
+</div>
+</div>
+<a id="ab6359cbad20371331335166d51543da6" name="ab6359cbad20371331335166d51543da6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6359cbad20371331335166d51543da6">&#9670;&#160;</a></span>servProtos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string sese::iocp::v1::IOCPServer::servProtos {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00205">205</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  205</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8cpp_source.html#l00377">onAlpnSelect()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00153">setServProtos()</a>.</p>
+
+</div>
+</div>
+<a id="ac2cad79d0e8b978796944c225a12b411" name="ac2cad79d0e8b978796944c225a12b411"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2cad79d0e8b978796944c225a12b411">&#9670;&#160;</a></span>sslCtx</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">security::SSLContext::Ptr</a> sese::iocp::v1::IOCPServer::sslCtx {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a> 第 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00204">204</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  204</span>{};</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00169">getServCtx()</a> , 以及 <a class="el" href="_i_o_c_p_server___v1_8h_source.html#l00148">setServCtx()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/service/iocp/<a class="el" href="_i_o_c_p_server___v1_8h_source.html">IOCPServer_V1.h</a></li>
+<li>sese/service/iocp/<a class="el" href="_i_o_c_p_server___v1_8cpp_source.html">IOCPServer_V1.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

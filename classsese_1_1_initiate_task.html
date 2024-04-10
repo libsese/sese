@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::InitiateTask类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_initiate_task.html">InitiateTask</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1_initiate_task-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::InitiateTask类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>初始化任务基类  
+ <a href="classsese_1_1_initiate_task.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_initializer_8h_source.html">Initializer.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::InitiateTask 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1_initiate_task.png" usemap="#sese::InitiateTask_map" alt=""/>
+  <map id="sese::InitiateTask_map" name="sese::InitiateTask_map">
+<area href="classsese_1_1_encoding_converter_initiate_task.html" title="编码转换器初始化任务" alt="sese::EncodingConverterInitiateTask" shape="rect" coords="0,56,229,80"/>
+<area href="classsese_1_1_thread_initiate_task.html" title="内建线程类的初始化任务" alt="sese::ThreadInitiateTask" shape="rect" coords="239,56,468,80"/>
+<area href="classsese_1_1record_1_1_logger_initiate_task.html" title="日志器初始化任务" alt="sese::record::LoggerInitiateTask" shape="rect" coords="478,56,707,80"/>
+<area href="classsese_1_1security_1_1_security_init_task.html" title="安全模块初始化任务" alt="sese::security::SecurityInitTask" shape="rect" coords="717,56,946,80"/>
+<area href="classsese_1_1system_1_1_command_line_initiate_task.html" title="命令行参数初始化任务" alt="sese::system::CommandLineInitiateTask" shape="rect" coords="956,56,1185,80"/>
+<area href="classsese_1_1system_1_1_paths_initiate_task.html" title="运行时路径初始化任务" alt="sese::system::PathsInitiateTask" shape="rect" coords="1195,56,1424,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a06c06dc20e0ef03ba4c8ced352f03224" id="r_a06c06dc20e0ef03ba4c8ced352f03224"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#a06c06dc20e0ef03ba4c8ced352f03224">Ptr</a> = std::shared_ptr&lt; <a class="el" href="classsese_1_1_initiate_task.html">InitiateTask</a> &gt;</td></tr>
+<tr class="memdesc:a06c06dc20e0ef03ba4c8ced352f03224"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化任务智能指针  <br /></td></tr>
+<tr class="separator:a06c06dc20e0ef03ba4c8ced352f03224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ab583d5497b2a9f07e8c2340b0df9359a" id="r_ab583d5497b2a9f07e8c2340b0df9359a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#ab583d5497b2a9f07e8c2340b0df9359a">InitiateTask</a> (std::string name)</td></tr>
+<tr class="separator:ab583d5497b2a9f07e8c2340b0df9359a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7da3e0f23b5f86f26c43624f77583f9" id="r_af7da3e0f23b5f86f26c43624f77583f9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#af7da3e0f23b5f86f26c43624f77583f9">~InitiateTask</a> ()=default</td></tr>
+<tr class="separator:af7da3e0f23b5f86f26c43624f77583f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa031ea39215e525b8e0049e5b53d68a7" id="r_aa031ea39215e525b8e0049e5b53d68a7"><td class="memItemLeft" align="right" valign="top">virtual int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#aa031ea39215e525b8e0049e5b53d68a7">init</a> () noexcept=0</td></tr>
+<tr class="separator:aa031ea39215e525b8e0049e5b53d68a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfacf32c5d027127de872ca765293036" id="r_abfacf32c5d027127de872ca765293036"><td class="memItemLeft" align="right" valign="top">virtual int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#abfacf32c5d027127de872ca765293036">destroy</a> () noexcept=0</td></tr>
+<tr class="separator:abfacf32c5d027127de872ca765293036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0df8ae4f5869e7c5653d086c67d3aa1c" id="r_a0df8ae4f5869e7c5653d086c67d3aa1c"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_initiate_task.html#a0df8ae4f5869e7c5653d086c67d3aa1c">getName</a> () const</td></tr>
+<tr class="separator:a0df8ae4f5869e7c5653d086c67d3aa1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>初始化任务基类 </p>
+
+<p class="definition">在文件 <a class="el" href="_initializer_8h_source.html">Initializer.h</a> 第 <a class="el" href="_initializer_8h_source.html#l00019">19</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a06c06dc20e0ef03ba4c8ced352f03224" name="a06c06dc20e0ef03ba4c8ced352f03224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06c06dc20e0ef03ba4c8ced352f03224">&#9670;&#160;</a></span>Ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_initiate_task.html#a06c06dc20e0ef03ba4c8ced352f03224">sese::InitiateTask::Ptr</a> =  std::shared_ptr&lt;<a class="el" href="classsese_1_1_initiate_task.html">InitiateTask</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化任务智能指针 </p>
+<dl class="section note"><dt>注解</dt><dd>std::stack 使用 std::deque 实现， 其中 std::deque::top 使用 '=' 运算符， 与 std::unique_ptr 冲突。 所以，InitiateTask::Ptr 使用 std::shared_ptr </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_initializer_8h_source.html">Initializer.h</a> 第 <a class="el" href="_initializer_8h_source.html#l00029">29</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ab583d5497b2a9f07e8c2340b0df9359a" name="ab583d5497b2a9f07e8c2340b0df9359a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab583d5497b2a9f07e8c2340b0df9359a">&#9670;&#160;</a></span>InitiateTask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">InitiateTask::InitiateTask </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a> 第 <a class="el" href="_initializer_8cpp_source.html#l00034">34</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>                                         : name(std::move(name)) {</div>
+<div class="line"><span class="lineno">   35</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af7da3e0f23b5f86f26c43624f77583f9" name="af7da3e0f23b5f86f26c43624f77583f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7da3e0f23b5f86f26c43624f77583f9">&#9670;&#160;</a></span>~InitiateTask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual sese::InitiateTask::~InitiateTask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="abfacf32c5d027127de872ca765293036" name="abfacf32c5d027127de872ca765293036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfacf32c5d027127de872ca765293036">&#9670;&#160;</a></span>destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int32_t sese::InitiateTask::destroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1_encoding_converter_initiate_task.html#a83999c9c0896b0c100fa9a48a8167005">sese::EncodingConverterInitiateTask</a>, <a class="el" href="classsese_1_1record_1_1_logger_initiate_task.html#a034963871b7b5be54381529a01dbb118">sese::record::LoggerInitiateTask</a>, <a class="el" href="classsese_1_1security_1_1_security_init_task.html#a6b4c613206fcf89790620c04a9567187">sese::security::SecurityInitTask</a>, <a class="el" href="classsese_1_1system_1_1_command_line_initiate_task.html#ad26ee506dec45df2318ec1929e669b59">sese::system::CommandLineInitiateTask</a>, <a class="el" href="classsese_1_1system_1_1_paths_initiate_task.html#a55311cff41d61b91120f07552cf20600">sese::system::PathsInitiateTask</a> , 以及 <a class="el" href="classsese_1_1_thread_initiate_task.html#adbf38a94f8042f98615cea5d2c4f0a79">sese::ThreadInitiateTask</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a0df8ae4f5869e7c5653d086c67d3aa1c" name="a0df8ae4f5869e7c5653d086c67d3aa1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0df8ae4f5869e7c5653d086c67d3aa1c">&#9670;&#160;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; sese::InitiateTask::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a> 第 <a class="el" href="_initializer_8cpp_source.html#l00037">37</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>                                                 {</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> name;</div>
+<div class="line"><span class="lineno">   39</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa031ea39215e525b8e0049e5b53d68a7" name="aa031ea39215e525b8e0049e5b53d68a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa031ea39215e525b8e0049e5b53d68a7">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int32_t sese::InitiateTask::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="classsese_1_1_encoding_converter_initiate_task.html#ad6933d9bb6988350d88d94b961368ed8">sese::EncodingConverterInitiateTask</a>, <a class="el" href="classsese_1_1record_1_1_logger_initiate_task.html#a97aedf1a38da5c6ece75258741be53bd">sese::record::LoggerInitiateTask</a>, <a class="el" href="classsese_1_1security_1_1_security_init_task.html#aac288356708ce038ac78bb8ee12354d5">sese::security::SecurityInitTask</a>, <a class="el" href="classsese_1_1system_1_1_command_line_initiate_task.html#ae0a1988d46c4a79b8cacbab37c3f11e9">sese::system::CommandLineInitiateTask</a>, <a class="el" href="classsese_1_1system_1_1_paths_initiate_task.html#a3eda7cc68889b836739e9029f2506bc6">sese::system::PathsInitiateTask</a> , 以及 <a class="el" href="classsese_1_1_thread_initiate_task.html#a9222e5ca04d5030fee91adc0d6885f46">sese::ThreadInitiateTask</a> 内被实现.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/util/<a class="el" href="_initializer_8h_source.html">Initializer.h</a></li>
+<li>sese/util/<a class="el" href="_initializer_8cpp_source.html">Initializer.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

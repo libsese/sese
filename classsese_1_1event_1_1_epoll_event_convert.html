@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::event::EpollEventConvert类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1event.html">event</a></li><li class="navelem"><a class="el" href="classsese_1_1event_1_1_epoll_event_convert.html">EpollEventConvert</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classsese_1_1event_1_1_epoll_event_convert-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::event::EpollEventConvert类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>epoll 事件转换器  
+ <a href="classsese_1_1event_1_1_epoll_event_convert.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_epoll_event_convert_8h_source.html">EpollEventConvert.h</a>&gt;</code></p>
+<div class="dynheader">
+类 sese::event::EpollEventConvert 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classsese_1_1event_1_1_epoll_event_convert.png" usemap="#sese::event::EpollEventConvert_map" alt=""/>
+  <map id="sese::event::EpollEventConvert_map" name="sese::event::EpollEventConvert_map">
+<area href="classsese_1_1event_1_1_base_event_convert.html" title="基础网络事件转换器接口" alt="sese::event::BaseEventConvert" shape="rect" coords="0,0,186,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aaf15f0982b86dc689b233628bf03b85b" id="r_aaf15f0982b86dc689b233628bf03b85b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_convert.html#aaf15f0982b86dc689b233628bf03b85b">fromNativeEvent</a> (int event) override</td></tr>
+<tr class="separator:aaf15f0982b86dc689b233628bf03b85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a300fac4887760753968a661a06b161a4" id="r_a300fac4887760753968a661a06b161a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_epoll_event_convert.html#a300fac4887760753968a661a06b161a4">toNativeEvent</a> (unsigned int event) override</td></tr>
+<tr class="separator:a300fac4887760753968a661a06b161a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classsese_1_1event_1_1_base_event_convert"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classsese_1_1event_1_1_base_event_convert')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="classsese_1_1event_1_1_base_event_convert.html">sese::event::BaseEventConvert</a></td></tr>
+<tr class="memitem:a74b2a9b1c7cd6165a90adbae0f37929d inherit pub_methods_classsese_1_1event_1_1_base_event_convert" id="r_a74b2a9b1c7cd6165a90adbae0f37929d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1event_1_1_base_event_convert.html#a74b2a9b1c7cd6165a90adbae0f37929d">~BaseEventConvert</a> ()=default</td></tr>
+<tr class="separator:a74b2a9b1c7cd6165a90adbae0f37929d inherit pub_methods_classsese_1_1event_1_1_base_event_convert"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>epoll 事件转换器 </p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_convert_8h_source.html">EpollEventConvert.h</a> 第 <a class="el" href="_epoll_event_convert_8h_source.html#l00013">13</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="aaf15f0982b86dc689b233628bf03b85b" name="aaf15f0982b86dc689b233628bf03b85b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf15f0982b86dc689b233628bf03b85b">&#9670;&#160;</a></span>fromNativeEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int sese::event::EpollEventConvert::fromNativeEvent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_convert.html#aeca759ee048deade0db86fc0bcfed2c5">sese::event::BaseEventConvert</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_convert_8cpp_source.html">EpollEventConvert.cpp</a> 第 <a class="el" href="_epoll_event_convert_8cpp_source.html#l00005">5</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                                  {</div>
+<div class="line"><span class="lineno">    6</span>    <span class="keywordtype">short</span> result = 0;</div>
+<div class="line"><span class="lineno">    7</span>    <span class="comment">// if (event &amp; EPOLLIN) {</span></div>
+<div class="line"><span class="lineno">    8</span>    <span class="comment">//     result |= EVENT_READ;</span></div>
+<div class="line"><span class="lineno">    9</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">if</span> (event &amp; EPOLLOUT) {</div>
+<div class="line"><span class="lineno">   11</span>        result |= <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>;</div>
+<div class="line"><span class="lineno">   12</span>    }</div>
+<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">if</span> (event &amp; EPOLLERR) {</div>
+<div class="line"><span class="lineno">   14</span>        result |= <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>;</div>
+<div class="line"><span class="lineno">   15</span>    }</div>
+<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">   17</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a>.</p>
+
+</div>
+</div>
+<a id="a300fac4887760753968a661a06b161a4" name="a300fac4887760753968a661a06b161a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a300fac4887760753968a661a06b161a4">&#9670;&#160;</a></span>toNativeEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sese::event::EpollEventConvert::toNativeEvent </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="classsese_1_1event_1_1_base_event_convert.html#a4fab2e6edc39d098f11898c683e10e38">sese::event::BaseEventConvert</a>.</p>
+
+<p class="definition">在文件 <a class="el" href="_epoll_event_convert_8cpp_source.html">EpollEventConvert.cpp</a> 第 <a class="el" href="_epoll_event_convert_8cpp_source.html#l00019">19</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                                {</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordtype">int</span> result = 0;</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">if</span> (event &amp; <a class="code hl_define" href="_base_event_8h.html#ac03f8506739d508e600347184b53e22c">EVENT_READ</a>) {</div>
+<div class="line"><span class="lineno">   22</span>        result |= EPOLLIN;</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (event &amp; <a class="code hl_define" href="_base_event_8h.html#a829bcc5ff94e601cfbd30e527c82f94f">EVENT_WRITE</a>) {</div>
+<div class="line"><span class="lineno">   25</span>        result |= EPOLLOUT;</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (event &amp; <a class="code hl_define" href="_base_event_8h.html#a386cca3372545d35239c7c9deeb704f3">EVENT_ERROR</a>) {</div>
+<div class="line"><span class="lineno">   28</span>        result |= EPOLLERR;</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">   31</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_base_event_8h_source.html#l00012">EVENT_ERROR</a>, <a class="el" href="_base_event_8h_source.html#l00010">EVENT_READ</a> , 以及 <a class="el" href="_base_event_8h_source.html#l00011">EVENT_WRITE</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/native/linux/event/<a class="el" href="_epoll_event_convert_8h_source.html">EpollEventConvert.h</a></li>
+<li>sese/native/linux/event/<a class="el" href="_epoll_event_convert_8cpp_source.html">EpollEventConvert.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

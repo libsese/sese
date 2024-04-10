@@ -1,0 +1,1553 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese::Value类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_value.html">Value</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classsese_1_1_value-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">sese::Value类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>值容器类  
+ <a href="classsese_1_1_value.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_value_8h_source.html">Value.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value_1_1_null.html">Null</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a02daae7c8adc1efa34e551c740ac2661" id="r_a02daae7c8adc1efa34e551c740ac2661"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661">Type</a> { <br />
+&#160;&#160;<a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">NONE</a> = 0
+, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a>
+, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">INT</a>
+, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">DOUBLE</a>
+, <br />
+&#160;&#160;<a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">STRING</a>
+, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">BLOB</a>
+, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">LIST</a>
+, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">DICT</a>
+<br />
+ }</td></tr>
+<tr class="separator:a02daae7c8adc1efa34e551c740ac2661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe57e460c5419165aeb1cbaae18af5ac" id="r_afe57e460c5419165aeb1cbaae18af5ac"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> = std::string</td></tr>
+<tr class="separator:afe57e460c5419165aeb1cbaae18af5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10369fbcdea644fc88299db66fc07c55" id="r_a10369fbcdea644fc88299db66fc07c55"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> = std::vector&lt; uint8_t &gt;</td></tr>
+<tr class="separator:a10369fbcdea644fc88299db66fc07c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a54644896ae6157228f9e79c3fb63d623" id="r_a54644896ae6157228f9e79c3fb63d623"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a> ()=default</td></tr>
+<tr class="separator:a54644896ae6157228f9e79c3fb63d623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ae9d6151b62cfba2c6ffd9f211da660" id="r_a1ae9d6151b62cfba2c6ffd9f211da660"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a1ae9d6151b62cfba2c6ffd9f211da660">Value</a> (<a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661">Type</a> type)</td></tr>
+<tr class="separator:a1ae9d6151b62cfba2c6ffd9f211da660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a756348e9056bd7b60f983d28c4a1abe5" id="r_a756348e9056bd7b60f983d28c4a1abe5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a756348e9056bd7b60f983d28c4a1abe5">Value</a> (bool value)</td></tr>
+<tr class="memdesc:a756348e9056bd7b60f983d28c4a1abe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool  <br /></td></tr>
+<tr class="separator:a756348e9056bd7b60f983d28c4a1abe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6321e070a82a08176ae3181718cc44f" id="r_ab6321e070a82a08176ae3181718cc44f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#ab6321e070a82a08176ae3181718cc44f">Value</a> (int value)</td></tr>
+<tr class="memdesc:ab6321e070a82a08176ae3181718cc44f"><td class="mdescLeft">&#160;</td><td class="mdescRight">int  <br /></td></tr>
+<tr class="separator:ab6321e070a82a08176ae3181718cc44f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a8f4510e2ccf164c4d1c9c7897bf71f" id="r_a3a8f4510e2ccf164c4d1c9c7897bf71f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a3a8f4510e2ccf164c4d1c9c7897bf71f">Value</a> (double value)</td></tr>
+<tr class="memdesc:a3a8f4510e2ccf164c4d1c9c7897bf71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">double  <br /></td></tr>
+<tr class="separator:a3a8f4510e2ccf164c4d1c9c7897bf71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a615659663ae1bbba6d8d42c667d46a52" id="r_a615659663ae1bbba6d8d42c667d46a52"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a615659663ae1bbba6d8d42c667d46a52">Value</a> (const char *value)</td></tr>
+<tr class="memdesc:a615659663ae1bbba6d8d42c667d46a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">string  <br /></td></tr>
+<tr class="separator:a615659663ae1bbba6d8d42c667d46a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfdfb72416a67e44fc79b0d14f9925d8" id="r_adfdfb72416a67e44fc79b0d14f9925d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#adfdfb72416a67e44fc79b0d14f9925d8">Value</a> (const char *bytes, size_t length)</td></tr>
+<tr class="memdesc:adfdfb72416a67e44fc79b0d14f9925d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">blob  <br /></td></tr>
+<tr class="separator:adfdfb72416a67e44fc79b0d14f9925d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace5300fb9f9df5e73a4dd25c10093560" id="r_ace5300fb9f9df5e73a4dd25c10093560"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#ace5300fb9f9df5e73a4dd25c10093560">Value</a> (<a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;value) noexcept</td></tr>
+<tr class="memdesc:ace5300fb9f9df5e73a4dd25c10093560"><td class="mdescLeft">&#160;</td><td class="mdescRight">string  <br /></td></tr>
+<tr class="separator:ace5300fb9f9df5e73a4dd25c10093560"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ffa32f88a7e6361f63237e68b29ad86" id="r_a2ffa32f88a7e6361f63237e68b29ad86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a2ffa32f88a7e6361f63237e68b29ad86">Value</a> (<a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;value)</td></tr>
+<tr class="memdesc:a2ffa32f88a7e6361f63237e68b29ad86"><td class="mdescLeft">&#160;</td><td class="mdescRight">blob  <br /></td></tr>
+<tr class="separator:a2ffa32f88a7e6361f63237e68b29ad86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36de4cfbc7095084e642379e3a3e564b" id="r_a36de4cfbc7095084e642379e3a3e564b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a36de4cfbc7095084e642379e3a3e564b">Value</a> (<a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;value)</td></tr>
+<tr class="memdesc:a36de4cfbc7095084e642379e3a3e564b"><td class="mdescLeft">&#160;</td><td class="mdescRight">list  <br /></td></tr>
+<tr class="separator:a36de4cfbc7095084e642379e3a3e564b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d2b2b7577ac00aa984377095c8fe194" id="r_a4d2b2b7577ac00aa984377095c8fe194"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a4d2b2b7577ac00aa984377095c8fe194">Value</a> (<a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;value)</td></tr>
+<tr class="memdesc:a4d2b2b7577ac00aa984377095c8fe194"><td class="mdescLeft">&#160;</td><td class="mdescRight">dict  <br /></td></tr>
+<tr class="separator:a4d2b2b7577ac00aa984377095c8fe194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbda58907419a9144099466c836f774" id="r_aefbda58907419a9144099466c836f774"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a> () const</td></tr>
+<tr class="separator:aefbda58907419a9144099466c836f774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a920e68dea455df1b5857cd93790ff98a" id="r_a920e68dea455df1b5857cd93790ff98a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a920e68dea455df1b5857cd93790ff98a">isNull</a> () const</td></tr>
+<tr class="separator:a920e68dea455df1b5857cd93790ff98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25dd9800211ebfcae3a9d5da18344d9d" id="r_a25dd9800211ebfcae3a9d5da18344d9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a25dd9800211ebfcae3a9d5da18344d9d">isBool</a> () const</td></tr>
+<tr class="separator:a25dd9800211ebfcae3a9d5da18344d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b368dc38b662daf8fa5b692f9ff6684" id="r_a4b368dc38b662daf8fa5b692f9ff6684"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a4b368dc38b662daf8fa5b692f9ff6684">isInt</a> () const</td></tr>
+<tr class="separator:a4b368dc38b662daf8fa5b692f9ff6684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef5571d881ee0a201d284a83d8f0835" id="r_abef5571d881ee0a201d284a83d8f0835"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#abef5571d881ee0a201d284a83d8f0835">isDouble</a> () const</td></tr>
+<tr class="separator:abef5571d881ee0a201d284a83d8f0835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a000b840d8fca1c09cf4f2d05e333e88a" id="r_a000b840d8fca1c09cf4f2d05e333e88a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a000b840d8fca1c09cf4f2d05e333e88a">isString</a> () const</td></tr>
+<tr class="separator:a000b840d8fca1c09cf4f2d05e333e88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aeaecd8a88780be1ab09b06374dd5e2" id="r_a6aeaecd8a88780be1ab09b06374dd5e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a6aeaecd8a88780be1ab09b06374dd5e2">isBlob</a> () const</td></tr>
+<tr class="separator:a6aeaecd8a88780be1ab09b06374dd5e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ced4bc0e9c1e732d4f4a98b0843a3e9" id="r_a4ced4bc0e9c1e732d4f4a98b0843a3e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a4ced4bc0e9c1e732d4f4a98b0843a3e9">isList</a> () const</td></tr>
+<tr class="separator:a4ced4bc0e9c1e732d4f4a98b0843a3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa43527095e587c5ea673887c25afb58d" id="r_aa43527095e587c5ea673887c25afb58d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">isDict</a> () const</td></tr>
+<tr class="separator:aa43527095e587c5ea673887c25afb58d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af114abf092e7fd3b91d00470a8769930" id="r_af114abf092e7fd3b91d00470a8769930"><td class="memItemLeft" align="right" valign="top">std::optional&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#af114abf092e7fd3b91d00470a8769930">getIfBool</a> () const</td></tr>
+<tr class="separator:af114abf092e7fd3b91d00470a8769930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06dedeb920f9055db25fb2657aa7c232" id="r_a06dedeb920f9055db25fb2657aa7c232"><td class="memItemLeft" align="right" valign="top">std::optional&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a06dedeb920f9055db25fb2657aa7c232">getIfInt</a> () const</td></tr>
+<tr class="separator:a06dedeb920f9055db25fb2657aa7c232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b92fb4d429c067ebf3d4949d66a0f30" id="r_a2b92fb4d429c067ebf3d4949d66a0f30"><td class="memItemLeft" align="right" valign="top">std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a2b92fb4d429c067ebf3d4949d66a0f30">getIfDouble</a> () const</td></tr>
+<tr class="separator:a2b92fb4d429c067ebf3d4949d66a0f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7253df8b990824b7985390dcfa1c0757" id="r_a7253df8b990824b7985390dcfa1c0757"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a7253df8b990824b7985390dcfa1c0757">getIfString</a> ()</td></tr>
+<tr class="separator:a7253df8b990824b7985390dcfa1c0757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a785c7b5c466ad4bce6725b15748bf321" id="r_a785c7b5c466ad4bce6725b15748bf321"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a785c7b5c466ad4bce6725b15748bf321">getIfBlob</a> ()</td></tr>
+<tr class="separator:a785c7b5c466ad4bce6725b15748bf321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0d82588132e7359b27ecb02b257775" id="r_a8a0d82588132e7359b27ecb02b257775"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a8a0d82588132e7359b27ecb02b257775">getIfDict</a> ()</td></tr>
+<tr class="separator:a8a0d82588132e7359b27ecb02b257775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cea591471b7d47117fcb19e90d5f665" id="r_a1cea591471b7d47117fcb19e90d5f665"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a1cea591471b7d47117fcb19e90d5f665">getIfList</a> ()</td></tr>
+<tr class="separator:a1cea591471b7d47117fcb19e90d5f665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff60f49a9031f72e970703660c32520f" id="r_aff60f49a9031f72e970703660c32520f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#aff60f49a9031f72e970703660c32520f">getBool</a> () const</td></tr>
+<tr class="separator:aff60f49a9031f72e970703660c32520f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac47830f915993fb51bcc06744976cbb1" id="r_ac47830f915993fb51bcc06744976cbb1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#ac47830f915993fb51bcc06744976cbb1">getInt</a> () const</td></tr>
+<tr class="separator:ac47830f915993fb51bcc06744976cbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9d0e3df6fbc9032fb3efed1dc12e117" id="r_ac9d0e3df6fbc9032fb3efed1dc12e117"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#ac9d0e3df6fbc9032fb3efed1dc12e117">getDouble</a> () const</td></tr>
+<tr class="separator:ac9d0e3df6fbc9032fb3efed1dc12e117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55f0a0c41b53adc67eb1395dcc864565" id="r_a55f0a0c41b53adc67eb1395dcc864565"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a55f0a0c41b53adc67eb1395dcc864565">getString</a> () const</td></tr>
+<tr class="separator:a55f0a0c41b53adc67eb1395dcc864565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad466366fc88707f5836a5b8821cf5189" id="r_ad466366fc88707f5836a5b8821cf5189"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#ad466366fc88707f5836a5b8821cf5189">getString</a> ()</td></tr>
+<tr class="separator:ad466366fc88707f5836a5b8821cf5189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58bde5921e12b5bf779870d3f6dc87b1" id="r_a58bde5921e12b5bf779870d3f6dc87b1"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a58bde5921e12b5bf779870d3f6dc87b1">getBlob</a> () const</td></tr>
+<tr class="separator:a58bde5921e12b5bf779870d3f6dc87b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92e8f2245aa7dbc71cd06c60016a3839" id="r_a92e8f2245aa7dbc71cd06c60016a3839"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a92e8f2245aa7dbc71cd06c60016a3839">getBlob</a> ()</td></tr>
+<tr class="separator:a92e8f2245aa7dbc71cd06c60016a3839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588d5302be939dba1714c8cba0b90ad4" id="r_a588d5302be939dba1714c8cba0b90ad4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a588d5302be939dba1714c8cba0b90ad4">getList</a> () const</td></tr>
+<tr class="separator:a588d5302be939dba1714c8cba0b90ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96ab6343628a87dd4a7d3ffef1bb6d3" id="r_ac96ab6343628a87dd4a7d3ffef1bb6d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#ac96ab6343628a87dd4a7d3ffef1bb6d3">getList</a> ()</td></tr>
+<tr class="separator:ac96ab6343628a87dd4a7d3ffef1bb6d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c1dcd3e7e557f596aeda64e7a6e951" id="r_a82c1dcd3e7e557f596aeda64e7a6e951"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a82c1dcd3e7e557f596aeda64e7a6e951">getDict</a> () const</td></tr>
+<tr class="separator:a82c1dcd3e7e557f596aeda64e7a6e951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1223fa7119b4f7c1d1646cc5fc9e0ba" id="r_aa1223fa7119b4f7c1d1646cc5fc9e0ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#aa1223fa7119b4f7c1d1646cc5fc9e0ba">getDict</a> ()</td></tr>
+<tr class="separator:aa1223fa7119b4f7c1d1646cc5fc9e0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab935c40ab58eacf585b9e97cedf2a9f3" id="r_ab935c40ab58eacf585b9e97cedf2a9f3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3">toString</a> (size_t level=4) const noexcept</td></tr>
+<tr class="separator:ab935c40ab58eacf585b9e97cedf2a9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c9eb3e2a8d0eaaf423e7f6324438039" id="r_a0c9eb3e2a8d0eaaf423e7f6324438039"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a0c9eb3e2a8d0eaaf423e7f6324438039">operator==</a> (const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;rhs) const</td></tr>
+<tr class="separator:a0c9eb3e2a8d0eaaf423e7f6324438039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbbbb9691b81043918719899f11f10a7" id="r_abbbbb9691b81043918719899f11f10a7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#abbbbb9691b81043918719899f11f10a7">operator!=</a> (const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;rhs) const</td></tr>
+<tr class="separator:abbbbb9691b81043918719899f11f10a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a41e007683fd504b8a86d0c31cdbf1d54" id="r_a41e007683fd504b8a86d0c31cdbf1d54"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a41e007683fd504b8a86d0c31cdbf1d54">list</a> ()</td></tr>
+<tr class="separator:a41e007683fd504b8a86d0c31cdbf1d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006f2c479904fa2bf97ac5d30ee66aee" id="r_a006f2c479904fa2bf97ac5d30ee66aee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_value.html#a006f2c479904fa2bf97ac5d30ee66aee">dict</a> ()</td></tr>
+<tr class="separator:a006f2c479904fa2bf97ac5d30ee66aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>值容器类 </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00020">20</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a10369fbcdea644fc88299db66fc07c55" name="a10369fbcdea644fc88299db66fc07c55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10369fbcdea644fc88299db66fc07c55">&#9670;&#160;</a></span>Blob</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">sese::Value::Blob</a> =  std::vector&lt;uint8_t&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00034">34</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afe57e460c5419165aeb1cbaae18af5ac" name="afe57e460c5419165aeb1cbaae18af5ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe57e460c5419165aeb1cbaae18af5ac">&#9670;&#160;</a></span>String</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">sese::Value::String</a> =  std::string</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员枚举类型说明</h2>
+<a id="a02daae7c8adc1efa34e551c740ac2661" name="a02daae7c8adc1efa34e551c740ac2661"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02daae7c8adc1efa34e551c740ac2661">&#9670;&#160;</a></span>Type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661">sese::Value::Type</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693" name="a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5" name="a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5"></a>BOOL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92" name="a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92"></a>INT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229" name="a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229"></a>DOUBLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949" name="a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949"></a>STRING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43" name="a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43"></a>BLOB&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a" name="a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a"></a>LIST&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e" name="a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e"></a>DICT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">在文件 <a class="el" href="_value_8h_source.html">Value.h</a> 第 <a class="el" href="_value_8h_source.html#l00022">22</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>                    {</div>
+<div class="line"><span class="lineno">   23</span>        <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">NONE</a> = 0,</div>
+<div class="line"><span class="lineno">   24</span>        <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a>,</div>
+<div class="line"><span class="lineno">   25</span>        <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">INT</a>,</div>
+<div class="line"><span class="lineno">   26</span>        <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">DOUBLE</a>,</div>
+<div class="line"><span class="lineno">   27</span>        <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">STRING</a>,</div>
+<div class="line"><span class="lineno">   28</span>        <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">BLOB</a>,</div>
+<div class="line"><span class="lineno">   29</span>        <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">LIST</a>,</div>
+<div class="line"><span class="lineno">   30</span>        <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">DICT</a></div>
+<div class="line"><span class="lineno">   31</span>    };</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a54644896ae6157228f9e79c3fb63d623" name="a54644896ae6157228f9e79c3fb63d623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54644896ae6157228f9e79c3fb63d623">&#9670;&#160;</a></span>Value() <span class="overload">[1/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sese::Value::Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00069">dict()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00065">list()</a>.</p>
+
+</div>
+</div>
+<a id="a1ae9d6151b62cfba2c6ffd9f211da660" name="a1ae9d6151b62cfba2c6ffd9f211da660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ae9d6151b62cfba2c6ffd9f211da660">&#9670;&#160;</a></span>Value() <span class="overload">[2/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661">Type</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00013">13</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>                      {</div>
+<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">switch</span> (type) {</div>
+<div class="line"><span class="lineno">   15</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">Type::NONE</a>:</div>
+<div class="line"><span class="lineno">   16</span>            data.emplace&lt;Null&gt;();</div>
+<div class="line"><span class="lineno">   17</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">Type::BOOL</a>:</div>
+<div class="line"><span class="lineno">   19</span>            data.emplace&lt;<span class="keywordtype">bool</span>&gt;(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   20</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">Type::INT</a>:</div>
+<div class="line"><span class="lineno">   22</span>            data.emplace&lt;<span class="keywordtype">int</span>&gt;(0);</div>
+<div class="line"><span class="lineno">   23</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">Type::DOUBLE</a>:</div>
+<div class="line"><span class="lineno">   25</span>            data.emplace&lt;<span class="keywordtype">double</span>&gt;(0.0);</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">Type::STRING</a>:</div>
+<div class="line"><span class="lineno">   28</span>            data.emplace&lt;<a class="code hl_typedef" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a>&gt;();</div>
+<div class="line"><span class="lineno">   29</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   30</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">Type::LIST</a>:</div>
+<div class="line"><span class="lineno">   31</span>            data.emplace&lt;<a class="code hl_class" href="classsese_1_1_value_1_1_list.html">List</a>&gt;();</div>
+<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">Type::DICT</a>:</div>
+<div class="line"><span class="lineno">   34</span>            data.emplace&lt;<a class="code hl_class" href="classsese_1_1_value_1_1_dict.html">Dict</a>&gt;();</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">Type::BLOB</a>:</div>
+<div class="line"><span class="lineno">   37</span>            data.emplace&lt;<a class="code hl_typedef" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a>&gt;();</div>
+<div class="line"><span class="lineno">   38</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">BLOB</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">DICT</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">DOUBLE</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">INT</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">LIST</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">NONE</a> , 以及 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">STRING</a>.</p>
+
+</div>
+</div>
+<a id="a756348e9056bd7b60f983d28c4a1abe5" name="a756348e9056bd7b60f983d28c4a1abe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a756348e9056bd7b60f983d28c4a1abe5">&#9670;&#160;</a></span>Value() <span class="overload">[3/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>bool </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00042">42</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>: data(value) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab6321e070a82a08176ae3181718cc44f" name="ab6321e070a82a08176ae3181718cc44f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6321e070a82a08176ae3181718cc44f">&#9670;&#160;</a></span>Value() <span class="overload">[4/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>int </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00044">44</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>: data(value) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3a8f4510e2ccf164c4d1c9c7897bf71f" name="a3a8f4510e2ccf164c4d1c9c7897bf71f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a8f4510e2ccf164c4d1c9c7897bf71f">&#9670;&#160;</a></span>Value() <span class="overload">[5/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>double </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00046">46</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>: data(value) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a615659663ae1bbba6d8d42c667d46a52" name="a615659663ae1bbba6d8d42c667d46a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a615659663ae1bbba6d8d42c667d46a52">&#9670;&#160;</a></span>Value() <span class="overload">[6/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>string </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00048">48</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>: <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(std::string(value)) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adfdfb72416a67e44fc79b0d14f9925d8" name="adfdfb72416a67e44fc79b0d14f9925d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfdfb72416a67e44fc79b0d14f9925d8">&#9670;&#160;</a></span>Value() <span class="overload">[7/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>blob </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00050">50</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>                                             {</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keyword">auto</span> vector = std::vector&lt;uint8_t&gt;();</div>
+<div class="line"><span class="lineno">   52</span>    vector.reserve(length);</div>
+<div class="line"><span class="lineno">   53</span>    vector.insert(vector.end(), bytes, bytes + length);</div>
+<div class="line"><span class="lineno">   54</span>    data.emplace&lt;<a class="code hl_typedef" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a>&gt;(std::move(vector));</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ace5300fb9f9df5e73a4dd25c10093560" name="ace5300fb9f9df5e73a4dd25c10093560"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace5300fb9f9df5e73a4dd25c10093560">&#9670;&#160;</a></span>Value() <span class="overload">[8/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">String</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>string </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00057">57</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>: data(std::move(value)) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2ffa32f88a7e6361f63237e68b29ad86" name="a2ffa32f88a7e6361f63237e68b29ad86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ffa32f88a7e6361f63237e68b29ad86">&#9670;&#160;</a></span>Value() <span class="overload">[9/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Blob</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>blob </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00059">59</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>: data(std::move(value)) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a36de4cfbc7095084e642379e3a3e564b" name="a36de4cfbc7095084e642379e3a3e564b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36de4cfbc7095084e642379e3a3e564b">&#9670;&#160;</a></span>Value() <span class="overload">[10/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_list.html">List</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>list </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00061">61</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>: data(std::move(value)) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4d2b2b7577ac00aa984377095c8fe194" name="a4d2b2b7577ac00aa984377095c8fe194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d2b2b7577ac00aa984377095c8fe194">&#9670;&#160;</a></span>Value() <span class="overload">[11/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Value::Value </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1_value_1_1_dict.html">Dict</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>dict </p>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00063">63</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>: data(std::move(value)) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a006f2c479904fa2bf97ac5d30ee66aee" name="a006f2c479904fa2bf97ac5d30ee66aee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a006f2c479904fa2bf97ac5d30ee66aee">&#9670;&#160;</a></span>dict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html">Value</a> Value::dict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00069">69</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>                  {</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(<a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">Type::DICT</a>);</div>
+<div class="line"><span class="lineno">   71</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">DICT</a> , 以及 <a class="el" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value()</a>.</p>
+
+</div>
+</div>
+<a id="a92e8f2245aa7dbc71cd06c60016a3839" name="a92e8f2245aa7dbc71cd06c60016a3839"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92e8f2245aa7dbc71cd06c60016a3839">&#9670;&#160;</a></span>getBlob() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Value::Blob</a> &amp; Value::getBlob </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00179">179</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  179</span>                          {</div>
+<div class="line"><span class="lineno">  180</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#a6aeaecd8a88780be1ab09b06374dd5e2">isBlob</a>());</div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">return</span> std::get&lt;Blob&gt;(data);</div>
+<div class="line"><span class="lineno">  182</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00097">isBlob()</a>.</p>
+
+</div>
+</div>
+<a id="a58bde5921e12b5bf779870d3f6dc87b1" name="a58bde5921e12b5bf779870d3f6dc87b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58bde5921e12b5bf779870d3f6dc87b1">&#9670;&#160;</a></span>getBlob() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Value::Blob</a> &amp; Value::getBlob </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00184">184</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  184</span>                                      {</div>
+<div class="line"><span class="lineno">  185</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#a6aeaecd8a88780be1ab09b06374dd5e2">isBlob</a>());</div>
+<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">return</span> std::get&lt;Blob&gt;(data);</div>
+<div class="line"><span class="lineno">  187</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00097">isBlob()</a>.</p>
+
+</div>
+</div>
+<a id="aff60f49a9031f72e970703660c32520f" name="aff60f49a9031f72e970703660c32520f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff60f49a9031f72e970703660c32520f">&#9670;&#160;</a></span>getBool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::getBool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00154">154</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  154</span>                          {</div>
+<div class="line"><span class="lineno">  155</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#a25dd9800211ebfcae3a9d5da18344d9d">isBool</a>());</div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">return</span> std::get&lt;bool&gt;(data);</div>
+<div class="line"><span class="lineno">  157</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00081">isBool()</a>.</p>
+
+</div>
+</div>
+<a id="aa1223fa7119b4f7c1d1646cc5fc9e0ba" name="aa1223fa7119b4f7c1d1646cc5fc9e0ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1223fa7119b4f7c1d1646cc5fc9e0ba">&#9670;&#160;</a></span>getDict() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Value::Dict</a> &amp; Value::getDict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00205">205</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  205</span>                          {</div>
+<div class="line"><span class="lineno">  206</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">isDict</a>());</div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">return</span> std::get&lt;Dict&gt;(data);</div>
+<div class="line"><span class="lineno">  208</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00105">isDict()</a>.</p>
+
+</div>
+</div>
+<a id="a82c1dcd3e7e557f596aeda64e7a6e951" name="a82c1dcd3e7e557f596aeda64e7a6e951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c1dcd3e7e557f596aeda64e7a6e951">&#9670;&#160;</a></span>getDict() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_value_1_1_dict.html">Value::Dict</a> &amp; Value::getDict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00200">200</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  200</span>                                      {</div>
+<div class="line"><span class="lineno">  201</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#aa43527095e587c5ea673887c25afb58d">isDict</a>());</div>
+<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">return</span> std::get&lt;Dict&gt;(data);</div>
+<div class="line"><span class="lineno">  203</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00105">isDict()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_yaml_8cpp_source.html#l00278">sese::Yaml::streamify()</a>.</p>
+
+</div>
+</div>
+<a id="ac9d0e3df6fbc9032fb3efed1dc12e117" name="ac9d0e3df6fbc9032fb3efed1dc12e117"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9d0e3df6fbc9032fb3efed1dc12e117">&#9670;&#160;</a></span>getDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Value::getDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00164">164</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>                              {</div>
+<div class="line"><span class="lineno">  165</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#abef5571d881ee0a201d284a83d8f0835">isDouble</a>());</div>
+<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">return</span> std::get&lt;double&gt;(data);</div>
+<div class="line"><span class="lineno">  167</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00089">isDouble()</a>.</p>
+
+</div>
+</div>
+<a id="a785c7b5c466ad4bce6725b15748bf321" name="a785c7b5c466ad4bce6725b15748bf321"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a785c7b5c466ad4bce6725b15748bf321">&#9670;&#160;</a></span>getIfBlob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55">Value::Blob</a> * Value::getIfBlob </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00142">142</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  142</span>                            {</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">return</span> std::get_if&lt;Blob&gt;(&amp;data);</div>
+<div class="line"><span class="lineno">  144</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af114abf092e7fd3b91d00470a8769930" name="af114abf092e7fd3b91d00470a8769930"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af114abf092e7fd3b91d00470a8769930">&#9670;&#160;</a></span>getIfBool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; bool &gt; Value::getIfBool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>允许数值类型转换为布尔型 </p><dl class="section return"><dt>返回</dt><dd>布尔型 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00109">109</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>                                         {</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_value.html#a25dd9800211ebfcae3a9d5da18344d9d">isBool</a>()) {</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">return</span> std::get&lt;bool&gt;(data);</div>
+<div class="line"><span class="lineno">  112</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_value.html#a4b368dc38b662daf8fa5b692f9ff6684">isInt</a>()) {</div>
+<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">return</span> std::get&lt;int&gt;(data) != 0;</div>
+<div class="line"><span class="lineno">  114</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_value.html#abef5571d881ee0a201d284a83d8f0835">isDouble</a>()) {</div>
+<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">return</span> std::get&lt;double&gt;(data) != 0.0;</div>
+<div class="line"><span class="lineno">  116</span>    }</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><span class="lineno">  118</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00081">isBool()</a>, <a class="el" href="_value_8cpp_source.html#l00089">isDouble()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00085">isInt()</a>.</p>
+
+</div>
+</div>
+<a id="a8a0d82588132e7359b27ecb02b257775" name="a8a0d82588132e7359b27ecb02b257775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a0d82588132e7359b27ecb02b257775">&#9670;&#160;</a></span>getIfDict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_dict.html">Value::Dict</a> * Value::getIfDict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00150">150</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>                            {</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">return</span> std::get_if&lt;Dict&gt;(&amp;data);</div>
+<div class="line"><span class="lineno">  152</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2b92fb4d429c067ebf3d4949d66a0f30" name="a2b92fb4d429c067ebf3d4949d66a0f30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b92fb4d429c067ebf3d4949d66a0f30">&#9670;&#160;</a></span>getIfDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; double &gt; Value::getIfDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>允许从数值类型转换成双精度浮点型 </p><dl class="section return"><dt>返回</dt><dd>双精度浮点型 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00129">129</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  129</span>                                             {</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_value.html#a4b368dc38b662daf8fa5b692f9ff6684">isInt</a>()) {</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(std::get&lt;int&gt;(data));</div>
+<div class="line"><span class="lineno">  132</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_value.html#abef5571d881ee0a201d284a83d8f0835">isDouble</a>()) {</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> std::get&lt;double&gt;(data);</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><span class="lineno">  136</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00089">isDouble()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00085">isInt()</a>.</p>
+
+</div>
+</div>
+<a id="a06dedeb920f9055db25fb2657aa7c232" name="a06dedeb920f9055db25fb2657aa7c232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06dedeb920f9055db25fb2657aa7c232">&#9670;&#160;</a></span>getIfInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; int &gt; Value::getIfInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>允许从数数值类型转换成整形 </p><dl class="section return"><dt>返回</dt><dd>整形 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00120">120</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>                                       {</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_value.html#a4b368dc38b662daf8fa5b692f9ff6684">isInt</a>()) {</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">return</span> std::get&lt;int&gt;(data);</div>
+<div class="line"><span class="lineno">  123</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_value.html#abef5571d881ee0a201d284a83d8f0835">isDouble</a>()) {</div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(std::get&lt;double&gt;(data));</div>
+<div class="line"><span class="lineno">  125</span>    }</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><span class="lineno">  127</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00089">isDouble()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00085">isInt()</a>.</p>
+
+</div>
+</div>
+<a id="a1cea591471b7d47117fcb19e90d5f665" name="a1cea591471b7d47117fcb19e90d5f665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cea591471b7d47117fcb19e90d5f665">&#9670;&#160;</a></span>getIfList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">Value::List</a> * Value::getIfList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00146">146</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  146</span>                            {</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> std::get_if&lt;List&gt;(&amp;data);</div>
+<div class="line"><span class="lineno">  148</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7253df8b990824b7985390dcfa1c0757" name="a7253df8b990824b7985390dcfa1c0757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7253df8b990824b7985390dcfa1c0757">&#9670;&#160;</a></span>getIfString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">Value::String</a> * Value::getIfString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00138">138</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>                                {</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">return</span> std::get_if&lt;String&gt;(&amp;data);</div>
+<div class="line"><span class="lineno">  140</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac47830f915993fb51bcc06744976cbb1" name="ac47830f915993fb51bcc06744976cbb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac47830f915993fb51bcc06744976cbb1">&#9670;&#160;</a></span>getInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Value::getInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00159">159</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  159</span>                        {</div>
+<div class="line"><span class="lineno">  160</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#a4b368dc38b662daf8fa5b692f9ff6684">isInt</a>());</div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">return</span> std::get&lt;int&gt;(data);</div>
+<div class="line"><span class="lineno">  162</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00085">isInt()</a>.</p>
+
+</div>
+</div>
+<a id="ac96ab6343628a87dd4a7d3ffef1bb6d3" name="ac96ab6343628a87dd4a7d3ffef1bb6d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac96ab6343628a87dd4a7d3ffef1bb6d3">&#9670;&#160;</a></span>getList() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value_1_1_list.html">Value::List</a> &amp; Value::getList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00194">194</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>                          {</div>
+<div class="line"><span class="lineno">  195</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#a4ced4bc0e9c1e732d4f4a98b0843a3e9">isList</a>());</div>
+<div class="line"><span class="lineno">  196</span>    <span class="keywordflow">return</span> std::get&lt;List&gt;(data);</div>
+<div class="line"><span class="lineno">  197</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00101">isList()</a>.</p>
+
+</div>
+</div>
+<a id="a588d5302be939dba1714c8cba0b90ad4" name="a588d5302be939dba1714c8cba0b90ad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a588d5302be939dba1714c8cba0b90ad4">&#9670;&#160;</a></span>getList() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_value_1_1_list.html">Value::List</a> &amp; Value::getList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00189">189</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>                                      {</div>
+<div class="line"><span class="lineno">  190</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#a4ced4bc0e9c1e732d4f4a98b0843a3e9">isList</a>());</div>
+<div class="line"><span class="lineno">  191</span>    <span class="keywordflow">return</span> std::get&lt;List&gt;(data);</div>
+<div class="line"><span class="lineno">  192</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00101">isList()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_yaml_8cpp_source.html#l00278">sese::Yaml::streamify()</a>.</p>
+
+</div>
+</div>
+<a id="ad466366fc88707f5836a5b8821cf5189" name="ad466366fc88707f5836a5b8821cf5189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad466366fc88707f5836a5b8821cf5189">&#9670;&#160;</a></span>getString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">Value::String</a> &amp; Value::getString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00174">174</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  174</span>                              {</div>
+<div class="line"><span class="lineno">  175</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#a000b840d8fca1c09cf4f2d05e333e88a">isString</a>());</div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">return</span> std::get&lt;String&gt;(data);</div>
+<div class="line"><span class="lineno">  177</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00093">isString()</a>.</p>
+
+</div>
+</div>
+<a id="a55f0a0c41b53adc67eb1395dcc864565" name="a55f0a0c41b53adc67eb1395dcc864565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55f0a0c41b53adc67eb1395dcc864565">&#9670;&#160;</a></span>getString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac">Value::String</a> &amp; Value::getString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00169">169</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  169</span>                                          {</div>
+<div class="line"><span class="lineno">  170</span>    assert(<a class="code hl_function" href="classsese_1_1_value.html#a000b840d8fca1c09cf4f2d05e333e88a">isString</a>());</div>
+<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">return</span> std::get&lt;String&gt;(data);</div>
+<div class="line"><span class="lineno">  172</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00093">isString()</a>.</p>
+
+</div>
+</div>
+<a id="aefbda58907419a9144099466c836f774" name="aefbda58907419a9144099466c836f774"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbda58907419a9144099466c836f774">&#9670;&#160;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661">Value::Type</a> Value::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00073">73</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>                               {</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661">Type</a><span class="keyword">&gt;</span>(data.index());</div>
+<div class="line"><span class="lineno">   75</span>}</div>
+</div><!-- fragment -->
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00097">isBlob()</a>, <a class="el" href="_value_8cpp_source.html#l00081">isBool()</a>, <a class="el" href="_value_8cpp_source.html#l00105">isDict()</a>, <a class="el" href="_value_8cpp_source.html#l00089">isDouble()</a>, <a class="el" href="_value_8cpp_source.html#l00085">isInt()</a>, <a class="el" href="_value_8cpp_source.html#l00101">isList()</a>, <a class="el" href="_value_8cpp_source.html#l00077">isNull()</a>, <a class="el" href="_value_8cpp_source.html#l00093">isString()</a>, <a class="el" href="_value_8cpp_source.html#l00212">operator==()</a> , 以及 <a class="el" href="_yaml_8cpp_source.html#l00278">sese::Yaml::streamify()</a>.</p>
+
+</div>
+</div>
+<a id="a6aeaecd8a88780be1ab09b06374dd5e2" name="a6aeaecd8a88780be1ab09b06374dd5e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aeaecd8a88780be1ab09b06374dd5e2">&#9670;&#160;</a></span>isBlob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::isBlob </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00097">97</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>                         {</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() == <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">Type::BLOB</a>;</div>
+<div class="line"><span class="lineno">   99</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">BLOB</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00073">getType()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00179">getBlob()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00184">getBlob()</a>.</p>
+
+</div>
+</div>
+<a id="a25dd9800211ebfcae3a9d5da18344d9d" name="a25dd9800211ebfcae3a9d5da18344d9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25dd9800211ebfcae3a9d5da18344d9d">&#9670;&#160;</a></span>isBool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::isBool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00081">81</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>                         {</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() == <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">Type::BOOL</a>;</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00073">getType()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00154">getBool()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00109">getIfBool()</a>.</p>
+
+</div>
+</div>
+<a id="aa43527095e587c5ea673887c25afb58d" name="aa43527095e587c5ea673887c25afb58d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa43527095e587c5ea673887c25afb58d">&#9670;&#160;</a></span>isDict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::isDict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00105">105</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  105</span>                         {</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() == <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">Type::DICT</a>;</div>
+<div class="line"><span class="lineno">  107</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">DICT</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00073">getType()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00205">getDict()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00200">getDict()</a>.</p>
+
+</div>
+</div>
+<a id="abef5571d881ee0a201d284a83d8f0835" name="abef5571d881ee0a201d284a83d8f0835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef5571d881ee0a201d284a83d8f0835">&#9670;&#160;</a></span>isDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::isDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00089">89</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   89</span>                           {</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() == <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">Type::DOUBLE</a>;</div>
+<div class="line"><span class="lineno">   91</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">DOUBLE</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00073">getType()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00164">getDouble()</a>, <a class="el" href="_value_8cpp_source.html#l00109">getIfBool()</a>, <a class="el" href="_value_8cpp_source.html#l00129">getIfDouble()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00120">getIfInt()</a>.</p>
+
+</div>
+</div>
+<a id="a4b368dc38b662daf8fa5b692f9ff6684" name="a4b368dc38b662daf8fa5b692f9ff6684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b368dc38b662daf8fa5b692f9ff6684">&#9670;&#160;</a></span>isInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::isInt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00085">85</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>                        {</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() == <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">Type::INT</a>;</div>
+<div class="line"><span class="lineno">   87</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00073">getType()</a> , 以及 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">INT</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00109">getIfBool()</a>, <a class="el" href="_value_8cpp_source.html#l00129">getIfDouble()</a>, <a class="el" href="_value_8cpp_source.html#l00120">getIfInt()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00159">getInt()</a>.</p>
+
+</div>
+</div>
+<a id="a4ced4bc0e9c1e732d4f4a98b0843a3e9" name="a4ced4bc0e9c1e732d4f4a98b0843a3e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ced4bc0e9c1e732d4f4a98b0843a3e9">&#9670;&#160;</a></span>isList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::isList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00101">101</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>                         {</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() == <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">Type::LIST</a>;</div>
+<div class="line"><span class="lineno">  103</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00073">getType()</a> , 以及 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">LIST</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00194">getList()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00189">getList()</a>.</p>
+
+</div>
+</div>
+<a id="a920e68dea455df1b5857cd93790ff98a" name="a920e68dea455df1b5857cd93790ff98a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a920e68dea455df1b5857cd93790ff98a">&#9670;&#160;</a></span>isNull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::isNull </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00077">77</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>                         {</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() == <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">Type::NONE</a>;</div>
+<div class="line"><span class="lineno">   79</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00073">getType()</a> , 以及 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">NONE</a>.</p>
+
+</div>
+</div>
+<a id="a000b840d8fca1c09cf4f2d05e333e88a" name="a000b840d8fca1c09cf4f2d05e333e88a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a000b840d8fca1c09cf4f2d05e333e88a">&#9670;&#160;</a></span>isString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::isString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00093">93</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>                           {</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() == <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">Type::STRING</a>;</div>
+<div class="line"><span class="lineno">   95</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_value_8cpp_source.html#l00073">getType()</a> , 以及 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">STRING</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="_value_8cpp_source.html#l00174">getString()</a> , 以及 <a class="el" href="_value_8cpp_source.html#l00169">getString()</a>.</p>
+
+</div>
+</div>
+<a id="a41e007683fd504b8a86d0c31cdbf1d54" name="a41e007683fd504b8a86d0c31cdbf1d54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41e007683fd504b8a86d0c31cdbf1d54">&#9670;&#160;</a></span>list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1_value.html">Value</a> Value::list </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00065">65</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>                  {</div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value</a>(<a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">Type::LIST</a>);</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">LIST</a> , 以及 <a class="el" href="classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623">Value()</a>.</p>
+
+</div>
+</div>
+<a id="abbbbb9691b81043918719899f11f10a7" name="abbbbb9691b81043918719899f11f10a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbbbb9691b81043918719899f11f10a7">&#9670;&#160;</a></span>operator!=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00238">238</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  238</span>                                                 {</div>
+<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">return</span> !(*<span class="keyword">this</span> == rhs);</div>
+<div class="line"><span class="lineno">  240</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0c9eb3e2a8d0eaaf423e7f6324438039" name="a0c9eb3e2a8d0eaaf423e7f6324438039"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c9eb3e2a8d0eaaf423e7f6324438039">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Value::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1_value.html">Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00212">212</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  212</span>                                                 {</div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>() != rhs.<a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>()) {</div>
+<div class="line"><span class="lineno">  214</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  215</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  216</span>        <span class="keywordflow">switch</span> (<a class="code hl_function" href="classsese_1_1_value.html#aefbda58907419a9144099466c836f774">getType</a>()) {</div>
+<div class="line"><span class="lineno">  217</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">Type::NONE</a>:</div>
+<div class="line"><span class="lineno">  218</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  219</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">Type::BOOL</a>:</div>
+<div class="line"><span class="lineno">  220</span>                <span class="keywordflow">return</span> std::get&lt;bool&gt;(data) == std::get&lt;bool&gt;(rhs.data);</div>
+<div class="line"><span class="lineno">  221</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">Type::INT</a>:</div>
+<div class="line"><span class="lineno">  222</span>                <span class="keywordflow">return</span> std::get&lt;int&gt;(data) == std::get&lt;int&gt;(rhs.data);</div>
+<div class="line"><span class="lineno">  223</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">Type::DOUBLE</a>:</div>
+<div class="line"><span class="lineno">  224</span>                <span class="keywordflow">return</span> std::get&lt;double&gt;(data) == std::get&lt;double&gt;(rhs.data);</div>
+<div class="line"><span class="lineno">  225</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">Type::STRING</a>:</div>
+<div class="line"><span class="lineno">  226</span>                <span class="keywordflow">return</span> std::get&lt;String&gt;(data) == std::get&lt;String&gt;(rhs.data);</div>
+<div class="line"><span class="lineno">  227</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">Type::BLOB</a>:</div>
+<div class="line"><span class="lineno">  228</span>                <span class="keywordflow">return</span> std::get_if&lt;Blob&gt;(&amp;data) == std::get_if&lt;Blob&gt;(&amp;rhs.data);</div>
+<div class="line"><span class="lineno">  229</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">Type::LIST</a>:</div>
+<div class="line"><span class="lineno">  230</span>                <span class="keywordflow">return</span> std::get_if&lt;List&gt;(&amp;data) == std::get_if&lt;List&gt;(&amp;rhs.data);</div>
+<div class="line"><span class="lineno">  231</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">Type::DICT</a>:</div>
+<div class="line"><span class="lineno">  232</span>                <span class="keywordflow">return</span> std::get_if&lt;Dict&gt;(&amp;data) == std::get_if&lt;Dict&gt;(&amp;rhs.data);</div>
+<div class="line"><span class="lineno">  233</span>        }</div>
+<div class="line"><span class="lineno">  234</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  235</span>    }</div>
+<div class="line"><span class="lineno">  236</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a1649cff06611a6025da3dd511a97fb43">BLOB</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661aa97b2c144243b2b9d2c593ec268b62f5">BOOL</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ad7f73f951e7f6c4ed5e17c4204f4032e">DICT</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661afd3e4ece78a7d422280d5ed379482229">DOUBLE</a>, <a class="el" href="_value_8cpp_source.html#l00073">getType()</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a53f93baa3057821107c750323892fa92">INT</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a298cb25408234de02baf2085803a464a">LIST</a>, <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693">NONE</a> , 以及 <a class="el" href="classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661a63b588d5559f64f89a416e656880b949">STRING</a>.</p>
+
+</div>
+</div>
+<a id="ab935c40ab58eacf585b9e97cedf2a9f3" name="ab935c40ab58eacf585b9e97cedf2a9f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab935c40ab58eacf585b9e97cedf2a9f3">&#9670;&#160;</a></span>toString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Value::toString </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>level</em> = <code>4</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_value_8cpp_source.html">Value.cpp</a> 第 <a class="el" href="_value_8cpp_source.html#l00244">244</a> 行定义.</p>
+<div class="fragment"><div class="line"><span class="lineno">  244</span>                                                     {</div>
+<div class="line"><span class="lineno">  245</span>    level = std::max&lt;size_t&gt;(level, 1);</div>
+<div class="line"><span class="lineno">  246</span>    text::StringBuilder string_builder(4096);</div>
+<div class="line"><span class="lineno">  247</span>    <a class="code hl_function" href="classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3">toString</a>(string_builder, level);</div>
+<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">return</span> string_builder.toString();</div>
+<div class="line"><span class="lineno">  249</span>}</div>
+</div><!-- fragment -->
+<p class="reference">引用了 <a class="el" href="_abstract_string_buffer_8cpp_source.html#l00106">sese::text::AbstractStringBuffer::toString()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>sese/util/<a class="el" href="_value_8h_source.html">Value.h</a></li>
+<li>sese/util/<a class="el" href="_value_8cpp_source.html">Value.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

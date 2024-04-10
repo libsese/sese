@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/util/Util.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Util.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="util_2_util_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_input_stream_8h.html" title="流式输入接口类">sese/io/InputStream.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_output_stream_8h.html" title="流式输出接口类">sese/io/OutputStream.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">using namespace </span>std::chrono_literals;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// 使用预声明减少头文件引用</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespacesese_1_1record.html#a4870328c2e0953204f473767505a0ed5" title="日志等级">Level</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structsese_1_1_str_cmp.html">   27</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1_str_cmp.html" title="字符比较器">StrCmp</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1_str_cmp.html#a43ea03b32a763abecd61a9af5c01abbf">operator()</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structsese_1_1_str_cmp_i.html">   34</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1_str_cmp_i.html" title="字符比较器（忽略大小写）">StrCmpI</a> {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1_str_cmp_i.html#ac9fdf0abd3fc3a9d295e2578873e49f0">operator()</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1">strcmp</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd">strcmpDoNotCase</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *lv, <span class="keywordtype">char</span> <span class="keyword">const</span> *rv) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese.html#a6122cf4dd9b32a7c8a00112c45639f37">isSpace</a>(<span class="keywordtype">char</span> ch) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="namespacesese.html#ab14e5e23a63f2107c457534c877646a8">   66</a></span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="namespacesese.html#afc7d59d9d8452fc29f620cd384261565">getLevelString</a>(Level level) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> int32_t <a class="code hl_function" href="namespacesese.html#a7c52b4c131447df3e4b83a9a7451ee97">findFirstAt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> ch);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sleep</a>(uint32_t second);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> REP, <span class="keyword">class</span> PERIOD&gt;</div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="namespacesese.html#a1a5605fe9c056879ab684e6fa8e2c460">   86</a></span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sleep</a>(<span class="keyword">const</span> std::chrono::duration&lt;REP, PERIOD&gt; &amp;duration) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    std::this_thread::sleep_for(duration);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}</div>
+</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> std::string <a class="code hl_function" href="namespacesese.html#a1833da64507c8e59f6799b93d2504ec6">getErrorString</a>(int64_t error = errno);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> int64_t <a class="code hl_function" href="namespacesese.html#ab5e35a3f44b1c1dd95685d82185df166">getErrorCode</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese.html#aa562f1f629706a4851b840247fa1b5a0">streamMove</a>(<a class="code hl_class" href="classsese_1_1io_1_1_output_stream.html" title="流式输出接口类">sese::io::OutputStream</a> *out, <a class="code hl_class" href="classsese_1_1io_1_1_input_stream.html" title="流式输入接口类">sese::io::InputStream</a> *<a class="code hl_function" href="_sqlite_prepared_statement_impl_8cpp.html#a28c85d611b4295d9e32267952da305d0">in</a>, <span class="keywordtype">size_t</span> <a class="code hl_function" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a>) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> TP&gt;</div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#aa0c7e6e475d4dd6b5f4dd0f04be4fbfa">  115</a></span>std::time_t <a class="code hl_function" href="util_2_util_8h.html#aa0c7e6e475d4dd6b5f4dd0f04be4fbfa" title="https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t">to_time_t</a>(TP tp) {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keyword">using namespace </span>std::chrono;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keyword">auto</span> sctp = time_point_cast&lt;system_clock::duration&gt;(tp - TP::clock::now() + system_clock::now());</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">return</span> system_clock::to_time_t(sctp);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
+</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="util_2_util_8h.html#aedfb30d135e80a656599eae70116ec74">getSpecificVersion</a>();</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#pragma warning(disable : 4996)</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24">  135</a></span><span class="preprocessor">#define CheckRange(x, max) ((unsigned int) (x) &lt; (max))</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="util_2_util_8h.html#af5377339bff575301da756d2f685a510">  140</a></span><span class="preprocessor">#define CheckRangeBetween(x, min, max) (((x) - (min)) | ((max) - (x)) &gt;= 0)</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

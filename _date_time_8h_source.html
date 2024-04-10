@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>sese-core: sese/util/DateTime.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">sese-core
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">DateTime.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_date_time_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_time_span_8h.html" title="时间间隔类">sese/util/TimeSpan.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#pragma warning(disable : 4819)</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// /**</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//  * 通用的时间 API</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">//  * @param tp timeval 结构体</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//  * @param tzp timezone 结构体</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//  * @return 成功（0）， 失败（-1）</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//  */</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// inline int32_t getTimeOfDate(struct timeval *tp, struct timezone *tzp = nullptr);</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html">   29</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">   31</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">Ptr</a> = std::unique_ptr&lt;DateTime&gt;;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="};">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045">   36</a></span>    <span class="keyword">enum class</span> <a class="code hl_enumeration" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045" title="日期创建策略">Policy</a> {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        ONLY_CREATE,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        FORMAT</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    };</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">static</span> <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> now(int32_t utc = <a class="code hl_variable" href="_config_8h.html#acd688e6011699d40edbaf750db54e486" title="默认时区">TIME_DEFAULT_ZONE</a>, Policy policy = Policy::FORMAT) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1_date_time.html#a026f09a60bd1cb66c51cf147a35a7fb1">DateTime::Ptr</a> nowPtr(int32_t utc = <a class="code hl_variable" href="_config_8h.html#acd688e6011699d40edbaf750db54e486" title="默认时区">TIME_DEFAULT_ZONE</a>, Policy policy = Policy::FORMAT) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a117ae22d36673ce8747c68c4c0cecb55">   47</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classsese_1_1_date_time.html#a117ae22d36673ce8747c68c4c0cecb55">DateTime</a>() noexcept = default;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    explicit <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a>(uint64_t timestamp, int32_t utc = <a class="code hl_variable" href="_config_8h.html#acd688e6011699d40edbaf750db54e486" title="默认时区">TIME_DEFAULT_ZONE</a>, <a class="code hl_enumeration" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045" title="日期创建策略">Policy</a> policy = <a class="code hl_enumeration" href="classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045" title="日期创建策略">Policy</a>::FORMAT) noexcept;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>public:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a0031775e2a88999acd1b6be4d00dc852">   52</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> isLeapYear() const noexcept { <span class="keywordflow">return</span> this-&gt;isLeap; }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a14d1bd26d8848eaa2c5405bc91b469e8">   53</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#a14d1bd26d8848eaa2c5405bc91b469e8">getYears</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;years; }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#ad1a8507a46f6513e5d093dcee431dd81">   54</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#ad1a8507a46f6513e5d093dcee431dd81">getMonths</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;months; }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#aa7b30b4ba08f203c843c99d0f3ba2926">   55</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#aa7b30b4ba08f203c843c99d0f3ba2926">getDays</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;days; }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a39e672c1afa89072d4145a92a01a3ecf">   56</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#a39e672c1afa89072d4145a92a01a3ecf">getHours</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;hours; }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a9675830dac253a61e8d37c680301634a">   57</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#a9675830dac253a61e8d37c680301634a">getMinutes</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;minutes; }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a5dd06f0ecf92bcce45415161f6da2507">   58</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#a5dd06f0ecf92bcce45415161f6da2507">getSeconds</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;seconds; }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#acdc1506bdec62088683b09b8fa5ebff2">   59</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#acdc1506bdec62088683b09b8fa5ebff2">getMilliseconds</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;milliseconds; }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a24ef6711a261a18b4b37e9a72f9a7cd6">   60</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#a24ef6711a261a18b4b37e9a72f9a7cd6">getMicroseconds</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;microseconds; }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#ad44ecf008a6a7c8e5926b82c009b6e4c">   61</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#ad44ecf008a6a7c8e5926b82c009b6e4c">getUTC</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;utc; }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a34bdf744800109c3fdf175b419f6e1ca">   62</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#a34bdf744800109c3fdf175b419f6e1ca">getDayOfWeek</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;dayofweek; }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#a3612ed47eb2c9bb1b0352498bd352473">   63</a></span>    [[nodiscard]] int32_t <a class="code hl_function" href="classsese_1_1_date_time.html#a3612ed47eb2c9bb1b0352498bd352473">getDayOfYear</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;dayofyear; }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classsese_1_1_date_time.html#abc773aa35b46df851a8b5487c1aadf3f">   64</a></span>    [[nodiscard]] uint64_t <a class="code hl_function" href="classsese_1_1_date_time.html#abc773aa35b46df851a8b5487c1aadf3f">getTimestamp</a>() const noexcept { <span class="keywordflow">return</span> this-&gt;timestamp; }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_class" href="classsese_1_1_time_span.html" title="时间间隔类">TimeSpan</a> operator-(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> &amp;date_time) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> operator-(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_time_span.html" title="时间间隔类">TimeSpan</a> &amp;time_span) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> operator+(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_time_span.html" title="时间间隔类">TimeSpan</a> &amp;time_span) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    [[nodiscard]] int32_t compareTo(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> &amp;date_time) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    [[nodiscard]] int32_t unclearCompareTo(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_date_time.html" title="日期时间类">DateTime</a> &amp;date_time) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// 初次计算的数据</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    int32_t years = 1970;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    int32_t months = 1;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    int32_t days = 1;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    int32_t hours = 0;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    int32_t minutes = 0;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    int32_t seconds = 0;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    int32_t dayofweek = 0;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    int32_t dayofyear = 0;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">bool</span> isLeap = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    int32_t milliseconds = 0;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    int32_t microseconds = 0;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// 核心数据</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    int32_t utc = 0;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    uint64_t timestamp = 0;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>};</div>
+</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>} <span class="comment">// namespace sese</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
