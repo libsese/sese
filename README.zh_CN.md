@@ -25,7 +25,7 @@ Web 开发等。
 
 ## 构建
 
-使用 vcpkg 导入依赖则不太需要你关系具体如何构建这个项目。只需要导入私有的 vcpkg-registry，填写 vcpkg.json 并添加 vcpkg
+使用 vcpkg 导入依赖则不太需要你关心具体如何构建这个项目。只需要导入私有的 vcpkg-registry，填写 vcpkg.json 并添加 vcpkg
 工具链即可。
 
 如果是编译安装或者作为开发者本地开发或调试本项目同样需要使用 vcpkg。 clone 项目并配置该项目，添加 vcpkg 工具链和
@@ -67,7 +67,3 @@ python3 scripts/make_coverage_report.py
 
 针对支持的三大平台均有工作流进行自动测试。其中在 ubuntu 的 test_coverage_job 中将会生成一份名为 CoverageReport.zip
 的测试报告文件。
-
-## 更多
-
-需要更多信息，请移步 [documents](https://libsese.github.io/sese-docs/#/)。

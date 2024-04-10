@@ -78,7 +78,3 @@ Sometimes, you may need to use specific options of gcovr to select a particular 
 
 For all three supported platforms, there are automated test workflows in place. In the test_coverage_job on Ubuntu, a
 test report file named CoverageReport.zip will be generated.
-
-## MORE
-
-If you'd like to learn more, please click [here(Chinese Proficiency Required)](https://libsese.github.io/sese-docs/#/).
