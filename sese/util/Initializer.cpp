@@ -59,10 +59,10 @@ void Initializer::addTask(const InitiateTask::Ptr &task) noexcept {
     }
 }
 
-void sese::initCore(const int ARGC, const char *const *argv) noexcept {
+void sese::initCore(int argc, const char *const *argv) noexcept {
     // 不会出错，不需要判断
     // GCOVR_EXCL_START
-    Initializer::addTask(std::make_shared<system::CommandLineInitiateTask>(ARGC, argv));
+    Initializer::addTask(std::make_shared<system::CommandLineInitiateTask>(argc, argv));
     Initializer::addTask(std::make_shared<PathsInitiateTask>());
     Initializer::addTask(std::make_shared<ThreadInitiateTask>());
     Initializer::addTask(std::make_shared<record::LoggerInitiateTask>());

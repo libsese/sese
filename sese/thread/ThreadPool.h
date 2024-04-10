@@ -30,7 +30,7 @@ public:
 
     /**
      * 初始化线程池
-     * @param threadPoolName 线程池名称（影响池内线程名称）
+     * @param thread_pool_name 线程池名称（影响池内线程名称）
      * @param threads 线程数量
      */
     explicit ThreadPool(std::string thread_pool_name = THREAD_DEFAULT_NAME, size_t threads = 4);
@@ -51,8 +51,8 @@ public:
 
     /**
      * 向线程池添加任务并绑定参数
-     * @tparam Function 函数模板
-     * @tparam Args 参数模板
+     * @tparam FUNCTION 函数模板
+     * @tparam ARGS 参数模板
      * @param f 函数
      * @param args 参数
      */
@@ -66,7 +66,7 @@ public:
 
     /**
      * 向线程池添加有返回值的任务
-     * \tparam ReturnType 返回值类型
+     * \tparam RETURN_TYPE 返回值类型
      * \param tasks 欲执行的任务
      * \return std::shared_future 对象
      */

@@ -19,7 +19,7 @@ public:
 
     /// 创建一个解压器
     /// \param type 压缩格式
-    /// \param bufferSize 设置内部缓存大小
+    /// \param buffer_size 设置内部缓存大小
     explicit Decompressor(CompressionType type, size_t buffer_size = ZLIB_CHUNK_SIZE);
 
     /// 释放资源
@@ -27,7 +27,7 @@ public:
 
     /// 设置欲解压的缓存
     /// \param input 欲解压的缓存
-    /// \param inputSize 此缓存的大小
+    /// \param input_size 此缓存的大小
     void input(const void *input, unsigned int input_size);
 
     /// 进行解压

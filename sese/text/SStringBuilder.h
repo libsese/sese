@@ -15,8 +15,8 @@ namespace sstr {
 class API SESE_DEPRECATED_WITH("please use sese::text::StringBuilder") SStringBuilder final {
     // 构造相关
 public:
-    SStringBuilder(const SStringBuilder &builder);
-    SStringBuilder(SStringBuilder &&builder) noexcept;
+    SStringBuilder(const SStringBuilder &builder);     // NOLINT
+    SStringBuilder(SStringBuilder &&builder) noexcept; // NOLINT
     explicit SStringBuilder(size_t buffer_size);
     ~SStringBuilder();
 
@@ -28,9 +28,7 @@ public:
 
     [[nodiscard]] bool null() const;
     [[nodiscard]] bool emtpy() const;
-    /// 扩容
-    /// \param size 扩容大小，单位为 4 bytes
-    /// \return 操作是否成功
+
     bool reserve(size_t size);
     void trim();
     void reverse();

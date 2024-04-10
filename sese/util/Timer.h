@@ -55,8 +55,8 @@ public:
 
     /// 设定延时任务
     /// \param callback 回调函数
-    /// \param relativeTimestamp 定时时间
-    /// \param isRepeat 是否重复
+    /// \param relative_timestamp 定时时间
+    /// \param is_repeat 是否重复
     /// \return 任务句柄
     TimerTask::Ptr delay(const std::function<void()> &callback, int64_t relative_timestamp, bool is_repeat = false) noexcept;
     /// 结束定时器并终止定时线程

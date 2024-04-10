@@ -17,7 +17,7 @@ class Uuid {
 public:
     Uuid() noexcept = default;
     /// 创建 UUID
-    /// \param selfId 本机 ID
+    /// \param self_id 本机 ID
     /// \param timestamp 时间戳
     /// \param r 保留位
     Uuid(uint8_t self_id, uint64_t timestamp, uint8_t r = 0) noexcept;

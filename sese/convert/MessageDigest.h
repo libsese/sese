@@ -24,7 +24,7 @@ public:
     /// 进行摘要
     /// \param type 摘要算法类型
     /// \param source 信息来源
-    /// \param isCap 字母是否大写
+    /// \param is_cap 字母是否大写
     /// \retval nullptr 摘要失败
     /// \return 摘要结果
     std::unique_ptr<char[]> static digest(Type type, const InputStream::Ptr &source, bool is_cap = false) noexcept;

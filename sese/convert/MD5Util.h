@@ -36,14 +36,14 @@ public:
     /**
         * @brief 生成 32 位大写 MD5 字符串
         * @param input 摘要来源
-        * @param isCap 指示字符串字母是否大写
+        * @param is_cap 指示字符串字母是否大写
         * @return 返回生成的字符串，生成失败则为 nullptr
         */
     static std::unique_ptr<char[]> encode(const InputStream::Ptr &input, bool is_cap = true) noexcept;
     /**
         * @brief 生成 32 位大写 MD5 字符串
         * @param input 摘要来源
-        * @param isCap 指示字符串字母是否大写
+        * @param is_cap 指示字符串字母是否大写
         * @return 返回生成的字符串，生成失败则为 nullptr
         */
     static std::unique_ptr<char[]> encode(InputStream *input, bool is_cap = true) noexcept;

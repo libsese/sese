@@ -24,8 +24,8 @@ using WeakType = std::weak_ptr<T>;
 
 /**
  * 实例化 SharedType
- * @tparam ReturnType SharedType 模板参数
- * @tparam Args 模板参数的构造函数参数类型
+ * @tparam RETURN_TYPE SharedType 模板参数
+ * @tparam ARGS 模板参数的构造函数参数类型
  * @param args 模板参数的构造函数参数
  * @return SharedType<ReturnType>
  */
@@ -36,8 +36,8 @@ inline SharedType<RETURN_TYPE> makeShared(ARGS &&...args) {
 
 /**
  * 实例化 UniqueType
- * @tparam ReturnType UniqueType 模板参数
- * @tparam Args 模板参数的构造函数参数类型
+ * @tparam RETURN_TYPE UniqueType 模板参数
+ * @tparam ARGS 模板参数的构造函数参数类型
  * @param args 模板参数的构造函数参数
  * @return UniqueType<ReturnType>
  */
@@ -48,8 +48,8 @@ inline SharedType<RETURN_TYPE> makeUnique(ARGS &&...args) {
 
 /**
  * std::make_shared 搭配 std::initializer_list 使用
- * @tparam ReturnType 预计返回 std::shared_ptr 的模板类型
- * @tparam InitType std::initializer_list 模板参数
+ * @tparam RETURN_TYPE 预计返回 std::shared_ptr 的模板类型
+ * @tparam INIT_TYPE std::initializer_list 模板参数
  * @param list 初始化列表
  * @return std::shared_ptr<ReturnType>
  */
@@ -60,8 +60,8 @@ SharedType<RETURN_TYPE> makeSharedFromList(std::initializer_list<INIT_TYPE> list
 
 /**
  * std::make_unique 搭配 std::initializer_list 使用
- * @tparam ReturnType 预计返回 std::unique_ptr 的模板参数
- * @tparam InitType std::initializer_list 的模板参数
+ * @tparam RETURN_TYPE 预计返回 std::unique_ptr 的模板参数
+ * @tparam INIT_TYPE std::initializer_list 的模板参数
  * @param list 初始化列表
  * @return std::unique_ptr<ReturnType>
  */
@@ -72,9 +72,9 @@ UniqueType<RETURN_TYPE> makeUniqueFromList(std::initializer_list<INIT_TYPE> list
 
 /**
  * std::shared_ptr 的类型转换
- * @tparam ReturnType 预计返回 std::shared_ptr 的模板参数
- * @tparam RawType 原始的 std::shared_ptr 的模板参数
- * @param rawType 需要转换的 std::shared_ptr
+ * @tparam RETURN_TYPE 预计返回 std::shared_ptr 的模板参数
+ * @tparam RAW_TYPE 原始的 std::shared_ptr 的模板参数
+ * @param raw_type 需要转换的 std::shared_ptr
  * @return std::shared_ptr<ReturnType>
  */
 template<typename RETURN_TYPE, typename RAW_TYPE>
@@ -84,9 +84,9 @@ inline SharedType<RETURN_TYPE> dynamicPointerCast(SharedType<RAW_TYPE> raw_type)
 
 /**
  * std::unique_ptr 的类型转换
- * @tparam ReturnType 预计返回 std::unique_ptr 的模板参数
- * @tparam RawType 原始的 std::unique_ptr 的模板参数
- * @param rawType 需要转换的 std::unique_ptr
+ * @tparam RETURN_TYPE 预计返回 std::unique_ptr 的模板参数
+ * @tparam RAW_TYPE 原始的 std::unique_ptr 的模板参数
+ * @param raw_type 需要转换的 std::unique_ptr
  * @return std::unique_ptr<ReturnType>
  */
 template<typename RETURN_TYPE, typename RAW_TYPE>

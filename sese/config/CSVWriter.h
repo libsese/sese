@@ -26,7 +26,7 @@ public:
 
     /// 构造函数
     /// \param dest 目的流
-    /// \param splitChar 分割字符
+    /// \param split_char 分割字符
     /// \param crlf 是否使用 CRLF 作为行分隔符
     explicit CSVWriter(OutputStream *dest, char split_char = ',', bool crlf = true) noexcept;
 

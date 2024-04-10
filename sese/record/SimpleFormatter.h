@@ -8,7 +8,6 @@
 
 #include "sese/record/AbstractFormatter.h"
 #include "sese/Config.h"
-#include "sese/record/AbstractFormatter.h"
 #include "sese/record/Event.h"
 
 namespace sese::record {
@@ -19,7 +18,7 @@ class API SimpleFormatter final : public AbstractFormatter {
 public:
     /**
      * 默认构造函数
-     * @param textPattern 格式字符串，默认为 RECORD_DEFAULT_TEXT_PATTERN
+     * @param text_pattern 格式字符串，默认为 RECORD_DEFAULT_TEXT_PATTERN
      * @see RECORD_DEFAULT_TEXT_PATTERN
      * @verbatim
        %    转义符号
@@ -31,7 +30,7 @@ public:
        c   完整时间
        m   内容
      @endverbatim
-     * @param timePattern 时间格式字符串
+     * @param time_pattern 时间格式字符串
      */
     explicit SimpleFormatter(const std::string &text_pattern = RECORD_DEFAULT_TEXT_PATTERN, const std::string &time_pattern = RECORD_DEFAULT_TIME_PATTERN) noexcept;
 

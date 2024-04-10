@@ -42,7 +42,7 @@ public:
     /**
      * 根据参数名称获取参数值
      * @param key 参数名称
-     * @param defaultValue 参数默认值
+     * @param default_value 参数默认值
      * @return 返回参数值，参数不存在返回默认值
      */
     [[nodiscard]] const std::string &getValueByKey(const std::string &key, const std::string &default_value) const noexcept;

@@ -24,11 +24,21 @@ for Windows:
     ./Dir      -> ./Dir
     Dir        -> Dir
      *  \endverbatim
-     *  \param unixPath UNIX-LIKE 格式路径
+     *  \param unix_path UNIX-LIKE 格式路径
      */
-    Path(const char *unix_path) noexcept;
+    Path(const char *unix_path) noexcept; // NOLINT
 
-    Path(const std::string_view &unix_path) noexcept;
+    /** \brief 路径构造函数
+     *  \verbatim
+for Windows:
+    /c/Windows -> c:/Windows
+    /C/Users   -> C:/Users
+    ./Dir      -> ./Dir
+    Dir        -> Dir
+     *  \endverbatim
+     *  \param unix_path UNIX-LIKE 格式路径
+     */
+    Path(const std::string_view &unix_path) noexcept; // NOLINT
 
     Path() = default;
 

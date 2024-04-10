@@ -27,7 +27,7 @@ public:
 
     /// 尝试从流中解析 HPACK 压缩后的 HEADERS
     /// \param src 流来源
-    /// \param contentLength 需要解析的内容长度
+    /// \param content_length 需要解析的内容长度
     /// \param table 解析所用的动态表
     /// \param header 存放解析结果
     /// \return 解析成功与否
@@ -36,8 +36,8 @@ public:
     /// 尝试将 HEADERS 按照 HPACK 格式压缩
     /// \param dest 目的流
     /// \param table 压缩所用动态表
-    /// \param onceHeader 非索引字段
-    /// \param indexedHeader 索引字段
+    /// \param once_header 非索引字段
+    /// \param indexed_header 索引字段
     /// \return 压缩产生的缓存大小
     static size_t encode(OutputStream *dest, DynamicTable &table, Header &once_header, Header &indexed_header) noexcept;
 

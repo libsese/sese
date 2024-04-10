@@ -67,6 +67,6 @@ public:
 /// 初始化 sese-core
 /// \param argc 参数个数
 /// \param argv 参数数组
-[[maybe_unused]] void initCore(int ARGC, const char *const *argv) noexcept;
+[[maybe_unused]] void initCore(int argc, const char *const *argv) noexcept;
 
 } // namespace sese

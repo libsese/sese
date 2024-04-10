@@ -43,7 +43,7 @@ public:
     using Ptr = std::shared_ptr<FileStream>;
 
     /// 打开一个文件流
-    /// \param filePath 文件路径
+    /// \param file_path 文件路径
     /// \param mode 打开模式
     /// \retval nullptr 打开失败
     /// \retval 文件流对象

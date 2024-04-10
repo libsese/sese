@@ -34,7 +34,7 @@ public:
 
 public:
     /// 当超时事件发生时触发
-    /// \param timeoutEvent
+    /// \param timeout_event
     virtual void onTimeout(TimeoutEvent *timeout_event);
 
     /// 新建一个超时事件
@@ -52,7 +52,7 @@ public:
 
     /// 重设当前的超时事件，原本的事件将被取消并覆盖
     /// \see createTimoutEvent
-    /// \param timeoutEvent 超时事件结构
+    /// \param timeout_event 超时事件结构
     /// \param seconds 超时时间，单位是秒
     void setTimeoutEvent(TimeoutEvent *timeout_event, uint64_t seconds);
 
@@ -63,11 +63,11 @@ public:
     TimeoutEvent *getTimeoutEventByFd(int fd);
 
     /// 取消当前的超时事件
-    /// \param timeoutEvent 超时事件结构
+    /// \param timeout_event 超时事件结构
     void cancelTimeoutEvent(TimeoutEvent *timeout_event);
 
     /// 释放当前的超时事件结构
-    /// \param timeoutEvent 超时事件结构
+    /// \param timeout_event 超时事件结构
     void freeTimeoutEvent(TimeoutEvent *timeout_event);
 
 private:
