@@ -1,3 +1,8 @@
+/// \file MariaStmtResultSetImpl.h
+/// \brief Maria 预处理结果集实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
 
 #include <sese/db/ResultSet.h>
@@ -5,6 +10,7 @@
 
 namespace sese::db::impl {
 
+    /// \brief Maria 预处理结果集实现
     class SESE_DB_API MariaStmtResultSet final : public ResultSet {
     public:
         explicit MariaStmtResultSet(MYSQL_STMT *stmt, MYSQL_BIND *row, size_t count) noexcept;

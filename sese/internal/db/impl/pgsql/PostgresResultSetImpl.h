@@ -1,8 +1,15 @@
+/// \file PostgresResultSetImpl.h
+/// \brief PSQL 结果集实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
+
 #include <sese/db/ResultSet.h>
 #include <libpq-fe.h>
 
 namespace sese::db::impl {
+    /// \brief PSQL 结果集实现
     class SESE_DB_API PostgresResultSetImpl : public ResultSet {
     public:
         explicit PostgresResultSetImpl(PGresult *res) noexcept;

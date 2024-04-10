@@ -1,3 +1,8 @@
+/// \file SqlitePreparedStatementImpl.h
+/// \brief SQLite 预处理语句实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
 
 #include <sese/util/Util.h>
@@ -8,6 +13,7 @@
 
 namespace sese::db::impl {
 
+    /// \brief SQLite 预处理语句实现
     class SESE_DB_API SqlitePreparedStatementImpl final : public PreparedStatement {
     public:
         explicit SqlitePreparedStatementImpl(sqlite3_stmt *stmt, size_t count) noexcept;

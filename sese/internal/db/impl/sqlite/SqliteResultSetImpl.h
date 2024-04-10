@@ -1,9 +1,16 @@
+/// \file SqliteResultSetImpl.h
+/// \brief SQLite 结果集实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
+
 #include <sese/db/ResultSet.h>
 #include <sqlite3.h>
 
 namespace sese::db::impl {
 
+    /// \brief SQLite 结果集实现
     class SESE_DB_API SqliteResultSetImpl final : public ResultSet {
     public:
         SqliteResultSetImpl(char **table, size_t r, size_t c, char *error) noexcept;

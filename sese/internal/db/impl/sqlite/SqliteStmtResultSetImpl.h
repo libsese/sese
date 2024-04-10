@@ -1,9 +1,16 @@
+/// \file SqliteStmtResultSetImpl.h
+/// \brief SQLite 预处理语句结果集
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
+
 #include <sese/db/ResultSet.h>
 #include <sqlite3.h>
 
 namespace sese::db::impl {
 
+    /// \brief SQLite 预处理语句结果集
     class SESE_DB_API SqliteStmtResultSetImpl final : public ResultSet {
     public:
         explicit SqliteStmtResultSetImpl(sqlite3_stmt *stmt) noexcept;

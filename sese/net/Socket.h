@@ -37,20 +37,30 @@ class API Socket : public io::Stream, public io::PeekableStream, public io::Clos
 public:
     using Ptr = std::shared_ptr<Socket>;
 
+    /// \brief 套接字类型
     enum class Type {
+        /// \brief TCP 套接字
         TCP = SOCK_STREAM,
+        /// \brief UDP 套接字
         UDP = SOCK_DGRAM
     };
 
+    /// \brief 协议族
     enum class Family {
+        /// \brief IPv4
         IPv4 = AF_INET,
+        /// \brief IPv6
         IPv6 = AF_INET6
     };
 
+    /// \brief 断开模式
     enum class ShutdownMode {
 #ifdef _WIN32
+        /// \brief 断开读端
         READ = 0,
+        /// \brief 断开写端
         WRITE = 1,
+        /// \brief 断开读写端
         BOTH = 2
 #else
         READ = SHUT_RD,

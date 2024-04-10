@@ -1,3 +1,8 @@
+/// \file MariaDriverInstanceImpl.h
+/// \brief Maria 驱动实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
 
 #include <sese/db/DriverInstance.h>
@@ -5,6 +10,7 @@
 
 namespace sese::db::impl {
 
+    /// \brief Maria 驱动实现
     class SESE_DB_API MariaDriverInstanceImpl final : public DriverInstance {
     public:
         explicit MariaDriverInstanceImpl(MYSQL *conn) noexcept;

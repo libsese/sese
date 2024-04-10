@@ -1,3 +1,8 @@
+/// \file MariaPreparedStatementImpl.h
+/// \brief Maria 预处理语句实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
 
 #include <sese/db/PreparedStatement.h>
@@ -5,6 +10,7 @@
 
 namespace sese::db::impl {
 
+    /// \brief Maria 预处理语句实现
     class SESE_DB_API MariaPreparedStatementImpl final : public PreparedStatement {
     public:
         explicit MariaPreparedStatementImpl(MYSQL_STMT *stmt, MYSQL_RES *meta, size_t count) noexcept;

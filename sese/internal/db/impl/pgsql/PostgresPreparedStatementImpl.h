@@ -1,3 +1,8 @@
+/// \file PostgresPreparedStatementImpl.h
+/// \brief PSQL 预处理语句实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
 
 #include <sese/db/PreparedStatement.h>
@@ -7,6 +12,7 @@
 
 namespace sese::db::impl {
 
+    /// \brief PSQL 预处理语句实现
     class SESE_DB_API PostgresPreparedStatementImpl : public PreparedStatement {
     public:
         explicit PostgresPreparedStatementImpl(std::string stmt_name, std::string stmt_string, uint32_t count, PGconn *conn) noexcept;

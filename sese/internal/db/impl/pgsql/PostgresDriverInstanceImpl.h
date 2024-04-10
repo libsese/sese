@@ -1,9 +1,16 @@
+/// \file PostgresDriverInstanceImpl.h
+/// \brief PSQL 驱动实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
+
 #include <sese/db/DriverInstance.h>
 #include <sese/internal/db/impl/pgsql/PostgresPreparedStatementImpl.h>
 
 namespace sese::db::impl {
 
+    /// \brief PSQL 驱动实现
     class SESE_DB_API PostgresDriverInstanceImpl : public DriverInstance {
     public:
         explicit PostgresDriverInstanceImpl(PGconn *conn) noexcept;

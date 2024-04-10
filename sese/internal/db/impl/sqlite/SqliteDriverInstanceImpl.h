@@ -1,3 +1,8 @@
+/// \file SqliteDriverInstanceImpl.h
+/// \brief SQLite 驱动实现
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
 
 #include <sese/db/DriverInstance.h>
@@ -5,6 +10,7 @@
 
 namespace sese::db::impl {
 
+    /// \brief SQLite 驱动实现
     class SESE_DB_API SqliteDriverInstanceImpl final : public DriverInstance {
     public:
         explicit SqliteDriverInstanceImpl(sqlite3 *conn) noexcept;

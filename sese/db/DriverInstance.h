@@ -21,7 +21,7 @@ namespace sese::db {
         /// \retval nullptr 为查询失败
         virtual ResultSet::Ptr executeQuery(const char *sql) noexcept = 0;
         /// 执行更新
-        /// \param sql 更新预计
+        /// \param sql 更新语句
         /// \return 统计更新的行数
         /// \retval -1 执行失败
         virtual int64_t executeUpdate(const char *sql) noexcept = 0;

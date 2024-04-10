@@ -1,0 +1,27 @@
+image: ubuntu:22.04
+
+stages:
+  - install
+  - config
+  - build
+  - test
+
+install:
+  stage: install
+  script:
+    - ./scripts/install_ubuntu_deps.sh
+
+config:
+  stage: config
+  script:
+    - cmake --preset linux-release
+
+build:
+  stage: build
+  script:
+    - cmake --build build/linux-release -- -j 2
+
+test:
+  stage: test
+  script:
+    - ./build/linux-release/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*
