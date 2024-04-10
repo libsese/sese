@@ -1,6 +1,6 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefghijklmnopqrstuvwxyz~内列单弃更构测自",
+  0: "_abcdefghijklmnopqrstuvwxyz~内列单弃构测自",
   1: "abcdefghijklmnopqrstuvwxy",
   2: "s",
   3: "abcdefghijklmnopqrstuvwxyz",
