@@ -14,6 +14,7 @@ namespace sese::net::http {
 /// 请求解析器
 class RequestParser {
 public:
+    /// 请求解析结果
     struct Result {
         Url url;
         IPAddress::Ptr address{};

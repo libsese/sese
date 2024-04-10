@@ -1,3 +1,8 @@
+/// \file Config.h
+/// \brief Archive 相关配置
+/// \author kaoru
+/// \date 2024年04月10日
+
 // Copyright 2024 libsese
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +20,7 @@
 #pragma once
 
 namespace sese::archive {
+    /// @brief Archive 配置类
     class Config {
     public:
         enum class EntryType {

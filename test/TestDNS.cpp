@@ -114,7 +114,7 @@ TEST(TestDNS, DnsClient) {
 TEST(TestDNS, Server) {
     auto addr = createAddress();
 
-    sese::net::dns::DNSConfig config;
+    sese::net::dns::DnsConfig config;
     config.address = addr;
     config.hostIPv4Map["www.example.com"] = "127.0.0.1";
     config.hostIPv4Map["www.kaoru.com"] = "192.168.3.230";

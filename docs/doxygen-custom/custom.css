@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('JetBrainsMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Maple Mono SC NF';
+    src: url('MapleMono-Regular.ttf') format('truetype');
+}
+
+html, body, table, div, p, dl {
+    font-family: 'JetBrains Mono', 'Maple Mono SC NF', system-ui;
+}
+
 .github-corner svg {
     fill: var(--primary-light-color);
     color: var(--page-background-color);

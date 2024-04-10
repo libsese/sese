@@ -11,7 +11,7 @@
 
 namespace sese {
 
-/// 双向映射表
+/// \brief 双向映射表
 /// \tparam K 键类型
 /// \tparam V 值类型
 template<class K, class V>

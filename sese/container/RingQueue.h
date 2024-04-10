@@ -11,7 +11,7 @@
 namespace sese {
 
 /**
- * 环形队列
+ * @brief 环形队列
  * @tparam T 元素类型
  * @tparam N 队列大小
  */

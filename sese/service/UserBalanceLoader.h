@@ -67,6 +67,7 @@ public:
     void setOnDispatchedCallbackFunction(const std::function<void(int, sese::event::EventLoop *, void *)> &cb) { UserBalanceLoader::onDispatchedCallbackFunction = cb; }
 
 protected:
+    /// 套接字状态
     struct SocketStatus {
         socket_t fd{};
         void *data{};

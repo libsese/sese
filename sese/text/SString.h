@@ -158,6 +158,7 @@ public:
     /// 尾加字符串
     /// \param u8str 待尾加字符串
     /// \return 尾加结果字符串
+    /// \deprecated 尾加对象的字符串编码必须也是 UTF-8，否则不建议使用
     SString append(const char *u8str) const;
 
     /// 切割字符串
@@ -166,7 +167,6 @@ public:
     [[nodiscard]] std::vector<SString> split(const SStringView &str) const;
 
     /// 切割字符串
-    /// \deprecated 尾加对象的字符串编码必须也是 UTF-8，否则不建议使用
     /// \param str 切割标识符
     /// \return 切割结果
     std::vector<SString> split(const char *str) const;

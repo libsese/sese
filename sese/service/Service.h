@@ -23,6 +23,7 @@
 
 namespace sese::service {
 
+/// @brief 服务接口类
 class Service {
 public:
     using Ptr = std::unique_ptr<Service>;

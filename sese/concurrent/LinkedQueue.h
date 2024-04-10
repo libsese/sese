@@ -12,10 +12,11 @@
 
 namespace sese::concurrent {
 
-/// 非阻塞线程安全队列
+/// \brief 非阻塞线程安全队列
 /// \tparam T 模板类型
 template<class T>
 class LinkedQueue {
+    /// \brief 节点
     struct Node {
         std::atomic<T> value{};
         std::atomic<Node *> next{nullptr};

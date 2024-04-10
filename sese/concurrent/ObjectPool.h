@@ -15,7 +15,7 @@
 
 namespace sese::concurrent {
 
-/// 并发对象池
+/// \brief 并发对象池
 /// \tparam T 池中对象类型
 template<typename T>
 class ObjectPool : public std::enable_shared_from_this<ObjectPool<T>>, public Noncopyable {

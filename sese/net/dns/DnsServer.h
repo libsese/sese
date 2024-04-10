@@ -18,7 +18,7 @@
 namespace sese::net::dns {
 
 /// DNS 配置
-struct API DNSConfig {
+struct API DnsConfig {
     IPAddress::Ptr address;
     std::map<std::string, std::string> hostIPv4Map;
     std::map<std::string, std::string> hostIPv6Map;
@@ -33,7 +33,7 @@ public:
     /// \param config 配置
     /// \return 服务器实例
     /// \retval nullptr 创建失败
-    static DnsServer::Ptr create(const DNSConfig *config) noexcept;
+    static DnsServer::Ptr create(const DnsConfig *config) noexcept;
 
     ~DnsServer() noexcept;
 

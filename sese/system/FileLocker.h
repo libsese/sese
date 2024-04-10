@@ -11,7 +11,7 @@
 namespace sese::system {
 
 /**
- * 文件锁
+ * @brief 文件锁
  */
 class API FileLocker {
 public:

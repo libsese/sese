@@ -35,8 +35,11 @@ public:
 
     class List;
     class Dict;
+
+    /// \brief 空值容器类型
     class Null {};
 
+    /// \brief 列表值容器类型
     class List {
     public:
         using Raw = std::vector<Value>;
@@ -106,6 +109,7 @@ public:
         Raw vector;
     };
 
+    /// \brief 字典值容器类型
     class Dict {
     public:
         using Raw = std::map<String, Value *>;

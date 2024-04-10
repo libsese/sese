@@ -4,7 +4,7 @@
 #include <sese/io/OutputBufferWrapper.h>
 #include <sese/util/Util.h>
 
-sese::net::dns::DnsServer::Ptr sese::net::dns::DnsServer::create(const sese::net::dns::DNSConfig *config) noexcept {
+sese::net::dns::DnsServer::Ptr sese::net::dns::DnsServer::create(const sese::net::dns::DnsConfig *config) noexcept {
     auto socket = std::make_shared<sese::net::Socket>(Socket::Family::IPv4, Socket::Type::UDP, IPPROTO_IP);
     if (socket->bind(config->address)) {
         return nullptr;

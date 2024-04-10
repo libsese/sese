@@ -12,10 +12,11 @@
 
 namespace sese::concurrent {
 
-/// 非阻塞线程安全栈
+/// \brief 非阻塞线程安全栈
 /// \tparam T 模板类型
 template<class T>
 class LinkedStack {
+    /// \brief 节点
     struct Node {
         T value;
         std::atomic<Node *> next{nullptr};

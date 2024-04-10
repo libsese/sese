@@ -48,13 +48,13 @@ PROJECT_NAME           = sese-core
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         =
+PROJECT_NUMBER         = x.y.z
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "A cross-platform foundational library"
+PROJECT_BRIEF          = "A cross-platform library"
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
@@ -530,7 +530,7 @@ EXTRACT_ALL            = YES
 # be included in the documentation.
 # The default value is: NO.
 
-EXTRACT_PRIVATE        = NO
+EXTRACT_PRIVATE        = YES
 
 # If the EXTRACT_PRIV_VIRTUAL tag is set to YES, documented private virtual
 # methods of a class will be included in the documentation.
@@ -564,7 +564,7 @@ EXTRACT_LOCAL_CLASSES  = YES
 # included.
 # The default value is: NO.
 
-EXTRACT_LOCAL_METHODS  = NO
+EXTRACT_LOCAL_METHODS  = YES
 
 # If this flag is set to YES, the members of anonymous namespaces will be
 # extracted and appear in the documentation as a namespace called
@@ -1184,14 +1184,14 @@ FORTRAN_COMMENT_AFTER  = 72
 # also VERBATIM_HEADERS is set to NO.
 # The default value is: NO.
 
-SOURCE_BROWSER         = YES
+SOURCE_BROWSER         = NO
 
 # Setting the INLINE_SOURCES tag to YES will include the body of functions,
 # multi-line macros, enums or list initialized variables directly into the
 # documentation.
 # The default value is: NO.
 
-INLINE_SOURCES         = YES
+INLINE_SOURCES         = NO
 
 # Setting the STRIP_CODE_COMMENTS tag to YES will instruct doxygen to hide any
 # special comment blocks from generated source code fragments. Normal C, C++ and
@@ -1362,7 +1362,7 @@ HTML_FILE_EXTENSION    = .html
 # of the possible markers and block names see the documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_HEADER            = docs/doxygen-awesome-css/doxygen-custom/header.html
+HTML_HEADER            = docs/doxygen-custom/header.html
 
 # The HTML_FOOTER tag can be used to specify a user-defined HTML footer for each
 # generated HTML page. If the tag is left blank doxygen will generate a standard
@@ -1402,11 +1402,11 @@ HTML_STYLESHEET        =
 # documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_STYLESHEET  = docs/doxygen-awesome-css/doxygen-awesome.css \
-                         docs/doxygen-awesome-css/doxygen-awesome-sidebar-only.css \
-                         docs/doxygen-awesome-css/doxygen-awesome-sidebar-only-darkmode-toggle.css \
-                         docs/doxygen-awesome-css/doxygen-custom/custom.css \
-                         docs/doxygen-awesome-css/doxygen-custom/custom-alternative.css
+HTML_EXTRA_STYLESHEET  = docs/doxygen-awesome.css \
+                         docs/doxygen-awesome-sidebar-only.css \
+                         docs/doxygen-awesome-sidebar-only-darkmode-toggle.css \
+                         docs/doxygen-custom/custom.css \
+                         docs/doxygen-custom/custom-alternative.css
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -1416,12 +1416,14 @@ HTML_EXTRA_STYLESHEET  = docs/doxygen-awesome-css/doxygen-awesome.css \
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       = docs/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
-                         docs/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
-                         docs/doxygen-awesome-css/doxygen-awesome-interactive-toc.js \
-                         docs/doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
-                         docs/doxygen-awesome-css/doxygen-awesome-tabs.js \
-                         docs/doxygen-awesome-css/doxygen-custom/toggle-alternative-theme.js
+HTML_EXTRA_FILES       = docs/doxygen-awesome-darkmode-toggle.js \
+                         docs/doxygen-awesome-fragment-copy-button.js \
+                         docs/doxygen-awesome-interactive-toc.js \
+                         docs/doxygen-awesome-paragraph-link.js \
+                         docs/doxygen-awesome-tabs.js \
+                         docs/doxygen-custom/toggle-alternative-theme.js \
+                         docs/doxygen-custom/JetBrainsMono-Regular.ttf \
+                         docs/doxygen-custom/MapleMono-Regular.ttf
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.

@@ -1,3 +1,8 @@
+/// \file AsioHttpClient.h
+/// \brief 基于ASIO实现的HTTP/1.1客户端
+/// \author kaoru
+/// \date 2024年04月10日
+
 #pragma once
 
 #include "sese/net/http/CookieMap.h"
@@ -10,6 +15,7 @@
 
 namespace sese::internal::net::http {
 
+/// \brief 基于ASIO实现的HTTP/1.1客户端
 class AsioHttpClient : public sese::net::http::Requestable {
 public:
     AsioHttpClient();
