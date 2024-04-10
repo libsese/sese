@@ -22,8 +22,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies(pip-scripts)
-        run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
+      - name: Install Dependencies(pip)
+        run: pip install -r ${{ github.workspace }}/requirements.txt
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
@@ -52,8 +52,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies(pip-scripts)
-        run: pip install -r ${{ github.workspace }}/scripts/requirements.txt
+      - name: Install Dependencies(pip)
+        run: pip install -r ${{ github.workspace }}/requirements.txt
 
       - name: Check deps
         working-directory: ${{ github.workspace }}
