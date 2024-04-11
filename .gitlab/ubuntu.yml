@@ -48,7 +48,7 @@ linux_coverage:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: build/coverage/cobertura.xml
+        path: build/coverage/coverage.xml
 
 linux_clean:
   stage: clean
