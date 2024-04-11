@@ -4,6 +4,10 @@ stages:
   - build
   - test
 
+variables:
+  # tell git not to clean up the build directory
+  GIT_CLEAN_FLAGS: -fdx -e build
+
 before_script:
   - apt update -q
   - ./scripts/install_ubuntu_deps.sh
@@ -18,7 +22,5 @@ linux_build:
 
 linux_test:
   stage: test
-  dependencies:
-    - linux_build
   script:
     - ./build/linux-release/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*
