@@ -186,7 +186,8 @@ var annotated_dup =
           [ "SHA1Context", "classsese_1_1security_1_1evp_1_1_s_h_a1_context.html", "classsese_1_1security_1_1evp_1_1_s_h_a1_context" ],
           [ "SHA256Context", "classsese_1_1security_1_1evp_1_1_s_h_a256_context.html", "classsese_1_1security_1_1evp_1_1_s_h_a256_context" ],
           [ "SHA384Context", "classsese_1_1security_1_1evp_1_1_s_h_a384_context.html", "classsese_1_1security_1_1evp_1_1_s_h_a384_context" ],
-          [ "SHA512Context", "classsese_1_1security_1_1evp_1_1_s_h_a512_context.html", "classsese_1_1security_1_1evp_1_1_s_h_a512_context" ]
+          [ "SHA512Context", "classsese_1_1security_1_1evp_1_1_s_h_a512_context.html", "classsese_1_1security_1_1evp_1_1_s_h_a512_context" ],
+          [ "SM3Context", "classsese_1_1security_1_1evp_1_1_s_m3_context.html", "classsese_1_1security_1_1evp_1_1_s_m3_context" ]
         ] ],
         [ "MessageDigest", "classsese_1_1security_1_1_message_digest.html", "classsese_1_1security_1_1_message_digest" ],
         [ "SecurityInitTask", "classsese_1_1security_1_1_security_init_task.html", "classsese_1_1security_1_1_security_init_task" ],

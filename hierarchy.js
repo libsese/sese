@@ -59,7 +59,8 @@ var hierarchy =
       [ "sese::security::evp::SHA1Context", "classsese_1_1security_1_1evp_1_1_s_h_a1_context.html", null ],
       [ "sese::security::evp::SHA256Context", "classsese_1_1security_1_1evp_1_1_s_h_a256_context.html", null ],
       [ "sese::security::evp::SHA384Context", "classsese_1_1security_1_1evp_1_1_s_h_a384_context.html", null ],
-      [ "sese::security::evp::SHA512Context", "classsese_1_1security_1_1evp_1_1_s_h_a512_context.html", null ]
+      [ "sese::security::evp::SHA512Context", "classsese_1_1security_1_1evp_1_1_s_h_a512_context.html", null ],
+      [ "sese::security::evp::SM3Context", "classsese_1_1security_1_1evp_1_1_s_m3_context.html", null ]
     ] ],
     [ "sese::net::http::ControllerGroup", "classsese_1_1net_1_1http_1_1_controller_group.html", null ],
     [ "sese::net::http::Cookie", "classsese_1_1net_1_1http_1_1_cookie.html", null ],
