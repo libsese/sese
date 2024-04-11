@@ -11,7 +11,8 @@ install:
   script:
     - apt update
     - ./scripts/install_ubuntu_deps.sh
-    - pip install -r requirements.txt
+    - apt install python3 python3-pip -y
+    - pip3 install -r requirements.txt
 
 config:
   stage: config
