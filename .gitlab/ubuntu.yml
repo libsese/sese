@@ -16,16 +16,16 @@ before_script:
   - apt install python3 python3-pip sqlite3 docker.io docker-compose -yq
   - pip3 install -r ./requirements.txt
 
-linux_build:
+build:
   stage: build
   script:
     - cmake -Bbuild/linux-release -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
     - cmake --build build/linux-release -- -j 2
 
-linux_test:
+test:
   stage: test
   needs:
-    - linux_build
+    - build
   script:
     # restore sqlite database
     - mkdir docker/tmp && sqlite3 docker/tmp/db_test.db < docker/sqlite_dump.sql
@@ -36,10 +36,10 @@ linux_test:
     # shutdown service
     - docker-compose -f docker/docker-compose.yml down
 
-linux_coverage:
+coverage:
   stage: report
   needs:
-    - linux_test
+    - test
   script:
     - mkdir -p build/coverage
     - gcovr --config gcovr-cobertura.cfg
@@ -50,9 +50,9 @@ linux_coverage:
         coverage_format: cobertura
         path: build/coverage/coverage.xml
 
-linux_clean:
+clean:
   stage: clean
   needs:
-    - linux_coverage
+    - coverage
   script:
     - git clean -f
