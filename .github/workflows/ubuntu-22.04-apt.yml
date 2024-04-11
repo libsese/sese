@@ -60,7 +60,7 @@ jobs:
       - name: Coverage
         working-directory: ${{ github.workspace }}
         run: |
-          mkdir -p build/coverage
+          mkdir -p build/coverage/html
           gcovr --config gcovr-html.cfg
           gcovr --config gcovr-cobertura.cfg
 
