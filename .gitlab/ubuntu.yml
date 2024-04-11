@@ -10,6 +10,7 @@ install:
   stage: install
   script:
     - ./scripts/install_ubuntu_deps.sh
+    - pip install -r requirements.txt
 
 config:
   stage: config
