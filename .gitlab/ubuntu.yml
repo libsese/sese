@@ -9,6 +9,7 @@ stages:
 install:
   stage: install
   script:
+    - apt update
     - ./scripts/install_ubuntu_deps.sh
     - pip install -r requirements.txt
 
