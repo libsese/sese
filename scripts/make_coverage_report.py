@@ -1,16 +1,20 @@
 import os
-import sys
+
+
+def check_dir(directory: str):
+    target = '{}/{}'.format(os.getcwd(), directory)
+    if not os.path.exists(target):
+        print('mkdir {}'.format(target))
+        os.makedirs(target)
 
 
 def main():
-    cov_dir = '{}/coverage'.format(os.getcwd())
-    print('checking directory... {}'.format(cov_dir))
-    if not os.path.exists(cov_dir):
-        print('mkdir {}'.format(cov_dir))
-        os.mkdir(cov_dir)
+    check_dir('build/coverage/html')
 
     print('process is running... gcovr')
-    sys.exit(os.system('gcovr'))
+    os.system('gcovr --config gcovr-html.cfg')
+    print('\n================================\n')
+    os.system('gcovr --config gcovr-cobertura.cfg')
 
 
 if __name__ == '__main__':

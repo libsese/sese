@@ -3,6 +3,8 @@ image: ubuntu:22.04
 stages:
   - build
   - test
+  - report
+  - clean
 
 variables:
   # tell git not to clean up the build directory
@@ -11,16 +13,46 @@ variables:
 before_script:
   - apt update -q
   - ./scripts/install_ubuntu_deps.sh
-  - apt install python3 python3-pip -yq
+  - apt install python3 python3-pip sqlite3 docker.io docker-compose -yq
   - pip3 install -r ./requirements.txt
 
 linux_build:
   stage: build
   script:
-    - cmake --preset linux-release
+    - cmake -Bbuild/linux-release -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
     - cmake --build build/linux-release -- -j 2
 
 linux_test:
   stage: test
+  needs:
+    - linux_build
   script:
-    - ./build/linux-release/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*
+    # restore sqlite database
+    - mkdir docker/tmp && sqlite3 docker/tmp/db_test.db < docker/sqlite_dump.sql
+    # setup services
+    - docker-compose -f docker/docker-compose.yml up -d mariadb postgresql && sleep 5
+    # run tests
+    - ./build/linux-release/test/AllTestsInMain
+    # shutdown service
+    - docker-compose -f docker/docker-compose.yml down
+
+linux_coverage:
+  stage: report
+  needs:
+    - linux_test
+  script:
+    - mkdir -p build/coverage
+    - gcovr --config gcovr-cobertura.cfg
+  artifacts:
+    when: on_success
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: build/coverage/cobertura.xml
+
+linux_clean:
+  stage: clean
+  needs:
+    - linux_coverage
+  script:
+    - git clean -f

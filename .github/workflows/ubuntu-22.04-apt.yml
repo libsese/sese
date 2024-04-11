@@ -73,11 +73,13 @@ jobs:
 
       - name: Coverage
         working-directory: ${{ github.workspace }}
-        run: python3 scripts/make_coverage_report.py
+        run: |
+          mkdir -p build/coverage
+          gcovr --config gcovr-html.cfg
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
-          path: ${{ github.workspace }}/coverage
+          path: ${{ github.workspace }}/build/coverage
 
