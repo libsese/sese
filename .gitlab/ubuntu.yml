@@ -1,28 +1,26 @@
 image: ubuntu:22.04
 
 stages:
-  - install
-  - config
   - build
   - test
 
-install:
-  stage: install
-  script:
-    - apt update
-    - ./scripts/install_ubuntu_deps.sh
-    - apt install python3 python3-pip -y
-    - pip3 install -r requirements.txt
-
-config:
-  stage: config
-  script:
-    - cmake --preset linux-release
+before_script:
+  - apt update -q
+  - ./scripts/install_ubuntu_deps.sh
+  - apt install python3 python3-pip -yq
+  - pip3 install -r ./requirements.txt
 
 build:
   stage: build
   script:
+    - cmake --preset linux-release
     - cmake --build build/linux-release -- -j 2
+  artifacts:
+    paths:
+      - build/linux-release
+  cache:
+    paths:
+      - build/linux-release/**/*.o
 
 test:
   stage: test
