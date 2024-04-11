@@ -2,6 +2,7 @@ image: ubuntu:22.04
 
 stages:
   - test
+  - deploy
 
 before_script:
   - apt update -q && apt install python3 python3-pip sqlite3 docker.io docker-compose -yq
@@ -32,3 +33,15 @@ test:
       coverage_report:
         coverage_format: cobertura
         path: build/coverage/coverage.xml
+
+pages:
+  stage: deploy
+  script:
+    - apt update -q && apt install doxygen -yq
+    - doxygen
+    - mv -r build/html public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
