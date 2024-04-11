@@ -1,32 +1,19 @@
 image: ubuntu:22.04
 
 stages:
-  - build
   - test
-  - report
-  - clean
-
-variables:
-  # tell git not to clean up the build directory
-  GIT_CLEAN_FLAGS: -fdx -e build
 
 before_script:
-  - apt update -q
+  - apt update -q && apt install python3 python3-pip sqlite3 docker.io docker-compose -yq
   - ./scripts/install_ubuntu_deps.sh
-  - apt install python3 python3-pip sqlite3 docker.io docker-compose -yq
   - pip3 install -r ./requirements.txt
-
-build:
-  stage: build
-  script:
-    - cmake -Bbuild/linux-release -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
-    - cmake --build build/linux-release -- -j 2
 
 test:
   stage: test
-  needs:
-    - build
   script:
+    # config cmake project
+    - cmake -Bbuild/linux-release -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
+    - cmake --build build/linux-release -- -j 2
     # restore sqlite database
     - mkdir docker/tmp && sqlite3 docker/tmp/db_test.db < docker/sqlite_dump.sql
     # setup services
@@ -35,24 +22,13 @@ test:
     - ./build/linux-release/test/AllTestsInMain
     # shutdown service
     - docker-compose -f docker/docker-compose.yml down
-
-coverage:
-  stage: report
-  needs:
-    - test
-  script:
+    # make coverage reposts
     - mkdir -p build/coverage
     - gcovr --config gcovr-cobertura.cfg
+  coverage: /^\s*lines:\s*\d+.\d+\%/
   artifacts:
     when: on_success
     reports:
       coverage_report:
         coverage_format: cobertura
         path: build/coverage/coverage.xml
-
-clean:
-  stage: clean
-  needs:
-    - coverage
-  script:
-    - git clean -f

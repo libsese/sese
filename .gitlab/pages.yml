@@ -1,0 +1,13 @@
+image: ubuntu:22:04
+
+pages:
+  stage: deploy
+  script:
+    - apt update -q && apt install doxygen -yq
+    - doxygen
+    - mv -r build/html public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
