@@ -2,8 +2,6 @@ name: macOS-brew
 
 on:
   pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
