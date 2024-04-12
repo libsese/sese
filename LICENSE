@@ -265,3 +265,7 @@ subject to the terms and conditions of the following licenses:
 - postgres
     Project URL: https://www.postgresql.org/
     License: PostgreSQL License
+
+- doxygen-awesome-css
+    Project URL: https://github.com/jothepro/doxygen-awesome-css
+    License: MIT License
