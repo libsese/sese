@@ -11,3 +11,4 @@
 *.in    text eol=crlf
 *.sh    text eol=lf
 *.bash  text eol=lf
+*.sql   text eol=lf

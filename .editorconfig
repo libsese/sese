@@ -1,7 +1,7 @@
+# 行分割符应该在 .gitattributes 中指定
 root = true
 
 [*]
-end_of_line = crlf
 indent_style = space
 indent_size = 4
 insert_final_newline = false
@@ -9,8 +9,4 @@ trim_trailing_whitespace = true
 charset = utf-8
 
 [*.{yml,yaml}]
-indent_style = space
 indent_size = 2
-
-[*.{sh,bash}]
-end_of_line = lf

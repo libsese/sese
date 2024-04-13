@@ -140,14 +140,14 @@ endif ()
 if (DEFINED SESE_RECORD_TIME_PATTERN)
     target_compile_definitions(
             Core PRIVATE
-            "SESE_RECORD_TIME_PATTERN=${SESE_RECORD_TIME_PATTERN}"
+            "SESE_RECORD_TIME_PATTERN=\"${SESE_RECORD_TIME_PATTERN}\""
     )
 endif ()
 
 if (DEFINED SESE_RECORD_TEXT_PATTERN)
     target_compile_definitions(
             Core PRIVATE
-            "SESE_RECORD_TEXT_PATTERN=${SESE_RECORD_TEXT_PATTERN}"
+            "SESE_RECORD_TEXT_PATTERN=\"${SESE_RECORD_TEXT_PATTERN}\""
     )
 endif ()
 
