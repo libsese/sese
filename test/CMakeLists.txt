@@ -79,7 +79,7 @@ if (SESE_DB_USE_SQLITE)
             ./TestDB/TestSqliteTransaction.cpp
             ./TestDB/TestSqliteMetadata.cpp
     )
-    target_compile_definitions(AllTestsInMain PRIVATE -DPATH_TO_DB=\"${PROJECT_SOURCE_DIR}/docker/tmp/db_test.db\")
+    target_compile_definitions(AllTestsInMain PRIVATE "-DPATH_TO_DB=\"${PROJECT_SOURCE_DIR}/build/db_test.db\"")
 endif ()
 
 # TestMaria

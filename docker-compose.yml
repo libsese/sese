@@ -11,15 +11,7 @@ services:
         ports:
             - '127.0.0.1:18806:3306'
         volumes:
-            - ./mysql_dump.sql:/docker-entrypoint-initdb.d/mysql_dump.sql:ro
-    sqlite:
-        build:
-            context: .
-            dockerfile: sqlite.dockerfile
-        command:
-            - '/root/docker-entrypoint.sh'
-        volumes:
-            - './tmp:/tmp'
+            - ./scripts/mysql_dump.sql:/docker-entrypoint-initdb.d/mysql_dump.sql:ro
     postgresql:
         image: postgres
         environment:
@@ -28,4 +20,4 @@ services:
         ports:
             - '127.0.0.1:18080:5432'
         volumes:
-            - ./postgres_dump.sql:/docker-entrypoint-initdb.d/postgres_dump.sql:ro
+            - ./scripts/postgres_dump.sql:/docker-entrypoint-initdb.d/postgres_dump.sql:ro

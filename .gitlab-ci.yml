@@ -1,28 +1,33 @@
-image: ubuntu:22.04
-
 stages:
+  - prebuild
   - test
   - deploy
 
-before_script:
-  - apt update -q && apt install python3 python3-pip sqlite3 docker.io docker-compose -yq
-  - ./scripts/install_ubuntu_deps.sh
-  - pip3 install -r ./requirements.txt
+prebuild:
+  stage: prebuild
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    - docker login reg.mikumikumi.xyz
+    - docker build -t reg.mikumikumi.xyz/libsese/sese-core .
+    - docker push reg.mikumikumi.xyz/libsese/sese-core
 
 test:
   stage: test
+  image: reg.mikumikumi.xyz/libsese/sese-core
   script:
     # config cmake project
     - cmake -Bbuild/linux-release -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
     - cmake --build build/linux-release -- -j 2
     # restore sqlite database
-    - mkdir docker/tmp && sqlite3 docker/tmp/db_test.db < docker/sqlite_dump.sql
-    # setup services
-    - docker-compose -f docker/docker-compose.yml up -d mariadb postgresql && sleep 5
+    - sqlite3 build/db_test.db < docker/sqlite_dump.sql
+    # setup service
+    - docker-compose up -d
     # run tests
     - ./build/linux-release/test/AllTestsInMain
     # shutdown service
-    - docker-compose -f docker/docker-compose.yml down
+    - docker-compose down
     # make coverage reposts
     - mkdir -p build/coverage
     - gcovr --config gcovr-cobertura.cfg

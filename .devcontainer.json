@@ -1,5 +1,5 @@
 {
-    "name": "dev-default-config",
+    "name": "Standard config",
     "build": {
         "dockerfile": "dockerfile"
     },
