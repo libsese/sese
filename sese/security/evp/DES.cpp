@@ -2,11 +2,12 @@
 #include <sese/security/evp/DES.h>
 
 #include <openssl/evp.h>
+#include <openssl/err.h>
 
 #define CTX static_cast<EVP_CIPHER_CTX *>(this->ctx)
 
 inline auto switchCipher(sese::security::evp::DESEncrypter::Type type) {
-    using sese::security::evp::DESEncrypter::Type;
+    using Type = sese::security::evp::DESEncrypter::Type;
     switch (type) {
         case Type::ECB:
         default:

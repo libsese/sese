@@ -41,13 +41,13 @@ public:
     /// @param in 输入缓冲区指针
     /// @param in_len 输入缓存区的大小
     /// @return 返回处理的字节数，失败返回负数
-    virtual int update(void *out, int &out_len, const void *in, int in_len) const noexcept;
+    virtual int update(void *out, int &out_len, const void *in, int in_len) const noexcept = 0;
 
     /// 处理最后的数据
     /// @param out 输出缓冲区指针
     /// @param out_len 输出缓存的字节数
     /// @return 返回处理的字节数，失败返回负数
-    virtual int final(void *out, int &out_len) const noexcept;
+    virtual int final(void *out, int &out_len) const noexcept = 0;
 };
 
 
