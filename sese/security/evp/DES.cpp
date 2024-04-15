@@ -1,3 +1,13 @@
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#elif defined(_MSC_VER)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 #include <array>
 #include <sese/security/evp/DES.h>
 
@@ -104,4 +114,8 @@ int sese::security::evp::DESDecrypter::final(void *out, int &out_len) const noex
     return EVP_DecryptFinal(CTX, static_cast<unsigned char *>(out), &out_len);
 }
 
-
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif

@@ -18,7 +18,7 @@
 
 [中文总览](README.zh_CN.md)
 
-SESE-CODE is a cross-platform foundational project that utilizes the C++17 language standard, employs CMake as its build
+SESE-CORE is a cross-platform foundational project that utilizes the C++17 language standard, employs CMake as its build
 system, and integrates vcpkg as the package manager. It has versatile tools, spanning from system-level development to
 web development and beyond.
 

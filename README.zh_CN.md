@@ -16,7 +16,7 @@
 
 ## SESE-CORE
 
-SESE-CODE 是一个使用 C++17 语言标准、以 CMake 作为构建系统、以 vcpkg 作为包管理器的跨平台基础项目，可以用于系统基础开发以及
+SESE-CORE 是一个使用 C++17 语言标准、以 CMake 作为构建系统、以 vcpkg 作为包管理器的跨平台基础项目，可以用于系统基础开发以及
 Web 开发等。
 
 项目目前支持在 x86_64 架构下的 Windows、macOS 以及各个 Linux 发行版上运行， ARM 架构尚未进行测试。
