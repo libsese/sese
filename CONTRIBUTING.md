@@ -9,13 +9,13 @@
 对于 debian/ubuntu:
 
 ```bash
-apt build-dep .
+./scripts/install_ubuntu_deps.sh
 ```
 
 对于 macOS:
 
 ```bash
-brew install openssl libarchive googletest sqlite3 mysql-client mysql libpq asio
+./scripts/install_drawin_deps.sh
 ```
 
 通常的配置步骤:
@@ -29,7 +29,7 @@ brew install openssl libarchive googletest sqlite3 mysql-client mysql libpq asio
 
 - 配置 CMake
 
-  注：使用原生包管理则无需配置 vcpkg 和指定 CMAKE_TOOLCHAIN_FILE。
+  注：使用原生包管理则无需配置 vcpkg 和指定 CMAKE_TOOLCHAIN_FILE，只需要设置 SESE_USE_NATIVE_MANAGER=ON 即可。
 
   首先你需要确保你的机器上有配置完成的 vcpkg 工具。
   配置 CMake 有几种方案可以选择，如果你在使用 vscode，你可能需要安装 CMake 插件并在项目配置中添加选项
@@ -56,9 +56,11 @@ brew install openssl libarchive googletest sqlite3 mysql-client mysql libpq asio
 
 ## 预设的开发环境
 
-项目在 .vscode 下预设了两个可用于 windows 和 unix-like 的 vscode 工作区文件，在依赖齐全的情况下基本做到开箱可用。
+~~项目在 .vscode 下预设了两个可用于 windows 和 unix-like 的 vscode 工作区文件，在依赖齐全的情况下基本做到开箱可用。~~
 
-对于喜欢使用开发容器的人来说，项目同样提供了开发容器，只需在容器内启用 unix 工作区即可。
+预设配置现在应该参考 **CMakePresets.json**，如果你使用的 CMake 或 IDE 版本过低，你可能需要手动配置这些开发选项。
+
+对于喜欢使用开发容器的人来说，项目同样提供了开发容器，~~只需在容器内启用 unix 工作区即可~~。
 
 值得注意的是，在 macOS 中你可能需要重新指定工作区中 CMake 生成器的位置，因为使用 brew 安装的 ninja 通常不在 /usr/bin/ninja。使用
 

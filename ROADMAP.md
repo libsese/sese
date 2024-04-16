@@ -5,4 +5,4 @@
 - [ ] Crypto Wrapper(RSE, SM4 etc)
 - [ ] Better web-related support
 - [ ] Improve test coverage
-- [ ] Gitlab workflow improvements
+- [x] Gitlab workflow improvements
