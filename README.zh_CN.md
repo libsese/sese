@@ -1,4 +1,4 @@
-<h1 align="center">Sese Library</h1>
+<h1 align="center">Sese Framework</h1>
 <div align="center">
 <img src="logo.svg" width="128" height="128" alt="logo"/>
 </div>
