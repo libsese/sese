@@ -22,25 +22,18 @@ inline auto switchCipher(sese::security::evp::DESEncrypter::Type type) {
         case Type::ECB:
         default:
             return EVP_des_ecb();
-            break;
         case Type::CBC:
             return EVP_des_cbc();
-            break;
         case Type::CFB1:
             return EVP_des_cfb1();
-            break;
         case Type::CFB8:
             return EVP_des_cfb8();
-            break;
         case Type::CFB64:
             return EVP_des_cfb64();
-            break;
         case Type::EDE:
             return EVP_des_ede();
-            break;
         case Type::EDE3:
             return EVP_des_ede3();
-            break;
     }
 }
 

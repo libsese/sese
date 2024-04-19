@@ -5,7 +5,8 @@
 
 #pragma once
 
-#include <sese/security/evp/Context.h>
+#include <sese/Config.h>
+#include <sese/security/evp/Crypter.h>
 
 namespace sese::security::evp {
 
