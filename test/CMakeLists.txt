@@ -79,7 +79,17 @@ if (SESE_DB_USE_SQLITE)
             ./TestDB/TestSqliteTransaction.cpp
             ./TestDB/TestSqliteMetadata.cpp
     )
-    target_compile_definitions(AllTestsInMain PRIVATE -DPATH_TO_DB=\"${PROJECT_SOURCE_DIR}/docker/tmp/db_test.db\")
+    if (DEFINED SESE_DB_SQLITE_CONNECTION_STRING)
+        target_compile_definitions(
+                AllTestsInMain PRIVATE
+                "SQLITE_CONNECTION_STRING=\"${SESE_DB_SQLITE_CONNECTION_STRING}\""
+        )
+    else ()
+        target_compile_definitions(
+                AllTestsInMain PRIVATE
+                "PATH_TO_DB=\"${PROJECT_SOURCE_DIR}/build/db_test.db\""
+        )
+    endif ()
 endif ()
 
 # TestMaria
@@ -90,6 +100,12 @@ if (SESE_DB_USE_MARIADB)
             ./TestDB/TestMariaTransaction.cpp
             ./TestDB/TestMariaMetadata.cpp
     )
+    if (DEFINED SESE_DB_MYSQL_CONNECTION_STRING)
+        target_compile_definitions(
+                AllTestsInMain PRIVATE
+                "MYSQL_CONNECTION_STRING=\"${SESE_DB_MYSQL_CONNECTION_STRING}\""
+        )
+    endif ()
 endif ()
 
 # TestPostgres
@@ -100,4 +116,10 @@ if (SESE_DB_USE_POSTGRES)
             ./TestDB/TestPostgresTransaction.cpp
             ./TestDB/TestPostgresMetadata.cpp
     )
+    if (DEFINED SESE_DB_PSQL_CONNECTION_STRING)
+        target_compile_definitions(
+                AllTestsInMain PRIVATE
+                "PSQL_CONNECTION_STRING=\"${SESE_DB_PSQL_CONNECTION_STRING}\""
+        )
+    endif ()
 endif ()

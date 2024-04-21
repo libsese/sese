@@ -49,6 +49,7 @@ add_library(Core
         ${PUBLIC_SRC}
         ${INTERNAL_SRC}
         Config.h
+        Util.h
 )
 
 target_link_libraries(Core PUBLIC Plugin)
@@ -140,14 +141,14 @@ endif ()
 if (DEFINED SESE_RECORD_TIME_PATTERN)
     target_compile_definitions(
             Core PRIVATE
-            "SESE_RECORD_TIME_PATTERN=${SESE_RECORD_TIME_PATTERN}"
+            "SESE_RECORD_TIME_PATTERN=\"${SESE_RECORD_TIME_PATTERN}\""
     )
 endif ()
 
 if (DEFINED SESE_RECORD_TEXT_PATTERN)
     target_compile_definitions(
             Core PRIVATE
-            "SESE_RECORD_TEXT_PATTERN=${SESE_RECORD_TEXT_PATTERN}"
+            "SESE_RECORD_TEXT_PATTERN=\"${SESE_RECORD_TEXT_PATTERN}\""
     )
 endif ()
 

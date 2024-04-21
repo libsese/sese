@@ -29,4 +29,5 @@ public:
 
     virtual size_t getLength() noexcept = 0;
 };
+
 } // namespace sese::security::evp

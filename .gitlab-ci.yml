@@ -1,34 +1,74 @@
-image: ubuntu:22.04
-
 stages:
+  - build
   - test
   - deploy
 
-before_script:
-  - apt update -q && apt install python3 python3-pip sqlite3 docker.io docker-compose -yq
-  - ./scripts/install_ubuntu_deps.sh
-  - pip3 install -r ./requirements.txt
+docker_build:
+  stage: build
+  image: reg.mikumikumi.xyz/base/kaniko-builder
+  variables:
+    BUILD_DOCKERFILE: dockerfile
+  script:
+    - build
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
+        - dockerfile
+        - requirements.txt
+        - scripts/install_ubuntu_deps.sh
+        - scripts/mysql_dump.sql
+        - scripts/postgres_dump.sql
+        - scripts/sqlite_dump.sql
+      when: never
 
-test:
+docker_build_manual:
+  stage: build
+  image: reg.mikumikumi.xyz/base/kaniko-builder
+  when: manual
+  variables:
+    BUILD_DOCKERFILE: dockerfile
+  script:
+    - build
+
+gtest:
   stage: test
+  image: $CI_REGISTRY/libsese/sese-core:latest
+  allow_failure: true
+  when: always
   script:
     # config cmake project
-    - cmake -Bbuild/linux-release -DCMAKE_BUILD_TYPE=Release -DSESE_BUILD_TEST=ON -DSESE_USE_NATIVE_MANAGER=ON -DSESE_DB_USE_MARIADB=ON -DSESE_DB_USE_POSTGRES=ON -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
+    - cmake
+      -G Ninja
+      -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja
+      -DCMAKE_C_COMPILER=/usr/bin/gcc
+      -DCMAKE_CXX_COMPILER=/usr/bin/g++
+      -Bbuild/linux-release
+      -DCMAKE_BUILD_TYPE=Release
+      -DSESE_BUILD_TEST=ON
+      -DSESE_USE_NATIVE_MANAGER=ON
+      -DSESE_USE_ARCHIVE=ON
+      -DSESE_DB_USE_SQLITE=ON
+      -DSESE_DB_USE_MARIADB=ON
+      -DSESE_DB_USE_POSTGRES=ON
+      -DSESE_DB_SQLITE_CONNECTION_STRING="/tmp/db_test.db"
+      -DSESE_DB_MYSQL_CONNECTION_STRING="host=127.0.0.1\;port=3306\;user=root\;pwd=libsese\;db=db_test\;"
+      -DSESE_DB_PSQL_CONNECTION_STRING="host=127.0.0.1\;port=5432\;user=root\;pwd=libsese\;db=db_test\;"
+      -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
     - cmake --build build/linux-release -- -j 2
-    # restore sqlite database
-    - mkdir docker/tmp && sqlite3 docker/tmp/db_test.db < docker/sqlite_dump.sql
-    # setup services
-    - docker-compose -f docker/docker-compose.yml up -d mariadb postgresql && sleep 5
+    # setup service
+    - service mariadb start
+    - service postgresql start
+    - sleep 5
     # run tests
-    - ./build/linux-release/test/AllTestsInMain
+    - build/linux-release/test/AllTestsInMain
     # shutdown service
-    - docker-compose -f docker/docker-compose.yml down
+    - service mariadb stop
+    - service postgresql stop
     # make coverage reposts
     - mkdir -p build/coverage
     - gcovr --config gcovr-cobertura.cfg
   coverage: /^\s*lines:\s*\d+.\d+\%/
   artifacts:
-    when: on_success
     reports:
       coverage_report:
         coverage_format: cobertura
@@ -36,12 +76,14 @@ test:
 
 pages:
   stage: deploy
+  image: $CI_REGISTRY/libsese/sese-core:latest
   script:
-    - apt update -q && apt install doxygen -yq
     - doxygen
-    - mv -r build/html public
+    - mv build/html public
   artifacts:
     paths:
       - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+    - when: manual
