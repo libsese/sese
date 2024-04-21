@@ -25,6 +25,8 @@ var namespacesese_1_1io =
     [ "RandomInputStream", "classsese_1_1io_1_1_random_input_stream.html", "classsese_1_1io_1_1_random_input_stream" ],
     [ "Stream", "classsese_1_1io_1_1_stream.html", "classsese_1_1io_1_1_stream" ],
     [ "File", "namespacesese_1_1io.html#aac55c52558f8e10dfc38fda6064e8b09", null ],
+    [ "InputBuffer", "namespacesese_1_1io.html#a1cba1d99bbe1c9ac13e6c96ac6a72157", null ],
+    [ "OutputBuffer", "namespacesese_1_1io.html#a7d13d4976930e9c9c0b2d80540922c50", null ],
     [ "StreamReader", "namespacesese_1_1io.html#a037f8cc21109f7d83bcc6cb8677a4316", null ],
     [ "WStreamReader", "namespacesese_1_1io.html#a798f7fbfce61f52167b91e16a452cf1e", null ]
 ];

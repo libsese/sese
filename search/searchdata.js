@@ -1,6 +1,6 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefghijklmnopqrstuvwxyz~内列单平弃构测自",
+  0: "_abcdefghijklmnopqrstuvwxyz~关内列单平弃构测自",
   1: "abcdefghijklmnopqrstuvwxy",
   2: "s",
   3: "abcdefghijklmnopqrstuvwxyz",
@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "abcdefghilmnoprstuvwz",
   9: "inst",
   10: "_abcdefghilmnprstvwx",
-  11: "bcs内列平弃"
+  11: "bcs关内列平弃"
 };
 
 var indexSectionNames =
