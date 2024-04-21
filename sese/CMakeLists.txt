@@ -49,6 +49,7 @@ add_library(Core
         ${PUBLIC_SRC}
         ${INTERNAL_SRC}
         Config.h
+        Util.h
 )
 
 target_link_libraries(Core PUBLIC Plugin)

@@ -1,3 +1,9 @@
+/// @file Crypter.h
+/// @brief 加解器接口
+/// @author kaoru
+/// @date 2024年04月22日
+/// @deprecated 请直接使用 OpenSSL 对应的 EVP 方法
+
 #pragma once
 
 #include <sese/io/InputBuffer.h>
@@ -30,15 +36,8 @@ struct CrypterContext {
     io::InputBuffer key;
     io::InputBuffer vector;
     /// 加密器指针，请勿手动修改该属性
-    void *crypter_pointer{};
+    const void *crypter_pointer{};
 };
-
-/// 为现有的加密器上下文选择加密器并验证密钥和向量是否合规
-/// @todo 待实现以及补充文档
-/// @param algorithm 算法配置选项
-/// @param crypter_context 欲初始化的加密器上下文
-/// @return 是否初始化成功
-bool initCrypterContext(const std::string &algorithm, const CrypterContext::Ptr &crypter_context);
 
 /// @brief 解密器
 class Decrypter final : public Crypter {

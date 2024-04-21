@@ -2,6 +2,8 @@
 
 #include <openssl/evp.h>
 
+// GCOVR_EXCL_START
+
 using namespace sese::security::evp;
 
 Decrypter::Decrypter(const CrypterContext::Ptr &crypter_context) : crypter_context_(crypter_context) {
@@ -9,7 +11,7 @@ Decrypter::Decrypter(const CrypterContext::Ptr &crypter_context) : crypter_conte
 
     EVP_DecryptInit(
             static_cast<EVP_CIPHER_CTX *>(ctx_),
-            static_cast<EVP_CIPHER *>(crypter_context_->crypter_pointer),
+            static_cast<const EVP_CIPHER *>(crypter_context_->crypter_pointer),
             reinterpret_cast<const unsigned char *>(crypter_context_->key.getBuffer()),
             reinterpret_cast<const unsigned char *>(crypter_context_->vector.getBuffer())
     );
@@ -42,7 +44,7 @@ Encrypter::Encrypter(const CrypterContext::Ptr &crypter_context) : crypter_conte
 
     EVP_EncryptInit(
             static_cast<EVP_CIPHER_CTX *>(ctx_),
-            static_cast<EVP_CIPHER *>(crypter_context_->crypter_pointer),
+            static_cast<const EVP_CIPHER *>(crypter_context_->crypter_pointer),
             reinterpret_cast<const unsigned char *>(crypter_context_->key.getBuffer()),
             reinterpret_cast<const unsigned char *>(crypter_context_->vector.getBuffer())
     );
@@ -69,3 +71,5 @@ int Encrypter::final(void *out, int &out_len) const noexcept {
 Encrypter::~Encrypter() {
     EVP_CIPHER_CTX_free(static_cast<EVP_CIPHER_CTX *>(ctx_));
 }
+
+// GCOVR_EXCL_STOP
