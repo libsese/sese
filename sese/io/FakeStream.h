@@ -10,7 +10,11 @@
 
 #include "sese/Config.h"
 #include "sese/io/Closeable.h"
+#include "sese/io/PeekableStream.h"
 #include "sese/io/Stream.h"
+
+#include <istream>
+#include <ostream>
 
 namespace sese::io {
 
@@ -38,6 +42,36 @@ class ClosableFakeStream : public FakeStream<T>, public sese::io::Closeable {
 public:
     explicit ClosableFakeStream(T *t) : FakeStream<T>(t) {}
     void close() override { this->t->close(); }
+};
+
+/// @brief 标准库输入包装流
+class StdInputStreamWrapper final
+    : public InputStream,
+      public PeekableStream {
+public:
+    explicit StdInputStreamWrapper(std::istream &stream);
+
+    int64_t read(void *buffer, size_t length) override;
+
+    int64_t peek(void *buffer, size_t length) override;
+
+    int64_t trunc(size_t length) override;
+
+private:
+    std::istream &stream;
+};
+
+/// @brief 标准库输出包装流
+class StdOutputStreamWrapper final
+    : public OutputStream {
+public:
+    explicit StdOutputStreamWrapper(std::ostream &stream);
+
+    int64_t write(const void *buffer, size_t length) override;
+
+private:
+    std::ostream &stream;
+    std::streamoff latest;
 };
 
 // GCOVR_EXCL_STOP
