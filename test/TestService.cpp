@@ -225,9 +225,15 @@ TEST(TestService, TimerableService_V2) {
 }
 
 #include <sese/service/http/HttpService_V3.h>
+#include <sese/security/SSLContextBuilder.h>
 
 TEST(TestHttpService, HttpHttpServiceImpl_V3) {
+    auto ssl = sese::security::SSLContextBuilder::SSL4Server();
+    ssl->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
+    ssl->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
+
     auto serv = sese::service::http::v3::HttpSerivce::create();
+    serv->setSSLContext(ssl);
     serv->setName("HttpServiceImpl_V3");
     serv->setAddress(sese::net::IPv4Address::localhost(9956));
     ASSERT_TRUE(serv->startup()) << serv->getLastError();
