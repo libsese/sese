@@ -67,6 +67,11 @@ class StdOutputStreamWrapper final
 public:
     explicit StdOutputStreamWrapper(std::ostream &stream);
 
+    /// 向标准库输入流中写入缓存
+    /// @param buffer 写入缓存
+    /// @param length 写入缓存大小
+    /// @warning 除非你很明白你在做什么，否则不要使用这个函数，请确保你传入的 stream.tellp() 不为 -1，否则将无法正确返回实际写入字节数
+    /// @return 实际写入大小
     int64_t write(const void *buffer, size_t length) override;
 
 private:
