@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sese/service/http/HttpService_V3.h>
+#include <sese/io/ByteBuilder.h>
 
 #include <asio.hpp>
 
@@ -12,13 +13,14 @@ class HttpServiceImpl;
 struct HttpConnection {
     using Ptr = std::shared_ptr<HttpConnection>;
 
-    HttpConnection(const std::shared_ptr<HttpServiceImpl> &servive, asio::io_context &context);
+    HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
 
     net::http::Request request;
     net::http::Response response;
 
     asio::ip::tcp::socket socket;
     // void *ssl;
+    io::ByteBuilder parse_buffer;
     asio::streambuf buffer_reader;
     asio::streambuf buffer_writer;
 

@@ -4,6 +4,7 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/io/FakeStream.h>
 #include <sese/Util.h>
+#include <sese/record/Marco.h>
 
 using namespace sese::internal::service::http::v3;
 
@@ -18,15 +19,22 @@ HttpServiceImpl::HttpServiceImpl()
     thread = std::make_unique<Thread>(
             [this] {
                 this->handeAccept();
+                this->io_context.run();
             },
             "HttpServiveAcceptor"
     );
 }
 
 bool HttpServiceImpl::startup() {
-    auto addr = internal::net::convert(address);
+    auto addr = net::convert(address);
     auto endpoint = asio::ip::tcp::endpoint(addr, address->getPort());
-    error = acceptor.bind(endpoint, error);
+
+    error = acceptor.open(
+            addr.is_v4()
+                    ? asio::basic_socket_acceptor<asio::ip::tcp>::protocol_type::v4()
+                    : asio::basic_socket_acceptor<asio::ip::tcp>::protocol_type::v6(),
+            error
+    );
     if (error) return false;
 
     error = acceptor.set_option(asio::socket_base::reuse_address(true), error);
@@ -39,6 +47,7 @@ bool HttpServiceImpl::startup() {
     if (error) return false;
 
     thread->start();
+
     return true;
 }
 
@@ -57,18 +66,19 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
     conn->response.set("server", this->serv_name);
 }
 
-
 void HttpServiceImpl::handeAccept() {
     auto conn = std::make_shared<HttpConnection>(shared_from_this(), io_context);
     acceptor.async_accept(
             conn->socket,
-            [conn](const asio::error_code &code) {
-
+            [this, conn](const asio::error_code &code) {
+                SESE_INFO("CONNECTED");
+                conn->readNextLine(conn);
+                this->handeAccept();
             }
     );
 }
 
-HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &servive, asio::io_context &context)
+HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
     : socket(context),
       expect_length(0),
       real_length(0),
@@ -76,15 +86,21 @@ HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &servive, 
 }
 
 void HttpConnection::readNextLine(const HttpConnection::Ptr &conn) {
-    asio::async_read_until(conn->socket, conn->buffer_reader, "\r\n", [conn](const asio::error_code &error, std::size_t size) {
-        if (size == 0) {
-            auto std_input = std::istream{&conn->buffer_reader};
-            auto stream = io::StdInputStreamWrapper(std_input);
-            auto parse_status = sese::net::http::HttpUtil::recvRequest(&stream, &conn->request);
-            conn->buffer_reader.consume(conn->buffer_reader.size());
+    asio::async_read_until(conn->socket, conn->buffer_reader, "\r\n", [conn](const asio::error_code &error, std::size_t bytes_transferred) {
+        auto std_input = std::istream{&conn->buffer_reader};
+        auto stream = io::StdInputStreamWrapper(std_input);
+        streamMove(&conn->parse_buffer, &stream, bytes_transferred);
+        if (bytes_transferred == 2) {
+            SESE_INFO("PARSING HEADER");
+            auto parse_status = sese::net::http::HttpUtil::recvRequest(&conn->parse_buffer, &conn->request);
+            conn->parse_buffer.freeCapacity();
             conn->expect_length = toNumber(conn->request.get("content-length", "0"));
             conn->real_length = 0;
-            readBody(conn);
+            if (conn->expect_length != 0) {
+                readBody(conn);
+            } else {
+                handleRequest(conn);
+            }
         } else {
             readNextLine(conn);
         }
@@ -92,7 +108,10 @@ void HttpConnection::readNextLine(const HttpConnection::Ptr &conn) {
 }
 
 void HttpConnection::readBody(const HttpConnection::Ptr &conn) {
-    asio::async_read(conn->socket, conn->buffer_reader, [conn](asio::error_code &code, std::size_t bytes_transferred) {
+    asio::async_read(conn->socket, conn->buffer_reader, [conn](const asio::error_code &code, std::size_t bytes_transferred) {
+        auto std_input = std::istream{&conn->buffer_reader};
+        auto stream = io::StdInputStreamWrapper(std_input);
+        streamMove(&conn->request.getBody(), &stream, bytes_transferred);
         conn->real_length += bytes_transferred;
         if (conn->expect_length == conn->real_length) {
             handleRequest(conn);
@@ -115,18 +134,21 @@ void HttpConnection::handleRequest(const HttpConnection::Ptr &conn) {
 }
 
 void HttpConnection::writeHeader(const HttpConnection::Ptr &conn) {
-    asio::async_write(conn->socket, conn->buffer_writer, [conn](asio::error_code &code, std::size_t bytes_transferred) {
+    asio::async_write(conn->socket, conn->buffer_writer, [conn](const asio::error_code &code, std::size_t bytes_transferred) {
         conn->real_length += bytes_transferred;
         if (conn->expect_length == conn->real_length) {
-            conn->buffer_writer.consume(conn->buffer_writer.size());
             conn->expect_length = conn->response.getBody().getLength();
             conn->real_length = 0;
 
-            auto std_output = std::ostream{&conn->buffer_writer};
-            auto stream = io::StdOutputStreamWrapper(std_output);
-            streamMove(&stream, &conn->response.getBody(), conn->expect_length);
+            if (conn->expect_length != 0) {
+                auto std_output = std::ostream{&conn->buffer_writer};
+                auto stream = io::StdOutputStreamWrapper(std_output);
+                streamMove(&stream, &conn->response.getBody(), conn->expect_length);
 
-            writeBody(conn);
+                writeBody(conn);
+            } else {
+                // todo: keepalive
+            }
         } else {
             writeHeader(conn);
         }
@@ -134,13 +156,13 @@ void HttpConnection::writeHeader(const HttpConnection::Ptr &conn) {
 }
 
 void HttpConnection::writeBody(const HttpConnection::Ptr &conn) {
-    asio::async_write(conn->socket, conn->buffer_writer, [conn](asio::error_code &code, std::size_t bytes_transferred) {
+    asio::async_write(conn->socket, conn->buffer_writer, [conn](const asio::error_code &code, std::size_t bytes_transferred) {
         conn->real_length += bytes_transferred;
         if (conn->expect_length == conn->real_length) {
             conn->buffer_writer.consume(conn->buffer_writer.size());
             conn->expect_length = 0;
             conn->real_length = 0;
-            // done
+            // todo: keepalive
         } else {
             writeBody(conn);
         }
