@@ -8,11 +8,11 @@
 
 namespace sese::service::http::v3 {
 
-class HttpSerivce : public Service {
+class HttpService : public Service {
 public:
-    using Ptr = std::shared_ptr<HttpSerivce>;
+    using Ptr = std::shared_ptr<HttpService>;
 
-    static HttpSerivce::Ptr create();
+    static HttpService::Ptr create();
 
     void setAddress(const net::IPAddress::Ptr &address) {
         this->address = address;

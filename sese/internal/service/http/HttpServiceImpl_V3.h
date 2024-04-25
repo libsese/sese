@@ -47,7 +47,7 @@ struct HttpConnection final {
     static void writeBody(const HttpConnection::Ptr &conn);
 };
 
-class HttpServiceImpl final : public sese::service::http::v3::HttpSerivce, public std::enable_shared_from_this<HttpServiceImpl> {
+class HttpServiceImpl final : public sese::service::http::v3::HttpService, public std::enable_shared_from_this<HttpServiceImpl> {
 public:
     HttpServiceImpl();
 

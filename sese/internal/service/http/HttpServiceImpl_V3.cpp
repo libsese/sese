@@ -25,8 +25,8 @@ bool HttpServiceImpl::startup() {
     auto addr = net::convert(address);
     auto endpoint = asio::ip::tcp::endpoint(addr, address->getPort());
 
-    if (HttpSerivce::ssl_context) {
-        ssl_context = net::convert(HttpSerivce::ssl_context);
+    if (HttpService::ssl_context) {
+        ssl_context = net::convert(HttpService::ssl_context);
     }
 
     error = acceptor.open(
@@ -72,7 +72,7 @@ void HttpServiceImpl::handeAccept() {
             conn->socket,
             [this, conn](const asio::error_code &error) {
                 SESE_INFO("CONNECTED");
-                if (HttpSerivce::ssl_context) {
+                if (HttpService::ssl_context) {
                     conn->stream = std::make_unique<asio::ssl::stream<asio::ip::tcp::socket &>>(conn->socket, ssl_context.value());
                     conn->stream->async_handshake(
                             asio::ssl::stream_base::server,

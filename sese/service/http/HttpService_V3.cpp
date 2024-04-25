@@ -3,6 +3,6 @@
 
 #include <memory>
 
-sese::service::http::v3::HttpSerivce::Ptr sese::service::http::v3::HttpSerivce::create() {
+sese::service::http::v3::HttpService::Ptr sese::service::http::v3::HttpService::create() {
     return std::make_shared<internal::service::http::v3::HttpServiceImpl>();
 }

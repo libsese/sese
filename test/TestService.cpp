@@ -232,7 +232,7 @@ TEST(TestHttpService, HttpHttpServiceImpl_V3) {
     ssl->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
     ssl->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
 
-    auto serv = sese::service::http::v3::HttpSerivce::create();
+    auto serv = sese::service::http::v3::HttpService::create();
     serv->setSSLContext(ssl);
     serv->setName("HttpServiceImpl_V3");
     serv->setAddress(sese::net::IPv4Address::localhost(9956));
