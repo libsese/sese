@@ -6,6 +6,11 @@
 #include <unistd.h>
 #endif
 
+int64_t sese::toInteger(const std::string &string, int radix) {
+    char *end;
+    return std::strtol(string.c_str(), &end, radix);
+}
+
 bool sese::isSpace(char ch) noexcept {
     auto p = SPACE_CHARS;
     while (*p != '\0') {

@@ -8,11 +8,6 @@
 
 using namespace sese::internal::service::http::v3;
 
-inline auto toNumber(const std::string &str) {
-    char *end;
-    return static_cast<size_t>(std::strtol(str.c_str(), &end, 10));
-}
-
 HttpServiceImpl::HttpServiceImpl()
     : io_context(),
       ssl_context(std::nullopt),
@@ -136,7 +131,7 @@ void HttpConnection::readHeader(const HttpConnection::Ptr &conn) {
                 return;
             }
 
-            conn->expect_length = toNumber(conn->request.get("content-length", "0"));
+            conn->expect_length = toInteger(conn->request.get("content-length", "0"));
             conn->real_length = node->getReadableSize();
             if (conn->real_length) {
                 // 部分 body
@@ -162,7 +157,7 @@ void HttpConnection::readHeader(const HttpConnection::Ptr &conn) {
                     return;
                 }
                 conn->parse_buffer.freeCapacity();
-                conn->expect_length = toNumber(conn->request.get("content-length", "0"));
+                conn->expect_length = toInteger(conn->request.get("content-length", "0"));
                 conn->real_length = 0;
                 if (conn->expect_length != 0) {
                     readBody(conn);

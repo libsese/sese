@@ -21,6 +21,12 @@ namespace sese {
 // 使用预声明减少头文件引用
 enum class Level;
 
+/// 无视错误的整形转换函数
+/// @param string 表示整形的字符串
+/// @param radix 进制
+/// @return 整形
+int64_t toInteger(const std::string &string, int radix = 10);
+
 /**
  * @brief 字符比较器
  */
