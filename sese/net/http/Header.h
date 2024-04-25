@@ -40,8 +40,9 @@ public:
     inline std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
     inline std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
 
-    inline void clear() { headers.clear(); }
-    [[nodiscard]] inline bool empty() const { return headers.empty(); }
+    void clear() { headers.clear(); }
+    [[nodiscard]] bool empty() const { return headers.empty(); }
+    [[nodiscard]] size_t size() const { return headers.size(); }
 
     /// 获取当前 Cookie 映射集
     /// \retval nullptr 当前映射集为空

@@ -43,16 +43,27 @@ public:
     [[nodiscard]] RequestType getType() const { return type; }
     void setType(RequestType request_type) { this->type = request_type; }
 
-    [[nodiscard]] const std::string &getUrl() const { return url; }
-    void setUrl(const std::string &request_url) { this->url = request_url; }
+    [[nodiscard]] const std::string &getUri() const { return uri; }
+    void setUri(const std::string &uri) { this->uri = uri; }
+
+    [[nodiscard]] const std::string &getQueryArg(const std::string &key, const std::string &default_value) const;
+    void setQueryArg(const std::string &key, const std::string &value);
+    [[nodiscard]] size_t queryArgsSize() const { return query_args.size(); }
+    [[nodiscard]] bool queryArgsEmpty() const { return query_args.empty(); }
+    void queryArgsClear() { return query_args.clear(); }
 
     [[nodiscard]] HttpVersion getVersion() const { return version; }
     void setVersion(HttpVersion new_version) { this->version = new_version; }
 
+    [[nodiscard]] std::string getUrl() const;
+    void setUrl(const std::string &request_url);
+
 protected:
     RequestType type = RequestType::GET;
-    std::string url = "/";
+    std::string uri = "/";
     HttpVersion version = HttpVersion::VERSION_1_1;
+
+    std::map<std::string, std::string> query_args;
 };
 
 } // namespace sese::net::http

@@ -105,7 +105,7 @@ void AbstractStringBuffer::expansion(size_t new_size) noexcept {
 
 std::string AbstractStringBuffer::toString() {
     auto view = std::string_view(this->buffer, this->len);
-    return {view.begin(), view.end()}; // GCOVR_EXCL_LINE
+    return std::string{view.begin(), view.end()}; // GCOVR_EXCL_LINE
 }
 
 String AbstractStringBuffer::toSString() {

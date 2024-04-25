@@ -1,5 +1,7 @@
 #include "sese/net/Socket.h"
 #include "sese/record/Marco.h"
+#include "sese/net/http/HeaderBuilder.h"
+#include "sese/net/http/RequestHeader.h"
 
 #include "gtest/gtest.h"
 
@@ -18,7 +20,6 @@ static auto makeRandomPortAddr() {
 }
 
 #include <sese/net/http/UrlHelper.h>
-#include <sese/net/http/QueryString.h>
 
 TEST(TestHttp, UrlHelper_0) {
     sese::net::http::Url info("file:///C:/vcpkg/vcpkg.exe?ssl=enable&token=123456&");
@@ -60,57 +61,35 @@ TEST(TestHttp, UrlHelper_4) {
     EXPECT_EQ(info.getQuery(), "?a=b");
 }
 
-TEST(TestHttp, QueryString_toString_0) {
-    sese::net::http::QueryString q;
-    q.set("ssl", "enable");
-    q.set("user", "root");
-    q.set("pwd", "0x7c00");
-    ASSERT_EQ(q.toString(), "?pwd=0x7c00&ssl=enable&user=root");
+// 测试根目录转义
+TEST(TestHttp, RequestHeader_root) {
+    auto req = net::http::RequestHeader();
+    req.setQueryArg("ssl", "enable");
+    req.setQueryArg("user", "root");
+    req.setQueryArg("pwd", "0x7c00");
+    EXPECT_EQ(req.getUrl(), "/?pwd=0x7c00&ssl=enable&user=root");
 }
 
-TEST(TestHttp, QueryString_toString_1) {
-    sese::net::http::QueryString q;
-    ASSERT_TRUE(q.toString().empty());
+// 测试多级目录转义
+TEST(TestHttp, RequestHeader_dirs) {
+    auto req = net::http::RequestHeader();
+    req.setUri("/你好233/index");
+    EXPECT_EQ(req.getUrl(), "/%E4%BD%A0%E5%A5%BD233/index");
 }
 
-TEST(TestHttp, QueryString_0) {
-    sese::net::http::QueryString q("?ssl=enable&token=123456&uni=ABC%e4%bd%a0%e5%a5%bd%26%3d%2d&");
-    auto enable = q.get("ssl", "disable");
-    auto token = q.get("token", "undef");
-    auto mode = q.get("mode", "undef");
-    auto uni = q.get("uni", "undef");
-    ASSERT_EQ(enable, "enable");
-    ASSERT_EQ(token, "123456");
-    ASSERT_EQ(mode, "undef");
-    ASSERT_EQ(uni, "ABC你好&=-");
-    ASSERT_EQ(q.size(), 3);
-
-    for (decltype(auto) item: q) {
-        SESE_INFO("%s:%s", item.first.c_str(), item.second.c_str());
-    }
+// 查询参数转义
+TEST(TestHttp, RequestHeader_args) {
+    auto req = net::http::RequestHeader();
+    req.setUrl("/?key1=&%E4%BD%A0%E5%A5%BD233=value2");
+    EXPECT_EQ(req.getQueryArg("key1", ""), "");
+    EXPECT_EQ(req.getQueryArg("你好233", ""), "value2");
 }
 
-TEST(TestHttp, QueryString_1) {
-    sese::net::http::QueryString q("?");
-    ASSERT_TRUE(q.empty());
+TEST(TestHttp, RequestHeader_args_error) {
+    auto req = net::http::RequestHeader();
+    EXPECT_NO_THROW(req.setUrl("/?&"));
+    EXPECT_TRUE(req.queryArgsEmpty());
 }
-
-TEST(TestHttp, QueryString_2) {
-    sese::net::http::QueryString q("?key=");
-    ASSERT_TRUE(q.empty());
-}
-
-TEST(TestHttp, QueryString_3) {
-    sese::net::http::QueryString q("?key1=&key2=value2");
-    ASSERT_EQ(q.size(), 1);
-}
-
-TEST(TestHttp, QueryString_4) {
-    sese::net::http::QueryString q("?&");
-    ASSERT_TRUE(q.empty());
-}
-
-#include <sese/net/http/HeaderBuilder.h>
 
 TEST(TestHttp, HeaderBuilder) {
     using namespace sese::net::http;
