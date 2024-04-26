@@ -62,8 +62,13 @@ int HttpServiceImpl::getLastError() {
 }
 
 void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
-    conn->response.setCode(200);
-    conn->response.set("server", this->serv_name);
+    auto iterator = controllers.find(conn->request.getUri());
+    if (iterator == controllers.end()) {
+        conn->response.setCode(404);
+        return;
+    }
+
+    iterator->second(conn->request, conn->response);
 }
 
 void HttpServiceImpl::handeAccept() {
@@ -215,7 +220,7 @@ void HttpConnection::handleRequest(const HttpConnection::Ptr &conn) {
         sese::net::http::HttpUtil::sendResponse(&conn->dynamic_buffer, &conn->response);
         conn->real_length = 0;
         conn->expect_length = conn->dynamic_buffer.getReadableSize();
-        writeBody(conn);
+        writeHeader(conn);
     } else {
         auto std_output = std::ostream{&conn->asio_dynamic_buffer};
         auto stream = io::StdOutputStreamWrapper(std_output);

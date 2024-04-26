@@ -1,7 +1,7 @@
 #pragma once
 
 #include <sese/service/Service.h>
-#include <sese/net/http/ControllerGroup.h>
+#include <sese/net/http/Controller.h>
 #include <sese/net/IPv6Address.h>
 #include <sese/security/SSLContext.h>
 #include <sese/thread/Thread.h>
@@ -26,8 +26,8 @@ public:
     void setName(const std::string &name) {
         this->serv_name = name;
     }
-    void regController(const std::string &http_url, const net::http::Controller &controller) {
-        this->controllers[http_url] = controller;
+    void regController(const net::http::Controller &controller) {
+        this->controllers[controller.getUri()] = controller;
     }
     void regMount(const std::string &local_src, const std::string &http_url_prefix) {
         this->mount_points[http_url_prefix] = local_src;

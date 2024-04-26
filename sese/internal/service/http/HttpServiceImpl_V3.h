@@ -21,6 +21,7 @@ struct HttpConnection final {
 
     net::http::Request request;
     net::http::Response response;
+    asio::ip::tcp::socket socket;
 
     // 使用 SSL 时所需特定参数
     // is \r ?
@@ -31,7 +32,6 @@ struct HttpConnection final {
     char send_buffer[MTU_VALUE]{};
 
     // 使用非 SSL 时所需特定参数
-    asio::ip::tcp::socket socket;
     io::ByteBuilder parse_buffer;
     asio::streambuf asio_dynamic_buffer;
 
