@@ -11,12 +11,12 @@ sese::net::http::Controller::Controller() {
 
 sese::net::http::Controller::Controller(const std::string &url, Callback callback) : callback(std::move(callback)) {
     assert(!url.empty());
-    assert(url.at(0) != '/');
+    assert(url.at(0) == '/');
     auto pos = url.find('?');
     if (pos == std::string::npos) {
         uri = url;
     } else {
-        uri = url.substr(0, pos - 1);
+        uri = url.substr(0, pos);
     }
 }
 

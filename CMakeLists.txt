@@ -67,6 +67,5 @@ if (SESE_BUILD_TEST)
 endif ()
 
 if (SESE_BUILD_EXAMPLE)
-    add_subdirectory(demo/echo-server)
-    add_subdirectory(demo/json2yml)
+    add_subdirectory(demo)
 endif ()

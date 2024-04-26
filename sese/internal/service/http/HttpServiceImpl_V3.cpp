@@ -90,6 +90,10 @@ void HttpServiceImpl::handleAccept() {
     acceptor.async_accept(
             conn->socket,
             [this, conn](const asio::error_code &error) {
+                if (error.value()) {
+                    SESE_INFO("acceptor exit with %d", error.value());
+                    return;
+                }
                 SESE_INFO("CONNECTED");
                 conn->readHeader();
                 this->handleAccept();
@@ -102,6 +106,10 @@ void HttpServiceImpl::handleSSLAccept() {
     acceptor.async_accept(
             conn->socket,
             [this, conn](const asio::error_code &error) {
+                if (error) {
+                    SESE_INFO("acceptor exit with %d", error.value());
+                    return;
+                }
                 SESE_INFO("CONNECTED");
                 conn->stream = std::make_unique<asio::ssl::stream<asio::ip::tcp::socket &>>(conn->socket, ssl_context.value());
                 conn->stream->async_handshake(

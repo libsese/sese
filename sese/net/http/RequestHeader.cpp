@@ -53,6 +53,7 @@ void net::http::RequestHeader::setUrl(const std::string &request_url) {
         return;
     }
 
+    uri = PercentConverter::decode(request_url.substr(0, pos).c_str());
     auto query_string = request_url.substr(pos + 1);
     auto query_items = text::StringBuilder::split(query_string, "&");
     for (auto &&item: query_items) {

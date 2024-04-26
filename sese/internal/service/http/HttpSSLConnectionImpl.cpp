@@ -122,20 +122,19 @@ void HttpSSLConnectionImpl::writeHeader() {
 }
 
 void HttpSSLConnectionImpl::writeBody() {
-    auto size = this->dynamic_buffer.peek(this->send_buffer, MTU_VALUE);
+    auto size = this->response.getBody().peek(this->send_buffer, MTU_VALUE);
     this->stream->async_write_some(asio::buffer(this->send_buffer, size), [conn = shared_from_this()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
             asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
             return;
         }
-        conn->dynamic_buffer.trunc(bytes_transferred);
+        conn->response.getBody().trunc(bytes_transferred);
         conn->real_length += bytes_transferred;
         if (conn->real_length >= conn->expect_length) {
-            conn->dynamic_buffer.freeCapacity();
             conn->checkKeepalive();
         } else {
-            conn->writeHeader();
+            conn->writeBody();
         }
     });
 }

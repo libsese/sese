@@ -33,8 +33,9 @@ void HttpConnectionImpl::readHeader() {
             }
             conn->parse_buffer.freeCapacity();
             conn->expect_length = toInteger(conn->request.get("content-length", "0"));
-            conn->real_length = 0;
-            if (conn->expect_length != 0) {
+            conn->real_length = sese::streamMove(&conn->request.getBody(), &stream, conn->expect_length);
+
+            if (conn->real_length < conn->expect_length) {
                 conn->readBody();
             } else {
                 conn->handleRequest();
@@ -104,7 +105,7 @@ void HttpConnectionImpl::writeBody() {
             return;
         }
         conn->real_length += bytes_transferred;
-        if (conn->expect_length == conn->real_length) {
+        if (conn->expect_length >= conn->real_length) {
             conn->expect_length = 0;
             conn->real_length = 0;
             conn->checkKeepalive();
