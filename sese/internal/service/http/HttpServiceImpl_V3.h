@@ -26,6 +26,10 @@ struct HttpConnection {
     net::http::Response response;
     asio::ip::tcp::socket socket;
 
+    bool keepalive = false;
+    asio::system_timer timer;
+    void reset();
+
     size_t expect_length;
     size_t real_length;
 
@@ -36,6 +40,7 @@ struct HttpConnection {
     virtual void handleRequest() = 0;
     virtual void writeHeader() = 0;
     virtual void writeBody() = 0;
+    virtual void checkKeepalive() = 0;
 };
 
 struct HttpConnectionImpl final : HttpConnection, std::enable_shared_from_this<HttpConnectionImpl> {
@@ -49,6 +54,7 @@ struct HttpConnectionImpl final : HttpConnection, std::enable_shared_from_this<H
     void handleRequest() override;
     void writeHeader() override;
     void writeBody() override;
+    void checkKeepalive() override;
 };
 
 struct HttpSSLConnectionImpl final : HttpConnection, std::enable_shared_from_this<HttpSSLConnectionImpl> {
@@ -65,6 +71,7 @@ struct HttpSSLConnectionImpl final : HttpConnection, std::enable_shared_from_thi
     void handleRequest() override;
     void writeHeader() override;
     void writeBody() override;
+    void checkKeepalive() override;
 };
 
 class HttpServiceImpl final : public sese::service::http::v3::HttpService, public std::enable_shared_from_this<HttpServiceImpl> {
@@ -74,6 +81,9 @@ public:
     bool startup() override;
     bool shutdown() override;
     int getLastError() override;
+    uint32_t getKeepalive() const {
+        return keepalive;
+    }
 
     void handleRequest(const HttpConnection::Ptr &conn);
 

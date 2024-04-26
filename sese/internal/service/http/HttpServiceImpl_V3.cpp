@@ -3,11 +3,10 @@
 #include <sese/internal/net/AsioSSLContextConvert.h>
 #include <sese/net/http/HttpUtil.h>
 #include <sese/io/FakeStream.h>
-#include <sese/Util.h>
+#include <sese/util/Util.h>
 #include <sese/record/Marco.h>
 
 using namespace sese::internal::service::http::v3;
-
 
 HttpServiceImpl::HttpServiceImpl()
     : io_context(),
@@ -70,10 +69,20 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
     auto iterator = controllers.find(conn->request.getUri());
     if (iterator == controllers.end()) {
         conn->response.setCode(404);
-        return;
+    } else {
+        iterator->second(conn->request, conn->response);
     }
 
-    iterator->second(conn->request, conn->response);
+    auto keepalive_str = conn->request.get("connection", "close");
+    conn->keepalive = strcmpDoNotCase(keepalive_str.c_str(), "keep-alive");
+
+    if (conn->keepalive) {
+        conn->response.set("connection", "keep-alive");
+        conn->response.set("keep-alive", "timeout=" + std::to_string(keepalive));
+    }
+
+    conn->response.set("server", this->serv_name);
+    conn->response.set("content-length", std::to_string(conn->response.getBody().getLength()));
 }
 
 void HttpServiceImpl::handleAccept() {
@@ -103,13 +112,26 @@ void HttpServiceImpl::handleSSLAccept() {
                             conn->readHeader();
                         }
                 );
+                this->handleSSLAccept();
             }
     );
 }
 
 HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
     : socket(context),
+      timer(context),
       expect_length(0),
       real_length(0),
       service(service) {
+}
+
+void HttpConnection::reset() {
+    request.clear();
+    request.queryArgsClear();
+    request.getBody().freeCapacity();
+    if (auto cookies = request.getCookies()) cookies->clear();
+
+    response.clear();
+    response.getBody().freeCapacity();
+    if (auto cookies = response.getCookies()) cookies->clear();
 }

@@ -14,8 +14,13 @@ HttpSSLConnectionImpl::HttpSSLConnectionImpl(const std::shared_ptr<HttpServiceIm
 void HttpSSLConnectionImpl::readHeader() {
     auto node = new iocp::IOBufNode(1024);
     this->stream->async_read_some(asio::buffer(node->buffer, 1024), [conn = shared_from_this(), node](const asio::error_code &error, std::size_t bytes_transferred) {
+        if (conn->keepalive) {
+            conn->keepalive = false;
+            conn->timer.cancel();
+        }
         if (error) {
             // 出现错误，应该断开连接
+            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
             delete node;
             return;
         }
@@ -40,6 +45,7 @@ void HttpSSLConnectionImpl::readHeader() {
         }
         if (!parse_status) {
             // 解析失败，应该断开连接
+            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
             return;
         }
 
@@ -63,6 +69,7 @@ void HttpSSLConnectionImpl::readBody() {
     this->stream->async_read_some(asio::buffer(node->buffer, 1024), [conn = shared_from_this(), node](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
+            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
             delete node;
             return;
         }
@@ -81,7 +88,7 @@ void HttpSSLConnectionImpl::readBody() {
 }
 
 void HttpSSLConnectionImpl::handleRequest() {
-    this->response.set("content-length", std::to_string(this->response.getBody().getLength()));
+    this->service->handleRequest(shared_from_this());
     sese::net::http::HttpUtil::sendResponse(&this->dynamic_buffer, &this->response);
     this->real_length = 0;
     this->expect_length = this->dynamic_buffer.getReadableSize();
@@ -93,6 +100,7 @@ void HttpSSLConnectionImpl::writeHeader() {
     this->stream->async_write_some(asio::buffer(this->send_buffer, size), [conn = shared_from_this()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
+            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
             return;
         }
         conn->dynamic_buffer.trunc(bytes_transferred);
@@ -105,8 +113,7 @@ void HttpSSLConnectionImpl::writeHeader() {
             if (conn->expect_length != 0) {
                 conn->writeBody();
             } else {
-                // todo: keepalive
-                SESE_INFO("CLOSE");
+                conn->checkKeepalive();
             }
         } else {
             conn->writeHeader();
@@ -119,16 +126,37 @@ void HttpSSLConnectionImpl::writeBody() {
     this->stream->async_write_some(asio::buffer(this->send_buffer, size), [conn = shared_from_this()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
+            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
             return;
         }
         conn->dynamic_buffer.trunc(bytes_transferred);
         conn->real_length += bytes_transferred;
         if (conn->real_length >= conn->expect_length) {
             conn->dynamic_buffer.freeCapacity();
-            // todo: keepalive
-            SESE_INFO("CLOSE");
+            conn->checkKeepalive();
         } else {
             conn->writeHeader();
         }
     });
+}
+
+void HttpSSLConnectionImpl::checkKeepalive() {
+    if (this->keepalive) {
+        SESE_INFO("KEEPALIVE");
+        this->reset();
+        this->timer.expires_from_now(asio::chrono::seconds{this->service->getKeepalive()});
+        this->timer.async_wait([conn = shared_from_this()](const asio::error_code &error) {
+            if (error.value() == 995) {
+                SESE_INFO("CANCEL TIMEOUT");
+            } else {
+                SESE_INFO("TIMEOUT");
+                conn->socket.cancel();
+                asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
+            }
+        });
+        this->readHeader();
+    } else {
+        asio::error_code error = this->stream->shutdown(error);
+        SESE_INFO("CLOSE");
+    }
 }

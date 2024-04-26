@@ -40,6 +40,7 @@ public:
 
     [[nodiscard]] size_t size() const { return map.size(); }
     [[nodiscard]] bool empty() const { return map.empty(); }
+    void clear() { map.clear(); }
 
     inline Map::iterator begin() noexcept { return map.begin(); }
     inline Map::iterator end() noexcept { return map.end(); }

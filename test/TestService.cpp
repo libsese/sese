@@ -233,9 +233,11 @@ TEST(TestHttpService, HttpHttpServiceImpl_V3) {
     ssl->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
 
     auto serv = sese::service::http::v3::HttpService::create();
-    serv->setSSLContext(ssl);
-    serv->setName("HttpServiceImpl_V3");
-    serv->setAddress(sese::net::IPv4Address::localhost(9956));
+    serv->setName("HttpServiceImpl_V3")
+            .setAddress(sese::net::IPv4Address::localhost(9956))
+            .setSSLContext(ssl)
+            .setKeepalive(60);
+
     ASSERT_TRUE(serv->startup()) << serv->getLastError();
     getchar();
     serv->shutdown();
