@@ -52,6 +52,8 @@ public:
     bool insertAt(int index, const StringView &str) override;
     void trim() noexcept override;
     [[nodiscard]] std::vector<std::string> split(const std::string &str) noexcept;
+    [[nodiscard]] bool startsWith(const std::string_view &prefix) noexcept;
+    [[nodiscard]] bool endsWith(const std::string_view &suffix) noexcept;
     std::string toString() override;
     String toSString() override;
 

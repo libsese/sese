@@ -403,12 +403,28 @@ Iterator SStringView::end() {
     return {_data, _size, _size};
 }
 
-bool SStringView::endsWith(const sstr::SStringView &str) const {
-    if (str._size > this->_size) return false;
-
-    auto tmp = this->_data + this->_size - str._size;
-    return strcmp(tmp, str._data) == 0;
+bool SStringView::endsWith(const sstr::SStringView &suffix) const {
+    if (suffix._size > this->_size) return false;
+    auto tmp = this->_data + this->_size - suffix._size;
+    return 0 == std::strncmp(tmp, suffix._data, suffix._size);
 }
+
+bool SStringView::endsWith(const std::string_view &suffix) const {
+    if (suffix.size() > this->_size) return false;
+    auto tmp = this->_data + this->_size - suffix.size();
+    return 0 == std::strncmp(tmp, suffix.data(), suffix.size());
+}
+
+bool SStringView::startsWith(const SStringView &prefix) const {
+    if (this->_size < prefix.size()) return false;
+    return 0 == std::strncmp(this->_data, prefix._data, prefix._size);
+}
+
+bool SStringView::startsWith(const std::string_view &prefix) const{
+    if (this->_size < prefix.size()) return false;
+    return 0 == std::strncmp(this->_data, prefix.data(), prefix.size());
+}
+
 
 bool SStringView::isLower() const {
     for (int i = 0; i < _size; ++i) {

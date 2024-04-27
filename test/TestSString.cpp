@@ -160,8 +160,15 @@ TEST(TestSString, Misc) {
 
     str = sese::text::StringView("你吃了吗？");
     auto ends_word = sese::text::StringView("吗？");
+    auto ends_fail_word = sese::text::StringView("吗?");
+    auto long_end_word = sese::text::StringView("今晚你吃了吗？");
     // printf("str.endsWith = %s\n", str.endsWith(endsWord) ? "true" : "false");
     EXPECT_TRUE(str.endsWith(ends_word));
+    EXPECT_FALSE(str.endsWith(long_end_word));
+    EXPECT_FALSE(str.endsWith(ends_fail_word));
+    EXPECT_TRUE(str.endsWith("了吗？"));
+    EXPECT_FALSE(str.endsWith("今晚你吃了吗？"));
+    EXPECT_FALSE(str.endsWith("吃了吗?"));
 
     str = sese::text::StringView("你好 hello");
     // printf("str.isLower = %s\n", str.isLower() ? "true" : "false");

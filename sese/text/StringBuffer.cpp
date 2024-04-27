@@ -126,6 +126,16 @@ std::vector<std::string> sese::text::StringBuffer::split(const std::string &str)
     return AbstractStringBuffer::split(str);
 }
 
+bool sese::text::StringBuffer::endsWith(const std::string_view &suffix) noexcept {
+    Locker locker(mutex);
+    return AbstractStringBuffer::endsWith(suffix);
+}
+
+bool sese::text::StringBuffer::startsWith(const std::string_view &prefix) noexcept {
+    Locker locker(mutex);
+    return AbstractStringBuffer::startsWith(prefix);
+}
+
 std::string sese::text::StringBuffer::toString() {
     Locker locker(mutex);
     return AbstractStringBuffer::toString();

@@ -171,6 +171,9 @@ public:
     /// \return 切割结果
     std::vector<SString> split(const char *str) const;
 
+    /// 截取子串[begin, len - 1]
+    /// @param begin 起始字符串索引
+    /// @return 子串
     [[nodiscard]] SString substring(size_t begin) const;
     /// \brief 截取子串 [begin, begin + len - 1]
     /// \param begin 起始字符索引
@@ -179,9 +182,24 @@ public:
     [[nodiscard]] SString substring(size_t begin, size_t len) const;
 
     /// \brief 字符串是否以某个子串结尾
-    /// \param str 匹配子串
+    /// \param suffix 匹配子串
     /// \return 结果
-    [[nodiscard]] bool endsWith(const SStringView &str) const;
+    [[nodiscard]] bool endsWith(const SStringView &suffix) const;
+
+    /// \brief 字符串是否以某个子串结尾
+    /// \param suffix 匹配子串
+    /// \return 结果
+    [[nodiscard]] bool endsWith(const std::string_view &suffix) const;
+
+    /// \brief 字符串是否以某个子串开头
+    /// \param prefix 匹配子串
+    /// \return 结果
+    [[nodiscard]] bool startsWith(const SStringView &prefix) const;
+
+    /// \brief 字符串是否以某个子串开头
+    /// \param prefix 匹配子串
+    /// \return 结果
+    [[nodiscard]] bool startsWith(const std::string_view &prefix) const;
 
     /// 字母是否为全小写
     [[nodiscard]] bool isLower() const;

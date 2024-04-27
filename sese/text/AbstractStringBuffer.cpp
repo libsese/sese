@@ -48,7 +48,7 @@ AbstractStringBuffer::AbstractStringBuffer(AbstractStringBuffer &&abstract_strin
     abstract_string_buffer.buffer = nullptr;
 }
 
-std::vector<std::string> AbstractStringBuffer::split(const std::string &text, const std::string &sub) noexcept {
+std::vector<std::string> AbstractStringBuffer::split(const std::string_view &text, const std::string_view &sub) noexcept {
     std::vector<std::string> v;
     std::string::size_type pos2 = text.find(sub);
     std::string::size_type pos1 = 0;
@@ -62,6 +62,20 @@ std::vector<std::string> AbstractStringBuffer::split(const std::string &text, co
         v.emplace_back(text.data() + pos1);
     }
     return v;
+}
+
+bool AbstractStringBuffer::startsWith(const std::string_view &text, const std::string_view &prefix) noexcept {
+    if (text.length() < prefix.length()) {
+        return false;
+    }
+    return std::string_view(text.data(), prefix.length()) == prefix;
+}
+
+bool AbstractStringBuffer::endsWith(const std::string_view &text, const std::string_view &suffix) noexcept {
+    if (text.length() < suffix.length()) {
+        return false;
+    }
+    return std::string_view(text.data() + text.length() - suffix.length(), suffix.length()) == suffix;
 }
 
 void AbstractStringBuffer::append(const char *data, size_t l) noexcept {
@@ -117,25 +131,34 @@ void AbstractStringBuffer::clear() noexcept {
     this->len = 0;
 }
 
-std::vector<std::string> AbstractStringBuffer::split(const std::string &str) const noexcept {
+std::vector<std::string> AbstractStringBuffer::split(const std::string_view &str) const noexcept {
     std::vector<std::string> v;
-    //        auto s = std::string(this->buffer);
+    // auto s = std::string(this->buffer);
     auto s = std::string_view(this->buffer, this->len);
     std::string::size_type pos2 = s.find(str);
     std::string::size_type pos1 = 0;
     while (std::string::npos != pos2) {
-        //            v.push_back(s.substr(pos1, pos2 - pos1));
+        // v.push_back(s.substr(pos1, pos2 - pos1));
         v.emplace_back(s.data() + pos1, pos2 - pos1);
 
         pos1 = pos2 + str.size();
         pos2 = s.find(str, pos1);
     }
     if (pos1 != s.length()) {
-        //            v.push_back(s.substr(pos1));
+        //  v.push_back(s.substr(pos1));
         v.emplace_back(s.data() + pos1, this->len - pos1);
     }
     return v;
 }
+
+bool AbstractStringBuffer::endsWith(const std::string_view &suffix) const noexcept {
+    return endsWith({this->buffer, this->length()}, suffix);
+}
+
+bool AbstractStringBuffer::startsWith(const std::string_view &prefix) const noexcept {
+    return startsWith({this->buffer, this->length()}, prefix);
+}
+
 
 char AbstractStringBuffer::getCharAt(int index) const {
     // if (this->cap <= index || index < 0) throw IndexOutOfBoundsException();
