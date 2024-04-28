@@ -31,6 +31,7 @@ int main(int argc, char **argv) {
             .setAddress(sese::net::IPv4Address::localhost(9956))
             // .setSSLContext(ssl)
             .setKeepalive(60)
+            .regMount(PROJECT_PATH "/build/html", "/www")
             .regController(my_ctl1);
 
     serv->startup();

@@ -2,7 +2,9 @@
 
 #include <sese/service/http/HttpService_V3.h>
 #include <sese/service/iocp/IOBuf.h>
+#include <sese/net/http/Range.h>
 #include <sese/io/ByteBuilder.h>
+#include <sese/io/File.h>
 
 #include <asio.hpp>
 #include <asio/ssl/stream.hpp>
@@ -19,6 +21,11 @@ class HttpServiceImpl;
 struct HttpConnection {
     using Ptr = std::shared_ptr<HttpConnection>;
 
+    enum class ConnType {
+        NORMAL,
+        FILE_DOWNLOAD
+    } conn_type = ConnType::NORMAL;
+
     HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
     virtual ~HttpConnection() = default;
 
@@ -32,6 +39,9 @@ struct HttpConnection {
 
     size_t expect_length;
     size_t real_length;
+    io::File::Ptr file;
+    std::vector<net::http::Range> ranges;
+    std::vector<net::http::Range>::iterator range_iterator = ranges.begin();
 
     std::shared_ptr<HttpServiceImpl> service;
 
