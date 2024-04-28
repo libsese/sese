@@ -153,7 +153,7 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
                                   strlen("Content-Type: ") +
                                   content_type.length() +
                                   strlen("Content-Range: ") +
-                                  item.toString(filesize).length() +
+                                  item.toStringLength(filesize) +
                                   item.len;
             }
             // content-length

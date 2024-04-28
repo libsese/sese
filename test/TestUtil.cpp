@@ -7,18 +7,28 @@
 TEST(TestUtil, Find) {
     const char *str = "1234567890";
     auto i = sese::findFirstAt(str, '3');
-    ASSERT_EQ(i, 2);
+    EXPECT_EQ(i, 2);
 
     auto j = sese::findFirstAt(str, 'a');
-    ASSERT_EQ(j, -1);
+    EXPECT_EQ(j, -1);
 }
 
 TEST(TestUtil, Operator) {
     auto i = sese::StrCmpI()("ABC", "abc");
-    ASSERT_EQ(i, 0);
+    EXPECT_EQ(i, 0);
 
     auto j = sese::StrCmp()("ABC", "abc");
-    ASSERT_NE(j, 0);
+    EXPECT_EQ(j, 0);
+}
+
+TEST(TestUtil, Number2StringLength) {
+    EXPECT_EQ(sese::number2StringLength(-1, 10), 2);
+    EXPECT_EQ(sese::number2StringLength(0, 10), 1);
+    EXPECT_EQ(sese::number2StringLength(65535, 10), 5);
+    EXPECT_EQ(sese::number2StringLength(-128, 10), 4);
+
+    EXPECT_EQ(sese::number2StringLength(129, 16), 2);
+    EXPECT_EQ(sese::number2StringLength(18794, 8), 5);
 }
 
 TEST(TestUtil, Misc) {
