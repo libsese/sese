@@ -74,47 +74,88 @@ void HttpConnectionImpl::handleRequest() {
     this->writeHeader();
 }
 
+void HttpConnectionImpl::writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
+    asio::async_write(this->socket, asio::buffer(buffer, length), [conn = shared_from_this(), buffer, length, callback](const asio::error_code &code, std::size_t wrote) {
+        if (code || wrote == length) {
+            callback(code);
+        } else {
+            conn->writeBlock(buffer + wrote, length - wrote, callback);
+        }
+    });
+}
+
 void HttpConnectionImpl::writeHeader() {
-    asio::async_write(this->socket, this->asio_dynamic_buffer, [conn = shared_from_this()](const asio::error_code &error, std::size_t bytes_transferred) {
+    auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
+    auto std_input = std::istream{&this->asio_dynamic_buffer};
+    auto stream = io::StdInputStreamWrapper(std_input);
+    l = stream.peek(this->send_buffer, l);
+    this->real_length += l;
+    this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
         if (error) {
-            // 出现错误，应该断开连接
             return;
         }
-        conn->real_length += bytes_transferred;
-        if (conn->real_length >= conn->expect_length) {
-            conn->expect_length = conn->response.getBody().getLength();
+        if (conn->expect_length > conn->real_length) {
+            conn->writeHeader();
+        } else {
+            conn->expect_length = 0;
             conn->real_length = 0;
-
-            if (conn->expect_length != 0) {
-                auto std_output = std::ostream{&conn->asio_dynamic_buffer};
-                auto stream = io::StdOutputStreamWrapper(std_output);
-                streamMove(&stream, &conn->response.getBody(), conn->expect_length);
+            if (conn->ranges.size() == 1) {
+                // 单区间文件
+                conn->expect_length = conn->range_iterator->len;
+                conn->file->setSeek(conn->range_iterator->begin, io::Seek::BEGIN);
+                conn->writeSingleRange();
+            } else if (conn->ranges.size() > 1) {
+                // 多区间文件
+                conn->writeRanges();
+            } else if ((conn->expect_length = conn->response.getBody().getReadableSize())) {
+                // body 响应
                 conn->writeBody();
             } else {
+                // keepalive
                 conn->checkKeepalive();
             }
-        } else {
-            conn->writeHeader();
         }
     });
 }
 
 void HttpConnectionImpl::writeBody() {
-    asio::async_write(this->socket, this->asio_dynamic_buffer, [conn = shared_from_this()](const asio::error_code &error, std::size_t bytes_transferred) {
+    auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
+    l = response.getBody().peek(this->send_buffer, l);
+    this->real_length += l;
+    this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
         if (error) {
-            // 出现错误，应该断开连接
             return;
         }
-        conn->real_length += bytes_transferred;
-        if (conn->expect_length >= conn->real_length) {
-            conn->expect_length = 0;
-            conn->real_length = 0;
-            conn->checkKeepalive();
-        } else {
+        if (conn->expect_length > conn->real_length) {
             conn->writeBody();
+        } else {
+            // keepalive
+            conn->checkKeepalive();
         }
     });
 }
+
+void HttpConnectionImpl::writeSingleRange() {
+    auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
+    this->real_length += l;
+    l = this->file->read(this->send_buffer, l);
+    this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
+        if (error) {
+            SESE_INFO("%d", error.value());
+            return;
+        }
+        if (conn->expect_length > conn->real_length) {
+            conn->writeSingleRange();
+        } else {
+            // keepalive
+            conn->checkKeepalive();
+        }
+    });
+}
+
+void HttpConnectionImpl::writeRanges() {
+}
+
 
 void HttpConnectionImpl::checkKeepalive() {
     if (this->keepalive) {

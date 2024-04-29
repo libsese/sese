@@ -37,6 +37,7 @@ struct HttpConnection {
     asio::system_timer timer;
     void reset();
 
+    char send_buffer[MTU_VALUE]{};
     size_t expect_length;
     size_t real_length;
     io::File::Ptr file;
@@ -44,13 +45,6 @@ struct HttpConnection {
     std::vector<net::http::Range>::iterator range_iterator = ranges.begin();
 
     std::shared_ptr<HttpServiceImpl> service;
-
-    virtual void readHeader() = 0;
-    virtual void readBody() = 0;
-    virtual void handleRequest() = 0;
-    virtual void writeHeader() = 0;
-    virtual void writeBody() = 0;
-    virtual void checkKeepalive() = 0;
 };
 
 struct HttpConnectionImpl final : HttpConnection, std::enable_shared_from_this<HttpConnectionImpl> {
@@ -59,12 +53,20 @@ struct HttpConnectionImpl final : HttpConnection, std::enable_shared_from_this<H
     io::ByteBuilder parse_buffer;
     asio::streambuf asio_dynamic_buffer;
 
-    void readHeader() override;
-    void readBody() override;
-    void handleRequest() override;
-    void writeHeader() override;
-    void writeBody() override;
-    void checkKeepalive() override;
+    /// 写入块函数，此函数会确保写完所有的缓存，出现意外则连接断开
+    /// @param buffer 缓存指针
+    /// @param length 缓存大小
+    /// @param callback 完成回调函数
+    void writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback);
+
+    void readHeader();
+    void readBody();
+    void handleRequest();
+    void writeHeader();
+    void writeBody();
+    void writeSingleRange();
+    void writeRanges();
+    void checkKeepalive();
 };
 
 struct HttpSSLConnectionImpl final : HttpConnection, std::enable_shared_from_this<HttpSSLConnectionImpl> {
@@ -74,14 +76,13 @@ struct HttpSSLConnectionImpl final : HttpConnection, std::enable_shared_from_thi
     bool is0x0d = false;
     iocp::IOBuf io_buffer;
     io::ByteBuilder dynamic_buffer;
-    char send_buffer[MTU_VALUE]{};
 
-    void readHeader() override;
-    void readBody() override;
-    void handleRequest() override;
-    void writeHeader() override;
-    void writeBody() override;
-    void checkKeepalive() override;
+    void readHeader();
+    void readBody();
+    void handleRequest();
+    void writeHeader();
+    void writeBody();
+    void checkKeepalive();
 };
 
 class HttpServiceImpl final : public sese::service::http::v3::HttpService, public std::enable_shared_from_this<HttpServiceImpl> {

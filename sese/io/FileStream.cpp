@@ -26,11 +26,11 @@ using sese::io::FileStream;
 //}
 
 int64_t FileStream::read(void *buffer, size_t length) {
-    return (int64_t)::fread(buffer, 1, length, file);
+    return static_cast<int64_t>(::fread(buffer, 1, length, file));
 }
 
 int64_t FileStream::write(const void *buffer, size_t length) {
-    return (int64_t)::fwrite(buffer, 1, length, file);
+    return static_cast<int64_t>(::fwrite(buffer, 1, length, file));
 }
 
 void FileStream::close() {
@@ -38,15 +38,19 @@ void FileStream::close() {
     file = nullptr;
 }
 
-int64_t FileStream::getSeek() {
+int64_t FileStream::getSeek() const {
     return ftell(file);
 }
 
-int32_t FileStream::setSeek(int64_t offset, int32_t whence) {
+int32_t FileStream::setSeek(int64_t offset, int32_t whence) const {
     return fseek(file, offset, whence);
 }
 
-int32_t FileStream::flush() {
+int32_t FileStream::setSeek(int64_t offset, Seek type) const {
+    return fseek(file, offset, static_cast<int>(type));
+}
+
+int32_t FileStream::flush() const {
     return fflush(file);
 }
 
@@ -85,7 +89,7 @@ int64_t FileStream::peek(void *buffer, size_t length) {
 
 int64_t FileStream::trunc(size_t length) {
     auto old_pos = ftell(file);
-    this->setSeek((int) length, SEEK_CUR);
+    this->setSeek(static_cast<int64_t>(length), SEEK_CUR);
     return ftell(file) - old_pos;
 }
 

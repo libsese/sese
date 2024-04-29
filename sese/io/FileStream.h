@@ -35,6 +35,16 @@
 
 namespace sese::io {
 
+/// Seek 基址
+enum class Seek {
+    /// 当前指针
+    CUR = SEEK_CUR,
+    /// 起始位置指针
+    BEGIN = SEEK_SET,
+    /// 末尾位置指针
+    END = SEEK_END
+};
+
 /**
  * @brief 文件流类
  */
@@ -65,10 +75,11 @@ public:
     int64_t peek(void *buffer, size_t length) override;
     int64_t trunc(size_t length) override;
 
-    int64_t getSeek();
-    int32_t setSeek(int64_t offset, int32_t whence);
+    int64_t getSeek() const;
+    int32_t setSeek(int64_t offset, int32_t whence)const;
+    int32_t setSeek(int64_t offset, Seek type)const;
 
-    int32_t flush();
+    int32_t flush()const;
 
     [[nodiscard]] int32_t getFd() const;
 

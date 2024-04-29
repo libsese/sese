@@ -73,6 +73,7 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
     auto &&req = conn->request;
     auto &&resp = conn->response;
 
+    // 挂载点匹配
     std::filesystem::path filename;
     for (auto &&mount_point: mount_points) {
         if (text::StringBuilder::startsWith(req.getUri(), mount_point.first)) {
@@ -118,11 +119,12 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
         }
 
         auto filesize = file_size(filename);
-        sese::net::http::Range::parse(req.get("Range", ""), filesize);
+        conn->ranges = sese::net::http::Range::parse(req.get("Range", ""), filesize);
         if (conn->ranges.empty()) {
+            // 无区间文件，手动设置区间
+            conn->ranges.push_back({0, filesize});
+            conn->range_iterator = conn->ranges.begin();
             // 普通文件
-            conn->expect_length = filesize;
-            conn->real_length = 0;
             resp.set("content-length", std::to_string(filesize));
             resp.setCode(200);
         } else if (conn->ranges.size() == 1) {
@@ -157,6 +159,7 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
                                   item.len;
             }
             // content-length
+            resp.set("content-length", std::to_string(content_length));
             resp.setCode(206);
         }
 
@@ -227,6 +230,10 @@ HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, 
 
 void HttpConnection::reset() {
     conn_type = ConnType::NORMAL;
+
+    expect_length = 0;
+    real_length = 0;
+    ranges.clear();
 
     request.clear();
     request.queryArgsClear();
