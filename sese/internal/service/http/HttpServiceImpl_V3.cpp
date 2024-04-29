@@ -106,32 +106,31 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
             goto uni_handle;
         }
 
-        std::string content_type = "application/x-";
         if (filename.has_extension()) {
             auto ext = filename.extension().string().substr(1);
             auto type = sese::net::http::HttpUtil::content_type_map.find(ext);
-            if (type != sese::net::http::HttpUtil::content_type_map.end()) {
-                resp.set("content-type", content_type);
+            if (type == sese::net::http::HttpUtil::content_type_map.end()) {
+                resp.set("content-type", conn->content_type);
             } else {
                 resp.set("content-type", type->second);
-                content_type = type->second;
+                conn->content_type = type->second;
             }
         }
 
-        auto filesize = file_size(filename);
-        conn->ranges = sese::net::http::Range::parse(req.get("Range", ""), filesize);
+        conn->filesize = file_size(filename);
+        conn->ranges = sese::net::http::Range::parse(req.get("Range", ""), conn->filesize);
         if (conn->ranges.empty()) {
             // 无区间文件，手动设置区间
-            conn->ranges.push_back({0, filesize});
+            conn->ranges.push_back({0, conn->filesize});
             conn->range_iterator = conn->ranges.begin();
             // 普通文件
-            resp.set("content-length", std::to_string(filesize));
+            resp.set("content-length", std::to_string(conn->filesize));
             resp.setCode(200);
         } else if (conn->ranges.size() == 1) {
             // 单区间文件
             conn->range_iterator = conn->ranges.begin();
             // 校验区间
-            if (conn->ranges[0].cur + conn->ranges[0].len > filesize) {
+            if (conn->ranges[0].begin + conn->ranges[0].len > conn->filesize) {
                 resp.setCode(416);
                 resp.set("content-length", std::to_string(resp.getBody().getLength()));
                 goto uni_handle;
@@ -145,7 +144,7 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
             size_t content_length = 0;
             // 校验区间并计算总长度
             for (auto &&item: conn->ranges) {
-                if (item.cur + item.len > filesize) {
+                if (item.begin + item.len > conn->filesize) {
                     resp.setCode(416);
                     resp.set("content-length", std::to_string(resp.getBody().getLength()));
                     goto uni_handle;
@@ -153,11 +152,14 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
                 content_length += 12 +
                                   strlen(HTTPD_BOUNDARY) +
                                   strlen("Content-Type: ") +
-                                  content_type.length() +
+                                  conn->content_type.length() +
                                   strlen("Content-Range: ") +
-                                  item.toStringLength(filesize) +
+                                  item.toStringLength(conn->filesize) +
                                   item.len;
             }
+            content_length += 6 + strlen(HTTPD_BOUNDARY);
+            // content-type
+            resp.set("content-type", std::string("multipart/byteranges; boundary=") + HTTPD_BOUNDARY);
             // content-length
             resp.set("content-length", std::to_string(content_length));
             resp.setCode(206);
@@ -186,10 +188,8 @@ void HttpServiceImpl::handleAccept() {
             conn->socket,
             [this, conn](const asio::error_code &error) {
                 if (error.value()) {
-                    SESE_INFO("acceptor exit with %d", error.value());
                     return;
                 }
-                SESE_INFO("CONNECTED");
                 conn->readHeader();
                 this->handleAccept();
             }
@@ -202,16 +202,13 @@ void HttpServiceImpl::handleSSLAccept() {
             conn->socket,
             [this, conn](const asio::error_code &error) {
                 if (error) {
-                    SESE_INFO("acceptor exit with %d", error.value());
                     return;
                 }
-                SESE_INFO("CONNECTED");
                 conn->stream = std::make_unique<asio::ssl::stream<asio::ip::tcp::socket &>>(conn->socket, ssl_context.value());
                 conn->stream->async_handshake(
                         asio::ssl::stream_base::server,
                         [conn](const asio::error_code &error) {
                             if (error) return;
-                            SESE_INFO("HANDSHAKE");
                             conn->readHeader();
                         }
                 );
@@ -222,7 +219,7 @@ void HttpServiceImpl::handleSSLAccept() {
 
 HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
     : socket(context),
-      timer(context),
+      timer(context, asio::chrono::seconds{service->getKeepalive()}),
       expect_length(0),
       real_length(0),
       service(service) {

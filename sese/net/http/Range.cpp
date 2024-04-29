@@ -18,7 +18,7 @@ std::vector<sese::net::http::Range> sese::net::http::Range::parse(const std::str
         return vector;
     }
 
-    auto tmp1 = sese::text::StringBuilder::split(tmp0[1], ", ");
+    auto tmp1 = text::StringBuilder::split(tmp0[1], ",");
     if (tmp1.empty()) {
         return vector;
     }

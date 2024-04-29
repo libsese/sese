@@ -18,7 +18,6 @@ namespace sese::net::http {
 struct Range {
     size_t begin = 0;
     size_t len = 0;
-    size_t cur = 0;
 
     Range(size_t begin, size_t len) noexcept;
 

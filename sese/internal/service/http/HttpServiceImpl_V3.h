@@ -37,6 +37,8 @@ struct HttpConnection {
     asio::system_timer timer;
     void reset();
 
+    std::string content_type = "application/x-";
+    size_t filesize = 0;
     char send_buffer[MTU_VALUE]{};
     size_t expect_length;
     size_t real_length;
