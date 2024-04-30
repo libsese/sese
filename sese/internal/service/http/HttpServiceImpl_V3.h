@@ -18,7 +18,7 @@ struct HttpConnectionImpl;
 struct HttpSSLConnectionImpl;
 class HttpServiceImpl;
 
-struct HttpConnection {
+struct HttpConnection : public std::enable_shared_from_this<HttpConnection> {
     using Ptr = std::shared_ptr<HttpConnection>;
 
     enum class ConnType {
@@ -47,31 +47,42 @@ struct HttpConnection {
     std::vector<net::http::Range>::iterator range_iterator = ranges.begin();
 
     std::shared_ptr<HttpServiceImpl> service;
-};
-
-struct HttpConnectionImpl final : HttpConnection, std::enable_shared_from_this<HttpConnectionImpl> {
-    HttpConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
-
-    io::ByteBuilder parse_buffer;
-    asio::streambuf asio_dynamic_buffer;
 
     /// 写入块函数，此函数会确保写完所有的缓存，出现意外则连接断开
     /// @param buffer 缓存指针
     /// @param length 缓存大小
     /// @param callback 完成回调函数
-    void writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback);
+    virtual void writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) = 0;
+
+    virtual void checkKeepalive() = 0;
+
+    void writeSingleRange();
+    void writeRanges();
+};
+
+struct HttpConnectionImpl final : HttpConnection {
+    using Ptr = std::shared_ptr<HttpConnectionImpl>;
+    Ptr getPtr() { return std::static_pointer_cast<HttpConnectionImpl>(shared_from_this()); }
+
+    HttpConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
+
+    io::ByteBuilder parse_buffer;
+    asio::streambuf asio_dynamic_buffer;
+
+    void writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) override;
 
     void readHeader();
     void readBody();
     void handleRequest();
     void writeHeader();
     void writeBody();
-    void writeSingleRange();
-    void writeRanges();
-    void checkKeepalive();
+    void checkKeepalive() override;
 };
 
-struct HttpSSLConnectionImpl final : HttpConnection, std::enable_shared_from_this<HttpSSLConnectionImpl> {
+struct HttpSSLConnectionImpl final : HttpConnection {
+    using Ptr = std::shared_ptr<HttpSSLConnectionImpl>;
+    Ptr getPtr() { return std::static_pointer_cast<HttpSSLConnectionImpl>(shared_from_this()); }
+
     HttpSSLConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
 
     std::unique_ptr<asio::ssl::stream<asio::ip::tcp::socket &>> stream;
@@ -79,12 +90,14 @@ struct HttpSSLConnectionImpl final : HttpConnection, std::enable_shared_from_thi
     iocp::IOBuf io_buffer;
     io::ByteBuilder dynamic_buffer;
 
+    void writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) override;
+
     void readHeader();
     void readBody();
     void handleRequest();
     void writeHeader();
     void writeBody();
-    void checkKeepalive();
+    void checkKeepalive() override;
 };
 
 class HttpServiceImpl final : public sese::service::http::v3::HttpService, public std::enable_shared_from_this<HttpServiceImpl> {

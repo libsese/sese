@@ -28,8 +28,8 @@ int main(int argc, char **argv) {
 
     auto serv = sese::service::http::v3::HttpService::create();
     serv->setName("HttpServiceImpl_V3")
-            .setAddress(sese::net::IPv4Address::localhost(9956))
-            // .setSSLContext(ssl)
+            .setAddress(sese::net::IPv4Address::localhost(443))
+            .setSSLContext(ssl)
             .setKeepalive(60)
             .regMount(PROJECT_PATH "/build/html", "/www")
             .regController(my_ctl1);

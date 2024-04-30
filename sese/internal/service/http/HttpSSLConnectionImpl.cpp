@@ -12,8 +12,8 @@ HttpSSLConnectionImpl::HttpSSLConnectionImpl(const std::shared_ptr<HttpServiceIm
     : HttpConnection(service, context) {}
 
 void HttpSSLConnectionImpl::readHeader() {
-    auto node = new iocp::IOBufNode(1024);
-    this->stream->async_read_some(asio::buffer(node->buffer, 1024), [conn = shared_from_this(), node](const asio::error_code &error, std::size_t bytes_transferred) {
+    auto node = new iocp::IOBufNode(MTU_VALUE);
+    this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr(), node](const asio::error_code &error, std::size_t bytes_transferred) {
         if (conn->keepalive) {
             conn->keepalive = false;
             conn->timer.cancel();
@@ -32,7 +32,6 @@ void HttpSSLConnectionImpl::readHeader() {
             if (conn->is0x0d && (static_cast<char *>(node->buffer)[i] == '\n')) {
                 conn->is0x0d = false;
                 recv_status = true;
-                SESE_INFO("PARSING HEADER");
                 parse_status = sese::net::http::HttpUtil::recvRequest(&conn->io_buffer, &conn->request);
                 break;
             }
@@ -66,7 +65,7 @@ void HttpSSLConnectionImpl::readHeader() {
 
 void HttpSSLConnectionImpl::readBody() {
     auto node = new iocp::IOBufNode(1024);
-    this->stream->async_read_some(asio::buffer(node->buffer, 1024), [conn = shared_from_this(), node](const asio::error_code &error, std::size_t bytes_transferred) {
+    this->stream->async_read_some(asio::buffer(node->buffer, 1024), [conn = getPtr(), node](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
             asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
@@ -95,56 +94,73 @@ void HttpSSLConnectionImpl::handleRequest() {
     this->writeHeader();
 }
 
+void HttpSSLConnectionImpl::writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback){
+    this->stream->async_write_some(asio::buffer(buffer, length), [conn = getPtr(), buffer, length, callback](const asio::error_code &error, size_t wrote) {
+        if (error || wrote == length) {
+            callback(error);
+        } else {
+            conn->writeBlock(buffer + wrote, length - wrote, callback);
+        }
+    });
+}
+
 void HttpSSLConnectionImpl::writeHeader() {
-    auto size = this->dynamic_buffer.peek(this->send_buffer, MTU_VALUE);
-    this->stream->async_write_some(asio::buffer(this->send_buffer, size), [conn = shared_from_this()](const asio::error_code &error, std::size_t bytes_transferred) {
+    auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
+    l = this->dynamic_buffer.read(this->send_buffer, l);
+    this->real_length += l;
+    this->writeBlock(this->send_buffer, l, [conn = getPtr()](const asio::error_code &error) {
         if (error) {
             // 出现错误，应该断开连接
             asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
             return;
         }
-        conn->dynamic_buffer.trunc(bytes_transferred);
-        conn->real_length += bytes_transferred;
-        if (conn->real_length >= conn->expect_length) {
-            conn->dynamic_buffer.freeCapacity();
-            conn->expect_length = conn->response.getBody().getLength();
+        if (conn->expect_length > conn->real_length) {
+            conn->writeHeader();
+        } else {
+            conn->expect_length = 0;
             conn->real_length = 0;
-
-            if (conn->expect_length != 0) {
+            if (conn->ranges.size() == 1) {
+                // 单区间文件
+                conn->expect_length = conn->range_iterator->len;
+                conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN);
+                conn->writeSingleRange();
+            } else if (conn->ranges.size() > 1) {
+                // 多区间文件
+                conn->writeRanges();
+            } else if ((conn->expect_length = conn->response.getBody().getReadableSize())) {
+                // body 响应
                 conn->writeBody();
             } else {
+                // keepalive
                 conn->checkKeepalive();
             }
-        } else {
-            conn->writeHeader();
         }
     });
 }
 
 void HttpSSLConnectionImpl::writeBody() {
-    auto size = this->response.getBody().peek(this->send_buffer, MTU_VALUE);
-    this->stream->async_write_some(asio::buffer(this->send_buffer, size), [conn = shared_from_this()](const asio::error_code &error, std::size_t bytes_transferred) {
+    auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
+    l = response.getBody().read(this->send_buffer, l);
+    this->real_length += l;
+    this->writeBlock(this->send_buffer, l, [conn = getPtr()](const asio::error_code &error) {
         if (error) {
             // 出现错误，应该断开连接
             asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
             return;
         }
-        conn->response.getBody().trunc(bytes_transferred);
-        conn->real_length += bytes_transferred;
-        if (conn->real_length >= conn->expect_length) {
-            conn->checkKeepalive();
-        } else {
+        if (conn->expect_length > conn->real_length) {
             conn->writeBody();
+        } else {
+            // keepalive
+            conn->checkKeepalive();
         }
     });
 }
 
 void HttpSSLConnectionImpl::checkKeepalive() {
     if (this->keepalive) {
-        SESE_INFO("KEEPALIVE");
         this->reset();
-        this->timer.expires_from_now(asio::chrono::seconds{this->service->getKeepalive()});
-        this->timer.async_wait([conn = shared_from_this()](const asio::error_code &error) {
+        this->timer.async_wait([conn = getPtr()](const asio::error_code &error) {
             if (error.value() == 995) {
                 SESE_INFO("CANCEL TIMEOUT");
             } else {
@@ -156,6 +172,5 @@ void HttpSSLConnectionImpl::checkKeepalive() {
         this->readHeader();
     } else {
         asio::error_code error = this->stream->shutdown(error);
-        SESE_INFO("CLOSE");
     }
 }

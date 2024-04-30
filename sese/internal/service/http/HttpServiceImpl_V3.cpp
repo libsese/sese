@@ -121,7 +121,7 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
         conn->ranges = sese::net::http::Range::parse(req.get("Range", ""), conn->filesize);
         if (conn->ranges.empty()) {
             // 无区间文件，手动设置区间
-            conn->ranges.push_back({0, conn->filesize});
+            conn->ranges.emplace_back(0, conn->filesize);
             conn->range_iterator = conn->ranges.begin();
             // 普通文件
             resp.set("content-length", std::to_string(conn->filesize));
@@ -223,6 +223,86 @@ HttpConnection::HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, 
       expect_length(0),
       real_length(0),
       service(service) {
+}
+
+void HttpConnection::writeSingleRange() {
+    auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
+    this->real_length += l;
+    l = this->file->read(this->send_buffer, l);
+    this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
+        if (error) {
+            return;
+        }
+        if (conn->expect_length > conn->real_length) {
+            conn->writeSingleRange();
+        } else {
+            // keepalive
+            conn->checkKeepalive();
+        }
+    });
+}
+
+void HttpConnection::writeRanges() {
+    if (this->real_length >= this->expect_length) {
+        if (this->range_iterator == this->ranges.begin()) {
+            // 首个区间
+            auto subheader = std::string("--") + HTTPD_BOUNDARY + "\r\n" +
+                             "content-type: " + this->content_type + "\r\n" +
+                             "content-range: " + this->range_iterator->toString(this->filesize) + "\r\n\r\n";
+            assert(subheader.length() <= MTU_VALUE);
+            std::memcpy(this->send_buffer, subheader.data(), subheader.length());
+            this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
+                if (error) {
+                    return;
+                }
+                conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN);
+                conn->expect_length = conn->range_iterator->len;
+                conn->real_length = 0;
+                conn->writeRanges();
+                conn->range_iterator += 1;
+            });
+            return;
+        }
+        if (this->range_iterator == this->ranges.end()) {
+            // 最后一个区间
+            auto subheader = std::string("\r\n--") + HTTPD_BOUNDARY + "--\r\n";
+            std::memcpy(this->send_buffer, subheader.data(), subheader.length());
+            assert(subheader.length() <= MTU_VALUE);
+            this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
+                if (error) {
+                    return;
+                }
+                conn->checkKeepalive();
+            });
+        } else {
+            // 中间的区间
+            auto subheader = std::string("\r\n--") + HTTPD_BOUNDARY + "\r\n" +
+                             "content-type: " + this->content_type + "\r\n" +
+                             "content-range: " + this->range_iterator->toString(this->filesize) + "\r\n\r\n";
+            assert(subheader.length() <= MTU_VALUE);
+            std::memcpy(this->send_buffer, subheader.data(), subheader.length());
+            this->writeBlock(this->send_buffer, subheader.length(), [conn = shared_from_this()](const asio::error_code &error) {
+                if (error) {
+                    return;
+                }
+                conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN);
+                conn->expect_length = conn->range_iterator->len;
+                conn->real_length = 0;
+                conn->writeRanges();
+                conn->range_iterator += 1;
+            });
+        }
+    } else {
+        auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
+        this->real_length += l;
+        l = this->file->read(this->send_buffer, l);
+        this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
+            if (error) {
+                return;
+            }
+            conn->writeRanges();
+        });
+    }
 }
 
 void HttpConnection::reset() {
