@@ -10,6 +10,7 @@
 #include <asio/ssl/stream.hpp>
 
 #include <optional>
+#include <set>
 
 namespace sese::internal::service::http::v3 {
 
@@ -49,12 +50,19 @@ struct HttpConnection : public std::enable_shared_from_this<HttpConnection> {
     std::shared_ptr<HttpServiceImpl> service;
 
     /// 写入块函数，此函数会确保写完所有的缓存，出现意外则连接断开
+    /// @note 此函数必须实现
     /// @param buffer 缓存指针
     /// @param length 缓存大小
     /// @param callback 完成回调函数
     virtual void writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) = 0;
 
+    /// 当一个请求处理完成后被调用，用于判断是否断开当前连接
+    /// @note 此函数必须被实现
     virtual void checkKeepalive() = 0;
+
+    /// 连接被彻底释放前调用，用于做一些成员变量的收尾工作
+    /// @note 此函数是可选实现的
+    virtual void disponse();
 
     void writeSingleRange();
     void writeRanges();
@@ -84,6 +92,7 @@ struct HttpSSLConnectionImpl final : HttpConnection {
     Ptr getPtr() { return std::static_pointer_cast<HttpSSLConnectionImpl>(shared_from_this()); }
 
     HttpSSLConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
+    ~HttpSSLConnectionImpl() override;
 
     std::unique_ptr<asio::ssl::stream<asio::ip::tcp::socket &>> stream;
     bool is0x0d = false;
@@ -102,14 +111,14 @@ struct HttpSSLConnectionImpl final : HttpConnection {
 
 class HttpServiceImpl final : public sese::service::http::v3::HttpService, public std::enable_shared_from_this<HttpServiceImpl> {
 public:
+    friend struct HttpConnection;
+
     HttpServiceImpl();
 
     bool startup() override;
     bool shutdown() override;
     int getLastError() override;
-    uint32_t getKeepalive() const {
-        return keepalive;
-    }
+    uint32_t getKeepalive() const { return keepalive; }
 
     void handleRequest(const HttpConnection::Ptr &conn);
 
@@ -121,6 +130,8 @@ private:
 
     void handleAccept();
     void handleSSLAccept();
+
+    std::set<HttpConnection::Ptr> connections;
 };
 
 } // namespace sese::internal::service::http::v3

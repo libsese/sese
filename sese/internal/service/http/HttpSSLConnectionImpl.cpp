@@ -11,6 +11,22 @@ using namespace sese::internal::service::http::v3;
 HttpSSLConnectionImpl::HttpSSLConnectionImpl(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context)
     : HttpConnection(service, context) {}
 
+HttpSSLConnectionImpl::~HttpSSLConnectionImpl() {
+    if (stream) {
+        asio::error_code error = this->stream->shutdown(error);
+    }
+}
+
+void HttpSSLConnectionImpl::writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
+    this->stream->async_write_some(asio::buffer(buffer, length), [conn = getPtr(), buffer, length, callback](const asio::error_code &error, size_t wrote) {
+        if (error || wrote == length) {
+            callback(error);
+        } else {
+            conn->writeBlock(buffer + wrote, length - wrote, callback);
+        }
+    });
+}
+
 void HttpSSLConnectionImpl::readHeader() {
     auto node = new iocp::IOBufNode(MTU_VALUE);
     this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr(), node](const asio::error_code &error, std::size_t bytes_transferred) {
@@ -20,7 +36,7 @@ void HttpSSLConnectionImpl::readHeader() {
         }
         if (error) {
             // 出现错误，应该断开连接
-            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
+            conn->disponse();
             delete node;
             return;
         }
@@ -44,7 +60,7 @@ void HttpSSLConnectionImpl::readHeader() {
         }
         if (!parse_status) {
             // 解析失败，应该断开连接
-            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
+            conn->disponse();
             return;
         }
 
@@ -68,7 +84,7 @@ void HttpSSLConnectionImpl::readBody() {
     this->stream->async_read_some(asio::buffer(node->buffer, 1024), [conn = getPtr(), node](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
-            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
+            conn->disponse();
             delete node;
             return;
         }
@@ -94,16 +110,6 @@ void HttpSSLConnectionImpl::handleRequest() {
     this->writeHeader();
 }
 
-void HttpSSLConnectionImpl::writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback){
-    this->stream->async_write_some(asio::buffer(buffer, length), [conn = getPtr(), buffer, length, callback](const asio::error_code &error, size_t wrote) {
-        if (error || wrote == length) {
-            callback(error);
-        } else {
-            conn->writeBlock(buffer + wrote, length - wrote, callback);
-        }
-    });
-}
-
 void HttpSSLConnectionImpl::writeHeader() {
     auto l = std::min<size_t>(this->expect_length - this->real_length, MTU_VALUE);
     l = this->dynamic_buffer.read(this->send_buffer, l);
@@ -111,12 +117,13 @@ void HttpSSLConnectionImpl::writeHeader() {
     this->writeBlock(this->send_buffer, l, [conn = getPtr()](const asio::error_code &error) {
         if (error) {
             // 出现错误，应该断开连接
-            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
+            conn->disponse();
             return;
         }
         if (conn->expect_length > conn->real_length) {
             conn->writeHeader();
         } else {
+            conn->dynamic_buffer.freeCapacity();
             conn->expect_length = 0;
             conn->real_length = 0;
             if (conn->ranges.size() == 1) {
@@ -145,7 +152,7 @@ void HttpSSLConnectionImpl::writeBody() {
     this->writeBlock(this->send_buffer, l, [conn = getPtr()](const asio::error_code &error) {
         if (error) {
             // 出现错误，应该断开连接
-            asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
+            conn->disponse();
             return;
         }
         if (conn->expect_length > conn->real_length) {
@@ -162,15 +169,13 @@ void HttpSSLConnectionImpl::checkKeepalive() {
         this->reset();
         this->timer.async_wait([conn = getPtr()](const asio::error_code &error) {
             if (error.value() == 995) {
-                SESE_INFO("CANCEL TIMEOUT");
             } else {
-                SESE_INFO("TIMEOUT");
                 conn->socket.cancel();
-                asio::error_code shutdown_error = conn->stream->shutdown(shutdown_error);
+                conn->disponse();
             }
         });
         this->readHeader();
     } else {
-        asio::error_code error = this->stream->shutdown(error);
+        this->disponse();
     }
 }

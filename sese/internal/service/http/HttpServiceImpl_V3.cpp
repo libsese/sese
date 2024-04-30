@@ -61,6 +61,7 @@ bool HttpServiceImpl::startup() {
 
 bool HttpServiceImpl::shutdown() {
     error = acceptor.close(error);
+    io_context.stop();
     thread->join();
     return !error;
 }
@@ -187,9 +188,8 @@ void HttpServiceImpl::handleAccept() {
     acceptor.async_accept(
             conn->socket,
             [this, conn](const asio::error_code &error) {
-                if (error.value()) {
-                    return;
-                }
+                if (error) return;
+                this->connections.emplace(conn);
                 conn->readHeader();
                 this->handleAccept();
             }
@@ -207,8 +207,9 @@ void HttpServiceImpl::handleSSLAccept() {
                 conn->stream = std::make_unique<asio::ssl::stream<asio::ip::tcp::socket &>>(conn->socket, ssl_context.value());
                 conn->stream->async_handshake(
                         asio::ssl::stream_base::server,
-                        [conn](const asio::error_code &error) {
+                        [conn, this](const asio::error_code &error) {
                             if (error) return;
+                            this->connections.emplace(conn);
                             conn->readHeader();
                         }
                 );
@@ -231,6 +232,7 @@ void HttpConnection::writeSingleRange() {
     l = this->file->read(this->send_buffer, l);
     this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
         if (error) {
+            conn->disponse();
             return;
         }
         if (conn->expect_length > conn->real_length) {
@@ -298,11 +300,16 @@ void HttpConnection::writeRanges() {
         l = this->file->read(this->send_buffer, l);
         this->writeBlock(this->send_buffer, l, [conn = shared_from_this()](const asio::error_code &error) {
             if (error) {
+                conn->disponse();
                 return;
             }
             conn->writeRanges();
         });
     }
+}
+
+void HttpConnection::disponse(){
+    service->connections.erase(shared_from_this());
 }
 
 void HttpConnection::reset() {

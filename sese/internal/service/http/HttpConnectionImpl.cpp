@@ -19,6 +19,7 @@ void HttpConnectionImpl::readHeader() {
         }
         if (error) {
             // 出现错误，应该断开连接
+            conn->disponse();
             return;
         }
         auto std_input = std::istream{&conn->asio_dynamic_buffer};
@@ -28,6 +29,7 @@ void HttpConnectionImpl::readHeader() {
             auto parse_status = sese::net::http::HttpUtil::recvRequest(&conn->parse_buffer, &conn->request);
             if (!parse_status) {
                 // 解析失败，应该断开连接
+                conn->disponse();
                 return;
             }
             conn->parse_buffer.freeCapacity();
@@ -49,6 +51,7 @@ void HttpConnectionImpl::readBody() {
     asio::async_read(this->socket, this->asio_dynamic_buffer, [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
+            conn->disponse();
             return;
         }
         auto std_input = std::istream{&conn->asio_dynamic_buffer};
@@ -91,11 +94,13 @@ void HttpConnectionImpl::writeHeader() {
     this->real_length += l;
     this->writeBlock(this->send_buffer, l, [conn = getPtr()](const asio::error_code &error) {
         if (error) {
+            conn->disponse();
             return;
         }
         if (conn->expect_length > conn->real_length) {
             conn->writeHeader();
         } else {
+            conn->asio_dynamic_buffer.consume(conn->asio_dynamic_buffer.size());
             conn->expect_length = 0;
             conn->real_length = 0;
             if (conn->ranges.size() == 1) {
@@ -123,6 +128,7 @@ void HttpConnectionImpl::writeBody() {
     this->real_length += l;
     this->writeBlock(this->send_buffer, l, [conn = getPtr()](const asio::error_code &error) {
         if (error) {
+            conn->disponse();
             return;
         }
         if (conn->expect_length > conn->real_length) {
@@ -139,13 +145,13 @@ void HttpConnectionImpl::checkKeepalive() {
         this->reset();
         this->timer.async_wait([conn = shared_from_this()](const asio::error_code &error) {
             if (error.value() == 995) {
-                // cancel
             } else {
                 conn->socket.cancel();
+                conn->disponse();
             }
         });
         this->readHeader();
     } else {
-
+        this->disponse();
     }
 }
