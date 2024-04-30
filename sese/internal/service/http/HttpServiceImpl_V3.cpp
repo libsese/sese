@@ -12,13 +12,20 @@
 
 using namespace sese::internal::service::http::v3;
 
-HttpServiceImpl::HttpServiceImpl()
-    : io_context(),
-      ssl_context(std::nullopt),
-      acceptor(io_context) {
+HttpServiceImpl::HttpServiceImpl(
+        const sese::net::IPAddress::Ptr &address,
+        const security::SSLContext::Ptr &ssl_context,
+        uint32_t keepalive,
+        std::string &serv_name,
+        MountPointMap &mount_points,
+        ServletMap &servlets
+) : HttpService(address, ssl_context, keepalive, serv_name, mount_points, servlets),
+    io_context(),
+    ssl_context(std::nullopt),
+    acceptor(io_context) {
     thread = std::make_unique<Thread>(
             [this] {
-                if (ssl_context.has_value()) {
+                if (this->ssl_context.has_value()) {
                     this->handleSSLAccept();
                 } else {
                     this->handleAccept();
@@ -84,11 +91,11 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
     }
 
     if (conn->conn_type == HttpConnection::ConnType::NORMAL) {
-        auto iterator = controllers.find(req.getUri());
-        if (iterator == controllers.end()) {
+        auto iterator = servlets.find(req.getUri());
+        if (iterator == servlets.end()) {
             resp.setCode(404);
         } else {
-            iterator->second(req, resp);
+            iterator->second->invoke(req, resp);
         }
         resp.set("content-length", std::to_string(resp.getBody().getLength()));
     } else if (conn->conn_type == HttpConnection::ConnType::FILE_DOWNLOAD) {
@@ -308,7 +315,7 @@ void HttpConnection::writeRanges() {
     }
 }
 
-void HttpConnection::disponse(){
+void HttpConnection::disponse() {
     service->connections.erase(shared_from_this());
 }
 

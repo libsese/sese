@@ -113,7 +113,14 @@ class HttpServiceImpl final : public sese::service::http::v3::HttpService, publi
 public:
     friend struct HttpConnection;
 
-    HttpServiceImpl();
+    HttpServiceImpl(
+            const net::IPAddress::Ptr &address,
+            const security::SSLContext::Ptr &ssl_context,
+            uint32_t keepalive,
+            std::string &serv_name,
+            MountPointMap &mount_points,
+            ServletMap &servlets
+    );
 
     bool startup() override;
     bool shutdown() override;

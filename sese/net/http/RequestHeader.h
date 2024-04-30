@@ -51,6 +51,12 @@ public:
     [[nodiscard]] size_t queryArgsSize() const { return query_args.size(); }
     [[nodiscard]] bool queryArgsEmpty() const { return query_args.empty(); }
     void queryArgsClear() { return query_args.clear(); }
+    bool queryArgsExist(const std::string &key) { return query_args.find(key) != query_args.end(); }
+    /// 当确定一定存在此字段时可以调用
+    /// @see sese::net::http::RequestHeader::queryArgsExist
+    /// @param key 查询字符串字段名称
+    /// @return 值
+    const std::string &getQueryArg(const std::string &key) { return query_args.at(key); }
 
     [[nodiscard]] HttpVersion getVersion() const { return version; }
     void setVersion(HttpVersion new_version) { this->version = new_version; }

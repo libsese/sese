@@ -80,8 +80,8 @@ void HttpSSLConnectionImpl::readHeader() {
 }
 
 void HttpSSLConnectionImpl::readBody() {
-    auto node = new iocp::IOBufNode(1024);
-    this->stream->async_read_some(asio::buffer(node->buffer, 1024), [conn = getPtr(), node](const asio::error_code &error, std::size_t bytes_transferred) {
+    auto node = new iocp::IOBufNode(MTU_VALUE);
+    this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr(), node](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
             conn->disponse();
