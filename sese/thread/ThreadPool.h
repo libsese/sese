@@ -88,6 +88,7 @@ private:
     size_t threads = 0;
     std::vector<Thread *> threadGroup;
 
+    /// 线程池运行数据
     struct RuntimeData {
         std::mutex mutex;
         std::condition_variable conditionVariable;

@@ -1,3 +1,8 @@
+/// @file HttpServiceImpl_V3.h
+/// @brief Http v3 服务实现
+/// @author kaoru
+/// @date 2024年05月1日
+
 #pragma once
 
 #include <sese/service/http/HttpService_V3.h>
@@ -19,6 +24,7 @@ struct HttpConnectionImpl;
 struct HttpSSLConnectionImpl;
 class HttpServiceImpl;
 
+/// Http 连接基类
 struct HttpConnection : public std::enable_shared_from_this<HttpConnection> {
     using Ptr = std::shared_ptr<HttpConnection>;
 
@@ -68,6 +74,7 @@ struct HttpConnection : public std::enable_shared_from_this<HttpConnection> {
     void writeRanges();
 };
 
+/// Http 普通连接实现
 struct HttpConnectionImpl final : HttpConnection {
     using Ptr = std::shared_ptr<HttpConnectionImpl>;
     Ptr getPtr() { return std::static_pointer_cast<HttpConnectionImpl>(shared_from_this()); }
@@ -87,6 +94,7 @@ struct HttpConnectionImpl final : HttpConnection {
     void checkKeepalive() override;
 };
 
+/// Http SSL 连接实现
 struct HttpSSLConnectionImpl final : HttpConnection {
     using Ptr = std::shared_ptr<HttpSSLConnectionImpl>;
     Ptr getPtr() { return std::static_pointer_cast<HttpSSLConnectionImpl>(shared_from_this()); }
@@ -109,6 +117,7 @@ struct HttpSSLConnectionImpl final : HttpConnection {
     void checkKeepalive() override;
 };
 
+/// Http 服务实现
 class HttpServiceImpl final : public sese::service::http::v3::HttpService, public std::enable_shared_from_this<HttpServiceImpl> {
 public:
     friend struct HttpConnection;

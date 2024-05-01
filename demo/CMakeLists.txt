@@ -4,7 +4,7 @@ target_link_libraries(EchoServer PRIVATE Core)
 add_executable(HttpServer HttpServer.cpp)
 target_link_libraries(HttpServer PRIVATE Core)
 
-add_executable(Json2yml json2yml.cpp)
+add_executable(Json2yml Json2yml.cpp)
 target_link_libraries(Json2yml PRIVATE Core)
 
 if (${MSVC})

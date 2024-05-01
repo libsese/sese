@@ -1,3 +1,8 @@
+/// @file HttpService_V3.h
+/// @brief Http v3 服务接口
+/// @author kaoru
+/// @date 2024年05月1日
+
 #pragma once
 
 #include <sese/service/Service.h>
@@ -8,6 +13,7 @@
 
 namespace sese::service::http::v3 {
 
+/// Http 服务接口
 class HttpService : public Service {
 public:
     using Ptr = std::shared_ptr<HttpService>;

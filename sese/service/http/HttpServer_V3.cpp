@@ -12,7 +12,7 @@ void HttpServer::regServlet(const net::http::Servlet &servlet) {
 }
 
 void HttpServer::setKeepalive(uint32_t seconds) {
-    keepalive = std::min<uint32_t>(seconds, 5);
+    keepalive = std::max<uint32_t>(seconds, 5);
 }
 
 void HttpServer::regService(const net::IPAddress::Ptr &address, const security::SSLContext::Ptr &context) {

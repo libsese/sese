@@ -10,7 +10,7 @@ using sese::net::http::Request;
 using sese::net::http::Response;
 
 SESE_CTRL(MyController, std::mutex mutex{}; std::map<std::string, std::string> map{}; int times = 0) {
-    SESE_INFO("LOADING " __FUNCTION__);
+    SESE_INFO("LOADING MyController");
     SESE_URL(set, RequestType::GET, "/set?{name}&{id}") {
         sese::Locker locker(mutex);
         auto name = req.getQueryArg("name");
@@ -58,8 +58,8 @@ int main(int argc, char **argv) {
     server.setName("HttpServiceImpl_V3");
     server.regMountPoint("/www", PROJECT_PATH "/build/html");
     server.regController<MyController>();
-    server.regService(sese::net::IPv4Address::localhost(443), ssl);
-    server.regService(sese::net::IPv4Address::localhost(80), nullptr);
+    server.regService(sese::net::IPv4Address::localhost(9090), ssl);
+    server.regService(sese::net::IPv4Address::localhost(9091), nullptr);
 
     server.startup();
     getchar();

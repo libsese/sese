@@ -10,7 +10,7 @@
 
 namespace sese::security::evp {
 
-/// EVP 加解密上下文
+/// EVP 加解密接口
 class Crypter {
 public:
     virtual ~Crypter() = default;
@@ -30,6 +30,7 @@ public:
     virtual int final(void *out, int &out_len) const noexcept = 0;
 };
 
+/// EVP 加解密上下文
 struct CrypterContext {
     using Ptr = std::unique_ptr<CrypterContext>;
 

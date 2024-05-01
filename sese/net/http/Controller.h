@@ -100,7 +100,7 @@ protected:
 /// @param name 内部名称
 /// @param method 期望的 http 方法
 /// @param url 注册 URL 链接
-/// @note <key> 需求参数 key 作为 http header 传递， {key} 需求参数作为 query 参数传递
+/// @note <key> 需求参数 key 作为 http header 传递， {key} 需求参数 key 作为 query 参数传递
 #define SESE_URL(name, method, url)                \
     this->servlets.emplace_back(method, url);      \
     Servlet &name = servlets[servlets.size() - 1]; \
