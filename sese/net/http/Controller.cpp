@@ -1,5 +1,5 @@
 #include <sese/net/http/Controller.h>
-#include "sese/net/http/HttpUtil.h"
+#include <sese/text/StringBuilder.h>
 
 sese::net::http::Servlet::Servlet() {
     expect_type = RequestType::GET;
@@ -7,17 +7,39 @@ sese::net::http::Servlet::Servlet() {
 }
 
 sese::net::http::Servlet::Servlet(RequestType expect, const std::string &url) {
+    using text::StringBuilder;
+
     expect_type = expect;
     auto pos = url.find('?');
     if (pos == std::string::npos) {
         uri = url;
     } else {
         uri = url.substr(0, pos);
+        auto args_stirng = url.substr(pos + 1, url.length() - pos);
+        auto args = StringBuilder::split(args_stirng, "&");
+        for (auto &&item: args) {
+            if (item.empty()) {
+                continue;
+            }
+            if (StringBuilder::startsWith(item, "{") && StringBuilder::endsWith(item, "}")) {
+                auto key = item.substr(1, item.length() - 2);
+                if (key.empty()) {
+                    continue;
+                }
+                expect_query_args.emplace(key);
+            } else if (StringBuilder::startsWith(item, "<") && StringBuilder::endsWith(item, ">")) {
+                auto key = item.substr(1, item.length() - 2);
+                if (key.empty()) {
+                    continue;
+                }
+                expect_headers.emplace(key);
+            }
+        }
     }
 }
 
-void sese::net::http::Servlet::setCallback(const Callback &callback) {
-    this->callback = callback;
+void sese::net::http::Servlet::setCallback(Callback callback) {
+    this->callback = std::move(callback);
 }
 
 void sese::net::http::Servlet::requiredQueryArg(const std::string &arg) {

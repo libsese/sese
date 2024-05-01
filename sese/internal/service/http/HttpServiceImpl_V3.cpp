@@ -95,7 +95,7 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
         if (iterator == servlets.end()) {
             resp.setCode(404);
         } else {
-            iterator->second->invoke(req, resp);
+            iterator->second.invoke(req, resp);
         }
         resp.set("content-length", std::to_string(resp.getBody().getLength()));
     } else if (conn->conn_type == HttpConnection::ConnType::FILE_DOWNLOAD) {

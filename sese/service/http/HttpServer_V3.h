@@ -12,7 +12,7 @@ public:
 
     void regMountPoint(const std::string &uri_prefix, const std::string &local);
 
-    void regServlet(const net::http::Servlet::Ptr &servlet);
+    void regServlet(const net::http::Servlet &servlet);
 
     void setKeepalive(uint32_t seconds);
 
@@ -38,8 +38,9 @@ void HttpServer::regController(ARGS &&...args) {
     auto controller = std::make_shared<CTL>(std::forward<ARGS>(args)...);
     controller->init();
     for (auto &&servlet: *controller) {
-        servlets.emplace(servlet->getUri(), servlet);
+        servlets.emplace(servlet.getUri(), servlet);
     }
+    controllers.push_back(controller);
 }
 
 } // namespace sese::service::http::v3

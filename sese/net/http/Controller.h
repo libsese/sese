@@ -10,9 +10,11 @@
 
 #include <sese/net/http/Request.h>
 #include <sese/net/http/Response.h>
-#include <set>
 
+#include <set>
+#include <vector>
 #include <functional>
+#include <utility>
 
 namespace sese::net::http {
 
@@ -26,7 +28,7 @@ public:
 
     Servlet(RequestType expect, const std::string &url);
 
-    void setCallback(const Callback &callback);
+    void setCallback(Callback callback);
 
     [[nodiscard]] const std::string &getUri() const { return uri; }
 
@@ -38,8 +40,8 @@ public:
 
     void invoke(Request &req, Response &resp) const;
 
-    Servlet &operator=(const Callback &callback) {
-        setCallback(callback);
+    Servlet &operator=(Callback callback) {
+        setCallback(std::move(callback));
         return *this;
     }
 
@@ -66,17 +68,18 @@ public:
 
     virtual void init() = 0;
 
-    auto begin() { return servlet_set.begin(); }
-    auto end() { return servlet_set.end(); }
+    auto begin() { return servlets.begin(); }
+    auto end() { return servlets.end(); }
 
 protected:
-    std::set<Servlet::Ptr> servlet_set;
+    std::vector<Servlet> servlets;
 };
 
 } // namespace sese::net::http
 
 /// 定义一个控制器
 /// @param name 控制器名称
+/// @param ... 控制器成员
 #define SESE_CTRL(name, ...)                                \
     class name final : public sese::net::http::Controller { \
     public:                                                 \
@@ -94,7 +97,11 @@ protected:
     void name::init()
 
 /// 注册一个 URL 路径
-#define SESE_URL(name, method, url)                     \
-    auto name = std::make_shared<Servlet>(method, url); \
-    this->servlet_set.emplace(name);                    \
-    *name = [this](Request &req, Response &resp)
+/// @param name 内部名称
+/// @param method 期望的 http 方法
+/// @param url 注册 URL 链接
+/// @note <key> 需求参数 key 作为 http header 传递， {key} 需求参数作为 query 参数传递
+#define SESE_URL(name, method, url)                \
+    this->servlets.emplace_back(method, url);      \
+    Servlet &name = servlets[servlets.size() - 1]; \
+    name = [this](Request & req, Response & resp)

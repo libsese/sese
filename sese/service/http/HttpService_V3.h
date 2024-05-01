@@ -12,7 +12,7 @@ class HttpService : public Service {
 public:
     using Ptr = std::shared_ptr<HttpService>;
     using MountPointMap = std::unordered_map<std::string, std::string>;
-    using ServletMap = std::unordered_map<std::string, net::http::Servlet::Ptr>;
+    using ServletMap = std::unordered_map<std::string, net::http::Servlet>;
 
     static HttpService::Ptr create(
             const net::IPAddress::Ptr& address,

@@ -7,8 +7,8 @@ void HttpServer::regMountPoint(const std::string &uri_prefix, const std::string 
     mount_points[uri_prefix] = local;
 }
 
-void HttpServer::regServlet(const net::http::Servlet::Ptr &servlet) {
-    this->servlets.emplace(servlet->getUri(), servlet);
+void HttpServer::regServlet(const net::http::Servlet &servlet) {
+    this->servlets.emplace(servlet.getUri(), servlet);
 }
 
 void HttpServer::setKeepalive(uint32_t seconds) {
