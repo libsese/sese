@@ -17,6 +17,7 @@ var dir_6a053736b378e458230c774ca529d5b1 =
     [ "Closeable.h", "_closeable_8h.html", "_closeable_8h" ],
     [ "ConsoleOutputStream.cpp", "_console_output_stream_8cpp.html", null ],
     [ "ConsoleOutputStream.h", "_console_output_stream_8h.html", "_console_output_stream_8h" ],
+    [ "FakeStream.cpp", "_fake_stream_8cpp.html", null ],
     [ "FakeStream.h", "_fake_stream_8h.html", "_fake_stream_8h" ],
     [ "File.h", "_file_8h.html", null ],
     [ "FileStream.cpp", "_file_stream_8cpp.html", null ],

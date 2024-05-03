@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese-core</title>
+<title>sese</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -60,7 +60,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">sese-core
+   <div id="projectname">sese
    &#160;<span id="projectnumber">x.y.z</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
@@ -128,7 +128,8 @@ $(document).ready(function(){initNavTree('namespacesese_1_1io.html',''); initRes
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">类</a> &#124;
-<a href="#typedef-members">类型定义</a>  </div>
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a>  </div>
   <div class="headertitle"><div class="title">sese::io 命名空间参考</div></div>
 </div><!--header-->
 <div class="contents">
@@ -204,6 +205,12 @@ $(document).ready(function(){initNavTree('namespacesese_1_1io.html',''); initRes
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_random_input_stream.html">RandomInputStream</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">随机输入流  <a href="classsese_1_1io_1_1_random_input_stream.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_std_input_stream_wrapper.html">StdInputStreamWrapper</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">标准库输入包装流  <a href="classsese_1_1io_1_1_std_input_stream_wrapper.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_std_output_stream_wrapper.html">StdOutputStreamWrapper</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">标准库输出包装流  <a href="classsese_1_1io_1_1_std_output_stream_wrapper.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1io_1_1_stream.html">Stream</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">流式接口类  <a href="classsese_1_1io_1_1_stream.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,6 +229,15 @@ $(document).ready(function(){initNavTree('namespacesese_1_1io.html',''); initRes
 <tr class="memitem:a7d13d4976930e9c9c0b2d80540922c50" id="r_a7d13d4976930e9c9c0b2d80540922c50"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1io.html#a7d13d4976930e9c9c0b2d80540922c50">OutputBuffer</a> = <a class="el" href="classsese_1_1io_1_1_output_buffer_wrapper.html">OutputBufferWrapper</a></td></tr>
 <tr class="memdesc:a7d13d4976930e9c9c0b2d80540922c50"><td class="mdescLeft">&#160;</td><td class="mdescRight">输出缓存包装器  <br /></td></tr>
 <tr class="separator:a7d13d4976930e9c9c0b2d80540922c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a2610b5d43eeac6b518d402e7de07218e" id="r_a2610b5d43eeac6b518d402e7de07218e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e">Seek</a> { <a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218eaf32924c53f864144ab34d1f7c12a0d4a">CUR</a> = SEEK_CUR
+, <a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218ea19aad9f2fe3ce0023298ab83f7e75775">BEGIN</a> = SEEK_SET
+, <a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218eab1a326c06d88bf042f73d70f50197905">END</a> = SEEK_END
+ }</td></tr>
+<tr class="memdesc:a2610b5d43eeac6b518d402e7de07218e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seek 基址  <a href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e">更多...</a><br /></td></tr>
+<tr class="separator:a2610b5d43eeac6b518d402e7de07218e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">类型定义说明</h2>
 <a id="aac55c52558f8e10dfc38fda6064e8b09" name="aac55c52558f8e10dfc38fda6064e8b09"></a>
@@ -298,13 +314,46 @@ $(document).ready(function(){initNavTree('namespacesese_1_1io.html',''); initRes
 
 </div>
 </div>
+<h2 class="groupheader">枚举类型说明</h2>
+<a id="a2610b5d43eeac6b518d402e7de07218e" name="a2610b5d43eeac6b518d402e7de07218e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2610b5d43eeac6b518d402e7de07218e">&#9670;&#160;</a></span>Seek</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e">sese::io::Seek</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Seek 基址 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a2610b5d43eeac6b518d402e7de07218eaf32924c53f864144ab34d1f7c12a0d4a" name="a2610b5d43eeac6b518d402e7de07218eaf32924c53f864144ab34d1f7c12a0d4a"></a>CUR&#160;</td><td class="fielddoc"><p>当前指针 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2610b5d43eeac6b518d402e7de07218ea19aad9f2fe3ce0023298ab83f7e75775" name="a2610b5d43eeac6b518d402e7de07218ea19aad9f2fe3ce0023298ab83f7e75775"></a>BEGIN&#160;</td><td class="fielddoc"><p>起始位置指针 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2610b5d43eeac6b518d402e7de07218eab1a326c06d88bf042f73d70f50197905" name="a2610b5d43eeac6b518d402e7de07218eab1a326c06d88bf042f73d70f50197905"></a>END&#160;</td><td class="fielddoc"><p>末尾位置指针 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li>
-    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 3日 星期五 14:41:24 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

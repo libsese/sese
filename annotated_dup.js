@@ -64,6 +64,16 @@ var annotated_dup =
           [ "http", "namespacesese_1_1internal_1_1net_1_1http.html", [
             [ "AsioHttpClient", "classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client.html", "classsese_1_1internal_1_1net_1_1http_1_1_asio_http_client" ]
           ] ]
+        ] ],
+        [ "service", "namespacesese_1_1internal_1_1service.html", [
+          [ "http", "namespacesese_1_1internal_1_1service_1_1http.html", [
+            [ "v3", "namespacesese_1_1internal_1_1service_1_1http_1_1v3.html", [
+              [ "HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection" ],
+              [ "HttpConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl" ],
+              [ "HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl" ],
+              [ "HttpSSLConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl" ]
+            ] ]
+          ] ]
         ] ]
       ] ],
       [ "io", "namespacesese_1_1io.html", [
@@ -90,6 +100,8 @@ var annotated_dup =
         [ "OutputStream", "classsese_1_1io_1_1_output_stream.html", "classsese_1_1io_1_1_output_stream" ],
         [ "PeekableStream", "classsese_1_1io_1_1_peekable_stream.html", "classsese_1_1io_1_1_peekable_stream" ],
         [ "RandomInputStream", "classsese_1_1io_1_1_random_input_stream.html", "classsese_1_1io_1_1_random_input_stream" ],
+        [ "StdInputStreamWrapper", "classsese_1_1io_1_1_std_input_stream_wrapper.html", "classsese_1_1io_1_1_std_input_stream_wrapper" ],
+        [ "StdOutputStreamWrapper", "classsese_1_1io_1_1_std_output_stream_wrapper.html", "classsese_1_1io_1_1_std_output_stream_wrapper" ],
         [ "Stream", "classsese_1_1io_1_1_stream.html", "classsese_1_1io_1_1_stream" ]
       ] ],
       [ "iocp", "namespacesese_1_1iocp.html", [
@@ -121,7 +133,7 @@ var annotated_dup =
           [ "Query", "classsese_1_1net_1_1dns_1_1_query.html", "classsese_1_1net_1_1dns_1_1_query" ]
         ] ],
         [ "http", "namespacesese_1_1net_1_1http.html", [
-          [ "ControllerGroup", "classsese_1_1net_1_1http_1_1_controller_group.html", "classsese_1_1net_1_1http_1_1_controller_group" ],
+          [ "Controller", "classsese_1_1net_1_1http_1_1_controller.html", "classsese_1_1net_1_1http_1_1_controller" ],
           [ "Cookie", "classsese_1_1net_1_1http_1_1_cookie.html", "classsese_1_1net_1_1http_1_1_cookie" ],
           [ "CookieMap", "classsese_1_1net_1_1http_1_1_cookie_map.html", "classsese_1_1net_1_1http_1_1_cookie_map" ],
           [ "DynamicTable", "classsese_1_1net_1_1http_1_1_dynamic_table.html", "classsese_1_1net_1_1http_1_1_dynamic_table" ],
@@ -133,7 +145,6 @@ var annotated_dup =
           [ "huffman_encoder_t", "classsese_1_1net_1_1http_1_1huffman__encoder__t.html", "classsese_1_1net_1_1http_1_1huffman__encoder__t" ],
           [ "huffman_node_t", "classsese_1_1net_1_1http_1_1huffman__node__t.html", "classsese_1_1net_1_1http_1_1huffman__node__t" ],
           [ "huffman_tree_t", "classsese_1_1net_1_1http_1_1huffman__tree__t.html", "classsese_1_1net_1_1http_1_1huffman__tree__t" ],
-          [ "QueryString", "classsese_1_1net_1_1http_1_1_query_string.html", "classsese_1_1net_1_1http_1_1_query_string" ],
           [ "Range", "structsese_1_1net_1_1http_1_1_range.html", "structsese_1_1net_1_1http_1_1_range" ],
           [ "Request", "classsese_1_1net_1_1http_1_1_request.html", "classsese_1_1net_1_1http_1_1_request" ],
           [ "Requestable", "classsese_1_1net_1_1http_1_1_requestable.html", "classsese_1_1net_1_1http_1_1_requestable" ],
@@ -142,6 +153,7 @@ var annotated_dup =
           [ "RequestParser", "classsese_1_1net_1_1http_1_1_request_parser.html", "classsese_1_1net_1_1http_1_1_request_parser" ],
           [ "Response", "classsese_1_1net_1_1http_1_1_response.html", "classsese_1_1net_1_1http_1_1_response" ],
           [ "ResponseHeader", "classsese_1_1net_1_1http_1_1_response_header.html", "classsese_1_1net_1_1http_1_1_response_header" ],
+          [ "Servlet", "classsese_1_1net_1_1http_1_1_servlet.html", "classsese_1_1net_1_1http_1_1_servlet" ],
           [ "Url", "classsese_1_1net_1_1http_1_1_url.html", "classsese_1_1net_1_1http_1_1_url" ]
         ] ],
         [ "ws", "namespacesese_1_1net_1_1ws.html", [
@@ -200,6 +212,12 @@ var annotated_dup =
         [ "SSLContextBuilder", "classsese_1_1security_1_1_s_s_l_context_builder.html", "classsese_1_1security_1_1_s_s_l_context_builder" ]
       ] ],
       [ "service", "namespacesese_1_1service.html", [
+        [ "http", "namespacesese_1_1service_1_1http.html", [
+          [ "v3", "namespacesese_1_1service_1_1http_1_1v3.html", [
+            [ "HttpServer", "classsese_1_1service_1_1http_1_1v3_1_1_http_server.html", "classsese_1_1service_1_1http_1_1v3_1_1_http_server" ],
+            [ "HttpService", "classsese_1_1service_1_1http_1_1v3_1_1_http_service.html", "classsese_1_1service_1_1http_1_1v3_1_1_http_service" ]
+          ] ]
+        ] ],
         [ "v1", "namespacesese_1_1service_1_1v1.html", [
           [ "TimeoutEvent", "structsese_1_1service_1_1v1_1_1_timeout_event.html", "structsese_1_1service_1_1v1_1_1_timeout_event" ],
           [ "TimerableService", "classsese_1_1service_1_1v1_1_1_timerable_service.html", "classsese_1_1service_1_1v1_1_1_timerable_service" ]
@@ -208,7 +226,6 @@ var annotated_dup =
           [ "TimeoutEvent", "structsese_1_1service_1_1v2_1_1_timeout_event.html", "structsese_1_1service_1_1v2_1_1_timeout_event" ],
           [ "TimerableService", "classsese_1_1service_1_1v2_1_1_timerable_service.html", "classsese_1_1service_1_1v2_1_1_timerable_service" ]
         ] ],
-        [ "HttpSession", "classsese_1_1service_1_1_http_session.html", "classsese_1_1service_1_1_http_session" ],
         [ "MasterEventLoop", "classsese_1_1service_1_1_master_event_loop.html", "classsese_1_1service_1_1_master_event_loop" ],
         [ "Service", "classsese_1_1service_1_1_service.html", "classsese_1_1service_1_1_service" ],
         [ "SystemBalanceLoader", "classsese_1_1service_1_1_system_balance_loader.html", "classsese_1_1service_1_1_system_balance_loader" ],

@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese-core</title>
+<title>sese</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -60,7 +60,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">sese-core
+   <div id="projectname">sese
    &#160;<span id="projectnumber">x.y.z</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
@@ -166,47 +166,56 @@ $(document).ready(function(){initNavTree('_file_stream_8h_source.html',''); init
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1io.html">sese::io</a> {</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html">   41</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">FileStream</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1io_1_1_stream.html" title="流式接口类">Stream</a>, <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1io_1_1_closeable.html" title="可关闭接口">Closeable</a>, <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1io_1_1_peekable_stream.html" title="可窥视流接口">PeekableStream</a> {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">   43</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">Ptr</a> = std::shared_ptr&lt;FileStream&gt;;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">FileStream::Ptr</a> create(<span class="keyword">const</span> std::string &amp;file_path, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">FileStream::Ptr</a> createWithPath(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1system_1_1_path.html" title="UNIX-LIKE 路径转换类">system::Path</a> &amp;path, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html#a9749232ee74736828296de2465612603">   58</a></span>    <a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a9749232ee74736828296de2465612603">~FileStream</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    int64_t <a class="code hl_function" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read</a>(<span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    int64_t <a class="code hl_function" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    int64_t peek(<span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    int64_t trunc(<span class="keywordtype">size_t</span> length) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    int64_t getSeek();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    int32_t setSeek(int64_t offset, int32_t whence);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    int32_t flush();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    [[nodiscard]] int32_t getFd() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html#a8adbdc1ff0d8bcb56c7d5546d311e66d">   76</a></span>    <a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a8adbdc1ff0d8bcb56c7d5546d311e66d">FileStream</a>() noexcept = default;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">   77</a></span>    FILE *file = <span class="keywordtype">nullptr</span>;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e">   39</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e" title="Seek 基址">Seek</a> {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_enumvalue" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218eaf32924c53f864144ab34d1f7c12a0d4a" title="当前指针">CUR</a> = SEEK_CUR,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_enumvalue" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218ea19aad9f2fe3ce0023298ab83f7e75775" title="起始位置指针">BEGIN</a> = SEEK_SET,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_enumvalue" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218eab1a326c06d88bf042f73d70f50197905" title="末尾位置指针">END</a> = SEEK_END</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="namespacesese_1_1io.html#aac55c52558f8e10dfc38fda6064e8b09">   80</a></span>using <a class="code hl_class" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">File</a> = <a class="code hl_class" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">FileStream</a>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>} <span class="comment">// namespace sese::io</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="};">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html">   51</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">FileStream</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1io_1_1_stream.html" title="流式接口类">Stream</a>, <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1io_1_1_closeable.html" title="可关闭接口">Closeable</a>, <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1io_1_1_peekable_stream.html" title="可窥视流接口">PeekableStream</a> {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">   53</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">Ptr</a> = std::shared_ptr&lt;FileStream&gt;;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">FileStream::Ptr</a> create(<span class="keyword">const</span> std::string &amp;file_path, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1io_1_1_file_stream.html#a78c73bd6730635ffb7a638477c3ba26e">FileStream::Ptr</a> createWithPath(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1system_1_1_path.html" title="UNIX-LIKE 路径转换类">system::Path</a> &amp;path, <span class="keyword">const</span> <span class="keywordtype">char</span> *mode) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html#a9749232ee74736828296de2465612603">   68</a></span>    <a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a9749232ee74736828296de2465612603">~FileStream</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    int64_t <a class="code hl_function" href="_archive_reader_8cpp.html#ac1e674af19adb9726acf190468060f70">read</a>(<span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    int64_t <a class="code hl_function" href="_archive_writer_8cpp.html#afed581789a1bfc9131088afbfca5ef46">write</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="_archive_reader_8cpp.html#a10a788fc2348890ed3678e0126e88613">close</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    int64_t peek(<span class="keywordtype">void</span> *buffer, <span class="keywordtype">size_t</span> length) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    int64_t trunc(<span class="keywordtype">size_t</span> length) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    int64_t getSeek() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    int32_t setSeek(int64_t offset, int32_t whence)<span class="keyword">const</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    int32_t setSeek(int64_t offset, <a class="code hl_enumeration" href="namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e" title="Seek 基址">Seek</a> type)<span class="keyword">const</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    int32_t flush()<span class="keyword">const</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    [[nodiscard]] int32_t getFd() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html#a8adbdc1ff0d8bcb56c7d5546d311e66d">   87</a></span>    <a class="code hl_function" href="classsese_1_1io_1_1_file_stream.html#a8adbdc1ff0d8bcb56c7d5546d311e66d">FileStream</a>() noexcept = default;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c">   88</a></span>    FILE *file = <span class="keywordtype">nullptr</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="namespacesese_1_1io.html#aac55c52558f8e10dfc38fda6064e8b09">   91</a></span>using <a class="code hl_class" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">File</a> = <a class="code hl_class" href="classsese_1_1io_1_1_file_stream.html" title="文件流类">FileStream</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>} <span class="comment">// namespace sese::io</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_6a053736b378e458230c774ca529d5b1.html">io</a></li><li class="navelem"><a class="el" href="_file_stream_8h.html">FileStream.h</a></li>
-    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 3日 星期五 14:41:22 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

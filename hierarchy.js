@@ -62,7 +62,7 @@ var hierarchy =
       [ "sese::security::evp::SHA512Context", "classsese_1_1security_1_1evp_1_1_s_h_a512_context.html", null ],
       [ "sese::security::evp::SM3Context", "classsese_1_1security_1_1evp_1_1_s_m3_context.html", null ]
     ] ],
-    [ "sese::net::http::ControllerGroup", "classsese_1_1net_1_1http_1_1_controller_group.html", null ],
+    [ "sese::net::http::Controller", "classsese_1_1net_1_1http_1_1_controller.html", null ],
     [ "sese::net::http::Cookie", "classsese_1_1net_1_1http_1_1_cookie.html", null ],
     [ "sese::net::http::CookieMap", "classsese_1_1net_1_1http_1_1_cookie_map.html", null ],
     [ "sese::security::evp::Crypter", "classsese_1_1security_1_1evp_1_1_crypter.html", [
@@ -105,6 +105,11 @@ var hierarchy =
       [ "sese::Timer", "classsese_1_1_timer.html", null ],
       [ "sese::TimerTask", "classsese_1_1_timer_task.html", null ],
       [ "sese::concurrent::ObjectPool< T >", "classsese_1_1concurrent_1_1_object_pool.html", null ],
+      [ "sese::internal::service::http::v3::HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html", [
+        [ "sese::internal::service::http::v3::HttpConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html", null ],
+        [ "sese::internal::service::http::v3::HttpSSLConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html", null ]
+      ] ],
+      [ "sese::internal::service::http::v3::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html", null ],
       [ "sese::plugin::BaseClass", "classsese_1_1plugin_1_1_base_class.html", null ],
       [ "sese::security::SSLContext", "classsese_1_1security_1_1_s_s_l_context.html", null ]
     ] ],
@@ -139,7 +144,7 @@ var hierarchy =
     ] ],
     [ "sese::net::http::HeaderBuilder", "classsese_1_1net_1_1http_1_1_header_builder.html", null ],
     [ "sese::net::http::Http2FrameInfo", "structsese_1_1net_1_1http_1_1_http2_frame_info.html", null ],
-    [ "sese::service::HttpSession", "classsese_1_1service_1_1_http_session.html", null ],
+    [ "sese::service::http::v3::HttpServer", "classsese_1_1service_1_1http_1_1v3_1_1_http_server.html", null ],
     [ "sese::net::http::HttpUtil", "classsese_1_1net_1_1http_1_1_http_util.html", null ],
     [ "sese::net::http::huffman_encoder_t", "classsese_1_1net_1_1http_1_1huffman__encoder__t.html", null ],
     [ "sese::net::http::huffman_node_t", "classsese_1_1net_1_1http_1_1huffman__node__t.html", null ],
@@ -162,6 +167,7 @@ var hierarchy =
       [ "sese::io::BufferedInputStream", "classsese_1_1io_1_1_buffered_input_stream.html", null ],
       [ "sese::io::InputBufferWrapper", "classsese_1_1io_1_1_input_buffer_wrapper.html", null ],
       [ "sese::io::RandomInputStream", "classsese_1_1io_1_1_random_input_stream.html", null ],
+      [ "sese::io::StdInputStreamWrapper", "classsese_1_1io_1_1_std_input_stream_wrapper.html", null ],
       [ "sese::io::Stream", "classsese_1_1io_1_1_stream.html", [
         [ "sese::io::AbstractByteBuffer", "classsese_1_1io_1_1_abstract_byte_buffer.html", [
           [ "sese::io::ByteBuffer", "classsese_1_1io_1_1_byte_buffer.html", null ],
@@ -250,6 +256,7 @@ var hierarchy =
       [ "sese::io::ConsoleOutputStream", "classsese_1_1io_1_1_console_output_stream.html", null ],
       [ "sese::io::NullOutputStream", "classsese_1_1io_1_1_null_output_stream.html", null ],
       [ "sese::io::OutputBufferWrapper", "classsese_1_1io_1_1_output_buffer_wrapper.html", null ],
+      [ "sese::io::StdOutputStreamWrapper", "classsese_1_1io_1_1_std_output_stream_wrapper.html", null ],
       [ "sese::io::Stream", "classsese_1_1io_1_1_stream.html", null ],
       [ "sese::iocp::v1::Context", "classsese_1_1iocp_1_1v1_1_1_context.html", null ],
       [ "sese::net::http::Requestable", "classsese_1_1net_1_1http_1_1_requestable.html", null ]
@@ -263,6 +270,7 @@ var hierarchy =
       [ "sese::io::AbstractFixedBuffer", "classsese_1_1io_1_1_abstract_fixed_buffer.html", null ],
       [ "sese::io::FileStream", "classsese_1_1io_1_1_file_stream.html", null ],
       [ "sese::io::InputBufferWrapper", "classsese_1_1io_1_1_input_buffer_wrapper.html", null ],
+      [ "sese::io::StdInputStreamWrapper", "classsese_1_1io_1_1_std_input_stream_wrapper.html", null ],
       [ "sese::iocp::IOBuf", "classsese_1_1iocp_1_1_i_o_buf.html", null ],
       [ "sese::iocp::v1::Context", "classsese_1_1iocp_1_1v1_1_1_context.html", null ],
       [ "sese::net::Socket", "classsese_1_1net_1_1_socket.html", null ],
@@ -275,7 +283,6 @@ var hierarchy =
     ] ],
     [ "sese::system::Process", "classsese_1_1system_1_1_process.html", null ],
     [ "sese::net::dns::Query", "classsese_1_1net_1_1dns_1_1_query.html", null ],
-    [ "sese::net::http::QueryString", "classsese_1_1net_1_1http_1_1_query_string.html", null ],
     [ "sese::RandomUtil", "classsese_1_1_random_util.html", null ],
     [ "sese::net::http::Range", "structsese_1_1net_1_1http_1_1_range.html", null ],
     [ "sese::Range< TYPE >", "classsese_1_1_range.html", null ],
@@ -299,7 +306,12 @@ var hierarchy =
     [ "sstr::SChar", "structsstr_1_1_s_char.html", null ],
     [ "sese::ConfigObject::Section", "structsese_1_1_config_object_1_1_section.html", null ],
     [ "sese::system::Semaphore", "classsese_1_1system_1_1_semaphore.html", null ],
-    [ "sese::service::Service", "classsese_1_1service_1_1_service.html", null ],
+    [ "sese::service::Service", "classsese_1_1service_1_1_service.html", [
+      [ "sese::service::http::v3::HttpService", "classsese_1_1service_1_1http_1_1v3_1_1_http_service.html", [
+        [ "sese::internal::service::http::v3::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html", null ]
+      ] ]
+    ] ],
+    [ "sese::net::http::Servlet", "classsese_1_1net_1_1http_1_1_servlet.html", null ],
     [ "sese::SHA1Context", "structsese_1_1_s_h_a1_context.html", null ],
     [ "sese::SHA1Util", "classsese_1_1_s_h_a1_util.html", null ],
     [ "sese::SHA256Util", "classsese_1_1_s_h_a256_util.html", null ],

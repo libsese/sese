@@ -1,8 +1,8 @@
 var namespacesese_1_1service =
 [
+    [ "http", "namespacesese_1_1service_1_1http.html", "namespacesese_1_1service_1_1http" ],
     [ "v1", "namespacesese_1_1service_1_1v1.html", "namespacesese_1_1service_1_1v1" ],
     [ "v2", "namespacesese_1_1service_1_1v2.html", "namespacesese_1_1service_1_1v2" ],
-    [ "HttpSession", "classsese_1_1service_1_1_http_session.html", "classsese_1_1service_1_1_http_session" ],
     [ "MasterEventLoop", "classsese_1_1service_1_1_master_event_loop.html", "classsese_1_1service_1_1_master_event_loop" ],
     [ "Service", "classsese_1_1service_1_1_service.html", "classsese_1_1service_1_1_service" ],
     [ "SystemBalanceLoader", "classsese_1_1service_1_1_system_balance_loader.html", "classsese_1_1service_1_1_system_balance_loader" ],

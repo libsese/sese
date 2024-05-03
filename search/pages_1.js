@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['core_0',['sese-core',['../index.html',1,'']]]
+  ['sese_0',['sese',['../index.html',1,'']]]
 ];

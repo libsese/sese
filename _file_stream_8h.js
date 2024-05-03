@@ -21,5 +21,10 @@ var _file_stream_8h =
     [ "TEXT_WRITE_CREATE_APPEND_W", "_file_stream_8h.html#a40f88118baee5b254cc33f733e4a08c2", null ],
     [ "TEXT_WRITE_CREATE_TRUNC", "_file_stream_8h.html#ad744e633903ad3701f09a0fe03e9b2c9", null ],
     [ "TEXT_WRITE_CREATE_TRUNC_W", "_file_stream_8h.html#a37e30ae77db6496dacc2b5581cb79667", null ],
-    [ "File", "_file_stream_8h.html#aac55c52558f8e10dfc38fda6064e8b09", null ]
+    [ "File", "_file_stream_8h.html#aac55c52558f8e10dfc38fda6064e8b09", null ],
+    [ "Seek", "_file_stream_8h.html#a2610b5d43eeac6b518d402e7de07218e", [
+      [ "CUR", "_file_stream_8h.html#a2610b5d43eeac6b518d402e7de07218eaf32924c53f864144ab34d1f7c12a0d4a", null ],
+      [ "BEGIN", "_file_stream_8h.html#a2610b5d43eeac6b518d402e7de07218ea19aad9f2fe3ce0023298ab83f7e75775", null ],
+      [ "END", "_file_stream_8h.html#a2610b5d43eeac6b518d402e7de07218eab1a326c06d88bf042f73d70f50197905", null ]
+    ] ]
 ];

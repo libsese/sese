@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese-core</title>
+<title>sese</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -60,7 +60,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">sese-core
+   <div id="projectname">sese
    &#160;<span id="projectnumber">x.y.z</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
@@ -189,45 +189,45 @@ $(document).ready(function(){initNavTree('_thread_pool_8h_source.html',''); init
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classsese_1_1_thread_pool.html#aa88fa0145dadaebe4ec54aa566cd46d2">   88</a></span>    <span class="keywordtype">size_t</span> threads = 0;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classsese_1_1_thread_pool.html#a748643eac74490a895ce79a3c0bf410e">   89</a></span>    std::vector&lt;Thread *&gt; <a class="code hl_variable" href="classsese_1_1_thread_pool.html#a748643eac74490a895ce79a3c0bf410e">threadGroup</a>;</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="foldopen" id="foldopen00091" data-start="{" data-end="};">
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html">   91</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1_thread_pool_1_1_runtime_data.html">RuntimeData</a> {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a24f3c8329eb623f6dc2c1214e6b8d349">   92</a></span>        std::mutex <a class="code hl_variable" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a24f3c8329eb623f6dc2c1214e6b8d349">mutex</a>;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a3275fd3fe0bc9a256a62bc2f7bab9a2d">   93</a></span>        std::condition_variable <a class="code hl_variable" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a3275fd3fe0bc9a256a62bc2f7bab9a2d">conditionVariable</a>;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a4499711526c5e8f1cdaea3b960a0e6ef">   94</a></span>        std::queue&lt;std::function&lt;void()&gt;&gt; <a class="code hl_variable" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a4499711526c5e8f1cdaea3b960a0e6ef">tasks</a>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a5928f2e0cc9dd6b5dc3265b83371ba52">   95</a></span>        std::atomic&lt;bool&gt; isShutdown{<span class="keyword">false</span>};</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    };</div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="};">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html">   92</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1_thread_pool_1_1_runtime_data.html" title="线程池运行数据">RuntimeData</a> {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a24f3c8329eb623f6dc2c1214e6b8d349">   93</a></span>        std::mutex <a class="code hl_variable" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a24f3c8329eb623f6dc2c1214e6b8d349">mutex</a>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a3275fd3fe0bc9a256a62bc2f7bab9a2d">   94</a></span>        std::condition_variable <a class="code hl_variable" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a3275fd3fe0bc9a256a62bc2f7bab9a2d">conditionVariable</a>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a4499711526c5e8f1cdaea3b960a0e6ef">   95</a></span>        std::queue&lt;std::function&lt;void()&gt;&gt; <a class="code hl_variable" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a4499711526c5e8f1cdaea3b960a0e6ef">tasks</a>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="structsese_1_1_thread_pool_1_1_runtime_data.html#a5928f2e0cc9dd6b5dc3265b83371ba52">   96</a></span>        std::atomic&lt;bool&gt; isShutdown{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    };</div>
 </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">   97</a></span>    std::shared_ptr&lt;RuntimeData&gt; <a class="code hl_variable" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>};</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">   98</a></span>    std::shared_ptr&lt;RuntimeData&gt; <a class="code hl_variable" href="classsese_1_1_thread_pool.html#a73637e4c326342f1308d703bb6701ed7">data</a>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
 </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>} <span class="comment">// namespace sese</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">// GCOVR_EXCL_START</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> RETURN_TYPE&gt;</div>
-<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classsese_1_1_thread_pool.html#a024e526d148b9b1c3cafccdc42f044cc">  105</a></span>std::shared_future&lt;RETURN_TYPE&gt; <a class="code hl_function" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">sese::ThreadPool::postTask</a>(<span class="keyword">const</span> std::function&lt;RETURN_TYPE()&gt; &amp;task) {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">using </span>TaskPtr = std::shared_ptr&lt;std::packaged_task&lt;RETURN_TYPE()&gt;&gt;;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    TaskPtr packaged_task = std::make_shared&lt;std::packaged_task&lt;RETURN_TYPE()&gt;&gt;(task);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    std::shared_future&lt;RETURN_TYPE&gt; future(packaged_task-&gt;get_future());</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    this-&gt;<a class="code hl_function" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask</a>([task = std::move(packaged_task)]() <span class="keyword">mutable</span> {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        (*task)();</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    });</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> future;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">// GCOVR_EXCL_START</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> RETURN_TYPE&gt;</div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classsese_1_1_thread_pool.html#a024e526d148b9b1c3cafccdc42f044cc">  106</a></span>std::shared_future&lt;RETURN_TYPE&gt; <a class="code hl_function" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">sese::ThreadPool::postTask</a>(<span class="keyword">const</span> std::function&lt;RETURN_TYPE()&gt; &amp;task) {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keyword">using </span>TaskPtr = std::shared_ptr&lt;std::packaged_task&lt;RETURN_TYPE()&gt;&gt;;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    TaskPtr packaged_task = std::make_shared&lt;std::packaged_task&lt;RETURN_TYPE()&gt;&gt;(task);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    std::shared_future&lt;RETURN_TYPE&gt; future(packaged_task-&gt;get_future());</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    this-&gt;<a class="code hl_function" href="classsese_1_1_thread_pool.html#aadee48e5e9248d6dabc53dc7db24f8cd">postTask</a>([task = std::move(packaged_task)]() <span class="keyword">mutable</span> {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        (*task)();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    });</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">return</span> future;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
 </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">// GCOVR_EXCL_STOP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_a0a6df3daa909360b7fe562239cac02e.html">thread</a></li><li class="navelem"><a class="el" href="_thread_pool_8h.html">ThreadPool.h</a></li>
-    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 3日 星期五 14:41:23 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -4,6 +4,7 @@ var classsese_1_1net_1_1http_1_1_cookie_map =
     [ "Ptr", "classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff", null ],
     [ "add", "classsese_1_1net_1_1http_1_1_cookie_map.html#aa1fe0c9e9a5bfc86bf1671b57922369f", null ],
     [ "begin", "classsese_1_1net_1_1http_1_1_cookie_map.html#ad1b639f7dd182878440854171355515d", null ],
+    [ "clear", "classsese_1_1net_1_1http_1_1_cookie_map.html#aa7b601c59d02b9413092dc9ee68c7bff", null ],
     [ "empty", "classsese_1_1net_1_1http_1_1_cookie_map.html#ac3bf517c49095decc5013dd254296716", null ],
     [ "end", "classsese_1_1net_1_1http_1_1_cookie_map.html#afc458c15608a03e898da5042a017f361", null ],
     [ "expired", "classsese_1_1net_1_1http_1_1_cookie_map.html#a458a59516cf921f82798bda41a806b9e", null ],

@@ -1,6 +1,6 @@
 var namespacesese_1_1net_1_1http =
 [
-    [ "ControllerGroup", "classsese_1_1net_1_1http_1_1_controller_group.html", "classsese_1_1net_1_1http_1_1_controller_group" ],
+    [ "Controller", "classsese_1_1net_1_1http_1_1_controller.html", "classsese_1_1net_1_1http_1_1_controller" ],
     [ "Cookie", "classsese_1_1net_1_1http_1_1_cookie.html", "classsese_1_1net_1_1http_1_1_cookie" ],
     [ "CookieMap", "classsese_1_1net_1_1http_1_1_cookie_map.html", "classsese_1_1net_1_1http_1_1_cookie_map" ],
     [ "DynamicTable", "classsese_1_1net_1_1http_1_1_dynamic_table.html", "classsese_1_1net_1_1http_1_1_dynamic_table" ],
@@ -12,7 +12,6 @@ var namespacesese_1_1net_1_1http =
     [ "huffman_encoder_t", "classsese_1_1net_1_1http_1_1huffman__encoder__t.html", "classsese_1_1net_1_1http_1_1huffman__encoder__t" ],
     [ "huffman_node_t", "classsese_1_1net_1_1http_1_1huffman__node__t.html", "classsese_1_1net_1_1http_1_1huffman__node__t" ],
     [ "huffman_tree_t", "classsese_1_1net_1_1http_1_1huffman__tree__t.html", "classsese_1_1net_1_1http_1_1huffman__tree__t" ],
-    [ "QueryString", "classsese_1_1net_1_1http_1_1_query_string.html", "classsese_1_1net_1_1http_1_1_query_string" ],
     [ "Range", "structsese_1_1net_1_1http_1_1_range.html", "structsese_1_1net_1_1http_1_1_range" ],
     [ "Request", "classsese_1_1net_1_1http_1_1_request.html", "classsese_1_1net_1_1http_1_1_request" ],
     [ "Requestable", "classsese_1_1net_1_1http_1_1_requestable.html", "classsese_1_1net_1_1http_1_1_requestable" ],
@@ -21,9 +20,9 @@ var namespacesese_1_1net_1_1http =
     [ "RequestParser", "classsese_1_1net_1_1http_1_1_request_parser.html", "classsese_1_1net_1_1http_1_1_request_parser" ],
     [ "Response", "classsese_1_1net_1_1http_1_1_response.html", "classsese_1_1net_1_1http_1_1_response" ],
     [ "ResponseHeader", "classsese_1_1net_1_1http_1_1_response_header.html", "classsese_1_1net_1_1http_1_1_response_header" ],
+    [ "Servlet", "classsese_1_1net_1_1http_1_1_servlet.html", "classsese_1_1net_1_1http_1_1_servlet" ],
     [ "Url", "classsese_1_1net_1_1http_1_1_url.html", "classsese_1_1net_1_1http_1_1_url" ],
     [ "bits_t", "namespacesese_1_1net_1_1http.html#a92a85a877bfbede2a0fe32ac5b7a2dc4", null ],
-    [ "Controller", "namespacesese_1_1net_1_1http.html#a72c53e3399c49322d7a07c6de7747015", null ],
     [ "header_t", "namespacesese_1_1net_1_1http.html#a7e37b487fa33960ae0d06310ff3cde14", null ],
     [ "HuffmanDecoder", "namespacesese_1_1net_1_1http.html#a9e08e353faf1a6c281acffee20472190", null ],
     [ "HuffmanEncoder", "namespacesese_1_1net_1_1http.html#a8541a42c533f0b8f1119d560a17b3d63", null ],

@@ -23,10 +23,17 @@ var namespacesese_1_1io =
     [ "OutputStream", "classsese_1_1io_1_1_output_stream.html", "classsese_1_1io_1_1_output_stream" ],
     [ "PeekableStream", "classsese_1_1io_1_1_peekable_stream.html", "classsese_1_1io_1_1_peekable_stream" ],
     [ "RandomInputStream", "classsese_1_1io_1_1_random_input_stream.html", "classsese_1_1io_1_1_random_input_stream" ],
+    [ "StdInputStreamWrapper", "classsese_1_1io_1_1_std_input_stream_wrapper.html", "classsese_1_1io_1_1_std_input_stream_wrapper" ],
+    [ "StdOutputStreamWrapper", "classsese_1_1io_1_1_std_output_stream_wrapper.html", "classsese_1_1io_1_1_std_output_stream_wrapper" ],
     [ "Stream", "classsese_1_1io_1_1_stream.html", "classsese_1_1io_1_1_stream" ],
     [ "File", "namespacesese_1_1io.html#aac55c52558f8e10dfc38fda6064e8b09", null ],
     [ "InputBuffer", "namespacesese_1_1io.html#a1cba1d99bbe1c9ac13e6c96ac6a72157", null ],
     [ "OutputBuffer", "namespacesese_1_1io.html#a7d13d4976930e9c9c0b2d80540922c50", null ],
     [ "StreamReader", "namespacesese_1_1io.html#a037f8cc21109f7d83bcc6cb8677a4316", null ],
-    [ "WStreamReader", "namespacesese_1_1io.html#a798f7fbfce61f52167b91e16a452cf1e", null ]
+    [ "WStreamReader", "namespacesese_1_1io.html#a798f7fbfce61f52167b91e16a452cf1e", null ],
+    [ "Seek", "namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218e", [
+      [ "CUR", "namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218eaf32924c53f864144ab34d1f7c12a0d4a", null ],
+      [ "BEGIN", "namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218ea19aad9f2fe3ce0023298ab83f7e75775", null ],
+      [ "END", "namespacesese_1_1io.html#a2610b5d43eeac6b518d402e7de07218eab1a326c06d88bf042f73d70f50197905", null ]
+    ] ]
 ];

@@ -1,8 +1,8 @@
 var dir_fc5eb64f8b6490c66e0bc105dbd81c03 =
 [
     [ "ContentTypeMap.cpp", "_content_type_map_8cpp.html", null ],
-    [ "ControllerGroup.cpp", "_controller_group_8cpp.html", null ],
-    [ "ControllerGroup.h", "_controller_group_8h.html", "_controller_group_8h" ],
+    [ "Controller.cpp", "_controller_8cpp.html", null ],
+    [ "Controller.h", "_controller_8h.html", "_controller_8h" ],
     [ "Cookie.cpp", "_cookie_8cpp.html", null ],
     [ "Cookie.h", "_cookie_8h.html", "_cookie_8h" ],
     [ "CookieMap.cpp", "_cookie_map_8cpp.html", null ],
@@ -21,8 +21,6 @@ var dir_fc5eb64f8b6490c66e0bc105dbd81c03 =
     [ "HttpUtil.h", "_http_util_8h.html", "_http_util_8h" ],
     [ "Huffman.cpp", "_huffman_8cpp.html", null ],
     [ "Huffman.h", "_huffman_8h.html", "_huffman_8h" ],
-    [ "QueryString.cpp", "_query_string_8cpp.html", null ],
-    [ "QueryString.h", "_query_string_8h.html", "_query_string_8h" ],
     [ "Range.cpp", "_range_8cpp.html", null ],
     [ "Range.h", "net_2http_2_range_8h.html", "net_2http_2_range_8h" ],
     [ "Request.cpp", "_request_8cpp.html", null ],
@@ -30,6 +28,7 @@ var dir_fc5eb64f8b6490c66e0bc105dbd81c03 =
     [ "Requestable.h", "_requestable_8h.html", "_requestable_8h" ],
     [ "RequestableFactory.cpp", "_requestable_factory_8cpp.html", null ],
     [ "RequestableFactory.h", "_requestable_factory_8h.html", "_requestable_factory_8h" ],
+    [ "RequestHeader.cpp", "_request_header_8cpp.html", null ],
     [ "RequestHeader.h", "_request_header_8h.html", "_request_header_8h" ],
     [ "RequestParser.cpp", "_request_parser_8cpp.html", null ],
     [ "RequestParser.h", "_request_parser_8h.html", "_request_parser_8h" ],

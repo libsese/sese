@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese-core</title>
+<title>sese</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -60,7 +60,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">sese-core
+   <div id="projectname">sese
    &#160;<span id="projectnumber">x.y.z</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
@@ -170,28 +170,32 @@ $(document).ready(function(){initNavTree('_header_8h_source.html',''); initResiz
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#aa1f5da1259d14ff3bb3a3c591eaa1d45">   40</a></span>    <span class="keyword">inline</span> std::map&lt;std::string, std::string&gt;::iterator <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#aa1f5da1259d14ff3bb3a3c591eaa1d45">begin</a>() noexcept { <span class="keywordflow">return</span> headers.begin(); }</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a0de7f929e0c2308d21fba1b15e259db3">   41</a></span>    <span class="keyword">inline</span> std::map&lt;std::string, std::string&gt;::iterator <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a0de7f929e0c2308d21fba1b15e259db3">end</a>() noexcept { <span class="keywordflow">return</span> headers.end(); }</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a3f16ac94962f129ffd6ea7b647c456fb">   43</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a3f16ac94962f129ffd6ea7b647c456fb">clear</a>() { headers.clear(); }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a18772acaacda337977c884fb40ae09ee">   44</a></span>    [[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a18772acaacda337977c884fb40ae09ee">empty</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> headers.empty(); }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    [[nodiscard]] <span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> &amp;getCookies() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> setCookies(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> &amp;cookies);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    [[nodiscard]] <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> getCookie(<span class="keyword">const</span> std::string &amp;name) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> setCookie(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a4e14f8c962a58da8bc87d40ee4e266c1">   62</a></span>    std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_header.html#a4e14f8c962a58da8bc87d40ee4e266c1">headers</a>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a3772da84907cc494bbebdbf846bb8684">   63</a></span>    <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> cookies = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a3f16ac94962f129ffd6ea7b647c456fb">   43</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a3f16ac94962f129ffd6ea7b647c456fb">clear</a>() { headers.clear(); }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a18772acaacda337977c884fb40ae09ee">   44</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a18772acaacda337977c884fb40ae09ee">empty</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> headers.empty(); }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#afa34542cc8a8e5f1fdbe5026bbc5b703">   45</a></span>    [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#afa34542cc8a8e5f1fdbe5026bbc5b703">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> headers.size(); }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a3f1567ebe644edf12ac59717d4b80a4a">   50</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a3f1567ebe644edf12ac59717d4b80a4a">exist</a>(<span class="keyword">const</span> std::string &amp;key) { <span class="keywordflow">return</span> headers.find(key) != headers.end(); }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a8b59c2f39588bbe63126312371385e03">   55</a></span>    <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1net_1_1http_1_1_header.html#a8b59c2f39588bbe63126312371385e03">get</a>(<span class="keyword">const</span> std::string &amp;key) { <span class="keywordflow">return</span> headers.at(key); }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    [[nodiscard]] <span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> &amp;getCookies() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> setCookies(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> &amp;cookies);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    [[nodiscard]] <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> getCookie(<span class="keyword">const</span> std::string &amp;name) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> setCookie(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie.html#a7ddde7eaaac809975f7061475f3bbcbe">Cookie::Ptr</a> &amp;cookie);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a4e14f8c962a58da8bc87d40ee4e266c1">   73</a></span>    std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="classsese_1_1net_1_1http_1_1_header.html#a4e14f8c962a58da8bc87d40ee4e266c1">headers</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classsese_1_1net_1_1http_1_1_header.html#a3772da84907cc494bbebdbf846bb8684">   74</a></span>    <a class="code hl_typedef" href="classsese_1_1net_1_1http_1_1_cookie_map.html#afc20d7a1ebb845733b8e294e056ed2ff">CookieMap::Ptr</a> cookies = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>};</div>
 </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>} <span class="comment">// namespace sese::net::http</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>} <span class="comment">// namespace sese::net::http</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_114bac163f10ce5b4749d20bfd96922c.html">net</a></li><li class="navelem"><a class="el" href="dir_fc5eb64f8b6490c66e0bc105dbd81c03.html">http</a></li><li class="navelem"><a class="el" href="_header_8h.html">Header.h</a></li>
-    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 3日 星期五 14:41:22 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

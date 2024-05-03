@@ -110,11 +110,14 @@ var namespacesese =
     [ "makeSharedFromList", "namespacesese.html#a7749d6eb61e7232fd54bbf262da2e91a", null ],
     [ "makeUnique", "namespacesese.html#a24624225e57bb1d94b52ec6c33c0b8a1", null ],
     [ "makeUniqueFromList", "namespacesese.html#ae4ef3a5bd39012ba08ea948e8fd22fa7", null ],
+    [ "number2StringLength", "namespacesese.html#a0a951f1886af83a7d610e57a8257b834", null ],
     [ "sleep", "namespacesese.html#a1a5605fe9c056879ab684e6fa8e2c460", null ],
     [ "sleep", "namespacesese.html#aac383eba57816760f6f2c997d7345143", null ],
     [ "strcmp", "namespacesese.html#af76bcde45079eb9f6de3201bf6d825b1", null ],
     [ "strcmpDoNotCase", "namespacesese.html#aaf55c4521a0bbe4bd02595161d2fc9cd", null ],
     [ "streamMove", "namespacesese.html#aa562f1f629706a4851b840247fa1b5a0", null ],
+    [ "to_time_t", "namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08", null ],
+    [ "toInteger", "namespacesese.html#a6453fe856f0afc7bce5187768095cf4f", null ],
     [ "current_data", "namespacesese.html#a188c7e63df4af0f87d26afe95591f4a4", null ],
     [ "Timer", "namespacesese.html#a2ee79c0896ba8dcd8d4d232c79f96cb8", null ]
 ];

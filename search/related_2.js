@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sstringview_0',['SStringView',['../classsstr_1_1_s_string.html#a382b56f56d7d9dd8041d71e1b81184ce',1,'sstr::SString']]]
+  ['nativeiocpserver_0',['NativeIOCPServer',['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_context.html#a91ff49ef4ed4123cb745a7a3ddcafb69',1,'sese::_windows::iocp::v1::NativeContext']]]
 ];

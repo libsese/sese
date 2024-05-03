@@ -9,9 +9,9 @@ var indexSectionsWithContent =
   6: "abcdefghiklmnoprstuvw",
   7: "cdefhlmprst",
   8: "abcdefghilmnoprstuvwz",
-  9: "inst",
+  9: "hinst",
   10: "_abcdefghilmnprstvwx",
-  11: "bcs关内列平弃"
+  11: "bs关内列平弃"
 };
 
 var indexSectionNames =

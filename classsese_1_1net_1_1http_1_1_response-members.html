@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese-core</title>
+<title>sese</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -60,7 +60,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">sese-core
+   <div id="projectname">sese
    &#160;<span id="projectnumber">x.y.z</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
@@ -138,7 +138,9 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_response.
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a3772da84907cc494bbebdbf846bb8684">cookies</a></td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a18772acaacda337977c884fb40ae09ee">empty</a>() const</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a0de7f929e0c2308d21fba1b15e259db3">end</a>() noexcept</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#abda1472443ada4c56c75c376af28bd61">get</a>(const std::string &amp;key, const std::string &amp;default_value) noexcept</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a3f1567ebe644edf12ac59717d4b80a4a">exist</a>(const std::string &amp;key)</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#abda1472443ada4c56c75c376af28bd61">get</a>(const std::string &amp;key, const std::string &amp;default_value) noexcept</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a8b59c2f39588bbe63126312371385e03">get</a>(const std::string &amp;key)</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html#a897f006296100163ab72fa674779c83a">getBody</a>()</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html">sese::net::http::Response</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html#ac6b85a3b061d06d38468e2b3ce6ab9ab">getCode</a>() const noexcept</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html">sese::net::http::ResponseHeader</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#aee26bf81a39563de0799e9451ff9c6bc">getCookie</a>(const std::string &amp;name) const</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"></td></tr>
@@ -156,16 +158,17 @@ $(document).ready(function(){initNavTree('classsese_1_1net_1_1http_1_1_response.
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a5ee2a6d0e0c28ca059d391580db8caac">setCookie</a>(const Cookie::Ptr &amp;cookie)</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#aa175360bd9ffa572f85b39304028a16b">setCookies</a>(const CookieMap::Ptr &amp;cookies)</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html#a0d13128c5608354beeb9f49bca58def6">setVersion</a>(HttpVersion new_version)</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html">sese::net::http::ResponseHeader</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html#a0159a966e2e674a045e0593683649000">statusCode</a></td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html">sese::net::http::ResponseHeader</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html#aab10566800adeedbbaa7ad526a20f263">swap</a>(Response &amp;another) noexcept</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html">sese::net::http::Response</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html#ae84378891962c04dec387f0861a66323">version</a></td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html">sese::net::http::ResponseHeader</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a47afa66fb66a9d48f9e17b70c071f357">~Header</a>()=default</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#afa34542cc8a8e5f1fdbe5026bbc5b703">size</a>() const</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html#a0159a966e2e674a045e0593683649000">statusCode</a></td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html">sese::net::http::ResponseHeader</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html#aab10566800adeedbbaa7ad526a20f263">swap</a>(Response &amp;another) noexcept</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response.html">sese::net::http::Response</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html#ae84378891962c04dec387f0861a66323">version</a></td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_response_header.html">sese::net::http::ResponseHeader</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html#a47afa66fb66a9d48f9e17b70c071f357">~Header</a>()=default</td><td class="entry"><a class="el" href="classsese_1_1net_1_1http_1_1_header.html">sese::net::http::Header</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 3日 星期五 14:41:24 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>sese-core</title>
+<title>sese</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -60,7 +60,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">sese-core
+   <div id="projectname">sese
    &#160;<span id="projectnumber">x.y.z</span>
    </div>
    <div id="projectbrief">A cross-platform framework</div>
@@ -146,6 +146,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:abec395c117d01874c72cfb13928c5f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a475d4bb5daad3d4b63b1915a7d804251" id="r_a475d4bb5daad3d4b63b1915a7d804251"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1http_1_1_range.html#a475d4bb5daad3d4b63b1915a7d804251">toString</a> (size_t total) const noexcept</td></tr>
 <tr class="separator:a475d4bb5daad3d4b63b1915a7d804251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3024521d1fed57d54b919de3f241b5f8" id="r_a3024521d1fed57d54b919de3f241b5f8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1http_1_1_range.html#a3024521d1fed57d54b919de3f241b5f8">toStringLength</a> (size_t total) const noexcept</td></tr>
+<tr class="separator:a3024521d1fed57d54b919de3f241b5f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
@@ -159,8 +161,6 @@ Public 属性</h2></td></tr>
 <tr class="separator:a9aeee58f03af3b221480ca137058b3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0053eed4efb483cde99a77059bbccd3" id="r_ac0053eed4efb483cde99a77059bbccd3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1http_1_1_range.html#ac0053eed4efb483cde99a77059bbccd3">len</a> = 0</td></tr>
 <tr class="separator:ac0053eed4efb483cde99a77059bbccd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a528e457f4b3aa1d3339eb9d08871c71a" id="r_a528e457f4b3aa1d3339eb9d08871c71a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1net_1_1http_1_1_range.html#a528e457f4b3aa1d3339eb9d08871c71a">cur</a> = 0</td></tr>
-<tr class="separator:a528e457f4b3aa1d3339eb9d08871c71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>HTTP 内容区间类 </p>
@@ -248,7 +248,9 @@ Public 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd><a class="el" href="structsese_1_1net_1_1http_1_1_range.html" title="HTTP 内容区间类">Range</a> </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a634e4a03c81a2b2b9759f5d360643b8f">sese::text::AbstractStringBuffer::split()</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a42027ecdeca2f09104419174167ed2ab">sese::text::AbstractStringBuffer::split()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html#a4610edeb6e748c91f7aafdcbee10975a">sese::internal::service::http::v3::HttpServiceImpl::handleRequest()</a>.</p>
 
 </div>
 </div>
@@ -278,6 +280,34 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="a3024521d1fed57d54b919de3f241b5f8" name="a3024521d1fed57d54b919de3f241b5f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3024521d1fed57d54b919de3f241b5f8">&#9670;&#160;</a></span>toStringLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sese::net::http::Range::toStringLength </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>total</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="namespacesese.html#a0a951f1886af83a7d610e57a8257b834">sese::number2StringLength()</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">类成员变量说明</h2>
 <a id="a9aeee58f03af3b221480ca137058b3a1" name="a9aeee58f03af3b221480ca137058b3a1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9aeee58f03af3b221480ca137058b3a1">&#9670;&#160;</a></span>begin</h2>
@@ -287,20 +317,6 @@ Public 属性</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">size_t sese::net::http::Range::begin = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a528e457f4b3aa1d3339eb9d08871c71a" name="a528e457f4b3aa1d3339eb9d08871c71a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a528e457f4b3aa1d3339eb9d08871c71a">&#9670;&#160;</a></span>cur</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t sese::net::http::Range::cur = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -331,7 +347,7 @@ Public 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net.html">net</a></li><li class="navelem"><a class="el" href="namespacesese_1_1net_1_1http.html">http</a></li><li class="navelem"><a class="el" href="structsese_1_1net_1_1http_1_1_range.html">Range</a></li>
-    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 3日 星期五 14:41:24 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
