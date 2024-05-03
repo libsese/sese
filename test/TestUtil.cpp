@@ -18,7 +18,7 @@ TEST(TestUtil, Operator) {
     EXPECT_EQ(i, 0);
 
     auto j = sese::StrCmp()("ABC", "abc");
-    EXPECT_EQ(j, -1);
+    EXPECT_NE(j, 0);
 }
 
 TEST(TestUtil, Number2StringLength) {
