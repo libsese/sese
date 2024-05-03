@@ -31,14 +31,14 @@ int64_t toInteger(const std::string &string, int radix = 10);
  * @brief 字符比较器
  */
 struct StrCmp {
-    bool operator()(char const *lv, char const *rv);
+    int operator()(char const *lv, char const *rv);
 };
 
 /**
  * @brief 字符比较器（忽略大小写）
  */
 struct StrCmpI {
-    bool operator()(char const *lv, char const *rv);
+    int operator()(char const *lv, char const *rv);
 };
 
 /**
