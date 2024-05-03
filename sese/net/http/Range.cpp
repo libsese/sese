@@ -1,5 +1,6 @@
 #include "sese/net/http/Range.h"
 #include "sese/text/StringBuilder.h"
+#include "sese/Util.h"
 
 sese::net::http::Range::Range(size_t begin, size_t len) noexcept {
     this->begin = begin;
@@ -17,7 +18,7 @@ std::vector<sese::net::http::Range> sese::net::http::Range::parse(const std::str
         return vector;
     }
 
-    auto tmp1 = sese::text::StringBuilder::split(tmp0[1], ", ");
+    auto tmp1 = text::StringBuilder::split(tmp0[1], ",");
     if (tmp1.empty()) {
         return vector;
     }
@@ -60,4 +61,14 @@ std::vector<sese::net::http::Range> sese::net::http::Range::parse(const std::str
 
 std::string sese::net::http::Range::toString(size_t total) const noexcept {
     return "bytes " + std::to_string(begin) + "-" + std::to_string(begin + len - 1) + "/" + std::to_string(total);
+}
+
+size_t sese::net::http::Range::toStringLength(size_t total) const noexcept {
+    size_t length = strlen("bytes ");
+    length += number2StringLength(begin, 10);
+    length += strlen("-");
+    length += number2StringLength(begin + len - 1, 10);
+    length += strlen("/");
+    length += number2StringLength(total, 10);
+    return length;
 }

@@ -40,8 +40,19 @@ public:
     inline std::map<std::string, std::string>::iterator begin() noexcept { return headers.begin(); }
     inline std::map<std::string, std::string>::iterator end() noexcept { return headers.end(); }
 
-    inline void clear() { headers.clear(); }
-    [[nodiscard]] inline bool empty() const { return headers.empty(); }
+    void clear() { headers.clear(); }
+    [[nodiscard]] bool empty() const { return headers.empty(); }
+    [[nodiscard]] size_t size() const { return headers.size(); }
+
+    /// 判断某个字段是否存在
+    /// @param key 头部字段名称
+    /// @return 结果
+    bool exist(const std::string &key) { return headers.find(key) != headers.end(); }
+    /// 当确定一定存在此字段时可以调用
+    /// @see sese::net::http::Header::exist
+    /// @param key 头部字段名称
+    /// @return 值
+    const std::string &get(const std::string &key) { return headers.at(key); }
 
     /// 获取当前 Cookie 映射集
     /// \retval nullptr 当前映射集为空

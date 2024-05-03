@@ -33,7 +33,9 @@ public:
     AbstractStringBuffer(const AbstractStringBuffer &abstract_string_buffer) noexcept;
     AbstractStringBuffer(AbstractStringBuffer &&abstract_string_buffer) noexcept;
 
-    static std::vector<std::string> split(const std::string &text, const std::string &sub) noexcept;
+    static std::vector<std::string> split(const std::string_view &text, const std::string_view &sub) noexcept;
+    static bool startsWith(const std::string_view &text, const std::string_view &prefix) noexcept;
+    static bool endsWith(const std::string_view &text, const std::string_view &suffix) noexcept;
 
 protected:
     size_t cap{};           /// 实际容量
@@ -74,7 +76,9 @@ public:
     virtual bool insertAt(int index, const StringView &view);
     /// 去除两端空格
     virtual void trim() noexcept;
-    [[nodiscard]] virtual std::vector<std::string> split(const std::string &str) const noexcept;
+    [[nodiscard]] virtual std::vector<std::string> split(const std::string_view &str) const noexcept;
+    [[nodiscard]] virtual bool startsWith(const std::string_view &prefix) const noexcept;
+    [[nodiscard]] virtual bool endsWith(const std::string_view &suffix) const noexcept;
     virtual std::string toString();
     virtual String toSString();
 };

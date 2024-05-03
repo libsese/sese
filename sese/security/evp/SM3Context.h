@@ -9,6 +9,7 @@
 
 namespace sese::security::evp {
 
+/// EVP SM3 算法上下文
 class SM3Context : public Context {
 public:
     SM3Context() noexcept;

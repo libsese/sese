@@ -119,6 +119,17 @@ TEST(TestStringBuilder, Split) {
     ASSERT_EQ(res[1], std::string_view("World"));
 }
 
+TEST(TestStringBuilder, xxxWith) {
+    auto builder = sese::text::StringBuffer("Hello,World");
+    EXPECT_TRUE(builder.startsWith("Hello"));
+    EXPECT_FALSE(builder.startsWith("Helle"));
+    EXPECT_FALSE(builder.startsWith("Hello,World,"));
+
+    EXPECT_TRUE(builder.endsWith("World"));
+    EXPECT_FALSE(builder.endsWith("Word"));
+    EXPECT_FALSE(builder.endsWith("Hello,World,"));
+}
+
 TEST(TestStringBuilder, Del) {
     auto buffer = sese::text::StringBuilder();
     buffer << "Hello, World";

@@ -18,7 +18,6 @@ namespace sese::net::http {
 struct Range {
     size_t begin = 0;
     size_t len = 0;
-    size_t cur = 0;
 
     Range(size_t begin, size_t len) noexcept;
 
@@ -34,6 +33,8 @@ struct Range {
     static std::vector<Range> parse(const std::string &str, size_t total) noexcept;
 
     [[nodiscard]] std::string toString(size_t total) const noexcept;
+
+    [[nodiscard]] size_t toStringLength(size_t total) const noexcept;
 };
 
 } // namespace sese::net::http

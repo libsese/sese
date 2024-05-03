@@ -21,18 +21,24 @@ namespace sese {
 // 使用预声明减少头文件引用
 enum class Level;
 
+/// 无视错误的整形转换函数
+/// @param string 表示整形的字符串
+/// @param radix 进制
+/// @return 整形
+int64_t toInteger(const std::string &string, int radix = 10);
+
 /**
  * @brief 字符比较器
  */
 struct StrCmp {
-    bool operator()(char const *lv, char const *rv);
+    int operator()(char const *lv, char const *rv);
 };
 
 /**
  * @brief 字符比较器（忽略大小写）
  */
 struct StrCmpI {
-    bool operator()(char const *lv, char const *rv);
+    int operator()(char const *lv, char const *rv);
 };
 
 /**
@@ -107,10 +113,35 @@ API int64_t getErrorCode();
 /// \return 实际移动大小
 API size_t streamMove(sese::io::OutputStream *out, sese::io::InputStream *in, size_t size) noexcept;
 
-} // namespace sese
+/// 获取数字转字符串后所需的字节长度
+/// @note 只能转换整数
+/// @tparam T 入参整数类型
+/// @param num 待转换的数字
+/// @param radix 进制
+/// @return 数字字符串所需长度
+template<class T>
+size_t number2StringLength(T num, size_t radix = 10) {
+    static_assert(!std::is_same_v<T, double>, "Must be an integer");
+    static_assert(!std::is_same_v<T, float>, "Must be an integer");
+    size_t length = 0;
+    if (num == 0) return 1;
+    if (num < 0) {
+        length += 1;
+        num *= -1;
+    }
+    do {
+        num /= static_cast<T>(radix);
+        length += 1;
+    } while (num > 0);
+    return length;
+}
 
 // GCOVR_EXCL_START
-/// https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
+/// 时间类型转换
+/// @see https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
+/// @tparam TP 转换对象类型
+/// @param tp 转换对象
+/// @return std::time_t 类型的时间
 template<typename TP>
 std::time_t to_time_t(TP tp) {
     using namespace std::chrono;
@@ -118,6 +149,8 @@ std::time_t to_time_t(TP tp) {
     return system_clock::to_time_t(sctp);
 }
 // GCOVR_EXCL_STOP
+
+} // namespace sese
 
 /**
  * 获取详细的信息(C 接口)

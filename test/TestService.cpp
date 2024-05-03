@@ -96,7 +96,7 @@ class MyTimerableServiceV1 : public sese::service::v1::TimerableService {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
-        if (0 == sese::net::Socket::setNonblocking((sese::socket_t) fd)) {
+        if (0 == sese::net::Socket::setNonblocking(static_cast<sese::socket_t>(fd))) {
             auto event = createEvent(fd, EVENT_READ, nullptr);
             createTimeoutEvent(fd, event, 3);
         } else {
@@ -118,7 +118,7 @@ public:
     void onTimeout(sese::service::v1::TimeoutEvent *timeout_event) override {
         printf("fd %d close", timeout_event->fd);
         sese::net::Socket::close(timeout_event->fd);
-        auto event = (sese::event::Event *) timeout_event->data;
+        auto event = static_cast<sese::event::Event *>(timeout_event->data);
         freeEvent(event);
     }
 };
@@ -159,7 +159,7 @@ class MyTimerableServiceV2 : public sese::service::v2::TimerableService {
 public:
     void onAccept(int fd) override {
         printf("fd %d connect", fd);
-        if (0 == sese::net::Socket::setNonblocking((sese::socket_t) fd)) {
+        if (0 == sese::net::Socket::setNonblocking(static_cast<sese::socket_t>(fd))) {
             auto event = createEvent(fd, EVENT_READ, nullptr);
             auto timeout = setTimeoutEvent(3, nullptr);
             timeout->data = event;
@@ -170,7 +170,7 @@ public:
     }
 
     void onRead(sese::event::BaseEvent *event) override {
-        auto timeout_event = (sese::service::v2::TimeoutEvent *) (event->data);
+        auto timeout_event = static_cast<sese::service::v2::TimeoutEvent *>(event->data);
         // timeoutEvent will not be nullptr
         cancelTimeoutEvent(timeout_event);
         timeout_event = nullptr;
@@ -186,7 +186,7 @@ public:
     }
 
     void onTimeout(sese::service::v2::TimeoutEvent *timeout_event) override {
-        auto event = (sese::event::Event *) timeout_event->data;
+        auto event = static_cast<sese::event::Event *>(timeout_event->data);
         printf("fd %d close", event->fd);
         sese::net::Socket::close(event->fd);
         freeEvent(event);

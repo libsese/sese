@@ -181,6 +181,30 @@ if (SESE_BUILD_TEST AND WIN32)
     endif ()
 endif ()
 
+if (SESE_BUILD_EXAMPLE AND WIN32)
+    if (${CMAKE_GENERATOR} MATCHES "Ninja")
+        # 单配置
+        add_custom_command(
+                TARGET
+                Core
+                POST_BUILD
+                COMMAND
+                ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/demo
+        )
+    else ()
+        # 多配置
+        add_custom_command(
+                TARGET
+                Core
+                POST_BUILD
+                COMMAND
+                ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/demo/$<CONFIG>
+        )
+    endif ()
+endif ()
+
 ###################################################################################
 # Windows 平台配置
 ###################################################################################
