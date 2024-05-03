@@ -37,11 +37,11 @@ int32_t sese::findFirstAt(const char *str, char ch) {
 }
 
 bool sese::StrCmp::operator()(char const *lv, char const *rv) {
-    return ::strcmp(lv, rv);
+    return ::strcmp(lv, rv) == 0;
 }
 
 bool sese::StrCmpI::operator()(char const *lv, char const *rv) {
-    return strcmpi(lv, rv);
+    return strcmpi(lv, rv) == 0;
 }
 
 bool sese::strcmp(const char *lv, const char *rv) noexcept {

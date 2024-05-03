@@ -15,10 +15,10 @@ TEST(TestUtil, Find) {
 
 TEST(TestUtil, Operator) {
     auto i = sese::StrCmpI()("ABC", "abc");
-    EXPECT_EQ(i, 0);
+    EXPECT_TRUE(i);
 
     auto j = sese::StrCmp()("ABC", "abc");
-    EXPECT_EQ(j, 0);
+    EXPECT_FALSE(j);
 }
 
 TEST(TestUtil, Number2StringLength) {

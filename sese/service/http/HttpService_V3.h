@@ -11,6 +11,8 @@
 #include <sese/security/SSLContext.h>
 #include <sese/thread/Thread.h>
 
+#include <unordered_map>
+
 namespace sese::service::http::v3 {
 
 /// Http 服务接口
