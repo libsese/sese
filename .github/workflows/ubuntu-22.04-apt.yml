@@ -69,6 +69,8 @@ jobs:
           -DSESE_USE_ARCHIVE=ON
           -DSESE_DB_USE_MARIADB=ON
           -DSESE_DB_USE_POSTGRES=ON
+          -DSESE_DB_MYSQL_CONNECTION_STRING="host=mysql\;port=18806\;user=root\;pwd=libsese\;db=db_test\;"
+          -DSESE_DB_PSQL_CONNECTION_STRING="host=postgres\;port=18080\;user=postgres\;pwd=libsese\;db=db_test\;"
           -DSESE_DB_SQLITE_CONNECTION_STRING="${{ github.workspace }}/build/db_test.db"
           -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
           -Bbuild

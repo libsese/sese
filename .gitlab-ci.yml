@@ -16,9 +16,6 @@ docker_build:
         - dockerfile
         - requirements.txt
         - scripts/install_ubuntu_deps.sh
-        - scripts/mysql_dump.sql
-        - scripts/postgres_dump.sql
-        - scripts/sqlite_dump.sql
       when: never
 
 docker_build_manual:
@@ -32,7 +29,16 @@ docker_build_manual:
 
 gtest:
   stage: test
-  image: $CI_REGISTRY/libsese/sese-core:latest
+  services:
+    - mysql:latest
+    - postgres:latest
+  variables:
+    MYSQL_ROOT_PASSWORD: libsese
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: libsese
+    POSTGRES_HOST_AUTH_METHOD: trust
+    PGPASSWORD: $POSTGRES_PASSWORD
+  image: reg.mikumikumi.xyz/libsese/sese-core:latest
   allow_failure: true
   when: always
   script:
@@ -51,19 +57,16 @@ gtest:
       -DSESE_DB_USE_MARIADB=ON
       -DSESE_DB_USE_POSTGRES=ON
       -DSESE_DB_SQLITE_CONNECTION_STRING="/tmp/db_test.db"
-      -DSESE_DB_MYSQL_CONNECTION_STRING="host=127.0.0.1\;port=3306\;user=root\;pwd=libsese\;db=db_test\;"
-      -DSESE_DB_PSQL_CONNECTION_STRING="host=127.0.0.1\;port=5432\;user=root\;pwd=libsese\;db=db_test\;"
+      -DSESE_DB_MYSQL_CONNECTION_STRING="host=mysql\;port=3306\;user=root\;pwd=libsese\;db=db_test\;"
+      -DSESE_DB_PSQL_CONNECTION_STRING="host=postgres\;port=5432\;user=postgres\;pwd=libsese\;db=db_test\;"
       -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
     - cmake --build build/linux-release -- -j 2
-    # setup service
-    - service mariadb start
-    - service postgresql start
-    - sleep 5
+    # init database
+    - mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql --port=3306 < ./scripts/mysql_dump.sql
+    - psql -U postgres -d postgres -h postgres -p 5432 -f ./scripts/postgres_dump.sql
+    - sqlite3 /tmp/db_test.db < ./scripts/sqlite_dump.sql
     # run tests
     - build/linux-release/test/AllTestsInMain
-    # shutdown service
-    - service mariadb stop
-    - service postgresql stop
     # make coverage reposts
     - mkdir -p build/coverage
     - gcovr --config gcovr-cobertura.cfg
@@ -86,4 +89,3 @@ pages:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: always
-    - when: manual
