@@ -11,19 +11,51 @@ env:
 jobs:
   test:
     runs-on: ubuntu-22.04
+    services:
+      mariadb:
+        image: mariadb
+        env:
+          MARIADB_ROOT_HOST: '%'
+          MARIADB_USER: libsese
+          MARIADB_PASSWORD: libsese
+          MARIADB_ROOT_PASSWORD: libsese
+        ports:
+          - '127.0.0.1:18806:3306'
+      postgresql:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: libsese
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - '127.0.0.1:18080:5432'
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5.1.0
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies(pip)
+      - name: Setup Database
+        working-directory: ${{ github.workspace }}
+        env:
+          PGPASSWORD: libsese
+        run: |
+          mysql -uroot -plibsese -h 127.0.0.1 -P 18806 < ./scripts/mysql_dump.sql
+          psql -U postgres -d postgres -h 127.0.0.1 -p 18080 -f ./scripts/postgres_dump.sql
+          mkdir build
+          sqlite3 build/db_test.db < scripts/sqlite_dump.sql
+
+      - name: Setup pip
         run: pip install -r ${{ github.workspace }}/requirements.txt
 
-      - name: Check deps
+      - name: Setup deps
         working-directory: ${{ github.workspace }}
         run: sudo ./scripts/install_ubuntu_deps.sh
 
@@ -37,6 +69,7 @@ jobs:
           -DSESE_USE_ARCHIVE=ON
           -DSESE_DB_USE_MARIADB=ON
           -DSESE_DB_USE_POSTGRES=ON
+          -DSESE_DB_SQLITE_CONNECTION_STRING="${{ github.workspace }}/build/db_test.db"
           -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
           -Bbuild
 
@@ -44,24 +77,9 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: cmake --build build -- -j 2
 
-      - name: Run Sqlite Scripts
-        working-directory: ${{ github.workspace }}
-        run: |
-          sqlite3 build/db_test.db < scripts/sqlite_dump.sql
-
-      - name: Services up
-        working-directory: ${{ github.workspace }}
-        run: |
-          sudo docker-compose up -d mariadb postgresql
-          sleep 5
-
       - name: Test
         working-directory: ${{ github.workspace }}
         run: build/test/AllTestsInMain
-
-      - name: Services down
-        working-directory: ${{ github.workspace }}
-        run: sudo docker-compose down
 
       - name: Coverage
         working-directory: ${{ github.workspace }}

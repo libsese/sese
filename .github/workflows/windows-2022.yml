@@ -7,24 +7,19 @@ on:
 jobs:
   test:
     runs-on: windows-2022
-
+    env:
+      VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5.1.0
         with:
             python-version: '3.11'
 
-      - name: Install Dependencies(pip)
+      - name: Setup pip
         run: pip install -r ${{ github.workspace }}/requirements.txt
-
-      - name: Cache Vcpkg Dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ github.workspace }}/build/vcpkg_installed
-          key: ${{ runner.os }}-vcpkg-${{ hashFiles('**/vcpkg.json') }}
 
       - name: Setup Ninja
         uses: ashutoshvarma/setup-ninja@master
@@ -33,6 +28,13 @@ jobs:
 
       - name: Requiring CL
         uses: ilammy/msvc-dev-cmd@v1.12.1
+
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}

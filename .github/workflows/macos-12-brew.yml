@@ -12,15 +12,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5.1.0
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies(pip)
+      - name: Setup pip
         run: pip install -r ${{ github.workspace }}/requirements.txt
 
-      - name: Check deps
+      - name: Setup deps
         working-directory: ${{ github.workspace }}
         run: ./scripts/install_darwin_deps.sh
 
