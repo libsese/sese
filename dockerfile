@@ -17,7 +17,7 @@ COPY ./scripts/install_ubuntu_deps.sh /tmp/install_deps.sh
 
 RUN yes | unminimize && \
     bash ./tmp/install_deps.sh && \
-    apt install -y --no-install-recommends mysql-client postgresql-client sqlite3 python3-pip && \
+    apt install -y --no-install-recommends mysql-client postgresql-client sqlite3 python3-pip doxygen && \
     apt autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
