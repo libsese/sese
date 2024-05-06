@@ -64,11 +64,6 @@ add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
 add_subdirectory(sese)
 
-if (SESE_BUILD_TEST)
-    enable_testing()
-    add_subdirectory(test)
-endif ()
-
 if (SESE_BUILD_EXAMPLE)
     add_subdirectory(demo)
 endif ()

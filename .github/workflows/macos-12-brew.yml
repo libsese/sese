@@ -42,4 +42,4 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*
+        run: build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*

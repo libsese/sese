@@ -50,8 +50,8 @@ int main(int argc, char **argv) {
 
     sese::initCore(argc, argv);
     auto ssl = sese::security::SSLContextBuilder::SSL4Server();
-    ssl->importCertFile(PROJECT_PATH "/test/Data/test-ca.crt");
-    ssl->importPrivateKeyFile(PROJECT_PATH "/test/Data/test-key.pem");
+    ssl->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt");
+    ssl->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key.pem");
 
     auto server = HttpServer();
     server.setKeepalive(60);

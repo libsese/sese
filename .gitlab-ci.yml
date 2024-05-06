@@ -66,7 +66,7 @@ gtest:
     - psql -U postgres -d postgres -h postgres -p 5432 -f ./scripts/postgres_dump.sql
     - sqlite3 /tmp/db_test.db < ./scripts/sqlite_dump.sql
     # run tests
-    - build/linux-release/test/AllTestsInMain
+    - build/linux-release/sese/test/AllTestsInMain
     # make coverage reposts
     - mkdir -p build/coverage
     - gcovr --config gcovr-cobertura.cfg

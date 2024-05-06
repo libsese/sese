@@ -8,7 +8,7 @@
 
 /// 从文件解析 Json 格式
 TEST(TestJson, FromFile) {
-    auto file_stream = sese::io::FileStream::create(PROJECT_PATH "/test/Data/data.json", TEXT_READ_EXISTED);
+    auto file_stream = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", TEXT_READ_EXISTED);
     auto object = sese::json::JsonUtil::deserialize(file_stream, 3);
     ASSERT_TRUE(object != nullptr);
 
@@ -124,7 +124,7 @@ TEST(TestJson, Setter) {
 #include <sese/config/Json.h>
 
 TEST(TestJson, Value) {
-    auto input = sese::io::FileStream::create(PROJECT_PATH "/test/Data/data.json", TEXT_READ_EXISTED);
+    auto input = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.json", TEXT_READ_EXISTED);
     auto object = sese::Json::parse(input.get(), 4);
     input->close();
     ASSERT_FALSE(object.isNull());

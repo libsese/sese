@@ -4,7 +4,7 @@
 #include <sese/record/Marco.h>
 
 TEST(TestUniReader, Open_0) {
-    auto reader = sese::UniReader::create(PROJECT_PATH "/test/Data/data-0.txt");
+    auto reader = sese::UniReader::create(PROJECT_PATH "/sese/test/Data/data-0.txt");
     GTEST_ASSERT_NE(reader, nullptr);
 
     std::string str;

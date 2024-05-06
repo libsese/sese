@@ -31,7 +31,7 @@ TEST(TestFileStream, Seek) {
 
 TEST(TestFileStream, Peek) {
     std::string expect = "Hello";
-    auto file = sese::io::File::create(PROJECT_PATH "/test/Data/data-0.txt", TEXT_READ_EXISTED);
+    auto file = sese::io::File::create(PROJECT_PATH "/sese/test/Data/data-0.txt", TEXT_READ_EXISTED);
     ASSERT_NE(file, nullptr);
     auto fd = file->getFd();
     EXPECT_NE(fd, 0);

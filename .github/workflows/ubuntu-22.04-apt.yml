@@ -81,7 +81,7 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/test/AllTestsInMain
+        run: build/sese/test/AllTestsInMain
 
       - name: Coverage
         working-directory: ${{ github.workspace }}

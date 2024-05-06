@@ -48,7 +48,7 @@ TEST(TestStream, BufferWrapper) {
 }
 
 TEST(TestStream, StreamReader) {
-    auto file = sese::io::FileStream::create(PROJECT_PATH "/test/Data/data-1.txt", TEXT_READ_EXISTED);
+    auto file = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data-1.txt", TEXT_READ_EXISTED);
     ASSERT_TRUE(file != nullptr);
 
     auto reader = std::make_shared<sese::io::StreamReader>(file);
@@ -64,7 +64,7 @@ TEST(TestStream, StreamReader) {
 }
 
 TEST(TestStream, TextReader_0) {
-    auto reader = sese::text::TextReader::create(PROJECT_PATH "/test/Data/data-0.txt");
+    auto reader = sese::text::TextReader::create(PROJECT_PATH "/sese/test/Data/data-0.txt");
     ASSERT_NE(reader, nullptr);
 
     while (true) {
