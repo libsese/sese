@@ -16,6 +16,8 @@ TEST(TestResource, Manager) {
     auto res = instance->getResource("hello.txt");
     EXPECT_NE(res, nullptr);
 
+    EXPECT_EQ(instance->getResource("hello"), nullptr);
+
     // 获取资源流
     auto stream = res->getStream();
     EXPECT_NE(stream, nullptr);

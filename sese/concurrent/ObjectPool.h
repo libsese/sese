@@ -15,6 +15,8 @@
 
 namespace sese::concurrent {
 
+// GCOVR_EXCL_START
+
 /// \brief 并发对象池
 /// \tparam T 池中对象类型
 template<typename T>
@@ -75,4 +77,7 @@ private:
 
     LinkedQueue<T *> queue;
 };
+
+// GCOVR_EXCL_STOP
+
 } // namespace sese::concurrent

@@ -31,6 +31,10 @@ int64_t sese::res::ResourceStream::getSeek() const {
     return static_cast<int64_t>(pos);
 }
 
+int32_t sese::res::ResourceStream::setSeek(int64_t offset, io::Seek seek) {
+    return setSeek(offset, static_cast<int32_t>(seek));
+}
+
 int32_t sese::res::ResourceStream::setSeek(int64_t offset, int32_t whence) {
     int64_t new_pos;
     if (whence == SEEK_CUR) {

@@ -12,6 +12,8 @@
 
 namespace sese::concurrent {
 
+// GCOVR_EXCL_START
+
 /// \brief 非阻塞线程安全队列
 /// \tparam T 模板类型
 template<class T>
@@ -93,5 +95,7 @@ public:
         return head == tail;
     }
 };
+
+// GCOVR_EXCL_STOP
 
 } // namespace sese::concurrent

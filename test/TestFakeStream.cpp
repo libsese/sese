@@ -3,6 +3,8 @@
 
 #include "gtest/gtest.h"
 
+#include <sstream>
+
 class MyFakeStream {
 public:
     int64_t read(void *buffer, size_t len) noexcept {
@@ -13,7 +15,7 @@ public:
         return 514;
     }
 
-    void close(){};
+    void close() {};
 };
 
 TEST(TestFakeStream, FakeStream) {
@@ -36,4 +38,26 @@ TEST(TestFakeStream, ClosableFakeStream) {
     closeable->close();
 
     delete fake_stream;
+}
+
+TEST(TestFakeStream, StdInputStream) {
+    std::string content = "hello";
+    std::stringstream stream;
+    stream << content;
+
+    std::istream istream(stream.rdbuf());
+    auto fake_stream = sese::io::StdInputStreamWrapper(istream);
+
+    char buffer[32]{};
+    EXPECT_EQ(content.length(), fake_stream.read(buffer, sizeof(buffer)));
+    EXPECT_EQ(content, buffer);
+}
+
+TEST(TestFakeStream, StdOutputStream) {
+    std::string content = "hello";
+    std::stringstream stream;
+    std::ostream ostream(stream.rdbuf());
+    auto fake_stream = sese::io::StdOutputStreamWrapper(ostream);
+    EXPECT_EQ(content.length(), fake_stream.write(content.data(), content.length()));
+    EXPECT_EQ(content, stream.str());
 }
