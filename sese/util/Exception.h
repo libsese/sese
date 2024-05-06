@@ -20,7 +20,7 @@
 
 namespace sese {
 
-#if defined(SESE_PLATFORM_WINDOWS)
+#if defined(_MSC_VER)
 using NativeException = std::exception;
 #else
 /// Unix 异常包装类

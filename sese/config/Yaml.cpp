@@ -217,7 +217,7 @@ void Yaml::streamifyObject(io::OutputStream *output, const Value::Dict &dict, si
                 output->write("~", 1);
             } else if (SUB->isBool()) {
                 const auto DATA = SUB->getBool() ? "true" : "false";
-                output->write(DATA, std::strlen(DATA));
+                output->write(DATA, strlen(DATA));
             } else if (SUB->isInt() || SUB->isDouble()) {
                 auto data = SUB->toString();
                 output->write(data.c_str(), data.length());
@@ -262,7 +262,7 @@ void Yaml::streamifyArray(io::OutputStream *output, const Value::List &list, siz
                 output->write("~", 1);
             } else if (sub.isBool()) {
                 auto data = sub.getBool() ? "true" : "false";
-                output->write(data, std::strlen(data));
+                output->write(data, strlen(data));
             } else if (sub.isInt() || sub.isDouble()) {
                 auto data = sub.toString();
                 output->write(data.c_str(), data.length());

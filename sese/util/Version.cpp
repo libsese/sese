@@ -14,7 +14,8 @@ std::optional<Version> Version::parse(const std::string &version) {
     const auto MAJOR = static_cast<uint16_t>(std::strtoul(start_ptr, &end_ptr, 10));
     if (*end_ptr == 0) {
         return Version(MAJOR, 0, 0, 0);
-    } else if (*end_ptr != '.') {
+    }
+    if (*end_ptr != '.') {
         return std::nullopt;
     }
 
@@ -22,7 +23,8 @@ std::optional<Version> Version::parse(const std::string &version) {
     const auto MINOR = static_cast<uint16_t>(std::strtoul(start_ptr, &end_ptr, 10));
     if (*end_ptr == 0) {
         return Version(MAJOR, MINOR, 0, 0);
-    } else if (*end_ptr != '.') {
+    }
+    if (*end_ptr != '.') {
         return std::nullopt;
     }
 
@@ -30,7 +32,8 @@ std::optional<Version> Version::parse(const std::string &version) {
     const auto PATCH = static_cast<uint16_t>(std::strtoul(start_ptr, &end_ptr, 10));
     if (*end_ptr == 0) {
         return Version(MAJOR, MINOR, PATCH, 0);
-    } else if (*end_ptr != '.') {
+    }
+    if (*end_ptr != '.') {
         return std::nullopt;
     }
 
@@ -38,15 +41,14 @@ std::optional<Version> Version::parse(const std::string &version) {
     const auto REVISION = static_cast<uint16_t>(std::strtoul(start_ptr, &end_ptr, 10));
     if (*end_ptr == 0) {
         return Version(MAJOR, MINOR, PATCH, REVISION);
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 std::string Version::toString() const {
     return std::to_string(major_) + "." + std::to_string(minor_) + "." + std::to_string(patch_) + "." + std::to_string(revision_);
 }
-
 
 std::string Version::toShortString() const {
     std::vector<uint16_t> vector;
@@ -58,20 +60,17 @@ std::string Version::toShortString() const {
         count++;
     }
 
-    if (!patch_ && !count) {
-    } else {
+    if (patch_ || count) {
         vector.emplace_back(patch_);
         count++;
     }
 
-    if (!minor_ && !count) {
-    } else {
+    if (minor_ || count) {
         vector.emplace_back(minor_);
         count++;
     }
 
-    if (!major_ && !count) {
-    } else {
+    if (major_ || count) {
         vector.emplace_back(major_);
         count++;
     }

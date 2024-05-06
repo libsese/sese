@@ -5,7 +5,7 @@ sese::res::ResourceStream::ResourceStream(const void *buf, size_t size) : buf(bu
 int64_t sese::res::ResourceStream::read(void *buffer, size_t length) {
     auto readable = size - pos - 1;
     if (readable > 0) {
-        std::memcpy(buffer, static_cast<const char *>(buf) + pos, readable);
+        memcpy(buffer, static_cast<const char *>(buf) + pos, readable);
         pos += readable;
     }
     return static_cast<int64_t>(readable);
@@ -14,7 +14,7 @@ int64_t sese::res::ResourceStream::read(void *buffer, size_t length) {
 int64_t sese::res::ResourceStream::peek(void *buffer, size_t length) {
     auto readable = size - pos - 1;
     if (readable > 0) {
-        std::memcpy(buffer, static_cast<const char *>(buf) + pos, readable);
+        memcpy(buffer, static_cast<const char *>(buf) + pos, readable);
     }
     return static_cast<int64_t>(readable);
 }

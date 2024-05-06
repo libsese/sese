@@ -216,11 +216,11 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_sources(Core PRIVATE ${DLL_INFO_RC})
     target_sources(Core PRIVATE ${NATIVE_WIN_SRC})
 
-    if (${MSVC})
+    if (MSVC)
         target_compile_options(Core PRIVATE "/utf-8")
         target_compile_options(Plugin PRIVATE "/utf-8")
     endif ()
-    target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
+    target_link_libraries(Core PUBLIC crypt32 ws2_32 wsock32 dbghelp iphlpapi advapi32 secur32)
 
     # if (${MINGW})
     #     target_compile_options(Core PRIVATE "-fno-exceptions")
