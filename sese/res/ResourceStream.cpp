@@ -3,7 +3,7 @@
 sese::res::ResourceStream::ResourceStream(const void *buf, size_t size) : buf(buf), size(size) {}
 
 int64_t sese::res::ResourceStream::read(void *buffer, size_t length) {
-    auto readable = size - pos - 1;
+    auto readable = size - pos;
     if (readable > 0) {
         memcpy(buffer, static_cast<const char *>(buf) + pos, readable);
         pos += readable;
@@ -12,7 +12,7 @@ int64_t sese::res::ResourceStream::read(void *buffer, size_t length) {
 }
 
 int64_t sese::res::ResourceStream::peek(void *buffer, size_t length) {
-    auto readable = size - pos - 1;
+    auto readable = size - pos;
     if (readable > 0) {
         memcpy(buffer, static_cast<const char *>(buf) + pos, readable);
     }
@@ -20,7 +20,7 @@ int64_t sese::res::ResourceStream::peek(void *buffer, size_t length) {
 }
 
 int64_t sese::res::ResourceStream::trunc(size_t length) {
-    auto readable = size - pos - 1;
+    auto readable = size - pos;
     if (readable > 0) {
         pos += readable;
     }
@@ -42,7 +42,7 @@ int32_t sese::res::ResourceStream::setSeek(int64_t offset, int32_t whence) {
     } else if (whence == SEEK_SET) {
         new_pos = offset;
     } else if (whence == SEEK_END) {
-        new_pos = static_cast<int64_t>(size) - 1 + offset;
+        new_pos = static_cast<int64_t>(size) + offset;
     } else {
         return -1;
     }

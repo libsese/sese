@@ -16,7 +16,7 @@
 
 #define CTX static_cast<EVP_CIPHER_CTX *>(this->ctx)
 
-// GCOVR_EXCEL_START
+// GCOVR_EXCL_START
 
 inline auto switchCipher(sese::security::evp::DESEncrypter::Type type) {
     using Type = sese::security::evp::DESEncrypter::Type;
@@ -109,7 +109,7 @@ int sese::security::evp::DESDecrypter::final(void *out, int &out_len) const noex
     return EVP_DecryptFinal(CTX, static_cast<unsigned char *>(out), &out_len);
 }
 
-// GCOVR_EXCEL_STOP
+// GCOVR_EXCL_STOP
 
 #if defined(__clang__)
 #pragma clang diagnostic pop
