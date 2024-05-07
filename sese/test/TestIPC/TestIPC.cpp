@@ -35,6 +35,8 @@ TEST(TestIPC, Temp) {
         auto result = channel->read(6);
         for (auto &&msg: result) {
             SESE_INFO("message 6: %s", msg.getDataAsString().c_str());
+            SESE_INFO("message point %p", msg.data());
+            SESE_INFO("message length %zu", msg.length());
         }
     }
 }

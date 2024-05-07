@@ -1,5 +1,6 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/net/http/Range.h>
+#include <sese/net/http/RequestParser.h>
 #include <sese/io/InputBufferWrapper.h>
 #include <sese/io/OutputBufferWrapper.h>
 #include <sese/record/Marco.h>
@@ -70,7 +71,8 @@ GTEST_TEST(TestHttpUtil, SendRequest_0) {
 
     sese::net::http::RequestHeader req{
             {"Host", "www.example.com"},
-            {"Version", "0.0.1"}};
+            {"Version", "0.0.1"}
+    };
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::sendRequest(&output, &req));
 }
 
@@ -81,7 +83,8 @@ GTEST_TEST(TestHttpUtil, SendRequest_1) {
 
     sese::net::http::RequestHeader req{
             {"Host", "www.example.com"},
-            {"Version", "0.0.1"}};
+            {"Version", "0.0.1"}
+    };
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::sendRequest(&output, &req));
 }
 
@@ -142,7 +145,8 @@ GTEST_TEST(TestHttpUtil, SendResponse_1) {
 
     sese::net::http::ResponseHeader resp{
             {"Host", "www.example.com"},
-            {"Version", "0.0.1"}};
+            {"Version", "0.0.1"}
+    };
     GTEST_ASSERT_FALSE(sese::net::http::HttpUtil::sendResponse(&output, &resp));
 }
 
@@ -161,7 +165,8 @@ GTEST_TEST(TestHttpUtil, SendResponse_3) {
 
     sese::net::http::ResponseHeader resp{
             {"Host", "www.example.com"},
-            {"Version", "0.0.1"}};
+            {"Version", "0.0.1"}
+    };
     GTEST_ASSERT_TRUE(sese::net::http::HttpUtil::sendResponse(&output, &resp));
 }
 
@@ -298,4 +303,26 @@ GTEST_TEST(TestHttpRange, Parse_5) {
 GTEST_TEST(TestHttpRange, Parse_6) {
     auto ranges = sese::net::http::Range::parse("bytes=99-1", 100);
     GTEST_EXPECT_TRUE(ranges.empty());
+}
+
+GTEST_TEST(TestHttpRange, toString) {
+    auto ranges = sese::net::http::Range::parse("bytes=200-1000", 2000)[0];
+    auto len = ranges.toStringLength(2000);
+    EXPECT_EQ(len, ranges.toString(2000).length());
+}
+
+GTEST_TEST(TestRequestParser, HostWithPort) {
+    {
+        auto result = sese::net::http::RequestParser::parse("https://127.0.0.1:7890/");
+        ASSERT_NE(result.address, nullptr);
+        EXPECT_EQ(result.address->getPort(), 7890);
+    }
+    {
+        auto result = sese::net::http::RequestParser::parse("https://127.0.0.1:7890a/");
+        ASSERT_EQ(result.address, nullptr);
+    }
+    {
+        auto result = sese::net::http::RequestParser::parse("https://127.0.0.1:7890:5678/");
+        ASSERT_EQ(result.address, nullptr);
+    }
 }

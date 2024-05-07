@@ -1,6 +1,7 @@
 #include <sese/util/Util.h>
-
-#include <map>
+#include <sese/io/OutputBufferWrapper.h>
+#include <sese/io/OutputUtil.h>
+#include <sese/text/String.h>
 
 #include <gtest/gtest.h>
 
@@ -39,10 +40,6 @@ TEST(TestUtil, Misc) {
     puts(str.c_str());
 }
 
-#include <sese/io/OutputBufferWrapper.h>
-#include <sese/io/OutputUtil.h>
-#include <sese/text/String.h>
-
 TEST(TestUtil, OutputUtil) {
     char buf0;
     auto output0 = sese::io::OutputBufferWrapper(&buf0, 1);
@@ -60,4 +57,17 @@ TEST(TestUtil, OutputUtil) {
     auto view = sese::text::StringView("こんにちは");
     output2 << view;
     EXPECT_EQ(view, sese::text::StringView(buf2));
+}
+
+TEST(TestUtil, ToInt) {
+    EXPECT_EQ(sese::toInteger("128", 10), 128);
+    EXPECT_EQ(sese::toInteger("99e", 10), 99);
+}
+
+TEST(TestUtil, Strcmp) {
+    auto i = sese::strcmpDoNotCase("ABC", "abc");
+    EXPECT_EQ(i, true);
+
+    auto j = sese::strcmp("ABC", "abc");
+    EXPECT_EQ(j, false);
 }

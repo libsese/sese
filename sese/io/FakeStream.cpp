@@ -1,5 +1,8 @@
 #include <sese/io/FakeStream.h>
 
+// 标准库流实现封装，不负责校验
+// GCOVR_EXCL_START
+
 sese::io::StdInputStreamWrapper::StdInputStreamWrapper(std::istream &stream) : stream(stream) {}
 
 int64_t sese::io::StdInputStreamWrapper::read(void *buffer, size_t length) {
@@ -33,3 +36,5 @@ int64_t sese::io::StdOutputStreamWrapper::write(const void *buffer, size_t lengt
     latest = now;
     return result;
 }
+
+// GCOVR_EXCL_STOP

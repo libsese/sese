@@ -17,6 +17,14 @@ TEST(TestMariaDriverInstance, InstanceError) {
     ASSERT_EQ(nullptr, instance);
 }
 
+TEST(TestMariaDriverInstance, MissingArgs) {
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::MY_SQL, "host=x;port=x;user=x;pwd=x;"));
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::MY_SQL, "host=x;port=x;user=x;db=x;"));
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::MY_SQL, "host=x;port=x;db=x;pwd=x;"));
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::MY_SQL, "host=x;db=x;user=x;pwd=x;"));
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::MY_SQL, "db=x;port=x;user=x;pwd=x;"));
+}
+
 TEST(TestMariaDriverInstance, QueryData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::MARIA,
