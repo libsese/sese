@@ -19,15 +19,17 @@ Header::Header(const std::initializer_list<KeyValueType> &initializer_list) noex
 #endif
 
 void Header::set(const std::string &key, const std::string &value) noexcept {
-    auto temp = key;
-    std::transform(temp.begin(), temp.end(), temp.begin(), XX);
-    headers[temp] = value;
+    // auto temp = key;
+    // std::transform(temp.begin(), temp.end(), temp.begin(), XX);
+    // headers[temp] = value;
+    headers[key] = value;
 }
 
 const std::string &Header::get(const std::string &key, const std::string &default_value) noexcept {
-    auto temp = key;
-    std::transform(temp.begin(), temp.end(), temp.begin(), XX);
-    auto res = headers.find(temp);
+    // auto temp = key;
+    // std::transform(temp.begin(), temp.end(), temp.begin(), XX);
+    // auto res = headers.find(temp);
+    auto res = headers.find(key);
     if (res == headers.end()) {
         return default_value;
     } else {

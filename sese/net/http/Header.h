@@ -4,8 +4,11 @@
  * @brief HTTP 头部键值集合
  * @date 2022年05月17日
  */
+
 #pragma once
+
 #include <sese/net/http/CookieMap.h>
+#include <sese/Util.h>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -70,7 +73,7 @@ public:
     void setCookie(const Cookie::Ptr &cookie);
 
 protected:
-    std::map<std::string, std::string> headers;
+    std::map<std::string, std::string, sese::StrCmpI> headers;
     CookieMap::Ptr cookies = nullptr;
 };
 } // namespace sese::net::http

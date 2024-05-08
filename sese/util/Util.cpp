@@ -36,12 +36,20 @@ int32_t sese::findFirstAt(const char *str, char ch) {
     return -1;
 }
 
-int sese::StrCmp::operator()(char const *lv, char const *rv) {
+int sese::StrCmp::operator()(char const *lv, char const *rv) const {
     return ::strcmp(lv, rv);
 }
 
-int sese::StrCmpI::operator()(char const *lv, char const *rv) {
+int sese::StrCmp::operator()(const std::string &lv, const std::string &rv) const {
+    return this->operator()(lv.c_str(), rv.c_str());
+}
+
+int sese::StrCmpI::operator()(char const *lv, char const *rv) const {
     return strcmpi(lv, rv);
+}
+
+int sese::StrCmpI::operator()(const std::string &lv, const std::string &rv) const {
+    return this->operator()(lv.c_str(), rv.c_str());
 }
 
 bool sese::strcmp(const char *lv, const char *rv) noexcept {
