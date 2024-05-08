@@ -83,7 +83,7 @@ TEST(TestHttp, RequestHeader_dirs) {
 // 查询参数转义
 TEST(TestHttp, RequestHeader_args) {
     auto req = net::http::RequestHeader();
-    req.setUrl("/?key1=&%a4%bd%a0%e5%a5%bd233=value2");
+    req.setUrl("/?key1=&%e4%bd%a0%e5%a5%bd233=value2");
     EXPECT_EQ(req.getQueryArg("key1", ""), "");
     EXPECT_EQ(req.getQueryArg("你好233", ""), "value2");
 }
