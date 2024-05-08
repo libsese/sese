@@ -16,7 +16,7 @@ docker_build:
         - dockerfile
         - requirements.txt
         - scripts/install_ubuntu_deps.sh
-      when: never
+      when: always
 
 docker_build_manual:
   stage: build

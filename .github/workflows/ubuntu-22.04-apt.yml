@@ -81,7 +81,15 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/sese/test/AllTestsInMain
+        run: build/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
+
+      - name: Test report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: JEST Tests
+          path: build/test_reports.xml
+          reporter: jest-junit
 
       - name: Coverage
         working-directory: ${{ github.workspace }}
