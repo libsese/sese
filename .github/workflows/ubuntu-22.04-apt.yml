@@ -88,7 +88,7 @@ jobs:
         if: success() || failure()
         with:
           name: JEST Tests
-          path: build/test_reports.xml
+          path: build/test_report.xml
           reporter: jest-junit
 
       - name: Coverage
