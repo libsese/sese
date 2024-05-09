@@ -19,8 +19,8 @@ sese::system::PathsInitiateTask::PathsInitiateTask() : InitiateTask(__FUNCTION__
 
 int32_t sese::system::PathsInitiateTask::init() noexcept {
 #ifdef SESE_PLATFORM_WINDOWS
-#define PATH_MAX 4096
-    char buffer[PATH_MAX];
+#define MY_PATH_MAX 4096
+    char buffer[MY_PATH_MAX];
     DWORD len;
     len = GetCurrentDirectoryA(sizeof(buffer), buffer);
     if (len == 0) return -1;
@@ -28,11 +28,12 @@ int32_t sese::system::PathsInitiateTask::init() noexcept {
     g_work_dir = Path::fromNativePath(buffer);
     if (!g_work_dir.isValid()) return -1;
 
-    ZeroMemory(buffer, sizeof(buffer));
-    len = GetModuleFileNameA(nullptr, buffer, PATH_MAX);
+    // ZeroMemory(buffer, sizeof(buffer));
+    memset(buffer, 0, sizeof(buffer));
+    len = GetModuleFileNameA(nullptr, buffer, MY_PATH_MAX);
     if (len == 0) return -1;
     Path::replaceWindowsPathSplitChar(buffer, len);
-    auto p = std::strrchr(buffer, '/');
+    auto p = strrchr(buffer, '/');
     g_executable_path = Path::fromNativePath(buffer);
     *p = 0;
     p += 1;
@@ -40,7 +41,7 @@ int32_t sese::system::PathsInitiateTask::init() noexcept {
     g_executable_name = p;
 
     return 0;
-#undef PATH_MAX
+#undef MY_PATH_MAX
 #else
     char buffer[PATH_MAX]{};
     auto n = getcwd(buffer, sizeof(buffer));

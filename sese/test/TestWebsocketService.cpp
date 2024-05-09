@@ -18,7 +18,7 @@ static sese::net::IPv4Address::Ptr createAddress() {
 TEST(TestWebsocket, Auth_0) {
     auto key = "dGhlIHNhbXBsZSBub25jZQ==";
     auto result = sese::net::ws::WebsocketAuthenticator::toResult(key);
-    EXPECT_EQ(std::strcmp("s3pPLMBiTxaQ9kYGzzhZRbK+xOo=", result.get()), 0);
+    EXPECT_EQ(strcmp("s3pPLMBiTxaQ9kYGzzhZRbK+xOo=", result.get()), 0);
 }
 
 TEST(TestWebsocket, Auth_1) {

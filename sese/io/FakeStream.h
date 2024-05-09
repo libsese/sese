@@ -53,8 +53,19 @@ public:
 
     int64_t read(void *buffer, size_t length) override;
 
+    /// 窥视一定字节数
+    /// \warning 不推荐使用该函数，除非你很明白你在做什么
+    /// \see sese::StdOutputStreamWrapper::write
+    /// \param buffer 缓存
+    /// \param length 缓存大小
+    /// \return 实际读取大小
     int64_t peek(void *buffer, size_t length) override;
 
+    /// 步进一定字节数
+    /// \warning 不推荐使用该函数，除非你很明白你在做什么
+    /// \see sese::StdOutputStreamWrapper::write
+    /// \param length 步进大小
+    /// \return 步进大小
     int64_t trunc(size_t length) override;
 
 private:

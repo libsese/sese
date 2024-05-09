@@ -8,6 +8,8 @@ build
 build-*
 .xmake
 temp
+*.csv
+*.gcov
 
 
 ### C++ template

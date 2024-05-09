@@ -37,10 +37,9 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
             }
 
             MYSQL *conn = mysql_init(nullptr);
-            if (conn == nullptr) {
-                // 此处通常是不可恢复错误触发，例如内存不足
-                return nullptr;
-            }
+            // 此处通常是不可恢复错误触发，例如内存不足
+            if (conn == nullptr) return nullptr; // GCOVR_EXCL_LINE
+
 
             mysql_real_connect(
                     conn,
@@ -87,16 +86,17 @@ DriverInstance::Ptr DriverManager::getInstance(sese::db::DatabaseType type, cons
                     pwd_iterator->second.c_str(),
                     db_iterator->second.c_str(),
                     port_iterator->second.c_str(),
-                    nullptr};
+                    nullptr
+            };
 
             PGconn *conn = PQconnectdbParams(keywords, values, 0);
-            if (conn == nullptr) {
-                return nullptr;
-            }
+            if (conn == nullptr) return nullptr; // GCOVR_EXCL_LINE
             return std::make_unique<impl::PostgresDriverInstanceImpl>(conn);
         }
 #endif
+        // GCOVR_EXCL_START
         default:
             return nullptr;
+            // GCOVR_EXCL_STOP
     }
 }

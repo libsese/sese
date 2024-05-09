@@ -1,7 +1,7 @@
 #include <sese/net/http/Header.h>
 
 #include <cctype>
-#include <algorithm>
+// #include <algorithm>
 
 using namespace sese::net::http;
 
@@ -11,7 +11,6 @@ Header::Header(const std::initializer_list<KeyValueType> &initializer_list) noex
     }
 }
 
-
 #if defined(SESE_PLATFORM_WINDOWS) && !defined(__MINGW32__)
 #define XX std::tolower
 #else
@@ -19,15 +18,17 @@ Header::Header(const std::initializer_list<KeyValueType> &initializer_list) noex
 #endif
 
 void Header::set(const std::string &key, const std::string &value) noexcept {
-    auto temp = key;
-    std::transform(temp.begin(), temp.end(), temp.begin(), XX);
-    headers[temp] = value;
+    // auto temp = key;
+    // std::transform(temp.begin(), temp.end(), temp.begin(), XX);
+    // headers[temp] = value;
+    headers[key] = value;
 }
 
 const std::string &Header::get(const std::string &key, const std::string &default_value) noexcept {
-    auto temp = key;
-    std::transform(temp.begin(), temp.end(), temp.begin(), XX);
-    auto res = headers.find(temp);
+    // auto temp = key;
+    // std::transform(temp.begin(), temp.end(), temp.begin(), XX);
+    // auto res = headers.find(temp);
+    auto res = headers.find(key);
     if (res == headers.end()) {
         return default_value;
     } else {
@@ -58,6 +59,8 @@ void Header::setCookies(const CookieMap::Ptr &cookies) {
     Header::cookies = cookies;
 }
 
+// GCOVR_EXCL_START
+
 Cookie::Ptr Header::getCookie(const std::string &name) const {
     if (Header::cookies) {
         return Header::cookies->find(name);
@@ -71,3 +74,5 @@ void Header::setCookie(const Cookie::Ptr &cookie) {
     }
     Header::cookies->add(cookie);
 }
+
+// GCOVR_EXCL_STOP

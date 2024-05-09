@@ -12,6 +12,9 @@
 
 #ifdef SESE_PLATFORM_WINDOWS
 #include <codecvt>
+#ifdef __MINGW64__
+#include <locale>
+#endif
 #endif
 
 namespace sese {

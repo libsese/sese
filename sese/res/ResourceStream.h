@@ -7,6 +7,7 @@
 
 #include <sese/io/PeekableStream.h>
 #include <sese/io/InputStream.h>
+#include <sese/io/File.h>
 
 namespace sese::res {
 
@@ -24,6 +25,8 @@ public:
     int64_t trunc(size_t length) override;
 
     [[nodiscard]] int64_t getSeek() const;
+
+    int32_t setSeek(int64_t offset, io::Seek seek);
 
     int32_t setSeek(int64_t offset, int32_t whence);
 

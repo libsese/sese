@@ -95,6 +95,8 @@ int sstr::BM(const char *str, const char *sub) {
 //     return size;
 // }
 
+// GCOVR_EXCL_START
+
 static int dist(std::vector<sstr::SChar> &t, uint32_t ch) {
     auto len = t.size();
     int i = static_cast<int>(len) - 1;
@@ -129,6 +131,8 @@ int sstr::BM(const uint32_t *str, size_t size, std::vector<SChar> &sub) {
     }
     return -1;
 }
+
+// GCOVR_EXCL_STOP
 
 int sstr::NORMAL(const char *str, const char *sub) {
     auto p = strstr(str, sub);

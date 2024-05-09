@@ -27,7 +27,7 @@ jobs:
           version: 1.11.1
 
       - name: Requiring CL
-        uses: ilammy/msvc-dev-cmd@v1.12.1
+        uses: ilammy/msvc-dev-cmd@v1.13.0
 
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
@@ -46,5 +46,12 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite*
+        run: build/sese/test/AllTestsInMain --gtest_filter=-TestMaria*:TestPostgres*:TestSqlite* --gtest_output="xml:build/test_report.xml"
 
+      - name: Test report
+        uses: dorny/test-reporter@v1.9.1
+        if: success() || failure()
+        with:
+          name: JEST Tests on Windows
+          path: build/test_report.xml
+          reporter: jest-junit

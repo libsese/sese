@@ -46,13 +46,16 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}" STREQUAL "Re
         # for sanitizer
         # 0xC0000135 : https://stackoverflow.com/questions/66531482/application-crashes-when-using-address-sanitizer-with-msvc
         # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fsanitize=address /fno-sanitize-address-vcasan-lib /Zi /D_DISABLE_VECTOR_ANNOTATION /D_DISABLE_STRING_ANNOTATION")
-    elseif (UNIX)
+    else ()
+        # unittest coverage
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
+    endif ()
+
+    if (UNIX)
         # for valgrind
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -gdwarf-4")
         # for sanitizer
         # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
-        # for coverage
-        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
     endif ()
 endif ()
 
@@ -60,11 +63,6 @@ add_definitions("-DPROJECT_PATH=\"${PROJECT_SOURCE_DIR}\"")
 add_definitions("-DPROJECT_BINARY_PATH=\"${CMAKE_CURRENT_BINARY_DIR}\"")
 
 add_subdirectory(sese)
-
-if (SESE_BUILD_TEST)
-    enable_testing()
-    add_subdirectory(test)
-endif ()
 
 if (SESE_BUILD_EXAMPLE)
     add_subdirectory(demo)

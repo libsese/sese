@@ -18,6 +18,8 @@
 
 using sese::archive::Config;
 
+// GCOVR_EXCL_START
+
 int Config::toValue(Config::EntryType type) {
 #define XX(str)\
     case EntryType::str:  \
@@ -56,3 +58,5 @@ Config::EntryType Config::fromValue(int value) {
     }
 #undef XX
 }
+
+// GCOVR_EXCL_STOP

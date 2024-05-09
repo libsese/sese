@@ -33,7 +33,7 @@ TEST(TestArchiveWriter, Stream) {
     }
     {
         auto str = "Hello World";
-        auto buf = InputBufferWrapper(str, std::strlen(str));
+        auto buf = InputBufferWrapper(str, strlen(str));
         EXPECT_TRUE(writer.addStream("Hello.txt", &buf, buf.getCapacity()));
     }
     {
@@ -62,7 +62,7 @@ TEST(TestArchiveWriter, Password) {
     EXPECT_TRUE(writer.begin());
     {
         auto str = "Hello World";
-        auto buf = InputBufferWrapper(str, std::strlen(str));
+        auto buf = InputBufferWrapper(str, strlen(str));
         EXPECT_TRUE(writer.addStream("Hello.txt", &buf, buf.getCapacity()));
     }
     EXPECT_TRUE(writer.done());

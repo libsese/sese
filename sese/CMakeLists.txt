@@ -1,5 +1,10 @@
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${PROJECT_SOURCE_DIR}/cmake")
 
+if (SESE_BUILD_TEST)
+    enable_testing()
+    add_subdirectory(test)
+endif ()
+
 ###################################################################################
 # 通用目标
 # 1.Core
@@ -30,6 +35,7 @@ file(
         "plugin/*.cpp" "plugin/*.h"
         "service/*.cpp" "service/*.h"
         "res/*.cpp" "res/*.h"
+        "container/*.cpp" "container/*.h"
 )
 
 file(
@@ -158,51 +164,11 @@ endif ()
 if (SESE_BUILD_TEST AND WIN32)
     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
 
-    if (${CMAKE_GENERATOR} MATCHES "Ninja")
-        # 单配置
-        add_custom_command(
-                TARGET
-                Core
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/test
-        )
-    else ()
-        # 多配置
-        add_custom_command(
-                TARGET
-                Core
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/test/$<CONFIG>
-        )
-    endif ()
+    sese_copy_dll_to_binary_path(Core "/sese/test")
 endif ()
 
 if (SESE_BUILD_EXAMPLE AND WIN32)
-    if (${CMAKE_GENERATOR} MATCHES "Ninja")
-        # 单配置
-        add_custom_command(
-                TARGET
-                Core
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/demo
-        )
-    else ()
-        # 多配置
-        add_custom_command(
-                TARGET
-                Core
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:Core> ${PROJECT_BINARY_DIR}/demo/$<CONFIG>
-        )
-    endif ()
+    sese_copy_dll_to_binary_path(Core "/demo")
 endif ()
 
 ###################################################################################
@@ -216,11 +182,11 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_sources(Core PRIVATE ${DLL_INFO_RC})
     target_sources(Core PRIVATE ${NATIVE_WIN_SRC})
 
-    if (${MSVC})
+    if (MSVC)
         target_compile_options(Core PRIVATE "/utf-8")
         target_compile_options(Plugin PRIVATE "/utf-8")
     endif ()
-    target_link_libraries(Core PUBLIC crypt32 ws2_32 dbghelp iphlpapi advapi32 secur32)
+    target_link_libraries(Core PUBLIC crypt32 ws2_32 wsock32 dbghelp iphlpapi advapi32 secur32)
 
     # if (${MINGW})
     #     target_compile_options(Core PRIVATE "-fno-exceptions")
@@ -292,6 +258,7 @@ install(
         PATTERN "*.h"
         PATTERN "*.hpp"
         PATTERN "${CMAKE_CURRENT_LIST_DIR}/internal" EXCLUDE
+        PATTERN "${CMAKE_CURRENT_LIST_DIR}/test" EXCLUDE
 )
 
 install(

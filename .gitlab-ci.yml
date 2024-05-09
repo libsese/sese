@@ -16,7 +16,7 @@ docker_build:
         - dockerfile
         - requirements.txt
         - scripts/install_ubuntu_deps.sh
-      when: never
+      when: always
 
 docker_build_manual:
   stage: build
@@ -66,13 +66,15 @@ gtest:
     - psql -U postgres -d postgres -h postgres -p 5432 -f ./scripts/postgres_dump.sql
     - sqlite3 /tmp/db_test.db < ./scripts/sqlite_dump.sql
     # run tests
-    - build/linux-release/test/AllTestsInMain
+    - build/linux-release/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
     # make coverage reposts
     - mkdir -p build/coverage
     - gcovr --config gcovr-cobertura.cfg
   coverage: /^\s*lines:\s*\d+.\d+\%/
   artifacts:
+    name: "${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}"
     reports:
+      junit: build/test_report.xml
       coverage_report:
         coverage_format: cobertura
         path: build/coverage/coverage.xml

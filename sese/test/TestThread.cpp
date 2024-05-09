@@ -66,7 +66,7 @@ TEST(TestThread, ThreadPool) {
     );
     EXPECT_GT(pool.size(), 0);
 
-    sese::sleep(2);
+    sese::sleep(2s);
     EXPECT_TRUE(pool.empty());
     pool.shutdown();
 }

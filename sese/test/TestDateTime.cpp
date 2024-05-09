@@ -232,3 +232,9 @@ TEST(TestDateTime, Parser_3) {
     ASSERT_TRUE(tm.has_value());
     EXPECT_EQ(1578050631'985'211, tm.value().getTimestamp());
 }
+
+TEST(TestDateTime, Parse_Empty) {
+    EXPECT_FALSE(DateTimeParser::parse("", "").has_value());
+    EXPECT_FALSE(DateTimeParser::parse("content", "").has_value());
+    EXPECT_FALSE(DateTimeParser::parse("", "content").has_value());
+}

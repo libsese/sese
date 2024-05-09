@@ -55,6 +55,8 @@ ArchiveWriter::~ArchiveWriter() {
     archive_write_free(XX);
 }
 
+// GCOVR_EXCL_START
+
 int ArchiveWriter::setFilterGZip() {
     return archive_write_add_filter_gzip(XX);
 }
@@ -126,6 +128,8 @@ int ArchiveWriter::setPassword(const std::string &pwd) {
 int ArchiveWriter::setOptions(const std::string &opt) {
     return archive_write_set_options(XX, opt.c_str());
 }
+
+// GCOVR_EXCL_STOP
 
 int ArchiveWriter::getError() {
     return archive_errno(XX);

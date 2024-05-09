@@ -4,7 +4,7 @@
 #include <algorithm>
 
 int sese::Exception::getSkipOffset() {
-#if defined(SESE_PLATFORM_WINDOWS)
+#if defined(_MSC_VER)
     return 1;
 #else
     return 2;

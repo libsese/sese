@@ -69,8 +69,8 @@ jobs:
           -DSESE_USE_ARCHIVE=ON
           -DSESE_DB_USE_MARIADB=ON
           -DSESE_DB_USE_POSTGRES=ON
-          -DSESE_DB_MYSQL_CONNECTION_STRING="host=mysql\;port=18806\;user=root\;pwd=libsese\;db=db_test\;"
-          -DSESE_DB_PSQL_CONNECTION_STRING="host=postgres\;port=18080\;user=postgres\;pwd=libsese\;db=db_test\;"
+          -DSESE_DB_MYSQL_CONNECTION_STRING="host=127.0.0.1\;port=18806\;user=root\;pwd=libsese\;db=db_test\;"
+          -DSESE_DB_PSQL_CONNECTION_STRING="host=127.0.0.1\;port=18080\;user=postgres\;pwd=libsese\;db=db_test\;"
           -DSESE_DB_SQLITE_CONNECTION_STRING="${{ github.workspace }}/build/db_test.db"
           -DCMAKE_CXX_FLAGS="--coverage -fprofile-update=atomic"
           -Bbuild
@@ -81,7 +81,15 @@ jobs:
 
       - name: Test
         working-directory: ${{ github.workspace }}
-        run: build/test/AllTestsInMain
+        run: build/sese/test/AllTestsInMain --gtest_output="xml:build/test_report.xml"
+
+      - name: Test report
+        uses: dorny/test-reporter@v1.9.1
+        if: success() || failure()
+        with:
+          name: JEST Tests on Ubuntu
+          path: build/test_report.xml
+          reporter: jest-junit
 
       - name: Coverage
         working-directory: ${{ github.workspace }}
@@ -111,7 +119,7 @@ jobs:
           path: code-coverage-results.md
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: ${{ github.workspace }}/build/coverage

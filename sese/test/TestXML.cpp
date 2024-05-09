@@ -9,7 +9,7 @@
 #include <filesystem>
 
 TEST(TestXML, File) {
-    auto file_steam = sese::io::FileStream::create(PROJECT_PATH "/test/Data/data.xml", BINARY_READ_EXISTED);
+    auto file_steam = sese::io::FileStream::create(PROJECT_PATH "/sese/test/Data/data.xml", BINARY_READ_EXISTED);
     auto element = sese::xml::XmlUtil::deserialize(file_steam, 5);
     ASSERT_NE(element, nullptr);
 

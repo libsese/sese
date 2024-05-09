@@ -36,6 +36,14 @@ TEST(TestPostgresDriverInstance, InstanceError) {
     auto results6 = instance->begin();
 }
 
+TEST(TestPostgresDriverInstance, MissingArgs) {
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::POSTGRES, "host=x;port=x;user=x;pwd=x;"));
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::POSTGRES, "host=x;port=x;user=x;db=x;"));
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::POSTGRES, "host=x;port=x;db=x;pwd=x;"));
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::POSTGRES, "host=x;db=x;user=x;pwd=x;"));
+    EXPECT_EQ(nullptr, DriverManager::getInstance(DatabaseType::POSTGRES, "db=x;port=x;user=x;pwd=x;"));
+}
+
 TEST(TestPostgresDriverInstance, QueryData) {
     auto instance = DriverManager::getInstance(
             DatabaseType::POSTGRES,
