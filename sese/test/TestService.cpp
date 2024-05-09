@@ -1,17 +1,84 @@
 // #include "sese/service/Service.h"
 #include "sese/net/Socket.h"
+#include "sese/net/http/RequestableFactory.h"
 #include "sese/service/SystemBalanceLoader.h"
 #include "sese/service/UserBalanceLoader.h"
 #include "sese/service/TimerableService_V1.h"
 #include "sese/service/TimerableService_V2.h"
+#include "sese/service/http/HttpServer_V3.h"
+#include "sese/security/SSLContextBuilder.h"
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"
 
-#include <random>
+#pragma region HttpServer_V3
+
+#define ASSERT_NOT_NULL(x) ASSERT_TRUE(x != nullptr)
+
+SESE_CTRL(MyController) {
+    SESE_URL(get_info, RequestType::GET, "/get_info?{name}") {
+        auto name = req.get("name");
+        resp.set("name", name);
+    };
+}
+
+class TestHttpServerV3 : public testing::Test {
+public:
+    static std::unique_ptr<sese::service::http::v3::HttpServer> server;
+
+    static void SetUpTestSuite() {
+        using sese::service::http::v3::HttpServer;
+
+        auto ssl = sese::security::SSLContextBuilder::SSL4Server();
+        ssl->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt");
+        ssl->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key.pem");
+
+        server = std::make_unique<HttpServer>();
+        server->setKeepalive(60);
+        server->setName("HttpServiceImpl_V3");
+        server->regMountPoint("/www", PROJECT_PATH);
+        server->regController<MyController>();
+        server->regService(sese::net::IPv4Address::localhost(9090), ssl);
+        server->regService(sese::net::IPv4Address::localhost(9091), nullptr);
+
+        ASSERT_TRUE(server->startup());
+    }
+
+    static void TearDownTestSuite() {
+        server->shutdown();
+    }
+};
+
+std::unique_ptr<sese::service::http::v3::HttpServer> TestHttpServerV3::server;
+
+TEST_F(TestHttpServerV3, DISABLED_OnecRequest) {
+    using namespace sese::net::http;
+    {
+        auto client = RequestableFactory::createHttpRequest("https://127.0.0.1:9090/get_info?name=sese");
+        ASSERT_NOT_NULL(client);
+        ASSERT_TRUE(client->request()) << client->getLastError() << client->getLastErrorString();
+
+        EXPECT_EQ(client->getResponse()->getCode(), 200);
+        for (auto &&[key, value]: *client->getResponse()) {
+            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        }
+    }
+    {
+        auto client = RequestableFactory::createHttpRequest("http://127.0.0.1:9090");
+        ASSERT_NOT_NULL(client);
+        ASSERT_TRUE(client->request()) << client->getLastError();
+
+        EXPECT_EQ(client->getResponse()->getCode(), 403);
+        for (auto &&[key, value]: *client->getResponse()) {
+            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        }
+    }
+}
+
+#pragma endregion
+
+#pragma region BuiltinEventModel
 
 #define printf SESE_INFO
-
-using namespace std::chrono_literals;
 
 class MyService final : public sese::event::EventLoop {
 public:
@@ -223,3 +290,5 @@ TEST(TestService, TimerableService_V2) {
 
     std::this_thread::sleep_for(300ms);
 }
+
+#pragma endregion
