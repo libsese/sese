@@ -19,5 +19,5 @@ var classsese_1_1net_1_1http_1_1_header =
     [ "setCookies", "classsese_1_1net_1_1http_1_1_header.html#aa175360bd9ffa572f85b39304028a16b", null ],
     [ "size", "classsese_1_1net_1_1http_1_1_header.html#afa34542cc8a8e5f1fdbe5026bbc5b703", null ],
     [ "cookies", "classsese_1_1net_1_1http_1_1_header.html#a3772da84907cc494bbebdbf846bb8684", null ],
-    [ "headers", "classsese_1_1net_1_1http_1_1_header.html#a4e14f8c962a58da8bc87d40ee4e266c1", null ]
+    [ "headers", "classsese_1_1net_1_1http_1_1_header.html#a15ea480fc51c5925ffc914f8c24c63f1", null ]
 ];

@@ -34,11 +34,13 @@ var searchData=
   ['stdinputstreamwrapper_31',['StdInputStreamWrapper',['../classsese_1_1io_1_1_std_input_stream_wrapper.html',1,'sese::io']]],
   ['stdoutputstreamwrapper_32',['StdOutputStreamWrapper',['../classsese_1_1io_1_1_std_output_stream_wrapper.html',1,'sese::io']]],
   ['stopwatch_33',['StopWatch',['../classsese_1_1_stop_watch.html',1,'sese']]],
-  ['strcmp_34',['StrCmp',['../structsese_1_1_str_cmp.html',1,'sese']]],
-  ['strcmpi_35',['StrCmpI',['../structsese_1_1_str_cmp_i.html',1,'sese']]],
-  ['stream_36',['Stream',['../classsese_1_1io_1_1_stream.html',1,'sese::io']]],
-  ['stringbuffer_37',['StringBuffer',['../classsese_1_1text_1_1_string_buffer.html',1,'sese::text']]],
-  ['stringbuilder_38',['StringBuilder',['../classsese_1_1text_1_1_string_builder.html',1,'sese::text']]],
-  ['substackinfo_39',['SubStackInfo',['../structsese_1_1system_1_1_sub_stack_info.html',1,'sese::system']]],
-  ['systembalanceloader_40',['SystemBalanceLoader',['../classsese_1_1service_1_1_system_balance_loader.html',1,'sese::service']]]
+  ['strcasemapcomparer_34',['StrCaseMapComparer',['../structsese_1_1_str_case_map_comparer.html',1,'sese']]],
+  ['strcaseunorderedmapcomparer_35',['StrCaseUnorderedMapComparer',['../structsese_1_1_str_case_unordered_map_comparer.html',1,'sese']]],
+  ['strcmp_36',['StrCmp',['../structsese_1_1_str_cmp.html',1,'sese']]],
+  ['strcmpi_37',['StrCmpI',['../structsese_1_1_str_cmp_i.html',1,'sese']]],
+  ['stream_38',['Stream',['../classsese_1_1io_1_1_stream.html',1,'sese::io']]],
+  ['stringbuffer_39',['StringBuffer',['../classsese_1_1text_1_1_string_buffer.html',1,'sese::text']]],
+  ['stringbuilder_40',['StringBuilder',['../classsese_1_1text_1_1_string_builder.html',1,'sese::text']]],
+  ['substackinfo_41',['SubStackInfo',['../structsese_1_1system_1_1_sub_stack_info.html',1,'sese::system']]],
+  ['systembalanceloader_42',['SystemBalanceLoader',['../classsese_1_1service_1_1_system_balance_loader.html',1,'sese::service']]]
 ];

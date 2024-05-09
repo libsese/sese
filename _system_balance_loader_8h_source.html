@@ -219,15 +219,15 @@ $(document).ready(function(){initNavTree('_system_balance_loader_8h_source.html'
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; threads; ++i) {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keyword">auto</span> <span class="keyword">event</span> = creator();</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span> (event == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a> == <span class="keyword">nullptr</span>) {</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <span class="keywordflow">goto</span> freeEvent;</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        }</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keyword">event</span>-&gt;setListenFd((<span class="keywordtype">int</span>) socketVector[i]);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">if</span> (!event-&gt;init()) {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keyword">delete</span> event;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a>-&gt;init()) {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keyword">delete</span> <a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a>;</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordflow">goto</span> freeEvent;</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            eventLoopVector.emplace_back(event);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            eventLoopVector.emplace_back(<a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a>);</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
@@ -255,7 +255,7 @@ $(document).ready(function(){initNavTree('_system_balance_loader_8h_source.html'
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5133a24ac21dd88284fde375b671b602.html">service</a></li><li class="navelem"><a class="el" href="_system_balance_loader_8h.html">SystemBalanceLoader.h</a></li>
-    <li class="footer">生成于 2024年 五月 5日 星期日 07:29:14 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 9日 星期四 09:51:29 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

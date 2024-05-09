@@ -243,7 +243,9 @@ Private 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>仅读取内容，不步进 </p><dl class="params"><dt>参数</dt><dd>
+<p>窥视一定字节数 </p><dl class="section warning"><dt>警告</dt><dd>不推荐使用该函数，除非你很明白你在做什么 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>sese::StdOutputStreamWrapper::write </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td>缓存 </td></tr>
     <tr><td class="paramname">length</td><td>缓存大小 </td></tr>
@@ -317,13 +319,15 @@ Private 属性</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>仅步进，不读取内容 </p><dl class="params"><dt>参数</dt><dd>
+<p>步进一定字节数 </p><dl class="section warning"><dt>警告</dt><dd>不推荐使用该函数，除非你很明白你在做什么 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd>sese::StdOutputStreamWrapper::write </dd></dl>
+<dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">length</td><td>步进大小 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>实际步进大小 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>步进大小 </dd></dl>
 
 <p>实现了 <a class="el" href="classsese_1_1io_1_1_peekable_stream.html#ae7eaaf3b47b873769e0a0249b06588ad">sese::io::PeekableStream</a>.</p>
 
@@ -362,7 +366,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1io.html">io</a></li><li class="navelem"><a class="el" href="classsese_1_1io_1_1_std_input_stream_wrapper.html">StdInputStreamWrapper</a></li>
-    <li class="footer">生成于 2024年 五月 5日 星期日 07:29:15 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 9日 星期四 09:51:31 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

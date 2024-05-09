@@ -177,7 +177,7 @@ $(document).ready(function(){initNavTree('_user_balance_loader_8h_source.html','
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> dispatchSocket(<a class="code hl_typedef" href="namespacesese.html#a1d70f05bd00edd2d2fda0121ffa36f2b" title="Native Socket 类型">socket_t</a> sock, <span class="keywordtype">void</span> *<a class="code hl_function" href="_output_util_8h.html#aceca130c45e83b19ee83fe45f1c9aa39">data</a>);</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classsese_1_1service_1_1_user_balance_loader.html#a972a287ec76049fa63041aba30e0f0d7">   67</a></span>    <span class="keywordtype">void</span> setOnDispatchedCallbackFunction(const std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">int</span>, <a class="code hl_namespace" href="namespacesese.html">sese</a>::event::EventLoop *, <span class="keywordtype">void</span> *)&gt; &amp;cb) { UserBalanceLoader::onDispatchedCallbackFunction = cb; }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classsese_1_1service_1_1_user_balance_loader.html#a972a287ec76049fa63041aba30e0f0d7">   67</a></span>    <span class="keywordtype">void</span> setOnDispatchedCallbackFunction(const std::function&lt;<span class="keywordtype">void</span>(<span class="keywordtype">int</span>, <a class="code hl_namespace" href="namespacesese.html">sese</a>::<a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a>::EventLoop *, <span class="keywordtype">void</span> *)&gt; &amp;cb) { UserBalanceLoader::onDispatchedCallbackFunction = cb; }</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">protected</span>:</div>
 <div class="foldopen" id="foldopen00071" data-start="{" data-end="};">
@@ -190,7 +190,7 @@ $(document).ready(function(){initNavTree('_user_balance_loader_8h_source.html','
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> master() noexcept;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> slave(</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <a class="code hl_namespace" href="namespacesese.html">sese</a>::event::EventLoop *event_loop,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <a class="code hl_namespace" href="namespacesese.html">sese</a>::<a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a>::EventLoop *event_loop,</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            std::queue&lt;SocketStatus&gt; *master_queue,</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            std::queue&lt;SocketStatus&gt; *slave_queue,</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            std::mutex *mutex</div>
@@ -271,14 +271,14 @@ $(document).ready(function(){initNavTree('_user_balance_loader_8h_source.html','
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; threads; ++i) {</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keyword">auto</span> <span class="keyword">event</span> = creator();</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">if</span> (event == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a> == <span class="keyword">nullptr</span>) {</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            <span class="keywordflow">goto</span> freeEvent;</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        }</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">if</span> (!event-&gt;init()) {</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            <span class="keyword">delete</span> event;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a>-&gt;init()) {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            <span class="keyword">delete</span> <a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a>;</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            <span class="keywordflow">goto</span> freeEvent;</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            eventLoopVector.emplace_back(event);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            eventLoopVector.emplace_back(<a class="code hl_function" href="_test_exception_8cpp.html#a061880349dbcdb0646506fbf75d39f71">event</a>);</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        }</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    }</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
@@ -314,7 +314,7 @@ $(document).ready(function(){initNavTree('_user_balance_loader_8h_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5133a24ac21dd88284fde375b671b602.html">service</a></li><li class="navelem"><a class="el" href="_user_balance_loader_8h.html">UserBalanceLoader.h</a></li>
-    <li class="footer">生成于 2024年 五月 5日 星期日 07:29:14 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 9日 星期四 09:51:29 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

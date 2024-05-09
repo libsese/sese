@@ -5,7 +5,7 @@ var searchData=
   ['handleclose_2',['handleClose',['../classsese_1_1event_1_1_base_event_loop.html#a4abdb066697382d81267982d8e5961f2',1,'sese::event::BaseEventLoop']]],
   ['head_3',['head',['../classsese_1_1concurrent_1_1_linked_queue.html#a9998db93dc917b315846f3e1c55d6e2e',1,'sese::concurrent::LinkedQueue']]],
   ['header_4',['header',['../classsese_1_1net_1_1http_1_1_header_builder.html#a8f9472119ffc2f43887fc8b6a984443f',1,'sese::net::http::HeaderBuilder']]],
-  ['headers_5',['headers',['../classsese_1_1net_1_1http_1_1_header.html#a4e14f8c962a58da8bc87d40ee4e266c1',1,'sese::net::http::Header']]],
+  ['headers_5',['headers',['../classsese_1_1net_1_1http_1_1_header.html#a15ea480fc51c5925ffc914f8c24c63f1',1,'sese::net::http::Header']]],
   ['high_6',['high',['../structsese_1_1_long_long_splitter.html#ad96139b5f4b05eb0bbda4b3ca9e117f7',1,'sese::LongLongSplitter']]],
   ['host_7',['host',['../classsese_1_1net_1_1http_1_1_url.html#ad1e15997e994506d50ba7c7cf9ef058b',1,'sese::net::http::Url']]],
   ['hostipv4map_8',['hostipv4map',['../classsese_1_1net_1_1dns_1_1_dns_server.html#a582112093ead9bbec2e9c1481f7b403e',1,'sese::net::dns::DnsServer::hostIPv4Map'],['../structsese_1_1net_1_1dns_1_1_dns_config.html#a5966f1c4cf74856d70157b97d08b77af',1,'sese::net::dns::DnsConfig::hostIPv4Map']]],

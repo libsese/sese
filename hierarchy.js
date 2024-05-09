@@ -110,16 +110,26 @@ var hierarchy =
         [ "sese::internal::service::http::v3::HttpSSLConnectionImpl", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html", null ]
       ] ],
       [ "sese::internal::service::http::v3::HttpServiceImpl", "classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html", null ],
-      [ "sese::plugin::BaseClass", "classsese_1_1plugin_1_1_base_class.html", null ],
+      [ "sese::plugin::BaseClass", "classsese_1_1plugin_1_1_base_class.html", [
+        [ "Printable", "class_printable.html", [
+          [ "Bye", "class_bye.html", null ],
+          [ "Hello", "class_hello.html", null ]
+        ] ],
+        [ "Printable", "class_printable.html", null ]
+      ] ],
       [ "sese::security::SSLContext", "classsese_1_1security_1_1_s_s_l_context.html", null ]
     ] ],
     [ "sese::record::Event", "classsese_1_1record_1_1_event.html", null ],
     [ "sese::event::EventLoop", null, [
+      [ "MyEvent", "class_my_event.html", null ],
+      [ "MyService", "class_my_service.html", null ],
       [ "sese::service::MasterEventLoop", "classsese_1_1service_1_1_master_event_loop.html", null ],
       [ "sese::service::v1::TimerableService", "classsese_1_1service_1_1v1_1_1_timerable_service.html", [
+        [ "MyTimerableServiceV1", "class_my_timerable_service_v1.html", null ],
         [ "sese::service::TcpTransporter", "classsese_1_1service_1_1_tcp_transporter.html", null ]
       ] ],
       [ "sese::service::v2::TimerableService", "classsese_1_1service_1_1v2_1_1_timerable_service.html", [
+        [ "MyTimerableServiceV2", "class_my_timerable_service_v2.html", null ],
         [ "sese::iocp::v1::IOCPService", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_service.html", null ]
       ] ]
     ] ],
@@ -130,7 +140,9 @@ var hierarchy =
     ] ],
     [ "sese::system::FileLocker", "classsese_1_1system_1_1_file_locker.html", null ],
     [ "sese::system::FileNotifier", "classsese_1_1system_1_1_file_notifier.html", null ],
-    [ "sese::system::FileNotifyOption", "structsese_1_1system_1_1_file_notify_option.html", null ],
+    [ "sese::system::FileNotifyOption", "structsese_1_1system_1_1_file_notify_option.html", [
+      [ "Option", "class_option.html", null ]
+    ] ],
     [ "sese::net::dns::FrameFlagsInfo", "structsese_1_1net_1_1dns_1_1_frame_flags_info.html", null ],
     [ "sese::net::dns::FrameHeaderInfo", "structsese_1_1net_1_1dns_1_1_frame_header_info.html", null ],
     [ "sese::GlobalThreadPool", "classsese_1_1_global_thread_pool.html", null ],
@@ -152,6 +164,8 @@ var hierarchy =
     [ "sese::ini::IniConfig", "structsese_1_1ini_1_1_ini_config.html", null ],
     [ "sese::Initializer", "classsese_1_1_initializer.html", null ],
     [ "sese::InitiateTask", "classsese_1_1_initiate_task.html", [
+      [ "Task1", "class_task1.html", null ],
+      [ "Task2", "class_task2.html", null ],
       [ "sese::EncodingConverterInitiateTask", "classsese_1_1_encoding_converter_initiate_task.html", null ],
       [ "sese::ThreadInitiateTask", "classsese_1_1_thread_initiate_task.html", null ],
       [ "sese::record::LoggerInitiateTask", "classsese_1_1record_1_1_logger_initiate_task.html", null ],
@@ -193,7 +207,9 @@ var hierarchy =
     ] ],
     [ "sese::io::InputStreamReader", "classsese_1_1io_1_1_input_stream_reader.html", null ],
     [ "sese::iocp::IOBufNode", "structsese_1_1iocp_1_1_i_o_buf_node.html", null ],
-    [ "sese::iocp::v1::IOCPServer", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html", null ],
+    [ "sese::iocp::v1::IOCPServer", "classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html", [
+      [ "MyIOCPServer", "class_my_i_o_c_p_server.html", null ]
+    ] ],
     [ "sese::system::IPCChannel", "classsese_1_1system_1_1_i_p_c_channel.html", null ],
     [ "sese::Range< TYPE >::Iterator", "classsese_1_1_range_1_1_iterator.html", null ],
     [ "sstr::SStringView::Iterator", "classsstr_1_1_s_string_view_1_1_iterator.html", null ],
@@ -215,6 +231,7 @@ var hierarchy =
     [ "sese::system::MessageIterator", "structsese_1_1system_1_1_message_iterator.html", null ],
     [ "sese::plugin::Module", "classsese_1_1plugin_1_1_module.html", null ],
     [ "sese::plugin::ModuleInfo", "structsese_1_1plugin_1_1_module_info.html", null ],
+    [ "MyFakeStream", "class_my_fake_stream.html", null ],
     [ "sese::_windows::iocp::v1::NativeIOCPServer", "classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html", null ],
     [ "sese::system::NetworkInterface", "structsese_1_1system_1_1_network_interface.html", null ],
     [ "sese::system::NetworkUtil", "classsese_1_1system_1_1_network_util.html", null ],
@@ -326,12 +343,20 @@ var hierarchy =
     ] ],
     [ "sese::system::StackInfo", "classsese_1_1system_1_1_stack_info.html", null ],
     [ "sese::StopWatch", "classsese_1_1_stop_watch.html", null ],
+    [ "sese::StrCaseMapComparer", "structsese_1_1_str_case_map_comparer.html", null ],
+    [ "sese::StrCaseUnorderedMapComparer", "structsese_1_1_str_case_unordered_map_comparer.html", null ],
     [ "sese::StrCmp", "structsese_1_1_str_cmp.html", null ],
     [ "sese::StrCmpI", "structsese_1_1_str_cmp_i.html", null ],
     [ "sese::system::SubStackInfo", "structsese_1_1system_1_1_sub_stack_info.html", null ],
     [ "sese::service::SystemBalanceLoader", "classsese_1_1service_1_1_system_balance_loader.html", null ],
     [ "sese::service::TcpConnection", "structsese_1_1service_1_1_tcp_connection.html", null ],
     [ "sese::service::TcpTransporterConfig", "structsese_1_1service_1_1_tcp_transporter_config.html", null ],
+    [ "testing::Test", null, [
+      [ "TestHttpServerV3", "class_test_http_server_v3.html", null ],
+      [ "TestMariaMetadata", "class_test_maria_metadata.html", null ],
+      [ "TestPostgresMetadata", "class_test_postgres_metadata.html", null ],
+      [ "TestSqliteMetadata", "class_test_sqlite_metadata.html", null ]
+    ] ],
     [ "sese::text::TextReader", "classsese_1_1text_1_1_text_reader.html", null ],
     [ "sese::service::v1::TimeoutEvent", "structsese_1_1service_1_1v1_1_1_timeout_event.html", null ],
     [ "sese::service::v2::TimeoutEvent", "structsese_1_1service_1_1v2_1_1_timeout_event.html", null ],
