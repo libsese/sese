@@ -13,11 +13,5 @@ var searchData=
   ['messagedigest_10',['messagedigest',['../classsese_1_1_message_digest.html',1,'sese::MessageDigest'],['../classsese_1_1security_1_1_message_digest.html',1,'sese::security::MessageDigest']]],
   ['messageiterator_11',['MessageIterator',['../structsese_1_1system_1_1_message_iterator.html',1,'sese::system']]],
   ['module_12',['Module',['../classsese_1_1plugin_1_1_module.html',1,'sese::plugin']]],
-  ['moduleinfo_13',['ModuleInfo',['../structsese_1_1plugin_1_1_module_info.html',1,'sese::plugin']]],
-  ['myevent_14',['MyEvent',['../class_my_event.html',1,'']]],
-  ['myfakestream_15',['MyFakeStream',['../class_my_fake_stream.html',1,'']]],
-  ['myiocpserver_16',['MyIOCPServer',['../class_my_i_o_c_p_server.html',1,'']]],
-  ['myservice_17',['MyService',['../class_my_service.html',1,'']]],
-  ['mytimerableservicev1_18',['MyTimerableServiceV1',['../class_my_timerable_service_v1.html',1,'']]],
-  ['mytimerableservicev2_19',['MyTimerableServiceV2',['../class_my_timerable_service_v2.html',1,'']]]
+  ['moduleinfo_13',['ModuleInfo',['../structsese_1_1plugin_1_1_module_info.html',1,'sese::plugin']]]
 ];

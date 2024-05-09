@@ -15,7 +15,6 @@ var searchData=
   ['bufferedqueue11_12',['BufferedQueue11',['../classsese_1_1_buffered_queue11.html',1,'sese']]],
   ['bufferedqueuenn_13',['BufferedQueueNn',['../classsese_1_1_buffered_queue_nn.html',1,'sese']]],
   ['bufferedstream_14',['BufferedStream',['../classsese_1_1io_1_1_buffered_stream.html',1,'sese::io']]],
-  ['bye_15',['Bye',['../class_bye.html',1,'']]],
-  ['bytebuffer_16',['ByteBuffer',['../classsese_1_1io_1_1_byte_buffer.html',1,'sese::io']]],
-  ['bytebuilder_17',['ByteBuilder',['../classsese_1_1io_1_1_byte_builder.html',1,'sese::io']]]
+  ['bytebuffer_15',['ByteBuffer',['../classsese_1_1io_1_1_byte_buffer.html',1,'sese::io']]],
+  ['bytebuilder_16',['ByteBuilder',['../classsese_1_1io_1_1_byte_builder.html',1,'sese::io']]]
 ];

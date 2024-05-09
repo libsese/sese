@@ -83,9 +83,8 @@ var searchData=
   ['sese_5fyaml_5fset_5finteger_80',['SESE_YAML_SET_INTEGER',['../config_2yaml_2_marco_8h.html#ac29f14ea04d9ab366df11a216bd4dba3',1,'Marco.h']]],
   ['sese_5fyaml_5fset_5fnull_81',['SESE_YAML_SET_NULL',['../config_2yaml_2_marco_8h.html#ab56caf1a87df98f68b507bc54c0a082d',1,'Marco.h']]],
   ['sese_5fyaml_5fset_5fstring_82',['SESE_YAML_SET_STRING',['../config_2yaml_2_marco_8h.html#a285e1ef82efac6dbeae1b21e046ac8ed',1,'Marco.h']]],
-  ['sqlite_5fconnection_5fstring_83',['SQLITE_CONNECTION_STRING',['../test_2_test_d_b_2_config_8h.html#a029ef7f9023542252f42465ade1b6998',1,'Config.h']]],
-  ['str1_84',['STR1',['../_module_8cpp.html#aa384b54e67422af62cc9906f271b5156',1,'Module.cpp']]],
-  ['str2_85',['STR2',['../_module_8cpp.html#a71ba5ba44624917a7c3be36880d14637',1,'Module.cpp']]],
-  ['strcasecmp_86',['strcasecmp',['../native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c',1,'Config.h']]],
-  ['strcmpi_87',['strcmpi',['../native_2darwin_2_config_8h.html#acf1a32c487efc5306d57219a57d57b60',1,'strcmpi:&#160;Config.h'],['../native_2linux_2_config_8h.html#acf1a32c487efc5306d57219a57d57b60',1,'strcmpi:&#160;Config.h']]]
+  ['str1_83',['STR1',['../_module_8cpp.html#aa384b54e67422af62cc9906f271b5156',1,'Module.cpp']]],
+  ['str2_84',['STR2',['../_module_8cpp.html#a71ba5ba44624917a7c3be36880d14637',1,'Module.cpp']]],
+  ['strcasecmp_85',['strcasecmp',['../native_2win_2_config_8h.html#ac99ec3f1036620727a68aa8c25a8963c',1,'Config.h']]],
+  ['strcmpi_86',['strcmpi',['../native_2darwin_2_config_8h.html#acf1a32c487efc5306d57219a57d57b60',1,'strcmpi:&#160;Config.h'],['../native_2linux_2_config_8h.html#acf1a32c487efc5306d57219a57d57b60',1,'strcmpi:&#160;Config.h']]]
 ];

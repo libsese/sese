@@ -6,7 +6,7 @@ var searchData=
   ['range_5fiterator_3',['range_iterator',['../structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a8a8774713a6f2dc6988093f8204d55d1',1,'sese::internal::service::http::v3::HttpConnection']]],
   ['ranges_4',['ranges',['../structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#afa38aa2ae7096c602824bec7b246da0a',1,'sese::internal::service::http::v3::HttpConnection']]],
   ['rcode_5',['rcode',['../structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a14e0a03afd34190d75fba3f8ed3405a0',1,'sese::net::dns::FrameFlagsInfo']]],
-  ['rd_6',['rd',['../classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#af7fdcbcc46e97342f66703cc4992e68c',1,'sese::db::impl::PostgresDriverInstanceImpl::rd'],['../structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a9bcae0ab56c2a33324be5f7352931c87',1,'sese::net::dns::FrameFlagsInfo::RD']]],
+  ['rd_6',['rd',['../structsese_1_1net_1_1dns_1_1_frame_flags_info.html#a9bcae0ab56c2a33324be5f7352931c87',1,'sese::net::dns::FrameFlagsInfo::RD'],['../classsese_1_1db_1_1impl_1_1_postgres_driver_instance_impl.html#af7fdcbcc46e97342f66703cc4992e68c',1,'sese::db::impl::PostgresDriverInstanceImpl::rd']]],
   ['read_7',['read',['../classsese_1_1_compressor.html#a4b46270a45ef305d20c256d62408d121',1,'sese::Compressor::read'],['../classsese_1_1_decompressor.html#a4850a2b36ac3c808505ca2fb1c8726a8',1,'sese::Decompressor::read'],['../structsese_1_1iocp_1_1_i_o_buf_node.html#a7c07e3bbde5aec473a7f09ebe47a1f21',1,'sese::iocp::IOBufNode::read']]],
   ['readed_8',['readed',['../classsese_1_1iocp_1_1_i_o_buf.html#ac58beb4bc622c053b955b5831372783a',1,'sese::iocp::IOBuf']]],
   ['reader_9',['reader',['../classsese_1_1_uni_reader.html#ab694a114190af4c15564728fbe5d21a1',1,'sese::UniReader']]],
@@ -37,6 +37,5 @@ var searchData=
   ['revision_5f_34',['revision_',['../classsese_1_1_version.html#a975a5f962ce7d8d522bfeb3229fb6db1',1,'sese::Version']]],
   ['root_35',['root',['../classsese_1_1io_1_1_abstract_byte_buffer.html#ab83d29c07c99a202fdcb5291cb8ee512',1,'sese::io::AbstractByteBuffer::root'],['../classsese_1_1iocp_1_1_i_o_buf.html#a1110b94a3bb2abe140a13aa43cecafc5',1,'sese::iocp::IOBuf::root'],['../classsese_1_1concurrent_1_1_linked_stack.html#aad2735232bdd7686bdddfbab659ef744',1,'sese::concurrent::LinkedStack::root']]],
   ['row_36',['row',['../classsese_1_1db_1_1impl_1_1_maria_result_set_impl.html#acda3ed2b0a29400e3fb19d6eaed4cb0f',1,'sese::db::impl::MariaResultSetImpl::row'],['../classsese_1_1db_1_1impl_1_1_maria_stmt_result_set.html#a0beb30124937fef6900d904df5600c7b',1,'sese::db::impl::MariaStmtResultSet::row'],['../classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html#aa46a85d869db92ea4120fff24872648f',1,'sese::db::impl::PostgresResultSetImpl::row']]],
-  ['rows_37',['rows',['../classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#af6ec626a5f868369dcc6e9518dd6d1f8',1,'sese::db::impl::SqliteResultSetImpl']]],
-  ['run_38',['run',['../class_my_event.html#a2d87484258c01976eb4fc74c90beb345',1,'MyEvent']]]
+  ['rows_37',['rows',['../classsese_1_1db_1_1impl_1_1_sqlite_result_set_impl.html#af6ec626a5f868369dcc6e9518dd6d1f8',1,'sese::db::impl::SqliteResultSetImpl']]]
 ];

@@ -344,21 +344,5 @@ var annotated_dup =
       [ "SChar", "structsstr_1_1_s_char.html", "structsstr_1_1_s_char" ],
       [ "SString", "classsstr_1_1_s_string.html", "classsstr_1_1_s_string" ],
       [ "SStringView", "classsstr_1_1_s_string_view.html", "classsstr_1_1_s_string_view" ]
-    ] ],
-    [ "Bye", "class_bye.html", "class_bye" ],
-    [ "Hello", "class_hello.html", "class_hello" ],
-    [ "MyEvent", "class_my_event.html", "class_my_event" ],
-    [ "MyFakeStream", "class_my_fake_stream.html", "class_my_fake_stream" ],
-    [ "MyIOCPServer", "class_my_i_o_c_p_server.html", "class_my_i_o_c_p_server" ],
-    [ "MyService", "class_my_service.html", "class_my_service" ],
-    [ "MyTimerableServiceV1", "class_my_timerable_service_v1.html", "class_my_timerable_service_v1" ],
-    [ "MyTimerableServiceV2", "class_my_timerable_service_v2.html", "class_my_timerable_service_v2" ],
-    [ "Option", "class_option.html", "class_option" ],
-    [ "Printable", "class_printable.html", "class_printable" ],
-    [ "Task1", "class_task1.html", "class_task1" ],
-    [ "Task2", "class_task2.html", "class_task2" ],
-    [ "TestHttpServerV3", "class_test_http_server_v3.html", "class_test_http_server_v3" ],
-    [ "TestMariaMetadata", "class_test_maria_metadata.html", "class_test_maria_metadata" ],
-    [ "TestPostgresMetadata", "class_test_postgres_metadata.html", "class_test_postgres_metadata" ],
-    [ "TestSqliteMetadata", "class_test_sqlite_metadata.html", "class_test_sqlite_metadata" ]
+    ] ]
 ];
