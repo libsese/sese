@@ -16,6 +16,7 @@ struct StrCaseMapComparer {
     bool operator()(const std::string &lv, const std::string &rv) const;
 };
 
+/// \brief StrCaseUnorderedMap 比较器
 struct StrCaseUnorderedMapComparer {
     size_t operator()(const std::string &key) const;
     bool operator()(const std::string &lv, const std::string &rv) const;
