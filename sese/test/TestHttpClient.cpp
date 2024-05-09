@@ -44,8 +44,7 @@ TEST(TestHttpClient, DISABLED_WithProxy) {
     }
 }
 
-// todo HttpClient 增加发送缓存
-TEST(TestHttpClient, DISABLED_KeepAlive) {
+TEST(TestHttpClient, KeepAlive) {
     auto client = RequestableFactory::createHttpRequest("https://www.baidu.com");
     ASSERT_NOT_NULL(client);
     client->getRequest()->setType(RequestType::HEAD);

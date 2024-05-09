@@ -8,6 +8,7 @@
 #pragma once
 
 #include <sese/net/http/CookieMap.h>
+#include <sese/container/StrCaseMap.h>
 #include <sese/Util.h>
 
 #ifdef _WIN32
@@ -73,7 +74,7 @@ public:
     void setCookie(const Cookie::Ptr &cookie);
 
 protected:
-    std::map<std::string, std::string, sese::StrCmpI> headers;
+    StrCaseMap<std::string> headers;
     CookieMap::Ptr cookies = nullptr;
 };
 } // namespace sese::net::http

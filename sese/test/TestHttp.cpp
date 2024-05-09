@@ -114,6 +114,7 @@ TEST(TestHttp, Header_misc) {
     header.clear();
     EXPECT_TRUE(header.empty());
 }
+
 /// 非法的 HTTP 头部结尾
 TEST(TestHttpUtil, GetLine_0) {
     auto str = "GET / HTTP/1.1";

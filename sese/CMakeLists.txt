@@ -35,6 +35,7 @@ file(
         "plugin/*.cpp" "plugin/*.h"
         "service/*.cpp" "service/*.h"
         "res/*.cpp" "res/*.h"
+        "container/*.cpp" "container/*.h"
 )
 
 file(
