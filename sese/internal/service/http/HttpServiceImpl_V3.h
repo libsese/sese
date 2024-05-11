@@ -124,7 +124,7 @@ public:
 
     HttpServiceImpl(
             const net::IPAddress::Ptr &address,
-            const security::SSLContext::Ptr &ssl_context,
+            SSLContextPtr ssl_context,
             uint32_t keepalive,
             std::string &serv_name,
             MountPointMap &mount_points,

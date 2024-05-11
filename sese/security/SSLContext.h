@@ -33,13 +33,16 @@ public:
     /// @return 校验结果
     bool authPrivateKey() noexcept;
 
-    // bool verifyAndLoad(const char *file) noexcept;
-
     /// @brief 从当前上下文中创建一个 TCP Socket
     /// @param family 协议
     /// @param flags 标志
     /// @return 创建完成的 Socket
     Socket::Ptr newSocketPtr(Socket::Family family, int32_t flags);
+
+    /// @brief 释放当前对象的所有权
+    /// @warning 注意，此函数用于应对 asio::ssl::context 不遵循谁分配谁释放的原则，调用后对象将会失去对于 SSL_CTX 的掌控，除非你很清楚你在做什么，不然不可以使用这个函数，单纯需要获取 SSL_CTX 而不变更生命周期请使用 getContext
+    /// @return 底层 SSL_CTX 指针
+    void *release() noexcept;
 
 private:
     // SSL_CTX *context = nullptr;

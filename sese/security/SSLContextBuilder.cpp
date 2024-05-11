@@ -15,3 +15,13 @@ SSLContext::Ptr SSLContextBuilder::SSL4Server() noexcept {
     auto method = TLS_server_method();
     return std::make_shared<SSLContext>(method);
 }
+
+std::unique_ptr<SSLContext> SSLContextBuilder::UniqueSSL4Client() noexcept {
+    auto *method = TLS_client_method();
+    return std::make_unique<SSLContext>(method);
+}
+
+std::unique_ptr<SSLContext> SSLContextBuilder::UniqueSSL4Server() noexcept {
+    auto *method = TLS_server_method();
+    return std::make_unique<SSLContext>(method);
+}

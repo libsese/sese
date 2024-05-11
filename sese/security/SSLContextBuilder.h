@@ -12,7 +12,7 @@
 namespace sese::security {
 
 /// SSL 上下文构建器
-class API SSLContextBuilder : public NotInstantiable {
+class API SSLContextBuilder final : public NotInstantiable {
 public:
     /// @brief 为客户端构建 SSL 上下文
     /// @return 客户端 SSL 上下文
@@ -20,6 +20,12 @@ public:
     /// @brief 为服务端构建 SSL 上下文
     /// @return 服务的 SSL 上下文
     static SSLContext::Ptr SSL4Server() noexcept;
+    /// @brief 为客户端构建 SSL 上下文
+    /// @return 客户端 SSL 上下文
+    static std::unique_ptr<SSLContext> UniqueSSL4Client() noexcept;
+    /// @brief 为服务端构建 SSL 上下文
+    /// @return 服务的 SSL 上下文
+    static std::unique_ptr<SSLContext> UniqueSSL4Server() noexcept;
 };
 } // namespace sese::security
 

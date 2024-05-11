@@ -36,7 +36,7 @@ public:
     /// 注册 Http 服务
     /// @param address 监听地址
     /// @param context SSL 服务上下文，为空则不启用 SSL
-    void regService(const net::IPAddress::Ptr &address, const security::SSLContext::Ptr &context);
+    void regService(const net::IPAddress::Ptr &address, std::unique_ptr<security::SSLContext> context);
 
     /// 设置服务器名称
     /// @param name 服务器名称
