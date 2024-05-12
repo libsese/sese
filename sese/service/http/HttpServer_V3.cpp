@@ -1,6 +1,8 @@
 #include <sese/internal/service/http/HttpServiceImpl_V3.h>
 #include <sese/service/http/HttpServer_V3.h>
 
+#include <utility>
+
 using namespace sese::service::http::v3;
 
 void HttpServer::regMountPoint(const std::string &uri_prefix, const std::string &local) {
@@ -15,9 +17,9 @@ void HttpServer::setKeepalive(uint32_t seconds) {
     keepalive = std::max<uint32_t>(seconds, 5);
 }
 
-void HttpServer::regService(const net::IPAddress::Ptr &address, const security::SSLContext::Ptr &context) {
+void HttpServer::regService(const net::IPAddress::Ptr &address, std::unique_ptr<security::SSLContext> context) {
     auto service = internal::service::http::v3::HttpServiceImpl::create(
-            address, context, keepalive, name, mount_points, servlets
+            address, std::move(context), keepalive, name, mount_points, servlets
     );
     this->services.push_back(service);
 }

@@ -103,7 +103,7 @@ struct HttpSSLConnectionImpl final : HttpConnection {
     ~HttpSSLConnectionImpl() override;
 
     std::unique_ptr<asio::ssl::stream<asio::ip::tcp::socket &>> stream;
-    bool is0x0d = false;
+    bool is0x0a = false;
     iocp::IOBuf io_buffer;
     io::ByteBuilder dynamic_buffer;
 
@@ -124,7 +124,7 @@ public:
 
     HttpServiceImpl(
             const net::IPAddress::Ptr &address,
-            const security::SSLContext::Ptr &ssl_context,
+            SSLContextPtr ssl_context,
             uint32_t keepalive,
             std::string &serv_name,
             MountPointMap &mount_points,

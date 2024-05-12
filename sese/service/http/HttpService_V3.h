@@ -19,12 +19,13 @@ namespace sese::service::http::v3 {
 class HttpService : public Service {
 public:
     using Ptr = std::shared_ptr<HttpService>;
+    using SSLContextPtr = std::unique_ptr<security::SSLContext>;
     using MountPointMap = std::unordered_map<std::string, std::string>;
     using ServletMap = std::unordered_map<std::string, net::http::Servlet>;
 
     static HttpService::Ptr create(
-            const net::IPAddress::Ptr& address,
-            const security::SSLContext::Ptr& ssl_context,
+            const net::IPAddress::Ptr &address,
+            SSLContextPtr ssl_context,
             uint32_t keepalive,
             std::string &serv_name,
             MountPointMap &mount_points,
@@ -34,7 +35,7 @@ public:
 protected:
     HttpService(
             net::IPAddress::Ptr address,
-            security::SSLContext::Ptr ssl_context,
+            SSLContextPtr ssl_context,
             uint32_t keepalive,
             std::string &serv_name,
             MountPointMap &mount_points,
@@ -42,7 +43,7 @@ protected:
     );
 
     net::IPAddress::Ptr address;
-    security::SSLContext::Ptr ssl_context;
+    SSLContextPtr ssl_context;
     Thread::Ptr thread;
     uint32_t keepalive = 30;
     std::string &serv_name;

@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
     using sese::service::http::v3::HttpServer;
 
     sese::initCore(argc, argv);
-    auto ssl = sese::security::SSLContextBuilder::SSL4Server();
+    auto ssl = sese::security::SSLContextBuilder::UniqueSSL4Server();
     ssl->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt");
     ssl->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key.pem");
 
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
     server.setName("HttpServiceImpl_V3");
     server.regMountPoint("/www", PROJECT_PATH "/build/html");
     server.regController<MyController>();
-    server.regService(sese::net::IPv4Address::localhost(9090), ssl);
+    server.regService(sese::net::IPv4Address::localhost(9090), std::move(ssl));
     server.regService(sese::net::IPv4Address::localhost(9091), nullptr);
 
     server.startup();

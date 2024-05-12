@@ -9,17 +9,18 @@
 #include <sese/record/Marco.h>
 
 #include <filesystem>
+#include <utility>
 
 using namespace sese::internal::service::http::v3;
 
 HttpServiceImpl::HttpServiceImpl(
         const sese::net::IPAddress::Ptr &address,
-        const security::SSLContext::Ptr &ssl_context,
+        SSLContextPtr ssl_context,
         uint32_t keepalive,
         std::string &serv_name,
         MountPointMap &mount_points,
         ServletMap &servlets
-) : HttpService(address, ssl_context, keepalive, serv_name, mount_points, servlets),
+) : HttpService(address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets),
     io_context(),
     ssl_context(std::nullopt),
     acceptor(io_context) {
@@ -41,7 +42,7 @@ bool HttpServiceImpl::startup() {
     auto endpoint = asio::ip::tcp::endpoint(addr, address->getPort());
 
     if (HttpService::ssl_context) {
-        ssl_context = net::convert(HttpService::ssl_context);
+        ssl_context = net::convert(std::move(HttpService::ssl_context));
     }
 
     error = acceptor.open(

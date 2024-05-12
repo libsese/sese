@@ -117,9 +117,8 @@ int64_t AsioHttpClient::read(void *buf, size_t len) {
 
     if (code) {
         return -1;
-    } else {
-        return static_cast<int64_t>(read);
     }
+    return static_cast<int64_t>(read);
 }
 
 int64_t AsioHttpClient::write(const void *buf, size_t len) {
@@ -132,7 +131,6 @@ int64_t AsioHttpClient::write(const void *buf, size_t len) {
 
     if (code) {
         return -1;
-    } else {
-        return static_cast<int64_t>(wrote);
     }
+    return static_cast<int64_t>(wrote);
 }

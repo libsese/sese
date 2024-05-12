@@ -16,6 +16,10 @@
 
 SESE_CTRL(MyController) {
     SESE_URL(get_info, RequestType::GET, "/get_info?{name}") {
+        auto name = req.getQueryArg("name");
+        resp.set("name", name);
+    };
+    SESE_URL(get_info_2, RequestType::GET, "/get_info_2?<name>") {
         auto name = req.get("name");
         resp.set("name", name);
     };
@@ -28,7 +32,7 @@ public:
     static void SetUpTestSuite() {
         using sese::service::http::v3::HttpServer;
 
-        auto ssl = sese::security::SSLContextBuilder::SSL4Server();
+        auto ssl = sese::security::SSLContextBuilder::UniqueSSL4Server();
         ssl->importCertFile(PROJECT_PATH "/sese/test/Data/test-ca.crt");
         ssl->importPrivateKeyFile(PROJECT_PATH "/sese/test/Data/test-key.pem");
 
@@ -37,7 +41,7 @@ public:
         server->setName("HttpServiceImpl_V3");
         server->regMountPoint("/www", PROJECT_PATH);
         server->regController<MyController>();
-        server->regService(sese::net::IPv4Address::localhost(9090), ssl);
+        server->regService(sese::net::IPv4Address::localhost(9090), std::move(ssl));
         server->regService(sese::net::IPv4Address::localhost(9091), nullptr);
 
         ASSERT_TRUE(server->startup());
@@ -50,27 +54,84 @@ public:
 
 std::unique_ptr<sese::service::http::v3::HttpServer> TestHttpServerV3::server;
 
-TEST_F(TestHttpServerV3, DISABLED_OnecRequest) {
+TEST_F(TestHttpServerV3, OnceRequest_query) {
     using namespace sese::net::http;
     {
         auto client = RequestableFactory::createHttpRequest("https://127.0.0.1:9090/get_info?name=sese");
         ASSERT_NOT_NULL(client);
-        ASSERT_TRUE(client->request()) << client->getLastError() << client->getLastErrorString();
-
+        ASSERT_TRUE(client->request()) << client->getLastError();
         EXPECT_EQ(client->getResponse()->getCode(), 200);
         for (auto &&[key, value]: *client->getResponse()) {
             SESE_INFO("%s: %s", key.c_str(), value.c_str());
         }
     }
     {
-        auto client = RequestableFactory::createHttpRequest("http://127.0.0.1:9090");
+        auto client = RequestableFactory::createHttpRequest("http://127.0.0.1:9091/get_info");
         ASSERT_NOT_NULL(client);
         ASSERT_TRUE(client->request()) << client->getLastError();
 
-        EXPECT_EQ(client->getResponse()->getCode(), 403);
+        EXPECT_EQ(client->getResponse()->getCode(), 400);
         for (auto &&[key, value]: *client->getResponse()) {
             SESE_INFO("%s: %s", key.c_str(), value.c_str());
         }
+    }
+}
+
+TEST_F(TestHttpServerV3, OnceRequest_header) {
+    using namespace sese::net::http;
+    {
+        auto client = RequestableFactory::createHttpRequest("https://127.0.0.1:9090/get_info_2");
+        ASSERT_NOT_NULL(client);
+        ASSERT_TRUE(client->request()) << client->getLastError();
+        EXPECT_EQ(client->getResponse()->getCode(), 400);
+        for (auto &&[key, value]: *client->getResponse()) {
+            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        }
+    }
+    {
+        auto client = RequestableFactory::createHttpRequest("http://127.0.0.1:9091/get_info_2");
+        ASSERT_NOT_NULL(client);
+        client->getRequest()->set("name", "kaoru");
+        ASSERT_TRUE(client->request()) << client->getLastError();
+
+        EXPECT_EQ(client->getResponse()->getCode(), 200);
+        for (auto &&[key, value]: *client->getResponse()) {
+            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        }
+    }
+}
+
+TEST_F(TestHttpServerV3, Keepalive) {
+    using namespace sese::net::http;
+    auto client = RequestableFactory::createHttpRequest("http://127.0.0.1:9091/get_info_2");
+    ASSERT_NOT_NULL(client);
+    ASSERT_TRUE(client->request()) << client->getLastError();
+    EXPECT_EQ(client->getResponse()->getCode(), 400);
+    for (auto &&[key, value]: *client->getResponse()) {
+        SESE_INFO("%s: %s", key.c_str(), value.c_str());
+    }
+    client->getRequest()->set("name", "kaoru");
+    ASSERT_TRUE(client->request()) << client->getLastError();
+    EXPECT_EQ(client->getResponse()->getCode(), 200);
+    for (auto &&[key, value]: *client->getResponse()) {
+        SESE_INFO("%s: %s", key.c_str(), value.c_str());
+    }
+}
+
+TEST_F(TestHttpServerV3, Keepalive_ssl) {
+    using namespace sese::net::http;
+    auto client = RequestableFactory::createHttpRequest("https://127.0.0.1:9090/get_info_2");
+    ASSERT_NOT_NULL(client);
+    ASSERT_TRUE(client->request()) << client->getLastError();
+    EXPECT_EQ(client->getResponse()->getCode(), 400);
+    for (auto &&[key, value]: *client->getResponse()) {
+        SESE_INFO("%s: %s", key.c_str(), value.c_str());
+    }
+    client->getRequest()->set("name", "kaoru");
+    ASSERT_TRUE(client->request()) << client->getLastError();
+    EXPECT_EQ(client->getResponse()->getCode(), 200);
+    for (auto &&[key, value]: *client->getResponse()) {
+        SESE_INFO("%s: %s", key.c_str(), value.c_str());
     }
 }
 
@@ -212,7 +273,7 @@ TEST(TestService, TimerableService) {
     for (decltype(auto) s: socket_vector) {
         s.connect(addr);
     }
-    socket_vector[4].write("Hello", 5);
+    socket_vector[4].write("Hello", 5); // NOLINT
     std::this_thread::sleep_for(5s);
     for (decltype(auto) s: socket_vector) {
         s.close();
@@ -282,7 +343,7 @@ TEST(TestService, TimerableService_V2) {
     for (decltype(auto) s: socket_vector) {
         s.connect(addr);
     }
-    socket_vector[4].write("Hello", 5);
+    socket_vector[4].write("Hello", 5); // NOLINT
     std::this_thread::sleep_for(5s);
     for (decltype(auto) s: socket_vector) {
         s.close();
