@@ -15,5 +15,15 @@ var classsese_1_1io_1_1_file_stream =
     [ "setSeek", "classsese_1_1io_1_1_file_stream.html#af618e56ce8ee1a57070bbcd04e495c03", null ],
     [ "trunc", "classsese_1_1io_1_1_file_stream.html#a1382a876bf965b7b417ec7b76a434550", null ],
     [ "write", "classsese_1_1io_1_1_file_stream.html#ac5f16a5108e129882c519710bf23fd2b", null ],
-    [ "file", "classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c", null ]
+    [ "B_APPEND", "classsese_1_1io_1_1_file_stream.html#a2671725e623faf346430b1e7813f356e", null ],
+    [ "B_READ", "classsese_1_1io_1_1_file_stream.html#af7602570c9ae86dd4e73e967be11ee69", null ],
+    [ "B_TRUNC", "classsese_1_1io_1_1_file_stream.html#aafd3a8d9488b28c69a146f13c56cc59f", null ],
+    [ "B_WRITE_APPEND", "classsese_1_1io_1_1_file_stream.html#a3511bbfa1c84e60637e86daed71c4951", null ],
+    [ "B_WRITE_TRUNC", "classsese_1_1io_1_1_file_stream.html#a77b8a975d585df55a020c2a791c82caf", null ],
+    [ "file", "classsese_1_1io_1_1_file_stream.html#a00306b7f5a507f1e9aeb227d57a0b06c", null ],
+    [ "T_APPEND", "classsese_1_1io_1_1_file_stream.html#a79f5a8436b0c0515062b347aae43d03a", null ],
+    [ "T_READ", "classsese_1_1io_1_1_file_stream.html#adbd249eb1a0b6c413f9692013a049835", null ],
+    [ "T_TRUNC", "classsese_1_1io_1_1_file_stream.html#a938e815d914d4227105e4c5bff0594e3", null ],
+    [ "T_WRITE_APPEND", "classsese_1_1io_1_1_file_stream.html#a23bfd71de5f670d3c461f813bd6f73e6", null ],
+    [ "T_WRITE_TRUNC", "classsese_1_1io_1_1_file_stream.html#a1ba76aa2a3959d20f8fc229b3a080d46", null ]
 ];
