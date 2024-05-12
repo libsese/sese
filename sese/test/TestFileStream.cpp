@@ -5,12 +5,15 @@
 
 #include <filesystem>
 
+using sese::io::File;
+using sese::io::FileStream;
+
 TEST(TestFileStream, Open) {
     ASSERT_EQ(sese::io::FileStream::create("undef.txt", TEXT_READ_EXISTED), nullptr);
 }
 
 TEST(TestFileStream, Seek) {
-    auto file = sese::io::FileStream::create("temp1.txt", BINARY_BOTH_CREATE_TRUNC);
+    auto file = FileStream::create("temp1.txt", File::B_TRUNC);
     ASSERT_NE(file, nullptr);
     ASSERT_EQ(file << std::string_view("Helle"), 5);
     ASSERT_EQ(file->getSeek(), 5);
@@ -31,7 +34,7 @@ TEST(TestFileStream, Seek) {
 
 TEST(TestFileStream, Peek) {
     std::string expect = "Hello";
-    auto file = sese::io::File::create(PROJECT_PATH "/sese/test/Data/data-0.txt", TEXT_READ_EXISTED);
+    auto file = File::create(PROJECT_PATH "/sese/test/Data/data-0.txt", File::T_READ);
     ASSERT_NE(file, nullptr);
     auto fd = file->getFd();
     EXPECT_NE(fd, 0);

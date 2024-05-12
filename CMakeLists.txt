@@ -28,7 +28,7 @@ if (WIN32 OR SESE_AUTO_VCPKG)
     sese_auto_find_vcpkg()
 endif ()
 
-project(sese-core VERSION 2.0.1)
+project(sese VERSION 2.1.0)
 set(CMAKE_CXX_STANDARD 17)
 
 set(SESE_REPO_HASH "UNKNOWN")
