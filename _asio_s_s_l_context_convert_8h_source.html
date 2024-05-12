@@ -142,19 +142,19 @@ $(document).ready(function(){initNavTree('_asio_s_s_l_context_convert_8h_source.
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;openssl/ssl.h&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1internal_1_1net.html">sese::internal::net</a> {</div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespacesese_1_1internal_1_1net.html#a3692b8607a432eb6f1f51f83859662b7">    9</a></span><span class="keyword">inline</span> asio::ssl::context <a class="code hl_variable" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">sese::security::SSLContext::Ptr</a> &amp;context) {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">return</span> asio::ssl::context(<span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(context-&gt;getContext()));</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="namespacesese_1_1internal_1_1net.html#abf565da6b681fdff91a822e2dc8fb7d1">   12</a></span><span class="keyword">inline</span> asio::ssl::context <a class="code hl_variable" href="_encoding_converter_8cpp.html#aade4c2e326803b7f926ad8996df87985">convert</a>(std::unique_ptr&lt;security::SSLContext&gt; context) {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">return</span> asio::ssl::context(<span class="keyword">static_cast&lt;</span>SSL_CTX *<span class="keyword">&gt;</span>(context-&gt;release()));</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
 </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>} <span class="comment">// namespace sese::internal::net</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>} <span class="comment">// namespace sese::internal::net</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_7d3fb913f6b3b461897efa8818b452ce.html">internal</a></li><li class="navelem"><a class="el" href="dir_3491aff7cba398ff0383695f9587d3f2.html">net</a></li><li class="navelem"><a class="el" href="_asio_s_s_l_context_convert_8h.html">AsioSSLContextConvert.h</a></li>
-    <li class="footer">生成于 2024年 五月 10日 星期五 06:36:46 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 12日 星期日 13:34:41 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

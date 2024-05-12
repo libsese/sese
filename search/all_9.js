@@ -78,7 +78,7 @@ var searchData=
   ['ipv6address_2eh_75',['IPv6Address.h',['../_i_pv6_address_8h.html',1,'']]],
   ['ipv6addresses_76',['ipv6Addresses',['../structsese_1_1system_1_1_network_interface.html#a763adb12d4b48cfbb1d157109f81ef6f',1,'sese::system::NetworkInterface']]],
   ['ipv6addresspool_77',['IPv6AddressPool',['../namespacesese_1_1net.html#a2ee13ee00756c8f1d744d6b0b4834ae2',1,'sese::net']]],
-  ['is0x0d_78',['is0x0d',['../structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ace972b7b06107493bf1bc2d10ad1dd47',1,'sese::internal::service::http::v3::HttpSSLConnectionImpl']]],
+  ['is0x0a_78',['is0x0a',['../structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#a700d20ee3d4b9e2a873177141c5bf4eb',1,'sese::internal::service::http::v3::HttpSSLConnectionImpl']]],
   ['isactivereleasemode_79',['isactivereleasemode',['../classsese_1_1iocp_1_1v1_1_1_i_o_c_p_server.html#a2a7e9c595ad9e21ea36ee22375f1b804',1,'sese::iocp::v1::IOCPServer::isActiveReleaseMode()'],['../classsese_1_1__windows_1_1iocp_1_1v1_1_1_native_i_o_c_p_server.html#afc0b25984bddb17011a914707b62ef8b',1,'sese::_windows::iocp::v1::NativeIOCPServer::isActiveReleaseMode()']]],
   ['isasync_80',['isAsync',['../structsese_1_1service_1_1_tcp_connection.html#a8c9b88d1f84afcf3885446577be28869',1,'sese::service::TcpConnection']]],
   ['isblob_81',['isBlob',['../classsese_1_1_value.html#a6aeaecd8a88780be1ab09b06374dd5e2',1,'sese::Value']]],

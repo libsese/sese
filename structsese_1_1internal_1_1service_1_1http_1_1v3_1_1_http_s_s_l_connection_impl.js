@@ -13,6 +13,6 @@ var structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_im
     [ "writeHeader", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ad68b3b37c5576d9b45cce24eedfe0966", null ],
     [ "dynamic_buffer", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ae31396bb1945f8a5bd4cd881df5eabb4", null ],
     [ "io_buffer", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ad627814257f1f33e0ccd0ac1c5896d8a", null ],
-    [ "is0x0d", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ace972b7b06107493bf1bc2d10ad1dd47", null ],
+    [ "is0x0a", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#a700d20ee3d4b9e2a873177141c5bf4eb", null ],
     [ "stream", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ada0b93d1c4aeafdf9b6f49d309b965a9", null ]
 ];

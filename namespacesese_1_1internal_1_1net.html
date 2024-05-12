@@ -142,8 +142,8 @@ $(document).ready(function(){initNavTree('namespacesese_1_1internal_1_1net.html'
 函数</h2></td></tr>
 <tr class="memitem:af1db21106bdd2952c72ab8fcd2f2e2a2" id="r_af1db21106bdd2952c72ab8fcd2f2e2a2"><td class="memItemLeft" align="right" valign="top">asio::ip::address&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1internal_1_1net.html#af1db21106bdd2952c72ab8fcd2f2e2a2">convert</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">sese::net::IPAddress::Ptr</a> &amp;addr)</td></tr>
 <tr class="separator:af1db21106bdd2952c72ab8fcd2f2e2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3692b8607a432eb6f1f51f83859662b7" id="r_a3692b8607a432eb6f1f51f83859662b7"><td class="memItemLeft" align="right" valign="top">asio::ssl::context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1internal_1_1net.html#a3692b8607a432eb6f1f51f83859662b7">convert</a> (const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">sese::security::SSLContext::Ptr</a> &amp;context)</td></tr>
-<tr class="separator:a3692b8607a432eb6f1f51f83859662b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf565da6b681fdff91a822e2dc8fb7d1" id="r_abf565da6b681fdff91a822e2dc8fb7d1"><td class="memItemLeft" align="right" valign="top">asio::ssl::context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1internal_1_1net.html#abf565da6b681fdff91a822e2dc8fb7d1">convert</a> (std::unique_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">security::SSLContext</a> &gt; context)</td></tr>
+<tr class="separator:abf565da6b681fdff91a822e2dc8fb7d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">函数说明</h2>
 <a id="af1db21106bdd2952c72ab8fcd2f2e2a2" name="af1db21106bdd2952c72ab8fcd2f2e2a2"></a>
@@ -174,8 +174,8 @@ $(document).ready(function(){initNavTree('namespacesese_1_1internal_1_1net.html'
 
 </div>
 </div>
-<a id="a3692b8607a432eb6f1f51f83859662b7" name="a3692b8607a432eb6f1f51f83859662b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3692b8607a432eb6f1f51f83859662b7">&#9670;&#160;</a></span>convert() <span class="overload">[2/2]</span></h2>
+<a id="abf565da6b681fdff91a822e2dc8fb7d1" name="abf565da6b681fdff91a822e2dc8fb7d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf565da6b681fdff91a822e2dc8fb7d1">&#9670;&#160;</a></span>convert() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -186,7 +186,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1internal_1_1net.html'
         <tr>
           <td class="memname">asio::ssl::context sese::internal::net::convert </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">sese::security::SSLContext::Ptr</a> &amp;&#160;</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">security::SSLContext</a> &gt;&#160;</td>
           <td class="paramname"><em>context</em></td><td>)</td>
           <td></td>
         </tr>
@@ -197,6 +197,13 @@ $(document).ready(function(){initNavTree('namespacesese_1_1internal_1_1net.html'
   </tr>
 </table>
 </div><div class="memdoc">
+<p>调用此函数将意味着将 context 的所有权转移至新转换的对象，旧的对象将不再有效 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>上下文 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>新的 asio 上下文对象 </dd></dl>
 
 </div>
 </div>
@@ -206,7 +213,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1internal_1_1net.html'
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1net.html">net</a></li>
-    <li class="footer">生成于 2024年 五月 10日 星期五 06:36:48 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 12日 星期日 13:34:43 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -144,22 +144,24 @@ $(document).ready(function(){initNavTree('_s_s_l_context_builder_8h_source.html'
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1security.html">sese::security</a> {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classsese_1_1security_1_1_s_s_l_context_builder.html">   15</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1security_1_1_s_s_l_context_builder.html" title="SSL 上下文构建器">SSLContextBuilder</a> : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1_not_instantiable.html" title="不可实例化类">NotInstantiable</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classsese_1_1security_1_1_s_s_l_context_builder.html">   15</a></span><span class="keyword">class </span><a class="code hl_define" href="native_2darwin_2_config_8h.html#ad8ce4efaa307683d3d763b37b4711c53" title="可导出类型标识符">API</a> <a class="code hl_class" href="classsese_1_1security_1_1_s_s_l_context_builder.html" title="SSL 上下文构建器">SSLContextBuilder</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1_not_instantiable.html" title="不可实例化类">NotInstantiable</a> {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">SSLContext::Ptr</a> SSL4Client() <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <a class="code hl_typedef" href="classsese_1_1security_1_1_s_s_l_context.html#a33b0bbf1987dd213c5d8886906f2099a">SSLContext::Ptr</a> SSL4Server() <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">static</span> std::unique_ptr&lt;SSLContext&gt; UniqueSSL4Client() <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">static</span> std::unique_ptr&lt;SSLContext&gt; UniqueSSL4Server() <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
 </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>} <span class="comment">// namespace sese::security</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="_s_s_l_context_builder_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9">   26</a></span><span class="preprocessor">#define WIN32_LEAN_AND_MEAN</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <span class="comment">// namespace sese::security</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="_s_s_l_context_builder_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9">   32</a></span><span class="preprocessor">#define WIN32_LEAN_AND_MEAN</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_bc60aa7f97b422a20081730c9c49dd9a.html">security</a></li><li class="navelem"><a class="el" href="_s_s_l_context_builder_8h.html">SSLContextBuilder.h</a></li>
-    <li class="footer">生成于 2024年 五月 10日 星期五 06:36:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 12日 星期日 13:34:42 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

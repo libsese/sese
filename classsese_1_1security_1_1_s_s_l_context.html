@@ -173,6 +173,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a68d874b7ad16b4b4444e7007671228bd" id="r_a68d874b7ad16b4b4444e7007671228bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1net_1_1_socket.html#afe92801bf78f643132de579dfc854a3f">Socket::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a68d874b7ad16b4b4444e7007671228bd">newSocketPtr</a> (<a class="el" href="classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c">Socket::Family</a> family, int32_t flags)</td></tr>
 <tr class="memdesc:a68d874b7ad16b4b4444e7007671228bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">从当前上下文中创建一个 TCP Socket  <br /></td></tr>
 <tr class="separator:a68d874b7ad16b4b4444e7007671228bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc42f57243831a6d06c8ffbe2e665a21" id="r_acc42f57243831a6d06c8ffbe2e665a21"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#acc42f57243831a6d06c8ffbe2e665a21">release</a> () noexcept</td></tr>
+<tr class="memdesc:acc42f57243831a6d06c8ffbe2e665a21"><td class="mdescLeft">&#160;</td><td class="mdescRight">释放当前对象的所有权  <br /></td></tr>
+<tr class="separator:acc42f57243831a6d06c8ffbe2e665a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 属性</h2></td></tr>
@@ -428,6 +431,39 @@ Private 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>创建完成的 Socket </dd></dl>
 
+<p class="reference">引用了 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a87d485b2e000ec44dffe7c33874c899f">context</a>.</p>
+
+</div>
+</div>
+<a id="acc42f57243831a6d06c8ffbe2e665a21" name="acc42f57243831a6d06c8ffbe2e665a21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc42f57243831a6d06c8ffbe2e665a21">&#9670;&#160;</a></span>release()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * SSLContext::release </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>释放当前对象的所有权 </p>
+<dl class="section warning"><dt>警告</dt><dd>注意，此函数用于应对 asio::ssl::context 不遵循谁分配谁释放的原则，调用后对象将会失去对于 SSL_CTX 的掌控，除非你很清楚你在做什么，不然不可以使用这个函数，单纯需要获取 SSL_CTX 而不变更生命周期请使用 getContext </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>底层 SSL_CTX 指针 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a87d485b2e000ec44dffe7c33874c899f">context</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -451,7 +487,7 @@ Private 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a876b04102f6144398cb5b2f67d56ec5e">authPrivateKey()</a>, <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#abd649a75c193adf97ff1ff9596a1a9bc">getContext()</a> , 以及 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a12d155f4dd5c32228e2d4c96d52fd97d">~SSLContext()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a876b04102f6144398cb5b2f67d56ec5e">authPrivateKey()</a>, <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#abd649a75c193adf97ff1ff9596a1a9bc">getContext()</a>, <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a68d874b7ad16b4b4444e7007671228bd">newSocketPtr()</a>, <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#acc42f57243831a6d06c8ffbe2e665a21">release()</a> , 以及 <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html#a12d155f4dd5c32228e2d4c96d52fd97d">~SSLContext()</a>.</p>
 
 </div>
 </div>
@@ -465,7 +501,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1security.html">security</a></li><li class="navelem"><a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">SSLContext</a></li>
-    <li class="footer">生成于 2024年 五月 10日 星期五 06:36:48 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 12日 星期日 13:34:43 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
