@@ -161,15 +161,15 @@ endif ()
 ###################################################################################
 # 额外的任务配置
 ###################################################################################
-if (SESE_BUILD_TEST AND WIN32)
-    target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
-
-    sese_copy_dll_to_binary_path(Core "/sese/test")
-endif ()
-
-if (SESE_BUILD_EXAMPLE AND WIN32)
-    sese_copy_dll_to_binary_path(Core "/demo")
-endif ()
+# if (SESE_BUILD_TEST AND WIN32)
+#     target_compile_definitions(Core PUBLIC -DSESE_BUILD_TEST)
+#
+#     sese_copy_dll_to_binary_path(Core "/sese/test")
+# endif ()
+#
+# if (SESE_BUILD_EXAMPLE AND WIN32)
+#     sese_copy_dll_to_binary_path(Core "/demo")
+# endif ()
 
 ###################################################################################
 # Windows 平台配置
