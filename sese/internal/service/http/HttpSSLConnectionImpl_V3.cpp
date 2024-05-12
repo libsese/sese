@@ -12,6 +12,7 @@ HttpSSLConnectionImpl::HttpSSLConnectionImpl(const std::shared_ptr<HttpServiceIm
     : HttpConnection(service, context) {}
 
 HttpSSLConnectionImpl::~HttpSSLConnectionImpl() {
+    SESE_INFO("close");
     if (stream) {
         asio::error_code error = this->stream->shutdown(error);
     }
@@ -168,7 +169,7 @@ void HttpSSLConnectionImpl::checkKeepalive() {
     if (this->keepalive) {
         this->reset();
         this->timer.async_wait([conn = getPtr()](const asio::error_code &error) {
-            if (error.value() == 995) {
+            if (error == asio::error::operation_aborted) {
             } else {
                 conn->socket.cancel();
                 conn->disponse();

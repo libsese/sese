@@ -144,7 +144,7 @@ void HttpConnectionImpl::checkKeepalive() {
     if (this->keepalive) {
         this->reset();
         this->timer.async_wait([conn = shared_from_this()](const asio::error_code &error) {
-            if (error.value() == 995) {
+            if (error.value() == asio::error::operation_aborted) {
             } else {
                 conn->socket.cancel();
                 conn->disponse();
