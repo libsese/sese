@@ -16,7 +16,7 @@
 
 SESE_CTRL(MyController) {
     SESE_URL(get_info, RequestType::GET, "/get_info?{name}") {
-        auto name = req.get("name");
+        auto name = req.getQueryArg("name");
         resp.set("name", name);
     };
 }
@@ -52,16 +52,15 @@ std::unique_ptr<sese::service::http::v3::HttpServer> TestHttpServerV3::server;
 
 TEST_F(TestHttpServerV3, OnecRequest) {
     using namespace sese::net::http;
-    // {
-    //     auto client = RequestableFactory::createHttpRequest("https://127.0.0.1:9090/get_info?name=sese");
-    //     ASSERT_NOT_NULL(client);
-    //     ASSERT_TRUE(client->request()) << client->getLastError() << client->getLastErrorString();
-    //
-    //     EXPECT_EQ(client->getResponse()->getCode(), 200);
-    //     for (auto &&[key, value]: *client->getResponse()) {
-    //         SESE_INFO("%s: %s", key.c_str(), value.c_str());
-    //     }
-    // }
+    {
+        auto client = RequestableFactory::createHttpRequest("https://127.0.0.1:9090/get_info?name=sese");
+        ASSERT_NOT_NULL(client);
+        ASSERT_TRUE(client->request()) << client->getLastError();
+        EXPECT_EQ(client->getResponse()->getCode(), 200);
+        for (auto &&[key, value]: *client->getResponse()) {
+            SESE_INFO("%s: %s", key.c_str(), value.c_str());
+        }
+    }
     {
         auto client = RequestableFactory::createHttpRequest("http://127.0.0.1:9091/get_info");
         ASSERT_NOT_NULL(client);
@@ -212,7 +211,7 @@ TEST(TestService, TimerableService) {
     for (decltype(auto) s: socket_vector) {
         s.connect(addr);
     }
-    socket_vector[4].write("Hello", 5);
+    socket_vector[4].write("Hello", 5); // NOLINT
     std::this_thread::sleep_for(5s);
     for (decltype(auto) s: socket_vector) {
         s.close();
@@ -282,7 +281,7 @@ TEST(TestService, TimerableService_V2) {
     for (decltype(auto) s: socket_vector) {
         s.connect(addr);
     }
-    socket_vector[4].write("Hello", 5);
+    socket_vector[4].write("Hello", 5); // NOLINT
     std::this_thread::sleep_for(5s);
     for (decltype(auto) s: socket_vector) {
         s.close();

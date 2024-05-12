@@ -45,13 +45,13 @@ void HttpSSLConnectionImpl::readHeader() {
         bool recv_status = false;
         bool parse_status = false;
         for (int i = 0; i < bytes_transferred; ++i) {
-            if (conn->is0x0d && (static_cast<char *>(node->buffer)[i] == '\n')) {
-                conn->is0x0d = false;
+            if (conn->is0x0a && static_cast<char *>(node->buffer)[i] == '\r') {
+                conn->is0x0a = false;
                 recv_status = true;
                 parse_status = sese::net::http::HttpUtil::recvRequest(&conn->io_buffer, &conn->request);
                 break;
             }
-            conn->is0x0d = (static_cast<char *>(node->buffer)[i] == '\r');
+            conn->is0x0a = (static_cast<char *>(node->buffer)[i] == '\n');
         }
         if (!recv_status) {
             // 接收不完整，应该继续接收
