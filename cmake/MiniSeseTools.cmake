@@ -79,27 +79,3 @@ macro(sese_auto_find_vcpkg)
         endif ()
     endif ()
 endmacro()
-
-macro(sese_copy_dll_to_binary_path target dest)
-    if (${CMAKE_GENERATOR} MATCHES "Ninja")
-        # 单配置
-        add_custom_command(
-                TARGET
-                ${target}
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:${target}> ${PROJECT_BINARY_DIR}/${dest}
-        )
-    else ()
-        # 多配置
-        add_custom_command(
-                TARGET
-                ${target}
-                POST_BUILD
-                COMMAND
-                ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:${target}> ${PROJECT_BINARY_DIR}/${dest}/$<CONFIG>
-        )
-    endif ()
-endmacro()
