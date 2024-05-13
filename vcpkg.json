@@ -1,6 +1,6 @@
 {
   "name": "sese",
-  "version-string": "2.1.1",
+  "version": "2.1.1",
   "license": "Apache-2.0",
   "supports": "x64",
   "dependencies": [
