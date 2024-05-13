@@ -11,7 +11,8 @@
                 "SESE_BUILD_EXAMPLE": "ON",
                 "SESE_USE_ARCHIVE": "ON",
                 "SESE_DB_USE_MARIADB": "ON",
-                "SESE_DB_USE_POSTGRES": "ON"
+                "SESE_DB_USE_POSTGRES": "ON",
+                "BUILD_SHARED_LIBS": "ON"
             }
         },
         {

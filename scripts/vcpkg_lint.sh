@@ -1,0 +1,1 @@
+vcpkg format-manifest --all

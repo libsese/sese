@@ -6,6 +6,10 @@
 #include "sese/record/ConsoleAppender.h"
 #include "sese/record/SimpleFormatter.h"
 
+#ifdef USE_ASYNC_LOGGER
+#include "sese/record/AsyncLogger.h"
+#endif
+
 #include <clocale>
 
 namespace sese::record {
