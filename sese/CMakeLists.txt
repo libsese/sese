@@ -239,7 +239,7 @@ include(CMakePackageConfigHelpers)
 configure_package_config_file(
         ${PROJECT_SOURCE_DIR}/cmake/sese-config.cmake.in
         ${PROJECT_BINARY_DIR}/sese-config.cmake
-        INSTALL_DESTINATION lib/cmake/sese-core
+        INSTALL_DESTINATION lib/cmake/sese
 )
 
 install(
@@ -263,16 +263,16 @@ install(
 
 install(
         FILES "${PROJECT_BINARY_DIR}/sese-config.cmake"
-        DESTINATION lib/cmake/sese-core
+        DESTINATION lib/cmake/sese
 )
 
 install(
         FILES "${PROJECT_BINARY_DIR}/sese-config.cmake"
-        DESTINATION debug/lib/cmake/sese-core
+        DESTINATION debug/lib/cmake/sese
 )
 
 install(
         EXPORT SeseTargets
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sese-core
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sese
         NAMESPACE Sese::
 )
