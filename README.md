@@ -14,67 +14,157 @@
 <br>
 </div>
 
-## SESE-CORE
+## Sese Framework
 
-[中文总览](README.zh_CN.md)
+这是一个跨平台的、用于基础组件开发的框架，一定程度上作为标准库的补充使用。定位上类似于 Boost、folly 之于标准库。项目使用 C++ 17 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管理问题。
 
-SESE-CORE is a cross-platform foundational project that utilizes the C++17 language standard, employs CMake as its build
-system, and integrates vcpkg as the package manager. It has versatile tools, spanning from system-level development to
-web development and beyond.
+## 示例
 
-Currently, the project is compatible with Windows, macOS, and various Linux distributions running on the x86_64
-architecture. However, compatibility with the ARM architecture has not been verified.
+## 构建
 
-The project's primary objective is to serve as a supplementary resource to the standard library, akin to libraries like
-folly and boost. It provides commonly used features such as asynchronous programming, logging, multithreading, binary
-interface management, and more.
+### 对于开发者/贡献者
 
-## BUILD
+1. 配置开发环境
 
-If you're using vcpkg to manage dependencies, you don't need to worry about the specific build process of this project.
-You just need to import the private vcpkg-registry, complete the vcpkg.json file, and add the vcpkg toolchain.
+对于 Windows 用户，请安装并配置 [vcpkg](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started) 到目标机器上。
 
-In addition, if you're compiling and installing it or if you're a developer working on this project locally for
-debugging purposes, you'll also need to use vcpkg. Clone the project, configure it, add the vcpkg toolchain, and set
-SESE_BUILD_TEST=ON to build unit tests.
+对于非 Windows 用户，vcpkg 同样是可用的。但同时你可以选择使用原生的系统依赖管理工具安装相应依赖。我们提供了几个预设的安装脚本。
 
-You can automatically configure the current project into the 'build' directory using the following script:
+- Ubuntu
 
 ```bash
-python3 scripts/config.py
+sudo ./scripts/install_ubuntu_deps.sh
 ```
 
-## CODESPACES
-
-Using CODESPACES, you only need to create a container with the project's default settings. The .vscode/settings.json
-file provides the default configuration that the container can use directly.
-
-## DOCKER CONTAINER
-
-The project also provides a Dockerfile to build a containerized development environment that can be used directly. For
-specific details, please refer to the docker/readme.md file; we won't go into further details here.
-
-## UNIT TEST
-
-The project has chosen googletest as its unit testing framework, and some tests have disabled the SIGPIPE signal to
-ensure smooth execution. When using gdb or lldb for debugging, it may automatically load the **.gdbinit**/**.lldbinit**
-files in the project, which suppress all SIGPIPE signals. To run all tests, simply navigate to the build directory and
-execute ctest.
-
-## TEST REPORT
-
-Generating test reports requires compiler support and setting flags to generate report data. To generate the report,
-you'll need gcovr, which can be installed via pip or your system's package management system. For filtering out
-deprecated or obsolete implementations, a **gcovr.cfg** file has been provided. You can use the following command to
-generate test reports directly in the 'coverage' directory.
+- Fedora
 
 ```bash
-python3 scripts/make_coverage_report.py
+sudo ./scripts/install_fedora_deps.sh
 ```
 
-Sometimes, you may need to use specific options of gcovr to select a particular version of the gcov executable.
+- macOS
 
-## WORKFLOWS
+```bash
+./scripts/install_darwin_deps.sh
+```
 
-For all three supported platforms, there are automated test workflows in place. In the test_coverage_job on Ubuntu, a
-test report file named CoverageReport.zip will be generated.
+2. 编译选项
+
+如果你配置好了 vcpkg，只需[设置工具链文件](https://learn.microsoft.com/en-us/vcpkg/users/buildsystems/cmake-integration)即可完成依赖配置。
+
+如果你使用系统依赖管理工具，那么你需要在按完成对应依赖后，手动添加 `SESE_USE_NATIVE_MANAGER` 编译选项。
+
+我们定义了一些 options 用于启用或关闭部分功能，具体可以参照以下的类似格式：
+
+https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/CMakeLists.txt#L8-L16
+
+> [!TIP]
+> 请根据最新 [CMakeLists.txt](./CMakeLists.txt) 文件了解相应的功能选项，或者你可以直接使用我们预设的 [CMakePresets.json](./CMakePresets.json), 这将默认开启绝大多数功能选项。
+
+3. 编译
+
+配置完成编译选项只需要常规构建即可，例如：
+
+```bash
+cmake --build build/linux-debug -- -j 4
+```
+
+### 对于普通使用者
+
+对于普通使用者，我们推荐使用 vcpkg 导入此依赖，可以参考我们的[模板项目](https://github.com/libsese/sese-template)配置你的项目：
+
+<!-- https://github.com/libsese/sese-template/blob/971b3e286018c5281fefc54b7d90b4905b57730c/vcpkg.json#L1-L11 -->
+
+<!-- https://github.com/libsese/sese-template/blob/971b3e286018c5281fefc54b7d90b4905b57730c/vcpkg-configuration.json#L1-17 -->
+
+> [!WARNING]
+> 我们也支持作为普通项目安装在普通机器上，但这不是推荐的做法，也无法得到支持，如果你想这么做可以参考 `构建` > `对于开发者/贡献者` 中关于系统依赖管理工具的内容。
+
+主要工作是编写项目的依赖配置文件，例如：
+
+`vcpkg.json`
+
+```json
+{
+  "dependencies": [
+    "sese"
+  ]
+}
+```
+
+> [!IMPORTANT]
+>
+> 截至今日(2024-05-15)，该项目尚未进入内建库列表中，这意味这你需要多编写一个配置文件用于导入我们的[私有注册表](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries)。
+
+`vcpkg-configuration.json`
+
+```json
+{
+  "default-registry": {
+    "kind": "git",
+    "repository": "https://github.com/microsoft/vcpkg.git",
+    "baseline": "c8696863d371ab7f46e213d8f5ca923c4aef2a00"
+  },
+  "registries": [
+    {
+      "kind": "git",
+      "repository": "https://github.com/libsese/vcpkg-registry.git",
+      "baseline": "73268778d5f796f188ca66f71536377b171ee37e",
+      "packages": [
+        "sese"
+      ]
+    }
+  ]
+}
+```
+
+如果你没有使用 vcpkg，上述步骤是不必要的。
+
+## 测试
+
+使用了 googletest 作为了测试框架，测试的详细信息可以从 github actions 中查看，包括各个平台的测试结果和 linux 的测试覆盖率等内容。
+
+| 平台 | 入口 | 单元测试 | 覆盖率测试 |
+|------|-----|---------|-----------|
+| Windows | [Unit Tests](https://github.com/libsese/sese/actions/workflows/windows-2022.yml) | ✅ | |
+| Linux | [Unit Tests](https://github.com/libsese/sese/actions/workflows/ubuntu-22.04-apt.yml) | ✅ | ✅ |
+| macOS | [Unit Tests](https://github.com/libsese/sese/actions/workflows/macos-12-brew.yml) | ✅ | |
+
+1. 本地测试
+
+如果你需要在本地运行完整测试，那么你可能需要注意关于数据库方面的测试，这需要一些额外的服务和配置支撑。
+
+- Ubuntu 工作流对于服务的处理参考
+
+https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L14-L34
+
+https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L45-L53
+
+https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L72-L75
+
+- 直接使用 docker-compose.yml
+
+```bash
+docker-compose up -d
+sqlite3 build/db_test.db < scripts/sqlite_dump.sql
+```
+
+2. 生成覆盖率测试报告
+
+需要安装 gcovr，可以选择 pip 安装或者使用系统包管理器安装。
+
+```bash
+mkdir -p build/coverage/html
+gcovr --config gcovr-html.cfg
+```
+
+> [!NOTE]
+> 生成覆盖率测试数据首先需要设置一些额外的编译选项来生成例如 gcov 格式的测试数据，例如 GCC
+
+https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L75
+
+## 文档
+
+[文档](https://libsese.github.io/sese/)将会随着主线的更新而自动更新到 github pages 上。
+
+文档内容将从代码注释中自动生成，docs 目录实际存放构建文档所需的部分资源。
