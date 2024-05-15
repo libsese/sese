@@ -31,13 +31,15 @@ var NAVTREE =
     [ "弃用列表", "deprecated.html", null ],
     [ "Bug 列表", "bug.html", null ],
     [ "命名空间", "namespaces.html", [
-      [ "SESE-CORE", "index.html#autotoc_md0", null ],
-      [ "构建", "index.html#autotoc_md1", null ],
-      [ "CODESPACES", "index.html#autotoc_md2", null ],
-      [ "自构建容器", "index.html#autotoc_md3", null ],
-      [ "单元测试", "index.html#autotoc_md4", null ],
-      [ "测试报告", "index.html#autotoc_md5", null ],
-      [ "WORKFLOWS", "index.html#autotoc_md6", null ],
+      [ "简介", "index.html#autotoc_md0", null ],
+      [ "示例", "index.html#autotoc_md1", null ],
+      [ "</blockquote>", "index.html#autotoc_md2", null ],
+      [ "构建", "index.html#autotoc_md4", [
+        [ "对于开发者/贡献者", "index.html#autotoc_md5", null ],
+        [ "对于普通使用者", "index.html#autotoc_md6", null ]
+      ] ],
+      [ "测试", "index.html#autotoc_md7", null ],
+      [ "文档", "index.html#autotoc_md8", null ],
       [ "命名空间列表", "namespaces.html", "namespaces_dup" ],
       [ "命名空间成员", "namespacemembers.html", [
         [ "全部", "namespacemembers.html", null ],
@@ -106,7 +108,7 @@ var NAVTREEINDEX =
 "classsese_1_1text_1_1_string_buffer.html#a920bd20c9e87a48f25a06c7d375f42f1",
 "classsstr_1_1_s_string.html#a4c99de58091476ca74d7628bf52b9fb4",
 "dir_df6e7b01e9a4a67d0b91a4261523a0ab.html",
-"namespacesese_1_1io.html#a7d13d4976930e9c9c0b2d80540922c50",
+"namespacesese_1_1io.html#a798f7fbfce61f52167b91e16a452cf1e",
 "structsese_1_1__windows_1_1iocp_1_1v1_1_1_overlapped_wrapper.html#a1956412b17cbfd72c5109417386f0441",
 "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html#a56e24fac4a5a7787381ffbe3c8940bed",
 "structsese_1_1system_1_1_message_iterator.html#a5cb029f154f1c76949a4a95133abdaf0"

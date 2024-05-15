@@ -133,40 +133,182 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div align="center"> <img src="logo.svg" alt="logo" style="pointer-events: none;" width="128" height="128" class="inline"/> </div> <div align="center"> <img src="https://img.shields.io/static/v1?label=license&amp;message=Apache-2.0&amp;color=blue&amp;logo=Apache" alt="license" class="inline"/> <img src="https://img.shields.io/static/v1?label=language&amp;message=C%2B%2B%2017&amp;color=blue&amp;logo=cplusplus" alt="lang" class="inline"/> <img src="https://img.shields.io/static/v1?label=build%20system&amp;message=CMake&amp;color=blue&amp;logo=cmake" alt="buildsystem" class="inline"/> <br  />
  <img src="https://www.codefactor.io/repository/github/libsese/sese-core/badge" alt="CodeFactor Status" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/windows-2022.yml?label=Windows&amp;logo=windows" alt="GitHub Workflow Status (with event)" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/ubuntu-22.04-apt.yml?label=Ubuntu&amp;logo=ubuntu" alt="GitHub Workflow Status (with event)" class="inline"/> <img src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/macos-12-brew.yml?label=macOS&amp;logo=apple" alt="GitHub Workflow Status (with event)" class="inline"/> <br  />
  </div><h2><a class="anchor" id="autotoc_md0"></a>
-SESE-CORE</h2>
-<p>SESE-CORE 是一个使用 C++17 语言标准、以 CMake 作为构建系统、以 vcpkg 作为包管理器的跨平台基础项目，可以用于系统基础开发以及 Web 开发等。</p>
-<p>项目目前支持在 x86_64 架构下的 Windows、macOS 以及各个 Linux 发行版上运行， ARM 架构尚未进行测试。</p>
-<p>项目定位是一定程度上作为标准库的补充使用（例如 folly、boost 等），例如异步、日志、线程、二进制接口等这些常用的功能。</p>
+简介</h2>
+<p>这是一个跨平台的、用于基础组件开发的框架，一定程度上作为标准库的补充使用。定位上类似于 <code>Boost</code>、<code>folly</code> 之于标准库。项目使用 C++ 17 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管理问题。</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
+示例</h2>
+<p>内建日志器</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="record_2_marco_8h.html" title="日志宏">sese/record/Marco.h</a>&gt;</span></div>
+<div class="line"><span class="comment">// ...</span></div>
+<div class="line"><a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;hello world&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="record_2_marco_8h.html#a7a08c4c287ebe371abb3fa9d4a9712fa">SESE_WARN</a>(<span class="stringliteral">&quot;error %s&quot;</span>, err.what().c_str());</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;2024-05-15T15:54:48.296Z I main.cpp:8 Main:7116&gt; hello world<br  />
+ 2024-05-15T15:54:48.296Z W main.cpp:9 Main:7116&gt; error End of file </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md2"></a>
+&lt;/blockquote&gt;</h2>
+<p>HTTP 控制器</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_http_server___v3_8h.html" title="Http 服务器">sese/service/http/HttpServer_V3.h</a>&gt;</span></div>
+<div class="line"><span class="comment">// ...</span></div>
+<div class="line"><a class="code hl_define" href="_controller_8h.html#a1000932eb934b62e665d4356c6d02f3c">SESE_CTRL</a>(MyController, std::mutex mutex{}; <span class="keywordtype">int</span> times = 0) {</div>
+<div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;LOADING MyController&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="_controller_8h.html#a7eaeb37d052ecaa4a1e25d0ccc71a867">SESE_URL</a>(timers, RequestType::GET, <span class="stringliteral">&quot;/times&quot;</span>) {</div>
+<div class="line">        <a class="code hl_class" href="classsese_1_1_locker.html" title="std::mutex 包装器">sese::Locker</a> locker(mutex);</div>
+<div class="line">        times += 1;</div>
+<div class="line">        <span class="keyword">auto</span> message = <span class="stringliteral">&quot;timers = &#39;&quot;</span> + std::to_string(this-&gt;times) + <span class="stringliteral">&quot;&#39;\n&quot;</span>;</div>
+<div class="line">        resp.getBody().write(message.data(), message.length());</div>
+<div class="line">    };</div>
+<div class="line">    <a class="code hl_define" href="_controller_8h.html#a7eaeb37d052ecaa4a1e25d0ccc71a867">SESE_URL</a>(say, RequestType::GET, <span class="stringliteral">&quot;/say?&lt;say&gt;&quot;</span>) {</div>
+<div class="line">        <span class="keyword">auto</span> words = req.get(<span class="stringliteral">&quot;say&quot;</span>);</div>
+<div class="line">        <span class="keyword">auto</span> message = <span class="stringliteral">&quot;you say &#39;&quot;</span> + words + <span class="stringliteral">&quot;&#39;\n&quot;</span>;</div>
+<div class="line">        resp.getBody().write(message.data(), message.length());</div>
+<div class="line">    };</div>
+<div class="line">    <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;LOADED&quot;</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><hr  />
+<p>跨进程通讯</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_i_p_c_8h.html">sese/system/IPC.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="record_2_marco_8h.html" title="日志宏">sese/record/Marco.h</a>&gt;</span></div>
+<div class="line"><span class="comment">// ···</span></div>
+<div class="line"><span class="comment">// server</span></div>
+<div class="line"><span class="keyword">auto</span> channel = <a class="code hl_function" href="classsese_1_1system_1_1_i_p_c_channel.html#a020521e704dc74be511d5174f9b470fb">sese::system::IPCChannel::create</a>(<span class="stringliteral">&quot;Test&quot;</span>, 1024);</div>
+<div class="line">    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line">        <span class="keyword">auto</span> messages = channel-&gt;read(1);</div>
+<div class="line">        <span class="keywordflow">if</span> (messages.empty()) {</div>
+<div class="line">            <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sese::sleep</a>(1s);</div>
+<div class="line">            <span class="keywordflow">continue</span>;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;msg: messages) {</div>
+<div class="line">            <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;recv %s&quot;</span>, msg.getDataAsString().c_str());</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">if</span> (msg.getDataAsString() == <span class="stringliteral">&quot;Exit&quot;</span>) {</div>
+<div class="line">                <span class="keywordflow">goto</span> end;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">end:</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="comment">// ···</span></div>
+<div class="line"><span class="comment">// client</span></div>
+<div class="line"><span class="keyword">auto</span> channel = <a class="code hl_function" href="classsese_1_1system_1_1_i_p_c_channel.html#aed8e08977d1b833ad277987b6ee380ed">sese::system::IPCChannel::use</a>(<span class="stringliteral">&quot;Test&quot;</span>);</div>
+<div class="line">channel-&gt;write(1, <span class="stringliteral">&quot;Hello&quot;</span>);</div>
+<div class="line">channel-&gt;write(2, <span class="stringliteral">&quot;Hi&quot;</span>);</div>
+<div class="line">channel-&gt;write(1, <span class="stringliteral">&quot;Exit&quot;</span>);</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 构建</h2>
-<p>使用 vcpkg 导入依赖则不太需要你关心具体如何构建这个项目。只需要导入私有的 vcpkg-registry，填写 vcpkg.json 并添加 vcpkg 工具链即可。</p>
-<p>如果是编译安装或者作为开发者本地开发或调试本项目同样需要使用 vcpkg。 clone 项目并配置该项目，添加 vcpkg 工具链和 SESE_BUILD_TEST=ON 以构建单元测试。</p>
-<p>使用以下脚本自动配置当前项目至 build 目录下：</p>
-<div class="fragment"><div class="line">python3 scripts/config.py</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
-CODESPACES</h2>
-<p>使用 CODESPACES 只需要以项目的默认的配置创建容器即可。 .vscode/settings.json 提供了该容器可直接使用的默认配置。</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
-自构建容器</h2>
-<p>项目也提供了 Dockerfile 文件构建一个可以直接用于开发的容器环境，具体细节可以参考 docker/readme.md 文件，此处不再赘述。</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
-单元测试</h2>
-<p>项目选用了 googletest 作为项目的单元测试框架，部分测试屏蔽了 SIGPIPE 信号以保证正常运行。 使用 gdb 或 lldb 调试时，可能会自动加载项目下的 **.gdbinit** 或 **.lldbinit** 文件屏蔽所有的 SIGPIPE 信号。 运行所有测试只需要进入构建目录并运行 ctest 即可。</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
-测试报告</h2>
-<p>生成测试报告需要编译器支持并设置 FLAGS 以生成报告数据。而生成报告则依赖于 gcovr，可以通过 pip 或者系统的包管理系统安装。 对于一些已经标记过时、弃用的实现，已经通过 <b>gcovr.cfg</b> 进行了过滤，使用以下命令可以直接在 coverage 目录下生成测试报告。</p>
-<div class="fragment"><div class="line">python3 scripts/make_coverage_report.py</div>
-</div><!-- fragment --><p>有时候你可能需要通过 gcovr 的某些选项来选择特定版本的 gcov 可执行文件。</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
-WORKFLOWS</h2>
-<p>针对支持的三大平台均有工作流进行自动测试。其中在 ubuntu 的 test_coverage_job 中将会生成一份名为 CoverageReport.zip 的测试报告文件。 </p>
+<h3><a class="anchor" id="autotoc_md5"></a>
+对于开发者/贡献者</h3>
+<ol type="1">
+<li>配置开发环境</li>
+</ol>
+<p>对于 Windows 用户，请安装并配置 <a href="https://learn.microsoft.com/en-us/vcpkg/get_started/get-started">vcpkg</a> 到目标机器上。</p>
+<p>对于非 Windows 用户，vcpkg 同样是可用的。但同时你可以选择使用原生的系统依赖管理工具安装相应依赖。我们提供了几个预设的安装脚本。</p>
+<ul>
+<li>Ubuntu</li>
+</ul>
+<div class="fragment"><div class="line">sudo ./scripts/install_ubuntu_deps.sh</div>
+</div><!-- fragment --><ul>
+<li>Fedora</li>
+</ul>
+<div class="fragment"><div class="line">sudo ./scripts/install_fedora_deps.sh</div>
+</div><!-- fragment --><ul>
+<li>macOS</li>
+</ul>
+<div class="fragment"><div class="line">./scripts/install_darwin_deps.sh</div>
+</div><!-- fragment --><ol type="1">
+<li>编译选项</li>
+</ol>
+<p>如果你配置好了 vcpkg，只需<a href="https://learn.microsoft.com/en-us/vcpkg/users/buildsystems/cmake-integration">设置工具链文件</a> 即可完成依赖配置。</p>
+<p>如果你使用系统依赖管理工具，那么你需要在按完成对应依赖后，手动添加 <code>SESE_USE_NATIVE_MANAGER</code> 编译选项。</p>
+<p>我们定义了一些 options 用于启用或关闭部分功能，具体可以参照以下的类似格式：</p>
+<p><a href="https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/CMakeLists.txt#L8-L16">https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/CMakeLists.txt#L8-L16</a></p>
+<blockquote class="doxtable">
+<p>&zwj;[!TIP] 请根据最新 <a href="./CMakeLists.txt">CMakeLists.txt</a>文件了解相应的功能选项， 或者你可以直接使用我们预设的 <a href="./CMakePresets.json">CMakePresets.json</a>, 这将默认开启绝大多数功能选项。 </p>
+</blockquote>
+<ol type="1">
+<li>编译</li>
+</ol>
+<p>配置完成编译选项只需要常规构建即可，例如：</p>
+<div class="fragment"><div class="line">cmake --build build/linux-debug -- -j 4</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
+对于普通使用者</h3>
+<p>对于普通使用者，我们推荐使用 vcpkg 导入此依赖，可以参考我们的<a href="https://github.com/libsese/sese-template">模板项目</a>配置你的项目：</p>
+<blockquote class="doxtable">
+<p>&zwj;[!WARNING] 项目也可以作为普通项目安装在普通机器上，但这不是推荐的做法，也无法得到支持， 如果你想这么做可以参考 <code>构建</code> &gt; <code>对于开发者/贡献者</code> 中关于系统依赖管理工具的内容。 </p>
+</blockquote>
+<p>主要工作是编写项目的依赖配置文件，例如：</p>
+<p><code>vcpkg.json</code></p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;dependencies&quot;: [</div>
+<div class="line">    &quot;sese&quot;</div>
+<div class="line">  ]</div>
+<div class="line">}</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;[!IMPORTANT] 截至今日(2024-05-15)，该项目尚未进入内建库列表中。 这意味这你需要多编写一个配置文件用于导入我们的<a href="https://learn.microsoft.com/en-us/vcpkg/consume/git-registries">私有注册表</a>。 </p>
+</blockquote>
+<p><code>vcpkg-configuration.json</code></p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;default-registry&quot;: {</div>
+<div class="line">    &quot;kind&quot;: &quot;git&quot;,</div>
+<div class="line">    &quot;repository&quot;: &quot;https://github.com/microsoft/vcpkg.git&quot;,</div>
+<div class="line">    &quot;baseline&quot;: &quot;c8696863d371ab7f46e213d8f5ca923c4aef2a00&quot;</div>
+<div class="line">  },</div>
+<div class="line">  &quot;registries&quot;: [</div>
+<div class="line">    {</div>
+<div class="line">      &quot;kind&quot;: &quot;git&quot;,</div>
+<div class="line">      &quot;repository&quot;: &quot;https://github.com/libsese/vcpkg-registry.git&quot;,</div>
+<div class="line">      &quot;baseline&quot;: &quot;73268778d5f796f188ca66f71536377b171ee37e&quot;,</div>
+<div class="line">      &quot;packages&quot;: [</div>
+<div class="line">        &quot;sese&quot;</div>
+<div class="line">      ]</div>
+<div class="line">    }</div>
+<div class="line">  ]</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>如果你没有使用 vcpkg，上述步骤是不必要的。</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+测试</h2>
+<p>使用了 googletest 作为了测试框架，测试的详细信息可以从 github actions 中查看，包括各个平台的测试结果和 linux 的测试覆盖率等内容。</p>
+<p>| 平台 | 入口 | 单元测试 | 覆盖率测试 | |&ndash;|&ndash;|&ndash;|&ndash;| | Windows | <a href="https://github.com/libsese/sese/actions/workflows/windows-2022.yml">Unit Tests</a> | ✅ | | Linux | <a href="https://github.com/libsese/sese/actions/workflows/ubuntu-22.04-apt.yml">Unit Tests</a> | ✅ | ✅ | | macOS | <a href="https://github.com/libsese/sese/actions/workflows/macos-12-brew.yml">Unit Tests</a> | ✅ |</p>
+<ol type="1">
+<li>本地测试</li>
+</ol>
+<p>如果你需要在本地运行完整测试，那么你可能需要注意关于数据库方面的测试，这需要一些额外的服务和配置支撑。</p>
+<ul>
+<li>Ubuntu 工作流对于服务的处理参考</li>
+</ul>
+<p><a href="https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L14-L34">https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L14-L34</a></p>
+<p><a href="https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L45-L53">https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L45-L53</a></p>
+<p><a href="https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L72-L75">https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L72-L75</a></p>
+<ul>
+<li>直接使用 docker-compose.yml</li>
+</ul>
+<div class="fragment"><div class="line">docker-compose up -d</div>
+<div class="line">sqlite3 build/db_test.db &lt; scripts/sqlite_dump.sql</div>
+</div><!-- fragment --><ol type="1">
+<li>生成覆盖率测试报告</li>
+</ol>
+<p>需要安装 gcovr，可以选择 pip 安装或者使用系统包管理器安装。</p>
+<div class="fragment"><div class="line">mkdir -p build/coverage/html</div>
+<div class="line">gcovr --config gcovr-html.cfg</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;[!NOTE] 生成覆盖率测试数据首先需要设置一些额外的编译选项来生成例如 gcov 格式的测试数据，例如 GCC： </p>
+</blockquote>
+<p><a href="https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L75">https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.github/workflows/ubuntu-22.04-apt.yml#L75</a></p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+文档</h2>
+<p><a href="https://libsese.github.io/sese/">文档</a>将会随着主线的更新而自动更新到 github pages 上。</p>
+<p>文档内容将从代码注释中自动生成，docs 目录实际存放构建文档所需的部分资源。 </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 五月 13日 星期一 07:39:03 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 15日 星期三 12:11:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
