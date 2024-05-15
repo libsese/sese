@@ -246,6 +246,6 @@ https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.g
 
 ## Documents
 
-[Documents] (https://libsese.github.io/sese/) will be updated automatically with the update of the main branch to making pages.
+[Documents](https://libsese.github.io/sese/) will be updated automatically with the update of the main branch to making pages.
 
 Document content is automatically generated from code comments, and the docs directory actually houses some of the resources needed to build the document.
