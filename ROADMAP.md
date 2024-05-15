@@ -12,3 +12,8 @@
 - ⭕️ Better web-related support
 - ⭕️ Improve test coverage
 - ⭕️ Gitlab workflow improvements
+
+## Version 2.1.1
+
+- 🛠️ Static Links
+- 🛠️ Upload to bulitin repos
