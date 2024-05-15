@@ -14,11 +14,80 @@
 <br>
 </div>
 
-## Sese Framework
+## 简介
 
-这是一个跨平台的、用于基础组件开发的框架，一定程度上作为标准库的补充使用。定位上类似于 Boost、folly 之于标准库。项目使用 C++ 17 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管理问题。
+这是一个跨平台的、用于基础组件开发的框架，一定程度上作为标准库的补充使用。定位上类似于 `Boost`、`folly` 之于标准库。项目使用 C++ 17 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管理问题。
 
 ## 示例
+
+使用内建日志器
+
+```c++
+#include <sese/record/Marco.h>
+// ...
+SESE_INFO("hello world");
+SESE_WARN("error %s", err.what().c_str());
+```
+> 2024-05-15T15:54:48.296Z I main.cpp:8 Main:7116> hello world  
+> 2024-05-15T15:54:48.296Z W main.cpp:9 Main:7116> error End of file
+
+---
+
+编写 HTTP 控制器
+
+```c++
+#include <sese/service/http/HttpServer_V3.h>
+// ...
+SESE_CTRL(MyController, std::mutex mutex{}; int times = 0) {
+    SESE_INFO("LOADING MyController");
+    SESE_URL(timers, RequestType::GET, "/times") {
+        sese::Locker locker(mutex);
+        times += 1;
+        auto message = "timers = '" + std::to_string(this->times) + "'\n";
+        resp.getBody().write(message.data(), message.length());
+    };
+    SESE_URL(say, RequestType::GET, "/say?<say>") {
+        auto words = req.get("say");
+        auto message = "you say '" + words + "'\n";
+        resp.getBody().write(message.data(), message.length());
+    };
+    SESE_INFO("LOADED");
+}
+```
+
+---
+
+跨进程通讯
+
+```c++
+#include <sese/system/IPC.h>
+#include <sese/record/Marco.h>
+// ···
+// server
+auto channel = sese::system::IPCChannel::create("Test", 1024);
+    while (true) {
+        auto messages = channel->read(1);
+        if (messages.empty()) {
+            sese::sleep(1s);
+            continue;
+        }
+        for (auto &&msg: messages) {
+            SESE_INFO("recv %s", msg.getDataAsString().c_str());
+
+            if (msg.getDataAsString() == "Exit") {
+                goto end;
+            }
+        }
+    }
+end:
+    return 0;
+// ···
+// client
+auto channel = sese::system::IPCChannel::use("Test");
+channel->write(1, "Hello");
+channel->write(2, "Hi");
+channel->write(1, "Exit");
+```
 
 ## 构建
 
