@@ -1,4 +1,4 @@
-name: ubuntu-package
+name: macOS-package
 
 on:
   push:
@@ -7,11 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  x64-linux:
+  x64-osx:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        triplet: ['x64-linux', 'x64-linux-dynamic']
+        triplet: ['x64-osx', 'x64-osx-dynamic']
     env:
       VCPKG_BINARY_SOURCES: 'clear;x-gha,readwrite'
     steps:
@@ -40,7 +40,7 @@ jobs:
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
-        if: ${{ matrix.triplet == 'x64-linux' }}
+        if: ${{ matrix.triplet == 'x64-osx' }}
         with:
           name: main
           path: ${{ github.workspace }}/package/build/main
