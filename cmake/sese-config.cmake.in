@@ -1,5 +1,9 @@
 include(CMakeFindDependencyMacro)
 
+# if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+#     set(LibArchive_INCLUDE_DIR "/usr/local/opt/libarchive/include")
+# endif ()
+
 if (NOT BUILD_SHARED_LIBS)
     find_dependency(OpenSSL)
     find_dependency(ZLIB)
