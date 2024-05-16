@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
+set(VCPKG_OVERLAY_PORTS "${CMAKE_CURRENT_LIST_DIR}/ports")
+
 project(package_test)
 
 add_executable(main main.cpp)
