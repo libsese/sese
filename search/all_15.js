@@ -27,7 +27,7 @@ var searchData=
   ['userbalanceloader_2eh_24',['UserBalanceLoader.h',['../_user_balance_loader_8h.html',1,'']]],
   ['utc_25',['utc',['../classsese_1_1_date_time.html#af19d88c3b0b5d045767d65fb40a5b94e',1,'sese::DateTime']]],
   ['util_2ecpp_26',['util.cpp',['../util_2_util_8cpp.html',1,'(全局命名空间)'],['../db_2_util_8cpp.html',1,'(全局命名空间)']]],
-  ['util_2eh_27',['util.h',['../util_2_util_8h.html',1,'(全局命名空间)'],['../db_2_util_8h.html',1,'(全局命名空间)'],['../_util_8h.html',1,'(全局命名空间)']]],
+  ['util_2eh_27',['util.h',['../util_2_util_8h.html',1,'(全局命名空间)'],['../_util_8h.html',1,'(全局命名空间)'],['../db_2_util_8h.html',1,'(全局命名空间)']]],
   ['uuid_28',['uuid',['../classsese_1_1_uuid.html',1,'sese::Uuid'],['../classsese_1_1_uuid.html#a1ab4700e21c6b4b328ee9e1201f538fb',1,'sese::Uuid::Uuid() noexcept=default'],['../classsese_1_1_uuid.html#aad70c09c829830d2ad386abbf82a93be',1,'sese::Uuid::Uuid(uint8_t self_id, uint64_t timestamp, uint8_t r=0) noexcept']]],
   ['uuid_2ecpp_29',['Uuid.cpp',['../_uuid_8cpp.html',1,'']]],
   ['uuid_2eh_30',['Uuid.h',['../_uuid_8h.html',1,'']]],
