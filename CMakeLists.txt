@@ -24,7 +24,6 @@ sese_auto_enable_feature(SESE_DB_USE_MARIADB "mysql")
 sese_auto_enable_feature(SESE_DB_USE_POSTGRES "psql")
 
 if (WIN32 OR SESE_AUTO_VCPKG)
-    sese_auto_detect_triplet()
     sese_auto_find_vcpkg()
 endif ()
 
@@ -48,7 +47,7 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}" STREQUAL "Re
         # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fsanitize=address /fno-sanitize-address-vcasan-lib /Zi /D_DISABLE_VECTOR_ANNOTATION /D_DISABLE_STRING_ANNOTATION")
     else ()
         # unittest coverage
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
+        # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-update=atomic")
     endif ()
 
     if (UNIX)
