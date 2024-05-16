@@ -1,0 +1,46 @@
+name: ubuntu-package
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  x64-linux:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        triplet: ['x64-linux', 'x64-linux-dynamic']
+    env:
+      VCPKG_BINARY_SOURCES: 'clear;x-gha,readwrite'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+
+      - name: Export GitHub Actions cache environment variables
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+
+      - name: Config
+        working-directory: ${{ github.workspace }}/package
+        run: >
+          cmake
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }}
+          -B build
+
+      - name: Build
+        working-directory: ${{ github.workspace }}/package
+        run: >
+          cmake --build build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: ${{ matrix.triplet == 'x64-linux' }}
+        with:
+          name: main
+          path: ${{ github.workspace }}/build/main
