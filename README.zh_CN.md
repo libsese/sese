@@ -9,7 +9,7 @@
 <br>
 <img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese-core/badge"/>
 <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/windows-2022.yml?label=Windows&logo=windows">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/ubuntu-22.04-apt.yml?label=Ubuntu&logo=ubuntu">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/ubuntu-2204-apt.yml?label=Ubuntu&logo=ubuntu">
 <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/macos-12-brew.yml?label=macOS&logo=apple">
 <br>
 </div>
