@@ -25,7 +25,7 @@ var structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection =
     [ "request", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a1dfa5e0b3ed2cdbaacf2c13c23688d09", null ],
     [ "response", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a30e7e823faccfd73919aa3fb4fa76cbe", null ],
     [ "send_buffer", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a7b845067006632447e22a58554f3a6a7", null ],
-    [ "service", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a4902101dea915d93e52084ce2ccc70e3", null ],
+    [ "service", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#af4f6fe2003ecb5d1fb7922122fdded22", null ],
     [ "socket", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#aff852c59115fa91de6c8f6a7bd3b112f", null ],
     [ "timer", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#afa8c2692d47ebc26f0f113660afc448d", null ]
 ];

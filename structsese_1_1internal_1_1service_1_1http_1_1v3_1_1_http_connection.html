@@ -161,7 +161,7 @@ Public 类型</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a0e6c091667b76f4a278d98b1931105e1" id="r_a0e6c091667b76f4a278d98b1931105e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a0e6c091667b76f4a278d98b1931105e1">HttpConnection</a> (const std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html">HttpServiceImpl</a> &gt; &amp;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a4902101dea915d93e52084ce2ccc70e3">service</a>, asio::io_context &amp;context)</td></tr>
+<tr class="memitem:a0e6c091667b76f4a278d98b1931105e1" id="r_a0e6c091667b76f4a278d98b1931105e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a0e6c091667b76f4a278d98b1931105e1">HttpConnection</a> (const std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html">HttpServiceImpl</a> &gt; &amp;<a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#af4f6fe2003ecb5d1fb7922122fdded22">service</a>, asio::io_context &amp;context)</td></tr>
 <tr class="separator:a0e6c091667b76f4a278d98b1931105e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a389bd366ca6f200cafc77bb2741d612e" id="r_a389bd366ca6f200cafc77bb2741d612e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a389bd366ca6f200cafc77bb2741d612e">~HttpConnection</a> ()=default</td></tr>
 <tr class="separator:a389bd366ca6f200cafc77bb2741d612e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,8 +208,8 @@ Public 属性</h2></td></tr>
 <tr class="separator:afa38aa2ae7096c602824bec7b246da0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a8774713a6f2dc6988093f8204d55d1" id="r_a8a8774713a6f2dc6988093f8204d55d1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsese_1_1net_1_1http_1_1_range.html">net::http::Range</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a8a8774713a6f2dc6988093f8204d55d1">range_iterator</a> = ranges.begin()</td></tr>
 <tr class="separator:a8a8774713a6f2dc6988093f8204d55d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4902101dea915d93e52084ce2ccc70e3" id="r_a4902101dea915d93e52084ce2ccc70e3"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html">HttpServiceImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a4902101dea915d93e52084ce2ccc70e3">service</a></td></tr>
-<tr class="separator:a4902101dea915d93e52084ce2ccc70e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4f6fe2003ecb5d1fb7922122fdded22" id="r_af4f6fe2003ecb5d1fb7922122fdded22"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html">HttpServiceImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#af4f6fe2003ecb5d1fb7922122fdded22">service</a></td></tr>
+<tr class="separator:af4f6fe2003ecb5d1fb7922122fdded22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>Http 连接基类 </p>
@@ -362,7 +362,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <p>连接被彻底释放前调用，用于做一些成员变量的收尾工作 </p><dl class="section note"><dt>注解</dt><dd>此函数是可选实现的 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a4902101dea915d93e52084ce2ccc70e3">service</a>.</p>
+<p class="reference">引用了 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#af4f6fe2003ecb5d1fb7922122fdded22">service</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection_impl.html#a44908c636d816d60179b6762a8686df0">sese::internal::service::http::v3::HttpConnectionImpl::checkKeepalive()</a> , 以及 <a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_s_s_l_connection_impl.html#ad8ec8d3890ecba03ddbfd7fb8154628c">sese::internal::service::http::v3::HttpSSLConnectionImpl::checkKeepalive()</a>.</p>
 
@@ -675,14 +675,14 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="a4902101dea915d93e52084ce2ccc70e3" name="a4902101dea915d93e52084ce2ccc70e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4902101dea915d93e52084ce2ccc70e3">&#9670;&#160;</a></span>service</h2>
+<a id="af4f6fe2003ecb5d1fb7922122fdded22" name="af4f6fe2003ecb5d1fb7922122fdded22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4f6fe2003ecb5d1fb7922122fdded22">&#9670;&#160;</a></span>service</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html">HttpServiceImpl</a>&gt; sese::internal::service::http::v3::HttpConnection::service</td>
+          <td class="memname">std::weak_ptr&lt;<a class="el" href="classsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_service_impl.html">HttpServiceImpl</a>&gt; sese::internal::service::http::v3::HttpConnection::service</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -733,7 +733,7 @@ Public 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal.html">internal</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="namespacesese_1_1internal_1_1service_1_1http_1_1v3.html">v3</a></li><li class="navelem"><a class="el" href="structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html">HttpConnection</a></li>
-    <li class="footer">生成于 2024年 五月 17日 星期五 05:35:15 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 22日 星期三 07:16:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
