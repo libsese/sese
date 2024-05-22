@@ -1,7 +1,7 @@
 colorama==0.4.6
 colorlog==6.8.2
 gcovr==7.2
-Jinja2==3.1.3
+Jinja2==3.1.4
 lxml==5.2.1
 MarkupSafe==2.1.5
 Pygments==2.17.2
