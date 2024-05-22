@@ -42,7 +42,7 @@ TEST(TestResource, Foreach) {
     }
 }
 
-TEST(TestResourece, Read) {
+TEST(TestResource, Read) {
     auto instance = TestResourceInstance::getInstance();
     auto res = instance->getResource("hello.txt");
     auto stream = res->getStream();
@@ -67,7 +67,7 @@ TEST(TestResource, Seek) {
     auto res = instance->getResource("hello.txt");
     auto stream = res->getStream();
     char buffer[32]{};
-    
+
     EXPECT_EQ(stream->setSeek(1, sese::io::Seek::CUR), 0);
     EXPECT_EQ(stream->peek(buffer, sizeof(buffer)), stream->getSize() - 1);
     EXPECT_EQ(stream->getSeek(), 1);
