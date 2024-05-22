@@ -53,7 +53,7 @@ struct HttpConnection : public std::enable_shared_from_this<HttpConnection> {
     std::vector<net::http::Range> ranges;
     std::vector<net::http::Range>::iterator range_iterator = ranges.begin();
 
-    std::shared_ptr<HttpServiceImpl> service;
+    std::weak_ptr<HttpServiceImpl> service;
 
     /// 写入块函数，此函数会确保写完所有的缓存，出现意外则连接断开
     /// @note 此函数必须实现
@@ -105,6 +105,7 @@ struct HttpSSLConnectionImpl final : HttpConnection {
     std::unique_ptr<asio::ssl::stream<asio::ip::tcp::socket &>> stream;
     bool is0x0a = false;
     iocp::IOBuf io_buffer;
+    iocp::IOBufNode *node{};
     io::ByteBuilder dynamic_buffer;
 
     void writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) override;

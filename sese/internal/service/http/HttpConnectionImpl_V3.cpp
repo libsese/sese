@@ -67,7 +67,9 @@ void HttpConnectionImpl::readBody() {
 }
 
 void HttpConnectionImpl::handleRequest() {
-    service->handleRequest(shared_from_this());
+    auto serv = service.lock();
+    assert(serv);
+    serv->handleRequest(shared_from_this());
     auto std_output = std::ostream{&this->asio_dynamic_buffer};
     auto stream = io::StdOutputStreamWrapper(std_output);
     sese::net::http::HttpUtil::sendResponse(&stream, &this->response);

@@ -317,7 +317,9 @@ void HttpConnection::writeRanges() {
 }
 
 void HttpConnection::disponse() {
-    service->connections.erase(shared_from_this());
+    auto serv = service.lock();
+    assert(serv);
+    serv->connections.erase(shared_from_this());
 }
 
 void HttpConnection::reset() {

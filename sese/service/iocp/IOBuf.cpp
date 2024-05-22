@@ -4,12 +4,12 @@
 void *sese::iocp::IOBufNode::operator new(size_t size) {
     auto p = malloc(size);
     memset(p, 0, size);
-    // SESE_INFO("malloc %p", p);
+    // SESE_DEBUG("malloc %p", p);
     return p;
 }
 
 void sese::iocp::IOBufNode::operator delete(void *p) {
-    // SESE_INFO("free %p", p);
+    // SESE_DEBUG("free %p", p);
     free(p);
 }
 
