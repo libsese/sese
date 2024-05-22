@@ -12,9 +12,11 @@ HttpSSLConnectionImpl::HttpSSLConnectionImpl(const std::shared_ptr<HttpServiceIm
     : HttpConnection(service, context) {}
 
 HttpSSLConnectionImpl::~HttpSSLConnectionImpl() {
-    SESE_INFO("close");
     if (stream) {
         asio::error_code error = this->stream->shutdown(error);
+    }
+    if (node) { // NOLINT
+        delete node;
     }
 }
 
@@ -29,8 +31,8 @@ void HttpSSLConnectionImpl::writeBlock(const char *buffer, size_t length, const 
 }
 
 void HttpSSLConnectionImpl::readHeader() {
-    auto node = new iocp::IOBufNode(MTU_VALUE);
-    this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr(), node](const asio::error_code &error, std::size_t bytes_transferred) {
+    node = new iocp::IOBufNode(MTU_VALUE);
+    this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (conn->keepalive) {
             conn->keepalive = false;
             conn->timer.cancel();
@@ -38,24 +40,26 @@ void HttpSSLConnectionImpl::readHeader() {
         if (error) {
             // 出现错误，应该断开连接
             conn->disponse();
-            delete node;
+            delete conn->node;
+            conn->node = nullptr;
             return;
         }
-        node->size = bytes_transferred;
-        conn->io_buffer.push(node);
+        conn->node->size = bytes_transferred;
+        conn->io_buffer.push(conn->node);
         bool recv_status = false;
         bool parse_status = false;
         for (int i = 0; i < bytes_transferred; ++i) {
-            if (conn->is0x0a && static_cast<char *>(node->buffer)[i] == '\r') {
+            if (conn->is0x0a && static_cast<char *>(conn->node->buffer)[i] == '\r') {
                 conn->is0x0a = false;
                 recv_status = true;
                 parse_status = sese::net::http::HttpUtil::recvRequest(&conn->io_buffer, &conn->request);
                 break;
             }
-            conn->is0x0a = (static_cast<char *>(node->buffer)[i] == '\n');
+            conn->is0x0a = (static_cast<char *>(conn->node->buffer)[i] == '\n');
         }
         if (!recv_status) {
             // 接收不完整，应该继续接收
+            // SESE_WARN("read again");
             conn->readHeader();
             return;
         }
@@ -66,12 +70,13 @@ void HttpSSLConnectionImpl::readHeader() {
         }
 
         conn->expect_length = toInteger(conn->request.get("content-length", "0"));
-        conn->real_length = node->getReadableSize();
+        conn->real_length = conn->node->getReadableSize();
         if (conn->real_length) {
             // 部分 body
             streamMove(&conn->request.getBody(), &conn->io_buffer, conn->real_length);
         }
         conn->io_buffer.clear();
+        conn->node = nullptr;
         if (conn->expect_length != conn->real_length) {
             conn->readBody();
         } else {
@@ -81,21 +86,22 @@ void HttpSSLConnectionImpl::readHeader() {
 }
 
 void HttpSSLConnectionImpl::readBody() {
-    auto node = new iocp::IOBufNode(MTU_VALUE);
-    this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr(), node](const asio::error_code &error, std::size_t bytes_transferred) {
+    node = new iocp::IOBufNode(MTU_VALUE);
+    this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
             conn->disponse();
-            delete node;
+            delete conn->node;
             return;
         }
-        node->size = bytes_transferred;
-        conn->io_buffer.push(node);
-        conn->real_length += node->size;
-        streamMove(&conn->request.getBody(), &conn->io_buffer, node->size);
+        conn->node->size = bytes_transferred;
+        conn->io_buffer.push(conn->node);
+        conn->real_length += conn->node->size;
+        streamMove(&conn->request.getBody(), &conn->io_buffer, conn->node->size);
         if (conn->real_length >= conn->expect_length) {
             // 理论上 real_length 不可能大于 expect_length，此处预防万一
             conn->io_buffer.clear();
+            conn->node = nullptr;
             conn->handleRequest();
         } else {
             conn->readBody();
@@ -104,7 +110,9 @@ void HttpSSLConnectionImpl::readBody() {
 }
 
 void HttpSSLConnectionImpl::handleRequest() {
-    this->service->handleRequest(shared_from_this());
+    auto serv = service.lock();
+    assert(serv);
+    serv->handleRequest(shared_from_this());
     sese::net::http::HttpUtil::sendResponse(&this->dynamic_buffer, &this->response);
     this->real_length = 0;
     this->expect_length = this->dynamic_buffer.getReadableSize();
@@ -175,6 +183,7 @@ void HttpSSLConnectionImpl::checkKeepalive() {
                 conn->disponse();
             }
         });
+        // SESE_WARN("read keepalive");
         this->readHeader();
     } else {
         this->disponse();
