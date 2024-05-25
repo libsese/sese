@@ -2,13 +2,23 @@
 
 #include <cstring>
 
-#ifndef _WIN32
+#include <sese/convert/SymbolConverter.h>
+
+#ifndef SESE_PLATFORM_WINDOWS
 #include <unistd.h>
 #endif
 
 int64_t sese::toInteger(const std::string &string, int radix) {
     char *end;
     return std::strtol(string.c_str(), &end, radix);
+}
+
+std::string sese::getClassName(const std::type_info *type) {
+#ifdef _MSC_VER
+    return SymbolConverter::decodeMSVCClassName(type);
+#else
+    return SymbolConverter::decodeGNUClassName(type);
+#endif
 }
 
 bool sese::isSpace(char ch) noexcept {

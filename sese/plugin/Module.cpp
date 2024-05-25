@@ -30,6 +30,7 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
     m->object = obj;
     m->info = info;
     m->factory = factory;
+    m->factory->init();
     return std::unique_ptr<Module>(m);
 }
 
@@ -40,9 +41,9 @@ sese::plugin::Module::Ptr sese::plugin::Module::openWithPath(const system::Path 
     return sese::plugin::Module::open(path.getNativePath());
 }
 
-sese::plugin::BaseClass::Ptr sese::plugin::Module::createClassWithId(const std::string &id) noexcept {
+sese::plugin::BaseClass::Ptr sese::plugin::Module::createClass(const std::string &id) noexcept {
     auto p_factory = (ClassFactory *) this->factory;
-    return p_factory->createClassWithId(id);
+    return p_factory->createClassWithName(id);
 }
 
 const char *sese::plugin::Module::getName() noexcept {

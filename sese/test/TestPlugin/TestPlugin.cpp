@@ -18,16 +18,16 @@ TEST(TestPlugin, SUCCESS) {
            m->getDescription());
 
     printf("register class:\n");
-    printf("\tid%-28s raw name\n", "");
+    printf("\tname%s & raw name\n", "");
     auto info_map = m->getRegisterClassInfo();
     for (const auto &info: info_map) {
-        printf("\t%-28s %s\n", info.first.c_str(), info.second.info->name());
+        printf("\t%s %s\n", info.first.c_str(), info.second.info->name());
     }
 
     printf("execute plugin code:\n");
-    auto p1 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Bye");
-    auto p2 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Hello");
-    auto p3 = m->createClassWithIdAs<Printable>("com.kaoru.plugin.test.Undef");
+    auto p1 = m->createClassAs<Printable>("M::Bye");
+    auto p2 = m->createClassAs<Printable>("M::Hello");
+    auto p3 = m->createClassAs<Printable>("M::Undef");
     p1->run();
     p2->run();
     ASSERT_EQ(p3, nullptr);

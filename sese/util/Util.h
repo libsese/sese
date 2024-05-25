@@ -27,6 +27,11 @@ enum class Level;
 /// @return 整形
 int64_t toInteger(const std::string &string, int radix = 10);
 
+/// 获取类的名称
+/// @param type Class
+/// @return 类的名称
+std::string getClassName(const std::type_info *type);
+
 /**
  * @brief 字符比较器
  */

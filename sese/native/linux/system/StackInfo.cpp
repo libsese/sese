@@ -51,15 +51,14 @@ std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept
         auto len = std::strtoll(p_str, &p_next, 10);
         if (len == 0) {
             break;
-        } else {
-            if (first) {
-                first = false;
-            } else {
-                output.write("::", 2);
-            }
-            output.write(p_next, len);
-            p_str = p_next + len;
         }
+        if (first) {
+            first = false;
+        } else {
+            output.write("::", 2);
+        }
+        output.write(p_next, len);
+        p_str = p_next + len;
     }
 
     return buffer;
