@@ -18,12 +18,14 @@
 namespace sese::net::http {
 
 /// HPACK 解压缩工具类
-class API HPackUtil : public NotInstantiable {
+class API HPackUtil final : public NotInstantiable {
 public:
     /// 工具指定输入流
     using InputStream = io::InputStream;
     /// 工具指定输出流
     using OutputStream = io::OutputStream;
+
+    HPackUtil() = delete;
 
     /// 尝试从流中解析 HPACK 压缩后的 HEADERS
     /// \param src 流来源

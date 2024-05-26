@@ -13,8 +13,10 @@
 namespace sese::net::ws {
 
 /// Websocket 验证器
-class API WebsocketAuthenticator : public NotInstantiable {
+class API WebsocketAuthenticator final : public NotInstantiable {
 public:
+    WebsocketAuthenticator() = delete;
+
     /// 生成密钥对
     /// \return 密钥对
     static std::pair<std::unique_ptr<char[]>, std::unique_ptr<char[]>> generateKeyPair() noexcept;

@@ -19,13 +19,15 @@
 
 namespace sese {
 
-class SymbolConverter : public NotInstantiable {
+class SymbolConverter final : public NotInstantiable {
 public:
+    SymbolConverter() = delete;
+
     /// 解析 typeid 生成的符号字面值
     /// @warning 只支持类信息
-    /// @param type GNU typeid 操作符结果
+    /// @param type unix typeid 操作符结果
     /// @return 实际符号的字面值
-    static std::string decodeGNUClassName(const std::type_info *type) noexcept;
+    static std::string decodeUnixClassName(const std::type_info *type) noexcept;
 
     /// 解析 typeid 生成的符号字面值
     /// @warning 只支持类信息

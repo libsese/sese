@@ -5,7 +5,7 @@ inline bool isNumber(char ch) {
     return ch >= 48 && ch <= 57;
 }
 
-std::string sese::SymbolConverter::decodeGNUClassName(const std::type_info *type) noexcept {
+std::string sese::SymbolConverter::decodeUnixClassName(const std::type_info *type) noexcept {
     std::string name = type->name();
     text::StringBuilder builder;
     if (name[0] == 'N') {

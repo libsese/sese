@@ -23,6 +23,8 @@ public:
     using OutputStream = sese::io::OutputStream;
     using InputStream = sese::io::InputStream;
 
+    Base64Converter() = delete;
+
     static void encode(const InputStream::Ptr &src, const OutputStream::Ptr &dest);
     static void encode(InputStream *src, OutputStream *dest);
 

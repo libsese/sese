@@ -10,8 +10,10 @@
 
 namespace sese::text {
 /// 数字转字符串工具
-class Number : public NotInstantiable {
+class Number final : public NotInstantiable {
 public:
+    Number() = delete;
+
     static std::string toHex(uint64_t number, bool upperCase = true) noexcept;
 
     static std::string toHex(int64_t number, bool upperCase = true) noexcept;

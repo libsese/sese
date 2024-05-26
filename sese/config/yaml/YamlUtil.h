@@ -26,6 +26,8 @@ public:
     using Tokens = std::vector<std::string>;
     using TokensQueue = std::queue<std::tuple<int, Tokens>>;
 
+    YamlUtil() = delete;
+
     /// 从流中反序列化 yaml 对象
     /// \param input 输入流
     /// \param level 解析深度

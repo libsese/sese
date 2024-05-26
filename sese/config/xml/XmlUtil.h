@@ -17,11 +17,13 @@
 namespace sese::xml {
 
 /// XML 序列化工具类
-class API XmlUtil : public NotInstantiable {
+class API XmlUtil final : public NotInstantiable {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;
     using Tokens = std::queue<std::string>;
+
+    XmlUtil() = delete;
 
     /// 从流中反序列化一个 Xml 元素对象
     /// \param input_stream 输入流

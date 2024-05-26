@@ -15,10 +15,12 @@
 namespace sese {
 
 /// 内存视图工具
-class API MemoryViewer : public NotInstantiable {
+class API MemoryViewer final : public NotInstantiable {
 public:
     /// 工具所使用输出流
     using OutputStream = sese::io::OutputStream;
+
+    MemoryViewer() = delete;
 
     /// \brief 获取内存视图
     /// \param output 输出流

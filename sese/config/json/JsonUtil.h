@@ -20,11 +20,13 @@
 namespace sese::json {
 
 /// JSON 序列化工具类
-class API JsonUtil : public NotInstantiable {
+class API JsonUtil final : public NotInstantiable {
 public:
     using InputStream = io::InputStream;
     using OutputStream = io::OutputStream;
     using Tokens = std::queue<std::string>;
+
+    JsonUtil() = delete;
 
     /**
      * 从流中反序列化 Json 对象

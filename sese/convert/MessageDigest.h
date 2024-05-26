@@ -8,10 +8,11 @@
 #pragma once
 
 #include "sese/io/InputStream.h"
+#include "sese/util/NotInstantiable.h"
 
 namespace sese {
 /// 信息摘要工具类
-class API MessageDigest {
+class API MessageDigest final : public NotInstantiable {
 public:
     using InputStream = sese::io::InputStream;
 
@@ -20,6 +21,8 @@ public:
         SHA1,
         SHA256
     };
+
+    MessageDigest() = delete;
 
     /// 进行摘要
     /// \param type 摘要算法类型
