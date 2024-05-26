@@ -5,6 +5,7 @@ public:
     virtual void run() = 0;
 };
 
+namespace M {
 class Bye : public Printable {
 public:
     void run() override {
@@ -18,14 +19,9 @@ public:
         puts("Hello");
     }
 };
+} // namespace M
 
-DEFINE_MODULE_INFO(
-                .moduleName = "MyModule",
-                .versionString = "0.1.0",
-                .description = "The module for test."
-)
-
-DEFINE_CLASS_FACTORY(
-        REGISTER_CLASS("com.kaoru.plugin.test.Bye", Bye),
-        REGISTER_CLASS("com.kaoru.plugin.test.Hello", Hello)
-)
+DEFINE_CLASS_FACTORY(MyFactory, "0.2.0", "The module for test.") {
+    REGISTER_CLASS(M::Bye);
+    REGISTER_CLASS(M::Hello);
+}

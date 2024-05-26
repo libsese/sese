@@ -46,25 +46,25 @@ public:
     /// 使用模块的类工厂构建一个对象
     /// \param id 对象标识符
     /// \retval nullptr 实例化错误
-    BaseClass::Ptr createClassWithId(const std::string &id) noexcept;
+    BaseClass::Ptr createClass(const std::string &id) noexcept;
 
     /// 使用模块的类工厂构建一个对象并转换为指定类型
-    /// \tparam type 指定类型
-    /// \param id 对象标识符
+    /// \tparam TYPE 指定类型
+    /// \param name 对象标识符
     /// \retval nullptr 实例化错误
     template<typename TYPE>
-    std::shared_ptr<TYPE> createClassWithIdAs(const std::string &id) {
-        auto p = createClassWithId(id);
+    std::shared_ptr<TYPE> createClassAs(const std::string &name) {
+        auto p = createClass(name);
         if (p) {
             return std::reinterpret_pointer_cast<TYPE>(p);
-        } else {
-            return nullptr;
         }
+        return nullptr;
     }
 
     /// 获取模块已注册类类型信息
     /// \return 类型信息
-    const ClassFactory::RegisterInfoMapType &getRegisterClassInfo() noexcept;
+    const ClassFactory::RegisterInfoMapType &
+    getRegisterClassInfo() noexcept;
 
 private:
     Module() = default;

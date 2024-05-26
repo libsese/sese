@@ -14,7 +14,7 @@
 
 namespace sese {
 /// Json 解析器
-class Json : public NotInstantiable {
+class Json final : public NotInstantiable {
     using Tokens = std::queue<std::string>;
 
     static Value parseObject(Tokens &tokens, size_t level);
@@ -30,6 +30,8 @@ class Json : public NotInstantiable {
     static void streamifyBasic(io::OutputStream *out, const Value *value);
 
 public:
+    Json() = delete;
+
     /// \brief 从流中反序列化 Json 对象
     /// \param input 输入流
     /// \param level Json 解析深度

@@ -12,6 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include <sese/Util.h>
+#include <sese/Log.h>
 
-#include <sese/util/Util.h>
+#include <gtest/gtest.h>
+
+namespace NameSpaceA::NameSpaceB {
+class ClassA {
+public:
+    class ClassB {
+    };
+};
+} // namespace NameSpaceA::NameSpaceB
+class ClassC{};
+
+TEST(TestSymbol, NamespaceClassName) {
+    auto type_info = &typeid(NameSpaceA::NameSpaceB::ClassA::ClassB);
+    EXPECT_EQ(sese::getClassName(type_info), "NameSpaceA::NameSpaceB::ClassA::ClassB");
+}
+
+TEST(TestSymbol, ClassName) {
+    auto type_info = &typeid(ClassC);
+    EXPECT_EQ(sese::getClassName(type_info), "ClassC");
+}

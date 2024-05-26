@@ -21,6 +21,8 @@ namespace sese::system {
  */
 class API Environment final : public NotInstantiable {
 public:
+    Environment() = delete;
+
     /**
      * @return 返回仓库哈希码前 6 位
      */

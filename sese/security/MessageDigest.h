@@ -13,7 +13,7 @@
 
 namespace sese::security {
 /// 基于 OPENSSL::CRYPTO 的信息摘要接口
-class MessageDigest : public NotInstantiable {
+class MessageDigest final : public NotInstantiable {
 public:
     using InputStream = io::InputStream;
 
@@ -27,6 +27,8 @@ public:
         SHA512,
         SM3
     };
+
+    MessageDigest() = delete;
 
     static std::string digest(Type type, InputStream *input, bool is_cap = false) noexcept;
 

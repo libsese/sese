@@ -21,8 +21,10 @@ namespace sese {
 /**
  * @brief 字符串编码转换
  */
-class API SESE_DEPRECATED EncodingConverter : public NotInstantiable {
+class API SESE_DEPRECATED EncodingConverter final : public NotInstantiable {
 public:
+    EncodingConverter() = delete;
+
     [[maybe_unused]] static std::string toString(const std::wstring &wstring) noexcept;
     [[maybe_unused]] static std::wstring toWstring(const std::string &string) noexcept;
 };

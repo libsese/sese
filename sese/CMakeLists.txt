@@ -83,6 +83,7 @@ set_target_properties(
         CXX_STANDARD 17
         OUTPUT_NAME "sese.core"
         PREFIX ""
+        ENABLE_EXPORTS ON
         WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
 

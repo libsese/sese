@@ -2,15 +2,17 @@
 #include <sese/util/Range.h>
 #include <sese/io/OutputBufferWrapper.h>
 
+#include <cassert>
 #include <execinfo.h>
 
 using namespace sese;
 
 int system::StackInfo::getSkipOffset() {
-    return 1;
+    return 2;
 }
 
 system::StackInfo::StackInfo(int limit, int skip) noexcept {
+    assert(limit > skip);
     void **array = (void **) malloc(sizeof(void *) * limit);
     int frames = ::backtrace(array, limit);
     char **strings = ::backtrace_symbols(array, limit);
@@ -31,36 +33,4 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
 
     free(strings);
     free(array);
-}
-
-std::string system::StackInfo::decodeSymbolName(const std::string &str) noexcept {
-    char buffer[2000]{};
-    sese::io::OutputBufferWrapper output(buffer, sizeof(buffer));
-
-    if (!std::equal(str.begin(), str.begin() + 2, "_Z")) {
-        return str;
-    }
-
-    int pos = str.c_str()[2] == 'N' ? 3 : 2;
-
-    // _ZN1N1C4funcE -> N::C::func(int)
-    bool first = true;
-    char *p_str = const_cast<char *>(str.data()) + pos;
-    char *p_next = nullptr;
-    while (true) {
-        auto len = std::strtoll(p_str, &p_next, 10);
-        if (len == 0) {
-            break;
-        } else {
-            if (first) {
-                first = false;
-            } else {
-                output.write("::", 2);
-            }
-            output.write(p_next, len);
-            p_str = p_next + len;
-        }
-    }
-
-    return buffer;
 }

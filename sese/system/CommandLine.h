@@ -13,7 +13,7 @@
 namespace sese::system {
 
 /// 命令行参数初始化任务
-class CommandLineInitiateTask : public InitiateTask {
+class CommandLineInitiateTask final : public InitiateTask {
 public:
     explicit CommandLineInitiateTask(int argc, const char *const *argv);
 
@@ -23,8 +23,10 @@ public:
 };
 
 /// 命令行参数类
-class API CommandLine : public NotInstantiable {
+class API CommandLine final : public NotInstantiable {
 public:
+    CommandLine() = delete;
+
     static int getArgc();
 
     static const char *const *getArgv();

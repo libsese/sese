@@ -14,6 +14,8 @@ namespace sese::security {
 /// SSL 上下文构建器
 class API SSLContextBuilder final : public NotInstantiable {
 public:
+    SSLContextBuilder() = delete;
+
     /// @brief 为客户端构建 SSL 上下文
     /// @return 客户端 SSL 上下文
     static SSLContext::Ptr SSL4Client() noexcept;

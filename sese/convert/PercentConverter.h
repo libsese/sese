@@ -19,9 +19,11 @@ namespace sese {
 /**
  * @brief 百分号编码转换器
  */
-class API PercentConverter : public NotInstantiable {
+class API PercentConverter final : public NotInstantiable {
 public:
     using OutputStream = io::OutputStream;
+
+    PercentConverter() = delete;
 
     static void encode(const char *src, const OutputStream::Ptr &dest);
 

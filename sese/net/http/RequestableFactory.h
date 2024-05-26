@@ -10,8 +10,10 @@
 
 namespace sese::net::http {
 /// 可请求类型工厂
-class RequestableFactory : public NotInstantiable {
+class RequestableFactory final : public NotInstantiable {
 public:
+    RequestableFactory() = delete;
+
     /// 创建普通可请求类型
     /// \param url 请求地址，支持 https/http 协议
     /// \param proxy 代理地址，支持 https/http 协议，为空则不使用代理
