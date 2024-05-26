@@ -1,6 +1,7 @@
 var classsese_1_1_percent_converter =
 [
     [ "OutputStream", "classsese_1_1_percent_converter.html#ae0b86c4c7aac72321808915caa0f15a7", null ],
+    [ "PercentConverter", "classsese_1_1_percent_converter.html#aa3b37f8063db59094e1be1db6c39e2a3", null ],
     [ "decode", "classsese_1_1_percent_converter.html#a414c0bb931028add3b65c2ee120c9127", null ],
     [ "decode", "classsese_1_1_percent_converter.html#a67efd5c30b4203b3dc92dfef3884310c", null ],
     [ "decode", "classsese_1_1_percent_converter.html#a01974b8044e0fec7a83b0b6f97074b74", null ],

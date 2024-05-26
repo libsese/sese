@@ -1,5 +1,6 @@
 var classsese_1_1net_1_1ws_1_1_websocket_authenticator =
 [
+    [ "WebsocketAuthenticator", "classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#abd76b414148505bc6b5de132184d9b88", null ],
     [ "generateKey", "classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#ae8e9244efd3c99ceb37fe9c28ed66701", null ],
     [ "generateKeyPair", "classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#ac26f70f5030a77f7c914d7d7decf83d9", null ],
     [ "toResult", "classsese_1_1net_1_1ws_1_1_websocket_authenticator.html#af47324839ece6b376a1cb864e1c31ab7", null ],

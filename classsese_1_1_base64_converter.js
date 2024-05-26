@@ -3,6 +3,7 @@ var classsese_1_1_base64_converter =
     [ "CodePage", "classsese_1_1_base64_converter.html#adcc38dc3caa6f7d50de652b694df88fc", null ],
     [ "InputStream", "classsese_1_1_base64_converter.html#a4928f1f091f0df7c6f2cee3f5f9c7be7", null ],
     [ "OutputStream", "classsese_1_1_base64_converter.html#a0294e1576dfacc48966ac637f9565518", null ],
+    [ "Base64Converter", "classsese_1_1_base64_converter.html#af9bf31b2555d3121f942854fc5f0f509", null ],
     [ "decode", "classsese_1_1_base64_converter.html#ac4d46838fde69ef133279b5b0b6e4cf0", null ],
     [ "decode", "classsese_1_1_base64_converter.html#a4f72417e949f1ee426c92d3705ff065f", null ],
     [ "decodeBase62", "classsese_1_1_base64_converter.html#a4cc1c2f81ec7adb863bf395485399187", null ],

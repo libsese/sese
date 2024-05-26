@@ -322,6 +322,7 @@ var annotated_dup =
       [ "StrCaseUnorderedMapComparer", "structsese_1_1_str_case_unordered_map_comparer.html", "structsese_1_1_str_case_unordered_map_comparer" ],
       [ "StrCmp", "structsese_1_1_str_cmp.html", "structsese_1_1_str_cmp" ],
       [ "StrCmpI", "structsese_1_1_str_cmp_i.html", "structsese_1_1_str_cmp_i" ],
+      [ "SymbolConverter", "classsese_1_1_symbol_converter.html", "classsese_1_1_symbol_converter" ],
       [ "Thread", "classsese_1_1_thread.html", "classsese_1_1_thread" ],
       [ "ThreadInitiateTask", "classsese_1_1_thread_initiate_task.html", "classsese_1_1_thread_initiate_task" ],
       [ "ThreadPool", "classsese_1_1_thread_pool.html", "classsese_1_1_thread_pool" ],

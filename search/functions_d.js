@@ -13,5 +13,6 @@ var searchData=
   ['now_10',['now',['../classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16',1,'sese::DateTime']]],
   ['nowptr_11',['nowPtr',['../classsese_1_1_date_time.html#ad2aee023addef2fd44aaffed0502d403',1,'sese::DateTime']]],
   ['null_12',['null',['../classsstr_1_1_s_string_view.html#a2bae04f9b7ac2b5680b5a8fd038bbc28',1,'sstr::SStringView']]],
-  ['number2stringlength_13',['number2StringLength',['../namespacesese.html#a0a951f1886af83a7d610e57a8257b834',1,'sese']]]
+  ['number_13',['Number',['../classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5',1,'sese::text::Number']]],
+  ['number2stringlength_14',['number2StringLength',['../namespacesese.html#a0a951f1886af83a7d610e57a8257b834',1,'sese']]]
 ];

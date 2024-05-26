@@ -5,6 +5,7 @@ var classsese_1_1yaml_1_1_yaml_util =
     [ "OutputStream", "classsese_1_1yaml_1_1_yaml_util.html#a7a71bd5448933bc14e1831f33c10ece6", null ],
     [ "Tokens", "classsese_1_1yaml_1_1_yaml_util.html#aa3bd35bbaf69d761b197f1c673ab140e", null ],
     [ "TokensQueue", "classsese_1_1yaml_1_1_yaml_util.html#a1f251e34d90d8806a117dc0d6a8a3106", null ],
+    [ "YamlUtil", "classsese_1_1yaml_1_1_yaml_util.html#a19390efecd0791c1f3b9286aa66131e0", null ],
     [ "createArray", "classsese_1_1yaml_1_1_yaml_util.html#a2b8ba48639e4cdd561466d5cf1adbcf7", null ],
     [ "createObject", "classsese_1_1yaml_1_1_yaml_util.html#a6812f02ff678191ce778dc9119bafaa4", null ],
     [ "deserialize", "classsese_1_1yaml_1_1_yaml_util.html#a20327652abbd72bff6c7eac3abcebaf7", null ],

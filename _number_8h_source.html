@@ -143,32 +143,34 @@ $(document).ready(function(){initNavTree('_number_8h_source.html',''); initResiz
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1text.html">sese::text</a> {</div>
 <div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1text_1_1_number.html" title="数字转字符串工具">Number</a> : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1_not_instantiable.html" title="不可实例化类">NotInstantiable</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classsese_1_1text_1_1_number.html" title="数字转字符串工具">Number</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classsese_1_1_not_instantiable.html" title="不可实例化类">NotInstantiable</a> {</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a367d57b9fe6a04ea97cbea25337ed8c7">toHex</a>(uint64_t number, <span class="keywordtype">bool</span> upperCase = <span class="keyword">true</span>) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5">   15</a></span>    <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5">Number</a>() = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a367d57b9fe6a04ea97cbea25337ed8c7">toHex</a>(int64_t number, <span class="keywordtype">bool</span> upperCase = <span class="keyword">true</span>) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a367d57b9fe6a04ea97cbea25337ed8c7">toHex</a>(uint64_t number, <span class="keywordtype">bool</span> upperCase = <span class="keyword">true</span>) noexcept;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">toOct</a>(uint64_t number) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a367d57b9fe6a04ea97cbea25337ed8c7">toHex</a>(int64_t number, <span class="keywordtype">bool</span> upperCase = true) noexcept;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">toOct</a>(int64_t number) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">toOct</a>(uint64_t number) noexcept;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">toBin</a>(uint64_t number) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">toOct</a>(int64_t number) noexcept;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">toBin</a>(int64_t number) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">toBin</a>(uint64_t number) noexcept;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classsese_1_1text_1_1_number.html#affa9ca8c466e46c5807462f891519174">toStringWithNoLeadingZeros</a>(<span class="keyword">const</span> std::string &amp;number) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">toBin</a>(int64_t number) noexcept;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>private:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    static std::<span class="keywordtype">string</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#affa9ca8c466e46c5807462f891519174">toStringWithNoLeadingZeros</a>(const std::<span class="keywordtype">string</span> &amp;number) noexcept;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
 </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <span class="comment">// namespace sese::text</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>} <span class="comment">// namespace sese::text</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li><li class="navelem"><a class="el" href="_number_8h.html">Number.h</a></li>
-    <li class="footer">生成于 2024年 五月 22日 星期三 18:23:01 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 26日 星期日 08:38:13 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -42,5 +42,6 @@ var searchData=
   ['stringbuffer_39',['StringBuffer',['../classsese_1_1text_1_1_string_buffer.html',1,'sese::text']]],
   ['stringbuilder_40',['StringBuilder',['../classsese_1_1text_1_1_string_builder.html',1,'sese::text']]],
   ['substackinfo_41',['SubStackInfo',['../structsese_1_1system_1_1_sub_stack_info.html',1,'sese::system']]],
-  ['systembalanceloader_42',['SystemBalanceLoader',['../classsese_1_1service_1_1_system_balance_loader.html',1,'sese::service']]]
+  ['symbolconverter_42',['SymbolConverter',['../classsese_1_1_symbol_converter.html',1,'sese']]],
+  ['systembalanceloader_43',['SystemBalanceLoader',['../classsese_1_1service_1_1_system_balance_loader.html',1,'sese::service']]]
 ];

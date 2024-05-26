@@ -5,6 +5,7 @@ var util_2_util_8h =
     [ "CheckRange", "util_2_util_8h.html#ab9c344524c8e81a0aad0352329abaa24", null ],
     [ "CheckRangeBetween", "util_2_util_8h.html#af5377339bff575301da756d2f685a510", null ],
     [ "findFirstAt", "util_2_util_8h.html#a7c52b4c131447df3e4b83a9a7451ee97", null ],
+    [ "getClassName", "util_2_util_8h.html#a7f6ec509913dbb14930e43b251141591", null ],
     [ "getErrorCode", "util_2_util_8h.html#ab5e35a3f44b1c1dd95685d82185df166", null ],
     [ "getErrorString", "util_2_util_8h.html#a1833da64507c8e59f6799b93d2504ec6", null ],
     [ "getLevelString", "util_2_util_8h.html#ab14e5e23a63f2107c457534c877646a8", null ],

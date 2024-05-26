@@ -1,5 +1,6 @@
 var classsese_1_1text_1_1_number =
 [
+    [ "Number", "classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5", null ],
     [ "toBin", "classsese_1_1text_1_1_number.html#ae96697a92aad56d2099a7590c8299c53", null ],
     [ "toBin", "classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d", null ],
     [ "toHex", "classsese_1_1text_1_1_number.html#a0a2140cb6bec523fd457f565d47515be", null ],

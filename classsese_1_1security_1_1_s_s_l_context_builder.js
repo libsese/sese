@@ -1,5 +1,6 @@
 var classsese_1_1security_1_1_s_s_l_context_builder =
 [
+    [ "SSLContextBuilder", "classsese_1_1security_1_1_s_s_l_context_builder.html#a8b4b4be3ab9dbb67422fb8f7a74bad1d", null ],
     [ "SSL4Client", "classsese_1_1security_1_1_s_s_l_context_builder.html#a3663175075266e274700941e55757b29", null ],
     [ "SSL4Server", "classsese_1_1security_1_1_s_s_l_context_builder.html#ae13b8b0fcee42d3e59623a54a30c1f96", null ],
     [ "UniqueSSL4Client", "classsese_1_1security_1_1_s_s_l_context_builder.html#a1af2adbd4f88ca0ad15599f8c801abf1", null ],

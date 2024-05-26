@@ -22,5 +22,7 @@ var dir_8432cd711d83e4d7ec40e70b9a1de33d =
     [ "SHA1Util.h", "_s_h_a1_util_8h.html", "_s_h_a1_util_8h" ],
     [ "SHA256Util.cpp", "_s_h_a256_util_8cpp.html", "_s_h_a256_util_8cpp" ],
     [ "SHA256Util.h", "_s_h_a256_util_8h.html", "_s_h_a256_util_8h" ],
+    [ "SymbolConverter.cpp", "_symbol_converter_8cpp.html", "_symbol_converter_8cpp" ],
+    [ "SymbolConverter.h", "_symbol_converter_8h.html", "_symbol_converter_8h" ],
     [ "ZlibConfig.h", "_zlib_config_8h.html", "_zlib_config_8h" ]
 ];

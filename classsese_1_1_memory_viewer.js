@@ -1,6 +1,7 @@
 var classsese_1_1_memory_viewer =
 [
     [ "OutputStream", "classsese_1_1_memory_viewer.html#a46d5591a8f5b79a821a7a42d94065260", null ],
+    [ "MemoryViewer", "classsese_1_1_memory_viewer.html#a1ac75bd2777201f475a174319ec7feb5", null ],
     [ "peer", "classsese_1_1_memory_viewer.html#a30a7c99d4ba32b28b31a02da05bcb8a3", null ],
     [ "peer16", "classsese_1_1_memory_viewer.html#a368c41ec7bccf633a59c3229ace7a384", null ],
     [ "peer16", "classsese_1_1_memory_viewer.html#a9c40be7589063bdd1ce130c48dc21aac", null ],

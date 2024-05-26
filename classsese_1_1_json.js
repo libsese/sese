@@ -1,6 +1,7 @@
 var classsese_1_1_json =
 [
     [ "Tokens", "classsese_1_1_json.html#afdd83dc9659ecccaec27aff43b0cdeed", null ],
+    [ "Json", "classsese_1_1_json.html#a01cab0a2dfcf589afdea3579af37dbe6", null ],
     [ "parse", "classsese_1_1_json.html#ae464b0b1fcb3a663078e9c214fe8ae5d", null ],
     [ "parseArray", "classsese_1_1_json.html#a18483085918207320433e35c2c72051b", null ],
     [ "parseBasic", "classsese_1_1_json.html#a18d7c513513e84cb1c818fd489a6611b", null ],

@@ -3,6 +3,7 @@ var classsese_1_1json_1_1_json_util =
     [ "InputStream", "classsese_1_1json_1_1_json_util.html#aacda2c5bbdb655faffd407ef77e283fe", null ],
     [ "OutputStream", "classsese_1_1json_1_1_json_util.html#aaca2ef3b8a9f15ae1489d32feb976876", null ],
     [ "Tokens", "classsese_1_1json_1_1_json_util.html#a9eedc75c4f41db502d8ae735874897db", null ],
+    [ "JsonUtil", "classsese_1_1json_1_1_json_util.html#aa4ec35cd74574c437fe330d6624b9866", null ],
     [ "createArray", "classsese_1_1json_1_1_json_util.html#a4a65aef3297a194eb018dcbf9b3a95d8", null ],
     [ "createObject", "classsese_1_1json_1_1_json_util.html#af7c67ac812525342092c53efa35c9a75", null ],
     [ "deserialize", "classsese_1_1json_1_1_json_util.html#aadd24028d56f1f761ecbc214c1d36d51", null ],
