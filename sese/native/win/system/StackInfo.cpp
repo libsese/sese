@@ -15,7 +15,7 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
     void **p_stack = (void **) malloc(sizeof(void *) * limit);
     auto process = GetCurrentProcess();
     SymInitialize(process, nullptr, TRUE);
-    auto frames = CaptureStackBackTrace(skip, limit, p_stack, nullptr);
+    auto frames = CaptureStackBackTrace(skip, limit - skip, p_stack, nullptr);
     for (auto &&i: sese::Range<WORD>(0, frames - 1)) {
         auto address = (DWORD64) (p_stack[i]);
 
