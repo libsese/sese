@@ -1,6 +1,7 @@
 #include <sese/system/StackInfo.h>
 #include <sese/util/Range.h>
 
+#include <cassert>
 #include <dbghelp.h>
 
 using namespace sese;
@@ -10,6 +11,7 @@ int system::StackInfo::getSkipOffset() {
 }
 
 system::StackInfo::StackInfo(int limit, int skip) noexcept {
+    assert(limit > skip);
     void **p_stack = (void **) malloc(sizeof(void *) * limit);
     auto process = GetCurrentProcess();
     SymInitialize(process, nullptr, TRUE);

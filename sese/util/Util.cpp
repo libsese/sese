@@ -17,7 +17,7 @@ std::string sese::getClassName(const std::type_info *type) {
 #ifdef _MSC_VER
     return SymbolConverter::decodeMSVCClassName(type);
 #else
-    return SymbolConverter::decodeGNUClassName(type);
+    return SymbolConverter::decodeUnixClassName(type);
 #endif
 }
 
