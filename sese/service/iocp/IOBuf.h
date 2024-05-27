@@ -11,7 +11,7 @@
 #include <sese/io/InputStream.h>
 #include <sese/io/PeekableStream.h>
 
-#include <forward_list>
+#include <list>
 
 namespace sese::iocp {
 
@@ -53,7 +53,7 @@ class IOBuf final : public io::InputStream, public io::PeekableStream {
 public:
     /// 节点类型
     using Node = std::unique_ptr<IOBufNode>;
-    using ListType = std::forward_list<Node>;
+    using ListType = std::list<Node>;
 
     /// 添加一个新的节点，节点一旦被添加，外部就不可继续变更此节点
     /// \param node 目标节点

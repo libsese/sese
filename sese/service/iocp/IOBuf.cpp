@@ -27,13 +27,13 @@ void sese::iocp::IOBuf::push(Node node) {
     //     tail = node;
     // }
     // total += node->size;
+    total += node->size;
     if (list.empty()) {
-        list.push_front(std::move(node));
+        list.push_back(std::move(node));
         cur = list.begin();
     } else {
-        list.push_front(std::move(node));
+        list.push_back(std::move(node));
     }
-    total += node->size;
 }
 
 void sese::iocp::IOBuf::clear() {
@@ -47,6 +47,8 @@ void sese::iocp::IOBuf::clear() {
     // total = 0;
     // readed = 0;
     list.clear();
+    total = 0;
+    readed = 0;
 }
 
 size_t sese::iocp::IOBuf::getReadableSize() const noexcept {
@@ -80,11 +82,11 @@ int64_t sese::iocp::IOBuf::read(void *buffer, size_t length) {
         real += node_remaining;
         cur->get()->read += node_remaining;
         readed += node_remaining;
+        length -= node_remaining;
+        ++cur;
         if (cur == list.end()) {
             break;
         }
-        ++cur;
-        length -= node_remaining;
     }
     return static_cast<int64_t>(real);
 }
@@ -112,10 +114,10 @@ int64_t sese::iocp::IOBuf::peek(void *buffer, size_t length) {
             );
             real += node_remaining;
             node.read += node_remaining;
+            ++my_cur;
             if (my_cur == list.end()) {
                 break;
             }
-            ++my_cur;
             node.buffer = my_cur->get()->buffer;
             node.size = my_cur->get()->size;
             node.read = 0;
