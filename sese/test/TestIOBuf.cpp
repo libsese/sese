@@ -7,28 +7,28 @@ TEST(TestIOBuf, Push) {
     EXPECT_EQ(buffer.getReadableSize(), 0);
     EXPECT_EQ(buffer.getTotalSize(), 0);
 
-    auto node = new sese::iocp::IOBufNode(64);
+    auto node = std::make_unique<sese::iocp::IOBufNode>(64);
     node->size = 33;
-    buffer.push(node);
+    buffer.push(std::move(node));
     node = nullptr;
     EXPECT_EQ(buffer.getReadableSize(), 33);
     EXPECT_EQ(buffer.getTotalSize(), 33);
 
-    node = new sese::iocp::IOBufNode(128);
+    node = std::make_unique<sese::iocp::IOBufNode>(128);
     node->size = 78;
-    buffer.push(node);
+    buffer.push(std::move(node));
     EXPECT_EQ(buffer.getReadableSize(), 33 + 78);
     EXPECT_EQ(buffer.getTotalSize(), 33 + 78);
 }
 
 TEST(TestIOBuf, Clear) {
     sese::iocp::IOBuf buffer;
-    auto node = new sese::iocp::IOBufNode(64);
+    auto node = std::make_unique<sese::iocp::IOBufNode>(64);
     node->size = 33;
-    buffer.push(node);
-    node = new sese::iocp::IOBufNode(128);
+    buffer.push(std::move(node));
+    node = std::make_unique<sese::iocp::IOBufNode>(128);
     node->size = 78;
-    buffer.push(node);
+    buffer.push(std::move(node));
     EXPECT_EQ(buffer.getReadableSize(), 33 + 78);
     EXPECT_EQ(buffer.getTotalSize(), 33 + 78);
     buffer.clear();
@@ -38,18 +38,18 @@ TEST(TestIOBuf, Clear) {
 
 TEST(TestIOBuf, Input) {
     sese::iocp::IOBuf buffer;
-    auto node = new sese::iocp::IOBufNode(1);
+    auto node = std::make_unique<sese::iocp::IOBufNode>(1);
     node->size = 1;
-    memcpy((char *) node->buffer, "A", 1);
-    buffer.push(node);
-    node = new sese::iocp::IOBufNode(2);
+    memcpy(node->buffer, "A", 1);
+    buffer.push(std::move(node));
+    node = std::make_unique<sese::iocp::IOBufNode>(2);
     node->size = 2;
-    memcpy((char *) node->buffer, "BC", 2);
-    buffer.push(node);
-    node = new sese::iocp::IOBufNode(3);
+    memcpy(node->buffer, "BC", 2);
+    buffer.push(std::move(node));
+    node = std::make_unique<sese::iocp::IOBufNode>(3);
     node->size = 3;
-    memcpy((char *) node->buffer, "DEF", 3);
-    buffer.push(node);
+    memcpy(node->buffer, "DEF", 3);
+    buffer.push(std::move(node));
 
     char buf[16]{};
     auto len = buffer.read(buf, 16);
@@ -61,18 +61,18 @@ TEST(TestIOBuf, Input) {
 
 TEST(TestIOBuf, Peek) {
     sese::iocp::IOBuf buffer;
-    auto node = new sese::iocp::IOBufNode(1);
+    auto node = std::make_unique<sese::iocp::IOBufNode>(1);
     node->size = 1;
-    memcpy((char *) node->buffer, "A", 1);
-    buffer.push(node);
-    node = new sese::iocp::IOBufNode(2);
+    memcpy(node->buffer, "A", 1);
+    buffer.push(std::move(node));
+    node = std::make_unique<sese::iocp::IOBufNode>(2);
     node->size = 2;
-    memcpy((char *) node->buffer, "BC", 2);
-    buffer.push(node);
-    node = new sese::iocp::IOBufNode(3);
+    memcpy(node->buffer, "BC", 2);
+    buffer.push(std::move(node));
+    node = std::make_unique<sese::iocp::IOBufNode>(3);
     node->size = 3;
-    memcpy((char *) node->buffer, "DEF", 3);
-    buffer.push(node);
+    memcpy(node->buffer, "DEF", 3);
+    buffer.push(std::move(node));
 
     char buf[16]{};
     auto len = buffer.peek(buf, 16);

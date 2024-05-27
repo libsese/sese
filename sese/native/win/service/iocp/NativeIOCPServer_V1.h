@@ -28,7 +28,7 @@ struct OverlappedWrapper;
 class NativeContext final : public io::InputStream, public io::OutputStream, public io::PeekableStream {
     friend class NativeIOCPServer;
     using IOBuf = sese::iocp::IOBuf;
-    using Node = sese::iocp::IOBufNode;
+    using Node = std::unique_ptr<sese::iocp::IOBufNode>;
 
     enum class Type {
         READ,
@@ -47,7 +47,7 @@ class NativeContext final : public io::InputStream, public io::OutputStream, pub
     TimeoutEvent *timeoutEvent{};
     void *ssl{};
     void *bio{};
-    Node *readNode{};
+    Node readNode;
     IOBuf recv{};
     io::ByteBuilder send{IOCP_WSABUF_SIZE, IOCP_WSABUF_SIZE};
     void *data{};
