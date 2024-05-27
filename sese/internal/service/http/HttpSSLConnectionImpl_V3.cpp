@@ -15,9 +15,6 @@ HttpSSLConnectionImpl::~HttpSSLConnectionImpl() {
     if (stream) {
         asio::error_code error = this->stream->shutdown(error);
     }
-    if (node) { // NOLINT
-        delete node;
-    }
 }
 
 void HttpSSLConnectionImpl::writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) {
@@ -31,7 +28,7 @@ void HttpSSLConnectionImpl::writeBlock(const char *buffer, size_t length, const 
 }
 
 void HttpSSLConnectionImpl::readHeader() {
-    node = new iocp::IOBufNode(MTU_VALUE);
+    node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
     this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (conn->keepalive) {
             conn->keepalive = false;
@@ -40,12 +37,11 @@ void HttpSSLConnectionImpl::readHeader() {
         if (error) {
             // 出现错误，应该断开连接
             conn->disponse();
-            delete conn->node;
             conn->node = nullptr;
             return;
         }
         conn->node->size = bytes_transferred;
-        conn->io_buffer.push(conn->node);
+        conn->io_buffer.push(std::move(conn->node));
         bool recv_status = false;
         bool parse_status = false;
         for (int i = 0; i < bytes_transferred; ++i) {
@@ -86,16 +82,15 @@ void HttpSSLConnectionImpl::readHeader() {
 }
 
 void HttpSSLConnectionImpl::readBody() {
-    node = new iocp::IOBufNode(MTU_VALUE);
+    node = std::make_unique<iocp::IOBufNode>(MTU_VALUE);
     this->stream->async_read_some(asio::buffer(node->buffer, MTU_VALUE), [conn = getPtr()](const asio::error_code &error, std::size_t bytes_transferred) {
         if (error) {
             // 出现错误，应该断开连接
             conn->disponse();
-            delete conn->node;
             return;
         }
         conn->node->size = bytes_transferred;
-        conn->io_buffer.push(conn->node);
+        conn->io_buffer.push(std::move(conn->node));
         conn->real_length += conn->node->size;
         streamMove(&conn->request.getBody(), &conn->io_buffer, conn->node->size);
         if (conn->real_length >= conn->expect_length) {

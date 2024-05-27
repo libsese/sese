@@ -15,9 +15,6 @@ NativeContext::NativeContext(OverlappedWrapper *p_wrapper) : pWrapper(p_wrapper)
 
 NativeContext::~NativeContext() {
     free(wsabufWrite.buf);
-    if (readNode) { // NOLINT
-        delete readNode;
-    }
 }
 
 int64_t NativeContext::read(void *buffer, size_t length) {
@@ -160,7 +157,7 @@ void NativeIOCPServer::shutdown() {
 
 void NativeIOCPServer::postRead(NativeIOCPServer::Context *ctx) {
     ctx->type = NativeContext::Type::READ;
-    ctx->readNode = new IOBufNode(IOCP_WSABUF_SIZE);
+    ctx->readNode = std::make_unique<IOBufNode>(IOCP_WSABUF_SIZE);
     ctx->wsabufRead.buf = static_cast<CHAR *>(ctx->readNode->buffer);
     ctx->wsabufRead.len = static_cast<ULONG>(ctx->readNode->CAPACITY);
     DWORD n_bytes, dw_flags = 0;
@@ -364,7 +361,7 @@ void NativeIOCPServer::eventThreadProc() {
         if (p_wrapper->ctx.type == NativeContext::Type::READ) {
             onPreRead(&p_wrapper->ctx);
             p_wrapper->ctx.readNode->size = lp_number_of_bytes_transferred;
-            p_wrapper->ctx.recv.push(p_wrapper->ctx.readNode);
+            p_wrapper->ctx.recv.push(std::move(p_wrapper->ctx.readNode));
             p_wrapper->ctx.readNode = nullptr;
             p_wrapper->ctx.wsabufRead.buf = nullptr;
             p_wrapper->ctx.wsabufRead.len = 0;

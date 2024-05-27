@@ -11,6 +11,8 @@
 #include <sese/io/InputStream.h>
 #include <sese/io/PeekableStream.h>
 
+#include <forward_list>
+
 namespace sese::iocp {
 
 /// IOBuf 节点
@@ -23,8 +25,6 @@ struct IOBufNode {
     size_t size{0};
     /// 缓存容量大小
     const size_t CAPACITY;
-    /// 下一个节点
-    IOBufNode *next{nullptr};
 
     /**
      * 新建一个节点
@@ -46,24 +46,18 @@ struct IOBufNode {
      * @return 可写大小（空闲部分）
      */
     [[nodiscard]] size_t getWriteableSize() const noexcept;
-
-    void *operator new(size_t size);
-
-    void operator delete(void *p);
 };
 
 /// 用于 IOCP 的链式缓存
-class IOBuf : public io::InputStream, public io::PeekableStream {
+class IOBuf final : public io::InputStream, public io::PeekableStream {
 public:
     /// 节点类型
-    using Node = IOBufNode;
-
-    /// 析构将释放所有节点
-    ~IOBuf() override;
+    using Node = std::unique_ptr<IOBufNode>;
+    using ListType = std::forward_list<Node>;
 
     /// 添加一个新的节点，节点一旦被添加，外部就不可继续变更此节点
     /// \param node 目标节点
-    void push(Node *node);
+    void push(Node node);
 
     /// 释放所有节点
     void clear();
@@ -92,9 +86,8 @@ public:
     int64_t trunc(size_t length) override;
 
 private:
-    Node *root = nullptr;
-    Node *tail = nullptr;
-    Node *cur = nullptr;
+    ListType list;
+    ListType::iterator cur;
 
     size_t total{0};
     size_t readed{0};

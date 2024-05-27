@@ -105,7 +105,7 @@ struct HttpSSLConnectionImpl final : HttpConnection {
     std::unique_ptr<asio::ssl::stream<asio::ip::tcp::socket &>> stream;
     bool is0x0a = false;
     iocp::IOBuf io_buffer;
-    iocp::IOBufNode *node{};
+    std::unique_ptr<iocp::IOBufNode> node;
     io::ByteBuilder dynamic_buffer;
 
     void writeBlock(const char *buffer, size_t length, const std::function<void(const asio::error_code &code)> &callback) override;
