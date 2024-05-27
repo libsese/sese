@@ -141,16 +141,17 @@ $(document).ready(function(){initNavTree('_i_o_buf_8h_source.html',''); initResi
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="_input_stream_8h.html" title="流式输入接口类">sese/io/InputStream.h</a>&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="_peekable_stream_8h.html" title="可窥视流接口">sese/io/PeekableStream.h</a>&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespacesese_1_1iocp.html">   14</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1iocp.html">sese::iocp</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">IOBufNode</a> {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90">   19</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7c07e3bbde5aec473a7f09ebe47a1f21">   21</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7c07e3bbde5aec473a7f09ebe47a1f21" title="缓存已读大小">read</a>{0};</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab">   23</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab" title="缓存已填充大小">size</a>{0};</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95">   25</a></span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95" title="缓存容量大小">CAPACITY</a>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#ac0ac54fbc9463327bbbb71f1219ac865">   27</a></span>    <a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">IOBufNode</a> *<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#ac0ac54fbc9463327bbbb71f1219ac865" title="下一个节点">next</a>{<span class="keyword">nullptr</span>};</div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespacesese_1_1iocp.html">   16</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1iocp.html">sese::iocp</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html">   19</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">IOBufNode</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90">   21</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7c07e3bbde5aec473a7f09ebe47a1f21">   23</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7c07e3bbde5aec473a7f09ebe47a1f21" title="缓存已读大小">read</a>{0};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab">   25</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab" title="缓存已填充大小">size</a>{0};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95">   27</a></span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a9d30049c3236dd37ad33be4231f3fc95" title="缓存容量大小">CAPACITY</a>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">explicit</span> <a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">IOBufNode</a>(<span class="keywordtype">size_t</span> capacity);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
@@ -159,45 +160,39 @@ $(document).ready(function(){initNavTree('_i_o_buf_8h_source.html',''); initResi
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code hl_function" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7b46810616c4e0d3e2b1ed66e8d13b0d">getReadableSize</a>() const noexcept;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code hl_function" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a35e2a77912d88f1589354757ff343853">getWriteableSize</a>() const noexcept;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> *operator new(<span class="keywordtype">size_t</span> <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a89a5c69030fc9c4129f647e1c287a1ab" title="缓存已填充大小">size</a>);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> operator delete(<span class="keywordtype">void</span> *p);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
 </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="};">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html">   56</a></span>class <a class="code hl_class" href="classsese_1_1iocp_1_1_i_o_buf.html" title="用于 IOCP 的链式缓存">IOBuf</a> : public io::InputStream, public io::PeekableStream {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#a727f4ed1944b2bb3e93c178eb90b1754">   59</a></span>    <span class="keyword">using </span><a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">Node</a> = <a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">IOBufNode</a>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_class" href="classsese_1_1iocp_1_1_i_o_buf.html" title="用于 IOCP 的链式缓存">~IOBuf</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> push(<a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">Node</a> *node);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html">   52</a></span>class <a class="code hl_class" href="classsese_1_1iocp_1_1_i_o_buf.html" title="用于 IOCP 的链式缓存">IOBuf</a> final : public io::InputStream, public io::PeekableStream {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#aa91b414296c1449da62e46bf83ae3762">   55</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1iocp_1_1_i_o_buf.html#aa91b414296c1449da62e46bf83ae3762" title="节点类型">Node</a> = std::unique_ptr&lt;IOBufNode&gt;;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#af9bbf2a991088bac4265519c136ce02d">   56</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classsese_1_1iocp_1_1_i_o_buf.html#af9bbf2a991088bac4265519c136ce02d">ListType</a> = std::list&lt;Node&gt;;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> push(<a class="code hl_typedef" href="classsese_1_1iocp_1_1_i_o_buf.html#aa91b414296c1449da62e46bf83ae3762" title="节点类型">Node</a> node);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> clear();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code hl_function" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7b46810616c4e0d3e2b1ed66e8d13b0d">getReadableSize</a>() const noexcept;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> clear();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    [[nodiscard]] <span class="keywordtype">size_t</span> getTotalSize() const noexcept;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    [[nodiscard]] <span class="keywordtype">size_t</span> <a class="code hl_function" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7b46810616c4e0d3e2b1ed66e8d13b0d">getReadableSize</a>() const noexcept;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    [[nodiscard]] <span class="keywordtype">size_t</span> getTotalSize() const noexcept;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    int64_t <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7c07e3bbde5aec473a7f09ebe47a1f21" title="缓存已读大小">read</a>(<span class="keywordtype">void</span> *<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>, <span class="keywordtype">size_t</span> length) override;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    int64_t <a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a7c07e3bbde5aec473a7f09ebe47a1f21" title="缓存已读大小">read</a>(<span class="keywordtype">void</span> *<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>, <span class="keywordtype">size_t</span> length) override;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    int64_t peek(<span class="keywordtype">void</span> *<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>, <span class="keywordtype">size_t</span> length) override;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    int64_t peek(<span class="keywordtype">void</span> *<a class="code hl_variable" href="structsese_1_1iocp_1_1_i_o_buf_node.html#a49e8bb036777dfc4c89521ae20311e90" title="缓存指针">buffer</a>, <span class="keywordtype">size_t</span> length) override;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    int64_t trunc(<span class="keywordtype">size_t</span> length) override;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>private:</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#a1110b94a3bb2abe140a13aa43cecafc5">   95</a></span>    <a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">Node</a> *root = <span class="keywordtype">nullptr</span>;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#a41ae785b9faf2a99a56d23534f92b718">   96</a></span>    <a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">Node</a> *tail = <span class="keywordtype">nullptr</span>;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#a5f0a0e68978f568136da967bcacfae0f">   97</a></span>    <a class="code hl_struct" href="structsese_1_1iocp_1_1_i_o_buf_node.html" title="IOBuf 节点">Node</a> *cur = <span class="keywordtype">nullptr</span>;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#a1ad24242fb34911c76ba9128c36472d8">   99</a></span>    <span class="keywordtype">size_t</span> total{0};</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#ac58beb4bc622c053b955b5831372783a">  100</a></span>    <span class="keywordtype">size_t</span> readed{0};</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>};</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    int64_t trunc(<span class="keywordtype">size_t</span> length) override;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>private:</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#a458a4792017150459c78265560c3d192">   89</a></span>    <a class="code hl_typedef" href="classsese_1_1iocp_1_1_i_o_buf.html#af9bbf2a991088bac4265519c136ce02d">ListType</a> list;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#ab06a3628296ac1957cdec1b161663285">   90</a></span>    <a class="code hl_typedef" href="classsese_1_1iocp_1_1_i_o_buf.html#af9bbf2a991088bac4265519c136ce02d">ListType</a>::iterator cur;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#a1ad24242fb34911c76ba9128c36472d8">   92</a></span>    <span class="keywordtype">size_t</span> total{0};</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classsese_1_1iocp_1_1_i_o_buf.html#ac58beb4bc622c053b955b5831372783a">   93</a></span>    <span class="keywordtype">size_t</span> readed{0};</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
 </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>} <span class="comment">// namespace sese::iocp</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>} <span class="comment">// namespace sese::iocp</span></div>
 </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -205,7 +200,7 @@ $(document).ready(function(){initNavTree('_i_o_buf_8h_source.html',''); initResi
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_5133a24ac21dd88284fde375b671b602.html">service</a></li><li class="navelem"><a class="el" href="dir_a8a0c3bf23a222b37a43b98cf3af1535.html">iocp</a></li><li class="navelem"><a class="el" href="_i_o_buf_8h.html">IOBuf.h</a></li>
-    <li class="footer">生成于 2024年 五月 26日 星期日 09:48:11 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 五月 27日 星期一 16:10:15 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
