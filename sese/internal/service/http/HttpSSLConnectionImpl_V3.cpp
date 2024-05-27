@@ -41,32 +41,34 @@ void HttpSSLConnectionImpl::readHeader() {
             return;
         }
         conn->node->size = bytes_transferred;
-        conn->io_buffer.push(std::move(conn->node));
         bool recv_status = false;
         bool parse_status = false;
         for (int i = 0; i < bytes_transferred; ++i) {
             if (conn->is0x0a && static_cast<char *>(conn->node->buffer)[i] == '\r') {
                 conn->is0x0a = false;
                 recv_status = true;
+                conn->io_buffer.push(std::move(conn->node));
                 parse_status = sese::net::http::HttpUtil::recvRequest(&conn->io_buffer, &conn->request);
                 break;
             }
             conn->is0x0a = (static_cast<char *>(conn->node->buffer)[i] == '\n');
         }
         if (!recv_status) {
-            // 接收不完整，应该继续接收
+            // 接收不完整，保存现有结果并继续接收
             // SESE_WARN("read again");
+            conn->io_buffer.push(std::move(conn->node));
             conn->readHeader();
             return;
         }
         if (!parse_status) {
             // 解析失败，应该断开连接
+            // SESE_ERROR("解析失败");
             conn->disponse();
             return;
         }
 
         conn->expect_length = toInteger(conn->request.get("content-length", "0"));
-        conn->real_length = conn->node->getReadableSize();
+        conn->real_length = conn->io_buffer.getReadableSize();
         if (conn->real_length) {
             // 部分 body
             streamMove(&conn->request.getBody(), &conn->io_buffer, conn->real_length);
