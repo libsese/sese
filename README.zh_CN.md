@@ -163,8 +163,8 @@ cmake --build build/linux-debug -- -j 4
 ```
 
 > [!IMPORTANT]
-> 截至今日(2024-05-15)，该项目尚未进入内建库列表中。
-> 这意味这你需要多编写一个配置文件用于导入我们的[私有注册表](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries)。
+> 自内建库基线 `14b91796a68c87bc8d5cb35911b39287ccb7bd95` 之后，sese 已进入内建列表。
+> 在此之前，你需要多编写一个配置文件用于导入我们的[私有注册表](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries)。
 
 `vcpkg-configuration.json`
 

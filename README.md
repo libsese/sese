@@ -170,9 +170,8 @@ The main job is to write the project's dependency configuration file, for exampl
 ```
 
 > [!IMPORTANT]
-> As of today (2024-05-15), this project has not yet entered the list of built-in libraries.
-> This means that you need to write an additional configuration file for importing our
-> [private registry](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries)。
+> Since the built-in baseline `14b91796a68c87bc8d5cb35911b39287ccb7bd95`, sese has been included in the built-in list. Before this,
+> you needed to create an additional configuration file to import our [private registry](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries).
 
 `vcpkg-configuration.json`
 
