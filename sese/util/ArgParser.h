@@ -39,6 +39,7 @@ public:
      * @return 返回整个参数 Map
      */
     [[nodiscard]] const std::map<std::string, std::string> &getKeyValSet() const noexcept;
+
     /**
      * 根据参数名称获取参数值
      * @param key 参数名称
@@ -46,6 +47,13 @@ public:
      * @return 返回参数值，参数不存在返回默认值
      */
     [[nodiscard]] const std::string &getValueByKey(const std::string &key, const std::string &default_value) const noexcept;
+
+    /**
+     * 根据参数名称判断当前参数是否存在，适用于一些单独的不需要指定值的开关
+     * @param key 参数名称
+     * @return 该参数是否存在
+     */
+    [[nodiscard]] bool exist(const std::string &key) const noexcept;
 
     /**
      * 获取程序工作目录
