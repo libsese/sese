@@ -37,7 +37,7 @@ TEST(TestValue, IdentityBool) {
 }
 
 TEST(TestValue, IdentityInt) {
-    Value value(1);
+    Value value(1ll);
     EXPECT_FALSE(value.isNull());
     EXPECT_FALSE(value.isBool());
     EXPECT_TRUE(value.isInt());
@@ -126,12 +126,12 @@ TEST(TestValue, IdentityDict) {
 }
 
 TEST(TestValue, ConvertInt) {
-    Value value(1);
+    Value value(1ll);
     EXPECT_EQ(value.getIfInt().value(), 1);
     EXPECT_EQ(value.getIfBool().value(), true);
     EXPECT_EQ(value.getIfDouble().value(), 1.0);
 
-    value = Value(0);
+    value = Value(0ll);
     EXPECT_EQ(value.getIfInt().value(), 0);
     EXPECT_EQ(value.getIfBool().value(), false);
     EXPECT_EQ(value.getIfDouble().value(), 0.0);
@@ -159,11 +159,11 @@ TEST(TestValue, CompareBool) {
 }
 
 TEST(TestValue, CompareInt) {
-    Value value1(1);
-    Value value2(1);
+    Value value1(1ll);
+    Value value2(1ll);
     EXPECT_EQ(value1, value2);
 
-    Value value3(2);
+    Value value3(2ll);
     EXPECT_NE(value1, value3);
 }
 
@@ -183,14 +183,14 @@ TEST(TestValue, CompareBlob) {
 }
 
 TEST(TestValue, CompareList) {
-    Value value1(Value::List().append(1).append(2));
-    Value value2(Value::List().append(1).append(2));
+    Value value1(Value::List().append(1ll).append(2ll));
+    Value value2(Value::List().append(1ll).append(2ll));
     EXPECT_NE(value1, value2);
 }
 
 TEST(TestValue, CompareDict) {
-    Value value1(Value::Dict().set("a", 1).set("b", 2));
-    Value value2(Value::Dict().set("a", 1).set("b", 2));
+    Value value1(Value::Dict().set("a", 1ll).set("b", 2ll));
+    Value value2(Value::Dict().set("a", 1ll).set("b", 2ll));
     EXPECT_NE(value1, value2);
 }
 
@@ -201,16 +201,16 @@ TEST(TestValue, ToString) {
                                                    .append(Value())
                                                    .append(true)
                                                    .append(false)
-                                                   .append(114514)
+                                                   .append(114514ll)
                                                    .append("Blob", 4)
                                                    .append(Value::Dict())
                                      )
                         )
-                        .set("int", 1919810)
+                        .set("int", 1919810ll)
                         .set("double", 3.14)
                         .set("dict", Value::Dict()
                                              .set("string", "World")
-                                             .set("int", 123456)
+                                             .set("int", 123456ll)
                         )
     );
     auto str = value.toString(3);
