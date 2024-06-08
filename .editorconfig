@@ -8,5 +8,5 @@ insert_final_newline = false
 trim_trailing_whitespace = true
 charset = utf-8
 
-[*.{yml,yaml}]
+[*.{yml,yaml,json,clang-format,clang-tidy}]
 indent_size = 2

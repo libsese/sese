@@ -1,23 +1,23 @@
 version: '3'
 services:
-    mariadb:
-        image: mariadb
-        environment:
-            - MARIADB_ROOT_HOST=%
-            - MARIADB_USER=libsese
-            - MARIADB_PASSWORD=libsese
-            - MARIADB_ROOT_PASSWORD=libsese
-        restart: on-failure
-        ports:
-            - '127.0.0.1:18806:3306'
-        volumes:
-            - ./scripts/mysql_dump.sql:/docker-entrypoint-initdb.d/mysql_dump.sql:ro
-    postgresql:
-        image: postgres
-        environment:
-            - POSTGRES_PASSWORD=libsese
-        restart: on-failure
-        ports:
-            - '127.0.0.1:18080:5432'
-        volumes:
-            - ./scripts/postgres_dump.sql:/docker-entrypoint-initdb.d/postgres_dump.sql:ro
+  mariadb:
+    image: mariadb
+    environment:
+      - MARIADB_ROOT_HOST=%
+      - MARIADB_USER=libsese
+      - MARIADB_PASSWORD=libsese
+      - MARIADB_ROOT_PASSWORD=libsese
+    restart: on-failure
+    ports:
+      - '127.0.0.1:18806:3306'
+    volumes:
+      - ./scripts/mysql_dump.sql:/docker-entrypoint-initdb.d/mysql_dump.sql:ro
+  postgresql:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=libsese
+    restart: on-failure
+    ports:
+      - '127.0.0.1:18080:5432'
+    volumes:
+      - ./scripts/postgres_dump.sql:/docker-entrypoint-initdb.d/postgres_dump.sql:ro
