@@ -154,7 +154,7 @@ Value Json::parseBasic(const std::string &value) {
         if (is_float != std::string::npos) {
             return Value(std::stod(value));
         } else {
-            return Value(std::stoi(value));
+            return Value(std::stoll(value));
         }
     }
 }

@@ -30,6 +30,7 @@ public:
         DICT
     };
 
+    using Integer = int64_t;
     using String = std::string;
     using Blob = std::vector<uint8_t>;
 
@@ -83,7 +84,7 @@ public:
 
         void append(Value &&value) &;
         void append(bool value) &;
-        void append(int value) &;
+        void append(Integer value) &;
         void append(double value) &;
         void append(const char *value) &;
         void append(String &&value) &;
@@ -94,7 +95,7 @@ public:
 
         List &&append(Value &&value) &&;
         List &&append(bool value) &&;
-        List &&append(int value) &&;
+        List &&append(Integer value) &&;
         List &&append(double value) &&;
         List &&append(const char *value) &&;
         List &&append(String &&value) &&;
@@ -153,7 +154,7 @@ public:
 
         void set(const String &key, Value &&value) &;
         void set(const String &key, bool value) &;
-        void set(const String &key, int value) &;
+        void set(const String &key, Integer value) &;
         void set(const String &key, double value) &;
         void set(const String &key, const char *value) &;
         void set(const String &key, const char *value, size_t length) &;
@@ -164,7 +165,7 @@ public:
 
         Dict &&set(const String &key, Value &&value) &&;
         Dict &&set(const String &key, bool value) &&;
-        Dict &&set(const String &key, int value) &&;
+        Dict &&set(const String &key, Integer value) &&;
         Dict &&set(const String &key, double value) &&;
         Dict &&set(const String &key, const char *value) &&;
         Dict &&set(const String &key, const char *value, size_t length) &&;
@@ -183,8 +184,8 @@ public:
     explicit Value(Type type);
     /// bool
     explicit Value(bool value);
-    /// int
-    explicit Value(int value);
+    /// Integer
+    explicit Value(Integer value);
     /// double
     explicit Value(double value);
     /// string
@@ -219,7 +220,7 @@ public:
     [[nodiscard]] std::optional<bool> getIfBool() const;
     /// 允许从数数值类型转换成整形
     /// \return 整形
-    [[nodiscard]] std::optional<int> getIfInt() const;
+    [[nodiscard]] std::optional<Integer> getIfInt() const;
     /// 允许从数值类型转换成双精度浮点型
     /// \return 双精度浮点型
     [[nodiscard]] std::optional<double> getIfDouble() const;
@@ -229,7 +230,7 @@ public:
     [[nodiscard]] List *getIfList();
 
     [[nodiscard]] bool getBool() const;
-    [[nodiscard]] int getInt() const;
+    [[nodiscard]] Integer getInt() const;
     [[nodiscard]] double getDouble() const;
     [[nodiscard]] const String &getString() const;
     [[nodiscard]] String &getString();
@@ -248,7 +249,7 @@ public:
 private:
     void toString(text::StringBuilder &string_builder, size_t level) const noexcept;
 
-    std::variant<Null, bool, int, double, String, Blob, List, Dict> data;
+    std::variant<Null, bool, Integer, double, String, Blob, List, Dict> data;
 };
 
 } // namespace sese

@@ -19,7 +19,7 @@ Value::Value(Type type) {
             data.emplace<bool>(false);
             break;
         case Type::INT:
-            data.emplace<int>(0);
+            data.emplace<Integer>(0);
             break;
         case Type::DOUBLE:
             data.emplace<double>(0.0);
@@ -41,7 +41,7 @@ Value::Value(Type type) {
 
 Value::Value(bool value) : data(value) {}
 
-Value::Value(int value) : data(value) {}
+Value::Value(Integer value) : data(value) {}
 
 Value::Value(double value) : data(value) {}
 
@@ -110,25 +110,25 @@ std::optional<bool> Value::getIfBool() const {
     if (isBool()) {
         return std::get<bool>(data);
     } else if (isInt()) {
-        return std::get<int>(data) != 0;
+        return std::get<Integer>(data) != 0;
     } else if (isDouble()) {
         return std::get<double>(data) != 0.0;
     }
     return std::nullopt;
 }
 
-std::optional<int> Value::getIfInt() const {
+std::optional<Value::Integer> Value::getIfInt() const {
     if (isInt()) {
-        return std::get<int>(data);
+        return std::get<Integer>(data);
     } else if (isDouble()) {
-        return static_cast<int>(std::get<double>(data));
+        return static_cast<Integer>(std::get<double>(data));
     }
     return std::nullopt;
 }
 
 std::optional<double> Value::getIfDouble() const {
     if (isInt()) {
-        return static_cast<double>(std::get<int>(data));
+        return static_cast<double>(std::get<Integer>(data));
     } else if (isDouble()) {
         return std::get<double>(data);
     }
@@ -156,9 +156,9 @@ bool Value::getBool() const {
     return std::get<bool>(data);
 }
 
-int Value::getInt() const {
+Value::Integer Value::getInt() const {
     assert(isInt());
-    return std::get<int>(data);
+    return std::get<Integer>(data);
 }
 
 double Value::getDouble() const {
@@ -219,7 +219,7 @@ bool Value::operator==(const sese::Value &rhs) const {
             case Type::BOOL:
                 return std::get<bool>(data) == std::get<bool>(rhs.data);
             case Type::INT:
-                return std::get<int>(data) == std::get<int>(rhs.data);
+                return std::get<Integer>(data) == std::get<Integer>(rhs.data);
             case Type::DOUBLE:
                 return std::get<double>(data) == std::get<double>(rhs.data);
             case Type::STRING:
@@ -258,7 +258,7 @@ void Value::toString(text::StringBuilder &string_builder, size_t level) const no
             string_builder << (std::get<bool>(data) ? "<TRUE>" : "<FALSE>");
             break;
         case Type::INT:
-            string_builder << std::to_string(std::get<int>(data));
+            string_builder << std::to_string(std::get<Integer>(data));
             break;
         case Type::DOUBLE:
             string_builder << std::to_string(std::get<double>(data));
@@ -404,7 +404,7 @@ void List::append(Value &&value) & { vector.emplace_back(std::move(value)); }
 
 void List::append(bool value) & { vector.emplace_back(value); }
 
-void List::append(int value) & { vector.emplace_back(value); }
+void List::append(Integer value) & { vector.emplace_back(value); }
 
 void List::append(double value) & { vector.emplace_back(value); }
 
@@ -430,7 +430,7 @@ List &&List::append(bool value) && {
     return std::move(*this);
 }
 
-List &&List::append(int value) && {
+List &&List::append(Integer value) && {
     vector.emplace_back(value);
     return std::move(*this);
 }
@@ -560,7 +560,7 @@ void Dict::set(const Value::String &key, bool value) & {
     map[key] = new Value(value);
 }
 
-void Dict::set(const Value::String &key, int value) & {
+void Dict::set(const Value::String &key, Integer value) & {
     map[key] = new Value(value);
 }
 
@@ -602,7 +602,7 @@ Dict &&Dict::set(const Value::String &key, bool value) && {
     return std::move(*this);
 }
 
-Dict &&Dict::set(const Value::String &key, int value) && {
+Dict &&Dict::set(const Value::String &key, Integer value) && {
     map[key] = new Value(value);
     return std::move(*this);
 }
