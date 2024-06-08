@@ -2,51 +2,48 @@
 #include "sese/util/Util.h"
 #include "sese/text/StringBuilder.h"
 
+#include <algorithm>
 #include <cstring>
 
 bool sese::ArgParser::parse(int32_t argc, char **argv) noexcept {
-    char *p = argv[0];
-    while (*p != 0) {
-        if (*p == '\\') {
-            *p = '/';
-        }
-        p++;
-    }
+#ifdef SESE_PLATFORM_WINDOWS
+    std::string s(argv[0]);
+    std::replace(s.begin(), s.end(), '\\', '/');
+#endif
 
-    fullPath = argv[0];
+    fullPath = s;
     auto index = fullPath.find_last_of('/');
     currentPath = fullPath.substr(0, index);
     fileName = fullPath.substr(index + 1, fullPath.size() - index - 1);
 
     if (argc != 1) {
         for (int i = 1; i < argc; i++) {
-            // auto pos = findFirstAt(argv[i], '=');
-            // if (pos > 0) {
-            //     if (strlen(argv[i]) - 1 == pos) {
-            //         continue;
-            //     } else {
-            //         argv[i][pos] = '\0';
-            //         this->keyValSet.insert(std::pair<std::string, std::string>(argv[i], {&argv[i][pos + 1]}));
-            //     }
-            // } else {
-            //     return false;
-            // }
-            auto res = sese::text::StringBuilder::split(argv[i], "=");
-            if (res.size() != 2) return false;
-            this->keyValSet.insert(std::pair<std::string, std::string>(res[0], res[1]));
+            auto res = text::StringBuilder::split(argv[i], "=");
+            if (res.size() == 1) {
+                this->keyValSet[res[0]] = "";
+            } else if (res.size() == 2) {
+                this->keyValSet[res[0]] = res[1];
+            } else {
+                return false;
+            }
         }
     }
     return true;
+}
+
+bool sese::ArgParser::exist(const std::string &key) const noexcept {
+    return this->keyValSet.find(key) != this->keyValSet.end();
 }
 
 const std::map<std::string, std::string> &sese::ArgParser::getKeyValSet() const noexcept {
     return this->keyValSet;
 }
 
-const std::string &sese::ArgParser::getValueByKey(const std::string &key, const std::string &default_value) const noexcept {
-    for (const auto &iterator: keyValSet) {
-        if (iterator.first == key) {
-            return iterator.second;
+const std::string &sese::ArgParser::getValueByKey(const std::string &key,
+                                                  const std::string &default_value) const noexcept {
+    for (const auto &[k, v]: keyValSet) {
+        if (k == key) {
+            return v;
         }
     }
     return default_value;

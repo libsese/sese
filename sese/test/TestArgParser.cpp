@@ -40,7 +40,8 @@ TEST(TestArgParser, Parse_1) {
     char *argv[] = {arg0, arg1};
 
     auto args = std::make_unique<sese::ArgParser>();
-    EXPECT_FALSE(args->parse(argc, argv));
+    EXPECT_TRUE(args->parse(argc, argv));
+    EXPECT_TRUE(args->exist("--enable-xxx"));
 }
 
 TEST(TestArgParser, Parse_3) {
