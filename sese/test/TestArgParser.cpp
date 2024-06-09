@@ -1,15 +1,20 @@
 #include "sese/util/ArgParser.h"
 #include "sese/record/Marco.h"
+#include "sese/system/CommandLine.h"
 #include "gtest/gtest.h"
 
 TEST(TestArgParser, Parse_0) {
     int argc = 4;
-    char arg0[32]{R"(D:\Users\sese\TestArgParser)"};
-    // char arg0[32] {"/home/sese/TestArgParser"};
-    char arg1[16]{"a1=hello"};
-    char arg2[16]{"a2=\"a sentence\""};
-    char arg3[16]{"a3=123"};
-    char *argv[] = {arg0, arg1, arg2, arg3};
+    auto arg0 = sese::system::CommandLine::getArgv()[0];
+    auto arg1 = "a1=hello";
+    auto arg2 = "a2=\"a sentence\"";
+    auto arg3 = "a3=123";
+    char *argv[] = {
+        const_cast<char *>(arg0),
+        const_cast<char *>(arg1),
+        const_cast<char *>(arg2),
+        const_cast<char *>(arg3)
+    };
 
     auto args = std::make_unique<sese::ArgParser>();
     EXPECT_TRUE(args->parse(argc, argv));
@@ -35,9 +40,12 @@ TEST(TestArgParser, Parse_0) {
 
 TEST(TestArgParser, Parse_1) {
     int argc = 2;
-    char arg0[32]{R"(D:\Users\sese\TestArgParser)"};
-    char arg1[16]{"--enable-xxx"};
-    char *argv[] = {arg0, arg1};
+    auto arg0 = sese::system::CommandLine::getArgv()[0];
+    auto arg1 = "--enable-xxx";
+    char *argv[] = {
+        const_cast<char *>(arg0),
+        const_cast<char *>(arg1)
+    };
 
     auto args = std::make_unique<sese::ArgParser>();
     EXPECT_TRUE(args->parse(argc, argv));
@@ -46,8 +54,8 @@ TEST(TestArgParser, Parse_1) {
 
 TEST(TestArgParser, Parse_3) {
     int argc = 1;
-    char arg0[32]{R"(D:\Users\sese\TestArgParser)"};
-    char *argv[] = {arg0};
+    auto arg0 = sese::system::CommandLine::getArgv()[0];
+    char *argv[] = {const_cast<char *>(arg0)};
 
     auto args = std::make_unique<sese::ArgParser>();
     EXPECT_TRUE(args->parse(argc, argv));
