@@ -100,3 +100,10 @@ TEST(TestLogger, Macro) {
     SESE_ERROR("Hello");
     SESE_RAW("Hello\n", 6);
 }
+
+TEST(TestLogger, Vars) {
+    int32_t i = 114514;
+    std::string s = "Hello";
+    SESE_VARS(DEBUG, i);
+    SESE_VARS(INFO, s);
+}

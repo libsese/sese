@@ -1,4 +1,5 @@
 #include <sese/util/Value.h>
+#include <sese/Log.h>
 
 #include <gtest/gtest.h>
 
@@ -213,6 +214,5 @@ TEST(TestValue, ToString) {
                                              .set("int", 123456ll)
                         )
     );
-    auto str = value.toString(3);
-    puts(str.c_str());
+    SESE_VARS(INFO, value);
 }
