@@ -11,8 +11,8 @@
 #include <optional>
 
 #include <sese/Config.h>
-#include <sese/io/InputStream.h>
 #include <sese/text/StringBuilder.h>
+#include <sese/record/Vars.h>
 
 namespace sese {
 
@@ -251,5 +251,12 @@ private:
 
     std::variant<Null, bool, Integer, double, String, Blob, List, Dict> data;
 };
+
+namespace record::overload {
+    template<>
+    inline std::string toString(const Value &v) {
+        return v.toString();
+    }
+}
 
 } // namespace sese
