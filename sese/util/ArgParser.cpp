@@ -9,9 +9,11 @@ bool sese::ArgParser::parse(int32_t argc, char **argv) noexcept {
 #ifdef SESE_PLATFORM_WINDOWS
     std::string s(argv[0]);
     std::replace(s.begin(), s.end(), '\\', '/');
+    fullPath = s;
+#else
+    fullPath = argv[0];
 #endif
 
-    fullPath = s;
     auto index = fullPath.find_last_of('/');
     currentPath = fullPath.substr(0, index);
     fileName = fullPath.substr(index + 1, fullPath.size() - index - 1);

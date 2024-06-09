@@ -38,7 +38,7 @@ TEST(TestValue, IdentityBool) {
 }
 
 TEST(TestValue, IdentityInt) {
-    Value value(1ll);
+    Value value(INT64_C(1));
     EXPECT_FALSE(value.isNull());
     EXPECT_FALSE(value.isBool());
     EXPECT_TRUE(value.isInt());
@@ -127,12 +127,12 @@ TEST(TestValue, IdentityDict) {
 }
 
 TEST(TestValue, ConvertInt) {
-    Value value(1ll);
+    Value value(INT64_C(1));
     EXPECT_EQ(value.getIfInt().value(), 1);
     EXPECT_EQ(value.getIfBool().value(), true);
     EXPECT_EQ(value.getIfDouble().value(), 1.0);
 
-    value = Value(0ll);
+    value = Value(INT64_C(0));
     EXPECT_EQ(value.getIfInt().value(), 0);
     EXPECT_EQ(value.getIfBool().value(), false);
     EXPECT_EQ(value.getIfDouble().value(), 0.0);
@@ -160,11 +160,11 @@ TEST(TestValue, CompareBool) {
 }
 
 TEST(TestValue, CompareInt) {
-    Value value1(1ll);
-    Value value2(1ll);
+    Value value1(INT64_C(1));
+    Value value2(INT64_C(1));
     EXPECT_EQ(value1, value2);
 
-    Value value3(2ll);
+    Value value3(INT64_C(2));
     EXPECT_NE(value1, value3);
 }
 
@@ -184,14 +184,14 @@ TEST(TestValue, CompareBlob) {
 }
 
 TEST(TestValue, CompareList) {
-    Value value1(Value::List().append(1ll).append(2ll));
-    Value value2(Value::List().append(1ll).append(2ll));
+    Value value1(Value::List().append(INT64_C(1)).append(INT64_C(2)));
+    Value value2(Value::List().append(INT64_C(1)).append(INT64_C(2)));
     EXPECT_NE(value1, value2);
 }
 
 TEST(TestValue, CompareDict) {
-    Value value1(Value::Dict().set("a", 1ll).set("b", 2ll));
-    Value value2(Value::Dict().set("a", 1ll).set("b", 2ll));
+    Value value1(Value::Dict().set("a", INT64_C(1)).set("b", INT64_C(2)));
+    Value value2(Value::Dict().set("a", INT64_C(1)).set("b", INT64_C(2)));
     EXPECT_NE(value1, value2);
 }
 
@@ -202,16 +202,16 @@ TEST(TestValue, ToString) {
                                                    .append(Value())
                                                    .append(true)
                                                    .append(false)
-                                                   .append(114514ll)
+                                                   .append(INT64_C(114514))
                                                    .append("Blob", 4)
                                                    .append(Value::Dict())
                                      )
                         )
-                        .set("int", 1919810ll)
+                        .set("int", INT64_C(1919810))
                         .set("double", 3.14)
                         .set("dict", Value::Dict()
                                              .set("string", "World")
-                                             .set("int", 123456ll)
+                                             .set("int", INT64_C(123456))
                         )
     );
     SESE_VARS(INFO, value);
