@@ -2,7 +2,7 @@
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"
 
-TEST(TestBitmap, ConstMethod) {
+TEST(TestBimap, ConstMethod) {
     sese::Bimap<std::string, int32_t> bimap{{"1", 1}};
 
     EXPECT_FALSE(bimap.empty());
