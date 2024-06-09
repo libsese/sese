@@ -18,10 +18,7 @@
 
 namespace sese::record::overload {
     template<class T>
-    std::string toString(const T&&) {
-        static_assert(false, "T must be an lvalue");
-        return "";
-    }
+    std::string toString(const T&&) = delete;
 
     template<class T>
     std::string toString(const T &t) {
