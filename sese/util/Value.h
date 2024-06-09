@@ -254,8 +254,8 @@ private:
 
 namespace record::overload {
     template<>
-    inline std::string toString(const Value &v) {
-        return v.toString();
+    inline std::string toString(const Value &t) {
+        return t.toString();
     }
 }
 
