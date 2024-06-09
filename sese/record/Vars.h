@@ -20,6 +20,7 @@ namespace sese::record::overload {
     template<class T>
     std::string toString(const T&&) {
         static_assert(false, "T must be an lvalue");
+        return "";
     }
 
     template<class T>

@@ -4,6 +4,7 @@ lib
 output
 coverage
 CMakeSettings.json
+CMakeUserPresets.json
 build
 build-*
 .xmake
