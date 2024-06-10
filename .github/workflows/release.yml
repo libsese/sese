@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checksum
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
         run: |
           curl https://github/libsese/sese/archive/refs/${tag}.zip -O sese.zip
           sha256sum sese.zip > sese-${tag}.zip.sha256
