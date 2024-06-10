@@ -18,5 +18,6 @@ var dir_c6625f544ed0c126aba16ec4b044d27b =
     [ "LogHelper.h", "_log_helper_8h.html", "_log_helper_8h" ],
     [ "Marco.h", "record_2_marco_8h.html", "record_2_marco_8h" ],
     [ "SimpleFormatter.cpp", "_simple_formatter_8cpp.html", "_simple_formatter_8cpp" ],
-    [ "SimpleFormatter.h", "_simple_formatter_8h.html", "_simple_formatter_8h" ]
+    [ "SimpleFormatter.h", "_simple_formatter_8h.html", "_simple_formatter_8h" ],
+    [ "Vars.h", "_vars_8h.html", "_vars_8h" ]
 ];

@@ -158,30 +158,33 @@ $(document).ready(function(){initNavTree('_arg_parser_8h_source.html',''); initR
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">bool</span> parse(int32_t argc, <span class="keywordtype">char</span> **argv) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    [[nodiscard]] <span class="keyword">const</span> std::map&lt;std::string, std::string&gt; &amp;getKeyValSet() const noexcept;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    [[nodiscard]] const std::<span class="keywordtype">string</span> &amp;getValueByKey(const std::<span class="keywordtype">string</span> &amp;key, const std::<span class="keywordtype">string</span> &amp;default_value) const noexcept;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a6a89de1b0e0cf6e8d0c175bb81702c7c">   54</a></span>    [[nodiscard]] const std::<span class="keywordtype">string</span> &amp;getCurrentPath()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> currentPath; }</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a9afcf216636ad3f52f70df0fe7cb858e">   60</a></span>    [[nodiscard]] <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1_arg_parser.html#a9afcf216636ad3f52f70df0fe7cb858e">getFileName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> fileName; }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a9290bbaaee0f00a200163aa88ec5c188">   66</a></span>    [[nodiscard]] <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1_arg_parser.html#a9290bbaaee0f00a200163aa88ec5c188">getFullPath</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> fullPath; }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a4c0b15fcfd7930d459dd34ad0b5165a6">   69</a></span>    std::string <a class="code hl_variable" href="classsese_1_1_arg_parser.html#a4c0b15fcfd7930d459dd34ad0b5165a6">fullPath</a>;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a3ac2fba73fa3b95860892053a27438dd">   70</a></span>    std::string <a class="code hl_variable" href="classsese_1_1_arg_parser.html#a3ac2fba73fa3b95860892053a27438dd">currentPath</a>;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a873f4316f4474952a833743212a7bf2a">   71</a></span>    std::string <a class="code hl_variable" href="classsese_1_1_arg_parser.html#a873f4316f4474952a833743212a7bf2a">fileName</a>;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#ad27fd30bd1303c841c45a84c1cb2af83">   72</a></span>    std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="classsese_1_1_arg_parser.html#ad27fd30bd1303c841c45a84c1cb2af83">keyValSet</a>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>};</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    [[nodiscard]] const std::<span class="keywordtype">string</span> &amp;getValueByKey(const std::<span class="keywordtype">string</span> &amp;key, const std::<span class="keywordtype">string</span> &amp;default_value) const noexcept;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    [[nodiscard]] <span class="keywordtype">bool</span> exist(const std::<span class="keywordtype">string</span> &amp;key) const noexcept;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a6a89de1b0e0cf6e8d0c175bb81702c7c">   62</a></span>    [[nodiscard]] const std::<span class="keywordtype">string</span> &amp;getCurrentPath()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> currentPath; }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a9afcf216636ad3f52f70df0fe7cb858e">   68</a></span>    [[nodiscard]] <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1_arg_parser.html#a9afcf216636ad3f52f70df0fe7cb858e">getFileName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> fileName; }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a9290bbaaee0f00a200163aa88ec5c188">   74</a></span>    [[nodiscard]] <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classsese_1_1_arg_parser.html#a9290bbaaee0f00a200163aa88ec5c188">getFullPath</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> fullPath; }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a4c0b15fcfd7930d459dd34ad0b5165a6">   77</a></span>    std::string <a class="code hl_variable" href="classsese_1_1_arg_parser.html#a4c0b15fcfd7930d459dd34ad0b5165a6">fullPath</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a3ac2fba73fa3b95860892053a27438dd">   78</a></span>    std::string <a class="code hl_variable" href="classsese_1_1_arg_parser.html#a3ac2fba73fa3b95860892053a27438dd">currentPath</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#a873f4316f4474952a833743212a7bf2a">   79</a></span>    std::string <a class="code hl_variable" href="classsese_1_1_arg_parser.html#a873f4316f4474952a833743212a7bf2a">fileName</a>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classsese_1_1_arg_parser.html#ad27fd30bd1303c841c45a84c1cb2af83">   80</a></span>    std::map&lt;std::string, std::string&gt; <a class="code hl_variable" href="classsese_1_1_arg_parser.html#ad27fd30bd1303c841c45a84c1cb2af83">keyValSet</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>};</div>
 </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>} <span class="comment">// namespace sese</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_arg_parser_8h.html">ArgParser.h</a></li>
-    <li class="footer">生成于 2024年 六月 8日 星期六 04:48:13 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 10日 星期一 15:42:02 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

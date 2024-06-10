@@ -4,6 +4,7 @@ var classsese_1_1_value =
     [ "List", "classsese_1_1_value_1_1_list.html", "classsese_1_1_value_1_1_list" ],
     [ "Null", "classsese_1_1_value_1_1_null.html", null ],
     [ "Blob", "classsese_1_1_value.html#a10369fbcdea644fc88299db66fc07c55", null ],
+    [ "Integer", "classsese_1_1_value.html#a141a34191e4c1ee366539184113e575e", null ],
     [ "String", "classsese_1_1_value.html#afe57e460c5419165aeb1cbaae18af5ac", null ],
     [ "Type", "classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661", [
       [ "NONE", "classsese_1_1_value.html#a02daae7c8adc1efa34e551c740ac2661ab50339a10e1de285ac99d4c3990b8693", null ],
@@ -18,7 +19,7 @@ var classsese_1_1_value =
     [ "Value", "classsese_1_1_value.html#a54644896ae6157228f9e79c3fb63d623", null ],
     [ "Value", "classsese_1_1_value.html#a1ae9d6151b62cfba2c6ffd9f211da660", null ],
     [ "Value", "classsese_1_1_value.html#a756348e9056bd7b60f983d28c4a1abe5", null ],
-    [ "Value", "classsese_1_1_value.html#ab6321e070a82a08176ae3181718cc44f", null ],
+    [ "Value", "classsese_1_1_value.html#a92e4d7eedd50bb0de81bc5c924d4eda6", null ],
     [ "Value", "classsese_1_1_value.html#a3a8f4510e2ccf164c4d1c9c7897bf71f", null ],
     [ "Value", "classsese_1_1_value.html#a615659663ae1bbba6d8d42c667d46a52", null ],
     [ "Value", "classsese_1_1_value.html#adfdfb72416a67e44fc79b0d14f9925d8", null ],
@@ -37,10 +38,10 @@ var classsese_1_1_value =
     [ "getIfBool", "classsese_1_1_value.html#af114abf092e7fd3b91d00470a8769930", null ],
     [ "getIfDict", "classsese_1_1_value.html#a8a0d82588132e7359b27ecb02b257775", null ],
     [ "getIfDouble", "classsese_1_1_value.html#a2b92fb4d429c067ebf3d4949d66a0f30", null ],
-    [ "getIfInt", "classsese_1_1_value.html#a06dedeb920f9055db25fb2657aa7c232", null ],
+    [ "getIfInt", "classsese_1_1_value.html#aac846490b730e985bc5b534b90355159", null ],
     [ "getIfList", "classsese_1_1_value.html#a1cea591471b7d47117fcb19e90d5f665", null ],
     [ "getIfString", "classsese_1_1_value.html#a7253df8b990824b7985390dcfa1c0757", null ],
-    [ "getInt", "classsese_1_1_value.html#ac47830f915993fb51bcc06744976cbb1", null ],
+    [ "getInt", "classsese_1_1_value.html#a9cbc4919a414d7f9fe98022cae67e2fa", null ],
     [ "getList", "classsese_1_1_value.html#ac96ab6343628a87dd4a7d3ffef1bb6d3", null ],
     [ "getList", "classsese_1_1_value.html#a588d5302be939dba1714c8cba0b90ad4", null ],
     [ "getString", "classsese_1_1_value.html#ad466366fc88707f5836a5b8821cf5189", null ],
@@ -59,5 +60,5 @@ var classsese_1_1_value =
     [ "operator==", "classsese_1_1_value.html#a0c9eb3e2a8d0eaaf423e7f6324438039", null ],
     [ "toString", "classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3", null ],
     [ "toString", "classsese_1_1_value.html#a4ce6a4126620b020aada251732338265", null ],
-    [ "data", "classsese_1_1_value.html#a340d1bf19e1cfab9ded3d0dd6c35ae2e", null ]
+    [ "data", "classsese_1_1_value.html#a170151a6072646e7d0a545ba49bfb4ca", null ]
 ];

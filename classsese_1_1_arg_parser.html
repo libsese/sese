@@ -155,6 +155,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:af2d60327a1c2022b43d7462e732558a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a236d62d6facaa1285829d3f103053895" id="r_a236d62d6facaa1285829d3f103053895"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_arg_parser.html#a236d62d6facaa1285829d3f103053895">getValueByKey</a> (const std::string &amp;key, const std::string &amp;default_value) const noexcept</td></tr>
 <tr class="separator:a236d62d6facaa1285829d3f103053895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9a803a923b4e7d67a10fbb9091126c1" id="r_ac9a803a923b4e7d67a10fbb9091126c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_arg_parser.html#ac9a803a923b4e7d67a10fbb9091126c1">exist</a> (const std::string &amp;key) const noexcept</td></tr>
+<tr class="separator:ac9a803a923b4e7d67a10fbb9091126c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a89de1b0e0cf6e8d0c175bb81702c7c" id="r_a6a89de1b0e0cf6e8d0c175bb81702c7c"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_arg_parser.html#a6a89de1b0e0cf6e8d0c175bb81702c7c">getCurrentPath</a> () const</td></tr>
 <tr class="separator:a6a89de1b0e0cf6e8d0c175bb81702c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9afcf216636ad3f52f70df0fe7cb858e" id="r_a9afcf216636ad3f52f70df0fe7cb858e"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1_arg_parser.html#a9afcf216636ad3f52f70df0fe7cb858e">getFileName</a> () const</td></tr>
@@ -217,6 +219,39 @@ Private 属性</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="ac9a803a923b4e7d67a10fbb9091126c1" name="ac9a803a923b4e7d67a10fbb9091126c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9a803a923b4e7d67a10fbb9091126c1">&#9670;&#160;</a></span>exist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sese::ArgParser::exist </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>根据参数名称判断当前参数是否存在，适用于一些单独的不需要指定值的开关 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>参数名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>该参数是否存在 </dd></dl>
+
+</div>
+</div>
 <a id="a6a89de1b0e0cf6e8d0c175bb81702c7c" name="a6a89de1b0e0cf6e8d0c175bb81702c7c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a89de1b0e0cf6e8d0c175bb81702c7c">&#9670;&#160;</a></span>getCurrentPath()</h2>
 
@@ -409,8 +444,6 @@ Private 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>解析是否成功 </dd></dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1text_1_1_abstract_string_buffer.html#a42027ecdeca2f09104419174167ed2ab">sese::text::AbstractStringBuffer::split()</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
@@ -514,7 +547,7 @@ Private 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="classsese_1_1_arg_parser.html">ArgParser</a></li>
-    <li class="footer">生成于 2024年 六月 8日 星期六 04:48:13 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 10日 星期一 15:42:02 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
