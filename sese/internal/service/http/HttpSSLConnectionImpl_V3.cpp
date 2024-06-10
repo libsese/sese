@@ -135,7 +135,10 @@ void HttpSSLConnectionImpl::writeHeader() {
             if (conn->ranges.size() == 1) {
                 // 单区间文件
                 conn->expect_length = conn->range_iterator->len;
-                conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN);
+                if(conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
+                    conn->disponse();
+                    return;
+                }
                 conn->writeSingleRange();
             } else if (conn->ranges.size() > 1) {
                 // 多区间文件

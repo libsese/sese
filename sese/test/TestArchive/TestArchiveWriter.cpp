@@ -18,7 +18,7 @@ TEST(TestArchiveWriter, GlobFile) {
     EXPECT_TRUE(writer.addFile(PROJECT_PATH "/CMakeLists.txt"));
     EXPECT_TRUE(writer.addDirectory(PROJECT_PATH "/sese"));
     EXPECT_TRUE(writer.done());
-    file->flush();
+    EXPECT_EQ(file->flush(), 0);
     file->close();
 }
 
@@ -43,7 +43,7 @@ TEST(TestArchiveWriter, Stream) {
         lists->close();
     }
     EXPECT_TRUE(writer.done());
-    file->flush();
+    EXPECT_EQ(file->flush(), 0);
     file->close();
 }
 
@@ -66,6 +66,6 @@ TEST(TestArchiveWriter, Password) {
         EXPECT_TRUE(writer.addStream("Hello.txt", &buf, buf.getCapacity()));
     }
     EXPECT_TRUE(writer.done());
-    file->flush();
+    EXPECT_EQ(file->flush(), 0);
     file->close();
 }

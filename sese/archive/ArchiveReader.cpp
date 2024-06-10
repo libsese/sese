@@ -91,7 +91,9 @@ bool ArchiveReader::extract(const std::filesystem::path &src_path, const std::fi
             }
         }
 
-        FILE->flush();
+        if(FILE->flush()) {
+            return false;
+        }
         FILE->close();
         if (exp) {
             archive_read_free(a);

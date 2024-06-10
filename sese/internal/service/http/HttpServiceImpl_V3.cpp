@@ -265,7 +265,9 @@ void HttpConnection::writeRanges() {
                 if (error) {
                     return;
                 }
-                conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN);
+                if(conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)){
+                    return;
+                }
                 conn->expect_length = conn->range_iterator->len;
                 conn->real_length = 0;
                 conn->writeRanges();
@@ -295,7 +297,9 @@ void HttpConnection::writeRanges() {
                 if (error) {
                     return;
                 }
-                conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN);
+                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
+                    return;
+                }
                 conn->expect_length = conn->range_iterator->len;
                 conn->real_length = 0;
                 conn->writeRanges();
