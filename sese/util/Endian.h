@@ -9,6 +9,7 @@
 
 #include <type_traits>
 #include <cstring>
+#include <cstdint>
 
 enum class EndianType {
     LITTLE,
