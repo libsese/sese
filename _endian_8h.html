@@ -137,6 +137,7 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
 <p>字节序转换  
 <a href="#details">更多...</a></p>
 <div class="textblock"><code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
 </div>
 <p><a href="_endian_8h_source.html">浏览源代码.</a></p>
 <table class="memberdecls">
@@ -150,6 +151,10 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
 <tr class="separator:a12a98caebf84ec6ccb07da8cf38116f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83069a2dcb8201f582f9c4b7e9a2d360" id="r_a83069a2dcb8201f582f9c4b7e9a2d360"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a83069a2dcb8201f582f9c4b7e9a2d360">SESE_LITTLE_ENDIAN</a></td></tr>
 <tr class="separator:a83069a2dcb8201f582f9c4b7e9a2d360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1252e3c5ff559d127a5ab9483dca4269" id="r_a1252e3c5ff559d127a5ab9483dca4269"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a1252e3c5ff559d127a5ab9483dca4269">ASSERT_FLOAT_SIZE</a>&#160;&#160;&#160;static_assert(<a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(float) == 4, &quot;Float <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> is not 4 bytes&quot;)</td></tr>
+<tr class="separator:a1252e3c5ff559d127a5ab9483dca4269"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc65a591065360bedcf13bf0b0a984ef" id="r_adc65a591065360bedcf13bf0b0a984ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_endian_8h.html#adc65a591065360bedcf13bf0b0a984ef">ASSERT_DOUBLE_SIZE</a>&#160;&#160;&#160;static_assert(<a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(double) == 8, &quot;Double <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> is not 8 bytes&quot;)</td></tr>
+<tr class="separator:adc65a591065360bedcf13bf0b0a984ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 枚举</h2></td></tr>
@@ -220,12 +225,64 @@ $(document).ready(function(){initNavTree('_endian_8h.html',''); initResizable();
 <tr class="memitem:a432168a8b7d59beadb3981b00541d5c3" id="r_a432168a8b7d59beadb3981b00541d5c3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a432168a8b7d59beadb3981b00541d5c3"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a432168a8b7d59beadb3981b00541d5c3">FromLittleEndian</a> (T t)</td></tr>
 <tr class="separator:a432168a8b7d59beadb3981b00541d5c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33247150a09990eaa527f462dcf9fd0a" id="r_a33247150a09990eaa527f462dcf9fd0a"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a33247150a09990eaa527f462dcf9fd0a"><td class="memTemplItemLeft" align="right" valign="top">float&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a33247150a09990eaa527f462dcf9fd0a">ToBigEndian32</a> (float t)</td></tr>
+<tr class="separator:a33247150a09990eaa527f462dcf9fd0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a939c508cf56e0939a717b0b5e8793331" id="r_a939c508cf56e0939a717b0b5e8793331"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a939c508cf56e0939a717b0b5e8793331"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a939c508cf56e0939a717b0b5e8793331">ToBigEndian64</a> (double t)</td></tr>
+<tr class="separator:a939c508cf56e0939a717b0b5e8793331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5140bced7f37ff518cb16bbe01bce40" id="r_ac5140bced7f37ff518cb16bbe01bce40"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ac5140bced7f37ff518cb16bbe01bce40"><td class="memTemplItemLeft" align="right" valign="top">float&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#ac5140bced7f37ff518cb16bbe01bce40">ToLittleEndian32</a> (float t)</td></tr>
+<tr class="separator:ac5140bced7f37ff518cb16bbe01bce40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa22e1a33ff37d6d74d564c1deeb9e6" id="r_a2fa22e1a33ff37d6d74d564c1deeb9e6"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a2fa22e1a33ff37d6d74d564c1deeb9e6"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a2fa22e1a33ff37d6d74d564c1deeb9e6">ToLittleEndian64</a> (double t)</td></tr>
+<tr class="separator:a2fa22e1a33ff37d6d74d564c1deeb9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28785ff5ff4969133b571de1f44bc3c5" id="r_a28785ff5ff4969133b571de1f44bc3c5"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a28785ff5ff4969133b571de1f44bc3c5"><td class="memTemplItemLeft" align="right" valign="top">float&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a28785ff5ff4969133b571de1f44bc3c5">FromBigEndian32</a> (float t)</td></tr>
+<tr class="separator:a28785ff5ff4969133b571de1f44bc3c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a783b66cca86cb238c675ee8bc38a20ef" id="r_a783b66cca86cb238c675ee8bc38a20ef"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a783b66cca86cb238c675ee8bc38a20ef"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a783b66cca86cb238c675ee8bc38a20ef">FromBigEndian64</a> (double t)</td></tr>
+<tr class="separator:a783b66cca86cb238c675ee8bc38a20ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a1c2be9255d600550614fdc88093634" id="r_a2a1c2be9255d600550614fdc88093634"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a2a1c2be9255d600550614fdc88093634"><td class="memTemplItemLeft" align="right" valign="top">float&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a2a1c2be9255d600550614fdc88093634">FromLittleEndian32</a> (float t)</td></tr>
+<tr class="separator:a2a1c2be9255d600550614fdc88093634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21f72eb2e23383bd2be08c0782364628" id="r_a21f72eb2e23383bd2be08c0782364628"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:a21f72eb2e23383bd2be08c0782364628"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_endian_8h.html#a21f72eb2e23383bd2be08c0782364628">FromLittleEndian64</a> (double t)</td></tr>
+<tr class="separator:a21f72eb2e23383bd2be08c0782364628"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>字节序转换 </p>
 <dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
 <dl class="section date"><dt>日期</dt><dd>2022年4月3日 </dd></dl>
 </div><h2 class="groupheader">宏定义说明</h2>
+<a id="adc65a591065360bedcf13bf0b0a984ef" name="adc65a591065360bedcf13bf0b0a984ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc65a591065360bedcf13bf0b0a984ef">&#9670;&#160;</a></span>ASSERT_DOUBLE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ASSERT_DOUBLE_SIZE&#160;&#160;&#160;static_assert(<a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(double) == 8, &quot;Double <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> is not 8 bytes&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1252e3c5ff559d127a5ab9483dca4269" name="a1252e3c5ff559d127a5ab9483dca4269"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1252e3c5ff559d127a5ab9483dca4269">&#9670;&#160;</a></span>ASSERT_FLOAT_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ASSERT_FLOAT_SIZE&#160;&#160;&#160;static_assert(<a class="el" href="_output_util_8h.html#af1182f7c8b394f4637da72f5a9b4fa5d">sizeof</a>(float) == 4, &quot;Float <a class="el" href="_output_util_8h.html#a4b0b87fb002705ecbf1c5e8a0503a94a">size</a> is not 4 bytes&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac18bd0db7f9250328b5712a8bf0f9a3a" name="ac18bd0db7f9250328b5712a8bf0f9a3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac18bd0db7f9250328b5712a8bf0f9a3a">&#9670;&#160;</a></span>ByteSwap16</h2>
 
@@ -452,8 +509,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a28785ff5ff4969133b571de1f44bc3c5" name="a28785ff5ff4969133b571de1f44bc3c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28785ff5ff4969133b571de1f44bc3c5">&#9670;&#160;</a></span>FromBigEndian32() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float FromBigEndian32 </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a1252e3c5ff559d127a5ab9483dca4269">ASSERT_FLOAT_SIZE</a>.</p>
+
+</div>
+</div>
 <a id="adbf79fbea7a031ee08cd875f6115786a" name="adbf79fbea7a031ee08cd875f6115786a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbf79fbea7a031ee08cd875f6115786a">&#9670;&#160;</a></span>FromBigEndian32()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adbf79fbea7a031ee08cd875f6115786a">&#9670;&#160;</a></span>FromBigEndian32() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -484,8 +571,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a783b66cca86cb238c675ee8bc38a20ef" name="a783b66cca86cb238c675ee8bc38a20ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a783b66cca86cb238c675ee8bc38a20ef">&#9670;&#160;</a></span>FromBigEndian64() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FromBigEndian64 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#adc65a591065360bedcf13bf0b0a984ef">ASSERT_DOUBLE_SIZE</a>.</p>
+
+</div>
+</div>
 <a id="a30d804217c328748ab79cd9c5b178f54" name="a30d804217c328748ab79cd9c5b178f54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30d804217c328748ab79cd9c5b178f54">&#9670;&#160;</a></span>FromBigEndian64()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d804217c328748ab79cd9c5b178f54">&#9670;&#160;</a></span>FromBigEndian64() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -570,8 +687,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a2a1c2be9255d600550614fdc88093634" name="a2a1c2be9255d600550614fdc88093634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a1c2be9255d600550614fdc88093634">&#9670;&#160;</a></span>FromLittleEndian32() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float FromLittleEndian32 </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a1252e3c5ff559d127a5ab9483dca4269">ASSERT_FLOAT_SIZE</a>.</p>
+
+</div>
+</div>
 <a id="a4126826b3c9290ca101e879e4a7dd28e" name="a4126826b3c9290ca101e879e4a7dd28e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4126826b3c9290ca101e879e4a7dd28e">&#9670;&#160;</a></span>FromLittleEndian32()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4126826b3c9290ca101e879e4a7dd28e">&#9670;&#160;</a></span>FromLittleEndian32() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -598,8 +745,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a21f72eb2e23383bd2be08c0782364628" name="a21f72eb2e23383bd2be08c0782364628"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21f72eb2e23383bd2be08c0782364628">&#9670;&#160;</a></span>FromLittleEndian64() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FromLittleEndian64 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#adc65a591065360bedcf13bf0b0a984ef">ASSERT_DOUBLE_SIZE</a>.</p>
+
+</div>
+</div>
 <a id="ac1d41b11e64751472086b653eed6cd06" name="ac1d41b11e64751472086b653eed6cd06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1d41b11e64751472086b653eed6cd06">&#9670;&#160;</a></span>FromLittleEndian64()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1d41b11e64751472086b653eed6cd06">&#9670;&#160;</a></span>FromLittleEndian64() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -748,8 +925,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a33247150a09990eaa527f462dcf9fd0a" name="a33247150a09990eaa527f462dcf9fd0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33247150a09990eaa527f462dcf9fd0a">&#9670;&#160;</a></span>ToBigEndian32() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ToBigEndian32 </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a1252e3c5ff559d127a5ab9483dca4269">ASSERT_FLOAT_SIZE</a>.</p>
+
+</div>
+</div>
 <a id="aee39e2ac7b85b19445e3e49d84ae0e71" name="aee39e2ac7b85b19445e3e49d84ae0e71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee39e2ac7b85b19445e3e49d84ae0e71">&#9670;&#160;</a></span>ToBigEndian32()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aee39e2ac7b85b19445e3e49d84ae0e71">&#9670;&#160;</a></span>ToBigEndian32() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -780,8 +987,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a939c508cf56e0939a717b0b5e8793331" name="a939c508cf56e0939a717b0b5e8793331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a939c508cf56e0939a717b0b5e8793331">&#9670;&#160;</a></span>ToBigEndian64() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ToBigEndian64 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#adc65a591065360bedcf13bf0b0a984ef">ASSERT_DOUBLE_SIZE</a>.</p>
+
+</div>
+</div>
 <a id="aac1643a53942add87fbfe380e1a4f308" name="aac1643a53942add87fbfe380e1a4f308"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac1643a53942add87fbfe380e1a4f308">&#9670;&#160;</a></span>ToBigEndian64()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aac1643a53942add87fbfe380e1a4f308">&#9670;&#160;</a></span>ToBigEndian64() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -872,8 +1109,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="ac5140bced7f37ff518cb16bbe01bce40" name="ac5140bced7f37ff518cb16bbe01bce40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5140bced7f37ff518cb16bbe01bce40">&#9670;&#160;</a></span>ToLittleEndian32() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ToLittleEndian32 </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#a1252e3c5ff559d127a5ab9483dca4269">ASSERT_FLOAT_SIZE</a>.</p>
+
+</div>
+</div>
 <a id="a2d514848bec4edf4d30a320997e66d02" name="a2d514848bec4edf4d30a320997e66d02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d514848bec4edf4d30a320997e66d02">&#9670;&#160;</a></span>ToLittleEndian32()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d514848bec4edf4d30a320997e66d02">&#9670;&#160;</a></span>ToLittleEndian32() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -902,8 +1169,38 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a2fa22e1a33ff37d6d74d564c1deeb9e6" name="a2fa22e1a33ff37d6d74d564c1deeb9e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fa22e1a33ff37d6d74d564c1deeb9e6">&#9670;&#160;</a></span>ToLittleEndian64() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ToLittleEndian64 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="_endian_8h.html#adc65a591065360bedcf13bf0b0a984ef">ASSERT_DOUBLE_SIZE</a>.</p>
+
+</div>
+</div>
 <a id="a4f01b391acade3b4c64d3f88700640d1" name="a4f01b391acade3b4c64d3f88700640d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f01b391acade3b4c64d3f88700640d1">&#9670;&#160;</a></span>ToLittleEndian64()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f01b391acade3b4c64d3f88700640d1">&#9670;&#160;</a></span>ToLittleEndian64() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -938,7 +1235,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_endian_8h.html">Endian.h</a></li>
-    <li class="footer">生成于 2024年 六月 10日 星期一 17:22:36 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 12日 星期三 09:53:38 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
