@@ -7,10 +7,11 @@
 <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2017&color=blue&logo=cplusplus" alt="lang"/>
 <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=blue&logo=cmake" alt="buildsystem"/>
 <br>
-<img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese-core/badge"/>
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/windows-2022.yml?label=Windows&logo=windows">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/ubuntu-2204-apt.yml?label=Ubuntu&logo=ubuntu">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/macos-12-brew.yml?label=macOS&logo=apple">
+<img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese/badge"/>
+<img alt="Lines of Code" src="https://sloc.xyz/github/libsese/sese/"/>
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/windows-2022.yml?label=Windows&logo=windows">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/ubuntu-2204-apt.yml?label=Ubuntu&logo=ubuntu">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/macos-12-brew.yml?label=macOS&logo=apple">
 <br>
 </div>
 
@@ -248,3 +249,7 @@ https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.g
 [Documents](https://libsese.github.io/sese/) will be updated automatically with the update of the main branch to making pages.
 
 Document content is automatically generated from code comments, and the docs directory actually houses some of the resources needed to build the document.
+
+## Contributors
+
+![Contributors](https://contrib.rocks/image?repo=libsese/sese)

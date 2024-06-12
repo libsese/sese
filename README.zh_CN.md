@@ -7,10 +7,11 @@
 <img src="https://img.shields.io/static/v1?label=language&message=C%2B%2B%2017&color=blue&logo=cplusplus" alt="lang"/>
 <img src="https://img.shields.io/static/v1?label=build%20system&message=CMake&color=blue&logo=cmake" alt="buildsystem"/>
 <br>
-<img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese-core/badge"/>
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/windows-2022.yml?label=Windows&logo=windows">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/ubuntu-2204-apt.yml?label=Ubuntu&logo=ubuntu">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese-core/macos-12-brew.yml?label=macOS&logo=apple">
+<img alt="CodeFactor Status" src="https://www.codefactor.io/repository/github/libsese/sese/badge"/>
+<img alt="Lines of Code" src="https://sloc.xyz/github/libsese/sese/"/>
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/windows-2022.yml?label=Windows&logo=windows">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/ubuntu-2204-apt.yml?label=Ubuntu&logo=ubuntu">
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/libsese/sese/macos-12-brew.yml?label=macOS&logo=apple">
 <br>
 </div>
 
@@ -238,3 +239,7 @@ https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/.g
 [文档](https://libsese.github.io/sese/)将会随着主线的更新而自动更新到 github pages 上。
 
 文档内容将从代码注释中自动生成，docs 目录实际存放构建文档所需的部分资源。
+
+## 贡献者
+
+![Contributors](https://contrib.rocks/image?repo=libsese/sese)
