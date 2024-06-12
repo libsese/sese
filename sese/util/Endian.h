@@ -8,6 +8,7 @@
 #pragma once
 
 #include <type_traits>
+#include <memory>
 
 enum class EndianType {
     LITTLE,
@@ -256,4 +257,106 @@ inline T FromBigEndian(T t) {
     return t;
 }
 #endif
+
+#define ASSERT_FLOAT_SIZE static_assert(sizeof(float) == 4, "Float size is not 4 bytes")
+#define ASSERT_DOUBLE_SIZE static_assert(sizeof(double) == 8, "Double size is not 8 bytes")
+
+template<>
+inline float ToBigEndian32(float t) {
+    ASSERT_FLOAT_SIZE;
+#ifdef SESE_LITTLE_ENDIAN
+    int32_t tmp;
+    memcpy(&tmp, &t, sizeof(float));
+    ToBigEndian32<int32_t>(tmp);
+    memcpy(&t, &tmp, sizeof(float));
+#endif
+    return t;
+}
+
+template<>
+inline double ToBigEndian64(double t) {
+    ASSERT_DOUBLE_SIZE;
+#ifdef SESE_LITTLE_ENDIAN
+    int64_t tmp;
+    memcpy(&tmp, &t, sizeof(double));
+    ToBigEndian64<int64_t>(tmp);
+    memcpy(&t, &tmp, sizeof(double));
+#endif
+    return t;
+}
+
+template<>
+inline float ToLittleEndian32(float t) {
+    ASSERT_FLOAT_SIZE;
+#ifdef SESE_BIG_ENDIAN
+    int32_t tmp;
+    memcpy(&tmp, &t, sizeof(float));
+    ToBigEndian32<int32_t>(tmp);
+    memcpy(&t, &tmp, sizeof(float));
+#endif
+    return t;
+}
+
+template<>
+inline double ToLittleEndian64(double t) {
+    ASSERT_DOUBLE_SIZE;
+#ifdef SESE_BIG_ENDIAN
+    int64_t tmp;
+    memcpy(&tmp, &t, sizeof(double));
+    ToBigEndian64<int64_t>(tmp);
+    memcpy(&t, &tmp, sizeof(double));
+#endif
+    return t;
+}
+
+template<>
+inline float FromBigEndian32(float t) {
+    ASSERT_FLOAT_SIZE;
+#ifdef SESE_LITTLE_ENDIAN
+    int32_t tmp;
+    memcpy(&tmp, &t, sizeof(float));
+    FromBigEndian32<int32_t>(tmp);
+    memcpy(&t, &tmp, sizeof(float));
+#endif
+    return t;
+}
+
+template<>
+inline double FromBigEndian64(double t) {
+    ASSERT_DOUBLE_SIZE;
+#ifdef SESE_LITTLE_ENDIAN
+    int64_t tmp;
+    memcpy(&tmp, &t, sizeof(double));
+    FromBigEndian64<int64_t>(tmp);
+    memcpy(&t, &tmp, sizeof(double));
+#endif
+    return t;
+}
+
+template<>
+inline float FromLittleEndian32(float t) {
+    ASSERT_FLOAT_SIZE;
+#ifdef SESE_BIG_ENDIAN
+    int32_t tmp;
+    memcpy(&tmp, &t, sizeof(float));
+    FromBigEndian32<int32_t>(tmp);
+    memcpy(&t, &tmp, sizeof(float));
+#endif
+    return t;
+}
+
+template<>
+inline double FromLittleEndian64(double t) {
+    ASSERT_DOUBLE_SIZE;
+#ifdef SESE_BIG_ENDIAN
+    int64_t tmp;
+    memcpy(&tmp, &t, sizeof(double));
+    FromBigEndian64<int64_t>(tmp);
+    memcpy(&t, &tmp, sizeof(double));
+#endif
+    return t;
+}
+
+#undef ASSERT_FLOAT_SIZE
+#undef ASSERT_DOUBLE_SIZE
 }
