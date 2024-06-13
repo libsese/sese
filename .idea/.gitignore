@@ -1,0 +1,7 @@
+/fileTemplates
+
+*.xml
+
+!/copyright/libsese_Default_Copyright.xml
+!/copyright/profiles_settings.xml
+!/externalDependencies.xml

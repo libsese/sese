@@ -1,0 +1,10 @@
+<component name="CopyrightManager">
+  <settings default="libsese Default Copyright">
+    <LanguageOptions name="C++">
+      <option name="fileTypeOverride" value="3" />
+      <option name="relativeBefore" value="false" />
+      <option name="block" value="false" />
+      <option name="prefixLines" value="false" />
+    </LanguageOptions>
+  </settings>
+</component>

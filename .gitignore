@@ -1,8 +1,4 @@
 ### Custom
-.idea
-lib
-output
-coverage
 CMakeSettings.json
 CMakeUserPresets.json
 build
@@ -11,7 +7,7 @@ build-*
 temp
 *.csv
 *.gcov
-
+*.log
 
 ### C++ template
 # Prerequisites
