@@ -2,9 +2,9 @@
 
 ## 配置项目
 
-~~项目配置使用 CMake + vcpkg 的形式。CMake 负责构建，vcpkg 负责管理依赖。~~
+项目配置使用 CMake + vcpkg 的形式。CMake 负责构建，vcpkg 负责管理依赖。
 
-现在同样支持 unix-like 原生包管理。
+现在也同样部分支持 unix-like 原生包管理。
 
 对于 debian/ubuntu:
 
@@ -24,7 +24,7 @@
 
   你需要选择使用 git clone 该项目而不是直接下载源代码压缩包，因为我们需要版本管理.
   ```bash
-  git clone https://github.com/libsese/sese-core.git
+  git clone https://github.com/libsese/sese.git
   ```
 
 - 配置 CMake
@@ -34,11 +34,11 @@
   首先你需要确保你的机器上有配置完成的 vcpkg 工具。
   配置 CMake 有几种方案可以选择，如果你在使用 vscode，你可能需要安装 CMake 插件并在项目配置中添加选项
 
-  <kbd>-DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake</kbd>
+  `-DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake`
 
   使用 visual studio 或者 clion 也和 vscode 的配置大差不差，除了该选项以外还需要添加
 
-  <kbd>-DSESE_BUILD_TEST=ON</kbd>
+  `-DSESE_BUILD_TEST=ON`
 
   以打开构建单元测试的开关，这会自动添加 google test 的依赖项并添加项目的单元测试目标。
 
@@ -47,7 +47,7 @@
   cmake -DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake -DSESE_BUILD_TEST=ON
   ```
 
-  如果你不希望使用 vcpkg 的清单模式，你可以将 VCPKG_MANIFEST_MODE 设置为 OFF 以强制使用经典模式。
+  如果你不希望使用 vcpkg 的清单模式，你可以将 `VCPKG_MANIFEST_MODE` 设置为 OFF 以强制使用经典模式。
 
 - 代码规范
 
@@ -55,8 +55,6 @@
   这对于项目的维护和新功能的开发是必要的。
 
 ## 预设的开发环境
-
-~~项目在 .vscode 下预设了两个可用于 windows 和 unix-like 的 vscode 工作区文件，在依赖齐全的情况下基本做到开箱可用。~~
 
 预设配置现在应该参考 **CMakePresets.json**，如果你使用的 CMake 或 IDE 版本过低，你可能需要手动配置这些开发选项。
 
@@ -69,16 +67,38 @@ where ninja
 ```
 查看 ninja 完整路径。
 
+## 关于 ARM 架构
+
+> [!WARNING]
+> ARM 目前并不属于主要适配的架构，在一定程度上项目能在 ARM 上运行。
+> 如果你执意使用相关设备进行开发和运行，产生的效果我们概不负责，当然也欢迎有相关方面经验的开发者贡献兼容性代码。
+> 下面的内容将**简单的**、**不严谨的**为在 x86_64/amd64 的开发者提供一种可行的 ARM64 模拟方案。
+
+为 docker 添加跨架构支持，这**可能**需要你手动安装 `qemu` 的相关组件，此处不进行演示。详细信息请参考 [tonistiigi/binfmt](https://github.com/tonistiigi/binfmt)。
+
+```bash
+docker run --privileged --rm tonistiigi/binfmt --install arm64
+```
+
+[arm64.dockerfile](./arm64.dockerfile) 提供了基于 ARM64 Ubuntu 的基础运行环境（不包括数据库软件），可以使用 docker 直接构建镜像。
+
+```bash
+docker build -f arm64.dockerfile .
+```
+
+使用此镜像可以完整构建并运行相关测试用例。
+
 ## 分支管理
 
-<kbd>main</kbd> 是本项目的主分支，大多数时候不允许贡献代码在未经许可的情况下上传到这里。
+`main` 是本项目的主分支，大多数时候不允许贡献代码在未经许可的情况下上传到这里。
 
 需要修改代码可以选择 fork 本项目到个人账户下，并在完成开发后向上游发起 pull request；
 或者你可能是组织成员，那么你有权限在本仓库新建一个开发分支，分支名称通常应该应该符合以下形式
 
-<kbd>dev-feature</kbd>、
-<kbd>dev-new-feature</kbd>、
-<kbd>fix-bug</kbd> 等
+`dev-[username]`、
+`dev-feature`、
+`dev-new-feature`、
+`fix-bug` 等
 
 ## 提交流程
 
