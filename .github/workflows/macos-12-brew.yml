@@ -22,7 +22,9 @@ jobs:
 
       - name: Setup deps
         working-directory: ${{ github.workspace }}
-        run: ./scripts/install_darwin_deps.sh
+        run: |
+          chmod +x ./scripts/install_darwin_deps.sh
+          ./scripts/install_darwin_deps.sh
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}

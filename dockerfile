@@ -7,6 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # 安装系统软件包（系统级操作）
 COPY ./scripts/install_ubuntu_deps.sh /tmp/install_deps.sh
 
+RUN chmod +x /tmp/install_deps.h
+
 # RUN yes | unminimize && \
 #     apt update -y && \
 #     apt upgrade -y && \
