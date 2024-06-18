@@ -9,6 +9,7 @@
 #include "sese/Config.h"
 #include "sese/util/DateTime.h"
 #include <memory>
+#include <utility>
 
 #ifdef _WIN32
 #pragma warning(disable : 4251)
@@ -36,32 +37,32 @@ public:
     typedef std::shared_ptr<Event> Ptr;
 
 public:
-    Event(DateTime date_time, Level lv, const char *thread_name, tid_t id, const char *file, int32_t line,
-          const char *msg) noexcept {
+    Event(DateTime date_time, Level lv, std::string thread_name, tid_t id, std::string file, int32_t line,
+          std::string msg) noexcept {
         this->dateTime = date_time;
         this->level = lv;
-        this->threadName = thread_name;
+        this->threadName = std::move(thread_name);
         this->threadId = id;
-        this->file = file;
+        this->file = std::move(file);
         this->line = line;
-        this->message = msg;
+        this->message = std::move(msg);
     }
 
     [[nodiscard]] const DateTime &getTime() const noexcept { return this->dateTime; }
     [[nodiscard]] Level getLevel() const noexcept { return this->level; }
     [[nodiscard]] tid_t getThreadId() const noexcept { return this->threadId; }
     [[nodiscard]] int32_t getLine() const noexcept { return this->line; }
-    [[nodiscard]] const char *getFileName() const noexcept { return this->file; }
-    [[nodiscard]] const char *getMessage() const noexcept { return this->message; }
-    [[nodiscard]] const char *getThreadName() const noexcept { return this->threadName; }
+    [[nodiscard]] auto &getFileName() const noexcept { return this->file; }
+    [[nodiscard]] auto &getMessage() const noexcept { return this->message; }
+    [[nodiscard]] auto &getThreadName() const noexcept { return this->threadName; }
 
 private:
     DateTime dateTime;
     Level level;
-    const char *threadName = nullptr;
+    std::string threadName;
     tid_t threadId;
-    const char *file = nullptr;
+    std::string file;
     int32_t line;
-    const char *message = nullptr;
+    std::string message;
 };
 } // namespace sese::record
