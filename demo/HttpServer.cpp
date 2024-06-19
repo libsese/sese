@@ -60,6 +60,10 @@ int main(int argc, char **argv) {
     server.regController<MyController>();
     server.regService(sese::net::IPv4Address::localhost(9090), std::move(ssl));
     server.regService(sese::net::IPv4Address::localhost(9091), nullptr);
+    server.regFilter("/data", [](sese::net::http::Request &req, sese::net::http::Response &resp) {
+        SESE_INFO("filter /data: %s", req.getUri().c_str());
+        resp.setCode(404);
+    });
 
     server.startup();
     getchar();

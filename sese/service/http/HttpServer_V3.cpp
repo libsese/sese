@@ -13,13 +13,17 @@ void HttpServer::regServlet(const net::http::Servlet &servlet) {
     this->servlets.emplace(servlet.getUri(), servlet);
 }
 
+void HttpServer::regFilter(const std::string &uri_prefix, const net::http::Servlet::Callback &callback) {
+    this->filters[uri_prefix] = callback;
+}
+
 void HttpServer::setKeepalive(uint32_t seconds) {
     keepalive = std::max<uint32_t>(seconds, 5);
 }
 
 void HttpServer::regService(const net::IPAddress::Ptr &address, std::unique_ptr<security::SSLContext> context) {
     auto service = internal::service::http::v3::HttpServiceImpl::create(
-            address, std::move(context), keepalive, name, mount_points, servlets
+            address, std::move(context), keepalive, name, mount_points, servlets, filters
     );
     this->services.push_back(service);
 }

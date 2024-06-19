@@ -29,8 +29,12 @@ struct HttpConnection : public std::enable_shared_from_this<HttpConnection> {
     using Ptr = std::shared_ptr<HttpConnection>;
 
     enum class ConnType {
-        NORMAL,
-        FILE_DOWNLOAD
+        /// 表示请求被过滤器拦截
+        FILTER,
+        /// 表示请求是挂载点静态资源请求
+        FILE_DOWNLOAD,
+        /// 普通请求
+        NORMAL
     } conn_type = ConnType::NORMAL;
 
     HttpConnection(const std::shared_ptr<HttpServiceImpl> &service, asio::io_context &context);
@@ -129,7 +133,8 @@ public:
             uint32_t keepalive,
             std::string &serv_name,
             MountPointMap &mount_points,
-            ServletMap &servlets
+            ServletMap &servlets,
+            FilterMap &filters
     );
 
     bool startup() override;

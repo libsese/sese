@@ -9,10 +9,11 @@ sese::service::http::v3::HttpService::Ptr sese::service::http::v3::HttpService::
         uint32_t keepalive,
         std::string &serv_name,
         MountPointMap &mount_points,
-        ServletMap &servlets
+        ServletMap &servlets,
+        FilterMap &filters
 ) {
     return std::make_shared<internal::service::http::v3::HttpServiceImpl>(
-            address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets
+            address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets, filters
     );
 }
 
@@ -22,6 +23,7 @@ sese::service::http::v3::HttpService::HttpService(
         uint32_t keepalive,
         std::string &serv_name,
         MountPointMap &mount_points,
-        ServletMap &servlets
-) : address(std::move(address)), ssl_context(std::move(ssl_context)), keepalive(keepalive), serv_name(serv_name), mount_points(mount_points), servlets(servlets) {
+        ServletMap &servlets,
+        FilterMap &filters
+) : address(std::move(address)), ssl_context(std::move(ssl_context)), keepalive(keepalive), serv_name(serv_name), mount_points(mount_points), servlets(servlets), filters(filters) {
 }

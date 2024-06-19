@@ -2,7 +2,6 @@
 #include <sese/internal/net/AsioIPConvert.h>
 #include <sese/internal/net/AsioSSLContextConvert.h>
 #include <sese/net/http/HttpUtil.h>
-#include <sese/io/FakeStream.h>
 #include <sese/text/DateTimeFormatter.h>
 #include <sese/text/StringBuilder.h>
 #include <sese/util/Util.h>
@@ -19,8 +18,9 @@ HttpServiceImpl::HttpServiceImpl(
         uint32_t keepalive,
         std::string &serv_name,
         MountPointMap &mount_points,
-        ServletMap &servlets
-) : HttpService(address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets),
+        ServletMap &servlets,
+        FilterMap &filters
+) : HttpService(address, std::move(ssl_context), keepalive, serv_name, mount_points, servlets, filters),
     io_context(),
     ssl_context(std::nullopt),
     acceptor(io_context) {
@@ -33,7 +33,7 @@ HttpServiceImpl::HttpServiceImpl(
                 }
                 this->io_context.run();
             },
-            "HttpServiveAcceptor"
+            "HttpServiceAcceptor"
     );
 }
 
@@ -81,13 +81,24 @@ int HttpServiceImpl::getLastError() {
 void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
     auto &&req = conn->request;
     auto &&resp = conn->response;
+    std::filesystem::path filename;
+
+    // 过滤器匹配
+    for (auto &&[uri_prefix, callback]: filters) {
+        if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
+            conn->conn_type = HttpConnection::ConnType::FILTER;
+            callback(req, resp);
+            goto uni_handle;
+        }
+    }
 
     // 挂载点匹配
-    std::filesystem::path filename;
-    for (auto &&mount_point: mount_points) {
-        if (text::StringBuilder::startsWith(req.getUri(), mount_point.first)) {
+    for (auto &&[uri_prefix, mount_point]: mount_points) {
+        if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
             conn->conn_type = HttpConnection::ConnType::FILE_DOWNLOAD;
-            filename = mount_point.second + req.getUri().substr(mount_point.first.length());
+            filename = mount_point + req.getUri().substr(uri_prefix.length());
+            // 确认文件名后进行下一步操作
+            break;
         }
     }
 
@@ -195,8 +206,8 @@ void HttpServiceImpl::handleAccept() {
     auto conn = std::make_shared<HttpConnectionImpl>(shared_from_this(), io_context);
     acceptor.async_accept(
             conn->socket,
-            [this, conn](const asio::error_code &error) {
-                if (error) return;
+            [this, conn](const asio::error_code &e) {
+                if (e) return;
                 this->connections.emplace(conn);
                 conn->readHeader();
                 this->handleAccept();
@@ -208,15 +219,15 @@ void HttpServiceImpl::handleSSLAccept() {
     auto conn = std::make_shared<HttpSSLConnectionImpl>(shared_from_this(), io_context);
     acceptor.async_accept(
             conn->socket,
-            [this, conn](const asio::error_code &error) {
-                if (error) {
+            [this, conn](const asio::error_code &e1) {
+                if (e1) {
                     return;
                 }
                 conn->stream = std::make_unique<asio::ssl::stream<asio::ip::tcp::socket &>>(conn->socket, ssl_context.value());
                 conn->stream->async_handshake(
                         asio::ssl::stream_base::server,
-                        [conn, this](const asio::error_code &error) {
-                            if (error) return;
+                        [conn, this](const asio::error_code &e2) {
+                            if (e2) return;
                             this->connections.emplace(conn);
                             conn->readHeader();
                         }
@@ -265,7 +276,7 @@ void HttpConnection::writeRanges() {
                 if (error) {
                     return;
                 }
-                if(conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)){
+                if (conn->file->setSeek(static_cast<int64_t>(conn->range_iterator->begin), io::Seek::BEGIN)) {
                     return;
                 }
                 conn->expect_length = conn->range_iterator->len;
