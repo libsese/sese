@@ -11,6 +11,7 @@
 namespace sese::service::http::v3 {
 
 /// Http 服务器
+/// @note 调用优先级 Filter > Mount Point(Filter) > Controller = Servlet，互相独立不可转换
 class HttpServer final {
 public:
     /// 注册控制器
@@ -24,6 +25,11 @@ public:
     /// @param uri_prefix URI 前缀
     /// @param local 本地路径
     void regMountPoint(const std::string &uri_prefix, const std::string &local);
+
+    /// 注册过滤器
+    /// \param uri_prefix URI 前缀
+    /// \param callback 回调函数
+    void regFilter(const std::string &uri_prefix, const net::http::Servlet::Callback &callback);
 
     /// 注册 Http 应用
     /// @param servlet Http 应用
@@ -57,6 +63,7 @@ private:
     std::vector<net::http::Controller::Ptr> controllers;
     HttpService::MountPointMap mount_points;
     HttpService::ServletMap servlets;
+    HttpService::FilterMap filters;
 };
 
 template<class CTL, class... ARGS>
