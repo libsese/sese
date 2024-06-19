@@ -2,8 +2,9 @@ var structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection =
 [
     [ "Ptr", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#ae6ea797257945bc26edd3bf43890bc0d", null ],
     [ "ConnType", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a68f15cbde280ec46b33e6de33ce5c925", [
-      [ "NORMAL", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a68f15cbde280ec46b33e6de33ce5c925a1e23852820b9154316c7c06e2b7ba051", null ],
-      [ "FILE_DOWNLOAD", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a68f15cbde280ec46b33e6de33ce5c925aee679345dad3e7f7cf35e9b4d220082d", null ]
+      [ "FILTER", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a68f15cbde280ec46b33e6de33ce5c925ae75ab17a550f46adbbe891b819cf951d", null ],
+      [ "FILE_DOWNLOAD", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a68f15cbde280ec46b33e6de33ce5c925aee679345dad3e7f7cf35e9b4d220082d", null ],
+      [ "NORMAL", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a68f15cbde280ec46b33e6de33ce5c925a1e23852820b9154316c7c06e2b7ba051", null ]
     ] ],
     [ "HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a0e6c091667b76f4a278d98b1931105e1", null ],
     [ "~HttpConnection", "structsese_1_1internal_1_1service_1_1http_1_1v3_1_1_http_connection.html#a389bd366ca6f200cafc77bb2741d612e", null ],

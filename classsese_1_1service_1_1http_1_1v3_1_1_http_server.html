@@ -134,9 +134,6 @@ $(document).ready(function(){initNavTree('classsese_1_1service_1_1http_1_1v3_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>Http 服务器  
- <a href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#details">更多...</a></p>
-
 <p><code>#include &lt;<a class="el" href="_http_server___v3_8h_source.html">HttpServer_V3.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -146,6 +143,8 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:a1037814df498919defd79f24d512dba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47552dc66ba00ea21a5c97203b5b6f47" id="r_a47552dc66ba00ea21a5c97203b5b6f47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a47552dc66ba00ea21a5c97203b5b6f47">regMountPoint</a> (const std::string &amp;uri_prefix, const std::string &amp;local)</td></tr>
 <tr class="separator:a47552dc66ba00ea21a5c97203b5b6f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1173e35a0b690843457fbfa53863e46d" id="r_a1173e35a0b690843457fbfa53863e46d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a1173e35a0b690843457fbfa53863e46d">regFilter</a> (const std::string &amp;uri_prefix, const <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#aa1c56b2902e556e14b708ae2ff6f78c3">net::http::Servlet::Callback</a> &amp;<a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback</a>)</td></tr>
+<tr class="separator:a1173e35a0b690843457fbfa53863e46d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6de8e196e7cea52a9d0211a5aa06c0e" id="r_ae6de8e196e7cea52a9d0211a5aa06c0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#ae6de8e196e7cea52a9d0211a5aa06c0e">regServlet</a> (const <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html">net::http::Servlet</a> &amp;servlet)</td></tr>
 <tr class="separator:ae6de8e196e7cea52a9d0211a5aa06c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b644f445ded64c907298148f5244b44" id="r_a8b644f445ded64c907298148f5244b44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a8b644f445ded64c907298148f5244b44">setKeepalive</a> (uint32_t seconds)</td></tr>
@@ -173,9 +172,11 @@ Private 属性</h2></td></tr>
 <tr class="separator:a6ad9ede5947c9189cec3c9bfcdf599cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90f4ce101942bc898799157d5ab30d50" id="r_a90f4ce101942bc898799157d5ab30d50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8">HttpService::ServletMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a90f4ce101942bc898799157d5ab30d50">servlets</a></td></tr>
 <tr class="separator:a90f4ce101942bc898799157d5ab30d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9e5ff8aeceb0bb9b0a4878e2186af62" id="r_ad9e5ff8aeceb0bb9b0a4878e2186af62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">HttpService::FilterMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#ad9e5ff8aeceb0bb9b0a4878e2186af62">filters</a></td></tr>
+<tr class="separator:ad9e5ff8aeceb0bb9b0a4878e2186af62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p>Http 服务器 </p>
+<div class="textblock"><p>Http 服务器 </p><dl class="section note"><dt>注解</dt><dd>调用优先级 Filter &gt; Mount Point(Filter) &gt; Controller = Servlet，互相独立不可转换 </dd></dl>
 </div><h2 class="groupheader">成员函数说明</h2>
 <a id="a1037814df498919defd79f24d512dba6" name="a1037814df498919defd79f24d512dba6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1037814df498919defd79f24d512dba6">&#9670;&#160;</a></span>regController()</h2>
@@ -209,6 +210,43 @@ template&lt;class CTL , class... ARGS&gt; </div>
 </dl>
 
 <p class="reference">引用了 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#aa38b189b6298db97b0d9bb979692a889">controllers</a> , 以及 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a90f4ce101942bc898799157d5ab30d50">servlets</a>.</p>
+
+</div>
+</div>
+<a id="a1173e35a0b690843457fbfa53863e46d" name="a1173e35a0b690843457fbfa53863e46d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1173e35a0b690843457fbfa53863e46d">&#9670;&#160;</a></span>regFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HttpServer::regFilter </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uri_prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#aa1c56b2902e556e14b708ae2ff6f78c3">net::http::Servlet::Callback</a> &amp;&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>注册过滤器 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uri_prefix</td><td>URI 前缀 </td></tr>
+    <tr><td class="paramname">callback</td><td>回调函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">引用了 <a class="el" href="darwin_2system_2_file_notifier_8cpp.html#a151d411a92b021e1788a13b9e8818d8e">callback()</a> , 以及 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#ad9e5ff8aeceb0bb9b0a4878e2186af62">filters</a>.</p>
 
 </div>
 </div>
@@ -282,7 +320,7 @@ template&lt;class CTL , class... ARGS&gt; </div>
   </dd>
 </dl>
 
-<p class="reference">引用了 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a05bb5b16a08b8f5ff268c7168f2d53e5">sese::service::http::v3::HttpService::create()</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#aa2054ed8d256fdeb77d5cd92b6ad74a3">keepalive</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a6ad9ede5947c9189cec3c9bfcdf599cc">mount_points</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a3d1cdd1a2c7efc62303b7acfdc43779c">name</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a1d5b1684618ad2d1bcdc4984887dc9d6">services</a> , 以及 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a90f4ce101942bc898799157d5ab30d50">servlets</a>.</p>
+<p class="reference">引用了 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#acd9e3f453f615eea0ce63805b79529c6">sese::service::http::v3::HttpService::create()</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#ad9e5ff8aeceb0bb9b0a4878e2186af62">filters</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#aa2054ed8d256fdeb77d5cd92b6ad74a3">keepalive</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a6ad9ede5947c9189cec3c9bfcdf599cc">mount_points</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a3d1cdd1a2c7efc62303b7acfdc43779c">name</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a1d5b1684618ad2d1bcdc4984887dc9d6">services</a> , 以及 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a90f4ce101942bc898799157d5ab30d50">servlets</a>.</p>
 
 </div>
 </div>
@@ -429,6 +467,30 @@ template&lt;class CTL , class... ARGS&gt; </div>
 
 </div>
 </div>
+<a id="ad9e5ff8aeceb0bb9b0a4878e2186af62" name="ad9e5ff8aeceb0bb9b0a4878e2186af62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9e5ff8aeceb0bb9b0a4878e2186af62">&#9670;&#160;</a></span>filters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">HttpService::FilterMap</a> sese::service::http::v3::HttpServer::filters</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a1173e35a0b690843457fbfa53863e46d">regFilter()</a> , 以及 <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html#a0568326367b5c0c66e3fa519504fc75c">regService()</a>.</p>
+
+</div>
+</div>
 <a id="aa2054ed8d256fdeb77d5cd92b6ad74a3" name="aa2054ed8d256fdeb77d5cd92b6ad74a3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa2054ed8d256fdeb77d5cd92b6ad74a3">&#9670;&#160;</a></span>keepalive</h2>
 
@@ -559,7 +621,7 @@ template&lt;class CTL , class... ARGS&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1http_1_1v3.html">v3</a></li><li class="navelem"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_server.html">HttpServer</a></li>
-    <li class="footer">生成于 2024年 六月 15日 星期六 14:53:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 19日 星期三 07:49:55 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
