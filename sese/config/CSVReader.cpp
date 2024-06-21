@@ -1,6 +1,5 @@
 #include "sese/config/CSVReader.h"
-
-#include <sstream>
+#include "sese/text/StringBuilder.h"
 
 sese::CSVReader::CSVReader(InputStream *source, char split_char) noexcept {
     CSVReader::source = source;
@@ -9,7 +8,7 @@ sese::CSVReader::CSVReader(InputStream *source, char split_char) noexcept {
 
 sese::CSVReader::Row sese::CSVReader::read() noexcept {
     Row row;
-    std::stringstream builder;
+    text::StringBuilder builder;
 
     char ch = 0;
     size_t quot = 0;
@@ -28,28 +27,28 @@ sese::CSVReader::Row sese::CSVReader::read() noexcept {
                 quot += 1;
             } else if (ch == CSVReader::splitChar) {
                 // 切割元素
-                row.emplace_back(builder.str());
-                builder.str("");
+                row.emplace_back(builder.toString());
+                builder.clear();
             } else if (ch == '\r') {
                 // 换行 - \r\n
                 if (source->read(&ch, 1) != 0) {
-                    row.emplace_back(builder.str());
-                    builder.str("");
+                    row.emplace_back(builder.toString());
+                    builder.clear();
                     return row;
                 }
             } else if (ch == '\n') {
                 // 换行 - \n
-                row.emplace_back(builder.str());
-                builder.str("");
+                row.emplace_back(builder.toString());
+                builder.clear();
                 return row;
             } else {
                 builder << ch;
             }
         }
     }
-    if (builder.rdbuf()->in_avail() != 0 || ch == ',') {
-        row.emplace_back(builder.str());
-        builder.str("");
+    if (!builder.empty() || ch == ',') {
+        row.emplace_back(builder.toString());
+        builder.clear();
     }
     return row;
 }

@@ -17,10 +17,10 @@
 #include "sese/net/http/HPackUtil.h"
 #include "sese/net/http/HPACK.h"
 #include "sese/text/DateTimeFormatter.h"
+#include "sese/text/StringBuilder.h"
 
 #include <cmath>
 #include <algorithm>
-#include <sstream>
 
 #ifdef _WIN32
 #pragma warning(disable : 4996)
@@ -485,7 +485,7 @@ size_t HPackUtil::encodeString(OutputStream *dest, const std::string &str) noexc
 }
 
 std::string HPackUtil::buildCookieString(const Cookie::Ptr &cookie) noexcept {
-    std::stringstream stream;
+    text::StringBuilder stream;
     const std::string &name = cookie->getName();
     const std::string &value = cookie->getValue();
     stream << name << "=" << value;
@@ -502,7 +502,7 @@ std::string HPackUtil::buildCookieString(const Cookie::Ptr &cookie) noexcept {
 
     uint64_t max_age = cookie->getMaxAge();
     if (max_age > 0) {
-        stream << "; Max-Age=" << max_age;
+        stream << "; Max-Age=" << std::to_string(max_age);
     } else {
         uint64_t expires = cookie->getExpires();
         if (expires > 0) {
@@ -522,5 +522,5 @@ std::string HPackUtil::buildCookieString(const Cookie::Ptr &cookie) noexcept {
         stream << "; HttpOnly";
     }
 
-    return stream.str();
+    return stream.toString();
 }
