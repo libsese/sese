@@ -1,6 +1,6 @@
 #include <sese/internal/db/impl/pgsql/PostgresDriverInstanceImpl.h>
 #include <sese/internal/db/impl/pgsql/PostgresResultSetImpl.h>
-#include <sstream>
+#include <sese/text/StringBuilder.h>
 
 using namespace sese::db;
 
@@ -69,17 +69,17 @@ int64_t impl::PostgresDriverInstanceImpl::executeUpdate(const char *sql) noexcep
 
 PreparedStatement::Ptr impl::PostgresDriverInstanceImpl::createStatement(const char *sql) noexcept {
     int count = 0;
-    std::stringstream string_builder;
+    text::StringBuilder string_builder;
     for (size_t i = 0; i < strlen(sql); ++i) {
         if (sql[i] == '?') {
             count++;
-            string_builder << '$' << count;
+            string_builder << '$' << std::to_string(count);
         } else {
             string_builder << sql[i];
         }
     }
 
-    std::string stmt_string = string_builder.str();
+    std::string stmt_string = string_builder.toString();
     std::uniform_int_distribution<int> discrete_distribution(1, 65535);
     auto stmt_name = "sese_stmt_" + std::to_string(discrete_distribution(rd));
 

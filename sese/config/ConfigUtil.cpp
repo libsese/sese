@@ -1,6 +1,6 @@
 #include "sese/config/ConfigUtil.h"
+#include "sese/text/StringBuilder.h"
 
-#include <sstream>
 #include <regex>
 
 namespace sese {
@@ -101,10 +101,10 @@ bool ConfigUtil::write2(const ConfigObject::Ptr &config_file, io::OutputStream *
 std::string ConfigUtil::readLine(io::InputStream *input) {
     size_t count = 0;
     char ch;
-    std::stringstream stream;
+    text::StringBuilder stream;
     while (true) {
         if (const auto SUCCESS = input->read(&ch, 1); SUCCESS < 1) {
-            return stream.str();
+            return stream.toString();
         }
         if (ch == '\r') {
         } else if (ch != '\n') {
@@ -112,7 +112,7 @@ std::string ConfigUtil::readLine(io::InputStream *input) {
             count += 1;
         } else {
             if (count > 0) {
-                return stream.str();
+                return stream.toString();
             }
         }
     }
