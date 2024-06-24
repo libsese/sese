@@ -157,8 +157,10 @@ Public 类型</h2></td></tr>
 <tr class="separator:ad871fe920e7f41dbe7c519f7f199ef6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6a8fe7f09c462f43ab85e48456fbf63" id="r_ae6a8fe7f09c462f43ab85e48456fbf63"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#ae6a8fe7f09c462f43ab85e48456fbf63">SSLContextPtr</a> = std::unique_ptr&lt; <a class="el" href="classsese_1_1security_1_1_s_s_l_context.html">security::SSLContext</a> &gt;</td></tr>
 <tr class="separator:ae6a8fe7f09c462f43ab85e48456fbf63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76297ba3fab47a9602ef5c2967865977" id="r_a76297ba3fab47a9602ef5c2967865977"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">FilterMap</a> = std::unordered_map&lt; std::string, <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#aa1c56b2902e556e14b708ae2ff6f78c3">net::http::Servlet::Callback</a> &gt;</td></tr>
-<tr class="separator:a76297ba3fab47a9602ef5c2967865977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ab9799313b893623c9a79d96081d66d" id="r_a0ab9799313b893623c9a79d96081d66d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a0ab9799313b893623c9a79d96081d66d">FilterCallback</a> = std::function&lt; bool(<a class="el" href="classsese_1_1net_1_1http_1_1_request.html">net::http::Request</a> &amp;, <a class="el" href="classsese_1_1net_1_1http_1_1_response.html">net::http::Response</a> &amp;)&gt;</td></tr>
+<tr class="separator:a0ab9799313b893623c9a79d96081d66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fc474b14127c478c49266fd014defad" id="r_a3fc474b14127c478c49266fd014defad"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a3fc474b14127c478c49266fd014defad">FilterMap</a> = std::unordered_map&lt; std::string, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a0ab9799313b893623c9a79d96081d66d">FilterCallback</a> &gt;</td></tr>
+<tr class="separator:a3fc474b14127c478c49266fd014defad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ef9d3b06ecc26dbbb9fd1ce1b311a71" id="r_a2ef9d3b06ecc26dbbb9fd1ce1b311a71"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2ef9d3b06ecc26dbbb9fd1ce1b311a71">MountPointMap</a> = std::unordered_map&lt; std::string, std::string &gt;</td></tr>
 <tr class="separator:a2ef9d3b06ecc26dbbb9fd1ce1b311a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87af97e5e650afaebd966a82778ccae8" id="r_a87af97e5e650afaebd966a82778ccae8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8">ServletMap</a> = std::unordered_map&lt; std::string, <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html">net::http::Servlet</a> &gt;</td></tr>
@@ -169,12 +171,12 @@ Public 类型</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
-<tr class="memitem:acd9e3f453f615eea0ce63805b79529c6" id="r_acd9e3f453f615eea0ce63805b79529c6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#ad871fe920e7f41dbe7c519f7f199ef6e">HttpService::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#acd9e3f453f615eea0ce63805b79529c6">create</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a1725b6e7184e92080007b60d5b867d59">address</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#ae6a8fe7f09c462f43ab85e48456fbf63">SSLContextPtr</a> <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a7f365fa32d16c4aabbcb843650f5a358">ssl_context</a>, uint32_t <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a745b2df3bd92b7f73a8d37c42adc52e6">keepalive</a>, std::string &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a784a051a9a501708919bbfe9c913fadb">serv_name</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2ef9d3b06ecc26dbbb9fd1ce1b311a71">MountPointMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2d5889300444f7f46f3ed094ca428a9b">mount_points</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8">ServletMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a6bd7d84c34fa51f7766a36173532281d">servlets</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">FilterMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#adf77ce98da80a70e1271bada3636b68a">filters</a>)</td></tr>
+<tr class="memitem:acd9e3f453f615eea0ce63805b79529c6" id="r_acd9e3f453f615eea0ce63805b79529c6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#ad871fe920e7f41dbe7c519f7f199ef6e">HttpService::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#acd9e3f453f615eea0ce63805b79529c6">create</a> (const <a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a1725b6e7184e92080007b60d5b867d59">address</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#ae6a8fe7f09c462f43ab85e48456fbf63">SSLContextPtr</a> <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a7f365fa32d16c4aabbcb843650f5a358">ssl_context</a>, uint32_t <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a745b2df3bd92b7f73a8d37c42adc52e6">keepalive</a>, std::string &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a784a051a9a501708919bbfe9c913fadb">serv_name</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2ef9d3b06ecc26dbbb9fd1ce1b311a71">MountPointMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2d5889300444f7f46f3ed094ca428a9b">mount_points</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8">ServletMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a6bd7d84c34fa51f7766a36173532281d">servlets</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a3fc474b14127c478c49266fd014defad">FilterMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#adf77ce98da80a70e1271bada3636b68a">filters</a>)</td></tr>
 <tr class="separator:acd9e3f453f615eea0ce63805b79529c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 成员函数</h2></td></tr>
-<tr class="memitem:a4d2620e1433f9bc2c76d67c3a4521846" id="r_a4d2620e1433f9bc2c76d67c3a4521846"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a4d2620e1433f9bc2c76d67c3a4521846">HttpService</a> (<a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a1725b6e7184e92080007b60d5b867d59">address</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#ae6a8fe7f09c462f43ab85e48456fbf63">SSLContextPtr</a> <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a7f365fa32d16c4aabbcb843650f5a358">ssl_context</a>, uint32_t <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a745b2df3bd92b7f73a8d37c42adc52e6">keepalive</a>, std::string &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a784a051a9a501708919bbfe9c913fadb">serv_name</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2ef9d3b06ecc26dbbb9fd1ce1b311a71">MountPointMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2d5889300444f7f46f3ed094ca428a9b">mount_points</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8">ServletMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a6bd7d84c34fa51f7766a36173532281d">servlets</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">FilterMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#adf77ce98da80a70e1271bada3636b68a">filters</a>)</td></tr>
+<tr class="memitem:a4d2620e1433f9bc2c76d67c3a4521846" id="r_a4d2620e1433f9bc2c76d67c3a4521846"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a4d2620e1433f9bc2c76d67c3a4521846">HttpService</a> (<a class="el" href="classsese_1_1net_1_1_i_p_address.html#ade090a38545f6d26aa5ab6490eedd11e">net::IPAddress::Ptr</a> <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a1725b6e7184e92080007b60d5b867d59">address</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#ae6a8fe7f09c462f43ab85e48456fbf63">SSLContextPtr</a> <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a7f365fa32d16c4aabbcb843650f5a358">ssl_context</a>, uint32_t <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a745b2df3bd92b7f73a8d37c42adc52e6">keepalive</a>, std::string &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a784a051a9a501708919bbfe9c913fadb">serv_name</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2ef9d3b06ecc26dbbb9fd1ce1b311a71">MountPointMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a2d5889300444f7f46f3ed094ca428a9b">mount_points</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8">ServletMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a6bd7d84c34fa51f7766a36173532281d">servlets</a>, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a3fc474b14127c478c49266fd014defad">FilterMap</a> &amp;<a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#adf77ce98da80a70e1271bada3636b68a">filters</a>)</td></tr>
 <tr class="separator:a4d2620e1433f9bc2c76d67c3a4521846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -193,7 +195,7 @@ Protected 属性</h2></td></tr>
 <tr class="separator:a2d5889300444f7f46f3ed094ca428a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bd7d84c34fa51f7766a36173532281d" id="r_a6bd7d84c34fa51f7766a36173532281d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a87af97e5e650afaebd966a82778ccae8">ServletMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a6bd7d84c34fa51f7766a36173532281d">servlets</a></td></tr>
 <tr class="separator:a6bd7d84c34fa51f7766a36173532281d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf77ce98da80a70e1271bada3636b68a" id="r_adf77ce98da80a70e1271bada3636b68a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">FilterMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#adf77ce98da80a70e1271bada3636b68a">filters</a></td></tr>
+<tr class="memitem:adf77ce98da80a70e1271bada3636b68a" id="r_adf77ce98da80a70e1271bada3636b68a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a3fc474b14127c478c49266fd014defad">FilterMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#adf77ce98da80a70e1271bada3636b68a">filters</a></td></tr>
 <tr class="separator:adf77ce98da80a70e1271bada3636b68a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -213,14 +215,28 @@ Protected 属性</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>Http 服务接口 </p>
 </div><h2 class="groupheader">成员类型定义说明</h2>
-<a id="a76297ba3fab47a9602ef5c2967865977" name="a76297ba3fab47a9602ef5c2967865977"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76297ba3fab47a9602ef5c2967865977">&#9670;&#160;</a></span>FilterMap</h2>
+<a id="a0ab9799313b893623c9a79d96081d66d" name="a0ab9799313b893623c9a79d96081d66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab9799313b893623c9a79d96081d66d">&#9670;&#160;</a></span>FilterCallback</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">sese::service::http::v3::HttpService::FilterMap</a> =  std::unordered_map&lt;std::string, <a class="el" href="classsese_1_1net_1_1http_1_1_servlet.html#aa1c56b2902e556e14b708ae2ff6f78c3">net::http::Servlet::Callback</a>&gt;</td>
+          <td class="memname">using <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a0ab9799313b893623c9a79d96081d66d">sese::service::http::v3::HttpService::FilterCallback</a> =  std::function&lt;bool(<a class="el" href="classsese_1_1net_1_1http_1_1_request.html">net::http::Request</a> &amp;, <a class="el" href="classsese_1_1net_1_1http_1_1_response.html">net::http::Response</a> &amp;)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3fc474b14127c478c49266fd014defad" name="a3fc474b14127c478c49266fd014defad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fc474b14127c478c49266fd014defad">&#9670;&#160;</a></span>FilterMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a3fc474b14127c478c49266fd014defad">sese::service::http::v3::HttpService::FilterMap</a> =  std::unordered_map&lt;std::string, <a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a0ab9799313b893623c9a79d96081d66d">FilterCallback</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -332,7 +348,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">FilterMap</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a3fc474b14127c478c49266fd014defad">FilterMap</a> &amp;&#160;</td>
           <td class="paramname"><em>filters</em>&#160;</td>
         </tr>
         <tr>
@@ -399,7 +415,7 @@ Protected 属性</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">FilterMap</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a3fc474b14127c478c49266fd014defad">FilterMap</a> &amp;&#160;</td>
           <td class="paramname"><em>filters</em>&#160;</td>
         </tr>
         <tr>
@@ -456,7 +472,7 @@ Protected 属性</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a76297ba3fab47a9602ef5c2967865977">FilterMap</a>&amp; sese::service::http::v3::HttpService::filters</td>
+          <td class="memname"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html#a3fc474b14127c478c49266fd014defad">FilterMap</a>&amp; sese::service::http::v3::HttpService::filters</td>
         </tr>
       </table>
   </td>
@@ -624,7 +640,7 @@ Protected 属性</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service.html">service</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1http.html">http</a></li><li class="navelem"><a class="el" href="namespacesese_1_1service_1_1http_1_1v3.html">v3</a></li><li class="navelem"><a class="el" href="classsese_1_1service_1_1http_1_1v3_1_1_http_service.html">HttpService</a></li>
-    <li class="footer">生成于 2024年 六月 21日 星期五 17:08:27 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 24日 星期一 09:03:39 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -105,14 +105,14 @@ var NAVTREEINDEX =
 "classsese_1_1record_1_1_log_helper.html#ab961c52d3a50c96a317a1465855f7bef",
 "classsese_1_1security_1_1evp_1_1_decrypter.html#a6528eb66bf5507340f0d9186a7bad541",
 "classsese_1_1service_1_1_user_balance_loader.html#a1b1cb4ed910aa0a10589403574c52742",
-"classsese_1_1system_1_1_library_object.html",
-"classsese_1_1text_1_1_date_time_formatter.html#af8d4bbeeb1fc9007b6e599cda89adbe3",
-"classsese_1_1yaml_1_1_object_data.html",
-"config_2yaml_2_marco_8h.html#a9fcdb5054f0eb279931a87aab62b91b9",
-"namespacesese.html#a0f347f023b3ea7229f3527f544d9ae84",
-"native_2win_2_config_8h.html#a4a3a0b3605fd3b2336455062ee8e25f0",
-"structsese_1_1event_1_1_base_event.html",
-"structsese_1_1plugin_1_1_module_info.html#a052106f3fb0d1a61bcfe3dfdfda97b9d"
+"classsese_1_1system_1_1_i_p_c_channel.html#affc2f9f54afd5d9f3610c4c74112daeb",
+"classsese_1_1text_1_1_date_time_formatter.html#af3908a3fffa546234116ec7af0dc63a1",
+"classsese_1_1yaml_1_1_data.html#af5cd45d8984776276a9251f9a76df8e0",
+"config_2yaml_2_marco_8h.html#a8fa843f0766c006c7193541c680e101e",
+"namespacesese.html#a07fae0615b50765c5b926bffd711e831",
+"native_2win_2_config_8h.html#a45342991e001e28bbf87916d92b7e09a",
+"structsese_1_1concurrent_1_1_node.html#af363a7e1a89c074a7183112fb7660202",
+"structsese_1_1plugin_1_1_module_info.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

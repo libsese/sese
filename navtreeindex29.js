@@ -1,5 +1,7 @@
 var NAVTREEINDEX29 =
 {
+"namespacesese.html#a07fae0615b50765c5b926bffd711e831":[5,7,0,91],
+"namespacesese.html#a0a951f1886af83a7d610e57a8257b834":[5,7,0,112],
 "namespacesese.html#a0f347f023b3ea7229f3527f544d9ae84":[5,7,0,90],
 "namespacesese.html#a12bdf7f3f31fb532b9a6c6630f251300":[5,7,0,95],
 "namespacesese.html#a1833da64507c8e59f6799b93d2504ec6":[5,7,0,103],
@@ -247,7 +249,5 @@ var NAVTREEINDEX29 =
 "native_2win_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678":[7,0,0,9,3,7,48],
 "native_2win_2_config_8h.html#a3f317946e043623f9d6b93dbf60e6316":[7,0,0,9,3,7,13],
 "native_2win_2_config_8h.html#a3f91f1ad503432783c7a5d1481b45419":[7,0,0,9,3,7,26],
-"native_2win_2_config_8h.html#a41d5ab3a8a05f9c5eab536c9cfba305b":[7,0,0,9,3,7,23],
-"native_2win_2_config_8h.html#a45342991e001e28bbf87916d92b7e09a":[7,0,0,9,3,7,8],
-"native_2win_2_config_8h.html#a46b83d9f6c23b1b65a8cecfd775ddaed":[7,0,0,9,3,7,17]
+"native_2win_2_config_8h.html#a41d5ab3a8a05f9c5eab536c9cfba305b":[7,0,0,9,3,7,23]
 };
