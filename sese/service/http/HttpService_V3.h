@@ -20,7 +20,8 @@ class HttpService : public Service {
 public:
     using Ptr = std::shared_ptr<HttpService>;
     using SSLContextPtr = std::unique_ptr<security::SSLContext>;
-    using FilterMap = std::unordered_map<std::string, net::http::Servlet::Callback>;
+    using FilterCallback = std::function<bool(net::http::Request &, net::http::Response &)>;
+    using FilterMap = std::unordered_map<std::string, FilterCallback>;
     using MountPointMap = std::unordered_map<std::string, std::string>;
     using ServletMap = std::unordered_map<std::string, net::http::Servlet>;
 

@@ -60,9 +60,17 @@ int main(int argc, char **argv) {
     server.regController<MyController>();
     server.regService(sese::net::IPv4Address::localhost(9090), std::move(ssl));
     server.regService(sese::net::IPv4Address::localhost(9091), nullptr);
-    server.regFilter("/data", [](sese::net::http::Request &req, sese::net::http::Response &resp) {
-        SESE_INFO("filter /data: %s", req.getUri().c_str());
+    // 返回值代表是否需要继续作为普通请求处理，此处 false 代表直接返回并响应
+    server.regFilter("/data1", [](sese::net::http::Request &req, sese::net::http::Response &resp) {
+        SESE_INFO("filter /data1: %s", req.getUri().c_str());
         resp.setCode(404);
+        return false;
+    });
+    // true 代表继续处理
+    server.regFilter("/data2", [](sese::net::http::Request &req, sese::net::http::Response &resp) {
+        SESE_INFO("filter /data2: %s", req.getUri().c_str());
+        resp.set("myfilter", "data2");
+        return true;
     });
 
     server.startup();

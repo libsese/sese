@@ -13,7 +13,7 @@ void HttpServer::regServlet(const net::http::Servlet &servlet) {
     this->servlets.emplace(servlet.getUri(), servlet);
 }
 
-void HttpServer::regFilter(const std::string &uri_prefix, const net::http::Servlet::Callback &callback) {
+void HttpServer::regFilter(const std::string &uri_prefix, const HttpService::FilterCallback &callback) {
     this->filters[uri_prefix] = callback;
 }
 
