@@ -87,8 +87,11 @@ void HttpServiceImpl::handleRequest(const HttpConnection::Ptr &conn) {
     for (auto &&[uri_prefix, callback]: filters) {
         if (text::StringBuilder::startsWith(req.getUri(), uri_prefix)) {
             conn->conn_type = HttpConnection::ConnType::FILTER;
-            callback(req, resp);
-            goto uni_handle;
+            if (callback(req, resp)) {
+                conn->conn_type = HttpConnection::ConnType::NORMAL;
+            } else {
+                goto uni_handle;
+            }
         }
     }
 

@@ -28,8 +28,8 @@ public:
 
     /// 注册过滤器
     /// \param uri_prefix URI 前缀
-    /// \param callback 回调函数
-    void regFilter(const std::string &uri_prefix, const net::http::Servlet::Callback &callback);
+    /// \param callback 回调函数，函数返回 true 需要下一步处理即继续判断之后的 Mount Point 以及 Controller 等，反之则拦截当前请求并直接响应
+    void regFilter(const std::string &uri_prefix, const HttpService::FilterCallback &callback);
 
     /// 注册 Http 应用
     /// @param servlet Http 应用
