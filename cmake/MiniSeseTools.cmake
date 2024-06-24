@@ -89,9 +89,9 @@ macro(sese_copy_dll_to_binary_path target dest)
                 POST_BUILD
                 COMMAND
                 ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:${target}> ${PROJECT_BINARY_DIR}/${dest}
+                $<TARGET_FILE:${target}> "${PROJECT_BINARY_DIR}/${dest}"
         )
-    else ()
+    elseif (${CMAKE_GENERATOR} MATCHES "Visual Studio")
         # 多配置
         add_custom_command(
                 TARGET
@@ -99,7 +99,7 @@ macro(sese_copy_dll_to_binary_path target dest)
                 POST_BUILD
                 COMMAND
                 ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:${target}> ${PROJECT_BINARY_DIR}/${dest}/$<CONFIG>
+                $<TARGET_FILE:${target}> "${PROJECT_BINARY_DIR}/${dest}/$<CONFIG>/$<TARGET_FILE_NAME:${target}>"
         )
     endif ()
 endmacro()
