@@ -146,7 +146,7 @@ bool impl::PostgresDriverInstanceImpl::rollback() noexcept {
         result = nullptr;
     }
 
-    result = PQexec(conn, "rollback;");
+    result = PQexec(conn, "ROLLBACK;");
     if (result == nullptr) {
         return false;
     }
