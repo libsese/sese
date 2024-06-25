@@ -35,10 +35,10 @@ Semaphore::Ptr Semaphore::create(std::string name, uint32_t initial_count) {
     }
     // GCOVR_EXCL_STOP
 
-    auto res = new Semaphore();
+    auto res = MAKE_UNIQUE_PRIVATE(Semaphore);
     res->semaphore = sem;
     res->sem_name = std::move(name);
-    return std::unique_ptr<Semaphore>(res);
+    return res;
 }
 
 Semaphore::~Semaphore() {

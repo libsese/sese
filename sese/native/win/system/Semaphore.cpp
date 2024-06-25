@@ -31,9 +31,9 @@ Semaphore::Ptr Semaphore::create(std::string name, uint32_t initial_count) {
         return nullptr;
     }
 
-    auto res = new Semaphore();
+    auto res = MAKE_UNIQUE_PRIVATE(Semaphore);
     res->hSemaphore = handle;
-    return std::unique_ptr<Semaphore>(res);
+    return res;
 }
 
 Semaphore::~Semaphore() {

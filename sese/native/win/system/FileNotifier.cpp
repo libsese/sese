@@ -1,4 +1,5 @@
 #include "sese/system/FileNotifier.h"
+#include "sese/util/Memory.h"
 
 #include <cassert>
 #include <windows.h>
@@ -24,12 +25,12 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
     const auto overlapped = new OVERLAPPED{};
     overlapped->hEvent = CreateEventA(nullptr, false, false, nullptr);
 
-    const auto NOTIFIER = new FileNotifier;
-    NOTIFIER->file_handle = FILE_HANDLE;
-    NOTIFIER->overlapped = overlapped;
-    NOTIFIER->option = option;
+    auto notifier = MAKE_UNIQUE_PRIVATE(FileNotifier);
+    notifier->file_handle = FILE_HANDLE;
+    notifier->overlapped = overlapped;
+    notifier->option = option;
 
-    return std::unique_ptr<FileNotifier>(NOTIFIER);
+    return notifier;
 }
 
 FileNotifier::~FileNotifier() noexcept { if (this->th) { shutdown(); } }

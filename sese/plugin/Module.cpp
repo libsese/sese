@@ -26,12 +26,12 @@ sese::plugin::Module::Ptr sese::plugin::Module::open(const std::string &path) no
     //    return nullptr;
     // }
 
-    auto m = new Module;
+    auto m = MAKE_UNIQUE_PRIVATE(Module);
     m->object = obj;
     m->info = info;
     m->factory = factory;
     m->factory->init();
-    return std::unique_ptr<Module>(m);
+    return m;
 }
 
 #undef STR2

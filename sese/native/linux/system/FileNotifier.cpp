@@ -29,11 +29,11 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
         return nullptr;
     }
 
-    auto notifier = new FileNotifier;
+    auto notifier = MAKE_UNIQUE_PRIVATE(FileNotifier);
     notifier->option = option;
     notifier->inotify_fd = inotify_fd;
     notifier->watch_fd = watch_fd;
-    return std::unique_ptr<FileNotifier>(notifier);
+    return notifier;
 }
 
 FileNotifier::~FileNotifier() noexcept {
