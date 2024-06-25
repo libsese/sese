@@ -7,7 +7,7 @@ LibraryObject::Ptr LibraryObject::create(const std::string &name) noexcept {
     if (handle == nullptr) {
         return nullptr;
     } else {
-        return std::shared_ptr<LibraryObject>(new LibraryObject(handle));
+        return MAKE_SHARED_PRIVATE(LibraryObject, handle);
     }
 }
 

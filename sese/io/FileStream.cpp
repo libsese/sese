@@ -60,17 +60,17 @@ FileStream::Ptr FileStream::create(const std::string &file_path, const char *mod
     if (fopen_s(&file, file_path.c_str(), mode) != 0) {
         return nullptr;
     } else {
-        auto stream = new FileStream;
+        auto stream = MAKE_SHARED_PRIVATE(FileStream);
         stream->file = file;
-        return std::shared_ptr<FileStream>(stream);
+        return stream;
     }
 #else
     FILE *file = nullptr;
     file = fopen(file_path.c_str(), mode);
     if (file) {
-        auto stream = new FileStream();
+        auto stream = MAKE_SHARED_PRIVATE(FileStream);
         stream->file = file;
-        return std::shared_ptr<FileStream>(stream);
+        return stream;
     } else {
         return nullptr;
     }

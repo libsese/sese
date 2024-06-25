@@ -13,10 +13,10 @@ std::shared_ptr<sese::text::TextReader> TextReader::create(const char *u8str) no
     }
 
     auto buffered_stream = std::make_shared<io::BufferedStream>(file_stream);
-    auto reader = new TextReader;
+    auto reader = MAKE_SHARED_PRIVATE(TextReader);
     reader->fileStream = file_stream;
     reader->bufferedStream = buffered_stream;
-    return std::shared_ptr<sese::text::TextReader>(reader);
+    return reader;
 }
 
 String TextReader::readLine() {
