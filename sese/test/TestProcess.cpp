@@ -1,5 +1,6 @@
 #include "sese/record/Marco.h"
 #include "sese/system/Process.h"
+#include "sese/system/ProcessBuilder.h"
 #include "gtest/gtest.h"
 
 TEST(TestProcess, EXEC_LS) {
@@ -11,16 +12,26 @@ TEST(TestProcess, EXEC_LS) {
     char cmd[] = {"ls /"};
 #endif
 
-    auto a = sese::system::Process::create(cmd);
-    ASSERT_TRUE(a != nullptr);
-    auto pid = a->getProcessId();
+    auto process = sese::system::Process::create(cmd);
+    ASSERT_TRUE(process != nullptr);
+    auto pid = process->getProcessId();
     SESE_INFO("sub process pid is %d", pid);
-    auto code = a->wait();
-    ASSERT_TRUE(code == 0);
+    EXPECT_EQ(0, process->wait());
 }
 
 TEST(TestProcess, PID) {
     auto pid = sese::system::Process::getCurrentProcessId();
     EXPECT_NE(pid, 0);
     SESE_INFO("current pid is %d", pid);
+}
+
+#include "sese/system/CommandLine.h"
+
+TEST(TestProcess, BUILDER) {
+    using sese::system::CommandLine;
+    using sese::system::ProcessBuilder;
+    auto process = ProcessBuilder(CommandLine::getArgv()[0])
+                           .args("--help")
+                           .create();
+    EXPECT_EQ(0, process->wait());
 }
