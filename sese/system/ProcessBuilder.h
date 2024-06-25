@@ -24,12 +24,27 @@
 #include <sese/system/Process.h>
 
 namespace sese::system {
+/// @brief 进程构建器
 class API ProcessBuilder {
 public:
+    /**
+     * @brief 根据进程可执行文件路径初始化进程构建器
+     * @param exec 可执行文件路径
+     */
     explicit ProcessBuilder(const std::string &exec);
 
+    /**
+     * @brief 为构建器指定单个参数
+     * @param arg 参数
+     * @return ProcessBuilder&&
+     */
     ProcessBuilder &&args(const std::string &arg) &&;
 
+    /**
+     * @brief 构建进程
+     * @see sese::system::Process::create()
+     * @return Process::Ptr
+     */
     Process::Ptr create();
 
 private:
