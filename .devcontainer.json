@@ -13,7 +13,8 @@
         "ms-python.vscode-pylance",
         "ms-python.python",
         "EditorConfig.EditorConfig",
-        "github.vscode-github-actions"
+        "github.vscode-github-actions",
+        "jeff-hykin.better-cpp-syntax"
       ]
     }
   }
