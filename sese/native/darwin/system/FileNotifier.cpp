@@ -1,4 +1,5 @@
 #include "sese/system/FileNotifier.h"
+#include "sese/util/Memory.h"
 
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreServices/CoreServices.h>
@@ -60,7 +61,7 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
             &kCFTypeArrayCallBacks
     );
 
-    auto notifier = new FileNotifier;
+    auto notifier = MAKE_UNIQUE_PRIVATE(FileNotifier);
 
     FSEventStreamContext context;
     context.version = 0;
@@ -85,7 +86,7 @@ FileNotifier::Ptr FileNotifier::create(const std::string &path, FileNotifyOption
             (dispatch_queue_t) notifier->queue
     );
 
-    return std::unique_ptr<FileNotifier>(notifier);
+    return notifier;
 }
 
 FileNotifier::~FileNotifier() noexcept {

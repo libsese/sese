@@ -12,7 +12,7 @@ sese::net::dns::DnsServer::Ptr sese::net::dns::DnsServer::create(const sese::net
 
     socket->setNonblocking();
 
-    auto ptr = new DnsServer;
+    auto ptr = MAKE_UNIQUE_PRIVATE(DnsServer);
     ptr->socket = socket;
 
     for (auto &item: config->hostIPv4Map) {
@@ -36,7 +36,7 @@ sese::net::dns::DnsServer::Ptr sese::net::dns::DnsServer::create(const sese::net
         ptr->hostIPv6Map[item.first] = std::string((const char *) buffer, 16);
     }
 
-    return std::unique_ptr<DnsServer>(ptr);
+    return ptr;
 }
 
 sese::net::dns::DnsServer::~DnsServer() noexcept {

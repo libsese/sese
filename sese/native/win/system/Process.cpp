@@ -25,10 +25,10 @@ Process::Ptr Process::create(const char *command) noexcept {
     );
 
     if (rt) {
-        auto p = new Process;
+        auto p = MAKE_UNIQUE_PRIVATE(Process);
         p->startup_info = startup_info;
         p->process_info = process_info;
-        return std::unique_ptr<Process>(p);
+        return p;
     } else {
         delete startup_info;
         delete process_info;

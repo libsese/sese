@@ -48,12 +48,12 @@ IPCChannel::Ptr IPCChannel::create(const std::string &name, size_t buffer_size) 
 
     sem->unlock();
 
-    auto ipc = new IPCChannel();
+    auto ipc = MAKE_UNIQUE_PRIVATE(IPCChannel);
     ipc->mem_info = mem_info;
     ipc->buffer = buffer + sizeof(MemInfo);
     ipc->semaphore = std::move(sem);
     ipc->shared_memory = std::move(mem);
-    return std::unique_ptr<IPCChannel>(ipc);
+    return ipc;
 }
 
 IPCChannel::Ptr IPCChannel::use(const std::string &name) {
@@ -73,12 +73,12 @@ IPCChannel::Ptr IPCChannel::use(const std::string &name) {
     auto buffer = static_cast<char *>(mem->getBuffer());
     auto mem_info = reinterpret_cast<MemInfo *>(buffer + 0);
 
-    auto ipc = new IPCChannel();
+    auto ipc = MAKE_UNIQUE_PRIVATE(IPCChannel);
     ipc->mem_info = mem_info;
     ipc->buffer = buffer + sizeof(MemInfo);
     ipc->semaphore = std::move(sem);
     ipc->shared_memory = std::move(mem);
-    return std::unique_ptr<IPCChannel>(ipc);
+    return ipc;
 }
 
 #define HEADER_SIZE (sizeof(MessageIterator) - sizeof(uint32_t) * 2)
