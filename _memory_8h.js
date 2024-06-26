@@ -1,5 +1,7 @@
 var _memory_8h =
 [
+    [ "MAKE_SHARED_PRIVATE", "_memory_8h.html#ad672a32e754105785509dd843a3cb4bc", null ],
+    [ "MAKE_UNIQUE_PRIVATE", "_memory_8h.html#abb282cca1b3412581353e21215124b5f", null ],
     [ "SharedType", "_memory_8h.html#a3c0b397bf6dba3d376addefceed44229", null ],
     [ "UniqueType", "_memory_8h.html#afa5d72450460b03caeebcc9079b37490", null ],
     [ "WeakType", "_memory_8h.html#aab2b0ee9422ee0726c17faabb20b2641", null ],

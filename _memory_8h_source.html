@@ -167,43 +167,47 @@ $(document).ready(function(){initNavTree('_memory_8h_source.html',''); initResiz
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
 </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURN_TYPE, <span class="keyword">typename</span> INIT_TYPE&gt;</div>
-<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="namespacesese.html#a7749d6eb61e7232fd54bbf262da2e91a">   57</a></span><a class="code hl_typedef" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">SharedType&lt;RETURN_TYPE&gt;</a> <a class="code hl_function" href="namespacesese.html#a7749d6eb61e7232fd54bbf262da2e91a">makeSharedFromList</a>(std::initializer_list&lt;INIT_TYPE&gt; list) {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">return</span> std::make_shared&lt;RETURN_TYPE&gt;(std::move(list));</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="_memory_8h.html#ad672a32e754105785509dd843a3cb4bc">   49</a></span><span class="preprocessor">#define MAKE_SHARED_PRIVATE(RETURN_TYPE, ...) sese::SharedType&lt;RETURN_TYPE&gt;(new RETURN_TYPE(__VA_ARGS__))</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">   51</a></span><span class="preprocessor">#define MAKE_UNIQUE_PRIVATE(RETURN_TYPE, ...) sese::UniqueType&lt;RETURN_TYPE&gt;(new RETURN_TYPE(__VA_ARGS__))</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURN_TYPE, <span class="keyword">typename</span> INIT_TYPE&gt;</div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespacesese.html#a7749d6eb61e7232fd54bbf262da2e91a">   61</a></span><a class="code hl_typedef" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">SharedType&lt;RETURN_TYPE&gt;</a> <a class="code hl_function" href="namespacesese.html#a7749d6eb61e7232fd54bbf262da2e91a">makeSharedFromList</a>(std::initializer_list&lt;INIT_TYPE&gt; list) {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">return</span> std::make_shared&lt;RETURN_TYPE&gt;(std::move(list));</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
 </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURN_TYPE, <span class="keyword">typename</span> INIT_TYPE&gt;</div>
-<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="namespacesese.html#ae4ef3a5bd39012ba08ea948e8fd22fa7">   69</a></span><a class="code hl_typedef" href="namespacesese.html#afa5d72450460b03caeebcc9079b37490">UniqueType&lt;RETURN_TYPE&gt;</a> <a class="code hl_function" href="namespacesese.html#ae4ef3a5bd39012ba08ea948e8fd22fa7">makeUniqueFromList</a>(std::initializer_list&lt;INIT_TYPE&gt; list) {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">return</span> std::make_unique&lt;RETURN_TYPE&gt;(std::move(list));</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURN_TYPE, <span class="keyword">typename</span> INIT_TYPE&gt;</div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="namespacesese.html#ae4ef3a5bd39012ba08ea948e8fd22fa7">   73</a></span><a class="code hl_typedef" href="namespacesese.html#afa5d72450460b03caeebcc9079b37490">UniqueType&lt;RETURN_TYPE&gt;</a> <a class="code hl_function" href="namespacesese.html#ae4ef3a5bd39012ba08ea948e8fd22fa7">makeUniqueFromList</a>(std::initializer_list&lt;INIT_TYPE&gt; list) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">return</span> std::make_unique&lt;RETURN_TYPE&gt;(std::move(list));</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
 </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURN_TYPE, <span class="keyword">typename</span> RAW_TYPE&gt;</div>
-<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="namespacesese.html#ae9952e668a5e895829dc9a66c7e69386">   81</a></span><span class="keyword">inline</span> <a class="code hl_typedef" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">SharedType&lt;RETURN_TYPE&gt;</a> <a class="code hl_function" href="namespacesese.html#ae9952e668a5e895829dc9a66c7e69386">dynamicPointerCast</a>(<a class="code hl_typedef" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">SharedType&lt;RAW_TYPE&gt;</a> raw_type) {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span> std::dynamic_pointer_cast&lt;RETURN_TYPE&gt;(raw_type);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURN_TYPE, <span class="keyword">typename</span> RAW_TYPE&gt;</div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="namespacesese.html#ae9952e668a5e895829dc9a66c7e69386">   85</a></span><span class="keyword">inline</span> <a class="code hl_typedef" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">SharedType&lt;RETURN_TYPE&gt;</a> <a class="code hl_function" href="namespacesese.html#ae9952e668a5e895829dc9a66c7e69386">dynamicPointerCast</a>(<a class="code hl_typedef" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">SharedType&lt;RAW_TYPE&gt;</a> raw_type) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">return</span> std::dynamic_pointer_cast&lt;RETURN_TYPE&gt;(raw_type);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
 </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURN_TYPE, <span class="keyword">typename</span> RAW_TYPE&gt;</div>
-<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespacesese.html#aa99f874dee8b31bc6cccd133826e6f87">   93</a></span><a class="code hl_typedef" href="namespacesese.html#afa5d72450460b03caeebcc9079b37490">UniqueType&lt;RETURN_TYPE&gt;</a> <a class="code hl_function" href="namespacesese.html#ae9952e668a5e895829dc9a66c7e69386">dynamicPointerCast</a>(<a class="code hl_typedef" href="namespacesese.html#afa5d72450460b03caeebcc9079b37490">UniqueType&lt;RAW_TYPE&gt;</a> &amp;raw_type) {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    RAW_TYPE *pointer = raw_type.release();</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    RETURN_TYPE *newPointer = <span class="keyword">dynamic_cast&lt;</span>RETURN_TYPE *<span class="keyword">&gt;</span>(pointer); <span class="comment">// NOLINT</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">return</span> std::unique_ptr&lt;RETURN_TYPE&gt;(newPointer);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RETURN_TYPE, <span class="keyword">typename</span> RAW_TYPE&gt;</div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="namespacesese.html#aa99f874dee8b31bc6cccd133826e6f87">   97</a></span><a class="code hl_typedef" href="namespacesese.html#afa5d72450460b03caeebcc9079b37490">UniqueType&lt;RETURN_TYPE&gt;</a> <a class="code hl_function" href="namespacesese.html#ae9952e668a5e895829dc9a66c7e69386">dynamicPointerCast</a>(<a class="code hl_typedef" href="namespacesese.html#afa5d72450460b03caeebcc9079b37490">UniqueType&lt;RAW_TYPE&gt;</a> &amp;raw_type) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    RAW_TYPE *pointer = raw_type.release();</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    RETURN_TYPE *newPointer = <span class="keyword">dynamic_cast&lt;</span>RETURN_TYPE *<span class="keyword">&gt;</span>(pointer); <span class="comment">// NOLINT</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">return</span> std::unique_ptr&lt;RETURN_TYPE&gt;(newPointer);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
 </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>} <span class="comment">// namespace sese</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_memory_8h.html">Memory.h</a></li>
-    <li class="footer">生成于 2024年 六月 24日 星期一 09:03:37 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 26日 星期三 04:13:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

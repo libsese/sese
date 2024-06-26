@@ -12,6 +12,7 @@ var classsese_1_1text_1_1_abstract_string_buffer =
     [ "append", "classsese_1_1text_1_1_abstract_string_buffer.html#aa03d0cda322d715783e98de7e6c456a0", null ],
     [ "append", "classsese_1_1text_1_1_abstract_string_buffer.html#a6d8304aa7de119d7f751372b43d9ae2f", null ],
     [ "append", "classsese_1_1text_1_1_abstract_string_buffer.html#acebd6bb587ba0c5c4908dd900d2923ad", null ],
+    [ "buf", "classsese_1_1text_1_1_abstract_string_buffer.html#a6889581ab83b897ca9ac742fde248380", null ],
     [ "clear", "classsese_1_1text_1_1_abstract_string_buffer.html#ac5022adf90d2c19c2e6056a8f962b0d0", null ],
     [ "del", "classsese_1_1text_1_1_abstract_string_buffer.html#a05b99b5a6e987ddb1939befa94b19530", null ],
     [ "delCharAt", "classsese_1_1text_1_1_abstract_string_buffer.html#ac202ff6da1181aecc46b77c4aaa79364", null ],

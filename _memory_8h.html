@@ -128,6 +128,7 @@ $(document).ready(function(){initNavTree('_memory_8h.html',''); initResizable();
 <div class="header">
   <div class="summary">
 <a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
 <a href="#typedef-members">类型定义</a> &#124;
 <a href="#func-members">函数</a>  </div>
   <div class="headertitle"><div class="title">Memory.h 文件参考</div></div>
@@ -144,6 +145,13 @@ $(document).ready(function(){initNavTree('_memory_8h.html',''); initResizable();
 命名空间</h2></td></tr>
 <tr class="memitem:namespacesese" id="r_namespacesese"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese.html">sese</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ad672a32e754105785509dd843a3cb4bc" id="r_ad672a32e754105785509dd843a3cb4bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_memory_8h.html#ad672a32e754105785509dd843a3cb4bc">MAKE_SHARED_PRIVATE</a>(RETURN_TYPE, ...)&#160;&#160;&#160;<a class="el" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">sese::SharedType</a>&lt;RETURN_TYPE&gt;(new RETURN_TYPE(__VA_ARGS__))</td></tr>
+<tr class="separator:ad672a32e754105785509dd843a3cb4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb282cca1b3412581353e21215124b5f" id="r_abb282cca1b3412581353e21215124b5f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_memory_8h.html#abb282cca1b3412581353e21215124b5f">MAKE_UNIQUE_PRIVATE</a>(RETURN_TYPE, ...)&#160;&#160;&#160;<a class="el" href="namespacesese.html#afa5d72450460b03caeebcc9079b37490">sese::UniqueType</a>&lt;RETURN_TYPE&gt;(new RETURN_TYPE(__VA_ARGS__))</td></tr>
+<tr class="separator:abb282cca1b3412581353e21215124b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 类型定义</h2></td></tr>
@@ -182,13 +190,70 @@ $(document).ready(function(){initNavTree('_memory_8h.html',''); initResizable();
 <div class="textblock"><p>内存相关 API 的包装 </p>
 <dl class="section author"><dt>作者</dt><dd>kaoru </dd></dl>
 <dl class="section date"><dt>日期</dt><dd>2022年6月5日 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="ad672a32e754105785509dd843a3cb4bc" name="ad672a32e754105785509dd843a3cb4bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad672a32e754105785509dd843a3cb4bc">&#9670;&#160;</a></span>MAKE_SHARED_PRIVATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAKE_SHARED_PRIVATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">RETURN_TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="namespacesese.html#a3c0b397bf6dba3d376addefceed44229">sese::SharedType</a>&lt;RETURN_TYPE&gt;(new RETURN_TYPE(__VA_ARGS__))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abb282cca1b3412581353e21215124b5f" name="abb282cca1b3412581353e21215124b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb282cca1b3412581353e21215124b5f">&#9670;&#160;</a></span>MAKE_UNIQUE_PRIVATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAKE_UNIQUE_PRIVATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">RETURN_TYPE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;<a class="el" href="namespacesese.html#afa5d72450460b03caeebcc9079b37490">sese::UniqueType</a>&lt;RETURN_TYPE&gt;(new RETURN_TYPE(__VA_ARGS__))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_memory_8h.html">Memory.h</a></li>
-    <li class="footer">生成于 2024年 六月 24日 星期一 09:03:38 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 26日 星期三 04:13:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

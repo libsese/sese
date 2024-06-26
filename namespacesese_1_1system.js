@@ -17,6 +17,7 @@ var namespacesese_1_1system =
     [ "Paths", "classsese_1_1system_1_1_paths.html", "classsese_1_1system_1_1_paths" ],
     [ "PathsInitiateTask", "classsese_1_1system_1_1_paths_initiate_task.html", "classsese_1_1system_1_1_paths_initiate_task" ],
     [ "Process", "classsese_1_1system_1_1_process.html", "classsese_1_1system_1_1_process" ],
+    [ "ProcessBuilder", "classsese_1_1system_1_1_process_builder.html", "classsese_1_1system_1_1_process_builder" ],
     [ "Semaphore", "classsese_1_1system_1_1_semaphore.html", "classsese_1_1system_1_1_semaphore" ],
     [ "SharedMemory", "classsese_1_1system_1_1_shared_memory.html", "classsese_1_1system_1_1_shared_memory" ],
     [ "StackInfo", "classsese_1_1system_1_1_stack_info.html", "classsese_1_1system_1_1_stack_info" ],

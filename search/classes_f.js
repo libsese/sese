@@ -9,5 +9,6 @@ var searchData=
   ['postgrespreparedstatementimpl_6',['PostgresPreparedStatementImpl',['../classsese_1_1db_1_1impl_1_1_postgres_prepared_statement_impl.html',1,'sese::db::impl']]],
   ['postgresresultsetimpl_7',['PostgresResultSetImpl',['../classsese_1_1db_1_1impl_1_1_postgres_result_set_impl.html',1,'sese::db::impl']]],
   ['preparedstatement_8',['PreparedStatement',['../classsese_1_1db_1_1_prepared_statement.html',1,'sese::db']]],
-  ['process_9',['Process',['../classsese_1_1system_1_1_process.html',1,'sese::system']]]
+  ['process_9',['Process',['../classsese_1_1system_1_1_process.html',1,'sese::system']]],
+  ['processbuilder_10',['ProcessBuilder',['../classsese_1_1system_1_1_process_builder.html',1,'sese::system']]]
 ];

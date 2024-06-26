@@ -14,6 +14,8 @@ var dir_4143f1e6dbe5f494b17fda6fba951f90 =
     [ "Paths.cpp", "_paths_8cpp.html", "_paths_8cpp" ],
     [ "Paths.h", "_paths_8h.html", "_paths_8h" ],
     [ "Process.h", "_process_8h.html", "_process_8h" ],
+    [ "ProcessBuilder.cpp", "_process_builder_8cpp.html", null ],
+    [ "ProcessBuilder.h", "_process_builder_8h.html", "_process_builder_8h" ],
     [ "Semaphore.h", "_semaphore_8h.html", "_semaphore_8h" ],
     [ "SharedMemory.h", "_shared_memory_8h.html", "_shared_memory_8h" ],
     [ "StackInfo.h", "_stack_info_8h.html", "_stack_info_8h" ]

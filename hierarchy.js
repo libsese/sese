@@ -283,6 +283,7 @@ var hierarchy =
       [ "sese::db::impl::SqlitePreparedStatementImpl", "classsese_1_1db_1_1impl_1_1_sqlite_prepared_statement_impl.html", null ]
     ] ],
     [ "sese::system::Process", "classsese_1_1system_1_1_process.html", null ],
+    [ "sese::system::ProcessBuilder", "classsese_1_1system_1_1_process_builder.html", null ],
     [ "sese::net::dns::Query", "classsese_1_1net_1_1dns_1_1_query.html", null ],
     [ "sese::RandomUtil", "classsese_1_1_random_util.html", null ],
     [ "sese::net::http::Range", "structsese_1_1net_1_1http_1_1_range.html", null ],
