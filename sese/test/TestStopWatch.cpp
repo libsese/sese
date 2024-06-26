@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/util/StopWatch.h>
 #include <sese/record/Marco.h>
 

@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #include <sese/Util.h>
-#include <sese/Log.h>
 
 #include <gtest/gtest.h>
 

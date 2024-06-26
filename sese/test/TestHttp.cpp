@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/net/Socket.h>
 #include <sese/record/Marco.h>
 #include <sese/net/http/HeaderBuilder.h>

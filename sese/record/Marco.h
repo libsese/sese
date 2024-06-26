@@ -13,6 +13,7 @@
 #include <sese/text/Util.h>
 #include <sese/thread/Thread.h>
 
+#ifdef SESE_C_LIKE_FORMAT
 #define __SESE_LOG(point_to_logger, level, format, ...)                                  \
     {                                                                                    \
         char sese_tmp_buf[RECORD_OUTPUT_BUFFER]{0};                                      \
@@ -29,6 +30,23 @@
         );                                                                               \
         point_to_logger->log(sese_tmp_event);                                            \
     }
+#else
+#define __SESE_LOG(point_to_logger, level, format, ...)              \
+    {                                                                \
+        auto sese_tmp_msg = sese::text::fmt(format, ##__VA_ARGS__);  \
+        auto sese_tmp_time = sese::DateTime::now();                  \
+        auto sese_tmp_event = std::make_shared<sese::record::Event>( \
+                sese_tmp_time,                                       \
+                level,                                               \
+                sese::Thread::getCurrentThreadName(),                \
+                sese::Thread::getCurrentThreadId(),                  \
+                SESE_FILENAME,                                       \
+                __LINE__,                                            \
+                sese_tmp_msg                                         \
+        );                                                           \
+        point_to_logger->log(sese_tmp_event);                        \
+    }
+#endif
 
 #define __SESE_RAW(point_to_logger, buffer, length) \
     point_to_logger->dump(buffer, length);          \

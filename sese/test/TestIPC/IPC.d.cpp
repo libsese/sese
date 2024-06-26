@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/system/IPC.h>
 #include <sese/record/Marco.h>
 #include <sese/util/Initializer.h>

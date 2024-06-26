@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/service/BalanceLoader.h>
 #include <sese/system/Process.h>
 #include <sese/record/Marco.h>

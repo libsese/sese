@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/net/AddressPool.h>
 #include "sese/io/OutputUtil.h"

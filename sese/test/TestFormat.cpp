@@ -15,6 +15,7 @@
 #include <gtest/gtest.h>
 
 #include <sese/text/Format.h>
+#include <sese/Log.h>
 
 using namespace sese::text;
 
@@ -26,4 +27,12 @@ TEST(TestForamt, Simple) {
     EXPECT_EQ("Hello", fmt("Hello"));
     EXPECT_EQ("World", fmt("{ Hello }", "World"));
     EXPECT_EQ("World", fmt("{ Hello \\}}", "World"));
+}
+
+TEST(TestFormat, Log) {
+    SESE_DEBUG("Hello {}", 123);
+    SESE_INFO("Hello {}", "World");
+    SESE_WARN("Hello {}");
+    SESE_ERROR("Hello \\}\\{", 3.1415);
+    SESE_RAW("Hello\n", 6);
 }

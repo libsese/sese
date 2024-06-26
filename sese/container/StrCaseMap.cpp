@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/container/StrCaseMap.h>
 #include <sese/Util.h>
 

@@ -11,6 +11,7 @@
 #include "sese/record/AbstractFormatter.h"
 #include "sese/record/Event.h"
 #include "sese/util/Initializer.h"
+
 #include <memory>
 #include <vector>
 

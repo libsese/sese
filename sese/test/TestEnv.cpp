@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/system/Environment.h>
 #include <sese/system/CommandLine.h>
 #include <sese/record/Marco.h>

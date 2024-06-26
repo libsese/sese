@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/service/http/HttpServer_V3.h>
 #include <sese/security/SSLContextBuilder.h>
 #include <sese/util/Initializer.h>
