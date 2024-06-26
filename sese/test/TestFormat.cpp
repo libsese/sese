@@ -25,4 +25,5 @@ TEST(TestForamt, Simple) {
     EXPECT_EQ("\\{} Hello", fmt("\\{} {}", c));
     EXPECT_EQ("Hello", fmt("Hello"));
     EXPECT_EQ("World", fmt("{ Hello }", "World"));
+    EXPECT_EQ("World", fmt("{ Hello \\}}", "World"));
 }

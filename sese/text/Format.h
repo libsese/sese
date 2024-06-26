@@ -12,12 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// 占位符和实际参数个数不匹配 -> 模板参数展开
-// 可自定义匹配类型 -> 模板偏特化
-// 无参 -> 直接拷贝
-// todo 简单的编译时计算
-// todo 占位符参数
-
 #pragma once
 
 #include <sese/Config.h>
@@ -74,11 +68,21 @@ void Format(FmtCtx &ctx, T arg, ARGS... args) {
     }
 }
 
+/// 字符串格式化
+/// \tparam ARGS 形参
+/// \param pattern 匹配格式
+/// \param args 实参
+/// \return 匹配完成的字符串
 template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) == 0, int>::type = 0>
 std::string fmt(std::string_view pattern, ARGS... args) {
     return { pattern.begin(), pattern.end() };
 }
 
+/// 字符串格式化
+/// \tparam ARGS 形参
+/// \param pattern 匹配格式
+/// \param args 实参
+/// \return 匹配完成的字符串
 template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) != 0, int>::type = 0>
 std::string fmt(std::string_view pattern, ARGS... args) {
     FmtCtx ctx(pattern);
