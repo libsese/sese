@@ -21,8 +21,8 @@ std::shared_ptr<sese::UniReader> sese::UniReader::create(const std::string &file
         return nullptr;
     }
     auto reader = std::make_shared<sese::io::StreamReader>(file_stream);
-    auto uni_reader = new UniReader();
+    auto uni_reader = MAKE_SHARED_PRIVATE(UniReader);
     uni_reader->fileStream = file_stream;
     uni_reader->reader = reader;
-    return std::shared_ptr<sese::UniReader>(uni_reader);
+    return uni_reader;
 }

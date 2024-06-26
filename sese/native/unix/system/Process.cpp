@@ -10,9 +10,9 @@ Process::Ptr Process::create(const char *command) noexcept {
     auto pid = fork();
     if (pid > 0) {
         // parent process
-        auto proc = new Process;
+        auto proc = MAKE_UNIQUE_PRIVATE(Process);
         proc->id = pid;
-        return std::unique_ptr<Process>(proc);
+        return proc;
     } else if (pid == 0) {
         // client process
         char p_command[1024];

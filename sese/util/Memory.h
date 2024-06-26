@@ -46,6 +46,10 @@ inline SharedType<RETURN_TYPE> makeUnique(ARGS &&...args) {
     return std::make_unique<RETURN_TYPE>(args...);
 }
 
+#define MAKE_SHARED_PRIVATE(RETURN_TYPE, ...) sese::SharedType<RETURN_TYPE>(new RETURN_TYPE(__VA_ARGS__))
+
+#define MAKE_UNIQUE_PRIVATE(RETURN_TYPE, ...) sese::UniqueType<RETURN_TYPE>(new RETURN_TYPE(__VA_ARGS__))
+
 /**
  * std::make_shared 搭配 std::initializer_list 使用
  * @tparam RETURN_TYPE 预计返回 std::shared_ptr 的模板类型

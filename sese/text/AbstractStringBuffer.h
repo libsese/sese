@@ -81,6 +81,7 @@ public:
     [[nodiscard]] virtual bool endsWith(const std::string_view &suffix) const noexcept;
     virtual std::string toString();
     virtual String toSString();
+    virtual const void *buf();
 };
 
 } // namespace sese::text

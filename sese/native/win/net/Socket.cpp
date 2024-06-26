@@ -56,15 +56,13 @@ Socket::Ptr Socket::accept() const {
         socklen_t addr_len = sizeof(addr);
         auto client_handle = ::accept(handle, (sockaddr *) &addr, &addr_len);
         auto p_addr = Address::create((sockaddr *) &addr, addr_len);
-        auto p_client_socket = new Socket(client_handle, p_addr);
-        return std::shared_ptr<Socket>(p_client_socket);
+        return MAKE_SHARED_PRIVATE(Socket, client_handle, p_addr);
     } else {
         sockaddr_in6 addr{0};
         socklen_t addr_len = sizeof(addr);
         auto client_handle = ::accept(handle, (sockaddr *) &addr, &addr_len);
         auto p_addr = Address::create((sockaddr *) &addr, addr_len);
-        auto p_client_socket = new Socket(client_handle, p_addr);
-        return std::shared_ptr<Socket>(p_client_socket);
+        return MAKE_SHARED_PRIVATE(Socket, client_handle, p_addr);
     }
 }
 

@@ -30,11 +30,11 @@ SharedMemory::Ptr SharedMemory::create(const char *name, size_t size) noexcept {
         return nullptr;
     }
 
-    auto rt = new SharedMemory;
+    auto rt = MAKE_UNIQUE_PRIVATE(SharedMemory);
     rt->isOwner = true;
     rt->hMapFile = mapping;
     rt->buffer = buffer;
-    return std::unique_ptr<SharedMemory>(rt);
+    return rt;
 }
 
 SharedMemory::Ptr SharedMemory::use(const char *name) noexcept {
@@ -48,11 +48,11 @@ SharedMemory::Ptr SharedMemory::use(const char *name) noexcept {
         return nullptr;
     }
 
-    auto rt = new SharedMemory;
+    auto rt = MAKE_UNIQUE_PRIVATE(SharedMemory);
     rt->isOwner = false;
     rt->hMapFile = mapping;
     rt->buffer = buffer;
-    return std::unique_ptr<SharedMemory>(rt);
+    return rt;
 }
 
 SharedMemory::~SharedMemory() noexcept {
