@@ -10,31 +10,24 @@
 
 #include <sese/record/Logger.h>
 #include <sese/record/Vars.h>
+#include <sese/text/Util.h>
 #include <sese/thread/Thread.h>
 
-#ifdef WIN32
-#define sprintf sprintf_s
-#endif
-
-#ifdef __APPLE__
-#define sprintf(buf, format, ...) snprintf(buf, RECORD_OUTPUT_BUFFER, format, ##__VA_ARGS__)
-#endif
-
-#define __SESE_LOG(point_to_logger, level, format, ...)                           \
-    {                                                                             \
-        char sese_tmp_buf[RECORD_OUTPUT_BUFFER]{0};                               \
-        std::snprintf(sese_tmp_buf, RECORD_OUTPUT_BUFFER, format, ##__VA_ARGS__); \
-        auto sese_tmp_time = sese::DateTime::now();                               \
-        auto sese_tmp_event = std::make_shared<sese::record::Event>(              \
-                sese_tmp_time,                                                    \
-                level,                                                            \
-                sese::Thread::getCurrentThreadName(),                             \
-                sese::Thread::getCurrentThreadId(),                               \
-                SESE_FILENAME,                                                    \
-                __LINE__,                                                         \
-                sese_tmp_buf                                                      \
-        );                                                                        \
-        point_to_logger->log(sese_tmp_event);                                     \
+#define __SESE_LOG(point_to_logger, level, format, ...)                                  \
+    {                                                                                    \
+        char sese_tmp_buf[RECORD_OUTPUT_BUFFER]{0};                                      \
+        sese::text::snprintf(sese_tmp_buf, RECORD_OUTPUT_BUFFER, format, ##__VA_ARGS__); \
+        auto sese_tmp_time = sese::DateTime::now();                                      \
+        auto sese_tmp_event = std::make_shared<sese::record::Event>(                     \
+                sese_tmp_time,                                                           \
+                level,                                                                   \
+                sese::Thread::getCurrentThreadName(),                                    \
+                sese::Thread::getCurrentThreadId(),                                      \
+                SESE_FILENAME,                                                           \
+                __LINE__,                                                                \
+                sese_tmp_buf                                                             \
+        );                                                                               \
+        point_to_logger->log(sese_tmp_event);                                            \
     }
 
 #define __SESE_RAW(point_to_logger, buffer, length) \
