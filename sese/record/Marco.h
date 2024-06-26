@@ -9,7 +9,7 @@
 #pragma once
 
 #include <sese/record/Logger.h>
-#include <sese/record/Vars.h>
+#include <sese/text/Format.h>
 #include <sese/text/Util.h>
 #include <sese/thread/Thread.h>
 
@@ -74,4 +74,4 @@
     __SESE_LOG(sese::record::getLogger(), sese::record::Level::ERR, sese_tmp_format, ##__VA_ARGS__) \
     SESE_MARCO_END
 
-#define SESE_VARS(level, v) SESE_##level(#v "=%s", sese::record::overload::toString(v).c_str())
+#define SESE_VARS(level, v) SESE_##level(#v "=%s", sese::text::overload::toString(v).c_str())

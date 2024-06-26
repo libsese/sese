@@ -526,7 +526,7 @@ Dict::ReverseIterator Dict::rend() { return map.rend(); }
 
 Dict::ConstReverseIterator Dict::rend() const { return map.rend(); }
 
-Dict::Iterator Dict::erase(const Dict::Iterator& it) {
+Dict::Iterator Dict::erase(const Dict::Iterator &it) {
     delete it->second;
     return map.erase(it);
 }
@@ -644,4 +644,8 @@ Dict &&Dict::set(const Value::String &key, Dict &&value) && {
 
 bool Dict::remove(const Value::String &key) {
     return map.erase(key) > 0;
+}
+
+std::string sese::text::overload::toString(const Value &t) {
+    return t.toString();
 }

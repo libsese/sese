@@ -12,21 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include <gtest/gtest.h>
 
-#include <string>
+#include <sese/text/Format.h>
 
-namespace sese::record::overload {
-    template<class T>
-    std::string toString(const T&&) = delete;
+using namespace sese::text;
 
-    template<class T>
-    std::string toString(const T &t) {
-        return std::to_string(t);
-    }
-
-    template<>
-    inline std::string toString(const std::string &t) {
-        return t;
-    }
+TEST(TestForamt, Simple) {
+    int a = 1, b = 2;
+    std::string c = "Hello";
+    EXPECT_EQ("1, Hello, 2, World" , fmt("{}, Hello, {}, World", a, b));
+    EXPECT_EQ("\\{} Hello", fmt("\\{} {}", c));
+    EXPECT_EQ("Hello", fmt("Hello"));
+    EXPECT_EQ("World", fmt("{ Hello }", "World"));
 }
