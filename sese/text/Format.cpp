@@ -15,10 +15,18 @@
 
 #include <sese/text/Format.h>
 
-sese::text::FmtCtx::FmtCtx(std::string_view p) : pattern(p), pos(pattern.begin()), builder(), args(0) {
+namespace sese::text {
+
+thread_local StringBuilder format_string_builder;
+
+StringBuilder &getThreadedFormatStringBuilder() {
+    return format_string_builder;
 }
 
-bool sese::text::FmtCtx::constantParsing() {
+FmtCtx::FmtCtx(std::string_view p) : pattern(p), pos(pattern.begin()) {
+}
+
+bool FmtCtx::constantParsing() {
     bool status;
     std::string_view::iterator n, m;
     std::string_view::iterator n_1;
@@ -28,15 +36,15 @@ bool sese::text::FmtCtx::constantParsing() {
         if (n == pattern.end()) {
             begin = pos - pattern.begin();
             length = n - pos;
-            builder.append(pattern.data() + begin, length);
+            format_string_builder.append(pattern.data() + begin, length);
             status = false;
             break;
         }
         if (n != pattern.begin() && *(n - 1) == '\\') {
             begin = pos - pattern.begin();
             length = n - pos;
-            builder.append(pattern.data() + begin, length);
-            builder << '{';
+            format_string_builder.append(pattern.data() + begin, length);
+            format_string_builder << '{';
             pos = n + 1;
             continue;
         }
@@ -53,10 +61,11 @@ bool sese::text::FmtCtx::constantParsing() {
         }
         begin = pos - pattern.begin();
         length = n - pos;
-        builder.append(pattern.data() + begin, length);
+        format_string_builder.append(pattern.data() + begin, length);
         pos = m + 1;
         status = true;
         break;
     }
     return status;
 }
+} // namespace sese::text

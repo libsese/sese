@@ -39,11 +39,11 @@ namespace overload {
     }
 } // namespace overload
 
+StringBuilder &getThreadedFormatStringBuilder();
+
 struct FmtCtx {
     std::string_view pattern;
     std::string_view::const_iterator pos;
-    StringBuilder builder;
-    uint16_t args;
 
     explicit FmtCtx(std::string_view p);
 
@@ -54,7 +54,7 @@ template<typename T>
 void Format(FmtCtx &ctx, T arg) {
     auto status = ctx.constantParsing();
     if (status) {
-        ctx.builder << overload::toString<T>(arg);
+        getThreadedFormatStringBuilder() << overload::toString<T>(arg);
         assert(false == ctx.constantParsing());
     }
 }
@@ -63,7 +63,7 @@ template<typename T, typename... ARGS>
 void Format(FmtCtx &ctx, T arg, ARGS... args) {
     auto status = ctx.constantParsing();
     if (status) {
-        ctx.builder << overload::toString<T>(arg);
+        getThreadedFormatStringBuilder() << overload::toString<T>(arg);
         Format(ctx, args...);
     }
 }
@@ -85,9 +85,10 @@ std::string fmt(std::string_view pattern, ARGS... args) {
 /// \return 匹配完成的字符串
 template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) != 0, int>::type = 0>
 std::string fmt(std::string_view pattern, ARGS... args) {
+    getThreadedFormatStringBuilder().clear();
     FmtCtx ctx(pattern);
     Format(ctx, args...);
-    return ctx.builder.toString();
+    return getThreadedFormatStringBuilder().toString();
 }
 
 } // namespace sese::text
