@@ -26,8 +26,24 @@ This is a cross-platform framework for developing fundamental components,
 
 Builtin logger
 
+Modern formatting style
+
 ```c++
-#include <sese/record/Marco.h>
+#include <sese/Log.h>
+// ...
+int a = 1, b = 2;
+SESE_INFO("hello world");
+SESE_INFO("a + b = {}", a + b);
+```
+
+> 2024-06-27T01:43:05.571Z I main.cpp:7 Main:10376> hello world<br>
+> 2024-06-27T01:43:05.572Z I main.cpp:8 Main:10376> a + b = 3
+
+C-Like formatting style
+
+```c++
+#define SESE_C_LIKE_FORMAT
+#include <sese/Log.h>
 // ...
 SESE_INFO("hello world");
 SESE_WARN("error %s", err.what().c_str());
