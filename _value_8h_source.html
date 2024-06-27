@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('_value_8h_source.html',''); initResiza
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;<a class="code" href="_string_builder_8h.html" title="线程不安全的字符串缓存类">sese/text/StringBuilder.h</a>&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;<a class="code" href="_vars_8h.html">sese/record/Vars.h</a>&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;<a class="code" href="_format_8h.html">sese/text/Format.h</a>&gt;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese.html">sese</a> {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
@@ -374,23 +374,27 @@ $(document).ready(function(){initNavTree('_value_8h_source.html',''); initResiza
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>};</div>
 </div>
 <div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>namespace record::overload {</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>namespace text::overload {</div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <span class="keyword">template</span>&lt;&gt;</div>
-<div class="foldopen" id="foldopen00257" data-start="{" data-end="}">
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="namespacesese_1_1record_1_1overload.html#a539b88a1d092febdf175fa67b9574776">  257</a></span>    <span class="keyword">inline</span> std::string <a class="code hl_function" href="classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3">toString</a>(<span class="keyword">const</span> <a class="code hl_class" href="classsese_1_1_value.html" title="值容器类">Value</a> &amp;t) {</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="keywordflow">return</span> t.<a class="code hl_function" href="classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3">toString</a>();</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    }</div>
+<div class="foldopen" id="foldopen00257" data-start="{" data-end="};">
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_value_01_4.html">  257</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;<a class="code hl_class" href="classsese_1_1_value.html" title="值容器类">Value</a>&gt; {</div>
+<div class="foldopen" id="foldopen00258" data-start="{" data-end="}">
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_value_01_4.html#abc686ce51f78986f8ca5c319dc5fb475">  258</a></span>        <span class="keyword">static</span> std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_value_01_4.html#abc686ce51f78986f8ca5c319dc5fb475">format</a>(<a class="code hl_class" href="classsese_1_1_value.html" title="值容器类">Value</a> &amp;value) {</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <span class="keywordflow">return</span> value.<a class="code hl_function" href="classsese_1_1_value.html#ab935c40ab58eacf585b9e97cedf2a9f3">toString</a>();</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        }</div>
 </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>}</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>} <span class="comment">// namespace sese</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    };</div>
+</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>}</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>} <span class="comment">// namespace sese</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_fd91985019c0ba8b7143dc49def92180.html">util</a></li><li class="navelem"><a class="el" href="_value_8h.html">Value.h</a></li>
-    <li class="footer">生成于 2024年 六月 26日 星期三 04:13:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:04 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -133,6 +133,7 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 <li>SERVER_KEEP_ALIVE_DURATION&#160;:&#160;<a class="el" href="_config_8h.html#aa3c02989bbce8adec5980eba1bbb3886">Config.h</a></li>
 <li>SERVER_MAX_CONNECTION&#160;:&#160;<a class="el" href="_config_8h.html#a7e0a7344b00b23ee0fffaa898e55e55d">Config.h</a></li>
 <li>SESE_ADD_RES&#160;:&#160;<a class="el" href="res_2_marco_8h.html#ad845b7595b4213febe4c44e7969a0088">Marco.h</a></li>
+<li>SESE_C_LIKE_FORMAT&#160;:&#160;<a class="el" href="_maria_prepared_statement_impl_8cpp.html#a126c1cbaefc8c71cd9dea8525d7fa613">MariaPreparedStatementImpl.cpp</a>, <a class="el" href="_http_connection_impl___v3_8cpp.html#a126c1cbaefc8c71cd9dea8525d7fa613">HttpConnectionImpl_V3.cpp</a>, <a class="el" href="_http_service_impl___v3_8cpp.html#a126c1cbaefc8c71cd9dea8525d7fa613">HttpServiceImpl_V3.cpp</a>, <a class="el" href="_http_s_s_l_connection_impl___v3_8cpp.html#a126c1cbaefc8c71cd9dea8525d7fa613">HttpSSLConnectionImpl_V3.cpp</a>, <a class="el" href="_native_i_o_c_p_server___v1_8cpp.html#a126c1cbaefc8c71cd9dea8525d7fa613">NativeIOCPServer_V1.cpp</a>, <a class="el" href="_s_s_l_context_8cpp.html#a126c1cbaefc8c71cd9dea8525d7fa613">SSLContext.cpp</a>, <a class="el" href="_value_8cpp.html#a126c1cbaefc8c71cd9dea8525d7fa613">Value.cpp</a>, <a class="el" href="_str_case_map_8cpp.html#a126c1cbaefc8c71cd9dea8525d7fa613">StrCaseMap.cpp</a></li>
 <li>SESE_CTRL&#160;:&#160;<a class="el" href="_controller_8h.html#a1000932eb934b62e665d4356c6d02f3c">Controller.h</a></li>
 <li>SESE_CXX_STANDARD&#160;:&#160;<a class="el" href="native_2darwin_2_config_8h.html#a27e458242272491d02f3710536c07650">Config.h</a></li>
 <li>SESE_DB_API&#160;:&#160;<a class="el" href="db_2_config_8h.html#a70a01b2495d4d228f51f995b78bea344">Config.h</a></li>
@@ -187,7 +188,7 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 <li>SESE_OUT_DEF&#160;:&#160;<a class="el" href="_output_util_8h.html#aabb2cced3839565b7dca9a2a0fc87be5">OutputUtil.h</a></li>
 <li>SESE_OUT_DEF_ALL&#160;:&#160;<a class="el" href="_output_util_8h.html#a725da41715e575637eb25d575a2e6a41">OutputUtil.h</a></li>
 <li>SESE_OUT_DEF_TEMPLATE&#160;:&#160;<a class="el" href="_output_util_8h.html#aa09280ac55a64f07b8d8a3c3819ae9dd">OutputUtil.h</a></li>
-<li>SESE_OUT_DEF_TEMPLATE_ALL&#160;:&#160;<a class="el" href="_output_util_8h.html#a0c3117623d86037996206741b982fb36">OutputUtil.h</a></li>
+<li>SESE_OUT_DEF_TEMPLATE_ALL()&#160;:&#160;<a class="el" href="_output_util_8h.html#a29113a4324e553b7e334beb4c56fc541">OutputUtil.h</a></li>
 <li>SESE_OUT_FUNC_BODY&#160;:&#160;<a class="el" href="_output_util_8h.html#a7ef8cc7d4c3f3924c8ad1dc07e7734e6">OutputUtil.h</a></li>
 <li>SESE_OUT_PTR_FUNC_BODY&#160;:&#160;<a class="el" href="_output_util_8h.html#a6e001c7b650cb3cfe09985936db44167">OutputUtil.h</a></li>
 <li>SESE_OUT_PTR_TYPE_DEF&#160;:&#160;<a class="el" href="_output_util_8h.html#afa3a8527acb92036166554f6e2ecdbb0">OutputUtil.h</a></li>
@@ -197,7 +198,6 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 <li>SESE_RAW&#160;:&#160;<a class="el" href="record_2_marco_8h.html#ae23dce9adff7d55a14a54cb5411d7667">Marco.h</a></li>
 <li>SESE_STD_WRAPPER&#160;:&#160;<a class="el" href="_config_8h.html#ab27c127789db87432e7599922a923a43">Config.h</a></li>
 <li>SESE_URL&#160;:&#160;<a class="el" href="_controller_8h.html#a7eaeb37d052ecaa4a1e25d0ccc71a867">Controller.h</a></li>
-<li>SESE_VARS&#160;:&#160;<a class="el" href="record_2_marco_8h.html#aea3122d3f7d72fefda224c20bd56b684">Marco.h</a></li>
 <li>SESE_WARN&#160;:&#160;<a class="el" href="record_2_marco_8h.html#a7a08c4c287ebe371abb3fa9d4a9712fa">Marco.h</a></li>
 <li>SESE_YAML_GET&#160;:&#160;<a class="el" href="config_2yaml_2_marco_8h.html#a5054645936722fdb3c61263e2cc0dd47">Marco.h</a></li>
 <li>SESE_YAML_GET_BOOLEAN&#160;:&#160;<a class="el" href="config_2yaml_2_marco_8h.html#a24820bfd86648bb0cd117c041b0a73ac">Marco.h</a></li>
@@ -232,7 +232,7 @@ $(document).ready(function(){initNavTree('globals_s.html',''); initResizable(); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 六月 26日 星期三 04:13:48 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:06 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -138,8 +138,33 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h2><a class="anchor" id="autotoc_md1"></a>
 示例</h2>
 <p>内建日志器</p>
+<p>现代的格式化方式</p>
 <div class="fragment"><div class="line"> ++</div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="record_2_marco_8h.html" title="日志宏">sese/record/Marco.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_log_8h.html">sese/Log.h</a>&gt;</span></div>
+<div class="line"><span class="comment">// ...</span></div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1text_1_1overload.html">sese::text::overload</a> {</div>
+<div class="line"><span class="keyword">template</span>&lt;&gt;</div>
+<div class="line"><span class="keyword">struct </span>Formatter&lt;Point&gt; {</div>
+<div class="line">    std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter.html#ae635bc3fcea465bc2211eecaa4aef296">format</a>(<span class="keyword">const</span> Point &amp;p) {</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a>(<span class="stringliteral">&quot;({},{})&quot;</span>, p.x, p.y);</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// ...</span></div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> = 1, <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a> = 2;</div>
+<div class="line">Point point{1, 2};</div>
+<div class="line"><a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;hello world&quot;</span>);</div>
+<div class="line"><a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;a + b = {}&quot;</span>, <a class="code hl_define" href="_s_h_a256_util_8cpp.html#a8d3c3518d793541417a4845125da1ae1">a</a> + <a class="code hl_define" href="_s_h_a256_util_8cpp.html#ab2d05693952610f937e5acb3c4a8fa1b">b</a>);</div>
+<div class="line"><a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;point {}&quot;</span>, point);</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;2024-06-27T01:43:05.571Z I main.cpp:7 Main:10376&gt; hello world<br  />
+ 2024-06-27T01:43:05.572Z I main.cpp:8 Main:10376&gt; a + b = 3<br  />
+ 2024-06-27T01:43:05.572Z I main.cpp:9 Main:10376&gt; point (1,2) </p>
+</blockquote>
+<p>类 C 的格式化方式</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="preprocessor">#define SESE_C_LIKE_FORMAT</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_log_8h.html">sese/Log.h</a>&gt;</span></div>
 <div class="line"><span class="comment">// ...</span></div>
 <div class="line"><a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;hello world&quot;</span>);</div>
 <div class="line"><a class="code hl_define" href="record_2_marco_8h.html#a7a08c4c287ebe371abb3fa9d4a9712fa">SESE_WARN</a>(<span class="stringliteral">&quot;error %s&quot;</span>, err.what().c_str());</div>
@@ -311,7 +336,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 六月 26日 星期三 04:13:48 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:06 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -138,110 +138,119 @@ $(document).ready(function(){initNavTree('record_2_marco_8h_source.html',''); in
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="_logger_8h.html" title="日志输出类">sese/record/Logger.h</a>&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="_vars_8h.html">sese/record/Vars.h</a>&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;<a class="code" href="_thread_8h.html" title="线程类">sese/thread/Thread.h</a>&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifdef WIN32</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define sprintf sprintf_s</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifdef __APPLE__</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define sprintf(buf, format, ...) snprintf(buf, RECORD_OUTPUT_BUFFER, format, ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="" data-end="">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">   23</a></span><span class="preprocessor">#define __SESE_LOG(point_to_logger, level, format, ...)                           \</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    {                                                                             \</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">        char sese_tmp_buf[RECORD_OUTPUT_BUFFER]{0};                               \</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">        std::snprintf(sese_tmp_buf, RECORD_OUTPUT_BUFFER, format, ##__VA_ARGS__); \</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">        auto sese_tmp_time = sese::DateTime::now();                               \</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">        auto sese_tmp_event = std::make_shared&lt;sese::record::Event&gt;(              \</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">                sese_tmp_time,                                                    \</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">                level,                                                            \</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">                sese::Thread::getCurrentThreadName(),                             \</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">                sese::Thread::getCurrentThreadId(),                               \</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">                SESE_FILENAME,                                                    \</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">                __LINE__,                                                         \</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">                sese_tmp_buf                                                      \</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">        );                                                                        \</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">        point_to_logger-&gt;log(sese_tmp_event);                                     \</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">    }</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="_format_8h.html">sese/text/Format.h</a>&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;<a class="code" href="text_2_util_8h.html" title="文本工具">sese/text/Util.h</a>&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;<a class="code" href="_thread_8h.html" title="线程类">sese/thread/Thread.h</a>&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifdef SESE_C_LIKE_FORMAT</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define __SESE_LOG(point_to_logger, level, format, ...)                                  \</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    {                                                                                    \</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">        char sese_tmp_buf[RECORD_OUTPUT_BUFFER]{0};                                      \</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">        sese::text::snprintf(sese_tmp_buf, RECORD_OUTPUT_BUFFER, format, ##__VA_ARGS__); \</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">        auto sese_tmp_time = sese::DateTime::now();                                      \</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">        auto sese_tmp_event = std::make_shared&lt;sese::record::Event&gt;(                     \</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">                sese_tmp_time,                                                           \</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">                level,                                                                   \</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">                sese::Thread::getCurrentThreadName(),                                    \</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">                sese::Thread::getCurrentThreadId(),                                      \</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">                SESE_FILENAME,                                                           \</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">                __LINE__,                                                                \</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">                sese_tmp_buf                                                             \</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">        );                                                                               \</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">        point_to_logger-&gt;log(sese_tmp_event);                                            \</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">    }</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#else</span></div>
+<div class="foldopen" id="foldopen00034" data-start="" data-end="">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#ae78e46049906a7a818c610f188ad9a5a">   34</a></span><span class="preprocessor">#define __SESE_LOG(point_to_logger, level, format, ...)              \</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">    {                                                                \</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">        auto sese_tmp_msg = sese::text::fmt(format, ##__VA_ARGS__);  \</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">        auto sese_tmp_time = sese::DateTime::now();                  \</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">        auto sese_tmp_event = std::make_shared&lt;sese::record::Event&gt;( \</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">                sese_tmp_time,                                       \</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">                level,                                               \</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">                sese::Thread::getCurrentThreadName(),                \</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">                sese::Thread::getCurrentThreadId(),                  \</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">                SESE_FILENAME,                                       \</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">                __LINE__,                                            \</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">                sese_tmp_msg                                         \</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">        );                                                           \</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">        point_to_logger-&gt;log(sese_tmp_event);                        \</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">    }</span></div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="foldopen" id="foldopen00040" data-start="" data-end="">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8">   40</a></span><span class="preprocessor">#define __SESE_RAW(point_to_logger, buffer, length) \</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">    point_to_logger-&gt;dump(buffer, length);          \</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">    SESE_MARCO_END</span></div>
-</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="" data-end="">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37">   44</a></span><span class="preprocessor">#define __SESE_EXCEPT(point_to_logger, e) \</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">    e.printStacktrace(point_to_logger)</span></div>
-</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="foldopen" id="foldopen00047" data-start="" data-end="">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a9c7b9b055051419896c49a59292b4521">   47</a></span><span class="preprocessor">#define __SESE_DEBUG(sese_tmp_logger, format, ...)                                 \</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">    __SESE_LOG(sese_tmp_logger, sese::record::Level::DEBUG, format, ##__VA_ARGS__) \</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">    SESE_MARCO_END</span></div>
-</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="foldopen" id="foldopen00051" data-start="" data-end="">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a82fca32f4aa42f273fb9688b4b638d9e">   51</a></span><span class="preprocessor">#define __SESE_INFO(sese_tmp_logger, format, ...)                                 \</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">    __SESE_LOG(sese_tmp_logger, sese::record::Level::INFO, format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#af1d3aba7849a0f5e4e2c98304c4639a8">   51</a></span><span class="preprocessor">#define __SESE_RAW(point_to_logger, buffer, length) \</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">    point_to_logger-&gt;dump(buffer, length);          \</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">    SESE_MARCO_END</span></div>
 </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="foldopen" id="foldopen00055" data-start="" data-end="">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a99f403c0a68d0fc39e18498ff540d4f1">   55</a></span><span class="preprocessor">#define __SESE_WARN(sese_tmp_logger, format, ...)                                 \</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">    __SESE_LOG(sese_tmp_logger, sese::record::Level::WARN, format, ##__VA_ARGS__) \</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a738f59797003131a3d51f95cc24f7e37">   55</a></span><span class="preprocessor">#define __SESE_EXCEPT(point_to_logger, e) \</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">    e.printStacktrace(point_to_logger)</span></div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="foldopen" id="foldopen00059" data-start="" data-end="">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#ad79c45edd21c8ef28caef8540772334b">   59</a></span><span class="preprocessor">#define __SESE_ERROR(sese_tmp_logger, format, ...)                               \</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">    __SESE_LOG(sese_tmp_logger, sese::record::Level::ERR, format, ##__VA_ARGS__) \</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="" data-end="">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a9c7b9b055051419896c49a59292b4521">   58</a></span><span class="preprocessor">#define __SESE_DEBUG(sese_tmp_logger, format, ...)                                 \</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">    __SESE_LOG(sese_tmp_logger, sese::record::Level::DEBUG, format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">    SESE_MARCO_END</span></div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="foldopen" id="foldopen00063" data-start="" data-end="">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#ae23dce9adff7d55a14a54cb5411d7667">   63</a></span><span class="preprocessor">#define SESE_RAW(buffer, length) \</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">    __SESE_RAW(sese::record::getLogger(), buffer, length)</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="" data-end="">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a82fca32f4aa42f273fb9688b4b638d9e">   62</a></span><span class="preprocessor">#define __SESE_INFO(sese_tmp_logger, format, ...)                                 \</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">    __SESE_LOG(sese_tmp_logger, sese::record::Level::INFO, format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">    SESE_MARCO_END</span></div>
 </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a77b7117d61063ae74e9498af412bb101">   66</a></span><span class="preprocessor">#define SESE_EXCEPT(e) __SESE_EXCEPT(sese::record::getLogger(), e)</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="foldopen" id="foldopen00068" data-start="" data-end="">
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a964cda869f112de222e00400f1e3dc79">   68</a></span><span class="preprocessor">#define SESE_DEBUG(sese_tmp_format, ...)                                                              \</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">    __SESE_LOG(sese::record::getLogger(), sese::record::Level::DEBUG, sese_tmp_format, ##__VA_ARGS__) \</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+<div class="foldopen" id="foldopen00066" data-start="" data-end="">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a99f403c0a68d0fc39e18498ff540d4f1">   66</a></span><span class="preprocessor">#define __SESE_WARN(sese_tmp_logger, format, ...)                                 \</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">    __SESE_LOG(sese_tmp_logger, sese::record::Level::WARN, format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">    SESE_MARCO_END</span></div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="foldopen" id="foldopen00072" data-start="" data-end="">
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">   72</a></span><span class="preprocessor">#define SESE_INFO(sese_tmp_format, ...)                                                              \</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">    __SESE_LOG(sese::record::getLogger(), sese::record::Level::INFO, sese_tmp_format, ##__VA_ARGS__) \</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00070" data-start="" data-end="">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#ad79c45edd21c8ef28caef8540772334b">   70</a></span><span class="preprocessor">#define __SESE_ERROR(sese_tmp_logger, format, ...)                               \</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">    __SESE_LOG(sese_tmp_logger, sese::record::Level::ERR, format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">    SESE_MARCO_END</span></div>
 </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="foldopen" id="foldopen00076" data-start="" data-end="">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a7a08c4c287ebe371abb3fa9d4a9712fa">   76</a></span><span class="preprocessor">#define SESE_WARN(sese_tmp_format, ...)                                                              \</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    __SESE_LOG(sese::record::getLogger(), sese::record::Level::WARN, sese_tmp_format, ##__VA_ARGS__) \</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="" data-end="">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#ae23dce9adff7d55a14a54cb5411d7667">   74</a></span><span class="preprocessor">#define SESE_RAW(buffer, length) \</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">    __SESE_RAW(sese::record::getLogger(), buffer, length)</span></div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="foldopen" id="foldopen00080" data-start="" data-end="">
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#ae1238b2e7ea6758c6e7bab5310024ed7">   80</a></span><span class="preprocessor">#define SESE_ERROR(sese_tmp_format, ...)                                                            \</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">    __SESE_LOG(sese::record::getLogger(), sese::record::Level::ERR, sese_tmp_format, ##__VA_ARGS__) \</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a77b7117d61063ae74e9498af412bb101">   77</a></span><span class="preprocessor">#define SESE_EXCEPT(e) __SESE_EXCEPT(sese::record::getLogger(), e)</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="" data-end="">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a964cda869f112de222e00400f1e3dc79">   79</a></span><span class="preprocessor">#define SESE_DEBUG(sese_tmp_format, ...)                                                              \</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">    __SESE_LOG(sese::record::getLogger(), sese::record::Level::DEBUG, sese_tmp_format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">    SESE_MARCO_END</span></div>
 </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#aea3122d3f7d72fefda224c20bd56b684">   84</a></span><span class="preprocessor">#define SESE_VARS(level, v) SESE_##level(#v &quot;=%s&quot;, sese::record::overload::toString(v).c_str())</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="" data-end="">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">   83</a></span><span class="preprocessor">#define SESE_INFO(sese_tmp_format, ...)                                                              \</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">    __SESE_LOG(sese::record::getLogger(), sese::record::Level::INFO, sese_tmp_format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="foldopen" id="foldopen00087" data-start="" data-end="">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#a7a08c4c287ebe371abb3fa9d4a9712fa">   87</a></span><span class="preprocessor">#define SESE_WARN(sese_tmp_format, ...)                                                              \</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">    __SESE_LOG(sese::record::getLogger(), sese::record::Level::WARN, sese_tmp_format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="foldopen" id="foldopen00091" data-start="" data-end="">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="record_2_marco_8h.html#ae1238b2e7ea6758c6e7bab5310024ed7">   91</a></span><span class="preprocessor">#define SESE_ERROR(sese_tmp_format, ...)                                                            \</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">    __SESE_LOG(sese::record::getLogger(), sese::record::Level::ERR, sese_tmp_format, ##__VA_ARGS__) \</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">    SESE_MARCO_END</span></div>
+</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li><li class="navelem"><a class="el" href="record_2_marco_8h.html">Marco.h</a></li>
-    <li class="footer">生成于 2024年 六月 26日 星期三 04:13:46 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:04 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

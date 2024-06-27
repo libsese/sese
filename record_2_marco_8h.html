@@ -135,7 +135,8 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
 <p>日志宏  
 <a href="#details">更多...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="_logger_8h_source.html">sese/record/Logger.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_vars_8h_source.html">sese/record/Vars.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_format_8h_source.html">sese/text/Format.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="text_2_util_8h_source.html">sese/text/Util.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="_thread_8h_source.html">sese/thread/Thread.h</a>&gt;</code><br />
 </div>
 <p><a href="record_2_marco_8h_source.html">浏览源代码.</a></p>
@@ -168,8 +169,6 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
 <tr class="separator:a7a08c4c287ebe371abb3fa9d4a9712fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1238b2e7ea6758c6e7bab5310024ed7" id="r_ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#ae1238b2e7ea6758c6e7bab5310024ed7">SESE_ERROR</a>(sese_tmp_format, ...)</td></tr>
 <tr class="separator:ae1238b2e7ea6758c6e7bab5310024ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea3122d3f7d72fefda224c20bd56b684" id="r_aea3122d3f7d72fefda224c20bd56b684"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="record_2_marco_8h.html#aea3122d3f7d72fefda224c20bd56b684">SESE_VARS</a>(level,  v)&#160;&#160;&#160;SESE_##level(#v &quot;=%s&quot;, <a class="el" href="namespacesese_1_1record_1_1overload.html#adf7f26e677a4505b4673bbe8a2281306">sese::record::overload::toString</a>(v).c_str())</td></tr>
-<tr class="separator:aea3122d3f7d72fefda224c20bd56b684"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>日志宏 </p>
@@ -350,20 +349,19 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
         </tr>
       </table>
 </div><div class="memdoc">
-<b>值:</b><div class="fragment"><div class="line">    {                                                                             \</div>
-<div class="line">        <span class="keywordtype">char</span> sese_tmp_buf[<a class="code hl_variable" href="_config_8h.html#a95a7c28cbc65060bfab837a0c4b807fe" title="日志输出缓存区大小">RECORD_OUTPUT_BUFFER</a>]{0};                               \</div>
-<div class="line">        std::snprintf(sese_tmp_buf, <a class="code hl_variable" href="_config_8h.html#a95a7c28cbc65060bfab837a0c4b807fe" title="日志输出缓存区大小">RECORD_OUTPUT_BUFFER</a>, format, ##__VA_ARGS__); \</div>
-<div class="line">        <span class="keyword">auto</span> sese_tmp_time = <a class="code hl_function" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">sese::DateTime::now</a>();                               \</div>
-<div class="line">        <span class="keyword">auto</span> sese_tmp_event = std::make_shared&lt;sese::record::Event&gt;(              \</div>
-<div class="line">                sese_tmp_time,                                                    \</div>
-<div class="line">                level,                                                            \</div>
-<div class="line">                <a class="code hl_function" href="classsese_1_1_thread.html#a7aaf91cc85a6788bbd2b1c063d2e81e8">sese::Thread::getCurrentThreadName</a>(),                             \</div>
-<div class="line">                <a class="code hl_function" href="classsese_1_1_thread.html#ac6b4828712bf84101f715bde4cd5a6f8">sese::Thread::getCurrentThreadId</a>(),                               \</div>
-<div class="line">                <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>,                                                    \</div>
-<div class="line">                __LINE__,                                                         \</div>
-<div class="line">                sese_tmp_buf                                                      \</div>
-<div class="line">        );                                                                        \</div>
-<div class="line">        point_to_logger-&gt;log(sese_tmp_event);                                     \</div>
+<b>值:</b><div class="fragment"><div class="line">    {                                                                \</div>
+<div class="line">        <span class="keyword">auto</span> sese_tmp_msg = <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">sese::text::fmt</a>(format, ##__VA_ARGS__);  \</div>
+<div class="line">        <span class="keyword">auto</span> sese_tmp_time = <a class="code hl_function" href="classsese_1_1_date_time.html#a3b3cb8069c211fd2355c6b1a8d4d7c16">sese::DateTime::now</a>();                  \</div>
+<div class="line">        <span class="keyword">auto</span> sese_tmp_event = std::make_shared&lt;sese::record::Event&gt;( \</div>
+<div class="line">                sese_tmp_time,                                       \</div>
+<div class="line">                level,                                               \</div>
+<div class="line">                <a class="code hl_function" href="classsese_1_1_thread.html#a7aaf91cc85a6788bbd2b1c063d2e81e8">sese::Thread::getCurrentThreadName</a>(),                \</div>
+<div class="line">                <a class="code hl_function" href="classsese_1_1_thread.html#ac6b4828712bf84101f715bde4cd5a6f8">sese::Thread::getCurrentThreadId</a>(),                  \</div>
+<div class="line">                <a class="code hl_define" href="native_2darwin_2_config_8h.html#a3f1833a653511a6b9fd4d6bfe8bb0678">SESE_FILENAME</a>,                                       \</div>
+<div class="line">                __LINE__,                                            \</div>
+<div class="line">                sese_tmp_msg                                         \</div>
+<div class="line">        );                                                           \</div>
+<div class="line">        point_to_logger-&gt;log(sese_tmp_event);                        \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
 </div>
@@ -576,34 +574,6 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
 
 </div>
 </div>
-<a id="aea3122d3f7d72fefda224c20bd56b684" name="aea3122d3f7d72fefda224c20bd56b684"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea3122d3f7d72fefda224c20bd56b684">&#9670;&#160;</a></span>SESE_VARS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SESE_VARS</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">level, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">v&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;SESE_##level(#v &quot;=%s&quot;, <a class="el" href="namespacesese_1_1record_1_1overload.html#adf7f26e677a4505b4673bbe8a2281306">sese::record::overload::toString</a>(v).c_str())</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a7a08c4c287ebe371abb3fa9d4a9712fa" name="a7a08c4c287ebe371abb3fa9d4a9712fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a08c4c287ebe371abb3fa9d4a9712fa">&#9670;&#160;</a></span>SESE_WARN</h2>
 
@@ -640,7 +610,7 @@ $(document).ready(function(){initNavTree('record_2_marco_8h.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_c6625f544ed0c126aba16ec4b044d27b.html">record</a></li><li class="navelem"><a class="el" href="record_2_marco_8h.html">Marco.h</a></li>
-    <li class="footer">生成于 2024年 六月 26日 星期三 04:13:47 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:04 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
