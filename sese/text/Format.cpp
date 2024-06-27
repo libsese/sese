@@ -17,12 +17,6 @@
 
 namespace sese::text {
 
-thread_local StringBuilder format_string_builder;
-
-StringBuilder &getThreadedFormatStringBuilder() {
-    return format_string_builder;
-}
-
 FmtCtx::FmtCtx(std::string_view p) : pattern(p), pos(pattern.begin()) {
 }
 
@@ -36,15 +30,15 @@ bool FmtCtx::constantParsing() {
         if (n == pattern.end()) {
             begin = pos - pattern.begin();
             length = n - pos;
-            format_string_builder.append(pattern.data() + begin, length);
+            builder.append(pattern.data() + begin, length);
             status = false;
             break;
         }
         if (n != pattern.begin() && *(n - 1) == '\\') {
             begin = pos - pattern.begin();
             length = n - pos;
-            format_string_builder.append(pattern.data() + begin, length);
-            format_string_builder << '{';
+            builder.append(pattern.data() + begin, length);
+            builder << '{';
             pos = n + 1;
             continue;
         }
@@ -61,7 +55,7 @@ bool FmtCtx::constantParsing() {
         }
         begin = pos - pattern.begin();
         length = n - pos;
-        format_string_builder.append(pattern.data() + begin, length);
+        builder.append(pattern.data() + begin, length);
         pos = m + 1;
         status = true;
         break;

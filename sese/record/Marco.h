@@ -91,5 +91,3 @@
 #define SESE_ERROR(sese_tmp_format, ...)                                                            \
     __SESE_LOG(sese::record::getLogger(), sese::record::Level::ERR, sese_tmp_format, ##__VA_ARGS__) \
     SESE_MARCO_END
-
-#define SESE_VARS(level, v) SESE_##level(#v "=%s", sese::text::overload::toString(v).c_str())

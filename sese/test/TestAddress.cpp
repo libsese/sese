@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include "sese/net/AddressPool.h"
 #include "sese/record/LogHelper.h"
 #include "sese/record/Marco.h"

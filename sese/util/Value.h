@@ -253,7 +253,12 @@ private:
 };
 
 namespace text::overload {
-    std::string toString(const Value &t);
+    template<>
+    struct Formatter<Value> {
+        static std::string format(Value &value) {
+            return value.toString();
+        }
+    };
 }
 
 } // namespace sese

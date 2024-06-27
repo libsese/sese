@@ -23,25 +23,31 @@ namespace sese::text {
 
 namespace overload {
 
-    template<class T>
-    std::string toString(T t) {
-        return std::to_string(t);
-    }
+    template<typename VALUE>
+    struct Formatter {
+        std::string format(const VALUE &value) {
+            return std::to_string(value);
+        }
+    };
 
     template<>
-    inline std::string toString(std::string t) {
-        return t;
-    }
+    struct Formatter<std::string> {
+        static std::string format(const std::string &value) {
+            return value;
+        }
+    };
 
     template<>
-    inline std::string toString(const char *t) {
-        return t;
-    }
+    struct Formatter<const char*> {
+        static std::string format(const char *value) {
+            return { value };
+        }
+    };
+
 } // namespace overload
 
-StringBuilder &getThreadedFormatStringBuilder();
-
 struct FmtCtx {
+    StringBuilder builder;
     std::string_view pattern;
     std::string_view::const_iterator pos;
 
@@ -51,30 +57,31 @@ struct FmtCtx {
 };
 
 template<typename T>
-void Format(FmtCtx &ctx, T arg) {
+void Format(FmtCtx &ctx, T &&arg) {
     auto status = ctx.constantParsing();
     if (status) {
-        getThreadedFormatStringBuilder() << overload::toString<T>(arg);
+        auto formatter = overload::Formatter<std::decay_t<T>>();
+        ctx.builder << formatter.format(std::forward<T>(arg));
         assert(false == ctx.constantParsing());
     }
 }
 
 template<typename T, typename... ARGS>
-void Format(FmtCtx &ctx, T arg, ARGS... args) {
+void Format(FmtCtx &ctx, T &&arg, ARGS&&... args) {
     auto status = ctx.constantParsing();
     if (status) {
-        getThreadedFormatStringBuilder() << overload::toString<T>(arg);
-        Format(ctx, args...);
+        auto formatter = overload::Formatter<std::decay_t<T>>();
+        ctx.builder << formatter.format(std::forward<T>(arg));
+        Format(ctx, std::forward<ARGS>(args)...);
     }
 }
 
 /// 字符串格式化
 /// \tparam ARGS 形参
 /// \param pattern 匹配格式
-/// \param args 实参
 /// \return 匹配完成的字符串
 template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) == 0, int>::type = 0>
-std::string fmt(std::string_view pattern, ARGS... args) {
+std::string fmt(std::string_view pattern, ARGS&&...) {
     return { pattern.begin(), pattern.end() };
 }
 
@@ -84,11 +91,10 @@ std::string fmt(std::string_view pattern, ARGS... args) {
 /// \param args 实参
 /// \return 匹配完成的字符串
 template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) != 0, int>::type = 0>
-std::string fmt(std::string_view pattern, ARGS... args) {
-    getThreadedFormatStringBuilder().clear();
+std::string fmt(std::string_view pattern, ARGS&&... args) {
     FmtCtx ctx(pattern);
-    Format(ctx, args...);
-    return getThreadedFormatStringBuilder().toString();
+    Format(ctx, std::forward<ARGS>(args)...);
+    return ctx.builder.toString();
 }
 
 } // namespace sese::text

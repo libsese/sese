@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include "sese/record/Marco.h"
 #include "sese/record/LogHelper.h"
 #include "sese/record/BlockAppender.h"
@@ -99,11 +101,4 @@ TEST(TestLogger, Macro) {
     SESE_WARN("Hello");
     SESE_ERROR("Hello");
     SESE_RAW("Hello\n", 6);
-}
-
-TEST(TestLogger, Vars) {
-    int32_t i = 114514;
-    std::string s = "Hello";
-    SESE_VARS(DEBUG, i);
-    SESE_VARS(INFO, s);
 }

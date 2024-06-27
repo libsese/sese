@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include "sese/thread/Async.h"
 #include "sese/record/LogHelper.h"
 #include "sese/record/Marco.h"

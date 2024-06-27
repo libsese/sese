@@ -22,7 +22,7 @@ using namespace sese::text;
 TEST(TestForamt, Simple) {
     int a = 1, b = 2;
     std::string c = "Hello";
-    EXPECT_EQ("1, Hello, 2, World" , fmt("{}, Hello, {}, World", a, b));
+    EXPECT_EQ("1, Hello, 2, World", fmt("{}, Hello, {}, World", a, b));
     EXPECT_EQ("\\{} Hello", fmt("\\{} {}", c));
     EXPECT_EQ("Hello", fmt("Hello"));
     EXPECT_EQ("World", fmt("{ Hello }", "World"));
@@ -35,4 +35,23 @@ TEST(TestFormat, Log) {
     SESE_WARN("Hello {}");
     SESE_ERROR("Hello \\}\\{", 3.1415);
     SESE_RAW("Hello\n", 6);
+}
+
+struct Point {
+    int x;
+    int y;
+};
+
+namespace sese::text::overload {
+template<>
+struct Formatter<Point> {
+    std::string format(const Point &p) {
+        return fmt("({},{})", p.x, p.y);
+    }
+};
+} // namespace sese::text::overload
+
+TEST(TestFormat, Formatter) {
+    Point point{1, 2};
+    EXPECT_EQ("(1,2)", fmt("{}", point));
 }
