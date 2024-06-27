@@ -16,8 +16,8 @@ set(SOURCE_PATH ${CURRENT_BUILDTRESS_DIR}/sese)
 vcpkg_from_github(
         OUT_SOURCE_PATH SOURCE_PATH
         REPO libsese/sese
-        REF b930e256e3f741ee1e92554c42e62f0a7b959b8b
-        SHA512 f219397bbdf11ffd8d4f9fadeaa9cd3397a769364e8ea8f6e851513c286defedd27e5f664972f7f00c89cfe29beaa991b1c05d13a6c17861aeec99e98c5261ed
+        REF cb8d9cdc4acf5ebf94d31808f4a6d158d4e5c3ae
+        SHA512 3c3e439f80554dca240abbb22f5e78e9528ac1a904eb954faa43feb181d2d1f324f8d22925a1e30864bbccf71c47dad0f45344cdd2f93d6a47e1a28ce2a0a7c7
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS

@@ -24,8 +24,36 @@ C++ 17 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管
 
 内建日志器
 
+现代的格式化方式
+
 ```c++
-#include <sese/record/Marco.h>
+#include <sese/Log.h>
+// ...
+namespace sese::text::overload {
+template<>
+struct Formatter<Point> {
+    std::string format(const Point &p) {
+        return fmt("({},{})", p.x, p.y);
+    }
+};
+}
+// ...
+int a = 1, b = 2;
+Point point{1, 2};
+SESE_INFO("hello world");
+SESE_INFO("a + b = {}", a + b);
+SESE_INFO("point {}", point);
+```
+
+> 2024-06-27T01:43:05.571Z I main.cpp:7 Main:10376> hello world<br>
+> 2024-06-27T01:43:05.572Z I main.cpp:8 Main:10376> a + b = 3<br>
+> 2024-06-27T01:43:05.572Z I main.cpp:9 Main:10376> point (1,2)
+
+类 C 的格式化方式
+
+```c++
+#define SESE_C_LIKE_FORMAT
+#include <sese/Log.h>
 // ...
 SESE_INFO("hello world");
 SESE_WARN("error %s", err.what().c_str());

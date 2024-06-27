@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/record/Marco.h>
 #include <sese/system/StackInfo.h>
 #include <sese/text/Number.h>

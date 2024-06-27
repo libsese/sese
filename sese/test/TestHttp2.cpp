@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include "sese/io/ByteBuilder.h"
 #include "sese/io/InputBufferWrapper.h"
 #include "sese/net/http/DynamicTable.h"

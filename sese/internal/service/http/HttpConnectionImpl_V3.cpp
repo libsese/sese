@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/internal/service/http/HttpServiceImpl_V3.h>
 #include <sese/internal/net/AsioIPConvert.h>
 #include <sese/internal/net/AsioSSLContextConvert.h>

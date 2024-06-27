@@ -15,14 +15,14 @@ TEST(TestProcess, EXEC_LS) {
     auto process = sese::system::Process::create(cmd);
     ASSERT_TRUE(process != nullptr);
     auto pid = process->getProcessId();
-    SESE_INFO("sub process pid is %d", pid);
+    SESE_INFO("sub process pid is {}", pid);
     EXPECT_EQ(0, process->wait());
 }
 
 TEST(TestProcess, PID) {
     auto pid = sese::system::Process::getCurrentProcessId();
     EXPECT_NE(pid, 0);
-    SESE_INFO("current pid is %d", pid);
+    SESE_INFO("current pid is {}", pid);
 }
 
 #include "sese/system/CommandLine.h"

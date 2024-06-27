@@ -12,21 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/// @file Util.h
+/// @brief 文本工具
+/// @author kaoru
+/// @date 2024年06月26日
+
 #pragma once
 
-#include <string>
+#include <sese/Config.h>
 
-namespace sese::record::overload {
-    template<class T>
-    std::string toString(const T&&) = delete;
+namespace sese::text {
 
-    template<class T>
-    std::string toString(const T &t) {
-        return std::to_string(t);
-    }
+/// 跨平台兼容性的 snprintf
+/// \param buf 输出缓存
+/// \param buf_size 缓存大小
+/// \param pattern 模式
+/// \param ... 匹配模式参数
+/// \return 结果
+int snprintf(char *buf, size_t buf_size, const char *pattern, ...);
 
-    template<>
-    inline std::string toString(const std::string &t) {
-        return t;
-    }
 }

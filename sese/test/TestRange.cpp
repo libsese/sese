@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/record/Marco.h>
 #include <sese/util/Range.h>
 #include <sese/util/Initializer.h>

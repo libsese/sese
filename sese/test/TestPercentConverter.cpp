@@ -1,5 +1,7 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/convert/PercentConverter.h>
-#include "sese/io/OutputBufferWrapper.h"
+#include <sese/io/OutputBufferWrapper.h>
 #include <sese/record/Marco.h>
 
 #include <gtest/gtest.h>

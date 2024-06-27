@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/concurrent/LinkedStack.h>
 #include <sese/concurrent/LinkedQueue.h>
 #include <sese/concurrent/ObjectPool.h>

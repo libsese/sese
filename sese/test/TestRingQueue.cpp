@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <gtest/gtest.h>
 #include <sese/thread/Thread.h>
 #include <sese/container/BufferedQueue.h>

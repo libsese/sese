@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include "sese/container/Bimap.h"
 #include "sese/record/Marco.h"
 #include "gtest/gtest.h"

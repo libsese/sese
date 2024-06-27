@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 // #include "sese/service/Service.h"
 #include "sese/net/Socket.h"
 #include "sese/net/http/RequestableFactory.h"

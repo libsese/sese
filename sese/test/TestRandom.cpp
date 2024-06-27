@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include "sese/config/CSVWriter.h"
 #include "sese/io/FileStream.h"
 #include "sese/util/RandomUtil.h"

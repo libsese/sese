@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <gtest/gtest.h>
 #include <sese/net/http/RequestableFactory.h>
 #include <sese/thread/Async.h>

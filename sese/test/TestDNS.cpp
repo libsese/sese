@@ -1,3 +1,5 @@
+#define SESE_C_LIKE_FORMAT
+
 #include <sese/net/dns/DnsServer.h>
 #include <sese/net/dns/DnsUtil.h>
 #include <sese/record/Marco.h>
