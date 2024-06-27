@@ -62,7 +62,8 @@ void Format(FmtCtx &ctx, T &&arg) {
     if (status) {
         auto formatter = overload::Formatter<std::decay_t<T>>();
         ctx.builder << formatter.format(std::forward<T>(arg));
-        assert(false == ctx.constantParsing());
+        [[maybe_unused]] auto result = ctx.constantParsing();
+        assert(false == result);
     }
 }
 

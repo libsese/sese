@@ -30,7 +30,7 @@ TEST(TestFormat, Simple) {
 }
 
 TEST(TestFormat, Log) {
-    SESE_DEBUG("Hello {}", 123);
+    SESE_DEBUG("Hello {} {}", 123, "World");
     SESE_INFO("Hello {}", "World");
     SESE_WARN("Hello {}");
     SESE_ERROR("Hello \\}\\{", 3.1415);
