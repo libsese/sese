@@ -15,6 +15,8 @@
 
 #include <sese/text/Format.h>
 
+#include <algorithm>
+
 namespace sese::text {
 
 FmtCtx::FmtCtx(std::string_view p) : pattern(p), pos(pattern.begin()) {

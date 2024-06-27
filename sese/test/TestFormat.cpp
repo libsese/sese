@@ -19,7 +19,7 @@
 
 using namespace sese::text;
 
-TEST(TestForamt, Simple) {
+TEST(TestFormat, Simple) {
     int a = 1, b = 2;
     std::string c = "Hello";
     EXPECT_EQ("1, Hello, 2, World", fmt("{}, Hello, {}, World", a, b));

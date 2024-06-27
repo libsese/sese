@@ -14,6 +14,8 @@
 #error only support x86_64 & arm64
 #endif
 
+#include <algorithm>
+
 /// C++ 版本标识符
 #define SESE_CXX_STANDARD __cplusplus
 /// 可导出类型标识符
