@@ -49,6 +49,46 @@ struct Formatter<MyMapPair> {
 };
 } // namespace sese::text::overload
 
+TEST(TestFormat, OptionParse) {
+    {
+        FormatOption option{};
+        EXPECT_TRUE(option.parse(":^3.2f"));
+        EXPECT_EQ(option.align, Align::CENTER);
+        EXPECT_EQ(option.wide, 3);
+        EXPECT_EQ(option.float_accuracy, 2);
+        EXPECT_EQ(option.ext_type, 'f');
+    }
+    {
+        FormatOption option{};
+        EXPECT_TRUE(option.parse(":<.2%"));
+        EXPECT_EQ(option.align, Align::LEFT);
+        EXPECT_EQ(option.wide, 0);
+        EXPECT_EQ(option.float_accuracy, 2);
+        EXPECT_EQ(option.ext_type, '%');
+    }
+    {
+        FormatOption option{};
+        EXPECT_TRUE(option.parse(":>"));
+        EXPECT_EQ(option.align, Align::RIGHT);
+        EXPECT_EQ(option.wide, 0);
+        EXPECT_EQ(option.float_accuracy, 0);
+        EXPECT_EQ(option.ext_type, '\0');
+    }
+
+    {
+        FormatOption option{};
+        EXPECT_TRUE(option.parse(":"));
+    }
+    {
+        FormatOption option{};
+        EXPECT_FALSE(option.parse("0"));
+    }
+    {
+        FormatOption option{};
+        EXPECT_FALSE(option.parse(":."));
+    }
+}
+
 TEST(TestFormat, Simple) {
     int a = 1, b = 2;
     std::string c = "Hello";
@@ -89,12 +129,12 @@ TEST(TestFormat, Constexpr) {
 
 TEST(TestFormat, Iterable) {
     auto array = std::array<int, 3>({1, 2, 3});
-    EXPECT_EQ("[1, 2, 3]",fmt("{}", array));
+    EXPECT_EQ("[1, 2, 3]", fmt("{}", array));
 
     MyMap map;
     map["abc"] = 114;
     map["efg"] = 514;
-    EXPECT_EQ("[{abc,114}, {efg,514}]" ,fmt("{}", map));
+    EXPECT_EQ("[{abc,114}, {efg,514}]", fmt("{}", map));
 
     SESE_INFO(fmt("{AB}|{CD}", map, array));
 }

@@ -18,6 +18,7 @@
 #include <sese/text/StringBuilder.h>
 #include <sese/text/Number.h>
 #include <sese/text/Util.h>
+#include <sese/text/FormatOption.h>
 #include <sese/types/is_iterable.h>
 
 #include <cassert>
