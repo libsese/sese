@@ -17,6 +17,7 @@
 #include "sese/net/http/HPackUtil.h"
 #include "sese/net/http/HPACK.h"
 #include "sese/text/DateTimeFormatter.h"
+#include "sese/util/DateTime.h"
 #include "sese/text/StringBuilder.h"
 
 #include <cmath>

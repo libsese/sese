@@ -45,7 +45,8 @@ struct Point {
 namespace sese::text::overload {
 template<>
 struct Formatter<Point> {
-    std::string format(const Point &p) {
+    void parse(const std::string &){}
+    static std::string format(const Point &p) {
         return fmt("({},{})", p.x, p.y);
     }
 };
@@ -54,4 +55,11 @@ struct Formatter<Point> {
 TEST(TestFormat, Formatter) {
     Point point{1, 2};
     EXPECT_EQ("(1,2)", fmt("{}", point));
+}
+
+#include <sese/util/DateTime.h>
+
+TEST(TestFormat, Parse) {
+    auto datetime = sese::DateTime::now();
+    SESE_INFO("{} | {HH:mm:ss}", datetime, datetime);
 }

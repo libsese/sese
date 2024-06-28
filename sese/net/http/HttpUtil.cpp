@@ -1,5 +1,6 @@
 #include <sese/net/http/HttpUtil.h>
 #include <sese/text/DateTimeFormatter.h>
+#include <sese/util/DateTime.h>
 
 #ifndef _WIN32
 #define _atoi64(val) strtoll(val, nullptr, 10) // NOLINT
