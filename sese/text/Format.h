@@ -16,6 +16,8 @@
 
 #include <sese/Config.h>
 #include <sese/text/StringBuilder.h>
+#include <sese/text/Number.h>
+#include <sese/text/Util.h>
 #include <sese/types/is_iterable.h>
 
 #include <cassert>
@@ -45,6 +47,71 @@ namespace overload {
         void parse(const std::string &) {}
         static std::string format(const char *value) {
             return {value};
+        }
+    };
+
+    template<typename VALUE>
+    struct Formatter<VALUE, std::enable_if_t<std::is_integral_v<VALUE> && std::is_signed_v<VALUE>>> {
+        std::string radix;
+
+        void parse(const std::string &args) {
+            radix = args;
+        }
+
+        std::string format(const VALUE &value) {
+            if (radix == "H") {
+                return Number::toHex(static_cast<int64_t>(value), true);
+            } else if (radix == "h") {
+                return Number::toHex(static_cast<int64_t>(value), false);
+            } else if (radix == "o") {
+                return Number::toOct(static_cast<int64_t>(value));
+            } else if (radix == "b") {
+                return Number::toBin(static_cast<int64_t>(value));
+            } else {
+                return std::to_string(value);
+            }
+        }
+    };
+
+    template<typename VALUE>
+    struct Formatter<VALUE, std::enable_if_t<std::is_integral_v<VALUE> && std::is_unsigned_v<VALUE>>> {
+        std::string radix;
+
+        void parse(const std::string &args) {
+            radix = args;
+        }
+
+        std::string format(const VALUE &value) {
+            if (radix == "H") {
+                return Number::toHex(static_cast<uint64_t>(value), true);
+            } else if (radix == "h") {
+                return Number::toHex(static_cast<uint64_t>(value), false);
+            } else if (radix == "o") {
+                return Number::toOct(static_cast<uint64_t>(value));
+            } else if (radix == "b") {
+                return Number::toBin(static_cast<uint64_t>(value));
+            } else {
+                return std::to_string(value);
+            }
+        }
+    };
+
+    template<typename VALUE>
+    struct Formatter<VALUE, std::enable_if_t<std::is_floating_point_v<VALUE>>> {
+        size_t precision = 6;
+
+        void parse(const std::string &args) {
+            char *end;
+            precision = std::strtol(args.c_str(), &end, 10);
+            if (*end) {
+                precision = 6;
+            }
+        }
+        std::string format(const VALUE &value) {
+            char buf[32]{};
+            auto placeholder = "%." + std::to_string(precision) + "f";
+            sese::text::snprintf(buf, sizeof(buf), placeholder.c_str(), value);
+            return buf;
         }
     };
 

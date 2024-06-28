@@ -52,14 +52,14 @@ struct Formatter<MyMapPair> {
 TEST(TestFormat, Simple) {
     int a = 1, b = 2;
     std::string c = "Hello";
-    float pi = 3.14159265;
+    double pi = 3.14159265;
     EXPECT_EQ("1, Hello, 2, World", fmt("{}, Hello, {}, World", a, b));
     EXPECT_EQ("{} Hello", fmt("\\{} {}", c));
     EXPECT_EQ("Hello", fmt("Hello"));
     EXPECT_EQ("World", fmt("{ Hello }", "World"));
     EXPECT_EQ("World", fmt("{ Hello \\}}", "World"));
-    EXPECT_EQ("1 + 2 = 3", fmt("{} + {} = {}", a, b, a + b));
-    SESE_INFO("Pi {}", pi);
+    EXPECT_EQ("0x1 + 02 = b11", fmt("0x{h} + 0{o} = b{b}", a, b, a + b));
+    EXPECT_EQ("Pi 3.14", fmt("Pi {2}", pi));
 }
 
 TEST(TestFormat, Log) {
