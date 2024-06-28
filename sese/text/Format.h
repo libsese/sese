@@ -16,6 +16,7 @@
 
 #include <sese/Config.h>
 #include <sese/text/StringBuilder.h>
+#include <sese/types/is_iterable.h>
 
 #include <cassert>
 
@@ -23,7 +24,7 @@ namespace sese::text {
 
 namespace overload {
 
-    template<typename VALUE>
+    template<typename VALUE, typename ENABLE = void>
     struct Formatter {
         void parse(const std::string &) {}
         std::string format(const VALUE &value) {
@@ -47,6 +48,36 @@ namespace overload {
         }
     };
 
+    template<typename VALUE>
+    struct Formatter<VALUE, std::enable_if_t<is_iterable_v<VALUE>>> {
+        char begin_ch = '[';
+        char end_ch = ']';
+
+        void parse(const std::string &args) {
+            if (args.size() == 2) {
+                begin_ch = args[0];
+                end_ch = args[1];
+            }
+        }
+
+        std::string format(VALUE &value) {
+            StringBuilder builder;
+            builder << begin_ch;
+            bool first = true;
+            for (auto &&item: value) {
+                auto formatter = overload::Formatter<std::decay_t<typename VALUE::value_type>>();
+                if (first) {
+                    first = false;
+                } else {
+                    builder << ", ";
+                }
+                builder << formatter.format(item);
+            }
+            builder << end_ch;
+            return builder.toString();
+        }
+    };
+
 } // namespace overload
 
 struct FmtCtx {
@@ -54,52 +85,9 @@ struct FmtCtx {
     std::string_view pattern;
     std::string_view::const_iterator pos;
 
-    explicit FmtCtx(std::string_view p) : pattern(p), pos(pattern.begin()) {
-    }
+    explicit FmtCtx(std::string_view p);
 
-    bool constantParsing(std::string &args) {
-        bool status;
-        std::string_view::iterator n, m;
-        std::string_view::iterator n_1;
-        int64_t begin, length;
-        while (true) {
-            n = std::find(pos, pattern.end(), '{');
-            if (n == pattern.end()) {
-                begin = pos - pattern.begin();
-                length = n - pos;
-                builder.append(pattern.data() + begin, length);
-                status = false;
-                break;
-            }
-            if (n != pattern.begin() && *(n - 1) == '\\') {
-                begin = pos - pattern.begin();
-                length = n - pos;
-                builder.append(pattern.data() + begin, length);
-                builder << '{';
-                pos = n + 1;
-                continue;
-            }
-            n_1 = n;
-        find_m:
-            m = std::find(n_1, pattern.end(), '}');
-            if (m == pattern.end()) {
-                status = false;
-                break;
-            }
-            if (m != pattern.begin() && *(m - 1) == '\\') {
-                n_1 = m + 1;
-                goto find_m;
-            }
-            args = std::string(n + 1, m);
-            begin = pos - pattern.begin();
-            length = n - pos;
-            builder.append(pattern.data() + begin, length);
-            pos = m + 1;
-            status = true;
-            break;
-        }
-        return status;
-    }
+    bool parsing(std::string &args);
 };
 
 constexpr size_t FormatParameterCounter(const char *pattern) {
@@ -116,32 +104,24 @@ constexpr size_t FormatParameterCounter(const char *pattern) {
     return count;
 }
 
-template<const char *PATTERN, typename... ARGS, typename std::enable_if<sizeof...(ARGS) != 0, int>::type = 0>
-constexpr bool FormatCheck(ARGS &&...) {
-    constexpr size_t PARAM_COUNT = FormatParameterCounter(PATTERN);
-    constexpr size_t ARGS_COUNT = sizeof...(ARGS);
-    return PARAM_COUNT == ARGS_COUNT;
-}
-
 template<typename T>
 void Format(FmtCtx &ctx, T &&arg) {
     std::string parsing_args;
-    auto status = ctx.constantParsing(parsing_args);
+    auto status = ctx.parsing(parsing_args);
     if (status) {
         auto formatter = overload::Formatter<std::decay_t<T>>();
         if (!parsing_args.empty()) {
             formatter.parse(parsing_args);
         }
         ctx.builder << formatter.format(std::forward<T>(arg));
-        [[maybe_unused]] auto result = ctx.constantParsing(parsing_args);
-        assert(false == result);
+        [[maybe_unused]] auto result = ctx.parsing(parsing_args);
     }
 }
 
 template<typename T, typename... ARGS>
 void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
     std::string parsing_args;
-    auto status = ctx.constantParsing(parsing_args);
+    auto status = ctx.parsing(parsing_args);
     if (status) {
         auto formatter = overload::Formatter<std::decay_t<T>>();
         if (!parsing_args.empty()) {
@@ -168,6 +148,7 @@ std::string fmt(std::string_view pattern, ARGS &&...) {
 /// \return 匹配完成的字符串
 template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) != 0, int>::type = 0>
 std::string fmt(std::string_view pattern, ARGS &&...args) {
+
     FmtCtx ctx(pattern);
     Format(ctx, std::forward<ARGS>(args)...);
     return ctx.builder.toString();

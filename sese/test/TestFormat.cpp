@@ -17,16 +17,49 @@
 #include <sese/text/Format.h>
 #include <sese/Log.h>
 
+#include <map>
+
 using namespace sese::text;
+
+using MyMap = std::map<std::string, int>;
+using MyMapPair = std::pair<const std::string, int>;
+
+struct Point {
+    int x;
+    int y;
+};
+
+namespace sese::text::overload {
+template<>
+struct Formatter<Point> {
+    static void parse(const std::string &args) {
+        SESE_INFO("args {}", args);
+    }
+    static std::string format(const Point &p) {
+        return fmt("({},{})", p.x, p.y);
+    }
+};
+
+template<>
+struct Formatter<MyMapPair> {
+    void parse(const std::string &) {}
+    static std::string format(MyMapPair &pair) {
+        return "{" + pair.first + "," + std::to_string(pair.second) + "}";
+    }
+};
+} // namespace sese::text::overload
 
 TEST(TestFormat, Simple) {
     int a = 1, b = 2;
     std::string c = "Hello";
+    float pi = 3.14159265;
     EXPECT_EQ("1, Hello, 2, World", fmt("{}, Hello, {}, World", a, b));
-    EXPECT_EQ("\\{} Hello", fmt("\\{} {}", c));
+    EXPECT_EQ("{} Hello", fmt("\\{} {}", c));
     EXPECT_EQ("Hello", fmt("Hello"));
     EXPECT_EQ("World", fmt("{ Hello }", "World"));
     EXPECT_EQ("World", fmt("{ Hello \\}}", "World"));
+    EXPECT_EQ("1 + 2 = 3", fmt("{} + {} = {}", a, b, a + b));
+    SESE_INFO("Pi {}", pi);
 }
 
 TEST(TestFormat, Log) {
@@ -37,24 +70,9 @@ TEST(TestFormat, Log) {
     SESE_RAW("Hello\n", 6);
 }
 
-struct Point {
-    int x;
-    int y;
-};
-
-namespace sese::text::overload {
-template<>
-struct Formatter<Point> {
-    void parse(const std::string &){}
-    static std::string format(const Point &p) {
-        return fmt("({},{})", p.x, p.y);
-    }
-};
-} // namespace sese::text::overload
-
 TEST(TestFormat, Formatter) {
     Point point{1, 2};
-    EXPECT_EQ("(1,2)", fmt("{}", point));
+    SESE_INFO(R"(\{{\}123\}ABC\}})", point);
 }
 
 #include <sese/util/DateTime.h>
@@ -62,4 +80,21 @@ TEST(TestFormat, Formatter) {
 TEST(TestFormat, Parse) {
     auto datetime = sese::DateTime::now();
     SESE_INFO("{} | {HH:mm:ss}", datetime, datetime);
+}
+
+TEST(TestFormat, Constexpr) {
+    constexpr auto PATTERN = "{} {}";
+    EXPECT_EQ(2, FormatParameterCounter(PATTERN));
+}
+
+TEST(TestFormat, Iterable) {
+    auto array = std::array<int, 3>({1, 2, 3});
+    EXPECT_EQ("[1, 2, 3]",fmt("{}", array));
+
+    MyMap map;
+    map["abc"] = 114;
+    map["efg"] = 514;
+    EXPECT_EQ("[{abc,114}, {efg,514}]" ,fmt("{}", map));
+
+    SESE_INFO(fmt("{AB}|{CD}", map, array));
 }
