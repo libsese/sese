@@ -33,4 +33,4 @@ struct FormatOption {
     bool parse(const std::string &value);
 };
 
-}
+} // namespace sese::text

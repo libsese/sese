@@ -76,3 +76,33 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
     }
     return status;
 }
+
+bool sese::text::FormatOption_StringParse(sese::text::FormatOption &opt, const std::string &opt_str) {
+    auto status = opt.parse(opt_str);
+    if (!status) {
+        return false;
+    }
+    if (opt.ext_type != 0) {
+        return false;
+    }
+    if (opt.float_accuracy != 0) {
+        return false;
+    }
+    return true;
+}
+
+std::string sese::text::FormatOption_StringFormat(sese::text::FormatOption &opt, const std::string &value) {
+    if (opt.wide <= value.length()) {
+        return value;
+    }
+    auto diff = opt.wide - value.length();
+    switch (opt.align) {
+        case Align::LEFT:
+            return value + std::string(diff, ' ');
+        case Align::RIGHT:
+            return std::string(diff, ' ') + value;
+        case Align::CENTER:
+            return std::string(diff / 2, ' ') + value + std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), ' ');
+    }
+    return {};
+}

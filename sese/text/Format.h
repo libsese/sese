@@ -21,33 +21,51 @@
 #include <sese/text/FormatOption.h>
 #include <sese/types/is_iterable.h>
 
+
 #include <cassert>
 
 namespace sese::text {
+
+bool FormatOption_StringParse(FormatOption &opt, const std::string &opt_str);
+
+std::string FormatOption_StringFormat(FormatOption &opt, const std::string &value);
 
 namespace overload {
 
     template<typename VALUE, typename ENABLE = void>
     struct Formatter {
-        void parse(const std::string &) {}
-        std::string format(const VALUE &value) {
-            return std::to_string(value);
+        bool parse(const std::string &) {
+            return false;
+        }
+
+        std::string format(const VALUE &) {
+            return {};
         }
     };
 
     template<>
     struct Formatter<std::string> {
-        void parse(const std::string &) {}
-        static std::string format(const std::string &value) {
-            return value;
+        FormatOption option;
+
+        bool parse(const std::string &opt_str) {
+            return FormatOption_StringParse(option, opt_str);
+        }
+
+        std::string format(const std::string &value) {
+            return FormatOption_StringFormat(option, value);
         }
     };
 
     template<>
     struct Formatter<const char *> {
-        void parse(const std::string &) {}
-        static std::string format(const char *value) {
-            return {value};
+        FormatOption option;
+
+        bool parse(const std::string &opt_str) {
+            return FormatOption_StringParse(option, opt_str);
+
+        }
+        std::string format(const char *value) {
+            return FormatOption_StringFormat(option, value);
         }
     };
 
