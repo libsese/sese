@@ -85,7 +85,7 @@ bool sese::text::FormatOption_StringParse(sese::text::FormatOption &opt, const s
     if (opt.ext_type != 0) {
         return false;
     }
-    if (opt.float_accuracy != 0) {
+    if (opt.float_placeholder != 0) {
         return false;
     }
     return true;
@@ -107,4 +107,30 @@ std::string sese::text::FormatOption_StringFormat(sese::text::FormatOption &opt,
                    std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
     }
     return {};
+}
+
+bool sese::text::FormatOption_NumberParse(sese::text::FormatOption &opt, const std::string &opt_str) {
+    auto status = opt.parse(opt_str);
+    if (!status) {
+        return false;
+    }
+
+    switch (opt.ext_type) {
+        case 'f':
+        case '%':
+            break;
+        case 'X':
+        case 'x':
+        case 'o':
+        case 'b':
+        case 'd':
+        case '\0':
+            if (opt.float_placeholder != 0) {
+                return false;
+            }
+            break;
+        default:
+            return false;
+    }
+    return true;
 }

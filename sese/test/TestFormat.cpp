@@ -15,6 +15,7 @@
 #include <gtest/gtest.h>
 
 #include <sese/text/Format.h>
+#include <sese/util/DateTime.h>
 #include <sese/Log.h>
 
 #include <map>
@@ -32,8 +33,9 @@ struct Point {
 namespace sese::text::overload {
 template<>
 struct Formatter<Point> {
-    static void parse(const std::string &args) {
+    static bool parse(const std::string &args) {
         SESE_INFO("args {}", args);
+        return true;
     }
     static std::string format(const Point &p) {
         return fmt("({},{})", p.x, p.y);
@@ -56,7 +58,7 @@ TEST(TestFormat, OptionParse) {
         EXPECT_EQ(option.align, Align::CENTER);
         EXPECT_EQ(option.wide_char, ' ');
         EXPECT_EQ(option.wide, 3);
-        EXPECT_EQ(option.float_accuracy, 2);
+        EXPECT_EQ(option.float_placeholder, 2);
         EXPECT_EQ(option.ext_type, 'f');
     }
     {
@@ -65,7 +67,7 @@ TEST(TestFormat, OptionParse) {
         EXPECT_EQ(option.align, Align::LEFT);
         EXPECT_EQ(option.wide_char, ' ');
         EXPECT_EQ(option.wide, 0);
-        EXPECT_EQ(option.float_accuracy, 2);
+        EXPECT_EQ(option.float_placeholder, 2);
         EXPECT_EQ(option.ext_type, '%');
     }
     {
@@ -74,7 +76,7 @@ TEST(TestFormat, OptionParse) {
         EXPECT_EQ(option.align, Align::RIGHT);
         EXPECT_EQ(option.wide_char, 'x');
         EXPECT_EQ(option.wide, 0);
-        EXPECT_EQ(option.float_accuracy, 0);
+        EXPECT_EQ(option.float_placeholder, 0);
         EXPECT_EQ(option.ext_type, '\0');
     }
 
@@ -109,24 +111,23 @@ TEST(TestFormat, Align) {
     EXPECT_EQ("HelloA", fmt("{:A<6}", "Hello"));
 }
 
-TEST(TestFormat, Log) {
-    SESE_DEBUG("Hello {} {}", 123, "World");
-    SESE_INFO("Hello {}", "World");
-    SESE_WARN("Hello {}");
-    SESE_ERROR("Hello \\}\\{", 3.1415);
-    SESE_RAW("Hello\n", 6);
+TEST(TestFormat, Number) {
+    EXPECT_EQ("   114514", fmt("{:>9}", 114514));
+    EXPECT_EQ("      514", fmt("{:>9}", 514));
+    EXPECT_EQ("  14.000%", fmt("{:>9.3%}", 0.14));
+    EXPECT_EQ("      3.1", fmt("{:>9}", 3.14));
+    EXPECT_EQ("0x001E240", fmt("0x{:0>7X}", 123456));
+    EXPECT_EQ("0x001e240", fmt("0x{:0>7x}", 123456));
+    EXPECT_EQ("000030071", fmt("0{:0>8o}", 12345));
+    EXPECT_EQ("b01111011", fmt("b{:0>8b}", 123));
 }
 
 TEST(TestFormat, Formatter) {
     Point point{1, 2};
     SESE_INFO(R"(\{{\}123\}ABC\}})", point);
-}
-
-#include <sese/util/DateTime.h>
-
-TEST(TestFormat, Parse) {
     auto datetime = sese::DateTime::now();
     SESE_INFO("{} | {HH:mm:ss}", datetime, datetime);
+    SESE_INFO("{A}", "Hello");
 }
 
 TEST(TestFormat, Constexpr) {
@@ -143,5 +144,5 @@ TEST(TestFormat, Iterable) {
     map["efg"] = 514;
     EXPECT_EQ("[{abc,114}, {efg,514}]", fmt("{}", map));
 
-    SESE_INFO(fmt("{AB}|{CD}", map, array));
+    SESE_INFO(fmt("{A,B}|{C,D}", map, array));
 }

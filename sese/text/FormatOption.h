@@ -28,7 +28,7 @@ struct FormatOption {
     Align align = Align::LEFT;
     char wide_char = ' ';
     uint16_t wide = 0;
-    uint16_t float_accuracy = 0;
+    uint16_t float_placeholder = 0;
     char ext_type = 0;
 
     bool parse(const std::string &value);

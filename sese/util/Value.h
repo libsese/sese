@@ -257,9 +257,13 @@ namespace text::overload {
     struct Formatter<Value> {
         size_t level = 4;
 
-        void parse(const std::string &args) {
+        bool parse(const std::string &args) {
             char *end;
             level = static_cast<size_t>(std::strtol(args.c_str(), &end, 10));
+            if (level == 0) {
+                return false;
+            }
+            return true;
         }
 
         std::string format(Value &value) const {

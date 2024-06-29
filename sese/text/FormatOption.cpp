@@ -54,7 +54,7 @@ parsing_align:
 
     if (*end == '.') {
         char *new_end;
-        float_accuracy = static_cast<uint16_t>(std::strtol(end + 1, &new_end, 10));
+        float_placeholder = static_cast<uint16_t>(std::strtol(end + 1, &new_end, 10));
         if (end + 1 == new_end) {
             // 精度缺失
             return false;

@@ -98,8 +98,9 @@ namespace text::overload {
     struct Formatter<DateTime> {
         std::string datetime_pattern = "yyyy-MM-dd HH:mm:ss";
 
-        void parse(const std::string &pattern){
+        bool parse(const std::string &pattern){
             datetime_pattern = pattern;
+            return true;
         }
 
         [[nodiscard]] std::string format(const DateTime &datetime) const {
