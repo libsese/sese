@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['列表_0',['Bug 列表',['../bug.html',1,'']]]
+  ['字符串格式化_0',['字符串格式化',['../md_sese_2text_2_f_o_r_m_a_t.html',1,'']]]
 ];

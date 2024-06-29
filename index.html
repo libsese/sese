@@ -145,7 +145,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1text_1_1overload.html">sese::text::overload</a> {</div>
 <div class="line"><span class="keyword">template</span>&lt;&gt;</div>
 <div class="line"><span class="keyword">struct </span>Formatter&lt;Point&gt; {</div>
-<div class="line">    std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter.html#ae635bc3fcea465bc2211eecaa4aef296">format</a>(<span class="keyword">const</span> Point &amp;p) {</div>
+<div class="line">    <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter.html#acdd3ac513bc1033698dbeb98c1394f97">parse</a>(<span class="keyword">const</span> std::string &amp;) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line">    std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter.html#aca038c0576c63a72c922769ce0d2ab5c">format</a>(<span class="keyword">const</span> Point &amp;p) {</div>
 <div class="line">        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a>(<span class="stringliteral">&quot;({},{})&quot;</span>, p.x, p.y);</div>
 <div class="line">    }</div>
 <div class="line">};</div>
@@ -197,7 +198,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p>跨进程通讯</p>
 <div class="fragment"><div class="line"> ++</div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_i_p_c_8h.html">sese/system/IPC.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="record_2_marco_8h.html" title="日志宏">sese/record/Marco.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_log_8h.html">sese/Log.h</a>&gt;</span></div>
 <div class="line"><span class="comment">// ···</span></div>
 <div class="line"><span class="comment">// server</span></div>
 <div class="line"><span class="keyword">auto</span> channel = <a class="code hl_function" href="classsese_1_1system_1_1_i_p_c_channel.html#a020521e704dc74be511d5174f9b470fb">sese::system::IPCChannel::create</a>(<span class="stringliteral">&quot;Test&quot;</span>, 1024);</div>
@@ -208,7 +209,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">            <span class="keywordflow">continue</span>;</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;msg: messages) {</div>
-<div class="line">            <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;recv %s&quot;</span>, msg.getDataAsString().c_str());</div>
+<div class="line">            <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;recv {}&quot;</span>, msg.getDataAsString());</div>
 <div class="line"> </div>
 <div class="line">            <span class="keywordflow">if</span> (msg.getDataAsString() == <span class="stringliteral">&quot;Exit&quot;</span>) {</div>
 <div class="line">                <span class="keywordflow">goto</span> end;</div>
@@ -252,7 +253,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p>我们定义了一些 options 用于启用或关闭部分功能，具体可以参照以下的类似格式：</p>
 <p><a href="https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/CMakeLists.txt#L8-L16">https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/CMakeLists.txt#L8-L16</a></p>
 <blockquote class="doxtable">
-<p>&zwj;[!TIP] 请根据最新 <a href="./CMakeLists.txt">CMakeLists.txt</a>文件了解相应的功能选项， 或者你可以直接使用我们预设的 <a href="./CMakePresets.json">CMakePresets.json</a>, 这将默认开启绝大多数功能选项。 </p>
+<p>&zwj;[!TIP] 请根据最新 <a href="./CMakeLists.txt">CMakeLists.txt</a> 文件了解相应的功能选项， 或者你可以直接使用我们预设的 <a href="./CMakePresets.json">CMakePresets.json</a>, 这将默认开启绝大多数功能选项。 </p>
 </blockquote>
 <ol type="1">
 <li>编译</li>
@@ -273,7 +274,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">  ]</div>
 <div class="line">}</div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p>&zwj;[!IMPORTANT] 自内建库基线 <code>14b91796a68c87bc8d5cb35911b39287ccb7bd95</code> 之后，sese 已进入内建列表。 在此之前，你需要多编写一个配置文件用于导入我们的<a href="https://learn.microsoft.com/en-us/vcpkg/consume/git-registries">私有注册表</a>。 </p>
+<p>&zwj;[!IMPORTANT] 自内建库基线 <code>14b91796a68c87bc8d5cb35911b39287ccb7bd95</code> 之后，sese 已进入内建列表。 在此之前，你需要多编写一个配置文件用于导入我们的<a href="https://learn.microsoft.com/en-us/vcpkg/consume/git-registries">私有注册表</a>，就像这样： </p>
 </blockquote>
 <p><code>vcpkg-configuration.json</code></p>
 <div class="fragment"><div class="line">{</div>
@@ -297,7 +298,16 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h2><a class="anchor" id="autotoc_md7"></a>
 测试</h2>
 <p>使用了 googletest 作为了测试框架，测试的详细信息可以从 github actions 中查看，包括各个平台的测试结果和 linux 的测试覆盖率等内容。</p>
-<p>| 平台 | 入口 | 单元测试 | 覆盖率测试 | |&ndash;|&ndash;|&ndash;|&ndash;| | Windows | <a href="https://github.com/libsese/sese/actions/workflows/windows-2022.yml">Unit Tests</a> | ✅ | | Linux | <a href="https://github.com/libsese/sese/actions/workflows/ubuntu-22.04-apt.yml">Unit Tests</a> | ✅ | ✅ | | macOS | <a href="https://github.com/libsese/sese/actions/workflows/macos-12-brew.yml">Unit Tests</a> | ✅ |</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">平台   </th><th class="markdownTableHeadNone">入口   </th><th class="markdownTableHeadNone">单元测试   </th><th class="markdownTableHeadNone">覆盖率测试    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Windows   </td><td class="markdownTableBodyNone"><a href="https://github.com/libsese/sese/actions/workflows/windows-2022.yml">Unit Tests</a>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Linux   </td><td class="markdownTableBodyNone"><a href="https://github.com/libsese/sese/actions/workflows/ubuntu-22.04-apt.yml">Unit Tests</a>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone">✅    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">macOS   </td><td class="markdownTableBodyNone"><a href="https://github.com/libsese/sese/actions/workflows/macos-12-brew.yml">Unit Tests</a>   </td><td class="markdownTableBodyNone">✅   </td><td class="markdownTableBodyNone"></td></tr>
+</table>
 <ol type="1">
 <li>本地测试</li>
 </ol>
@@ -336,7 +346,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:06 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 29日 星期六 11:11:11 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

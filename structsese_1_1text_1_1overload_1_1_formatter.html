@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('structsese_1_1text_1_1overload_1_1_for
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="structsese_1_1text_1_1overload_1_1_formatter-members.html">所有成员列表</a>  </div>
-  <div class="headertitle"><div class="title">sese::text::overload::Formatter&lt; VALUE &gt; 模板结构体 参考</div></div>
+  <div class="headertitle"><div class="title">sese::text::overload::Formatter&lt; VALUE, ENABLE &gt; 模板结构体 参考</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -137,26 +137,56 @@ $(document).ready(function(){initNavTree('structsese_1_1text_1_1overload_1_1_for
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ae635bc3fcea465bc2211eecaa4aef296" id="r_ae635bc3fcea465bc2211eecaa4aef296"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1text_1_1overload_1_1_formatter.html#ae635bc3fcea465bc2211eecaa4aef296">format</a> (const VALUE &amp;value)</td></tr>
-<tr class="separator:ae635bc3fcea465bc2211eecaa4aef296"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdd3ac513bc1033698dbeb98c1394f97" id="r_acdd3ac513bc1033698dbeb98c1394f97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1text_1_1overload_1_1_formatter.html#acdd3ac513bc1033698dbeb98c1394f97">parse</a> (const std::string &amp;)</td></tr>
+<tr class="separator:acdd3ac513bc1033698dbeb98c1394f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca038c0576c63a72c922769ce0d2ab5c" id="r_aca038c0576c63a72c922769ce0d2ab5c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsese_1_1text_1_1overload_1_1_formatter.html#aca038c0576c63a72c922769ce0d2ab5c">format</a> (const VALUE &amp;)</td></tr>
+<tr class="separator:aca038c0576c63a72c922769ce0d2ab5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="ae635bc3fcea465bc2211eecaa4aef296" name="ae635bc3fcea465bc2211eecaa4aef296"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae635bc3fcea465bc2211eecaa4aef296">&#9670;&#160;</a></span>format()</h2>
+<a id="aca038c0576c63a72c922769ce0d2ab5c" name="aca038c0576c63a72c922769ce0d2ab5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca038c0576c63a72c922769ce0d2ab5c">&#9670;&#160;</a></span>format()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename VALUE &gt; </div>
+template&lt;typename VALUE , typename ENABLE  = void&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="structsese_1_1text_1_1overload_1_1_formatter.html">sese::text::overload::Formatter</a>&lt; VALUE &gt;::format </td>
+          <td class="memname">std::string <a class="el" href="structsese_1_1text_1_1overload_1_1_formatter.html">sese::text::overload::Formatter</a>&lt; VALUE, ENABLE &gt;::format </td>
           <td>(</td>
           <td class="paramtype">const VALUE &amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acdd3ac513bc1033698dbeb98c1394f97" name="acdd3ac513bc1033698dbeb98c1394f97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdd3ac513bc1033698dbeb98c1394f97">&#9670;&#160;</a></span>parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename VALUE , typename ENABLE  = void&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="structsese_1_1text_1_1overload_1_1_formatter.html">sese::text::overload::Formatter</a>&lt; VALUE, ENABLE &gt;::parse </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -178,7 +208,7 @@ template&lt;typename VALUE &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1text.html">text</a></li><li class="navelem"><a class="el" href="namespacesese_1_1text_1_1overload.html">overload</a></li><li class="navelem"><a class="el" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a></li>
-    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:06 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 29日 星期六 11:11:10 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

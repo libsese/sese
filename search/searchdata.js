@@ -1,17 +1,17 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefghijklmnopqrstuvwxyz~关内列对平弃文构测示简贡",
+  0: "_abcdefghijklmnopqrstuvwxyz~关列字对弃文构测目示简贡",
   1: "abcdefghijklmnopqrstuvwxy",
   2: "s",
   3: "abcdefghijklmnopqrstuvwxyz",
   4: "abcdefghijklmnopqrstuvwxy~",
   5: "_abcdefghiklmnopqrstuvwyz",
   6: "abcdefghiklmnoprstuvw",
-  7: "cdefhlmprst",
+  7: "acdefhlmprst",
   8: "abcdefghilmnoprstuvwz",
   9: "hinst",
   10: "_abcdefghilmnprstvwx",
-  11: "bs关内列平弃"
+  11: "bs关列字弃目"
 };
 
 var indexSectionNames =

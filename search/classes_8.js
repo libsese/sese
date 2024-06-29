@@ -15,5 +15,6 @@ var searchData=
   ['ipcchannel_12',['IPCChannel',['../classsese_1_1system_1_1_i_p_c_channel.html',1,'sese::system']]],
   ['ipv4address_13',['IPv4Address',['../classsese_1_1net_1_1_i_pv4_address.html',1,'sese::net']]],
   ['ipv6address_14',['IPv6Address',['../classsese_1_1net_1_1_i_pv6_address.html',1,'sese::net']]],
-  ['iterator_15',['iterator',['../classsese_1_1_range_1_1_iterator.html',1,'sese::Range&lt; TYPE &gt;::Iterator'],['../classsstr_1_1_s_string_view_1_1_iterator.html',1,'sstr::SStringView::Iterator']]]
+  ['is_5fiterable_15',['is_iterable',['../structsese_1_1is__iterable.html',1,'sese']]],
+  ['iterator_16',['iterator',['../classsese_1_1_range_1_1_iterator.html',1,'sese::Range&lt; TYPE &gt;::Iterator'],['../classsstr_1_1_s_string_view_1_1_iterator.html',1,'sstr::SStringView::Iterator']]]
 ];

@@ -148,115 +148,333 @@ $(document).ready(function(){initNavTree('_format_8h_source.html',''); initResiz
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// See the License for the specific language governing permissions and</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// limitations under the License.</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;<a class="code" href="_string_builder_8h.html" title="线程不安全的字符串缓存类">sese/text/StringBuilder.h</a>&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1text.html">sese::text</a> {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespacesese_1_1text_1_1overload.html">   24</a></span><span class="keyword">namespace </span>overload {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> VALUE&gt;</div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter.html">   27</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a> {</div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter.html#ae635bc3fcea465bc2211eecaa4aef296">   28</a></span>        std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter.html#ae635bc3fcea465bc2211eecaa4aef296">format</a>(<span class="keyword">const</span> VALUE &amp;value) {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keywordflow">return</span> std::to_string(value);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        }</div>
-</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    };</div>
-</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;<a class="code" href="_config_8h.html" title="通用配置文件">sese/Config.h</a>&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;<a class="code" href="_string_builder_8h.html" title="线程不安全的字符串缓存类">sese/text/StringBuilder.h</a>&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;<a class="code" href="_number_8h.html" title="数字转字符串工具">sese/text/Number.h</a>&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;<a class="code" href="text_2_util_8h.html" title="文本工具">sese/text/Util.h</a>&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;<a class="code" href="_format_option_8h.html">sese/text/FormatOption.h</a>&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;<a class="code" href="is__iterable_8h.html">sese/types/is_iterable.h</a>&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">template</span>&lt;&gt;</div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html">   34</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;std::string&gt; {</div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html#a65b7681f3df6cefaa9f0d138d19e23ea">   35</a></span>        <span class="keyword">static</span> std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html#a65b7681f3df6cefaa9f0d138d19e23ea">format</a>(<span class="keyword">const</span> std::string &amp;value) {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordflow">return</span> value;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        }</div>
-</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    };</div>
-</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">template</span>&lt;&gt;</div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html">   41</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;const char*&gt; {</div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html#a6a56632b2c12ee3c7ca4814d802003bb">   42</a></span>        <span class="keyword">static</span> std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html#a6a56632b2c12ee3c7ca4814d802003bb">format</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *value) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">return</span> { value };</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
-</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
-</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesese_1_1text.html">sese::text</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese_1_1text.html#a8d3e220401d0f6c70e07527d71ea3e69">FormatOption_StringParse</a>(FormatOption &amp;opt, <span class="keyword">const</span> std::string &amp;opt_str);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a183519fd58c1a3de64ed0ebec20ec11f">FormatOption_StringFormat</a>(FormatOption &amp;opt, <span class="keyword">const</span> std::string &amp;value);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>} <span class="comment">// namespace overload</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacesese_1_1text.html#a8af2b87a2c783220d31b870d3321ebfe">FormatOption_NumberParse</a>(FormatOption &amp;opt, <span class="keyword">const</span> std::string &amp;opt_str);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#a53b91115c6475e6617fb5980104ed127">   59</a></span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a53b91115c6475e6617fb5980104ed127">FormatOption_NumberFormat</a>(<a class="code hl_struct" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> &amp;opt, T number) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">auto</span> radix = opt.<a class="code hl_variable" href="structsese_1_1text_1_1_format_option.html#a0a3e6608e45a6e9c8b3ee146211b0a1f">ext_type</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span> (radix == <span class="charliteral">&#39;X&#39;</span>) {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a367d57b9fe6a04ea97cbea25337ed8c7">Number::toHex</a>(<span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(number), <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (radix == <span class="charliteral">&#39;x&#39;</span>) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a367d57b9fe6a04ea97cbea25337ed8c7">Number::toHex</a>(<span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(number), <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (radix == <span class="charliteral">&#39;o&#39;</span>) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#a45b66063561da092179595fd151850bb">Number::toOct</a>(<span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(number));</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (radix == <span class="charliteral">&#39;b&#39;</span>) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classsese_1_1text_1_1_number.html#aec9b52aa2f4761f0c208459959a5208d">Number::toBin</a>(<span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(number));</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> std::to_string(number);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="};">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1_fmt_ctx.html">   49</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">   50</a></span>    <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> <a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1_fmt_ctx.html#a21bb7fcb091faa86791df810a1b557f0">   51</a></span>    std::string_view <a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#a21bb7fcb091faa86791df810a1b557f0">pattern</a>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1_fmt_ctx.html#a5b2fe3aa6a8cde96c8bd9b1cce73d973">   52</a></span>    std::string_view::const_iterator <a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#a5b2fe3aa6a8cde96c8bd9b1cce73d973">pos</a>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">explicit</span> <a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a>(std::string_view p);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#ab5e9ca5268483ded774872bda6d1c6a0">constantParsing</a>();</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#a6d82f64bd1aefa811da1e0552c9a5716">   80</a></span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a6d82f64bd1aefa811da1e0552c9a5716">FormatOption_FloatNumberFormat</a>(<a class="code hl_struct" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> &amp;opt, T number) {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span> (opt.<a class="code hl_variable" href="structsese_1_1text_1_1_format_option.html#ac1629e72ba75f3592b9e681a4cc761d7">float_placeholder</a> == 0) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        opt.<a class="code hl_variable" href="structsese_1_1text_1_1_format_option.html#ac1629e72ba75f3592b9e681a4cc761d7">float_placeholder</a> = 1;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">char</span> buffer[256]{};</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">if</span> (opt.<a class="code hl_variable" href="structsese_1_1text_1_1_format_option.html#a0a3e6608e45a6e9c8b3ee146211b0a1f">ext_type</a> == <span class="charliteral">&#39;%&#39;</span>) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        number *= 100;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keyword">const</span> std::string PATTERN = <span class="stringliteral">&quot;%.&quot;</span> + std::to_string(opt.<a class="code hl_variable" href="structsese_1_1text_1_1_format_option.html#ac1629e72ba75f3592b9e681a4cc761d7">float_placeholder</a>) + <span class="stringliteral">&quot;f%%&quot;</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_function" href="namespacesese_1_1text.html#aefab215e929dd41c67d4f886b48acc1d">sese::text::snprintf</a>(buffer, <span class="keyword">sizeof</span>(buffer), PATTERN.c_str(), number);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keyword">const</span> std::string PATTERN = <span class="stringliteral">&quot;%.&quot;</span> + std::to_string(opt.<a class="code hl_variable" href="structsese_1_1text_1_1_format_option.html#ac1629e72ba75f3592b9e681a4cc761d7">float_placeholder</a>) + <span class="stringliteral">&quot;f&quot;</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_function" href="namespacesese_1_1text.html#aefab215e929dd41c67d4f886b48acc1d">sese::text::snprintf</a>(buffer, <span class="keyword">sizeof</span>(buffer), PATTERN.c_str(), number);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">return</span> buffer;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">   60</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(<a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, T &amp;&amp;arg) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">auto</span> status = ctx.<a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#ab5e9ca5268483ded774872bda6d1c6a0">constantParsing</a>();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (status) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keyword">auto</span> formatter = <a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">overload::Formatter&lt;std::decay_t&lt;T&gt;</a>&gt;();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; formatter.format(std::forward&lt;T&gt;(arg));</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        [[maybe_unused]] <span class="keyword">auto</span> result = ctx.<a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#ab5e9ca5268483ded774872bda6d1c6a0">constantParsing</a>();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        assert(<span class="keyword">false</span> == result);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="namespacesese_1_1text_1_1overload.html">   96</a></span><span class="keyword">namespace </span>overload {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> VALUE, <span class="keyword">typename</span> ENABLE = <span class="keywordtype">void</span>&gt;</div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="};">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter.html">   99</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a> {</div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter.html#acdd3ac513bc1033698dbeb98c1394f97">  100</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter.html#acdd3ac513bc1033698dbeb98c1394f97">parse</a>(<span class="keyword">const</span> std::string &amp;) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... ARGS&gt;</div>
-<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#ad03ac0bc2a7e17cdff8fab6e0fb09004">   71</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(<a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, T &amp;&amp;arg, ARGS&amp;&amp;... args) {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">auto</span> status = ctx.<a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#ab5e9ca5268483ded774872bda6d1c6a0">constantParsing</a>();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (status) {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keyword">auto</span> formatter = <a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">overload::Formatter&lt;std::decay_t&lt;T&gt;</a>&gt;();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; formatter.format(std::forward&lt;T&gt;(arg));</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(ctx, std::forward&lt;ARGS&gt;(args)...);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter.html#aca038c0576c63a72c922769ce0d2ab5c">  104</a></span>        std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter.html#aca038c0576c63a72c922769ce0d2ab5c">format</a>(<span class="keyword">const</span> VALUE &amp;) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <span class="keywordflow">return</span> {};</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS, <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(ARGS) == 0, <span class="keywordtype">int</span>&gt;::type = 0&gt;</div>
-<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">   85</a></span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a>(std::string_view pattern, ARGS&amp;&amp;...) {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">return</span> { pattern.begin(), pattern.end() };</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    };</div>
 </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS, <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(ARGS) != 0, <span class="keywordtype">int</span>&gt;::type = 0&gt;</div>
-<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#ab30c437aca1276fa995c72684b4ec41c">   95</a></span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a>(std::string_view pattern, ARGS&amp;&amp;... args) {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> ctx(pattern);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(ctx, std::forward&lt;ARGS&gt;(args)...);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">return</span> ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a>.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString</a>();</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keyword">template</span>&lt;&gt;</div>
+<div class="foldopen" id="foldopen00110" data-start="{" data-end="};">
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html">  110</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;std::string&gt; {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html#ac60f108a5592bbfeb9fcb6ce6ac208dd">  111</a></span>        <a class="code hl_struct" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> <a class="code hl_variable" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html#ac60f108a5592bbfeb9fcb6ce6ac208dd">option</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="}">
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html#a70b899add5d6fbb0ff573c43c529beaf">  113</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html#a70b899add5d6fbb0ff573c43c529beaf">parse</a>(<span class="keyword">const</span> std::string &amp;opt_str) {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a8d3e220401d0f6c70e07527d71ea3e69">FormatOption_StringParse</a>(option, opt_str);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        }</div>
 </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>} <span class="comment">// namespace sese::text</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html#acea28a41d7ad844b61b6475d1d8b4120">  117</a></span>        std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01std_1_1string_01_4.html#acea28a41d7ad844b61b6475d1d8b4120">format</a>(<span class="keyword">const</span> std::string &amp;value) {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a183519fd58c1a3de64ed0ebec20ec11f">FormatOption_StringFormat</a>(option, value);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        }</div>
+</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    };</div>
+</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">template</span>&lt;&gt;</div>
+<div class="foldopen" id="foldopen00123" data-start="{" data-end="};">
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html">  123</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;const char *&gt; {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html#a9cb49ea83bdc6071ca76f30fa589eda4">  124</a></span>        <a class="code hl_struct" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> <a class="code hl_variable" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html#a9cb49ea83bdc6071ca76f30fa589eda4">option</a>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html#ae0dd7aefadfc44877a9e0b1e694f9213">  126</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html#ae0dd7aefadfc44877a9e0b1e694f9213">parse</a>(<span class="keyword">const</span> std::string &amp;opt_str) {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a8d3e220401d0f6c70e07527d71ea3e69">FormatOption_StringParse</a>(option, opt_str);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00129" data-start="{" data-end="}">
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html#a8b186461506b7d75f2999224de206902">  129</a></span>        std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01const_01char_01_5_01_4.html#a8b186461506b7d75f2999224de206902">format</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *value) {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a183519fd58c1a3de64ed0ebec20ec11f">FormatOption_StringFormat</a>(option, value);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        }</div>
+</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    };</div>
+</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> VALUE&gt;</div>
+<div class="foldopen" id="foldopen00135" data-start="{" data-end="};">
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html">  135</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;VALUE, std::enable_if_t&lt;std::is_integral_v&lt;VALUE&gt; &amp;&amp; std::is_signed_v&lt;VALUE&gt;&gt;&gt; {</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html#a544d6a1ef328e17e2f777f314116953f">  136</a></span>        <a class="code hl_struct" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> <a class="code hl_variable" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html#a544d6a1ef328e17e2f777f314116953f">option</a>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="foldopen" id="foldopen00138" data-start="{" data-end="}">
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html#ab4cdd5aa293cf5300db223483b51c98f">  138</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html#ab4cdd5aa293cf5300db223483b51c98f">parse</a>(<span class="keyword">const</span> std::string &amp;opt_str) {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a8af2b87a2c783220d31b870d3321ebfe">FormatOption_NumberParse</a>(option, opt_str);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        }</div>
+</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html#abb90868df7119b06d7478aaaef6cfee0">  142</a></span>        std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_eb0a83e0c5e86f6c309e463d9dc234b8.html#abb90868df7119b06d7478aaaef6cfee0">format</a>(<span class="keyword">const</span> VALUE &amp;value) {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <span class="keyword">auto</span> number = FormatOption_NumberFormat&lt;int64_t&gt;(option, value);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a183519fd58c1a3de64ed0ebec20ec11f">FormatOption_StringFormat</a>(option, number);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        }</div>
+</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    };</div>
+</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> VALUE&gt;</div>
+<div class="foldopen" id="foldopen00149" data-start="{" data-end="};">
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html">  149</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;VALUE, std::enable_if_t&lt;std::is_integral_v&lt;VALUE&gt; &amp;&amp; std::is_unsigned_v&lt;VALUE&gt;&gt;&gt; {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html#abbfabfe68932d46bfa3908028f5656cc">  150</a></span>        <a class="code hl_struct" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> <a class="code hl_variable" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html#abbfabfe68932d46bfa3908028f5656cc">option</a>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="foldopen" id="foldopen00152" data-start="{" data-end="}">
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html#adb2d7725785a88378b0af7a7a0907e9b">  152</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html#adb2d7725785a88378b0af7a7a0907e9b">parse</a>(<span class="keyword">const</span> std::string &amp;opt_str) {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a8af2b87a2c783220d31b870d3321ebfe">FormatOption_NumberParse</a>(option, opt_str);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        }</div>
+</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="foldopen" id="foldopen00156" data-start="{" data-end="}">
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html#a78c67c20804fe8fb99e57c48a5d04fa5">  156</a></span>        std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5781fa6f48ae791c4204066d21d2c434.html#a78c67c20804fe8fb99e57c48a5d04fa5">format</a>(<span class="keyword">const</span> VALUE &amp;value) {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            <span class="keyword">auto</span> number = FormatOption_NumberFormat&lt;uint64_t&gt;(option, value);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a183519fd58c1a3de64ed0ebec20ec11f">FormatOption_StringFormat</a>(option, number);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        }</div>
+</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    };</div>
+</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> VALUE&gt;</div>
+<div class="foldopen" id="foldopen00163" data-start="{" data-end="};">
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html">  163</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;VALUE, std::enable_if_t&lt;std::is_floating_point_v&lt;VALUE&gt;&gt;&gt; {</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html#a97ccda68c4fd5ad04fb74c06172a7893">  164</a></span>        <a class="code hl_struct" href="structsese_1_1text_1_1_format_option.html">FormatOption</a> <a class="code hl_variable" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html#a97ccda68c4fd5ad04fb74c06172a7893">option</a>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html#a79fd289376a8f32d02fa0acdd411b617">  166</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html#a79fd289376a8f32d02fa0acdd411b617">parse</a>(<span class="keyword">const</span> std::string &amp;opt_str) {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a8af2b87a2c783220d31b870d3321ebfe">FormatOption_NumberParse</a>(option, opt_str);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00169" data-start="{" data-end="}">
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html#a8c747faef2fc0f39478ba462aaed9bbe">  169</a></span>        std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01std_1_5fd8f6af7e20ba4842b87daf37de3921.html#a8c747faef2fc0f39478ba462aaed9bbe">format</a>(<span class="keyword">const</span> VALUE &amp;value) {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            <span class="keywordflow">if</span>(std::isnan(value)) {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;NaN&quot;</span>;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <span class="keyword">auto</span> number = FormatOption_FloatNumberFormat&lt;VALUE&gt;(option, value);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacesese_1_1text.html#a183519fd58c1a3de64ed0ebec20ec11f">FormatOption_StringFormat</a>(option, number);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        }</div>
+</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    };</div>
+</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> VALUE&gt;</div>
+<div class="foldopen" id="foldopen00179" data-start="{" data-end="};">
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html">  179</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">Formatter</a>&lt;VALUE, std::enable_if_t&lt;is_iterable_v&lt;VALUE&gt;&gt;&gt; {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a639c6dcca672622b6db698fb08052082">  180</a></span>        <span class="keywordtype">char</span> begin_ch = <span class="charliteral">&#39;[&#39;</span>;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a83b1626c5821bf880f31b41e137de7b6">  181</a></span>        <span class="keywordtype">char</span> end_ch = <span class="charliteral">&#39;]&#39;</span>;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a9e91d61d3b3523045894f602c5ae88a4">  182</a></span>        <span class="keywordtype">char</span> split_ch = <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="foldopen" id="foldopen00184" data-start="{" data-end="}">
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a3f5c088c1c34b9440324663d40380ffd">  184</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a3f5c088c1c34b9440324663d40380ffd">parse</a>(<span class="keyword">const</span> std::string &amp;args) {</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            <span class="keywordflow">if</span> (args.size() == 3) {</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                begin_ch = args[0];</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                split_ch = args[1];</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                end_ch = args[2];</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            }</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        }</div>
+</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="foldopen" id="foldopen00194" data-start="{" data-end="}">
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a5dca64d77c4c463a5175c857d1bbfbb5">  194</a></span>        std::string <a class="code hl_function" href="structsese_1_1text_1_1overload_1_1_formatter_3_01_v_a_l_u_e_00_01std_1_1enable__if__t_3_01is__itc961e7d938e679ea6be7242597bb4cf8.html#a5dca64d77c4c463a5175c857d1bbfbb5">format</a>(VALUE &amp;value) {</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> builder;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            builder &lt;&lt; begin_ch;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keywordtype">bool</span> first = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;item: value) {</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                <span class="keyword">auto</span> formatter = <a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">overload::Formatter&lt;std::decay_t&lt;typename VALUE::value_type&gt;</a>&gt;();</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                <span class="keywordflow">if</span> (first) {</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                    first = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                    builder &lt;&lt; split_ch;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                }</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                builder &lt;&lt; formatter.format(item);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            builder &lt;&lt; end_ch;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <span class="keywordflow">return</span> builder.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString</a>();</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        }</div>
+</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    };</div>
+</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>} <span class="comment">// namespace overload</span></div>
+</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="foldopen" id="foldopen00214" data-start="{" data-end="};">
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1_fmt_ctx.html">  214</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">  215</a></span>    <a class="code hl_class" href="classsese_1_1text_1_1_string_builder.html" title="线程不安全的字符串缓存类">StringBuilder</a> <a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a>;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1_fmt_ctx.html#a21bb7fcb091faa86791df810a1b557f0">  216</a></span>    std::string_view <a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#a21bb7fcb091faa86791df810a1b557f0">pattern</a>;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="structsese_1_1text_1_1_fmt_ctx.html#a5b2fe3aa6a8cde96c8bd9b1cce73d973">  217</a></span>    std::string_view::const_iterator <a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#a5b2fe3aa6a8cde96c8bd9b1cce73d973">pos</a>;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keyword">explicit</span> <a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a>(std::string_view p);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#a93e57b9eeb2e00062cfd23d990b72521">parsing</a>(std::string &amp;args);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>};</div>
+</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="foldopen" id="foldopen00224" data-start="{" data-end="}">
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#a21b9ee3fffb7b152e5b4d96e1aa709bc">  224</a></span><span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="namespacesese_1_1text.html#a21b9ee3fffb7b152e5b4d96e1aa709bc">FormatParameterCounter</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pattern) {</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> = 0;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *p = pattern;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordflow">if</span> (*p == <span class="charliteral">&#39;{&#39;</span>) <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> += 1;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    p++;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="keywordflow">while</span> (*p != 0) {</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="keywordflow">if</span> (*p == <span class="charliteral">&#39;{&#39;</span> &amp;&amp; *(p - 1) != <span class="charliteral">&#39;\\&#39;</span>) {</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a> += 1;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        }</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        p++;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    }</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="_date_time_formatter_8cpp.html#a8dcbd9b1a3c3650f2a16c9ced7fc112c">count</a>;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>}</div>
+</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00239" data-start="{" data-end="}">
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">  239</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(<a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, T &amp;&amp;arg) {</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    std::string parsing_args;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keyword">auto</span> status = ctx.<a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#a93e57b9eeb2e00062cfd23d990b72521">parsing</a>(parsing_args);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keywordflow">if</span> (!status) {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keyword">auto</span> formatter = <a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">overload::Formatter&lt;std::decay_t&lt;T&gt;</a>&gt;();</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">if</span> (!parsing_args.empty()) {</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">if</span> (formatter.parse(parsing_args)) {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; formatter.format(std::forward&lt;T&gt;(arg));</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; <span class="stringliteral">&quot;!{parsing failed}&quot;</span>;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        }</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        ctx.<a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#a93e57b9eeb2e00062cfd23d990b72521">parsing</a>(parsing_args);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; formatter.format(std::forward&lt;T&gt;(arg));</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        ctx.<a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#a93e57b9eeb2e00062cfd23d990b72521">parsing</a>(parsing_args);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>}</div>
+</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... ARGS&gt;</div>
+<div class="foldopen" id="foldopen00260" data-start="{" data-end="}">
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#aae09db0004933fb4261ff1503c174c44">  260</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(<a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, T &amp;&amp;arg, ARGS &amp;&amp;...args) {</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    std::string parsing_args;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keyword">auto</span> status = ctx.<a class="code hl_function" href="structsese_1_1text_1_1_fmt_ctx.html#a93e57b9eeb2e00062cfd23d990b72521">parsing</a>(parsing_args);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keywordflow">if</span> (!status) {</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keyword">auto</span> formatter = <a class="code hl_struct" href="structsese_1_1text_1_1overload_1_1_formatter.html">overload::Formatter&lt;std::decay_t&lt;T&gt;</a>&gt;();</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordflow">if</span> (!parsing_args.empty()) {</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="keywordflow">if</span> (formatter.parse(parsing_args)) {</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; formatter.format(std::forward&lt;T&gt;(arg));</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; <span class="stringliteral">&quot;!{parsing failed}&quot;</span>;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        }</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(ctx, std::forward&lt;ARGS&gt;(args)...);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a> &lt;&lt; formatter.format(std::forward&lt;T&gt;(arg));</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(ctx, std::forward&lt;ARGS&gt;(args)...);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    }</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>}</div>
+</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS, <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(ARGS) == 0, <span class="keywordtype">int</span>&gt;::type = 0&gt;</div>
+<div class="foldopen" id="foldopen00285" data-start="{" data-end="}">
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">  285</a></span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a>(std::string_view pattern, ARGS &amp;&amp;...) {</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keyword">auto</span> param = <a class="code hl_function" href="namespacesese_1_1text.html#a21b9ee3fffb7b152e5b4d96e1aa709bc">FormatParameterCounter</a>(pattern.data());</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keywordflow">if</span> (param) {</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;!{Mismatch in number of parameters}&quot;</span>;</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    }</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keywordflow">return</span> {pattern.begin(), pattern.end()};</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>}</div>
+</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS, <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(ARGS) != 0, <span class="keywordtype">int</span>&gt;::type = 0&gt;</div>
+<div class="foldopen" id="foldopen00299" data-start="{" data-end="}">
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#ada2867179602d198d716931ca1935117">  299</a></span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a>(std::string_view pattern, ARGS &amp;&amp;...args) {</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <span class="keyword">auto</span> param = <a class="code hl_function" href="namespacesese_1_1text.html#a21b9ee3fffb7b152e5b4d96e1aa709bc">FormatParameterCounter</a>(pattern.data());</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keywordflow">if</span> (param != <span class="keyword">sizeof</span>...(args)) {</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;!{Mismatch in number of parameters}&quot;</span>;</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    }</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <a class="code hl_struct" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> ctx(pattern);</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <a class="code hl_function" href="namespacesese_1_1text.html#a4a75ff442c41206d6393f9108d0253f8">Format</a>(ctx, std::forward&lt;ARGS&gt;(args)...);</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <span class="keywordflow">return</span> ctx.<a class="code hl_variable" href="structsese_1_1text_1_1_fmt_ctx.html#ab01806e68dfc77315fd3423be14f94a3">builder</a>.<a class="code hl_function" href="classsese_1_1text_1_1_abstract_string_buffer.html#a3820b93612650e19a28d4df291d9cc55">toString</a>();</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>}</div>
+</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>} <span class="comment">// namespace sese::text</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li><li class="navelem"><a class="el" href="_format_8h.html">Format.h</a></li>
-    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:04 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 29日 星期六 11:11:09 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

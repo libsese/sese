@@ -39,8 +39,13 @@ var namespacesese =
     [ "GlobalThreadPool", "classsese_1_1_global_thread_pool.html", "classsese_1_1_global_thread_pool" ],
     [ "GZipFileInputStream", "classsese_1_1_g_zip_file_input_stream.html", "classsese_1_1_g_zip_file_input_stream" ],
     [ "GZipFileOutputStream", "classsese_1_1_g_zip_file_output_stream.html", "classsese_1_1_g_zip_file_output_stream" ],
+    [ "has_begin", "structsese_1_1has__begin.html", null ],
+    [ "has_begin< T, void_t< decltype(std::declval< T >().begin())> >", "structsese_1_1has__begin_3_01_t_00_01void__t_3_01decltype_07std_1_1declval_3_01_t_01_4_07_08_8begin_07_08_08_4_01_4.html", null ],
+    [ "has_end", "structsese_1_1has__end.html", null ],
+    [ "has_end< T, void_t< decltype(std::declval< T >().begin())> >", "structsese_1_1has__end_3_01_t_00_01void__t_3_01decltype_07std_1_1declval_3_01_t_01_4_07_08_8begin_07_08_08_4_01_4.html", null ],
     [ "Initializer", "classsese_1_1_initializer.html", "classsese_1_1_initializer" ],
     [ "InitiateTask", "classsese_1_1_initiate_task.html", "classsese_1_1_initiate_task" ],
+    [ "is_iterable", "structsese_1_1is__iterable.html", null ],
     [ "Json", "classsese_1_1_json.html", "classsese_1_1_json" ],
     [ "Locker", "classsese_1_1_locker.html", "classsese_1_1_locker" ],
     [ "LongLongSplitter", "structsese_1_1_long_long_splitter.html", "structsese_1_1_long_long_splitter" ],
@@ -93,6 +98,7 @@ var namespacesese =
     [ "StrCaseUnorderedMap", "namespacesese.html#a0f347f023b3ea7229f3527f544d9ae84", null ],
     [ "tid_t", "namespacesese.html#a07fae0615b50765c5b926bffd711e831", null ],
     [ "UniqueType", "namespacesese.html#afa5d72450460b03caeebcc9079b37490", null ],
+    [ "void_t", "namespacesese.html#ace18ef46a8d4d0fe3c6e5d6848fe6a74", null ],
     [ "WeakType", "namespacesese.html#aab2b0ee9422ee0726c17faabb20b2641", null ],
     [ "CompressionType", "namespacesese.html#aa6accca2ea5668728773fdfa2b44ce85", [
       [ "RAW", "namespacesese.html#aa6accca2ea5668728773fdfa2b44ce85a633d6abff0a3fc22404347728d195059", null ],
@@ -125,5 +131,6 @@ var namespacesese =
     [ "to_time_t", "namespacesese.html#ad65b873dcf755a6a9d2f3e3186598b08", null ],
     [ "toInteger", "namespacesese.html#a6453fe856f0afc7bce5187768095cf4f", null ],
     [ "current_data", "namespacesese.html#a188c7e63df4af0f87d26afe95591f4a4", null ],
+    [ "is_iterable_v", "namespacesese.html#a5174b9bd39720fb3b1a592bb3ba91f9a", null ],
     [ "Timer", "namespacesese.html#a2ee79c0896ba8dcd8d4d232c79f96cb8", null ]
 ];

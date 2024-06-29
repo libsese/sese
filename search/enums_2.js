@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['endiantype_0',['EndianType',['../_endian_8h.html#ad3f8cd9685608d762e24f72b8858bdfb',1,'Endian.h']]],
-  ['entrytype_1',['EntryType',['../classsese_1_1archive_1_1_config.html#acb4e4bdf76bca8b6d535e37e549eb3b9',1,'sese::archive::Config']]]
+  ['databasetype_0',['DatabaseType',['../namespacesese_1_1db.html#a7da16b504b023198c816f226a1ee045c',1,'sese::db']]],
+  ['datatype_1',['datatype',['../namespacesese_1_1json.html#ab40da7ef78b3239df0f97e1d1cebd7a6',1,'sese::json::DataType'],['../namespacesese_1_1yaml.html#ad98fe9b98e6b6e5e5210b70b0d74c65c',1,'sese::yaml::DataType']]]
 ];

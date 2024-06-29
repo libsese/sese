@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['httpversion_0',['HttpVersion',['../namespacesese_1_1net_1_1http.html#a9df7ed57ad433459820817a6381ec1b8',1,'sese::net::http']]]
+  ['family_0',['Family',['../classsese_1_1net_1_1_socket.html#a36a4dcc192be8ff0b2c1df7b3db5e15c',1,'sese::net::Socket']]]
 ];

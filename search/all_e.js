@@ -31,7 +31,7 @@ var searchData=
   ['nulloutputstream_28',['NullOutputStream',['../classsese_1_1io_1_1_null_output_stream.html',1,'sese::io']]],
   ['nulloutputstream_2ecpp_29',['NullOutputStream.cpp',['../_null_output_stream_8cpp.html',1,'']]],
   ['nulloutputstream_2eh_30',['NullOutputStream.h',['../_null_output_stream_8h.html',1,'']]],
-  ['number_31',['number',['../classsese_1_1text_1_1_number.html',1,'sese::text::Number'],['../classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5',1,'sese::text::Number::Number()'],['../classsese_1_1_timer.html#aef273caccea8f9548b19264ffb4259e0',1,'sese::Timer::number']]],
+  ['number_31',['number',['../classsese_1_1text_1_1_number.html',1,'sese::text::Number'],['../classsese_1_1_timer.html#aef273caccea8f9548b19264ffb4259e0',1,'sese::Timer::number'],['../classsese_1_1text_1_1_number.html#a44b2060edbdaf5d52dc5cbb89c1ca5c5',1,'sese::text::Number::Number()']]],
   ['number_2ecpp_32',['Number.cpp',['../_number_8cpp.html',1,'']]],
   ['number_2eh_33',['Number.h',['../_number_8h.html',1,'']]],
   ['number2stringlength_34',['number2StringLength',['../namespacesese.html#a0a951f1886af83a7d610e57a8257b834',1,'sese']]],

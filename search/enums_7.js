@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['policy_0',['Policy',['../classsese_1_1_date_time.html#afe8f3e05ca49a55bbf784579f9652045',1,'sese::DateTime']]]
+  ['metadatatype_0',['MetadataType',['../namespacesese_1_1db.html#aab40afecdeeac1b9214b26df58570dbe',1,'sese::db']]]
 ];

@@ -100,7 +100,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('md_sese_2native_2_r_e_a_d_m_e.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_sese_2text_2_f_o_r_m_a_t.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -126,15 +126,47 @@ $(document).ready(function(){initNavTree('md_sese_2native_2_r_e_a_d_m_e.html',''
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">平台实现目录</div></div>
+  <div class="headertitle"><div class="title">字符串格式化</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md11"></a> sese/native 下存放部分用于实现特定平台的实现，通常不向外暴露</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md12"></a> 字符串格式化的核心逻辑位于：</p>
 <ul>
-<li>darwin 通常指 Apple 下的 macOS 平台</li>
-<li>win 通常指 Microsoft 下的 Windows 平台</li>
-<li>linux 通常指各个 Linux 发行版</li>
-<li>unix 则表示 darwin 和 linux 的交集部分 </li>
+<li>sese/text/Format.(h|cpp)</li>
+<li>sese/text/FormatOption.(h|cpp)</li>
+</ul>
+<p>字符串格式化参考 python 的参数，实际字符串的格式化参数如下:</p>
+<blockquote class="doxtable">
+<p>&zwj;{:(wide_char)(align_type)(wide)(.float)(ext_type)} </p>
+</blockquote>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">名称   </th><th class="markdownTableHeadNone">内容   </th><th class="markdownTableHeadNone">依赖   </th><th class="markdownTableHeadNone">可选   </th><th class="markdownTableHeadNone">注释    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">:   </td><td class="markdownTableBodyNone">:   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">否   </td><td class="markdownTableBodyNone">标准格式化起始符    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">align_type   </td><td class="markdownTableBodyNone">&lt;,&gt;,^   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">是   </td><td class="markdownTableBodyNone">分别代表左对齐，右对齐和居中    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">wide_char   </td><td class="markdownTableBodyNone">自定义字符   </td><td class="markdownTableBodyNone">align_type   </td><td class="markdownTableBodyNone">是   </td><td class="markdownTableBodyNone">用于对齐的填充字符    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">wide   </td><td class="markdownTableBodyNone">正整数   </td><td class="markdownTableBodyNone">align_type   </td><td class="markdownTableBodyNone">否   </td><td class="markdownTableBodyNone">对齐的宽度    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">.float   </td><td class="markdownTableBodyNone">.float   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">是   </td><td class="markdownTableBodyNone">表示浮点数精度    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ext_type   </td><td class="markdownTableBodyNone">类型标识符   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">是   </td><td class="markdownTableBodyNone">一定程度上进行校验并格式化   </td></tr>
+</table>
+<blockquote class="doxtable">
+<p>&zwj;[!IMPORTANT] 与 python 格式化参数最大的不同是对齐参数的顺序是固定的，无论是左对齐、右对齐还是居中。 </p>
+</blockquote>
+<p>ext_type 可以取以下值:</p>
+<ul>
+<li>X 大写十六进制</li>
+<li>x 小写十六进制</li>
+<li>o 八进制</li>
+<li>d 十进制</li>
+<li>b 二进制</li>
+<li>% 浮点数百分比</li>
+<li>f 浮点数</li>
+<li>默认则十进制 </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -142,7 +174,7 @@ $(document).ready(function(){initNavTree('md_sese_2native_2_r_e_a_d_m_e.html',''
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 六月 27日 星期四 09:11:04 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 29日 星期六 11:11:09 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
