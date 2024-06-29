@@ -99,22 +99,21 @@ Cross-process communication
 // ···
 // server
 auto channel = sese::system::IPCChannel::create("Test", 1024);
-    while (true) {
-        auto messages = channel->read(1);
-        if (messages.empty()) {
-            sese::sleep(1s);
-            continue;
-        }
-        for (auto &&msg: messages) {
-            SESE_INFO("recv {}", msg.getDataAsString());
-
-            if (msg.getDataAsString() == "Exit") {
-                goto end;
-            }
+while (true) {
+    auto messages = channel->read(1);
+    if (messages.empty()) {
+        sese::sleep(1s);
+        continue;
+    }
+    for (auto &&msg: messages) {
+        SESE_INFO("recv {}", msg.getDataAsString());
+        if (msg.getDataAsString() == "Exit") {
+            goto end;
         }
     }
+}
 end:
-    return 0;
+return 0;
 // ···
 // client
 auto channel = sese::system::IPCChannel::use("Test");
