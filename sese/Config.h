@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <cinttypes>
+#include <algorithm>
 #include <string>
 #include <sese/util/Memory.h>
 
