@@ -9,6 +9,8 @@
 #pragma once
 
 #include "sese/Config.h"
+#include "sese/text/Format.h"
+
 
 #ifdef _WIN32
 #pragma warning(disable : 4819)

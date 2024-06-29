@@ -7,19 +7,21 @@
 #pragma once
 
 #include "sese/Config.h"
-#include "sese/util/DateTime.h"
 #include "sese/text/StringBuilder.h"
 
 #include <map>
 #include <array>
 
 #ifdef _MSC_VER
-#pragma warning(disable: 4251)
+#pragma warning(disable : 4251)
 #endif
+namespace sese {
 
-namespace sese::text {
+class DateTime;
 
-/**
+namespace text {
+
+    /**
  * @brief 日期时间格式化类
  * @verbatim
  时间格式通配符
@@ -52,13 +54,13 @@ namespace sese::text {
  %    转义符号
  @endverbatim
  */
-class API DateTimeFormatter {
-public:
-    static std::string format(const DateTime &date_time, const std::string &pattern = TIME_DEFAULT_PATTERN);
+    class API DateTimeFormatter {
+    public:
+        static std::string format(const DateTime &date_time, const std::string &pattern = TIME_DEFAULT_PATTERN);
 
-    static std::string format(const DateTime::Ptr &date_time, const std::string &pattern = TIME_DEFAULT_PATTERN);
+        static std::string format(const std::unique_ptr<DateTime> &date_time, const std::string &pattern = TIME_DEFAULT_PATTERN);
 
-    /** 将格林威治时间转换为时间戳
+        /** 将格林威治时间转换为时间戳
      * \param text 格林威治时间文本
      * \verbatim
        "Tue, 17 Oct 2023 15:41:22 GMT"
@@ -66,9 +68,9 @@ public:
        \endverbatim
      * \return 时间戳
      **/
-    static uint64_t parseFromGreenwich(const std::string &text);
+        static uint64_t parseFromGreenwich(const std::string &text);
 
-    /** 将 ISO 8601 时间转换为时间戳
+        /** 将 ISO 8601 时间转换为时间戳
      * \param text ISO 8601 时间文本
      * \verbatim
        "2023-06-20"
@@ -79,18 +81,19 @@ public:
        \endverbatim
      * \return 时间戳
      */
-    static uint64_t parseFromISO8601(const std::string &text);
+        static uint64_t parseFromISO8601(const std::string &text);
 
-protected:
-    static int mon2number(const std::string &text);
+    protected:
+        static int mon2number(const std::string &text);
 
-    static const std::map<std::string, uint8_t> MON_MAP;
-    static const std::array<std::string, 12> MON_ARRAY;
+        static const std::map<std::string, uint8_t> MON_MAP;
+        static const std::array<std::string, 12> MON_ARRAY;
 
-    static const std::map<std::string, uint8_t> MONTH_MAP;
-    static const std::array<std::string, 12> MONTH_ARRAY;
+        static const std::map<std::string, uint8_t> MONTH_MAP;
+        static const std::array<std::string, 12> MONTH_ARRAY;
 
-    static const std::array<std::string, 7> WK_DAY;
-    static const std::array<std::string, 7> WEEK_DAY;
-};
-} // namespace sese::text
+        static const std::array<std::string, 7> WK_DAY;
+        static const std::array<std::string, 7> WEEK_DAY;
+    };
+} // namespace text
+} // namespace sese

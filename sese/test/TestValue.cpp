@@ -214,5 +214,5 @@ TEST(TestValue, ToString) {
                                              .set("int", INT64_C(123456))
                         )
     );
-    SESE_INFO("{}", value);
+    SESE_INFO("{2}", value);
 }

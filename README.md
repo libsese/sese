@@ -34,6 +34,7 @@ Modern formatting style
 namespace sese::text::overload {
 template<>
 struct Formatter<Point> {
+    bool parse(const std::string &) { return true; }
     std::string format(const Point &p) {
         return fmt("({},{})", p.x, p.y);
     }
@@ -94,7 +95,7 @@ Cross-process communication
 
 ```c++
 #include <sese/system/IPC.h>
-#include <sese/record/Marco.h>
+#include <sese/Log.h>
 // ···
 // server
 auto channel = sese::system::IPCChannel::create("Test", 1024);
@@ -105,7 +106,7 @@ auto channel = sese::system::IPCChannel::create("Test", 1024);
             continue;
         }
         for (auto &&msg: messages) {
-            SESE_INFO("recv %s", msg.getDataAsString().c_str());
+            SESE_INFO("recv {}", msg.getDataAsString());
 
             if (msg.getDataAsString() == "Exit") {
                 goto end;
@@ -200,7 +201,7 @@ The main job is to write the project's dependency configuration file, for exampl
 
 > [!IMPORTANT]
 > Since the built-in baseline `14b91796a68c87bc8d5cb35911b39287ccb7bd95`, sese has been included in the built-in list. Before this,
-> you needed to create an additional configuration file to import our [private registry](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries).
+> you needed to create an additional configuration file to import our [private registry](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries), just like this:
 
 `vcpkg-configuration.json`
 

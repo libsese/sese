@@ -32,6 +32,7 @@ C++ 17 标准，引入了 vcpkg 作为包管理器帮助我们简化依赖项管
 namespace sese::text::overload {
 template<>
 struct Formatter<Point> {
+    bool parse(const std::string &) { return true; }
     std::string format(const Point &p) {
         return fmt("({},{})", p.x, p.y);
     }
@@ -92,7 +93,7 @@ SESE_CTRL(MyController, std::mutex mutex{}; int times = 0) {
 
 ```c++
 #include <sese/system/IPC.h>
-#include <sese/record/Marco.h>
+#include <sese/Log.h>
 // ···
 // server
 auto channel = sese::system::IPCChannel::create("Test", 1024);
@@ -103,7 +104,7 @@ auto channel = sese::system::IPCChannel::create("Test", 1024);
             continue;
         }
         for (auto &&msg: messages) {
-            SESE_INFO("recv %s", msg.getDataAsString().c_str());
+            SESE_INFO("recv {}", msg.getDataAsString());
 
             if (msg.getDataAsString() == "Exit") {
                 goto end;
@@ -160,7 +161,7 @@ sudo ./scripts/install_fedora_deps.sh
 https://github.com/libsese/sese/blob/4cd74389d7105b71c632070c775a727be8ee413d/CMakeLists.txt#L8-L16
 
 > [!TIP]
-> 请根据最新 [CMakeLists.txt](./CMakeLists.txt)文件了解相应的功能选项，
+> 请根据最新 [CMakeLists.txt](./CMakeLists.txt) 文件了解相应的功能选项，
 > 或者你可以直接使用我们预设的 [CMakePresets.json](./CMakePresets.json), 这将默认开启绝大多数功能选项。
 
 3. 编译
@@ -193,7 +194,7 @@ cmake --build build/linux-debug -- -j 4
 
 > [!IMPORTANT]
 > 自内建库基线 `14b91796a68c87bc8d5cb35911b39287ccb7bd95` 之后，sese 已进入内建列表。
-> 在此之前，你需要多编写一个配置文件用于导入我们的[私有注册表](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries)。
+> 在此之前，你需要多编写一个配置文件用于导入我们的[私有注册表](https://learn.microsoft.com/en-us/vcpkg/consume/git-registries)，就像这样：
 
 `vcpkg-configuration.json`
 
@@ -224,10 +225,10 @@ cmake --build build/linux-debug -- -j 4
 使用了 googletest 作为了测试框架，测试的详细信息可以从 github actions 中查看，包括各个平台的测试结果和 linux 的测试覆盖率等内容。
 
 | 平台 | 入口 | 单元测试 | 覆盖率测试 |
-|--|--|--|--|
-| Windows | [Unit Tests](https://github.com/libsese/sese/actions/workflows/windows-2022.yml) | ✅ |
-| Linux | [Unit Tests](https://github.com/libsese/sese/actions/workflows/ubuntu-22.04-apt.yml) | ✅ | ✅ |
-| macOS | [Unit Tests](https://github.com/libsese/sese/actions/workflows/macos-12-brew.yml) | ✅ |
+|----|----|----|----|
+| Windows | [Unit Tests](https://github.com/libsese/sese/actions/workflows/windows-2022.yml) | ✅ | |
+| Linux   | [Unit Tests](https://github.com/libsese/sese/actions/workflows/ubuntu-22.04-apt.yml) | ✅ | ✅ |
+| macOS   | [Unit Tests](https://github.com/libsese/sese/actions/workflows/macos-12-brew.yml) | ✅ | |
 
 1. 本地测试
 

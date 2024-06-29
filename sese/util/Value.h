@@ -146,7 +146,7 @@ public:
         ReverseIterator rend();
         [[nodiscard]] ConstReverseIterator rend() const;
 
-        Iterator erase(const Iterator& it);
+        Iterator erase(const Iterator &it);
         Iterator erase(const ConstIterator &it);
 
         [[nodiscard]] const Value *find(const String &key) const;
@@ -255,10 +255,21 @@ private:
 namespace text::overload {
     template<>
     struct Formatter<Value> {
-        static std::string format(Value &value) {
-            return value.toString();
+        size_t level = 4;
+
+        bool parse(const std::string &args) {
+            char *end;
+            level = static_cast<size_t>(std::strtol(args.c_str(), &end, 10));
+            if (level == 0) {
+                return false;
+            }
+            return true;
+        }
+
+        std::string format(Value &value) const {
+            return value.toString(level);
         }
     };
-}
+} // namespace text::overload
 
 } // namespace sese

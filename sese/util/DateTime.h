@@ -8,6 +8,7 @@
 
 #include "sese/Config.h"
 #include "sese/util/TimeSpan.h"
+#include "sese/text/DateTimeFormatter.h"
 
 #ifdef _WIN32
 #pragma warning(disable : 4819)
@@ -91,4 +92,20 @@ private:
     int32_t utc = 0;
     uint64_t timestamp = 0;
 };
+
+namespace text::overload {
+    template<>
+    struct Formatter<DateTime> {
+        std::string datetime_pattern = "yyyy-MM-dd HH:mm:ss";
+
+        bool parse(const std::string &pattern){
+            datetime_pattern = pattern;
+            return true;
+        }
+
+        [[nodiscard]] std::string format(const DateTime &datetime) const {
+            return DateTimeFormatter::format(datetime, datetime_pattern);
+        }
+    };
+}
 } // namespace sese
