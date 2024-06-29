@@ -12,6 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/// @file Format.h
+/// @brief 字符串格式化
+/// @author kaoru
+/// @date 2024年06月29日
+
+
 #pragma once
 
 #include <sese/Config.h>
@@ -21,8 +27,8 @@
 #include <sese/text/FormatOption.h>
 #include <sese/types/is_iterable.h>
 
-
 #include <cassert>
+#include <cmath>
 
 namespace sese::text {
 
@@ -65,6 +71,11 @@ std::string FormatOption_NumberFormat(FormatOption &opt, T number) {
     }
 }
 
+/// 按照浮点格式化标准格式化字符串
+/// \tparam T 浮点类型
+/// \param opt 选项
+/// \param number 浮点数
+/// \return 格式化字符串
 template<typename T>
 std::string FormatOption_FloatNumberFormat(FormatOption &opt, T number) {
     if (opt.float_placeholder == 0) {
@@ -156,6 +167,9 @@ namespace overload {
             return FormatOption_NumberParse(option, opt_str);
         }
         std::string format(const VALUE &value) {
+            if(std::isnan(value)) {
+                return "NaN";
+            }
             auto number = FormatOption_FloatNumberFormat<VALUE>(option, value);
             return FormatOption_StringFormat(option, number);
         }
@@ -233,7 +247,7 @@ void Format(FmtCtx &ctx, T &&arg) {
         if (formatter.parse(parsing_args)) {
             ctx.builder << formatter.format(std::forward<T>(arg));
         } else {
-            ctx.builder << "{parsing failed}";
+            ctx.builder << "!{parsing failed}";
         }
         ctx.parsing(parsing_args);
     } else {
@@ -254,7 +268,7 @@ void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
         if (formatter.parse(parsing_args)) {
             ctx.builder << formatter.format(std::forward<T>(arg));
         } else {
-            ctx.builder << "{parsing failed}";
+            ctx.builder << "!{parsing failed}";
         }
         Format(ctx, std::forward<ARGS>(args)...);
     } else {
@@ -269,6 +283,10 @@ void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
 /// \return 匹配完成的字符串
 template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) == 0, int>::type = 0>
 std::string fmt(std::string_view pattern, ARGS &&...) {
+    auto param = FormatParameterCounter(pattern.data());
+    if (param) {
+        return "!{Mismatch in number of parameters}";
+    }
     return {pattern.begin(), pattern.end()};
 }
 
@@ -279,7 +297,10 @@ std::string fmt(std::string_view pattern, ARGS &&...) {
 /// \return 匹配完成的字符串
 template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) != 0, int>::type = 0>
 std::string fmt(std::string_view pattern, ARGS &&...args) {
-
+    auto param = FormatParameterCounter(pattern.data());
+    if (param != sizeof...(args)) {
+        return "!{Mismatch in number of parameters}";
+    }
     FmtCtx ctx(pattern);
     Format(ctx, std::forward<ARGS>(args)...);
     return ctx.builder.toString();

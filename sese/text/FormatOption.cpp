@@ -12,6 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/// @file FormatOption.cpp
+/// @brief 字符串格式化选项
+/// @author kaoru
+/// @date 2024年06月29日
+
+
 #include <sese/text/FormatOption.h>
 
 bool sese::text::FormatOption::parse(const std::string &value) {

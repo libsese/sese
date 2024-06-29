@@ -130,6 +130,11 @@ TEST(TestFormat, Formatter) {
     SESE_INFO("{A}", "Hello");
 }
 
+TEST(TestFormat, MismatchParam) {
+    SESE_INFO("{}");
+    SESE_INFO("{}",1, 2);
+}
+
 TEST(TestFormat, Constexpr) {
     constexpr auto PATTERN = "{} {}";
     EXPECT_EQ(2, FormatParameterCounter(PATTERN));
@@ -137,12 +142,12 @@ TEST(TestFormat, Constexpr) {
 
 TEST(TestFormat, Iterable) {
     auto array = std::array<int, 3>({1, 2, 3});
-    EXPECT_EQ("[1, 2, 3]", fmt("{}", array));
+    EXPECT_EQ("[1,2,3]", fmt("{}", array));
 
     MyMap map;
     map["abc"] = 114;
     map["efg"] = 514;
-    EXPECT_EQ("[{abc,114}, {efg,514}]", fmt("{}", map));
+    EXPECT_EQ("[{abc,114},{efg,514}]", fmt("{}", map));
 
     SESE_INFO(fmt("{A,B}|{C,D}", map, array));
 }
