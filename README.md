@@ -95,7 +95,7 @@ Cross-process communication
 
 ```c++
 #include <sese/system/IPC.h>
-#include <sese/record/Marco.h>
+#include <sese/Log.h>
 // ···
 // server
 auto channel = sese::system::IPCChannel::create("Test", 1024);
@@ -106,7 +106,7 @@ auto channel = sese::system::IPCChannel::create("Test", 1024);
             continue;
         }
         for (auto &&msg: messages) {
-            SESE_INFO("recv %s", msg.getDataAsString().c_str());
+            SESE_INFO("recv {}", msg.getDataAsString());
 
             if (msg.getDataAsString() == "Exit") {
                 goto end;
