@@ -26,8 +26,16 @@
 
 namespace sese::text {
 
+/// 解析并校验字符串格式化选项
+/// \param opt 选项
+/// \param opt_str 选项字符串
+/// \return 解析是否成功
 bool FormatOption_StringParse(FormatOption &opt, const std::string &opt_str);
 
+/// 按照格式化选项格式化字符串（对齐）
+/// \param opt 选项
+/// \param value 字符串
+/// \return 格式化字符串
 std::string FormatOption_StringFormat(FormatOption &opt, const std::string &value);
 
 namespace overload {

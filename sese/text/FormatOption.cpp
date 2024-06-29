@@ -24,6 +24,7 @@ bool sese::text::FormatOption::parse(const std::string &value) {
     }
     pos += 1;
 
+parsing_align:
     if (*pos == '<' || *pos == '>' || *pos == '^') {
         if (*pos == '<') {
             align = Align::LEFT;
@@ -36,6 +37,13 @@ bool sese::text::FormatOption::parse(const std::string &value) {
             return true;
         }
         pos += 1;
+    } else if (wide_char == ' ') {
+        wide_char = *pos;
+        pos += 1;
+        goto parsing_align;
+    } else {
+        wide_char = ' ';
+        pos -= 1;
     }
 
     char *end;

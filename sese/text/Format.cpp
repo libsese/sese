@@ -98,11 +98,13 @@ std::string sese::text::FormatOption_StringFormat(sese::text::FormatOption &opt,
     auto diff = opt.wide - value.length();
     switch (opt.align) {
         case Align::LEFT:
-            return value + std::string(diff, ' ');
+            return value + std::string(diff, opt.wide_char);
         case Align::RIGHT:
-            return std::string(diff, ' ') + value;
+            return std::string(diff, opt.wide_char) + value;
         case Align::CENTER:
-            return std::string(diff / 2, ' ') + value + std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), ' ');
+            return std::string(diff / 2, opt.wide_char) +
+                   value +
+                   std::string((diff % 2 == 1 ? (diff / 2 + 1) : (diff / 2)), opt.wide_char);
     }
     return {};
 }

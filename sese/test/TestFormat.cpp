@@ -54,6 +54,7 @@ TEST(TestFormat, OptionParse) {
         FormatOption option{};
         EXPECT_TRUE(option.parse(":^3.2f"));
         EXPECT_EQ(option.align, Align::CENTER);
+        EXPECT_EQ(option.wide_char, ' ');
         EXPECT_EQ(option.wide, 3);
         EXPECT_EQ(option.float_accuracy, 2);
         EXPECT_EQ(option.ext_type, 'f');
@@ -62,19 +63,26 @@ TEST(TestFormat, OptionParse) {
         FormatOption option{};
         EXPECT_TRUE(option.parse(":<.2%"));
         EXPECT_EQ(option.align, Align::LEFT);
+        EXPECT_EQ(option.wide_char, ' ');
         EXPECT_EQ(option.wide, 0);
         EXPECT_EQ(option.float_accuracy, 2);
         EXPECT_EQ(option.ext_type, '%');
     }
     {
         FormatOption option{};
-        EXPECT_TRUE(option.parse(":>"));
+        EXPECT_TRUE(option.parse(":x>"));
         EXPECT_EQ(option.align, Align::RIGHT);
+        EXPECT_EQ(option.wide_char, 'x');
         EXPECT_EQ(option.wide, 0);
         EXPECT_EQ(option.float_accuracy, 0);
         EXPECT_EQ(option.ext_type, '\0');
     }
 
+    {
+        FormatOption option{};
+        EXPECT_TRUE(option.parse(":d"));
+        EXPECT_EQ(option.ext_type, 'd');
+    }
     {
         FormatOption option{};
         EXPECT_TRUE(option.parse(":"));
@@ -94,6 +102,11 @@ TEST(TestFormat, Align) {
     EXPECT_EQ(" Hello ", fmt("{:^7}", "Hello"));
     EXPECT_EQ("Hello ", fmt("{:<6}", "Hello"));
     EXPECT_EQ(" Hello", fmt("{:>6}", "Hello"));
+
+    EXPECT_EQ("HelloA", fmt("{:A^6}", "Hello"));
+    EXPECT_EQ("AHelloA", fmt("{:A^7}", "Hello"));
+    EXPECT_EQ("AHello", fmt("{:A>6}", "Hello"));
+    EXPECT_EQ("HelloA", fmt("{:A<6}", "Hello"));
 }
 
 TEST(TestFormat, Log) {
