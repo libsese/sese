@@ -19,11 +19,16 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     struct ifaddrs *p_if_address = nullptr;
 
     // 这些信息仅用于获取网卡名称、 IPv4 和 mac 信息
-    // glib 2.3.3 以下不支持使用其获取 IPv6 相关信息
+    // glibc 2.3.3 以下不支持使用其获取 IPv6 相关信息
     getifaddrs(&p_if_address);
 
     auto p_address = p_if_address;
     while (p_address) {
+        if (p_address->ifa_addr == nullptr) {
+            p_address = p_address->ifa_next;
+            continue;
+        }
+
         if (p_address->ifa_addr->sa_family == AF_INET ||
             p_address->ifa_addr->sa_family == AF_PACKET) {
 
@@ -91,6 +96,8 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     // 整合信息
     interfaces.reserve(map.size());
     for (decltype(auto) i: map) {
+        // 防止出现空 name
+        i.second.name = i.first;
         interfaces.emplace_back(i.second);
     }
 
