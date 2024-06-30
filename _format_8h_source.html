@@ -443,7 +443,7 @@ $(document).ready(function(){initNavTree('_format_8h_source.html',''); initResiz
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>}</div>
 </div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS, <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(ARGS) == 0, <span class="keywordtype">int</span>&gt;::type = 0&gt;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS, std::enable_if_t&lt;<span class="keyword">sizeof</span>...(ARGS) == 0, <span class="keywordtype">int</span>&gt; = 0&gt;</div>
 <div class="foldopen" id="foldopen00285" data-start="{" data-end="}">
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">  285</a></span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a>(std::string_view pattern, ARGS &amp;&amp;...) {</div>
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keyword">auto</span> param = <a class="code hl_function" href="namespacesese_1_1text.html#a21b9ee3fffb7b152e5b4d96e1aa709bc">FormatParameterCounter</a>(pattern.data());</div>
@@ -454,7 +454,7 @@ $(document).ready(function(){initNavTree('_format_8h_source.html',''); initResiz
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>}</div>
 </div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS, <span class="keyword">typename</span> std::enable_if&lt;<span class="keyword">sizeof</span>...(ARGS) != 0, <span class="keywordtype">int</span>&gt;::type = 0&gt;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... ARGS, std::enable_if_t&lt;<span class="keyword">sizeof</span>...(ARGS) != 0, <span class="keywordtype">int</span>&gt; = 0&gt;</div>
 <div class="foldopen" id="foldopen00299" data-start="{" data-end="}">
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno"><a class="line" href="namespacesese_1_1text.html#ada2867179602d198d716931ca1935117">  299</a></span>std::string <a class="code hl_function" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a>(std::string_view pattern, ARGS &amp;&amp;...args) {</div>
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <span class="keyword">auto</span> param = <a class="code hl_function" href="namespacesese_1_1text.html#a21b9ee3fffb7b152e5b4d96e1aa709bc">FormatParameterCounter</a>(pattern.data());</div>
@@ -474,7 +474,7 @@ $(document).ready(function(){initNavTree('_format_8h_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d55ce2c726280f152511f4c3a4644e6.html">sese</a></li><li class="navelem"><a class="el" href="dir_4d34d0190996a92f72b7f122c6872222.html">text</a></li><li class="navelem"><a class="el" href="_format_8h.html">Format.h</a></li>
-    <li class="footer">生成于 2024年 六月 29日 星期六 11:11:09 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 30日 星期日 07:55:56 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

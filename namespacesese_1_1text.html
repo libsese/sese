@@ -208,10 +208,10 @@ $(document).ready(function(){initNavTree('namespacesese_1_1text.html',''); initR
 <tr class="memitem:aae09db0004933fb4261ff1503c174c44" id="r_aae09db0004933fb4261ff1503c174c44"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... ARGS&gt; </td></tr>
 <tr class="memitem:aae09db0004933fb4261ff1503c174c44"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#aae09db0004933fb4261ff1503c174c44">Format</a> (<a class="el" href="structsese_1_1text_1_1_fmt_ctx.html">FmtCtx</a> &amp;ctx, T &amp;&amp;arg, ARGS &amp;&amp;...args)</td></tr>
 <tr class="separator:aae09db0004933fb4261ff1503c174c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d92c1d1b0f01228eb8e4c02c1b9df67" id="r_a1d92c1d1b0f01228eb8e4c02c1b9df67"><td class="memTemplParams" colspan="2">template&lt;typename... ARGS, typename std::enable_if&lt; sizeof...(ARGS)==0, int &gt;::type  = 0&gt; </td></tr>
+<tr class="memitem:a1d92c1d1b0f01228eb8e4c02c1b9df67" id="r_a1d92c1d1b0f01228eb8e4c02c1b9df67"><td class="memTemplParams" colspan="2">template&lt;typename... ARGS, std::enable_if_t&lt; sizeof...(ARGS)==0, int &gt;  = 0&gt; </td></tr>
 <tr class="memitem:a1d92c1d1b0f01228eb8e4c02c1b9df67"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#a1d92c1d1b0f01228eb8e4c02c1b9df67">fmt</a> (std::string_view pattern, ARGS &amp;&amp;...)</td></tr>
 <tr class="separator:a1d92c1d1b0f01228eb8e4c02c1b9df67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada2867179602d198d716931ca1935117" id="r_ada2867179602d198d716931ca1935117"><td class="memTemplParams" colspan="2">template&lt;typename... ARGS, typename std::enable_if&lt; sizeof...(ARGS) !=0, int &gt;::type  = 0&gt; </td></tr>
+<tr class="memitem:ada2867179602d198d716931ca1935117" id="r_ada2867179602d198d716931ca1935117"><td class="memTemplParams" colspan="2">template&lt;typename... ARGS, std::enable_if_t&lt; sizeof...(ARGS) !=0, int &gt;  = 0&gt; </td></tr>
 <tr class="memitem:ada2867179602d198d716931ca1935117"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#ada2867179602d198d716931ca1935117">fmt</a> (std::string_view pattern, ARGS &amp;&amp;...args)</td></tr>
 <tr class="separator:ada2867179602d198d716931ca1935117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefab215e929dd41c67d4f886b48acc1d" id="r_aefab215e929dd41c67d4f886b48acc1d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesese_1_1text.html#aefab215e929dd41c67d4f886b48acc1d">snprintf</a> (char *buf, size_t buf_size, const char *pattern,...)</td></tr>
@@ -295,7 +295,7 @@ $(document).ready(function(){initNavTree('namespacesese_1_1text.html',''); initR
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename... ARGS, typename std::enable_if&lt; sizeof...(ARGS)==0, int &gt;::type  = 0&gt; </div>
+template&lt;typename... ARGS, std::enable_if_t&lt; sizeof...(ARGS)==0, int &gt;  = 0&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::string sese::text::fmt </td>
@@ -340,7 +340,7 @@ template&lt;typename... ARGS, typename std::enable_if&lt; sizeof...(ARGS)==0, in
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename... ARGS, typename std::enable_if&lt; sizeof...(ARGS) !=0, int &gt;::type  = 0&gt; </div>
+template&lt;typename... ARGS, std::enable_if_t&lt; sizeof...(ARGS) !=0, int &gt;  = 0&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::string sese::text::fmt </td>
@@ -752,7 +752,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacesese.html">sese</a></li><li class="navelem"><a class="el" href="namespacesese_1_1text.html">text</a></li>
-    <li class="footer">生成于 2024年 六月 29日 星期六 11:11:10 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 30日 星期日 07:55:58 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

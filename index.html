@@ -202,22 +202,21 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line"><span class="comment">// ···</span></div>
 <div class="line"><span class="comment">// server</span></div>
 <div class="line"><span class="keyword">auto</span> channel = <a class="code hl_function" href="classsese_1_1system_1_1_i_p_c_channel.html#a020521e704dc74be511d5174f9b470fb">sese::system::IPCChannel::create</a>(<span class="stringliteral">&quot;Test&quot;</span>, 1024);</div>
-<div class="line">    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line">        <span class="keyword">auto</span> messages = channel-&gt;read(1);</div>
-<div class="line">        <span class="keywordflow">if</span> (messages.empty()) {</div>
-<div class="line">            <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sese::sleep</a>(1s);</div>
-<div class="line">            <span class="keywordflow">continue</span>;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;msg: messages) {</div>
-<div class="line">            <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;recv {}&quot;</span>, msg.getDataAsString());</div>
-<div class="line"> </div>
-<div class="line">            <span class="keywordflow">if</span> (msg.getDataAsString() == <span class="stringliteral">&quot;Exit&quot;</span>) {</div>
-<div class="line">                <span class="keywordflow">goto</span> end;</div>
-<div class="line">            }</div>
+<div class="line"><span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line">    <span class="keyword">auto</span> messages = channel-&gt;read(1);</div>
+<div class="line">    <span class="keywordflow">if</span> (messages.empty()) {</div>
+<div class="line">        <a class="code hl_function" href="namespacesese.html#aac383eba57816760f6f2c997d7345143">sese::sleep</a>(1s);</div>
+<div class="line">        <span class="keywordflow">continue</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;msg: messages) {</div>
+<div class="line">        <a class="code hl_define" href="record_2_marco_8h.html#aee0f4393a326979982219d142aa9d067">SESE_INFO</a>(<span class="stringliteral">&quot;recv {}&quot;</span>, msg.getDataAsString());</div>
+<div class="line">        <span class="keywordflow">if</span> (msg.getDataAsString() == <span class="stringliteral">&quot;Exit&quot;</span>) {</div>
+<div class="line">            <span class="keywordflow">goto</span> end;</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
+<div class="line">}</div>
 <div class="line">end:</div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="comment">// ···</span></div>
 <div class="line"><span class="comment">// client</span></div>
 <div class="line"><span class="keyword">auto</span> channel = <a class="code hl_function" href="classsese_1_1system_1_1_i_p_c_channel.html#aed8e08977d1b833ad277987b6ee380ed">sese::system::IPCChannel::use</a>(<span class="stringliteral">&quot;Test&quot;</span>);</div>
@@ -346,7 +345,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">生成于 2024年 六月 29日 星期六 11:11:11 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">生成于 2024年 六月 30日 星期日 07:55:58 , 为 sese使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
