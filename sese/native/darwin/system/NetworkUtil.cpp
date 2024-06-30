@@ -16,6 +16,11 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
     getifaddrs(&address);
 
     while (address) {
+        if (address->ifa_addr == nullptr) {
+            address = address->ifa_next;
+            continue;
+        }
+
         auto iterator = map.find(address->ifa_name);
         if (iterator == map.end()) {
             auto i = NetworkInterface();
@@ -41,6 +46,7 @@ std::vector<NetworkInterface> NetworkUtil::getNetworkInterface() noexcept {
 
     interfaces.reserve(map.size());
     for (decltype(auto) i: map) {
+        i.second.name = i.first;
         interfaces.emplace_back(i.second);
     }
 
