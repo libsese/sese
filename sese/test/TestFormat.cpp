@@ -149,5 +149,5 @@ TEST(TestFormat, Iterable) {
     map["efg"] = 514;
     EXPECT_EQ("[{abc,114},{efg,514}]", fmt("{}", map));
 
-    SESE_INFO(fmt("{A,B}|{C,D}", map, array));
+    SESE_INFO("{A,B}|{C,D}", map, array);
 }

@@ -281,7 +281,7 @@ void Format(FmtCtx &ctx, T &&arg, ARGS &&...args) {
 /// \tparam ARGS 形参
 /// \param pattern 匹配格式
 /// \return 匹配完成的字符串
-template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) == 0, int>::type = 0>
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) == 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...) {
     auto param = FormatParameterCounter(pattern.data());
     if (param) {
@@ -295,7 +295,7 @@ std::string fmt(std::string_view pattern, ARGS &&...) {
 /// \param pattern 匹配格式
 /// \param args 实参
 /// \return 匹配完成的字符串
-template<typename... ARGS, typename std::enable_if<sizeof...(ARGS) != 0, int>::type = 0>
+template<typename... ARGS, std::enable_if_t<sizeof...(ARGS) != 0, int> = 0>
 std::string fmt(std::string_view pattern, ARGS &&...args) {
     auto param = FormatParameterCounter(pattern.data());
     if (param != sizeof...(args)) {
