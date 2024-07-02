@@ -1,7 +1,14 @@
 #include "sese/system/FileNotifier.h"
 
+#include <cstdio>
 #include <sys/inotify.h>
+#ifdef __GLIBC__
 #include <sys/fcntl.h>
+#elif __MUSL__
+#include <fcntl.h>
+#include <sys/select.h>
+#endif
+
 
 using namespace sese::system;
 

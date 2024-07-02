@@ -13,6 +13,7 @@ int system::StackInfo::getSkipOffset() {
 
 system::StackInfo::StackInfo(int limit, int skip) noexcept {
     assert(limit > skip);
+#ifdef __GLIBC__
     void **array = (void **) malloc(sizeof(void *) * limit);
     int frames = ::backtrace(array, limit);
     char **strings = ::backtrace_symbols(array, limit);
@@ -33,4 +34,5 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
 
     free(strings);
     free(array);
+#endif
 }
