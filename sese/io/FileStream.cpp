@@ -1,12 +1,15 @@
 #include "sese/io/FileStream.h"
-#include <cstdio>
 
 #if defined(SESE_PLATFORM_WINDOWS)
 #define fseek _fseeki64
 #define ftell _ftelli64
 #define fileno _fileno
 #elif defined(SESE_PLATFORM_LINUX)
+#if defined(__GLIBC__)
 #define ftell ftello64
+#elif defined(__MUSL__)
+#define ftell ftello
+#endif
 #elif defined(SESE_PLATFORM_APPLE)
 #define ftell ftello
 #endif

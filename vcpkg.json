@@ -54,6 +54,12 @@
         "sqlite3"
       ]
     },
+    "replace-execinfo": {
+      "description":"replace the system execinfo implementation",
+      "dependencies": [
+        "libunwind"
+      ]
+    },
     "tests": {
       "description": "build the unit test",
       "dependencies": [
