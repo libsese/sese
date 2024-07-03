@@ -5,9 +5,9 @@
 #define ftell _ftelli64
 #define fileno _fileno
 #elif defined(SESE_PLATFORM_LINUX)
-#ifdef __GLIBC__
+#if defined(__GLIBC__)
 #define ftell ftello64
-#elif __MUSL__
+#elif defined(__MUSL__)
 #define ftell ftello
 #endif
 #elif defined(SESE_PLATFORM_APPLE)

@@ -2,9 +2,9 @@
 
 #include <cstdio>
 #include <sys/inotify.h>
-#ifdef __GLIBC__
+#if defined(__GLIBC__)
 #include <sys/fcntl.h>
-#elif __MUSL__
+#elif defined(__MUSL__)
 #include <fcntl.h>
 #include <sys/select.h>
 #endif

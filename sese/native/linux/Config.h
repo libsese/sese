@@ -35,3 +35,7 @@ using socket_t = int32_t;
 using tid_t = uint32_t;
 using pid_t = ::pid_t;
 } // namespace sese
+
+#ifndef __GLIBC__
+#define __MUSL__
+#endif

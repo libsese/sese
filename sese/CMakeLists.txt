@@ -113,6 +113,12 @@ else ()
     target_link_libraries(Core PRIVATE asio::asio)
 endif ()
 
+if (SESE_REPLACE_EXECINFO)
+    find_package(PkgConfig)
+    pkg_check_modules(libunwind REQUIRED IMPORTED_TARGET GLOBAL libunwind)
+    target_link_libraries(Core PRIVATE PkgConfig::libunwind)
+endif ()
+
 find_package(OpenSSL REQUIRED)
 target_link_libraries(Core PRIVATE OpenSSL::Crypto OpenSSL::SSL)
 
@@ -126,6 +132,7 @@ target_link_libraries(Core PRIVATE ZLIB::ZLIB)
 # 3.Async Logger
 # 4.SESE_RECORD_TIME_PATTERN
 # 5.SESE_RECORD_TEXT_PATTERN
+# 6.Replace execinfo
 ###################################################################################
 if (MSVC)
     add_definitions(/utf-8)
@@ -156,6 +163,12 @@ if (DEFINED SESE_RECORD_TEXT_PATTERN)
     target_compile_definitions(
             Core PRIVATE
             "SESE_RECORD_TEXT_PATTERN=\"${SESE_RECORD_TEXT_PATTERN}\""
+    )
+endif ()
+
+if (SESE_REPLACE_EXECINFO)
+    target_compile_definitions(
+            Core PRIVATE -DUSE_LIBUNWIND
     )
 endif ()
 
