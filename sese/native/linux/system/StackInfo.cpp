@@ -17,7 +17,11 @@ int system::StackInfo::getSkipOffset() {
 #if defined(USE_LIBUNWIND)
     return 1;
 #elif defined(__GLIBC__)
+#if defined(SESE_IS_DEBUG)
+    return 2;
+#else
     return 1;
+#endif
 #endif
 }
 
