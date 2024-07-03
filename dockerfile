@@ -7,8 +7,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 # 安装系统软件包（系统级操作）
 COPY ./scripts/install_ubuntu_deps.sh /tmp/install_deps.sh
 
-RUN chmod +x /tmp/install_deps.h
-
 # RUN yes | unminimize && \
 #     apt update -y && \
 #     apt upgrade -y && \
@@ -19,7 +17,7 @@ RUN chmod +x /tmp/install_deps.h
 
 RUN yes | unminimize && \
     bash ./tmp/install_deps.sh && \
-    apt install -y --no-install-recommends mysql-client postgresql-client sqlite3 python3-pip doxygen && \
+    apt install -y --no-install-recommends git mysql-client postgresql-client sqlite3 python3-pip doxygen && \
     apt autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
