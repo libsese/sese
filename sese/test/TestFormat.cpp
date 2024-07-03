@@ -93,10 +93,6 @@ TEST(TestFormat, OptionParse) {
         FormatOption option{};
         EXPECT_FALSE(option.parse("0"));
     }
-    {
-        FormatOption option{};
-        EXPECT_FALSE(option.parse(":."));
-    }
 }
 
 TEST(TestFormat, Align) {

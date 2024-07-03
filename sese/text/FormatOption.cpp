@@ -44,6 +44,10 @@ parsing_align:
         }
         pos += 1;
     } else if (wide_char == ' ') {
+        if (pos + 1 == value.end()) {
+            ext_type = *pos;
+            return true;
+        }
         wide_char = *pos;
         pos += 1;
         goto parsing_align;
