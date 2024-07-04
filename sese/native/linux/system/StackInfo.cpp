@@ -18,7 +18,7 @@ int system::StackInfo::getSkipOffset() {
     return 1;
 #elif defined(__GLIBC__)
 #if defined(SESE_IS_DEBUG)
-    return 2;
+    return 1;
 #else
     return 1;
 #endif

@@ -44,13 +44,13 @@ public:
 
 TEST(TestStackInfo, Normal) {
     function1();
-    // function2();
+    function2();
 }
 
 TEST(TestStackInfo, Class) {
     {
         NamespaceStackInfo::ClassA a;
         a.hello();
-        // a.hello(1);
+        a.hello(1);
     }
 }
