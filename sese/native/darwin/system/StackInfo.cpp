@@ -9,7 +9,11 @@
 using namespace sese;
 
 int system::StackInfo::getSkipOffset() {
+#ifdef SESE_IS_DEBUG
+    return 2;
+#else
     return 1;
+#endif
 }
 
 inline size_t findPos2(const char *buffer, size_t pos) {

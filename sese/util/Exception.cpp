@@ -4,7 +4,9 @@
 #include <algorithm>
 
 int sese::Exception::getSkipOffset() {
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) 
+    return 1;
+#elif defined(__APPLE__) && !defined(SESE_IS_DEBUG)
     return 1;
 #else
     return 2;
@@ -13,7 +15,7 @@ int sese::Exception::getSkipOffset() {
 
 sese::Exception::Exception(const char *message)
     : NativeException(message) {
-    stackInfo = new system::StackInfo(8, sese::system::StackInfo::getSkipOffset() + getSkipOffset());
+    stackInfo = new system::StackInfo(16, sese::system::StackInfo::getSkipOffset() + getSkipOffset());
 }
 
 sese::Exception::~Exception() {
