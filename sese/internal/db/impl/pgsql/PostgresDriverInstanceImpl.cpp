@@ -68,15 +68,18 @@ int64_t impl::PostgresDriverInstanceImpl::executeUpdate(const char *sql) noexcep
 }
 
 PreparedStatement::Ptr impl::PostgresDriverInstanceImpl::createStatement(const char *sql) noexcept {
-    int count = 0;
     text::StringBuilder string_builder;
-    for (size_t i = 0; i < strlen(sql); ++i) {
-        if (sql[i] == '?') {
-            count++;
-            string_builder << '$' << std::to_string(count);
-        } else {
-            string_builder << sql[i];
+    uint32_t count = 0;
+    const std::string_view STRING{sql, strlen(sql)};
+    auto begin = STRING.begin();
+    while (true) {
+        auto pos = std::find(begin, STRING.end(), '?');
+        string_builder.append(std::string{begin, pos});
+        if (pos == STRING.end()) {
+            break;
         }
+        string_builder << '$' << std::to_string(++count);
+        begin = pos + 1;
     }
 
     std::string stmt_string = string_builder.toString();

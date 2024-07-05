@@ -16,6 +16,9 @@ libsese/SimpleUuid
 google/googletest
 - Copyright 2008, Google Inc.
 
+google/benchmark
+- Copyright 2008, Google Inc.
+
 zlib
 - Copyright (C) 1995-2022 Jean-loup Gailly and Mark Adler
 
