@@ -1,7 +1,5 @@
 var NAVTREEINDEX28 =
 {
-"classsstr_1_1_s_string_view_1_1_iterator.html#abb2ea048c260e589a8957ef2b6001c75":[5,7,1,2,0,7],
-"classsstr_1_1_s_string_view_1_1_iterator.html#abeb82022880cec9a2c15a8b85b037ea2":[5,7,1,2,0,9],
 "classsstr_1_1_s_string_view_1_1_iterator.html#abeb82022880cec9a2c15a8b85b037ea2":[6,0,1,2,0,9],
 "classsstr_1_1_s_string_view_1_1_iterator.html#ac12a5d3a98dc5d87381f93506a0c77f6":[5,7,1,2,0,14],
 "classsstr_1_1_s_string_view_1_1_iterator.html#ac12a5d3a98dc5d87381f93506a0c77f6":[6,0,1,2,0,14],
@@ -249,5 +247,7 @@ var NAVTREEINDEX28 =
 "globals_defs_w.html":[7,1,5,18],
 "globals_defs_x.html":[7,1,5,19],
 "globals_e.html":[7,1,0,5],
-"globals_enum.html":[7,1,4]
+"globals_enum.html":[7,1,4],
+"globals_f.html":[7,1,0,6],
+"globals_func.html":[7,1,1]
 };
