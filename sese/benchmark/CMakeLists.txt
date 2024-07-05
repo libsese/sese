@@ -1,17 +1,23 @@
 find_package(benchmark CONFIG REQUIRED)
+find_package(GTest CONFIG REQUIRED)
 
 if (MSVC)
     add_compile_options(/utf-8)
 endif ()
 
+macro (bm_link_libraries target)
+    target_link_libraries(${target} PRIVATE
+            benchmark::benchmark
+            GTest::gtest
+            Core
+    )
+endmacro ()
+
 add_executable(BM_StringBuilder BM_StringBuilder.cpp)
-target_link_libraries(BM_StringBuilder PRIVATE
-        benchmark::benchmark
-        Core
-)
+bm_link_libraries(BM_StringBuilder)
 
 add_executable(BM_PostgresPreparedStatement BM_PostgresPreparedStatement.cpp)
-target_link_libraries(BM_PostgresPreparedStatement PRIVATE
-        benchmark::benchmark
-        Core
-)
+bm_link_libraries(BM_PostgresPreparedStatement)
+
+add_executable(BM_FormatParse BM_FormatParse.cpp)
+bm_link_libraries(BM_FormatParse)
