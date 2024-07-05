@@ -2,8 +2,8 @@ name: macOS-package
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'package/**'
   workflow_dispatch:
 
 jobs:

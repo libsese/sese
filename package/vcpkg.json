@@ -1,12 +1,12 @@
 {
-    "dependencies": [
-        {
-            "name": "sese",
-            "features": [
-                "archive",
-                "mysql",
-                "psql"
-            ]
-        }
-    ]
+  "dependencies": [
+    {
+      "name": "sese",
+      "features": [
+        "archive",
+        "mysql",
+        "psql"
+      ]
+    }
+  ]
 }
