@@ -40,14 +40,6 @@ if (EXISTS ${PROJECT_SOURCE_DIR}/.git)
     get_git_branch(SESE_REPO_BRANCH ${CMAKE_CURRENT_LIST_DIR})
 endif ()
 
-if (MSVC)
-    # always generate pdb files for all targets
-    add_compile_options("$<$<NOT:$<CONFIG:Debug>>:/Zi>")
-    add_link_options("$<$<NOT:$<CONFIG:Debug>>:/DEBUG>")
-    add_link_options("$<$<NOT:$<CONFIG:Debug>>:/OPT:REF>")
-    add_link_options("$<$<NOT:$<CONFIG:Debug>>:/OPT:ICF>")
-endif ()
-
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebugInfo")
     add_definitions("-DSESE_IS_DEBUG")
     if (MSVC)

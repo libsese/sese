@@ -92,6 +92,18 @@ set_target_properties(
         CXX_STANDARD 17
 )
 
+if (MSVC AND NOT ${CMAKE_BUILD_TYPE} MATCHES "Debug")
+    target_compile_options(Core PRIVATE /Zi)
+    set_target_properties(Core PROPERTIES
+            LINK_FLAGS "/DEBUG /OPT:REF /OPT:ICF"
+    )
+
+    target_compile_options(Plugin PRIVATE /Zi)
+    set_target_properties(Plugin PROPERTIES
+            LINK_FLAGS "/DEBUG /OPT:REF /OPT:ICF"
+    )
+endif ()
+
 target_compile_definitions(Core PRIVATE "SESE_MAJOR_VERSION=\"${PROJECT_VERSION_MAJOR}\"")
 target_compile_definitions(Core PRIVATE "SESE_MINOR_VERSION=\"${PROJECT_VERSION_MINOR}\"")
 target_compile_definitions(Core PRIVATE "SESE_PATCH_VERSION=\"${PROJECT_VERSION_PATCH}\"")
