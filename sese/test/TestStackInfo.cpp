@@ -5,7 +5,7 @@
 
 #include <gtest/gtest.h>
 
-SESE_ALWAYS_INLINE void printStack(int skip) {
+SESE_ALWAYS_INLINE void printStack(uint16_t skip) {
     sese::system::StackInfo stacks(5, skip);
     for (auto &&item: stacks) {
         SESE_INFO("{} at 0x{:x}", item.func, item.address);
@@ -14,30 +14,30 @@ SESE_ALWAYS_INLINE void printStack(int skip) {
 }
 
 void function1() {
-    printStack(sese::system::StackInfo::getSkipOffset());
+    printStack(0);
 }
 
 extern "C" void function2() {
-    printStack(sese::system::StackInfo::getSkipOffset());
+    printStack(0);
 }
 
 namespace NamespaceStackInfo {
 class ClassA {
 public:
     ClassA() {
-        printStack(sese::system::StackInfo::getSkipOffset());
+        printStack(0);
     }
 
     virtual ~ClassA() {
-        printStack(sese::system::StackInfo::getSkipOffset());
+        printStack(0);
     }
 
     void hello() {
-        printStack(sese::system::StackInfo::getSkipOffset());
+        printStack(0);
     }
 
     void hello(int i) {
-        printStack(sese::system::StackInfo::getSkipOffset());
+        printStack(0);
     }
 };
 } // namespace NamespaceStackInfo

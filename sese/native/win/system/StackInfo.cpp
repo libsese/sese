@@ -6,22 +6,19 @@
 
 using namespace sese;
 
-int system::StackInfo::getSkipOffset() {
-    return 1;
-}
+uint16_t system::StackInfo::offset = 1;
 
-system::StackInfo::StackInfo(int limit, int skip) noexcept {
-    assert(limit > skip);
-    void **p_stack = (void **) malloc(sizeof(void *) * limit);
+system::StackInfo::StackInfo(uint16_t limit, uint16_t skip) noexcept {
+    void **p_stack = static_cast<void **>(malloc(sizeof(void *) * limit));
     auto process = GetCurrentProcess();
     SymInitialize(process, nullptr, TRUE);
-    auto frames = CaptureStackBackTrace(skip, limit - skip, p_stack, nullptr);
+    auto frames = CaptureStackBackTrace(skip + offset, limit, p_stack, nullptr);
     for (auto &&i: sese::Range<WORD>(0, frames - 1)) {
-        auto address = (DWORD64) (p_stack[i]);
+        auto address = reinterpret_cast<DWORD64>(p_stack[i]);
 
         DWORD64 displacement_sym = 0;
         char buffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR)]{};
-        auto p_symbol = (PSYMBOL_INFO) buffer;
+        auto p_symbol = reinterpret_cast<PSYMBOL_INFO>(buffer);
         p_symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
         p_symbol->MaxNameLen = MAX_SYM_NAME;
 
