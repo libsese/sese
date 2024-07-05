@@ -3,21 +3,19 @@
 
 #include <algorithm>
 
-int sese::Exception::getSkipOffset() {
-#if defined(_MSC_VER)
-    return 1;
+
+#if defined(_MSC_VER) && !defined(SESE_IS_DEBUG)
+uint16_t sese::Exception::offset = 1;
+#elif defined(__APPLE__) && !defined(SESE_IS_DEBUG)
+uint16_t sese::Exception::offset = 1;
 #else
-    return 2;
+uint16_t sese::Exception::offset = 2;
 #endif
-}
+
 
 sese::Exception::Exception(const char *message)
     : NativeException(message) {
-    stackInfo = new system::StackInfo(8, sese::system::StackInfo::getSkipOffset() + getSkipOffset());
-}
-
-sese::Exception::~Exception() {
-    delete stackInfo; // GCOVR_EXCL_LINE
+    stackInfo = std::make_unique<system::StackInfo>(16, offset);
 }
 
 std::string sese::Exception::buildStacktrace() {

@@ -13,16 +13,19 @@
 
 using namespace sese;
 
-int system::StackInfo::getSkipOffset() {
-#if defined(USE_LIBUNWIND)
-    return 1;
-#elif defined(__GLIBC__)
-    return 1;
-#endif
-}
 
-system::StackInfo::StackInfo(int limit, int skip) noexcept {
-    assert(limit > skip);
+#if defined(USE_LIBUNWIND)
+uint16_t system::StackInfo::offset = 1;
+#elif defined(__GLIBC__)
+#if defined(SESE_IS_DEBUG)
+uint16_t system::StackInfo::offset = 1;
+#else
+uint16_t system::StackInfo::offset = 1;
+#endif
+#endif
+
+
+system::StackInfo::StackInfo(uint16_t limit, uint16_t skip) noexcept {
 #ifdef USE_LIBUNWIND
     char function_name[1024]{};
     unw_context_t ctx;
@@ -34,10 +37,10 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
 
     int count = 0;
     while (unw_step(&curs) > 0) {
-        if (count < skip) {
+        if (count < skip + StackInfo::offset) {
             count++;
             continue;
-        } else if (count > limit) {
+        } else if (count > limit + skip + StackInfo::offset) {
             break;
         } else {
             unw_get_reg(&curs, UNW_REG_SP, &sp);
@@ -47,10 +50,10 @@ system::StackInfo::StackInfo(int limit, int skip) noexcept {
         }
     }
 #elif __GLIBC__
-    void **array = (void **) malloc(sizeof(void *) * limit);
-    int frames = ::backtrace(array, limit);
-    char **strings = ::backtrace_symbols(array, limit);
-    for (auto &&i: sese::Range<int>(skip, frames - 1)) {
+    void **array = (void **) malloc(sizeof(void *) * (limit + skip + StackInfo::offset));
+    int frames = ::backtrace(array, limit + skip + StackInfo::offset);
+    char **strings = ::backtrace_symbols(array, limit + skip + StackInfo::offset);
+    for (auto &&i: sese::Range<int>(skip + StackInfo::offset, frames - 1)) {
         /* /tmp/tmp.zC0rrpZiXB/cmake-build-debug-ubuntu/gtest/TestStackInfo(function2+0x3c) [0x5599188f060d]
          *                                                                 ^         ^      ^              ^
          *                                                                pos1      pos2   pos3           pos4

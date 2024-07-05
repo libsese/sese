@@ -269,3 +269,7 @@ subject to the terms and conditions of the following licenses:
 - doxygen-awesome-css
     Project URL: https://github.com/jothepro/doxygen-awesome-css
     License: MIT License
+
+- libunwind
+    Project URL: https://github.com/libunwind/libunwind/
+    License: MIT License

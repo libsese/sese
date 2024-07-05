@@ -1,5 +1,5 @@
-Framework SESE-CORE Distribution
-Copyright 2021-2023 libsese Organization
+Framework sese Distribution
+Copyright 2021-2024 libsese Organization
 
 This software bundles the following NOTICE files from third party library providers:
 
@@ -51,3 +51,6 @@ postgres
 
 doxygen-awesome-css
 - Copyright (c) 2021 - 2023 jothepro
+
+libunwind
+- Copyright (c) 2002 Hewlett-Packard Co.

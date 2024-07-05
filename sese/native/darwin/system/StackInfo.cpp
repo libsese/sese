@@ -8,9 +8,13 @@
 
 using namespace sese;
 
-int system::StackInfo::getSkipOffset() {
-    return 1;
-}
+
+#ifdef SESE_IS_DEBUG
+uint16_t system::StackInfo::offset = 2;
+#else
+uint16_t system::StackInfo::offset = 1;
+#endif
+
 
 inline size_t findPos2(const char *buffer, size_t pos) {
     size_t count = 0;
@@ -25,12 +29,11 @@ inline size_t findPos2(const char *buffer, size_t pos) {
     return -1;
 }
 
-system::StackInfo::StackInfo(int limit, int skip) noexcept {
-    assert(limit > skip);
-    void **array = (void **) malloc(sizeof(void *) * limit);
-    int frames = ::backtrace(array, limit);
-    char **strings = backtrace_symbols(array, limit);
-    for (auto &&i: sese::Range<int>(skip, frames - 1)) {
+system::StackInfo::StackInfo(uint16_t limit, uint16_t skip) noexcept {
+    void **array = static_cast<void **>(malloc(sizeof(void *) * (limit + skip + offset)));
+    int frames = ::backtrace(array, limit + skip + offset);
+    char **strings = backtrace_symbols(array, limit + skip + offset);
+    for (auto &&i: sese::Range<int>(skip + offset, frames - 1)) {
         /*
          * "1   TestStackInfo                       0x000000010001dcc1 _ZN4sese6system9StackInfoC1Eii + 33"
          *                                         ^                  ^                               ^
