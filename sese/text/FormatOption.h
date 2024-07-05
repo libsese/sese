@@ -80,14 +80,14 @@ struct FormatOption {
             return true;
         }
         char *end;
-        wide = std::strtol(value.data() + (pos - value.begin()), &end, 10);
+        wide = static_cast<uint16_t>(std::strtol(value.data() + (pos - value.begin()), &end, 10));
         pos = value.begin() + (end - value.data());
 
         // end 不为 \0 将直接返回，无需额外判断
         // 浮点精度相关判断
         if (*end == '.') {
             char *new_end;
-            float_placeholder = std::strtol(end + 1, &new_end, 10);
+            float_placeholder = static_cast<uint16_t>(std::strtol(end + 1, &new_end, 10));
             if (end == new_end) {
                 // 缺少精度
                 return false;

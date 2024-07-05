@@ -48,6 +48,12 @@ bool sese::text::FmtCtx::parsing(std::string &args) {
             builder.append(substr);
             pre_m = n + 1;
         }
+
+        // 无参数直接返回
+        if (*pre_m == '}') {
+            return true;
+        }
+
     find_m:
         m = std::find(pre_m, pattern.end(), '}');
         if (m == pattern.end()) {

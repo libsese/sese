@@ -21,3 +21,6 @@ bm_link_libraries(BM_PostgresPreparedStatement)
 
 add_executable(BM_FormatParse BM_FormatParse.cpp)
 bm_link_libraries(BM_FormatParse)
+
+add_executable(BM_Format BM_Format.cpp)
+bm_link_libraries(BM_Format)

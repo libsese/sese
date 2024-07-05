@@ -14,7 +14,6 @@
 
 #include <benchmark/benchmark.h>
 #include <sese/text/FormatOption.h>
-#include <sstream>
 
 using sese::text::Align;
 using sese::text::FormatOption;
